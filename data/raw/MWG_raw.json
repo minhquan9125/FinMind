@@ -1,6 +1,12 @@
 {
+  "schema_version": "1.0",
+  "dataset_version": "20260915T093408Z",
   "symbol": "MWG",
-  "crawled_at": "2026-09-15T15:00:56.504585",
+  "crawled_at": "2026-09-15T09:34:08.341382Z",
+  "sources": {
+    "prices": "ENTRADE",
+    "fundamentals": "VIETCAP_VCI"
+  },
   "raw_prices": {
     "t": [
       1514851200,
@@ -2170,7 +2176,8 @@
       1788919200,
       1789005600,
       1789092000,
-      1789351200
+      1789351200,
+      1789437600
     ],
     "o": [
       29.72,
@@ -4340,7 +4347,8 @@
       72.3,
       71.6,
       72.5,
-      71.3
+      71.3,
+      69.8
     ],
     "h": [
       30.04,
@@ -6510,7 +6518,8 @@
       72.6,
       73.3,
       72.5,
-      71.5
+      71.5,
+      71.2
     ],
     "l": [
       29.72,
@@ -8680,7 +8689,8 @@
       71.4,
       71.2,
       71.3,
-      68.6
+      68.6,
+      69.8
     ],
     "c": [
       29.93,
@@ -10850,7 +10860,8 @@
       71.6,
       72.9,
       71.3,
-      69.8
+      69.8,
+      71.2
     ],
     "v": [
       566400,
@@ -13020,13 +13031,14 @@
       1420300,
       2496200,
       2587600,
-      3246500
+      3246500,
+      1893100
     ],
     "nextTime": 0
   },
   "raw_ratios": {
-    "serverDateTime": "2026-09-15T08:00:54.472604930",
-    "traceId": "a4078f8c38994490b28655d3ac3ef362",
+    "serverDateTime": "2026-09-15T09:34:06.921118332",
+    "traceId": "98a2388c875f28f77154165d9c52882b",
     "status": 200,
     "code": 0,
     "msg": "Successful",
@@ -15578,8 +15590,8 @@
     ]
   },
   "raw_income_statement": {
-    "serverDateTime": "2026-09-15T08:00:54.553167433",
-    "traceId": "e08288e2f5555df480ec400d7cdac2be",
+    "serverDateTime": "2026-09-15T09:34:07.344330784",
+    "traceId": "72d5be4becb5661987b1d9ee5296b538",
     "status": 200,
     "code": 0,
     "msg": "Successful",
@@ -23573,8 +23585,8 @@
     }
   },
   "raw_balance_sheet": {
-    "serverDateTime": "2026-09-15T08:00:54.651948889",
-    "traceId": "513e252fdc9bdd209c60ea8e495cbdca",
+    "serverDateTime": "2026-09-15T09:34:07.845489497",
+    "traceId": "555a50e462daeb4a4c650b7c105a67d7",
     "status": 200,
     "code": 0,
     "msg": "Successful",
@@ -37868,8 +37880,8 @@
     }
   },
   "raw_cash_flow": {
-    "serverDateTime": "2026-09-15T08:00:54.803899380",
-    "traceId": "5f96e76c344e0edc2b8ba618c4bf2bd0",
+    "serverDateTime": "2026-09-15T09:34:08.105338350",
+    "traceId": "d702bfca4950c556ffbb68dda4961ce6",
     "status": 200,
     "code": 0,
     "msg": "Successful",

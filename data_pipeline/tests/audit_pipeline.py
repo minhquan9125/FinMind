@@ -24,7 +24,12 @@ import os
 import json
 import sys
 import math
-from datetime import datetime
+
+SRC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
+if SRC_DIR not in sys.path:
+    sys.path.insert(0, SRC_DIR)
+
+from pipeline_quality import PayloadValidationError, normalize_price_payload, validate_price_history
 
 # Thiết lập encoding UTF-8
 if sys.platform == "win32":
@@ -78,7 +83,15 @@ class BulletproofPipelineAuditor:
             "status": "PASS",
             "cause": "None",
             "details": [],
-            "stats": {"total_cells_checked": 0, "balanced_bs_periods": 0, "total_bs_periods": 0}
+            "stats": {
+                "total_cells_checked": 0,
+                "balanced_bs_periods": 0,
+                "total_bs_periods": 0,
+                "raw_price_records": 0,
+                "published_price_records": 0,
+                "rejected_price_records": 0,
+                "source_quality_issues": 0,
+            }
         }
 
         raw_path = os.path.join(self.raw_dir, f"{symbol}_raw.json")
@@ -102,6 +115,11 @@ class BulletproofPipelineAuditor:
             raw_inc = raw_d.get("raw_income_statement", {})
             raw_bs = raw_d.get("raw_balance_sheet", {})
             raw_cf = raw_d.get("raw_cash_flow", {})
+
+            for required_key in ("schema_version", "dataset_version", "sources"):
+                if required_key not in raw_d:
+                    result["crw"] = "FAIL"
+                    result["details"].append(f"CRW: Thiếu metadata chuẩn '{required_key}'")
 
             p_count = len(raw_p.get("t", []))
             r_count = len(raw_r.get("data", []) or [])
@@ -131,35 +149,71 @@ class BulletproofPipelineAuditor:
             with open(norm_path, "r", encoding="utf-8") as f:
                 norm_d = json.load(f)
 
+            for required_key in ("schema_version", "dataset_version", "sources", "quality"):
+                if required_key not in norm_d:
+                    result["map"] = "FAIL"
+                    result["details"].append(f"MAP: Thiếu metadata chuẩn '{required_key}'")
+            if raw_d.get("schema_version") != norm_d.get("schema_version"):
+                result["map"] = "FAIL"
+                result["details"].append("MAP: schema_version raw và normalized không khớp")
+            if raw_d.get("dataset_version") != norm_d.get("dataset_version"):
+                result["map"] = "FAIL"
+                result["details"].append("MAP: dataset_version raw và normalized không khớp")
+
             cells_checked = 0
 
             # A. Kiểm tra MAP phân hệ Giá (Prices)
             norm_p = norm_d.get("price_history", [])
-            raw_t = raw_p.get("t", [])
-            raw_o = raw_p.get("o", [])
-            raw_h = raw_p.get("h", [])
-            raw_l = raw_p.get("l", [])
-            raw_c = raw_p.get("c", [])
-            raw_v = raw_p.get("v", [])
-
-            if len(raw_t) != len(norm_p):
+            expected_prices, expected_price_issues = normalize_price_payload(raw_p)
+            if len(expected_prices) != len(norm_p):
                 result["map"] = "FAIL"
-                result["details"].append(f"MAP Prices: Lệch số lượng nến ({len(raw_t)} raw != {len(norm_p)} norm)")
+                result["details"].append(
+                    f"MAP Prices: Số nến publish sai ({len(expected_prices)} hợp lệ != {len(norm_p)} norm)"
+                )
             else:
-                for i in range(len(raw_t)):
-                    expected_date = datetime.fromtimestamp(raw_t[i]).strftime("%Y-%m-%d")
-                    np = norm_p[i]
-                    if np["date"] != expected_date:
-                        result["map"] = "FAIL"
-                        result["details"].append(f"MAP Prices: Lệch ngày tại index {i} ({expected_date} != {np['date']})")
-                        break
-
-                    for field, r_val in [("open", raw_o[i]), ("high", raw_h[i]), ("low", raw_l[i]), ("close", raw_c[i])]:
+                for i, (expected, actual) in enumerate(zip(expected_prices, norm_p)):
+                    for field in ("date", "open", "high", "low", "close", "volume", "source_timestamp"):
                         cells_checked += 1
-                        if not values_match(r_val, np.get(field)):
+                        if not values_match(expected.get(field), actual.get(field)):
                             result["map"] = "FAIL"
-                            result["details"].append(f"MAP Prices: Lệch giá trị {field} tại {expected_date} ({r_val} != {np.get(field)})")
+                            result["details"].append(
+                                f"MAP Prices: Lệch {field} tại index {i} "
+                                f"({expected.get(field)} != {actual.get(field)})"
+                            )
                             break
+
+            normalized_price_issues = validate_price_history(norm_p)
+            if normalized_price_issues:
+                result["val"] = "FAIL"
+                for issue in normalized_price_issues[:10]:
+                    result["details"].append(
+                        f"VAL Prices [{issue['code']}]: {issue.get('record_key', '?')} - {issue['message']}"
+                    )
+
+            quality = norm_d.get("quality", {})
+            result["stats"]["raw_price_records"] = len(raw_p.get("t", []))
+            result["stats"]["published_price_records"] = len(norm_p)
+            result["stats"]["rejected_price_records"] = quality.get("rejected_price_records", 0)
+            result["stats"]["source_quality_issues"] = len(quality.get("issues", []))
+            if quality.get("raw_price_records") != len(raw_p.get("t", [])):
+                result["map"] = "FAIL"
+                result["details"].append("MAP Quality: raw_price_records không khớp dữ liệu raw")
+            if quality.get("published_price_records") != len(norm_p):
+                result["map"] = "FAIL"
+                result["details"].append("MAP Quality: published_price_records không khớp output")
+            expected_rejected = len(raw_p.get("t", [])) - len(expected_prices)
+            if quality.get("rejected_price_records") != expected_rejected:
+                result["map"] = "FAIL"
+                result["details"].append("MAP Quality: rejected_price_records không khớp validator")
+            actual_issue_codes = [issue.get("code") for issue in quality.get("issues", [])]
+            expected_issue_codes = [issue.get("code") for issue in expected_price_issues]
+            if actual_issue_codes != expected_issue_codes:
+                result["map"] = "FAIL"
+                result["details"].append("MAP Quality: danh sách vấn đề nguồn không khớp kết quả validator")
+            expected_quality_status = "PASS_WITH_WARNINGS" if expected_price_issues else "PASS"
+            if quality.get("status") != expected_quality_status:
+                result["map"] = "FAIL"
+                result["details"].append("MAP Quality: trạng thái quality không phản ánh đúng vấn đề nguồn")
 
             # B. Hàm helper kiểm tra chi tiết từng phân hệ BCTC & Chỉ số
             def audit_statement_mapping(section_name, raw_list, norm_list, is_ratio=False):
@@ -242,24 +296,27 @@ class BulletproofPipelineAuditor:
 
             for bs in norm_bs_rows:
                 lbl = bs.get("period_label")
-                assets = bs.get("bsa53")        # Tổng tài sản
-                total_cap = bs.get("bsa96")     # Tổng nguồn vốn
-                liab = bs.get("bsa54")          # Nợ phải trả
-                eq = bs.get("bsa78") or bs.get("bsa79")  # Vốn chủ sở hữu
+                assets = bs.get("bsa53")
+                total_cap = bs.get("bsa96")
+                liab = bs.get("bsa54")
+                eq = bs.get("bsa78")
 
-                if assets is None or assets <= 0:
+                if assets is None or total_cap is None or assets <= 0:
                     result["val"] = "FAIL"
-                    result["details"].append(f"VAL: Tổng tài sản <= 0 ở kỳ {lbl}")
+                    result["details"].append(f"VAL: Thiếu hoặc sai tổng tài sản/tổng nguồn vốn ở kỳ {lbl}")
+                    continue
 
-                if assets and liab and eq:
-                    diff = abs(assets - (liab + eq))
-                    if (diff / assets) <= 0.005:
-                        balanced_bs += 1
-                    else:
-                        result["val"] = "FAIL"
-                        result["details"].append(f"VAL: Mất cân đối BCTC kỳ {lbl}: Assets={assets:,.0f} != Liab+Eq={liab+eq:,.0f}")
-                elif assets and total_cap and abs(assets - total_cap) <= 1000:
+                capital_diff_ratio = abs(assets - total_cap) / assets
+                equation_checkable = liab is not None and eq is not None
+                equation_diff_ratio = abs(assets - (liab + eq)) / assets if equation_checkable else None
+                if capital_diff_ratio <= 0.000001 and equation_checkable and equation_diff_ratio <= 0.000001:
                     balanced_bs += 1
+                else:
+                    result["val"] = "FAIL"
+                    result["details"].append(
+                        f"VAL: BCTC kỳ {lbl} không kiểm chứng được hoặc mất cân đối "
+                        f"(Assets={assets}, Liabilities={liab}, Equity={eq}, TotalCapital={total_cap})"
+                    )
 
             result["stats"]["balanced_bs_periods"] = balanced_bs
 
@@ -302,8 +359,14 @@ class BulletproofPipelineAuditor:
 
             print(f"[{sym}]")
             print(f"CRW: {res['crw']}")
-            print(f"MAP: {res['map']} ({stats['total_cells_checked']:,} ô dữ liệu được so khớp chính xác 100%)")
+            print(f"MAP: {res['map']} ({stats['total_cells_checked']:,} ô dữ liệu đã đối chiếu)")
             print(f"VAL: {res['val']} ({stats['balanced_bs_periods']}/{stats['total_bs_periods']} kỳ BCTC cân bằng Tài sản = Nợ + VCSH)")
+            print(
+                f"PRICE QUALITY: raw={stats['raw_price_records']}, "
+                f"published={stats['published_price_records']}, "
+                f"rejected={stats['rejected_price_records']}, "
+                f"source_issues={stats['source_quality_issues']}"
+            )
             print(f"STATUS: {res['status']}")
             print(f"NGUYÊN NHÂN: {res['cause']}")
             if res["details"]:
@@ -311,19 +374,28 @@ class BulletproofPipelineAuditor:
                 for d in res["details"]:
                     print(f"  ❌ {d}")
             else:
-                print("CHI TIẾT: Khớp từng ô tuyệt đối giữa RAW & NORMALIZED, không mất field, không tạo số liệu giả.")
+                print("CHI TIẾT: Output normalized sạch; bản ghi nguồn lỗi/trùng đã được ghi trong quality.issues.")
             print("-" * 50)
 
         print("\n" + "="*90)
         print("📋 BẢNG TỔNG HỢP PIPELINE TOÀN DIỆN:")
-        print(f"{'Symbol':<8} | {'CRW':<5} | {'MAP':<5} | {'VAL':<5} | {'STATUS':<8} | {'Số ô đã so khớp':<18} | {'Nguyên nhân':<15}")
-        print("-" * 80)
+        print(
+            f"{'Symbol':<8} | {'CRW':<5} | {'MAP':<5} | {'VAL':<5} | {'STATUS':<8} | "
+            f"{'Published':<10} | {'Rejected':<8} | {'Số ô':<12} | {'Nguyên nhân':<15}"
+        )
+        print("-" * 110)
         for sym, r in self.report.items():
             cell_str = f"{r['stats']['total_cells_checked']:,} cells"
-            print(f"{sym:<8} | {r['crw']:<5} | {r['map']:<5} | {r['val']:<5} | {r['status']:<8} | {cell_str:<18} | {r['cause']:<15}")
+            print(
+                f"{sym:<8} | {r['crw']:<5} | {r['map']:<5} | {r['val']:<5} | {r['status']:<8} | "
+                f"{r['stats']['published_price_records']:<10} | {r['stats']['rejected_price_records']:<8} | "
+                f"{cell_str:<12} | {r['cause']:<15}"
+            )
         print("="*90)
-        print(f"🎉 TỔNG SỐ Ô DỮ LIỆU ĐÃ ĐỐI CHIẾU 1-1 TOÀN BỘ DỰ ÁN: {total_cells_all:,} Ô (100% ĐẠT CHUẨN)")
+        passed = sum(item["status"] == "PASS" for item in self.report.values())
+        print(f"TỔNG KẾT: {passed}/{len(self.report)} mã PASS; {total_cells_all:,} ô đã được đối chiếu.")
+        return passed == len(self.report)
 
 if __name__ == "__main__":
     auditor = BulletproofPipelineAuditor()
-    auditor.run(DEFAULT_SYMBOLS)
+    sys.exit(0 if auditor.run(DEFAULT_SYMBOLS) else 1)
