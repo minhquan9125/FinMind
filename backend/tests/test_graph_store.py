@@ -3,9 +3,12 @@
 import copy
 import io
 import json
+import os
 from pathlib import Path
+import shutil
 import unittest
 from unittest.mock import MagicMock, patch
+from uuid import uuid4
 
 from backend.src.graph.adapter import to_graph
 from backend.src.graph.contract import ContractError, SECTIONS, load_dataset
@@ -167,6 +170,72 @@ class GraphCliTests(unittest.TestCase):
         with patch.object(GraphStore, "from_environment") as connect, patch("sys.stderr", new_callable=io.StringIO):
             self.assertEqual(main(["--input", str(ROOT / "backend/src/main.py")]), 1)
         connect.assert_not_called()
+
+
+class GraphEnvironmentTests(unittest.TestCase):
+    def setUp(self):
+        self.directory = ROOT / 'backend/tests' / f'.env-test-{uuid4().hex}'
+        self.directory.mkdir()
+        self.addCleanup(shutil.rmtree, self.directory)
+        self.env_path = self.directory / '.env'
+        self.env_path.write_text(
+            "NEO4J_URI=neo4j+s://example.databases.neo4j.io\n"
+            "NEO4J_USERNAME=example-user\n"
+            "NEO4J_PASSWORD='fake-${UNRELATED_SECRET}-password'\n"
+            "NEO4J_DATABASE=example-db\n"
+            "UNRELATED_SETTING=should-not-load\n", encoding='utf-8')
+        self.driver_module = MagicMock()
+
+    def connect(self):
+        with patch('backend.src.graph.graph_store.ENV_FILE', self.env_path, create=True), \
+                patch.dict('sys.modules', {'neo4j': self.driver_module}):
+            return GraphStore.from_environment()
+
+    def test_reads_file_credentials_and_aura_username_alias_without_expansion(self):
+        with patch.dict(os.environ, {'UNRELATED_SECRET': 'must-not-expand'}, clear=True):
+            with self.connect() as store:
+                self.assertEqual(store.database, 'example-db')
+            self.driver_module.GraphDatabase.driver.assert_called_once()
+            call = self.driver_module.GraphDatabase.driver.call_args
+            self.assertEqual(call.args[0], 'neo4j+s://example.databases.neo4j.io')
+            self.assertEqual(call.kwargs['auth'],
+                             ('example-user', 'fake-${UNRELATED_SECRET}-password'))
+            self.assertNotIn('UNRELATED_SETTING', os.environ)
+
+    def test_process_environment_has_priority_over_file(self):
+        settings = {'NEO4J_URI': 'bolt://localhost:7687', 'NEO4J_USER': 'process-user',
+                    'NEO4J_PASSWORD': 'process-password', 'NEO4J_DATABASE': 'process-db'}
+        with patch.dict(os.environ, settings, clear=True):
+            with self.connect() as store:
+                self.assertEqual(store.database, 'process-db')
+            call = self.driver_module.GraphDatabase.driver.call_args
+            self.assertEqual(call.args[0], settings['NEO4J_URI'])
+            self.assertEqual(call.kwargs['auth'], ('process-user', 'process-password'))
+
+    def test_missing_file_still_accepts_process_credentials(self):
+        self.env_path.unlink()
+        with patch.dict(os.environ, {'NEO4J_URI': 'bolt://localhost:7687',
+                                    'NEO4J_USER': 'neo4j', 'NEO4J_PASSWORD': 'fake'}, clear=True):
+            with self.connect() as store:
+                self.assertEqual(store.database, 'neo4j')
+
+    def test_file_user_has_priority_over_file_username_alias(self):
+        with self.env_path.open('a', encoding='utf-8') as stream:
+            stream.write('NEO4J_USER=preferred-file-user\n')
+        with patch.dict(os.environ, {}, clear=True):
+            with self.connect():
+                pass
+            call = self.driver_module.GraphDatabase.driver.call_args
+            self.assertEqual(call.kwargs['auth'][0], 'preferred-file-user')
+
+    def test_process_username_alias_has_priority_over_file_user(self):
+        with self.env_path.open('a', encoding='utf-8') as stream:
+            stream.write('NEO4J_USER=file-user\n')
+        with patch.dict(os.environ, {'NEO4J_USERNAME': 'process-alias'}, clear=True):
+            with self.connect():
+                pass
+            call = self.driver_module.GraphDatabase.driver.call_args
+            self.assertEqual(call.kwargs['auth'][0], 'process-alias')
 
 
 if __name__ == "__main__":

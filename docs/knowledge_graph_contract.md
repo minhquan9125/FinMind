@@ -91,9 +91,13 @@ scoped to one snapshot; pagination limit is 1..1000 and offset is a
 nonnegative signed 64-bit integer.
 
 Use parameterized Cypher; only fixed package-owned queries/labels are used.
-Read credentials only from process environment: `NEO4J_URI`, `NEO4J_USER`,
-`NEO4J_PASSWORD`, optional `NEO4J_DATABASE` (default `neo4j`). No automatic
-`.env` loading, credential writing, or credentials in CLI arguments/logs.
+Read connection settings from process environment, with repository-root `.env`
+as a fallback: `NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD`, optional
+`NEO4J_DATABASE` (default `neo4j`). `NEO4J_USERNAME` is accepted as an alias;
+`NEO4J_USER` takes precedence within each source, and process settings take
+precedence over file settings. Read only these connection settings from the
+file, with interpolation disabled so passwords remain literal. Dry-run does
+not load `.env`. No credential writing or credentials in CLI arguments/logs.
 Support local Bolt and TLS Neo4j URIs. This package does not deploy a server.
 
 ## Commands and verification
@@ -106,6 +110,7 @@ python -B data_pipeline/tests/audit_pipeline.py
 python -B -m backend.src.graph.ingest --dry-run
 # Install backend requirements in your working virtual environment:
 python -m pip install -r backend/requirements.txt
+# Fill repository-root .env using .env.example (keep .env out of Git).
 # After configuring process environment and starting Neo4j:
 python -B -m backend.src.graph.ingest
 ```
@@ -142,5 +147,7 @@ serializes FPT graph parameters into Bolt PackStream; dependency checks pass.
 The shared `~/.venv` contains the backend dependency. The tracked backend
 venv points to another machine and is not used or modified.
 
-No Neo4j server is available. Actual Cypher execution, database rollback and
-concurrent ingestion have not been validated against a live database.
+At initial implementation time no Neo4j server was available. Subsequently,
+the user confirmed successful FPT ingestion into AuraDB Free, a COMPLETE
+dataset and graph visualization. Database rollback and concurrent ingestion
+have not been validated against a live database.

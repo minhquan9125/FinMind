@@ -14,6 +14,9 @@ from .adapter import to_graph
 from .contract import GRAPH_VERSION, SECTIONS, ContractError, require
 
 
+ENV_FILE = Path(__file__).resolve().parents[3] / '.env'
+
+
 class DatasetConflictError(ContractError):
     """An immutable dataset identity has already been used for other content."""
 
@@ -106,7 +109,22 @@ class GraphStore:
 
     @classmethod
     def from_environment(cls):
-        """Connect using process environment, with no credential persistence."""
+        """Read repository .env as fallback; process settings take precedence."""
+        values = {}
+        if ENV_FILE.is_file():
+            try:
+                from dotenv import dotenv_values
+            except ImportError:
+                raise RuntimeError("Install backend/requirements.txt to read .env") from None
+            # Keep passwords literal and load only connection settings.
+            values = dotenv_values(ENV_FILE, interpolate=False, encoding='utf-8-sig')
+        username = os.environ.get('NEO4J_USERNAME',
+                                  values.get('NEO4J_USER', values.get('NEO4J_USERNAME')))
+        if username is not None:
+            os.environ.setdefault('NEO4J_USER', username)
+        for name in ('NEO4J_URI', 'NEO4J_PASSWORD', 'NEO4J_DATABASE'):
+            if values.get(name) is not None:
+                os.environ.setdefault(name, values[name])
         settings = {name: os.environ.get(name, "") for name in
                     ("NEO4J_URI", "NEO4J_USER", "NEO4J_PASSWORD")}
         require(all(settings.values()), "NEO4J_URI, NEO4J_USER and NEO4J_PASSWORD are required")
