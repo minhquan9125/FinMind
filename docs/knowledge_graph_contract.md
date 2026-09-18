@@ -151,3 +151,11 @@ At initial implementation time no Neo4j server was available. Subsequently,
 the user confirmed successful FPT ingestion into AuraDB Free, a COMPLETE
 dataset and graph visualization. Database rollback and concurrent ingestion
 have not been validated against a live database.
+
+Local Neo4j Community 2026.08.1 in Docker was subsequently verified on
+2026-09-18: FPT ingestion created the dataset; repeat ingestion returned
+created=false; status was COMPLETE; get_dataset round-tripped the input and
+get_observations returned a metric value with provenance. The local database
+contained 36,295 nodes and 68,756 relationships, and Browser HTTP returned 200.
+All 29 graph tests passed with the developer .env configured. Deliberately
+failed transactions and concurrent ingestion remain separate live checks.

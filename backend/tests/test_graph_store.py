@@ -143,7 +143,10 @@ class GraphStoreTests(unittest.TestCase):
         self.assertNotIn("secret-password", output.getvalue())
 
     def test_connection_configuration_requires_credentials_and_rejects_uri_credentials(self):
-        with patch.dict("os.environ", {}, clear=True):
+        # Local developer credentials must not affect the missing-config case.
+        missing_env = ROOT / 'backend/tests' / f'.missing-env-{uuid4().hex}'
+        with patch('backend.src.graph.graph_store.ENV_FILE', missing_env), \
+                patch.dict("os.environ", {}, clear=True):
             with self.assertRaises(ContractError):
                 GraphStore.from_environment()
         with patch.dict("os.environ", {"NEO4J_URI": "bolt://user:secret@localhost:7687",

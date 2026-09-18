@@ -502,11 +502,59 @@ Trong phiên thử Aura, người dùng đã xác nhận:
 - Nạp FPT thật và truy vấn thấy Dataset `COMPLETE`.
 - Graph view hiển thị các báo cáo và thuộc tính từ dữ liệu đã nạp.
 
-Các xác nhận trên cho thấy đường đi FPT từ normalized tới graph đã chạy trên server thật. Chưa có xác nhận trong phiên này về thử rollback khi cố ý gây lỗi, ingestion đồng thời hoặc kết quả chạy lặp `created: false`. Mock tests không thay thế các kiểm chứng đó.
+Các xác nhận trên cho thấy đường đi FPT từ normalized tới graph đã chạy trên server Aura. Ở giai đoạn thử Aura chưa có xác nhận về rollback khi cố ý gây lỗi, ingestion đồng thời hoặc chạy lặp `created: false`. Mock tests không thay thế các kiểm chứng đó.
+
+Sau đó, kiểm chứng trực tiếp trên Neo4j Community `2026.08.1` trong Docker local ngày 18/09/2026 đã thành công: nạp FPT trả `created: true`, nạp lại trả `created: false`, dataset COMPLETE, đọc lại toàn bộ payload khớp input và đọc được observation của một chỉ tiêu. Database local có 36.295 nodes và 68.756 relationships; HTTP Browser trả status 200. Cả 29 graph tests pass. Rollback khi cố ý gây lỗi và ingestion đồng thời vẫn chưa được kiểm chứng trên server thật.
 
 Hiện cũng chưa có lịch chạy tự động từ crawler tới graph, lớp HTTP API, từ điển diễn giải/đơn vị đầy đủ cho mã chỉ tiêu, thuật toán graph analytics hay giao diện trực quan riêng của FinMind. Các quan hệ đang được tạo theo quy tắc adapter đã định nghĩa; code không dùng AI để tự suy ra quan hệ.
 
-## 14. Thứ tự đọc code để hiểu hệ thống
+## 14. Chạy Neo4j Community local bằng Docker
+
+Repo có [docker-compose.yml](../docker-compose.yml) chạy image Community `neo4j:2026.08.1`. Cấu hình chỉ mở cổng trên localhost và có named volume `neo4j_data` gắn vào `/data`. Volume được giữ khi dừng hoặc tạo lại container thông thường.
+
+Điền `.env` ở gốc repo cho database local:
+
+```dotenv
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USER=neo4j
+NEO4J_PASSWORD='YOUR_LOCAL_PASSWORD_AT_LEAST_8_CHARACTERS'
+NEO4J_DATABASE=neo4j
+```
+
+Docker Compose đọc cùng file `.env` để đặt mật khẩu ban đầu bằng `NEO4J_AUTH`. Biến trong terminal được ưu tiên, nên mở terminal mới nếu trước đó đã cấu hình Aura qua `$env:...`. Mật khẩu local nên tách biệt với Aura. Đổi `NEO4J_AUTH` không đổi mật khẩu của database đã có trong volume; cần dùng chức năng đổi mật khẩu Neo4j khi database đã được tạo.
+
+Chạy từ thư mục gốc repo khi Docker Desktop đang chạy:
+
+```powershell
+docker compose up -d --wait neo4j
+docker compose ps
+```
+
+Lần đầu cần tải image. Healthcheck kiểm tra cổng Bolt đã mở; đây không phải kiểm tra authentication hoặc truy vấn dữ liệu.
+
+Mở `http://localhost:7474`, dùng connection URL `bolt://localhost:7687`, username `neo4j` và mật khẩu trong `.env` để đăng nhập Neo4j Browser. Không cần tài khoản Aura để truy cập database local.
+
+Sau đó nạp dữ liệu bằng môi trường Python đã cài dependency:
+
+```powershell
+python -B -m backend.src.graph.ingest --input data/normalized/FPT.json
+```
+
+Khi FPT chạy ổn và máy còn đủ tài nguyên, có thể nạp cả thư mục bằng lệnh không có `--input`. Community local không áp dụng quota nodes/relationships của AuraDB Free; dung lượng và tốc độ phụ thuộc tài nguyên máy. Cấu hình hiện giới hạn container 2 GiB, heap tối đa 768 MiB và page cache 256 MiB để bắt đầu trên máy 8 GB RAM; cần điều chỉnh theo tải thực tế.
+
+Các lệnh quản lý:
+
+```powershell
+docker compose logs --tail 50 neo4j
+docker compose stop neo4j
+docker compose start neo4j
+```
+
+`docker compose down` xóa container/network nhưng giữ named volume. Không thêm `-v` nếu muốn giữ database, vì tùy chọn đó xóa volume của Compose. Database local và Aura độc lập; chuyển `.env` sang local không xóa hoặc chuyển dữ liệu Aura. Có thể nạp lại local từ normalized JSON.
+
+Hướng dẫn image, mật khẩu và lưu dữ liệu: [Neo4j Docker Operations Manual](https://neo4j.com/docs/operations-manual/current/docker/introduction/).
+
+## 15. Thứ tự đọc code để hiểu hệ thống
 
 1. Đọc `process_stock()` trong collector để hiểu cách tạo snapshot.
 2. Đọc `normalize_price_payload()` và `normalize_financial_rows()` để hiểu đầu ra normalized.
