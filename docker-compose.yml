@@ -1,0 +1,63 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: finmind
+      POSTGRES_PASSWORD: finmind
+      POSTGRES_DB: finmind
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Numeric prefixes force execution order inside docker-entrypoint-initdb.d
+      # (Postgres runs init scripts alphabetically); the files themselves keep
+      # their original names in the repo.
+      - ./backend/scripts/init_postgres_schema.sql:/docker-entrypoint-initdb.d/01_init_postgres_schema.sql:ro
+      - ./backend/scripts/init_pgvector.sql:/docker-entrypoint-initdb.d/02_init_pgvector.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U finmind -d finmind"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://finmind:finmind@postgres:5432/finmind
+      EMBEDDING_MODEL: BAAI/bge-m3
+      EMBEDDING_DEVICE: cpu
+      EMBEDDING_DIM: 1024
+      CHUNK_WORDS: 130
+      CHUNK_STRIDE: 100
+      DEFAULT_TOP_K: 5
+      FRONTEND_ORIGIN: http://localhost:5173
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+
+volumes:
+  postgres_data:
+
+# Note (scope): Neo4j and the Hybrid Graph-Vector retrieval branch (Section
+# 12, ADR02) are not part of this compose file yet - this module only
+# implements the Vector RAG baseline (B1) ported from VectorRAG_Demo.html.
+# Add a neo4j service here when that module is built. See readmerepair.md.

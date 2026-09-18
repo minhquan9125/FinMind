@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+
+# Environment secrets (backend/.env.example and frontend/.env.local are
+# templates and stay tracked; a locally edited .env with real secrets should
+# not be committed)
+.env.local.bak
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
