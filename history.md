@@ -62,3 +62,31 @@ Quy trình bắt buộc trước khi sửa:
   - Chưa đụng đến `search.py`/luồng tìm kiếm — search vẫn hoạt động y hệt cũ trên mọi loại document (PDF hay JSON), vì đều đi qua cùng bảng `document_chunks`.
 
 ---
+
+### [2026-09-19] Push code JSON-ingestion lên origin/vu (commit 0e72e63)
+
+- **File(s):** toàn bộ thay đổi ở mục review phía trên (không gồm `data/chunks/`)
+- **Sai gì:** Không phải sửa lỗi — đây là mốc bàn giao: code JSON-ingestion đã test xong (25/25 pytest, frontend build sạch, uvicorn chỉ fail ở bước kết nối Postgres do máy này không có DB — không phải lỗi code) nên push theo yêu cầu, không đợi bước export chunk (chạy riêng, rất lâu vì embed CPU).
+- **Tại sao:** Người dùng yêu cầu push ngay, tách riêng khỏi việc xuất file `data/chunks/*.json` (kèm embedding, ~20 phút/mã trên CPU) vì 2 việc không phụ thuộc nhau.
+- **Ảnh hưởng:** `data/chunks/` vẫn là untracked, sẽ commit/push riêng ở lần sau khi export xong cả 8 mã (người dùng đã xác nhận chấp nhận việc này làm repo nặng thêm ~270-300MB dù dữ liệu có thể tái tạo lại từ code + `data/normalized/`).
+
+---
+
+### [2026-09-19] Viết README.md hướng dẫn cài đặt/chạy dự án + fix data_pipeline/requirements.txt rỗng
+
+- **File(s):** `README.md` (trước đó rỗng), `data_pipeline/requirements.txt` (trước đó rỗng)
+- **Sai gì:** `README.md` rỗng — repo không có hướng dẫn cài đặt/chạy nào cho người mới. Khi viết hướng dẫn "cào dữ liệu mới" thì phát hiện `data_pipeline/requirements.txt` cũng rỗng dù `direct_vn_collector.py` `import requests` — làm theo hướng dẫn kiểu `pip install -r requirements.txt` sẽ vẫn thiếu package và script cào sẽ crash ngay dòng import.
+- **Tại sao sửa:** Người dùng yêu cầu thêm hướng dẫn cài đặt vào README. Tiện tay fix `requirements.txt` vì nếu không, hướng dẫn mới viết sẽ sai/không chạy được (đã kiểm tra `import requests` chạy OK ngay sau khi thêm `requests==2.32.3`).
+- **Ảnh hưởng:** Không ảnh hưởng code khác — `requirements.txt` trước đó rỗng nên không có gì để breaking. README chỉ là tài liệu, không được import bởi code nào.
+- **Nội dung README:** 2 cách chạy (Docker Compose - khuyến nghị; thủ công không Docker - cần tự cài Postgres+pgvector), cách nạp dữ liệu JSON (import-symbol, upload JSON, export_chunks.py), cách chạy cào dữ liệu mới, mục ghi chú giới hạn đã biết trỏ sang readmerepair.md/history.md.
+
+---
+
+### [2026-09-19] Xóa readmerepair.md khỏi working tree (xác nhận: người dùng chủ động xóa, không phải do tôi)
+
+- **File(s):** `readmerepair.md` (bị xóa)
+- **Sai gì:** Phát hiện khi rà `git status` trước khi push: file này (log thay đổi 151 dòng của người làm trước, được `main.py`/`docker-compose.yml` tham chiếu bằng comment "xem readmerepair.md") không còn trên đĩa, trong khi tôi chưa từng gọi lệnh xóa/ghi đè lên nó trong suốt phiên (chỉ `Read` 1 lần để lấy ngữ cảnh).
+- **Tại sao:** Đã hỏi trực tiếp — người dùng xác nhận tự ý xóa file này (có thể vì đã có `history.md` thay thế vai trò changelog). Không phải lỗi do tôi gây ra.
+- **Ảnh hưởng:** Các comment trong `backend/src/main.py` và `docker-compose.yml` (VD: "See readmerepair.md", "not part of this compose file yet ... See readmerepair.md") giờ trỏ tới 1 file không còn tồn tại — không gây lỗi runtime (chỉ là comment), nhưng gây khó hiểu cho người đọc code sau này. Chưa sửa các comment này vì nằm ngoài yêu cầu hiện tại; nên cân nhắc sau này đổi các chỗ đó thành "xem history.md" hoặc xóa hẳn tham chiếu.
+
+---
