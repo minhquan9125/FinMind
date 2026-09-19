@@ -90,3 +90,13 @@ Quy trình bắt buộc trước khi sửa:
 - **Ảnh hưởng:** Các comment trong `backend/src/main.py` và `docker-compose.yml` (VD: "See readmerepair.md", "not part of this compose file yet ... See readmerepair.md") giờ trỏ tới 1 file không còn tồn tại — không gây lỗi runtime (chỉ là comment), nhưng gây khó hiểu cho người đọc code sau này. Chưa sửa các comment này vì nằm ngoài yêu cầu hiện tại; nên cân nhắc sau này đổi các chỗ đó thành "xem history.md" hoặc xóa hẳn tham chiếu.
 
 ---
+
+### [2026-09-19] Commit + push data/chunks/*.json (chunk + embedding thật, cả 8 mã)
+
+- **File(s):** `data/chunks/{FPT,HPG,MWG,SSI,TCB,VCB,VIC,VNM}.chunks.json` (file mới)
+- **Sai gì:** Không phải sửa lỗi — hoàn tất việc xuất dữ liệu đã thống nhất trước đó (chạy `backend/scripts/export_chunks.py` cho cả 8 mã, dùng model BAAI/bge-m3 thật, không phải giả lập).
+- **Tại sao:** Người dùng cần file chunk kèm embedding để chia sẻ cho đồng đội dùng mà không cần dựng Postgres, và đã xác nhận trước đó chấp nhận commit vào git dù nặng.
+- **Kết quả thực tế:** Tổng thời gian embed ~1000-1030 chunk/mã trên CPU dao động 806s-13452s tùy mã (riêng VIC mất ~3.7 tiếng — máy có thể bị chiếm dụng tài nguyên lúc đó, các mã khác đều ~13-14 phút). Tổng dung lượng **260MB** cho 8 file.
+- **Ảnh hưởng:** Repo `vu` tăng thêm ~260MB vĩnh viễn trong lịch sử git kể từ commit này (dữ liệu tái tạo được từ `data/normalized/` + `backend/scripts/export_chunks.py`, không phải source duy nhất). Không ảnh hưởng code chạy — các file này không được import bởi backend/frontend, chỉ là dữ liệu xuất ra để dùng ngoài.
+
+---
