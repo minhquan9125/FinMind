@@ -36,6 +36,11 @@ services:
       CHUNK_STRIDE: 100
       DEFAULT_TOP_K: 5
       FRONTEND_ORIGIN: http://localhost:5173
+      FINANCIAL_DATA_DIR: /app/data/normalized
+    volumes:
+      # Read-only mount so POST /api/documents/import-symbol/{symbol} can read
+      # data_pipeline's pre-scraped data/normalized/{SYMBOL}.json files.
+      - ./data:/app/data:ro
     ports:
       - "8000:8000"
     healthcheck:

@@ -24,6 +24,16 @@ export function uploadDocument(file) {
   return request("/api/documents", { method: "POST", body: formData });
 }
 
+export function uploadJsonDocument(file) {
+  const formData = new FormData();
+  formData.append("file", file);
+  return request("/api/documents/json", { method: "POST", body: formData });
+}
+
+export function importSymbol(symbol) {
+  return request(`/api/documents/import-symbol/${encodeURIComponent(symbol)}`, { method: "POST" });
+}
+
 export function getChunkDetails(documentId) {
   return request(`/api/documents/${documentId}/chunks`);
 }
