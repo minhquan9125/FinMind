@@ -82,3 +82,20 @@ nằm ngoài phạm vi module Vector RAG này:
   `sentence-transformers/all-MiniLM-L6-v2`) để thử luồng chạy, nhưng lưu ý đó
   không phải model được chỉ định trong tài liệu (ADR04) nên chỉ nên dùng tạm
   để test, không dùng cho bản nộp.
+
+---
+
+## 2026-09-19 — Lấy riêng thư mục `data/` từ nhánh `quan` về nhánh `vu`
+
+**Sửa gì:** Copy nguyên thư mục `data/` (16 file JSON, ~19MB: `data/raw/*_raw.json`
+và `data/normalized/*.json` cho 8 mã CP: FPT, HPG, MWG, SSI, TCB, VCB, VIC, VNM)
+từ nhánh `quan` sang nhánh `vu`, dùng `git checkout origin/quan -- data`.
+
+**Vì sao:** Theo yêu cầu của thành viên trong nhóm — chỉ cần lấy phần data Quân
+đã cào/chuẩn hóa để dùng, không lấy code `backend/`/`frontend`/`.agents` của
+nhánh `quan` (2 thư mục đó đang trùng đường dẫn với module Vector RAG mới thêm
+ở nhánh `vu`, merge nguyên nhánh sẽ dễ conflict).
+
+**Ảnh hưởng tới code chỗ khác:** Không — chỉ thêm mới thư mục `data/` (trước đó
+chưa tồn tại trên nhánh `vu`), không đụng tới `backend/`, `frontend/`,
+`data_pipeline/` hay bất kỳ file nào khác.
