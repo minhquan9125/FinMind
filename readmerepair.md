@@ -99,3 +99,53 @@ nhánh `quan` (2 thư mục đó đang trùng đường dẫn với module Vecto
 **Ảnh hưởng tới code chỗ khác:** Không — chỉ thêm mới thư mục `data/` (trước đó
 chưa tồn tại trên nhánh `vu`), không đụng tới `backend/`, `frontend/`,
 `data_pipeline/` hay bất kỳ file nào khác.
+
+---
+
+## 2026-09-19 — Mang code scraper (crawler) từ nhánh `quan` về nhánh `vu`
+
+**Sửa gì:**
+Copy nguyên 3 file code cào/chuẩn hóa dữ liệu thật (không sửa nội dung) từ
+nhánh `quan` sang nhánh `vu`, dùng `git checkout origin/quan -- data_pipeline`:
+- `data_pipeline/src/pipeline_quality.py` — hàm chuẩn hóa/kiểm tra dữ liệu giá
+  và báo cáo tài chính (`normalize_price_payload`, `normalize_financial_rows`,
+  `validate_price_history`, ghi file JSON an toàn qua `atomic_write_json`).
+- `data_pipeline/src/scrapers/direct_vn_collector.py` — script cào chính
+  (`VietnamStockDataCollector`), gọi trực tiếp API Entrade (giá OHLCV) và
+  VietCap/IQ (chỉ số tài chính, KQKD, CĐKT, lưu chuyển tiền tệ) cho 8 mã
+  `TARGET_SYMBOLS = ["FPT","VNM","HPG","VCB","MWG","VIC","TCB","SSI"]` — đúng
+  8 mã đã có sẵn trong `data/raw/` và `data/normalized/` (đã lấy về từ trước).
+  Không đổi danh sách mã, theo đúng yêu cầu ("mã thì cứ như trên code đang
+  demo, không cần nhiều mã").
+- `data_pipeline/tests/audit_pipeline.py` — script tự kiểm toán, đối chiếu
+  RAW vs NORMALIZED từng ô dữ liệu (không mất field, không tự chế field lạ)
+  và kiểm tra logic nghiệp vụ (OHLCV hợp lệ, Tài sản = Nợ + Vốn CSH).
+- Không copy `data_pipeline/.env`, `data_pipeline/requirements.txt`,
+  `data_pipeline/src/ingest.py` — cả 3 file này rỗng (0 byte) ngay trên chính
+  nhánh `quan`, không có nội dung để mang qua; `direct_vn_collector.py` không
+  import gì từ `ingest.py` nên không bị thiếu chức năng.
+- Không copy các file `__pycache__/*.pyc` đi kèm (bytecode biên dịch sẵn của máy
+  Quân, không phải source code, `.gitignore` gốc của repo đã có sẵn rule
+  `**/__pycache__/` để loại các file này) — đã `git rm --cached` sau khi
+  `checkout` mang nhầm chúng theo.
+
+**Vì sao:**
+Bạn yêu cầu "chỉnh sửa code dựa vào dữ liệu data để cào" — để sửa được thì
+trước tiên code cào phải có mặt ở nhánh `vu` (trước đó `vu` chỉ có *kết quả*
+`data/` do Quân cào, chưa có code tạo ra nó). Đã kiểm tra: script tự chạy được
+độc lập (không cần `ingest.py`), gói `requests` mà nó cần đã có sẵn trong
+`requirements.txt` gốc ở thư mục gốc repo (không phải bản rỗng trong
+`data_pipeline/`) nên không cần cài thêm gì.
+
+**Đã kiểm tra:**
+`python3 -m py_compile` cả 3 file — biên dịch sạch, không lỗi cú pháp.
+Chưa chạy thật (`collector.run_all()`) vì cần gọi ra API bên ngoài
+(Entrade, VietCap) — môi trường chạy lệnh này không có mạng ra ngoài để test
+cào thật; bạn cần tự chạy trên máy có mạng bằng:
+`cd data_pipeline/src/scrapers && python direct_vn_collector.py`
+
+**Ảnh hưởng tới code chỗ khác:**
+Không — chỉ thêm mới thư mục `data_pipeline/` (trước đó chưa tồn tại trên
+nhánh `vu`), không đụng tới `backend/`, `frontend/`, `data/` hay bất kỳ file
+nào khác. Chưa sửa nội dung logic bên trong các file này (đang giữ nguyên như
+bản gốc của Quân) — sẽ chờ bạn nói rõ cụ thể cần sửa/thêm gì trước khi đổi.
