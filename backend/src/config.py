@@ -6,11 +6,16 @@ same image works locally and inside Docker Compose without code changes.
 
 from functools import lru_cache
 
+from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(env_file=ENV_PATH, extra="ignore")
+
 
     # PostgreSQL / pgvector (ADR01)
     database_url: str = "postgresql://finmind:finmind@localhost:5432/finmind"

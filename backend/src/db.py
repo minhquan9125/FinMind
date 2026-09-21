@@ -9,7 +9,16 @@ _pool: asyncpg.Pool | None = None
 
 
 async def _init_connection(conn: asyncpg.Connection) -> None:
-    await register_vector(conn)
+    for schema in (None, "public", "extensions"):
+        try:
+            if schema:
+                await register_vector(conn, schema=schema)
+            else:
+                await register_vector(conn)
+            break
+        except Exception:
+            continue
+
 
 
 async def connect() -> asyncpg.Pool:
@@ -20,8 +29,10 @@ async def connect() -> asyncpg.Pool:
             dsn=settings.database_url,
             min_size=1,
             max_size=10,
+            statement_cache_size=0,
             init=_init_connection,
         )
+
     return _pool
 
 
