@@ -1,2 +1,5 @@
 neo4j>=6.3,<7
+neo4j-graphrag[openai]>=1.16,<2
 python-dotenv>=1.2,<2
+fastapi>=0.120,<1
+uvicorn>=0.38,<1
