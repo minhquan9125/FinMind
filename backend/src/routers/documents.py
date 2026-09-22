@@ -1,5 +1,6 @@
 """Document upload/processing and chunk/vocabulary inspection endpoints."""
 
+import asyncio
 import json
 from pathlib import Path
 
@@ -40,7 +41,8 @@ async def _ingest_pages(
     tf_list, df, _ttf = term_frequencies(chunk_texts)
 
     # Ranking now comes from BAAI/bge-m3 dense embeddings (ADR04), not TF-IDF.
-    embeddings = embedder.embed_texts(chunk_texts)
+    # Runs in a worker thread so this CPU-bound call doesn't block the event loop.
+    embeddings = await asyncio.to_thread(embedder.embed_texts, chunk_texts)
 
     pool = get_pool()
     document_id = await repository.create_document(pool, filename, len(pages))
@@ -82,7 +84,7 @@ async def upload_document(
         raise HTTPException(status_code=400, detail="Only PDF files are supported.")
 
     pdf_bytes = await file.read()
-    pages = extract_pages(pdf_bytes)
+    pages = await asyncio.to_thread(extract_pages, pdf_bytes)
     return await _ingest_pages(
         pages,
         file.filename or "document.pdf",

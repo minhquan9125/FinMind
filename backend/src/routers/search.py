@@ -3,6 +3,8 @@ scoped down to the Vector RAG baseline for this module: no graph branch,
 no fusion/reranking - that is introduced later, in the Hybrid Graph-Vector
 Retrieval module per Section 12.3)."""
 
+import asyncio
+
 from fastapi import APIRouter, Depends, HTTPException
 
 from .. import repository
@@ -31,7 +33,7 @@ async def search(
         raise HTTPException(status_code=400, detail="Query must not be empty.")
 
     top_k = payload.top_k or settings.default_top_k
-    query_embedding = embedder.embed_query(query)
+    query_embedding = await asyncio.to_thread(embedder.embed_query, query)
     rows = await repository.vector_search(pool, payload.document_id, query_embedding, top_k)
 
     matched_terms = tokenize(query)
