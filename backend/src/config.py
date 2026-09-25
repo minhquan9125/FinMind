@@ -35,6 +35,13 @@ class Settings(BaseSettings):
 
     frontend_origin: str = "http://localhost:5173"
 
+    # Folder holding data_pipeline's normalized financial JSON
+    # (data/normalized/{SYMBOL}.json), read by POST /api/documents/import-symbol/{symbol}.
+    # Default is relative to the backend's working directory (matches how the
+    # other defaults above assume a local `cd backend && uvicorn ...` run);
+    # docker-compose overrides this to the path where it mounts ../data.
+    financial_data_dir: str = "../data/normalized"
+
 
 @lru_cache
 def get_settings() -> Settings:
