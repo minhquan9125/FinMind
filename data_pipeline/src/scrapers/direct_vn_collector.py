@@ -22,8 +22,23 @@ if sys.platform == "win32":
     except Exception:
         pass
 
-# Danh sách 8 mã cổ phiếu mục tiêu
-TARGET_SYMBOLS = ["FPT", "VNM", "HPG", "VCB", "MWG", "VIC", "TCB", "SSI"]
+# 10 mã cổ phiếu mục tiêu chuẩn FinMind (5 Banking, 5 Technology)
+TARGET_SYMBOLS = ["VCB", "BID", "CTG", "MBB", "TCB", "FPT", "CMG", "ELC", "ITD", "ICT"]
+
+COMPANIES_INFO = {
+    # Banking (5 mã)
+    "VCB": {"name": "Ngân hàng TMCP Ngoại thương Việt Nam", "name_en": "Vietcombank", "exchange": "HOSE", "industry": "BANK", "industry_name": "Ngân hàng"},
+    "BID": {"name": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam", "name_en": "BIDV", "exchange": "HOSE", "industry": "BANK", "industry_name": "Ngân hàng"},
+    "CTG": {"name": "Ngân hàng TMCP Công Thương Việt Nam", "name_en": "VietinBank", "exchange": "HOSE", "industry": "BANK", "industry_name": "Ngân hàng"},
+    "MBB": {"name": "Ngân hàng TMCP Quân đội", "name_en": "Military Commercial Joint Stock Bank", "exchange": "HOSE", "industry": "BANK", "industry_name": "Ngân hàng"},
+    "TCB": {"name": "Ngân hàng TMCP Kỹ thương Việt Nam", "name_en": "Techcombank", "exchange": "HOSE", "industry": "BANK", "industry_name": "Ngân hàng"},
+    # Technology (5 mã)
+    "FPT": {"name": "Công ty Cổ phần FPT", "name_en": "FPT Corporation", "exchange": "HOSE", "industry": "TECH", "industry_name": "Công nghệ thông tin"},
+    "CMG": {"name": "Tập đoàn Công nghệ CMC", "name_en": "CMC Corporation", "exchange": "HOSE", "industry": "TECH", "industry_name": "Công nghệ thông tin"},
+    "ELC": {"name": "Công ty Cổ phần Công nghệ - Viễn thông Elcom", "name_en": "Elcom Technology Communications Corp", "exchange": "HOSE", "industry": "TECH", "industry_name": "Công nghệ thông tin"},
+    "ITD": {"name": "Công ty Cổ phần Công nghệ Tiên Phong", "name_en": "Innovative Technology Development Corp", "exchange": "HOSE", "industry": "TECH", "industry_name": "Công nghệ thông tin"},
+    "ICT": {"name": "Công ty Cổ phần Viễn thông - Tin học Bưu điện", "name_en": "Post and Telecommunications Insurance Corp", "exchange": "HOSE", "industry": "TECH", "industry_name": "Công nghệ thông tin"},
+}
 
 class VietnamStockDataCollector:
     """
@@ -189,11 +204,18 @@ class VietnamStockDataCollector:
         generated_at = now_utc.isoformat().replace("+00:00", "Z")
         dataset_version = now_utc.strftime("%Y%m%dT%H%M%SZ")
 
+        comp_info = COMPANIES_INFO.get(symbol, {})
+
         # Lưu RAW DATA (data/raw/{symbol}_raw.json)
         raw_payload = {
             "schema_version": "1.0",
             "dataset_version": dataset_version,
             "symbol": symbol,
+            "company_name": comp_info.get("name", symbol),
+            "company_name_en": comp_info.get("name_en", symbol),
+            "exchange": comp_info.get("exchange", "HOSE"),
+            "industry": comp_info.get("industry", "OTHER"),
+            "industry_name": comp_info.get("industry_name", "Khác"),
             "crawled_at": generated_at,
             "sources": {"prices": "ENTRADE", "fundamentals": "VIETCAP_VCI"},
             "raw_prices": raw_price,
@@ -211,6 +233,11 @@ class VietnamStockDataCollector:
             "schema_version": "1.0",
             "dataset_version": dataset_version,
             "symbol": symbol,
+            "company_name": comp_info.get("name", symbol),
+            "company_name_en": comp_info.get("name_en", symbol),
+            "exchange": comp_info.get("exchange", "HOSE"),
+            "industry": comp_info.get("industry", "OTHER"),
+            "industry_name": comp_info.get("industry_name", "Khác"),
             "generated_at": generated_at,
             "sources": {"prices": "ENTRADE", "fundamentals": "VIETCAP_VCI"},
             "quality": {

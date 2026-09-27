@@ -1,23 +1,4 @@
 services:
-  postgres:
-    image: pgvector/pgvector:pg16
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: finmind
-      POSTGRES_PASSWORD: finmind
-      POSTGRES_DB: finmind
-    ports:
-      - "5433:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./backend/scripts/init_postgres_schema.sql:/docker-entrypoint-initdb.d/01_init_postgres_schema.sql:ro
-      - ./backend/scripts/init_pgvector.sql:/docker-entrypoint-initdb.d/02_init_pgvector.sql:ro
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U finmind -d finmind"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-
   neo4j:
     image: neo4j:5-community
     restart: unless-stopped
@@ -32,7 +13,5 @@ services:
       - neo4j_logs:/logs
 
 volumes:
-  postgres_data:
   neo4j_data:
   neo4j_logs:
-

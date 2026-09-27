@@ -1,16 +1,21 @@
 {
   "schema_version": "1.0",
-  "dataset_version": "20260915T093414Z",
+  "dataset_version": "20260925T082520Z",
   "symbol": "TCB",
-  "generated_at": "2026-09-15T09:34:14.106833Z",
+  "company_name": "Ngân hàng TMCP Kỹ thương Việt Nam",
+  "company_name_en": "Techcombank",
+  "exchange": "HOSE",
+  "industry": "BANK",
+  "industry_name": "Ngân hàng",
+  "generated_at": "2026-09-25T08:25:20.768909Z",
   "sources": {
     "prices": "ENTRADE",
     "fundamentals": "VIETCAP_VCI"
   },
   "quality": {
     "status": "PASS_WITH_WARNINGS",
-    "raw_price_records": 2070,
-    "published_price_records": 2068,
+    "raw_price_records": 2078,
+    "published_price_records": 2076,
     "rejected_price_records": 2,
     "issues": [
       {
@@ -29,8 +34,8 @@
   },
   "meta": {
     "price_start_date": "2018-06-04",
-    "price_end_date": "2026-09-15",
-    "total_price_sessions": 2068,
+    "price_end_date": "2026-09-25",
+    "total_price_sessions": 2076,
     "total_ratio_periods": 40,
     "total_income_periods": 42,
     "total_balance_sheet_periods": 42,
@@ -18648,6 +18653,78 @@
       "close": 32.2,
       "volume": 9080700,
       "source_timestamp": 1789437600
+    },
+    {
+      "date": "2026-09-16",
+      "open": 32.4,
+      "high": 32.45,
+      "low": 31.9,
+      "close": 32.45,
+      "volume": 9514400,
+      "source_timestamp": 1789524000
+    },
+    {
+      "date": "2026-09-17",
+      "open": 32.2,
+      "high": 32.7,
+      "low": 32.2,
+      "close": 32.65,
+      "volume": 12488900,
+      "source_timestamp": 1789610400
+    },
+    {
+      "date": "2026-09-18",
+      "open": 32.8,
+      "high": 33,
+      "low": 31.6,
+      "close": 31.6,
+      "volume": 15676600,
+      "source_timestamp": 1789696800
+    },
+    {
+      "date": "2026-09-21",
+      "open": 32,
+      "high": 32.25,
+      "low": 31.6,
+      "close": 32.25,
+      "volume": 14620400,
+      "source_timestamp": 1789956000
+    },
+    {
+      "date": "2026-09-22",
+      "open": 32.2,
+      "high": 32.7,
+      "low": 32.05,
+      "close": 32.3,
+      "volume": 11125400,
+      "source_timestamp": 1790042400
+    },
+    {
+      "date": "2026-09-23",
+      "open": 32.25,
+      "high": 33.45,
+      "low": 32.2,
+      "close": 33.15,
+      "volume": 39007100,
+      "source_timestamp": 1790128800
+    },
+    {
+      "date": "2026-09-24",
+      "open": 32.75,
+      "high": 33.15,
+      "low": 32.75,
+      "close": 32.95,
+      "volume": 16336800,
+      "source_timestamp": 1790215200
+    },
+    {
+      "date": "2026-09-25",
+      "open": 32.9,
+      "high": 33.7,
+      "low": 32.85,
+      "close": 33.25,
+      "volume": 27899800,
+      "source_timestamp": 1790301600
     }
   ],
   "financial_data": {
@@ -18662,12 +18739,12 @@
         "organCode": "TCB",
         "yearReport": 2026,
         "numberOfSharesMktCap": 7086240414,
-        "marketCap": 225696757185900.0,
+        "marketCap": 233491621641300.0,
         "dividendYield": 0.0,
-        "pe": 8.3172241715,
-        "pb": 1.2597337652,
-        "ps": 3.9147476976,
-        "priceToCashFlow": 5.3363702925,
+        "pe": 8.6044752418,
+        "pb": 1.3032410538,
+        "ps": 4.0499509148,
+        "priceToCashFlow": 5.5206719353,
         "evToEbitda": 0.0,
         "cashRatio": 0.0,
         "quickRatio": 0.0,
@@ -18791,11 +18868,11 @@
         "yearReport": 2025,
         "numberOfSharesMktCap": 7086240414,
         "marketCap": 225696757185900.0,
-        "dividendYield": 0.021978022,
-        "pe": 8.9242666729,
-        "pb": 1.3272805144,
-        "ps": 4.227233585,
-        "priceToCashFlow": 5.6532140133,
+        "dividendYield": 0.0212443096,
+        "pe": 9.2324831043,
+        "pb": 1.3731206578,
+        "ps": 4.3732290934,
+        "priceToCashFlow": 5.8484584533,
         "evToEbitda": 0.0,
         "cashRatio": 0.0,
         "quickRatio": 0.0,

@@ -1,8 +1,13 @@
 {
   "schema_version": "1.0",
-  "dataset_version": "20260915T093404Z",
+  "dataset_version": "20260925T082500Z",
   "symbol": "VCB",
-  "crawled_at": "2026-09-15T09:34:04.652643Z",
+  "company_name": "Ngân hàng TMCP Ngoại thương Việt Nam",
+  "company_name_en": "Vietcombank",
+  "exchange": "HOSE",
+  "industry": "BANK",
+  "industry_name": "Ngân hàng",
+  "crawled_at": "2026-09-25T08:25:00.644431Z",
   "sources": {
     "prices": "ENTRADE",
     "fundamentals": "VIETCAP_VCI"
@@ -2177,7 +2182,15 @@
       1789005600,
       1789092000,
       1789351200,
-      1789437600
+      1789437600,
+      1789524000,
+      1789610400,
+      1789696800,
+      1789956000,
+      1790042400,
+      1790128800,
+      1790215200,
+      1790301600
     ],
     "o": [
       22.64,
@@ -4348,7 +4361,15 @@
       58.7,
       58.9,
       58.2,
-      58.6
+      58.6,
+      60.1,
+      59,
+      60,
+      60.2,
+      59.1,
+      58.9,
+      58.6,
+      58.2
     ],
     "h": [
       23.23,
@@ -6519,7 +6540,15 @@
       59.4,
       59,
       58.8,
-      60
+      60,
+      60.3,
+      60,
+      61,
+      60.2,
+      59.4,
+      59.2,
+      58.7,
+      58.5
     ],
     "l": [
       22.46,
@@ -8690,7 +8719,15 @@
       58.5,
       58.2,
       58,
-      58.6
+      58.6,
+      59.3,
+      58.8,
+      59.8,
+      58.8,
+      58.8,
+      58.5,
+      58.1,
+      57.7
     ],
     "c": [
       23.06,
@@ -10861,7 +10898,15 @@
       59,
       58.2,
       58.5,
-      60
+      60,
+      59.3,
+      59.6,
+      59.9,
+      58.9,
+      58.9,
+      58.5,
+      58.1,
+      58
     ],
     "v": [
       2801720,
@@ -13032,13 +13077,21 @@
       3066000,
       4365200,
       4818800,
-      9547200
+      9547200,
+      2880800,
+      5395900,
+      10362600,
+      5480900,
+      2571300,
+      4077100,
+      4188600,
+      4390100
     ],
     "nextTime": 0
   },
   "raw_ratios": {
-    "serverDateTime": "2026-09-15T09:34:02.098514362",
-    "traceId": "d3987a4e865dfba029b0d4335eaff70d",
+    "serverDateTime": "2026-09-25T08:25:00.362731125",
+    "traceId": "b101ca0058400de23e5817c22fd22a2d",
     "status": 200,
     "code": 0,
     "msg": "Successful",
@@ -15410,11 +15463,11 @@
         "yearReport": 2025,
         "numberOfSharesMktCap": 8355675094,
         "marketCap": 500504938130600.0,
-        "dividendYield": 0.0076923077,
-        "pe": 13.895379956,
-        "pb": 2.177438101,
-        "ps": 6.746388013,
-        "priceToCashFlow": 4.2054949335,
+        "dividendYield": 0.0077452668,
+        "pe": 13.800368811,
+        "pb": 2.1625496353,
+        "ps": 6.7002588642,
+        "priceToCashFlow": 4.1767394126,
         "evToEbitda": 0.0,
         "cashRatio": 0.0,
         "quickRatio": 0.0,
@@ -15533,12 +15586,12 @@
         "organCode": "VCB",
         "yearReport": 2026,
         "numberOfSharesMktCap": 8355675094,
-        "marketCap": 488806992999000.0,
+        "marketCap": 485464722961400.0,
         "dividendYield": 0.0,
-        "pe": 11.736515664,
-        "pb": 1.9677784868,
-        "ps": 5.7592707911,
-        "priceToCashFlow": 2.1969812801,
+        "pe": 11.6562659842,
+        "pb": 1.9543235912,
+        "ps": 5.7198911617,
+        "priceToCashFlow": 2.1819591859,
         "evToEbitda": 0.0,
         "cashRatio": 0.0,
         "quickRatio": 0.0,
@@ -15590,8 +15643,8 @@
     ]
   },
   "raw_income_statement": {
-    "serverDateTime": "2026-09-15T09:34:02.585441317",
-    "traceId": "62e206049b29862a8c01d32b2c058325",
+    "serverDateTime": "2026-09-25T08:25:00.525273471",
+    "traceId": "42ee54aa35bf53f6530e2f3c3bf57d25",
     "status": 200,
     "code": 0,
     "msg": "Successful",
@@ -23585,8 +23638,8 @@
     }
   },
   "raw_balance_sheet": {
-    "serverDateTime": "2026-09-15T09:34:03.139698630",
-    "traceId": "f79fef286e70900ad2f8200db46ecb43",
+    "serverDateTime": "2026-09-25T08:25:00.697207584",
+    "traceId": "4d09ecaa0ee09d4299dcfdeadaf5f8c9",
     "status": 200,
     "code": 0,
     "msg": "Successful",
@@ -37880,8 +37933,8 @@
     }
   },
   "raw_cash_flow": {
-    "serverDateTime": "2026-09-15T09:34:04.153299103",
-    "traceId": "aba9ff407a4b9766f7158eb29ea87bd4",
+    "serverDateTime": "2026-09-25T08:25:00.885252548",
+    "traceId": "0f9ffd7776b9e8d2478bd95517060555",
     "status": 200,
     "code": 0,
     "msg": "Successful",

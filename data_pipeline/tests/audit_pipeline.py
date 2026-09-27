@@ -38,7 +38,8 @@ if sys.platform == "win32":
     except Exception:
         pass
 
-DEFAULT_SYMBOLS = ["FPT", "VNM", "HPG", "VCB", "MWG", "VIC", "TCB", "SSI"]
+# 10 mã chuẩn FinMind (5 Banking, 5 Technology)
+DEFAULT_SYMBOLS = ["VCB", "BID", "CTG", "MBB", "TCB", "FPT", "CMG", "ELC", "ITD", "ICT"]
 STANDARD_META_KEYS = {"period_label", "period_type", "year", "quarter"}
 
 def is_nan_or_inf(val):

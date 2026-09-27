@@ -1,7 +1,7 @@
-"""Database access for the Vector RAG module (documents + document_chunks).
+"""Database access for the Vector RAG module.
 
-Schema is created by backend/scripts/init_postgres_schema.sql and the vector
-index by backend/scripts/init_pgvector.sql (ADR01).
+RAG data uses dedicated ``rag_documents`` and ``rag_document_chunks`` tables
+so it does not collide with the financial ``documents``/``text_chunks`` schema.
 """
 
 import uuid
@@ -13,7 +13,7 @@ async def create_document(pool: asyncpg.Pool, filename: str, page_count: int) ->
     document_id = str(uuid.uuid4())
     await pool.execute(
         """
-        INSERT INTO documents (id, filename, page_count)
+        INSERT INTO rag_documents (id, filename, page_count)
         VALUES ($1, $2, $3)
         """,
         document_id,
@@ -32,7 +32,7 @@ async def insert_chunks(
     token_count, unique_count, embedding (list[float])."""
     await pool.executemany(
         """
-        INSERT INTO document_chunks
+        INSERT INTO rag_document_chunks
             (id, document_id, chunk_index, page, text, word_count, token_count, unique_count, embedding)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
         """,
@@ -54,14 +54,14 @@ async def insert_chunks(
 
 
 async def get_document(pool: asyncpg.Pool, document_id: str) -> asyncpg.Record | None:
-    return await pool.fetchrow("SELECT * FROM documents WHERE id = $1", document_id)
+    return await pool.fetchrow("SELECT * FROM rag_documents WHERE id = $1", document_id)
 
 
 async def get_chunks(pool: asyncpg.Pool, document_id: str) -> list[asyncpg.Record]:
     return await pool.fetch(
         """
         SELECT chunk_index, page, text, word_count, token_count, unique_count
-        FROM document_chunks
+        FROM rag_document_chunks
         WHERE document_id = $1
         ORDER BY chunk_index
         """,
@@ -80,10 +80,10 @@ async def vector_search(
     better, matching the "similarity" convention already used by the UI."""
     return await pool.fetch(
         """
-        SELECT chunk_index, page, text, 1 - (embedding <=> $2) AS score
-        FROM document_chunks
+        SELECT chunk_index, page, text, 1 - (embedding <=> $2::vector) AS score
+        FROM rag_document_chunks
         WHERE document_id = $1
-        ORDER BY embedding <=> $2
+        ORDER BY embedding <=> $2::vector
         LIMIT $3
         """,
         document_id,

@@ -52,8 +52,8 @@ def build_chunks(pages: list[Page], chunk_words: int, chunk_stride: int) -> list
         start = 0
         while start < len(words):
             window = words[start : start + chunk_words]
-            # Drop a tail slice that is too short to be useful; it is already
-            # covered by the previous overlapping window.
+  # Drop a tail slice that is too short to be useful; it is already
+            # covered by the previous overlapping window.          
             if len(window) < 25 and start != 0:
                 break
             out.append(RawChunk(page=page.page, text=" ".join(window)))

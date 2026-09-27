@@ -9,7 +9,8 @@ _pool: asyncpg.Pool | None = None
 
 
 async def _init_connection(conn: asyncpg.Connection) -> None:
-    for schema in (None, "public", "extensions"):
+    # The project's Supabase pgvector extension is installed in public.
+    for schema in ("public", None, "extensions"):
         try:
             if schema:
                 await register_vector(conn, schema=schema)
@@ -25,13 +26,16 @@ async def connect() -> asyncpg.Pool:
     global _pool
     if _pool is None:
         settings = get_settings()
-        _pool = await asyncpg.create_pool(
-            dsn=settings.database_url,
-            min_size=1,
-            max_size=10,
-            statement_cache_size=0,
-            init=_init_connection,
-        )
+        kwargs = {
+            "dsn": settings.database_url,
+            "min_size": 1,
+            "max_size": 10,
+            "statement_cache_size": 0,
+            "init": _init_connection,
+        }
+        if "supabase" in settings.database_url:
+            kwargs["ssl"] = "require"
+        _pool = await asyncpg.create_pool(**kwargs)
 
     return _pool
 

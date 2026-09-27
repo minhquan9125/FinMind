@@ -1,71 +1,48 @@
-"""Convert JSON payloads into Page objects for the Vector RAG pipeline.
+"""Convert JSON payloads into Page objects and semantic text for the Vector RAG pipeline.
 
-Two shapes are handled:
-- The normalized financial JSON produced by data_pipeline/src/scrapers/
-  direct_vn_collector.py (data/normalized/{SYMBOL}.json): one page per
-  price-month summary or per reporting period.
-- Arbitrary JSON uploads (POST /api/documents/json): a best-effort, schema-
-  agnostic flattening so any record-shaped JSON can still be chunked.
-
-Output feeds straight into chunking.build_chunks(), so the same 130-word/
-100-stride windowing and embedding pipeline used for PDFs applies here too -
-no separate ranking or storage path is needed.
-
-Income statement / balance sheet / cash flow rows use the data provider's
-internal field codes (isaNN, bsaNN, cfaNN, ...) with no human-readable legend
-available in this repo, so those three sections are serialized as raw
-"code: value" pairs. Semantic search quality for them will be weaker than for
-prices/ratios (which do have readable field names) until a code->label
-dictionary is added.
+Integrates with `financial_mapping.py` to map raw keys (bsa, bsb, isa, isb, cfa, ratios)
+into canonical uppercase observation codes (e.g., TOTAL_ASSETS, PROFIT_BEFORE_TAX, PE, ROE).
 """
 
 from __future__ import annotations
 
 import json
+import sys
+from pathlib import Path
+from typing import Final
+
+# Ensure UTF-8 output on Windows consoles when this module is imported
+if sys.platform == "win32":
+    try:
+        if sys.stdout and hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 from .chunking import Page
 
-RATIO_LABELS: dict[str, str] = {
-    "marketCap": "Vốn hóa thị trường",
-    "dividendYield": "Tỷ suất cổ tức",
-    "pe": "P/E",
-    "pb": "P/B",
-    "ps": "P/S",
-    "priceToCashFlow": "Giá trên dòng tiền",
-    "evToEbitda": "EV/EBITDA",
-    "cashRatio": "Tỷ số tiền mặt",
-    "quickRatio": "Tỷ số thanh toán nhanh",
-    "currentRatio": "Tỷ số thanh toán hiện hành",
-    "ownersEquity": "Vốn chủ sở hữu",
-    "debtPerEquity": "Nợ trên vốn chủ sở hữu (lần)",
-    "debtToEquity": "Nợ trên vốn chủ sở hữu",
-    "roe": "ROE",
-    "roa": "ROA",
-    "grossMargin": "Biên lợi nhuận gộp",
-    "ebitMargin": "Biên EBIT",
-    "preTaxProfitMargin": "Biên lợi nhuận trước thuế",
-    "afterTaxProfitMargin": "Biên lợi nhuận sau thuế",
-    "assetTurnover": "Vòng quay tài sản",
-    "roic": "ROIC",
-    "ebit": "EBIT",
-    "ebitda": "EBITDA",
-    "financialLeverage": "Đòn bẩy tài chính",
-    "equity": "Vốn chủ sở hữu",
-    "npl": "Tỷ lệ nợ xấu",
-    "car": "Hệ số an toàn vốn (CAR)",
+# Safe import for financial_mapping regardless of invocation path
+try:
+    from ..financial_mapping import META_KEYS, get_code
+except (ImportError, ValueError):
+    try:
+        from financial_mapping import META_KEYS, get_code
+    except ImportError:
+        import sys
+        backend_dir = Path(__file__).resolve().parent.parent
+        if str(backend_dir) not in sys.path:
+            sys.path.insert(0, str(backend_dir))
+        from financial_mapping import META_KEYS, get_code
+
+# Mapping of section keys to standard Vietnamese headers
+SECTION_MAP: Final[dict[str, str]] = {
+    "ratios": "Chỉ số tài chính",
+    "income_statement": "Báo cáo Kết quả hoạt động kinh doanh",
+    "balance_sheet": "Bảng Cân đối kế toán",
+    "cash_flow_statement": "Báo cáo Lưu chuyển tiền tệ",
 }
 
-_RATIO_META_KEYS = {
-    "period_label", "period_type", "year", "quarter", "ratioTTMId", "ratioType",
-    "organCode", "yearReport", "ratioYearId",
-}
-
-FINANCIAL_META_KEYS = {
-    "period_label", "period_type", "year", "quarter", "organCode", "ticker",
-    "createDate", "updateDate", "yearReport", "lengthReport", "publicDate",
-}
-
-SECTION_PAGE = {
+SECTION_PAGE: Final[dict[str, int]] = {
     "prices": 0,
     "ratios": 1,
     "income_statement": 2,
@@ -73,21 +50,133 @@ SECTION_PAGE = {
     "cash_flow_statement": 4,
 }
 
-SECTION_LABELS_VI = {
-    "income_statement": "Báo cáo kết quả kinh doanh",
-    "balance_sheet": "Bảng cân đối kế toán",
-    "cash_flow_statement": "Báo cáo lưu chuyển tiền tệ",
-}
 
+def parse_period_label(label: str | None) -> str:
+    """Parse period_label into a readable Vietnamese format.
+
+    Examples:
+        '2026-Q2' -> 'Quý 2/2026'
+        '2025-YEAR' -> 'Năm 2025'
+        '2025' -> 'Năm 2025'
+    """
+    if not label:
+        return ""
+    label_str = str(label).strip()
+    if "-Q" in label_str:
+        parts = label_str.split("-Q")
+        if len(parts) == 2:
+            return f"Quý {parts[1]}/{parts[0]}"
+    if "-YEAR" in label_str:
+        year = label_str.replace("-YEAR", "")
+        return f"Năm {year}"
+    if label_str.isdigit() and len(label_str) == 4:
+        return f"Năm {label_str}"
+    return label_str
+
+
+def json_to_text(json_path: str | Path) -> str:
+    """Read a normalized financial JSON file and convert it into semantic Vietnamese text.
+
+    Args:
+        json_path: Path to normalized JSON file (e.g. data/normalized/BID.json).
+
+    Returns:
+        Consolidated semantic text block for all financial sections.
+    """
+    path = Path(json_path)
+    if not path.is_file():
+        raise FileNotFoundError(f"JSON file not found: {json_path}")
+
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    symbol = data.get("symbol") or path.stem.upper()
+    financial_data = data.get("financial_data") or {}
+
+    section_blocks: list[str] = []
+
+    for section_key, section_vi in SECTION_MAP.items():
+        rows = financial_data.get(section_key)
+        if not rows or not isinstance(rows, list):
+            continue
+
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+
+            raw_period = row.get("period_label", "")
+            period = parse_period_label(raw_period)
+            header = f"{symbol} - {section_vi} - {period}" if period else f"{symbol} - {section_vi}"
+
+            lines = [header]
+            for key, value in row.items():
+                if key in META_KEYS:
+                    continue
+                # Skip non-numeric or boolean values
+                if not isinstance(value, (int, float)) or isinstance(value, bool):
+                    continue
+                # Skip zero or null values
+                if value == 0 or value is None:
+                    continue
+
+                code = get_code(key, section_key)
+
+                # Format: monetary values in VND (>= 1,000,000) are converted to triệu VND
+                if section_key == "ratios" and abs(value) < 1000:
+                    val_str = f"{value:,.2f}" if abs(value) >= 0.01 else f"{value:.4g}"
+                    lines.append(f"- {code}: {val_str}")
+                else:
+                    val_in_millions = value / 1_000_000 if abs(value) >= 1_000_000 else value
+                    lines.append(f"- {code}: {val_in_millions:,.0f} triệu VND")
+
+            if len(lines) > 1:
+                section_blocks.append("\n".join(lines))
+
+    return "\n\n".join(section_blocks)
+
+
+def chunk_text(text: str, chunk_size: int = 500, overlap: int = 50) -> list[str]:
+    """Split long text into overlapping chunks.
+
+    Args:
+        text: The source text to split.
+        chunk_size: Maximum character length per chunk (default 500).
+        overlap: Character overlap between consecutive chunks (default 50).
+
+    Returns:
+        List of text chunks.
+    """
+    if not text:
+        return []
+
+    if chunk_size <= overlap:
+        raise ValueError("chunk_size must be strictly greater than overlap")
+
+    chunks: list[str] = []
+    start = 0
+    text_len = len(text)
+    step = chunk_size - overlap
+
+    while start < text_len:
+        end = min(start + chunk_size, text_len)
+        chunk = text[start:end].strip()
+        if chunk:
+            chunks.append(chunk)
+        if end >= text_len:
+            break
+        start += step
+
+    return chunks
+
+
+# ==============================================================================
+# Helper functions for FastAPI Document Ingestion (Preserved for compatibility)
+# ==============================================================================
 
 def _fmt(value) -> str:
     if value is None:
         return "N/A"
     if isinstance(value, float):
-        # Plain comma-grouped integer for large amounts (VND figures easily
-        # exceed 1e12) instead of e.g. "6.093e+13", which is unreadable and
-        # won't match a user's literal-number search query; small ratios
-        # (pe, roe, ...) keep up to 4 significant decimal digits.
         if abs(value) >= 1000:
             return f"{value:,.0f}"
         return f"{value:.4g}"
@@ -99,7 +188,7 @@ def _price_month_pages(symbol: str, price_history: list[dict]) -> list[Page]:
         return []
     months: dict[str, list[dict]] = {}
     for bar in price_history:
-        key = (bar.get("date") or "")[:7]  # YYYY-MM
+        key = (bar.get("date") or "")[:7]
         months.setdefault(key, []).append(bar)
 
     lines = []
@@ -122,27 +211,30 @@ def _price_month_pages(symbol: str, price_history: list[dict]) -> list[Page]:
 def _ratio_pages(symbol: str, rows: list[dict]) -> list[Page]:
     pages = []
     for row in rows:
-        label = row.get("period_label", "?")
+        label = parse_period_label(row.get("period_label", "?"))
         parts = [f"Chỉ số tài chính {symbol} kỳ {label}:"]
         for key, value in row.items():
-            if key in _RATIO_META_KEYS or value is None:
+            if key in META_KEYS or value is None:
                 continue
-            parts.append(f"{RATIO_LABELS.get(key, key)} {_fmt(value)};")
+            code = get_code(key, "ratios")
+            display_code = {"PE": "P/E", "PB": "P/B", "PS": "P/S"}.get(code, code)
+            parts.append(f"{display_code} {_fmt(value)};")
         pages.append(Page(page=SECTION_PAGE["ratios"], text=" ".join(parts)))
     return pages
 
 
 def _statement_pages(symbol: str, section: str, rows: list[dict]) -> list[Page]:
-    label_vi = SECTION_LABELS_VI[section]
+    label_vi = SECTION_MAP.get(section, section)
     pages = []
     for row in rows:
-        label = row.get("period_label", "?")
+        label = parse_period_label(row.get("period_label", "?"))
         parts = [f"{label_vi} {symbol} kỳ {label}:"]
         for key, value in row.items():
-            if key in FINANCIAL_META_KEYS or value is None:
+            if key in META_KEYS or value is None:
                 continue
-            parts.append(f"{key}: {_fmt(value)} |")
-        pages.append(Page(page=SECTION_PAGE[section], text=" ".join(parts)))
+            code = get_code(key, section)
+            parts.append(f"{code}: {_fmt(value)} |")
+        pages.append(Page(page=SECTION_PAGE.get(section, 0), text=" ".join(parts)))
     return pages
 
 
@@ -152,8 +244,7 @@ def is_normalized_financial_payload(data) -> bool:
 
 
 def financial_json_to_pages(symbol: str, payload: dict) -> list[Page]:
-    """One page per price-month summary or per reporting period, so
-    build_chunks() can window/split them exactly like PDF pages."""
+    """One page per price-month summary or per reporting period."""
     financial_data = payload.get("financial_data", {}) or {}
     pages: list[Page] = []
     pages += _price_month_pages(symbol, payload.get("price_history") or [])
@@ -170,10 +261,7 @@ def _record_text(prefix: str, record: dict) -> str:
 
 
 def generic_json_to_pages(data) -> list[Page]:
-    """Best-effort chunking for a JSON upload that is not the FinMind
-    normalized financial schema: one page per record in the first list-of-
-    objects found (top-level list, or a top-level field holding one), or a
-    single page for the whole payload as a last resort."""
+    """Best-effort chunking for a generic JSON upload."""
     if isinstance(data, list) and data and all(isinstance(item, dict) for item in data):
         return [Page(page=index, text=_record_text("", item)) for index, item in enumerate(data)]
 
