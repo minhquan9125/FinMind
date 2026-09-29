@@ -1,0 +1,121 @@
+// Financial source data and structured facts.
+Table companies {
+  symbol varchar [pk, not null]
+  company_name varchar
+  sector varchar
+  exchange varchar
+}
+
+Table reporting_periods {
+  period_id varchar [pk, not null]
+  year int [not null]
+  quarter int
+  period_type varchar [not null]
+}
+
+Table metrics {
+  metric_id varchar [pk, not null]
+  code varchar [not null]
+  section varchar [not null]
+  source varchar [not null]
+  unit_status varchar [default: 'UNKNOWN']
+}
+
+Table datasets {
+  dataset_id varchar [pk, not null]
+  symbol varchar [not null]
+  dataset_version varchar [not null]
+  schema_version varchar [not null, default: '1.0']
+  graph_version varchar [default: '1.0']
+  generated_at timestamp [not null]
+  source_file text
+  checksum varchar
+  payload_json text
+  quality_json text
+  sources_json text
+  meta_json text
+  status varchar
+}
+
+Table price_bars {
+  price_id varchar [pk, not null]
+  symbol varchar [not null]
+  date date [not null]
+  open double [not null]
+  high double [not null]
+  low double [not null]
+  close double [not null]
+  volume bigint
+  source_timestamp bigint
+  source varchar [not null]
+  source_file text
+  json_pointer varchar
+  payload_json text
+}
+
+Table financial_reports {
+  report_id varchar [pk, not null]
+  symbol varchar [not null]
+  period_id varchar [not null]
+  section varchar [not null]
+  basis varchar [default: 'UNSPECIFIED']
+  source varchar [not null]
+  source_file text
+  json_pointer varchar
+  payload_json text
+}
+
+Table observations {
+  observation_id varchar [pk, not null]
+  report_id varchar [not null]
+  metric_id varchar [not null]
+  code varchar [not null]
+  value double
+  value_json text
+  value_type varchar
+  is_null boolean [default: false]
+  json_pointer varchar
+}
+
+Table dataset_reports {
+  dataset_id varchar [not null]
+  report_id varchar [not null]
+  Indexes {
+    (dataset_id, report_id) [pk]
+  }
+}
+
+Table dataset_prices {
+  dataset_id varchar [not null]
+  price_id varchar [not null]
+  Indexes {
+    (dataset_id, price_id) [pk]
+  }
+}
+
+Table documents {
+  document_id uuid [pk, not null]
+  symbol varchar
+  period_id varchar
+  title varchar [not null]
+  file_type varchar [not null, default: 'pdf']
+  report_type varchar
+  page_count int [default: 1]
+  file_size bigint
+  source_url varchar
+  sha256_hash varchar
+  created_at timestamp [default: `now()`]
+}
+
+Ref: datasets.symbol > companies.symbol
+Ref: price_bars.symbol > companies.symbol
+Ref: financial_reports.symbol > companies.symbol
+Ref: financial_reports.period_id > reporting_periods.period_id
+Ref: observations.report_id > financial_reports.report_id
+Ref: observations.metric_id > metrics.metric_id
+Ref: dataset_reports.dataset_id > datasets.dataset_id
+Ref: dataset_reports.report_id > financial_reports.report_id
+Ref: dataset_prices.dataset_id > datasets.dataset_id
+Ref: dataset_prices.price_id > price_bars.price_id
+Ref: documents.symbol > companies.symbol
+Ref: documents.period_id > reporting_periods.period_id

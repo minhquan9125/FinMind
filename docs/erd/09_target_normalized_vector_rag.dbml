@@ -1,0 +1,175 @@
+// PROPOSED target model, not the current Supabase schema.
+// One source-document table -> one text-chunk table -> model-versioned embeddings.
+
+Table companies {
+  symbol varchar [pk, not null]
+  company_name varchar
+}
+
+Table reporting_periods {
+  period_id varchar [pk, not null]
+  year int [not null]
+  quarter int
+  period_type varchar [not null]
+}
+
+Table documents {
+  document_id uuid [pk, not null]
+  symbol varchar
+  period_id varchar
+  title varchar [not null]
+  file_type varchar [not null, default: 'pdf']
+  report_type varchar
+  page_count int [default: 1]
+  file_size bigint
+  source_url varchar
+  sha256_hash varchar
+  created_at timestamp [default: `now()`]
+}
+
+Table text_chunks {
+  chunk_id uuid [pk, not null]
+  document_id uuid [not null]
+  chunk_index int [not null]
+  page_number int
+  section_label varchar
+  chunk_text text [not null]
+  word_count int
+  token_count int
+  unique_count int
+  created_at timestamp [default: `now()`]
+  Indexes {
+    (document_id, chunk_index) [unique]
+  }
+}
+
+Table embeddings {
+  embedding_id uuid [pk, not null, default: `gen_random_uuid()`]
+  chunk_id uuid [not null]
+  model_name varchar [not null, default: 'BAAI/bge-m3']
+  model_version varchar [default: '1.0']
+  vector_dim int [not null, default: 1024]
+  embedding vector(1024) [not null]
+  created_at timestamp [default: `now()`]
+  Indexes {
+    (chunk_id, model_name, model_version) [unique]
+  }
+}
+
+Table metrics {
+  metric_id varchar [pk, not null]
+  code varchar [not null]
+  section varchar [not null]
+  source varchar [not null]
+  unit_status varchar [default: 'UNKNOWN']
+}
+
+Table financial_reports {
+  report_id varchar [pk, not null]
+  symbol varchar [not null]
+  period_id varchar [not null]
+  section varchar [not null]
+  basis varchar [default: 'UNSPECIFIED']
+  source varchar [not null]
+  source_file text
+  json_pointer varchar
+  payload_json text
+}
+
+Table observations {
+  observation_id varchar [pk, not null]
+  report_id varchar [not null]
+  metric_id varchar [not null]
+  value double
+  value_json text
+  value_type varchar
+  is_null boolean [default: false]
+  json_pointer varchar
+}
+
+Table queries {
+  query_id uuid [pk, not null]
+  query_text text [not null]
+  symbol varchar
+  filter_metadata jsonb
+  language varchar [default: 'vi']
+  execution_time_ms int
+  trace_id varchar
+  user_id uuid
+  created_at timestamp [default: `now()`]
+}
+
+Table vector_retrieval_results {
+  result_id uuid [pk, not null]
+  query_id uuid [not null]
+  chunk_id uuid [not null]
+  similarity_score double [not null]
+  rank_order int [not null]
+  retrieved_at timestamp [default: `now()`]
+}
+
+Table evidence_packages {
+  package_id uuid [pk, not null]
+  query_id uuid [not null]
+  gate_status varchar [not null]
+  gate_reason_code varchar
+  freshness_score double
+  relevance_score double
+  contradiction_flag boolean [default: false]
+  mandatory_branch_missing boolean [default: false]
+  selected_evidence_json jsonb
+  branch_scores_json jsonb
+  created_at timestamp [default: `now()`]
+}
+
+Table answer_citations {
+  citation_id uuid [pk, not null]
+  query_id uuid [not null]
+  claim_text text [not null]
+  evidence_type varchar [not null]
+  evidence_id varchar [not null]
+  document_id uuid
+  chunk_id uuid
+  observation_id varchar
+  page_number int
+  section_label varchar
+  source_url varchar
+  publication_date date
+  created_at timestamp [default: `now()`]
+}
+
+Table answer_verifications {
+  verification_id uuid [pk, not null]
+  query_id uuid [not null]
+  status varchar [not null]
+  values_check boolean
+  units_check boolean
+  periods_check boolean
+  scope_check boolean
+  calculations_check boolean
+  citation_coverage_check boolean
+  findings_json jsonb
+  created_at timestamp [default: `now()`]
+}
+
+Ref: documents.symbol > companies.symbol
+Ref: documents.period_id > reporting_periods.period_id
+Ref: text_chunks.document_id > documents.document_id
+Ref: embeddings.chunk_id > text_chunks.chunk_id
+Ref: financial_reports.symbol > companies.symbol
+Ref: financial_reports.period_id > reporting_periods.period_id
+Ref: observations.report_id > financial_reports.report_id
+Ref: observations.metric_id > metrics.metric_id
+Ref: queries.symbol > companies.symbol
+Ref: vector_retrieval_results.query_id > queries.query_id
+Ref: vector_retrieval_results.chunk_id > text_chunks.chunk_id
+Ref: evidence_packages.query_id > queries.query_id
+Ref: answer_citations.query_id > queries.query_id
+Ref: answer_citations.document_id > documents.document_id
+Ref: answer_citations.chunk_id > text_chunks.chunk_id
+Ref: answer_citations.observation_id > observations.observation_id
+Ref: answer_verifications.query_id > queries.query_id
+
+// Intentional consolidation: no rag_documents or rag_document_chunks tables.
+// Before adopting this design, migrate API ingestion/search to documents/text_chunks/embeddings,
+// update pgvector index configuration, and verify/migrate existing rows and FK callers.

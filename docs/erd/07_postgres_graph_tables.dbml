@@ -1,0 +1,47 @@
+// Graph-shaped data currently declared in PostgreSQL. This is NOT Neo4j.
+Table documents {
+  document_id uuid [pk, not null]
+  title varchar [not null]
+}
+
+Table users {
+  user_id uuid [pk, not null]
+  email varchar [not null]
+}
+
+Table corpus_versions {
+  corpus_version varchar [pk, not null]
+  description text
+  frozen_at timestamp [not null]
+  frozen_by uuid
+  manifest_json jsonb [not null]
+}
+
+Table graph_nodes {
+  node_id uuid [pk, not null]
+  node_type varchar [not null]
+  node_key varchar [not null]
+  properties_json jsonb
+  corpus_version varchar
+  created_at timestamp [default: `now()`]
+}
+
+Table graph_edges {
+  edge_id uuid [pk, not null]
+  source_node_id uuid [not null]
+  target_node_id uuid [not null]
+  relation_type varchar [not null]
+  provenance_document_id uuid
+  provenance_json jsonb
+  corpus_version varchar
+  created_at timestamp [default: `now()`]
+}
+
+Ref: graph_edges.source_node_id > graph_nodes.node_id
+Ref: graph_edges.target_node_id > graph_nodes.node_id
+Ref: graph_edges.provenance_document_id > documents.document_id
+
+// The supplied PostgreSQL schema has no foreign keys from graph_nodes.corpus_version
+// or graph_edges.corpus_version to corpus_versions.
+// It also has no uniqueness constraint for node_type + node_key + corpus_version.
+// This diagram only describes PostgreSQL; it does not show a Neo4j database/integration.

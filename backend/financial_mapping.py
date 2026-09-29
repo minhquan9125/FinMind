@@ -1,9 +1,9 @@
 """Financial Data Metric Mapping Table for FinMind.
 
 Maps raw crawler/Vietcap keys (bsa, bsb, isa, isb, cfa, ratios) into standardized,
-canonical financial observation codes (e.g., TOTAL_ASSETS, NET_INTEREST_INCOME)
-specifically verified against BIDV's official financial statements (BID_BCTC_6T2026_soatxet.pdf
-and BID_BCTC_Q2_2026.pdf).
+canonical financial observation codes (e.g., TOTAL_ASSETS, NET_INTEREST_INCOME).
+The BANK profile is verified against BIDV statements; the TECH profile is verified
+against FPT's consolidated 6-month 2026 interim statement.
 
 Quality Bar: Level A (Core Financial Metrics)
 - 100% verified accuracy for mapped codes.
@@ -34,6 +34,7 @@ META_KEYS: Final[set[str]] = {
     "lengthReport",
     "publicDate",
     "ratioTTMId",
+    "ratioYearId",
     "ratioType",
 }
 
@@ -107,10 +108,13 @@ INCOME_STATEMENT_MAPPING: Final[dict[str, str]] = {
     # --- Chỉ tiêu bắt buộc chung (CONFIDENCE: HIGH - BCTC Q2/2026 trang 7) ---
     "isa16": "PROFIT_BEFORE_TAX",     # 10.332.973 triệu VND (Tổng lợi nhuận trước thuế)
     "isa17": "TAX_EXPENSE_CURRENT",   # -2.038.057 triệu VND (Chi phí thuế TNDN hiện hành)
+    "isa18": "DEFERRED_INCOME_TAX_EXPENSE", # Chi phí thuế TNDN hoãn lại
     "isa19": "TAX_EXPENSE_TOTAL",     # -2.038.057 triệu VND (Tổng chi phí thuế TNDN)
     "isa20": "PROFIT_AFTER_TAX",      # 8.294.916 triệu VND (Lợi nhuận sau thuế)
     "isa21": "MINORITY_INTEREST",     # -148.660 triệu VND (Lợi ích của cổ đông không kiểm soát)
     "isa22": "PARENT_NET_PROFIT",     # 8.146.256 triệu VND (Lợi nhuận thuần thuộc về Ngân hàng mẹ)
+    "isa23": "BASIC_EARNINGS_PER_SHARE", # Lãi cơ bản trên cổ phiếu
+    "isa24": "DILUTED_EARNINGS_PER_SHARE", # Lãi suy giảm trên cổ phiếu
 
     # --- Chỉ tiêu đặc thù Ngân hàng (CONFIDENCE: HIGH - BCTC Q2/2026 trang 7) ---
     "isb25": "INTEREST_INCOME",                    # 49.659.834 triệu VND (Thu nhập lãi và các khoản tương tự)
@@ -226,11 +230,279 @@ SECTION_MAPS: Final[dict[str, dict[str, str]]] = {
     "ratios": RATIOS_MAPPING,
 }
 
+# Vietcap reuses the same opaque keys across company sectors, but some statement
+# rows are sector-specific. These verified mappings are applied only when the
+# normalized payload identifies its industry as TECH. The BID mappings above
+# remain the BANK/default profile.
+TECH_SECTION_MAPPINGS: Final[dict[str, dict[str, str]]] = {
+    "balance_sheet": {
+        "bsa1": "CURRENT_ASSETS",
+        "bsa2": "CASH_AND_CASH_EQUIVALENTS",
+        "bsa3": "CASH",
+        "bsa4": "CASH_EQUIVALENTS",
+        "bsa5": "SHORT_TERM_FINANCIAL_INVESTMENTS_NET",
+        "bsa8": "SHORT_TERM_RECEIVABLES",
+        "bsa9": "SHORT_TERM_TRADE_RECEIVABLES",
+        "bsa10": "SHORT_TERM_ADVANCES_TO_SUPPLIERS",
+        "bsa12": "CONSTRUCTION_CONTRACT_RECEIVABLES",
+        "bsa13": "OTHER_SHORT_TERM_RECEIVABLES",
+        "bsa14": "ALLOWANCE_DOUBTFUL_SHORT_TERM_RECEIVABLES",
+        "bsa15": "INVENTORIES_NET",
+        "bsa16": "INVENTORIES_GROSS",
+        "bsa17": "INVENTORY_ALLOWANCE",
+        "bsa18": "OTHER_CURRENT_ASSETS",
+        "bsa19": "SHORT_TERM_PREPAID_EXPENSES",
+        "bsa20": "VAT_DEDUCTIBLE",
+        "bsa21": "TAXES_RECEIVABLE_FROM_STATE",
+        "bsa23": "NON_CURRENT_ASSETS",
+        "bsa24": "LONG_TERM_RECEIVABLES",
+        "bsa27": "OTHER_LONG_TERM_RECEIVABLES",
+        "bsa28": "ALLOWANCE_DOUBTFUL_LONG_TERM_RECEIVABLES",
+        "bsa29": "FIXED_ASSETS",
+        "bsa30": "TANGIBLE_FIXED_ASSETS",
+        "bsa31": "TANGIBLE_FA_GROSS",
+        "bsa32": "TANGIBLE_FA_DEPRECIATION",
+        "bsa33": "FINANCE_LEASE_ASSETS_NET",
+        "bsa34": "FINANCE_LEASE_ASSETS_GROSS",
+        "bsa35": "FINANCE_LEASE_ACCUMULATED_DEPRECIATION",
+        "bsa36": "INTANGIBLE_FIXED_ASSETS",
+        "bsa37": "INTANGIBLE_FA_GROSS",
+        "bsa38": "INTANGIBLE_FA_DEPRECIATION",
+        "bsa43": "LONG_TERM_INVESTMENTS",
+        "bsa45": "INVESTMENTS_IN_SUBSIDIARIES_ASSOCIATES_JV",
+        "bsa46": "OTHER_LONG_TERM_INVESTMENTS",
+        "bsa47": "PROVISION_LONG_TERM_INVESTMENTS",
+        "bsa49": "OTHER_NON_CURRENT_ASSETS",
+        "bsa50": "LONG_TERM_PREPAID_EXPENSES",
+        "bsa51": "DEFERRED_TAX_ASSETS",
+        "bsa52": "GOODWILL",
+        "bsa55": "CURRENT_LIABILITIES",
+        "bsa56": "SHORT_TERM_LOANS_AND_FINANCE_LEASES",
+        "bsa57": "SHORT_TERM_TRADE_PAYABLES",
+        "bsa58": "SHORT_TERM_ADVANCES_FROM_CUSTOMERS",
+        "bsa59": "TAXES_AND_PAYABLES_TO_STATE",
+        "bsa60": "PAYABLES_TO_EMPLOYEES",
+        "bsa61": "SHORT_TERM_ACCRUED_EXPENSES",
+        "bsa63": "CONSTRUCTION_CONTRACT_PAYABLES",
+        "bsa64": "OTHER_SHORT_TERM_PAYABLES",
+        "bsa65": "SHORT_TERM_PROVISIONS",
+        "bsa66": "BONUS_AND_WELFARE_FUND",
+        "bsa67": "NON_CURRENT_LIABILITIES",
+        "bsa70": "OTHER_LONG_TERM_PAYABLES",
+        "bsa71": "LONG_TERM_LOANS_AND_FINANCE_LEASES",
+        "bsa72": "DEFERRED_TAX_LIABILITIES",
+        "bsa74": "LONG_TERM_PROVISIONS",
+        "bsa76": "LONG_TERM_UNEARNED_REVENUE",
+        "bsa77": "SCIENCE_AND_TECHNOLOGY_DEVELOPMENT_FUND",
+        "bsa86": "INVESTMENT_AND_DEVELOPMENT_FUND",
+        "bsa89": "OTHER_EQUITY_FUNDS",
+        "bsa108": "SHORT_TERM_HELD_TO_MATURITY_INVESTMENTS_GROSS",
+        "bsa163": "CONSTRUCTION_IN_PROGRESS",
+        "bsa165": "LONG_TERM_HELD_TO_MATURITY_INVESTMENTS",
+        "bsa167": "SHORT_TERM_UNEARNED_REVENUE",
+        "bsa178": "CURRENT_PERIOD_RETAINED_EARNINGS",
+        "bsa53": "TOTAL_ASSETS",
+        "bsa54": "TOTAL_LIABILITIES",
+        "bsa78": "OWNERS_EQUITY",
+        "bsa80": "CHARTER_CAPITAL",
+        "bsa81": "SHARE_PREMIUM",
+        "bsa82": "OTHER_CAPITAL",
+        "bsa85": "FX_DIFFERENCE",
+        "bsa90": "RETAINED_EARNINGS",
+        "bsa96": "TOTAL_LIABILITIES_EQUITY",
+        "bsa210": "MINORITY_INTEREST_EQUITY",
+        "bss136": "DIVIDENDS_PAYABLE",
+    },
+    "income_statement": {
+        "isa1": "GROSS_REVENUE",
+        "isa2": "REVENUE_DEDUCTIONS",
+        "isa3": "NET_REVENUE",
+        "isa4": "COST_OF_GOODS_SOLD",
+        "isa5": "GROSS_PROFIT",
+        "isa6": "FINANCIAL_INCOME",
+        "isa7": "FINANCIAL_EXPENSES",
+        "isa8": "INTEREST_EXPENSE",
+        "isa9": "SELLING_EXPENSES",
+        "isa10": "GENERAL_AND_ADMINISTRATIVE_EXPENSES",
+        "isa11": "OPERATING_PROFIT",
+        "isa12": "OTHER_INCOME",
+        "isa13": "OTHER_EXPENSES",
+        "isa14": "OTHER_PROFIT",
+        "isa16": "PROFIT_BEFORE_TAX",
+        "isa17": "TAX_EXPENSE_CURRENT",
+        "isa18": "DEFERRED_INCOME_TAX_EXPENSE",
+        "isa19": "TAX_EXPENSE_TOTAL",
+        "isa20": "PROFIT_AFTER_TAX",
+        "isa21": "MINORITY_INTEREST",
+        "isa22": "PARENT_NET_PROFIT",
+        "isa23": "BASIC_EARNINGS_PER_SHARE",
+        "isa24": "DILUTED_EARNINGS_PER_SHARE",
+    },
+    "cash_flow_statement": {
+        "cfa1": "PROFIT_BEFORE_TAX",
+        "cfa2": "DEPRECIATION_AND_AMORTIZATION",
+        "cfa3": "PROVISIONS_AND_ALLOWANCES",
+        "cfa4": "UNREALIZED_FX_GAIN_LOSS",
+        "cfa6": "INVESTMENT_GAIN_LOSS_ADJUSTMENT",
+        "cfa7": "INTEREST_EXPENSE_ADJUSTMENT",
+        "cfa9": "OPERATING_PROFIT_BEFORE_WC",
+        "cfa10": "CHANGE_IN_RECEIVABLES",
+        "cfa11": "CHANGE_IN_INVENTORIES",
+        "cfa12": "CHANGE_IN_PAYABLES",
+        "cfa13": "CHANGE_IN_PREPAID_EXPENSES",
+        "cfa14": "INTEREST_PAID",
+        "cfa15": "INCOME_TAX_PAID",
+        "cfa17": "OTHER_OPERATING_CASH_FLOWS",
+        "cfa18": "CASH_FLOW_OPERATING",
+        "cfa19": "PURCHASE_FIXED_ASSETS",
+        "cfa20": "PROCEEDS_DISPOSAL_FA",
+        "cfa21": "CASH_PAID_FOR_LOANS_AND_DEBT_SECURITIES",
+        "cfa22": "PROCEEDS_FROM_LOANS_AND_DEBT_SECURITIES",
+        "cfa23": "CASH_INVESTED_IN_SUBSIDIARIES_ASSOCIATES_JV",
+        "cfa24": "PROCEEDS_FROM_DIVESTMENTS",
+        "cfa25": "DIVIDENDS_RECEIVED",
+        "cfa26": "CASH_FLOW_INVESTING",
+        "cfa29": "PROCEEDS_FROM_BORROWINGS",
+        "cfa30": "REPAYMENTS_OF_BORROWINGS",
+        "cfa31": "FINANCE_LEASE_PRINCIPAL_PAID",
+        "cfa32": "DIVIDENDS_PAID",
+        "cfa34": "CASH_FLOW_FINANCING",
+        "cfa35": "NET_CASH_FLOW",
+        "cfa36": "CASH_EQUIVALENTS_BEGIN",
+        "cfa37": "FX_EFFECT_ON_CASH",
+        "cfa38": "CASH_EQUIVALENTS_END",
+    },
+    "ratios": {
+        "numberOfSharesMktCap": "NUMBER_OF_SHARES_MKT_CAP",
+        "marketCap": "MARKET_CAP",
+        "dividendYield": "DIVIDEND_YIELD",
+        "pe": "PE",
+        "pb": "PB",
+        "ps": "PS",
+        "priceToCashFlow": "PRICE_TO_CASH_FLOW",
+        "evToEbitda": "EV_TO_EBITDA",
+        "cashRatio": "CASH_RATIO",
+        "quickRatio": "QUICK_RATIO",
+        "currentRatio": "CURRENT_RATIO",
+        "ownersEquity": "OWNERS_EQUITY_RATIO",
+        "debtPerEquity": "DEBT_PER_EQUITY",
+        "debtToEquity": "DEBT_TO_EQUITY",
+        "financialLeverage": "FINANCIAL_LEVERAGE",
+        "roe": "ROE",
+        "roa": "ROA",
+        "roic": "ROIC",
+        "grossMargin": "GROSS_MARGIN",
+        "ebitMargin": "EBIT_MARGIN",
+        "preTaxProfitMargin": "PRE_TAX_MARGIN",
+        "afterTaxProfitMargin": "AFTER_TAX_MARGIN",
+        "ebit": "EBIT",
+        "ebitda": "EBITDA",
+        "daySaleOutstanding": "DAYS_SALES_OUTSTANDING",
+        "daysInventoryOutstanding": "DAYS_INVENTORY_OUTSTANDING",
+        "daysPayableOutstanding": "DAYS_PAYABLE_OUTSTANDING",
+        "assetTurnover": "ASSET_TURNOVER",
+        "fixedAssetTurnover": "FIXED_ASSET_TURNOVER",
+        "cashCycle": "CASH_CYCLE",
+    },
+}
 
-def get_code(field_name: str, section: str) -> str:
+INDUSTRY_SECTION_MAPS: Final[dict[str, dict[str, dict[str, str]]]] = {
+    "TECH": TECH_SECTION_MAPPINGS,
+}
+
+# Vietnamese display labels use the terminology guide in docs/ as their naming
+# authority. These labels enrich semantic text; canonical codes remain the IDs.
+METRIC_LABELS_VI: Final[dict[str, str]] = {
+    "CURRENT_ASSETS": "Tài sản ngắn hạn",
+    "CASH_AND_GOLD": "Tiền mặt, vàng bạc, đá quý",
+    "CASH_AND_CASH_EQUIVALENTS": "Tiền và các khoản tương đương tiền",
+    "CASH": "Tiền mặt",
+    "CASH_EQUIVALENTS": "Các khoản tương đương tiền",
+    "SHORT_TERM_FINANCIAL_INVESTMENTS_NET": "Đầu tư tài chính ngắn hạn, giá trị thuần",
+    "SHORT_TERM_RECEIVABLES": "Phải thu ngắn hạn",
+    "SHORT_TERM_TRADE_RECEIVABLES": "Phải thu khách hàng ngắn hạn",
+    "SHORT_TERM_ADVANCES_TO_SUPPLIERS": "Trả trước cho người bán ngắn hạn",
+    "CONSTRUCTION_CONTRACT_RECEIVABLES": "Phải thu theo hợp đồng xây dựng",
+    "OTHER_SHORT_TERM_RECEIVABLES": "Phải thu ngắn hạn khác",
+    "ALLOWANCE_DOUBTFUL_SHORT_TERM_RECEIVABLES": "Dự phòng phải thu ngắn hạn khó đòi",
+    "INVENTORIES_NET": "Hàng tồn kho, giá trị thuần",
+    "INVENTORIES_GROSS": "Hàng tồn kho, giá trị gộp",
+    "INVENTORY_ALLOWANCE": "Dự phòng giảm giá hàng tồn kho",
+    "OTHER_CURRENT_ASSETS": "Tài sản ngắn hạn khác",
+    "SHORT_TERM_PREPAID_EXPENSES": "Chi phí trả trước ngắn hạn",
+    "NON_CURRENT_ASSETS": "Tài sản dài hạn",
+    "LONG_TERM_RECEIVABLES": "Phải thu dài hạn",
+    "FIXED_ASSETS": "Tài sản cố định",
+    "TANGIBLE_FIXED_ASSETS": "Tài sản cố định hữu hình",
+    "INTANGIBLE_FIXED_ASSETS": "Tài sản cố định vô hình",
+    "CONSTRUCTION_IN_PROGRESS": "Xây dựng cơ bản dở dang",
+    "GOODWILL": "Lợi thế thương mại",
+    "TOTAL_ASSETS": "Tổng tài sản",
+    "TOTAL_LIABILITIES": "Nợ phải trả",
+    "CURRENT_LIABILITIES": "Nợ ngắn hạn",
+    "NON_CURRENT_LIABILITIES": "Nợ dài hạn",
+    "OWNERS_EQUITY": "Vốn chủ sở hữu",
+    "CHARTER_CAPITAL": "Vốn điều lệ",
+    "SHARE_PREMIUM": "Thặng dư vốn cổ phần",
+    "RETAINED_EARNINGS": "Lợi nhuận sau thuế chưa phân phối",
+    "CURRENT_PERIOD_RETAINED_EARNINGS": "Lợi nhuận sau thuế chưa phân phối kỳ này",
+    "MINORITY_INTEREST_EQUITY": "Lợi ích cổ đông không kiểm soát",
+    "TOTAL_LIABILITIES_EQUITY": "Tổng nợ phải trả và vốn chủ sở hữu",
+    "GROSS_REVENUE": "Doanh thu bán hàng và cung cấp dịch vụ",
+    "REVENUE_DEDUCTIONS": "Các khoản giảm trừ doanh thu",
+    "NET_REVENUE": "Doanh thu thuần",
+    "COST_OF_GOODS_SOLD": "Giá vốn hàng bán",
+    "GROSS_PROFIT": "Lợi nhuận gộp",
+    "FINANCIAL_INCOME": "Doanh thu hoạt động tài chính",
+    "FINANCIAL_EXPENSES": "Chi phí tài chính",
+    "INTEREST_EXPENSE": "Chi phí lãi",
+    "SELLING_EXPENSES": "Chi phí bán hàng",
+    "GENERAL_AND_ADMINISTRATIVE_EXPENSES": "Chi phí quản lý doanh nghiệp",
+    "OPERATING_PROFIT": "Lợi nhuận thuần từ hoạt động kinh doanh",
+    "OTHER_INCOME": "Thu nhập khác",
+    "OTHER_EXPENSES": "Chi phí khác",
+    "OTHER_PROFIT": "Lợi nhuận khác",
+    "PROFIT_BEFORE_TAX": "Lợi nhuận trước thuế",
+    "TAX_EXPENSE_CURRENT": "Chi phí thuế thu nhập doanh nghiệp hiện hành",
+    "DEFERRED_INCOME_TAX_EXPENSE": "Chi phí thuế thu nhập doanh nghiệp hoãn lại",
+    "TAX_EXPENSE_TOTAL": "Tổng chi phí thuế thu nhập doanh nghiệp",
+    "PROFIT_AFTER_TAX": "Lợi nhuận sau thuế",
+    "MINORITY_INTEREST": "Lợi nhuận thuộc cổ đông không kiểm soát",
+    "PARENT_NET_PROFIT": "Lợi nhuận sau thuế thuộc cổ đông công ty mẹ",
+    "BASIC_EARNINGS_PER_SHARE": "Lãi cơ bản trên cổ phiếu",
+    "DILUTED_EARNINGS_PER_SHARE": "Lãi suy giảm trên cổ phiếu",
+    "CASH_FLOW_OPERATING": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+    "CASH_FLOW_INVESTING": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+    "CASH_FLOW_FINANCING": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+    "NET_CASH_FLOW": "Lưu chuyển tiền thuần trong kỳ",
+    "CASH_EQUIVALENTS_BEGIN": "Tiền và tương đương tiền đầu kỳ",
+    "CASH_EQUIVALENTS_END": "Tiền và tương đương tiền cuối kỳ",
+    "ROE": "Tỷ suất lợi nhuận trên vốn chủ sở hữu",
+    "ROA": "Tỷ suất lợi nhuận trên tài sản",
+    "GROSS_MARGIN": "Tỷ suất lợi nhuận gộp",
+    "PE": "Hệ số giá trên thu nhập",
+    "PB": "Hệ số giá trên giá trị sổ sách",
+    "MARKET_CAP": "Giá trị vốn hóa thị trường",
+    "NET_INTEREST_INCOME": "Thu nhập lãi thuần",
+    "NIM": "Biên lãi thuần",
+    "CUSTOMER_LOANS_NET": "Cho vay khách hàng, giá trị thuần",
+    "CUSTOMER_DEPOSITS": "Tiền gửi của khách hàng",
+    "CREDIT_LOSS_PROVISION": "Chi phí dự phòng rủi ro tín dụng",
+    "COST_TO_INCOME": "Tỷ lệ chi phí trên thu nhập",
+    "NPL_RATIO": "Tỷ lệ nợ xấu",
+}
+
+
+def get_label_vi(code: str) -> str:
+    """Return a Vietnamese display label, falling back to the canonical code."""
+    return METRIC_LABELS_VI.get(code, code)
+
+
+def get_code(field_name: str, section: str, industry: str | None = None) -> str:
     """Return the standardized observation code for a given field name and section.
 
-    - If the field is in the section's mapping table, returns the mapped uppercase code.
+    - Sector-specific verified mappings take precedence when industry is supplied.
+    - Otherwise, the default/BANK mapping is used for backward compatibility.
     - If unmapped, retains original field_name converted to UPPERCASE (e.g. isa45 -> ISA45).
     - If field is in META_KEYS, returns field_name unchanged.
     """
@@ -238,6 +510,12 @@ def get_code(field_name: str, section: str) -> str:
         return field_name
 
     norm_sec = section.strip().lower()
+    norm_industry = (industry or "").strip().upper()
+    if norm_industry in INDUSTRY_SECTION_MAPS:
+        industry_mapping = INDUSTRY_SECTION_MAPS[norm_industry].get(norm_sec, {})
+        # Do not fall through to BANK-specific mappings for a TECH payload.
+        return industry_mapping.get(field_name, field_name.upper())
+
     mapping = SECTION_MAPS.get(norm_sec)
     if mapping and field_name in mapping:
         return mapping[field_name]

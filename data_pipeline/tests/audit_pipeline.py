@@ -36,7 +36,7 @@ if sys.platform == "win32":
     try:
         sys.stdout.reconfigure(encoding='utf-8')
     except Exception:
-        pass
+        pass    
 
 # 10 mã chuẩn FinMind (5 Banking, 5 Technology)
 DEFAULT_SYMBOLS = ["VCB", "BID", "CTG", "MBB", "TCB", "FPT", "CMG", "ELC", "ITD", "ICT"]

@@ -1,0 +1,490 @@
+{
+  "schema_version": "1.0",
+  "source": "CAFEF",
+  "source_pdf": {
+    "relative_path": "data/pdfs/cafef/MBB/MBB_financial_2024_Q1_6625c3f1d780248658c496c9_B_o_c_o_t_i_ch_nh_c_ng_ty_m_qu_1_n_m_2024.pdf",
+    "sha256": "098813ff10a046d2e514e84e8b115b5bc749c5944354cae41b9d5dd3f77d3b19",
+    "document_id": "6625c3f1d780248658c496c9",
+    "title": "Báo cáo tài chính công ty mẹ quý 1 năm 2024",
+    "period_label": "Q1/2024",
+    "source_page_url": "https://cafef.vn/du-lieu/hose/mbb-tai-lieu.chn",
+    "source_file_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0002223320158102767ngn-hng-tmcp-qun-i19042024-163730bo-co-ti-chnh-qu-1-nm-2024.pdf"
+  },
+  "extracted_at": "2026-09-28T08:56:13.429340Z",
+  "extraction": {
+    "method": "pypdf text layer",
+    "ocr_performed": false,
+    "ocr_language": null,
+    "ocr_note": "Pages with no usable text are listed in summary.pages_needing_ocr."
+  },
+  "summary": {
+    "symbol": "MBB",
+    "filename": "MBB_financial_2024_Q1_6625c3f1d780248658c496c9_B_o_c_o_t_i_ch_nh_c_ng_ty_m_qu_1_n_m_2024.pdf",
+    "page_count": 58,
+    "pages_with_text": 4,
+    "pages_needing_ocr": [
+      1,
+      2,
+      3,
+      4,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57
+    ]
+  },
+  "pages": [
+    {
+      "page": 1,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 2,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 3,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 4,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 5,
+      "text": "BAO cAo TiNH HiNH TAI CHINH RIENG (ti�p theo) T�i ngay 31 thang 03 nam 2024 cAc CHi TIEU NGOAI BAO CAO TiNH HiNH TAI CHiNH RIENG Thuylt minh 31/03/2024 tri�u dong NGHIA VU NQ' Tl�M AN V.1 Bao lanh vay v6n 149.313 Cam ket giao djch h6i doai 513.031.632 -Cam Mt mua ngo9i t� 719.451 -Cam k�t ban ngo9i t� 685.009 - Cam k�t mua giao dich hoan c16i ngo9i t� 255.895.690 -Cam k�t ban giao dich hoan <16i ngo9i t� 255. 731. 482 Cam ket trong nghi�p v1,1 L/C 24.854.818 Bao 1anh khac 120.187.161 iCam ket khac 84.146.139 Ngll'oi l�p: Ngll'oi ki�m soat: Ba L� Thi Huy�n Trang Giam d6c trung tam ke toan Ha N()i, Vit\\!t Nam Ngay 20 thang 04 nam 2024 Ba o�ng Thuy Dung Ke toan trU'ang Ba Nguy�n Thi Thanh Nga Giam d6c Tai chlnh 31/12/2023 cfa ki�m to�n tri�u <Jang 154.358 394.715.794 1.945.064 1.423.038 195. 798. 455 195.549.237 23.214.316 121.725.719 81.915.911 Ong Ph�m NhU' Anh T0ng Giam d6c IAl G� A\\ ·IA] ,Dt",
+      "char_count": 905,
+      "needs_ocr": false,
+      "extraction_method": "pypdf_text_layer"
+    },
+    {
+      "page": 6,
+      "text": "Ngan hang ThLPO'ng mfi Co phan Quan d9i £>ja chi: SO 18 Le Van LllO'ng -Trung Hoa -Cau Giay -Ha N9i BAO cAo KET QUA HO�TE>QNG RIENG Quy 1/2024 Thuy�t minh Thu nh,;ip lai va cac khoan thu nh,;ip t1Yong tl.l' Chi phi lai va cac khoan chi phi tll'ang ti)' Thu nh�p lai thuan IV.1 Thu nh,;ip ttr hoc;1t dc;,ng dich Vl.J Chi phf hoc;1t dc;,ng dich vv Lai thuan tu, hOillt d{,ng djch VIJ IV.2 Lai thuilln tLP ho�t d{,ng nQO\\li hOi IV.3 Lai thuiln tll' ch(fng khoan kinh doanh JV.4 Lai thu.in tU' ch(fng khoan d!u tll va g6p v6n, dau t11 dai hilln IV.4 Lai thuan tLP ho�t d{,ng kinh doanh khac IV.5 Thu nhJp t(p g6p vl,n, mua c6 phln IV.6 TONG THU NH�P HO�T eQNG TONG CHI PHi HO�T eQNG IV.7 LQ'i nhu�n thuin tCP hoillt d{,ng kinh doanh tr1J16'c chi phi di! phong rui ro Chi phi di! phong rui ro IV.9 TONG LQ'I NHU�N TRlfO'C THUi: Chi phi thu� TNDN hi�n hanh Chi phi thu, TNDN IV.11 LQ'I NHU�N SAU THU� Ngll'6'i kilim soat: Ba Le Thi Huyen Trang Giam d6c trung tam ke toan Ha Nc;,i, Vi$t Nam Ngay 20 thang 04 nam 2024 Ba E>�ng Thuy Dung Ke toan truang So ohat sinh auv I Nam nay Nam tr1.J'6,c • tri�u <Jong 14.383.764 (7.007.829) 7.375.935 1.176.887 (520.922) 655.965 462.812 928.636 173.107 278.782 1.103 9.876.340 (2.635.891) 7.240.449 (1,982.089) 5.258.360 (1.061.073) (1,061.073) 4.197.287 Ba Nguy�n Th] Thanh Nga Giam d6c Tai chinh tri�u <Jong 15.548.767 (7. 012.277) 8.536.490 849.706 (510.430) 339.276 373.307 5.812 116.519 475.832 3.077 9.850.313 (2,787.292) 7.063.021 (1,235.247) 5.827.774 (1.165.142) (1.165.142) 4.662.632 B03a/TCTD Liiv ke dau nam den cuoi quv Nam nay tri�u <Jong 14.383.764 (7.007.829) 7.375.935 1.176.887 (520.922) 655.965 462.812 928.636 173.107 278.782 1.103 9.876.340 (2.635.891) 7.240.449 (1,982.089) 5.258.360 (1.061.073) (1,061.073) 4.197.287 6ng Phi;im NhlY Anh T6ng Giam d6c Nam trLF6'c tri�u <Jong 15.548.767 (7.012.277) 8.536.490 849.706 (510.430) 339.276 373.307 5.812 116.519 475.832 3.077 9.850.313 (2. 787 .292) 7.063.021 (1,235.247) 5.827.774 (1.165.142) (1.165.142) 4.662.632",
+      "char_count": 2013,
+      "needs_ocr": false,
+      "extraction_method": "pypdf_text_layer"
+    },
+    {
+      "page": 7,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 8,
+      "text": "Ngan hang ThU'O'ng m�i C6 phin Quan d9i Oja chi: S6 18 Le Van LLPO'ng -Trung Hoa -C.\\u Giay - Ha N{>I BAO CAO LU'U CHUYEN Tl�N Te RIENG (tit§p theo) T�i ngay 31 thang 03 nam 2024 Thuyet minh LU'U CHUY�N Tl�N TU' HO�T DQNG TAI CH[NH Tang v6n co ph�n tu g6p v6n va/ho�c phat hanh co phi�u Tictin thu tu phat hanh gi�y tO' co gia dai h�n du di�u kiE;ln trnh vao v6n tl,I' c6 va cac khoan v6n vay dai hi;m khac Co tlic tra cho c6 dOng Ti�n thu/(chi) tu ban/(mua) c6 phi�u quy Lu,u chuy6n ti6n thuin tu ho,t d{>ng tal chinh Lu,u chuy�n ti�n thu.in trong ky Tian va cac khoan tu,O'ng dU'O'ng tiin t�i thai di6m diu ky Ti�n va cac khoan tU'<>'MQ dU'O'ng tiin tfi thai di6m cu6i ky IV.12B04a/TCTD Gia/ do{'n tll' Glai do�n tll' 01/01/2024 01/01/2023 den 31/03/2024 den 31/03/2023 tri�u cJ6ng tri�u <16ng - - 1.050.000 - - - - - 1.050.000 - (27 .121.525) (21.110.680) 112. 701.049 72.155.922 85.579.524 51.045.242 NguCYi ki�m soat: �ffia��-e duyE;lt: Ba Le Thi Huylm Trang Giam d6c trung tam kl! toan Ha N◊i, Vi�t Nam Ngay 20 thang 04 nam 2024 Ba O�ng Thuy Dung Kl! toan tmong Ba Nguy n Thi Thanh Nga Giam d6c Tai chlnh Q' .m NhuAnh Tong Giam d6c",
+      "char_count": 1137,
+      "needs_ocr": false,
+      "extraction_method": "pypdf_text_layer"
+    },
+    {
+      "page": 9,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 10,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 11,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 12,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 13,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 14,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 15,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 16,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 17,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 18,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 19,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 20,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 21,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 22,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 23,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 24,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 25,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 26,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 27,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 28,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 29,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 30,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 31,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 32,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 33,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 34,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 35,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 36,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 37,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 38,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 39,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 40,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 41,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 42,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 43,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 44,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 45,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 46,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 47,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 48,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 49,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 50,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 51,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 52,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 53,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 54,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 55,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 56,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 57,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 58,
+      "text": "6. Ty gia m<}t s6 ngo\\li t� t\\li th6'i diim l�p bao cao: 31/03/2024 a6ng_ USD 24.795,00 EUR 26.525,00 GBP 31.363,00 JPY 164,51 CHF 27.566,00 AUD 16.205,50 CAD 18.389,50 SGD 18.470,00 KHR 5,73 THB 687,79 SEK 2.333,25 NgLYO'i l�p: Ngll'ai kiim soat: Ba Le Thi Huy�n Trang Ba E>�ng Thuy Dung Giam d6c Trung t�m K� toan tmcmg K� toan Ha NOi, ViGt Nam Ngay 20 thang 04 nam 2024 31/12/2023 a6ng_ 24.250,00 27.079,00 30.901,0 0 172,16 28.942,00 16.559,00 18.385,00 18.454,00 5,87 712,98 2.455,18 NgLYO'i phe duy�t: 9m Nhll' Anh TOng Giam d6c 50",
+      "char_count": 537,
+      "needs_ocr": false,
+      "extraction_method": "pypdf_text_layer"
+    }
+  ]
+}

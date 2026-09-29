@@ -1,0 +1,45 @@
+// Source-document metadata and the older financial text_chunks/embeddings path.
+Table companies {
+  symbol varchar [pk]
+  company_name varchar
+}
+Table reporting_periods {
+  period_id varchar [pk]
+  year int
+  quarter int
+  period_type varchar
+}
+Table documents {
+  document_id uuid [pk]
+  symbol varchar
+  period_id varchar
+  title varchar
+  file_type varchar
+  report_type varchar
+  sha256_hash varchar
+}
+Table text_chunks {
+  chunk_id uuid [pk]
+  document_id uuid
+  symbol varchar
+  period_id varchar
+  chunk_index int
+  page_number int
+  section_label varchar
+}
+Table embeddings {
+  embedding_id uuid [pk]
+  chunk_id uuid
+  model_name varchar
+  model_version varchar
+  vector_dim int
+  embedding vector
+}
+Ref: documents.symbol > companies.symbol
+Ref: documents.period_id > reporting_periods.period_id
+Ref: text_chunks.document_id > documents.document_id
+Ref: text_chunks.symbol > companies.symbol
+Ref: text_chunks.period_id > reporting_periods.period_id
+Ref: embeddings.chunk_id > text_chunks.chunk_id
+
+// This path is written by backend/ingest_to_vector.py; active API search uses the separate rag_* tables.

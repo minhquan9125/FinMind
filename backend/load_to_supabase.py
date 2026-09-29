@@ -83,7 +83,7 @@ def collect_metrics_from_file(data):
                     continue
                 if not isinstance(value, (int, float)) or isinstance(value, bool):
                     continue
-                code = get_code(key, section)
+                code = get_code(key, section, data.get("industry"))
                 metric_id = f"{section}_{code}"
                 metric_defs.add((metric_id, code, section))
     return metric_defs
@@ -239,7 +239,7 @@ async def load_financial_data(conn, data):
                 if not isinstance(value, (int, float)) or isinstance(value, bool):
                     continue
 
-                code = get_code(key, section)
+                code = get_code(key, section, data.get("industry"))
                 metric_id = f"{section}_{code}"
                 obs_id = f"{report_id}_{code}"
 

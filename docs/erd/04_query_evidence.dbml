@@ -1,0 +1,78 @@
+// Query, retrieval, evidence selection, citations, and answer verification.
+Table companies {
+  symbol varchar [pk]
+  company_name varchar
+}
+Table users {
+  user_id uuid [pk]
+  email varchar
+}
+Table documents {
+  document_id uuid [pk]
+  title varchar
+}
+Table text_chunks {
+  chunk_id uuid [pk]
+  document_id uuid
+  chunk_index int
+  page_number int
+}
+Table rag_document_chunks {
+  id uuid [pk]
+  document_id uuid
+  chunk_index int
+  page int
+}
+Table observations {
+  observation_id varchar [pk]
+  report_id varchar
+  metric_id varchar
+  code varchar
+}
+Table queries {
+  query_id uuid [pk]
+  query_text text
+  symbol varchar
+  user_id uuid
+}
+Table vector_retrieval_results {
+  result_id uuid [pk]
+  query_id uuid
+  chunk_id uuid
+  similarity_score double
+  rank_order int
+}
+Table evidence_packages {
+  package_id uuid [pk]
+  query_id uuid
+  gate_status varchar
+  selected_evidence_json jsonb
+}
+Table answer_citations {
+  citation_id uuid [pk]
+  query_id uuid
+  document_id uuid
+  chunk_id uuid
+  observation_id varchar
+  evidence_type varchar
+  evidence_id varchar
+}
+Table answer_verifications {
+  verification_id uuid [pk]
+  query_id uuid
+  status varchar
+  findings_json jsonb
+}
+Ref: queries.symbol > companies.symbol
+Ref: queries.user_id > users.user_id
+Ref: vector_retrieval_results.query_id > queries.query_id
+Ref: vector_retrieval_results.chunk_id > text_chunks.chunk_id
+Ref: evidence_packages.query_id > queries.query_id
+Ref: answer_citations.query_id > queries.query_id
+Ref: answer_citations.document_id > documents.document_id
+Ref: answer_citations.chunk_id > text_chunks.chunk_id
+Ref: answer_citations.observation_id > observations.observation_id
+Ref: answer_verifications.query_id > queries.query_id
+
+// Potential mismatch: active search reads rag_document_chunks, while current retrieval/citation FKs target text_chunks.
+// rag_document_chunks is included to show both chunk stores; no FK links it to the result/citation tables yet.

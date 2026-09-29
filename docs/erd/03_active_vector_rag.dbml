@@ -1,0 +1,45 @@
+// Active FastAPI document-ingestion and vector-search storage path.
+Table companies {
+  symbol varchar [pk]
+  company_name varchar
+}
+Table datasets {
+  dataset_id varchar [pk]
+  symbol varchar
+  dataset_version varchar
+}
+Table documents {
+  document_id uuid [pk]
+  symbol varchar
+  period_id varchar
+  title varchar
+  file_type varchar
+  report_type varchar
+  source_url varchar
+  sha256_hash varchar
+}
+Table rag_documents {
+  id uuid [pk]
+  filename text
+  page_count int
+  symbol varchar
+  dataset_id varchar
+  source_document_id uuid
+}
+Table rag_document_chunks {
+  id uuid [pk]
+  document_id uuid
+  chunk_index int
+  page int
+  text text
+  word_count int
+  token_count int
+  unique_count int
+  embedding vector
+}
+Ref: rag_documents.symbol > companies.symbol
+Ref: rag_documents.dataset_id > datasets.dataset_id
+Ref: rag_documents.source_document_id > documents.document_id
+Ref: rag_document_chunks.document_id > rag_documents.id
+
+// In the current repository API, rag_documents only receives filename/page_count; optional source links are not populated yet.

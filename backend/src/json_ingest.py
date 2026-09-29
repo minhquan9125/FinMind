@@ -23,16 +23,16 @@ from .chunking import Page
 
 # Safe import for financial_mapping regardless of invocation path
 try:
-    from ..financial_mapping import META_KEYS, get_code
+    from ..financial_mapping import META_KEYS, get_code, get_label_vi
 except (ImportError, ValueError):
     try:
-        from financial_mapping import META_KEYS, get_code
+        from financial_mapping import META_KEYS, get_code, get_label_vi
     except ImportError:
         import sys
         backend_dir = Path(__file__).resolve().parent.parent
         if str(backend_dir) not in sys.path:
             sys.path.insert(0, str(backend_dir))
-        from financial_mapping import META_KEYS, get_code
+        from financial_mapping import META_KEYS, get_code, get_label_vi
 
 # Mapping of section keys to standard Vietnamese headers
 SECTION_MAP: Final[dict[str, str]] = {
@@ -74,6 +74,36 @@ def parse_period_label(label: str | None) -> str:
     return label_str
 
 
+def _period_context(label: str | None, section: str) -> str:
+    """Describe whether a provider statement value is a flow or a point-in-time fact.
+
+    The Vietcap normalized feed stores quarterly income/cash-flow values
+    as standalone quarters. PDF interim reports commonly show year-to-date totals;
+    those are not interchangeable. Balance-sheet values are point-in-time stocks.
+    """
+    period = parse_period_label(label)
+    if section == "balance_sheet" and period.startswith("Quý "):
+        return f"tại cuối {period.lower()}"
+    if section in {"income_statement", "cash_flow_statement"} and period.startswith("Quý "):
+        return f"{period.lower()} (riêng quý, nguồn API Vietcap)"
+    if section in {"income_statement", "cash_flow_statement"} and period.startswith("Năm "):
+        return f"{period.lower()} (cả năm)"
+    return period
+
+
+def _format_statement_amount(value: int | float) -> str:
+    """Vietcap statement amounts are VND; render consistently in triệu VND."""
+    amount_million = value / 1_000_000
+    return f"{amount_million:,.2f} triệu VND"
+
+
+def _format_statement_value(value: int | float, code: str) -> str:
+    """Format statement values using their metric unit, not one unit for every row."""
+    if code in {"BASIC_EARNINGS_PER_SHARE", "DILUTED_EARNINGS_PER_SHARE"}:
+        return f"{value:,.2f} VND/cổ phiếu" if isinstance(value, float) else f"{value:,} VND/cổ phiếu"
+    return _format_statement_amount(value)
+
+
 def json_to_text(json_path: str | Path) -> str:
     """Read a normalized financial JSON file and convert it into semantic Vietnamese text.
 
@@ -91,6 +121,7 @@ def json_to_text(json_path: str | Path) -> str:
         data = json.load(f)
 
     symbol = data.get("symbol") or path.stem.upper()
+    industry = data.get("industry")
     financial_data = data.get("financial_data") or {}
 
     section_blocks: list[str] = []
@@ -105,7 +136,7 @@ def json_to_text(json_path: str | Path) -> str:
                 continue
 
             raw_period = row.get("period_label", "")
-            period = parse_period_label(raw_period)
+            period = _period_context(raw_period, section_key)
             header = f"{symbol} - {section_vi} - {period}" if period else f"{symbol} - {section_vi}"
 
             lines = [header]
@@ -119,15 +150,19 @@ def json_to_text(json_path: str | Path) -> str:
                 if value == 0 or value is None:
                     continue
 
-                code = get_code(key, section_key)
+                code = get_code(key, section_key, industry)
+                label_vi = get_label_vi(code)
 
-                # Format: monetary values in VND (>= 1,000,000) are converted to triệu VND
+                # Ratios are dimensionless/provider-native. Never infer money from magnitude.
                 if section_key == "ratios" and abs(value) < 1000:
                     val_str = f"{value:,.2f}" if abs(value) >= 0.01 else f"{value:.4g}"
-                    lines.append(f"- {code}: {val_str}")
+                    lines.append(f"- {code} ({label_vi}): {val_str} (tỷ lệ, giá trị nguồn)")
+                elif section_key == "ratios":
+                    # Large ratio fields may be shares or market capitalization; keep
+                    # the provider value and code without inventing a unit.
+                    lines.append(f"- {code} ({label_vi}): {value:,.2f} (giá trị nguồn; cần xác minh đơn vị)")
                 else:
-                    val_in_millions = value / 1_000_000 if abs(value) >= 1_000_000 else value
-                    lines.append(f"- {code}: {val_in_millions:,.0f} triệu VND")
+                    lines.append(f"- {code} ({label_vi}): {_format_statement_value(value, code)}")
 
             if len(lines) > 1:
                 section_blocks.append("\n".join(lines))
@@ -208,7 +243,7 @@ def _price_month_pages(symbol: str, price_history: list[dict]) -> list[Page]:
     return [Page(page=SECTION_PAGE["prices"], text=" ".join(lines))]
 
 
-def _ratio_pages(symbol: str, rows: list[dict]) -> list[Page]:
+def _ratio_pages(symbol: str, rows: list[dict], industry: str | None = None) -> list[Page]:
     pages = []
     for row in rows:
         label = parse_period_label(row.get("period_label", "?"))
@@ -216,24 +251,29 @@ def _ratio_pages(symbol: str, rows: list[dict]) -> list[Page]:
         for key, value in row.items():
             if key in META_KEYS or value is None:
                 continue
-            code = get_code(key, "ratios")
+            code = get_code(key, "ratios", industry)
             display_code = {"PE": "P/E", "PB": "P/B", "PS": "P/S"}.get(code, code)
-            parts.append(f"{display_code} {_fmt(value)};")
+            parts.append(f"{display_code} ({get_label_vi(code)}) {_fmt(value)};")
         pages.append(Page(page=SECTION_PAGE["ratios"], text=" ".join(parts)))
     return pages
 
 
-def _statement_pages(symbol: str, section: str, rows: list[dict]) -> list[Page]:
+def _statement_pages(
+    symbol: str,
+    section: str,
+    rows: list[dict],
+    industry: str | None = None,
+) -> list[Page]:
     label_vi = SECTION_MAP.get(section, section)
     pages = []
     for row in rows:
-        label = parse_period_label(row.get("period_label", "?"))
+        label = _period_context(row.get("period_label", "?"), section)
         parts = [f"{label_vi} {symbol} kỳ {label}:"]
         for key, value in row.items():
             if key in META_KEYS or value is None:
                 continue
-            code = get_code(key, section)
-            parts.append(f"{code}: {_fmt(value)} |")
+            code = get_code(key, section, industry)
+            parts.append(f"{code} ({get_label_vi(code)}): {_format_statement_value(value, code)} |")
         pages.append(Page(page=SECTION_PAGE.get(section, 0), text=" ".join(parts)))
     return pages
 
@@ -246,12 +286,13 @@ def is_normalized_financial_payload(data) -> bool:
 def financial_json_to_pages(symbol: str, payload: dict) -> list[Page]:
     """One page per price-month summary or per reporting period."""
     financial_data = payload.get("financial_data", {}) or {}
+    industry = payload.get("industry")
     pages: list[Page] = []
     pages += _price_month_pages(symbol, payload.get("price_history") or [])
-    pages += _ratio_pages(symbol, financial_data.get("ratios") or [])
-    pages += _statement_pages(symbol, "income_statement", financial_data.get("income_statement") or [])
-    pages += _statement_pages(symbol, "balance_sheet", financial_data.get("balance_sheet") or [])
-    pages += _statement_pages(symbol, "cash_flow_statement", financial_data.get("cash_flow_statement") or [])
+    pages += _ratio_pages(symbol, financial_data.get("ratios") or [], industry)
+    pages += _statement_pages(symbol, "income_statement", financial_data.get("income_statement") or [], industry)
+    pages += _statement_pages(symbol, "balance_sheet", financial_data.get("balance_sheet") or [], industry)
+    pages += _statement_pages(symbol, "cash_flow_statement", financial_data.get("cash_flow_statement") or [], industry)
     return pages
 
 

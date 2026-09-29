@@ -8,6 +8,41 @@
 
   ---
 
+  ## 0. KẾT QUẢ CHUẨN HÓA BCTC CHO 10 MÃ (BANK + TECH)
+
+  Phần ban đầu của báo cáo dưới đây mô tả profile **BANK**, đã đối soát BID. Đã bổ sung profile **TECH** và áp dụng lựa chọn mapping theo `industry` trên payload chuẩn hóa. Phạm vi lần này chỉ là BCTC qua API Vietcap; PDF CafeF là tài liệu đối chiếu, không phải đầu vào OCR hay nguồn dữ liệu chính.
+
+  ### Bằng chứng đối chiếu TECH
+
+  - PDF tham chiếu: `data/pdfs/cafef/FPT/FPT_financial_2026_Q2_6a8946580763ddca1c4addbb_B_o_c_o_t_i_ch_nh_h_p_nh_t_qu_2_n_m_2026_so_t_x_t.pdf`, BCTC hợp nhất giữa niên độ 6 tháng 2026 soát xét của FPT.
+  - Bảng cân đối: đối chiếu số dư tại 30/06/2026 với các trang in 4–7. Báo cáo KQKD và LCTT đối chiếu tại các trang in 8–10.
+  - Với KQKD/LCTT, PDF trình bày số lũy kế 6 tháng trong khi API trả số riêng từng quý. Cộng Q1 + Q2 của API cho các dòng đã rà khớp số 6 tháng trên PDF. Không cộng số dư Bảng cân đối.
+  - Đã đối chiếu các dòng chính của Bảng cân đối, KQKD và LCTT; chưa gán nghĩa cho các key Vietcap chưa đủ căn cứ.
+
+  ### Mapping TECH đã xác nhận
+
+  | Báo cáo | Key API | Mã chuẩn |
+  |---|---|---|
+  | Cân đối | `bsa1`–`bsa21` (các key có trong feed) | `CURRENT_ASSETS`, `CASH_AND_CASH_EQUIVALENTS`, `CASH`, `CASH_EQUIVALENTS`, `SHORT_TERM_FINANCIAL_INVESTMENTS_NET`, các khoản phải thu, tồn kho, thuế và tài sản ngắn hạn tương ứng |
+  | Cân đối | `bsa23`, `bsa24`, `bsa27`–`bsa38`, `bsa43`, `bsa45`–`bsa52` | tài sản dài hạn, phải thu dài hạn, TSCĐ/khấu hao, đầu tư dài hạn, lợi thế thương mại và tài sản dài hạn khác |
+  | Cân đối | `bsa53`–`bsa96` (các key có trong feed), `bsa108`, `bsa163`, `bsa165`, `bsa167`, `bsa178`, `bss136` | tổng tài sản/nợ/VCSH, nợ ngắn hạn và dài hạn, vốn, lợi nhuận giữ lại kỳ hiện tại, doanh thu chưa thực hiện, xây dựng dở dang và cổ tức phải trả |
+  | KQKD | `isa1`–`isa14`, `isa18`, `isa23`, `isa24` | doanh thu, giảm trừ, giá vốn, lợi nhuận gộp/hoạt động/lợi nhuận khác, thuế hoãn lại và EPS |
+  | LCTT | `cfa1`–`cfa7`, `cfa10`–`cfa15`, `cfa17`, `cfa21`–`cfa24`, `cfa29`–`cfa32`, `cfa37` | điều chỉnh HĐKD, thay đổi vốn lưu động, thuế/lãi đã trả, các luồng đầu tư/tài chính và ảnh hưởng tỷ giá |
+
+  Các key dùng chung như `bsa53`, `isa16`–`isa24`, `cfa9`, `cfa18`–`cfa20`, `cfa25`–`cfa26`, `cfa34`–`cfa36`, `cfa38` được khai báo rõ trong từng profile. Key TECH không khai báo sẽ không rơi ngược vào nhãn BANK. Bản đồ đầy đủ, chính xác từng key → mã nằm trong `backend/financial_mapping.py`.
+
+  `cfa27`, `bsa188` và `bsb108` chưa được đưa vào mapping vì chưa xác minh được nghĩa theo profile TECH. `bsa188` có giá trị bằng `bsa163` ở FPT nhưng khác ở CMG, nên không thể gộp dựa trên một mã. `bsb108` có số dư khác 0 ở nhiều mã TECH nhưng chỉ được xác minh là chứng khoán HTM trong profile BANK; TECH không được tự kế thừa nhãn đó. Các key chưa ánh xạ giữ nguyên dạng uppercase. JSON raw và normalized vẫn giữ key Vietcap gốc để truy nguyên.
+
+  Theo quy ước T120–T121 của tài liệu thuật ngữ, `isa23` và `isa24` là EPS tính theo VND/cổ phiếu, không phải số tiền triệu VND. Nội dung RAG đã được sửa để giữ nguyên đơn vị trên mỗi cổ phiếu và hiển thị nhãn tiếng Việt theo glossary cạnh mã chuẩn. API Vietcap không cung cấp trường xác định BCTC hợp nhất hay riêng; do đó không thể khẳng định phạm vi này chỉ từ JSON API. Khi đối chiếu, phải dùng tài liệu cùng phạm vi (PDF FPT ở trên là hợp nhất); không trộn báo cáo riêng với hợp nhất.
+
+  ### Áp dụng theo ngành và độ phủ dữ liệu
+
+  `get_code(field, section, industry)` dùng profile riêng theo ngành. Với TECH, chỉ các key được khai báo tường minh mới được chuẩn hóa; key còn lại không rơi ngược về mapping BANK mà được giữ uppercase. Nhãn tiếng Việt chuẩn trong `METRIC_LABELS_VI` lấy từ glossary để nội dung RAG chứa cả mã metric lẫn tên dễ đọc. Cả `json_to_text`/`financial_json_to_pages` và `load_to_supabase.py` đều truyền `industry`, nên mã chuẩn được dùng nhất quán khi tạo nội dung RAG, khai báo metrics và ghi observations. Nội dung RAG đổi số tiền sang triệu VND nhưng giữ nguyên VND/cổ phiếu cho EPS; giá trị gốc trong JSON và Supabase không bị đổi đơn vị.
+
+  Đã rà metadata của 10 JSON normalized: `BID`, `CTG`, `MBB`, `TCB`, `VCB` là BANK; `FPT`, `CMG`, `ELC`, `ICT`, `ITD` là TECH. Độ phủ được hiểu là số **key số có mapping** trên tổng key số của một kỳ API mẫu; các key chi tiết chưa xác minh vẫn giữ nguyên, không xem là lỗi chuẩn hóa. Mapping BANK trong phần dưới là báo cáo BID hiện hữu, profile TECH là phần bổ sung theo PDF FPT. Vì API không gửi phạm vi hợp nhất/riêng và mapper chưa gắn nhãn nguồn cho từng key còn dư, đây là mapping đã xác nhận cho các dòng cốt lõi, chưa phải từ điển đầy đủ cho mọi trường API.
+
+  ---
+
   ## 1. TỔNG QUAN VÀ MỤC TIÊU CHẤT LƯỢNG (MỨC A)
 
   * **Tiêu chuẩn Mức A:** Tập trung ánh xạ **100% các chỉ tiêu tài chính cốt lõi** trên 4 báo cáo chính:
@@ -26,10 +61,10 @@
   | Phân hệ (Section) | Tổng số key | Đã map (HIGH) | Đã map (MEDIUM) | Giữ nguyên gốc (LOW) | Tỷ lệ ánh xạ |
   |---|:---:|:---:|:---:|:---:|:---:|
   | **Bảng Cân đối kế toán (`balance_sheet`)** | 331 | 51 | 1 | 279 | **15.7%** |
-  | **Kết quả kinh doanh (`income_statement`)** | 181 | 22 | 0 | 159 | **12.2%** |
+  | **Kết quả kinh doanh (`income_statement`)** | 181 | 25 | 0 | 156 | **13.8%** |
   | **Lưu chuyển tiền tệ (`cash_flow_statement`)** | 225 | 11 | 0 | 214 | **4.9%** |
   | **Chỉ số tài chính (`ratios`)** | 54 | 48 | 4 | 2 | **96.3%** |
-  | **TỔNG CỘNG** | **791** | **132** | **5** | **654** | **17.3%** |
+  | **TỔNG CỘNG** | **791** | **135** | **5** | **651** | **17.7%** |
 
   *Ghi chú: Toàn bộ 100% các dòng chỉ tiêu chính trên mặt báo cáo BCTC chính thức đều đã được phủ kín. ~80% các key còn lại là các tiểu mục chi tiết phân rã sâu trong thuyết minh Vietcap crawl về.*
 
@@ -199,7 +234,7 @@
   [TEST] RUNNING VERIFICATION FOR financial_mapping.py
   ======================================================================
     [OK] BALANCE_SHEET       :  52 mapped keys. Max length: 32 chars.
-    [OK] INCOME_STATEMENT    :  22 mapped keys. Max length: 33 chars.
+    [OK] INCOME_STATEMENT    :  25 mapped keys. Max length: 33 chars.
     [OK] CASH_FLOW           :  11 mapped keys. Max length: 26 chars.
     [OK] RATIOS              :  52 mapped keys. Max length: 26 chars.
     [OK] get_code() function passed all unit tests.
@@ -210,7 +245,7 @@
   Section                | Total Keys | Mapped   | Fallback | Rate    
   -----------------------------------------------------------------
   balance_sheet          | 331        | 52       | 279      |   15.7%
-  income_statement       | 181        | 22       | 159      |   12.2%
+  income_statement       | 181        | 25       | 156      |   13.8%
   cash_flow_statement    | 225          | 11       | 214      |    4.9%
   ratios                 | 54         | 52       | 2        |   96.3%
 
