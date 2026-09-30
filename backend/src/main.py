@@ -14,9 +14,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .config import get_settings
-from .db import connect, disconnect
-from .routers import documents, search
+from .api.routers import documents, search
+from .core.config import get_settings
+from .core.db import connect, disconnect
 
 settings = get_settings()
 
@@ -56,4 +56,3 @@ async def health() -> dict:
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("src.main:app", host="0.0.0.0", port=8000, reload=True)
-

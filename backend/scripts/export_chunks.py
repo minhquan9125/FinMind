@@ -1,10 +1,10 @@
 """Export chunks + BAAI/bge-m3 embeddings for the 8 pre-scraped tickers to
 plain JSON files, without needing PostgreSQL/Docker running.
 
-Reuses the exact same pipeline the API uses (json_ingest.financial_json_to_pages
+Reuses the exact same pipeline the API uses (documents.json_ingest.financial_json_to_pages
 -> chunking.build_chunks -> text_analysis.term_frequencies -> EmbeddingService)
 so the chunks in these files are identical to what POST /api/documents/import-
-symbol/{symbol} would store in document_chunks - just written to a file
+symbol/{symbol} would store in text_chunks - just written to a file
 instead of a database, for a teammate who wants the data without setting up
 Postgres/pgvector.
 
@@ -28,14 +28,14 @@ BACKEND_SRC = Path(__file__).resolve().parent.parent
 if str(BACKEND_SRC) not in sys.path:
     sys.path.insert(0, str(BACKEND_SRC))
 
-from src.chunking import build_chunks  # noqa: E402
-from src.config import get_settings  # noqa: E402
-from src.embeddings import get_embedding_service  # noqa: E402
-from src.json_ingest import financial_json_to_pages  # noqa: E402
-from src.text_analysis import term_frequencies  # noqa: E402
+from src.core.config import get_settings  # noqa: E402
+from src.documents.chunking import build_chunks  # noqa: E402
+from src.documents.embeddings import get_embedding_service  # noqa: E402
+from src.documents.json_ingest import financial_json_to_pages  # noqa: E402
+from src.documents.text_analysis import term_frequencies  # noqa: E402
 
-# Same list as TARGET_SYMBOLS in data_pipeline/src/scrapers/direct_vn_collector.py
-TARGET_SYMBOLS = ["FPT", "VNM", "HPG", "VCB", "MWG", "VIC", "TCB", "SSI"]
+# Same list as TARGET_SYMBOLS in data_pipeline/collector.py
+TARGET_SYMBOLS = ["VCB", "BID", "CTG", "MBB", "TCB", "FPT", "CMG", "ELC", "ITD", "ICT"]
 
 REPO_ROOT = BACKEND_SRC.parent
 NORMALIZED_DIR = REPO_ROOT / "data" / "normalized"

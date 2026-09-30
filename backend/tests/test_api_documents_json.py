@@ -10,9 +10,9 @@ import json
 
 from fastapi.testclient import TestClient
 
-from src import repository
-from src.config import Settings, get_settings
-from src.embeddings import get_embedding_service
+from src.documents import repository
+from src.core.config import Settings, get_settings
+from src.documents.embeddings import get_embedding_service
 from src.main import app
 
 
@@ -29,15 +29,19 @@ client = TestClient(app)
 
 
 def _patch_storage(monkeypatch):
-    async def fake_create_document(pool, filename, page_count):
+    async def fake_ensure_index_version(pool, chunk_size, chunk_overlap, embedding_model):
+        return "index-1"
+
+    async def fake_create_document(pool, filename, page_count, file_type, file_size, sha256, doc_type):
         return "doc-1"
 
-    async def fake_insert_chunks(pool, document_id, rows):
+    async def fake_insert_chunks(pool, document_id, index_version_id, rows):
         fake_insert_chunks.rows = rows
 
+    monkeypatch.setattr(repository, "ensure_index_version", fake_ensure_index_version)
     monkeypatch.setattr(repository, "create_document", fake_create_document)
     monkeypatch.setattr(repository, "insert_chunks", fake_insert_chunks)
-    monkeypatch.setattr("src.routers.documents.get_pool", lambda: object())
+    monkeypatch.setattr("src.api.routers.documents.get_pool", lambda: object())
     return fake_insert_chunks
 
 

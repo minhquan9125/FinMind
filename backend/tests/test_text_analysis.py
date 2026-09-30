@@ -1,4 +1,4 @@
-from src.text_analysis import (
+from src.documents.text_analysis import (
     idf_weights,
     raw_words,
     term_frequencies,

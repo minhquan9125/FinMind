@@ -1,10 +1,55 @@
   # BÁO CÁO ÁNH XẠ CHỈ TIÊU TÀI CHÍNH (FINANCIAL MAPPING REPORT)
   **Dự án:** FinMind - Nền tảng Phân tích Dữ liệu Tài chính Việt Nam  
-  **Mã cổ phiếu chuẩn hóa:** `BID` (Ngân hàng TMCP Đầu tư và Phát triển Việt Nam)  
-  **Tài liệu đối soát chính:** 
+**Mã cổ phiếu chuẩn hóa:** `BID` (Ngân hàng TMCP Đầu tư và Phát triển Việt Nam)  
+**Tài liệu đối soát chính:** 
   - `docs/BID_BCTC_6T2026_soatxet.pdf` (BCTC Hợp nhất Giữa niên độ soát xét 6 tháng 2026)
   - `docs/BID_BCTC_Q2_2026.pdf` (BCTC Hợp nhất Giữa niên độ Quý II/2026)
-  - `data/normalized/BID.json` (Dữ liệu crawl chuẩn hóa kỳ 2026-Q2)
+- `data/normalized/BID.json` (Dữ liệu crawl chuẩn hóa kỳ 2026-Q2)
+
+## TÌNH TRẠNG CHUẨN HÓA HIỆN TẠI (2026-09-29)
+
+### Đã hoàn thành
+
+- Đã có hai profile mapping theo ngành cho 10 mã: BANK (`BID`, `CTG`, `MBB`, `TCB`, `VCB`) và TECH (`FPT`, `CMG`, `ELC`, `ICT`, `ITD`). TECH chỉ dùng mapping được khai báo trong profile TECH; key lạ không tự rơi về mapping BANK.
+- Đã chuẩn hóa các dòng BCTC cốt lõi của Bảng cân đối kế toán, Kết quả hoạt động kinh doanh, Lưu chuyển tiền tệ và các tỷ số đang có trong API. Tên tiếng Việt được đưa vào nội dung RAG; số tiền được đổi sang triệu VND khi dựng nội dung, còn giá trị JSON/API được giữ nguyên. EPS giữ đơn vị VND/cổ phiếu.
+- Đã đối chiếu các dòng cốt lõi BANK với BCTC BID và các dòng cốt lõi TECH với BCTC hợp nhất FPT 6T/2026. Phần KQKD/LCTT của FPT được so bằng tổng Q1 + Q2 với số lũy kế 6 tháng trên PDF; Bảng cân đối được so theo số dư cuối kỳ.
+- Đã rà key số có giá trị khác 0 trong kỳ mới nhất có trong mỗi JSON chuẩn hóa. Sau khi đối chiếu bổ sung BCTC MBB, BID và CTG 6T/2026, tổng hợp theo ngành và báo cáo là 332/355 key-section đang hoạt động có mapping tường minh; còn 23 key-section chưa xác định được nghĩa. Trong BANK còn 6 key hoạt động chưa chuẩn hóa ngữ nghĩa; TECH còn 17 và được để ngoài cổng nạp dữ liệu trước mắt theo phạm vi hiện tại. Đây là key-section phân biệt theo profile ngành, không phải số trường trong toàn bộ schema API hay độ phủ mọi kỳ lịch sử.
+
+| Ngành | Báo cáo | Có mapping / key hoạt động | Chưa map |
+|---|---|---:|---:|
+| BANK | Bảng cân đối | 78 / 79 | 1 |
+| BANK | Kết quả kinh doanh | 25 / 25 | 0 |
+| BANK | Lưu chuyển tiền tệ | 37 / 42 | 5 |
+| BANK | Tỷ số | 33 / 33 | 0 |
+| TECH | Bảng cân đối | 75 / 88 | 13 |
+| TECH | Kết quả kinh doanh | 23 / 24 | 1 |
+| TECH | Lưu chuyển tiền tệ | 32 / 35 | 3 |
+| TECH | Tỷ số | 29 / 29 | 0 |
+
+### Còn phải xử lý
+
+Các key dưới đây có giá trị khác 0 trong ít nhất một mã thuộc kỳ mẫu mới nhất, nhưng chưa gán mã ngữ nghĩa. Chúng được giữ ở dạng key gốc viết hoa để không làm mất dữ liệu hoặc đoán sai. Danh sách ghi mã có key; mã không ghi nghĩa là không thấy key đó trong kỳ mẫu.
+
+| Ngành / báo cáo | Key chưa map và mã có key |
+|---|---|
+| BANK / Bảng cân đối | `bsb157` (cả 5 mã BANK; cùng giá trị với `bsb126`, giữ gốc để tránh ghi trùng). |
+| BANK / Lưu chuyển tiền tệ | `cfa23` (MBB, TCB); `cfa24` (MBB); `cfa32` (TCB); `cfb64`, `cfb221` (cả 5 mã BANK). |
+| TECH / Bảng cân đối | `bsa161` (ELC); `bsa164` (CMG); `bsa175`, `bsa177`, `bsa188`, `bsa79` (cả 5 mã TECH); `bsa40`, `bsa41`, `bsa42` (ELC, ICT); `bsa6`, `bsa7` (ELC); `bsa83` (CMG, ELC, ITD); `bsb108` (CMG, ELC, FPT, ITD). |
+| TECH / Kết quả kinh doanh | `isa102` (CMG, FPT). |
+| TECH / Lưu chuyển tiền tệ | `cfa104`, `cfa16` (ITD); `cfa27` (ELC, FPT). |
+
+### Vướng mắc và giới hạn kết luận
+
+- Key của Vietcap như `bsa...`, `bsb...`, `cfa...`, `cfb...` là mã nhà cung cấp, không tự mang nghĩa. PDF CafeF hiện có phần lớn là ảnh quét; báo cáo trích xuất hiện ghi nhận 10.355 trang cần OCR. Vì vậy chưa thể gán tên đáng tin cậy hàng loạt chỉ từ text extraction hiện có.
+- Đối chiếu Bảng cân đối/KQKD: dòng BANK bổ sung khớp PDF MBB 6T/2026 (trang 3-5 cho Bảng cân đối; trang 6 cho KQKD) và BID 6T/2026 (trang PDF 8-10, trang in 4-6). `isb38` khớp “Tổng thu nhập hoạt động” của MBB ở cả số quý II và lũy kế 6 tháng. `bsb126` = `bsb158 + bsb131` và `bsb132` = `bsb179 + bsb185 + bsb186` ở cả 5 ngân hàng; các tổng này được đặt tên là tổng/subtotal, không nhầm thành một dòng gốc in riêng trên PDF. `bsb157` trùng `bsb126` ở cả 5 mã nên giữ gốc.
+- Đối chiếu LCTT: tại MBB, các key vừa thêm có số Q1+Q2 khớp từng dòng BCTC hợp nhất 6T/2026 (PDF trang 7-8); ví dụ `cfb49` = tăng/giảm tiền gửi và cho vay TCTD khác (-2.742.775 triệu đồng), `cfb52` = tăng/giảm cho vay khách hàng và mua nợ (-143.317.496 triệu đồng), `cfb75` = lãi đã thu (60.253.967 triệu đồng), `cfb81` = chi nhân viên/quản lý/công vụ (-11.656.408 triệu đồng). Tại BID, `cfb51` khớp dòng công cụ phái sinh/tài sản tài chính khác (-755.982 triệu đồng) và `cfb67` khớp tiền chi thanh lý/nhượng bán TSCĐ (-962 triệu đồng) trên PDF trang 12-13 (trang in 8-9). Tại CTG, `cfa37` khớp điều chỉnh ảnh hưởng thay đổi tỷ giá đến tiền và tương đương tiền (-23.535 triệu đồng; PDF trang 10, trang in 7). `cfa23` và `cfa24` chỉ khớp tổng một dòng đầu tư trên PDF MBB nên chưa thể xác định riêng từng key; `cfb221` trùng giá trị `cfb79` ở cả 5 ngân hàng trong Q1+Q2/2026 nên chưa map để tránh ghi trùng. `cfb64` khớp `cfa18 - cfb65` ở cả 5 ngân hàng nhưng không có nhãn dòng riêng trên PDF, nên giữ chưa map. `cfa32` của TCB chưa map vì tổng Q1+Q2 không khớp dòng cổ tức trả trên PDF TCB.
+- Cần đối chiếu từng key chưa map với trang BCTC cùng mã, cùng kỳ, cùng phạm vi hợp nhất/riêng. Nếu dòng chỉ nằm trong thuyết minh hoặc không xuất hiện trong PDF tham chiếu thì cần nhãn từ metadata/từ điển Vietcap; chưa có nhãn thì tiếp tục giữ key gốc.
+- Không gộp các key chỉ vì trùng giá trị ở một công ty/kỳ. Ví dụ `bsa188` bằng `bsa163` tại FPT Q2 nhưng khác ở CMG. `cfa27` đã được xác nhận là tiền thu từ phát hành cổ phiếu trong profile BANK; key `cfa27` của TECH vẫn chưa xác minh và không kế thừa mapping BANK. `bsb108` chỉ được xác nhận là chứng khoán HTM trong mapping BANK, chưa có bằng chứng áp dụng cùng nghĩa cho TECH.
+- Chưa rà đủ mọi kỳ lịch sử và mọi key null/0 của API. Chưa tuyên bố toàn bộ taxonomy API đã chuẩn hóa. BCTN và News ngoài phạm vi trạng thái BCTC này.
+
+### Kết luận gate BCTC
+
+Mapping BANK đủ để chạy thử nạp dữ liệu: 173/179 key-section có mapping ngữ nghĩa. Sáu key còn lại vẫn được giữ dưới key nguồn để không mất dữ liệu: `bsb157` và `cfb221` trùng key đã ánh xạ; `cfb64` là subtotal không có nhãn riêng trên PDF; `cfa23`/`cfa24` chỉ đối chiếu được với một dòng đầu tư gộp; `cfa32` của TCB chưa khớp PDF. Dry-run loader đã chạy thành công trên 5 JSON BANK: 834 financial reports và 155.554 observations dự kiến (42 kỳ/mã); không kết nối hoặc ghi database. TECH chưa thuộc đợt nạp này; 17 key TECH chưa xác minh sẽ xử lý sau.
 
   ---
 
@@ -14,7 +59,7 @@
 
   ### Bằng chứng đối chiếu TECH
 
-  - PDF tham chiếu: `data/pdfs/cafef/FPT/FPT_financial_2026_Q2_6a8946580763ddca1c4addbb_B_o_c_o_t_i_ch_nh_h_p_nh_t_qu_2_n_m_2026_so_t_x_t.pdf`, BCTC hợp nhất giữa niên độ 6 tháng 2026 soát xét của FPT.
+  - PDF tham chiếu: `data/references/cafef/pdfs/FPT/FPT_financial_2026_Q2_6a8946580763ddca1c4addbb_B_o_c_o_t_i_ch_nh_h_p_nh_t_qu_2_n_m_2026_so_t_x_t.pdf`, BCTC hợp nhất giữa niên độ 6 tháng 2026 soát xét của FPT.
   - Bảng cân đối: đối chiếu số dư tại 30/06/2026 với các trang in 4–7. Báo cáo KQKD và LCTT đối chiếu tại các trang in 8–10.
   - Với KQKD/LCTT, PDF trình bày số lũy kế 6 tháng trong khi API trả số riêng từng quý. Cộng Q1 + Q2 của API cho các dòng đã rà khớp số 6 tháng trên PDF. Không cộng số dư Bảng cân đối.
   - Đã đối chiếu các dòng chính của Bảng cân đối, KQKD và LCTT; chưa gán nghĩa cho các key Vietcap chưa đủ căn cứ.
@@ -29,7 +74,7 @@
   | KQKD | `isa1`–`isa14`, `isa18`, `isa23`, `isa24` | doanh thu, giảm trừ, giá vốn, lợi nhuận gộp/hoạt động/lợi nhuận khác, thuế hoãn lại và EPS |
   | LCTT | `cfa1`–`cfa7`, `cfa10`–`cfa15`, `cfa17`, `cfa21`–`cfa24`, `cfa29`–`cfa32`, `cfa37` | điều chỉnh HĐKD, thay đổi vốn lưu động, thuế/lãi đã trả, các luồng đầu tư/tài chính và ảnh hưởng tỷ giá |
 
-  Các key dùng chung như `bsa53`, `isa16`–`isa24`, `cfa9`, `cfa18`–`cfa20`, `cfa25`–`cfa26`, `cfa34`–`cfa36`, `cfa38` được khai báo rõ trong từng profile. Key TECH không khai báo sẽ không rơi ngược vào nhãn BANK. Bản đồ đầy đủ, chính xác từng key → mã nằm trong `backend/financial_mapping.py`.
+  Các key dùng chung như `bsa53`, `isa16`–`isa24`, `cfa9`, `cfa18`–`cfa20`, `cfa25`–`cfa26`, `cfa34`–`cfa36`, `cfa38` được khai báo rõ trong từng profile. Key TECH không khai báo sẽ không rơi ngược vào nhãn BANK. Bản đồ đầy đủ, chính xác từng key → mã nằm trong `backend/src/financial/mapping.py`.
 
   `cfa27`, `bsa188` và `bsb108` chưa được đưa vào mapping vì chưa xác minh được nghĩa theo profile TECH. `bsa188` có giá trị bằng `bsa163` ở FPT nhưng khác ở CMG, nên không thể gộp dựa trên một mã. `bsb108` có số dư khác 0 ở nhiều mã TECH nhưng chỉ được xác minh là chứng khoán HTM trong profile BANK; TECH không được tự kế thừa nhãn đó. Các key chưa ánh xạ giữ nguyên dạng uppercase. JSON raw và normalized vẫn giữ key Vietcap gốc để truy nguyên.
 
@@ -56,7 +101,9 @@
 
   ---
 
-  ## 2. BẢNG THỐNG KÊ TỔNG HỢP MỖI PHÂN HỆ
+  ## 2. THỐNG KÊ TAXONOMY BAN ĐẦU (LƯU LẠI, KHÔNG DÙNG LÀM COVERAGE HIỆN TẠI)
+
+  Bảng dưới đây là thống kê từ giai đoạn BID ban đầu: đếm cả key Vietcap không có giá trị hoặc không hoạt động trong kỳ. Bảng không bao gồm đầy đủ mapping profile TECH và các mapping LCTT BANK bổ sung ở phần trên. Dùng bảng tình trạng hiện tại ở đầu tài liệu để đọc coverage của 10 mã; không dùng tỷ lệ 17,7% dưới đây làm tỷ lệ chuẩn hóa hiện tại.
 
   | Phân hệ (Section) | Tổng số key | Đã map (HIGH) | Đã map (MEDIUM) | Giữ nguyên gốc (LOW) | Tỷ lệ ánh xạ |
   |---|:---:|:---:|:---:|:---:|:---:|
@@ -66,7 +113,7 @@
   | **Chỉ số tài chính (`ratios`)** | 54 | 48 | 4 | 2 | **96.3%** |
   | **TỔNG CỘNG** | **791** | **135** | **5** | **651** | **17.7%** |
 
-  *Ghi chú: Toàn bộ 100% các dòng chỉ tiêu chính trên mặt báo cáo BCTC chính thức đều đã được phủ kín. ~80% các key còn lại là các tiểu mục chi tiết phân rã sâu trong thuyết minh Vietcap crawl về.*
+  *Ghi chú lịch sử: các con số này không chứng minh mọi dòng chính của tất cả 10 mã/ngành đã được đối chiếu; xem phần tình trạng hiện tại và danh sách key chưa map ở đầu tài liệu.*
 
   ---
 
@@ -225,13 +272,14 @@
   Để chạy kiểm thử tự động toàn bộ logic mapping và kiểm tra tính toàn vẹn với `BID.json`:
 
   ```powershell
-  python backend/financial_mapping.py
+  cd backend
+  python -m src.financial.mapping
   ```
 
   Kết quả xác thực thành công:
   ```text
   ======================================================================
-  [TEST] RUNNING VERIFICATION FOR financial_mapping.py
+  [TEST] RUNNING VERIFICATION FOR src/financial/mapping.py
   ======================================================================
     [OK] BALANCE_SHEET       :  52 mapped keys. Max length: 32 chars.
     [OK] INCOME_STATEMENT    :  25 mapped keys. Max length: 33 chars.

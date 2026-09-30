@@ -23,8 +23,8 @@ from pypdf import PdfReader
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PDF_ROOT = ROOT / "data" / "pdfs" / "cafef"
-OUTPUT_ROOT = ROOT / "data" / "extracted" / "cafef"
+PDF_ROOT = ROOT / "data" / "references" / "cafef" / "pdfs"
+OUTPUT_ROOT = ROOT / "data" / "references" / "cafef" / "extracted"
 MIN_TEXT_CHARS = 40
 
 
@@ -205,7 +205,7 @@ def main() -> int:
         f"{counts['SKIPPED_EXISTING']} unchanged, {counts['FAILED']} failed; "
         f"{pages_without_text} pages have no selectable text; "
         f"{out_of_scope_count} non-report PDFs skipped. "
-        f"Report: data/extracted/cafef/extraction_report.json"
+        f"Report: data/references/cafef/extracted/extraction_report.json"
     )
     return 1 if failures else 0
 

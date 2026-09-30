@@ -2,7 +2,7 @@ import { useState } from "react";
 import PipelineStepper from "./PipelineStepper.jsx";
 import { importSymbol, uploadDocument, uploadJsonDocument } from "../api.js";
 
-// Same 8 tickers as TARGET_SYMBOLS in data_pipeline/src/scrapers/direct_vn_collector.py
+// Same tickers as TARGET_SYMBOLS in data_pipeline/collector.py
 // (the only symbols with a pre-scraped data/normalized/{SYMBOL}.json on disk).
 const AVAILABLE_SYMBOLS = ["FPT", "VNM", "HPG", "VCB", "MWG", "VIC", "TCB", "SSI"];
 

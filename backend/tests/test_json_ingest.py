@@ -1,4 +1,4 @@
-from src.json_ingest import (
+from src.documents.json_ingest import (
     financial_json_to_pages,
     generic_json_to_pages,
     is_normalized_financial_payload,

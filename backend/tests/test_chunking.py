@@ -1,4 +1,4 @@
-from src.chunking import Page, build_chunks
+from src.documents.chunking import Page, build_chunks
 
 
 def test_short_page_becomes_single_chunk():

@@ -44,3 +44,8 @@ dist-ssr/
 # OS
 .DS_Store
 Thumbs.db
+
+# Downloaded/generated company-report artifacts (keep scripts and manifests tracked)
+data/references/vietstock/annual_reports/files/
+data/references/vietstock/annual_reports/searchable/
+data/references/vietstock/annual_reports/extracted/
