@@ -25,7 +25,43 @@ Báo cáo được thay thế mỗi lượt ở `scrapers/pipeline_reports/lates
 
 Cross-check và phân tích sự kiện chỉ chạy trên phạm vi vừa yêu cầu; bảng thư mục thống kê cả dữ liệu cũ ở các mã khác. Một bài lưu ở nhiều ngày/mã có thể tính nhiều record. Phân tích sự kiện bỏ trùng URL và không tự biến ứng viên thành marker check. Marker check vẫn chỉ áp dụng khi giống văn bản >80%, không xác minh sự thật.
 
+Hai bảng thu thập và thống kê thư mục tự căn độ rộng theo nội dung/Unicode: cột chữ căn trái, cột số căn phải. Dấu phân cột thẳng hàng trong terminal và khi đọc Markdown bằng font monospace.
+
+## Vai trò các file
+
+| File | Vai trò |
+|---|---|
+| `run_news_pipeline.py` | Nhập mã, chạy toàn bộ luồng tin tức và xuất báo cáo |
+| `stock_news_collector.py` | Điều phối cào, trích nội dung, gộp URL, ghi JSON, tự cross-check |
+| `news_sources.py` | RSS/API/tab tin theo mã, phân trang và lọc chủ đề |
+| `news_storage.py` | Ngày UTC+7, đường dẫn lưu theo nguồn/phạm vi, hỗ trợ migration |
+| `news_crosscheck.py` | Độ giống văn bản bằng Dice cụm ba từ, cập nhật marker/bằng chứng |
+| `analyze_uncheck_events.py` | Ứng viên cùng sự kiện bằng TF-IDF/cosine và quy tắc, không đổi marker |
+| `migrate_news_daily.py` | Lệnh chuyển riêng dữ liệu legacy và kiểm tra kết quả, không cào mạng |
+| `direct_vn_collector.py` | Luồng giá OHLCV và tài chính riêng, không được wrapper tin tức gọi |
+| `test_stock_news_collector.py` | 11 test collector, lưu theo ngày và migration |
+| `test_news_crosscheck.py` | 4 test độ giống văn bản, phạm vi, ngưỡng và new-only |
+| `test_uncheck_events.py` | 6 test ứng viên sự kiện, thời gian và loại trùng |
+| `test_run_news_pipeline.py` | 5 test luồng tổng và báo cáo khi có lỗi |
+
+## Các file Markdown được cập nhật khi nào?
+
+| File | Cơ chế cập nhật |
+|---|---|
+| `pipeline_reports/latest.md` | Tự tạo lại khi chạy wrapper: báo cáo lượt chạy mới nhất |
+| `pipeline_reports/events.md` | Tự tạo lại khi chạy wrapper: bằng chứng ứng viên trong phạm vi vừa chạy |
+| `uncheck_analysis/report.md` | Tự tạo lại khi chạy analyzer riêng: mặc định toàn bộ dữ liệu |
+| `README.md` | Sửa thủ công khi cách sử dụng/chức năng thay đổi |
+| `AGENTS.md` | Sửa thủ công khi hướng dẫn làm việc cho Codex thay đổi |
+| `CODEX_CONTEXT.md` | Sửa thủ công để ghi yêu cầu, quyết định và trạng thái công việc |
+
+Báo cáo đi kèm bản JSON và ghi đè mỗi lượt, chưa lưu lịch sử từng lượt. Chạy wrapper không cập nhật `uncheck_analysis/report.md`. Script không tự git add/commit/push; file đã được Git theo dõi cần add/commit khi muốn lưu phiên bản mới. Giữ cả bốn file test trong repository để kiểm tra thay đổi. Các thư mục báo cáo có thể tạo lại nên việc commit báo cáo là tùy chọn.
+
+## Trạng thái khi có lỗi
+
 Thiếu bài hoặc lỗi vẫn lưu dữ liệu lấy thành công, tiếp tục phân tích dữ liệu hiện có và xuất báo cáo với mã thoát 1. Không lấy thống kê `last_run` cũ để báo thành công cho lượt mới. Phân tích lỗi sẽ thay báo cáo sự kiện cũ bằng thông báo lỗi, tránh hiển thị kết quả cũ như mới. Tổng bộ test offline hiện có 26 test, gồm 5 test tích hợp cho luồng này.
+
+## Sử dụng collector riêng
 
 Chạy từ thư mục gốc dự án, Python 3.10+, `requests` và `scrapling`. Collector tin tức dùng HTTP và Scrapling Selector, không cần Chromium.
 
@@ -93,7 +129,9 @@ So CafeF với FireAnt trong cùng phạm vi qua các ngày; mỗi cặp phải 
 
 Báo cáo lưu URL, file gốc, đoạn trích, thực thể/loại sự kiện, từ khóa, số liệu chung, khoảng cách ngày xuất bản và điểm giống văn bản hiện tại. Ngày CafeF thiếu offset được hiểu theo UTC+7. Cặp tiêu đề khác thiếu ngày không được chọn; cặp cùng tiêu đề thiếu ngày được gắn cờ. Nghị quyết có số văn bản khác nhau bị loại.
 
-Đây là **ứng viên cần đọc lại**, không phải số sự kiện đã xác nhận hay xác minh tin đúng/sai. Quy tắc thực thể/loại sự kiện còn hữu hạn, không dùng mô hình semantic/LLM, nên có thể bỏ sót hoặc ghép nhầm bài cùng chủ đề. Không có ứng viên không đồng nghĩa với tin độc quyền/sai. Không tải hay đọc PDF. `test_uncheck_events.py` bổ sung 6 test offline cho phân tích; tổng bộ test hiện có 21 test.
+TF-IDF tạo vector trọng số từ vựng; cosine đo độ giống giữa hai vector. Đây là hai bước bổ sung nhau, không phải hai lượt xác minh độc lập. Nhánh tiêu đề/nội dung cần cosine tiêu đề >=0.25, nội dung >=0.20 và điểm tổng >=0.52. Nhánh số liệu cần nội dung >=0.40, ít nhất hai số liệu chung, cùng thực thể/loại sự kiện và điểm tổng >=0.52; nếu áp dụng, chọn điểm cao hơn giữa hai công thức. Cặp có độ giống văn bản >0.8 được loại khỏi báo cáo ứng viên này.
+
+Đây là **ứng viên cần đọc lại**, không phải số sự kiện đã xác nhận hay xác minh tin đúng/sai. Quy tắc thực thể/loại sự kiện còn hữu hạn, không dùng mô hình semantic/LLM, nên có thể bỏ sót hoặc ghép nhầm bài cùng chủ đề. Không có ứng viên không đồng nghĩa với tin độc quyền/sai. Không tải hay đọc PDF. `test_uncheck_events.py` có 6 test offline cho phân tích; tổng bộ test hiện có 26 test.
 
 ## Nguồn và nội dung
 
@@ -123,7 +161,7 @@ scrapers/
 
 Ngày là **ngày chạy lượt cào theo giờ Việt Nam (UTC+7)**, chốt khi bắt đầu chạy, không phải ngày xuất bản bài. Tên file dùng `DD-MM-YYYY.json` vì Windows không cho dấu `/` trong tên file. Các lượt chạy cùng ngày gộp vào cùng file, không trùng URL. Sang ngày mới tạo file mới, giữ file ngày cũ; cùng bài có thể xuất hiện ở nhiều ngày. Mã mới tự tạo thư mục khi chạy `--symbols` với mã đó. Bài được tab của nhiều mã trả về được lưu vào từng thư mục mã tương ứng; không suy ra thư mục mã từ tag hoặc tiêu đề của tin chung.
 
-`--source all` cập nhật cả hai nguồn; chạy một nguồn không ghi lại file nguồn còn lại. `--only-symbols` chỉ cập nhật tin theo mã. `--url` lưu vào tin chung của nguồn tương ứng với phạm vi `direct`.
+`--source all` cào cả hai nguồn; chọn một nguồn chỉ cào/gộp bài của nguồn đó. Bước cross-check sau cào vẫn có thể ghi lại marker/bằng chứng trong JSON của cả hai nguồn thuộc phạm vi vừa chạy. `--only-symbols` chỉ cập nhật tin theo mã. `--url` lưu vào tin chung của nguồn tương ứng với phạm vi `direct`.
 
 Lần chạy mặc định tự chuyển `stock_news.json`, `cafef_news.json`, `fireant_news.json` và `news_trial.json` cũ sang cấu trúc mới. Ngày lấy từ `crawled_at`, đổi sang UTC+7. Phân thư mục theo `scopes` và `matched_symbols`; bài không có phạm vi được giữ trong tin chung. Kiểm tra lại toàn bộ dữ liệu đã ghi trước khi xóa các file cũ. File sai định dạng, thiếu thời gian cào hoặc bị khóa thì dừng, giữ file cũ. Migration bị gián đoạn có thể chạy lại và gộp theo URL.
 
@@ -157,6 +195,6 @@ Schema `1.2` giữ các trường bài cũ: `id`, `source`, `url`, `title`, `des
 python -B -m unittest discover -s data_pipeline/src/scrapers -p "test_*.py"
 ```
 
-15 test offline kiểm tra phân trang, lọc, RSS hỏng, nội dung công bố, chạy lặp cùng ngày, sang ngày mới, mã mới, file hỏng, khóa ghi, ranh giới UTC+7, migration nhiều phạm vi, đối chiếu hai nguồn, cách ly mã, ngưỡng đúng 80%, đặt lại marker và lấy bài mới. `news_trial.json` cũ đã được chuyển sang thư mục tin chung theo nguồn/ngày.
+26 test offline trong bốn module kiểm tra phân trang, lọc, RSS hỏng, nội dung công bố, chạy lặp cùng ngày, sang ngày mới, mã mới, file hỏng, khóa ghi, UTC+7, migration nhiều phạm vi, đối chiếu hai nguồn, cách ly mã, ngưỡng đúng 80%, đặt lại marker, lấy bài mới, phân tích sự kiện và báo cáo luồng tổng khi thành công/lỗi. Lượt xác nhận gần nhất: 26 test pass; sau chỉnh thống kê thư mục, 5 test tích hợp pass; căn bảng đã kiểm tra vị trí dấu phân cột trên báo cáo sẵn có. Test offline không xác nhận website/API đang hoạt động. `news_trial.json` cũ đã chuyển sang thư mục tin chung theo nguồn/ngày.
 
 `AGENTS.md` và `CODEX_CONTEXT.md` trong thư mục này là ghi chú Codex dùng cục bộ, đã được `.gitignore` loại khỏi Git. Chúng không được đưa lên repository và không phải lịch sử chat nhập vào Codex app. Archify dùng để tạo sơ đồ, không có chức năng lưu cuộc chat vào app.
