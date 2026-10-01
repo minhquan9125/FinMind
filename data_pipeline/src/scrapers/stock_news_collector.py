@@ -7,7 +7,7 @@ Examples:
     python data_pipeline/src/scrapers/stock_news_collector.py --url https://cafef.vn/example.chn
 
 Both sources support general market news and their public stock news tabs.
-Each source merges into its own stable JSON file beside this script.
+News merges into daily JSON files, separated by scope, stock ticker and source.
 """
 
 import argparse
@@ -17,12 +17,13 @@ import re
 import sys
 import time
 import os
-from contextlib import contextmanager, ExitStack
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from html import unescape
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, urlunparse
 from scrapling.parser import Selector
+from news_storage import SCRAPERS, crawl_day, daily_path, migrate_daily
 from news_sources import (cafef_candidates, fireant_candidates, fireant_json,
                           fireant_item, get, plain_text, relevant)
 
@@ -58,40 +59,6 @@ def write_payload(path, payload):
         temporary.replace(path)
     finally:
         temporary.unlink(missing_ok=True)
-
-
-def migrate_legacy(legacy=DEFAULT_OUTPUT, outputs=None):
-    """Idempotently split existing data; remove the old file only after verification."""
-    outputs = SOURCE_OUTPUTS if outputs is None else outputs
-    if not legacy.exists():
-        return
-    with ExitStack() as stack:
-        for path in sorted([legacy, *outputs.values()]):
-            stack.enter_context(output_lock(path))
-        if not legacy.exists():
-            return
-        old = read_articles(legacy)
-        # Validate both destinations before writing either one.
-        merged = {source: read_articles(path, source) for source, path in outputs.items()}
-        for url, article in old.items():
-            source = article['source']
-            existing = merged[source].get(url)
-            if existing:
-                for field in ('symbols', 'matched_symbols', 'scopes'):
-                    existing[field] = sorted(set(existing.get(field, [])) | set(article.get(field, [])))
-            else:
-                merged[source][url] = article
-        for source, path in outputs.items():
-            payload = json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
-            payload.update({'schema_version': '1.1', 'source': source,
-                            'articles': list(merged[source].values())})
-            write_payload(path, payload)
-        for source, path in outputs.items():
-            saved = read_articles(path, source)
-            if not {url for url, a in old.items() if a['source'] == source}.issubset(saved):
-                raise ValueError('Migration verification failed; legacy file preserved')
-        legacy.unlink()
-        print(f'Migrated {len(old)} articles into separate CafeF/FireAnt files')
 
 
 def clean_url(raw_url: str, base_url: str = "") -> str | None:
@@ -234,7 +201,7 @@ def output_lock(output):
         lock.unlink(missing_ok=True)
 
 
-def main(argv=None) -> int:
+def main(argv=None, run_report=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", choices=("cafef", "fireant", "all"), default="cafef")
     parser.add_argument("--url", action="append", default=[], help="Direct article URL; repeatable")
@@ -244,7 +211,8 @@ def main(argv=None) -> int:
     parser.add_argument('--prune-irrelevant', action='store_true', help='Remove previously stored off-topic articles; keep symbol/direct scopes')
     parser.add_argument('--max-pages', type=int, default=5, help='Maximum discovery pages per source/symbol')
     parser.add_argument("--limit", type=int, default=10, help="Maximum valid articles per source and scope, including already stored articles")
-    parser.add_argument("--output", type=Path, help='Custom JSON filename; all sources use <stem>_cafef.json and <stem>_fireant.json')
+    parser.add_argument('--new-only', action='store_true', help='Skip URLs already in today\'s file; limit counts newly added articles')
+    parser.add_argument("--output", type=Path, help='Optional output directory inside scrapers; daily folder layout is always used')
     args = parser.parse_args(argv)
     if args.limit < 1 or args.max_pages < 1:
         parser.error('--limit and --max-pages must be at least 1')
@@ -254,10 +222,12 @@ def main(argv=None) -> int:
         parser.error('Invalid stock ticker')
     if args.only_symbols and not symbols:
         parser.error('--only-symbols requires --symbols or --symbol')
-    if args.output:
-        args.output = args.output.resolve()
-    if args.output and (not args.output.is_relative_to(DEFAULT_OUTPUT.parent) or args.output.suffix.lower() != '.json'):
-        parser.error('--output must be a JSON file inside the scrapers directory')
+    root = args.output.resolve() if args.output else SCRAPERS
+    if not root.is_relative_to(SCRAPERS) or root.suffix.lower() == '.json' or (root.exists() and not root.is_dir()):
+        parser.error('--output must be a directory inside scrapers, not a JSON filename')
+    day = crawl_day()
+    if run_report is not None:
+        run_report.update({'crawl_date': day, 'collection': [], 'crosscheck': {'status': 'not_run'}})
     groups = []
     if args.url:
         for raw_url in args.url:
@@ -271,37 +241,58 @@ def main(argv=None) -> int:
                 continue
             for symbol in ([] if args.only_symbols else [None]) + symbols:
                 groups.append((source, symbol or 'market', discover(symbol, args.max_pages)))
-    selected_sources = list(dict.fromkeys(source for source, _, _ in groups))
-    outputs = {source: (args.output if len(selected_sources) == 1 else
-                       args.output.with_name(args.output.stem + '_' + source + '.json'))
-               if args.output else SOURCE_OUTPUTS[source] for source in selected_sources}
-    if args.output and any(path in {DEFAULT_OUTPUT, *SOURCE_OUTPUTS.values()} and
-                           path != SOURCE_OUTPUTS[source] for source, path in outputs.items()):
-        parser.error('--output cannot use a legacy or another source\'s reserved filename')
     try:
         if args.output is None:
-            migrate_legacy()
+            migrate_daily(root, [DEFAULT_OUTPUT, *SOURCE_OUTPUTS.values(),
+                                 SCRAPERS / 'news_trial.json'],
+                          read_articles, write_payload, output_lock)
     except (OSError, ValueError, TypeError) as exc:
-        print(f'Legacy migration failed; legacy file preserved: {exc}', file=sys.stderr)
+        if run_report is not None:
+            run_report['migration_error'] = str(exc)
+        print(f'Legacy migration failed; legacy files preserved: {exc}', file=sys.stderr)
         return 1
+    outputs = {}
+    for source, scope, candidates in groups:
+        output = daily_path(root, source, scope, day)
+        outputs.setdefault(output, []).append((source, scope, candidates))
     status = 0
-    for source, output in outputs.items():
+    for output, output_groups in outputs.items():
+        result = {'file': output.relative_to(root).as_posix(), 'source': output_groups[0][0],
+                  'scope': output_groups[0][1], 'saved': False, 'new_articles': 0,
+                  'results': [], 'status': 'failed'}
+        if run_report is not None:
+            run_report['collection'].append(result)
         source_args = argparse.Namespace(**vars(args))
         source_args.output = output
-        output.parent.mkdir(parents=True, exist_ok=True)
+        source_args.crawl_date = day
         try:
+            output.parent.mkdir(parents=True, exist_ok=True)
             with output_lock(output):
-                status |= collect(source_args, [group for group in groups if group[0] == source])
+                file_status = collect(source_args, output_groups, result)
+                status |= file_status
+                result['status'] = 'ok' if file_status == 0 else 'partial_or_failed'
         except FileExistsError:
+            result['error'] = 'Output file is locked by another collector'
             print(f'Another collector is writing {output}. If it crashed, remove its .lock file after verifying it stopped.', file=sys.stderr)
             status = 1
         except (OSError, ValueError, TypeError) as exc:
-            print(f'{source} collection failed; existing output preserved: {exc}', file=sys.stderr)
+            result['error'] = str(exc)
+            print(f'Collection failed; existing output preserved: {exc}', file=sys.stderr)
             status = 1
+    from news_crosscheck import crosscheck_news
+    try:
+        cross_summary = crosscheck_news(root, [scope for _, scope, _ in groups])
+        if run_report is not None:
+            run_report['crosscheck'] = {'status': 'ok', 'scopes': cross_summary}
+    except (OSError, ValueError, TypeError) as exc:
+        if run_report is not None:
+            run_report['crosscheck'] = {'status': 'failed', 'error': str(exc)}
+        print(f'Cross-check failed; collection data retained: {exc}', file=sys.stderr)
+        status = 1
     return status
 
 
-def collect(args, groups):
+def collect(args, groups, result=None):
 
     source = groups[0][0]
     articles = read_articles(args.output, source)
@@ -324,6 +315,8 @@ def collect(args, groups):
                 if not url or url in seen:
                     continue
                 seen.add(url)
+                if args.new_only and url in articles:
+                    continue
                 article = articles.get(url) or fetched.get(url)
                 if article is None or not article.get('content'):
                     try:
@@ -339,9 +332,13 @@ def collect(args, groups):
                         print(f'Failed to fetch {url}: {exc}', file=sys.stderr)
                         continue
                 # Symbol tabs provide explicit association; direct URLs are intentional.
+                if args.new_only and article['url'] in articles:
+                    continue
                 if scope == 'market' and not relevant({**article, 'symbols': candidate.get('symbols', [])}):
                     continue
                 merge_context(article, candidate, scope)
+                article['marker'] = 'uncheck'
+                article.pop('cross_check', None)
                 if article['url'] not in articles:
                     added += 1
                 articles[article['url']] = article
@@ -357,15 +354,20 @@ def collect(args, groups):
         if accepted < args.limit:
             print(f'{source}/{scope}: quota not filled within discovery bound (--max-pages {args.max_pages})', file=sys.stderr)
 
+    if result is not None:
+        result.update({'results': report, 'total_articles': len(articles)})
     if not articles:
         print("No valid articles found; output was not changed", file=sys.stderr)
         return 1
     if not any(row['accepted'] for row in report):
         print('No usable articles this run; output was not changed', file=sys.stderr)
         return 1
-    payload = {"schema_version": "1.1", "source": source, "articles": list(articles.values()),
+    payload = {"schema_version": "1.2", "source": source, "crawl_date": args.crawl_date,
+               "timezone": "Asia/Ho_Chi_Minh", "articles": list(articles.values()),
                'last_run': {'at': datetime.now(timezone.utc).isoformat(), 'results': report}}
     write_payload(args.output, payload)
+    if result is not None:
+        result.update({'saved': True, 'new_articles': added})
     print(f"Saved {len(articles)} articles ({added} new) to {args.output}")
     return int(any(row['errors'] or row['accepted'] < args.limit for row in report))
 

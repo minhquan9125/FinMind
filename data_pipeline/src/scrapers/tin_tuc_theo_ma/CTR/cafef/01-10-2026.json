@@ -1,0 +1,336 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "01-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "1602e3b044a2274f0756",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctr-2979295/ctr-nghi-quyet-hdqt-thong-qua-hop-dong-tin-dung-han-muc-voi-ngan-hang-bidv.chn",
+      "title": "CTR: Nghị quyết HĐQT thông qua hợp đồng tín dụng hạn mức với Ngân hàng BIDV",
+      "description": "CTR: Nghị quyết HĐQT thông qua hợp đồng tín dụng hạn mức với Ngân hàng BIDV",
+      "content": "Tổng Công ty Cổ phần Công trình Viettel thông báo Nghị quyết HĐQT số 84 ngày 17/09/2026 như sau: Các tập tin đính kèm 20260918 - CTR - Nghi quyet HDQT.pdf Theo HOSE",
+      "published_at": "2026-09-17T17:00:00+00:00",
+      "crawled_at": "2026-10-01T09:01:41.627752+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/180926/ctr-nghi-quyet-h-qt-so-84-ngay-17-09-2026-0.pdf?v=1789723390556"
+      ],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6606060606060605,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctr-nghi-quyet-hdqt-so-84-ngay-17-09-2026/41858628",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "5c4898c2cf0911483d5c",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctr-2979320/ctr-nghi-quyet-hdqt-thong-qua-cac-hop-dong-tin-dung.chn",
+      "title": "CTR: Nghị quyết HĐQT thông qua các hợp đồng tín dụng",
+      "description": "CTR: Nghị quyết HĐQT thông qua các hợp đồng tín dụng",
+      "content": "Tổng Công ty Cổ phần Công trình Viettel thông báo Nghị quyết HĐQT số 84, 85 ngày 17/09/2026 như sau: Các tập tin đính kèm 20260918 - CTR - Nghi quyet HDQT.pdf Theo HOSE",
+      "published_at": "2026-09-17T17:00:00+00:00",
+      "crawled_at": "2026-10-01T09:01:42.392729+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/180926/ctr-nghi-quyet-h-qt-so-84-85-ngay-17-09-2026-0.pdf?v=1789724420258"
+      ],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.5910633484162896,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctr-nghi-quyet-hdqt-so-84-ngay-17-09-2026/41858628",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "9cb52344c3dca524d1ed",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctr-2952725/ctr-2182026-giao-dich-13723654-cp-niem-yet-bo-sung.chn",
+      "title": "CTR: 21.8.2026, giao dịch 13.723.654 cp niêm yết bổ sung",
+      "description": "CTR: 21.8.2026, giao dịch 13.723.654 cp niêm yết bổ sung",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết của Tổng Công ty Cổ phần Công trình Viettel như sau: Các tập tin đính kèm 20260813 - CTR - TB vv giao dich cp thay doi niem yet.pdf Theo HOSE",
+      "published_at": "2026-08-13T17:00:00+00:00",
+      "crawled_at": "2026-10-01T09:01:43.189129+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/140826/ctr-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet-0.pdf"
+      ],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6506172839506172,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctr-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet/41429457",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "c1d46932ffefc091df07",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctr-2951257/ctr-1382026-niem-yet-bo-sung-13723654-cp.chn",
+      "title": "CTR: 13.8.2026, niêm yết bổ sung 13.723.654 cp",
+      "description": "CTR: 13.8.2026, niêm yết bổ sung 13.723.654 cp",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM Quyết định về việc chấp thuận cho Tổng Công ty Cổ phần Công trình Viettel được thay đổi đăng ký niêm yết như sau: Các tập tin đính kèm 20260811 - CTR - QD vv thay doi dang ky niem yet (tang).pdf Theo HOSE",
+      "published_at": "2026-08-11T17:00:00+00:00",
+      "crawled_at": "2026-10-01T09:01:44.052656+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/120826/ctr-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet-0.pdf"
+      ],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6402597402597403,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctr-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet/41395661",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "74309598c01e0dec81a6",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctr-2949671/ctr-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-20.chn",
+      "title": "CTR: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 20",
+      "description": "CTR: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 20",
+      "content": "Tổng Công ty Cổ phần Công trình Viettel thông báo Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 20 như sau: Các tập tin đính kèm 20260807 - CTR - Thay doi noi dung DKDN.pdf Theo HOSE",
+      "published_at": "2026-08-10T06:21:28+00:00",
+      "crawled_at": "2026-10-01T09:01:44.836431+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/100826/ctr-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-20-0.pdf"
+      ],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7838983050847458,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctr-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-20/41361400",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "cf5e01f46b12f5a45072",
+      "source": "cafef",
+      "url": "https://cafef.vn/viettel-construction-co-tong-giam-doc-moi-188260731144429388.chn",
+      "title": "Viettel Construction có Tổng Giám đốc mới",
+      "description": "Vị CEO mới này có hơn hai thập kỷ kinh nghiệm trong hệ sinh thái Viettel và được biết đến với nhiều dấu ấn trong quá trình chuyển đổi doanh nghiệp.",
+      "content": "CTR: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 30/7/2026, Tổng Công ty Cổ phần Công trình Viettel (Viettel Construction, mã: CTR) tổ chức Lễ chuyển giao chức vụ Tổng Giám đốc. Theo quyết định của Hội đồng Quản trị, đồng chí Phạm Đình Trường kết thúc nhiệm kỳ Tổng Giám đốc để đảm nhiệm cương vị Phó Chủ tịch Hội đồng Quản trị; đồng chí Trần Trung Hưng được bổ nhiệm giữ chức vụ Tổng Giám đốc Tổng Công ty. Đồng chí Phạm Đình Trường đảm nhiệm cương vị Tổng Giám đốc Viettel Construction trong giai đoạn doanh nghiệp đứng trước yêu cầu chuyển đổi mạnh mẽ cả về quy mô lẫn mô hình tăng trưởng. Dưới sự điều hành của đồng chí cùng tập thể Ban lãnh đạo, Viettel Construction không chỉ duy trì vị thế dẫn đầu trong lĩnh vực hạ tầng viễn thông mà còn mở rộng thành công sang các lĩnh vực xây dựng, năng lượng, vận hành khai thác và dịch vụ kỹ thuật, từng bước hình thành hệ sinh thái hạ tầng toàn diện. Trong giai đoạn 2019 – 2025, Viettel Construction ghi nhận sự tăng trưởng ấn tượng trên nhiều chỉ tiêu sản xuất kinh doanh. Doanh thu tăng từ 5.141 tỷ đồng lên hơn 14.000 tỷ đồng, gấp khoảng 2,7 lần; lợi nhuận trước thuế tăng từ 239,7 tỷ đồng lên 745 tỷ đồng, gấp hơn 3 lần. Thu nhập bình quân của người lao động tăng từ 21,58 triệu đồng lên 27,7 triệu đồng/người/tháng. Tổng Công ty duy trì quy mô hơn 11.000 cán bộ nhân viên, hoạt động tại 34 chi nhánh và mở rộng hiện diện tại hai thị trường quốc tế. Trên cương vị Phó Chủ tịch Hội đồng Quản trị , đồng chí Phạm Đình Trường sẽ tiếp tục đồng hành cùng Hội đồng Quản trị trong công tác hoạch định chiến lược, phát huy kinh nghiệm quản trị và đóng góp vào định hướng phát triển dài hạn của Tổng Công ty. Tiếp nhận vai trò Tổng Giám đốc là đồng chí Trần Trung Hưng , nhà quản trị có hơn hai thập kỷ kinh nghiệm trong hệ sinh thái Viettel và được biết đến với nhiều dấu ấn trong quá trình chuyển đổi doanh nghiệp. Gia nhập Viettel từ năm 2002, đồng chí bắt đầu công tác tại Viettel Post từ năm 2003 với vị trí nhân viên kinh doanh, sau đó đảm nhiệm nhiều vị trí lãnh đạo trước khi trở thành Thành viên Hội đồng Quản trị kiêm Tổng Giám đốc, Phó Chủ tịch Hội đồng Quản trị kiêm Tổng Giám đốc Viettel Post. Giai đoạn 2022 – 2026, đồng chí được Tập đoàn Viettel giao điều hành Star Telecom (Unitel) tại Lào trước khi được bổ nhiệm giữ chức vụ Tổng Giám đốc Viettel Construction. Tại Viettel Post, đồng chí Trần Trung Hưng cùng tập thể lãnh đạo thúc đẩy quá trình chuyển đổi từ doanh nghiệp chuyển phát truyền thống sang doanh nghiệp logistics ứng dụng công nghệ; đầu tư hệ thống chia chọn tự động, kho vận thông minh, phát triển hệ sinh thái phục vụ thương mại điện tử và đưa doanh nghiệp niêm yết trên UPCoM. Trên cương vị Tổng Giám đốc Star Telecom (Unitel), đồng chí tiếp tục dẫn dắt quá trình chuyển đổi từ nhà mạng viễn thông truyền thống sang doanh nghiệp công nghệ và nền tảng số; phát triển các lĩnh vực tài chính số, chính phủ số, giáo dục số, y tế số, nội dung số và logistics, góp phần nâng cao vị thế của Unitel tại thị trường Lào. Viettel Construction đặt mục tiêu trở thành doanh nghiệp tỷ đô vào năm 2030 , tiếp tục mở rộng hệ sinh thái hạ tầng, đẩy mạnh đổi mới công nghệ, nâng cao năng lực quản trị và phát triển bền vững.",
+      "published_at": "2026-07-31T14:45:00",
+      "crawled_at": "2026-10-01T09:01:45.589420+00:00",
+      "attachments": [],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.020337790288529205,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/viettel-construction-du-phong-100-voi-3-khoan-no-xau-lien-quan-flc-novaland/41796128",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "ed3c708060d76a2dde8e",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctr-2942932/ctr-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026.chn",
+      "title": "CTR: Báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026",
+      "description": "CTR: Báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026",
+      "content": "Tổng Công ty Cổ phần Công trình Viettel báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026 như sau: Các tập tin đính kèm 20260730 - CTR - Bao cao tinh hinh QTCT 6 thang dau nam 2026.pdf Theo HOSE",
+      "published_at": "2026-07-30T17:00:00+00:00",
+      "crawled_at": "2026-10-01T09:01:46.353078+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/310726/ctr-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026-0.pdf"
+      ],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.19833333333333333,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctr-nghi-quyet-hdqt-so-84-ngay-17-09-2026/41858628",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "d3fb0d6a7ede42f664c7",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctr-2942131/ctr-bao-cao-phat-trien-ben-vung-2025.chn",
+      "title": "CTR: Báo cáo phát triển bền vững 2025",
+      "description": "CTR: Báo cáo phát triển bền vững 2025",
+      "content": "Tổng Công ty Cổ phần Công trình Viettel công bố Báo cáo phát triển bền vững 2025 như sau: Các tập tin đính kèm 20260730 - CTR - Bao cao phat trien ben vung 2025.pdf Theo HOSE",
+      "published_at": "2026-07-30T10:54:28+00:00",
+      "crawled_at": "2026-10-01T09:01:47.192144+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/300726/ctr-bao-cao-phat-trien-ben-vung-2025-0.pdf"
+      ],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.19245283018867926,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctr-nghi-quyet-hdqt-so-84-ngay-17-09-2026/41858628",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "7a06b9dee3083f5f3236",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctr-2941648/ctr-thong-bao-thay-doi-nhan-su-kem-cac-quyet-dinh.chn",
+      "title": "CTR: Thông báo thay đổi nhân sự (Kèm các Quyết định)",
+      "description": "CTR: Thông báo thay đổi nhân sự (Kèm các Quyết định)",
+      "content": "Tổng Công ty Cổ phần Công trình Viettel thông báo thay đổi nhân sự (Kèm các Quyết định) như sau: Các tập tin đính kèm 20260730 - CTR - Thong bao thay doi nhan su - Bo nhiem PCT HDQT, TGD.pdf Theo HOSE",
+      "published_at": "2026-07-30T07:11:28+00:00",
+      "crawled_at": "2026-10-01T09:01:48.045316+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/300726/ctr-thong-bao-thay-doi-nhan-su-kem-cac-quyet-dinh-0.pdf"
+      ],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.23448275862068965,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctr-nghi-quyet-hdqt-so-84-ngay-17-09-2026/41858628",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    },
+    {
+      "id": "cc0c892480c8f55d4fcf",
+      "source": "cafef",
+      "url": "https://cafef.vn/mot-doanh-nghiep-quan-doi-bao-lai-quy-2-tang-truong-manh-188260729113141638.chn",
+      "title": "Một doanh nghiệp quân đội báo lãi quý 2 tăng trưởng mạnh",
+      "description": "Lũy kế nửa đầu năm 2026, công ty ghi nhận doanh thu thuần đạt 7.959 tỷ đồng và lãi trước thuế 402 tỷ đồng, lần lượt tăng trưởng 33% và 20% so với nửa đầu năm 2025.",
+      "content": "CTR: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Tổng Công ty cổ phần Công trình Viettel (Viettel Construction, mã: CTR) đã công bố báo cáo tài chính quý 2/2026 với doanh thu thuần tăng 28% so với cùng kỳ, đạt 4.154 tỷ đồng. Trong cơ cấu doanh thu, mảng xây dựng công trình đóng góp nhiều nhất, mang lại hơn 1.600 tỷ đồng trong quý 2, tăng trưởng 49% so với cùng kỳ. Tiếp đến là thu từ dịch vụ vận hành khai thác và ứng cứu thông tin đem về 1.432 tỷ đồng, giảm nhẹ 3% so với cùng kỳ. Mảng ghi nhận tốc độ tăng trưởng mạnh nhất là giải pháp tích hợp và dịch vụ kỹ thuật, đạt 849 tỷ đồng trong quý 2, tăng 80% so với cùng kỳ. Trong đó, đà tăng trưởng tích cực nhờ giải pháp điện mặt trời áp mái. Tính đến cuối tháng 6, CTR đã nâng tỷ lệ phủ sóng của tấm pin năng lượng mặt trời lên 45% số xã/phường trên toàn quốc (1.459/3.321 xã/phường), đồng thời duy trì khoảng 50% thị phần ở mảng điện mặt trời tự sản tự tiêu. Khấu trừ chi phí vốn, lợi nhuận gộp của CTR đạt 258 tỷ đồng, tăng 10% so với quý 2 năm ngoái. Nguồn: BCTC quý 2/2026 của CTR. Ngoài ra, Viettel Construction ghi nhận doanh thu tài chính hơn 55 tỷ đồng, gấp 2,5 lần cùng kỳ năm trước trong khi chi phí tài chính tăng chưa đầy 30%. Tương tự, chi phí quản lý doanh nghiệp ghi nhận mức tăng gần 40% so với cùng kỳ. Kết quả, Viettel Construction báo lãi trước thuế đạt hơn 213 tỷ đồng, tăng trưởng 17% so với cùng kỳ. Lũy kế nửa đầu năm 2026, công ty ghi nhận doanh thu thuần đạt 7.959 tỷ đồng và lãi trước thuế 402 tỷ đồng, lần lượt tăng trưởng 33% và 20% so với nửa đầu năm 2025. Như vậy, Viettel Construction đã hoàn thành 51% kế hoạch doanh thu và 52% mục tiêu lợi nhuận cả năm đề ra. ﻿",
+      "published_at": "2026-07-29T11:31:00",
+      "crawled_at": "2026-10-01T09:01:48.699545+00:00",
+      "attachments": [],
+      "symbols": [
+        "CTR"
+      ],
+      "matched_symbols": [
+        "CTR"
+      ],
+      "scopes": [
+        "CTR"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.040236686390532544,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ctck-diem-ten-10-co-phieu-trien-vong-tich-cuc-phu-hop-de-xuong-tien-nam-giu-trung-dai-han/41407346",
+        "matched_file": "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:01:54.451648+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-01T09:01:48.700668+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "CTR",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

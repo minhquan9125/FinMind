@@ -1,0 +1,429 @@
+{
+  "schema_version": "1.0",
+  "started_at": "2026-10-01T09:12:57.852432+00:00",
+  "finished_at": "2026-10-01T09:13:15.614672+00:00",
+  "symbols": [
+    "VIC",
+    "VJC"
+  ],
+  "limit": 10,
+  "scopes": [
+    "market",
+    "VIC",
+    "VJC"
+  ],
+  "new_only": false,
+  "status": "ok",
+  "summary": {
+    "requested_collection_groups": 6,
+    "successful_collection_groups": 6,
+    "accepted_articles": 60,
+    "new_article_records": 41,
+    "saved_files": 6,
+    "created_files": 4,
+    "crosschecked_records": 100,
+    "check_records": 8,
+    "uncheck_records": 92,
+    "analyzed_uncheck_articles": 91,
+    "rewritten_candidate_pairs": 3,
+    "rewritten_candidate_articles": 6,
+    "same_title_candidate_pairs": 0
+  },
+  "collector": {
+    "crawl_date": "01-10-2026",
+    "collection": [
+      {
+        "file": "tin_tuc_chung/cafef/01-10-2026.json",
+        "source": "cafef",
+        "scope": "market",
+        "saved": true,
+        "new_articles": 0,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "market",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 22
+      },
+      {
+        "file": "tin_tuc_theo_ma/VIC/cafef/01-10-2026.json",
+        "source": "cafef",
+        "scope": "VIC",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "VIC",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "source": "cafef",
+        "scope": "VJC",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "VJC",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "source": "fireant",
+        "scope": "market",
+        "saved": true,
+        "new_articles": 1,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "market",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 32
+      },
+      {
+        "file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "source": "fireant",
+        "scope": "VIC",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "VIC",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/VJC/fireant/01-10-2026.json",
+        "source": "fireant",
+        "scope": "VJC",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "VJC",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      }
+    ],
+    "crosscheck": {
+      "status": "ok",
+      "scopes": [
+        {
+          "scope": "VIC",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        },
+        {
+          "scope": "VJC",
+          "total": 20,
+          "check": 2,
+          "uncheck": 18
+        },
+        {
+          "scope": "market",
+          "total": 60,
+          "check": 6,
+          "uncheck": 54
+        }
+      ]
+    }
+  },
+  "event_analysis": {
+    "status": "ok",
+    "summary": {
+      "uncheck_records": 92,
+      "unique_uncheck_articles": 91,
+      "unique_candidate_pairs": 3,
+      "unique_rewritten_candidate_pairs": 3,
+      "unique_same_title_candidate_pairs": 0,
+      "unique_uncheck_articles_with_candidates": 6,
+      "unique_uncheck_articles_with_rewritten_candidates": 6,
+      "unique_uncheck_articles_without_candidates": 85
+    }
+  },
+  "inventory": {
+    "folders": [
+      {
+        "folder": "tin_tuc_theo_ma/CTR/cafef",
+        "scope": "CTR",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/CTR/cafef/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/CTR/fireant",
+        "scope": "CTR",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/CTR/fireant/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/FPT/cafef",
+        "scope": "FPT",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/FPT/fireant",
+        "scope": "FPT",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/FPT/fireant/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/HPG/cafef",
+        "scope": "HPG",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 1,
+        "uncheck": 9,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/HPG/fireant",
+        "scope": "HPG",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 1,
+        "uncheck": 9,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/TPB/cafef",
+        "scope": "TPB",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 1,
+        "uncheck": 9,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/TPB/fireant",
+        "scope": "TPB",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 1,
+        "uncheck": 9,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/VCB/cafef",
+        "scope": "VCB",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/VCB/cafef/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/VCB/fireant",
+        "scope": "VCB",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_theo_ma/VIC/cafef",
+        "scope": "VIC",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/VIC/cafef/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/VIC/fireant",
+        "scope": "VIC",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/VJC/cafef",
+        "scope": "VJC",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 1,
+        "uncheck": 9,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/VJC/fireant",
+        "scope": "VJC",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/VJC/fireant/01-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 1,
+        "uncheck": 9,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_chung/cafef",
+        "scope": "market",
+        "source": "cafef",
+        "json_files": 2,
+        "readable_files": 2,
+        "files": [
+          "tin_tuc_chung/cafef/01-10-2026.json",
+          "tin_tuc_chung/cafef/30-09-2026.json"
+        ],
+        "articles": 25,
+        "check": 3,
+        "uncheck": 22,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_chung/fireant",
+        "scope": "market",
+        "source": "fireant",
+        "json_files": 2,
+        "readable_files": 2,
+        "files": [
+          "tin_tuc_chung/fireant/01-10-2026.json",
+          "tin_tuc_chung/fireant/30-09-2026.json"
+        ],
+        "articles": 35,
+        "check": 3,
+        "uncheck": 32,
+        "unmarked": 0,
+        "created_files": 0
+      }
+    ],
+    "errors": []
+  },
+  "errors": []
+}

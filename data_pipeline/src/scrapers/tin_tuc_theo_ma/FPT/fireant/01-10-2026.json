@@ -1,0 +1,375 @@
+{
+  "schema_version": "1.2",
+  "source": "fireant",
+  "crawl_date": "01-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "87ed5c6b2dfe752380a9",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/mot-co-phieu-ngan-hang-duoc-mua-rong-dot-bien-400-ty-dong-trong-phien-29-9/42008611",
+      "title": "Một cổ phiếu ngân hàng được mua ròng đột biến 400 tỷ đồng trong phiên 29/9",
+      "description": "Tự doanh CTCK mua ròng đột biến 802 tỷ đồng trên HoSE.",
+      "published_at": "2026-09-29T18:11:00+07:00",
+      "symbols": [
+        "CTG",
+        "DPM",
+        "FPT",
+        "GMD",
+        "HHP",
+        "HPG",
+        "VCB",
+        "VIC",
+        "VN30",
+        "VNINDEX"
+      ],
+      "provider_id": "42008611",
+      "category": "Thị trường",
+      "content": "Tự doanh CTCK mua ròng đột biến 802 tỷ đồng trên HoSE. Sau phiên giảm điểm với áp lực bán gia tăng khá mạnh, tâm lý nhà đầu tư kém tích cực. Thị trường tiếp tục chịu áp lực điều chỉnh trong phiên 29/9. Kết phiên VN-Index giảm 2,95 điểm (-0,17%) về mức 1.777,73 điểm. Về giao dịch khối ngoại, nhóm NĐTNN tiếp đà bán ròng 377 tỷ đồng trong phiên hôm nay. Tự doanh CTCK mua ròng đột biến 802 tỷ đồng trên HoSE. Cụ thể, VPB được mua ròng mạnh nhất với giá trị 388 tỷ đồng. Theo sau là GMD (216 tỷ), TCB (112 tỷ), FPT (29 tỷ), VCB (23 tỷ), VIC (16 tỷ), BID và HHP cùng 14 tỷ, VHM (12 tỷ) và MSN (9 tỷ đồng). Chiều ngược lại, nhóm tự doanh CTCK bán ròng mạnh nhất tại MBB với giá trị -16 tỷ đồng, tiếp theo là HPG và FUEVFVND cùng -10 tỷ, KOS (-9 tỷ) và CTG (-6 tỷ đồng). Một số cổ phiếu khác cũng ghi nhận lực bán ròng như VTP (-3 tỷ), MSB (-2 tỷ), POW, HCM và DPM cùng -1 tỷ đồng.﻿ Link gốc",
+      "crawled_at": "2026-10-01T00:49:18.374993+00:00",
+      "matched_symbols": [
+        "FPT",
+        "HPG"
+      ],
+      "scopes": [
+        "FPT",
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.002816901408450704,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/tcbs-fpt-viet-code-bang-ai-nhanh-hon-30-nhung-nang-suat-du-an-chi-tang-10-188260927211625866.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "3f0d4c64f49dcde20f1b",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/ssi-du-bao-ket-qua-kinh-doanh-quy-3-2026-cua-42-doanh-nghiep-masan-viglacera-tang-bang-lan-sacombank-du-bao-giam-45/42007944",
+      "title": "SSI dự báo kết quả kinh doanh quý 3/2026 của 42 doanh nghiệp: Masan, Viglacera tăng bằng lần, Sacombank dự báo giảm 45%",
+      "description": "SSI Research vừa công bố ước tính kết quả kinh doanh quý 3/2026 của nhiều doanh nghiệp và ngân hàng.",
+      "published_at": "2026-09-29T17:01:00+07:00",
+      "symbols": [
+        "CTG",
+        "FPT",
+        "HDG",
+        "HPG",
+        "NT2",
+        "PHR",
+        "PVD",
+        "SSI",
+        "STB",
+        "VCB"
+      ],
+      "provider_id": "42007944",
+      "category": "Thị trường",
+      "content": "SSI Research vừa công bố ước tính kết quả kinh doanh quý 3/2026 của nhiều doanh nghiệp và ngân hàng. Trong nhóm doanh nghiệp phi tài chính, Masan Group (MSN) được SSI Research ước tính đạt 4.200 tỷ đồng lợi nhuận sau thuế trong quý 3/2026, tăng 125% so với cùng kỳ và 11% so với quý trước. Theo báo cáo, tăng trưởng lợi nhuận chủ yếu đến từ đóng góp đột biến của mảng khai khoáng, trong khi mảng bán lẻ tiêu dùng cốt lõi tiếp tục tăng trưởng ở mức vừa phải. Hòa Phát ( HPG ) được dự báo đạt 5.500 tỷ đồng lợi nhuận sau thuế, tăng 37% so với cùng kỳ nhưng giảm 14% so với quý trước. SSI Research kỳ vọng lợi nhuận giảm so với quý trước do chi phí đầu vào tăng nhanh hơn giá thép trong quý 3/2026, cùng với môi trường lãi suất cao hơn làm tăng chi phí lãi vay. Vinhomes (VHM) được dự báo đạt 4.601 tỷ đồng lợi nhuận sau thuế, tăng 3,7% so với cùng kỳ nhưng giảm 83% so với quý trước. Lợi nhuận quý 3/2026 dự kiến chủ yếu đến từ bàn giao tại các dự án đang triển khai gồm Golden City, Wonder City, Royal Island và Green Paradise. PV GAS (GAS) được SSI Research dự báo đạt 4.076 tỷ đồng lợi nhuận sau thuế, tăng 60% so với cùng kỳ nhưng giảm 30% so với quý trước. Tăng trưởng lợi nhuận chủ yếu đến từ giá dầu cao hơn so với cùng kỳ và sản lượng cải thiện trong bối cảnh điều kiện thủy văn kém thuận lợi hơn quý 3/2025 và nhu cầu điện gia tăng, dẫn đến việc đẩy mạnh mức độ huy động các nhà máy điện khí. Thế Giới Di Động (MWG) được dự báo đạt 3.000 tỷ đồng lợi nhuận sau thuế, tăng 68% so với cùng kỳ nhưng giảm 11% so với quý trước. Tăng trưởng lợi nhuận được hỗ trợ bởi nhu cầu thay thế và nâng cấp sản phẩm công nghệ và điện máy, cùng với sự cải thiện liên tục của chuỗi bách hóa. FPT được dự báo đạt 2.781 tỷ đồng lợi nhuận sau thuế, tăng 14% so với cùng kỳ và 8% so với quý trước. SSI Research cho rằng mảng công nghệ sẽ là động lực chính với tăng trưởng doanh thu hai chữ số. Trong khi doanh thu mảng giáo dục có thể đi ngang hoặc giảm nhẹ, lợi nhuận các mảng khác được dự báo tăng trưởng nhờ kết quả kinh doanh của các công ty liên doanh, liên kết. Ở nhóm ngân hàng, VietinBank ( CTG ) được dự báo đạt 13.500 tỷ đồng lợi nhuận trước thuế trong quý 3/2026, tăng 27% so với cùng kỳ nhưng giảm 8% so với quý trước. SSI Research dự báo lợi nhuận tăng nhờ lợi nhuận cốt lõi vững chắc, biên lãi ròng ổn định, thu nhập ròng từ hoạt động dịch vụ tăng mạnh và thu nhập từ thu hồi nợ đã xử lý tích cực. Vietcombank ( VCB ) được kỳ vọng đạt 12.800 tỷ đồng lợi nhuận trước thuế, tăng 14% so với cùng kỳ nhưng giảm 27% so với quý trước, nhờ tăng trưởng tín dụng và huy động ở mức khoảng 8-9% so với đầu năm, tương đương tăng 12% so với cùng kỳ, cùng biên lãi ròng phục hồi từ mức đáy của quý 3/2025. Một số trường hợp được dự báo có mức tăng trưởng cao như Viglacera (VGC) được ước tính đạt 331 tỷ đồng lợi nhuận sau thuế, tăng 183% so với cùng kỳ. SSI Research cho biết tăng trưởng chủ yếu đến từ việc bắt đầu ghi nhận doanh thu cho thuê đất tại khu công nghiệp Trấn Yên, với doanh thu đạt 290 tỷ đồng, cùng việc mảng sản xuất kính dự kiến có lãi trở lại so với mức lỗ 52 tỷ đồng cùng kỳ năm trước. Cao su Phước Hòa ( PHR ) được dự báo đạt 576 tỷ đồng lợi nhuận sau thuế, tăng 118% so với cùng kỳ và 56% so với quý trước. Thu nhập bồi thường đất từ dự án khu công nghiệp VSIP 3 được ước tính đạt 600 tỷ đồng. Điện lực Dầu khí Nhơn Trạch 2 ( NT2 ) được dự báo đạt 428 tỷ đồng lợi nhuận sau thuế, tăng 100% so với cùng kỳ và 39% so với quý trước. Sản lượng được dự báo tăng 40-50% so với cùng kỳ do điều kiện thủy văn kém thuận lợi hơn quý 3/2025, nguồn cung khí được đảm bảo và chi phí khấu hao giảm. FPT Retail (FRT) được ước tính đạt 530 tỷ đồng lợi nhuận sau thuế, tăng 99% so với cùng kỳ và 18% so với quý trước. Tăng trưởng lợi nhuận được thúc đẩy bởi việc tiếp tục mở rộng mạng lưới cửa hàng, cải thiện hiệu quả hoạt động tại các nhà thuốc hiện hữu, cùng nhu cầu nâng cấp và thay thế các sản phẩm công nghệ. Ở chiều giảm, IDICO (IDC) là một trong những trường hợp giảm mạnh nhất trong danh sách, với lợi nhuận sau thuế quý 3/2026 ước đạt 457 tỷ đồng, giảm 53% so với cùng kỳ và 29% so với quý trước. Diện tích đất khu công nghiệp bàn giao được SSI Research ước tính đạt 10 ha trong quý 3/2026, giảm 71% so với cùng kỳ, chủ yếu tại khu công nghiệp Hữu Thạnh và khu công nghiệp Phú Mỹ II mở rộng. Sacombank ( STB ) được dự báo đạt 2.000 tỷ đồng lợi nhuận trước thuế, giảm 45% so với cùng kỳ và 2% so với quý trước do chi phí dự phòng ở mức cao. Tăng trưởng tín dụng dự kiến tăng tốc từ quý 3/2026, đặc biệt ở phân khúc doanh nghiệp lớn. Hà Đô ( HDG ) được dự báo đạt 176 tỷ đồng lợi nhuận sau thuế, giảm 38% so với cùng kỳ và 30% so với quý trước. Điều kiện thủy văn tiếp tục kém thuận lợi có thể gây áp lực lên lợi nhuận, trong khi tiến độ bán hàng tại dự án Hado Charm Villas có thể vẫn hạn chế do môi trường lãi suất cao. PV Drilling ( PVD ) được dự báo đạt 200 tỷ đồng lợi nhuận sau thuế, giảm 28% so với cùng kỳ nhưng tăng 13% so với quý trước. SSI Research kỳ vọng lợi nhuận giảm do chi phí tăng từ khoản đầu tư giàn PVD IX trong khi đóng góp lợi nhuận của giàn này chưa phản ánh điều kiện thị trường. Khang Điền (KDH) được dự báo đạt 185 tỷ đồng lợi nhuận sau thuế, giảm 22% so với cùng kỳ và 75% so với quý trước. Lợi nhuận quý 3/2026 chủ yếu đến từ bàn giao các sản phẩm thấp tầng tại dự án Gladia. Lợi nhuận ròng dự kiến giảm mạnh so với quý trước do nền cao của quý 2/2026, khi có khoản lãi tài chính bất thường từ việc ngừng hợp nhất Bình Trưng Mới. Link gốc",
+      "crawled_at": "2026-10-01T00:49:18.617611+00:00",
+      "matched_symbols": [
+        "FPT",
+        "HPG"
+      ],
+      "scopes": [
+        "FPT",
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.023716517857142856,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/sau-man-hat-tai-sinh-cua-ong-truong-gia-binh-moi-thang-fpt-co-them-6000-co-dong-moi-san-van-dong-lon-nhat-the-gioi-va-my-dinh-cong-lai-khong-du-suc-chua-188260928184735504.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "2bb5a16295d7cec64d13",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/fpt-co-gan-182-000-co-dong-khoi-ngoai-con-nam-28-5-von/42002502",
+      "title": "FPT: Có gần 182.000 cổ đông, khối ngoại còn nắm 28,5% vốn",
+      "description": "Số lượng cổ đông của FPT tăng mạnh trong năm 2025 và 2026, theo hướng gia tăng nhà đầu tư cá nhân nhỏ lẻ. Khối ngoại từ tỷ lệ sở hữu 49% cuối năm 2022 giờ chỉ còn nắm giữ 28,5% vốn doanh nghiệp.",
+      "published_at": "2026-09-29T13:57:00+07:00",
+      "symbols": [
+        "FPT"
+      ],
+      "provider_id": "42002502",
+      "category": "Doanh nghiệp",
+      "content": "Số lượng cổ đông của FPT tăng mạnh trong năm 2025 và 2026, theo hướng gia tăng nhà đầu tư cá nhân nhỏ lẻ. Khối ngoại từ tỷ lệ sở hữu 49% cuối năm 2022 giờ chỉ còn nắm giữ 28,5% vốn doanh nghiệp. Cổ đông FPT đến dự họp ĐHĐCĐ thường niên năm 2026. Ảnh: Hà Anh/Mekong ASEAN Theo báo cáo kết quả phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu của CTCP FPT (mã FPT ) công bố trên HoSE ngày 28/9, tập đoàn công nghệ này có 181.748 cổ đông. Trong đợt phát hành vừa qua, FPT đã phân phối thành công hơn 171,4 triệu cổ phiếu theo tỷ lệ 10:1, tương ứng cổ đông sở hữu 10 cổ phiếu được nhận thêm một cổ phiếu mới. Sau đợt phát hành, vốn điều lệ của FPT tăng từ hơn 17.143 tỷ đồng lên hơn 18.857 tỷ đồng. Số cổ phiếu mới dự kiến được chuyển giao trong tháng 10/2026. Số lượng cổ đông của FPT đã tăng mạnh trong những năm gần đây, từ hơn 44.000 người vào cuối năm 2022 lên gần 182.000 người vào tháng 9/2026. Theo các báo cáo thường niên của doanh nghiệp, tại thời điểm cuối tháng 12/2022, FPT có 44.358 cổ đông. Trong đó, ông Trương Gia Bình - Chủ tịch HĐQT FPT là cổ đông lớn nhất với tỷ lệ sở hữu hơn 7% vốn điều lệ công ty; tiếp đến là Tổng công ty Đầu tư và Kinh doanh vốn Nhà nước, sở hữu 5,79% vốn điều lệ công ty. Năm 2023, 2024, số lượng cổ đông của FPT tăng nhưng không lớn, giữ ở mức quanh 50.000 người. Tuy nhiên sang năm 2025, số lượng cổ đông tăng vọt lên hơn 127.000 người và tiếp tục tăng lên trong năm 2026. Tại thời điểm cuối năm 2025, ông Trương Gia Bình vẫn là cổ đông lớn nhất tại công ty với tỷ lệ sở hữu 6,89% vốn điều lệ; tiếp theo là Tổng Công ty Đầu tư và Kinh doanh vốn Nhà nước, sở hữu 5,67% vốn điều lệ. Ngoài số lượng, cơ cấu cổ đông của FPT cũng có thay đổi đáng kể theo thời gian. Cuối năm 2022, số lượng cổ đông nắm giữ từ 1 triệu cổ phiếu trở lên là 181, chiếm 81,12% tổng số lượng cổ phiếu phát hành. Đến cuối năm 2025, nhóm này tăng lên 254 người nhưng tỷ lệ nắm giữ giảm xuống còn 72,88%. Số lượng cổ đông nắm giữ 1-999 cổ phiếu đông đảo nhất với 89.786 người; song nhóm này chỉ nắm giữ 1,15% cổ phần của doanh nghiệp. Đặc biệt, FPT từng kín “room ngoại” 49% (tỷ lệ sở hữu tối đa của nhà đầu tư nước ngoài) vào cuối năm 2022. Song đến cuối năm 2025, tỷ lệ nắm giữ của nhà đầu tư nước ngoài chỉ còn 38,73%. Từ đầu năm 2026 đến nay, khối ngoại vẫn tiếp tục rút ròng tại mã này. Theo báo cáo trên HoSE, tại ngày 29/9/2026, nhà đầu tư đang nắm giữ gần 488 triệu cổ phiếu FPT , chiếm gần 28,5% tổng số cổ phần của doanh nghiệp. Trên thị trường, cổ phiếu FPT đang giao dịch ở vùng giá hơn 63.000 đồng/cp, giảm hơn 30% so với hồi đầu năm nay và giảm khoảng 46% so với đỉnh lịch sử hồi đầu năm 2025. Link gốc",
+      "crawled_at": "2026-10-01T00:49:18.860717+00:00",
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.0927536231884058,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/sau-man-hat-tai-sinh-cua-ong-truong-gia-binh-moi-thang-fpt-co-them-6000-co-dong-moi-san-van-dong-lon-nhat-the-gioi-va-my-dinh-cong-lai-khong-du-suc-chua-188260928184735504.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "196d39d898d22737a433",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/tin-vui-cho-fpt-shop-dien-may-xanh-the-gioi-di-dong-viettel-store/41999984",
+      "title": "Tin vui cho FPT Shop, Điện Máy Xanh, Thế Giới Di Động, Viettel Store...",
+      "description": "Tin vui này được tiết lộ tại bảng xếp hạng Brand Conviction Index: Asia’s Top 100 Retailers - danh sách những nhà bán lẻ được tin tưởng nhất châu Á.",
+      "published_at": "2026-09-29T13:12:00+07:00",
+      "symbols": [
+        "DMX",
+        "FPT",
+        "MWG"
+      ],
+      "provider_id": "41999984",
+      "category": "Doanh nghiệp",
+      "content": "Tin vui này được tiết lộ tại bảng xếp hạng Brand Conviction Index: Asia’s Top 100 Retailers - danh sách những nhà bán lẻ được tin tưởng nhất châu Á. Brand Conviction Index: Asia’s Top 100 Retailers vừa được Inside Retail Asia công bố hôm nay. Đây là bảng xếp hạng đầu tiên được kiểm chứng độc lập về những nhà bán lẻ được tin tưởng nhất trong khu vực. Chỉ số được xây dựng dựa trên hơn 70.000 lượt khảo sát người tiêu dùng tại 11 thị trường châu Á và dữ liệu được YouGov BrandIndex theo dõi liên tục trong 12 tháng, tính đến ngày 31 tháng 5 năm 2026. Kết quả thách thức những quan niệm quen thuộc trong ngành bán lẻ Thương hiệu đứng đầu bảng xếp hạng Brand Conviction Index: Asia’s Top 100 Retailers (Chỉ số Niềm tin Thương hiệu: 100 nhà bán lẻ hàng đầu châu Á) lần đầu tiên được công bố không phải là thương hiệu có nhiều khách hàng nhất. Đó là Rolex. JD.com xếp thứ hai, Flipkart thứ ba và Shopee thứ tư. FairPrice đứng thứ tám, xếp trên Louis Vuitton (thứ 17) và Chanel (thứ 31). Các sàn thương mại điện tử chiếm ba trong bốn vị trí dẫn đầu. Thương hiệu xa xỉ và chuỗi siêu thị cùng góp mặt trong top 10, bên cạnh Cartier, Hermès và Omega. “Hầu hết các bảng xếp hạng bán lẻ cho bạn biết ai là người lớn nhất,” ông Robert Stockdill, Giám đốc Tin tức Toàn cầu của Inside Retail Asia, cho biết. “Brand Conviction Index cho thấy một điều quan trọng hơn về mặt thương mại: những thương hiệu nào thực sự được người tiêu dùng tin tưởng, và niềm tin đó lan tỏa đến đâu bên ngoài nhóm khách hàng hiện tại. Các thương hiệu đứng đầu bảng xếp hạng không chỉ được tin tưởng nhất mà còn khó bị thay thế nhất. Và những thương hiệu đạt điểm cao về mức độ được giới thiệu – khi số người sẵn sàng giới thiệu nhiều hơn số người đang mua sắm – đang sở hữu thứ mà không ngân sách marketing nào có thể tạo ra. Chính khách hàng đang giúp họ thu hút khách hàng mới.” “Chỉ số này đặc biệt đáng chú ý trong bối cảnh ngành bán lẻ đang có những thay đổi lớn. Các hệ thống agentic AI (Trí tuệ nhân tạo hành động độc lập) đang bắt đầu đưa ra quyết định mua hàng thay người tiêu dùng. Khi đó, các hệ thống AI sẽ ưu tiên đề xuất những thương hiệu đã được người tiêu dùng tin tưởng và sẵn sàng giới thiệu. Niềm tin thương hiệu giờ đây không còn đơn thuần là một chỉ số đo lường, mà là một tài sản thương mại có ảnh hưởng trực tiếp đến doanh thu tương lai.” “Ngành bán lẻ châu Á chưa bao giờ cạnh tranh khốc liệt như hiện nay. Nhiều thương hiệu hơn, nhiều kênh hơn, nhiều thị trường hơn, và ngày càng nhiều thương hiệu toàn cầu cùng theo đuổi một nhóm người tiêu dùng. Trong bối cảnh đó, niềm tin thương hiệu không chỉ tạo ra lợi thế lâu dài mà còn được củng cố và gia tăng theo thời gian. Những thương hiệu giành được niềm tin thực sự sẽ ít tốn kém hơn trong việc thu hút khách hàng, bảo vệ vị thế hiệu quả hơn khi đối thủ xuất hiện, và xây dựng được nguồn nhu cầu tương lai mà không ngân sách nào có thể sao chép. Bảng xếp hạng cho thấy một số thương hiệu được người tiêu dùng tin tưởng nhất ở châu Á không phải là những tên tuổi toàn cầu lớn nhất. Đó là những nhà bán lẻ địa phương và khu vực đã xây dựng được thứ còn giá trị hơn cả độ nhận biết thương hiệu. Họ đã xây dựng được niềm tin.” “Niềm tin thương hiệu là một khía cạnh của sức khỏe thương hiệu thường bị bỏ qua, bởi nó không chỉ được thể hiện qua hành vi mua hàng,” bà Angela Smith, Giám đốc Phát triển Khách hàng khu vực APAC của YouGov, chia sẻ. “Dữ liệu BrandIndex cho phép chúng tôi theo dõi cả người đang mua sắm với một thương hiệu lẫn những người đủ tin tưởng để giới thiệu thương hiệu đó cho người khác - và chính sự chênh lệch này thường hé lộ tiềm năng tăng trưởng thực sự. Việc theo dõi thương hiệu liên tục giúp doanh nghiệp nhìn thấy nhận thức của người tiêu dùng thay đổi ra sao theo thời gian, cũng như thương hiệu nào đang âm thầm tiến lên hay tụt lại. Hiểu rõ các khía cạnh khác nhau của sức khỏe thương hiệu là điều thiết yếu để đánh giá đúng hiệu quả hoạt động.” “Chúng ta đang chứng kiến hành vi người tiêu dùng thay đổi theo thời gian thực. Những quyết định trước đây có thể mất hàng giờ hoặc vài ngày tìm hiểu nay có thể chuyển từ khám phá đến mua hàng chỉ trong một cuộc trò chuyện. Khi nhu cầu mua sắm ngày càng được định hình rõ ràng hơn, những thương hiệu tạo dựng được niềm tin bằng thông tin phù hợp và đáng tin cậy không chỉ dễ được tìm thấy hơn, mà còn có nhiều khả năng được lựa chọn hơn. Chỉ số này cho thấy những nhà bán lẻ tại châu Á đã tạo dựng được vị thế đó,” ông Oliver Tan, Giám đốc Điều hành khu vực APAC của Rezolve Ai, cho biết. Các nhà bán lẻ Việt Nam xây dựng niềm tin thương hiệu trên nhiều ngành hàng Các chuỗi bán lẻ Việt Nam chiếm bảy trong số mười nhà bán lẻ điện tử và điện máy có mặt trong bảng xếp hạng. FPT Shop xếp thứ 11, Điện Máy Xanh thứ 12 và Thế Giới Di Động thứ 14 – cả ba đều nằm trong top 15 – tiếp theo là Viettel Store (thứ 30), Nguyễn Kim (thứ 53), Chợ Lớn (thứ 71) và MediaMart (thứ 100). Trong một ngành hàng mà việc mua điện thoại hay thiết bị gia dụng thường là quyết định được cân nhắc kỹ lưỡng, các nhà bán lẻ Việt Nam đã xây dựng niềm tin nhờ mạng lưới cửa hàng rộng khắp, hiện diện trên các kênh số và dịch vụ hậu mãi sau bán hàng. Kết quả là số người sẵn sàng giới thiệu vượt đáng kể số người đang mua hàng trong nhóm người tiêu dùng Việt Nam được khảo sát. Đây là một điểm khác biệt của ngành hàng này mà không thấy ở bất kỳ ngành hàng nào khác trong bảng xếp hạng. Chuỗi đại siêu thị GO! của Việt Nam cũng góp mặt trong bảng xếp hạng ở vị trí thứ 73. Hồ sơ thương hiệu cho thấy chuỗi này vẫn duy trì định vị giá rẻ từ thời Big C, đồng thời mở rộng các dịch vụ ăn uống, giải trí và nhiều tiện ích khác ngay trong siêu thị. Link gốc",
+      "crawled_at": "2026-10-01T00:49:19.507253+00:00",
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008601655933762649,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/2-ghe-nong-tai-tap-doan-cong-nghe-hang-dau-viet-nam-bat-ngo-doi-chu-18826092115533991.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "820edf2b4ef8e39bd77b",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/quy-ngoai-ty-usd-chang-ai-ngo-hoa-phat-fpt-the-gioi-di-dong-lai-roi-xuong-muc-dinh-gia-thap-nhu-vay/41987121",
+      "title": "Quỹ ngoại tỷ USD: Chẳng ai ngờ Hòa Phát, FPT, Thế Giới Di Động,… lại rơi xuống mức định giá thấp như vậy",
+      "description": "Đây là nhận định của ông Petri Deryng khi nhìn lại danh mục của quỹ ngoại tỷ USD Pyn Elite Fund.",
+      "published_at": "2026-09-28T19:27:00+07:00",
+      "symbols": [
+        "FPT",
+        "HPG",
+        "HVN",
+        "MWG",
+        "OCB",
+        "STB",
+        "VIB"
+      ],
+      "provider_id": "41987121",
+      "category": "Thị trường",
+      "content": "Đây là nhận định của ông Petri Deryng khi nhìn lại danh mục của quỹ ngoại tỷ USD Pyn Elite Fund. “Rẻ. Tất nhiên, mức giá rẻ vẫn có thể trở nên rẻ hơn nữa. Chẳng ai ngờ rằng các doanh nghiệp chất lượng này lại có thể rơi xuống mức định giá thấp như vậy trong năm nay, nhưng khi nguồn cung áp đảo hoàn toàn lực cầu, thì chuyện đó hoàn toàn có thể xảy ra”, ông Petri Deryng nói về danh mục của quỹ ngoại tỷ USD Pyn Elite Fund. Ông Petri Deryng cho rằng, không ai có thể biết chắc chắn khi nào làn sóng bán tháo sẽ chấm dứt và lực mua sẽ quay trở lại. Tuy nhiên, có một điều chắc chắn là khi tăng trưởng lợi nhuận tiếp diễn, tiềm năng tăng giá vẫn còn rất lớn trước khi các hệ số định giá chạm tới mức tương xứng với giá trị thực của doanh nghiệp. Tại ngày 16/9, 7 cổ phiếu gồm STB , HPG , MWG , FPT , HVN , VIB và OCB chiếm tổng cộng 67% danh mục quỹ. P/E gộp theo ước tính của quỹ ở mức 8,9 lần cho năm 2026, giảm còn 6 lần cho 2027 và 4,8 lần cho 2028. Nghịch lý định giá phản ánh rõ trên một số khoản đầu tư lớn của Pyn Elite Fund, có thể kể đến như HPG , FPT , MWG … Với Hòa Phát ( HPG ), lợi nhuận 12 tháng tăng trưởng vượt bậc, tăng 77% so với cùng kỳ năm ngoái, trong khi giá cổ phiếu lại giảm 11%. Triển vọng lợi nhuận trong những năm tới rất khả quan nhờ vào các dự án đầu tư cơ sở hạ tầng tại Việt Nam. Chỉ số P/E hiện ở mức khiêm tốn là 6,7 (tính riêng mảng thép) trong khi Pyn Elite Fund đánh giá mức P/E hợp lý phải là 12. Bên cạnh mảng kinh doanh thép, dự án bất động sản Đại lộ Sông Hồng sẽ giúp gia tăng đáng kể giá trị bảng cân đối kế toán của doanh nghiệp trong những năm tới, qua đó mang lại giá trị cộng thêm tiềm năng và đáng kể cho định giá cổ phiếu. Với Thế Giới Di Động ( MWG ), doanh số bán các mặt hàng gia dụng, điện tử, máy tính xách tay và điện thoại của MWG rất mạnh mẽ và mang lại lợi nhuận cao. Nhờ nguồn tiền mặt dồi dào, công ty đã thực hiện các đợt mua hàng vào thời điểm thích hợp và hưởng lợi từ việc giá chip nhớ tăng cao, do chip là linh kiện có mặt trong hầu hết các sản phẩm hiện nay. Tuy nhiên, chuỗi có tốc độ tăng trưởng nhanh nhất trong hệ thống của MWG lại là Bách Hóa Xanh – chuỗi bán lẻ thực phẩm và hàng tiêu dùng. Gần đây nhất, cả tốc độ mở cửa hàng mới lẫn mức tăng trưởng tổng doanh thu của chuỗi này đều đã tăng tốc lên trên mức 50%. MWG đã mở rộng nhanh chóng chuỗi cửa hàng thực phẩm và cải thiện khả năng sinh lời. Tuy nhiên, câu chuyện về lợi nhuận mới chỉ ở giai đoạn đầu, khi lợi thế quy mô bắt đầu mang lại hiệu quả cho chuỗi này. Kết quả kinh doanh của MWG trong ba quý vừa qua rất ấn tượng và vượt xa kỳ vọng. Pyn Elite Fund dự báo mức tăng trưởng lợi nhuận cao trong quý hiện tại. Quý cuối cùng của năm hứa hẹn sẽ bùng nổ nhờ nhu cầu mạnh mẽ của người tiêu dùng Việt Nam đối với mẫu iPhone 18 mới. Giá cổ phiếu đã giảm 18% từ đầu năm đến nay và hệ số P/E đã xuống dưới mức 9. Với FPT , Pyn Elite Fund đánh giá doanh nghiệp sở hữu tiềm năng tăng trưởng đáng kể so với, các đối thủ cùng ngành tại Ấn Độ. Trí tuệ nhân tạo (AI) hoàn toàn có thể mang lại lợi ích nhiều hơn là rủi ro cho FPT . Mặc dù cổ phiếu này từng chịu áp lực giảm mạnh do những lo ngại về AI, nhưng các đơn hàng mới của công ty lại cho thấy đà tăng trưởng tích cực cùng nhu cầu ngày càng cao đối với các dịch vụ tích hợp hệ thống, giải pháp CNTT và phát triển ứng dụng. Các đơn hàng mới và đà tăng trưởng lợi nhuận của FPT vẫn chưa đủ để hỗ trợ giá cổ phiếu của công ty. Quỹ ngoại này đánh giá FPT là một doanh nghiệp có chất lượng rất cao với lộ trình tăng trưởng đầy hứa hẹn trong thập kỷ tới, khi công ty tiếp tục mở rộng hoạt động ra quốc tế và gia tăng thị phần trong lĩnh vực dịch vụ CNTT toàn cầu. Nhìn chung, Pyn Elite Fund cho rằng các doanh nghiệp niêm yết của Việt Nam đang hướng tới một năm tăng trưởng lợi nhuận mạnh mẽ. Lợi nhuận trong nửa đầu năm tăng tới 46%. Theo ông Petri Deryng, ngay cả khi loại trừ các khoản mục bất thường, tăng trưởng lợi nhuận cả năm được dự báo vẫn có thể đạt 20–25%. Người đứng đầu Pyn Elite Fund cho biết, thị trường chung (không bao gồm Vingroup) hiện giao dịch ở mức P/E 8,8 lần, dựa trên các dự báo đồng thuận cho năm 2027. Trong bối cảnh nền kinh tế Việt Nam tăng trưởng mạnh trong năm nay, định giá cổ phiếu đã giảm xuống những mức thấp hiếm thấy trong lịch sử. Link gốc",
+      "crawled_at": "2026-10-01T00:49:19.756146+00:00",
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.02,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/tcbs-fpt-viet-code-bang-ai-nhanh-hon-30-nhung-nang-suat-du-an-chi-tang-10-188260927211625866.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "64eb8801271cbca270bd",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/fpt-thong-bao-thay-doi-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh/41982848",
+      "title": "FPT: Thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành",
+      "description": "FPT: Thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành",
+      "published_at": "2026-09-28T14:27:58+07:00",
+      "symbols": [
+        "FPT"
+      ],
+      "provider_id": "41982848",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần FPT thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành như sau:",
+      "crawled_at": "2026-10-01T00:49:19.998672+00:00",
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.68125,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/fpt-2985967/fpt-thong-bao-thay-doi-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "89706b76a458b30aac18",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/fpt-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tang-von-co-phan-tu-nguon-von-chu-so-huu/41982847",
+      "title": "FPT: Báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu",
+      "description": "FPT: Báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu",
+      "published_at": "2026-09-28T14:29:01+07:00",
+      "symbols": [
+        "FPT"
+      ],
+      "provider_id": "41982847",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần FPT công bố báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu như sau:",
+      "crawled_at": "2026-10-01T00:49:20.242310+00:00",
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7539473684210526,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/fpt-2985968/fpt-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tang-von-co-phan-tu-nguon-von-chu-so-huu.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "b5f7f744d2cbfd249176",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/viet-nam-nang-hang-thi-truong-chung-khoan-co-hoi-va-thach-thuc-nao-cho-doanh-nghiep-viet/41975594",
+      "title": "Việt Nam nâng hạng thị trường chứng khoán: Cơ hội và thách thức nào cho doanh nghiệp Việt?",
+      "description": "Việc Việt Nam được nâng hạng lên thị trường mới nổi thứ cấp mở rộng khả năng tiếp cận dòng vốn quốc tế cho doanh nghiệp niêm yết. Song, khi cánh cửa thị trường rộng hơn, yêu cầu về minh bạch thông tin, quản trị doanh nghiệp và khả năng tiếp cận nhà đầu tư cũng được đặt ra ở mức cao hơn.",
+      "published_at": "2026-09-28T11:22:00+07:00",
+      "symbols": [
+        "BID",
+        "FPT",
+        "HPG",
+        "VCB",
+        "VHM",
+        "VIC",
+        "VJC",
+        "VNM",
+        "VPB",
+        "VRE"
+      ],
+      "provider_id": "41975594",
+      "category": "Doanh nghiệp",
+      "content": "Việc Việt Nam được nâng hạng lên thị trường mới nổi thứ cấp mở rộng khả năng tiếp cận dòng vốn quốc tế cho doanh nghiệp niêm yết. Song, khi cánh cửa thị trường rộng hơn, yêu cầu về minh bạch thông tin, quản trị doanh nghiệp và khả năng tiếp cận nhà đầu tư cũng được đặt ra ở mức cao hơn. Cơ hội mới từ dòng vốn quốc tế Ngày 21/9/2026, thị trường chứng khoán Việt Nam chính thức được FTSE Russell nâng hạng từ thị trường cận biên lên thị trường mới nổi thứ cấp, đánh dấu bước tiến quan trọng trong quá trình hội nhập với thị trường vốn quốc tế. Theo lộ trình công bố, cổ phiếu Việt Nam sẽ được đưa vào các bộ chỉ số toàn cầu của FTSE Russell theo từng giai đoạn từ tháng 9/2026 đến tháng 9/2027. Việc nâng hạng mở rộng khả năng tiếp cận thị trường Việt Nam của các quỹ đầu tư quốc tế, đặc biệt là các quỹ mô phỏng chỉ số. Với các quỹ thụ động, tác động trực tiếp trước hết đến từ việc các cổ phiếu đủ điều kiện được đưa vào các chỉ số tham chiếu và tỷ trọng được tăng dần theo lộ trình của FTSE Russell. Đồng thời, sự hiện diện trong nhóm thị trường mới nổi cũng có thể gia tăng mức độ quan tâm của các quỹ chủ động và nhà đầu tư tổ chức quốc tế, qua đó mở rộng tập nhà đầu tư có thể xem xét và phân bổ vốn vào các doanh nghiệp Việt Nam . Tuy nhiên, nâng hạng thị trường không đồng nghĩa dòng vốn quốc tế sẽ tự động phân bổ vào mọi doanh nghiệp niêm yết. Bên cạnh quy mô vốn hóa, thanh khoản và khả năng tiếp cận cổ phiếu, nhà đầu tư còn xem xét triển vọng kinh doanh, chất lượng quản trị và khả năng tiếp cận thông tin của từng doanh nghiệp. Vì vậy, cùng với cơ hội tiếp cận một thị trường vốn rộng hơn, việc nâng hạng cũng đặt doanh nghiệp Việt Nam trước một mặt bằng yêu cầu cao hơn. Nâng hạng thị trường, nâng chuẩn doanh nghiệp Nâng hạng trước hết phản ánh những cải thiện ở cấp độ hạ tầng và khả năng tiếp cận thị trường chứng khoán Việt Nam. Tuy nhiên, sau khi rào cản ở cấp thị trường được thu hẹp, quyết định phân bổ vốn vẫn diễn ra ở cấp doanh nghiệp. Đối với nhà đầu tư tổ chức quốc tế, kết quả kinh doanh là yếu tố quan trọng nhưng không phải tiêu chí duy nhất. Khả năng cung cấp thông tin đầy đủ, kịp thời và nhất quán; chất lượng quản trị; cơ chế bảo vệ quyền lợi cổ đông và khả năng đối thoại với nhà đầu tư cũng góp phần vào quá trình đánh giá doanh nghiệp. Điều đó cũng có nghĩa cơ hội từ nâng hạng sẽ gắn với khả năng chuẩn bị của từng doanh nghiệp. Những doanh nghiệp đã xây dựng nền tảng minh bạch, quản trị và quan hệ nhà đầu tư từ trước có thêm điều kiện để giới thiệu năng lực và chiến lược tới cộng đồng đầu tư quốc tế. Từ cơ hội thị trường đến khả năng nắm bắt của từng doanh nghiệp Những yêu cầu trên có thể nhìn thấy rõ ngay trong nhóm cổ phiếu Việt Nam được lựa chọn tham gia các bộ chỉ số của FTSE Global Equity Index Series. Trong 27 cổ phiếu thuộc danh sách, mức độ tiếp cận dòng vốn dự kiến không đồng đều mà phụ thuộc vào quy mô, tỷ trọng và đặc điểm của từng cổ phiếu. VCB , VIC và VHM thuộc nhóm Large Cap; BID , HPG và VPB thuộc nhóm Mid Cap; 21 cổ phiếu còn lại thuộc nhóm Small Cap, với những cái tên như FPT , VNM , MSN, SSI, VJC , HDB, STB, VRE ... Trong nhóm này, FPT là một trong những cổ phiếu dự kiến đón dòng vốn thụ động đáng kể. Theo Vietcap, FPT thuộc nhóm Small Cap theo phân loại FTSE GEIS và nằm trong nhóm cổ phiếu có quy mô dòng vốn thụ động dự kiến lớn. Khi Việt Nam được đưa vào với đầy đủ tỷ trọng, dòng vốn thụ động phân bổ vào FPT được ước tính vào khoảng 52,2 triệu USD; riêng lần phân bổ đầu tiên đầu tiên ở mức 10% tương đương khoảng 5,2 triệu USD. Tuy nhiên, mức độ tác động thực tế còn phụ thuộc vào tương quan giữa quy mô dòng vốn, thanh khoản cổ phiếu và diễn biến thị trường. Bên cạnh các điều kiện về khả năng đầu tư, khả năng tiếp cận thông tin và tiếp cận doanh nghiệp cũng là yếu tố quan trọng đối với nhà đầu tư tổ chức. Trong nhiều năm, FPT đã duy trì hệ thống công bố thông tin song ngữ, công bố kết quả kinh doanh hàng tháng và cơ chế đối thoại thường xuyên với nhà đầu tư. Việc cập nhật dữ liệu kinh doanh với tần suất cao giúp rút ngắn độ trễ thông tin giữa các kỳ báo cáo tài chính, trong khi các hoạt động gặp gỡ và trao đổi trực tiếp hỗ trợ nhà đầu tư hiểu rõ hơn về chiến lược, động lực tăng trưởng và các yếu tố rủi ro của doanh nghiệp. Những hoạt động này đã được triển khai trước khi thị trường chứng khoán Việt Nam được nâng hạng, phản ánh quá trình xây dựng nền tảng minh bạch và kết nối nhà đầu tư mang tính dài hạn của FPT . Nâng hạng thị trường chứng khoán mở thêm cánh cửa để doanh nghiệp Việt Nam tiếp cận dòng vốn quốc tế, nhưng khả năng bước qua cánh cửa đó phụ thuộc vào nền tảng của từng doanh nghiệp. Tuy nhiên, việc được đưa vào bộ chỉ số tham chiếu quốc tế không thay thế các yếu tố nền tảng của doanh nghiệp. Sau các dòng vốn kỹ thuật liên quan đến tái cơ cấu chỉ số, khả năng duy trì sự quan tâm của nhà đầu tư vẫn phụ thuộc vào tăng trưởng, hiệu quả hoạt động, quản trị và khả năng tạo giá trị dài hạn. Với FPT , việc duy trì minh bạch thông tin, đối thoại thường xuyên với cộng đồng đầu tư và hoàn thiện quản trị trong nhiều năm tạo nền tảng để Tập đoàn bước vào giai đoạn mới của thị trường vốn Việt Nam. Khi phạm vi tiếp cận của nhà đầu tư quốc tế với doanh nghiệp Việt Nam được mở rộng, FPT có thêm cơ hội giới thiệu chiến lược, năng lực và triển vọng tăng trưởng tới cộng đồng đầu tư toàn cầu. Link gốc",
+      "crawled_at": "2026-10-01T00:49:20.487546+00:00",
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.014359455654622242,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/2-ghe-nong-tai-tap-doan-cong-nghe-hang-dau-viet-nam-bat-ngo-doi-chu-18826092115533991.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "8ede610c7e5b5b936248",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/mbs-du-bao-kqkd-quy-3-2026-nganh-ban-le-the-gioi-di-dong-va-fpt-retail-tiep-tuc-but-pha-hai-ten-tuoi-tang-truong-dot-bien-3-chu-so/41967912",
+      "title": "MBS dự báo KQKD quý 3/2026 ngành bán lẻ: Thế Giới Di Động và FPT Retail tiếp tục bứt phá, hai tên tuổi tăng trưởng đột biến 3 chữ số",
+      "description": "CTCK này dự phóng kết quả kinh doanh của các doanh nghiệp bán lẻ và tiêu dùng niêm yết được kỳ vọng tiếp tục tăng trưởng tích cực trong quý 3/2026.",
+      "published_at": "2026-09-28T08:59:00+07:00",
+      "symbols": [
+        "DBC",
+        "DGW",
+        "FPT",
+        "FRT",
+        "HPA",
+        "MSN",
+        "MWG",
+        "PNJ",
+        "SAB",
+        "VNM"
+      ],
+      "provider_id": "41967912",
+      "category": "Thị trường",
+      "content": "CTCK này dự phóng kết quả kinh doanh của các doanh nghiệp bán lẻ và tiêu dùng niêm yết được kỳ vọng tiếp tục tăng trưởng tích cực trong quý 3/2026. Lũy kế 8 tháng đầu năm 2026, tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng tăng 14% so với cùng kỳ, trong đó doanh thu bán lẻ hàng hóa tăng 13,3%. Nếu loại trừ yếu tố lạm phát, mức tăng thực đạt khoảng 7,6%. Theo Chứng khoán MB (MBS), dù doanh số bán lẻ vẫn duy trì ổn định, tâm lý tiêu dùng còn thận trọng do lạm phát cao và bối cảnh vĩ mô trong nước, quốc tế còn nhiều bất ổn. Tuy nhiên, kết quả kinh doanh của các doanh nghiệp bán lẻ và tiêu dùng niêm yết được kỳ vọng tiếp tục tăng trưởng tích cực trong quý 3/2026. MBS cho rằng năng lực cạnh tranh được cải thiện giúp các doanh nghiệp đầu ngành tiếp tục gia tăng thị phần. Cùng với đó, các chính sách lành mạnh hóa thị trường được triển khai từ năm ngoái đang góp phần tạo môi trường cạnh tranh công bằng hơn. Ở nhóm bán lẻ điện tử - công nghệ, chu kỳ đổi mới và nâng cấp thiết bị được kỳ vọng tiếp diễn trong quý 3. Thế Giới Di Động và Điện Máy Xanh tiếp tục dẫn đầu với tổng thị phần trên 50%. MBS dự báo MWG đạt 3.456 tỷ đồng LNST trước lợi ích cổ đông không kiểm soát trong quý 3, tăng 95% so với cùng kỳ. Với cả năm 2026, LNST trước lợi ích cổ đông không kiểm soát của MWG được dự phóng đạt 12.965 tỷ đồng, tăng 84%. Động lực tăng trưởng đến từ nhu cầu nâng cấp, thay thế thiết bị cùng diễn biến tích cực tại các chuỗi Thế Giới Di Động, Điện Máy Xanh và Bách Hóa Xanh. Riêng Bách Hóa Xanh đã đạt quy mô khoảng 3.600 cửa hàng, tăng 59% so với cùng kỳ, và được MBS dự báo đóng góp khoảng 630 tỷ đồng lợi nhuận trong quý 3, tăng 160%. Tại FPT Retail ( FRT ), chuỗi Long Châu tiếp tục là động lực chính. MBS dự báo LNST quý 3 đạt 374 tỷ đồng, tăng 72% so với cùng kỳ, trong khi LNST cả năm 2026 đạt khoảng 1.380 tỷ đồng, tăng 74%. Doanh thu Long Châu được dự báo tăng khoảng 30% nhờ tiếp tục giành thị phần từ các nhà thuốc truyền thống. Digiworld ( DGW ) được dự báo có mức tăng trưởng lợi nhuận mạnh trong quý 3. MBS dự phóng LNST đạt 481 tỷ đồng, tăng 190% so với cùng kỳ. Tính cả năm, LNST DGW được dự báo đạt 1.132 tỷ đồng, tăng 107%. Doanh thu tháng 7 và tháng 8/2026 của doanh nghiệp lần lượt tăng 28% và 80% so với cùng kỳ, cho thấy nhu cầu đối với các sản phẩm công nghệ đang cải thiện. Trong bối cảnh giá một số linh kiện như chip và DRAM tăng do nhu cầu đầu tư hạ tầng AI, các chính sách trả chậm, trả góp 0% được kỳ vọng giúp giảm gánh nặng tài chính cho người mua và kích thích nhu cầu tiêu dùng. Ở nhóm bán lẻ thiết yếu, Masan ( MSN ) được MBS dự báo tăng trưởng đột biến. LNST quý 3/2026 của MSN được dự phóng đạt 3.984 tỷ đồng, tăng 230% so với cùng kỳ, trong khi LNST cả năm đạt 11.420 tỷ đồng, tăng 178%. MBS cho rằng động lực tăng trưởng chủ yếu đến từ Masan High-Tech Materials khi giá vonfram neo quanh 3.000 USD/mtu và MSR được cấp phép khai thác thêm quặng tại Núi Pháo từ tháng 5/2026, giúp gia tăng sản lượng. Ở mảng tiêu dùng, Masan Consumer tiếp tục duy trì đà tăng trưởng, trong khi chuỗi WinMart tiếp tục mở rộng quy mô. Ở chiều ngược lại, PNJ được dự báo chịu ảnh hưởng đáng kể từ sự cố liên quan đến “kim cương”. MBS dự phóng LNST quý 3 của PNJ đạt 186 tỷ đồng, giảm 63% so với cùng kỳ, còn LNST cả năm 2026 đạt khoảng 1.512 tỷ đồng, giảm 47%. Dự báo này dựa trên giả định lượt mua hàng trong quý 3 chỉ tương đương khoảng 60% cùng kỳ, trong khi giá trị mỗi đơn hàng giảm nhẹ. MBS dự báo doanh thu bán lẻ của PNJ giảm 42% trong quý 3, qua đó gây áp lực lên biên lợi nhuận. Đối với nhóm tiêu dùng, Vinamilk ( VNM ) được dự báo tiếp tục duy trì tăng trưởng. MBS dự phóng LNST quý 3 đạt 2.982 tỷ đồng, tăng 18%, trong khi LNST cả năm 2026 đạt 11.502 tỷ đồng, tăng 22%. Động lực đến từ các sản phẩm mới như Cao đạm, Green Farm, Mộc Châu Creamery cùng hoạt động xuất khẩu khả quan. MBS kỳ vọng biên lợi nhuận quý 3 đạt 43%, giảm nhẹ so với quý trước nhưng vẫn được hỗ trợ bởi hoạt động quản trị tồn kho và kiểm soát chi phí. Trong khi đó, nhóm chăn nuôi heo được dự báo hạ nhiệt so với nền cao của cùng kỳ. Hòa Phát Agriculture ( HPA ) được MBS dự phóng đạt 245 tỷ đồng LNST quý 3, giảm 32%, và 1.109 tỷ đồng cả năm, giảm 31%. Với Dabaco ( DBC ), LNST quý 3 được dự báo đạt 230 tỷ đồng, giảm 33%, còn cả năm đạt 1.060 tỷ đồng, giảm 30%. Theo MBS, sản lượng và giá bán heo đều được dự báo thấp hơn cùng kỳ, trong khi giá đậu tương và ngô tăng khiến chi phí đầu vào cao hơn, tiếp tục gây áp lực lên biên lợi nhuận. Sabeco ( SAB ) cũng được dự báo tăng trưởng khiêm tốn hơn. MBS dự phóng LNST quý 3 đạt 1.250 tỷ đồng, giảm 8% so với cùng kỳ, nhưng LNST cả năm 2026 vẫn đạt khoảng 4.650 tỷ đồng, tăng 5%. Kết quả được hỗ trợ bởi nhu cầu ổn định, khả năng tăng giá bán và tiết giảm chi phí quảng cáo, khuyến mãi. Nhìn chung, MBS đánh giá triển vọng quý 3 và cả năm 2026 của nhóm bán lẻ, tiêu dùng tiếp tục phân hóa rõ nét. Các doanh nghiệp sở hữu hệ thống bán lẻ quy mô lớn, khả năng gia tăng thị phần và hưởng lợi từ chu kỳ nâng cấp sản phẩm được kỳ vọng duy trì tăng trưởng tích cực, trong khi PNJ và nhóm chăn nuôi chịu áp lực từ những yếu tố đặc thù và chi phí đầu vào. Link gốc",
+      "crawled_at": "2026-10-01T00:49:20.730177+00:00",
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.023134678554669167,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/tcbs-fpt-viet-code-bang-ai-nhanh-hon-30-nhung-nang-suat-du-an-chi-tang-10-188260927211625866.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    },
+    {
+      "id": "18aab2400624248ef030",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/du-bao-ket-qua-kinh-doanh-quy-3-2026-cua-nhom-tieu-dung-ban-le/41966777",
+      "title": "Dự báo kết quả kinh doanh quý 3/2026 của nhóm tiêu dùng bán lẻ",
+      "description": "MBS dự báo kết quả kinh doanh quý 3/2026 của nhóm tiêu dùng - bán lẻ có sự khác biệt. MSN, DGW, MWG và FRT được kỳ vọng tăng trưởng lợi nhuận cao trong khi PNJ cùng nhóm chăn nuôi HPA, DBC suy giảm.",
+      "published_at": "2026-09-27T20:03:00+07:00",
+      "symbols": [
+        "DBC",
+        "DGW",
+        "FPT",
+        "FRT",
+        "HPA",
+        "MBS",
+        "MSN",
+        "MWG",
+        "PNJ",
+        "VNM"
+      ],
+      "provider_id": "41966777",
+      "category": "Kinh tế",
+      "content": "MBS dự báo kết quả kinh doanh quý 3/2026 của nhóm tiêu dùng - bán lẻ có sự khác biệt. MSN , DGW , MWG và FRT được kỳ vọng tăng trưởng lợi nhuận cao trong khi PNJ cùng nhóm chăn nuôi HPA , DBC suy giảm. Ảnh minh họa. Trong dự báo kết quả kinh doanh quý 3/2026 của ngành tiêu dùng - bán lẻ, Chứng khoán MB ( MBS ) cho biết, lũy kế 8 tháng đầu năm 2026, tổng mức bán lẻ hàng hóa và dịch vụ tiêu dùng tăng 14% so với cùng kỳ; riêng bán lẻ hàng hóa tăng 13,3%. Nếu loại trừ yếu tố giá, mức tăng của bán lẻ hàng hóa còn 7,6%. “Doanh số nhìn chung vẫn ổn định, song tâm lý người tiêu dùng còn thận trọng do lạm phát cao và những bất ổn của môi trường kinh tế trong nước cũng như thế giới,” báo cáo phát hành ngày 25/9 của MBS nhận định. MBS kỳ vọng kết quả kinh doanh của các doanh nghiệp tiêu dùng - bán lẻ niêm yết vẫn duy trì xu hướng tích cực. Theo đơn vị phân tích, năng lực cạnh tranh được cải thiện đang giúp các doanh nghiệp đầu ngành gia tăng thị phần, đồng thời hưởng lợi từ các chính sách lành mạnh hóa thị trường được triển khai từ năm trước đến nay, qua đó tạo môi trường cạnh tranh công bằng hơn. Ở nhóm bán lẻ không thiết yếu, MBS dự báo chu kỳ đổi mới và nâng cấp thiết bị điện tử tiêu dùng (ICT-CE) tiếp tục diễn ra trong quý 3/2026. Trong đó, hai chuỗi Thế giới di động và Điện máy Xanh tiếp tục dẫn đầu với trên 50% thị phần, doanh thu dự báo tăng 30% so với cùng kỳ và mang về 3.016 tỷ đồng lợi nhuận sau thuế cho MWG , tăng 95% so với cùng kỳ năm ngoái (YoY). FPT Shop của FPT Retail ( FRT ) cũng được dự báo ghi nhận doanh thu tăng 13% YoY, song đóng góp lợi nhuận còn thấp. Theo MBS , dù tâm lý tiêu dùng còn yếu và giá các nguyên liệu như chip, DRAM tăng do tác động từ đầu tư hạ tầng AI, chính sách “trả chậm - trả góp” 0% của các doanh nghiệp bán lẻ giúp giảm gánh nặng tài chính, kích thích người tiêu dùng mua sắm sớm trong bối cảnh mặt bằng giá được dự báo tiếp tục tăng. Với Digiworld ( DGW ), lợi nhuận sau thuế quý 3/2026 được dự báo tăng 190% YoY. Công ty đã công bố doanh thu tháng 7 và tháng 8/2026 với mức tăng lần lượt 28% và 80% YoY. Dự báo kết quả kinh doanh quý 3/2026 của nhóm tiêu dùng bán lẻ Ở nhóm bán lẻ thiết yếu, MBS cho biết chuỗi Bách hóa Xanh của MWG hiện tại đã đạt quy mô khoảng 3.600 cửa hàng, kỳ vọng đóng góp 630 tỷ đồng lợi nhuận trong quý 3, tăng 160% YoY. Chuỗi WinMart của Masan cũng tiếp tục mở rộng, với quy mô cửa hàng tăng khoảng 20% và doanh thu tăng 17% YoY. MBS dự báo lợi nhuận sau thuế của Masan ( MSN ) trong quý 3/2026 tăng 230% YoY, trong đó đóng góp lớn đến từ mảng khai khoáng khi giá vonfram vượt đỉnh, đạt khoảng 3.000 USD/mtu. Trong lĩnh vực dược phẩm, chuỗi Long Châu của FPT Retail được dự báo duy trì đà tăng trưởng cao nhờ tiếp tục giành thị phần từ các nhà thuốc truyền thống, với doanh thu quý 3 tăng khoảng 30% YoY và trở thành nguồn đóng góp chính vào lợi nhuận sau thuế của của FRT . Ở mảng trang sức, MBS dự báo lợi nhuận sau thuế quý 3 của PNJ giảm 62% so với cùng kỳ, trên giả định lượt mua hàng chỉ bằng 60% cùng kỳ do niềm tin thương hiệu sụt giảm tạm thời sau vụ sai phạm về kim cương liên quan đến công ty con. Với nhóm doanh nghiệp tiêu dùng thượng nguồn, MBS dự báo sẽ có sự phân hoá đáng kể. Vinamilk ( VNM ) kỳ vọng tích cực với lợi nhuận sau thuế quý 3/2026 có thể tăng 18% YoY, nhờ các sản phẩm mới như Cao đạm, Greenfarm, Mộc Châu Creamery và hoạt động xuất khẩu khả quan. Những yếu tố này được MBS kỳ vọng giúp doanh nghiệp duy trì biên lợi nhuận cao trong bối cảnh giá các nguyên liệu như thức ăn chăn nuôi và bột sữa tăng. Ngược lại, nhóm chăn nuôi heo gồm Nông nghiệp Hoà Phát ( HPA ) và Dabaco ( DBC ) được dự báo có kết quả kinh doanh hạ nhiệt khi cả sản lượng và giá bán đều thấp hơn mức nền cao cùng kỳ, khiến biên lợi nhuận suy giảm đáng kể. Link gốc",
+      "crawled_at": "2026-10-01T00:49:20.974656+00:00",
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.024199288256227757,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/sau-man-hat-tai-sinh-cua-ong-truong-gia-binh-moi-thang-fpt-co-them-6000-co-dong-moi-san-van-dong-lon-nhat-the-gioi-va-my-dinh-cong-lai-khong-du-suc-chua-188260928184735504.chn",
+        "matched_file": "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.411444+00:00"
+      }
+    }
+  ]
+}

@@ -1,5 +1,32 @@
 # Tin chứng khoán CafeF và FireAnt
 
+## Chạy toàn bộ luồng bằng một file
+
+```powershell
+python -B -X utf8 data_pipeline/src/scrapers/run_news_pipeline.py
+```
+
+Nhập mã khi được hỏi, ví dụ `FPT` hoặc `FPT HPG VCB`. Mặc định cào tin chung và tab tin của từng mã trên CafeF/FireAnt, hạn mức **10 bài hợp lệ mỗi nguồn/phạm vi**. Ví dụ nhập FPT có 4 nhóm, tối đa 40 lượt bài hợp lệ. Hạn mức mặc định bao gồm bài đã lưu; số bài thêm mới được báo riêng.
+
+Luồng tự động: collector chuyển dữ liệu legacy nếu còn → khám phá/tải bài → gộp và lưu JSON theo ngày → cross-check và cập nhật marker → phân tích uncheck theo sự kiện → in báo cáo từng nhóm/thư mục. Không chạy test unittest hay collector giá/tài chính `direct_vn_collector.py` trong luồng này.
+
+```powershell
+# Bỏ bước nhập tương tác
+python -B -X utf8 data_pipeline/src/scrapers/run_news_pipeline.py --symbols FPT HPG
+
+# Chỉ theo mã; lấy thêm 10 URL chưa có trong file hôm nay
+python -B -X utf8 data_pipeline/src/scrapers/run_news_pipeline.py --symbols VCB TPB --only-symbols --new-only
+
+# Tùy chỉnh hạn mức
+python -B -X utf8 data_pipeline/src/scrapers/run_news_pipeline.py --symbols FPT --limit 20
+```
+
+Báo cáo được thay thế mỗi lượt ở `scrapers/pipeline_reports/latest.md` và `latest.json`. Bằng chứng ứng viên sự kiện ở `events.md` và `events.json` cùng thư mục. Báo cáo gồm nhóm đủ hạn mức/không lỗi, lượt bài hợp lệ, lượt bài thêm mới, file được ghi/file mới tạo, tổng JSON và record theo mỗi thư mục, record cross-check thành công/check/uncheck, số URL uncheck đã phân tích, số cặp/bài ứng viên khác cách viết và số cặp cùng tiêu đề. File JSON ở đây là file lưu theo ngày, không phải một file cho mỗi bài.
+
+Cross-check và phân tích sự kiện chỉ chạy trên phạm vi vừa yêu cầu; bảng thư mục thống kê cả dữ liệu cũ ở các mã khác. Một bài lưu ở nhiều ngày/mã có thể tính nhiều record. Phân tích sự kiện bỏ trùng URL và không tự biến ứng viên thành marker check. Marker check vẫn chỉ áp dụng khi giống văn bản >80%, không xác minh sự thật.
+
+Thiếu bài hoặc lỗi vẫn lưu dữ liệu lấy thành công, tiếp tục phân tích dữ liệu hiện có và xuất báo cáo với mã thoát 1. Không lấy thống kê `last_run` cũ để báo thành công cho lượt mới. Phân tích lỗi sẽ thay báo cáo sự kiện cũ bằng thông báo lỗi, tránh hiển thị kết quả cũ như mới. Tổng bộ test offline hiện có 26 test, gồm 5 test tích hợp cho luồng này.
+
 Chạy từ thư mục gốc dự án, Python 3.10+, `requests` và `scrapling`. Collector tin tức dùng HTTP và Scrapling Selector, không cần Chromium.
 
 ```powershell
@@ -10,6 +37,9 @@ python data_pipeline/src/scrapers/stock_news_collector.py --source all --limit 1
 
 # Tin chung + tab tin của từng mã
 python data_pipeline/src/scrapers/stock_news_collector.py --source all --symbols FPT HPG VCB --limit 10
+
+# Thêm 10 bài chưa có trong file hôm nay, mỗi nguồn/phạm vi
+python -B data_pipeline/src/scrapers/stock_news_collector.py --source all --symbols VCB TPB --limit 10 --new-only
 
 # Chỉ tin theo mã (cũng nhận --symbols FPT,HPG hoặc --symbol FPT --symbol HPG)
 python data_pipeline/src/scrapers/stock_news_collector.py --source all --symbols FPT HPG --only-symbols --limit 10
@@ -23,7 +53,47 @@ python data_pipeline/src/scrapers/stock_news_collector.py --source all --symbols
 
 `--limit` tính bài hợp lệ mỗi **nguồn/phạm vi**, bao gồm bài đã lưu. `all --symbols FPT HPG --limit 10` có sáu nhóm, tối đa 60 lượt bài; số bài duy nhất có thể thấp hơn vì bài thuộc nhiều nhóm. Chạy lại lấy cùng các bài mới nhất, không chuyển sang bài cũ chỉ để thêm đủ số bài mới. Bài lỗi không chiếm hạn mức.
 
+`--new-only` bỏ URL đã có trong file của ngày hiện tại; `--limit` lúc này đếm bài thêm mới. Bài chưa có trong file hôm nay có thể đã xuất hiện trong ngày cũ. Nếu nguồn không có đủ bài trong giới hạn khám phá, giữ các bài đã lấy được và trả mã lỗi 1.
+
+## Kiểm tra chéo CafeF và FireAnt
+
+Sau mỗi lượt cào, `crosscheck_news()` trong `news_crosscheck.py` tự đối chiếu hai nguồn của các phạm vi vừa chạy, bao gồm dữ liệu đã lưu ở các ngày khác nhau. Tin chung chỉ so với tin chung; VCB chỉ so với VCB, không so với TPB hay mã khác. Có thể chạy lại toàn bộ dữ liệu mà không cào mạng:
+
+```powershell
+python -B data_pipeline/src/scrapers/news_crosscheck.py
+```
+
+Điểm từ 0 đến 1 dùng Dice trên cụm ba từ liên tiếp, có tính số lần xuất hiện: **85% nội dung + 15% tiêu đề**. Chuẩn hóa Unicode, chữ hoa/thường và dấu câu; giữ dấu tiếng Việt và các giá trị số. Bài thiếu nội dung hoặc dưới 5 từ nhận điểm 0. So sánh với mọi bài của nguồn còn lại trong cùng phạm vi và chọn bài có điểm cao nhất.
+
+- `marker: "check"` khi điểm **lớn hơn 0.8**; đúng 0.8 vẫn là `"uncheck"`.
+- `marker: "uncheck"` nếu chưa có bài tương đồng trên ngưỡng, kể cả khi thiếu nguồn đối chiếu.
+- `cross_check` lưu `method`, `threshold`, `score`, `matched_source`, `matched_url`, `matched_file`, `checked_at`. Điểm lưu đầy đủ, không làm tròn trước khi xét ngưỡng.
+
+Marker phản ánh mức giống nội dung, không xác nhận sự thật. Hai website có thể đăng lại cùng một nguồn; thay đổi một con số trong bài dài vẫn có thể có điểm cao. Cách này cũng có thể bỏ sót bài diễn đạt khác nhưng cùng sự kiện. Việc đối chiếu không xóa/gộp các bài giữa hai nguồn.
+
 `--url <URL>` (lặp nhiều lần) lấy bài cụ thể, ưu tiên hơn `--source`/`--symbols` và bỏ qua lọc chủ đề. Chỉ nhận URL bài CafeF/FireAnt.
+
+## Phân tích uncheck theo sự kiện
+
+`analyze_uncheck_events.py` đọc dữ liệu đã lưu, không gọi mạng và không sửa JSON nguồn/marker. Chạy từ gốc dự án:
+
+```powershell
+python -B -X utf8 data_pipeline/src/scrapers/analyze_uncheck_events.py
+
+# Chỉ phân tích một số phạm vi; cửa sổ ngày xuất bản mặc định là 3 ngày
+python -B -X utf8 data_pipeline/src/scrapers/analyze_uncheck_events.py --scopes market FPT TPB --window-days 3
+```
+
+Kết quả ở `scrapers/uncheck_analysis/report.md` (đọc từng cặp) và `report.json` (xử lý bằng code). Chạy lại thay thế báo cáo. `--root` và `--output` chỉ nhận đường dẫn trong scrapers; root là thư mục chứa hai cây dữ liệu. `--threshold` mặc định 0.52 là điểm quy tắc, không phải xác suất hay ngưỡng marker 0.8.
+
+So CafeF với FireAnt trong cùng phạm vi qua các ngày; mỗi cặp phải có ít nhất một bản lưu `uncheck`. Cùng URL qua nhiều ngày chỉ đếm là một bài trong phạm vi, dùng nội dung của ngày cào mới nhất. Tổng toàn cục bỏ trùng URL/cặp giữa các mã; số record tính tất cả bản lưu uncheck.
+
+- `possible_rewritten_event`: tiêu đề khác nhưng có thực thể chung, loại sự kiện chung, ngày xuất bản gần nhau và độ giống TF-IDF đủ cao. Nếu tiêu đề rất khác, cần nội dung cosine >=0.4 và ít nhất hai số liệu chung. Điểm dùng 55% tiêu đề + 35% nội dung + 10% loại sự kiện; nhánh nội dung có số liệu dùng 75% nội dung + 25% thực thể/sự kiện. Số liệu chung chỉ là manh mối, chưa xác nhận chúng nói về cùng đại lượng.
+- `same_title_low_body_overlap`: tiêu đề giống nhưng độ giống văn bản không vượt 0.8; thường gặp ở công bố có tên PDF/phụ lục khác nhau. Không tính nhóm này vào số bài khác cách viết.
+
+Báo cáo lưu URL, file gốc, đoạn trích, thực thể/loại sự kiện, từ khóa, số liệu chung, khoảng cách ngày xuất bản và điểm giống văn bản hiện tại. Ngày CafeF thiếu offset được hiểu theo UTC+7. Cặp tiêu đề khác thiếu ngày không được chọn; cặp cùng tiêu đề thiếu ngày được gắn cờ. Nghị quyết có số văn bản khác nhau bị loại.
+
+Đây là **ứng viên cần đọc lại**, không phải số sự kiện đã xác nhận hay xác minh tin đúng/sai. Quy tắc thực thể/loại sự kiện còn hữu hạn, không dùng mô hình semantic/LLM, nên có thể bỏ sót hoặc ghép nhầm bài cùng chủ đề. Không có ứng viên không đồng nghĩa với tin độc quyền/sai. Không tải hay đọc PDF. `test_uncheck_events.py` bổ sung 6 test offline cho phân tích; tổng bộ test hiện có 21 test.
 
 ## Nguồn và nội dung
 
@@ -33,25 +103,50 @@ python data_pipeline/src/scrapers/stock_news_collector.py --source all --symbols
 - Mỗi bài phải có nội dung thực. Công bố CafeF lấy `og:title`, `#newscontent` để tránh nhầm tên công ty ở `h1`. Lưu link PDF ở `attachments`, không tải/trích toàn bộ PDF.
 - HTTP retry cho lỗi tạm thời; phân trang tối đa `--max-pages` (mặc định 5, mỗi trang API 50 ứng viên). Website/API thay đổi có thể cần cập nhật parser.
 
-## Hai JSON cố định, tách theo nguồn
+## JSON theo ngày, tách phạm vi và nguồn
 
-CafeF lưu vào `cafef_news.json`, FireAnt lưu vào `fireant_news.json`, cạnh script và không phụ thuộc thư mục chạy. Tin chung và tin theo mã của cùng một nguồn gộp vào file của nguồn đó. Không tạo JSON theo ngày/giờ. `--source all` cập nhật cả hai file; chạy một nguồn giữ nguyên file nguồn còn lại.
+Mọi dữ liệu nằm trong `scrapers`, không phụ thuộc thư mục chạy:
 
-Nếu có `stock_news.json` cũ, lần chạy mặc định sẽ tự chuyển bài sang hai file mới, gộp với dữ liệu đã có và kiểm tra đủ URL trước khi xóa file chung. File sai định dạng hoặc bị khóa thì dừng migration và giữ file chung. Không chuyển `news_trial.json` vì đó là dữ liệu thử lịch sử.
+```text
+scrapers/
+├── tin_tuc_chung/
+│   ├── cafef/01-10-2026.json
+│   └── fireant/01-10-2026.json
+└── tin_tuc_theo_ma/
+    ├── FPT/
+    │   ├── cafef/01-10-2026.json
+    │   └── fireant/01-10-2026.json
+    └── HPG/
+        ├── cafef/01-10-2026.json
+        └── fireant/01-10-2026.json
+```
 
-`--output` chỉ nhận đường dẫn `.json` trong `scrapers`: khi chạy một nguồn, dùng chính tên đó; khi chạy cả hai, thêm hậu tố nguồn. Ví dụ `--source all --output data_pipeline/src/scrapers/my_news.json` ghi `my_news_cafef.json` và `my_news_fireant.json`. Không được dùng tên file mặc định của nguồn khác hoặc tên cũ `stock_news.json`. Dùng output tùy chỉnh thì không tự chuyển dữ liệu legacy.
+Ngày là **ngày chạy lượt cào theo giờ Việt Nam (UTC+7)**, chốt khi bắt đầu chạy, không phải ngày xuất bản bài. Tên file dùng `DD-MM-YYYY.json` vì Windows không cho dấu `/` trong tên file. Các lượt chạy cùng ngày gộp vào cùng file, không trùng URL. Sang ngày mới tạo file mới, giữ file ngày cũ; cùng bài có thể xuất hiện ở nhiều ngày. Mã mới tự tạo thư mục khi chạy `--symbols` với mã đó. Bài được tab của nhiều mã trả về được lưu vào từng thư mục mã tương ứng; không suy ra thư mục mã từ tag hoặc tiêu đề của tin chung.
+
+`--source all` cập nhật cả hai nguồn; chạy một nguồn không ghi lại file nguồn còn lại. `--only-symbols` chỉ cập nhật tin theo mã. `--url` lưu vào tin chung của nguồn tương ứng với phạm vi `direct`.
+
+Lần chạy mặc định tự chuyển `stock_news.json`, `cafef_news.json`, `fireant_news.json` và `news_trial.json` cũ sang cấu trúc mới. Ngày lấy từ `crawled_at`, đổi sang UTC+7. Phân thư mục theo `scopes` và `matched_symbols`; bài không có phạm vi được giữ trong tin chung. Kiểm tra lại toàn bộ dữ liệu đã ghi trước khi xóa các file cũ. File sai định dạng, thiếu thời gian cào hoặc bị khóa thì dừng, giữ file cũ. Migration bị gián đoạn có thể chạy lại và gộp theo URL.
+
+Chỉ chuyển dữ liệu, không cào mạng:
+
+```powershell
+python -B data_pipeline/src/scrapers/migrate_news_daily.py
+```
+
+`--output` hiện nhận **thư mục** bên trong `scrapers`, không nhận tên JSON. Ví dụ `--output data_pipeline/src/scrapers/demo` tạo cùng cấu trúc trên trong `demo`. Dùng output tùy chỉnh không tự chuyển dữ liệu cũ.
 
 Gộp theo URL chuẩn hóa, bỏ tracking; giữ bài cũ và hợp nhất `symbols`, `matched_symbols`, `scopes`. Không xóa bài cũ khi nguồn lỗi. `--prune-irrelevant` chủ động lọc bài cũ bằng cùng quy tắc, giữ bài theo mã và phạm vi `direct`. File sai định dạng được giữ nguyên và báo lỗi.
 
 Ghi qua `.json.tmp` rồi thay thế nguyên tử; `.json.lock` chặn hai tiến trình ghi cùng lúc. Hai file phụ được dọn khi chạy bình thường. Nếu tiến trình bị kill, chỉ xóa khóa sau khi xác nhận nó đã dừng.
 
-Schema `1.1` giữ các trường cũ: `id`, `source`, `url`, `title`, `description`, `content`, `published_at`, `crawled_at`. Bổ sung:
+Schema `1.2` giữ các trường bài cũ: `id`, `source`, `url`, `title`, `description`, `content`, `published_at`, `crawled_at`. Bổ sung:
 
 - `symbols`: tag mã từ nguồn và mã của tab truy vấn.
 - `matched_symbols`: các mã đã lấy từ tab theo mã.
 - `scopes`: `market`, mã cổ phiếu hoặc `direct`.
 - FireAnt: `provider_id`, `category`. CafeF: `attachments` (URL PDF).
 - `source` ở cấp file: `cafef` hoặc `fireant`; mỗi file chỉ chứa bài của nguồn đó.
+- `crawl_date`: ngày của file dạng `DD-MM-YYYY`; `timezone`: `Asia/Ho_Chi_Minh`.
 - `last_run`: thời gian UTC và `results` theo nhóm của riêng nguồn đó với `source`, `scope`, `accepted`, `limit`, `errors`.
 
 `published_at` có thể null nếu nguồn không cung cấp; ngày tab CafeF đổi milliseconds sang UTC. Mã thoát 0 khi mọi nhóm đủ hạn mức và không lỗi; mã 1 khi có lỗi/thiếu hạn mức. Bài thành công vẫn được lưu trong lượt thất bại một phần. Không có bài dùng được thì file cũ và `last_run` giữ nguyên.
@@ -59,9 +154,9 @@ Schema `1.1` giữ các trường cũ: `id`, `source`, `url`, `title`, `descript
 ## Kiểm thử và ngữ cảnh
 
 ```powershell
-python -B -m unittest discover -s data_pipeline/src/scrapers -p test_stock_news_collector.py
+python -B -m unittest discover -s data_pipeline/src/scrapers -p "test_*.py"
 ```
 
-Test offline kiểm tra phân trang, lọc, RSS hỏng, nội dung công bố, merge, chạy lặp, file hỏng, khóa ghi và chuyển dữ liệu/tách nguồn. `news_trial.json` là dữ liệu thử cũ, không phải file được tạo mỗi lượt.
+15 test offline kiểm tra phân trang, lọc, RSS hỏng, nội dung công bố, chạy lặp cùng ngày, sang ngày mới, mã mới, file hỏng, khóa ghi, ranh giới UTC+7, migration nhiều phạm vi, đối chiếu hai nguồn, cách ly mã, ngưỡng đúng 80%, đặt lại marker và lấy bài mới. `news_trial.json` cũ đã được chuyển sang thư mục tin chung theo nguồn/ngày.
 
 `AGENTS.md` và `CODEX_CONTEXT.md` trong thư mục này là ghi chú Codex dùng cục bộ, đã được `.gitignore` loại khỏi Git. Chúng không được đưa lên repository và không phải lịch sử chat nhập vào Codex app. Archify dùng để tạo sơ đồ, không có chức năng lưu cuộc chat vào app.

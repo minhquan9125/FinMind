@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-10-01T09:13:15.600240+00:00",
+  "method": "local_tfidf_entities_event_rules_v1",
+  "limitations": [
+    "Candidates require manual review; scores are not probabilities or fact verification.",
+    "No confirmed event count: candidate pairs may describe related but distinct events.",
+    "Rules can miss paraphrases, unknown entities and events; publication dates are not event dates.",
+    "Same-title disclosures are separated from differently worded candidates."
+  ],
+  "settings": {
+    "window_days": 3,
+    "threshold": 0.52,
+    "headline_weights": {
+      "title": 0.55,
+      "body": 0.35,
+      "shared_event": 0.1
+    },
+    "body_anchor_route": {
+      "min_body_cosine": 0.4,
+      "min_shared_numbers": 2,
+      "score": "0.75 * body_cosine + 0.25 (shared entity and event)"
+    },
+    "naive_publication_timezone": "UTC+7"
+  },
+  "summary": {
+    "uncheck_records": 92,
+    "unique_uncheck_articles": 91,
+    "unique_candidate_pairs": 3,
+    "unique_rewritten_candidate_pairs": 3,
+    "unique_same_title_candidate_pairs": 0,
+    "unique_uncheck_articles_with_candidates": 6,
+    "unique_uncheck_articles_with_rewritten_candidates": 6,
+    "unique_uncheck_articles_without_candidates": 85
+  },
+  "scopes": [
+    {
+      "scope": "VIC",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 0,
+      "rewritten_candidate_pairs": 0,
+      "same_title_candidate_pairs": 0,
+      "uncheck_articles_with_candidates": 0,
+      "uncheck_articles_without_candidates": 20
+    },
+    {
+      "scope": "VJC",
+      "uncheck_records": 18,
+      "unique_uncheck_articles": 18,
+      "candidate_pairs": 1,
+      "rewritten_candidate_pairs": 1,
+      "same_title_candidate_pairs": 0,
+      "uncheck_articles_with_candidates": 2,
+      "uncheck_articles_without_candidates": 16
+    },
+    {
+      "scope": "market",
+      "uncheck_records": 54,
+      "unique_uncheck_articles": 54,
+      "candidate_pairs": 2,
+      "rewritten_candidate_pairs": 2,
+      "same_title_candidate_pairs": 0,
+      "uncheck_articles_with_candidates": 4,
+      "uncheck_articles_without_candidates": 50
+    }
+  ],
+  "candidates": [
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.819386,
+      "evidence": {
+        "title_tfidf_cosine": 0.417118,
+        "body_tfidf_cosine": 0.759182,
+        "existing_text_overlap": 0.2114181818181818,
+        "shared_entities": [
+          "HAG"
+        ],
+        "shared_event_types": [
+          "agreement"
+        ],
+        "publication_gap_days": 0.6847222222222222,
+        "shared_numeric_anchors": [
+          "1.000",
+          "20.000",
+          "3.000",
+          "5.000",
+          "6.300",
+          "7.000"
+        ],
+        "matching_route": "body_with_numeric_anchors",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "000",
+          "bầu",
+          "gần",
+          "ngày",
+          "thụ",
+          "tiêu",
+          "tấn",
+          "đức"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/bau-duc-co-dong-thai-dac-biet-tai-trung-quoc-sau-cu-rot-gan-800-ty-vao-loai-cay-tieu-thu-29000-tan-ngay-188261001145226172.chn",
+        "title": "Bầu Đức có động thái đặc biệt tại Trung Quốc sau cú rót gần 800 tỷ vào loại cây tiêu thụ 29.000 tấn/ngày",
+        "published_at": "2026-10-01T14:53:00",
+        "files": [
+          "tin_tuc_chung/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_chung/cafef/01-10-2026.json"
+        ],
+        "excerpt": "TIN MỚI Công ty Cổ phần Đầu tư Quốc tế Hoàng Anh Gia Lai (HGI), công ty con nòng cốt trong hệ sinh thái của Tập đoàn Hoàng Anh Gia Lai (HAGL) do ông Đoàn Nguyên Đức (bầu Đức) làm Chủ tịch HĐQT, đã ký kết Biên bản ghi nhớ (MOU) hợp tác dài hạn với MQ Coffee (Minh Khiêm Cà phê), doanh nghiệp hoạt động trong chế biến, cung ứng và phân phối cà phê, có trụ sở tại Thượng Hải, Trung Quốc. MQ Coffee được thành lập năm 2009 tại Thượng Hải, với chuỗi hoạt động từ vùng nguyên liệu, rang xay đến bán buôn, gia công (OEM/ODM) và bán lẻ. Doanh nghiệp hiện vận hành nhà máy rang xay với công suất trên 5.000 tấ"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/bau-duc-dich-than-sang-ky-ban-1-000-tan-ca-phe-ngay-nam-nay-nang-len-5-000-tan-tai-1-thi-truong-tieu-thu-gan-1-000-tan-ngay/42032748",
+        "title": "Bầu Đức đích thân sang ký bán 1.000 tấn cà phê ngay năm nay, nâng lên 5.000 tấn tại 1 thị trường tiêu thụ gần 1.000 tấn/ngày",
+        "published_at": "2026-09-30T22:27:00+07:00",
+        "files": [
+          "tin_tuc_chung/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_chung/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Bầu Đức trực tiếp sang Thượng Hải trong lúc HAGL tăng tốc với cây cà phê, nhắm tới một thị trường đang tiêu thụ gần 1.000 tấn mỗi ngày. Lễ ký kết Biên bản ghi nhớ hợp tác dài hạn giữa HAGL, HGI và MQ Coffee tại Thượng Hải Ngày 30/9, Tập đoàn Hoàng Anh Gia Lai (HAGL) công bố Công ty CP Đầu tư Quốc tế Hoàng Anh Gia Lai (HGI) đã ký biên bản ghi nhớ hợp tác dài hạn với MQ Coffee, doanh nghiệp cà phê có trụ sở tại Thượng Hải, Trung Quốc. Lễ ký thực tế diễn ra tại Thượng Hải ngày 25/8. Theo thỏa thuận có thời hạn 5 năm, HGI sẽ cung cấp cà phê Arabica nhân xanh từ các vùng nguyên liệu của doanh nghiệ"
+      },
+      "scope": "market"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.56817,
+      "evidence": {
+        "title_tfidf_cosine": 0.060057,
+        "body_tfidf_cosine": 0.424227,
+        "existing_text_overlap": 0.01899441340782123,
+        "shared_entities": [
+          "USD"
+        ],
+        "shared_event_types": [
+          "agreement"
+        ],
+        "publication_gap_days": 2.0569444444444445,
+        "shared_numeric_anchors": [
+          "100",
+          "200"
+        ],
+        "matching_route": "body_with_numeric_anchors",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "không",
+          "triệu",
+          "usd",
+          "vietjet"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/ty-phu-nguyen-thi-phuong-thao-bat-tay-tap-doan-cong-nghe-phap-doanh-thu-hon-22-ty-euro-18826091312592095.chn",
+        "title": "Tỷ phú Nguyễn Thị Phương Thảo muốn Vietjet không chỉ sống bằng bán vé máy bay: Bắt tay tập đoàn công nghệ Pháp doanh thu hơn 22 tỷ euro, rót gần 100 triệu USD vào bảo dưỡng, tiến sâu vào AI",
+        "published_at": "2026-09-13T16:21:00",
+        "files": [
+          "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json"
+        ],
+        "excerpt": "VJC: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 13/9 tại Paris, Vietjet và tập đoàn công nghệ Thales ký các thỏa thuận hợp tác về bảo dưỡng kỹ thuật hàng không, công nghệ số, trí tuệ nhân tạo (AI) và an ninh mạng. Thỏa thuận mới cho thấy Vietjet đang tiếp tục mở rộng hoạt động ra ngoài mảng vận chuyển hàng không truyền thống. Bên cạnh việc mua máy bay và mở thêm đường bay, hãng hàng không do tỷ phú Nguyễn Thị Phương Thảo điều hành đang đầu tư ngày càng sâu vào các mắt xích phía sau hoạt động bay như bảo dưỡng, kỹ thuật và công nghệ. Thales là một trong những tập đoàn công nghệ l"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/pho-chu-tich-hdqt-vietjet-moi-nam-mot-hang-hang-khong-chi-200-300-trieu-usd-ra-nuoc-ngoai-tai-sao-khong-giu-so-ngoai-te-do-o-viet-nam/41798569",
+        "title": "Phó Chủ tịch HĐQT Vietjet: Mỗi năm một hãng hàng không chi 200 - 300 triệu USD ra nước ngoài, tại sao không giữ số ngoại tệ đó ở Việt Nam?",
+        "published_at": "2026-09-15T17:43:00+07:00",
+        "files": [
+          "tin_tuc_theo_ma/VJC/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/VJC/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Theo bà Hồ Ngọc Yến Phương, Phó Chủ tịch HĐQT Vietjet, bên cạnh vận chuyển hành khách, hãng đang phát triển từ đào tạo, bảo dưỡng tàu bay đến dịch vụ mặt đất và cho thuê máy bay. Vietjet cũng muốn hợp tác với các nhà sản xuất động cơ lớn để từng bước đưa những khoản chi hàng trăm triệu USD mỗi năm về Việt Nam. Mỗi năm, một hãng hàng không phải chi trả 200 - 300 triệu USD ra nước ngoài Chia sẻ tại Tọa đàm “Kiến tạo nguồn lực tăng trưởng quốc gia: Vai trò của doanh nghiệp dẫn đầu trong kỷ nguyên mới” trong khuôn khổ VNTAX 2026 ngày 15/09/2026, bà Hồ Ngọc Yến Phương, Phó Chủ tịch Hội đồng quản tr"
+      },
+      "scope": "VJC"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.555713,
+      "evidence": {
+        "title_tfidf_cosine": 0.535348,
+        "body_tfidf_cosine": 0.460776,
+        "existing_text_overlap": 0.1070528967254408,
+        "shared_entities": [
+          "HNX",
+          "HOSE"
+        ],
+        "shared_event_types": [
+          "listing"
+        ],
+        "publication_gap_days": 0.8576388888888888,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "chuyển",
+          "hnx",
+          "hose",
+          "niêm",
+          "yết"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/nong-toan-bo-co-phieu-niem-yet-tren-hnx-sap-chuyen-sang-hose-188260930192254094.chn",
+        "title": "Nóng: Toàn bộ cổ phiếu niêm yết trên HNX sắp chuyển sang HOSE",
+        "published_at": "2026-09-30T19:24:00",
+        "files": [
+          "tin_tuc_chung/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_chung/cafef/01-10-2026.json"
+        ],
+        "excerpt": "TIN MỚI Sở Giao dịch Chứng khoán Việt Nam (VNX) vừa công bố các mốc thời gian thực hiện việc chuyển cổ phiếu niêm yết từ Sở Giao dịch Chứng khoán Hà Nội (HNX) sang Sở Giao dịch Chứng khoán TP.HCM (HOSE), trong khuôn khổ lộ trình sắp xếp lại thị trường giao dịch cổ phiếu. Theo kế hoạch, ngày 23/12/2026 sẽ là ngày giao dịch cuối cùng của toàn bộ cổ phiếu niêm yết tại HNX . Sau phiên này, các cổ phiếu thuộc phạm vi chuyển giao sẽ tạm ngừng giao dịch trong hai ngày 24 và 25/12/2026. Trong khoảng thời gian tạm ngừng nói trên, hoạt động giao dịch chứng khoán tại HOSE cũng như các thị trường khác do "
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/quy-mo-hnx-ra-sao-truoc-khi-chuyen-niem-yet-ve-hose/42052046",
+        "title": "Quy mô HNX ra sao trước khi chuyển niêm yết về HOSE?",
+        "published_at": "2026-10-01T15:59:00+07:00",
+        "files": [
+          "tin_tuc_chung/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_chung/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Số liệu cuối tháng 9 cho thấy quy mô thị trường niêm yết của HNX khá khiêm tốn. Tổng khối lượng gần 21 tỷ cổ phiếu và giá trị vốn hóa gần 460.000 tỷ đồng, chỉ bằng 9% và khoảng 5% so với quy mô HOSE. Sở Giao dịch chứng khoán Việt Nam (VNX) mới đây đưa ra lộ trình sắp xếp lại thị trường, khi chuyển cổ phiếu niêm yết từ Sở Giao dịch chứng khoán Hà Nội (HNX) sang Sở Giao dịch chứng khoán TP HCM (HOSE). Ngày giao dịch cuối cùng của toàn bộ cổ phiếu niêm yết tại HNX là 23/12. Các cổ phiếu thuộc phạm vi chuyển giao sẽ tạm ngừng giao dịch trong ngày 24-25/12 và chính thức giao dịch tại HOSE vào ngày "
+      },
+      "scope": "market"
+    }
+  ]
+}

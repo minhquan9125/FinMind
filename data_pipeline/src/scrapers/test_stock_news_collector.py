@@ -7,12 +7,14 @@ from unittest.mock import patch
 
 import stock_news_collector as collector
 import news_sources as sources
+import news_storage as storage
 
 
 def article(number=1):
     return {'id': str(number), 'url': f'https://cafef.vn/co-phieu-{1000000000 + number}.chn',
             'source': 'cafef', 'title': 'Cổ phiếu FPT tăng giá', 'description': '',
-            'content': 'Nội dung bài viết.', 'published_at': None}
+            'content': 'Nội dung bài viết.', 'published_at': None,
+            'crawled_at': '2026-09-30T18:00:00+00:00'}
 
 
 class NewsTests(unittest.TestCase):
@@ -58,83 +60,104 @@ class NewsTests(unittest.TestCase):
         self.assertIn('công bố kết quả', result['content'])
         self.assertEqual(result['attachments'], ['https://cafefnew.mediacdn.vn/report.pdf'])
 
-    def test_fill_after_failure_merge_and_repeat(self):
-        with tempfile.TemporaryDirectory(dir=collector.DEFAULT_OUTPUT.parent) as folder:
-            output = Path(folder) / 'news.json'
-            candidates = [{'url': article(n)['url']} for n in (1, 2, 3)]
-            discovery = lambda symbol, pages: iter(candidates)
-            with patch.object(collector, 'cafef_candidates', discovery), \
-                 patch.object(collector, 'fetch_article', side_effect=[None, article(2), article(3)]), \
-                 patch.object(collector.time, 'sleep'):
-                # Failure is visible to automation, but still fills the quota and saves successes.
-                self.assertEqual(collector.main(['--limit', '2', '--output', str(output)]), 1)
-            data = json.loads(output.read_text(encoding='utf-8'))
-            self.assertEqual(len(data['articles']), 2)
-            self.assertEqual(data['last_run']['results'][0]['accepted'], 2)
-            with patch.object(collector, 'cafef_candidates', lambda s, p: iter(candidates[1:])), \
-                 patch.object(collector, 'fetch_article') as fetch:
-                self.assertEqual(collector.main(['--symbols', 'FPT', '--only-symbols', '--limit', '2', '--output', str(output)]), 0)
-                fetch.assert_not_called()
-            self.assertEqual(len(json.loads(output.read_text(encoding='utf-8'))['articles']), 2)
-            self.assertEqual(json.loads(output.read_text(encoding='utf-8'))['articles'][0]['scopes'], ['FPT', 'market'])
-            self.assertEqual([p.name for p in Path(folder).iterdir()], ['news.json'])
+    def run_mocked(self, root, day='01-10-2026', symbols=(), fail=False):
+        def discovery(symbol, pages):
+            return iter([{'url': article(n)['url'], 'matched_symbols': [symbol] if symbol else []}
+                         for n in (1, 2)])
+        fireant = {**article(3), 'source': 'fireant', 'url': 'https://fireant.vn/bai-viet/tin/42'}
+        with patch.object(collector, 'cafef_candidates', discovery), \
+             patch.object(collector, 'fireant_candidates', lambda s, p: iter([fireant])), \
+             patch.object(collector, 'fetch_article', side_effect=lambda url, candidate: (
+                 fireant.copy() if 'fireant' in url else
+                 None if fail and url == article(1)['url'] else
+                 article(1 if url == article(1)['url'] else 2))), \
+             patch.object(collector, 'crawl_day', return_value=day), \
+             patch.object(collector.time, 'sleep'):
+            return collector.main(['--source', 'all', '--limit', '1', '--output', str(root)] +
+                                  (['--symbols', *symbols] if symbols else []))
+
+    def test_daily_routing_repeat_new_day_and_new_symbol(self):
+        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+            root=Path(folder)
+            self.assertEqual(self.run_mocked(root, symbols=('FPT', 'HPG')), 0)
+            paths=list(root.rglob('*.json'))
+            self.assertEqual(len(paths), 6)
+            for source in ('cafef', 'fireant'):
+                for scope in ('market', 'FPT', 'HPG'):
+                    path=storage.daily_path(root, source, scope, '01-10-2026')
+                    rows=collector.read_articles(path, source)
+                    self.assertEqual(len(rows), 1)
+                    self.assertEqual(next(iter(rows.values()))['scopes'], [scope])
+            self.assertEqual(self.run_mocked(root, symbols=('FPT', 'HPG')), 0)
+            self.assertEqual(len(list(root.rglob('*.json'))), 6)
+            old={p:p.read_bytes() for p in paths}
+            self.assertEqual(self.run_mocked(root, day='02-10-2026', symbols=('VCB',)), 0)
+            self.assertEqual(len(list(root.rglob('*.json'))), 10)
+            self.assertEqual(old, {p:p.read_bytes() for p in paths})
+            self.assertFalse(list(root.rglob('*.lock')))
+            self.assertFalse(list(root.rglob('*.tmp')))
+
+    def test_fill_after_failure_preserves_success(self):
+        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+            root=Path(folder)
+            self.assertEqual(self.run_mocked(root, fail=True), 1)
+            rows=collector.read_articles(storage.daily_path(root,'cafef','market','01-10-2026'))
+            self.assertEqual(list(rows), [article(2)['url']])
 
     def test_corrupt_output_and_concurrent_writer_preserved(self):
-        with tempfile.TemporaryDirectory(dir=collector.DEFAULT_OUTPUT.parent) as folder:
-            output = Path(folder) / 'news.json'
-            output.write_text('{broken', encoding='utf-8')
-            self.assertEqual(collector.main(['--output', str(output)]), 1)
+        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+            root=Path(folder)
+            output=storage.daily_path(root,'cafef','market','01-10-2026')
+            output.parent.mkdir(parents=True)
+            output.write_text('{broken',encoding='utf-8')
+            self.assertEqual(self.run_mocked(root), 1)
             self.assertEqual(output.read_text(encoding='utf-8'), '{broken')
+            output.unlink()
             with collector.output_lock(output):
-                self.assertEqual(collector.main(['--output', str(output)]), 1)
+                self.assertEqual(self.run_mocked(root), 1)
             self.assertFalse(output.with_suffix('.json.lock').exists())
 
-    def test_split_migration_preserves_existing_and_is_repeatable(self):
-        with tempfile.TemporaryDirectory(dir=collector.DEFAULT_OUTPUT.parent) as folder:
-            root = Path(folder)
-            legacy = root / 'stock_news.json'
-            outputs = {s: root / (s + '_news.json') for s in ('cafef', 'fireant')}
-            fireant = {**article(2), 'source': 'fireant', 'url': 'https://fireant.vn/bai-viet/tin/42'}
-            collector.write_payload(legacy, {'articles': [article(1), fireant]})
-            collector.write_payload(outputs['cafef'], {'articles': [article(3)]})
-            collector.migrate_legacy(legacy, outputs)
+    def test_migration_multiscope_preserves_records_and_repeat(self):
+        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+            root=Path(folder)
+            legacy=root/'old.json'
+            trial=root/'news_trial.json'
+            row={**article(), 'scopes':['FPT','HPG','market'], 'matched_symbols':['FPT','HPG']}
+            collector.write_payload(legacy, {'articles':[row]})
+            collector.write_payload(trial, {'articles':[article(2)]})
+            migrate=lambda: storage.migrate_daily(root,[legacy,trial],collector.read_articles,
+                                                  collector.write_payload,collector.output_lock)
+            migrate()
             self.assertFalse(legacy.exists())
-            self.assertEqual(len(collector.read_articles(outputs['cafef'], 'cafef')), 2)
-            self.assertEqual(len(collector.read_articles(outputs['fireant'], 'fireant')), 1)
-            before = {s: p.read_bytes() for s, p in outputs.items()}
-            collector.migrate_legacy(legacy, outputs)
-            self.assertEqual(before, {s: p.read_bytes() for s, p in outputs.items()})
+            self.assertFalse(trial.exists())
+            for scope in ('market','FPT','HPG'):
+                rows=collector.read_articles(storage.daily_path(root,'cafef',scope,'01-10-2026'))
+                self.assertEqual(rows[row['url']],row)
+            self.assertEqual(len(collector.read_articles(storage.daily_path(root,'cafef','market','01-10-2026'))),2)
+            before={p:p.read_bytes() for p in root.rglob('*.json')}
+            migrate()
+            self.assertEqual(before,{p:p.read_bytes() for p in root.rglob('*.json')})
 
-    def test_invalid_migration_preserves_all_files(self):
-        with tempfile.TemporaryDirectory(dir=collector.DEFAULT_OUTPUT.parent) as folder:
-            root = Path(folder)
-            legacy = root / 'stock_news.json'
-            outputs = {s: root / (s + '_news.json') for s in ('cafef', 'fireant')}
-            collector.write_payload(legacy, {'articles': [article()]})
-            outputs['fireant'].write_text('{broken', encoding='utf-8')
+    def test_invalid_migration_preserves_inputs_and_destinations(self):
+        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+            root=Path(folder)
+            legacy=root/'old.json'
+            collector.write_payload(legacy,{'articles':[article()]})
+            target=storage.daily_path(root,'cafef','market','01-10-2026')
+            target.parent.mkdir(parents=True)
+            target.write_text('{broken',encoding='utf-8')
             with self.assertRaises(ValueError):
-                collector.migrate_legacy(legacy, outputs)
+                storage.migrate_daily(root,[legacy],collector.read_articles,collector.write_payload,collector.output_lock)
             self.assertTrue(legacy.exists())
-            self.assertFalse(outputs['cafef'].exists())
-            self.assertEqual(outputs['fireant'].read_text(encoding='utf-8'), '{broken')
+            self.assertEqual(target.read_text(encoding='utf-8'),'{broken')
 
-    def test_all_sources_separate_and_single_source_keeps_other_file(self):
-        with tempfile.TemporaryDirectory(dir=collector.DEFAULT_OUTPUT.parent) as folder:
-            root = Path(folder)
-            fireant = {**article(2), 'source': 'fireant', 'url': 'https://fireant.vn/bai-viet/tin/42'}
-            with patch.object(collector, 'cafef_candidates', lambda s, p: iter([article()])), \
-                 patch.object(collector, 'fireant_candidates', lambda s, p: iter([fireant])), \
-                 patch.object(collector, 'fetch_article', side_effect=[article(), fireant]), \
-                 patch.object(collector.time, 'sleep'):
-                self.assertEqual(collector.main(['--source', 'all', '--limit', '1', '--output', str(root / 'news.json')]), 0)
-            cafef_path, fireant_path = root / 'news_cafef.json', root / 'news_fireant.json'
-            self.assertEqual(len(collector.read_articles(cafef_path, 'cafef')), 1)
-            self.assertEqual(len(collector.read_articles(fireant_path, 'fireant')), 1)
-            fireant_bytes = fireant_path.read_bytes()
-            with patch.object(collector, 'cafef_candidates', lambda s, p: iter([article()])):
-                self.assertEqual(collector.main(['--source', 'cafef', '--limit', '1', '--output', str(cafef_path)]), 0)
-            self.assertEqual(fireant_bytes, fireant_path.read_bytes())
-            self.assertEqual({p.name for p in root.iterdir()}, {'news_cafef.json', 'news_fireant.json'})
+    def test_vietnam_day_boundary_and_path_validation(self):
+        self.assertEqual(storage.crawl_day('2026-09-30T16:59:59Z'),'30-09-2026')
+        self.assertEqual(storage.crawl_day('2026-09-30T17:00:00Z'),'01-10-2026')
+        with self.assertRaises(ValueError):
+            storage.daily_path(storage.SCRAPERS,'cafef','../../escape','01-10-2026')
+        with self.assertRaises(ValueError):
+            storage.crawl_day('2026-10-01T00:00:00')
 
 
 if __name__ == '__main__':
