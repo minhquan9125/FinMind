@@ -44,3 +44,7 @@ dist-ssr/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local Codex context for scraper work
+/data_pipeline/src/scrapers/AGENTS.md
+/data_pipeline/src/scrapers/CODEX_CONTEXT.md
