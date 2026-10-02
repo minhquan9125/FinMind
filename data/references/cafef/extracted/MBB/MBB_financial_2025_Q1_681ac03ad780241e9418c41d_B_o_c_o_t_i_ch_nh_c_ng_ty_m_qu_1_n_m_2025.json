@@ -1,0 +1,485 @@
+{
+  "schema_version": "1.0",
+  "source": "CAFEF",
+  "source_pdf": {
+    "relative_path": "data/references/cafef/pdfs/MBB/MBB_financial_2025_Q1_681ac03ad780241e9418c41d_B_o_c_o_t_i_ch_nh_c_ng_ty_m_qu_1_n_m_2025.pdf",
+    "sha256": "c4aea54c740ce5c2b825b69752ef4779cd5cb05ab261f1b4399ddc633738903e",
+    "document_id": "681ac03ad780241e9418c41d",
+    "title": "Báo cáo tài chính công ty mẹ quý 1 năm 2025",
+    "period_label": "Q1/2025",
+    "source_page_url": "https://cafef.vn/du-lieu/hose/mbb-tai-lieu.chn",
+    "source_file_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/00012345679012345679ngn-hng-tmcp-qun-i24042025-000000bo-co-ti-chnh-m-qu.pdf"
+  },
+  "extracted_at": "2026-09-28T08:56:26.112069Z",
+  "extraction": {
+    "method": "pypdf text layer",
+    "ocr_performed": false,
+    "ocr_language": null,
+    "ocr_note": "Pages with no usable text are listed in summary.pages_needing_ocr."
+  },
+  "summary": {
+    "symbol": "MBB",
+    "filename": "MBB_financial_2025_Q1_681ac03ad780241e9418c41d_B_o_c_o_t_i_ch_nh_c_ng_ty_m_qu_1_n_m_2025.pdf",
+    "page_count": 57,
+    "pages_with_text": 1,
+    "pages_needing_ocr": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57
+    ]
+  },
+  "pages": [
+    {
+      "page": 1,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 2,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 3,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 4,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 5,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 6,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 7,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 8,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 9,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 10,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 11,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 12,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 13,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 14,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 15,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 16,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 17,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 18,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 19,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 20,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 21,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 22,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 23,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 24,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 25,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 26,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 27,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 28,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 29,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 30,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 31,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 32,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 33,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 34,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 35,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 36,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 37,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 38,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 39,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 40,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 41,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 42,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 43,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 44,
+      "text": "6. 7. e. Thu nh�p til' g6p vim, mua c6 phin Tu 01/01/2025 Tu 01/01/2024 atm 3110312025 atm 31/0312024 Tri�u dong Tri?U dong Thu tU' oo tll'C Thu khac tll' g6p v6n, mua c6 phan 1.103 1.103 Chi phi ho�.t d{>ng TCf 01/01/2025 Tu 01/01/2024 <Jen 31/03/2025 <J�n 31/03/2024 Tri{)u (!(mg Tri{)u dong Chi n¢p thue va cac khoan phi, le phf 16.554 16.145 Chi cho nhan vien 1.892.413 1.538.716 Chi v� tai san 507.021 586.697 Trong d6: -Chi phi khliu hao va kh!Ju tru 141,700 275.940 ·Chi cho hoc;1t dong quan ly cong Vl,J 459.404 373.085 Chi n¢p phi bao hiem, bao toan ti�n gll'i cua khach hang 155,248 121.248 3.030.640 2.635.891 Giai trinh bi�n d(>ng lgi nhu�n: Lqi nhu�n sau thue cua MB quy I nam 2025 so v&i quy I nam 2024 tang 1.937.208 trieu d6ng ttrang <!U'an g mll'c 46,15% do cac nguyen nhan sau: l<hoan mi.ic c6 bi�n dc)ng I6'n Tang lqi nhu·.:;m do tang thu nh$p lai thuan Tang lqi nhui;in do tang lai thuan tll' hoc;1t d¢ng djch v1,1 H\\'ng IQ'i nhu$n do tang lai thuan tU' hoi;1t d¢ng kinh doanh ngoc;1i h6i Giam IQ'i nhu$n do giam lai thu�m tU' ch(rng khoan kinh qoan,h, ch(l>ng khoan dau tU' va g6p v6n, dau tU' dai h.;1n T�fog IQ'i nhu$n'do tang lai thuan tll' hoc;1t dong khac Giarn lqi nhu-;1n do giam t0u .nh$p tu g6p v6n mua c6 phan •. Gram lzyi nhu$-n do tang chi phf ho.;1t d¢ng Giam IQ'i nhu$n do tang chi phi di! phong Gi�m lqi �hu�m d9 tang chi phf thue TNON T6ng anh hw6'ng d�n k't qua kinh doanh Anh hu•ong LQ'i nhu�n sau t�ue Triiju dong 2.476.421 91.074 . 76.054 (55·1.999) 769.555 (1.103) (394.749) (34.445) (493',600) 1�937i208 36",
+      "char_count": 1549,
+      "needs_ocr": false,
+      "extraction_method": "pypdf_text_layer"
+    },
+    {
+      "page": 45,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 46,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 47,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 48,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 49,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 50,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 51,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 52,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 53,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 54,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 55,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 56,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    },
+    {
+      "page": 57,
+      "text": "",
+      "char_count": 0,
+      "needs_ocr": true,
+      "extraction_method": "no_usable_text"
+    }
+  ]
+}

@@ -1,0 +1,726 @@
+"""Financial Data Metric Mapping Table for FinMind.
+
+Maps raw crawler/Vietcap keys (bsa, bsb, isa, isb, cfa, ratios) into standardized,
+canonical financial observation codes (e.g., TOTAL_ASSETS, NET_INTEREST_INCOME).
+The BANK profile is verified against BIDV statements; the TECH profile is verified
+against FPT's consolidated 6-month 2026 interim statement.
+
+Quality Bar: Level A (Core Financial Metrics)
+- 100% verified accuracy for mapped codes.
+- No two keys map to the same code in any section.
+- Max code length <= 50 characters (fit for observations.code).
+- Unmapped keys retain original uppercase notation (e.g. bsa1 -> BSA1).
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import sys
+from pathlib import Path
+from typing import Final
+
+# Metadata fields that should not be mapped to financial metrics
+META_KEYS: Final[set[str]] = {
+    "period_label",
+    "period_type",
+    "year",
+    "quarter",
+    "organCode",
+    "ticker",
+    "createDate",
+    "updateDate",
+    "yearReport",
+    "lengthReport",
+    "publicDate",
+    "ratioTTMId",
+    "ratioYearId",
+    "ratioType",
+}
+
+# ==============================================================================
+# 1. BALANCE SHEET MAPPING (Bảng Cân đối kế toán)
+# ==============================================================================
+BALANCE_SHEET_MAPPING: Final[dict[str, str]] = {
+    # --- Chỉ tiêu bắt buộc chung (CONFIDENCE: HIGH - BCTC Soát xét 6T/2026 trang 8 & 9) ---
+    "bsa2": "CASH_AND_GOLD",               # 12.509.838 triệu VND (Tiền mặt, vàng bạc, đá quý)
+    "bsa29": "FIXED_ASSETS",                # 12.790.868 triệu VND (Tài sản cố định)
+    "bsa30": "TANGIBLE_FIXED_ASSETS",       # 7.242.139 triệu VND (Tài sản cố định hữu hình)
+    "bsa31": "TANGIBLE_FA_GROSS",           # 17.979.666 triệu VND (Nguyên giá TSCĐ hữu hình)
+    "bsa32": "TANGIBLE_FA_DEPRECIATION",    # -10.737.527 triệu VND (Hao mòn TSCĐ hữu hình)
+    "bsa36": "INTANGIBLE_FIXED_ASSETS",     # 5.548.729 triệu VND (Tài sản cố định vô hình)
+    "bsa37": "INTANGIBLE_FA_GROSS",         # 8.824.302 triệu VND (Nguyên giá TSCĐ vô hình)
+    "bsa38": "INTANGIBLE_FA_DEPRECIATION",  # -3.275.573 triệu VND (Hao mòn TSCĐ vô hình)
+    "bsa43": "LONG_TERM_INVESTMENTS",       # 4.681.899 triệu VND (Góp vốn, đầu tư dài hạn)
+    "bsa45": "INVESTMENTS_IN_ASSOCIATES_JV",# 4.603.155 triệu VND (Vốn góp liên doanh + liên kết)
+    "bsa46": "OTHER_LONG_TERM_INVESTMENTS", # 182.941 triệu VND (Góp vốn, ĐTDH khác)
+    "bsa47": "PROVISION_LONG_TERM_INVESTMENTS", # -104.197 triệu VND (Dự phòng giảm giá ĐTDH)
+    "bsa53": "TOTAL_ASSETS",                # 3.440.840.854 triệu VND (Tổng tài sản)
+    "bsa54": "TOTAL_LIABILITIES",           # 3.242.057.568 triệu VND (Tổng nợ phải trả)
+    "bsa78": "OWNERS_EQUITY",               # 198.783.286 triệu VND (Tổng vốn chủ sở hữu)
+    "bsa80": "CHARTER_CAPITAL",             # 72.800.652 triệu VND (Vốn điều lệ)
+    "bsa81": "SHARE_PREMIUM",               # 26.309.607 triệu VND (Thặng dư vốn cổ phần)
+    "bsa82": "OTHER_CAPITAL",               # 1.127.596 triệu VND (Vốn khác)
+    "bsa85": "FX_DIFFERENCE",               # -455.949 triệu VND (Chênh lệch tỷ giá hối đoái)
+    "bsa90": "RETAINED_EARNINGS",           # 59.497.817 triệu VND (Lợi nhuận chưa phân phối)
+    "bsa96": "TOTAL_LIABILITIES_EQUITY",    # 3.440.840.854 triệu VND (Tổng nợ phải trả và VCSH)
+    "bsa210": "MINORITY_INTEREST_EQUITY",   # 5.733.452 triệu VND (Lợi ích CĐ không kiểm soát)
+    "bsa276": "JV_INVESTMENTS",             # 3.423.613 triệu VND (Vốn góp liên doanh)
+    "bsa277": "ASSOCIATES_INVESTMENTS",     # 1.179.542 triệu VND (Đầu tư vào CT liên kết)
+    "bsa40": "INVESTMENT_PROPERTY_NET",  # Bất động sản đầu tư (giá trị còn lại), MBB 6T/2026
+    "bsa41": "INVESTMENT_PROPERTY_COST",  # Nguyên giá bất động sản đầu tư, MBB 6T/2026
+    "bsa42": "INVESTMENT_PROPERTY_DEPRECIATION",  # Hao mòn BĐS đầu tư, MBB 6T/2026
+
+    # --- Chỉ tiêu đặc thù Ngân hàng (CONFIDENCE: HIGH - BCTC trang 8 & 9) ---
+    "bsb97": "DEPOSITS_AT_CENTRAL_BANK",          # 117.294.507 triệu VND (Tiền gửi tại NHNN)
+    "bsb98": "DEPOSITS_LOANS_OTHER_BANKS",        # 458.253.061 triệu VND (Tiền gửi và cho vay các TCTD khác)
+    "bsb99": "TRADING_SECURITIES",                # 24.701.404 triệu VND (Chứng khoán kinh doanh thuần)
+    "bsb100": "TRADING_SECURITIES_GROSS",         # 24.758.606 triệu VND (CKKD nguyên giá)
+    "bsb101": "PROVISION_TRADING_SECURITIES",     # -57.202 triệu VND (Dự phòng rủi ro CKKD)
+    "bsb102": "DERIVATIVES_ASSETS",               # 755.982 triệu VND (Công cụ phái sinh & TS tài chính khác)
+    "bsb103": "CUSTOMER_LOANS_NET",               # 2.467.112.319 triệu VND (Cho vay khách hàng thuần)
+    "bsb104": "CUSTOMER_LOANS_GROSS",             # 2.501.807.043 triệu VND (Dư nợ cho vay KH nguyên giá)
+    "bsb105": "CUSTOMER_LOANS_PROVISION",         # -34.694.724 triệu VND (Dự phòng rủi ro cho vay KH)
+    "bsb106": "INVESTMENT_SECURITIES",            # 274.907.315 triệu VND (Chứng khoán đầu tư)
+    "bsb107": "SECURITIES_AVAILABLE_FOR_SALE",    # 174.011.299 triệu VND (CKĐT sẵn sàng để bán - AFS)
+    "bsb108": "SECURITIES_HELD_TO_MATURITY",      # 100.956.425 triệu VND (CKĐT giữ đến ngày đáo hạn - HTM)
+    "bsb109": "PROVISION_INVESTMENT_SECURITIES",  # -60.409 triệu VND (Dự phòng rủi ro CKĐT)
+    "bsb110": "OTHER_ASSETS",                     # 67.833.661 triệu VND (Tài sản Có khác)
+    "bsb111": "DUE_TO_GOVT_AND_CENTRAL_BANK",     # 236.367.270 triệu VND (Các khoản nợ Chính phủ và NHNN)
+    "bsb112": "DUE_TO_AND_BORROWINGS_FROM_BANKS", # 372.325.267 triệu VND (Tiền gửi và vay các TCTD khác)
+    "bsb113": "CUSTOMER_DEPOSITS",                # 2.261.489.130 triệu VND (Tiền gửi của khách hàng)
+    "bsb114": "DERIVATIVES_AND_OTHER_FINANCIAL_LIABILITIES",  # Phái sinh và nợ tài chính khác
+    "bsb115": "FUNDS_GRANTS_TRUSTS",              # 11.588.851 triệu VND (Vốn tài trợ, ủy thác đầu tư)
+    "bsb116": "VALUABLE_PAPERS_ISSUED",           # 301.731.655 triệu VND (Phát hành giấy tờ có giá)
+    "bsb117": "OTHER_LIABILITIES",                # 58.555.395 triệu VND (Các khoản nợ khác)
+    "bsb118": "BANK_CAPITAL",  # Vốn của ngân hàng/TCTD
+    "bsb121": "CREDIT_INSTITUTION_FUNDS",  # Quỹ của ngân hàng/TCTD
+    "bsb126": "TOTAL_GUARANTEE_OBLIGATIONS",  # Tổng bảo lãnh vay vốn và bảo lãnh khác
+    "bsb131": "OTHER_GUARANTEES",  # Bảo lãnh khác ngoài bảo lãnh vay vốn
+    "bsb132": "TOTAL_FX_LC_AND_OTHER_COMMITMENTS",  # Cam kết ngoại hối, L/C và cam kết khác (subtotal)
+    "bsb158": "LOAN_GUARANTEES",  # Bảo lãnh vay vốn
+    "bsb179": "FOREIGN_EXCHANGE_COMMITMENTS",  # Tổng cam kết giao dịch hối đoái
+    "bsb180": "COMMITMENTS_TO_BUY_FOREIGN_CURRENCY",  # Cam kết mua ngoại tệ
+    "bsb181": "COMMITMENTS_TO_SELL_FOREIGN_CURRENCY",  # Cam kết bán ngoại tệ
+    "bsb182": "FOREIGN_EXCHANGE_SWAP_COMMITMENTS",  # Cam kết hoán đổi ngoại tệ
+    "bsb185": "LETTERS_OF_CREDIT_COMMITMENTS",  # Cam kết trong nghiệp vụ thư tín dụng
+    "bsb186": "OTHER_OFF_BALANCE_COMMITMENTS",  # Các cam kết khác
+    "bsb261": "PURCHASED_DEBTS_NET",  # Hoạt động mua nợ thuần, MBB 6T/2026
+    "bsb262": "PURCHASED_DEBTS_GROSS",  # Mua nợ gộp, MBB 6T/2026
+    "bsb263": "PURCHASED_DEBTS_PROVISION",  # Dự phòng rủi ro hoạt động mua nợ
+    "bsb264": "OTHER_ASSET_RECEIVABLES",  # Các khoản phải thu trong tài sản Có khác
+    "bsb265": "ACCRUED_INTEREST_AND_FEES_RECEIVABLE",  # Các khoản lãi, phí phải thu
+    "bsb266": "DEFERRED_TAX_ASSETS",  # Tài sản thuế TNDN hoãn lại
+    "bsb267": "OTHER_ASSETS_DETAIL",  # Tài sản Có khác, chi tiết
+    "bsb269": "PROVISION_FOR_OTHER_ON_BALANCE_SHEET_ASSETS",  # Dự phòng tài sản Có nội bảng khác
+    "bsb273": "DEFERRED_TAX_LIABILITIES",  # Thuế TNDN hoãn lại phải trả
+    "bsb275": "PROVISION_FOR_OTHER_LIABILITIES",  # Dự phòng các khoản nợ khác
+    "bsb258": "DEPOSITS_AT_OTHER_BANKS",          # 445.646.196 triệu VND (Tiền gửi tại TCTD khác)
+    "bsb259": "LOANS_TO_OTHER_BANKS",             # 12.677.150 triệu VND (Cho vay các TCTD khác)
+    "bsb260": "PROVISION_LOANS_OTHER_BANKS",      # -70.285 triệu VND (Dự phòng tiền gửi & cho vay TCTD)
+    "bsb270": "DEPOSITS_FROM_OTHER_BANKS",        # 332.257.415 triệu VND (Tiền gửi của các TCTD khác)
+    "bsb271": "BORROWINGS_FROM_OTHER_BANKS",      # 40.067.852 triệu VND (Vay các TCTD khác)
+    "bsb272": "ACCRUED_EXPENSES_PAYABLE",         # 39.647.968 triệu VND (Các khoản lãi, phí phải trả)
+    "bsb274": "OTHER_PAYABLES_AND_LIABILITIES",   # 18.841.838 triệu VND (Các khoản phải trả & công nợ khác)
+
+    # --- Chỉ tiêu trùng giá trị với bsa90 (CONFIDENCE: LOW - Không map) ---
+    "bsa178": "BSA178",                           # 59.497.817 triệu VND (Trùng bsa90, giữ nguyên)
+}
+
+# ==============================================================================
+# 2. INCOME STATEMENT MAPPING (Báo cáo Kết quả hoạt động kinh doanh)
+# ==============================================================================
+INCOME_STATEMENT_MAPPING: Final[dict[str, str]] = {
+    # --- Chỉ tiêu bắt buộc chung (CONFIDENCE: HIGH - BCTC Q2/2026 trang 7) ---
+    "isa16": "PROFIT_BEFORE_TAX",     # 10.332.973 triệu VND (Tổng lợi nhuận trước thuế)
+    "isa17": "TAX_EXPENSE_CURRENT",   # -2.038.057 triệu VND (Chi phí thuế TNDN hiện hành)
+    "isa18": "DEFERRED_INCOME_TAX_EXPENSE", # Chi phí thuế TNDN hoãn lại
+    "isa19": "TAX_EXPENSE_TOTAL",     # -2.038.057 triệu VND (Tổng chi phí thuế TNDN)
+    "isa20": "PROFIT_AFTER_TAX",      # 8.294.916 triệu VND (Lợi nhuận sau thuế)
+    "isa21": "MINORITY_INTEREST",     # -148.660 triệu VND (Lợi ích của cổ đông không kiểm soát)
+    "isa22": "PARENT_NET_PROFIT",     # 8.146.256 triệu VND (Lợi nhuận thuần thuộc về Ngân hàng mẹ)
+    "isa23": "BASIC_EARNINGS_PER_SHARE", # Lãi cơ bản trên cổ phiếu
+    "isa24": "DILUTED_EARNINGS_PER_SHARE", # Lãi suy giảm trên cổ phiếu
+
+    # --- Chỉ tiêu đặc thù Ngân hàng (CONFIDENCE: HIGH - BCTC Q2/2026 trang 7) ---
+    "isb25": "INTEREST_INCOME",                    # 49.659.834 triệu VND (Thu nhập lãi và các khoản tương tự)
+    "isb26": "INTEREST_EXPENSE",                   # -31.855.603 triệu VND (Chi phí lãi và các chi phí tương tự)
+    "isb27": "NET_INTEREST_INCOME",                # 17.804.231 triệu VND (Thu nhập lãi thuần)
+    "isb28": "FEE_COMMISSION_INCOME",              # 3.614.586 triệu VND (Thu nhập từ hoạt động dịch vụ)
+    "isb29": "FEE_COMMISSION_EXPENSE",             # -1.654.803 triệu VND (Chi phí hoạt động dịch vụ)
+    "isb30": "NET_FEE_COMMISSION_INCOME",          # 1.959.783 triệu VND (Lãi thuần từ hoạt động dịch vụ)
+    "isb31": "NET_FX_GAIN",                        # 708.376 triệu VND (Lãi thuần từ kinh doanh ngoại hối)
+    "isb32": "NET_TRADING_SECURITIES_GAIN",        # 136.120 triệu VND (Lãi thuần mua bán chứng khoán kinh doanh)
+    "isb33": "NET_INVESTMENT_SECURITIES_GAIN",     # 16.631 triệu VND (Lãi thuần mua bán chứng khoán đầu tư)
+    "isb34": "OTHER_OPERATING_INCOME",             # 3.721.513 triệu VND (Thu nhập từ hoạt động khác)
+    "isb35": "OTHER_OPERATING_EXPENSE",            # -869.901 triệu VND (Chi phí hoạt động khác)
+    "isb36": "NET_OTHER_OPERATING_INCOME",         # 2.851.612 triệu VND (Lãi thuần từ hoạt động khác)
+    "isb37": "DIVIDEND_INCOME",                    # 161.165 triệu VND (Thu nhập từ góp vốn, mua cổ phần)
+    "isb38": "TOTAL_OPERATING_INCOME",              # Tổng thu nhập hoạt động
+    "isb39": "TOTAL_OPERATING_EXPENSES",           # -7.484.712 triệu VND (Tổng chi phí hoạt động)
+    "isb40": "OPERATING_PROFIT_BEFORE_PROVISION",  # 16.153.206 triệu VND (LN thuần trước CP dự phòng rủi ro TD)
+    "isb41": "CREDIT_LOSS_PROVISION",              # -5.820.288 triệu VND (Chi phí dự phòng rủi ro tín dụng)
+}
+
+# ==============================================================================
+# 3. CASH FLOW MAPPING (Báo cáo Lưu chuyển tiền tệ)
+# ==============================================================================
+CASH_FLOW_MAPPING: Final[dict[str, str]] = {
+    # --- Xác thực kiểm chứng khớp phương trình (CONFIDENCE: HIGH - BCTC Q2/2026 & 6T trang 12-13) ---
+    "cfa9": "OPERATING_PROFIT_BEFORE_WC",  # 17.672.138 triệu VND (LCTT trước thay đổi vốn lưu động)
+    "cfa18": "CASH_FLOW_OPERATING",        # -24.471.221 triệu VND (LCTT thuần từ hoạt động kinh doanh)
+    "cfa19": "PURCHASE_FIXED_ASSETS",      # -914.316 triệu VND (Mua sắm tài sản cố định)
+    "cfa20": "PROCEEDS_DISPOSAL_FA",       # 1.922 triệu VND (Tiền thu thanh lý, nhượng bán TSCĐ)
+    "cfa25": "DIVIDENDS_RECEIVED",         # 165.750 triệu VND (Cổ tức và lợi nhuận được chia)
+    "cfa26": "CASH_FLOW_INVESTING",        # -747.536 triệu VND (LCTT thuần từ hoạt động đầu tư)
+    "cfa34": "CASH_FLOW_FINANCING",        # 2.840.220 triệu VND (LCTT thuần từ hoạt động tài chính)
+    "cfa35": "NET_CASH_FLOW",              # -22.378.537 triệu VND (Lưu chuyển tiền thuần trong kỳ)
+    "cfa36": "CASH_EQUIVALENTS_BEGIN",     # 544.528.992 triệu VND (Tiền & tương đương tiền đầu kỳ)
+    "cfa37": "FX_EFFECT_ON_CASH",          # Điều chỉnh ảnh hưởng của thay đổi tỷ giá
+    "cfa38": "CASH_EQUIVALENTS_END",       # 522.150.455 triệu VND (Tiền & tương đương tiền cuối kỳ)
+    "cfa43": "TAX_PAID",                   # -1.702.854 triệu VND (Tiền thuế TNDN đã thực nộp)
+
+    # --- Dòng LCTT ngân hàng đối chiếu thêm với BCTC hợp nhất MBB 6T/2026 ---
+    # Q1 + Q2 API khớp số lũy kế 6T trên CafeF PDF, trang PDF 7-8.
+    "cfa27": "PROCEEDS_FROM_SHARE_ISSUANCE",  # Tăng vốn cổ phần từ góp vốn/phát hành cổ phiếu
+    "cfb49": "CHANGE_IN_DEPOSITS_AND_LOANS_TO_OTHER_BANKS",  # Tăng/giảm tiền gửi, cho vay TCTD khác
+    "cfb50": "CHANGE_IN_TRADING_SECURITIES",  # Tăng/giảm chứng khoán kinh doanh
+    # BID Q1 + Q2 khớp BCTC hợp nhất 6T/2026, PDF trang 12-13 (trang in 8-9).
+    "cfb51": "CHANGE_IN_DERIVATIVES_AND_OTHER_FINANCIAL_ASSETS",  # Biến động phái sinh và tài sản tài chính khác
+    "cfb52": "CHANGE_IN_CUSTOMER_LOANS_AND_DEBT_PURCHASES",  # Tăng/giảm cho vay KH và mua nợ
+    "cfb54": "CHANGE_IN_CREDIT_LOSS_PROVISIONS",  # Giảm dự phòng rủi ro tín dụng/CK/đầu tư/phải thu
+    "cfb55": "CHANGE_IN_OTHER_OPERATING_ASSETS",  # Tăng/giảm khác về tài sản hoạt động
+    "cfb56": "CHANGE_IN_GOVERNMENT_AND_CENTRAL_BANK_LIABILITIES",  # Nợ Chính phủ và NHNN
+    "cfb57": "CHANGE_IN_INTERBANK_DEPOSITS_AND_BORROWINGS",  # Tiền gửi, tiền vay TCTD khác
+    "cfb58": "CHANGE_IN_CUSTOMER_DEPOSITS",  # Tiền gửi của khách hàng
+    "cfb59": "CHANGE_IN_DERIVATIVES_AND_OTHER_FINANCIAL_LIABILITIES",  # Biến động phái sinh và nợ tài chính khác
+    "cfb60": "CHANGE_IN_RISK_BORNE_TRUSTED_FUNDS",  # Vốn tài trợ/ủy thác/cho vay TCTD chịu rủi ro
+    "cfb61": "CHANGE_IN_VALUABLE_PAPERS_ISSUED",  # Phát hành giấy tờ có giá
+    "cfb63": "CHANGE_IN_OTHER_OPERATING_LIABILITIES",  # Tăng/giảm khác về công nợ hoạt động
+    "cfb65": "CASH_PAID_FROM_CREDIT_INSTITUTION_FUNDS",  # Chi từ các quỹ của TCTD
+    # BID Q1 + Q2 khớp dòng chi tiền thanh lý TSCĐ trong PDF trang 13 (trang in 9).
+    "cfb67": "CASH_PAID_FOR_DISPOSAL_OF_FIXED_ASSETS",  # Tiền chi từ thanh lý/nhượng bán TSCĐ
+    "cfb71": "PROCEEDS_FROM_LONG_TERM_BORROWINGS_AND_BONDS",  # Thu phát hành giấy tờ dài hạn/vay dài hạn
+    "cfb72": "REPAYMENTS_OF_LONG_TERM_BORROWINGS_AND_BONDS",  # Chi trả giấy tờ dài hạn/vay dài hạn
+    "cfb75": "INTEREST_RECEIVED",  # Thu lãi và các khoản thu tương tự
+    "cfb76": "BANK_INTEREST_PAID_DIRECT_METHOD",  # Chi lãi trên LCTT trực tiếp ngân hàng
+    "cfb77": "SERVICE_FEES_RECEIVED",  # Thu nhập từ hoạt động dịch vụ nhận được
+    "cfb79": "OPERATING_FX_CASH_DIFFERENCE",  # Chênh lệch tiền thực thu/chi HĐKD do ngoại tệ/vàng/CK
+    "cfb80": "OTHER_OPERATING_CASH_FLOW",  # Thu nhập/(chi phí) khác
+    "cfb81": "EMPLOYEE_AND_ADMIN_CASH_PAID",  # Chi trả nhân viên, quản lý và công vụ
+    "cfb106": "RECOVERY_OF_WRITTEN_OFF_DEBTS",  # Thu các khoản nợ đã xử lý/xóa/bù đắp bằng nguồn rủi ro
+}
+
+# ==============================================================================
+# 4. RATIOS MAPPING (Chỉ số tài chính)
+# ==============================================================================
+RATIOS_MAPPING: Final[dict[str, str]] = {
+    # Định giá & Thị trường (CONFIDENCE: HIGH)
+    "numberOfSharesMktCap": "NUMBER_OF_SHARES_MKT_CAP",
+    "marketCap": "MARKET_CAP",
+    "dividendYield": "DIVIDEND_YIELD",
+    "pe": "PE",
+    "pb": "PB",
+    "ps": "PS",
+    "priceToCashFlow": "PRICE_TO_CASH_FLOW",
+    "evToEbitda": "EV_TO_EBITDA",
+
+    # Thanh khoản & Đòn bẩy (CONFIDENCE: HIGH)
+    "cashRatio": "CASH_RATIO",
+    "quickRatio": "QUICK_RATIO",
+    "currentRatio": "CURRENT_RATIO",
+    "ownersEquity": "OWNERS_EQUITY_RATIO",
+    "debtPerEquity": "DEBT_PER_EQUITY",
+    "debtToEquity": "DEBT_TO_EQUITY",
+    "financialLeverage": "FINANCIAL_LEVERAGE",
+
+    # Khả năng sinh lời & Hiệu quả (CONFIDENCE: HIGH)
+    "roe": "ROE",
+    "roa": "ROA",
+    "roic": "ROIC",
+    "grossMargin": "GROSS_MARGIN",
+    "ebitMargin": "EBIT_MARGIN",
+    "preTaxProfitMargin": "PRE_TAX_MARGIN",
+    "afterTaxProfitMargin": "AFTER_TAX_MARGIN",
+    "ebit": "EBIT",
+    "ebitda": "EBITDA",
+
+    # Hoạt động & Vòng quay (CONFIDENCE: HIGH)
+    "daySaleOutstanding": "DAYS_SALES_OUTSTANDING",
+    "daysInventoryOutstanding": "DAYS_INVENTORY_OUTSTANDING",
+    "daysPayableOutstanding": "DAYS_PAYABLE_OUTSTANDING",
+    "assetTurnover": "ASSET_TURNOVER",
+    "fixedAssetTurnover": "FIXED_ASSET_TURNOVER",
+    "cashCycle": "CASH_CYCLE",
+
+    # Chỉ số chuyên biệt Ngân hàng (CONFIDENCE: HIGH)
+    "netInterestMargin": "NIM",
+    "averageYieldOnEarningAssets": "AVG_YIELD_EARNING_ASSETS",
+    "averageCostOfFinancing": "AVG_COST_OF_FINANCING",
+    "nonAndInterestIncome": "NON_INTEREST_INCOME_RATIO",
+    "costToIncome": "COST_TO_INCOME",
+    "cir": "CIR",
+    "car": "CAR",
+    "casaRatio": "CASA_RATIO",
+    "ldrLoanDepositRatio": "LDR",
+    "npl": "NPL_RATIO",
+    "loansLossReservesToNPLs": "LLR_TO_NPLS",
+    "loansLossReserveToLoans": "LLR_TO_LOANS",
+    "provisionToOutstandingLoans": "PROVISION_TO_LOANS",
+    "loansGrowth": "LOANS_GROWTH",
+    "depositGrowth": "DEPOSIT_GROWTH",
+    "equityToLiabilities": "EQUITY_TO_LIABILITIES",
+    "equityToLoans": "EQUITY_TO_LOANS",
+    "totalEquityTotalAsset": "EQUITY_TO_TOTAL_ASSETS",
+
+    # Chỉ số Vietcap đặc thù dạng mã (CONFIDENCE: MEDIUM / LOW - Giữ nguyên)
+    "nob66": "NOB66",
+    "nob69": "NOB69",
+    "nob70": "NOB70",
+    "bsb113": "BSB113",
+}
+
+SECTION_MAPS: Final[dict[str, dict[str, str]]] = {
+    "balance_sheet": BALANCE_SHEET_MAPPING,
+    "income_statement": INCOME_STATEMENT_MAPPING,
+    "cash_flow_statement": CASH_FLOW_MAPPING,
+    "cash_flow": CASH_FLOW_MAPPING,
+    "ratios": RATIOS_MAPPING,
+}
+
+# Vietcap reuses the same opaque keys across company sectors, but some statement
+# rows are sector-specific. These verified mappings are applied only when the
+# normalized payload identifies its industry as TECH. The BID mappings above
+# remain the BANK/default profile.
+TECH_SECTION_MAPPINGS: Final[dict[str, dict[str, str]]] = {
+    "balance_sheet": {
+        "bsa1": "CURRENT_ASSETS",
+        "bsa2": "CASH_AND_CASH_EQUIVALENTS",
+        "bsa3": "CASH",
+        "bsa4": "CASH_EQUIVALENTS",
+        "bsa5": "SHORT_TERM_FINANCIAL_INVESTMENTS_NET",
+        "bsa8": "SHORT_TERM_RECEIVABLES",
+        "bsa9": "SHORT_TERM_TRADE_RECEIVABLES",
+        "bsa10": "SHORT_TERM_ADVANCES_TO_SUPPLIERS",
+        "bsa12": "CONSTRUCTION_CONTRACT_RECEIVABLES",
+        "bsa13": "OTHER_SHORT_TERM_RECEIVABLES",
+        "bsa14": "ALLOWANCE_DOUBTFUL_SHORT_TERM_RECEIVABLES",
+        "bsa15": "INVENTORIES_NET",
+        "bsa16": "INVENTORIES_GROSS",
+        "bsa17": "INVENTORY_ALLOWANCE",
+        "bsa18": "OTHER_CURRENT_ASSETS",
+        "bsa19": "SHORT_TERM_PREPAID_EXPENSES",
+        "bsa20": "VAT_DEDUCTIBLE",
+        "bsa21": "TAXES_RECEIVABLE_FROM_STATE",
+        "bsa23": "NON_CURRENT_ASSETS",
+        "bsa24": "LONG_TERM_RECEIVABLES",
+        "bsa27": "OTHER_LONG_TERM_RECEIVABLES",
+        "bsa28": "ALLOWANCE_DOUBTFUL_LONG_TERM_RECEIVABLES",
+        "bsa29": "FIXED_ASSETS",
+        "bsa30": "TANGIBLE_FIXED_ASSETS",
+        "bsa31": "TANGIBLE_FA_GROSS",
+        "bsa32": "TANGIBLE_FA_DEPRECIATION",
+        "bsa33": "FINANCE_LEASE_ASSETS_NET",
+        "bsa34": "FINANCE_LEASE_ASSETS_GROSS",
+        "bsa35": "FINANCE_LEASE_ACCUMULATED_DEPRECIATION",
+        "bsa36": "INTANGIBLE_FIXED_ASSETS",
+        "bsa37": "INTANGIBLE_FA_GROSS",
+        "bsa38": "INTANGIBLE_FA_DEPRECIATION",
+        "bsa43": "LONG_TERM_INVESTMENTS",
+        "bsa45": "INVESTMENTS_IN_SUBSIDIARIES_ASSOCIATES_JV",
+        "bsa46": "OTHER_LONG_TERM_INVESTMENTS",
+        "bsa47": "PROVISION_LONG_TERM_INVESTMENTS",
+        "bsa49": "OTHER_NON_CURRENT_ASSETS",
+        "bsa50": "LONG_TERM_PREPAID_EXPENSES",
+        "bsa51": "DEFERRED_TAX_ASSETS",
+        "bsa52": "GOODWILL",
+        "bsa55": "CURRENT_LIABILITIES",
+        "bsa56": "SHORT_TERM_LOANS_AND_FINANCE_LEASES",
+        "bsa57": "SHORT_TERM_TRADE_PAYABLES",
+        "bsa58": "SHORT_TERM_ADVANCES_FROM_CUSTOMERS",
+        "bsa59": "TAXES_AND_PAYABLES_TO_STATE",
+        "bsa60": "PAYABLES_TO_EMPLOYEES",
+        "bsa61": "SHORT_TERM_ACCRUED_EXPENSES",
+        "bsa63": "CONSTRUCTION_CONTRACT_PAYABLES",
+        "bsa64": "OTHER_SHORT_TERM_PAYABLES",
+        "bsa65": "SHORT_TERM_PROVISIONS",
+        "bsa66": "BONUS_AND_WELFARE_FUND",
+        "bsa67": "NON_CURRENT_LIABILITIES",
+        "bsa70": "OTHER_LONG_TERM_PAYABLES",
+        "bsa71": "LONG_TERM_LOANS_AND_FINANCE_LEASES",
+        "bsa72": "DEFERRED_TAX_LIABILITIES",
+        "bsa74": "LONG_TERM_PROVISIONS",
+        "bsa76": "LONG_TERM_UNEARNED_REVENUE",
+        "bsa77": "SCIENCE_AND_TECHNOLOGY_DEVELOPMENT_FUND",
+        "bsa86": "INVESTMENT_AND_DEVELOPMENT_FUND",
+        "bsa89": "OTHER_EQUITY_FUNDS",
+        "bsa108": "SHORT_TERM_HELD_TO_MATURITY_INVESTMENTS_GROSS",
+        "bsa163": "CONSTRUCTION_IN_PROGRESS",
+        "bsa165": "LONG_TERM_HELD_TO_MATURITY_INVESTMENTS",
+        "bsa167": "SHORT_TERM_UNEARNED_REVENUE",
+        "bsa178": "CURRENT_PERIOD_RETAINED_EARNINGS",
+        "bsa53": "TOTAL_ASSETS",
+        "bsa54": "TOTAL_LIABILITIES",
+        "bsa78": "OWNERS_EQUITY",
+        "bsa80": "CHARTER_CAPITAL",
+        "bsa81": "SHARE_PREMIUM",
+        "bsa82": "OTHER_CAPITAL",
+        "bsa85": "FX_DIFFERENCE",
+        "bsa90": "RETAINED_EARNINGS",
+        "bsa96": "TOTAL_LIABILITIES_EQUITY",
+        "bsa210": "MINORITY_INTEREST_EQUITY",
+        "bss136": "DIVIDENDS_PAYABLE",
+    },
+    "income_statement": {
+        "isa1": "GROSS_REVENUE",
+        "isa2": "REVENUE_DEDUCTIONS",
+        "isa3": "NET_REVENUE",
+        "isa4": "COST_OF_GOODS_SOLD",
+        "isa5": "GROSS_PROFIT",
+        "isa6": "FINANCIAL_INCOME",
+        "isa7": "FINANCIAL_EXPENSES",
+        "isa8": "INTEREST_EXPENSE",
+        "isa9": "SELLING_EXPENSES",
+        "isa10": "GENERAL_AND_ADMINISTRATIVE_EXPENSES",
+        "isa11": "OPERATING_PROFIT",
+        "isa12": "OTHER_INCOME",
+        "isa13": "OTHER_EXPENSES",
+        "isa14": "OTHER_PROFIT",
+        "isa16": "PROFIT_BEFORE_TAX",
+        "isa17": "TAX_EXPENSE_CURRENT",
+        "isa18": "DEFERRED_INCOME_TAX_EXPENSE",
+        "isa19": "TAX_EXPENSE_TOTAL",
+        "isa20": "PROFIT_AFTER_TAX",
+        "isa21": "MINORITY_INTEREST",
+        "isa22": "PARENT_NET_PROFIT",
+        "isa23": "BASIC_EARNINGS_PER_SHARE",
+        "isa24": "DILUTED_EARNINGS_PER_SHARE",
+    },
+    "cash_flow_statement": {
+        "cfa1": "PROFIT_BEFORE_TAX",
+        "cfa2": "DEPRECIATION_AND_AMORTIZATION",
+        "cfa3": "PROVISIONS_AND_ALLOWANCES",
+        "cfa4": "UNREALIZED_FX_GAIN_LOSS",
+        "cfa6": "INVESTMENT_GAIN_LOSS_ADJUSTMENT",
+        "cfa7": "INTEREST_EXPENSE_ADJUSTMENT",
+        "cfa9": "OPERATING_PROFIT_BEFORE_WC",
+        "cfa10": "CHANGE_IN_RECEIVABLES",
+        "cfa11": "CHANGE_IN_INVENTORIES",
+        "cfa12": "CHANGE_IN_PAYABLES",
+        "cfa13": "CHANGE_IN_PREPAID_EXPENSES",
+        "cfa14": "INTEREST_PAID",
+        "cfa15": "INCOME_TAX_PAID",
+        "cfa17": "OTHER_OPERATING_CASH_FLOWS",
+        "cfa18": "CASH_FLOW_OPERATING",
+        "cfa19": "PURCHASE_FIXED_ASSETS",
+        "cfa20": "PROCEEDS_DISPOSAL_FA",
+        "cfa21": "CASH_PAID_FOR_LOANS_AND_DEBT_SECURITIES",
+        "cfa22": "PROCEEDS_FROM_LOANS_AND_DEBT_SECURITIES",
+        "cfa23": "CASH_INVESTED_IN_SUBSIDIARIES_ASSOCIATES_JV",
+        "cfa24": "PROCEEDS_FROM_DIVESTMENTS",
+        "cfa25": "DIVIDENDS_RECEIVED",
+        "cfa26": "CASH_FLOW_INVESTING",
+        "cfa29": "PROCEEDS_FROM_BORROWINGS",
+        "cfa30": "REPAYMENTS_OF_BORROWINGS",
+        "cfa31": "FINANCE_LEASE_PRINCIPAL_PAID",
+        "cfa32": "DIVIDENDS_PAID",
+        "cfa34": "CASH_FLOW_FINANCING",
+        "cfa35": "NET_CASH_FLOW",
+        "cfa36": "CASH_EQUIVALENTS_BEGIN",
+        "cfa37": "FX_EFFECT_ON_CASH",
+        "cfa38": "CASH_EQUIVALENTS_END",
+    },
+    "ratios": {
+        "numberOfSharesMktCap": "NUMBER_OF_SHARES_MKT_CAP",
+        "marketCap": "MARKET_CAP",
+        "dividendYield": "DIVIDEND_YIELD",
+        "pe": "PE",
+        "pb": "PB",
+        "ps": "PS",
+        "priceToCashFlow": "PRICE_TO_CASH_FLOW",
+        "evToEbitda": "EV_TO_EBITDA",
+        "cashRatio": "CASH_RATIO",
+        "quickRatio": "QUICK_RATIO",
+        "currentRatio": "CURRENT_RATIO",
+        "ownersEquity": "OWNERS_EQUITY_RATIO",
+        "debtPerEquity": "DEBT_PER_EQUITY",
+        "debtToEquity": "DEBT_TO_EQUITY",
+        "financialLeverage": "FINANCIAL_LEVERAGE",
+        "roe": "ROE",
+        "roa": "ROA",
+        "roic": "ROIC",
+        "grossMargin": "GROSS_MARGIN",
+        "ebitMargin": "EBIT_MARGIN",
+        "preTaxProfitMargin": "PRE_TAX_MARGIN",
+        "afterTaxProfitMargin": "AFTER_TAX_MARGIN",
+        "ebit": "EBIT",
+        "ebitda": "EBITDA",
+        "daySaleOutstanding": "DAYS_SALES_OUTSTANDING",
+        "daysInventoryOutstanding": "DAYS_INVENTORY_OUTSTANDING",
+        "daysPayableOutstanding": "DAYS_PAYABLE_OUTSTANDING",
+        "assetTurnover": "ASSET_TURNOVER",
+        "fixedAssetTurnover": "FIXED_ASSET_TURNOVER",
+        "cashCycle": "CASH_CYCLE",
+    },
+}
+
+INDUSTRY_SECTION_MAPS: Final[dict[str, dict[str, dict[str, str]]]] = {
+    "TECH": TECH_SECTION_MAPPINGS,
+}
+
+# Vietnamese display labels use the terminology guide in docs/ as their naming
+# authority. These labels enrich semantic text; canonical codes remain the IDs.
+METRIC_LABELS_VI: Final[dict[str, str]] = {
+    "CURRENT_ASSETS": "Tài sản ngắn hạn",
+    "CASH_AND_GOLD": "Tiền mặt, vàng bạc, đá quý",
+    "CASH_AND_CASH_EQUIVALENTS": "Tiền và các khoản tương đương tiền",
+    "CASH": "Tiền mặt",
+    "CASH_EQUIVALENTS": "Các khoản tương đương tiền",
+    "SHORT_TERM_FINANCIAL_INVESTMENTS_NET": "Đầu tư tài chính ngắn hạn, giá trị thuần",
+    "SHORT_TERM_RECEIVABLES": "Phải thu ngắn hạn",
+    "SHORT_TERM_TRADE_RECEIVABLES": "Phải thu khách hàng ngắn hạn",
+    "SHORT_TERM_ADVANCES_TO_SUPPLIERS": "Trả trước cho người bán ngắn hạn",
+    "CONSTRUCTION_CONTRACT_RECEIVABLES": "Phải thu theo hợp đồng xây dựng",
+    "OTHER_SHORT_TERM_RECEIVABLES": "Phải thu ngắn hạn khác",
+    "ALLOWANCE_DOUBTFUL_SHORT_TERM_RECEIVABLES": "Dự phòng phải thu ngắn hạn khó đòi",
+    "INVENTORIES_NET": "Hàng tồn kho, giá trị thuần",
+    "INVENTORIES_GROSS": "Hàng tồn kho, giá trị gộp",
+    "INVENTORY_ALLOWANCE": "Dự phòng giảm giá hàng tồn kho",
+    "OTHER_CURRENT_ASSETS": "Tài sản ngắn hạn khác",
+    "SHORT_TERM_PREPAID_EXPENSES": "Chi phí trả trước ngắn hạn",
+    "NON_CURRENT_ASSETS": "Tài sản dài hạn",
+    "LONG_TERM_RECEIVABLES": "Phải thu dài hạn",
+    "FIXED_ASSETS": "Tài sản cố định",
+    "TANGIBLE_FIXED_ASSETS": "Tài sản cố định hữu hình",
+    "INTANGIBLE_FIXED_ASSETS": "Tài sản cố định vô hình",
+    "CONSTRUCTION_IN_PROGRESS": "Xây dựng cơ bản dở dang",
+    "GOODWILL": "Lợi thế thương mại",
+    "TOTAL_ASSETS": "Tổng tài sản",
+    "TOTAL_LIABILITIES": "Nợ phải trả",
+    "CURRENT_LIABILITIES": "Nợ ngắn hạn",
+    "NON_CURRENT_LIABILITIES": "Nợ dài hạn",
+    "OWNERS_EQUITY": "Vốn chủ sở hữu",
+    "CHARTER_CAPITAL": "Vốn điều lệ",
+    "SHARE_PREMIUM": "Thặng dư vốn cổ phần",
+    "RETAINED_EARNINGS": "Lợi nhuận sau thuế chưa phân phối",
+    "CURRENT_PERIOD_RETAINED_EARNINGS": "Lợi nhuận sau thuế chưa phân phối kỳ này",
+    "MINORITY_INTEREST_EQUITY": "Lợi ích cổ đông không kiểm soát",
+    "TOTAL_LIABILITIES_EQUITY": "Tổng nợ phải trả và vốn chủ sở hữu",
+    "GROSS_REVENUE": "Doanh thu bán hàng và cung cấp dịch vụ",
+    "REVENUE_DEDUCTIONS": "Các khoản giảm trừ doanh thu",
+    "NET_REVENUE": "Doanh thu thuần",
+    "COST_OF_GOODS_SOLD": "Giá vốn hàng bán",
+    "GROSS_PROFIT": "Lợi nhuận gộp",
+    "FINANCIAL_INCOME": "Doanh thu hoạt động tài chính",
+    "FINANCIAL_EXPENSES": "Chi phí tài chính",
+    "INTEREST_EXPENSE": "Chi phí lãi",
+    "SELLING_EXPENSES": "Chi phí bán hàng",
+    "GENERAL_AND_ADMINISTRATIVE_EXPENSES": "Chi phí quản lý doanh nghiệp",
+    "OPERATING_PROFIT": "Lợi nhuận thuần từ hoạt động kinh doanh",
+    "OTHER_INCOME": "Thu nhập khác",
+    "OTHER_EXPENSES": "Chi phí khác",
+    "OTHER_PROFIT": "Lợi nhuận khác",
+    "PROFIT_BEFORE_TAX": "Lợi nhuận trước thuế",
+    "TAX_EXPENSE_CURRENT": "Chi phí thuế thu nhập doanh nghiệp hiện hành",
+    "DEFERRED_INCOME_TAX_EXPENSE": "Chi phí thuế thu nhập doanh nghiệp hoãn lại",
+    "TAX_EXPENSE_TOTAL": "Tổng chi phí thuế thu nhập doanh nghiệp",
+    "PROFIT_AFTER_TAX": "Lợi nhuận sau thuế",
+    "MINORITY_INTEREST": "Lợi nhuận thuộc cổ đông không kiểm soát",
+    "PARENT_NET_PROFIT": "Lợi nhuận sau thuế thuộc cổ đông công ty mẹ",
+    "BASIC_EARNINGS_PER_SHARE": "Lãi cơ bản trên cổ phiếu",
+    "DILUTED_EARNINGS_PER_SHARE": "Lãi suy giảm trên cổ phiếu",
+    "CASH_FLOW_OPERATING": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+    "CASH_FLOW_INVESTING": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+    "CASH_FLOW_FINANCING": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+    "NET_CASH_FLOW": "Lưu chuyển tiền thuần trong kỳ",
+    "CASH_EQUIVALENTS_BEGIN": "Tiền và tương đương tiền đầu kỳ",
+    "CASH_EQUIVALENTS_END": "Tiền và tương đương tiền cuối kỳ",
+    "FX_EFFECT_ON_CASH": "Điều chỉnh ảnh hưởng của thay đổi tỷ giá đến tiền và tương đương tiền",
+    "INVESTMENT_PROPERTY_NET": "Bất động sản đầu tư, giá trị còn lại",
+    "INVESTMENT_PROPERTY_COST": "Nguyên giá bất động sản đầu tư",
+    "INVESTMENT_PROPERTY_DEPRECIATION": "Hao mòn bất động sản đầu tư",
+    "DERIVATIVES_AND_OTHER_FINANCIAL_LIABILITIES": "Công cụ tài chính phái sinh và các khoản nợ tài chính khác",
+    "BANK_CAPITAL": "Vốn của ngân hàng/tổ chức tín dụng",
+    "CREDIT_INSTITUTION_FUNDS": "Quỹ của ngân hàng/tổ chức tín dụng",
+    "TOTAL_GUARANTEE_OBLIGATIONS": "Tổng nghĩa vụ bảo lãnh",
+    "OTHER_GUARANTEES": "Bảo lãnh khác",
+    "TOTAL_FX_LC_AND_OTHER_COMMITMENTS": "Tổng cam kết ngoại hối, thư tín dụng và cam kết khác",
+    "LOAN_GUARANTEES": "Bảo lãnh vay vốn",
+    "FOREIGN_EXCHANGE_COMMITMENTS": "Cam kết giao dịch hối đoái",
+    "COMMITMENTS_TO_BUY_FOREIGN_CURRENCY": "Cam kết mua ngoại tệ",
+    "COMMITMENTS_TO_SELL_FOREIGN_CURRENCY": "Cam kết bán ngoại tệ",
+    "FOREIGN_EXCHANGE_SWAP_COMMITMENTS": "Cam kết giao dịch hoán đổi ngoại tệ",
+    "LETTERS_OF_CREDIT_COMMITMENTS": "Cam kết trong nghiệp vụ thư tín dụng",
+    "OTHER_OFF_BALANCE_COMMITMENTS": "Các cam kết khác ngoài bảng",
+    "PURCHASED_DEBTS_NET": "Hoạt động mua nợ, giá trị thuần",
+    "PURCHASED_DEBTS_GROSS": "Mua nợ, giá trị gộp",
+    "PURCHASED_DEBTS_PROVISION": "Dự phòng rủi ro hoạt động mua nợ",
+    "OTHER_ASSET_RECEIVABLES": "Các khoản phải thu trong tài sản Có khác",
+    "ACCRUED_INTEREST_AND_FEES_RECEIVABLE": "Các khoản lãi, phí phải thu",
+    "OTHER_ASSETS_DETAIL": "Tài sản Có khác, chi tiết",
+    "PROVISION_FOR_OTHER_ON_BALANCE_SHEET_ASSETS": "Dự phòng rủi ro cho tài sản Có nội bảng khác",
+    "DEFERRED_TAX_LIABILITIES": "Thuế thu nhập doanh nghiệp hoãn lại phải trả",
+    "DEFERRED_TAX_ASSETS": "Tài sản thuế thu nhập doanh nghiệp hoãn lại",
+    "PROVISION_FOR_OTHER_LIABILITIES": "Dự phòng các khoản nợ khác",
+    "TOTAL_OPERATING_INCOME": "Tổng thu nhập hoạt động",
+    "PROCEEDS_FROM_SHARE_ISSUANCE": "Tiền thu từ góp vốn và phát hành cổ phiếu",
+    "CHANGE_IN_DEPOSITS_AND_LOANS_TO_OTHER_BANKS": "Tăng/giảm tiền gửi và cho vay các tổ chức tín dụng khác",
+    "CHANGE_IN_TRADING_SECURITIES": "Tăng/giảm chứng khoán kinh doanh",
+    "CHANGE_IN_CUSTOMER_LOANS_AND_DEBT_PURCHASES": "Tăng/giảm cho vay khách hàng và mua nợ",
+    "CHANGE_IN_CREDIT_LOSS_PROVISIONS": "Tăng/giảm dự phòng rủi ro tín dụng, chứng khoán, đầu tư và phải thu",
+    "CHANGE_IN_OTHER_OPERATING_ASSETS": "Tăng/giảm khác về tài sản hoạt động",
+    "CHANGE_IN_GOVERNMENT_AND_CENTRAL_BANK_LIABILITIES": "Tăng/giảm các khoản nợ Chính phủ và Ngân hàng Nhà nước",
+    "CHANGE_IN_INTERBANK_DEPOSITS_AND_BORROWINGS": "Tăng/giảm tiền gửi và tiền vay các tổ chức tín dụng khác",
+    "CHANGE_IN_CUSTOMER_DEPOSITS": "Tăng/giảm tiền gửi của khách hàng",
+    "CHANGE_IN_DERIVATIVES_AND_OTHER_FINANCIAL_ASSETS": "Tăng/giảm công cụ tài chính phái sinh và tài sản tài chính khác",
+    "CHANGE_IN_DERIVATIVES_AND_OTHER_FINANCIAL_LIABILITIES": "Tăng/giảm công cụ tài chính phái sinh và nợ tài chính khác",
+    "CHANGE_IN_RISK_BORNE_TRUSTED_FUNDS": "Tăng/giảm vốn tài trợ, ủy thác và cho vay mà tổ chức tín dụng chịu rủi ro",
+    "CHANGE_IN_VALUABLE_PAPERS_ISSUED": "Tăng/giảm phát hành giấy tờ có giá",
+    "CHANGE_IN_OTHER_OPERATING_LIABILITIES": "Tăng/giảm khác về công nợ hoạt động",
+    "CASH_PAID_FROM_CREDIT_INSTITUTION_FUNDS": "Tiền chi từ các quỹ của tổ chức tín dụng",
+    "CASH_PAID_FOR_DISPOSAL_OF_FIXED_ASSETS": "Tiền chi từ thanh lý, nhượng bán tài sản cố định",
+    "PROCEEDS_FROM_LONG_TERM_BORROWINGS_AND_BONDS": "Tiền thu từ phát hành giấy tờ có giá dài hạn và vay dài hạn",
+    "REPAYMENTS_OF_LONG_TERM_BORROWINGS_AND_BONDS": "Tiền chi trả giấy tờ có giá dài hạn và các khoản vay dài hạn",
+    "INTEREST_RECEIVED": "Tiền lãi và các khoản tương tự đã thu",
+    "BANK_INTEREST_PAID_DIRECT_METHOD": "Tiền lãi và các khoản tương tự đã trả theo LCTT trực tiếp ngân hàng",
+    "SERVICE_FEES_RECEIVED": "Tiền thu từ hoạt động dịch vụ",
+    "OPERATING_FX_CASH_DIFFERENCE": "Chênh lệch tiền thực thu/chi từ hoạt động kinh doanh do ngoại tệ, vàng bạc, chứng khoán",
+    "OTHER_OPERATING_CASH_FLOW": "Thu nhập/(chi phí) khác trong hoạt động kinh doanh",
+    "EMPLOYEE_AND_ADMIN_CASH_PAID": "Tiền chi trả cho nhân viên, quản lý và công vụ",
+    "RECOVERY_OF_WRITTEN_OFF_DEBTS": "Tiền thu các khoản nợ đã xử lý, xóa hoặc bù đắp bằng nguồn rủi ro",
+    "ROE": "Tỷ suất lợi nhuận trên vốn chủ sở hữu",
+    "ROA": "Tỷ suất lợi nhuận trên tài sản",
+    "GROSS_MARGIN": "Tỷ suất lợi nhuận gộp",
+    "PE": "Hệ số giá trên thu nhập",
+    "PB": "Hệ số giá trên giá trị sổ sách",
+    "MARKET_CAP": "Giá trị vốn hóa thị trường",
+    "NET_INTEREST_INCOME": "Thu nhập lãi thuần",
+    "NIM": "Biên lãi thuần",
+    "CUSTOMER_LOANS_NET": "Cho vay khách hàng, giá trị thuần",
+    "CUSTOMER_DEPOSITS": "Tiền gửi của khách hàng",
+    "CREDIT_LOSS_PROVISION": "Chi phí dự phòng rủi ro tín dụng",
+    "COST_TO_INCOME": "Tỷ lệ chi phí trên thu nhập",
+    "NPL_RATIO": "Tỷ lệ nợ xấu",
+}
+
+
+def get_label_vi(code: str) -> str:
+    """Return a Vietnamese display label, falling back to the canonical code."""
+    return METRIC_LABELS_VI.get(code, code)
+
+
+def get_code(field_name: str, section: str, industry: str | None = None) -> str:
+    """Return the standardized observation code for a given field name and section.
+
+    - Sector-specific verified mappings take precedence when industry is supplied.
+    - Otherwise, the default/BANK mapping is used for backward compatibility.
+    - If unmapped, retains original field_name converted to UPPERCASE (e.g. isa45 -> ISA45).
+    - If field is in META_KEYS, returns field_name unchanged.
+    """
+    if field_name in META_KEYS:
+        return field_name
+
+    norm_sec = section.strip().lower()
+    norm_industry = (industry or "").strip().upper()
+    if norm_industry in INDUSTRY_SECTION_MAPS:
+        industry_mapping = INDUSTRY_SECTION_MAPS[norm_industry].get(norm_sec, {})
+        # Do not fall through to BANK-specific mappings for a TECH payload.
+        return industry_mapping.get(field_name, field_name.upper())
+
+    mapping = SECTION_MAPS.get(norm_sec)
+    if mapping and field_name in mapping:
+        return mapping[field_name]
+
+    # Default fallback: keep original identifier in UPPERCASE
+    return field_name.upper()
+
+
+def locate_bid_json() -> Path | None:
+    """Dynamically locate BID.json in project workspace."""
+    base_dir = Path(__file__).resolve().parent
+    project_root = base_dir.parents[1]
+    candidates = [
+        project_root / "data" / "normalized" / "BID.json",
+        project_root / "data" / "normalized" / "vu" / "BID.json",
+    ]
+    for p in candidates:
+        if p.is_file():
+            return p
+
+    # Fallback glob
+    for p in project_root.glob("**/data/normalized/BID.json"):
+        if p.is_file():
+            return p
+    return None
+
+
+if __name__ == "__main__":
+    if sys.platform == "win32":
+        try:
+            sys.stdout.reconfigure(encoding="utf-8")
+        except Exception:
+            pass
+
+    print("=" * 70)
+    print("[TEST] RUNNING VERIFICATION FOR src/financial/mapping.py")
+    print("=" * 70)
+
+    # 1. Check constraints on mapping tables
+    for sec_name, mapping in [
+        ("BALANCE_SHEET", BALANCE_SHEET_MAPPING),
+        ("INCOME_STATEMENT", INCOME_STATEMENT_MAPPING),
+        ("CASH_FLOW", CASH_FLOW_MAPPING),
+        ("RATIOS", RATIOS_MAPPING),
+    ]:
+        values = list(mapping.values())
+        duplicates = [v for v in values if values.count(v) > 1]
+        assert not duplicates, f"Duplicate values in {sec_name}: {set(duplicates)}"
+
+        too_long = [v for v in values if len(v) > 50]
+        assert not too_long, f"Values exceeding 50 chars in {sec_name}: {too_long}"
+        print(f"  [OK] {sec_name:<20}: {len(mapping):>3} mapped keys. Max length: {max(len(v) for v in values)} chars.")
+
+    # 2. Test get_code behavior
+    assert get_code("bsa53", "balance_sheet") == "TOTAL_ASSETS"
+    assert get_code("bsb103", "balance_sheet") == "CUSTOMER_LOANS_NET"
+    assert get_code("isb27", "income_statement") == "NET_INTEREST_INCOME"
+    assert get_code("isa16", "income_statement") == "PROFIT_BEFORE_TAX"
+    assert get_code("cfa35", "cash_flow_statement") == "NET_CASH_FLOW"
+    assert get_code("cir", "ratios") == "CIR"
+    assert get_code("costToIncome", "ratios") == "COST_TO_INCOME"
+    assert get_code("bsa999", "balance_sheet") == "BSA999"  # unmapped -> UPPERCASE
+    assert get_code("period_label", "balance_sheet") == "period_label"  # meta key
+    print("  [OK] get_code() function passed all unit tests.")
+
+    # 3. Dynamic test against BID.json
+    bid_path = locate_bid_json()
+    if bid_path:
+        print(f"\n[INFO] Found BID.json at: {bid_path}")
+        with open(bid_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        fin = data.get("financial_data", {})
+
+        print("\n[REPORT] COVERAGE & MAPPING STATS ON BID.JSON:")
+        print(f"{'Section':<22} | {'Total Keys':<10} | {'Mapped':<8} | {'Fallback':<8} | {'Rate':<8}")
+        print("-" * 65)
+
+        for sec_json, sec_key in [
+            ("balance_sheet", "balance_sheet"),
+            ("income_statement", "income_statement"),
+            ("cash_flow_statement", "cash_flow"),
+            ("ratios", "ratios"),
+        ]:
+            rows = fin.get(sec_json, [])
+            keys = set()
+            for r in rows:
+                for k in r.keys():
+                    if k not in META_KEYS:
+                        keys.add(k)
+
+            mapping = SECTION_MAPS[sec_key]
+            mapped_count = sum(1 for k in keys if k in mapping)
+            fallback_count = len(keys) - mapped_count
+            rate = (mapped_count / len(keys) * 100) if keys else 0.0
+            print(f"{sec_json:<22} | {len(keys):<10} | {mapped_count:<8} | {fallback_count:<8} | {rate:>6.1f}%")
+
+    print("\n[SUCCESS] ALL TESTS PASSED SUCCESSFULLY!")

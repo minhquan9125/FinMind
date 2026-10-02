@@ -1,0 +1,17 @@
+services:
+  neo4j:
+    image: neo4j:5-community
+    restart: unless-stopped
+    ports:
+      - "7474:7474"   # Giao diện web trực quan Neo4j Browser
+      - "7687:7687"   # Bolt protocol cho Backend kết nối
+    environment:
+      - NEO4J_AUTH=neo4j/finmind123
+      - NEO4J_PLUGINS=["apoc"]
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
