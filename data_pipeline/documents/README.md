@@ -26,18 +26,37 @@ The manifest is `data/references/vietstock/annual_reports/manifest.json`. Downlo
 
 ## Text extraction and OCR
 
-Run text-layer extraction first:
+Run extraction from the repository root. Native PDF text is preferred; PaddleOCR handles pages without usable text:
 
 ```powershell
-backend/.venv/Scripts/python.exe data_pipeline/documents/extract_vietstock_annuals.py
+.venv-paddleocr/Scripts/python.exe data_pipeline/documents/extract_vietstock_annuals.py --symbols FPT --years 2024
 ```
 
-Only pages with no usable text are sent to OCR when explicitly requested:
+To normalize existing OCR text without running OCR again:
 
 ```powershell
-backend/.venv/Scripts/python.exe data_pipeline/documents/extract_vietstock_annuals.py --ocr
+.venv-paddleocr/Scripts/python.exe data_pipeline/documents/extract_vietstock_annuals.py --symbols FPT --years 2024 --reclean-existing-json
 ```
 
-`--ocr` requires OCRmyPDF, Tesseract, and the Tesseract Vietnamese (`vie`) language data installed on the machine. It uses `--skip-text`, keeps the original PDF unchanged, and writes a separate searchable PDF under `searchable/`. Page text and provenance JSON go under `extracted/`. A page with OCR text is still marked as OCR-derived; it must be checked against the source PDF before extracting or mapping financial figures. BCTN content is not merged into the BCTC API JSON.
+The extractor uses PaddleOCR for pages without a usable text layer. It keeps the original PDF unchanged and writes page text plus provenance JSON under `extracted/`. Each OCR page preserves PaddleOCR output in `text_raw`; the extractor's initial `text_clean` only applies Unicode NFC, hidden-character removal, and whitespace collapse. Gemini then reads `text_raw` directly and replaces `text_clean`. BCTN content is not merged into the BCTC API JSON.
+
+## Gemini OCR text cleaning
+
+The Gemini cleaner reads PaddleOCR's `page.text_raw` and writes its cleaned result directly to `page.text_clean`. The original `text_raw` is preserved. It does not render or send PDF pages. The cleaner asks Gemini not to guess unclear words or change numbers; a numeric-token mismatch prevents that page's `text_clean` from being written. This check does not prove all wording is correct, so spot-check results against the PDF.
+
+Set the API key in the ignored repository-root `.env.local` or `.env` file (do not commit or paste the key into chat):
+
+```text
+GEMINI_API_KEY=your_key_here
+```
+
+Install the SDK into the OCR environment and clean pages that already contain PaddleOCR text:
+
+```powershell
+.venv-paddleocr/Scripts/python.exe -m pip install -r data_pipeline/documents/requirements-paddleocr.txt
+.venv-paddleocr/Scripts/python.exe data_pipeline/documents/correct_annual_ocr_with_gemini.py --symbols FPT --years 2024
+```
+
+The default model is `gemini-3.8-flash`; override it with `--model` or `GEMINI_MODEL`. Temporary Gemini errors are retried with exponential backoff, then providers are tried in this order: Gemini, configured OpenAI-compatible API, and local Qwen through Ollama. Enable the OpenAI-compatible provider only when all three values are set: `OAI_BASE_URL`, `OAI_MODEL`, and `OAI_API_KEY` (or pass `--oai-base-url`, `--oai-model`, and `--oai-api-key`). Qwen requires Ollama and the model installed locally; it does not require another API key. Install Ollama from https://ollama.com/download/windows, then run `ollama pull qwen2.5:7b-instruct`. Pages already cleaned by Gemini, OpenAI-compatible, or Qwen are skipped unless `--refresh` is given.
 
 The default 2019–2025 range follows the seven year tabs visible on the supplied Vietstock page at implementation time. Use `--years` to make a different reporting-year scope explicit. A missing report is recorded as `NO_REPORT`; it is not silently treated as a failed download.

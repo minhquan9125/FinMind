@@ -20,8 +20,16 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-.env.local
+.env
+.env.*
+!.env.example
+/tmp/backup-demo-slim.tar
+/tmp/*.log
+/tmp/*.png
+/tmp/pdfs/*.png
+/tmp/pdfs/ocr-review/
 .venv
+.venv-paddleocr/
 venv/
 ENV/
 
