@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt lại mật khẩu | FinMind Research Copilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>body { font-family: Inter, sans-serif; }</style>
+</head>
+<body class="min-h-screen bg-[#F8FAFC] text-[#0F172A] flex flex-col">
+  <header class="w-full px-6 py-4 sm:px-8 border-b border-[#E2E8F0] bg-white">
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-lg bg-[#2563EB] flex items-center justify-center text-white font-bold text-base shadow-sm tracking-tight">FM</div>
+      <div class="flex flex-col">
+        <span class="font-bold text-lg leading-tight">FinMind</span>
+        <span class="text-[11px] text-[#64748B] -mt-0.5 font-medium">Research Copilot</span>
+      </div>
+    </div>
+  </header>
+  <main class="flex-1 flex items-center justify-center p-6 sm:p-10 lg:p-14">
+    <section class="w-full max-w-md" aria-labelledby="reset-title">
+      <div id="reset-card" class="bg-white rounded-2xl border border-[#E2E8F0] shadow-sm p-8">
+        <div class="mb-8">
+          <h1 id="reset-title" class="text-2xl font-bold tracking-tight">Đặt lại mật khẩu</h1>
+          <p class="text-sm text-[#64748B] mt-2 leading-6">Nhập mật khẩu mới và xác nhận để tiếp tục.</p>
+        </div>
+        <form id="reset-form" class="space-y-5" novalidate>
+          <div>
+            <label class="block text-sm font-medium mb-1.5" for="new-password">Mật khẩu mới <span class="text-[#EF4444]">*</span></label>
+            <input id="new-password" name="new-password" type="password" autocomplete="new-password" class="w-full h-11 px-3.5 text-sm bg-white border border-[#CBD5E1] rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-[#2563EB]" aria-describedby="new-password-error">
+            <p id="new-password-error" class="hidden mt-1.5 text-xs text-[#EF4444] font-medium" role="alert"></p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5" for="confirm-password">Xác nhận mật khẩu mới <span class="text-[#EF4444]">*</span></label>
+            <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" class="w-full h-11 px-3.5 text-sm bg-white border border-[#CBD5E1] rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-[#2563EB]" aria-describedby="confirm-password-error">
+            <p id="confirm-password-error" class="hidden mt-1.5 text-xs text-[#EF4444] font-medium" role="alert"></p>
+          </div>
+          <button type="submit" class="w-full h-11 min-h-[44px] px-5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-sm rounded-[10px] shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2563EB]">Đặt lại mật khẩu</button>
+        </form>
+      </div>
+      <div id="success-card" class="hidden bg-white rounded-2xl border border-[#E2E8F0] shadow-sm p-8 text-center" aria-live="polite">
+        <div class="w-14 h-14 mx-auto mb-5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center" aria-hidden="true">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l4 4L19 6"/></svg>
+        </div>
+        <h2 class="text-2xl font-bold tracking-tight">Hoàn tất bước đặt lại mật khẩu</h2>
+        <p class="text-sm text-[#64748B] mt-3 mb-7 leading-6">Thao tác đã được mô phỏng. Tài khoản thật chưa được cập nhật.</p>
+        <a href="../finmind_p02_ng_nh_p_b_n_tinh_ch_nh_chu_n_h_a/code.html" class="inline-flex w-full h-11 min-h-[44px] items-center justify-center px-5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-sm rounded-[10px] shadow-sm">Đăng nhập</a>
+      </div>
+      <p class="text-center text-xs text-[#94A3B8] mt-6">Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư</p>
+    </section>
+  </main>
+  <script>
+    const form = document.getElementById('reset-form');
+    const password = document.getElementById('new-password');
+    const confirmation = document.getElementById('confirm-password');
+    const passwordError = document.getElementById('new-password-error');
+    const confirmationError = document.getElementById('confirm-password-error');
+
+    function showError(element, message) {
+      element.textContent = message;
+      element.classList.remove('hidden');
+    }
+
+    function clearErrors() {
+      passwordError.classList.add('hidden');
+      confirmationError.classList.add('hidden');
+    }
+
+    password.addEventListener('input', clearErrors);
+    confirmation.addEventListener('input', clearErrors);
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      clearErrors();
+      if (!password.value) {
+        showError(passwordError, 'Vui lòng nhập mật khẩu mới.');
+        password.focus();
+        return;
+      }
+      if (!confirmation.value) {
+        showError(confirmationError, 'Vui lòng xác nhận mật khẩu mới.');
+        confirmation.focus();
+        return;
+      }
+      if (password.value !== confirmation.value) {
+        showError(confirmationError, 'Mật khẩu xác nhận không khớp.');
+        confirmation.focus();
+        return;
+      }
+      password.value = '';
+      confirmation.value = '';
+      document.getElementById('reset-card').classList.add('hidden');
+      document.getElementById('success-card').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
