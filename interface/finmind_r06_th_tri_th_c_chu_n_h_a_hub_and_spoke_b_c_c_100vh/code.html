@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FinMind - R06 Đồ thị tri thức (Knowledge Graph)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#004ac6',
+              light: '#eff6ff',
+              hover: '#003ea8',
+            },
+            surface: {
+              DEFAULT: '#ffffff',
+              subtle: '#faf8ff',
+              border: '#dae2fd',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    html, body {
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #faf8ff;
+      color: #131b2e;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Graph node animations & styling */
+    .graph-node {
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+      cursor: pointer;
+    }
+    .graph-node:hover {
+      filter: drop-shadow(0 4px 12px rgba(0, 74, 198, 0.25));
+    }
+    .graph-edge {
+      transition: stroke 0.2s ease, stroke-width 0.2s ease;
+      cursor: pointer;
+    }
+    .graph-edge:hover {
+      stroke: #004ac6 !important;
+      stroke-width: 2.2px !important;
+    }
+    .dimmed {
+      opacity: 0.18 !important;
+      pointer-events: none;
+    }
+    .highlighted {
+      filter: drop-shadow(0 0 10px rgba(0, 74, 198, 0.5));
+    }
+    .node-selected circle.main-circle {
+      stroke: #004ac6 !important;
+      stroke-width: 3px !important;
+      filter: drop-shadow(0 0 12px rgba(0, 74, 198, 0.45));
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+  </style>
+<link rel="stylesheet" href="../shared/research-sidebar.css">
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-row antialiased select-none bg-[#faf8ff] text-[#131b2e]">
+<!-- Shared researcher sidebar -->
+<aside data-finmind-sidebar="r06"></aside>
+<script src="../shared/research-sidebar.js"></script>
+<!-- MAIN CONTENT AREA (Flex col h-screen, no bottom overflow or gap) -->
+<main class="flex-1 h-screen flex flex-col overflow-hidden relative">
+<!-- HEADER BAR -->
+<header class="bg-white border-b border-[#dae2fd] px-6 py-3.5 shrink-0 z-10 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+<div>
+<h1 class="text-xl font-bold text-[#131b2e] tracking-tight leading-tight">Đồ thị tri thức</h1>
+<p class="text-xs text-slate-500 mt-0.5">Khám phá mối quan hệ giữa doanh nghiệp, chỉ tiêu tài chính, báo cáo và nguồn dữ liệu.</p>
+</div>
+<!-- Context bar + Back to company link -->
+<div class="flex items-center gap-3">
+<div class="bg-[#eaedff] border border-[#dae2fd] rounded-lg px-3 py-1.5 text-xs text-[#131b2e] flex items-center gap-2 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#004ac6] animate-pulse"></span>
+<span>Đang khám phá: <strong class="text-[#004ac6] font-semibold" id="contextCompanyLabel">FPT · Công ty Cổ phần FPT</strong></span>
+</div>
+<a class="text-xs font-semibold text-[#004ac6] hover:text-[#003ea8] hover:underline flex items-center gap-1 transition-colors" href="../finmind_r04_chi_ti_t_doanh_nghi_p_li_n_k_t_kh_m_ph_quan_h_d_li_u/code.html?company=FPT" id="backCompanyLink">
+<span>← Quay lại doanh nghiệp</span>
+</a>
+</div>
+</header>
+<!-- CONTROL BAR: Search, Filter Chips, Legend -->
+<section class="bg-white border-b border-[#dae2fd] px-6 py-2.5 shrink-0 z-10 flex flex-wrap items-center justify-between gap-3 text-xs">
+<!-- Search & Filter chips -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Search input -->
+<div class="relative w-64 md:w-72">
+<svg class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<input class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#004ac6] focus:bg-white text-slate-900 placeholder-slate-400 transition-all" id="graphSearchInput" placeholder="Tìm doanh nghiệp, chỉ tiêu, báo cáo..." type="text"/>
+</div>
+<div class="h-4 w-px bg-slate-200"></div>
+<!-- Filter chips -->
+<div class="flex items-center gap-1.5" id="filterChipsContainer">
+<button class="filter-chip px-2.5 py-1 rounded-md font-medium bg-[#004ac6] text-white transition-colors" data-type="all">
+          Tất cả
+        </button>
+<button class="filter-chip px-2.5 py-1 rounded-md font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" data-type="company">
+          Doanh nghiệp
+        </button>
+<button class="filter-chip px-2.5 py-1 rounded-md font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" data-type="metric">
+          Tài chính
+        </button>
+<button class="filter-chip px-2.5 py-1 rounded-md font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" data-type="report">
+          Báo cáo
+        </button>
+<button class="filter-chip px-2.5 py-1 rounded-md font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" data-type="period">
+          Kỳ báo cáo
+        </button>
+<button class="filter-chip px-2.5 py-1 rounded-md font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" data-type="source">
+          Nguồn
+        </button>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex items-center gap-3 text-[11px] text-slate-600 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+<span class="font-medium text-slate-500">Chú thích:</span>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#004ac6]"></span>
+<span>Doanh nghiệp</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#0284c7]"></span>
+<span>Báo cáo</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#006c49]"></span>
+<span>Ngành</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#6366f1]"></span>
+<span>Tài chính</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#ea580c]"></span>
+<span>Kỳ báo cáo</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#475569]"></span>
+<span>Nguồn</span>
+</div>
+</div>
+</section>
+<!-- GRAPH INTERACTIVE CANVAS CONTAINER (flex: 1, min-height: 0, overflow: hidden) -->
+<div class="flex-1 min-h-0 relative w-full overflow-hidden flex flex-col bg-[#faf8ff] cursor-grab active:cursor-grabbing" id="graphViewport">
+<!-- Subtle grid background -->
+<div class="absolute inset-0 bg-[radial-gradient(#c3c6d7_1px,transparent_1px)] [background-size:24px_24px] opacity-45 pointer-events-none"></div>
+<!-- Overlay Corner Chip "Dữ liệu minh họa" -->
+<div class="absolute top-4 right-4 z-10 pointer-events-none">
+<div class="bg-white/95 backdrop-blur border border-[#dae2fd] text-slate-600 px-2.5 py-1 rounded-md text-[11px] font-medium shadow-sm">
+        Dữ liệu minh họa
+      </div>
+</div>
+<!-- Interactive SVG Canvas (Centering & Transforms) -->
+<svg class="w-full h-full relative z-0 block" id="graphSvg">
+<defs>
+<!-- Arrowhead markers -->
+<marker id="arrow" markerheight="6" markerwidth="6" orient="auto" refx="8" refy="3" viewbox="0 0 6 6">
+<path d="M 0 0 L 6 3 L 0 6 z" fill="#94a3b8"></path>
+</marker>
+<marker id="arrow-active" markerheight="6" markerwidth="6" orient="auto" refx="8" refy="3" viewbox="0 0 6 6">
+<path d="M 0 0 L 6 3 L 0 6 z" fill="#004ac6"></path>
+</marker>
+</defs>
+<g id="graphTransformLayer">
+<g id="edgesGroup"></g>
+<g id="edgeLabelsGroup"></g>
+<g id="nodesGroup"></g>
+</g>
+</svg>
+<!-- Floating Toolbar over Canvas -->
+<div class="absolute bottom-5 left-6 z-10 bg-white/95 backdrop-blur border border-[#dae2fd] rounded-xl shadow-md p-1.5 flex items-center gap-1 text-slate-700">
+<button class="p-1.5 hover:bg-slate-100 rounded-lg text-slate-600 hover:text-slate-900 transition-colors" id="btnZoomIn" title="Phóng to">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<button class="p-1.5 hover:bg-slate-100 rounded-lg text-slate-600 hover:text-slate-900 transition-colors" id="btnZoomOut" title="Thu nhỏ">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="w-px h-4 bg-slate-200 mx-0.5"></div>
+<button class="p-1.5 hover:bg-slate-100 rounded-lg text-slate-600 hover:text-slate-900 transition-colors" id="btnCenter" title="Căn giữa">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<button class="p-1.5 hover:bg-slate-100 rounded-lg text-slate-600 hover:text-slate-900 transition-colors" id="btnReset" title="Đặt lại">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="w-px h-4 bg-slate-200 mx-0.5"></div>
+<button class="px-2.5 py-1 text-xs font-semibold text-[#004ac6] hover:bg-[#eff6ff] rounded-lg transition-colors flex items-center gap-1.5" id="btnExpandAll" title="Mở rộng mạng lưới quan hệ">
+<svg class="w-3.5 h-3.5" fill="none" id="expandIcon" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="expandBtnLabel">Mở rộng</span>
+</button>
+</div>
+<!-- RIGHT DETAIL PANEL (Slide-over overlay, initial state closed) -->
+<aside class="absolute top-0 right-0 bottom-0 w-80 md:w-96 bg-white border-l border-[#dae2fd] shadow-2xl z-30 transform translate-x-full transition-transform duration-250 ease-out flex flex-col justify-between overflow-hidden" id="detailPanel">
+<div class="flex-1 overflow-y-auto p-5">
+<!-- Header with close button -->
+<div class="flex items-start justify-between pb-3.5 border-b border-slate-200 mb-4">
+<div>
+<span class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-[#eff6ff] text-[#004ac6] border border-[#b4c5ff] mb-1.5" id="detailBadge">
+              Doanh nghiệp
+            </span>
+<h3 class="text-base font-bold text-[#131b2e] leading-snug" id="detailTitle">
+              Công ty Cổ phần FPT (FPT)
+            </h3>
+</div>
+<button class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors" id="btnCloseDetail" title="Đóng bảng">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Dynamic Metadata & Context Area -->
+<div class="space-y-3.5 text-xs" id="detailFields">
+<!-- Dynamically populated -->
+</div>
+</div>
+<!-- Bottom Action Buttons Container -->
+<div class="p-4 border-t border-[#dae2fd] bg-[#faf8ff] space-y-2" id="detailActions">
+<!-- Dynamically populated buttons -->
+</div>
+</aside>
+</div>
+<!-- FOOTER LINE (Institutional & compliant) -->
+<footer class="bg-white border-t border-[#dae2fd] px-6 py-2 shrink-0 z-10 flex items-center justify-between text-[11px] text-slate-500">
+<div>Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư</div>
+<div class="hidden sm:block text-slate-400">FinMind Knowledge Graph v2.4 · Dữ liệu chuẩn hóa</div>
+</footer>
+</main>
+<!-- SCRIPT FOR INTERACTIVITY & HUB-AND-SPOKE GRAPH LOGIC -->
+<script>
+  // Supported Companies Data
+  const COMPANY_PAGE = '../finmind_r04_chi_ti_t_doanh_nghi_p_li_n_k_t_kh_m_ph_quan_h_d_li_u/code.html';
+  const RESEARCH_PAGE = '../finmind_r01_tr_l_nghi_n_c_u_b_n_chu_n_h_a_chu_i_d_li_u/code.html';
+  const COMPANIES_DATA = {
+    'FPT': { name: 'Công ty Cổ phần FPT', sector: 'Công nghệ', exchange: 'HOSE' },
+    'VCB': { name: 'Ngân hàng TMCP Ngoại thương Việt Nam', sector: 'Ngân hàng', exchange: 'HOSE' },
+    'BID': { name: 'Ngân hàng TMCP Đầu tư và Phát triển VN', sector: 'Ngân hàng', exchange: 'HOSE' },
+    'CTG': { name: 'Ngân hàng TMCP Công Thương Việt Nam', sector: 'Ngân hàng', exchange: 'HOSE' },
+    'MBB': { name: 'Ngân hàng TMCP Quân Đội', sector: 'Ngân hàng', exchange: 'HOSE' },
+    'TCB': { name: 'Ngân hàng TMCP Kỹ Thương Việt Nam', sector: 'Ngân hàng', exchange: 'HOSE' },
+    'CMG': { name: 'Công ty Cổ phần Tập đoàn Công nghệ CMC', sector: 'Công nghệ', exchange: 'HOSE' },
+    'ELC': { name: 'Công ty Cổ phần Công nghệ ELCOM', sector: 'Công nghệ', exchange: 'HOSE' },
+    'ITD': { name: 'Công ty Cổ phần Công nghệ Tiên Phong', sector: 'Công nghệ', exchange: 'HOSE' },
+    'ICT': { name: 'Công ty Cổ phần Viễn thông - Tin học Bưu điện', sector: 'Công nghệ', exchange: 'HOSE' }
+  };
+
+  const SECTOR_COMPANIES = {
+    'Công nghệ': ['FPT', 'CMG', 'ELC', 'ITD', 'ICT'],
+    'Ngân hàng': ['VCB', 'BID', 'CTG', 'MBB', 'TCB']
+  };
+
+  // State
+  let focusedTicker = 'FPT';
+  let isExpanded = false;
+  let selectedNodeId = 'comp_FPT';
+  let activeFilter = 'all';
+
+  // Viewport transform state (Pan & Zoom)
+  let zoomLevel = 1.0;
+  let panX = 0;
+  let panY = 0;
+  let isDragging = false;
+  let startX = 0, startY = 0;
+
+  // DOM Elements
+  const graphViewport = document.getElementById('graphViewport');
+  const graphSvg = document.getElementById('graphSvg');
+  const graphTransformLayer = document.getElementById('graphTransformLayer');
+  const nodesGroup = document.getElementById('nodesGroup');
+  const edgesGroup = document.getElementById('edgesGroup');
+  const edgeLabelsGroup = document.getElementById('edgeLabelsGroup');
+  const detailPanel = document.getElementById('detailPanel');
+  const detailTitle = document.getElementById('detailTitle');
+  const detailBadge = document.getElementById('detailBadge');
+  const detailFields = document.getElementById('detailFields');
+  const detailActions = document.getElementById('detailActions');
+  const btnCloseDetail = document.getElementById('btnCloseDetail');
+  const contextCompanyLabel = document.getElementById('contextCompanyLabel');
+  const backCompanyLink = document.getElementById('backCompanyLink');
+  const graphSearchInput = document.getElementById('graphSearchInput');
+  const btnExpandAll = document.getElementById('btnExpandAll');
+  const expandBtnLabel = document.getElementById('expandBtnLabel');
+
+  // Parse URL Hash
+  function parseHash() {
+    const hash = window.location.hash || '#r06?company=FPT';
+    const match = hash.match(/company=([A-Z0-9]+)/i);
+    if (match && COMPANIES_DATA[match[1].toUpperCase()]) {
+      focusedTicker = match[1].toUpperCase();
+    } else {
+      focusedTicker = 'FPT';
+    }
+    selectedNodeId = `comp_${focusedTicker}`;
+  }
+
+  // Update Context Bar and Links
+  function updateContextUI() {
+    const comp = COMPANIES_DATA[focusedTicker] || { name: 'Công ty Cổ phần FPT', sector: 'Công nghệ' };
+    contextCompanyLabel.textContent = `${focusedTicker} · ${comp.name}`;
+    backCompanyLink.href = `${COMPANY_PAGE}?company=${focusedTicker}`;
+    window.FinMindSidebar?.setCompany(focusedTicker);
+  }
+
+  // Build Hub-and-Spoke Graph Model
+  function buildGraphModel() {
+    const comp = COMPANIES_DATA[focusedTicker] || { name: 'Công ty Cổ phần FPT', sector: 'Công nghệ' };
+    const sector = comp.sector || 'Công nghệ';
+
+    // Center coordinates perfectly calculated from graphViewport size
+    const rect = graphViewport.getBoundingClientRect();
+    const cx = rect.width > 0 ? rect.width / 2 : (window.innerWidth - 220) / 2;
+    const cy = rect.height > 0 ? rect.height / 2 : (window.innerHeight - 120) / 2;
+
+    // Hub & Spoke nodes:
+    // Center: FPT (r=48)
+    // Top: Báo cáo thường niên (dist: 155px)
+    // Left: Công nghệ (dist: 170px)
+    // Right: Doanh thu (dist: 170px)
+    // Bottom: FY2025 (dist: 140px)
+    // Below FY2025: Nguồn chính thức (dist: 120px from FY2025)
+    const nodes = [
+      {
+        id: `comp_${focusedTicker}`,
+        type: 'company',
+        ticker: focusedTicker,
+        name: comp.name,
+        label: focusedTicker,
+        subLabel: comp.name,
+        isCenter: true,
+        x: cx,
+        y: cy,
+        r: 46,
+        color: '#004ac6',
+        fill: '#eff6ff',
+        stroke: '#004ac6'
+      },
+      {
+        id: 'report_annual',
+        type: 'report',
+        name: `Báo cáo thường niên ${focusedTicker}`,
+        label: 'Báo cáo thường niên',
+        subLabel: 'Báo cáo công bố',
+        x: cx,
+        y: cy - 155,
+        r: 28,
+        color: '#0284c7',
+        fill: '#f0f9ff',
+        stroke: '#0284c7'
+      },
+      {
+        id: `sector_${sector}`,
+        type: 'sector',
+        sector: sector,
+        label: sector,
+        subLabel: 'Ngành hoạt động',
+        x: cx - 175,
+        y: cy,
+        r: 28,
+        color: '#006c49',
+        fill: '#f0fdf4',
+        stroke: '#006c49'
+      },
+      {
+        id: 'metric_rev',
+        type: 'metric',
+        metric: 'Doanh thu',
+        ticker: focusedTicker,
+        period: 'FY2025',
+        label: 'Doanh thu',
+        subLabel: 'Chỉ tiêu tài chính',
+        x: cx + 175,
+        y: cy,
+        r: 28,
+        color: '#6366f1',
+        fill: '#eef2ff',
+        stroke: '#6366f1'
+      },
+      {
+        id: 'period_fy25',
+        type: 'period',
+        period: 'FY2025',
+        label: 'FY2025',
+        subLabel: 'Kỳ báo cáo',
+        x: cx,
+        y: cy + 140,
+        r: 27,
+        color: '#ea580c',
+        fill: '#fff7ed',
+        stroke: '#ea580c'
+      },
+      {
+        id: 'source_official',
+        type: 'source',
+        label: 'Nguồn chính thức',
+        subLabel: 'Cổng thông tin IR / SGDCK',
+        name: `Hồ sơ công bố chính thức ${focusedTicker}`,
+        x: cx,
+        y: cy + 250,
+        r: 26,
+        color: '#475569',
+        fill: '#f8fafc',
+        stroke: '#475569'
+      }
+    ];
+
+    // Explicit Edges with exact semantic labels
+    const edges = [
+      { source: `comp_${focusedTicker}`, target: 'report_annual', label: 'CÓ BÁO CÁO' },
+      { source: `comp_${focusedTicker}`, target: `sector_${sector}`, label: 'THUỘC NGÀNH' },
+      { source: `comp_${focusedTicker}`, target: 'metric_rev', label: 'CÓ CHỈ TIÊU' },
+      { source: `comp_${focusedTicker}`, target: 'period_fy25', label: 'CÓ KỲ DỮ LIỆU' },
+      { source: 'period_fy25', target: 'source_official', label: 'CÓ NGUỒN' }
+    ];
+
+    // Extended nodes (1-hop expansion)
+    if (isExpanded) {
+      const peerTicker = (sector === 'Công nghệ') ? (focusedTicker === 'FPT' ? 'CMG' : 'FPT') : (focusedTicker === 'VCB' ? 'MBB' : 'VCB');
+      nodes.push(
+        {
+          id: `peer_${peerTicker}`,
+          type: 'company',
+          ticker: peerTicker,
+          name: COMPANIES_DATA[peerTicker]?.name || 'CMC Corporation',
+          label: peerTicker,
+          subLabel: 'Cùng ngành',
+          x: cx - 290,
+          y: cy - 90,
+          r: 26,
+          color: '#2563eb',
+          fill: '#eff6ff',
+          stroke: '#2563eb'
+        },
+        {
+          id: 'metric_profit',
+          type: 'metric',
+          metric: 'Lợi nhuận sau thuế',
+          ticker: focusedTicker,
+          period: 'FY2025',
+          label: 'Lợi nhuận sau thuế',
+          subLabel: 'Chỉ tiêu tài chính',
+          x: cx + 275,
+          y: cy - 110,
+          r: 26,
+          color: '#6366f1',
+          fill: '#eef2ff',
+          stroke: '#6366f1'
+        },
+        {
+          id: 'regulator_ssc',
+          type: 'source',
+          label: 'UBCKNN',
+          subLabel: 'Cơ quan giám sát',
+          name: 'Ủy ban Chứng khoán Nhà nước (SSC)',
+          x: cx + 180,
+          y: cy + 240,
+          r: 25,
+          color: '#0d9488',
+          fill: '#f0fdfa',
+          stroke: '#0d9488'
+        }
+      );
+
+      edges.push(
+        { source: `sector_${sector}`, target: `peer_${peerTicker}`, label: 'DOANH NGHIỆP CÙNG NGÀNH' },
+        { source: `comp_${focusedTicker}`, target: 'metric_profit', label: 'CÓ CHỈ TIÊU' },
+        { source: 'source_official', target: 'regulator_ssc', label: 'GIÁM SÁT BỞI' }
+      );
+    }
+
+    return { nodes, edges };
+  }
+
+  // Calculate coordinates on node borders to avoid dangling or crossing
+  function calculateBorderIntersection(source, target) {
+    const dx = target.x - source.x;
+    const dy = target.y - source.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance === 0) return { x1: source.x, y1: source.y, x2: target.x, y2: target.y };
+
+    const ux = dx / distance;
+    const uy = dy / distance;
+
+    const x1 = source.x + ux * (source.r + 2);
+    const y1 = source.y + uy * (source.r + 2);
+    const x2 = target.x - ux * (target.r + 6); // slight gap for marker arrow
+    const y2 = target.y - uy * (target.r + 6);
+
+    return { x1, y1, x2, y2, midX: (source.x + target.x) / 2, midY: (source.y + target.y) / 2 };
+  }
+
+  // Render Knowledge Graph
+  function renderGraph() {
+    const { nodes, edges } = buildGraphModel();
+    const nodeMap = new Map();
+    nodes.forEach(n => nodeMap.set(n.id, n));
+
+    // Clear layers
+    edgesGroup.innerHTML = '';
+    edgeLabelsGroup.innerHTML = '';
+    nodesGroup.innerHTML = '';
+
+    // Render Edges & Edge Labels
+    edges.forEach(edge => {
+      const src = nodeMap.get(edge.source);
+      const tgt = nodeMap.get(edge.target);
+      if (!src || !tgt) return;
+
+      const geom = calculateBorderIntersection(src, tgt);
+
+      // SVG Line
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', geom.x1);
+      line.setAttribute('y1', geom.y1);
+      line.setAttribute('x2', geom.x2);
+      line.setAttribute('y2', geom.y2);
+      line.setAttribute('stroke', '#cbd5e1');
+      line.setAttribute('stroke-width', '1.8');
+      line.setAttribute('class', 'graph-edge');
+      line.setAttribute('marker-end', 'url(#arrow)');
+      line.setAttribute('data-src', edge.source);
+      line.setAttribute('data-tgt', edge.target);
+
+      line.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showEdgeDetail(edge, src, tgt);
+      });
+      edgesGroup.appendChild(line);
+
+      // Edge Semantic Label (Strictly centered at midpoint of line)
+      const gLabel = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      gLabel.setAttribute('transform', `translate(${geom.midX}, ${geom.midY})`);
+      gLabel.setAttribute('class', 'cursor-pointer select-none');
+
+      const labelLength = edge.label.length * 5.4 + 14;
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', -labelLength / 2);
+      rect.setAttribute('y', -8.5);
+      rect.setAttribute('width', labelLength);
+      rect.setAttribute('height', 17);
+      rect.setAttribute('rx', 4);
+      rect.setAttribute('fill', '#ffffff');
+      rect.setAttribute('stroke', '#dae2fd');
+      rect.setAttribute('stroke-width', '1');
+
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('x', 0);
+      text.setAttribute('y', 3.5);
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('font-size', '9px');
+      text.setAttribute('font-weight', '600');
+      text.setAttribute('fill', '#475569');
+      text.setAttribute('letter-spacing', '0.02em');
+      text.textContent = edge.label;
+
+      gLabel.appendChild(rect);
+      gLabel.appendChild(text);
+
+      gLabel.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showEdgeDetail(edge, src, tgt);
+      });
+
+      edgeLabelsGroup.appendChild(gLabel);
+    });
+
+    // Render Nodes
+    nodes.forEach(node => {
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('transform', `translate(${node.x}, ${node.y})`);
+      g.setAttribute('class', `graph-node node-${node.type} ${node.id === selectedNodeId ? 'node-selected' : ''}`);
+      g.setAttribute('data-id', node.id);
+      g.setAttribute('data-type', node.type);
+
+      // Pulsing outer halo for Center Node (FPT)
+      if (node.isCenter) {
+        const halo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        halo.setAttribute('r', node.r + 9);
+        halo.setAttribute('fill', 'none');
+        halo.setAttribute('stroke', '#93c5fd');
+        halo.setAttribute('stroke-width', '2');
+        halo.setAttribute('stroke-dasharray', '5 3');
+        halo.setAttribute('opacity', '0.85');
+        g.appendChild(halo);
+      }
+
+      // Base Node Circle
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('class', 'main-circle');
+      circle.setAttribute('r', node.r);
+      circle.setAttribute('fill', node.fill);
+      circle.setAttribute('stroke', node.stroke);
+      circle.setAttribute('stroke-width', node.isCenter ? '2.5' : '1.75');
+      g.appendChild(circle);
+
+      // Node Label inside Circle
+      const centerText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      centerText.setAttribute('x', 0);
+      centerText.setAttribute('y', node.isCenter ? 5 : 4);
+      centerText.setAttribute('text-anchor', 'middle');
+      centerText.setAttribute('font-size', node.isCenter ? '14px' : '11px');
+      centerText.setAttribute('font-weight', '700');
+      centerText.setAttribute('fill', node.color);
+
+      if (node.type === 'company') {
+        centerText.textContent = node.ticker || node.label;
+      } else if (node.type === 'period') {
+        centerText.textContent = node.period || 'KỲ';
+      } else if (node.type === 'report') {
+        centerText.textContent = 'BC';
+      } else if (node.type === 'sector') {
+        centerText.textContent = 'NG';
+      } else if (node.type === 'metric') {
+        centerText.textContent = 'TC';
+      } else if (node.type === 'source') {
+        centerText.textContent = 'SRC';
+      }
+      g.appendChild(centerText);
+
+      // Sub-label below Circle (Title & Description)
+      const labelText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      labelText.setAttribute('x', 0);
+      labelText.setAttribute('y', node.r + 14);
+      labelText.setAttribute('text-anchor', 'middle');
+      labelText.setAttribute('font-size', node.isCenter ? '12px' : '10.5px');
+      labelText.setAttribute('font-weight', node.isCenter ? '700' : '600');
+      labelText.setAttribute('fill', '#0f172a');
+      labelText.textContent = node.label;
+      g.appendChild(labelText);
+
+      // Optional second descriptor line
+      if (node.subLabel) {
+        const subText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        subText.setAttribute('x', 0);
+        subText.setAttribute('y', node.r + 26);
+        subText.setAttribute('text-anchor', 'middle');
+        subText.setAttribute('font-size', '9.5px');
+        subText.setAttribute('font-weight', '400');
+        subText.setAttribute('fill', '#64748b');
+        subText.textContent = node.subLabel.length > 28 ? node.subLabel.substring(0, 26) + '...' : node.subLabel;
+        g.appendChild(subText);
+      }
+
+      // Click to select node and open detail panel
+      g.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectedNodeId = node.id;
+        document.querySelectorAll('.graph-node').forEach(el => el.classList.remove('node-selected'));
+        g.classList.add('node-selected');
+        showNodeDetail(node);
+      });
+
+      nodesGroup.appendChild(g);
+    });
+
+    applyCurrentFilter();
+  }
+
+  // Filter Chips handler
+  function applyCurrentFilter() {
+    const allNodes = nodesGroup.querySelectorAll('.graph-node');
+    const allEdges = edgesGroup.querySelectorAll('.graph-edge');
+    const allLabels = edgeLabelsGroup.querySelectorAll('g');
+
+    if (activeFilter === 'all') {
+      allNodes.forEach(el => el.classList.remove('dimmed'));
+      allEdges.forEach(el => el.classList.remove('dimmed'));
+      allLabels.forEach(el => el.classList.remove('dimmed'));
+      return;
+    }
+
+    allNodes.forEach(el => {
+      const type = el.getAttribute('data-type');
+      if (type === activeFilter) {
+        el.classList.remove('dimmed');
+      } else {
+        el.classList.add('dimmed');
+      }
+    });
+  }
+
+  // Display Node Information in Slide-over Panel
+  function showNodeDetail(node) {
+    detailPanel.classList.remove('translate-x-full');
+
+    const typeBadges = {
+      'company': 'Doanh nghiệp niêm yết',
+      'sector': 'Ngành hoạt động',
+      'metric': 'Chỉ tiêu tài chính',
+      'report': 'Báo cáo công bố',
+      'period': 'Kỳ báo cáo',
+      'source': 'Nguồn công bố'
+    };
+
+    detailBadge.textContent = typeBadges[node.type] || 'Thực thể tri thức';
+
+    if (node.type === 'company') {
+      detailTitle.textContent = `${node.name || COMPANIES_DATA[node.ticker]?.name} (${node.ticker})`;
+      const compInfo = COMPANIES_DATA[node.ticker] || {};
+      detailFields.innerHTML = `
+        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
+          <div class="flex justify-between">
+            <span class="text-slate-500">Mã cổ phiếu:</span>
+            <span class="font-bold text-[#004ac6]">${node.ticker}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Ngành:</span>
+            <span class="font-semibold text-slate-800">${compInfo.sector || 'Công nghệ'}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Sàn niêm yết:</span>
+            <span class="font-medium text-slate-700">${compInfo.exchange || 'HOSE'}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Trạng thái dữ liệu:</span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+              Báo cáo công bố
+            </span>
+          </div>
+        </div>
+        <div class="p-3 bg-[#eff6ff] rounded-lg border border-[#b4c5ff] text-[11px] text-[#004ac6]">
+          <strong>Mối quan hệ 1-hop liên kết:</strong> Ngành ${compInfo.sector || 'Công nghệ'}, Báo cáo thường niên, Doanh thu, Kỳ dữ liệu FY2025.
+        </div>
+      `;
+
+      detailActions.innerHTML = `
+        <a href="${COMPANY_PAGE}?company=${node.ticker}" class="w-full py-2 px-3 bg-[#004ac6] hover:bg-[#003ea8] text-white rounded-lg font-medium text-center flex items-center justify-center gap-2 transition-colors">
+          Xem doanh nghiệp
+        </a>
+        <a href="${RESEARCH_PAGE}#r01?company=${node.ticker}&period=FY2025" class="w-full py-2 px-3 bg-white border border-[#004ac6] text-[#004ac6] hover:bg-[#eff6ff] rounded-lg font-medium text-center flex items-center justify-center gap-1.5 transition-colors">
+          Hỏi FinMind về ${node.ticker}
+        </a>
+      `;
+    } else if (node.type === 'metric') {
+      detailTitle.textContent = `${node.metric} (${node.ticker || focusedTicker})`;
+      detailFields.innerHTML = `
+        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
+          <div class="flex justify-between">
+            <span class="text-slate-500">Doanh nghiệp:</span>
+            <span class="font-semibold text-slate-800">${node.ticker || focusedTicker}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Kỳ báo cáo:</span>
+            <span class="font-semibold text-slate-800">${node.period || 'FY2025'}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Nguồn trích dẫn:</span>
+            <span class="font-medium text-slate-700">Báo cáo công bố chính thức</span>
+          </div>
+          <div class="flex justify-between items-center pt-1 border-t border-slate-200">
+            <span class="text-slate-500">Tình trạng xác thực:</span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+              Đã đối chiếu công bố
+            </span>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-500">FinMind cung cấp số liệu trích xuất trực tiếp từ báo cáo tài chính công bố chính thức của doanh nghiệp.</p>
+      `;
+
+      const q = encodeURIComponent(`${node.metric} của ${node.ticker || focusedTicker} trong kỳ FY2025 đạt bao nhiêu?`);
+      detailActions.innerHTML = `
+        <a href="${RESEARCH_PAGE}#r01?company=${node.ticker || focusedTicker}&period=FY2025&metric=${encodeURIComponent(node.metric)}&question=${q}&autosubmit=1" class="w-full py-2 px-3 bg-[#004ac6] hover:bg-[#003ea8] text-white rounded-lg font-medium text-center flex items-center justify-center gap-2 transition-colors">
+          Hỏi FinMind về chỉ tiêu này
+        </a>
+      `;
+    } else if (node.type === 'report') {
+      detailTitle.textContent = node.name || node.label;
+      detailFields.innerHTML = `
+        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
+          <div class="flex justify-between">
+            <span class="text-slate-500">Phân loại:</span>
+            <span class="font-semibold text-slate-800">Báo cáo công bố</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Tổ chức công bố:</span>
+            <span class="font-semibold text-slate-800">${focusedTicker}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Kỳ phát hành:</span>
+            <span class="font-medium text-slate-700">FY2025</span>
+          </div>
+        </div>
+      `;
+
+      detailActions.innerHTML = `
+        <a href="${RESEARCH_PAGE}#r01?company=${focusedTicker}&report=annual" class="w-full py-2 px-3 bg-[#004ac6] hover:bg-[#003ea8] text-white rounded-lg font-medium text-center flex items-center justify-center gap-1.5 transition-colors">
+          Hỏi FinMind về báo cáo này
+        </a>
+      `;
+    } else if (node.type === 'source') {
+      detailTitle.textContent = node.name || node.label;
+      detailFields.innerHTML = `
+        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
+          <div class="flex justify-between">
+            <span class="text-slate-500">Kênh cung cấp:</span>
+            <span class="font-semibold text-slate-800">Hệ thống công bố thông tin</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Cơ quan quản lý:</span>
+            <span class="font-medium text-slate-700">HOSE / UBCKNN</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Trạng thái:</span>
+            <span class="text-emerald-700 font-medium">Báo cáo công bố chính thức</span>
+          </div>
+        </div>
+      `;
+
+      detailActions.innerHTML = `
+        <button onclick="detailPanel.classList.add('translate-x-full')" class="w-full py-2 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium text-center transition-colors">
+          Đóng chi tiết
+        </button>
+      `;
+    } else {
+      // Sector or period fallback
+      detailTitle.textContent = node.label;
+      detailFields.innerHTML = `
+        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
+          <div class="flex justify-between">
+            <span class="text-slate-500">Thực thể:</span>
+            <span class="font-semibold text-slate-800">${node.label}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Thuộc tính:</span>
+            <span class="font-medium text-slate-700">${node.subLabel || 'Hệ thống'}</span>
+          </div>
+        </div>
+      `;
+      detailActions.innerHTML = `
+        <button onclick="detailPanel.classList.add('translate-x-full')" class="w-full py-2 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium text-center transition-colors">
+          Đóng chi tiết
+        </button>
+      `;
+    }
+  }
+
+  // Display Edge Information in Slide-over Panel
+  function showEdgeDetail(edge, src, tgt) {
+    detailPanel.classList.remove('translate-x-full');
+    detailBadge.textContent = 'Mối quan hệ liên kết';
+    detailTitle.textContent = `${src.label} → ${tgt.label}`;
+
+    detailFields.innerHTML = `
+      <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Thực thể nguồn:</span>
+          <span class="font-semibold text-slate-800">${src.label}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Quan hệ ngữ nghĩa:</span>
+          <span class="font-bold text-[#004ac6]">${edge.label}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Thực thể đích:</span>
+          <span class="font-semibold text-slate-800">${tgt.label}</span>
+        </div>
+      </div>
+      <p class="text-[11px] text-slate-500">Mối quan hệ được cấu trúc hóa từ hồ sơ báo cáo công bố chính thức và đồ thị tri thức FinMind.</p>
+    `;
+
+    const q = encodeURIComponent(`Giải thích mối quan hệ giữa ${src.label} và ${tgt.label} theo hồ sơ công bố.`);
+    detailActions.innerHTML = `
+      <a href="${RESEARCH_PAGE}#r01?company=${focusedTicker}&period=FY2025&question=${q}&autosubmit=1" class="w-full py-2 px-3 bg-[#004ac6] hover:bg-[#003ea8] text-white rounded-lg font-medium text-center flex items-center justify-center gap-2 transition-colors">
+        Hỏi FinMind về mối quan hệ này
+      </a>
+    `;
+  }
+
+  // Close Detail Panel
+  btnCloseDetail.onclick = () => {
+    detailPanel.classList.add('translate-x-full');
+    document.querySelectorAll('.graph-node').forEach(el => el.classList.remove('node-selected'));
+  };
+
+  // Close detail when clicking canvas background
+  graphSvg.addEventListener('click', (e) => {
+    if (e.target === graphSvg || e.target.id === 'graphTransformLayer') {
+      detailPanel.classList.add('translate-x-full');
+      document.querySelectorAll('.graph-node').forEach(el => el.classList.remove('node-selected'));
+    }
+  });
+
+  // Apply Transform
+  function applyTransform() {
+    graphTransformLayer.setAttribute('transform', `translate(${panX}, ${panY}) scale(${zoomLevel})`);
+  }
+
+  // Toolbar Actions
+  document.getElementById('btnZoomIn').onclick = () => {
+    zoomLevel = Math.min(2.4, zoomLevel + 0.15);
+    applyTransform();
+  };
+
+  document.getElementById('btnZoomOut').onclick = () => {
+    zoomLevel = Math.max(0.5, zoomLevel - 0.15);
+    applyTransform();
+  };
+
+  document.getElementById('btnCenter').onclick = () => {
+    panX = 0;
+    panY = 0;
+    zoomLevel = 1.0;
+    renderGraph();
+    applyTransform();
+  };
+
+  document.getElementById('btnReset').onclick = () => {
+    panX = 0;
+    panY = 0;
+    zoomLevel = 1.0;
+    isExpanded = false;
+    expandBtnLabel.textContent = 'Mở rộng';
+    expandIcon.innerHTML = '<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>';
+    renderGraph();
+    applyTransform();
+  };
+
+  btnExpandAll.onclick = () => {
+    isExpanded = !isExpanded;
+    if (isExpanded) {
+      expandBtnLabel.textContent = 'Thu gọn';
+      expandIcon.innerHTML = '<path d="M20 12H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>';
+    } else {
+      expandBtnLabel.textContent = 'Mở rộng';
+      expandIcon.innerHTML = '<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>';
+    }
+    renderGraph();
+  };
+
+  // Canvas Panning (Drag)
+  graphViewport.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.graph-node') || e.target.closest('.graph-edge') || e.target.closest('aside') || e.target.closest('button')) return;
+    isDragging = true;
+    startX = e.clientX - panX;
+    startY = e.clientY - panY;
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    panX = e.clientX - startX;
+    panY = e.clientY - startY;
+    applyTransform();
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // Canvas Zoom with Mouse Wheel
+  graphViewport.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.07 : 0.07;
+    zoomLevel = Math.min(2.4, Math.max(0.5, zoomLevel + delta));
+    applyTransform();
+  }, { passive: false });
+
+  // Filter Chips Click
+  document.querySelectorAll('.filter-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(b => {
+        b.classList.remove('bg-[#004ac6]', 'text-white');
+        b.classList.add('bg-slate-100', 'text-slate-700');
+      });
+      btn.classList.remove('bg-slate-100', 'text-slate-700');
+      btn.classList.add('bg-[#004ac6]', 'text-white');
+
+      activeFilter = btn.getAttribute('data-type');
+      applyCurrentFilter();
+    });
+  });
+
+  // Search Input Handler
+  graphSearchInput.addEventListener('input', (e) => {
+    const q = e.target.value.trim().toUpperCase();
+    if (!q) {
+      nodesGroup.querySelectorAll('.graph-node').forEach(n => {
+        n.classList.remove('dimmed', 'highlighted');
+      });
+      return;
+    }
+
+    if (COMPANIES_DATA[q]) {
+      window.location.hash = `#r06?company=${q}`;
+      parseHash();
+      updateContextUI();
+      renderGraph();
+      return;
+    }
+
+    nodesGroup.querySelectorAll('.graph-node').forEach(n => {
+      const text = n.textContent.toUpperCase();
+      if (text.includes(q)) {
+        n.classList.remove('dimmed');
+        n.classList.add('highlighted');
+      } else {
+        n.classList.add('dimmed');
+        n.classList.remove('highlighted');
+      }
+    });
+  });
+
+  // Window resize handler: recalculates center perfectly
+  window.addEventListener('resize', () => {
+    renderGraph();
+    applyTransform();
+  });
+
+  // SPA hashchange listener
+  window.addEventListener('hashchange', () => {
+    parseHash();
+    updateContextUI();
+    renderGraph();
+  });
+
+  // Initial Execution
+  parseHash();
+  updateContextUI();
+  renderGraph();
+</script>
+</body></html>
