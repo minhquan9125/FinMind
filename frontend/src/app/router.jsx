@@ -27,15 +27,21 @@ export { Link, useNavigate, useParams, useLocation, useSearchParams };
  * Khi thành viên tạo file  src/pages/<category>/<ComponentName>.jsx,
  * route đó sẽ tự động hiển thị đúng giao diện.
  */
-function lazyPage(componentPath) {
-  return lazy(() =>
-    import(`../pages/${componentPath}.jsx`).catch(() =>
-      // Nếu file chưa tồn tại, hiện khung giữ chỗ tạm thời
-      ({ default: Placeholder })
-    )
-  );
-}
 
+// function lazyPage(componentPath) {
+//   return lazy(() =>
+//     import(`../pages/${componentPath}.jsx`).catch(() =>
+//       // Nếu file chưa tồn tại, hiện khung giữ chỗ tạm thời
+//       ({ default: Placeholder })
+//     )
+//   );
+// }
+const pageModules = import.meta.glob("../pages/*/*.jsx");
+
+function lazyPage(componentPath) {
+  const loader = pageModules[`../pages/${componentPath}.jsx`];
+  return lazy(() => (loader ? loader() : Promise.resolve({ default: Placeholder })));
+}
 /**
  * Khung giữ chỗ tạm thời — hiển thị khi file .jsx của trang chưa được tạo.
  * Thành viên không cần quan tâm đến component này.
