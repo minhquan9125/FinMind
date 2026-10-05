@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "source": "CAFEF",
+  "source_pdf": {
+    "relative_path": "data/references/cafef/pdfs/BID/BID_annual_2024_annual_685286b7d78024196c2f9b94_B_o_c_o_th_ng_ni_n_n_m_2024.pdf",
+    "sha256": "956f9c258e293da40f833eba63b9037821fcd4b646b91f1290c02dc1e326e2f1",
+    "document_id": "685286b7d78024196c2f9b94",
+    "title": "Báo cáo thường niên năm 2024",
+    "period_label": "CN/2024",
+    "source_page_url": "https://cafef.vn/du-lieu/hose/bid-tai-lieu.chn",
+    "source_file_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/BID_24CN_BCTN.pdf"
+  },
+  "extracted_at": "2026-09-28T08:59:58.817736Z",
+  "extraction": {
+    "method": "pypdf text layer",
+    "ocr_performed": false,
+    "ocr_language": null,
+    "ocr_note": "Pages with no usable text are listed in summary.pages_needing_ocr."
+  },
+  "summary": {
+    "symbol": "BID",
+    "filename": "BID_annual_2024_annual_685286b7d78024196c2f9b94_B_o_c_o_th_ng_ni_n_n_m_2024.pdf",
+    "page_count": 2,
+    "pages_with_text": 2,
+    "pages_needing_ocr": []
+  },
+  "pages": [
+    {
+      "page": 1,
+      "text": "BID~rONqANJ!A.NG~MCP~AuTIT 'VVAPHATTRIENVI~TNAM BANKFORINVESTMENT AND DEVELOPMENT OFVIETNAM, JSc. S6:J~IBIDV- TKHDQT&QHCD CBTTBaocaothuongnien2024 AnnualReport2024CQNGHoAxAHQICHUNGHiAVI:E:TNAM DQcl,p-Tl}'do-Hanhphuc THESOCIALIST REPUBLIC OFVIETNAM Independence -Freedom -Happiness HaN9i,ngay18thang4ndm2025 Hanoi,April18th2025 CONGBOTHONG TINDINHKY PERIODICALLY INFORMATION DISCLOSURE Kinhgtri:I , -UybanChirngkhoanNhamroc; -SaGiaodichclurngkhoanVi~tNam; -SaGiaodichchimgkhoan1PRCM; -SaGiaodichchimgkhoanHaNQi. To: -StateSecurities Commission; -VietnamStockExchange,' -HoChiMinhStockExchange,' -HanoiStockExchange. 1.Tent6chile/Name oforganization: NganhangThuongmaiC6ph~nD~utuvaPhat trienVi~tNarn!Bankfor Investment andDevelopment ofVietnam, JSc.(BIDV) -Milchirngkhoan/Srocc code:BID _Diachi/Address: ThapBIDV,194Tr~nQuangKhai,RoanKiSm,HaNQi/BIDV Tower,194TranQuangKhairoad,HoanKiemdistrict,HaNoi -Dienthoailienh~/Tel:(84-24)22205544 -E-mail:nhadautu@bidv.com.vnIFax:(84-24)22200399 2.NQidungthongtincongb6/Contents ofdisclosure: I,'1 ' NganhangTMCPDautirvaPhattrienVi~tNam(BIDV)congbothongtinBaocao thirongnien2024taiduongd~n..https://www.bidv.com.vn ..-\"Quanh~nhad~utu\"- \"Baocao&Tailieu\"-\"Baocaothuongnien''-\"Baocaothuongnien2024\". JointStockCommercial Bankfor Investment andDevelopment ofVietnamannounced AnnualReport2024atthelink..https://www.bidv.com.vn \"-\"Investor Relations\" - \"Financial reports\" -\"Annual reports\" -\"AnnualReport2024\". 3.Thongtinnaydiiduoccongb6trentrangthongtindi~ntucuaNganhangvaongay 18/412025 t~idUOng d~nhttps://www.bidv.com.vnlvnlquan-he-nha-dau-tu/This information waspublished onthebank'swebsiteonApril18th2025asinthelinks https://www.bidv.com.vn/en/ quan-he-nha-dau-tu",
+      "char_count": 1702,
+      "needs_ocr": false,
+      "extraction_method": "pypdf_text_layer"
+    },
+    {
+      "page": 2,
+      "text": "ChungtoixincamkStcacthongtincongb6trendayIadungS\\Ith~tvahoantoanchiu trachnhiemtnrocphap1u?tvSn9idungcacthongtinda:congb61Weherebycertifythat theinformation provided istrueandcorrectandwebearthefullresponsibility tothe lawI, No'inh{in/Recipent: @ab) -NhirtrenJAsabove; -LUllTKIIDQT &QHCD, VP/ Archive:BoardofDirectors Secretariat &InvestorRelations, . BIDVOffice.NGUm DUQCuvQUYEN CONGBOTHONG TIN PROTONGGrAMDOC PERSON AUTHORIZED TODISCLOSE INFORMATION",
+      "char_count": 451,
+      "needs_ocr": false,
+      "extraction_method": "pypdf_text_layer"
+    }
+  ]
+}
