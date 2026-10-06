@@ -81,6 +81,7 @@ function ProtectedRoute({ routeConfig, children }) {
 
   // 5. OK — render trang
   return children;
+}
 
 const pageModules = import.meta.glob("../pages/*/*.jsx");
 
@@ -404,12 +405,4 @@ export default function AppRouter() {
       </BrowserRouter>
     </AuthProvider>
   );
-}
-
-
-const pageModules = import.meta.glob("../pages/*/*.jsx");
-
-function lazyPage(componentPath) {
-  const loader = pageModules[`../pages/${componentPath}.jsx`];
-  return lazy(() => (loader ? loader() : Promise.resolve({ default: Placeholder })));
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
-import { Button, Card, EmptyState, ErrorState, Input, Sidebar, Skeleton, StatusBadge } from "../../shared/ui/index.js";
+import { Card, EmptyState, ErrorState, Input, Sidebar, Skeleton, StatusBadge } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
 import { getCompanies } from "./api.js";
 
@@ -21,7 +21,6 @@ export default function CompanySearchPage() {
   const [params] = useSearchParams();
   const fixture = ["empty", "error", "loading"].includes(params.get("fixture")) ? params.get("fixture") : "success";
   const [companies, setCompanies] = useState([]);
-  const [selectedTicker, setSelectedTicker] = useState(null);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -44,8 +43,6 @@ export default function CompanySearchPage() {
   }, [fixture, retryCount]);
 
   const visible = companies.filter((company) => normalize(`${company.id} ${company.name}`).includes(normalize(search)));
-  const selected = companies.find((company) => company.id === selectedTicker);
-
   function renderGroup(sector) {
     const group = visible.filter((company) => company.sector === sector);
     if (group.length === 0) return null;
@@ -59,17 +56,17 @@ export default function CompanySearchPage() {
         </div>
         <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
           {group.map((company) => (
-            <article key={company.id} className={`flex flex-col justify-between rounded-lg border p-3.5 transition-colors hover:border-blue-300 ${selectedTicker === company.id ? "border-blue-200 bg-blue-50/30" : "border-slate-200 bg-white"}`}>
+            <article key={company.id} className="flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-3.5 transition-colors hover:border-blue-300">
               <div>
                 <div className="mb-1.5 flex items-center justify-between gap-2">
-                  <strong className={`text-sm ${selectedTicker === company.id ? "text-blue-700" : "text-slate-900"}`}>{company.id}</strong>
+                  <strong className="text-sm text-slate-900">{company.id}</strong>
                   <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600">{company.sector}</span>
                 </div>
                 <p className="mb-3 truncate text-xs text-slate-600" title={company.name}>{company.name}</p>
               </div>
-              <Button variant={selectedTicker === company.id ? "primary" : "ghost"} className="w-full !min-h-8 !py-1.5 !text-xs" onClick={() => setSelectedTicker(company.id)}>
-                {selectedTicker === company.id ? "Đã chọn" : "Chọn doanh nghiệp"}
-              </Button>
+              <Link to={`/companies/${company.id}`} className="inline-flex min-h-8 w-full items-center justify-center rounded-lg bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700 hover:bg-blue-100">
+                Xem doanh nghiệp
+              </Link>
             </article>
           ))}
         </div>
@@ -107,16 +104,6 @@ export default function CompanySearchPage() {
                 <p className="mb-4 mt-0.5 text-xs text-slate-500">Khám phá các doanh nghiệp hiện nằm trong phạm vi nghiên cứu của FinMind.</p>
                 {visible.length === 0 ? <EmptyState title="Không tìm thấy doanh nghiệp phù hợp" description="Thử nhập mã hoặc tên khác trong phạm vi nghiên cứu của FinMind." /> : ["Ngân hàng", "Công nghệ"].map(renderGroup)}
               </section>
-              {selected && <Card title={`Đang chọn: ${selected.profile.ticker} · ${selected.profile.name}`}
-                description={`${selected.profile.sector} · ${selected.period} · Đơn vị dữ liệu tài chính: ${selected.unit}`}>
-                <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
-                  <p>Nguồn: {selected.source} · Ngày cập nhật mock: {selected.updatedAt}</p>
-                  <div className="flex gap-4">
-                    <Link className="font-semibold text-blue-600 hover:underline" to={`/dashboard?company=${selected.id}&period=${selected.period}`}>Xem trên Dashboard →</Link>
-                    <Link className="font-semibold text-blue-600 hover:underline" to={`/companies/${selected.id}`}>Xem doanh nghiệp →</Link>
-                  </div>
-                </div>
-              </Card>}
             </>
           )}
         </div>

@@ -31,7 +31,7 @@ export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinM
   }
 
   return (
-    <aside className="flex h-screen w-16 shrink-0 flex-col border-r border-[#E2E8F0] bg-white md:w-64">
+    <aside className="sticky top-0 flex h-screen w-16 shrink-0 self-start flex-col border-r border-[#E2E8F0] bg-white md:w-64">
       <div className="flex h-16 shrink-0 items-center justify-center gap-2 border-b border-[#F1F5F9] md:justify-start md:px-5">
         <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#2563EB] text-xs font-bold text-white">FM</span>
         <strong className="hidden text-base text-[#0F172A] md:block">{brand}</strong>
