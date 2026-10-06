@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "30-09-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "9961de58a0d7de464e08",
+      "source": "cafef",
+      "url": "https://cafef.vn/vinfast-vua-bat-tay-ong-lon-han-quoc-so-huu-vat-lieu-o-to-hang-dau-the-gioi-188260930110613803.chn",
+      "title": "VinFast vừa “bắt tay” ông lớn Hàn Quốc sở hữu vật liệu ô tô hàng đầu thế giới",
+      "description": "HS Hyosung và Công ty VinFast Việt Nam đã ký kết hợp tác trong cung ứng linh kiện ô tô.",
+      "content": "TIN MỚI Sáng 29/9, Ban Quản lý Khu kinh tế mở Chu Lai phối hợp với Công ty TNHH HS Hyosung Quảng Nam tổ chức lễ khởi công Nhà máy sản xuất sợi BCF và thảm các loại tại Khu công nghiệp Tam Thăng mở rộng, xã Thăng Trường. Dự án được cấp Giấy chứng nhận đăng ký đầu tư lần đầu ngày 28/7/2026, có quy mô khoảng 11 ha, tổng vốn đăng ký 2.606,1 tỷ đồng, tương đương khoảng 100 triệu USD. Theo kế hoạch, nhà máy sẽ sản xuất sợi BCF, thảm dùng cho ô tô và các loại thảm khác, triển khai qua hai giai đoạn. Giai đoạn 1 có tổng vốn đầu tư 80 triệu USD, dự kiến đưa vào hoạt động trong quý IV/2027, với công suất khoảng 10.800 tấn sợi BCF, 3,8 triệu m2 thảm dùng cho ô tô và 4 triệu m2 các loại thảm khác mỗi năm. Giai đoạn 2 có tổng vốn đầu tư 20 triệu USD, dự kiến vận hành từ quý II/2029, bổ sung công suất khoảng 6.000 tấn sợi BCF mỗi năm. Điểm đáng chú ý tại lễ khởi công là HS Hyosung và Công ty VinFast Việt Nam đã ký kết hợp tác trong cung ứng linh kiện ô tô . Tuy nhiên, thông tin công bố hiện chưa nêu cụ thể loại linh kiện, giá trị hợp đồng, sản lượng hay thời hạn hợp tác. Tập đoàn HS Hyosung và Công ty VinFast Việt Nam ký kết hợp tác. Ảnh: HỒ QUÂN (Báo Đà Nẵng) HS Hyosung là tập đoàn công nghiệp Hàn Quốc được hình thành sau đợt tái cấu trúc Hyosung Group vào tháng 7/2024, kế thừa nhiều mảng kinh doanh lâu năm của tập đoàn này, nổi bật là vật liệu công nghiệp và vật liệu ô tô. Đơn vị chủ lực HS Hyosung Advanced Materials hiện giữ thị phần số 1 thế giới về PET tire cord – vật liệu gia cường bên trong lốp xe, với sản phẩm được sử dụng trong khoảng một nửa số lốp ô tô con trên toàn cầu. Tập đoàn cũng sản xuất vật liệu dây an toàn, túi khí, steel cord, sợi aramid và sợi carbon. Việt Nam là một trong những cứ điểm sản xuất lớn của HS Hyosung. Tập đoàn bắt đầu đầu tư tại Việt Nam từ năm 2007; đến năm 2025, tổng vốn đầu tư tích lũy được công bố khoảng 4,6 tỷ USD, với hơn 10.000 lao động và doanh thu khoảng 3,5 tỷ USD mỗi năm. Công ty TNHH HS Hyosung Quảng Nam là doanh nghiệp thành viên trong hệ thống HS Hyosung. Doanh nghiệp được thành lập năm 2018 và hiện có các cơ sở sản xuất tại KCN Tam Thăng và KCN Tam Thăng mở rộng. Trước dự án 100 triệu USD vừa khởi công, HS Hyosung Quảng Nam đã đầu tư hơn 450 triệu USD tại khu vực này, tập trung vào các sản phẩm như tire cord, sợi kỹ thuật và vật liệu túi khí ô tô. Phát biểu tại sự kiện, Phó Chủ tịch UBND TP Đà Nẵng Phan Thái Bình cho biết thành phố cam kết tiếp tục đồng hành, hỗ trợ và tạo điều kiện thuận lợi để HS Hyosung, VinFast và các doanh nghiệp trong chuỗi giá trị yên tâm đầu tư, sản xuất, kinh doanh lâu dài tại thành phố.",
+      "published_at": "2026-09-30T11:17:00",
+      "crawled_at": "2026-09-30T04:26:10.312836+00:00",
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.016873449131513646,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/bau-duc-dich-than-sang-ky-ban-1-000-tan-ca-phe-ngay-nam-nay-nang-len-5-000-tan-tai-1-thi-truong-tieu-thu-gan-1-000-tan-ngay/42032748",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:10:22.517585+00:00"
+      }
+    },
+    {
+      "id": "9c399dcbedf137d9de68",
+      "source": "cafef",
+      "url": "https://cafef.vn/ctck-goi-ten-6-co-phieu-dang-chu-y-thang-10-hai-ngan-hang-gop-mat-188260930101853644.chn",
+      "title": "CTCK gọi tên 6 cổ phiếu đáng chú ý tháng 10, hai ngân hàng góp mặt",
+      "description": "MBS nhận định dòng tiền đang co cụm vào hai nhóm chính: cổ phiếu hàng hóa hưởng lợi từ chu kỳ tăng giá và các cổ phiếu mang tính phòng thủ, có dòng cổ tức ổn định.",
+      "content": "TIN MỚI Chứng khoán tháng 10 xác suất giảm cao Trong báo cáo chiến lược mới nhất, Khối Nghiên cứu Chứng khoán MBS đưa ra quan điểm tương đối thận trọng về diễn biến thị trường trong tháng 10/2026. Theo thống kê của MBS, xét theo yếu tố chu kỳ và mùa vụ, tháng 10 thường không phải giai đoạn thuận lợi đối với VN-Index. Trong 10 năm gần đây, chỉ số giảm bình quân hơn 2% trong tháng này. Đáng chú ý, thị trường đã giảm điểm trong 4 tháng 10 liên tiếp kể từ năm 2022. Áp lực đối với chứng khoán Việt Nam hiện không chỉ đến từ yếu tố mùa vụ. MBS cho rằng lạm phát chi phí đẩy cùng mặt bằng lãi suất ở mức cao đang tiếp tục gây trở ngại cho thị trường. Tâm lý thận trọng khiến dòng tiền suy yếu, kéo thanh khoản về vùng thấp nhất kể từ đầu năm. Một điểm sáng đáng chú ý trong ngắn hạn là việc FTSE nâng hạng Việt Nam lên thị trường mới nổi thứ cấp. Tuy nhiên, theo MBS, thông tin tích cực này vẫn chưa đủ để lấn át những sức ép đến từ môi trường vĩ mô toàn cầu. Trong bối cảnh các ngân hàng trung ương thực hiện chính sách tiền tệ thắt chặt nhằm kiềm chế lạm phát chi phí đẩy, dòng vốn quốc tế có xu hướng ưu tiên quay trở lại các tài sản Mỹ. MBS đánh giá đây là một trong những lực cản đáng kể đối với khả năng phục hồi của chứng khoán Việt Nam. Bức tranh quốc tế cũng cho thấy sự phân hóa khá rõ. MBS cho biết các nền kinh tế lớn vẫn thể hiện khả năng chống chịu trong bối cảnh lãi suất và lợi suất trái phiếu chính phủ tại nhiều nước phát triển lên mức cao nhất trong nhiều thập kỷ. Từ đầu năm, Dow Jones tăng 7,8%, S&P 500 tăng 13,1% và Nasdaq tăng 16,5%. Chứng khoán Nhật Bản, Hàn Quốc và Đài Loan lần lượt tăng 32%, 68% và 66%, trong khi nhóm thị trường mới nổi tăng 23,6%. 6 cổ phiếu kỳ vọng đón dòng tiền tháng 10 Trong bối cảnh này, MBS nhận định dòng tiền đang co cụm vào hai nhóm chính: cổ phiếu hàng hóa hưởng lợi từ chu kỳ tăng giá và các cổ phiếu mang tính phòng thủ, có dòng cổ tức ổn định. Từ đó, công ty chứng khoán lựa chọn 6 cổ phiếu tiêu biểu cho tháng 10 gồm VHM, VCB, STB, BVH, GVR và TRC. VHM được MBS đánh giá tích cực nhờ lượng backlog lớn sau khi mở bán các dự án Global Gate Hạ Long và Sài Gòn Park. Hai dự án này được kỳ vọng đóng góp đáng kể vào kết quả kinh doanh quý III, bên cạnh Wonder City và Royal Island tiếp tục hỗ trợ lợi nhuận từ hợp tác kinh doanh. MBS kỳ vọng lợi nhuận ròng 9 tháng của Vinhomes có thể vượt kế hoạch cả năm. Với VCB, động lực chính đến từ tăng trưởng tín dụng, đặc biệt ở nhóm khách hàng doanh nghiệp lớn và FDI. Biên lãi ròng được kỳ vọng duy trì ổn định nhờ lợi suất cho vay cải thiện, trong khi lợi thế CASA và chi phí vốn thấp tiếp tục hỗ trợ. MBS dự báo lợi nhuận trước thuế quý III tăng mạnh so với cùng kỳ. Đối với STB, điểm đáng chú ý nằm ở kỳ vọng xử lý khoản nợ tồn đọng liên quan đến 32,5% cổ phần của ông Trầm Bê. Nếu quá trình này hoàn tất, ngân hàng có thể ghi nhận khoản lợi nhuận đáng kể từ thu hồi nợ và hoàn nhập dự phòng. Ở nhóm bảo hiểm, BVH được kỳ vọng hưởng lợi từ biên lợi nhuận bảo hiểm cải thiện và thu nhập tài chính tăng trong bối cảnh mặt bằng lãi suất cao. Hai đại diện ngành cao su là GVR và TRC cũng được MBS chú ý. Với GVR, động lực đến từ giá bán cao su tăng, nguồn tiền đền bù đất và quỹ đất khu công nghiệp lớn có thể tạo dư địa tăng trưởng trong trung và dài hạn. Trong khi đó, TRC được kỳ vọng hưởng lợi từ dư địa tăng sản lượng tại cả Việt Nam và Campuchia, cùng khả năng ghi nhận khoản thu nhập bất thường từ tiền đền bù chuyển đổi đất cao su tại KCN Hiệp Thạnh. Doanh nghiệp cũng có chính sách cổ tức tiền mặt ở mức cao.",
+      "published_at": "2026-09-30T11:00:00",
+      "crawled_at": "2026-09-30T04:26:11.425777+00:00",
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.053125,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vn-index-mat-hon-63-diem-trong-thang-9-co-phieu-nao-giam-manh-nhat/42050133",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.712222+00:00"
+      }
+    },
+    {
+      "id": "a08f06f06f25d09578fb",
+      "source": "cafef",
+      "url": "https://cafef.vn/cong-ty-cua-chu-tich-do-quang-vinh-sap-doc-hau-bao-chi-gan-500-ty-dong-co-tuc-tien-mat-188260930104827778.chn",
+      "title": "Một công ty chứng khoán sắp chi gần 500 tỷ đồng chia cổ tức tiền mặt",
+      "description": "Thời gian thanh toán dự kiến ngay giữa tháng 10 tới đây.",
+      "content": "TIN MỚI Công ty Cổ phần Chứng khoán Sài Gòn – Hà Nội (SHS, mã chứng khoán: SHS) vừa thông báo việc thực hiện chi trả cổ tức năm 2025 bằng tiền với tỷ lệ 5% bằng tiền, tương ứng cổ đông sở hữu mỗi cổ phiếu được nhận 500 đồng. Ngày đăng ký cuối cùng là 9/10/2026, thời gian thanh toán dự kiến ngày 16/10/2026. Với lượng cổ phiếu đang lưu hành, tổng giá trị cổ tức tiền mặt SHS dự kiến chi trả xấp xỉ 450 tỷ đồng. Đáng chú ý, bên cạnh khoản cổ tức bằng tiền, cổ đông SHS còn chuẩn bị nhận thêm cổ phiếu thưởng. Trước đó, ngày 10/9/2026, Hội đồng quản trị SHS đã thông qua việc triển khai phương án phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu. Tỷ lệ thực hiện quyền là 100:5, tức cổ đông sở hữu 100 cổ phiếu được nhận thêm 5 cổ phiếu mới, tương đương số lượng cổ phiếu dự kiến phát hành 44.973.111. Như vậy, năm 2025 cổ đông SHS dự kiến sẽ nhận hai khoản: cổ tức năm 2025 bằng tiền tỷ lệ 5% (thực hiện thanh toán ngày 16/10/2026) và cổ phiếu thưởng tỷ lệ 5% (được thực hiện đợt sau). Việc kết hợp phương án cổ tức bằng tiền và cổ phiếu thưởng được xây dựng theo hướng cân đối giữa nhu cầu vốn phục vụ kế hoạch kinh doanh và quyền lợi dài hạn của cổ đông. Cách tiếp cận này nhất quán với định hướng SHS đang theo đuổi trong giai đoạn 2026–2030: chuyển từ công ty chứng khoán truyền thống sang mô hình định chế quản lý tài sản toàn diện (Full-service Wealth Management), đồng hành cùng khách hàng, trong đó có cổ đông, trên toàn bộ hành trình tài chính thay vì từng giao dịch riêng lẻ. SHS hiện do ông Đỗ Quang Vinh giữ chức Chủ tịch HĐQT. Về hoạt động kinh doanh, năm 2026, SHS đặt mục tiêu doanh thu 3.739 tỷ đồng và lợi nhuận trước thuế 1.718 tỷ đồng. Lũy kế 6 tháng đầu năm 2026, SHS ghi nhận doanh thu 1.017 tỷ đồng và lợi nhuận trước thuế 370 tỷ đồng. Tại thời điểm 30/6/2026, tổng tài sản của công ty đạt 27.567 tỷ đồng, tăng gần 20% so với cuối năm 2025. Chốt phiên 29/9, thị giá cổ phiếu SHS đạt 13.100 đồng/cp.",
+      "published_at": "2026-09-30T10:50:00",
+      "crawled_at": "2026-09-30T04:26:12.516994+00:00",
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.0490566037735849,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/phan-lan-van-dien-bo-nhiem-mot-pho-tong-giam-doc/42122534",
+        "matched_file": "tin_tuc_chung/fireant/06-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    }
+  ]
+}

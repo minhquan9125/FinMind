@@ -1,0 +1,336 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "01-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "530e1759425922750f8d",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2982639/vcb-quyet-dinh-ve-viec-thay-doi-dia-chi-tru-so-cac-chi-nhanh-va-cac-pgd.chn",
+      "title": "VCB: Quyết định về việc thay đổi địa chỉ trụ sở các Chi nhánh và các PGD",
+      "description": "VCB: Quyết định về việc thay đổi địa chỉ trụ sở các Chi nhánh và các PGD",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố Quyết định về việc thay đổi địa chỉ trụ sở các Chi nhánh và các PGD như sau: Các tập tin đính kèm 20260923 - VCB - Thong bao thay doi dia chi tru so 5 CN va 20 PGD.pdf Theo HOSE",
+      "published_at": "2026-09-23T10:53:46+00:00",
+      "crawled_at": "2026-10-01T08:10:48.281330+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/230926/vcb-quyet-dinh-ve-viec-thay-doi-dia-chi-tru-so-cac-chi-nhanh-va-cac-pgd-0.pdf?v=1790160921027"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.018579234972677595,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "b124d78a72432a4481fd",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2977700/vcb-quyet-dinh-ve-viec-thay-doi-dia-diem-tru-so-chi-nhanh-phu-my-va-chi-nhanh-gia-dinh.chn",
+      "title": "VCB: Quyết định về việc thay đổi địa điểm trụ sở Chi nhánh Phú Mỹ và Chi nhánh Gia Định",
+      "description": "VCB: Quyết định về việc thay đổi địa điểm trụ sở Chi nhánh Phú Mỹ và Chi nhánh Gia Định",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố Quyết định về việc thay đổi địa điểm trụ sở Chi nhánh Phú Mỹ và Chi nhánh Gia Định như sau: Các tập tin đính kèm 20260916 - VCB - CBTT QD thay doi dia diem Chi nhanh Phu My va Chi nhanh Gia Dinh.pdf Theo HOSE",
+      "published_at": "2026-09-16T10:28:16+00:00",
+      "crawled_at": "2026-10-01T08:10:50.147801+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/160926/vcb-quyet-dinh-ve-viec-thay-doi-dia-diem-tru-so-chi-nhanh-phu-my-va-chi-nhanh-gia-inh-0.pdf?v=1789554767471"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.01845318860244233,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "fb48b8026a68ef4f022c",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2977694/vcb-hdqt-thong-qua-giao-dich-giua-vcb-va-vcbneo.chn",
+      "title": "VCB: HĐQT thông qua giao dịch giữa VCB và VCBNeo",
+      "description": "VCB: HĐQT thông qua giao dịch giữa VCB và VCBNeo",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố về việc HĐQT thông qua giao dịch giữa VCB và VCBNeo như sau: Các tập tin đính kèm 20260916 - VCB - HDQT thong qua giao dich giua VCB va VCBNeo.pdf Theo HOSE",
+      "published_at": "2026-09-16T10:26:02+00:00",
+      "crawled_at": "2026-10-01T08:10:50.989203+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/160926/vcb-h-qt-thong-qua-giao-dich-giua-vcb-va-vcbneo-0.pdf?v=1789554467479"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.018810511756569847,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "099e2848ad6354d9bf3f",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2971152/vcb-thong-bao-thay-doi-dia-chi-tru-so-04-chi-nhanh-va-15-pgd-o-quang-ninh.chn",
+      "title": "VCB: Thông báo thay đổi địa chỉ trụ sở 04 Chi nhánh và 15 PGD ở Quảng Ninh",
+      "description": "VCB: Thông báo thay đổi địa chỉ trụ sở 04 Chi nhánh và 15 PGD ở Quảng Ninh",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam thông báo thay đổi địa chỉ trụ sở 04 Chi nhánh và 15 PGD ở Quảng Ninh như sau: Các tập tin đính kèm 20260907 - VCB - Thong bao thay doi dia chi tru so 4 CN va 15 PGD tai Quang Ninh.pdf Theo HOSE",
+      "published_at": "2026-09-07T10:14:35+00:00",
+      "crawled_at": "2026-10-01T08:10:51.869186+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/070926/vcb-thong-bao-thay-doi-dia-chi-tru-so-04-chi-nhanh-va-15-pgd-o-quang-ninh-0.pdf?v=1788776278091"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.018528610354223433,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "2ec1e72f941fdb218dcd",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2963120/vcb-nghi-quyet-hdqt-phe-duyet-chu-truong-thay-doi-dia-diem-tru-so-chi-nhanh-vcb-gia-dinh.chn",
+      "title": "VCB: Nghị quyết HĐQT phê duyệt chủ trương thay đổi địa điểm trụ sở chi nhánh VCB Gia Định",
+      "description": "VCB: Nghị quyết HĐQT phê duyệt chủ trương thay đổi địa điểm trụ sở chi nhánh VCB Gia Định",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam thông báo Nghị quyết HĐQT phê duyệt chủ trương thay đổi địa điểm trụ sở chi nhánh VCB Gia Định như sau: Các tập tin đính kèm 20260825 - VCB - NQ HDQT phe duyet chu truong thay doi dia diem Chi nhanh VCB Gia Dinh.pdf Theo HOSE",
+      "published_at": "2026-08-24T17:00:00+00:00",
+      "crawled_at": "2026-10-01T08:10:52.742334+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/250826/vcb-nghi-quyet-h-qt-phe-duyet-chu-truong-thay-doi-dia-diem-tru-so-chi-nhanh-vcb-gia-inh-0.pdf?v=1787648456388"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.018478260869565215,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "2647b527a0992e8a76ee",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2958985/vcb-nghi-quyet-hdqt-phe-duyet-chu-truong-thay-doi-dia-diem-tru-so-chi-nhanh-vcb-phu-my.chn",
+      "title": "VCB: Nghị quyết HĐQT phê duyệt chủ trương thay đổi địa điểm trụ sở Chi nhánh VCB Phú Mỹ",
+      "description": "VCB: Nghị quyết HĐQT phê duyệt chủ trương thay đổi địa điểm trụ sở Chi nhánh VCB Phú Mỹ",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam thông báo Nghị quyết HĐQT về việc phê duyệt chủ trương thay đổi địa điểm trụ sở Chi nhánh VCB Phú Mỹ như sau: Các tập tin đính kèm 20260819 - VCB - NQ HDQT phe duyet chu truong thay doi dia diem Chi nhanh VCB Phu My.pdf Theo HOSE",
+      "published_at": "2026-08-18T17:00:00+00:00",
+      "crawled_at": "2026-10-01T08:10:53.565222+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/190826/vcb-nghi-quyet-h-qt-ve-viec-phe-duyet-chu-truong-thay-doi-dia-diem-tru-so-chi-nhanh-vcb-phu-my-0.pdf?v=1787134729413"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.018428184281842817,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "03607ac1a314e6ede162",
+      "source": "cafef",
+      "url": "https://cafef.vn/khong-chi-lai-lon-tu-cho-vay-vi-dau-vietcombank-co-khoan-lai-2900-ty-ngay-sau-khi-nam-tron-toa-thap-35-tang-dac-dia-hang-dau-phuong-sai-gon-188260805233552427.chn",
+      "title": "Không chỉ lãi lớn từ cho vay, vì đâu Vietcombank có khoản lãi 2.900 tỷ ngay sau khi nắm trọn toà tháp 35 tầng đắc địa hàng đầu phường Sài Gòn?",
+      "description": "Việc nâng sở hữu tại doanh nghiệp đứng sau Vietcombank Tower lên 100% kéo theo một khoản lãi thuần đáng kể trên báo cáo tài chính hợp nhất của Vietcombank.",
+      "content": "VCB: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Công ty TNHH Vietcombank-Bonday-Benthanh là đơn vị sở hữu, quản lý và vận hành Vietcombank Tower tại số 5 Công trường Mê Linh, TP.HCM. Tòa nhà cao 35 tầng, có 4 mặt tiền và nằm tại khu vực bến Bạch Đằng. Trước năm 2026, Vietcombank sở hữu 52% vốn doanh nghiệp này. Sau khi mua thêm 18% từ Setra và 30% từ Bonday, ngân hàng nâng tỷ lệ sở hữu lên 100%. Giá trị 18% vốn mua thêm khoảng 1.202 tỷ đồng, tương ứng định giá toàn doanh nghiệp gần 6.679 tỷ đồng. Theo cùng mức định giá, tổng giá trị 48% vốn Vietcombank mua thêm ước khoảng 3.206 tỷ đồng. Khoản lãi đánh giá lại 2.906 tỷ đồng Trong quý II/2026, lãi thuần từ hoạt động khác trên báo cáo hợp nhất của Vietcombank tăng 2.906 tỷ đồng so với cùng kỳ. Ngân hàng cho biết khoản mục này tăng do đánh giá lại giá trị khoản đầu tư theo giá trị hợp lý khi hợp nhất kinh doanh. Hiểu đơn giản, trước thương vụ, 52% vốn Vietcombank đã sở hữu được ghi nhận trên sổ sách với giá trị 564 tỷ đồng. Khi ngân hàng mua phần vốn còn lại và giành quyền kiểm soát, khoản đầu tư cũ được đánh giá lại theo giá trị mới của doanh nghiệp. Với mức định giá toàn thương vụ ước tính 6.679 tỷ đồng, giá trị hợp lý của 52% vốn Vietcombank đã nắm giữ tương ứng khoảng 3.473 tỷ đồng . So với giá trị ghi sổ 564 tỷ đồng (tại thời điểm cuối năm 2025), phần chênh lệch đạt khoảng 2.909 tỷ đồng , rất sát mức tăng 2.906 tỷ đồng của lãi thuần từ hoạt động khác trong quý II/2026. Khoản lãi hơn 2.900 tỷ - chiếm 1/6 trên tổng lợi nhuận 17.400 tỷ của quý 2 - mang bản chất lợi nhuận kế toán, không phải doanh thu cho thuê văn phòng và cũng không đồng nghĩa Vietcombank thu về lượng tiền mặt tương ứng. Công ty đứng sau tòa tháp lãi 256 tỷ đồng Năm 2024, Vietcombank-Bonday-Benthanh đạt doanh thu 471,1 tỷ đồng và lợi nhuận sau thuế 227,1 tỷ đồng. Sang năm 2025, doanh thu tăng 3,1% lên 485,6 tỷ đồng, trong khi lợi nhuận sau thuế đạt khoảng 256 tỷ đồng, tăng gần 13%. Tỷ lệ diện tích cho thuê của tòa nhà đạt 94,1%. Lợi nhuận trước thuế năm 2025 đạt 320,36 tỷ đồng. So với mức định giá ước tính 6.679,35 tỷ đồng, tỷ suất lợi nhuận trước thuế tương đương khoảng 4,8% .",
+      "published_at": "2026-08-06T00:01:00",
+      "crawled_at": "2026-10-01T08:10:54.132731+00:00",
+      "attachments": [],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.01959219858156028,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "51d9eba047b3ab6ff009",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2947597/vcb-nghi-quyet-hdqt-thong-qua-gioi-han-tin-dung-doi-voi-mizuho-bank-ltd.chn",
+      "title": "VCB: Nghị quyết HĐQT thông qua giới hạn tín dụng đối với Mizuho Bank Ltd.",
+      "description": "VCB: Nghị quyết HĐQT thông qua giới hạn tín dụng đối với Mizuho Bank Ltd.",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố Nghị quyết HĐQT về việc thông qua giới hạn tín dụng đối với Mizuho Bank Ltd. như sau: Các tập tin đính kèm 20260806 - VCB - HDQT thong qua gioi han tin dung doi voi Mizuho Bank.pdf Theo HOSE",
+      "published_at": "2026-08-05T17:00:00+00:00",
+      "crawled_at": "2026-10-01T08:10:55.042654+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/060826/vcb-nghi-quyet-h-qt-ve-viec-thong-qua-gioi-han-tin-dung-doi-voi-mizuho-bank-ltd-0.pdf"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.01863013698630137,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "0e308974b690bdc73a47",
+      "source": "cafef",
+      "url": "https://cafef.vn/vietcombank-chi-3200-ty-dong-de-nam-tron-toa-thap-35-tang-4-mat-tien-giua-trung-tam-tphcm-ben-ban-tung-duoc-nhac-ten-trong-vu-an-van-thinh-phat-188260805113223991.chn",
+      "title": "Vietcombank chi 3.200 tỷ đồng để nắm trọn tòa tháp 35 tầng, 4 mặt tiền giữa trung tâm Tp.HCM: Bên bán từng được nhắc tên trong vụ án Vạn Thịnh Phát",
+      "description": "Sau khi mua thêm 48% vốn trong năm 2026, Vietcombank đã sở hữu 100% công ty đứng sau Vietcombank Tower. Đây là tòa nhà văn phòng hạng A+ cao 35 tầng, có 4 mặt tiền và tầm nhìn hướng sang khu đô thị Thủ Thiêm của TP.HCM",
+      "content": "VCB: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Theo đăng ký doanh nghiệp thay đổi lần thứ 7 ngày 3/6/2026, Công ty Vietcombank-Bonday-Benthanh đã chuyển đổi thành Công ty TNHH Một thành viên Vietcombank-Bonday-Benthanh. Chủ sở hữu duy nhất của doanh nghiệp là Ngân hàng TMCP Ngoại thương Việt Nam (Vietcombank). Công ty có vốn điều lệ hơn 789 tỷ đồng, là đơn vị sở hữu, quản lý và vận hành Vietcombank Tower tại số 5 Công trường Mê Linh, khu vực bến Bạch Đằng, TP.HCM. Người đại diện theo pháp luật là bà Phùng Nguyễn Hải Yến, Phó tổng giám đốc Vietcombank. Trước khi diễn ra các giao dịch trong năm 2026, công ty là liên doanh giữa Vietcombank, Bonday Investments của Hồng Kông và CTCP Dịch vụ - Thương mại TP.HCM (Setra Corp). Trong đó, Vietcombank nắm 52% vốn, Bonday sở hữu 30% và Setra nắm 18% còn lại vào cuối năm 2025. Dù sở hữu quá bán, Vietcombank khi đó chưa có quyền kiểm soát do các quyết định quan trọng về hoạt động và tài chính vẫn phải được các bên liên doanh thống nhất. Tháng 2/2026, Vietcombank nhận chuyển nhượng thêm 18% vốn từ Setra, nâng tỷ lệ sở hữu lên 70%. Đây là phần vốn từng bị kê biên trong quá trình xử lý vụ án Vạn Thịnh Phát. Theo BCTC hợp nhất quý I/2026, giá gốc khoản đầu tư của Vietcombank tại liên doanh tăng từ 410 tỷ đồng cuối năm 2025 lên 1.612 tỷ đồng tại ngày 31/3/2026. Mức tăng 1.202 tỷ đồng tương ứng với 18% vốn Vietcombank mua thêm từ Setra. Đến đầu tháng 6, Bonday Investments chuyển nhượng 30% vốn còn lại và rút khỏi liên doanh. BCTC hợp nhất giữa niên độ của Vietcombank xác nhận tại ngày 30/6/2026, Công ty Vietcombank-Bonday-Benthanh đã được đưa vào danh sách công ty con với tỷ lệ sở hữu 100%. Báo cáo cũng ghi chú doanh nghiệp được chuyển đổi theo giấy chứng nhận đăng ký doanh nghiệp thay đổi ngày 3/6/2026. Lấy giao dịch mua 18% vốn từ Setra làm cơ sở, 30% vốn do Bonday chuyển nhượng có giá trị ước tính khoảng 2.004 tỷ đồng nếu được thực hiện theo cùng mức định giá. Theo đó, tổng giá trị 48% vốn Vietcombank mua thêm trong năm 2026 ước khoảng 3.206 tỷ đồng. Con số này cũng tương ứng với tổng số tiền Vietcombank đã chi ra để góp thêm vốn vào các công ty con (tăng vốn cho VCBS và giao dịch mua 48% vốn kể trên) theo như BCTC quý 2. Mức giá này tương ứng định giá khoảng 6.679 tỷ đồng cho 100% vốn Công ty Vietcombank-Bonday-Benthanh. Sau khi hoàn tất hai giao dịch, Vietcombank trở thành chủ sở hữu duy nhất của doanh nghiệp đứng sau tòa tháp văn phòng hạng A+ tại khu vực bến Bạch Đằng.",
+      "published_at": "2026-08-05T11:42:00",
+      "crawled_at": "2026-10-01T08:10:55.642819+00:00",
+      "attachments": [],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.009189189189189189,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vcb-vietcombank-dong-hanh-kien-tao-nen-tang-phat-trien-ben-vung-cho-thi-truong-von/42010979",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    },
+    {
+      "id": "aa5abb198354b408eca2",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2946188/vcb-bo-nhiem-ba-nguyen-thi-hong-van-ong-bach-thanh-long-ong-nguyen-van-lap-giu-chuc-pho-tong-giam-doc-tu-382026.chn",
+      "title": "VCB: Bổ nhiệm bà Nguyễn Thị Hồng Vân, ông Bạch Thành Long, ông Nguyễn Văn Lập giữ chức Phó Tổng giám đốc từ 3.8.2026",
+      "description": "VCB: Bổ nhiệm bà Nguyễn Thị Hồng Vân, ông Bạch Thành Long, ông Nguyễn Văn Lập giữ chức Phó Tổng giám đốc từ 3.8.2026",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam thông báo thay đổi nhân sự (kèm Nghị quyết, QĐ và Bản cung cấp thông tin) như sau: Các tập tin đính kèm 20260803 - VCB - Thong bao thay doi nhan su - Bo nhiem PTGD - Ban CBTT.pdf Theo HOSE",
+      "published_at": "2026-08-02T17:00:00+00:00",
+      "crawled_at": "2026-10-01T08:10:56.492171+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/050826/vcb-thong-bao-thay-doi-nhan-su-kem-nghi-quyet-q-va-ban-cung-cap-thong-tin-0.pdf"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.01868131868131868,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chung-khoan-thoi-lai-suat-cao-goi-ten-pvs-bsr-va-diem-sang-vcb/42018894",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.602394+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-01T08:10:56.493375+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "VCB",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

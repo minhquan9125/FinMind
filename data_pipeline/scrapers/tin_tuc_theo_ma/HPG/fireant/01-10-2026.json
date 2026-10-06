@@ -1,0 +1,382 @@
+{
+  "schema_version": "1.2",
+  "source": "fireant",
+  "crawl_date": "01-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "87ed5c6b2dfe752380a9",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/mot-co-phieu-ngan-hang-duoc-mua-rong-dot-bien-400-ty-dong-trong-phien-29-9/42008611",
+      "title": "Một cổ phiếu ngân hàng được mua ròng đột biến 400 tỷ đồng trong phiên 29/9",
+      "description": "Tự doanh CTCK mua ròng đột biến 802 tỷ đồng trên HoSE.",
+      "published_at": "2026-09-29T18:11:00+07:00",
+      "symbols": [
+        "CTG",
+        "DPM",
+        "FPT",
+        "GMD",
+        "HHP",
+        "HPG",
+        "VCB",
+        "VIC",
+        "VN30",
+        "VNINDEX"
+      ],
+      "provider_id": "42008611",
+      "category": "Thị trường",
+      "content": "Tự doanh CTCK mua ròng đột biến 802 tỷ đồng trên HoSE. Sau phiên giảm điểm với áp lực bán gia tăng khá mạnh, tâm lý nhà đầu tư kém tích cực. Thị trường tiếp tục chịu áp lực điều chỉnh trong phiên 29/9. Kết phiên VN-Index giảm 2,95 điểm (-0,17%) về mức 1.777,73 điểm. Về giao dịch khối ngoại, nhóm NĐTNN tiếp đà bán ròng 377 tỷ đồng trong phiên hôm nay. Tự doanh CTCK mua ròng đột biến 802 tỷ đồng trên HoSE. Cụ thể, VPB được mua ròng mạnh nhất với giá trị 388 tỷ đồng. Theo sau là GMD (216 tỷ), TCB (112 tỷ), FPT (29 tỷ), VCB (23 tỷ), VIC (16 tỷ), BID và HHP cùng 14 tỷ, VHM (12 tỷ) và MSN (9 tỷ đồng). Chiều ngược lại, nhóm tự doanh CTCK bán ròng mạnh nhất tại MBB với giá trị -16 tỷ đồng, tiếp theo là HPG và FUEVFVND cùng -10 tỷ, KOS (-9 tỷ) và CTG (-6 tỷ đồng). Một số cổ phiếu khác cũng ghi nhận lực bán ròng như VTP (-3 tỷ), MSB (-2 tỷ), POW, HCM và DPM cùng -1 tỷ đồng.﻿ Link gốc",
+      "crawled_at": "2026-10-01T00:49:18.374993+00:00",
+      "matched_symbols": [
+        "FPT",
+        "HPG"
+      ],
+      "scopes": [
+        "FPT",
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.002478134110787172,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/ty-phu-tran-dinh-long-truc-tiep-xuat-hien-lam-viec-voi-tinh-dak-lak-ve-manh-dat-dep-cuoi-cung-de-lam-thep-tai-viet-nam-18826092910003878.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "3f0d4c64f49dcde20f1b",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/ssi-du-bao-ket-qua-kinh-doanh-quy-3-2026-cua-42-doanh-nghiep-masan-viglacera-tang-bang-lan-sacombank-du-bao-giam-45/42007944",
+      "title": "SSI dự báo kết quả kinh doanh quý 3/2026 của 42 doanh nghiệp: Masan, Viglacera tăng bằng lần, Sacombank dự báo giảm 45%",
+      "description": "SSI Research vừa công bố ước tính kết quả kinh doanh quý 3/2026 của nhiều doanh nghiệp và ngân hàng.",
+      "published_at": "2026-09-29T17:01:00+07:00",
+      "symbols": [
+        "CTG",
+        "FPT",
+        "HDG",
+        "HPG",
+        "NT2",
+        "PHR",
+        "PVD",
+        "SSI",
+        "STB",
+        "VCB"
+      ],
+      "provider_id": "42007944",
+      "category": "Thị trường",
+      "content": "SSI Research vừa công bố ước tính kết quả kinh doanh quý 3/2026 của nhiều doanh nghiệp và ngân hàng. Trong nhóm doanh nghiệp phi tài chính, Masan Group (MSN) được SSI Research ước tính đạt 4.200 tỷ đồng lợi nhuận sau thuế trong quý 3/2026, tăng 125% so với cùng kỳ và 11% so với quý trước. Theo báo cáo, tăng trưởng lợi nhuận chủ yếu đến từ đóng góp đột biến của mảng khai khoáng, trong khi mảng bán lẻ tiêu dùng cốt lõi tiếp tục tăng trưởng ở mức vừa phải. Hòa Phát ( HPG ) được dự báo đạt 5.500 tỷ đồng lợi nhuận sau thuế, tăng 37% so với cùng kỳ nhưng giảm 14% so với quý trước. SSI Research kỳ vọng lợi nhuận giảm so với quý trước do chi phí đầu vào tăng nhanh hơn giá thép trong quý 3/2026, cùng với môi trường lãi suất cao hơn làm tăng chi phí lãi vay. Vinhomes (VHM) được dự báo đạt 4.601 tỷ đồng lợi nhuận sau thuế, tăng 3,7% so với cùng kỳ nhưng giảm 83% so với quý trước. Lợi nhuận quý 3/2026 dự kiến chủ yếu đến từ bàn giao tại các dự án đang triển khai gồm Golden City, Wonder City, Royal Island và Green Paradise. PV GAS (GAS) được SSI Research dự báo đạt 4.076 tỷ đồng lợi nhuận sau thuế, tăng 60% so với cùng kỳ nhưng giảm 30% so với quý trước. Tăng trưởng lợi nhuận chủ yếu đến từ giá dầu cao hơn so với cùng kỳ và sản lượng cải thiện trong bối cảnh điều kiện thủy văn kém thuận lợi hơn quý 3/2025 và nhu cầu điện gia tăng, dẫn đến việc đẩy mạnh mức độ huy động các nhà máy điện khí. Thế Giới Di Động (MWG) được dự báo đạt 3.000 tỷ đồng lợi nhuận sau thuế, tăng 68% so với cùng kỳ nhưng giảm 11% so với quý trước. Tăng trưởng lợi nhuận được hỗ trợ bởi nhu cầu thay thế và nâng cấp sản phẩm công nghệ và điện máy, cùng với sự cải thiện liên tục của chuỗi bách hóa. FPT được dự báo đạt 2.781 tỷ đồng lợi nhuận sau thuế, tăng 14% so với cùng kỳ và 8% so với quý trước. SSI Research cho rằng mảng công nghệ sẽ là động lực chính với tăng trưởng doanh thu hai chữ số. Trong khi doanh thu mảng giáo dục có thể đi ngang hoặc giảm nhẹ, lợi nhuận các mảng khác được dự báo tăng trưởng nhờ kết quả kinh doanh của các công ty liên doanh, liên kết. Ở nhóm ngân hàng, VietinBank ( CTG ) được dự báo đạt 13.500 tỷ đồng lợi nhuận trước thuế trong quý 3/2026, tăng 27% so với cùng kỳ nhưng giảm 8% so với quý trước. SSI Research dự báo lợi nhuận tăng nhờ lợi nhuận cốt lõi vững chắc, biên lãi ròng ổn định, thu nhập ròng từ hoạt động dịch vụ tăng mạnh và thu nhập từ thu hồi nợ đã xử lý tích cực. Vietcombank ( VCB ) được kỳ vọng đạt 12.800 tỷ đồng lợi nhuận trước thuế, tăng 14% so với cùng kỳ nhưng giảm 27% so với quý trước, nhờ tăng trưởng tín dụng và huy động ở mức khoảng 8-9% so với đầu năm, tương đương tăng 12% so với cùng kỳ, cùng biên lãi ròng phục hồi từ mức đáy của quý 3/2025. Một số trường hợp được dự báo có mức tăng trưởng cao như Viglacera (VGC) được ước tính đạt 331 tỷ đồng lợi nhuận sau thuế, tăng 183% so với cùng kỳ. SSI Research cho biết tăng trưởng chủ yếu đến từ việc bắt đầu ghi nhận doanh thu cho thuê đất tại khu công nghiệp Trấn Yên, với doanh thu đạt 290 tỷ đồng, cùng việc mảng sản xuất kính dự kiến có lãi trở lại so với mức lỗ 52 tỷ đồng cùng kỳ năm trước. Cao su Phước Hòa ( PHR ) được dự báo đạt 576 tỷ đồng lợi nhuận sau thuế, tăng 118% so với cùng kỳ và 56% so với quý trước. Thu nhập bồi thường đất từ dự án khu công nghiệp VSIP 3 được ước tính đạt 600 tỷ đồng. Điện lực Dầu khí Nhơn Trạch 2 ( NT2 ) được dự báo đạt 428 tỷ đồng lợi nhuận sau thuế, tăng 100% so với cùng kỳ và 39% so với quý trước. Sản lượng được dự báo tăng 40-50% so với cùng kỳ do điều kiện thủy văn kém thuận lợi hơn quý 3/2025, nguồn cung khí được đảm bảo và chi phí khấu hao giảm. FPT Retail (FRT) được ước tính đạt 530 tỷ đồng lợi nhuận sau thuế, tăng 99% so với cùng kỳ và 18% so với quý trước. Tăng trưởng lợi nhuận được thúc đẩy bởi việc tiếp tục mở rộng mạng lưới cửa hàng, cải thiện hiệu quả hoạt động tại các nhà thuốc hiện hữu, cùng nhu cầu nâng cấp và thay thế các sản phẩm công nghệ. Ở chiều giảm, IDICO (IDC) là một trong những trường hợp giảm mạnh nhất trong danh sách, với lợi nhuận sau thuế quý 3/2026 ước đạt 457 tỷ đồng, giảm 53% so với cùng kỳ và 29% so với quý trước. Diện tích đất khu công nghiệp bàn giao được SSI Research ước tính đạt 10 ha trong quý 3/2026, giảm 71% so với cùng kỳ, chủ yếu tại khu công nghiệp Hữu Thạnh và khu công nghiệp Phú Mỹ II mở rộng. Sacombank ( STB ) được dự báo đạt 2.000 tỷ đồng lợi nhuận trước thuế, giảm 45% so với cùng kỳ và 2% so với quý trước do chi phí dự phòng ở mức cao. Tăng trưởng tín dụng dự kiến tăng tốc từ quý 3/2026, đặc biệt ở phân khúc doanh nghiệp lớn. Hà Đô ( HDG ) được dự báo đạt 176 tỷ đồng lợi nhuận sau thuế, giảm 38% so với cùng kỳ và 30% so với quý trước. Điều kiện thủy văn tiếp tục kém thuận lợi có thể gây áp lực lên lợi nhuận, trong khi tiến độ bán hàng tại dự án Hado Charm Villas có thể vẫn hạn chế do môi trường lãi suất cao. PV Drilling ( PVD ) được dự báo đạt 200 tỷ đồng lợi nhuận sau thuế, giảm 28% so với cùng kỳ nhưng tăng 13% so với quý trước. SSI Research kỳ vọng lợi nhuận giảm do chi phí tăng từ khoản đầu tư giàn PVD IX trong khi đóng góp lợi nhuận của giàn này chưa phản ánh điều kiện thị trường. Khang Điền (KDH) được dự báo đạt 185 tỷ đồng lợi nhuận sau thuế, giảm 22% so với cùng kỳ và 75% so với quý trước. Lợi nhuận quý 3/2026 chủ yếu đến từ bàn giao các sản phẩm thấp tầng tại dự án Gladia. Lợi nhuận ròng dự kiến giảm mạnh so với quý trước do nền cao của quý 2/2026, khi có khoản lãi tài chính bất thường từ việc ngừng hợp nhất Bình Trưng Mới. Link gốc",
+      "crawled_at": "2026-10-01T00:49:18.617611+00:00",
+      "matched_symbols": [
+        "FPT",
+        "HPG"
+      ],
+      "scopes": [
+        "FPT",
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.07566287878787879,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/noi-lo-quy-3-cua-ty-phu-tran-dinh-long-18826092721500786.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "f213ffc90dd5672c115c",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/ndn-nha-da-nang-bi-phat-thue-sap-chi-hon-50-ty-dong-tra-co-tuc/42023216",
+      "title": "NDN: Nhà Đà Nẵng bị phạt thuế, sắp chi hơn 50 tỷ đồng trả cổ tức",
+      "description": "CTCP Đầu tư Phát triển Nhà Đà Nẵng vừa bị xử phạt, truy thu và tính tiền chậm nộp thuế với tổng số tiền hơn 424 triệu đồng. Ngoài ra, doanh nghiệp dự kiến chi hơn 50 tỷ đồng để trả cổ tức năm 2025 cho cổ đông vào tháng 10 tới.",
+      "published_at": "2026-09-30T13:38:00+07:00",
+      "symbols": [
+        "GEX",
+        "HPG",
+        "MBB",
+        "NDN",
+        "VHM",
+        "VPB"
+      ],
+      "provider_id": "42023216",
+      "category": "Doanh nghiệp",
+      "content": "CTCP Đầu tư Phát triển Nhà Đà Nẵng vừa bị xử phạt, truy thu và tính tiền chậm nộp thuế với tổng số tiền hơn 424 triệu đồng. Doanh nghiệp này cũng dự kiến chi hơn 50 tỷ đồng để trả cổ tức năm 2025 cho cổ đông vào tháng 10 tới. Lợi nhuận giảm, chứng khoán trở thành nguồn thu lớn Theo báo cáo tài chính hợp nhất bán niên 2026 đã được soát xét, CTCP Đầu tư Phát triển Nhà Đà Nẵng (Mã: NDN ) ghi nhận doanh thu bán hàng và cung cấp dịch vụ hơn 24,4 tỷ đồng, tăng mạnh so với khoảng 10,7 tỷ đồng cùng kỳ năm 2025. Tuy nhiên, lợi nhuận lại diễn biến theo chiều ngược lại. Lợi nhuận trước thuế của doanh nghiệp chỉ đạt hơn 29,5 tỷ đồng, trong khi lợi nhuận sau thuế hơn 25,8 tỷ đồng, lần lượt giảm hơn 60% và 65% so với cùng kỳ. Năm 2026, NDN đặt kế hoạch doanh thu 75,31 tỷ đồng, lợi nhuận sau thuế gần 37,23 tỷ đồng. Như vậy, doanh nghiệp đã thực hiện khoảng 69% kế hoạch lợi nhuận cả năm, trong khi doanh thu mới đạt khoảng 32,5% kế hoạch năm. Dự án Monarchy do Nhà Đà Nẵng làm chủ đầu tư. Ảnh: T.V. Điểm đáng chú ý trong bức tranh kinh doanh của NDN nằm ở doanh thu hoạt động tài chính. 6 tháng đầu năm, khoản thu này đạt hơn 46,4 tỷ đồng, cao hơn đáng kể doanh thu bán hàng và cung cấp dịch vụ. Riêng lãi từ kinh doanh chứng khoán đóng góp hơn 31 tỷ đồng, phần còn lại chủ yếu đến từ lãi tiền gửi. Diễn biến này cho thấy, hoạt động đầu tư chứng khoán đang trở thành một cấu phần đáng kể trong mô hình tạo lợi nhuận của NDN . Điều này thể hiện rõ trên bảng cân đối kế toán. Tại ngày 30/6/2026, tổng tài sản của NDN đạt hơn 1.357 tỷ đồng, tăng hơn 57 tỷ đồng so với đầu năm. Tài sản ngắn hạn chiếm phần lớn, với hơn 1.030 tỷ đồng. Tiền và các khoản tương đương tiền giảm từ hơn 261,7 tỷ đồng đầu năm xuống còn khoảng 26,3 tỷ đồng vào cuối tháng 6. Ngược lại, đầu tư tài chính ngắn hạn tăng mạnh từ hơn 522 tỷ đồng lên hơn 812,7 tỷ đồng. Phần lớn khoản đầu tư này nằm ở chứng khoán kinh doanh. Tại cuối tháng 6, danh mục chứng khoán kinh doanh của NDN có giá gốc hơn 659,4 tỷ đồng, trong khi giá trị hợp lý đạt hơn 822,9 tỷ đồng. Danh mục tập trung vào một số cổ phiếu niêm yết lớn, như: Hòa Phát ( HPG ), Vinhomes ( VHM ), VPBank ( VPB ), MB ( MBB ), GELEX ( GEX ) cùng một số khoản đầu tư khác. Ở phía nguồn vốn, tổng nợ phải trả của NDN tại cuối tháng 6/2026 khoảng 141 tỷ đồng, tăng khoảng 123,6% so với đầu năm, trong đó nợ ngắn hạn chiếm khoảng 139,6 tỷ đồng. NDN sắp chi hơn 50 tỷ đồng trả cổ tức Mới đây, dự án Chung cư hỗn hợp 13 Nguyễn Chí Thanh, nằm tại khu vực trung tâm Đà Nẵng, đang được doanh nghiệp tái khởi động sau khoảng 16 năm đình trệ. Theo quyết định chấp thuận chủ trương đầu tư, CTCP Đầu tư Tia Sáng Mới là chủ đầu tư dự án. Công trình được triển khai trên khu đất hơn 850m2, gồm: Một tầng hầm và khối tháp cao 12 tầng, với hai khu thương mại, dịch vụ cùng 39 căn hộ. Trong đó, dự án có 17 căn hộ để ở và 22 căn hộ lưu trú. Tổng vốn đầu tư dự án hơn 122 tỷ đồng. Theo dữ liệu, NDN sở hữu trực tiếp 59,58% lợi ích và quyền biểu quyết tại Tia Sáng Mới. Tia Sáng Mới có địa chỉ tại 638 Nguyễn Chí Thanh (phường Hải Châu, TP. Đà Nẵng), hoạt động trong lĩnh vực thương mại, dịch vụ. Doanh nghiệp đăng ký nhiều ngành nghề liên quan đến xây dựng, kinh doanh bất động sản, tư vấn - môi giới bất động sản, quản lý dự án và vận hành tòa nhà, chung cư. Bên cạnh câu chuyện dự án, NDN cũng duy trì chính sách cổ tức tiền mặt. Doanh nghiệp dự kiến trả cổ tức năm 2025 với tỷ lệ 7%, tương ứng 700 đồng/cổ phiếu. Với hơn 71,65 triệu cổ phiếu đang lưu hành, số tiền dự kiến chi cho đợt này khoảng 50,16 tỷ đồng. Ngày đăng ký cuối cùng là 29/9/2026 và thời gian thanh toán dự kiến 20/10/2026. Ở một diễn biến khác, NDN vừa công bố việc nhận quyết định xử phạt vi phạm hành chính về thuế, hóa đơn từ Thuế TP. Đà Nẵng. Theo quyết định từ Thuế TP. Đà Nẵng, doanh nghiệp bị phạt hơn 92,2 triệu đồng do các vi phạm liên quan đến kê khai thuế và lập 24 hóa đơn không đúng thời điểm. Đồng thời, NDN phải nộp hơn 316,2 triệu đồng tiền thuế thu nhập doanh nghiệp khai thiếu và hơn 16,4 triệu đồng tiền chậm nộp. Như vậy, tổng số tiền thuế bị truy thu, tiền phạt và tiền chậm nộp mà Nhà Đà Nẵng phải thực hiện theo quyết định là hơn 424,9 triệu đồng. Nguyễn Tri Link gốc",
+      "crawled_at": "2026-10-01T00:49:21.333075+00:00",
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.016803953871499175,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/noi-lo-quy-3-cua-ty-phu-tran-dinh-long-18826092721500786.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "e9ccb387a689481f11d2",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+      "title": "5 tỉ phú Việt Nam sở hữu hơn 49 tỉ USD tài sản ròng",
+      "description": "5 tỉ phú Việt Nam đang sở hữu tổng tài sản ròng khoảng 49,2 tỉ USD, trong đó ông Phạm Nhật Vượng đứng đầu danh sách.",
+      "published_at": "2026-09-30T11:12:00+07:00",
+      "symbols": [
+        "HPG",
+        "VIC",
+        "VJC"
+      ],
+      "provider_id": "42019646",
+      "category": "Thị trường",
+      "content": "5 tỉ phú Việt Nam đang sở hữu tổng tài sản ròng khoảng 49,2 tỉ USD, trong đó ông Phạm Nhật Vượng đứng đầu danh sách. Tài sản ròng 5 tỉ phú Việt Nam theo Forbes (Đơn vị: tỉ USD). Đồ họa: Được tạo bởi AI Ông Phạm Nhật Vượng sở hữu 35,8 tỉ USD tài sản ròng Dữ liệu Forbes cập nhật theo thời gian thực lúc 0h00 ngày 30.9 (giờ Việt Nam) ghi nhận ông Phạm Nhật Vượng - Chủ tịch Tập đoàn Vingroup - đứng đầu danh sách những người giàu nhất Việt Nam. Forbes ghi nhận tài sản ròng của ông Phạm Nhật Vượng đạt 35,8 tỉ USD. Với khối tài sản này, ông Phạm Nhật Vượng đứng thứ 64 trong bảng xếp hạng những người giàu nhất thế giới của Forbes. Ông Phạm Nhật Vượng hiện là doanh nhân Việt Nam duy nhất có mặt trong nhóm 100 người giàu nhất hành tinh theo dữ liệu Forbes cập nhật theo thời gian thực. Bà Nguyễn Thị Phương Thảo sở hữu 4,2 tỉ USD tài sản ròng Bà Nguyễn Thị Phương Thảo - Chủ tịch Hội đồng quản trị Công ty Cổ phần Hàng không VietJet - hiện sở hữu tài sản ròng 4,2 tỉ USD. Theo Forbes, với mức tài sản này, bà Nguyễn Thị Phương Thảo đứng thứ 1.031 trong bảng xếp hạng những người giàu nhất thế giới. Bà Nguyễn Thị Phương Thảo là nữ doanh nhân giàu nhất Việt Nam theo cập nhật của Forbes. Forbes cập nhật tài sản ròng 5 tỉ phú Việt Nam theo thời gian thực lúc 0h00 ngày 30.9 (giờ Việt Nam). Bảng: AI Bà Phạm Thu Hương có 4 tỉ USD tài sản ròng Forbes ghi nhận tài sản ròng của bà Phạm Thu Hương - Phó Chủ tịch Tập đoàn Vingroup - ở mức 4 tỉ USD. Với khối tài sản ròng này, bà Phạm Thu Hương đứng thứ 1.058 trong danh sách những người giàu nhất thế giới. Bà Phạm Thúy Hằng sở hữu 2,9 tỉ USD tài sản ròng Bà Phạm Thúy Hằng - Phó Chủ tịch Tập đoàn Vingroup - có tài sản ròng 2,9 tỉ USD, theo dữ liệu cập nhật của Forbes. Bà Phạm Thúy Hằng đứng thứ 1.454 trong bảng xếp hạng những người giàu nhất thế giới. Ông Trần Đình Long có 2,3 tỉ USD tài sản ròng Ông Trần Đình Long - Chủ tịch Tập đoàn Hòa Phát - được Forbes ghi nhận sở hữu tài sản ròng 2,3 tỉ USD. Với mức tài sản này, ông Trần Đình Long đứng thứ 1.814 trong danh sách những người giàu nhất thế giới. Tính theo dữ liệu Forbes cập nhật lúc 0h00 ngày 30.9 (giờ Việt Nam), 5 tỉ phú Việt Nam trong bảng xếp hạng sở hữu tổng tài sản ròng khoảng 49,2 tỉ USD. Lưu ý: Bài viết sử dụng số liệu hiển thị trên Forbes lúc 0h00 ngày 30.9 (giờ Việt Nam). Giá trị tài sản ròng và vị trí xếp hạng được Forbes cập nhật theo thời gian thực nên có thể thay đổi khi thị trường biến động. Khương Duy Link gốc",
+      "crawled_at": "2026-10-01T00:49:21.619131+00:00",
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.021751968503937007,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/ty-phu-tran-dinh-long-truc-tiep-xuat-hien-lam-viec-voi-tinh-dak-lak-ve-manh-dat-dep-cuoi-cung-de-lam-thep-tai-viet-nam-18826092910003878.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "7edb15b119ebaa05be3b",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/tai-chinh-doanh-nghiep-24-7-pnj-du-kien-phat-hanh-550-trieu-co-phieu-samsung-electro-mechanics-dau-tu-them-1-84-ty-usd-tai-viet-nam/42018755",
+      "title": "Tài chính doanh nghiệp 24/7: PNJ dự kiến phát hành 550 triệu cổ phiếu, Samsung Electro-Mechanics đầu tư thêm 1,84 tỷ USD tại Việt Nam",
+      "description": "Tài chính doanh nghiệp 24/7 ngày 30/9 ghi nhận nhiều thông tin đáng chú ý về huy động vốn, đầu tư, sản xuất và quản trị doanh nghiệp.",
+      "published_at": "2026-09-30T10:26:00+07:00",
+      "symbols": [
+        "DIG",
+        "F88",
+        "GMD",
+        "HPG",
+        "PAP",
+        "PNJ",
+        "PSI",
+        "SBT",
+        "TCH"
+      ],
+      "provider_id": "42018755",
+      "category": "Doanh nghiệp",
+      "content": "Tài chính doanh nghiệp 24/7 ngày 30/9 ghi nhận nhiều thông tin đáng chú ý về huy động vốn, đầu tư, sản xuất và quản trị doanh nghiệp. Tài chính doanh nghiệp 24/7 ngày 30/9 có nhiều thông tin đáng chú ý về huy động vốn, đầu tư, sản xuất, kinh doanh của doanh nghiệp. Ảnh: Hòa Phát PNJ trình phương án phát hành riêng lẻ tối đa 550 triệu cổ phiếu CTCP Vàng bạc Đá quý Phú Nhuận ( PNJ ) bổ sung tài liệu trình Đại hội đồng cổ đông bất thường năm 2026 về phương án hoàn nhập Quỹ đầu tư phát triển và phát hành cổ phiếu riêng lẻ. Theo đó, PNJ dự kiến chào bán tối đa 550 triệu cổ phiếu riêng lẻ nhằm bổ sung vốn phục vụ kế hoạch kinh doanh trong tương lai, bảo đảm khả năng thanh khoản và ổn định tài chính. Thời gian dự kiến thực hiện từ quý IV/2026 đến quý III/2027. Công ty đồng thời đề xuất hoàn nhập tối đa 4.602 tỷ đồng từ Quỹ đầu tư phát triển vào lợi nhuận sau thuế chưa phân phối. Samsung Electro-Mechanics đầu tư khoảng 1,84 tỷ USD mở rộng sản xuất tại Thái Nguyên HĐQT Samsung Electro-Mechanics Co., Ltd. đã thông qua kế hoạch đầu tư mở rộng cơ sở sản xuất đế bán dẫn của Samsung Electro-Mechanics Vietnam tại Thái Nguyên. Theo thông tin công bố, tổng kinh phí dự toán cho mua sắm tài sản cố định và đầu tư hạ tầng khoảng 2.510 tỷ won, tương đương khoảng 1,84 tỷ USD. Dự án được triển khai trên diện tích hiện hữu và dự kiến hoàn thành vào ngày 30/4/2028. Samsung Electro-Mechanics đã hoạt động tại Thái Nguyên từ năm 2015 và từng điều chỉnh tăng vốn đầu tư vào năm 2022. Hòa Phát cập nhật tiến độ nhà máy sản xuất ray và thép đặc biệt Nhà máy sản xuất ray và thép đặc biệt của Tập đoàn Hòa Phát tại Khu kinh tế Dung Quất, Quảng Ngãi đã hoàn thành gần 70% tiến độ tính đến tháng 9/2026 và dự kiến cho ra sản phẩm đầu tiên trong quý I/2027, theo thông tin được dẫn trong báo cáo cập nhật ngành thép của Chứng khoán Dầu khí ( PSI ). Dự án được khởi công cuối năm 2025, có diện tích gần 15 ha, tổng vốn đầu tư hơn 10.000 tỷ đồng và công suất thiết kế 700.000 tấn/năm. Nhà máy được định hướng sản xuất ray đường sắt tốc độ cao, ray metro, ray cầu trục cùng một số loại thép hình và thép đặc biệt. Gemadept chuẩn bị phát hành hơn 216 triệu cổ phiếu tăng vốn CTCP Tập đoàn Gemadept ( GMD ) dự kiến chốt danh sách cổ đông vào ngày 8/10 để thực hiện phát hành cổ phiếu tăng vốn cổ phần từ nguồn vốn chủ sở hữu. Tỷ lệ thực hiện là 2:1, tương ứng cổ đông sở hữu 2 cổ phiếu được nhận thêm 1 cổ phiếu mới. Với gần 432,9 triệu cổ phiếu đang lưu hành, Gemadept dự kiến phát hành khoảng 216,4 triệu cổ phiếu, giá trị theo mệnh giá hơn 2.164 tỷ đồng. Thông tin về kế hoạch phát hành cũng đã được công bố qua hệ thống của cơ quan quản lý chứng khoán. AgriS có thêm cổ đông lớn sở hữu 5,30% vốn Brilliant Solutions INC công bố trở thành cổ đông lớn của CTCP Thành Thành Công - Biên Hòa (AgriS, mã SBT ), với lượng sở hữu hơn 48,01 triệu cổ phiếu, tương ứng 5,30% số cổ phiếu có quyền biểu quyết. Theo thông tin công bố, sau giao dịch, Brilliant Solutions INC trở thành một trong các cổ đông lớn nước ngoài tại AgriS. Cùng nguồn thông tin cho biết Legendary Venture Fund 1 hiện sở hữu 15,67% số cổ phiếu có quyền biểu quyết của doanh nghiệp. DIG bổ nhiệm Chủ tịch Ủy ban Chiến lược và Phát triển bền vững Tổng CTCP Đầu tư Phát triển Xây dựng ( DIG ) bổ nhiệm ông Đinh Hồng Kỳ giữ chức Chủ tịch Ủy ban Chiến lược và Phát triển bền vững kể từ ngày 25/9/2026, thay ông Nguyễn Hùng Cường. Ông Cường tiếp tục giữ chức Chủ tịch HĐQT DIG . Trước khi đảm nhiệm vị trí mới, ông Đinh Hồng Kỳ là Thành viên độc lập HĐQT, Chủ tịch Ủy ban Kiểm toán, đồng thời tham gia các ủy ban thuộc HĐQT của DIG . Ông được bầu làm Thành viên HĐQT độc lập DIG từ tháng 7/2023. Điện Mặt trời Trung Nam Thuận Nam lỗ 27,6 tỷ đồng trong nửa đầu năm Công ty TNHH Điện Mặt trời Trung Nam Thuận Nam công bố tình hình tài chính bán niên 2026 với khoản lỗ sau thuế hơn 27,6 tỷ đồng, trong khi cùng kỳ năm 2025 lãi hơn 126 tỷ đồng. Tại ngày 30/6/2026, tổng nợ phải trả của doanh nghiệp ở mức gần 9.793 tỷ đồng. Trong đó, nợ vay ngân hàng khoảng 1.588 tỷ đồng và dư nợ trái phiếu hơn 4.179 tỷ đồng. Vốn chủ sở hữu còn khoảng 461,7 tỷ đồng. Báo cáo cũng cho thấy trong 6 tháng đầu năm doanh nghiệp có phát sinh chậm thanh toán đối với hai mã trái phiếu với lý do được công bố là tiền điện chậm về. Petrovietnam không còn đại diện trong HĐQT Cảng Phước An nhiệm kỳ mới Đại hội đồng cổ đông bất thường của CTCP Dầu khí Đầu tư Khai thác Cảng Phước An ( PAP ) đã thông qua HĐQT nhiệm kỳ 2026-2031 gồm 5 thành viên. Danh sách HĐQT mới không có người đại diện phần vốn của Tập đoàn Công nghiệp - Năng lượng Quốc gia Việt Nam (Petrovietnam). Theo kết quả biểu quyết được công bố, Petrovietnam, đang nắm 35 triệu cổ phiếu tương đương 9,8% vốn PAP , không tán thành 8 nội dung được đưa ra biểu quyết tại đại hội. PAP đã công bố nghị quyết ĐHĐCĐ bất thường và thông tin thay đổi nhân sự ngày 29/9 trên hệ thống HNX. Đại diện Petrovietnam tại đại hội cho biết Tập đoàn sẽ thoái toàn bộ phần vốn tại PAP theo chủ trương. Trước khi rút vốn, đại diện Petrovietnam đề nghị doanh nghiệp tính toán hiệu quả đầu tư, nhu cầu thị trường, chi phí, tiến độ và cung cấp các hồ sơ pháp lý liên quan một số hạng mục của dự án. NCB được chấp thuận tăng thêm tối đa 33.000 tỷ đồng vốn điều lệ Ngân hàng Nhà nước đã chấp thuận việc Ngân hàng TMCP Quốc Dân (NCB) tăng vốn điều lệ thêm tối đa 33.000 tỷ đồng. Theo phương án được Đại hội đồng cổ đông thông qua, NCB dự kiến phát hành riêng lẻ 3,3 tỷ cổ phiếu cho nhà đầu tư chứng khoán chuyên nghiệp. Nếu hoàn tất toàn bộ phương án, vốn điều lệ của NCB sẽ tăng từ gần 29.280 tỷ đồng lên gần 62.280 tỷ đồng. Trước đó, NCB đã hoàn thành đợt tăng vốn trong tháng 6/2026 và được Ngân hàng Nhà nước sửa đổi giấy phép hoạt động với mức vốn điều lệ 29.280 tỷ đồng vào tháng 7/2026. F88 triển khai chuyển cổ phiếu từ UPCoM sang HOSE HĐQT CTCP Đầu tư F88 đã thông qua nghị quyết triển khai chuyển giao dịch cổ phiếu F88 từ UPCoM sang niêm yết tại Sở Giao dịch Chứng khoán TP.HCM (HOSE). Thông tin về nghị quyết được Sở Giao dịch Chứng khoán Hà Nội công bố ngày 28/9. Trước đó, F88 thực hiện đợt chào bán hơn 11 triệu cổ phiếu, qua đó huy động hơn 781 tỷ đồng. Theo dữ liệu HNX, cổ phiếu F88 bắt đầu giao dịch trên UPCoM từ tháng 8/2025. Becamex dự kiến góp thêm gần 270 tỷ đồng vào Becamex - Bình Phước Tổng công ty Đầu tư và Phát triển Công nghiệp - CTCP (Becamex Group) dự kiến góp thêm gần 270 tỷ đồng vào CTCP Phát triển Hạ tầng Kỹ thuật Becamex - Bình Phước. Khoản vốn góp dự kiến được thực hiện qua hai đợt. Sau khi hoàn tất, tổng giá trị vốn góp của Becamex Group tại Becamex - Bình Phước sẽ tăng lên khoảng 1.346 tỷ đồng. Hoàng Huy đã giải ngân hơn 1.100 tỷ đồng vốn huy động từ cổ đông CTCP Đầu tư Dịch vụ Tài chính Hoàng Huy ( TCH ) ngày 29/9 công bố báo cáo tiến độ sử dụng số tiền thu được từ đợt chào bán cổ phiếu ra công chúng năm 2025. Đợt chào bán năm 2025 của TCH phân phối thành công hơn 200,46 triệu cổ phiếu, huy động hơn 2.004 tỷ đồng. Theo báo cáo tiến độ tháng 9/2026, doanh nghiệp đã sử dụng hơn 1.100 tỷ đồng trong tổng số vốn huy động. Phương án ban đầu xác định nguồn tiền thu được từ phát hành được sử dụng cho các dự án và mục đích đã được doanh nghiệp công bố. Thuỷ Hà Link gốc",
+      "crawled_at": "2026-10-01T00:49:21.906839+00:00",
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.034033203125,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/rat-nhanh-hoa-phat-da-hoan-thanh-gan-70-tien-do-du-an-nha-may-san-xuat-thep-ray-du-kien-quy-1-nam-sau-cho-ra-lo-san-pham-dau-tien-188260921181933591.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "0f834858e2dd90f914f8",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/tang-truong-loi-nhuan-doanh-nghiep-niem-yet-quy-iii-du-bao-giam-toc/42011573",
+      "title": "Tăng trưởng lợi nhuận doanh nghiệp niêm yết quý III dự báo giảm tốc",
+      "description": "Chứng khoán MBS dự báo lợi nhuận toàn thị trường quý III/2026 có thể bắt đầu giảm so với quý I và quý II do tác động từ môi trường lãi suất cao, đồng thời hiệu ứng nền thấp càng về cuối năm sẽ giảm dần và tốc độ tăng trưởng lợi nhuận sẽ có xu hướng bình thường hóa.",
+      "published_at": "2026-09-30T07:53:00+07:00",
+      "symbols": [
+        "CTG",
+        "FRT",
+        "GMD",
+        "HPG",
+        "HSG",
+        "LPB",
+        "PNJ",
+        "STB",
+        "VCB",
+        "VHM"
+      ],
+      "provider_id": "42011573",
+      "category": "Tài chính",
+      "content": "Chứng khoán MBS dự báo lợi nhuận toàn thị trường quý III/2026 có thể bắt đầu giảm so với quý I và quý II do tác động từ môi trường lãi suất cao, đồng thời hiệu ứng nền thấp càng về cuối năm sẽ giảm dần và tốc độ tăng trưởng lợi nhuận sẽ có xu hướng bình thường hóa. Tăng trưởng lợi nhuận toàn thị trường quý III/2026 có thể bắt đầu giảm so với quý I và quý II do tác động từ môi trường lãi suất cao, hiệu ứng nền thấp giảm dần. Ảnh minh họa: TH. Theo báo cáo mới công bố, Chứng khoán MBS dự báo lợi nhuận toàn thị trường trong quý III/2026 tăng khoảng 25% so với cùng kỳ. Dù vẫn duy trì mức tăng trưởng hai chữ số, đây có thể là thời điểm bắt đầu xuất hiện xu hướng giảm tốc so với hai quý đầu năm. MBS cho rằng hai yếu tố chính tác động đến đà tăng trưởng là mặt bằng lãi suất cao và hiệu ứng nền thấp dần suy yếu khi bước vào những tháng cuối năm. Điều này khiến tốc độ tăng trưởng lợi nhuận có xu hướng trở về mức bình thường hơn sau giai đoạn tăng mạnh. Ngân hàng, dầu khí, bán lẻ được dự báo tăng trưởng lợi nhuận Dù tăng trưởng chung giảm tốc, bức tranh lợi nhuận quý III vẫn có sự phân hóa đáng kể giữa các nhóm ngành. Nhóm dầu khí được dự báo tăng 94% nhờ mặt bằng giá dầu cao. MBS cho rằng các doanh nghiệp trong lĩnh vực này tiếp tục hưởng lợi từ việc đẩy mạnh các dự án dầu khí trong nước, trong bối cảnh giá dầu vượt điểm hòa vốn. Tuy nhiên, lợi nhuận của nhóm này vẫn có khả năng giảm so với quý II do giá dầu bình quân thu hẹp và một số khoản thu nhập bất thường không còn xuất hiện. Ở nhóm bán lẻ, lợi nhuận được dự báo tăng khoảng 70% so với cùng kỳ, nhờ chu kỳ đổi mới các sản phẩm công nghệ, điện thoại và thiết bị điện tử thuận lợi. MBS dự báo DGW tăng 190%, MWG tăng 95% và FRT tăng 72% trong quý III. Đáng chú ý, MBS cho rằng nhu cầu nâng cấp thiết bị sau chu kỳ khoảng 5 năm đang hỗ trợ mạnh cho MWG. Trong khi đó, Long Châu tiếp tục là động lực chính của FRT với doanh thu dự kiến tăng 30% so với cùng kỳ. Ngân hàng vẫn là một trong những nhóm đóng góp quan trọng vào tăng trưởng lợi nhuận, song áp lực từ mặt bằng lãi suất huy động cao đang trở nên rõ nét hơn. MBS dự báo lợi nhuận của các ngân hàng niêm yết trong phạm vi theo dõi tăng khoảng 19% so với cùng kỳ trong quý III/2026. Động lực chính đến từ nhóm ngân hàng quốc doanh, với thu nhập lãi thuần dự kiến tăng 22,1%, cao hơn mức 14,1% của nhóm ngân hàng tư nhân. Tăng trưởng tín dụng tại các phân khúc doanh nghiệp và khách hàng FDI tiếp tục hỗ trợ kết quả kinh doanh. Bên cạnh đó, nhóm ngân hàng quốc doanh được hưởng lợi từ chi phí vốn thấp hơn, lợi thế CASA và tỷ trọng các khoản vay trung, dài hạn chuyển sang lãi suất thả nổi tăng lên. Chi phí trích lập dự phòng cũng được kỳ vọng giảm đáng kể so với cùng kỳ. Tuy nhiên, MBS lưu ý mặt bằng NIM toàn ngành trong quý III vẫn chịu áp lực do chi phí vốn neo cao, đặc biệt ở nhóm ngân hàng thương mại cổ phần có tốc độ tăng trưởng tín dụng nhanh hoặc phụ thuộc nhiều vào nguồn vốn huy động kỳ hạn. Sự phân hóa thể hiện khá rõ trong nhóm ngân hàng. MBS dự báo lợi nhuận quý III của VCB tăng 29%, CTG tăng 27%, BID tăng 21%, trong khi TCB tăng 17%, TPB tăng 13% và ACB tăng 12%. Ngược lại, lợi nhuận của VIB, LPB , EIB và STB được dự báo giảm lần lượt 8%, 12%, 27% và 48% so với cùng kỳ. Trái ngược với mức tăng trưởng đột biến của một số doanh nghiệp đầu ngành, thị trường bất động sản nói chung vẫn đối mặt nhiều thách thức. Theo MBS, nguồn cung căn hộ tại hai đô thị lớn đang dồi dào nhưng sức mua có dấu hiệu chậm lại. Tỷ lệ hấp thụ trong quý II tại TP.HCM khoảng 73%, cao hơn Hà Nội khoảng 68%, song cả hai thị trường đều ghi nhận xu hướng giảm tốc. Bước sang quý III, lãi suất cao cùng tâm lý thận trọng trước các thông tin quy hoạch được cho là tiếp tục khiến thị trường trầm lắng. Điều này tạo áp lực lên khả năng hấp thụ và tiến độ bàn giao của các chủ đầu tư. MBS dự báo lợi nhuận quý III của DXG giảm 29%, KDH giảm 36% và NLG giảm 52% so với cùng kỳ. Riêng DXG còn chịu thêm áp lực từ chi phí tài chính tăng 50% do lãi suất cao. Dù vậy, MBS vẫn dự báo bất động sản dân cư là nhóm có tốc độ tăng trưởng lợi nhuận cao nhất trong quý III, lên tới 214% so với cùng kỳ. Điều này chủ yếu đến từ một số doanh nghiệp lớn có khả năng ghi nhận các giao dịch và bàn giao dự án quy mô lớn. Đáng chú ý, Vinhomes ( VHM ) được MBS dự báo lợi nhuận sau thuế công ty mẹ quý III đạt khoảng 17.251 tỷ đồng, tăng 312% so với cùng kỳ. Doanh nghiệp được kỳ vọng ghi nhận bulk sales từ Global Gate Hạ Long và Sài Gòn Park, với tổng giá trị khoảng 40.000-50.000 tỷ đồng. Lũy kế 9 tháng, lợi nhuận sau thuế của VHM được dự báo đạt khoảng 65.000 tỷ đồng, vượt kế hoạch cả năm. Thép và vận tải vẫn giữ đà tăng Một số nhóm ngành khác vẫn duy trì triển vọng tích cực nhờ yếu tố chu kỳ và nhu cầu trong nước. Với thép, MBS kỳ vọng giá thép tiếp tục duy trì ở mức cao trong bối cảnh tiêu thụ tích cực, trong khi các biện pháp chống bán phá giá giúp giảm áp lực cạnh tranh từ thép Trung Quốc. Giá thép xây dựng bình quân năm 2026 được dự báo khoảng 590 USD/tấn, tăng 9% so với cùng kỳ; giá HRC khoảng 580 USD/tấn, tăng 7%. Theo đó, HSG được dự báo lợi nhuận quý III tăng 159%, HPG tăng 40% và NKG tăng 30%. Tuy nhiên, chi phí tài chính vẫn là yếu tố cần theo dõi khi mặt bằng lãi suất duy trì cao. Trong khi đó, vận tải được MBS dự báo tăng trưởng lợi nhuận khoảng 53%. Tổng kim ngạch xuất nhập khẩu trong quý III tính đến giữa tháng 9 tăng khoảng 29,6% so với cùng kỳ, trong khi sản lượng hàng hóa qua hệ thống cảng biển cả nước dự kiến tăng 21,7%. Các doanh nghiệp cảng nước sâu như GMD và PHP được đánh giá tiếp tục hưởng lợi khi sản lượng và doanh thu tăng, trong khi biên lợi nhuận cao hơn so với nhiều doanh nghiệp trong ngành. Ở chiều ngược lại, một số ngành được MBS dự báo ghi nhận lợi nhuận giảm mạnh trong quý III do chi phí đầu vào tăng hoặc nền so sánh cao. Xây dựng được dự báo giảm 85% lợi nhuận, xuất khẩu giảm 42% và hàng không giảm 40% so với cùng kỳ. Đây là những nhóm chịu tác động tương đối rõ từ chi phí đầu vào cũng như điều kiện kinh doanh kém thuận lợi. Trong ngành tiêu dùng, áp lực cũng bắt đầu thể hiện rõ hơn ở một số doanh nghiệp. MBS dự báo lợi nhuận quý III của PNJ giảm 63% do sức mua suy yếu, doanh thu bán lẻ giảm mạnh và biên lợi nhuận bị thu hẹp. Nhóm chăn nuôi cũng chịu sức ép khi giá nguyên liệu đầu vào tăng trong khi giá heo hơi không tăng tương ứng. Nhìn tổng thể, dự báo của MBS cho thấy bức tranh lợi nhuận quý III/2026 vẫn tương đối tích cực với mức tăng 25% so với cùng kỳ. Dù chậm hơn so với quý I và quý II, song có thể hiểu tăng trưởng lợi nhuận có sự thực chất hơn, phụ thuộc vào khả năng mở rộng doanh thu, cải thiện biên lợi nhuận, kiểm soát chi phí vốn và tiến độ ghi nhận các dự án... Link gốc",
+      "crawled_at": "2026-10-01T00:49:22.170610+00:00",
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.04623430962343096,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/noi-lo-quy-3-cua-ty-phu-tran-dinh-long-18826092721500786.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "d1d9fa34931e7bac9373",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/du-bao-loi-nhuan-doanh-nghiep-quy-iii-tang-truong-phuc-hoi-va-giam/42011455",
+      "title": "Dự báo lợi nhuận doanh nghiệp quý III: Tăng trưởng, phục hồi và giảm",
+      "description": "Theo dự báo kết quả kinh doanh quý III/2026 của 42 doanh nghiệp niêm yết, tăng trưởng lợi nhuận đang có dấu hiệu chậm lại, song vẫn duy trì ở mức tương đối cao.",
+      "published_at": "2026-09-30T07:37:00+07:00",
+      "symbols": [
+        "FRT",
+        "GMD",
+        "HDB",
+        "HPG",
+        "MBB",
+        "MSN",
+        "MWG",
+        "NLG",
+        "VCB",
+        "VHM"
+      ],
+      "provider_id": "42011455",
+      "category": "Thị trường",
+      "content": "Theo dự báo kết quả kinh doanh quý III/2026 của 42 doanh nghiệp niêm yết, tăng trưởng lợi nhuận đang có dấu hiệu chậm lại, song vẫn duy trì ở mức tương đối cao. SSI Research vừa chia sẻ một số nhận định về kết quả kinh doanh quý III/2026 dự kiến tại 42 doanh nghiệp, với tổng lợi nhuận quý III/2026 tăng 21% so với cùng kỳ, nhưng giảm 21% so với quý trước. Mức giảm theo quý chủ yếu đến từ ngành bất động sản, do thời điểm ghi nhận lợi nhuận. Nếu loại trừ nhóm này, tổng lợi nhuận tăng 23% so với cùng kỳ và chỉ giảm 10% so với quý trước. Triển vọng kết quả kinh doanh quý III/2026 của 42 doanh nghiệp được dự báo phân hóa sâu. Ảnh minh hoạ Tăng trưởng lợi nhuận đang có dấu hiệu chậm lại, từ 54% trong quý I và 48% trong quý II xuống 21% trong quý III/2026, song vẫn duy trì ở mức tương đối cao, theo SSI Research. Mức độ phân hóa sâu giữa các nhóm ngành về kết quả kinh doanh theo dự báo, được thể hiện khi nhiều doanh nghiệp ghi nhận mức tăng trưởng lợi nhuận bằng lần nhờ sự phục hồi của giá hàng hóa, sự bùng nổ của nhu cầu tiêu dùng công nghệ và các khoản thu nhập đột biến. Nhóm lợi nhuận tăng trưởng bằng lần Theo đó, nhóm \"tăng trưởng bằng lần\" về lợi nhuận quý III dự báo được dẫn đầu bởi Tổng Công ty Viglacera (Mã: VGC) với mức lợi nhuận sau thuế ước tính đạt 331 tỷ đồng, tăng tới 183% so với cùng kỳ và giảm 60% so với quý trước. Động lực chính đến từ việc doanh nghiệp này bắt đầu ghi nhận 290 tỷ đồng doanh thu cho thuê đất tại KCN Trấn Yên (mới), đi kèm sự phục hồi của mảng sản xuất kính (dự kiến có lãi trở lại so với mức lỗ 52 tỷ đồng cùng kỳ) nhờ chính sách áp thuế chống bán phá giá từ 15,17% đến 63,39% đối với kính nổi nhập khẩu từ Indonesia và Malaysia. Đứng thứ hai về tốc độ tăng trưởng là Tập đoàn Masan (Mã: MSN ) với mức tăng 125%, lợi nhuận ước đạt 4.200 tỷ đồng. Sự bứt phá này chủ yếu nhờ đóng góp đột biến của mảng khai khoáng, trong khi mảng bán lẻ tiêu dùng cốt lõi vẫn tiếp tục tăng trưởng ở mức vừa phải. Cao su Phước Hòa (Mã: PHR) cũng ghi nhận lợi nhuận ấn tượng 576 tỷ đồng, tăng 118% so với cùng kỳ. Nguyên nhân đến từ việc giá bán cao su bình quân dự kiến tăng 18% khi nguồn cung tại Thái Lan bị ảnh hưởng bởi mưa nhiều, kết hợp cùng khoản thu nhập bồi thường đất cao su từ dự án KCN VSIP 3 ước đạt 600 tỷ đồng. Tương tự, Điện lực Dầu khí Nhơn Trạch 2 (Mã: NT2) tăng trưởng 100% (ước đạt 428 tỷ đồng) nhờ sản lượng điện tăng 40-50% trong bối cảnh điều kiện thủy văn kém thuận lợi, nguồn cung khí được đảm bảo và chi phí khấu hao giảm. Nhóm lợi nhuận tăng trưởng, phục hồi mạnh mẽ Theo dự báo của SSI Research, bán lẻ và phân phối sản phẩm công nghệ cho thấy sự khởi sắc rõ rệt khi FPT Retail (Mã: FRT ) và Thế Giới Di Động (Mã: MWG ) dự kiến ghi nhận mức tăng trưởng lợi nhuận lần lượt là 99% (đạt 530 tỷ đồng) và 68% (đạt 3.000 tỷ đồng). Sự tăng trưởng mạnh mẽ này được thúc đẩy bởi nhu cầu nâng cấp và thay thế các sản phẩm công nghệ, điện máy, cùng với sự cải thiện hiệu quả hoạt động liên tục của chuỗi bách hóa (với MWG ) và các nhà thuốc hiện hữu (với FRT ). Ngân hàng, vật liệu cơ bản, bán lẻ, logistics và vận tải, nhiệt điện là các ngành đóng góp chính cho tăng trưởng lợi nhuận quý III/2026 - Ảnh minh họa. Hưởng lợi từ làn sóng này, Digiworld (Mã: DGW) cũng ghi nhận lợi nhuận 230 tỷ đồng, tăng 37% so với cùng kỳ nhờ doanh thu thiết bị văn phòng tích cực khi các doanh nghiệp tăng cường ứng dụng AI. Trong khi đó, \"ông lớn\" FPT dự kiến duy trì đà tăng trưởng lợi nhuận 14% với động lực chính từ mảng công nghệ đạt mức tăng trưởng hai chữ số. Trong khi đó, Masan Consumer (Mã: MCH) ghi nhận tăng trưởng lợi nhuận quý III/2026 đến từ sự phục hồi của kênh thương mại truyền thống từ nền thấp năm trước, cùng với việc gia tăng thị phần ở các ngành hàng chủ lực. Ở nhóm ngân hàng, bức tranh lợi nhuận cũng thể hiện kết quả phân hóa sâu. HDBank (Mã: HDB ) vươn lên mạnh mẽ với mức lợi nhuận trước thuế ước đạt 7.000 tỷ đồng, tăng 48% so với cùng kỳ nhờ tín dụng tăng tốc giúp thu nhập lãi thuần tăng 42% và thu nhập dịch vụ ngân hàng đầu tư từ HDBS thúc đẩy thu nhập dịch vụ tăng tới 102%. Ngân hàng Quân Đội ( MBB ) và MSB cũng có mức tăng trưởng khả quan lần lượt là 38% (đạt 10.000 tỷ đồng) và 32% (đạt 2.100 tỷ đồng). Vietcombank (Mã: VCB ) và Techcombank (Mã: TCB) duy trì mức tăng trưởng ổn định, ước đạt lợi nhuận trước thuế lần lượt là 12.800 tỷ đồng (+14%) và 9.450 tỷ đồng (+15%). Tuy nhiên, theo dự báo, áp lực nợ xấu và chi phí dự phòng vẫn đè nặng lên một số nhà băng. Đơn cử, Sacombank (Mã: STB) dự kiến giảm 45% lợi nhuận trước thuế so với cùng kỳ, ước đạt 2.000 tỷ đồng do chi phí dự phòng ở mức cao. VPBank (Mã: VPB) dự kiến đạt lợi nhuận hợp nhất khoảng 10.000 tỷ đồng (+9% so với cùng kỳ nhưng giảm 9% so với quý trước) do hoạt động tư vấn phát hành trái phiếu doanh nghiệp của VPBankS có thể chậm lại. Các nhóm còn thách thức đan xen Theo nhận định, vật liệu xây dựng, dầu khí và bất động sản đối diện nhiều thách thức, dù kết quả ở nhiều doanh nghiệp thuộc các ngành trong quý III dự báo vẫn duy trì đà tăng. Nhóm ngành công nghiệp nặng và bất động sản ghi nhận kết quả đa chiều dựa trên đặc thù hoạt động cốt lõi. Ở ngành thép, Tập đoàn Hòa Phát (Mã: HPG ) dự báo lợi nhuận sau thuế đạt 5.500 tỷ đồng, tăng 37% so với cùng kỳ nhưng giảm 14% so với quý trước. Đối với xi măng, Xi măng Hà Tiên (Mã: HT1) phục hồi tốt với mức tăng trưởng 70% nhờ nhu cầu nội địa được hỗ trợ bởi các đại dự án hạ tầng phía Nam và sự phục hồi của giá bán bình quân. Ở nhóm dầu khí và vận tải, PVT là điểm sáng với lợi nhuận ước tăng 71% nhờ nhu cầu và giá cước tàu chở dầu duy trì mức cao sau khi căng thẳng địa chính trị leo thang đầu tháng 9. Trong khi đó, PVD lại ghi nhận lợi nhuận giảm 28% so với cùng kỳ do chi phí từ khoản đầu tư giàn PVD IX tăng lên nhưng đóng góp lợi nhuận chưa tương xứng với điều kiện thị trường. Đối với bất động sản, Kinh Bắc (Mã: KBC) dự kiến tăng trưởng lợi nhuận 44% (ước đạt 579 tỷ đồng) chủ yếu nhờ bàn giao đất tại KCN Quế Võ mở rộng. Ngược lại, IDC ước tính lợi nhuận giảm 53% do diện tích đất KCN bàn giao trong quý chỉ đạt 10 ha, giảm 71% so với cùng kỳ. Nhìn chung, các ngành đóng góp chính cho tăng trưởng gồm ngân hàng, vật liệu cơ bản, bán lẻ, logistics và vận tải, nhiệt điện. Theo kết quả dự báo của SSI Reseach, 36/42 doanh nghiệp được kỳ vọng ghi nhận tăng trưởng lợi nhuận dương. Một số mã đáng chú ý gồm VGC, MSN , FRT , MWG , GMD , HDB , MBB , HPG , FPT, VCB , VHM và NLG . 6 doanh nghiệp được dự báo có lợi nhuận tăng trưởng âm, gồm SAB, KDH, PVD, HDG, STB và IDC. Số liệu dự báo quý III/2026 của SSI đưa ra cho thấy những doanh nghiệp nắm bắt được chu kỳ tăng giá của hàng hóa, có câu chuyện bàn giao tài sản rõ ràng hoặc bắt nhịp được chu kỳ thay thế thiết bị công nghệ mới đang là những cái tên vươn lên dẫn dắt đà tăng trưởng lợi nhuận trên thị trường. Link gốc",
+      "crawled_at": "2026-10-01T00:49:22.428851+00:00",
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.05626309174696271,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/noi-lo-quy-3-cua-ty-phu-tran-dinh-long-18826092721500786.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "6bb0eab8526dbdf78a84",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/khoi-ngoai-noi-dai-chuoi-ban-rong-dong-co-phieu-van-hut-tien/42009303",
+      "title": "Khối ngoại nối dài chuỗi bán ròng dòng cổ phiếu vẫn hút tiền",
+      "description": "Nhà đầu tư nước ngoài tiếp tục bán ròng phiên thứ tư liên tiếp với giá trị khoảng 380 tỷ đồng trên ba sàn Riêng HOSE khối ngoại bán ròng gần 396 tỷ đồng trong đó VPB là tâm điểm hứng chịu áp lực bán trong khi dòng tiền mua vào tiếp tục tìm đến một số cổ phiếu dầu khí",
+      "published_at": "2026-09-29T19:23:00+07:00",
+      "symbols": [
+        "BVH",
+        "FRT",
+        "GAS",
+        "HPG",
+        "TCB",
+        "VCB",
+        "VHM",
+        "VIC",
+        "VN-INDEX",
+        "VPB"
+      ],
+      "provider_id": "42009303",
+      "category": "Thị trường",
+      "content": "Nhà đầu tư nước ngoài tiếp tục bán ròng phiên thứ tư liên tiếp với giá trị khoảng 380 tỷ đồng trên ba sàn Riêng HOSE khối ngoại bán ròng gần 396 tỷ đồng trong đó VPB là tâm điểm hứng chịu áp lực bán trong khi dòng tiền mua vào tiếp tục tìm đến một số cổ phiếu dầu khí Phiên 29/9, thị trường tiếp tục diễn biến giằng co khi VN-Index chưa thể lấy lại vùng 1.800 điểm. Kết phiên, chỉ số giảm 4,43 điểm, tương đương 0,25%, xuống 1.780,68 điểm, tiếp tục nằm dưới vùng kháng cự tương ứng đường giá trung bình 200 phiên. Trong bối cảnh đó, giao dịch của nhà đầu tư nước ngoài vẫn nghiêng về chiều bán. Trên HOSE, khối ngoại mua vào 1.421,6 tỷ đồng, trong khi bán ra 1.817,5 tỷ đồng, tương ứng bán ròng gần 396 tỷ đồng. Tính chung ba sàn, giá trị bán ròng đạt khoảng 380 tỷ đồng, tăng trở lại so với mức 220 tỷ đồng của phiên liền trước. Áp lực bán tập trung đáng kể vào VPB , với giá trị bán ròng 249 tỷ đồng, chiếm phần lớn quy mô rút vốn trong phiên. Cổ phiếu này đóng cửa tham chiếu tại 22.950 đồng. Một số cổ phiếu ngân hàng khác cũng xuất hiện trong nhóm bị bán ròng mạnh. ACB bị bán 51,15 tỷ đồng, VCB hơn 40 tỷ đồng, CTG 35,52 tỷ đồng, STB 33,9 tỷ đồng và TCB 25,86 tỷ đồng. Như vậy, nhóm ngân hàng tiếp tục là một trong những tâm điểm bán ra của dòng vốn ngoại. Top cổ phiếu mua/bán ròng của khối ngoại trong phiên 29/9 - Nguồn: Dstock Ngoài ra, HPG bị bán ròng 51,81 tỷ đồng. Hai cổ phiếu họ Vingroup là VIC và VHM lần lượt bị bán ròng 49,66 tỷ đồng và 40,56 tỷ đồng. PNJ tiếp tục chịu áp lực khi bị bán ròng 31,45 tỷ đồng, đồng thời giảm mạnh 6,84% xuống 28.600 đồng/cổ phiếu. Dòng tiền ngoại bán mạnh một số cổ phiếu ngân hàng và vốn hóa lớn, trong khi vẫn giải ngân chọn lọc vào nhóm dầu khí. Tuy nhiên, ở chiều mua, quy mô giải ngân vào từng mã nhỏ hơn đáng kể so với chiều bán. PVT dẫn đầu với 60,8 tỷ đồng, cổ phiếu tăng 6,4%. PLX được mua ròng 35,16 tỷ đồng, PVS 25,29 tỷ đồng và GAS gần 21 tỷ đồng. Đáng chú ý, cả PVT, PLX, PVS và GAS đều đóng cửa tăng giá, cho thấy dòng vốn ngoại tiếp tục có sự quan tâm nhất định tới nhóm dầu khí - năng lượng. VIB là cổ phiếu ngân hàng hiếm hoi nằm trong nhóm mua ròng dẫn đầu, với 28,32 tỷ đồng và tăng 1,9%. BVH , GEX, VIX, KDH và FRT cũng được mua ròng nhưng quy mô đều dưới 22 tỷ đồng. Tùng Linh Link gốc",
+      "crawled_at": "2026-10-01T00:49:22.717140+00:00",
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.009048569527611443,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/ctck-noi-ve-thue-cbpg-2855-usd-tan-voi-hoa-phat-xuat-khau-thep-viet-nam-sang-mexico-la-hat-cat-voi-dn-ty-do-rui-ro-nam-o-cho-khac-188260910141614694.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "a05bf8bfe2391f516988",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/vuon-tam-quoc-te-nho-lam-chu-cong-nghe/42008429",
+      "title": "Vươn tầm quốc tế nhờ làm chủ công nghệ",
+      "description": "Mới đây Việt Nam đã chính thức ghi tên mình vào Top 10 quốc gia sản xuất thép thô lớn nhất toàn cầu, trong đó, có sự đóng góp tích cực và bền bỉ trong nhiều năm qua của Tập đoàn Hòa Phát.",
+      "published_at": "2026-09-29T17:52:00+07:00",
+      "symbols": [
+        "HPG"
+      ],
+      "provider_id": "42008429",
+      "category": "Doanh nghiệp",
+      "content": "Mới đây Việt Nam đã chính thức ghi tên mình vào Top 10 quốc gia sản xuất thép thô lớn nhất toàn cầu, trong đó, có sự đóng góp tích cực và bền bỉ trong nhiều năm qua của Tập đoàn Hòa Phát. Trong thành quả mang tính bước ngoặt này, Tập đoàn Hòa Phát - một trong những tập đoàn sản xuất công nghiệp tư nhân lớn nhất Việt Nam, được ví như “vua thép” tại thị trường nội địa và Đông Nam Á tiếp tục khẳng định vai trò \"anh cả\" dẫn dắt cuộc chơi với những con số tăng trưởng ấn tượng và chiến lược làm chủ công nghệ thượng nguồn. Nhà máy sản xuất ray và thép đặc biệt của Hòa Phát đã hoàn thành gần 70% tiến độ dự án. Theo đánh giá của Hiệp hội Thép Việt Nam (VSA), tăng trưởng sản xuất thép thô cao vừa phản ánh sự mở rộng mạnh mẽ về quy mô sản xuất, vừa cho thấy ngành thép Việt Nam hướng tới sự đầu tư đồng bộ, khép kín hiện đại, từ khâu sản xuất thượng nguồn đến hạ nguồn, năng lực tự chủ ngày càng cao của ngành thép Việt Nam trong chuỗi cung ứng công nghiệp toàn cầu. Cũng theo VSA, đến nay, ngành thép Việt Nam nói chung và Hòa Phát nói riêng đã có những bước tiến vượt bậc trong việc tự chủ sản xuất. Tập đoàn đã hoàn thiện chuỗi giá trị khép kín, chủ động từ nguồn nguyên liệu cho tới thành phẩm hạ nguồn chất lượng cao. Hòa Phát hiện cũng là doanh nghiệp Việt Nam duy nhất đầu tư sản xuất được thép cuộn cán nóng - dòng sản phẩm vốn là động lực tăng trưởng nổi bật của toàn ngành. Đến nay, Tập đoàn Hòa Phát tiếp tục giữ vững vị thế là nhà sản xuất thép lớn nhất Đông Nam Á với công suất hiện tại lên đến 16 triệu tấn thép thô/năm. Không dừng lại ở quy mô, Hòa Phát đang dịch chuyển mạnh mẽ sang \"chiều sâu\" khi các dòng thép chất lượng cao hiện chiếm trên 60% sản lượng, phục vụ từ cơ khí chế tạo, đóng tàu cho đến công nghiệp quốc phòng. Mới đây nhất, Hòa Phát trở thành nhà sản xuất đầu tiên tại Việt Nam chế tạo thành công thép kết cấu cường độ cao S700MC theo tiêu chuẩn châu Âu. Đây là mác thép phức tạp ứng dụng trong khung dầm ô tô tải hạng nặng, cần cẩu và máy công nghiệp. Việc làm chủ công nghệ cán nhiệt cơ TMCP (Thermo-Mechanical Controlled Processing) đã giúp tối ưu trọng lượng kết cấu và nâng cao tỷ lệ nội địa hóa nguyên liệu cho ngành cơ khí chế tạo nước nhà. Bên cạnh đó, Hòa Phát đã sản xuất nhiều mác thép công nghệ cao phục vụ ngành công nghiệp cơ khí chế tạo như thép dự ứng lực, thép làm cáp thang máy, thép làm cáp cẩu trục... Riêng lĩnh vực công nghiệp sản xuất ô tô, Hòa Phát cung cấp các sản phẩm thép làm thanh bố lốp, khung gầm ô tô như: SWRH82A, SWRH72A, S315MC-S650MC, SAPH440. Trong tương lai, Tập đoàn sẽ phát triển thêm các dòng sản phẩm khác như DP600, DP780, DP800. Ngoài ra, Hòa Phát còn cung cấp cáp thép dự ứng lực (PC Strand) cho hàng loạt dự án hạ tầng trọng điểm phục vụ APEC 2027 tại Phú Quốc với các công trình tiêu biểu như Trung tâm Hội nghị APEC, mở rộng Sân bay Phú Quốc, Tuyến tàu điện đô thị LRT... Năm 2026, Hòa Phát đặt kế hoạch doanh thu 210.000 tỷ đồng và lợi nhuận sau thuế 22.000 tỷ đồng. Năm 2026, Hòa Phát đặt mục tiêu tiêu thụ gần 14 triệu tấn thép. Động lực tăng trưởng chính sẽ đến từ siêu dự án Dung Quất 2 sau khi toàn bộ dây chuyền vận hành ổn định, dự kiến đóng góp thêm 3-4 triệu tấn HRC. Nhà máy được đầu tư dây chuyền công nghệ hiện đại bậc nhất thế giới hiện nay từ Tập đoàn SMS Group (Đức). Dự kiến trong năm 2026, sản lượng thép thô của riêng Hòa Phát sẽ đạt trên 14 triệu tấn, tăng 30% so với năm 2025; đồng thời củng cố vững chắc vị thế Top 10 toàn cầu của ngành thép Việt Nam. Nhìn xa hơn đến năm 2027, công suất của Hòa Phát dự kiến nâng lên 18 triệu tấn. Đáng chú ý, để phù hợp với lộ trình giảm cường độ phát thải carbon, Hòa Phát lựa chọn công nghệ lò điện (EAF) công suất 700.000 tấn tại Long An nhằm tận dụng nguồn phế liệu dồi dào tại phía Nam. Song song đó, dự án Nhà máy sản xuất ray và thép đặc biệt Hòa Phát Dung Quất (công suất 700.000 tấn/năm) đang được đẩy nhanh tiến độ. Tính đến tháng 9/2026, Hòa Phát đã hoàn thành gần 70% tiến độ dự án Nhà máy sản xuất ray và thép đặc biệt Hòa Phát Dung Quất. Hiện dự án đang được đẩy nhanh tiến độ, tập trung hoàn thiện kết cấu nhà xưởng và lắp đặt thiết bị công nghệ. Dự kiến từ tháng 10/2026, Nhà máy sản xuất ray và thép đặc biệt Hòa Phát Dung Quất sẽ bước vào giai đoạn cao điểm tiếp nhận, lắp đặt, điều chỉnh và chạy thử thiết bị với sự giám sát, phối hợp kỹ thuật của đội ngũ chuyên gia SMS. Song song với việc đẩy mạnh tiến độ thi công dự án, Hòa Phát cũng phối hợp với Tập đoàn SMS và Trường Vật liệu - Đại học Bách khoa tổ chức đào tạo cho đội ngũ kỹ sư, nhân sự kỹ thuật để có thể nhanh chóng nhận chuyển giao công nghệ, sẵn sàng làm chủ sản xuất và vận hành nhà máy ổn định. Đồng thời, Công ty Cổ phần Ray và Thép đặc biệt Hòa Phát Dung Quất đang kiện toàn bộ máy nhân sự qua công tác bố trí, bổ nhiệm đội ngũ quản lý ở các vị trí phù hợp. Mới đây, Công ty CP Ray và Thép đặc biệt Hòa Phát Dung Quất và Viện Công nghệ (Tổng Cục công nghiệp Quốc phòng) ký biên bản ghi nhớ hợp tác nghiên cứu, làm chủ công nghệ sản xuất ray và phụ kiện đường sắt, hưởng ứng chủ trương nội địa hóa và tự chủ phát triển ngành công nghiệp đường sắt Việt Nam. Theo đó, Viện Công nghệ sẽ đóng vai trò chủ đạo trong việc nghiên cứu, giải mã các tiêu chuẩn kỹ thuật và xây dựng quy trình công nghệ sản xuất ray, phụ kiện cho đường sắt đô thị và đường sắt tốc độ cao. Về phía doanh nghiệp, Hòa Phát có nền tảng dây chuyền thiết bị hàng đầu về sản xuất thép, từ luyện gang, tinh luyện, cán, cùng hệ thống phòng thí nghiệm hiện đại, sẵn sàng hỗ trợ nghiên cứu, phát triển, hướng tới sản xuất công nghiệp quy mô lớn và thương mại hóa sản phẩm. Dự kiến vào quý II/2027, sản phẩm thép ray đường sắt cao tốc của Hòa Phát sẽ đủ điều kiện chính thức cung cấp ra thị trường, sẵn sàng phục vụ cho các đại dự án đường sắt trọng điểm của quốc gia và xuất khẩu. Khánh An/bnews/vnanet.vn Link gốc",
+      "crawled_at": "2026-10-01T00:49:22.965012+00:00",
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.23672094329028634,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/rat-nhanh-hoa-phat-da-hoan-thanh-gan-70-tien-do-du-an-nha-may-san-xuat-thep-ray-du-kien-quy-1-nam-sau-cho-ra-lo-san-pham-dau-tien-188260921181933591.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "f4af9d617d31fdebfa86",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/doanh-nghiep-cua-ty-phu-tran-dinh-long-dat-dong-tau-65-000-dwt-thuoc-loai-lon-nhat-tung-duoc-ky-su-cong-nhan-viet-nam-truc-tiep-dong-moi/41988567",
+      "title": "Doanh nghiệp của tỷ phú Trần Đình Long đặt đóng tàu 65.000 DWT thuộc loại lớn nhất từng được kỹ sư, công nhân Việt Nam trực tiếp đóng mới",
+      "description": "Hòa Phát tiếp tục mở rộng năng lực vận tải biển khi đặt đóng mới tàu hàng 65.000 DWT tại Nam Triệu.",
+      "published_at": "2026-09-28T23:00:00+07:00",
+      "symbols": [
+        "HPG"
+      ],
+      "provider_id": "41988567",
+      "category": "Doanh nghiệp",
+      "content": "Hòa Phát tiếp tục mở rộng năng lực vận tải biển khi đặt đóng mới tàu hàng 65.000 DWT tại Nam Triệu. Ngày 28/9/2026, tại Hải Phòng, Công ty TNHH MTV Đóng tàu Nam Triệu (NASICO), đơn vị thành viên của Tổng công ty Công nghiệp tàu thủy (SBIC) tổ chức Lễ ký hợp đồng đóng mới tàu hàng 65.000 DWT, ký hiệu thiết kế S650-01 cho đối tác là Công ty Cổ phần Vận tải biển Hòa Phát; đơn vị thiết kế là Công ty CP Thiết kế và Dịch vụ Kỹ thuật tàu thủy Việt - Hàn (VIET HAN). Theo thông tin tại lễ ký kết, tàu mang ký hiệu S650-01, thuộc phân khúc tàu hàng trọng tải lớn. Dự án đặt ra các yêu cầu cao về kỹ thuật, chất lượng, an toàn và tiến độ. Về phía chủ đầu tư, ông Doãn Quang Thịnh, Giám đốc Công ty CP Vận tải biển Hòa Phát, cho biết doanh nghiệp kỳ vọng dự án được triển khai đúng các yêu cầu về chất lượng, tiến độ và an toàn. Việc đặt đóng thêm tàu hàng 65.000 DWT cho thấy Hòa Phát tiếp tục đầu tư vào năng lực vận tải biển, một mắt xích quan trọng trong chuỗi cung ứng nguyên liệu phục vụ sản xuất thép. So với năng lực đóng tàu trong nước, mốc 65.000 DWT là khá đáng chú ý. Nam Triệu cho biết dòng tàu 65.000 DWT là dòng tàu hàng có trọng tải lớn nhất từ trước tới nay do Việt Nam thiết kế và trực tiếp thi công, với chiều dài gần 200 m, rộng 32,26 m. Con tàu có tên Trường Minh (DB66-02) là tàu thứ hai trong series tàu hàng 65.000 DWT được Công ty Đóng tàu Nam Triệu thi công đóng mới cho Công ty Cổ phần Công nghiệp tàu thủy Đông Bắc. Từ năm 2019, Hòa Phát liên tục nâng tải trọng đội tàu Công ty CP Vận tải biển Hòa Phát được thành lập ngày 24/10/2019, là đơn vị thành viên của Tập đoàn Hòa Phát. Doanh nghiệp ra đời với mục tiêu chủ động vận chuyển hàng hóa và tối ưu chi phí logistics cho tập đoàn, đồng thời cung cấp dịch vụ vận tải cho các đối tác bên ngoài. Trong những năm gần đây, doanh nghiệp này liên tục nâng quy mô và tải trọng đội tàu. Một dấu mốc đáng chú ý là ngày 2/7/2025, Hòa Phát đưa vào khai thác tàu hàng rời The Momentum có tải trọng 110.000 DWT. Đây là tàu biển có tải trọng lớn nhất từng được Hòa Phát vận hành, phục vụ kế hoạch mở rộng đội tàu và nhu cầu nguyên liệu gia tăng tại Khu liên hợp gang thép Hòa Phát Dung Quất. The Momentum do Công ty CP Vận tải biển Hòa Phát trực tiếp khai thác. So với các tàu Kamsarmax tải trọng khoảng 80.000 DWT trong đội tàu trước đó, con tàu 110.000 DWT có thể chuyên chở lượng hàng lớn hơn gần 40% trong mỗi chuyến. Lợi thế này đặc biệt đáng kể với các hành trình quốc tế dài ngày và những chuyến nhập khẩu khối lượng lớn quặng sắt, than từ Australia, châu Mỹ và các thị trường trong khu vực châu Á. Theo Báo cáo thường niên 2025 của Hòa Phát, việc mua The Momentum đánh dấu bước đầu trong quá trình cơ cấu đội tàu theo hướng tăng sức chở và tối ưu chi phí logistics. Riêng vận tải nội địa trong năm 2025 đạt khoảng 1,5 triệu tấn hàng hóa, tương đương 155% kế hoạch. Ngoài thép cuộn cán nóng, đội tàu Hòa Phát còn vận chuyển than, đá vôi và một số loại hàng hóa khác. Việc tiếp tục đặt đóng tàu 65.000 DWT tại Nam Triệu vì vậy có thể được xem là bước bổ sung năng lực vận tải cho hệ thống logistics của Hòa Phát, bên cạnh các tàu Kamsarmax và tàu The Momentum 110.000 DWT đang khai thác.﻿ Link gốc",
+      "crawled_at": "2026-10-01T00:49:23.208349+00:00",
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "check",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.9769597069597069,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/doanh-nghiep-cua-ty-phu-tran-dinh-long-dat-dong-tau-65000-dwt-thuoc-loai-lon-nhat-tung-duoc-ky-su-cong-nhan-viet-nam-truc-tiep-dong-moi-188260928230850022.chn",
+        "matched_file": "tin_tuc_theo_ma/HPG/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    }
+  ]
+}

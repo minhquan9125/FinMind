@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "01-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "825aaaf7507ec7c94c28",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2988146/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-sua-doi-bo-sung-mot-so-noi-dung-ve-dot-phat-hanh-trai-phieu-tpbank-ra-cong-chung.chn",
+      "title": "TPB: Nghị quyết HĐQT về việc thông qua sửa đổi, bổ sung một số nội dung về đợt phát hành trái phiếu TPBank ra công chúng",
+      "description": "TPB: Nghị quyết HĐQT về việc thông qua sửa đổi, bổ sung một số nội dung về đợt phát hành trái phiếu TPBank ra công chúng",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua sửa đổi, bổ sung một số nội dung về đợt phát hành trái phiếu TPBank ra công chúng như sau: Các tập tin đính kèm 20260930 - TPB - NQ HDQT vv thong qua sua doi, bo sung mot so noi dung ve dot phat hanh Trai Phieu TPBank ra cong chung_signed.pdf Theo HOSE",
+      "published_at": "2026-09-30T11:08:36+00:00",
+      "crawled_at": "2026-10-01T08:10:57.771591+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/300926/tpb-nghi-quyet-h-qt-ve-viec-thong-qua-sua-doi-bo-sung-mot-so-noi-dung-ve-dot-phat-hanh-trai-phieu-tpbank-ra-cong-chung-0.pdf?v=1790766753863"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7221153846153847,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-sua-doi-bo-sung-mot-so-noi-dung-ve-dot-phat-hanh-trai-phieu-tpbank-ra-cong-chung/42030919",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "dd38aa7260cb5a9e427a",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2988143/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-bo-ho-so-dang-ky-chao-ban-trai-phieu-tpbank-ra-cong-chung.chn",
+      "title": "TPB: Nghị quyết HĐQT về việc thông qua bộ hồ sơ đăng ký chào bán trái phiếu TPBank ra công chúng",
+      "description": "TPB: Nghị quyết HĐQT về việc thông qua bộ hồ sơ đăng ký chào bán trái phiếu TPBank ra công chúng",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua bộ hồ sơ đăng ký chào bán trái phiếu TPBank ra công chúng như sau: Các tập tin đính kèm 20260930 - TPB - NQ HDQT vv thong qua Bo ho so dang ky chao ban Trai Phieu TPBank ra cong chung_signed.pdf Theo HOSE",
+      "published_at": "2026-09-30T11:06:51+00:00",
+      "crawled_at": "2026-10-01T08:10:58.619669+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/300926/tpb-nghi-quyet-h-qt-ve-viec-thong-qua-bo-ho-so-dang-ky-chao-ban-trai-phieu-tpbank-ra-cong-chung-0.pdf?v=1790766748306"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7230337078651685,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-bo-ho-so-dang-ky-chao-ban-trai-phieu-tpbank-ra-cong-chung/42030834",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "4bc9a8e003c2ff63e052",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2987676/tpb-nghi-quyet-hdqt-so-37-ngay-28092026.chn",
+      "title": "TPB: Nghị quyết HĐQT số 37 ngày 28/09/2026",
+      "description": "TPB: Nghị quyết HĐQT số 37 ngày 28/09/2026",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong thông báo Nghị quyết HĐQT số 37 ngày 28/09/2026 như sau: Các tập tin đính kèm 20260929 - TPB - NQ HDQT vv cap han muc tin dung cho CTCT Diana Unicharm va CN CTCP Diana Unicharm Bac Ninh_signed.pdf Theo HOSE",
+      "published_at": "2026-09-29T09:11:15+00:00",
+      "crawled_at": "2026-10-01T08:10:59.470676+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/300926/tpb-nghi-quyet-h-qt-so-37-ngay-28-09-2026-0.pdf?v=1790759178985"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.625,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-so-37-ngay-28-09-2026/42007460",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "d7477534bfef74a782d4",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2986639/tpb-thong-bao-ve-ngay-dang-ky-cuoi-cung-chi-tra-co-tuc-bang-tien-trong-nam-2026-va-tra-co-tuc-bang-co-phieu-tu-nguon-loi-nhuan-chua-phan-phoi-tinh-den-ngay-31122025.chn",
+      "title": "TPB: Thông báo về ngày đăng ký cuối cùng chi trả cổ tức bằng tiền trong năm 2026 và trả cổ tức bằng cổ phiếu từ nguồn lợi nhuận chưa phân phối tính đến ngày 31/12/2025",
+      "description": "TPB: Thông báo về ngày đăng ký cuối cùng chi trả cổ tức bằng tiền trong năm 2026 và trả cổ tức bằng cổ phiếu từ nguồn lợi nhuận chưa phân phối tính đến ngày 31/12/2025",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM thông báo về ngày đăng ký cuối cùng chi trả cổ tức bằng tiền trong năm 2026 và trả cổ tức bằng cổ phiếu từ nguồn lợi nhuận chưa phân phối tính đến ngày 31/12/2025 của Ngân hàng Thương mại Cổ phần Tiên Phong như sau: Các tập tin đính kèm 20260928 - TPB - TB so 1958 chot DS tra co tuc bang tien va bang CP.pdf Theo HOSE",
+      "published_at": "2026-09-29T03:50:10+00:00",
+      "crawled_at": "2026-10-01T08:11:00.248404+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/290926/tpb-thong-bao-ve-ngay-dang-ky-cuoi-cung-chi-tra-co-tuc-bang-tien-trong-nam-2026-va-tra-co-tuc-bang-co-phieu-tu-nguon-loi-nhuan-chua-phan-phoi-tinh-den-0.pdf?v=1790653900792"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "check",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.8484496124031008,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-thong-bao-ve-ngay-dang-ky-cuoi-cung-chi-tra-co-tuc-bang-tien-trong-nam-2026-va-tra-co-tuc-bang-co-phieu-tu-nguon-loi-nhuan-chua-phan-phoi-tinh-den-ngay-31-12-2025/41996887",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "4624a7aa7f94e38c442b",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2983466/tpb-nghi-quyet-hdqt-so-352026-ngay-23092026.chn",
+      "title": "TPB: Nghị quyết HĐQT số 35/2026 ngày 23/09/2026",
+      "description": "TPB: Nghị quyết HĐQT số 35/2026 ngày 23/09/2026",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT số 35/2026 ngày 23/09/2026 như sau: Các tập tin đính kèm 20260924 - TPB - NQ HDQT vv thong qua PA phat hanh TP ra cong chung_signed.pdf Theo HOSE",
+      "published_at": "2026-09-24T10:06:14+00:00",
+      "crawled_at": "2026-10-01T08:11:01.085598+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/240926/tpb-nghi-quyet-h-qt-so-35-2026-ngay-23-09-2026-0.pdf?v=1790246562174"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6896825396825397,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-so-35-2026-ngay-23-09-2026/41938907",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "cc5fba3f98c3b3ef3206",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2983462/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-hop-dong-giao-dich-giua-tpbank-va-tps.chn",
+      "title": "TPB: Nghị quyết HĐQT về việc thông qua Hợp đồng, giao dịch giữa TPBank và TPS",
+      "description": "TPB: Nghị quyết HĐQT về việc thông qua Hợp đồng, giao dịch giữa TPBank và TPS",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua Hợp đồng, giao dịch giữa TPBank và TPS như sau: Các tập tin đính kèm 20260924 - TPB - NQ HDQT vv thong qua hop dong, giao dich giua TPBank va TPS_signed.pdf Theo HOSE",
+      "published_at": "2026-09-24T10:04:30+00:00",
+      "crawled_at": "2026-10-01T08:11:02.242131+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/240926/tpb-nghi-quyet-h-qt-ve-viec-thong-qua-hop-dong-giao-dich-giua-tpbank-va-tps-0.pdf?v=1790246547911"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7243243243243244,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-hop-dong-giao-dich-giua-tpbank-va-tps/41938908",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "faef4a182c7890ca98af",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2982177/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-ngay-dkcc-thuc-hien-quyen-chi-tra-co-tuc-nam-2026-bang-tien-va-co-phieu.chn",
+      "title": "TPB: Nghị quyết HĐQT về việc thông qua ngày ĐKCC thực hiện quyền chi trả cổ tức năm 2026 bằng tiến và cổ phiếu",
+      "description": "TPB: Nghị quyết HĐQT về việc thông qua ngày ĐKCC thực hiện quyền chi trả cổ tức năm 2026 bằng tiến và cổ phiếu",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong thông báo Nghị quyết HĐQT về việc thông qua ngày ĐKCC thực hiện quyền chi trả cổ tức năm 2026 bằng tiến và cổ phiếu như sau: Các tập tin đính kèm 20260922 - TPB - NQ HDQT vv ngay DKCC thuc hien quyen tra co tuc bang tien va CP, cac noi dung lien quan_signed.pdf Theo HOSE",
+      "published_at": "2026-09-23T02:11:09+00:00",
+      "crawled_at": "2026-10-01T08:11:03.212977+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/230926/tpb-nghi-quyet-h-qt-ve-viec-thong-qua-ngay-kcc-thuc-hien-quyen-chi-tra-co-tuc-nam-2026-bang-tien-va-co-phieu-0.pdf?v=1790129583479"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.2601123595505618,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-hop-dong-giao-dich-giua-tpbank-va-tps/41938908",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "46b3dc60ace5624f72b2",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2982178/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-ngay-dkcc-thuc-hien-quyen-chi-tra-co-tuc-nam-2026-bang-tien-va-co-phieu.chn",
+      "title": "TPB: Nghị quyết HĐQT về việc thông qua ngày ĐKCC thực hiện quyền chi trả cổ tức năm 2026 bằng tiền và cổ phiếu",
+      "description": "TPB: Nghị quyết HĐQT về việc thông qua ngày ĐKCC thực hiện quyền chi trả cổ tức năm 2026 bằng tiền và cổ phiếu",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong thông báo Nghị quyết HĐQT về việc thông qua ngày ĐKCC thực hiện quyền chi trả cổ tức năm 2026 bằng tiền và cổ phiếu như sau: Các tập tin đính kèm 20260922 - TPB - NQ HDQT vv ngay DKCC thuc hien quyen tra co tuc bang tien va CP, cac noi dung lien quan_signed.pdf Theo HOSE",
+      "published_at": "2026-09-23T02:11:00+00:00",
+      "crawled_at": "2026-10-01T08:11:04.125922+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/230926/tpb-nghi-quyet-h-qt-ve-viec-thong-qua-ngay-kcc-thuc-hien-quyen-chi-tra-co-tuc-nam-2026-bang-tien-va-co-phieu-0.pdf?v=1790129833011"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.2601123595505618,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-hop-dong-giao-dich-giua-tpbank-va-tps/41938908",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "da91ddea42e8ae90ea0c",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2982175/tpb-thong-bao-phat-hanh-co-phieu-de-tra-co-tuc.chn",
+      "title": "TPB: Thông báo phát hành cổ phiếu để trả cổ tức",
+      "description": "TPB: Thông báo phát hành cổ phiếu để trả cổ tức",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong thông báo phát hành cổ phiếu để trả cổ tức như sau: Các tập tin đính kèm 20260922 - TPB - Thong bao phat hanh co phieu de tra co tuc_signed.pdf Theo HOSE",
+      "published_at": "2026-09-23T02:08:06+00:00",
+      "crawled_at": "2026-10-01T08:11:04.908201+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/230926/tpb-thong-bao-phat-hanh-co-phieu-de-tra-co-tuc-0.pdf?v=1790129575983"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.23448275862068965,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-so-37-ngay-28-09-2026/42007460",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    },
+    {
+      "id": "b3870a7a55dc73ded0cd",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tpb-2979305/tpb-nghi-quyet-hdqt-ve-viec-cap-han-muc-tin-dung-cho-cong-ty-tnhh-phan-mem-fpt.chn",
+      "title": "TPB: Nghị quyết HĐQT về việc cấp hạn mức tín dụng cho Công ty TNHH phần mềm FPT",
+      "description": "TPB: Nghị quyết HĐQT về việc cấp hạn mức tín dụng cho Công ty TNHH phần mềm FPT",
+      "content": "Ngân hàng Thương mại Cổ phần Tiên Phong thông báo Nghị quyết HĐQT số 33 ngày 17/09/2026 như sau: Các tập tin đính kèm 20260918 - TPB - NQ HDQT vv cap han muc tin dung cho Cong ty TNHH Phan mem FPT (giao dich ben LQ)_signed.pdf Theo HOSE",
+      "published_at": "2026-09-17T17:00:00+00:00",
+      "crawled_at": "2026-10-01T08:11:05.776667+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/180926/tpb-nghi-quyet-h-qt-so-33-ngay-17-09-2026-0.pdf?v=1789723643821"
+      ],
+      "symbols": [
+        "TPB"
+      ],
+      "matched_symbols": [
+        "TPB"
+      ],
+      "scopes": [
+        "TPB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.375,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-so-37-ngay-28-09-2026/42007460",
+        "matched_file": "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:14.576854+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-01T08:11:05.777803+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "TPB",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

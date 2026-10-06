@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "06-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "154a69c27a50a83d718e",
+      "source": "cafef",
+      "url": "https://cafef.vn/con-trai-bau-thuy-tham-gia-lanh-dao-san-tai-san-ma-hoa-sacom-goi-them-von-tu-chung-khoan-lps-188261006134524267.chn",
+      "title": "Con trai bầu Thụy tham gia lãnh đạo, sàn tài sản mã hóa Sacom gọi thêm vốn từ Chứng khoán LPS",
+      "description": "Công ty Cổ phần Chứng khoán LPS (HoSE: LPS) vừa phê duyệt việc mua cổ phần phát hành thêm để tăng vốn điều lệ tại Công ty Cổ phần Sàn giao dịch tài sản mã hóa Sacom (SCEX).",
+      "content": "TIN MỚI Theo nghị quyết, HĐQT LPS giao và ủy quyền cho Tổng giám đốc chỉ đạo các đơn vị, cá nhân liên quan triển khai các công việc cần thiết sau khi giao dịch được HĐQT phê duyệt. Động thái này diễn ra trong bối cảnh SCEX đang tăng tốc chuẩn bị nguồn lực cho lĩnh vực tài sản mã hóa. Doanh nghiệp tiền thân là Công ty Cổ phần Sàn Giao dịch Tài sản Mã hóa Lộc Phát Việt Nam (LPEX), được thành lập ngày 30/9/2025 tại Hà Nội. Đến tháng 5/2026, doanh nghiệp đổi tên thành Công ty Cổ phần Sàn Giao dịch tài sản mã hóa Sacom (SCEX). Đáng chú ý, tại lễ ra mắt bộ máy HĐQT SCEX hồi tháng 6/2026, ông Nguyễn Xuân Thái, con trai ông Nguyễn Đức Thụy (bầu Thụy), được giới thiệu với vai trò Phó chủ tịch HĐQT SCEX. Còn ông Nguyễn Duy Khoa giữ chức Chủ tịch HĐQT, cùng các thành viên Doãn Trung Kiên, Nguyễn Minh Hương, Nguyễn Bá Phước và Huỳnh Thi Hải. Ông Nguyễn Xuân Thái cũng được bầu vào HĐQT Chứng khoán LPBank (LPBS), tiền thân của Chứng khoán LPS, từ đầu tháng 2/2026. Đến tháng 8/2026, LPBS chính thức đổi tên thành Chứng khoán LPS và đưa cổ phiếu LPS lên HoSE. Tại sự kiện ra mắt bộ máy lãnh đạo SCEX tháng 6/2026, ông Nguyễn Đức Thụy cũng xuất hiện cùng các thành viên HĐQT của doanh nghiệp. Ông Thụy là Phó Chủ tịch thường trực của Sacombank, trong khi con trai là ông Nguyễn Xuân Thái là trợ lý HĐQT ngân hàng. Ông Thụy cũng được biết đến là cựu Chủ tịch LPBank - ngân hàng mẹ của LPS. Tăng vốn từ 360 tỷ lên 5.000 tỷ đồng SCEX đang có bước tăng vốn đáng chú ý. Theo thông tin đăng ký doanh nghiệp được cập nhật, ngày 13/8/2026, vốn điều lệ của SCEX tăng từ 360 tỷ đồng lên 5.000 tỷ đồng, tương đương tăng gần 14 lần. Trước đó, 3 cổ đông sáng lập của doanh nghiệp gồm ông Dương Văn Quyết sở hữu 40%, bà Nguyễn Thị Bích Ngọc sở hữu 30% và ông Vũ Phát Đạt sở hữu 30%. Việc LPS tham gia mua cổ phần phát hành thêm diễn ra sau khi LPS và Sacombank ký thỏa thuận hợp tác toàn diện vào tháng 6/2026, mở rộng hợp tác trong các lĩnh vực ngân hàng, chứng khoán và quản lý tài sản. Vốn điều lệ tối thiểu của một doanh nghiệp hoạt động trong lĩnh vực sàn giao dịch tài sản mã hóa, là 10.000 tỷ đồng, theo Quyết định số 96/QĐ-BTC. Con số này gấp đôi vốn điều lệ của SCEX sau khi tăng vốn. Khung pháp lý cho lĩnh vực này được đặt ra trong bối cảnh Chính phủ triển khai thí điểm thị trường tài sản mã hóa tại Việt Nam theo Nghị quyết số 05/2025/NQ-CP ngày 9/9/2025. Việc LPS tiếp tục tham gia rót vốn vào SCEX vì vậy diễn ra trong giai đoạn doanh nghiệp này đang mở rộng quy mô vốn và hoàn thiện nguồn lực cho định hướng phát triển thị trường tài sản mã hóa.",
+      "published_at": "2026-10-06T13:46:00",
+      "crawled_at": "2026-10-06T07:11:34.276224+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03130311614730878,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/uy-ban-chung-khoan-nha-nuoc-va-mas-tang-cuong-hop-tac-thuc-day-ket-noi-thi-truong-von-viet-nam-singapore/42032785",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "ce2001aa4f7bb2330b1b",
+      "source": "cafef",
+      "url": "https://cafef.vn/viet-nam-chinh-thuc-can-moc-14-trieu-tai-khoan-chung-khoan-188261006134030603.chn",
+      "title": "Việt Nam chính thức cán mốc 14 triệu tài khoản chứng khoán",
+      "description": "Từ đầu năm 2026, số lượng tài khoản chứng khoán của nhà đầu tư trong nước đã tăng hơn 2,2 triệu tài khoản.",
+      "content": "TIN MỚI Theo số liệu từ Trung tâm lưu ký Chứng khoán Việt Nam (VSD), số lượng tài khoản của nhà đầu tư trong nước đã tăng thêm gần 245.000 tài khoản trong tháng 9/2026, cao hơn 15.000 tài khoản so với mức tăng tháng liền trước. Tài khoản mở mới chủ yếu đến từ cá nhân trong khi tổ chức chỉ có thêm 180 tài khoản. Luỹ kế từ đầu năm 2026, số lượng tài khoản chứng khoán của nhà đầu tư trong nước đã tăng hơn 2,2 triệu tài khoản. Tính đến cuối tháng 9, nhà đầu tư cá nhân có tổng cộng hơn 14 triệu tài khoản, tương đương khoảng 14% dân số. Số lượng tài khoản tăng mạnh trong tháng Việt Nam chính thức được FTSE Russell nâng hạng từ thị trường cận biên lên thị trường mới nổi thứ cấp. Tuy nhiên, VN-Index diễn biến không mấy khởi sắc khi giảm gần 3,5% qua đó kết tháng dưới mốc 1.770 điểm. Áp lực từ khối ngoại là một trong những nguyên nhân khiến thị trường mất điểm. Trong tháng 9, khối ngoại đã bán ròng gần 5.000 tỷ đồng trên HoSE qua đó nâng tổng giá trị bán ròng từ đầu năm lên 96.000 tỷ đồng. Như vậy, nhà đầu tư nước ngoài đã bán ròng 9 tháng liên tiếp trên thị trường bất chấp việc dòng vốn thụ động từ các quỹ chuyên đầu tư thị trường mới nổi đã bắt đầu giải ngân. Trong tháng 9/2026, nhà đầu tư nước ngoài có thêm 264 tài khoản, con số này cao hơn đôi chút so với mức tăng 227 tài khoản của tháng trước. Trong đó, nhà đầu tư cá nhân chiếm 237 tài khoản mở mới trong khi tổ chức chỉ mở thêm 27 tài khoản. Tính đến cuối tháng 9, nhà đầu tư nước ngoài có tổng cộng 52.897 tài khoản.",
+      "published_at": "2026-10-06T13:40:00",
+      "crawled_at": "2026-10-06T07:11:34.768150+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.0453015427769986,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/nang-hang-chung-khoan-dong-von-ngoai-can-them-thoi-gian-de-chuyen-huong/42050018",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "2e7baedd72274a1ce6cd",
+      "source": "cafef",
+      "url": "https://cafef.vn/tien-si-nguyen-thi-phuong-thao-khong-con-la-nguoi-giau-thu-hai-viet-nam-188261006111046377.chn",
+      "title": "Tiến sĩ Nguyễn Thị Phương Thảo không còn là người giàu thứ hai Việt Nam",
+      "description": "Tài sản của bà Thảo đã giảm đáng kể từ đầu năm do biến động của hai cổ phiếu VJC và HDB.",
+      "content": "TIN MỚI Theo bảng xếp hạng tỷ phú thời gian thực của Forbes (cập nhật sáng 6/10 giờ Việt Nam), tiến sĩ Nguyễn Thị Phương Thảo không còn là người giàu thứ hai Việt Nam. Bà Thảo hiện là Chủ tịch HĐQT Vietjet Air (VJC), Chủ tịch Sovico Group và Phó Chủ tịch thường trực HDBank (HDB). Với khối tài sản 4,1 tỷ USD, bà Thảo xếp sau vợ chồng tỷ phú Phạm Nhật Vượng - Phạm Thu Hương. Bà Phạm Thu Hương, người vừa vượt qua Chủ tịch Vietjet để trở thành người giàu thứ hai Việt Nam, hiện là Phó Chủ tịch Vingroup. Bà Hương từng là Chủ tịch của CTCP Di chuyển xanh và Thông minh GSM (đơn vị vận hành hãng taxi và gọi xe Xanh SM) trong một thời gian ngắn, khoảng nửa năm trước khi chuyển giao vị trí này cho ông Nguyễn Quốc Tuấn từ tháng 9/2026. Tài sản của bà Phạm Thu Hương chủ yếu được tính toán theo số cổ phiếu nắm giữ trên sàn chứng khoán Việt Nam. Nữ tỷ phú này đang trực tiếp nắm hơn 341 triệu cổ phiếu VIC (tỷ lệ 4,4%). Ngoài ra, bà Hương còn đang nắm 148,3 triệu cổ phiếu LPBank (LPB). Cổ phiếu VIC tăng chóng mặt từ đầu năm 2025 đã đưa hai nữ doanh nhân này lọt danh sách tỷ phú USD của Forbes từ tháng 2/2026. Trong khi đó, tiến sĩ Nguyễn Thị Phương Thảo là cái tên quen thuộc với bảng xếp hạng tỷ phú của Forbes. Bà Thảo từng nhiều năm giữ vị trí là người giàu thứ hai Việt Nam trước khi Forbes đưa bà Hương vào danh sách tỷ phú USD. Tài sản của bà Thảo đã giảm đáng kể từ đầu năm do biến động của hai cổ phiếu VJC và HDB. Mới đây, Vietjet vừa được CAPA – Trung tâm Hàng không, một tổ chức nghiên cứu và phân tích hàng không quốc tế – vinh danh là Hãng hàng không chi phí thấp/kết hợp của năm tại châu Á (Asia Low Cost/Hybrid Airline of the Year). Giải được trao trong khuôn khổ Hội nghị Lãnh đạo hàng không châu Á 2026 (CAPA Airline Leader Summit Asia 2026) tại Chitose, Hokkaido, Nhật Bản. Trong khi đó, cổ đông HDBank đã thông qua kế hoạch chia cổ tức năm 2025 bằng cổ phiếu với tỷ lệ 25% từ nguồn lợi nhuận chưa phân phối, đồng thời phát hành cổ phiếu thưởng tỷ lệ 5% từ Quỹ dự trữ bổ sung vốn điều lệ. Sau khi hoàn tất, vốn điều lệ của HDBank dự kiến tăng từ 50.053 tỷ đồng lên hơn 65.069 tỷ đồng. Động thái củng cố nền tảng vốn, gia tăng dư địa tăng trưởng và tạo nguồn lực cho chiến lược phát triển trong giai đoạn tiếp theo. Phần vốn điều lệ tăng thêm dự kiến được HDBank sử dụng để bổ sung nguồn vốn cho vay trung, dài hạn và vốn lưu động phục vụ hoạt động kinh doanh, qua đó tăng cường năng lực vốn và khả năng đáp ứng nhu cầu tài chính của khách hàng.",
+      "published_at": "2026-10-06T11:10:00",
+      "crawled_at": "2026-10-06T07:11:35.529714+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.024607961399276235,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vib-huy-dong-285-trieu-usd-huong-toi-1-ty-usd-von-quoc-te/42121366",
+        "matched_file": "tin_tuc_chung/fireant/06-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "9fa7cbc5c552625ec2a4",
+      "source": "cafef",
+      "url": "https://cafef.vn/12410-ty-dong-doanh-thu-chi-trong-1-thang-dien-may-xanh-lap-ky-luc-chua-tung-co-188261006110055077.chn",
+      "title": "12.410 tỷ đồng doanh thu chỉ trong 1 tháng: Điện Máy Xanh lập kỷ lục chưa từng có",
+      "description": "Tháng 9/2026, Điện Máy Xanh ghi nhận doanh thu 12.410 tỷ đồng, mức cao nhất từ đầu năm và vượt cả tháng cao điểm Tết Nguyên đán.",
+      "content": "TIN MỚI CTCP Đầu tư Điện Máy Xanh (DMX) vừa cập nhật kết quả kinh doanh 9 tháng năm 2026, trong đó điểm đáng chú ý nhất nằm ở tháng 9. Theo báo cáo, doanh thu riêng trong tháng 9 đạt 12.410 tỷ đồng, lập mức cao nhất kể từ đầu năm và vượt cả tháng cao điểm Tết Nguyên đán. Lũy kế 9 tháng, doanh thu của Điện Máy Xanh đạt gần 99.500 tỷ đồng, tăng 29% so với cùng kỳ. Doanh nghiệp cho biết tăng trưởng doanh thu trên cùng cửa hàng (SSSG) đạt khoảng 30%. Kỷ lục doanh thu tháng 9 được thiết lập trong bối cảnh Điện Máy Xanh không còn tập trung vào việc mở rộng mạnh số lượng điểm bán tại Việt Nam. Trong báo cáo các tháng trước, hệ thống Điện Máy Xanh, Thế Giới Di Động và TopZone về cơ bản duy trì quy mô mạng lưới hiện hữu, trong khi công ty tập trung khai thác các kênh bán hàng và dịch vụ trên nền tảng sẵn có. Tháng 9 cũng là thời điểm một trong những đợt bán hàng quan trọng của ngành điện thoại diễn ra khi iPhone 18 Series bắt đầu được đặt trước và giao máy. Theo số liệu được Điện Máy Xanh công bố, lượng đặt trước và giao máy iPhone 18 Series trong tuần đầu tiên cao gấp 2 lần cùng kỳ năm trước. Apple đồng thời nằm trong nhóm ngành hàng tăng trưởng mạnh của hệ thống trong 9 tháng, với doanh thu tăng khoảng 50% so với cùng kỳ. Báo cáo không tách riêng mức đóng góp của iPhone 18 vào doanh thu tháng 9. Ngoài Apple, máy lạnh cũng là nhóm sản phẩm được Điện Máy Xanh cho biết tăng trưởng khoảng 50% trong 9 tháng. Kỷ lục xuất hiện chỉ ít lâu sau IPO Mốc doanh thu mới diễn ra khoảng hai tháng sau khi cổ phiếu Điện Máy Xanh chính thức xuất hiện trên thị trường chứng khoán. Trước đó, doanh nghiệp hoàn tất đợt IPO với hơn 166 triệu cổ phiếu được phân phối, huy động hơn 13.300 tỷ đồng. Ngày 6/8/2026, hơn 1,26 tỷ cổ phiếu DMX chính thức được đưa vào giao dịch trên HoSE với giá tham chiếu 80.000 đồng/cổ phiếu. Tại mức giá này, vốn hóa doanh nghiệp khi lên sàn đạt hơn 101.000 tỷ đồng. Điện Máy Xanh hiện là doanh nghiệp vận hành các chuỗi Điện Máy Xanh, Thế Giới Di Động và TopZone tại Việt Nam, đồng thời phát triển EraBlue tại Indonesia và mảng dịch vụ Thợ Điện Máy Xanh. Trong kế hoạch được đưa ra quanh thời điểm IPO, thay vì chỉ dựa vào mở mới cửa hàng trong nước, doanh nghiệp xác định một số hướng tăng trưởng gồm nâng hiệu quả mạng lưới bán lẻ hiện hữu, phát triển các giải pháp tài chính tiêu dùng, thương mại hóa dịch vụ kỹ thuật, mở rộng kênh Super App và tiếp tục phát triển EraBlue tại Indonesia. Riêng thị trường Indonesia tiếp tục được mở rộng trong tháng 9. Báo cáo mới cho biết EraBlue đã đạt 337 cửa hàng, với doanh thu 9 tháng tăng 86% so với cùng kỳ. Mục tiêu dài hạn được doanh nghiệp đưa ra là nâng hệ thống này lên 1.000 cửa hàng trước năm 2030. Cùng với kết quả 9 tháng, Điện Máy Xanh cho biết đang hướng tới mục tiêu lợi nhuận sau thuế trên 10.000 tỷ đồng trong năm 2026. Đây cũng là năm đầu tiên kết quả kinh doanh của doanh nghiệp được theo dõi với tư cách một công ty niêm yết độc lập trên HoSE.",
+      "published_at": "2026-10-06T11:09:00",
+      "crawled_at": "2026-10-06T07:11:36.142484+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.030326197757390417,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/htl-o-to-truong-long-be-tac-voi-bai-toan-tu-cach-dai-chung/42123779",
+        "matched_file": "tin_tuc_chung/fireant/06-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "30df34babc50838a14e9",
+      "source": "cafef",
+      "url": "https://cafef.vn/bat-ngo-gia-vang-phien-thu-3-lien-tiep-xuat-hien-dien-bien-nay-188261006110142419.chn",
+      "title": "Bất ngờ: Giá vàng phiên thứ 3 liên tiếp xuất hiện diễn biến này",
+      "description": "Giá vàng miếng trong nước sáng nay đánh dấu phiên thứ 3 liên tiếp đi ngang, trong khi vàng nhẫn có sự phân hóa mạnh hơn.",
+      "content": "TIN MỚI Sáng 6/10, SJC, PNJ và Bảo Tín Mạnh Hải cùng niêm yết vàng miếng ở mức 140,5 triệu đồng/lượng mua vào - 143,5 triệu đồng/lượng bán ra. Tại Phú Quý, giá mua vào thấp hơn 200.000 đồng, ở 140,3 triệu đồng/lượng, trong khi bán ra giữ mức 143,5 triệu đồng/lượng. Mi Hồng có giá mua vào cao nhất trong nhóm, ở 141,5 triệu đồng/lượng, bán ra 143 triệu đồng/lượng. Đây cũng là thương hiệu duy nhất ghi nhận mức giảm 500.000 đồng/lượng ở cả hai chiều. Ở phân khúc vàng nhẫn, SJC niêm yết 140 triệu đồng/lượng mua vào - 143 triệu đồng/lượng bán ra. PNJ và Phú Quý cùng ở mức 140,3 - 143,3 triệu đồng/lượng. Mi Hồng tiếp tục có giá mua vào cao nhất, đạt 141,5 triệu đồng/lượng, bán ra 143 triệu đồng/lượng. Riêng Bảo Tín Mạnh Hải ghi nhận giá mua vào 139,3 triệu đồng/lượng. Như vậy vàng nhẫn PNJ và Bảo Tín Mạnh Hải cùng giảm 200.000 đồng/lượng ở chiều mua vào, còn Mi Hồng giảm 500.000 đồng/lượng ở cả hai chiều. Diễn biến giá vàng miếng trong nước sau 1 tuần. Ảnh: SJC. Sáng 6/10, giá vàng thế giới trên Kitco ở mức 4.138 USD/ounce, giảm 7 USD/ounce so với đầu giờ sáng 5/10. Đồng USD tăng và lợi suất trái phiếu Kho bạc Mỹ kỳ hạn 10 năm duy trì ở mức cao, gần vùng đỉnh của gần hai thập kỷ, gây sức ép lên giá vàng. Thị trường cũng đang chờ biên bản cuộc họp tháng 9 của FOMC, dự kiến công bố cuối tuần này, để có thêm tín hiệu về chính sách tiền tệ của Fed. Áp lực bán gia tăng sau khi vàng không thể giữ mốc 4.200 USD/ounce, dù số liệu việc làm tháng 9 của Mỹ yếu hơn dự báo. Nền kinh tế chỉ tạo thêm 29.000 việc làm, tỷ lệ thất nghiệp tăng lên 4,2% và tiền lương bình quân theo giờ chỉ tăng 0,1%. Những dữ liệu này làm giảm kỳ vọng Fed tăng lãi suất trong tháng 10, nhưng chưa đủ tạo lực đẩy cho giá vàng. Theo các chuyên gia, thị trường vàng hiện vẫn giằng co giữa tín hiệu kinh tế suy yếu và lợi suất trái phiếu, lạm phát còn ở mức cao.",
+      "published_at": "2026-10-06T11:08:00",
+      "crawled_at": "2026-10-06T07:11:36.902678+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.02343032159264931,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cuoc-fed-tang-lai-suat-giam-usd-van-len-dinh-ba-thang-trai-phieu-kho-bac-10-nam-dang-thay-doi-luat-choi/42051437",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "80344c010ef07a3b1269",
+      "source": "cafef",
+      "url": "https://cafef.vn/gia-vang-ve-thap-nhat-2-thang-quy-lon-nhat-the-gioi-gom-600-can-vang-188261006095350801.chn",
+      "title": "Giá vàng về thấp nhất 2 tháng, quỹ lớn nhất thế giới \"gom\" 600 cân vàng",
+      "description": "Cùng ngày, iShares Physical Gold ETF, quỹ vàng thuộc BlackRock cũng mua vào 0,64 tấn vàng.",
+      "content": "TIN MỚI Theo dữ liệu cập nhật, SPDR Gold Trust, quỹ vàng lớn nhất thế giới vừa mua ròng 0,6 tấn vàng trong phiên 5/10. Hiện, SPDR đang nắm giữ khoảng 1.056,3 tấn vàng. Cùng chiều, iShares Physical Gold ETF, quỹ vàng do BlackRock quản lý cũng mua vào 0,64 tấn vàng, nâng tổng lượng nắm giữ lên 288 tấn. Trên sàn Kitco, giá vàng thế giới đóng cửa ngày 5/10 duy trì tại mốc 4.140 USD/ounce, gần như không đổi so với phiên trước. Dù vậy, kim loại quý này vẫn đang ở vùng thấp nhất trong khoảng 2 tháng, gần như xóa sạch thành quả của nhịp hồi bắt đầu từ giữa tháng 8. Thị trường vàng hiện chịu tác động đan xen giữa những tín hiệu suy yếu từ thị trường lao động Mỹ và áp lực lạm phát vẫn dai dẳng. Báo cáo việc làm tháng 9 cho thấy nền kinh tế Mỹ chỉ tạo thêm 29.000 việc làm, trong khi số liệu tháng 7 và 8 bị điều chỉnh giảm tổng cộng 60.000. Tỷ lệ thất nghiệp giữ ở mức 4,2%, còn thu nhập bình quân theo giờ chỉ tăng 0,1% so với tháng trước và 3% so với cùng kỳ. Ở chiều ngược lại, áp lực giá cả vẫn ở mức cao. Chỉ số PMI dịch vụ ISM tháng 9 giảm xuống 54,9 điểm từ 55,4 điểm, song chỉ số giá thanh toán tăng lên 74 điểm, mức cao nhất kể từ tháng 7/2022. Chỉ số việc làm cũng nhích trở lại trên ngưỡng 50 điểm. Những dữ liệu trái chiều này khiến kỳ vọng về lộ trình lãi suất của Fed tiếp tục biến động. Xác suất tăng lãi suất trong tháng 10 đã giảm mạnh so với tuần trước, song rủi ro thắt chặt trở lại vào tháng 12 vẫn chưa được loại trừ. Lợi suất trái phiếu Kho bạc Mỹ kỳ hạn 10 năm duy trì quanh 5,31%, trong khi kỳ hạn 30 năm ở khoảng 5,66%, qua đó tiếp tục tạo sức ép lên vàng. Trong thời gian tới, thị trường sẽ theo dõi biên bản cuộc họp tháng 9 của Fed, số liệu trợ cấp thất nghiệp hàng tuần và chỉ số tâm lý người tiêu dùng sơ bộ tháng 10 để có thêm tín hiệu về hướng đi của lãi suất. Nếu dữ liệu việc làm hoặc tâm lý tiêu dùng tiếp tục suy yếu, kỳ vọng Fed bớt cứng rắn có thể hỗ trợ giá vàng. Ngược lại, áp lực lạm phát và kỳ vọng lạm phát duy trì ở mức cao sẽ khiến lợi suất trái phiếu tiếp tục là lực cản đối với kim loại quý.",
+      "published_at": "2026-10-06T10:02:00",
+      "crawled_at": "2026-10-06T07:11:37.643556+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.035025754231052246,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cuoc-fed-tang-lai-suat-giam-usd-van-len-dinh-ba-thang-trai-phieu-kho-bac-10-nam-dang-thay-doi-luat-choi/42051437",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "669ee8a4e4fd0c69d7b3",
+      "source": "cafef",
+      "url": "https://cafef.vn/iphone-chay-hang-dien-may-xanh-bao-doanh-thu-ky-luc-gan-100000-ty-188261006093540615.chn",
+      "title": "iPhone cháy hàng, Điện Máy Xanh báo doanh thu kỷ lục gần 100.000 tỷ",
+      "description": "Riêng tháng 9, doanh thu của DMX đạt hơn 12.400 tỷ đồng, cao nhất từ đầu năm, vượt cả tháng cao điểm Tết Nguyên đán.",
+      "content": "TIN MỚI CTCP Đầu tư Điện Máy Xanh (mã DMX) vừa công bố kết quả kinh doanh 9 tháng đầu năm 2026 với doanh thu đạt 99.460 tỷ đồng, tăng 29% so với cùng kỳ năm ngoái (YoY) và hoàn thành 81% kế hoạch cả năm đề ra. Riêng tháng 9, doanh thu của DMX đạt hơn 12.400 tỷ đồng, cao nhất từ đầu năm, vượt cả tháng cao điểm Tết Nguyên đán. Tăng trưởng lan tỏa trên mọi chuỗi và ngành hàng, đến từ cửa hàng hiện hữu thay vì mở mới (SSSG 30%). Trả chậm 0% lãi suất và dịch vụ hậu mãi mở rộng thúc đẩy sức mua trong bối cảnh giá bán tăng mà không cần đẩy mạnh chiết khấu: doanh thu từ trả chậm tăng 50% YoY, nâng tỷ trọng trả chậm lên 38% (9T2025: 33%). Động lực còn đến từ mở rộng danh mục sản phẩm và thị phần Apple tăng qua TopZone. Toàn bộ các chuỗi tại Việt Nam tăng trưởng doanh thu gần 30% dù không mở cửa hàng mới. Trong đó, TopZone tăng mạnh nhất (+34%) nhờ các sản phẩm Apple tăng 50% YoY; lượng đặt trước và giao máy tuần đầu iPhone 18 series gấp đôi năm trước. Các ngành hàng chính khác tăng 15% đến 50% YoY, dẫn đầu là Máy lạnh và Laptop. Về triển vọng quý 4, với sản phẩm Apple gập mới (iPhone Duo) và mùa mua sắm cao điểm cuối năm, DMX hướng đến mục tiêu tăng trưởng doanh thu cả năm 30% YoY. Ngày 29/10 tới đây, DMX sẽ tổ chức Đại hội đồng cổ đông bất thường năm 2026 theo danh sách chốt ngày 5/10. Một trong những nội dung chính là phương án chi trả cổ tức bằng tiền mặt từ nguồn lợi nhuận chưa phân phối năm 2026. Tỷ lệ và tổng số tiền của đợt chia mới chưa được công bố. Đáng chú ý, đây có thể là lần thứ hai trong thời gian ngắn cổ đông DMX nhận một khoản tiền mặt lớn. Trước đó, vào ngày 26/8, DMX đã chi hơn 5.000 tỷ đồng cổ tức tiền mặt, với tỷ lệ 40%, tương đương 4.000 đồng/cổ phiếu. Khoản cổ tức này được lấy từ lợi nhuận sau thuế lũy kế đến hết năm 2025. Ngoài phương án cổ tức, Đại hội bất thường cuối tháng 10 của DMX còn dự kiến xem xét phương án chào bán trái phiếu kèm chứng quyền riêng lẻ. Quy mô và các điều khoản cụ thể của đợt phát hành chưa được công bố.",
+      "published_at": "2026-10-06T09:35:00",
+      "crawled_at": "2026-10-06T07:11:38.392921+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.035383159886471144,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/nu-chu-tich-sinh-nam-1999-vua-ky-mot-quyet-dinh-quan-trong/42032721",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "233faf908c605f299b96",
+      "source": "cafef",
+      "url": "https://cafef.vn/shs-muon-phat-hanh-tong-cong-600-ty-dong-trai-phieu-188261006093110034.chn",
+      "title": "SHS muốn phát hành tổng cộng 600 tỷ đồng trái phiếu",
+      "description": "SHS dự kiến chào bán 2 lô trái phiếu riêng lẻ nhằm huy động tối đa 600 tỷ đồng để cơ cấu nợ.",
+      "content": "TIN MỚI CTCP Chứng khoán Sài Gòn - Hà Nội (mã: SHS) vừa thông qua phương án chào bán trái phiếu riêng lẻ lần 3 năm 2026. Cụ thể, SHS dự kiến chào bán 2.000 trái phiếu với mệnh giá là 100 triệu đồng/trái phiếu, qua đó huy động 200 tỷ đồng. Đây là trái phiếu không chuyển đổi, không kèm chứng quyền và không có bảo đảm. Mục đích phát hành nhằm cơ cấu 3 khoản nợ của tổ chức phát hành. Các khoản nợ này sẽ đáo hạn trong tháng 10/2026 chi tiết như sau: Nguồn: SHS Cùng với đó, SHS cũng thông qua phương án chào bán trái phiếu riêng lẻ lần 4 năm 2026 với khối lượng 4.000 trái phiếu. Mỗi trái phiếu có mệnh giá là 100 triệu đồng, qua đó huy động 400 tỷ đồng. Đây là trái phiếu không chuyển đổi, không kèm chứng quyền và không có bảo đảm. Mục đích phát hành cũng nhằm cơ cấu một số khoản nợ sẽ đáo hạn trong tháng 10/2026 của tổ chức phát hành. Điểm chung của cả 2 lô trái phiếu trên là đều có kỳ hạn 1 năm, lãi suất cố định 10,5%/năm. Thanh toán lãi 6 tháng/lần, có kèm điều khoản mua lại trước hạn theo thỏa thuận. Thời gian phát hành dự kiến trong quý IV/2026. Theo công bố trên Sở giao dịch Chứng khoán Hà Nội (HNX), từ đầu năm đến nay SHS đã phát hành 02 lô trái phiếu. Trong đó, mã SHS12601 trị giá 119 tỷ đồng, được phát hành ngày 15/7/2026, kỳ hạn 1 năm, dự kiến đáo hạn vào ngày 15/7/2027. Còn lại mã SHSL12602 trị giá 456 tỷ đồng được phát hành ngày 14/8/2026. Với kỳ hạn 1 năm, lô trái phiếu trên dự kiến đáo hạn ngày 14/8/2027. Nguồn: SHS Trong diễn biến khác, SHS sẽ chi trả cổ tức năm 2025 bằng tiền tỷ lệ 5% mệnh giá, tương ứng 500 đồng/cổ phiếu, với tổng giá trị chi trả gần 450 tỷ đồng. Ngày đăng ký cuối cùng là 09/10/2026, ngày thanh toán là 16/10/2026. Trước đó, ngày 10/9/2026, SHS thông qua việc triển khai phương án phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu (cổ phiếu thưởng). Số lượng cổ phiếu dự kiến phát hành là 45 triệu đơn vị. Tỷ lệ thực hiện quyền 100:5, tức cổ đông sở hữu 100 cổ phiếu sẽ được nhận 05 cổ phiếu mới. Nguồn vốn thực hiện ưu tiên sử dụng hết thặng dư vốn cổ phần, phần còn lại sử dụng lợi nhuận sau thuế chưa phân phối. Cổ phiếu phát hành đợt này không bị hạn chế chuyển nhượng. Các cổ phiếu đang bị hạn chế chuyển nhượng vẫn được nhận cổ phiếu thưởng. Nếu hoàn tất đợt phát hành này, SHS sẽ tăng vốn điều lệ từ 8.994 tỷ đồng lên mức 9.444 tỷ đồng. Đến ngày 15/9/2026, SHS tiếp tục thông qua việc triển khai phương án phát hành 15 triệu cổ phiếu theo chương trình lựa chọn người lao động (ESOP) 2026. Giá phát hành 10.000 đồng/cổ phiếu. Cổ phiếu ESOP có bị hạn chế chuyển nhượng, trong đó 50% tổng lượng cổ phiếu bị hạn chế chuyển nhượng trong 1 năm và 50% còn lại bị hạn chế chuyển nhượng trong 2 năm. Thời gian triển khai đợt phát hành ESOP dự kiến trong năm 2026. Số tiền thu về 150 tỷ đồng từ đợt phát hành được sử dụng để bổ sung vốn cho vay ký quỹ.",
+      "published_at": "2026-10-06T09:31:00",
+      "crawled_at": "2026-10-06T07:11:38.975963+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.1295365278868814,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-techcombank-tat-toan-2-lo-trai-phieu-sau-1-nam-phat-hanh/42051495",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "b872fe6da67cfbb48bb4",
+      "source": "cafef",
+      "url": "https://cafef.vn/ky-la-doanh-nghiep-doanh-thu-bang-0-nhung-van-bao-lai-hang-ty-dong-188261006090937384.chn",
+      "title": "Kỳ lạ doanh nghiệp doanh thu bằng 0 nhưng vẫn báo lãi hàng tỷ đồng",
+      "description": "Không ghi nhận một đồng doanh thu bán hàng hay cung cấp dịch vụ trong 6 tháng đầu năm 2026, CTCP Đầu tư Sao Thăng Long (DST) vẫn báo lãi gần 1,9 tỷ đồng.",
+      "content": "TIN MỚI Báo cáo tài chính bán niên 2026 của CTCP Đầu tư Sao Thăng Long (mã chứng khoán: DST) cho thấy một bức tranh khá đặc biệt. Trong 6 tháng đầu năm, doanh nghiệp này không ghi nhận doanh thu thuần từ bán hàng và cung cấp dịch vụ. Điều này đồng nghĩa hoạt động kinh doanh cốt lõi gần như không tạo ra nguồn thu trong kỳ. Tuy vậy, DST vẫn kết thúc nửa đầu năm với lợi nhuận sau thuế khoảng 1,9 tỷ đồng - điều giúp công ty vẫn có lãi nằm ở hoạt động tài chính. Theo BCTC, DST ghi nhận nguồn thu từ các khoản như lãi tiền gửi, lãi cho vay và cổ tức được chia. Đây trở thành nguồn thu chính bù đắp chi phí hoạt động trong bối cảnh doanh thu bán hàng bằng 0. Câu chuyện này thực tế không chỉ xuất hiện trong năm nay. Năm 2025, DST cũng không phát sinh doanh thu nhưng vẫn báo lãi ròng khoảng 2,2 tỷ đồng, chủ yếu nhờ doanh thu tài chính từ lãi tiền gửi, cho vay và cổ tức. Sang quý I/2026, tình trạng này tiếp tục lặp lại: Công ty chưa có doanh thu thuần nhưng vẫn duy trì lợi nhuận nhờ hoạt động tài chính. Nói cách khác, ít nhất trong nhiều quý gần đây, lợi nhuận của DST không đến từ việc bán hàng hóa hay cung cấp dịch vụ theo hoạt động cốt lõi, mà phụ thuộc đáng kể vào việc sử dụng nguồn tiền của doanh nghiệp cho các hoạt động tài chính. Tiền thân là doanh nghiệp sách giáo khoa DST hiện mang tên CTCP Đầu tư Sao Thăng Long, nhưng doanh nghiệp có lịch sử khá khác so với cái tên hiện tại. Tiền thân của công ty là Phòng sách giáo khoa trực thuộc Sở Giáo dục và Đào tạo Nam Định. Sau đó đơn vị này chuyển thành CTCP Sách và Thiết bị Giáo dục Nam Định, chính thức hoạt động dưới hình thức công ty cổ phần từ cuối năm 2004 và từng là công ty con của Nhà xuất bản Giáo dục Việt Nam. Hoạt động truyền thống của doanh nghiệp xoay quanh kinh doanh sách giáo khoa, sách tham khảo, thiết bị đồ dùng dạy học và văn phòng phẩm. Hiện DST vẫn giới thiệu hoạt động chính trong lĩnh vực kinh doanh sách giáo khoa, với thế mạnh là sách tham khảo và văn phòng phẩm. Sau nhiều lần thay đổi, doanh nghiệp đổi tên thành CTCP Đầu tư Sao Thăng Long. Vốn điều lệ hiện ở mức khoảng 323 tỷ đồng. Từng đặt mục tiêu doanh thu 50 tỷ đồng cho năm 2026 Điều đáng chú ý là dù liên tục không ghi nhận doanh thu trong các quý gần đây, DST vẫn đặt kế hoạch kinh doanh khá cao cho năm 2026. Theo tài liệu doanh nghiệp công bố, DST đặt mục tiêu 50 tỷ đồng doanh thu và gần 7,5 tỷ đồng lợi nhuận trước thuế trong năm nay. Mục tiêu doanh thu cao gấp nhiều lần kết quả thực hiện của năm 2025. Tuy nhiên, sau nửa năm, phần doanh thu từ bán hàng và cung cấp dịch vụ vẫn đang ở mức 0 đồng.",
+      "published_at": "2026-10-06T09:09:00",
+      "crawled_at": "2026-10-06T07:11:39.756000+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03051742344244984,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/htl-o-to-truong-long-be-tac-voi-bai-toan-tu-cach-dai-chung/42123779",
+        "matched_file": "tin_tuc_chung/fireant/06-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    },
+    {
+      "id": "c69050556f7bf8fc75fd",
+      "source": "cafef",
+      "url": "https://cafef.vn/ong-nguyen-viet-cuong-tiep-tuc-bi-ban-giai-chap-ctck-van-khong-ban-duoc-co-phieu-nao-18826100522525744.chn",
+      "title": "Ông Nguyễn Việt Cường tiếp tục bị bán giải chấp, CTCK vẫn không bán được cổ phiếu nào",
+      "description": "Đây không phải lần đầu các lệnh giải chấp cổ phiếu của Chủ tịch Kosy không thể thực hiện. T",
+      "content": "TIN MỚI CTCP Chứng khoán Đại Việt (DVSC) vừa công bố báo cáo kết quả bán giải chấp cổ phiếu KOS của CTCP Kosy liên quan đến Chủ tịch HĐQT Nguyễn Việt Cường và một tổ chức có liên quan. Theo báo cáo, trong phiên giao dịch ngày 5/10/2026, DVSC thực hiện bán giải chấp cổ phiếu KOS trên tài khoản của ông Nguyễn Việt Cường. Tuy nhiên, kết quả cho thấy số lượng chứng khoán bán khớp chỉ là 0 cổ phiếu. Báo cáo không công bố cụ thể số lượng cổ phiếu được đưa ra đặt bán giải chấp trong phiên. Cùng ngày, DVSC cũng thực hiện bán giải chấp KOS trên tài khoản của CTCP Đầu tư Leo Regulus. Đây là tổ chức có liên quan đến người nội bộ Nguyễn Việt Cường. Tương tự tài khoản của Chủ tịch Kosy, số lượng cổ phiếu bán khớp của Leo Regulus trong ngày 5/10 cũng bằng 0. Đây không phải lần đầu các lệnh giải chấp cổ phiếu của Chủ tịch Kosy không thể thực hiện. Trước đó, trong phiên 1/10, Chứng khoán Đại Việt cũng bán giải chấp cổ phiếu KOS trên tài khoản của ông Nguyễn Việt Cường nhưng không khớp được cổ phiếu nào. Diễn biến trên xảy ra trong bối cảnh thanh khoản cổ phiếu KOS suy giảm mạnh sau chuỗi giảm giá kéo dài. Trong 11 phiên giao dịch liên tiếp từ ngày 21/9 đến 5/10, KOS đều đóng cửa tại mức giá sàn. Hiện giá cổ phiếu này đã rơi xuống 13.700 đồng/cp. So với mức 27.950 đồng/cp vào ngày 21/9, thị giá KOS đã giảm hơn 51% chỉ sau khoảng nửa tháng. Với hơn 216,4 triệu cổ phiếu đang lưu hành, vốn hóa của doanh nghiệp chỉ còn khoảng 2.966 tỷ đồng. Không chỉ ông Nguyễn Việt Cường và Leo Regulus, áp lực giải chấp thời gian qua còn xuất hiện tại tài khoản của nhiều lãnh đạo Kosy, song kết quả tương tư khi không thể khớp do thanh khoản ở mức thấp. Các lệnh bán giải chấp cổ phiếu của bà Nguyễn Thị Hằng, Phó Chủ tịch HĐQT Kosy, và bà Nguyễn Thị Phương Thảo, Phó Tổng Giám đốc, liên tục không thành công. Trước chuỗi giảm sâu của cổ phiếu, ông Nguyễn Việt Cường từng bán 4,3 triệu cổ phiếu KOS trong giai đoạn từ ngày 27/8 đến 24/9/2026. Sau giao dịch, ông Cường còn sở hữu hơn 72,3 triệu cổ phiếu, tương đương khoảng 33,43% vốn điều lệ Kosy. Về phía doanh nghiệp, Kosy cho biết việc một số công ty chứng khoán điều chỉnh giảm tỷ lệ cấp margin đối với KOS và thực hiện giải chấp đã làm gia tăng áp lực bán trên thị trường. Công ty đồng thời khẳng định các hoạt động cốt lõi gồm đầu tư, phát triển bất động sản, năng lượng tái tạo và vận hành dự án vẫn diễn ra bình thường, không có biến động bất thường từ nội tại doanh nghiệp ảnh hưởng tới giá cổ phiếu.",
+      "published_at": "2026-10-06T00:11:00",
+      "crawled_at": "2026-10-06T07:11:40.583775+00:00",
+      "attachments": [],
+      "symbols": [],
+      "matched_symbols": [],
+      "scopes": [
+        "market"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03531289910600255,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vn-index-mat-hon-63-diem-trong-thang-9-co-phieu-nao-giam-manh-nhat/42050133",
+        "matched_file": "tin_tuc_chung/fireant/01-10-2026.json",
+        "checked_at": "2026-10-06T07:11:59.519822+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-06T07:11:40.592770+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "market",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

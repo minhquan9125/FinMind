@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "01-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "2321a8d7aaef8784df7f",
+      "source": "cafef",
+      "url": "https://cafef.vn/ty-phu-tran-dinh-long-truc-tiep-xuat-hien-lam-viec-voi-tinh-dak-lak-ve-manh-dat-dep-cuoi-cung-de-lam-thep-tai-viet-nam-18826092910003878.chn",
+      "title": "Tỷ phú Trần Đình Long trực tiếp xuất hiện, làm việc với tỉnh Đắk Lắk về “mảnh đất đẹp cuối cùng để làm thép tại Việt Nam”",
+      "description": "Từng được tỷ phú Trần Đình Long gọi là “mảnh đất cuối cùng ở Việt Nam có thể xây nhà máy thép”, khu vực Nam Phú Yên tiếp tục được nhắc tới trong cuộc làm việc mới nhất giữa Hòa Phát và lãnh đạo tỉnh Đắk Lắk, với sự tham dự trực tiếp của Chủ tịch HĐQT Hòa Phát.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Theo Báo Đắk Lắk, sáng 28/9, tại Hà Nội, Đoàn công tác tỉnh Đắk Lắk do đồng chí Lương Nguyễn Minh Triết, Ủy viên Trung ương Đảng, Bí thư Tỉnh ủy, Trưởng Đoàn ĐBQH tỉnh làm trưởng đoàn, đã làm việc với Công ty Cổ phần Tập đoàn Hòa Phát về tình hình triển khai các dự án trên địa bàn tỉnh. Tại buổi làm việc, đại diện Tập đoàn Hòa Phát báo cáo tiến độ, những khó khăn, vướng mắc trong triển khai các dự án tại Khu kinh tế Nam Phú Yên, gồm Khu công nghiệp Hòa Tâm giai đoạn 1, Bến cảng Bãi Gốc và Dự án Khu liên hợp sản xuất gang thép. Đại diện Tập đoàn Hòa Phát cũng kiến nghị tỉnh xem xét phương án triển khai phù hợp với thực tế, bảo đảm tính khả thi. Lãnh đạo UBND tỉnh cùng các sở, ngành đã trao đổi, làm rõ các nội dung doanh nghiệp quan tâm. Ông Trần Đình Long, Chủ tịch Hội đồng quản trị Tập đoàn Hòa Phát phát biểu tại buổi làm việc. Kết luận buổi làm việc, đồng chí Lương Nguyễn Minh Triết chia sẻ với những tác động của thị trường đến mục tiêu đầu tư của doanh nghiệp; khẳng định tỉnh Đắk Lắk luôn đồng hành cùng nhà đầu tư, sẵn sàng phối hợp tháo gỡ khó khăn, vướng mắc phát sinh. Đồng chí đề nghị Tập đoàn Hòa Phát tiếp tục phối hợp chặt chẽ với các sở, ngành liên quan, sớm thống nhất phương án cụ thể để triển khai các dự án tại Khu kinh tế Nam Phú Yên. Sau tổ hợp gang thép Dung Quất tại Quảng Ngãi với tổng quy mô đầu tư khoảng 7 tỷ USD, Hòa Phát từng tính đến việc xây dựng thêm một \"cứ điểm\" sản xuất thép quy mô lớn tại Phú Yên, khu vực nay thuộc tỉnh Đắk Lắk. Dự án từng được nhắc đến như \"cú đấm thép thứ ba\" của tập đoàn. Tại ĐHĐCĐ thường niên năm 2025, Chủ tịch HĐQT Hòa Phát Trần Đình Long cho biết doanh nghiệp được giao một khu đất có vị trí thuận lợi để nghiên cứu dự án. Theo ông Long, đây có thể là \"mảnh đất cuối cùng ở Việt Nam có thể xây nhà máy thép\". Khu vực này trước đó từng được quy hoạch cho một dự án lọc dầu nhưng dự án không được triển khai. Hòa Phát sau đó nghiên cứu đầu tư Khu liên hợp sản xuất gang thép Hòa Phát Phú Yên tại Khu kinh tế Nam Phú Yên. Theo phương án ban đầu, tổ hợp có tổng vốn dự kiến khoảng 86.000 tỷ đồng, công suất thiết kế 6 triệu tấn thép mỗi năm. Riêng giai đoạn 1 dự kiến đạt công suất khoảng 3 triệu tấn/năm.",
+      "published_at": "2026-09-29T10:10:00",
+      "crawled_at": "2026-10-01T00:49:09.662649+00:00",
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03893619103542768,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/doanh-nghiep-cua-ty-phu-tran-dinh-long-dat-dong-tau-65-000-dwt-thuoc-loai-lon-nhat-tung-duoc-ky-su-cong-nhan-viet-nam-truc-tiep-dong-moi/41988567",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "0e5411f5e81f7f01baa4",
+      "source": "cafef",
+      "url": "https://cafef.vn/doanh-nghiep-cua-ty-phu-tran-dinh-long-dat-dong-tau-65000-dwt-thuoc-loai-lon-nhat-tung-duoc-ky-su-cong-nhan-viet-nam-truc-tiep-dong-moi-188260928230850022.chn",
+      "title": "Doanh nghiệp của tỷ phú Trần Đình Long đặt đóng tàu 65.000 DWT thuộc loại lớn nhất từng được kỹ sư, công nhân Việt Nam trực tiếp đóng mới",
+      "description": "Hòa Phát tiếp tục mở rộng năng lực vận tải biển khi đặt đóng mới tàu hàng 65.000 DWT tại Nam Triệu.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 28/9/2026, tại Hải Phòng, Công ty TNHH MTV Đóng tàu Nam Triệu (NASICO), đơn vị thành viên của Tổng công ty Công nghiệp tàu thủy (SBIC) tổ chức Lễ ký hợp đồng đóng mới tàu hàng 65.000 DWT, ký hiệu thiết kế S650-01 cho đối tác là Công ty Cổ phần Vận tải biển Hòa Phát; đơn vị thiết kế là Công ty CP Thiết kế và Dịch vụ Kỹ thuật tàu thủy Việt - Hàn (VIET HAN). Theo thông tin tại lễ ký kết, tàu mang ký hiệu S650-01, thuộc phân khúc tàu hàng trọng tải lớn. Dự án đặt ra các yêu cầu cao về kỹ thuật, chất lượng, an toàn và tiến độ. Về phía chủ đầu tư, ông Doãn Quang Thịnh, Giám đốc Công ty CP Vận tải biển Hòa Phát, cho biết doanh nghiệp kỳ vọng dự án được triển khai đúng các yêu cầu về chất lượng, tiến độ và an toàn. Việc đặt đóng thêm tàu hàng 65.000 DWT cho thấy Hòa Phát tiếp tục đầu tư vào năng lực vận tải biển, một mắt xích quan trọng trong chuỗi cung ứng nguyên liệu phục vụ sản xuất thép. So với năng lực đóng tàu trong nước, mốc 65.000 DWT là khá đáng chú ý. Nam Triệu cho biết dòng tàu 65.000 DWT là dòng tàu hàng có trọng tải lớn nhất từ trước tới nay do Việt Nam thiết kế và trực tiếp thi công, với chiều dài gần 200 m, rộng 32,26 m. Con tàu có tên Trường Minh (DB66-02) là tàu thứ hai trong series tàu hàng 65.000 DWT được Công ty Đóng tàu Nam Triệu thi công đóng mới cho Công ty Cổ phần Công nghiệp tàu thủy Đông Bắc. Từ năm 2019, Hòa Phát liên tục nâng tải trọng đội tàu Công ty CP Vận tải biển Hòa Phát được thành lập ngày 24/10/2019, là đơn vị thành viên của Tập đoàn Hòa Phát. Doanh nghiệp ra đời với mục tiêu chủ động vận chuyển hàng hóa và tối ưu chi phí logistics cho tập đoàn, đồng thời cung cấp dịch vụ vận tải cho các đối tác bên ngoài. Trong những năm gần đây, doanh nghiệp này liên tục nâng quy mô và tải trọng đội tàu. Một dấu mốc đáng chú ý là ngày 2/7/2025, Hòa Phát đưa vào khai thác tàu hàng rời The Momentum có tải trọng 110.000 DWT. Đây là tàu biển có tải trọng lớn nhất từng được Hòa Phát vận hành, phục vụ kế hoạch mở rộng đội tàu và nhu cầu nguyên liệu gia tăng tại Khu liên hợp gang thép Hòa Phát Dung Quất. The Momentum do Công ty CP Vận tải biển Hòa Phát trực tiếp khai thác. So với các tàu Kamsarmax tải trọng khoảng 80.000 DWT trong đội tàu trước đó, con tàu 110.000 DWT có thể chuyên chở lượng hàng lớn hơn gần 40% trong mỗi chuyến. Lợi thế này đặc biệt đáng kể với các hành trình quốc tế dài ngày và những chuyến nhập khẩu khối lượng lớn quặng sắt, than từ Australia, châu Mỹ và các thị trường trong khu vực châu Á. Theo Báo cáo thường niên 2025 của Hòa Phát, việc mua The Momentum đánh dấu bước đầu trong quá trình cơ cấu đội tàu theo hướng tăng sức chở và tối ưu chi phí logistics. Riêng vận tải nội địa trong năm 2025 đạt khoảng 1,5 triệu tấn hàng hóa, tương đương 155% kế hoạch. Ngoài thép cuộn cán nóng, đội tàu Hòa Phát còn vận chuyển than, đá vôi và một số loại hàng hóa khác. Việc tiếp tục đặt đóng tàu 65.000 DWT tại Nam Triệu vì vậy có thể được xem là bước bổ sung năng lực vận tải cho hệ thống logistics của Hòa Phát, bên cạnh các tàu Kamsarmax và tàu The Momentum 110.000 DWT đang khai thác.﻿",
+      "published_at": "2026-09-29T00:01:00",
+      "crawled_at": "2026-10-01T00:49:10.259661+00:00",
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "check",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.9769597069597069,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/doanh-nghiep-cua-ty-phu-tran-dinh-long-dat-dong-tau-65-000-dwt-thuoc-loai-lon-nhat-tung-duoc-ky-su-cong-nhan-viet-nam-truc-tiep-dong-moi/41988567",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "553b6c1ab112ae3a996b",
+      "source": "cafef",
+      "url": "https://cafef.vn/noi-lo-quy-3-cua-ty-phu-tran-dinh-long-18826092721500786.chn",
+      "title": "Nỗi lo quý 3 của tỷ phú Trần Đình Long",
+      "description": "Trong quý 3/2026, Chứng khoán Rồng Việt cho rằng biên lợi nhuận của Hòa Phát sẽ suy giảm nhẹ do ảnh hưởng tiêu cực từ giá bán nhưng lợi nhuận vẫn tăng trưởng so với cùng kỳ nhờ đóng góp lớn từ sản lượng của Dung Quất 2.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Theo báo cáo mới đây của Chứng khoán Rồng Việt, sau giai đoạn hồi phục trong quý 2/2026, giá thành phẩm thép nhìn chung, gồm thép xây dựng, thép cuộn cán nóng và tôn mạ, đã hạ nhiệt khi nhu cầu thép tại Trung Quốc không đạt kỳ vọng và chi phí vận chuyển giảm làm hạ nhiệt giá nguyên liệu. Giá quặng sắt, than cốc ghi nhận mức giảm khoảng 8-10%, tạo sức ép lên biên lợi nhuận của các doanh nghiệp thép nói chung, bao gồm Tập đoàn Hòa Phát. Qua đó, trong quý 3/2026, Chứng khoán Rồng Việt cho rằng biên lợi nhuận của Hòa Phát sẽ suy giảm nhẹ do ảnh hưởng tiêu cực từ giá bán nhưng lợi nhuận vẫn tăng trưởng so với cùng kỳ nhờ đóng góp lớn từ sản lượng của Dung Quất 2. Doanh thu và lợi nhuận sau thuế cổ đông mẹ quý 3/2026 được ước tính lần lượt đạt 54.000 tỷ đồng, giảm 2% so với quý trước và tăng 48% so với cùng kỳ; 5.400 tỷ đồng, giảm 16% so với quý trước và tăng 34% so với cùng kỳ. Về tiêu thụ, Chứng khoán Rồng Việt ước tính sản lượng thép xây dựng trong quý 3/2026 đạt 1,3 triệu tấn, đi ngang so với quý 2/2026 và tăng 21% so với cùng kỳ, khi các dự án đầu tư công và bất động sản dân dụng đang trong chu kỳ hoàn thiện và bàn giao vẫn hỗ trợ cho nhu cầu thép, dù quý 3 không phải là cao điểm về hoạt động xây dựng. Sản lượng thép cuộn cán nóng đạt 2,15 triệu tấn, tăng 12% so với quý trước và 70% so với cùng kỳ, tiếp tục là điểm sáng về sản lượng khi Dung Quất 2 hoạt động với hiệu suất khoảng 90%. Riêng trong tháng 6 và tháng 7, sản lượng thép cuộn cán nóng của doanh nghiệp đã duy trì trên 700.000 tấn mỗi tháng, đảm bảo cho kỳ vọng về sản lượng quý 3/2026. Khi giá nguyên liệu chính gồm quặng sắt, than cốc đã giảm khoảng 8-10% so với quý trước trong quý 3/2026, doanh nghiệp đã chủ động điều chỉnh giảm giá bán thép trong tháng 7 để duy trì lợi thế cạnh tranh tại nội địa. Giá bán trung bình trong quý 3/2026 dự kiến có thể giảm khoảng 7% so với quý trước. Trước đó, kết quả kinh doanh quý 2/2026 của Hòa Phát tuy doanh thu chưa đạt kỳ vọng nhưng lợi nhuận vẫn ghi nhận tăng trưởng mạnh mẽ nhờ biên lợi nhuận mở rộng, khi giá bán hồi phục trong quý 2/2026 và doanh nghiệp tận dụng được lượng hàng tồn kho giá thấp. Doanh thu thuần và lợi nhuận sau thuế cổ đông mẹ lần lượt đạt 55.200 tỷ đồng, tăng 54% so với cùng kỳ và tăng 4% so với quý trước; 6.400 tỷ đồng, tăng 51% so với cùng kỳ và giảm 29% so với quý trước, do quý 1/2026 ghi nhận lợi nhuận bất thường từ chuyển nhượng dự án. Sản lượng tiêu thụ thép cuộn cán nóng là điểm nhấn khi tiếp tục ghi nhận mức tăng trưởng đáng kể so với cùng kỳ năm 2025. Nhà máy Dung Quất 2 vào hoạt động với hiệu suất khoảng 85% cho hai giai đoạn và gần như đạt 100% công suất trong tháng 6. Qua đó, sản lượng bán hàng thép cuộn cán nóng đạt 1,9 triệu tấn, tăng 64% so với cùng kỳ và tăng 37% so với quý trước, tương đương khoảng 70% sản lượng tiêu thụ tại Việt Nam. Biên lợi nhuận gộp quý 2/2026 đạt 19%, mức cao mới so với giai đoạn 2023-2025 và cải thiện 310 điểm cơ bản so với quý trước. Lợi nhuận gộp đạt 10.488 tỷ đồng, tăng 25% so với quý trước và tăng 59% so với cùng kỳ. Kết quả này đến từ việc giá bán, đặc biệt là giá thép xây dựng, duy trì mức hồi phục khoảng 8% so với quý trước, trong khi doanh nghiệp đã tích lũy được tồn kho nguyên liệu ở giá thấp trong giai đoạn quý 1/2026 và giá quặng sắt ghi nhận mức giảm khoảng 5% so với quý trước. Cho cả năm 2026, Chứng khoán Rồng Việt kỳ vọng thị trường nội địa sẽ tiếp tục duy trì đà phục hồi và hỗ trợ cho sản lượng bán hàng của doanh nghiệp, khi hoạt động xây dựng được đẩy mạnh và Khu liên hợp Dung Quất 2 đáp ứng đầy đủ nhu cầu của các nhà sản xuất thép nội địa, trong khi giá thép vẫn đang trong chu kỳ hồi phục. Qua đó, Chứng khoán Rồng Việt duy trì dự phóng doanh thu của Hòa Phát đạt 197.000 tỷ đồng, tăng 26% so với năm trước và điều chỉnh lợi nhuận sau thuế cổ đông mẹ dự phóng lên 25.900 tỷ đồng, tăng 68% so với năm trước, khi quý 2/2026 ghi nhận biên lợi nhuận tốt hơn kỳ vọng. Rất nhanh: Hòa Phát đã hoàn thành gần 70% tiến độ dự án nhà máy sản xuất thép ray, dự kiến quý 1 năm sau cho ra lò sản phẩm đầu tiên",
+      "published_at": "2026-09-27T22:11:00",
+      "crawled_at": "2026-10-01T00:49:10.948569+00:00",
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.07566287878787879,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ssi-du-bao-ket-qua-kinh-doanh-quy-3-2026-cua-42-doanh-nghiep-masan-viglacera-tang-bang-lan-sacombank-du-bao-giam-45/42007944",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "a892ed665747cb423363",
+      "source": "cafef",
+      "url": "https://cafef.vn/nhan-phan-hoi-tich-cuc-hoa-phat-tiep-tuc-nhan-ho-so-dang-ky-mua-nha-o-xa-hoi-dot-2-tai-hung-yen-gia-tu-208-trieu-m2-188260923145423262.chn",
+      "title": "Nhận phản hồi tích cực, Hòa Phát tiếp tục nhận hồ sơ đăng ký mua nhà ở xã hội tại Hưng Yên giá chỉ từ 20,8 triệu/m2",
+      "description": "Ngay từ đợt tiếp nhận hồ sơ đầu tiên vào tháng 8/2026, dự án đã nhận được phản hồi rất tích cực từ người lao động trong các KCN và người dân địa phương nhờ mức giá bán hợp lý.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Từ ngày 23/09 đến ngày 23/10/2026, Hòa Phát tiếp tục tiếp nhận hồ sơ đăng ký mua nhà ở xã hội đợt 2 tại dự án đầu tư xây dựng khu nhà ở cho người thu nhập thấp khu công nghiệp Yên Mỹ II (Hưng Yên), giá chỉ từ 20,8 triệu/m2. Dự án do Công ty Cổ phần Phát triển Đô thị Hòa Phát Yên Mỹ (thành viên Tập đoàn Hòa Phát) làm chủ đầu tư với tổng vốn gần 5.000 tỷ đồng, quy mô 31 ha tại xã Yên Mỹ, tỉnh Hưng Yên. Trong giai đoạn đầu, Hòa Phát triển khai 2 cụm tòa chung cư cao 11 tầng, cung cấp 842 căn hộ nhà ở xã hội. Ngay từ đợt tiếp nhận hồ sơ đầu tiên vào tháng 8/2026, dự án đã nhận được phản hồi rất tích cực từ người lao động trong các KCN và người dân địa phương nhờ mức giá bán hợp lý. Dự án có vị trí thuận lợi, hạ tầng đồng bộ do tiếp giáp Quốc lộ 39A và Đường tỉnh ĐT 200, tạo thuận lợi tối đa cho việc di chuyển tới các khu công nghiệp lân cận. Khu nhà ở cách trung tâm thành phố Hà Nội, trung tâm tỉnh Hưng Yên chỉ 30 phút di chuyển và 10 phút lái xe tới trung tâm đô thị Mỹ Hào và bệnh viện đa khoa Phố Nối. Được định hướng phát triển theo mô hình khu đô thị khép kín, dự án tích hợp hệ thống hạ tầng kỹ thuật và tiện ích xã hội hoàn chỉnh như trường học, công viên cây xanh, khu thể thao, không gian sinh hoạt cộng đồng và hệ thống an ninh 24/7. Trong giai đoạn này, chủ đầu tư tập trung hoàn thiện các dòng căn hộ đa dạng diện tích từ 34,9 m² đến 77 m², thiết kế tối ưu công năng và độ thông thoáng, đáp ứng trọn vẹn nhu cầu sinh hoạt dài hạn của người dân. Dự án khu nhà ở xã hội tại xã Yên Mỹ là một trong những công trình trọng điểm quy mô lớn đang được Hòa Phát đẩy mạnh triển khai tại Hưng Yên. Dự án không chỉ góp phần giải quyết bài toán nguồn cung nhà ở cho lực lượng lao động tại các khu công nghiệp trên địa bàn, mà còn đáp ứng nhu cầu an cư lập nghiệp lâu dài của người dân địa phương.",
+      "published_at": "2026-09-23T15:15:00",
+      "crawled_at": "2026-10-01T01:10:35.388439+00:00",
+      "attachments": [],
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.013660714285714285,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/doanh-nghiep-cua-ty-phu-tran-dinh-long-dat-dong-tau-65-000-dwt-thuoc-loai-lon-nhat-tung-duoc-ky-su-cong-nhan-viet-nam-truc-tiep-dong-moi/41988567",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "c527d0b03a05aef5af9c",
+      "source": "cafef",
+      "url": "https://cafef.vn/ty-phu-tran-dinh-long-bat-tay-don-vi-cua-bo-quoc-phong-nghien-cuu-lam-chu-cong-nghe-san-xuat-ray-va-phu-kien-duong-sat-18826092308293206.chn",
+      "title": "Tỷ phú Trần Đình Long bắt tay đơn vị của Bộ Quốc phòng nghiên cứu làm chủ công nghệ sản xuất ray và phụ kiện đường sắt",
+      "description": "Hòa Phát hỗ trợ nghiên cứu, phát triển, hướng tới sản xuất công nghiệp quy mô lớn và thương mại hóa sản phẩm.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 22/9/2026, Công ty CP Ray và Thép đặc biệt Hòa Phát Dung Quất và Viện Công nghệ (Tổng Cục công nghiệp Quốc phòng) ký biên bản ghi nhớ hợp tác nghiên cứu, làm chủ công nghệ sản xuất ray và phụ kiện đường sắt, hưởng ứng chủ trương nội địa hóa và tự chủ phát triển ngành công nghiệp đường sắt Việt Nam. Để thực hiện chủ trương trên, Bộ Xây dựng chủ trì quản lý nhiệm vụ “Nghiên cứu làm chủ công nghệ sản xuất ray, phụ kiện, bộ ghi đường sắt đô thị và ray, phụ kiện đường sắt tốc độ cao tại Việt Nam”. Thời gian triển khai dự kiến đến tháng 12/2030. Mục tiêu cốt lõi của nhiệm vụ là làm chủ chuỗi công nghệ sản xuất ray và phụ kiện ray, từng bước nội địa hóa các vật tư chiến lược của ngành đường sắt, giảm thiểu sự phụ thuộc vào nguồn cung nhập khẩu đối với các vật tư chiến lược phục vụ các dự án giao thông trọng điểm quốc gia. Theo đó, Viện Công nghệ sẽ đóng vai trò chủ đạo trong việc nghiên cứu, giải mã các tiêu chuẩn kỹ thuật và xây dựng quy trình công nghệ sản xuất ray, phụ kiện cho đường sắt đô thị và đường sắt tốc độ cao. Về phía doanh nghiệp, Hòa Phát có nền tảng dây chuyền thiết bị về sản xuất thép, từ luyện gang, tinh luyện, cán, cùng hệ thống phòng thí nghiệm, sẵn sàng hỗ trợ nghiên cứu, phát triển, hướng tới sản xuất công nghiệp quy mô lớn và thương mại hóa sản phẩm. Kết quả nghiên cứu sẽ tạo cơ sở xây dựng hệ thống tài liệu kỹ thuật, quy trình công nghệ và tiêu chuẩn chất lượng đồng bộ, phục vụ sản xuất trong nước, đáp ứng yêu cầu của các dự án hạ tầng giao thông trọng điểm, hiện đại. Viện Công nghệ là đơn vị nghiên cứu khoa học và công nghệ trực thuộc Tổng cục Công nghiệp Quốc phòng – Bộ Quốc phòng. Viện có chức năng nghiên cứu, ứng dụng khoa học công nghệ mới trên nhiều lĩnh vực như công nghệ vật liệu & luyện kim, thiết kế chế tạo máy, cơ khí, hóa chất, kỹ thuật điều khiển, tự động hóa,… ]Hòa Phát là nhà sản xuất thép lớn nhất Việt Nam và khu vực Đông Nam Á. Tập đoàn xác định việc tham gia nghiên cứu, sản xuất và cung cấp ray đường sắt là trách nhiệm đồng hành cùng quá trình phát triển đất nước. Tập đoàn đang triển khai dự án Nhà máy sản xuất ray đường sắt và thép đặc biệt Hòa Phát Dung Quất tại tỉnh Quảng Ngãi. Sau 9 tháng thi công, dự án đã hoàn thành gần 70% khối lượng xây dựng và dự kiến cho ra sản phẩm ray đầu tiên vào quý I/2027. Nhà máy sẽ sản xuất ray đường sắt đô thị, ray đường sắt tốc độ cao, ray cầu trục, thép hình khổ lớn đến 700mm cùng nhiều chủng loại thép đặc biệt khác, đáp ứng nhu cầu của các dự án hạ tầng trọng điểm trong nước và hướng tới xuất khẩu.",
+      "published_at": "2026-09-23T08:29:00",
+      "crawled_at": "2026-10-01T00:49:12.574556+00:00",
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.1971106557377049,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vuon-tam-quoc-te-nho-lam-chu-cong-nghe/42008429",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "e59b96b72fce3db4b102",
+      "source": "cafef",
+      "url": "https://cafef.vn/rat-nhanh-hoa-phat-da-hoan-thanh-gan-70-tien-do-du-an-nha-may-san-xuat-thep-ray-du-kien-quy-1-nam-sau-cho-ra-lo-san-pham-dau-tien-188260921181933591.chn",
+      "title": "Rất nhanh: Hòa Phát đã hoàn thành gần 70% tiến độ dự án nhà máy sản xuất thép ray, dự kiến quý 1 năm sau cho ra lò sản phẩm đầu tiên",
+      "description": "Dự kiến từ tháng 10/2026, Nhà máy sản xuất ray và thép đặc biệt Hòa Phát Dung Quất sẽ bước vào giai đoạn cao điểm tiếp nhận, lắp đặt, điều chỉnh và chạy thử thiết bị với sự giám sát, phối hợp kỹ thuật của đội ngũ chuyên gia SMS.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Tháng 9/2026, Hòa Phát đã hoàn thành gần 70% tiến độ dự án Nhà máy sản xuất ray và thép đặc biệt Hòa Phát Dung Quất. Hiện dự án đang được đẩy nhanh tiến độ, tập trung hoàn thiện kết cấu nhà xưởng và lắp đặt thiết bị công nghệ. Nhà máy sản xuất ray và thép đặc biệt Hòa Phát Dung Quất có công suất thiết kế 700.000 tấn/năm, tổng vốn đầu tư hơn 10.000 tỷ đồng. Dự án sử dụng dây chuyền công nghệ từ Tập đoàn SMS group (Đức), trang bị hệ thống giá cán bốn trục linh hoạt có độ chính xác cao, đáp ứng các tiêu chuẩn khắt khe nhất trên thế giới. Dự kiến từ tháng 10/2026, Nhà máy sản xuất ray và thép đặc biệt Hòa Phát Dung Quất sẽ bước vào giai đoạn cao điểm tiếp nhận, lắp đặt, điều chỉnh và chạy thử thiết bị với sự giám sát, phối hợp kỹ thuật của đội ngũ chuyên gia SMS. Song song với việc đẩy mạnh tiến độ thi công dự án, Hòa Phát cũng phối hợp với Tập đoàn SMS và Trường Vật liệu - Đại học Bách khoa tổ chức đào tạo cho đội ngũ kỹ sư, nhân sự kỹ thuật để có thể nhanh chóng nhận chuyển giao công nghệ, sẵn sàng làm chủ sản xuất và vận hành nhà máy ổn định. Đồng thời, Công ty Cổ phần Ray và Thép đặc biệt Hòa Phát Dung Quất đang kiện toàn bộ máy nhân sự qua công tác bố trí, bổ nhiệm đội ngũ quản lý ở các vị trí phù hợp. Sản phẩm thép công nghệ cao của nhà máy bao gồm: ray đường sắt tốc độ cao, các loại thép ray đường sắt đô thị, ray cầu trục. Ngoài ra, nhà máy còn sản xuất các dòng thép hình U, I, H, V và nhiều loại thép đặc biệt khác. Với lợi thế luyện thép từ quặng sắt ít tạp chất, ray thép Hòa Phát sản xuất đạt chiều dài lên đến 100m, độ thẳng, độ phẳng cao, độ cứng ray vượt trội. Hòa Phát kiểm soát hình học thanh ray chuẩn xác bằng thiết bị laser, siêu âm khuyết tật bên trong đảm bảo chất lượng ray thép hoàn hảo trước khi đưa ra thị trường. Sản phẩm tuân thủ những tiêu chuẩn khắt khe nhất thế giới, bao gồm EN 3674 (Châu Âu), JIS E1101 (Nhật Bản), GB/T 2585 (Trung Quốc) và TB/T 2344 (Trung Quốc), đáp ứng yêu cầu kỹ thuật nghiêm ngặt trong ngành giao thông và công nghiệp nặng. Dự kiến quý 1/2027, Hòa Phát sẽ cho ra lò sản phẩm ray đường sắt cao tốc đầu tiên, kịp thời phục vụ các dự án đường sắt trọng điểm của quốc gia, khẳng định năng lực sản xuất của Hòa Phát đối với các sản phẩm thép có giá trị gia tăng cao.",
+      "published_at": "2026-09-21T18:20:00",
+      "crawled_at": "2026-10-01T00:49:13.545641+00:00",
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.23672094329028634,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vuon-tam-quoc-te-nho-lam-chu-cong-nghe/42008429",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "a755573d2f437b1d9df5",
+      "source": "cafef",
+      "url": "https://cafef.vn/cong-ty-con-cua-hoa-phat-duoc-chuyen-muc-dich-su-dung-gan-15ha-dat-lam-du-an-188260918094528163.chn",
+      "title": "Công ty con của Hòa Phát được chuyển mục đích sử dụng gần 1,5ha đất làm dự án",
+      "description": "Chế tạo Kim loại Hoà Phát được chuyển mục đích sử dụng gần 1,5ha đất tại phường Yên Sở để làm Dự án xây dựng Công trình hỗn hợp và nhà trẻ.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 16/9/2026, UBND TP.Hà Nội đã có quyết định về việc cho Công ty TNHH Chế tạo Kim loại Hòa Phát chuyển mục đích sử dụng 14.969 m2 đất tại phường Yên Sở để thực hiện Dự án xây dựng Công trình hỗn hợp (dịch vụ thương mại, công cộng, văn phòng, nhà ở) và nhà trẻ. Trong tổng số 14.969 m2 đất có 13.469 m2 đất để xây dựng công trình hỗn hợp văn phòng, thương mại, nhà ở, Nhà nước giao đất có thu tiền sử dụng đất và 1.500 m2 đất để xây dựng nhà trẻ; Nhà nước cho thuê đất trả tiền thuê đất hằng năm. Thời hạn thuê đất là 50 năm kể từ ngày UBND TP ký quyết định. UBND TP.Hà Nội giao các sở, ngành liên quan xác định giá đất tính thu tiền sử dụng đất, tiền thuê đất; hướng dẫn chủ đầu tư thực hiện các nghĩa vụ tài chính theo quy định. UBND phường Yên Sở thường xuyên kiểm tra việc sử dụng đất của Công ty TNHH Chế tạo Kim loại Hòa Phát và Công ty CP Xây dựng và Phát triển Đô thị Hòa Phát theo các nội dung quy định tại Quyết định này, kịp thời phát hiện và xử lý vi phạm theo thẩm quyền, báo cáo UBND TP. Trong thời hạn 12 tháng liên tục kể từ khi nhận bàn giao đất ngoài thực địa, chủ đầu tư phải đưa đất vào sử dụng; trường hợp không đưa đất vào sử dụng hoặc tiến độ sử dụng đất chậm 24 tháng so với tiến độ ghi trong dự án đầu tư kể từ khi nhận bàn giao đất trên thực địa thì Công ty TNHH Chế tạo Kim loại Hòa Phát được gia hạn sử dụng đất 24 tháng. Hết thời hạn được gia hạn mà chưa đưa đất vào sử dụng hoặc sử dụng đất không đúng mục đích thì UBND TP thu hồi đất mà không bồi thường về đất, tài sản gắn liền với đất và chi phí đầu tư vào đất còn lại. Về Chế tạo Kim loại Hòa Phát, doanh nghiệp này được thành lập vào tháng 8/1992, trụ sở chính tại phường Hai Bà Trưng, TP.Hà Nội; tiền thân là Công ty TNHH Thiết bị phụ tùng Hòa Phát, thành viên đầu tiên của Công ty CP Tập đoàn Hòa Phát (MCK: HPG). BCTC hợp nhất soát xét 6 tháng 2026 của HPG thể hiện, Chế tạo Kim loại Hòa Phát là công ty con do Hòa Phát nắm 99,9294% vốn điều lệ (tính đến ngày 30/6/2026). Hiện, ông Nguyễn Ngọc Quang- Thành viên HĐQT Tập đoàn Hòa Phát, đang đảm nhiệm vị trí Chủ tịch HĐQT Chế tạo Kim loại Hòa Phát. Hòa Phát được biết đến là Tập đoàn sản xuất công nghiệp hàng đầu Việt Nam. Theo giới thiệu trên website, khởi đầu từ một công ty chuyên buôn bán các loại máy xây dựng từ tháng 8/1992, Hòa Phát lần lượt mở rộng sang các lĩnh vực khác như Nội thất, ống thép, thép xây dựng, điện lạnh, bất động sản và nông nghiệp. Ngoài mảng thép, tập đoàn hiện còn đang hoạt động trong các lĩnh vực: Nông nghiệp - Bất động sản – Điện máy gia dụng.",
+      "published_at": "2026-09-18T11:45:00",
+      "crawled_at": "2026-10-01T00:49:14.108077+00:00",
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.020174050632911392,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/doanh-nghiep-cua-ty-phu-tran-dinh-long-dat-dong-tau-65-000-dwt-thuoc-loai-lon-nhat-tung-duoc-ky-su-cong-nhan-viet-nam-truc-tiep-dong-moi/41988567",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "a94be8e6541834fb0b0a",
+      "source": "cafef",
+      "url": "https://cafef.vn/ty-phu-tran-dinh-long-dau-tu-may-xuc-lat-dien-va-xe-dau-keo-dien-188260916092507394.chn",
+      "title": "Tỷ phú Trần Đình Long đầu tư máy xúc lật điện và xe đầu kéo điện",
+      "description": "Đây là hoạt động nằm trong chiến lược chuyển đổi sử dụng phương tiện, thiết bị sử dụng điện, hướng tới xanh hóa sản xuất và phát triển bền vững.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 14/9/2026, Công ty Thép Hòa Phát Dung Quất tiếp nhận hàng loạt phương tiện điện hóa, bao gồm máy xúc lật điện và xe đầu kéo điện. Ông Hoàng Ngọc Phượng – Phó Giám đốc Thép Hòa Phát Dung Quất cho biết, Công ty đầu tư đội phương tiện hiện đại, sử dụng công nghệ xanh giúp giảm tiêu thụ nhiên liệu hóa thạch, hạn chế phát thải lên môi trường và góp phần tối ưu chi phí vận hành của Khu liên hợp. Điều này cho thấy trách nhiệm xã hội và cam kết của Công ty trong việc chuyển đổi xanh, giúp doanh nghiệp nâng cao năng lực cạnh tranh, đáp ứng các tiêu chuẩn môi trường ngày càng khắt khe của thị trường trong nước và quốc tế. Xe đầu kéo điện và máy xúc lật điện thuộc thế hệ thiết bị mới, ứng dụng công nghệ vận hành thông minh, sở hữu động cơ điện với hiệu suất vượt trội và khả năng đáp ứng tốt yêu cầu làm việc trong môi trường công nghiệp nặng. Các phương tiện điện hóa này giúp tiết kiệm đáng kể năng lượng tiêu thụ và hoàn toàn không phát thải khí nhà kính. Khu liên hợp sản xuất gang thép Hòa Phát Dung Quất có công suất 12 triệu tấn/năm. Khu liên hợp áp dụng nhiều giải pháp tiết kiệm năng lượng như tận dụng nhiệt dư, áp suất dư trong quá trình sản xuất, nguồn hơi nước bão hõa để phát điện. Nửa đầu năm 2026, Thép Hòa Phát Dung Quất đạt sản lượng điện tự phát khoảng 2,28 tỷ KWh, tự chủ khoảng 90% nhu cầu điện sản xuất. Khu liên hợp sản xuất gang thép Hòa Phát Dung Quất có công suất 12 triệu tấn/năm. Khu liên hợp áp dụng nhiều giải pháp tiết kiệm năng lượng như tận dụng nhiệt dư, áp suất dư trong quá trình sản xuất, nguồn hơi nước bão hõa để phát điện. Nửa đầu năm 2026, Thép Hòa Phát Dung Quất đạt sản lượng điện tự phát khoảng 2,28 tỷ KWh, tự chủ khoảng 90% nhu cầu điện sản xuất.",
+      "published_at": "2026-09-16T09:24:00",
+      "crawled_at": "2026-10-01T00:49:14.693483+00:00",
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03634444622903425,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/doanh-nghiep-cua-ty-phu-tran-dinh-long-dat-dong-tau-65-000-dwt-thuoc-loai-lon-nhat-tung-duoc-ky-su-cong-nhan-viet-nam-truc-tiep-dong-moi/41988567",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "0fce72975bb39c63000f",
+      "source": "cafef",
+      "url": "https://cafef.vn/ctck-noi-ve-thue-cbpg-2855-usd-tan-voi-hoa-phat-xuat-khau-thep-viet-nam-sang-mexico-la-hat-cat-voi-dn-ty-do-rui-ro-nam-o-cho-khac-188260910141614694.chn",
+      "title": "CTCK nói về thuế CBPG 285,5 USD/tấn với Hòa Phát: Xuất khẩu thép Việt Nam sang Mexico là \"hạt cát\" với DN tỷ đô, rủi ro nằm ở chỗ khác",
+      "description": "Dù mức thuế chống bán phá giá mà Mexico áp lên HRC của Hòa Phát tương đương gần một nửa giá thép thế giới, Chứng khoán VietinBank cho rằng thiệt hại trực tiếp với doanh nghiệp không đáng kể. Rủi ro lớn hơn nằm ở khả năng các thị trường khác nối tiếp Mexico dựng thêm hàng rào thương mại.",
+      "content": "HPG: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Trong báo cáo phân tích mới công bố, CTCP Chứng khoán VietinBank (VBSE) đánh giá tác động của việc Mexico áp thuế chống bán phá giá đối với thép cuộn cán nóng (HRC) có xuất xứ Việt Nam và Trung Quốc, trong đó Hòa Phát là một trong những doanh nghiệp chịu mức thuế cao nhất. Cụ thể, ngày 3/9/2026, Mexico công bố kết luận cuối cùng của cuộc điều tra chống bán phá giá HRC, khép lại quá trình kéo dài khoảng 18 tháng kể từ khi vụ việc được khởi xướng ngày 3/3/2025 theo đơn của Ternium México. Theo quyết định, HRC của Công ty CP Thép Hòa Phát Dung Quất chịu thuế 285,5 USD/tấn, trong khi sản phẩm của Formosa Hà Tĩnh chịu mức 271,9 USD/tấn. Các nhà xuất khẩu khác của Việt Nam thuộc phạm vi điều tra cũng bị áp mức 285,5 USD/tấn. Cơ quan Mexico cho biết trong giai đoạn điều tra từ tháng 9/2023 đến hết tháng 8/2024, lượng HRC nhập khẩu từ Việt Nam và Trung Quốc tăng 132%. Thị phần của nhóm hàng này tăng từ 9% lên 14% tổng nhập khẩu HRC của Mexico, đồng thời tăng từ 1,9% lên 3,7% tiêu thụ nội địa. Giá nhập khẩu được xác định thấp hơn khoảng 15% so với doanh nghiệp nội địa Mexico và thấp hơn khoảng 31% so với các nguồn nhập khẩu khác. Thuế cao nhưng thị trường Mexico quá nhỏ Xét về mức tuyệt đối, thuế 285,5 USD/tấn tạo ra rào cản đáng kể đối với HRC của Hòa Phát. VBSE cho biết giá HRC thế giới hiện dao động khoảng 530-600 USD/tấn. Như vậy, riêng khoản thuế tại Mexico đã tương đương khoảng 48-54% giá bán, khiến lợi thế cạnh tranh về giá gần như bị triệt tiêu. Công ty chứng khoán này cho rằng xuất khẩu HRC sang Mexico khó còn duy trì ở quy mô có ý nghĩa thương mại sau quyết định trên. Tuy nhiên, trong trung và dài hạn, đây không phải điều tiêu cực khi đặt quy mô thị trường Mexico bên cạnh hoạt động của Hòa Phát. Theo số liệu được VBSE sử dụng trong báo cáo, tổng kim ngạch xuất khẩu thép Việt Nam sang Mexico năm 2024 chỉ khoảng 1,26 triệu USD, tương đương khoảng 32 tỷ đồng. Báo cáo so sánh con số này với doanh thu 140.500 tỷ đồng của Hòa Phát năm 2024 và ước tính tỷ lệ chỉ khoảng 0,023% - tương đương \"hạt cát\" trong doanh nghiệp có quy mô tỷ đô. Mexico cũng không nằm trong nhóm 10 thị trường xuất khẩu thép lớn nhất của Việt Nam. Do đó, VBSE đánh giá ảnh hưởng ngắn hạn chủ yếu nằm ở tâm lý thị trường hơn là kết quả kinh doanh thực tế của Hòa Phát. Nền tảng kinh doanh nửa đầu năm cũng được xem là một yếu tố giảm bớt tác động. Theo báo cáo, Hòa Phát ghi nhận doanh thu 108.870 tỷ đồng trong 6 tháng đầu năm 2026, tăng 47% so với cùng kỳ và hoàn thành 52% kế hoạch năm. Lợi nhuận sau thuế đạt 15.480 tỷ đồng, tăng 103%, tương đương 70% mục tiêu 22.000 tỷ đồng cả năm. Sản lượng thép thô trong kỳ đạt khoảng 7 triệu tấn, còn sản lượng HRC bán ra đạt 3,4 triệu tấn, tăng 57% so với cùng kỳ. Hòa Phát tiếp tục giữ khoảng 36% thị phần thép xây dựng trong nước. Rủi ro lớn hơn nằm ở “hiệu ứng domino” Theo VBSE, trong giai đoạn 2027-2028, áp lực sẽ tăng lên nếu nhiều quốc gia đồng thời dựng hàng rào chống bán phá giá với HRC Việt Nam. Điều này càng đáng chú ý khi các dự án mở rộng công suất của Hòa Phát bắt đầu đưa thêm lượng lớn HRC ra thị trường. VBSE ước tính Dung Quất 2 có thể bổ sung khoảng 3-4 triệu tấn HRC mỗi năm từ năm 2027. Khi đó, bài toán quan trọng với Hòa Phát là tìm đầu ra cho phần công suất mới nếu một số thị trường xuất khẩu tiếp tục siết nhập khẩu. Một “vùng bảo hộ” của doanh nghiệp là thị trường trong nước và các thị trường xuất khẩu chưa bị áp thuế CBPG (Đông Nam Á, Nam Á, Trung Đông). Theo báo cáo, chiến lược của Hòa Phát là duy trì tỷ trọng xuất khẩu dưới 20% tổng sản lượng, ưu tiên tiêu thụ nội địa. Việt Nam cũng đang áp thuế chống bán phá giá 27,83% đối với một số sản phẩm HRC nhập khẩu từ Trung Quốc, qua đó tạo thêm lớp bảo vệ cho các nhà sản xuất trong nước. VBSE cho rằng HRC từ công suất mới có thể được hấp thụ bởi các ngành ô tô, điện tử, thiết bị gia dụng trong nước, song khả năng tiêu thụ vẫn cần được theo dõi khi Dung Quất 2 vận hành đầy đủ. Về dài hạn, công ty chứng khoán nhìn nhận các rào cản thương mại cũng có thể thúc đẩy Hòa Phát chuyển mạnh hơn sang nhóm sản phẩm có giá trị gia tăng cao như thép đường sắt, thép ô tô và thép chuyên dụng, qua đó giảm sự phụ thuộc vào HRC cơ bản. Theo đánh giá tổng hợp của VBSE, quyết định từ Mexico là thông tin bất lợi trong ngắn hạn nhưng chưa tạo ra tác động tài chính đáng kể đối với Hòa Phát. Biến số cần theo dõi trong những năm tới là liệu các thị trường xuất khẩu lớn khác có nối tiếp Mexico áp biện pháp phòng vệ thương mại hay không, trong bối cảnh Hòa Phát bước vào chu kỳ tăng mạnh công suất HRC. Mexico chốt mức thuế chống bán phá giá thép HRC của Hòa Phát và Formosa sau vụ điều tra hơn 1 năm",
+      "published_at": "2026-09-10T14:18:00",
+      "crawled_at": "2026-10-01T01:10:37.510513+00:00",
+      "attachments": [],
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.025284339457567803,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vuon-tam-quoc-te-nho-lam-chu-cong-nghe/42008429",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    },
+    {
+      "id": "21092e0436cdac392535",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/hpg-2973444/hpg-chi-gai-ong-doan-gia-cuong-pho-chu-tich-hdqt-dang-ky-ban-350000-cp.chn",
+      "title": "HPG: Chị gái ông Doãn Gia Cường - Phó chủ tịch HĐQT đăng ký bán 350.000 cp",
+      "description": "HPG: Chị gái ông Doãn Gia Cường - Phó chủ tịch HĐQT đăng ký bán 350.000 cp",
+      "content": "Doãn Thị Bích Ngọc thông báo giao dịch cổ phiếu của người có liên quan của Người nội bộ Công ty Cổ phần Tập đoàn Hòa Phát như sau: Các tập tin đính kèm 20260910 - HPG - Thong bao giao dich co phieu HPG cua ba Doan Thi Bich Ngoc NCLQ CDNB ban CBTT.pdf Theo HOSE",
+      "published_at": "2026-09-09T17:00:00+00:00",
+      "crawled_at": "2026-10-01T00:51:53.673050+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/100926/hpg-thong-bao-giao-dich-co-phieu-cua-nguoi-co-lien-quan-cua-nguoi-noi-bo-doan-thi-bich-ngoc-0.pdf?v=1789031923011"
+      ],
+      "symbols": [
+        "HPG"
+      ],
+      "matched_symbols": [
+        "HPG"
+      ],
+      "scopes": [
+        "HPG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.011744386873920551,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/HPG/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T08:11:28.428587+00:00"
+      }
+    }
+  ]
+}

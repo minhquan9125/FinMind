@@ -1,0 +1,331 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "01-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "bd827c74c1e7bfa86741",
+      "source": "cafef",
+      "url": "https://cafef.vn/5-ca-nhan-dua-hon-1000-ty-dong-co-phieu-vic-vao-cong-ty-rieng-cua-ong-pham-nhat-vuong-188260929085824312.chn",
+      "title": "5 cá nhân đưa hơn 1.000 tỷ đồng cổ phiếu VIC vào công ty riêng của ông Phạm Nhật Vượng",
+      "description": "Tổng giám đốc, Kế toán trưởng, Trưởng ban Kiểm soát Vingroup và hai người thân của lãnh đạo này cùng đăng ký góp hơn 4,43 triệu cổ phiếu VIC vào Công ty CP Tập đoàn Đầu tư Việt Nam.",
+      "content": "VIC: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 25/9/2026, Công ty CP Tập đoàn Đầu tư Việt Nam, viết tắt là VIG công bố nhận chuyển nhượng 4.432.980 cổ phiếu VIC của Vingroup. VIG hiện sở hữu 2.520.265.316 cổ phiếu VIC , tương đương 32,468% vốn Vingroup. Sau khi nhận đủ số cổ phiếu góp vốn, lượng sở hữu dự kiến tăng lên 2.524.698.296 cổ phiếu, tương đương 32,526% , giữ vững vị trí cổ đông lớn nhất của Vingroup. VIC đóng cửa phiên 28/9 ở mức 231.900 đồng/cổ phiếu. Tính trên mức giá này, 4,433 triệu cổ phiếu có giá trị thị trường khoảng 1.028 tỷ đồng. Công ty CP Tập đoàn Đầu tư Việt Nam là một trong những pháp nhân đầu tư quan trọng nhất liên quan đến ông Phạm Nhật Vượng. Theo hồ sơ ứng viên HĐQT Vingroup nhiệm kỳ 2026-2031 công bố hồi tháng 4, ông Phạm Nhật Vượng sở hữu 94,80% vốn VIG. Bà Phạm Thúy Hằng sở hữu 2,57%, trong khi bà Phạm Thu Hương sở hữu 2,63%. Tổng cộng 3 tỷ phú này nắm 100% VIG. Ngoài lượng cổ phần lớn nhất tại Vingroup, VIG còn là một cổ đông đặc biệt lớn của VinFast. Báo cáo thường niên 20-F mới nhất của VinFast gửi Ủy ban Chứng khoán và Giao dịch Mỹ (SEC) cho biết VIG sở hữu 769.584.044 cổ phiếu VinFast Auto Ltd., tương đương 32,9% vốn. Theo dữ liệu sở hữu công bố gần nhất, cơ cấu cổ đông của Vingroup có VIG là cổ đông lớn nhất, đứng thứ 2 là Công ty CP Đầu tư và Phát triển Đường sắt cao tốc VinSpeed với 10,75%; tiếp đến là ông Phạm Nhật Vượng với 9,07%. Bà Phạm Thu Hương trực tiếp nắm khoảng 4,4%, VinEnergo khoảng 4,27% và bà Phạm Thúy Hằng khoảng 2,94%. Vingroup rót thêm 9.500 tỷ đồng vào công ty làm khu công nghiệp gần 1.000 ha tại Hà Tĩnh",
+      "published_at": "2026-09-29T08:58:00",
+      "crawled_at": "2026-10-01T09:12:58.952638+00:00",
+      "attachments": [],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03962703962703963,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "ec755b614b07bfcbf30d",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vic-2985710/vic-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-nguyen-the-anh-nguyen-thi-thu-hien-nguyen-viet-quang.chn",
+      "title": "VIC: Thông báo giao dịch cổ phiếu của Người nội bộ Nguyễn Thế Anh, Nguyễn Thị Thu Hiền, Nguyễn Việt Quang",
+      "description": "VIC: Thông báo giao dịch cổ phiếu của Người nội bộ Nguyễn Thế Anh, Nguyễn Thị Thu Hiền, Nguyễn Việt Quang",
+      "content": "Nguyễn Thế Anh, Nguyễn Thị Thu Hiền, Nguyễn Việt Quang thông báo giao dịch cổ phiếu của Người nội bộ Tập đoàn Vingroup - Công ty Cổ phần như sau: Các tập tin đính kèm 20260925 - VIC - TB giao dich CP VIC cua NNB va NCLQ cua NNB - ban CBTT-NGUYENTHEANH.pdf 20260925 - VIC - TB giao dich CP VIC cua NNB va NCLQ cua NNB - ban CBTT-NGUYENVIETQUANG.pdf 20260925 - VIC - TB giao dich CP VIC cua NNB va NCLQ cua NNB - ban CBTT-NGUYENTHITHUHIEN.pdf Theo HOSE",
+      "published_at": "2026-09-28T02:46:22+00:00",
+      "crawled_at": "2026-10-01T09:12:59.513030+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/280926/vic-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-nguyen-the-anh-nguyen-thi-thu-hien-nguyen-viet-quang-0.pdf?v=1790563709342",
+        "https://cafefnew.mediacdn.vn/download/280926/vic-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-nguyen-the-anh-nguyen-thi-thu-hien-nguyen-viet-quang-1.pdf?v=1790563709563",
+        "https://cafefnew.mediacdn.vn/download/280926/vic-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-nguyen-the-anh-nguyen-thi-thu-hien-nguyen-viet-quang-2.pdf?v=1790563709825"
+      ],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008360655737704918,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "337164fe6a98a055831c",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vic-2985709/vic-thong-bao-giao-dich-co-phieu-cua-nguoi-co-lien-quan-cua-nguoi-noi-bo-phan-hong-nhung-phan-quang-dang.chn",
+      "title": "VIC: Thông báo giao dịch cổ phiếu của người có liên quan của Người nội bộ Phan Hồng Nhung, Phan Quang Đăng",
+      "description": "VIC: Thông báo giao dịch cổ phiếu của người có liên quan của Người nội bộ Phan Hồng Nhung, Phan Quang Đăng",
+      "content": "Phan Hồng Nhung, Phan Quang Đăng thông báo giao dịch cổ phiếu của người có liên quan của Người nội bộ Tập đoàn Vingroup - Công ty Cổ phần như sau: Các tập tin đính kèm 20260925 - VIC - TB giao dich CP VIC cua NNB va NCLQ cua NNB - ban CBTT-PHANQUANGDANG.pdf 20260925 - VIC - TB giao dich CP VIC cua NNB va NCLQ cua NNB - ban CBTT-PHANHONGNHUNG.pdf Theo HOSE",
+      "published_at": "2026-09-28T02:44:51+00:00",
+      "crawled_at": "2026-10-01T09:13:00.064581+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/280926/vic-thong-bao-giao-dich-co-phieu-cua-nguoi-co-lien-quan-cua-nguoi-noi-bo-phan-hong-nhung-phan-quang-ang-0.pdf?v=1790563706399",
+        "https://cafefnew.mediacdn.vn/download/280926/vic-thong-bao-giao-dich-co-phieu-cua-nguoi-co-lien-quan-cua-nguoi-noi-bo-phan-hong-nhung-phan-quang-ang-1.pdf?v=1790563706631"
+      ],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008585858585858586,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "8e8187eb82e6f73194d0",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vic-2985706/vic-thong-bao-giao-dich-co-phieu-cua-to-chuc-co-lien-quan-cua-nguoi-noi-bo-cong-ty-co-phan-tap-doan-dau-tu-viet-nam.chn",
+      "title": "VIC: Thông báo giao dịch cổ phiếu của tổ chức có liên quan của Người nội bộ Công ty Cổ phần Tập đoàn Đầu tư Việt Nam",
+      "description": "VIC: Thông báo giao dịch cổ phiếu của tổ chức có liên quan của Người nội bộ Công ty Cổ phần Tập đoàn Đầu tư Việt Nam",
+      "content": "Công ty Cổ phần Tập đoàn Đầu tư Việt Nam thông báo giao dịch cổ phiếu của tổ chức có liên quan của Người nội bộ Tập đoàn Vingroup - Công ty Cổ phần như sau: Các tập tin đính kèm 20260925 - VIC - TB giao dich CP VIC cua Cong ty Tap doan Dau tu Viet Nam - ban CBTT.pdf Theo HOSE",
+      "published_at": "2026-09-28T02:42:02+00:00",
+      "crawled_at": "2026-10-01T09:13:00.606686+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/280926/vic-thong-bao-giao-dich-co-phieu-cua-to-chuc-co-lien-quan-cua-nguoi-noi-bo-cong-ty-co-phan-tap-doan-au-tu-viet-nam-0.pdf?v=1790563458770"
+      ],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008732876712328766,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "dd0e372b931b6e4c556d",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vic-2985705/vic-thong-bao-ve-viec-tham-gia-gop-von-thanh-lap-cong-ty-con-cong-ty-co-phan-vin-oilgas-global.chn",
+      "title": "VIC: Thông báo về việc tham gia góp vốn thành lập công ty con - Công ty Cổ phần VIN Oil&Gas Global",
+      "description": "VIC: Thông báo về việc tham gia góp vốn thành lập công ty con - Công ty Cổ phần VIN Oil&Gas Global",
+      "content": "Tập đoàn Vingroup - Công ty Cổ phần thông báo về việc tham gia góp vốn thành lập công ty con - Công ty Cổ phần VIN Oil&Gas Global như sau: Các tập tin đính kèm 20260925 - VIC - CBTT ve viec thanh lap cong ty con.pdf Theo HOSE",
+      "published_at": "2026-09-28T02:40:10+00:00",
+      "crawled_at": "2026-10-01T09:13:01.200439+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/280926/vic-thong-bao-ve-viec-tham-gia-gop-von-thanh-lap-cong-ty-con-cong-ty-co-phan-vin-oil-gas-global-0.pdf?v=1790563456545"
+      ],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.00893169877408056,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "b8cd1e44669f4ebff033",
+      "source": "cafef",
+      "url": "https://cafef.vn/hai-chi-em-ty-phu-nguoi-viet-vua-mat-gan-230-trieu-usd-trong-mot-ngay-188260923231159839.chn",
+      "title": "Hai chị em tỷ phú người Việt vừa mất gần 230 triệu USD trong một ngày",
+      "description": "Dù mất tổng cộng gần 230 triệu USD trong một ngày nhưng hai chị em tỷ phú này vẫn nằm trong danh sách những người giàu nhất Việt Nam.",
+      "content": "VIC: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Theo dữ liệu cập nhật từ Forbes, tài sản của hai chị em tỷ phú là bà Phạm Thu Hương và bà Phạm Thuý Hằng đều giảm hơn 3% trong ngày 23/9. Trong đó, bà Hương mất 134,3 triệu USD trong khi tài sản của bà Hằng “bốc hơi” 94,4 triệu USD. Dù mất tổng cộng gần 230 triệu USD trong một ngày nhưng hai chị em tỷ phú này vẫn nằm trong danh sách những người giàu nhất Việt Nam. Theo Forbes, bà Phạm Thu Hương là người giàu thứ 3 Việt Nam với khối tài sản 4,1 tỷ USD, trong khi em gái là bà Phạm Thuý Hằng có khối tài sản 2,9 tỷ USD. Bà Phạm Thu Hương theo học tại Đại học Tổng hợp Kiev, Ukraine, chuyên ngành Luật quốc tế. Đây cũng là giai đoạn bà gặp chồng là ông Phạm Nhật Vượng (tỷ phú giàu nhất Việt Nam, theo Forbes) khi cả hai đang học tập tại Đông Âu. Sau khi tốt nghiệp, bà ở lại cùng ông Vượng để xây dựng sự nghiệp kinh doanh tại Đông Âu. Bước ngoặt lớn trong sự nghiệp của bà Hương đến khi nhóm doanh nghiệp Technocom chuyển trọng tâm hoạt động về Việt Nam và hình thành hệ sinh thái sau này trở thành Vingroup. Năm 2011, bà Hương được bầu vào HĐQT Vingroup và giữ chức Phó Chủ tịch HĐQT từ đó đến nay. Năm 2020, bà Hương cùng ông Vượng tham gia sáng lập Quỹ VinFuture. Đáng chú ý, bà Phạm Thu Hương từng là Chủ tịch của CTCP Di chuyển xanh và Thông minh GSM (đơn vị vận hành hãng taxi và gọi xe Xanh SM) trong một thời gian ngắn, khoảng nửa năm trước khi chuyển giao vị trí này cho ông Nguyễn Quốc Tuấn. Theo tin từ Reuter, GSM đang có kế hoạch IPO tại HongKong (Trung Quốc) vào năm 2028. Trong khi đó, bà Phạm Thúy Hằng tốt nghiệp Cử nhân Ngoại ngữ Nga văn, Đại học Hà Nội. Bà thuộc nhóm những người đồng hành với vợ chồng tỷ phú Phạm Nhật Vượng - Phạm Thu Hương từ thời kỳ kinh doanh tại Đông Âu, trước khi về mở rộng hoạt động trong nước. Đáng chú ý, bà Hằng khá kín tiếng và gần như không xuất hiện trước truyền thông. Năm 2005, bà Hằng được bầu vào HĐQT Vingroup và giữ chức Phó Chủ tịch từ năm 2010. Tại ĐHĐCĐ thường niên 2026, bà Hằng tiếp tục được bầu làm Phó Chủ tịch HĐQT Vingroup nhiệm kỳ 2026 – 2031. Hồ sơ giới thiệu doanh nghiệp năm 2026 của Vingroup xếp bà trong Ban lãnh đạo HĐQT. Ngoài vai trò tại Vingroup, bà Phạm Thúy Hằng còn là cổ đông sáng lập của CTCP Đầu tư và Phát triển Đường sắt cao tốc VinSpeed. Doanh nghiệp được thành lập hồi tháng 5/2025, với vốn điều lệ ban đầu 6.000 tỷ đồng, trong đó bà Hằng góp 3%. Đến cuối năm 2025, VinSpeed tăng vốn lên 45.000 tỷ đồng nhưng không công bố cơ cấu cổ đông sau thay đổi. Tài sản trên sàn chứng khoán của bà Phạm Thu Hương và Phạm Thuý Hằng chủ yếu là cổ phiếu Vingroup ( mã VIC ). Bà Hương đang trực tiếp nắm hơn 341 triệu cổ phiếu VIC (tỷ lệ 4,4%) trong khi bà Hằng sở hữu hơn 228 triệu cổ phiếu VIC (tỷ lệ 2,94%). Cổ phiếu VIC tăng chóng mặt từ đầu năm 2025 đã đưa hai nữ doanh nhân này lọt danh sách tỷ phú USD của Forbes từ tháng 2/2026. Trong một diễn biến khác, vào ngày 17/9, lãnh đạo tập đoàn đã có buổi gặp với Chủ tịch Shinhan Jin Ok-dong tại TP.HCM để mở rộng quan hệ hợp tác từ lĩnh vực tài trợ phương tiện sang thị trường vốn và các mảng kinh doanh khác. Theo The Korea Times, Shinhan đang hỗ trợ Vingroup tiếp cận trực tiếp thị trường vốn Hàn Quốc. Cụ thể, Chứng khoán Shinhan Việt Nam đã được lựa chọn làm đơn vị thu xếp độc quyền cho kế hoạch phát hành trái phiếu Arirang đầu tiên của Vingroup. Kế hoạch phát hành dự kiến trong quý 4. Chứng khoán Shinhan Việt Nam sẽ tham gia với vai trò đồng quản lý chính đợt phát hành và dự kiến trực tiếp đầu tư 40 tỷ won vào lô trái phiếu.",
+      "published_at": "2026-09-24T00:07:00",
+      "crawled_at": "2026-10-01T09:13:01.554186+00:00",
+      "attachments": [],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.0491790461297889,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "59a91d3f65d86f0b6fab",
+      "source": "cafef",
+      "url": "https://cafef.vn/mot-nu-tien-si-vua-tro-thanh-nguoi-giau-thu-2-viet-nam-188260921233239466.chn",
+      "title": "Một nữ tiến sĩ vừa vượt qua vợ ông Phạm Nhật Vượng, trở thành người giàu thứ 2 Việt Nam",
+      "description": "Khối tài sản của vị nữ tiến sĩ này lên đến 4,2 tỷ USD, đứng thứ 1.016 trong bảng xếp hạng người giàu thế giới của Forbes.",
+      "content": "VIC&VJC: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Theo bảng xếp hạng thời gian thực của Forbes, bà Phạm Thu Hương – Phó Chủ tịch HĐQT Vingroup (mã VIC) có khối tài sản hơn 4,1 tỷ USD tính đến ngày 21/9, giảm khoảng 100 triệu USD trong vòng 24 giờ. Diễn biến này khiến vợ của tỷ phú Phạm Nhật Vượng không còn là người giàu thứ 2 Việt Nam. Người vừa vượt qua bà Hương là nữ tỷ phú Nguyễn Thị Phương Thảo với khối tài sản 4,2 tỷ USD, tăng gần 200 triệu USD trong ngày 21/9. Với khối tài sản này, bà Thảo là người phụ nữ giàu nhất Việt Nam và đứng thứ 1.016 trong danh sách tỷ phú thế giới của Forbes. Tiến sĩ Nguyễn Thị Phương Thảo (sinh năm 1970) là nữ tỷ phú tự thân đầu tiên của Việt Nam và Đông Nam Á. Bà Thảo hiện là Chủ tịch HĐQT Vietjet Air (mã VJC), Chủ tịch Sovico Group và Phó Chủ tịch thường trực HDBank (mã HDB). Tài sản của 2 nữ tỷ phú biến động trái chiều chủ yếu do cổ phiếu VJC và VIC ngược pha phiên 21/9. Trong khi VIC mất gần 2,6% thị giá, cổ phiếu VJC lại bất ngờ tăng kịch trần với lệnh mua đổ dồn vào ATC. Dù vậy, nếu tính từ đầu năm đến nay, kết quả lại hoàn toàn trái ngược. Cổ phiếu VIC đã tăng gần 40% thị giá qua đó đẩy vốn hóa Vingroup lên hơn 1,8 triệu tỷ đồng, đứng số 1 sàn chứng khoán. Trong khi đó, thị giá VIC đã giảm hơn 14% từ đầu năm, vốn hóa thị trường của Vietjet tương ứng ở mức 106.000 tỷ đồng. Những ngày gần đây, Vietjet và Vingroup đều có hoạt động đáng chú ý. Vào ngày 20/9, bà Nguyễn Thị Phương Thảo đã có mặt trên chuyến bay đặc của Vietjet đưa khoảng 150 doanh nhân và nghệ sĩ Việt Nam tới New York, trong đó đoàn doanh nghiệp sang Mỹ tìm kiếm cơ hội hợp tác, đầu tư và thúc đẩy thương mại với các đối tác quốc tế. Sự xuất hiện của đoàn khách đặc biệt khiến chuyến bay nhanh chóng thu hút sự chú ý. Bởi phía sau hành trình hàng không kéo dài hàng nghìn km không chỉ là câu chuyện di chuyển từ Việt Nam sang Mỹ, mà còn là một hoạt động kết nối doanh nghiệp diễn ra đúng thời điểm New York đang tập trung nhiều sự kiện quốc tế. Trong khi đó, vào ngày 17/9, lãnh đạo Vingroup đã có buổi gặp với Chủ tịch Tập đoàn Shinhan Jin Ok-dong tại TP.HCM để mở rộng quan hệ hợp tác từ lĩnh vực tài trợ phương tiện sang thị trường vốn và các mảng kinh doanh khác. Theo The Korea Times, Shinhan đang hỗ trợ Vingroup tiếp cận trực tiếp thị trường vốn Hàn Quốc. Chứng khoán Shinhan Việt Nam đã được lựa chọn làm đơn vị thu xếp độc quyền cho kế hoạch phát hành trái phiếu Arirang (loại trái phiếu bằng đồng won do một tổ chức nước ngoài phát hành tại thị trường Hàn Quốc) đầu tiên của Vingroup. Theo The Korea Times, Chứng khoán Shinhan Việt Nam hiện đang thăm dò nhu cầu của các nhà đầu tư tổ chức Hàn Quốc trước kế hoạch phát hành dự kiến trong quý 4. Ở thương vụ này, Shinhan Securities sẽ tham gia với vai trò đồng quản lý chính đợt phát hành. Công ty cũng dự kiến trực tiếp đầu tư 40 tỷ won vào lô trái phiếu.",
+      "published_at": "2026-09-22T00:01:00",
+      "crawled_at": "2026-10-01T09:13:02.334061+00:00",
+      "attachments": [],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.046066433566433564,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "00e258d288e22cd27bd5",
+      "source": "cafef",
+      "url": "https://cafef.vn/pham-nhat-quan-anh-tro-thanh-tong-giam-doc-vinfast-toan-cau-pham-nhat-minh-hoang-tro-thanh-tong-giam-doc-gsm-toan-cau-188260912083427344.chn",
+      "title": "Phạm Nhật Quân Anh trở thành Tổng giám đốc VinFast toàn cầu, Phạm Nhật Minh Hoàng trở thành Tổng giám đốc GSM toàn cầu",
+      "description": "Tập đoàn Vingroup và các công ty trong hệ sinh thái đang đẩy mạnh việc đào tạo, phát triển nhân tài tại chỗ và chuyển giao vai trò cho thế hệ lãnh đạo trẻ.",
+      "content": "VIC: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 12/9/2026, Công ty VinFast và Công ty GSM chính thức công bố bổ nhiệm nhân sự mới, thay thế cho ông Phạm Nhật Vượng và bà Phạm Thu Hương trong vai trò lãnh đạo cấp cao toàn cầu. Theo đó, ông Phạm Nhật Quân Anh - hiện là Chủ tịch VinFast toàn cầu - sẽ kiêm nhiệm vị trí Tổng giám đốc VinFast toàn cầu thay cho ông Phạm Nhật Vượng, đồng thời được bổ nhiệm thêm vị trí Chủ tịch kiêm Tổng giám đốc VinFast Việt Nam. Ông Nguyễn Quốc Tuấn đảm nhiệm vai trò Chủ tịch GSM toàn cầu thay bà Phạm Thu Hương, ông Phạm Nhật Minh Hoàng trở thành Tổng giám đốc GSM toàn cầu kiêm Tổng giám đốc GSM Việt Nam. Hoạt động kiện toàn bộ máy nhân sự lãnh đạo cấp cao của VinFast và GSM diễn ra trong bối cảnh Tập đoàn Vingroup và các công ty trong hệ sinh thái đang đẩy mạnh việc đào tạo, phát triển nhân tài tại chỗ và chuyển giao vai trò cho thế hệ lãnh đạo trẻ, nhằm đáp ứng nhu cầu và tốc độ phát triển của hệ thống. Trước khi tiếp nhận vai trò Tổng giám đốc VinFast toàn cầu từ ông Phạm Nhật Vượng, ông Phạm Nhật Quân Anh đã được bổ nhiệm là Chủ tịch VinFast toàn cầu từ tháng 5/2026. Với việc chính thức đảm nhiệm các chức danh gồm Chủ tịch kiêm Tổng giám đốc VinFast toàn cầu và Chủ tịch kiêm Tổng giám đốc VinFast Việt Nam, ông Phạm Nhật Quân Anh sẽ chịu trách nhiệm cao nhất và toàn diện cho mọi hoạt động của VinFast trong giai đoạn tăng trưởng mới. Phát biểu sau khi được chính thức bổ nhiệm, ông Phạm Nhật Quân Anh chia sẻ: “ Tôi cam kết sẽ cùng với toàn thể đội ngũ tiếp tục nỗ lực, phát huy các giá trị cốt lõi của VinFast, mang đến cho khách hàng trên toàn thế giới những sản phẩm đẳng cấp cùng chất lượng dịch vụ cao nhất”. Ông Phạm Nhật Quân Anh Ông Phạm Nhật Quân Anh sinh năm 1993, tốt nghiệp Đại học Quản lý Singapore, từng đảm nhiệm nhiều vị trí lãnh đạo quan trọng tại VinFast và các công ty thành viên của Tập đoàn Vingroup trước khi được bổ nhiệm giữ chức Chủ tịch Hội đồng Quản trị VinFast Auto Ltd. từ tháng 5/2026. Ông đã đóng góp tích cực vào quá trình phát triển của VinFast từ giai đoạn xây dựng nền tảng tại thị trường nội địa đến hành trình mở rộng hiện diện trên thị trường quốc tế. Ngoài vai trò lãnh đạo cao nhất tại VinFast, ông Phạm Nhật Quân Anh vẫn tiếp tục đảm nhiệm vị trí Tổng giám đốc Công ty Cổ phần Sản xuất và Kinh doanh VinMetal - công ty sản xuất thép chất lượng cao thuộc hệ sinh thái Tập đoàn Vingroup. Tại GSM, ông Nguyễn Quốc Tuấn, Tổng giám đốc GSM toàn cầu đã được bổ nhiệm vị trí Chủ tịch GSM toàn cầu thay cho bà Phạm Thu Hương. Tiếp quản vai trò Tổng giám đốc GSM toàn cầu kiêm Tổng giám đốc GSM Việt Nam của ông Tuấn là ông Phạm Nhật Minh Hoàng. Ông Phạm Nhật Minh Hoàng Ông Phạm Nhật Minh Hoàng sinh năm 2000, từng đảm nhiệm các vị trí lãnh đạo cấp cao tại các công ty VinFast, Green Future, VinSmart Future, GSM... Ngoài việc tham gia điều hành, ông còn trực tiếp góp vốn và là cổ đông chính tại nhiều doanh nghiệp công nghiệp - công nghệ, năng lượng, hạ tầng trong hệ sinh thái Vingroup như VinSpeed, VinEnergo, VinMetal, VinVentures, các công ty robot… Hiện tại, VinFast đã có mặt tại 16 quốc gia trên thế giới, gồm các thị trường trọng điểm như Việt Nam, Ấn Độ, Indonesia, Philippines, châu Âu, Trung Đông và Bắc Mỹ. Các sản phẩm ô tô, xe máy điện VinFast hiện đang được sản xuất tại 4 nhà máy ở 3 quốc gia gồm Việt Nam, Indonesia và Ấn Độ. GSM với thương hiệu di chuyển xanh Green SM, hiện hãng đang vận hành tại 7 quốc gia gồm Việt Nam, Lào, Indonesia, Philippines, Ấn Độ, Kazakhstan và Đan Mạch, dự kiến sẽ mở rộng tối thiểu thêm 3 thị trường nữa ngay trong năm nay. Bên cạnh đó, GSM đang hướng tới mục tiêu trở thành công ty đại chúng quy mô toàn cầu có cổ phiếu niêm yết trên thị trường chứng khoán quốc tế.",
+      "published_at": "2026-09-12T08:34:00",
+      "crawled_at": "2026-10-01T09:13:02.698921+00:00",
+      "attachments": [],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.032692307692307694,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "bd75ee161f362fe46b21",
+      "source": "cafef",
+      "url": "https://cafef.vn/ong-pham-nhat-vuong-lam-sieu-du-an-lan-bien-can-gio-nguon-vat-lieu-den-tu-dau-188260911075127247.chn",
+      "title": "Ông Phạm Nhật Vượng làm siêu dự án lấn biển Cần Giờ: Nguồn vật liệu đến từ đâu?",
+      "description": "Theo báo cáo đánh giá tác động môi trường, dự án cần 136 triệu m³ cát, trong khi riêng diện tích san nền tại phần vực biển là 906,82 ha.",
+      "content": "VIC: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Khu đô thị du lịch lấn biển Cần Giờ, hiện được phát triển với tên thương mại Vinhomes Green Paradise, có quy mô 2.870 ha và tổng vốn đầu tư 217.054 tỷ đồng. Chủ đầu tư là Công ty cổ phần Đô thị Du lịch Cần Giờ, công ty thành viên của Vingroup . Quy mô 2.870 ha kéo theo nhu cầu san lấp rất lớn. Theo báo cáo đánh giá tác động môi trường, dự án cần 136 triệu m³ cát, trong khi riêng diện tích san nền tại phần vực biển là 906,82 ha. Để hình dung quy mô, theo số liệu Bộ Giao thông vận tải tính toán năm 2023, 4 dự án cao tốc trọng điểm tại Đồng bằng sông Cửu Long với tổng chiều dài khoảng 355 km cần 53,68 triệu m³ cát đắp nền. Như vậy, nhu cầu 136 triệu m³ cát của riêng Khu đô thị du lịch lấn biển Cần Giờ gấp hơn 2,5 lần tổng lượng cát cần cho 355 km cao tốc này, chênh khoảng 82,32 triệu m³. Để có đủ lượng vật liệu này, phương án của dự án sử dụng đồng thời ba nguồn cát. Lớn nhất là 63 triệu m³ dự kiến khai thác tại vùng S3 thuộc khu vực biển Cần Giờ. Kết quả rà soát, cập nhật do Trường Đại học Bách khoa thực hiện năm 2025 xác định vùng này có trữ lượng khoảng 129 triệu m³. Nguồn thứ hai đến từ chính phạm vi bên trong khu đô thị. Dự án sẽ đào một hồ trung tâm rộng khoảng 450 ha, sâu 12 m, qua đó dự kiến thu được 43 triệu m³ vật liệu để đưa trở lại phục vụ san lấp. 30 triệu m³ còn lại dự kiến được cung cấp từ 13 mỏ cát tại khu vực Cần Giờ. Cao độ nền 2,5–3 m, hơn 140 km kè Khối lượng 136 triệu m³ cát gắn trực tiếp với địa hình của khu vực xây dựng. Phần lớn dự án hiện là mặt nước biển, nền thấp và chịu ảnh hưởng của chế độ thủy triều. Trước khi xây dựng các công trình phía trên, khu vực này phải được tôn nền. Báo cáo tính toán mực nước triều lớn nhất ở mức 1,51 m. Cộng thêm 0,55 m nước biển dâng theo kịch bản biến đổi khí hậu và 0,3 m dự phòng an toàn, cao độ tính toán đạt 2,36 m. Trên cơ sở đó, dự án lựa chọn cao độ khống chế từ 2,5 m tại khu vực ven bờ và từ 3 m đối với khu vực ngoài khơi. Đây là cao độ mặt nền sau khi tôn cao, không phải chiều dày lớp cát san lấp; do đáy biển hiện nằm ở cao độ âm nên chiều dày tôn nền thực tế lớn hơn nhiều. Song song với việc đưa hàng trăm triệu m³ vật liệu vào san nền là một hệ thống kè có chiều dài rất lớn. Riêng kè biển có tổng chiều dài 22.383 m, trải trên năm phân khu từ A đến E. Phương án thiết kế sử dụng các ống địa kỹ thuật geotube xếp thành bờ kè cao trung bình khoảng 6 m, phía trước tiếp tục được đắp cát để hình thành bãi biển nhân tạo. Nếu kè biển dài hơn 22 km thì hệ thống kè chạy quanh hồ trung tâm còn lớn hơn nhiều, với tổng chiều dài 118.302 m, tương đương hơn 118 km. Riêng phân khu D có gần 46 km kè hồ. Tính chung hai hạng mục, chiều dài kè biển và kè hồ của dự án vượt 140 km. Hồ trung tâm không chỉ tạo ra 43 triệu m³ vật liệu san lấp. Theo phương án thi công, nước phát sinh trong quá trình bơm cát san nền cũng được dẫn về hồ để lắng cặn trước khi thoát ra biển qua ba cửa phai. Việc vận chuyển khối lượng vật liệu khổng lồ này vào khu vực thi công cũng cần những tuyến giao thông đường thủy riêng. Dự án dự kiến hình thành hai tuyến luồng tạm. Tuyến T1 nối từ luồng Soài Rạp, chạy dọc ranh dự án rồi dẫn vào hồ trung tâm. Tuyến T2 kết nối từ luồng Sài Gòn - Vũng Tàu và nhập vào tuyến T1 tại khu vực vũng quay tàu. Đáy luồng được thiết kế ở cao độ âm 7,5 m theo hệ hải đồ, nhằm bảo đảm tàu hành hải trên luồng toàn thời gian để không ảnh hưởng tới tiến độ thi công liên tục. Hoạt động nạo vét luồng dự kiến thực hiện trong 180 ngày, thi công liên tục 24 giờ mỗi ngày. Công suất nạo vét trung bình trên 93.000 m³/ngày, với khoảng 250 người gồm công nhân, người vận hành máy móc, thợ lặn và cán bộ kỹ thuật làm việc tại hiện trường. Siêu dự án 217.054 tỷ đồng đã mang về doanh thu Khu đô thị du lịch lấn biển Cần Giờ ban đầu có quy mô 600 ha. Ngày 12/06/2020, Thủ tướng Chính phủ ban hành Quyết định 826/QĐ-TTg điều chỉnh chủ trương đầu tư, nâng diện tích dự án lên 2.870 ha, tương đương khoảng 4,78 lần quy mô trước đó. Theo quyết định này, tổng vốn đầu tư sau điều chỉnh là 217.054 tỷ đồng, trong đó vốn chủ sở hữu 32.558 tỷ đồng và vốn vay thương mại 184.496 tỷ đồng. Tiến độ thực hiện dự án là 11 năm kể từ ngày quyết định điều chỉnh chủ trương đầu tư được ban hành. Thời hạn dự án đối với phần mở rộng quy mô là 50 năm kể từ ngày 12/06/2020; đối với phần diện tích 600 ha đã giao trước đó là 50 năm kể từ ngày 11/07/2007. Theo quyết định giao đất và giao khu vực biển năm 2025, dự án có hơn 15,1 triệu m² đất bãi bồi và 13,57 triệu m² khu vực biển. Riêng hạng mục lấn biển được phê duyệt ngày 20/03/2025 có diện tích 1.357,12 ha, tương ứng phần khu vực biển. Trong phạm vi 1.357,12 ha lấn biển, diện tích khu vực san nền là 906,82 ha và diện tích hồ nước là 450,3 ha. Trước đó, khoảng 13,19 ha thuộc khu lấn biển 600 ha cũ đã được san lấp, với cao độ nền khoảng 2,2-2,8 m. Trong năm 2025, quy hoạch chi tiết tỷ lệ 1/500 của 4 phân khu A, B, C và D-E được phê duyệt ngày 24/01/2025; kết quả thẩm định báo cáo đánh giá tác động môi trường được phê duyệt ngày 21/02/2025; dự án đầu tư xây dựng hạng mục lấn biển được phê duyệt ngày 20/03/2025. Đến ngày 04/12/2025, Sở Xây dựng Thành phố Hồ Chí Minh thông báo 3.800 căn nhà ở thấp tầng hình thành trong tương lai thuộc phân khu B - Khu phức hợp số 2 đủ điều kiện bán. Tại công bố kết quả kinh doanh quý 2/2026, Vinhomes cho biết hoạt động bàn giao tại các dự án, trong đó có Vinhomes Green Paradise, đóng góp vào kết quả kinh doanh trong kỳ. Theo báo cáo tài chính hợp nhất giữa niên độ đã soát xét, trong 6 tháng đầu năm 2026 Vinhomes ghi nhận doanh thu thuần 117.222 tỷ đồng, tăng 245% so với cùng kỳ năm trước, và lợi nhuận sau thuế 52.038 tỷ đồng, tăng 378%. Lợi nhuận sau thuế của cổ đông công ty mẹ đạt 48.235 tỷ đồng, tăng 373%.",
+      "published_at": "2026-09-11T07:51:00",
+      "crawled_at": "2026-10-01T09:13:03.261897+00:00",
+      "attachments": [],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.029251012145748986,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vhm-vinhomes-dieu-chinh-von-dau-tu-du-an-khu-do-thi-ven-vinh-cam-ranh/42043122",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    },
+    {
+      "id": "20098622512adec86e40",
+      "source": "cafef",
+      "url": "https://cafef.vn/500000-ty-dong-cua-vingroup-rot-vao-dau-sau-hon-1-nam-buoc-chan-vao-lam-ha-tang-188260910235201046.chn",
+      "title": "500.000 tỷ đồng của Vingroup rót vào đâu sau hơn 1 năm bước chân vào làm hạ tầng?",
+      "description": "Chỉ trong hơn một năm, hệ sinh thái Vingroup đã xuất hiện tại nhiều dự án đường sắt, quốc lộ, cầu - hầm vượt biển và nút giao cao tốc, với tổng mức đầu tư của các công trình đang triển khai lên tới hơn 500.000 tỷ đồng.",
+      "content": "VIC: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Hạ tầng giao thông đang trở thành một lĩnh vực mới trong hệ sinh thái của tỷ phú Phạm Nhật Vượng. Dấu mốc đáng chú ý xuất hiện vào đầu năm 2025, khi Vingroup đề xuất tự bỏ kinh phí nghiên cứu tuyến metro kết nối trung tâm TP.HCM với Cần Giờ. Đến tháng 5 cùng năm, VinSpeed được thành lập và nhanh chóng gây chú ý với đề xuất đầu tư tuyến đường sắt tốc độ cao Bắc - Nam có tổng vốn khoảng 1,56 triệu tỷ đồng nhưng sau đó xin rút. Sau hơn một năm, sự hiện diện của Vingroup trong lĩnh vực này đã mở rộng đáng kể, từ đường sắt tốc độ cao đến các trục giao thông đô thị, đường vượt biển và hạ tầng kết nối cao tốc. Hai tuyến đường sắt tốc độ cao hơn 230.000 tỷ đồng Một trong những dự án lớn nhất đang được VinSpeed triển khai là tuyến đường sắt tốc độ cao Hà Nội - Quảng Ninh. Ngày 30/1/2026, UBND tỉnh Quảng Ninh chấp thuận VinSpeed làm nhà đầu tư dự án. Tuyến đường dài hơn 120 km, đi qua Hà Nội, Bắc Ninh, Hải Phòng và Quảng Ninh, với tốc độ thiết kế tối đa 350 km/h. Tổng mức đầu tư của dự án khoảng 147.370 tỷ đồng, chưa bao gồm khoảng 10.270 tỷ đồng chi phí giải phóng mặt bằng từ ngân sách Nhà nước. Dự án được khởi công ngày 12/4/2026. Hiện các công việc giải phóng mặt bằng, khảo sát và chuẩn bị thi công đang được thực hiện song song. Mục tiêu của nhà đầu tư là đưa toàn tuyến vào vận hành thương mại trong năm 2028. Ở phía Nam, VinSpeed cũng là nhà đầu tư tuyến đường sắt Bến Thành - Cần Giờ, kết nối khu vực trung tâm TP.HCM với Cần Giờ. Tuyến đường dài khoảng 53 km, có tốc độ thiết kế tối đa 350 km/h và tổng mức đầu tư gần 102.000 tỷ đồng. Dự án đang thực hiện các thủ tục chuẩn bị đầu tư, đánh giá môi trường và giải phóng mặt bằng. Theo kế hoạch, tuyến đường sắt này được đặt mục tiêu khai thác từ quý IV/2028. Như vậy, riêng hai tuyến đường sắt tốc độ cao đang được VinSpeed tập trung triển khai đã có tổng vốn đầu tư hơn 234.000 tỷ đồng. Gần 162.000 tỷ đồng làm trục Quốc lộ 1A tại Hà Nội Không chỉ tham gia đường sắt, Vingroup còn xuất hiện tại một trong những dự án hạ tầng lớn nhất của Hà Nội. Liên danh do tập đoàn này đứng đầu tham gia dự án Trục không gian Quốc lộ 1A gắn với chỉnh trang, tái thiết đô thị từ Vành đai 1 đến Cầu Giẽ. Dự án được thực hiện theo hình thức PPP, hợp đồng BT, với chiều dài khoảng 36,3 km, quy mô tối đa 16 làn xe. Sơ bộ tổng mức đầu tư lên tới 161.994 tỷ đồng. Công trình được khởi công ngày 19/5/2026. Đến đầu tháng 9, liên danh do Vingroup đứng đầu đã được lựa chọn thực hiện dự án. Tại một số khu vực, việc rà soát hồ sơ đất đai, đo đạc và chuẩn bị giải phóng mặt bằng cũng đã bắt đầu. Theo kế hoạch, công trình cùng hệ thống hạ tầng liên quan được đặt mục tiêu hoàn thành vào năm 2027. Hơn 93.000 tỷ đồng cho đường vượt biển Cần Giờ - Vũng Tàu Tại khu vực phía Nam, một dự án khác có quy mô đặc biệt lớn là tuyến đường vượt biển Cần Giờ - Vũng Tàu. Công trình có tổng mức đầu tư dự kiến hơn 93.000 tỷ đồng, chiều dài khoảng 14 km, gồm hơn 8 km cầu và khoảng 3,85 km hầm vượt biển. Tuyến đường được kỳ vọng tạo kết nối trực tiếp giữa Cần Giờ và Vũng Tàu, thay vì phải di chuyển vòng qua các tuyến đường bộ hiện hữu. Vingroup công bố triển khai dự án từ ngày 1/7/2026. Theo kế hoạch của doanh nghiệp, thời gian thực hiện khoảng 3 năm kể từ khi được bàn giao mặt bằng và đáp ứng đầy đủ điều kiện khởi công. Khi hoàn thành, dự án được kỳ vọng rút ngắn thời gian di chuyển giữa Cần Giờ và Vũng Tàu xuống còn khoảng 10 phút. Mở thêm các cửa ngõ kết nối cao tốc Bến Lức - Long Thành Cùng thời điểm triển khai tuyến đường vượt biển, hệ sinh thái Vingroup còn tham gia xây dựng hai nút giao kết nối cao tốc Bến Lức - Long Thành với đường Rừng Sác và Quốc lộ 50. Trong đó, riêng nút giao Rừng Sác có tổng mức đầu tư gần 3.000 tỷ đồng. SGC, doanh nghiệp thuộc hệ sinh thái Vingroup, tham gia liên danh tổng thầu EPC thực hiện các công trình. Hai nút giao được triển khai từ ngày 1/7/2026, qua đó bổ sung các hướng kết nối cao tốc Bến Lức - Long Thành với khu vực phía Nam TP.HCM, đặc biệt là Cần Giờ. Hạ tầng dần trở thành trụ cột mới Chỉ trong thời gian ngắn, phạm vi tham gia của hệ sinh thái Vingroup trong lĩnh vực hạ tầng đã mở rộng nhanh chóng. Nếu giai đoạn đầu tập đoàn mới nghiên cứu một tuyến metro, hiện các doanh nghiệp trong hệ sinh thái đã hiện diện ở cả đường sắt tốc độ cao, quốc lộ, cầu - hầm vượt biển và hạ tầng kết nối cao tốc. Để phục vụ chiến lược này, Vingroup đã xác định hạ tầng là một trụ cột hoạt động mới. Trong đó, VinSpeed tập trung vào các dự án đường sắt, còn SGC tham gia thi công các công trình giao thông quy mô lớn. Tiến độ của nhiều dự án cũng được đặt trong khoảng thời gian khá ngắn. Trục Quốc lộ 1A tại Hà Nội hướng tới hoàn thành trong năm 2027, hai tuyến đường sắt tốc độ cao đặt mục tiêu khai thác năm 2028, còn tuyến Cần Giờ - Vũng Tàu dự kiến mất khoảng 3 năm kể từ khi đủ điều kiện thi công. Từ một tập đoàn gắn nhiều với bất động sản, du lịch, ô tô, y tế và giáo dục, việc liên tiếp xuất hiện tại các dự án giao thông trị giá hàng chục đến hàng trăm nghìn tỷ đồng cho thấy hạ tầng đang dần trở thành một mảnh ghép có quy mô đáng kể trong hệ sinh thái của tỷ phú Phạm Nhật Vượng.",
+      "published_at": "2026-09-11T00:06:00",
+      "crawled_at": "2026-10-01T09:13:03.597258+00:00",
+      "attachments": [],
+      "symbols": [
+        "VIC"
+      ],
+      "matched_symbols": [
+        "VIC"
+      ],
+      "scopes": [
+        "VIC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.018836565096952907,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/vhm-vinhomes-dieu-chinh-von-dau-tu-du-an-khu-do-thi-ven-vinh-cam-ranh/42043122",
+        "matched_file": "tin_tuc_theo_ma/VIC/fireant/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.534086+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-01T09:13:03.598026+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "VIC",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}
