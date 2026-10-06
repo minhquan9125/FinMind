@@ -80,7 +80,8 @@ export default function CompanySearchPage() {
   return (
     <div className="flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
       <Sidebar groups={userMenu} activeId="companies" onSelect={(id) => navigate(menuPaths[id])}
-        profile={{ initials: "NA", name: "Nguyễn Văn A", role: "Nhà nghiên cứu" }} />
+        profile={{ initials: "NA", name: "Nguyễn Văn A", role: "Nhà nghiên cứu" }}
+        onProfile={() => navigate("/profile")} onLogout={() => navigate("/login")} />
       <main className="min-w-0 flex-1">
         <header className="flex h-16 items-center justify-end border-b border-slate-200 bg-white px-4 sm:px-6 lg:px-8">
           <StatusBadge tone="neutral">Dữ liệu minh họa · Mock</StatusBadge>
