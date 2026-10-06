@@ -22,21 +22,7 @@ import routes from "./routes.js";
 // Re-export để thành viên import từ đây, không cần biết react-router-dom
 export { Link, useNavigate, useParams, useLocation, useSearchParams };
 
-/**
- * Lazy-load component theo chuỗi "category/ComponentName" trong routes.js.
- * Khi thành viên tạo file  src/pages/<category>/<ComponentName>.jsx,
- * route đó sẽ tự động hiển thị đúng giao diện.
- */
 
-// function lazyPage(componentPath) {
-//   return lazy(() =>
-//     import(`../pages/${componentPath}.jsx`).catch(() =>
-//       // Nếu file chưa tồn tại, hiện khung giữ chỗ tạm thời
-//       ({ default: Placeholder })
-//     )
-
-//   );
-// }
 const pageModules = import.meta.glob("../pages/*/*.jsx");
 
 function lazyPage(componentPath) {
