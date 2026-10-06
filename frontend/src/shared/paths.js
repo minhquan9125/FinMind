@@ -16,66 +16,55 @@ export const PATHS = {
 
   // Core Features
   dashboard: "/dashboard",
-  dashboardTab: (tab = "liquidity") => `/dashboard?tab=${tab}`,
 
   // Companies
   companies: "/companies",
-  companiesSearch: (query = "") => (query ? `/companies?q=${encodeURIComponent(query)}` : "/companies"),
   companyDetail: (ticker) => `/companies/${ticker}`,
-  companyFinancials: (ticker, view) =>
-    view ? `/companies/${ticker}/financials?view=${view}` : `/companies/${ticker}/financials`,
 
-  // Documents
-  documents: "/documents",
-  documentViewer: (documentId) => `/documents/${documentId}/view`,
+  // Research (R01)
+  research: "/research",
+  researchQuery: ({ company, period, question, autosubmit, history } = {}) => {
+    const params = new URLSearchParams();
+    if (company) params.set("company", company);
+    if (period) params.set("period", period);
+    if (question) params.set("question", question);
+    if (autosubmit) params.set("autosubmit", "1");
+    if (history) params.set("history", "1");
+    const qs = params.toString();
+    return qs ? `/research?${qs}` : "/research";
+  },
 
-  // Compare & Knowledge Graph
-  compare: "/compare",
-  compareTickers: (tickers = "FPT,CMG", period) =>
-    period
-      ? `/compare?tickers=${encodeURIComponent(tickers)}&period=${period}`
-      : `/compare?tickers=${encodeURIComponent(tickers)}`,
-  knowledgeGraph: "/knowledge-graph",
-  knowledgeGraphQuery: (partner) =>
-    partner ? `/knowledge-graph?q=${encodeURIComponent(partner)}` : "/knowledge-graph",
-
-  // AI Copilot
-  copilot: "/copilot",
-  copilotSession: (sessionId) => `/copilot/${sessionId}`,
-
-  // Personal Workspaces & Watchlist
+  // Watchlist (R05)
   watchlist: "/watchlist",
-  workspaces: "/workspaces",
-  history: "/history",
-  historyDetail: (sessionId) => `/history/${sessionId}`,
 
-  // Settings
-  settings: "/settings",
-  settingsAppearance: "/settings/appearance",
-  settingsLanguage: "/settings/language",
-  settingsSecurity: "/settings/security",
-  settingsData: "/settings/data",
+  // Knowledge Graph (R06)
+  graph: "/graph",
+  graphQuery: (company) =>
+    company ? `/graph?company=${encodeURIComponent(company)}` : "/graph",
+
+  // Profile
+  profile: "/profile",
 
   // Admin Workspace
   admin: "/admin",
+  adminOverview: "/admin/overview",
+  adminTraces: "/admin/traces",
+  adminTraceDetail: (traceId) => `/admin/traces/${traceId}`,
   adminSources: "/admin/sources",
-  adminIngestion: "/admin/ingestion",
-  adminIngestionRun: (runId) => `/admin/ingestion?run=${runId}`,
-  adminDataQuality: "/admin/data-quality",
-  adminValidationDetail: (validationId) => `/admin/data-quality/${validationId}`,
-  adminIndex: "/admin/index",
+  adminSourceDetail: (sourceId) => `/admin/sources/${sourceId}`,
   adminCorpus: "/admin/corpus",
-  adminQueryTraces: "/admin/query-traces",
-  adminSystemControls: "/admin/system-controls",
-  adminUsers: "/admin/users",
-
-  // Evaluation Workspace
-  evaluation: "/evaluation",
-  evaluationRun: "/evaluation/run",
-  evaluationGoldenTestSet: "/evaluation/golden-test-set",
-  evaluationTraceDetail: (traceId) => `/evaluation/traces/${traceId}`,
-
-  // Status & Errors
-  forbidden: "/403",
-  error: "/error",
+  adminCorpusVersion: (version) => `/admin/corpus/${version}`,
+  adminConfiguration: "/admin/configuration",
+  adminConfigDetail: (configId) => `/admin/configuration/${configId}`,
+  adminAudit: "/admin/audit",
+  adminAuditQuery: ({ trace, config, corpus, source, event } = {}) => {
+    const params = new URLSearchParams();
+    if (trace) params.set("trace", trace);
+    if (config) params.set("config", config);
+    if (corpus) params.set("corpus", corpus);
+    if (source) params.set("source", source);
+    if (event) params.set("event", event);
+    const qs = params.toString();
+    return qs ? `/admin/audit?${qs}` : "/admin/audit";
+  },
 };
