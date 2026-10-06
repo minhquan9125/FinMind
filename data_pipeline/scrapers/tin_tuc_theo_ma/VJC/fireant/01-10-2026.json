@@ -1,0 +1,349 @@
+{
+  "schema_version": "1.2",
+  "source": "fireant",
+  "crawl_date": "01-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "e9ccb387a689481f11d2",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/5-ti-phu-viet-nam-so-huu-hon-49-ti-usd-tai-san-rong/42019646",
+      "title": "5 tỉ phú Việt Nam sở hữu hơn 49 tỉ USD tài sản ròng",
+      "description": "5 tỉ phú Việt Nam đang sở hữu tổng tài sản ròng khoảng 49,2 tỉ USD, trong đó ông Phạm Nhật Vượng đứng đầu danh sách.",
+      "published_at": "2026-09-30T11:12:00+07:00",
+      "symbols": [
+        "HPG",
+        "VIC",
+        "VJC"
+      ],
+      "provider_id": "42019646",
+      "category": "Thị trường",
+      "content": "5 tỉ phú Việt Nam đang sở hữu tổng tài sản ròng khoảng 49,2 tỉ USD, trong đó ông Phạm Nhật Vượng đứng đầu danh sách. Tài sản ròng 5 tỉ phú Việt Nam theo Forbes (Đơn vị: tỉ USD). Đồ họa: Được tạo bởi AI Ông Phạm Nhật Vượng sở hữu 35,8 tỉ USD tài sản ròng Dữ liệu Forbes cập nhật theo thời gian thực lúc 0h00 ngày 30.9 (giờ Việt Nam) ghi nhận ông Phạm Nhật Vượng - Chủ tịch Tập đoàn Vingroup - đứng đầu danh sách những người giàu nhất Việt Nam. Forbes ghi nhận tài sản ròng của ông Phạm Nhật Vượng đạt 35,8 tỉ USD. Với khối tài sản này, ông Phạm Nhật Vượng đứng thứ 64 trong bảng xếp hạng những người giàu nhất thế giới của Forbes. Ông Phạm Nhật Vượng hiện là doanh nhân Việt Nam duy nhất có mặt trong nhóm 100 người giàu nhất hành tinh theo dữ liệu Forbes cập nhật theo thời gian thực. Bà Nguyễn Thị Phương Thảo sở hữu 4,2 tỉ USD tài sản ròng Bà Nguyễn Thị Phương Thảo - Chủ tịch Hội đồng quản trị Công ty Cổ phần Hàng không VietJet - hiện sở hữu tài sản ròng 4,2 tỉ USD. Theo Forbes, với mức tài sản này, bà Nguyễn Thị Phương Thảo đứng thứ 1.031 trong bảng xếp hạng những người giàu nhất thế giới. Bà Nguyễn Thị Phương Thảo là nữ doanh nhân giàu nhất Việt Nam theo cập nhật của Forbes. Forbes cập nhật tài sản ròng 5 tỉ phú Việt Nam theo thời gian thực lúc 0h00 ngày 30.9 (giờ Việt Nam). Bảng: AI Bà Phạm Thu Hương có 4 tỉ USD tài sản ròng Forbes ghi nhận tài sản ròng của bà Phạm Thu Hương - Phó Chủ tịch Tập đoàn Vingroup - ở mức 4 tỉ USD. Với khối tài sản ròng này, bà Phạm Thu Hương đứng thứ 1.058 trong danh sách những người giàu nhất thế giới. Bà Phạm Thúy Hằng sở hữu 2,9 tỉ USD tài sản ròng Bà Phạm Thúy Hằng - Phó Chủ tịch Tập đoàn Vingroup - có tài sản ròng 2,9 tỉ USD, theo dữ liệu cập nhật của Forbes. Bà Phạm Thúy Hằng đứng thứ 1.454 trong bảng xếp hạng những người giàu nhất thế giới. Ông Trần Đình Long có 2,3 tỉ USD tài sản ròng Ông Trần Đình Long - Chủ tịch Tập đoàn Hòa Phát - được Forbes ghi nhận sở hữu tài sản ròng 2,3 tỉ USD. Với mức tài sản này, ông Trần Đình Long đứng thứ 1.814 trong danh sách những người giàu nhất thế giới. Tính theo dữ liệu Forbes cập nhật lúc 0h00 ngày 30.9 (giờ Việt Nam), 5 tỉ phú Việt Nam trong bảng xếp hạng sở hữu tổng tài sản ròng khoảng 49,2 tỉ USD. Lưu ý: Bài viết sử dụng số liệu hiển thị trên Forbes lúc 0h00 ngày 30.9 (giờ Việt Nam). Giá trị tài sản ròng và vị trí xếp hạng được Forbes cập nhật theo thời gian thực nên có thể thay đổi khi thị trường biến động. Khương Duy Link gốc",
+      "crawled_at": "2026-10-01T09:13:12.365728+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.046066433566433564,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/mot-nu-tien-si-vua-tro-thanh-nguoi-giau-thu-2-viet-nam-188260921233239466.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "ab39fa0868bffb8cba49",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/vai-tro-cua-con-trai-ty-phu-nguyen-thi-phuong-thao-trong-thoa-thuan-vietjet-va-starlink/41987934",
+      "title": "Vai trò của con trai tỷ phú Nguyễn Thị Phương Thảo trong thoả thuận Vietjet và Starlink",
+      "description": "Trong thỏa thuận đưa Internet tốc độ cao của Starlink lên máy bay Vietjet, Galaxy Telecom – doanh nghiệp thuộc Galaxy Holdings – được giao đảm nhiệm tích hợp giải pháp, quản trị hệ thống và vận hành hạ tầng kỹ thuật Wi-Fi. Đáng chú ý, Galaxy Holdings hiện thuộc sở hữu của Milky Way, công ty do ông Nguyễn Phước Hùng Anh Victor, con trai bà Nguyễn Thị Phương Thảo, sở hữu 100% vốn.",
+      "published_at": "2026-09-28T21:14:00+07:00",
+      "symbols": [
+        "VJC"
+      ],
+      "provider_id": "41987934",
+      "category": "Doanh nghiệp",
+      "content": "Trong thỏa thuận đưa Internet tốc độ cao của Starlink lên máy bay Vietjet, Galaxy Telecom – doanh nghiệp thuộc Galaxy Holdings – được giao đảm nhiệm tích hợp giải pháp, quản trị hệ thống và vận hành hạ tầng kỹ thuật Wi-Fi. Đáng chú ý, Galaxy Holdings hiện thuộc sở hữu của Milky Way, công ty do ông Nguyễn Phước Hùng Anh Victor, con trai bà Nguyễn Thị Phương Thảo, sở hữu 100% vốn. Galaxy Telecom đứng sau hạ tầng Wi-Fi trên máy bay Vietjet Ngày 23/9 tại New York (Mỹ), Vietjet ký thỏa thuận hợp tác với Starlink nhằm đưa Internet tốc độ cao lên các chuyến bay của hãng. Theo kế hoạch, trong giai đoạn đầu, dịch vụ Starlink sẽ được triển khai trên 120 tàu bay, gồm 100 tàu Airbus A321/Boeing 737 và 20 tàu Airbus A330. Các tàu bay Vietjet tiếp nhận trong thời gian tới cũng sẽ được trang bị dịch vụ này, qua đó mở rộng phạm vi cung cấp Internet tốc độ cao trên mạng bay của hãng. Vietjet và SpaceX trao thỏa thuận hợp tác đưa internet tốc độ cao lên các chuyến bay của hãng trước sự chứng kiến của Tổng Bí thư, Chủ tịch nước Tô Lâm, lãnh đạo cấp cao và doanh nghiệp hai nước. Đáng chú ý, đứng cùng Vietjet và Starlink trong thỏa thuận này còn có Galaxy Telecom. Nếu Starlink đảm nhiệm việc cung cấp kết nối Internet qua vệ tinh, Vietjet là bên khai thác đội tàu bay, thì Galaxy Telecom phụ trách phần hạ tầng kỹ thuật để dịch vụ kết nối này có thể được đưa vào khai thác trên máy bay. Theo Galaxy Holdings, Galaxy Telecom sẽ đảm nhiệm tích hợp giải pháp, quản trị hệ thống và vận hành hạ tầng kỹ thuật viễn thông Wi-Fi trên 120 tàu bay Vietjet trong giai đoạn đầu. Như vậy, doanh nghiệp Galaxy Telecom tham gia ở khâu phía sau kết nối vệ tinh, chịu trách nhiệm tích hợp giải pháp và vận hành hệ thống Wi-Fi trên tàu bay. Đây là phần việc có ý nghĩa trực tiếp đối với khả năng khai thác dịch vụ. Kết nối từ vệ tinh chỉ là nguồn cung cấp đường truyền; để hành khách có thể truy cập Internet trong chuyến bay, dịch vụ này còn phải được tích hợp với hệ thống kết nối trên máy bay, quản trị và duy trì vận hành trong suốt hành trình. Galaxy Telecom được thành lập năm 2024, phát triển thương hiệu SkyFi trong lĩnh vực viễn thông và kết nối số. Việc tham gia triển khai Wi-Fi trên 120 tàu bay Vietjet vì vậy đánh dấu một bước mở rộng đáng chú ý đối với Galaxy Telecom, từ các dịch vụ kết nối trên mặt đất sang hạ tầng kết nối phục vụ hàng không. Mối liên hệ với con trai tỷ phú Nguyễn Thị Phương Thảo Sự tham gia của Galaxy Telecom trong thỏa thuận với Starlink đáng chú ý không chỉ ở vai trò kỹ thuật, mà còn ở cấu trúc sở hữu phía sau doanh nghiệp này. Galaxy Telecom là thành viên của Galaxy Holdings. Doanh nghiệp này được thành lập năm 2021 với vốn điều lệ ban đầu 500 tỷ đồng. Trong năm 2025, Galaxy Holdings có sự thay đổi về cơ cấu sở hữu khi quyền sở hữu doanh nghiệp được chuyển sang Công ty TNHH Đầu tư Milky Way. Milky Way là doanh nghiệp do ông Nguyễn Phước Hùng Anh Victor sở hữu 100% vốn. Ông Hùng Anh Victor, còn được biết đến với tên Tommy Nguyễn, là con trai cả của bà Nguyễn Thị Phương Thảo. Cùng với thay đổi về chủ sở hữu, quy mô vốn của Galaxy Holdings cũng tăng đáng kể. Từ mức 500 tỷ đồng khi thành lập, vốn điều lệ của doanh nghiệp được nâng lên 1.345 tỷ đồng. Galaxy Holdings hiện phát triển các doanh nghiệp hoạt động trong nhiều lĩnh vực như công nghệ, thanh toán, tài chính số và viễn thông, trong đó Galaxy Telecom phụ trách mảng kết nối. Sự xuất hiện của Galaxy Telecom trong thỏa thuận với Starlink vì thế không chỉ đáng chú ý ở vai trò kỹ thuật. Đây còn là một dấu hiệu cho thấy doanh nghiệp này đang được đặt vào một vị trí cụ thể trong mảng kết nối của Galaxy Holdings, với phạm vi hoạt động mở rộng sang hạ tầng Wi-Fi hàng không. Với Vietjet, thỏa thuận mở đường cho việc đưa Internet tốc độ cao lên máy bay và bổ sung một tiện ích mới cho hành khách. Với Starlink, đây là bước mở rộng dịch vụ Internet vệ tinh vào mạng bay của một hãng hàng không Việt Nam. Còn với Galaxy Telecom, 120 tàu bay trong giai đoạn đầu là một dự án có quy mô đáng kể đối với một doanh nghiệp mới hoạt động trong lĩnh vực viễn thông từ năm 2024. Link gốc",
+      "crawled_at": "2026-10-01T09:13:12.602074+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.06900572545733835,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/ty-phu-nguyen-thi-phuong-thao-bom-them-von-gap-6-lan-cho-vi-galaxy-pay-de-dau-tu-starlink-188260815070726494.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "b5f7f744d2cbfd249176",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/viet-nam-nang-hang-thi-truong-chung-khoan-co-hoi-va-thach-thuc-nao-cho-doanh-nghiep-viet/41975594",
+      "title": "Việt Nam nâng hạng thị trường chứng khoán: Cơ hội và thách thức nào cho doanh nghiệp Việt?",
+      "description": "Việc Việt Nam được nâng hạng lên thị trường mới nổi thứ cấp mở rộng khả năng tiếp cận dòng vốn quốc tế cho doanh nghiệp niêm yết. Song, khi cánh cửa thị trường rộng hơn, yêu cầu về minh bạch thông tin, quản trị doanh nghiệp và khả năng tiếp cận nhà đầu tư cũng được đặt ra ở mức cao hơn.",
+      "published_at": "2026-09-28T11:22:00+07:00",
+      "symbols": [
+        "BID",
+        "FPT",
+        "HPG",
+        "VCB",
+        "VHM",
+        "VIC",
+        "VJC",
+        "VNM",
+        "VPB",
+        "VRE"
+      ],
+      "provider_id": "41975594",
+      "category": "Doanh nghiệp",
+      "content": "Việc Việt Nam được nâng hạng lên thị trường mới nổi thứ cấp mở rộng khả năng tiếp cận dòng vốn quốc tế cho doanh nghiệp niêm yết. Song, khi cánh cửa thị trường rộng hơn, yêu cầu về minh bạch thông tin, quản trị doanh nghiệp và khả năng tiếp cận nhà đầu tư cũng được đặt ra ở mức cao hơn. Cơ hội mới từ dòng vốn quốc tế Ngày 21/9/2026, thị trường chứng khoán Việt Nam chính thức được FTSE Russell nâng hạng từ thị trường cận biên lên thị trường mới nổi thứ cấp, đánh dấu bước tiến quan trọng trong quá trình hội nhập với thị trường vốn quốc tế. Theo lộ trình công bố, cổ phiếu Việt Nam sẽ được đưa vào các bộ chỉ số toàn cầu của FTSE Russell theo từng giai đoạn từ tháng 9/2026 đến tháng 9/2027. Việc nâng hạng mở rộng khả năng tiếp cận thị trường Việt Nam của các quỹ đầu tư quốc tế, đặc biệt là các quỹ mô phỏng chỉ số. Với các quỹ thụ động, tác động trực tiếp trước hết đến từ việc các cổ phiếu đủ điều kiện được đưa vào các chỉ số tham chiếu và tỷ trọng được tăng dần theo lộ trình của FTSE Russell. Đồng thời, sự hiện diện trong nhóm thị trường mới nổi cũng có thể gia tăng mức độ quan tâm của các quỹ chủ động và nhà đầu tư tổ chức quốc tế, qua đó mở rộng tập nhà đầu tư có thể xem xét và phân bổ vốn vào các doanh nghiệp Việt Nam . Tuy nhiên, nâng hạng thị trường không đồng nghĩa dòng vốn quốc tế sẽ tự động phân bổ vào mọi doanh nghiệp niêm yết. Bên cạnh quy mô vốn hóa, thanh khoản và khả năng tiếp cận cổ phiếu, nhà đầu tư còn xem xét triển vọng kinh doanh, chất lượng quản trị và khả năng tiếp cận thông tin của từng doanh nghiệp. Vì vậy, cùng với cơ hội tiếp cận một thị trường vốn rộng hơn, việc nâng hạng cũng đặt doanh nghiệp Việt Nam trước một mặt bằng yêu cầu cao hơn. Nâng hạng thị trường, nâng chuẩn doanh nghiệp Nâng hạng trước hết phản ánh những cải thiện ở cấp độ hạ tầng và khả năng tiếp cận thị trường chứng khoán Việt Nam. Tuy nhiên, sau khi rào cản ở cấp thị trường được thu hẹp, quyết định phân bổ vốn vẫn diễn ra ở cấp doanh nghiệp. Đối với nhà đầu tư tổ chức quốc tế, kết quả kinh doanh là yếu tố quan trọng nhưng không phải tiêu chí duy nhất. Khả năng cung cấp thông tin đầy đủ, kịp thời và nhất quán; chất lượng quản trị; cơ chế bảo vệ quyền lợi cổ đông và khả năng đối thoại với nhà đầu tư cũng góp phần vào quá trình đánh giá doanh nghiệp. Điều đó cũng có nghĩa cơ hội từ nâng hạng sẽ gắn với khả năng chuẩn bị của từng doanh nghiệp. Những doanh nghiệp đã xây dựng nền tảng minh bạch, quản trị và quan hệ nhà đầu tư từ trước có thêm điều kiện để giới thiệu năng lực và chiến lược tới cộng đồng đầu tư quốc tế. Từ cơ hội thị trường đến khả năng nắm bắt của từng doanh nghiệp Những yêu cầu trên có thể nhìn thấy rõ ngay trong nhóm cổ phiếu Việt Nam được lựa chọn tham gia các bộ chỉ số của FTSE Global Equity Index Series. Trong 27 cổ phiếu thuộc danh sách, mức độ tiếp cận dòng vốn dự kiến không đồng đều mà phụ thuộc vào quy mô, tỷ trọng và đặc điểm của từng cổ phiếu. VCB , VIC và VHM thuộc nhóm Large Cap; BID , HPG và VPB thuộc nhóm Mid Cap; 21 cổ phiếu còn lại thuộc nhóm Small Cap, với những cái tên như FPT , VNM , MSN, SSI, VJC , HDB, STB, VRE ... Trong nhóm này, FPT là một trong những cổ phiếu dự kiến đón dòng vốn thụ động đáng kể. Theo Vietcap, FPT thuộc nhóm Small Cap theo phân loại FTSE GEIS và nằm trong nhóm cổ phiếu có quy mô dòng vốn thụ động dự kiến lớn. Khi Việt Nam được đưa vào với đầy đủ tỷ trọng, dòng vốn thụ động phân bổ vào FPT được ước tính vào khoảng 52,2 triệu USD; riêng lần phân bổ đầu tiên đầu tiên ở mức 10% tương đương khoảng 5,2 triệu USD. Tuy nhiên, mức độ tác động thực tế còn phụ thuộc vào tương quan giữa quy mô dòng vốn, thanh khoản cổ phiếu và diễn biến thị trường. Bên cạnh các điều kiện về khả năng đầu tư, khả năng tiếp cận thông tin và tiếp cận doanh nghiệp cũng là yếu tố quan trọng đối với nhà đầu tư tổ chức. Trong nhiều năm, FPT đã duy trì hệ thống công bố thông tin song ngữ, công bố kết quả kinh doanh hàng tháng và cơ chế đối thoại thường xuyên với nhà đầu tư. Việc cập nhật dữ liệu kinh doanh với tần suất cao giúp rút ngắn độ trễ thông tin giữa các kỳ báo cáo tài chính, trong khi các hoạt động gặp gỡ và trao đổi trực tiếp hỗ trợ nhà đầu tư hiểu rõ hơn về chiến lược, động lực tăng trưởng và các yếu tố rủi ro của doanh nghiệp. Những hoạt động này đã được triển khai trước khi thị trường chứng khoán Việt Nam được nâng hạng, phản ánh quá trình xây dựng nền tảng minh bạch và kết nối nhà đầu tư mang tính dài hạn của FPT . Nâng hạng thị trường chứng khoán mở thêm cánh cửa để doanh nghiệp Việt Nam tiếp cận dòng vốn quốc tế, nhưng khả năng bước qua cánh cửa đó phụ thuộc vào nền tảng của từng doanh nghiệp. Tuy nhiên, việc được đưa vào bộ chỉ số tham chiếu quốc tế không thay thế các yếu tố nền tảng của doanh nghiệp. Sau các dòng vốn kỹ thuật liên quan đến tái cơ cấu chỉ số, khả năng duy trì sự quan tâm của nhà đầu tư vẫn phụ thuộc vào tăng trưởng, hiệu quả hoạt động, quản trị và khả năng tạo giá trị dài hạn. Với FPT , việc duy trì minh bạch thông tin, đối thoại thường xuyên với cộng đồng đầu tư và hoàn thiện quản trị trong nhiều năm tạo nền tảng để Tập đoàn bước vào giai đoạn mới của thị trường vốn Việt Nam. Khi phạm vi tiếp cận của nhà đầu tư quốc tế với doanh nghiệp Việt Nam được mở rộng, FPT có thêm cơ hội giới thiệu chiến lược, năng lực và triển vọng tăng trưởng tới cộng đồng đầu tư toàn cầu. Link gốc",
+      "crawled_at": "2026-10-01T09:13:12.837714+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.009234947940244456,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/tin-vui-cho-ty-phu-nguyen-thi-phuong-thao-188261001134649009.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "365d64934d3da9b0c64f",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/so-huu-4-2-ti-usd-ba-nguyen-thi-phuong-thao-la-nguoi-phu-nu-giau-nhat-viet-nam/41970385",
+      "title": "Sở hữu 4,2 tỉ USD, bà Nguyễn Thị Phương Thảo là người phụ nữ giàu nhất Việt Nam",
+      "description": "Forbes ghi nhận bà Nguyễn Thị Phương Thảo sở hữu 4,2 tỉ USD tài sản ròng, đứng đầu trong nhóm nữ tỉ phú Việt Nam.",
+      "published_at": "2026-09-28T09:44:00+07:00",
+      "symbols": [
+        "HPG",
+        "VIC",
+        "VJC"
+      ],
+      "provider_id": "41970385",
+      "category": "Tài chính",
+      "content": "Forbes ghi nhận bà Nguyễn Thị Phương Thảo sở hữu 4,2 tỉ USD tài sản ròng, đứng đầu trong nhóm nữ tỉ phú Việt Nam. So sánh tài sản ròng 5 tỉ phú Việt Nam được Forbes ghi nhận. Biểu đồ: AI Ông Phạm Nhật Vượng sở hữu 36,2 tỉ USD tài sản ròng Dữ liệu Forbes cập nhật theo thời gian thực lúc 8h30 ngày 28.9 (giờ Việt Nam) cho thấy, ông Phạm Nhật Vượng - Chủ tịch Tập đoàn Vingroup - tiếp tục đứng đầu danh sách những người giàu nhất Việt Nam. Theo Forbes, tài sản ròng của ông Phạm Nhật Vượng hiện đạt 36,2 tỉ USD. Với khối tài sản này, ông Phạm Nhật Vượng đứng thứ 64 trong bảng xếp hạng những người giàu nhất thế giới. Ông Phạm Nhật Vượng hiện là người sở hữu tài sản ròng lớn nhất trong nhóm tỉ phú Việt Nam. Bà Nguyễn Thị Phương Thảo là người phụ nữ giàu nhất Việt Nam Đứng thứ hai trong danh sách những người giàu nhất Việt Nam là bà Nguyễn Thị Phương Thảo - Chủ tịch Hội đồng quản trị Công ty Cổ phần Hàng không VietJet. Forbes ghi nhận tài sản ròng của bà Nguyễn Thị Phương Thảo ở mức 4,2 tỉ USD. Với khối tài sản này, bà Nguyễn Thị Phương Thảo đứng thứ 1.034 trong bảng xếp hạng những người giàu nhất thế giới. Bà Nguyễn Thị Phương Thảo hiện là nữ doanh nhân Việt Nam có tài sản ròng lớn nhất được Forbes ghi nhận. Tài sản ròng 5 tỉ phú giàu nhất Việt Nam theo dữ liệu Forbes cập nhật lúc 8h30 ngày 28.9 (giờ Việt Nam). Bà Nguyễn Thị Phương Thảo là nữ tỉ phú có tài sản ròng lớn nhất Việt Nam. Bảng: AI Bà Phạm Thu Hương sở hữu 4,1 tỉ USD tài sản ròng Đứng thứ ba trong danh sách 5 tỉ phú Việt Nam là bà Phạm Thu Hương - Phó Chủ tịch Tập đoàn Vingroup. Theo Forbes, tài sản ròng của bà Phạm Thu Hương hiện đạt 4,1 tỉ USD. Bà Phạm Thu Hương đứng thứ 1.059 trong bảng xếp hạng những người giàu nhất thế giới. Bà Phạm Thúy Hằng có 2,9 tỉ USD tài sản ròng Vị trí thứ tư trong danh sách thuộc về bà Phạm Thúy Hằng - Phó Chủ tịch Tập đoàn Vingroup. Forbes ghi nhận bà Phạm Thúy Hằng sở hữu 2,9 tỉ USD tài sản ròng, đứng thứ 1.448 trong bảng xếp hạng tỉ phú thế giới. Ông Trần Đình Long sở hữu 2,3 tỉ USD tài sản ròng Ông Trần Đình Long - Chủ tịch Tập đoàn Hòa Phát - đứng thứ năm trong danh sách những người giàu nhất Việt Nam. Theo Forbes, tài sản ròng của ông Trần Đình Long hiện đạt 2,3 tỉ USD. Ông đứng thứ 1.777 trong bảng xếp hạng những người giàu nhất thế giới. Tính chung, 5 tỉ phú Việt Nam được Forbes ghi nhận đang sở hữu khoảng 49,7 tỉ USD tài sản ròng. Lưu ý: Bài viết sử dụng số liệu hiển thị trên Forbes lúc 8h30 ngày 28.9 (giờ Việt Nam). Giá trị tài sản ròng và vị trí xếp hạng được Forbes cập nhật theo thời gian thực nên có thể thay đổi khi thị trường biến động. Link gốc",
+      "crawled_at": "2026-10-01T09:13:13.073698+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.04914965986394558,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/mot-nu-tien-si-vua-tro-thanh-nguoi-giau-thu-2-viet-nam-188260921233239466.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "fedcf75c393823c3d371",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/wi-fi-cua-elon-musk-sap-len-may-bay-vietjet-dung-mien-phi-xem-video-choi-game-online-trong-khi-hang-khac-thu-gan-10-usd-30-phut/41938183",
+      "title": "Wi-Fi của Elon Musk sắp lên máy bay Vietjet: Dùng miễn phí, xem video, chơi game online trong khi hãng khác thu gần 10 USD/30 phút",
+      "description": "Vietjet công bố Starlink sẽ được cung cấp miễn phí trên các chuyến bay mang thương hiệu Vietjet. Hãng hiện chưa công bố thời điểm máy bay đầu tiên có Starlink đi vào khai thác, tốc độ thực tế hay giới hạn dung lượng trên mỗi hành khách.",
+      "published_at": "2026-09-24T15:58:00+07:00",
+      "symbols": [
+        "VJC"
+      ],
+      "provider_id": "41938183",
+      "category": "Doanh nghiệp",
+      "content": "Vietjet công bố Starlink sẽ được cung cấp miễn phí trên các chuyến bay mang thương hiệu Vietjet. Hãng hiện chưa công bố thời điểm máy bay đầu tiên có Starlink đi vào khai thác, tốc độ thực tế hay giới hạn dung lượng trên mỗi hành khách. Ảnh: DT Next Vietjet cùng Galaxy Holdings-Telecom vừa ký thỏa thuận với Starlink, dịch vụ Internet vệ tinh do SpaceX của tỷ phú Elon Musk phát triển. Giai đoạn đầu, hệ thống sẽ được lắp trên 120 tàu bay mang thương hiệu Vietjet. Starlink sử dụng mạng lưới vệ tinh quỹ đạo thấp, giúp giảm độ trễ và duy trì kết nối khi máy bay bay qua đại dương hoặc những khu vực xa hạ tầng viễn thông mặt đất. Trên các hãng đã triển khai, hành khách có thể xem video trực tuyến, gọi video, chơi game online hoặc làm việc ngay trên không. Qatar Airways là một trong những hãng triển khai mạnh nhất. Tính đến tháng 8/2026, hãng đã có 150 máy bay thân rộng được trang bị Starlink và hơn 23 triệu hành khách đã sử dụng dịch vụ. Qatar Airways công bố tốc độ có thể đạt tới 500 Mbps, đủ phục vụ xem video chất lượng cao, họp trực tuyến hay chơi game. Tuy nhiên, đây là tốc độ trên hệ thống của Qatar Airways; Vietjet chưa công bố mức cụ thể. Starlink trên Qatar Airways hiện cũng được cung cấp miễn phí trên các chuyến bay áp dụng. Emirates cho biết Starlink của hãng miễn phí cho hành khách trên những máy bay đã được trang bị. airBaltic cũng áp dụng mô hình miễn phí Starlink trên các tàu bay Airbus A220-300 có hệ thống này. Ở chiều ngược lại, Internet trên máy bay vẫn có thể là dịch vụ phải trả thêm tiền nếu hãng chưa áp dụng mô hình miễn phí. Singapore Airlines hiện niêm yết các gói mua lẻ gồm 3,99 USD cho một giờ, 8,99 USD cho ba giờ và 15,99 USD cho cả chuyến bay. Emirates cũng niêm yết Wi-Fi thông thường từ 9,99-19,99 USD cho cả chuyến, tùy thời lượng bay. Riêng gói Easy Connect tại một số khu vực có giá 9,99 USD cho 30 phút. Về phía các hãng hàng không, Starlink hiện công khai gói Aviation Regional Unlimited ở mức 12.500 USD/tháng cho mỗi máy bay, trong khi gói Aviation Global Unlimited lên tới 20.000 USD/tháng/máy bay, chưa gồm thuế. Đây là giá theo tháng, không phải giá tính theo từng chuyến bay. Starlink không công bố giá thương mại riêng của các hợp đồng với từng hãng hàng không lớn, nên không thể suy ra Vietjet phải trả mức tương tự. Điểm đáng chú ý với hành khách là Vietjet công bố Starlink sẽ được cung cấp miễn phí trên các chuyến bay mang thương hiệu Vietjet. Hãng hiện chưa công bố thời điểm máy bay đầu tiên có Starlink đi vào khai thác, tốc độ thực tế hay giới hạn dung lượng trên mỗi hành khách. Link gốc",
+      "crawled_at": "2026-10-01T09:13:13.311585+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.032992849846782434,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/ty-phu-nguyen-thi-phuong-thao-bom-them-von-gap-6-lan-cho-vi-galaxy-pay-de-dau-tu-starlink-188260815070726494.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "7352cdea38d685cff58f",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/5-ti-phu-giau-nhat-viet-nam-so-huu-hon-50-ti-usd-tai-san-rong/41888080",
+      "title": "5 tỉ phú giàu nhất Việt Nam sở hữu hơn 50 tỉ USD tài sản ròng",
+      "description": "5 tỉ phú giàu nhất Việt Nam hiện sở hữu tổng tài sản ròng khoảng 50,5 tỉ USD, trong đó ông Phạm Nhật Vượng dẫn đầu với 36,7 tỉ USD.",
+      "published_at": "2026-09-22T10:01:00+07:00",
+      "symbols": [
+        "HPG",
+        "VIC",
+        "VJC"
+      ],
+      "provider_id": "41888080",
+      "category": "Doanh nghiệp",
+      "content": "5 tỉ phú giàu nhất Việt Nam hiện sở hữu tổng tài sản ròng khoảng 50,5 tỉ USD, trong đó ông Phạm Nhật Vượng dẫn đầu với 36,7 tỉ USD. Ông Phạm Nhật Vượng dẫn đầu danh sách 5 tỉ phú giàu nhất Việt Nam với 36,7 tỉ USD tài sản ròng. Biểu đồ: AI Ông Phạm Nhật Vượng sở hữu 36,7 tỉ USD tài sản ròng Dữ liệu Forbes cập nhật lúc 9h05 ngày 22.9 (giờ Việt Nam) cho thấy, ông Phạm Nhật Vượng - Chủ tịch Tập đoàn Vingroup - tiếp tục đứng đầu danh sách những người giàu nhất Việt Nam. Forbes ghi nhận tài sản ròng của ông Phạm Nhật Vượng hiện đạt 36,7 tỉ USD. Với khối tài sản này, ông Phạm Nhật Vượng đứng thứ 61 trong bảng xếp hạng những người giàu nhất thế giới. Ông Phạm Nhật Vượng hiện là người sở hữu tài sản ròng lớn nhất trong nhóm tỉ phú Việt Nam. Bà Phạm Thu Hương có 4,127 tỉ USD tài sản ròng Đứng thứ hai trong danh sách 5 tỉ phú giàu nhất Việt Nam là bà Phạm Thu Hương - Phó Chủ tịch Tập đoàn Vingroup. Theo Forbes, bà Phạm Thu Hương hiện sở hữu tài sản ròng 4,127 tỉ USD. Bà Phạm Thu Hương đứng thứ 1.055 trong bảng xếp hạng những người giàu nhất thế giới. Danh sách 5 tỉ phú Việt Nam sở hữu tài sản ròng lớn nhất hiện nay. Số liệu được Forbes cập nhật theo thời gian thực lúc 9h05 ngày 22.9 (giờ Việt Nam). Bảng: AI Bà Nguyễn Thị Phương Thảo sở hữu 4,26 tỉ USD tài sản ròng Bà Nguyễn Thị Phương Thảo - Chủ tịch Hội đồng quản trị Công ty Cổ phần Hàng không VietJet - đứng thứ ba trong nhóm những người giàu nhất Việt Nam. Forbes ghi nhận tài sản ròng của bà Nguyễn Thị Phương Thảo ở mức 4,26 tỉ USD. Với khối tài sản này, bà Nguyễn Thị Phương Thảo đứng thứ 1.020 trong danh sách tỉ phú thế giới. Bà Phạm Thúy Hằng sở hữu 2,915 tỉ USD tài sản ròng Vị trí thứ tư trong danh sách thuộc về bà Phạm Thúy Hằng - Phó Chủ tịch Tập đoàn Vingroup. Theo Forbes, bà Phạm Thúy Hằng hiện sở hữu tài sản ròng 2,915 tỉ USD. Bà Phạm Thúy Hằng đứng thứ 1.441 trong bảng xếp hạng những người giàu nhất thế giới. Ông Trần Đình Long có 2,535 tỉ USD tài sản ròng Ông Trần Đình Long - Chủ tịch Tập đoàn Hòa Phát - đứng thứ năm trong danh sách những người giàu nhất Việt Nam. Forbes cập nhật tài sản ròng của ông Trần Đình Long ở mức 2,535 tỉ USD. Ông Trần Đình Long hiện đứng thứ 1.762 trong bảng xếp hạng tỉ phú thế giới. Tính chung, 5 tỉ phú giàu nhất Việt Nam hiện sở hữu khoảng 50,5 tỉ USD tài sản ròng. Lưu ý: Bài viết sử dụng số liệu hiển thị trên Forbes lúc 9h05 ngày 22.9 (giờ Việt Nam). Giá trị tài sản ròng và vị trí xếp hạng được Forbes cập nhật theo thời gian thực nên có thể thay đổi khi thị trường biến động. Link gốc",
+      "crawled_at": "2026-10-01T09:13:13.548045+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.04396551724137931,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/mot-nu-tien-si-vua-tro-thanh-nguoi-giau-thu-2-viet-nam-188260921233239466.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "963e04cc2c4b856a1cbf",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/mot-nu-tien-si-vua-tro-thanh-nguoi-giau-thu-2-viet-nam/41884750",
+      "title": "Một nữ tiến sĩ vừa trở thành người giàu thứ 2 Việt Nam",
+      "description": "Khối tài sản của vị nữ tiến sĩ này lên đến 4,2 tỷ USD, đứng thứ 1.016 trong bảng xếp hạng người giàu thế giới của Forbes.",
+      "published_at": "2026-09-22T08:38:00+07:00",
+      "symbols": [
+        "HDB",
+        "VIC",
+        "VJC"
+      ],
+      "provider_id": "41884750",
+      "category": "Doanh nghiệp",
+      "content": "Khối tài sản của vị nữ tiến sĩ này lên đến 4,2 tỷ USD, đứng thứ 1.016 trong bảng xếp hạng người giàu thế giới của Forbes. Theo bảng xếp hạng thời gian thực của Forbes, bà Phạm Thu Hương – Phó Chủ tịch HĐQT Vingroup (mã VIC ) có khối tài sản hơn 4,1 tỷ USD tính đến ngày 21/9, giảm khoảng 100 triệu USD trong vòng 24 giờ. Diễn biến này khiến vợ của tỷ phú Phạm Nhật Vượng không còn là người giàu thứ 2 Việt Nam. Người vừa vượt qua bà Hương là nữ tỷ phú Nguyễn Thị Phương Thảo với khối tài sản 4,2 tỷ USD, tăng gần 200 triệu USD trong ngày 21/9. Với khối tài sản này, bà Thảo là người phụ nữ giàu nhất Việt Nam và đứng thứ 1.016 trong danh sách tỷ phú thế giới của Forbes. Tiến sĩ Nguyễn Thị Phương Thảo (sinh năm 1970) là nữ tỷ phú tự thân đầu tiên của Việt Nam và Đông Nam Á. Bà Thảo hiện là Chủ tịch HĐQT Vietjet Air (mã VJC ), Chủ tịch Sovico Group và Phó Chủ tịch thường trực HDBank (mã HDB ). Tài sản của 2 nữ tỷ phú biến động trái chiều chủ yếu do cổ phiếu VJC và VIC ngược pha phiên 21/9. Trong khi VIC mất gần 2,6% thị giá, cổ phiếu VJC lại bất ngờ tăng kịch trần với lệnh mua đổ dồn vào ATC. Dù vậy, nếu tính từ đầu năm đến nay, kết quả lại hoàn toàn trái ngược. Cổ phiếu VIC đã tăng gần 40% thị giá qua đó đẩy vốn hóa Vingroup lên hơn 1,8 triệu tỷ đồng, đứng số 1 sàn chứng khoán. Trong khi đó, thị giá VIC đã giảm hơn 14% từ đầu năm, vốn hóa thị trường của Vietjet tương ứng ở mức 106.000 tỷ đồng. Những ngày gần đây, Vietjet và Vingroup đều có hoạt động đáng chú ý. Vào ngày 20/9, bà Nguyễn Thị Phương Thảo đã có mặt trên chuyến bay đặc của Vietjet đưa khoảng 150 doanh nhân và nghệ sĩ Việt Nam tới New York, trong đó đoàn doanh nghiệp sang Mỹ tìm kiếm cơ hội hợp tác, đầu tư và thúc đẩy thương mại với các đối tác quốc tế. Sự xuất hiện của đoàn khách đặc biệt khiến chuyến bay nhanh chóng thu hút sự chú ý. Bởi phía sau hành trình hàng không kéo dài hàng nghìn km không chỉ là câu chuyện di chuyển từ Việt Nam sang Mỹ, mà còn là một hoạt động kết nối doanh nghiệp diễn ra đúng thời điểm New York đang tập trung nhiều sự kiện quốc tế. Trong khi đó, vào ngày 17/9, lãnh đạo Vingroup đã có buổi gặp với Chủ tịch Tập đoàn Shinhan Jin Ok-dong tại TP.HCM để mở rộng quan hệ hợp tác từ lĩnh vực tài trợ phương tiện sang thị trường vốn và các mảng kinh doanh khác. Theo The Korea Times, Shinhan đang hỗ trợ Vingroup tiếp cận trực tiếp thị trường vốn Hàn Quốc. Chứng khoán Shinhan Việt Nam đã được lựa chọn làm đơn vị thu xếp độc quyền cho kế hoạch phát hành trái phiếu Arirang (loại trái phiếu bằng đồng won do một tổ chức nước ngoài phát hành tại thị trường Hàn Quốc) đầu tiên của Vingroup. Theo The Korea Times, Chứng khoán Shinhan Việt Nam hiện đang thăm dò nhu cầu của các nhà đầu tư tổ chức Hàn Quốc trước kế hoạch phát hành dự kiến trong quý 4. Ở thương vụ này, Shinhan Securities sẽ tham gia với vai trò đồng quản lý chính đợt phát hành. Công ty cũng dự kiến trực tiếp đầu tư 40 tỷ won vào lô trái phiếu. Link gốc",
+      "crawled_at": "2026-10-01T09:13:13.784309+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "check",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.913933456256708,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/mot-nu-tien-si-vua-tro-thanh-nguoi-giau-thu-2-viet-nam-188260921233239466.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "36d19e4ee58b8e78b945",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/ty-phu-nguyen-thi-phuong-thao-dich-than-xuat-hien-tren-chuyen-bay-toi-new-york-lam-dieu-dac-biet/41884045",
+      "title": "Tỷ phú Nguyễn Thị Phương Thảo đích thân xuất hiện trên chuyến bay tới New York, làm điều đặc biệt",
+      "description": "Chuyến bay đưa 150 doanh nhân và nghệ sĩ tới New York lần này tiếp tục nằm trong chuỗi hoạt động của Vietjet nhằm hỗ trợ các hoạt động giao lưu kinh tế, văn hóa và hợp tác quốc tế.",
+      "published_at": "2026-09-21T23:13:00+07:00",
+      "symbols": [
+        "VJC"
+      ],
+      "provider_id": "41884045",
+      "category": "Doanh nghiệp",
+      "content": "Chuyến bay đưa 150 doanh nhân và nghệ sĩ tới New York lần này tiếp tục nằm trong chuỗi hoạt động của Vietjet nhằm hỗ trợ các hoạt động giao lưu kinh tế, văn hóa và hợp tác quốc tế. Theo Báo Điện tử Chính phủ, Vietjet vừa thực hiện chuyến bay chuyên cơ đưa 150 doanh nhân và nghệ sĩ Việt Nam tới New York (Hoa Kỳ), đúng thời điểm diễn ra các hoạt động của Đại hội đồng Liên Hợp Quốc khóa 81. Đoàn doanh nhân Việt Nam tới Mỹ nhằm tìm kiếm cơ hội hợp tác, đầu tư và thúc đẩy thương mại với các đối tác Hoa Kỳ cũng như những quốc gia khác. Trong khi đó, các nghệ sĩ Việt Nam sẽ tham gia biểu diễn và giao lưu nghệ thuật tại Mỹ. Đây không phải lần đầu Vietjet tổ chức chuyến bay đặc biệt nhằm tăng cường kết nối giữa Việt Nam và Hoa Kỳ. Tháng 1/2025, hãng hàng không của tỷ phú Nguyễn Thị Phương Thảo đã thực hiện chuyến bay mang tên “Hello America”, đưa đoàn công tác của Vietjet từ TP.HCM tới Mỹ. Đáng chú ý, bà Nguyễn Thị Phương Thảo đích thân tham gia hành trình này. Trong chuyến công tác, nữ tỷ phú cùng đoàn đã có các cuộc gặp với Tổng thống đắc cử Donald Trump và nhiều đối tác chiến lược của Hoa Kỳ, thúc đẩy các thỏa thuận hợp tác kinh tế trị giá hàng chục tỷ USD. Trước đó, Vietjet đã xây dựng quan hệ hợp tác với nhiều tập đoàn lớn của Mỹ. Năm 2016, hãng ký thỏa thuận mua 100 máy bay Boeing và nâng quy mô đơn hàng lên 200 chiếc Boeing 737 MAX vào năm 2019. Ngoài Boeing, Vietjet còn mở rộng hợp tác với GE, Pratt & Whitney, Honeywell, Google và tiến hành các cuộc trao đổi, đàm phán với SpaceX. Các lĩnh vực hợp tác trải rộng từ động cơ, thiết bị hàng không đến công nghệ số, đào tạo và bảo dưỡng máy bay. Tháng 9/2025, bà Nguyễn Thị Phương Thảo tiếp tục có mặt tại Sàn Giao dịch Chứng khoán New York (NYSE), gặp Chủ tịch Lynn Martin và tham dự nghi thức rung chuông kết thúc phiên giao dịch. Chuyến thăm diễn ra ngay sau khi Vietjet tiếp nhận chiếc Boeing 737-8 đầu tiên tại Seattle, trong khuôn khổ đơn hàng 200 máy bay. Không chỉ tại Mỹ, Vietjet còn thực hiện các chuyến bay phục vụ hoạt động đối ngoại và kết nối doanh nghiệp Việt Nam với đối tác quốc tế. Tháng 6/2026, hãng tổ chức hành trình tới Kazan (Nga) nhân chuyến công tác của Thủ tướng Chính phủ, kết nối đoàn doanh nghiệp Việt Nam với các đối tác nước ngoài. Link gốc",
+      "crawled_at": "2026-10-01T09:13:14.022118+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.07628205128205127,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/mot-nu-tien-si-vua-tro-thanh-nguoi-giau-thu-2-viet-nam-188260921233239466.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "1b6feb44aa4e36f217c6",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/loat-ti-phu-viet-tang-manh-tai-san-ong-pham-nhat-vuong-so-huu-37-5-ti-usd/41830216",
+      "title": "Loạt tỉ phú Việt tăng mạnh tài sản, ông Phạm Nhật Vượng sở hữu 37,5 tỉ USD",
+      "description": "5 tỉ phú giàu nhất Việt Nam hiện sở hữu tổng tài sản ròng khoảng 51,2 tỉ USD, trong đó ông Phạm Nhật Vượng tiếp tục dẫn đầu với 37,5 tỉ USD.",
+      "published_at": "2026-09-17T11:41:00+07:00",
+      "symbols": [
+        "HPG",
+        "VIC",
+        "VJC"
+      ],
+      "provider_id": "41830216",
+      "category": "Doanh nghiệp",
+      "content": "5 tỉ phú giàu nhất Việt Nam hiện sở hữu tổng tài sản ròng khoảng 51,2 tỉ USD, trong đó ông Phạm Nhật Vượng tiếp tục dẫn đầu với 37,5 tỉ USD. Biểu đồ thể hiện tài sản ròng của 5 tỉ phú giàu nhất Việt Nam theo dữ liệu Forbes cập nhật lúc 10h45 ngày 17.9 (giờ Việt Nam). Đơn vị: tỉ USD. Biểu đồ: AI Ông Phạm Nhật Vượng sở hữu 37,5 tỉ USD tài sản ròng Theo bảng xếp hạng tỉ phú theo thời gian thực của Forbes cập nhật lúc 10h45 ngày 17.9 (giờ Việt Nam), ông Phạm Nhật Vượng tiếp tục đứng đầu danh sách những người giàu nhất Việt Nam. Chủ tịch Tập đoàn Vingroup được Forbes ghi nhận sở hữu khối tài sản ròng 37,5 tỉ USD. Trong phiên cập nhật mới nhất, tài sản ròng của ông Phạm Nhật Vượng tăng thêm 42 triệu USD. Với mức tài sản ròng này, ông Phạm Nhật Vượng hiện đứng khoảng thứ 59 trong bảng xếp hạng những người giàu nhất thế giới. Ông Phạm Nhật Vượng hiện là người sở hữu tài sản ròng lớn nhất trong nhóm tỉ phú Việt Nam. Bà Phạm Thu Hương có 4,3 tỉ USD tài sản ròng Đứng thứ hai trong danh sách 5 tỉ phú giàu nhất Việt Nam là bà Phạm Thu Hương - Phó Chủ tịch Tập đoàn Vingroup. Theo Forbes, tài sản ròng của bà Phạm Thu Hương hiện đạt 4,3 tỉ USD. Trong phiên cập nhật mới, tài sản ròng của bà tăng thêm 29 triệu USD. Bà Phạm Thu Hương hiện đứng khoảng thứ 1.014 trong bảng xếp hạng tỉ phú thế giới. Bà Nguyễn Thị Phương Thảo sở hữu 4 tỉ USD tài sản ròng Bà Nguyễn Thị Phương Thảo - Chủ tịch Hội đồng quản trị Công ty Cổ phần Hàng không VietJet - đứng thứ ba trong nhóm những người giàu nhất Việt Nam. Forbes ghi nhận tài sản ròng của bà Nguyễn Thị Phương Thảo ở mức 4 tỉ USD. So với phiên cập nhật trước đó, tài sản ròng của bà tăng thêm 41 triệu USD. Với khối tài sản ròng này, bà Nguyễn Thị Phương Thảo hiện đứng khoảng thứ 1.082 trong danh sách tỉ phú thế giới. Bà Phạm Thúy Hằng sở hữu 3 tỉ USD tài sản ròng Vị trí thứ tư thuộc về bà Phạm Thúy Hằng - Phó Chủ tịch Tập đoàn Vingroup. Theo Forbes, bà Phạm Thúy Hằng hiện sở hữu tài sản ròng 3 tỉ USD. Tài sản ròng của bà tăng thêm 21 triệu USD trong phiên cập nhật mới nhất. Bà Phạm Thúy Hằng hiện đứng khoảng thứ 1.400 trong bảng xếp hạng người giàu nhất thế giới. Ông Trần Đình Long có 2,4 tỉ USD tài sản ròng Ông Trần Đình Long - Chủ tịch Tập đoàn Hòa Phát - đứng thứ năm trong danh sách. Tài sản ròng của ông Trần Đình Long được Forbes cập nhật ở mức 2,4 tỉ USD, tăng thêm 23 triệu USD trong phiên cập nhật. Ông Trần Đình Long hiện đứng khoảng thứ 1.730 trong bảng xếp hạng tỉ phú thế giới. Tính chung, 5 tỉ phú giàu nhất Việt Nam hiện sở hữu khoảng 51,2 tỉ USD tài sản ròng. Lưu ý: Bài viết sử dụng số liệu hiển thị trên Forbes lúc 10h45 ngày 17.9 (giờ Việt Nam). Giá trị tài sản ròng và vị trí xếp hạng được Forbes cập nhật theo thời gian thực nên có thể thay đổi khi thị trường biến động. Link gốc",
+      "crawled_at": "2026-10-01T09:13:14.258198+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.06288190035108687,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/mot-nu-tien-si-vua-tro-thanh-nguoi-giau-thu-2-viet-nam-188260921233239466.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    },
+    {
+      "id": "dceb9d4fa9abb5a0840e",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/pho-chu-tich-hdqt-vietjet-moi-nam-mot-hang-hang-khong-chi-200-300-trieu-usd-ra-nuoc-ngoai-tai-sao-khong-giu-so-ngoai-te-do-o-viet-nam/41798569",
+      "title": "Phó Chủ tịch HĐQT Vietjet: Mỗi năm một hãng hàng không chi 200 - 300 triệu USD ra nước ngoài, tại sao không giữ số ngoại tệ đó ở Việt Nam?",
+      "description": "Theo bà Hồ Ngọc Yến Phương, Phó Chủ tịch HĐQT Vietjet, bên cạnh vận chuyển hành khách, hãng đang phát triển từ đào tạo, bảo dưỡng tàu bay đến dịch vụ mặt đất và cho thuê máy bay. Vietjet cũng muốn hợp tác với các nhà sản xuất động cơ lớn để từng bước đưa những khoản chi hàng trăm triệu USD mỗi năm về Việt Nam.",
+      "published_at": "2026-09-15T17:43:00+07:00",
+      "symbols": [
+        "VJC"
+      ],
+      "provider_id": "41798569",
+      "category": "Doanh nghiệp",
+      "content": "Theo bà Hồ Ngọc Yến Phương, Phó Chủ tịch HĐQT Vietjet, bên cạnh vận chuyển hành khách, hãng đang phát triển từ đào tạo, bảo dưỡng tàu bay đến dịch vụ mặt đất và cho thuê máy bay. Vietjet cũng muốn hợp tác với các nhà sản xuất động cơ lớn để từng bước đưa những khoản chi hàng trăm triệu USD mỗi năm về Việt Nam. Mỗi năm, một hãng hàng không phải chi trả 200 - 300 triệu USD ra nước ngoài Chia sẻ tại Tọa đàm “Kiến tạo nguồn lực tăng trưởng quốc gia: Vai trò của doanh nghiệp dẫn đầu trong kỷ nguyên mới” trong khuôn khổ VNTAX 2026 ngày 15/09/2026, bà Hồ Ngọc Yến Phương, Phó Chủ tịch Hội đồng quản trị Vietjet, cho biết hãng đang hướng tới việc mở rộng chuỗi giá trị hàng không tại Việt Nam, thay vì chỉ tập trung vào hoạt động vận chuyển hành khách. Theo bà Hồ Ngọc Yến Phương, Vietjet hướng tới xây dựng một tập đoàn phát triển với chi phí hợp lý, trong bối cảnh lợi nhuận ngành hàng không rất mỏng, chỉ khoảng 3-5%, do phần lớn là chi phí tài chính và đầu tư. Để tiếp tục phát triển, Vietjet phải mở rộng sang các lĩnh vực phụ trợ. Một trong những lĩnh vực được Vietjet nhắm tới là bảo dưỡng, sửa chữa tàu bay và động cơ hàng không. Hãng hiện có cơ sở đào tạo tiếp viên, phi công, trong đó sở hữu 4 buồng lái mô phỏng để đào tạo phi công, kỹ thuật viên và các chuyên gia kỹ thuật sửa chữa máy bay với sự hỗ trợ của Airbus và Boeing. Gần đây, Vietjet đang phát triển và xây dựng cơ sở bảo dưỡng tàu bay tại Long Thành. Không dừng lại ở đó, hãng muốn thu hút và hợp tác với các nhà sản xuất động cơ lớn trên thế giới như Pratt & Whitney hay CFM. “Mỗi năm, một hãng hàng không phải chi trả 200 đến 300 triệu USD ra nước ngoài; tại sao chúng ta không thu hút nguồn lực đó ở trong nước, hợp tác để giữ số ngoại tệ đó tại Việt Nam?”, bà Phương đặt vấn đề. Theo bà, đây là những trăn trở về việc tiết kiệm chi phí và tận dụng nguồn nhân lực kỹ thuật để phát triển đội ngũ kỹ sư hàng không cùng phi công tại Việt Nam. Vietjet cũng phát triển các công ty dịch vụ logistics, trong đó có dịch vụ mặt đất phục vụ hàng không, đồng thời thành lập các công ty chuyên thuê và cho thuê tàu bay. “Bản chất ngành hàng không là hoạt động trên phạm vi toàn cầu nên phải đặt nó vào thực tế của toàn cầu”, bà Phương nói. Đằng sau giá vé hợp lý Ở một phần chia sẻ khác, bà Phương nhìn lại xuất phát điểm của Vietjet hơn 10 năm trước. Theo bà, thời điểm đó, các hãng hàng không tại Việt Nam chủ yếu phục vụ nhóm khách hàng có thu nhập cao như chuyên gia, doanh nhân. Từ thực tế này, Vietjet đặt ra một trong những giá trị cốt lõi là làm sao phục vụ đông đảo người dân với chi phí hợp lý. “Thật ra đằng sau giá vé hợp lý đó là cả một sự nỗ lực không ngừng”, bà Phương chia sẻ. Theo bà, máy bay của các hãng hàng không trung bình khai thác khoảng 9-10 giờ mỗi ngày. Trong khi đó, Vietjet nâng thời gian khai thác lên tới 16 giờ mỗi ngày, còn trong mùa cao điểm một máy bay có thể bay từ 16-17 giờ mỗi ngày. Để xây dựng mô hình kinh doanh với giá vé hợp lý, máy bay được bố trí nhiều ghế hơn, trong khi thức ăn và các dịch vụ khác được cung cấp theo nhu cầu của hành khách. Phía sau hoạt động khai thác còn là yêu cầu về nguồn vốn rất lớn. Theo bà Phương, đầu tư vào ngành hàng không có thể lên tới hàng chục đến hàng trăm tỷ đô la Mỹ. Doanh nghiệp phải đặt hàng trước để bảo đảm nguồn tàu bay, đáp ứng yêu cầu về an toàn hàng không và các chuẩn mực khắt khe của thế giới. Ngoài việc tuân thủ các quy định quốc tế, hãng phải đầu tư liên tục. Vì vậy, quản trị tài chính quốc tế và khả năng thu hút nguồn vốn quốc tế vào Việt Nam cũng là một bài toán lớn. Bà Phương cho biết Vietjet đồng thời phải xây dựng đội ngũ chuyên gia kỹ thuật để chủ động sửa chữa máy bay. Ngoại trừ những hạng mục lớn như thay động cơ hay sửa chữa chuyên sâu, đội ngũ kỹ thuật phải học hỏi kinh nghiệm để từng bước tự thực hiện các công việc khác. Vietjet dự kiến có khoảng 100 tàu bay thân rộng và khoảng 300-400 tàu bay thân hẹp trong 10 năm tới Nói về Vietjet trong 10 năm tới, bà Phương cho rằng sự khác biệt giữa một doanh nghiệp có quy mô lớn và một doanh nghiệp kiến tạo giá trị cho quốc gia không nằm ở số lượng tàu bay hay quy mô doanh thu. “Doanh nghiệp kiến tạo ra giá trị cho quốc gia phải vượt qua bảng cân đối kế toán và vượt qua giá trị của chính doanh nghiệp đó”, bà nói. Theo bà Phương, những chuỗi giá trị đó có thể là đào tạo kỹ sư hàng không, làm chủ các ngành công nghiệp như sản xuất động cơ và xa hơn nữa là khả năng sản xuất máy bay. “Một ngày nào đó trong tương lai, qua nhiều thế hệ hay một vài thập kỷ nữa, Việt Nam có thể sản xuất ra máy bay.” Bà cho rằng những chuỗi giá trị như vậy không thể được xây dựng trong một hoặc hai năm mà cần rất nhiều năm để hình thành. Với kế hoạch 10 năm tới, Vietjet dự kiến có khoảng 100 tàu bay thân rộng để phục vụ các đường bay quốc tế và khoảng 300-400 tàu bay thân hẹp. Mục tiêu là không chỉ kết nối từ Việt Nam ra thế giới mà còn vận hành tại chính các quốc gia sở tại, tham gia khai thác thị trường nội địa ở những nước này. “Đó chính là tương lai của Vietjet, và chúng tôi sẽ xây dựng một tập đoàn hàng không quốc tế”, bà Phương nói. Theo bà, Vietjet cũng đang xây dựng học viện hàng không theo hướng không chỉ đào tạo nhân lực cho hãng mà còn phục vụ các hãng bay khác, đồng thời mở rộng hợp tác với các doanh nghiệp du lịch trong và ngoài nước. Link gốc",
+      "crawled_at": "2026-10-01T09:13:14.502946+00:00",
+      "matched_symbols": [
+        "VJC"
+      ],
+      "scopes": [
+        "VJC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.0311177815894797,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/hang-hang-khong-cua-ty-phu-nguyen-thi-phuong-thao-rot-285-ty-dong-lap-cong-ty-moi-188260819215225949.chn",
+        "matched_file": "tin_tuc_theo_ma/VJC/cafef/01-10-2026.json",
+        "checked_at": "2026-10-01T09:13:14.569388+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-01T09:13:14.503088+00:00",
+    "results": [
+      {
+        "source": "fireant",
+        "scope": "VJC",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

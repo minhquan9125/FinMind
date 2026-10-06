@@ -1,0 +1,651 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-10-01T08:43:25.578556+00:00",
+  "method": "local_tfidf_entities_event_rules_v1",
+  "limitations": [
+    "Candidates require manual review; scores are not probabilities or fact verification.",
+    "No confirmed event count: candidate pairs may describe related but distinct events.",
+    "Rules can miss paraphrases, unknown entities and events; publication dates are not event dates.",
+    "Same-title disclosures are separated from differently worded candidates."
+  ],
+  "settings": {
+    "window_days": 3,
+    "threshold": 0.52,
+    "headline_weights": {
+      "title": 0.55,
+      "body": 0.35,
+      "shared_event": 0.1
+    },
+    "body_anchor_route": {
+      "min_body_cosine": 0.4,
+      "min_shared_numbers": 2,
+      "score": "0.75 * body_cosine + 0.25 (shared entity and event)"
+    },
+    "naive_publication_timezone": "UTC+7"
+  },
+  "summary": {
+    "uncheck_records": 119,
+    "unique_uncheck_articles": 113,
+    "unique_candidate_pairs": 9,
+    "unique_rewritten_candidate_pairs": 2,
+    "unique_same_title_candidate_pairs": 7,
+    "unique_uncheck_articles_with_candidates": 18,
+    "unique_uncheck_articles_with_rewritten_candidates": 4,
+    "unique_uncheck_articles_without_candidates": 95
+  },
+  "scopes": [
+    {
+      "scope": "FPT",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 3,
+      "rewritten_candidate_pairs": 1,
+      "same_title_candidate_pairs": 2,
+      "uncheck_articles_with_candidates": 6,
+      "uncheck_articles_without_candidates": 14
+    },
+    {
+      "scope": "HPG",
+      "uncheck_records": 18,
+      "unique_uncheck_articles": 18,
+      "candidate_pairs": 0,
+      "rewritten_candidate_pairs": 0,
+      "same_title_candidate_pairs": 0,
+      "uncheck_articles_with_candidates": 0,
+      "uncheck_articles_without_candidates": 18
+    },
+    {
+      "scope": "TPB",
+      "uncheck_records": 18,
+      "unique_uncheck_articles": 18,
+      "candidate_pairs": 5,
+      "rewritten_candidate_pairs": 0,
+      "same_title_candidate_pairs": 5,
+      "uncheck_articles_with_candidates": 10,
+      "uncheck_articles_without_candidates": 8
+    },
+    {
+      "scope": "VCB",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 0,
+      "rewritten_candidate_pairs": 0,
+      "same_title_candidate_pairs": 0,
+      "uncheck_articles_with_candidates": 0,
+      "uncheck_articles_without_candidates": 20
+    },
+    {
+      "scope": "market",
+      "uncheck_records": 43,
+      "unique_uncheck_articles": 43,
+      "candidate_pairs": 1,
+      "rewritten_candidate_pairs": 1,
+      "same_title_candidate_pairs": 0,
+      "uncheck_articles_with_candidates": 2,
+      "uncheck_articles_without_candidates": 41
+    }
+  ],
+  "candidates": [
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.894223,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.697781,
+        "existing_text_overlap": 0.7243243243243244,
+        "shared_entities": [
+          "TPB",
+          "TPS"
+        ],
+        "shared_event_types": [
+          "agreement"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "dịch",
+          "giao",
+          "giữa",
+          "hđqt",
+          "hợp",
+          "nghị",
+          "qua",
+          "quyết",
+          "thông",
+          "tpb",
+          "tpbank",
+          "tps",
+          "việc",
+          "đồng"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/tpb-2983462/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-hop-dong-giao-dich-giua-tpbank-va-tps.chn",
+        "title": "TPB: Nghị quyết HĐQT về việc thông qua Hợp đồng, giao dịch giữa TPBank và TPS",
+        "published_at": "2026-09-24T10:04:30+00:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua Hợp đồng, giao dịch giữa TPBank và TPS như sau: Các tập tin đính kèm 20260924 - TPB - NQ HDQT vv thong qua hop dong, giao dich giua TPBank va TPS_signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-hop-dong-giao-dich-giua-tpbank-va-tps/41938908",
+        "title": "TPB: Nghị quyết HĐQT về việc thông qua Hợp đồng, giao dịch giữa TPBank và TPS",
+        "published_at": "2026-09-24T17:04:30+07:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua Hợp đồng, giao dịch giữa TPBank và TPS như sau:"
+      },
+      "scope": "TPB"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.87993,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.656944,
+        "existing_text_overlap": 0.7221153846153847,
+        "shared_entities": [
+          "TPB"
+        ],
+        "shared_event_types": [
+          "bond_issue"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "bổ",
+          "chúng",
+          "công",
+          "dung",
+          "hành",
+          "hđqt",
+          "nghị",
+          "nội",
+          "phiếu",
+          "phát",
+          "qua",
+          "quyết",
+          "sung",
+          "số",
+          "sửa",
+          "thông",
+          "tpb",
+          "tpbank",
+          "trái",
+          "việc",
+          "đổi",
+          "đợt"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/tpb-2988146/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-sua-doi-bo-sung-mot-so-noi-dung-ve-dot-phat-hanh-trai-phieu-tpbank-ra-cong-chung.chn",
+        "title": "TPB: Nghị quyết HĐQT về việc thông qua sửa đổi, bổ sung một số nội dung về đợt phát hành trái phiếu TPBank ra công chúng",
+        "published_at": "2026-09-30T11:08:36+00:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua sửa đổi, bổ sung một số nội dung về đợt phát hành trái phiếu TPBank ra công chúng như sau: Các tập tin đính kèm 20260930 - TPB - NQ HDQT vv thong qua sua doi, bo sung mot so noi dung ve dot phat hanh Trai Phieu TPBank ra cong chung_signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-sua-doi-bo-sung-mot-so-noi-dung-ve-dot-phat-hanh-trai-phieu-tpbank-ra-cong-chung/42030919",
+        "title": "TPB: Nghị quyết HĐQT về việc thông qua sửa đổi, bổ sung một số nội dung về đợt phát hành trái phiếu TPBank ra công chúng",
+        "published_at": "2026-09-30T18:08:36+07:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua sửa đổi, bổ sung một số nội dung về đợt phát hành trái phiếu TPBank ra công chúng như sau:"
+      },
+      "scope": "TPB"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.876009,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.645739,
+        "existing_text_overlap": 0.7230337078651685,
+        "shared_entities": [
+          "TPB"
+        ],
+        "shared_event_types": [
+          "bond_issue"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "bán",
+          "bộ",
+          "chào",
+          "chúng",
+          "công",
+          "hđqt",
+          "hồ",
+          "ký",
+          "nghị",
+          "phiếu",
+          "qua",
+          "quyết",
+          "sơ",
+          "thông",
+          "tpb",
+          "tpbank",
+          "trái",
+          "việc",
+          "đăng"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/tpb-2988143/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-bo-ho-so-dang-ky-chao-ban-trai-phieu-tpbank-ra-cong-chung.chn",
+        "title": "TPB: Nghị quyết HĐQT về việc thông qua bộ hồ sơ đăng ký chào bán trái phiếu TPBank ra công chúng",
+        "published_at": "2026-09-30T11:06:51+00:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua bộ hồ sơ đăng ký chào bán trái phiếu TPBank ra công chúng như sau: Các tập tin đính kèm 20260930 - TPB - NQ HDQT vv thong qua Bo ho so dang ky chao ban Trai Phieu TPBank ra cong chung_signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-ve-viec-thong-qua-bo-ho-so-dang-ky-chao-ban-trai-phieu-tpbank-ra-cong-chung/42030834",
+        "title": "TPB: Nghị quyết HĐQT về việc thông qua bộ hồ sơ đăng ký chào bán trái phiếu TPBank ra công chúng",
+        "published_at": "2026-09-30T18:06:51+07:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT về việc thông qua bộ hồ sơ đăng ký chào bán trái phiếu TPBank ra công chúng như sau:"
+      },
+      "scope": "TPB"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.860371,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.601059,
+        "existing_text_overlap": 0.7539473684210526,
+        "shared_entities": [
+          "FPT"
+        ],
+        "shared_event_types": [
+          "share_issue"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "báo",
+          "chủ",
+          "cáo",
+          "cổ",
+          "fpt",
+          "hành",
+          "hữu",
+          "kết",
+          "nguồn",
+          "phiếu",
+          "phát",
+          "phần",
+          "quả",
+          "sở",
+          "tăng",
+          "vốn",
+          "đợt"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/fpt-2985968/fpt-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tang-von-co-phan-tu-nguon-von-chu-so-huu.chn",
+        "title": "FPT: Báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu",
+        "published_at": "2026-09-28T07:29:01+00:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần FPT công bố báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu như sau: Các tập tin đính kèm 20260925 - FPT - Bao cao ket qua phat hanh CP de tang von tu NVCSH.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/fpt-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tang-von-co-phan-tu-nguon-von-chu-so-huu/41982847",
+        "title": "FPT: Báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu",
+        "published_at": "2026-09-28T14:29:01+07:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần FPT công bố báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu như sau:"
+      },
+      "scope": "FPT"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.842666,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.550474,
+        "existing_text_overlap": 0.68125,
+        "shared_entities": [
+          "FPT"
+        ],
+        "shared_event_types": [
+          "voting_shares"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "biểu",
+          "báo",
+          "cổ",
+          "fpt",
+          "hành",
+          "lưu",
+          "lượng",
+          "phiếu",
+          "quyết",
+          "quyền",
+          "số",
+          "thay",
+          "thông",
+          "đổi"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/fpt-2985967/fpt-thong-bao-thay-doi-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh.chn",
+        "title": "FPT: Thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành",
+        "published_at": "2026-09-28T07:27:58+00:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần FPT thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành như sau: Các tập tin đính kèm 20260925 - FPT - TB thay doi SLCP dang luu hanh sau phat hanh CP de tang von.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/fpt-thong-bao-thay-doi-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh/41982848",
+        "title": "FPT: Thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành",
+        "published_at": "2026-09-28T14:27:58+07:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần FPT thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành như sau:"
+      },
+      "scope": "FPT"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.816431,
+      "evidence": {
+        "title_tfidf_cosine": 0.420542,
+        "body_tfidf_cosine": 0.755241,
+        "existing_text_overlap": 0.2114181818181818,
+        "shared_entities": [
+          "HAG"
+        ],
+        "shared_event_types": [
+          "agreement"
+        ],
+        "publication_gap_days": 0.6847222222222222,
+        "shared_numeric_anchors": [
+          "1.000",
+          "20.000",
+          "3.000",
+          "5.000",
+          "6.300",
+          "7.000"
+        ],
+        "matching_route": "body_with_numeric_anchors",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "000",
+          "bầu",
+          "gần",
+          "ngày",
+          "thụ",
+          "tiêu",
+          "tấn",
+          "đức"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/bau-duc-co-dong-thai-dac-biet-tai-trung-quoc-sau-cu-rot-gan-800-ty-vao-loai-cay-tieu-thu-29000-tan-ngay-188261001145226172.chn",
+        "title": "Bầu Đức có động thái đặc biệt tại Trung Quốc sau cú rót gần 800 tỷ vào loại cây tiêu thụ 29.000 tấn/ngày",
+        "published_at": "2026-10-01T14:53:00",
+        "files": [
+          "tin_tuc_chung/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_chung/cafef/01-10-2026.json"
+        ],
+        "excerpt": "TIN MỚI Công ty Cổ phần Đầu tư Quốc tế Hoàng Anh Gia Lai (HGI), công ty con nòng cốt trong hệ sinh thái của Tập đoàn Hoàng Anh Gia Lai (HAGL) do ông Đoàn Nguyên Đức (bầu Đức) làm Chủ tịch HĐQT, đã ký kết Biên bản ghi nhớ (MOU) hợp tác dài hạn với MQ Coffee (Minh Khiêm Cà phê), doanh nghiệp hoạt động trong chế biến, cung ứng và phân phối cà phê, có trụ sở tại Thượng Hải, Trung Quốc. MQ Coffee được thành lập năm 2009 tại Thượng Hải, với chuỗi hoạt động từ vùng nguyên liệu, rang xay đến bán buôn, gia công (OEM/ODM) và bán lẻ. Doanh nghiệp hiện vận hành nhà máy rang xay với công suất trên 5.000 tấ"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/bau-duc-dich-than-sang-ky-ban-1-000-tan-ca-phe-ngay-nam-nay-nang-len-5-000-tan-tai-1-thi-truong-tieu-thu-gan-1-000-tan-ngay/42032748",
+        "title": "Bầu Đức đích thân sang ký bán 1.000 tấn cà phê ngay năm nay, nâng lên 5.000 tấn tại 1 thị trường tiêu thụ gần 1.000 tấn/ngày",
+        "published_at": "2026-09-30T22:27:00+07:00",
+        "files": [
+          "tin_tuc_chung/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_chung/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Bầu Đức trực tiếp sang Thượng Hải trong lúc HAGL tăng tốc với cây cà phê, nhắm tới một thị trường đang tiêu thụ gần 1.000 tấn mỗi ngày. Lễ ký kết Biên bản ghi nhớ hợp tác dài hạn giữa HAGL, HGI và MQ Coffee tại Thượng Hải Ngày 30/9, Tập đoàn Hoàng Anh Gia Lai (HAGL) công bố Công ty CP Đầu tư Quốc tế Hoàng Anh Gia Lai (HGI) đã ký biên bản ghi nhớ hợp tác dài hạn với MQ Coffee, doanh nghiệp cà phê có trụ sở tại Thượng Hải, Trung Quốc. Lễ ký thực tế diễn ra tại Thượng Hải ngày 25/8. Theo thỏa thuận có thời hạn 5 năm, HGI sẽ cung cấp cà phê Arabica nhân xanh từ các vùng nguyên liệu của doanh nghiệ"
+      },
+      "scope": "market"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.763261,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.609318,
+        "existing_text_overlap": 0.6896825396825397,
+        "shared_entities": [
+          "TPB"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "09",
+          "2026",
+          "23",
+          "35",
+          "hđqt",
+          "nghị",
+          "ngày",
+          "quyết",
+          "số",
+          "tpb"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/tpb-2983466/tpb-nghi-quyet-hdqt-so-352026-ngay-23092026.chn",
+        "title": "TPB: Nghị quyết HĐQT số 35/2026 ngày 23/09/2026",
+        "published_at": "2026-09-24T10:06:14+00:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT số 35/2026 ngày 23/09/2026 như sau: Các tập tin đính kèm 20260924 - TPB - NQ HDQT vv thong qua PA phat hanh TP ra cong chung_signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-so-35-2026-ngay-23-09-2026/41938907",
+        "title": "TPB: Nghị quyết HĐQT số 35/2026 ngày 23/09/2026",
+        "published_at": "2026-09-24T17:06:14+07:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong công bố Nghị quyết HĐQT số 35/2026 ngày 23/09/2026 như sau:"
+      },
+      "scope": "TPB"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.702903,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.436865,
+        "existing_text_overlap": 0.625,
+        "shared_entities": [
+          "TPB"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "09",
+          "2026",
+          "28",
+          "37",
+          "hđqt",
+          "nghị",
+          "ngày",
+          "quyết",
+          "số",
+          "tpb"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/tpb-2987676/tpb-nghi-quyet-hdqt-so-37-ngay-28092026.chn",
+        "title": "TPB: Nghị quyết HĐQT số 37 ngày 28/09/2026",
+        "published_at": "2026-09-29T09:11:15+00:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/cafef/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong thông báo Nghị quyết HĐQT số 37 ngày 28/09/2026 như sau: Các tập tin đính kèm 20260929 - TPB - NQ HDQT vv cap han muc tin dung cho CTCT Diana Unicharm va CN CTCP Diana Unicharm Bac Ninh_signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/tpb-nghi-quyet-hdqt-so-37-ngay-28-09-2026/42007460",
+        "title": "TPB: Nghị quyết HĐQT số 37 ngày 28/09/2026",
+        "published_at": "2026-09-29T16:11:15+07:00",
+        "files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TPB/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Tiên Phong thông báo Nghị quyết HĐQT số 37 ngày 28/09/2026 như sau:"
+      },
+      "scope": "TPB"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.597356,
+      "evidence": {
+        "title_tfidf_cosine": 0.110856,
+        "body_tfidf_cosine": 0.463141,
+        "existing_text_overlap": 0.0927536231884058,
+        "shared_entities": [
+          "FPT"
+        ],
+        "shared_event_types": [
+          "share_issue",
+          "shareholders"
+        ],
+        "publication_gap_days": 0.5805555555555556,
+        "shared_numeric_anchors": [
+          "171,4",
+          "181.748",
+          "182.000",
+          "44.000",
+          "44.358"
+        ],
+        "matching_route": "body_with_numeric_anchors",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "000",
+          "cổ",
+          "fpt",
+          "đông"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/sau-man-hat-tai-sinh-cua-ong-truong-gia-binh-moi-thang-fpt-co-them-6000-co-dong-moi-san-van-dong-lon-nhat-the-gioi-va-my-dinh-cong-lai-khong-du-suc-chua-188260928184735504.chn",
+        "title": "Sau màn hát “Tái sinh” của ông Trương Gia Bình, mỗi tháng FPT có thêm 6.000 cổ đông mới, sân vận động lớn nhất thế giới và Mỹ Đình cộng lại không đủ sức chứa",
+        "published_at": "2026-09-29T00:01:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/cafef/01-10-2026.json"
+        ],
+        "excerpt": "FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 25/9, Công ty Cổ phần FPT công bố báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn từ nguồn vốn chủ sở hữu. Theo đó, FPT đã phân phối hơn 171,4 triệu cổ phiếu cho 181.748 cổ đông. Ngày kết thúc đợt phát hành là 22/09/2026. Số lượng cổ đông của Công ty Cổ phần FPT đã tăng mạnh trong những năm gần đây, từ hơn 44.000 người vào cuối năm 2022 lên gần 182.000 người vào tháng 9/2026. Cụ thể, tháng 12/2022, FPT có 44.358 cổ đông. Đến tháng 9/2026, con số này đã tăng lên 181.748 người, tương đương gấp hơn 4 lần và tăng thêm gần 137.400 cổ"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/fpt-co-gan-182-000-co-dong-khoi-ngoai-con-nam-28-5-von/42002502",
+        "title": "FPT: Có gần 182.000 cổ đông, khối ngoại còn nắm 28,5% vốn",
+        "published_at": "2026-09-29T13:57:00+07:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/fireant/01-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/fireant/01-10-2026.json"
+        ],
+        "excerpt": "Số lượng cổ đông của FPT tăng mạnh trong năm 2025 và 2026, theo hướng gia tăng nhà đầu tư cá nhân nhỏ lẻ. Khối ngoại từ tỷ lệ sở hữu 49% cuối năm 2022 giờ chỉ còn nắm giữ 28,5% vốn doanh nghiệp. Cổ đông FPT đến dự họp ĐHĐCĐ thường niên năm 2026. Ảnh: Hà Anh/Mekong ASEAN Theo báo cáo kết quả phát hành cổ phiếu để tăng vốn cổ phần từ nguồn vốn chủ sở hữu của CTCP FPT (mã FPT ) công bố trên HoSE ngày 28/9, tập đoàn công nghệ này có 181.748 cổ đông. Trong đợt phát hành vừa qua, FPT đã phân phối thành công hơn 171,4 triệu cổ phiếu theo tỷ lệ 10:1, tương ứng cổ đông sở hữu 10 cổ phiếu được nhận thêm"
+      },
+      "scope": "FPT"
+    }
+  ]
+}
