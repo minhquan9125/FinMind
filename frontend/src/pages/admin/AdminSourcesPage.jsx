@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams, Link } from "../../app/router.jsx";
 import { Button, Drawer, EmptyState, ErrorState, FilterBar, Input, Modal, Select, Skeleton, StatusBadge } from "../../shared/ui";
 import AdminLayout, { ADMIN_LINKS } from "./AdminLayout.jsx";
-import { ACCESS_METHODS, SCHEDULES, SOURCE_STATUSES, SOURCE_TYPES, getSources } from "./sourcesMock.js";
+import { ACCESS_METHODS, SCHEDULES, SOURCE_STATUSES, SOURCE_TYPES, getIngestionRuns, getSources } from "./sourcesMock.js";
 
 // ─── Hằng số & hàm thuần ────────────────────────────────────────────────────
 
@@ -208,7 +208,161 @@ function TestResult({ src, testing }) {
   return null;
 }
 
-function DetailBody({ src, testing, onTest, onEdit, onPause, onEnable }) {
+// ─── Lịch sử nạp dữ liệu (ingestion) của một nguồn ──────────────────────────
+
+const RUN_TONE = { "Thành công": "success", "Thất bại": "error", "Đang chạy": "info" };
+
+const pad = (n) => String(n).padStart(2, "0");
+function fmtTime(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+function fmtClock(iso) {
+  const d = new Date(iso);
+  return `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+function fmtDuration(start, end) {
+  if (!end) return "—";
+  const seconds = Math.max(0, Math.round((new Date(end) - new Date(start)) / 1000));
+  return seconds < 60 ? `${seconds} giây` : `${Math.floor(seconds / 60)} phút ${seconds % 60} giây`;
+}
+
+function RunCard({ run }) {
+  return (
+    <li className="rounded-lg border border-slate-200 bg-slate-50 p-2.5">
+      <div className="flex items-center justify-between gap-2">
+        <span className="font-mono text-xs font-semibold text-blue-600">{run.id}</span>
+        <StatusBadge tone={RUN_TONE[run.status]}>{run.status}</StatusBadge>
+      </div>
+      <p className="mt-1 text-[11px] text-slate-600">
+        {run.trigger} · {fmtTime(run.startedAt)} → {run.finishedAt ? fmtTime(run.finishedAt) : "đang chạy"} · {fmtDuration(run.startedAt, run.finishedAt)}
+      </p>
+      <p className="mt-1 text-[11px] text-slate-700">
+        Đạt: <strong className="text-emerald-700">{run.ok}</strong> bản ghi · Bị bỏ: <strong className={run.dropped ? "text-amber-700" : "text-slate-700"}>{run.dropped}</strong> bản ghi · Thử lại: <strong>{run.retries}</strong> lần
+      </p>
+      {run.error && <p role="alert" className="mt-1.5 rounded border border-red-200 bg-red-50 p-2 text-[11px] text-red-700">Lý do thất bại: {run.error}</p>}
+
+      {(run.reasons.length > 0 || run.breakdown.length > 0) && (
+        <details className="mt-1.5 text-[11px]">
+          <summary className="cursor-pointer font-medium text-blue-600">Chi tiết lần chạy</summary>
+          <div className="mt-1.5 space-y-2">
+            {run.reasons.length > 0 && (
+              <div>
+                <p className="font-semibold text-slate-700">Lý do bản ghi bị bỏ</p>
+                <ul className="mt-0.5 space-y-0.5 text-slate-600">
+                  {run.reasons.map((r) => <li key={r.label}>• {r.label}: {r.count} bản ghi</li>)}
+                </ul>
+              </div>
+            )}
+            {run.breakdown.length > 0 && (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                  <thead className="text-slate-500">
+                    <tr><th scope="col" className="py-1 pr-2 font-semibold">Mã</th><th scope="col" className="py-1 pr-2 font-semibold">Loại báo cáo</th><th scope="col" className="py-1 pr-2 text-right font-semibold">Đạt</th><th scope="col" className="py-1 pr-2 text-right font-semibold">Bỏ</th><th scope="col" className="py-1 font-semibold">Ngày trang đăng</th></tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200 text-slate-700">
+                    {run.breakdown.map((b) => (
+                      <tr key={`${b.co}-${b.type}`}>
+                        <td className="py-1 pr-2 font-mono font-semibold">{b.co}</td><td className="py-1 pr-2">{b.type}</td>
+                        <td className="py-1 pr-2 text-right tabular-nums">{b.ok}</td><td className="py-1 pr-2 text-right tabular-nums">{b.dropped}</td><td className="py-1">{b.published}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </details>
+      )}
+    </li>
+  );
+}
+
+function SourceIngestionSection({ sourceId, sourceName, canRun, onNotify }) {
+  const [runs, setRuns] = useState(null);
+  const [refreshedAt, setRefreshedAt] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const timers = useRef(new Set());
+
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+
+  const load = useCallback(() => {
+    setLoading(true);
+    setError(null);
+    return getIngestionRuns(sourceId)
+      .then(({ runs: list, refreshedAt: at }) => { setRuns(list); setRefreshedAt(at); })
+      .catch((e) => { setRuns(null); setError(e.message); })
+      .finally(() => setLoading(false));
+  }, [sourceId]);
+  useEffect(() => { load(); }, [load]);
+
+  const closeConfirm = useCallback(() => setConfirmOpen(false), []);
+
+  // Giả lập một lần chạy lại: hiện "Đang chạy" rồi hoàn thành sau 1,5 giây.
+  function rerun() {
+    const id = `JOB-LOCAL-${String((runs?.length ?? 0) + 1).padStart(3, "0")}`;
+    const startedAt = new Date().toISOString();
+    setRuns((list) => [{ id, trigger: "Thủ công", startedAt, finishedAt: null, ok: 0, dropped: 0, retries: 0, status: "Đang chạy", reasons: [], breakdown: [], error: null }, ...list]);
+    setConfirmOpen(false);
+    onNotify?.(`Đã bắt đầu chạy lại nguồn "${sourceName}".`, "info");
+    const timer = setTimeout(() => {
+      timers.current.delete(timer);
+      const finishedAt = new Date().toISOString();
+      setRuns((list) => list.map((r) => (r.id === id ? { ...r, finishedAt, ok: 5, dropped: 0, status: "Thành công" } : r)));
+      setRefreshedAt(finishedAt);
+      onNotify?.(`Lần chạy ${id} hoàn tất: 5 bản ghi đạt, 0 bản ghi bị bỏ.`, "success");
+    }, 1500);
+    timers.current.add(timer);
+  }
+
+  const running = runs?.some((r) => r.status === "Đang chạy");
+
+  return (
+    <section aria-labelledby={`ingestion-${sourceId}`}>
+      <div className="mb-2 flex items-center gap-1.5 border-b border-slate-100 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+        <span id={`ingestion-${sourceId}`}>Lịch sử nạp dữ liệu</span>
+        <span className="ml-auto normal-case tracking-normal font-normal text-slate-400">{refreshedAt ? `Làm mới lúc ${fmtClock(refreshedAt)}` : ""}</span>
+      </div>
+
+      {loading && <Skeleton rows={2} />}
+      {!loading && error && <ErrorState title="Không thể tải lịch sử nạp dữ liệu" message={error} onRetry={load} />}
+
+      {!loading && runs && (
+        <div className="space-y-2">
+          <div className="flex items-center justify-between gap-2">
+            <p className="text-[11px] text-slate-500">{runs.length} lần chạy gần đây</p>
+            <div className="flex items-center gap-1.5">
+              <Button variant="ghost" className="min-h-7 px-2 py-1 text-[11px]" onClick={load}>Làm mới</Button>
+              <Button variant="secondary" className="min-h-7 px-2 py-1 text-[11px]" disabled={!canRun || running}
+                title={canRun ? "Chạy lại nguồn này" : "Chỉ chạy lại được khi nguồn đang hoạt động."} onClick={() => setConfirmOpen(true)}>
+                Chạy lại
+              </Button>
+            </div>
+          </div>
+          {runs.length === 0
+            ? <p className="rounded-lg border border-dashed border-slate-300 bg-white p-4 text-center text-[11px] text-slate-500">Chưa có lần nạp dữ liệu nào cho nguồn này.</p>
+            : <ul className="space-y-2">{runs.map((r) => <RunCard key={r.id} run={r} />)}</ul>}
+        </div>
+      )}
+
+      {confirmOpen && (
+        <div role="alertdialog" aria-label={`Xác nhận chạy lại nguồn ${sourceName}`} className="mt-2 space-y-2 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900">
+          <p className="font-semibold">Chạy lại nguồn "{sourceName}"?</p>
+          <p className="leading-relaxed text-amber-800">Hệ thống sẽ bắt đầu một lần nạp dữ liệu mới từ nguồn này. Bản ghi lỗi sẽ tự bị bỏ, dữ liệu đã có không bị xóa.</p>
+          <div className="flex justify-end gap-2">
+            <Button variant="secondary" className="min-h-8 px-2.5 py-1 text-xs" onClick={closeConfirm}>Hủy</Button>
+            <Button className="min-h-8 px-2.5 py-1 text-xs" onClick={rerun}>Chạy lại</Button>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function DetailBody({ src, testing, onTest, onEdit, onPause, onEnable, onNotify }) {
   return (
     <div className="space-y-5 text-xs">
       <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3">
@@ -253,6 +407,8 @@ function DetailBody({ src, testing, onTest, onEdit, onPause, onEnable }) {
           <StatusBadge>{src.cred}</StatusBadge>
         </div>
       </section>
+
+      <SourceIngestionSection key={src.id} sourceId={src.id} sourceName={src.name} canRun={src.status === "Hoạt động"} onNotify={onNotify} />
 
       <section>
         <SectionTitle extra={<Link to={`${ADMIN_LINKS.audit}?source=${src.id}`} className="text-[11px] font-medium text-blue-600 hover:underline">Xem nhật ký →</Link>}>
@@ -517,7 +673,7 @@ export default function AdminSourcesPage() {
         {active && (
           <DetailBody src={active} testing={testingIds.has(active.id)}
             onTest={() => testConnection(active.id)} onEdit={() => openForm(active.id)}
-            onPause={() => askPause(active.id)} onEnable={() => askEnable(active.id)} />
+            onPause={() => askPause(active.id)} onEnable={() => askEnable(active.id)} onNotify={toast} />
         )}
       </Drawer>
 
