@@ -74,3 +74,68 @@ export function getSources() {
     }, 400);
   });
 }
+
+// Dữ liệu minh họa các lần nạp dữ liệu (ingestion) theo từng nguồn, dùng trong panel chi tiết ở trang Cấu hình nguồn.
+// Khi backend xong, thay getIngestionRuns() bằng hàm gọi API (trả về các lần chạy của một nguồn).
+//
+// Mỗi lần chạy: ok = số bản ghi đạt, dropped = số bản ghi bị bỏ (bản lỗi tự bỏ, không lưu),
+// reasons = lý do bị bỏ, breakdown = thống kê theo mã doanh nghiệp / loại báo cáo, published = ngày trang đăng.
+
+const run = (id, trigger, startedAt, finishedAt, ok, dropped, extra = {}) => ({
+  id, trigger, startedAt, finishedAt, ok, dropped, retries: 0, status: "Thành công", reasons: [], breakdown: [], error: null, ...extra,
+});
+
+export const ingestionMock = {
+  "src-1": [
+    run("JOB-DEMO-003", "Theo lịch", "2026-10-04T10:00:00", "2026-10-04T10:02:41", 5, 1, {
+      reasons: [{ label: "Thiếu ngày công bố", count: 1 }],
+      breakdown: [
+        { co: "FPT", type: "Báo cáo thường niên", ok: 2, dropped: 0, published: "28/03/2026" },
+        { co: "FPT", type: "Báo cáo tài chính", ok: 3, dropped: 1, published: "25/04/2026" },
+      ],
+    }),
+    run("JOB-DEMO-002", "Theo lịch", "2026-10-03T10:00:00", "2026-10-03T10:03:05", 4, 0, {
+      breakdown: [{ co: "FPT", type: "Báo cáo tài chính", ok: 4, dropped: 0, published: "25/04/2026" }],
+    }),
+    run("JOB-DEMO-001", "Thủ công", "2026-10-02T09:12:00", "2026-10-02T09:14:20", 3, 2, {
+      retries: 1,
+      reasons: [{ label: "Hash không đạt", count: 1 }, { label: "Sai định dạng tệp", count: 1 }],
+      breakdown: [{ co: "FPT", type: "Báo cáo thường niên", ok: 3, dropped: 2, published: "28/03/2026" }],
+    }),
+  ],
+  "src-2": [
+    run("JOB-DEMO-006", "Theo lịch", "2026-10-04T09:00:00", "2026-10-04T09:05:10", 12, 3, {
+      reasons: [{ label: "Thiếu phạm vi báo cáo", count: 2 }, { label: "Thiếu ngày công bố", count: 1 }],
+      breakdown: [
+        { co: "VCB", type: "Báo cáo tài chính", ok: 4, dropped: 1, published: "30/04/2026" },
+        { co: "TCB", type: "Báo cáo tài chính", ok: 4, dropped: 1, published: "29/04/2026" },
+        { co: "BID", type: "Báo cáo thường niên", ok: 4, dropped: 1, published: "31/03/2026" },
+      ],
+    }),
+    run("JOB-DEMO-005", "Theo lịch", "2026-10-03T09:00:00", "2026-10-03T09:04:48", 14, 0, {
+      breakdown: [{ co: "VCB", type: "Báo cáo tài chính", ok: 14, dropped: 0, published: "30/04/2026" }],
+    }),
+  ],
+  "src-3": [],
+  "src-4": [
+    run("JOB-DEMO-008", "Theo lịch", "2026-10-04T08:00:00", "2026-10-04T08:00:30", 0, 0, {
+      status: "Thất bại", retries: 3, error: "Không thể truy cập endpoint.",
+    }),
+  ],
+  "src-5": [
+    run("JOB-DEMO-009", "Thủ công", "2026-09-30T16:00:00", "2026-09-30T16:01:12", 8, 0, {
+      breakdown: [{ co: "CMG", type: "Báo cáo tài chính", ok: 8, dropped: 0, published: "—" }],
+    }),
+  ],
+  "src-6": [],
+};
+
+// Giả lập gọi API. Đặt window.__FM_FAIL = true trong console để thử trạng thái lỗi.
+export function getIngestionRuns(sourceId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (typeof window !== "undefined" && window.__FM_FAIL) reject(new Error("Không thể tải lịch sử nạp dữ liệu."));
+      else resolve({ runs: (ingestionMock[sourceId] ?? []).map((r) => ({ ...r })), refreshedAt: new Date().toISOString() });
+    }, 300);
+  });
+}
