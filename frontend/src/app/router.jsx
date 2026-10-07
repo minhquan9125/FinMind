@@ -89,6 +89,7 @@ function lazyPage(componentPath) {
   const loader = pageModules[`../pages/${componentPath}.jsx`];
   return lazy(() => (loader ? loader() : Promise.resolve({ default: Placeholder })));
 }
+
 /**
  * Khung giữ chỗ tạm thời — hiển thị khi file .jsx của trang chưa được tạo.
  * Thành viên không cần quan tâm đến component này.
