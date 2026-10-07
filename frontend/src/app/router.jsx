@@ -81,12 +81,6 @@ function ProtectedRoute({ routeConfig, children }) {
 
   // 5. OK — render trang
   return children;
-
-const pageModules = import.meta.glob("../pages/*/*.jsx");
-
-function lazyPage(componentPath) {
-  const loader = pageModules[`../pages/${componentPath}.jsx`];
-  return lazy(() => (loader ? loader() : Promise.resolve({ default: Placeholder })));
 }
 /**
  * Khung giữ chỗ tạm thời — hiển thị khi file .jsx của trang chưa được tạo.
