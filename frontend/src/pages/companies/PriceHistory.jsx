@@ -43,8 +43,7 @@ export default function PriceHistory({ data }) {
     const chart = createChart(container, {
       width: container.clientWidth,
       height: container.clientHeight,
-      attributionLogo: true,
-      layout: { background: { color: "#ffffff" }, textColor: "#64748b" },
+      layout: { background: { color: "#ffffff" }, textColor: "#64748b", attributionLogo: false },
       grid: { vertLines: { color: "#f1f5f9" }, horzLines: { color: "#e2e8f0" } },
       timeScale: { borderColor: "#cbd5e1", timeVisible: false, rightOffset: 2 },
       rightPriceScale: { borderColor: "#cbd5e1" },
@@ -158,7 +157,7 @@ export default function PriceHistory({ data }) {
 
   return (
     <div className="space-y-4">
-      <p className="text-xs text-slate-600">Nguồn: {latest.source || data.source || "Chưa rõ"} · Nến ngày 1D · {bars.length} phiên đã lưu · Gần nhất: {latest.date}</p>
+      <p className="text-xs text-slate-600">Nguồn: {latest.source || data.source || "Chưa rõ"} · Nến ngày 1D · {bars.length} phiên · Gần nhất: {latest.date}{data.price_unit === "points" ? " · Đơn vị: điểm chỉ số" : ""}</p>
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Giá đóng cửa gần nhất</p><strong className="text-lg">{number.format(Number(latest.close))}</strong></div>
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Khối lượng ghi nhận</p><strong className="text-lg">{latest.volume == null ? "—" : number.format(Number(latest.volume))}</strong></div>

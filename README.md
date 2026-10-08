@@ -1,3 +1,53 @@
+# FinMind
+
+## Chạy backend giá/tin và frontend trên Windows
+
+Mở **hai terminal PowerShell riêng** và giữ cả hai chạy trong lúc sử dụng web. Cần có Python và Node.js/npm.
+
+### 1. Backend giá/tin — cổng 8001
+
+```powershell
+cd "D:\Win\Capstone 1\FinMind"
+python -B -m uvicorn backend.src.market_data.app:app --host 127.0.0.1 --port 8001 --workers 1
+```
+
+- API: http://127.0.0.1:8001
+- Swagger: http://127.0.0.1:8001/docs
+- Thử đọc giá FPT: http://127.0.0.1:8001/api/market-data/stocks/FPT/ohlcv?limit=5
+
+Nếu thiếu các thư viện để chạy API nhỏ này, cài một lần vào môi trường Python đang dùng:
+
+```powershell
+python -m pip install fastapi uvicorn httpx
+```
+
+API giá/tin đọc lịch sử đã lưu và tự cập nhật giá theo nhóm mã đang xem trong phiên, không cần khởi động PostgreSQL, Neo4j hoặc Supabase. Chỉ chạy một worker. Ngoài phiên, dùng nút **Làm mới giá/tin**. Sau khi sửa code backend, cần dừng và chạy lại server. Kiểm tra `http://127.0.0.1:8001/api/market-data/live/status`: khi đang mở chart ở tab Tổng quan, mục `symbols` phải có mã đang xem. Tham khảo thêm [hướng dẫn API giá/tin](backend/src/market_data/README.md).
+
+### 2. Frontend — cổng 5173
+
+Trong terminal thứ hai:
+
+```powershell
+cd "D:\Win\Capstone 1\FinMind\frontend"
+npm run dev
+```
+
+Lần đầu trên máy mới hoặc sau khi thay đổi dependency, chạy `npm ci` trong folder `frontend` trước `npm run dev`.
+
+Mở địa chỉ Vite in trong terminal, thường là **http://localhost:5173**. Trang xem biểu đồ FPT: **http://localhost:5173/companies/FPT**. Nếu chuyển đến trang đăng nhập, dùng tài khoản mock của giao diện. Frontend mặc định gọi API giá/tin ở `http://127.0.0.1:8001`.
+
+Nếu cổng 5173 đang được dùng, Vite có thể chuyển sang 5174; mở đúng địa chỉ được in ra. Cổng 8765 đang dành cho ứng dụng quản lý Codex, không dùng cho FinMind.
+
+Trên **Tổng quan**, bấm **VN-INDEX / VN30 / HNX-INDEX / UPCOM-INDEX** để tải biểu đồ chỉ số từ vnstock/KBS; chưa bấm thì chưa gọi nguồn. Tin thị trường thật đã thu thập hiển thị ngay bên dưới. Ô tìm kiếm ở Tổng quan và Doanh nghiệp nhận mã 3 chữ cái như **CTR**, kể cả khi chưa có hồ sơ trong danh mục mẫu. Trang mã mới vẫn đọc giá/tin đã lưu và đăng ký giá trong phiên; hồ sơ, tài chính hoặc tin chưa có dữ liệu sẽ hiện trạng thái trống.
+
+Khi mở trang một mã, web tự tải khoảng **6 tháng lịch sử giá** trước khi bật cập nhật giá trong phiên, đồng thời lấy **10 tin FireAnt mới nhất mà nguồn cung cấp** cho mã đó. Cache 60 giây giúp giảm gọi nguồn khi mở lại. Lịch sử/tin mới được lưu riêng tại `.agent-state/market-data/stocks/symbol-MÃ/`, không ghi vào `ScrapersOHLCV`. Nút **Làm mới giá/tin** lấy lại tin và giá; nếu nguồn lỗi, giao diện giữ dữ liệu cũ và báo rõ.
+
+### 3. Tắt sau khi test
+
+Nhấn **Ctrl+C** tại mỗi terminal để dừng backend và frontend. Khi sửa code backend, dừng rồi chạy lại lệnh backend để nạp bản mới.
+
+## Ghi chú kiểm tra dữ liệu Vector RAG
+
 Để Vector RAG chạy đúng với dữ liệu tài chính, cần kiểm tra và sửa các mục dưới đây. Theo rà soát code, có vài vấn đề về đơn vị và kỳ báo cáo; cần xử lý trước khi nạp BID vào Supabase.
 Ưu tiên	Cần kiểm tra	Cách sửa
 1. Đơn vị số tiền	/api/documents/json và /api/documents/import-symbol/{symbol} dùng _statement_pages() để tạo nội dung chunk. Hàm này hiện ghi giá trị VND thô mà không ghi đơn vị.	Thống nhất mọi đường ingest: số tiền thành triệu VND, ghi nhãn rõ, ví dụ TỔNG TÀI SẢN: 3.440.840.854 triệu VND.

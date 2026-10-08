@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "../../app/router.jsx";
 import { Button, Card, EmptyState, ErrorState, Select, Sidebar, Skeleton, Stat, StatusBadge } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
 import { researcherMock } from "../dashboard/mock.js";
 import { getCompanyDetail } from "./detailApi.js";
 import { detailPeriods } from "./detailMock.js";
-import { getSavedNews, getSavedOhlcv } from "./marketDataApi.js";
+import { getSavedNews, refreshLivePrice, refreshCompanyNews } from "./marketDataApi.js";
+import { loadCompanyNews } from "./companyData.js";
+import { startPricePolling } from "./pricePolling.js";
 import PriceHistory from "./PriceHistory.jsx";
 
 const menuPaths = {
@@ -27,6 +29,8 @@ export default function CompanyDetailPage() {
   const { ticker: routeTicker } = useParams();
   const [params] = useSearchParams();
   const ticker = (routeTicker || "").toUpperCase();
+  const currentTicker = useRef(ticker);
+  currentTicker.current = ticker;
   const fixture = ["empty", "error", "loading"].includes(params.get("fixture")) ? params.get("fixture") : "success";
   const [company, setCompany] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,12 +41,15 @@ export default function CompanyDetailPage() {
   const [followed, setFollowed] = useState(false);
   const [marketData, setMarketData] = useState(null);
   const [marketLoading, setMarketLoading] = useState(true);
+  const [historyLoading, setHistoryLoading] = useState(false);
   const [marketError, setMarketError] = useState(null);
   const [marketCheckedAt, setMarketCheckedAt] = useState(null);
   const [newsData, setNewsData] = useState(null);
   const [newsLoading, setNewsLoading] = useState(true);
   const [newsError, setNewsError] = useState(null);
   const [dataRetryCount, setDataRetryCount] = useState(0);
+  const [newsRetryCount, setNewsRetryCount] = useState(0);
+  const [refreshingPrice, setRefreshingPrice] = useState(false);
 
   useEffect(() => {
     if (fixture === "loading") {
@@ -63,73 +70,50 @@ export default function CompanyDetailPage() {
 
   useEffect(() => {
     setMarketLoading(true);
+    setHistoryLoading(false);
     setMarketError(null);
     setMarketData(null);
     setMarketCheckedAt(null);
   }, [ticker]);
 
   useEffect(() => {
-    if (activeTab !== "overview") return;
-    let stopped = false;
-    let timer;
-    let controller;
-    let etag = null;
-    let failures = 0;
+    if (activeTab !== "overview" || loading || error || company?.id !== ticker) return;
+    return startPricePolling({
+      symbol: ticker,
+      onResult: setMarketData,
+      onError: setMarketError,
+      onChecked: (stamp) => { setMarketCheckedAt(stamp); setMarketError(null); },
+      onSettled: () => setMarketLoading(false),
+      onHistoryLoading: setHistoryLoading,
+    });
+  }, [ticker, activeTab, dataRetryCount, loading, error, company]);
 
-    async function checkPrice() {
-      if (stopped || document.hidden) return;
-      const requestController = new AbortController();
-      controller = requestController;
-      try {
-        const result = await getSavedOhlcv(ticker, requestController.signal, etag);
-        if (stopped) return;
-        if (!result.unchanged) {
-          etag = result.etag;
-          setMarketData(result.data);
-        }
-        setMarketCheckedAt(new Date().toISOString());
-        setMarketError(null);
-        failures = 0;
-      } catch (caught) {
-        if (stopped || caught.name === "AbortError") return;
-        setMarketError(caught.message);
-        failures += 1;
-      } finally {
-        if (!stopped && controller === requestController) {
-          setMarketLoading(false);
-          if (!document.hidden) timer = window.setTimeout(checkPrice, Math.min(30000, 5000 * (2 ** failures)));
-        }
-      }
+  async function refreshPrices() {
+    if (refreshingPrice) return;
+    const requestedTicker = ticker;
+    setRefreshingPrice(true);
+    setNewsRetryCount((count) => count + 1);
+    try {
+      await refreshLivePrice(requestedTicker);
+      if (currentTicker.current === requestedTicker) setDataRetryCount((count) => count + 1);
+    } catch (caught) {
+      if (currentTicker.current === requestedTicker) setMarketError(caught.message);
+    } finally {
+      setRefreshingPrice(false);
     }
-
-    function onVisibilityChange() {
-      window.clearTimeout(timer);
-      if (document.hidden) controller?.abort();
-      else checkPrice();
-    }
-
-    document.addEventListener("visibilitychange", onVisibilityChange);
-    if (!document.hidden) checkPrice();
-    return () => {
-      stopped = true;
-      window.clearTimeout(timer);
-      controller?.abort();
-      document.removeEventListener("visibilitychange", onVisibilityChange);
-    };
-  }, [ticker, activeTab, dataRetryCount]);
+  }
 
   useEffect(() => {
     const controller = new AbortController();
     setNewsLoading(true);
     setNewsError(null);
     setNewsData(null);
-    getSavedNews(ticker, controller.signal)
-      .then(setNewsData)
-      .catch((caught) => { if (caught.name !== "AbortError") setNewsError(caught.message); })
-      .finally(() => { if (!controller.signal.aborted) setNewsLoading(false); });
+    loadCompanyNews({ symbol: ticker, signal: controller.signal,
+      api: { read: getSavedNews, refresh: refreshCompanyNews },
+      onResult: setNewsData, onError: setNewsError, onSettled: () => setNewsLoading(false) });
 
     return () => controller.abort();
-  }, [ticker, dataRetryCount]);
+  }, [ticker, newsRetryCount]);
 
   const selectedFinancial = company?.financials.find((item) => item.period === period);
   const graphAvailable = ticker === "FPT" || ticker === "VCB";
@@ -146,8 +130,8 @@ export default function CompanyDetailPage() {
             <span className="font-semibold text-slate-900">{ticker}</span>
           </nav>
           <div className="flex flex-wrap items-center gap-2">
-            <StatusBadge tone="neutral">Hồ sơ mock · Giá/tin từ file đã lưu</StatusBadge>
-            <Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs" onClick={() => setDataRetryCount((count) => count + 1)}>Làm mới giá/tin</Button>
+            <StatusBadge tone="neutral">Hồ sơ mock · Giá/tin từ nguồn dữ liệu</StatusBadge>
+            <Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs" disabled={refreshingPrice} onClick={refreshPrices}>{refreshingPrice ? "Đang lấy giá…" : "Làm mới giá/tin"}</Button>
           </div>
         </header>
 
@@ -155,7 +139,7 @@ export default function CompanyDetailPage() {
           {loading ? <Skeleton rows={8} /> : error ? (
             <ErrorState message={error} onRetry={() => setRetryCount((count) => count + 1)} />
           ) : !company ? (
-            <EmptyState title="Không có dữ liệu doanh nghiệp" description={`Không tìm thấy mã ${ticker} trong 10 doanh nghiệp được hỗ trợ.`}
+            <EmptyState title="Mã chứng khoán không hợp lệ" description="Nhập mã cổ phiếu gồm 3 chữ cái, ví dụ CTR."
               action={<Link className="text-sm font-semibold text-blue-600" to="/companies">Xem danh mục doanh nghiệp →</Link>} />
           ) : (
             <>
@@ -208,13 +192,17 @@ export default function CompanyDetailPage() {
                       <Stat label="Sàn" value={company.exchange || "—"} />
                       <Stat label="Kỳ dữ liệu mẫu" value="FY2025" />
                     </div>
-                    <Card title={`Giá & khối lượng cuối ngày · ${ticker}`} description="OHLCV từ snapshot đã lưu · Chưa xác nhận đơn vị và cơ sở giá">
+                    <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Lịch sử đã lưu và giá KBS trong phiên · Chưa xác nhận cơ sở giá">
                       <p className="mb-3 text-xs text-slate-500">Tự kiểm tra khi đang xem · Nguồn cập nhật: {localTime(marketData?.fetched_at)} · Kiểm tra lần cuối: {localTime(marketCheckedAt)}</p>
-                      {marketError && marketData && <p role="status" className="mb-3 text-xs text-amber-700">Chưa kiểm tra được bản mới: {marketError}. Đang giữ biểu đồ đã tải.</p>}
+                      {historyLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang tải lịch sử khoảng 6 tháng…</p>}
+                      {marketData?.live && <p role="status" className={`mb-3 text-xs ${marketData.live.stale ? "text-amber-700" : "text-slate-500"}`}>{marketData.live.reason}</p>}
+                      {marketError && marketData && <p role="status" className="mb-3 text-xs text-amber-700">{marketError}. Đang giữ biểu đồ đã tải.</p>}
                       {marketLoading && !marketData ? <Skeleton rows={3} /> : marketError && !marketData ? <ErrorState message={marketError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : <PriceHistory data={marketData} />}
                     </Card>
-                    <Card title={`Tin FireAnt gần đây · ${ticker}`} description="Bài đã thu thập · Marker chỉ thể hiện mức đối chiếu văn bản, không xác minh sự thật">
-                      {newsLoading ? <Skeleton rows={3} /> : newsError ? <ErrorState message={newsError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : newsData?.articles.length ? (
+                    <Card title={`Tin FireAnt gần đây · ${ticker}`} description="Tự lấy tin khi mở mã · Cache 60 giây · Marker không xác minh sự thật">
+                      {newsLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang kiểm tra tin mới…</p>}
+                      {newsError && newsData?.articles?.length > 0 && <p role="status" className="mb-3 text-xs text-amber-700">{newsError}</p>}
+                      {newsLoading && !newsData ? <Skeleton rows={3} /> : newsError && !newsData?.articles?.length ? <ErrorState message={newsError} onRetry={() => setNewsRetryCount((count) => count + 1)} /> : newsData?.articles.length ? (
                         <div className="space-y-3">
                           {newsData.articles.map((article) => <article key={article.id} className="rounded-lg border border-slate-200 p-3.5">
                             <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
@@ -242,6 +230,7 @@ export default function CompanyDetailPage() {
                   </Card>}
 
                   {activeTab === "reports" && <Card title="Báo cáo & nguồn công bố" description="Bản ghi minh họa; chưa có tài liệu gốc được kiểm định">
+                    {company.reports.length === 0 && <EmptyState title="Chưa có báo cáo đã lưu cho mã này" />}
                     <div className="space-y-3">
                       {company.reports.map((report) => <article key={report.id} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
                         <h3 className="text-sm font-semibold">{report.title}</h3>

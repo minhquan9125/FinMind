@@ -4,6 +4,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
@@ -19,6 +20,9 @@ def write_json(path, payload):
 
 class MarketDataApiTests(unittest.TestCase):
     def setUp(self):
+        # Snapshot contract tests must not acquire the running server's collector lock.
+        self.disabled_live = patch.dict("os.environ", {"FINMIND_LIVE_ENABLED": "0"})
+        self.disabled_live.start()
         self.tempdir = tempfile.TemporaryDirectory()
         self.root = Path(self.tempdir.name)
         app.dependency_overrides[get_market_data_repository] = lambda: FileMarketDataRepository(self.root)
@@ -26,6 +30,7 @@ class MarketDataApiTests(unittest.TestCase):
     def tearDown(self):
         app.dependency_overrides.clear()
         self.tempdir.cleanup()
+        self.disabled_live.stop()
 
     def test_ohlcv_reads_saved_bars_and_limits_response(self):
         path = self.root / "data_pipeline/ScrapersOHLCV/data/stocks/FPT/data.json"
@@ -85,6 +90,18 @@ class MarketDataApiTests(unittest.TestCase):
             assert articles[1]["description"] == "Bản mới"
             assert articles[1]["marker"] == "uncheck"
             assert client.get("/api/market-data/companies/MBB/news").json()["articles"] == []
+
+    def test_dashboard_reads_general_news_and_new_symbol_has_saved_data(self):
+        article = {"id": "market", "title": "Tin thị trường", "url": "https://fireant.vn/bai-viet/market",
+                   "matched_symbols": [], "published_at": "2026-10-08T10:00:00+07:00"}
+        write_json(self.root / "data_pipeline/scrapers/data/tin_tuc_chung/fireant/08-10-2026.json", {"articles": [article]})
+        write_json(self.root / "data_pipeline/ScrapersOHLCV/data/stocks/CTR/data.json", {"bars": [
+            {"symbol": "CTR", "trade_date": "2026-10-08", "close": "100"}]})
+        with TestClient(app) as client:
+            response = client.get("/api/market-data/news")
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.json()["articles"][0]["id"], "market")
+            self.assertEqual(client.get("/api/market-data/stocks/ctr/ohlcv").json()["bars"][0]["close"], "100")
 
 
 if __name__ == "__main__":

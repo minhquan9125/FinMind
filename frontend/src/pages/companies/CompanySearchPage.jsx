@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
 import { Card, EmptyState, ErrorState, Input, Sidebar, Skeleton, StatusBadge } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
 import { getCompanies } from "./api.js";
+import { searchCompanies } from "./companySearch.js";
 
 const menuPaths = {
   dashboard: "/dashboard",
@@ -11,10 +12,6 @@ const menuPaths = {
   watchlist: "/watchlist",
   graph: "/graph",
 };
-
-function normalize(value) {
-  return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").trim();
-}
 
 export default function CompanySearchPage() {
   const navigate = useNavigate();
@@ -42,7 +39,7 @@ export default function CompanySearchPage() {
     return () => { cancelled = true; };
   }, [fixture, retryCount]);
 
-  const visible = companies.filter((company) => normalize(`${company.id} ${company.name}`).includes(normalize(search)));
+  const visible = searchCompanies(companies, search);
   function renderGroup(sector) {
     const group = visible.filter((company) => company.sector === sector);
     if (group.length === 0) return null;
@@ -102,7 +99,7 @@ export default function CompanySearchPage() {
               <section aria-labelledby="supported-title">
                 <h2 id="supported-title" className="text-sm font-bold">Doanh nghiệp được hỗ trợ</h2>
                 <p className="mb-4 mt-0.5 text-xs text-slate-500">Khám phá các doanh nghiệp hiện nằm trong phạm vi nghiên cứu của FinMind.</p>
-                {visible.length === 0 ? <EmptyState title="Không tìm thấy doanh nghiệp phù hợp" description="Thử nhập mã hoặc tên khác trong phạm vi nghiên cứu của FinMind." /> : ["Ngân hàng", "Công nghệ"].map(renderGroup)}
+                {visible.length === 0 ? <EmptyState title="Không tìm thấy doanh nghiệp phù hợp" description="Nhập mã cổ phiếu gồm 3 chữ cái, ví dụ CTR." /> : [...new Set(visible.map((company) => company.sector))].map(renderGroup)}
               </section>
             </>
           )}
