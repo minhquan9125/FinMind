@@ -44,6 +44,7 @@ dist-ssr/
 *.local
 
 # IDE
+.agent-state/
 .vscode/
 .idea/
 *.swp

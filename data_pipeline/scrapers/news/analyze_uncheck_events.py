@@ -8,8 +8,8 @@ from collections import Counter
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from news_crosscheck import article_similarity
-from news_storage import SCRAPERS, daily_path
+from .news_crosscheck import article_similarity
+from .news_storage import SCRAPERS, DATA_ROOT, daily_path
 
 STOP = set('và của các những một là với cho từ tại trong trên được đã sẽ có này đó khi về theo đến hơn cũng vào ra để do tới đang sau cùng'.split())
 ALIASES = {
@@ -158,7 +158,7 @@ def compare(left, right, idf, window_days=3, threshold=0.52):
             'left': reference(left), 'right': reference(right)}
 
 
-def analyze(root=SCRAPERS, scopes=None, window_days=3, threshold=0.52):
+def analyze(root=DATA_ROOT, scopes=None, window_days=3, threshold=0.52):
     root = Path(root).resolve()
     if not root.is_relative_to(SCRAPERS):
         raise ValueError('Root must be inside scrapers')
@@ -252,11 +252,11 @@ def markdown(report):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', type=Path, default=SCRAPERS)
+    parser.add_argument('--root', type=Path, default=DATA_ROOT)
     parser.add_argument('--scopes', nargs='+')
     parser.add_argument('--window-days', type=float, default=3)
     parser.add_argument('--threshold', type=float, default=0.52)
-    parser.add_argument('--output', type=Path, default=SCRAPERS / 'uncheck_analysis')
+    parser.add_argument('--output', type=Path, default=SCRAPERS / 'reports' / 'uncheck')
     args = parser.parse_args(argv)
     if not math.isfinite(args.window_days) or args.window_days < 0 or not 0 <= args.threshold <= 1:
         parser.error('window-days must be finite and nonnegative; threshold must be 0..1')

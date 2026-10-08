@@ -5,7 +5,8 @@ from contextlib import ExitStack
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-SCRAPERS = Path(__file__).resolve().parent
+SCRAPERS = Path(__file__).resolve().parents[1]
+DATA_ROOT = SCRAPERS / 'data'
 VIETNAM = timezone(timedelta(hours=7))
 
 

@@ -4,7 +4,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
-SRC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+SRC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if SRC_DIR not in sys.path:
     sys.path.insert(0, SRC_DIR)
 
@@ -53,7 +53,7 @@ class VietnamStockDataCollector:
     """
     def __init__(self, output_root=None):
         if output_root is None:
-            base_dir = os.path.dirname(os.path.abspath(__file__))
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             self.root_dir = os.path.abspath(os.path.join(base_dir, "..", "..", "..", "data"))
         else:
             self.root_dir = os.path.abspath(output_root)

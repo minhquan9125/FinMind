@@ -2,9 +2,9 @@
 
 Examples:
     python -m pip install "scrapling>=0.4,<1" "requests>=2.32,<3"
-    python data_pipeline/src/scrapers/stock_news_collector.py --source cafef
-    python data_pipeline/src/scrapers/stock_news_collector.py --source fireant
-    python data_pipeline/src/scrapers/stock_news_collector.py --url https://cafef.vn/example.chn
+    python -m news.stock_news_collector --source cafef
+    python -m news.stock_news_collector --source fireant
+    python -m news.stock_news_collector --url https://cafef.vn/example.chn
 
 Both sources support general market news and their public stock news tabs.
 News merges into daily JSON files, separated by scope, stock ticker and source.
@@ -23,12 +23,12 @@ from html import unescape
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, urlunparse
 from scrapling.parser import Selector
-from news_storage import SCRAPERS, crawl_day, daily_path, migrate_daily
-from news_sources import (cafef_candidates, fireant_candidates, fireant_json,
+from .news_storage import SCRAPERS, DATA_ROOT, crawl_day, daily_path, migrate_daily
+from .news_sources import (cafef_candidates, fireant_candidates, fireant_json,
                           fireant_item, get, plain_text, relevant)
 
 
-DEFAULT_OUTPUT = Path(__file__).resolve().parent / "stock_news.json"
+DEFAULT_OUTPUT = SCRAPERS / "stock_news.json"
 SOURCE_OUTPUTS = {source: DEFAULT_OUTPUT.with_name(source + '_news.json')
                   for source in ('cafef', 'fireant')}
 
@@ -222,7 +222,7 @@ def main(argv=None, run_report=None) -> int:
         parser.error('Invalid stock ticker')
     if args.only_symbols and not symbols:
         parser.error('--only-symbols requires --symbols or --symbol')
-    root = args.output.resolve() if args.output else SCRAPERS
+    root = args.output.resolve() if args.output else DATA_ROOT
     if not root.is_relative_to(SCRAPERS) or root.suffix.lower() == '.json' or (root.exists() and not root.is_dir()):
         parser.error('--output must be a directory inside scrapers, not a JSON filename')
     day = crawl_day()
@@ -279,7 +279,7 @@ def main(argv=None, run_report=None) -> int:
             result['error'] = str(exc)
             print(f'Collection failed; existing output preserved: {exc}', file=sys.stderr)
             status = 1
-    from news_crosscheck import crosscheck_news
+    from .news_crosscheck import crosscheck_news
     try:
         cross_summary = crosscheck_news(root, [scope for _, scope, _ in groups])
         if run_report is not None:

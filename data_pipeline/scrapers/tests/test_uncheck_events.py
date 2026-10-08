@@ -2,11 +2,12 @@
 import hashlib
 import json
 import tempfile
+from tests.helpers import TEST_TMP
 import unittest
 from pathlib import Path
 
-import analyze_uncheck_events as analysis
-from news_storage import SCRAPERS, daily_path
+from news import analyze_uncheck_events as analysis
+from news.news_storage import SCRAPERS, daily_path
 
 
 def article(source, title='FPT có thêm cổ đông', body=None, date='2026-09-29T10:00:00+07:00'):
@@ -23,7 +24,7 @@ class EventTests(unittest.TestCase):
         return path
 
     def test_rewritten_titles_and_preserve_input(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root = Path(folder)
             a = article('cafef', body='FPT có 181.748 cổ đông. Tập đoàn đã phát hành 171,4 triệu cổ phiếu. Nhà đầu tư cá nhân tăng nhanh nhờ chia cổ phiếu thưởng cho cổ đông.')
             b = article('fireant', title='FPT: Số cổ đông tăng lên 181.748 người', body='Sau phát hành 171,4 triệu cổ phiếu, số cổ đông FPT đạt 181.748 người. Cổ đông cá nhân tăng nhanh trong tập đoàn công nghệ.')
@@ -36,7 +37,7 @@ class EventTests(unittest.TestCase):
             self.assertEqual(before, {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in paths})
 
     def test_same_title_disclosure_separate_and_dedup_days(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root = Path(folder)
             a = article('cafef', 'FPT: Thông báo số lượng cổ phiếu có quyền biểu quyết', 'FPT thông báo cổ phiếu có quyền biểu quyết. Các tập tin đính kèm báo cáo chi tiết danh sách toàn bộ cổ đông và ngày thực hiện theo HOSE.')
             b = article('fireant', a['title'], 'FPT thông báo cổ phiếu có quyền biểu quyết.')
@@ -51,7 +52,7 @@ class EventTests(unittest.TestCase):
             self.assertEqual(report['summary']['unique_uncheck_articles_with_rewritten_candidates'], 0)
 
     def test_date_window_and_scope_isolation(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root = Path(folder)
             self.save(root, 'cafef', 'FPT', '01-10-2026', article('cafef'))
             self.save(root, 'fireant', 'HPG', '01-10-2026', article('fireant'))
@@ -60,7 +61,7 @@ class EventTests(unittest.TestCase):
             self.assertEqual(analysis.analyze(root)['summary']['unique_candidate_pairs'], 0)
 
     def test_different_resolution_not_same_event(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root = Path(folder)
             self.save(root, 'cafef', 'TPB', '01-10-2026', article('cafef', 'TPB nghị quyết số 35/2026 phát hành trái phiếu'))
             self.save(root, 'fireant', 'TPB', '01-10-2026', article('fireant', 'TPB nghị quyết số 37/2026 phát hành trái phiếu'))
@@ -72,7 +73,7 @@ class EventTests(unittest.TestCase):
         self.assertEqual(analysis.specific_numbers('2026 29 181.748 171,4'), {'181.748', '171,4'})
 
     def test_missing_date_and_same_topic_insufficient(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root = Path(folder)
             self.save(root, 'cafef', 'FPT', '01-10-2026', article('cafef', 'FPT chia cổ tức năm nay', 'FPT chia cổ tức tiền mặt cho người nắm giữ.'))
             self.save(root, 'fireant', 'FPT', '01-10-2026', article('fireant', 'FPT chuẩn bị trả cổ tức', 'FPT trả cổ tức bằng cổ phiếu vào năm sau.', date=None))

@@ -1,6 +1,6 @@
 """Move legacy news JSON into daily folders without fetching network data."""
-from stock_news_collector import DEFAULT_OUTPUT, SOURCE_OUTPUTS, read_articles, write_payload, output_lock
-from news_storage import SCRAPERS, crawl_day, daily_path, migrate_daily
+from .stock_news_collector import DEFAULT_OUTPUT, SOURCE_OUTPUTS, read_articles, write_payload, output_lock
+from .news_storage import SCRAPERS, DATA_ROOT, crawl_day, daily_path, migrate_daily
 
 
 def main():
@@ -10,9 +10,9 @@ def main():
         for article in read_articles(path).values():
             scopes = set(article.get('scopes', [])) | set(article.get('matched_symbols', [])) or {'market'}
             for scope in scopes:
-                expected.append((daily_path(SCRAPERS, article['source'], scope,
+                expected.append((daily_path(DATA_ROOT, article['source'], scope,
                                             crawl_day(article['crawled_at'])), article))
-    migrate_daily(SCRAPERS, inputs, read_articles, write_payload, output_lock)
+    migrate_daily(DATA_ROOT, inputs, read_articles, write_payload, output_lock)
     for path, original in expected:
         saved = read_articles(path, original['source'])[original['url']]
         for field, value in original.items():
