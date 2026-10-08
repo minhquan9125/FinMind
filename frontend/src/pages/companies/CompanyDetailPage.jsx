@@ -5,6 +5,8 @@ import { userMenu } from "../../mocks/componentMock.js";
 import { researcherMock } from "../dashboard/mock.js";
 import { getCompanyDetail } from "./detailApi.js";
 import { detailPeriods } from "./detailMock.js";
+import { getSavedNews, getSavedOhlcv } from "./marketDataApi.js";
+import PriceHistory from "./PriceHistory.jsx";
 
 const menuPaths = {
   dashboard: "/dashboard", companies: "/companies", copilot: "/research",
@@ -18,6 +20,7 @@ const tabs = [
 ];
 
 const formatNumber = (value) => new Intl.NumberFormat("vi-VN").format(value);
+const localTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }) : "Chưa rõ";
 
 export default function CompanyDetailPage() {
   const navigate = useNavigate();
@@ -32,6 +35,14 @@ export default function CompanyDetailPage() {
   const [activeTab, setActiveTab] = useState("overview");
   const [period, setPeriod] = useState(detailPeriods.some((item) => item.value === params.get("period")) ? params.get("period") : "FY2025");
   const [followed, setFollowed] = useState(false);
+  const [marketData, setMarketData] = useState(null);
+  const [marketLoading, setMarketLoading] = useState(true);
+  const [marketError, setMarketError] = useState(null);
+  const [marketCheckedAt, setMarketCheckedAt] = useState(null);
+  const [newsData, setNewsData] = useState(null);
+  const [newsLoading, setNewsLoading] = useState(true);
+  const [newsError, setNewsError] = useState(null);
+  const [dataRetryCount, setDataRetryCount] = useState(0);
 
   useEffect(() => {
     if (fixture === "loading") {
@@ -50,6 +61,76 @@ export default function CompanyDetailPage() {
     return () => { cancelled = true; };
   }, [ticker, fixture, retryCount]);
 
+  useEffect(() => {
+    setMarketLoading(true);
+    setMarketError(null);
+    setMarketData(null);
+    setMarketCheckedAt(null);
+  }, [ticker]);
+
+  useEffect(() => {
+    if (activeTab !== "overview") return;
+    let stopped = false;
+    let timer;
+    let controller;
+    let etag = null;
+    let failures = 0;
+
+    async function checkPrice() {
+      if (stopped || document.hidden) return;
+      const requestController = new AbortController();
+      controller = requestController;
+      try {
+        const result = await getSavedOhlcv(ticker, requestController.signal, etag);
+        if (stopped) return;
+        if (!result.unchanged) {
+          etag = result.etag;
+          setMarketData(result.data);
+        }
+        setMarketCheckedAt(new Date().toISOString());
+        setMarketError(null);
+        failures = 0;
+      } catch (caught) {
+        if (stopped || caught.name === "AbortError") return;
+        setMarketError(caught.message);
+        failures += 1;
+      } finally {
+        if (!stopped && controller === requestController) {
+          setMarketLoading(false);
+          if (!document.hidden) timer = window.setTimeout(checkPrice, Math.min(30000, 5000 * (2 ** failures)));
+        }
+      }
+    }
+
+    function onVisibilityChange() {
+      window.clearTimeout(timer);
+      if (document.hidden) controller?.abort();
+      else checkPrice();
+    }
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    if (!document.hidden) checkPrice();
+    return () => {
+      stopped = true;
+      window.clearTimeout(timer);
+      controller?.abort();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [ticker, activeTab, dataRetryCount]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setNewsLoading(true);
+    setNewsError(null);
+    setNewsData(null);
+    getSavedNews(ticker, controller.signal)
+      .then(setNewsData)
+      .catch((caught) => { if (caught.name !== "AbortError") setNewsError(caught.message); })
+      .finally(() => { if (!controller.signal.aborted) setNewsLoading(false); });
+
+    return () => controller.abort();
+  }, [ticker, dataRetryCount]);
+
   const selectedFinancial = company?.financials.find((item) => item.period === period);
   const graphAvailable = ticker === "FPT" || ticker === "VCB";
 
@@ -64,7 +145,10 @@ export default function CompanyDetailPage() {
             <Link to="/companies" className="hover:text-blue-600">Doanh nghiệp</Link><span>/</span>
             <span className="font-semibold text-slate-900">{ticker}</span>
           </nav>
-          <StatusBadge tone="neutral">Mock · EOD · Dữ liệu cuối ngày</StatusBadge>
+          <div className="flex flex-wrap items-center gap-2">
+            <StatusBadge tone="neutral">Hồ sơ mock · Giá/tin từ file đã lưu</StatusBadge>
+            <Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs" onClick={() => setDataRetryCount((count) => count + 1)}>Làm mới giá/tin</Button>
+          </div>
         </header>
 
         <div className="mx-auto w-full max-w-[1240px] space-y-6 px-4 py-6 sm:px-6 lg:px-8">
@@ -124,11 +208,25 @@ export default function CompanyDetailPage() {
                       <Stat label="Sàn" value={company.exchange || "—"} />
                       <Stat label="Kỳ dữ liệu mẫu" value="FY2025" />
                     </div>
-                    <Card title={`Giá & khối lượng cuối ngày · ${ticker}`} description="EOD · Chưa kết nối dữ liệu thị trường đã kiểm định">
-                      <EmptyState title="Chưa có chuỗi giá EOD" description="Biểu đồ sẽ hiển thị khi có nguồn dữ liệu được nạp." />
+                    <Card title={`Giá & khối lượng cuối ngày · ${ticker}`} description="OHLCV từ snapshot đã lưu · Chưa xác nhận đơn vị và cơ sở giá">
+                      <p className="mb-3 text-xs text-slate-500">Tự kiểm tra khi đang xem · Nguồn cập nhật: {localTime(marketData?.fetched_at)} · Kiểm tra lần cuối: {localTime(marketCheckedAt)}</p>
+                      {marketError && marketData && <p role="status" className="mb-3 text-xs text-amber-700">Chưa kiểm tra được bản mới: {marketError}. Đang giữ biểu đồ đã tải.</p>}
+                      {marketLoading && !marketData ? <Skeleton rows={3} /> : marketError && !marketData ? <ErrorState message={marketError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : <PriceHistory data={marketData} />}
                     </Card>
-                    <Card title={`Tin tức gần đây · ${ticker}`} description="Tin từ các nguồn được phê duyệt">
-                      <EmptyState title="Chưa có tin tức được kiểm định" description={`Hiện chưa có tin tức được kiểm định cho ${ticker}.`} />
+                    <Card title={`Tin FireAnt gần đây · ${ticker}`} description="Bài đã thu thập · Marker chỉ thể hiện mức đối chiếu văn bản, không xác minh sự thật">
+                      {newsLoading ? <Skeleton rows={3} /> : newsError ? <ErrorState message={newsError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : newsData?.articles.length ? (
+                        <div className="space-y-3">
+                          {newsData.articles.map((article) => <article key={article.id} className="rounded-lg border border-slate-200 p-3.5">
+                            <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                              <StatusBadge tone={article.marker === "check" ? "info" : "neutral"}>{article.marker === "check" ? "Có bài tương đồng" : "Chưa đối chiếu"}</StatusBadge>
+                              <span>FireAnt · {article.published_at ? new Date(article.published_at).toLocaleString("vi-VN") : "Chưa rõ ngày"}</span>
+                            </div>
+                            <h3 className="text-sm font-semibold">{article.title}</h3>
+                            {article.description && <p className="mt-1 text-xs text-slate-600">{article.description}</p>}
+                            {article.url && <a className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline" href={article.url} target="_blank" rel="noopener noreferrer">Xem bài gốc →</a>}
+                          </article>)}
+                        </div>
+                      ) : <EmptyState title={`Chưa có tin FireAnt đã lưu cho ${ticker}`} />}
                     </Card>
                   </>}
 
