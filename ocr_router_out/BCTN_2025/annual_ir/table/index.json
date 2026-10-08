@@ -1,0 +1,914 @@
+{
+  "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+  "scope": "audited_financial_statements",
+  "pages": 67,
+  "page_ranges": [
+    {
+      "start": 160,
+      "end": 226
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "toc",
+      "start": 160,
+      "end": 160
+    },
+    {
+      "page_class": "company_information",
+      "start": 161,
+      "end": 161
+    },
+    {
+      "page_class": "other",
+      "start": 162,
+      "end": 162
+    },
+    {
+      "page_class": "auditor_report",
+      "start": 163,
+      "end": 164
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 165,
+      "end": 168
+    },
+    {
+      "page_class": "income_statement",
+      "start": 169,
+      "end": 170
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 171,
+      "end": 172
+    },
+    {
+      "page_class": "notes",
+      "start": 173,
+      "end": 226
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 160,
+      "printed_page": "159",
+      "file": "p-160.ir.json",
+      "page_class": "toc",
+      "title": "BÁO CÁO TÀI CHÍNH HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 161,
+      "printed_page": "160",
+      "file": "p-161.ir.json",
+      "page_class": "company_information",
+      "title": "THÔNG TIN VỀ DOANH NGHIỆP",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 162,
+      "printed_page": "161",
+      "file": "p-162.ir.json",
+      "page_class": "other",
+      "title": "BÁO CÁO CỦA BAN TỔNG GIÁM ĐỐC",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 163,
+      "printed_page": "162",
+      "file": "p-163.ir.json",
+      "page_class": "auditor_report",
+      "title": "BÁO CÁO KIỂM TOÁN ĐỘC LẬP",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 164,
+      "printed_page": "163",
+      "file": "p-164.ir.json",
+      "page_class": "auditor_report",
+      "title": "BÁO CÁO KIỂM TOÁN ĐỘC LẬP",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 165,
+      "printed_page": "164",
+      "file": "p-165.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 166,
+      "printed_page": "165",
+      "file": "p-166.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 167,
+      "printed_page": "166",
+      "file": "p-167.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 168,
+      "printed_page": "167",
+      "file": "p-168.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 169,
+      "printed_page": "168",
+      "file": "p-169.ir.json",
+      "page_class": "income_statement",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 170,
+      "printed_page": "169",
+      "file": "p-170.ir.json",
+      "page_class": "income_statement",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 171,
+      "printed_page": "170",
+      "file": "p-171.ir.json",
+      "page_class": "cash_flow",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 172,
+      "printed_page": "171",
+      "file": "p-172.ir.json",
+      "page_class": "cash_flow",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 173,
+      "printed_page": "172",
+      "file": "p-173.ir.json",
+      "page_class": "notes",
+      "title": "1. Đặc điểm hoạt động của Tập đoàn",
+      "topics": [
+        "1. Đặc điểm hoạt động của Tập đoàn"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 174,
+      "printed_page": "173",
+      "file": "p-174.ir.json",
+      "page_class": "notes",
+      "title": "1. Đặc điểm hoạt động của Tập đoàn (i) Công ty con trực tiếp",
+      "topics": [
+        "1. Đặc điểm hoạt động của Tập đoàn (i) Công ty con trực tiếp"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 175,
+      "printed_page": "174",
+      "file": "p-175.ir.json",
+      "page_class": "notes",
+      "title": "1. Đặc điểm hoạt động của Tập đoàn",
+      "topics": [
+        "1. Đặc điểm hoạt động của Tập đoàn"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 176,
+      "printed_page": "175",
+      "file": "p-176.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.1. Cơ sở của việc lập báo cáo tài chính hợp nhất",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.1. Cơ sở của việc lập báo cáo tài chính hợp nhất"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 177,
+      "printed_page": "176",
+      "file": "p-177.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.4. Các loại tỷ giá hối đoái áp dụng trong kế toán",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.4. Các loại tỷ giá hối đoái áp dụng trong kế toán"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 178,
+      "printed_page": "177",
+      "file": "p-178.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.5. Cơ sở hợp nhất báo cáo tài chính (Tiếp theo)",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.5. Cơ sở hợp nhất báo cáo tài chính (Tiếp theo)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 179,
+      "printed_page": "178",
+      "file": "p-179.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.6. Lợi thế thương mại",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.6. Lợi thế thương mại"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 180,
+      "printed_page": "179",
+      "file": "p-180.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.10. Đầu tư tài chính",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.10. Đầu tư tài chính"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 181,
+      "printed_page": "180",
+      "file": "p-181.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.12. Hợp đồng phát triển phần mềm và tích hợp hệ thống",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.12. Hợp đồng phát triển phần mềm và tích hợp hệ thống"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 182,
+      "printed_page": "181",
+      "file": "p-182.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.13. Tài sản cố định (“TSCĐ”) (Tiếp theo)",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.13. Tài sản cố định (“TSCĐ”) (Tiếp theo)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 183,
+      "printed_page": "182",
+      "file": "p-183.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 184,
+      "printed_page": "183",
+      "file": "p-184.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 185,
+      "printed_page": "184",
+      "file": "p-185.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.22. Phân chia lợi nhuận",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.22. Phân chia lợi nhuận"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 186,
+      "printed_page": "185",
+      "file": "p-186.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu 2.23. Ghi nhận doanh thu (Tiếp theo)",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu 2.23. Ghi nhận doanh thu (Tiếp theo)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 187,
+      "printed_page": "186",
+      "file": "p-187.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 188,
+      "printed_page": "187",
+      "file": "p-188.ir.json",
+      "page_class": "notes",
+      "title": "2. Các chính sách kế toán chủ yếu",
+      "topics": [
+        "2. Các chính sách kế toán chủ yếu"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 189,
+      "printed_page": "188",
+      "file": "p-189.ir.json",
+      "page_class": "notes",
+      "title": "3. Hợp nhất kinh doanh",
+      "topics": [
+        "3. Hợp nhất kinh doanh",
+        "4. Tiền và các khoản tương đương tiền"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 190,
+      "printed_page": "189",
+      "file": "p-190.ir.json",
+      "page_class": "notes",
+      "title": "5. Đầu tư tài chính (a) Đầu tư nắm giữ đến ngày đáo hạn",
+      "topics": [
+        "5. Đầu tư tài chính (a) Đầu tư nắm giữ đến ngày đáo hạn"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 191,
+      "printed_page": "190",
+      "file": "p-191.ir.json",
+      "page_class": "notes",
+      "title": "5. Đầu tư tài chính (b) Đầu tư góp vốn vào đơn vị khác",
+      "topics": [
+        "5. Đầu tư tài chính (b) Đầu tư góp vốn vào đơn vị khác"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 192,
+      "printed_page": "191",
+      "file": "p-192.ir.json",
+      "page_class": "notes",
+      "title": "5. Đầu tư tài chính",
+      "topics": [
+        "5. Đầu tư tài chính",
+        "6. Phải thu ngắn hạn của khách hàng"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 193,
+      "printed_page": "192",
+      "file": "p-193.ir.json",
+      "page_class": "notes",
+      "title": "7. Trả trước cho người bán ngắn hạn",
+      "topics": [
+        "7. Trả trước cho người bán ngắn hạn",
+        "8. Phải thu/phải trả theo tiến độ kế hoạch hợp đồng"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 194,
+      "printed_page": "193",
+      "file": "p-194.ir.json",
+      "page_class": "notes",
+      "title": "9. Phải thu khác",
+      "topics": [
+        "9. Phải thu khác",
+        "10. Nợ khó đòi"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 195,
+      "printed_page": "194",
+      "file": "p-195.ir.json",
+      "page_class": "notes",
+      "title": "11. Hàng tồn kho",
+      "topics": [
+        "11. Hàng tồn kho",
+        "12. Chi phí trả trước"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 196,
+      "printed_page": "195",
+      "file": "p-196.ir.json",
+      "page_class": "notes",
+      "title": "13. Thuế và các khoản phải thu/phải nộp nhà nước",
+      "topics": [
+        "13. Thuế và các khoản phải thu/phải nộp nhà nước"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 197,
+      "printed_page": "196",
+      "file": "p-197.ir.json",
+      "page_class": "notes",
+      "title": "14. Tài sản cố định (a) Tài sản cố định hữu hình",
+      "topics": [
+        "14. Tài sản cố định (a) Tài sản cố định hữu hình"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 198,
+      "printed_page": "197",
+      "file": "p-198.ir.json",
+      "page_class": "notes",
+      "title": "14. Tài sản cố định",
+      "topics": [
+        "14. Tài sản cố định"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 199,
+      "printed_page": "198",
+      "file": "p-199.ir.json",
+      "page_class": "notes",
+      "title": "15. Chi phí xây dựng cơ bản dở dang Chi tiết số dư của chi phí xây dựng cơ bản dở dang cuối năm tài chính như sau:",
+      "topics": [
+        "15. Chi phí xây dựng cơ bản dở dang Chi tiết số dư của chi phí xây dựng cơ bản dở dang cuối năm tài chính như sau:",
+        "17. Phải trả người bán ngắn hạn",
+        "16. Lợi thế thương mại Biến động của lợi thế thương mại trong năm như sau:"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 200,
+      "printed_page": "199",
+      "file": "p-200.ir.json",
+      "page_class": "notes",
+      "title": "17. Phải trả người bán ngắn hạn Chi tiết số dư nhà cung cấp bên thứ ba chiếm hơn 2% tổng số dư phải trả người bán ngắn hạn:",
+      "topics": [
+        "17. Phải trả người bán ngắn hạn Chi tiết số dư nhà cung cấp bên thứ ba chiếm hơn 2% tổng số dư phải trả người bán ngắn hạn:",
+        "18. Người mua trả tiền trước ngắn hạn",
+        "19. Chi phí phải trả ngắn hạn Đơn vị: VNĐ"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 201,
+      "printed_page": "200",
+      "file": "p-201.ir.json",
+      "page_class": "notes",
+      "title": "20. Doanh thu chưa thực hiện",
+      "topics": [
+        "20. Doanh thu chưa thực hiện",
+        "21. Phải trả khác"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 202,
+      "printed_page": "201",
+      "file": "p-202.ir.json",
+      "page_class": "notes",
+      "title": "22. Vay và nợ thuê tài chính",
+      "topics": [
+        "22. Vay và nợ thuê tài chính"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 203,
+      "printed_page": "202",
+      "file": "p-203.ir.json",
+      "page_class": "notes",
+      "title": "22. Vay và nợ thuê tài chính Chi tiết số dư các khoản vay và nợ thuê tài chính dài hạn theo kỳ hạn gốc hợp đồng vay:",
+      "topics": [
+        "22. Vay và nợ thuê tài chính Chi tiết số dư các khoản vay và nợ thuê tài chính dài hạn theo kỳ hạn gốc hợp đồng vay:"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 204,
+      "printed_page": "203",
+      "file": "p-204.ir.json",
+      "page_class": "notes",
+      "title": "22. Vay và nợ thuê tài chính Chi tiết số dư các khoản vay bằng ngoại tệ được Tập đoàn phòng ngừa rủi ro tỷ giá bằng cách sử dụng các giao dịch hoán đổi ngoại tệ và mua ngoại tệ trong tương lai như sau:",
+      "topics": [
+        "22. Vay và nợ thuê tài chính Chi tiết số dư các khoản vay bằng ngoại tệ được Tập đoàn phòng ngừa rủi ro tỷ giá bằng cách sử dụng các giao dịch hoán đổi ngoại tệ và mua ngoại tệ trong tương lai như sau:",
+        "23. Vốn góp của chủ sở hữu"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 205,
+      "printed_page": "204",
+      "file": "p-205.ir.json",
+      "page_class": "notes",
+      "title": "23. Vốn góp của chủ sở hữu",
+      "topics": [
+        "23. Vốn góp của chủ sở hữu"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 206,
+      "printed_page": "205",
+      "file": "p-206.ir.json",
+      "page_class": "notes",
+      "title": "24. Tình hình tăng giảm nguồn vốn chủ sở hữu",
+      "topics": [
+        "24. Tình hình tăng giảm nguồn vốn chủ sở hữu"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 207,
+      "printed_page": "206",
+      "file": "p-207.ir.json",
+      "page_class": "notes",
+      "title": "24. Tình hình tăng giảm nguồn vốn chủ sở hữu Cổ đông không kiểm soát (trình bày theo cấu phần vốn chủ sở hữu tại các công ty con):",
+      "topics": [
+        "24. Tình hình tăng giảm nguồn vốn chủ sở hữu Cổ đông không kiểm soát (trình bày theo cấu phần vốn chủ sở hữu tại các công ty con):"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 208,
+      "printed_page": "207",
+      "file": "p-208.ir.json",
+      "page_class": "notes",
+      "title": "25. Lãi trên cổ phiếu (a) Lãi cơ bản trên cổ phiếu",
+      "topics": [
+        "25. Lãi trên cổ phiếu (a) Lãi cơ bản trên cổ phiếu"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 209,
+      "printed_page": "208",
+      "file": "p-209.ir.json",
+      "page_class": "notes",
+      "title": "26. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+      "topics": [
+        "26. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+        "27. Giá vốn hàng bán và dịch vụ cung cấp",
+        "28. Doanh thu hoạt động tài chính Đơn vị: VNĐ",
+        "29. Chi phí tài chính"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 210,
+      "printed_page": "209",
+      "file": "p-210.ir.json",
+      "page_class": "notes",
+      "title": "30. Chi phí bán hàng",
+      "topics": [
+        "30. Chi phí bán hàng",
+        "31. Chi phí quản lý doanh nghiệp",
+        "32. Thuế thu nhập doanh nghiệp (“TNDN”) Đơn vị: VNĐ Theo quy định trong các Giấy Chứng nhận Đăng ký Doanh nghiệp của Công ty và"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 211,
+      "printed_page": "210",
+      "file": "p-211.ir.json",
+      "page_class": "notes",
+      "title": "32. Thuế thu nhập doanh nghiệp (“TNDN”) Biến động gộp về thuế TNDN hoãn lại trong năm tài chính như sau:",
+      "topics": [
+        "32. Thuế thu nhập doanh nghiệp (“TNDN”) Biến động gộp về thuế TNDN hoãn lại trong năm tài chính như sau:",
+        "33. Chi phí sản xuất kinh doanh theo yếu tố"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 212,
+      "printed_page": "211",
+      "file": "p-212.ir.json",
+      "page_class": "notes",
+      "title": "34. Báo cáo bộ phận",
+      "topics": [
+        "34. Báo cáo bộ phận"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 213,
+      "printed_page": "212",
+      "file": "p-213.ir.json",
+      "page_class": "notes",
+      "title": "34. Báo cáo bộ phận",
+      "topics": [
+        "34. Báo cáo bộ phận"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 214,
+      "printed_page": "213",
+      "file": "p-214.ir.json",
+      "page_class": "notes",
+      "title": "34. Báo cáo bộ phận",
+      "topics": [
+        "34. Báo cáo bộ phận",
+        "35. Thuyết minh về các bên liên quan Các bên liên quan chính và mối quan hệ như sau:"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 215,
+      "printed_page": "214",
+      "file": "p-215.ir.json",
+      "page_class": "notes",
+      "title": "35. Thuyết minh về các bên liên quan (a) Giao dịch với các bên liên quan (Tiếp theo)",
+      "topics": [
+        "35. Thuyết minh về các bên liên quan (a) Giao dịch với các bên liên quan (Tiếp theo)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 216,
+      "printed_page": "215",
+      "file": "p-216.ir.json",
+      "page_class": "notes",
+      "title": "35. Thuyết minh về các bên liên quan (b) Số dư cuối năm tài chính với các bên liên quan",
+      "topics": [
+        "35. Thuyết minh về các bên liên quan (b) Số dư cuối năm tài chính với các bên liên quan",
+        "36. Các cam kết"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 217,
+      "printed_page": "216",
+      "file": "p-217.ir.json",
+      "page_class": "notes",
+      "title": "37. Các khoản mục ngoài bảng cân đối kế toán hợp nhất",
+      "topics": [
+        "37. Các khoản mục ngoài bảng cân đối kế toán hợp nhất",
+        "38. Nợ tiềm tàng"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 218,
+      "printed_page": "217",
+      "file": "p-218.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1 - Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 219,
+      "printed_page": "218",
+      "file": "p-219.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1 - Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 220,
+      "printed_page": "219",
+      "file": "p-220.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1 - Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 221,
+      "printed_page": "220",
+      "file": "p-221.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1 - Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 222,
+      "printed_page": "221",
+      "file": "p-222.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1 - Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 223,
+      "printed_page": "222",
+      "file": "p-223.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1 Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 224,
+      "printed_page": "223",
+      "file": "p-224.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1- Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 225,
+      "printed_page": "224",
+      "file": "p-225.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1 - Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 226,
+      "printed_page": "225",
+      "file": "p-226.ir.json",
+      "page_class": "notes",
+      "title": "Phụ lục 1 - Danh sách công ty con và công ty liên doanh, liên kết khác mà công ty sở hữu gián tiếp tại ngày 31 tháng 12 năm 2025",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    }
+  ],
+  "structured_table_ranges": [
+    {
+      "start": 165,
+      "end": 172
+    }
+  ],
+  "needs_review": [],
+  "arithmetic_checks": [
+    {
+      "name": "assets",
+      "year": "2025",
+      "passed": true,
+      "result_code": "270",
+      "actual": "88141991634625",
+      "expected": "88141991634625"
+    },
+    {
+      "name": "assets",
+      "year": "2024",
+      "passed": true,
+      "result_code": "270",
+      "actual": "71999995678620",
+      "expected": "71999995678620"
+    },
+    {
+      "name": "funding",
+      "year": "2025",
+      "passed": true,
+      "result_code": "440",
+      "actual": "88141991634625",
+      "expected": "88141991634625"
+    },
+    {
+      "name": "funding",
+      "year": "2024",
+      "passed": true,
+      "result_code": "440",
+      "actual": "71999995678620",
+      "expected": "71999995678620"
+    },
+    {
+      "name": "balance",
+      "year": "2025",
+      "passed": true,
+      "result_code": "270",
+      "actual": "88141991634625",
+      "expected": "88141991634625"
+    },
+    {
+      "name": "balance",
+      "year": "2024",
+      "passed": true,
+      "result_code": "270",
+      "actual": "71999995678620",
+      "expected": "71999995678620"
+    },
+    {
+      "name": "net_revenue",
+      "year": "2025",
+      "passed": true,
+      "result_code": "10",
+      "actual": "70112825100710",
+      "expected": "70112825100710"
+    },
+    {
+      "name": "net_revenue",
+      "year": "2024",
+      "passed": true,
+      "result_code": "10",
+      "actual": "62848794351367",
+      "expected": "62848794351367"
+    }
+  ],
+  "notes_text_only_ranges": [
+    {
+      "start": 173,
+      "end": 226
+    }
+  ],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells."
+}

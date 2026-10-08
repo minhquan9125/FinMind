@@ -1,0 +1,33 @@
+{
+  "ir_version": "1",
+  "page": 79,
+  "printed_page": "78",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p79-b1", "type": "paragraph", "text": "01\nMô hình quản trị và\nvai trò của các bên liên quan", "bbox": [280.39, 188.67, 528.56, 224.76]},
+    {"id": "p79-b2", "type": "paragraph", "text": "02\nQuản trị công ty năm 2025", "bbox": [280.39, 245.19, 515.88, 262.49]},
+    {"id": "p79-b3", "type": "paragraph", "text": "03\nBáo cáo của HĐQT", "bbox": [280.39, 280.66, 463.5, 296.66]},
+    {"id": "p79-b4", "type": "paragraph", "text": "04\nBáo cáo của Ban Kiểm soát", "bbox": [280.39, 314.66, 520.62, 330.66]},
+    {"id": "p79-b5", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.06, 40.48, 190.51, 69.69]},
+    {"id": "p79-b6", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.27, 109.12, 155.09, 117.31]},
+    {"id": "p79-b7", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.27, 135.12, 96.79, 143.31]},
+    {"id": "p79-b8", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.27, 161.12, 122.39, 169.31]},
+    {"id": "p79-b9", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.27, 187.12, 142.23, 195.31]},
+    {"id": "p79-b10", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.27, 213.12, 189.99, 221.31]},
+    {"id": "p79-b11", "type": "furniture", "text": "0066 QUẢN TRỊ CÔNG TY", "bbox": [25.27, 239.31, 121.1, 247.31]},
+    {"id": "p79-b12", "type": "furniture", "text": "Mô hình quản trị và vai trò của\ncác bên liên quan", "bbox": [65.65, 259.75, 176.42, 278.75]},
+    {"id": "p79-b13", "type": "furniture", "text": "Quản trị công ty năm 2025", "bbox": [65.65, 286.75, 163.58, 294.75]},
+    {"id": "p79-b14", "type": "furniture", "text": "Báo cáo của HĐQT", "bbox": [65.65, 302.75, 135.64, 310.75]},
+    {"id": "p79-b15", "type": "furniture", "text": "Báo cáo của Ban Kiểm soát", "bbox": [65.65, 318.75, 166.1, 326.75]},
+    {"id": "p79-b16", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.27, 341.12, 100.21, 349.31]},
+    {"id": "p79-b17", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.27, 367.12, 166.3, 375.31]},
+    {"id": "p79-b18", "type": "furniture", "text": "78", "bbox": [61.31, 546.47, 74.86, 558.52]}
+  ]
+}

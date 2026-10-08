@@ -1,0 +1,123 @@
+{
+  "ir_version": "1",
+  "page": 129,
+  "printed_page": "128",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p129-b1", "type": "paragraph", "text": "Quản trị dữ liệu và an toàn thông tin", "bbox": [259.29, 45.54, 525.1, 61.54]},
+    {"id": "p129-b2", "type": "paragraph", "text": "• Phương pháp quản trị và nguyên tắc chung", "bbox": [259.29, 76.78, 505.94, 88.78]},
+    {
+      "id": "p129-b3",
+      "type": "paragraph",
+      "text": "Hoạt động thu thập, xử lý, lưu trữ và sử dụng dữ liệu của các bên liên quan trong\nquá trình quản trị dữ liệu được quy định thống nhất trong toàn Tập đoàn nhằm\nđảm bảo các yếu tố gồm: tính bảo mật; tính toàn vẹn; tính sẵn sàng; khả năng truy\ncập và chất lượng của dữ liệu.",
+      "bbox": [259.47, 103.32, 623.1, 149.32]
+    },
+    {
+      "id": "p129-b4",
+      "type": "paragraph",
+      "text": "Việc thu thập, xử lý, lưu trữ và sử dụng dữ liệu của Tập đoàn được tuân thủ theo các\nnguyên tắc sau:",
+      "bbox": [259.47, 163.32, 623.05, 185.32]
+    },
+    {
+      "id": "p129-b5",
+      "type": "paragraph",
+      "text": "• Nguyên tắc hợp pháp: tất cả các hành động diễn ra bên trong hệ thống quản trị\ndữ liệu phải tuân thủ theo quy định pháp luật;",
+      "bbox": [259.47, 199.32, 623.15, 221.32]
+    },
+    {
+      "id": "p129-b6",
+      "type": "paragraph",
+      "text": "• Nguyên tắc mục đích: dữ liệu chỉ được sử dụng đúng theo mục đích hợp pháp đã\nđược phê duyệt bởi các cấp có thẩm quyền;",
+      "bbox": [259.47, 235.32, 623.13, 257.32]
+    },
+    {
+      "id": "p129-b7",
+      "type": "paragraph",
+      "text": "• Nguyên tắc về chất lượng dữ liệu: dữ liệu phải đảm bảo được tính sẵn có,\ntoàn vẹn và phù hợp với mục đích sử dụng xuyên suốt vòng đời của dữ liệu;",
+      "bbox": [259.47, 271.32, 622.92, 293.32]
+    },
+    {
+      "id": "p129-b8",
+      "type": "paragraph",
+      "text": "• Nguyên tắc an ninh: đảm bảo tính an toàn thông tin xuyên suốt trong quá trình\nthu thập, xử lý, lưu trữ và sử dụng dữ liệu. Không tiết lộ các thông tin bảo mật cho\nbất kỳ ai bên ngoài Công ty, trừ trường hợp do yêu cầu công việc cần phải thực\nhiện các biện pháp bảo vệ phù hợp như ký kết cam kết bảo mật thông tin với các\nbên liên quan trước khi tiết lộ;",
+      "bbox": [259.47, 307.32, 623.18, 365.32]
+    },
+    {
+      "id": "p129-b9",
+      "type": "paragraph",
+      "text": "• Nguyên tắc quản trị: dữ liệu liên quan đến khách hàng của các công ty thành viên\nđược Tập đoàn thu thập, khai thác, sử dụng và quản lý, lưu trữ tập trung nhằm\nđiều chỉnh, cập nhật, bảo mật và cải tiến sản phẩm, dịch vụ, giải pháp, ứng dụng,\nthiết bị mà FPT đang và sẽ cung cấp tới khách hàng.",
+      "bbox": [259.47, 379.32, 623.36, 425.32]
+    },
+    {
+      "id": "p129-b10",
+      "type": "paragraph",
+      "text": "Hệ thống vận hành quản trị dữ liệu gồm các chức năng: thu thập dữ liệu từ các\nnguồn và lưu trữ; phân tích, bóc tách dữ liệu quan trọng, có giá trị; xử lý dữ liệu\ntương ứng với mục đích, ứng dụng.",
+      "bbox": [259.47, 439.32, 623.08, 473.32]
+    },
+    {
+      "id": "p129-b11",
+      "type": "paragraph",
+      "text": "Tập đoàn cũng đẩy mạnh việc ứng dụng công nghệ trong quản trị dữ liệu và thực hiện\nquản trị dữ liệu xuyên suốt đến công ty thành viên để đảm bảo việc cung cấp dữ\nliệu đúng mục đích và linh hoạt nhất.",
+      "bbox": [259.47, 487.32, 623.06, 521.32]
+    },
+    {
+      "id": "p129-b12",
+      "type": "paragraph",
+      "text": "Mô hình quản trị dữ liệu của FPT được thiết lập để đảm bảo đồng thời các\nyếu tố sau:",
+      "bbox": [651.99, 355.11, 993.81, 377.11]
+    },
+    {
+      "id": "p129-b13",
+      "type": "paragraph",
+      "text": "• Trách nhiệm lãnh đạo cam kết cao nhất trong việc thu thập, xử lý, lưu trữ và sử\ndụng dữ liệu;",
+      "bbox": [651.99, 390.87, 1016.16, 412.87]
+    },
+    {
+      "id": "p129-b14",
+      "type": "paragraph",
+      "text": "• Xác định tiêu chuẩn, thủ tục, quy trình để hướng dẫn việc quản lý, khai thác dữ liệu;",
+      "bbox": [651.99, 426.87, 1017.3, 436.87]
+    },
+    {
+      "id": "p129-b15",
+      "type": "paragraph",
+      "text": "• Xác định công nghệ, cơ sở hạ tầng được sử dụng thống nhất trong Tập đoàn để\nđảm bảo tính an toàn, bảo mật khi khai thác dữ liệu;",
+      "bbox": [651.99, 450.87, 1016.12, 472.87]
+    },
+    {
+      "id": "p129-b16",
+      "type": "paragraph",
+      "text": "• Thực thi nghiêm túc trong toàn Tập đoàn các chính sách liên quan đã ban hành;",
+      "bbox": [651.99, 486.87, 1018.24, 496.87]
+    },
+    {
+      "id": "p129-b17",
+      "type": "paragraph",
+      "text": "• Giám sát tuân thủ và xác định rủi ro trong trường hợp bị rò rỉ dữ liệu.",
+      "bbox": [651.99, 510.87, 962.91, 520.87]
+    },
+    {"id": "p129-b18", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p129-b19", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p129-b20", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p129-b21", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p129-b22", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.12, 142.43, 195.31]},
+    {"id": "p129-b23", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 213.12, 190.19, 221.31]},
+    {"id": "p129-b24", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 239.12, 121.59, 247.31]},
+    {"id": "p129-b25", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 265.31, 100.05, 273.31]},
+    {
+      "id": "p129-b26",
+      "type": "furniture",
+      "text": "Thông điệp và định hướng ESG\nQuản trị hướng đến phát triển bền vững\nMôi trường làm việc đẳng cấp,\nhạnh phúc\nHoạt động vì môi trường xanh\nSong hành vì sự phát triển cộng đồng",
+      "bbox": [67.84, 287.87, 199.86, 365.87]
+    },
+    {"id": "p129-b27", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
+    {"id": "p129-b28", "type": "furniture", "text": "128", "bbox": [58.72, 546.47, 77.84, 558.52]}
+  ]
+}

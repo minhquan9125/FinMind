@@ -1,0 +1,61 @@
+{
+  "ir_version": "1",
+  "page": 26,
+  "printed_page": "24",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p26-b1", "type": "heading", "text": "Giáo dục", "bbox": [483.72, 70.12, 611.49, 102.12]},
+    {"id": "p26-b2", "type": "heading", "text": "152.000+", "bbox": [428.72, 128.23, 665.8, 186.23]},
+    {"id": "p26-b3", "type": "heading", "text": "28", "bbox": [727.77, 128.23, 793.19, 186.23]},
+    {"id": "p26-b4", "type": "paragraph", "text": "Người học quy đổi", "bbox": [428.72, 187.38, 572.64, 205.38]},
+    {"id": "p26-b5", "type": "paragraph", "text": "Tỉnh, thành có", "bbox": [727.77, 187.38, 841.42, 205.38]},
+    {"id": "p26-b6", "type": "paragraph", "text": "trên toàn hệ thống", "bbox": [428.72, 208.98, 574.39, 226.98]},
+    {"id": "p26-b7", "type": "paragraph", "text": "cơ sở đào tạo", "bbox": [727.77, 208.98, 835.44, 226.98]},
+    {"id": "p26-b8", "type": "kpi", "text": "40+", "bbox": [428.72, 265.43, 523.14, 323.43]},
+    {"id": "p26-b9", "type": "kpi", "text": "180", "bbox": [725.25, 265.72, 823.38, 323.72]},
+    {"id": "p26-b10", "type": "paragraph", "text": "Quốc gia có hợp tác đào tạo", "bbox": [428.72, 324.58, 652.6, 342.58]},
+    {"id": "p26-b11", "type": "paragraph", "text": "Đối tác quốc tế", "bbox": [725.25, 324.96, 845.0, 342.96]},
+    {"id": "p26-b12", "type": "heading", "text": "VỊ THẾ TRÊN THỊ TRƯỜNG", "bbox": [432.41, 431.27, 649.35, 449.27]},
+    {
+      "id": "p26-b13",
+      "type": "paragraph",
+      "text": "• Tổ chức giáo dục và Trường Đại học có tầm ảnh hưởng khu vực châu Á – Thái Bình Dương\ndo BrandLaureate đánh giá;",
+      "bbox": [419.23, 479.28, 1123.05, 521.27]
+    },
+    {
+      "id": "p26-b14",
+      "type": "paragraph",
+      "text": "• Đạt thứ hạng 401-600 trong bảng xếp hạng đại học toàn cầu về phát triển bền vững\nThe Impact Rankings 2024 và xếp hạng 101-200: SDG4 (chất lượng giáo dục), SDG11\n(cộng đồng bền vững) và SDG16 (tổ chức vững mạnh);",
+      "bbox": [419.23, 551.28, 1123.0, 617.27]
+    },
+    {
+      "id": "p26-b15",
+      "type": "paragraph",
+      "text": "• 03 chương trình đào tạo chuyên sâu ngành chip và bán dẫn tại: Trường Đại học FPT,\nCao đẳng BTEC FPT và Jetking FPT.",
+      "bbox": [419.23, 647.27, 1123.05, 689.27]
+    },
+    {"id": "p26-b16", "type": "heading", "text": "CÁC KHỐI ĐÀO TẠO", "bbox": [432.41, 815.27, 598.93, 833.27]},
+    {"id": "p26-b17", "type": "paragraph", "text": "• Giáo dục Phổ thông;", "bbox": [419.23, 863.27, 592.34, 881.27]},
+    {"id": "p26-b18", "type": "paragraph", "text": "• Giáo dục Nghề nghiệp;", "bbox": [419.23, 911.28, 612.4, 929.28]},
+    {"id": "p26-b19", "type": "paragraph", "text": "• Giáo dục Đại học.", "bbox": [419.23, 959.29, 570.94, 977.29]},
+    {"id": "p26-b20", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p26-b21", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
+    {"id": "p26-b22", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
+    {"id": "p26-b23", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
+    {"id": "p26-b24", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
+    {"id": "p26-b25", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
+    {"id": "p26-b26", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
+    {"id": "p26-b27", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
+    {"id": "p26-b28", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
+    {"id": "p26-b29", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
+    {"id": "p26-b30", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
+    {"id": "p26-b31", "type": "furniture", "text": "24", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

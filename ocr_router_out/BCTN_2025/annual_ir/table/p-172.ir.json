@@ -1,0 +1,224 @@
+{
+  "ir_version": "1",
+  "page": 172,
+  "printed_page": "171",
+  "page_class": "cash_flow",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p172-b1", "type": "heading", "text": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT", "bbox": [259.68, 42.32, 663.46, 62.32]},
+    {"id": "p172-b2", "type": "paragraph", "text": "(Theo phương pháp gián tiếp)", "bbox": [259.68, 66.32, 529.18, 86.32]},
+    {"id": "p172-b3", "type": "paragraph", "text": "Mã số", "bbox": [278.38, 133.91, 304.91, 143.41]},
+    {"id": "p172-b4", "type": "paragraph", "text": "LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG ĐẦU TƯ (Tiếp theo)", "bbox": [328.8, 155.8, 561.13, 165.3]},
+    {"id": "p172-b5", "type": "paragraph", "text": "(Tiếp theo)", "bbox": [667.29, 50.88, 705.86, 58.88]},
+    {"id": "p172-b6", "type": "paragraph", "text": "HOÀNG NGỌC BÍCH\nNgười lập", "bbox": [515.45, 491.56, 609.94, 512.32]},
+    {"id": "p172-b7", "type": "paragraph", "text": "Mẫu số B 03 – DN/HN", "bbox": [899.76, 48.6, 1016.96, 60.6]},
+    {"id": "p172-b8", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [972.83, 88.45, 1016.14, 96.45]},
+    {"id": "p172-b9", "type": "paragraph", "text": "Năm tài chính kết thúc ngày 31 tháng 12 năm", "bbox": [808.22, 112.65, 1004.59, 122.15]},
+    {"id": "p172-b10", "type": "paragraph", "text": "Thuyết minh", "bbox": [683.0, 133.91, 739.04, 143.41]},
+    {"id": "p172-b11", "type": "paragraph", "text": "2025", "bbox": [843.83, 133.91, 866.3, 143.41]},
+    {"id": "p172-b12", "type": "paragraph", "text": "2024", "bbox": [981.87, 133.91, 1004.58, 143.41]},
+    {"id": "p172-b13", "type": "heading", "text": "HOÀNG HỮU CHIẾN", "bbox": [689.25, 491.56, 780.88, 501.56]},
+    {"id": "p172-b14", "type": "paragraph", "text": "NGUYỄN THẾ PHƯƠNG\nPhó Tổng Giám đốc", "bbox": [866.09, 491.56, 972.35, 512.02]},
+    {"id": "p172-b15", "type": "paragraph", "text": "Kế toán trưởng", "bbox": [689.25, 502.32, 755.95, 512.32]},
+    {"id": "p172-b16", "type": "paragraph", "text": "Chữ ký được ủy quyền\nNgày 18 tháng 3 năm 2026", "bbox": [866.09, 512.72, 987.14, 533.42]},
+    {
+      "id": "p172-t1",
+      "type": "table",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT",
+      "continued": true,
+      "logical_table_id": "cash_flow",
+      "bbox": [278.38, 133.91, 1004.58, 395.63],
+      "unit_text": "Đơn vị: VNĐ",
+      "columns": [
+        {"key": "c1", "header_lines": ["2025"], "bbox": [843.83, 133.91, 866.3, 143.41]},
+        {"key": "c2", "header_lines": ["2024"], "bbox": [981.87, 133.91, 1004.58, 143.41]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "25",
+          "label_raw": "Tiền chi đầu tư góp vốn vào đơn vị khác",
+          "note": null,
+          "bbox": [278.75, 171.66, 1004.35, 181.16],
+          "cells": {
+            "c1": {"raw": "(710.700.052.777)", "bbox": [788.3, 171.66, 865.97, 181.16]},
+            "c2": {"raw": "(1.106.193.484.800)", "bbox": [919.06, 171.66, 1004.35, 181.16]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": "26",
+          "label_raw": "Tiền thu hồi đầu tư góp vốn vào đơn vị khác",
+          "note": null,
+          "bbox": [278.75, 186.67, 1004.35, 196.17],
+          "cells": {
+            "c1": {"raw": "23.532.256.656", "bbox": [797.66, 186.67, 865.97, 196.17]},
+            "c2": {"raw": "48.102.486.048", "bbox": [936.1, 186.67, 1004.35, 196.17]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": "27",
+          "label_raw": "Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",
+          "note": null,
+          "bbox": [278.75, 201.67, 1004.35, 211.17],
+          "cells": {
+            "c1": {"raw": "2.000.759.192.153", "bbox": [786.36, 201.67, 865.97, 211.17]},
+            "c2": {"raw": "1.530.174.506.877", "bbox": [926.12, 201.67, 1004.35, 211.17]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": "30",
+          "label_raw": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+          "note": null,
+          "bbox": [278.75, 216.89, 1004.35, 226.39],
+          "cells": {
+            "c1": {"raw": "(11.624.743.591.629)", "bbox": [775.01, 216.89, 865.97, 226.39]},
+            "c2": {"raw": "(8.461.812.173.101)", "bbox": [921.48, 216.89, 1004.35, 226.39]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG TÀI CHÍNH",
+          "note": null,
+          "bbox": [328.8, 235.21, 533.27, 244.71],
+          "cells": {}
+        },
+        {
+          "id": "r6",
+          "code": "31",
+          "label_raw": "Tiền thu từ phát hành cổ phiếu",
+          "note": null,
+          "bbox": [278.75, 250.9, 1004.35, 260.4],
+          "cells": {
+            "c1": {"raw": "1.196.235.184.778", "bbox": [789.93, 250.9, 865.97, 260.4]},
+            "c2": {"raw": "163.342.989.874", "bbox": [932.28, 250.9, 1004.35, 260.4]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": "33",
+          "label_raw": "Tiền thu từ đi vay",
+          "note": null,
+          "bbox": [278.75, 265.9, 1004.35, 275.4],
+          "cells": {
+            "c1": {"raw": "43.070.812.885.074", "bbox": [779.2, 265.9, 865.97, 275.4]},
+            "c2": {"raw": "30.946.282.706.201", "bbox": [917.56, 265.9, 1004.35, 275.4]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": "34",
+          "label_raw": "Tiền chi trả nợ gốc vay",
+          "note": null,
+          "bbox": [278.75, 280.9, 1004.35, 290.4],
+          "cells": {
+            "c1": {"raw": "(36.890.984.827.601)", "bbox": [772.96, 280.9, 865.97, 290.4]},
+            "c2": {"raw": "(30.013.226.682.923)", "bbox": [911.28, 280.9, 1004.35, 290.4]}
+          }
+        },
+        {
+          "id": "r9",
+          "code": "35",
+          "label_raw": "Tiền chi trả nợ gốc thuê tài chính",
+          "note": null,
+          "bbox": [278.75, 295.9, 1004.35, 305.4],
+          "cells": {
+            "c1": {"raw": "(986.795.056)", "bbox": [804.64, 295.9, 865.97, 305.4]},
+            "c2": {"raw": "(2.305.346.865)", "bbox": [934.44, 295.9, 1004.35, 305.4]}
+          }
+        },
+        {
+          "id": "r10",
+          "code": "36",
+          "label_raw": "Tiền cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+          "note": null,
+          "bbox": [278.75, 310.9, 1004.35, 320.4],
+          "cells": {
+            "c1": {"raw": "(4.573.753.577.663)", "bbox": [779.89, 310.9, 865.97, 320.4]},
+            "c2": {"raw": "(3.291.859.792.121)", "bbox": [921.88, 310.9, 1004.35, 320.4]}
+          }
+        },
+        {
+          "id": "r11",
+          "code": "40",
+          "label_raw": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+          "note": null,
+          "bbox": [278.75, 326.13, 1004.35, 335.63],
+          "cells": {
+            "c1": {"raw": "2.801.322.869.532", "bbox": [784.17, 326.13, 865.97, 335.63]},
+            "c2": {"raw": "(2.197.766.125.834)", "bbox": [918.38, 326.13, 1004.35, 335.63]}
+          }
+        },
+        {
+          "id": "r12",
+          "code": "50",
+          "label_raw": "Lưu chuyển tiền thuần trong năm",
+          "note": null,
+          "bbox": [278.75, 341.13, 1004.35, 350.63],
+          "cells": {
+            "c1": {"raw": "1.312.623.193.814", "bbox": [788.37, 341.13, 865.97, 350.63]},
+            "c2": {"raw": "1.044.198.889.933", "bbox": [922.69, 341.13, 1004.35, 350.63]}
+          }
+        },
+        {
+          "id": "r13",
+          "code": "60",
+          "label_raw": "Tiền và tương đương tiền đầu năm",
+          "note": "4",
+          "bbox": [278.75, 356.13, 1004.35, 365.71],
+          "cells": {
+            "c1": {"raw": "9.315.440.438.884", "bbox": [782.65, 356.13, 865.97, 365.63]},
+            "c2": {"raw": "8.279.156.683.221", "bbox": [924.74, 356.13, 1004.35, 365.63]}
+          }
+        },
+        {
+          "id": "r14",
+          "code": "61",
+          "label_raw": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+          "note": null,
+          "bbox": [278.75, 370.91, 1004.35, 380.41],
+          "cells": {
+            "c1": {"raw": "(105.957.902.706)", "bbox": [786.97, 370.91, 865.97, 380.41]},
+            "c2": {"raw": "(7.915.134.270)", "bbox": [939.24, 370.91, 1004.35, 380.41]}
+          }
+        },
+        {
+          "id": "r15",
+          "code": "70",
+          "label_raw": "Tiền và tương đương tiền cuối năm",
+          "note": "4",
+          "bbox": [278.75, 385.22, 1004.35, 395.63],
+          "cells": {
+            "c1": {"raw": "10.522.105.729.992", "bbox": [780.21, 386.13, 865.97, 395.63]},
+            "c2": {"raw": "9.315.440.438.884", "bbox": [921.02, 386.13, 1004.35, 395.63]}
+          }
+        }
+      ]
+    },
+    {"id": "p172-b18", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p172-b19", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.62, 108.7, 155.29, 117.12]},
+    {"id": "p172-b20", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.62, 134.8, 96.98, 143.12]},
+    {"id": "p172-b21", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.62, 160.9, 122.58, 169.12]},
+    {"id": "p172-b22", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.62, 187.0, 142.43, 195.12]},
+    {"id": "p172-b23", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.62, 213.1, 190.19, 221.12]},
+    {"id": "p172-b24", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
+    {"id": "p172-b25", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.41, 273.3]},
+    {"id": "p172-b26", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
+    {"id": "p172-b27", "type": "furniture", "text": "171", "bbox": [60.17, 546.47, 76.39, 558.52]},
+    {
+      "id": "p172-b28",
+      "type": "furniture",
+      "text": "Các thuyết minh từ trang 172 đến trang 225 là một phần cấu thành báo cáo tài chính hợp nhất.",
+      "bbox": [679.23, 546.77, 1016.31, 554.77]
+    }
+  ]
+}

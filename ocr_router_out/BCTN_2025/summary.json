@@ -1,0 +1,50 @@
+{
+  "pdf": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\BCTN_2025.pdf",
+  "pages": 232,
+  "routes": {
+    "tesseract": 2,
+    "text_layer": 230
+  },
+  "status": {
+    "REVIEW": 2,
+    "OK": 230
+  },
+  "flags": {
+    "LOW_CONF": 2
+  },
+  "reviewPages": [
+    1,
+    232
+  ],
+  "seconds": {
+    "textLayer": 3.669,
+    "renderAndTesseract": 1.412,
+    "gemini": 0.0,
+    "total": 5.505
+  },
+  "geminiApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 2,
+    "geminiHits": 0
+  },
+  "config": {
+    "out": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\ocr_router_out",
+    "mode": "never",
+    "model": "gemini-3.8-flash",
+    "batch": 4,
+    "geminiConcurrency": 2,
+    "geminiTimeout": 300,
+    "tessWorkers": 10,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

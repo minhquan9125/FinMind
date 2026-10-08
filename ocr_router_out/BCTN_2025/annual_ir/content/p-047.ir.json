@@ -1,0 +1,102 @@
+{
+  "ir_version": "1",
+  "page": 47,
+  "printed_page": "46",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p47-b1",
+      "type": "paragraph",
+      "text": "Xu hướng sử dụng các mô hình AI mã nguồn mở được phản ánh rõ nét trong một số\nlĩnh vực kinh tế trọng điểm. Ngành Công nghiệp và Ô tô dẫn đầu trong việc sử dụng\ncác mô hình ngôn ngữ lớn mã nguồn mở để tối ưu hóa chuỗi cung ứng, nâng cao\ncông tác kiểm soát chất lượng và cải thiện hiệu quả vận hành. Mức độ triển khai và\nsử dụng các giải pháp xử lý ngôn ngữ tự nhiên (NLP) trong các ngành này tăng\n148% so với cùng kỳ. Trong khi đó, lĩnh vực Dịch vụ Tài chính dẫn đầu về ứng dụng\nkiến trúc “serverless” (mô hình điện toán đám mây cho phép nhà phát triển xây dựng\nvà chạy ứng dụng mà không cần quản lý cơ sở hạ tầng máy chủ vật lý hay ảo), với\nmức tăng 131%.",
+      "bbox": [258.9, 42.15, 622.35, 148.15]
+    },
+    {
+      "id": "p47-b2",
+      "type": "paragraph",
+      "text": "Song song với xu hướng tối ưu hạ tầng và triển khai AI linh hoạt, Agentic AI nổi lên\nnhư một động lực tăng trưởng mới của thị trường với giá trị đạt 7,3 tỷ USD trong\nnăm 2025 và được dự báo tăng từ 9,1 tỷ USD năm 2026 lên 139,2 tỷ USD vào năm\n2034. Xu hướng này cho thấy sự chuyển dịch mạnh mẽ sang các hệ thống tự động\nthực thi nhiệm vụ với sự can thiệp của con người ở mức tối thiểu, qua đó tái định\nhình cách doanh nghiệp vận hành, từ tự động hóa quy trình đến hỗ trợ ra quyết định\nthông minh.",
+      "bbox": [258.9, 161.15, 622.37, 243.15]
+    },
+    {
+      "id": "p47-b3",
+      "type": "paragraph",
+      "text": "Trong bối cảnh thị trường AI tự chủ tăng trưởng nhanh, quy mô chi tiêu cho AI toàn cầu cũng\ntăng trưởng mạnh mẽ. Theo Gartner, chi tiêu cho AI toàn cầu đạt khoảng 1.757 tỷ USD\nnăm 2025, tăng hơn 50% so với 2024 và sẽ đạt 3.335 tỷ USD vào năm 2027.",
+      "bbox": [258.9, 256.15, 622.9, 290.15]
+    },
+    {"id": "p47-b4", "type": "paragraph", "text": "Chi tiêu cho AI giai đoạn 2025-2027", "bbox": [258.96, 300.83, 424.44, 310.83]},
+    {"id": "p47-b5", "type": "paragraph", "text": "Lĩnh vực", "bbox": [267.9, 335.13, 304.51, 344.63]},
+    {"id": "p47-b6", "type": "paragraph", "text": "Dịch vụ AI", "bbox": [267.9, 363.24, 310.8, 372.74]},
+    {"id": "p47-b7", "type": "paragraph", "text": "An ninh mạng AI", "bbox": [267.9, 385.24, 338.32, 394.74]},
+    {"id": "p47-b8", "type": "paragraph", "text": "Phần mềm AI", "bbox": [267.9, 407.24, 325.31, 416.74]},
+    {"id": "p47-b9", "type": "paragraph", "text": "Mô hình AI", "bbox": [267.9, 429.25, 313.89, 438.75]},
+    {"id": "p47-b10", "type": "paragraph", "text": "Nền tảng AI cho khoa học dữ liệu và học máy", "bbox": [267.9, 451.25, 462.29, 460.75]},
+    {"id": "p47-b11", "type": "paragraph", "text": "Nền tảng phát triển ứng dụng AI", "bbox": [267.9, 473.25, 406.79, 482.75]},
+    {"id": "p47-b12", "type": "paragraph", "text": "Dữ liệu AI", "bbox": [267.9, 495.25, 308.44, 504.75]},
+    {"id": "p47-b13", "type": "paragraph", "text": "Hạ tầng AI", "bbox": [267.9, 517.25, 313.89, 526.75]},
+    {"id": "p47-b14", "type": "paragraph", "text": "Tổng chi tiêu AI", "bbox": [267.9, 539.48, 335.75, 548.98]},
+    {"id": "p47-b15", "type": "paragraph", "text": "Chuyển dịch của ngành dịch vụ CNTT: Rủi ro và\ncơ hội mới từ AI", "bbox": [651.5, 41.83, 999.91, 77.03]},
+    {
+      "id": "p47-b16",
+      "type": "paragraph",
+      "text": "Sự bùng nổ của AI mang lại hiệu suất nhưng cũng đặt ngành dịch vụ CNTT trước\nnhững thách thức về mô hình kinh doanh và phương thức tạo ra giá trị. Theo báo cáo\ncủa J.P. Morgan, các công ty Dịch vụ CNTT phải đối mặt với áp lực \"tái chứng\nminh\" giá trị trong một môi trường bất định.",
+      "bbox": [651.94, 91.88, 1015.39, 137.88]
+    },
+    {
+      "id": "p47-b17",
+      "type": "paragraph",
+      "text": "• Rủi ro về mô hình định giá và sự thay đổi cấu trúc doanh thu: Ngành Dịch vụ\nCNTT chủ yếu vận hành theo mô hình tính phí dựa trên thời gian và nguồn lực (Time &\nMaterial). Tuy nhiên, khả năng tự động hóa và tối ưu hóa của AI đang trực tiếp\nđe dọa mô hình này. Khi năng suất lao động tăng 30-50% nhờ các công cụ AI,\nsố lượng giờ công cần thiết cho cùng một khối lượng công việc sẽ giảm mạnh,\ncác doanh nghiệp không kịp chuyển dịch sang mô hình định giá dựa trên kết quả\nđầu ra (outcome-based) hoặc dựa trên đăng ký dịch vụ (subscription) sẽ đối mặt\nvới rủi ro sụt giảm doanh thu.",
+      "bbox": [651.94, 150.88, 1015.75, 244.88]
+    },
+    {
+      "id": "p47-b18",
+      "type": "paragraph",
+      "text": "• Động lực P*Q và rủi ro phân mảnh ngân sách: J.P. Morgan chỉ ra một nghịch lý,\nmặc dù đơn giá mỗi đơn vị công việc (P) giảm do AI nhưng tổng chi tiêu CNTT vẫn\ncó thể duy trì ổn định nhờ gia tăng nhu cầu (Q) xử lý “nợ kỹ thuật” (Technical debt),\nước đạt 8.000 tỷ USD. Tuy nhiên, rủi ro phát sinh từ xu hướng “tiết kiệm để tái",
+      "bbox": [651.94, 257.88, 1015.45, 303.88]
+    },
+    {"id": "p47-b19", "type": "paragraph", "text": "Đơn vị: Tỷ USD", "bbox": [570.88, 304.92, 623.88, 312.92]},
+    {
+      "id": "p47-b20",
+      "type": "paragraph",
+      "text": "đầu tư”, khách hàng tạm dừng dự án không cấp thiết để dồn ngân sách cho AI sẽ\ngây khó khăn trong ngắn hạn cho tăng trưởng của doanh nghiệp dịch vụ CNTT.",
+      "bbox": [660.44, 305.88, 1015.45, 327.88]
+    },
+    {
+      "id": "p47-b21",
+      "type": "paragraph",
+      "text": "2025\n2026\n2027\n• Thách thức về quản trị, tuân thủ và niềm tin: Việc triển khai AI ở quy mô lớn đòi hỏi\nkhung quản trị chặt chẽ, đảm bảo an toàn dữ liệu, tính minh bạch và độ tin cậy",
+      "bbox": [475.05, 335.13, 1015.48, 362.88]
+    },
+    {
+      "id": "p47-b22",
+      "type": "paragraph",
+      "text": "439\n588\n761\ncủa thuật toán. Điều này đòi hỏi các doanh nghiệp CNTT không chỉ cần giỏi kỹ\nthuật mà còn phải đóng vai trò là chuyên gia tư vấn về pháp lý và đạo đức AI.",
+      "bbox": [480.71, 363.24, 1015.29, 386.88]
+    },
+    {"id": "p47-b23", "type": "paragraph", "text": "26\n51\n86", "bbox": [486.5, 385.24, 603.84, 394.78]},
+    {"id": "p47-b24", "type": "paragraph", "text": "283\n452\n636", "bbox": [480.71, 407.24, 603.84, 416.78]},
+    {"id": "p47-b25", "type": "paragraph", "text": "14\n26\n43", "bbox": [488.02, 429.25, 603.84, 438.78]},
+    {"id": "p47-b26", "type": "paragraph", "text": "22\n31\n44", "bbox": [486.63, 451.25, 603.84, 460.79]},
+    {"id": "p47-b27", "type": "paragraph", "text": "7\n8\n11", "bbox": [492.56, 473.25, 603.84, 482.79]},
+    {"id": "p47-b28", "type": "paragraph", "text": "0,8\n3\n6", "bbox": [483.15, 495.25, 603.84, 504.79]},
+    {"id": "p47-b29", "type": "paragraph", "text": "965\n1.366\n1.748", "bbox": [480.75, 517.25, 603.84, 526.79]},
+    {"id": "p47-b30", "type": "paragraph", "text": "1.757\n2.525\n3.335", "bbox": [475.16, 539.48, 603.84, 549.02]},
+    {"id": "p47-b31", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p47-b32", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.29, 117.31]},
+    {"id": "p47-b33", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p47-b34", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p47-b35", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.31, 141.98, 195.31]},
+    {"id": "p47-b36", "type": "furniture", "text": "Bối cảnh chung", "bbox": [67.46, 208.71, 123.92, 216.71]},
+    {"id": "p47-b37", "type": "furniture", "text": "Chiến lược phát triển\ngiai đoạn 2026 - 2028\n06", "bbox": [25.73, 224.71, 148.85, 247.31]},
+    {"id": "p47-b38", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 258.12, 190.19, 266.31]},
+    {"id": "p47-b39", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 284.12, 121.59, 292.31]},
+    {"id": "p47-b40", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 310.12, 100.41, 318.31]},
+    {"id": "p47-b41", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 336.12, 166.49, 344.31]},
+    {"id": "p47-b42", "type": "furniture", "text": "46", "bbox": [61.2, 546.47, 75.36, 558.52]}
+  ]
+}

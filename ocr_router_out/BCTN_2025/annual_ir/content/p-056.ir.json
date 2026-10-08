@@ -1,0 +1,32 @@
+{
+  "ir_version": "1",
+  "page": 56,
+  "printed_page": "55",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p56-b1", "type": "paragraph", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p56-b2", "type": "heading", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p56-b3", "type": "heading", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p56-b4", "type": "heading", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p56-b5", "type": "heading", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.12, 142.43, 195.31]},
+    {"id": "p56-b6", "type": "heading", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 213.31, 190.33, 221.31]},
+    {
+      "id": "p56-b7",
+      "type": "paragraph",
+      "text": "Báo cáo của Ban Điều hành về\nkết quả kinh doanh 2025 và\nnhận định 2026",
+      "bbox": [67.84, 242.11, 179.14, 272.11]
+    },
+    {"id": "p56-b8", "type": "paragraph", "text": "Đánh giá của HĐQT về hoạt động\ncủa Tập đoàn", "bbox": [67.84, 281.97, 190.13, 300.97]},
+    {"id": "p56-b9", "type": "heading", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 317.12, 121.59, 325.31]},
+    {"id": "p56-b10", "type": "heading", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 343.12, 100.4, 351.31]},
+    {"id": "p56-b11", "type": "heading", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 369.12, 166.49, 377.31]},
+    {"id": "p56-b12", "type": "furniture", "text": "55", "bbox": [61.16, 546.47, 75.4, 558.52]}
+  ]
+}

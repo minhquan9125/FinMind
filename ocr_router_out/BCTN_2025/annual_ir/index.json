@@ -1,0 +1,16 @@
+{
+  "pdf": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\BCTN_2025.pdf",
+  "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 156
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "pages": 67,
+    "structuredTablePages": 8,
+    "notesTextOnlyPages": 54
+  }
+}

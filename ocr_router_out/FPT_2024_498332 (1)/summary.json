@@ -1,0 +1,50 @@
+{
+  "pdf": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\FPT_2024_498332 (1).pdf",
+  "pages": 215,
+  "routes": {
+    "tesseract": 4,
+    "text_layer": 211
+  },
+  "status": {
+    "REVIEW": 2,
+    "OK": 213
+  },
+  "flags": {
+    "LOW_CONF": 2
+  },
+  "reviewPages": [
+    1,
+    2
+  ],
+  "seconds": {
+    "textLayer": 1.503,
+    "renderAndTesseract": 7.405,
+    "gemini": 0.0,
+    "total": 9.234
+  },
+  "geminiApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 4,
+    "geminiHits": 0
+  },
+  "config": {
+    "out": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\ocr_router_out",
+    "mode": "never",
+    "model": "gemini-3.8-flash",
+    "batch": 4,
+    "geminiConcurrency": 2,
+    "geminiTimeout": 300,
+    "tessWorkers": 10,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

@@ -1,0 +1,666 @@
+{
+  "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+  "description": "Verified captions are linked to value-only KPI blocks by block_id; unverified candidates are not added to IR.",
+  "items": [
+    {
+      "page": 24,
+      "section": "overview",
+      "label": "Nhân lực công nghệ",
+      "value_raw": "37.666",
+      "bbox": [
+        428.22,
+        429.85,
+        784.87,
+        548.06
+      ],
+      "auto_label": "sản phẩm Made",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p24-b18",
+      "value_bbox": [
+        428.22,
+        490.06,
+        598.42,
+        548.06
+      ]
+    },
+    {
+      "page": 24,
+      "section": "overview",
+      "label": "Chứng chỉ NVIDIA",
+      "value_raw": "10.000",
+      "bbox": [
+        897.39,
+        335.3,
+        1245.37,
+        412.98
+      ],
+      "auto_label": "Dịch vụ",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p24-b11",
+      "value_bbox": [
+        897.39,
+        354.98,
+        1070.46,
+        412.98
+      ]
+    },
+    {
+      "page": 25,
+      "section": "overview",
+      "label": "Dung lượng băng thông quốc tế",
+      "value_raw": "4.890",
+      "bbox": [
+        428.54,
+        207.94,
+        769.85,
+        326.15
+      ],
+      "auto_label": "quốc tế trên toàn quốc có hạ",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p25-b11",
+      "value_bbox": [
+        428.54,
+        268.15,
+        571.22,
+        326.15
+      ]
+    },
+    {
+      "page": 25,
+      "section": "overview",
+      "label": "Triệu người dùng trên toàn cầu",
+      "value_raw": "50+",
+      "bbox": [
+        726.14,
+        207.94,
+        897.18,
+        326.15
+      ],
+      "auto_label": "có hạ tầng viễn thông",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p25-b12",
+      "value_bbox": [
+        726.14,
+        268.15,
+        820.57,
+        326.15
+      ]
+    },
+    {
+      "page": 26,
+      "section": "overview",
+      "label": "Quốc gia có hợp tác đào tạo",
+      "value_raw": "40+",
+      "bbox": [
+        428.72,
+        208.98,
+        770.82,
+        323.43
+      ],
+      "auto_label": "trên toàn hệ thống cơ sở",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p26-b8",
+      "value_bbox": [
+        428.72,
+        265.43,
+        523.14,
+        323.43
+      ]
+    },
+    {
+      "page": 26,
+      "section": "overview",
+      "label": "Đối tác quốc tế",
+      "value_raw": "180",
+      "bbox": [
+        725.25,
+        208.98,
+        835.44,
+        323.72
+      ],
+      "auto_label": "cơ sở đào tạo",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p26-b9",
+      "value_bbox": [
+        725.25,
+        265.72,
+        823.38,
+        323.72
+      ]
+    },
+    {
+      "page": 44,
+      "section": "strategy",
+      "label": "Thị trường cơ sở hạ tầng AI năm 2024",
+      "value_raw": "68,5",
+      "bbox": [
+        503.12,
+        893.4,
+        830.42,
+        980.8
+      ],
+      "auto_label": "Năm Năm",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p44-b12",
+      "value_bbox": [
+        503.12,
+        922.8,
+        617.66,
+        980.8
+      ]
+    },
+    {
+      "page": 45,
+      "section": "strategy",
+      "label": "Thị trường bán dẫn Việt Nam vào năm 2029",
+      "value_raw": "31,4",
+      "bbox": [
+        1250.92,
+        370.68,
+        1595.37,
+        460.4
+      ],
+      "auto_label": "Thị trường bán dẫn Việt Nam Trí tuệ",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p45-b17",
+      "value_bbox": [
+        1250.92,
+        402.4,
+        1365.47,
+        460.4
+      ]
+    },
+    {
+      "page": 45,
+      "section": "strategy",
+      "label": "Trí tuệ nhân tạo đóng góp cho Việt Nam vào năm 2030",
+      "value_raw": "79,3",
+      "bbox": [
+        1546.14,
+        372.19,
+        1749.84,
+        461.91
+      ],
+      "auto_label": "Trí tuệ nhân tạo đóng góp",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p45-b18",
+      "value_bbox": [
+        1546.14,
+        403.91,
+        1660.69,
+        461.91
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Sử dụng đèn Led tại các văn phòng xây mới",
+      "value_raw": "100%",
+      "bbox": [
+        769.9,
+        213.11,
+        934.83,
+        325.45
+      ],
+      "auto_label": "môi trường xanh",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b21",
+      "value_bbox": [
+        769.9,
+        267.45,
+        912.85,
+        325.45
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Sử dụng cốc bằng vật liệu thân thiện môi trường",
+      "value_raw": "100%",
+      "bbox": [
+        769.9,
+        343.53,
+        912.85,
+        456.42
+      ],
+      "auto_label": "phòng xây mới",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b23",
+      "value_bbox": [
+        769.9,
+        398.42,
+        912.85,
+        456.42
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Không sử dụng chai nhựa trong văn phòng",
+      "value_raw": "100%",
+      "bbox": [
+        769.9,
+        474.46,
+        940.65,
+        588.66
+      ],
+      "auto_label": "thân thiện môi trường",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b25",
+      "value_bbox": [
+        769.9,
+        530.66,
+        912.85,
+        588.66
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Túi đựng rác trong văn phòng bằng các vật liệu có thể tái chế",
+      "value_raw": "100%",
+      "bbox": [
+        769.9,
+        606.69,
+        912.85,
+        722.29
+      ],
+      "auto_label": "trong văn phòng",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b28",
+      "value_bbox": [
+        769.9,
+        664.29,
+        912.85,
+        722.29
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Hỗ trợ hoạt động cộng đồng",
+      "value_raw": "66,3",
+      "bbox": [
+        1115.82,
+        213.11,
+        1288.49,
+        325.28
+      ],
+      "auto_label": "doanh nghiệp",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b37",
+      "value_bbox": [
+        1115.82,
+        267.28,
+        1230.37,
+        325.28
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Hợp đồng ký số, chiếm khoảng 80% tổng hợp đồng ký kết",
+      "value_raw": "1.769.884",
+      "bbox": [
+        769.9,
+        740.32,
+        1031.72,
+        854.36
+      ],
+      "auto_label": "các vật liệu có thể tái chế",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b31",
+      "value_bbox": [
+        769.9,
+        796.36,
+        1031.72,
+        854.36
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Văn bản nội bộ được ký số",
+      "value_raw": "100%",
+      "bbox": [
+        769.9,
+        872.37,
+        936.2,
+        985.44
+      ],
+      "auto_label": "tổng hợp đồng ký kết",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b34",
+      "value_bbox": [
+        769.9,
+        927.44,
+        912.85,
+        985.44
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Việc làm ổn định",
+      "value_raw": "54.687",
+      "bbox": [
+        446.09,
+        319.0,
+        790.64,
+        432.85
+      ],
+      "auto_label": "Nơi làm việc tốt nhất Việt Nam Sử",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b7",
+      "value_bbox": [
+        446.09,
+        374.85,
+        626.06,
+        432.85
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Học bổng Nguyễn Văn Đạo",
+      "value_raw": "168,1",
+      "bbox": [
+        1115.81,
+        319.27,
+        1339.76,
+        434.18
+      ],
+      "auto_label": "Hỗ trợ hoạt động cộng đồng",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b40",
+      "value_bbox": [
+        1115.81,
+        376.18,
+        1263.07,
+        434.18
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Người được hỗ trợ trên phạm vi toàn quốc",
+      "value_raw": "62.540",
+      "bbox": [
+        1115.83,
+        428.24,
+        1329.79,
+        543.36
+      ],
+      "auto_label": "Học bổng Nguyễn Văn Đạo",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b43",
+      "value_bbox": [
+        1115.84,
+        485.36,
+        1295.81,
+        543.36
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Nhân sự nữ",
+      "value_raw": "37,1%",
+      "bbox": [
+        446.08,
+        565.67,
+        612.94,
+        678.64
+      ],
+      "auto_label": "quốc tịch)",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b11",
+      "value_bbox": [
+        446.08,
+        620.64,
+        612.94,
+        678.64
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Cán bộ quản lý nữ",
+      "value_raw": "36,0%",
+      "bbox": [
+        446.07,
+        672.68,
+        612.94,
+        787.68
+      ],
+      "auto_label": "Nhân sự nữ",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b13",
+      "value_bbox": [
+        446.08,
+        729.68,
+        612.94,
+        787.68
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Cho hoạt động đào tạo nội bộ",
+      "value_raw": "184,7",
+      "bbox": [
+        446.07,
+        782.71,
+        593.34,
+        896.14
+      ],
+      "auto_label": "Cán bộ quản lý nữ",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b15",
+      "value_bbox": [
+        446.08,
+        838.14,
+        593.34,
+        896.14
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Giờ học, tiếp cận thông tin ESG",
+      "value_raw": "118.000",
+      "bbox": [
+        446.07,
+        890.15,
+        681.92,
+        1004.14
+      ],
+      "auto_label": "Cho hoạt động đào tạo nội bộ",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b18",
+      "value_bbox": [
+        446.09,
+        946.14,
+        658.77,
+        1004.14
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Nhân sự người nước ngoài (87 quốc tịch)",
+      "value_raw": "3.489",
+      "bbox": [
+        445.1,
+        426.29,
+        592.36,
+        540.6
+      ],
+      "auto_label": "Việc làm ổn định",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b9",
+      "value_bbox": [
+        445.1,
+        482.6,
+        592.36,
+        540.6
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Đơn vị máu được hiến tặng",
+      "value_raw": "1.880",
+      "bbox": [
+        1115.83,
+        537.41,
+        1445.44,
+        651.5
+      ],
+      "auto_label": "Người được hỗ trợ trên phạm vi toàn quốc",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b45",
+      "value_bbox": [
+        1115.87,
+        593.5,
+        1255.62,
+        651.5
+      ]
+    },
+    {
+      "page": 98,
+      "section": "esg",
+      "label": "Cây cầu nâng bước em đến trường",
+      "value_raw": "431",
+      "bbox": [
+        1115.81,
+        644.58,
+        1331.66,
+        758.68
+      ],
+      "auto_label": "Đơn vị máu được hiến tặng",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p98-b47",
+      "value_bbox": [
+        1115.87,
+        700.68,
+        1214.01,
+        758.68
+      ]
+    },
+    {
+      "page": 133,
+      "section": "esg",
+      "label": "Cơ sở thuộc quyền kiểm soát vận hành của FPT được tiến hành kiểm kê khí nhà kính",
+      "value_raw": "100%",
+      "bbox": [
+        428.98,
+        228.17,
+        729.95,
+        348.0
+      ],
+      "auto_label": "Phạm vi và phương pháp",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p133-b4",
+      "value_bbox": [
+        428.98,
+        290.0,
+        579.43,
+        348.0
+      ]
+    },
+    {
+      "page": 133,
+      "section": "esg",
+      "label": "Tổng phát thải khí nhà kính thuộc phạm vi 1 và 2",
+      "value_raw": "143.574",
+      "bbox": [
+        921.63,
+        228.17,
+        1172.94,
+        348.0
+      ],
+      "auto_label": "Dữ liệu phát thải FPT",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p133-b13",
+      "value_bbox": [
+        921.63,
+        290.0,
+        1134.31,
+        348.0
+      ]
+    },
+    {
+      "page": 133,
+      "section": "esg",
+      "label": "Dữ liệu phát thải khí nhà kính phạm vi 1,2 và 3 được chuẩn hoá và triển khai đồng bộ tới CTTV",
+      "value_raw": "100%",
+      "bbox": [
+        428.98,
+        375.63,
+        712.51,
+        482.44
+      ],
+      "auto_label": "được tiến hành kiểm kê khí nhà kính",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p133-b6",
+      "value_bbox": [
+        428.98,
+        424.44,
+        579.43,
+        482.44
+      ]
+    },
+    {
+      "page": 133,
+      "section": "esg",
+      "label": "Dữ liệu phát thải phạm vi 1 và 2 được thu thập, tính toán",
+      "value_raw": "100%",
+      "bbox": [
+        428.98,
+        507.06,
+        799.88,
+        637.13
+      ],
+      "auto_label": "được chuẩn hoá và triển khai đồng bộ tới CTTV",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p133-b8",
+      "value_bbox": [
+        428.98,
+        579.13,
+        579.43,
+        637.13
+      ]
+    }
+  ]
+}

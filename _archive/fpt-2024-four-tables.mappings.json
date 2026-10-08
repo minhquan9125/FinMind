@@ -1,0 +1,3488 @@
+{
+  "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+  "mappings": [
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.registration_number",
+        "candidate_ids": [
+          "common.registration_number"
+        ],
+        "matched_alias": "Mã số doanh nghiệp",
+        "template_label_vi": "Mã số doanh nghiệp",
+        "candidate_labels": [
+          {
+            "metric_id": "common.registration_number",
+            "label_vi": "Mã số doanh nghiệp"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Ô chứa số 0101248141 cùng ngày cấp; cần tách riêng số khi tạo observation."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.board_composition",
+        "candidate_ids": [
+          "common.board_composition"
+        ],
+        "matched_alias": "Thành viên Hội đồng quản trị",
+        "template_label_vi": "Thành viên Hội đồng quản trị",
+        "candidate_labels": [
+          {
+            "metric_id": "common.board_composition",
+            "label_vi": "Thành viên Hội đồng quản trị"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Từng dòng là một người trong Hội đồng Quản trị; cần lưu tên và chức vụ như thuộc tính riêng."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.board_composition",
+        "candidate_ids": [
+          "common.board_composition"
+        ],
+        "matched_alias": "Thành viên Hội đồng quản trị",
+        "template_label_vi": "Thành viên Hội đồng quản trị",
+        "candidate_labels": [
+          {
+            "metric_id": "common.board_composition",
+            "label_vi": "Thành viên Hội đồng quản trị"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Từng dòng là một người trong Hội đồng Quản trị; cần lưu tên và chức vụ như thuộc tính riêng."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.board_composition",
+        "candidate_ids": [
+          "common.board_composition"
+        ],
+        "matched_alias": "Thành viên Hội đồng quản trị",
+        "template_label_vi": "Thành viên Hội đồng quản trị",
+        "candidate_labels": [
+          {
+            "metric_id": "common.board_composition",
+            "label_vi": "Thành viên Hội đồng quản trị"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Từng dòng là một người trong Hội đồng Quản trị; cần lưu tên và chức vụ như thuộc tính riêng."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r6",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.board_composition",
+        "candidate_ids": [
+          "common.board_composition"
+        ],
+        "matched_alias": "Thành viên Hội đồng quản trị",
+        "template_label_vi": "Thành viên Hội đồng quản trị",
+        "candidate_labels": [
+          {
+            "metric_id": "common.board_composition",
+            "label_vi": "Thành viên Hội đồng quản trị"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Từng dòng là một người trong Hội đồng Quản trị; cần lưu tên và chức vụ như thuộc tính riêng."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r7",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.board_composition",
+        "candidate_ids": [
+          "common.board_composition"
+        ],
+        "matched_alias": "Thành viên Hội đồng quản trị",
+        "template_label_vi": "Thành viên Hội đồng quản trị",
+        "candidate_labels": [
+          {
+            "metric_id": "common.board_composition",
+            "label_vi": "Thành viên Hội đồng quản trị"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Từng dòng là một người trong Hội đồng Quản trị; cần lưu tên và chức vụ như thuộc tính riêng."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r8",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.board_composition",
+        "candidate_ids": [
+          "common.board_composition"
+        ],
+        "matched_alias": "Thành viên Hội đồng quản trị",
+        "template_label_vi": "Thành viên Hội đồng quản trị",
+        "candidate_labels": [
+          {
+            "metric_id": "common.board_composition",
+            "label_vi": "Thành viên Hội đồng quản trị"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Từng dòng là một người trong Hội đồng Quản trị; cần lưu tên và chức vụ như thuộc tính riêng."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r9",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.board_composition",
+        "candidate_ids": [
+          "common.board_composition"
+        ],
+        "matched_alias": "Thành viên Hội đồng quản trị",
+        "template_label_vi": "Thành viên Hội đồng quản trị",
+        "candidate_labels": [
+          {
+            "metric_id": "common.board_composition",
+            "label_vi": "Thành viên Hội đồng quản trị"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Từng dòng là một người trong Hội đồng Quản trị; cần lưu tên và chức vụ như thuộc tính riêng."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r10",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r11",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r12",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r13",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r14",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r15",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r16",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r17",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r18",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing"
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r19",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.head_office",
+        "candidate_ids": [
+          "common.head_office"
+        ],
+        "matched_alias": "Địa chỉ trụ sở chính",
+        "template_label_vi": "Địa chỉ trụ sở chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.head_office",
+            "label_vi": "Địa chỉ trụ sở chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn mục và nội dung ô trên bảng cho thấy chỉ tiêu tương ứng."
+      }
+    },
+    {
+      "page": 144,
+      "block_id": "p144-t1",
+      "row_id": "r20",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.audit_firm",
+        "candidate_ids": [
+          "common.audit_firm"
+        ],
+        "matched_alias": "Công ty kiểm toán",
+        "template_label_vi": "Công ty kiểm toán",
+        "candidate_labels": [
+          {
+            "metric_id": "common.audit_firm",
+            "label_vi": "Công ty kiểm toán"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn mục và nội dung ô trên bảng cho thấy chỉ tiêu tương ứng."
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.current_assets"
+        ],
+        "matched_alias": "Tài sản ngắn hạn",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.current_assets",
+        "match_method": "exact_alias",
+        "template_label_vi": "Tài sản ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.current_assets",
+            "label_vi": "Tài sản ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.cash_equivalents"
+        ],
+        "matched_alias": "Tiền và các khoản tương đương tiền",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.cash_equivalents",
+        "match_method": "exact_alias",
+        "template_label_vi": "Tiền và các khoản tương đương tiền",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.cash_equivalents",
+            "label_vi": "Tiền và các khoản tương đương tiền"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.cash"
+        ],
+        "matched_alias": "Tiền",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.cash",
+        "match_method": "exact_alias",
+        "template_label_vi": "Tiền",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.cash",
+            "label_vi": "Tiền"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.cash_equivalents_only"
+        ],
+        "matched_alias": "Các khoản tương đương tiền",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.cash_equivalents_only",
+        "match_method": "exact_alias",
+        "template_label_vi": "Các khoản tương đương tiền",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.cash_equivalents_only",
+            "label_vi": "Các khoản tương đương tiền"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.short_term_financial_investments"
+        ],
+        "matched_alias": "Đầu tư tài chính ngắn hạn",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.short_term_financial_investments",
+        "match_method": "exact_alias",
+        "template_label_vi": "Đầu tư tài chính ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.short_term_financial_investments",
+            "label_vi": "Đầu tư tài chính ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r6",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.held_to_maturity_current",
+        "candidate_ids": [
+          "common.held_to_maturity_current"
+        ],
+        "matched_alias": "Đầu tư nắm giữ đến ngày đáo hạn",
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "PDF đặt dòng 123 dưới dòng 120 'Đầu tư tài chính ngắn hạn'; số ở dòng 123 bằng toàn bộ dòng 120 trong cả hai kỳ. Chọn metric ngắn hạn; alias chung cũng có metric dài hạn nên cần ngữ cảnh này.",
+        "suggested_metric_id": null,
+        "template_label_vi": "Đầu tư nắm giữ đến ngày đáo hạn ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.held_to_maturity_current",
+            "label_vi": "Đầu tư nắm giữ đến ngày đáo hạn ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r7",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.receivables_current_net"
+        ],
+        "matched_alias": "Các khoản phải thu ngắn hạn",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.receivables_current_net",
+        "match_method": "exact_alias",
+        "template_label_vi": "Các khoản phải thu ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.receivables_current_net",
+            "label_vi": "Các khoản phải thu ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r8",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.trade_receivables_current"
+        ],
+        "matched_alias": "Phải thu ngắn hạn của khách hàng",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.trade_receivables_current",
+        "match_method": "exact_alias",
+        "template_label_vi": "Phải thu khách hàng ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.trade_receivables_current",
+            "label_vi": "Phải thu khách hàng ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r9",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.supplier_prepayments_current"
+        ],
+        "matched_alias": "Trả trước cho người bán ngắn hạn",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.supplier_prepayments_current",
+        "match_method": "exact_alias",
+        "template_label_vi": "Trả trước cho người bán ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.supplier_prepayments_current",
+            "label_vi": "Trả trước cho người bán ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r10",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing",
+        "review_evidence": "PDF ghi 'Phải thu theo tiến độ kế hoạch hợp đồng' ở mã 134. Template có metric về phải thu theo tiến độ hợp đồng xây dựng nhưng không có alias nguyên văn này; giữ chưa gán để bổ sung mapping/alias có phê duyệt.",
+        "suggested_metric_id": "common.construction_contract_receivables",
+        "template_label_vi": null,
+        "suggested_label_vi": "Phải thu theo tiến độ hợp đồng xây dựng",
+        "candidate_labels": []
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r11",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.loan_receivables_current"
+        ],
+        "matched_alias": "Phải thu về cho vay ngắn hạn",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.loan_receivables_current",
+        "match_method": "exact_alias",
+        "template_label_vi": "Phải thu về cho vay ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.loan_receivables_current",
+            "label_vi": "Phải thu về cho vay ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r12",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.other_receivables_current"
+        ],
+        "matched_alias": "Phải thu ngắn hạn khác",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.other_receivables_current",
+        "match_method": "exact_alias",
+        "template_label_vi": "Phải thu khác ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_receivables_current",
+            "label_vi": "Phải thu khác ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r13",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.receivables_allowance_current"
+        ],
+        "matched_alias": "Dự phòng phải thu ngắn hạn khó đòi",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.receivables_allowance_current",
+        "match_method": "exact_alias",
+        "template_label_vi": "Dự phòng phải thu khó đòi ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.receivables_allowance_current",
+            "label_vi": "Dự phòng phải thu khó đòi ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r14",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.inventories",
+        "candidate_ids": [
+          "common.inventories"
+        ],
+        "matched_alias": "Hàng tồn kho",
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_reconciliation",
+        "review_evidence": "PDF in mã 140 là dòng tổng in đậm. Giá trị mỗi kỳ bằng dòng 141 cộng dòng 149 (dự phòng âm): 2024 1.990.224.486.513 - 133.467.537.483 = 1.856.756.949.030; 2023 1.724.956.924.671 - 131.545.849.438 = 1.593.411.075.233. Đây là giá trị thuần sau dự phòng.",
+        "suggested_metric_id": null,
+        "template_label_vi": "Hàng tồn kho",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.inventories",
+            "label_vi": "Hàng tồn kho"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r15",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.inventories_gross",
+        "candidate_ids": [
+          "common.inventories_gross"
+        ],
+        "matched_alias": "Hàng tồn kho",
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "PDF đặt mã 141 làm chi tiết dưới dòng tổng 140; mã 149 là dự phòng giảm giá được trừ khỏi dòng 141 để ra dòng 140. Vì vậy dòng 141 là giá gốc trước dự phòng.",
+        "suggested_metric_id": null,
+        "template_label_vi": "Giá gốc hàng tồn kho",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.inventories_gross",
+            "label_vi": "Giá gốc hàng tồn kho"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r16",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.inventory_write_down_allowance"
+        ],
+        "matched_alias": "Dự phòng giảm giá hàng tồn kho",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.inventory_write_down_allowance",
+        "match_method": "exact_alias",
+        "template_label_vi": "Dự phòng giảm giá hàng tồn kho",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.inventory_write_down_allowance",
+            "label_vi": "Dự phòng giảm giá hàng tồn kho"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r17",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.other_current_assets_total",
+        "candidate_ids": [
+          "common.other_current_assets_total"
+        ],
+        "matched_alias": "Tài sản ngắn hạn khác",
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_reconciliation",
+        "review_evidence": "PDF in mã 150 là dòng tổng in đậm. Tổng các dòng con 151, 152, 153 khớp dòng 150 ở cả hai kỳ: 2024 479.707.218.558 + 648.697.117.785 + 68.603.442.585 = 1.197.007.778.928; 2023 449.245.737.865 + 528.984.574.991 + 76.405.085.212 = 1.054.635.398.068. Chọn metric tổng nhóm, không chọn metric phần còn lại.",
+        "suggested_metric_id": null,
+        "template_label_vi": "Tài sản ngắn hạn khác - tổng nhóm",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_current_assets_total",
+            "label_vi": "Tài sản ngắn hạn khác - tổng nhóm"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r18",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.prepaid_expenses_current"
+        ],
+        "matched_alias": "Chi phí trả trước ngắn hạn",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.prepaid_expenses_current",
+        "match_method": "exact_alias",
+        "template_label_vi": "Chi phí trả trước ngắn hạn",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.prepaid_expenses_current",
+            "label_vi": "Chi phí trả trước ngắn hạn"
+          }
+        ]
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r19",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing",
+        "review_evidence": "PDF ghi 'Thuế giá trị gia tăng (“GTGT”) được khấu trừ'. Template có metric 'Thuế GTGT được khấu trừ' nhưng không có nhãn in đầy đủ này làm alias; giữ chưa gán đến khi alias/mapping được duyệt.",
+        "suggested_metric_id": "common.vat_recoverable",
+        "template_label_vi": null,
+        "suggested_label_vi": "Thuế GTGT được khấu trừ",
+        "candidate_labels": []
+      }
+    },
+    {
+      "page": 148,
+      "block_id": "p148-t1",
+      "row_id": "r20",
+      "legacy_match": {
+        "candidate_ids": [
+          "common.state_receivables"
+        ],
+        "matched_alias": "Thuế và các khoản khác phải thu Nhà nước",
+        "template_schema_version": "2.3.0",
+        "status": "candidate",
+        "metric_id": "common.state_receivables",
+        "match_method": "exact_alias",
+        "template_label_vi": "Thuế và các khoản khác phải thu Nhà nước",
+        "suggested_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.state_receivables",
+            "label_vi": "Thuế và các khoản khác phải thu Nhà nước"
+          }
+        ]
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.noncurrent_assets",
+        "candidate_ids": [
+          "common.noncurrent_assets"
+        ],
+        "matched_alias": "Tài sản dài hạn",
+        "template_label_vi": "Tài sản dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.noncurrent_assets",
+            "label_vi": "Tài sản dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.receivables_noncurrent_net",
+        "candidate_ids": [
+          "common.receivables_noncurrent_net"
+        ],
+        "matched_alias": "Các khoản phải thu dài hạn",
+        "template_label_vi": "Các khoản phải thu dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.receivables_noncurrent_net",
+            "label_vi": "Các khoản phải thu dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.loan_receivables_noncurrent",
+        "candidate_ids": [
+          "common.loan_receivables_noncurrent"
+        ],
+        "matched_alias": "Phải thu về cho vay dài hạn",
+        "template_label_vi": "Phải thu về cho vay dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.loan_receivables_noncurrent",
+            "label_vi": "Phải thu về cho vay dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.other_receivables_noncurrent",
+        "candidate_ids": [
+          "common.other_receivables_noncurrent"
+        ],
+        "matched_alias": "Phải thu dài hạn khác",
+        "template_label_vi": "Phải thu khác dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_receivables_noncurrent",
+            "label_vi": "Phải thu khác dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.receivables_allowance_noncurrent",
+        "candidate_ids": [
+          "common.receivables_allowance_noncurrent"
+        ],
+        "matched_alias": "Dự phòng phải thu dài hạn khó đòi",
+        "template_label_vi": "Dự phòng phải thu khó đòi dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.receivables_allowance_noncurrent",
+            "label_vi": "Dự phòng phải thu khó đòi dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r6",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.fixed_assets",
+        "candidate_ids": [
+          "common.fixed_assets"
+        ],
+        "matched_alias": "Tài sản cố định",
+        "template_label_vi": "Tài sản cố định",
+        "candidate_labels": [
+          {
+            "metric_id": "common.fixed_assets",
+            "label_vi": "Tài sản cố định"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r7",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.tangible_fixed_assets",
+        "candidate_ids": [
+          "common.tangible_fixed_assets"
+        ],
+        "matched_alias": "Tài sản cố định hữu hình",
+        "template_label_vi": "Tài sản cố định hữu hình",
+        "candidate_labels": [
+          {
+            "metric_id": "common.tangible_fixed_assets",
+            "label_vi": "Tài sản cố định hữu hình"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r8",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.tangible_fixed_assets_gross",
+        "candidate_ids": [
+          "common.tangible_fixed_assets_gross"
+        ],
+        "matched_alias": "Nguyên giá TSCĐ hữu hình",
+        "template_label_vi": "Nguyên giá TSCĐ hữu hình",
+        "candidate_labels": [
+          {
+            "metric_id": "common.tangible_fixed_assets_gross",
+            "label_vi": "Nguyên giá TSCĐ hữu hình"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Dòng con của mã 221: tài sản cố định hữu hình."
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r9",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.tangible_fixed_assets_accumulated_depreciation",
+        "candidate_ids": [
+          "common.tangible_fixed_assets_accumulated_depreciation"
+        ],
+        "matched_alias": "Hao mòn lũy kế TSCĐ hữu hình",
+        "template_label_vi": "Hao mòn lũy kế TSCĐ hữu hình",
+        "candidate_labels": [
+          {
+            "metric_id": "common.tangible_fixed_assets_accumulated_depreciation",
+            "label_vi": "Hao mòn lũy kế TSCĐ hữu hình"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Dòng con của mã 221: khấu hao lũy kế TSCĐ hữu hình."
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r10",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.finance_lease_fixed_assets",
+        "candidate_ids": [
+          "common.finance_lease_fixed_assets"
+        ],
+        "matched_alias": "Tài sản cố định thuê tài chính",
+        "template_label_vi": "Tài sản cố định thuê tài chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.finance_lease_fixed_assets",
+            "label_vi": "Tài sản cố định thuê tài chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r11",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.finance_lease_fixed_assets_gross",
+        "candidate_ids": [
+          "common.finance_lease_fixed_assets_gross"
+        ],
+        "matched_alias": "Nguyên giá TSCĐ thuê tài chính",
+        "template_label_vi": "Nguyên giá TSCĐ thuê tài chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.finance_lease_fixed_assets_gross",
+            "label_vi": "Nguyên giá TSCĐ thuê tài chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Dòng con của mã 224: tài sản cố định thuê tài chính."
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r12",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.finance_lease_fixed_assets_accumulated_depreciation",
+        "candidate_ids": [
+          "common.finance_lease_fixed_assets_accumulated_depreciation"
+        ],
+        "matched_alias": "Hao mòn lũy kế TSCĐ thuê tài chính",
+        "template_label_vi": "Hao mòn lũy kế TSCĐ thuê tài chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.finance_lease_fixed_assets_accumulated_depreciation",
+            "label_vi": "Hao mòn lũy kế TSCĐ thuê tài chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Dòng con của mã 224: khấu hao lũy kế tài sản thuê tài chính."
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r13",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.intangible_assets",
+        "candidate_ids": [
+          "common.intangible_assets"
+        ],
+        "matched_alias": "Tài sản cố định vô hình",
+        "template_label_vi": "Tài sản cố định vô hình",
+        "candidate_labels": [
+          {
+            "metric_id": "common.intangible_assets",
+            "label_vi": "Tài sản cố định vô hình"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r14",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.intangible_fixed_assets_gross",
+        "candidate_ids": [
+          "common.intangible_fixed_assets_gross"
+        ],
+        "matched_alias": "Nguyên giá TSCĐ vô hình",
+        "template_label_vi": "Nguyên giá TSCĐ vô hình",
+        "candidate_labels": [
+          {
+            "metric_id": "common.intangible_fixed_assets_gross",
+            "label_vi": "Nguyên giá TSCĐ vô hình"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Dòng con của mã 227: tài sản cố định vô hình."
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r15",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.intangible_fixed_assets_accumulated_depreciation",
+        "candidate_ids": [
+          "common.intangible_fixed_assets_accumulated_depreciation"
+        ],
+        "matched_alias": "Hao mòn lũy kế TSCĐ vô hình",
+        "template_label_vi": "Hao mòn lũy kế TSCĐ vô hình",
+        "candidate_labels": [
+          {
+            "metric_id": "common.intangible_fixed_assets_accumulated_depreciation",
+            "label_vi": "Hao mòn lũy kế TSCĐ vô hình"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Dòng con của mã 227: khấu hao lũy kế TSCĐ vô hình."
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r16",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.long_term_assets_in_progress",
+        "candidate_ids": [
+          "common.long_term_assets_in_progress"
+        ],
+        "matched_alias": "Tài sản dở dang dài hạn",
+        "template_label_vi": "Tài sản dở dang dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.long_term_assets_in_progress",
+            "label_vi": "Tài sản dở dang dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r17",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.construction_in_progress",
+        "candidate_ids": [
+          "common.construction_in_progress"
+        ],
+        "matched_alias": "Chi phí xây dựng cơ bản dở dang",
+        "template_label_vi": "Chi phí xây dựng cơ bản dở dang",
+        "candidate_labels": [
+          {
+            "metric_id": "common.construction_in_progress",
+            "label_vi": "Chi phí xây dựng cơ bản dở dang"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r18",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing",
+        "suggested_metric_id": "common.long_term_financial_investments",
+        "suggested_label_vi": "Đầu tư tài chính dài hạn",
+        "review_evidence": "Nhãn trong PDF không trùng alias template; chỉ ghi gợi ý để review."
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r19",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.investments_in_associates_joint_ventures",
+        "candidate_ids": [
+          "common.investments_in_associates_joint_ventures"
+        ],
+        "matched_alias": "Đầu tư vào công ty liên doanh, liên kết",
+        "template_label_vi": "Đầu tư vào công ty liên doanh, liên kết",
+        "candidate_labels": [
+          {
+            "metric_id": "common.investments_in_associates_joint_ventures",
+            "label_vi": "Đầu tư vào công ty liên doanh, liên kết"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r20",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.other_equity_investments",
+        "candidate_ids": [
+          "common.other_equity_investments"
+        ],
+        "matched_alias": "Đầu tư góp vốn vào đơn vị khác",
+        "template_label_vi": "Đầu tư góp vốn vào đơn vị khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_equity_investments",
+            "label_vi": "Đầu tư góp vốn vào đơn vị khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r21",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.long_term_equity_investments_allowance",
+        "candidate_ids": [
+          "common.long_term_equity_investments_allowance"
+        ],
+        "matched_alias": "Dự phòng đầu tư tài chính dài hạn",
+        "template_label_vi": "Dự phòng tổn thất đầu tư vốn dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.long_term_equity_investments_allowance",
+            "label_vi": "Dự phòng tổn thất đầu tư vốn dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 149,
+      "block_id": "p149-t1",
+      "row_id": "r22",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.held_to_maturity_noncurrent",
+        "candidate_ids": [
+          "common.held_to_maturity_noncurrent"
+        ],
+        "matched_alias": "Đầu tư nắm giữ đến ngày đáo hạn dài hạn",
+        "template_label_vi": "Đầu tư nắm giữ đến ngày đáo hạn dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.held_to_maturity_noncurrent",
+            "label_vi": "Đầu tư nắm giữ đến ngày đáo hạn dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Nằm trong nhóm đầu tư tài chính dài hạn, mã 250."
+      }
+    },
+    {
+      "page": 150,
+      "block_id": "p150-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.other_noncurrent_assets_total",
+        "candidate_ids": [
+          "common.other_noncurrent_assets_total"
+        ],
+        "matched_alias": "Tài sản dài hạn khác - tổng nhóm",
+        "template_label_vi": "Tài sản dài hạn khác - tổng nhóm",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_noncurrent_assets_total",
+            "label_vi": "Tài sản dài hạn khác - tổng nhóm"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Dòng tổng của các mã 261, 262, 269."
+      }
+    },
+    {
+      "page": 150,
+      "block_id": "p150-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.prepaid_expenses_noncurrent",
+        "candidate_ids": [
+          "common.prepaid_expenses_noncurrent"
+        ],
+        "matched_alias": "Chi phí trả trước dài hạn",
+        "template_label_vi": "Chi phí trả trước dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.prepaid_expenses_noncurrent",
+            "label_vi": "Chi phí trả trước dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 150,
+      "block_id": "p150-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.deferred_tax_assets",
+        "candidate_ids": [
+          "common.deferred_tax_assets"
+        ],
+        "matched_alias": "Tài sản thuế thu nhập hoãn lại",
+        "template_label_vi": "Tài sản thuế thu nhập hoãn lại",
+        "candidate_labels": [
+          {
+            "metric_id": "common.deferred_tax_assets",
+            "label_vi": "Tài sản thuế thu nhập hoãn lại"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 150,
+      "block_id": "p150-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.goodwill",
+        "candidate_ids": [
+          "common.goodwill"
+        ],
+        "matched_alias": "Lợi thế thương mại",
+        "template_label_vi": "Lợi thế thương mại",
+        "candidate_labels": [
+          {
+            "metric_id": "common.goodwill",
+            "label_vi": "Lợi thế thương mại"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 150,
+      "block_id": "p150-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.total_assets",
+        "candidate_ids": [
+          "common.total_assets"
+        ],
+        "matched_alias": "Tổng tài sản",
+        "template_label_vi": "Tổng tài sản",
+        "candidate_labels": [
+          {
+            "metric_id": "common.total_assets",
+            "label_vi": "Tổng tài sản"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.total_liabilities",
+        "candidate_ids": [
+          "common.total_liabilities"
+        ],
+        "matched_alias": "Nợ phải trả",
+        "template_label_vi": "Nợ phải trả",
+        "candidate_labels": [
+          {
+            "metric_id": "common.total_liabilities",
+            "label_vi": "Nợ phải trả"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.current_liabilities",
+        "candidate_ids": [
+          "common.current_liabilities"
+        ],
+        "matched_alias": "Nợ ngắn hạn",
+        "template_label_vi": "Nợ ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.current_liabilities",
+            "label_vi": "Nợ ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.trade_payables_current",
+        "candidate_ids": [
+          "common.trade_payables_current"
+        ],
+        "matched_alias": "Phải trả người bán ngắn hạn",
+        "template_label_vi": "Phải trả người bán ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.trade_payables_current",
+            "label_vi": "Phải trả người bán ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.customer_advances_current",
+        "candidate_ids": [
+          "common.customer_advances_current"
+        ],
+        "matched_alias": "Người mua trả tiền trước ngắn hạn",
+        "template_label_vi": "Người mua trả tiền trước ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.customer_advances_current",
+            "label_vi": "Người mua trả tiền trước ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.taxes_payable_current",
+        "candidate_ids": [
+          "common.taxes_payable_current"
+        ],
+        "matched_alias": "Thuế và các khoản phải nộp Nhà nước ngắn hạn",
+        "template_label_vi": "Thuế và các khoản phải nộp Nhà nước ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.taxes_payable_current",
+            "label_vi": "Thuế và các khoản phải nộp Nhà nước ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Nằm trong nhóm nợ ngắn hạn, mã 310."
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r6",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.employees_payable",
+        "candidate_ids": [
+          "common.employees_payable"
+        ],
+        "matched_alias": "Phải trả người lao động",
+        "template_label_vi": "Phải trả người lao động",
+        "candidate_labels": [
+          {
+            "metric_id": "common.employees_payable",
+            "label_vi": "Phải trả người lao động"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r7",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.accrued_expenses_current",
+        "candidate_ids": [
+          "common.accrued_expenses_current"
+        ],
+        "matched_alias": "Chi phí phải trả ngắn hạn",
+        "template_label_vi": "Chi phí phải trả ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.accrued_expenses_current",
+            "label_vi": "Chi phí phải trả ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r8",
+      "legacy_match": {
+        "status": "no_match",
+        "metric_id": null,
+        "candidate_ids": [],
+        "matched_alias": null,
+        "template_label_vi": null,
+        "candidate_labels": [],
+        "template_schema_version": "2.3.0",
+        "match_method": "template_alias_missing",
+        "suggested_metric_id": "common.construction_contract_payables_current",
+        "suggested_label_vi": "Phải trả theo tiến độ hợp đồng xây dựng ngắn hạn",
+        "review_evidence": "Nhãn trong PDF không trùng alias template; chỉ ghi gợi ý để review."
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r9",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.deferred_revenue_current",
+        "candidate_ids": [
+          "common.deferred_revenue_current"
+        ],
+        "matched_alias": "Doanh thu chưa thực hiện ngắn hạn",
+        "template_label_vi": "Doanh thu chờ phân bổ ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.deferred_revenue_current",
+            "label_vi": "Doanh thu chờ phân bổ ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r10",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.other_payables_current",
+        "candidate_ids": [
+          "common.other_payables_current"
+        ],
+        "matched_alias": "Phải trả ngắn hạn khác",
+        "template_label_vi": "Phải trả khác ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_payables_current",
+            "label_vi": "Phải trả khác ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r11",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.short_term_borrowings",
+        "candidate_ids": [
+          "common.short_term_borrowings"
+        ],
+        "matched_alias": "Vay và nợ thuê tài chính ngắn hạn",
+        "template_label_vi": "Vay và nợ thuê tài chính ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.short_term_borrowings",
+            "label_vi": "Vay và nợ thuê tài chính ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r12",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.current_provisions",
+        "candidate_ids": [
+          "common.current_provisions"
+        ],
+        "matched_alias": "Dự phòng phải trả ngắn hạn",
+        "template_label_vi": "Dự phòng phải trả ngắn hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.current_provisions",
+            "label_vi": "Dự phòng phải trả ngắn hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r13",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.reward_welfare_fund",
+        "candidate_ids": [
+          "common.reward_welfare_fund"
+        ],
+        "matched_alias": "Quỹ khen thưởng, phúc lợi",
+        "template_label_vi": "Quỹ khen thưởng, phúc lợi",
+        "candidate_labels": [
+          {
+            "metric_id": "common.reward_welfare_fund",
+            "label_vi": "Quỹ khen thưởng, phúc lợi"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r14",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.noncurrent_liabilities",
+        "candidate_ids": [
+          "common.noncurrent_liabilities"
+        ],
+        "matched_alias": "Nợ dài hạn",
+        "template_label_vi": "Nợ dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.noncurrent_liabilities",
+            "label_vi": "Nợ dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r15",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.deferred_revenue_noncurrent",
+        "candidate_ids": [
+          "common.deferred_revenue_noncurrent"
+        ],
+        "matched_alias": "Doanh thu chưa thực hiện dài hạn",
+        "template_label_vi": "Doanh thu chờ phân bổ dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.deferred_revenue_noncurrent",
+            "label_vi": "Doanh thu chờ phân bổ dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r16",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.other_payables_noncurrent",
+        "candidate_ids": [
+          "common.other_payables_noncurrent"
+        ],
+        "matched_alias": "Phải trả dài hạn khác",
+        "template_label_vi": "Phải trả khác dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_payables_noncurrent",
+            "label_vi": "Phải trả khác dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r17",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.long_term_borrowings",
+        "candidate_ids": [
+          "common.long_term_borrowings"
+        ],
+        "matched_alias": "Vay và nợ thuê tài chính dài hạn",
+        "template_label_vi": "Vay và nợ thuê tài chính dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.long_term_borrowings",
+            "label_vi": "Vay và nợ thuê tài chính dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r18",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.deferred_tax_liabilities",
+        "candidate_ids": [
+          "common.deferred_tax_liabilities"
+        ],
+        "matched_alias": "Thuế thu nhập hoãn lại phải trả",
+        "template_label_vi": "Thuế thu nhập hoãn lại phải trả",
+        "candidate_labels": [
+          {
+            "metric_id": "common.deferred_tax_liabilities",
+            "label_vi": "Thuế thu nhập hoãn lại phải trả"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r19",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.noncurrent_provisions",
+        "candidate_ids": [
+          "common.noncurrent_provisions"
+        ],
+        "matched_alias": "Dự phòng phải trả dài hạn",
+        "template_label_vi": "Dự phòng phải trả dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.noncurrent_provisions",
+            "label_vi": "Dự phòng phải trả dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 151,
+      "block_id": "p151-t1",
+      "row_id": "r20",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.science_technology_fund",
+        "candidate_ids": [
+          "common.science_technology_fund"
+        ],
+        "matched_alias": "Quỹ phát triển khoa học và công nghệ",
+        "template_label_vi": "Quỹ phát triển khoa học và công nghệ",
+        "candidate_labels": [
+          {
+            "metric_id": "common.science_technology_fund",
+            "label_vi": "Quỹ phát triển khoa học và công nghệ"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.equity",
+        "candidate_ids": [
+          "common.equity"
+        ],
+        "matched_alias": "Vốn chủ sở hữu",
+        "template_label_vi": "Vốn chủ sở hữu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.equity",
+            "label_vi": "Vốn chủ sở hữu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Dòng tổng vốn chủ sở hữu, bao gồm nhóm 410 và 430."
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.equity_core",
+        "candidate_ids": [
+          "common.equity_core"
+        ],
+        "matched_alias": "Vốn chủ sở hữu - nhóm cốt lõi TT200",
+        "template_label_vi": "Vốn chủ sở hữu - nhóm cốt lõi TT200",
+        "candidate_labels": [
+          {
+            "metric_id": "common.equity_core",
+            "label_vi": "Vốn chủ sở hữu - nhóm cốt lõi TT200"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_hierarchy",
+        "review_evidence": "Nhóm vốn chủ sở hữu riêng dưới mã 400; nguồn kinh phí ở mã 430."
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.paid_in_capital",
+        "candidate_ids": [
+          "common.paid_in_capital"
+        ],
+        "matched_alias": "Vốn góp của chủ sở hữu",
+        "template_label_vi": "Vốn góp của chủ sở hữu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.paid_in_capital",
+            "label_vi": "Vốn góp của chủ sở hữu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.ordinary_share_capital",
+        "candidate_ids": [
+          "common.ordinary_share_capital"
+        ],
+        "matched_alias": "Cổ phiếu phổ thông có quyền biểu quyết",
+        "template_label_vi": "Vốn cổ phiếu phổ thông có quyền biểu quyết",
+        "candidate_labels": [
+          {
+            "metric_id": "common.ordinary_share_capital",
+            "label_vi": "Vốn cổ phiếu phổ thông có quyền biểu quyết"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn khớp alias sau khi bỏ ký hiệu đầu dòng hoặc công thức in kèm."
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.share_premium",
+        "candidate_ids": [
+          "common.share_premium"
+        ],
+        "matched_alias": "Thặng dư vốn cổ phần",
+        "template_label_vi": "Thặng dư vốn cổ phần",
+        "candidate_labels": [
+          {
+            "metric_id": "common.share_premium",
+            "label_vi": "Thặng dư vốn cổ phần"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r6",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.other_owners_capital",
+        "candidate_ids": [
+          "common.other_owners_capital"
+        ],
+        "matched_alias": "Vốn khác của chủ sở hữu",
+        "template_label_vi": "Vốn khác của chủ sở hữu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_owners_capital",
+            "label_vi": "Vốn khác của chủ sở hữu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r7",
+      "legacy_match": {
+        "status": "context_required",
+        "metric_id": null,
+        "candidate_ids": [
+          "common.foreign_exchange_translation_reserve"
+        ],
+        "matched_alias": "Chênh lệch tỷ giá hối đoái",
+        "template_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.foreign_exchange_translation_reserve",
+            "label_vi": "Chênh lệch tỷ giá thuộc vốn chủ"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r8",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.development_investment_fund",
+        "candidate_ids": [
+          "common.development_investment_fund"
+        ],
+        "matched_alias": "Quỹ đầu tư phát triển",
+        "template_label_vi": "Quỹ đầu tư phát triển",
+        "candidate_labels": [
+          {
+            "metric_id": "common.development_investment_fund",
+            "label_vi": "Quỹ đầu tư phát triển"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r9",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.other_equity_funds",
+        "candidate_ids": [
+          "common.other_equity_funds"
+        ],
+        "matched_alias": "Quỹ khác thuộc vốn chủ sở hữu",
+        "template_label_vi": "Quỹ khác thuộc vốn chủ sở hữu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_equity_funds",
+            "label_vi": "Quỹ khác thuộc vốn chủ sở hữu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r10",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.retained_earnings",
+        "candidate_ids": [
+          "common.retained_earnings"
+        ],
+        "matched_alias": "Lợi nhuận sau thuế chưa phân phối",
+        "template_label_vi": "Lợi nhuận sau thuế chưa phân phối",
+        "candidate_labels": [
+          {
+            "metric_id": "common.retained_earnings",
+            "label_vi": "Lợi nhuận sau thuế chưa phân phối"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "LNST là lợi nhuận sau thuế; dòng tổng chưa phân phối."
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r11",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.retained_earnings_prior",
+        "candidate_ids": [
+          "common.retained_earnings_prior"
+        ],
+        "matched_alias": "LNST chưa phân phối lũy kế đến cuối kỳ trước",
+        "template_label_vi": "LNST chưa phân phối lũy kế đến cuối kỳ trước",
+        "candidate_labels": [
+          {
+            "metric_id": "common.retained_earnings_prior",
+            "label_vi": "LNST chưa phân phối lũy kế đến cuối kỳ trước"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn ghi rõ số dư lũy kế các năm trước."
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r12",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.retained_earnings_current",
+        "candidate_ids": [
+          "common.retained_earnings_current"
+        ],
+        "matched_alias": "LNST chưa phân phối kỳ này",
+        "template_label_vi": "LNST chưa phân phối kỳ này",
+        "candidate_labels": [
+          {
+            "metric_id": "common.retained_earnings_current",
+            "label_vi": "LNST chưa phân phối kỳ này"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn ghi rõ phần chưa phân phối của năm nay."
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r13",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.noncontrolling_interests",
+        "candidate_ids": [
+          "common.noncontrolling_interests"
+        ],
+        "matched_alias": "Lợi ích cổ đông không kiểm soát",
+        "template_label_vi": "Lợi ích cổ đông không kiểm soát",
+        "candidate_labels": [
+          {
+            "metric_id": "common.noncontrolling_interests",
+            "label_vi": "Lợi ích cổ đông không kiểm soát"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r14",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.other_funding_total",
+        "candidate_ids": [
+          "common.other_funding_total"
+        ],
+        "matched_alias": "Nguồn kinh phí và quỹ khác",
+        "template_label_vi": "Nguồn kinh phí và quỹ khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_funding_total",
+            "label_vi": "Nguồn kinh phí và quỹ khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r15",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.allocated_funding",
+        "candidate_ids": [
+          "common.allocated_funding"
+        ],
+        "matched_alias": "Nguồn kinh phí",
+        "template_label_vi": "Nguồn kinh phí",
+        "candidate_labels": [
+          {
+            "metric_id": "common.allocated_funding",
+            "label_vi": "Nguồn kinh phí"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 152,
+      "block_id": "p152-t1",
+      "row_id": "r16",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.total_funding",
+        "candidate_ids": [
+          "common.total_funding"
+        ],
+        "matched_alias": "Tổng nguồn vốn",
+        "template_label_vi": "Tổng nguồn vốn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.total_funding",
+            "label_vi": "Tổng nguồn vốn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.gross_sales_revenue",
+        "candidate_ids": [
+          "common.gross_sales_revenue"
+        ],
+        "matched_alias": "Doanh thu bán hàng và cung cấp dịch vụ",
+        "template_label_vi": "Doanh thu bán hàng và cung cấp dịch vụ",
+        "candidate_labels": [
+          {
+            "metric_id": "common.gross_sales_revenue",
+            "label_vi": "Doanh thu bán hàng và cung cấp dịch vụ"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.sales_deductions",
+        "candidate_ids": [
+          "common.sales_deductions"
+        ],
+        "matched_alias": "Các khoản giảm trừ doanh thu",
+        "template_label_vi": "Các khoản giảm trừ doanh thu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.sales_deductions",
+            "label_vi": "Các khoản giảm trừ doanh thu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.net_revenue",
+        "candidate_ids": [
+          "common.net_revenue"
+        ],
+        "matched_alias": "Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+        "template_label_vi": "Doanh thu thuần",
+        "candidate_labels": [
+          {
+            "metric_id": "common.net_revenue",
+            "label_vi": "Doanh thu thuần"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn khớp alias sau khi bỏ ký hiệu đầu dòng hoặc công thức in kèm."
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.cost_of_sales",
+        "candidate_ids": [
+          "common.cost_of_sales"
+        ],
+        "matched_alias": "Giá vốn hàng bán và dịch vụ cung cấp",
+        "template_label_vi": "Giá vốn hàng bán",
+        "candidate_labels": [
+          {
+            "metric_id": "common.cost_of_sales",
+            "label_vi": "Giá vốn hàng bán"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.gross_profit",
+        "candidate_ids": [
+          "common.gross_profit"
+        ],
+        "matched_alias": "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+        "template_label_vi": "Lợi nhuận gộp",
+        "candidate_labels": [
+          {
+            "metric_id": "common.gross_profit",
+            "label_vi": "Lợi nhuận gộp"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn khớp alias sau khi bỏ ký hiệu đầu dòng hoặc công thức in kèm."
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r6",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.financial_income",
+        "candidate_ids": [
+          "common.financial_income"
+        ],
+        "matched_alias": "Doanh thu hoạt động tài chính",
+        "template_label_vi": "Doanh thu hoạt động tài chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.financial_income",
+            "label_vi": "Doanh thu hoạt động tài chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r7",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.financial_expense",
+        "candidate_ids": [
+          "common.financial_expense"
+        ],
+        "matched_alias": "Chi phí tài chính",
+        "template_label_vi": "Chi phí tài chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.financial_expense",
+            "label_vi": "Chi phí tài chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r8",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.interest_expense",
+        "candidate_ids": [
+          "common.interest_expense"
+        ],
+        "matched_alias": "Trong đó: Chi phí lãi vay",
+        "template_label_vi": "Chi phí lãi vay",
+        "candidate_labels": [
+          {
+            "metric_id": "common.interest_expense",
+            "label_vi": "Chi phí lãi vay"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn khớp alias sau khi bỏ ký hiệu đầu dòng hoặc công thức in kèm."
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r9",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.associate_profit_share",
+        "candidate_ids": [
+          "common.associate_profit_share"
+        ],
+        "matched_alias": "Phần lãi hoặc lỗ trong công ty liên doanh, liên kết",
+        "template_label_vi": "Phần lãi hoặc lỗ trong công ty liên doanh, liên kết",
+        "candidate_labels": [
+          {
+            "metric_id": "common.associate_profit_share",
+            "label_vi": "Phần lãi hoặc lỗ trong công ty liên doanh, liên kết"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Phần lãi từ công ty liên doanh, liên kết."
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r10",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.selling_expenses",
+        "candidate_ids": [
+          "common.selling_expenses"
+        ],
+        "matched_alias": "Chi phí bán hàng",
+        "template_label_vi": "Chi phí bán hàng",
+        "candidate_labels": [
+          {
+            "metric_id": "common.selling_expenses",
+            "label_vi": "Chi phí bán hàng"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r11",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.administrative_expenses",
+        "candidate_ids": [
+          "common.administrative_expenses"
+        ],
+        "matched_alias": "Chi phí quản lý doanh nghiệp",
+        "template_label_vi": "Chi phí quản lý doanh nghiệp",
+        "candidate_labels": [
+          {
+            "metric_id": "common.administrative_expenses",
+            "label_vi": "Chi phí quản lý doanh nghiệp"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r12",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.operating_profit",
+        "candidate_ids": [
+          "common.operating_profit"
+        ],
+        "matched_alias": "Lợi nhuận thuần từ hoạt động kinh doanh",
+        "template_label_vi": "Lợi nhuận thuần từ hoạt động kinh doanh",
+        "candidate_labels": [
+          {
+            "metric_id": "common.operating_profit",
+            "label_vi": "Lợi nhuận thuần từ hoạt động kinh doanh"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn khớp alias sau khi bỏ ký hiệu đầu dòng hoặc công thức in kèm."
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r13",
+      "legacy_match": {
+        "status": "context_required",
+        "metric_id": null,
+        "candidate_ids": [
+          "common.other_income"
+        ],
+        "matched_alias": "Thu nhập khác",
+        "template_label_vi": null,
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_income",
+            "label_vi": "Thu nhập khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r14",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.other_expense",
+        "candidate_ids": [
+          "common.other_expense"
+        ],
+        "matched_alias": "Chi phí khác",
+        "template_label_vi": "Chi phí khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_expense",
+            "label_vi": "Chi phí khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r15",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.other_profit",
+        "candidate_ids": [
+          "common.other_profit"
+        ],
+        "matched_alias": "Lợi nhuận khác",
+        "template_label_vi": "Lợi nhuận khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.other_profit",
+            "label_vi": "Lợi nhuận khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn khớp alias sau khi bỏ ký hiệu đầu dòng hoặc công thức in kèm."
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r16",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.profit_before_tax",
+        "candidate_ids": [
+          "common.profit_before_tax"
+        ],
+        "matched_alias": "Tổng lợi nhuận kế toán trước thuế",
+        "template_label_vi": "Lợi nhuận trước thuế",
+        "candidate_labels": [
+          {
+            "metric_id": "common.profit_before_tax",
+            "label_vi": "Lợi nhuận trước thuế"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Nhãn khớp alias sau khi bỏ ký hiệu đầu dòng hoặc công thức in kèm."
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r17",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.current_income_tax_expense",
+        "candidate_ids": [
+          "common.current_income_tax_expense"
+        ],
+        "matched_alias": "Chi phí thuế thu nhập doanh nghiệp (“TNDN”) hiện hành",
+        "template_label_vi": "Chi phí thuế thu nhập doanh nghiệp hiện hành",
+        "candidate_labels": [
+          {
+            "metric_id": "common.current_income_tax_expense",
+            "label_vi": "Chi phí thuế thu nhập doanh nghiệp hiện hành"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 153,
+      "block_id": "p153-t1",
+      "row_id": "r18",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.deferred_income_tax_expense",
+        "candidate_ids": [
+          "common.deferred_income_tax_expense"
+        ],
+        "matched_alias": "Thu nhập thuế TNDN hoãn lại",
+        "template_label_vi": "Chi phí hoặc thu nhập thuế TNDN hoãn lại",
+        "candidate_labels": [
+          {
+            "metric_id": "common.deferred_income_tax_expense",
+            "label_vi": "Chi phí hoặc thu nhập thuế TNDN hoãn lại"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 154,
+      "block_id": "p154-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.profit_after_tax",
+        "candidate_ids": [
+          "common.profit_after_tax"
+        ],
+        "matched_alias": "Lợi nhuận sau thuế",
+        "template_label_vi": "Lợi nhuận sau thuế",
+        "candidate_labels": [
+          {
+            "metric_id": "common.profit_after_tax",
+            "label_vi": "Lợi nhuận sau thuế"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Dòng lợi nhuận sau thuế toàn tập đoàn theo công thức in."
+      }
+    },
+    {
+      "page": 154,
+      "block_id": "p154-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.profit_parent",
+        "candidate_ids": [
+          "common.profit_parent"
+        ],
+        "matched_alias": "Lợi nhuận sau thuế của công ty mẹ",
+        "template_label_vi": "Lợi nhuận sau thuế của công ty mẹ",
+        "candidate_labels": [
+          {
+            "metric_id": "common.profit_parent",
+            "label_vi": "Lợi nhuận sau thuế của công ty mẹ"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Phần lợi nhuận phân bổ cho cổ đông công ty mẹ."
+      }
+    },
+    {
+      "page": 154,
+      "block_id": "p154-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.profit_noncontrolling",
+        "candidate_ids": [
+          "common.profit_noncontrolling"
+        ],
+        "matched_alias": "Lợi nhuận sau thuế của cổ đông không kiểm soát",
+        "template_label_vi": "Lợi nhuận sau thuế của cổ đông không kiểm soát",
+        "candidate_labels": [
+          {
+            "metric_id": "common.profit_noncontrolling",
+            "label_vi": "Lợi nhuận sau thuế của cổ đông không kiểm soát"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Phần lợi nhuận phân bổ cho cổ đông không kiểm soát."
+      }
+    },
+    {
+      "page": 154,
+      "block_id": "p154-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.basic_eps",
+        "candidate_ids": [
+          "common.basic_eps"
+        ],
+        "matched_alias": "Lãi cơ bản trên cổ phiếu",
+        "template_label_vi": "Lãi cơ bản trên cổ phiếu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.basic_eps",
+            "label_vi": "Lãi cơ bản trên cổ phiếu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 154,
+      "block_id": "p154-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.diluted_eps",
+        "candidate_ids": [
+          "common.diluted_eps"
+        ],
+        "matched_alias": "Lãi suy giảm trên cổ phiếu",
+        "template_label_vi": "Lãi suy giảm trên cổ phiếu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.diluted_eps",
+            "label_vi": "Lãi suy giảm trên cổ phiếu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.profit_before_tax",
+        "candidate_ids": [
+          "common.profit_before_tax"
+        ],
+        "matched_alias": "Lợi nhuận trước thuế",
+        "template_label_vi": "Lợi nhuận trước thuế",
+        "candidate_labels": [
+          {
+            "metric_id": "common.profit_before_tax",
+            "label_vi": "Lợi nhuận trước thuế"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Lợi nhuận kế toán trước thuế trong báo cáo lưu chuyển tiền tệ."
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.depreciation_cashflow_adjustment",
+        "candidate_ids": [
+          "common.depreciation_cashflow_adjustment"
+        ],
+        "matched_alias": "Khấu hao tài sản cố định (“TSCĐ”) và phân bổ lợi thế thương mại",
+        "template_label_vi": "Điều chỉnh khấu hao và phân bổ trên LCTT",
+        "candidate_labels": [
+          {
+            "metric_id": "common.depreciation_cashflow_adjustment",
+            "label_vi": "Điều chỉnh khấu hao và phân bổ trên LCTT"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.adjustment_provisions",
+        "candidate_ids": [
+          "common.adjustment_provisions"
+        ],
+        "matched_alias": "Các khoản dự phòng",
+        "template_label_vi": "Điều chỉnh các khoản dự phòng",
+        "candidate_labels": [
+          {
+            "metric_id": "common.adjustment_provisions",
+            "label_vi": "Điều chỉnh các khoản dự phòng"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.adjustment_fx_gain_loss",
+        "candidate_ids": [
+          "common.adjustment_fx_gain_loss"
+        ],
+        "matched_alias": "Lỗ/(lãi) chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ",
+        "template_label_vi": "Điều chỉnh lãi/lỗ tỷ giá chưa thực hiện",
+        "candidate_labels": [
+          {
+            "metric_id": "common.adjustment_fx_gain_loss",
+            "label_vi": "Điều chỉnh lãi/lỗ tỷ giá chưa thực hiện"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.adjustment_gain_loss_investing_financing",
+        "candidate_ids": [
+          "common.adjustment_gain_loss_investing_financing"
+        ],
+        "matched_alias": "Lãi từ hoạt động đầu tư",
+        "template_label_vi": "Điều chỉnh lãi/lỗ hoạt động đầu tư, tài chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.adjustment_gain_loss_investing_financing",
+            "label_vi": "Điều chỉnh lãi/lỗ hoạt động đầu tư, tài chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r6",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.interest_expense",
+        "candidate_ids": [
+          "common.interest_expense"
+        ],
+        "matched_alias": "Chi phí lãi vay",
+        "template_label_vi": "Chi phí lãi vay",
+        "candidate_labels": [
+          {
+            "metric_id": "common.interest_expense",
+            "label_vi": "Chi phí lãi vay"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r7",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.cash_operating_profit_before_working_capital",
+        "candidate_ids": [
+          "common.cash_operating_profit_before_working_capital"
+        ],
+        "matched_alias": "Lợi nhuận từ hoạt động kinh doanh trước những thay đổi vốn lưu động",
+        "template_label_vi": "Lợi nhuận HĐKD trước thay đổi vốn lưu động",
+        "candidate_labels": [
+          {
+            "metric_id": "common.cash_operating_profit_before_working_capital",
+            "label_vi": "Lợi nhuận HĐKD trước thay đổi vốn lưu động"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r8",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.adjustment_change_receivables",
+        "candidate_ids": [
+          "common.adjustment_change_receivables"
+        ],
+        "matched_alias": "Tăng các khoản phải thu",
+        "template_label_vi": "Điều chỉnh tăng/giảm các khoản phải thu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.adjustment_change_receivables",
+            "label_vi": "Điều chỉnh tăng/giảm các khoản phải thu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r9",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.adjustment_change_inventories",
+        "candidate_ids": [
+          "common.adjustment_change_inventories"
+        ],
+        "matched_alias": "(Tăng)/giảm hàng tồn kho",
+        "template_label_vi": "Điều chỉnh tăng/giảm hàng tồn kho",
+        "candidate_labels": [
+          {
+            "metric_id": "common.adjustment_change_inventories",
+            "label_vi": "Điều chỉnh tăng/giảm hàng tồn kho"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r10",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.adjustment_change_payables",
+        "candidate_ids": [
+          "common.adjustment_change_payables"
+        ],
+        "matched_alias": "Tăng các khoản phải trả",
+        "template_label_vi": "Điều chỉnh tăng/giảm các khoản phải trả",
+        "candidate_labels": [
+          {
+            "metric_id": "common.adjustment_change_payables",
+            "label_vi": "Điều chỉnh tăng/giảm các khoản phải trả"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r11",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.adjustment_change_prepaids",
+        "candidate_ids": [
+          "common.adjustment_change_prepaids"
+        ],
+        "matched_alias": "(Tăng)/giảm chi phí trả trước",
+        "template_label_vi": "Điều chỉnh tăng/giảm chi phí trả trước",
+        "candidate_labels": [
+          {
+            "metric_id": "common.adjustment_change_prepaids",
+            "label_vi": "Điều chỉnh tăng/giảm chi phí trả trước"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r12",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.operating_cash_outflow_interest_paid",
+        "candidate_ids": [
+          "common.operating_cash_outflow_interest_paid"
+        ],
+        "matched_alias": "Tiền lãi vay đã trả",
+        "template_label_vi": "Tiền lãi vay đã trả",
+        "candidate_labels": [
+          {
+            "metric_id": "common.operating_cash_outflow_interest_paid",
+            "label_vi": "Tiền lãi vay đã trả"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r13",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.operating_cash_outflow_income_tax",
+        "candidate_ids": [
+          "common.operating_cash_outflow_income_tax"
+        ],
+        "matched_alias": "Thuế TNDN đã nộp",
+        "template_label_vi": "Thuế TNDN đã nộp",
+        "candidate_labels": [
+          {
+            "metric_id": "common.operating_cash_outflow_income_tax",
+            "label_vi": "Thuế TNDN đã nộp"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r14",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.operating_cash_outflow_other",
+        "candidate_ids": [
+          "common.operating_cash_outflow_other"
+        ],
+        "matched_alias": "Tiền chi khác cho hoạt động kinh doanh",
+        "template_label_vi": "Tiền chi khác cho hoạt động kinh doanh",
+        "candidate_labels": [
+          {
+            "metric_id": "common.operating_cash_outflow_other",
+            "label_vi": "Tiền chi khác cho hoạt động kinh doanh"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Tiền chi khác thuộc hoạt động kinh doanh."
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r15",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.operating_cash_flow",
+        "candidate_ids": [
+          "common.operating_cash_flow"
+        ],
+        "matched_alias": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+        "template_label_vi": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+        "candidate_labels": [
+          {
+            "metric_id": "common.operating_cash_flow",
+            "label_vi": "Lưu chuyển tiền thuần từ hoạt động kinh doanh"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r16",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.capital_expenditure_cash_paid",
+        "candidate_ids": [
+          "common.capital_expenditure_cash_paid"
+        ],
+        "matched_alias": "Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",
+        "template_label_vi": "Tiền chi mua sắm, xây dựng tài sản dài hạn",
+        "candidate_labels": [
+          {
+            "metric_id": "common.capital_expenditure_cash_paid",
+            "label_vi": "Tiền chi mua sắm, xây dựng tài sản dài hạn"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r17",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.investing_cash_inflow_disposal_fixed_assets",
+        "candidate_ids": [
+          "common.investing_cash_inflow_disposal_fixed_assets"
+        ],
+        "matched_alias": "Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",
+        "template_label_vi": "Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.investing_cash_inflow_disposal_fixed_assets",
+            "label_vi": "Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Tiền thu thanh lý, nhượng bán tài sản dài hạn."
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r18",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.investing_cash_outflow_loans_made",
+        "candidate_ids": [
+          "common.investing_cash_outflow_loans_made"
+        ],
+        "matched_alias": "Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",
+        "template_label_vi": "Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.investing_cash_outflow_loans_made",
+            "label_vi": "Tiền chi cho vay, mua các công cụ nợ của đơn vị khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 155,
+      "block_id": "p155-t1",
+      "row_id": "r19",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.investing_cash_inflow_loans_collected",
+        "candidate_ids": [
+          "common.investing_cash_inflow_loans_collected"
+        ],
+        "matched_alias": "Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",
+        "template_label_vi": "Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.investing_cash_inflow_loans_collected",
+            "label_vi": "Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r1",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.investing_cash_outflow_equity_investment",
+        "candidate_ids": [
+          "common.investing_cash_outflow_equity_investment"
+        ],
+        "matched_alias": "Tiền chi đầu tư góp vốn vào đơn vị khác",
+        "template_label_vi": "Tiền chi đầu tư góp vốn vào đơn vị khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.investing_cash_outflow_equity_investment",
+            "label_vi": "Tiền chi đầu tư góp vốn vào đơn vị khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r2",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.investing_cash_inflow_equity_withdrawal",
+        "candidate_ids": [
+          "common.investing_cash_inflow_equity_withdrawal"
+        ],
+        "matched_alias": "Tiền thu hồi đầu tư góp vốn vào đơn vị khác",
+        "template_label_vi": "Tiền thu hồi đầu tư góp vốn vào đơn vị khác",
+        "candidate_labels": [
+          {
+            "metric_id": "common.investing_cash_inflow_equity_withdrawal",
+            "label_vi": "Tiền thu hồi đầu tư góp vốn vào đơn vị khác"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r3",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.investing_cash_inflow_interest_dividends",
+        "candidate_ids": [
+          "common.investing_cash_inflow_interest_dividends"
+        ],
+        "matched_alias": "Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",
+        "template_label_vi": "Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",
+        "candidate_labels": [
+          {
+            "metric_id": "common.investing_cash_inflow_interest_dividends",
+            "label_vi": "Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r4",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.investing_cash_flow",
+        "candidate_ids": [
+          "common.investing_cash_flow"
+        ],
+        "matched_alias": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+        "template_label_vi": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+        "candidate_labels": [
+          {
+            "metric_id": "common.investing_cash_flow",
+            "label_vi": "Lưu chuyển tiền thuần từ hoạt động đầu tư"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r5",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.financing_cash_inflow_equity_issued",
+        "candidate_ids": [
+          "common.financing_cash_inflow_equity_issued"
+        ],
+        "matched_alias": "Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",
+        "template_label_vi": "Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",
+        "candidate_labels": [
+          {
+            "metric_id": "common.financing_cash_inflow_equity_issued",
+            "label_vi": "Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Tiền thu từ phát hành cổ phiếu."
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r6",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.financing_cash_inflow_borrowings",
+        "candidate_ids": [
+          "common.financing_cash_inflow_borrowings"
+        ],
+        "matched_alias": "Tiền thu từ đi vay",
+        "template_label_vi": "Tiền thu từ đi vay",
+        "candidate_labels": [
+          {
+            "metric_id": "common.financing_cash_inflow_borrowings",
+            "label_vi": "Tiền thu từ đi vay"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r7",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.financing_cash_outflow_borrowings_repaid",
+        "candidate_ids": [
+          "common.financing_cash_outflow_borrowings_repaid"
+        ],
+        "matched_alias": "Tiền trả nợ gốc vay",
+        "template_label_vi": "Tiền trả nợ gốc vay",
+        "candidate_labels": [
+          {
+            "metric_id": "common.financing_cash_outflow_borrowings_repaid",
+            "label_vi": "Tiền trả nợ gốc vay"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Tiền chi trả nợ gốc vay."
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r8",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.financing_cash_outflow_finance_lease_principal",
+        "candidate_ids": [
+          "common.financing_cash_outflow_finance_lease_principal"
+        ],
+        "matched_alias": "Tiền trả nợ gốc thuê tài chính",
+        "template_label_vi": "Tiền trả nợ gốc thuê tài chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.financing_cash_outflow_finance_lease_principal",
+            "label_vi": "Tiền trả nợ gốc thuê tài chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Tiền chi trả nợ gốc thuê tài chính."
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r9",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.cash_dividends_paid",
+        "candidate_ids": [
+          "common.cash_dividends_paid"
+        ],
+        "matched_alias": "Cổ tức tiền mặt đã trả",
+        "template_label_vi": "Cổ tức tiền mặt đã trả",
+        "candidate_labels": [
+          {
+            "metric_id": "common.cash_dividends_paid",
+            "label_vi": "Cổ tức tiền mặt đã trả"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Tiền cổ tức, lợi nhuận đã trả cho chủ sở hữu."
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r10",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.financing_cash_flow",
+        "candidate_ids": [
+          "common.financing_cash_flow"
+        ],
+        "matched_alias": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+        "template_label_vi": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+        "candidate_labels": [
+          {
+            "metric_id": "common.financing_cash_flow",
+            "label_vi": "Lưu chuyển tiền thuần từ hoạt động tài chính"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r11",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.net_cash_change",
+        "candidate_ids": [
+          "common.net_cash_change"
+        ],
+        "matched_alias": "Lưu chuyển tiền thuần trong kỳ",
+        "template_label_vi": "Lưu chuyển tiền thuần trong kỳ",
+        "candidate_labels": [
+          {
+            "metric_id": "common.net_cash_change",
+            "label_vi": "Lưu chuyển tiền thuần trong kỳ"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Lưu chuyển tiền thuần trong năm tương ứng biến động tiền trong kỳ."
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r12",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.cash_beginning",
+        "candidate_ids": [
+          "common.cash_beginning"
+        ],
+        "matched_alias": "Tiền và tương đương tiền đầu kỳ",
+        "template_label_vi": "Tiền và tương đương tiền đầu kỳ",
+        "candidate_labels": [
+          {
+            "metric_id": "common.cash_beginning",
+            "label_vi": "Tiền và tương đương tiền đầu kỳ"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Số dư tiền đầu năm trên lưu chuyển tiền tệ."
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r13",
+      "legacy_match": {
+        "status": "candidate",
+        "metric_id": "common.exchange_effect_on_cash",
+        "candidate_ids": [
+          "common.exchange_effect_on_cash"
+        ],
+        "matched_alias": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+        "template_label_vi": "Ảnh hưởng của thay đổi tỷ giá đến tiền",
+        "candidate_labels": [
+          {
+            "metric_id": "common.exchange_effect_on_cash",
+            "label_vi": "Ảnh hưởng của thay đổi tỷ giá đến tiền"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "exact_alias"
+      }
+    },
+    {
+      "page": 156,
+      "block_id": "p156-t1",
+      "row_id": "r14",
+      "legacy_match": {
+        "status": "source_review_candidate",
+        "metric_id": "common.cash_ending",
+        "candidate_ids": [
+          "common.cash_ending"
+        ],
+        "matched_alias": "Tiền và tương đương tiền cuối kỳ",
+        "template_label_vi": "Tiền và tương đương tiền cuối kỳ",
+        "candidate_labels": [
+          {
+            "metric_id": "common.cash_ending",
+            "label_vi": "Tiền và tương đương tiền cuối kỳ"
+          }
+        ],
+        "template_schema_version": "2.3.0",
+        "match_method": "pdf_label_semantics",
+        "review_evidence": "Số dư tiền cuối năm trên lưu chuyển tiền tệ."
+      }
+    }
+  ]
+}

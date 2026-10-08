@@ -1,0 +1,56 @@
+{
+  "ir_version": "1",
+  "page": 14,
+  "printed_page": "13",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p14-b1", "type": "heading", "text": "HOẠT ĐỘNG NỔI BẬT", "bbox": [259.29, 42.09, 462.23, 62.09]},
+    {
+      "id": "p14-b2",
+      "type": "paragraph",
+      "text": "Thành lập Ban Chỉ đạo\nCông nghệ chiến lược thúc đẩy\ntriển khai Nghị quyết 57-NQ/TW",
+      "bbox": [259.29, 309.64, 492.25, 365.64]
+    },
+    {
+      "id": "p14-b3",
+      "type": "paragraph",
+      "text": "Trong bối cảnh khoa học công nghệ, chuyển đổi số,\nđổi mới sáng tạo là xung lực tạo đột phá đưa đất\nnước bước vào kỷ nguyên mới, Tập đoàn công bố\nthành lập Ban Chỉ đạo Công nghệ chiến lược với 05\nđơn vị gồm: Viện Quantum AI và Cybersecurity,\nFPT UAV, Công nghệ Đường sắt FPT, FPT\nCybersecurity và DC5. Đây là bước đi chiến lược của\nFPT với mục tiêu làm chủ công nghệ lõi, xây dựng\nnguồn nhân lực chất lượng cao.",
+      "bbox": [259.29, 380.51, 492.95, 486.51]
+    },
+    {
+      "id": "p14-b4",
+      "type": "paragraph",
+      "text": "Thành lập Liên minh Kinh tế tầm thấp phát triển các ngành\ncông nghệ cao ứng dụng UAV",
+      "bbox": [518.93, 88.02, 950.86, 124.02]
+    },
+    {
+      "id": "p14-b5",
+      "type": "paragraph",
+      "text": "Liên minh Kinh tế tầm thấp (LAEP) kỳ vọng nền kinh tế mới này sẽ thúc đẩy hàng nghìn doanh nghiệp phụ trợ,\ntạo 01 triệu việc làm chất lượng cao và mang về hàng chục tỷ USD cho Việt Nam trong 10-15 năm tới. LAEP đã ký\nkết thỏa thuận hợp tác chiến lược với Hiệp hội Thiết bị bay không người lái Nhật Bản (JUIDA), mở ra hướng phát\ntriển trong lĩnh vực giao thông thế hệ mới, đặc biệt là ứng dụng UAV, drone và hệ sinh thái công nghệ liên quan.\nÔng Nguyễn Văn Khoa, Tổng giám đốc FPT, giữ vai trò Chủ tịch Liên minh.",
+      "bbox": [518.93, 139.06, 1016.75, 201.06]
+    },
+    {"id": "p14-b6", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p14-b7", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p14-b8", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.31, 96.83, 143.31]},
+    {
+      "id": "p14-b9",
+      "type": "furniture",
+      "text": "Con số nổi bật\nGiải thưởng tiêu biểu\nHoạt động nổi bật\nDự án AI nổi bật",
+      "bbox": [67.84, 160.82, 143.8, 213.82]
+    },
+    {"id": "p14-b10", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 229.12, 122.58, 237.31]},
+    {"id": "p14-b11", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 255.12, 142.43, 263.31]},
+    {"id": "p14-b12", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 281.12, 190.19, 289.31]},
+    {"id": "p14-b13", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 307.12, 121.59, 315.31]},
+    {"id": "p14-b14", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 333.12, 100.4, 341.31]},
+    {"id": "p14-b15", "type": "furniture", "text": "08 BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 359.12, 166.49, 367.31]},
+    {"id": "p14-b16", "type": "furniture", "text": "13", "bbox": [62.22, 546.47, 74.34, 558.52]}
+  ]
+}

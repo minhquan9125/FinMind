@@ -1,0 +1,29 @@
+{
+  "ir_version": "1",
+  "page": 45,
+  "printed_page": "44",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p45-b1", "type": "paragraph", "text": "01\nBối cảnh chung", "bbox": [280.78, 188.49, 438.18, 204.49]},
+    {"id": "p45-b2", "type": "paragraph", "text": "02\nChiến lược phát triển\ngiai đoạn 2026 - 2028", "bbox": [280.78, 226.07, 484.92, 261.99]},
+    {"id": "p45-b3", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p45-b4", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p45-b5", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p45-b6", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p45-b7", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.31, 141.98, 195.31]},
+    {"id": "p45-b8", "type": "furniture", "text": "Bối cảnh chung", "bbox": [67.46, 208.71, 123.92, 216.71]},
+    {"id": "p45-b9", "type": "furniture", "text": "Chiến lược phát triển\ngiai đoạn 2026 - 2028\n06", "bbox": [25.73, 224.71, 148.85, 247.31]},
+    {"id": "p45-b10", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 258.12, 190.19, 266.31]},
+    {"id": "p45-b11", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 284.12, 121.59, 292.31]},
+    {"id": "p45-b12", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 310.12, 100.4, 318.31]},
+    {"id": "p45-b13", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 336.12, 166.49, 344.31]},
+    {"id": "p45-b14", "type": "furniture", "text": "44", "bbox": [61.19, 546.47, 75.37, 558.52]}
+  ]
+}

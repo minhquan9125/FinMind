@@ -1,0 +1,73 @@
+{
+  "ir_version": "1",
+  "page": 100,
+  "printed_page": "98",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p100-b1", "type": "heading", "text": "THÔNG TIN CHUNG VỀ BÁO CÁO", "bbox": [429.35, 71.04, 1041.28, 111.04]},
+    {
+      "id": "p100-b2",
+      "type": "paragraph",
+      "text": "Thông qua Báo cáo Môi trường - Trách nhiệm xã hội - Quản trị (Báo cáo ESG), FPT có cơ\nhội đánh giá toàn diện về các hoạt động liên quan môi trường, trách nhiệm xã hội, quản\ntrị, từ đó điều chỉnh và cân bằng chiến lược, kế hoạch kinh doanh hướng đến mục tiêu\nphát triển bền vững cho chính Tập đoàn và cộng đồng.",
+      "bbox": [428.99, 130.12, 1123.03, 220.11]
+    },
+    {
+      "id": "p100-b3",
+      "type": "paragraph",
+      "text": "Báo cáo được xây dựng trên nguyên tắc đảm bảo các yếu tố sau: tính chính xác, tính\ntoàn diện, tính rõ ràng, tính cập nhật và tính tin cậy. Đồng thời tham chiếu theo bộ\ntiêu chuẩn GRI Standards của Tổ chức Sáng kiến toàn cầu (GRI).",
+      "bbox": [428.99, 240.28, 1122.57, 306.27]
+    },
+    {"id": "p100-b4", "type": "paragraph", "text": "Phạm vi báo cáo", "bbox": [428.03, 429.59, 567.49, 447.59]},
+    {"id": "p100-b5", "type": "paragraph", "text": "• Thời gian báo cáo: 01/01/2024 - 31/12/2024.", "bbox": [434.69, 467.77, 800.66, 485.77]},
+    {"id": "p100-b6", "type": "paragraph", "text": "• Chu kỳ báo cáo: Thường niên.", "bbox": [434.69, 505.95, 681.44, 523.95]},
+    {
+      "id": "p100-b7",
+      "type": "paragraph",
+      "text": "• Phạm vi báo cáo: Báo cáo dựa trên hoạt động của Tập đoàn, các công ty thành viên tại\nViệt Nam và một số thị trường trọng yếu.",
+      "bbox": [434.69, 544.12, 1122.96, 586.12]
+    },
+    {"id": "p100-b8", "type": "paragraph", "text": "Thông tin liên hệ:", "bbox": [428.99, 685.91, 574.79, 703.91]},
+    {
+      "id": "p100-b9",
+      "type": "paragraph",
+      "text": "Để gửi các câu hỏi, khuyến nghị liên quan đến hoạt động ESG của FPT cũng như nội dung\nchi tiết của Báo cáo ESG, vui lòng liên hệ với chúng tôi theo thông tin như sau:",
+      "bbox": [428.99, 724.09, 1123.07, 766.08]
+    },
+    {
+      "id": "p100-b10",
+      "type": "paragraph",
+      "text": "• Bà: Mai Thị Lan Anh - Người Ủy quyền Công bố thông tin, Công ty Cổ phần FPT.",
+      "bbox": [415.69, 787.18, 1052.24, 805.18]
+    },
+    {
+      "id": "p100-b11",
+      "type": "paragraph",
+      "text": "• Địa chỉ: Số 10 phố Phạm Văn Bạch, phường Dịch Vọng, quận Cầu Giấy, Tp.Hà Nội.",
+      "bbox": [415.69, 825.36, 1073.52, 843.36]
+    },
+    {"id": "p100-b12", "type": "paragraph", "text": "• Điện thoại: +84 24 7300 7300", "bbox": [415.69, 863.53, 661.12, 881.53]},
+    {"id": "p100-b13", "type": "paragraph", "text": "• Email: fptnews@fpt.com", "bbox": [415.69, 901.71, 624.24, 919.71]},
+    {"id": "p100-b14", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p100-b15", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p100-b16", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p100-b17", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p100-b18", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p100-b19", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p100-b20", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [45.96, 468.22, 178.32, 487.22]},
+    {"id": "p100-b21", "type": "furniture", "text": "Thông điệp và Định hướng ESG", "bbox": [85.0, 513.58, 275.88, 527.58]},
+    {"id": "p100-b22", "type": "furniture", "text": "Quản trị hướng đến phát triển bền vững", "bbox": [85.0, 545.54, 326.01, 559.54]},
+    {"id": "p100-b23", "type": "furniture", "text": "Môi trường làm việc đẳng cấp, hạnh phúc", "bbox": [85.0, 577.5, 340.61, 591.5]},
+    {"id": "p100-b24", "type": "furniture", "text": "Hoạt động vì môi trường xanh", "bbox": [85.0, 609.46, 267.5, 623.46]},
+    {"id": "p100-b25", "type": "furniture", "text": "Song hành vì sự phát triển cộng đồng", "bbox": [85.5, 641.42, 315.28, 655.42]},
+    {"id": "p100-b26", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
+    {"id": "p100-b27", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
+    {"id": "p100-b28", "type": "furniture", "text": "98", "bbox": [294.68, 988.53, 320.48, 1011.4]}
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "ir_version": "1",
+  "page": 154,
+  "printed_page": "152",
+  "page_class": "income_statement",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p154-b1", "type": "heading", "text": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH HỢP NHẤT", "bbox": [428.22, 68.74, 1255.98, 100.74]},
+    {"id": "p154-b2", "type": "paragraph", "text": "LÊ VĂN TRUNG\nNgười lập", "bbox": [960.37, 603.97, 1087.29, 645.96]},
+    {"id": "p154-b3", "type": "form_code", "text": "MẪU SỐ B 02 – DN/HN", "bbox": [1673.66, 77.8, 1859.49, 95.8]},
+    {"id": "p154-b4", "type": "paragraph", "text": "(tiếp theo)", "bbox": [1262.74, 80.63, 1326.61, 94.63]},
+    {"id": "p154-b5", "type": "heading", "text": "HOÀNG HỮU CHIẾN", "bbox": [1235.27, 603.97, 1401.14, 621.97]},
+    {"id": "p154-b6", "type": "heading", "text": "NGUYỄN THẾ PHƯƠNG", "bbox": [1517.02, 606.97, 1709.3, 624.97]},
+    {"id": "p154-b7", "type": "paragraph", "text": "Kế toán trưởng", "bbox": [1235.27, 627.96, 1352.34, 645.96]},
+    {"id": "p154-b8", "type": "paragraph", "text": "Phó Tổng Giám đốc\nChữ ký được ủy quyền\nNgày 11 tháng 3 năm 2025", "bbox": [1517.02, 630.96, 1731.97, 696.95]},
+    {
+      "id": "p154-t1",
+      "type": "table",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH HỢP NHẤT",
+      "continued": true,
+      "logical_table_id": "income_statement",
+      "bbox": [428.22, 119.09, 1860.39, 389.32],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Năm tài chính kết thúc ngày 31 tháng 12 năm", "2024", "VND"], "bbox": [1500.27, 119.09, 1678.72, 198.75]},
+        {"key": "c2", "header_lines": ["Năm tài chính kết thúc ngày 31 tháng 12 năm", "2023", "VND"], "bbox": [1683.11, 119.09, 1860.39, 198.75]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "60",
+          "label_raw": "Lợi nhuận sau thuế TNDN (60 = 50 – 51 – 52)",
+          "note": null,
+          "indent": 541.422,
+          "bold": null,
+          "bbox": [428.22, 214.47, 1859.4, 232.47],
+          "cells": {
+            "c1": {"raw": "9.427.422.530.444", "bbox": [1420.99, 214.47, 1575.94, 232.47]},
+            "c2": {"raw": "7.788.049.739.616", "bbox": [1704.46, 214.47, 1859.4, 232.47]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": "61",
+          "label_raw": "Cổ đông của công ty mẹ",
+          "note": null,
+          "indent": 555.588,
+          "bold": null,
+          "bbox": [428.22, 270.18, 1859.4, 288.18],
+          "cells": {
+            "c1": {"raw": "7.856.767.812.178", "bbox": [1420.99, 270.18, 1575.94, 288.18]},
+            "c2": {"raw": "6.465.190.432.622", "bbox": [1704.46, 270.18, 1859.4, 288.18]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": "62",
+          "label_raw": "Cổ đông không kiểm soát",
+          "note": null,
+          "indent": 555.5879999999997,
+          "bold": null,
+          "bbox": [428.22, 303.89, 1859.4, 321.89],
+          "cells": {
+            "c1": {"raw": "1.570.654.718.266", "bbox": [1420.99, 303.89, 1575.94, 321.89]},
+            "c2": {"raw": "1.322.859.306.994", "bbox": [1704.46, 303.89, 1859.4, 321.89]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": "70",
+          "label_raw": "Lãi cơ bản trên cổ phiếu",
+          "note": "25(a)",
+          "indent": 541.4219999999996,
+          "bold": null,
+          "bbox": [428.22, 337.61, 1859.49, 355.61],
+          "cells": {
+            "c1": {"raw": "4.944", "bbox": [1529.68, 337.61, 1576.03, 355.61]},
+            "c2": {"raw": "4.052", "bbox": [1813.14, 337.61, 1859.49, 355.61]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": "71",
+          "label_raw": "Lãi suy giảm trên cổ phiếu",
+          "note": "25(b)",
+          "indent": 541.4219999999993,
+          "bold": null,
+          "bbox": [428.22, 371.32, 1859.49, 389.32],
+          "cells": {
+            "c1": {"raw": "4.944", "bbox": [1529.68, 371.32, 1576.03, 389.32]},
+            "c2": {"raw": "4.052", "bbox": [1813.14, 371.32, 1859.49, 389.32]}
+          }
+        }
+      ]
+    },
+    {"id": "p154-b10", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p154-b11", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p154-b12", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p154-b13", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p154-b14", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p154-b15", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p154-b16", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 465.05, 171.05, 484.05]},
+    {"id": "p154-b17", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
+    {"id": "p154-b18", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
+    {"id": "p154-b19", "type": "furniture", "text": "152", "bbox": [288.22, 988.53, 326.93, 1011.4]},
+    {
+      "id": "p154-b20",
+      "type": "furniture",
+      "text": "Các thuyết minh từ trang 155 đến trang 207 là một phần cấu thành báo cáo tài chính hợp nhất.",
+      "bbox": [1123.08, 1007.75, 1860.35, 1025.75]
+    }
+  ]
+}

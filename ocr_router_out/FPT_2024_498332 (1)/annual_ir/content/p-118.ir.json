@@ -1,0 +1,94 @@
+{
+  "ir_version": "1",
+  "page": 118,
+  "printed_page": "116",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p118-b1", "type": "heading", "text": "Quyền riêng tư và bảo mật dữ liệu", "bbox": [428.22, 68.74, 904.18, 100.74]},
+    {"id": "p118-b2", "type": "heading", "text": "Phạm vi của chính sách và kế hoạch ứng phó sự cố", "bbox": [963.16, 68.74, 1685.36, 100.74]},
+    {"id": "p118-b3", "type": "heading", "text": "của khách hàng", "bbox": [428.22, 107.14, 656.0, 139.14]},
+    {
+      "id": "p118-b4",
+      "type": "paragraph",
+      "text": "Tập đoàn luôn tôn trọng quyền riêng tư của tất cả các cá nhân bao\ngồm CBNV, khách hàng, đối tác, nhà cung cấp và dữ liệu cá nhân\ncủa họ. Tập đoàn cam kết thu thập và sử dụng dữ liệu cá nhân phù\nhợp với các giá trị của Tập đoàn trên cơ sở tuân thủ pháp luật bằng\ncác biện pháp kỹ thuật đảm bảo tính bảo mật, ngăn chặn truy cập,\nthu thập, sử dụng, tiết lộ, sao chép hoặc xử lý thông tin cá nhân\nkhách hàng trái phép.",
+      "bbox": [428.22, 172.13, 921.23, 334.09]
+    },
+    {
+      "id": "p118-b5",
+      "type": "paragraph",
+      "text": "Nhằm giúp khách hàng hiểu rõ hơn về mục đích, phạm vi thu thập\nthông tin cũng như các biện pháp bảo vệ thông tin và quyền của\nKhách hàng, FPT đã ban hành Chính sách bảo mật dữ liệu cá nhân.\nThêm vào đó, FPT xây dựng Quy định quản lý an toàn bảo mật\nthông tin và xử lý, khắc phục sự cố, đảm bảo các sự cố được phát\nhiện, khắc phục kịp thời giúp hệ thông tin hoạt động bình thường.",
+      "bbox": [428.22, 354.27, 921.26, 492.24]
+    },
+    {
+      "id": "p118-b6",
+      "type": "paragraph",
+      "text": "Năm 2024, FPT ban hành quy trình, hướng dẫn chi tiết triển khai\nQuy định của pháp luật về Nghị định số 13/2023/NĐ-CP; phân\ncông trách nhiệm rõ ràng cho các bộ phận chịu trách nhiệm an\nninh mạng tổ chức đào tạo an toàn thông tin, đánh giá hệ thống\nquản trị dữ liệu và đặc biệt chú trọng phát triển các ứng dụng nội\nbộ để kiểm soát phân quyền tiếp cập dữ liệu, mã hóa dữ liệu theo\ntiêu chuẩn AES - Advanced Encryption Standard.",
+      "bbox": [428.22, 512.42, 921.23, 674.38]
+    },
+    {
+      "id": "p118-b7",
+      "type": "paragraph",
+      "text": "Trong năm 2024, Tập đoàn đã không để xảy ra sự cố an toàn thông\ntin nào ảnh hưởng đến uy tín của Tập đoàn, bằng việc tăng cường\ncác biện pháp như sau:",
+      "bbox": [428.22, 694.56, 921.22, 760.55]
+    },
+    {"id": "p118-b8", "type": "paragraph", "text": "• Mua sắm, trang bị giải pháp bảo mật chung cho toàn Tập đoàn;", "bbox": [416.62, 778.67, 922.18, 796.67]},
+    {
+      "id": "p118-b9",
+      "type": "paragraph",
+      "text": "• Nâng cao nhận thức về an toàn bảo mật thông tin cho 100%\nCBNV thông qua đào tạo bằng nhiều hình thức và các chiến\ndịch mô phỏng tấn công lừa đảo trực tuyến đánh cắp dữ liệu cá\nnhân, cài mã độc (Phishing);",
+      "bbox": [416.62, 816.84, 922.23, 906.83]
+    },
+    {
+      "id": "p118-b10",
+      "type": "paragraph",
+      "text": "• Tự chủ động đánh giá định kỳ mức độ trưởng thành an ninh bảo\nmật cho FPT và CTTV theo tiêu chuẩn ISO 27001:2022.",
+      "bbox": [416.62, 927.0, 922.26, 969.0]
+    },
+    {
+      "id": "p118-b11",
+      "type": "paragraph",
+      "text": "Các kế hoạch ứng phó khi có sự cố phát sinh liên quan đến vấn đề bảo mật dữ liệu được FPT tuân thủ triệt để ở\nhai mức độ:",
+      "bbox": [963.47, 125.09, 1860.36, 167.09]
+    },
+    {
+      "id": "p118-b12",
+      "type": "paragraph",
+      "text": "• Khắc phục: Ngay lập tức việc vi phạm tính bảo mật sẽ được ngăn chặn, các lỗ hổng bảo mật sẽ được khắc phục\nbởi các bộ phận có chuyên môn cao về tính bảo mật. Việc đánh giá ảnh hưởng để kiểm tra những vùng dữ liệu liên\nquan cũng sẽ được thực hiện để đảm bảo sự cố không bị lan rộng;",
+      "bbox": [953.44, 188.21, 1860.37, 254.2]
+    },
+    {
+      "id": "p118-b13",
+      "type": "paragraph",
+      "text": "• Phòng ngừa: Dựa trên việc việc tìm hiểu nguyên nhân gốc rễ, các kế hoạch phòng ngừa cũng sẽ được đề ra và thực\nthi nghiêm túc.",
+      "bbox": [953.44, 274.38, 1860.38, 316.37]
+    },
+    {
+      "id": "p118-b14",
+      "type": "paragraph",
+      "text": "Điểm quan trọng của tất cả các kế hoạch đảm bảo an toàn dữ liệu trên là toàn bộ kế hoạch, hành động được thiết\nkế có hệ thống trong toàn Tập đoàn, đồng thời, nhiệm vụ, trách nhiệm của từng bộ phận được kiểm soát, theo dõi,\nbáo cáo của một bộ phận chuyên trách.",
+      "bbox": [964.29, 337.02, 1860.32, 403.01]
+    },
+    {"id": "p118-b15", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p118-b16", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p118-b17", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p118-b18", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p118-b19", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p118-b20", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p118-b21", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [45.96, 468.22, 178.32, 487.22]},
+    {"id": "p118-b22", "type": "furniture", "text": "Thông điệp và Định hướng ESG", "bbox": [85.0, 513.58, 275.88, 527.58]},
+    {"id": "p118-b23", "type": "furniture", "text": "Quản trị hướng đến phát triển bền vững", "bbox": [85.0, 545.54, 326.01, 559.54]},
+    {"id": "p118-b24", "type": "furniture", "text": "Môi trường làm việc đẳng cấp, hạnh phúc", "bbox": [85.0, 577.5, 340.61, 591.5]},
+    {"id": "p118-b25", "type": "furniture", "text": "Hoạt động vì môi trường xanh", "bbox": [85.0, 609.46, 267.5, 623.46]},
+    {"id": "p118-b26", "type": "furniture", "text": "Song hành vì sự phát triển cộng đồng", "bbox": [85.5, 641.42, 315.28, 655.42]},
+    {"id": "p118-b27", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
+    {"id": "p118-b28", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
+    {"id": "p118-b29", "type": "furniture", "text": "116", "bbox": [288.22, 988.53, 326.93, 1011.4]}
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "ir_version": "1",
+  "page": 167,
+  "printed_page": "165",
+  "page_class": "notes",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p167-b1", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [428.22, 68.74, 1105.62, 100.74]},
+    {"id": "p167-b2", "type": "form_code", "text": "MẪU SỐ B 09 – DN/HN", "bbox": [1673.66, 77.8, 1859.49, 95.8]},
+    {"id": "p167-b3", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2024", "bbox": [428.22, 114.6, 1279.68, 144.6]},
+    {"id": "p167-b4", "type": "paragraph", "text": "2\nCÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU (tiếp theo)", "bbox": [428.22, 187.3, 861.78, 205.3]},
+    {"id": "p167-b5", "type": "paragraph", "text": "2.16 Nợ phải trả", "bbox": [428.22, 219.81, 574.88, 237.81]},
+    {"id": "p167-b6", "type": "paragraph", "text": "Các khoản nợ phải trả được phân loại dựa vào tính chất bao gồm:", "bbox": [428.22, 252.32, 944.23, 270.32]},
+    {
+      "id": "p167-b7",
+      "type": "paragraph",
+      "text": "• Phải trả người bán gồm các khoản phải trả mang tính chất thương mại phát sinh từ giao\ndịch mua hàng hóa, và dịch vụ; và",
+      "bbox": [416.46, 290.44, 1123.01, 332.43]
+    },
+    {
+      "id": "p167-b8",
+      "type": "paragraph",
+      "text": "• Phải trả khác gồm các khoản phải trả không có tính chất thương mại, và không liên quan\nđến giao dịch mua hàng hóa, và dịch vụ.",
+      "bbox": [416.46, 352.61, 1123.01, 394.6]
+    },
+    {
+      "id": "p167-b9",
+      "type": "paragraph",
+      "text": "Các khoản nợ phải trả được phân loại ngắn hạn và dài hạn trên bảng cân đối kế toán hợp\nnhất căn cứ theo kỳ hạn còn lại của các khoản phải trả tại ngày của bảng cân đối kế toán\nhợp nhất tới ngày đến hạn thanh toán.",
+      "bbox": [428.23, 417.82, 1123.05, 483.81]
+    },
+    {"id": "p167-b10", "type": "paragraph", "text": "2.17 Vay và nợ thuê tài chính", "bbox": [428.23, 503.99, 682.71, 521.99]},
+    {
+      "id": "p167-b11",
+      "type": "paragraph",
+      "text": "Vay và nợ thuê tài chính bao gồm các khoản tiền vay và nợ thuê tài chính từ các ngân\nhàng, tổ chức tài chính, công ty tài chính và các đối tượng khác.",
+      "bbox": [428.23, 542.17, 1123.03, 584.16]
+    },
+    {
+      "id": "p167-b12",
+      "type": "paragraph",
+      "text": "Các khoản vay và nợ thuê tài chính được phân loại ngắn hạn và dài hạn trên bảng cân đối\nkế toán hợp nhất căn cứ theo kỳ hạn còn lại của các khoản vay và nợ thuê tài chính tại\nngày của bảng cân đối kế toán hợp nhất tới ngày đến hạn thanh toán.",
+      "bbox": [428.23, 604.34, 1123.07, 670.33]
+    },
+    {
+      "id": "p167-b13",
+      "type": "paragraph",
+      "text": "Chi phí đi vay liên quan trực tiếp đối với hoạt động xây dựng hoặc sản xuất bất kỳ tài sản\nđủ tiêu chuẩn sẽ được vốn hóa trong thời gian mà các tài sản này được hoàn thành và\nchuẩn bị đưa vào sử dụng. Đối với các khoản vay chung trong đó có sử dụng vốn cho mục\nđích đầu tư xây dựng hoặc sản xuất bất kỳ tài sản đủ tiêu chuẩn thì Tập đoàn xác định chi\nphí đi vay được vốn hóa theo tỷ lệ vốn hóa đối với chi phí lũy kế bình quân gia quyền phát\nsinh cho việc đầu tư xây dựng cơ bản hoặc sản xuất tài sản đủ tiêu chuẩn đó. Tỷ lệ vốn\nhóa được tính theo tỷ lệ lãi suất bình quân gia quyền của các khoản vay chưa trả trong\nnăm tài chính, trừ các khoản vay riêng biệt phục vụ cho mục đích hình thành một tài sản\ncụ thể. Chi phí đi vay khác được ghi nhận trong báo cáo kết quả hoạt động kinh doanh\nhợp nhất khi phát sinh.",
+      "bbox": [428.23, 690.51, 1123.07, 924.45]
+    },
+    {"id": "p167-b14", "type": "paragraph", "text": "2.18 Chi phí phải trả", "bbox": [1164.66, 219.73, 1346.24, 237.73]},
+    {
+      "id": "p167-b15",
+      "type": "paragraph",
+      "text": "Bao gồm các khoản phải trả cho hàng hóa, dịch vụ đã nhận được từ người bán trong năm\ntài chính nhưng thực tế chưa chi trả do chưa có hóa đơn hoặc chưa đủ hồ sơ, tài liệu kế\ntoán, được ghi nhận vào chi phí sản xuất kinh doanh của năm tài chính.",
+      "bbox": [1164.66, 252.24, 1859.45, 318.23]
+    },
+    {"id": "p167-b16", "type": "paragraph", "text": "2.19 Các khoản dự phòng", "bbox": [1164.66, 350.58, 1392.35, 368.58]},
+    {
+      "id": "p167-b17",
+      "type": "paragraph",
+      "text": "Các khoản dự phòng được ghi nhận khi Tập đoàn có nghĩa vụ nợ hiện tại, pháp lý hoặc\nliên đới, phát sinh từ các sự kiện đã xảy ra; việc thanh toán nghĩa vụ nợ có thể sẽ dẫn đến\nsự giảm sút về những lợi ích kinh tế và giá trị của nghĩa vụ nợ đó được ước tính một cách\nđáng tin cậy. Dự phòng không được ghi nhận cho các khoản lỗ hoạt động trong tương lai.",
+      "bbox": [1164.66, 388.75, 1859.49, 478.74]
+    },
+    {
+      "id": "p167-b18",
+      "type": "paragraph",
+      "text": "Dự phòng được tính trên cơ sở các khoản chi phí dự tính phải thanh toán nghĩa vụ nợ. Nếu\nảnh hưởng về giá trị thời gian của tiền là trọng yếu thì dự phòng được tính trên cơ sở giá trị\nhiện tại với tỷ lệ chiết khấu trước thuế và phản ánh những đánh giá trên thị trường hiện tại\nvề giá trị thời gian của tiền và rủi ro cụ thể của khoản nợ đó. Giá trị tăng lên do ảnh hưởng\ncủa yếu tố thời gian được ghi nhận là chi phí tài chính. Chênh lệch giữa khoản dự phòng\nlập ở cuối kỳ kế toán này và khoản dự phòng đã lập chưa sử dụng ở cuối kỳ kế toán trước\nđược ghi nhận tăng hoặc giảm chi phí sản xuất kinh doanh trong năm tài chính.",
+      "bbox": [1164.66, 498.91, 1859.5, 660.88]
+    },
+    {"id": "p167-b19", "type": "paragraph", "text": "2.20 Doanh thu chưa thực hiện", "bbox": [1164.66, 695.22, 1434.11, 713.22]},
+    {
+      "id": "p167-b20",
+      "type": "paragraph",
+      "text": "Doanh thu chưa thực hiện là khoản doanh thu nhận trước cho một hay nhiều kỳ kế toán\nchủ yếu bao gồm tiền cước dịch vụ viễn thông, học phí, dịch vụ cung cấp phần mềm, dịch\nvụ bảo hành, bảo trì và các dịch vụ khác. Tập đoàn ghi nhận các khoản doanh thu chưa\nthực hiện tương ứng với phần nghĩa vụ mà Tập đoàn sẽ phải thực hiện trong tương lai. Khi\ncác điều kiện ghi nhận doanh thu được thỏa mãn, doanh thu chưa thực hiện sẽ được ghi\nnhận vào báo cáo kết quả hoạt động kinh doanh hợp nhất trong năm tài chính tương ứng\nvới phần thỏa mãn điều kiện ghi nhận doanh thu đó.",
+      "bbox": [1164.66, 733.4, 1859.54, 895.36]
+    },
+    {"id": "p167-b21", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p167-b22", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p167-b23", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p167-b24", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p167-b25", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p167-b26", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p167-b27", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 465.05, 171.05, 484.05]},
+    {"id": "p167-b28", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
+    {"id": "p167-b29", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
+    {"id": "p167-b30", "type": "furniture", "text": "165", "bbox": [288.22, 988.53, 326.93, 1011.4]}
+  ]
+}

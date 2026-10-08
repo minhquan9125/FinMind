@@ -1,0 +1,53 @@
+{
+  "ir_version": "1",
+  "page": 13,
+  "printed_page": "12",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p13-b1", "type": "heading", "text": "GIẢI THƯỞNG TIÊU BIỂU", "bbox": [259.29, 42.09, 487.01, 62.09]},
+    {"id": "p13-b2", "type": "heading", "text": "TOP 40", "bbox": [848.23, 120.6, 950.56, 150.6]},
+    {"id": "p13-b3", "type": "paragraph", "text": "Hai nhà máy AI lọt TOP500\nSiêu máy tính mạnh nhất thế giới", "bbox": [285.98, 175.72, 467.0, 202.72]},
+    {"id": "p13-b4", "type": "paragraph", "text": "Bằng sáng chế tại Mỹ cho công nghệ\nphát hiện âm thanh bất thường", "bbox": [536.06, 171.65, 739.06, 198.65]},
+    {"id": "p13-b5", "type": "paragraph", "text": "Công ty Dịch vụ\nCông nghệ thông tin châu Á", "bbox": [822.4, 174.93, 976.38, 201.93]},
+    {"id": "p13-b6", "type": "heading", "text": "TOP 1", "bbox": [336.68, 284.7, 416.3, 314.7]},
+    {"id": "p13-b7", "type": "heading", "text": "TOP 50", "bbox": [847.87, 285.02, 950.92, 315.02]},
+    {"id": "p13-b8", "type": "heading", "text": "TOP 10", "bbox": [588.32, 288.3, 686.99, 318.3]},
+    {"id": "p13-b9", "type": "paragraph", "text": "Công ty Đại chúng\nuy tín nhất Việt Nam", "bbox": [319.96, 339.03, 433.01, 366.03]},
+    {"id": "p13-b10", "type": "paragraph", "text": "Thương hiệu mạnh\nViệt Nam", "bbox": [586.53, 342.63, 688.78, 369.63]},
+    {"id": "p13-b11", "type": "paragraph", "text": "Công ty kinh doanh hiệu quả\nnhất Việt Nam", "bbox": [820.47, 339.35, 978.31, 366.35]},
+    {"id": "p13-b12", "type": "paragraph", "text": "Trường Hy Vọng", "bbox": [928.71, 445.71, 1002.89, 455.71]},
+    {"id": "p13-b13", "type": "heading", "text": "TOP 5", "bbox": [334.48, 452.72, 418.48, 482.72]},
+    {"id": "p13-b14", "type": "heading", "text": "TOP 8", "bbox": [595.49, 452.72, 679.82, 482.72]},
+    {"id": "p13-b15", "type": "paragraph", "text": "Doanh nghiệp Việt Nam có chất lượng\nquản trị công ty tốt nhất ASEAN", "bbox": [271.64, 507.04, 481.34, 534.04]},
+    {"id": "p13-b16", "type": "paragraph", "text": "Doanh nghiệp Nhóm vốn hóa lớn\ncó quản trị công ty tốt nhất", "bbox": [548.22, 507.04, 727.09, 534.04]},
+    {
+      "id": "p13-b17",
+      "type": "paragraph",
+      "text": "được trao\ngiải thưởng\nHành động\nvì cộng đồng\nở hạng mục\nDự án kịp thời",
+      "bbox": [928.71, 457.71, 992.35, 527.71]
+    },
+    {"id": "p13-b18", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p13-b19", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.29, 117.31]},
+    {"id": "p13-b20", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.31, 96.83, 143.31]},
+    {
+      "id": "p13-b21",
+      "type": "furniture",
+      "text": "Con số nổi bật\nGiải thưởng tiêu biểu\nHoạt động nổi bật\nDự án AI nổi bật",
+      "bbox": [67.84, 160.82, 143.8, 213.82]
+    },
+    {"id": "p13-b22", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 229.12, 122.58, 237.31]},
+    {"id": "p13-b23", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 255.12, 142.43, 263.31]},
+    {"id": "p13-b24", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 281.12, 190.19, 289.31]},
+    {"id": "p13-b25", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 307.12, 121.59, 315.31]},
+    {"id": "p13-b26", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 333.12, 100.41, 341.31]},
+    {"id": "p13-b27", "type": "furniture", "text": "08 BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 359.12, 166.49, 367.31]},
+    {"id": "p13-b28", "type": "furniture", "text": "12", "bbox": [62.35, 546.47, 74.22, 558.52]}
+  ]
+}

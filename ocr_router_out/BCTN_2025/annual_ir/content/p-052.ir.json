@@ -1,0 +1,100 @@
+{
+  "ir_version": "1",
+  "page": 52,
+  "printed_page": "51",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p52-b1", "type": "heading", "text": "CÁC LĨNH VỰC CÔNG NGHỆ CHIẾN LƯỢC VÀ MỤC TIÊU 2026-2030 CỦA FPT", "bbox": [258.62, 42.28, 610.85, 52.28]},
+    {"id": "p52-b2", "type": "paragraph", "text": "AI", "bbox": [290.87, 80.44, 302.56, 92.44]},
+    {
+      "id": "p52-b3",
+      "type": "paragraph",
+      "text": "Làm chủ đầy đủ chuỗi giá trị AI, từ mô hình, dữ liệu, hạ tầng tính toán đến ứng dụng\nvà nhân lực.",
+      "bbox": [259.02, 107.39, 622.92, 129.39]
+    },
+    {
+      "id": "p52-b4",
+      "type": "paragraph",
+      "text": "• Về năng lực mô hình, dữ liệu: hướng tới sở hữu các mô hình nền tảng đa phương thức\nvà toàn diện hàng đầu tại Việt Nam, Nhật Bản và Đông Nam Á, đồng thời hình thành\ncác phòng thí nghiệm về an toàn và đánh giá AI nhằm đảm bảo vận hành AI có\ntrách nhiệm;",
+      "bbox": [259.02, 142.39, 623.31, 188.39]
+    },
+    {
+      "id": "p52-b5",
+      "type": "paragraph",
+      "text": "• Về hạ tầng: vận hành AI Factory tại Việt Nam với tổng năng lực khoảng 10\nEFLOPS FP8;",
+      "bbox": [259.02, 201.39, 622.93, 223.39]
+    },
+    {
+      "id": "p52-b6",
+      "type": "paragraph",
+      "text": "• Về ứng dụng AI: phổ cập giáo dục AI đến tối thiểu 20 triệu người dùng, triển khai\nAI vào điều hành giao thông tại 03 đô thị lớn và tham gia hỗ trợ vận hành trung\ntâm điều hành đô thị thông minh tại các thành phố trực thuộc trung ương;",
+      "bbox": [259.02, 236.39, 622.97, 270.39]
+    },
+    {
+      "id": "p52-b7",
+      "type": "paragraph",
+      "text": "• Về nguồn nhân lực AI: ươm mầm 1.000 startup AI và phổ cập kỹ năng AI cho\nkhoảng 500.000 người",
+      "bbox": [259.02, 283.39, 622.99, 305.39]
+    },
+    {"id": "p52-b8", "type": "paragraph", "text": "Công nghệ lượng tử", "bbox": [290.87, 337.6, 400.27, 349.6]},
+    {
+      "id": "p52-b9",
+      "type": "paragraph",
+      "text": "Viện Quantum AI & Cybersecurity đặt mục tiêu đào tạo 100 tiến sĩ, phát triển và bồi\ndưỡng 2.000 chuyên gia công nghệ trình độ cao, đồng thời công bố 500 công trình\nkhoa học, bằng sáng chế và tài sản sở hữu trí tuệ có giá trị.",
+      "bbox": [258.38, 366.71, 623.26, 400.71]
+    },
+    {"id": "p52-b10", "type": "paragraph", "text": "Điện toán đám mây và Điện toán biên", "bbox": [290.87, 430.88, 497.31, 442.88]},
+    {
+      "id": "p52-b11",
+      "type": "paragraph",
+      "text": "Xác lập vị thế dẫn đầu thị phần Cloud nội địa, trở thành trụ cột hạ tầng số của\nViệt Nam. Trên nền tảng năng lực đã được xây dựng và kiểm chứng, FPT mở rộng\ncung cấp hệ sinh thái dịch vụ FPT Cloud ra thị trường khu vực, trước hết là ASEAN,\ntừng bước đưa hạ tầng Cloud, AI “Make in Vietnam” tham gia sâu vào chuỗi giá trị\ncông nghệ khu vực. Về nhân lực, đặt mục tiêu đào tạo 1.500 kỹ sư Cloud và 200\nkiến trúc sư Cloud cấp cao.",
+      "bbox": [258.38, 462.9, 623.21, 532.9]
+    },
+    {"id": "p52-b12", "type": "paragraph", "text": "Chip và thiết kế sản phẩm (phần cứng/phần mềm)", "bbox": [682.52, 45.12, 960.71, 57.12]},
+    {
+      "id": "p52-b13",
+      "type": "paragraph",
+      "text": "Làm chủ thêm nhiều dòng sản phẩm ở các phân khúc cao hơn, tập trung vào các\nlĩnh vực có nhu cầu tăng trưởng cao và có lợi thế như: chip xử lý tín hiệu cho y tế,\ndrone, camera, robot hình người và các hệ thống thông minh khác. Hệ thống giáo dục\ncủa FPT hướng tới mục tiêu đào tạo 10.000 nhân sự chuyên ngành bán dẫn vào\nnăm 2030, đóng góp trực tiếp vào mục tiêu quốc gia về phát triển đội ngũ kỹ sư\nbán dẫn.",
+      "bbox": [651.78, 74.23, 1015.9, 144.23]
+    },
+    {"id": "p52-b14", "type": "paragraph", "text": "An ninh mạng", "bbox": [682.52, 174.57, 758.16, 186.57]},
+    {
+      "id": "p52-b15",
+      "type": "paragraph",
+      "text": "Xác lập vị thế đối tác số 1 tại Việt Nam trong lĩnh vực an ninh mạng với bộ giải pháp\nan ninh mạng tích hợp “Made by Vietnam”, phục vụ bảo vệ hạ tầng số, dữ liệu quốc gia\nvà các hệ thống có yêu cầu an ninh cao.",
+      "bbox": [651.78, 203.68, 1015.81, 237.68]
+    },
+    {"id": "p52-b16", "type": "paragraph", "text": "UAV", "bbox": [682.52, 269.95, 706.66, 281.95]},
+    {
+      "id": "p52-b17",
+      "type": "paragraph",
+      "text": "Tiếp cận theo hướng lấy nền tảng làm trung tâm phù hợp với mô hình phát triển\nnhanh, linh hoạt trên nhiều nền tảng phần cứng trong giai đoạn đầu, đồng thời\ngiảm rủi ro phụ thuộc nhà cung cấp đơn lẻ. Mục tiêu ưu tiên đến năm 2028 hình\nthành năng lực vận hành UAV an toàn ở quy mô hệ thống gồm: thử nghiệm mô hình\nquản lý bay, đăng kiểm, cấp phép, giám sát; phát triển các lớp nền tảng số cốt lõi;\ntừng bước giảm phụ thuộc chuỗi cung ứng thông qua nội địa hóa có kiểm soát.",
+      "bbox": [651.78, 299.06, 1015.8, 369.06]
+    },
+    {"id": "p52-b18", "type": "paragraph", "text": "Blockchain, một trong những trụ cột của nền kinh tế Web3", "bbox": [682.52, 399.73, 1005.37, 411.73]},
+    {
+      "id": "p52-b19",
+      "type": "paragraph",
+      "text": "Làm chủ và hoàn thiện các công nghệ lõi, đồng thời từng bước xây dựng bộ tiêu chuẩn\nWeb3 phù hợp với bối cảnh pháp lý, quản trị và nhu cầu phát triển của Việt Nam.\nSong song với phát triển công nghệ, FPT đặt mục tiêu đưa các nền tảng Blockchain\nvà Web3 “Make in Vietnam” vào triển khai thực tế tại nhiều địa phương và tổ chức\ntrong nước, đồng thời từng bước mở rộng ra thị trường quốc tế. Mục tiêu đến năm\n2030, các nền tảng do FPT phát triển sẽ được ứng dụng tại khoảng 10 tỉnh, thành\nphố và hơn 200 doanh nghiệp trong nước, đồng thời được xuất khẩu và triển khai\nthử nghiệm hoặc thương mại hóa tại ít nhất 05 quốc gia.",
+      "bbox": [651.78, 431.4, 1016.09, 525.4]
+    },
+    {"id": "p52-b20", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p52-b21", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.29, 117.31]},
+    {"id": "p52-b22", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p52-b23", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p52-b24", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.31, 141.98, 195.31]},
+    {"id": "p52-b25", "type": "furniture", "text": "Bối cảnh chung\nChiến lược phát triển\ngiai đoạn 2026 - 2028\n06", "bbox": [25.73, 208.71, 148.85, 247.31]},
+    {"id": "p52-b26", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 258.12, 190.19, 266.31]},
+    {"id": "p52-b27", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 284.12, 121.59, 292.31]},
+    {"id": "p52-b28", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 310.12, 100.41, 318.31]},
+    {"id": "p52-b29", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 336.12, 166.49, 344.31]},
+    {"id": "p52-b30", "type": "furniture", "text": "51", "bbox": [62.24, 546.47, 74.32, 558.52]}
+  ]
+}

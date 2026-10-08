@@ -1,0 +1,114 @@
+{
+  "ir_version": "1",
+  "page": 150,
+  "printed_page": "148",
+  "page_class": "balance_sheet",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p150-b1", "type": "heading", "text": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT", "bbox": [428.61, 68.74, 950.66, 100.74]},
+    {"id": "p150-b2", "type": "form_code", "text": "MẪU SỐ B 01 – DN/HN", "bbox": [1673.66, 77.8, 1859.49, 95.8]},
+    {"id": "p150-b3", "type": "paragraph", "text": "(tiếp theo)", "bbox": [957.41, 80.63, 1021.28, 94.63]},
+    {
+      "id": "p150-t1",
+      "type": "table",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+      "continued": true,
+      "logical_table_id": "balance_sheet",
+      "bbox": [428.22, 122.33, 1859.53, 367.81],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Tại ngày 31 tháng 12 năm", "2024", "VND"], "bbox": [1535.42, 122.33, 1677.81, 198.75]},
+        {"key": "c2", "header_lines": ["Tại ngày 31 tháng 12 năm", "2023", "VND"], "bbox": [1682.2, 122.33, 1859.53, 198.75]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "260",
+          "label_raw": "Tài sản dài hạn khác",
+          "note": null,
+          "indent": 541.422,
+          "bold": null,
+          "bbox": [428.22, 214.96, 1859.4, 232.96],
+          "cells": {
+            "c1": {"raw": "5.438.413.518.284", "bbox": [1420.99, 214.96, 1575.94, 232.96]},
+            "c2": {"raw": "5.036.171.784.305", "bbox": [1704.46, 214.96, 1859.4, 232.96]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": "261",
+          "label_raw": "Chi phí trả trước dài hạn",
+          "note": "12(b)",
+          "indent": 555.588,
+          "bold": null,
+          "bbox": [428.22, 248.67, 1859.4, 266.67],
+          "cells": {
+            "c1": {"raw": "3.765.187.625.417", "bbox": [1423.58, 248.67, 1575.94, 266.67]},
+            "c2": {"raw": "3.391.434.748.762", "bbox": [1707.05, 248.67, 1859.4, 266.67]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": "262",
+          "label_raw": "Tài sản thuế thu nhập hoãn lại",
+          "note": "32",
+          "indent": 555.5879999999997,
+          "bold": null,
+          "bbox": [428.22, 282.38, 1859.42, 300.38],
+          "cells": {
+            "c1": {"raw": "575.767.686.189", "bbox": [1438.85, 282.38, 1575.95, 300.38]},
+            "c2": {"raw": "360.946.956.414", "bbox": [1722.31, 282.38, 1859.42, 300.38]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": "269",
+          "label_raw": "Lợi thế thương mại",
+          "note": "16",
+          "indent": 555.5879999999995,
+          "bold": null,
+          "bbox": [428.22, 316.1, 1859.4, 334.1],
+          "cells": {
+            "c1": {"raw": "1.097.458.206.678", "bbox": [1423.58, 316.1, 1575.94, 334.1]},
+            "c2": {"raw": "1.283.790.079.129", "bbox": [1707.05, 316.1, 1859.4, 334.1]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": "270",
+          "label_raw": "TỔNG TÀI SẢN",
+          "note": null,
+          "indent": 541.4219999999993,
+          "bold": null,
+          "bbox": [428.22, 349.81, 1859.4, 367.81],
+          "cells": {
+            "c1": {"raw": "71.999.995.678.620", "bbox": [1410.84, 349.81, 1575.94, 367.81]},
+            "c2": {"raw": "60.282.827.532.899", "bbox": [1694.3, 349.81, 1859.4, 367.81]}
+          }
+        }
+      ]
+    },
+    {"id": "p150-b5", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p150-b6", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p150-b7", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p150-b8", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p150-b9", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p150-b10", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p150-b11", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 465.05, 171.05, 484.05]},
+    {"id": "p150-b12", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
+    {"id": "p150-b13", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
+    {"id": "p150-b14", "type": "furniture", "text": "148", "bbox": [288.22, 988.53, 326.93, 1011.4]},
+    {
+      "id": "p150-b15",
+      "type": "furniture",
+      "text": "Các thuyết minh từ trang 155 đến trang 207 là một phần cấu thành báo cáo tài chính hợp nhất.",
+      "bbox": [1123.09, 1007.75, 1860.37, 1025.75]
+    }
+  ]
+}

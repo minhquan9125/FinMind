@@ -1,0 +1,29 @@
+{
+  "ir_version": "1",
+  "page": 9,
+  "printed_page": "08",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p9-b1", "type": "paragraph", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p9-b2", "type": "heading", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p9-b3", "type": "heading", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.31, 96.83, 143.31]},
+    {"id": "p9-b4", "type": "paragraph", "text": "Con số nổi bật", "bbox": [67.84, 160.82, 120.68, 168.82]},
+    {"id": "p9-b5", "type": "paragraph", "text": "Giải thưởng tiêu biểu", "bbox": [67.84, 175.82, 143.8, 183.82]},
+    {"id": "p9-b6", "type": "paragraph", "text": "Hoạt động nổi bật", "bbox": [67.84, 190.82, 133.88, 198.82]},
+    {"id": "p9-b7", "type": "paragraph", "text": "Dự án AI nổi bật", "bbox": [67.84, 205.82, 125.82, 213.82]},
+    {"id": "p9-b8", "type": "heading", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 229.12, 122.58, 237.31]},
+    {"id": "p9-b9", "type": "heading", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 255.12, 142.43, 263.31]},
+    {"id": "p9-b10", "type": "heading", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 281.12, 190.19, 289.31]},
+    {"id": "p9-b11", "type": "heading", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 307.12, 121.59, 315.31]},
+    {"id": "p9-b12", "type": "heading", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 333.12, 100.4, 341.31]},
+    {"id": "p9-b13", "type": "heading", "text": "08 BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 359.12, 166.49, 367.31]},
+    {"id": "p9-b14", "type": "furniture", "text": "08", "bbox": [60.76, 546.47, 75.8, 558.52]}
+  ]
+}

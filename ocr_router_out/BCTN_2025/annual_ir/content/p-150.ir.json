@@ -1,0 +1,154 @@
+{
+  "ir_version": "1",
+  "page": 150,
+  "printed_page": "149",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p150-b1",
+      "type": "paragraph",
+      "text": "Kết quả phân tích môi trường nước thải tại vị trí quan trắc của Tập đoàn cho thấy các\nthông số đều nằm trong giới hạn cho phép theo tiêu chuẩn QCVN 14:2008/BTNMT.",
+      "bbox": [259.36, 43.27, 624.13, 65.27]
+    },
+    {"id": "p150-b2", "type": "paragraph", "text": "Kết quả quan trắc môi trường nước thải tại FPT Tower", "bbox": [259.38, 79.99, 557.14, 91.99]},
+    {"id": "p150-b3", "type": "paragraph", "text": "TT Thông số", "bbox": [268.68, 117.45, 331.11, 127.45]},
+    {"id": "p150-b4", "type": "paragraph", "text": "Đơn vị", "bbox": [427.23, 117.45, 455.39, 127.45]},
+    {"id": "p150-b5", "type": "paragraph", "text": "1 pH", "bbox": [272.17, 155.89, 302.99, 165.9]},
+    {"id": "p150-b6", "type": "paragraph", "text": "2 BOD (20 o C)", "bbox": [271.36, 175.69, 344.75, 185.9]},
+    {"id": "p150-b7", "type": "paragraph", "text": "mg/l", "bbox": [437.25, 175.9, 458.4, 185.9]},
+    {"id": "p150-b8", "type": "paragraph", "text": "5\n3 Tổng chất rắn lơ lửng (TSS)", "bbox": [271.25, 182.35, 406.72, 205.9]},
+    {"id": "p150-b9", "type": "paragraph", "text": "mg/l", "bbox": [437.25, 195.9, 458.4, 205.9]},
+    {"id": "p150-b10", "type": "paragraph", "text": "4 Tổng chất rắn hòa tan (TDS)", "bbox": [271.28, 215.9, 412.45, 225.9]},
+    {"id": "p150-b11", "type": "paragraph", "text": "mg/l", "bbox": [437.25, 215.9, 458.4, 225.9]},
+    {"id": "p150-b12", "type": "paragraph", "text": "5 Sunfua (tính theo H S)", "bbox": [271.27, 235.9, 385.55, 245.9]},
+    {"id": "p150-b13", "type": "paragraph", "text": "mg/l\n²", "bbox": [373.11, 235.9, 458.4, 249.9]},
+    {"id": "p150-b14", "type": "paragraph", "text": "6 Amoni (tính theo N)", "bbox": [271.29, 255.9, 373.76, 265.9]},
+    {"id": "p150-b15", "type": "paragraph", "text": "mg/l", "bbox": [437.25, 255.9, 458.4, 265.9]},
+    {"id": "p150-b16", "type": "paragraph", "text": "7 Nitrat (NO - )", "bbox": [271.61, 275.69, 344.62, 285.9]},
+    {"id": "p150-b17", "type": "paragraph", "text": "mg/l", "bbox": [437.25, 275.9, 458.4, 285.9]},
+    {"id": "p150-b18", "type": "paragraph", "text": "³", "bbox": [335.54, 279.9, 339.32, 289.9]},
+    {"id": "p150-b19", "type": "paragraph", "text": "8 Dầu mỡ động, thực vật", "bbox": [271.21, 300.9, 388.55, 310.9]},
+    {"id": "p150-b20", "type": "paragraph", "text": "mg/l", "bbox": [437.25, 300.9, 458.4, 310.9]},
+    {"id": "p150-b21", "type": "paragraph", "text": "Tổng chất\n9", "bbox": [271.29, 327.51, 334.34, 342.9]},
+    {"id": "p150-b22", "type": "paragraph", "text": "mg/l", "bbox": [437.25, 333.29, 458.4, 343.29]},
+    {"id": "p150-b23", "type": "paragraph", "text": "hoạt động bề mặt", "bbox": [290.15, 339.51, 367.81, 349.51]},
+    {"id": "p150-b24", "type": "paragraph", "text": "10 Phosphat (PO 3 -)", "bbox": [269.06, 358.9, 364.44, 369.51]},
+    {"id": "p150-b25", "type": "paragraph", "text": "mg/l", "bbox": [437.25, 359.29, 458.4, 369.29]},
+    {"id": "p150-b26", "type": "paragraph", "text": "4\n11 Tổng Coliforms", "bbox": [270.23, 365.96, 356.73, 389.51]},
+    {"id": "p150-b27", "type": "paragraph", "text": "MPN/100ml", "bbox": [404.51, 379.29, 458.4, 389.29]},
+    {"id": "p150-b28", "type": "paragraph", "text": "• Quản lý chất thải", "bbox": [652.58, 43.25, 759.34, 55.25]},
+    {
+      "id": "p150-b29",
+      "type": "paragraph",
+      "text": "FPT triển khai chương trình quản lý chất thải dựa trên nguyên tắc 3R – Giảm thiểu\n(Reduce), Tái sử dụng (Reuse) và Tái chế (Recycle), nhằm ưu tiên giảm thiểu\ntác động môi trường và bảo đảm quản lý chất thải có trách nhiệm trong toàn bộ\nhoạt động vận hành.",
+      "bbox": [652.56, 66.08, 1016.25, 112.08]
+    },
+    {"id": "p150-b30", "type": "paragraph", "text": "Kết quả", "bbox": [484.95, 117.45, 520.26, 127.45]},
+    {
+      "id": "p150-b31",
+      "type": "paragraph",
+      "text": "QCVN\nChất thải phát sinh chủ yếu là chất thải sinh hoạt từ hoạt động văn phòng và",
+      "bbox": [582.02, 117.89, 1016.13, 135.08]
+    },
+    {"id": "p150-b32", "type": "heading", "text": "2025 14:2008/BTNMT", "bbox": [496.94, 132.45, 611.03, 142.89]},
+    {
+      "id": "p150-b33",
+      "type": "paragraph",
+      "text": "sinh hoạt hằng ngày, gồm các vật liệu không chứa yếu tố nguy hại như: giấy, bao\nbì, thực phẩm dư thừa, chai lọ và các vật tư tiêu hao tập trung chủ yếu tại các khu",
+      "bbox": [652.56, 137.08, 1016.14, 159.08]
+    },
+    {"id": "p150-b34", "type": "paragraph", "text": "-\n6,17", "bbox": [454.26, 155.9, 520.25, 165.9]},
+    {
+      "id": "p150-b35",
+      "type": "paragraph",
+      "text": "5 – 9\nvực văn phòng làm việc, căng-tin, phòng họp, khu vệ sinh và không gian sinh hoạt\nchung trong các tòa nhà.",
+      "bbox": [592.54, 155.9, 1016.14, 183.08]
+    },
+    {"id": "p150-b36", "type": "paragraph", "text": "20,1", "bbox": [502.05, 175.9, 520.25, 185.9]},
+    {"id": "p150-b37", "type": "paragraph", "text": "50", "bbox": [601.0, 175.9, 613.12, 185.9]},
+    {"id": "p150-b38", "type": "paragraph", "text": "46", "bbox": [508.75, 195.9, 520.25, 205.9]},
+    {
+      "id": "p150-b39",
+      "type": "paragraph",
+      "text": "100\nBên cạnh đó, một lượng nhỏ chất thải nguy hại như pin, bóng đèn huỳnh quang,\nhộp mực in và dầu thải phát sinh từ hoạt động bảo trì, bảo dưỡng hệ thống kỹ thuật.",
+      "bbox": [596.58, 195.9, 1016.19, 218.08]
+    },
+    {"id": "p150-b40", "type": "paragraph", "text": "515", "bbox": [504.81, 215.9, 520.25, 225.9]},
+    {
+      "id": "p150-b41",
+      "type": "paragraph",
+      "text": "1.000\nCác loại chất thải này chiếm tỷ trọng thấp trong tổng lượng chất thải phát sinh và\nđược quản lý theo quy trình riêng, thu gom và xử lý bởi các đơn vị được cấp phép,",
+      "bbox": [588.12, 215.9, 1016.18, 242.08]
+    },
+    {"id": "p150-b42", "type": "paragraph", "text": "<0,03*", "bbox": [488.84, 235.9, 520.25, 245.9]},
+    {"id": "p150-b43", "type": "paragraph", "text": "4,0\nbảo đảm tuân thủ đầy đủ các quy định hiện hành.", "bbox": [598.64, 235.9, 872.3, 254.08]},
+    {"id": "p150-b44", "type": "paragraph", "text": "3,97", "bbox": [501.33, 255.9, 520.25, 265.9]},
+    {
+      "id": "p150-b45",
+      "type": "paragraph",
+      "text": "10\nNhằm nâng cao hiệu quả quản lý chất thải và bảo đảm tuân thủ các quy định pháp",
+      "bbox": [602.79, 255.9, 1016.18, 277.08]
+    },
+    {"id": "p150-b46", "type": "paragraph", "text": "3,84", "bbox": [500.52, 275.9, 520.25, 285.9]},
+    {
+      "id": "p150-b47",
+      "type": "paragraph",
+      "text": "50\nluật hiện hành, FPT triển khai đồng bộ nhiều giải pháp quản lý, bao gồm:",
+      "bbox": [601.0, 275.9, 973.81, 289.08]
+    },
+    {"id": "p150-b48", "type": "paragraph", "text": "KPH", "bbox": [501.05, 295.9, 520.25, 305.9]},
+    {"id": "p150-b49", "type": "paragraph", "text": "20\n• Bố trí hệ thống thùng chứa chất thải phân loại ngay tại nguồn;", "bbox": [601.18, 300.9, 939.88, 311.08]},
+    {"id": "p150-b50", "type": "heading", "text": "(MDL= 1,4)", "bbox": [472.89, 307.9, 520.25, 317.9]},
+    {
+      "id": "p150-b51",
+      "type": "paragraph",
+      "text": "• Tổ chức thu gom chất thải sinh hoạt theo lịch trình cố định và vận chuyển về\nkhu vực trung chuyển của tòa nhà;",
+      "bbox": [652.56, 317.08, 1016.02, 339.08]
+    },
+    {"id": "p150-b52", "type": "paragraph", "text": "<0,03*", "bbox": [488.84, 333.29, 520.25, 343.29]},
+    {
+      "id": "p150-b53",
+      "type": "paragraph",
+      "text": "10\n• Thực hiện công tác vệ sinh thường xuyên tại các khu vực công cộng như: hành lang,\ncầu thang và khu vệ sinh nhằm hạn chế tình trạng phát sinh chất thải thứ cấp;",
+      "bbox": [602.79, 333.29, 1016.16, 367.08]
+    },
+    {"id": "p150-b54", "type": "paragraph", "text": "8,31", "bbox": [502.28, 359.29, 520.25, 369.29]},
+    {
+      "id": "p150-b55",
+      "type": "paragraph",
+      "text": "10\n• Hợp tác với các đơn vị có đủ năng lực và chức năng để thực hiện việc thu gom,",
+      "bbox": [602.79, 359.29, 1016.16, 383.08]
+    },
+    {"id": "p150-b56", "type": "paragraph", "text": "1.500", "bbox": [495.8, 379.29, 520.25, 389.29]},
+    {"id": "p150-b57", "type": "paragraph", "text": "5.000", "bbox": [586.33, 379.29, 613.12, 389.29]},
+    {
+      "id": "p150-b58",
+      "type": "paragraph",
+      "text": "vận chuyển và xử lý chất thải sinh hoạt theo đúng quy định pháp luật;\n• Thiết lập khu vực lưu giữ riêng cho chất thải nguy hại (như pin, bóng đèn,\nhộp mực in…) và gắn biển cảnh báo, tuân thủ đầy đủ các yêu cầu an toàn;\n• Đẩy mạnh công tác truyền thông nội bộ nhằm nâng cao nhận thức của CBNV về\nnhận diện, phân loại và quản lý các loại chất thải phát sinh trong môi trường làm việc;\n• Áp dụng các giải pháp công nghệ nhằm thay thế dần máy tính cá nhân và máy\ntính xách tay bằng các thiết bị có khả năng kéo dài vòng đời sử dụng, qua đó\ngiảm thiểu lượng chất thải công nghệ phát sinh hằng năm. Một trong\nnhững giải pháp trọng tâm là việc triển khai mô hình Thin Client (kiến trúc điện toán\ntập trung), trong đó nhiều thiết bị đầu cuối được kết nối và vận hành thông qua hệ\nthống máy chủ tập trung. Giải pháp này không chỉ giúp tối ưu hiệu suất vận hành,\ntiết kiệm năng lượng mà còn góp phần đáng kể trong việc giảm phát sinh rác thải\nđiện tử.",
+      "bbox": [652.56, 385.08, 1016.47, 551.08]
+    },
+    {"id": "p150-b59", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p150-b60", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p150-b61", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p150-b62", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p150-b63", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.12, 142.43, 195.31]},
+    {"id": "p150-b64", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 213.12, 190.19, 221.31]},
+    {"id": "p150-b65", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 239.12, 121.59, 247.31]},
+    {"id": "p150-b66", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 265.31, 100.05, 273.31]},
+    {
+      "id": "p150-b67",
+      "type": "furniture",
+      "text": "Thông điệp và định hướng ESG\nQuản trị hướng đến phát triển bền vững\nMôi trường làm việc đẳng cấp,\nhạnh phúc\nHoạt động vì môi trường xanh\nSong hành vì sự phát triển cộng đồng",
+      "bbox": [67.84, 287.86, 199.86, 365.86]
+    },
+    {"id": "p150-b68", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
+    {"id": "p150-b69", "type": "furniture", "text": "149", "bbox": [58.72, 546.47, 77.84, 558.52]}
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "ir_version": "1",
+  "page": 95,
+  "printed_page": "93",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p95-b1", "type": "heading", "text": "TỔNG KẾT THÙ LAO VÀ CHI PHÍ HOẠT ĐỘNG CỦA BAN KIỂM SOÁT", "bbox": [429.35, 70.21, 1655.33, 110.21]},
+    {
+      "id": "p95-b2",
+      "type": "paragraph",
+      "text": "BKS đã nhận 1.456.000.000 đồng tiền thù lao, nằm trong tổng chi hoạt động của các\nthành viên BKS đã được ĐHĐCĐ năm 2024 thông qua. Do nội dung và nhu cầu công việc,\ntrong năm 2024, BKS đã không phải sử dụng hai khoản mục ngân sách gồm dịch vụ\nthuê tư vấn bên ngoài và đi lại, công tác phí.",
+      "bbox": [1165.61, 129.28, 1860.4, 219.26]
+    },
+    {"id": "p95-b3", "type": "heading", "text": "CHI TIẾT THÙ LAO CỦA BKS NĂM 2024", "bbox": [1165.71, 254.5, 1490.13, 272.5]},
+    {"id": "p95-b4", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [1778.13, 264.61, 1862.62, 280.61]},
+    {"id": "p95-b5", "type": "heading", "text": "KẾ HOẠCH VÀ HOẠT ĐỘNG CỦA BAN KIỂM SOÁT 2025", "bbox": [429.35, 605.37, 1435.84, 645.37]},
+    {
+      "id": "p95-b6",
+      "type": "paragraph",
+      "text": "• Giám sát tính tuân thủ Nghị quyết của ĐHĐCĐ năm 2025 được thông qua tại kỳ ĐHĐCĐ\nthường niên. BKS coi đây là nhiệm vụ trọng tâm đảm bảo quyền lợi tối ưu nhất cho\ncác cổ đông Công ty;",
+      "bbox": [417.62, 665.94, 1123.03, 731.93]
+    },
+    {
+      "id": "p95-b7",
+      "type": "paragraph",
+      "text": "• Tiếp tục phối hợp chặt chẽ với đơn vị Kiểm toán độc lập; xem xét các báo cáo đánh giá\ncủa đơn vị và giám sát việc thực thi các vấn đề được bên kiểm toán độc lập đưa ra trong\nthuyết minh và thư khuyến nghị kiểm toán (nếu có);",
+      "bbox": [417.62, 752.11, 1122.93, 818.1]
+    },
+    {
+      "id": "p95-b8",
+      "type": "paragraph",
+      "text": "• Giám sát, kiểm tra việc ban hành các quy chế tài chính, quy chế hoạt động cũng như các\nquy định chính sách do HĐQT và BĐH ban hành trong năm có nội dung ảnh hưởng đến\nquyền lợi cổ đông. Đảm bảo tính tuân thủ luật pháp, đánh giá sự ảnh hưởng đến lợi ích cổ\nđông của việc thực thi các quy định này;",
+      "bbox": [417.62, 838.27, 1123.09, 928.26]
+    },
+    {
+      "id": "p95-b9",
+      "type": "paragraph",
+      "text": "• Tăng cường sự phối hợp giữa BKS và Ban Giám sát tuân thủ (trực thuộc HĐQT),\nxây dựng kế hoạch hành động chung để đánh giá, xử lý kịp thời các sự vụ phát sinh và\ngiám sát việc xử lý trong và sau thanh kiểm tra;",
+      "bbox": [1156.02, 665.91, 1859.13, 731.89]
+    },
+    {
+      "id": "p95-b10",
+      "type": "paragraph",
+      "text": "• Giám sát tính tuân thủ, tính minh bạch và xung đột lợi ích vật chất và phi vật chất của các\nthành viên HĐQT, BĐH trong các hoạt động tài chính cá nhân.",
+      "bbox": [1156.02, 752.07, 1859.06, 794.07]
+    },
+    {"id": "p95-b11", "type": "paragraph", "text": "STT", "bbox": [1180.2, 300.36, 1212.58, 318.36]},
+    {"id": "p95-b12", "type": "paragraph", "text": "Nội dung", "bbox": [1241.0, 300.36, 1316.02, 318.36]},
+    {
+      "id": "p95-t1",
+      "type": "table",
+      "title": "CHI TIẾT THÙ LAO CỦA BKS NĂM 2024",
+      "continued": false,
+      "bbox": [1180.2, 300.36, 1844.8, 478.63],
+      "unit_text": "Đơn vị: VNĐ",
+      "columns": [
+        {"key": "c1", "header_lines": ["Ngân sách được duyệt"], "bbox": [1447.93, 300.36, 1632.22, 318.36]},
+        {"key": "c2", "header_lines": ["Đã ứng chi trả"], "bbox": [1730.17, 300.36, 1844.79, 318.36]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "1",
+          "label_raw": "Thuê tư vấn bên ngoài",
+          "note": null,
+          "bbox": [1191.14, 334.88, 1844.8, 352.88],
+          "cells": {
+            "c1": {"raw": "100.000.000", "bbox": [1530.55, 334.88, 1632.11, 352.88]},
+            "c2": {"raw": "-", "bbox": [1838.51, 334.88, 1844.8, 352.88]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": "2",
+          "label_raw": "Thù lao hoạt động thành viên BKS",
+          "note": null,
+          "bbox": [1191.14, 368.9, 1844.69, 410.9],
+          "cells": {
+            "c1": {"raw": "1.456.000.000", "bbox": [1515.29, 368.9, 1632.09, 386.9]},
+            "c2": {"raw": "1.456.000.000", "bbox": [1727.89, 368.9, 1844.69, 386.9]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": "3",
+          "label_raw": "Đi lại, công tác phí",
+          "note": null,
+          "bbox": [1191.13, 426.61, 1844.76, 444.61],
+          "cells": {
+            "c1": {"raw": "75.000.000", "bbox": [1540.69, 426.61, 1632.09, 444.61]},
+            "c2": {"raw": "-", "bbox": [1838.48, 426.61, 1844.76, 444.61]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Tổng",
+          "note": null,
+          "bbox": [1240.97, 460.63, 1844.65, 478.63],
+          "cells": {
+            "c1": {"raw": "1.631.000.000", "bbox": [1513.31, 460.63, 1632.05, 478.63]},
+            "c2": {"raw": "1.456.000.000", "bbox": [1725.91, 460.63, 1844.65, 478.63]}
+          }
+        }
+      ]
+    },
+    {"id": "p95-b14", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p95-b15", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.56, 271.58, 232.56]},
+    {"id": "p95-b16", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.9, 315.44, 282.9]},
+    {"id": "p95-b17", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.24, 243.52, 333.24]},
+    {"id": "p95-b18", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.58, 326.26, 383.58]},
+    {"id": "p95-b19", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [45.96, 418.09, 213.95, 437.09]},
+    {"id": "p95-b20", "type": "furniture", "text": "Mô hình quản trị và vai trò của các bên", "bbox": [85.0, 463.45, 322.68, 477.45]},
+    {"id": "p95-b21", "type": "furniture", "text": "Quản trị công ty năm 2024", "bbox": [85.0, 495.41, 248.7, 509.41]},
+    {"id": "p95-b22", "type": "furniture", "text": "Báo cáo của HĐQT", "bbox": [85.0, 527.37, 201.84, 541.37]},
+    {"id": "p95-b23", "type": "furniture", "text": "Báo cáo của Ban Kiểm soát", "bbox": [85.0, 559.33, 253.97, 573.33]},
+    {"id": "p95-b24", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.27, 171.05, 618.27]},
+    {"id": "p95-b25", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.61, 212.6, 668.61]},
+    {"id": "p95-b26", "type": "furniture", "text": "05", "bbox": [30.0, 961.65, 196.06, 1080]},
+    {"id": "p95-b27", "type": "furniture", "text": "93", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

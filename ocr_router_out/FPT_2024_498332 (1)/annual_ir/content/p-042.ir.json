@@ -1,0 +1,66 @@
+{
+  "ir_version": "1",
+  "page": 42,
+  "printed_page": "40",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p42-b1", "type": "heading", "text": "BỐI CẢNH KINH TẾ VĨ MÔ", "bbox": [423.45, 76.79, 1101.62, 134.79]},
+    {
+      "id": "p42-b2",
+      "type": "paragraph",
+      "text": "Năm 2024, kinh tế thế giới hồi phục với tốc độ chậm\nvà không đồng đều. GDP toàn cầu ước đạt 3,2%, giảm\nnhẹ một điểm so với năm 2023, trong khi đó lạm phát\ngiảm xuống 5,8% so với 6,7% của năm 2023.",
+      "bbox": [428.0, 153.77, 878.65, 243.76]
+    },
+    {
+      "id": "p42-b3",
+      "type": "paragraph",
+      "text": "GDP của các nền kinh tế phát triển tăng trưởng 1,7%,\ntương tự năm 2023. Tuy nhiên hầu hết khu vực\nchâu Âu tăng trưởng dưới 1%, đặc biệt Nhật Bản và\nĐức tăng trưởng âm. Trung Quốc và Ấn Độ duy trì tăng\ntrưởng kinh tế cao lần lượt 4,8% và 6,5% giúp cho\nkhu vực kinh tế châu Á giữ tốc độ tăng trưởng 5,2%\n(Báo cáo IMF). Tổng giao dịch thương mại toàn cầu năm\n2024 đạt 33.000 tỷ USD, tăng trưởng 3,3% với giao dịch\nthương mại gia tăng tại các thị trường phát triển (2%) và\nđang phát triển (5,4%).",
+      "bbox": [428.0, 263.93, 878.73, 497.88]
+    },
+    {
+      "id": "p42-b4",
+      "type": "paragraph",
+      "text": "Kinh tế thế giới giai đoạn 2025-2027 được dự báo tiếp\ntục hồi phục với tốc độ tăng trưởng GDP trung bình 3,3%,\nnhưng sẽ đối mặt với nhiều thách thức từ xung đột chính\ntrị, chính sách thương mại Mỹ và nguy cơ chiến tranh\nthương mại trên toàn cầu. Căng thẳng thuế quan có thể\nlàm suy giảm dòng tiền đầu tư, hiệu quả thị trường và gây\ngián đoạn chuỗi cung ứng thế giới.",
+      "bbox": [428.0, 518.06, 878.71, 680.02]
+    },
+    {
+      "id": "p42-b5",
+      "type": "paragraph",
+      "text": "Trái ngược bức tranh biến động và bấp bênh của kinh tế\nthế giới, Việt Nam là điểm sáng tích cực với tăng trưởng\nGDP của năm 2024 đạt 7,1% (theo Tổng cục Thống kê).\nVới lực lượng lao động lớn, giá rẻ và vị trí địa chính trị\nthuận lợi, nền kinh tế của Việt Nam sẽ tiếp tục hưởng\nlợi từ sự chuyển dịch của chuỗi cung ứng toàn cầu với\nGDP dự kiến tăng trưởng 6,1% - 6,5% trong năm 2025,\nước đạt 506 tỷ USD.",
+      "bbox": [428.0, 700.2, 878.7, 886.16]
+    },
+    {
+      "id": "p42-b6",
+      "type": "paragraph",
+      "text": "Một điểm đáng chú ý nữa là Nghị quyết 57/NQ-TW của\nBộ Chính trị được xem là điểm tựa đòn bẩy thúc đẩy\nđầu tư, nghiên cứu phát triển công nghệ, đặc biệt là\ncông nghệ AI, bán dẫn, điện toán đám mây … để đưa",
+      "bbox": [428.0, 906.34, 878.7, 996.32]
+    },
+    {
+      "id": "p42-b7",
+      "type": "paragraph",
+      "text": "Góc văn phòng trong Khu Campus F-Ville 2 quy mô hơn 68.000 m2\ncủa FPT tại Khu Công nghệ cao Hòa Lạc, Tp.Hà Nội.",
+      "bbox": [1378.44, 938.68, 1848.5, 973.88]
+    },
+    {"id": "p42-b8", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p42-b9", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [44.64, 214.3, 272.71, 233.3]},
+    {"id": "p42-b10", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 264.64, 315.44, 283.64]},
+    {"id": "p42-b11", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [45.96, 318.15, 250.8, 337.15]},
+    {"id": "p42-b12", "type": "furniture", "text": "Bối cảnh kinh tế vĩ mô", "bbox": [85.0, 363.51, 220.2, 377.51]},
+    {"id": "p42-b13", "type": "furniture", "text": "Tiềm năng và cơ hội phát triển của\nngành CNTT", "bbox": [85.0, 395.47, 297.51, 426.27]},
+    {"id": "p42-b14", "type": "furniture", "text": "Chiến lược phát triển 2025 – 2027\ncủa FPT", "bbox": [85.0, 442.99, 293.43, 473.79]},
+    {"id": "p42-b15", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 498.5, 326.26, 517.5]},
+    {"id": "p42-b16", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 548.84, 206.67, 567.84]},
+    {"id": "p42-b17", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.17, 171.05, 618.17]},
+    {"id": "p42-b18", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.51, 212.6, 668.51]},
+    {"id": "p42-b19", "type": "furniture", "text": "03", "bbox": [30.0, 961.65, 195.66, 1080]},
+    {"id": "p42-b20", "type": "furniture", "text": "40", "bbox": [293.0, 988.53, 318.8, 1011.4]},
+    {"id": "p42-b21", "type": "furniture", "text": "Việt Nam vươn mình trong kỷ nguyên mới.", "bbox": [428.0, 1002.31, 758.63, 1020.31]}
+  ]
+}

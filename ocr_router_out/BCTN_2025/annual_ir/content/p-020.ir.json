@@ -1,0 +1,96 @@
+{
+  "ir_version": "1",
+  "page": 20,
+  "printed_page": "19",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p20-b1", "type": "heading", "text": "DỰ ÁN AI NỔI BẬT", "bbox": [259.29, 42.09, 426.67, 62.09]},
+    {
+      "id": "p20-b2",
+      "type": "paragraph",
+      "text": "Hiện đại hóa hệ thống máy tính quy mô lớn với AI, tăng tốc chuyển đổi các hệ thống CNTT “di sản”",
+      "bbox": [259.29, 85.98, 977.48, 101.98]
+    },
+    {
+      "id": "p20-b3",
+      "type": "paragraph",
+      "text": "Dù công nghệ phát triển mạnh mẽ, nhiều doanh nghiệp\nlớn trên thế giới trong lĩnh vực tài chính, sản xuất,\nlogistics, bất động sản vẫn đang vận hành các hệ thống\nmáy tính quy mô lớn (mainframe) dựa trên ngôn ngữ\nCOBOL được xây dựng từ hàng thập kỷ trước.",
+      "bbox": [259.29, 121.16, 493.41, 179.16]
+    },
+    {
+      "id": "p20-b4",
+      "type": "paragraph",
+      "text": "Để giải quyết thách thức trên, FPT cung cấp bộ\ngiải pháp và dịch vụ hiện đại hóa hệ thống toàn\ntrình, kết hợp năng lực tư vấn, triển khai và các\ncông nghệ AI chuyên biệt. Trong đó, nổi bật là\nxMainframe, giải pháp ứng dụng AI và\nGenerative AI hỗ trợ phân tích, hiểu và chuyển\nđổi các hệ thống mainframe. xMainframe có khả\nnăng tự động phân tích mã nguồn “di sản”, tái dựng",
+      "bbox": [521.21, 121.16, 754.12, 215.16]
+    },
+    {
+      "id": "p20-b5",
+      "type": "paragraph",
+      "text": "Đến nay, bộ giải pháp hiện đại hóa hệ thống CNTT\n“di sản” của FPT đã giúp hơn 40 doanh nghiệp trên\ntoàn cầu, hiện đại hóa trên 300 hệ thống và chuyển\nđổi hơn 200 triệu dòng mã nguồn, khai thác hiệu quả\ngiá trị của hệ thống legacy hiện có, đồng thời tạo nền\ntảng linh hoạt cho quá trình chuyển đổi số và ứng\ndụng AI trong tương lai.",
+      "bbox": [783.24, 121.16, 1016.16, 203.16]
+    },
+    {"id": "p20-b6", "type": "heading", "text": "220-300", "bbox": [299.08, 209.13, 421.84, 239.13]},
+    {"id": "p20-b7", "type": "paragraph", "text": "đang được vận hành trên toàn cầu", "bbox": [299.08, 240.76, 457.47, 250.76]},
+    {"id": "p20-b8", "type": "paragraph", "text": "Tỷ dòng mã", "bbox": [428.92, 212.56, 482.4, 222.56]},
+    {"id": "p20-b9", "type": "paragraph", "text": "logic hệ thống thông qua kỹ thuật đảo ngược", "bbox": [521.21, 217.16, 754.14, 227.16]},
+    {"id": "p20-b10", "type": "paragraph", "text": "COBOL", "bbox": [428.92, 224.56, 463.81, 234.56]},
+    {
+      "id": "p20-b11",
+      "type": "paragraph",
+      "text": "(Reverse engineering), xác định các mối quan hệ\nphụ thuộc giữa các ứng dụng, đồng thời hỗ trợ\ntrích xuất dữ liệu và tự động tạo báo cáo.\nxMainframe được triển khai thành công tại nhiều\ndoanh nghiệp lớn. Đơn cử, tại tập đoàn sản xuất",
+      "bbox": [521.21, 229.16, 754.17, 287.16]
+    },
+    {"id": "p20-b12", "type": "paragraph", "text": "300 Hệ thống CNTT di sản\nđược khai thác hiệu quả", "bbox": [823.63, 234.18, 995.15, 264.18]},
+    {"id": "p20-b13", "type": "heading", "text": "60-80%", "bbox": [298.45, 287.06, 411.43, 317.06]},
+    {"id": "p20-b14", "type": "paragraph", "text": "thép hàng đầu Nhật Bản, xMainframe đã được", "bbox": [521.21, 289.16, 754.09, 299.16]},
+    {"id": "p20-b15", "type": "paragraph", "text": "Ngân sách", "bbox": [417.58, 290.5, 466.85, 300.5]},
+    {"id": "p20-b16", "type": "heading", "text": "40", "bbox": [823.63, 293.86, 860.65, 323.86]},
+    {"id": "p20-b17", "type": "heading", "text": "200", "bbox": [916.09, 293.86, 972.04, 323.86]},
+    {"id": "p20-b18", "type": "paragraph", "text": "của doanh nghiệp dành cho duy trì\nhệ thống CNTT “di sản”", "bbox": [298.45, 321.95, 457.89, 343.95]},
+    {"id": "p20-b19", "type": "paragraph", "text": "FPT sử dụng để phân tích và hợp nhất hơn 06", "bbox": [521.21, 301.16, 754.13, 311.16]},
+    {"id": "p20-b20", "type": "paragraph", "text": "CNTT", "bbox": [417.58, 302.5, 443.87, 312.5]},
+    {
+      "id": "p20-b21",
+      "type": "paragraph",
+      "text": "triệu dòng mã nguồn của hệ thống legacy, giúp\ngiảm khoảng 30% khối lượng công việc thủ công\ntrong giai đoạn đánh giá ban đầu.",
+      "bbox": [521.21, 313.16, 754.14, 347.16]
+    },
+    {"id": "p20-b22", "type": "paragraph", "text": "triệu", "bbox": [976.84, 309.06, 998.22, 319.06]},
+    {"id": "p20-b23", "type": "paragraph", "text": "Doanh nghiệp", "bbox": [783.51, 325.34, 847.56, 335.34]},
+    {"id": "p20-b24", "type": "paragraph", "text": "Dòng mã nguồn", "bbox": [916.09, 325.34, 988.44, 335.34]},
+    {"id": "p20-b25", "type": "paragraph", "text": "toàn cầu", "bbox": [783.51, 337.34, 824.26, 347.34]},
+    {"id": "p20-b26", "type": "paragraph", "text": "được chuyển đổi", "bbox": [916.09, 337.34, 991.98, 347.34]},
+    {"id": "p20-b27", "type": "heading", "text": "70-80%", "bbox": [296.56, 369.99, 407.59, 399.99]},
+    {"id": "p20-b28", "type": "paragraph", "text": "trên thế giới được xử lý bởi các\nhệ thống COBOL", "bbox": [297.37, 403.05, 438.78, 425.05]},
+    {
+      "id": "p20-b29",
+      "type": "paragraph",
+      "text": "Trong hơn 1.100 khách hàng toàn cầu của FPT có\nmột tỷ lệ đáng kể vẫn đang hoạt động phụ thuộc vào\ncác hệ thống CNTT “di sản” (Legacy), đặc biệt là các\ndoanh nghiệp Nhật Bản. Bộ Kinh tế, Thương mại và\nCông nghiệp Nhật Bản (METI) đã đưa ra khái niệm\n“Vách đá số 2025” (2025 Digital Cliff) nhằm cảnh\nbáo mối đe dọa nghiêm trọng đối với năng lực cạnh\ntranh kinh tế trong tương lai nếu doanh nghiệp không\nkịp thời hiện đại hóa các hệ thống CNTT “di sản”.",
+      "bbox": [259.29, 444.73, 492.32, 550.73]
+    },
+    {"id": "p20-b30", "type": "paragraph", "text": "Giao dịch\nkinh doanh", "bbox": [415.08, 373.42, 466.11, 395.42]},
+    {"id": "p20-b31", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p20-b32", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p20-b33", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.31, 96.83, 143.31]},
+    {
+      "id": "p20-b34",
+      "type": "furniture",
+      "text": "Con số nổi bật\nGiải thưởng tiêu biểu\nHoạt động nổi bật\nDự án AI nổi bật",
+      "bbox": [67.84, 160.82, 143.8, 213.82]
+    },
+    {"id": "p20-b35", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 229.12, 122.58, 237.31]},
+    {"id": "p20-b36", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 255.12, 142.43, 263.31]},
+    {"id": "p20-b37", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 281.12, 190.19, 289.31]},
+    {"id": "p20-b38", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 307.12, 121.59, 315.31]},
+    {"id": "p20-b39", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 333.12, 100.4, 341.31]},
+    {"id": "p20-b40", "type": "furniture", "text": "08 BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 359.12, 166.49, 367.31]},
+    {"id": "p20-b41", "type": "furniture", "text": "19", "bbox": [62.26, 546.47, 74.3, 558.52]}
+  ]
+}

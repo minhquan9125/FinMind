@@ -1,0 +1,96 @@
+{
+  "ir_version": "1",
+  "page": 160,
+  "printed_page": "158",
+  "page_class": "notes",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p160-b1", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [428.22, 68.74, 1105.62, 100.74]},
+    {"id": "p160-b2", "type": "form_code", "text": "MẪU SỐ B 09 – DN/HN", "bbox": [1673.66, 77.72, 1859.49, 95.72]},
+    {"id": "p160-b3", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2024", "bbox": [428.22, 114.6, 1279.68, 144.6]},
+    {"id": "p160-b4", "type": "paragraph", "text": "2\nCÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU (tiếp theo)", "bbox": [428.22, 187.3, 861.78, 205.3]},
+    {
+      "id": "p160-b5",
+      "type": "paragraph",
+      "text": "2.3\nĐơn vị tiền tệ sử dụng trong việc lập và trình bày báo cáo tài chính hợp nhất",
+      "bbox": [428.22, 217.81, 1110.29, 235.81]
+    },
+    {
+      "id": "p160-b6",
+      "type": "paragraph",
+      "text": "Tập đoàn sử dụng đơn vị tiền tệ trong kế toán và trình bày trên báo cáo tài chính hợp nhất\nlà Đồng Việt Nam (“VND” hoặc “Đồng”).",
+      "bbox": [428.22, 255.99, 1122.99, 297.98]
+    },
+    {
+      "id": "p160-b7",
+      "type": "paragraph",
+      "text": "Khi hợp nhất báo cáo tài chính của Tập đoàn, đối với báo cáo tài chính của các công ty\ncon được lập bằng đồng tiền khác với đồng tiền trên báo cáo tài chính của Tập đoàn,\nCông ty thực hiện chuyển đổi báo cáo tài chính của các công ty con sang đồng tiền báo\ncáo của Tập đoàn theo nguyên tắc sau:",
+      "bbox": [428.22, 318.16, 1122.95, 408.14]
+    },
+    {
+      "id": "p160-b8",
+      "type": "paragraph",
+      "text": "• Tài sản, nợ phải trả, và lợi thế thương mại phát sinh khi mua công ty con ở nước ngoài\nđược quy đổi theo tỷ giá giao dịch thực tế cuối năm tài chính;",
+      "bbox": [417.17, 422.08, 1123.0, 464.07]
+    },
+    {
+      "id": "p160-b9",
+      "type": "paragraph",
+      "text": "• LNST chưa phân phối/(lỗ lũy kế sau thuế) phát sinh sau ngày mua công ty con được quy\nđổi bằng cách tính toán theo các khoản mục doanh thu, chi phí của Báo cáo kết quả hoạt\nđộng kinh doanh;",
+      "bbox": [417.17, 484.25, 1123.05, 550.24]
+    },
+    {
+      "id": "p160-b10",
+      "type": "paragraph",
+      "text": "• Các khoản mục thuộc Báo cáo kết quả hoạt động kinh doanh và Báo cáo lưu chuyển tiền\ntệ được quy đổi theo tỷ giá bình quân bởi vì tỷ giá bình quân của năm tài chính xấp xỉ tỷ\ngiá giao dịch thực tế tại thời điểm phát sinh giao dịch (chênh lệch không quá 2%); và",
+      "bbox": [417.17, 570.41, 1123.01, 636.4]
+    },
+    {
+      "id": "p160-b11",
+      "type": "paragraph",
+      "text": "• Chênh lệch tỷ giá hối đoái phát sinh khi chuyển đổi báo cáo tài chính của công ty con\nđược phản ánh lũy kế trong phần vốn chủ sở hữu của bảng cân đối kế toán hợp nhất.\nPhần chênh lệch tỷ giá hối đoái phân bổ cho Công ty được trình bày tại chỉ tiêu “Chênh\nlệch tỷ giá hối đoái”. Phần chênh lệch tỷ giá hối đoái phân bổ cho cổ đông không kiểm\nsoát được trình bày trong chỉ tiêu “Lợi ích cổ đông không kiểm soát”.",
+      "bbox": [417.17, 656.58, 1123.07, 770.56]
+    },
+    {"id": "p160-b12", "type": "paragraph", "text": "2.4\nCác loại tỷ giá hối đoái áp dụng trong kế toán", "bbox": [1165.61, 218.1, 1597.55, 236.1]},
+    {
+      "id": "p160-b13",
+      "type": "paragraph",
+      "text": "Các nghiệp vụ phát sinh bằng ngoại tệ được quy đổi theo tỷ giá thực tế tại ngày phát sinh\ngiao dịch.",
+      "bbox": [1165.61, 256.28, 1860.37, 298.27]
+    },
+    {
+      "id": "p160-b14",
+      "type": "paragraph",
+      "text": "Tài sản và nợ phải trả bằng tiền tệ có gốc ngoại tệ tại ngày của bảng cân đối kế toán hợp\nnhất được quy đổi theo tỷ giá chuyển khoản của ngân hàng thương mại thường xuyên có\ngiao dịch áp dụng tại ngày bảng cân đối kế toán hợp nhất.",
+      "bbox": [1165.61, 318.45, 1860.43, 384.44]
+    },
+    {
+      "id": "p160-b15",
+      "type": "paragraph",
+      "text": "Đối với các khoản vay bằng ngoại tệ được Tập đoàn phòng ngừa rủi ro tỷ giá bằng cách sử\ndụng các giao dịch hoán đổi ngoại tệ và mua ngoại tệ tương đương trong tương lai, các khoản\nvay này được ghi nhận theo tỷ giá ký kết trong hợp đồng mua, bán ngoại tệ giữa doanh nghiệp\nvà ngân hàng thương mại.",
+      "bbox": [1165.61, 404.62, 1860.37, 494.6]
+    },
+    {
+      "id": "p160-b16",
+      "type": "paragraph",
+      "text": "Tất cả chênh lệch tỷ giá phát sinh từ việc quy đổi được ghi nhận là thu nhập hoặc chi phí\ntrong báo cáo kết quả hoạt động kinh doanh hợp nhất.",
+      "bbox": [1165.61, 514.78, 1860.39, 556.77]
+    },
+    {"id": "p160-b17", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p160-b18", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p160-b19", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p160-b20", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p160-b21", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p160-b22", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p160-b23", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 465.05, 171.05, 484.05]},
+    {"id": "p160-b24", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
+    {"id": "p160-b25", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
+    {"id": "p160-b26", "type": "furniture", "text": "158", "bbox": [288.22, 988.53, 326.93, 1011.4]}
+  ]
+}

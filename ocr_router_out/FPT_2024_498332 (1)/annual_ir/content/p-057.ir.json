@@ -1,0 +1,115 @@
+{
+  "ir_version": "1",
+  "page": 57,
+  "printed_page": "55",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {
+      "id": "p57-b1",
+      "type": "paragraph",
+      "text": "Là doanh nghiệp hoạt động trong lĩnh vực dịch vụ CNTT, nguồn nhân lực chất lượng là\nyếu tố cốt lõi giúp FPT đạt được các mục tiêu chiến lược. Đến cuối năm 2024, FPT có\n28.814 nhân viên bình quân trong lĩnh vực Dịch vụ CNTT cho thị trường nước ngoài. Đặc\nbiệt tại Nhật Bản, nơi có sự cạnh tranh nhân sự khốc liệt, FPT vẫn duy trì sức hút mạnh mẽ\nvới 4.000 nhân viên làm việc trực tiếp tại 17 văn phòng và trung tâm phát triển và 15.000\nkỹ sư trên toàn cầu phục vụ riêng cho thị trường này.",
+      "bbox": [428.22, 63.5, 1123.05, 201.47]
+    },
+    {
+      "id": "p57-b2",
+      "type": "paragraph",
+      "text": "Nhằm phát triển nguồn nhân lực đạt chuẩn quốc tế, FPT chú trọng xây dựng môi trường\nlàm việc đa văn hóa, khuyến khích sự phát triển cá nhân và tôn trọng sự khác biệt. Hiện\ntại, Tập đoàn có 3.489 chuyên gia quốc tế đến từ 87 quốc gia, góp phần đa dạng hóa đội\nngũ và nâng cao năng lực cạnh tranh toàn cầu.",
+      "bbox": [428.22, 221.65, 1123.05, 311.63]
+    },
+    {
+      "id": "p57-b3",
+      "type": "paragraph",
+      "text": "Năm qua, FPT liên tục được ghi nhận về môi trường làm việc như: Top 100 Nơi làm việc\ntốt nhất tại Philippines và Đức, giải thưởng D&I Award cho Nơi làm việc tốt nhất tại Nhật\nBản. Nhờ chính sách đãi ngộ hợp lý và văn hóa doanh nghiệp kết nối, tỷ lệ nghỉ việc đã\ngiảm xuống mức thấp nhất trong hơn một thập kỷ, chỉ còn 10,0%, giảm 30 điểm cơ bản\nso với năm trước. Điều này giúp FPT giảm áp lực tuyển dụng, đồng thời tối ưu hóa chi phí\nnhân sự của lĩnh vực dịch vụ CNTT cho thị trường nước ngoài.",
+      "bbox": [428.22, 331.81, 1123.01, 469.78]
+    },
+    {"id": "p57-b4", "type": "heading", "text": "NHÂN SỰ BÌNH QUÂN CỦA LĨNH VỰC DỊCH VỤ CNTT CHO THỊ TRƯỜNG NƯỚC NGOÀI", "bbox": [1165.56, 62.36, 1861.4, 80.36]},
+    {
+      "id": "p57-b5",
+      "type": "paragraph",
+      "text": "CBNV FPT tại văn phòng Đại Liên, tỉnh Liêu Ninh, Trung Quốc. Văn phòng được khai trương",
+      "bbox": [1211.72, 974.4, 1848.52, 990.4]
+    },
+    {"id": "p57-b6", "type": "paragraph", "text": "Tiêu chí", "bbox": [1179.78, 125.86, 1244.89, 143.86]},
+    {
+      "id": "p57-t1",
+      "type": "table",
+      "title": "NHÂN SỰ BÌNH QUÂN CỦA LĨNH VỰC DỊCH VỤ CNTT CHO THỊ TRƯỜNG NƯỚC NGOÀI",
+      "continued": false,
+      "bbox": [1179.76, 125.86, 1846.76, 336.09],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["2023"], "bbox": [1653.05, 125.86, 1693.66, 143.86]},
+        {"key": "c2", "header_lines": ["2024"], "bbox": [1729.59, 125.86, 1770.2, 143.86]},
+        {"key": "c3", "header_lines": ["Tăng/", "giảm"], "bbox": [1800.82, 125.86, 1846.76, 167.86]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Tổng nhân sự bình quân (người)",
+          "note": null,
+          "bbox": [1179.76, 184.06, 1846.72, 202.06],
+          "cells": {
+            "c1": {"raw": "25.213", "bbox": [1637.79, 184.06, 1693.64, 202.06]},
+            "c2": {"raw": "28.814", "bbox": [1714.33, 184.06, 1770.18, 202.06]},
+            "c3": {"raw": "14,3%", "bbox": [1794.93, 184.06, 1846.72, 202.06]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Tổng nhân sự bình quân sản xuất (người)",
+          "note": null,
+          "bbox": [1179.76, 218.08, 1846.72, 236.08],
+          "cells": {
+            "c1": {"raw": "23.434", "bbox": [1637.79, 218.08, 1693.64, 236.08]},
+            "c2": {"raw": "26.586", "bbox": [1714.33, 218.08, 1770.18, 236.08]},
+            "c3": {"raw": "13,5%", "bbox": [1794.93, 218.08, 1846.72, 236.08]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Doanh thu/người (triệu VNĐ)",
+          "note": null,
+          "bbox": [1179.76, 252.08, 1846.7, 336.09],
+          "cells": {
+            "c1": {"raw": "926\n950\n(loại trừ ảnh\nhưởng tỷ giá)", "bbox": [1589.84, 252.1, 1693.68, 336.09]},
+            "c2": {"raw": "1.037", "bbox": [1724.46, 252.08, 1770.16, 270.08]},
+            "c3": {"raw": "12,0%", "bbox": [1794.91, 252.08, 1846.7, 270.08]}
+          }
+        }
+      ]
+    },
+    {"id": "p57-b8", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p57-b9", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.82, 271.58, 232.82]},
+    {"id": "p57-b10", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 264.16, 315.44, 283.16]},
+    {"id": "p57-b11", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.5, 243.52, 333.5]},
+    {"id": "p57-b12", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [45.96, 368.01, 333.54, 387.01]},
+    {
+      "id": "p57-b13",
+      "type": "furniture",
+      "text": "Báo cáo của Ban Điều hành về kết quả\nkinh doanh 2024 và nhận định 2025",
+      "bbox": [85.0, 413.37, 320.62, 444.17]
+    },
+    {"id": "p57-b14", "type": "furniture", "text": "Đánh giá của HĐQT về hoạt động của\nTập đoàn", "bbox": [85.0, 460.89, 315.65, 491.69]},
+    {"id": "p57-b15", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 516.4, 206.67, 535.4]},
+    {"id": "p57-b16", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 566.74, 171.05, 585.74]},
+    {"id": "p57-b17", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 617.08, 212.6, 636.08]},
+    {"id": "p57-b18", "type": "furniture", "text": "04", "bbox": [30.0, 961.65, 192.49, 1080]},
+    {"id": "p57-b19", "type": "furniture", "text": "55", "bbox": [293.0, 988.53, 318.8, 1011.4]},
+    {
+      "id": "p57-b20",
+      "type": "furniture",
+      "text": "tháng 3/2024 và dự kiến tuyển dụng 2.000-3.000 kỹ sư công nghệ trong vòng 3-5 năm tới.",
+      "bbox": [1218.46, 993.6, 1848.39, 1009.6]
+    }
+  ]
+}

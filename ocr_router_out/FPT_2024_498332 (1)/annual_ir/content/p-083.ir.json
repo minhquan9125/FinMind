@@ -1,0 +1,230 @@
+{
+  "ir_version": "1",
+  "page": 83,
+  "printed_page": "81",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p83-b1", "type": "heading", "text": "GIAO DỊCH CỔ PHIẾU CỦA CỔ ĐÔNG LỚN VÀ CỔ ĐÔNG NỘI BỘ", "bbox": [428.12, 63.37, 953.66, 81.37]},
+    {"id": "p83-b2", "type": "heading", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p83-b3", "type": "paragraph", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.56, 271.58, 232.56]},
+    {"id": "p83-b4", "type": "paragraph", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.9, 315.44, 282.9]},
+    {"id": "p83-b5", "type": "paragraph", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.24, 243.52, 333.24]},
+    {"id": "p83-b6", "type": "paragraph", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.58, 326.26, 383.58]},
+    {"id": "p83-b7", "type": "paragraph", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [45.96, 418.09, 213.95, 437.09]},
+    {"id": "p83-b8", "type": "paragraph", "text": "Mô hình quản trị và vai trò của các bên", "bbox": [85.0, 463.45, 322.68, 477.45]},
+    {"id": "p83-b9", "type": "paragraph", "text": "Quản trị công ty năm 2024", "bbox": [85.0, 495.41, 248.7, 509.41]},
+    {"id": "p83-b10", "type": "paragraph", "text": "Báo cáo của HĐQT", "bbox": [85.0, 527.37, 201.84, 541.37]},
+    {"id": "p83-b11", "type": "paragraph", "text": "Báo cáo của Ban Kiểm soát", "bbox": [85.0, 559.33, 253.97, 573.33]},
+    {"id": "p83-b12", "type": "paragraph", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.27, 171.05, 618.27]},
+    {"id": "p83-b13", "type": "paragraph", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.61, 212.6, 668.61]},
+    {"id": "p83-b14", "type": "paragraph", "text": "05", "bbox": [30.0, 961.65, 196.06, 1080]},
+    {"id": "p83-b15", "type": "paragraph", "text": "STT", "bbox": [443.52, 112.55, 475.9, 130.55]},
+    {"id": "p83-b16", "type": "paragraph", "text": "Người thực hiện giao dịch", "bbox": [488.04, 112.55, 699.3, 130.55]},
+    {
+      "id": "p83-t1",
+      "type": "table",
+      "title": "GIAO DỊCH CỔ PHIẾU CỦA CỔ ĐÔNG LỚN VÀ CỔ ĐÔNG NỘI BỘ",
+      "continued": false,
+      "bbox": [443.52, 112.55, 1846.19, 988.88],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Quan hệ với", "người nội bộ"], "bbox": [714.34, 112.55, 817.22, 154.54]},
+        {"key": "c2", "header_lines": ["Số cổ phiếu sở hữu đầu kỳ", "Số cổ phiếu"], "bbox": [914.19, 112.55, 1028.49, 191.59]},
+        {"key": "c3", "header_lines": ["Số cổ phiếu sở hữu đầu kỳ", "Tỷ lệ"], "bbox": [1052.68, 173.59, 1090.37, 191.59]},
+        {"key": "c4", "header_lines": ["Số cổ phiếu sở hữu cuối kỳ", "Số cổ phiếu"], "bbox": [1118.72, 112.55, 1274.19, 191.59]},
+        {"key": "c5", "header_lines": ["Số cổ phiếu sở hữu cuối kỳ", "Tỷ lệ"], "bbox": [1240.1, 112.55, 1300.13, 191.59]},
+        {"key": "c6", "header_lines": ["Lý do tăng, giảm (mua, bán, chuyển đổi, thưởng...)"], "bbox": [1328.49, 112.55, 1745.37, 130.55]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "1",
+          "label_raw": "Ông Đỗ Cao Bảo",
+          "note": null,
+          "bbox": [454.43, 210.12, 1846.17, 252.12],
+          "cells": {
+            "c1": {"raw": "Thành viên HĐQT", "bbox": [714.3, 210.12, 853.04, 228.12]},
+            "c2": {"raw": "12.057.506", "bbox": [922.34, 210.12, 1013.75, 228.12]},
+            "c3": {"raw": "0,95%", "bbox": [1038.53, 210.12, 1090.32, 228.12]},
+            "c4": {"raw": "13.830.531", "bbox": [1123.6, 210.12, 1215.0, 228.12]},
+            "c5": {"raw": "0,94%", "bbox": [1248.3, 210.12, 1300.09, 228.12]},
+            "c6": {
+              "raw": "Nhận 1.808.625 cổ phiếu từ đợt phát hành cổ phiếu để tăng vốn từ\nnguồn vốn chủ sở hữu với tỷ lệ 15%, bán 35.600 cổ phiếu.",
+              "bbox": [1328.48, 210.12, 1846.17, 252.12]
+            }
+          }
+        },
+        {
+          "id": "r2",
+          "code": "2",
+          "label_raw": "Ông Nguyễn Văn Khoa",
+          "note": null,
+          "bbox": [454.43, 270.66, 1846.19, 336.65],
+          "cells": {
+            "c1": {"raw": "Tổng giám đốc", "bbox": [714.3, 270.66, 832.34, 288.66]},
+            "c2": {"raw": "3.445.554", "bbox": [932.51, 270.66, 1013.76, 288.66]},
+            "c3": {"raw": "0,27%", "bbox": [1038.55, 270.66, 1090.34, 288.66]},
+            "c4": {"raw": "4.322.801", "bbox": [1133.77, 270.66, 1215.02, 288.66]},
+            "c5": {"raw": "0,29%", "bbox": [1248.31, 270.66, 1300.09, 288.66]},
+            "c6": {
+              "raw": "Nhận 516.833 cổ phiếu từ đợt phát hành cổ phiếu để tăng vốn từ\nnguồn vốn chủ sở hữu với tỷ lệ 15%, nhận 360.414 cổ phiếu từ\nchương trình ESOP 2024.",
+              "bbox": [1328.48, 270.66, 1846.19, 336.65]
+            }
+          }
+        },
+        {
+          "id": "r3",
+          "code": "3",
+          "label_raw": "Ông Nguyễn Thế Phương",
+          "note": null,
+          "bbox": [454.43, 355.19, 1846.19, 421.18],
+          "cells": {
+            "c1": {"raw": "Phó Tổng giám đốc", "bbox": [714.3, 355.19, 867.15, 373.19]},
+            "c2": {"raw": "4.131.303", "bbox": [932.51, 355.19, 1013.77, 373.19]},
+            "c3": {"raw": "0,33%", "bbox": [1038.55, 355.19, 1090.34, 373.19]},
+            "c4": {"raw": "4.967.311", "bbox": [1133.77, 355.19, 1215.02, 373.19]},
+            "c5": {"raw": "0,34%", "bbox": [1248.31, 355.19, 1300.09, 373.19]},
+            "c6": {
+              "raw": "Nhận 619.695 cổ phiếu từ đợt phát hành cổ phiếu để tăng vốn từ\nnguồn vốn chủ sở hữu với tỷ lệ 15%, nhận 216.313 cổ phiếu từ\nchương trình ESOP 2024.",
+              "bbox": [1328.48, 355.19, 1846.19, 421.18]
+            }
+          }
+        },
+        {
+          "id": "r4",
+          "code": "4",
+          "label_raw": "Ông Phạm Minh Tuấn",
+          "note": null,
+          "bbox": [454.43, 439.72, 1846.17, 505.7],
+          "cells": {
+            "c1": {"raw": "Phó Tổng giám đốc", "bbox": [714.3, 439.72, 867.15, 457.72]},
+            "c2": {"raw": "484.197", "bbox": [947.76, 439.72, 1013.77, 457.72]},
+            "c3": {"raw": "0,04%", "bbox": [1038.53, 439.72, 1090.32, 457.72]},
+            "c4": {"raw": "1.718.528", "bbox": [1133.75, 439.72, 1215.01, 457.72]},
+            "c5": {"raw": "0,12%", "bbox": [1248.29, 439.72, 1300.07, 457.72]},
+            "c6": {
+              "raw": "Nhận 72.629 cổ phiếu từ đợt phát hành cổ phiếu để tăng vốn từ\nnguồn vốn chủ sở hữu với tỷ lệ 15%, nhận 1.161.702 từ chương\ntrình ESOP 2024.",
+              "bbox": [1328.46, 439.72, 1846.17, 505.7]
+            }
+          }
+        },
+        {
+          "id": "r5",
+          "code": "5",
+          "label_raw": "Ông Nguyễn Việt Thắng",
+          "note": null,
+          "bbox": [454.42, 524.24, 1846.15, 590.23],
+          "cells": {
+            "c1": {"raw": "Trưởng Ban Kiểm soát", "bbox": [714.28, 524.24, 889.01, 542.24]},
+            "c2": {"raw": "183.445", "bbox": [947.74, 524.24, 1013.75, 542.24]},
+            "c3": {"raw": "0,01%", "bbox": [1038.52, 524.24, 1090.3, 542.24]},
+            "c4": {"raw": "125.841", "bbox": [1149.0, 524.24, 1215.01, 542.24]},
+            "c5": {"raw": "0,01%", "bbox": [1248.27, 524.24, 1300.06, 542.24]},
+            "c6": {
+              "raw": "Nhận 22.266 cổ phiếu từ cổ phiếu từ đợt phát hành cổ phiếu để\ntăng vốn từ nguồn vốn chủ sở hữu với tỷ lệ 15%, nhận 15.130 cổ\nphiếu từ chương trình ESOP 2024, bán 95.000 cổ phiếu.",
+              "bbox": [1328.44, 524.24, 1846.15, 590.23]
+            }
+          }
+        },
+        {
+          "id": "r6",
+          "code": "6",
+          "label_raw": "Ông Nguyễn Khải Hoàn",
+          "note": null,
+          "bbox": [454.4, 608.77, 1846.15, 674.76],
+          "cells": {
+            "c1": {"raw": "Thành viên BKS", "bbox": [714.26, 608.77, 838.28, 626.77]},
+            "c2": {"raw": "1.173.502", "bbox": [932.48, 608.77, 1013.73, 626.77]},
+            "c3": {"raw": "0,09%", "bbox": [1038.52, 608.77, 1090.3, 626.77]},
+            "c4": {"raw": "1.416.730", "bbox": [1133.74, 608.77, 1214.99, 626.77]},
+            "c5": {"raw": "0,10%", "bbox": [1248.27, 608.77, 1300.06, 626.77]},
+            "c6": {
+              "raw": "Nhận 161.025 cổ phiếu từ đợt phát hành cổ phiếu để tăng vốn từ\nnguồn vốn chủ sở hữu với tỷ lệ 15%, nhận 182.203 cổ phiếu từ\nchương trình ESOP 2024, bán 100.000 cổ phiếu.",
+              "bbox": [1328.44, 608.77, 1846.15, 674.76]
+            }
+          }
+        },
+        {
+          "id": "r7",
+          "code": "7",
+          "label_raw": "Ông Hoàng Hữu Chiến",
+          "note": null,
+          "bbox": [454.4, 693.3, 1846.13, 759.29],
+          "cells": {
+            "c1": {"raw": "Kế toán trưởng", "bbox": [714.26, 693.3, 831.34, 711.3]},
+            "c2": {"raw": "571.876", "bbox": [947.72, 693.3, 1013.73, 711.3]},
+            "c3": {"raw": "0,05%", "bbox": [1038.5, 693.3, 1090.28, 711.3]},
+            "c4": {"raw": "744.079", "bbox": [1148.98, 693.3, 1214.99, 711.3]},
+            "c5": {"raw": "0,05%", "bbox": [1248.25, 693.3, 1300.04, 711.3]},
+            "c6": {
+              "raw": "Nhận 85.781 cổ phiếu từ đợt phát hành cổ phiếu để tăng vốn từ\nnguồn vốn chủ sở hữ với tỷ lệ 15%, nhận 86.422 cổ phiếu từ chương\ntrình ESOP 2024.",
+              "bbox": [1328.42, 693.3, 1846.13, 759.29]
+            }
+          }
+        },
+        {
+          "id": "r8",
+          "code": "8",
+          "label_raw": "Bà Mai Thị Lan Anh",
+          "note": null,
+          "bbox": [454.38, 777.83, 1846.18, 843.82],
+          "cells": {
+            "c1": {"raw": "Người được UQ CBTT", "bbox": [714.25, 777.83, 883.43, 795.83]},
+            "c2": {"raw": "32", "bbox": [993.46, 777.83, 1013.77, 795.83]},
+            "c3": {"raw": "0,00%", "bbox": [1038.5, 777.83, 1090.28, 795.83]},
+            "c4": {"raw": "3.061", "bbox": [1169.3, 777.83, 1215.01, 795.83]},
+            "c5": {"raw": "0,00%", "bbox": [1248.27, 777.83, 1300.06, 795.83]},
+            "c6": {
+              "raw": "Nhận 04 cổ phiếu từ đợt phát hành cổ phiếu để tăng vốn từ nguồn\nvốn chủ sở hữu với tỷ lệ 15%, nhận 3.025 cổ phiếu từ chương trình\nESOP 2024.",
+              "bbox": [1328.44, 777.83, 1846.18, 843.82]
+            }
+          }
+        },
+        {
+          "id": "r9",
+          "code": "9",
+          "label_raw": "Bà Đỗ Thị Ngọc Mai",
+          "note": null,
+          "bbox": [454.4, 862.36, 1846.14, 928.34],
+          "cells": {
+            "c1": {"raw": "Con gái Thành viên\nHĐQT Đỗ Cao Bảo", "bbox": [714.26, 862.36, 865.96, 904.35]},
+            "c2": {"raw": "909.519", "bbox": [947.72, 862.36, 1013.73, 880.36]},
+            "c3": {"raw": "0,07%", "bbox": [1038.5, 862.36, 1090.28, 880.36]},
+            "c4": {"raw": "1.122.295", "bbox": [1133.72, 862.36, 1214.97, 880.36]},
+            "c5": {"raw": "0,08%", "bbox": [1248.25, 862.36, 1300.04, 880.36]},
+            "c6": {
+              "raw": "Mua 600 cổ phiếu, nhận 75.659 cổ phiếu từ chương trình ESOP\n2024, nhận 136.517 cổ phiếu từ đợt phát hành cổ phiếu để tăng\nvốn từ nguồn vốn chủ sở hữu với tỷ lệ 15%.",
+              "bbox": [1328.42, 862.36, 1846.14, 928.34]
+            }
+          }
+        },
+        {
+          "id": "r10",
+          "code": "10",
+          "label_raw": "Bà Nguyễn Thị Dư",
+          "note": null,
+          "bbox": [449.3, 946.88, 1846.06, 988.88],
+          "cells": {
+            "c1": {"raw": "Vợ Thành viên HĐQT\nĐỗ Cao Bảo", "bbox": [714.25, 946.88, 877.92, 988.88]},
+            "c2": {"raw": "826.220", "bbox": [947.71, 946.88, 1013.71, 964.88]},
+            "c3": {"raw": "0,07%", "bbox": [1038.48, 946.88, 1090.27, 964.88]},
+            "c4": {"raw": "993.633", "bbox": [1148.96, 946.88, 1214.97, 964.88]},
+            "c5": {"raw": "0,07%", "bbox": [1248.23, 946.88, 1300.02, 964.88]},
+            "c6": {
+              "raw": "Mua 34.600 cổ phiếu, nhận 132.813 cổ phiếu từ đợt phát hành cổ\nphiếu để tăng vốn từ nguồn vốn chủ sở hữu với tỷ lệ 15%.",
+              "bbox": [1328.41, 946.88, 1846.06, 988.88]
+            }
+          }
+        }
+      ]
+    },
+    {"id": "p83-b18", "type": "furniture", "text": "81", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

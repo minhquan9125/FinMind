@@ -1,0 +1,323 @@
+{
+  "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+  "sections": [
+    {
+      "id": "leadership",
+      "title": "Thông điệp ban lãnh đạo",
+      "first_page": 3,
+      "last_page": 8,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "highlights",
+      "title": "Dấu ấn trong năm",
+      "first_page": 9,
+      "last_page": 21,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "overview",
+      "title": "Dấu ấn và tổng quan doanh nghiệp",
+      "first_page": 22,
+      "last_page": 44,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "strategy",
+      "title": "Chiến lược phát triển",
+      "first_page": 45,
+      "last_page": 55,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "business",
+      "title": "Phân tích hoạt động kinh doanh",
+      "first_page": 56,
+      "last_page": 78,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "governance",
+      "title": "Quản trị công ty",
+      "first_page": 79,
+      "last_page": 108,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "esg",
+      "title": "Báo cáo ESG",
+      "first_page": 109,
+      "last_page": 158,
+      "evidence": "active sidebar label"
+    }
+  ],
+  "unclassified_pages": [],
+  "topics": [
+    {
+      "id": "leadership",
+      "title": "Thông điệp ban lãnh đạo",
+      "pdf_pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "company",
+      "title": "Doanh nghiệp, ngành nghề và cơ cấu tổ chức",
+      "pdf_pages": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ]
+    },
+    {
+      "id": "strategy",
+      "title": "Chiến lược phát triển",
+      "pdf_pages": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Kết quả hoạt động và kế hoạch",
+      "pdf_pages": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78
+      ]
+    },
+    {
+      "id": "governance",
+      "title": "Quản trị công ty",
+      "pdf_pages": [
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ]
+    },
+    {
+      "id": "people_esg",
+      "title": "Nhân sự và ESG",
+      "pdf_pages": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158
+      ]
+    }
+  ],
+  "table_targets": [
+    {
+      "topic": "company",
+      "pdf_page": 32,
+      "title": "Cơ cấu cổ đông",
+      "ir_file": "p-032.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    },
+    {
+      "topic": "company",
+      "pdf_page": 32,
+      "title": "Thông tin về cổ phiếu",
+      "ir_file": "p-032.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    },
+    {
+      "topic": "company",
+      "pdf_page": 32,
+      "title": "Cơ cấu cổ đông theo các mức cổ phiếu sở hữu",
+      "ir_file": "p-032.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    },
+    {
+      "topic": "company",
+      "pdf_page": 32,
+      "title": "Cơ cấu cổ đông theo đối tượng sở hữu",
+      "ir_file": "p-032.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    },
+    {
+      "topic": "company",
+      "pdf_page": 33,
+      "title": "Cơ cấu cổ đông theo quốc tịch",
+      "ir_file": "p-033.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    },
+    {
+      "topic": "company",
+      "pdf_page": 33,
+      "title": "Top 10 cổ đông lớn",
+      "ir_file": "p-033.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 86,
+      "title": "Danh sách Thành viên HĐQT nhiệm kỳ 2022-2027 và số cuộc họp tham dự trong năm 2025",
+      "ir_file": "p-086.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 90,
+      "title": "Chi tiết thù lao của từng thành viên HĐQT năm 2025",
+      "ir_file": "p-090.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 108,
+      "title": "Chi tiết thù lao của BKS năm 2025",
+      "ir_file": "p-108.ir.json",
+      "status": "text_only",
+      "table_block_id": null
+    }
+  ]
+}

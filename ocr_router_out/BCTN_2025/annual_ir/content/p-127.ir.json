@@ -1,0 +1,171 @@
+{
+  "ir_version": "1",
+  "page": 127,
+  "printed_page": "126",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p127-b1", "type": "paragraph", "text": "Khối\nSTT", "bbox": [263.81, 45.25, 309.78, 60.25]},
+    {"id": "p127-b2", "type": "paragraph", "text": "Chứng chỉ/Chứng nhận\nKinh doanh", "bbox": [289.18, 50.25, 469.42, 65.25]},
+    {"id": "p127-b3", "type": "paragraph", "text": "1 Tập đoàn", "bbox": [270.27, 73.14, 331.89, 83.14]},
+    {"id": "p127-b4", "type": "paragraph", "text": "• ISO 9001:2015: Tiêu chuẩn Hệ thống quản lý chất lượng;", "bbox": [362.83, 73.15, 607.8, 83.15]},
+    {"id": "p127-b5", "type": "paragraph", "text": "2 Khối", "bbox": [269.47, 107.14, 308.92, 117.14]},
+    {
+      "id": "p127-b6",
+      "type": "paragraph",
+      "text": "• ISO 9001:2015: Tiêu chuẩn Hệ thống quản lý chất lượng;\nCông nghệ\n• ISO/IEC 27001:2022 Hệ thống Quản lý an ninh thông tin;",
+      "bbox": [289.18, 107.14, 620.04, 134.24]
+    },
+    {
+      "id": "p127-b7",
+      "type": "paragraph",
+      "text": "• ISO 22301: Tiêu chuẩn về Hệ thống quản lý liên tục trong kinh doanh;",
+      "bbox": [362.82, 141.34, 665.9, 151.34]
+    },
+    {
+      "id": "p127-b8",
+      "type": "paragraph",
+      "text": "• ISO/IEC 27017: Quy tắc thực hành về kiểm soát an toàn thông tin cho các\ndịch vụ đám mây dựa trên ISO/IEC 27002;\n• HIPAA: Đạo luật về Trách nhiệm giải trình và cung cấp thông tin bảo hiểm Công chứng Mỹ (AICPA);\ny tế 1996 của Mỹ;",
+      "bbox": [362.82, 158.44, 828.21, 207.54]
+    },
+    {
+      "id": "p127-b9",
+      "type": "paragraph",
+      "text": "• CMMiDEV/5: Mô hình năng lực thuần thục tích hợp cấp độ 5;\n• ISO/IEC 20000-1:2018: Tiêu chuẩn Quản lý dịch vụ công nghệ thông tin; • ISO/IEC 27701:2019: Hệ thống quản lý thông tin cá nhân;",
+      "bbox": [362.82, 214.64, 969.78, 241.74]
+    },
+    {
+      "id": "p127-b10",
+      "type": "paragraph",
+      "text": "• TMMi Certitiec level 5: Tích hợp mô hình trưởng thành kiểm thử cấp độ 5; • HITRUST r2: HITRUST CSF® v9.3 Risk-based, 2-year;",
+      "bbox": [362.82, 247.64, 949.13, 258.84]
+    },
+    {
+      "id": "p127-b11",
+      "type": "paragraph",
+      "text": "• A-SPICE: Tiêu chuẩn đánh giá quy trình phát triển phần mềm trong ngành ô tô; • ISO 45001:2018: Hệ thống quản lý sức khỏe và an toàn lao động;\n• TISAX-Level 3: Hệ thống trao đổi đánh giá bảo mật thông tin;",
+      "bbox": [362.82, 264.74, 1003.33, 289.94]
+    },
+    {"id": "p127-b12", "type": "paragraph", "text": "• ISO 14001:2015: Hệ thống quản lý môi trường;", "bbox": [362.82, 297.04, 571.64, 307.04]},
+    {"id": "p127-b13", "type": "paragraph", "text": "• ISO 13485: Hệ thống quản lý an toàn trang thiết bị y tế;", "bbox": [362.82, 314.14, 612.0, 324.14]},
+    {"id": "p127-b14", "type": "paragraph", "text": "• ISO/IEC 30107-3:2017: Tiêu chuẩn Chống giả mạo sinh trắc;", "bbox": [362.82, 331.24, 636.74, 341.24]},
+    {"id": "p127-b15", "type": "paragraph", "text": "3 Khối", "bbox": [269.36, 361.59, 309.04, 371.59]},
+    {
+      "id": "p127-b16",
+      "type": "paragraph",
+      "text": "• ISO/IEC 27001: Tiêu chuẩn Hệ thống Quản lý an toàn thông tin;\nViễn thông\n• ISO/IEC 27017: Quy tắc thực hành về kiểm soát an toàn thông tin cho các\ndịch vụ đám mây dựa trên ISO/IEC 27002;",
+      "bbox": [289.18, 361.59, 696.9, 399.69]
+    },
+    {
+      "id": "p127-b17",
+      "type": "paragraph",
+      "text": "• Uptime Design Tier III: Tiêu chuẩn về thiết kế hạ tầng Trung tâm dữ liệu – hạ tầng\nđược thiết kế đảm bảo tính dự phòng, không gián đoạn dịch vụ khi thực hiện\nbảo trì;",
+      "bbox": [362.82, 406.79, 696.96, 438.79]
+    },
+    {"id": "p127-b18", "type": "paragraph", "text": "4 Lĩnh vực", "bbox": [269.38, 461.55, 326.01, 471.55]},
+    {
+      "id": "p127-b19",
+      "type": "paragraph",
+      "text": "• ISO 21001:2018: Chứng chỉ quốc tế dành cho Hệ thống quản lý tổ chức giáo dục; • Xếp hạng 301-400 trong bảng xếp hạng đại học toàn cầu về phát triển\nGiáo dục\n• Tiêu chuẩn kiểm định chất lượng cơ sở giáo dục của Bộ Giáo dục và Đào tạo;",
+      "bbox": [289.18, 461.55, 1016.26, 488.65]
+    },
+    {
+      "id": "p127-b20",
+      "type": "paragraph",
+      "text": "• Chứng nhận kiểm định chất lượng của ACBSP (Mỹ), một trong các tổ chức\nchứng nhận kiểm định khối ngành kinh tế hàng đầu trên thế giới;\n• Chứng nhận kiểm định chất lượng Chương trình đào tạo Công nghệ thông tin năng lực trong việc đào tạo gắn liền thực tiễn – tạo ra việc làm thật,\ncủa AQAS (Đức), tổ chức kiểm định thành viên của Hiệp hội Đảm bảo Chất chất lượng thật cho sinh viên trong kỷ nguyên toàn cầu hóa và",
+      "bbox": [362.82, 495.75, 1016.18, 544.85]
+    },
+    {
+      "id": "p127-b21",
+      "type": "paragraph",
+      "text": "• OKRs: Bộ tiêu chuẩn đánh giá chất lượng theo mục tiêu và kết quả\nthen chốt.",
+      "bbox": [712.43, 73.15, 1009.12, 95.15]
+    },
+    {
+      "id": "p127-b22",
+      "type": "paragraph",
+      "text": "• CREST-Council of Registered Ethical Security Testers cho dịch vụ\nSOC (Giám sát và ứng cứu sự cố ANTT);",
+      "bbox": [711.34, 107.14, 1016.11, 128.14]
+    },
+    {
+      "id": "p127-b23",
+      "type": "paragraph",
+      "text": "• PCI DSS: Tiêu chuẩn bảo mật dành cho các tổ chức trong quá trình\nxử lý thẻ thanh toán quốc tế;",
+      "bbox": [711.34, 135.24, 1016.16, 156.24]
+    },
+    {
+      "id": "p127-b24",
+      "type": "paragraph",
+      "text": "• SOC 2 type 1, SOC 2 type 2, SOC 3: bộ tiêu chí để đánh giá độ tin cậy\nvề dịch vụ quản lý dữ liệu khách hàng được phát triển bởi Viện Kế toán",
+      "bbox": [711.34, 163.34, 1016.19, 184.34]
+    },
+    {
+      "id": "p127-b25",
+      "type": "paragraph",
+      "text": "• ISO/IEC 27018:2019: Thực hành bảo vệ thông tin định danh cá nhân\ntrên dịch vụ điện toán đám mây;",
+      "bbox": [711.34, 202.44, 1016.09, 223.44]
+    },
+    {"id": "p127-b26", "type": "paragraph", "text": "• ISO 14064-1:2018: Chứng nhận về báo cáo kiểm kê khí nhà kính;", "bbox": [711.34, 281.84, 1000.08, 291.84]},
+    {
+      "id": "p127-b27",
+      "type": "paragraph",
+      "text": "• IEC 62304: Tiêu chuẩn quốc tế quy định các yêu cầu về quy trình vòng\nđời phần mềm thiết bị y tế và phần mềm nhúng trong thiết bị y tế;",
+      "bbox": [711.34, 298.94, 1016.23, 319.94]
+    },
+    {
+      "id": "p127-b28",
+      "type": "paragraph",
+      "text": "• ISO/SAE 21434:2021: Tiêu chuẩn toàn cầu do ISO phát triển cung cấp\nhướng dẫn về cách bảo vệ phương tiện khỏi các cuộc tấn công mạng.",
+      "bbox": [711.34, 327.04, 1016.12, 348.04]
+    },
+    {
+      "id": "p127-b29",
+      "type": "paragraph",
+      "text": "• PCI DSS: Tiêu chuẩn bảo mật dành cho các tổ chức trong quá trình\nxử lý thẻ thanh toán quốc tế;",
+      "bbox": [711.34, 361.59, 1016.16, 382.59]
+    },
+    {
+      "id": "p127-b30",
+      "type": "paragraph",
+      "text": "• TIA 942B Constructed Facility Rated 3: Tiêu chuẩn về thiết lập và\nvận hành hạ tầng Trung tâm dữ liệu – hạ tầng đã được thiết lập và\nvận hành đảm bảo tính dự phòng, không gián đoạn dịch vụ khi thực\nhiện bảo trì;",
+      "bbox": [711.34, 389.69, 1016.19, 432.69]
+    },
+    {
+      "id": "p127-b31",
+      "type": "paragraph",
+      "text": "• ISO 22301: Tiêu chuẩn về Hệ thống quản lý liên tục trong kinh doanh.",
+      "bbox": [711.34, 439.79, 1016.59, 449.79]
+    },
+    {"id": "p127-b32", "type": "paragraph", "text": "bền vững THE Impact Rankings;", "bbox": [719.47, 472.56, 855.81, 482.56]},
+    {
+      "id": "p127-b33",
+      "type": "paragraph",
+      "text": "• Top 101-200 về xếp hạng Chất lượng giáo dục (SDG4). Thứ hạng 80\ntrong các trường đại học toàn cầu trong mục tiêu phát triển bền\nvững SDG8 về Việc làm tốt và Tăng trưởng kinh tế, ghi dấu ấn về",
+      "bbox": [711.33, 489.66, 1016.13, 521.66]
+    },
+    {"id": "p127-b34", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p127-b35", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.29, 117.31]},
+    {"id": "p127-b36", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p127-b37", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p127-b38", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.12, 142.43, 195.31]},
+    {"id": "p127-b39", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 213.12, 190.19, 221.31]},
+    {"id": "p127-b40", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 239.12, 121.59, 247.31]},
+    {"id": "p127-b41", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 265.31, 100.05, 273.31]},
+    {
+      "id": "p127-b42",
+      "type": "furniture",
+      "text": "Thông điệp và định hướng ESG\nQuản trị hướng đến phát triển bền vững\nMôi trường làm việc đẳng cấp,\nhạnh phúc\nHoạt động vì môi trường xanh\nSong hành vì sự phát triển cộng đồng",
+      "bbox": [67.84, 287.87, 199.86, 365.87]
+    },
+    {"id": "p127-b43", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
+    {"id": "p127-b44", "type": "furniture", "text": "chuyển đổi số.", "bbox": [719.47, 544.66, 782.41, 554.66]},
+    {"id": "p127-b45", "type": "furniture", "text": "lượng Giáo dục Đại học châu Âu;", "bbox": [370.94, 545.85, 515.25, 555.85]},
+    {"id": "p127-b46", "type": "furniture", "text": "126", "bbox": [58.81, 546.47, 77.75, 558.52]}
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/ocr-router/ir-v1-four-tables.schema.json",
+  "title": "Four selected FPT tables with one-page Document IR entries",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ir_version", "document_name", "tables"],
+  "properties": {
+    "ir_version": { "const": "1" },
+    "document_name": { "type": "string", "minLength": 1 },
+    "tables": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["table_id", "title", "pages"],
+        "properties": {
+          "table_id": {
+            "enum": ["company_information", "balance_sheet", "income_statement", "cash_flow_statement"]
+          },
+          "title": { "type": "string", "minLength": 1 },
+          "pages": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "ir-v1.schema.json" }
+          }
+        }
+      }
+    }
+  }
+}

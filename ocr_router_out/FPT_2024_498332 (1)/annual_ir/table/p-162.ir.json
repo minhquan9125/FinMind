@@ -1,0 +1,82 @@
+{
+  "ir_version": "1",
+  "page": 162,
+  "printed_page": "160",
+  "page_class": "notes",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p162-b1", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [428.22, 68.74, 1105.62, 100.74]},
+    {"id": "p162-b2", "type": "form_code", "text": "MẪU SỐ B 09 – DN/HN", "bbox": [1673.66, 77.8, 1859.49, 95.8]},
+    {"id": "p162-b3", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2024", "bbox": [428.22, 114.6, 1279.68, 144.6]},
+    {"id": "p162-b4", "type": "paragraph", "text": "2\nCÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU (tiếp theo)", "bbox": [428.22, 187.3, 861.78, 205.3]},
+    {"id": "p162-b5", "type": "paragraph", "text": "2.5\nCơ sở hợp nhất báo cáo tài chính", "bbox": [428.22, 217.81, 755.96, 235.81]},
+    {"id": "p162-b6", "type": "paragraph", "text": "(tiếp theo)", "bbox": [760.41, 220.63, 824.28, 234.63]},
+    {"id": "p162-b7", "type": "paragraph", "text": "Công ty liên kết và công ty liên doanh", "bbox": [428.22, 253.98, 741.44, 271.98]},
+    {
+      "id": "p162-b8",
+      "type": "paragraph",
+      "text": "Liên doanh là thỏa thuận bằng hợp đồng của hai hoặc nhiều bên để cùng thực hiện hoạt\nđộng kinh tế, mà hoạt động này được đồng kiểm soát bởi các bên góp vốn liên doanh.\nCông ty liên kết là tất cả các công ty trong đó Tập đoàn có ảnh hưởng đáng kể nhưng\nkhông phải kiểm soát, thường được thể hiện thông qua việc nắm giữ từ 20% đến 50%\nquyền biểu quyết ở công ty đó. Các khoản đầu tư vào các công ty liên doanh, liên kết được\nhạch toán theo phương pháp vốn chủ sở hữu và được ghi nhận ban đầu theo giá gốc. Các\nkhoản đầu tư vào liên doanh và các công ty liên kết được trình bày trong Bảng cân đối kế\ntoán hợp nhất theo giá gốc được điều chỉnh theo những thay đổi trong phần vốn góp của\nTập đoàn vào phần tài sản thuần của công ty liên kết sau ngày mua khoản đầu tư. Khoản\nđầu tư của Tập đoàn vào các công ty liên kết bao gồm lợi thế thương mại phát sinh khi\nđầu tư, trừ đi những khoản giảm giá tài sản lũy kế.",
+      "bbox": [428.22, 286.49, 1123.04, 544.43]
+    },
+    {
+      "id": "p162-b9",
+      "type": "paragraph",
+      "text": "Lợi nhuận từ công ty liên doanh, liên kết trên báo cáo kết quả hoạt động kinh doanh hợp\nnhất được ghi nhận tương ứng với tỷ lệ sở hữu của Tập đoàn tại các công ty liên doanh,\nliên kết đối với lợi nhuận của các công ty liên doanh, liên kết. Khi phần lỗ trong công ty\nliên doanh, liên kết bằng hoặc vượt quá lợi ích của Tập đoàn trong các công ty liên doanh,\nliên kết, Tập đoàn sẽ không ghi nhận khoản lỗ vượt đó trừ khi đã phát sinh nghĩa vụ hoặc\nđã thanh toán hộ cho các công ty liên doanh, liên kết.",
+      "bbox": [428.22, 564.6, 1123.05, 702.57]
+    },
+    {
+      "id": "p162-b10",
+      "type": "paragraph",
+      "text": "Các khoản lãi hay lỗ chưa thực hiện từ các giao dịch nội bộ giữa Tập đoàn với các bên liên\ndoanh, liên kết sẽ được loại trừ tới mức tương ứng với phần lợi ích của Tập đoàn trong các\nbên liên doanh, liên kết theo quy định kế toán hiện hành.",
+      "bbox": [428.22, 722.75, 1122.97, 788.74]
+    },
+    {"id": "p162-b11", "type": "paragraph", "text": "2.6\nLợi thế thương mại", "bbox": [1165.61, 217.82, 1374.17, 235.82]},
+    {
+      "id": "p162-b12",
+      "type": "paragraph",
+      "text": "Lợi thế thương mại (“LTTM”) trên báo cáo tài chính hợp nhất là phần phụ trội giữa mức\ngiá phí hợp nhất kinh doanh so với phần lợi ích của Tập đoàn trong tổng giá trị hợp lý của\ntài sản thuần của công ty con hay công ty liên doanh, liên kết tại ngày thực hiện nghiệp\nvụ đầu tư.",
+      "bbox": [1165.61, 255.99, 1860.4, 345.98]
+    },
+    {
+      "id": "p162-b13",
+      "type": "paragraph",
+      "text": "LTTM có được từ việc mua công ty con được coi là một loại tài sản, được phân bổ vào kết\nquả hoạt động kinh doanh hợp nhất theo phương pháp đường thẳng trên thời gian hữu\ndụng ước tính của lợi thế thương mại đó nhưng không quá 10 năm. LTTM có được từ việc\nmua khoản đầu tư vào công ty liên doanh, liên kết được tính vào giá trị ghi sổ của khoản\nđầu tư tại thời điểm mua. Tập đoàn không phân bổ khoản LTTM này.",
+      "bbox": [1165.61, 366.15, 1860.44, 480.13]
+    },
+    {
+      "id": "p162-b14",
+      "type": "paragraph",
+      "text": "Khi thoái vốn đầu tư vào công ty con hoặc công ty liên doanh, liên kết, giá trị còn lại của\nkhoản lợi thế thương mại chưa khấu hao hết được ghi giảm tương ứng với tỷ lệ vốn bị thoái\nvà tính vào lợi nhuận sau thuế chưa phân phối trong trường hợp công ty mẹ vẫn nắm giữ\nquyền kiểm soát đối với công ty con hoặc được ghi giảm toàn bộ và tính vào khoản lãi/\nlỗ trên báo cáo kết quả kinh doanh hợp nhất trong trường hợp công ty mẹ mất quyền\nkiểm soát.",
+      "bbox": [1165.61, 500.31, 1860.43, 638.28]
+    },
+    {
+      "id": "p162-b15",
+      "type": "paragraph",
+      "text": "Tập đoàn đánh giá tổn thất LTTM định kỳ hàng năm. Nếu có bằng chứng cho thấy phần\ngiá trị LTTM bị tổn thất lớn hơn số phân bổ hàng năm thì phân bổ theo số LTTM bị tổn thất\nngay trong năm tài chính phát sinh.",
+      "bbox": [1165.61, 658.46, 1860.43, 724.44]
+    },
+    {"id": "p162-b16", "type": "paragraph", "text": "2.7\nTiền và các khoản tương đương tiền", "bbox": [1165.61, 764.62, 1516.92, 782.62]},
+    {
+      "id": "p162-b17",
+      "type": "paragraph",
+      "text": "Tiền và các khoản tương đương tiền bao gồm tiền mặt tại quỹ, tiền gửi ngân hàng không\nkỳ hạn, tiền đang chuyển và các khoản đầu tư ngắn hạn khác có thời hạn đáo hạn ban đầu\nkhông quá ba tháng.",
+      "bbox": [1165.61, 802.8, 1860.46, 868.79]
+    },
+    {"id": "p162-b18", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p162-b19", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p162-b20", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p162-b21", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p162-b22", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p162-b23", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p162-b24", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 465.05, 171.05, 484.05]},
+    {"id": "p162-b25", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
+    {"id": "p162-b26", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
+    {"id": "p162-b27", "type": "furniture", "text": "160", "bbox": [288.22, 988.53, 326.93, 1011.4]}
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "ir_version": "1",
+  "page": 40,
+  "printed_page": "38",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p40-b1", "type": "heading", "text": "Ban Kiểm soát nhiệm kỳ 2022-2027", "bbox": [427.75, 68.74, 941.45, 100.74]},
+    {
+      "id": "p40-b2",
+      "type": "paragraph",
+      "text": "Ban Kiểm soát FPT gồm ba thành viên là những người có nhiều\nnăm kinh nghiệm trong lĩnh vực tài chính, đồng thời có đầy đủ các\nchứng chỉ nghiệp vụ đáp ứng yêu cầu về tiêu chuẩn và điều kiện của\nthành viên Ban Kiểm soát theo đúng quy định pháp luật liên quan.",
+      "bbox": [427.75, 115.98, 980.78, 205.96]
+    },
+    {"id": "p40-b3", "type": "paragraph", "text": "Ông NGUYỄN VIỆT THẮNG\nTrưởng Ban Kiểm soát", "bbox": [428.22, 791.27, 647.93, 833.27]},
+    {
+      "id": "p40-b4",
+      "type": "paragraph",
+      "text": "Ông là thành viên Ban Kiểm soát của FPT từ năm\n2008 và được bầu làm Trưởng Ban Kiểm soát nhiệm kỳ\n2012-2017, 2017-2022 và 2022-2027. Hiện ông đảm\nnhiệm vị trí Phó hiệu trưởng trường ĐH FPT kiêm Viện\ntrưởng viện Quản trị kinh doanh và Công nghệ.",
+      "bbox": [428.22, 853.45, 877.27, 967.42]
+    },
+    {"id": "p40-b5", "type": "paragraph", "text": "Ông NGUYỄN KHẢI HOÀN\nThành viên Ban Kiểm soát", "bbox": [919.82, 791.26, 1133.51, 833.25]},
+    {
+      "id": "p40-b6",
+      "type": "paragraph",
+      "text": "Ông là thành viên Ban Kiểm soát của FPT từ năm 2007\nvà là người có nhiều năm kinh nghiệm trong lĩnh vực tài\nchính. Hiện ông đảm nhiệm vị trí Phó tổng giám đốc,\nGiám đốc Tài chính kiêm nhiệm vị trí Giám đốc Điều hành\nFPT Software.",
+      "bbox": [919.82, 853.43, 1368.86, 967.4]
+    },
+    {"id": "p40-b7", "type": "paragraph", "text": "Bà DƯƠNG THÙY DƯƠNG\nThành viên Ban Kiểm soát", "bbox": [1411.42, 791.24, 1620.88, 833.23]},
+    {
+      "id": "p40-b8",
+      "type": "paragraph",
+      "text": "Làm việc trong lĩnh vực đầu tư ngay sau khi tốt nghiệp,\nbà là một tài năng trẻ với nhiều kinh nghiệm trong quản\ntrị doanh nghiệp, có nhiều đóng góp và hỗ trợ đắc lực cho\ncông tác quản lý vốn nhà nước tại các doanh nghiệp.",
+      "bbox": [1411.42, 853.41, 1860.45, 943.39]
+    },
+    {"id": "p40-b9", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p40-b10", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
+    {"id": "p40-b11", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
+    {"id": "p40-b12", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
+    {"id": "p40-b13", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
+    {"id": "p40-b14", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
+    {"id": "p40-b15", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
+    {"id": "p40-b16", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
+    {"id": "p40-b17", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
+    {"id": "p40-b18", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
+    {"id": "p40-b19", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
+    {"id": "p40-b20", "type": "furniture", "text": "38", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "ir_version": "1",
+  "page": 45,
+  "printed_page": "43",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p45-b1", "type": "heading", "text": "THỊ TRƯỜNG PHẦN MỀM Ô TÔ", "bbox": [427.55, 71.04, 988.86, 111.04]},
+    {"id": "p45-b2", "type": "heading", "text": "TĂNG 15,0% TRONG 05 NĂM TỚI", "bbox": [427.55, 119.04, 1024.27, 159.04]},
+    {
+      "id": "p45-b3",
+      "type": "paragraph",
+      "text": "Theo Grand View Research, quy mô thị trường phần mềm ô tô toàn cầu được định\ngiá 29,3 tỷ USD vào năm 2024 và dự kiến sẽ tăng trưởng kép 15,0% trong giai đoạn\n2025-2030. Còn Gartner nhận định phần mềm và điện khí hóa sẽ vẫn là hai động lực\nchính thúc đẩy sự chuyển đổi của ngành ô tô.",
+      "bbox": [428.0, 173.2, 1123.0, 263.19]
+    },
+    {
+      "id": "p45-b4",
+      "type": "paragraph",
+      "text": "Công nghệ tự động hóa và hệ thống hỗ trợ lái tiên tiến (ADAS) đang được tập trung phát\ntriển nhằm nâng cao mức độ an toàn và trải nghiệm lái xe. Các hãng xe lớn đẩy mạnh\nđầu tư vào xe tự lái, hướng đến cấp độ có thể vận hành hoàn toàn không cần con người\ncan thiệp (cấp độ 4 và 5). Bên cạnh đó, ngành ô tô đang tích hợp Internet vạn vật, giúp\nphương tiện kết nối với điện thoại, nhà thông minh và thiết bị khác, tạo nên hệ sinh thái",
+      "bbox": [428.0, 283.36, 1123.03, 397.34]
+    },
+    {"id": "p45-b5", "type": "paragraph", "text": "tiện ích toàn diện toàn diện cho người dùng.", "bbox": [428.0, 403.33, 776.14, 421.33]},
+    {
+      "id": "p45-b6",
+      "type": "paragraph",
+      "text": "Báo cáo của IDTechEx dự báo có sự tăng trưởng đáng kể trong thị trường ô tô SDV\n(Phương tiện được xác định bằng phần mềm) và AI cho lĩnh vực ô tô, với giá trị ước tính\nhơn 700 tỷ USD vào năm 2034.",
+      "bbox": [428.0, 441.51, 1123.03, 507.5]
+    },
+    {"id": "p45-b7", "type": "heading", "text": "CHUYỂN ĐỔI XANH, PHÁT TRIỂN", "bbox": [427.55, 552.96, 1035.11, 592.96]},
+    {"id": "p45-b8", "type": "heading", "text": "BỀN VỮNG LÀ XU HƯỚNG TẤT YẾU", "bbox": [427.55, 600.96, 1070.74, 640.96]},
+    {
+      "id": "p45-b9",
+      "type": "paragraph",
+      "text": "Theo Grand View Research, thị trường công nghệ xanh và phát triển bền vững toàn\ncầu đạt 19,1 tỷ USD vào năm 2023 và dự kiến đạt tốc độ tăng trưởng kép 22,9%\ntrong giai đoạn 2024-2030 nhờ nhận thức môi trường gia tăng và mối lo ngại về biến đổi\nkhí hậu trong các tổ chức, cá nhân.",
+      "bbox": [428.0, 654.81, 1123.02, 744.79]
+    },
+    {
+      "id": "p45-b10",
+      "type": "paragraph",
+      "text": "Việc tích hợp IoT, AI, Blockchain giúp giảm lãng phí năng lượng, dự báo biến đổi\nmôi trường và nâng cao hiệu suất công nghệ xanh. Đồng thời, việc định giá carbon\nvà hệ thống giao dịch khí thải sẽ khuyến khích doanh nghiệp giảm phát thải nhờ\ncông nghệ kỹ thuật số.",
+      "bbox": [428.0, 764.97, 1123.04, 854.95]
+    },
+    {
+      "id": "p45-b11",
+      "type": "paragraph",
+      "text": "Chính phủ toàn cầu đang triển khai chính sách ưu đãi nhằm hạn chế khí thải carbon và\nthúc đẩy năng lượng sạch, qua đó tăng nhu cầu về công nghệ xanh, giải pháp bền vững.",
+      "bbox": [428.0, 875.13, 1123.11, 917.13]
+    },
+    {"id": "p45-b12", "type": "heading", "text": "VIỆT NAM LÀ TÂM ĐIỂM CỦA TRÍ TUỆ", "bbox": [1166.07, 70.56, 1861.14, 110.56]},
+    {"id": "p45-b13", "type": "heading", "text": "NHÂN TẠO VÀ BÁN DẪN", "bbox": [1166.07, 118.56, 1611.08, 158.56]},
+    {
+      "id": "p45-b14",
+      "type": "paragraph",
+      "text": "Việt Nam hiện thu hút 174 dự án FDI trong lĩnh vực bán dẫn với tổng vốn đăng ký\ngần 11,6 tỷ USD. Doanh thu thị trường bán dẫn Việt Nam dự kiến đạt 18,2 tỷ USD vào năm\n2024 và 31,4 tỷ USD vào năm 2029 với tốc độ tăng trưởng kép 11,48% trong giai đoạn\n2024-2029. Việt Nam hiện có hơn 50 doanh nghiệp thiết kế vi mạch với khoảng 6.000\nkỹ sư. Lĩnh vực đóng gói và kiểm thử có bảy nhà máy với khoảng 6.000 kỹ sư và hơn\n10.000 kỹ thuật viên.",
+      "bbox": [1165.76, 173.2, 1861.57, 311.17]
+    },
+    {"id": "p45-b15", "type": "paragraph", "text": "Thị trường bán dẫn Việt Nam", "bbox": [1250.92, 370.68, 1478.76, 388.68]},
+    {"id": "p45-b16", "type": "paragraph", "text": "Trí tuệ nhân tạo đóng góp", "bbox": [1546.14, 372.19, 1749.84, 390.19]},
+    {"id": "p45-b17", "type": "kpi", "text": "31,4", "bbox": [1250.92, 402.4, 1365.47, 460.4]},
+    {"id": "p45-b18", "type": "kpi", "text": "79,3", "bbox": [1546.14, 403.91, 1660.69, 461.91]},
+    {"id": "p45-b19", "type": "heading", "text": "Tỷ USD", "bbox": [1373.92, 422.2, 1470.14, 452.2]},
+    {"id": "p45-b20", "type": "heading", "text": "Tỷ USD", "bbox": [1669.14, 423.71, 1765.36, 453.71]},
+    {"id": "p45-b21", "type": "paragraph", "text": "vào năm 2029", "bbox": [1250.92, 460.79, 1363.61, 478.79]},
+    {"id": "p45-b22", "type": "paragraph", "text": "cho Việt Nam vào năm 2030", "bbox": [1546.14, 464.7, 1770.38, 482.7]},
+    {
+      "id": "p45-b23",
+      "type": "paragraph",
+      "text": "Trong lĩnh vực AI, theo Báo cáo Cơ hội AI cho Việt Nam của Google, tiềm năng của",
+      "bbox": [1165.76, 546.85, 1860.37, 564.85]
+    },
+    {
+      "id": "p45-b24",
+      "type": "paragraph",
+      "text": "công nghệ này tại Việt Nam là rất lớn. Dự kiến, AI có thể đóng góp 79,3 tỷ USD cho nền\nkinh tế Việt Nam, tương đương 12% GDP vào năm 2030. Báo cáo này cũng chỉ ra rằng,",
+      "bbox": [1165.76, 570.84, 1860.35, 612.83]
+    },
+    {"id": "p45-b25", "type": "paragraph", "text": "Việt Nam đang thiếu hụt nghiêm trọng nguồn lực AI.", "bbox": [1165.76, 618.83, 1577.04, 636.83]},
+    {
+      "id": "p45-b26",
+      "type": "paragraph",
+      "text": "Theo Chương trình Phát triển Nguồn nhân lực ngành công nghiệp bán dẫn đến\nnăm 2030, định hướng đến năm 2050, Việt Nam cần ít nhất 50.000 kỹ sư bán dẫn và\n5.000 kỹ sư có chuyên môn sâu về AI vào năm 2030 để có chỗ đứng trên bản đồ AI,\nbán dẫn thế giới.",
+      "bbox": [1165.76, 657.01, 1860.48, 746.99]
+    },
+    {"id": "p45-b27", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p45-b28", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [44.64, 214.3, 272.71, 233.3]},
+    {"id": "p45-b29", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 264.64, 315.44, 283.64]},
+    {"id": "p45-b30", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [45.96, 318.15, 250.8, 337.15]},
+    {"id": "p45-b31", "type": "furniture", "text": "Bối cảnh kinh tế vĩ mô", "bbox": [85.0, 363.51, 220.2, 377.51]},
+    {"id": "p45-b32", "type": "furniture", "text": "Tiềm năng và cơ hội phát triển của\nngành CNTT", "bbox": [85.0, 395.47, 297.51, 426.27]},
+    {"id": "p45-b33", "type": "furniture", "text": "Chiến lược phát triển 2025 – 2027\ncủa FPT", "bbox": [85.0, 442.99, 293.43, 473.79]},
+    {"id": "p45-b34", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 498.5, 326.26, 517.5]},
+    {"id": "p45-b35", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 548.84, 206.67, 567.84]},
+    {"id": "p45-b36", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.17, 171.05, 618.17]},
+    {"id": "p45-b37", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.51, 212.6, 668.51]},
+    {"id": "p45-b38", "type": "furniture", "text": "03", "bbox": [30.0, 961.65, 195.66, 1080]},
+    {"id": "p45-b39", "type": "furniture", "text": "43", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

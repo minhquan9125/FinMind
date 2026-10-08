@@ -1,0 +1,16 @@
+{
+  "pdf": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\FPT_2024_498332 (1).pdf",
+  "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 119
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "pages": 67,
+    "structuredTablePages": 9,
+    "notesTextOnlyPages": 53
+  }
+}

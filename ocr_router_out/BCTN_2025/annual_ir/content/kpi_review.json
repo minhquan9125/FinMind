@@ -1,0 +1,50 @@
+{
+  "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+  "description": "Verified captions are linked to value-only KPI blocks by block_id; unverified candidates are not added to IR.",
+  "items": [
+    {
+      "page": 137,
+      "section": "esg",
+      "label": "Nhân sự dưới 30 tuổi",
+      "value_raw": "43,9%",
+      "bbox": [
+        259.68,
+        366.98,
+        472.82,
+        478.06
+      ],
+      "auto_label": "chiếm trên tổng số nhân sự toàn Tập đoàn.",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p137-b19",
+      "value_bbox": [
+        281.06,
+        442.06,
+        385.6,
+        478.06
+      ]
+    },
+    {
+      "page": 137,
+      "section": "esg",
+      "label": "Cán bộ quản lý dưới 40 tuổi",
+      "value_raw": "53,2%",
+      "bbox": [
+        427.71,
+        366.98,
+        555.22,
+        478.06
+      ],
+      "auto_label": "Tập đoàn.",
+      "review_status": "verified",
+      "evidence": "visual review of source PDF",
+      "block_id": "p137-b20",
+      "value_bbox": [
+        451.08,
+        442.06,
+        555.22,
+        478.06
+      ]
+    }
+  ]
+}

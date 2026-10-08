@@ -1,0 +1,712 @@
+{
+  "ir_version": "1",
+  "page": 148,
+  "page_size": null,
+  "blocks": [
+    {
+      "id": "t1",
+      "type": "table",
+      "bbox": null,
+      "unit_text": "VND",
+      "columns": [
+        {
+          "key": "c1",
+          "header": "2024",
+          "bbox": null
+        },
+        {
+          "key": "c2",
+          "header": "2023",
+          "bbox": null
+        }
+      ],
+      "rows": [
+        {
+          "ma_so": "100",
+          "label_raw": "TÀI SẢN NGẮN HẠN",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "45.535.942.846.453",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "36.705.751.751.876",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.current_assets"
+            ],
+            "matched_alias": "Tài sản ngắn hạn",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.current_assets",
+            "match_method": "exact_alias",
+            "template_label_vi": "Tài sản ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.current_assets",
+                "label_vi": "Tài sản ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "110",
+          "label_raw": "Tiền và các khoản tương đương tiền",
+          "note": "4",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "9.315.440.438.884",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "8.279.156.683.221",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.cash_equivalents"
+            ],
+            "matched_alias": "Tiền và các khoản tương đương tiền",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.cash_equivalents",
+            "match_method": "exact_alias",
+            "template_label_vi": "Tiền và các khoản tương đương tiền",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.cash_equivalents",
+                "label_vi": "Tiền và các khoản tương đương tiền"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "111",
+          "label_raw": "Tiền",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "6.725.619.929.289",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "5.975.127.685.903",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.cash"
+            ],
+            "matched_alias": "Tiền",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.cash",
+            "match_method": "exact_alias",
+            "template_label_vi": "Tiền",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.cash",
+                "label_vi": "Tiền"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "112",
+          "label_raw": "Các khoản tương đương tiền",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "2.589.820.509.595",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "2.304.028.997.318",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.cash_equivalents_only"
+            ],
+            "matched_alias": "Các khoản tương đương tiền",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.cash_equivalents_only",
+            "match_method": "exact_alias",
+            "template_label_vi": "Các khoản tương đương tiền",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.cash_equivalents_only",
+                "label_vi": "Các khoản tương đương tiền"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "120",
+          "label_raw": "Đầu tư tài chính ngắn hạn",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "21.785.213.686.808",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "16.104.205.358.010",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.short_term_financial_investments"
+            ],
+            "matched_alias": "Đầu tư tài chính ngắn hạn",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.short_term_financial_investments",
+            "match_method": "exact_alias",
+            "template_label_vi": "Đầu tư tài chính ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.short_term_financial_investments",
+                "label_vi": "Đầu tư tài chính ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "123",
+          "label_raw": "Đầu tư nắm giữ đến ngày đáo hạn",
+          "note": "5(a)",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "21.785.213.686.808",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "16.104.205.358.010",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "status": "source_review_candidate",
+            "metric_id": "common.held_to_maturity_current",
+            "candidate_ids": [
+              "common.held_to_maturity_current"
+            ],
+            "matched_alias": "Đầu tư nắm giữ đến ngày đáo hạn",
+            "template_schema_version": "2.3.0",
+            "match_method": "pdf_hierarchy",
+            "review_evidence": "PDF đặt dòng 123 dưới dòng 120 'Đầu tư tài chính ngắn hạn'; số ở dòng 123 bằng toàn bộ dòng 120 trong cả hai kỳ. Chọn metric ngắn hạn; alias chung cũng có metric dài hạn nên cần ngữ cảnh này.",
+            "suggested_metric_id": null,
+            "template_label_vi": "Đầu tư nắm giữ đến ngày đáo hạn ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.held_to_maturity_current",
+                "label_vi": "Đầu tư nắm giữ đến ngày đáo hạn ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "130",
+          "label_raw": "Các khoản phải thu ngắn hạn",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "11.381.523.992.803",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "9.674.343.237.344",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.receivables_current_net"
+            ],
+            "matched_alias": "Các khoản phải thu ngắn hạn",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.receivables_current_net",
+            "match_method": "exact_alias",
+            "template_label_vi": "Các khoản phải thu ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.receivables_current_net",
+                "label_vi": "Các khoản phải thu ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "131",
+          "label_raw": "Phải thu ngắn hạn của khách hàng",
+          "note": "6",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "10.537.019.113.380",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "9.057.647.206.985",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.trade_receivables_current"
+            ],
+            "matched_alias": "Phải thu ngắn hạn của khách hàng",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.trade_receivables_current",
+            "match_method": "exact_alias",
+            "template_label_vi": "Phải thu khách hàng ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.trade_receivables_current",
+                "label_vi": "Phải thu khách hàng ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "132",
+          "label_raw": "Trả trước cho người bán ngắn hạn",
+          "note": "7",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "610.379.845.664",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "482.074.732.731",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.supplier_prepayments_current"
+            ],
+            "matched_alias": "Trả trước cho người bán ngắn hạn",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.supplier_prepayments_current",
+            "match_method": "exact_alias",
+            "template_label_vi": "Trả trước cho người bán ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.supplier_prepayments_current",
+                "label_vi": "Trả trước cho người bán ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "134",
+          "label_raw": "Phải thu theo tiến độ kế hoạch hợp đồng",
+          "note": "8",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "136.097.256.629",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "176.770.894.412",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "status": "no_match",
+            "metric_id": null,
+            "candidate_ids": [],
+            "matched_alias": null,
+            "template_schema_version": "2.3.0",
+            "match_method": "template_alias_missing",
+            "review_evidence": "PDF ghi 'Phải thu theo tiến độ kế hoạch hợp đồng' ở mã 134. Template có metric về phải thu theo tiến độ hợp đồng xây dựng nhưng không có alias nguyên văn này; giữ chưa gán để bổ sung mapping/alias có phê duyệt.",
+            "suggested_metric_id": "common.construction_contract_receivables",
+            "template_label_vi": null,
+            "suggested_label_vi": "Phải thu theo tiến độ hợp đồng xây dựng",
+            "candidate_labels": []
+          }
+        },
+        {
+          "ma_so": "135",
+          "label_raw": "Phải thu về cho vay ngắn hạn",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "9.808.117.590",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "515.430.000",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.loan_receivables_current"
+            ],
+            "matched_alias": "Phải thu về cho vay ngắn hạn",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.loan_receivables_current",
+            "match_method": "exact_alias",
+            "template_label_vi": "Phải thu về cho vay ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.loan_receivables_current",
+                "label_vi": "Phải thu về cho vay ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "136",
+          "label_raw": "Phải thu ngắn hạn khác",
+          "note": "9(a)",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "707.751.585.399",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "869.491.618.296",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.other_receivables_current"
+            ],
+            "matched_alias": "Phải thu ngắn hạn khác",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.other_receivables_current",
+            "match_method": "exact_alias",
+            "template_label_vi": "Phải thu khác ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.other_receivables_current",
+                "label_vi": "Phải thu khác ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "137",
+          "label_raw": "Dự phòng phải thu ngắn hạn khó đòi",
+          "note": "10",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "(619.531.925.859)",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "(912.156.645.080)",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.receivables_allowance_current"
+            ],
+            "matched_alias": "Dự phòng phải thu ngắn hạn khó đòi",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.receivables_allowance_current",
+            "match_method": "exact_alias",
+            "template_label_vi": "Dự phòng phải thu khó đòi ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.receivables_allowance_current",
+                "label_vi": "Dự phòng phải thu khó đòi ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "140",
+          "label_raw": "Hàng tồn kho",
+          "note": "11",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "1.856.756.949.030",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "1.593.411.075.233",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "status": "source_review_candidate",
+            "metric_id": "common.inventories",
+            "candidate_ids": [
+              "common.inventories"
+            ],
+            "matched_alias": "Hàng tồn kho",
+            "template_schema_version": "2.3.0",
+            "match_method": "pdf_reconciliation",
+            "review_evidence": "PDF in mã 140 là dòng tổng in đậm. Giá trị mỗi kỳ bằng dòng 141 cộng dòng 149 (dự phòng âm): 2024 1.990.224.486.513 - 133.467.537.483 = 1.856.756.949.030; 2023 1.724.956.924.671 - 131.545.849.438 = 1.593.411.075.233. Đây là giá trị thuần sau dự phòng.",
+            "suggested_metric_id": null,
+            "template_label_vi": "Hàng tồn kho",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.inventories",
+                "label_vi": "Hàng tồn kho"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "141",
+          "label_raw": "Hàng tồn kho",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "1.990.224.486.513",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "1.724.956.924.671",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "status": "source_review_candidate",
+            "metric_id": "common.inventories_gross",
+            "candidate_ids": [
+              "common.inventories_gross"
+            ],
+            "matched_alias": "Hàng tồn kho",
+            "template_schema_version": "2.3.0",
+            "match_method": "pdf_hierarchy",
+            "review_evidence": "PDF đặt mã 141 làm chi tiết dưới dòng tổng 140; mã 149 là dự phòng giảm giá được trừ khỏi dòng 141 để ra dòng 140. Vì vậy dòng 141 là giá gốc trước dự phòng.",
+            "suggested_metric_id": null,
+            "template_label_vi": "Giá gốc hàng tồn kho",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.inventories_gross",
+                "label_vi": "Giá gốc hàng tồn kho"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "149",
+          "label_raw": "Dự phòng giảm giá hàng tồn kho",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "(133.467.537.483)",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "(131.545.849.438)",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.inventory_write_down_allowance"
+            ],
+            "matched_alias": "Dự phòng giảm giá hàng tồn kho",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.inventory_write_down_allowance",
+            "match_method": "exact_alias",
+            "template_label_vi": "Dự phòng giảm giá hàng tồn kho",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.inventory_write_down_allowance",
+                "label_vi": "Dự phòng giảm giá hàng tồn kho"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "150",
+          "label_raw": "Tài sản ngắn hạn khác",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "1.197.007.778.928",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "1.054.635.398.068",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "status": "source_review_candidate",
+            "metric_id": "common.other_current_assets_total",
+            "candidate_ids": [
+              "common.other_current_assets_total"
+            ],
+            "matched_alias": "Tài sản ngắn hạn khác",
+            "template_schema_version": "2.3.0",
+            "match_method": "pdf_reconciliation",
+            "review_evidence": "PDF in mã 150 là dòng tổng in đậm. Tổng các dòng con 151, 152, 153 khớp dòng 150 ở cả hai kỳ: 2024 479.707.218.558 + 648.697.117.785 + 68.603.442.585 = 1.197.007.778.928; 2023 449.245.737.865 + 528.984.574.991 + 76.405.085.212 = 1.054.635.398.068. Chọn metric tổng nhóm, không chọn metric phần còn lại.",
+            "suggested_metric_id": null,
+            "template_label_vi": "Tài sản ngắn hạn khác - tổng nhóm",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.other_current_assets_total",
+                "label_vi": "Tài sản ngắn hạn khác - tổng nhóm"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "151",
+          "label_raw": "Chi phí trả trước ngắn hạn",
+          "note": "12(a)",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "479.707.218.558",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "449.245.737.865",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.prepaid_expenses_current"
+            ],
+            "matched_alias": "Chi phí trả trước ngắn hạn",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.prepaid_expenses_current",
+            "match_method": "exact_alias",
+            "template_label_vi": "Chi phí trả trước ngắn hạn",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.prepaid_expenses_current",
+                "label_vi": "Chi phí trả trước ngắn hạn"
+              }
+            ]
+          }
+        },
+        {
+          "ma_so": "152",
+          "label_raw": "Thuế giá trị gia tăng (“GTGT”) được khấu trừ",
+          "note": null,
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "648.697.117.785",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "528.984.574.991",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "status": "no_match",
+            "metric_id": null,
+            "candidate_ids": [],
+            "matched_alias": null,
+            "template_schema_version": "2.3.0",
+            "match_method": "template_alias_missing",
+            "review_evidence": "PDF ghi 'Thuế giá trị gia tăng (“GTGT”) được khấu trừ'. Template có metric 'Thuế GTGT được khấu trừ' nhưng không có nhãn in đầy đủ này làm alias; giữ chưa gán đến khi alias/mapping được duyệt.",
+            "suggested_metric_id": "common.vat_recoverable",
+            "template_label_vi": null,
+            "suggested_label_vi": "Thuế GTGT được khấu trừ",
+            "candidate_labels": []
+          }
+        },
+        {
+          "ma_so": "153",
+          "label_raw": "Thuế và các khoản khác phải thu Nhà nước",
+          "note": "13(a)",
+          "bbox": null,
+          "cells": {
+            "c1": {
+              "raw": "68.603.442.585",
+              "bbox": null
+            },
+            "c2": {
+              "raw": "76.405.085.212",
+              "bbox": null
+            }
+          },
+          "metric_match": {
+            "candidate_ids": [
+              "common.state_receivables"
+            ],
+            "matched_alias": "Thuế và các khoản khác phải thu Nhà nước",
+            "template_schema_version": "2.3.0",
+            "status": "candidate",
+            "metric_id": "common.state_receivables",
+            "match_method": "exact_alias",
+            "template_label_vi": "Thuế và các khoản khác phải thu Nhà nước",
+            "suggested_label_vi": null,
+            "candidate_labels": [
+              {
+                "metric_id": "common.state_receivables",
+                "label_vi": "Thuế và các khoản khác phải thu Nhà nước"
+              }
+            ]
+          }
+        }
+      ],
+      "classification": {
+        "group_id": "company_information",
+        "group_label": "Thông tin về doanh nghiệp",
+        "report_type": "balance_sheet",
+        "canonical_title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+        "continuation": false
+      }
+    }
+  ]
+}

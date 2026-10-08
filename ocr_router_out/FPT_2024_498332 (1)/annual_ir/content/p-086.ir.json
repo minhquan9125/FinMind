@@ -1,0 +1,122 @@
+{
+  "ir_version": "1",
+  "page": 86,
+  "printed_page": "84",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p86-b1", "type": "paragraph", "text": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)", "bbox": [428.22, 63.48, 927.22, 81.48]},
+    {"id": "p86-b2", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [1775.07, 73.98, 1859.82, 89.98]},
+    {"id": "p86-b3", "type": "paragraph", "text": "STT", "bbox": [434.79, 108.86, 467.16, 126.86]},
+    {"id": "p86-b4", "type": "paragraph", "text": "Tên tổ chức", "bbox": [473.38, 108.86, 568.81, 126.86]},
+    {
+      "id": "p86-t1",
+      "type": "table",
+      "title": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)",
+      "continued": true,
+      "bbox": [434.79, 108.8, 1854.79, 914.85],
+      "unit_text": "Đơn vị: VNĐ",
+      "columns": [
+        {"key": "c1", "header_lines": ["Mối quan hệ", "liên quan với", "công ty"], "bbox": [608.5, 108.86, 713.07, 174.84]},
+        {"key": "c2", "header_lines": ["Số giấy NSH,", "ngày cấp,", "nơi cấp"], "bbox": [725.67, 108.84, 833.22, 174.83]},
+        {"key": "c3", "header_lines": ["Địa chỉ", "trụ sở chính"], "bbox": [857.48, 108.82, 954.88, 150.81]},
+        {"key": "c4", "header_lines": ["Thời", "điểm", "giao", "dịch"], "bbox": [1057.84, 108.82, 1099.22, 198.8]},
+        {"key": "c5", "header_lines": ["Số nghị quyết/quyết định của ĐHĐCĐ/", "HĐQT thông qua"], "bbox": [1114.11, 108.8, 1425.04, 150.8]},
+        {"key": "c6", "header_lines": ["Nội dung và tổng giá trị giao dịch", "Giao dịch"], "bbox": [1459.83, 108.8, 1696.78, 199.95]},
+        {"key": "c7", "header_lines": ["Nội dung và tổng giá trị giao dịch", "Tổng giá trị"], "bbox": [1701.17, 108.8, 1854.79, 199.95]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "8",
+          "label_raw": "FPT Retail",
+          "note": null,
+          "bbox": [445.71, 218.09, 1854.7, 394.94],
+          "cells": {
+            "c1": {"raw": "Công ty\nliên kết", "bbox": [608.5, 218.1, 669.33, 260.09]},
+            "c2": {"raw": "• 0311609355\n• 08/03/2012\n• Sở Kế hoạch\n• và Đầu tư\n• Tp.HCM", "bbox": [732.33, 218.1, 845.19, 360.78]},
+            "c3": {"raw": "261-263 Khánh Hội,\nPhường 5, Quận 4,\nTp.HCM, Việt Nam.", "bbox": [857.48, 218.14, 1016.84, 284.13]},
+            "c4": {"raw": "Năm\n2024", "bbox": [1057.84, 218.12, 1098.45, 260.12]},
+            "c5": {
+              "raw": "Giao dịch giữa công ty với các doanh\nnghiệp và người có liên quan thực hiện\ntheo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
+              "bbox": [1114.11, 218.12, 1439.97, 356.1]
+            },
+            "c6": {
+              "raw": "Cung cấp dịch vụ, chia sẻ chi\nphí và tiện ích dùng chung\nMua hàng hoá, dịch vụ\nLãi đi vay\nVay\nTrả nợ vay",
+              "bbox": [1459.84, 218.09, 1690.36, 394.94]
+            },
+            "c7": {"raw": "11.378.708.181\n1.626.948.675\n1.012.583.635\n100.000.000.000\n100.000.000.000", "bbox": [1717.58, 218.09, 1854.7, 394.94]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": "9",
+          "label_raw": "FPT Smart Cloud",
+          "note": null,
+          "bbox": [445.71, 410.58, 1854.7, 688.57],
+          "cells": {
+            "c1": {"raw": "Công ty con\ntrong cùng\ntập đoàn", "bbox": [608.51, 410.65, 703.31, 476.64]},
+            "c2": {"raw": "• 0109307938\n• 13/08/2020\n• Sở Kế hoạch\nvà Đầu tư\nTp.Hà Nội", "bbox": [732.33, 410.63, 845.19, 552.98]},
+            "c3": {"raw": "Số 10 phố Phạm Văn\nBạch, phường Dịch\nVọng, quận Cầu Giấy,\nTp.Hà Nội,\nViệt Nam.", "bbox": [857.48, 410.63, 1027.36, 524.61]},
+            "c4": {"raw": "Năm\n2024", "bbox": [1057.84, 410.62, 1098.45, 452.61]},
+            "c5": {
+              "raw": "Giao dịch giữa công ty với các doanh\nnghiệp và người có liên quan thực\nhiệntheo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
+              "bbox": [1114.11, 410.62, 1439.98, 548.59]
+            },
+            "c6": {
+              "raw": "Cung cấp dịch vụ, chia sẻ chi\nphí và tiện ích dùng chung\nMua dịch vụ\nLãi đi vay\nLãi cho vay\nCho vay\nThu hồi khoản cho vay\nVay\nTrả nợ vay",
+              "bbox": [1459.84, 410.58, 1690.36, 688.57]
+            },
+            "c7": {
+              "raw": "18.898.978.845\n26.859.768.309\n2.786.054.795\n5.185.511.647\n239.500.000.000\n324.500.000.000\n686.000.000.000\n210.000.000.000",
+              "bbox": [1717.58, 410.58, 1854.7, 688.57]
+            }
+          }
+        },
+        {
+          "id": "r3",
+          "code": "10",
+          "label_raw": "FPT Digital",
+          "note": null,
+          "bbox": [440.64, 704.27, 1854.74, 914.85],
+          "cells": {
+            "c1": {"raw": "Công ty con\ntrong cùng\ntập đoàn", "bbox": [608.51, 704.29, 703.31, 770.28]},
+            "c2": {"raw": "• 0109525069\n• 08/02/2021\n• Sở Kế hoạch\nvà Đầu tư\n• Tp.Hà Nội", "bbox": [732.33, 704.27, 845.19, 846.97]},
+            "c3": {"raw": "Số 10 phố Phạm Văn\nBạch, phường Dịch\nVọng, quận Cầu Giấy,\nTp.Hà Nội,\nViệt Nam.", "bbox": [857.48, 704.34, 1027.36, 818.31]},
+            "c4": {"raw": "Năm\n2024", "bbox": [1057.84, 704.32, 1098.45, 746.31]},
+            "c5": {
+              "raw": "Giao dịch giữa công ty với các doanh\nnghiệp và người có liên quan thực hiện\ntheo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
+              "bbox": [1114.11, 704.32, 1439.98, 842.29]
+            },
+            "c6": {
+              "raw": "Cung cấp dịch vụ, chia sẻ chi\nphí và tiện ích dùng chung\nMua hàng hoá, dịch vụ\nLãi đi vay\nLãi cho vay\nCho vay\nThu hồi khoản cho vay",
+              "bbox": [1459.84, 704.28, 1690.36, 914.85]
+            },
+            "c7": {"raw": "3.946.480.961\n16.510.185.185\n1.873.472\n822.719.174\n26.000.000.000\n19.000.000.000", "bbox": [1727.75, 704.28, 1854.74, 914.85]}
+          }
+        }
+      ],
+      "logical_table_id": "fpt-2024-insider-contracts"
+    },
+    {"id": "p86-b6", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p86-b7", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.56, 271.58, 232.56]},
+    {"id": "p86-b8", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.9, 315.44, 282.9]},
+    {"id": "p86-b9", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.24, 243.52, 333.24]},
+    {"id": "p86-b10", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.58, 326.26, 383.58]},
+    {"id": "p86-b11", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [45.96, 418.09, 213.95, 437.09]},
+    {"id": "p86-b12", "type": "furniture", "text": "Mô hình quản trị và vai trò của các bên", "bbox": [85.0, 463.45, 322.68, 477.45]},
+    {"id": "p86-b13", "type": "furniture", "text": "Quản trị công ty năm 2024", "bbox": [85.0, 495.41, 248.7, 509.41]},
+    {"id": "p86-b14", "type": "furniture", "text": "Báo cáo của HĐQT", "bbox": [85.0, 527.37, 201.84, 541.37]},
+    {"id": "p86-b15", "type": "furniture", "text": "Báo cáo của Ban Kiểm soát", "bbox": [85.0, 559.33, 253.97, 573.33]},
+    {"id": "p86-b16", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.27, 171.05, 618.27]},
+    {"id": "p86-b17", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.61, 212.6, 668.61]},
+    {"id": "p86-b18", "type": "furniture", "text": "05", "bbox": [30.0, 961.65, 196.06, 1080]},
+    {"id": "p86-b19", "type": "furniture", "text": "84", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

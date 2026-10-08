@@ -1,0 +1,100 @@
+{
+  "ir_version": "1",
+  "page": 163,
+  "printed_page": "161",
+  "page_class": "notes",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p163-b1", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [428.22, 68.74, 1105.62, 100.74]},
+    {"id": "p163-b2", "type": "form_code", "text": "MẪU SỐ B 09 – DN/HN", "bbox": [1673.66, 77.8, 1859.49, 95.8]},
+    {"id": "p163-b3", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2024", "bbox": [428.22, 114.6, 1279.68, 144.6]},
+    {"id": "p163-b4", "type": "paragraph", "text": "2\nCÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU (tiếp theo)", "bbox": [428.22, 187.3, 861.78, 205.3]},
+    {"id": "p163-b5", "type": "paragraph", "text": "2.8\nCác khoản phải thu", "bbox": [428.22, 217.81, 642.27, 235.81]},
+    {
+      "id": "p163-b6",
+      "type": "paragraph",
+      "text": "Các khoản phải thu thể hiện giá trị ghi sổ của các khoản phải thu khách hàng gồm các\nkhoản phải thu mang tính chất thương mại phát sinh từ giao dịch bán hàng hóa và cung\ncấp dịch vụ; và các khoản phải thu khác không có tính thương mại, không liên quan đến\ngiao dịch bán hàng hóa hay cung cấp dịch vụ.",
+      "bbox": [428.22, 255.99, 1123.05, 345.97]
+    },
+    {
+      "id": "p163-b7",
+      "type": "paragraph",
+      "text": "Dự phòng các khoản phải thu khó đòi được lập cho từng khoản phải thu căn cứ vào thời\ngian quá hạn trả nợ gốc theo cam kết nợ ban đầu (không tính đến việc gia hạn nợ giữa\ncác bên) hoặc căn cứ vào mức tổn thất ước tính có thể xảy ra. Chênh lệch giữa khoản dự\nphòng phải lập ở cuối kỳ kế toán này và khoản dự phòng đã lập ở cuối kỳ kế toán trước\nđược ghi nhận tăng hoặc giảm chi phí quản lý doanh nghiệp trong kỳ kế toán. Các khoản\nphải thu được xác định là không thể thu hồi sẽ được xóa sổ.",
+      "bbox": [428.22, 366.15, 1123.02, 504.12]
+    },
+    {
+      "id": "p163-b8",
+      "type": "paragraph",
+      "text": "Các khoản phải thu được phân loại ngắn hạn và dài hạn trên bảng cân đối kế toán hợp\nnhất căn cứ theo kỳ hạn còn lại của các khoản phải thu tại ngày của bảng cân đối kế toán\nhợp nhất tới ngày đến hạn thu hồi.",
+      "bbox": [428.22, 524.3, 1123.05, 590.29]
+    },
+    {"id": "p163-b9", "type": "paragraph", "text": "2.9\nHàng tồn kho", "bbox": [428.22, 608.47, 592.45, 626.47]},
+    {
+      "id": "p163-b10",
+      "type": "paragraph",
+      "text": "Hàng tồn kho được thể hiện theo giá thấp hơn giữa giá gốc và giá trị thuần có thể thực\nhiện được. Giá gốc được xác định trên cơ sở nhập trước xuất trước và bao gồm tất cả các\nchi phí mua, chi phí chế biến và các chi phí liên quan trực tiếp khác phát sinh để có được\nhàng tồn kho ở địa điểm và trạng thái hiện tại. Trong trường hợp các sản phẩm được sản\nxuất, giá gốc bao gồm tất cả các chi phí trực tiếp và chi phí sản xuất chung dựa trên mức\nđộ hoạt động bình thường. Giá trị thuần có thể thực hiện được là giá bán ước tính của\nhàng tồn kho trong năm tài chính kinh doanh bình thường trừ chi phí ước tính để hoàn\nthành sản phẩm và chi phí ước tính cần thiết cho việc tiêu thụ.",
+      "bbox": [428.22, 646.64, 1123.07, 832.6]
+    },
+    {
+      "id": "p163-b11",
+      "type": "paragraph",
+      "text": "Tập đoàn áp dụng phương pháp kê khai thường xuyên để hạch toán hàng tồn kho.",
+      "bbox": [428.22, 852.78, 1073.41, 870.78]
+    },
+    {
+      "id": "p163-b12",
+      "type": "paragraph",
+      "text": "Dự phòng được lập cho hàng tồn kho bị lỗi thời, chậm lưu chuyển và bị hỏng. Chênh lệch\ngiữa khoản dự phòng phải lập ở cuối năm tài chính này và khoản dự phòng đã lập ở cuối\nnăm tài chính trước được ghi nhận tăng hoặc giảm giá vốn hàng bán trong năm tài chính.",
+      "bbox": [428.22, 890.96, 1123.03, 956.95]
+    },
+    {"id": "p163-b13", "type": "paragraph", "text": "2.10 Đầu tư tài chính", "bbox": [1165.61, 217.8, 1351.52, 235.8]},
+    {"id": "p163-b14", "type": "paragraph", "text": "(a)\nĐầu tư nắm giữ đến ngày đáo hạn", "bbox": [1165.61, 248.31, 1502.38, 266.31]},
+    {
+      "id": "p163-b15",
+      "type": "paragraph",
+      "text": "Các khoản đầu tư nắm giữ đến ngày đáo hạn là các khoản đầu tư mà Tập đoàn có ý định\nvà có khả năng giữ đến ngày đáo hạn.",
+      "bbox": [1165.61, 286.49, 1860.43, 328.49]
+    },
+    {
+      "id": "p163-b16",
+      "type": "paragraph",
+      "text": "Các khoản đầu tư nắm giữ đến ngày đáo hạn bao gồm các khoản tiền gửi ngân hàng có\nkỳ hạn trên ba tháng, và các khoản đầu tư nắm giữ đến ngày đáo hạn khác. Các khoản\nđầu tư này ban đầu được ghi nhận theo giá gốc. Sau đó, Tập đoàn thực hiện việc rà soát\nđối với tất cả các khoản đầu tư để ghi nhận dự phòng vào cuối năm tài chính.",
+      "bbox": [1165.61, 348.66, 1860.45, 438.65]
+    },
+    {
+      "id": "p163-b17",
+      "type": "paragraph",
+      "text": "Dự phòng giảm giá đầu tư nắm giữ đến ngày đáo hạn được lập trên cơ sở có bằng chứng\nchắc chắn cho thấy một phần hoặc toàn bộ khoản đầu tư có thể không thu hồi được.\nChênh lệch giữa khoản dự phòng lập ở cuối kỳ kế toán này và khoản dự phòng đã lập ở\ncuối kỳ kế toán trước được ghi nhận tăng hoặc giảm chi phí tài chính trong năm tài chính.\nKhoản dự phòng được hoàn nhập không vượt quá giá trị ghi sổ ban đầu.",
+      "bbox": [1165.61, 458.83, 1860.44, 572.8]
+    },
+    {
+      "id": "p163-b18",
+      "type": "paragraph",
+      "text": "Các khoản đầu tư nắm giữ đến ngày đáo hạn được phân loại ngắn hạn và dài hạn trên\nbảng cân đối kế toán hợp nhất căn cứ theo kỳ hạn của các khoản đầu tư nắm giữ đến\nngày đáo hạn tại ngày của bảng cân đối kế toán hợp nhất đến ngày đáo hạn.",
+      "bbox": [1165.61, 592.98, 1860.47, 658.97]
+    },
+    {"id": "p163-b19", "type": "paragraph", "text": "(b)\nĐầu tư vào công ty liên doanh, liên kết", "bbox": [1165.61, 679.15, 1540.36, 697.15]},
+    {
+      "id": "p163-b20",
+      "type": "paragraph",
+      "text": "Đầu tư vào công ty liên doanh, liên kết được trình bày theo phương pháp vốn chủ sở hữu\ntrong báo cáo tài chính hợp nhất (Thuyết minh 2.5).",
+      "bbox": [1165.61, 717.32, 1860.41, 759.32]
+    },
+    {"id": "p163-b21", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p163-b22", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p163-b23", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p163-b24", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p163-b25", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p163-b26", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p163-b27", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 465.05, 171.05, 484.05]},
+    {"id": "p163-b28", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
+    {"id": "p163-b29", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
+    {"id": "p163-b30", "type": "furniture", "text": "161", "bbox": [288.22, 988.53, 326.93, 1011.4]}
+  ]
+}

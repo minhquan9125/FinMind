@@ -1,0 +1,112 @@
+{
+  "ir_version": "1",
+  "page": 186,
+  "printed_page": "185",
+  "page_class": "notes",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p186-b1", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [259.68, 42.32, 697.42, 62.32]},
+    {"id": "p186-b2", "type": "paragraph", "text": "Mẫu số B 09 – DN/HN", "bbox": [899.64, 48.6, 1016.96, 60.6]},
+    {"id": "p186-b3", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2025", "bbox": [259.68, 66.32, 846.92, 86.32]},
+    {
+      "id": "p186-b4",
+      "type": "paragraph",
+      "text": "2. Các chính sách kế toán chủ yếu\n2.23. Ghi nhận doanh thu (Tiếp theo)",
+      "bbox": [258.41, 109.12, 502.29, 144.36]
+    },
+    {"id": "p186-b5", "type": "paragraph", "text": "(b) Doanh thu cung cấp dịch vụ (Tiếp theo)", "bbox": [259.07, 156.1, 439.99, 166.1]},
+    {"id": "p186-b6", "type": "paragraph", "text": "Doanh thu cung cấp dịch vụ bao gồm:", "bbox": [259.87, 176.66, 432.48, 186.66]},
+    {
+      "id": "p186-b7",
+      "type": "paragraph",
+      "text": "Doanh thu từ sản xuất phần mềm xuất khẩu, phát triển phần mềm, tích hợp hệ\nthống và dịch vụ tin học",
+      "bbox": [259.87, 193.66, 623.93, 214.67]
+    },
+    {
+      "id": "p186-b8",
+      "type": "paragraph",
+      "text": "Doanh thu được ghi nhận trong báo cáo kết quả hoạt động kinh doanh hợp nhất theo\ntỷ lệ phần trăm hoàn thành công việc tại ngày kết thúc năm tài chính. Tỷ lệ phần trăm\nhoàn thành công việc được đánh giá dựa trên khảo sát các công việc đã được thực\nhiện, hoặc tỷ lệ phần trăm giữa chi phí phát sinh/thời gian thực hiện của phần công\nviệc đã hoàn thành tại ngày kết thúc năm tài chính so với tổng chi phí dự toán/thời\ngian thực hiện dự kiến của hợp đồng. Khi kết quả thực hiện hợp đồng không thể được\nước tính một cách đáng tin cậy, doanh thu chỉ được ghi nhận tương đương với chi phí\ncủa hợp đồng đã phát sinh mà việc được hoàn trả là tương đối chắc chắn.",
+      "bbox": [259.87, 221.67, 624.03, 308.67]
+    },
+    {"id": "p186-b9", "type": "paragraph", "text": "Doanh thu từ các dịch vụ viễn thông", "bbox": [259.87, 315.67, 422.91, 325.67]},
+    {
+      "id": "p186-b10",
+      "type": "paragraph",
+      "text": "Doanh thu từ các dịch vụ viễn thông được ghi nhận theo thời gian mà các dịch vụ\nthực tế được cung cấp cho khách hàng.",
+      "bbox": [259.87, 332.67, 623.94, 353.67]
+    },
+    {"id": "p186-b11", "type": "paragraph", "text": "Doanh thu từ dịch vụ quảng cáo trực tuyến", "bbox": [259.87, 360.67, 453.2, 370.67]},
+    {
+      "id": "p186-b12",
+      "type": "paragraph",
+      "text": "Doanh thu từ dịch vụ quảng cáo trực tuyến được ghi nhận theo khối lượng công\nviệc hoàn thành.",
+      "bbox": [259.87, 377.67, 624.0, 398.67]
+    },
+    {"id": "p186-b13", "type": "paragraph", "text": "Doanh thu từ học phí và phí khác", "bbox": [259.87, 405.67, 408.73, 415.67]},
+    {
+      "id": "p186-b14",
+      "type": "paragraph",
+      "text": "Doanh thu được ghi nhận trong kỳ khi dịch vụ được cung cấp. Hầu hết học phí và\nphí được nộp trước khi bắt đầu mỗi học kỳ. Học phí và các khoản phí thu trước\ncủa sinh viên được ghi nhận vào tài khoản doanh thu chưa thực hiện trên bảng\ncân đối kế toán hợp nhất và được hạch toán vào báo cáo kết quả hoạt động kinh\ndoanh hợp nhất trong năm tài chính có học kỳ liên quan.",
+      "bbox": [259.87, 422.67, 624.02, 476.67]
+    },
+    {"id": "p186-b15", "type": "paragraph", "text": "(c) Thu nhập lãi", "bbox": [259.33, 490.17, 328.87, 500.17]},
+    {
+      "id": "p186-b16",
+      "type": "paragraph",
+      "text": "Tiền lãi được ghi nhận trên cơ sở thời gian và lãi suất thực tế từng kỳ khi thỏa mãn\nđồng thời hai (2) điều kiện sau:\n• Có khả năng thu được lợi ích kinh tế từ giao dịch đó; và",
+      "bbox": [259.79, 509.33, 623.54, 546.33]
+    },
+    {"id": "p186-b17", "type": "paragraph", "text": "(Tiếp theo)", "bbox": [507.09, 114.72, 545.67, 122.72]},
+    {"id": "p186-b18", "type": "paragraph", "text": "(d) Thu nhập từ cổ tức/lợi nhuận được chia", "bbox": [651.11, 156.8, 843.8, 166.8]},
+    {
+      "id": "p186-b19",
+      "type": "paragraph",
+      "text": "Thu nhập từ cổ tức/lợi nhuận được chia được ghi nhận khi thỏa mãn đồng thời hai\n(2) điều kiện sau:\n• Có khả năng thu được lợi ích kinh tế từ giao dịch đó; và\n• Doanh thu được xác định tương đối chắc chắn.\nThu nhập từ cổ tức/lợi nhuận được chia được ghi nhận khi Tập đoàn xác lập quyền\nnhận cổ tức/lợi nhuận từ các đơn vị đầu tư.",
+      "bbox": [651.57, 177.44, 1015.36, 253.44]
+    },
+    {"id": "p186-b20", "type": "paragraph", "text": "2.24. Các khoản giảm trừ doanh thu", "bbox": [651.91, 275.66, 850.97, 287.66]},
+    {
+      "id": "p186-b21",
+      "type": "paragraph",
+      "text": "Các khoản giảm trừ doanh thu bao gồm chiết khấu thương mại, hàng bán bị trả lại\nvà giảm giá hàng bán. Các khoản giảm trừ doanh thu phát sinh cùng năm tài chính\ntiêu thụ sản phẩm, hàng hóa, dịch vụ được ghi nhận điều chỉnh giảm doanh thu\nnăm tài chính phát sinh.",
+      "bbox": [651.91, 298.27, 1015.69, 344.27]
+    },
+    {
+      "id": "p186-b22",
+      "type": "paragraph",
+      "text": "Các khoản giảm trừ doanh thu đối với sản phẩm, hàng hóa, dịch vụ tiêu thụ trong\nnăm tài chính, phát sinh sau ngày của bảng cân đối kế toán hợp nhất nhưng trước",
+      "bbox": [651.91, 351.27, 1015.7, 373.27]
+    },
+    {"id": "p186-b23", "type": "paragraph", "text": "2.25. Giá vốn hàng bán và dịch vụ cung cấp", "bbox": [652.69, 397.16, 892.46, 409.16]},
+    {
+      "id": "p186-b24",
+      "type": "paragraph",
+      "text": "Giá vốn hàng bán và dịch vụ cung cấp là tổng chi phí phát sinh của thành phẩm,\nhàng hóa, vật tư xuất bán và dịch vụ cung cấp cho khách hàng trong năm tài chính,\nđược ghi nhận theo nguyên tắc phù hợp với doanh thu và nguyên tắc thận trọng.",
+      "bbox": [652.61, 419.54, 1016.37, 453.54]
+    },
+    {"id": "p186-b25", "type": "paragraph", "text": "2.26. Chi phí tài chính", "bbox": [654.85, 479.19, 774.89, 491.19]},
+    {
+      "id": "p186-b26",
+      "type": "paragraph",
+      "text": "Chi phí tài chính phản ánh những khoản chi phí hoạt động tài chính phát sinh trong\nnăm tài chính chủ yếu bao gồm chi phí lãi vay, dự phòng tổn thất đầu tư tài chính,\nvà lỗ tỷ giá hối đoái.",
+      "bbox": [654.85, 500.8, 1018.6, 534.8]
+    },
+    {"id": "p186-b27", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p186-b28", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.62, 108.7, 155.28, 117.12]},
+    {"id": "p186-b29", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.62, 134.8, 96.98, 143.12]},
+    {"id": "p186-b30", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.62, 160.9, 122.58, 169.12]},
+    {"id": "p186-b31", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.62, 187.0, 142.43, 195.12]},
+    {"id": "p186-b32", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.62, 213.1, 190.19, 221.12]},
+    {"id": "p186-b33", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
+    {"id": "p186-b34", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
+    {"id": "p186-b35", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
+    {"id": "p186-b36", "type": "furniture", "text": "185", "bbox": [58.61, 546.47, 77.95, 558.52]},
+    {"id": "p186-b37", "type": "furniture", "text": "• Doanh thu được xác định tương đối chắc chắn.", "bbox": [259.79, 548.33, 475.59, 558.33]}
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "ir_version": "1",
+  "page": 24,
+  "printed_page": "22",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p24-b1", "type": "heading", "text": "NGÀNH NGHỀ KINH DOANH", "bbox": [428.53, 80.76, 942.81, 120.76]},
+    {
+      "id": "p24-b2",
+      "type": "paragraph",
+      "text": "Trong suốt 36 năm qua, FPT luôn khẳng định vị thế tiên phong, dẫn đầu trong\ncác lĩnh vực Công nghệ, Viễn thông và Giáo dục. Đón đầu xu hướng công nghệ,\nthị trường, FPT đã tạo dựng Hệ sinh thái dịch vụ, sản phẩm, giải pháp, nền tảng\nMade by FPT thúc đẩy phát triển, tăng trưởng bền vững của các tổ chức, doanh\nnghiệp cũng như mang đến những trải nghiệm mới, khác biệt cho người dùng.",
+      "bbox": [428.22, 143.27, 1075.45, 257.25]
+    },
+    {"id": "p24-b3", "type": "heading", "text": "DỊCH VỤ, GIẢI PHÁP TIÊU BIỂU", "bbox": [1188.12, 143.29, 1446.2, 161.29]},
+    {"id": "p24-b4", "type": "paragraph", "text": "Nhóm dịch vụ", "bbox": [1188.7, 191.28, 1304.49, 209.28]},
+    {
+      "id": "p24-b5",
+      "type": "paragraph",
+      "text": "• Tư vấn Chuyển đổi số, Chuyển đổi xanh và Chuyển đổi trí tuệ nhân tạo;",
+      "bbox": [1175.53, 239.29, 1741.32, 257.29]
+    },
+    {
+      "id": "p24-b6",
+      "type": "paragraph",
+      "text": "• Thiết kế, triển khai, tích hợp, vận hành, bảo trì, kiểm thử ... các hệ thống CNTT;",
+      "bbox": [1175.53, 287.29, 1807.52, 305.29]
+    },
+    {"id": "p24-b7", "type": "heading", "text": "Công nghệ", "bbox": [483.05, 293.01, 641.13, 325.01]},
+    {"id": "p24-b8", "type": "paragraph", "text": "• Dịch vụ an toàn, an ninh mạng;", "bbox": [1175.53, 335.3, 1432.54, 353.3]},
+    {"id": "p24-b9", "type": "heading", "text": "Top 1", "bbox": [428.22, 350.86, 570.15, 408.86]},
+    {"id": "p24-b10", "type": "heading", "text": "250", "bbox": [656.69, 350.86, 754.83, 408.86]},
+    {"id": "p24-b11", "type": "kpi", "text": "10.000", "bbox": [897.39, 354.98, 1070.46, 412.98]},
+    {"id": "p24-b12", "type": "paragraph", "text": "Nền tảng, giải pháp,", "bbox": [656.69, 408.25, 817.06, 426.25]},
+    {"id": "p24-b13", "type": "paragraph", "text": "Nền tảng AI toàn cầu", "bbox": [428.22, 410.01, 594.5, 428.01]},
+    {"id": "p24-b14", "type": "paragraph", "text": "sản phẩm Made by FPT", "bbox": [656.69, 429.85, 842.94, 447.85]},
+    {
+      "id": "p24-b15",
+      "type": "paragraph",
+      "text": "• Cung cấp các giải pháp dựa trên các nền tảng công nghệ: NVIDIA, Landing AI, SAP,\nOracle, Microsoft, ESRI ….",
+      "bbox": [1175.53, 383.3, 1860.41, 425.3]
+    },
+    {"id": "p24-b16", "type": "paragraph", "text": "Chứng chỉ NVIDIA", "bbox": [897.42, 408.25, 1039.13, 426.25]},
+    {"id": "p24-b17", "type": "paragraph", "text": "Nhóm sản phẩm, giải pháp", "bbox": [1188.7, 455.3, 1415.74, 473.3]},
+    {"id": "p24-b18", "type": "kpi", "text": "37.666", "bbox": [428.22, 490.06, 598.42, 548.06]},
+    {"id": "p24-b19", "type": "heading", "text": "05", "bbox": [656.69, 490.06, 722.12, 548.06]},
+    {"id": "p24-b20", "type": "heading", "text": "02", "bbox": [897.16, 490.06, 962.58, 548.06]},
+    {
+      "id": "p24-b21",
+      "type": "paragraph",
+      "text": "• Cung cấp các nền tảng công nghệ tiên tiến như: nền tảng trí tuệ nhân tạo FPT.AI, nền",
+      "bbox": [1175.53, 503.31, 1860.46, 521.31]
+    },
+    {"id": "p24-b22", "type": "heading", "text": "Nhà máy AI", "bbox": [976.78, 509.86, 1125.67, 539.86]},
+    {"id": "p24-b23", "type": "paragraph", "text": "Nhân lực công nghệ", "bbox": [428.22, 549.21, 587.45, 567.21]},
+    {"id": "p24-b24", "type": "paragraph", "text": "Tổ hợp đào tạo và\ncông viên phần mềm", "bbox": [656.69, 549.21, 822.55, 588.81]},
+    {"id": "p24-b25", "type": "heading", "text": "VỊ THẾ TRÊN THỊ TRƯỜNG", "bbox": [430.8, 683.27, 647.75, 701.27]},
+    {"id": "p24-b26", "type": "paragraph", "text": "• Top 50 Công ty dịch vụ CNTT châu Á;", "bbox": [417.63, 731.28, 723.49, 749.28]},
+    {"id": "p24-b27", "type": "paragraph", "text": "• Công ty dịch vụ CNTT lớn nhất Đông Nam Á;", "bbox": [417.63, 779.29, 779.57, 797.29]},
+    {
+      "id": "p24-b28",
+      "type": "paragraph",
+      "text": "• Top 1 công ty tư vấn chuyển đổi số và chuyển đổi xanh cho các tổ chức, doanh nghiệp\nViệt Nam thuộc nhiều lĩnh vực như Sản xuất, Nông nghiệp, Năng lượng,\nBất động sản …;",
+      "bbox": [417.63, 827.29, 1072.41, 893.28]
+    },
+    {
+      "id": "p24-b29",
+      "type": "paragraph",
+      "text": "• Đối tác tin cậy, cùng kiến tạo các giá trị mới bằng công nghệ của các doanh nghiệp\nvà tổ chức dẫn đầu Việt Nam và trên toàn cầu;",
+      "bbox": [417.63, 923.29, 1072.26, 965.28]
+    },
+    {
+      "id": "p24-b30",
+      "type": "paragraph",
+      "text": "tảng điện toán đám mây FPT Cloud, nền tảng quản trị doanh nghiệp Base.vn;",
+      "bbox": [1186.87, 527.3, 1794.1, 545.3]
+    },
+    {"id": "p24-b31", "type": "paragraph", "text": "Tại Việt Nam và Nhật Bản", "bbox": [897.14, 549.21, 1097.89, 567.21]},
+    {"id": "p24-b32", "type": "paragraph", "text": "• Phát triển Chíp nguồn và Chíp IoT;", "bbox": [1175.53, 575.31, 1456.26, 593.31]},
+    {
+      "id": "p24-b33",
+      "type": "paragraph",
+      "text": "• Sản phẩm, giải pháp chuyển đổi số tích hợp công nghệ AI, AI tạo sinh (Generative\nAI), tự động hóa (RPA), kết nối vạn vật (IoT) … chuyên sâu cho các lĩnh vực như:\nChính phủ, Viễn thông, Ngân hàng - Tài chính, Y tế, Giao thông vận tải, Tài chính công,\nNăng lượng, Doanh nghiệp, Ô tô …;",
+      "bbox": [1175.53, 623.32, 1860.46, 713.3]
+    },
+    {
+      "id": "p24-b34",
+      "type": "paragraph",
+      "text": "• Sản phẩm, giải pháp tiên tiến giải quyết các bài toán nghiệp vụ chuyên sâu của doanh\nnghiệp như: quản lý chuỗi cung ứng, quản lý tài chính, quản lý nguồn nhân lực, quản\nlý quan hệ khách hàng & trải nghiệm người dùng, quản lý phát triển bền vững, chuyển\nđổi quy trình kinh doanh ….",
+      "bbox": [1175.53, 743.3, 1860.51, 833.29]
+    },
+    {"id": "p24-b35", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p24-b36", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
+    {"id": "p24-b37", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
+    {"id": "p24-b38", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
+    {"id": "p24-b39", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
+    {"id": "p24-b40", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
+    {"id": "p24-b41", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
+    {"id": "p24-b42", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
+    {"id": "p24-b43", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
+    {"id": "p24-b44", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
+    {"id": "p24-b45", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
+    {"id": "p24-b46", "type": "furniture", "text": "22", "bbox": [293.0, 988.53, 318.8, 1011.4]},
+    {
+      "id": "p24-b47",
+      "type": "furniture",
+      "text": "• Nhà cung cấp dịch vụ Trí tuệ nhân tạo và Điện toán đám mây đẳng cấp thế giới.",
+      "bbox": [417.63, 995.29, 1054.94, 1013.29]
+    }
+  ]
+}

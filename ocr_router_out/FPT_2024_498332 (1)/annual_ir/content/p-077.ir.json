@@ -1,0 +1,158 @@
+{
+  "ir_version": "1",
+  "page": 77,
+  "printed_page": "75",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {
+      "id": "p77-b1",
+      "type": "heading",
+      "text": "DANH SÁCH THÀNH VIÊN HĐQT NHIỆM KỲ 2022-2027 VÀ SỐ CUỘC HỌP THAM DỰ TRONG NĂM 2024",
+      "bbox": [428.22, 65.52, 1276.71, 83.52]
+    },
+    {
+      "id": "p77-b2",
+      "type": "paragraph",
+      "text": "• Về quy hoạch nhân sự kế cận, HĐQT vẫn tiếp tục thực hiện và bám sát chương trình quy hoạch và luân chuyển cán bộ lãnh đạo cấp cao nhằm mục tiêu xây dựng đội ngũ cán bộ lãnh đạo\nvững mạnh ở mọi cấp. Lãnh đạo FPT các cấp được luân chuyển trong các mảng kinh doanh của Tập đoàn để tạo sự trải nghiệm đa dạng, nâng cao năng lực điều hành cũng như bổ\nsung lực lượng trẻ vào Ban Điều hành Tập đoàn và các công ty thành viên.",
+      "bbox": [434.88, 911.06, 1860.36, 977.04]
+    },
+    {"id": "p77-b3", "type": "paragraph", "text": "Thành viên HĐQT", "bbox": [433.89, 112.69, 577.59, 130.69]},
+    {
+      "id": "p77-t1",
+      "type": "table",
+      "title": "DANH SÁCH THÀNH VIÊN HĐQT NHIỆM KỲ 2022-2027 VÀ SỐ CUỘC HỌP THAM DỰ TRONG NĂM 2024",
+      "continued": false,
+      "bbox": [433.82, 112.69, 1844.33, 853.52],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Chức vụ"], "bbox": [750.24, 112.69, 816.77, 130.69]},
+        {"key": "c2", "header_lines": ["Ngày bắt đầu là", "thành viên HĐQT"], "bbox": [1291.75, 112.69, 1430.83, 154.68]},
+        {"key": "c3", "header_lines": ["Số buổi họp HĐQT", "tham dự"], "bbox": [1521.04, 112.69, 1673.0, 154.68]},
+        {"key": "c4", "header_lines": ["Tỷ lệ tham dự họp"], "bbox": [1697.96, 112.69, 1844.33, 130.69]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Ông Trương Gia Bình",
+          "note": null,
+          "bbox": [433.89, 170.9, 1799.08, 286.43],
+          "cells": {
+            "c1": {
+              "raw": "• Chủ tịch HĐQT FPT;\n• Thành viên HĐQT FPT Telecom;\n• Chủ tịch HĐTV FPT Education;\n• Thành viên HĐQT Trường Đại học FPT.",
+              "bbox": [756.9, 170.9, 1069.61, 286.43]
+            },
+            "c2": {"raw": "07/04/2022\nTái bầu cử", "bbox": [1315.33, 170.92, 1406.81, 212.91]},
+            "c3": {"raw": "11/11", "bbox": [1573.96, 170.92, 1619.69, 188.92]},
+            "c4": {"raw": "100%", "bbox": [1752.39, 170.92, 1799.08, 188.92]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Ông Bùi Quang Ngọc",
+          "note": null,
+          "bbox": [433.87, 302.14, 1799.06, 385.16],
+          "cells": {
+            "c1": {"raw": "• Phó chủ tịch HĐQT FPT;\n• Chủ sở hữu Công ty TNHH BĐS BQ;\n• Thành viên HĐQT Trường Đại học FPT.", "bbox": [756.88, 302.14, 1069.59, 385.16]},
+            "c2": {"raw": "07/04/2022\nTái bầu cử", "bbox": [1315.31, 302.14, 1406.79, 344.13]},
+            "c3": {"raw": "11/11", "bbox": [1573.94, 302.14, 1619.68, 320.14]},
+            "c4": {"raw": "100%", "bbox": [1752.37, 302.14, 1799.06, 320.14]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Ông Đỗ Cao Bảo",
+          "note": null,
+          "bbox": [433.85, 400.85, 1799.05, 540.37],
+          "cells": {
+            "c1": {
+              "raw": "• Ủy viên HĐQT FPT;\n• Cổ đông lớn Công ty CP Đầu tư và Thương mại BDM;\n• Ủy viên HĐQT Công ty Cổ phần Đô thị FPT Đà Nẵng;\n• Thành viên góp vốn Công ty TNHH BDMD Aumoria\nĐà Nẵng.",
+              "bbox": [756.86, 400.85, 1182.53, 540.37]
+            },
+            "c2": {"raw": "07/04/2022\nTái bầu cử", "bbox": [1315.3, 400.85, 1406.77, 442.85]},
+            "c3": {"raw": "11/11", "bbox": [1573.92, 400.85, 1619.66, 418.85]},
+            "c4": {"raw": "100%", "bbox": [1752.35, 400.85, 1799.05, 418.85]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Ông Jean Charles Belliol",
+          "note": null,
+          "bbox": [433.84, 556.07, 1799.03, 598.06],
+          "cells": {
+            "c1": {"raw": "• Ủy viên HĐQT độc lập.", "bbox": [756.85, 556.07, 944.71, 574.07]},
+            "c2": {"raw": "07/04/2022\nTái bầu cử", "bbox": [1315.28, 556.07, 1406.75, 598.06]},
+            "c3": {"raw": "11/11", "bbox": [1573.9, 556.07, 1619.64, 574.07]},
+            "c4": {"raw": "100%", "bbox": [1752.34, 556.07, 1799.03, 574.07]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Ông Hiroshi Yokotsuka",
+          "note": null,
+          "bbox": [433.82, 613.77, 1799.03, 631.77],
+          "cells": {
+            "c1": {"raw": "• Ủy viên HĐQT độc lập.", "bbox": [756.83, 613.77, 944.7, 631.77]},
+            "c2": {"raw": "07/04/2022", "bbox": [1315.26, 613.77, 1406.74, 631.77]},
+            "c3": {"raw": "11/11", "bbox": [1573.9, 613.77, 1619.64, 631.77]},
+            "c4": {"raw": "100%", "bbox": [1752.34, 613.77, 1799.03, 631.77]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "Ông Hampapur Rangadore Binod",
+          "note": null,
+          "bbox": [433.82, 647.79, 1793.95, 730.81],
+          "cells": {
+            "c1": {"raw": "• Ủy viên HĐQT độc lập FPT;\n• Cố vấn trưởng FPT Software;\n• Giám đốc FPT Ấn Độ.", "bbox": [756.83, 647.79, 995.21, 730.81]},
+            "c2": {"raw": "07/04/2022", "bbox": [1315.26, 647.79, 1406.74, 665.79]},
+            "c3": {"raw": "10/11", "bbox": [1573.9, 647.79, 1619.64, 665.79]},
+            "c4": {"raw": "91%", "bbox": [1757.41, 647.79, 1793.95, 665.79]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Bà Trần Thị Hồng Lĩnh",
+          "note": null,
+          "bbox": [433.82, 746.51, 1799.03, 853.52],
+          "cells": {
+            "c1": {
+              "raw": "• Ủy viên HĐQT FPT;\n• Phó trưởng Ban Đầu tư 4\nTổng công ty Đầu tư và kinh doanh vốn nhà nước;\n• Thành viên HĐQT FPT Telecom.",
+              "bbox": [756.83, 746.51, 1157.44, 853.52]
+            },
+            "c2": {"raw": "07/04/2022", "bbox": [1315.26, 746.51, 1406.74, 764.51]},
+            "c3": {"raw": "11/11", "bbox": [1573.9, 746.51, 1619.64, 764.51]},
+            "c4": {"raw": "100%", "bbox": [1752.34, 746.51, 1799.03, 764.51]}
+          }
+        }
+      ]
+    },
+    {"id": "p77-b5", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p77-b6", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.56, 271.58, 232.56]},
+    {"id": "p77-b7", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.9, 315.44, 282.9]},
+    {"id": "p77-b8", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.24, 243.52, 333.24]},
+    {"id": "p77-b9", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.58, 326.26, 383.58]},
+    {"id": "p77-b10", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [45.96, 418.09, 213.95, 437.09]},
+    {"id": "p77-b11", "type": "furniture", "text": "Mô hình quản trị và vai trò của các bên", "bbox": [85.0, 463.45, 322.68, 477.45]},
+    {"id": "p77-b12", "type": "furniture", "text": "Quản trị công ty năm 2024", "bbox": [85.0, 495.41, 248.7, 509.41]},
+    {"id": "p77-b13", "type": "furniture", "text": "Báo cáo của HĐQT", "bbox": [85.0, 527.37, 201.84, 541.37]},
+    {"id": "p77-b14", "type": "furniture", "text": "Báo cáo của Ban Kiểm soát", "bbox": [85.0, 559.33, 253.97, 573.33]},
+    {"id": "p77-b15", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.27, 171.05, 618.27]},
+    {"id": "p77-b16", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.61, 212.6, 668.61]},
+    {"id": "p77-b17", "type": "furniture", "text": "05", "bbox": [30.0, 961.65, 196.06, 1080]},
+    {"id": "p77-b18", "type": "furniture", "text": "75", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

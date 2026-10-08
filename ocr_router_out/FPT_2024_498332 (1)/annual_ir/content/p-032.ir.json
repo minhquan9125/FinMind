@@ -1,0 +1,167 @@
+{
+  "ir_version": "1",
+  "page": 32,
+  "printed_page": "30",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p32-b1", "type": "paragraph", "text": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)", "bbox": [428.73, 67.54, 788.31, 85.54]},
+    {"id": "p32-b2", "type": "heading", "text": "THỐNG KÊ GIAO DỊCH VÀ GIÁ CỔ PHIẾU NĂM 2024", "bbox": [428.51, 664.22, 855.33, 682.22]},
+    {"id": "p32-b3", "type": "paragraph", "text": "Giá cao nhất", "bbox": [442.75, 718.77, 546.76, 736.77]},
+    {"id": "p32-b4", "type": "paragraph", "text": "152.500\nVNĐ/cổ phiếu", "bbox": [431.66, 766.2, 545.98, 808.19]},
+    {"id": "p32-b5", "type": "paragraph", "text": "Giá thấp nhất", "bbox": [700.64, 718.77, 811.33, 736.77]},
+    {"id": "p32-b6", "type": "paragraph", "text": "Khối lượng giao dịch /Ngày", "bbox": [922.57, 718.77, 1144.52, 736.77]},
+    {"id": "p32-b7", "type": "paragraph", "text": "89.094", "bbox": [757.61, 766.2, 813.46, 784.2]},
+    {"id": "p32-b8", "type": "paragraph", "text": "4.261.467", "bbox": [1063.19, 766.2, 1144.45, 784.2]},
+    {"id": "p32-b9", "type": "paragraph", "text": "VNĐ/cổ phiếu", "bbox": [705.68, 790.19, 813.48, 808.19]},
+    {"id": "p32-b10", "type": "paragraph", "text": "Cổ phiếu", "bbox": [1073.71, 790.19, 1144.5, 808.19]},
+    {"id": "p32-b11", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [1775.99, 75.3, 1860.48, 91.3]},
+    {"id": "p32-b12", "type": "paragraph", "text": "Tính từ ngày 01/01/2024 - 31/12/2024", "bbox": [1608.02, 666.85, 1860.49, 682.85]},
+    {"id": "p32-b13", "type": "paragraph", "text": "Khối lượng giao dịch nhiều nhất", "bbox": [1262.55, 718.77, 1524.01, 736.77]},
+    {"id": "p32-b14", "type": "paragraph", "text": "Khối lượng giao dịch ít nhất", "bbox": [1621.9, 718.77, 1848.09, 736.77]},
+    {"id": "p32-b15", "type": "paragraph", "text": "13.706.800", "bbox": [1434.03, 766.2, 1525.43, 784.2]},
+    {"id": "p32-b16", "type": "paragraph", "text": "1.241.700", "bbox": [1765.19, 766.2, 1846.45, 784.2]},
+    {"id": "p32-b17", "type": "paragraph", "text": "Cổ phiếu", "bbox": [1454.71, 790.19, 1525.51, 808.19]},
+    {"id": "p32-b18", "type": "paragraph", "text": "Cổ phiếu", "bbox": [1775.71, 790.19, 1846.5, 808.19]},
+    {"id": "p32-b19", "type": "paragraph", "text": "Lần", "bbox": [442.89, 114.88, 473.46, 132.88]},
+    {"id": "p32-b20", "type": "paragraph", "text": "Lý do", "bbox": [835.56, 114.88, 878.99, 132.88]},
+    {
+      "id": "p32-t1",
+      "type": "table",
+      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)",
+      "continued": true,
+      "bbox": [442.89, 114.88, 1845.98, 590.5],
+      "unit_text": "Đơn vị: VNĐ",
+      "columns": [
+        {"key": "c1", "header_lines": ["Thời điểm", "phát hành"], "bbox": [515.45, 114.88, 598.68, 156.88]},
+        {"key": "c2", "header_lines": ["Vốn điều lệ", "sau khi phát hành"], "bbox": [646.29, 114.88, 793.06, 156.88]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "32",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu cho CBNV có thành tích đóng góp trong năm 2019.",
+          "note": null,
+          "bbox": [448.02, 173.1, 1558.72, 191.1],
+          "cells": {
+            "c1": {"raw": "04/2020", "bbox": [532.59, 173.1, 598.63, 191.1]},
+            "c2": {"raw": "6.817.504.780.000", "bbox": [640.57, 173.1, 792.92, 191.1]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": "33",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2019 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 15%.",
+          "note": null,
+          "bbox": [448.02, 206.81, 1567.45, 224.81],
+          "cells": {
+            "c1": {"raw": "06/2020", "bbox": [532.59, 206.81, 598.63, 224.81]},
+            "c2": {"raw": "7.839.874.860.000", "bbox": [640.57, 206.81, 792.92, 224.81]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": "34",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu theo chương trình lựa chọn cho đối tượng là CBNV có thành tích đóng góp trong năm 2020; và phát hành cổ phiếu mới theo chương trình phát hành cổ phiếu cho đối tượng là cán bộ lãnh đạo cấp cao năm 2021.",
+          "note": null,
+          "bbox": [448.02, 240.52, 1845.98, 282.52],
+          "cells": {
+            "c1": {"raw": "04/2021", "bbox": [532.59, 240.52, 598.63, 258.52]},
+            "c2": {"raw": "7.891.972.540.000", "bbox": [640.57, 240.52, 792.92, 258.52]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": "35",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2020 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 15%.",
+          "note": null,
+          "bbox": [448.02, 298.23, 1567.45, 316.23],
+          "cells": {
+            "c1": {"raw": "06/2021", "bbox": [532.59, 298.23, 598.63, 316.23]},
+            "c2": {"raw": "9.075.516.490.000", "bbox": [640.57, 298.23, 792.92, 316.23]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": "36",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu theo chương trình lựa chọn cho đối tượng là CBNV có thành tích đóng góp trong năm 2021; và phát hành cổ phiếu mới theo chương trình phát hành cổ phiếu cho đối tượng là cán bộ lãnh đạo cấp cao năm 2022.",
+          "note": null,
+          "bbox": [448.02, 331.95, 1845.98, 373.94],
+          "cells": {
+            "c1": {"raw": "05/2022", "bbox": [532.59, 331.95, 598.63, 349.95]},
+            "c2": {"raw": "9.141.959.140.000", "bbox": [640.57, 331.95, 792.92, 349.95]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": "37",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2021 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 20%.",
+          "note": null,
+          "bbox": [448.02, 389.65, 1567.45, 407.65],
+          "cells": {
+            "c1": {"raw": "07/2022 10.970.265.720.000", "bbox": [532.59, 389.65, 792.92, 407.65]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": "38",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu theo chương trình lựa chọn cho đối tượng là CBNV có thành tích đóng góp trong năm 2022; và phát hành cổ phiếu mới theo chương trình phát hành cổ phiếu cho đối tượng là cán bộ lãnh đạo cấp cao năm 2023.",
+          "note": null,
+          "bbox": [448.02, 423.37, 1845.98, 465.36],
+          "cells": {
+            "c1": {"raw": "05/2023 11.043.316.220.000", "bbox": [532.59, 423.37, 792.92, 441.37]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": "39",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2022 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 15%.",
+          "note": null,
+          "bbox": [448.02, 481.08, 1567.45, 499.08],
+          "cells": {
+            "c1": {"raw": "07/2023 12.699.688.750.000", "bbox": [532.59, 481.08, 792.92, 499.08]}
+          }
+        },
+        {
+          "id": "r9",
+          "code": "40",
+          "label_raw": "Tăng vốn sau đợt phát hành cổ phiếu để tăng vốn từ nguồn vốn chủ sở hữu cho cổ đông hiện hữu theo tỉ lệ 15%.",
+          "note": null,
+          "bbox": [448.02, 514.79, 1718.85, 532.79],
+          "cells": {
+            "c1": {"raw": "06/2024 14.604.480.660.000", "bbox": [532.59, 514.79, 792.92, 532.79]}
+          }
+        },
+        {
+          "id": "r10",
+          "code": "41",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu theo chương trình lựa chọn cho đối tượng là CBNV có thành tích đóng góp trong năm 2023; và phát hành cổ phiếu theo chương trình lựa chọn cho đối tượng là cán bộ lãnh đạo cấp cao năm 2024.",
+          "note": null,
+          "bbox": [448.02, 548.5, 1845.96, 590.5],
+          "cells": {
+            "c1": {"raw": "10/2024 14.710.691.830.000", "bbox": [532.59, 548.5, 792.92, 566.5]}
+          }
+        }
+      ],
+      "logical_table_id": "fpt-2024-charter-capital"
+    },
+    {"id": "p32-b22", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p32-b23", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
+    {"id": "p32-b24", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
+    {"id": "p32-b25", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
+    {"id": "p32-b26", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
+    {"id": "p32-b27", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
+    {"id": "p32-b28", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
+    {"id": "p32-b29", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
+    {"id": "p32-b30", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
+    {"id": "p32-b31", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
+    {"id": "p32-b32", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
+    {"id": "p32-b33", "type": "furniture", "text": "30", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "ir_version": "1",
+  "page": 117,
+  "printed_page": "115",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p117-b1", "type": "heading", "text": "QUẢN TRỊ DỮ LIỆU VÀ AN TOÀN THÔNG TIN", "bbox": [1024.61, 71.04, 1834.59, 111.04]},
+    {"id": "p117-b2", "type": "heading", "text": "Phương pháp quản trị và nguyên tắc chung", "bbox": [1024.3, 123.92, 1637.48, 155.92]},
+    {
+      "id": "p117-b3",
+      "type": "paragraph",
+      "text": "Hoạt động thu thập, xử lý, lưu trữ và sử dụng dữ liệu của các bên liên quan trong quá trình quản trị dữ liệu\nđược quy định thống nhất trong toàn Tập đoàn nhằm đảm bảo: Tính bảo mật; Tính toàn vẹn; Tính sẵn sàng;\nvà Khả năng truy cập, chất lượng của dữ liệu.",
+      "bbox": [1023.3, 171.97, 1860.43, 237.95]
+    },
+    {
+      "id": "p117-b4",
+      "type": "paragraph",
+      "text": "Việc thu thập, xử lý, lưu trữ và sử dụng dữ liệu của Tập đoàn được tuân thủ theo các nguyên tắc sau:",
+      "bbox": [1023.3, 258.13, 1807.89, 276.13]
+    },
+    {
+      "id": "p117-b5",
+      "type": "paragraph",
+      "text": "• Nguyên tắc hợp pháp: tất cả các hành động diễn ra bên trong hệ thống quản trị dữ liệu phải tuân thủ quy\nđịnh của pháp luật;",
+      "bbox": [1010.13, 293.11, 1860.36, 335.1]
+    },
+    {
+      "id": "p117-b6",
+      "type": "paragraph",
+      "text": "• Nguyên tắc mục đích: dữ liệu chỉ được sử dụng đúng theo mục đích hợp pháp đã được phê duyệt bởi các\ncấp có thẩm quyền;",
+      "bbox": [1010.13, 352.44, 1860.29, 394.43]
+    },
+    {
+      "id": "p117-b7",
+      "type": "paragraph",
+      "text": "• Nguyên tắc về chất lượng dữ liệu: dữ liệu phải đảm bảo được tính sẵn có, toàn vẹn và phù hợp với mục\nđích sử dụng xuyên suốt vòng đời của dữ liệu;",
+      "bbox": [1010.13, 411.76, 1860.35, 453.76]
+    },
+    {
+      "id": "p117-b8",
+      "type": "paragraph",
+      "text": "• Nguyên tắc an ninh: phải đảm bảo tính an toàn thông tin xuyên suốt trong quá trình thu thập, xử lý, lưu trữ\nvà sử dụng dữ liệu. Không tiết lộ các thông tin bảo mật cho bất kỳ ai bên ngoài Công ty, trừ trường hợp do\nyêu cầu công việc, tuy nhiên cần phải thực hiện các biện pháp bảo vệ phù hợp như ký kết cam kết bảo mật\nthông tin với các bên liên quan trước khi tiết lộ;",
+      "bbox": [1010.13, 471.09, 1860.41, 561.07]
+    },
+    {
+      "id": "p117-b9",
+      "type": "paragraph",
+      "text": "• Nguyên tắc quản trị: dữ liệu liên quan đến khách hàng của CTTV được Tập đoàn thu thập, khai thác, sử\ndụng và quản lý, lưu trữ tập trung nhằm điều chỉnh, cập nhật, bảo mật và cải tiến các sản phẩm, dịch vụ, giải\npháp, ứng dụng, thiết bị mà FPT đang và sẽ cung cấp tới khách hàng.",
+      "bbox": [1010.13, 578.41, 1860.4, 644.4]
+    },
+    {
+      "id": "p117-b10",
+      "type": "paragraph",
+      "text": "Hệ thống vận hành quản trị dữ liệu gồm các chức năng: (1) Thu thập từ các nguồn và tiến hành lưu trữ, (2)\nPhân tích, bóc tách dữ liệu quan trọng, có giá trị, (3) Xử lý dữ liệu tương ứng với các mục đích, các ứng dụng.\nTập đoàn cũng đẩy mạnh việc ứng dụng công nghệ trong quản trị dữ liệu để đảm bảo quản trị xuyên suốt\nvà cung cấp dữ liệu đúng mục đích, linh hoạt nhất.",
+      "bbox": [1024.31, 661.39, 1860.47, 751.37]
+    },
+    {
+      "id": "p117-b11",
+      "type": "paragraph",
+      "text": "Mô hình quản trị dữ liệu của FPT được thiết lập để đảm bảo đồng thời các yếu tố sau:",
+      "bbox": [1024.31, 771.55, 1734.78, 789.55]
+    },
+    {
+      "id": "p117-b12",
+      "type": "paragraph",
+      "text": "• Trách nhiệm lãnh đạo cam kết cao nhất trong việc thu thập, xử lý, lưu trữ và sử dụng dữ liệu;",
+      "bbox": [1015.82, 808.86, 1749.17, 826.86]
+    },
+    {
+      "id": "p117-b13",
+      "type": "paragraph",
+      "text": "• Xác định có thẩm quyền các quyết định liên quan đến dữ liệu của Tập đoàn;",
+      "bbox": [1015.82, 841.37, 1623.0, 859.37]
+    },
+    {
+      "id": "p117-b14",
+      "type": "paragraph",
+      "text": "• Xác định tiêu chuẩn, thủ tục, quy trình để hướng dẫn việc quản lý, khai thác dữ liệu;",
+      "bbox": [1015.82, 873.88, 1681.59, 891.88]
+    },
+    {
+      "id": "p117-b15",
+      "type": "paragraph",
+      "text": "• Xác định công nghệ, cơ sở hạ tầng được sử dụng thống nhất trong Tập đoàn để đảm bảo tính an toàn, bảo\nmật khi khai thác dữ liệu;",
+      "bbox": [1015.82, 906.39, 1860.38, 948.38]
+    },
+    {
+      "id": "p117-b16",
+      "type": "paragraph",
+      "text": "• Thực thi nghiêm túc trong toàn Tập đoàn các chính sách liên quan đã ban hành;",
+      "bbox": [1015.82, 962.89, 1657.81, 980.89]
+    },
+    {"id": "p117-b17", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p117-b18", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p117-b19", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p117-b20", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p117-b21", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p117-b22", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p117-b23", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [45.96, 468.22, 178.32, 487.22]},
+    {"id": "p117-b24", "type": "furniture", "text": "Thông điệp và Định hướng ESG", "bbox": [85.0, 513.58, 275.88, 527.58]},
+    {"id": "p117-b25", "type": "furniture", "text": "Quản trị hướng đến phát triển bền vững", "bbox": [85.0, 545.54, 326.01, 559.54]},
+    {"id": "p117-b26", "type": "furniture", "text": "Môi trường làm việc đẳng cấp, hạnh phúc", "bbox": [85.0, 577.5, 340.61, 591.5]},
+    {"id": "p117-b27", "type": "furniture", "text": "Hoạt động vì môi trường xanh", "bbox": [85.0, 609.46, 267.5, 623.46]},
+    {"id": "p117-b28", "type": "furniture", "text": "Song hành vì sự phát triển cộng đồng", "bbox": [85.5, 641.42, 315.28, 655.42]},
+    {"id": "p117-b29", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
+    {"id": "p117-b30", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
+    {"id": "p117-b31", "type": "furniture", "text": "115", "bbox": [288.22, 988.53, 326.93, 1011.4]},
+    {
+      "id": "p117-b32",
+      "type": "furniture",
+      "text": "• Giám sát tuân thủ và xác định rủi ro trong trường hợp bị rò rỉ dữ liệu.",
+      "bbox": [1015.82, 995.4, 1562.01, 1013.4]
+    }
+  ]
+}

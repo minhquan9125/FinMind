@@ -1,0 +1,62 @@
+{
+  "ir_version": "1",
+  "page": 60,
+  "printed_page": "59",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p60-b1", "type": "paragraph", "text": "Phân tích kết quả kinh doanh theo khối", "bbox": [259.29, 43.06, 546.23, 59.06]},
+    {
+      "id": "p60-b2",
+      "type": "paragraph",
+      "text": "Để phản ánh đúng mô hình hoạt động của Tập đoàn, kết quả kinh doanh được phân tích theo từng khối và phân tách theo từng lĩnh vực cụ thể. Cách tiếp cận này giúp đánh giá\nchính xác, hiệu quả vận hành và đóng góp của từng lĩnh vực hoạt động vào tăng trưởng chung của Tập đoàn. Cụ thể, hoạt động kinh doanh của Tập đoàn được chia thành\nba khối chính, bao gồm: khối Công nghệ với hai lĩnh vực là Dịch vụ CNTT cho thị trường nước ngoài và Dịch vụ CNTT cho thị trường trong nước; khối Viễn thông với\nhai lĩnh vực Dịch vụ Viễn thông và Dịch vụ Nội dung số; khối Giáo dục, Đầu tư và Khác.",
+      "bbox": [259.29, 74.22, 1016.14, 120.22]
+    },
+    {"id": "p60-b3", "type": "paragraph", "text": "Cơ cấu doanh thu theo khối", "bbox": [259.29, 138.38, 382.53, 148.38]},
+    {"id": "p60-b4", "type": "paragraph", "text": "6.132\n8,8%", "bbox": [275.03, 185.49, 351.75, 202.49]},
+    {"id": "p60-b5", "type": "paragraph", "text": "0,05%", "bbox": [308.14, 215.94, 344.68, 227.94]},
+    {"id": "p60-b6", "type": "paragraph", "text": "Cơ cấu lợi nhuận trước thuế theo khối", "bbox": [652.3, 138.38, 820.04, 148.38]},
+    {"id": "p60-b7", "type": "paragraph", "text": "2.773\n21,2%", "bbox": [668.05, 185.49, 750.53, 202.49]},
+    {"id": "p60-b8", "type": "paragraph", "text": "23,1%", "bbox": [701.45, 215.94, 734.9, 227.94]},
+    {"id": "p60-b9", "type": "heading", "text": "70.113", "bbox": [385.38, 281.89, 485.68, 317.89]},
+    {"id": "p60-b10", "type": "heading", "text": "13.044", "bbox": [774.04, 281.89, 883.05, 317.89]},
+    {"id": "p60-b11", "type": "paragraph", "text": "11,6%", "bbox": [416.9, 323.82, 475.55, 345.82]},
+    {"id": "p60-b12", "type": "paragraph", "text": "19.507\n27,8%", "bbox": [274.36, 384.6, 362.28, 401.6]},
+    {"id": "p60-b13", "type": "paragraph", "text": "10,8%", "bbox": [306.29, 411.62, 340.62, 423.62]},
+    {"id": "p60-b14", "type": "paragraph", "text": "44.475", "bbox": [512.87, 384.69, 567.66, 401.69]},
+    {"id": "p60-b15", "type": "paragraph", "text": "4.364\n33,5%", "bbox": [667.38, 384.95, 754.37, 401.95]},
+    {"id": "p60-b16", "type": "paragraph", "text": "63,4%", "bbox": [573.63, 388.26, 608.48, 400.26]},
+    {"id": "p60-b17", "type": "paragraph", "text": "13,7%", "bbox": [575.1, 411.62, 608.0, 423.62]},
+    {"id": "p60-b18", "type": "paragraph", "text": "21,6%", "bbox": [701.45, 411.62, 735.02, 423.62]},
+    {"id": "p60-b19", "type": "paragraph", "text": "Khối Công nghệ", "bbox": [500.33, 469.55, 558.6, 477.55]},
+    {"id": "p60-b20", "type": "paragraph", "text": "Khối Viễn thông", "bbox": [589.2, 469.55, 646.53, 477.55]},
+    {"id": "p60-b21", "type": "paragraph", "text": "Khối Giáo dục, Đầu tư và Khác", "bbox": [680.74, 469.55, 791.41, 477.55]},
+    {"id": "p60-b22", "type": "paragraph", "text": "17,8%", "bbox": [809.91, 323.82, 870.46, 345.82]},
+    {"id": "p60-b23", "type": "paragraph", "text": "5.907\n45,3%", "bbox": [908.71, 384.93, 991.27, 401.93]},
+    {"id": "p60-b24", "type": "paragraph", "text": "12,9%", "bbox": [957.22, 411.62, 990.79, 423.62]},
+    {"id": "p60-b25", "type": "paragraph", "text": "Đơn vị: Tỷ VNĐ", "bbox": [962.05, 469.55, 1015.78, 477.55]},
+    {"id": "p60-b26", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p60-b27", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p60-b28", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p60-b29", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p60-b30", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.12, 142.43, 195.31]},
+    {"id": "p60-b31", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 213.31, 190.33, 221.31]},
+    {
+      "id": "p60-b32",
+      "type": "furniture",
+      "text": "Báo cáo của Ban Điều hành về\nkết quả kinh doanh 2025 và\nnhận định 2026",
+      "bbox": [67.84, 242.11, 179.14, 272.11]
+    },
+    {"id": "p60-b33", "type": "furniture", "text": "Đánh giá của HĐQT về hoạt động\ncủa Tập đoàn", "bbox": [67.84, 281.97, 190.13, 300.97]},
+    {"id": "p60-b34", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 317.12, 121.59, 325.31]},
+    {"id": "p60-b35", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 343.12, 100.4, 351.31]},
+    {"id": "p60-b36", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 369.12, 166.49, 377.31]},
+    {"id": "p60-b37", "type": "furniture", "text": "59", "bbox": [61.18, 546.47, 75.38, 558.52]}
+  ]
+}

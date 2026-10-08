@@ -1,0 +1,365 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/ocr-router/ir-v1.schema.json",
+  "title": "Document IR v1 (draft, suggested fixes 2026-10-06)",
+  "description": "One page of extracted document structure, in the same shape for every engine. IR records only what is printed on the page. Parsing numbers, units and periods, and mapping rows to template metrics, happen in later steps and are stored outside the IR.",
+  "$comment": "Suggested replacement for Schema.txt. Each change is explained in REVIEW_Schema_IR_v1_20261006.md; ids such as A1 or B3 refer to that review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ir_version", "page", "page_size", "source", "blocks"],
+  "properties": {
+    "ir_version": { "const": "1" },
+    "page": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Physical page index in the PDF, starting at 1. This is the page used in locators."
+    },
+    "printed_page": {
+      "$comment": "C1: moved out of source; string so that 'iv' or '146' are both kept verbatim. Replaces source.physical_page, which duplicated page.",
+      "type": ["string", "null"],
+      "minLength": 1,
+      "description": "Page number printed on the page, verbatim. null when none is printed."
+    },
+    "page_class": {
+      "$comment": "B4: one classification per page, values aligned with the template statement enum. Replaces document_context and block-level classification.",
+      "type": ["string", "null"],
+      "enum": [
+        "cover", "toc", "letter", "narrative", "kpi", "company_information", "auditor_report",
+        "balance_sheet", "income_statement", "cash_flow", "notes", "other", null
+      ],
+      "description": "Result of page classification (pipeline step A7). May be null right after extraction."
+    },
+    "page_size": {
+      "$comment": "A3: required, never null. Without it bbox values have no unit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "unit"],
+      "properties": {
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "enum": ["pt", "px"] }
+      },
+      "description": "Coordinate space of every bbox on this page, origin at upper left. TEXT_LAYER uses pt. OCR engines may use px of the rendered image, together with source.render. Gemini box_2d ([y0, x0, y1, x1] scaled to 0-1000) must be converted into this space before it is written to IR."
+    },
+    "source": {
+      "$comment": "A3: required. C1: document_name replaced by document_sha256; form_code removed (it is page content, kept as a form_code text block).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine", "tool", "document_sha256"],
+      "properties": {
+        "engine": { "enum": ["TEXT_LAYER", "TESSERACT", "GEMINI", "MERGED"] },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Tool or model with version, e.g. 'pdftotext 26.04 -bbox-layout', 'tesseract 5 vie', 'gemini-3.8-flash'."
+        },
+        "prompt_version": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "description": "Prompt version for GEMINI output; null for other engines."
+        },
+        "document_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "sha256 of the source PDF. Identifies the document; file names are not reliable."
+        },
+        "file_name": {
+          "type": "string",
+          "description": "For display only. Never used to identify company, period or report type."
+        },
+        "image_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "sha256 of the rendered page image sent to an OCR engine; null for TEXT_LAYER."
+        },
+        "render": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["dpi", "rotation"],
+          "properties": {
+            "dpi": { "type": "number", "exclusiveMinimum": 0 },
+            "rotation": {
+              "enum": [0, 90, 180, 270],
+              "description": "Clockwise degrees applied to the rendered image before OCR."
+            }
+          },
+          "description": "How the page image was rendered. Required when page_size.unit is px, so px can be converted back to PDF points."
+        }
+      }
+    },
+    "blocks": {
+      "$comment": "B1: discriminated by type with if/then instead of oneOf, so validation errors point at the failing field.",
+      "type": "array",
+      "description": "Blocks in reading order.",
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "if": { "properties": { "type": { "const": "table" } } },
+        "then": { "$ref": "#/$defs/table_block" },
+        "else": { "$ref": "#/$defs/text_block" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "page_size": { "properties": { "unit": { "const": "px" } } } } },
+      "then": {
+        "properties": { "source": { "required": ["render"], "properties": { "render": { "type": "object" } } } }
+      }
+    },
+    {
+      "if": { "properties": { "source": { "properties": { "engine": { "enum": ["TESSERACT", "GEMINI"] } } } } },
+      "then": {
+        "properties": { "source": { "required": ["image_sha256"], "properties": { "image_sha256": { "type": "string" } } } }
+      }
+    },
+    {
+      "if": { "properties": { "source": { "properties": { "engine": { "const": "GEMINI" } } } } },
+      "then": {
+        "properties": { "source": { "required": ["prompt_version"], "properties": { "prompt_version": { "type": "string" } } } }
+      }
+    }
+  ],
+  "$defs": {
+    "bbox": {
+      "description": "[x0, y0, x1, y1] in page_size space, origin at upper left; null means not yet measured. x0 <= x1, y0 <= y1 and staying inside the page are checked in code.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "array",
+          "prefixItems": [
+            { "type": "number", "minimum": 0 },
+            { "type": "number", "minimum": 0 },
+            { "type": "number", "minimum": 0 },
+            { "type": "number", "minimum": 0 }
+          ],
+          "minItems": 4,
+          "maxItems": 4
+        }
+      ]
+    },
+    "text_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "text", "bbox"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Positional id, unique within the page, e.g. 'p148-b1'."
+        },
+        "type": { "enum": ["heading", "paragraph", "kpi", "stamp", "signature", "form_code", "toc", "furniture"] },
+        "text": { "type": "string", "description": "Verbatim text; lines joined with \\n." },
+        "bbox": { "$ref": "#/$defs/bbox" }
+      }
+    },
+    "table_block": {
+      "$comment": "A4: classification and metric mapping removed. B4: title kept verbatim; continued and logical_table_id given separate roles.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "bbox", "unit_text", "columns", "rows"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Positional id, unique within the page, e.g. 'p148-t1'. Do not encode classification in the id."
+        },
+        "type": { "const": "table" },
+        "title": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "description": "Caption printed for this table, verbatim, e.g. 'BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT (tiếp theo)'."
+        },
+        "continued": {
+          "type": "boolean",
+          "description": "Observed on this page: true when the table is marked as continued from a previous page, e.g. '(tiếp theo)'."
+        },
+        "logical_table_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Set when pages are linked: the same value for every page fragment of one logical table."
+        },
+        "bbox": {
+          "$ref": "#/$defs/bbox",
+          "description": "Whole table, including column header lines."
+        },
+        "unit_text": {
+          "type": ["string", "null"],
+          "description": "Unit printed once for the whole table, verbatim, e.g. 'Đơn vị: VND'. null when the unit is printed in column headers or not printed."
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/column" }
+        },
+        "rows": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/row" }
+        }
+      }
+    },
+    "column": {
+      "$comment": "B2: header replaced by header_lines so spanning lines such as 'Tại ngày 31 tháng 12 năm' are kept.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "header_lines", "bbox"],
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^c[1-9][0-9]*$",
+          "description": "Value column key, left to right: c1, c2, ... Code, label and note columns are row fields, not columns."
+        },
+        "header_lines": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Every header line above this column, top to bottom and verbatim, including lines that span several columns, e.g. ['Tại ngày 31 tháng 12 năm', '2024', 'VND']. Empty when the fragment repeats no header."
+        },
+        "bbox": { "$ref": "#/$defs/bbox" }
+      }
+    },
+    "row": {
+      "$comment": "A1: field is code (was required as code but declared as ma_so). B3: id, indent and bold added. A4: metric_match removed.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "code", "label_raw", "note", "bbox", "cells"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique within the table, top to bottom: r1, r2, ... Used as the row key in locators, because code may be null, repeated or misread."
+        },
+        "code": {
+          "type": ["string", "null"],
+          "description": "Mã số as printed, verbatim ('100', '411a', '01'). null when the table has no code column (bank statements) or the row prints none."
+        },
+        "label_raw": {
+          "type": "string",
+          "description": "Row label verbatim; wrapped lines joined with one space. Printed formulas such as '(10 = 01 - 02)' are kept."
+        },
+        "note": {
+          "type": ["string", "null"],
+          "description": "Thuyết minh reference verbatim ('4', '5(a)', '16, 17'); null when blank."
+        },
+        "indent": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "description": "x0 of the label in page_size space; null when not measured. Used to rebuild row hierarchy when there is no code."
+        },
+        "bold": {
+          "type": ["boolean", "null"],
+          "description": "Whether the label is printed bold; null when the engine cannot tell."
+        },
+        "bbox": { "$ref": "#/$defs/bbox" },
+        "cells": {
+          "type": "object",
+          "propertyNames": { "pattern": "^c[1-9][0-9]*$" },
+          "additionalProperties": { "$ref": "#/$defs/cell" },
+          "description": "Keyed by column key. Omit a key when nothing is printed in that cell. Every key must exist in columns (checked in code)."
+        }
+      }
+    },
+    "cell": {
+      "$comment": "A2: raw may be null; votes carry per-engine readings with confidence. A4: label removed.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw", "bbox"],
+      "properties": {
+        "raw": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "description": "Printed string verbatim, e.g. '(619.531.925.859)' or '-'. null means something is printed but could not be read. For MERGED output this is the chosen reading."
+        },
+        "bbox": { "$ref": "#/$defs/bbox" },
+        "votes": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "enum": ["TEXT_LAYER", "TESSERACT", "GEMINI"] },
+          "additionalProperties": { "$ref": "#/$defs/vote" },
+          "description": "Per-engine readings of this cell. Required on every printed cell of MERGED output (checked in code)."
+        }
+      }
+    },
+    "vote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw"],
+      "properties": {
+        "raw": { "type": ["string", "null"], "minLength": 1 },
+        "conf": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Confidence reported by the engine on a 0-100 scale (Tesseract); null when the engine reports none (Gemini)."
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "ir_version": "1",
+      "page": 148,
+      "printed_page": "146",
+      "page_class": "balance_sheet",
+      "page_size": { "width": 1920, "height": 1080, "unit": "pt" },
+      "source": {
+        "engine": "TEXT_LAYER",
+        "tool": "pdftotext 26.04 -bbox-layout",
+        "prompt_version": null,
+        "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+        "file_name": "FPT_2024_498332.pdf",
+        "image_sha256": null,
+        "render": null
+      },
+      "blocks": [
+        { "id": "p148-b1", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 108.89, 333.44, 146.96] },
+        { "id": "p148-b2", "type": "heading", "text": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT", "bbox": [428.61, 55.17, 950.66, 100.74] },
+        { "id": "p148-b3", "type": "form_code", "text": "MẪU SỐ B 01 – DN/HN", "bbox": [1673.66, 68.89, 1859.49, 95.8] },
+        {
+          "id": "p148-t1",
+          "type": "table",
+          "title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+          "continued": false,
+          "logical_table_id": "FPT_2024_498332-bs",
+          "bbox": [428.22, 113.42, 1860.43, 873.22],
+          "unit_text": null,
+          "columns": [
+            { "key": "c1", "header_lines": ["Tại ngày 31 tháng 12 năm", "2024", "VND"], "bbox": [1535.42, 147.55, 1576.06, 198.46] },
+            { "key": "c2", "header_lines": ["Tại ngày 31 tháng 12 năm", "2023", "VND"], "bbox": [1818.88, 147.55, 1859.53, 198.46] }
+          ],
+          "rows": [
+            {
+              "id": "r1", "code": "100", "label_raw": "TÀI SẢN NGẮN HẠN", "note": null,
+              "indent": 541.42, "bold": null, "bbox": [428.22, 205.75, 1859.4, 232.66],
+              "cells": {
+                "c1": { "raw": "45.535.942.846.453", "bbox": [1410.84, 205.75, 1575.94, 232.66] },
+                "c2": { "raw": "36.705.751.751.876", "bbox": [1694.3, 205.75, 1859.4, 232.66] }
+              }
+            },
+            {
+              "id": "r2", "code": "110", "label_raw": "Tiền và các khoản tương đương tiền", "note": "4",
+              "indent": 541.44, "bold": null, "bbox": [428.24, 239.46, 1859.42, 266.37],
+              "cells": {
+                "c1": { "raw": "9.315.440.438.884", "bbox": [1421.01, 239.46, 1575.95, 266.37] },
+                "c2": { "raw": "8.279.156.683.221", "bbox": [1704.47, 239.46, 1859.42, 266.37] }
+              }
+            },
+            {
+              "id": "r3", "code": "111", "label_raw": "Tiền", "note": null,
+              "indent": 555.61, "bold": null, "bbox": [428.24, 273.17, 1859.42, 300.08],
+              "cells": {
+                "c1": { "raw": "6.725.619.929.289", "bbox": [1423.6, 273.17, 1575.95, 300.08] },
+                "c2": { "raw": "5.975.127.685.903", "bbox": [1707.07, 273.17, 1859.42, 300.08] }
+              }
+            }
+          ]
+        },
+        {
+          "id": "p148-b4",
+          "type": "paragraph",
+          "text": "Các thuyết minh từ trang 155 đến trang 207 là một phần cấu thành báo cáo tài chính hợp nhất.",
+          "bbox": [1123.09, 998.84, 1860.37, 1025.75]
+        }
+      ]
+    }
+  ]
+}

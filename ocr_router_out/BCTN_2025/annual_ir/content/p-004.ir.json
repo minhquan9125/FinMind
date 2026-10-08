@@ -1,0 +1,88 @@
+{
+  "ir_version": "1",
+  "page": 4,
+  "printed_page": "03",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p4-b1", "type": "paragraph", "text": "Ba yếu tố sống còn trong kỷ nguyên AI", "bbox": [259.15, 43.78, 431.25, 53.78]},
+    {
+      "id": "p4-b2",
+      "type": "paragraph",
+      "text": "Để không bị bỏ lại phía sau trong kỷ nguyên AI, các doanh nghiệp, tổ chức buộc\nphải giải được ba bài toán sống còn: thời gian, chi phí và năng suất lao động.",
+      "bbox": [259.15, 67.54, 623.17, 89.78]
+    },
+    {
+      "id": "p4-b3",
+      "type": "paragraph",
+      "text": "Thứ nhất là về thời gian. Trong một thế giới thay đổi theo từng ngày, thậm chí từng\ngiờ, doanh nghiệp nào đưa sản phẩm, dịch vụ ra thị trường nhanh hơn sẽ là doanh\nnghiệp chiến thắng.",
+      "bbox": [259.15, 103.54, 623.27, 137.54]
+    },
+    {
+      "id": "p4-b4",
+      "type": "paragraph",
+      "text": "Thứ hai là về chi phí. Công nghệ, đặc biệt là AI, đang mở ra khả năng giảm mạnh\nchi phí phát triển, và vận hành. Những công việc trước đây cần nhiều nguồn lực,\nnhiều thời gian, giờ đây có thể được thực hiện với hiệu quả cao hơn nhiều lần. Theo\nnghiên cứu của McKinsey, AI có thể giúp doanh nghiệp giảm 20-30% chi phí trong\nnhiều quy trình, trong khi Microsoft ghi nhận các công cụ AI hỗ trợ lập trình giúp\ntăng năng suất lên tới 55%.",
+      "bbox": [259.15, 151.54, 623.26, 221.54]
+    },
+    {
+      "id": "p4-b5",
+      "type": "paragraph",
+      "text": "Và cuối cùng là năng suất lao động, yếu tố mang tính quyết định. AI cho phép tự\nđộng hóa ngày càng nhiều công việc liên quan đến tri thức – từ phân tích dữ liệu,\nphát triển phần mềm cho đến vận hành hệ thống. Điều này cho phép năng suất lao\nđộng tăng lên không phải vài phần trăm như trước đây, mà tăng theo nhiều lần.\nMột ví dụ rất cụ thể là bài toán hiện đại hóa các hệ thống công nghệ thông tin di\nsản trên thế giới, đặc biệt là các hệ thống viết bằng ngôn ngữ COBOL. Theo thống\nkê, có khoảng 300 tỷ dòng mã COBOL đang được vận hành trên toàn cầu và\n70-80% giao dịch kinh doanh trên thế giới vẫn được xử lý bởi các hệ thống này.\nViệc chuyển đổi các hệ thống này sang nền tảng hiện đại là một khối lượng công\nviệc khổng lồ và có thể kéo dài nhiều năm. Với các nền tảng AI như xMainframe mà\nFPT đang phát triển, quá trình phân tích, chuyển đổi và tái cấu trúc các hệ thống\nnày được tự động hóa giúp giảm 30% khối lượng công việc thủ công.",
+      "bbox": [259.15, 235.54, 623.3, 377.54]
+    },
+    {
+      "id": "p4-b6",
+      "type": "paragraph",
+      "text": "Tổng hòa của ba yếu tố này cho thấy một thực tế: lợi thế cạnh tranh trong kỷ\nnguyên AI không còn đến từ quy mô hay kinh nghiệm, mà đến từ khả năng thích\nứng và tái tạo chính mình bằng công nghệ. Và để làm được điều này, các doanh\nnghiệp buộc phải tiến tới mô hình AI thuần (AI-Native). Đây không còn là một lựa\nchọn mang tính chiến lược, mà là một yêu cầu mang tính sống còn. AI sẽ không chỉ\nlà công cụ hỗ trợ, mà sẽ trở thành nền tảng vận hành cốt lõi của tổ chức.",
+      "bbox": [259.15, 391.54, 623.26, 461.54]
+    },
+    {"id": "p4-b7", "type": "paragraph", "text": "Lợi thế cạnh tranh khác biệt của FPT", "bbox": [651.55, 43.78, 816.59, 53.78]},
+    {
+      "id": "p4-b8",
+      "type": "paragraph",
+      "text": "Trong làn sóng chuyển đổi mang tính lịch sử đó, FPT tin rằng mình đang sở hữu một\nsố lợi thế cạnh tranh mà không nhiều doanh nghiệp có được.",
+      "bbox": [651.55, 67.54, 1015.98, 89.54]
+    },
+    {
+      "id": "p4-b9",
+      "type": "paragraph",
+      "text": "Trước hết là lực lượng nhân lực công nghệ đông đảo. Với hàng chục nghìn kỹ sư\nđang làm việc trên khắp thế giới, đây chính là nguồn lực quan trọng để FPT triển\nkhai những chương trình chuyển đổi công nghệ quy mô lớn và kéo dài nhiều năm\ncho khách hàng toàn cầu.",
+      "bbox": [651.55, 103.54, 1016.11, 149.54]
+    },
+    {
+      "id": "p4-b10",
+      "type": "paragraph",
+      "text": "Nhưng trong kỷ nguyên công nghệ mới, không chỉ đông mà còn phải tinh nhuệ. Với\nhơn 54.000 nhân sự làm việc tại trên 30 quốc gia, trong đó có hơn 4.000 chuyên\ngia quốc tế đến từ 82 quốc tịch, FPT đang từng bước xây dựng một đội ngũ công\nnghệ mang tính toàn cầu, đa dạng và có khả năng triển khai những bài toán phức\ntạp ở quy mô lớn. Chúng tôi cũng đã thành lập Viện Quantum AI & Cybersecurity,\nđặt mục tiêu đào tạo 100 tiến sĩ, phát triển 2.000 chuyên gia công nghệ trình độ\ncao và công bố 500 công trình khoa học, bằng sáng chế và tài sản sở hữu trí tuệ có\ngiá trị. Trong các lĩnh vực công nghệ nền tảng, chúng tôi đặt mục tiêu đào tạo\n1.500 kỹ sư Cloud, 200 kiến trúc sư Cloud cấp cao.",
+      "bbox": [651.55, 163.54, 1015.99, 269.54]
+    },
+    {
+      "id": "p4-b11",
+      "type": "paragraph",
+      "text": "FPT đang từng bước xây dựng một đội ngũ nhân sự công nghệ mang tính\ntoàn cầu, đa dạng và có khả năng triển khai những bài toán phức tạp ở\nquy mô lớn.",
+      "bbox": [666.77, 319.16, 1000.96, 353.16]
+    },
+    {
+      "id": "p4-b12",
+      "type": "paragraph",
+      "text": "Song song với đó, FPT tiếp tục mở rộng đào tạo nhân lực công nghệ chiến lược như:\nthiết kế vi mạch, công nghệ lượng tử, an ninh mạng và UAV, nhằm xây dựng một đội\nngũ nhân lực công nghệ ngày càng đông đảo và tinh nhuệ cho tương lai. Quy mô\nnhân lực này cho phép FPT không chỉ đáp ứng nhu cầu hiện tại, mà còn chủ động\nnắm bắt và triển khai đồng thời nhiều cơ hội trên các thị trường khác nhau, ở quy\nmô mà không nhiều doanh nghiệp có thể thực hiện được.",
+      "bbox": [651.75, 391.55, 1016.18, 461.55]
+    },
+    {"id": "p4-b13", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p4-b14", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.62, 108.7, 154.97, 117.31]},
+    {"id": "p4-b15", "type": "furniture", "text": "Thông điệp Chủ tịch HĐQT\nThông điệp Tổng Giám đốc", "bbox": [67.83, 136.22, 166.63, 159.22]},
+    {"id": "p4-b16", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.62, 187.0, 96.98, 195.12]},
+    {"id": "p4-b17", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.62, 213.1, 122.58, 221.12]},
+    {"id": "p4-b18", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.62, 239.12, 142.43, 247.2]},
+    {"id": "p4-b19", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.62, 265.12, 190.19, 273.3]},
+    {"id": "p4-b20", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 291.12, 121.59, 299.4]},
+    {"id": "p4-b21", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 317.12, 100.41, 325.5]},
+    {"id": "p4-b22", "type": "furniture", "text": "08 BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 343.12, 166.49, 351.6]},
+    {"id": "p4-b23", "type": "furniture", "text": "03", "bbox": [60.81, 546.47, 75.75, 558.52]}
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "ir_version": "1",
+  "page": 121,
+  "printed_page": "119",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p121-b1", "type": "heading", "text": "Rủi ro tài chính", "bbox": [428.22, 68.74, 637.66, 100.74]},
+    {"id": "p121-b2", "type": "paragraph", "text": "Tên rủi ro", "bbox": [442.39, 122.33, 519.43, 140.33]},
+    {"id": "p121-b3", "type": "paragraph", "text": "Nội dung", "bbox": [640.92, 122.33, 715.93, 140.33]},
+    {"id": "p121-b4", "type": "paragraph", "text": "Rủi ro tỷ giá", "bbox": [442.39, 156.86, 541.59, 174.86]},
+    {
+      "id": "p121-b5",
+      "type": "paragraph",
+      "text": "Biến động tỷ giá là rủi ro tiềm ẩn đối\nvới mảng hoạt động cung cấp dịch vụ\nCNTT cho thị trường nước ngoài của FPT.",
+      "bbox": [640.92, 156.86, 952.89, 222.85]
+    },
+    {"id": "p121-b6", "type": "paragraph", "text": "Rủi ro kinh doanh", "bbox": [442.39, 288.08, 589.41, 306.08]},
+    {"id": "p121-b7", "type": "paragraph", "text": "Rủi ro nợ xấu mất kiểm soát, hàng", "bbox": [640.92, 288.08, 952.88, 306.08]},
+    {"id": "p121-b8", "type": "paragraph", "text": "thông thường", "bbox": [442.39, 312.07, 555.56, 330.07]},
+    {"id": "p121-b9", "type": "paragraph", "text": "tồn tăng cao.", "bbox": [640.92, 312.07, 745.39, 330.07]},
+    {"id": "p121-b10", "type": "paragraph", "text": "Biện pháp quản trị", "bbox": [986.93, 122.33, 1137.77, 140.33]},
+    {
+      "id": "p121-b11",
+      "type": "paragraph",
+      "text": "• Theo dõi sát biến động của các nhân tố chính tác động lên tỷ giá, đa dạng các nguồn thu ngoại tệ;",
+      "bbox": [987.92, 156.84, 1775.75, 174.84]
+    },
+    {"id": "p121-b12", "type": "paragraph", "text": "• Áp dụng các chính sách phòng ngừa tỷ giá, đặc biệt với Yên Nhật;", "bbox": [987.92, 189.35, 1517.67, 207.35]},
+    {
+      "id": "p121-b13",
+      "type": "paragraph",
+      "text": "• Áp dụng các hợp đồng hoán đổi tiền tệ để phòng ngừa rủi ro tỷ giá với các khoản vay bằng ngoại tệ;",
+      "bbox": [987.92, 221.86, 1784.87, 239.86]
+    },
+    {
+      "id": "p121-b14",
+      "type": "paragraph",
+      "text": "• Áp dụng các chính sách bán hàng linh hoạt dựa trên biến động tỷ giá.",
+      "bbox": [987.92, 254.36, 1547.28, 272.36]
+    },
+    {
+      "id": "p121-b15",
+      "type": "paragraph",
+      "text": "• Xây dựng và tuân thủ các quy trình về mua bán hàng, triển khai hợp đồng … nhằm đảm bảo hạn chế rủi ro phát\nsinh trong quá trình triển khai hoạt động kinh doanh;",
+      "bbox": [987.92, 288.08, 1854.77, 330.07]
+    },
+    {
+      "id": "p121-b16",
+      "type": "paragraph",
+      "text": "• Ứng dụng công nghệ, AI dự báo nhu cầu của khách hàng, xác nhận công nợ tự động với khách hàng, kiểm\nsoát và phê duyệt thanh toán giúp tăng chất lượng kiểm soát, ra quyết định nhanh chóng và chính xác, tránh\nphụ thuộc con người;",
+      "bbox": [987.92, 344.58, 1854.77, 410.57]
+    },
+    {
+      "id": "p121-b17",
+      "type": "paragraph",
+      "text": "• Xây dựng giải pháp AI, dữ liệu nhằm tối ưu hóa hoạt động mua sắm: Đọc và nhận diện sản phẩm cần mua từ\nđó đề xuất nhà cung cấp phù hợp, theo dõi và nhận diện các giao dịch bất thường trong mua sắm;",
+      "bbox": [987.92, 425.08, 1854.76, 467.07]
+    },
+    {
+      "id": "p121-b18",
+      "type": "paragraph",
+      "text": "• Xây dựng giải pháp AI - dự đoán khách hàng có xu hướng hủy sử dụng hoặc gặp vấn đề khi sử dụng dịch vụ\nviễn thông, truyền hình để thực hiện các chương trình chăm sóc chủ động, giúp kịp thời nắm bắt vấn đề khách\nhàng gặp phải, kịp thời tư vấn hỗ trợ, giảm nguy cơ khách hàng rời mạng;",
+      "bbox": [987.92, 481.58, 1854.8, 547.57]
+    },
+    {
+      "id": "p121-b19",
+      "type": "paragraph",
+      "text": "• Xây dựng chính sách kiểm soát công nợ của khách hàng, quản lý tồn kho;",
+      "bbox": [987.92, 562.07, 1579.92, 580.07]
+    },
+    {
+      "id": "p121-b20",
+      "type": "paragraph",
+      "text": "• Xây dựng hệ thống phần mềm tự động hóa các khâu kiểm soát, phê duyệt nhằm nâng cao hiệu quả quản trị,\nhạn chế rủi ro;",
+      "bbox": [987.92, 594.58, 1854.73, 636.58]
+    },
+    {
+      "id": "p121-b21",
+      "type": "paragraph",
+      "text": "• Phân tích, kiểm soát chặt chẽ ngay từ khâu lượng hóa nhu cầu để nhập hàng.",
+      "bbox": [987.92, 651.08, 1608.28, 669.08]
+    },
+    {"id": "p121-b22", "type": "heading", "text": "Rủi ro luật định", "bbox": [428.22, 716.03, 639.98, 748.03]},
+    {"id": "p121-b23", "type": "paragraph", "text": "Tên rủi ro", "bbox": [442.39, 769.62, 519.43, 787.62]},
+    {"id": "p121-b24", "type": "paragraph", "text": "Nội dung", "bbox": [640.92, 769.62, 715.93, 787.62]},
+    {"id": "p121-b25", "type": "paragraph", "text": "Rủi ro liên quan đến", "bbox": [442.39, 804.15, 605.58, 822.15]},
+    {"id": "p121-b26", "type": "paragraph", "text": "FPT có hoạt động kinh doanh quy mô", "bbox": [640.92, 804.15, 952.88, 822.15]},
+    {"id": "p121-b27", "type": "paragraph", "text": "các chính sách", "bbox": [442.39, 828.14, 569.17, 846.14]},
+    {
+      "id": "p121-b28",
+      "type": "paragraph",
+      "text": "ngày càng lớn không chỉ ở lãnh thổ\nViệt Nam. Trong quá trình toàn cầu hóa,\nFPT cần tuân thủ các quy định pháp\nluật tại các quốc gia mà Tập đoàn có\nhoạt động, đặc biệt là các quy định về\nlao động nhập cư. Bên cạnh đó là thách\nthức về khác biệt văn hóa, thông lệ lao",
+      "bbox": [640.92, 828.14, 952.91, 990.11]
+    },
+    {"id": "p121-b29", "type": "paragraph", "text": "Biện pháp quản trị", "bbox": [986.93, 769.62, 1137.77, 787.62]},
+    {
+      "id": "p121-b30",
+      "type": "paragraph",
+      "text": "• Theo dõi sát sao các chính sách, định hướng, nghị quyết, quyết định của Chính phủ và các bộ ngành,\ntổ chức liên quan;",
+      "bbox": [987.92, 804.1, 1854.74, 846.09]
+    },
+    {
+      "id": "p121-b31",
+      "type": "paragraph",
+      "text": "• Chủ động nghiên cứu, đề xuất các cơ quan hữu quan nhằm hướng tới việc nâng cao vai trò của CNTT trong\nviệc thúc đẩy tăng trưởng kinh tế;",
+      "bbox": [987.92, 860.6, 1854.75, 902.59]
+    },
+    {
+      "id": "p121-b32",
+      "type": "paragraph",
+      "text": "• Nghiên cứu, cập nhật và tuân thủ luật định cũng như môi trường văn hóa, kinh doanh của các thị trường nước\nngoài liên quan;",
+      "bbox": [987.92, 917.1, 1854.78, 959.09]
+    },
+    {"id": "p121-b33", "type": "paragraph", "text": "• Đào tạo CBNV về văn hóa, pháp luật của nước sở tại.", "bbox": [987.92, 973.6, 1415.51, 991.6]},
+    {"id": "p121-b34", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p121-b35", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p121-b36", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p121-b37", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p121-b38", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p121-b39", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p121-b40", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [45.96, 468.22, 178.32, 487.22]},
+    {"id": "p121-b41", "type": "furniture", "text": "Thông điệp và Định hướng ESG", "bbox": [85.0, 513.58, 275.88, 527.58]},
+    {"id": "p121-b42", "type": "furniture", "text": "Quản trị hướng đến phát triển bền vững", "bbox": [85.0, 545.54, 326.01, 559.54]},
+    {"id": "p121-b43", "type": "furniture", "text": "Môi trường làm việc đẳng cấp, hạnh phúc", "bbox": [85.0, 577.5, 340.61, 591.5]},
+    {"id": "p121-b44", "type": "furniture", "text": "Hoạt động vì môi trường xanh", "bbox": [85.0, 609.46, 267.5, 623.46]},
+    {"id": "p121-b45", "type": "furniture", "text": "Song hành vì sự phát triển cộng đồng", "bbox": [85.5, 641.42, 315.28, 655.42]},
+    {"id": "p121-b46", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
+    {"id": "p121-b47", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
+    {"id": "p121-b48", "type": "furniture", "text": "119", "bbox": [288.22, 988.53, 326.93, 1011.4]},
+    {"id": "p121-b49", "type": "furniture", "text": "động, văn hóa kinh doanh ….", "bbox": [640.92, 996.1, 870.61, 1014.1]}
+  ]
+}

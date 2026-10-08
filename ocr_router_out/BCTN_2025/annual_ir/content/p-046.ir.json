@@ -1,0 +1,103 @@
+{
+  "ir_version": "1",
+  "page": 46,
+  "printed_page": "45",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p46-b1", "type": "heading", "text": "CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [257.2, 41.08, 598.97, 70.08]},
+    {"id": "p46-b2", "type": "heading", "text": "BỐI CẢNH CHUNG", "bbox": [258.49, 88.16, 433.77, 108.16]},
+    {"id": "p46-b3", "type": "paragraph", "text": "Tăng trưởng chi tiêu Dịch vụ Công nghệ thông tin", "bbox": [258.49, 128.03, 620.06, 144.03]},
+    {
+      "id": "p46-b4",
+      "type": "paragraph",
+      "text": "Chi tiêu CNTT toàn cầu dự kiến đạt 6.155 tỷ USD vào năm 2026, tăng 10,8% so với\nnăm 2025 (Nguồn Gartner), tập trung mạnh vào trung tâm dữ liệu (tăng 31,7%)\nvà phần mềm (tăng 14,7%) nhờ nhu cầu xây dựng hạ tầng tính toán phục vụ AI.\nLĩnh vực Dịch vụ CNTT được dự báo đạt 1.867 tỷ USD vào năm 2026 với tốc độ\ntăng trưởng 8,7%, trở thành phân khúc lớn nhất trong tổng chi tiêu CNTT toàn cầu,\nphản ánh xu hướng gia tăng nhu cầu tư vấn, triển khai, hiện đại hóa hệ thống,\nchuyển đổi số và ứng dụng AI trong doanh nghiệp.",
+      "bbox": [258.49, 156.98, 622.4, 238.98]
+    },
+    {"id": "p46-b5", "type": "paragraph", "text": "Chi tiêu CNTT toàn cầu năm 2026", "bbox": [258.9, 266.2, 414.99, 276.2]},
+    {"id": "p46-b6", "type": "paragraph", "text": "653\n10,6%", "bbox": [360.48, 309.66, 413.78, 324.66]},
+    {"id": "p46-b7", "type": "paragraph", "text": "836\n13,6%", "bbox": [307.73, 354.31, 361.71, 369.31]},
+    {"id": "p46-b8", "type": "paragraph", "text": "6.155", "bbox": [406.48, 383.86, 462.38, 406.36]},
+    {"id": "p46-b9", "type": "paragraph", "text": "1.365\n22,2%", "bbox": [301.65, 426.91, 367.24, 441.91]},
+    {"id": "p46-b10", "type": "paragraph", "text": "Dịch vụ CNTT", "bbox": [301.93, 493.3, 351.67, 501.3]},
+    {"id": "p46-b11", "type": "paragraph", "text": "Phần mềm", "bbox": [419.36, 493.6, 458.32, 501.6]},
+    {"id": "p46-b12", "type": "paragraph", "text": "Trung tâm dữ liệu", "bbox": [301.93, 515.3, 365.49, 523.3]},
+    {"id": "p46-b13", "type": "paragraph", "text": "Phần cứng", "bbox": [419.36, 515.6, 458.27, 523.6]},
+    {
+      "id": "p46-b14",
+      "type": "paragraph",
+      "text": "AI bước vào chu kỳ tạo giá trị, động lực mới cho\ntăng trưởng dài hạn",
+      "bbox": [651.5, 127.95, 1000.41, 163.15]
+    },
+    {
+      "id": "p46-b15",
+      "type": "paragraph",
+      "text": "Theo khảo sát của Gartner, hơn 80% CIO dự kiến đầu tư mạnh vào các năng lực\nnền tảng như: an ninh mạng, AI tạo sinh và quản trị dữ liệu. Trong giai đoạn\n2025-2026, các giám đốc Công nghệ (CIO) chuyển trọng tâm từ triển khai dự án\nthử nghiệm sang dự án có giá trị thực tế và tỷ suất lợi nhuận từ AI, đặc biệt là AI tự chủ\n(Agentic AI). Trong đó, A.R.T (Agile Realignment – Risk Readiness – Tenacity) được\nxem là ba năng lực cốt lõi để các tổ chức, doanh nghiệp phát triển và bứt phá trong\nmột thế giới đầy biến động, được dẫn dắt bởi AI.",
+      "bbox": [651.72, 176.1, 1015.79, 258.1]
+    },
+    {"id": "p46-b16", "type": "paragraph", "text": "(Nguồn: Gartner)", "bbox": [561.33, 267.46, 623.72, 275.46]},
+    {
+      "id": "p46-b17",
+      "type": "paragraph",
+      "text": "• Tái cấu trúc linh hoạt (Agile Realignment): 94% CIO kỳ vọng sẽ có những thay\nđổi lớn trong kế hoạch chi tiêu cho các dự án CNTT trong vòng 24 tháng tới và\nsẵn sàng dừng các dự án kém hiệu quả để dồn lực cho dự án AI.",
+      "bbox": [651.72, 271.1, 1015.63, 305.1]
+    },
+    {
+      "id": "p46-b18",
+      "type": "paragraph",
+      "text": "• Sẵn sàng trước rủi ro (Risk Readiness): Các CIO đang chuyển từ chiến lược nhà\ncung cấp \"không biên giới\" sang ưu tiên các đối tác khu vực và giải pháp \"chủ",
+      "bbox": [651.72, 318.1, 1015.46, 340.11]
+    },
+    {"id": "p46-b19", "type": "paragraph", "text": "1.867\n30,3%", "bbox": [498.59, 335.06, 563.84, 350.06]},
+    {
+      "id": "p46-b20",
+      "type": "paragraph",
+      "text": "quyền số\" (Geopatriation) để giảm thiểu rủi ro địa chính trị và tuân thủ quy định\ndữ liệu khắt khe.",
+      "bbox": [660.22, 342.11, 1015.5, 364.11]
+    },
+    {
+      "id": "p46-b21",
+      "type": "paragraph",
+      "text": "• Sự kiên định về kết quả tài chính (Tenacity): Ưu tiên hàng đầu của các CIO là\nchuyển hóa năng suất từ AI thành lợi nhuận thực tế thông qua việc tối ưu hóa chi\nphí vận hành và tăng trưởng doanh thu.",
+      "bbox": [651.72, 377.11, 1015.54, 411.11]
+    },
+    {
+      "id": "p46-b22",
+      "type": "paragraph",
+      "text": "Một xu hướng đáng chú ý là sự ưu tiên sử dụng các mô hình AI mã nguồn mở. 76%",
+      "bbox": [651.72, 424.11, 1015.44, 434.11]
+    },
+    {"id": "p46-b23", "type": "paragraph", "text": "1.434\n23,3%", "bbox": [501.19, 426.91, 568.79, 441.91]},
+    {
+      "id": "p46-b24",
+      "type": "paragraph",
+      "text": "doanh nghiệp sử dụng mô hình ngôn ngữ lớn (LLM) ưu tiên lựa chọn các mô hình mã\nnguồn mở, kết hợp với các giải pháp độc quyền nhằm tối ưu chi phí, hiệu năng và\nkhả năng kiểm soát dữ liệu. Tỷ lệ doanh nghiệp tự đầu tư phát triển mô hình AI giảm\nmạnh, từ 43% trong năm 2024 xuống còn 24% trong năm 2025. Xu hướng này mở\nra cơ hội phát triển cho các doanh nghiệp công nghệ như FPT trong việc xây dựng",
+      "bbox": [651.72, 436.11, 1015.55, 494.1]
+    },
+    {"id": "p46-b25", "type": "paragraph", "text": "Dịch vụ viễn thông", "bbox": [542.14, 493.47, 608.95, 501.47]},
+    {
+      "id": "p46-b26",
+      "type": "paragraph",
+      "text": "nền tảng AI dựa trên mã nguồn mở và phát triển các giải pháp AI chuyên biệt,\ntạo dư địa tăng trưởng bền vững trong trung và dài hạn.",
+      "bbox": [651.72, 496.1, 1015.52, 518.11]
+    },
+    {"id": "p46-b27", "type": "paragraph", "text": "Đơn vị: Tỷ USD", "bbox": [542.72, 515.83, 595.71, 523.83]},
+    {"id": "p46-b28", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p46-b29", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p46-b30", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p46-b31", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p46-b32", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.31, 141.98, 195.31]},
+    {"id": "p46-b33", "type": "furniture", "text": "Bối cảnh chung\nChiến lược phát triển\ngiai đoạn 2026 - 2028\n06", "bbox": [25.73, 208.71, 148.85, 247.31]},
+    {"id": "p46-b34", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 258.12, 190.19, 266.31]},
+    {"id": "p46-b35", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 284.12, 121.59, 292.31]},
+    {"id": "p46-b36", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 310.12, 100.4, 318.31]},
+    {"id": "p46-b37", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 336.12, 166.49, 344.31]},
+    {"id": "p46-b38", "type": "furniture", "text": "45", "bbox": [61.18, 546.47, 75.38, 558.52]}
+  ]
+}

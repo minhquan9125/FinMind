@@ -1,0 +1,277 @@
+{
+  "ir_version": "1",
+  "page": 31,
+  "printed_page": "29",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p31-b1", "type": "paragraph", "text": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)", "bbox": [428.72, 67.5, 788.31, 85.5]},
+    {"id": "p31-b2", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [1775.99, 75.3, 1860.48, 91.3]},
+    {"id": "p31-b3", "type": "paragraph", "text": "Lần", "bbox": [442.61, 114.88, 473.17, 132.88]},
+    {"id": "p31-b4", "type": "paragraph", "text": "Lý do", "bbox": [835.28, 114.88, 878.71, 132.88]},
+    {
+      "id": "p31-t1",
+      "type": "table",
+      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)",
+      "continued": true,
+      "bbox": [442.61, 114.88, 1845.76, 1009.34],
+      "unit_text": "Đơn vị: VNĐ",
+      "columns": [
+        {"key": "c1", "header_lines": ["Thời điểm", "phát hành"], "bbox": [515.16, 114.88, 598.4, 156.88]},
+        {"key": "c2", "header_lines": ["Vốn điều lệ", "sau khi phát hành"], "bbox": [646.01, 114.88, 792.77, 156.88]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "11",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phần phổ thông thưởng cho CBNV có thành tích đóng góp trong năm 2007 và cổ phần phổ thông cho CBNV.",
+          "note": null,
+          "bbox": [447.74, 173.1, 1845.67, 215.09],
+          "cells": {
+            "c1": {"raw": "06/2008", "bbox": [532.3, 173.1, 598.34, 191.1]},
+            "c2": {"raw": "941.606.160.000", "bbox": [655.55, 173.1, 792.65, 191.1]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": "12",
+          "label_raw": "Tăng vốn từ phát hành thêm cổ phiếu thưởng cho cổ đông hiện hữu để tăng vốn từ Quỹ thặng dư vốn theo tỉ lệ 2:1.",
+          "note": null,
+          "bbox": [447.74, 230.8, 1733.63, 248.8],
+          "cells": {
+            "c1": {"raw": "11/2008", "bbox": [532.3, 230.8, 598.34, 248.8]},
+            "c2": {"raw": "1.411.620.740.000", "bbox": [640.28, 230.8, 792.63, 248.8]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": "13",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phần phổ thông thưởng cho CBNV có thành tích đóng góp trong năm 2008 và cổ phần phổ thông cho CBNV.",
+          "note": null,
+          "bbox": [447.74, 264.52, 1845.67, 306.51],
+          "cells": {
+            "c1": {"raw": "07/2009", "bbox": [532.3, 264.52, 598.34, 282.52]},
+            "c2": {"raw": "1.438.319.670.000", "bbox": [640.28, 264.52, 792.63, 282.52]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": "14",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2009 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 3:1.",
+          "note": null,
+          "bbox": [447.74, 322.23, 1556.2, 340.23],
+          "cells": {
+            "c1": {"raw": "05/2010", "bbox": [532.3, 322.23, 598.34, 340.23]},
+            "c2": {"raw": "1.916.659.080.000", "bbox": [640.28, 322.23, 792.63, 340.23]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": "15",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phần phổ thông thưởng cho CBNV có thành tích đóng góp trong năm 2009 và cổ phần phổ thông cho CBNV.",
+          "note": null,
+          "bbox": [447.74, 355.94, 1845.67, 397.93],
+          "cells": {
+            "c1": {"raw": "06/2010", "bbox": [532.3, 355.94, 598.34, 373.94]},
+            "c2": {"raw": "1.934.805.170.000", "bbox": [640.28, 355.94, 792.63, 373.94]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": "16",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu của Công ty Cổ phần FPT để thực hiện hoán đổi cổ phiếu cho các cổ đông hiện hữu của Công ty Cổ phần Hệ thống thông tin FPT, Công ty Cổ phần Phần mềm FPT và Công ty Cổ phần Thương mại FPT nhằm tái cấu trúc Tập đoàn.",
+          "note": null,
+          "bbox": [447.74, 413.65, 1845.76, 479.64],
+          "cells": {
+            "c1": {"raw": "08/2011", "bbox": [532.3, 413.65, 598.34, 431.65]},
+            "c2": {"raw": "2.133.110.660.000", "bbox": [640.28, 413.65, 792.63, 431.65]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": "17",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phần phổ thông thưởng cho CBNV có thành tích đóng góp trong năm 2010.",
+          "note": null,
+          "bbox": [447.74, 495.35, 1700.3, 513.35],
+          "cells": {
+            "c1": {"raw": "09/2011", "bbox": [532.3, 495.35, 598.34, 513.35]},
+            "c2": {"raw": "2.160.826.760.000", "bbox": [640.28, 495.35, 792.63, 513.35]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": "18",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2011 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 4:1.",
+          "note": null,
+          "bbox": [447.74, 529.06, 1556.2, 547.06],
+          "cells": {
+            "c1": {"raw": "05/2012", "bbox": [532.3, 529.06, 598.34, 547.06]},
+            "c2": {"raw": "2.700.859.340.000", "bbox": [640.28, 529.06, 792.63, 547.06]}
+          }
+        },
+        {
+          "id": "r9",
+          "code": "19",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phần phổ thông thưởng cho CBNV có thành tích đóng góp trong năm 2011 và cổ phần phổ thông cho CBNV.",
+          "note": null,
+          "bbox": [447.74, 562.78, 1845.67, 604.77],
+          "cells": {
+            "c1": {"raw": "06/2012", "bbox": [532.3, 562.78, 598.34, 580.78]},
+            "c2": {"raw": "2.738.488.330.000", "bbox": [640.28, 562.78, 792.63, 580.78]}
+          }
+        },
+        {
+          "id": "r10",
+          "code": "20",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu cho CBNV có thành tích đóng góp trong năm 2012.",
+          "note": null,
+          "bbox": [447.74, 620.49, 1558.44, 638.49],
+          "cells": {
+            "c1": {"raw": "06/2013", "bbox": [532.3, 620.49, 598.34, 638.49]},
+            "c2": {"raw": "2.752.017.550.000", "bbox": [640.28, 620.49, 792.63, 638.49]}
+          }
+        },
+        {
+          "id": "r11",
+          "code": "21",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2013 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 4:1.",
+          "note": null,
+          "bbox": [447.74, 654.2, 1556.2, 672.2],
+          "cells": {
+            "c1": {"raw": "05/2014", "bbox": [532.3, 654.2, 598.34, 672.2]},
+            "c2": {"raw": "3.439.766.000.000", "bbox": [640.28, 654.2, 792.63, 672.2]}
+          }
+        },
+        {
+          "id": "r12",
+          "code": "22",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu cho CBNV có thành tích đóng góp trong năm 2014.",
+          "note": null,
+          "bbox": [447.74, 687.91, 1558.44, 705.91],
+          "cells": {
+            "c1": {"raw": "04/2015", "bbox": [532.3, 687.91, 598.34, 705.91]},
+            "c2": {"raw": "3.456.959.170.000", "bbox": [640.28, 687.91, 792.63, 705.91]}
+          }
+        },
+        {
+          "id": "r13",
+          "code": "23",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2014 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 15%.",
+          "note": null,
+          "bbox": [447.74, 721.63, 1567.16, 739.63],
+          "cells": {
+            "c1": {"raw": "06/2015", "bbox": [532.3, 721.63, 598.34, 739.63]},
+            "c2": {"raw": "3.975.316.400.000", "bbox": [640.28, 721.63, 792.63, 739.63]}
+          }
+        },
+        {
+          "id": "r14",
+          "code": "24",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu cho CBNV có thành tích đóng góp trong năm 2015.",
+          "note": null,
+          "bbox": [447.74, 755.34, 1558.44, 773.34],
+          "cells": {
+            "c1": {"raw": "04/2016", "bbox": [532.3, 755.34, 598.34, 773.34]},
+            "c2": {"raw": "3.995.184.690.000", "bbox": [640.28, 755.34, 792.63, 773.34]}
+          }
+        },
+        {
+          "id": "r15",
+          "code": "25",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2015 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 15%.",
+          "note": null,
+          "bbox": [447.74, 789.06, 1567.16, 807.06],
+          "cells": {
+            "c1": {"raw": "06/2016", "bbox": [532.3, 789.06, 598.34, 807.06]},
+            "c2": {"raw": "4.594.266.840.000", "bbox": [640.28, 789.06, 792.63, 807.06]}
+          }
+        },
+        {
+          "id": "r16",
+          "code": "26",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu cho CBNV có thành tích đóng góp trong năm 2016.",
+          "note": null,
+          "bbox": [447.74, 822.77, 1558.44, 840.77],
+          "cells": {
+            "c1": {"raw": "04/2017", "bbox": [532.3, 822.77, 598.34, 840.77]},
+            "c2": {"raw": "4.617.230.540.000", "bbox": [640.28, 822.77, 792.63, 840.77]}
+          }
+        },
+        {
+          "id": "r17",
+          "code": "27",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2016 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 15%.",
+          "note": null,
+          "bbox": [447.74, 856.48, 1567.16, 874.48],
+          "cells": {
+            "c1": {"raw": "06/2017", "bbox": [532.3, 856.48, 598.34, 874.48]},
+            "c2": {"raw": "5.309.611.050.000", "bbox": [640.28, 856.48, 792.63, 874.48]}
+          }
+        },
+        {
+          "id": "r18",
+          "code": "28",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu cho CBNV có thành tích đóng góp trong năm 2017.",
+          "note": null,
+          "bbox": [447.74, 890.2, 1558.44, 908.2],
+          "cells": {
+            "c1": {"raw": "04/2018", "bbox": [532.3, 890.2, 598.34, 908.2]},
+            "c2": {"raw": "5.336.156.610.000", "bbox": [640.28, 890.2, 792.63, 908.2]}
+          }
+        },
+        {
+          "id": "r19",
+          "code": "29",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2017 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 15%.",
+          "note": null,
+          "bbox": [447.74, 923.91, 1567.16, 941.91],
+          "cells": {
+            "c1": {"raw": "06/2018", "bbox": [532.3, 923.91, 598.34, 941.91]},
+            "c2": {"raw": "6.136.367.720.000", "bbox": [640.28, 923.91, 792.63, 941.91]}
+          }
+        },
+        {
+          "id": "r20",
+          "code": "30",
+          "label_raw": "Tăng vốn thông qua phát hành cổ phiếu cho CBNV có thành tích đóng góp trong năm 2018.",
+          "note": null,
+          "bbox": [447.74, 957.63, 1558.44, 975.63],
+          "cells": {
+            "c1": {"raw": "04/2019", "bbox": [532.3, 957.63, 598.34, 975.63]},
+            "c2": {"raw": "6.167.039.720.000", "bbox": [640.28, 957.63, 792.63, 975.63]}
+          }
+        },
+        {
+          "id": "r21",
+          "code": "31",
+          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2018 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 10%.",
+          "note": null,
+          "bbox": [447.74, 991.34, 1567.16, 1009.34],
+          "cells": {
+            "c1": {"raw": "06/2019", "bbox": [532.3, 991.34, 598.34, 1009.34]},
+            "c2": {"raw": "6.783.586.880.000", "bbox": [640.28, 991.34, 792.63, 1009.34]}
+          }
+        }
+      ],
+      "logical_table_id": "fpt-2024-charter-capital"
+    },
+    {"id": "p31-b6", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p31-b7", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
+    {"id": "p31-b8", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
+    {"id": "p31-b9", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
+    {"id": "p31-b10", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
+    {"id": "p31-b11", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
+    {"id": "p31-b12", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
+    {"id": "p31-b13", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
+    {"id": "p31-b14", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
+    {"id": "p31-b15", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
+    {"id": "p31-b16", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
+    {"id": "p31-b17", "type": "furniture", "text": "29", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+  "sections": [
+    {
+      "id": "overview",
+      "title": "Dấu ấn và tổng quan doanh nghiệp",
+      "first_page": 20,
+      "last_page": 20,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "overview",
+      "title": "Dấu ấn và tổng quan doanh nghiệp",
+      "first_page": 24,
+      "last_page": 40,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "strategy",
+      "title": "Chiến lược phát triển",
+      "first_page": 41,
+      "last_page": 49,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "business",
+      "title": "Phân tích hoạt động kinh doanh",
+      "first_page": 50,
+      "last_page": 67,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "governance",
+      "title": "Quản trị công ty",
+      "first_page": 68,
+      "last_page": 95,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "esg",
+      "title": "Báo cáo ESG",
+      "first_page": 96,
+      "last_page": 141,
+      "evidence": "active sidebar label"
+    }
+  ],
+  "unclassified_pages": [],
+  "topics": [
+    {
+      "id": "company",
+      "title": "Doanh nghiệp, ngành nghề và cơ cấu tổ chức",
+      "pdf_pages": [
+        20,
+        24,
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "id": "shareholders",
+      "title": "Cổ đông, cổ phần và thay đổi vốn",
+      "pdf_pages": [
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "id": "strategy",
+      "title": "Chiến lược phát triển",
+      "pdf_pages": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Kết quả hoạt động và kế hoạch",
+      "pdf_pages": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    {
+      "id": "governance",
+      "title": "Quản trị công ty",
+      "pdf_pages": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95
+      ]
+    },
+    {
+      "id": "people_esg",
+      "title": "Nhân sự và ESG",
+      "pdf_pages": [
+        57,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141
+      ]
+    }
+  ],
+  "table_targets": [
+    {
+      "topic": "shareholders",
+      "pdf_page": 29,
+      "title": "THÔNG TIN VỀ CỔ PHIẾU",
+      "ir_file": "p-029.ir.json",
+      "status": "structured",
+      "table_block_id": "p29-t1"
+    },
+    {
+      "topic": "shareholders",
+      "pdf_page": 29,
+      "title": "CƠ CẤU CỔ ĐÔNG THEO CÁC MỨC CỔ PHIẾU SỞ HỮU",
+      "ir_file": "p-029.ir.json",
+      "status": "structured",
+      "table_block_id": "p29-t2"
+    },
+    {
+      "topic": "shareholders",
+      "pdf_page": 29,
+      "title": "CƠ CẤU CỔ ĐÔNG THEO ĐỐI TƯỢNG SỞ HỮU",
+      "ir_file": "p-029.ir.json",
+      "status": "structured",
+      "table_block_id": "p29-t3"
+    },
+    {
+      "topic": "shareholders",
+      "pdf_page": 30,
+      "title": "CƠ CẤU CỔ ĐÔNG THEO QUỐC TỊCH",
+      "ir_file": "p-030.ir.json",
+      "status": "structured",
+      "table_block_id": "p30-t1"
+    },
+    {
+      "topic": "shareholders",
+      "pdf_page": 30,
+      "title": "TOP 10 CỔ ĐÔNG LỚN",
+      "ir_file": "p-030.ir.json",
+      "status": "structured",
+      "table_block_id": "p30-t2"
+    },
+    {
+      "topic": "shareholders",
+      "pdf_page": 30,
+      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ",
+      "ir_file": "p-030.ir.json",
+      "status": "structured",
+      "table_block_id": "p30-t3"
+    },
+    {
+      "topic": "shareholders",
+      "pdf_page": 31,
+      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)",
+      "ir_file": "p-031.ir.json",
+      "status": "structured",
+      "table_block_id": "p31-t1"
+    },
+    {
+      "topic": "shareholders",
+      "pdf_page": 32,
+      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)",
+      "ir_file": "p-032.ir.json",
+      "status": "structured",
+      "table_block_id": "p32-t1"
+    },
+    {
+      "topic": "people_esg",
+      "pdf_page": 57,
+      "title": "NHÂN SỰ BÌNH QUÂN CỦA LĨNH VỰC DỊCH VỤ CNTT CHO THỊ TRƯỜNG NƯỚC NGOÀI",
+      "ir_file": "p-057.ir.json",
+      "status": "structured",
+      "table_block_id": "p57-t1"
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 77,
+      "title": "DANH SÁCH THÀNH VIÊN HĐQT NHIỆM KỲ 2022-2027 VÀ SỐ CUỘC HỌP THAM DỰ TRONG NĂM 2024",
+      "ir_file": "p-077.ir.json",
+      "status": "structured",
+      "table_block_id": "p77-t1"
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 83,
+      "title": "GIAO DỊCH CỔ PHIẾU CỦA CỔ ĐÔNG LỚN VÀ CỔ ĐÔNG NỘI BỘ",
+      "ir_file": "p-083.ir.json",
+      "status": "structured",
+      "table_block_id": "p83-t1"
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 84,
+      "title": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ",
+      "ir_file": "p-084.ir.json",
+      "status": "structured",
+      "table_block_id": "p84-t1"
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 85,
+      "title": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)",
+      "ir_file": "p-085.ir.json",
+      "status": "structured",
+      "table_block_id": "p85-t1"
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 86,
+      "title": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)",
+      "ir_file": "p-086.ir.json",
+      "status": "structured",
+      "table_block_id": "p86-t1"
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 95,
+      "title": "CHI TIẾT THÙ LAO CỦA BKS NĂM 2024",
+      "ir_file": "p-095.ir.json",
+      "status": "structured",
+      "table_block_id": "p95-t1"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "ir_version": "1",
+  "page": 25,
+  "printed_page": "24",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p25-b1", "type": "heading", "text": "NGÀNH NGHỀ KINH DOANH", "bbox": [257.33, 42.2, 520.17, 62.2]},
+    {
+      "id": "p25-b2",
+      "type": "paragraph",
+      "text": "Trong suốt 38 năm qua, FPT luôn khẳng định vị thế tiên phong, dẫn đầu trong các lĩnh vực Công nghệ, Viễn thông và Giáo dục. Đón đầu xu hướng công nghệ, thị trường, FPT\ntạo dựng Hệ sinh thái dịch vụ, sản phẩm, giải pháp, nền tảng Made by FPT thúc đẩy phát triển, tăng trưởng bền vững của các tổ chức, doanh nghiệp cũng như mang đến\nnhững trải nghiệm mới, khác biệt cho người dùng.",
+      "bbox": [258.9, 74.37, 1015.86, 108.37]
+    },
+    {"id": "p25-b3", "type": "paragraph", "text": "Công nghệ", "bbox": [258.15, 122.83, 338.71, 138.83]},
+    {"id": "p25-b4", "type": "paragraph", "text": "Nhóm dịch vụ", "bbox": [258.79, 152.16, 334.16, 164.16]},
+    {"id": "p25-b5", "type": "paragraph", "text": "• Tư vấn, triển khai Chuyển đổi số, Chuyển đổi xanh và Chuyển đổi AI;", "bbox": [258.9, 177.97, 577.82, 187.97]},
+    {
+      "id": "p25-b6",
+      "type": "paragraph",
+      "text": "• Tư vấn, phát triển, xây dựng các hệ thống chuyển đổi số cấp quốc gia, bộ ngành,\ntỉnh thành theo định hướng Nghị quyết 57-NQ/TW;",
+      "bbox": [258.9, 201.97, 623.18, 223.97]
+    },
+    {
+      "id": "p25-b7",
+      "type": "paragraph",
+      "text": "• Cung cấp hệ sinh thái tích hợp đồng bộ hạ tầng, công cụ và dịch vụ phục vụ\ntoàn bộ vòng đời phát triển AI, từ xử lý dữ liệu, huấn luyện mô hình đến triển khai,\nsuy luận và giám sát (FPT AI Factory);",
+      "bbox": [258.9, 237.97, 623.47, 271.97]
+    },
+    {"id": "p25-b8", "type": "paragraph", "text": "• Dịch vụ an ninh mạng;", "bbox": [258.9, 285.97, 375.42, 295.97]},
+    {
+      "id": "p25-b9",
+      "type": "paragraph",
+      "text": "• Cung cấp giải pháp dựa trên các nền tảng công nghệ như: NVIDIA, Landing AI,\nSAP, Oracle, Microsoft, ESRI…;",
+      "bbox": [258.9, 309.97, 623.1, 331.97]
+    },
+    {"id": "p25-b10", "type": "paragraph", "text": "• Thiết kế, kiểm thử, đóng gói tiên tiến chip bán dẫn;", "bbox": [258.9, 345.97, 500.92, 355.97]},
+    {
+      "id": "p25-b11",
+      "type": "paragraph",
+      "text": "• Thiết kế, triển khai, tích hợp, vận hành, bảo trì, kiểm thử... các hệ thống\nCông nghệ thông tin.",
+      "bbox": [258.9, 369.97, 623.12, 391.97]
+    },
+    {"id": "p25-b12", "type": "paragraph", "text": "Nhóm sản phẩm, giải pháp", "bbox": [651.53, 152.4, 799.1, 164.4]},
+    {
+      "id": "p25-b13",
+      "type": "paragraph",
+      "text": "• Cung cấp các nền tảng tiên tiến như: nền tảng FPT.AI, nền tảng AI linh hoạt\nFleziPT, nền tảng FPT Cloud, nền tảng quản trị doanh nghiệp Base.vn;",
+      "bbox": [651.53, 177.97, 1015.8, 199.97]
+    },
+    {"id": "p25-b14", "type": "paragraph", "text": "• Phát triển chip nguồn và chip IoT Make in Vietnam;", "bbox": [651.53, 213.97, 896.57, 223.97]},
+    {
+      "id": "p25-b15",
+      "type": "paragraph",
+      "text": "• Sản phẩm, giải pháp chuyển đổi số tích hợp công nghệ AI, AI tạo sinh (Generative AI),\ntự động hóa (RPA), kết nối vạn vật (IoT)… chuyên sâu cho các lĩnh vực như:\nChính phủ, Viễn thông, Ngân hàng, Tài chính, Bảo hiểm, Y tế, Giao thông vận tải,\nSản xuất, Tài chính công, Năng lượng, Doanh nghiệp, Ô tô…;",
+      "bbox": [651.53, 237.97, 1016.27, 283.97]
+    },
+    {
+      "id": "p25-b16",
+      "type": "paragraph",
+      "text": "• Hệ sinh thái toàn diện sản phẩm, giải pháp tiên tiến Made by FPT phục vụ các\nbài toán nền tảng số cấp quốc gia, bộ ngành và các bài toán nghiệp vụ chuyên\nsâu phục vụ lĩnh vực trọng yếu; giải quyết bài toán kinh doanh và tăng trưởng\ncủa doanh nghiệp, tổ chức như: quản trị sản xuất, quản trị bán hàng, quản lý\nchuỗi cung ứng, quản lý tài chính, quản lý nguồn nhân lực, quản lý quan hệ\nkhách hàng và trải nghiệm người dùng, quản lý phát triển bền vững, chuyển đổi\nquy trình kinh doanh, chuyển đổi xanh, chuyển đổi AI….",
+      "bbox": [651.53, 297.97, 1015.8, 379.97]
+    },
+    {"id": "p25-b17", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p25-b18", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.29, 117.31]},
+    {"id": "p25-b19", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p25-b20", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.31, 121.93, 169.31]},
+    {
+      "id": "p25-b21",
+      "type": "furniture",
+      "text": "Thông tin chung\nSứ mệnh, giá trị cốt lõi\nNgành nghề kinh doanh\nVị thế và quy mô\n06\nHành trình khẳng định năng lực\nvà vị thế\nCơ cấu quản trị và bộ máy quản lý\nBan Lãnh đạo",
+      "bbox": [25.73, 183.92, 191.17, 290.92]
+    },
+    {"id": "p25-b22", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 306.12, 142.43, 314.31]},
+    {"id": "p25-b23", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 332.12, 190.19, 340.31]},
+    {"id": "p25-b24", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 358.12, 121.59, 366.31]},
+    {"id": "p25-b25", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 384.12, 100.41, 392.31]},
+    {"id": "p25-b26", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 410.12, 166.49, 418.31]},
+    {"id": "p25-b27", "type": "furniture", "text": "24", "bbox": [61.28, 546.47, 75.28, 558.52]}
+  ]
+}

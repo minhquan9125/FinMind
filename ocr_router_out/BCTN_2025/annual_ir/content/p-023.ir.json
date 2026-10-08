@@ -1,0 +1,61 @@
+{
+  "ir_version": "1",
+  "page": 23,
+  "printed_page": "22",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p23-b1", "type": "heading", "text": "THÔNG TIN CHUNG", "bbox": [714.04, 43.01, 901.48, 63.01]},
+    {"id": "p23-b2", "type": "heading", "text": "TỔNG QUAN VỀ FPT", "bbox": [259.09, 43.92, 530.36, 72.92]},
+    {"id": "p23-b3", "type": "paragraph", "text": "Tên công ty\nCông ty Cổ phần FPT", "bbox": [714.04, 104.53, 811.53, 127.29]},
+    {"id": "p23-b4", "type": "paragraph", "text": "Tên viết tắt\nFPT", "bbox": [714.04, 153.53, 766.64, 176.29]},
+    {"id": "p23-b5", "type": "paragraph", "text": "Ngày thành lập\n13/09/1988", "bbox": [714.04, 202.53, 784.82, 225.29]},
+    {"id": "p23-b6", "type": "paragraph", "text": "Giấy chứng nhận đăng ký kinh doanh\n0101248141", "bbox": [714.04, 251.53, 884.73, 274.29]},
+    {"id": "p23-b7", "type": "paragraph", "text": "Vốn điều lệ\n17.035.071.210.000", "bbox": [714.04, 296.51, 856.25, 326.74]},
+    {"id": "p23-b8", "type": "paragraph", "text": "Vốn chủ sở hữu\n43.748.040.747.539", "bbox": [714.04, 351.15, 858.98, 381.64]},
+    {
+      "id": "p23-b9",
+      "type": "paragraph",
+      "text": "GGiiáá ttrrịị vvốốnn hhóóaa\n163.195.982.191.800\nTTíínnhh ttạạii tthhờờii đđiiểểmm 3311//1122//22002255",
+      "bbox": [714.04, 406.05, 861.69, 449.53]
+    },
+    {
+      "id": "p23-b10",
+      "type": "paragraph",
+      "text": "Trụ sở chính\nSố 10 phố Phạm Văn Bạch, phường Cầu Giấy, Tp.Hà Nội, Việt Nam",
+      "bbox": [714.1, 475.69, 1016.59, 498.45]
+    },
+    {"id": "p23-b11", "type": "paragraph", "text": "Điện thoại\n(+84) 24 7300 7300", "bbox": [714.1, 524.69, 806.03, 547.45]},
+    {"id": "p23-b12", "type": "paragraph", "text": "Tên tiếng Anh\nFPT Corporation", "bbox": [895.66, 104.72, 971.73, 127.48]},
+    {"id": "p23-b13", "type": "paragraph", "text": "Mã chứng khoán\nFPT", "bbox": [895.66, 153.5, 973.11, 176.26]},
+    {"id": "p23-b14", "type": "paragraph", "text": "VNĐ", "bbox": [860.72, 314.85, 881.6, 324.85]},
+    {"id": "p23-b15", "type": "paragraph", "text": "VNĐ", "bbox": [862.95, 369.76, 883.83, 379.76]},
+    {"id": "p23-b16", "type": "paragraph", "text": "VNĐ", "bbox": [866.66, 425.26, 887.54, 435.26]},
+    {"id": "p23-b17", "type": "paragraph", "text": "Fax", "bbox": [831.92, 524.69, 848.65, 534.69]},
+    {"id": "p23-b18", "type": "paragraph", "text": "Website", "bbox": [944.53, 524.69, 982.98, 534.69]},
+    {"id": "p23-b19", "type": "paragraph", "text": "(+84) 24 3768 7410", "bbox": [831.92, 537.45, 920.42, 547.45]},
+    {"id": "p23-b20", "type": "paragraph", "text": "https://fpt.com", "bbox": [944.53, 537.45, 1015.79, 547.45]},
+    {"id": "p23-b21", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p23-b22", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.29, 117.31]},
+    {"id": "p23-b23", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p23-b24", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.31, 121.93, 169.31]},
+    {
+      "id": "p23-b25",
+      "type": "furniture",
+      "text": "Thông tin chung\nSứ mệnh, giá trị cốt lõi\nNgành nghề kinh doanh\nVị thế và quy mô\n06\nHành trình khẳng định năng lực\nvà vị thế\nCơ cấu quản trị và bộ máy quản lý\nBan Lãnh đạo",
+      "bbox": [25.73, 183.92, 191.17, 290.92]
+    },
+    {"id": "p23-b26", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 306.12, 142.43, 314.31]},
+    {"id": "p23-b27", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 332.12, 190.19, 340.31]},
+    {"id": "p23-b28", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 358.12, 121.59, 366.31]},
+    {"id": "p23-b29", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 384.12, 100.41, 392.31]},
+    {"id": "p23-b30", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 410.12, 166.49, 418.31]},
+    {"id": "p23-b31", "type": "furniture", "text": "22", "bbox": [61.37, 546.47, 75.18, 558.52]}
+  ]
+}

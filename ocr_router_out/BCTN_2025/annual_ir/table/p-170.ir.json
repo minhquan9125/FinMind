@@ -1,0 +1,128 @@
+{
+  "ir_version": "1",
+  "page": 170,
+  "printed_page": "169",
+  "page_class": "income_statement",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p170-b1", "type": "heading", "text": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH HỢP NHẤT", "bbox": [259.68, 42.32, 797.46, 62.32]},
+    {"id": "p170-b2", "type": "paragraph", "text": "Mã số", "bbox": [278.37, 113.39, 304.91, 122.89]},
+    {"id": "p170-b3", "type": "paragraph", "text": "Thuyết minh", "bbox": [683.0, 113.39, 739.04, 122.89]},
+    {"id": "p170-b4", "type": "heading", "text": "HOÀNG NGỌC BÍCH", "bbox": [534.88, 478.44, 629.37, 488.44]},
+    {"id": "p170-b5", "type": "heading", "text": "HOÀNG HỮU CHIẾN", "bbox": [698.05, 478.44, 789.68, 488.44]},
+    {"id": "p170-b6", "type": "paragraph", "text": "Người lập", "bbox": [534.88, 489.2, 578.17, 499.2]},
+    {"id": "p170-b7", "type": "paragraph", "text": "Kế toán trưởng", "bbox": [698.05, 489.2, 764.75, 499.2]},
+    {"id": "p170-b8", "type": "paragraph", "text": "Mẫu số B 02 – DN/HN", "bbox": [899.94, 48.6, 1016.96, 60.6]},
+    {"id": "p170-b9", "type": "paragraph", "text": "(Tiếp theo)", "bbox": [802.88, 51.03, 841.46, 59.03]},
+    {"id": "p170-b10", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [972.83, 71.12, 1016.14, 79.12]},
+    {"id": "p170-b11", "type": "paragraph", "text": "Năm tài chính kết thúc ngày 31 tháng 12 năm", "bbox": [808.22, 92.13, 1004.59, 101.63]},
+    {"id": "p170-b12", "type": "paragraph", "text": "2025", "bbox": [843.83, 113.39, 866.3, 122.89]},
+    {"id": "p170-b13", "type": "paragraph", "text": "2024", "bbox": [981.87, 113.39, 1004.58, 122.89]},
+    {
+      "id": "p170-b14",
+      "type": "paragraph",
+      "text": "NGUYỄN THẾ PHƯƠNG\nPhó Tổng Giám đốc\nChữ ký được ủy quyền\nNgày 18 tháng 3 năm 2026",
+      "bbox": [866.09, 478.44, 987.14, 520.3]
+    },
+    {
+      "id": "p170-t1",
+      "type": "table",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH HỢP NHẤT",
+      "continued": true,
+      "logical_table_id": "income_statement",
+      "bbox": [278.37, 113.39, 1004.58, 251.6],
+      "unit_text": "Đơn vị: VNĐ",
+      "columns": [
+        {"key": "c1", "header_lines": ["2025"], "bbox": [843.83, 113.39, 866.3, 122.89]},
+        {"key": "c2", "header_lines": ["2024"], "bbox": [981.87, 113.39, 1004.58, 122.89]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": "60",
+          "label_raw": "Lợi nhuận sau thuế TNDN (60 = 50 – 51 – 52)",
+          "note": null,
+          "bbox": [279.74, 137.31, 1004.36, 146.83],
+          "cells": {
+            "c1": {"raw": "11.232.339.450.734", "bbox": [780.09, 137.33, 865.97, 146.83]},
+            "c2": {"raw": "9.427.422.530.444", "bbox": [920.69, 137.33, 1004.36, 146.83]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Phân bổ cho:",
+          "note": null,
+          "bbox": [325.43, 149.31, 382.39, 158.81],
+          "cells": {}
+        },
+        {
+          "id": "r3",
+          "code": "61",
+          "label_raw": "Cổ đông của công ty mẹ",
+          "note": null,
+          "bbox": [279.74, 172.31, 1004.36, 181.83],
+          "cells": {
+            "c1": {"raw": "9.376.127.629.501", "bbox": [786.44, 172.33, 865.97, 181.83]},
+            "c2": {"raw": "7.856.767.812.178", "bbox": [926.2, 172.33, 1004.36, 181.83]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": "62",
+          "label_raw": "Cổ đông không kiểm soát",
+          "note": null,
+          "bbox": [279.74, 195.31, 1004.36, 204.83],
+          "cells": {
+            "c1": {"raw": "1.856.211.821.233", "bbox": [788.77, 195.33, 865.97, 204.83]},
+            "c2": {"raw": "1.570.654.718.266", "bbox": [924.45, 195.33, 1004.36, 204.83]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": "70",
+          "label_raw": "Lãi cơ bản trên cổ phiếu",
+          "note": "25(a)",
+          "bbox": [279.74, 218.31, 1004.36, 228.6],
+          "cells": {
+            "c1": {"raw": "5.216", "bbox": [842.51, 218.33, 865.97, 227.83]},
+            "c2": {"raw": "4.292", "bbox": [979.39, 218.33, 1004.36, 227.83]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": "71",
+          "label_raw": "Lãi suy giảm trên cổ phiếu",
+          "note": "25(b)",
+          "bbox": [279.74, 241.31, 1004.36, 251.6],
+          "cells": {
+            "c1": {"raw": "5.216", "bbox": [842.51, 241.33, 865.97, 250.83]},
+            "c2": {"raw": "4.292", "bbox": [979.39, 241.33, 1004.36, 250.83]}
+          }
+        }
+      ]
+    },
+    {"id": "p170-b16", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p170-b17", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.62, 108.7, 155.28, 117.12]},
+    {"id": "p170-b18", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.62, 134.8, 96.98, 143.12]},
+    {"id": "p170-b19", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.62, 160.9, 122.58, 169.12]},
+    {"id": "p170-b20", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.62, 187.0, 142.43, 195.12]},
+    {"id": "p170-b21", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.62, 213.1, 190.19, 221.12]},
+    {"id": "p170-b22", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
+    {"id": "p170-b23", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
+    {"id": "p170-b24", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
+    {"id": "p170-b25", "type": "furniture", "text": "169", "bbox": [58.72, 546.47, 77.84, 558.52]},
+    {
+      "id": "p170-b26",
+      "type": "furniture",
+      "text": "Các thuyết minh từ trang 172 đến trang 225 là một phần cấu thành báo cáo tài chính hợp nhất.",
+      "bbox": [679.23, 546.77, 1016.31, 554.77]
+    }
+  ]
+}

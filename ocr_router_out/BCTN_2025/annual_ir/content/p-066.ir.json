@@ -1,0 +1,59 @@
+{
+  "ir_version": "1",
+  "page": 66,
+  "printed_page": "65",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p66-b1", "type": "heading", "text": "LĨNH VỰC DỊCH VỤ CNTT CHO THỊ TRƯỜNG TRONG NƯỚC", "bbox": [258.92, 44.99, 527.96, 54.99]},
+    {"id": "p66-b2", "type": "heading", "text": "Top 1", "bbox": [259.62, 85.18, 345.84, 121.18]},
+    {"id": "p66-b3", "type": "heading", "text": "40", "bbox": [464.01, 85.18, 508.44, 121.18]},
+    {"id": "p66-b4", "type": "paragraph", "text": "Công ty tư vấn và cung cấp\nsản phẩm, giải pháp,\ndịch vụ công nghệ", "bbox": [259.62, 128.79, 398.65, 169.8]},
+    {
+      "id": "p66-b5",
+      "type": "paragraph",
+      "text": "Dự án thúc đẩy chuyển đổi số,\nxây dựng cơ sở dữ liệu\ncho các Bộ, ngành",
+      "bbox": [464.01, 128.79, 612.28, 169.8]
+    },
+    {"id": "p66-b6", "type": "heading", "text": "Ông NGUYỄN HOÀNG MINH", "bbox": [652.03, 132.65, 809.82, 144.94]},
+    {"id": "p66-b7", "type": "paragraph", "text": "Tổng Giám đốc FPT IS", "bbox": [652.03, 156.06, 773.21, 168.06]},
+    {"id": "p66-b8", "type": "heading", "text": "24", "bbox": [464.01, 208.54, 505.81, 244.54]},
+    {"id": "p66-b9", "type": "heading", "text": "100.000 +", "bbox": [259.85, 208.79, 413.6, 245.55]},
+    {"id": "p66-b10", "type": "paragraph", "text": "Dự án số đa quy mô", "bbox": [259.85, 248.21, 358.56, 259.21]},
+    {"id": "p66-b11", "type": "paragraph", "text": "Tỉnh thành hợp tác\nchuyển đổi số", "bbox": [464.01, 248.21, 559.02, 274.21]},
+    {
+      "id": "p66-b12",
+      "type": "paragraph",
+      "text": "Năm 2025, FPT tự hào là đối tác triển khai hàng loạt hệ thống chuyển đổi\nsố quan trọng của Chính phủ, bộ ngành, tỉnh thành, doanh nghiệp.\nFPT tham gia ngay từ giai đoạn sớm của quá trình ban hành, chỉnh sửa\ncác luật định, chính sách giúp khách hàng triển khai và chuẩn bị sẵn sàng\ncác hệ thống công nghệ tương ứng với các thay đổi. Doanh thu ký mới\nvượt mốc 10.000 tỷ đồng, tạo tiền đề phát triển cho năm 2026.",
+      "bbox": [652.03, 308.16, 1017.04, 392.64]
+    },
+    {
+      "id": "p66-b13",
+      "type": "paragraph",
+      "text": "Việt Nam đang chuyển đổi từ một quốc gia ứng dụng công nghệ sang\nmột quốc gia làm chủ công nghệ chiến lược, trong hành trình đó, FPT sẽ\nlà doanh nghiệp chủ lực cùng Việt Nam trở thành trung tâm phát triển\ntoàn cầu với việc tập trung phát triển hệ sinh thái Made by FPT với các\nsản phẩm chủ lực trong lĩnh vực AI, bán dẫn, an ninh bảo mật,\nBlockchain, Quantum, UAV, công nghệ đường sắt…. FPT sẽ cùng các\ndoanh nghiệp, tổ chức lấy công nghệ, chuyển đổi AI làm sức mạnh\ncạnh tranh cốt lõi, đồng thời đồng hành cùng Chính phủ, bộ ngành,\ntỉnh thành xây dựng và vận hành các nền tảng số hiện đại, thuận tiện,\nlấy người dân và doanh nghiệp làm trung tâm.",
+      "bbox": [652.03, 409.65, 1016.45, 552.11]
+    },
+    {"id": "p66-b14", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p66-b15", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.29, 117.31]},
+    {"id": "p66-b16", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p66-b17", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p66-b18", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.12, 142.43, 195.31]},
+    {"id": "p66-b19", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 213.31, 190.33, 221.31]},
+    {
+      "id": "p66-b20",
+      "type": "furniture",
+      "text": "Báo cáo của Ban Điều hành về\nkết quả kinh doanh 2025 và\nnhận định 2026\nĐánh giá của HĐQT về hoạt động\ncủa Tập đoàn",
+      "bbox": [67.84, 242.11, 190.13, 300.97]
+    },
+    {"id": "p66-b21", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 317.12, 121.59, 325.31]},
+    {"id": "p66-b22", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 343.12, 100.41, 351.31]},
+    {"id": "p66-b23", "type": "furniture", "text": "BÁO CÀO TÀI CHÍNH HỢP NHẤT\n08", "bbox": [25.47, 369.12, 166.49, 377.31]},
+    {"id": "p66-b24", "type": "furniture", "text": "65", "bbox": [61.18, 546.47, 75.38, 558.52]}
+  ]
+}

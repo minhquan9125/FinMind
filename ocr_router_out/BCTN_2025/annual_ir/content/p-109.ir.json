@@ -1,0 +1,30 @@
+{
+  "ir_version": "1",
+  "page": 109,
+  "printed_page": "108",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p109-b1", "type": "paragraph", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p109-b2", "type": "heading", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p109-b3", "type": "heading", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p109-b4", "type": "heading", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p109-b5", "type": "heading", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.12, 142.43, 195.31]},
+    {"id": "p109-b6", "type": "heading", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 213.12, 190.19, 221.31]},
+    {"id": "p109-b7", "type": "heading", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 239.12, 121.59, 247.31]},
+    {"id": "p109-b8", "type": "heading", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 265.31, 100.05, 273.31]},
+    {"id": "p109-b9", "type": "paragraph", "text": "Thông điệp và định hướng ESG", "bbox": [67.84, 287.86, 171.35, 295.86]},
+    {"id": "p109-b10", "type": "paragraph", "text": "Quản trị hướng đến phát triển bền vững", "bbox": [67.84, 302.86, 199.86, 310.86]},
+    {"id": "p109-b11", "type": "paragraph", "text": "Môi trường làm việc đẳng cấp,\nhạnh phúc", "bbox": [67.84, 317.86, 170.46, 335.86]},
+    {"id": "p109-b12", "type": "paragraph", "text": "Hoạt động vì môi trường xanh", "bbox": [67.84, 342.86, 167.27, 350.86]},
+    {"id": "p109-b13", "type": "paragraph", "text": "Song hành vì sự phát triển cộng đồng", "bbox": [67.84, 357.86, 192.54, 365.86]},
+    {"id": "p109-b14", "type": "heading", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
+    {"id": "p109-b15", "type": "furniture", "text": "108", "bbox": [58.28, 546.47, 78.28, 558.52]}
+  ]
+}

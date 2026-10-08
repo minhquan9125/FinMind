@@ -1,0 +1,25 @@
+{
+  "pdf": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\BCTN_2025.pdf",
+  "scope": "annual_report_content",
+  "pages": 156,
+  "routes": {
+    "TEXT_LAYER": 156
+  },
+  "blockTypes": {
+    "heading": 226,
+    "paragraph": 3436,
+    "furniture": 1799,
+    "kpi": 2
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 2,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 3,
+      "end": 158
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

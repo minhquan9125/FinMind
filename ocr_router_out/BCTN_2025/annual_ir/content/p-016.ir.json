@@ -1,0 +1,50 @@
+{
+  "ir_version": "1",
+  "page": 16,
+  "printed_page": "15",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p16-b1", "type": "paragraph", "text": "Ra mắt Liên minh Nhân lực chiến lược thực thi\nNghị quyết 57-NQ/TW", "bbox": [259.29, 41.73, 597.1, 77.73]},
+    {
+      "id": "p16-b2",
+      "type": "paragraph",
+      "text": "Đại diện 05 cơ sở đào tạo hàng đầu tham gia ký kết thành lập Liên minh gồm:\nHọc viện Chính trị quốc gia Hồ Chí Minh, Học viện Kỹ thuật mật mã, Đại học\nBách khoa Hà Nội, Trường Đại học Công nghệ – Đại học quốc gia Hà Nội,\nTrường Đại học FPT. Liên minh sẽ góp phần xây dựng và phát triển đội ngũ trí thức,\nchuyên gia chất lượng cao đáp ứng yêu cầu phát triển kinh tế-xã hội, công cuộc\nchuyển đổi số quốc gia và hội nhập quốc tế; thúc đẩy các chương trình đào tạo,\nbồi dưỡng kỹ năng hành chính công, lãnh đạo và quản lý nhà nước phù hợp với\nbối cảnh mới.",
+      "bbox": [260.35, 92.69, 620.85, 186.69]
+    },
+    {
+      "id": "p16-b3",
+      "type": "paragraph",
+      "text": "Khởi xướng thành lập Liên minh AI Âu Lạc\nphát triển mô hình ngôn ngữ lớn tiếng Việt",
+      "bbox": [655.38, 41.73, 964.84, 77.73]
+    },
+    {
+      "id": "p16-b4",
+      "type": "paragraph",
+      "text": "Liên minh được thành lập trong bối cảnh Quyết định 1131/QĐ-TTg do Thủ tướng\nChính phủ ban hành xác định 11 nhóm công nghệ chiến lược ảnh hưởng sâu rộng\nđến năng lực cạnh tranh và tự chủ công nghệ của quốc gia, trong đó AI được xếp\nở vị trí số một. Một trong những nhiệm vụ trọng tâm của Liên minh là phát triển\ncác mô hình ngôn ngữ lớn (LLM) có khả năng xử lý tiếng Việt chính xác, tự nhiên,\nphù hợp với văn hóa và bản sắc Việt Nam, từ đó nâng cao dân trí và thúc đẩy\nphát triển kinh tế quốc gia. Liên minh thu hút sự tham gia của hơn 20 thành viên\nlà các tổ chức, doanh nghiệp, start up, cơ sở đào tạo.",
+      "bbox": [655.39, 92.69, 1016.2, 186.69]
+    },
+    {"id": "p16-b5", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p16-b6", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p16-b7", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.31, 96.83, 143.31]},
+    {
+      "id": "p16-b8",
+      "type": "furniture",
+      "text": "Con số nổi bật\nGiải thưởng tiêu biểu\nHoạt động nổi bật\nDự án AI nổi bật",
+      "bbox": [67.84, 160.82, 143.8, 213.82]
+    },
+    {"id": "p16-b9", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 229.12, 122.58, 237.31]},
+    {"id": "p16-b10", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 255.12, 142.43, 263.31]},
+    {"id": "p16-b11", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 281.12, 190.19, 289.31]},
+    {"id": "p16-b12", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 307.12, 121.59, 315.31]},
+    {"id": "p16-b13", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 333.12, 100.4, 341.31]},
+    {"id": "p16-b14", "type": "furniture", "text": "08 BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 359.12, 166.49, 367.31]},
+    {"id": "p16-b15", "type": "furniture", "text": "15", "bbox": [62.24, 546.47, 74.32, 558.52]}
+  ]
+}

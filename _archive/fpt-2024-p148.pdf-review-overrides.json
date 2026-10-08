@@ -1,0 +1,49 @@
+{
+  "pdf_document": "FPT_2024_498332 (1).pdf",
+  "physical_page": 148,
+  "printed_page": 146,
+  "form_code": "B 01 – DN/HN",
+  "template_schema_version": "2.3.0",
+  "overrides": {
+    "123": {
+      "status": "source_review_candidate",
+      "metric_id": "common.held_to_maturity_current",
+      "matched_alias": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "match_method": "pdf_hierarchy",
+      "review_evidence": "PDF đặt dòng 123 dưới dòng 120 'Đầu tư tài chính ngắn hạn'; số ở dòng 123 bằng toàn bộ dòng 120 trong cả hai kỳ. Chọn metric ngắn hạn; alias chung cũng có metric dài hạn nên cần ngữ cảnh này."
+    },
+    "134": {
+      "status": "no_match",
+      "suggested_metric_id": "common.construction_contract_receivables",
+      "match_method": "template_alias_missing",
+      "review_evidence": "PDF ghi 'Phải thu theo tiến độ kế hoạch hợp đồng' ở mã 134. Template có metric về phải thu theo tiến độ hợp đồng xây dựng nhưng không có alias nguyên văn này; giữ chưa gán để bổ sung mapping/alias có phê duyệt."
+    },
+    "140": {
+      "status": "source_review_candidate",
+      "metric_id": "common.inventories",
+      "matched_alias": "Hàng tồn kho",
+      "match_method": "pdf_reconciliation",
+      "review_evidence": "PDF in mã 140 là dòng tổng in đậm. Giá trị mỗi kỳ bằng dòng 141 cộng dòng 149 (dự phòng âm): 2024 1.990.224.486.513 - 133.467.537.483 = 1.856.756.949.030; 2023 1.724.956.924.671 - 131.545.849.438 = 1.593.411.075.233. Đây là giá trị thuần sau dự phòng."
+    },
+    "141": {
+      "status": "source_review_candidate",
+      "metric_id": "common.inventories_gross",
+      "matched_alias": "Hàng tồn kho",
+      "match_method": "pdf_hierarchy",
+      "review_evidence": "PDF đặt mã 141 làm chi tiết dưới dòng tổng 140; mã 149 là dự phòng giảm giá được trừ khỏi dòng 141 để ra dòng 140. Vì vậy dòng 141 là giá gốc trước dự phòng."
+    },
+    "150": {
+      "status": "source_review_candidate",
+      "metric_id": "common.other_current_assets_total",
+      "matched_alias": "Tài sản ngắn hạn khác",
+      "match_method": "pdf_reconciliation",
+      "review_evidence": "PDF in mã 150 là dòng tổng in đậm. Tổng các dòng con 151, 152, 153 khớp   dòng 150 ở cả hai kỳ: 2024 479.707.218.558 + 648.697.117.785 + 68.603.442.585 = 1.197.007.778.928; 2023 449.245.737.865 + 528.984.574.991 + 76.405.085.212 = 1.054.635.398.068. Chọn metric tổng nhóm, không chọn metric phần còn lại."
+    },
+    "152": {
+      "status": "no_match",
+      "suggested_metric_id": "common.vat_recoverable",
+      "match_method": "template_alias_missing",
+      "review_evidence": "PDF ghi 'Thuế giá trị gia tăng (“GTGT”) được khấu trừ'. Template có metric 'Thuế GTGT được khấu trừ' nhưng không có nhãn in đầy đủ này làm alias; giữ chưa gán đến khi alias/mapping được duyệt."
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "ir_version": "1",
+  "page": 134,
+  "printed_page": "133",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p134-b1", "type": "paragraph", "text": "• Rủi ro Môi trường – Thiên tai – Dịch bệnh", "bbox": [259.29, 48.44, 491.19, 60.44]},
+    {"id": "p134-b2", "type": "paragraph", "text": "Tên rủi ro", "bbox": [271.09, 84.39, 314.72, 94.39]},
+    {"id": "p134-b3", "type": "paragraph", "text": "Rủi ro Môi trường – Thiên tai –\nDịch bệnh", "bbox": [271.24, 117.58, 412.8, 139.58]},
+    {"id": "p134-b4", "type": "paragraph", "text": "Nội dung", "bbox": [441.74, 84.39, 482.8, 94.39]},
+    {
+      "id": "p134-b5",
+      "type": "paragraph",
+      "text": "• Biến đổi khí hậu dẫn đến điều kiện\nthời tiết bất thường, ảnh hưởng đến\ncơ sở hạ tầng, sức khỏe CBNV…",
+      "bbox": [441.74, 117.33, 613.83, 151.33]
+    },
+    {"id": "p134-b6", "type": "paragraph", "text": "• Gián đoạn hoạt động kinh doanh do\nthiên tai.", "bbox": [441.74, 165.33, 613.91, 187.33]},
+    {"id": "p134-b7", "type": "paragraph", "text": "• Sức khỏe CBNV, năng suất lao động\nbị suy giảm do bệnh dịch.", "bbox": [441.73, 201.33, 613.83, 223.33]},
+    {"id": "p134-b8", "type": "paragraph", "text": "Biện pháp quản trị", "bbox": [642.17, 84.39, 725.55, 94.39]},
+    {
+      "id": "p134-b9",
+      "type": "paragraph",
+      "text": "• Xác định các rủi ro tiềm ẩn từ môi trường, thiên tai và dịch bệnh, đánh giá mức độ\ntác động đến cơ sở hạ tầng, nguồn nhân lực và chuỗi cung ứng;",
+      "bbox": [642.17, 117.55, 1016.54, 139.55]
+    },
+    {
+      "id": "p134-b10",
+      "type": "paragraph",
+      "text": "• Ứng dụng IoT, AI và Big Data để theo dõi và cảnh báo sớm các hiện tượng thời tiết\nbất thường, thiên tai và dịch bệnh;",
+      "bbox": [642.17, 153.55, 1016.58, 175.55]
+    },
+    {
+      "id": "p134-b11",
+      "type": "paragraph",
+      "text": "• Đầu tư phát triển các giải pháp và công cụ hỗ trợ làm việc từ xa an toàn, đảm bảo\nmọi hoạt động của Tập đoàn được duy trì thông suốt trong mọi tình huống.",
+      "bbox": [642.17, 189.55, 1016.54, 211.55]
+    },
+    {"id": "p134-b12", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p134-b13", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.28, 117.31]},
+    {"id": "p134-b14", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p134-b15", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.12, 122.58, 169.31]},
+    {"id": "p134-b16", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 187.12, 142.43, 195.31]},
+    {"id": "p134-b17", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 213.12, 190.19, 221.31]},
+    {"id": "p134-b18", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 239.12, 121.59, 247.31]},
+    {"id": "p134-b19", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 265.31, 100.05, 273.31]},
+    {
+      "id": "p134-b20",
+      "type": "furniture",
+      "text": "Thông điệp và định hướng ESG\nQuản trị hướng đến phát triển bền vững\nMôi trường làm việc đẳng cấp,\nhạnh phúc\nHoạt động vì môi trường xanh\nSong hành vì sự phát triển cộng đồng",
+      "bbox": [67.84, 287.86, 199.86, 365.86]
+    },
+    {"id": "p134-b21", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
+    {"id": "p134-b22", "type": "furniture", "text": "133", "bbox": [58.64, 546.47, 77.92, 558.52]}
+  ]
+}
