@@ -1,13 +1,14 @@
-"""Offline regressions: run python -B -m unittest discover -s data_pipeline/src/scrapers."""
+"""Offline regressions: run python -B -m unittest discover -s tests -t .."""
 import json
 import tempfile
+from tests.helpers import TEST_TMP
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-import stock_news_collector as collector
-import news_sources as sources
-import news_storage as storage
+from news import stock_news_collector as collector
+from news import news_sources as sources
+from news import news_storage as storage
 
 
 def article(number=1):
@@ -77,7 +78,7 @@ class NewsTests(unittest.TestCase):
                                   (['--symbols', *symbols] if symbols else []))
 
     def test_daily_routing_repeat_new_day_and_new_symbol(self):
-        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root=Path(folder)
             self.assertEqual(self.run_mocked(root, symbols=('FPT', 'HPG')), 0)
             paths=list(root.rglob('*.json'))
@@ -98,14 +99,14 @@ class NewsTests(unittest.TestCase):
             self.assertFalse(list(root.rglob('*.tmp')))
 
     def test_fill_after_failure_preserves_success(self):
-        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root=Path(folder)
             self.assertEqual(self.run_mocked(root, fail=True), 1)
             rows=collector.read_articles(storage.daily_path(root,'cafef','market','01-10-2026'))
             self.assertEqual(list(rows), [article(2)['url']])
 
     def test_corrupt_output_and_concurrent_writer_preserved(self):
-        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root=Path(folder)
             output=storage.daily_path(root,'cafef','market','01-10-2026')
             output.parent.mkdir(parents=True)
@@ -118,7 +119,7 @@ class NewsTests(unittest.TestCase):
             self.assertFalse(output.with_suffix('.json.lock').exists())
 
     def test_migration_multiscope_preserves_records_and_repeat(self):
-        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root=Path(folder)
             legacy=root/'old.json'
             trial=root/'news_trial.json'
@@ -139,7 +140,7 @@ class NewsTests(unittest.TestCase):
             self.assertEqual(before,{p:p.read_bytes() for p in root.rglob('*.json')})
 
     def test_invalid_migration_preserves_inputs_and_destinations(self):
-        with tempfile.TemporaryDirectory(dir=storage.SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root=Path(folder)
             legacy=root/'old.json'
             collector.write_payload(legacy,{'articles':[article()]})

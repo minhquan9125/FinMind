@@ -8,7 +8,7 @@ from contextlib import ExitStack
 from datetime import datetime, timezone
 from pathlib import Path
 
-from news_storage import SCRAPERS, daily_path
+from .news_storage import SCRAPERS, DATA_ROOT, daily_path
 
 THRESHOLD = 0.8
 METHOD = 'word_trigram_dice_content85_title15_v1'
@@ -46,13 +46,13 @@ def article_similarity(left, right):
     return prepared_similarity(prepare(left), prepare(right))
 
 
-def crosscheck_news(root=SCRAPERS, scopes=None):
+def crosscheck_news(root=DATA_ROOT, scopes=None):
     """Mark both providers within each scope, across all stored crawl days.
 
     Locks match collector locks; validate the whole scope before writing it.
     No comparisons between market and a ticker, or between different tickers.
     """
-    from stock_news_collector import read_articles, write_payload, output_lock
+    from .stock_news_collector import read_articles, write_payload, output_lock
     root = Path(root).resolve()
     if not root.is_relative_to(SCRAPERS):
         raise ValueError('Cross-check root must be inside scrapers')
@@ -120,7 +120,7 @@ def crosscheck_news(root=SCRAPERS, scopes=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', type=Path, default=SCRAPERS)
+    parser.add_argument('--root', type=Path, default=DATA_ROOT)
     parser.add_argument('--scopes', nargs='+')
     args = parser.parse_args()
     crosscheck_news(args.root, args.scopes)

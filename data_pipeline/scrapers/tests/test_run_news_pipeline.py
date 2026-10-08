@@ -3,12 +3,13 @@ import contextlib
 import io
 import json
 import tempfile
+from tests.helpers import TEST_TMP
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-import run_news_pipeline as pipeline
-from news_storage import SCRAPERS, daily_path
+from news import run_news_pipeline as pipeline
+from news.news_storage import SCRAPERS, daily_path
 
 
 def article(source):
@@ -20,16 +21,16 @@ def article(source):
 
 class PipelineTests(unittest.TestCase):
     def run_mocked(self, root, fail_fireant=False):
-        with patch('stock_news_collector.cafef_candidates', side_effect=lambda *a: iter([article('cafef')])), \
-             patch('stock_news_collector.fireant_candidates', side_effect=lambda *a: iter([] if fail_fireant else [article('fireant')])), \
-             patch('stock_news_collector.fetch_article', side_effect=lambda url, candidate: dict(candidate)), \
-             patch('stock_news_collector.crawl_day', return_value='01-10-2026'), \
-             patch('stock_news_collector.time.sleep'), contextlib.redirect_stdout(io.StringIO()), \
+        with patch('news.stock_news_collector.cafef_candidates', side_effect=lambda *a: iter([article('cafef')])), \
+             patch('news.stock_news_collector.fireant_candidates', side_effect=lambda *a: iter([] if fail_fireant else [article('fireant')])), \
+             patch('news.stock_news_collector.fetch_article', side_effect=lambda url, candidate: dict(candidate)), \
+             patch('news.stock_news_collector.crawl_day', return_value='01-10-2026'), \
+             patch('news.stock_news_collector.time.sleep'), contextlib.redirect_stdout(io.StringIO()), \
              contextlib.redirect_stderr(io.StringIO()):
             return pipeline.run_pipeline(['FPT'], limit=1, root=root)
 
     def test_complete_flow_and_repeat_report(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root = Path(folder)
             code, report = self.run_mocked(root)
             self.assertEqual(code, 0)
@@ -49,7 +50,7 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(saved['summary'], second['summary'])
 
     def test_partial_crawl_still_analyzes_and_reports(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             code, report = self.run_mocked(Path(folder), fail_fireant=True)
             self.assertEqual(code, 1)
             self.assertEqual(report['summary']['successful_collection_groups'], 2)
@@ -59,18 +60,18 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(report['summary']['analyzed_uncheck_articles'], 1)
 
     def test_crosscheck_failure_is_not_success(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
-            with patch('news_crosscheck.crosscheck_news', side_effect=ValueError('crosscheck unavailable')):
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
+            with patch('news.news_crosscheck.crosscheck_news', side_effect=ValueError('crosscheck unavailable')):
                 code, report = self.run_mocked(Path(folder))
             self.assertEqual(code, 1)
             self.assertEqual(report['collector']['crosscheck']['status'], 'failed')
             self.assertEqual(report['summary']['crosschecked_records'], 0)
 
     def test_analysis_failure_replaces_stale_report(self):
-        with tempfile.TemporaryDirectory(dir=SCRAPERS) as folder:
+        with tempfile.TemporaryDirectory(dir=TEST_TMP) as folder:
             root = Path(folder)
             self.run_mocked(root)
-            with patch('analyze_uncheck_events.analyze', side_effect=ValueError('invalid data')):
+            with patch('news.analyze_uncheck_events.analyze', side_effect=ValueError('invalid data')):
                 code, report = self.run_mocked(root)
             self.assertEqual(code, 1)
             self.assertIsNone(report['summary']['analyzed_uncheck_articles'])

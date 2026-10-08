@@ -1,0 +1,59 @@
+{
+  "fetched_at": "2026-10-07T09:40:06.129205+07:00",
+  "vnstock_version": "4.0.9",
+  "dataframe_sha256": "dc3d14055c7ff289e063a47cf270e2dc6128deafe05361bc3cf73132b41d57f2",
+  "rows": [
+    {
+      "volume_accumulated": 512000,
+      "high_price": "72500",
+      "total_value": 36898060000,
+      "low_price": "71700",
+      "listed_shares": "1460374611",
+      "percent_change": "0.416666666666667",
+      "bid_vol_1": 11100,
+      "bid_vol_2": 4300,
+      "bid_vol_3": 29300,
+      "bid_price_1": "72300.0",
+      "average_price": 72067,
+      "bid_price_2": 72200,
+      "bid_price_3": 72100,
+      "reference_price": 72000,
+      "exchange": "HOSE",
+      "foreign_buy_volume": 14400,
+      "foreign_buy_count": "10",
+      "ask_price_1": "72400.0",
+      "ask_price_2": 72500,
+      "ask_price_3": 72600,
+      "floor_price": 67000,
+      "foreign_ownership_ratio": 1534951081,
+      "foreign_room": 1162262186,
+      "put_through_qty": 0,
+      "foreign_sell_volume": 111300,
+      "symbol": "MSN",
+      "put_through_value": 0,
+      "total_listed_qty": "1460374611",
+      "open_interest": "",
+      "ST": "2",
+      "open_price": "72200",
+      "price_change": 300,
+      "ceiling_price": 77000,
+      "close_price": "72300",
+      "TD": "07/10/2026",
+      "time": 1791340805681,
+      "ask_vol_1": 12300,
+      "ask_vol_2": 46300,
+      "ask_vol_3": 35100,
+      "IT": "09:40:05",
+      "CA": [
+        {
+          "SYMBOL": "MSN",
+          "NKHQ": null,
+          "REPORTDATE": null,
+          "T": null,
+          "DESCRIPTION": null
+        }
+      ]
+    }
+  ],
+  "decimal_tokens_stored_as_text": true
+}
