@@ -46,6 +46,81 @@ Khi mở trang một mã, web tự tải khoảng **6 tháng lịch sử giá** 
 
 Nhấn **Ctrl+C** tại mỗi terminal để dừng backend và frontend. Khi sửa code backend, dừng rồi chạy lại lệnh backend để nạp bản mới.
 
+## Đưa dữ liệu giá/tin lên Supabase
+
+> **Người đăng:** dinhhuynhvu12 · **Ngày đăng:** 08/10/2026 20:41 (giờ Việt Nam, UTC+7) · Nhánh: `feature/supabase-market-news-ingest`
+
+Dữ liệu của `data_pipeline/ScrapersOHLCV` (giá) và `data_pipeline/scrapers` (tin) có thể lưu lên Supabase. Database này là **PRODUCTION dùng chung**, vì vậy hỏi leader trước khi chạy `--apply`.
+
+### Cấu hình kết nối (mỗi máy làm một lần)
+
+Tạo file `.env` ở thư mục gốc `FinMind` (cùng cấp `backend`) với một dòng. Lấy chuỗi từ leader hoặc nút **Connect** của Supabase:
+
+```text
+DATABASE_URL=postgresql://postgres.<mã-dự-án>:<MẬT_KHẨU>@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres
+```
+
+- Mật khẩu có ký tự đặc biệt hoặc dấu cách phải mã hóa URL (dấu cách là `%20`, `@` là `%40`).
+- `.env` đã được Git bỏ qua. **Không commit, không gửi mật khẩu lên nhóm công khai.**
+- Thư viện cần có: `py -m pip install asyncpg python-dotenv`. Môi trường biểu đồ (`.agent-state/vnstock-venv`) cài bằng `pip install -r data_pipeline/ScrapersOHLCV/requirements/db.txt`.
+
+### Bước 1 — Tạo bảng (một lần cho mỗi database)
+
+Mở Supabase → **SQL Editor** → **New query**, dán nội dung rồi **Run**, theo thứ tự:
+
+1. `supabase/migrations/20261008000000_add_news_articles.sql` (bảng `news_articles`)
+2. `supabase/migrations/20261008000100_add_market_extras.sql` (bảng `price_indicators`, `market_index_bars`, `market_live_snapshots`)
+
+Hai file chỉ dùng `CREATE ... IF NOT EXISTS`, chạy lại không sao. Bảng gốc (`price_bars`, `companies`, `raw_payloads`, `ingestion_jobs`) đã có từ `20260929000000_schema_from_supplied_erd.sql`. **Không** chạy `supabase/reset_and_rebuild.sql` trên database dùng chung vì file này xóa toàn bộ schema.
+
+### Bước 2 — Nạp dữ liệu đã có trong file JSON
+
+Chạy tại thư mục gốc `FinMind`. Lệnh không có `--apply` chỉ chạy thử, không kết nối database:
+
+```powershell
+py -X utf8 backend/scripts/ingest_market_news_to_supabase.py                      # chạy thử
+py -X utf8 backend/scripts/ingest_market_news_to_supabase.py --only prices --apply
+py -X utf8 backend/scripts/ingest_market_news_to_supabase.py --only news --apply
+```
+
+- Tùy chọn: `--symbol VCB FPT` (chỉ vài mã), `--no-overwrite` (giữ giá đã có trong `price_bars`, không ghi đè).
+- Giá được lưu nguyên giá trị gốc của vnstock/KBS (nghìn đồng, `price_scale = 1000`). Nguồn chưa xác nhận giá điều chỉnh hay chưa nên `is_adjusted = false`.
+- Chỉ số (VNINDEX, VN30, HNXINDEX...) vào `market_index_bars`, không vào `price_bars`.
+- Nếu thiếu bảng, script dừng và báo tên bảng, chưa ghi gì.
+
+### Bước 3 — Crawler tự đẩy lên Supabase khi chạy
+
+Khi `DATABASE_URL` có trong `.env`, mỗi lần crawler lưu file JSON thì module [data_pipeline/supabase_sink.py](data_pipeline/supabase_sink.py) đẩy thêm dữ liệu đó lên Supabase:
+
+- Giá và chỉ báo (`data.json`), bảng điện (`live.json`) từ `ScrapersOHLCV`; tin từ `scrapers`.
+- JSON **vẫn được giữ** làm bộ nhớ đệm, vì crawler đọc lại file để gộp dữ liệu.
+- Lỗi database (thiếu bảng, mất mạng, sai mật khẩu) chỉ in cảnh báo `[supabase_sink]`, crawler vẫn chạy bình thường.
+- Mỗi file giá chỉ đẩy tối đa **một lần mỗi 60 giây**, nên lần cập nhật cuối của phiên có thể lên web chậm khoảng 1 phút.
+- Chỉ đẩy file nằm trong `ScrapersOHLCV/data/stocks/` và `scrapers/data/`; test dùng thư mục tạm không bị đẩy.
+- Tắt đẩy lên database: đặt biến môi trường `FINMIND_DB_SINK=off`. Máy không có `DATABASE_URL` thì tự không đẩy.
+- `live.json` chỉ giữ ảnh chụp mới nhất của mỗi mã (ghi đè), không lưu lịch sử.
+
+### Kiểm tra trên web Supabase
+
+**Table Editor** → chọn schema `public` → mở `price_bars`, `price_indicators`, `market_index_bars`, `market_live_snapshots`, `news_articles`. Hoặc chạy trong **SQL Editor**:
+
+```sql
+select 'price_bars' as bang, count(*) from price_bars
+union all select 'price_indicators', count(*) from price_indicators
+union all select 'market_index_bars', count(*) from market_index_bars
+union all select 'market_live_snapshots', count(*) from market_live_snapshots
+union all select 'news_articles', count(*) from news_articles;
+```
+
+### Lỗi thường gặp
+
+| Thông báo | Cách xử lý |
+|---|---|
+| `password authentication failed` | Sai mật khẩu hoặc tên user trong `DATABASE_URL`. Hỏi lại leader. |
+| `Chua co bang ...` | Chưa chạy file SQL ở Bước 1. |
+| `timeout` / `could not connect` | Mạng chặn cổng. Đổi mạng, hoặc dùng cổng 5432 (Session pooler). |
+| `ModuleNotFoundError: asyncpg` | Cài thư viện như phần cấu hình ở trên. |
+
 ## Ghi chú kiểm tra dữ liệu Vector RAG
 
 Để Vector RAG chạy đúng với dữ liệu tài chính, cần kiểm tra và sửa các mục dưới đây. Theo rà soát code, có vài vấn đề về đơn vị và kỳ báo cáo; cần xử lý trước khi nạp BID vào Supabase.

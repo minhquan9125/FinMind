@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib.util
 import json
 import math
 import os
@@ -8,6 +9,7 @@ from datetime import date, datetime
 from decimal import Decimal
 from pathlib import Path, PurePosixPath, PureWindowsPath
 import sqlite3
+import sys
 import tempfile
 from typing import Any
 
@@ -141,7 +143,22 @@ class ProjectPaths:
                 except OSError:
                     pass
             raise
+        _push_to_supabase(target, payload)
         return target
+
+
+def _push_to_supabase(target: Path, payload: Any) -> None:
+    """Đẩy thêm dữ liệu vừa lưu lên Supabase (nếu có DATABASE_URL). Lỗi chỉ cảnh báo, JSON vẫn được lưu."""
+    try:
+        sink_path = Path(__file__).resolve().parents[3] / "supabase_sink.py"
+        spec = importlib.util.spec_from_file_location("finmind_supabase_sink", sink_path)
+        sink = sys.modules.get(spec.name) or importlib.util.module_from_spec(spec)
+        if spec.name not in sys.modules:
+            sys.modules[spec.name] = sink
+            spec.loader.exec_module(sink)
+        sink.push_ohlcv(target, payload)
+    except Exception as exc:  # noqa: BLE001 - không để việc đẩy database làm hỏng việc lưu file
+        print(f"[supabase_sink] bỏ qua: {exc}", file=sys.stderr)
 
 
 def _validate_no_dangling_or_symlink(path: Path) -> None:

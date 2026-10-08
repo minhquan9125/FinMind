@@ -59,6 +59,22 @@ def write_payload(path, payload):
         temporary.replace(path)
     finally:
         temporary.unlink(missing_ok=True)
+    push_to_supabase(path, payload)
+
+
+def push_to_supabase(path, payload):
+    """Đẩy thêm file tin vừa lưu lên Supabase (nếu có DATABASE_URL). Lỗi chỉ cảnh báo, JSON vẫn được lưu."""
+    try:
+        import importlib.util
+        sink_path = Path(__file__).resolve().parents[2] / "supabase_sink.py"
+        spec = importlib.util.spec_from_file_location("finmind_supabase_sink", sink_path)
+        sink = sys.modules.get(spec.name) or importlib.util.module_from_spec(spec)
+        if spec.name not in sys.modules:
+            sys.modules[spec.name] = sink
+            spec.loader.exec_module(sink)
+        sink.push_news(path, payload)
+    except Exception as exc:  # noqa: BLE001 - không để việc đẩy database làm hỏng việc lưu file
+        print(f"[supabase_sink] bỏ qua: {exc}", file=sys.stderr)
 
 
 def clean_url(raw_url: str, base_url: str = "") -> str | None:
