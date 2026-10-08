@@ -3,6 +3,7 @@
 - **Cập nhật:** 08/10/2026
 - **Ngôn ngữ triển khai:** Python 3.10+ thuần (thay thế hoàn toàn bản TypeScript cũ)
 - **Môi trường:** Windows / Linux
+- **Git Branch:** [`feature/ocr-pipeline`](https://github.com/minhquan9125/FinMind/tree/feature/ocr-pipeline) | Remote: `https://github.com/minhquan9125/FinMind.git`
 - **Tài liệu đối chiếu gốc:** [`README_M.md`](README_M.md) (bản kế hoạch và thiết kế kiến trúc POC lập ngày 06/10/2026).
 
 Tài liệu này đối chiếu **toàn diện và chi tiết từng mục** giữa kế hoạch ban đầu trong `README_M.md` với **mã nguồn và dữ liệu thực tế đang chạy** trong hệ thống.
@@ -37,7 +38,7 @@ PDF → main.py → pages.jsonl (chữ từng trang, tuyến text_layer/Tesserac
 ```
 
 1. `main.py` dùng lớp chữ PDF khi có; trang không đủ chữ được render rồi đưa qua Tesseract, và có thể gọi Gemini theo tùy chọn CLI. `pages.jsonl` là kết quả OCR theo trang, **chưa phải bảng IR**.
-2. `buildDocumentIr.py` dùng `pdfplumber` đọc chữ và tọa độ, tách các khối `heading`, `paragraph`, `furniture`, `kpi`; nhận diện các trang BCTC theo tiêu đề. Mỗi trang được ghi thành `p-NNN.ir.json`, với `NNN` là **số trang PDF**.
+2. `buildDocumentIr.py` dùng **`pdfplumber` làm adapter A2 đã chốt**: đọc chữ, tọa độ, cỡ chữ và màu ký tự để nhận tiêu đề, menu bên lề, các khối `heading`, `paragraph`, `furniture`, `kpi` và trang BCTC. Dữ liệu được xử lý trực tiếp trong Python. Mỗi trang được ghi thành `p-NNN.ir.json`, với `NNN` là **số trang PDF**. `pdftotext -layout` vẫn dùng trước đó để lấy chữ và quyết định trang cần OCR; không dùng `pdftotext -bbox-layout` để dựng IR.
 3. Bảng FPT 2024 đã rà soát được dựng theo cấu hình riêng cho đúng mã SHA-256 của PDF mẫu. Với ba báo cáo chính trong FPT 2025, chương trình tìm hàng tiêu đề `Mã số` / `Thuyết minh` / hai năm, dùng vị trí các cột và mã dòng để tạo `table`. Trang không tách chắc chắn giữ chữ; trang báo cáo chính chưa có bảng được ghi vào `table/index.json` → `needs_review`.
 4. Mỗi file IR được kiểm tra với `Document IR/ir-v1.schema.json` trước khi ghi. `auditDocumentIr.py` kiểm tra lại cấu trúc, chỉ mục và từ trong vùng trang PDF nhìn thấy. Các kiểm tra này **không chứng minh mọi ô đã được nhận đúng**.
 
@@ -88,6 +89,20 @@ Trong `p-148.ir.json` của FPT 2024, bảng cân đối có khối `type: "tabl
 
 **Giới hạn kiểm chứng:** `table/index.json` có `arithmetic_checks` cho một số phép cộng/trừ BCTC và `needs_review` cho trang báo cáo chính chưa tách chắc chắn hoặc sai phép kiểm tra. Đây là kiểm tra bổ sung, chưa phải bộ luật sinh từ `template_lines`, chưa có gold set để đo độ đúng của từng ô.
 
+## 1.3 Mốc S2 trong kế hoạch (đến 11/10/2026)
+
+Tiêu chí ở `README_M.md`: **A1, A2, A6, C1 trên PDF có lớp text; gold set đầu tiên (E5). FPT 2024 trang PDF 148–156 ra IR, qua đẳng thức và có số đo trên gold set.** Hiện mốc này **chưa hoàn tất**:
+
+| Tiêu chí S2 | Bằng chứng hiện có | Còn thiếu |
+| :--- | :--- | :--- |
+| A1 — schema IR v1 | Có JSON Schema, validation từng trang và `src/ir_types.py` khai báo type cho trang, nguồn, 8 loại khối chữ, bảng, cột, dòng, ô và phiếu đọc | Đã có đủ type theo cấu trúc schema; quy tắc giá trị và liên trường tiếp tục được kiểm tra khi chạy |
+| A2 — lớp text → IR | Đã chốt `pdfplumber`; cả **9 trang 148–156** có bảng IR, tổng **139 dòng** với mã, nhãn, ô và `bbox`; audit schema không lỗi | Cần đo độ đúng từng ô trên gold set và mở rộng khả năng tách cho mẫu PDF khác; không còn yêu cầu chuyển sang `pdftotext -bbox-layout` |
+| A6 — lọc `furniture` | Có khối `furniture` cho nhiều menu, header, footer | Kiểm tra lặp cùng vị trí trên ≥50% trang và đánh giá trang ngoại lệ |
+| C1 — đẳng thức | Tính trên IR hiện có: **8/8 lượt kiểm tra cơ bản** khớp (4 luật × 2 kỳ) | Sinh luật từ `template_lines`, thêm luật chéo báo cáo và trọng tài theo ô |
+| E5 — gold set | Chưa có bộ nhãn chuẩn độc lập và báo cáo số đo | Chép tay dữ liệu chuẩn, đối chiếu ô IR và tính chỉ số độ chính xác |
+
+`auditDocumentIr.py` trả `errors: []` cho FPT 2024, nhưng kết quả đó đo **tính hợp lệ cấu trúc và độ phủ chữ**, không phải độ chính xác theo gold set. Vì thiếu E5 và các phần tổng quát của A6/C1, không đánh dấu S2 là hoàn thành.
+
 ---
 
 ## 2. Đối chiếu toàn diện với `README_M.md`
@@ -112,9 +127,9 @@ Dưới đây là bảng đối chiếu chi tiết từng hạng mục được 
 ### 2.2 Đối chiếu 5 nhóm công việc kỹ thuật (Nhóm A $\rightarrow$ E)
 
 #### Nhóm A: Document IR và tách cấu trúc (Giải quyết G1–G3)
-* **A1 — Chốt Schema IR v1 (JSON Schema + Python type):** 🟡 **MỘT PHẦN**. Đã có `Document IR/ir-v1.schema.json` và `src/validate_ir.py` kiểm định Draft 2020-12 trước khi ghi file; chưa có bộ Python type/model đầy đủ cho mọi khối trong schema.
-* **A2 — Adapter lớp chữ PDF $\rightarrow$ IR:** ✅ **HOÀN THÀNH TRÊN MẪU**. Dùng `pdfplumber` bóc tách khối chữ, tọa độ và chuyển đổi thành công các bảng BCTC và bảng thường niên sang cấu trúc `table`.
-* **A3 — Adapter Tesseract TSV $\rightarrow$ IR:** 🟡 **MỘT PHẦN**. Đã dùng TSV để lấy text và tính độ tin cậy (`conf`). Trang OCR đưa vào IR chủ yếu dưới dạng đoạn chữ; chưa tách bảng chi tiết từng ô từ TSV.
+* **A1 — Chốt Schema IR v1 (JSON Schema + Python type):** ✅ **HOÀN THÀNH PHẦN CẤU TRÚC**. `Document IR/ir-v1.schema.json` quy định JSON; `src/ir_types.py` khai báo `TypedDict` cho mọi loại khối, dòng/ô và nguồn; `src/validate_ir.py` kiểm tra schema và quy tắc liên trường khi chạy. Type giúp trình soạn thảo kiểm tra cấu trúc nhưng không thay thế validator runtime.
+* **A2 — Adapter lớp chữ PDF $\rightarrow$ IR:** ✅ **HOÀN THÀNH TRÊN MẪU**. Đã chốt `pdfplumber` để đọc chữ, tọa độ, cỡ chữ và màu; chuyển đổi các bảng BCTC và bảng thường niên đã rà soát sang cấu trúc `table`. Chất lượng trên tài liệu mới cần gold set để đánh giá.
+* **A3 — Adapter Tesseract TSV $\rightarrow$ IR:** 🟡 **TIẾN TRIỂN TỐT**. Đã phân tích chi tiết dữ liệu TSV (12 cột `level, page_num, block_num, par_num, line_num, word_num, left, top, width, height, conf, text`) thành danh sách từ (`wordItems`) kèm tọa độ hộp bao `[left, top, right, bottom]` và độ tin cậy (`conf`). Đã tích hợp vào `buildDocumentIr.py` để gán tọa độ khối có đơn vị pixel (`page_size.unit: "px"`) cho các trang scan OCR thay vì để `bbox: null`. Phần còn lại: nhóm dòng/cột để dựng bảng dạng cấu trúc từ trang scan thuần.
 * **A4 — Đổi schema Gemini sang `blocks/rows`:** ❌ **CHƯA LÀM**. Gemini API hiện mới dùng để OCR text so chéo ở tầng L1, chưa ép Structured Output trả về thẳng IR dạng bảng theo schema.
 * **A5 — Hợp nhất phiếu từng ô (`MERGED`):** ❌ **CHƯA LÀM**. Chưa có cơ chế bỏ phiếu giữa các engine OCR theo từng ô riêng lẻ.
 * **A6 — Lọc bỏ rác giao diện (`furniture`):** 🟡 **MỘT PHẦN**. Có tách theo vị trí và bố cục; chưa kiểm chứng lặp trên ≥50% trang, nên không khẳng định đã loại hết menu/header khỏi `paragraph`.
@@ -218,6 +233,7 @@ ocr-router/
 │   ├── buildDocumentIr.py              # Bộ dựng Document IR cho cả 2 nhánh
 │   ├── reportContent.py                # Bóc tách 6 chủ đề thường niên, bảng và KPI
 │   ├── financialContent.py             # Phân loại và định vị trang BCTC kiểm toán
+│   ├── ir_types.py                     # Python TypedDict tương ứng Document IR v1
 │   ├── validate_ir.py                  # Validator kiểm tra schema
 │   ├── auditDocumentIr.py              # Bộ kiểm toán đối soát không mất từ với PDF gốc
 │   ├── textLayer.py                    # Đọc lớp text PDF

@@ -19,11 +19,12 @@ import sys
 import unicodedata
 from collections import Counter
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pdfplumber
 from jsonschema import Draft202012Validator
 
+from ir_types import Block, Cell, Column, PageClass, PageIR, Row, Source, TableBlock
 from model import PROMPT_VERSION
 from financialContent import (compact_page_ranges, expand_page_ranges,
                               financial_index, financial_page_class,
@@ -207,7 +208,7 @@ def _layout_blocks(page: pdfplumber.page.Page,
     return blocks
 
 
-def _markdown_table(lines: list[str], number: int, sequence: int) -> dict[str, Any] | None:
+def _markdown_table(lines: list[str], number: int, sequence: int) -> TableBlock | None:
     if len(lines) < 3 or "|" not in lines[0]:
         return None
     split = lambda line: [cell.strip() for cell in line.strip().strip("|").split("|")]
@@ -223,22 +224,23 @@ def _markdown_table(lines: list[str], number: int, sequence: int) -> dict[str, A
     value_indices = [i for i in range(len(headers)) if i not in (code_index, label_index, note_index)]
     if not value_indices:
         return None
-    columns = [{"key": f"c{index}", "header_lines": [headers[i]] if headers[i] else [],
-                "bbox": None} for index, i in enumerate(value_indices, 1)]
-    rows = []
+    columns: list[Column] = [{"key": f"c{index}", "header_lines": [headers[i]] if headers[i] else [],
+                              "bbox": None} for index, i in enumerate(value_indices, 1)]
+    rows: list[Row] = []
     for line in lines[2:]:
         if "|" not in line:
             return None
         parts = split(line)
         if len(parts) != len(headers):
             return None
-        cells = {f"c{index}": {"raw": parts[i], "bbox": None}
-                 for index, i in enumerate(value_indices, 1) if parts[i]}
+        cells: dict[str, Cell] = {f"c{index}": {"raw": parts[i], "bbox": None}
+                                  for index, i in enumerate(value_indices, 1) if parts[i]}
         rows.append({"id": f"r{len(rows) + 1}", "code": parts[code_index] or None if code_index is not None else None,
                      "label_raw": parts[label_index], "note": parts[note_index] or None if note_index is not None else None,
                      "bbox": None, "cells": cells})
-    return {"id": f"p{number}-t{sequence}", "type": "table", "bbox": None,
-            "unit_text": None, "columns": columns, "rows": rows}
+    table: TableBlock = {"id": f"p{number}-t{sequence}", "type": "table", "bbox": None,
+                         "unit_text": None, "columns": columns, "rows": rows}
+    return table
 
 
 def _text_blocks(text: str, number: int) -> list[dict[str, Any]]:
@@ -260,6 +262,35 @@ def _text_blocks(text: str, number: int) -> list[dict[str, Any]]:
         if joined.startswith("[stamp]"):
             block_type = "stamp"
         blocks.append({"type": block_type, "text": joined, "bbox": None})
+    return blocks
+
+
+def _ocr_blocks(word_items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Build positioned paragraphs from Tesseract's block/paragraph/line TSV rows.
+
+    Coordinates remain pixels of the upright OCR image. TSV line identifiers keep
+    words from neighbouring columns or baselines in separate text lines.
+    """
+    paragraphs: dict[tuple[int, int], dict[int, list[dict[str, Any]]]] = {}
+    for word in word_items:
+        key = (word["block"], word["paragraph"])
+        paragraphs.setdefault(key, {}).setdefault(word["line"], []).append(word)
+
+    blocks: list[dict[str, Any]] = []
+    for lines in paragraphs.values():
+        ordered_lines = [sorted(words, key=lambda item: (item["bbox"][0], item["bbox"][1]))
+                         for words in lines.values()]
+        text = "\n".join(" ".join(word["text"] for word in words)
+                         for words in ordered_lines)
+        all_words = [word for words in ordered_lines for word in words]
+        bbox = [min(word["bbox"][0] for word in all_words),
+                min(word["bbox"][1] for word in all_words),
+                max(word["bbox"][2] for word in all_words),
+                max(word["bbox"][3] for word in all_words)]
+        letters = [char for char in text if char.isalpha()]
+        uppercase = bool(letters) and sum(char.isupper() for char in letters) / len(letters) > 0.85
+        block_type = "heading" if uppercase and len(text) < 140 else "paragraph"
+        blocks.append({"type": block_type, "text": text, "bbox": bbox})
     return blocks
 
 
@@ -400,14 +431,28 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
                  page: pdfplumber.page.Page, work_dir: Path,
                  tables_override: list[dict[str, Any]] | None = None,
                  page_class_override: str | None = None,
-                 layout_exclude_boxes: list[list[float]] | None = None) -> dict[str, Any]:
+                 layout_exclude_boxes: list[list[float]] | None = None) -> PageIR:
     number = record["page"]
     header_blocks: list[dict[str, Any]] = []
     tables = (reviewed_annual_tables(page, digest, header_blocks)
               if record["route"] == "text_layer" else []) if tables_override is None else tables_override
-    blocks = (_layout_blocks(page, layout_exclude_boxes if layout_exclude_boxes is not None
-                             else [table["bbox"] for table in tables])
-              if record["route"] == "text_layer" else _text_blocks(record["text"], number))
+    if record["route"] == "text_layer":
+        blocks = _layout_blocks(page, layout_exclude_boxes if layout_exclude_boxes is not None
+                                else [table["bbox"] for table in tables])
+        page_width, page_height, unit = page.width, page.height, "pt"
+    else:
+        word_items = record.get("tesseract", {}).get("wordItems")
+        # Gemini may correct OCR text. Never assign Tesseract positions to
+        # different Gemini words; old pages.jsonl also lacks word geometry.
+        ocr_text = " ".join(item["text"] for item in word_items) if word_items else ""
+        same_text = " ".join(record["text"].split()) == " ".join(ocr_text.split())
+        if word_items and same_text:
+            blocks = _ocr_blocks(word_items)
+            page_width, page_height = _png_size(_image_path(work_dir, number))
+            unit = "px"
+        else:
+            blocks = _text_blocks(record["text"], number)
+            page_width, page_height, unit = page.width, page.height, "pt"
     if record["route"] == "text_layer":
         blocks = _order_reviewed_multicolumn_page(blocks, number, digest)
     content = []
@@ -428,14 +473,20 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
     for index, block in enumerate(blocks, 1):
         if block["type"] != "table":
             block["id"] = f"p{number}-b{index}"
-            block["bbox"] = _clamp_box(block["bbox"], page.width, page.height)
+            block["bbox"] = _clamp_box(block["bbox"], page_width, page_height)
+            if unit == "px" and block["bbox"] is None:
+                raise ValueError(f"Tesseract bbox ngoài ảnh trang {number}")
             if block["type"] == "heading" and _plain(block["text"]).startswith("mau so"):
                 block["type"] = "form_code"
     page_class = page_class_override or _page_class(blocks)
-    return {"ir_version": "1", "page": number, "printed_page": _printed_page(page),
-            "page_class": page_class,
-            "page_size": {"width": page.width, "height": page.height, "unit": "pt"},
-            "source": _source(record, pdf, digest, page, work_dir), "blocks": blocks}
+    ir: PageIR = {
+        "ir_version": "1", "page": number, "printed_page": _printed_page(page),
+        "page_class": cast(PageClass | None, page_class),
+        "page_size": {"width": page_width, "height": page_height, "unit": unit},
+        "source": cast(Source, _source(record, pdf, digest, page, work_dir)),
+        "blocks": cast(list[Block], blocks),
+    }
+    return ir
 
 
 def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[str, Any]:

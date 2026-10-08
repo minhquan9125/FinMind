@@ -20,9 +20,19 @@ class TessResult(TypedDict):
     text: str
     chars: int
     words: int
+    wordItems: list[TessWord]
     meanConf: int
     lowConfRatio: float
     seconds: float
+
+
+class TessWord(TypedDict):
+    text: str
+    bbox: list[int]
+    conf: float
+    block: int
+    paragraph: int
+    line: int
 
 
 def tess_env(tessdata: str | None) -> dict[str, str]:
@@ -51,6 +61,7 @@ def tesseract(image: Path, env: dict[str, str]) -> TessResult:
         raise RuntimeError(f"tesseract không ra TSV ({image}): {result.stderr[:300]}")
     lines: list[str] = []
     confidences: list[float] = []
+    word_items: list[TessWord] = []
     current: list[str] = []
     line_key = paragraph_key = ""
 
@@ -64,10 +75,16 @@ def tesseract(image: Path, env: dict[str, str]) -> TessResult:
         cells = row.split("\t")
         if len(cells) < 12 or cells[0] != "5":
             continue
-        word = cells[11].strip()
+        word = unicodedata.normalize("NFC", cells[11].strip())
         confidence = float(cells[10])
         if not word or confidence < 0:
             continue
+        left, top, width, height = (int(cells[index]) for index in (6, 7, 8, 9))
+        if left < 0 or top < 0 or width <= 0 or height <= 0:
+            raise RuntimeError(f"Tesseract TSV có bbox không hợp lệ ({image}): {row[:200]}")
+        word_items.append({"text": word, "bbox": [left, top, left + width, top + height],
+                           "conf": confidence, "block": int(cells[2]),
+                           "paragraph": int(cells[3]), "line": int(cells[4])})
         paragraph = f"{cells[2]}.{cells[3]}"
         line = f"{paragraph}.{cells[4]}"
         if line != line_key:
@@ -81,6 +98,7 @@ def tesseract(image: Path, env: dict[str, str]) -> TessResult:
     text = unicodedata.normalize("NFC", "\n".join(lines))
     count = len(confidences)
     return {"text": text, "chars": len(re.sub(r"\s", "", text)), "words": count,
+            "wordItems": word_items,
             "meanConf": int(js_round(sum(confidences) / count)) if count else 0,
             "lowConfRatio": js_round(sum(c < LOW_CONF for c in confidences) / count, 3) if count else 1,
             "seconds": seconds(start)}

@@ -83,6 +83,9 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
         image, rotation = upright_page(pdf, page, work_dir, cfg.long_side, env)
         cache_path = cache_dir / "tess" / f"{hash_file(image)[:32]}.json"
         hit = load_json(cache_path)
+        # Older cache entries have only the word count, not TSV word geometry.
+        if hit is not None and not isinstance(hit.get("wordItems"), list):
+            hit = None
         tess = hit if hit is not None else tesseract(image, env)
         if hit is None:
             save_json(cache_path, tess)

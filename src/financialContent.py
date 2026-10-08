@@ -15,6 +15,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+from ir_types import Column, Row, TableBlock
 from reportContent import FPT_2024_SHA256
 
 
@@ -119,7 +120,7 @@ def _printed_lines(words: list[dict[str, Any]]) -> list[str]:
             for line in _line_groups(words)]
 
 
-def _coded_statement_table(page: Any, kind: str) -> tuple[dict[str, Any], list[float]]:
+def _coded_statement_table(page: Any, kind: str) -> tuple[TableBlock, list[float]]:
     """Locate coded rows from printed headers and aligned year columns."""
     number = page.page_number
     words = page.extract_words(x_tolerance=2, y_tolerance=3)
@@ -144,10 +145,10 @@ def _coded_statement_table(page: Any, kind: str) -> tuple[dict[str, Any], list[f
     if len(codes) < 3:
         raise ValueError(f"BCTC trang {number}: không tìm đủ mã dòng")
 
-    headers = [{"key": f"c{i + 1}", "header_lines": [year["text"]],
-                "bbox": _word_box([year])} for i, year in enumerate(years)]
+    headers: list[Column] = [{"key": f"c{i + 1}", "header_lines": [year["text"]],
+                              "bbox": _word_box([year])} for i, year in enumerate(years)]
 
-    rows: list[dict[str, Any]] = []
+    rows: list[Row] = []
     all_row_words: list[dict[str, Any]] = []
     for position, code in enumerate(codes):
         top = code["top"] - 4
@@ -210,12 +211,14 @@ def _coded_statement_table(page: Any, kind: str) -> tuple[dict[str, Any], list[f
     row_bbox = [round(code_header["x0"] - 4, 2), round(codes[0]["top"] - 4, 2),
                 round(max(year["x1"] for year in years) + 5, 2),
                 round(max(word["bottom"] for word in all_row_words) + 1, 2)]
-    table = {"id": f"p{number}-t1", "type": "table", "title": titles[kind],
-             "continued": any("tiep theo" in _plain(line) for line in
-                              _printed_lines([word for word in words if word["top"] < header[0]["top"]])),
-             "logical_table_id": kind,
-             "bbox": table_bbox, "unit_text": "Đơn vị: VNĐ",
-             "columns": headers, "rows": rows}
+    table: TableBlock = {
+        "id": f"p{number}-t1", "type": "table", "title": titles[kind],
+        "continued": any("tiep theo" in _plain(line) for line in
+                         _printed_lines([word for word in words if word["top"] < header[0]["top"]])),
+        "logical_table_id": kind,
+        "bbox": table_bbox, "unit_text": "Đơn vị: VNĐ",
+        "columns": headers, "rows": rows,
+    }
     return table, row_bbox
 
 

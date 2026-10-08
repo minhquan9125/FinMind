@@ -186,8 +186,8 @@ Ví dụ một mã có hai nghĩa: Tổng tài sản là mã **270** trong FPT 2
 
 | # | Việc | Ưu tiên | Ghi chú |
 | --- | --- | --- | --- |
-| A1 | Chốt schema **IR v1** (JSON Schema + type): `blocks[]` gồm `heading`, `paragraph`, `table`, `kpi`, `stamp`, `signature`, `form_code`, `toc`, `furniture`; bảng có `columns[]`, `rows[]` (`code`, `label_raw`, `note`, `cells{raw, bbox, votes}`) | 🔴 | Bản nháp ở [mục 3.5](#35-nháp-document-ir-v1); hợp đồng Gemini theo KNOWHOW mục 7.2 |
-| A2 | Adapter lớp text → IR: `pdftotext -bbox-layout` (đã thử: trang 148 ra 116 khối có tọa độ), dựng dòng bảng theo cột Mã số | 🔴 | Đã thử tay trên FPT 2024 trang 148: regex parse được 20 dòng có mã, 12/12 đẳng thức đúng. Còn trang 149–156 |
+| A1 | Chốt schema **IR v1** (JSON Schema + type): `blocks[]` gồm `heading`, `paragraph`, `table`, `kpi`, `stamp`, `signature`, `form_code`, `toc`, `furniture`; bảng có `columns[]`, `rows[]` (`code`, `label_raw`, `note`, `cells{raw, bbox, votes}`) | 🔴 | Đã có `Document IR/ir-v1.schema.json` và Python `TypedDict` ở `src/ir_types.py`; quy tắc giá trị/liên trường kiểm tra bằng `src/validate_ir.py`. Hợp đồng Gemini theo KNOWHOW mục 7.2 vẫn là việc riêng. |
+| A2 | Adapter lớp text → IR: **chốt dùng `pdfplumber`** để đọc chữ, `bbox`, cỡ chữ và màu ký tự; dựng dòng bảng theo cột Mã số | 🔴 | Bản thử cũ dùng `pdftotext -bbox-layout` ở trang 148; code Python hiện dùng `pdfplumber` cho IR trang 148–156. `pdftotext -layout` vẫn dùng ở bước lấy chữ/OCR routing. Chất lượng ô cần đo trên gold set. |
 | A3 | Adapter Tesseract TSV → IR (đã có block/dòng/bbox) | 🟡 | Dùng làm phiếu phụ cho từng ô |
 | A4 | Đổi schema Gemini sang `blocks` + `rows` (thay cho `text`) | 🔴 | Tăng `PROMPT_VERSION` |
 | A5 | Hợp nhất phiếu từng ô → bản `MERGED` | 🔴 | |
@@ -255,7 +255,7 @@ Theo lịch 6 sprint, mỗi sprint 2 tuần, đến 06/12/2026.
 
 | Sprint | Nội dung | Đầu ra kiểm được |
 | --- | --- | --- |
-| S2 (đến 11/10) | A1, A2, A6, C1 trên PDF có lớp text; gold set đầu tiên (E5) | FPT 2024 trang 148–156 ra IR, qua đẳng thức, có số đo trên gold set |
+| S2 (đến 11/10) | A1, A2 (**pdfplumber**), A6, C1 trên PDF có lớp text; gold set đầu tiên (E5) | FPT 2024 trang 148–156 ra IR, qua đẳng thức, có số đo trên gold set |
 | S3 (12/10–25/10) | A4, A5, A7, B1–B3, C2–C3, D1–D5, E1, E2; chốt Q1–Q4 | BCTC (lớp text và scan) → `observations` hoặc `quarantine_records` trong Postgres |
 | S4 (26/10–08/11) | B5, B6 (ngân hàng), C4 (UC17 tối thiểu), D6–D8 | 10 mã trong phạm vi chạy hết, có tỉ lệ tự promote |
 | S5–S6 | Nhánh RAG từ IR, sự kiện (Q5), tối ưu ngưỡng, test hồi quy | Đóng băng corpus |
@@ -271,7 +271,7 @@ Mỗi trang một object, engine nào cũng xuất cùng dạng này. Ví dụ r
   "ir_version": "1",
   "page": 148,
   "size": [1920, 1080],
-  "source": { "engine": "TEXT_LAYER", "tool": "pdftotext -bbox-layout" },
+  "source": { "engine": "TEXT_LAYER", "tool": "pdfplumber 0.11.9" },
   "blocks": [
     { "id": "b1", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42, 109, …] },
     { "id": "b2", "type": "heading",   "text": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT", "bbox": [429, 55, …] },

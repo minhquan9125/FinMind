@@ -13,6 +13,8 @@ from typing import Any
 
 import pdfplumber
 
+from ir_types import Cell, Column, Row, TableBlock
+
 
 SECTION_TITLES = {
     "leadership": "Thông điệp ban lãnh đạo",
@@ -270,7 +272,7 @@ def _words_in_band(words: list[dict[str, Any]], left: float, right: float,
 
 
 def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
-                           header_blocks: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+                           header_blocks: list[dict[str, Any]] | None = None) -> list[TableBlock]:
     """Reconstruct only the annual tables whose geometry was reviewed on this PDF."""
     if digest != FPT_2024_SHA256:
         return []
@@ -278,7 +280,7 @@ def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
     if not specs:
         return []
     words = page.extract_words(x_tolerance=2, y_tolerance=3)
-    tables = []
+    tables: list[TableBlock] = []
     for sequence, spec in enumerate(specs, 1):
         x0, y0, x1, y1 = spec["box"]
         cuts = spec["cuts"]
@@ -294,7 +296,7 @@ def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
         if len(starts) != spec["rows"]:
             raise ValueError(f"Trang {page.page_number}: {spec['title']} có "
                              f"{len(starts)} dòng, dự kiến {spec['rows']}")
-        columns = []
+        columns: list[Column] = []
         value_headers = []
         for index, field in enumerate(fields):
             if not re.fullmatch(r"c[1-9]\d*", field):
@@ -315,7 +317,7 @@ def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
                 if header_words:
                     header_blocks.append({"type": "paragraph", "text": "\n".join(_printed_lines(header_words)),
                                           "bbox": _word_box(header_words)})
-        rows = []
+        rows: list[Row] = []
         for position, start in enumerate(starts):
             # The first word of a printed row can sit a few points above its
             # numeric anchor because bold and regular fonts have different ascents.
@@ -329,18 +331,20 @@ def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
             if not label or not row_words:
                 raise ValueError(f"Trang {page.page_number}: dòng {position + 1} của "
                                  f"{spec['title']} thiếu nhãn")
-            cells = {field: {"raw": "\n".join(_printed_lines(part)), "bbox": _word_box(part)}
-                     for field, part in parts.items()
-                     if re.fullmatch(r"c[1-9]\d*", field) and part}
+            cells: dict[str, Cell] = {
+                field: {"raw": "\n".join(_printed_lines(part)), "bbox": _word_box(part)}
+                for field, part in parts.items()
+                if re.fullmatch(r"c[1-9]\d*", field) and part
+            }
             rows.append({"id": f"r{position + 1}", "code": code,
                          "label_raw": label, "note": None, "bbox": _word_box(row_words),
                          "cells": cells})
         if not rows or not columns:
             raise ValueError(f"Trang {page.page_number}: bảng {spec['title']} rỗng")
-        table = {"id": f"p{page.page_number}-t{sequence}", "type": "table",
-                 "title": spec["title"], "continued": spec.get("continued", False),
-                 "bbox": _word_box(candidate_words), "unit_text": spec.get("unit"),
-                 "columns": columns, "rows": rows}
+        table: TableBlock = {"id": f"p{page.page_number}-t{sequence}", "type": "table",
+                             "title": spec["title"], "continued": spec.get("continued", False),
+                             "bbox": _word_box(candidate_words), "unit_text": spec.get("unit"),
+                             "columns": columns, "rows": rows}
         if spec.get("logical"):
             table["logical_table_id"] = spec["logical"]
         tables.append(table)

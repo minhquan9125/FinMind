@@ -12,17 +12,18 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+from ir_types import BBox, PageIR
 
 SCHEMA = Path(__file__).resolve().parents[1] / "Document IR" / "ir-v1.schema.json"
 
 
-def semantic_errors(ir: dict) -> list[str]:
+def semantic_errors(ir: PageIR) -> list[str]:
     errors: list[str] = []
     width = ir["page_size"]["width"]
     height = ir["page_size"]["height"]
     merged = ir["source"]["engine"] == "MERGED"
 
-    def check_bbox(path: str, box: list[float] | None) -> None:
+    def check_bbox(path: str, box: BBox) -> None:
         if box is None:
             return
         x0, y0, x1, y1 = box
@@ -64,7 +65,7 @@ def semantic_errors(ir: dict) -> list[str]:
     return errors
 
 
-def validate_page(ir: dict, validator: Draft202012Validator) -> list[str]:
+def validate_page(ir: PageIR, validator: Draft202012Validator) -> list[str]:
     schema_errors = sorted(validator.iter_errors(ir), key=lambda e: list(map(str, e.path)))
     if schema_errors:
         return [f"{'/'.join(map(str, error.path)) or '$'}: {error.message}"
