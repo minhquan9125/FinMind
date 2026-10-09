@@ -1,11 +1,12 @@
-"""Build schema-valid IR for annual content and audited financial pages.
+"""Dựng Document IR từ kết quả OCR, rồi tách nội dung thường niên và BCTC.
 
 Usage:
     python src/buildDocumentIr.py "report.pdf"
     python src/buildDocumentIr.py "report.pdf" --pages-jsonl "ocr_router_out/report/pages.jsonl"
 
-Annual content is written under annual_ir/content/; financial pages under
-annual_ir/table/. The root index links both sections.
+Luồng chính: pages.jsonl -> make_page_ir() -> lọc furniture -> kiểm schema
+-> annual_ir/content/ và annual_ir/table/. annual_ir/index.json nối hai nhánh.
+Mỗi p-NNN.ir.json ứng với trang PDF NNN, không phải số trang in trên báo cáo.
 """
 
 from __future__ import annotations
@@ -32,12 +33,16 @@ from financialContent import (compact_page_ranges, expand_page_ranges,
                               statement_tables)
 from render import page_name
 from reportContent import (FPT_2024_SHA256, annual_content_index, annual_kpi,
-                           annual_topics, reviewed_annual_tables, reviewed_kpis, section_from_sidebar,
+                           annual_table_topics,
+                           annual_topics, annual_topics_from_header,
+                           reviewed_annual_tables, reviewed_kpis, section_from_sidebar,
                            section_index)
 from util import hash_file, save_json
 from validate_ir import SCHEMA, validate_page
 
 
+# 1. Tiện ích biểu diễn JSON và chuẩn hóa chữ/tọa độ.
+# _readable_json chỉ đổi cách xuống dòng cho dễ đọc; dữ liệu IR không đổi.
 def _readable_json(value: Any, depth: int = 0) -> str:
     """Keep coordinates and short values on one line without changing the JSON data."""
     if not isinstance(value, (dict, list)):
@@ -82,6 +87,8 @@ def _box(items: list[dict[str, Any]]) -> list[float] | None:
             round(max(item["bottom"] for item in items), 2)]
 
 
+# 2. Trang có lớp chữ: lấy từ + vị trí bằng pdfplumber, tách dòng ở khoảng
+# trắng lớn, rồi gom thành heading/paragraph theo cột và thứ tự đọc.
 def _fragments(page: pdfplumber.page.Page) -> list[dict[str, Any]]:
     """Separate words on the same baseline at visible horizontal gutters."""
     words = page.extract_words(x_tolerance=2, y_tolerance=3, extra_attrs=["size"])
@@ -164,6 +171,7 @@ def _group_fragments(items: list[dict[str, Any]], body_size: float,
 
 def _layout_blocks(page: pdfplumber.page.Page,
                    table_boxes: list[list[float]] | None = None) -> list[dict[str, Any]]:
+    """Dựng khối chữ có bbox; bỏ vùng bảng để chữ trong ô không bị lặp."""
     fragments = _fragments(page)
     if table_boxes:
         fragments = [fragment for fragment in fragments if not any(
@@ -200,7 +208,9 @@ def _layout_blocks(page: pdfplumber.page.Page,
         low = title_tops[section - 1] if section else -1
         high = title_tops[section] if section < len(title_tops) else float("inf")
         for anchor in anchors:
-            lines = [item for item in columns[anchor] if low < item["top"] < high]
+            # A body line can share the exact baseline of a title in the
+            # adjacent column.  Keep it in this section instead of dropping it.
+            lines = [item for item in columns[anchor] if low <= item["top"] < high]
             for block in _group_fragments(lines, body_size, "paragraph"):
                 if "\n" not in block["text"] and _heading({**block, "size": body_size * 1.15}, body_size):
                     block["type"] = "heading"
@@ -209,7 +219,10 @@ def _layout_blocks(page: pdfplumber.page.Page,
     return blocks
 
 
+# 3. Trang OCR: ưu tiên bbox của từng từ Tesseract; nếu bản AI đã sửa chữ
+# khác bản Tesseract thì giữ text nhưng không gán nhầm tọa độ Tesseract.
 def _markdown_table(lines: list[str], number: int, sequence: int) -> TableBlock | None:
+    """Đổi bảng Markdown từ AI thành columns/rows/cells khi có đủ dấu cột."""
     if len(lines) < 3 or "|" not in lines[0]:
         return None
     split = lambda line: [cell.strip() for cell in line.strip().strip("|").split("|")]
@@ -295,7 +308,178 @@ def _ocr_blocks(word_items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return blocks
 
 
+def _tess_statement_table(word_items: list[dict[str, Any]], number: int,
+                          width: int) -> tuple[TableBlock | None, set[int]]:
+    """Conservatively find two aligned amount columns on a scanned statement."""
+    numeric = re.compile(r"\(?-?\d[\d.,]*\)?$")
+    lines: dict[tuple[int, int, int], list[dict[str, Any]]] = defaultdict(list)
+    for word in word_items:
+        lines[(word["block"], word["paragraph"], word["line"])].append(word)
+    physical: list[list[dict[str, Any]]] = []
+    for line in sorted(lines.values(), key=lambda items: min(word["bbox"][1] for word in items)):
+        top = min(word["bbox"][1] for word in line)
+        if physical and abs(top - min(word["bbox"][1] for word in physical[-1])) <= 8:
+            physical[-1].extend(line)
+        else:
+            physical.append(list(line))
+    anchors: list[tuple[float, set[int]]] = []
+    for index, line in enumerate(physical):
+        for word in line:
+            if (not numeric.fullmatch(word["text"]) or
+                    len(re.sub(r"\D", "", word["text"])) < 4 or
+                    word["bbox"][2] < width * .55):
+                continue
+            edge = word["bbox"][2]
+            cluster = next((item for item in anchors if abs(item[0] - edge) <= 18), None)
+            if cluster is None:
+                anchors.append((edge, {index}))
+            else:
+                cluster[1].add(index)
+    strong = sorted((item for item in anchors if len(item[1]) >= 5), key=lambda item: item[0])
+    pairs = [(left, right) for left in strong for right in strong
+             if right[0] - left[0] >= width * .08]
+    if not pairs:
+        return None, set()
+    left, right = max(pairs, key=lambda pair: (len(pair[0][1] & pair[1][1]), pair[1][0]))
+    candidates: list[tuple[int, list[dict[str, Any]], dict[str, Any], dict[str, Any]]] = []
+    for index, line in enumerate(physical):
+        first = [word for word in line if numeric.fullmatch(word["text"])
+                 and abs(word["bbox"][2] - left[0]) <= 18]
+        second = [word for word in line if numeric.fullmatch(word["text"])
+                  and abs(word["bbox"][2] - right[0]) <= 18]
+        if len(first) != 1 or len(second) != 1:
+            continue
+        labels = [word for word in line if word not in (first[0], second[0])
+                  and word["bbox"][2] < first[0]["bbox"][0] - 8]
+        if not any(any(char.isalpha() for char in word["text"]) for word in labels):
+            continue
+        candidates.append((index, labels, first[0], second[0]))
+    groups: list[list[tuple[int, list[dict[str, Any]], dict[str, Any], dict[str, Any]]]] = []
+    for candidate in candidates:
+        if groups and candidate[0] - groups[-1][-1][0] <= 3:
+            groups[-1].append(candidate)
+        else:
+            groups.append([candidate])
+    matched = max(groups, key=len, default=[])
+    if len(matched) < 5:
+        return None, set()
+    rows: list[Row] = []
+    used: set[int] = set()
+    for _, labels, first, second in matched:
+        labels = sorted(labels, key=lambda word: word["bbox"][0])
+        all_labels = list(labels)
+        code = None
+        if labels and re.fullmatch(r"\d{1,3}[a-z]?", labels[0]["text"], re.I):
+            code = labels.pop(0)["text"]
+        note = None
+        if labels and re.fullmatch(r"\d{1,3}(?:\([a-z]\))?", labels[-1]["text"], re.I):
+            note = labels.pop()["text"]
+        row_words = [*all_labels, first, second]
+        used.update(id(word) for word in row_words)
+        rows.append({"id": f"r{len(rows) + 1}", "code": code,
+                     "label_raw": " ".join(word["text"] for word in labels),
+                     "note": note, "bbox": _union_boxes([word["bbox"] for word in row_words]),
+                     "cells": {"c1": {"raw": first["text"], "bbox": first["bbox"]},
+                               "c2": {"raw": second["text"], "bbox": second["bbox"]}}})
+    table_box = _union_boxes([row["bbox"] for row in rows])
+    if table_box is None:
+        return None, set()
+    columns: list[Column] = [
+        {"key": "c1", "header_lines": [], "bbox": None},
+        {"key": "c2", "header_lines": [], "bbox": None},
+    ]
+    return ({"id": f"p{number}-t1", "type": "table", "bbox": table_box,
+             "unit_text": None, "columns": columns, "rows": rows}, used)
+
+
+def _ai_box(box: list[float] | None, width: int, height: int) -> list[float] | None:
+    """Convert AI's [y0,x0,y1,x1] / 1000 to the upright image's pixel space."""
+    if box is None:
+        return None
+    y0, x0, y1, x1 = box
+    return [round(x0 * width / 1000, 2), round(y0 * height / 1000, 2),
+            round(x1 * width / 1000, 2), round(y1 * height / 1000, 2)]
+
+
+def _union_boxes(boxes: list[list[float] | None]) -> list[float] | None:
+    present = [box for box in boxes if box is not None]
+    if not present:
+        return None
+    return [min(box[0] for box in present), min(box[1] for box in present),
+            max(box[2] for box in present), max(box[3] for box in present)]
+
+
+def _tess_vote(box: list[float] | None, words: list[dict[str, Any]],
+               claimed: set[int]) -> dict[str, Any] | None:
+    """Read only TSV words whose centers fall inside the AI cell box."""
+    if box is None:
+        return None
+    selected = [word for word in words if id(word) not in claimed
+                and box[0] - 2 <= (word["bbox"][0] + word["bbox"][2]) / 2 <= box[2] + 2
+                and box[1] - 2 <= (word["bbox"][1] + word["bbox"][3]) / 2 <= box[3] + 2]
+    if not selected:
+        return None
+    claimed.update(id(word) for word in selected)
+    selected.sort(key=lambda word: (word["bbox"][1], word["bbox"][0]))
+    return {"raw": " ".join(word["text"] for word in selected),
+            "conf": round(sum(word["conf"] for word in selected) / len(selected), 2)}
+
+
+def _same_cell_reading(left: str, right: str) -> bool:
+    """Ignore whitespace only; punctuation and signs can change a financial value."""
+    return "".join(left.split()).casefold() == "".join(right.split()).casefold()
+
+
+def _ai_ir_blocks(ai_blocks: list[dict[str, Any]], word_items: list[dict[str, Any]],
+                  number: int, width: int, height: int, provider: str) -> tuple[list[dict[str, Any]], int, int]:
+    """A3/A4/A5: convert AI blocks to IR and attach positional TSV cell votes."""
+    engine = "OPENROUTER" if provider == "openrouter" else "GEMINI"
+    result: list[dict[str, Any]] = []
+    tess_votes = disagreements = 0
+    claimed_words: set[int] = set()
+    for ai in ai_blocks:
+        if ai["type"] != "table":
+            result.append({"type": ai["type"], "text": ai["text"] or "",
+                           "bbox": _ai_box(ai["box_2d"], width, height)})
+            continue
+        columns: list[Column] = [{"key": col["key"], "header_lines": col["header_lines"],
+                                  "bbox": _ai_box(col["box_2d"], width, height)}
+                                 for col in ai["columns"]]
+        rows: list[Row] = []
+        for ai_row in ai["rows"]:
+            cells: dict[str, Cell] = {}
+            for ai_cell in ai_row["cells"]:
+                key = ai_cell["column_key"]
+                box = _ai_box(ai_cell["box_2d"], width, height)
+                raw = ai_cell["raw"] or None
+                votes: dict[str, Any] = {engine: {"raw": raw, "conf": None}}
+                tess = _tess_vote(box, word_items, claimed_words)
+                if tess:
+                    votes["TESSERACT"] = tess
+                    tess_votes += 1
+                    if raw and tess["raw"] and not _same_cell_reading(raw, tess["raw"]):
+                        # A disagreement is unresolved evidence, never an automatic correction.
+                        raw = None
+                        disagreements += 1
+                    elif raw is None and tess["conf"] >= 85:
+                        raw = tess["raw"]
+                cells[key] = {"raw": raw, "bbox": box, "votes": votes}
+            row_box = (_ai_box(ai_row["box_2d"], width, height)
+                       or _union_boxes([cell["bbox"] for cell in cells.values()]))
+            rows.append({"id": f"r{len(rows) + 1}", "code": ai_row["code"],
+                         "label_raw": ai_row["label_raw"], "note": ai_row["note"],
+                         "bbox": row_box, "cells": cells})
+        table_box = (_ai_box(ai["box_2d"], width, height)
+                     or _union_boxes([column["bbox"] for column in columns]
+                                     + [row["bbox"] for row in rows]))
+        result.append({"id": f"p{number}-t{1 + sum(block['type'] == 'table' for block in result)}",
+                       "type": "table", "title": ai["title"], "bbox": table_box,
+                       "unit_text": ai["unit_text"], "columns": columns, "rows": rows})
+    return result, tess_votes, disagreements
+
+
 def _page_class(blocks: list[dict[str, Any]]) -> str | None:
+    """Phân loại sơ bộ từ tiêu đề; nhánh BCTC có phân loại riêng ở financialContent."""
     headings = " ".join(block["text"] for block in blocks if block["type"] == "heading")
     value = _plain(headings)
     if "muc luc" in value:
@@ -316,6 +500,8 @@ def _printed_page(page: pdfplumber.page.Page) -> str | None:
     return selected["text"]
 
 
+# 4. Nguồn gốc trang: ghi engine, model/công cụ, hash ảnh và cách render
+# để người đọc IR truy ngược được chữ đến đúng PDF/ảnh OCR.
 def _image_path(work_dir: Path, number: int) -> Path:
     name = page_name(number)
     upright = work_dir / f"{name}.up.png"
@@ -335,6 +521,7 @@ def _png_size(image: Path) -> tuple[int, int]:
 
 def _source(record: dict[str, Any], pdf: Path, digest: str,
             page: pdfplumber.page.Page, work_dir: Path) -> dict[str, Any]:
+    """Chuyển route trong pages.jsonl thành source hợp lệ của IR v1."""
     route = record["route"]
     source: dict[str, Any] = {"engine": "TEXT_LAYER", "tool": f"pdfplumber {pdfplumber.__version__}",
                               "document_sha256": digest, "file_name": pdf.name}
@@ -349,7 +536,9 @@ def _source(record: dict[str, Any], pdf: Path, digest: str,
     if route in ("tesseract+gemini", "tesseract+openrouter"):
         source.update(engine="OPENROUTER" if route == "tesseract+openrouter" else "GEMINI",
                       tool=record["gemini"]["model"],
-                      prompt_version=PROMPT_VERSION)
+                      prompt_version=record["gemini"].get(
+                          "prompt_version", PROMPT_VERSION if isinstance(record.get("aiBlocks"), list)
+                          else "api-v1"))
     else:
         source.update(engine="TESSERACT", tool="tesseract vie")
     return source
@@ -361,6 +550,7 @@ def _tokens(text: str) -> list[str]:
 
 
 def _represented_words(blocks: list[dict[str, Any]]) -> Counter[str]:
+    """Đếm chữ trong cả khối thường lẫn ô bảng để audit kiểm mất chữ."""
     words: Counter[str] = Counter()
     for block in blocks:
         if block["type"] != "table":
@@ -388,6 +578,8 @@ def _clamp_box(box: list[float] | None, width: float, height: float) -> list[flo
             round(min(width, x1), 2), round(min(height, y1), 2)]
 
 
+# 5. Ngoại lệ đã rà soát trên đúng PDF mẫu: gắn KPI và sửa thứ tự đọc
+# của vài trang nhiều cột. Điều kiện SHA-256 ngăn áp nhầm sang PDF khác.
 def _promote_reviewed_kpis(blocks: list[dict[str, Any]],
                            reviews: list[dict[str, Any]]) -> None:
     """Mark the exact printed numeral as KPI; keep its caption in review data."""
@@ -434,23 +626,38 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
                  tables_override: list[dict[str, Any]] | None = None,
                  page_class_override: str | None = None,
                  layout_exclude_boxes: list[list[float]] | None = None) -> PageIR:
+    """Dựng một trang IR: chọn lớp chữ/OCR, ghép bảng, gán loại và nguồn."""
     number = record["page"]
+    merged_votes = 0
     header_blocks: list[dict[str, Any]] = []
     tables = (reviewed_annual_tables(page, digest, header_blocks)
               if record["route"] == "text_layer" else []) if tables_override is None else tables_override
     if record["route"] == "text_layer":
+        # PDF có chữ sẵn: bbox tính theo point của trang PDF.
         blocks = _layout_blocks(page, layout_exclude_boxes if layout_exclude_boxes is not None
                                 else [table["bbox"] for table in tables])
         page_width, page_height, unit = page.width, page.height, "pt"
     else:
+        # Trang scan: ưu tiên IR có cấu trúc do AI trả về, tọa độ đổi về pixel.
         word_items = record.get("tesseract", {}).get("wordItems")
-        # Gemini may correct OCR text. Never assign Tesseract positions to
-        # different Gemini words; old pages.jsonl also lacks word geometry.
-        ocr_text = " ".join(item["text"] for item in word_items) if word_items else ""
-        same_text = " ".join(record["text"].split()) == " ".join(ocr_text.split())
-        if word_items and same_text:
-            blocks = _ocr_blocks(word_items)
+        ai_blocks = record.get("aiBlocks")
+        if isinstance(ai_blocks, list) and ai_blocks:
             page_width, page_height = _png_size(_image_path(work_dir, number))
+            blocks, merged_votes, _ = _ai_ir_blocks(
+                ai_blocks, word_items or [], number, page_width, page_height,
+                record.get("gemini", {}).get("provider", "gemini"))
+            unit = "px"
+        elif word_items and " ".join(record["text"].split()) == " ".join(
+                item["text"] for item in word_items).strip():
+            # Never assign Tesseract coordinates to a corrected AI transcript.
+            page_width, page_height = _png_size(_image_path(work_dir, number))
+            used_words: set[int] = set()
+            if record["route"] == "tesseract" and page_class_override in (
+                    "balance_sheet", "income_statement", "cash_flow"):
+                tess_table, used_words = _tess_statement_table(word_items, number, page_width)
+                if tess_table is not None:
+                    tables.append(tess_table)
+            blocks = _ocr_blocks([word for word in word_items if id(word) not in used_words])
             unit = "px"
         else:
             blocks = _text_blocks(record["text"], number)
@@ -469,6 +676,7 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
         content.append(table)
         remaining_headers = [block for block in remaining_headers if block not in headers]
     content.extend(remaining_headers)
+    # Đặt bảng và tiêu đề liên quan trước furniture để giữ thứ tự đọc.
     furniture_at = next((index for index, block in enumerate(blocks)
                          if block["type"] == "furniture"), len(blocks))
     blocks[furniture_at:furniture_at] = content
@@ -476,22 +684,30 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
         if block["type"] != "table":
             block["id"] = f"p{number}-b{index}"
             block["bbox"] = _clamp_box(block["bbox"], page_width, page_height)
-            if unit == "px" and block["bbox"] is None:
+            if unit == "px" and block["bbox"] is None and not record.get("aiBlocks"):
                 raise ValueError(f"Tesseract bbox ngoài ảnh trang {number}")
             if block["type"] == "heading" and _plain(block["text"]).startswith("mau so"):
                 block["type"] = "form_code"
     page_class = page_class_override or _page_class(blocks)
+    source = _source(record, pdf, digest, page, work_dir)
+    if merged_votes:
+        source["engine"] = "MERGED"
+        source["tool"] = f"{record['gemini']['model']} + tesseract vie"
     ir: PageIR = {
         "ir_version": "1", "page": number, "printed_page": _printed_page(page),
         "page_class": cast(PageClass | None, page_class),
         "page_size": {"width": page_width, "height": page_height, "unit": unit},
-        "source": cast(Source, _source(record, pdf, digest, page, work_dir)),
+        "source": cast(Source, source),
         "blocks": cast(list[Block], blocks),
     }
     return ir
 
 
+# 6. Lọc menu/header/footer lặp: so cùng chữ ở gần cùng vị trí tương đối
+# trên ít nhất 50% các trang có lớp chữ. Không xóa chữ khỏi IR; đổi type
+# thành furniture để bước dùng nội dung có thể bỏ qua.
 def _furniture_key(block: dict[str, Any], page: dict[str, Any]) -> tuple[str, int, int] | None:
+    """Khóa so khớp gồm chữ và ô vị trí 2% chiều rộng/cao trang."""
     bbox = block.get("bbox")
     if block.get("type") not in ("heading", "paragraph", "furniture") or bbox is None:
         return None
@@ -506,7 +722,7 @@ def _furniture_key(block: dict[str, Any], page: dict[str, Any]) -> tuple[str, in
 
 
 def audit_and_promote(documents: list[dict[str, Any]]) -> dict[str, Any]:
-    """Confirm repeated page furniture by text and position across text-layer pages."""
+    """Xác nhận furniture lặp và trả thống kê, kể cả chỗ chồng lên bảng."""
     pages = {page["page"]: page for page in documents if page["source"]["engine"] == "TEXT_LAYER"}
     threshold = math.ceil(len(pages) * .5)
     appearances: dict[tuple[str, int, int], set[int]] = defaultdict(set)
@@ -581,8 +797,11 @@ def audit_and_promote(documents: list[dict[str, Any]]) -> dict[str, Any]:
             "furniture_table_overlaps": furniture_table_overlaps}
 
 
-def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[str, Any]:
-    """Write annual pages and audited financial pages to separate IR folders."""
+# 7. Điều phối cả tài liệu: đọc pages.jsonl, dựng/validate từng trang,
+# tách hai nhánh, lọc furniture chung rồi ghi file trang và index.
+def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
+                      template_path: Path | None = None) -> dict[str, Any]:
+    """Ghi content/ cho thường niên và table/ cho phần BCTC kiểm toán."""
     pdf, pages_jsonl = pdf.resolve(), pages_jsonl.resolve()
     schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
     Draft202012Validator.check_schema(schema)
@@ -612,8 +831,12 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[st
             main_text = (source_page.crop((source_page.width * .22, 0, source_page.width,
                                            source_page.height * .9)).extract_text() or ""
                          if record["route"] == "text_layer" else record["text"])
-            financial_class = financial_page_class(number, section, digest, main_text)
+            header_text = source_page.crop((0, 0, source_page.width,
+                                            source_page.height * .2)).extract_text() or ""
+            financial_class = financial_page_class(number, section, digest,
+                                                    main_text, header_text)
             if financial_class is not None:
+                # Nhánh BCTC: tách bảng chính khi đủ dấu cột/mã dòng.
                 financial_tables, exclude_boxes = (statement_tables(source_page, digest, financial_class)
                     if record["route"] == "text_layer" else ([], None))
                 financial_ir = make_page_ir(
@@ -626,11 +849,22 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[st
                     raise ValueError(f"IR BCTC trang {number} sai schema: {'; '.join(errors[:5])}")
                 financial_documents.append(financial_ir)
             topics = annual_topics(number, section, digest)
+            if not topics and financial_class is None:
+                header_lines = header_text.splitlines()
+                topics = annual_topics_from_header(header_lines[0] if header_lines else "")
+                if topics == ["unclassified"] and len(header_lines) > 1:
+                    detail = annual_topics_from_header(header_lines[1])
+                    if detail and detail != ["unclassified"]:
+                        topics = detail
+            if not topics and financial_class is None and record["route"] == "text_layer":
+                topics = annual_table_topics(source_page)
             if not topics:
                 if financial_class is None and record["route"] == "text_layer":
                     furniture_reference_pages.append(make_page_ir(
                         record, pdf, digest, source_page, work_dir, tables_override=[]))
                 continue
+            # Nhánh thường niên: chỉ chọn trang thuộc chủ đề mục tiêu;
+            # KPI chưa kiểm chứng vẫn ở danh sách review, không tự đưa vào IR.
             page_topics[number] = topics
             observed_sections.append((number, section))
             page_kpis = reviewed_kpis(source_page, digest) if section and section != "financial" \
@@ -646,18 +880,31 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[st
             documents.append(ir)
     if not documents and not financial_documents:
         raise ValueError("Không tìm thấy trang báo cáo thường niên hoặc BCTC thuộc phạm vi đã chọn")
+    # Đo sự lặp trên cả hai nhánh trước khi lưu, tránh coi menu là nội dung.
     furniture_audit = audit_and_promote(documents + financial_documents + furniture_reference_pages)
     output_dir.mkdir(parents=True, exist_ok=True)
     save_json(output_dir / "furniture_audit.json", furniture_audit)
+    cell_review = [
+        {"page": ir["page"], "table_id": block["id"], "row_id": row["id"],
+         "column": key, "bbox": cell["bbox"], "votes": cell["votes"],
+         "reason": "unresolved_cell_votes"}
+        for ir in documents + financial_documents
+        for block in ir["blocks"] if block["type"] == "table"
+        for row in block["rows"] for key, cell in row["cells"].items()
+        if cell.get("raw") is None and cell.get("votes")
+    ]
+    save_json(output_dir / "ocr_cell_review.json",
+              {"document_sha256": digest, "items": cell_review})
     content_dir = output_dir / "content"
     content_dir.mkdir(parents=True, exist_ok=True)
+    # Chạy lại cùng PDF: bỏ file trang cũ không còn nằm trong phạm vi IR.
     expected_content = {f"{page_name(ir['page'])}.ir.json" for ir in documents}
     for stale in content_dir.glob("p-*.ir.json"):
         if stale.name not in expected_content:
             stale.unlink()
     for ir in documents:
         (content_dir / f"{page_name(ir['page'])}.ir.json").write_text(
-            _readable_json(ir) + "\n", encoding="utf-8")
+            _readable_json(ir) + "\n", encoding="utf-8", newline="\n")
     financial_summary = None
     if financial_documents:
         table_dir = output_dir / "table"
@@ -668,9 +915,10 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[st
                 stale.unlink()
         for ir in financial_documents:
             (table_dir / f"{page_name(ir['page'])}.ir.json").write_text(
-                _readable_json(ir) + "\n", encoding="utf-8")
-        financial_summary = financial_index(financial_documents, digest)
+                _readable_json(ir) + "\n", encoding="utf-8", newline="\n")
+        financial_summary = financial_index(financial_documents, digest, template_path)
         save_json(table_dir / "index.json", financial_summary)
+    # Index giúp tìm trang/chủ đề/KPI mà không phải mở mọi p-NNN.ir.json.
     summary = {"pdf": str(pdf), "scope": "annual_report_content", "pages": len(documents),
                "routes": dict(Counter(ir["source"]["engine"] for ir in documents)),
                "blockTypes": dict(Counter(block["type"] for ir in documents for block in ir["blocks"])),
@@ -707,6 +955,7 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[st
     return result
 
 
+# 8. CLI độc lập; main.py cũng có thể gọi thẳng build_document_ir() sau OCR.
 def main(argv: list[str] | None = None) -> int:
     if sys.stdout.encoding.lower() != "utf-8":
         sys.stdout.reconfigure(encoding="utf-8")
@@ -716,12 +965,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("pdf", type=Path)
     parser.add_argument("--pages-jsonl", type=Path)
     parser.add_argument("--out", type=Path)
+    parser.add_argument("--template", type=Path,
+                        help="Template luật BCTC; mặc định templates/financial-template-lines.json")
     args = parser.parse_args(argv)
     pdf = args.pdf.resolve()
     pages_jsonl = args.pages_jsonl or Path("ocr_router_out") / pdf.stem / "pages.jsonl"
     output_dir = args.out or pages_jsonl.parent / "annual_ir"
     try:
-        summary = build_document_ir(pdf, pages_jsonl, output_dir)
+        summary = build_document_ir(pdf, pages_jsonl, output_dir, args.template)
     except (OSError, ValueError, KeyError, TypeError) as exc:
         parser.exit(1, f"✖ {exc}\n")
     print(f"OK: {summary['pages']} trang IR thường niên; blocks: {summary['blockTypes']}")

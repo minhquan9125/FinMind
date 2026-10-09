@@ -35,12 +35,12 @@ class RouterTest(unittest.TestCase):
             image.write_bytes(b"fixture")
             cfg = argparse.Namespace(out=root / "out", pages="1-2", gemini="auto",
                 model="gemini-3.8-flash-low", escalate_model=None, batch=4,
-                agy_concurrency=2, agy_timeout=300, tess_workers=1,
+                gemini_concurrency=2, gemini_timeout=300, tess_workers=1,
                 min_chars=150, min_conf=90, long_side=3508, tessdata=None)
             layer = {1: {"text": "abc " * 40, "chars": 120 + 40, "badRatio": 0, "usable": True},
                      2: {"text": "", "chars": 0, "badRatio": 0, "usable": False}}
             tess = {"text": "BẢNG CÂN ĐỐI KẾ TOÁN\n100 1.000.000", "chars": 30,
-                    "words": 6, "meanConf": 95, "lowConfRatio": 0, "seconds": 1.2}
+                    "words": 6, "wordItems": [], "meanConf": 95, "lowConfRatio": 0, "seconds": 1.2}
             gem_page = {"page_type": "table", "text": "BẢNG CÂN ĐỐI KẾ TOÁN\n100 1.000.000",
                         "unreadable": []}
             outcome = {2: {"model": cfg.model, "cached": True, "page": gem_page}}
@@ -49,7 +49,8 @@ class RouterTest(unittest.TestCase):
                  patch.object(main, "upright_page", return_value=(image, 0)), \
                  patch.object(main, "hash_file", return_value="a" * 64), \
                  patch.object(main, "load_json", return_value=tess), \
-                 patch.object(main, "gemini_transcribe", return_value=outcome):
+                 patch.object(main, "gemini_transcribe", return_value=outcome), \
+                 patch.dict(main.os.environ, {"GEMINI_API_KEY": "test", "OPENROUTER_API_KEY": ""}):
                 main.process_pdf(pdf, cfg, {})
             doc = cfg.out / "sample"
             pages = [json.loads(line) for line in (doc / "pages.jsonl").read_text(encoding="utf-8").splitlines()]
@@ -57,7 +58,8 @@ class RouterTest(unittest.TestCase):
             self.assertEqual([page["route"] for page in pages], ["text_layer", "tesseract+gemini"])
             self.assertEqual([page["status"] for page in pages], ["OK", "OK"])
             self.assertEqual(summary["routes"], {"text_layer": 1, "tesseract+gemini": 1})
-            self.assertEqual(summary["cache"], {"tesseractHits": 1, "geminiHits": 1})
+            self.assertEqual(summary["cache"], {"tesseractHits": 1, "geminiHits": 1,
+                                                 "openrouterHits": 0})
             self.assertEqual(pages[1]["crossCheck"]["numberAgreement"], 1)
 
     def test_scan_decisions_match_existing_poc_output(self) -> None:
@@ -70,7 +72,7 @@ class RouterTest(unittest.TestCase):
         for record in expected:
             tess_text = (sample / "text" / f"p-{record['page']:03d}.tess.txt").read_text(encoding="utf-8")
             tesseract_results.append({**{k: v for k, v in record["tesseract"].items() if k != "cached"},
-                                      "text": tess_text})
+                                      "wordItems": [], "text": tess_text})
             gemini_results[record["page"]] = {"model": record["gemini"]["model"], "cached": True,
                 "page": {"text": record["text"], "page_type": record["gemini"]["page_type"],
                          "unreadable": record["gemini"]["unreadable"]}}
@@ -80,7 +82,7 @@ class RouterTest(unittest.TestCase):
             pdf.write_bytes(b"fixture")
             cfg = argparse.Namespace(out=root / "out", pages="6-9", gemini="auto",
                 model="gemini-3.8-flash-low", escalate_model=None, batch=4,
-                agy_concurrency=2, agy_timeout=300, tess_workers=1,
+                gemini_concurrency=2, gemini_timeout=300, tess_workers=1,
                 min_chars=150, min_conf=90, long_side=3508, tessdata=None)
             layer = {page: {"text": "", "chars": 0, "badRatio": 0, "usable": False}
                      for page in range(6, 10)}
@@ -89,13 +91,19 @@ class RouterTest(unittest.TestCase):
                  patch.object(main, "upright_page", side_effect=lambda _pdf, page, *_: (root / f"p-{page:03d}.png", 0)), \
                  patch.object(main, "hash_file", return_value="a" * 64), \
                  patch.object(main, "load_json", side_effect=tesseract_results), \
-                 patch.object(main, "gemini_transcribe", return_value=gemini_results):
+                 patch.object(main, "gemini_transcribe", return_value=gemini_results), \
+                 patch.dict(main.os.environ, {"GEMINI_API_KEY": "test", "OPENROUTER_API_KEY": ""}):
                 main.process_pdf(pdf, cfg, {})
             actual = [json.loads(line) for line in (cfg.out / "scan" / "pages.jsonl").read_text(encoding="utf-8").splitlines()]
             for old, new in zip(expected, actual):
                 for key in ("page", "route", "status", "flags", "text", "textLayer", "rotation",
                             "tesseract", "crossCheck", "gemini"):
-                    self.assertEqual(new.get(key), old.get(key), (old["page"], key))
+                    if key == "tesseract":
+                        self.assertEqual({k: v for k, v in new[key].items() if k != "wordItems"}, old[key])
+                    elif key == "gemini":
+                        self.assertEqual({k: v for k, v in new[key].items() if k != "provider"}, old[key])
+                    else:
+                        self.assertEqual(new.get(key), old.get(key), (old["page"], key))
 
 
 if __name__ == "__main__":

@@ -162,6 +162,7 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
             provider = outcome.get("provider", "gemini")
             comparison = cross_check(gemini_page["text"], tess["text"])
             rec.update(route=f"tesseract+{provider}", text=gemini_page["text"], crossCheck=comparison,
+                       aiBlocks=gemini_page.get("blocks"),
                        gemini={"provider": provider, "model": outcome["model"],
                                "cached": outcome["cached"], "reason": reason,
                                "page_type": gemini_page["page_type"], "unreadable": gemini_page["unreadable"]})
@@ -258,12 +259,16 @@ def make_parser() -> argparse.ArgumentParser:
                          help="Sau OCR, tạo Document IR mẫu (chỉ dành cho PDF FPT 2024 đi kèm)")
     parser.add_argument("--build-document-ir", action="store_true",
                          help="Sau OCR, tạo IR cho các nội dung chính của báo cáo thường niên")
+    parser.add_argument("--template", type=Path,
+                        help="Template luật BCTC khi dùng --build-document-ir")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = make_parser()
     cfg = parser.parse_args(argv)
+    if cfg.template is not None and not cfg.build_document_ir:
+        parser.error("--template chỉ dùng cùng --build-document-ir")
     if min(cfg.batch, cfg.gemini_concurrency, cfg.tess_workers, cfg.long_side) < 1:
         parser.error("batch, concurrency, workers và long-side phải lớn hơn 0")
     if cfg.build_ir:
@@ -292,7 +297,8 @@ def main(argv: list[str] | None = None) -> int:
             for pdf in cfg.pdfs:
                 resolved = pdf.resolve()
                 doc_dir = cfg.out / resolved.stem
-                result = build_document_ir(resolved, doc_dir / "pages.jsonl", doc_dir / "annual_ir")
+                result = build_document_ir(resolved, doc_dir / "pages.jsonl", doc_dir / "annual_ir",
+                                           cfg.template)
                 print(f"▶ IR báo cáo thường niên: {result['pages']} trang, blocks {result['blockTypes']}")
                 print(f"  → {doc_dir / 'annual_ir' / 'content'}")
                 if "financialStatements" in result:

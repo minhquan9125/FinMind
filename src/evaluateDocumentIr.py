@@ -38,7 +38,62 @@ def _value(text: str) -> str:
     return re.sub(r"\s+", "", unicodedata.normalize("NFC", text)).replace("−", "-")
 
 
-def evaluate(pdf: Path, ir_dir: Path) -> dict[str, Any]:
+def _manual_gold_result(table_dir: Path, index: dict[str, Any], gold_path: Path) -> dict[str, Any]:
+    """Compare independently transcribed values by statement, code and period."""
+    gold = json.loads(gold_path.read_text(encoding="utf-8"))
+    if gold.get("document_sha256") != index["document_sha256"]:
+        raise ValueError("Manual gold không cùng SHA-256 với PDF")
+    if gold.get("source") != "manual_pdf_transcription":
+        raise ValueError("Manual gold phải được chép độc lập từ ảnh PDF")
+
+    observed: dict[tuple[str, str, str], list[dict[str, Any]]] = {}
+    for number in expand_page_ranges(index["structured_table_ranges"]):
+        page = json.loads((table_dir / f"p-{number:03d}.ir.json").read_text(encoding="utf-8"))
+        for block in page["blocks"]:
+            if block["type"] != "table":
+                continue
+            statement = block.get("logical_table_id") or page["page_class"]
+            periods = {column["key"]: re.findall(r"\b20\d{2}\b", " ".join(column["header_lines"]))
+                       for column in block["columns"]}
+            for row in block["rows"]:
+                if not row.get("code"):
+                    continue
+                for column, cell in row["cells"].items():
+                    if not periods.get(column):
+                        continue
+                    key = statement, str(row["code"]), periods[column][-1]
+                    observed.setdefault(key, []).append({"page": number, "raw": cell.get("raw")})
+
+    seen: set[tuple[str, str, str]] = set()
+    details: list[dict[str, Any]] = []
+    for item in gold.get("items", []):
+        key = item["statement"], str(item["code"]), str(item["period"])
+        if key in seen:
+            raise ValueError(f"Manual gold trùng khóa {key}")
+        seen.add(key)
+        if not item.get("reviewer") or not isinstance(item.get("gold_raw"), str):
+            raise ValueError(f"Manual gold thiếu reviewer hoặc gold_raw tại {key}")
+        candidates = observed.get(key, [])
+        if not candidates:
+            status = "missing"
+        elif len({_value(candidate["raw"] or "") for candidate in candidates}) > 1:
+            status = "ambiguous"
+        elif candidates[0]["raw"] is None:
+            status = "unresolved"
+        else:
+            status = "match" if _value(candidates[0]["raw"]) == _value(item["gold_raw"]) else "mismatch"
+        details.append({"statement": key[0], "code": key[1], "period": key[2],
+                        "gold_raw": item["gold_raw"], "ir_candidates": candidates, "status": status})
+    matched = sum(item["status"] == "match" for item in details)
+    return {"source": "manual_pdf_transcription", "gold_file": str(gold_path),
+            "gold_items": len(details), "gold_matched": matched,
+            "gold_accuracy": matched / len(details) if details else None,
+            "status_counts": {status: sum(item["status"] == status for item in details)
+                              for status in ("match", "mismatch", "missing", "ambiguous", "unresolved")},
+            "per_item": details}
+
+
+def evaluate(pdf: Path, ir_dir: Path, manual_gold: Path | None = None) -> dict[str, Any]:
     table_dir = ir_dir / "table"
     index = json.loads((table_dir / "index.json").read_text(encoding="utf-8"))
     digest = hash_file(pdf)
@@ -123,6 +178,8 @@ def evaluate(pdf: Path, ir_dir: Path) -> dict[str, Any]:
               "agent_visual_checked_cells": len(visual_checked),
               "agent_visual_matched_cells": visual_matched,
               "per_cell": rows}
+    if manual_gold is not None:
+        result["manual_gold"] = _manual_gold_result(table_dir, index, manual_gold)
     save_json(ir_dir / "cell_evaluation.json", result)
     return result
 
@@ -133,10 +190,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("pdf", type=Path)
     parser.add_argument("--ir-dir", type=Path)
+    parser.add_argument("--manual-gold", type=Path,
+                        help="JSON chép tay độc lập, khóa theo statement/code/period")
     args = parser.parse_args()
     pdf = args.pdf.resolve()
     ir_dir = args.ir_dir or Path("ocr_router_out") / pdf.stem / "annual_ir"
-    result = evaluate(pdf, ir_dir)
+    result = evaluate(pdf, ir_dir, args.manual_gold)
     print(json.dumps({key: value for key, value in result.items() if key != "per_cell"},
                      ensure_ascii=False, indent=2))
     return 0 if result["cells_mismatched"] == result["cells_without_pdf_word"] == 0 else 1

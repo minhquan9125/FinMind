@@ -1,0 +1,13 @@
+{
+  "document_sha256": "THAY_BANG_SHA256_CUA_PDF",
+  "source": "manual_pdf_transcription",
+  "items": [
+    {
+      "statement": "balance_sheet",
+      "code": "110",
+      "period": "2024",
+      "gold_raw": "CHEP_TU_ANH_PDF",
+      "reviewer": "TEN_NGUOI_DOI_CHIEU"
+    }
+  ]
+}

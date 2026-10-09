@@ -7,6 +7,7 @@ spans pages, so its page ranges are written to a separate document index.
 from __future__ import annotations
 
 import re
+import statistics
 import unicodedata
 from collections import defaultdict
 from typing import Any
@@ -138,6 +139,7 @@ ANNUAL_TOPICS = {
     "performance": "Kết quả hoạt động và kế hoạch",
     "governance": "Quản trị công ty",
     "people_esg": "Nhân sự và ESG",
+    "unclassified": "Nội dung thường niên chưa phân loại chủ đề",
 }
 
 FPT_ANNUAL_RANGES = {
@@ -223,6 +225,66 @@ FPT_ANNUAL_TABLES = [
          unit="Đơn vị: VNĐ"),
 ]
 
+# Reviewed against the text positions of the exact FPT 2025 PDF. The enclosing
+# "Cơ cấu cổ đông" heading on page 32 is a section heading, not a ninth table.
+FPT_2025_ANNUAL_TABLES = [
+    dict(page=32, topic="company", title="Thông tin về cổ phiếu",
+         box=(258, 75, 610, 335), cuts=(258, 470, 610),
+         fields="label c1", body=120, anchor=(258, 265,
+         r"(?:Tên|Loại|Mã|Mệnh|Ngày|Tổng|Số|Tỷ)"), rows=10,
+         headers={"c1": ["Giá trị"]}),
+    dict(page=32, topic="company", title="Cơ cấu cổ đông theo các mức cổ phiếu sở hữu",
+         box=(652, 75, 1010, 265), cuts=(652, 750, 815, 860, 965, 1010),
+         fields="label c1 c2 c3 c4", body=150,
+         anchor=(658, 665, r"(?:01|1\.000|10\.001|1\.000\.001|Tổng)"), rows=5,
+         percent_fields=("c2", "c4"),
+         headers={"c1": ["Số lượng cổ đông"], "c2": ["Tỷ lệ/Tổng số cổ đông"],
+                  "c3": ["Số lượng cổ phiếu sở hữu"],
+                  "c4": ["Tỷ lệ/Tổng số cổ phiếu đã phát hành"]}),
+    dict(page=32, topic="company", title="Cơ cấu cổ đông theo đối tượng sở hữu",
+         box=(652, 320, 1010, 535), cuts=(652, 750, 815, 860, 965, 1010),
+         fields="label c1 c2 c3 c4", body=395,
+         anchor=(658, 665, r"(?:Nhà|Cổ|Tổng)"), rows=5,
+         percent_fields=("c2", "c4"),
+         headers={"c1": ["Số lượng cổ đông"], "c2": ["Tỷ lệ/Tổng số cổ đông"],
+                  "c3": ["Số lượng cổ phiếu đang nắm giữ"],
+                  "c4": ["Tỷ lệ/Tổng số cổ phiếu đã phát hành"]}),
+    dict(page=33, topic="company", title="Cơ cấu cổ đông theo quốc tịch",
+         box=(258, 42, 620, 275), cuts=(258, 355, 420, 470, 565, 620),
+         fields="label c1 c2 c3 c4", body=118,
+         anchor=(265, 274, r"(?:Việt|Cá|Tổ|Nước|Tổng)"), rows=7,
+         percent_fields=("c2", "c4"),
+         headers={"c1": ["Số lượng cổ đông"], "c2": ["Tỷ lệ/Tổng số cổ đông"],
+                  "c3": ["Số lượng cổ phiếu sở hữu"],
+                  "c4": ["Tỷ lệ/Tổng số cổ phiếu đã phát hành"]}),
+    dict(page=33, topic="company", title="Top 10 cổ đông lớn",
+         box=(665, 42, 1010, 350), cuts=(665, 700, 895, 965, 1010),
+         fields="code label c1 c2", body=98,
+         anchor=(667, 680, r"(?:10|[1-9])"), rows=10,
+         percent_fields=("c2",),
+         headers={"c1": ["Số cổ phần"], "c2": ["Tỷ lệ"]}),
+    dict(page=86, topic="governance",
+         title="Danh sách Thành viên HĐQT nhiệm kỳ 2022-2027 và số cuộc họp tham dự trong năm 2025",
+         box=(265, 43, 1010, 530), cuts=(265, 375, 580, 670, 740, 845, 940, 1010),
+         fields="label c1 c2 c3 c4 c5 c6", body=120,
+         anchor=(265, 275, r"(?:Ông|Bà)"), rows=5,
+         percent_fields=("c3", "c6"),
+         headers={"c1": ["Chức vụ tại FPT và các công ty khác"],
+                  "c2": ["Kinh nghiệm chuyên môn"], "c3": ["Tỷ lệ sở hữu"],
+                  "c4": ["Ngày bắt đầu là thành viên HĐQT"],
+                  "c5": ["Số buổi họp HĐQT tham dự"], "c6": ["Tỷ lệ tham dự họp"]}),
+    dict(page=90, topic="governance", title="Chi tiết thù lao của từng thành viên HĐQT năm 2025",
+         box=(260, 155, 610, 350), cuts=(265, 425, 530, 610),
+         fields="label c1 c2", body=210,
+         anchor=(268, 278, r"(?:Ông|Bà)"), rows=7, unit="Đơn vị: VNĐ",
+         headers={"c1": ["Chức danh"], "c2": ["Thù lao"]}),
+    dict(page=108, topic="governance", title="Chi tiết thù lao của BKS năm 2025",
+         box=(260, 113, 610, 270), cuts=(265, 295, 430, 530, 610),
+         fields="code label c1 c2", body=170,
+         anchor=(265, 315, r"(?:[1-3]|Tổng)"), rows=4, unit="Đơn vị: VNĐ",
+         headers={"c1": ["Ngân sách 2025"], "c2": ["Đã chi trả"]}),
+]
+
 
 def annual_topics(number: int, section: str | None, digest: str) -> list[str]:
     if digest == FPT_2024_SHA256:
@@ -234,6 +296,33 @@ def annual_topics(number: int, section: str | None, digest: str) -> list[str]:
         "business": ["performance"], "governance": ["governance"],
         "esg": ["people_esg"],
     }.get(section, [])
+
+
+def annual_topics_from_header(header: str) -> list[str]:
+    """Classify annual narrative from the printed section title on this page.
+
+    This is a conservative fallback for reports without FPT's colored sidebar.
+    A title is evidence for a topic; PDF page numbers and document hashes are not.
+    """
+    value = _plain(" ".join(header.split())).replace("d0i", "doi")
+    if "quan tri doanh nghiep" in value or "quan tri cong ty" in value:
+        return ["governance"]
+    if "phat trien ben vung" in value or "bao cao esg" in value:
+        return ["people_esg"]
+    if "chuyen doi so" in value or "chien luoc phat trien" in value:
+        return ["strategy"]
+    if "hanh trinh chuyen doi" in value:
+        return ["strategy"]
+    if "nen tang vung vang" in value:
+        return ["unclassified"]
+    if "thanh tuu cua" in value or "bao cao toan canh" in value:
+        return ["performance"]
+    if ("cau chuyen cua" in value or "co cau co dong" in value or
+            "ve chung toi" in value or "chung toi la ai" in value):
+        return ["company"]
+    if "tam nhin cua" in value or "bao cao cua tong giam doc" in value:
+        return ["leadership"]
+    return []
 
 
 def annual_kpi(item: dict[str, Any]) -> bool:
@@ -271,12 +360,401 @@ def _words_in_band(words: list[dict[str, Any]], left: float, right: float,
             and top <= word["top"] < bottom]
 
 
+def _word_lines(words: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+    """Group one printed baseline while keeping adjacent PDF columns separate."""
+    lines: list[list[dict[str, Any]]] = []
+    for word in sorted(words, key=lambda item: (item["top"], item["x0"])):
+        if lines and abs(word["top"] - lines[-1][0]["top"]) <= 4:
+            lines[-1].append(word)
+        else:
+            lines.append([word])
+    return [sorted(line, key=lambda word: word["x0"]) for line in lines]
+
+
+def _caption_kind(title: str) -> str | None:
+    title = _plain(title).lstrip("• ").strip()
+    if title.startswith("thong tin ve co phieu"):
+        return "stock"
+    if title.startswith("co cau co dong theo"):
+        return "shareholders"
+    if title.startswith("top 10 co dong"):
+        return "top_shareholders"
+    if title.startswith("danh sach thanh vien hdqt"):
+        return "board"
+    if title.startswith("chi tiet thu lao"):
+        if "bks" in title or "ban kiem soat" in title:
+            return "bks_pay"
+        if "hdqt" in title or "hoi dong quan tri" in title:
+            return "board_pay"
+    return None
+
+
+def annual_table_captions(page: pdfplumber.page.Page,
+                          words: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+    """Find captions in either PDF column, independent of page number/year."""
+    words = words if words is not None else page.extract_words(x_tolerance=2, y_tolerance=3)
+    captions = []
+    for line in _word_lines([word for word in words
+                             if page.width * .03 < word["x0"] < page.width * .98]):
+        runs: list[list[dict[str, Any]]] = []
+        for word in line:
+            if not runs or word["x0"] - runs[-1][-1]["x1"] > max(36, page.width * .035):
+                runs.append([word])
+            else:
+                runs[-1].append(word)
+        for run in runs:
+            title = " ".join(word["text"] for word in run).lstrip("• ").strip()
+            kind = _caption_kind(title)
+            if kind and len(title) <= 160:
+                captions.append({"kind": kind, "title": title, "words": run,
+                                 "bbox": _word_box(run)})
+    return captions
+
+
+def annual_table_topics(page: pdfplumber.page.Page) -> list[str]:
+    """Allow table pages into annual IR even when a new report has no FPT sidebar."""
+    found = {("company" if caption["kind"] in
+              ("stock", "shareholders", "top_shareholders") else "governance")
+             for caption in annual_table_captions(page)}
+    return [topic for topic in ("company", "governance") if topic in found]
+
+
+def _dynamic_zone(page: pdfplumber.page.Page, caption: dict[str, Any],
+                  captions: list[dict[str, Any]]) -> tuple[float, float, float, float]:
+    left = max(0, caption["bbox"][0] - 7)
+    right = min(page.width * .98, left + page.width *
+                (.75 if caption["kind"] == "board" else .37))
+    top = caption["bbox"][1]
+    bottom = min(page.height * .9, top + page.height *
+                 (.80 if caption["kind"] == "board" else .49))
+    later = [item["bbox"][1] - 3 for item in captions
+             if item is not caption and top + 8 < item["bbox"][1] < bottom
+             and left <= item["bbox"][0] < right - 20]
+    if later:
+        bottom = min(bottom, min(later))
+    return left, top, right, bottom
+
+
+def _dynamic_table(caption: dict[str, Any], columns: list[Column],
+                   rows: list[Row], header_words: list[dict[str, Any]],
+                   number: int, sequence: int) -> TableBlock | None:
+    if len(rows) < 3 or not columns or any(not row["label_raw"] or
+                                           len(row["cells"]) != len(columns) for row in rows):
+        return None
+    # The caption, headers and every cell need source positions. Missing or
+    # ambiguous words remain ordinary text instead of being promoted.
+    boxes = [caption["bbox"]] + ([_word_box(header_words)] if header_words else [])
+    boxes.extend(row["bbox"] for row in rows)
+    x0 = min(box[0] for box in boxes)
+    y0 = min(box[1] for box in boxes)
+    x1 = max(box[2] for box in boxes)
+    y1 = max(box[3] for box in boxes)
+    return {"id": f"p{number}-t{sequence}", "type": "table",
+            "title": caption["title"], "continued": False,
+            "bbox": [x0, y0, x1, y1], "unit_text": None,
+            "columns": columns, "rows": rows}
+
+
+def _dynamic_shareholders(caption: dict[str, Any], words: list[dict[str, Any]],
+                          number: int, sequence: int) -> TableBlock | None:
+    lines = _word_lines(words)
+    header = next((line for line in lines
+                   if caption["bbox"][1] + 12 <= line[0]["top"] < caption["bbox"][1] + 100
+                   and sum(_plain(word["text"]) == "so" for word in line) >= 2
+                   and sum(_plain(word["text"]).startswith("ty") for word in line) >= 2), None)
+    if header is None:
+        return None
+    starts = [word for word in header if _plain(word["text"]) == "so" or
+              _plain(word["text"]).startswith("ty")]
+    starts = sorted(starts, key=lambda word: word["x0"])[:4]
+    if len(starts) != 4 or [_plain(word["text"])[:2] for word in starts] != ["so", "ty", "so", "ty"]:
+        return None
+    value_left = starts[0]["x0"] - 12
+    body: list[tuple[list[dict[str, Any]], list[dict[str, Any]]]] = []
+    for line in lines:
+        if line[0]["top"] < header[0]["top"] + 24:
+            continue
+        values = [word for word in line if word["x0"] >= value_left and
+                  re.fullmatch(r"[\d.,]+%?", word["text"])]
+        if len(values) == 4 and values[1]["text"].endswith("%") and values[3]["text"].endswith("%"):
+            body.append((line, values))
+    if not 3 <= len(body) <= 40:
+        return None
+    steps = [body[i + 1][0][0]["top"] - body[i][0][0]["top"] for i in range(len(body) - 1)]
+    typical = statistics.median(steps) if steps else 22
+    if typical <= 6 or typical > 80:
+        return None
+    columns: list[Column] = []
+    for i, start in enumerate(starts):
+        end_x = starts[i + 1]["x0"] - 10 if i < 3 else float("inf")
+        header_part = [word for word in words if header[0]["top"] - 2 <= word["top"]
+                       < body[0][0][0]["top"] - 10 and
+                       start["x0"] - 10 <= word["x0"] < end_x]
+        columns.append({"key": f"c{i+1}", "header_lines": _printed_lines(header_part),
+                        "bbox": _word_box(header_part) if header_part else _word_box([start])})
+    rows: list[Row] = []
+    for i, (line, values) in enumerate(body):
+        y0 = line[0]["top"] - 5
+        y1 = (body[i+1][0][0]["top"] - 5 if i + 1 < len(body)
+              else line[0]["top"] + min(typical * 1.4, 40))
+        row_words = [word for word in words if y0 <= word["top"] < y1]
+        labels = [word for word in row_words if word["x0"] < value_left]
+        label = " ".join(_printed_lines(labels))
+        if not label or any(word not in row_words for word in values):
+            return None
+        rows.append({"id": f"r{i+1}", "code": None, "label_raw": label,
+                     "note": None, "bbox": _word_box(labels + values),
+                     "cells": {f"c{j+1}": {"raw": value["text"], "bbox": _word_box([value])}
+                               for j, value in enumerate(values)}})
+    return _dynamic_table(caption, columns, rows, header, number, sequence)
+
+
+def _dynamic_stock(caption: dict[str, Any], words: list[dict[str, Any]],
+                   number: int, sequence: int) -> TableBlock | None:
+    labels = ("ten co phieu", "loai co phieu", "ma chung khoan", "menh gia co phieu",
+              "ngay bat dau", "tong so co phieu", "so luong co phieu", "ty le so huu")
+    lines = [line for line in _word_lines(words)
+             if line[0]["top"] > caption["bbox"][1] + 22]
+    values_x = [word["x0"] for line in lines for word in line
+                if word["x0"] > caption["bbox"][0] + 110]
+    if not values_x:
+        return None
+    # The first word of each value is vertically aligned across printed rows.
+    aligned = sorted(values_x, key=lambda x: -sum(abs(x - other) < 6 for other in values_x))
+    split = aligned[0] - 8
+    rows: list[Row] = []
+    for line in lines:
+        left = [word for word in line if word["x0"] < split]
+        right = [word for word in line if word["x0"] >= split]
+        label = " ".join(word["text"] for word in left)
+        if not right or not any(_plain(label).startswith(prefix) for prefix in labels):
+            continue
+        rows.append({"id": f"r{len(rows)+1}", "code": None, "label_raw": label,
+                     "note": None, "bbox": _word_box(left + right),
+                     "cells": {"c1": {"raw": " ".join(word["text"] for word in right),
+                                      "bbox": _word_box(right)}}})
+    if not 4 <= len(rows) <= 15:
+        return None
+    if len({row["label_raw"] for row in rows}) != len(rows):
+        return None
+    gaps = [rows[i+1]["bbox"][1] - rows[i]["bbox"][1]
+            for i in range(len(rows)-1)]
+    if not 8 <= statistics.median(gaps) <= 50:
+        return None
+    column: Column = {"key": "c1", "header_lines": [], "bbox": None}
+    return _dynamic_table(caption, [column], rows, [], number, sequence)
+
+
+def _dynamic_top_shareholders(caption: dict[str, Any], words: list[dict[str, Any]],
+                              number: int, sequence: int) -> TableBlock | None:
+    header = next((line for line in _word_lines(words)
+                   if any(_plain(w["text"]) == "stt" for w in line) and
+                   any(_plain(w["text"]).startswith("doi") for w in line) and
+                   any(_plain(w["text"]).startswith("ty") for w in line)), None)
+    if header is None:
+        return None
+    rank_x = next(w["x0"] for w in header if _plain(w["text"]) == "stt")
+    name_x = next(w["x0"] for w in header if _plain(w["text"]).startswith("doi"))
+    share_x = next((w["x0"] for w in header if _plain(w["text"]) == "so"
+                    and w["x0"] > name_x), None)
+    pct_x = next(w["x0"] for w in header if _plain(w["text"]).startswith("ty"))
+    if share_x is None or not rank_x < name_x < share_x < pct_x:
+        return None
+    ranks = sorted((w for w in words if header[0]["top"] + 15 < w["top"]
+                    and abs(w["x0"] - rank_x) < 18
+                    and re.fullmatch(r"\d{1,2}", w["text"])), key=lambda w: w["top"])
+    if not 3 <= len(ranks) <= 20 or [int(w["text"]) for w in ranks] != list(range(1, len(ranks)+1)):
+        return None
+    steps = [ranks[i+1]["top"] - ranks[i]["top"] for i in range(len(ranks)-1)]
+    typical = statistics.median(steps)
+    rows: list[Row] = []
+    for i, rank in enumerate(ranks):
+        y0 = rank["top"] - 6
+        y1 = ranks[i+1]["top"] - 6 if i+1 < len(ranks) else rank["top"] + max(typical, 35)
+        band = [w for w in words if y0 <= w["top"] < y1]
+        shares = [w for w in band if w["x0"] >= share_x - 20 and
+                  w["x0"] < pct_x - 12 and re.fullmatch(r"[\d.,]+", w["text"])]
+        percents = [w for w in band if w["x0"] >= pct_x - 15
+                    and re.fullmatch(r"[\d.,]+%", w["text"])]
+        names = [w for w in band if name_x - 6 <= w["x0"] < share_x - 20]
+        if len(shares) != 1 or len(percents) != 1 or not names:
+            return None
+        rows.append({"id": f"r{i+1}", "code": rank["text"],
+                     "label_raw": " ".join(_printed_lines(names)), "note": None,
+                     "bbox": _word_box([rank] + names + shares + percents),
+                     "cells": {"c1": {"raw": shares[0]["text"], "bbox": _word_box(shares)},
+                               "c2": {"raw": percents[0]["text"], "bbox": _word_box(percents)}}})
+    columns: list[Column] = [
+        {"key": "c1", "header_lines": [" ".join(w["text"] for w in header
+                                         if share_x <= w["x0"] < pct_x)],
+         "bbox": _word_box([w for w in header if share_x <= w["x0"] < pct_x])},
+        {"key": "c2", "header_lines": [" ".join(w["text"] for w in header
+                                         if w["x0"] >= pct_x)],
+         "bbox": _word_box([w for w in header if w["x0"] >= pct_x])}]
+    return _dynamic_table(caption, columns, rows, header, number, sequence)
+
+
+def _dynamic_named_table(caption: dict[str, Any], words: list[dict[str, Any]],
+                         number: int, sequence: int) -> TableBlock | None:
+    kind = caption["kind"]
+    headers = _word_lines([w for w in words if caption["bbox"][1] + 10 < w["top"]
+                           < caption["bbox"][1] + 90])
+    if kind == "board":
+        header = next((line for line in headers if
+                       any(_plain(w["text"]).startswith("thanh") for w in line) and
+                       any(_plain(w["text"]).startswith("chuc") for w in line) and
+                       any(_plain(w["text"]).startswith("kinh") for w in line) and
+                       any(_plain(w["text"]).startswith("ngay") for w in line)), None)
+        terms = ("thanh", "chuc", "kinh", "ty", "ngay", "so", "ty")
+    else:
+        header = next((line for line in headers if
+                       any(_plain(w["text"]).startswith("thanh") for w in line) and
+                       any(_plain(w["text"]).startswith("chuc") for w in line) and
+                       any(_plain(w["text"]).startswith("thu") for w in line)), None)
+        terms = ("thanh", "chuc", "thu")
+    if header is None:
+        return None
+    anchors = []
+    used: set[int] = set()
+    for term in terms:
+        match = next((w for w in header if id(w) not in used and
+                      _plain(w["text"]).startswith(term) and
+                      (not anchors or w["x0"] > anchors[-1]["x0"])), None)
+        if match is None:
+            return None
+        anchors.append(match)
+        used.add(id(match))
+    cuts = [words[0]["x0"] - 1] + [w["x0"] - 8 for w in anchors[1:]] + [max(w["x1"] for w in words) + 1]
+    people = sorted((w for w in words if w["top"] > header[0]["top"] + 25
+                     and abs(w["x0"] - anchors[0]["x0"]) < 15
+                     and _plain(w["text"]) in ("ong", "ba")), key=lambda w: w["top"])
+    if not 3 <= len(people) <= 30:
+        return None
+    steps = [people[i+1]["top"] - people[i]["top"] for i in range(len(people)-1)]
+    typical = statistics.median(steps)
+    rows: list[Row] = []
+    for i, person in enumerate(people):
+        y0 = person["top"] - 6
+        y1 = people[i+1]["top"] - 6 if i+1 < len(people) else person["top"] + max(typical, 24)
+        band = [w for w in words if y0 <= w["top"] < y1]
+        if kind == "board_pay":
+            amounts = [w for w in band if w["x0"] > anchors[1]["x0"] + 65
+                       and re.fullmatch(r"[\d.,]+", w["text"])]
+            if len(amounts) != 1:
+                return None
+            amount = amounts[0]
+            parts = [[w for w in band if w["x0"] < cuts[1]],
+                     [w for w in band if cuts[1] <= w["x0"] < amount["x0"]],
+                     [amount]]
+        else:
+            parts = [[w for w in band if cuts[j] <= w["x0"] < cuts[j+1]]
+                     for j in range(len(cuts)-1)]
+        if any(not part for part in parts):
+            return None
+        label = " ".join(_printed_lines(parts[0]))
+        if not _plain(label).startswith(("ong ", "ba ")):
+            return None
+        cells = {f"c{j}": {"raw": "\n".join(_printed_lines(part)),
+                          "bbox": _word_box(part)}
+                 for j, part in enumerate(parts[1:], 1)}
+        if kind == "board":
+            if (not re.fullmatch(r"\d+/\d+", cells["c5"]["raw"]) or
+                    not re.fullmatch(r"[\d.,]+%", cells["c6"]["raw"])):
+                return None
+        elif not re.fullmatch(r"[\d.,]+", cells["c2"]["raw"]):
+            return None
+        rows.append({"id": f"r{i+1}", "code": None, "label_raw": label,
+                     "note": None, "bbox": _word_box(band), "cells": cells})
+    columns: list[Column] = []
+    for j in range(1, len(anchors)):
+        header_part = [w for w in words if header[0]["top"] - 2 <= w["top"]
+                       < people[0]["top"] - 10 and cuts[j] <= w["x0"] < cuts[j+1]]
+        columns.append({"key": f"c{j}", "header_lines": _printed_lines(header_part),
+                        "bbox": _word_box(header_part) if header_part else _word_box([anchors[j]])})
+    return _dynamic_table(caption, columns, rows, header, number, sequence)
+
+
+def _dynamic_bks_pay(caption: dict[str, Any], words: list[dict[str, Any]],
+                     number: int, sequence: int) -> TableBlock | None:
+    header = next((line for line in _word_lines(words) if
+                   any(_plain(w["text"]) == "stt" for w in line) and
+                   any(_plain(w["text"]) == "noi" for w in line) and
+                   any(_plain(w["text"]).startswith("ngan") for w in line) and
+                   any(_plain(w["text"]) == "da" for w in line)), None)
+    if header is None:
+        return None
+    budget = next(w for w in header if _plain(w["text"]).startswith("ngan"))
+    paid = next(w for w in header if _plain(w["text"]) == "da")
+    body = []
+    for line in _word_lines(words):
+        if line[0]["top"] <= header[0]["top"] + 15:
+            continue
+        values = [w for w in line if w["x0"] >= budget["x0"] - 10
+                  and re.fullmatch(r"[\d.]+", w["text"])]
+        if (len(values) == 2 and values[0]["x0"] < paid["x0"] and
+                values[1]["x0"] >= paid["x0"] - 25):
+            body.append((line, values))
+    if not 3 <= len(body) <= 20:
+        return None
+    steps = [body[i+1][0][0]["top"] - body[i][0][0]["top"] for i in range(len(body)-1)]
+    typical = statistics.median(steps)
+    rows: list[Row] = []
+    for i, (line, values) in enumerate(body):
+        y0 = line[0]["top"] - 5
+        y1 = body[i+1][0][0]["top"] - 5 if i+1 < len(body) else line[0]["top"] + max(typical, 25)
+        band = [w for w in words if y0 <= w["top"] < y1]
+        labels = [w for w in band if w["x0"] < budget["x0"] - 10]
+        if not labels:
+            return None
+        code = labels[0]["text"] if re.fullmatch(r"\d{1,2}", labels[0]["text"]) else None
+        if code:
+            labels = labels[1:]
+        if not labels:
+            return None
+        rows.append({"id": f"r{i+1}", "code": code,
+                     "label_raw": " ".join(_printed_lines(labels)), "note": None,
+                     "bbox": _word_box(band),
+                     "cells": {f"c{j+1}": {"raw": value["text"], "bbox": _word_box([value])}
+                               for j, value in enumerate(values)}})
+    columns: list[Column] = [
+        {"key": "c1", "header_lines": [" ".join(w["text"] for w in header
+                                         if budget["x0"] <= w["x0"] < paid["x0"])],
+         "bbox": _word_box([w for w in header if budget["x0"] <= w["x0"] < paid["x0"]])},
+        {"key": "c2", "header_lines": [" ".join(w["text"] for w in header
+                                         if w["x0"] >= paid["x0"])],
+         "bbox": _word_box([w for w in header if w["x0"] >= paid["x0"]])}]
+    return _dynamic_table(caption, columns, rows, header, number, sequence)
+
+
+def dynamic_annual_tables(page: pdfplumber.page.Page) -> list[TableBlock]:
+    """Promote only recognized, geometrically consistent annual tables."""
+    words = page.extract_words(x_tolerance=2, y_tolerance=3)
+    captions = annual_table_captions(page, words)
+    extractors = {"stock": _dynamic_stock, "shareholders": _dynamic_shareholders,
+                  "top_shareholders": _dynamic_top_shareholders,
+                  "board": _dynamic_named_table, "board_pay": _dynamic_named_table,
+                  "bks_pay": _dynamic_bks_pay}
+    tables: list[TableBlock] = []
+    for caption in captions:
+        zone = _dynamic_zone(page, caption, captions)
+        left, top, right, bottom = zone
+        part = _words_in_band(words, left, right, top, bottom)
+        table = extractors[caption["kind"]](caption, part, page.page_number, len(tables)+1)
+        if table is not None:
+            tables.append(table)
+    return tables
+
+
 def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
                            header_blocks: list[dict[str, Any]] | None = None) -> list[TableBlock]:
     """Reconstruct only the annual tables whose geometry was reviewed on this PDF."""
-    if digest != FPT_2024_SHA256:
-        return []
-    specs = [spec for spec in FPT_ANNUAL_TABLES if spec["page"] == page.page_number]
+    if digest == FPT_2024_SHA256:
+        table_specs = FPT_ANNUAL_TABLES
+    elif digest == FPT_2025_SHA256:
+        table_specs = FPT_2025_ANNUAL_TABLES
+    else:
+        return dynamic_annual_tables(page)
+    specs = [spec for spec in table_specs if spec["page"] == page.page_number]
     if not specs:
         return []
     words = page.extract_words(x_tolerance=2, y_tolerance=3)
@@ -336,6 +814,13 @@ def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
                 for field, part in parts.items()
                 if re.fullmatch(r"c[1-9]\d*", field) and part
             }
+            if digest == FPT_2025_SHA256:
+                value_fields = [field for field in fields if re.fullmatch(r"c[1-9]\d*", field)]
+                if any(field not in cells for field in value_fields):
+                    raise ValueError(f"Trang {page.page_number}: {spec['title']} dòng {position + 1} thiếu ô")
+                if any(not re.fullmatch(r"[\d.,]+%", cells[field]["raw"])
+                       for field in spec.get("percent_fields", ())):
+                    raise ValueError(f"Trang {page.page_number}: {spec['title']} dòng {position + 1} sai cột tỷ lệ")
             rows.append({"id": f"r{position + 1}", "code": code,
                          "label_raw": label, "note": None, "bbox": _word_box(row_words),
                          "cells": cells})
@@ -360,8 +845,10 @@ def annual_content_index(documents: list[dict[str, Any]],
               for topic, title in ANNUAL_TOPICS.items()]
     topics = [topic for topic in topics if topic["pdf_pages"]]
     tables = []
-    if digest == FPT_2024_SHA256:
-        for spec in FPT_ANNUAL_TABLES:
+    if digest in (FPT_2024_SHA256, FPT_2025_SHA256):
+        table_specs = (FPT_ANNUAL_TABLES if digest == FPT_2024_SHA256
+                       else FPT_2025_ANNUAL_TABLES)
+        for spec in table_specs:
             topic, number, title = spec["topic"], spec["page"], spec["title"]
             document = by_page.get(number)
             if document is None:
@@ -377,23 +864,27 @@ def annual_content_index(documents: list[dict[str, Any]],
                            "status": "structured" if match else "text_only",
                            "table_block_id": match["id"] if match else None})
     else:
-        # Locate likely annual tables by their visible caption. Discovery is
-        # intentionally separate from promotion to structured rows/cells.
-        captions = ("co cau co dong", "thong tin ve co phieu", "top 10 co dong",
-                    "danh sach thanh vien hdqt", "chi tiet thu lao")
+        # A new PDF can mix confidently reconstructed tables with captions
+        # whose layout is still ambiguous. Keep both states in one index.
         for number, document in by_page.items():
-            for block in document["blocks"]:
-                if block["type"] not in ("heading", "paragraph") or not block.get("bbox"):
+            seen: set[str] = set()
+            for block in sorted(document["blocks"], key=lambda item: item["type"] != "table"):
+                if block["type"] not in ("heading", "paragraph", "table") or not block.get("bbox"):
                     continue
-                if block["bbox"][0] < document["page_size"]["width"] * .22:
+                if (block["type"] != "table" and
+                        block["bbox"][0] < document["page_size"]["width"] * .03):
                     continue
-                caption = " ".join(block["text"].split()).lstrip("• ").strip()
-                if len(caption) > 140 or not any(_plain(caption).startswith(term)
-                                                      for term in captions):
+                caption = " ".join((block.get("title") or block.get("text") or "").split()).lstrip("• ").strip()
+                if len(caption) > 160 or _caption_kind(caption) is None:
                     continue
+                key = _plain(caption)
+                if key in seen:
+                    continue
+                seen.add(key)
                 tables.append({"topic": page_topics[number][0], "pdf_page": number,
                                "title": caption, "ir_file": f"p-{number:03d}.ir.json",
-                               "status": "text_only", "table_block_id": None})
+                               "status": "structured" if block["type"] == "table" else "text_only",
+                               "table_block_id": block["id"] if block["type"] == "table" else None})
     return {"topics": topics, "table_targets": tables}
 
 # Transcribed from the printed captions beside the large figures on these pages.

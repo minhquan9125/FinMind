@@ -15,12 +15,12 @@ import pdfplumber
 from jsonschema import Draft202012Validator
 
 from buildDocumentIr import _represented_words, _tokens
-from financialContent import evaluate_accounting, expand_page_ranges
+from financialContent import _accounting_template_path, evaluate_accounting, expand_page_ranges
 from util import hash_file
 from validate_ir import SCHEMA, validate_page
 
 
-def audit(pdf_path: Path, ir_dir: Path) -> dict:
+def audit(pdf_path: Path, ir_dir: Path, template_path: Path | None = None) -> dict:
     schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
     validator = Draft202012Validator(schema)
     manifest = json.loads((ir_dir / "index.json").read_text(encoding="utf-8"))
@@ -87,9 +87,10 @@ def audit(pdf_path: Path, ir_dir: Path) -> dict:
             if len(matches) != 1 or not matches[0]["columns"] or not matches[0]["rows"]:
                 errors.append(f"Bảng mục tiêu trang {target['pdf_page']} chưa có dòng/ô hợp lệ")
         elif target.get("status") == "text_only":
-            visible = " ".join(block.get("text", "") for block in document["blocks"]
+            visible = " ".join(" ".join(block.get("text", "").split())
+                               for block in document["blocks"]
                                if block["type"] in ("heading", "paragraph"))
-            if target["title"] not in visible:
+            if " ".join(target["title"].split()) not in visible:
                 errors.append(f"Bảng mục tiêu trang {target['pdf_page']} thiếu tiêu đề nguồn")
         else:
             errors.append(f"Bảng mục tiêu trang {target['pdf_page']} có trạng thái không hợp lệ")
@@ -152,10 +153,13 @@ def audit(pdf_path: Path, ir_dir: Path) -> dict:
             errors.append("table/index.json sai danh sách trang có bảng cấu trúc")
         if actual_notes_text_only != expand_page_ranges(table_index["notes_text_only_ranges"]):
             errors.append("table/index.json sai danh sách thuyết minh chỉ có text")
-        checks, skipped, _, template_id = evaluate_accounting(financial_documents)
+        checks, skipped, _, template_id = evaluate_accounting(financial_documents, template_path)
         if checks != table_index.get("arithmetic_checks") or skipped != table_index.get(
                 "arithmetic_checks_skipped") or template_id != table_index.get("arithmetic_template_id"):
             errors.append("table/index.json có luật đẳng thức không khớp IR/template_lines")
+        if table_index.get("arithmetic_template_sha256") != hash_file(
+                _accounting_template_path(template_path)):
+            errors.append("table/index.json không khớp SHA-256 template")
     furniture_path = ir_dir / "furniture_audit.json"
     if furniture_path.is_file():
         furniture = json.loads(furniture_path.read_text(encoding="utf-8"))
@@ -185,9 +189,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("pdf", type=Path)
     parser.add_argument("--ir-dir", type=Path)
+    parser.add_argument("--template", type=Path)
     args = parser.parse_args()
     ir_dir = args.ir_dir or Path("ocr_router_out") / args.pdf.stem / "annual_ir"
-    result = audit(args.pdf, ir_dir)
+    result = audit(args.pdf, ir_dir, args.template)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 1 if result["errors"] else 0
 

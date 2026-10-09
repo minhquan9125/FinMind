@@ -14,31 +14,110 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Any
+from jsonschema import Draft202012Validator
 from util import hash_file, load_json, save_json, seconds
 
 
 
 
-PROMPT_VERSION = "api-v1"
+PROMPT_VERSION = "api-ir-v2"
+_BOX = {"type": ["array", "null"], "items": {"type": "number", "minimum": 0, "maximum": 1000},
+        "minItems": 4, "maxItems": 4}
+_AI_CELL = {"type": "object", "additionalProperties": False,
+            "properties": {"column_key": {"type": "string"}, "raw": {"type": ["string", "null"]},
+                           "box_2d": _BOX}, "required": ["column_key", "raw", "box_2d"]}
+_AI_ROW = {"type": "object", "additionalProperties": False,
+           "properties": {"code": {"type": ["string", "null"]}, "label_raw": {"type": "string"},
+                          "note": {"type": ["string", "null"]}, "box_2d": _BOX,
+                          "cells": {"type": "array", "items": _AI_CELL}},
+           "required": ["code", "label_raw", "note", "box_2d", "cells"]}
+_AI_COLUMN = {"type": "object", "additionalProperties": False,
+              "properties": {"key": {"type": "string"}, "header_lines": {"type": "array", "items": {"type": "string"}},
+                             "box_2d": _BOX}, "required": ["key", "header_lines", "box_2d"]}
+_AI_BLOCK = {"type": "object", "additionalProperties": False,
+             "properties": {"type": {"type": "string", "enum": ["heading", "paragraph", "table", "stamp",
+                          "signature", "form_code", "toc", "furniture", "kpi"]},
+                            "text": {"type": ["string", "null"]}, "box_2d": _BOX,
+                            "title": {"type": ["string", "null"]},
+                            "unit_text": {"type": ["string", "null"]},
+                            "columns": {"type": "array", "items": _AI_COLUMN},
+                            "rows": {"type": "array", "items": _AI_ROW}},
+             "required": ["type", "text", "box_2d", "title", "unit_text", "columns", "rows"]}
 GEMINI_SCHEMA = {
     "type": "object",
+    "additionalProperties": False,
     "properties": {"pages": {"type": "array", "items": {
         "type": "object",
+        "additionalProperties": False,
         "properties": {
             "file": {"type": "string"},
             "page_type": {"type": "string", "enum": ["table", "text", "mixed", "cover", "blank"]},
-            "text": {"type": "string"},
+            "blocks": {"type": "array", "items": _AI_BLOCK},
             "unreadable": {"type": "array", "items": {"type": "string"}},
         },
-        "required": ["file", "page_type", "text", "unreadable"],
+        "required": ["file", "page_type", "blocks", "unreadable"],
     }}},
     "required": ["pages"],
 }
 
 SYSTEM_INSTRUCTION = """You are a verbatim OCR transcriber for Vietnamese business and financial documents.
 Transcribe all visible text in each supplied image in natural reading order. Preserve Vietnamese diacritics and copy numbers exactly, including separators, parentheses, minus signs and dashes. Never calculate, normalize, translate, summarize or correct printed content.
-Render tables as Markdown pipe tables, one printed row per table row, preserving empty cells and column order. Mark unreadable content as [?] and report it in unreadable; never guess digits or names. Put stamp text on its own line prefixed with [stamp]. Classify each page as table, text, mixed, cover or blank.
+Return blocks in reading order. Text blocks use text and box_2d; table blocks use title, unit_text, columns and rows, with one printed row per row and one value per cell. Use c1, c2, ... for value columns from left to right; code, label_raw and note belong to the row. Omit a cell when nothing is printed. Preserve every printed number exactly. Do not render Markdown tables. Give box_2d as [y0, x0, y1, x1] on a 0-1000 scale relative to the supplied image. Use null only when the box cannot be located; do not guess coordinates. Set irrelevant text/title/unit_text to null and irrelevant columns/rows to empty arrays. Mark unreadable content as [?] and report it in unreadable; never guess digits or names. Classify each page as table, text, mixed, cover or blank.
 Return one result for every image, using its exact filename from the accompanying label."""
+
+
+def _page_text(blocks: list[dict[str, Any]]) -> str:
+    lines: list[str] = []
+    for block in blocks:
+        if block["type"] != "table":
+            if block["text"]:
+                lines.append(block["text"])
+            continue
+        if block["title"]:
+            lines.append(block["title"])
+        if block["unit_text"]:
+            lines.append(block["unit_text"])
+        for column in block["columns"]:
+            lines.extend(column["header_lines"])
+        for row in block["rows"]:
+            values = [row["code"], row["label_raw"], row["note"]]
+            values.extend(cell["raw"] for cell in row["cells"])
+            lines.append(" ".join(value for value in values if value))
+    return unicodedata.normalize("NFC", "\n".join(lines))
+
+
+def _validated_pages(payload: dict[str, Any], names: list[str]) -> dict[str, dict[str, Any]]:
+    errors = list(Draft202012Validator(GEMINI_SCHEMA).iter_errors(payload))
+    if errors:
+        raise ValueError(f"AI trả sai schema blocks/rows: {errors[0].message}")
+    pages: dict[str, dict[str, Any]] = {}
+    for page in payload["pages"]:
+        filename = Path(page["file"]).name
+        if filename not in names or filename in pages:
+            raise ValueError(f"AI trả tên trang thiếu/trùng/không hợp lệ: {filename}")
+        for block in page["blocks"]:
+            if block["type"] == "table":
+                keys = [column["key"] for column in block["columns"]]
+                if block["text"] is not None or not block["rows"] or keys != [f"c{i}" for i in range(1, len(keys) + 1)]:
+                    raise ValueError(f"Bảng AI thiếu dòng hoặc key cột sai: {filename}")
+                for row in block["rows"]:
+                    cell_keys = [cell["column_key"] for cell in row["cells"]]
+                    if len(cell_keys) != len(set(cell_keys)) or any(key not in keys for key in cell_keys):
+                        raise ValueError(f"Ô AI trùng key hoặc không thuộc columns: {filename}")
+                    if any(cell["raw"] == "" for cell in row["cells"]):
+                        raise ValueError(f"Ô AI rỗng phải được bỏ khỏi cells: {filename}")
+            elif block["text"] is None or block["columns"] or block["rows"]:
+                raise ValueError(f"Khối chữ AI không có text: {filename}")
+            for item in ([block] + block["columns"] + block["rows"]
+                         + [cell for row in block["rows"] for cell in row["cells"]]):
+                box = item["box_2d"]
+                if box is not None and (box[0] > box[2] or box[1] > box[3]):
+                    raise ValueError(f"box_2d ngược chiều: {filename}")
+        pages[filename] = {"page_type": page["page_type"], "blocks": page["blocks"],
+                           "text": _page_text(page["blocks"]), "unreadable": page["unreadable"]}
+    if set(pages) != set(names):
+        raise ValueError("AI không trả đủ trang trong batch")
+    return pages
 
 
 def _call_api(batch: list[dict[str, Any]], model: str, timeout_sec: int) -> tuple[dict[str, Any], dict[str, Any]]:
@@ -92,17 +171,7 @@ def _call_api(batch: list[dict[str, Any]], model: str, timeout_sec: int) -> tupl
         if not response.text:
             raise ValueError("Gemini API trả về nội dung rỗng.")
         payload = json.loads(response.text)
-        raw_pages = payload.get("pages")
-        if not isinstance(raw_pages, list):
-            raise ValueError("Gemini API trả JSON không có danh sách pages.")
-        pages = {}
-        for page in raw_pages:
-            filename = Path(str(page["file"])).name
-            pages[filename] = {
-                "page_type": page["page_type"],
-                "text": unicodedata.normalize("NFC", page["text"]),
-                "unreadable": page["unreadable"],
-            }
+        pages = _validated_pages(payload, names)
         stats["seconds"] = seconds(started)
         print(f"  [gemini-api] {model} {','.join(names)}: OK, {stats['seconds']}s")
         return pages, stats
@@ -131,7 +200,7 @@ def gemini_transcribe(jobs: list[dict[str, Any]], *, model: str, batch_size: int
         key = hash_file(job["image"])[:32]
         cache_path = cache_dir / "gemini" / f"{key}-{model}-{PROMPT_VERSION}.json"
         hit = load_json(cache_path)
-        if hit:
+        if isinstance(hit, dict) and isinstance(hit.get("blocks"), list) and isinstance(hit.get("text"), str):
             outcomes[job["page"]] = {"model": model, "cached": True, "page": hit}
         else:
             misses.append({**job, "cachePath": cache_path})
@@ -167,6 +236,18 @@ def gemini_transcribe(jobs: list[dict[str, Any]], *, model: str, batch_size: int
 def empty_stats() -> dict[str, int]:
     return {"calls": 0, "failedCalls": 0, "seconds": 0, "input_tokens": 0,
             "output_tokens": 0, "thinking_tokens": 0, "cache_read_tokens": 0}
+
+
+def _message_text(content: Any) -> str:
+    """OpenRouter providers may return content as a string or text parts."""
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = [item.get("text", "") for item in content
+                 if isinstance(item, dict) and item.get("type", "text") in ("text", "output_text")]
+        if parts and all(isinstance(part, str) for part in parts):
+            return "".join(parts)
+    raise ValueError("OpenRouter trả về message.content không phải văn bản JSON.")
 
 # ----OPENROUTER---
 def _call_openrouter(batch: list[dict[str, Any]], model: str,
@@ -209,24 +290,11 @@ def _call_openrouter(batch: list[dict[str, Any]], model: str,
         usage = result.get("usage") or {}
         stats["input_tokens"] = usage.get("prompt_tokens") or 0
         stats["output_tokens"] = usage.get("completion_tokens") or 0
-        message = result["choices"][0]["message"]["content"]
-        if not isinstance(message, str) or not message.strip():
+        message = _message_text(result["choices"][0]["message"]["content"])
+        if not message.strip():
             raise ValueError("OpenRouter trả về nội dung rỗng.")
         payload = json.loads(message)
-        if not isinstance(payload.get("pages"), list):
-            raise ValueError("OpenRouter không trả về danh sách pages.")
-        pages: dict[str, Any] = {}
-        for page in payload["pages"]:
-            filename = Path(page["file"]).name
-            if filename not in names or filename in pages:
-                raise ValueError(f"OpenRouter trả về tên trang không hợp lệ: {filename}")
-            if page["page_type"] not in ("table", "text", "mixed", "cover", "blank") \
-                    or not isinstance(page["text"], str) \
-                    or not isinstance(page["unreadable"], list):
-                raise ValueError(f"OpenRouter trả về trang sai cấu trúc: {filename}")
-            pages[filename] = {"page_type": page["page_type"],
-                               "text": unicodedata.normalize("NFC", page["text"]),
-                               "unreadable": page["unreadable"]}
+        pages = _validated_pages(payload, names)
         stats["seconds"] = seconds(started)
         print(f"  [openrouter] {model} {','.join(names)}: OK, {stats['seconds']}s")
         return pages, stats
@@ -254,7 +322,7 @@ def openrouter_transcribe(jobs: list[dict[str, Any]], *, model: str, batch_size:
         safe_model = model.replace("/", "-").replace(":", "-")
         cache_path = cache_dir / "openrouter" / f"{key}-{safe_model}-{PROMPT_VERSION}.json"
         hit = load_json(cache_path)
-        if hit:
+        if isinstance(hit, dict) and isinstance(hit.get("blocks"), list) and isinstance(hit.get("text"), str):
             outcomes[job["page"]] = {"provider": "openrouter", "model": model,
                                      "cached": True, "page": hit}
         else:
