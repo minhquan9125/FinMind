@@ -48,6 +48,6 @@
     {"id": "p90-b20", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.61, 212.6, 668.61]},
     {"id": "p90-b21", "type": "furniture", "text": "05", "bbox": [30.0, 961.65, 196.06, 1080]},
     {"id": "p90-b22", "type": "furniture", "text": "88", "bbox": [293.0, 988.53, 318.8, 1011.4]},
-    {"id": "p90-b23", "type": "furniture", "text": "hơn nữa trong những năm tới.", "bbox": [825.27, 992.29, 1060.3, 1010.29]}
+    {"id": "p90-b23", "type": "paragraph", "text": "hơn nữa trong những năm tới.", "bbox": [825.27, 992.29, 1060.3, 1010.29]}
   ]
 }

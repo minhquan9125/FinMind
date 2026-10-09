@@ -28,17 +28,17 @@
     },
     {
       "id": "p113-b6",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Bám sát các diễn biến kinh tế, chính trị, xã hội, môi trường\ncủa Việt Nam và thế giới;",
       "bbox": [417.02, 675.32, 877.21, 717.31]
     },
     {
       "id": "p113-b7",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Nghiên cứu thông tin từ các báo cáo kinh tế - xã hội, báo\ncáo thị trường, báo cáo ngành do các tổ chức uy tín đưa ra;",
       "bbox": [417.02, 737.49, 877.23, 779.48]
     },
-    {"id": "p113-b8", "type": "paragraph", "text": "• Phân tích các báo cáo đánh giá, khảo sát khách hàng\ncủa Tập đoàn;", "bbox": [417.02, 799.66, 877.24, 841.66]},
+    {"id": "p113-b8", "type": "furniture", "text": "• Phân tích các báo cáo đánh giá, khảo sát khách hàng\ncủa Tập đoàn;", "bbox": [417.02, 799.66, 877.24, 841.66]},
     {
       "id": "p113-b9",
       "type": "paragraph",
@@ -138,8 +138,8 @@
     {"id": "p113-b45", "type": "furniture", "text": "Song hành vì sự phát triển cộng đồng", "bbox": [85.5, 641.42, 315.28, 655.42]},
     {"id": "p113-b46", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
     {"id": "p113-b47", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
-    {"id": "p113-b48", "type": "furniture", "text": "• Lựa chọn các vấn đề trọng yếu.", "bbox": [908.59, 983.12, 1166.13, 1001.12]},
-    {"id": "p113-b49", "type": "furniture", "text": "triển bền vững.", "bbox": [428.36, 986.18, 546.48, 1004.18]},
+    {"id": "p113-b48", "type": "paragraph", "text": "• Lựa chọn các vấn đề trọng yếu.", "bbox": [908.59, 983.12, 1166.13, 1001.12]},
+    {"id": "p113-b49", "type": "paragraph", "text": "triển bền vững.", "bbox": [428.36, 986.18, 546.48, 1004.18]},
     {"id": "p113-b50", "type": "furniture", "text": "111", "bbox": [288.22, 988.53, 326.93, 1011.4]}
   ]
 }

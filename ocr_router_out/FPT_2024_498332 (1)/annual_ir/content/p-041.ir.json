@@ -11,17 +11,17 @@
     "file_name": "FPT_2024_498332 (1).pdf"
   },
   "blocks": [
-    {"id": "p41-b1", "type": "heading", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
-    {"id": "p41-b2", "type": "paragraph", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [44.64, 214.3, 272.71, 233.3]},
-    {"id": "p41-b3", "type": "paragraph", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 264.64, 315.44, 283.64]},
-    {"id": "p41-b4", "type": "paragraph", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [45.96, 318.15, 250.8, 337.15]},
-    {"id": "p41-b5", "type": "paragraph", "text": "Bối cảnh kinh tế vĩ mô", "bbox": [85.0, 363.51, 220.2, 377.51]},
-    {"id": "p41-b6", "type": "paragraph", "text": "Tiềm năng và cơ hội phát triển của\nngành CNTT", "bbox": [85.0, 395.47, 297.51, 426.27]},
-    {"id": "p41-b7", "type": "paragraph", "text": "Chiến lược phát triển 2025 – 2027\ncủa FPT", "bbox": [85.0, 442.99, 293.43, 473.79]},
-    {"id": "p41-b8", "type": "paragraph", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 498.5, 326.26, 517.5]},
-    {"id": "p41-b9", "type": "paragraph", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 548.84, 206.67, 567.84]},
-    {"id": "p41-b10", "type": "paragraph", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.17, 171.05, 618.17]},
-    {"id": "p41-b11", "type": "paragraph", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.51, 212.6, 668.51]},
+    {"id": "p41-b1", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p41-b2", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [44.64, 214.3, 272.71, 233.3]},
+    {"id": "p41-b3", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 264.64, 315.44, 283.64]},
+    {"id": "p41-b4", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [45.96, 318.15, 250.8, 337.15]},
+    {"id": "p41-b5", "type": "furniture", "text": "Bối cảnh kinh tế vĩ mô", "bbox": [85.0, 363.51, 220.2, 377.51]},
+    {"id": "p41-b6", "type": "furniture", "text": "Tiềm năng và cơ hội phát triển của\nngành CNTT", "bbox": [85.0, 395.47, 297.51, 426.27]},
+    {"id": "p41-b7", "type": "furniture", "text": "Chiến lược phát triển 2025 – 2027\ncủa FPT", "bbox": [85.0, 442.99, 293.43, 473.79]},
+    {"id": "p41-b8", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 498.5, 326.26, 517.5]},
+    {"id": "p41-b9", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 548.84, 206.67, 567.84]},
+    {"id": "p41-b10", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.17, 171.05, 618.17]},
+    {"id": "p41-b11", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.51, 212.6, 668.51]},
     {"id": "p41-b12", "type": "paragraph", "text": "03", "bbox": [30.0, 961.65, 195.66, 1080]},
     {"id": "p41-b13", "type": "furniture", "text": "39", "bbox": [293.0, 988.53, 318.8, 1011.4]}
   ]

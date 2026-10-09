@@ -118,10 +118,10 @@
     {"id": "p58-b30", "type": "furniture", "text": "56", "bbox": [293.0, 988.53, 318.8, 1011.4]},
     {
       "id": "p58-b31",
-      "type": "furniture",
+      "type": "paragraph",
       "text": "pháp The Next for Enterprise - bộ giải pháp bao gồm nền tảng giao kết số toàn trình",
       "bbox": [428.22, 996.51, 1122.97, 1014.51]
     },
-    {"id": "p58-b32", "type": "furniture", "text": "người và AI.", "bbox": [1164.35, 1000.76, 1258.0, 1018.76]}
+    {"id": "p58-b32", "type": "paragraph", "text": "người và AI.", "bbox": [1164.35, 1000.76, 1258.0, 1018.76]}
   ]
 }

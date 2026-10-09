@@ -17,7 +17,7 @@ from typing import Any
 from dotenv import load_dotenv
 
 from crossCheck import cross_check, number_keys
-from model import gemini_transcribe
+from model import empty_stats, gemini_transcribe, openrouter_transcribe
 from render import page_name, upright_page
 from tesseract import tess_env, tesseract
 from textLayer import page_count, read_text_layer
@@ -43,9 +43,9 @@ def is_critical(text: str) -> bool:
 
 def preflight(cfg: argparse.Namespace) -> dict[str, str]:
     commands = ["pdfinfo", "pdftotext", "pdftoppm", "tesseract"]
-    if cfg.gemini != "never":
-        if not os.environ.get("GEMINI_API_KEY"):
-            raise RuntimeError("Thiếu GEMINI_API_KEY. Hãy thêm key vào file .env hoặc chạy với --gemini never.")
+    if cfg.gemini != "never" and not (os.environ.get("GEMINI_API_KEY") or
+                                      os.environ.get("OPENROUTER_API_KEY")):
+        raise RuntimeError("Thiếu GEMINI_API_KEY và OPENROUTER_API_KEY. Thêm ít nhất một key vào .env hoặc chạy --gemini never.")
     missing = [command for command in commands if not find_command(command)]
     if missing:
         raise RuntimeError(f"Thiếu lệnh: {', '.join(missing)}")
@@ -55,8 +55,9 @@ def preflight(cfg: argparse.Namespace) -> dict[str, str]:
 def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None:
     start = time.perf_counter()
     times: dict[str, float] = {}
-    gemini_api = {"calls": 0, "failedCalls": 0, "seconds": 0,
-           "input_tokens": 0, "output_tokens": 0, "thinking_tokens": 0, "cache_read_tokens": 0}
+    gemini_api = empty_stats()
+    openrouter_api = empty_stats()
+    openrouter_model = getattr(cfg, "openrouter_model", os.environ.get("OPENROUTER_MODEL", "openai/gpt-4o-mini"))
     doc_dir = cfg.out / pdf.stem
     work_dir, text_dir, cache_dir = doc_dir / "work", doc_dir / "text", cfg.out / ".cache"
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -119,9 +120,17 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
             jobs.append({"page": item["page"], "image": item["image"]})
 
     tick = time.perf_counter()
-    gem = gemini_transcribe(jobs, model=cfg.model, batch_size=cfg.batch,
-                           concurrency=cfg.gemini_concurrency, timeout_sec=cfg.gemini_timeout,
-                           cache_dir=cache_dir, stats=gemini_api) if jobs else {}
+    gem = (gemini_transcribe(jobs, model=cfg.model, batch_size=cfg.batch,
+                            concurrency=cfg.gemini_concurrency, timeout_sec=cfg.gemini_timeout,
+                            cache_dir=cache_dir, stats=gemini_api)
+           if jobs and os.environ.get("GEMINI_API_KEY") else {})
+    fallback_jobs = [job for job in jobs if not gem.get(job["page"], {}).get("page")]
+    if fallback_jobs and os.environ.get("OPENROUTER_API_KEY"):
+        print(f"  Gemini chưa xử lý được {len(fallback_jobs)} trang; chuyển sang OpenRouter")
+        gem.update(openrouter_transcribe(
+            fallback_jobs, model=openrouter_model, batch_size=cfg.batch,
+            concurrency=cfg.gemini_concurrency, timeout_sec=cfg.gemini_timeout,
+            cache_dir=cache_dir, stats=openrouter_api))
     times["gemini"] = seconds(tick)
     tess_by_page = {item["page"]: item for item in ocr}
 
@@ -144,13 +153,17 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
                 flags.append("LOW_CONF")
         elif not outcome or not outcome.get("page"):
             flags.append("GEMINI_FAILED")
-            rec["gemini"] = {"model": cfg.model, "cached": False, "reason": reason,
+            rec["gemini"] = {"provider": outcome.get("provider", "gemini") if outcome else "gemini",
+                             "model": outcome.get("model", cfg.model) if outcome else cfg.model,
+                             "cached": False, "reason": reason,
                              **({"error": outcome["error"]} if outcome and outcome.get("error") else {})}
         else:
             gemini_page = outcome["page"]
+            provider = outcome.get("provider", "gemini")
             comparison = cross_check(gemini_page["text"], tess["text"])
-            rec.update(route="tesseract+gemini", text=gemini_page["text"], crossCheck=comparison,
-                       gemini={"model": outcome["model"], "cached": outcome["cached"], "reason": reason,
+            rec.update(route=f"tesseract+{provider}", text=gemini_page["text"], crossCheck=comparison,
+                       gemini={"provider": provider, "model": outcome["model"],
+                               "cached": outcome["cached"], "reason": reason,
                                "page_type": gemini_page["page_type"], "unreadable": gemini_page["unreadable"]})
             if critical[page] and comparison["numberAgreement"] < 0.95:
                 flags.append("NUMBERS_UNVERIFIED")
@@ -164,8 +177,9 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
     for item in ocr:
         records[item["page"]] = finalize(item["page"], gem.get(item["page"]))
 
-    if cfg.escalate_model:
-        retry = [record for record in records.values() if critical.get(record["page"])
+    if cfg.escalate_model and os.environ.get("GEMINI_API_KEY"):
+        retry = [record for record in records.values() if record["route"] == "tesseract+gemini"
+                 and critical.get(record["page"])
                  and record.get("crossCheck", {}).get("numberAgreement", 1) < 0.9]
         if retry:
             tick = time.perf_counter()
@@ -185,13 +199,15 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
     for rec in ordered:
         name = page_name(rec["page"])
         (text_dir / f"{name}.txt").write_text(rec["text"], encoding="utf-8")
-        if rec["route"] == "tesseract+gemini":
+        if rec["route"] in ("tesseract+gemini", "tesseract+openrouter"):
             (text_dir / f"{name}.tess.txt").write_text(tess_by_page[rec["page"]]["tess"]["text"], encoding="utf-8")
     times["total"] = seconds(start)
     summary_config = {"out": str(cfg.out)}
     if cfg.pages is not None:
         summary_config["pages"] = cfg.pages
     summary_config.update({"mode": cfg.gemini, "model": cfg.model})
+    if os.environ.get("OPENROUTER_API_KEY"):
+        summary_config["openrouterModel"] = openrouter_model
     if cfg.escalate_model is not None:
         summary_config["escalateModel"] = cfg.escalate_model
     summary_config.update({"batch": cfg.batch, "geminiConcurrency": cfg.gemini_concurrency,
@@ -201,9 +217,12 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
                "status": count([rec["status"] for rec in ordered]),
                "flags": count([flag for rec in ordered for flag in rec["flags"]]),
                "reviewPages": [rec["page"] for rec in ordered if rec["status"] == "REVIEW"],
-               "seconds": times, "geminiApi": gemini_api,
+               "seconds": times, "geminiApi": gemini_api, "openrouterApi": openrouter_api,
                "cache": {"tesseractHits": sum(item["cached"] for item in ocr),
-                         "geminiHits": sum(outcome["cached"] for outcome in gem.values())},
+                         "geminiHits": sum(outcome["cached"] for outcome in gem.values()
+                                           if outcome.get("provider", "gemini") == "gemini"),
+                         "openrouterHits": sum(outcome["cached"] for outcome in gem.values()
+                                               if outcome.get("provider") == "openrouter")},
                "config": summary_config}
     save_json(doc_dir / "summary.json", summary)
     print(f"  tuyến: {summary['routes']}  trạng thái: {summary['status']}")
@@ -212,6 +231,8 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
     print(f"  thời gian (s): {times}")
     if gemini_api["calls"]:
         print(f"  Gemini API: {gemini_api['calls']} lần gọi ({gemini_api['failedCalls']} lỗi), token vào {gemini_api['input_tokens']}, ra {gemini_api['output_tokens']}")
+    if openrouter_api["calls"]:
+        print(f"  OpenRouter: {openrouter_api['calls']} lần gọi ({openrouter_api['failedCalls']} lỗi), token vào {openrouter_api['input_tokens']}, ra {openrouter_api['output_tokens']}")
     print(f"  → {doc_dir}")
 
 
@@ -222,6 +243,8 @@ def make_parser() -> argparse.ArgumentParser:
     parser.add_argument("--pages", help="Ví dụ: 1-5,8")
     parser.add_argument("--gemini", choices=("auto", "always", "never"), default="auto")
     parser.add_argument("--model", default="gemini-3.8-flash")
+    parser.add_argument("--openrouter-model", default=os.environ.get("OPENROUTER_MODEL", "openai/gpt-4o-mini"),
+                        help="Model dự phòng có hỗ trợ ảnh trên OpenRouter")
     parser.add_argument("--escalate-model")
     parser.add_argument("--batch", type=int, default=4)
     parser.add_argument("--gemini-concurrency", "--agy-concurrency", dest="gemini_concurrency", type=int, default=2)

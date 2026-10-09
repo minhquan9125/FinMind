@@ -115,12 +115,12 @@
     {"id": "p222-b97", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
     {"id": "p222-b98", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
     {"id": "p222-b99", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
-    {"id": "p222-b100", "type": "furniture", "text": "65 Công ty Cổ phần An toàn Thông tin Cyradar Dịch vụ CNTT", "bbox": [270.23, 543.73, 554.94, 554.65]},
-    {"id": "p222-b101", "type": "furniture", "text": "77,78%", "bbox": [741.79, 544.73, 771.98, 554.23]},
-    {"id": "p222-b102", "type": "furniture", "text": "77,78%", "bbox": [818.0, 544.73, 848.19, 554.23]},
-    {"id": "p222-b103", "type": "furniture", "text": "77,78%", "bbox": [898.51, 544.73, 928.7, 554.23]},
-    {"id": "p222-b104", "type": "furniture", "text": "77,78%", "bbox": [979.02, 544.73, 1009.22, 554.23]},
-    {"id": "p222-b105", "type": "furniture", "text": "Việt Nam", "bbox": [625.74, 544.74, 664.43, 554.24]},
+    {"id": "p222-b100", "type": "paragraph", "text": "65 Công ty Cổ phần An toàn Thông tin Cyradar Dịch vụ CNTT", "bbox": [270.23, 543.73, 554.94, 554.65]},
+    {"id": "p222-b101", "type": "paragraph", "text": "77,78%", "bbox": [741.79, 544.73, 771.98, 554.23]},
+    {"id": "p222-b102", "type": "paragraph", "text": "77,78%", "bbox": [818.0, 544.73, 848.19, 554.23]},
+    {"id": "p222-b103", "type": "paragraph", "text": "77,78%", "bbox": [898.51, 544.73, 928.7, 554.23]},
+    {"id": "p222-b104", "type": "paragraph", "text": "77,78%", "bbox": [979.02, 544.73, 1009.22, 554.23]},
+    {"id": "p222-b105", "type": "paragraph", "text": "Việt Nam", "bbox": [625.74, 544.74, 664.43, 554.24]},
     {"id": "p222-b106", "type": "furniture", "text": "221", "bbox": [58.89, 546.47, 77.67, 558.52]}
   ]
 }

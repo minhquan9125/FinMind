@@ -94,7 +94,7 @@
       "bbox": [67.84, 287.86, 199.86, 365.86]
     },
     {"id": "p144-b23", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
-    {"id": "p144-b24", "type": "furniture", "text": "cơ quan quản lý nhà nước kiểm tra, giám sát theo quy định.", "bbox": [704.78, 546.3, 966.88, 556.3]},
+    {"id": "p144-b24", "type": "paragraph", "text": "cơ quan quản lý nhà nước kiểm tra, giám sát theo quy định.", "bbox": [704.78, 546.3, 966.88, 556.3]},
     {"id": "p144-b25", "type": "furniture", "text": "143", "bbox": [58.68, 546.47, 77.88, 558.52]}
   ]
 }

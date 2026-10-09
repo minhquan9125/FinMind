@@ -1,0 +1,243 @@
+{
+  "scope": "all_text_layer_pages_from_pages_jsonl",
+  "pages_checked": 230,
+  "minimum_repeated_pages": 115,
+  "position_grid": "2% of page width and height",
+  "repeated_groups": [
+    {
+      "text": "01 thông điệp ban lãnh đạo",
+      "x_bin": 1,
+      "y_bin": 9,
+      "pages": 228
+    },
+    {
+      "text": "02 dấu ấn 2025",
+      "x_bin": 1,
+      "y_bin": 11,
+      "pages": 223
+    },
+    {
+      "text": "03 tổng quan về fpt",
+      "x_bin": 1,
+      "y_bin": 14,
+      "pages": 207
+    },
+    {
+      "text": "04 chiến lược phát triển",
+      "x_bin": 1,
+      "y_bin": 16,
+      "pages": 185
+    },
+    {
+      "text": "05 phân tích hoạt động kinh doanh",
+      "x_bin": 1,
+      "y_bin": 18,
+      "pages": 175
+    },
+    {
+      "text": "06 quản trị công ty",
+      "x_bin": 1,
+      "y_bin": 20,
+      "pages": 123
+    },
+    {
+      "text": "07 báo cáo esg",
+      "x_bin": 1,
+      "y_bin": 22,
+      "pages": 122
+    },
+    {
+      "text": "làm chủ công nghệ chiến lược báo cáo thường niên 2025",
+      "x_bin": 3,
+      "y_bin": 3,
+      "pages": 223
+    }
+  ],
+  "promoted_blocks": 101,
+  "sidebar_associated_blocks": 824,
+  "page_number_blocks": 231,
+  "demoted_unverified_blocks": 89,
+  "demoted_examples": [
+    {
+      "page": 27,
+      "block_id": "p27-b58",
+      "text": "Châu Á-Thái Bình Dương",
+      "matching_pages": 1
+    },
+    {
+      "page": 31,
+      "block_id": "p31-b73",
+      "text": "1.000.000.000.000 VNĐ 4.500.000.000.000 VNĐ Tỷ lệ sở hữu: 100%",
+      "matching_pages": 1
+    },
+    {
+      "page": 31,
+      "block_id": "p31-b74",
+      "text": "Tỷ lệ sở hữu: 100%",
+      "matching_pages": 1
+    },
+    {
+      "page": 57,
+      "block_id": "p57-b38",
+      "text": "cạnh tranh dài hạn trong bối cảnh cạnh tranh ngày càng gay gắt.",
+      "matching_pages": 1
+    },
+    {
+      "page": 68,
+      "block_id": "p68-b22",
+      "text": "trong dài hạn.",
+      "matching_pages": 1
+    },
+    {
+      "page": 76,
+      "block_id": "p76-b22",
+      "text": "diện toàn cầu và khẳng định vị thế trung tâm bản đồ công nghệ Việt Nam.",
+      "matching_pages": 1
+    },
+    {
+      "page": 77,
+      "block_id": "p77-b26",
+      "text": "siêu máy tính toàn cầu.",
+      "matching_pages": 1
+    },
+    {
+      "page": 96,
+      "block_id": "p96-b81",
+      "text": "khác thay thế.",
+      "matching_pages": 1
+    },
+    {
+      "page": 99,
+      "block_id": "p99-b37",
+      "text": "chống hối lộ cũng được Tập đoàn thực hiện nghiêm ngặt.",
+      "matching_pages": 1
+    },
+    {
+      "page": 110,
+      "block_id": "p110-b24",
+      "text": "tăng cường sử dụng xe điện.",
+      "matching_pages": 1
+    },
+    {
+      "page": 116,
+      "block_id": "p116-b54",
+      "text": "• Xử lý nghiêm minh với các trường hợp vi phạm.",
+      "matching_pages": 1
+    },
+    {
+      "page": 118,
+      "block_id": "p118-b50",
+      "text": "công bằng và hòa hợp.",
+      "matching_pages": 1
+    },
+    {
+      "page": 118,
+      "block_id": "p118-b52",
+      "text": "tăng 18,2% so với năm 2024.",
+      "matching_pages": 1
+    },
+    {
+      "page": 119,
+      "block_id": "p119-b55",
+      "text": "• 26 điểm trường thiệt hại nặng được tái thiết kịp thời sau lũ.",
+      "matching_pages": 1
+    },
+    {
+      "page": 122,
+      "block_id": "p122-b33",
+      "text": "Câu lạc bộ bóng đá, Hội thao, Ngày FPT vì Cộng đồng, Ngày Phụ huynh….",
+      "matching_pages": 1
+    },
+    {
+      "page": 127,
+      "block_id": "p127-b44",
+      "text": "chuyển đổi số.",
+      "matching_pages": 1
+    },
+    {
+      "page": 127,
+      "block_id": "p127-b45",
+      "text": "lượng Giáo dục Đại học châu Âu;",
+      "matching_pages": 1
+    },
+    {
+      "page": 130,
+      "block_id": "p130-b28",
+      "text": "đến uy tín và thương hiệu, tiếp tục khẳng định cam kết mạnh mẽ của FPT trong việc",
+      "matching_pages": 1
+    },
+    {
+      "page": 130,
+      "block_id": "p130-b30",
+      "text": "bảo vệ tài sản số và niềm tin của khách hàng, đối tác và xã hội.",
+      "matching_pages": 1
+    },
+    {
+      "page": 138,
+      "block_id": "p138-b34",
+      "text": "thích ứng với môi trường làm việc đa quốc gia trên quy mô toàn cầu của FPT.",
+      "matching_pages": 1
+    },
+    {
+      "page": 139,
+      "block_id": "p139-b19",
+      "text": "năng lực ứng dụng công nghệ, tư duy hợp tác và khả năng tối ưu hiệu quả công việc.",
+      "matching_pages": 1
+    },
+    {
+      "page": 143,
+      "block_id": "p143-b19",
+      "text": "trưởng trong giai đoạn tới.",
+      "matching_pages": 1
+    },
+    {
+      "page": 144,
+      "block_id": "p144-b24",
+      "text": "cơ quan quản lý nhà nước kiểm tra, giám sát theo quy định.",
+      "matching_pages": 1
+    },
+    {
+      "page": 151,
+      "block_id": "p151-b46",
+      "text": "94 90 118",
+      "matching_pages": 1
+    },
+    {
+      "page": 151,
+      "block_id": "p151-b47",
+      "text": "NO (µg/m³)",
+      "matching_pages": 1
+    },
+    {
+      "page": 157,
+      "block_id": "p157-b19",
+      "text": "08 tỷ đồng cho Chương trình.",
+      "matching_pages": 1
+    },
+    {
+      "page": 163,
+      "block_id": "p163-b20",
+      "text": "+84 (28) 3823 0796, www.pwc.com/vn",
+      "matching_pages": 1
+    },
+    {
+      "page": 165,
+      "block_id": "p165-b21",
+      "text": "Các thuyết minh từ trang 172 đến trang 225 là một phần cấu thành báo cáo tài chính hợp nhất.",
+      "matching_pages": 7
+    },
+    {
+      "page": 166,
+      "block_id": "p166-b22",
+      "text": "Các thuyết minh từ trang 172 đến trang 225 là một phần cấu thành báo cáo tài chính hợp nhất.",
+      "matching_pages": 7
+    },
+    {
+      "page": 167,
+      "block_id": "p167-b22",
+      "text": "Các thuyết minh từ trang 172 đến trang 225 là một phần cấu thành báo cáo tài chính hợp nhất.",
+      "matching_pages": 7
+    }
+  ],
+  "furniture_table_overlaps": []
+}

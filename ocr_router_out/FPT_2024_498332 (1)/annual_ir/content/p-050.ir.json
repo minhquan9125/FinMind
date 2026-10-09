@@ -11,16 +11,16 @@
     "file_name": "FPT_2024_498332 (1).pdf"
   },
   "blocks": [
-    {"id": "p50-b1", "type": "heading", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
-    {"id": "p50-b2", "type": "paragraph", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.82, 271.58, 232.82]},
-    {"id": "p50-b3", "type": "paragraph", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 264.16, 315.44, 283.16]},
-    {"id": "p50-b4", "type": "paragraph", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.5, 243.52, 333.5]},
-    {"id": "p50-b5", "type": "paragraph", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [45.96, 368.01, 333.54, 387.01]},
-    {"id": "p50-b6", "type": "paragraph", "text": "Báo cáo của Ban Điều hành về kết quả\nkinh doanh 2024 và nhận định 2025", "bbox": [85.0, 413.37, 320.62, 444.17]},
-    {"id": "p50-b7", "type": "paragraph", "text": "Đánh giá của HĐQT về hoạt động của\nTập đoàn", "bbox": [85.0, 460.89, 315.65, 491.69]},
-    {"id": "p50-b8", "type": "paragraph", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 516.4, 206.67, 535.4]},
-    {"id": "p50-b9", "type": "paragraph", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 566.74, 171.05, 585.74]},
-    {"id": "p50-b10", "type": "paragraph", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 617.08, 212.6, 636.08]},
+    {"id": "p50-b1", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p50-b2", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.82, 271.58, 232.82]},
+    {"id": "p50-b3", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 264.16, 315.44, 283.16]},
+    {"id": "p50-b4", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.5, 243.52, 333.5]},
+    {"id": "p50-b5", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [45.96, 368.01, 333.54, 387.01]},
+    {"id": "p50-b6", "type": "furniture", "text": "Báo cáo của Ban Điều hành về kết quả\nkinh doanh 2024 và nhận định 2025", "bbox": [85.0, 413.37, 320.62, 444.17]},
+    {"id": "p50-b7", "type": "furniture", "text": "Đánh giá của HĐQT về hoạt động của\nTập đoàn", "bbox": [85.0, 460.89, 315.65, 491.69]},
+    {"id": "p50-b8", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 516.4, 206.67, 535.4]},
+    {"id": "p50-b9", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 566.74, 171.05, 585.74]},
+    {"id": "p50-b10", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 617.08, 212.6, 636.08]},
     {"id": "p50-b11", "type": "paragraph", "text": "04", "bbox": [30.0, 961.65, 192.49, 1080]},
     {"id": "p50-b12", "type": "furniture", "text": "48", "bbox": [293.0, 988.53, 318.8, 1011.4]}
   ]

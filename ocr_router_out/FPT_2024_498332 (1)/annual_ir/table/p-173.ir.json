@@ -101,8 +101,8 @@
     {"id": "p173-b58", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 465.05, 171.05, 484.05]},
     {"id": "p173-b59", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
     {"id": "p173-b60", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
-    {"id": "p173-b61", "type": "furniture", "text": "Tiền thuần chi ra", "bbox": [1165.6, 988.05, 1297.82, 1006.05]},
-    {"id": "p173-b62", "type": "furniture", "text": "577.366.436.106", "bbox": [1722.31, 988.05, 1859.41, 1006.05]},
+    {"id": "p173-b61", "type": "paragraph", "text": "Tiền thuần chi ra", "bbox": [1165.6, 988.05, 1297.82, 1006.05]},
+    {"id": "p173-b62", "type": "paragraph", "text": "577.366.436.106", "bbox": [1722.31, 988.05, 1859.41, 1006.05]},
     {"id": "p173-b63", "type": "furniture", "text": "171", "bbox": [288.22, 988.53, 326.93, 1011.4]}
   ]
 }

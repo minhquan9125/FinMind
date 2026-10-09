@@ -17,8 +17,8 @@ PageClass: TypeAlias = Literal[
     "auditor_report", "balance_sheet", "income_statement", "cash_flow",
     "notes", "other",
 ]
-Engine: TypeAlias = Literal["TEXT_LAYER", "TESSERACT", "GEMINI", "MERGED"]
-VoteEngine: TypeAlias = Literal["TEXT_LAYER", "TESSERACT", "GEMINI"]
+Engine: TypeAlias = Literal["TEXT_LAYER", "TESSERACT", "GEMINI", "OPENROUTER", "MERGED"]
+VoteEngine: TypeAlias = Literal["TEXT_LAYER", "TESSERACT", "GEMINI", "OPENROUTER"]
 
 
 class PageSize(TypedDict):
@@ -66,11 +66,17 @@ class GeminiSource(SourceCommon, SourceDisplay):
     prompt_version: str
 
 
+class OpenRouterSource(SourceCommon, SourceDisplay):
+    engine: Literal["OPENROUTER"]
+    image_sha256: str
+    prompt_version: str
+
+
 class MergedSource(SourceCommon, SourceDisplay, SourceOptionalOCR):
     engine: Literal["MERGED"]
 
 
-Source: TypeAlias = TextLayerSource | TesseractSource | GeminiSource | MergedSource
+Source: TypeAlias = TextLayerSource | TesseractSource | GeminiSource | OpenRouterSource | MergedSource
 
 
 class TextFields(TypedDict):

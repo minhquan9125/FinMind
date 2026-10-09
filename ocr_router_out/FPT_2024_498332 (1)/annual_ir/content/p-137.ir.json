@@ -32,13 +32,13 @@
     },
     {
       "id": "p137-b5",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Wallpaper - Tạp chí hàng đầu về kiến trúc, mỹ thuật và thời trang nước Anh đã\nxếp campus F-Town 3 vào bộ ba công trình đặc trưng cho lối kiến trúc Sinh khí hậu\n(bioclimatic), phong cách xây dựng, thiết kế cấu trúc toà nhà tận dụng tối đa lợi thế của\nkhí hậu, thiên nhiên để mang đến môi trường sống thoải mái, tiện nghi cho con người.\nHơn 40% công trình bao gồm cả không gian mở và các hành lang đều không cần trang\nbị điều hòa nhiệt độ;",
       "bbox": [416.57, 587.41, 1123.04, 725.38]
     },
     {
       "id": "p137-b6",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Tòa nhà hiệu bộ FPT (khu công nghệ cao Hòa Lạc - Hà Nội) được vinh danh trong hạng\nmục Giáo dục tương lai tại Festival kiến trúc thế giới và giành giải nhất tại cuộc thi\nKiến trúc xanh do Hội kiến trúc sư Việt Nam tổ chức về việc sử dụng vật liệu xanh và tiết\nkiệm năng lượng;",
       "bbox": [416.57, 742.71, 1123.06, 832.69]
     },
@@ -93,6 +93,6 @@
     {"id": "p137-b25", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
     {"id": "p137-b26", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
     {"id": "p137-b27", "type": "furniture", "text": "135", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p137-b28", "type": "furniture", "text": "liệu xây dựng được thiết kế theo xu hướng kiến trúc xanh.", "bbox": [427.91, 993.99, 877.51, 1011.99]}
+    {"id": "p137-b28", "type": "paragraph", "text": "liệu xây dựng được thiết kế theo xu hướng kiến trúc xanh.", "bbox": [427.91, 993.99, 877.51, 1011.99]}
   ]
 }

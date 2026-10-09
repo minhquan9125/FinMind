@@ -130,6 +130,6 @@
     {"id": "p158-b62", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
     {"id": "p158-b63", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
     {"id": "p158-b64", "type": "furniture", "text": "156", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p158-b65", "type": "furniture", "text": "FTEL là công ty con của Công ty.", "bbox": [428.22, 997.88, 658.73, 1013.88]}
+    {"id": "p158-b65", "type": "paragraph", "text": "FTEL là công ty con của Công ty.", "bbox": [428.22, 997.88, 658.73, 1013.88]}
   ]
 }

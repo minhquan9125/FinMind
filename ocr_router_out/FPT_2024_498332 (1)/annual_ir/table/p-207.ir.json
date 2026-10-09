@@ -178,11 +178,11 @@
     {"id": "p207-b165", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
     {"id": "p207-b166", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
     {"id": "p207-b167", "type": "furniture", "text": "205", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p207-b168", "type": "furniture", "text": "82\nTrường Tiểu học, THCS và THPT FPT Thanh Hóa", "bbox": [428.51, 991.16, 869.72, 1009.16]},
-    {"id": "p207-b169", "type": "furniture", "text": "Giáo dục, đào tạo", "bbox": [930.53, 991.16, 1070.98, 1009.16]},
-    {"id": "p207-b170", "type": "furniture", "text": "Việt Nam", "bbox": [1180.08, 991.16, 1253.25, 1009.16]},
-    {"id": "p207-b171", "type": "furniture", "text": "100%", "bbox": [1376.86, 991.16, 1423.55, 1009.16]},
-    {"id": "p207-b172", "type": "furniture", "text": "100%", "bbox": [1527.46, 991.16, 1574.16, 1009.16]},
-    {"id": "p207-b173", "type": "furniture", "text": "Chưa thành lập", "bbox": [1664.64, 991.16, 1784.94, 1009.16]}
+    {"id": "p207-b168", "type": "paragraph", "text": "82\nTrường Tiểu học, THCS và THPT FPT Thanh Hóa", "bbox": [428.51, 991.16, 869.72, 1009.16]},
+    {"id": "p207-b169", "type": "paragraph", "text": "Giáo dục, đào tạo", "bbox": [930.53, 991.16, 1070.98, 1009.16]},
+    {"id": "p207-b170", "type": "paragraph", "text": "Việt Nam", "bbox": [1180.08, 991.16, 1253.25, 1009.16]},
+    {"id": "p207-b171", "type": "paragraph", "text": "100%", "bbox": [1376.86, 991.16, 1423.55, 1009.16]},
+    {"id": "p207-b172", "type": "paragraph", "text": "100%", "bbox": [1527.46, 991.16, 1574.16, 1009.16]},
+    {"id": "p207-b173", "type": "paragraph", "text": "Chưa thành lập", "bbox": [1664.64, 991.16, 1784.94, 1009.16]}
   ]
 }

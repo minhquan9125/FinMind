@@ -61,6 +61,6 @@
     {"id": "p42-b18", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.51, 212.6, 668.51]},
     {"id": "p42-b19", "type": "furniture", "text": "03", "bbox": [30.0, 961.65, 195.66, 1080]},
     {"id": "p42-b20", "type": "furniture", "text": "40", "bbox": [293.0, 988.53, 318.8, 1011.4]},
-    {"id": "p42-b21", "type": "furniture", "text": "Việt Nam vươn mình trong kỷ nguyên mới.", "bbox": [428.0, 1002.31, 758.63, 1020.31]}
+    {"id": "p42-b21", "type": "paragraph", "text": "Việt Nam vươn mình trong kỷ nguyên mới.", "bbox": [428.0, 1002.31, 758.63, 1020.31]}
   ]
 }

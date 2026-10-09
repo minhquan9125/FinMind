@@ -1,0 +1,237 @@
+{
+  "scope": "all_text_layer_pages_from_pages_jsonl",
+  "pages_checked": 211,
+  "minimum_repeated_pages": 106,
+  "position_grid": "2% of page width and height",
+  "repeated_groups": [
+    {
+      "text": "01 thông điệp ban lãnh đạo",
+      "x_bin": 1,
+      "y_bin": 10,
+      "pages": 205
+    },
+    {
+      "text": "02 dấu ấn 2024 & tổng quan về fpt",
+      "x_bin": 1,
+      "y_bin": 12,
+      "pages": 174
+    },
+    {
+      "text": "03 chiến lược phát triển",
+      "x_bin": 1,
+      "y_bin": 15,
+      "pages": 174
+    },
+    {
+      "text": "04 phân tích hoạt động kinh doanh",
+      "x_bin": 1,
+      "y_bin": 17,
+      "pages": 165
+    },
+    {
+      "text": "05 quản trị công ty",
+      "x_bin": 1,
+      "y_bin": 19,
+      "pages": 147
+    },
+    {
+      "text": "06 báo cáo esg",
+      "x_bin": 1,
+      "y_bin": 22,
+      "pages": 119
+    },
+    {
+      "text": "báo cáo thường niên 2024",
+      "x_bin": 1,
+      "y_bin": 6,
+      "pages": 211
+    }
+  ],
+  "promoted_blocks": 154,
+  "sidebar_associated_blocks": 1038,
+  "page_number_blocks": 414,
+  "demoted_unverified_blocks": 92,
+  "demoted_examples": [
+    {
+      "page": 24,
+      "block_id": "p24-b47",
+      "text": "• Nhà cung cấp dịch vụ Trí tuệ nhân tạo và Điện toán đám mây đẳng cấp thế giới.",
+      "matching_pages": 1
+    },
+    {
+      "page": 28,
+      "block_id": "p28-b75",
+      "text": "4.000.000.000.000 VNĐ",
+      "matching_pages": 1
+    },
+    {
+      "page": 28,
+      "block_id": "p28-b76",
+      "text": "1.000.000.000.000 VNĐ",
+      "matching_pages": 1
+    },
+    {
+      "page": 28,
+      "block_id": "p28-b77",
+      "text": "Tỷ lệ sở hữu: 100%",
+      "matching_pages": 1
+    },
+    {
+      "page": 28,
+      "block_id": "p28-b78",
+      "text": "Tỷ lệ sở hữu: 100%",
+      "matching_pages": 1
+    },
+    {
+      "page": 36,
+      "block_id": "p36-b21",
+      "text": "Hội Tin học Tp.HCM, thành viên Hội đồng cấp cao Diễn đàn ESG Việt Nam.",
+      "matching_pages": 1
+    },
+    {
+      "page": 38,
+      "block_id": "p38-b22",
+      "text": "lớn của Tập đoàn ….",
+      "matching_pages": 1
+    },
+    {
+      "page": 42,
+      "block_id": "p42-b21",
+      "text": "Việt Nam vươn mình trong kỷ nguyên mới.",
+      "matching_pages": 1
+    },
+    {
+      "page": 43,
+      "block_id": "p43-b84",
+      "text": "Nguồn IDC",
+      "matching_pages": 1
+    },
+    {
+      "page": 48,
+      "block_id": "p48-b30",
+      "text": "bảo cạnh tranh thu nhập cho CBNV.",
+      "matching_pages": 1
+    },
+    {
+      "page": 51,
+      "block_id": "p51-b24",
+      "text": "giá trị gia tăng trong các sản phẩm và dịch vụ công nghệ cao.",
+      "matching_pages": 1
+    },
+    {
+      "page": 52,
+      "block_id": "p52-b120",
+      "text": "doanh, giảm thiểu rủi ro và áp lực vốn lưu động.",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b31",
+      "text": "thế mà còn mở rộng quy mô hoạt động, nâng cao giá trị dịch vụ cung cấp cho khách hàng",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b32",
+      "text": "mô lớn, từ hàng chục đến hàng trăm triệu USD.",
+      "matching_pages": 1
+    },
+    {
+      "page": 57,
+      "block_id": "p57-b20",
+      "text": "tháng 3/2024 và dự kiến tuyển dụng 2.000-3.000 kỹ sư công nghệ trong vòng 3-5 năm tới.",
+      "matching_pages": 1
+    },
+    {
+      "page": 58,
+      "block_id": "p58-b31",
+      "text": "pháp The Next for Enterprise - bộ giải pháp bao gồm nền tảng giao kết số toàn trình",
+      "matching_pages": 1
+    },
+    {
+      "page": 58,
+      "block_id": "p58-b32",
+      "text": "người và AI.",
+      "matching_pages": 1
+    },
+    {
+      "page": 60,
+      "block_id": "p60-b33",
+      "text": "cao của thị trường và người dùng.",
+      "matching_pages": 1
+    },
+    {
+      "page": 60,
+      "block_id": "p60-b34",
+      "text": "Mitsubishi Electric Cup™ 2024. Trong bối cảnh đội tuyển Việt Nam thi đấu thăng hoa, các",
+      "matching_pages": 1
+    },
+    {
+      "page": 66,
+      "block_id": "p66-b21",
+      "text": "nghệ và đóng góp vào sự phát triển của ngành CNTT Việt Nam.",
+      "matching_pages": 1
+    },
+    {
+      "page": 75,
+      "block_id": "p75-b57",
+      "text": "bộ lãnh đạo cấp cao trong năm 2024.",
+      "matching_pages": 1
+    },
+    {
+      "page": 90,
+      "block_id": "p90-b23",
+      "text": "hơn nữa trong những năm tới.",
+      "matching_pages": 1
+    },
+    {
+      "page": 94,
+      "block_id": "p94-b27",
+      "text": "trong việc cung cấp thông tin tài chính từ Ban Điều hành,",
+      "matching_pages": 1
+    },
+    {
+      "page": 98,
+      "block_id": "p98-b73",
+      "text": "Giờ học, tiếp cận thông tin ESG",
+      "matching_pages": 1
+    },
+    {
+      "page": 99,
+      "block_id": "p99-b26",
+      "text": "quả công tác quản trị môi trường, xã hội và quản trị.",
+      "matching_pages": 1
+    },
+    {
+      "page": 99,
+      "block_id": "p99-b27",
+      "text": "trình thực hiện cam kết, đảm bảo quy chuẩn quốc tế ….",
+      "matching_pages": 1
+    },
+    {
+      "page": 101,
+      "block_id": "p101-b64",
+      "text": "(*) Tổ chức sử dụng một số tiêu chuẩn hoặc một phần nội dung của tiêu chuẩn GRI để báo cáo các tác động liên quan đến từ",
+      "matching_pages": 1
+    },
+    {
+      "page": 103,
+      "block_id": "p103-b60",
+      "text": "cấp; AI kiểm soát chênh lệch giá.",
+      "matching_pages": 1
+    },
+    {
+      "page": 111,
+      "block_id": "p111-b40",
+      "text": "Chatbot, Voicebot, AI ….",
+      "matching_pages": 1
+    },
+    {
+      "page": 113,
+      "block_id": "p113-b48",
+      "text": "• Lựa chọn các vấn đề trọng yếu.",
+      "matching_pages": 1
+    }
+  ],
+  "furniture_table_overlaps": []
+}

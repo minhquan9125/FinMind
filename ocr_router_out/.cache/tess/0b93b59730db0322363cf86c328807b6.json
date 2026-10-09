@@ -2,7 +2,490 @@
   "text": "cÄ,\n\n£\n/&@\nể\n\n& ề\nvŸ ⁄\n\noøf\n\n⁄ đc\n\nX TECHNCLOGY\n\nC0: SECURITY\n\nAI UAV\n\nRAILWAY MOBRILTTY TECHNIOLOGY\n»\n\nDATA QUANTUM\n\nĐ38 tap,\n\nLÀM CHỦ\n\nCÔNG NGHỆ\nCHIẾN LƯỢC\n\nBÁO CÁO THƯỜNG NIÊN 2025\n\n[|",
   "chars": 137,
   "words": 37,
+  "wordItems": [
+    {
+      "text": "cÄ,",
+      "bbox": [
+        949,
+        314,
+        962,
+        326
+      ],
+      "conf": 0.038033,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "£",
+      "bbox": [
+        896,
+        360,
+        926,
+        397
+      ],
+      "conf": 1.006126,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "/&@",
+      "bbox": [
+        845,
+        397,
+        903,
+        419
+      ],
+      "conf": 16.74823,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ể",
+      "bbox": [
+        863,
+        410,
+        897,
+        461
+      ],
+      "conf": 89.724686,
+      "block": 3,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "&",
+      "bbox": [
+        941,
+        321,
+        954,
+        336
+      ],
+      "conf": 16.501938,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ề",
+      "bbox": [
+        992,
+        330,
+        995,
+        331
+      ],
+      "conf": 0.0,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "vŸ",
+      "bbox": [
+        920,
+        337,
+        945,
+        363
+      ],
+      "conf": 29.135941,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "⁄",
+      "bbox": [
+        959,
+        350,
+        975,
+        367
+      ],
+      "conf": 83.838943,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "oøf",
+      "bbox": [
+        1099,
+        203,
+        1156,
+        232
+      ],
+      "conf": 12.774002,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "⁄",
+      "bbox": [
+        928,
+        374,
+        953,
+        409
+      ],
+      "conf": 92.937202,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đc",
+      "bbox": [
+        962,
+        378,
+        994,
+        421
+      ],
+      "conf": 3.050278,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "X",
+      "bbox": [
+        1160,
+        201,
+        1170,
+        214
+      ],
+      "conf": 15.836456,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TECHNCLOGY",
+      "bbox": [
+        1178,
+        192,
+        1315,
+        211
+      ],
+      "conf": 26.93515,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "C0:",
+      "bbox": [
+        1151,
+        263,
+        1211,
+        286
+      ],
+      "conf": 0.0,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "SECURITY",
+      "bbox": [
+        1215,
+        259,
+        1304,
+        275
+      ],
+      "conf": 77.345337,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "AI",
+      "bbox": [
+        1369,
+        193,
+        1385,
+        206
+      ],
+      "conf": 96.300224,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "UAV",
+      "bbox": [
+        1442,
+        193,
+        1478,
+        206
+      ],
+      "conf": 87.272247,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "RAILWAY",
+      "bbox": [
+        1355,
+        259,
+        1433,
+        273
+      ],
+      "conf": 87.674149,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "MOBRILTTY",
+      "bbox": [
+        1438,
+        259,
+        1521,
+        273
+      ],
+      "conf": 19.361481,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TECHNIOLOGY",
+      "bbox": [
+        1525,
+        259,
+        1647,
+        273
+      ],
+      "conf": 57.272259,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "»",
+      "bbox": [
+        1685,
+        280,
+        1698,
+        290
+      ],
+      "conf": 3.727333,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "DATA",
+      "bbox": [
+        1533,
+        194,
+        1581,
+        206
+      ],
+      "conf": 92.658035,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUANTUM",
+      "bbox": [
+        1637,
+        194,
+        1736,
+        206
+      ],
+      "conf": 71.265213,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Đ38",
+      "bbox": [
+        1743,
+        305,
+        1761,
+        342
+      ],
+      "conf": 21.738373,
+      "block": 12,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tap,",
+      "bbox": [
+        1751,
+        251,
+        1769,
+        298
+      ],
+      "conf": 44.397732,
+      "block": 12,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "LÀM",
+      "bbox": [
+        2044,
+        565,
+        2209,
+        646
+      ],
+      "conf": 89.47229,
+      "block": 14,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHỦ",
+      "bbox": [
+        2237,
+        563,
+        2404,
+        648
+      ],
+      "conf": 96.425476,
+      "block": 14,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        2038,
+        692,
+        2487,
+        885
+      ],
+      "conf": 96.143257,
+      "block": 15,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NGHỆ",
+      "bbox": [
+        2545,
+        695,
+        2959,
+        877
+      ],
+      "conf": 96.67215,
+      "block": 15,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHIẾN",
+      "bbox": [
+        2038,
+        855,
+        2487,
+        1026
+      ],
+      "conf": 96.471901,
+      "block": 15,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "LƯỢC",
+      "bbox": [
+        2549,
+        853,
+        2979,
+        1061
+      ],
+      "conf": 93.004532,
+      "block": 15,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        2044,
+        1103,
+        2139,
+        1150
+      ],
+      "conf": 90.275024,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        2152,
+        1103,
+        2251,
+        1150
+      ],
+      "conf": 96.815865,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        2264,
+        1103,
+        2462,
+        1150
+      ],
+      "conf": 95.172897,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        2477,
+        1105,
+        2578,
+        1149
+      ],
+      "conf": 96.339165,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        2593,
+        1114,
+        2708,
+        1150
+      ],
+      "conf": 96.656815,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "[|",
+      "bbox": [
+        3179,
+        141,
+        3367,
+        254
+      ],
+      "conf": 8.388641,
+      "block": 17,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
   "meanConf": 57,
   "lowConfRatio": 0.459,
-  "seconds": 0.766
+  "seconds": 0.8
 }

@@ -107,6 +107,6 @@
     {"id": "p186-b34", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
     {"id": "p186-b35", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
     {"id": "p186-b36", "type": "furniture", "text": "185", "bbox": [58.61, 546.47, 77.95, 558.52]},
-    {"id": "p186-b37", "type": "furniture", "text": "• Doanh thu được xác định tương đối chắc chắn.", "bbox": [259.79, 548.33, 475.59, 558.33]}
+    {"id": "p186-b37", "type": "paragraph", "text": "• Doanh thu được xác định tương đối chắc chắn.", "bbox": [259.79, 548.33, 475.59, 558.33]}
   ]
 }

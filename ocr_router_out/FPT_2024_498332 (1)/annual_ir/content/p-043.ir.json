@@ -119,6 +119,6 @@
     {"id": "p43-b81", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.51, 212.6, 668.51]},
     {"id": "p43-b82", "type": "furniture", "text": "03", "bbox": [30.0, 961.65, 195.66, 1080]},
     {"id": "p43-b83", "type": "furniture", "text": "41", "bbox": [293.0, 988.53, 318.8, 1011.4]},
-    {"id": "p43-b84", "type": "furniture", "text": "Nguồn IDC", "bbox": [1785.34, 994.21, 1852.83, 1008.21]}
+    {"id": "p43-b84", "type": "paragraph", "text": "Nguồn IDC", "bbox": [1785.34, 994.21, 1852.83, 1008.21]}
   ]
 }

@@ -66,8 +66,8 @@
     {"id": "p136-b33", "type": "furniture", "text": "Song hành vì sự phát triển cộng đồng", "bbox": [85.5, 641.42, 315.28, 655.42]},
     {"id": "p136-b34", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
     {"id": "p136-b35", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
-    {"id": "p136-b36", "type": "furniture", "text": "Năm 2024", "bbox": [488.9, 987.37, 553.94, 1001.37]},
+    {"id": "p136-b36", "type": "paragraph", "text": "Năm 2024", "bbox": [488.9, 987.37, 553.94, 1001.37]},
     {"id": "p136-b37", "type": "furniture", "text": "134", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p136-b38", "type": "furniture", "text": "đánh giá là campus xanh độc đáo bậc nhất TP.HCM.", "bbox": [1480.67, 998.56, 1848.49, 1014.56]}
+    {"id": "p136-b38", "type": "paragraph", "text": "đánh giá là campus xanh độc đáo bậc nhất TP.HCM.", "bbox": [1480.67, 998.56, 1848.49, 1014.56]}
   ]
 }

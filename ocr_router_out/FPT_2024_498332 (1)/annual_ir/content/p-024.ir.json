@@ -61,8 +61,8 @@
     {"id": "p24-b23", "type": "paragraph", "text": "Nhân lực công nghệ", "bbox": [428.22, 549.21, 587.45, 567.21]},
     {"id": "p24-b24", "type": "paragraph", "text": "Tổ hợp đào tạo và\ncông viên phần mềm", "bbox": [656.69, 549.21, 822.55, 588.81]},
     {"id": "p24-b25", "type": "heading", "text": "VỊ THẾ TRÊN THỊ TRƯỜNG", "bbox": [430.8, 683.27, 647.75, 701.27]},
-    {"id": "p24-b26", "type": "paragraph", "text": "• Top 50 Công ty dịch vụ CNTT châu Á;", "bbox": [417.63, 731.28, 723.49, 749.28]},
-    {"id": "p24-b27", "type": "paragraph", "text": "• Công ty dịch vụ CNTT lớn nhất Đông Nam Á;", "bbox": [417.63, 779.29, 779.57, 797.29]},
+    {"id": "p24-b26", "type": "furniture", "text": "• Top 50 Công ty dịch vụ CNTT châu Á;", "bbox": [417.63, 731.28, 723.49, 749.28]},
+    {"id": "p24-b27", "type": "furniture", "text": "• Công ty dịch vụ CNTT lớn nhất Đông Nam Á;", "bbox": [417.63, 779.29, 779.57, 797.29]},
     {
       "id": "p24-b28",
       "type": "paragraph",
@@ -109,7 +109,7 @@
     {"id": "p24-b46", "type": "furniture", "text": "22", "bbox": [293.0, 988.53, 318.8, 1011.4]},
     {
       "id": "p24-b47",
-      "type": "furniture",
+      "type": "paragraph",
       "text": "• Nhà cung cấp dịch vụ Trí tuệ nhân tạo và Điện toán đám mây đẳng cấp thế giới.",
       "bbox": [417.63, 995.29, 1054.94, 1013.29]
     }

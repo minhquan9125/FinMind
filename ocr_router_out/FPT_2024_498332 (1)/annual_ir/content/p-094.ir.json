@@ -77,7 +77,7 @@
     {"id": "p94-b24", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.27, 171.05, 618.27]},
     {"id": "p94-b25", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.61, 212.6, 668.61]},
     {"id": "p94-b26", "type": "furniture", "text": "05", "bbox": [30.0, 961.65, 196.06, 1080]},
-    {"id": "p94-b27", "type": "furniture", "text": "trong việc cung cấp thông tin tài chính từ Ban Điều hành,", "bbox": [429.03, 983.11, 883.42, 1001.11]},
+    {"id": "p94-b27", "type": "paragraph", "text": "trong việc cung cấp thông tin tài chính từ Ban Điều hành,", "bbox": [429.03, 983.11, 883.42, 1001.11]},
     {"id": "p94-b28", "type": "furniture", "text": "92", "bbox": [293.0, 988.53, 318.8, 1011.4]}
   ]
 }

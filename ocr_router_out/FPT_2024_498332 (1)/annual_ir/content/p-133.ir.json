@@ -86,9 +86,9 @@
     {"id": "p133-b38", "type": "furniture", "text": "Song hành vì sự phát triển cộng đồng", "bbox": [85.5, 641.42, 315.28, 655.42]},
     {"id": "p133-b39", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
     {"id": "p133-b40", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
-    {"id": "p133-b41", "type": "furniture", "text": "• Phạm vi 3 - Phát thải khí nhà kính gián tiếp khác đến từ", "bbox": [1401.11, 983.53, 1860.48, 1001.53]},
+    {"id": "p133-b41", "type": "paragraph", "text": "• Phạm vi 3 - Phát thải khí nhà kính gián tiếp khác đến từ", "bbox": [1401.11, 983.53, 1860.48, 1001.53]},
     {"id": "p133-b42", "type": "furniture", "text": "131", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p133-b43", "type": "furniture", "text": "Đơn vị: Tấn CO2 quy đổi tương đương", "bbox": [947.21, 989.34, 1180.69, 1003.34]},
-    {"id": "p133-b44", "type": "furniture", "text": "chuỗi giá trị của FPT.", "bbox": [1412.45, 1007.52, 1578.09, 1025.53]}
+    {"id": "p133-b43", "type": "paragraph", "text": "Đơn vị: Tấn CO2 quy đổi tương đương", "bbox": [947.21, 989.34, 1180.69, 1003.34]},
+    {"id": "p133-b44", "type": "paragraph", "text": "chuỗi giá trị của FPT.", "bbox": [1412.45, 1007.52, 1578.09, 1025.53]}
   ]
 }

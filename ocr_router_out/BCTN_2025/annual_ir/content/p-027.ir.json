@@ -83,7 +83,7 @@
     {"id": "p27-b55", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 358.12, 121.59, 366.31]},
     {"id": "p27-b56", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 384.12, 100.41, 392.31]},
     {"id": "p27-b57", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 410.12, 166.49, 418.31]},
-    {"id": "p27-b58", "type": "furniture", "text": "Châu Á-Thái Bình Dương", "bbox": [835.24, 546.12, 925.15, 554.12]},
+    {"id": "p27-b58", "type": "paragraph", "text": "Châu Á-Thái Bình Dương", "bbox": [835.24, 546.12, 925.15, 554.12]},
     {"id": "p27-b59", "type": "furniture", "text": "26", "bbox": [61.29, 546.47, 75.27, 558.52]}
   ]
 }

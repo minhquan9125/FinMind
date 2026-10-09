@@ -118,12 +118,12 @@
     {"id": "p224-b100", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
     {"id": "p224-b101", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
     {"id": "p224-b102", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
-    {"id": "p224-b103", "type": "furniture", "text": "51%", "bbox": [990.12, 542.87, 1007.45, 552.37]},
-    {"id": "p224-b104", "type": "furniture", "text": "51%", "bbox": [912.31, 542.92, 929.64, 552.42]},
-    {"id": "p224-b105", "type": "furniture", "text": "51%", "bbox": [834.7, 542.96, 852.03, 552.46]},
-    {"id": "p224-b106", "type": "furniture", "text": "93 Công ty Cổ phần Quốc tế Telehouse Vietnam", "bbox": [267.57, 543.01, 476.55, 552.7]},
-    {"id": "p224-b107", "type": "furniture", "text": "51%", "bbox": [756.12, 543.06, 773.44, 552.56]},
-    {"id": "p224-b108", "type": "furniture", "text": "Dịch vụ trung tâm dữ liệu Việt Nam", "bbox": [507.44, 543.11, 658.44, 552.65]},
+    {"id": "p224-b103", "type": "paragraph", "text": "51%", "bbox": [990.12, 542.87, 1007.45, 552.37]},
+    {"id": "p224-b104", "type": "paragraph", "text": "51%", "bbox": [912.31, 542.92, 929.64, 552.42]},
+    {"id": "p224-b105", "type": "paragraph", "text": "51%", "bbox": [834.7, 542.96, 852.03, 552.46]},
+    {"id": "p224-b106", "type": "paragraph", "text": "93 Công ty Cổ phần Quốc tế Telehouse Vietnam", "bbox": [267.57, 543.01, 476.55, 552.7]},
+    {"id": "p224-b107", "type": "paragraph", "text": "51%", "bbox": [756.12, 543.06, 773.44, 552.56]},
+    {"id": "p224-b108", "type": "paragraph", "text": "Dịch vụ trung tâm dữ liệu Việt Nam", "bbox": [507.44, 543.11, 658.44, 552.65]},
     {"id": "p224-b109", "type": "furniture", "text": "223", "bbox": [57.8, 546.47, 78.76, 558.52]}
   ]
 }

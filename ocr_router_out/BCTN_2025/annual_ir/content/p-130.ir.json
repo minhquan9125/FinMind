@@ -115,11 +115,11 @@
     {"id": "p130-b27", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
     {
       "id": "p130-b28",
-      "type": "furniture",
+      "type": "paragraph",
       "text": "đến uy tín và thương hiệu, tiếp tục khẳng định cam kết mạnh mẽ của FPT trong việc",
       "bbox": [259.29, 543.9, 625.33, 553.9]
     },
     {"id": "p130-b29", "type": "furniture", "text": "129", "bbox": [58.81, 546.47, 77.75, 558.52]},
-    {"id": "p130-b30", "type": "furniture", "text": "bảo vệ tài sản số và niềm tin của khách hàng, đối tác và xã hội.", "bbox": [259.29, 555.9, 540.72, 565.9]}
+    {"id": "p130-b30", "type": "paragraph", "text": "bảo vệ tài sản số và niềm tin của khách hàng, đối tác và xã hội.", "bbox": [259.29, 555.9, 540.72, 565.9]}
   ]
 }

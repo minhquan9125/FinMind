@@ -112,7 +112,7 @@
     },
     {"id": "p99-b35", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.27, 341.12, 100.21, 349.31]},
     {"id": "p99-b36", "type": "furniture", "text": "BÁO CÀO TÀI CHÍNH HỢP NHẤT\n08", "bbox": [25.27, 367.12, 166.3, 375.31]},
-    {"id": "p99-b37", "type": "furniture", "text": "chống hối lộ cũng được Tập đoàn thực hiện nghiêm ngặt.", "bbox": [260.19, 544.28, 513.36, 554.28]},
+    {"id": "p99-b37", "type": "paragraph", "text": "chống hối lộ cũng được Tập đoàn thực hiện nghiêm ngặt.", "bbox": [260.19, 544.28, 513.36, 554.28]},
     {"id": "p99-b38", "type": "furniture", "text": "98", "bbox": [60.92, 546.47, 75.25, 558.52]}
   ]
 }

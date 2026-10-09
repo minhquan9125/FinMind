@@ -87,7 +87,7 @@ Trong `p-148.ir.json` của FPT 2024, bảng cân đối có khối `type: "tabl
 
 **`text_only` vẫn có dữ liệu.** Đây là trạng thái của bảng mục tiêu trong `content/sections.json`: đã tìm được tiêu đề và trang, nội dung vẫn nằm trong các khối `heading`/`paragraph`, nhưng chưa tách thành `rows` và `cells`. Nó **không** phải một giá trị của `block.type`. FPT 2025 hiện có 9 bảng thường niên ở trạng thái này; 2024 có 15 bảng thường niên đã thành khối `table`.
 
-**Giới hạn kiểm chứng:** `table/index.json` có `arithmetic_checks` cho một số phép cộng/trừ BCTC và `needs_review` cho trang báo cáo chính chưa tách chắc chắn hoặc sai phép kiểm tra. Đây là kiểm tra bổ sung, chưa phải bộ luật sinh từ `template_lines`, chưa có gold set để đo độ đúng của từng ô.
+**Giới hạn kiểm chứng:** `table/index.json` có phép kiểm tra sinh từ `templates/financial-template-lines.json` và kiểm tra chéo báo cáo. `annual_ir/cell_evaluation.json` đối chiếu từng ô với Poppler đọc lại PDF; đây là **mức đồng thuận của hai bộ trích xuất**, chưa phải độ chính xác trên gold set do người duyệt.
 
 ## 1.3 Mốc S2 trong kế hoạch (đến 11/10/2026)
 
@@ -96,12 +96,12 @@ Tiêu chí ở `README_M.md`: **A1, A2, A6, C1 trên PDF có lớp text; gold se
 | Tiêu chí S2 | Bằng chứng hiện có | Còn thiếu |
 | :--- | :--- | :--- |
 | A1 — schema IR v1 | Có JSON Schema, validation từng trang và `src/ir_types.py` khai báo type cho trang, nguồn, 8 loại khối chữ, bảng, cột, dòng, ô và phiếu đọc | Đã có đủ type theo cấu trúc schema; quy tắc giá trị và liên trường tiếp tục được kiểm tra khi chạy |
-| A2 — lớp text → IR | Đã chốt `pdfplumber`; cả **9 trang 148–156** có bảng IR, tổng **139 dòng** với mã, nhãn, ô và `bbox`; audit schema không lỗi | Cần đo độ đúng từng ô trên gold set và mở rộng khả năng tách cho mẫu PDF khác; không còn yêu cầu chuyển sang `pdftotext -bbox-layout` |
-| A6 — lọc `furniture` | Có khối `furniture` cho nhiều menu, header, footer | Kiểm tra lặp cùng vị trí trên ≥50% trang và đánh giá trang ngoại lệ |
-| C1 — đẳng thức | Tính trên IR hiện có: **8/8 lượt kiểm tra cơ bản** khớp (4 luật × 2 kỳ) | Sinh luật từ `template_lines`, thêm luật chéo báo cáo và trọng tài theo ô |
-| E5 — gold set | Chưa có bộ nhãn chuẩn độc lập và báo cáo số đo | Chép tay dữ liệu chuẩn, đối chiếu ô IR và tính chỉ số độ chính xác |
+| A2 — lớp text → IR | `pdfplumber` dựng 9 trang 148–156, 139 dòng. Poppler đối chiếu độc lập **278/278 ô** đúng chuỗi in trên PDF; 6/6 ô chọn mẫu đã xem trên ảnh trang. | Cần bộ nhãn người duyệt để đo *độ chính xác*; 278/278 chỉ là đồng thuận giữa hai bộ trích xuất. |
+| A6 — lọc `furniture` | Đã đo trên **211 trang lớp chữ** FPT 2024: ngưỡng 106 trang; 7 nhóm lặp cùng vị trí, 92 khối gắn nhầm được trả về `paragraph`, 0 khối `furniture` chồng lên bảng. Chi tiết trong `annual_ir/furniture_audit.json`. | Cần thêm tài liệu khác để đo khả năng tổng quát; trên mẫu FPT đã thực hiện tiêu chí lặp ≥50%. |
+| C1 — đẳng thức | Luật cha–con sinh từ `templates/financial-template-lines.json` (bỏ `is_memo`) và luật chéo báo cáo: **43/43** lượt tính được khớp trên FPT 2024; bản 2025 **42/42** khớp, một ô nguồn lỗi ngoặc được gắn `needs_review`. | Chưa có trọng tài sửa ô tự động (C2); luật mới chỉ áp dụng mẫu B01/B02/B03 doanh nghiệp phi ngân hàng. |
+| E5 — gold set | Đã xuất **278 ứng viên** cho FPT 2024, có trang, dòng, cột, bbox và giá trị đọc từ PDF trong `annual_ir/gold_candidates.json`; 6 ô được kiểm tra thị giác bởi agent. | **0 ô được người duyệt phê duyệt**; `gold_accuracy` hiện `null`. Cần người duyệt xác nhận nhãn trước khi gọi đây là gold set. |
 
-`auditDocumentIr.py` trả `errors: []` cho FPT 2024, nhưng kết quả đó đo **tính hợp lệ cấu trúc và độ phủ chữ**, không phải độ chính xác theo gold set. Vì thiếu E5 và các phần tổng quát của A6/C1, không đánh dấu S2 là hoàn thành.
+`auditDocumentIr.py` trả `errors: []` cho cả hai PDF mẫu. S2 còn thiếu **E5 được người duyệt xác nhận**; không dùng 100% đồng thuận Poppler để thay thế gold accuracy. Để duyệt, mở `annual_ir/gold_candidates.json`, đối chiếu `gold_raw` với PDF tại `page`/`bbox`, sửa nếu cần, đặt `review_status: "approved"` và điền `reviewer`; sau đó chạy `python src/evaluateDocumentIr.py "FPT_2024_498332 (1).pdf"` để có `gold_accuracy`.
 
 ---
 
@@ -114,13 +114,13 @@ Dưới đây là bảng đối chiếu chi tiết từng hạng mục được 
 | Mã | Vấn đề nêu trong `README_M.md` | Hiện trạng thực tế trong code | Trạng thái |
 | :---: | :--- | :--- | :---: |
 | **G1** | Output là text phẳng, không có khối, bảng, dòng, ô | **ĐÃ GIẢI QUYẾT:** Đã có Document IR v1 theo `ir-v1.schema.json`. Mỗi trang có `blocks` (`heading`, `paragraph`, `kpi`, `furniture`, `table`). Các bảng chính có `columns`, `rows`, `cells` kèm tọa độ `bbox`. | ✅ Xong |
-| **G2** | Không loại bỏ menu bên lề, header, footer lặp lại | Đã cô lập nhiều khối thành `furniture` bằng vị trí/bố cục; chưa có bước xác nhận khối lặp ở cùng vị trí trên ≥50% trang như kế hoạch A6. | 🟡 Một phần |
+| **G2** | Không loại bỏ menu bên lề, header, footer lặp lại | Đã kiểm tra lặp văn bản và vị trí trên toàn bộ trang lớp chữ của hai PDF; chỉ giữ menu/header lặp, nhóm menu liên quan và số trang ở `furniture`. Các khối thiếu bằng chứng được trả về `paragraph`. | ✅ Trên 2 PDF mẫu |
 | **G3** | Không phân loại trang (CĐKT, KQKD, LCTT, thuyết minh, văn xuôi) | **ĐÃ GIẢI QUYẾT:** Tự động gán `page_class` cho từng trang: `balance_sheet`, `income_statement`, `cash_flow`, `notes`, `narrative`, `kpi`. Tách riêng 2 nhánh `content/` và `table/`. | ✅ Xong |
-| **G4** | Không có trọng tài đẳng thức kế toán | Có 4 loại đối chiếu cơ bản cho hai kỳ, ghi vào `table/index.json` → `arithmetic_checks`; chưa sinh luật từ template hoặc làm trọng tài theo từng ô. | 🟡 Một phần |
+| **G4** | Không có trọng tài đẳng thức kế toán | Đã sinh phép kiểm tra cha–con từ `template_lines`, có luật chéo báo cáo và danh sách luật bỏ qua khi thiếu dữ liệu; kết quả nằm ở `table/index.json`. Chưa có trọng tài sửa ô tự động. | 🟡 Một phần |
 | **G5** | Không chuẩn hoá số, đơn vị, kỳ, công ty, thông tư | **CHƯA TRIỂN KHAI:** Các con số trong bảng và KPI hiện vẫn lưu dạng chuỗi văn bản gốc (ví dụ `"62.849"`, `"(15.000)"`). Chưa parse sang `decimal`. | ⏳ Chưa làm |
 | **G6** | Không map dòng sang chỉ số của template | **CHƯA TRIỂN KHAI:** Chưa nối mã dòng BCTC vào danh mục `metric_id` trong `templates/` để sinh `observations`. | ⏳ Chưa làm |
 | **G7** | Gọi Gemini qua `agy` (CLI tương tác, tốn quota) | **ĐÃ GIẢI QUYẾT:** Đã loại bỏ hoàn toàn `agy`; chuyển sang gọi trực tiếp **Gemini API** qua `model.py` dùng SDK `google-genai`, gộp 4 trang/lần và cache ảnh SHA-256. | ✅ Xong |
-| **G8** | Ghi file JSON cục bộ, chưa ghi Database; chưa có gold set | **GIỮ GHI FILE:** Hiện tại xuất file JSON theo chuẩn L2; chưa kết nối CSDL PostgreSQL (ERD v2); chưa xây dựng gold set đo độ chính xác. | ⏳ Chưa làm |
+| **G8** | Ghi file JSON cục bộ, chưa ghi Database; chưa có gold set | **GIỮ GHI FILE:** Chưa kết nối PostgreSQL. Đã có danh sách ứng viên gold và công cụ đo; chưa có nhãn được người duyệt phê duyệt. | ⏳ Chưa hoàn tất |
 
 ---
 
@@ -132,7 +132,7 @@ Dưới đây là bảng đối chiếu chi tiết từng hạng mục được 
 * **A3 — Adapter Tesseract TSV $\rightarrow$ IR:** 🟡 **TIẾN TRIỂN TỐT**. Đã phân tích chi tiết dữ liệu TSV (12 cột `level, page_num, block_num, par_num, line_num, word_num, left, top, width, height, conf, text`) thành danh sách từ (`wordItems`) kèm tọa độ hộp bao `[left, top, right, bottom]` và độ tin cậy (`conf`). Đã tích hợp vào `buildDocumentIr.py` để gán tọa độ khối có đơn vị pixel (`page_size.unit: "px"`) cho các trang scan OCR thay vì để `bbox: null`. Phần còn lại: nhóm dòng/cột để dựng bảng dạng cấu trúc từ trang scan thuần.
 * **A4 — Đổi schema Gemini sang `blocks/rows`:** ❌ **CHƯA LÀM**. Gemini API hiện mới dùng để OCR text so chéo ở tầng L1, chưa ép Structured Output trả về thẳng IR dạng bảng theo schema.
 * **A5 — Hợp nhất phiếu từng ô (`MERGED`):** ❌ **CHƯA LÀM**. Chưa có cơ chế bỏ phiếu giữa các engine OCR theo từng ô riêng lẻ.
-* **A6 — Lọc bỏ rác giao diện (`furniture`):** 🟡 **MỘT PHẦN**. Có tách theo vị trí và bố cục; chưa kiểm chứng lặp trên ≥50% trang, nên không khẳng định đã loại hết menu/header khỏi `paragraph`.
+* **A6 — Lọc bỏ rác giao diện (`furniture`):** ✅ **ĐÃ ĐO TRÊN HAI PDF MẪU**. `buildDocumentIr.py` dùng chữ + vị trí tương đối và ngưỡng ≥50% số trang lớp chữ; báo cáo số khối được xác nhận, gắn nhầm và chồng lên bảng nằm trong `annual_ir/furniture_audit.json`.
 * **A7 — Phân loại trang (`page_class`):** ✅ **HOÀN THÀNH**. Phân loại chuẩn xác toàn bộ các trang thường niên và BCTC trên cả 2 bản 2024 và 2025.
 
 #### Nhóm B: Chuẩn hoá và Ánh xạ Template (G5, G6)
@@ -142,7 +142,7 @@ Dưới đây là bảng đối chiếu chi tiết từng hạng mục được 
 * **B4 $\rightarrow$ B6 — Xử lý biểu mẫu ngân hàng TT49, nhãn alias:** ❌ **CHƯA LÀM**.
 
 #### Nhóm C: Trọng tài & Kiểm duyệt (G4)
-* **C1 — Sinh luật đẳng thức kế toán (cha = tổng con, chéo báo cáo):** 🟡 **MỘT PHẦN**. Có 4 loại kiểm tra cơ bản trên bảng BCTC, gồm tổng tài sản, nguồn vốn và doanh thu thuần; chưa sinh luật từ `template_lines` hoặc bao phủ đầy đủ luật chéo báo cáo.
+* **C1 — Sinh luật đẳng thức kế toán (cha = tổng con, chéo báo cáo):** ✅ **TRÊN MẪU B01/B02/B03**. `financialContent.py` đọc `templates/financial-template-lines.json`, loại `is_memo`, tính theo từng năm và kiểm tra chéo CĐKT/KQKD/LCTT. Luật thiếu dữ liệu được ghi vào `arithmetic_checks_skipped`; số hỏng định dạng được gắn `needs_review`.
 * **C2 — Quyết định theo ô (Auto-derivation):** ❌ **CHƯA LÀM**.
 * **C3 — Chuẩn hóa mã lý do (`reason_code`):** ❌ **CHƯA LÀM**.
 * **C4 — Giao diện kiểm duyệt con người (UI UC17):** ❌ **CHƯA LÀM**. Hệ thống hiện vận hành 100% qua CLI.
@@ -157,7 +157,7 @@ Dưới đây là bảng đối chiếu chi tiết từng hạng mục được 
 * **E2 — Chặn trùng theo mã SHA-256:** ✅ **HOÀN THÀNH**. Đã có cơ chế cache ảnh theo SHA-256 trong `model.py`.
 * **E3 — Đưa cấu hình vào hệ thống:** ✅ **HOÀN THÀNH**. Cấu hình qua file `.env` và tham số CLI.
 * **E4 — Đóng gói Docker:** ⏳ **CHƯA LÀM**. Hiện chạy trực tiếp trên môi trường Windows/Python cục bộ.
-* **E5 — Gold Set đối chuẩn chất lượng:** ⏳ **CHƯA LÀM**.
+* **E5 — Gold Set đối chuẩn chất lượng:** 🟡 **CHỜ NGƯỜI DUYỆT**. Đã có 278 ứng viên FPT 2024 và script đo từng ô; chưa có ô `approved` nên chưa công bố độ chính xác gold set.
 
 ---
 
@@ -196,11 +196,11 @@ L3: Dữ liệu nghiệp vụ (DB / RAG)  ──► [CHƯA LÀM: observations, t
    * Tách nhiều menu lề/header thành `furniture`; cần đánh giá thêm các trang ngoại lệ.
    * Bóc tách thành công 15 bảng cấu trúc và 30 KPI trên bản 2024.
    * **Đột phá trên bản 2025:** Tự động định vị trang động theo nội dung (Cổ đông dời sang trang 32–33, HĐQT dời sang trang 86, Thù lao dời sang trang 90, 108; BCTC từ trang 160–226 có 8 trang bảng cấu trúc).
-4. **Kiểm toán cấu trúc trên hai PDF mẫu:** `auditDocumentIr.py` trả **0 lỗi schema và liên kết**, không thiếu từ trong vùng trang nhìn thấy. Chưa có phép đo độ chính xác từng ô trên gold set.
+4. **Kiểm toán cấu trúc trên hai PDF mẫu:** `auditDocumentIr.py` trả **0 lỗi schema và liên kết**. Đối chiếu Poppler khớp **278/278 ô** trên mỗi bản 2024 và 2025; đây là đồng thuận bộ trích xuất. Độ chính xác gold set còn chờ người duyệt xác nhận nhãn.
 
 ### ⏳ NHỮNG GÌ CHƯA LÀM ĐƯỢC (Tồn đọng để lên Production):
 1. **Chưa chuẩn hóa giá trị số (Number Parser - Nhóm B):** Chưa chuyển chuỗi `"62.849"`, `"(15.000)"` thành số thực `decimal` để tính toán.
-2. **Chưa có trọng tài đẳng thức đầy đủ (Nhóm C):** Mới có vài kiểm tra cơ bản; chưa sinh luật từ template và chưa quyết định theo từng ô.
+2. **Chưa có trọng tài quyết định theo từng ô (Nhóm C2):** C1 đã sinh luật từ template và kiểm tra chéo báo cáo; khi một ô sai hoặc không đọc được, hệ thống mới gắn `needs_review`, chưa tự suy ra và sửa ô.
 3. **Chưa lưu trữ Cơ sở dữ liệu (Database - Nhóm D):** Dữ liệu mới dừng ở file JSON cục bộ, chưa nạp vào PostgreSQL (ERD v2).
 4. **Chưa tích hợp Chatbot AI / RAG:** Đã có văn bản sạch nhưng chưa cắt thành `text_chunks` nạp vào Vector DB.
 5. **Chưa đóng gói Docker & Giao diện Web (UI):** Toàn bộ vận hành qua dòng lệnh CLI.
@@ -255,6 +255,20 @@ ocr-router/
 
 ## 5. Hướng dẫn chạy và kiểm toán trên Windows
 
+### Gemini API và OpenRouter dự phòng
+
+Trong file `.env` ở thư mục dự án, đặt khóa của hai dịch vụ (không đưa khóa vào Git):
+
+```dotenv
+GEMINI_API_KEY=your_gemini_key
+OPENROUTER_API_KEY=your_openrouter_key
+OPENROUTER_MODEL=openai/gpt-4o-mini
+```
+
+Chạy với `--gemini auto` hoặc `--gemini always`: chương trình gọi Gemini trước cho những trang cần AI; nếu Gemini không trả được trang hoặc gọi lỗi, chương trình dùng OpenRouter cho đúng các trang còn thiếu. Nếu chỉ có khóa OpenRouter, chương trình dùng OpenRouter ngay. `--gemini never` tắt cả hai dịch vụ AI. Có thể đổi model dự phòng bằng `--openrouter-model`; model đó phải nhận ảnh và trả JSON. Với model `:free`, chương trình dùng JSON mode rồi kiểm tra cấu trúc trong Python vì một số endpoint miễn phí không ép JSON Schema. OpenRouter có thể tính phí theo model và số trang thực sự được gọi.
+
+`pages.jsonl` ghi `route: "tesseract+openrouter"` và `gemini.provider: "openrouter"` cho trang dùng dự phòng; IR ghi `source.engine: "OPENROUTER"`. `summary.json` ghi số lần gọi và token trong `openrouterApi`.
+
 ```powershell
 # Cài đặt thư viện
 python -m pip install -r requirements.txt
@@ -266,4 +280,7 @@ python src\auditDocumentIr.py "FPT_2024_498332 (1).pdf" --ir-dir "ocr_router_out
 # --- CHẠY BẢN FPT 2025 ---
 python src\main.py "BCTN_2025.pdf" --gemini never --build-document-ir
 python src\auditDocumentIr.py "BCTN_2025.pdf" --ir-dir "ocr_router_out\BCTN_2025\annual_ir"
+
+# Bật Gemini và OpenRouter dự phòng (đọc key từ .env)
+python src\main.py "BCTN_2025.pdf" --gemini auto --build-document-ir
 ```

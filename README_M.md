@@ -255,7 +255,7 @@ Theo lịch 6 sprint, mỗi sprint 2 tuần, đến 06/12/2026.
 
 | Sprint | Nội dung | Đầu ra kiểm được |
 | --- | --- | --- |
-| S2 (đến 11/10) | A1, A2 (**pdfplumber**), A6, C1 trên PDF có lớp text; gold set đầu tiên (E5) | FPT 2024 trang 148–156 ra IR, qua đẳng thức, có số đo trên gold set |
+| S2 (đến 11/10) | A1, A2 , A6, C1 trên PDF có lớp text; gold set đầu tiên (E5) | FPT 2024 trang 148–156 ra IR, qua đẳng thức, có số đo trên gold set |
 | S3 (12/10–25/10) | A4, A5, A7, B1–B3, C2–C3, D1–D5, E1, E2; chốt Q1–Q4 | BCTC (lớp text và scan) → `observations` hoặc `quarantine_records` trong Postgres |
 | S4 (26/10–08/11) | B5, B6 (ngân hàng), C4 (UC17 tối thiểu), D6–D8 | 10 mã trong phạm vi chạy hết, có tỉ lệ tự promote |
 | S5–S6 | Nhánh RAG từ IR, sự kiện (Q5), tối ưu ngưỡng, test hồi quy | Đóng băng corpus |

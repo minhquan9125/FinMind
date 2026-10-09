@@ -44,10 +44,10 @@
     {"id": "p25-b16", "type": "paragraph", "text": "Dung lượng băng thông quốc tế", "bbox": [428.54, 327.3, 679.34, 345.3]},
     {"id": "p25-b17", "type": "paragraph", "text": "Người dùng trên toàn cầu", "bbox": [726.14, 327.3, 927.84, 345.3]},
     {"id": "p25-b18", "type": "heading", "text": "VỊ THẾ TRÊN THỊ TRƯỜNG", "bbox": [429.8, 443.27, 646.75, 461.27]},
-    {"id": "p25-b19", "type": "paragraph", "text": "• Top 3 Nhà cung cấp dịch vụ Internet hàng đầu Việt Nam;", "bbox": [416.63, 491.28, 875.43, 509.28]},
+    {"id": "p25-b19", "type": "furniture", "text": "• Top 3 Nhà cung cấp dịch vụ Internet hàng đầu Việt Nam;", "bbox": [416.63, 491.28, 875.43, 509.28]},
     {
       "id": "p25-b20",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Dẫn đầu xu hướng công nghệ quảng cáo, kiến tạo hệ sinh thái truyền thông số\nhàng đầu.",
       "bbox": [416.63, 539.29, 1076.2, 581.28]
     },

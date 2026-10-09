@@ -136,7 +136,7 @@
     {"id": "p96-b78", "type": "furniture", "text": "Báo cáo của Ban Kiểm soát", "bbox": [65.65, 318.75, 166.1, 326.75]},
     {"id": "p96-b79", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.27, 341.12, 100.21, 349.31]},
     {"id": "p96-b80", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.27, 367.12, 166.3, 375.31]},
-    {"id": "p96-b81", "type": "furniture", "text": "khác thay thế.", "bbox": [615.86, 544.42, 677.16, 553.92]},
+    {"id": "p96-b81", "type": "paragraph", "text": "khác thay thế.", "bbox": [615.86, 544.42, 677.16, 553.92]},
     {"id": "p96-b82", "type": "furniture", "text": "95", "bbox": [60.99, 546.47, 75.19, 558.52]}
   ]
 }

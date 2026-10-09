@@ -119,7 +119,7 @@
       "bbox": [67.84, 287.87, 199.86, 365.87]
     },
     {"id": "p116-b53", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
-    {"id": "p116-b54", "type": "furniture", "text": "• Xử lý nghiêm minh với các trường hợp vi phạm.", "bbox": [721.15, 546.39, 936.04, 556.39]},
+    {"id": "p116-b54", "type": "paragraph", "text": "• Xử lý nghiêm minh với các trường hợp vi phạm.", "bbox": [721.15, 546.39, 936.04, 556.39]},
     {"id": "p116-b55", "type": "furniture", "text": "115", "bbox": [59.75, 546.47, 76.81, 558.52]}
   ]
 }

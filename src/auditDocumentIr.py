@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from collections import Counter
 from pathlib import Path
 
@@ -14,7 +15,7 @@ import pdfplumber
 from jsonschema import Draft202012Validator
 
 from buildDocumentIr import _represented_words, _tokens
-from financialContent import expand_page_ranges
+from financialContent import evaluate_accounting, expand_page_ranges
 from util import hash_file
 from validate_ir import SCHEMA, validate_page
 
@@ -36,8 +37,7 @@ def audit(pdf_path: Path, ir_dir: Path) -> dict:
         errors.append("annual_ir/index.json không cùng PDF gốc")
     with pdfplumber.open(pdf_path) as pdf:
         numbers = [document["page"] for document in documents]
-        if numbers != indexed_pages or any(number < 1 or number > len(pdf.pages)
-                                                   for number in numbers):
+        if numbers != indexed_pages or any(number < 1 or number > len(pdf.pages) for number in numbers):
             errors.append("Danh sách trang IR trùng, sai thứ tự hoặc ngoài PDF")
         if index["pages"] != len(documents) or manifest["content"]["pages"] != len(documents):
             errors.append("index.pages không khớp số file")
@@ -152,6 +152,26 @@ def audit(pdf_path: Path, ir_dir: Path) -> dict:
             errors.append("table/index.json sai danh sách trang có bảng cấu trúc")
         if actual_notes_text_only != expand_page_ranges(table_index["notes_text_only_ranges"]):
             errors.append("table/index.json sai danh sách thuyết minh chỉ có text")
+        checks, skipped, _, template_id = evaluate_accounting(financial_documents)
+        if checks != table_index.get("arithmetic_checks") or skipped != table_index.get(
+                "arithmetic_checks_skipped") or template_id != table_index.get("arithmetic_template_id"):
+            errors.append("table/index.json có luật đẳng thức không khớp IR/template_lines")
+    furniture_path = ir_dir / "furniture_audit.json"
+    if furniture_path.is_file():
+        furniture = json.loads(furniture_path.read_text(encoding="utf-8"))
+        pages_path = ir_dir.parent / "pages.jsonl"
+        if pages_path.is_file():
+            layer_pages = sum(json.loads(line)["route"] == "text_layer"
+                              for line in pages_path.read_text(encoding="utf-8").splitlines()
+                              if line.strip())
+            if furniture["pages_checked"] != layer_pages:
+                errors.append("furniture_audit.json chưa bao phủ toàn bộ trang lớp chữ")
+        if furniture["minimum_repeated_pages"] != math.ceil(furniture["pages_checked"] * .5) \
+                or any(group["pages"] < furniture["minimum_repeated_pages"]
+                       for group in furniture["repeated_groups"]):
+            errors.append("furniture_audit.json sai ngưỡng lặp 50%")
+        if furniture["furniture_table_overlaps"]:
+            errors.append("Có furniture chồng lên bảng")
     return {"ir_pages": len(documents), "text_layer_pages_checked": text_pages,
             "schema_valid_pages": schema_valid_pages,
             "financial_ir_pages": financial_pages,

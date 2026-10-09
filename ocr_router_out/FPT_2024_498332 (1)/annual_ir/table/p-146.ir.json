@@ -57,6 +57,6 @@
     {"id": "p146-b19", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
     {"id": "p146-b20", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
     {"id": "p146-b21", "type": "furniture", "text": "144", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p146-b22", "type": "furniture", "text": "ĐT: +84 28 3823 0796, www.pwc.com/vn", "bbox": [598.39, 994.66, 924.34, 1012.66]}
+    {"id": "p146-b22", "type": "paragraph", "text": "ĐT: +84 28 3823 0796, www.pwc.com/vn", "bbox": [598.39, 994.66, 924.34, 1012.66]}
   ]
 }

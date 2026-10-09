@@ -35,13 +35,13 @@
     },
     {
       "id": "p123-b8",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Tránh xung đột lợi ích trong hoạt động đầu tư kinh doanh bên ngoài, ảnh hưởng tới việc\nra quyết định cũng như tác động tiêu cực đến lợi ích của Tập đoàn;",
       "bbox": [417.31, 302.91, 1123.02, 344.91]
     },
     {
       "id": "p123-b9",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Tránh xung đột lợi ích với hoạt động đầu tư của người thân CBNV, yêu cầu CBNV kê khai",
       "bbox": [417.31, 365.08, 1123.02, 383.08]
     },
@@ -60,13 +60,13 @@
     },
     {
       "id": "p123-b13",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Tránh xung đột lợi ích trong việc đưa và nhận quà tặng trong Tập đoàn/CTTV;",
       "bbox": [417.31, 451.25, 1034.67, 469.25]
     },
     {
       "id": "p123-b14",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Tránh xung đột lợi ích trong tuyển chọn, sử dụng nhân lực. Minh bạch, công tâm trong\ntuyển chọn và sử dụng nhân lực, dựa trên các tiêu chí rõ ràng về năng lực, kinh nghiệm và\nkỹ năng phù hợp theo đúng nhu cầu thực tế của Tập đoàn.",
       "bbox": [417.31, 489.43, 1123.05, 555.42]
     },
@@ -148,7 +148,7 @@
     {"id": "p123-b40", "type": "furniture", "text": "121", "bbox": [288.22, 988.53, 326.93, 1011.4]},
     {
       "id": "p123-b41",
-      "type": "furniture",
+      "type": "paragraph",
       "text": "nhân và người thân được xem là hành vi vi phạm nguyên tắc ứng xử tại Tập đoàn.",
       "bbox": [428.03, 998.89, 1064.15, 1016.89]
     }

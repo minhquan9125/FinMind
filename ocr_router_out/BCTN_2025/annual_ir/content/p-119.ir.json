@@ -120,7 +120,7 @@
       "bbox": [67.84, 287.87, 199.86, 365.87]
     },
     {"id": "p119-b54", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
-    {"id": "p119-b55", "type": "furniture", "text": "• 26 điểm trường thiệt hại nặng được tái thiết kịp thời sau lũ.", "bbox": [741.34, 544.95, 1008.77, 554.95]},
+    {"id": "p119-b55", "type": "paragraph", "text": "• 26 điểm trường thiệt hại nặng được tái thiết kịp thời sau lũ.", "bbox": [741.34, 544.95, 1008.77, 554.95]},
     {"id": "p119-b56", "type": "furniture", "text": "118", "bbox": [59.69, 546.47, 76.87, 558.52]}
   ]
 }

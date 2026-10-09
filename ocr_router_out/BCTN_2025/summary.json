@@ -2,27 +2,35 @@
   "pdf": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\BCTN_2025.pdf",
   "pages": 232,
   "routes": {
-    "tesseract": 2,
+    "tesseract+gemini": 2,
     "text_layer": 230
   },
   "status": {
-    "REVIEW": 2,
-    "OK": 230
+    "REVIEW": 1,
+    "OK": 231
   },
   "flags": {
-    "LOW_CONF": 2
+    "ENGINES_DISAGREE": 1
   },
   "reviewPages": [
-    1,
-    232
+    1
   ],
   "seconds": {
-    "textLayer": 3.669,
-    "renderAndTesseract": 1.412,
-    "gemini": 0.0,
-    "total": 5.505
+    "textLayer": 3.438,
+    "renderAndTesseract": 0.847,
+    "gemini": 44.993,
+    "total": 49.447
   },
   "geminiApi": {
+    "calls": 1,
+    "failedCalls": 0,
+    "seconds": 44.983,
+    "input_tokens": 2419,
+    "output_tokens": 217,
+    "thinking_tokens": 3115,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
     "calls": 0,
     "failedCalls": 0,
     "seconds": 0,
@@ -33,12 +41,14 @@
   },
   "cache": {
     "tesseractHits": 2,
-    "geminiHits": 0
+    "geminiHits": 0,
+    "openrouterHits": 0
   },
   "config": {
     "out": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\ocr_router_out",
-    "mode": "never",
+    "mode": "auto",
     "model": "gemini-3.8-flash",
+    "openrouterModel": "liquid/lfm-2.5-2.6b:free",
     "batch": 4,
     "geminiConcurrency": 2,
     "geminiTimeout": 300,

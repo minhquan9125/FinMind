@@ -10,6 +10,7 @@ import copy
 import json
 import re
 import unicodedata
+from collections import defaultdict
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from pathlib import Path
@@ -316,7 +317,6 @@ def financial_index(documents: list[dict[str, Any]], digest: str) -> dict[str, A
     needs_review: list[dict[str, Any]] = []
     text_only_notes: list[int] = []
     current_topic: str | None = None
-    statement_values: dict[str, dict[str, dict[str, tuple[Decimal, int]]]] = {}
     for page in documents:
         number = page["page"]
         kind = page["page_class"] or "other"
@@ -327,24 +327,6 @@ def financial_index(documents: list[dict[str, Any]], digest: str) -> dict[str, A
             sections.append({"page_class": kind, "start": number, "end": number})
         has_structured_table = any(block["type"] == "table" and block["rows"]
                                    for block in page["blocks"])
-        for block in page["blocks"]:
-            if block["type"] != "table" or kind not in (
-                    "balance_sheet", "income_statement", "cash_flow"):
-                continue
-            years = {column["key"]: " ".join(column["header_lines"])
-                     for column in block["columns"]}
-            for row in block["rows"]:
-                if row.get("code") is None:
-                    continue
-                for key, cell in row["cells"].items():
-                    raw = cell["raw"].strip()
-                    try:
-                        value = Decimal(raw.strip("()").replace(".", "").replace(",", "."))
-                        if raw.startswith("(") and raw.endswith(")"):
-                            value = -value
-                    except InvalidOperation:
-                        continue
-                    statement_values.setdefault(kind, {}).setdefault(years[key], {})[row["code"]] = (value, number)
         if has_structured_table:
             structured.append(number)
         elif kind == "notes":
@@ -373,28 +355,13 @@ def financial_index(documents: list[dict[str, Any]], digest: str) -> dict[str, A
             "has_structured_table": has_structured_table,
             "needs_review": any(item["pdf_page"] == number for item in needs_review),
         })
-    checks: list[dict[str, Any]] = []
-    equations = [("balance_sheet", "assets", "270", ("100", "200"), (1, 1)),
-                 ("balance_sheet", "funding", "440", ("300", "400"), (1, 1)),
-                 ("balance_sheet", "balance", "270", ("440",), (1,)),
-                 ("income_statement", "net_revenue", "10", ("01", "02"), (1, -1))]
-    for kind, name, result_code, operand_codes, signs in equations:
-        for year, values in statement_values.get(kind, {}).items():
-            if any(code not in values for code in (result_code, *operand_codes)):
-                continue
-            expected = sum((values[code][0] * sign for code, sign in zip(operand_codes, signs)),
-                           Decimal(0))
-            actual = values[result_code][0]
-            passed = abs(actual - expected) <= 1
-            checks.append({"name": name, "year": year, "passed": passed,
-                           "result_code": result_code, "actual": str(actual),
-                           "expected": str(expected)})
-            if not passed:
-                for code in (result_code, *operand_codes):
-                    target_page = values[code][1]
-                    if not any(item["pdf_page"] == target_page for item in needs_review):
-                        needs_review.append({"pdf_page": target_page,
-                                             "reason": f"arithmetic_check_failed:{name}:{year}"})
+    checks, skipped_checks, failed_pages, template_id = evaluate_accounting(documents)
+    for target_page in sorted(failed_pages):
+        if not any(item["pdf_page"] == target_page for item in needs_review):
+            invalid = any(item["name"] == "invalid_numeric_cell" and item["page"] == target_page
+                          for item in skipped_checks)
+            needs_review.append({"pdf_page": target_page,
+                                 "reason": "invalid_numeric_cell" if invalid else "arithmetic_check_failed"})
     for entry in page_index:
         entry["needs_review"] = any(item["pdf_page"] == entry["pdf_page"] for item in needs_review)
     return {
@@ -407,7 +374,138 @@ def financial_index(documents: list[dict[str, Any]], digest: str) -> dict[str, A
         "structured_table_ranges": compact_page_ranges(structured),
         "needs_review": needs_review,
         "arithmetic_checks": checks,
+        "arithmetic_checks_skipped": skipped_checks,
+        "arithmetic_template_id": template_id,
         "notes_text_only_ranges": compact_page_ranges(text_only_notes),
         "file_pattern": "p-{page:03d}.ir.json",
         "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
     }
+
+
+# Accounting checks use the shared workspace template without changing IR cells.
+_ACCOUNTING_STATEMENTS = {"balance_sheet", "income_statement", "cash_flow"}
+
+
+def _accounting_template_path() -> Path:
+    for directory in Path(__file__).resolve().parents:
+        candidate = directory / "templates" / "financial-template-lines.json"
+        if candidate.is_file():
+            return candidate
+    raise FileNotFoundError("Thiếu templates/financial-template-lines.json trong cây workspace")
+
+
+def _parse_accounting_number(raw: str | None) -> Decimal | None:
+    if raw is None:
+        return None
+    text = raw.strip().replace("\u00a0", "")
+    if text in ("-", "–", "—"):
+        return Decimal(0)
+    if text.startswith("(") != text.endswith(")"):
+        return None
+    negative = text.startswith("(") and text.endswith(")")
+    text = text.strip("()").replace(".", "").replace(",", ".")
+    try:
+        value = Decimal(text)
+    except InvalidOperation:
+        return None
+    return -value if negative else value
+
+
+def _accounting_period_year(header_lines: list[str]) -> str | None:
+    years = re.findall(r"\b20\d{2}\b", " ".join(header_lines))
+    return years[-1] if years else None
+
+
+def _load_accounting_template() -> dict[str, Any]:
+    template = json.loads(_accounting_template_path().read_text(encoding="utf-8"))
+    seen: set[tuple[str, str, str]] = set()
+    for line in template["template_lines"]:
+        key = (line["statement"], line["parent"], line["code"])
+        if line["statement"] not in _ACCOUNTING_STATEMENTS or key in seen or line["sign"] not in (-1, 1):
+            raise ValueError(f"template_lines không hợp lệ: {key}")
+        seen.add(key)
+    return template
+
+
+def evaluate_accounting(documents: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]], set[int], str]:
+    """Evaluate template sums and cross-statement checks by year, preserving missing data."""
+    template = _load_accounting_template()
+    values: dict[str, dict[str, dict[str, tuple[Decimal, int]]]] = defaultdict(lambda: defaultdict(dict))
+    invalid_cells: list[dict[str, Any]] = []
+    failed_pages: set[int] = set()
+    for page in documents:
+        kind = page["page_class"]
+        if kind not in _ACCOUNTING_STATEMENTS:
+            continue
+        for block in page["blocks"]:
+            if block["type"] != "table":
+                continue
+            years = {column["key"]: _accounting_period_year(column["header_lines"])
+                     for column in block["columns"]}
+            for row in block["rows"]:
+                code = row.get("code")
+                if not code:
+                    continue
+                for column, cell in row["cells"].items():
+                    year = years.get(column)
+                    number = _parse_accounting_number(cell.get("raw"))
+                    if year is not None and number is None and cell.get("raw") is not None:
+                        invalid_cells.append({"name": "invalid_numeric_cell", "year": year,
+                                              "page": page["page"], "code": code,
+                                              "column": column, "raw": cell["raw"]})
+                        failed_pages.add(page["page"])
+                    if year is not None and number is not None:
+                        previous = values[kind][year].get(code)
+                        if previous is not None and previous[0] != number:
+                            raise ValueError(f"Trùng mã {kind}/{year}/{code} với hai giá trị")
+                        values[kind][year][code] = (number, page["page"])
+
+    groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for line in template["template_lines"]:
+        if not line["is_memo"]:
+            groups[line["statement"], line["parent"]].append(line)
+    checks: list[dict[str, Any]] = []
+    skipped: list[dict[str, Any]] = invalid_cells.copy()
+    all_years = sorted({year for periods in values.values() for year in periods})
+    for (kind, parent), children in groups.items():
+        for year in all_years:
+            rows = values.get(kind, {}).get(year, {})
+            codes = [parent, *(child["code"] for child in children)]
+            missing = [code for code in codes if code not in rows]
+            name = f"{kind}:{parent}"
+            if missing:
+                skipped.append({"name": name, "year": year, "missing_codes": missing})
+                continue
+            actual = rows[parent][0]
+            expected = sum((rows[child["code"]][0] * child["sign"] for child in children), Decimal(0))
+            passed = abs(actual - expected) <= 1
+            pages = sorted({rows[code][1] for code in codes})
+            checks.append({"name": name, "year": year, "passed": passed,
+                           "result_code": parent, "actual": str(actual), "expected": str(expected),
+                           "pdf_pages": pages, "source": "template_lines"})
+            if not passed:
+                failed_pages.update(pages)
+
+    for rule in template["cross_statement_rules"]:
+        left = rule["left"]
+        right = rule["right"]
+        for year in all_years:
+            right_year = str(int(year) + rule.get("right_year_offset", 0))
+            lhs = values.get(left["statement"], {}).get(year, {}).get(left["code"])
+            rhs = values.get(right["statement"], {}).get(right_year, {}).get(right["code"])
+            if lhs is None or rhs is None:
+                missing = []
+                if lhs is None:
+                    missing.append(f"{left['statement']}:{left['code']}:{year}")
+                if rhs is None:
+                    missing.append(f"{right['statement']}:{right['code']}:{right_year}")
+                skipped.append({"name": rule["name"], "year": year, "missing_codes": missing})
+                continue
+            passed = abs(lhs[0] - rhs[0]) <= 1
+            pages = sorted({lhs[1], rhs[1]})
+            checks.append({"name": rule["name"], "year": year, "passed": passed,
+                           "actual": str(lhs[0]), "expected": str(rhs[0]),
+                           "pdf_pages": pages, "source": "cross_statement"})
+            if not passed:
+                failed_pages.update(pages)
+    return checks, skipped, failed_pages, template["template_id"]

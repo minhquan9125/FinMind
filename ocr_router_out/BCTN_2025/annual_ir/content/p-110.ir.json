@@ -69,7 +69,7 @@
       "bbox": [67.84, 287.86, 199.86, 365.86]
     },
     {"id": "p110-b23", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
-    {"id": "p110-b24", "type": "furniture", "text": "tăng cường sử dụng xe điện.", "bbox": [521.25, 542.59, 644.34, 552.59]},
+    {"id": "p110-b24", "type": "paragraph", "text": "tăng cường sử dụng xe điện.", "bbox": [521.25, 542.59, 644.34, 552.59]},
     {"id": "p110-b25", "type": "furniture", "text": "109", "bbox": [58.37, 546.47, 78.19, 558.52]}
   ]
 }

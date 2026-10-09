@@ -168,6 +168,6 @@
     {"id": "p192-b90", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
     {"id": "p192-b91", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
     {"id": "p192-b92", "type": "furniture", "text": "190", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p192-b93", "type": "furniture", "text": "từ các công ty con.", "bbox": [1052.17, 991.74, 1202.47, 1009.74]}
+    {"id": "p192-b93", "type": "paragraph", "text": "từ các công ty con.", "bbox": [1052.17, 991.74, 1202.47, 1009.74]}
   ]
 }

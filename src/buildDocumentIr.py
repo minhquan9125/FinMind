@@ -12,12 +12,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import statistics
 import struct
 import sys
 import unicodedata
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, cast
 
@@ -345,8 +346,9 @@ def _source(record: dict[str, Any], pdf: Path, digest: str,
     real_width, real_height = (height, width) if rotation in (90, 270) else (width, height)
     dpi = round(((real_width / page.width) + (real_height / page.height)) * 36, 2)
     source.update(image_sha256=hash_file(image), render={"dpi": dpi, "rotation": rotation})
-    if route == "tesseract+gemini":
-        source.update(engine="GEMINI", tool=record["gemini"]["model"],
+    if route in ("tesseract+gemini", "tesseract+openrouter"):
+        source.update(engine="OPENROUTER" if route == "tesseract+openrouter" else "GEMINI",
+                      tool=record["gemini"]["model"],
                       prompt_version=PROMPT_VERSION)
     else:
         source.update(engine="TESSERACT", tool="tesseract vie")
@@ -489,6 +491,96 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
     return ir
 
 
+def _furniture_key(block: dict[str, Any], page: dict[str, Any]) -> tuple[str, int, int] | None:
+    bbox = block.get("bbox")
+    if block.get("type") not in ("heading", "paragraph", "furniture") or bbox is None:
+        return None
+    width, height = page["page_size"]["width"], page["page_size"]["height"]
+    x0, y0, _, y1 = bbox
+    if not (x0 < width * .22 or y0 < height * .1 or y1 > height * .9):
+        return None
+    text = " ".join(unicodedata.normalize("NFC", block["text"]).casefold().split())
+    if len(text) < 3:
+        return None
+    return text, round(x0 / width * 50), round(y0 / height * 50)
+
+
+def audit_and_promote(documents: list[dict[str, Any]]) -> dict[str, Any]:
+    """Confirm repeated page furniture by text and position across text-layer pages."""
+    pages = {page["page"]: page for page in documents if page["source"]["engine"] == "TEXT_LAYER"}
+    threshold = math.ceil(len(pages) * .5)
+    appearances: dict[tuple[str, int, int], set[int]] = defaultdict(set)
+    for page in pages.values():
+        for block in page["blocks"]:
+            key = _furniture_key(block, page)
+            if key is not None:
+                appearances[key].add(page["page"])
+    repeated = {key: seen for key, seen in appearances.items()
+                if len(seen) >= threshold and threshold > 0}
+    promoted = 0
+    sidebar_associated = 0
+    page_numbers = 0
+    demoted: list[dict[str, Any]] = []
+    furniture_table_overlaps: list[dict[str, Any]] = []
+    for page in documents:
+        if page["source"]["engine"] != "TEXT_LAYER":
+            continue
+        repeated_menu_items = sum(bool(re.match(r"^0[1-7]\s", key[0]))
+                                  for block in page["blocks"]
+                                  if (key := _furniture_key(block, page)) in repeated)
+        numbered_menu_items = sum(bool(re.match(r"^0[1-7]\s", key[0]))
+                                  for block in page["blocks"]
+                                  if (key := _furniture_key(block, page)) is not None
+                                  and key[1] <= 11)
+        has_repeated_sidebar = repeated_menu_items >= 3 or (
+            bool(repeated) and numbered_menu_items >= 4)
+        for block in page["blocks"]:
+            key = _furniture_key(block, page)
+            if key in repeated:
+                if block["type"] != "furniture":
+                    block["type"] = "furniture"
+                    promoted += 1
+                continue
+            bbox = block.get("bbox")
+            sidebar_item = (has_repeated_sidebar and bbox is not None
+                            and bbox[0] < page["page_size"]["width"] * .22
+                            and page["page_size"]["height"] * .08 < bbox[1]
+                            < page["page_size"]["height"] * .75)
+            if sidebar_item and block["type"] in ("heading", "paragraph", "furniture"):
+                if block["type"] != "furniture":
+                    block["type"] = "furniture"
+                    promoted += 1
+                sidebar_associated += 1
+            elif block["type"] == "furniture":
+                text = " ".join(block["text"].split())
+                # Printed page numbers change on every page; their position is checked separately.
+                if bbox and bbox[1] > page["page_size"]["height"] * .85 \
+                        and re.fullmatch(r"\d{1,4}|[ivxlcdm]{1,8}", text, re.I):
+                    page_numbers += 1
+                else:
+                    block["type"] = "paragraph"
+                    demoted.append({"page": page["page"], "block_id": block["id"],
+                                    "text": text[:120],
+                                    "matching_pages": len(appearances.get(key, set()))})
+        table_boxes = [block["bbox"] for block in page["blocks"]
+                       if block["type"] == "table" and block.get("bbox")]
+        for block in page["blocks"]:
+            if block["type"] != "furniture" or not block.get("bbox"):
+                continue
+            x0, y0, x1, y1 = block["bbox"]
+            if any(min(x1, box[2]) > max(x0, box[0])
+                   and min(y1, box[3]) > max(y0, box[1]) for box in table_boxes):
+                furniture_table_overlaps.append({"page": page["page"], "block_id": block["id"]})
+    return {"scope": "all_text_layer_pages_from_pages_jsonl", "pages_checked": len(pages),
+            "minimum_repeated_pages": threshold, "position_grid": "2% of page width and height",
+            "repeated_groups": [{"text": key[0], "x_bin": key[1], "y_bin": key[2],
+                                 "pages": len(seen)} for key, seen in sorted(repeated.items())],
+            "promoted_blocks": promoted, "sidebar_associated_blocks": sidebar_associated,
+            "page_number_blocks": page_numbers, "demoted_unverified_blocks": len(demoted),
+            "demoted_examples": demoted[:30],
+            "furniture_table_overlaps": furniture_table_overlaps}
+
+
 def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[str, Any]:
     """Write annual pages and audited financial pages to separate IR folders."""
     pdf, pages_jsonl = pdf.resolve(), pages_jsonl.resolve()
@@ -504,6 +596,7 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[st
     digest = hash_file(pdf)
     documents: list[dict[str, Any]] = []
     financial_documents: list[dict[str, Any]] = []
+    furniture_reference_pages: list[dict[str, Any]] = []
     observed_sections: list[tuple[int, str | None]] = []
     page_topics: dict[int, list[str]] = {}
     kpi_review: list[dict[str, Any]] = []
@@ -534,6 +627,9 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[st
                 financial_documents.append(financial_ir)
             topics = annual_topics(number, section, digest)
             if not topics:
+                if financial_class is None and record["route"] == "text_layer":
+                    furniture_reference_pages.append(make_page_ir(
+                        record, pdf, digest, source_page, work_dir, tables_override=[]))
                 continue
             page_topics[number] = topics
             observed_sections.append((number, section))
@@ -550,7 +646,9 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path) -> dict[st
             documents.append(ir)
     if not documents and not financial_documents:
         raise ValueError("Không tìm thấy trang báo cáo thường niên hoặc BCTC thuộc phạm vi đã chọn")
+    furniture_audit = audit_and_promote(documents + financial_documents + furniture_reference_pages)
     output_dir.mkdir(parents=True, exist_ok=True)
+    save_json(output_dir / "furniture_audit.json", furniture_audit)
     content_dir = output_dir / "content"
     content_dir.mkdir(parents=True, exist_ok=True)
     expected_content = {f"{page_name(ir['page'])}.ir.json" for ir in documents}

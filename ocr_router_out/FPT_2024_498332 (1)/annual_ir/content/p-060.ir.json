@@ -113,10 +113,10 @@
     {"id": "p60-b30", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 617.08, 212.6, 636.08]},
     {"id": "p60-b31", "type": "furniture", "text": "04", "bbox": [30.0, 961.65, 192.49, 1080]},
     {"id": "p60-b32", "type": "furniture", "text": "58", "bbox": [293.0, 988.53, 318.8, 1011.4]},
-    {"id": "p60-b33", "type": "furniture", "text": "cao của thị trường và người dùng.", "bbox": [1165.61, 998.44, 1428.38, 1016.44]},
+    {"id": "p60-b33", "type": "paragraph", "text": "cao của thị trường và người dùng.", "bbox": [1165.61, 998.44, 1428.38, 1016.44]},
     {
       "id": "p60-b34",
-      "type": "furniture",
+      "type": "paragraph",
       "text": "Mitsubishi Electric Cup™ 2024. Trong bối cảnh đội tuyển Việt Nam thi đấu thăng hoa, các",
       "bbox": [428.22, 1007.02, 1122.92, 1025.02]
     }

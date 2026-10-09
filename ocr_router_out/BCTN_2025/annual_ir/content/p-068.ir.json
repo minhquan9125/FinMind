@@ -87,7 +87,7 @@
     {"id": "p68-b19", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 317.12, 121.59, 325.31]},
     {"id": "p68-b20", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 343.12, 100.41, 351.31]},
     {"id": "p68-b21", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 369.12, 166.49, 377.31]},
-    {"id": "p68-b22", "type": "furniture", "text": "trong dài hạn.", "bbox": [651.91, 545.14, 715.57, 555.14]},
+    {"id": "p68-b22", "type": "paragraph", "text": "trong dài hạn.", "bbox": [651.91, 545.14, 715.57, 555.14]},
     {"id": "p68-b23", "type": "furniture", "text": "67", "bbox": [61.6, 546.47, 74.96, 558.52]}
   ]
 }

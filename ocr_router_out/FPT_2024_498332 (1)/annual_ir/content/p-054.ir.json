@@ -128,10 +128,10 @@
     {"id": "p54-b30", "type": "furniture", "text": "52", "bbox": [293.0, 988.53, 318.8, 1011.4]},
     {
       "id": "p54-b31",
-      "type": "furniture",
+      "type": "paragraph",
       "text": "thế mà còn mở rộng quy mô hoạt động, nâng cao giá trị dịch vụ cung cấp cho khách hàng",
       "bbox": [428.22, 1006.58, 1122.96, 1024.58]
     },
-    {"id": "p54-b32", "type": "furniture", "text": "mô lớn, từ hàng chục đến hàng trăm triệu USD.", "bbox": [1165.61, 1006.87, 1536.57, 1024.87]}
+    {"id": "p54-b32", "type": "paragraph", "text": "mô lớn, từ hàng chục đến hàng trăm triệu USD.", "bbox": [1165.61, 1006.87, 1536.57, 1024.87]}
   ]
 }

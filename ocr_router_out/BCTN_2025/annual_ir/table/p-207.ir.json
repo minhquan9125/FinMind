@@ -118,7 +118,7 @@
     {"id": "p207-b60", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
     {"id": "p207-b61", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
     {"id": "p207-b62", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
-    {"id": "p207-b63", "type": "furniture", "text": "10.260.939 cổ phiếu theo mệnh giá 10.000 Đồng/cổ phiếu.", "bbox": [259.49, 543.9, 501.06, 552.9]},
+    {"id": "p207-b63", "type": "paragraph", "text": "10.260.939 cổ phiếu theo mệnh giá 10.000 Đồng/cổ phiếu.", "bbox": [259.49, 543.9, 501.06, 552.9]},
     {"id": "p207-b64", "type": "furniture", "text": "206", "bbox": [57.4, 546.47, 79.16, 558.52]}
   ]
 }

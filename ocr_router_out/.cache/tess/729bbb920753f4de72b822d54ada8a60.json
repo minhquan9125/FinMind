@@ -2,7 +2,74 @@
   "text": "BẢO CÁO THƯỜNG NIÊN\n2024",
   "chars": 20,
   "words": 5,
+  "wordItems": [
+    {
+      "text": "BẢO",
+      "bbox": [
+        1611,
+        740,
+        1887,
+        873
+      ],
+      "conf": 70.946609,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1924,
+        740,
+        2208,
+        871
+      ],
+      "conf": 94.810852,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        2245,
+        740,
+        2827,
+        866
+      ],
+      "conf": 95.579048,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        2850,
+        740,
+        3158,
+        865
+      ],
+      "conf": 96.087486,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        2214,
+        923,
+        2554,
+        1021
+      ],
+      "conf": 95.219971,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
   "meanConf": 91,
   "lowConfRatio": 0,
-  "seconds": 0.657
+  "seconds": 0.939
 }

@@ -2,7 +2,334 @@
   "text": "l7 JP[T|\n\nCÔNG TY CỔ PHẦN FPT\n\nSố 10 phố Phạm Văn Bạch, phường Cầu Giấy, Tp.Hà Nội.\nĐiện thoại: +84 24 7300 7300\n\nWwWww.fpt.com",
   "chars": 100,
   "words": 25,
+  "wordItems": [
+    {
+      "text": "l7",
+      "bbox": [
+        178,
+        1217,
+        236,
+        1391
+      ],
+      "conf": 39.361263,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "JP[T|",
+      "bbox": [
+        260,
+        1221,
+        458,
+        1387
+      ],
+      "conf": 33.440788,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        181,
+        1481,
+        361,
+        1538
+      ],
+      "conf": 95.802635,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        378,
+        1494,
+        450,
+        1537
+      ],
+      "conf": 96.825127,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỔ",
+      "bbox": [
+        466,
+        1474,
+        554,
+        1538
+      ],
+      "conf": 77.143806,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHẦN",
+      "bbox": [
+        574,
+        1476,
+        734,
+        1537
+      ],
+      "conf": 91.448471,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "FPT",
+      "bbox": [
+        755,
+        1494,
+        858,
+        1537
+      ],
+      "conf": 96.572105,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Số",
+      "bbox": [
+        181,
+        1600,
+        232,
+        1637
+      ],
+      "conf": 96.902763,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "10",
+      "bbox": [
+        247,
+        1603,
+        289,
+        1637
+      ],
+      "conf": 96.813011,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "phố",
+      "bbox": [
+        306,
+        1600,
+        383,
+        1647
+      ],
+      "conf": 96.898613,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Phạm",
+      "bbox": [
+        398,
+        1604,
+        513,
+        1645
+      ],
+      "conf": 96.258842,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Văn",
+      "bbox": [
+        528,
+        1604,
+        607,
+        1637
+      ],
+      "conf": 96.285858,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Bạch,",
+      "bbox": [
+        625,
+        1604,
+        738,
+        1645
+      ],
+      "conf": 68.394798,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "phường",
+      "bbox": [
+        756,
+        1604,
+        908,
+        1647
+      ],
+      "conf": 96.695961,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cầu",
+      "bbox": [
+        925,
+        1601,
+        1007,
+        1637
+      ],
+      "conf": 75.363159,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Giấy,",
+      "bbox": [
+        1024,
+        1600,
+        1128,
+        1647
+      ],
+      "conf": 93.298485,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Tp.Hà",
+      "bbox": [
+        1143,
+        1604,
+        1264,
+        1647
+      ],
+      "conf": 92.805962,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Nội.",
+      "bbox": [
+        1283,
+        1604,
+        1365,
+        1655
+      ],
+      "conf": 94.809723,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Điện",
+      "bbox": [
+        179,
+        1678,
+        271,
+        1719
+      ],
+      "conf": 96.210922,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "thoại:",
+      "bbox": [
+        286,
+        1678,
+        402,
+        1719
+      ],
+      "conf": 96.775703,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "+84",
+      "bbox": [
+        421,
+        1677,
+        499,
+        1711
+      ],
+      "conf": 96.160843,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "24",
+      "bbox": [
+        513,
+        1677,
+        564,
+        1710
+      ],
+      "conf": 96.480194,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "7300",
+      "bbox": [
+        578,
+        1677,
+        683,
+        1711
+      ],
+      "conf": 96.75132,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "7300",
+      "bbox": [
+        699,
+        1677,
+        804,
+        1711
+      ],
+      "conf": 95.609978,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "WwWww.fpt.com",
+      "bbox": [
+        180,
+        1751,
+        458,
+        1795
+      ],
+      "conf": 36.449852,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
   "meanConf": 86,
   "lowConfRatio": 0.12,
-  "seconds": 0.599
+  "seconds": 0.604
 }

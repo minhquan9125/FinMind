@@ -120,6 +120,6 @@
     {"id": "p111-b37", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
     {"id": "p111-b38", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
     {"id": "p111-b39", "type": "furniture", "text": "109", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p111-b40", "type": "furniture", "text": "Chatbot, Voicebot, AI ….", "bbox": [924.15, 1002.87, 1118.44, 1020.87]}
+    {"id": "p111-b40", "type": "paragraph", "text": "Chatbot, Voicebot, AI ….", "bbox": [924.15, 1002.87, 1118.44, 1020.87]}
   ]
 }

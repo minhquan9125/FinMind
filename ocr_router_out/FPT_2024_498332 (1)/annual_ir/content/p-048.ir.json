@@ -95,6 +95,6 @@
     {"id": "p48-b27", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.51, 212.6, 668.51]},
     {"id": "p48-b28", "type": "furniture", "text": "03", "bbox": [30.0, 961.65, 195.66, 1080]},
     {"id": "p48-b29", "type": "furniture", "text": "46", "bbox": [293.0, 988.53, 318.8, 1011.4]},
-    {"id": "p48-b30", "type": "furniture", "text": "bảo cạnh tranh thu nhập cho CBNV.", "bbox": [434.69, 1006.56, 717.2, 1024.56]}
+    {"id": "p48-b30", "type": "paragraph", "text": "bảo cạnh tranh thu nhập cho CBNV.", "bbox": [434.69, 1006.56, 717.2, 1024.56]}
   ]
 }

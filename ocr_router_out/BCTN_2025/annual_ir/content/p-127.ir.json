@@ -164,8 +164,8 @@
       "bbox": [67.84, 287.87, 199.86, 365.87]
     },
     {"id": "p127-b43", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
-    {"id": "p127-b44", "type": "furniture", "text": "chuyển đổi số.", "bbox": [719.47, 544.66, 782.41, 554.66]},
-    {"id": "p127-b45", "type": "furniture", "text": "lượng Giáo dục Đại học châu Âu;", "bbox": [370.94, 545.85, 515.25, 555.85]},
+    {"id": "p127-b44", "type": "paragraph", "text": "chuyển đổi số.", "bbox": [719.47, 544.66, 782.41, 554.66]},
+    {"id": "p127-b45", "type": "paragraph", "text": "lượng Giáo dục Đại học châu Âu;", "bbox": [370.94, 545.85, 515.25, 555.85]},
     {"id": "p127-b46", "type": "furniture", "text": "126", "bbox": [58.81, 546.47, 77.75, 558.52]}
   ]
 }

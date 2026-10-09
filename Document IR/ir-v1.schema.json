@@ -47,7 +47,7 @@
       "additionalProperties": false,
       "required": ["engine", "tool", "document_sha256"],
       "properties": {
-        "engine": { "enum": ["TEXT_LAYER", "TESSERACT", "GEMINI", "MERGED"] },
+        "engine": { "enum": ["TEXT_LAYER", "TESSERACT", "GEMINI", "OPENROUTER", "MERGED"] },
         "tool": {
           "type": "string",
           "minLength": 1,
@@ -56,7 +56,7 @@
         "prompt_version": {
           "type": ["string", "null"],
           "minLength": 1,
-          "description": "Prompt version for GEMINI output; null for other engines."
+          "description": "Prompt version for GEMINI or OPENROUTER output; null for other engines."
         },
         "document_sha256": {
           "type": "string",
@@ -108,13 +108,13 @@
       }
     },
     {
-      "if": { "properties": { "source": { "properties": { "engine": { "enum": ["TESSERACT", "GEMINI"] } } } } },
+      "if": { "properties": { "source": { "properties": { "engine": { "enum": ["TESSERACT", "GEMINI", "OPENROUTER"] } } } } },
       "then": {
         "properties": { "source": { "required": ["image_sha256"], "properties": { "image_sha256": { "type": "string" } } } }
       }
     },
     {
-      "if": { "properties": { "source": { "properties": { "engine": { "const": "GEMINI" } } } } },
+      "if": { "properties": { "source": { "properties": { "engine": { "enum": ["GEMINI", "OPENROUTER"] } } } } },
       "then": {
         "properties": { "source": { "required": ["prompt_version"], "properties": { "prompt_version": { "type": "string" } } } }
       }
@@ -273,7 +273,7 @@
         "votes": {
           "type": "object",
           "minProperties": 1,
-          "propertyNames": { "enum": ["TEXT_LAYER", "TESSERACT", "GEMINI"] },
+          "propertyNames": { "enum": ["TEXT_LAYER", "TESSERACT", "GEMINI", "OPENROUTER"] },
           "additionalProperties": { "$ref": "#/$defs/vote" },
           "description": "Per-engine readings of this cell. Required on every printed cell of MERGED output (checked in code)."
         }

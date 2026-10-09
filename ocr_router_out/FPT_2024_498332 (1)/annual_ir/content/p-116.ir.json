@@ -27,19 +27,19 @@
     {"id": "p116-b4", "type": "paragraph", "text": "Trong năm 2024, FPT đã:", "bbox": [428.03, 372.43, 627.76, 390.43]},
     {
       "id": "p116-b5",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Ban hành Chính sách mua sắm bền vững, đưa ra những nguyên tắc cơ bản khi thực hiện\nmua sắm nhằm tác động tích cực nhất đến môi trường, kinh tế và xã hội, đảm bảo sự\ncông bằng, minh bạch, tuân thủ các quy định của pháp luật và quy định công ty khi thực\nhiện mua sắm;",
       "bbox": [415.63, 411.8, 1123.14, 501.78]
     },
     {
       "id": "p116-b6",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Bổ sung Quy trình mua sắm; xem xét việc đưa các tiêu chí đảm bảo tính bền vững khi\ntìm kiếm, đánh giá, lựa chọn Nhà cung cấp;",
       "bbox": [415.63, 521.96, 1123.01, 563.95]
     },
     {
       "id": "p116-b7",
-      "type": "paragraph",
+      "type": "furniture",
       "text": "• Bổ sung điều khoản “Cam kết không thực hiện hành vi hối lộ” trong tất cả các hợp\nđồng mẫu;",
       "bbox": [415.63, 584.13, 1123.02, 626.12]
     },
@@ -100,6 +100,6 @@
     {"id": "p116-b27", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
     {"id": "p116-b28", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
     {"id": "p116-b29", "type": "furniture", "text": "114", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p116-b30", "type": "furniture", "text": "Khu Campus F-Town 3 của FPT tại Tp.HCM quy mô gần 70.000 m2.", "bbox": [1375.3, 995.11, 1848.48, 1011.11]}
+    {"id": "p116-b30", "type": "paragraph", "text": "Khu Campus F-Town 3 của FPT tại Tp.HCM quy mô gần 70.000 m2.", "bbox": [1375.3, 995.11, 1848.48, 1011.11]}
   ]
 }

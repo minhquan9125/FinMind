@@ -116,13 +116,13 @@
     {"id": "p223-b93", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
     {"id": "p223-b94", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
     {"id": "p223-b95", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
-    {"id": "p223-b96", "type": "furniture", "text": "79 Trường Trung học Phổ thông FPT (Bình Định)", "bbox": [267.91, 544.74, 472.86, 555.22]},
-    {"id": "p223-b97", "type": "furniture", "text": "100%", "bbox": [905.9, 545.7, 929.65, 555.2]},
-    {"id": "p223-b98", "type": "furniture", "text": "100%", "bbox": [983.71, 545.7, 1007.46, 555.2]},
-    {"id": "p223-b99", "type": "furniture", "text": "100%", "bbox": [831.93, 545.71, 855.68, 555.21]},
-    {"id": "p223-b100", "type": "furniture", "text": "100%", "bbox": [756.72, 545.73, 780.47, 555.23]},
-    {"id": "p223-b101", "type": "furniture", "text": "Giáo dục, đào tạo", "bbox": [507.07, 545.74, 580.5, 555.24]},
-    {"id": "p223-b102", "type": "furniture", "text": "Việt Nam", "bbox": [634.47, 545.74, 673.16, 555.24]},
+    {"id": "p223-b96", "type": "paragraph", "text": "79 Trường Trung học Phổ thông FPT (Bình Định)", "bbox": [267.91, 544.74, 472.86, 555.22]},
+    {"id": "p223-b97", "type": "paragraph", "text": "100%", "bbox": [905.9, 545.7, 929.65, 555.2]},
+    {"id": "p223-b98", "type": "paragraph", "text": "100%", "bbox": [983.71, 545.7, 1007.46, 555.2]},
+    {"id": "p223-b99", "type": "paragraph", "text": "100%", "bbox": [831.93, 545.71, 855.68, 555.21]},
+    {"id": "p223-b100", "type": "paragraph", "text": "100%", "bbox": [756.72, 545.73, 780.47, 555.23]},
+    {"id": "p223-b101", "type": "paragraph", "text": "Giáo dục, đào tạo", "bbox": [507.07, 545.74, 580.5, 555.24]},
+    {"id": "p223-b102", "type": "paragraph", "text": "Việt Nam", "bbox": [634.47, 545.74, 673.16, 555.24]},
     {"id": "p223-b103", "type": "furniture", "text": "222", "bbox": [57.92, 546.47, 78.64, 558.52]}
   ]
 }

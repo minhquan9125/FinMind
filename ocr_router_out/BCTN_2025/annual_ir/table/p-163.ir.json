@@ -60,7 +60,7 @@
     {"id": "p163-b17", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
     {"id": "p163-b18", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
     {"id": "p163-b19", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
-    {"id": "p163-b20", "type": "furniture", "text": "+84 (28) 3823 0796, www.pwc.com/vn", "bbox": [344.91, 543.61, 485.72, 551.61]},
+    {"id": "p163-b20", "type": "paragraph", "text": "+84 (28) 3823 0796, www.pwc.com/vn", "bbox": [344.91, 543.61, 485.72, 551.61]},
     {"id": "p163-b21", "type": "furniture", "text": "162", "bbox": [58.81, 546.47, 77.75, 558.52]}
   ]
 }

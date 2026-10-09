@@ -59,7 +59,7 @@
       "bbox": [67.84, 287.86, 199.86, 365.86]
     },
     {"id": "p157-b18", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 377.12, 166.49, 385.31]},
-    {"id": "p157-b19", "type": "furniture", "text": "08 tỷ đồng cho Chương trình.", "bbox": [782.04, 544.32, 907.09, 554.32]},
+    {"id": "p157-b19", "type": "paragraph", "text": "08 tỷ đồng cho Chương trình.", "bbox": [782.04, 544.32, 907.09, 554.32]},
     {"id": "p157-b20", "type": "furniture", "text": "156", "bbox": [58.7, 546.47, 77.86, 558.52]}
   ]
 }

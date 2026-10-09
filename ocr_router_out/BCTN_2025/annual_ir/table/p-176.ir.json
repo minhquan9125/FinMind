@@ -13,7 +13,7 @@
   "blocks": [
     {"id": "p176-b1", "type": "heading", "text": "LÀM CHỦ", "bbox": [73.25, 40.48, 116.15, 49.98]},
     {"id": "p176-b2", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [259.68, 42.32, 697.42, 62.32]},
-    {"id": "p176-b3", "type": "paragraph", "text": "CÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 52.7, 190.71, 69.69]},
+    {"id": "p176-b3", "type": "furniture", "text": "CÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 52.7, 190.71, 69.69]},
     {"id": "p176-b4", "type": "paragraph", "text": "Mẫu số B 09 – DN/HN", "bbox": [899.64, 48.6, 1016.96, 60.6]},
     {"id": "p176-b5", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2025", "bbox": [259.68, 66.32, 846.92, 86.32]},
     {
@@ -52,56 +52,56 @@
       "text": "Tại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày, các thông\ntin tài chính của FTEL cộng gộp vào báo cáo tài chính hợp nhất của Tập đoàn như\nlà công ty con được trình bày trong Thuyết minh 34(a) - Báo cáo bộ phận, bao gồm\ntoàn bộ số liệu của bộ phận Viễn thông và Nội dung số.",
       "bbox": null
     },
-    {"id": "p176-b12", "type": "heading", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.62, 108.7, 155.28, 117.12]},
+    {"id": "p176-b12", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.62, 108.7, 155.28, 117.12]},
     {
       "id": "p176-b13",
       "type": "paragraph",
       "text": "2. Các chính sách kế toán chủ yếu\n2.1. Cơ sở của việc lập báo cáo tài chính hợp nhất",
       "bbox": [260.74, 109.12, 532.95, 144.36]
     },
-    {"id": "p176-b14", "type": "heading", "text": "02 DẤU ẤN 2025", "bbox": [25.62, 134.8, 96.98, 143.12]},
+    {"id": "p176-b14", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.62, 134.8, 96.98, 143.12]},
     {
       "id": "p176-b15",
       "type": "paragraph",
       "text": "Báo cáo tài chính hợp nhất đã được lập theo các Chuẩn mực Kế toán Việt Nam,",
       "bbox": [259.29, 160.28, 623.38, 170.28]
     },
-    {"id": "p176-b16", "type": "heading", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.62, 160.9, 122.58, 169.12]},
+    {"id": "p176-b16", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.62, 160.9, 122.58, 169.12]},
     {
       "id": "p176-b17",
       "type": "paragraph",
       "text": "Chế độ Kế toán Doanh nghiệp Việt Nam và các quy định pháp lý có liên quan đến\nviệc lập và trình bày báo cáo tài chính hợp nhất. Báo cáo tài chính hợp nhất được",
       "bbox": [259.29, 172.28, 623.42, 194.28]
     },
-    {"id": "p176-b18", "type": "heading", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.62, 187.0, 142.43, 195.12]},
+    {"id": "p176-b18", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.62, 187.0, 142.43, 195.12]},
     {
       "id": "p176-b19",
       "type": "paragraph",
       "text": "lập theo nguyên tắc giá gốc ngoại trừ các khoản đầu tư vào công ty liên doanh, liên\nkết và hợp nhất kinh doanh như được trình bày tại Thuyết minh 2.5.",
       "bbox": [259.29, 196.28, 623.42, 218.28]
     },
-    {"id": "p176-b20", "type": "heading", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.62, 213.1, 190.19, 221.12]},
+    {"id": "p176-b20", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.62, 213.1, 190.19, 221.12]},
     {
       "id": "p176-b21",
       "type": "paragraph",
       "text": "Báo cáo tài chính hợp nhất kèm theo không nhằm mục đích trình bày tình hình tài",
       "bbox": [259.29, 232.28, 623.4, 242.28]
     },
-    {"id": "p176-b22", "type": "heading", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
+    {"id": "p176-b22", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
     {
       "id": "p176-b23",
       "type": "paragraph",
       "text": "chính, kết quả hoạt động kinh doanh và tình hình lưu chuyển tiền tệ theo các\nnguyên tắc và thông lệ kế toán thường được chấp nhận ở các nước và các thể chế",
       "bbox": [259.29, 244.28, 623.46, 266.28]
     },
-    {"id": "p176-b24", "type": "heading", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
+    {"id": "p176-b24", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
     {
       "id": "p176-b25",
       "type": "paragraph",
       "text": "khác ngoài nước Việt Nam. Các nguyên tắc và thông lệ kế toán sử dụng tại nước\nViệt Nam có thể khác với các nguyên tắc và thông lệ kế toán tại các nước và các",
       "bbox": [259.29, 268.28, 623.46, 290.28]
     },
-    {"id": "p176-b26", "type": "heading", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
+    {"id": "p176-b26", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
     {"id": "p176-b27", "type": "paragraph", "text": "thể chế khác.", "bbox": [259.29, 292.28, 319.15, 302.28]},
     {"id": "p176-b28", "type": "paragraph", "text": "Chế độ kế toán mới đã ban hành nhưng chưa có hiệu lực", "bbox": [259.29, 316.52, 512.05, 326.52]},
     {

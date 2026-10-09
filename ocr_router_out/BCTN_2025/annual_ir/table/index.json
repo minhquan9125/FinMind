@@ -149,7 +149,7 @@
       "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH HỢP NHẤT",
       "topics": [],
       "has_structured_table": true,
-      "needs_review": false
+      "needs_review": true
     },
     {
       "pdf_page": 170,
@@ -836,73 +836,552 @@
       "end": 172
     }
   ],
-  "needs_review": [],
+  "needs_review": [
+    {
+      "pdf_page": 169,
+      "reason": "invalid_numeric_cell"
+    }
+  ],
   "arithmetic_checks": [
     {
-      "name": "assets",
-      "year": "2025",
+      "name": "balance_sheet:100",
+      "year": "2024",
       "passed": true,
-      "result_code": "270",
-      "actual": "88141991634625",
-      "expected": "88141991634625"
+      "result_code": "100",
+      "actual": "45535942846453",
+      "expected": "45535942846453",
+      "pdf_pages": [
+        165
+      ],
+      "source": "template_lines"
     },
     {
-      "name": "assets",
+      "name": "balance_sheet:100",
+      "year": "2025",
+      "passed": true,
+      "result_code": "100",
+      "actual": "58137438254908",
+      "expected": "58137438254908",
+      "pdf_pages": [
+        165
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:200",
+      "year": "2024",
+      "passed": true,
+      "result_code": "200",
+      "actual": "26464052832167",
+      "expected": "26464052832167",
+      "pdf_pages": [
+        166
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:200",
+      "year": "2025",
+      "passed": true,
+      "result_code": "200",
+      "actual": "30004553379717",
+      "expected": "30004553379717",
+      "pdf_pages": [
+        166
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:270",
       "year": "2024",
       "passed": true,
       "result_code": "270",
       "actual": "71999995678620",
-      "expected": "71999995678620"
+      "expected": "71999995678620",
+      "pdf_pages": [
+        165,
+        166
+      ],
+      "source": "template_lines"
     },
     {
-      "name": "funding",
+      "name": "balance_sheet:270",
+      "year": "2025",
+      "passed": true,
+      "result_code": "270",
+      "actual": "88141991634625",
+      "expected": "88141991634625",
+      "pdf_pages": [
+        165,
+        166
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:300",
+      "year": "2024",
+      "passed": true,
+      "result_code": "300",
+      "actual": "36272455573820",
+      "expected": "36272455573820",
+      "pdf_pages": [
+        167
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:300",
+      "year": "2025",
+      "passed": true,
+      "result_code": "300",
+      "actual": "44393950887086",
+      "expected": "44393950887086",
+      "pdf_pages": [
+        167
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:400",
+      "year": "2024",
+      "passed": true,
+      "result_code": "400",
+      "actual": "35727540104800",
+      "expected": "35727540104800",
+      "pdf_pages": [
+        168
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:400",
+      "year": "2025",
+      "passed": true,
+      "result_code": "400",
+      "actual": "43748040747539",
+      "expected": "43748040747539",
+      "pdf_pages": [
+        168
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:440",
+      "year": "2024",
+      "passed": true,
+      "result_code": "440",
+      "actual": "71999995678620",
+      "expected": "71999995678620",
+      "pdf_pages": [
+        167,
+        168
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:440",
       "year": "2025",
       "passed": true,
       "result_code": "440",
       "actual": "88141991634625",
-      "expected": "88141991634625"
+      "expected": "88141991634625",
+      "pdf_pages": [
+        167,
+        168
+      ],
+      "source": "template_lines"
     },
     {
-      "name": "funding",
-      "year": "2024",
-      "passed": true,
-      "result_code": "440",
-      "actual": "71999995678620",
-      "expected": "71999995678620"
-    },
-    {
-      "name": "balance",
-      "year": "2025",
-      "passed": true,
-      "result_code": "270",
-      "actual": "88141991634625",
-      "expected": "88141991634625"
-    },
-    {
-      "name": "balance",
-      "year": "2024",
-      "passed": true,
-      "result_code": "270",
-      "actual": "71999995678620",
-      "expected": "71999995678620"
-    },
-    {
-      "name": "net_revenue",
-      "year": "2025",
-      "passed": true,
-      "result_code": "10",
-      "actual": "70112825100710",
-      "expected": "70112825100710"
-    },
-    {
-      "name": "net_revenue",
+      "name": "income_statement:10",
       "year": "2024",
       "passed": true,
       "result_code": "10",
       "actual": "62848794351367",
-      "expected": "62848794351367"
+      "expected": "62848794351367",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:10",
+      "year": "2025",
+      "passed": true,
+      "result_code": "10",
+      "actual": "70112825100710",
+      "expected": "70112825100710",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:20",
+      "year": "2024",
+      "passed": true,
+      "result_code": "20",
+      "actual": "23698348369916",
+      "expected": "23698348369916",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:20",
+      "year": "2025",
+      "passed": true,
+      "result_code": "20",
+      "actual": "25888529512413",
+      "expected": "25888529512413",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:30",
+      "year": "2024",
+      "passed": true,
+      "result_code": "30",
+      "actual": "11025080772955",
+      "expected": "11025080772955",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:30",
+      "year": "2025",
+      "passed": true,
+      "result_code": "30",
+      "actual": "12951675964776",
+      "expected": "12951675964776",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:40",
+      "year": "2024",
+      "passed": true,
+      "result_code": "40",
+      "actual": "44585644864",
+      "expected": "44585644864",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:40",
+      "year": "2025",
+      "passed": true,
+      "result_code": "40",
+      "actual": "91956869021",
+      "expected": "91956869021",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:50",
+      "year": "2024",
+      "passed": true,
+      "result_code": "50",
+      "actual": "11069666417819",
+      "expected": "11069666417819",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:50",
+      "year": "2025",
+      "passed": true,
+      "result_code": "50",
+      "actual": "13043632833797",
+      "expected": "13043632833797",
+      "pdf_pages": [
+        169
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "income_statement:60",
+      "year": "2025",
+      "passed": true,
+      "result_code": "60",
+      "actual": "11232339450734",
+      "expected": "11232339450734",
+      "pdf_pages": [
+        169,
+        170
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:08",
+      "year": "2024",
+      "passed": true,
+      "result_code": "08",
+      "actual": "13626844968489",
+      "expected": "13626844968489",
+      "pdf_pages": [
+        171
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:08",
+      "year": "2025",
+      "passed": true,
+      "result_code": "08",
+      "actual": "14815360571938",
+      "expected": "14815360571938",
+      "pdf_pages": [
+        171
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:20",
+      "year": "2024",
+      "passed": true,
+      "result_code": "20",
+      "actual": "11703777188868",
+      "expected": "11703777188868",
+      "pdf_pages": [
+        171
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:20",
+      "year": "2025",
+      "passed": true,
+      "result_code": "20",
+      "actual": "10136043915911",
+      "expected": "10136043915911",
+      "pdf_pages": [
+        171
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:30",
+      "year": "2024",
+      "passed": true,
+      "result_code": "30",
+      "actual": "-8461812173101",
+      "expected": "-8461812173101",
+      "pdf_pages": [
+        171,
+        172
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:30",
+      "year": "2025",
+      "passed": true,
+      "result_code": "30",
+      "actual": "-11624743591629",
+      "expected": "-11624743591629",
+      "pdf_pages": [
+        171,
+        172
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:40",
+      "year": "2024",
+      "passed": true,
+      "result_code": "40",
+      "actual": "-2197766125834",
+      "expected": "-2197766125834",
+      "pdf_pages": [
+        172
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:40",
+      "year": "2025",
+      "passed": true,
+      "result_code": "40",
+      "actual": "2801322869532",
+      "expected": "2801322869532",
+      "pdf_pages": [
+        172
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:50",
+      "year": "2024",
+      "passed": true,
+      "result_code": "50",
+      "actual": "1044198889933",
+      "expected": "1044198889933",
+      "pdf_pages": [
+        171,
+        172
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:50",
+      "year": "2025",
+      "passed": true,
+      "result_code": "50",
+      "actual": "1312623193814",
+      "expected": "1312623193814",
+      "pdf_pages": [
+        171,
+        172
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:70",
+      "year": "2024",
+      "passed": true,
+      "result_code": "70",
+      "actual": "9315440438884",
+      "expected": "9315440438884",
+      "pdf_pages": [
+        172
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "cash_flow:70",
+      "year": "2025",
+      "passed": true,
+      "result_code": "70",
+      "actual": "10522105729992",
+      "expected": "10522105729992",
+      "pdf_pages": [
+        172
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "assets_equal_funding",
+      "year": "2024",
+      "passed": true,
+      "actual": "71999995678620",
+      "expected": "71999995678620",
+      "pdf_pages": [
+        166,
+        168
+      ],
+      "source": "cross_statement"
+    },
+    {
+      "name": "assets_equal_funding",
+      "year": "2025",
+      "passed": true,
+      "actual": "88141991634625",
+      "expected": "88141991634625",
+      "pdf_pages": [
+        166,
+        168
+      ],
+      "source": "cross_statement"
+    },
+    {
+      "name": "cash_end_equals_balance",
+      "year": "2024",
+      "passed": true,
+      "actual": "9315440438884",
+      "expected": "9315440438884",
+      "pdf_pages": [
+        165,
+        172
+      ],
+      "source": "cross_statement"
+    },
+    {
+      "name": "cash_end_equals_balance",
+      "year": "2025",
+      "passed": true,
+      "actual": "10522105729992",
+      "expected": "10522105729992",
+      "pdf_pages": [
+        165,
+        172
+      ],
+      "source": "cross_statement"
+    },
+    {
+      "name": "cash_begin_equals_prior_balance",
+      "year": "2025",
+      "passed": true,
+      "actual": "9315440438884",
+      "expected": "9315440438884",
+      "pdf_pages": [
+        165,
+        172
+      ],
+      "source": "cross_statement"
+    },
+    {
+      "name": "profit_before_tax",
+      "year": "2024",
+      "passed": true,
+      "actual": "11069666417819",
+      "expected": "11069666417819",
+      "pdf_pages": [
+        169,
+        171
+      ],
+      "source": "cross_statement"
+    },
+    {
+      "name": "profit_before_tax",
+      "year": "2025",
+      "passed": true,
+      "actual": "13043632833797",
+      "expected": "13043632833797",
+      "pdf_pages": [
+        169,
+        171
+      ],
+      "source": "cross_statement"
     }
   ],
+  "arithmetic_checks_skipped": [
+    {
+      "name": "invalid_numeric_cell",
+      "year": "2024",
+      "page": 169,
+      "code": "52",
+      "column": "c2",
+      "raw": "(280.683.727.283"
+    },
+    {
+      "name": "income_statement:60",
+      "year": "2024",
+      "missing_codes": [
+        "52"
+      ]
+    },
+    {
+      "name": "cash_begin_equals_prior_balance",
+      "year": "2024",
+      "missing_codes": [
+        "balance_sheet:110:2023"
+      ]
+    }
+  ],
+  "arithmetic_template_id": "vn_nonbank_b01_b02_b03_v1",
   "notes_text_only_ranges": [
     {
       "start": 173,

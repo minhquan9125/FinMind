@@ -136,9 +136,9 @@
     {"id": "p182-b118", "type": "paragraph", "text": "12.382.116.875.249", "bbox": [1695.2, 895.3, 1860.3, 913.3]},
     {"id": "p182-b119", "type": "paragraph", "text": "12.774.567.961.718", "bbox": [1695.2, 929.01, 1860.3, 947.01]},
     {"id": "p182-b120", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
-    {"id": "p182-b121", "type": "furniture", "text": "14", "bbox": [428.18, 186.76, 448.49, 204.76]},
+    {"id": "p182-b121", "type": "paragraph", "text": "14", "bbox": [428.18, 186.76, 448.49, 204.76]},
     {"id": "p182-b122", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
-    {"id": "p182-b123", "type": "furniture", "text": "(a)", "bbox": [428.18, 217.27, 451.99, 235.27]},
+    {"id": "p182-b123", "type": "paragraph", "text": "(a)", "bbox": [428.18, 217.27, 451.99, 235.27]},
     {"id": "p182-b124", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
     {"id": "p182-b125", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
     {"id": "p182-b126", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
@@ -147,6 +147,6 @@
     {"id": "p182-b129", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
     {"id": "p182-b130", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
     {"id": "p182-b131", "type": "furniture", "text": "180", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p182-b132", "type": "furniture", "text": "4.791.869 triệu Đồng).", "bbox": [428.18, 1006.27, 607.82, 1024.27]}
+    {"id": "p182-b132", "type": "paragraph", "text": "4.791.869 triệu Đồng).", "bbox": [428.18, 1006.27, 607.82, 1024.27]}
   ]
 }

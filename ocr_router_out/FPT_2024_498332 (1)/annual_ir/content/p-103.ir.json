@@ -180,6 +180,6 @@
     {"id": "p103-b57", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 681.36, 212.6, 700.36]},
     {"id": "p103-b58", "type": "furniture", "text": "06", "bbox": [30.0, 961.65, 198.17, 1080]},
     {"id": "p103-b59", "type": "furniture", "text": "101", "bbox": [288.22, 988.53, 326.93, 1011.4]},
-    {"id": "p103-b60", "type": "furniture", "text": "cấp; AI kiểm soát chênh lệch giá.", "bbox": [1267.09, 1006.7, 1528.7, 1024.7]}
+    {"id": "p103-b60", "type": "paragraph", "text": "cấp; AI kiểm soát chênh lệch giá.", "bbox": [1267.09, 1006.7, 1528.7, 1024.7]}
   ]
 }

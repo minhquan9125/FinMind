@@ -62,6 +62,6 @@
     {"id": "p38-b19", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
     {"id": "p38-b20", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
     {"id": "p38-b21", "type": "furniture", "text": "36", "bbox": [293.0, 988.53, 318.8, 1011.4]},
-    {"id": "p38-b22", "type": "furniture", "text": "lớn của Tập đoàn ….", "bbox": [428.72, 989.73, 589.21, 1007.73]}
+    {"id": "p38-b22", "type": "paragraph", "text": "lớn của Tập đoàn ….", "bbox": [428.72, 989.73, 589.21, 1007.73]}
   ]
 }

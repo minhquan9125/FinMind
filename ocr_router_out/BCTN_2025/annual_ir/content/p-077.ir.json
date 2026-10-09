@@ -101,7 +101,7 @@
     {"id": "p77-b23", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 317.12, 121.59, 325.31]},
     {"id": "p77-b24", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 343.12, 100.4, 351.31]},
     {"id": "p77-b25", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 369.12, 166.49, 377.31]},
-    {"id": "p77-b26", "type": "furniture", "text": "siêu máy tính toàn cầu.", "bbox": [259.42, 544.85, 362.49, 554.85]},
+    {"id": "p77-b26", "type": "paragraph", "text": "siêu máy tính toàn cầu.", "bbox": [259.42, 544.85, 362.49, 554.85]},
     {"id": "p77-b27", "type": "furniture", "text": "76", "bbox": [61.6, 546.47, 74.96, 558.52]}
   ]
 }

@@ -1,18 +1,22 @@
-"""Direct Gemini API transcription using GEMINI_API_KEY."""
+"""Image transcription through Gemini API with an optional OpenRouter fallback."""
 
 from __future__ import annotations
 
 import concurrent.futures
+import base64
 import json
 import mimetypes
 import os
 import threading
 import time
 import unicodedata
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Any
-
 from util import hash_file, load_json, save_json, seconds
+
+
 
 
 PROMPT_VERSION = "api-v1"
@@ -163,3 +167,122 @@ def gemini_transcribe(jobs: list[dict[str, Any]], *, model: str, batch_size: int
 def empty_stats() -> dict[str, int]:
     return {"calls": 0, "failedCalls": 0, "seconds": 0, "input_tokens": 0,
             "output_tokens": 0, "thinking_tokens": 0, "cache_read_tokens": 0}
+
+# ----OPENROUTER---
+def _call_openrouter(batch: list[dict[str, Any]], model: str,
+                     timeout_sec: int) -> tuple[dict[str, Any], dict[str, Any]]:
+    stats: dict[str, Any] = empty_stats()
+    stats["calls"] = 1
+    key = os.environ.get("OPENROUTER_API_KEY")
+    if not key:
+        return {}, {**stats, "failedCalls": 1, "error": "Thiếu OPENROUTER_API_KEY."}
+    started = time.perf_counter()
+    names = [job["image"].name for job in batch]
+    try:
+        content: list[dict[str, Any]] = [{
+            "type": "text",
+            "text": "Transcribe these page images. Return exactly one pages entry for each filename, "
+                    f"in order: {', '.join(names)}.",
+        }]
+        for job in batch:
+            image = Path(job["image"])
+            mime = mimetypes.guess_type(image.name)[0] or "image/png"
+            encoded = base64.b64encode(image.read_bytes()).decode("ascii")
+            content.extend(({"type": "text", "text": f"Filename: {image.name}"},
+                            {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{encoded}"}}))
+        body = {
+            "model": model,
+            "messages": [{"role": "system", "content": SYSTEM_INSTRUCTION},
+                         {"role": "user", "content": content}],
+            "response_format": {"type": "json_schema", "json_schema": {
+                "name": "ocr_pages", "strict": True, "schema": GEMINI_SCHEMA}},
+            "temperature": 0,
+        }
+        request = urllib.request.Request(
+            "https://openrouter.ai/api/v1/chat/completions",
+            data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
+            headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+            method="POST",
+        )
+        with urllib.request.urlopen(request, timeout=timeout_sec) as response:
+            result = json.load(response)
+        usage = result.get("usage") or {}
+        stats["input_tokens"] = usage.get("prompt_tokens") or 0
+        stats["output_tokens"] = usage.get("completion_tokens") or 0
+        message = result["choices"][0]["message"]["content"]
+        if not isinstance(message, str) or not message.strip():
+            raise ValueError("OpenRouter trả về nội dung rỗng.")
+        payload = json.loads(message)
+        if not isinstance(payload.get("pages"), list):
+            raise ValueError("OpenRouter không trả về danh sách pages.")
+        pages: dict[str, Any] = {}
+        for page in payload["pages"]:
+            filename = Path(page["file"]).name
+            if filename not in names or filename in pages:
+                raise ValueError(f"OpenRouter trả về tên trang không hợp lệ: {filename}")
+            if page["page_type"] not in ("table", "text", "mixed", "cover", "blank") \
+                    or not isinstance(page["text"], str) \
+                    or not isinstance(page["unreadable"], list):
+                raise ValueError(f"OpenRouter trả về trang sai cấu trúc: {filename}")
+            pages[filename] = {"page_type": page["page_type"],
+                               "text": unicodedata.normalize("NFC", page["text"]),
+                               "unreadable": page["unreadable"]}
+        stats["seconds"] = seconds(started)
+        print(f"  [openrouter] {model} {','.join(names)}: OK, {stats['seconds']}s")
+        return pages, stats
+    except Exception as exc:
+        stats["failedCalls"] = 1
+        stats["seconds"] = seconds(started)
+        if isinstance(exc, urllib.error.HTTPError):
+            message = f"HTTP {exc.code}: {exc.reason}"
+        else:
+            message = str(exc)
+        stats["error"] = message.replace(key, "[REDACTED]")[:1000]
+        print(f"  [openrouter] {model}: lỗi: {stats['error']}")
+        return {}, stats
+
+
+def openrouter_transcribe(jobs: list[dict[str, Any]], *, model: str, batch_size: int,
+                          concurrency: int, timeout_sec: int, cache_dir: Path,
+                          stats: dict[str, Any]) -> dict[int, dict[str, Any]]:
+    """Transcribe only jobs not satisfied by Gemini; keep provider caches separate."""
+    outcomes: dict[int, dict[str, Any]] = {}
+    lock = threading.Lock()
+    misses = []
+    for job in jobs:
+        key = hash_file(job["image"])[:32]
+        safe_model = model.replace("/", "-").replace(":", "-")
+        cache_path = cache_dir / "openrouter" / f"{key}-{safe_model}-{PROMPT_VERSION}.json"
+        hit = load_json(cache_path)
+        if hit:
+            outcomes[job["page"]] = {"provider": "openrouter", "model": model,
+                                     "cached": True, "page": hit}
+        else:
+            misses.append({**job, "cachePath": cache_path})
+
+    def handle(batch: list[dict[str, Any]], split: bool = True) -> None:
+        pages, call_stats = _call_openrouter(batch, model, timeout_sec)
+        with lock:
+            for key in ("calls", "failedCalls", "seconds", "input_tokens", "output_tokens",
+                        "thinking_tokens", "cache_read_tokens"):
+                stats[key] += call_stats[key]
+        missing = []
+        for job in batch:
+            page = pages.get(job["image"].name)
+            if page:
+                save_json(job["cachePath"], page)
+                outcomes[job["page"]] = {"provider": "openrouter", "model": model,
+                                         "cached": False, "page": page}
+            else:
+                missing.append(job)
+                outcomes[job["page"]] = {"provider": "openrouter", "model": model,
+                                         "cached": False,
+                                         "error": call_stats.get("error", "OpenRouter thiếu trang này.")}
+        if split and len(batch) > 1 and missing:
+            for job in missing:
+                handle([job], False)
+
+    batches = [misses[i:i + batch_size] for i in range(0, len(misses), batch_size)]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, concurrency)) as executor:
+        list(executor.map(handle, batches))
+    return outcomes
