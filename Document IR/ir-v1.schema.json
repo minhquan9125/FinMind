@@ -276,6 +276,14 @@
           "propertyNames": { "enum": ["TEXT_LAYER", "TESSERACT", "GEMINI", "OPENROUTER"] },
           "additionalProperties": { "$ref": "#/$defs/vote" },
           "description": "Per-engine readings of this cell. Required on every printed cell of MERGED output (checked in code)."
+        },
+        "needs_review": {
+          "type": "boolean",
+          "description": "True when the reading is unresolved or has only one OCR source; arithmetic checks must not treat it as verified."
+        },
+        "review_reason": {
+          "type": ["string", "null"],
+          "description": "Reason the OCR cell needs human review; null when no review flag applies."
         }
       }
     },

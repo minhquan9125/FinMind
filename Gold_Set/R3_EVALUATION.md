@@ -31,7 +31,7 @@ Cột so sánh năm 2024 trong báo cáo 2025 có **136 ô khớp, 3 ô lệch**
 
 ## Giới hạn chứng cứ
 
-Hai workbook hiện đã ghi `transcriber` và `review_status=self_checked` cho đủ 278 ô mỗi bản. Lần chạy hiện tại trả `gold_accuracy=1.0`, `review_method=self_checked` cho cả hai năm; đây là kết quả **người chép tự kiểm**, không phải kiểm độc lập bởi hai người. Chương trình kiểm SHA-256 của PDF với `table/index.json`; cột `document_sha256` trong workbook là tùy chọn và được kiểm nếu có. Trạng thái tự kiểm là xác nhận của người làm gold set; chương trình không thể tự chứng minh quá trình đối chiếu với ảnh PDF. Nếu sau này có người khác kiểm độc lập, thêm `checker` khác `transcriber` và dùng `review_status=approved`.
+Hai workbook hiện đã ghi `transcriber` và `review_status=self_checked` cho đủ 278 ô mỗi bản. Kết quả 278/278 được báo là `agreement_rate=1.0`, `review_method=self_checked`; `gold_accuracy` và `human_approved` chỉ được công bố sau khi **người thứ hai** kiểm độc lập toàn bộ ô. Chương trình kiểm SHA-256 của PDF với `table/index.json`; cột `document_sha256` trong workbook là tùy chọn và được kiểm nếu có. Trạng thái tự kiểm là xác nhận của người làm gold set; chương trình không thể tự chứng minh quá trình đối chiếu với ảnh PDF. Sau khi người khác kiểm độc lập, thêm `checker` khác `transcriber` và dùng `review_status=approved`.
 
 ## Chạy lại
 

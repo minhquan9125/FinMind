@@ -1,0 +1,6461 @@
+{
+  "source_pdf_sha256": "0fc9204ac1328d76dc9682846511f0e6c5e12e1e3831d1ca6be4743cab6c63cf",
+  "transcription_status": "unverified_model_output",
+  "pages": [
+    {
+      "page": 5,
+      "model": "gemini-3.5-flash-lite",
+      "aiBlocks": [
+        {
+          "type": "heading",
+          "text": "CÔNG TY CỔ PHẦN LƯƠNG THỰC THỰC PHẨM SAFOCO\n1079 Phạm Văn Đồng, KP52, P.Linh Xuân, TP.HCM\nĐT: 028 38 966 928 Fax: 028 38 960 033",
+          "box_2d": [
+            48,
+            93,
+            91,
+            556
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "heading",
+          "text": "Báo cáo tài chính\nQuý 1 năm tài chính 2026\nMẫu số B01-DN\n(Ban hành theo Thông tư số 99/2025/TT-BTC\nngày 27/10/2025 của Bộ Tài Chính)",
+          "box_2d": [
+            44,
+            651,
+            124,
+            922
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "heading",
+          "text": "BẢNG CÁO TÌNH HÌNH TÀI CHÍNH\nTại ngày 31 tháng 03 năm 2026",
+          "box_2d": [
+            135,
+            324,
+            181,
+            716
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "table",
+          "text": null,
+          "box_2d": [
+            188,
+            89,
+            943,
+            940
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [
+            {
+              "key": "c1",
+              "header_lines": [
+                "Mã số"
+              ],
+              "box_2d": [
+                193,
+                505,
+                237,
+                542
+              ]
+            },
+            {
+              "key": "c2",
+              "header_lines": [
+                "Thuyết",
+                "minh"
+              ],
+              "box_2d": [
+                187,
+                543,
+                240,
+                630
+              ]
+            },
+            {
+              "key": "c3",
+              "header_lines": [
+                "Số cuối kỳ",
+                "31/03/2026"
+              ],
+              "box_2d": [
+                193,
+                632,
+                238,
+                787
+              ]
+            },
+            {
+              "key": "c4",
+              "header_lines": [
+                "Số đầu kỳ",
+                "01/01/2026"
+              ],
+              "box_2d": [
+                193,
+                793,
+                238,
+                939
+              ]
+            }
+          ],
+          "rows": [
+            {
+              "code": null,
+              "label_raw": "TÀI SẢN",
+              "note": null,
+              "box_2d": [
+                247,
+                262,
+                260,
+                373
+              ],
+              "cells": []
+            },
+            {
+              "code": "100",
+              "label_raw": "A- TÀI SẢN NGẮN HẠN",
+              "note": null,
+              "box_2d": [
+                265,
+                210,
+                279,
+                937
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "100",
+                  "box_2d": [
+                    266,
+                    517,
+                    278,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "259.827.655.922",
+                  "box_2d": [
+                    266,
+                    646,
+                    278,
+                    782
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "235.480.639.486",
+                  "box_2d": [
+                    266,
+                    827,
+                    278,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "110",
+              "label_raw": "I. Tiền và các khoản tương đương tiền",
+              "note": null,
+              "box_2d": [
+                282,
+                93,
+                295,
+                937
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "110",
+                  "box_2d": [
+                    284,
+                    516,
+                    294,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.1",
+                  "box_2d": [
+                    284,
+                    587,
+                    294,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "59.107.310.849",
+                  "box_2d": [
+                    283,
+                    655,
+                    295,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "58.772.734.482",
+                  "box_2d": [
+                    283,
+                    836,
+                    294,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "111",
+              "label_raw": "1. Tiền",
+              "note": null,
+              "box_2d": [
+                298,
+                105,
+                311,
+                937
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "111",
+                  "box_2d": [
+                    300,
+                    517,
+                    311,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "9.107.310.849",
+                  "box_2d": [
+                    299,
+                    663,
+                    311,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "8.772.734.482",
+                  "box_2d": [
+                    299,
+                    844,
+                    310,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "112",
+              "label_raw": "2. Các khoản tương đương tiền",
+              "note": null,
+              "box_2d": [
+                315,
+                105,
+                328,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "112",
+                  "box_2d": [
+                    316,
+                    517,
+                    326,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "50.000.000.000",
+                  "box_2d": [
+                    316,
+                    646,
+                    326,
+                    782
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "50.000.000.000",
+                  "box_2d": [
+                    316,
+                    826,
+                    327,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "120",
+              "label_raw": "II. Đầu tư tài chính ngắn hạn",
+              "note": null,
+              "box_2d": [
+                331,
+                93,
+                344,
+                937
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "120",
+                  "box_2d": [
+                    332,
+                    517,
+                    343,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.2",
+                  "box_2d": [
+                    332,
+                    587,
+                    342,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "92.002.150.000",
+                  "box_2d": [
+                    332,
+                    647,
+                    342,
+                    782
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "67.002.150.000",
+                  "box_2d": [
+                    332,
+                    826,
+                    342,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "121",
+              "label_raw": "1.Chứng khoán kinh doanh",
+              "note": null,
+              "box_2d": [
+                347,
+                105,
+                360,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "121",
+                  "box_2d": [
+                    349,
+                    517,
+                    359,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "2.150.000",
+                  "box_2d": [
+                    348,
+                    712,
+                    359,
+                    782
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "2.150.000",
+                  "box_2d": [
+                    348,
+                    870,
+                    359,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "122",
+              "label_raw": "2. Dự phòng giảm giá chứng khoán kinh doanh",
+              "note": null,
+              "box_2d": [
+                364,
+                105,
+                376,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "122",
+                  "box_2d": [
+                    365,
+                    517,
+                    375,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "_",
+                  "box_2d": [
+                    366,
+                    769,
+                    375,
+                    775
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    365,
+                    926,
+                    375,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "123",
+              "label_raw": "3. Đầu tư nắm giữ đến ngày đáo hạn ngắn hạn",
+              "note": null,
+              "box_2d": [
+                381,
+                105,
+                393,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "123",
+                  "box_2d": [
+                    381,
+                    517,
+                    392,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "92.000.000.000",
+                  "box_2d": [
+                    381,
+                    646,
+                    392,
+                    782
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "67.000.000.000",
+                  "box_2d": [
+                    381,
+                    826,
+                    392,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "130",
+              "label_raw": "III. Các khoản phải thu ngắn hạn",
+              "note": null,
+              "box_2d": [
+                396,
+                94,
+                409,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "130",
+                  "box_2d": [
+                    398,
+                    517,
+                    408,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "47.303.418.630",
+                  "box_2d": [
+                    397,
+                    646,
+                    408,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "40.827.405.375",
+                  "box_2d": [
+                    397,
+                    827,
+                    408,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "131",
+              "label_raw": "1. Phải thu ngắn hạn của khách hàng",
+              "note": null,
+              "box_2d": [
+                413,
+                105,
+                426,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "131",
+                  "box_2d": [
+                    414,
+                    517,
+                    424,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.3",
+                  "box_2d": [
+                    414,
+                    587,
+                    424,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "44.904.751.957",
+                  "box_2d": [
+                    414,
+                    646,
+                    424,
+                    782
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "38.743.508.116",
+                  "box_2d": [
+                    414,
+                    827,
+                    424,
+                    938
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "132",
+              "label_raw": "2. Trả trước cho người bán ngắn hạn",
+              "note": null,
+              "box_2d": [
+                430,
+                105,
+                443,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "132",
+                  "box_2d": [
+                    431,
+                    517,
+                    440,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "386.822.150",
+                  "box_2d": [
+                    430,
+                    680,
+                    440,
+                    782
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "273.035.896",
+                  "box_2d": [
+                    430,
+                    844,
+                    440,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "133",
+              "label_raw": "3. Phải thu nội bộ ngắn hạn",
+              "note": null,
+              "box_2d": [
+                446,
+                105,
+                458,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "133",
+                  "box_2d": [
+                    446,
+                    517,
+                    456,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": null,
+                  "box_2d": null
+                }
+              ]
+            },
+            {
+              "code": "134",
+              "label_raw": "4. Phải thu theo tiến độ hợp đồng xây dựng",
+              "note": null,
+              "box_2d": [
+                462,
+                105,
+                475,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "134",
+                  "box_2d": [
+                    463,
+                    517,
+                    472,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "_",
+                  "box_2d": [
+                    464,
+                    769,
+                    473,
+                    775
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    464,
+                    926,
+                    473,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "135",
+              "label_raw": "5. Phải thu ngắn hạn khác",
+              "note": null,
+              "box_2d": [
+                478,
+                105,
+                491,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "135",
+                  "box_2d": [
+                    479,
+                    517,
+                    489,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.4",
+                  "box_2d": [
+                    479,
+                    587,
+                    489,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "2.011.844.523",
+                  "box_2d": [
+                    479,
+                    673,
+                    489,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "1.810.861.363",
+                  "box_2d": [
+                    479,
+                    836,
+                    489,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "136",
+              "label_raw": "6. Dự phòng phải thu ngắn hạn khó đòi",
+              "note": null,
+              "box_2d": [
+                494,
+                105,
+                507,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "136",
+                  "box_2d": [
+                    495,
+                    517,
+                    505,
+                    537
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "_",
+                  "box_2d": [
+                    496,
+                    769,
+                    505,
+                    775
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    496,
+                    926,
+                    505,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "140",
+              "label_raw": "IV. Hàng tồn kho",
+              "note": null,
+              "box_2d": [
+                510,
+                94,
+                523,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "140",
+                  "box_2d": [
+                    512,
+                    517,
+                    521,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.5",
+                  "box_2d": [
+                    512,
+                    587,
+                    521,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "48.235.131.524",
+                  "box_2d": [
+                    511,
+                    646,
+                    521,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "55.806.080.879",
+                  "box_2d": [
+                    511,
+                    827,
+                    522,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "141",
+              "label_raw": "1. Hàng tồn kho",
+              "note": null,
+              "box_2d": [
+                526,
+                105,
+                539,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "141",
+                  "box_2d": [
+                    528,
+                    517,
+                    537,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "48.235.131.524",
+                  "box_2d": [
+                    527,
+                    646,
+                    537,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "55.806.080.879",
+                  "box_2d": [
+                    527,
+                    827,
+                    537,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "142",
+              "label_raw": "2. Dự phòng giảm giá hàng tồn kho",
+              "note": null,
+              "box_2d": [
+                542,
+                105,
+                555,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "142",
+                  "box_2d": [
+                    544,
+                    517,
+                    553,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": null,
+                  "box_2d": null
+                }
+              ]
+            },
+            {
+              "code": "150",
+              "label_raw": "V. Tài sản sinh học ngắn hạn",
+              "note": null,
+              "box_2d": [
+                558,
+                94,
+                571,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "150",
+                  "box_2d": [
+                    559,
+                    517,
+                    569,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    560,
+                    926,
+                    569,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "160",
+              "label_raw": "VI.Tài sản ngắn hạn khác",
+              "note": null,
+              "box_2d": [
+                574,
+                94,
+                587,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "160",
+                  "box_2d": [
+                    575,
+                    517,
+                    585,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "13.179.644.919",
+                  "box_2d": [
+                    575,
+                    655,
+                    585,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "13.072.268.750",
+                  "box_2d": [
+                    575,
+                    836,
+                    585,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "161",
+              "label_raw": "1. Chi phí chờ phân bổ ngắn hạn",
+              "note": null,
+              "box_2d": [
+                591,
+                105,
+                603,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "161",
+                  "box_2d": [
+                    592,
+                    517,
+                    601,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.7",
+                  "box_2d": [
+                    592,
+                    587,
+                    601,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "126.675.904",
+                  "box_2d": [
+                    591,
+                    690,
+                    601,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "170.851.812",
+                  "box_2d": [
+                    591,
+                    853,
+                    601,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "162",
+              "label_raw": "2. Thuế GTGT được khấu trừ",
+              "note": null,
+              "box_2d": [
+                606,
+                105,
+                619,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "162",
+                  "box_2d": [
+                    608,
+                    517,
+                    618,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "13.052.969.015",
+                  "box_2d": [
+                    607,
+                    655,
+                    617,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "12.901.416.938",
+                  "box_2d": [
+                    607,
+                    836,
+                    617,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "200",
+              "label_raw": "B. TÀI SẢN DÀI HẠN",
+              "note": null,
+              "box_2d": [
+                621,
+                214,
+                635,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "200",
+                  "box_2d": [
+                    622,
+                    517,
+                    634,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "23.471.794.060",
+                  "box_2d": [
+                    622,
+                    655,
+                    634,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "23.491.363.262",
+                  "box_2d": [
+                    622,
+                    836,
+                    634,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "210",
+              "label_raw": "I. Các khoản phải thu dài hạn",
+              "note": null,
+              "box_2d": [
+                639,
+                94,
+                651,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "210",
+                  "box_2d": [
+                    640,
+                    517,
+                    650,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "57.014.552",
+                  "box_2d": [
+                    639,
+                    712,
+                    649,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "57.014.552",
+                  "box_2d": [
+                    639,
+                    869,
+                    649,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "215",
+              "label_raw": "5. Phải thu dài hạn khác",
+              "note": null,
+              "box_2d": [
+                654,
+                105,
+                667,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "215",
+                  "box_2d": [
+                    656,
+                    517,
+                    666,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.4",
+                  "box_2d": [
+                    656,
+                    587,
+                    666,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "57.014.552",
+                  "box_2d": [
+                    655,
+                    712,
+                    666,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "57.014.552",
+                  "box_2d": [
+                    655,
+                    869,
+                    666,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "219",
+              "label_raw": "6. Dự phòng phải thu dài hạn khó đòi (*)",
+              "note": null,
+              "box_2d": [
+                670,
+                105,
+                683,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "219",
+                  "box_2d": [
+                    672,
+                    517,
+                    682,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "_",
+                  "box_2d": [
+                    672,
+                    769,
+                    682,
+                    775
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    672,
+                    926,
+                    682,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "220",
+              "label_raw": "II.Tài sản cố định",
+              "note": null,
+              "box_2d": [
+                687,
+                94,
+                699,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "220",
+                  "box_2d": [
+                    688,
+                    517,
+                    697,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.6",
+                  "box_2d": [
+                    688,
+                    587,
+                    697,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "23.351.788.275",
+                  "box_2d": [
+                    687,
+                    655,
+                    698,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "23.308.366.244",
+                  "box_2d": [
+                    687,
+                    836,
+                    697,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "221",
+              "label_raw": "1. Tài sản cố định hữu hình",
+              "note": null,
+              "box_2d": [
+                702,
+                105,
+                715,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "221",
+                  "box_2d": [
+                    704,
+                    517,
+                    713,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.6",
+                  "box_2d": [
+                    704,
+                    587,
+                    713,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "3.612.752.275",
+                  "box_2d": [
+                    703,
+                    673,
+                    714,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "3.569.330.244",
+                  "box_2d": [
+                    703,
+                    853,
+                    713,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "222",
+              "label_raw": "- Nguyên giá",
+              "note": null,
+              "box_2d": [
+                718,
+                114,
+                731,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "222",
+                  "box_2d": [
+                    720,
+                    517,
+                    729,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.6",
+                  "box_2d": [
+                    720,
+                    587,
+                    729,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "155.953.332.367",
+                  "box_2d": [
+                    719,
+                    646,
+                    730,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "155.465.527.873",
+                  "box_2d": [
+                    719,
+                    827,
+                    730,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "223",
+              "label_raw": "- Giá trị hao mòn lũy kế",
+              "note": null,
+              "box_2d": [
+                734,
+                114,
+                747,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "223",
+                  "box_2d": [
+                    736,
+                    517,
+                    745,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.6",
+                  "box_2d": [
+                    736,
+                    587,
+                    745,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "(152.340.580.092)",
+                  "box_2d": [
+                    735,
+                    662,
+                    746,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(151.896.197.629)",
+                  "box_2d": [
+                    735,
+                    844,
+                    746,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "224",
+              "label_raw": "2. Tài sản cố định thuê tài chính",
+              "note": null,
+              "box_2d": [
+                750,
+                105,
+                763,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "224",
+                  "box_2d": [
+                    751,
+                    517,
+                    762,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": null,
+                  "box_2d": null
+                }
+              ]
+            },
+            {
+              "code": "227",
+              "label_raw": "3. Tài sản cố định vô hình",
+              "note": null,
+              "box_2d": [
+                766,
+                105,
+                779,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "227",
+                  "box_2d": [
+                    767,
+                    517,
+                    778,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.7",
+                  "box_2d": [
+                    768,
+                    587,
+                    777,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "19.739.036.000",
+                  "box_2d": [
+                    767,
+                    655,
+                    778,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "19.739.036.000",
+                  "box_2d": [
+                    767,
+                    836,
+                    778,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "228",
+              "label_raw": "- Nguyên giá",
+              "note": null,
+              "box_2d": [
+                782,
+                114,
+                795,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "228",
+                  "box_2d": [
+                    784,
+                    517,
+                    794,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.7",
+                  "box_2d": [
+                    784,
+                    587,
+                    794,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "19.889.036.000",
+                  "box_2d": [
+                    783,
+                    655,
+                    794,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "19.889.036.000",
+                  "box_2d": [
+                    783,
+                    836,
+                    794,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "229",
+              "label_raw": "- Giá trị hao mòn lũy kế",
+              "note": null,
+              "box_2d": [
+                798,
+                114,
+                811,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "229",
+                  "box_2d": [
+                    800,
+                    517,
+                    809,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.7",
+                  "box_2d": [
+                    800,
+                    587,
+                    809,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "(150.000.000)",
+                  "box_2d": [
+                    799,
+                    691,
+                    810,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(150.000.000)",
+                  "box_2d": [
+                    799,
+                    853,
+                    810,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "230",
+              "label_raw": "III. Tài sản sinh học dài hạn",
+              "note": null,
+              "box_2d": [
+                814,
+                94,
+                827,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "230",
+                  "box_2d": [
+                    815,
+                    517,
+                    825,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": null,
+                  "box_2d": null
+                }
+              ]
+            },
+            {
+              "code": "240",
+              "label_raw": "IV. Bất động sản đầu tư",
+              "note": null,
+              "box_2d": [
+                830,
+                94,
+                843,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "240",
+                  "box_2d": [
+                    832,
+                    517,
+                    841,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": null,
+                  "box_2d": null
+                }
+              ]
+            },
+            {
+              "code": "250",
+              "label_raw": "V. Tài sản dở dang dài hạn",
+              "note": null,
+              "box_2d": [
+                846,
+                94,
+                859,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "250",
+                  "box_2d": [
+                    847,
+                    517,
+                    857,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.8",
+                  "box_2d": [
+                    847,
+                    587,
+                    857,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "_",
+                  "box_2d": [
+                    848,
+                    769,
+                    857,
+                    775
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    848,
+                    926,
+                    857,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "260",
+              "label_raw": "VI. Đầu tư tài chính dài hạn",
+              "note": null,
+              "box_2d": [
+                862,
+                94,
+                875,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "260",
+                  "box_2d": [
+                    863,
+                    517,
+                    873,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.2",
+                  "box_2d": [
+                    863,
+                    587,
+                    873,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "_",
+                  "box_2d": [
+                    864,
+                    769,
+                    873,
+                    775
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    864,
+                    926,
+                    873,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "270",
+              "label_raw": "VI. Tài sản dài hạn khác",
+              "note": null,
+              "box_2d": [
+                878,
+                94,
+                891,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "270",
+                  "box_2d": [
+                    879,
+                    517,
+                    889,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "62.991.233",
+                  "box_2d": [
+                    878,
+                    712,
+                    889,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "125.982.466",
+                  "box_2d": [
+                    878,
+                    859,
+                    889,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "271",
+              "label_raw": "1. Chi phí trả trước dài hạn",
+              "note": null,
+              "box_2d": [
+                894,
+                105,
+                906,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "271",
+                  "box_2d": [
+                    895,
+                    517,
+                    905,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.7",
+                  "box_2d": [
+                    895,
+                    587,
+                    905,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "62.991.233",
+                  "box_2d": [
+                    894,
+                    712,
+                    905,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "125.982.466",
+                  "box_2d": [
+                    894,
+                    859,
+                    905,
+                    937
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "272",
+              "label_raw": "2. Tài sản thuế thu nhập hoãn lại",
+              "note": null,
+              "box_2d": [
+                910,
+                105,
+                922,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "272",
+                  "box_2d": [
+                    911,
+                    517,
+                    921,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": null,
+                  "box_2d": null
+                }
+              ]
+            },
+            {
+              "code": "273",
+              "label_raw": "3. Thiết bị, vật tư, phụ tùng thay thế dài hạn",
+              "note": null,
+              "box_2d": [
+                926,
+                105,
+                938,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "273",
+                  "box_2d": [
+                    927,
+                    517,
+                    937,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.7",
+                  "box_2d": [
+                    927,
+                    587,
+                    937,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "_",
+                  "box_2d": [
+                    927,
+                    769,
+                    937,
+                    775
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    927,
+                    926,
+                    937,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "274",
+              "label_raw": "4. Tài sản dài hạn khác",
+              "note": null,
+              "box_2d": [
+                942,
+                105,
+                955,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "274",
+                  "box_2d": [
+                    943,
+                    517,
+                    953,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "5.4",
+                  "box_2d": [
+                    943,
+                    587,
+                    953,
+                    609
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "_",
+                  "box_2d": [
+                    944,
+                    769,
+                    953,
+                    775
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    944,
+                    926,
+                    953,
+                    931
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "280",
+              "label_raw": "TỔNG CỘNG TÀI SẢN",
+              "note": null,
+              "box_2d": [
+                958,
+                94,
+                971,
+                939
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "280",
+                  "box_2d": [
+                    959,
+                    517,
+                    969,
+                    536
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "283.299.449.982",
+                  "box_2d": [
+                    958,
+                    667,
+                    969,
+                    781
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "258.972.002.748",
+                  "box_2d": [
+                    958,
+                    827,
+                    969,
+                    937
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "1",
+          "box_2d": [
+            966,
+            505,
+            977,
+            512
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        }
+      ]
+    },
+    {
+      "page": 6,
+      "model": "gemini-3.5-flash-lite",
+      "aiBlocks": [
+        {
+          "type": "heading",
+          "text": "CÔNG TY CỔ PHẦN LƯƠNG THỰC THỰC PHẨM SAFOCO\n1079 Phạm Văn Đồng, KP52, P.Linh Xuân, TP.HCM\nĐT: 028 38 966 928\nFax: 028 38 960 033",
+          "box_2d": [
+            47,
+            94,
+            91,
+            560
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "heading",
+          "text": "Báo cáo tài chính\nQuý 1 năm tài chính 2026\nMẫu số B01-DN\n(Ban hành theo Thông tư số 99/2025/TT-BTC\nngày 27/10/2025 của Bộ Tài Chính)",
+          "box_2d": [
+            42,
+            654,
+            123,
+            941
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "heading",
+          "text": "BẢNG CÁO TÌNH HÌNH TÀI CHÍNH\nTại ngày 31 tháng 03 năm 2026",
+          "box_2d": [
+            135,
+            329,
+            181,
+            718
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "table",
+          "text": null,
+          "box_2d": [
+            189,
+            91,
+            697,
+            951
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [
+            {
+              "key": "c1",
+              "header_lines": [
+                "Chỉ tiêu"
+              ],
+              "box_2d": [
+                191,
+                92,
+                242,
+                508
+              ]
+            },
+            {
+              "key": "c2",
+              "header_lines": [
+                "Mã số"
+              ],
+              "box_2d": [
+                191,
+                508,
+                242,
+                570
+              ]
+            },
+            {
+              "key": "c3",
+              "header_lines": [
+                "Thuyết",
+                "minh"
+              ],
+              "box_2d": [
+                191,
+                570,
+                242,
+                641
+              ]
+            },
+            {
+              "key": "c4",
+              "header_lines": [
+                "Số cuối kỳ",
+                "31/03/2026"
+              ],
+              "box_2d": [
+                191,
+                641,
+                242,
+                793
+              ]
+            },
+            {
+              "key": "c5",
+              "header_lines": [
+                "Số đầu kỳ",
+                "01/01/2026"
+              ],
+              "box_2d": [
+                191,
+                793,
+                242,
+                950
+              ]
+            }
+          ],
+          "rows": [
+            {
+              "code": null,
+              "label_raw": "NGUỒN VỐN",
+              "note": null,
+              "box_2d": [
+                225,
+                251,
+                240,
+                353
+              ],
+              "cells": []
+            },
+            {
+              "code": "300",
+              "label_raw": "C. NỢ PHẢI TRẢ",
+              "note": null,
+              "box_2d": [
+                242,
+                93,
+                258,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "300",
+                  "box_2d": [
+                    242,
+                    525,
+                    258,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "90.759.396.817",
+                  "box_2d": [
+                    242,
+                    679,
+                    258,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "78.907.957.526",
+                  "box_2d": [
+                    242,
+                    837,
+                    258,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "310",
+              "label_raw": "I. Nợ ngắn hạn",
+              "note": null,
+              "box_2d": [
+                260,
+                93,
+                274,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "310",
+                  "box_2d": [
+                    260,
+                    525,
+                    274,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "90.759.396.817",
+                  "box_2d": [
+                    260,
+                    679,
+                    274,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "78.907.957.526",
+                  "box_2d": [
+                    260,
+                    837,
+                    274,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "311",
+              "label_raw": "1. Phải trả người bán ngắn hạn",
+              "note": null,
+              "box_2d": [
+                275,
+                93,
+                291,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "311",
+                  "box_2d": [
+                    275,
+                    525,
+                    291,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "5.10",
+                  "box_2d": [
+                    275,
+                    587,
+                    291,
+                    618
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "19.216.595.439",
+                  "box_2d": [
+                    275,
+                    679,
+                    291,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "14.417.126.248",
+                  "box_2d": [
+                    275,
+                    837,
+                    291,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "312",
+              "label_raw": "2. Người mua trả tiền trước ngắn hạn",
+              "note": null,
+              "box_2d": [
+                293,
+                93,
+                309,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "312",
+                  "box_2d": [
+                    293,
+                    525,
+                    309,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "2.020.238.236",
+                  "box_2d": [
+                    293,
+                    688,
+                    309,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "3.285.939.228",
+                  "box_2d": [
+                    293,
+                    845,
+                    309,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "313",
+              "label_raw": "3. Phải trả cổ tức, lợi nhuận",
+              "note": null,
+              "box_2d": [
+                310,
+                93,
+                325,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "313",
+                  "box_2d": [
+                    310,
+                    525,
+                    325,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "5.11",
+                  "box_2d": [
+                    310,
+                    587,
+                    325,
+                    618
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "314",
+              "label_raw": "4. Thuế và các khoản phải nộp Nhà nước ngắn hạn",
+              "note": null,
+              "box_2d": [
+                327,
+                93,
+                342,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "314",
+                  "box_2d": [
+                    327,
+                    525,
+                    342,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "5.12",
+                  "box_2d": [
+                    327,
+                    587,
+                    342,
+                    618
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "4.398.457.386",
+                  "box_2d": [
+                    327,
+                    688,
+                    342,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "5.486.779.829",
+                  "box_2d": [
+                    327,
+                    845,
+                    342,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "315",
+              "label_raw": "5. Phải trả người lao động",
+              "note": null,
+              "box_2d": [
+                344,
+                93,
+                358,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "315",
+                  "box_2d": [
+                    344,
+                    525,
+                    358,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "5.10",
+                  "box_2d": [
+                    344,
+                    587,
+                    358,
+                    618
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "55.347.737.080",
+                  "box_2d": [
+                    344,
+                    679,
+                    358,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "41.538.523.008",
+                  "box_2d": [
+                    344,
+                    837,
+                    358,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "316",
+              "label_raw": "6. Chi phí phải trả ngắn hạn",
+              "note": null,
+              "box_2d": [
+                360,
+                93,
+                376,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "316",
+                  "box_2d": [
+                    360,
+                    525,
+                    376,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "5.12",
+                  "box_2d": [
+                    360,
+                    587,
+                    376,
+                    618
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "2.740.346.920",
+                  "box_2d": [
+                    360,
+                    688,
+                    376,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "6.113.321.787",
+                  "box_2d": [
+                    360,
+                    845,
+                    376,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "320",
+              "label_raw": "7. Phải trả ngắn hạn khác",
+              "note": null,
+              "box_2d": [
+                377,
+                93,
+                391,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "320",
+                  "box_2d": [
+                    377,
+                    525,
+                    391,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "5.13",
+                  "box_2d": [
+                    377,
+                    587,
+                    391,
+                    618
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "856.951.694",
+                  "box_2d": [
+                    377,
+                    697,
+                    391,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "699.815.934",
+                  "box_2d": [
+                    377,
+                    854,
+                    391,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "323",
+              "label_raw": "8. Quỹ khen thưởng, phúc lợi",
+              "note": null,
+              "box_2d": [
+                393,
+                93,
+                408,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "323",
+                  "box_2d": [
+                    393,
+                    525,
+                    408,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "6.179.070.062",
+                  "box_2d": [
+                    393,
+                    688,
+                    408,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "7.366.451.492",
+                  "box_2d": [
+                    393,
+                    845,
+                    408,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "330",
+              "label_raw": "II. Nợ dài hạn",
+              "note": null,
+              "box_2d": [
+                410,
+                93,
+                425,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "330",
+                  "box_2d": [
+                    410,
+                    525,
+                    425,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    410,
+                    762,
+                    425,
+                    775
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "label_raw": "D.VỐN CHỦ SỞ HỮU",
+              "note": null,
+              "box_2d": [
+                426,
+                93,
+                440,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "400",
+                  "box_2d": [
+                    426,
+                    525,
+                    440,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "192.540.053.165",
+                  "box_2d": [
+                    426,
+                    679,
+                    440,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "180.064.045.222",
+                  "box_2d": [
+                    426,
+                    837,
+                    440,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "410",
+              "label_raw": "I. Vốn chủ sở hữu",
+              "note": null,
+              "box_2d": [
+                442,
+                93,
+                457,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "410",
+                  "box_2d": [
+                    442,
+                    525,
+                    457,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "192.540.053.165",
+                  "box_2d": [
+                    442,
+                    679,
+                    457,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "180.064.045.222",
+                  "box_2d": [
+                    442,
+                    837,
+                    457,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "411",
+              "label_raw": "1. Vốn góp của chủ sở hữu",
+              "note": null,
+              "box_2d": [
+                458,
+                93,
+                473,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "411",
+                  "box_2d": [
+                    458,
+                    525,
+                    473,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "14b",
+                  "box_2d": [
+                    458,
+                    587,
+                    473,
+                    618
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "120.465.900.000",
+                  "box_2d": [
+                    458,
+                    679,
+                    473,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "120.465.900.000",
+                  "box_2d": [
+                    458,
+                    837,
+                    473,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "411a",
+              "label_raw": "-Cổ phiếu phổ thông có quyền biểu quyết",
+              "note": null,
+              "box_2d": [
+                474,
+                114,
+                488,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "411a",
+                  "box_2d": [
+                    474,
+                    520,
+                    488,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "120.465.900.000",
+                  "box_2d": [
+                    474,
+                    679,
+                    488,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "120.465.900.000",
+                  "box_2d": [
+                    474,
+                    837,
+                    488,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "411b",
+              "label_raw": "-Cổ phiếu ưu đãi",
+              "note": null,
+              "box_2d": [
+                489,
+                114,
+                503,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "411b",
+                  "box_2d": [
+                    489,
+                    520,
+                    503,
+                    553
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "412",
+              "label_raw": "2. Thặng dư vốn cổ phần",
+              "note": null,
+              "box_2d": [
+                505,
+                93,
+                519,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "412",
+                  "box_2d": [
+                    505,
+                    525,
+                    519,
+                    553
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "413",
+              "label_raw": "3.Quyền chọn chuyển đổi trái phiếu",
+              "note": null,
+              "box_2d": [
+                521,
+                93,
+                535,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "413",
+                  "box_2d": [
+                    521,
+                    525,
+                    535,
+                    553
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "414",
+              "label_raw": "4. Vốn khác của chủ sở hữu",
+              "note": null,
+              "box_2d": [
+                536,
+                93,
+                550,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "414",
+                  "box_2d": [
+                    536,
+                    525,
+                    550,
+                    553
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "415",
+              "label_raw": "5. Cổ phiếu mua lại của chính mình (*)",
+              "note": null,
+              "box_2d": [
+                552,
+                93,
+                566,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "415",
+                  "box_2d": [
+                    552,
+                    525,
+                    566,
+                    553
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "416",
+              "label_raw": "6. Chênh lệch đánh giá lại tài sản",
+              "note": null,
+              "box_2d": [
+                568,
+                93,
+                582,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "416",
+                  "box_2d": [
+                    568,
+                    525,
+                    582,
+                    553
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "417",
+              "label_raw": "7. Chênh lệch tỷ giá hối đoái",
+              "note": null,
+              "box_2d": [
+                584,
+                93,
+                597,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "417",
+                  "box_2d": [
+                    584,
+                    525,
+                    597,
+                    553
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "418",
+              "label_raw": "8. Quỹ đầu tư phát triển",
+              "note": null,
+              "box_2d": [
+                599,
+                93,
+                614,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "418",
+                  "box_2d": [
+                    599,
+                    525,
+                    614,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "14a",
+                  "box_2d": [
+                    599,
+                    587,
+                    614,
+                    618
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "10.354.556.281",
+                  "box_2d": [
+                    599,
+                    679,
+                    614,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "10.354.556.281",
+                  "box_2d": [
+                    599,
+                    837,
+                    614,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "419",
+              "label_raw": "9. Quỹ khác thuộc vốn chủ sở hữu",
+              "note": null,
+              "box_2d": [
+                615,
+                93,
+                630,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "419",
+                  "box_2d": [
+                    615,
+                    525,
+                    630,
+                    553
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "420",
+              "label_raw": "10. Lợi nhuận sau thuế chưa phân phối",
+              "note": null,
+              "box_2d": [
+                631,
+                93,
+                645,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "420",
+                  "box_2d": [
+                    631,
+                    525,
+                    645,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "61.719.596.884",
+                  "box_2d": [
+                    631,
+                    679,
+                    645,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "49.243.588.941",
+                  "box_2d": [
+                    631,
+                    837,
+                    645,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "420a",
+              "label_raw": "- LNST chưa phân phối lũy kế đến cuối kỳ trước",
+              "note": null,
+              "box_2d": [
+                646,
+                114,
+                661,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "420a",
+                  "box_2d": [
+                    646,
+                    520,
+                    661,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "49.243.588.941",
+                  "box_2d": [
+                    646,
+                    679,
+                    661,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "635.042.979",
+                  "box_2d": [
+                    646,
+                    854,
+                    661,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "420b",
+              "label_raw": "- LNST chưa phân phối kỳ này",
+              "note": null,
+              "box_2d": [
+                662,
+                114,
+                677,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "420b",
+                  "box_2d": [
+                    662,
+                    520,
+                    677,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "12.476.007.943",
+                  "box_2d": [
+                    662,
+                    679,
+                    677,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "48.608.545.962",
+                  "box_2d": [
+                    662,
+                    837,
+                    677,
+                    941
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "440",
+              "label_raw": "TỔNG CỘNG NGUỒN VỐN",
+              "note": null,
+              "box_2d": [
+                679,
+                93,
+                695,
+                948
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "440",
+                  "box_2d": [
+                    679,
+                    525,
+                    695,
+                    553
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "283.299.449.982",
+                  "box_2d": [
+                    679,
+                    679,
+                    695,
+                    784
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "258.972.002.748",
+                  "box_2d": [
+                    679,
+                    837,
+                    695,
+                    941
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Người lập biểu\n\nшл\n\nHuỳnh Trung Ý",
+          "box_2d": [
+            731,
+            90,
+            839,
+            248
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Kế toán trưởng\n\nĐỗ Ngọc Thắm",
+          "box_2d": [
+            731,
+            436,
+            837,
+            551
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "stamp",
+          "text": "TP.HCM, Ngày 9 tháng 4 năm 2026\nCÔNG TY\nCỔ PHẦN\nLƯƠNG THỰC THỰC PHẨM\nSAFOCO\nTHÀNH PHỐ HỒ CHÍ MINH",
+          "box_2d": [
+            120,
+            609,
+            826,
+            786
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "signature",
+          "text": "Tổng Giám Đốc\nPham Thị Thu Hồng",
+          "box_2d": [
+            135,
+            742,
+            891,
+            877
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "furniture",
+          "text": "2",
+          "box_2d": [
+            966,
+            505,
+            977,
+            515
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        }
+      ]
+    },
+    {
+      "page": 7,
+      "model": "gemini-3.8-flash",
+      "aiBlocks": [
+        {
+          "type": "paragraph",
+          "text": "CÔNG TY CỔ PHẦN LƯƠNG THỰC THỰC PHẨM SAFOCO\n1079 Phạm Văn Đồng, KP52, P.Linh Xuân, TP.HCM\nĐT: 028 38 966 928 Fax: 028 38 960 033",
+          "box_2d": [
+            53,
+            31,
+            116,
+            342
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Báo cáo tài chính\nQuý 1 năm tài chính 2026\nMẫu số B02-DN\nBan hành theo TT99/2025/TT-BTC ngày 27/10/2025 của Bộ Tài Chính",
+          "box_2d": [
+            53,
+            637,
+            137,
+            958
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "heading",
+          "text": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH\nTừ ngày 01/01/2026 đến ngày 31/03/2026",
+          "box_2d": [
+            143,
+            318,
+            192,
+            678
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "table",
+          "text": null,
+          "box_2d": [
+            193,
+            29,
+            816,
+            963
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [
+            {
+              "key": "c1",
+              "header_lines": [
+                "Chỉ tiêu"
+              ],
+              "box_2d": [
+                198,
+                30,
+                264,
+                412
+              ]
+            },
+            {
+              "key": "c2",
+              "header_lines": [
+                "Mã",
+                "số"
+              ],
+              "box_2d": [
+                198,
+                413,
+                263,
+                440
+              ]
+            },
+            {
+              "key": "c3",
+              "header_lines": [
+                "Thuyết",
+                "minh"
+              ],
+              "box_2d": [
+                198,
+                439,
+                263,
+                483
+              ]
+            },
+            {
+              "key": "c4",
+              "header_lines": [
+                "Quý này năm nay"
+              ],
+              "box_2d": [
+                198,
+                482,
+                263,
+                597
+              ]
+            },
+            {
+              "key": "c5",
+              "header_lines": [
+                "Quý này năm trước"
+              ],
+              "box_2d": [
+                197,
+                597,
+                262,
+                716
+              ]
+            },
+            {
+              "key": "c6",
+              "header_lines": [
+                "Số lũy kế từ đầu năm",
+                "đến cuối quý này",
+                "(Năm nay)"
+              ],
+              "box_2d": [
+                196,
+                715,
+                262,
+                840
+              ]
+            },
+            {
+              "key": "c7",
+              "header_lines": [
+                "Số lũy kế từ đầu năm",
+                "đến cuối quý này",
+                "(Năm trước)"
+              ],
+              "box_2d": [
+                194,
+                839,
+                261,
+                963
+              ]
+            }
+          ],
+          "rows": [
+            {
+              "code": "01",
+              "label_raw": "1. Doanh thu bán hàng và cung cấp dịch vụ",
+              "note": null,
+              "box_2d": [
+                263,
+                33,
+                298,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "1. Doanh thu bán hàng và cung cấp dịch vụ",
+                  "box_2d": [
+                    263,
+                    31,
+                    298,
+                    412
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "01",
+                  "box_2d": [
+                    263,
+                    413,
+                    298,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.1",
+                  "box_2d": [
+                    263,
+                    440,
+                    298,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "191.972.559.860",
+                  "box_2d": [
+                    263,
+                    482,
+                    298,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "174.510.485.371",
+                  "box_2d": [
+                    262,
+                    597,
+                    297,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "191.972.559.860",
+                  "box_2d": [
+                    262,
+                    716,
+                    297,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "174.510.485.371",
+                  "box_2d": [
+                    262,
+                    840,
+                    296,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "02",
+              "label_raw": "2. Các khoản giảm trừ doanh thu",
+              "note": null,
+              "box_2d": [
+                297,
+                33,
+                330,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "2. Các khoản giảm trừ doanh thu",
+                  "box_2d": [
+                    297,
+                    32,
+                    330,
+                    412
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "02",
+                  "box_2d": [
+                    297,
+                    413,
+                    330,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.2",
+                  "box_2d": [
+                    297,
+                    440,
+                    330,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "93.343.115",
+                  "box_2d": [
+                    297,
+                    482,
+                    330,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "153.148.931",
+                  "box_2d": [
+                    296,
+                    597,
+                    329,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "93.343.115",
+                  "box_2d": [
+                    296,
+                    716,
+                    329,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "153.148.931",
+                  "box_2d": [
+                    296,
+                    840,
+                    328,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "10",
+              "label_raw": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ (10 = 01 - 02)",
+              "note": null,
+              "box_2d": [
+                330,
+                33,
+                363,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ (10 = 01 - 02)",
+                  "box_2d": [
+                    330,
+                    32,
+                    363,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "10",
+                  "box_2d": [
+                    330,
+                    413,
+                    363,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.3",
+                  "box_2d": [
+                    330,
+                    440,
+                    363,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "191.879.216.745",
+                  "box_2d": [
+                    330,
+                    482,
+                    363,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "174.357.336.440",
+                  "box_2d": [
+                    329,
+                    597,
+                    362,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "191.879.216.745",
+                  "box_2d": [
+                    329,
+                    716,
+                    362,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "174.357.336.440",
+                  "box_2d": [
+                    328,
+                    840,
+                    362,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "11",
+              "label_raw": "4. Giá vốn hàng bán",
+              "note": null,
+              "box_2d": [
+                363,
+                33,
+                396,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "4. Giá vốn hàng bán",
+                  "box_2d": [
+                    363,
+                    32,
+                    396,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "11",
+                  "box_2d": [
+                    363,
+                    413,
+                    396,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.4",
+                  "box_2d": [
+                    363,
+                    440,
+                    396,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "153.708.240.062",
+                  "box_2d": [
+                    363,
+                    482,
+                    396,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "137.177.000.742",
+                  "box_2d": [
+                    362,
+                    597,
+                    395,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "153.708.240.062",
+                  "box_2d": [
+                    362,
+                    716,
+                    395,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "137.177.000.742",
+                  "box_2d": [
+                    362,
+                    840,
+                    395,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "20",
+              "label_raw": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ (20=10-11)",
+              "note": null,
+              "box_2d": [
+                395,
+                33,
+                429,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ (20=10-11)",
+                  "box_2d": [
+                    395,
+                    32,
+                    429,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "20",
+                  "box_2d": [
+                    395,
+                    413,
+                    429,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "38.170.976.683",
+                  "box_2d": [
+                    395,
+                    482,
+                    429,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "37.180.335.698",
+                  "box_2d": [
+                    395,
+                    597,
+                    428,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "38.170.976.683",
+                  "box_2d": [
+                    395,
+                    716,
+                    428,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "37.180.335.698",
+                  "box_2d": [
+                    395,
+                    840,
+                    428,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "22",
+              "label_raw": "6. Doanh thu hoạt động tài chính",
+              "note": null,
+              "box_2d": [
+                428,
+                33,
+                461,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "6. Doanh thu hoạt động tài chính",
+                  "box_2d": [
+                    428,
+                    32,
+                    461,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "22",
+                  "box_2d": [
+                    428,
+                    413,
+                    461,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.5",
+                  "box_2d": [
+                    428,
+                    440,
+                    461,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "2.340.174.214",
+                  "box_2d": [
+                    428,
+                    482,
+                    461,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "1.547.904.499",
+                  "box_2d": [
+                    428,
+                    597,
+                    461,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "2.340.174.214",
+                  "box_2d": [
+                    428,
+                    716,
+                    461,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "1.547.904.499",
+                  "box_2d": [
+                    428,
+                    840,
+                    461,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "23",
+              "label_raw": "7. Chi phí tài chính",
+              "note": null,
+              "box_2d": [
+                461,
+                33,
+                494,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "7. Chi phí tài chính",
+                  "box_2d": [
+                    461,
+                    32,
+                    494,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "23",
+                  "box_2d": [
+                    461,
+                    413,
+                    494,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.6",
+                  "box_2d": [
+                    461,
+                    440,
+                    494,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "392.431.878",
+                  "box_2d": [
+                    461,
+                    482,
+                    494,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "99.626.602",
+                  "box_2d": [
+                    461,
+                    597,
+                    494,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "392.431.878",
+                  "box_2d": [
+                    461,
+                    716,
+                    494,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "99.626.602",
+                  "box_2d": [
+                    461,
+                    840,
+                    494,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "25",
+              "label_raw": "8. Chi phí bán hàng",
+              "note": null,
+              "box_2d": [
+                493,
+                33,
+                526,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "8. Chi phí bán hàng",
+                  "box_2d": [
+                    493,
+                    32,
+                    526,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "25",
+                  "box_2d": [
+                    493,
+                    413,
+                    526,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "18.720.198.614",
+                  "box_2d": [
+                    493,
+                    482,
+                    526,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "18.290.804.075",
+                  "box_2d": [
+                    493,
+                    597,
+                    526,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "18.720.198.614",
+                  "box_2d": [
+                    493,
+                    716,
+                    526,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "18.290.804.075",
+                  "box_2d": [
+                    493,
+                    840,
+                    526,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "26",
+              "label_raw": "9. Chi phí quản lý doanh nghiệp",
+              "note": null,
+              "box_2d": [
+                525,
+                33,
+                559,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "9. Chi phí quản lý doanh nghiệp",
+                  "box_2d": [
+                    525,
+                    32,
+                    559,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "26",
+                  "box_2d": [
+                    525,
+                    413,
+                    559,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "5.866.360.367",
+                  "box_2d": [
+                    525,
+                    482,
+                    559,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "4.964.175.265",
+                  "box_2d": [
+                    525,
+                    597,
+                    558,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "5.866.360.367",
+                  "box_2d": [
+                    525,
+                    716,
+                    558,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "4.964.175.265",
+                  "box_2d": [
+                    525,
+                    840,
+                    558,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "30",
+              "label_raw": "10. Lợi nhuận thuần từ hoạt động kinh doanh {30 = 20 + (22 - 23) - (25 + 26)}",
+              "note": null,
+              "box_2d": [
+                558,
+                33,
+                591,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "10. Lợi nhuận thuần từ hoạt động kinh doanh {30 = 20 + (22 - 23) - (25 + 26)}",
+                  "box_2d": [
+                    558,
+                    32,
+                    591,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "30",
+                  "box_2d": [
+                    558,
+                    413,
+                    591,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "15.532.160.038",
+                  "box_2d": [
+                    558,
+                    482,
+                    591,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "15.373.634.255",
+                  "box_2d": [
+                    558,
+                    597,
+                    590,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "15.532.160.038",
+                  "box_2d": [
+                    558,
+                    716,
+                    590,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "15.373.634.255",
+                  "box_2d": [
+                    558,
+                    840,
+                    590,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "31",
+              "label_raw": "11. Thu nhập khác",
+              "note": null,
+              "box_2d": [
+                591,
+                33,
+                623,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "11. Thu nhập khác",
+                  "box_2d": [
+                    591,
+                    32,
+                    623,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "31",
+                  "box_2d": [
+                    591,
+                    413,
+                    623,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.7",
+                  "box_2d": [
+                    591,
+                    440,
+                    623,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "382.945.040",
+                  "box_2d": [
+                    591,
+                    482,
+                    623,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "275.000.851",
+                  "box_2d": [
+                    590,
+                    597,
+                    623,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "382.945.040",
+                  "box_2d": [
+                    590,
+                    716,
+                    623,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "275.000.851",
+                  "box_2d": [
+                    590,
+                    840,
+                    622,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "32",
+              "label_raw": "12. Chi phí khác",
+              "note": null,
+              "box_2d": [
+                623,
+                33,
+                656,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "12. Chi phí khác",
+                  "box_2d": [
+                    623,
+                    32,
+                    656,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "32",
+                  "box_2d": [
+                    623,
+                    413,
+                    656,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.8",
+                  "box_2d": [
+                    623,
+                    440,
+                    656,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "8.666.739",
+                  "box_2d": [
+                    623,
+                    482,
+                    656,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "31.383.837",
+                  "box_2d": [
+                    623,
+                    597,
+                    655,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "8.666.739",
+                  "box_2d": [
+                    623,
+                    716,
+                    655,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "31.383.837",
+                  "box_2d": [
+                    623,
+                    840,
+                    655,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "40",
+              "label_raw": "13. Lợi nhuận khác (40 = 31 - 32)",
+              "note": null,
+              "box_2d": [
+                655,
+                33,
+                688,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "13. Lợi nhuận khác (40 = 31 - 32)",
+                  "box_2d": [
+                    655,
+                    32,
+                    688,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "40",
+                  "box_2d": [
+                    655,
+                    413,
+                    688,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "374.278.301",
+                  "box_2d": [
+                    655,
+                    482,
+                    688,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "243.617.014",
+                  "box_2d": [
+                    655,
+                    597,
+                    687,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "374.278.301",
+                  "box_2d": [
+                    655,
+                    716,
+                    687,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "243.617.014",
+                  "box_2d": [
+                    655,
+                    840,
+                    687,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "50",
+              "label_raw": "14. Tổng lợi nhuận kế toán trước thuế (50 = 30 + 40)",
+              "note": null,
+              "box_2d": [
+                687,
+                33,
+                720,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "14. Tổng lợi nhuận kế toán trước thuế (50 = 30 + 40)",
+                  "box_2d": [
+                    687,
+                    32,
+                    720,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "50",
+                  "box_2d": [
+                    687,
+                    413,
+                    720,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "15.906.438.339",
+                  "box_2d": [
+                    687,
+                    482,
+                    720,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "15.617.251.269",
+                  "box_2d": [
+                    687,
+                    597,
+                    720,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "15.906.438.339",
+                  "box_2d": [
+                    687,
+                    716,
+                    720,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "15.617.251.269",
+                  "box_2d": [
+                    687,
+                    840,
+                    720,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "51",
+              "label_raw": "15. Chi phí thuế TNDN hiện hành",
+              "note": null,
+              "box_2d": [
+                720,
+                33,
+                752,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "15. Chi phí thuế TNDN hiện hành",
+                  "box_2d": [
+                    720,
+                    32,
+                    752,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "51",
+                  "box_2d": [
+                    720,
+                    413,
+                    752,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "6.10",
+                  "box_2d": [
+                    720,
+                    440,
+                    752,
+                    483
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "3.430.430.396",
+                  "box_2d": [
+                    720,
+                    482,
+                    752,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "3.199.288.002",
+                  "box_2d": [
+                    720,
+                    597,
+                    752,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "3.430.430.396",
+                  "box_2d": [
+                    720,
+                    716,
+                    752,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "3.199.288.002",
+                  "box_2d": [
+                    720,
+                    840,
+                    752,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "60",
+              "label_raw": "16. Lợi nhuận sau thuế thu nhập doanh nghiệp (60=50 – 51 - 52)",
+              "note": null,
+              "box_2d": [
+                752,
+                33,
+                786,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "16. Lợi nhuận sau thuế thu nhập doanh nghiệp (60=50 – 51 - 52)",
+                  "box_2d": [
+                    752,
+                    32,
+                    786,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "60",
+                  "box_2d": [
+                    752,
+                    413,
+                    786,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "12.476.007.943",
+                  "box_2d": [
+                    752,
+                    482,
+                    786,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "12.417.963.267",
+                  "box_2d": [
+                    752,
+                    597,
+                    785,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "12.476.007.943",
+                  "box_2d": [
+                    752,
+                    716,
+                    785,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "12.417.963.267",
+                  "box_2d": [
+                    752,
+                    840,
+                    785,
+                    962
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "70",
+              "label_raw": "17. Lãi cơ bản trên cổ phiếu (*)",
+              "note": null,
+              "box_2d": [
+                784,
+                33,
+                816,
+                962
+              ],
+              "cells": [
+                {
+                  "column_key": "c1",
+                  "raw": "17. Lãi cơ bản trên cổ phiếu (*)",
+                  "box_2d": [
+                    784,
+                    32,
+                    816,
+                    413
+                  ]
+                },
+                {
+                  "column_key": "c2",
+                  "raw": "70",
+                  "box_2d": [
+                    784,
+                    413,
+                    816,
+                    440
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": null,
+                  "box_2d": null
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "1.036",
+                  "box_2d": [
+                    784,
+                    482,
+                    816,
+                    597
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "1.031",
+                  "box_2d": [
+                    784,
+                    597,
+                    816,
+                    716
+                  ]
+                },
+                {
+                  "column_key": "c6",
+                  "raw": "1.036",
+                  "box_2d": [
+                    784,
+                    716,
+                    816,
+                    840
+                  ]
+                },
+                {
+                  "column_key": "c7",
+                  "raw": "1.031",
+                  "box_2d": [
+                    784,
+                    840,
+                    816,
+                    962
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "signature",
+          "text": "Người lập biểu\nHuỳnh Trung Ý",
+          "box_2d": [
+            837,
+            69,
+            961,
+            199
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "signature",
+          "text": "Kế toán trưởng\nĐỗ Ngọc Thắm",
+          "box_2d": [
+            804,
+            407,
+            977,
+            529
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "paragraph",
+          "text": "TP.HCM, Ngày 9 tháng 4 năm 2026",
+          "box_2d": [
+            823,
+            762,
+            839,
+            926
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "signature",
+          "text": "Tổng Giám Đốc\nPhạm Thị Thu Hồng",
+          "box_2d": [
+            842,
+            775,
+            959,
+            979
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "stamp",
+          "text": "CÔNG TY CỔ PHẦN LƯƠNG THỰC THỰC PHẨM SAFOCO",
+          "box_2d": [
+            756,
+            702,
+            928,
+            831
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        }
+      ]
+    },
+    {
+      "page": 8,
+      "model": "gemini-3.5-flash-lite",
+      "aiBlocks": [
+        {
+          "type": "heading",
+          "text": "CÔNG TY CP LƯƠNG THỰC THỰC PHẨM SAFOCO\nĐịa chỉ:1079 Phạm Văn Đồng, KP52, P.Linh Xuân, TP.HCM\nTel:028 38 966 928 Fax: 028 38 960 033",
+          "box_2d": [
+            31,
+            81,
+            104,
+            497
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "heading",
+          "text": "Báo cáo tài chính\nQuý 1 năm tài chính 2026\nMẫu số B03-DN\n(Theo TT 99/2025/TT-BTC ngày 27/10/2025 của Bộ Tài Chính)",
+          "box_2d": [
+            31,
+            529,
+            93,
+            959
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "heading",
+          "text": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ - QUÝ 1 NĂM 2026\n( Phương pháp trực tiếp )",
+          "box_2d": [
+            114,
+            233,
+            153,
+            854
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "table",
+          "text": null,
+          "box_2d": [
+            187,
+            76,
+            819,
+            969
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [
+            {
+              "key": "c1",
+              "header_lines": [
+                "Chỉ tiêu"
+              ],
+              "box_2d": [
+                187,
+                76,
+                245,
+                559
+              ]
+            },
+            {
+              "key": "c2",
+              "header_lines": [
+                "Mã",
+                "chỉ",
+                "tiêu"
+              ],
+              "box_2d": [
+                187,
+                559,
+                245,
+                603
+              ]
+            },
+            {
+              "key": "c3",
+              "header_lines": [
+                "Thuyết",
+                "minh"
+              ],
+              "box_2d": [
+                187,
+                603,
+                245,
+                667
+              ]
+            },
+            {
+              "key": "c4",
+              "header_lines": [
+                "Lũy kế từ đầu",
+                "năm đến cuối",
+                "quý 1/2026"
+              ],
+              "box_2d": [
+                187,
+                667,
+                245,
+                815
+              ]
+            },
+            {
+              "key": "c5",
+              "header_lines": [
+                "Lũy kế từ đầu",
+                "năm đến cuối",
+                "quý 1/2025"
+              ],
+              "box_2d": [
+                187,
+                815,
+                245,
+                969
+              ]
+            }
+          ],
+          "rows": [
+            {
+              "code": null,
+              "label_raw": "I. Lưu chuyển tiền từ hoạt động kinh doanh",
+              "note": null,
+              "box_2d": [
+                249,
+                82,
+                260,
+                391
+              ],
+              "cells": []
+            },
+            {
+              "code": "01",
+              "label_raw": "1. Tiền thu từ bán hàng, cung cấp dịch vụ và doanh thu khác",
+              "note": null,
+              "box_2d": [
+                268,
+                82,
+                284,
+                800
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "01",
+                  "box_2d": [
+                    268,
+                    574,
+                    284,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "183.309.125.913",
+                  "box_2d": [
+                    268,
+                    682,
+                    284,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "175.292.738.638",
+                  "box_2d": [
+                    268,
+                    841,
+                    284,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "02",
+              "label_raw": "2. Tiền chi trả cho người cung cấp hàng hóa và dịch vụ",
+              "note": null,
+              "box_2d": [
+                289,
+                82,
+                306,
+                967
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "02",
+                  "box_2d": [
+                    289,
+                    573,
+                    306,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(128.422.801.514)",
+                  "box_2d": [
+                    289,
+                    667,
+                    306,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(114.943.905.057)",
+                  "box_2d": [
+                    289,
+                    841,
+                    306,
+                    967
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "03",
+              "label_raw": "3. Tiền chi trả cho người lao động",
+              "note": null,
+              "box_2d": [
+                311,
+                82,
+                327,
+                967
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "03",
+                  "box_2d": [
+                    311,
+                    573,
+                    327,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(20.605.526.178)",
+                  "box_2d": [
+                    311,
+                    677,
+                    327,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(29.412.223.412)",
+                  "box_2d": [
+                    311,
+                    841,
+                    327,
+                    967
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "04",
+              "label_raw": "4. Tiền lãi vay đã trả",
+              "note": null,
+              "box_2d": [
+                332,
+                82,
+                348,
+                590
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "04",
+                  "box_2d": [
+                    332,
+                    573,
+                    348,
+                    590
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "05",
+              "label_raw": "5. Thuế thu nhập doanh nghiệp đã nộp",
+              "note": null,
+              "box_2d": [
+                353,
+                82,
+                370,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "05",
+                  "box_2d": [
+                    353,
+                    573,
+                    370,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(3.222.749.624)",
+                  "box_2d": [
+                    353,
+                    687,
+                    370,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(3.084.261.774)",
+                  "box_2d": [
+                    353,
+                    851,
+                    370,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "06",
+              "label_raw": "6. Tiền thu khác từ hoạt động kinh doanh",
+              "note": null,
+              "box_2d": [
+                374,
+                82,
+                391,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "06",
+                  "box_2d": [
+                    374,
+                    573,
+                    391,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "938.124.738",
+                  "box_2d": [
+                    374,
+                    708,
+                    391,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "500.368.295",
+                  "box_2d": [
+                    374,
+                    873,
+                    391,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "07",
+              "label_raw": "7. Tiền chi khác cho hoạt động kinh doanh",
+              "note": null,
+              "box_2d": [
+                395,
+                82,
+                412,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "07",
+                  "box_2d": [
+                    395,
+                    573,
+                    412,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(7.689.054.119)",
+                  "box_2d": [
+                    395,
+                    677,
+                    412,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(7.030.530.046)",
+                  "box_2d": [
+                    395,
+                    841,
+                    412,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "20",
+              "label_raw": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+              "note": null,
+              "box_2d": [
+                415,
+                82,
+                432,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "20",
+                  "box_2d": [
+                    415,
+                    573,
+                    432,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "24.307.119.216",
+                  "box_2d": [
+                    415,
+                    704,
+                    432,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "21.322.186.644",
+                  "box_2d": [
+                    415,
+                    868,
+                    432,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": null,
+              "label_raw": "II. Lưu chuyển tiền từ hoạt động đầu tư",
+              "note": null,
+              "box_2d": [
+                435,
+                82,
+                450,
+                362
+              ],
+              "cells": []
+            },
+            {
+              "code": "21",
+              "label_raw": "1.Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",
+              "note": null,
+              "box_2d": [
+                453,
+                82,
+                470,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "21",
+                  "box_2d": [
+                    453,
+                    573,
+                    470,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(617.797.014)",
+                  "box_2d": [
+                    453,
+                    706,
+                    470,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(43.500.000)",
+                  "box_2d": [
+                    453,
+                    878,
+                    470,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "22",
+              "label_raw": "2.Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",
+              "note": null,
+              "box_2d": [
+                473,
+                82,
+                492,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "22",
+                  "box_2d": [
+                    473,
+                    573,
+                    492,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    473,
+                    741,
+                    492,
+                    747
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "_",
+                  "box_2d": [
+                    473,
+                    905,
+                    492,
+                    911
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "23",
+              "label_raw": "3.Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",
+              "note": null,
+              "box_2d": [
+                496,
+                82,
+                513,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "23",
+                  "box_2d": [
+                    496,
+                    573,
+                    513,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(70.000.000.000)",
+                  "box_2d": [
+                    496,
+                    668,
+                    513,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(55.000.000.000)",
+                  "box_2d": [
+                    496,
+                    832,
+                    513,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "24",
+              "label_raw": "4.Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",
+              "note": null,
+              "box_2d": [
+                517,
+                82,
+                534,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "24",
+                  "box_2d": [
+                    517,
+                    573,
+                    534,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "45.000.000.000",
+                  "box_2d": [
+                    517,
+                    682,
+                    534,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "55.000.000.000",
+                  "box_2d": [
+                    517,
+                    846,
+                    534,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "25",
+              "label_raw": "5.Tiền chi đầu tư góp vốn vào đơn vị khác",
+              "note": null,
+              "box_2d": [
+                538,
+                82,
+                555,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "25",
+                  "box_2d": [
+                    538,
+                    573,
+                    555,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    538,
+                    741,
+                    555,
+                    747
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "_",
+                  "box_2d": [
+                    538,
+                    905,
+                    555,
+                    911
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "26",
+              "label_raw": "6.Tiền thu hồi đầu tư góp vốn vào đơn vị khác",
+              "note": null,
+              "box_2d": [
+                559,
+                82,
+                576,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "26",
+                  "box_2d": [
+                    559,
+                    573,
+                    576,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    559,
+                    741,
+                    576,
+                    747
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "_",
+                  "box_2d": [
+                    559,
+                    905,
+                    576,
+                    911
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "27",
+              "label_raw": "7.Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",
+              "note": null,
+              "box_2d": [
+                580,
+                82,
+                597,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "27",
+                  "box_2d": [
+                    580,
+                    573,
+                    597,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "1.641.783.610",
+                  "box_2d": [
+                    580,
+                    704,
+                    597,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "1.868.570.141",
+                  "box_2d": [
+                    580,
+                    868,
+                    597,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "30",
+              "label_raw": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+              "note": null,
+              "box_2d": [
+                600,
+                82,
+                617,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "30",
+                  "box_2d": [
+                    600,
+                    573,
+                    617,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "(23.976.013.404)",
+                  "box_2d": [
+                    600,
+                    677,
+                    617,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "1.825.070.141",
+                  "box_2d": [
+                    600,
+                    868,
+                    617,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": null,
+              "label_raw": "III. Lưu chuyển tiền từ hoạt động tài chính",
+              "note": null,
+              "box_2d": [
+                620,
+                82,
+                636,
+                376
+              ],
+              "cells": []
+            },
+            {
+              "code": "31",
+              "label_raw": "1.Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",
+              "note": null,
+              "box_2d": [
+                639,
+                82,
+                658,
+                590
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "31",
+                  "box_2d": [
+                    639,
+                    573,
+                    658,
+                    590
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "32",
+              "label_raw": "2.Tiền chi trả vốn góp cho các chủ sở hữu, mua lại cổ phiếu của\ndoanh nghiệp đã phát hành",
+              "note": null,
+              "box_2d": [
+                660,
+                82,
+                691,
+                590
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "32",
+                  "box_2d": [
+                    660,
+                    573,
+                    678,
+                    590
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "33",
+              "label_raw": "3.Tiền vay ngắn hạn, dài hạn nhận được",
+              "note": null,
+              "box_2d": [
+                694,
+                82,
+                710,
+                590
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "33",
+                  "box_2d": [
+                    694,
+                    573,
+                    710,
+                    590
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "34",
+              "label_raw": "4.Tiền chi trả nợ gốc vay",
+              "note": null,
+              "box_2d": [
+                715,
+                82,
+                731,
+                590
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "34",
+                  "box_2d": [
+                    715,
+                    573,
+                    731,
+                    590
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "35",
+              "label_raw": "5.Tiền chi trả nợ thuê tài chính",
+              "note": null,
+              "box_2d": [
+                735,
+                82,
+                751,
+                590
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "35",
+                  "box_2d": [
+                    735,
+                    573,
+                    751,
+                    590
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "36",
+              "label_raw": "6. Cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+              "note": null,
+              "box_2d": [
+                754,
+                82,
+                771,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "36",
+                  "box_2d": [
+                    754,
+                    573,
+                    771,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    754,
+                    741,
+                    771,
+                    747
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(36.139.271.250)",
+                  "box_2d": [
+                    754,
+                    841,
+                    771,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "40",
+              "label_raw": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+              "note": null,
+              "box_2d": [
+                774,
+                82,
+                791,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "40",
+                  "box_2d": [
+                    774,
+                    573,
+                    791,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "_",
+                  "box_2d": [
+                    774,
+                    741,
+                    791,
+                    747
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(36.139.271.250)",
+                  "box_2d": [
+                    774,
+                    841,
+                    791,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "50",
+              "label_raw": "Lưu chuyển tiền thuần trong kỳ (50 = 20+30+40)",
+              "note": null,
+              "box_2d": [
+                795,
+                82,
+                812,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "50",
+                  "box_2d": [
+                    795,
+                    573,
+                    812,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "331.105.812",
+                  "box_2d": [
+                    795,
+                    708,
+                    812,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "(12.992.014.465)",
+                  "box_2d": [
+                    795,
+                    841,
+                    812,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "60",
+              "label_raw": "Tiền và tương đương tiền đầu kỳ",
+              "note": null,
+              "box_2d": [
+                815,
+                82,
+                832,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "60",
+                  "box_2d": [
+                    815,
+                    573,
+                    832,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "58.772.734.482",
+                  "box_2d": [
+                    815,
+                    704,
+                    832,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "64.762.103.989",
+                  "box_2d": [
+                    815,
+                    868,
+                    832,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "61",
+              "label_raw": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+              "note": null,
+              "box_2d": [
+                835,
+                82,
+                852,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "61",
+                  "box_2d": [
+                    835,
+                    573,
+                    852,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "3.470.555",
+                  "box_2d": [
+                    835,
+                    744,
+                    852,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "263.515",
+                  "box_2d": [
+                    835,
+                    919,
+                    852,
+                    965
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "70",
+              "label_raw": "Tiền và tương đương tiền cuối kỳ (70 = 50+60+61)",
+              "note": null,
+              "box_2d": [
+                855,
+                82,
+                873,
+                965
+              ],
+              "cells": [
+                {
+                  "column_key": "c2",
+                  "raw": "70",
+                  "box_2d": [
+                    855,
+                    573,
+                    873,
+                    590
+                  ]
+                },
+                {
+                  "column_key": "c3",
+                  "raw": "5.1",
+                  "box_2d": [
+                    855,
+                    609,
+                    873,
+                    637
+                  ]
+                },
+                {
+                  "column_key": "c4",
+                  "raw": "59.107.310.849",
+                  "box_2d": [
+                    855,
+                    704,
+                    873,
+                    800
+                  ]
+                },
+                {
+                  "column_key": "c5",
+                  "raw": "51.770.353.039",
+                  "box_2d": [
+                    855,
+                    868,
+                    873,
+                    965
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "signature",
+          "text": "Người lập biểu\nHuỳnh Trung Ý",
+          "box_2d": [
+            837,
+            104,
+            972,
+            275
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "signature",
+          "text": "Kế toán trưởng\nĐỗ Ngọc Thắm",
+          "box_2d": [
+            837,
+            395,
+            972,
+            559
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "stamp",
+          "text": "M.S.D.N:030375220\nCÔNG TY\nCP\nLƯƠNG THỰC THỰC PHẨM\nSAFOCO\nTHÀNH PHỐ HỒ CHÍ MINH",
+          "box_2d": [
+            803,
+            627,
+            925,
+            799
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        },
+        {
+          "type": "signature",
+          "text": "TP.HCM, Ngày 9 tháng 4 năm 2026\nTổng Giám Đốc\nPhạm Thị Thu Hồng",
+          "box_2d": [
+            837,
+            648,
+            972,
+            959
+          ],
+          "title": null,
+          "unit_text": null,
+          "columns": [],
+          "rows": []
+        }
+      ]
+    }
+  ]
+}

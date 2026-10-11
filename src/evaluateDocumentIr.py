@@ -212,7 +212,7 @@ def _spreadsheet_gold_result(table_dir: Path, index: dict[str, Any], gold_path: 
         "self_checked" if review_methods and all(
             method in ("independent_checked", "self_checked") for method in review_methods) else
         "unreviewed")
-    reviewed = review_method != "unreviewed"
+    reviewed = review_method == "independent_checked"
     unreferenced: list[dict[str, Any]] = []
     period_unresolved_ir_cells = 0
     matched_candidate_count: dict[tuple[str, str, str, str], int] = {}
@@ -297,7 +297,7 @@ def _manual_gold_result(table_dir: Path, index: dict[str, Any], gold_path: Path)
         "self_checked" if review_methods and all(
             method in ("independent_checked", "self_checked") for method in review_methods) else
         "unreviewed")
-    reviewed = review_method != "unreviewed"
+    reviewed = review_method == "independent_checked"
     return {"source": "manual_pdf_transcription", "gold_file": str(gold_path),
             "gold_items": len(details), "gold_matched": matched,
             "human_approved": reviewed,
@@ -380,7 +380,7 @@ def _print_summary(result: dict[str, Any], pdf: Path, ir_dir: Path) -> None:
     if reference is None:
         manual = result.get("manual_gold")
         if manual is not None and manual["agreement_rate"] is not None:
-            label = ("Độ chính xác trên gold tự kiểm" if manual["review_method"] == "self_checked"
+            label = ("Mức khớp với gold tự kiểm" if manual["review_method"] == "self_checked"
                      else "Độ chính xác trên gold kiểm độc lập" if manual["human_approved"]
                      else "Mức khớp với file chép tay (chưa duyệt)")
             print(f"{label}: {manual['agreement_rate'] * 100:.2f}% "
@@ -391,7 +391,7 @@ def _print_summary(result: dict[str, Any], pdf: Path, ir_dir: Path) -> None:
         else:
             print("Không có ô có tọa độ để so với Poppler")
     else:
-        label = ("Độ chính xác trên gold tự kiểm" if reference["review_method"] == "self_checked"
+        label = ("Mức khớp với gold tự kiểm" if reference["review_method"] == "self_checked"
                  else "Độ chính xác trên gold kiểm độc lập" if reference["human_approved"]
                  else "Mức khớp với Excel/CSV (chưa duyệt)")
         print(f"{label}: {reference['agreement_rate'] * 100:.2f}% "

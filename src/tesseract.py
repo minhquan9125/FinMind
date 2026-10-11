@@ -49,11 +49,11 @@ def tess_env(tessdata: str | None) -> dict[str, str]:
     return env
 
 
-def tesseract(image: Path, env: dict[str, str]) -> TessResult:
+def tesseract(image: Path, env: dict[str, str], *, psm: int = 3) -> TessResult:
     """Read Vietnamese OCR as TSV, then rebuild text by paragraph and line."""
     start = time.perf_counter()
     # Use TSV flags because tessdata_best does not include the tsv config file.
-    result = run(required_command("tesseract"), [str(image), "-", "-l", "vie", "--psm", "3",
+    result = run(required_command("tesseract"), [str(image), "-", "-l", "vie", "--psm", str(psm),
                  "--dpi", "300", "-c", "preserve_interword_spaces=1",
                  "-c", "tessedit_create_tsv=1", "-c", "tessedit_create_txt=0"],
                  env={**env, "OMP_THREAD_LIMIT": "1"})

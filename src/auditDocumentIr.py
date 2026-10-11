@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -188,6 +189,9 @@ def audit(pdf_path: Path, ir_dir: Path, template_path: Path | None = None) -> di
 
 
 def main() -> int:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure") and stream.encoding.lower() != "utf-8":
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("pdf", type=Path)
     parser.add_argument("--ir-dir", type=Path)

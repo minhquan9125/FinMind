@@ -798,6 +798,7 @@
       "result_code": "100",
       "actual": "36705751751876",
       "expected": "36705751751876",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         148
       ],
@@ -813,6 +814,183 @@
       "result_code": "100",
       "actual": "45535942846453",
       "expected": "45535942846453",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:110",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "110",
+      "actual": "8279156683221",
+      "expected": "8279156683221",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:110",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "110",
+      "actual": "9315440438884",
+      "expected": "9315440438884",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:120",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "120",
+      "actual": "16104205358010",
+      "expected": "16104205358010",
+      "not_reported_optional_codes": [
+        "121",
+        "122"
+      ],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:120",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "120",
+      "actual": "21785213686808",
+      "expected": "21785213686808",
+      "not_reported_optional_codes": [
+        "121",
+        "122"
+      ],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:130",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "130",
+      "actual": "9674343237344",
+      "expected": "9674343237344",
+      "not_reported_optional_codes": [
+        "133",
+        "139"
+      ],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:130",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "130",
+      "actual": "11381523992803",
+      "expected": "11381523992803",
+      "not_reported_optional_codes": [
+        "133",
+        "139"
+      ],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:140",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "140",
+      "actual": "1593411075233",
+      "expected": "1593411075233",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:140",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "140",
+      "actual": "1856756949030",
+      "expected": "1856756949030",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:150",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "150",
+      "actual": "1054635398068",
+      "expected": "1054635398068",
+      "not_reported_optional_codes": [
+        "154"
+      ],
+      "pdf_pages": [
+        148
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:150",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "150",
+      "actual": "1197007778928",
+      "expected": "1197007778928",
+      "not_reported_optional_codes": [
+        "154"
+      ],
       "pdf_pages": [
         148
       ],
@@ -828,6 +1006,7 @@
       "result_code": "200",
       "actual": "23577075781023",
       "expected": "23577075781023",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         149,
         150
@@ -844,8 +1023,289 @@
       "result_code": "200",
       "actual": "26464052832167",
       "expected": "26464052832167",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         149,
+        150
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:210",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "210",
+      "actual": "247392102550",
+      "expected": "247392102550",
+      "not_reported_optional_codes": [
+        "211",
+        "212",
+        "213",
+        "214"
+      ],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:210",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "210",
+      "actual": "331646166008",
+      "expected": "331646166008",
+      "not_reported_optional_codes": [
+        "211",
+        "212",
+        "213",
+        "214"
+      ],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:220",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "220",
+      "actual": "13643232649833",
+      "expected": "13643232649833",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:220",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "220",
+      "actual": "14816131186204",
+      "expected": "14816131186204",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:221",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "221",
+      "actual": "12382116875249",
+      "expected": "12382116875249",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:221",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "221",
+      "actual": "12774567961718",
+      "expected": "12774567961718",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:224",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "224",
+      "actual": "4018633151",
+      "expected": "4018633151",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:224",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "224",
+      "actual": "2042708364",
+      "expected": "2042708364",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:227",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "227",
+      "actual": "1257097141433",
+      "expected": "1257097141433",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:227",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "227",
+      "actual": "2039520516122",
+      "expected": "2039520516122",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:240",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "240",
+      "actual": "1315270136003",
+      "expected": "1315270136003",
+      "not_reported_optional_codes": [
+        "241"
+      ],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:240",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "240",
+      "actual": "2559766724411",
+      "expected": "2559766724411",
+      "not_reported_optional_codes": [
+        "241"
+      ],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:250",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "250",
+      "actual": "3335009108332",
+      "expected": "3335009108332",
+      "not_reported_optional_codes": [
+        "251"
+      ],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:250",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "250",
+      "actual": "3318095237260",
+      "expected": "3318095237260",
+      "not_reported_optional_codes": [
+        "251"
+      ],
+      "pdf_pages": [
+        149
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:260",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "260",
+      "actual": "5036171784305",
+      "expected": "5036171784305",
+      "not_reported_optional_codes": [
+        "263",
+        "268"
+      ],
+      "pdf_pages": [
+        150
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:260",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "260",
+      "actual": "5438413518284",
+      "expected": "5438413518284",
+      "not_reported_optional_codes": [
+        "263",
+        "268"
+      ],
+      "pdf_pages": [
         150
       ],
       "source": "template_lines"
@@ -860,6 +1320,7 @@
       "result_code": "270",
       "actual": "60282827532899",
       "expected": "60282827532899",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         148,
         149,
@@ -877,6 +1338,7 @@
       "result_code": "270",
       "actual": "71999995678620",
       "expected": "71999995678620",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         148,
         149,
@@ -894,6 +1356,7 @@
       "result_code": "300",
       "actual": "30349816316666",
       "expected": "30349816316666",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         151
       ],
@@ -909,6 +1372,91 @@
       "result_code": "300",
       "actual": "36272455573820",
       "expected": "36272455573820",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        151
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:310",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "310",
+      "actual": "29651673556227",
+      "expected": "29651673556227",
+      "not_reported_optional_codes": [
+        "316"
+      ],
+      "pdf_pages": [
+        151
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:310",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "310",
+      "actual": "34836184067740",
+      "expected": "34836184067740",
+      "not_reported_optional_codes": [
+        "316"
+      ],
+      "pdf_pages": [
+        151
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:330",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "330",
+      "actual": "698142760439",
+      "expected": "698142760439",
+      "not_reported_optional_codes": [
+        "331",
+        "332",
+        "333",
+        "334",
+        "335",
+        "339",
+        "340"
+      ],
+      "pdf_pages": [
+        151
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:330",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "330",
+      "actual": "1436271506080",
+      "expected": "1436271506080",
+      "not_reported_optional_codes": [
+        "331",
+        "332",
+        "333",
+        "334",
+        "335",
+        "339",
+        "340"
+      ],
       "pdf_pages": [
         151
       ],
@@ -924,6 +1472,7 @@
       "result_code": "400",
       "actual": "29933011216233",
       "expected": "29933011216233",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         152
       ],
@@ -939,6 +1488,7 @@
       "result_code": "400",
       "actual": "35727540104800",
       "expected": "35727540104800",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         152
       ],
@@ -954,6 +1504,7 @@
       "result_code": "440",
       "actual": "60282827532899",
       "expected": "60282827532899",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         151,
         152
@@ -970,8 +1521,121 @@
       "result_code": "440",
       "actual": "71999995678620",
       "expected": "71999995678620",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         151,
+        152
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:410",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "410",
+      "actual": "29930261216233",
+      "expected": "29930261216233",
+      "not_reported_optional_codes": [
+        "413",
+        "415",
+        "416",
+        "419",
+        "422"
+      ],
+      "pdf_pages": [
+        152
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:410",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "410",
+      "actual": "35724790104800",
+      "expected": "35724790104800",
+      "not_reported_optional_codes": [
+        "413",
+        "415",
+        "416",
+        "419",
+        "422"
+      ],
+      "pdf_pages": [
+        152
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:421",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "421",
+      "actual": "8674126708670",
+      "expected": "8674126708670",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        152
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:421",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "421",
+      "actual": "11030528671431",
+      "expected": "11030528671431",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        152
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:430",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "430",
+      "actual": "2750000000",
+      "expected": "2750000000",
+      "not_reported_optional_codes": [
+        "432"
+      ],
+      "pdf_pages": [
+        152
+      ],
+      "source": "template_lines"
+    },
+    {
+      "name": "balance_sheet:430",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "430",
+      "actual": "2750000000",
+      "expected": "2750000000",
+      "not_reported_optional_codes": [
+        "432"
+      ],
+      "pdf_pages": [
         152
       ],
       "source": "template_lines"
@@ -986,6 +1650,7 @@
       "result_code": "10",
       "actual": "52617900827385",
       "expected": "52617900827385",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1001,6 +1666,7 @@
       "result_code": "10",
       "actual": "62848794351367",
       "expected": "62848794351367",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1016,6 +1682,7 @@
       "result_code": "20",
       "actual": "20319553444682",
       "expected": "20319553444682",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1031,6 +1698,7 @@
       "result_code": "20",
       "actual": "23698348369916",
       "expected": "23698348369916",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1046,6 +1714,7 @@
       "result_code": "30",
       "actual": "9111745534433",
       "expected": "9111745534433",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1061,6 +1730,7 @@
       "result_code": "30",
       "actual": "11025080772955",
       "expected": "11025080772955",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1076,6 +1746,7 @@
       "result_code": "40",
       "actual": "91260564137",
       "expected": "91260564137",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1091,6 +1762,7 @@
       "result_code": "40",
       "actual": "44585644864",
       "expected": "44585644864",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1106,6 +1778,7 @@
       "result_code": "50",
       "actual": "9203006098570",
       "expected": "9203006098570",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1121,6 +1794,7 @@
       "result_code": "50",
       "actual": "11069666417819",
       "expected": "11069666417819",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153
       ],
@@ -1136,6 +1810,7 @@
       "result_code": "60",
       "actual": "7788049739616",
       "expected": "7788049739616",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153,
         154
@@ -1152,6 +1827,7 @@
       "result_code": "60",
       "actual": "9427422530444",
       "expected": "9427422530444",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         153,
         154
@@ -1168,6 +1844,7 @@
       "result_code": "08",
       "actual": "10989758903879",
       "expected": "10989758903879",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         155
       ],
@@ -1183,6 +1860,7 @@
       "result_code": "08",
       "actual": "13626844968489",
       "expected": "13626844968489",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         155
       ],
@@ -1198,6 +1876,7 @@
       "result_code": "20",
       "actual": "9517095698405",
       "expected": "9517095698405",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         155
       ],
@@ -1213,6 +1892,7 @@
       "result_code": "20",
       "actual": "11703777188868",
       "expected": "11703777188868",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         155
       ],
@@ -1228,6 +1908,7 @@
       "result_code": "30",
       "actual": "-6548374165711",
       "expected": "-6548374165711",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         155,
         156
@@ -1244,6 +1925,7 @@
       "result_code": "30",
       "actual": "-8461812173101",
       "expected": "-8461812173101",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         155,
         156
@@ -1260,6 +1942,7 @@
       "result_code": "40",
       "actual": "-1168383938695",
       "expected": "-1168383938695",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         156
       ],
@@ -1275,6 +1958,7 @@
       "result_code": "40",
       "actual": "-2197766125834",
       "expected": "-2197766125834",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         156
       ],
@@ -1290,6 +1974,7 @@
       "result_code": "50",
       "actual": "1800337593999",
       "expected": "1800337593999",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         155,
         156
@@ -1306,6 +1991,7 @@
       "result_code": "50",
       "actual": "1044198889933",
       "expected": "1044198889933",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         155,
         156
@@ -1322,6 +2008,7 @@
       "result_code": "70",
       "actual": "8279156683221",
       "expected": "8279156683221",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         156
       ],
@@ -1337,10 +2024,43 @@
       "result_code": "70",
       "actual": "9315440438884",
       "expected": "9315440438884",
+      "not_reported_optional_codes": [],
       "pdf_pages": [
         156
       ],
       "source": "template_lines"
+    },
+    {
+      "name": "income_statement:60_attribution",
+      "year": "2023",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "60",
+      "actual": "7788049739616",
+      "expected": "7788049739616",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        154
+      ],
+      "source": "arithmetic_rules"
+    },
+    {
+      "name": "income_statement:60_attribution",
+      "year": "2024",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "passed": true,
+      "result_code": "60",
+      "actual": "9427422530444",
+      "expected": "9427422530444",
+      "not_reported_optional_codes": [],
+      "pdf_pages": [
+        154
+      ],
+      "source": "arithmetic_rules"
     },
     {
       "name": "assets_equal_funding",
@@ -1450,500 +2170,6 @@
   ],
   "arithmetic_checks_skipped": [
     {
-      "name": "balance_sheet:100",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "100",
-        "110",
-        "120",
-        "130",
-        "140",
-        "150"
-      ]
-    },
-    {
-      "name": "balance_sheet:100",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "100",
-        "110",
-        "120",
-        "130",
-        "140",
-        "150"
-      ]
-    },
-    {
-      "name": "balance_sheet:200",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "200",
-        "210",
-        "220",
-        "240",
-        "250",
-        "260"
-      ]
-    },
-    {
-      "name": "balance_sheet:200",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "200",
-        "210",
-        "220",
-        "240",
-        "250",
-        "260"
-      ]
-    },
-    {
-      "name": "balance_sheet:270",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "270",
-        "100",
-        "200"
-      ]
-    },
-    {
-      "name": "balance_sheet:270",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "270",
-        "100",
-        "200"
-      ]
-    },
-    {
-      "name": "balance_sheet:300",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "300",
-        "310",
-        "330"
-      ]
-    },
-    {
-      "name": "balance_sheet:300",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "300",
-        "310",
-        "330"
-      ]
-    },
-    {
-      "name": "balance_sheet:400",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "400",
-        "410",
-        "430"
-      ]
-    },
-    {
-      "name": "balance_sheet:400",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "400",
-        "410",
-        "430"
-      ]
-    },
-    {
-      "name": "balance_sheet:440",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "440",
-        "300",
-        "400"
-      ]
-    },
-    {
-      "name": "balance_sheet:440",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "duration",
-      "period_role": "explicit",
-      "missing_codes": [
-        "440",
-        "300",
-        "400"
-      ]
-    },
-    {
-      "name": "income_statement:10",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "10",
-        "01",
-        "02"
-      ]
-    },
-    {
-      "name": "income_statement:10",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "10",
-        "01",
-        "02"
-      ]
-    },
-    {
-      "name": "income_statement:20",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "20",
-        "10",
-        "11"
-      ]
-    },
-    {
-      "name": "income_statement:20",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "20",
-        "10",
-        "11"
-      ]
-    },
-    {
-      "name": "income_statement:30",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "30",
-        "20",
-        "21",
-        "22",
-        "24",
-        "25",
-        "26"
-      ]
-    },
-    {
-      "name": "income_statement:30",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "30",
-        "20",
-        "21",
-        "22",
-        "24",
-        "25",
-        "26"
-      ]
-    },
-    {
-      "name": "income_statement:40",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "40",
-        "31",
-        "32"
-      ]
-    },
-    {
-      "name": "income_statement:40",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "40",
-        "31",
-        "32"
-      ]
-    },
-    {
-      "name": "income_statement:50",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "50",
-        "30",
-        "40"
-      ]
-    },
-    {
-      "name": "income_statement:50",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "50",
-        "30",
-        "40"
-      ]
-    },
-    {
-      "name": "income_statement:60",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "60",
-        "50",
-        "51",
-        "52"
-      ]
-    },
-    {
-      "name": "income_statement:60",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "60",
-        "50",
-        "51",
-        "52"
-      ]
-    },
-    {
-      "name": "cash_flow:08",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "08",
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06"
-      ]
-    },
-    {
-      "name": "cash_flow:08",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "08",
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06"
-      ]
-    },
-    {
-      "name": "cash_flow:20",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "20",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "14",
-        "15",
-        "17"
-      ]
-    },
-    {
-      "name": "cash_flow:20",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "20",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "14",
-        "15",
-        "17"
-      ]
-    },
-    {
-      "name": "cash_flow:30",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "30",
-        "21",
-        "22",
-        "23",
-        "24",
-        "25",
-        "26",
-        "27"
-      ]
-    },
-    {
-      "name": "cash_flow:30",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "30",
-        "21",
-        "22",
-        "23",
-        "24",
-        "25",
-        "26",
-        "27"
-      ]
-    },
-    {
-      "name": "cash_flow:40",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "40",
-        "31",
-        "33",
-        "34",
-        "35",
-        "36"
-      ]
-    },
-    {
-      "name": "cash_flow:40",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "40",
-        "31",
-        "33",
-        "34",
-        "35",
-        "36"
-      ]
-    },
-    {
-      "name": "cash_flow:50",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "50",
-        "20",
-        "30",
-        "40"
-      ]
-    },
-    {
-      "name": "cash_flow:50",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "50",
-        "20",
-        "30",
-        "40"
-      ]
-    },
-    {
-      "name": "cash_flow:70",
-      "year": "2023",
-      "period_end": "2023-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "70",
-        "50",
-        "60",
-        "61"
-      ]
-    },
-    {
-      "name": "cash_flow:70",
-      "year": "2024",
-      "period_end": "2024-12-31",
-      "period_type": "instant",
-      "period_role": "explicit",
-      "missing_codes": [
-        "70",
-        "50",
-        "60",
-        "61"
-      ]
-    },
-    {
       "name": "cash_begin_equals_prior_balance",
       "year": "2023",
       "period_end": "2023-12-31",
@@ -1954,8 +2180,92 @@
       ]
     }
   ],
+  "cells_protected": 274,
+  "cells_total": 278,
+  "cell_coverage_ratio": 0.985612,
+  "cell_coverage_passed": true,
+  "cell_coverage_by_statement": {
+    "balance_sheet": {
+      "cells_protected": 164,
+      "cells_total": 166,
+      "coverage_ratio": 0.987952
+    },
+    "cash_flow": {
+      "cells_protected": 66,
+      "cells_total": 66,
+      "coverage_ratio": 1.0
+    },
+    "income_statement": {
+      "cells_protected": 44,
+      "cells_total": 46,
+      "coverage_ratio": 0.956522
+    }
+  },
+  "accounting_soft_checks": [
+    {
+      "name": "eps_basic_approximation",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "status": "within_tolerance",
+      "passed": true,
+      "actual_eps": "4052",
+      "approximate_eps_from_parent_profit": "4434.571956174997250800702859",
+      "average_shares": "1457906309",
+      "relative_deviation": "0.08627032325910920034796495182",
+      "tolerance": "0.10",
+      "pdf_pages": [
+        154,
+        193
+      ]
+    },
+    {
+      "name": "eps_diluted_equals_basic_when_no_dilution",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "status": "pass",
+      "passed": true,
+      "actual_diluted_eps": "4052",
+      "actual_basic_eps": "4052",
+      "pdf_pages": [
+        154
+      ]
+    },
+    {
+      "name": "eps_basic_approximation",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "status": "within_tolerance",
+      "passed": true,
+      "actual_eps": "4944",
+      "approximate_eps_from_parent_profit": "5371.584982928807643869490395",
+      "average_shares": "1462653544",
+      "relative_deviation": "0.07960126932510538775994711052",
+      "tolerance": "0.10",
+      "pdf_pages": [
+        154,
+        193
+      ]
+    },
+    {
+      "name": "eps_diluted_equals_basic_when_no_dilution",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "status": "pass",
+      "passed": true,
+      "actual_diluted_eps": "4944",
+      "actual_basic_eps": "4944",
+      "pdf_pages": [
+        154
+      ]
+    }
+  ],
+  "accounting_template_profile": "TT200_NONBANK",
   "arithmetic_template_id": "vn_nonbank_b01_b02_b03_v1",
-  "arithmetic_template_sha256": "e0d9b460757b3dc4c1d24212fb1f3935d0a242ed12e279c91e64424b1d623916",
+  "arithmetic_template_sha256": "b827359542c40d4ce71a754b248232aae0b8bc2f30f0ce7ddf99e82381a4748a",
   "notes_text_only_ranges": [
     {
       "start": 157,

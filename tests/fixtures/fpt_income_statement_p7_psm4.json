@@ -1,0 +1,8019 @@
+{
+  "source_pdf": "fpt_parent_q4_2025_tt200.pdf",
+  "pdf_page": 7,
+  "width": 3508,
+  "height": 2481,
+  "ocr": "tesseract vie --psm 4",
+  "word_items": [
+    {
+      "text": "CÔNG",
+      "bbox": [
+        482,
+        222,
+        576,
+        254
+      ],
+      "conf": 96.552452,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        588,
+        230,
+        626,
+        255
+      ],
+      "conf": 96.199097,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỔ",
+      "bbox": [
+        637,
+        218,
+        681,
+        256
+      ],
+      "conf": 93.303619,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHẦN",
+      "bbox": [
+        694,
+        220,
+        783,
+        256
+      ],
+      "conf": 92.265678,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "FPT",
+      "bbox": [
+        798,
+        232,
+        854,
+        257
+      ],
+      "conf": 96.952713,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Số",
+      "bbox": [
+        481,
+        271,
+        519,
+        301
+      ],
+      "conf": 96.786385,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "10",
+      "bbox": [
+        530,
+        276,
+        566,
+        302
+      ],
+      "conf": 96.773827,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "phố",
+      "bbox": [
+        579,
+        272,
+        638,
+        308
+      ],
+      "conf": 96.652939,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Phạm",
+      "bbox": [
+        651,
+        275,
+        735,
+        308
+      ],
+      "conf": 96.765259,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Văn",
+      "bbox": [
+        747,
+        276,
+        805,
+        304
+      ],
+      "conf": 96.751869,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Bạch",
+      "bbox": [
+        821,
+        277,
+        892,
+        309
+      ],
+      "conf": 95.967827,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Phường",
+      "bbox": [
+        484,
+        322,
+        606,
+        357
+      ],
+      "conf": 96.564201,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Dịch",
+      "bbox": [
+        619,
+        323,
+        682,
+        355
+      ],
+      "conf": 96.702194,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Vọng,",
+      "bbox": [
+        695,
+        325,
+        783,
+        359
+      ],
+      "conf": 96.880028,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "quận",
+      "bbox": [
+        797,
+        325,
+        873,
+        359
+      ],
+      "conf": 96.617874,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Cầu",
+      "bbox": [
+        887,
+        323,
+        942,
+        353
+      ],
+      "conf": 96.526184,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Giấy",
+      "bbox": [
+        955,
+        324,
+        1023,
+        361
+      ],
+      "conf": 96.964935,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Hà",
+      "bbox": [
+        484,
+        370,
+        521,
+        397
+      ],
+      "conf": 96.400009,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "Nội,",
+      "bbox": [
+        536,
+        371,
+        596,
+        403
+      ],
+      "conf": 93.1679,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "CHXHCN",
+      "bbox": [
+        610,
+        372,
+        739,
+        399
+      ],
+      "conf": 92.451996,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "Việt",
+      "bbox": [
+        752,
+        373,
+        813,
+        404
+      ],
+      "conf": 96.720924,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "Nam",
+      "bbox": [
+        828,
+        375,
+        897,
+        401
+      ],
+      "conf": 96.330566,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        2928,
+        292,
+        2995,
+        325
+      ],
+      "conf": 89.194748,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        3008,
+        293,
+        3075,
+        326
+      ],
+      "conf": 96.497337,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        3085,
+        294,
+        3136,
+        326
+      ],
+      "conf": 96.695107,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        3150,
+        294,
+        3252,
+        328
+      ],
+      "conf": 93.305542,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "RIÊNG",
+      "bbox": [
+        3266,
+        296,
+        3363,
+        329
+      ],
+      "conf": 92.900444,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cho",
+      "bbox": [
+        2596,
+        343,
+        2653,
+        370
+      ],
+      "conf": 96.898865,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "kỳ",
+      "bbox": [
+        2667,
+        343,
+        2699,
+        377
+      ],
+      "conf": 96.9655,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        2712,
+        344,
+        2781,
+        376
+      ],
+      "conf": 96.803383,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "động",
+      "bbox": [
+        2793,
+        344,
+        2871,
+        379
+      ],
+      "conf": 96.341019,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        2881,
+        345,
+        2917,
+        372
+      ],
+      "conf": 96.990128,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        2929,
+        345,
+        3000,
+        379
+      ],
+      "conf": 96.557335,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "01",
+      "bbox": [
+        3012,
+        347,
+        3048,
+        373
+      ],
+      "conf": 96.657143,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "tháng",
+      "bbox": [
+        3059,
+        347,
+        3149,
+        381
+      ],
+      "conf": 96.777725,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "01",
+      "bbox": [
+        3161,
+        349,
+        3196,
+        375
+      ],
+      "conf": 96.490685,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        3211,
+        348,
+        3276,
+        390
+      ],
+      "conf": 96.943375,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        3289,
+        350,
+        3363,
+        377
+      ],
+      "conf": 96.697411,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "đến",
+      "bbox": [
+        2858,
+        389,
+        2913,
+        419
+      ],
+      "conf": 96.646812,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        2929,
+        393,
+        3000,
+        427
+      ],
+      "conf": 96.68251,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "31",
+      "bbox": [
+        3012,
+        395,
+        3048,
+        421
+      ],
+      "conf": 96.714363,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "tháng",
+      "bbox": [
+        3059,
+        395,
+        3150,
+        428
+      ],
+      "conf": 96.810265,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "12",
+      "bbox": [
+        3162,
+        397,
+        3196,
+        422
+      ],
+      "conf": 96.82766,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        3211,
+        396,
+        3276,
+        423
+      ],
+      "conf": 96.759933,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        3289,
+        398,
+        3363,
+        424
+      ],
+      "conf": 96.603989,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        1412,
+        467,
+        1493,
+        506
+      ],
+      "conf": 92.930962,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1509,
+        468,
+        1589,
+        507
+      ],
+      "conf": 95.895172,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "KẾT",
+      "bbox": [
+        1605,
+        465,
+        1674,
+        508
+      ],
+      "conf": 93.30529,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUẢ",
+      "bbox": [
+        1687,
+        467,
+        1775,
+        514
+      ],
+      "conf": 92.372826,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HOẠT",
+      "bbox": [
+        1790,
+        480,
+        1900,
+        518
+      ],
+      "conf": 92.611931,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐỘNG",
+      "bbox": [
+        1912,
+        472,
+        2030,
+        518
+      ],
+      "conf": 93.303123,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "KINH",
+      "bbox": [
+        2047,
+        481,
+        2139,
+        512
+      ],
+      "conf": 92.826981,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        2156,
+        482,
+        2301,
+        514
+      ],
+      "conf": 91.543716,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cho",
+      "bbox": [
+        1207,
+        536,
+        1264,
+        564
+      ],
+      "conf": 96.567589,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "kỳ",
+      "bbox": [
+        1276,
+        537,
+        1310,
+        571
+      ],
+      "conf": 96.931976,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        1321,
+        537,
+        1394,
+        570
+      ],
+      "conf": 96.867966,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "động",
+      "bbox": [
+        1404,
+        539,
+        1483,
+        573
+      ],
+      "conf": 96.953514,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        1495,
+        539,
+        1531,
+        567
+      ],
+      "conf": 96.675621,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        1540,
+        539,
+        1616,
+        574
+      ],
+      "conf": 96.712051,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "01",
+      "bbox": [
+        1626,
+        542,
+        1661,
+        568
+      ],
+      "conf": 93.306252,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "thóng",
+      "bbox": [
+        1675,
+        541,
+        1765,
+        575
+      ],
+      "conf": 82.487152,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "01",
+      "bbox": [
+        1777,
+        543,
+        1812,
+        569
+      ],
+      "conf": 96.85437,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        1826,
+        542,
+        1893,
+        570
+      ],
+      "conf": 96.653755,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        1906,
+        544,
+        1983,
+        571
+      ],
+      "conf": 96.574471,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "đến",
+      "bbox": [
+        1994,
+        540,
+        2050,
+        571
+      ],
+      "conf": 96.85144,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        2063,
+        544,
+        2139,
+        578
+      ],
+      "conf": 96.335022,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "31",
+      "bbox": [
+        2148,
+        546,
+        2184,
+        572
+      ],
+      "conf": 96.943138,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "tháng",
+      "bbox": [
+        2198,
+        545,
+        2289,
+        580
+      ],
+      "conf": 63.735031,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "12",
+      "bbox": [
+        2301,
+        548,
+        2337,
+        574
+      ],
+      "conf": 96.575867,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        2350,
+        546,
+        2416,
+        574
+      ],
+      "conf": 76.480759,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        2429,
+        549,
+        2507,
+        575
+      ],
+      "conf": 96.666893,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "MẪU",
+      "bbox": [
+        3088,
+        598,
+        3165,
+        635
+      ],
+      "conf": 96.91095,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "SỐ",
+      "bbox": [
+        3178,
+        600,
+        3220,
+        636
+      ],
+      "conf": 93.243202,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "B",
+      "bbox": [
+        3234,
+        611,
+        3251,
+        636
+      ],
+      "conf": 92.908051,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "02-DN",
+      "bbox": [
+        3263,
+        611,
+        3360,
+        637
+      ],
+      "conf": 92.495461,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Đơn",
+      "bbox": [
+        3174,
+        666,
+        3238,
+        691
+      ],
+      "conf": 87.464447,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "vị:",
+      "bbox": [
+        3251,
+        666,
+        3284,
+        697
+      ],
+      "conf": 93.041542,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VND",
+      "bbox": [
+        3297,
+        667,
+        3366,
+        692
+      ],
+      "conf": 91.363892,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHỈ",
+      "bbox": [
+        590,
+        733,
+        640,
+        768
+      ],
+      "conf": 84.696419,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Tiểu",
+      "bbox": [
+        649,
+        737,
+        717,
+        769
+      ],
+      "conf": 81.416656,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Mã",
+      "bbox": [
+        1591,
+        727,
+        1639,
+        781
+      ],
+      "conf": 96.511414,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Thuyết",
+      "bbox": [
+        1692,
+        725,
+        1798,
+        782
+      ],
+      "conf": 96.309692,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Quý",
+      "bbox": [
+        2155,
+        730,
+        2216,
+        764
+      ],
+      "conf": 96.540596,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "4",
+      "bbox": [
+        2226,
+        733,
+        2244,
+        757
+      ],
+      "conf": 96.540596,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Lũy",
+      "bbox": [
+        2706,
+        736,
+        2756,
+        768
+      ],
+      "conf": 91.306915,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "kế",
+      "bbox": [
+        2767,
+        732,
+        2804,
+        762
+      ],
+      "conf": 97.003471,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        2811,
+        735,
+        2848,
+        762
+      ],
+      "conf": 96.991753,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "đầu",
+      "bbox": [
+        2857,
+        733,
+        2912,
+        763
+      ],
+      "conf": 94.844147,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        2924,
+        736,
+        2988,
+        763
+      ],
+      "conf": 96.977951,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "đến",
+      "bbox": [
+        3000,
+        734,
+        3057,
+        764
+      ],
+      "conf": 96.921852,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "cuối",
+      "bbox": [
+        3069,
+        735,
+        3130,
+        765
+      ],
+      "conf": 96.820274,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "quý",
+      "bbox": [
+        3143,
+        739,
+        3197,
+        772
+      ],
+      "conf": 96.859886,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "này",
+      "bbox": [
+        3209,
+        739,
+        3262,
+        773
+      ],
+      "conf": 96.868645,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "...",
+      "bbox": [
+        1603,
+        777,
+        1787,
+        803
+      ],
+      "conf": 0.0,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Năm",
+      "bbox": [
+        1929,
+        800,
+        1998,
+        827
+      ],
+      "conf": 96.958183,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        2010,
+        803,
+        2083,
+        829
+      ],
+      "conf": 97.006149,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Năm",
+      "bbox": [
+        2315,
+        804,
+        2385,
+        831
+      ],
+      "conf": 96.965073,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        2397,
+        807,
+        2472,
+        832
+      ],
+      "conf": 96.990372,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Năm",
+      "bbox": [
+        2713,
+        807,
+        2782,
+        835
+      ],
+      "conf": 96.957474,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        2794,
+        810,
+        2868,
+        835
+      ],
+      "conf": 96.938324,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Năm",
+      "bbox": [
+        3109,
+        810,
+        3178,
+        838
+      ],
+      "conf": 96.981697,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        3190,
+        814,
+        3266,
+        839
+      ],
+      "conf": 97.006927,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "1",
+      "bbox": [
+        539,
+        841,
+        554,
+        866
+      ],
+      "conf": 71.411484,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Doanh",
+      "bbox": [
+        591,
+        840,
+        689,
+        867
+      ],
+      "conf": 96.481697,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "thu",
+      "bbox": [
+        699,
+        840,
+        748,
+        868
+      ],
+      "conf": 96.875931,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        761,
+        840,
+        815,
+        868
+      ],
+      "conf": 96.689713,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        827,
+        842,
+        899,
+        876
+      ],
+      "conf": 96.897758,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        909,
+        842,
+        943,
+        869
+      ],
+      "conf": 96.981544,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "cung",
+      "bbox": [
+        955,
+        851,
+        1025,
+        877
+      ],
+      "conf": 96.79142,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "cấp",
+      "bbox": [
+        1035,
+        840,
+        1085,
+        877
+      ],
+      "conf": 96.991882,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "dịch",
+      "bbox": [
+        1096,
+        844,
+        1157,
+        877
+      ],
+      "conf": 96.718849,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "vụ",
+      "bbox": [
+        1168,
+        853,
+        1202,
+        877
+      ],
+      "conf": 97.011169,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "01",
+      "bbox": [
+        1602,
+        851,
+        1637,
+        875
+      ],
+      "conf": 96.688667,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "15",
+      "bbox": [
+        1732,
+        852,
+        1766,
+        877
+      ],
+      "conf": 96.469627,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "235.999.945.930",
+      "bbox": [
+        1924,
+        854,
+        2183,
+        880
+      ],
+      "conf": 91.396927,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "226.782.845.868",
+      "bbox": [
+        2310,
+        857,
+        2571,
+        884
+      ],
+      "conf": 90.976715,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "861.793.263.650",
+      "bbox": [
+        2717,
+        860,
+        2977,
+        887
+      ],
+      "conf": 91.481026,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "750.934.526.983",
+      "bbox": [
+        3103,
+        864,
+        3363,
+        891
+      ],
+      "conf": 92.369667,
+      "block": 6,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "2",
+      "bbox": [
+        538,
+        890,
+        554,
+        915
+      ],
+      "conf": 36.205296,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Các",
+      "bbox": [
+        590,
+        889,
+        641,
+        916
+      ],
+      "conf": 96.146538,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "khoản",
+      "bbox": [
+        653,
+        888,
+        741,
+        917
+      ],
+      "conf": 96.758575,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "giảm",
+      "bbox": [
+        752,
+        888,
+        824,
+        924
+      ],
+      "conf": 96.455734,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "trừ",
+      "bbox": [
+        835,
+        891,
+        884,
+        918
+      ],
+      "conf": 96.947807,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "02",
+      "bbox": [
+        1603,
+        899,
+        1637,
+        925
+      ],
+      "conf": 96.768692,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "-",
+      "bbox": [
+        2175,
+        918,
+        2185,
+        921
+      ],
+      "conf": 55.824333,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "-",
+      "bbox": [
+        2563,
+        921,
+        2572,
+        925
+      ],
+      "conf": 70.092941,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "-",
+      "bbox": [
+        2969,
+        925,
+        2979,
+        928
+      ],
+      "conf": 63.48336,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "-",
+      "bbox": [
+        3357,
+        929,
+        3366,
+        932
+      ],
+      "conf": 72.194969,
+      "block": 6,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "3.",
+      "bbox": [
+        538,
+        939,
+        554,
+        964
+      ],
+      "conf": 71.062012,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "Doanh",
+      "bbox": [
+        591,
+        938,
+        689,
+        965
+      ],
+      "conf": 96.442688,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "thu",
+      "bbox": [
+        699,
+        939,
+        748,
+        966
+      ],
+      "conf": 96.003799,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "thuần",
+      "bbox": [
+        758,
+        936,
+        846,
+        967
+      ],
+      "conf": 96.892906,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "về",
+      "bbox": [
+        857,
+        937,
+        892,
+        967
+      ],
+      "conf": 97.01384,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        905,
+        940,
+        959,
+        968
+      ],
+      "conf": 96.884605,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        971,
+        941,
+        1042,
+        975
+      ],
+      "conf": 97.014763,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "và",
+      "bbox": [
+        1053,
+        941,
+        1086,
+        969
+      ],
+      "conf": 96.906013,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "cung",
+      "bbox": [
+        1098,
+        950,
+        1167,
+        976
+      ],
+      "conf": 96.98658,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "cấp",
+      "bbox": [
+        1177,
+        939,
+        1229,
+        976
+      ],
+      "conf": 96.993652,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "dịch",
+      "bbox": [
+        1239,
+        944,
+        1301,
+        976
+      ],
+      "conf": 96.688347,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "vụ",
+      "bbox": [
+        1312,
+        952,
+        1347,
+        977
+      ],
+      "conf": 97.020241,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "10",
+      "bbox": [
+        1603,
+        949,
+        1638,
+        974
+      ],
+      "conf": 96.971252,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "235.999.945.930",
+      "bbox": [
+        1924,
+        952,
+        2183,
+        978
+      ],
+      "conf": 91.833824,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "226.782.845.868",
+      "bbox": [
+        2309,
+        955,
+        2571,
+        982
+      ],
+      "conf": 91.138077,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "861.793.263.650",
+      "bbox": [
+        2717,
+        959,
+        2977,
+        985
+      ],
+      "conf": 73.035019,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "750.934.526.983",
+      "bbox": [
+        3103,
+        962,
+        3363,
+        989
+      ],
+      "conf": 91.037041,
+      "block": 6,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "4_",
+      "bbox": [
+        538,
+        989,
+        556,
+        1013
+      ],
+      "conf": 70.381065,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "Giá",
+      "bbox": [
+        590,
+        987,
+        636,
+        1014
+      ],
+      "conf": 97.012421,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "vốn",
+      "bbox": [
+        647,
+        985,
+        700,
+        1015
+      ],
+      "conf": 96.661064,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        714,
+        988,
+        786,
+        1022
+      ],
+      "conf": 96.696838,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        797,
+        989,
+        849,
+        1016
+      ],
+      "conf": 96.88765,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "11",
+      "bbox": [
+        1603,
+        998,
+        1638,
+        1023
+      ],
+      "conf": 95.968338,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "16",
+      "bbox": [
+        1733,
+        999,
+        1767,
+        1024
+      ],
+      "conf": 96.915337,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "51.666.412.946",
+      "bbox": [
+        1944,
+        1001,
+        2183,
+        1028
+      ],
+      "conf": 96.503586,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "54.661.812.207",
+      "bbox": [
+        2330,
+        1004,
+        2571,
+        1031
+      ],
+      "conf": 96.292328,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "188.460.184.995",
+      "bbox": [
+        2719,
+        1007,
+        2977,
+        1034
+      ],
+      "conf": 92.133682,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "136.457.430.363",
+      "bbox": [
+        3104,
+        1011,
+        3363,
+        1038
+      ],
+      "conf": 91.563873,
+      "block": 6,
+      "paragraph": 2,
+      "line": 4
+    },
+    {
+      "text": "5",
+      "bbox": [
+        539,
+        1037,
+        554,
+        1062
+      ],
+      "conf": 70.695274,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "Lợi",
+      "bbox": [
+        591,
+        1037,
+        635,
+        1068
+      ],
+      "conf": 96.854645,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        648,
+        1036,
+        741,
+        1069
+      ],
+      "conf": 93.302681,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "gộp",
+      "bbox": [
+        751,
+        1037,
+        808,
+        1071
+      ],
+      "conf": 93.257172,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "về",
+      "bbox": [
+        818,
+        1034,
+        853,
+        1065
+      ],
+      "conf": 97.022499,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        866,
+        1038,
+        920,
+        1065
+      ],
+      "conf": 96.986694,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        931,
+        1038,
+        1004,
+        1073
+      ],
+      "conf": 96.442894,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "và",
+      "bbox": [
+        1014,
+        1039,
+        1047,
+        1066
+      ],
+      "conf": 96.606033,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "cung",
+      "bbox": [
+        1059,
+        1047,
+        1129,
+        1074
+      ],
+      "conf": 96.938942,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "cấp",
+      "bbox": [
+        1140,
+        1037,
+        1189,
+        1074
+      ],
+      "conf": 97.02179,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "dịch",
+      "bbox": [
+        1200,
+        1041,
+        1262,
+        1073
+      ],
+      "conf": 96.974403,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "vụ",
+      "bbox": [
+        1272,
+        1050,
+        1308,
+        1074
+      ],
+      "conf": 97.02272,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "20",
+      "bbox": [
+        1602,
+        1046,
+        1638,
+        1072
+      ],
+      "conf": 95.810921,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "184.333.532.984",
+      "bbox": [
+        1924,
+        1049,
+        2184,
+        1076
+      ],
+      "conf": 91.883995,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "172.121.033.661",
+      "bbox": [
+        2310,
+        1053,
+        2571,
+        1079
+      ],
+      "conf": 91.612747,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "673.333.078.655",
+      "bbox": [
+        2718,
+        1056,
+        2977,
+        1083
+      ],
+      "conf": 90.740303,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "614.477.096.620",
+      "bbox": [
+        3103,
+        1059,
+        3364,
+        1086
+      ],
+      "conf": 91.303375,
+      "block": 6,
+      "paragraph": 2,
+      "line": 5
+    },
+    {
+      "text": "6",
+      "bbox": [
+        539,
+        1085,
+        555,
+        1111
+      ],
+      "conf": 40.216705,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "Doanh",
+      "bbox": [
+        592,
+        1085,
+        687,
+        1112
+      ],
+      "conf": 96.511391,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "thu",
+      "bbox": [
+        698,
+        1085,
+        747,
+        1113
+      ],
+      "conf": 96.712418,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        760,
+        1086,
+        827,
+        1118
+      ],
+      "conf": 96.620964,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "động",
+      "bbox": [
+        838,
+        1087,
+        913,
+        1121
+      ],
+      "conf": 96.648163,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        923,
+        1088,
+        960,
+        1115
+      ],
+      "conf": 96.749611,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        971,
+        1088,
+        1049,
+        1115
+      ],
+      "conf": 96.696022,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "21",
+      "bbox": [
+        1603,
+        1095,
+        1638,
+        1121
+      ],
+      "conf": 96.968719,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "HỆ",
+      "bbox": [
+        1733,
+        1093,
+        1755,
+        1132
+      ],
+      "conf": 47.591324,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "/",
+      "bbox": [
+        1761,
+        1097,
+        1767,
+        1122
+      ],
+      "conf": 63.538582,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "3.763.377.346.766",
+      "bbox": [
+        1895,
+        1098,
+        2184,
+        1126
+      ],
+      "conf": 84.300186,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "3.463.535.854.693",
+      "bbox": [
+        2281,
+        1101,
+        2570,
+        1129
+      ],
+      "conf": 92.580681,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "6.101.503.286.637",
+      "bbox": [
+        2689,
+        1105,
+        2977,
+        1132
+      ],
+      "conf": 91.548332,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "5.890.489.739.679",
+      "bbox": [
+        3074,
+        1108,
+        3364,
+        1135
+      ],
+      "conf": 91.779457,
+      "block": 6,
+      "paragraph": 2,
+      "line": 6
+    },
+    {
+      "text": "7",
+      "bbox": [
+        539,
+        1135,
+        555,
+        1159
+      ],
+      "conf": 66.660172,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        591,
+        1134,
+        635,
+        1160
+      ],
+      "conf": 65.491241,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        648,
+        1130,
+        689,
+        1171
+      ],
+      "conf": 96.686028,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        702,
+        1134,
+        738,
+        1161
+      ],
+      "conf": 96.962563,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        749,
+        1135,
+        828,
+        1162
+      ],
+      "conf": 96.701477,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "Z9À",
+      "bbox": [
+        1603,
+        1140,
+        1642,
+        1179
+      ],
+      "conf": 0.0,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "18",
+      "bbox": [
+        1733,
+        1145,
+        1767,
+        1171
+      ],
+      "conf": 96.526421,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "139.446.132.484",
+      "bbox": [
+        1925,
+        1147,
+        2184,
+        1174
+      ],
+      "conf": 90.451218,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "67.293.078.815",
+      "bbox": [
+        2330,
+        1150,
+        2571,
+        1177
+      ],
+      "conf": 96.562775,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "346.191.375.776",
+      "bbox": [
+        2718,
+        1153,
+        2977,
+        1181
+      ],
+      "conf": 92.054871,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "236.331.093.377",
+      "bbox": [
+        3104,
+        1157,
+        3364,
+        1184
+      ],
+      "conf": 91.30645,
+      "block": 6,
+      "paragraph": 2,
+      "line": 7
+    },
+    {
+      "text": "Trong",
+      "bbox": [
+        592,
+        1184,
+        677,
+        1216
+      ],
+      "conf": 95.490395,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "đó:",
+      "bbox": [
+        688,
+        1183,
+        736,
+        1210
+      ],
+      "conf": 96.874161,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "chỉ",
+      "bbox": [
+        746,
+        1184,
+        786,
+        1210
+      ],
+      "conf": 70.024719,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        799,
+        1184,
+        843,
+        1217
+      ],
+      "conf": 96.861519,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "lãi",
+      "bbox": [
+        853,
+        1184,
+        890,
+        1211
+      ],
+      "conf": 93.870773,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "vay",
+      "bbox": [
+        900,
+        1193,
+        951,
+        1218
+      ],
+      "conf": 95.933853,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "23",
+      "bbox": [
+        1597,
+        1193,
+        1634,
+        1218
+      ],
+      "conf": 96.287613,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "77.760.719.148",
+      "bbox": [
+        1939,
+        1196,
+        2178,
+        1223
+      ],
+      "conf": 82.648865,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "65.759.752.095",
+      "bbox": [
+        2323,
+        1199,
+        2565,
+        1226
+      ],
+      "conf": 95.860863,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "285.959.690.960",
+      "bbox": [
+        2710,
+        1202,
+        2972,
+        1229
+      ],
+      "conf": 90.526642,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "236.082.994.088",
+      "bbox": [
+        3096,
+        1205,
+        3358,
+        1233
+      ],
+      "conf": 87.931717,
+      "block": 6,
+      "paragraph": 2,
+      "line": 8
+    },
+    {
+      "text": "8_",
+      "bbox": [
+        539,
+        1232,
+        555,
+        1257
+      ],
+      "conf": 72.072083,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        591,
+        1231,
+        635,
+        1258
+      ],
+      "conf": 77.080978,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        648,
+        1231,
+        693,
+        1265
+      ],
+      "conf": 96.80835,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        704,
+        1231,
+        755,
+        1259
+      ],
+      "conf": 96.682968,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        769,
+        1232,
+        840,
+        1266
+      ],
+      "conf": 96.677948,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "25",
+      "bbox": [
+        1603,
+        1241,
+        1638,
+        1267
+      ],
+      "conf": 96.923882,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "513.870.647",
+      "bbox": [
+        1993,
+        1245,
+        2184,
+        1271
+      ],
+      "conf": 96.042519,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "1/233.277.527",
+      "bbox": [
+        2352,
+        1248,
+        2571,
+        1275
+      ],
+      "conf": 67.299698,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "1.394.754.448",
+      "bbox": [
+        2759,
+        1252,
+        2977,
+        1279
+      ],
+      "conf": 96.084534,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "2.065.876.797",
+      "bbox": [
+        3144,
+        1255,
+        3364,
+        1282
+      ],
+      "conf": 95.940292,
+      "block": 6,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "9",
+      "bbox": [
+        539,
+        1281,
+        555,
+        1306
+      ],
+      "conf": 62.003178,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        592,
+        1280,
+        635,
+        1307
+      ],
+      "conf": 89.871429,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        648,
+        1280,
+        693,
+        1314
+      ],
+      "conf": 96.475533,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "quản",
+      "bbox": [
+        703,
+        1279,
+        774,
+        1314
+      ],
+      "conf": 96.475533,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "lý",
+      "bbox": [
+        788,
+        1281,
+        810,
+        1315
+      ],
+      "conf": 96.953232,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "doanh",
+      "bbox": [
+        821,
+        1282,
+        914,
+        1309
+      ],
+      "conf": 96.823975,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "nghiệp",
+      "bbox": [
+        927,
+        1283,
+        1026,
+        1317
+      ],
+      "conf": 96.496216,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "26",
+      "bbox": [
+        1603,
+        1290,
+        1638,
+        1316
+      ],
+      "conf": 96.893349,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "200.329.121.111",
+      "bbox": [
+        1924,
+        1293,
+        2184,
+        1320
+      ],
+      "conf": 90.234573,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "120.165.873.794",
+      "bbox": [
+        2312,
+        1297,
+        2572,
+        1324
+      ],
+      "conf": 89.697075,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "759.406.318.916",
+      "bbox": [
+        2718,
+        1300,
+        2978,
+        1327
+      ],
+      "conf": 92.501152,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "751.778.219.867",
+      "bbox": [
+        3104,
+        1304,
+        3364,
+        1331
+      ],
+      "conf": 88.978394,
+      "block": 6,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "10",
+      "bbox": [
+        530,
+        1330,
+        565,
+        1355
+      ],
+      "conf": 61.421913,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "Lợi",
+      "bbox": [
+        592,
+        1330,
+        636,
+        1361
+      ],
+      "conf": 94.918938,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        649,
+        1329,
+        741,
+        1362
+      ],
+      "conf": 96.731422,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "thuần",
+      "bbox": [
+        751,
+        1327,
+        839,
+        1357
+      ],
+      "conf": 96.854294,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        849,
+        1331,
+        886,
+        1358
+      ],
+      "conf": 96.737,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        896,
+        1331,
+        965,
+        1364
+      ],
+      "conf": 96.658836,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "động",
+      "bbox": [
+        975,
+        1332,
+        1052,
+        1366
+      ],
+      "conf": 96.33506,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "kinh",
+      "bbox": [
+        1063,
+        1333,
+        1126,
+        1360
+      ],
+      "conf": 96.862068,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "doanh",
+      "bbox": [
+        1137,
+        1334,
+        1232,
+        1361
+      ],
+      "conf": 96.727821,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "30",
+      "bbox": [
+        1603,
+        1340,
+        1638,
+        1365
+      ],
+      "conf": 96.315666,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "3.607.421.755.508",
+      "bbox": [
+        1896,
+        1343,
+        2184,
+        1369
+      ],
+      "conf": 92.170029,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "3.446.964.658.218",
+      "bbox": [
+        2281,
+        1346,
+        2572,
+        1373
+      ],
+      "conf": 91.88636,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "5.667.843.916.152",
+      "bbox": [
+        2689,
+        1349,
+        2978,
+        1376
+      ],
+      "conf": 91.718185,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "5.514.791.646.258",
+      "bbox": [
+        3075,
+        1353,
+        3365,
+        1380
+      ],
+      "conf": 91.162811,
+      "block": 6,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "11",
+      "bbox": [
+        530,
+        1379,
+        565,
+        1404
+      ],
+      "conf": 93.46257,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "Thu",
+      "bbox": [
+        589,
+        1378,
+        645,
+        1405
+      ],
+      "conf": 93.46257,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "nhập",
+      "bbox": [
+        658,
+        1379,
+        730,
+        1412
+      ],
+      "conf": 96.777374,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "khác",
+      "bbox": [
+        743,
+        1379,
+        809,
+        1407
+      ],
+      "conf": 96.205597,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "31",
+      "bbox": [
+        1603,
+        1388,
+        1638,
+        1414
+      ],
+      "conf": 96.782585,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "149.882.765",
+      "bbox": [
+        1994,
+        1392,
+        2184,
+        1419
+      ],
+      "conf": 96.261925,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "30.582.760",
+      "bbox": [
+        2400,
+        1396,
+        2571,
+        1422
+      ],
+      "conf": 57.181705,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "363.302.961",
+      "bbox": [
+        2786,
+        1399,
+        2978,
+        1426
+      ],
+      "conf": 96.595558,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "803.585.677",
+      "bbox": [
+        3172,
+        1402,
+        3365,
+        1428
+      ],
+      "conf": 96.319946,
+      "block": 6,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "12",
+      "bbox": [
+        531,
+        1427,
+        565,
+        1452
+      ],
+      "conf": 60.584129,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        592,
+        1427,
+        636,
+        1453
+      ],
+      "conf": 60.584129,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        648,
+        1427,
+        693,
+        1460
+      ],
+      "conf": 96.93985,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "khác",
+      "bbox": [
+        704,
+        1427,
+        770,
+        1455
+      ],
+      "conf": 96.678871,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "32",
+      "bbox": [
+        1603,
+        1437,
+        1638,
+        1462
+      ],
+      "conf": 96.911324,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "118.872.137",
+      "bbox": [
+        1994,
+        1440,
+        2184,
+        1467
+      ],
+      "conf": 96.413841,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "S2",
+      "bbox": [
+        2536,
+        1445,
+        2571,
+        1470
+      ],
+      "conf": 74.299194,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "235.307.371",
+      "bbox": [
+        2787,
+        1447,
+        2978,
+        1474
+      ],
+      "conf": 96.567184,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "34.648.333",
+      "bbox": [
+        3192,
+        1450,
+        3364,
+        1477
+      ],
+      "conf": 96.660858,
+      "block": 6,
+      "paragraph": 3,
+      "line": 5
+    },
+    {
+      "text": "13",
+      "bbox": [
+        531,
+        1477,
+        565,
+        1501
+      ],
+      "conf": 87.442757,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "Lợi",
+      "bbox": [
+        592,
+        1476,
+        636,
+        1507
+      ],
+      "conf": 87.442757,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        649,
+        1476,
+        741,
+        1508
+      ],
+      "conf": 96.061249,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "khác",
+      "bbox": [
+        754,
+        1476,
+        822,
+        1504
+      ],
+      "conf": 96.594261,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "40",
+      "bbox": [
+        1603,
+        1486,
+        1639,
+        1511
+      ],
+      "conf": 96.460236,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "31.010.628",
+      "bbox": [
+        2012,
+        1489,
+        2184,
+        1516
+      ],
+      "conf": 96.196281,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "80.582.728",
+      "bbox": [
+        2400,
+        1493,
+        2572,
+        1519
+      ],
+      "conf": 69.542046,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "127.995.590",
+      "bbox": [
+        2788,
+        1496,
+        2978,
+        1522
+      ],
+      "conf": 96.536575,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "768.937.344",
+      "bbox": [
+        3172,
+        1499,
+        3366,
+        1525
+      ],
+      "conf": 96.6334,
+      "block": 6,
+      "paragraph": 3,
+      "line": 6
+    },
+    {
+      "text": "14",
+      "bbox": [
+        530,
+        1525,
+        567,
+        1550
+      ],
+      "conf": 52.929344,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "Tổng",
+      "bbox": [
+        590,
+        1520,
+        666,
+        1558
+      ],
+      "conf": 88.163208,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "lợi",
+      "bbox": [
+        677,
+        1525,
+        716,
+        1557
+      ],
+      "conf": 97.017586,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        729,
+        1525,
+        822,
+        1558
+      ],
+      "conf": 97.019051,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "kế",
+      "bbox": [
+        833,
+        1523,
+        870,
+        1553
+      ],
+      "conf": 96.631744,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "toán",
+      "bbox": [
+        878,
+        1526,
+        948,
+        1553
+      ],
+      "conf": 96.958183,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "trước",
+      "bbox": [
+        958,
+        1527,
+        1046,
+        1554
+      ],
+      "conf": 96.516357,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "thuế",
+      "bbox": [
+        1055,
+        1525,
+        1126,
+        1555
+      ],
+      "conf": 96.871742,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "50",
+      "bbox": [
+        1604,
+        1535,
+        1639,
+        1560
+      ],
+      "conf": 96.264282,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "3.607.452.766.136",
+      "bbox": [
+        1896,
+        1537,
+        2184,
+        1564
+      ],
+      "conf": 91.737198,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "3.447.045.240.946",
+      "bbox": [
+        2282,
+        1541,
+        2572,
+        1568
+      ],
+      "conf": 91.307312,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "5.667.971.911.742",
+      "bbox": [
+        2690,
+        1544,
+        2978,
+        1570
+      ],
+      "conf": 59.114998,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "5.515.560.583.602",
+      "bbox": [
+        3075,
+        1547,
+        3365,
+        1574
+      ],
+      "conf": 75.629921,
+      "block": 6,
+      "paragraph": 3,
+      "line": 7
+    },
+    {
+      "text": "15",
+      "bbox": [
+        531,
+        1574,
+        565,
+        1599
+      ],
+      "conf": 65.428833,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        592,
+        1573,
+        636,
+        1600
+      ],
+      "conf": 59.916252,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        652,
+        1574,
+        694,
+        1606
+      ],
+      "conf": 96.895081,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "thuế",
+      "bbox": [
+        709,
+        1572,
+        772,
+        1601
+      ],
+      "conf": 93.265091,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "TNDN",
+      "bbox": [
+        788,
+        1568,
+        857,
+        1611
+      ],
+      "conf": 92.792564,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "hiện",
+      "bbox": [
+        880,
+        1576,
+        941,
+        1607
+      ],
+      "conf": 96.526146,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "hành",
+      "bbox": [
+        954,
+        1576,
+        1026,
+        1603
+      ],
+      "conf": 96.900421,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "51",
+      "bbox": [
+        1604,
+        1583,
+        1639,
+        1609
+      ],
+      "conf": 96.532074,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "19",
+      "bbox": [
+        1734,
+        1584,
+        1768,
+        1610
+      ],
+      "conf": 96.710106,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "-",
+      "bbox": [
+        2176,
+        1602,
+        2187,
+        1605
+      ],
+      "conf": 55.710148,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "-",
+      "bbox": [
+        2564,
+        1605,
+        2574,
+        1608
+      ],
+      "conf": 0.0,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "-",
+      "bbox": [
+        2971,
+        1608,
+        2980,
+        1612
+      ],
+      "conf": 74.600494,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "-",
+      "bbox": [
+        3358,
+        1612,
+        3367,
+        1615
+      ],
+      "conf": 50.885826,
+      "block": 6,
+      "paragraph": 3,
+      "line": 8
+    },
+    {
+      "text": "16",
+      "bbox": [
+        532,
+        1623,
+        566,
+        1648
+      ],
+      "conf": 80.131363,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        592,
+        1621,
+        636,
+        1648
+      ],
+      "conf": 54.787529,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        649,
+        1622,
+        694,
+        1655
+      ],
+      "conf": 96.743713,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "thuế",
+      "bbox": [
+        710,
+        1617,
+        772,
+        1660
+      ],
+      "conf": 93.250618,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "TNDN",
+      "bbox": [
+        789,
+        1625,
+        858,
+        1650
+      ],
+      "conf": 89.909218,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "hoãn",
+      "bbox": [
+        880,
+        1624,
+        953,
+        1651
+      ],
+      "conf": 96.208946,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "lại",
+      "bbox": [
+        966,
+        1625,
+        996,
+        1656
+      ],
+      "conf": 96.199097,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "s2",
+      "bbox": [
+        1604,
+        1632,
+        1639,
+        1657
+      ],
+      "conf": 62.020615,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "(4.467.905.916)",
+      "bbox": [
+        1943,
+        1629,
+        2184,
+        1671
+      ],
+      "conf": 96.106522,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "19.879.224.615",
+      "bbox": [
+        2332,
+        1638,
+        2572,
+        1665
+      ],
+      "conf": 96.578087,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "11.703.847.094",
+      "bbox": [
+        2740,
+        1642,
+        2980,
+        1668
+      ],
+      "conf": 96.347176,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "8.926.733.555",
+      "bbox": [
+        3144,
+        1645,
+        3365,
+        1671
+      ],
+      "conf": 96.470459,
+      "block": 6,
+      "paragraph": 3,
+      "line": 9
+    },
+    {
+      "text": "17",
+      "bbox": [
+        531,
+        1671,
+        566,
+        1696
+      ],
+      "conf": 62.845188,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "Lợi",
+      "bbox": [
+        593,
+        1671,
+        637,
+        1703
+      ],
+      "conf": 89.001915,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        649,
+        1670,
+        742,
+        1704
+      ],
+      "conf": 96.6716,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "sau",
+      "bbox": [
+        753,
+        1679,
+        803,
+        1698
+      ],
+      "conf": 96.913261,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "thuế",
+      "bbox": [
+        813,
+        1669,
+        886,
+        1699
+      ],
+      "conf": 96.367783,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "thu",
+      "bbox": [
+        893,
+        1673,
+        943,
+        1700
+      ],
+      "conf": 96.575539,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "nhập",
+      "bbox": [
+        956,
+        1673,
+        1029,
+        1707
+      ],
+      "conf": 96.471382,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "doanh",
+      "bbox": [
+        1040,
+        1674,
+        1134,
+        1702
+      ],
+      "conf": 96.858643,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "nghiệp",
+      "bbox": [
+        1145,
+        1675,
+        1248,
+        1710
+      ],
+      "conf": 96.258842,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "60",
+      "bbox": [
+        1604,
+        1681,
+        1639,
+        1706
+      ],
+      "conf": 95.963959,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "3.611.920.672.052",
+      "bbox": [
+        1896,
+        1683,
+        2185,
+        1711
+      ],
+      "conf": 91.427116,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "3.427.166.016.331",
+      "bbox": [
+        2282,
+        1686,
+        2572,
+        1714
+      ],
+      "conf": 92.210175,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "5.656.268.064.648",
+      "bbox": [
+        2690,
+        1690,
+        2979,
+        1717
+      ],
+      "conf": 90.369003,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    },
+    {
+      "text": "5.506.633.850.047",
+      "bbox": [
+        3076,
+        1694,
+        3365,
+        1720
+      ],
+      "conf": 74.85759,
+      "block": 6,
+      "paragraph": 3,
+      "line": 10
+    }
+  ],
+  "psm3_word_items": [
+    {
+      "text": "CÔNG",
+      "bbox": [
+        482,
+        222,
+        576,
+        254
+      ],
+      "conf": 96.552452,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        588,
+        230,
+        626,
+        255
+      ],
+      "conf": 96.199097,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỔ",
+      "bbox": [
+        637,
+        218,
+        681,
+        256
+      ],
+      "conf": 93.303619,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHẦN",
+      "bbox": [
+        694,
+        220,
+        783,
+        256
+      ],
+      "conf": 92.265678,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "FPT",
+      "bbox": [
+        798,
+        232,
+        854,
+        257
+      ],
+      "conf": 96.952713,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Số",
+      "bbox": [
+        481,
+        271,
+        519,
+        301
+      ],
+      "conf": 96.786385,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "10",
+      "bbox": [
+        530,
+        276,
+        566,
+        302
+      ],
+      "conf": 96.773827,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "phố",
+      "bbox": [
+        579,
+        272,
+        638,
+        308
+      ],
+      "conf": 96.652939,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Phạm",
+      "bbox": [
+        651,
+        275,
+        735,
+        308
+      ],
+      "conf": 96.765259,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Văn",
+      "bbox": [
+        747,
+        276,
+        805,
+        304
+      ],
+      "conf": 96.751869,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Bạch",
+      "bbox": [
+        821,
+        277,
+        892,
+        309
+      ],
+      "conf": 95.967827,
+      "block": 1,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Phường",
+      "bbox": [
+        484,
+        322,
+        606,
+        357
+      ],
+      "conf": 96.564201,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Dịch",
+      "bbox": [
+        619,
+        323,
+        682,
+        355
+      ],
+      "conf": 96.702194,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Vọng,",
+      "bbox": [
+        695,
+        325,
+        783,
+        359
+      ],
+      "conf": 96.880028,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "quận",
+      "bbox": [
+        797,
+        325,
+        873,
+        359
+      ],
+      "conf": 96.617874,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Cầu",
+      "bbox": [
+        887,
+        323,
+        942,
+        353
+      ],
+      "conf": 96.526184,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Giấy",
+      "bbox": [
+        955,
+        324,
+        1023,
+        361
+      ],
+      "conf": 96.964935,
+      "block": 1,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Hà",
+      "bbox": [
+        484,
+        370,
+        521,
+        397
+      ],
+      "conf": 96.400009,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "Nội,",
+      "bbox": [
+        536,
+        371,
+        596,
+        403
+      ],
+      "conf": 93.1679,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "CHXHCN",
+      "bbox": [
+        610,
+        372,
+        739,
+        399
+      ],
+      "conf": 92.451996,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "Việt",
+      "bbox": [
+        752,
+        373,
+        813,
+        404
+      ],
+      "conf": 96.720924,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "Nam",
+      "bbox": [
+        828,
+        375,
+        897,
+        401
+      ],
+      "conf": 96.330566,
+      "block": 1,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        2928,
+        292,
+        2995,
+        325
+      ],
+      "conf": 92.815865,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        3008,
+        293,
+        3075,
+        326
+      ],
+      "conf": 96.749359,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        3085,
+        294,
+        3136,
+        326
+      ],
+      "conf": 95.995796,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        3150,
+        294,
+        3252,
+        328
+      ],
+      "conf": 93.301987,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "RIÊNG",
+      "bbox": [
+        3266,
+        296,
+        3363,
+        329
+      ],
+      "conf": 91.995628,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cho",
+      "bbox": [
+        2596,
+        343,
+        2653,
+        370
+      ],
+      "conf": 96.872192,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kỳ",
+      "bbox": [
+        2667,
+        343,
+        2699,
+        377
+      ],
+      "conf": 96.898178,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        2712,
+        344,
+        2781,
+        376
+      ],
+      "conf": 96.76635,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "động",
+      "bbox": [
+        2793,
+        344,
+        2871,
+        379
+      ],
+      "conf": 96.84687,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        2881,
+        345,
+        2917,
+        372
+      ],
+      "conf": 96.986855,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        2929,
+        345,
+        3000,
+        379
+      ],
+      "conf": 96.839058,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "01",
+      "bbox": [
+        3012,
+        347,
+        3048,
+        373
+      ],
+      "conf": 96.794739,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tháng",
+      "bbox": [
+        3059,
+        347,
+        3149,
+        381
+      ],
+      "conf": 96.658669,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "01",
+      "bbox": [
+        3161,
+        349,
+        3196,
+        375
+      ],
+      "conf": 96.701614,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        3211,
+        348,
+        3276,
+        376
+      ],
+      "conf": 96.815392,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        3289,
+        350,
+        3363,
+        377
+      ],
+      "conf": 96.727631,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đến",
+      "bbox": [
+        2858,
+        389,
+        2913,
+        419
+      ],
+      "conf": 96.860092,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        2929,
+        393,
+        3000,
+        427
+      ],
+      "conf": 96.690308,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "31",
+      "bbox": [
+        3012,
+        395,
+        3048,
+        421
+      ],
+      "conf": 97.000084,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tháng",
+      "bbox": [
+        3059,
+        395,
+        3150,
+        428
+      ],
+      "conf": 96.36731,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "12",
+      "bbox": [
+        3162,
+        397,
+        3196,
+        422
+      ],
+      "conf": 96.849136,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        3211,
+        388,
+        3276,
+        423
+      ],
+      "conf": 96.861557,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        3289,
+        398,
+        3363,
+        424
+      ],
+      "conf": 96.431664,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Mơ",
+      "bbox": [
+        539,
+        1090,
+        555,
+        1159
+      ],
+      "conf": 31.702843,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ƯI",
+      "bbox": [
+        534,
+        1034,
+        563,
+        1062
+      ],
+      "conf": 46.151958,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "+>",
+      "bbox": [
+        534,
+        991,
+        563,
+        1016
+      ],
+      "conf": 88.530205,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Ú)",
+      "bbox": [
+        534,
+        935,
+        563,
+        964
+      ],
+      "conf": 50.367962,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "œo",
+      "bbox": [
+        539,
+        1232,
+        555,
+        1257
+      ],
+      "conf": 0.0,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "10",
+      "bbox": [
+        530,
+        1330,
+        565,
+        1355
+      ],
+      "conf": 96.983383,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "11",
+      "bbox": [
+        530,
+        1379,
+        565,
+        1404
+      ],
+      "conf": 96.747833,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "12",
+      "bbox": [
+        531,
+        1427,
+        565,
+        1452
+      ],
+      "conf": 96.976929,
+      "block": 8,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "13",
+      "bbox": [
+        531,
+        1477,
+        565,
+        1501
+      ],
+      "conf": 96.830345,
+      "block": 8,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "14",
+      "bbox": [
+        530,
+        1525,
+        567,
+        1550
+      ],
+      "conf": 96.437172,
+      "block": 8,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "15",
+      "bbox": [
+        531,
+        1574,
+        565,
+        1599
+      ],
+      "conf": 96.745934,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "16",
+      "bbox": [
+        532,
+        1623,
+        566,
+        1648
+      ],
+      "conf": 96.994568,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "1:",
+      "bbox": [
+        531,
+        1671,
+        566,
+        1696
+      ],
+      "conf": 5.245506,
+      "block": 8,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "CHỈ",
+      "bbox": [
+        590,
+        733,
+        640,
+        768
+      ],
+      "conf": 93.288811,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TIÊU",
+      "bbox": [
+        649,
+        737,
+        717,
+        769
+      ],
+      "conf": 82.262001,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Doanh",
+      "bbox": [
+        591,
+        840,
+        689,
+        867
+      ],
+      "conf": 96.908249,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thu",
+      "bbox": [
+        699,
+        840,
+        748,
+        868
+      ],
+      "conf": 96.6642,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        761,
+        840,
+        815,
+        868
+      ],
+      "conf": 96.386833,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        827,
+        842,
+        899,
+        876
+      ],
+      "conf": 96.833923,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        909,
+        842,
+        943,
+        869
+      ],
+      "conf": 96.957237,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cung",
+      "bbox": [
+        955,
+        851,
+        1025,
+        877
+      ],
+      "conf": 96.531044,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cấp",
+      "bbox": [
+        1035,
+        840,
+        1085,
+        877
+      ],
+      "conf": 96.955643,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "dịch",
+      "bbox": [
+        1096,
+        844,
+        1157,
+        877
+      ],
+      "conf": 96.607086,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "vụ",
+      "bbox": [
+        1168,
+        853,
+        1202,
+        877
+      ],
+      "conf": 97.009636,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Các",
+      "bbox": [
+        590,
+        889,
+        641,
+        916
+      ],
+      "conf": 96.934273,
+      "block": 10,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "khoản",
+      "bbox": [
+        653,
+        888,
+        741,
+        917
+      ],
+      "conf": 96.315681,
+      "block": 10,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "giảm",
+      "bbox": [
+        752,
+        888,
+        824,
+        924
+      ],
+      "conf": 96.096672,
+      "block": 10,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "trừ",
+      "bbox": [
+        835,
+        891,
+        884,
+        918
+      ],
+      "conf": 96.757851,
+      "block": 10,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Doanh",
+      "bbox": [
+        591,
+        938,
+        689,
+        965
+      ],
+      "conf": 96.757568,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "thu",
+      "bbox": [
+        699,
+        939,
+        748,
+        966
+      ],
+      "conf": 95.510223,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "thuần",
+      "bbox": [
+        758,
+        936,
+        846,
+        967
+      ],
+      "conf": 96.991043,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "về",
+      "bbox": [
+        857,
+        937,
+        892,
+        967
+      ],
+      "conf": 97.016792,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        905,
+        940,
+        959,
+        968
+      ],
+      "conf": 96.974068,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        971,
+        941,
+        1042,
+        975
+      ],
+      "conf": 97.014549,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        1053,
+        941,
+        1086,
+        969
+      ],
+      "conf": 96.804802,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "cung",
+      "bbox": [
+        1098,
+        950,
+        1167,
+        976
+      ],
+      "conf": 96.939209,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "cấp",
+      "bbox": [
+        1177,
+        939,
+        1229,
+        976
+      ],
+      "conf": 96.986649,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "dịch",
+      "bbox": [
+        1239,
+        944,
+        1301,
+        976
+      ],
+      "conf": 96.737846,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "vụ",
+      "bbox": [
+        1312,
+        952,
+        1347,
+        977
+      ],
+      "conf": 97.019226,
+      "block": 10,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "Giá",
+      "bbox": [
+        590,
+        987,
+        636,
+        1014
+      ],
+      "conf": 96.467789,
+      "block": 10,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "vốn",
+      "bbox": [
+        647,
+        985,
+        700,
+        1015
+      ],
+      "conf": 96.92411,
+      "block": 10,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        714,
+        988,
+        786,
+        1022
+      ],
+      "conf": 96.834846,
+      "block": 10,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        797,
+        989,
+        849,
+        1016
+      ],
+      "conf": 96.768112,
+      "block": 10,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "Lợi",
+      "bbox": [
+        591,
+        1037,
+        635,
+        1068
+      ],
+      "conf": 96.550934,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        648,
+        1036,
+        741,
+        1069
+      ],
+      "conf": 93.304153,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "gộp",
+      "bbox": [
+        751,
+        1037,
+        808,
+        1071
+      ],
+      "conf": 93.234779,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "về",
+      "bbox": [
+        818,
+        1034,
+        853,
+        1065
+      ],
+      "conf": 97.021431,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        866,
+        1038,
+        920,
+        1065
+      ],
+      "conf": 96.962379,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        931,
+        1038,
+        1004,
+        1073
+      ],
+      "conf": 96.388039,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        1014,
+        1039,
+        1047,
+        1066
+      ],
+      "conf": 96.388039,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "cung",
+      "bbox": [
+        1059,
+        1047,
+        1129,
+        1074
+      ],
+      "conf": 96.910881,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "cấp",
+      "bbox": [
+        1140,
+        1037,
+        1189,
+        1074
+      ],
+      "conf": 97.020218,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "dịch",
+      "bbox": [
+        1200,
+        1041,
+        1262,
+        1073
+      ],
+      "conf": 96.986732,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "vụ",
+      "bbox": [
+        1272,
+        1050,
+        1308,
+        1074
+      ],
+      "conf": 97.022408,
+      "block": 10,
+      "paragraph": 4,
+      "line": 1
+    },
+    {
+      "text": "Doanh",
+      "bbox": [
+        592,
+        1085,
+        687,
+        1112
+      ],
+      "conf": 96.829346,
+      "block": 10,
+      "paragraph": 4,
+      "line": 2
+    },
+    {
+      "text": "thu",
+      "bbox": [
+        698,
+        1085,
+        747,
+        1113
+      ],
+      "conf": 96.486839,
+      "block": 10,
+      "paragraph": 4,
+      "line": 2
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        760,
+        1086,
+        827,
+        1118
+      ],
+      "conf": 96.902695,
+      "block": 10,
+      "paragraph": 4,
+      "line": 2
+    },
+    {
+      "text": "động",
+      "bbox": [
+        838,
+        1087,
+        913,
+        1121
+      ],
+      "conf": 96.849213,
+      "block": 10,
+      "paragraph": 4,
+      "line": 2
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        923,
+        1088,
+        960,
+        1115
+      ],
+      "conf": 97.01432,
+      "block": 10,
+      "paragraph": 4,
+      "line": 2
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        971,
+        1088,
+        1049,
+        1115
+      ],
+      "conf": 96.787056,
+      "block": 10,
+      "paragraph": 4,
+      "line": 2
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        591,
+        1134,
+        635,
+        1160
+      ],
+      "conf": 71.820633,
+      "block": 10,
+      "paragraph": 5,
+      "line": 1
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        648,
+        1130,
+        681,
+        1172
+      ],
+      "conf": 96.975975,
+      "block": 10,
+      "paragraph": 5,
+      "line": 1
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        702,
+        1134,
+        738,
+        1161
+      ],
+      "conf": 96.975975,
+      "block": 10,
+      "paragraph": 5,
+      "line": 1
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        749,
+        1135,
+        828,
+        1162
+      ],
+      "conf": 97.00074,
+      "block": 10,
+      "paragraph": 5,
+      "line": 1
+    },
+    {
+      "text": "Trong",
+      "bbox": [
+        592,
+        1184,
+        677,
+        1216
+      ],
+      "conf": 95.490395,
+      "block": 10,
+      "paragraph": 6,
+      "line": 1
+    },
+    {
+      "text": "đó:",
+      "bbox": [
+        688,
+        1183,
+        736,
+        1210
+      ],
+      "conf": 96.874161,
+      "block": 10,
+      "paragraph": 6,
+      "line": 1
+    },
+    {
+      "text": "chỉ",
+      "bbox": [
+        746,
+        1184,
+        789,
+        1210
+      ],
+      "conf": 70.024719,
+      "block": 10,
+      "paragraph": 6,
+      "line": 1
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        797,
+        1184,
+        848,
+        1217
+      ],
+      "conf": 96.861519,
+      "block": 10,
+      "paragraph": 6,
+      "line": 1
+    },
+    {
+      "text": "lãi",
+      "bbox": [
+        853,
+        1184,
+        890,
+        1211
+      ],
+      "conf": 93.870773,
+      "block": 10,
+      "paragraph": 6,
+      "line": 1
+    },
+    {
+      "text": "vay",
+      "bbox": [
+        900,
+        1193,
+        951,
+        1218
+      ],
+      "conf": 95.933853,
+      "block": 10,
+      "paragraph": 6,
+      "line": 1
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        591,
+        1231,
+        635,
+        1258
+      ],
+      "conf": 91.920197,
+      "block": 10,
+      "paragraph": 7,
+      "line": 1
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        648,
+        1231,
+        693,
+        1265
+      ],
+      "conf": 96.670776,
+      "block": 10,
+      "paragraph": 7,
+      "line": 1
+    },
+    {
+      "text": "bán",
+      "bbox": [
+        704,
+        1231,
+        755,
+        1259
+      ],
+      "conf": 96.746788,
+      "block": 10,
+      "paragraph": 7,
+      "line": 1
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        769,
+        1232,
+        840,
+        1266
+      ],
+      "conf": 96.542442,
+      "block": 10,
+      "paragraph": 7,
+      "line": 1
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        592,
+        1280,
+        635,
+        1307
+      ],
+      "conf": 78.810173,
+      "block": 10,
+      "paragraph": 8,
+      "line": 1
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        648,
+        1280,
+        693,
+        1314
+      ],
+      "conf": 96.989914,
+      "block": 10,
+      "paragraph": 8,
+      "line": 1
+    },
+    {
+      "text": "quản",
+      "bbox": [
+        703,
+        1279,
+        774,
+        1314
+      ],
+      "conf": 96.984489,
+      "block": 10,
+      "paragraph": 8,
+      "line": 1
+    },
+    {
+      "text": "lý",
+      "bbox": [
+        788,
+        1281,
+        810,
+        1315
+      ],
+      "conf": 96.599709,
+      "block": 10,
+      "paragraph": 8,
+      "line": 1
+    },
+    {
+      "text": "doanh",
+      "bbox": [
+        821,
+        1282,
+        914,
+        1309
+      ],
+      "conf": 96.279251,
+      "block": 10,
+      "paragraph": 8,
+      "line": 1
+    },
+    {
+      "text": "nghiệp",
+      "bbox": [
+        927,
+        1283,
+        1026,
+        1317
+      ],
+      "conf": 96.655251,
+      "block": 10,
+      "paragraph": 8,
+      "line": 1
+    },
+    {
+      "text": "Lợi",
+      "bbox": [
+        592,
+        1330,
+        636,
+        1361
+      ],
+      "conf": 96.928032,
+      "block": 10,
+      "paragraph": 9,
+      "line": 1
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        649,
+        1329,
+        741,
+        1362
+      ],
+      "conf": 96.641396,
+      "block": 10,
+      "paragraph": 9,
+      "line": 1
+    },
+    {
+      "text": "thuần",
+      "bbox": [
+        751,
+        1327,
+        839,
+        1357
+      ],
+      "conf": 96.780266,
+      "block": 10,
+      "paragraph": 9,
+      "line": 1
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        849,
+        1331,
+        886,
+        1358
+      ],
+      "conf": 96.96595,
+      "block": 10,
+      "paragraph": 9,
+      "line": 1
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        896,
+        1331,
+        965,
+        1364
+      ],
+      "conf": 96.568756,
+      "block": 10,
+      "paragraph": 9,
+      "line": 1
+    },
+    {
+      "text": "động",
+      "bbox": [
+        975,
+        1332,
+        1052,
+        1366
+      ],
+      "conf": 96.874641,
+      "block": 10,
+      "paragraph": 9,
+      "line": 1
+    },
+    {
+      "text": "kinh",
+      "bbox": [
+        1063,
+        1333,
+        1126,
+        1360
+      ],
+      "conf": 96.815659,
+      "block": 10,
+      "paragraph": 9,
+      "line": 1
+    },
+    {
+      "text": "doanh",
+      "bbox": [
+        1137,
+        1334,
+        1232,
+        1361
+      ],
+      "conf": 96.143761,
+      "block": 10,
+      "paragraph": 9,
+      "line": 1
+    },
+    {
+      "text": "Thu",
+      "bbox": [
+        589,
+        1378,
+        645,
+        1405
+      ],
+      "conf": 96.298798,
+      "block": 10,
+      "paragraph": 10,
+      "line": 1
+    },
+    {
+      "text": "nhập",
+      "bbox": [
+        658,
+        1379,
+        730,
+        1412
+      ],
+      "conf": 96.542755,
+      "block": 10,
+      "paragraph": 10,
+      "line": 1
+    },
+    {
+      "text": "khác",
+      "bbox": [
+        743,
+        1379,
+        809,
+        1407
+      ],
+      "conf": 96.626411,
+      "block": 10,
+      "paragraph": 10,
+      "line": 1
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        592,
+        1427,
+        636,
+        1453
+      ],
+      "conf": 92.26474,
+      "block": 10,
+      "paragraph": 11,
+      "line": 1
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        648,
+        1427,
+        693,
+        1460
+      ],
+      "conf": 96.85807,
+      "block": 10,
+      "paragraph": 11,
+      "line": 1
+    },
+    {
+      "text": "khác",
+      "bbox": [
+        704,
+        1427,
+        770,
+        1455
+      ],
+      "conf": 96.30851,
+      "block": 10,
+      "paragraph": 11,
+      "line": 1
+    },
+    {
+      "text": "Lợi",
+      "bbox": [
+        592,
+        1476,
+        636,
+        1507
+      ],
+      "conf": 96.616173,
+      "block": 10,
+      "paragraph": 12,
+      "line": 1
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        649,
+        1476,
+        741,
+        1508
+      ],
+      "conf": 96.58046,
+      "block": 10,
+      "paragraph": 12,
+      "line": 1
+    },
+    {
+      "text": "khác",
+      "bbox": [
+        754,
+        1476,
+        822,
+        1504
+      ],
+      "conf": 96.761078,
+      "block": 10,
+      "paragraph": 12,
+      "line": 1
+    },
+    {
+      "text": "Tổng",
+      "bbox": [
+        590,
+        1520,
+        666,
+        1558
+      ],
+      "conf": 96.677429,
+      "block": 10,
+      "paragraph": 13,
+      "line": 1
+    },
+    {
+      "text": "lợi",
+      "bbox": [
+        677,
+        1525,
+        716,
+        1557
+      ],
+      "conf": 96.992119,
+      "block": 10,
+      "paragraph": 13,
+      "line": 1
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        729,
+        1525,
+        822,
+        1558
+      ],
+      "conf": 96.998085,
+      "block": 10,
+      "paragraph": 13,
+      "line": 1
+    },
+    {
+      "text": "kế",
+      "bbox": [
+        833,
+        1523,
+        870,
+        1553
+      ],
+      "conf": 97.003189,
+      "block": 10,
+      "paragraph": 13,
+      "line": 1
+    },
+    {
+      "text": "toán",
+      "bbox": [
+        878,
+        1526,
+        948,
+        1553
+      ],
+      "conf": 96.468079,
+      "block": 10,
+      "paragraph": 13,
+      "line": 1
+    },
+    {
+      "text": "trước",
+      "bbox": [
+        958,
+        1527,
+        1046,
+        1554
+      ],
+      "conf": 96.734573,
+      "block": 10,
+      "paragraph": 13,
+      "line": 1
+    },
+    {
+      "text": "thuế",
+      "bbox": [
+        1055,
+        1525,
+        1126,
+        1555
+      ],
+      "conf": 97.00927,
+      "block": 10,
+      "paragraph": 13,
+      "line": 1
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        592,
+        1573,
+        636,
+        1600
+      ],
+      "conf": 54.018326,
+      "block": 10,
+      "paragraph": 14,
+      "line": 1
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        650,
+        1574,
+        694,
+        1606
+      ],
+      "conf": 96.967323,
+      "block": 10,
+      "paragraph": 14,
+      "line": 1
+    },
+    {
+      "text": "thuế",
+      "bbox": [
+        709,
+        1572,
+        772,
+        1601
+      ],
+      "conf": 93.280975,
+      "block": 10,
+      "paragraph": 14,
+      "line": 1
+    },
+    {
+      "text": "TNDN",
+      "bbox": [
+        789,
+        1568,
+        856,
+        1612
+      ],
+      "conf": 91.9786,
+      "block": 10,
+      "paragraph": 14,
+      "line": 1
+    },
+    {
+      "text": "hiện",
+      "bbox": [
+        880,
+        1576,
+        941,
+        1607
+      ],
+      "conf": 96.0131,
+      "block": 10,
+      "paragraph": 14,
+      "line": 1
+    },
+    {
+      "text": "hành",
+      "bbox": [
+        954,
+        1576,
+        1026,
+        1603
+      ],
+      "conf": 96.360588,
+      "block": 10,
+      "paragraph": 14,
+      "line": 1
+    },
+    {
+      "text": "Chi",
+      "bbox": [
+        592,
+        1621,
+        636,
+        1648
+      ],
+      "conf": 73.766594,
+      "block": 10,
+      "paragraph": 15,
+      "line": 1
+    },
+    {
+      "text": "phí",
+      "bbox": [
+        649,
+        1622,
+        694,
+        1655
+      ],
+      "conf": 96.562889,
+      "block": 10,
+      "paragraph": 15,
+      "line": 1
+    },
+    {
+      "text": "thuế",
+      "bbox": [
+        709,
+        1621,
+        772,
+        1650
+      ],
+      "conf": 93.292,
+      "block": 10,
+      "paragraph": 15,
+      "line": 1
+    },
+    {
+      "text": "TNDN",
+      "bbox": [
+        788,
+        1617,
+        857,
+        1660
+      ],
+      "conf": 92.154083,
+      "block": 10,
+      "paragraph": 15,
+      "line": 1
+    },
+    {
+      "text": "hoãn",
+      "bbox": [
+        880,
+        1624,
+        953,
+        1651
+      ],
+      "conf": 96.800713,
+      "block": 10,
+      "paragraph": 15,
+      "line": 1
+    },
+    {
+      "text": "lại",
+      "bbox": [
+        966,
+        1625,
+        996,
+        1656
+      ],
+      "conf": 97.021553,
+      "block": 10,
+      "paragraph": 15,
+      "line": 1
+    },
+    {
+      "text": "Lợi",
+      "bbox": [
+        593,
+        1671,
+        637,
+        1703
+      ],
+      "conf": 96.989082,
+      "block": 10,
+      "paragraph": 16,
+      "line": 1
+    },
+    {
+      "text": "nhuận",
+      "bbox": [
+        649,
+        1670,
+        742,
+        1704
+      ],
+      "conf": 96.812836,
+      "block": 10,
+      "paragraph": 16,
+      "line": 1
+    },
+    {
+      "text": "sau",
+      "bbox": [
+        753,
+        1679,
+        803,
+        1698
+      ],
+      "conf": 97.01622,
+      "block": 10,
+      "paragraph": 16,
+      "line": 1
+    },
+    {
+      "text": "thuế",
+      "bbox": [
+        813,
+        1669,
+        886,
+        1699
+      ],
+      "conf": 96.693039,
+      "block": 10,
+      "paragraph": 16,
+      "line": 1
+    },
+    {
+      "text": "thu",
+      "bbox": [
+        893,
+        1673,
+        943,
+        1700
+      ],
+      "conf": 96.499504,
+      "block": 10,
+      "paragraph": 16,
+      "line": 1
+    },
+    {
+      "text": "nhập",
+      "bbox": [
+        956,
+        1673,
+        1029,
+        1707
+      ],
+      "conf": 96.898438,
+      "block": 10,
+      "paragraph": 16,
+      "line": 1
+    },
+    {
+      "text": "doanh",
+      "bbox": [
+        1040,
+        1674,
+        1134,
+        1702
+      ],
+      "conf": 96.703949,
+      "block": 10,
+      "paragraph": 16,
+      "line": 1
+    },
+    {
+      "text": "nghiệp",
+      "bbox": [
+        1145,
+        1675,
+        1248,
+        1710
+      ],
+      "conf": 96.863129,
+      "block": 10,
+      "paragraph": 16,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        1412,
+        467,
+        1493,
+        506
+      ],
+      "conf": 92.930962,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1509,
+        468,
+        1589,
+        507
+      ],
+      "conf": 95.895172,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "KẾT",
+      "bbox": [
+        1605,
+        465,
+        1674,
+        508
+      ],
+      "conf": 93.30529,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUẢ",
+      "bbox": [
+        1687,
+        467,
+        1775,
+        514
+      ],
+      "conf": 92.372826,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HOẠT",
+      "bbox": [
+        1790,
+        480,
+        1900,
+        518
+      ],
+      "conf": 92.611931,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐỘNG",
+      "bbox": [
+        1912,
+        472,
+        2030,
+        518
+      ],
+      "conf": 93.303123,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "KINH",
+      "bbox": [
+        2047,
+        481,
+        2139,
+        512
+      ],
+      "conf": 92.826981,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        2156,
+        482,
+        2301,
+        514
+      ],
+      "conf": 91.543716,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cho",
+      "bbox": [
+        1207,
+        536,
+        1264,
+        564
+      ],
+      "conf": 96.567589,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "kỳ",
+      "bbox": [
+        1276,
+        537,
+        1310,
+        571
+      ],
+      "conf": 96.931976,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        1321,
+        537,
+        1394,
+        570
+      ],
+      "conf": 96.867966,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "động",
+      "bbox": [
+        1404,
+        539,
+        1483,
+        573
+      ],
+      "conf": 96.953514,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        1495,
+        539,
+        1531,
+        567
+      ],
+      "conf": 96.675621,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        1540,
+        539,
+        1616,
+        574
+      ],
+      "conf": 96.712051,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "01",
+      "bbox": [
+        1626,
+        542,
+        1661,
+        568
+      ],
+      "conf": 93.306252,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "thóng",
+      "bbox": [
+        1675,
+        541,
+        1765,
+        575
+      ],
+      "conf": 82.487152,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "01",
+      "bbox": [
+        1777,
+        543,
+        1812,
+        569
+      ],
+      "conf": 96.85437,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        1826,
+        542,
+        1893,
+        570
+      ],
+      "conf": 96.653755,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        1906,
+        544,
+        1983,
+        571
+      ],
+      "conf": 96.574471,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "đến",
+      "bbox": [
+        1994,
+        540,
+        2050,
+        571
+      ],
+      "conf": 96.85144,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        2063,
+        544,
+        2139,
+        578
+      ],
+      "conf": 96.335022,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "31",
+      "bbox": [
+        2148,
+        546,
+        2184,
+        572
+      ],
+      "conf": 96.943138,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "tháng",
+      "bbox": [
+        2198,
+        545,
+        2289,
+        580
+      ],
+      "conf": 63.735031,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "12",
+      "bbox": [
+        2301,
+        548,
+        2337,
+        574
+      ],
+      "conf": 96.575867,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        2350,
+        546,
+        2416,
+        574
+      ],
+      "conf": 76.480759,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        2429,
+        549,
+        2507,
+        575
+      ],
+      "conf": 96.666893,
+      "block": 11,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Thuyết",
+      "bbox": [
+        1692,
+        725,
+        1798,
+        761
+      ],
+      "conf": 96.861099,
+      "block": 12,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "minh",
+      "bbox": [
+        1711,
+        777,
+        1787,
+        803
+      ],
+      "conf": 95.469666,
+      "block": 12,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "15",
+      "bbox": [
+        1732,
+        852,
+        1766,
+        877
+      ],
+      "conf": 96.449303,
+      "block": 13,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "16",
+      "bbox": [
+        1733,
+        999,
+        1767,
+        1024
+      ],
+      "conf": 96.879272,
+      "block": 14,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "17",
+      "bbox": [
+        1733,
+        1097,
+        1767,
+        1122
+      ],
+      "conf": 87.400185,
+      "block": 15,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "18",
+      "bbox": [
+        1733,
+        1145,
+        1767,
+        1171
+      ],
+      "conf": 96.842766,
+      "block": 15,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "19",
+      "bbox": [
+        1734,
+        1584,
+        1768,
+        1610
+      ],
+      "conf": 95.130699,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "MẪU",
+      "bbox": [
+        3088,
+        598,
+        3165,
+        635
+      ],
+      "conf": 96.848549,
+      "block": 17,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "SỐ",
+      "bbox": [
+        3178,
+        600,
+        3220,
+        636
+      ],
+      "conf": 93.286705,
+      "block": 17,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "B",
+      "bbox": [
+        3234,
+        611,
+        3251,
+        636
+      ],
+      "conf": 92.810066,
+      "block": 17,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "02-DN",
+      "bbox": [
+        3263,
+        611,
+        3360,
+        637
+      ],
+      "conf": 92.934441,
+      "block": 17,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Đơn",
+      "bbox": [
+        3174,
+        666,
+        3238,
+        691
+      ],
+      "conf": 87.464447,
+      "block": 19,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "vị:",
+      "bbox": [
+        3251,
+        666,
+        3284,
+        697
+      ],
+      "conf": 93.041542,
+      "block": 19,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VND",
+      "bbox": [
+        3297,
+        667,
+        3366,
+        692
+      ],
+      "conf": 91.363892,
+      "block": 19,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Quý",
+      "bbox": [
+        2155,
+        730,
+        2216,
+        764
+      ],
+      "conf": 96.591438,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "4",
+      "bbox": [
+        2226,
+        733,
+        2244,
+        757
+      ],
+      "conf": 96.591438,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Lũy",
+      "bbox": [
+        2706,
+        736,
+        2756,
+        768
+      ],
+      "conf": 91.306915,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "kế",
+      "bbox": [
+        2767,
+        732,
+        2804,
+        762
+      ],
+      "conf": 97.003471,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        2811,
+        735,
+        2848,
+        762
+      ],
+      "conf": 96.991753,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "đầu",
+      "bbox": [
+        2857,
+        733,
+        2912,
+        763
+      ],
+      "conf": 94.844147,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        2924,
+        736,
+        2988,
+        763
+      ],
+      "conf": 96.977951,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "đến",
+      "bbox": [
+        3000,
+        734,
+        3057,
+        764
+      ],
+      "conf": 96.921852,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "cuối",
+      "bbox": [
+        3069,
+        735,
+        3130,
+        765
+      ],
+      "conf": 96.820274,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "quý",
+      "bbox": [
+        3143,
+        739,
+        3197,
+        772
+      ],
+      "conf": 96.859886,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "này",
+      "bbox": [
+        3209,
+        739,
+        3262,
+        773
+      ],
+      "conf": 96.868645,
+      "block": 19,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Năm",
+      "bbox": [
+        1929,
+        800,
+        1998,
+        827
+      ],
+      "conf": 95.930595,
+      "block": 19,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        2010,
+        803,
+        2083,
+        829
+      ],
+      "conf": 96.580719,
+      "block": 19,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "Năm",
+      "bbox": [
+        2315,
+        804,
+        2385,
+        831
+      ],
+      "conf": 96.607597,
+      "block": 19,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        2397,
+        807,
+        2472,
+        832
+      ],
+      "conf": 96.321121,
+      "block": 19,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "Năm",
+      "bbox": [
+        2713,
+        807,
+        2782,
+        835
+      ],
+      "conf": 96.358185,
+      "block": 19,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        2794,
+        810,
+        2868,
+        835
+      ],
+      "conf": 95.804024,
+      "block": 19,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "Năm",
+      "bbox": [
+        3109,
+        810,
+        3178,
+        838
+      ],
+      "conf": 96.783302,
+      "block": 19,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        3190,
+        814,
+        3266,
+        839
+      ],
+      "conf": 96.528008,
+      "block": 19,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "235.999.945.930",
+      "bbox": [
+        1924,
+        854,
+        2183,
+        880
+      ],
+      "conf": 91.503059,
+      "block": 19,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "226.782.845.868",
+      "bbox": [
+        2310,
+        857,
+        2571,
+        884
+      ],
+      "conf": 81.673401,
+      "block": 19,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "861.793.263.650",
+      "bbox": [
+        2717,
+        860,
+        2977,
+        887
+      ],
+      "conf": 91.941391,
+      "block": 19,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "750.934.526.983",
+      "bbox": [
+        3103,
+        864,
+        3363,
+        891
+      ],
+      "conf": 88.263565,
+      "block": 19,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "235.999.945.930",
+      "bbox": [
+        1924,
+        952,
+        2183,
+        978
+      ],
+      "conf": 90.669594,
+      "block": 20,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "51.666.412.946",
+      "bbox": [
+        1944,
+        1001,
+        2183,
+        1028
+      ],
+      "conf": 94.141571,
+      "block": 20,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "184.333.532.984",
+      "bbox": [
+        1924,
+        1049,
+        2184,
+        1076
+      ],
+      "conf": 90.82859,
+      "block": 20,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "3.763.377.346.766",
+      "bbox": [
+        1895,
+        1098,
+        2184,
+        1126
+      ],
+      "conf": 92.002571,
+      "block": 20,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "139.446.132.484",
+      "bbox": [
+        1925,
+        1147,
+        2184,
+        1174
+      ],
+      "conf": 92.878601,
+      "block": 20,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "77.760.719.148",
+      "bbox": [
+        1939,
+        1196,
+        2178,
+        1223
+      ],
+      "conf": 96.527939,
+      "block": 20,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "513.870.647",
+      "bbox": [
+        1993,
+        1245,
+        2184,
+        1271
+      ],
+      "conf": 96.507172,
+      "block": 20,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "200.329.121.111",
+      "bbox": [
+        1924,
+        1293,
+        2184,
+        1320
+      ],
+      "conf": 91.901382,
+      "block": 20,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "3.607.421.755.508",
+      "bbox": [
+        1896,
+        1343,
+        2184,
+        1369
+      ],
+      "conf": 92.567207,
+      "block": 20,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "149.882.765",
+      "bbox": [
+        1994,
+        1392,
+        2184,
+        1419
+      ],
+      "conf": 96.169151,
+      "block": 20,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "118.872.137",
+      "bbox": [
+        1994,
+        1440,
+        2184,
+        1467
+      ],
+      "conf": 96.366966,
+      "block": 20,
+      "paragraph": 1,
+      "line": 11
+    },
+    {
+      "text": "31.010.628",
+      "bbox": [
+        2012,
+        1489,
+        2184,
+        1516
+      ],
+      "conf": 96.432007,
+      "block": 20,
+      "paragraph": 1,
+      "line": 12
+    },
+    {
+      "text": "3.607.452.766.136",
+      "bbox": [
+        1896,
+        1537,
+        2184,
+        1564
+      ],
+      "conf": 92.320694,
+      "block": 20,
+      "paragraph": 1,
+      "line": 13
+    },
+    {
+      "text": "(4.467.905.916)",
+      "bbox": [
+        1943,
+        1633,
+        2184,
+        1667
+      ],
+      "conf": 96.491264,
+      "block": 20,
+      "paragraph": 1,
+      "line": 14
+    },
+    {
+      "text": "3.611.920.672.052",
+      "bbox": [
+        1896,
+        1683,
+        2185,
+        1711
+      ],
+      "conf": 92.567734,
+      "block": 20,
+      "paragraph": 1,
+      "line": 15
+    },
+    {
+      "text": "226.782.845.868",
+      "bbox": [
+        2309,
+        955,
+        2571,
+        982
+      ],
+      "conf": 85.891563,
+      "block": 21,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "54.661.812.207",
+      "bbox": [
+        2330,
+        1004,
+        2571,
+        1031
+      ],
+      "conf": 93.596657,
+      "block": 21,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "172.121.033.661",
+      "bbox": [
+        2310,
+        1053,
+        2571,
+        1079
+      ],
+      "conf": 92.64225,
+      "block": 21,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "3.463.535.854.693",
+      "bbox": [
+        2281,
+        1101,
+        2570,
+        1129
+      ],
+      "conf": 91.630234,
+      "block": 21,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "67.293.078.815",
+      "bbox": [
+        2330,
+        1150,
+        2571,
+        1177
+      ],
+      "conf": 96.414047,
+      "block": 21,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "65.759.752.095",
+      "bbox": [
+        2323,
+        1199,
+        2565,
+        1226
+      ],
+      "conf": 96.171577,
+      "block": 21,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "1/233:277.527",
+      "bbox": [
+        2352,
+        1248,
+        2571,
+        1275
+      ],
+      "conf": 86.284492,
+      "block": 21,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "120.165.873.794",
+      "bbox": [
+        2312,
+        1297,
+        2572,
+        1324
+      ],
+      "conf": 89.1819,
+      "block": 21,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "3.446.964.658.218",
+      "bbox": [
+        2281,
+        1346,
+        2572,
+        1373
+      ],
+      "conf": 91.432663,
+      "block": 21,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "30.582.760",
+      "bbox": [
+        2400,
+        1396,
+        2571,
+        1422
+      ],
+      "conf": 69.222206,
+      "block": 21,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "32",
+      "bbox": [
+        2536,
+        1445,
+        2571,
+        1470
+      ],
+      "conf": 96.779678,
+      "block": 21,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "80.582.728",
+      "bbox": [
+        2400,
+        1493,
+        2572,
+        1519
+      ],
+      "conf": 90.489105,
+      "block": 21,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "3.447.045.240.946",
+      "bbox": [
+        2282,
+        1541,
+        2572,
+        1568
+      ],
+      "conf": 91.029762,
+      "block": 21,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "19.879.224.615",
+      "bbox": [
+        2332,
+        1638,
+        2572,
+        1665
+      ],
+      "conf": 96.677666,
+      "block": 21,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "3.427.166.016.331",
+      "bbox": [
+        2282,
+        1686,
+        2572,
+        1714
+      ],
+      "conf": 92.446754,
+      "block": 21,
+      "paragraph": 3,
+      "line": 4
+    },
+    {
+      "text": "861.793.263.650",
+      "bbox": [
+        2717,
+        959,
+        2977,
+        985
+      ],
+      "conf": 90.048943,
+      "block": 22,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "188.460.184.995",
+      "bbox": [
+        2719,
+        1007,
+        2977,
+        1034
+      ],
+      "conf": 91.861542,
+      "block": 22,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "673.333.078.655",
+      "bbox": [
+        2718,
+        1056,
+        2977,
+        1083
+      ],
+      "conf": 91.881714,
+      "block": 22,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "6.101.503.286.637",
+      "bbox": [
+        2689,
+        1105,
+        2977,
+        1132
+      ],
+      "conf": 91.941231,
+      "block": 22,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "346.191.375.776",
+      "bbox": [
+        2718,
+        1153,
+        2977,
+        1181
+      ],
+      "conf": 92.554634,
+      "block": 22,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "285.959.690.960",
+      "bbox": [
+        2710,
+        1202,
+        2972,
+        1229
+      ],
+      "conf": 90.888832,
+      "block": 22,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "1.394.754.448",
+      "bbox": [
+        2759,
+        1252,
+        2977,
+        1279
+      ],
+      "conf": 96.635536,
+      "block": 22,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "759.406.318.916",
+      "bbox": [
+        2718,
+        1300,
+        2978,
+        1327
+      ],
+      "conf": 92.480652,
+      "block": 22,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "5.667.843.916.152",
+      "bbox": [
+        2689,
+        1349,
+        2978,
+        1376
+      ],
+      "conf": 92.24929,
+      "block": 22,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "363.302.961",
+      "bbox": [
+        2786,
+        1399,
+        2978,
+        1426
+      ],
+      "conf": 96.684731,
+      "block": 22,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "235.307.371",
+      "bbox": [
+        2787,
+        1447,
+        2978,
+        1474
+      ],
+      "conf": 96.748436,
+      "block": 22,
+      "paragraph": 1,
+      "line": 11
+    },
+    {
+      "text": "127.995.590",
+      "bbox": [
+        2788,
+        1496,
+        2978,
+        1522
+      ],
+      "conf": 96.590157,
+      "block": 22,
+      "paragraph": 1,
+      "line": 12
+    },
+    {
+      "text": "5.667.971.911.742",
+      "bbox": [
+        2690,
+        1544,
+        2978,
+        1570
+      ],
+      "conf": 86.936897,
+      "block": 22,
+      "paragraph": 1,
+      "line": 13
+    },
+    {
+      "text": "11.703.847.094",
+      "bbox": [
+        2740,
+        1642,
+        2980,
+        1668
+      ],
+      "conf": 96.496498,
+      "block": 22,
+      "paragraph": 1,
+      "line": 14
+    },
+    {
+      "text": "5.656.268.064.648",
+      "bbox": [
+        2690,
+        1690,
+        2979,
+        1717
+      ],
+      "conf": 92.171829,
+      "block": 22,
+      "paragraph": 1,
+      "line": 15
+    },
+    {
+      "text": "750.934.526.983",
+      "bbox": [
+        3103,
+        962,
+        3363,
+        989
+      ],
+      "conf": 92.130363,
+      "block": 23,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "136.457.430.363",
+      "bbox": [
+        3104,
+        1011,
+        3363,
+        1038
+      ],
+      "conf": 92.144775,
+      "block": 23,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "614.477.096.620",
+      "bbox": [
+        3103,
+        1059,
+        3364,
+        1086
+      ],
+      "conf": 92.316963,
+      "block": 23,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "5.890.489.739.679",
+      "bbox": [
+        3074,
+        1108,
+        3364,
+        1135
+      ],
+      "conf": 74.233353,
+      "block": 23,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "236:331.083.377",
+      "bbox": [
+        3104,
+        1157,
+        3364,
+        1184
+      ],
+      "conf": 26.569633,
+      "block": 23,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "236.082.994.088",
+      "bbox": [
+        3096,
+        1205,
+        3358,
+        1233
+      ],
+      "conf": 90.928787,
+      "block": 23,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "2.065.876.797",
+      "bbox": [
+        3144,
+        1255,
+        3364,
+        1282
+      ],
+      "conf": 96.21788,
+      "block": 23,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "751.778.219.867",
+      "bbox": [
+        3104,
+        1304,
+        3364,
+        1331
+      ],
+      "conf": 90.813301,
+      "block": 23,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "5.514.791.646.258",
+      "bbox": [
+        3075,
+        1353,
+        3365,
+        1380
+      ],
+      "conf": 91.581329,
+      "block": 23,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "8303.585.677",
+      "bbox": [
+        3172,
+        1402,
+        3365,
+        1428
+      ],
+      "conf": 73.080231,
+      "block": 23,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "34.648.333",
+      "bbox": [
+        3192,
+        1450,
+        3364,
+        1477
+      ],
+      "conf": 96.103981,
+      "block": 23,
+      "paragraph": 1,
+      "line": 11
+    },
+    {
+      "text": "768.937.344",
+      "bbox": [
+        3172,
+        1499,
+        3366,
+        1525
+      ],
+      "conf": 96.235039,
+      "block": 23,
+      "paragraph": 1,
+      "line": 12
+    },
+    {
+      "text": "5.515.560.583.602",
+      "bbox": [
+        3075,
+        1547,
+        3365,
+        1574
+      ],
+      "conf": 91.570091,
+      "block": 23,
+      "paragraph": 1,
+      "line": 13
+    },
+    {
+      "text": "8.926.733.555",
+      "bbox": [
+        3144,
+        1645,
+        3365,
+        1671
+      ],
+      "conf": 93.231834,
+      "block": 23,
+      "paragraph": 1,
+      "line": 14
+    },
+    {
+      "text": "5.506.633.850.047",
+      "bbox": [
+        3076,
+        1694,
+        3365,
+        1720
+      ],
+      "conf": 91.111679,
+      "block": 23,
+      "paragraph": 1,
+      "line": 15
+    }
+  ]
+}

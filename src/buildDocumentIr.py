@@ -30,6 +30,7 @@ from ir_types import Block, Cell, Column, PageClass, PageIR, Row, Source, TableB
 from model import PROMPT_VERSION
 from financialContent import (compact_page_ranges, expand_page_ranges,
                               financial_index, financial_page_class,
+                              flag_bad_financial_cells,
                               statement_tables)
 from render import page_name
 from reportContent import (annual_content_index, annual_kpi,
@@ -221,8 +222,11 @@ def _layout_blocks(page: pdfplumber.page.Page,
 
 # 3. Trang OCR: ưu tiên bbox của từng từ Tesseract; nếu bản AI đã sửa chữ
 # khác bản Tesseract thì giữ text nhưng không gán nhầm tọa độ Tesseract.
-def _markdown_table(lines: list[str], number: int, sequence: int) -> TableBlock | None:
+def _markdown_table(lines: list[str], number: int, sequence: int,
+                    needs_review: bool = False) -> TableBlock | None:
     """Đổi bảng Markdown từ AI thành columns/rows/cells khi có đủ dấu cột."""
+    lines = [line.strip() for line in lines
+             if line.strip() and not re.fullmatch(r"```(?:markdown|md)?", line.strip(), re.I)]
     if len(lines) < 3 or "|" not in lines[0]:
         return None
     split = lambda line: [cell.strip() for cell in line.strip().strip("|").split("|")]
@@ -247,8 +251,13 @@ def _markdown_table(lines: list[str], number: int, sequence: int) -> TableBlock 
         parts = split(line)
         if len(parts) != len(headers):
             return None
-        cells: dict[str, Cell] = {f"c{index}": {"raw": parts[i], "bbox": None}
-                                  for index, i in enumerate(value_indices, 1) if parts[i]}
+        cells: dict[str, Cell] = {}
+        for index, i in enumerate(value_indices, 1):
+            cell: Cell = {"raw": parts[i] or None, "bbox": None}
+            if needs_review:
+                cell.update(needs_review=True,
+                            review_reason="OCR_MARKDOWN_SINGLE_SOURCE")
+            cells[f"c{index}"] = cell
         rows.append({"id": f"r{len(rows) + 1}", "code": parts[code_index] or None if code_index is not None else None,
                      "label_raw": parts[label_index], "note": parts[note_index] or None if note_index is not None else None,
                      "bbox": None, "cells": cells})
@@ -257,25 +266,52 @@ def _markdown_table(lines: list[str], number: int, sequence: int) -> TableBlock 
     return table
 
 
-def _text_blocks(text: str, number: int) -> list[dict[str, Any]]:
+def _text_blocks(text: str, number: int, *, needs_review: bool = False) -> list[dict[str, Any]]:
     """Fallback for raster OCR: preserve text without claiming false geometry."""
     blocks: list[dict[str, Any]] = []
     for paragraph in re.split(r"\n\s*\n", text.strip()):
         paragraph = paragraph.strip()
         if not paragraph:
             continue
-        lines = [line.strip() for line in paragraph.splitlines() if line.strip()]
-        table = _markdown_table(lines, number, 1 + sum(block["type"] == "table" for block in blocks))
-        if table is not None:
-            blocks.append(table)
-            continue
-        joined = "\n".join(lines)
-        letters = [char for char in joined if char.isalpha()]
-        uppercase = bool(letters) and sum(char.isupper() for char in letters) / len(letters) > 0.85
-        block_type = "heading" if uppercase and len(joined) < 140 else "paragraph"
-        if joined.startswith("[stamp]"):
-            block_type = "stamp"
-        blocks.append({"type": block_type, "text": joined, "bbox": None})
+        lines = [line.strip() for line in paragraph.splitlines()
+                 if line.strip() and not re.fullmatch(r"```(?:markdown|md)?", line.strip(), re.I)]
+        text_lines: list[str] = []
+
+        def flush_text() -> None:
+            if not text_lines:
+                return
+            joined = "\n".join(text_lines).strip()
+            text_lines.clear()
+            if not joined or re.fullmatch(r"```(?:markdown|md)?", joined, re.I):
+                return
+            letters = [char for char in joined if char.isalpha()]
+            uppercase = bool(letters) and sum(char.isupper() for char in letters) / len(letters) > 0.85
+            block_type = "heading" if uppercase and len(joined) < 140 else "paragraph"
+            if joined.startswith("[stamp]"):
+                block_type = "stamp"
+            blocks.append({"type": block_type, "text": joined, "bbox": None})
+
+        index = 0
+        while index < len(lines):
+            if (index + 1 < len(lines) and "|" in lines[index]
+                    and "|" in lines[index + 1]
+                    and all(re.fullmatch(r":?-{3,}:?", cell.strip())
+                            for cell in lines[index + 1].strip().strip("|").split("|"))):
+                end = index + 2
+                while end < len(lines) and "|" in lines[end]:
+                    end += 1
+                table = _markdown_table(
+                    lines[index:end], number,
+                    1 + sum(block["type"] == "table" for block in blocks),
+                    needs_review=needs_review)
+                if table is not None:
+                    flush_text()
+                    blocks.append(table)
+                    index = end
+                    continue
+            text_lines.append(lines[index])
+            index += 1
+        flush_text()
     return blocks
 
 
@@ -308,9 +344,295 @@ def _ocr_blocks(word_items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return blocks
 
 
+def _tess_four_column_statement_table(
+        word_items: list[dict[str, Any]], number: int, width: int
+        ) -> tuple[TableBlock | None, set[int]]:
+    """Recover a four-column statement from positioned OCR words conservatively."""
+    numeric = re.compile(r"\(?-?\d[\d.,/]*\)?$|^[-–—]$")
+    amount_words = [word for word in word_items
+                    if re.fullmatch(r"\(?-?\d[\d.,/]*\)?", word["text"])
+                    and len(re.sub(r"\D", "", word["text"])) >= 4
+                    and word["bbox"][2] >= width * .55]
+    anchors: list[tuple[float, list[dict[str, Any]]]] = []
+    for word in amount_words:
+        edge = word["bbox"][2]
+        cluster = next((item for item in anchors if abs(item[0] - edge) <= 18), None)
+        if cluster is None:
+            anchors.append((edge, [word]))
+        else:
+            cluster[1].append(word)
+    strong = sorted((item for item in anchors if len(item[1]) >= 5), key=lambda item: item[0])
+    if len(strong) < 4:
+        return None, set()
+
+    # Keep only anchors that recur on the same rows. This prevents a nearby
+    # note-number column from being mistaken for a value column.
+    adjacency: dict[int, set[int]] = {index: set() for index in range(len(strong))}
+    for i, (left_edge, left_words) in enumerate(strong):
+        for j in range(i + 1, len(strong)):
+            right_edge, right_words = strong[j]
+            if right_edge - left_edge < width * .04:
+                continue
+            co_rows = sum(any(abs((left["bbox"][1] + left["bbox"][3]) / 2 -
+                                  (right["bbox"][1] + right["bbox"][3]) / 2) <= 18
+                              for right in right_words) for left in left_words)
+            if co_rows >= 5:
+                adjacency[i].add(j)
+                adjacency[j].add(i)
+    components: list[list[int]] = []
+    unseen = set(adjacency)
+    while unseen:
+        pending, component = [unseen.pop()], []
+        while pending:
+            current = pending.pop()
+            component.append(current)
+            neighbours = adjacency[current] & unseen
+            unseen.difference_update(neighbours)
+            pending.extend(neighbours)
+        components.append(component)
+    selected = max(components, key=lambda part: (len(part),
+                    sum(len(strong[index][1]) for index in part)))
+    if len(selected) != 4:
+        return None, set()
+    columns_x = [strong[index][0] for index in sorted(selected, key=lambda i: strong[i][0])]
+    column_centers = [statistics.median(
+        (word["bbox"][0] + word["bbox"][2]) / 2 for word in strong[index][1])
+        for index in sorted(selected, key=lambda i: strong[i][0])]
+    amount_word_ids = {id(word) for word in amount_words}
+    positioned_value_ids = amount_word_ids | {
+        id(word) for word in word_items
+        if numeric.fullmatch(word["text"])
+        and any(abs(word["bbox"][2] - anchor) <= 18 for anchor in columns_x)
+    }
+    row_groups: list[list[dict[str, Any]]] = []
+    for word in sorted((word for word in word_items
+                        if id(word) in positioned_value_ids or
+                        (numeric.fullmatch(word["text"]) and word["text"] in ("-", "–", "—"))),
+                       key=lambda item: (sum(item["bbox"][1::2]) / 2, item["bbox"][0])):
+        center_y = (word["bbox"][1] + word["bbox"][3]) / 2
+        group = next((items for items in reversed(row_groups)
+                      if abs(center_y - sum((item["bbox"][1] + item["bbox"][3]) / 2
+                                            for item in items) / len(items)) <= 18), None)
+        if group is None:
+            row_groups.append([word])
+        else:
+            group.append(word)
+
+    candidates: list[dict[str, Any]] = []
+    for group in row_groups:
+        values: list[dict[str, Any] | None] = [None] * 4
+        for word in group:
+            column = min(range(4), key=lambda index: abs(word["bbox"][2] - columns_x[index]))
+            if abs(word["bbox"][2] - columns_x[column]) <= 18:
+                if values[column] is not None:
+                    break
+                values[column] = word
+        if sum(value is not None for value in values) < 3:
+            continue
+        row_y = sum((word["bbox"][1] + word["bbox"][3]) / 2 for word in group) / len(group)
+        candidates.append({"y": row_y, "values": values})
+    if len(candidates) < 5:
+        return None, set()
+
+    # Avoid joining separate tables: select the densest vertically continuous
+    # run of statement rows using the page's observed row spacing.
+    runs: list[list[dict[str, Any]]] = []
+    for candidate in candidates:
+        if runs and candidate["y"] - runs[-1][-1]["y"] <= 95:
+            runs[-1].append(candidate)
+        else:
+            runs.append([candidate])
+    matched = max(runs, key=len)
+    if len(matched) < 5:
+        return None, set()
+
+    # Assign each label token to only its nearest value row. On this scan the
+    # left text baseline is about 20-30 px above the four right-aligned values.
+    labels_by_row: list[list[dict[str, Any]]] = [[] for _ in matched]
+    for word in word_items:
+        if (word["bbox"][2] >= columns_x[0] - 35 or id(word) in positioned_value_ids or
+                (numeric.fullmatch(word["text"])
+                 and len(re.sub(r"\D", "", word["text"])) >= 4)):
+            continue
+        center_y = (word["bbox"][1] + word["bbox"][3]) / 2
+        nearest = min(range(len(matched)), key=lambda index: abs(center_y - matched[index]["y"]))
+        if abs(center_y - matched[nearest]["y"]) <= 38:
+            labels_by_row[nearest].append(word)
+
+    first_data_y = matched[0]["y"]
+    code_header = next((word for word in word_items
+                        if _plain(word["text"]) == "ma"
+                        and first_data_y - 180 <= word["bbox"][1] < first_data_y), None)
+    note_header = next((word for word in word_items
+                        if _plain(word["text"]) == "thuyet"
+                        and first_data_y - 180 <= word["bbox"][1] < first_data_y), None)
+    code_center = ((code_header["bbox"][0] + code_header["bbox"][2]) / 2
+                   if code_header else None)
+    note_center = ((note_header["bbox"][0] + note_header["bbox"][2]) / 2
+                   if note_header else None)
+    headers: dict[int, list[tuple[float, float, str]]] = {index: [] for index in range(4)}
+    for word in word_items:
+        top = word["bbox"][1]
+        if not first_data_y - 180 <= top < first_data_y:
+            continue
+        if not re.fullmatch(r"\d{1,2}[./-]\d{1,2}[./-]20\d{2}|20\d{2}", word["text"]):
+            continue
+        center = (word["bbox"][0] + word["bbox"][2]) / 2
+        column = min(range(4), key=lambda index: abs(center - column_centers[index]))
+        headers[column].append((top, center, word["text"]))
+
+    header_words = [word for word in word_items
+                    if first_data_y - 180 <= word["bbox"][1] < first_data_y
+                    and word["bbox"][0] >= columns_x[0] - 260
+                    and (any(char.isalpha() for char in word["text"])
+                         or word["text"] == "4")]
+    header_lines: list[tuple[float, list[dict[str, Any]]]] = []
+    for word in sorted(header_words, key=lambda item: (item["bbox"][1], item["bbox"][0])):
+        top = word["bbox"][1]
+        existing = next((line for line in header_lines if abs(line[0] - top) <= 14), None)
+        if existing:
+            existing[1].append(word)
+        else:
+            header_lines.append((top, [word]))
+    for top, line_words in header_lines:
+        phrase = " ".join(word["text"] for word in sorted(line_words,
+                                                            key=lambda item: item["bbox"][0]))
+        normalized = unicodedata.normalize("NFD", phrase).casefold()
+        normalized = "".join(char for char in normalized
+                             if not unicodedata.combining(char)).replace("đ", "d")
+        if "quy" in normalized and "luy ke" in normalized:
+            ordered = sorted(line_words, key=lambda item: item["bbox"][0])
+            split_at = next((position for position, word in enumerate(ordered)
+                             if _plain(word["text"]).startswith("luy")), len(ordered))
+            quarter = " ".join(word["text"] for word in ordered[:split_at])
+            cumulative = " ".join(word["text"] for word in ordered[split_at:])
+            for target in (0, 1):
+                headers[target].append((top, float(columns_x[target]), quarter))
+            for target in (2, 3):
+                headers[target].append((top, float(columns_x[target]), cumulative))
+            continue
+        elif "quy" in normalized:
+            targets = (0, 1)
+        elif "luy ke" in normalized:
+            targets = (2, 3)
+        else:
+            for word in line_words:
+                center = (word["bbox"][0] + word["bbox"][2]) / 2
+                target = min(range(4), key=lambda index: abs(center - column_centers[index]))
+                center = (word["bbox"][0] + word["bbox"][2]) / 2
+                headers[target].append((top, center, word["text"]))
+            continue
+        for target in targets:
+            headers[target].append((top, float(columns_x[target]), phrase))
+
+    rows: list[Row] = []
+    used: set[int] = set()
+    for row_index, candidate in enumerate(matched):
+        all_labels = sorted(labels_by_row[row_index], key=lambda item: item["bbox"][0])
+        numbers = [word for word in all_labels
+                   if re.fullmatch(r"\d{1,3}[a-z]?", word["text"], re.I)]
+        code_candidates = ([word for word in numbers
+                            if code_center is not None and
+                            abs((word["bbox"][0] + word["bbox"][2]) / 2 - code_center) <= 75]
+                           if code_center is not None else [])
+        note_candidates = ([word for word in numbers
+                            if note_center is not None and
+                            abs((word["bbox"][0] + word["bbox"][2]) / 2 - note_center) <= 75]
+                           if note_center is not None else [])
+        code = code_candidates[0]["text"] if len(code_candidates) == 1 else None
+        note = note_candidates[0]["text"] if len(note_candidates) == 1 else None
+        if code_center is None:
+            code = numbers[-2]["text"] if len(numbers) >= 2 else numbers[-1]["text"] if numbers else None
+            note = numbers[-1]["text"] if len(numbers) >= 2 else None
+        labels = [word for word in all_labels if word not in numbers
+                  and not re.fullmatch(r"\d{1,3}[._]?", word["text"])]
+        if not any(any(char.isalpha() for char in word["text"]) for word in labels):
+            # An OCR-detected value row without a legible printed label is
+            # retained, but explicitly marked for human review below.
+            label_text = ""
+        else:
+            label_text = " ".join(word["text"] for word in labels).strip()
+        row_words = [*all_labels, *(value for value in candidate["values"] if value)]
+        cells: dict[str, Cell] = {}
+        for index, value in enumerate(candidate["values"]):
+            cells[f"c{index + 1}"] = {
+                "raw": value["text"] if value else None,
+                "bbox": value["bbox"] if value else None,
+                "needs_review": True,
+                "review_reason": "TESSERACT_SINGLE_SOURCE" if value else "OCR_VALUE_MISSING",
+            }
+            if value:
+                used.add(id(value))
+        used.update(id(word) for word in all_labels)
+        rows.append({"id": f"r{len(rows) + 1}", "code": code,
+                     "label_raw": label_text,
+                     "note": note,
+                     "bbox": _union_boxes([word["bbox"] for word in row_words]),
+                     "cells": cells})
+
+    columns: list[Column] = []
+    for index in range(4):
+        line_groups: list[list[tuple[float, float, str]]] = []
+        for item in sorted(set(headers[index]), key=lambda value: (value[0], value[1])):
+            if line_groups and abs(item[0] - line_groups[-1][0][0]) <= 14:
+                line_groups[-1].append(item)
+            else:
+                line_groups.append([item])
+        columns.append({"key": f"c{index + 1}",
+                        "header_lines": [" ".join(value[2] for value in group)
+                                         for group in line_groups],
+                        "bbox": None})
+    return ({"id": f"p{number}-t1", "type": "table",
+             "bbox": _union_boxes([row["bbox"] for row in rows]),
+             "unit_text": None, "columns": columns, "rows": rows}, used)
+
+
+def _recover_missing_tesseract_cells(table: TableBlock,
+                                     alternate_words: list[dict[str, Any]]) -> int:
+    """Fill only blank OCR cells when the primary TSV has an aligned token.
+
+    The value stays flagged for human review because both readings come from
+    Tesseract layout passes rather than independent OCR engines.
+    """
+    numeric = re.compile(r"\(?-?\d[\d.,/]*\)?$|^[-–—]$")
+    column_edges: dict[str, list[float]] = defaultdict(list)
+    for row in table["rows"]:
+        for key, cell in row["cells"].items():
+            if cell.get("bbox") is not None:
+                column_edges[key].append(cell["bbox"][2])
+    targets = {key: statistics.median(edges) for key, edges in column_edges.items() if edges}
+    recovered = 0
+    claimed: set[int] = set()
+    for row in table["rows"]:
+        present = [cell for cell in row["cells"].values() if cell.get("bbox") is not None]
+        if not present:
+            continue
+        row_y = statistics.median((cell["bbox"][1] + cell["bbox"][3]) / 2
+                                  for cell in present)
+        for key, cell in row["cells"].items():
+            if cell.get("raw") is not None or key not in targets:
+                continue
+            matches = [word for word in alternate_words
+                       if id(word) not in claimed and numeric.fullmatch(word["text"])
+                       and abs(word["bbox"][2] - targets[key]) <= 18
+                       and abs((word["bbox"][1] + word["bbox"][3]) / 2 - row_y) <= 20]
+            if len(matches) != 1:
+                continue
+            word = matches[0]
+            claimed.add(id(word))
+            cell.update(raw=word["text"], bbox=word["bbox"], needs_review=True,
+                        review_reason="TESSERACT_PSM3_RECOVERED_NEEDS_REVIEW")
+            recovered += 1
+    return recovered
+
+
 def _tess_statement_table(word_items: list[dict[str, Any]], number: int,
                           width: int) -> tuple[TableBlock | None, set[int]]:
-    """Conservatively find two aligned amount columns on a scanned statement."""
+    """Find repeated aligned amount columns on a scanned statement."""
+    four_column_table, four_column_used = _tess_four_column_statement_table(
+        word_items, number, width)
+    if four_column_table is not None:
+        return four_column_table, four_column_used
     numeric = re.compile(r"\(?-?\d[\d.,]*\)?$")
     lines: dict[tuple[int, int, int], list[dict[str, Any]]] = defaultdict(list)
     for word in word_items:
@@ -318,7 +640,13 @@ def _tess_statement_table(word_items: list[dict[str, Any]], number: int,
     physical: list[list[dict[str, Any]]] = []
     for line in sorted(lines.values(), key=lambda items: min(word["bbox"][1] for word in items)):
         top = min(word["bbox"][1] for word in line)
-        if physical and abs(top - min(word["bbox"][1] for word in physical[-1])) <= 8:
+        bottom = max(word["bbox"][3] for word in line)
+        previous_top = min(word["bbox"][1] for word in physical[-1]) if physical else 0
+        previous_bottom = max(word["bbox"][3] for word in physical[-1]) if physical else 0
+        # A printed row may have slightly different OCR baselines across wide
+        # columns. Merge only intersecting word boxes so adjacent rows remain
+        # separate even when the baseline tolerance must be wide.
+        if physical and top <= previous_bottom and previous_top <= bottom:
             physical[-1].extend(line)
         else:
             physical.append(list(line))
@@ -336,25 +664,48 @@ def _tess_statement_table(word_items: list[dict[str, Any]], number: int,
             else:
                 cluster[1].add(index)
     strong = sorted((item for item in anchors if len(item[1]) >= 5), key=lambda item: item[0])
-    pairs = [(left, right) for left in strong for right in strong
-             if right[0] - left[0] >= width * .08]
-    if not pairs:
+    if len(strong) < 2:
         return None, set()
-    left, right = max(pairs, key=lambda pair: (len(pair[0][1] & pair[1][1]), pair[1][0]))
-    candidates: list[tuple[int, list[dict[str, Any]], dict[str, Any], dict[str, Any]]] = []
+    # Group numeric edges that repeatedly occur on the same printed rows.
+    # This can yield two comparative columns or four quarter/year columns.
+    adjacency: dict[int, set[int]] = {index: set() for index in range(len(strong))}
+    for left_index, left_anchor in enumerate(strong):
+        for right_index in range(left_index + 1, len(strong)):
+            if (strong[right_index][0] - left_anchor[0] >= width * .04 and
+                    len(left_anchor[1] & strong[right_index][1]) >= 5):
+                adjacency[left_index].add(right_index)
+                adjacency[right_index].add(left_index)
+    components: list[list[int]] = []
+    unseen = set(adjacency)
+    while unseen:
+        pending = [unseen.pop()]
+        component: list[int] = []
+        while pending:
+            current = pending.pop()
+            component.append(current)
+            neighbours = adjacency[current] & unseen
+            unseen.difference_update(neighbours)
+            pending.extend(neighbours)
+        components.append(component)
+    selected = max(components, key=lambda component: (len(component),
+                    sum(len(strong[index][1]) for index in component)))
+    value_anchors = [strong[index] for index in sorted(selected, key=lambda i: strong[i][0])]
+    if len(value_anchors) < 2 or len(value_anchors) > 4:
+        return None, set()
+    candidates: list[tuple[int, list[dict[str, Any]], list[dict[str, Any]]]] = []
     for index, line in enumerate(physical):
-        first = [word for word in line if numeric.fullmatch(word["text"])
-                 and abs(word["bbox"][2] - left[0]) <= 18]
-        second = [word for word in line if numeric.fullmatch(word["text"])
-                  and abs(word["bbox"][2] - right[0]) <= 18]
-        if len(first) != 1 or len(second) != 1:
+        values = [[word for word in line if numeric.fullmatch(word["text"])
+                   and abs(word["bbox"][2] - anchor[0]) <= 18]
+                  for anchor in value_anchors]
+        if any(len(value) != 1 for value in values):
             continue
-        labels = [word for word in line if word not in (first[0], second[0])
-                  and word["bbox"][2] < first[0]["bbox"][0] - 8]
+        value_words = [value[0] for value in values]
+        labels = [word for word in line if word not in value_words
+                  and word["bbox"][2] < value_words[0]["bbox"][0] - 8]
         if not any(any(char.isalpha() for char in word["text"]) for word in labels):
             continue
-        candidates.append((index, labels, first[0], second[0]))
-    groups: list[list[tuple[int, list[dict[str, Any]], dict[str, Any], dict[str, Any]]]] = []
+        candidates.append((index, labels, value_words))
+    groups: list[list[tuple[int, list[dict[str, Any]], list[dict[str, Any]]]]] = []
     for candidate in candidates:
         if groups and candidate[0] - groups[-1][-1][0] <= 3:
             groups[-1].append(candidate)
@@ -363,9 +714,55 @@ def _tess_statement_table(word_items: list[dict[str, Any]], number: int,
     matched = max(groups, key=len, default=[])
     if len(matched) < 5:
         return None, set()
+    # Retain the printed headings above the detected numeric columns. Tesseract
+    # emits words and geometry, not table structure, so only attach a heading
+    # when it is horizontally close to one of the repeated value-column edges.
+    first_data_y = min(word["bbox"][1] for word in matched[0][1] + matched[0][2])
+    heading_phrases: dict[int, list[tuple[float, str]]] = {
+        index: [] for index in range(len(value_anchors))}
+    # Dates are often printed as a single OCR token, with their x position
+    # centered over an amount column rather than aligned to its right edge.
+    for word in word_items:
+        top = word["bbox"][1]
+        if (not first_data_y - 300 <= top < first_data_y or
+                not re.fullmatch(r"\d{1,2}[./-]\d{1,2}[./-]20\d{2}|20\d{2}",
+                                 word["text"])):
+            continue
+        center = (word["bbox"][0] + word["bbox"][2]) / 2
+        column = min(range(len(value_anchors)),
+                     key=lambda index: abs(center - value_anchors[index][0]))
+        if abs(center - value_anchors[column][0]) <= width * .3:
+            heading_phrases[column].append((top, word["text"]))
+    for line in physical:
+        line_y = min(word["bbox"][1] for word in line)
+        if not (0 <= first_data_y - line_y <= 300):
+            continue
+        ordered = sorted(line, key=lambda word: word["bbox"][0])
+        if not any(any(char.isalpha() for char in word["text"]) or
+                   re.search(r"\d", word["text"]) for word in ordered):
+            continue
+        for column, anchor_item in enumerate(value_anchors):
+            anchor = anchor_item[0]
+            candidates = [word for word in ordered if word["bbox"][0] >= width * .5 and
+                          abs((word["bbox"][0] + word["bbox"][2]) / 2 - anchor) <= width * .16]
+            if not candidates:
+                continue
+            phrase = " ".join(word["text"] for word in candidates)
+            normalized = unicodedata.normalize("NFD", phrase).casefold()
+            normalized = "".join(char for char in normalized
+                                  if not unicodedata.combining(char)).replace("đ", "d")
+            if len(re.findall(r"20\d{2}", phrase)) > 1:
+                continue  # This line spans both comparison columns.
+            # Do not mistake earlier amounts for headers. Keep only printed
+            # date/year or relative-period wording that can resolve a period.
+            if not (re.search(r"20\d{2}", phrase) or
+                    re.search(r"\b(?:so cuoi|so dau|ky nay|ky truoc|nam nay|nam truoc)\b",
+                              normalized) or "thang" in normalized):
+                continue
+            heading_phrases[column].append((line_y, phrase))
     rows: list[Row] = []
     used: set[int] = set()
-    for _, labels, first, second in matched:
+    for _, labels, values in matched:
         labels = sorted(labels, key=lambda word: word["bbox"][0])
         all_labels = list(labels)
         code = None
@@ -374,19 +771,24 @@ def _tess_statement_table(word_items: list[dict[str, Any]], number: int,
         note = None
         if labels and re.fullmatch(r"\d{1,3}(?:\([a-z]\))?", labels[-1]["text"], re.I):
             note = labels.pop()["text"]
-        row_words = [*all_labels, first, second]
+        row_words = [*all_labels, *values]
         used.update(id(word) for word in row_words)
+        cells = {f"c{index + 1}": {"raw": value["text"], "bbox": value["bbox"],
+                                    "needs_review": True,
+                                    "review_reason": "TESSERACT_SINGLE_SOURCE"}
+                 for index, value in enumerate(values)}
         rows.append({"id": f"r{len(rows) + 1}", "code": code,
                      "label_raw": " ".join(word["text"] for word in labels),
                      "note": note, "bbox": _union_boxes([word["bbox"] for word in row_words]),
-                     "cells": {"c1": {"raw": first["text"], "bbox": first["bbox"]},
-                               "c2": {"raw": second["text"], "bbox": second["bbox"]}}})
+                     "cells": cells})
     table_box = _union_boxes([row["bbox"] for row in rows])
     if table_box is None:
         return None, set()
     columns: list[Column] = [
-        {"key": "c1", "header_lines": [], "bbox": None},
-        {"key": "c2", "header_lines": [], "bbox": None},
+        {"key": f"c{index + 1}",
+         "header_lines": [text for _y, text in sorted(set(heading_phrases[index]))],
+         "bbox": None}
+        for index in range(len(value_anchors))
     ]
     return ({"id": f"p{number}-t1", "type": "table", "bbox": table_box,
              "unit_text": None, "columns": columns, "rows": rows}, used)
@@ -431,7 +833,8 @@ def _same_cell_reading(left: str, right: str) -> bool:
 
 
 def _ai_ir_blocks(ai_blocks: list[dict[str, Any]], word_items: list[dict[str, Any]],
-                  number: int, width: int, height: int, provider: str) -> tuple[list[dict[str, Any]], int, int]:
+                  number: int, width: int, height: int, provider: str,
+                  flag_unverified: bool = False) -> tuple[list[dict[str, Any]], int, int]:
     """A3/A4/A5: convert AI blocks to IR and attach positional TSV cell votes."""
     engine = "OPENROUTER" if provider == "openrouter" else "GEMINI"
     result: list[dict[str, Any]] = []
@@ -442,32 +845,69 @@ def _ai_ir_blocks(ai_blocks: list[dict[str, Any]], word_items: list[dict[str, An
             result.append({"type": ai["type"], "text": ai["text"] or "",
                            "bbox": _ai_box(ai["box_2d"], width, height)})
             continue
-        columns: list[Column] = [{"key": col["key"], "header_lines": col["header_lines"],
+        # Some models include printed label/code/note columns despite the
+        # prompt. Those fields already belong to each row, not to the set of
+        # financial periods. Remove only a recognizable leading metadata
+        # prefix and retain its note when the row field is absent.
+        metadata: dict[str, str] = {}
+        roles = {"chi tieu": "label", "ma so": "code",
+                 "ma chi tieu": "code", "thuyet minh": "note"}
+        for col in ai["columns"]:
+            role = roles.get(_plain(" ".join(col["header_lines"])).strip())
+            if role is None or role in metadata:
+                break
+            metadata[role] = col["key"]
+        value_columns = ai["columns"][len(metadata):]
+        remap = {col["key"]: f"c{index + 1}"
+                 for index, col in enumerate(value_columns)}
+        columns: list[Column] = [{"key": remap[col["key"]],
+                                  "header_lines": col["header_lines"],
                                   "bbox": _ai_box(col["box_2d"], width, height)}
-                                 for col in ai["columns"]]
+                                 for col in value_columns]
         rows: list[Row] = []
         for ai_row in ai["rows"]:
+            metadata_cells = {role: next((cell["raw"] for cell in ai_row["cells"]
+                                          if cell["column_key"] == key), None)
+                              for role, key in metadata.items()}
+            meta_conflict = any(
+                metadata_cells.get(role) and ai_row[field] and
+                not _same_cell_reading(metadata_cells[role], ai_row[field])
+                for role, field in (("label", "label_raw"), ("code", "code"),
+                                    ("note", "note")))
             cells: dict[str, Cell] = {}
             for ai_cell in ai_row["cells"]:
-                key = ai_cell["column_key"]
+                key = remap.get(ai_cell["column_key"])
+                if key is None:
+                    continue
                 box = _ai_box(ai_cell["box_2d"], width, height)
                 raw = ai_cell["raw"] or None
                 votes: dict[str, Any] = {engine: {"raw": raw, "conf": None}}
                 tess = _tess_vote(box, word_items, claimed_words)
+                vote_conflict = False
                 if tess:
                     votes["TESSERACT"] = tess
                     tess_votes += 1
                     if raw and tess["raw"] and not _same_cell_reading(raw, tess["raw"]):
-                        # A disagreement is unresolved evidence, never an automatic correction.
-                        raw = None
+                        # Keep the AI transcript as evidence; the conflict
+                        # blocks arithmetic until a person reviews the cell.
+                        vote_conflict = True
                         disagreements += 1
                     elif raw is None and tess["conf"] >= 85:
                         raw = tess["raw"]
-                cells[key] = {"raw": raw, "bbox": box, "votes": votes}
+                unresolved = (raw is None or not tess or box is None or
+                              meta_conflict or vote_conflict)
+                cell: Cell = {"raw": raw, "bbox": box, "votes": votes}
+                if flag_unverified:
+                    cell.update(needs_review=unresolved,
+                                review_reason=("OCR_READ_DISAGREEMENT_OR_UNVERIFIED"
+                                               if unresolved else None))
+                cells[key] = cell
             row_box = (_ai_box(ai_row["box_2d"], width, height)
                        or _union_boxes([cell["bbox"] for cell in cells.values()]))
-            rows.append({"id": f"r{len(rows) + 1}", "code": ai_row["code"],
-                         "label_raw": ai_row["label_raw"], "note": ai_row["note"],
+            rows.append({"id": f"r{len(rows) + 1}",
+                         "code": ai_row["code"] or metadata_cells.get("code"),
+                         "label_raw": ai_row["label_raw"] or metadata_cells.get("label") or "",
+                         "note": ai_row["note"] or metadata_cells.get("note"),
                          "bbox": row_box, "cells": cells})
         table_box = (_ai_box(ai["box_2d"], width, height)
                      or _union_boxes([column["bbox"] for column in columns]
@@ -487,6 +927,26 @@ def _page_class(blocks: list[dict[str, Any]]) -> str | None:
     if "thong tin ve doanh nghiep" in value:
         return "company_information"
     return "narrative" if any(block["type"] == "paragraph" for block in blocks) else None
+
+
+def _record_text_for_classification(record: dict[str, Any]) -> str:
+    """Get OCR text and structured OCR headings without inventing page text."""
+    parts = [str(record.get("text") or "")]
+    ai_blocks = record.get("aiBlocks")
+    if isinstance(ai_blocks, list):
+        for block in ai_blocks:
+            if not isinstance(block, dict):
+                continue
+            if block.get("type") != "table":
+                parts.append(str(block.get("text") or ""))
+                continue
+            parts.append(str(block.get("title") or ""))
+            parts.extend(str(value) for column in block.get("columns", [])
+                         for value in column.get("header_lines", []))
+            parts.extend(str(row.get("code") or "") + " " +
+                         str(row.get("label_raw") or "")
+                         for row in block.get("rows", []))
+    return "\n".join(part for part in parts if part.strip())
 
 
 def _printed_page(page: pdfplumber.page.Page) -> str | None:
@@ -568,6 +1028,37 @@ def _represented_words(blocks: list[dict[str, Any]]) -> Counter[str]:
     return words
 
 
+def _preserve_unrepresented_source_words(page: pdfplumber.page.Page,
+                                         blocks: list[dict[str, Any]]) -> None:
+    """Keep visible PDF words omitted by a table crop in the page IR."""
+    source_words = [word for word in page.extract_words(
+        x_tolerance=2, y_tolerance=3, extra_attrs=["size"])
+        if 0 <= word["top"] < page.height]
+    missing = Counter(_tokens(" ".join(word["text"] for word in source_words)))
+    missing.subtract(_represented_words(blocks))
+    used_ids = {str(block.get("id")) for block in blocks}
+    sequence = 1
+    for word in source_words:
+        needed: list[str] = []
+        tokens = _tokens(word["text"])
+        for token in tokens:
+            if missing[token] > 0:
+                needed.append(token)
+                missing[token] -= 1
+        if not needed:
+            continue
+        # Most pdfplumber words yield one token. When a word yields several,
+        # keep only the missing tokens rather than duplicating represented text.
+        text = word["text"] if len(needed) == len(tokens) else " ".join(needed)
+        while f"p{page.page_number}-b{sequence}" in used_ids:
+            sequence += 1
+        block_id = f"p{page.page_number}-b{sequence}"
+        used_ids.add(block_id)
+        blocks.append({"id": block_id, "type": "paragraph", "text": text,
+                       "bbox": _box([word])})
+        sequence += 1
+
+
 def _clamp_box(box: list[float] | None, width: float, height: float) -> list[float] | None:
     if box is None:
         return None
@@ -627,6 +1118,7 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
     """Dựng một trang IR: chọn lớp chữ/OCR, ghép bảng, gán loại và nguồn."""
     number = record["page"]
     merged_votes = 0
+    ocr_tool: str | None = None
     header_blocks: list[dict[str, Any]] = []
     tables = (reviewed_annual_tables(page, annual_override, header_blocks)
               if record["route"] == "text_layer" else []) if tables_override is None else tables_override
@@ -643,7 +1135,9 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
             page_width, page_height = _png_size(_image_path(work_dir, number))
             blocks, merged_votes, _ = _ai_ir_blocks(
                 ai_blocks, word_items or [], number, page_width, page_height,
-                record.get("gemini", {}).get("provider", "gemini"))
+                record.get("gemini", {}).get("provider", "gemini"),
+                flag_unverified=page_class_override in (
+                    "balance_sheet", "income_statement", "cash_flow"))
             unit = "px"
         elif word_items and " ".join(record["text"].split()) == " ".join(
                 item["text"] for item in word_items).strip():
@@ -653,12 +1147,38 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
             if record["route"] == "tesseract" and page_class_override in (
                     "balance_sheet", "income_statement", "cash_flow"):
                 tess_table, used_words = _tess_statement_table(word_items, number, page_width)
+                # PSM 3 is the normal fast pass, but wide multi-period tables
+                # can be transcribed column-by-column. Try PSM 4 only when a
+                # detected four-column table is suspiciously incomplete, and
+                # keep the pass that yields more recoverable rows.
+                if (page_class_override == "income_statement" and tess_table is not None
+                        and len(tess_table["columns"]) == 4
+                        and len(tess_table["rows"]) < 15):
+                    try:
+                        from tesseract import tess_env, tesseract
+                        alternate = tesseract(_image_path(work_dir, number),
+                                              tess_env(None), psm=4)
+                        alternate_table, alternate_used = _tess_statement_table(
+                            alternate["wordItems"], number, page_width)
+                        if (alternate_table is not None and
+                                len(alternate_table["rows"]) > len(tess_table["rows"])):
+                            _recover_missing_tesseract_cells(alternate_table, word_items)
+                            word_items = alternate["wordItems"]
+                            tess_table, used_words = alternate_table, alternate_used
+                            ocr_tool = "tesseract vie; statement table passes --psm 3 + --psm 4"
+                    except (OSError, RuntimeError):
+                        # The existing PSM 3 result remains usable when the
+                        # optional layout retry cannot run on this machine.
+                        pass
                 if tess_table is not None:
                     tables.append(tess_table)
             blocks = _ocr_blocks([word for word in word_items if id(word) not in used_words])
             unit = "px"
         else:
-            blocks = _text_blocks(record["text"], number)
+            blocks = _text_blocks(
+                record["text"], number,
+                needs_review=page_class_override in (
+                    "balance_sheet", "income_statement", "cash_flow"))
             page_width, page_height, unit = page.width, page.height, "pt"
     if record["route"] == "text_layer":
         blocks = _order_reviewed_multicolumn_page(blocks, number, annual_override)
@@ -688,6 +1208,8 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
                 block["type"] = "form_code"
     page_class = page_class_override or _page_class(blocks)
     source = _source(record, pdf, digest, page, work_dir)
+    if ocr_tool:
+        source["tool"] = ocr_tool
     if merged_votes:
         source["engine"] = "MERGED"
         source["tool"] = f"{record['gemini']['model']} + tesseract vie"
@@ -830,7 +1352,8 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
             section = section_evidence[0] if section_evidence else None
             main_text = (source_page.crop((source_page.width * .22, 0, source_page.width,
                                            source_page.height * .9)).extract_text() or ""
-                         if record["route"] == "text_layer" else record["text"])
+                         if record["route"] == "text_layer"
+                         else _record_text_for_classification(record))
             header_text = source_page.crop((0, 0, source_page.width,
                                             source_page.height * .2)).extract_text() or ""
             financial_class = financial_page_class(number, section, digest,
@@ -849,6 +1372,9 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
                     tables_override=financial_tables,
                     page_class_override=financial_class,
                     layout_exclude_boxes=exclude_boxes)
+                if record["route"] == "text_layer":
+                    _preserve_unrepresented_source_words(source_page, financial_ir["blocks"])
+                flag_bad_financial_cells(financial_ir)
                 errors = validate_page(financial_ir, validator)
                 if errors:
                     raise ValueError(f"IR BCTC trang {number} sai schema: {'; '.join(errors[:5])}")
@@ -877,6 +1403,8 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
             page_kpis = [item for item in page_kpis if annual_kpi(item)]
             ir = make_page_ir(record, pdf, digest, source_page, work_dir,
                               annual_override=annual_override)
+            if record["route"] == "text_layer":
+                _preserve_unrepresented_source_words(source_page, ir["blocks"])
             _promote_reviewed_kpis(ir["blocks"], page_kpis)
             kpi_review.extend({"page": number, "section": section, **candidate}
                               for candidate in page_kpis)
@@ -892,12 +1420,12 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
     save_json(output_dir / "furniture_audit.json", furniture_audit)
     cell_review = [
         {"page": ir["page"], "table_id": block["id"], "row_id": row["id"],
-         "column": key, "bbox": cell["bbox"], "votes": cell["votes"],
-         "reason": "unresolved_cell_votes"}
+         "column": key, "bbox": cell["bbox"], "votes": cell.get("votes"),
+         "reason": cell.get("review_reason") or "unresolved_cell_votes"}
         for ir in documents + financial_documents
         for block in ir["blocks"] if block["type"] == "table"
         for row in block["rows"] for key, cell in row["cells"].items()
-        if cell.get("raw") is None and cell.get("votes")
+        if cell.get("needs_review") or (cell.get("raw") is None and cell.get("votes"))
     ]
     save_json(output_dir / "ocr_cell_review.json",
               {"document_sha256": digest, "items": cell_review})

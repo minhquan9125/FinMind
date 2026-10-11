@@ -133,6 +133,8 @@ class Vote(VoteOptional):
 
 class CellOptional(TypedDict, total=False):
     votes: dict[VoteEngine, Vote]
+    needs_review: bool
+    review_reason: str | None
 
 
 class Cell(CellOptional):
