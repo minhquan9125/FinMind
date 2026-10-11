@@ -73,6 +73,12 @@ def section_from_sidebar(page: pdfplumber.page.Page) -> tuple[str, str] | None:
     return matches[0] if len(matches) == 1 else None
 
 
+def detect_layout_profile(page: pdfplumber.page.Page) -> tuple[str, tuple[str, str] | None]:
+    """Use the FPT sidebar layout only when its active label is visible."""
+    section = section_from_sidebar(page)
+    return ("fpt_sidebar", section) if section else ("no_sidebar", None)
+
+
 def section_index(pages: list[tuple[int, str | None]], digest: str) -> dict[str, Any]:
     """Compress observed section labels into page ranges without filling gaps."""
     ranges: list[dict[str, Any]] = []

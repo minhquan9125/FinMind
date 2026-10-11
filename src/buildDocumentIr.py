@@ -36,7 +36,8 @@ from render import page_name
 from reportContent import (annual_content_index, annual_kpi,
                            annual_table_topics,
                            annual_topics, annual_topics_from_header,
-                           load_annual_override, reviewed_annual_tables, reviewed_kpis, section_from_sidebar,
+                           detect_layout_profile, load_annual_override,
+                           reviewed_annual_tables, reviewed_kpis,
                            section_index)
 from util import hash_file, save_json
 from validate_ir import SCHEMA, validate_page
@@ -1348,12 +1349,15 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
             if not isinstance(number, int) or not 1 <= number <= len(source_pdf.pages):
                 raise ValueError(f"Số trang OCR không hợp lệ: {number}")
             source_page = source_pdf.pages[number - 1]
-            section_evidence = section_from_sidebar(source_page)
+            layout_profile, section_evidence = detect_layout_profile(source_page)
             section = section_evidence[0] if section_evidence else None
-            main_text = (source_page.crop((source_page.width * .22, 0, source_page.width,
-                                           source_page.height * .9)).extract_text() or ""
-                         if record["route"] == "text_layer"
-                         else _record_text_for_classification(record))
+            if record["route"] == "text_layer":
+                region = (source_page.crop((source_page.width * .22, 0,
+                                            source_page.width, source_page.height * .9))
+                          if layout_profile == "fpt_sidebar" else source_page)
+                main_text = region.extract_text() or ""
+            else:
+                main_text = _record_text_for_classification(record)
             header_text = source_page.crop((0, 0, source_page.width,
                                             source_page.height * .2)).extract_text() or ""
             financial_class = financial_page_class(number, section, digest,
