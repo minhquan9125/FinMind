@@ -6,10 +6,12 @@ spans pages, so its page ranges are written to a separate document index.
 
 from __future__ import annotations
 
+import json
 import re
 import statistics
 import unicodedata
 from collections import defaultdict
+from pathlib import Path
 from typing import Any
 
 import pdfplumber
@@ -126,11 +128,6 @@ def kpi_candidates(page: pdfplumber.page.Page) -> list[dict[str, Any]]:
     return candidates
 
 
-FPT_2024_SHA256 = "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52"
-FPT_2025_SHA256 = "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c"
-
-# Chỉ mục nội dung thường niên. Số trang FPT được kiểm tra trên đúng PDF mẫu;
-# PDF khác chỉ dùng nhãn chương đọc được trên chính tài liệu đó.
 ANNUAL_TOPICS = {
     "leadership": "Thông điệp ban lãnh đạo",
     "company": "Doanh nghiệp, ngành nghề và cơ cấu tổ chức",
@@ -142,153 +139,23 @@ ANNUAL_TOPICS = {
     "unclassified": "Nội dung thường niên chưa phân loại chủ đề",
 }
 
-FPT_ANNUAL_RANGES = {
-    "company": [(20, 20), (24, 28)],
-    "shareholders": [(29, 32)],
-    "strategy": [(41, 49)],
-    "performance": [(50, 67)],
-    "governance": [(33, 40), (68, 95)],
-    "people_esg": [(57, 57), (96, 141)],
-}
 
-STOCK_TRANSACTION_HEADERS = {
-    "c2": ["Số cổ phiếu sở hữu đầu kỳ", "Số cổ phiếu"],
-    "c3": ["Số cổ phiếu sở hữu đầu kỳ", "Tỷ lệ"],
-    "c4": ["Số cổ phiếu sở hữu cuối kỳ", "Số cổ phiếu"],
-    "c5": ["Số cổ phiếu sở hữu cuối kỳ", "Tỷ lệ"],
-}
-INSIDER_CONTRACT_HEADERS = {
-    "c6": ["Nội dung và tổng giá trị giao dịch", "Giao dịch"],
-    "c7": ["Nội dung và tổng giá trị giao dịch", "Tổng giá trị"],
-}
-
-# Coordinates in PDF points, reviewed on the exact FPT sample. A spec defines
-# printed column boundaries, the row-start column and the expected row count.
-FPT_ANNUAL_TABLES = [
-    dict(page=29, topic="shareholders", title="THÔNG TIN VỀ CỔ PHIẾU", box=(429, 185, 1115, 670),
-         cuts=(429, 840, 1115), fields="label c1", body=200, anchor=(435, 450, r".+"), rows=10),
-    dict(page=29, topic="shareholders", title="CƠ CẤU CỔ ĐÔNG THEO CÁC MỨC CỔ PHIẾU SỞ HỮU",
-         box=(1166, 155, 1865, 500), cuts=(1166, 1330, 1440, 1580, 1715, 1865),
-         fields="label c1 c2 c3 c4", body=270, anchor=(1170, 1190, r"(?:\d[\d.]*|Tổng)"), rows=5),
-    dict(page=29, topic="shareholders", title="CƠ CẤU CỔ ĐÔNG THEO ĐỐI TƯỢNG SỞ HỮU",
-         box=(1166, 615, 1865, 995), cuts=(1166, 1330, 1440, 1580, 1715, 1865),
-         fields="label c1 c2 c3 c4", body=710, anchor=(1170, 1190, r"(?:Nhà|Cổ|Tổng)"), rows=5),
-    dict(page=30, topic="shareholders", title="CƠ CẤU CỔ ĐÔNG THEO QUỐC TỊCH",
-         box=(429, 100, 1115, 440), cuts=(429, 550, 670, 800, 980, 1115),
-         fields="label c1 c2 c3 c4", body=178, anchor=(438, 455, r"(?:Việt|Cá|Tổ|Nước|Tổng)"), rows=7),
-    dict(page=30, topic="shareholders", title="TOP 10 CỔ ĐÔNG LỚN",
-         box=(1166, 105, 1865, 495), cuts=(1166, 1238, 1610, 1780, 1865),
-         fields="code label c1 c2", body=140, anchor=(1185, 1210, r"\d{1,2}"), rows=10),
-    dict(page=30, topic="shareholders", title="TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ",
-         box=(429, 590, 1865, 1015), cuts=(429, 510, 640, 830, 1865),
-         fields="code c1 c2 label", body=650, anchor=(443, 465, r"\d{1,2}"), rows=10,
-         logical="fpt-2024-charter-capital", unit="Đơn vị: VNĐ"),
-    dict(page=31, topic="shareholders", title="TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)",
-         box=(429, 105, 1865, 1020), cuts=(429, 510, 640, 830, 1865),
-         fields="code c1 c2 label", body=165, anchor=(440, 465, r"\d{1,2}"), rows=21,
-         logical="fpt-2024-charter-capital", continued=True, unit="Đơn vị: VNĐ"),
-    dict(page=32, topic="shareholders", title="TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)",
-         box=(429, 105, 1865, 635), cuts=(429, 510, 640, 830, 1865),
-         fields="code c1 c2 label", body=165, anchor=(440, 465, r"\d{1,2}"), rows=10,
-         logical="fpt-2024-charter-capital", continued=True, unit="Đơn vị: VNĐ"),
-    dict(page=57, topic="people_esg", title="NHÂN SỰ BÌNH QUÂN CỦA LĨNH VỰC DỊCH VỤ CNTT CHO THỊ TRƯỜNG NƯỚC NGOÀI",
-         box=(1166, 115, 1865, 330), cuts=(1166, 1580, 1700, 1785, 1865),
-         fields="label c1 c2 c3", body=178, anchor=(1175, 1195, r"(?:Tổng|Doanh)"), rows=3),
-    dict(page=77, topic="governance", title="DANH SÁCH THÀNH VIÊN HĐQT NHIỆM KỲ 2022-2027 VÀ SỐ CUỘC HỌP THAM DỰ TRONG NĂM 2024",
-         box=(429, 105, 1865, 860), cuts=(429, 750, 1290, 1510, 1690, 1865),
-         fields="label c1 c2 c3 c4", body=165, anchor=(430, 450, r"(?:Ông|Bà)"), rows=7),
-    dict(page=83, topic="governance", title="GIAO DỊCH CỔ PHIẾU CỦA CỔ ĐÔNG LỚN VÀ CỔ ĐÔNG NỘI BỘ",
-         box=(429, 105, 1865, 1000), cuts=(429, 480, 710, 900, 1025, 1110, 1240, 1320, 1865),
-         fields="code label c1 c2 c3 c4 c5 c6", body=205, anchor=(445, 470, r"\d{1,2}"), rows=10,
-         headers=STOCK_TRANSACTION_HEADERS),
-    dict(page=84, topic="governance", title="HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ",
-         box=(429, 185, 1865, 1000), cuts=(429, 470, 605, 725, 855, 1055, 1110, 1455, 1700, 1865),
-         fields="code label c1 c2 c3 c4 c5 c6 c7", body=290,
-         anchor=(438, 460, r"\d{1,2}"), rows=4,
-         logical="fpt-2024-insider-contracts", unit="Đơn vị: VNĐ",
-         headers=INSIDER_CONTRACT_HEADERS),
-    dict(page=85, topic="governance", title="HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)",
-         box=(429, 105, 1865, 900), cuts=(429, 470, 605, 725, 855, 1055, 1110, 1455, 1700, 1865),
-         fields="code label c1 c2 c3 c4 c5 c6 c7", body=215,
-         anchor=(438, 460, r"\d{1,2}"), rows=3,
-         logical="fpt-2024-insider-contracts", continued=True, unit="Đơn vị: VNĐ",
-         headers=INSIDER_CONTRACT_HEADERS),
-    dict(page=86, topic="governance", title="HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)",
-         box=(429, 105, 1865, 925), cuts=(429, 470, 605, 725, 855, 1055, 1110, 1455, 1700, 1865),
-         fields="code label c1 c2 c3 c4 c5 c6 c7", body=215,
-         anchor=(438, 460, r"\d{1,2}"), rows=3,
-         logical="fpt-2024-insider-contracts", continued=True, unit="Đơn vị: VNĐ",
-         headers=INSIDER_CONTRACT_HEADERS),
-    dict(page=95, topic="governance", title="CHI TIẾT THÙ LAO CỦA BKS NĂM 2024",
-         box=(1166, 290, 1865, 495), cuts=(1166, 1235, 1440, 1700, 1865),
-         fields="code label c1 c2", body=330, anchor=(1185, 1260, r"(?:[1-3]|Tổng)"), rows=4,
-         unit="Đơn vị: VNĐ"),
-]
-
-# Reviewed against the text positions of the exact FPT 2025 PDF. The enclosing
-# "Cơ cấu cổ đông" heading on page 32 is a section heading, not a ninth table.
-FPT_2025_ANNUAL_TABLES = [
-    dict(page=32, topic="company", title="Thông tin về cổ phiếu",
-         box=(258, 75, 610, 335), cuts=(258, 470, 610),
-         fields="label c1", body=120, anchor=(258, 265,
-         r"(?:Tên|Loại|Mã|Mệnh|Ngày|Tổng|Số|Tỷ)"), rows=10,
-         headers={"c1": ["Giá trị"]}),
-    dict(page=32, topic="company", title="Cơ cấu cổ đông theo các mức cổ phiếu sở hữu",
-         box=(652, 75, 1010, 265), cuts=(652, 750, 815, 860, 965, 1010),
-         fields="label c1 c2 c3 c4", body=150,
-         anchor=(658, 665, r"(?:01|1\.000|10\.001|1\.000\.001|Tổng)"), rows=5,
-         percent_fields=("c2", "c4"),
-         headers={"c1": ["Số lượng cổ đông"], "c2": ["Tỷ lệ/Tổng số cổ đông"],
-                  "c3": ["Số lượng cổ phiếu sở hữu"],
-                  "c4": ["Tỷ lệ/Tổng số cổ phiếu đã phát hành"]}),
-    dict(page=32, topic="company", title="Cơ cấu cổ đông theo đối tượng sở hữu",
-         box=(652, 320, 1010, 535), cuts=(652, 750, 815, 860, 965, 1010),
-         fields="label c1 c2 c3 c4", body=395,
-         anchor=(658, 665, r"(?:Nhà|Cổ|Tổng)"), rows=5,
-         percent_fields=("c2", "c4"),
-         headers={"c1": ["Số lượng cổ đông"], "c2": ["Tỷ lệ/Tổng số cổ đông"],
-                  "c3": ["Số lượng cổ phiếu đang nắm giữ"],
-                  "c4": ["Tỷ lệ/Tổng số cổ phiếu đã phát hành"]}),
-    dict(page=33, topic="company", title="Cơ cấu cổ đông theo quốc tịch",
-         box=(258, 42, 620, 275), cuts=(258, 355, 420, 470, 565, 620),
-         fields="label c1 c2 c3 c4", body=118,
-         anchor=(265, 274, r"(?:Việt|Cá|Tổ|Nước|Tổng)"), rows=7,
-         percent_fields=("c2", "c4"),
-         headers={"c1": ["Số lượng cổ đông"], "c2": ["Tỷ lệ/Tổng số cổ đông"],
-                  "c3": ["Số lượng cổ phiếu sở hữu"],
-                  "c4": ["Tỷ lệ/Tổng số cổ phiếu đã phát hành"]}),
-    dict(page=33, topic="company", title="Top 10 cổ đông lớn",
-         box=(665, 42, 1010, 350), cuts=(665, 700, 895, 965, 1010),
-         fields="code label c1 c2", body=98,
-         anchor=(667, 680, r"(?:10|[1-9])"), rows=10,
-         percent_fields=("c2",),
-         headers={"c1": ["Số cổ phần"], "c2": ["Tỷ lệ"]}),
-    dict(page=86, topic="governance",
-         title="Danh sách Thành viên HĐQT nhiệm kỳ 2022-2027 và số cuộc họp tham dự trong năm 2025",
-         box=(265, 43, 1010, 530), cuts=(265, 375, 580, 670, 740, 845, 940, 1010),
-         fields="label c1 c2 c3 c4 c5 c6", body=120,
-         anchor=(265, 275, r"(?:Ông|Bà)"), rows=5,
-         percent_fields=("c3", "c6"),
-         headers={"c1": ["Chức vụ tại FPT và các công ty khác"],
-                  "c2": ["Kinh nghiệm chuyên môn"], "c3": ["Tỷ lệ sở hữu"],
-                  "c4": ["Ngày bắt đầu là thành viên HĐQT"],
-                  "c5": ["Số buổi họp HĐQT tham dự"], "c6": ["Tỷ lệ tham dự họp"]}),
-    dict(page=90, topic="governance", title="Chi tiết thù lao của từng thành viên HĐQT năm 2025",
-         box=(260, 155, 610, 350), cuts=(265, 425, 530, 610),
-         fields="label c1 c2", body=210,
-         anchor=(268, 278, r"(?:Ông|Bà)"), rows=7, unit="Đơn vị: VNĐ",
-         headers={"c1": ["Chức danh"], "c2": ["Thù lao"]}),
-    dict(page=108, topic="governance", title="Chi tiết thù lao của BKS năm 2025",
-         box=(260, 113, 610, 270), cuts=(265, 295, 430, 530, 610),
-         fields="code label c1 c2", body=170,
-         anchor=(265, 315, r"(?:[1-3]|Tổng)"), rows=4, unit="Đơn vị: VNĐ",
-         headers={"c1": ["Ngân sách 2025"], "c2": ["Đã chi trả"]}),
-]
+def load_annual_override(path: Path | None, digest: str) -> dict[str, Any] | None:
+    """Load a reviewed PDF-specific override only when explicitly requested."""
+    if path is None:
+        return None
+    value = json.loads(path.resolve().read_text(encoding="utf-8"))
+    if not isinstance(value, dict) or value.get("document_sha256") != digest:
+        raise ValueError(f"Override không khớp SHA-256 của PDF: {path}")
+    if not isinstance(value.get("id"), str) or not isinstance(value.get("annual_tables"), list):
+        raise ValueError(f"Override thường niên không hợp lệ: {path}")
+    return value
 
 
-def annual_topics(number: int, section: str | None, digest: str) -> list[str]:
-    if digest == FPT_2024_SHA256:
-        return [topic for topic, ranges in FPT_ANNUAL_RANGES.items()
+def annual_topics(number: int, section: str | None,
+                  override: dict[str, Any] | None = None) -> list[str]:
+    if override and override.get("annual_topic_ranges"):
+        return [topic for topic, ranges in override["annual_topic_ranges"].items()
                 if any(first <= number <= last for first, last in ranges)]
     return {
         "leadership": ["leadership"], "highlights": ["performance"],
@@ -379,6 +246,14 @@ def _caption_kind(title: str) -> str | None:
         return "shareholders"
     if title.startswith("top 10 co dong"):
         return "top_shareholders"
+    if title.startswith("tinh hinh thay doi von dieu le"):
+        return "charter_capital"
+    if title.startswith("giao dich co phieu cua co dong"):
+        return "stock_transactions"
+    if title.startswith("hop dong hoac giao dich voi co dong"):
+        return "insider_contracts"
+    if title.startswith("nhan su binh quan"):
+        return "personnel"
     if title.startswith("danh sach thanh vien hdqt"):
         return "board"
     if title.startswith("chi tiet thu lao"):
@@ -413,10 +288,11 @@ def annual_table_captions(page: pdfplumber.page.Page,
 
 def annual_table_topics(page: pdfplumber.page.Page) -> list[str]:
     """Allow table pages into annual IR even when a new report has no FPT sidebar."""
-    found = {("company" if caption["kind"] in
-              ("stock", "shareholders", "top_shareholders") else "governance")
+    found = {("shareholders" if caption["kind"] in
+              ("stock", "shareholders", "top_shareholders", "charter_capital")
+              else "people_esg" if caption["kind"] == "personnel" else "governance")
              for caption in annual_table_captions(page)}
-    return [topic for topic in ("company", "governance") if topic in found]
+    return [topic for topic in ("shareholders", "governance", "people_esg") if topic in found]
 
 
 def _dynamic_zone(page: pdfplumber.page.Page, caption: dict[str, Any],
@@ -729,11 +605,12 @@ def _dynamic_bks_pay(caption: dict[str, Any], words: list[dict[str, Any]],
 def dynamic_annual_tables(page: pdfplumber.page.Page) -> list[TableBlock]:
     """Promote only recognized, geometrically consistent annual tables."""
     words = page.extract_words(x_tolerance=2, y_tolerance=3)
-    captions = annual_table_captions(page, words)
     extractors = {"stock": _dynamic_stock, "shareholders": _dynamic_shareholders,
                   "top_shareholders": _dynamic_top_shareholders,
                   "board": _dynamic_named_table, "board_pay": _dynamic_named_table,
                   "bks_pay": _dynamic_bks_pay}
+    captions = [caption for caption in annual_table_captions(page, words)
+                if caption["kind"] in extractors]
     tables: list[TableBlock] = []
     for caption in captions:
         zone = _dynamic_zone(page, caption, captions)
@@ -745,15 +622,12 @@ def dynamic_annual_tables(page: pdfplumber.page.Page) -> list[TableBlock]:
     return tables
 
 
-def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
+def reviewed_annual_tables(page: pdfplumber.page.Page, override: dict[str, Any] | None,
                            header_blocks: list[dict[str, Any]] | None = None) -> list[TableBlock]:
     """Reconstruct only the annual tables whose geometry was reviewed on this PDF."""
-    if digest == FPT_2024_SHA256:
-        table_specs = FPT_ANNUAL_TABLES
-    elif digest == FPT_2025_SHA256:
-        table_specs = FPT_2025_ANNUAL_TABLES
-    else:
+    if override is None:
         return dynamic_annual_tables(page)
+    table_specs = override["annual_tables"]
     specs = [spec for spec in table_specs if spec["page"] == page.page_number]
     if not specs:
         return []
@@ -814,7 +688,7 @@ def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
                 for field, part in parts.items()
                 if re.fullmatch(r"c[1-9]\d*", field) and part
             }
-            if digest == FPT_2025_SHA256:
+            if spec.get("percent_fields"):
                 value_fields = [field for field in fields if re.fullmatch(r"c[1-9]\d*", field)]
                 if any(field not in cells for field in value_fields):
                     raise ValueError(f"Trang {page.page_number}: {spec['title']} dòng {position + 1} thiếu ô")
@@ -837,7 +711,8 @@ def reviewed_annual_tables(page: pdfplumber.page.Page, digest: str,
 
 
 def annual_content_index(documents: list[dict[str, Any]],
-                         page_topics: dict[int, list[str]], digest: str) -> dict[str, Any]:
+                         page_topics: dict[int, list[str]],
+                         override: dict[str, Any] | None = None) -> dict[str, Any]:
     by_page = {document["page"]: document for document in documents}
     topics = [{"id": topic, "title": title,
                "pdf_pages": [number for number in sorted(page_topics)
@@ -845,9 +720,8 @@ def annual_content_index(documents: list[dict[str, Any]],
               for topic, title in ANNUAL_TOPICS.items()]
     topics = [topic for topic in topics if topic["pdf_pages"]]
     tables = []
-    if digest in (FPT_2024_SHA256, FPT_2025_SHA256):
-        table_specs = (FPT_ANNUAL_TABLES if digest == FPT_2024_SHA256
-                       else FPT_2025_ANNUAL_TABLES)
+    if override is not None:
+        table_specs = override["annual_tables"]
         for spec in table_specs:
             topic, number, title = spec["topic"], spec["page"], spec["title"]
             document = by_page.get(number)
@@ -884,58 +758,18 @@ def annual_content_index(documents: list[dict[str, Any]],
                 tables.append({"topic": page_topics[number][0], "pdf_page": number,
                                "title": caption, "ir_file": f"p-{number:03d}.ir.json",
                                "status": "structured" if block["type"] == "table" else "text_only",
+                               "needs_review": block["type"] != "table",
                                "table_block_id": block["id"] if block["type"] == "table" else None})
     return {"topics": topics, "table_targets": tables}
 
-# Transcribed from the printed captions beside the large figures on these pages.
-# The value sequence is checked on every build so a changed PDF cannot inherit
-# a label from this particular edition of the report.
-FPT_KPI_CAPTIONS: dict[int, list[tuple[str, str]]] = {
-    24: [("37.666", "Nhân lực công nghệ"), ("10.000", "Chứng chỉ NVIDIA")],
-    25: [("4.890", "Dung lượng băng thông quốc tế"),
-         ("50+", "Triệu người dùng trên toàn cầu")],
-    26: [("40+", "Quốc gia có hợp tác đào tạo"), ("180", "Đối tác quốc tế")],
-    44: [("68,5", "Thị trường cơ sở hạ tầng AI năm 2024")],
-    45: [("31,4", "Thị trường bán dẫn Việt Nam vào năm 2029"),
-         ("79,3", "Trí tuệ nhân tạo đóng góp cho Việt Nam vào năm 2030")],
-    98: [("100%", "Sử dụng đèn Led tại các văn phòng xây mới"),
-         ("100%", "Sử dụng cốc bằng vật liệu thân thiện môi trường"),
-         ("100%", "Không sử dụng chai nhựa trong văn phòng"),
-         ("100%", "Túi đựng rác trong văn phòng bằng các vật liệu có thể tái chế"),
-         ("66,3", "Hỗ trợ hoạt động cộng đồng"),
-         ("1.769.884", "Hợp đồng ký số, chiếm khoảng 80% tổng hợp đồng ký kết"),
-         ("100%", "Văn bản nội bộ được ký số"),
-         ("54.687", "Việc làm ổn định"),
-         ("168,1", "Học bổng Nguyễn Văn Đạo"),
-         ("62.540", "Người được hỗ trợ trên phạm vi toàn quốc"),
-         ("37,1%", "Nhân sự nữ"),
-         ("36,0%", "Cán bộ quản lý nữ"),
-         ("184,7", "Cho hoạt động đào tạo nội bộ"),
-         ("118.000", "Giờ học, tiếp cận thông tin ESG"),
-         ("3.489", "Nhân sự người nước ngoài (87 quốc tịch)"),
-         ("1.880", "Đơn vị máu được hiến tặng"),
-         ("431", "Cây cầu nâng bước em đến trường")],
-    133: [("100%", "Cơ sở thuộc quyền kiểm soát vận hành của FPT được tiến hành kiểm kê khí nhà kính"),
-          ("143.574", "Tổng phát thải khí nhà kính thuộc phạm vi 1 và 2"),
-          ("100%", "Dữ liệu phát thải khí nhà kính phạm vi 1,2 và 3 được chuẩn hoá và triển khai đồng bộ tới CTTV"),
-          ("100%", "Dữ liệu phát thải phạm vi 1 và 2 được thu thập, tính toán")],
-}
-
-# Reviewed on PDF page 137 of the exact FPT 2025 annual report.
-FPT_2025_KPI_CAPTIONS: dict[int, list[tuple[str, str]]] = {
-    137: [("43,9%", "Nhân sự dưới 30 tuổi"),
-          ("53,2%", "Cán bộ quản lý dưới 40 tuổi")],
-}
-
-
-def reviewed_kpis(page: pdfplumber.page.Page, digest: str) -> list[dict[str, Any]]:
+def reviewed_kpis(page: pdfplumber.page.Page,
+                  override: dict[str, Any] | None = None) -> list[dict[str, Any]]:
     """Return PDF-specific reviewed values and captions, or unreviewed candidates."""
     candidates = kpi_candidates(page)
-    captions = (FPT_KPI_CAPTIONS if digest == FPT_2024_SHA256 else
-                FPT_2025_KPI_CAPTIONS if digest == FPT_2025_SHA256 else {})
-    if page.page_number not in captions:
+    captions = override.get("kpi_captions", {}) if override else {}
+    if str(page.page_number) not in captions:
         return [{**candidate, "review_status": "candidate"} for candidate in candidates]
-    expected = captions[page.page_number]
+    expected = captions[str(page.page_number)]
     values = [item["value_raw"] for item in candidates]
     if values != [value for value, _caption in expected]:
         raise ValueError(f"Trang {page.page_number}: dãy KPI đã duyệt thay đổi: {values}")

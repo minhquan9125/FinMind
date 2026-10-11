@@ -1,30 +1,27 @@
 """Locate audited financial pages and parse coded or bank statement tables.
 
-The reviewed FPT 2024 fixture remains available for comparisons; the runtime
-classification and extraction paths use the visible PDF content.
+Classification and extraction use the visible PDF content.
 """
 
 from __future__ import annotations
 
-import copy
 import hashlib
 import json
 import re
 import unicodedata
 from collections import defaultdict
+from datetime import date
 from decimal import Decimal, InvalidOperation
-from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 from ir_types import Column, Row, TableBlock
-from reportContent import FPT_2024_SHA256
 
 
-REVIEWED_TABLES = (Path(__file__).resolve().parents[1] / "Document IR"
-                   / "fpt-2024-reviewed-financial-tables.json")
 ACCOUNTING_TEMPLATE = (Path(__file__).resolve().parents[1] / "templates"
                        / "financial-template-lines.json")
+TT99_ACCOUNTING_TEMPLATE = (Path(__file__).resolve().parents[1] / "templates"
+                            / "tt99-2025-b01-b02-b03.json")
 
 
 def _plain(value: str) -> str:
@@ -92,28 +89,6 @@ def financial_page_class(number: int, section: str | None, digest: str,
     return None
 
 
-@lru_cache(maxsize=1)
-def _reviewed_tables() -> dict[int, dict[str, Any]]:
-    document = json.loads(REVIEWED_TABLES.read_text(encoding="utf-8"))
-    result: dict[int, dict[str, Any]] = {}
-    for group in document["tables"]:
-        for page in group["pages"]:
-            if page["source"]["document_sha256"] != FPT_2024_SHA256:
-                raise ValueError("Bảng FPT đã rà soát không khớp SHA-256 PDF mẫu")
-            if page["page"] in result:
-                raise ValueError(f"Trùng bảng đã rà soát ở trang {page['page']}")
-            if group["table_id"] != "company_information":
-                result[page["page"]] = page["blocks"][0]
-    return result
-
-
-def reviewed_statement_tables(number: int, digest: str) -> list[dict[str, Any]]:
-    if digest != FPT_2024_SHA256:
-        return []
-    table = _reviewed_tables().get(number)
-    return [copy.deepcopy(table)] if table is not None else []
-
-
 def _word_box(words: list[dict[str, Any]]) -> list[float]:
     return [round(min(word["x0"] for word in words), 2),
             round(min(word["top"] for word in words), 2),
@@ -143,16 +118,35 @@ def _coded_statement_table(page: Any, kind: str) -> tuple[TableBlock, list[float
     header_lines = _line_groups([word for word in words
                                  if word["top"] < page.height * .35
                                  and word["x0"] >= page.width * .22])
+    def value_heads(line: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        dated = sorted((word for word in line
+                        if re.fullmatch(r"20\d{2}|\d{1,2}[./-]\d{1,2}[./-]20\d{2}",
+                                        word["text"])), key=lambda word: word["x0"])
+        if len(dated) == 2:
+            return dated
+        ordered = sorted(line, key=lambda word: word["x0"])
+        result = []
+        for position, word in enumerate(ordered[:-1]):
+            phrase = _plain(word["text"] + " " + ordered[position + 1]["text"])
+            if phrase in ("so cuoi", "so dau", "ky nay", "ky truoc",
+                          "nam nay", "nam truoc"):
+                last = ordered[position + 2] if phrase.startswith("so ") and position + 2 < len(ordered) else ordered[position + 1]
+                if phrase.startswith("so ") and _plain(last["text"]) not in ("ky", "nam"):
+                    continue
+                result.append({**word, "text": " ".join(item["text"] for item in
+                               ordered[position:ordered.index(last) + 1]),
+                               "x1": last["x1"], "bottom": max(word["bottom"], last["bottom"])})
+        return result if len(result) == 2 else []
+
     header = next((line for line in header_lines
                    if any(word["text"] == "Mã" for word in line)
                    and any(word["text"] == "Thuyết" for word in line)
-                   and len([word for word in line if re.fullmatch(r"20\d{2}", word["text"])]) == 2), None)
+                   and len(value_heads(line)) == 2), None)
     if header is None:
-        raise ValueError(f"BCTC trang {number}: không tìm thấy tiêu đề cột Mã số/Thuyết minh/2 năm")
+        raise ValueError(f"BCTC trang {number}: không tìm thấy Mã số/Thuyết minh/2 cột kỳ")
     code_header = next(word for word in header if word["text"] == "Mã")
     note_header = next(word for word in header if word["text"] == "Thuyết")
-    years = sorted((word for word in header if re.fullmatch(r"20\d{2}", word["text"])),
-                   key=lambda word: word["x0"])
+    years = sorted(value_heads(header), key=lambda word: word["x0"])
     codes = sorted((word for word in words
                     if abs(word["x0"] - code_header["x0"]) < 22
                     and header[0]["bottom"] + 5 <= word["top"] < page.height * .9
@@ -221,6 +215,11 @@ def _coded_statement_table(page: Any, kind: str) -> tuple[TableBlock, list[float
     titles = {"balance_sheet": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
               "income_statement": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH HỢP NHẤT",
               "cash_flow": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT"}
+    if kind == "balance_sheet":
+        visible_title = next((line for line in _printed_lines(words)
+                              if _plain(line).startswith("bao cao tinh hinh tai chinh")), None)
+        if visible_title:
+            titles[kind] = visible_title
     table_bbox = _word_box(all_row_words + [word for word in words
                                               if code_header["x0"] - 15 <= word["x0"] < page.width
                                               and header[0]["top"] - 5 <= word["top"] < codes[0]["top"]])
@@ -239,7 +238,7 @@ def _coded_statement_table(page: Any, kind: str) -> tuple[TableBlock, list[float
 
 
 _BANK_AMOUNT = re.compile(r"(?:\(?-?[\d.,]+\)?|[-–—])$")
-_BANK_YEAR = re.compile(r"(?:31/12/)?20\d{2}$")
+_BANK_YEAR = re.compile(r"(?:\d{1,2}[./-]\d{1,2}[./-])?20\d{2}$")
 
 
 def _bank_panel_kind(page: Any, left: float, right: float,
@@ -567,13 +566,24 @@ def financial_index(documents: list[dict[str, Any]], digest: str,
             "has_structured_table": has_structured_table,
             "needs_review": any(item["pdf_page"] == number for item in needs_review),
         })
+    selected_template = _select_accounting_template_path(documents, template_path)
     checks, skipped_checks, failed_pages, template_id = evaluate_accounting(documents, template_path)
+    if template_id == "TEMPLATE_UNKNOWN":
+        for page in documents:
+            if page["page_class"] in _ACCOUNTING_STATEMENTS and not any(
+                    item["pdf_page"] == page["page"] for item in needs_review):
+                needs_review.append({"pdf_page": page["page"],
+                                     "reason": "arithmetic_template_unknown"})
     for target_page in sorted(failed_pages):
         if not any(item["pdf_page"] == target_page for item in needs_review):
+            unresolved = any(item["name"] == "period_unresolved" and item["page"] == target_page
+                             for item in skipped_checks)
             invalid = any(item["name"] == "invalid_numeric_cell" and item["page"] == target_page
                           for item in skipped_checks)
             needs_review.append({"pdf_page": target_page,
-                                 "reason": "invalid_numeric_cell" if invalid else "arithmetic_check_failed"})
+                                 "reason": ("period_unresolved" if unresolved else
+                                            "invalid_numeric_cell" if invalid else
+                                            "arithmetic_check_failed")})
     for entry in page_index:
         entry["needs_review"] = any(item["pdf_page"] == entry["pdf_page"] for item in needs_review)
     return {
@@ -588,8 +598,9 @@ def financial_index(documents: list[dict[str, Any]], digest: str,
         "arithmetic_checks": checks,
         "arithmetic_checks_skipped": skipped_checks,
         "arithmetic_template_id": template_id,
-        "arithmetic_template_sha256": hashlib.sha256(
-            _accounting_template_path(template_path).read_bytes()).hexdigest(),
+        "arithmetic_template_sha256": (hashlib.sha256(
+            selected_template.read_bytes()).hexdigest()
+            if selected_template is not None else None),
         "notes_text_only_ranges": compact_page_ranges(text_only_notes),
         "file_pattern": "p-{page:03d}.ir.json",
         "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
@@ -624,9 +635,76 @@ def _parse_accounting_number(raw: str | None) -> Decimal | None:
     return -value if negative else value
 
 
-def _accounting_period_year(header_lines: list[str]) -> str | None:
-    years = re.findall(r"\b20\d{2}\b", " ".join(header_lines))
-    return years[-1] if years else None
+def _printed_date(value: str) -> date | None:
+    """Read a printed Vietnamese date without guessing missing day or month."""
+    plain = _plain(value)
+    patterns = (
+        r"(?<!\d)(\d{1,2})[./-](\d{1,2})[./-](20\d{2})(?!\d)",
+        r"\bngay\s+(\d{1,2})\s+thang\s+(\d{1,2})\s+nam\s+(20\d{2})\b",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, plain)
+        if match:
+            try:
+                return date(int(match[3]), int(match[2]), int(match[1]))
+            except ValueError:
+                return None
+    return None
+
+
+def _accounting_period(header_lines: list[str], statement: str,
+                       page_text: str = "") -> tuple[str, str, str] | None:
+    """Return (period_end, period_type, role) for a printed value column.
+
+    A relative heading is resolved only when the page states the reporting
+    date. An unresolved column must never be checked against a guessed year.
+    """
+    header = _plain(" ".join(header_lines))
+    period_type = "instant" if statement == "balance_sheet" else "duration"
+    explicit_date = _printed_date(header)
+    if explicit_date is not None:
+        return explicit_date.isoformat(), period_type, "explicit"
+    relative = None
+    if ("so cuoi ky" in header or "so cuoi nam" in header or
+            "ky nay" in header or "nam nay" in header):
+        relative = "current"
+    elif ("so dau ky" in header or "so dau nam" in header or
+          "ky truoc" in header or "nam truoc" in header):
+        relative = "comparative"
+    # Prefer the reporting-date line over dates in unrelated notes or rows.
+    context_lines = [_plain(line) for line in page_text.splitlines()[:20]]
+    reporting_line = next((line for line in context_lines
+                           if ("tai ngay" in line or "ket thuc ngay" in line or
+                               "den ngay" in line)
+                           and _printed_date(line) is not None), None)
+    report_date = _printed_date(reporting_line) if reporting_line else None
+    if relative is None:
+        years = re.findall(r"\b20\d{2}\b", header)
+        if not years:
+            return None
+        year = int(years[-1])
+        if report_date is not None and year == report_date.year:
+            return report_date.isoformat(), period_type, "explicit"
+        if report_date is not None and year == report_date.year - 1 and period_type == "duration":
+            try:
+                prior = report_date.replace(year=year)
+            except ValueError:
+                prior = report_date.replace(year=year, day=28)
+            return prior.isoformat(), period_type, "explicit"
+        return f"{year}-12-31", period_type, "explicit"
+
+    if report_date is None:
+        return None
+    if relative == "current":
+        resolved = report_date
+    elif "so dau ky" in header or "so dau nam" in header:
+        resolved = date(report_date.year - 1, 12, 31)
+    else:
+        try:
+            resolved = report_date.replace(year=report_date.year - 1)
+        except ValueError:  # 29 February comparison year
+            resolved = report_date.replace(year=report_date.year - 1, day=28)
+    return resolved.isoformat(), period_type, relative
 
 
 def _load_accounting_template(template_path: Path | None = None) -> dict[str, Any]:
@@ -640,12 +718,88 @@ def _load_accounting_template(template_path: Path | None = None) -> dict[str, An
     return template
 
 
+def _accounting_template_supported(documents: list[dict[str, Any]]) -> bool:
+    """Apply the legacy code template only to its identified balance-sheet form.
+
+    A title such as 'Báo cáo tình hình tài chính' is used by TT99 and banks,
+    whose row codes and arithmetic may differ.  Missing title evidence is not
+    sufficient grounds to select the legacy template either.
+    """
+    balance_pages = [page for page in documents if page.get("page_class") == "balance_sheet"]
+    if not balance_pages:
+        return False
+    titles = [
+        _plain(str(block.get("text", "")))
+        for page in balance_pages
+        for block in page.get("blocks", [])[:12]
+        if block.get("type") in ("heading", "paragraph")
+    ]
+    if any("bao cao tinh hinh tai chinh" in title for title in titles):
+        return False
+    return any("bang can doi ke toan" in title for title in titles)
+
+
+def _accounting_template_profile(documents: list[dict[str, Any]]) -> str | None:
+    """Use printed form and row labels; a title or year alone is not enough."""
+    balance_pages = [page for page in documents if page.get("page_class") == "balance_sheet"]
+    if not balance_pages:
+        return None
+    blocks = [block for page in balance_pages for block in page.get("blocks", [])]
+    titles = [_plain(str(block.get("text", ""))) for block in blocks
+              if block.get("type") in ("heading", "paragraph", "form_code")]
+    if any("hop nhat" in title for title in titles if
+           "bao cao tinh hinh tai chinh" in title):
+        return None  # B01-DN is not the consolidated DN/HN form.
+    if any("bao cao tinh hinh tai chinh" in title for title in titles):
+        form_text = " ".join(titles)
+        if re.search(r"\bb\s*0?1\s*[-–—]\s*dn\s*[/\\-]\s*hn\b", form_text):
+            return None  # The consolidated form needs its own rules.
+        exact_b01_dn = re.search(
+            r"\bb\s*0?1\s*[-–—]\s*dn\b(?!\s*[/\\-]\s*hn)", form_text)
+        rows = [row for block in blocks if block.get("type") == "table"
+                for row in block.get("rows", [])]
+        labels = {str(row.get("code")): _plain(str(row.get("label_raw", "")))
+                  for row in rows if row.get("code")}
+        row_evidence = ("tong cong tai san" in labels.get("280", "") and
+                        "tai san dai han khac" in labels.get("270", ""))
+        if exact_b01_dn or row_evidence:
+            return "TT99_2025"
+        return None
+    if _accounting_template_supported(documents):
+        return "LEGACY_NONBANK"
+    return None
+
+
+def _select_accounting_template_path(documents: list[dict[str, Any]],
+                                     template_path: Path | None = None) -> Path | None:
+    """Select an applicable template; unknown forms receive no arithmetic checks."""
+    profile = _accounting_template_profile(documents)
+    if profile is None:
+        return None
+    candidate = (template_path if template_path is not None else
+                 TT99_ACCOUNTING_TEMPLATE if profile == "TT99_2025" else ACCOUNTING_TEMPLATE)
+    path = _accounting_template_path(candidate)
+    template = json.loads(path.read_text(encoding="utf-8"))
+    standard = template.get("accounting_standard", "LEGACY_NONBANK")
+    if standard != profile:
+        raise ValueError(f"Template {path.name} thuộc {standard}, báo cáo thuộc {profile}")
+    return path
+
+
 def evaluate_accounting(documents: list[dict[str, Any]], template_path: Path | None = None
                         ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], set[int], str]:
     """Evaluate template sums and cross-statement checks by year, preserving missing data."""
-    template = _load_accounting_template(template_path)
-    values: dict[str, dict[str, dict[str, tuple[Decimal, int]]]] = defaultdict(lambda: defaultdict(dict))
+    selected_template = _select_accounting_template_path(documents, template_path)
+    if selected_template is None:
+        return [], [{"name": "template_unknown",
+                     "reason": "accounting_form_not_identified",
+                     "pdf_pages": [page["page"] for page in documents
+                                   if page.get("page_class") in _ACCOUNTING_STATEMENTS]}], \
+               set(), "TEMPLATE_UNKNOWN"
+    template = _load_accounting_template(selected_template)
+    values: dict[str, dict[tuple[str, str, str], dict[str, tuple[Decimal, int]]]] = defaultdict(lambda: defaultdict(dict))
     invalid_cells: list[dict[str, Any]] = []
+    unresolved_periods: list[dict[str, Any]] = []
     failed_pages: set[int] = set()
     for page in documents:
         kind = page["page_class"]
@@ -654,47 +808,62 @@ def evaluate_accounting(documents: list[dict[str, Any]], template_path: Path | N
         for block in page["blocks"]:
             if block["type"] != "table":
                 continue
-            years = {column["key"]: _accounting_period_year(column["header_lines"])
-                     for column in block["columns"]}
+            context = "\n".join(str(item.get("text", "")) for item in page["blocks"]
+                                if item["type"] in ("heading", "paragraph"))
+            periods = {column["key"]: _accounting_period(
+                column["header_lines"], kind, context)
+                for column in block["columns"]}
+            for column in block["columns"]:
+                if periods[column["key"]] is None:
+                    unresolved_periods.append({"name": "period_unresolved", "page": page["page"],
+                                               "table_id": block["id"], "column": column["key"],
+                                               "header_lines": column["header_lines"]})
+                    failed_pages.add(page["page"])
             for row in block["rows"]:
                 code = row.get("code")
                 if not code:
                     continue
                 for column, cell in row["cells"].items():
-                    year = years.get(column)
+                    period = periods.get(column)
                     number = _parse_accounting_number(cell.get("raw"))
-                    if year is not None and number is None and cell.get("raw") is not None:
-                        invalid_cells.append({"name": "invalid_numeric_cell", "year": year,
+                    if period is not None and number is None and cell.get("raw") is not None:
+                        invalid_cells.append({"name": "invalid_numeric_cell", "year": period[0][:4],
+                                              "period_end": period[0], "period_type": period[1],
                                               "page": page["page"], "code": code,
                                               "column": column, "raw": cell["raw"]})
                         failed_pages.add(page["page"])
-                    if year is not None and number is not None:
-                        previous = values[kind][year].get(code)
+                    if period is not None and number is not None:
+                        previous = values[kind][period].get(code)
                         if previous is not None and previous[0] != number:
-                            raise ValueError(f"Trùng mã {kind}/{year}/{code} với hai giá trị")
-                        values[kind][year][code] = (number, page["page"])
+                            raise ValueError(f"Trùng mã {kind}/{period}/{code} với hai giá trị")
+                        values[kind][period][code] = (number, page["page"])
 
     groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for line in template["template_lines"]:
         if not line["is_memo"]:
             groups[line["statement"], line["parent"]].append(line)
     checks: list[dict[str, Any]] = []
-    skipped: list[dict[str, Any]] = invalid_cells.copy()
-    all_years = sorted({year for periods in values.values() for year in periods})
+    skipped: list[dict[str, Any]] = invalid_cells + unresolved_periods
+    all_periods = sorted({period for statement_periods in values.values()
+                          for period in statement_periods})
     for (kind, parent), children in groups.items():
-        for year in all_years:
-            rows = values.get(kind, {}).get(year, {})
+        for period in all_periods:
+            rows = values.get(kind, {}).get(period, {})
             codes = [parent, *(child["code"] for child in children)]
             missing = [code for code in codes if code not in rows]
             name = f"{kind}:{parent}"
             if missing:
-                skipped.append({"name": name, "year": year, "missing_codes": missing})
+                skipped.append({"name": name, "year": period[0][:4],
+                                "period_end": period[0], "period_type": period[1],
+                                "period_role": period[2], "missing_codes": missing})
                 continue
             actual = rows[parent][0]
             expected = sum((rows[child["code"]][0] * child["sign"] for child in children), Decimal(0))
             passed = abs(actual - expected) <= 1
             pages = sorted({rows[code][1] for code in codes})
-            checks.append({"name": name, "year": year, "passed": passed,
+            checks.append({"name": name, "year": period[0][:4],
+                           "period_end": period[0], "period_type": period[1],
+                           "period_role": period[2], "passed": passed,
                            "result_code": parent, "actual": str(actual), "expected": str(expected),
                            "pdf_pages": pages, "source": "template_lines"})
             if not passed:
@@ -703,21 +872,33 @@ def evaluate_accounting(documents: list[dict[str, Any]], template_path: Path | N
     for rule in template["cross_statement_rules"]:
         left = rule["left"]
         right = rule["right"]
-        for year in all_years:
-            right_year = str(int(year) + rule.get("right_year_offset", 0))
-            lhs = values.get(left["statement"], {}).get(year, {}).get(left["code"])
-            rhs = values.get(right["statement"], {}).get(right_year, {}).get(right["code"])
+        for period, left_rows in values.get(left["statement"], {}).items():
+            target = date.fromisoformat(period[0])
+            offset = rule.get("right_year_offset", 0)
+            if offset:
+                # A beginning cash balance refers to the prior year end.
+                target = date(target.year + offset, 12, 31)
+            candidates = [(candidate_period, rows[right["code"]])
+                          for candidate_period, rows in values.get(right["statement"], {}).items()
+                          if candidate_period[0] == target.isoformat()
+                          and right["code"] in rows]
+            lhs = left_rows.get(left["code"])
+            rhs = candidates[0][1] if len(candidates) == 1 else None
             if lhs is None or rhs is None:
                 missing = []
                 if lhs is None:
-                    missing.append(f"{left['statement']}:{left['code']}:{year}")
+                    missing.append(f"{left['statement']}:{left['code']}:{period[0]}")
                 if rhs is None:
-                    missing.append(f"{right['statement']}:{right['code']}:{right_year}")
-                skipped.append({"name": rule["name"], "year": year, "missing_codes": missing})
+                    missing.append(f"{right['statement']}:{right['code']}:{target.isoformat()}")
+                skipped.append({"name": rule["name"], "year": period[0][:4],
+                                "period_end": period[0], "period_type": period[1],
+                                "period_role": period[2], "missing_codes": missing})
                 continue
             passed = abs(lhs[0] - rhs[0]) <= 1
             pages = sorted({lhs[1], rhs[1]})
-            checks.append({"name": rule["name"], "year": year, "passed": passed,
+            checks.append({"name": rule["name"], "year": period[0][:4],
+                           "period_end": period[0], "period_type": period[1],
+                           "period_role": period[2], "passed": passed,
                            "actual": str(lhs[0]), "expected": str(rhs[0]),
                            "pdf_pages": pages, "source": "cross_statement"})
             if not passed:

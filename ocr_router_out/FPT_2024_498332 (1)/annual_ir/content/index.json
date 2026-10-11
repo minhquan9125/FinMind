@@ -1,28 +1,23 @@
 {
   "pdf": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\FPT_2024_498332 (1).pdf",
   "scope": "annual_report_content",
-  "pages": 119,
+  "pages": 138,
   "routes": {
-    "TEXT_LAYER": 119
+    "TEXT_LAYER": 138
   },
   "blockTypes": {
-    "heading": 307,
-    "paragraph": 2277,
-    "furniture": 1675,
-    "kpi": 30,
-    "table": 15
+    "heading": 401,
+    "paragraph": 3212,
+    "furniture": 1905,
+    "table": 5
   },
   "sectionIndex": "sections.json",
   "kpiReview": "kpi_review.json",
-  "kpiVerified": 30,
+  "kpiVerified": 0,
   "kpiCandidates": 0,
   "pageRanges": [
     {
-      "start": 20,
-      "end": 20
-    },
-    {
-      "start": 24,
+      "start": 4,
       "end": 141
     }
   ],

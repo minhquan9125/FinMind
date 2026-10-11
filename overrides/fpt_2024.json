@@ -1,0 +1,690 @@
+{
+  "id": "fpt_2024_reviewed",
+  "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+  "annual_topic_ranges": {
+    "company": [
+      [
+        20,
+        20
+      ],
+      [
+        24,
+        28
+      ]
+    ],
+    "shareholders": [
+      [
+        29,
+        32
+      ]
+    ],
+    "strategy": [
+      [
+        41,
+        49
+      ]
+    ],
+    "performance": [
+      [
+        50,
+        67
+      ]
+    ],
+    "governance": [
+      [
+        33,
+        40
+      ],
+      [
+        68,
+        95
+      ]
+    ],
+    "people_esg": [
+      [
+        57,
+        57
+      ],
+      [
+        96,
+        141
+      ]
+    ]
+  },
+  "annual_tables": [
+    {
+      "page": 29,
+      "topic": "shareholders",
+      "title": "THÔNG TIN VỀ CỔ PHIẾU",
+      "box": [
+        429,
+        185,
+        1115,
+        670
+      ],
+      "cuts": [
+        429,
+        840,
+        1115
+      ],
+      "fields": "label c1",
+      "body": 200,
+      "anchor": [
+        435,
+        450,
+        ".+"
+      ],
+      "rows": 10
+    },
+    {
+      "page": 29,
+      "topic": "shareholders",
+      "title": "CƠ CẤU CỔ ĐÔNG THEO CÁC MỨC CỔ PHIẾU SỞ HỮU",
+      "box": [
+        1166,
+        155,
+        1865,
+        500
+      ],
+      "cuts": [
+        1166,
+        1330,
+        1440,
+        1580,
+        1715,
+        1865
+      ],
+      "fields": "label c1 c2 c3 c4",
+      "body": 270,
+      "anchor": [
+        1170,
+        1190,
+        "(?:\\d[\\d.]*|Tổng)"
+      ],
+      "rows": 5
+    },
+    {
+      "page": 29,
+      "topic": "shareholders",
+      "title": "CƠ CẤU CỔ ĐÔNG THEO ĐỐI TƯỢNG SỞ HỮU",
+      "box": [
+        1166,
+        615,
+        1865,
+        995
+      ],
+      "cuts": [
+        1166,
+        1330,
+        1440,
+        1580,
+        1715,
+        1865
+      ],
+      "fields": "label c1 c2 c3 c4",
+      "body": 710,
+      "anchor": [
+        1170,
+        1190,
+        "(?:Nhà|Cổ|Tổng)"
+      ],
+      "rows": 5
+    },
+    {
+      "page": 30,
+      "topic": "shareholders",
+      "title": "CƠ CẤU CỔ ĐÔNG THEO QUỐC TỊCH",
+      "box": [
+        429,
+        100,
+        1115,
+        440
+      ],
+      "cuts": [
+        429,
+        550,
+        670,
+        800,
+        980,
+        1115
+      ],
+      "fields": "label c1 c2 c3 c4",
+      "body": 178,
+      "anchor": [
+        438,
+        455,
+        "(?:Việt|Cá|Tổ|Nước|Tổng)"
+      ],
+      "rows": 7
+    },
+    {
+      "page": 30,
+      "topic": "shareholders",
+      "title": "TOP 10 CỔ ĐÔNG LỚN",
+      "box": [
+        1166,
+        105,
+        1865,
+        495
+      ],
+      "cuts": [
+        1166,
+        1238,
+        1610,
+        1780,
+        1865
+      ],
+      "fields": "code label c1 c2",
+      "body": 140,
+      "anchor": [
+        1185,
+        1210,
+        "\\d{1,2}"
+      ],
+      "rows": 10
+    },
+    {
+      "page": 30,
+      "topic": "shareholders",
+      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ",
+      "box": [
+        429,
+        590,
+        1865,
+        1015
+      ],
+      "cuts": [
+        429,
+        510,
+        640,
+        830,
+        1865
+      ],
+      "fields": "code c1 c2 label",
+      "body": 650,
+      "anchor": [
+        443,
+        465,
+        "\\d{1,2}"
+      ],
+      "rows": 10,
+      "logical": "fpt-2024-charter-capital",
+      "unit": "Đơn vị: VNĐ"
+    },
+    {
+      "page": 31,
+      "topic": "shareholders",
+      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)",
+      "box": [
+        429,
+        105,
+        1865,
+        1020
+      ],
+      "cuts": [
+        429,
+        510,
+        640,
+        830,
+        1865
+      ],
+      "fields": "code c1 c2 label",
+      "body": 165,
+      "anchor": [
+        440,
+        465,
+        "\\d{1,2}"
+      ],
+      "rows": 21,
+      "logical": "fpt-2024-charter-capital",
+      "continued": true,
+      "unit": "Đơn vị: VNĐ"
+    },
+    {
+      "page": 32,
+      "topic": "shareholders",
+      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ (tiếp theo)",
+      "box": [
+        429,
+        105,
+        1865,
+        635
+      ],
+      "cuts": [
+        429,
+        510,
+        640,
+        830,
+        1865
+      ],
+      "fields": "code c1 c2 label",
+      "body": 165,
+      "anchor": [
+        440,
+        465,
+        "\\d{1,2}"
+      ],
+      "rows": 10,
+      "logical": "fpt-2024-charter-capital",
+      "continued": true,
+      "unit": "Đơn vị: VNĐ"
+    },
+    {
+      "page": 57,
+      "topic": "people_esg",
+      "title": "NHÂN SỰ BÌNH QUÂN CỦA LĨNH VỰC DỊCH VỤ CNTT CHO THỊ TRƯỜNG NƯỚC NGOÀI",
+      "box": [
+        1166,
+        115,
+        1865,
+        330
+      ],
+      "cuts": [
+        1166,
+        1580,
+        1700,
+        1785,
+        1865
+      ],
+      "fields": "label c1 c2 c3",
+      "body": 178,
+      "anchor": [
+        1175,
+        1195,
+        "(?:Tổng|Doanh)"
+      ],
+      "rows": 3
+    },
+    {
+      "page": 77,
+      "topic": "governance",
+      "title": "DANH SÁCH THÀNH VIÊN HĐQT NHIỆM KỲ 2022-2027 VÀ SỐ CUỘC HỌP THAM DỰ TRONG NĂM 2024",
+      "box": [
+        429,
+        105,
+        1865,
+        860
+      ],
+      "cuts": [
+        429,
+        750,
+        1290,
+        1510,
+        1690,
+        1865
+      ],
+      "fields": "label c1 c2 c3 c4",
+      "body": 165,
+      "anchor": [
+        430,
+        450,
+        "(?:Ông|Bà)"
+      ],
+      "rows": 7
+    },
+    {
+      "page": 83,
+      "topic": "governance",
+      "title": "GIAO DỊCH CỔ PHIẾU CỦA CỔ ĐÔNG LỚN VÀ CỔ ĐÔNG NỘI BỘ",
+      "box": [
+        429,
+        105,
+        1865,
+        1000
+      ],
+      "cuts": [
+        429,
+        480,
+        710,
+        900,
+        1025,
+        1110,
+        1240,
+        1320,
+        1865
+      ],
+      "fields": "code label c1 c2 c3 c4 c5 c6",
+      "body": 205,
+      "anchor": [
+        445,
+        470,
+        "\\d{1,2}"
+      ],
+      "rows": 10,
+      "headers": {
+        "c2": [
+          "Số cổ phiếu sở hữu đầu kỳ",
+          "Số cổ phiếu"
+        ],
+        "c3": [
+          "Số cổ phiếu sở hữu đầu kỳ",
+          "Tỷ lệ"
+        ],
+        "c4": [
+          "Số cổ phiếu sở hữu cuối kỳ",
+          "Số cổ phiếu"
+        ],
+        "c5": [
+          "Số cổ phiếu sở hữu cuối kỳ",
+          "Tỷ lệ"
+        ]
+      }
+    },
+    {
+      "page": 84,
+      "topic": "governance",
+      "title": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ",
+      "box": [
+        429,
+        185,
+        1865,
+        1000
+      ],
+      "cuts": [
+        429,
+        470,
+        605,
+        725,
+        855,
+        1055,
+        1110,
+        1455,
+        1700,
+        1865
+      ],
+      "fields": "code label c1 c2 c3 c4 c5 c6 c7",
+      "body": 290,
+      "anchor": [
+        438,
+        460,
+        "\\d{1,2}"
+      ],
+      "rows": 4,
+      "logical": "fpt-2024-insider-contracts",
+      "unit": "Đơn vị: VNĐ",
+      "headers": {
+        "c6": [
+          "Nội dung và tổng giá trị giao dịch",
+          "Giao dịch"
+        ],
+        "c7": [
+          "Nội dung và tổng giá trị giao dịch",
+          "Tổng giá trị"
+        ]
+      }
+    },
+    {
+      "page": 85,
+      "topic": "governance",
+      "title": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)",
+      "box": [
+        429,
+        105,
+        1865,
+        900
+      ],
+      "cuts": [
+        429,
+        470,
+        605,
+        725,
+        855,
+        1055,
+        1110,
+        1455,
+        1700,
+        1865
+      ],
+      "fields": "code label c1 c2 c3 c4 c5 c6 c7",
+      "body": 215,
+      "anchor": [
+        438,
+        460,
+        "\\d{1,2}"
+      ],
+      "rows": 3,
+      "logical": "fpt-2024-insider-contracts",
+      "continued": true,
+      "unit": "Đơn vị: VNĐ",
+      "headers": {
+        "c6": [
+          "Nội dung và tổng giá trị giao dịch",
+          "Giao dịch"
+        ],
+        "c7": [
+          "Nội dung và tổng giá trị giao dịch",
+          "Tổng giá trị"
+        ]
+      }
+    },
+    {
+      "page": 86,
+      "topic": "governance",
+      "title": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)",
+      "box": [
+        429,
+        105,
+        1865,
+        925
+      ],
+      "cuts": [
+        429,
+        470,
+        605,
+        725,
+        855,
+        1055,
+        1110,
+        1455,
+        1700,
+        1865
+      ],
+      "fields": "code label c1 c2 c3 c4 c5 c6 c7",
+      "body": 215,
+      "anchor": [
+        438,
+        460,
+        "\\d{1,2}"
+      ],
+      "rows": 3,
+      "logical": "fpt-2024-insider-contracts",
+      "continued": true,
+      "unit": "Đơn vị: VNĐ",
+      "headers": {
+        "c6": [
+          "Nội dung và tổng giá trị giao dịch",
+          "Giao dịch"
+        ],
+        "c7": [
+          "Nội dung và tổng giá trị giao dịch",
+          "Tổng giá trị"
+        ]
+      }
+    },
+    {
+      "page": 95,
+      "topic": "governance",
+      "title": "CHI TIẾT THÙ LAO CỦA BKS NĂM 2024",
+      "box": [
+        1166,
+        290,
+        1865,
+        495
+      ],
+      "cuts": [
+        1166,
+        1235,
+        1440,
+        1700,
+        1865
+      ],
+      "fields": "code label c1 c2",
+      "body": 330,
+      "anchor": [
+        1185,
+        1260,
+        "(?:[1-3]|Tổng)"
+      ],
+      "rows": 4,
+      "unit": "Đơn vị: VNĐ"
+    }
+  ],
+  "kpi_captions": {
+    "24": [
+      [
+        "37.666",
+        "Nhân lực công nghệ"
+      ],
+      [
+        "10.000",
+        "Chứng chỉ NVIDIA"
+      ]
+    ],
+    "25": [
+      [
+        "4.890",
+        "Dung lượng băng thông quốc tế"
+      ],
+      [
+        "50+",
+        "Triệu người dùng trên toàn cầu"
+      ]
+    ],
+    "26": [
+      [
+        "40+",
+        "Quốc gia có hợp tác đào tạo"
+      ],
+      [
+        "180",
+        "Đối tác quốc tế"
+      ]
+    ],
+    "44": [
+      [
+        "68,5",
+        "Thị trường cơ sở hạ tầng AI năm 2024"
+      ]
+    ],
+    "45": [
+      [
+        "31,4",
+        "Thị trường bán dẫn Việt Nam vào năm 2029"
+      ],
+      [
+        "79,3",
+        "Trí tuệ nhân tạo đóng góp cho Việt Nam vào năm 2030"
+      ]
+    ],
+    "98": [
+      [
+        "100%",
+        "Sử dụng đèn Led tại các văn phòng xây mới"
+      ],
+      [
+        "100%",
+        "Sử dụng cốc bằng vật liệu thân thiện môi trường"
+      ],
+      [
+        "100%",
+        "Không sử dụng chai nhựa trong văn phòng"
+      ],
+      [
+        "100%",
+        "Túi đựng rác trong văn phòng bằng các vật liệu có thể tái chế"
+      ],
+      [
+        "66,3",
+        "Hỗ trợ hoạt động cộng đồng"
+      ],
+      [
+        "1.769.884",
+        "Hợp đồng ký số, chiếm khoảng 80% tổng hợp đồng ký kết"
+      ],
+      [
+        "100%",
+        "Văn bản nội bộ được ký số"
+      ],
+      [
+        "54.687",
+        "Việc làm ổn định"
+      ],
+      [
+        "168,1",
+        "Học bổng Nguyễn Văn Đạo"
+      ],
+      [
+        "62.540",
+        "Người được hỗ trợ trên phạm vi toàn quốc"
+      ],
+      [
+        "37,1%",
+        "Nhân sự nữ"
+      ],
+      [
+        "36,0%",
+        "Cán bộ quản lý nữ"
+      ],
+      [
+        "184,7",
+        "Cho hoạt động đào tạo nội bộ"
+      ],
+      [
+        "118.000",
+        "Giờ học, tiếp cận thông tin ESG"
+      ],
+      [
+        "3.489",
+        "Nhân sự người nước ngoài (87 quốc tịch)"
+      ],
+      [
+        "1.880",
+        "Đơn vị máu được hiến tặng"
+      ],
+      [
+        "431",
+        "Cây cầu nâng bước em đến trường"
+      ]
+    ],
+    "133": [
+      [
+        "100%",
+        "Cơ sở thuộc quyền kiểm soát vận hành của FPT được tiến hành kiểm kê khí nhà kính"
+      ],
+      [
+        "143.574",
+        "Tổng phát thải khí nhà kính thuộc phạm vi 1 và 2"
+      ],
+      [
+        "100%",
+        "Dữ liệu phát thải khí nhà kính phạm vi 1,2 và 3 được chuẩn hoá và triển khai đồng bộ tới CTTV"
+      ],
+      [
+        "100%",
+        "Dữ liệu phát thải phạm vi 1 và 2 được thu thập, tính toán"
+      ]
+    ]
+  },
+  "reading_order": {
+    "45": {
+      "boundaries": [
+        1100
+      ],
+      "top_cutoff": 0
+    },
+    "98": {
+      "boundaries": [
+        640,
+        1040,
+        1440
+      ],
+      "top_cutoff": 180
+    },
+    "133": {
+      "boundaries": [
+        900
+      ],
+      "top_cutoff": 160
+    }
+  }
+}

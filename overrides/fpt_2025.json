@@ -1,0 +1,343 @@
+{
+  "id": "fpt_2025_reviewed",
+  "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+  "annual_topic_ranges": {},
+  "annual_tables": [
+    {
+      "page": 32,
+      "topic": "company",
+      "title": "Thông tin về cổ phiếu",
+      "box": [
+        258,
+        75,
+        610,
+        335
+      ],
+      "cuts": [
+        258,
+        470,
+        610
+      ],
+      "fields": "label c1",
+      "body": 120,
+      "anchor": [
+        258,
+        265,
+        "(?:Tên|Loại|Mã|Mệnh|Ngày|Tổng|Số|Tỷ)"
+      ],
+      "rows": 10,
+      "headers": {
+        "c1": [
+          "Giá trị"
+        ]
+      }
+    },
+    {
+      "page": 32,
+      "topic": "company",
+      "title": "Cơ cấu cổ đông theo các mức cổ phiếu sở hữu",
+      "box": [
+        652,
+        75,
+        1010,
+        265
+      ],
+      "cuts": [
+        652,
+        750,
+        815,
+        860,
+        965,
+        1010
+      ],
+      "fields": "label c1 c2 c3 c4",
+      "body": 150,
+      "anchor": [
+        658,
+        665,
+        "(?:01|1\\.000|10\\.001|1\\.000\\.001|Tổng)"
+      ],
+      "rows": 5,
+      "percent_fields": [
+        "c2",
+        "c4"
+      ],
+      "headers": {
+        "c1": [
+          "Số lượng cổ đông"
+        ],
+        "c2": [
+          "Tỷ lệ/Tổng số cổ đông"
+        ],
+        "c3": [
+          "Số lượng cổ phiếu sở hữu"
+        ],
+        "c4": [
+          "Tỷ lệ/Tổng số cổ phiếu đã phát hành"
+        ]
+      }
+    },
+    {
+      "page": 32,
+      "topic": "company",
+      "title": "Cơ cấu cổ đông theo đối tượng sở hữu",
+      "box": [
+        652,
+        320,
+        1010,
+        535
+      ],
+      "cuts": [
+        652,
+        750,
+        815,
+        860,
+        965,
+        1010
+      ],
+      "fields": "label c1 c2 c3 c4",
+      "body": 395,
+      "anchor": [
+        658,
+        665,
+        "(?:Nhà|Cổ|Tổng)"
+      ],
+      "rows": 5,
+      "percent_fields": [
+        "c2",
+        "c4"
+      ],
+      "headers": {
+        "c1": [
+          "Số lượng cổ đông"
+        ],
+        "c2": [
+          "Tỷ lệ/Tổng số cổ đông"
+        ],
+        "c3": [
+          "Số lượng cổ phiếu đang nắm giữ"
+        ],
+        "c4": [
+          "Tỷ lệ/Tổng số cổ phiếu đã phát hành"
+        ]
+      }
+    },
+    {
+      "page": 33,
+      "topic": "company",
+      "title": "Cơ cấu cổ đông theo quốc tịch",
+      "box": [
+        258,
+        42,
+        620,
+        275
+      ],
+      "cuts": [
+        258,
+        355,
+        420,
+        470,
+        565,
+        620
+      ],
+      "fields": "label c1 c2 c3 c4",
+      "body": 118,
+      "anchor": [
+        265,
+        274,
+        "(?:Việt|Cá|Tổ|Nước|Tổng)"
+      ],
+      "rows": 7,
+      "percent_fields": [
+        "c2",
+        "c4"
+      ],
+      "headers": {
+        "c1": [
+          "Số lượng cổ đông"
+        ],
+        "c2": [
+          "Tỷ lệ/Tổng số cổ đông"
+        ],
+        "c3": [
+          "Số lượng cổ phiếu sở hữu"
+        ],
+        "c4": [
+          "Tỷ lệ/Tổng số cổ phiếu đã phát hành"
+        ]
+      }
+    },
+    {
+      "page": 33,
+      "topic": "company",
+      "title": "Top 10 cổ đông lớn",
+      "box": [
+        665,
+        42,
+        1010,
+        350
+      ],
+      "cuts": [
+        665,
+        700,
+        895,
+        965,
+        1010
+      ],
+      "fields": "code label c1 c2",
+      "body": 98,
+      "anchor": [
+        667,
+        680,
+        "(?:10|[1-9])"
+      ],
+      "rows": 10,
+      "percent_fields": [
+        "c2"
+      ],
+      "headers": {
+        "c1": [
+          "Số cổ phần"
+        ],
+        "c2": [
+          "Tỷ lệ"
+        ]
+      }
+    },
+    {
+      "page": 86,
+      "topic": "governance",
+      "title": "Danh sách Thành viên HĐQT nhiệm kỳ 2022-2027 và số cuộc họp tham dự trong năm 2025",
+      "box": [
+        265,
+        43,
+        1010,
+        530
+      ],
+      "cuts": [
+        265,
+        375,
+        580,
+        670,
+        740,
+        845,
+        940,
+        1010
+      ],
+      "fields": "label c1 c2 c3 c4 c5 c6",
+      "body": 120,
+      "anchor": [
+        265,
+        275,
+        "(?:Ông|Bà)"
+      ],
+      "rows": 5,
+      "percent_fields": [
+        "c3",
+        "c6"
+      ],
+      "headers": {
+        "c1": [
+          "Chức vụ tại FPT và các công ty khác"
+        ],
+        "c2": [
+          "Kinh nghiệm chuyên môn"
+        ],
+        "c3": [
+          "Tỷ lệ sở hữu"
+        ],
+        "c4": [
+          "Ngày bắt đầu là thành viên HĐQT"
+        ],
+        "c5": [
+          "Số buổi họp HĐQT tham dự"
+        ],
+        "c6": [
+          "Tỷ lệ tham dự họp"
+        ]
+      }
+    },
+    {
+      "page": 90,
+      "topic": "governance",
+      "title": "Chi tiết thù lao của từng thành viên HĐQT năm 2025",
+      "box": [
+        260,
+        155,
+        610,
+        350
+      ],
+      "cuts": [
+        265,
+        425,
+        530,
+        610
+      ],
+      "fields": "label c1 c2",
+      "body": 210,
+      "anchor": [
+        268,
+        278,
+        "(?:Ông|Bà)"
+      ],
+      "rows": 7,
+      "unit": "Đơn vị: VNĐ",
+      "headers": {
+        "c1": [
+          "Chức danh"
+        ],
+        "c2": [
+          "Thù lao"
+        ]
+      }
+    },
+    {
+      "page": 108,
+      "topic": "governance",
+      "title": "Chi tiết thù lao của BKS năm 2025",
+      "box": [
+        260,
+        113,
+        610,
+        270
+      ],
+      "cuts": [
+        265,
+        295,
+        430,
+        530,
+        610
+      ],
+      "fields": "code label c1 c2",
+      "body": 170,
+      "anchor": [
+        265,
+        315,
+        "(?:[1-3]|Tổng)"
+      ],
+      "rows": 4,
+      "unit": "Đơn vị: VNĐ",
+      "headers": {
+        "c1": [
+          "Ngân sách 2025"
+        ],
+        "c2": [
+          "Đã chi trả"
+        ]
+      }
+    }
+  ],
+  "kpi_captions": {
+    "137": [
+      [
+        "43,9%",
+        "Nhân sự dưới 30 tuổi"
+      ],
+      [
+        "53,2%",
+        "Cán bộ quản lý dưới 40 tuổi"
+      ]
+    ]
+  },
+  "reading_order": {}
+}

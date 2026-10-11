@@ -1,0 +1,322 @@
+{
+  "text": "ÀW ‹\\\n\nv2 :\n\n4\nk\n⁄ ⁄⁄ \\ `\n$\n\n+\n\nBÁO CÁO TÀI CHÍNH | ‹\nHỢP NHẤT KIẾM TOÁN\nNĂM 2025",
+  "chars": 54,
+  "words": 24,
+  "wordItems": [
+    {
+      "text": "ÀW",
+      "bbox": [
+        85,
+        71,
+        114,
+        111
+      ],
+      "conf": 0.486237,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "‹\\",
+      "bbox": [
+        297,
+        72,
+        352,
+        132
+      ],
+      "conf": 40.781403,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "v2",
+      "bbox": [
+        804,
+        0,
+        892,
+        176
+      ],
+      "conf": 59.339012,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": ":",
+      "bbox": [
+        967,
+        156,
+        970,
+        158
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "4",
+      "bbox": [
+        510,
+        84,
+        527,
+        118
+      ],
+      "conf": 66.361084,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "k",
+      "bbox": [
+        594,
+        190,
+        619,
+        222
+      ],
+      "conf": 65.271858,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "⁄",
+      "bbox": [
+        169,
+        790,
+        176,
+        798
+      ],
+      "conf": 74.979279,
+      "block": 3,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "⁄⁄",
+      "bbox": [
+        232,
+        769,
+        252,
+        784
+      ],
+      "conf": 67.210518,
+      "block": 3,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "\\",
+      "bbox": [
+        600,
+        795,
+        603,
+        799
+      ],
+      "conf": 0.0,
+      "block": 3,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "`",
+      "bbox": [
+        603,
+        765,
+        668,
+        827
+      ],
+      "conf": 29.998352,
+      "block": 3,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "$",
+      "bbox": [
+        566,
+        841,
+        589,
+        873
+      ],
+      "conf": 86.351646,
+      "block": 3,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "+",
+      "bbox": [
+        0,
+        824,
+        92,
+        920
+      ],
+      "conf": 49.244595,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        99,
+        2074,
+        256,
+        2147
+      ],
+      "conf": 88.380188,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        280,
+        2074,
+        442,
+        2147
+      ],
+      "conf": 96.756432,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        466,
+        2074,
+        574,
+        2146
+      ],
+      "conf": 96.77108,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        600,
+        2074,
+        842,
+        2181
+      ],
+      "conf": 96.772514,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "|",
+      "bbox": [
+        989,
+        1875,
+        1035,
+        2135
+      ],
+      "conf": 78.660973,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "‹",
+      "bbox": [
+        1059,
+        2083,
+        1087,
+        2113
+      ],
+      "conf": 0.0,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HỢP",
+      "bbox": [
+        99,
+        2188,
+        261,
+        2264
+      ],
+      "conf": 95.850746,
+      "block": 9,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NHẤT",
+      "bbox": [
+        287,
+        2180,
+        490,
+        2249
+      ],
+      "conf": 93.22403,
+      "block": 9,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "KIẾM",
+      "bbox": [
+        517,
+        2180,
+        689,
+        2249
+      ],
+      "conf": 45.236786,
+      "block": 9,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TOÁN",
+      "bbox": [
+        715,
+        2177,
+        924,
+        2250
+      ],
+      "conf": 96.069542,
+      "block": 9,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NĂM",
+      "bbox": [
+        99,
+        2283,
+        268,
+        2353
+      ],
+      "conf": 96.192757,
+      "block": 9,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        296,
+        2297,
+        482,
+        2354
+      ],
+      "conf": 96.192757,
+      "block": 9,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 63,
+  "lowConfRatio": 0.375,
+  "seconds": 0.791
+}

@@ -11,23 +11,110 @@
     "file_name": "FPT_2024_498332 (1).pdf"
   },
   "blocks": [
-    {"id": "p30-b1", "type": "heading", "text": "CƠ CẤU CỔ ĐÔNG THEO QUỐC TỊCH", "bbox": [428.72, 63.5, 734.47, 81.5]},
-    {"id": "p30-b2", "type": "heading", "text": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ", "bbox": [428.72, 550.78, 720.02, 568.78]},
-    {"id": "p30-b3", "type": "heading", "text": "TOP 10 CỔ ĐÔNG LỚN", "bbox": [1165.6, 63.5, 1351.63, 81.5]},
-    {"id": "p30-b4", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [1775.99, 558.54, 1860.48, 574.54]},
-    {"id": "p30-b5", "type": "paragraph", "text": "Đối tượng", "bbox": [438.78, 115.7, 518.63, 133.7]},
+    {"id": "p30-b1", "type": "heading", "text": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ", "bbox": [428.72, 550.78, 720.02, 568.78]},
+    {"id": "p30-b2", "type": "paragraph", "text": "Lần\nThời điểm", "bbox": [442.61, 598.12, 598.39, 616.12]},
+    {"id": "p30-b3", "type": "paragraph", "text": "Vốn điều lệ", "bbox": [701.1, 598.12, 792.73, 616.12]},
+    {"id": "p30-b4", "type": "paragraph", "text": "Lý do", "bbox": [835.28, 598.12, 878.71, 616.12]},
+    {"id": "p30-b5", "type": "paragraph", "text": "phát hành", "bbox": [515.16, 622.12, 598.4, 640.12]},
+    {"id": "p30-b6", "type": "paragraph", "text": "sau khi phát hành", "bbox": [646.01, 622.12, 792.77, 640.12]},
+    {"id": "p30-b7", "type": "paragraph", "text": "1", "bbox": [452.81, 655.83, 462.96, 673.83]},
+    {"id": "p30-b8", "type": "paragraph", "text": "04/2002", "bbox": [532.3, 655.83, 598.34, 673.83]},
+    {"id": "p30-b9", "type": "paragraph", "text": "20.000.000.000", "bbox": [665.7, 655.83, 792.65, 673.83]},
+    {"id": "p30-b10", "type": "paragraph", "text": "Cổ phần hóa.", "bbox": [835.28, 655.83, 941.26, 673.83]},
+    {"id": "p30-b11", "type": "paragraph", "text": "2", "bbox": [452.81, 689.54, 462.96, 707.54]},
+    {"id": "p30-b12", "type": "paragraph", "text": "04/2003", "bbox": [532.3, 689.54, 598.34, 707.54]},
+    {"id": "p30-b13", "type": "paragraph", "text": "30.000.000.000", "bbox": [665.7, 689.54, 792.65, 707.54]},
+    {"id": "p30-b14", "type": "paragraph", "text": "Tăng vốn từ KQKD năm 2002.", "bbox": [835.28, 689.54, 1068.07, 707.54]},
+    {"id": "p30-b15", "type": "paragraph", "text": "3", "bbox": [452.81, 723.26, 462.96, 741.26]},
+    {"id": "p30-b16", "type": "paragraph", "text": "10/2003", "bbox": [532.3, 723.26, 598.34, 741.26]},
+    {"id": "p30-b17", "type": "paragraph", "text": "150.000.000.000", "bbox": [655.55, 723.26, 792.65, 741.26]},
+    {"id": "p30-b18", "type": "paragraph", "text": "Phát hành thêm cổ phần.", "bbox": [835.28, 723.26, 1034.03, 741.26]},
+    {"id": "p30-b19", "type": "paragraph", "text": "4", "bbox": [452.81, 756.97, 462.96, 774.97]},
+    {"id": "p30-b20", "type": "paragraph", "text": "05/2004", "bbox": [532.3, 756.97, 598.34, 774.97]},
+    {"id": "p30-b21", "type": "paragraph", "text": "189.752.500.000", "bbox": [655.55, 756.97, 792.65, 774.97]},
+    {"id": "p30-b22", "type": "paragraph", "text": "Tăng vốn từ KQKD năm 2003.", "bbox": [835.28, 756.97, 1068.07, 774.97]},
+    {"id": "p30-b23", "type": "paragraph", "text": "5", "bbox": [452.81, 790.69, 462.96, 808.69]},
+    {"id": "p30-b24", "type": "paragraph", "text": "01/2005", "bbox": [532.3, 790.69, 598.34, 808.69]},
+    {"id": "p30-b25", "type": "paragraph", "text": "263.252.500.000", "bbox": [655.55, 790.69, 792.65, 808.69]},
+    {"id": "p30-b26", "type": "paragraph", "text": "Phát hành thêm cổ phần.", "bbox": [835.28, 790.69, 1034.03, 808.69]},
+    {"id": "p30-b27", "type": "paragraph", "text": "6", "bbox": [452.81, 824.4, 462.96, 842.4]},
+    {"id": "p30-b28", "type": "paragraph", "text": "08/2005", "bbox": [532.3, 824.4, 598.34, 842.4]},
+    {"id": "p30-b29", "type": "paragraph", "text": "362.084.900.000", "bbox": [655.55, 824.4, 792.65, 842.4]},
+    {"id": "p30-b30", "type": "paragraph", "text": "Tăng vốn từ KQKD năm 2004.", "bbox": [835.28, 824.4, 1068.07, 842.4]},
+    {"id": "p30-b31", "type": "paragraph", "text": "7", "bbox": [452.81, 858.11, 462.96, 876.11]},
+    {"id": "p30-b32", "type": "paragraph", "text": "06/2006", "bbox": [532.3, 858.11, 598.34, 876.11]},
+    {"id": "p30-b33", "type": "paragraph", "text": "547.292.000.000", "bbox": [655.55, 858.11, 792.65, 876.11]},
+    {"id": "p30-b34", "type": "paragraph", "text": "Tăng vốn từ KQKD năm 2005.", "bbox": [835.28, 858.11, 1068.07, 876.11]},
+    {"id": "p30-b35", "type": "paragraph", "text": "8", "bbox": [452.81, 891.83, 462.96, 909.83]},
+    {"id": "p30-b36", "type": "paragraph", "text": "10/2006", "bbox": [532.3, 891.83, 598.34, 909.83]},
+    {"id": "p30-b37", "type": "paragraph", "text": "608.102.300.000", "bbox": [655.55, 891.83, 792.65, 909.83]},
+    {"id": "p30-b38", "type": "paragraph", "text": "Tăng vốn từ bán cổ phần cho nhà đầu tư chiến lược năm 2006.", "bbox": [835.28, 891.83, 1328.31, 909.83]},
+    {"id": "p30-b39", "type": "paragraph", "text": "9", "bbox": [452.81, 925.54, 462.96, 943.54]},
+    {"id": "p30-b40", "type": "paragraph", "text": "06/2007", "bbox": [532.3, 925.54, 598.34, 943.54]},
+    {"id": "p30-b41", "type": "paragraph", "text": "912.153.440.000", "bbox": [655.55, 925.54, 792.65, 943.54]},
+    {
+      "id": "p30-b42",
+      "type": "paragraph",
+      "text": "Tăng vốn từ kết quả kinh doanh năm 2006 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 2:1.",
+      "bbox": [835.28, 925.54, 1556.2, 943.54]
+    },
+    {"id": "p30-b43", "type": "paragraph", "text": "10", "bbox": [447.74, 959.26, 468.04, 977.26]},
+    {"id": "p30-b44", "type": "paragraph", "text": "08/2007", "bbox": [532.3, 959.26, 598.34, 977.26]},
+    {"id": "p30-b45", "type": "paragraph", "text": "923.525.790.000", "bbox": [655.55, 959.26, 792.65, 977.26]},
+    {
+      "id": "p30-b46",
+      "type": "paragraph",
+      "text": "Tăng vốn thông qua phát hành cổ phần phổ thông thưởng cho CBNV có thành tích đóng góp trong năm 2006 và cổ phần",
+      "bbox": [835.28, 959.26, 1845.67, 977.26]
+    },
+    {"id": "p30-b47", "type": "heading", "text": "TOP 10 CỔ ĐÔNG LỚN", "bbox": [1165.6, 63.5, 1351.63, 81.5]},
+    {"id": "p30-b48", "type": "paragraph", "text": "STT\nCổ đông", "bbox": [1182.9, 110.01, 1316.05, 128.01]},
+    {"id": "p30-b49", "type": "paragraph", "text": "Số cổ phần", "bbox": [1625.54, 110.01, 1718.22, 128.01]},
+    {"id": "p30-b50", "type": "paragraph", "text": "Tỷ lệ", "bbox": [1808.62, 110.01, 1846.31, 128.01]},
+    {"id": "p30-b51", "type": "paragraph", "text": "1\nÔng Trương Gia Bình", "bbox": [1193.84, 143.87, 1409.98, 161.87]},
+    {"id": "p30-b52", "type": "paragraph", "text": "102.041.710", "bbox": [1616.59, 143.87, 1718.15, 161.87]},
+    {"id": "p30-b53", "type": "paragraph", "text": "6,94%", "bbox": [1794.49, 143.87, 1846.27, 161.87]},
+    {"id": "p30-b54", "type": "paragraph", "text": "2\nTổng Công ty Đầu tư và Kinh doanh", "bbox": [1193.84, 177.89, 1524.18, 195.89]},
+    {"id": "p30-b55", "type": "paragraph", "text": "83.987.511", "bbox": [1626.74, 177.89, 1718.15, 195.89]},
+    {"id": "p30-b56", "type": "paragraph", "text": "5,71%", "bbox": [1794.49, 177.89, 1846.27, 195.89]},
+    {"id": "p30-b57", "type": "paragraph", "text": "vốn Nhà nước - Công ty TNHH", "bbox": [1246.4, 201.88, 1484.44, 219.88]},
+    {"id": "p30-b58", "type": "paragraph", "text": "3\nCông ty TNHH QT", "bbox": [1193.84, 235.6, 1387.24, 253.6]},
+    {"id": "p30-b59", "type": "paragraph", "text": "54.303.923", "bbox": [1626.74, 235.6, 1718.15, 253.6]},
+    {"id": "p30-b60", "type": "paragraph", "text": "3,69%", "bbox": [1794.49, 235.6, 1846.27, 253.6]},
+    {"id": "p30-b61", "type": "paragraph", "text": "4\nÔng Bùi Quang Ngọc", "bbox": [1193.84, 269.62, 1413.71, 287.62]},
+    {"id": "p30-b62", "type": "paragraph", "text": "23.961.492", "bbox": [1626.74, 269.62, 1718.15, 287.62]},
+    {"id": "p30-b63", "type": "paragraph", "text": "1,63%", "bbox": [1794.49, 269.62, 1846.27, 287.62]},
+    {"id": "p30-b64", "type": "paragraph", "text": "5\nVOF Investment Limited", "bbox": [1193.84, 303.64, 1436.31, 321.64]},
+    {"id": "p30-b65", "type": "paragraph", "text": "22.791.922", "bbox": [1626.74, 303.64, 1718.15, 321.64]},
+    {"id": "p30-b66", "type": "paragraph", "text": "1,55%", "bbox": [1794.49, 303.64, 1846.27, 321.64]},
+    {"id": "p30-b67", "type": "paragraph", "text": "6\nBà Trương Thị Thanh Thanh", "bbox": [1193.84, 337.66, 1463.92, 355.66]},
+    {"id": "p30-b68", "type": "paragraph", "text": "21.822.466", "bbox": [1626.74, 337.66, 1718.15, 355.66]},
+    {"id": "p30-b69", "type": "paragraph", "text": "1,48%", "bbox": [1794.49, 337.66, 1846.27, 355.66]},
+    {"id": "p30-b70", "type": "paragraph", "text": "7\nSchroder International Selection Fund", "bbox": [1193.84, 371.68, 1546.14, 389.68]},
+    {"id": "p30-b71", "type": "paragraph", "text": "19.460.017", "bbox": [1626.74, 371.68, 1718.15, 389.68]},
+    {"id": "p30-b72", "type": "paragraph", "text": "1,32%", "bbox": [1794.49, 371.68, 1846.27, 389.68]},
+    {"id": "p30-b73", "type": "paragraph", "text": "8\nMacquarie Bank Limited", "bbox": [1193.84, 405.7, 1439.51, 423.7]},
+    {"id": "p30-b74", "type": "paragraph", "text": "17.107.235", "bbox": [1626.74, 405.7, 1718.15, 423.7]},
+    {"id": "p30-b75", "type": "paragraph", "text": "1,16%", "bbox": [1794.49, 405.7, 1846.27, 423.7]},
+    {"id": "p30-b76", "type": "paragraph", "text": "9\nNtasian Discovery Master Fund", "bbox": [1193.84, 439.72, 1493.69, 457.72]},
+    {"id": "p30-b77", "type": "paragraph", "text": "16.000.000", "bbox": [1626.74, 439.72, 1718.15, 457.72]},
+    {"id": "p30-b78", "type": "paragraph", "text": "1,09%", "bbox": [1794.49, 439.72, 1846.27, 457.72]},
+    {"id": "p30-b79", "type": "paragraph", "text": "10\nGovernment of Singapore", "bbox": [1188.77, 473.74, 1448.93, 491.74]},
+    {"id": "p30-b80", "type": "paragraph", "text": "15.162.887", "bbox": [1626.74, 473.74, 1718.15, 491.74]},
+    {"id": "p30-b81", "type": "paragraph", "text": "1,03%", "bbox": [1794.49, 473.74, 1846.27, 491.74]},
+    {"id": "p30-b82", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [1775.99, 558.54, 1860.48, 574.54]},
     {
       "id": "p30-t1",
       "type": "table",
       "title": "CƠ CẤU CỔ ĐÔNG THEO QUỐC TỊCH",
       "continued": false,
-      "bbox": [438.78, 115.7, 1089.04, 425.27],
+      "bbox": [428.72, 63.5, 1089.04, 425.27],
       "unit_text": null,
       "columns": [
         {"key": "c1", "header_lines": ["Số lượng", "cổ đông"], "bbox": [565.49, 115.7, 642.91, 157.7]},
-        {"key": "c2", "header_lines": ["Tỷ lệ /Tổng", "số cổ đông"], "bbox": [683.35, 115.7, 774.93, 157.7]},
-        {"key": "c3", "header_lines": ["Số lượng", "cổ phiếu sở hữu"], "bbox": [822.02, 115.7, 953.13, 157.7]},
-        {"key": "c4", "header_lines": ["Tỷ lệ/Tổng", "số cổ phiếu"], "bbox": [993.63, 115.7, 1089.04, 157.7]}
+        {"key": "c2", "header_lines": ["Tỷ lệ /Tổng", "số cổ đông cổ phiếu"], "bbox": [683.35, 115.7, 893.09, 157.7]},
+        {"key": "c3", "header_lines": ["Số lượng", "sở hữu số"], "bbox": [880.09, 115.7, 1013.58, 157.7]},
+        {"key": "c4", "header_lines": ["Tỷ lệ/Tổng", "cổ phiếu"], "bbox": [1003.77, 115.7, 1089.04, 157.7]}
       ],
       "rows": [
         {
@@ -123,270 +210,18 @@
         }
       ]
     },
-    {"id": "p30-b7", "type": "paragraph", "text": "Lần", "bbox": [442.61, 598.12, 473.17, 616.12]},
-    {"id": "p30-b8", "type": "paragraph", "text": "Lý do", "bbox": [835.28, 598.12, 878.71, 616.12]},
-    {
-      "id": "p30-t3",
-      "type": "table",
-      "title": "TÌNH HÌNH THAY ĐỔI VỐN ĐIỀU LỆ",
-      "continued": false,
-      "bbox": [442.61, 598.12, 1845.67, 1001.25],
-      "unit_text": "Đơn vị: VNĐ",
-      "columns": [
-        {"key": "c1", "header_lines": ["Thời điểm", "phát hành"], "bbox": [515.16, 598.12, 598.4, 640.12]},
-        {"key": "c2", "header_lines": ["Vốn điều lệ", "sau khi phát hành"], "bbox": [646.01, 598.12, 792.77, 640.12]}
-      ],
-      "rows": [
-        {
-          "id": "r1",
-          "code": "1",
-          "label_raw": "Cổ phần hóa.",
-          "note": null,
-          "bbox": [452.81, 655.83, 941.26, 673.83],
-          "cells": {
-            "c1": {"raw": "04/2002", "bbox": [532.3, 655.83, 598.34, 673.83]},
-            "c2": {"raw": "20.000.000.000", "bbox": [665.7, 655.83, 792.65, 673.83]}
-          }
-        },
-        {
-          "id": "r2",
-          "code": "2",
-          "label_raw": "Tăng vốn từ KQKD năm 2002.",
-          "note": null,
-          "bbox": [452.81, 689.54, 1068.07, 707.54],
-          "cells": {
-            "c1": {"raw": "04/2003", "bbox": [532.3, 689.54, 598.34, 707.54]},
-            "c2": {"raw": "30.000.000.000", "bbox": [665.7, 689.54, 792.65, 707.54]}
-          }
-        },
-        {
-          "id": "r3",
-          "code": "3",
-          "label_raw": "Phát hành thêm cổ phần.",
-          "note": null,
-          "bbox": [452.81, 723.26, 1034.03, 741.26],
-          "cells": {
-            "c1": {"raw": "10/2003", "bbox": [532.3, 723.26, 598.34, 741.26]},
-            "c2": {"raw": "150.000.000.000", "bbox": [655.55, 723.26, 792.65, 741.26]}
-          }
-        },
-        {
-          "id": "r4",
-          "code": "4",
-          "label_raw": "Tăng vốn từ KQKD năm 2003.",
-          "note": null,
-          "bbox": [452.81, 756.97, 1068.07, 774.97],
-          "cells": {
-            "c1": {"raw": "05/2004", "bbox": [532.3, 756.97, 598.34, 774.97]},
-            "c2": {"raw": "189.752.500.000", "bbox": [655.55, 756.97, 792.65, 774.97]}
-          }
-        },
-        {
-          "id": "r5",
-          "code": "5",
-          "label_raw": "Phát hành thêm cổ phần.",
-          "note": null,
-          "bbox": [452.81, 790.69, 1034.03, 808.69],
-          "cells": {
-            "c1": {"raw": "01/2005", "bbox": [532.3, 790.69, 598.34, 808.69]},
-            "c2": {"raw": "263.252.500.000", "bbox": [655.55, 790.69, 792.65, 808.69]}
-          }
-        },
-        {
-          "id": "r6",
-          "code": "6",
-          "label_raw": "Tăng vốn từ KQKD năm 2004.",
-          "note": null,
-          "bbox": [452.81, 824.4, 1068.07, 842.4],
-          "cells": {
-            "c1": {"raw": "08/2005", "bbox": [532.3, 824.4, 598.34, 842.4]},
-            "c2": {"raw": "362.084.900.000", "bbox": [655.55, 824.4, 792.65, 842.4]}
-          }
-        },
-        {
-          "id": "r7",
-          "code": "7",
-          "label_raw": "Tăng vốn từ KQKD năm 2005.",
-          "note": null,
-          "bbox": [452.81, 858.11, 1068.07, 876.11],
-          "cells": {
-            "c1": {"raw": "06/2006", "bbox": [532.3, 858.11, 598.34, 876.11]},
-            "c2": {"raw": "547.292.000.000", "bbox": [655.55, 858.11, 792.65, 876.11]}
-          }
-        },
-        {
-          "id": "r8",
-          "code": "8",
-          "label_raw": "Tăng vốn từ bán cổ phần cho nhà đầu tư chiến lược năm 2006.",
-          "note": null,
-          "bbox": [452.81, 891.83, 1328.31, 909.83],
-          "cells": {
-            "c1": {"raw": "10/2006", "bbox": [532.3, 891.83, 598.34, 909.83]},
-            "c2": {"raw": "608.102.300.000", "bbox": [655.55, 891.83, 792.65, 909.83]}
-          }
-        },
-        {
-          "id": "r9",
-          "code": "9",
-          "label_raw": "Tăng vốn từ kết quả kinh doanh năm 2006 thông qua trả cổ tức bằng cổ phiếu theo tỉ lệ 2:1.",
-          "note": null,
-          "bbox": [452.81, 925.54, 1556.2, 943.54],
-          "cells": {
-            "c1": {"raw": "06/2007", "bbox": [532.3, 925.54, 598.34, 943.54]},
-            "c2": {"raw": "912.153.440.000", "bbox": [655.55, 925.54, 792.65, 943.54]}
-          }
-        },
-        {
-          "id": "r10",
-          "code": "10",
-          "label_raw": "Tăng vốn thông qua phát hành cổ phần phổ thông thưởng cho CBNV có thành tích đóng góp trong năm 2006 và cổ phần phổ thông cho CBNV.",
-          "note": null,
-          "bbox": [447.74, 959.26, 1845.67, 1001.25],
-          "cells": {
-            "c1": {"raw": "08/2007", "bbox": [532.3, 959.26, 598.34, 977.26]},
-            "c2": {"raw": "923.525.790.000", "bbox": [655.55, 959.26, 792.65, 977.26]}
-          }
-        }
-      ],
-      "logical_table_id": "fpt-2024-charter-capital"
-    },
-    {"id": "p30-b10", "type": "paragraph", "text": "STT", "bbox": [1182.9, 110.01, 1215.28, 128.01]},
-    {"id": "p30-b11", "type": "paragraph", "text": "Cổ đông", "bbox": [1246.4, 110.01, 1316.05, 128.01]},
-    {
-      "id": "p30-t2",
-      "type": "table",
-      "title": "TOP 10 CỔ ĐÔNG LỚN",
-      "continued": false,
-      "bbox": [1182.9, 110.01, 1846.31, 491.74],
-      "unit_text": null,
-      "columns": [
-        {"key": "c1", "header_lines": ["Số cổ phần"], "bbox": [1625.54, 110.01, 1718.22, 128.01]},
-        {"key": "c2", "header_lines": ["Tỷ lệ"], "bbox": [1808.62, 110.01, 1846.31, 128.01]}
-      ],
-      "rows": [
-        {
-          "id": "r1",
-          "code": "1",
-          "label_raw": "Ông Trương Gia Bình",
-          "note": null,
-          "bbox": [1193.84, 143.87, 1846.27, 161.87],
-          "cells": {
-            "c1": {"raw": "102.041.710", "bbox": [1616.59, 143.87, 1718.15, 161.87]},
-            "c2": {"raw": "6,94%", "bbox": [1794.49, 143.87, 1846.27, 161.87]}
-          }
-        },
-        {
-          "id": "r2",
-          "code": "2",
-          "label_raw": "Tổng Công ty Đầu tư và Kinh doanh vốn Nhà nước - Công ty TNHH",
-          "note": null,
-          "bbox": [1193.84, 177.89, 1846.27, 219.88],
-          "cells": {
-            "c1": {"raw": "83.987.511", "bbox": [1626.74, 177.89, 1718.15, 195.89]},
-            "c2": {"raw": "5,71%", "bbox": [1794.49, 177.89, 1846.27, 195.89]}
-          }
-        },
-        {
-          "id": "r3",
-          "code": "3",
-          "label_raw": "Công ty TNHH QT",
-          "note": null,
-          "bbox": [1193.84, 235.6, 1846.27, 253.6],
-          "cells": {
-            "c1": {"raw": "54.303.923", "bbox": [1626.74, 235.6, 1718.15, 253.6]},
-            "c2": {"raw": "3,69%", "bbox": [1794.49, 235.6, 1846.27, 253.6]}
-          }
-        },
-        {
-          "id": "r4",
-          "code": "4",
-          "label_raw": "Ông Bùi Quang Ngọc",
-          "note": null,
-          "bbox": [1193.84, 269.62, 1846.27, 287.62],
-          "cells": {
-            "c1": {"raw": "23.961.492", "bbox": [1626.74, 269.62, 1718.15, 287.62]},
-            "c2": {"raw": "1,63%", "bbox": [1794.49, 269.62, 1846.27, 287.62]}
-          }
-        },
-        {
-          "id": "r5",
-          "code": "5",
-          "label_raw": "VOF Investment Limited",
-          "note": null,
-          "bbox": [1193.84, 303.64, 1846.27, 321.64],
-          "cells": {
-            "c1": {"raw": "22.791.922", "bbox": [1626.74, 303.64, 1718.15, 321.64]},
-            "c2": {"raw": "1,55%", "bbox": [1794.49, 303.64, 1846.27, 321.64]}
-          }
-        },
-        {
-          "id": "r6",
-          "code": "6",
-          "label_raw": "Bà Trương Thị Thanh Thanh",
-          "note": null,
-          "bbox": [1193.84, 337.66, 1846.27, 355.66],
-          "cells": {
-            "c1": {"raw": "21.822.466", "bbox": [1626.74, 337.66, 1718.15, 355.66]},
-            "c2": {"raw": "1,48%", "bbox": [1794.49, 337.66, 1846.27, 355.66]}
-          }
-        },
-        {
-          "id": "r7",
-          "code": "7",
-          "label_raw": "Schroder International Selection Fund",
-          "note": null,
-          "bbox": [1193.84, 371.68, 1846.27, 389.68],
-          "cells": {
-            "c1": {"raw": "19.460.017", "bbox": [1626.74, 371.68, 1718.15, 389.68]},
-            "c2": {"raw": "1,32%", "bbox": [1794.49, 371.68, 1846.27, 389.68]}
-          }
-        },
-        {
-          "id": "r8",
-          "code": "8",
-          "label_raw": "Macquarie Bank Limited",
-          "note": null,
-          "bbox": [1193.84, 405.7, 1846.27, 423.7],
-          "cells": {
-            "c1": {"raw": "17.107.235", "bbox": [1626.74, 405.7, 1718.15, 423.7]},
-            "c2": {"raw": "1,16%", "bbox": [1794.49, 405.7, 1846.27, 423.7]}
-          }
-        },
-        {
-          "id": "r9",
-          "code": "9",
-          "label_raw": "Ntasian Discovery Master Fund",
-          "note": null,
-          "bbox": [1193.84, 439.72, 1846.27, 457.72],
-          "cells": {
-            "c1": {"raw": "16.000.000", "bbox": [1626.74, 439.72, 1718.15, 457.72]},
-            "c2": {"raw": "1,09%", "bbox": [1794.49, 439.72, 1846.27, 457.72]}
-          }
-        },
-        {
-          "id": "r10",
-          "code": "10",
-          "label_raw": "Government of Singapore",
-          "note": null,
-          "bbox": [1188.77, 473.74, 1846.27, 491.74],
-          "cells": {
-            "c1": {"raw": "15.162.887", "bbox": [1626.74, 473.74, 1718.15, 491.74]},
-            "c2": {"raw": "1,03%", "bbox": [1794.49, 473.74, 1846.27, 491.74]}
-          }
-        }
-      ]
-    },
-    {"id": "p30-b13", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
-    {"id": "p30-b14", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
-    {"id": "p30-b15", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
-    {"id": "p30-b16", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
-    {"id": "p30-b17", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
-    {"id": "p30-b18", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
-    {"id": "p30-b19", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
-    {"id": "p30-b20", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
-    {"id": "p30-b21", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
-    {"id": "p30-b22", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
-    {"id": "p30-b23", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
-    {"id": "p30-b24", "type": "furniture", "text": "28", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+    {"id": "p30-b84", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p30-b85", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
+    {"id": "p30-b86", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
+    {"id": "p30-b87", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
+    {"id": "p30-b88", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
+    {"id": "p30-b89", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
+    {"id": "p30-b90", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
+    {"id": "p30-b91", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
+    {"id": "p30-b92", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
+    {"id": "p30-b93", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
+    {"id": "p30-b94", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
+    {"id": "p30-b95", "type": "paragraph", "text": "phổ thông cho CBNV.", "bbox": [835.28, 983.25, 1005.01, 1001.25]},
+    {"id": "p30-b96", "type": "furniture", "text": "28", "bbox": [293.0, 988.53, 318.8, 1011.4]}
   ]
 }

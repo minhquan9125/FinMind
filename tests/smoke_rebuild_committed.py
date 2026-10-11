@@ -74,6 +74,8 @@ def _output_digests(output_dir: Path) -> dict[str, str]:
 
 
 def main() -> int:
+    if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--update", action="store_true",
                         help="Ghi lại checksum sau khi đã duyệt thay đổi IR")

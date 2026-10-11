@@ -32,10 +32,10 @@ from financialContent import (compact_page_ranges, expand_page_ranges,
                               financial_index, financial_page_class,
                               statement_tables)
 from render import page_name
-from reportContent import (FPT_2024_SHA256, annual_content_index, annual_kpi,
+from reportContent import (annual_content_index, annual_kpi,
                            annual_table_topics,
                            annual_topics, annual_topics_from_header,
-                           reviewed_annual_tables, reviewed_kpis, section_from_sidebar,
+                           load_annual_override, reviewed_annual_tables, reviewed_kpis, section_from_sidebar,
                            section_index)
 from util import hash_file, save_json
 from validate_ir import SCHEMA, validate_page
@@ -600,18 +600,15 @@ def _promote_reviewed_kpis(blocks: list[dict[str, Any]],
 
 
 def _order_reviewed_multicolumn_page(blocks: list[dict[str, Any]],
-                                     page_number: int, digest: str) -> list[dict[str, Any]]:
-    """Read the independent panels on three visually inspected FPT pages."""
-    if digest != FPT_2024_SHA256 or page_number not in (45, 98, 133):
+                                     page_number: int,
+                                     override: dict[str, Any] | None) -> list[dict[str, Any]]:
+    """Apply an explicitly selected reading-order override."""
+    spec = override.get("reading_order", {}).get(str(page_number)) if override else None
+    if spec is None:
         return blocks
     furniture = [block for block in blocks if block["type"] == "furniture"]
     content = [block for block in blocks if block["type"] != "furniture"]
-    if page_number == 45:
-        boundaries, top_cutoff = (1100,), 0
-    elif page_number == 98:
-        boundaries, top_cutoff = (640, 1040, 1440), 180
-    else:
-        boundaries, top_cutoff = (900,), 160
+    boundaries, top_cutoff = spec["boundaries"], spec["top_cutoff"]
     top = [block for block in content if block["bbox"] and block["bbox"][1] < top_cutoff]
     panels = [block for block in content if block not in top]
     top.sort(key=lambda block: (block["bbox"][1], block["bbox"][0]))
@@ -625,12 +622,13 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
                  page: pdfplumber.page.Page, work_dir: Path,
                  tables_override: list[dict[str, Any]] | None = None,
                  page_class_override: str | None = None,
-                 layout_exclude_boxes: list[list[float]] | None = None) -> PageIR:
+                 layout_exclude_boxes: list[list[float]] | None = None,
+                 annual_override: dict[str, Any] | None = None) -> PageIR:
     """Dựng một trang IR: chọn lớp chữ/OCR, ghép bảng, gán loại và nguồn."""
     number = record["page"]
     merged_votes = 0
     header_blocks: list[dict[str, Any]] = []
-    tables = (reviewed_annual_tables(page, digest, header_blocks)
+    tables = (reviewed_annual_tables(page, annual_override, header_blocks)
               if record["route"] == "text_layer" else []) if tables_override is None else tables_override
     if record["route"] == "text_layer":
         # PDF có chữ sẵn: bbox tính theo point của trang PDF.
@@ -663,7 +661,7 @@ def make_page_ir(record: dict[str, Any], pdf: Path, digest: str,
             blocks = _text_blocks(record["text"], number)
             page_width, page_height, unit = page.width, page.height, "pt"
     if record["route"] == "text_layer":
-        blocks = _order_reviewed_multicolumn_page(blocks, number, digest)
+        blocks = _order_reviewed_multicolumn_page(blocks, number, annual_override)
     content = []
     remaining_headers = header_blocks.copy()
     for table in sorted(tables, key=lambda block: (
@@ -800,7 +798,8 @@ def audit_and_promote(documents: list[dict[str, Any]]) -> dict[str, Any]:
 # 7. Điều phối cả tài liệu: đọc pages.jsonl, dựng/validate từng trang,
 # tách hai nhánh, lọc furniture chung rồi ghi file trang và index.
 def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
-                      template_path: Path | None = None) -> dict[str, Any]:
+                      template_path: Path | None = None,
+                      overrides_path: Path | None = None) -> dict[str, Any]:
     """Ghi content/ cho thường niên và table/ cho phần BCTC kiểm toán."""
     pdf, pages_jsonl = pdf.resolve(), pages_jsonl.resolve()
     schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
@@ -813,6 +812,7 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
     if len(numbers) != len(set(numbers)):
         raise ValueError("pages.jsonl có số trang bị trùng")
     digest = hash_file(pdf)
+    annual_override = load_annual_override(overrides_path, digest)
     documents: list[dict[str, Any]] = []
     financial_documents: list[dict[str, Any]] = []
     furniture_reference_pages: list[dict[str, Any]] = []
@@ -835,6 +835,11 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
                                             source_page.height * .2)).extract_text() or ""
             financial_class = financial_page_class(number, section, digest,
                                                     main_text, header_text)
+            if financial_class is None and section_evidence is None and record["route"] == "text_layer":
+                # Standalone statements may print their title in the left margin.
+                full_text = source_page.extract_text() or ""
+                financial_class = financial_page_class(number, section, digest,
+                                                        full_text, header_text)
             if financial_class is not None:
                 # Nhánh BCTC: tách bảng chính khi đủ dấu cột/mã dòng.
                 financial_tables, exclude_boxes = (statement_tables(source_page, digest, financial_class)
@@ -848,7 +853,7 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
                 if errors:
                     raise ValueError(f"IR BCTC trang {number} sai schema: {'; '.join(errors[:5])}")
                 financial_documents.append(financial_ir)
-            topics = annual_topics(number, section, digest)
+            topics = annual_topics(number, section, annual_override)
             if not topics and financial_class is None:
                 header_lines = header_text.splitlines()
                 topics = annual_topics_from_header(header_lines[0] if header_lines else "")
@@ -867,10 +872,11 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
             # KPI chưa kiểm chứng vẫn ở danh sách review, không tự đưa vào IR.
             page_topics[number] = topics
             observed_sections.append((number, section))
-            page_kpis = reviewed_kpis(source_page, digest) if section and section != "financial" \
+            page_kpis = reviewed_kpis(source_page, annual_override) if section and section != "financial" \
                 and record["route"] == "text_layer" else []
             page_kpis = [item for item in page_kpis if annual_kpi(item)]
-            ir = make_page_ir(record, pdf, digest, source_page, work_dir)
+            ir = make_page_ir(record, pdf, digest, source_page, work_dir,
+                              annual_override=annual_override)
             _promote_reviewed_kpis(ir["blocks"], page_kpis)
             kpi_review.extend({"page": number, "section": section, **candidate}
                               for candidate in page_kpis)
@@ -928,7 +934,7 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
                "pageRanges": compact_page_ranges([ir["page"] for ir in documents]),
                "filePattern": "p-{page:03d}.ir.json"}
     sections = section_index(observed_sections, digest)
-    sections.update(annual_content_index(documents, page_topics, digest))
+    sections.update(annual_content_index(documents, page_topics, annual_override))
     save_json(content_dir / "sections.json", sections)
     save_json(content_dir / "kpi_review.json",
               {"document_sha256": digest,
@@ -938,6 +944,7 @@ def build_document_ir(pdf: Path, pages_jsonl: Path, output_dir: Path,
     save_json(content_dir / "index.json", summary)
     manifest: dict[str, Any] = {
         "pdf": str(pdf), "document_sha256": digest,
+        "overrides_applied": [annual_override["id"]] if annual_override else [],
         "content": {"directory": "content", "index": "content/index.json",
                     "pages": len(documents)},
     }
@@ -967,12 +974,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", type=Path)
     parser.add_argument("--template", type=Path,
                         help="Template luật BCTC; mặc định templates/financial-template-lines.json")
+    parser.add_argument("--overrides", type=Path,
+                        help="File override đã rà soát cho đúng PDF; mặc định không dùng")
     args = parser.parse_args(argv)
     pdf = args.pdf.resolve()
     pages_jsonl = args.pages_jsonl or Path("ocr_router_out") / pdf.stem / "pages.jsonl"
     output_dir = args.out or pages_jsonl.parent / "annual_ir"
     try:
-        summary = build_document_ir(pdf, pages_jsonl, output_dir, args.template)
+        summary = build_document_ir(pdf, pages_jsonl, output_dir, args.template, args.overrides)
     except (OSError, ValueError, KeyError, TypeError) as exc:
         parser.exit(1, f"✖ {exc}\n")
     print(f"OK: {summary['pages']} trang IR thường niên; blocks: {summary['blockTypes']}")

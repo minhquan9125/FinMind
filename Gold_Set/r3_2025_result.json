@@ -1,0 +1,5402 @@
+{
+  "method": "keyed_gold_comparison",
+  "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+  "xlsx_gold": {
+    "reference_file": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\Gold_Set\\gold_fpt_2025.xlsx",
+    "sheet": "gold_fpt_2025",
+    "reference_binding": "pdf_via_ir_index",
+    "items_total": 278,
+    "matched": 278,
+    "agreement_rate": 1.0,
+    "human_approved": true,
+    "review_method": "self_checked",
+    "review_issues": [],
+    "gold_accuracy": 1.0,
+    "cells_correct": 278,
+    "cells_wrong_value": 0,
+    "cells_missing": 0,
+    "cells_extra": 0,
+    "status_counts": {
+      "match": 278,
+      "mismatch": 0,
+      "missing": 0,
+      "wrong_page": 0,
+      "wrong_period": 0,
+      "period_unresolved": 0,
+      "ambiguous": 0,
+      "unresolved": 0,
+      "invalid_reference": 0
+    },
+    "unreferenced_ir_cells": 0,
+    "unreferenced_ir_items": [],
+    "period_unresolved_ir_cells": 0,
+    "issues": [],
+    "per_item": [
+      {
+        "csv_line": 2,
+        "statement": "balance_sheet",
+        "code": "100",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "58.137.438.254.908",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "58.137.438.254.908",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 3,
+        "statement": "balance_sheet",
+        "code": "100",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "45.535.942.846.453",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "45.535.942.846.453",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 4,
+        "statement": "balance_sheet",
+        "code": "110",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "10.522.105.729.992",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "10.522.105.729.992",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 5,
+        "statement": "balance_sheet",
+        "code": "110",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "9.315.440.438.884",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "9.315.440.438.884",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 6,
+        "statement": "balance_sheet",
+        "code": "111",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "8.084.751.080.186",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "8.084.751.080.186",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 7,
+        "statement": "balance_sheet",
+        "code": "111",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "6.725.619.929.289",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "6.725.619.929.289",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 8,
+        "statement": "balance_sheet",
+        "code": "112",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "2.437.354.649.806",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "2.437.354.649.806",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 9,
+        "statement": "balance_sheet",
+        "code": "112",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "2.589.820.509.595",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "2.589.820.509.595",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 10,
+        "statement": "balance_sheet",
+        "code": "120",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "29.630.986.737.440",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "29.630.986.737.440",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 11,
+        "statement": "balance_sheet",
+        "code": "120",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "21.785.213.686.808",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "21.785.213.686.808",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 12,
+        "statement": "balance_sheet",
+        "code": "123",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "29.630.986.737.440",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "29.630.986.737.440",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 13,
+        "statement": "balance_sheet",
+        "code": "123",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "21.785.213.686.808",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "21.785.213.686.808",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 14,
+        "statement": "balance_sheet",
+        "code": "130",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "14.402.017.450.105",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "14.402.017.450.105",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 15,
+        "statement": "balance_sheet",
+        "code": "130",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "11.381.523.992.803",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "11.381.523.992.803",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 16,
+        "statement": "balance_sheet",
+        "code": "131",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "12.734.600.596.550",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "12.734.600.596.550",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 17,
+        "statement": "balance_sheet",
+        "code": "131",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "10.537.019.113.380",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "10.537.019.113.380",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 18,
+        "statement": "balance_sheet",
+        "code": "132",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "952.737.932.722",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "952.737.932.722",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 19,
+        "statement": "balance_sheet",
+        "code": "132",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "610.379.845.664",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "610.379.845.664",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 20,
+        "statement": "balance_sheet",
+        "code": "134",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "200.405.269.967",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "200.405.269.967",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 21,
+        "statement": "balance_sheet",
+        "code": "134",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "136.097.256.629",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "136.097.256.629",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 22,
+        "statement": "balance_sheet",
+        "code": "135",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "9.195.910.819",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "9.195.910.819",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 23,
+        "statement": "balance_sheet",
+        "code": "135",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "9.808.117.590",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "9.808.117.590",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 24,
+        "statement": "balance_sheet",
+        "code": "136",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "1.091.244.484.321",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "1.091.244.484.321",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 25,
+        "statement": "balance_sheet",
+        "code": "136",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "707.751.585.399",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "707.751.585.399",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 26,
+        "statement": "balance_sheet",
+        "code": "137",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "(586.166.744.274)",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "(586.166.744.274)",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 27,
+        "statement": "balance_sheet",
+        "code": "137",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "(619.531.925.859)",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "(619.531.925.859)",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 28,
+        "statement": "balance_sheet",
+        "code": "140",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "2.193.769.802.339",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "2.193.769.802.339",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 29,
+        "statement": "balance_sheet",
+        "code": "140",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "1.856.756.949.030",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "1.856.756.949.030",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 30,
+        "statement": "balance_sheet",
+        "code": "141",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "2.277.393.610.177",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "2.277.393.610.177",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 31,
+        "statement": "balance_sheet",
+        "code": "141",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "1.990.224.486.513",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "1.990.224.486.513",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 32,
+        "statement": "balance_sheet",
+        "code": "149",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "(83.623.807.838)",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "(83.623.807.838)",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 33,
+        "statement": "balance_sheet",
+        "code": "149",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "(133.467.537.483)",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "(133.467.537.483)",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 34,
+        "statement": "balance_sheet",
+        "code": "150",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "1.388.558.535.032",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "1.388.558.535.032",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 35,
+        "statement": "balance_sheet",
+        "code": "150",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "1.197.007.778.928",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "1.197.007.778.928",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 36,
+        "statement": "balance_sheet",
+        "code": "151",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "641.974.035.769",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "641.974.035.769",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 37,
+        "statement": "balance_sheet",
+        "code": "151",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "479.707.218.558",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "479.707.218.558",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 38,
+        "statement": "balance_sheet",
+        "code": "152",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "609.517.465.104",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "609.517.465.104",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 39,
+        "statement": "balance_sheet",
+        "code": "152",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "648.697.117.785",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "648.697.117.785",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 40,
+        "statement": "balance_sheet",
+        "code": "153",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "137.067.034.159",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "137.067.034.159",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 41,
+        "statement": "balance_sheet",
+        "code": "153",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 165,
+        "printed_page": "164",
+        "reference_raw": "68.603.442.585",
+        "ir_candidates": [
+          {
+            "page": 165,
+            "raw": "68.603.442.585",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 42,
+        "statement": "balance_sheet",
+        "code": "200",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "30.004.553.379.717",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "30.004.553.379.717",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 43,
+        "statement": "balance_sheet",
+        "code": "200",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "26.464.052.832.167",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "26.464.052.832.167",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 44,
+        "statement": "balance_sheet",
+        "code": "210",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "564.342.065.270",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "564.342.065.270",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 45,
+        "statement": "balance_sheet",
+        "code": "210",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "331.646.166.008",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "331.646.166.008",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 46,
+        "statement": "balance_sheet",
+        "code": "215",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "5.278.733.014",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "5.278.733.014",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 47,
+        "statement": "balance_sheet",
+        "code": "215",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "2.509.722.351",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "2.509.722.351",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 48,
+        "statement": "balance_sheet",
+        "code": "216",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "611.435.814.893",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "611.435.814.893",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 49,
+        "statement": "balance_sheet",
+        "code": "216",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "381.508.926.294",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "381.508.926.294",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 50,
+        "statement": "balance_sheet",
+        "code": "219",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(52.372.482.637)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(52.372.482.637)",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 51,
+        "statement": "balance_sheet",
+        "code": "219",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(52.372.482.637)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(52.372.482.637)",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 52,
+        "statement": "balance_sheet",
+        "code": "220",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "17.288.541.848.861",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "17.288.541.848.861",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 53,
+        "statement": "balance_sheet",
+        "code": "220",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "14.816.131.186.204",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "14.816.131.186.204",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 54,
+        "statement": "balance_sheet",
+        "code": "221",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "15.359.168.484.059",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "15.359.168.484.059",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 55,
+        "statement": "balance_sheet",
+        "code": "221",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "12.774.567.961.718",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "12.774.567.961.718",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 56,
+        "statement": "balance_sheet",
+        "code": "222",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "29.122.042.372.002",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "29.122.042.372.002",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 57,
+        "statement": "balance_sheet",
+        "code": "222",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "24.457.733.666.511",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "24.457.733.666.511",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 58,
+        "statement": "balance_sheet",
+        "code": "223",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(13.762.873.887.943)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(13.762.873.887.943)",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 59,
+        "statement": "balance_sheet",
+        "code": "223",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(11.683.165.704.793)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(11.683.165.704.793)",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 60,
+        "statement": "balance_sheet",
+        "code": "224",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "1.277.212.606",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "1.277.212.606",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 61,
+        "statement": "balance_sheet",
+        "code": "224",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "2.042.708.364",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "2.042.708.364",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 62,
+        "statement": "balance_sheet",
+        "code": "225",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "5.871.006.196",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "5.871.006.196",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 63,
+        "statement": "balance_sheet",
+        "code": "225",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "5.716.034.788",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "5.716.034.788",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 64,
+        "statement": "balance_sheet",
+        "code": "226",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(4.593.793.590)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(4.593.793.590)",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 65,
+        "statement": "balance_sheet",
+        "code": "226",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(3.673.326.424)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(3.673.326.424)",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 66,
+        "statement": "balance_sheet",
+        "code": "227",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "1.928.096.152.196",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "1.928.096.152.196",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 67,
+        "statement": "balance_sheet",
+        "code": "227",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "2.039.520.516.122",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "2.039.520.516.122",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 68,
+        "statement": "balance_sheet",
+        "code": "228",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "3.868.883.110.367",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "3.868.883.110.367",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 69,
+        "statement": "balance_sheet",
+        "code": "228",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "3.656.302.027.788",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "3.656.302.027.788",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 70,
+        "statement": "balance_sheet",
+        "code": "229",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(1.940.786.958.171)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(1.940.786.958.171)",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 71,
+        "statement": "balance_sheet",
+        "code": "229",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(1.616.781.511.666)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(1.616.781.511.666)",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 72,
+        "statement": "balance_sheet",
+        "code": "240",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "1.605.078.004.898",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "1.605.078.004.898",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 73,
+        "statement": "balance_sheet",
+        "code": "240",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "2.559.766.724.411",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "2.559.766.724.411",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 74,
+        "statement": "balance_sheet",
+        "code": "242",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "1.605.078.004.898",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "1.605.078.004.898",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 75,
+        "statement": "balance_sheet",
+        "code": "242",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "2.559.766.724.411",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "2.559.766.724.411",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 76,
+        "statement": "balance_sheet",
+        "code": "250",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "4.737.863.994.182",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "4.737.863.994.182",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 77,
+        "statement": "balance_sheet",
+        "code": "250",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "3.318.095.237.260",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "3.318.095.237.260",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 78,
+        "statement": "balance_sheet",
+        "code": "252",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "3.581.128.517.425",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "3.581.128.517.425",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 79,
+        "statement": "balance_sheet",
+        "code": "252",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "2.281.222.436.752",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "2.281.222.436.752",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 80,
+        "statement": "balance_sheet",
+        "code": "253",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "3.823.762.975.906",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "3.823.762.975.906",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 81,
+        "statement": "balance_sheet",
+        "code": "253",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "3.393.737.969.842",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "3.393.737.969.842",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 82,
+        "statement": "balance_sheet",
+        "code": "254",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(2.667.027.499.149)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(2.667.027.499.149)",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 83,
+        "statement": "balance_sheet",
+        "code": "254",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "(2.357.065.169.334)",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "(2.357.065.169.334)",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 84,
+        "statement": "balance_sheet",
+        "code": "255",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "-",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "-",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 85,
+        "statement": "balance_sheet",
+        "code": "255",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "200.000.000",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "200.000.000",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 86,
+        "statement": "balance_sheet",
+        "code": "260",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "5.808.727.466.506",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "5.808.727.466.506",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 87,
+        "statement": "balance_sheet",
+        "code": "260",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "5.438.413.518.284",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "5.438.413.518.284",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 88,
+        "statement": "balance_sheet",
+        "code": "261",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "4.200.230.383.066",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "4.200.230.383.066",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 89,
+        "statement": "balance_sheet",
+        "code": "261",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "3.765.187.625.417",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "3.765.187.625.417",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 90,
+        "statement": "balance_sheet",
+        "code": "262",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "592.766.817.279",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "592.766.817.279",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 91,
+        "statement": "balance_sheet",
+        "code": "262",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "575.767.686.189",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "575.767.686.189",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 92,
+        "statement": "balance_sheet",
+        "code": "269",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "1.015.730.266.161",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "1.015.730.266.161",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 93,
+        "statement": "balance_sheet",
+        "code": "269",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "1.097.458.206.678",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "1.097.458.206.678",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 94,
+        "statement": "balance_sheet",
+        "code": "270",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "88.141.991.634.625",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "88.141.991.634.625",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 95,
+        "statement": "balance_sheet",
+        "code": "270",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 166,
+        "printed_page": "165",
+        "reference_raw": "71.999.995.678.620",
+        "ir_candidates": [
+          {
+            "page": 166,
+            "raw": "71.999.995.678.620",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 96,
+        "statement": "balance_sheet",
+        "code": "300",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "44.393.950.887.086",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "44.393.950.887.086",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 97,
+        "statement": "balance_sheet",
+        "code": "300",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "36.272.455.573.820",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "36.272.455.573.820",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 98,
+        "statement": "balance_sheet",
+        "code": "310",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "41.524.928.721.230",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "41.524.928.721.230",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 99,
+        "statement": "balance_sheet",
+        "code": "310",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "34.836.184.067.740",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "34.836.184.067.740",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 100,
+        "statement": "balance_sheet",
+        "code": "311",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "3.837.081.314.767",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "3.837.081.314.767",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 101,
+        "statement": "balance_sheet",
+        "code": "311",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "4.423.912.840.298",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "4.423.912.840.298",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 102,
+        "statement": "balance_sheet",
+        "code": "312",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "734.726.007.595",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "734.726.007.595",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 103,
+        "statement": "balance_sheet",
+        "code": "312",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "562.066.755.666",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "562.066.755.666",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 104,
+        "statement": "balance_sheet",
+        "code": "313",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "2.199.487.107.880",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "2.199.487.107.880",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 105,
+        "statement": "balance_sheet",
+        "code": "313",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "2.298.821.801.748",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "2.298.821.801.748",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 106,
+        "statement": "balance_sheet",
+        "code": "314",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "5.724.811.126.353",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "5.724.811.126.353",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 107,
+        "statement": "balance_sheet",
+        "code": "314",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "4.341.013.546.853",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "4.341.013.546.853",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 108,
+        "statement": "balance_sheet",
+        "code": "315",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "1.765.446.702.057",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "1.765.446.702.057",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 109,
+        "statement": "balance_sheet",
+        "code": "315",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "1.241.089.122.260",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "1.241.089.122.260",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 110,
+        "statement": "balance_sheet",
+        "code": "317",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "85.650.109.236",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "85.650.109.236",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 111,
+        "statement": "balance_sheet",
+        "code": "317",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "92.738.882.375",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "92.738.882.375",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 112,
+        "statement": "balance_sheet",
+        "code": "318",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "4.233.698.718.701",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "4.233.698.718.701",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 113,
+        "statement": "balance_sheet",
+        "code": "318",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "4.224.649.366.399",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "4.224.649.366.399",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 114,
+        "statement": "balance_sheet",
+        "code": "319",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "1.014.754.880.632",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "1.014.754.880.632",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 115,
+        "statement": "balance_sheet",
+        "code": "319",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "874.015.837.328",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "874.015.837.328",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 116,
+        "statement": "balance_sheet",
+        "code": "320",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "19.169.697.497.955",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "19.169.697.497.955",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 117,
+        "statement": "balance_sheet",
+        "code": "320",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "14.446.238.451.323",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "14.446.238.451.323",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 118,
+        "statement": "balance_sheet",
+        "code": "321",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "599.498.384.069",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "599.498.384.069",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 119,
+        "statement": "balance_sheet",
+        "code": "321",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "496.600.145.127",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "496.600.145.127",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 120,
+        "statement": "balance_sheet",
+        "code": "322",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "2.160.076.871.985",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "2.160.076.871.985",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 121,
+        "statement": "balance_sheet",
+        "code": "322",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "1.835.037.318.363",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "1.835.037.318.363",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 122,
+        "statement": "balance_sheet",
+        "code": "330",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "2.869.022.165.856",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "2.869.022.165.856",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 123,
+        "statement": "balance_sheet",
+        "code": "330",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "1.436.271.506.080",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "1.436.271.506.080",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 124,
+        "statement": "balance_sheet",
+        "code": "336",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "152.241.175.129",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "152.241.175.129",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 125,
+        "statement": "balance_sheet",
+        "code": "336",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "131.344.534.204",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "131.344.534.204",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 126,
+        "statement": "balance_sheet",
+        "code": "337",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "149.213.186.822",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "149.213.186.822",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 127,
+        "statement": "balance_sheet",
+        "code": "337",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "183.788.442.785",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "183.788.442.785",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 128,
+        "statement": "balance_sheet",
+        "code": "338",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "1.903.789.988.184",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "1.903.789.988.184",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 129,
+        "statement": "balance_sheet",
+        "code": "338",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "501.115.537.075",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "501.115.537.075",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 130,
+        "statement": "balance_sheet",
+        "code": "341",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "257.727.308.967",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "257.727.308.967",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 131,
+        "statement": "balance_sheet",
+        "code": "341",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "356.966.680.614",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "356.966.680.614",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 132,
+        "statement": "balance_sheet",
+        "code": "342",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "405.858.410.471",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "405.858.410.471",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 133,
+        "statement": "balance_sheet",
+        "code": "342",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "262.864.215.119",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "262.864.215.119",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 134,
+        "statement": "balance_sheet",
+        "code": "343",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "192.096.283",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "192.096.283",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 135,
+        "statement": "balance_sheet",
+        "code": "343",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 167,
+        "printed_page": "166",
+        "reference_raw": "192.096.283",
+        "ir_candidates": [
+          {
+            "page": 167,
+            "raw": "192.096.283",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 136,
+        "statement": "balance_sheet",
+        "code": "400",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "43.748.040.747.539",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "43.748.040.747.539",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 137,
+        "statement": "balance_sheet",
+        "code": "400",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "35.727.540.104.800",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "35.727.540.104.800",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 138,
+        "statement": "balance_sheet",
+        "code": "410",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "43.745.290.747.539",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "43.745.290.747.539",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 139,
+        "statement": "balance_sheet",
+        "code": "410",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "35.724.790.104.800",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "35.724.790.104.800",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 140,
+        "statement": "balance_sheet",
+        "code": "411",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "17.035.071.210.000",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "17.035.071.210.000",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 141,
+        "statement": "balance_sheet",
+        "code": "411",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "14.710.691.830.000",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "14.710.691.830.000",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 142,
+        "statement": "balance_sheet",
+        "code": "411a",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "17.035.071.210.000",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "17.035.071.210.000",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 143,
+        "statement": "balance_sheet",
+        "code": "411a",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "14.710.691.830.000",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "14.710.691.830.000",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 144,
+        "statement": "balance_sheet",
+        "code": "412",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "49.713.213.411",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "49.713.213.411",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 145,
+        "statement": "balance_sheet",
+        "code": "412",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "49.713.213.411",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "49.713.213.411",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 146,
+        "statement": "balance_sheet",
+        "code": "414",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "3.499.547.369.952",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "3.499.547.369.952",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 147,
+        "statement": "balance_sheet",
+        "code": "414",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "1.929.012.703.454",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "1.929.012.703.454",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 148,
+        "statement": "balance_sheet",
+        "code": "417",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "(70.185.856.586)",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "(70.185.856.586)",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 149,
+        "statement": "balance_sheet",
+        "code": "417",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "(49.485.560.860)",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "(49.485.560.860)",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 150,
+        "statement": "balance_sheet",
+        "code": "418",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "1.575.367.587.172",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "1.575.367.587.172",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 151,
+        "statement": "balance_sheet",
+        "code": "418",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "2.033.289.141.535",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "2.033.289.141.535",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 152,
+        "statement": "balance_sheet",
+        "code": "420",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "88.263.628.887",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "88.263.628.887",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 153,
+        "statement": "balance_sheet",
+        "code": "420",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "87.730.484.825",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "87.730.484.825",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 154,
+        "statement": "balance_sheet",
+        "code": "421",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "14.302.416.791.936",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "14.302.416.791.936",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 155,
+        "statement": "balance_sheet",
+        "code": "421",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "11.030.528.671.431",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "11.030.528.671.431",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 156,
+        "statement": "balance_sheet",
+        "code": "421a",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "7.369.582.215.178",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "7.369.582.215.178",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 157,
+        "statement": "balance_sheet",
+        "code": "421a",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "5.458.228.109.134",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "5.458.228.109.134",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 158,
+        "statement": "balance_sheet",
+        "code": "421b",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "6.932.834.576.758",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "6.932.834.576.758",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 159,
+        "statement": "balance_sheet",
+        "code": "421b",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "5.572.300.562.297",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "5.572.300.562.297",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 160,
+        "statement": "balance_sheet",
+        "code": "429",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "7.265.096.802.767",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "7.265.096.802.767",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 161,
+        "statement": "balance_sheet",
+        "code": "429",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "5.933.309.621.004",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "5.933.309.621.004",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 162,
+        "statement": "balance_sheet",
+        "code": "430",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "2.750.000.000",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "2.750.000.000",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 163,
+        "statement": "balance_sheet",
+        "code": "430",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "2.750.000.000",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "2.750.000.000",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 164,
+        "statement": "balance_sheet",
+        "code": "431",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "2.750.000.000",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "2.750.000.000",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 165,
+        "statement": "balance_sheet",
+        "code": "431",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "2.750.000.000",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "2.750.000.000",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 166,
+        "statement": "balance_sheet",
+        "code": "440",
+        "period_end": "2025-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "88.141.991.634.625",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "88.141.991.634.625",
+            "period_end": "2025-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 167,
+        "statement": "balance_sheet",
+        "code": "440",
+        "period_end": "2024-12-31",
+        "period_type": "instant",
+        "pdf_page": 168,
+        "printed_page": "167",
+        "reference_raw": "71.999.995.678.620",
+        "ir_candidates": [
+          {
+            "page": 168,
+            "raw": "71.999.995.678.620",
+            "period_end": "2024-12-31",
+            "period_type": "instant"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 168,
+        "statement": "income_statement",
+        "code": "01",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "70.207.688.944.553",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "70.207.688.944.553",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 169,
+        "statement": "income_statement",
+        "code": "01",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "62.962.652.134.635",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "62.962.652.134.635",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 170,
+        "statement": "income_statement",
+        "code": "02",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "94.863.843.843",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "94.863.843.843",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 171,
+        "statement": "income_statement",
+        "code": "02",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "113.857.783.268",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "113.857.783.268",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 172,
+        "statement": "income_statement",
+        "code": "10",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "70.112.825.100.710",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "70.112.825.100.710",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 173,
+        "statement": "income_statement",
+        "code": "10",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "62.848.794.351.367",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "62.848.794.351.367",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 174,
+        "statement": "income_statement",
+        "code": "11",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "44.224.295.588.297",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "44.224.295.588.297",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 175,
+        "statement": "income_statement",
+        "code": "11",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "39.150.445.981.451",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "39.150.445.981.451",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 176,
+        "statement": "income_statement",
+        "code": "20",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "25.888.529.512.413",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "25.888.529.512.413",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 177,
+        "statement": "income_statement",
+        "code": "20",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "23.698.348.369.916",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "23.698.348.369.916",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 178,
+        "statement": "income_statement",
+        "code": "21",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "2.977.156.356.773",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "2.977.156.356.773",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 179,
+        "statement": "income_statement",
+        "code": "21",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "1.935.749.115.305",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "1.935.749.115.305",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 180,
+        "statement": "income_statement",
+        "code": "22",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "1.672.048.701.466",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "1.672.048.701.466",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 181,
+        "statement": "income_statement",
+        "code": "22",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "1.811.547.381.981",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "1.811.547.381.981",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 182,
+        "statement": "income_statement",
+        "code": "23",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "809.759.601.156",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "809.759.601.156",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 183,
+        "statement": "income_statement",
+        "code": "23",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "551.639.361.786",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "551.639.361.786",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 184,
+        "statement": "income_statement",
+        "code": "24",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "658.024.835.314",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "658.024.835.314",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 185,
+        "statement": "income_statement",
+        "code": "24",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "392.531.256.272",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "392.531.256.272",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 186,
+        "statement": "income_statement",
+        "code": "25",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "7.562.660.640.454",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "7.562.660.640.454",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 187,
+        "statement": "income_statement",
+        "code": "25",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "6.115.961.971.783",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "6.115.961.971.783",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 188,
+        "statement": "income_statement",
+        "code": "26",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "7.337.325.397.804",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "7.337.325.397.804",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 189,
+        "statement": "income_statement",
+        "code": "26",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "7.074.038.614.774",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "7.074.038.614.774",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 190,
+        "statement": "income_statement",
+        "code": "30",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "12.951.675.964.776",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "12.951.675.964.776",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 191,
+        "statement": "income_statement",
+        "code": "30",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "11.025.080.772.955",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "11.025.080.772.955",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 192,
+        "statement": "income_statement",
+        "code": "31",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "142.892.570.480",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "142.892.570.480",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 193,
+        "statement": "income_statement",
+        "code": "31",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "175.450.599.740",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "175.450.599.740",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 194,
+        "statement": "income_statement",
+        "code": "32",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "50.935.701.459",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "50.935.701.459",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 195,
+        "statement": "income_statement",
+        "code": "32",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "130.864.954.876",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "130.864.954.876",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 196,
+        "statement": "income_statement",
+        "code": "40",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "91.956.869.021",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "91.956.869.021",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 197,
+        "statement": "income_statement",
+        "code": "40",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "44.585.644.864",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "44.585.644.864",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 198,
+        "statement": "income_statement",
+        "code": "50",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "13.043.632.833.797",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "13.043.632.833.797",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 199,
+        "statement": "income_statement",
+        "code": "50",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "11.069.666.417.819",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "11.069.666.417.819",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 200,
+        "statement": "income_statement",
+        "code": "51",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "1.916.998.192.442",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "1.916.998.192.442",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 201,
+        "statement": "income_statement",
+        "code": "51",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "1.922.927.614.658",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "1.922.927.614.658",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 202,
+        "statement": "income_statement",
+        "code": "52",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "(105.704.809.379)",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "(105.704.809.379)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 203,
+        "statement": "income_statement",
+        "code": "52",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 169,
+        "printed_page": "168",
+        "reference_raw": "(280.683.727.283",
+        "ir_candidates": [
+          {
+            "page": 169,
+            "raw": "(280.683.727.283",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 204,
+        "statement": "income_statement",
+        "code": "60",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "11.232.339.450.734",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "11.232.339.450.734",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 205,
+        "statement": "income_statement",
+        "code": "60",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "9.427.422.530.444",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "9.427.422.530.444",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 206,
+        "statement": "income_statement",
+        "code": "61",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "9.376.127.629.501",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "9.376.127.629.501",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 207,
+        "statement": "income_statement",
+        "code": "61",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "7.856.767.812.178",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "7.856.767.812.178",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 208,
+        "statement": "income_statement",
+        "code": "62",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "1.856.211.821.233",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "1.856.211.821.233",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 209,
+        "statement": "income_statement",
+        "code": "62",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "1.570.654.718.266",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "1.570.654.718.266",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 210,
+        "statement": "income_statement",
+        "code": "70",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "5.216",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "5.216",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 211,
+        "statement": "income_statement",
+        "code": "70",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "4.292",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "4.292",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 212,
+        "statement": "income_statement",
+        "code": "71",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "5.216",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "5.216",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 213,
+        "statement": "income_statement",
+        "code": "71",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 170,
+        "printed_page": "169",
+        "reference_raw": "4.292",
+        "ir_candidates": [
+          {
+            "page": 170,
+            "raw": "4.292",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 214,
+        "statement": "cash_flow",
+        "code": "01",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "13.043.632.833.797",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "13.043.632.833.797",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 215,
+        "statement": "cash_flow",
+        "code": "01",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "11.069.666.417.819",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "11.069.666.417.819",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 216,
+        "statement": "cash_flow",
+        "code": "02",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "2.914.178.360.732",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "2.914.178.360.732",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 217,
+        "statement": "cash_flow",
+        "code": "02",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "2.535.298.475.665",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "2.535.298.475.665",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 218,
+        "statement": "cash_flow",
+        "code": "03",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "651.406.282.654",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "651.406.282.654",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 219,
+        "statement": "cash_flow",
+        "code": "03",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "1.148.951.390.915",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "1.148.951.390.915",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 220,
+        "statement": "cash_flow",
+        "code": "04",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(27.776.460.391)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(27.776.460.391)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 221,
+        "statement": "cash_flow",
+        "code": "04",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "46.311.803.197",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "46.311.803.197",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 222,
+        "statement": "cash_flow",
+        "code": "05",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(2.575.840.046.010)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(2.575.840.046.010)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 223,
+        "statement": "cash_flow",
+        "code": "05",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(1.725.022.480.893)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(1.725.022.480.893)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 224,
+        "statement": "cash_flow",
+        "code": "06",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "809.759.601.156",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "809.759.601.156",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 225,
+        "statement": "cash_flow",
+        "code": "06",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "551.639.361.786",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "551.639.361.786",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 226,
+        "statement": "cash_flow",
+        "code": "08",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "14.815.360.571.938",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "14.815.360.571.938",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 227,
+        "statement": "cash_flow",
+        "code": "08",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "13.626.844.968.489",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "13.626.844.968.489",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 228,
+        "statement": "cash_flow",
+        "code": "09",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(2.874.821.969.471)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(2.874.821.969.471)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 229,
+        "statement": "cash_flow",
+        "code": "09",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(1.913.663.012.505)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(1.913.663.012.505)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 230,
+        "statement": "cash_flow",
+        "code": "10",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(335.071.616.492)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(335.071.616.492)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 231,
+        "statement": "cash_flow",
+        "code": "10",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(265.267.561.842)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(265.267.561.842)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 232,
+        "statement": "cash_flow",
+        "code": "11",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "2.556.427.255.416",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "2.556.427.255.416",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 233,
+        "statement": "cash_flow",
+        "code": "11",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "2.875.571.263.689",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "2.875.571.263.689",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 234,
+        "statement": "cash_flow",
+        "code": "12",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(595.604.484.389)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(595.604.484.389)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 235,
+        "statement": "cash_flow",
+        "code": "12",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(393.964.502.357)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(393.964.502.357)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 236,
+        "statement": "cash_flow",
+        "code": "14",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(812.474.254.533)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(812.474.254.533)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 237,
+        "statement": "cash_flow",
+        "code": "14",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(607.154.747.076)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(607.154.747.076)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 238,
+        "statement": "cash_flow",
+        "code": "15",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(2.238.070.257.305)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(2.238.070.257.305)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 239,
+        "statement": "cash_flow",
+        "code": "15",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(1.209.921.507.569)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(1.209.921.507.569)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 240,
+        "statement": "cash_flow",
+        "code": "17",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(379.701.329.253)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(379.701.329.253)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 241,
+        "statement": "cash_flow",
+        "code": "17",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(408.667.711.961)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(408.667.711.961)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 242,
+        "statement": "cash_flow",
+        "code": "20",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "10.136.043.915.911",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "10.136.043.915.911",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 243,
+        "statement": "cash_flow",
+        "code": "20",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "11.703.777.188.868",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "11.703.777.188.868",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 244,
+        "statement": "cash_flow",
+        "code": "21",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(5.097.919.349.856)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(5.097.919.349.856)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 245,
+        "statement": "cash_flow",
+        "code": "21",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(3.275.312.325.702)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(3.275.312.325.702)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 246,
+        "statement": "cash_flow",
+        "code": "22",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "7.314.216.719",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "7.314.216.719",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 247,
+        "statement": "cash_flow",
+        "code": "22",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "14.227.383.215",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "14.227.383.215",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 248,
+        "statement": "cash_flow",
+        "code": "23",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(57.012.522.823.806)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(57.012.522.823.806)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 249,
+        "statement": "cash_flow",
+        "code": "23",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "(41.956.569.113.369)",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "(41.956.569.113.369)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 250,
+        "statement": "cash_flow",
+        "code": "24",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "49.164.792.969.282",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "49.164.792.969.282",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 251,
+        "statement": "cash_flow",
+        "code": "24",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 171,
+        "printed_page": "170",
+        "reference_raw": "36.283.758.374.630",
+        "ir_candidates": [
+          {
+            "page": 171,
+            "raw": "36.283.758.374.630",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 252,
+        "statement": "cash_flow",
+        "code": "25",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(710.700.052.777)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(710.700.052.777)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 253,
+        "statement": "cash_flow",
+        "code": "25",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(1.106.193.484.800)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(1.106.193.484.800)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 254,
+        "statement": "cash_flow",
+        "code": "26",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "23.532.256.656",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "23.532.256.656",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 255,
+        "statement": "cash_flow",
+        "code": "26",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "48.102.486.048",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "48.102.486.048",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 256,
+        "statement": "cash_flow",
+        "code": "27",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "2.000.759.192.153",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "2.000.759.192.153",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 257,
+        "statement": "cash_flow",
+        "code": "27",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "1.530.174.506.877",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "1.530.174.506.877",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 258,
+        "statement": "cash_flow",
+        "code": "30",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(11.624.743.591.629)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(11.624.743.591.629)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 259,
+        "statement": "cash_flow",
+        "code": "30",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(8.461.812.173.101)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(8.461.812.173.101)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 260,
+        "statement": "cash_flow",
+        "code": "31",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "1.196.235.184.778",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "1.196.235.184.778",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 261,
+        "statement": "cash_flow",
+        "code": "31",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "163.342.989.874",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "163.342.989.874",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 262,
+        "statement": "cash_flow",
+        "code": "33",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "43.070.812.885.074",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "43.070.812.885.074",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 263,
+        "statement": "cash_flow",
+        "code": "33",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "30.946.282.706.201",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "30.946.282.706.201",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 264,
+        "statement": "cash_flow",
+        "code": "34",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(36.890.984.827.601)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(36.890.984.827.601)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 265,
+        "statement": "cash_flow",
+        "code": "34",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(30.013.226.682.923)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(30.013.226.682.923)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 266,
+        "statement": "cash_flow",
+        "code": "35",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(986.795.056)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(986.795.056)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 267,
+        "statement": "cash_flow",
+        "code": "35",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(2.305.346.865)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(2.305.346.865)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 268,
+        "statement": "cash_flow",
+        "code": "36",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(4.573.753.577.663)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(4.573.753.577.663)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 269,
+        "statement": "cash_flow",
+        "code": "36",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(3.291.859.792.121)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(3.291.859.792.121)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 270,
+        "statement": "cash_flow",
+        "code": "40",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "2.801.322.869.532",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "2.801.322.869.532",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 271,
+        "statement": "cash_flow",
+        "code": "40",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(2.197.766.125.834)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(2.197.766.125.834)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 272,
+        "statement": "cash_flow",
+        "code": "50",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "1.312.623.193.814",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "1.312.623.193.814",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 273,
+        "statement": "cash_flow",
+        "code": "50",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "1.044.198.889.933",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "1.044.198.889.933",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 274,
+        "statement": "cash_flow",
+        "code": "60",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "9.315.440.438.884",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "9.315.440.438.884",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 275,
+        "statement": "cash_flow",
+        "code": "60",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "8.279.156.683.221",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "8.279.156.683.221",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 276,
+        "statement": "cash_flow",
+        "code": "61",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(105.957.902.706)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(105.957.902.706)",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 277,
+        "statement": "cash_flow",
+        "code": "61",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "(7.915.134.270)",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "(7.915.134.270)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 278,
+        "statement": "cash_flow",
+        "code": "70",
+        "period_end": "2025-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "10.522.105.729.992",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "10.522.105.729.992",
+            "period_end": "2025-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      },
+      {
+        "csv_line": 279,
+        "statement": "cash_flow",
+        "code": "70",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "pdf_page": 172,
+        "printed_page": "171",
+        "reference_raw": "9.315.440.438.884",
+        "ir_candidates": [
+          {
+            "page": 172,
+            "raw": "9.315.440.438.884",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "match"
+      }
+    ]
+  },
+  "cross_period": {
+    "method": "same_period_cross_report_comparison",
+    "period_year": 2024,
+    "counts": {
+      "match": 136,
+      "CROSS_PERIOD_MISMATCH": 3,
+      "missing_in_prior_report": 0,
+      "missing_in_current_comparative": 0,
+      "ambiguous": 0
+    },
+    "review_note": "Differences may be extraction errors or restated comparative figures.",
+    "issues": [
+      {
+        "statement": "income_statement",
+        "code": "52",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "prior_report": [
+          {
+            "page": 153,
+            "raw": "(280.683.727.283)",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "current_report_comparative": [
+          {
+            "page": 169,
+            "raw": "(280.683.727.283",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "CROSS_PERIOD_MISMATCH"
+      },
+      {
+        "statement": "income_statement",
+        "code": "70",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "prior_report": [
+          {
+            "page": 154,
+            "raw": "4.944",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "current_report_comparative": [
+          {
+            "page": 170,
+            "raw": "4.292",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "CROSS_PERIOD_MISMATCH"
+      },
+      {
+        "statement": "income_statement",
+        "code": "71",
+        "period_end": "2024-12-31",
+        "period_type": "duration",
+        "prior_report": [
+          {
+            "page": 154,
+            "raw": "4.944",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "current_report_comparative": [
+          {
+            "page": 170,
+            "raw": "4.292",
+            "period_end": "2024-12-31",
+            "period_type": "duration"
+          }
+        ],
+        "status": "CROSS_PERIOD_MISMATCH"
+      }
+    ]
+  }
+}

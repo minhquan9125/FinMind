@@ -13,108 +13,129 @@
   "blocks": [
     {"id": "p85-b1", "type": "heading", "text": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ", "bbox": [428.22, 63.31, 858.87, 81.31]},
     {"id": "p85-b2", "type": "paragraph", "text": "(tiếp theo)", "bbox": [863.35, 66.33, 927.22, 80.33]},
-    {"id": "p85-b3", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [1775.07, 75.98, 1859.82, 91.98]},
-    {"id": "p85-b4", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
-    {"id": "p85-b5", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.56, 271.58, 232.56]},
-    {"id": "p85-b6", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.9, 315.44, 282.9]},
-    {"id": "p85-b7", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.24, 243.52, 333.24]},
-    {"id": "p85-b8", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.58, 326.26, 383.58]},
-    {"id": "p85-b9", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [45.96, 418.09, 213.95, 437.09]},
-    {"id": "p85-b10", "type": "furniture", "text": "Mô hình quản trị và vai trò của các bên", "bbox": [85.0, 463.45, 322.68, 477.45]},
-    {"id": "p85-b11", "type": "furniture", "text": "Quản trị công ty năm 2024", "bbox": [85.0, 495.41, 248.7, 509.41]},
-    {"id": "p85-b12", "type": "furniture", "text": "Báo cáo của HĐQT", "bbox": [85.0, 527.37, 201.84, 541.37]},
-    {"id": "p85-b13", "type": "furniture", "text": "Báo cáo của Ban Kiểm soát", "bbox": [85.0, 559.33, 253.97, 573.33]},
-    {"id": "p85-b14", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.27, 171.05, 618.27]},
-    {"id": "p85-b15", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.61, 212.6, 668.61]},
-    {"id": "p85-b16", "type": "paragraph", "text": "05", "bbox": [30.0, 961.65, 196.06, 1080]},
-    {"id": "p85-b17", "type": "paragraph", "text": "STT", "bbox": [434.79, 111.86, 467.16, 129.86]},
-    {"id": "p85-b18", "type": "paragraph", "text": "Tên tổ chức", "bbox": [473.38, 111.86, 568.81, 129.86]},
+    {"id": "p85-b3", "type": "paragraph", "text": "Địa chỉ", "bbox": [857.48, 111.82, 914.27, 129.82]},
+    {"id": "p85-b4", "type": "paragraph", "text": "Mối quan hệ Số giấy NSH,", "bbox": [608.5, 111.84, 833.22, 129.86]},
+    {"id": "p85-b5", "type": "paragraph", "text": "STT Tên tổ chức", "bbox": [434.79, 111.86, 568.81, 129.86]},
+    {"id": "p85-b6", "type": "paragraph", "text": "trụ sở chính", "bbox": [857.48, 135.81, 954.88, 153.81]},
+    {"id": "p85-b7", "type": "paragraph", "text": "liên quan với ngày cấp,\nnơi cấp", "bbox": [608.5, 135.83, 806.23, 177.83]},
+    {"id": "p85-b8", "type": "paragraph", "text": "công ty", "bbox": [608.5, 159.84, 669.35, 177.84]},
+    {"id": "p85-b9", "type": "paragraph", "text": "• 0104900076 Khu Giáo dục và Đào", "bbox": [732.33, 221.08, 1022.37, 239.08]},
+    {"id": "p85-b10", "type": "paragraph", "text": "5 FPT Education Công ty con", "bbox": [445.71, 221.1, 703.31, 239.1]},
     {
-      "id": "p85-t1",
-      "type": "table",
-      "title": "HỢP ĐỒNG HOẶC GIAO DỊCH VỚI CỔ ĐÔNG NỘI BỘ (tiếp theo)",
-      "continued": true,
-      "bbox": [434.79, 111.8, 1854.81, 858.71],
-      "unit_text": "Đơn vị: VNĐ",
-      "columns": [
-        {"key": "c1", "header_lines": ["Mối quan hệ", "liên quan với", "công ty"], "bbox": [608.5, 111.86, 713.07, 177.84]},
-        {"key": "c2", "header_lines": ["Số giấy NSH,", "ngày cấp,", "nơi cấp"], "bbox": [725.67, 111.84, 833.22, 177.83]},
-        {"key": "c3", "header_lines": ["Địa chỉ", "trụ sở chính"], "bbox": [857.48, 111.82, 954.88, 153.81]},
-        {"key": "c4", "header_lines": ["Thời", "điểm", "giao", "dịch"], "bbox": [1057.84, 111.82, 1099.22, 201.8]},
-        {"key": "c5", "header_lines": ["Số nghị quyết/quyết định của ĐHĐCĐ/", "HĐQT thông qua"], "bbox": [1114.11, 111.8, 1425.04, 153.8]},
-        {"key": "c6", "header_lines": ["Nội dung và tổng giá trị giao dịch", "Giao dịch"], "bbox": [1459.83, 111.8, 1696.78, 202.95]},
-        {"key": "c7", "header_lines": ["Nội dung và tổng giá trị giao dịch", "Tổng giá trị"], "bbox": [1701.17, 111.8, 1854.79, 202.95]}
-      ],
-      "rows": [
-        {
-          "id": "r1",
-          "code": "5",
-          "label_raw": "FPT Education",
-          "note": null,
-          "bbox": [445.71, 221.01, 1854.7, 397.86],
-          "cells": {
-            "c1": {"raw": "Công ty con\ntrong cùng\ntập đoàn", "bbox": [608.5, 221.1, 703.31, 287.09]},
-            "c2": {"raw": "• 0104900076\n• 07/09/2010\n• Sở Kế hoạch\nvà Đầu tư\nTp.Hà Nội", "bbox": [732.33, 221.08, 845.19, 363.42]},
-            "c3": {
-              "raw": "Khu Giáo dục và Đào\ntạo, khu Công nghệ cao\nHòa Lạc, km 29 đại lộ\nThăng Long, Xã Thạch\nHoà, Huyện Thạch\nThất, Tp.Hà Nội,\nViệt Nam.",
-              "bbox": [857.48, 221.08, 1046.26, 383.04]
-            },
-            "c4": {"raw": "Năm\n2024", "bbox": [1057.84, 221.04, 1098.45, 263.04]},
-            "c5": {
-              "raw": "Giao dịch giữa công ty với các doanh\nnghiệp và người có liên quan thực hiện\ntheo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
-              "bbox": [1114.11, 221.04, 1439.97, 359.01]
-            },
-            "c6": {
-              "raw": "Cung cấp dịch vụ, chia sẻ chi\nphí và tiện ích dùng chung\nMua dịch vụ đào tạo\nLãi đi vay\nVay\nTrả nợ vay",
-              "bbox": [1459.83, 221.01, 1690.36, 397.86]
-            },
-            "c7": {"raw": "34.475.075.290\n5.440.906.000\n156.467.565.537\n5.850.000.000.000\n4.350.000.000.000", "bbox": [1702.33, 221.01, 1854.7, 397.86]}
-          }
-        },
-        {
-          "id": "r2",
-          "code": "6",
-          "label_raw": "FPT Investment",
-          "note": null,
-          "bbox": [445.71, 422.66, 1854.81, 700.65],
-          "cells": {
-            "c1": {"raw": "Công ty con\ntrong cùng\ntập đoàn", "bbox": [608.5, 422.73, 703.31, 488.72]},
-            "c2": {"raw": "• 0105173948\n• 03/03/2011\n• Sở Kế hoạch\nvà Đầu tư\nTp.Hà Nội", "bbox": [732.33, 422.72, 845.19, 565.06]},
-            "c3": {"raw": "Số 10 phố Phạm Văn\nBạch, phường Dịch\nVọng, quận Cầu Giấy,\nTp.Hà Nội,\nViệt Nam.", "bbox": [857.48, 422.72, 1027.36, 536.69]},
-            "c4": {"raw": "Năm\n2024", "bbox": [1057.84, 422.7, 1098.45, 464.69]},
-            "c5": {
-              "raw": "Giao dịch giữa công ty với các doanh\nnghiệp và người có liên quan thực hiện\ntheo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
-              "bbox": [1114.11, 422.7, 1439.97, 560.67]
-            },
-            "c6": {
-              "raw": "Chia sẻ chi phí và tiện ích\ndùng chung\nMua dịch vụ\nLãi cho vay\nLãi đi vay\nCho vay\nThu hồi khoản cho vay\nVay\nTrả nợ vay",
-              "bbox": [1459.83, 422.66, 1660.45, 700.65]
-            },
-            "c7": {"raw": "1.274.982.208\n-\n1.480.344.300\n63.558.747\n71.000.000.000\n213.500.000.000\n57.000.000.000\n-", "bbox": [1717.57, 422.66, 1854.81, 700.65]}
-          }
-        },
-        {
-          "id": "r3",
-          "code": "7",
-          "label_raw": "Synnex FPT",
-          "note": null,
-          "bbox": [445.71, 716.31, 1854.7, 858.71],
-          "cells": {
-            "c1": {"raw": "Công ty\nliên kết", "bbox": [608.5, 716.37, 669.33, 758.36]},
-            "c2": {"raw": "• 0103841131\n• 06/08/2009\n• Sở Kế hoạch\nvà Đầu tư\nTp.Hà Nội", "bbox": [732.33, 716.37, 845.19, 858.71]},
-            "c3": {"raw": "Tòa nhà FPT Cầu Giấy,\nphố Duy Tân, phường\nDịch Vọng Hậu, quận\nCầu Giấy, Tp.Hà Nội,\nViệt Nam.", "bbox": [857.48, 716.37, 1034.62, 830.34]},
-            "c4": {"raw": "Năm\n2024", "bbox": [1057.84, 716.35, 1098.45, 758.34]},
-            "c5": {
-              "raw": "Giao dịch giữa công ty với các doanh\nnghiệp và người có liên quan thực hiện\ntheo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
-              "bbox": [1114.11, 716.35, 1439.97, 854.32]
-            },
-            "c6": {"raw": "Cung cấp dịch vụ, chia sẻ chi\nphí và tiện ích dùng chung\nMua hàng hóa, dịch vụ", "bbox": [1459.83, 716.31, 1690.36, 807.47]},
-            "c7": {"raw": "1.747.952.538\n2.401.218.340", "bbox": [1737.9, 716.31, 1854.7, 807.47]}
-          }
-        }
-      ],
-      "logical_table_id": "fpt-2024-insider-contracts"
+      "id": "p85-b11",
+      "type": "paragraph",
+      "text": "tạo, khu Công nghệ cao 2024 nghiệp và người có liên quan thực hiện phí và tiện ích dùng chung",
+      "bbox": [857.48, 245.0, 1668.03, 263.07]
     },
-    {"id": "p85-b20", "type": "furniture", "text": "83", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+    {"id": "p85-b12", "type": "paragraph", "text": "trong cùng", "bbox": [608.5, 245.09, 694.74, 263.09]},
+    {"id": "p85-b13", "type": "paragraph", "text": "• 07/09/2010", "bbox": [732.33, 259.26, 835.14, 277.26]},
+    {"id": "p85-b14", "type": "paragraph", "text": "Hòa Lạc, km 29 đại lộ", "bbox": [857.48, 269.07, 1029.9, 287.07]},
+    {"id": "p85-b15", "type": "paragraph", "text": "tập đoàn", "bbox": [608.5, 269.09, 678.81, 287.09]},
+    {"id": "p85-b16", "type": "paragraph", "text": "Thăng Long, Xã Thạch", "bbox": [857.48, 293.06, 1035.87, 311.06]},
+    {"id": "p85-b17", "type": "paragraph", "text": "• Sở Kế hoạch", "bbox": [732.33, 297.44, 843.16, 315.44]},
+    {"id": "p85-b18", "type": "paragraph", "text": "Hoà, Huyện Thạch", "bbox": [857.48, 317.06, 1003.75, 335.06]},
+    {"id": "p85-b19", "type": "paragraph", "text": "và Đầu tư", "bbox": [743.67, 321.43, 817.8, 339.43]},
+    {"id": "p85-b20", "type": "paragraph", "text": "Thất, Tp.Hà Nội,", "bbox": [857.48, 341.05, 986.32, 359.05]},
+    {"id": "p85-b21", "type": "paragraph", "text": "Tp.Hà Nội", "bbox": [743.67, 345.42, 822.24, 363.42]},
+    {"id": "p85-b22", "type": "paragraph", "text": "Việt Nam.", "bbox": [857.48, 365.04, 935.74, 383.04]},
+    {"id": "p85-b23", "type": "paragraph", "text": "• 0105173948 Số 10 phố Phạm Văn", "bbox": [732.33, 422.72, 1022.95, 440.72]},
+    {"id": "p85-b24", "type": "paragraph", "text": "6 FPT Investment Công ty con", "bbox": [445.71, 422.73, 703.31, 440.73]},
+    {"id": "p85-b25", "type": "paragraph", "text": "Bạch, phường Dịch", "bbox": [857.48, 446.71, 1008.14, 464.71]},
+    {"id": "p85-b26", "type": "paragraph", "text": "trong cùng", "bbox": [608.5, 446.73, 694.74, 464.73]},
+    {"id": "p85-b27", "type": "paragraph", "text": "• 03/03/2011", "bbox": [732.33, 460.89, 835.14, 478.89]},
+    {"id": "p85-b28", "type": "paragraph", "text": "Vọng, quận Cầu Giấy,", "bbox": [857.48, 470.7, 1027.36, 488.7]},
+    {"id": "p85-b29", "type": "paragraph", "text": "tập đoàn", "bbox": [608.5, 470.72, 678.81, 488.72]},
+    {"id": "p85-b30", "type": "paragraph", "text": "Tp.Hà Nội,", "bbox": [857.48, 494.7, 941.15, 512.7]},
+    {"id": "p85-b31", "type": "paragraph", "text": "• Sở Kế hoạch", "bbox": [732.33, 499.07, 843.16, 517.07]},
+    {"id": "p85-b32", "type": "paragraph", "text": "Việt Nam.", "bbox": [857.48, 518.69, 935.74, 536.69]},
+    {"id": "p85-b33", "type": "paragraph", "text": "và Đầu tư\nTp.Hà Nội", "bbox": [743.67, 523.07, 822.24, 565.06]},
+    {
+      "id": "p85-b34",
+      "type": "paragraph",
+      "text": "• 0103841131 Tòa nhà FPT Cầu Giấy, Năm Giao dịch giữa công ty với các doanh Cung cấp dịch vụ, chia sẻ chi",
+      "bbox": [732.33, 716.31, 1690.36, 734.37]
+    },
+    {"id": "p85-b35", "type": "paragraph", "text": "7 Synnex FPT", "bbox": [445.71, 716.37, 565.77, 734.37]},
+    {"id": "p85-b36", "type": "paragraph", "text": "Công ty\nliên kết", "bbox": [608.5, 716.37, 669.33, 758.36]},
+    {"id": "p85-b37", "type": "paragraph", "text": "phố Duy Tân, phường", "bbox": [857.48, 740.36, 1025.71, 758.36]},
+    {"id": "p85-b38", "type": "paragraph", "text": "• 06/08/2009", "bbox": [732.33, 754.55, 835.14, 772.55]},
+    {"id": "p85-b39", "type": "paragraph", "text": "Dịch Vọng Hậu, quận\nCầu Giấy, Tp.Hà Nội,", "bbox": [857.48, 764.36, 1025.29, 806.35]},
+    {"id": "p85-b40", "type": "paragraph", "text": "• Sở Kế hoạch", "bbox": [732.33, 792.72, 843.16, 810.72]},
+    {"id": "p85-b41", "type": "paragraph", "text": "Việt Nam.", "bbox": [857.48, 812.34, 935.74, 830.34]},
+    {"id": "p85-b42", "type": "paragraph", "text": "và Đầu tư\nTp.Hà Nội", "bbox": [743.67, 816.72, 822.24, 858.71]},
+    {
+      "id": "p85-b43",
+      "type": "paragraph",
+      "text": "Thời Số nghị quyết/quyết định của ĐHĐCĐ/\nđiểm HĐQT thông qua\ngiao\ndịch",
+      "bbox": [1057.84, 111.8, 1425.04, 201.8]
+    },
+    {
+      "id": "p85-b44",
+      "type": "paragraph",
+      "text": "Năm Giao dịch giữa công ty với các doanh Cung cấp dịch vụ, chia sẻ chi",
+      "bbox": [1057.84, 221.01, 1690.36, 239.04]
+    },
+    {
+      "id": "p85-b45",
+      "type": "paragraph",
+      "text": "theo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
+      "bbox": [1114.11, 269.03, 1439.95, 359.01]
+    },
+    {
+      "id": "p85-b46",
+      "type": "paragraph",
+      "text": "Năm Giao dịch giữa công ty với các doanh Chia sẻ chi phí và tiện ích\n2024 nghiệp và người có liên quan thực hiện dùng chung\ntheo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
+      "bbox": [1057.84, 422.66, 1660.45, 560.67]
+    },
+    {
+      "id": "p85-b47",
+      "type": "paragraph",
+      "text": "2024 nghiệp và người có liên quan thực hiện phí và tiện ích dùng chung\ntheo Nghị Quyết số 02.03-2021/NQ-\nHĐQTFPT ban hành ngày 12/03/2021 Mua hàng hóa, dịch vụ\nvà có hiệu lực đến khi có Nghị quyết\nkhác thay thế.",
+      "bbox": [1057.84, 740.31, 1668.03, 854.32]
+    },
+    {"id": "p85-b48", "type": "paragraph", "text": "Đơn vị: VNĐ", "bbox": [1775.07, 75.98, 1859.82, 91.98]},
+    {"id": "p85-b49", "type": "paragraph", "text": "Nội dung và tổng giá trị giao dịch", "bbox": [1459.83, 111.8, 1736.86, 129.8]},
+    {"id": "p85-b50", "type": "paragraph", "text": "Giao dịch", "bbox": [1459.83, 184.95, 1538.06, 202.95]},
+    {"id": "p85-b51", "type": "paragraph", "text": "Tổng giá trị", "bbox": [1762.0, 184.95, 1854.79, 202.95]},
+    {"id": "p85-b52", "type": "paragraph", "text": "34.475.075.290", "bbox": [1727.74, 221.01, 1854.7, 239.01]},
+    {"id": "p85-b53", "type": "paragraph", "text": "Mua dịch vụ đào tạo", "bbox": [1459.83, 278.72, 1621.04, 296.72]},
+    {"id": "p85-b54", "type": "paragraph", "text": "5.440.906.000", "bbox": [1737.9, 278.72, 1854.7, 296.72]},
+    {"id": "p85-b55", "type": "paragraph", "text": "Lãi đi vay", "bbox": [1459.83, 312.43, 1533.13, 330.43]},
+    {"id": "p85-b56", "type": "paragraph", "text": "156.467.565.537", "bbox": [1717.57, 312.43, 1854.68, 330.43]},
+    {"id": "p85-b57", "type": "paragraph", "text": "Vay", "bbox": [1459.83, 346.14, 1488.37, 364.14]},
+    {"id": "p85-b58", "type": "paragraph", "text": "5.850.000.000.000", "bbox": [1702.33, 346.14, 1854.68, 364.14]},
+    {"id": "p85-b59", "type": "paragraph", "text": "Trả nợ vay", "bbox": [1459.83, 379.86, 1539.38, 397.86]},
+    {"id": "p85-b60", "type": "paragraph", "text": "4.350.000.000.000", "bbox": [1702.33, 379.86, 1854.68, 397.86]},
+    {"id": "p85-b61", "type": "paragraph", "text": "1.274.982.208", "bbox": [1737.9, 422.66, 1854.7, 440.66]},
+    {"id": "p85-b62", "type": "paragraph", "text": "Mua dịch vụ", "bbox": [1459.83, 480.37, 1556.42, 498.37]},
+    {"id": "p85-b63", "type": "paragraph", "text": "-", "bbox": [1848.52, 480.37, 1854.81, 498.37]},
+    {"id": "p85-b64", "type": "paragraph", "text": "Lãi cho vay", "bbox": [1459.83, 514.08, 1548.06, 532.08]},
+    {"id": "p85-b65", "type": "paragraph", "text": "1.480.344.300", "bbox": [1737.9, 514.08, 1854.7, 532.08]},
+    {"id": "p85-b66", "type": "paragraph", "text": "Lãi đi vay", "bbox": [1459.83, 547.8, 1533.13, 565.8]},
+    {"id": "p85-b67", "type": "paragraph", "text": "63.558.747", "bbox": [1763.31, 547.8, 1854.72, 565.8]},
+    {"id": "p85-b68", "type": "paragraph", "text": "Cho vay", "bbox": [1459.83, 581.51, 1522.4, 599.51]},
+    {"id": "p85-b69", "type": "paragraph", "text": "71.000.000.000", "bbox": [1727.74, 581.51, 1854.7, 599.51]},
+    {"id": "p85-b70", "type": "paragraph", "text": "Thu hồi khoản cho vay", "bbox": [1459.83, 615.23, 1636.94, 633.23]},
+    {"id": "p85-b71", "type": "paragraph", "text": "213.500.000.000", "bbox": [1717.57, 615.23, 1854.68, 633.23]},
+    {"id": "p85-b72", "type": "paragraph", "text": "Vay", "bbox": [1459.83, 648.94, 1488.37, 666.94]},
+    {"id": "p85-b73", "type": "paragraph", "text": "57.000.000.000", "bbox": [1727.74, 648.94, 1854.7, 666.94]},
+    {"id": "p85-b74", "type": "paragraph", "text": "Trả nợ vay", "bbox": [1459.83, 682.65, 1539.39, 700.65]},
+    {"id": "p85-b75", "type": "paragraph", "text": "-", "bbox": [1848.52, 682.65, 1854.81, 700.65]},
+    {"id": "p85-b76", "type": "paragraph", "text": "1.747.952.538", "bbox": [1737.9, 716.31, 1854.7, 734.31]},
+    {"id": "p85-b77", "type": "paragraph", "text": "2.401.218.340", "bbox": [1737.9, 789.47, 1854.7, 807.47]},
+    {"id": "p85-b78", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p85-b79", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.56, 271.58, 232.56]},
+    {"id": "p85-b80", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.9, 315.44, 282.9]},
+    {"id": "p85-b81", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.24, 243.52, 333.24]},
+    {"id": "p85-b82", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.58, 326.26, 383.58]},
+    {"id": "p85-b83", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [45.96, 418.09, 213.95, 437.09]},
+    {"id": "p85-b84", "type": "furniture", "text": "Mô hình quản trị và vai trò của các bên", "bbox": [85.0, 463.45, 322.68, 477.45]},
+    {"id": "p85-b85", "type": "furniture", "text": "Quản trị công ty năm 2024", "bbox": [85.0, 495.41, 248.7, 509.41]},
+    {"id": "p85-b86", "type": "furniture", "text": "Báo cáo của HĐQT", "bbox": [85.0, 527.37, 201.84, 541.37]},
+    {"id": "p85-b87", "type": "furniture", "text": "Báo cáo của Ban Kiểm soát", "bbox": [85.0, 559.33, 253.97, 573.33]},
+    {"id": "p85-b88", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 599.27, 171.05, 618.27]},
+    {"id": "p85-b89", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 649.61, 212.6, 668.61]},
+    {"id": "p85-b90", "type": "furniture", "text": "05", "bbox": [30.0, 961.65, 196.06, 1080]},
+    {"id": "p85-b91", "type": "furniture", "text": "83", "bbox": [293.0, 988.53, 318.8, 1011.4]}
   ]
 }

@@ -2,43 +2,54 @@
   "pdf": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\FPT_2024_498332 (1).pdf",
   "pages": 215,
   "routes": {
-    "tesseract": 4,
+    "tesseract+gemini": 1,
+    "tesseract": 3,
     "text_layer": 211
   },
   "status": {
-    "REVIEW": 2,
-    "OK": 213
+    "OK": 214,
+    "REVIEW": 1
   },
   "flags": {
-    "LOW_CONF": 2
+    "GEMINI_FAILED": 1
   },
   "reviewPages": [
-    1,
     2
   ],
   "seconds": {
-    "textLayer": 1.639,
-    "renderAndTesseract": 4.255,
-    "gemini": 0.0,
-    "total": 6.206
+    "textLayer": 1.508,
+    "renderAndTesseract": 7.249,
+    "gemini": 14.416,
+    "total": 23.441
   },
   "geminiApi": {
-    "calls": 0,
-    "failedCalls": 0,
-    "seconds": 0,
+    "calls": 1,
+    "failedCalls": 1,
+    "seconds": 12.991,
+    "input_tokens": 1421,
+    "output_tokens": 707,
+    "thinking_tokens": 354,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 1,
+    "failedCalls": 1,
+    "seconds": 1.412,
     "input_tokens": 0,
     "output_tokens": 0,
     "thinking_tokens": 0,
     "cache_read_tokens": 0
   },
   "cache": {
-    "tesseractHits": 0,
-    "geminiHits": 0
+    "tesseractHits": 4,
+    "geminiHits": 1,
+    "openrouterHits": 0
   },
   "config": {
     "out": "D:\\ocr_router_out\\03_Design\\Data_Pipeline\\poc\\ocr-router\\ocr_router_out",
-    "mode": "never",
+    "mode": "auto",
     "model": "gemini-3.8-flash",
+    "openrouterModel": "liquid/lfm-2.5-2.6b:free",
     "batch": 4,
     "geminiConcurrency": 2,
     "geminiTimeout": 300,

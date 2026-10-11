@@ -261,6 +261,8 @@ def make_parser() -> argparse.ArgumentParser:
                          help="Sau OCR, tạo IR cho các nội dung chính của báo cáo thường niên")
     parser.add_argument("--template", type=Path,
                         help="Template luật BCTC khi dùng --build-document-ir")
+    parser.add_argument("--overrides", type=Path,
+                        help="File override thường niên cho đúng PDF; mặc định không dùng")
     return parser
 
 
@@ -269,6 +271,10 @@ def main(argv: list[str] | None = None) -> int:
     cfg = parser.parse_args(argv)
     if cfg.template is not None and not cfg.build_document_ir:
         parser.error("--template chỉ dùng cùng --build-document-ir")
+    if cfg.overrides is not None and not cfg.build_document_ir:
+        parser.error("--overrides chỉ dùng cùng --build-document-ir")
+    if cfg.overrides is not None and len(cfg.pdfs) != 1:
+        parser.error("--overrides chỉ nhận đúng một PDF")
     if min(cfg.batch, cfg.gemini_concurrency, cfg.tess_workers, cfg.long_side) < 1:
         parser.error("batch, concurrency, workers và long-side phải lớn hơn 0")
     if cfg.build_ir:
@@ -298,7 +304,7 @@ def main(argv: list[str] | None = None) -> int:
                 resolved = pdf.resolve()
                 doc_dir = cfg.out / resolved.stem
                 result = build_document_ir(resolved, doc_dir / "pages.jsonl", doc_dir / "annual_ir",
-                                           cfg.template)
+                                           cfg.template, cfg.overrides)
                 print(f"▶ IR báo cáo thường niên: {result['pages']} trang, blocks {result['blockTypes']}")
                 print(f"  → {doc_dir / 'annual_ir' / 'content'}")
                 if "financialStatements" in result:

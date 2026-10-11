@@ -31,8 +31,8 @@
       "text": "• Dịch vụ truyền hình FPT Play: các sản phẩm, dịch vụ giải trí trên nền tảng OTT và IPTV;",
       "bbox": [1165.32, 239.28, 1856.6, 257.28]
     },
-    {"id": "p25-b11", "type": "kpi", "text": "4.890", "bbox": [428.54, 268.15, 571.22, 326.15]},
-    {"id": "p25-b12", "type": "kpi", "text": "50+", "bbox": [726.14, 268.15, 820.57, 326.15]},
+    {"id": "p25-b11", "type": "heading", "text": "4.890", "bbox": [428.54, 268.15, 571.22, 326.15]},
+    {"id": "p25-b12", "type": "heading", "text": "50+", "bbox": [726.14, 268.15, 820.57, 326.15]},
     {
       "id": "p25-b13",
       "type": "paragraph",

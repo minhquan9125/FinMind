@@ -1,0 +1,93 @@
+{
+  "ir_version": "1",
+  "page": 184,
+  "printed_page": "183",
+  "page_class": "notes",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p184-b1", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [259.68, 42.32, 697.42, 62.32]},
+    {"id": "p184-b2", "type": "paragraph", "text": "Mẫu số B 09 – DN/HN", "bbox": [899.64, 48.6, 1016.96, 60.6]},
+    {"id": "p184-b3", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2025", "bbox": [259.68, 66.32, 846.92, 86.32]},
+    {"id": "p184-b4", "type": "paragraph", "text": "2.Các chính sách kế toán chủ yếu\n2.18. Chi phí phải trả", "bbox": [259.68, 109.12, 498.89, 147.21]},
+    {
+      "id": "p184-b5",
+      "type": "paragraph",
+      "text": "Chi phí phải trả bao gồm các khoản phải trả cho hàng hóa, dịch vụ đã nhận được\ntừ người bán trong năm tài chính nhưng thực tế chưa chi trả do chưa có hóa đơn\nhoặc chưa đủ hồ sơ, tài liệu kế toán, được ghi nhận vào chi phí sản xuất kinh doanh\ncủa năm tài chính.",
+      "bbox": [259.61, 157.28, 623.78, 203.28]
+    },
+    {"id": "p184-b6", "type": "paragraph", "text": "2.19. Các khoản dự phòng", "bbox": [258.94, 221.87, 402.51, 233.87]},
+    {
+      "id": "p184-b7",
+      "type": "paragraph",
+      "text": "Các khoản dự phòng được ghi nhận khi Tập đoàn có nghĩa vụ nợ hiện tại, pháp lý\nhoặc liên đới, phát sinh từ các sự kiện đã xảy ra; việc thanh toán nghĩa vụ nợ có thể\nsẽ dẫn đến sự giảm sút về những lợi ích kinh tế và giá trị của nghĩa vụ nợ đó được\nước tính một cách đáng tin cậy. Dự phòng không được ghi nhận cho các khoản lỗ\nhoạt động trong tương lai.",
+      "bbox": [258.55, 242.17, 622.71, 300.17]
+    },
+    {
+      "id": "p184-b8",
+      "type": "paragraph",
+      "text": "Dự phòng được tính trên cơ sở các khoản chi phí dự tính phải thanh toán nghĩa vụ\nnợ. Nếu ảnh hưởng về giá trị thời gian của tiền là trọng yếu thì dự phòng được tính\ntrên cơ sở giá trị hiện tại với tỷ lệ chiết khấu trước thuế và phản ánh những đánh giá\ntrên thị trường hiện tại về giá trị thời gian của tiền và rủi ro cụ thể của khoản nợ đó.\nGiá trị tăng lên do ảnh hưởng của yếu tố thời gian được ghi nhận là chi phí tài chính.\nChênh lệch giữa khoản dự phòng lập ở cuối năm tài chính này và khoản dự phòng\nđã lập chưa sử dụng ở cuối năm tài chính trước được ghi nhận tăng hoặc giảm chi\nphí sản xuất kinh doanh trong năm tài chính.",
+      "bbox": [258.55, 314.17, 622.71, 408.17]
+    },
+    {"id": "p184-b9", "type": "paragraph", "text": "2.20. Doanh thu chưa thực hiện", "bbox": [259.6, 425.35, 432.66, 437.35]},
+    {
+      "id": "p184-b10",
+      "type": "paragraph",
+      "text": "Doanh thu chưa thực hiện là khoản doanh thu nhận trước cho một hay nhiều kỳ kế\ntoán chủ yếu bao gồm tiền cước dịch vụ viễn thông, học phí, dịch vụ cung cấp phần\nmềm, dịch vụ bảo hành, bảo trì và các dịch vụ khác. Tập đoàn ghi nhận các khoản\ndoanh thu chưa thực hiện tương ứng với phần nghĩa vụ mà Tập đoàn sẽ phải thực\nhiện trong tương lai. Khi các điều kiện ghi nhận doanh thu được thỏa mãn, doanh\nthu chưa thực hiện sẽ được ghi nhận vào báo cáo kết quả hoạt động kinh doanh\nhợp nhất trong năm tài chính tương ứng với phần thỏa mãn điều kiện ghi nhận\ndoanh thu đó.",
+      "bbox": [259.21, 447.73, 623.37, 541.73]
+    },
+    {"id": "p184-b11", "type": "paragraph", "text": "(Tiếp theo)", "bbox": [503.98, 114.72, 542.56, 122.72]},
+    {"id": "p184-b12", "type": "paragraph", "text": "2.21. Vốn chủ sở hữu", "bbox": [652.3, 135.46, 764.31, 147.46]},
+    {
+      "id": "p184-b13",
+      "type": "paragraph",
+      "text": "Vốn góp của chủ sở hữu được ghi nhận theo số thực tế góp của các cổ đông và\nđược phản ánh theo mệnh giá của cổ phiếu.",
+      "bbox": [652.31, 157.28, 1016.36, 179.28]
+    },
+    {
+      "id": "p184-b14",
+      "type": "paragraph",
+      "text": "Thặng dư vốn cổ phần là khoản chênh lệch giữa vốn góp theo mệnh giá cổ phiếu\nvới giá thực tế phát hành cổ phiếu; chênh lệch giữa giá mua lại cổ phiếu quỹ và\ngiá tái phát hành cổ phiếu quỹ.",
+      "bbox": [652.31, 193.28, 1016.45, 227.28]
+    },
+    {
+      "id": "p184-b15",
+      "type": "paragraph",
+      "text": "Vốn khác của chủ sở hữu phản ánh giá trị các khoản vốn khác của chủ sở hữu tại\nthời điểm báo cáo, chủ yếu liên quan đến việc ghi nhận cổ tức bằng cổ phiếu mà\nCông ty nhận được từ các công ty con trên báo cáo tài chính hợp nhất.",
+      "bbox": [652.31, 241.28, 1016.46, 275.28]
+    },
+    {
+      "id": "p184-b16",
+      "type": "paragraph",
+      "text": "Cổ phiếu quỹ là cổ phiếu do Công ty mua lại trước ngày hiệu lực của Luật\nChứng khoán (ngày 1 tháng 1 năm 2021) nhưng chưa bị hủy bỏ sẽ được tái phát hành\ntrở lại trong khoảng thời gian theo quy định của pháp luật về chứng khoán. Cổ phiếu quỹ\nmua sau ngày 1 tháng 1 năm 2021 sẽ được hủy bỏ và điều chỉnh giảm vốn chủ sở hữu.",
+      "bbox": [652.31, 289.28, 1016.46, 335.28]
+    },
+    {
+      "id": "p184-b17",
+      "type": "paragraph",
+      "text": "Chênh lệch tỷ giá hối đoái là chênh lệch tỷ giá phát sinh khi Công ty chuyển đổi\nbáo cáo tài chính của công ty con được lập bằng Đồng ngoại tệ sang Đồng Việt\nNam cho mục đích hợp nhất báo cáo tài chính.",
+      "bbox": [652.31, 349.28, 1016.45, 383.28]
+    },
+    {
+      "id": "p184-b18",
+      "type": "paragraph",
+      "text": "LNST chưa phân phối phản ánh kết quả kinh doanh lũy kế sau thuế TNDN của\nTập đoàn tại thời điểm báo cáo.",
+      "bbox": [652.31, 397.28, 1016.31, 419.28]
+    },
+    {"id": "p184-b19", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p184-b20", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.62, 108.7, 155.28, 117.12]},
+    {"id": "p184-b21", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.62, 134.8, 96.98, 143.12]},
+    {"id": "p184-b22", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.62, 160.9, 122.58, 169.12]},
+    {"id": "p184-b23", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.62, 187.0, 142.43, 195.12]},
+    {"id": "p184-b24", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.62, 213.1, 190.19, 221.12]},
+    {"id": "p184-b25", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
+    {"id": "p184-b26", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.4, 273.3]},
+    {"id": "p184-b27", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
+    {"id": "p184-b28", "type": "furniture", "text": "183", "bbox": [58.59, 546.47, 77.97, 558.52]}
+  ]
+}

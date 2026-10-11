@@ -15,7 +15,7 @@ import pdfplumber
 from jsonschema import Draft202012Validator
 
 from buildDocumentIr import _represented_words, _tokens
-from financialContent import _accounting_template_path, evaluate_accounting, expand_page_ranges
+from financialContent import _select_accounting_template_path, evaluate_accounting, expand_page_ranges
 from util import hash_file
 from validate_ir import SCHEMA, validate_page
 
@@ -157,8 +157,10 @@ def audit(pdf_path: Path, ir_dir: Path, template_path: Path | None = None) -> di
         if checks != table_index.get("arithmetic_checks") or skipped != table_index.get(
                 "arithmetic_checks_skipped") or template_id != table_index.get("arithmetic_template_id"):
             errors.append("table/index.json có luật đẳng thức không khớp IR/template_lines")
-        if table_index.get("arithmetic_template_sha256") != hash_file(
-                _accounting_template_path(template_path)):
+        selected_template = _select_accounting_template_path(financial_documents, template_path)
+        expected_template_hash = (hash_file(selected_template)
+                                  if selected_template is not None else None)
+        if table_index.get("arithmetic_template_sha256") != expected_template_hash:
             errors.append("table/index.json không khớp SHA-256 template")
     furniture_path = ir_dir / "furniture_audit.json"
     if furniture_path.is_file():

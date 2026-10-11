@@ -1,0 +1,82 @@
+{
+  "ir_version": "1",
+  "page": 183,
+  "printed_page": "182",
+  "page_class": "notes",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "9449a7251d126b635988974dbc72c2773c7fff39f4e5e858b5f7d3928b4e0e6c",
+    "file_name": "BCTN_2025.pdf"
+  },
+  "blocks": [
+    {"id": "p183-b1", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [259.68, 42.32, 697.42, 62.32]},
+    {"id": "p183-b2", "type": "paragraph", "text": "Mẫu số B 09 – DN/HN", "bbox": [899.64, 48.6, 1016.96, 60.6]},
+    {"id": "p183-b3", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2025", "bbox": [259.68, 66.32, 846.92, 86.32]},
+    {"id": "p183-b4", "type": "paragraph", "text": "2. Các chính sách kế toán chủ yếu", "bbox": [259.68, 109.12, 502.29, 125.12]},
+    {"id": "p183-b5", "type": "paragraph", "text": "2.15. Chi phí trả trước", "bbox": [259.91, 135.99, 379.72, 147.99]},
+    {
+      "id": "p183-b6",
+      "type": "paragraph",
+      "text": "Chi phí trả trước bao gồm các chi phí trả trước ngắn hạn và chi phí trả trước dài\nhạn trên bảng cân đối kế toán hợp nhất. Chi phí trả trước ngắn hạn phản ánh số\ntiền trả trước để được cung cấp dịch vụ; hoặc các công cụ, dụng cụ không thỏa\nmãn điều kiện ghi nhận TSCĐ trong khoảng thời gian không quá 12 tháng hoặc\nmột chu kỳ sản xuất kinh doanh kể từ ngày trả trước. Chi phí trả trước dài hạn\nphản ánh số tiền trả trước để được cung cấp dịch vụ; hoặc các công cụ, dụng cụ\nkhông thỏa mãn điều kiện ghi nhận TSCĐ có thời hạn trên 12 tháng hoặc hơn một\nchu kỳ sản xuất kinh doanh kể từ ngày trả trước. Chi phí trả trước bao gồm khoản\ntrả trước tiền thuê đất, thuê văn phòng, thuê khác (bản quyền, kênh, đường\ntruyền, cáp quang), chi phí triển khai dịch vụ viễn thông cho thuê bao mới và các\nkhoản chi phí trả trước khác.",
+      "bbox": [259.72, 157.48, 623.88, 277.48]
+    },
+    {
+      "id": "p183-b7",
+      "type": "paragraph",
+      "text": "Chi phí thuê đất trả trước bao gồm tiền thuê đất không được ghi nhận vào TSCĐ\nvô hình theo chính sách kế toán số 2.13. Chi phí thuê đất, thuê văn phòng, thuê\nkhác (bản quyền, kênh, đường truyền, cáp quang) được phân bổ vào báo cáo kết\nquả hoạt động kinh doanh hợp nhất theo phương pháp đường thẳng dựa trên thời\nhạn hợp đồng thuê.",
+      "bbox": [259.72, 289.48, 623.86, 343.48]
+    },
+    {
+      "id": "p183-b8",
+      "type": "paragraph",
+      "text": "Chi phí triển khai dịch vụ viễn thông cho thuê bao mới được phân bổ vào Báo cáo\nkết quả hoạt động kinh doanh hợp nhất theo phương pháp đường thẳng tương\nứng với thời gian hữu dụng ước tính.",
+      "bbox": [259.72, 355.48, 623.87, 387.48]
+    },
+    {
+      "id": "p183-b9",
+      "type": "paragraph",
+      "text": "Các khoản chi phí trả trước khác bao gồm giá trị công cụ, dụng cụ, linh kiện loại\nnhỏ đã xuất dùng, chi phí sửa chữa nội thất, văn phòng, bảo trì và chi phí trả trước\ncho các hợp đồng cung cấp dịch vụ được coi là có khả năng đem lại lợi ích kinh\ntế trong tương lai cho Tập đoàn. Các chi phí này được vốn hóa dưới hình thức các\nkhoản trả trước và được phân bổ vào báo cáo kết quả hoạt động kinh doanh hợp\nnhất theo phương pháp đường thẳng dựa trên thời gian sử dụng hữu ích ước tính\ncủa các tài sản này.",
+      "bbox": [259.72, 399.48, 623.88, 475.48]
+    },
+    {"id": "p183-b10", "type": "paragraph", "text": "(Tiếp theo)", "bbox": [505.89, 114.72, 544.47, 122.72]},
+    {"id": "p183-b11", "type": "paragraph", "text": "2.16. Nợ phải trả", "bbox": [653.92, 135.99, 744.82, 147.99]},
+    {"id": "p183-b12", "type": "paragraph", "text": "Các khoản nợ phải trả được phân loại dựa vào tính chất bao gồm:", "bbox": [652.02, 157.48, 944.7, 167.48]},
+    {
+      "id": "p183-b13",
+      "type": "paragraph",
+      "text": "• Phải trả người bán gồm các khoản phải trả mang tính chất thương mại phát sinh\ntừ giao dịch mua hàng hóa, và dịch vụ; và\n• Phải trả khác gồm các khoản phải trả không có tính chất thương mại, và không\nliên quan đến giao dịch mua hàng hóa, và dịch vụ.",
+      "bbox": [652.02, 181.48, 1016.17, 227.48]
+    },
+    {
+      "id": "p183-b14",
+      "type": "paragraph",
+      "text": "Các khoản nợ phải trả được phân loại ngắn hạn và dài hạn trên bảng cân đối kế\ntoán hợp nhất căn cứ theo kỳ hạn còn lại của các khoản phải trả tại ngày của bảng\ncân đối kế toán hợp nhất tới ngày đến hạn thanh toán.",
+      "bbox": [652.02, 241.48, 1016.13, 275.48]
+    },
+    {"id": "p183-b15", "type": "paragraph", "text": "2.17. Vay và nợ thuê tài chính", "bbox": [652.5, 292.26, 812.85, 304.26]},
+    {
+      "id": "p183-b16",
+      "type": "paragraph",
+      "text": "Vay và nợ thuê tài chính bao gồm các khoản tiền vay và nợ thuê tài chính từ các\nngân hàng, tổ chức tài chính, công ty tài chính và các đối tượng khác. Các khoản\nvay và nợ thuê tài chính được phân loại ngắn hạn và dài hạn trên bảng cân đối kế\ntoán hợp nhất căn cứ theo kỳ hạn còn lại của các khoản vay và nợ thuê tài chính tại\nngày của bảng cân đối kế toán hợp nhất tới ngày đến hạn thanh toán.",
+      "bbox": [652.11, 314.64, 1016.27, 372.64]
+    },
+    {
+      "id": "p183-b17",
+      "type": "paragraph",
+      "text": "Chi phí đi vay liên quan trực tiếp đối với hoạt động xây dựng hoặc sản xuất bất kỳ\ntài sản đủ tiêu chuẩn sẽ được vốn hóa trong thời gian mà các tài sản này được hoàn\nthành và chuẩn bị đưa vào sử dụng. Đối với các khoản vay chung trong đó có sử\ndụng vốn cho mục đích đầu tư xây dựng hoặc sản xuất bất kỳ tài sản đủ tiêu chuẩn\nthì Tập đoàn xác định chi phí đi vay được vốn hóa theo tỷ lệ vốn hóa đối với chi phí\nlũy kế bình quân gia quyền phát sinh cho việc đầu tư xây dựng cơ bản hoặc sản\nxuất tài sản đủ tiêu chuẩn đó. Tỷ lệ vốn hóa được tính theo tỷ lệ lãi suất bình quân\ngia quyền của các khoản vay chưa trả trong năm tài chính, trừ các khoản vay riêng\nbiệt phục vụ cho mục đích hình thành một tài sản cụ thể. Chi phí đi vay khác được\nghi nhận trong báo cáo kết quả hoạt động kinh doanh hợp nhất khi phát sinh.",
+      "bbox": [652.11, 386.64, 1016.27, 504.64]
+    },
+    {"id": "p183-b18", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p183-b19", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.62, 108.7, 155.29, 117.12]},
+    {"id": "p183-b20", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.62, 134.8, 96.98, 143.12]},
+    {"id": "p183-b21", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.62, 160.9, 122.58, 169.12]},
+    {"id": "p183-b22", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.62, 187.0, 142.43, 195.12]},
+    {"id": "p183-b23", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.62, 213.1, 190.19, 221.12]},
+    {"id": "p183-b24", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.62, 239.12, 121.59, 247.2]},
+    {"id": "p183-b25", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.62, 265.12, 100.41, 273.3]},
+    {"id": "p183-b26", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.62, 291.31, 166.66, 299.4]},
+    {"id": "p183-b27", "type": "furniture", "text": "182", "bbox": [58.72, 546.47, 77.84, 558.52]}
+  ]
+}

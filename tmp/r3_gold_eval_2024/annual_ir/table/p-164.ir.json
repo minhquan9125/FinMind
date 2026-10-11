@@ -1,0 +1,93 @@
+{
+  "ir_version": "1",
+  "page": 164,
+  "printed_page": "162",
+  "page_class": "notes",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332 (1).pdf"
+  },
+  "blocks": [
+    {"id": "p164-b1", "type": "heading", "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT", "bbox": [428.22, 68.74, 1105.62, 100.74]},
+    {"id": "p164-b2", "type": "form_code", "text": "MẪU SỐ B 09 – DN/HN", "bbox": [1673.66, 77.8, 1859.49, 95.8]},
+    {"id": "p164-b3", "type": "heading", "text": "CHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2024", "bbox": [428.22, 114.6, 1279.68, 144.6]},
+    {"id": "p164-b4", "type": "paragraph", "text": "2\nCÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU (tiếp theo)", "bbox": [428.22, 187.3, 861.78, 205.3]},
+    {"id": "p164-b5", "type": "paragraph", "text": "2.10 Đầu tư tài chính", "bbox": [428.22, 217.81, 614.13, 235.81]},
+    {"id": "p164-b6", "type": "paragraph", "text": "(c)\nĐầu tư góp vốn vào đơn vị khác", "bbox": [428.22, 250.32, 744.24, 268.32]},
+    {
+      "id": "p164-b7",
+      "type": "paragraph",
+      "text": "Đầu tư góp vốn vào đơn vị khác là các khoản đầu tư vào công cụ vốn của đơn vị khác\nnhưng không có quyền kiểm soát hoặc đồng kiểm soát, không có ảnh hưởng đáng kể đối\nvới bên được đầu tư. Các khoản đầu tư này được ghi nhận ban đầu theo giá gốc. Sau đó,\nBan Tổng Giám đốc thực hiện việc rà soát đối với tất cả các khoản đầu tư để ghi nhận dự\nphòng vào cuối năm tài chính.",
+      "bbox": [428.22, 288.5, 1123.01, 402.47]
+    },
+    {
+      "id": "p164-b8",
+      "type": "paragraph",
+      "text": "Dự phòng giảm giá đầu tư góp vốn vào đơn vị khác được lập vào cuối năm tài chính khi có\nsự giảm giá trị của các khoản đầu tư. Dự phòng giảm giá đầu tư góp vốn vào đơn vị khác\nđược tính dựa trên giá trị thị trường nếu giá trị thị trường được xác định một cách tin cậy.\nNếu giá trị thị trường không thể được xác định một cách tin cậy, dự phòng giảm giá đầu\ntư góp vốn vào đơn vị khác được tính dựa trên khoản lỗ của bên được đầu tư.",
+      "bbox": [428.22, 422.65, 1122.98, 536.63]
+    },
+    {
+      "id": "p164-b9",
+      "type": "paragraph",
+      "text": "Chênh lệch giữa khoản dự phòng lập ở cuối năm tài chính này và khoản dự phòng đã lập\nở cuối năm tài chính trước được ghi nhận tăng hoặc giảm chi phí tài chính trong năm tài\nchính. Khoản dự phòng được hoàn nhập không vượt quá giá trị ghi sổ ban đầu.",
+      "bbox": [428.22, 556.81, 1123.05, 622.79]
+    },
+    {"id": "p164-b10", "type": "paragraph", "text": "2.11 Cho vay", "bbox": [428.22, 655.14, 549.22, 673.14]},
+    {
+      "id": "p164-b11",
+      "type": "paragraph",
+      "text": "Cho vay là các khoản cho vay với mục đích thu lãi hàng kỳ theo khế ước giữa các bên\nnhưng không được giao dịch mua, bán trên thị trường như chứng khoán.",
+      "bbox": [428.22, 693.32, 1123.0, 735.31]
+    },
+    {
+      "id": "p164-b12",
+      "type": "paragraph",
+      "text": "Các khoản cho vay được xác định theo giá gốc trừ đi các khoản dự phòng phải thu khó\nđòi. Dự phòng phải thu khó đòi các khoản cho vay của Tập đoàn được trích lập theo các\nquy định kế toán hiện hành. Chênh lệch giữa khoản dự phòng lập ở cuối kỳ kế toán này\nvà khoản dự phòng đã lập ở cuối kỳ kế toán trước được ghi nhận tăng hoặc giảm chi phí\ntài chính trong kỳ kế toán. Khoản dự phòng được hoàn nhập không vượt quá giá trị ghi\nsổ ban đầu.",
+      "bbox": [428.22, 755.49, 1123.08, 893.46]
+    },
+    {
+      "id": "p164-b13",
+      "type": "paragraph",
+      "text": "Cho vay được phân loại ngắn hạn và dài hạn trên bảng cân đối kế toán hợp nhất căn cứ\ntheo kỳ hạn còn lại của các khoản cho vay tại ngày của bảng cân đối kế toán hợp nhất\nđến ngày tới hạn thu hồi.",
+      "bbox": [428.22, 913.64, 1123.05, 979.63]
+    },
+    {"id": "p164-b14", "type": "paragraph", "text": "2.12 Hợp đồng phát triển phần mềm và tích hợp hệ thống", "bbox": [1165.61, 218.41, 1656.72, 236.41]},
+    {
+      "id": "p164-b15",
+      "type": "paragraph",
+      "text": "Tập đoàn áp dụng chính sách kế toán như sau để hạch toán và theo dõi hợp đồng phát\ntriển phần mềm và tích hợp hệ thống.",
+      "bbox": [1165.61, 256.58, 1860.41, 298.58]
+    },
+    {
+      "id": "p164-b16",
+      "type": "paragraph",
+      "text": "Khi kết quả thực hiện hợp đồng phát triển phần mềm và tích hợp hệ thống có thể ước tính\nmột cách đáng tin cậy và Tập đoàn được thanh toán theo tiến độ công việc, Tập đoàn sử\ndụng phương pháp tỷ lệ phần trăm hoàn thành để xác định khoản doanh thu và chi phí\nphù hợp để ghi nhận trong kỳ kế toán.",
+      "bbox": [1165.61, 318.76, 1860.45, 408.74]
+    },
+    {
+      "id": "p164-b17",
+      "type": "paragraph",
+      "text": "Khi kết quả thực hiện hợp đồng phát triển phần mềm và tích hợp hệ thống không thể ước\ntính một cách đáng tin cậy, doanh thu của hợp đồng chỉ được ghi nhận tương đương với\ncác chi phí đã phát sinh của hợp đồng mà việc thu hồi là tương đối chắc chắn. Chi phí của\nhợp đồng chỉ được ghi nhận khi các chi phí này đã phát sinh trong kỳ kế toán.",
+      "bbox": [1165.61, 428.92, 1860.39, 518.9]
+    },
+    {
+      "id": "p164-b18",
+      "type": "paragraph",
+      "text": "Tổng số chi phí phát sinh và lợi nhuận hoặc lỗ ghi nhận của mỗi hợp đồng được so sánh\nvới tổng số tiền ghi trên hóa đơn đã phát hành tính đến cuối kỳ kế toán. Khi chi phí phát\nsinh và lợi nhuận ghi nhận (trừ đi lỗ ghi nhận) vượt quá tổng số tiền ghi trên hóa đơn đã\nphát hành, số dư được trình bày là khoản phải thu theo tiến độ kế hoạch hợp đồng. Khi\ntổng số tiền ghi trên hóa đơn đã phát hành vượt quá chi phí cộng với lợi nhuận ghi nhận\n(trừ đi lỗ ghi nhận), số dư được trình bày là khoản phải trả theo tiến độ kế hoạch hợp đồng.",
+      "bbox": [1165.61, 539.08, 1860.46, 677.05]
+    },
+    {"id": "p164-b19", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p164-b20", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.5, 213.35, 271.58, 232.35]},
+    {"id": "p164-b21", "type": "furniture", "text": "02\nDẤU ẤN 2024 & TỔNG QUAN VỀ FPT", "bbox": [40.5, 263.69, 315.44, 282.69]},
+    {"id": "p164-b22", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 314.03, 243.52, 333.03]},
+    {"id": "p164-b23", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 364.37, 326.26, 383.37]},
+    {"id": "p164-b24", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 414.71, 206.67, 433.71]},
+    {"id": "p164-b25", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 465.05, 171.05, 484.05]},
+    {"id": "p164-b26", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [45.96, 518.56, 219.88, 537.56]},
+    {"id": "p164-b27", "type": "furniture", "text": "07", "bbox": [30.0, 961.65, 184.97, 1080]},
+    {"id": "p164-b28", "type": "furniture", "text": "162", "bbox": [288.22, 988.53, 326.93, 1011.4]}
+  ]
+}
