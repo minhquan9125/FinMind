@@ -12,7 +12,6 @@ export const ADMIN_LINKS = {
   corpus: "/admin/corpus",
   configuration: "/admin/configuration",
   audit: "/admin/audit",
-  evaluation: "/evaluation",
 };
 
 const groups = [
@@ -29,9 +28,6 @@ const groups = [
   ] },
   { label: "Kiểm toán", items: [
     { id: "audit", label: "Nhật ký kiểm toán", icon: "✓" },
-  ] },
-  { label: "Đánh giá", items: [
-    { id: "evaluation", label: "Đánh giá RAG (B0–B3)", icon: "✎" },
   ] },
 ];
 
