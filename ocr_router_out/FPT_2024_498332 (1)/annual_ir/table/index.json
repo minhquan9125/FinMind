@@ -2273,5 +2273,2098 @@
     }
   ],
   "file_pattern": "p-{page:03d}.ir.json",
-  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells."
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "cross_report_peer": "BCTN_2025.pdf",
+  "cross_report_summary": {
+    "compared": 139,
+    "matched": 136,
+    "flagged_for_review": 3
+  },
+  "cross_report_checks": [
+    {
+      "statement": "balance_sheet",
+      "code": "100",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "45.535.942.846.453",
+      "right_raw": "45.535.942.846.453",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "110",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "9.315.440.438.884",
+      "right_raw": "9.315.440.438.884",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "111",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "6.725.619.929.289",
+      "right_raw": "6.725.619.929.289",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "112",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.589.820.509.595",
+      "right_raw": "2.589.820.509.595",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "120",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "21.785.213.686.808",
+      "right_raw": "21.785.213.686.808",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "123",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "21.785.213.686.808",
+      "right_raw": "21.785.213.686.808",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "130",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "11.381.523.992.803",
+      "right_raw": "11.381.523.992.803",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "131",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "10.537.019.113.380",
+      "right_raw": "10.537.019.113.380",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "132",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "610.379.845.664",
+      "right_raw": "610.379.845.664",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "134",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "136.097.256.629",
+      "right_raw": "136.097.256.629",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "135",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "9.808.117.590",
+      "right_raw": "9.808.117.590",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "136",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "707.751.585.399",
+      "right_raw": "707.751.585.399",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "137",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(619.531.925.859)",
+      "right_raw": "(619.531.925.859)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "140",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.856.756.949.030",
+      "right_raw": "1.856.756.949.030",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "141",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.990.224.486.513",
+      "right_raw": "1.990.224.486.513",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "149",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(133.467.537.483)",
+      "right_raw": "(133.467.537.483)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "150",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.197.007.778.928",
+      "right_raw": "1.197.007.778.928",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "151",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "479.707.218.558",
+      "right_raw": "479.707.218.558",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "152",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "648.697.117.785",
+      "right_raw": "648.697.117.785",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "153",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "68.603.442.585",
+      "right_raw": "68.603.442.585",
+      "numeric_equal": true,
+      "pdf_pages": [
+        148,
+        165
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "200",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "26.464.052.832.167",
+      "right_raw": "26.464.052.832.167",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "210",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "331.646.166.008",
+      "right_raw": "331.646.166.008",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "215",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.509.722.351",
+      "right_raw": "2.509.722.351",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "216",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "381.508.926.294",
+      "right_raw": "381.508.926.294",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "219",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(52.372.482.637)",
+      "right_raw": "(52.372.482.637)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "220",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "14.816.131.186.204",
+      "right_raw": "14.816.131.186.204",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "221",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "12.774.567.961.718",
+      "right_raw": "12.774.567.961.718",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "222",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "24.457.733.666.511",
+      "right_raw": "24.457.733.666.511",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "223",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(11.683.165.704.793)",
+      "right_raw": "(11.683.165.704.793)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "224",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.042.708.364",
+      "right_raw": "2.042.708.364",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "225",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "5.716.034.788",
+      "right_raw": "5.716.034.788",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "226",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(3.673.326.424)",
+      "right_raw": "(3.673.326.424)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "227",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.039.520.516.122",
+      "right_raw": "2.039.520.516.122",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "228",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "3.656.302.027.788",
+      "right_raw": "3.656.302.027.788",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "229",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(1.616.781.511.666)",
+      "right_raw": "(1.616.781.511.666)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "240",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.559.766.724.411",
+      "right_raw": "2.559.766.724.411",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "242",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.559.766.724.411",
+      "right_raw": "2.559.766.724.411",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "250",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "3.318.095.237.260",
+      "right_raw": "3.318.095.237.260",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "252",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.281.222.436.752",
+      "right_raw": "2.281.222.436.752",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "253",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "3.393.737.969.842",
+      "right_raw": "3.393.737.969.842",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "254",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(2.357.065.169.334)",
+      "right_raw": "(2.357.065.169.334)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "255",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "200.000.000",
+      "right_raw": "200.000.000",
+      "numeric_equal": true,
+      "pdf_pages": [
+        149,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "260",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "5.438.413.518.284",
+      "right_raw": "5.438.413.518.284",
+      "numeric_equal": true,
+      "pdf_pages": [
+        150,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "261",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "3.765.187.625.417",
+      "right_raw": "3.765.187.625.417",
+      "numeric_equal": true,
+      "pdf_pages": [
+        150,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "262",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "575.767.686.189",
+      "right_raw": "575.767.686.189",
+      "numeric_equal": true,
+      "pdf_pages": [
+        150,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "269",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.097.458.206.678",
+      "right_raw": "1.097.458.206.678",
+      "numeric_equal": true,
+      "pdf_pages": [
+        150,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "270",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "71.999.995.678.620",
+      "right_raw": "71.999.995.678.620",
+      "numeric_equal": true,
+      "pdf_pages": [
+        150,
+        166
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "300",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "36.272.455.573.820",
+      "right_raw": "36.272.455.573.820",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "310",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "34.836.184.067.740",
+      "right_raw": "34.836.184.067.740",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "311",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "4.423.912.840.298",
+      "right_raw": "4.423.912.840.298",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "312",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "562.066.755.666",
+      "right_raw": "562.066.755.666",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "313",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.298.821.801.748",
+      "right_raw": "2.298.821.801.748",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "314",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "4.341.013.546.853",
+      "right_raw": "4.341.013.546.853",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "315",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.241.089.122.260",
+      "right_raw": "1.241.089.122.260",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "317",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "92.738.882.375",
+      "right_raw": "92.738.882.375",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "318",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "4.224.649.366.399",
+      "right_raw": "4.224.649.366.399",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "319",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "874.015.837.328",
+      "right_raw": "874.015.837.328",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "320",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "14.446.238.451.323",
+      "right_raw": "14.446.238.451.323",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "321",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "496.600.145.127",
+      "right_raw": "496.600.145.127",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "322",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.835.037.318.363",
+      "right_raw": "1.835.037.318.363",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "330",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.436.271.506.080",
+      "right_raw": "1.436.271.506.080",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "336",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "131.344.534.204",
+      "right_raw": "131.344.534.204",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "337",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "183.788.442.785",
+      "right_raw": "183.788.442.785",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "338",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "501.115.537.075",
+      "right_raw": "501.115.537.075",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "341",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "356.966.680.614",
+      "right_raw": "356.966.680.614",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "342",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "262.864.215.119",
+      "right_raw": "262.864.215.119",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "343",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "192.096.283",
+      "right_raw": "192.096.283",
+      "numeric_equal": true,
+      "pdf_pages": [
+        151,
+        167
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "400",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "35.727.540.104.800",
+      "right_raw": "35.727.540.104.800",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "410",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "35.724.790.104.800",
+      "right_raw": "35.724.790.104.800",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "411",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "14.710.691.830.000",
+      "right_raw": "14.710.691.830.000",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "411a",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "14.710.691.830.000",
+      "right_raw": "14.710.691.830.000",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "412",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "49.713.213.411",
+      "right_raw": "49.713.213.411",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "414",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.929.012.703.454",
+      "right_raw": "1.929.012.703.454",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "417",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(49.485.560.860)",
+      "right_raw": "(49.485.560.860)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "418",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.033.289.141.535",
+      "right_raw": "2.033.289.141.535",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "420",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "87.730.484.825",
+      "right_raw": "87.730.484.825",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "421",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "11.030.528.671.431",
+      "right_raw": "11.030.528.671.431",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "421a",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "5.458.228.109.134",
+      "right_raw": "5.458.228.109.134",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "421b",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "5.572.300.562.297",
+      "right_raw": "5.572.300.562.297",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "429",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "5.933.309.621.004",
+      "right_raw": "5.933.309.621.004",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "430",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.750.000.000",
+      "right_raw": "2.750.000.000",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "431",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.750.000.000",
+      "right_raw": "2.750.000.000",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "440",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "status": "match",
+      "reason": null,
+      "left_raw": "71.999.995.678.620",
+      "right_raw": "71.999.995.678.620",
+      "numeric_equal": true,
+      "pdf_pages": [
+        152,
+        168
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "01",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "11.069.666.417.819",
+      "right_raw": "11.069.666.417.819",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "02",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.535.298.475.665",
+      "right_raw": "2.535.298.475.665",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "03",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.148.951.390.915",
+      "right_raw": "1.148.951.390.915",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "04",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "46.311.803.197",
+      "right_raw": "46.311.803.197",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "05",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(1.725.022.480.893)",
+      "right_raw": "(1.725.022.480.893)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "06",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "551.639.361.786",
+      "right_raw": "551.639.361.786",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "08",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "13.626.844.968.489",
+      "right_raw": "13.626.844.968.489",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "09",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(1.913.663.012.505)",
+      "right_raw": "(1.913.663.012.505)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "10",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(265.267.561.842)",
+      "right_raw": "(265.267.561.842)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "11",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "2.875.571.263.689",
+      "right_raw": "2.875.571.263.689",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "12",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(393.964.502.357)",
+      "right_raw": "(393.964.502.357)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "14",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(607.154.747.076)",
+      "right_raw": "(607.154.747.076)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "15",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(1.209.921.507.569)",
+      "right_raw": "(1.209.921.507.569)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "17",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(408.667.711.961)",
+      "right_raw": "(408.667.711.961)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "20",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "11.703.777.188.868",
+      "right_raw": "11.703.777.188.868",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "21",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(3.275.312.325.702)",
+      "right_raw": "(3.275.312.325.702)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "22",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "14.227.383.215",
+      "right_raw": "14.227.383.215",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "23",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(41.956.569.113.369)",
+      "right_raw": "(41.956.569.113.369)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "24",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "36.283.758.374.630",
+      "right_raw": "36.283.758.374.630",
+      "numeric_equal": true,
+      "pdf_pages": [
+        155,
+        171
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "25",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(1.106.193.484.800)",
+      "right_raw": "(1.106.193.484.800)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "26",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "48.102.486.048",
+      "right_raw": "48.102.486.048",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "27",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.530.174.506.877",
+      "right_raw": "1.530.174.506.877",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "30",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(8.461.812.173.101)",
+      "right_raw": "(8.461.812.173.101)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "31",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "163.342.989.874",
+      "right_raw": "163.342.989.874",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "33",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "30.946.282.706.201",
+      "right_raw": "30.946.282.706.201",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "34",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(30.013.226.682.923)",
+      "right_raw": "(30.013.226.682.923)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "35",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(2.305.346.865)",
+      "right_raw": "(2.305.346.865)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "36",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(3.291.859.792.121)",
+      "right_raw": "(3.291.859.792.121)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "40",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(2.197.766.125.834)",
+      "right_raw": "(2.197.766.125.834)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "50",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.044.198.889.933",
+      "right_raw": "1.044.198.889.933",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "60",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "8.279.156.683.221",
+      "right_raw": "8.279.156.683.221",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "61",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "(7.915.134.270)",
+      "right_raw": "(7.915.134.270)",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "cash_flow",
+      "code": "70",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "9.315.440.438.884",
+      "right_raw": "9.315.440.438.884",
+      "numeric_equal": true,
+      "pdf_pages": [
+        156,
+        172
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "01",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "62.962.652.134.635",
+      "right_raw": "62.962.652.134.635",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "02",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "113.857.783.268",
+      "right_raw": "113.857.783.268",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "10",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "62.848.794.351.367",
+      "right_raw": "62.848.794.351.367",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "11",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "39.150.445.981.451",
+      "right_raw": "39.150.445.981.451",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "20",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "23.698.348.369.916",
+      "right_raw": "23.698.348.369.916",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "21",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.935.749.115.305",
+      "right_raw": "1.935.749.115.305",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "22",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.811.547.381.981",
+      "right_raw": "1.811.547.381.981",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "23",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "551.639.361.786",
+      "right_raw": "551.639.361.786",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "24",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "392.531.256.272",
+      "right_raw": "392.531.256.272",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "25",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "6.115.961.971.783",
+      "right_raw": "6.115.961.971.783",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "26",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "7.074.038.614.774",
+      "right_raw": "7.074.038.614.774",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "30",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "11.025.080.772.955",
+      "right_raw": "11.025.080.772.955",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "31",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "175.450.599.740",
+      "right_raw": "175.450.599.740",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "32",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "130.864.954.876",
+      "right_raw": "130.864.954.876",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "40",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "44.585.644.864",
+      "right_raw": "44.585.644.864",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "50",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "11.069.666.417.819",
+      "right_raw": "11.069.666.417.819",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "51",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.922.927.614.658",
+      "right_raw": "1.922.927.614.658",
+      "numeric_equal": true,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "52",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "review",
+      "reason": "CROSS_PERIOD_MISMATCH",
+      "left_raw": "(280.683.727.283)",
+      "right_raw": "(280.683.727.283",
+      "numeric_equal": false,
+      "pdf_pages": [
+        153,
+        169
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "60",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "9.427.422.530.444",
+      "right_raw": "9.427.422.530.444",
+      "numeric_equal": true,
+      "pdf_pages": [
+        154,
+        170
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "61",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "7.856.767.812.178",
+      "right_raw": "7.856.767.812.178",
+      "numeric_equal": true,
+      "pdf_pages": [
+        154,
+        170
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "62",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "match",
+      "reason": null,
+      "left_raw": "1.570.654.718.266",
+      "right_raw": "1.570.654.718.266",
+      "numeric_equal": true,
+      "pdf_pages": [
+        154,
+        170
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "70",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "review",
+      "reason": "CROSS_PERIOD_MISMATCH",
+      "left_raw": "4.944",
+      "right_raw": "4.292",
+      "numeric_equal": false,
+      "pdf_pages": [
+        154,
+        170
+      ]
+    },
+    {
+      "statement": "income_statement",
+      "code": "71",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "status": "review",
+      "reason": "CROSS_PERIOD_MISMATCH",
+      "left_raw": "4.944",
+      "right_raw": "4.292",
+      "numeric_equal": false,
+      "pdf_pages": [
+        154,
+        170
+      ]
+    }
+  ]
 }
