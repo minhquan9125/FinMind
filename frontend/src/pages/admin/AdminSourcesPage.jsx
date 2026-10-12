@@ -81,13 +81,13 @@ const nowLabel = () => `${new Date().toTimeString().slice(0, 8)} Hôm nay`;
 
 // ─── Thành phần nhỏ ─────────────────────────────────────────────────────────
 
-function ToggleButton({ src, onPause, onEnable }) {
+function ToggleButton({ src, onPause, onEnable, width = "w-[108px]" }) {
   if (src.status === "Hoạt động") {
-    return <Button variant="secondary" className="min-h-8 px-2 py-1 text-xs" onClick={onPause}>⏸ Tạm dừng</Button>;
+    return <Button variant="secondary" className={`min-h-8 ${width} whitespace-nowrap px-2 py-1 text-xs`} onClick={onPause}>⏸ Tạm dừng</Button>;
   }
   const check = canEnable(src);
   return (
-    <Button variant="secondary" className="min-h-8 px-2 py-1 text-xs" disabled={!check.ok}
+    <Button variant="secondary" className={`min-h-8 ${width} whitespace-nowrap px-2 py-1 text-xs`} disabled={!check.ok}
       title={check.ok ? "Bật nguồn dữ liệu" : check.reason} onClick={onEnable}>
       ▶ Bật
     </Button>
@@ -124,6 +124,10 @@ function Toasts({ items }) {
 
 // ─── Bảng nguồn ─────────────────────────────────────────────────────────────
 
+// Cột phụ chỉ hiện khi màn rất rộng; màn vừa vẫn đủ chỗ cho 4 nút thao tác.
+const WIDE_ONLY = "hidden min-[1700px]:table-cell";
+const SOURCE_WIDE_COLUMNS = ["Phương thức truy cập", "Phiên bản", "Chủ sở hữu"];
+
 function SourceTable({ rows, activeId, testingIds, onOpen, onTest, onEdit, onPause, onEnable, onResetFilters }) {
   if (rows.length === 0) {
     return (
@@ -133,12 +137,13 @@ function SourceTable({ rows, activeId, testingIds, onOpen, onTest, onEdit, onPau
     );
   }
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+    <>
+    <div className="hidden overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm xl:block">
       <table className="min-w-full border-collapse text-left text-xs">
         <thead className="border-b border-slate-200 bg-slate-50 font-semibold text-slate-500">
           <tr>
             {["Tên nguồn", "Loại nguồn", "Phương thức truy cập", "Trạng thái", "Phiên bản", "Lần kiểm tra gần nhất", "Chủ sở hữu", "Thao tác"].map((h) => (
-              <th key={h} scope="col" className={`whitespace-nowrap px-3 py-3 first:px-4 ${h === "Thao tác" ? "text-right" : ""}`}>{h}</th>
+              <th key={h} scope="col" className={`whitespace-nowrap px-3 py-3 first:px-4 ${h === "Thao tác" ? "text-right" : ""} ${SOURCE_WIDE_COLUMNS.includes(h) ? WIDE_ONLY : ""}`}>{h}</th>
             ))}
           </tr>
         </thead>
@@ -153,18 +158,18 @@ function SourceTable({ rows, activeId, testingIds, onOpen, onTest, onEdit, onPau
                   <div className="mt-0.5 font-mono text-[11px] text-slate-500">{s.id}</div>
                 </td>
                 <td className="px-3 py-3"><span className="whitespace-nowrap rounded border border-slate-200 bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-700">{s.type}</span></td>
-                <td className="px-3 py-3 text-slate-500">{s.access}</td>
+                <td className={`px-3 py-3 text-slate-500 ${WIDE_ONLY}`}>{s.access}</td>
                 <td className="px-3 py-3"><StatusBadge tone={STATUS_TONE[s.status]}>{s.status}</StatusBadge></td>
-                <td className="px-3 py-3 font-mono font-medium text-blue-600">{s.version}</td>
+                <td className={`px-3 py-3 font-mono font-medium text-blue-600 ${WIDE_ONLY}`}>{s.version}</td>
                 <td className="px-3 py-3"><StatusBadge tone={test.tone}>{test.label}</StatusBadge></td>
-                <td className="px-3 py-3 text-slate-500">{s.owner || <span className="italic text-slate-400">{NO_DATA}</span>}</td>
-                <td className="px-4 py-3 text-right" onClick={(e) => e.stopPropagation()}>
-                  <div className="inline-flex flex-wrap items-center justify-end gap-1.5">
-                    <Button variant="ghost" className="min-h-8 px-2 py-1 text-xs" onClick={() => onOpen(s.id)}>Xem chi tiết</Button>
-                    <Button variant="secondary" className="min-h-8 px-2 py-1 text-xs" disabled={testing} loading={testing} onClick={() => onTest(s.id)}>
+                <td className={`px-3 py-3 text-slate-500 ${WIDE_ONLY}`}>{s.owner || <span className="italic text-slate-400">{NO_DATA}</span>}</td>
+                <td className="whitespace-nowrap px-4 py-3 text-right" onClick={(e) => e.stopPropagation()}>
+                  <div className="inline-flex flex-nowrap items-center justify-end gap-1.5">
+                    <Button variant="ghost" className="min-h-8 w-[92px] whitespace-nowrap px-2 py-1 text-xs" onClick={() => onOpen(s.id)}>Xem chi tiết</Button>
+                    <Button variant="secondary" className="min-h-8 w-[96px] whitespace-nowrap px-2 py-1 text-xs" disabled={testing} loading={testing} onClick={() => onTest(s.id)}>
                       {testing ? "Đang test..." : "Kiểm tra"}
                     </Button>
-                    <Button variant="secondary" className="min-h-8 px-2 py-1 text-xs" onClick={() => onEdit(s.id)}>Sửa</Button>
+                    <Button variant="secondary" className="min-h-8 w-[56px] whitespace-nowrap px-2 py-1 text-xs" onClick={() => onEdit(s.id)}>Sửa</Button>
                     <ToggleButton src={s} onPause={() => onPause(s.id)} onEnable={() => onEnable(s.id)} />
                   </div>
                 </td>
@@ -174,6 +179,48 @@ function SourceTable({ rows, activeId, testingIds, onOpen, onTest, onEdit, onPau
         </tbody>
       </table>
     </div>
+
+    <div className="grid gap-3 xl:hidden">
+      {rows.map((s) => {
+        const testing = testingIds.has(s.id);
+        const test = TEST_BADGE[s.lastTest];
+        return (
+          <div key={s.id} onClick={() => onOpen(s.id)}
+            className={`cursor-pointer rounded-xl border bg-white p-4 shadow-sm ${activeId === s.id ? "border-blue-300 bg-blue-50/40" : "border-slate-200"}`}>
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <div>
+                <div className="text-sm font-semibold text-slate-900">{s.name}</div>
+                <div className="mt-0.5 font-mono text-[11px] text-slate-500">{s.id}</div>
+              </div>
+              <StatusBadge tone={STATUS_TONE[s.status]}>{s.status}</StatusBadge>
+            </div>
+            <dl className="mt-3 grid grid-cols-1 gap-x-6 gap-y-2 text-xs sm:grid-cols-2">
+              {[
+                ["Loại nguồn", s.type],
+                ["Phương thức truy cập", s.access],
+                ["Phiên bản", <span className="font-mono text-blue-600">{s.version}</span>],
+                ["Lần kiểm tra gần nhất", <StatusBadge tone={test.tone}>{test.label}</StatusBadge>],
+                ["Chủ sở hữu", s.owner || <span className="italic text-slate-400">{NO_DATA}</span>],
+              ].map(([k, v]) => (
+                <div key={k} className="flex items-center justify-between gap-3 border-b border-slate-50 pb-1 sm:block sm:border-0 sm:pb-0">
+                  <dt className="text-slate-500">{k}</dt>
+                  <dd className="text-right font-medium text-slate-800 sm:mt-0.5 sm:text-left">{v}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="mt-4 grid grid-cols-2 gap-2 border-t border-slate-100 pt-3 sm:grid-cols-4" onClick={(e) => e.stopPropagation()}>
+              <Button variant="secondary" className="min-h-8 w-full whitespace-nowrap px-2 py-1 text-xs text-blue-600" onClick={() => onOpen(s.id)}>Xem chi tiết</Button>
+              <Button variant="secondary" className="min-h-8 w-full whitespace-nowrap px-2 py-1 text-xs" disabled={testing} loading={testing} onClick={() => onTest(s.id)}>
+                {testing ? "Đang test..." : "Kiểm tra"}
+              </Button>
+              <Button variant="secondary" className="min-h-8 w-full whitespace-nowrap px-2 py-1 text-xs" onClick={() => onEdit(s.id)}>Sửa</Button>
+              <ToggleButton src={s} width="w-full" onPause={() => onPause(s.id)} onEnable={() => onEnable(s.id)} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+    </>
   );
 }
 

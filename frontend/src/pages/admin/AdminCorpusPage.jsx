@@ -117,15 +117,49 @@ function Tabs({ tab, counts, onChange }) {
 
 // ─── Tab 1: phiên bản corpus ────────────────────────────────────────────────
 
-function CorporaTable({ corpora, onOpen, onActivate, onArchive, onCompare }) {
-  const small = "min-h-8 px-2 py-1 text-xs";
+// Luôn đủ 4 nút theo thứ tự cố định, độ rộng cố định để các hàng thẳng cột.
+// Nút không dùng được thì mờ đi và có lý do ở tooltip, không bỏ trống.
+function RowActions({ c, onOpen, onActivate, onArchive, onCompare, stacked = false }) {
+  // stacked: màn nhỏ, 2 cột (điện thoại) hoặc 4 cột (máy tính bảng), nút giãn đều.
+  const base = "min-h-8 px-2 py-1 text-xs whitespace-nowrap";
+  const w = (fixed) => (stacked ? "w-full" : fixed);
+  const canActivate = c.status === "Chưa kích hoạt";
+  const activateWhy = {
+    "Đang hoạt động": "Corpus này đang hoạt động",
+    "Đang chuẩn bị": "Corpus đang chuẩn bị, chưa thể kích hoạt",
+    "Đã lưu trữ": "Corpus đã lưu trữ, không kích hoạt lại được",
+    "Kiểm tra không đạt": "Corpus không đạt kiểm tra nên không kích hoạt được",
+  }[c.status];
+  const archiveWhy = {
+    "Đang hoạt động": "Không thể lưu trữ corpus đang hoạt động",
+    "Đã lưu trữ": "Corpus này đã được lưu trữ",
+    "Kiểm tra không đạt": "Corpus không đạt kiểm tra nên không lưu trữ được",
+  }[c.status];
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+    <div className={stacked ? "grid grid-cols-2 gap-2 sm:grid-cols-4" : "inline-flex flex-nowrap items-center justify-end gap-1.5"}>
+      <Button variant={stacked ? "secondary" : "ghost"} className={`${base} ${w("w-[92px]")} ${stacked ? "text-blue-600" : ""}`} onClick={() => onOpen(c.v)}>Xem chi tiết</Button>
+      <Button variant="secondary" className={`${base} ${w("w-[84px]")}`} disabled={!canActivate}
+        title={canActivate ? "Kích hoạt corpus này" : activateWhy} onClick={() => onActivate(c.v)}>Kích hoạt</Button>
+      <Button variant="secondary" className={`${base} ${w("w-[76px]")}`} disabled={Boolean(archiveWhy)}
+        title={archiveWhy || "Lưu trữ corpus này"} onClick={() => onArchive(c.v)}>Lưu trữ</Button>
+      <Button variant="secondary" className={`${base} ${w("w-[76px]")}`} onClick={() => onCompare(c.v)}>So sánh</Button>
+    </div>
+  );
+}
+
+// Cột phụ chỉ hiện khi màn rất rộng; màn vừa vẫn đủ chỗ cho 4 nút thao tác.
+const WIDE_ONLY = "hidden min-[1700px]:table-cell";
+const CORPUS_WIDE_COLUMNS = ["Ngày tạo", "Phạm vi doanh nghiệp", "Phạm vi kỳ dữ liệu", "Người tạo"];
+
+function CorporaTable({ corpora, onOpen, onActivate, onArchive, onCompare }) {
+  return (
+    <>
+    <div className="hidden overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm xl:block">
       <table className="min-w-full border-collapse text-left text-xs">
         <thead className="border-b border-slate-200 bg-slate-50 font-semibold text-slate-600">
           <tr>
             {["Phiên bản", "Trạng thái", "Ngày tạo", "Số tài liệu", "Phạm vi doanh nghiệp", "Phạm vi kỳ dữ liệu", "Người tạo", "Manifest", "Thao tác"].map((h) => (
-              <th key={h} scope="col" className={`whitespace-nowrap px-4 py-3 ${h === "Thao tác" ? "text-right" : ""}`}>{h}</th>
+              <th key={h} scope="col" className={`whitespace-nowrap px-4 py-3 ${h === "Thao tác" ? "text-right" : ""} ${CORPUS_WIDE_COLUMNS.includes(h) ? WIDE_ONLY : ""}`}>{h}</th>
             ))}
           </tr>
         </thead>
@@ -136,28 +170,50 @@ function CorporaTable({ corpora, onOpen, onActivate, onArchive, onCompare }) {
                 <button type="button" onClick={() => onOpen(c.v)} className="text-blue-600 hover:underline">Corpus {c.v}</button>
               </td>
               <td className="whitespace-nowrap px-4 py-3"><StatusBadge tone={STATUS_TONE[c.status]}>{c.status}</StatusBadge></td>
-              <td className="whitespace-nowrap px-4 py-3 text-slate-600">{c.created}</td>
+              <td className={`whitespace-nowrap px-4 py-3 text-slate-600 ${WIDE_ONLY}`}>{c.created}</td>
               <td className="whitespace-nowrap px-4 py-3 tabular-nums text-slate-600">{c.docs.length} tài liệu</td>
-              <td className="whitespace-nowrap px-4 py-3 text-slate-600">{c.companies}</td>
-              <td className="whitespace-nowrap px-4 py-3 text-slate-600">{c.period}</td>
-              <td className="whitespace-nowrap px-4 py-3 text-slate-600">{c.by}</td>
+              <td className={`whitespace-nowrap px-4 py-3 text-slate-600 ${WIDE_ONLY}`}>{c.companies}</td>
+              <td className={`whitespace-nowrap px-4 py-3 text-slate-600 ${WIDE_ONLY}`}>{c.period}</td>
+              <td className={`whitespace-nowrap px-4 py-3 text-slate-600 ${WIDE_ONLY}`}>{c.by}</td>
               <td className="whitespace-nowrap px-4 py-3 font-medium">{c.manifest ? <span className="text-emerald-700">Có manifest</span> : <span className="text-slate-400">Chưa có manifest</span>}</td>
-              <td className="px-4 py-3 text-right">
-                <div className="inline-flex flex-wrap items-center justify-end gap-1">
-                  <Button variant="ghost" className={small} onClick={() => onOpen(c.v)}>Xem chi tiết</Button>
-                  {c.status === "Chưa kích hoạt" && <Button variant="secondary" className={small} onClick={() => onActivate(c.v)}>Kích hoạt</Button>}
-                  {c.status === "Đang hoạt động" && <Button variant="secondary" className={small} disabled title="Không thể lưu trữ corpus đang hoạt động">Lưu trữ</Button>}
-                  {c.status !== "Đang hoạt động" && c.status !== "Đã lưu trữ" && c.status !== "Kiểm tra không đạt" && (
-                    <Button variant="secondary" className={small} onClick={() => onArchive(c.v)}>Lưu trữ</Button>
-                  )}
-                  <Button variant="secondary" className={small} onClick={() => onCompare(c.v)}>So sánh</Button>
-                </div>
+              <td className="whitespace-nowrap px-4 py-3 text-right">
+                <RowActions c={c} onOpen={onOpen} onActivate={onActivate} onArchive={onArchive} onCompare={onCompare} />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
+
+    <div className="grid gap-3 xl:hidden">
+      {corpora.map((c) => (
+        <div key={c.v} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <button type="button" onClick={() => onOpen(c.v)} className="text-sm font-semibold text-blue-600 hover:underline">Corpus {c.v}</button>
+            <StatusBadge tone={STATUS_TONE[c.status]}>{c.status}</StatusBadge>
+          </div>
+          <dl className="mt-3 grid grid-cols-1 gap-x-6 gap-y-2 text-xs sm:grid-cols-2">
+            {[
+              ["Ngày tạo", c.created],
+              ["Số tài liệu", `${c.docs.length} tài liệu`],
+              ["Phạm vi doanh nghiệp", c.companies],
+              ["Phạm vi kỳ dữ liệu", c.period],
+              ["Người tạo", c.by],
+              ["Manifest", c.manifest ? <span className="text-emerald-700">Có manifest</span> : <span className="text-slate-400">Chưa có manifest</span>],
+            ].map(([k, v]) => (
+              <div key={k} className="flex items-baseline justify-between gap-3 border-b border-slate-50 pb-1 sm:block sm:border-0 sm:pb-0">
+                <dt className="text-slate-500">{k}</dt>
+                <dd className="text-right font-medium text-slate-800 sm:mt-0.5 sm:text-left">{v}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="mt-4 border-t border-slate-100 pt-3">
+            <RowActions stacked c={c} onOpen={onOpen} onActivate={onActivate} onArchive={onArchive} onCompare={onCompare} />
+          </div>
+        </div>
+      ))}
+    </div>
+    </>
   );
 }
 
