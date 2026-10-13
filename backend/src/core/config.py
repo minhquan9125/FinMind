@@ -24,8 +24,16 @@ class Settings(BaseSettings):
     # proposal (Section 9, ADR04). Override with a smaller model for offline
     # unit tests via the EMBEDDING_MODEL environment variable.
     embedding_model: str = "BAAI/bge-m3"
+    # Pin the Hugging Face repository commit so every worker uses identical weights.
+    embedding_model_revision: str = "5617a9f61b028005a4858fdac845db406aefb181"
     embedding_device: str = "cpu"
     embedding_dim: int = 1024
+    embedding_batch_size: int = 8
+
+    @property
+    def embedding_model_ref(self) -> str:
+        """Stable model identity stored with each vector index version."""
+        return f"{self.embedding_model}@{self.embedding_model_revision}"
 
     # Chunking (same window/overlap as the original browser demo)
     chunk_words: int = 130

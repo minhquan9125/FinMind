@@ -51,7 +51,7 @@ async def _ingest_pages(
         pool,
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model,
+        settings.embedding_model_ref,
     )
     document_id = await repository.create_document(
         pool,
@@ -196,7 +196,7 @@ async def get_chunk_details(
     index_version_id = repository.index_version_id_for(
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model,
+        settings.embedding_model_ref,
     )
     chunk_rows = await repository.get_chunks(pool, document_id, index_version_id)
     chunk_texts = [row["text"] for row in chunk_rows]
@@ -238,7 +238,7 @@ async def get_vocab(
     index_version_id = repository.index_version_id_for(
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model,
+        settings.embedding_model_ref,
     )
     chunk_rows = await repository.get_chunks(pool, document_id, index_version_id)
     chunk_texts = [row["text"] for row in chunk_rows]
