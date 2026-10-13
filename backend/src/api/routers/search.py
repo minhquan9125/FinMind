@@ -35,7 +35,7 @@ async def search(
     index_version_id = repository.index_version_id_for(
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model,
+        settings.embedding_model_ref,
     )
     rows = await repository.vector_search(
         pool, payload.document_id, index_version_id, query_embedding, top_k
