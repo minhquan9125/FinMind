@@ -6,7 +6,12 @@ from dataclasses import dataclass, field
 import math
 from typing import Any, Protocol, Sequence
 
-EMBEDDING_DIM = 1024
+from ..core.config import get_settings
+
+# Single source of truth for the vector size: Settings.embedding_dim (text_chunks.embedding is vector(1024)).
+EMBEDDING_DIM = get_settings().embedding_dim
+# bge-m3 accepts up to 8192 tokens; longer text would be truncated silently. ~20k characters is a safe cap.
+MAX_TEXT_CHARS = 20_000
 
 
 class Embedder(Protocol):
@@ -17,6 +22,8 @@ class Embedder(Protocol):
 class BatchEmbeddingResult:
     succeeded: list[dict[str, Any]] = field(default_factory=list)
     failed: list[dict[str, Any]] = field(default_factory=list)
+    # Input that was not an embedding error: a repeated chunk_id. Not counted as a failure.
+    skipped: list[dict[str, Any]] = field(default_factory=list)
 
 
 def _validate_vector(vector: Any) -> str | None:
@@ -38,6 +45,7 @@ def embed_chunks(
     *,
     batch_size: int = 8,
     max_retries: int = 2,
+    max_chars: int = MAX_TEXT_CHARS,
 ) -> BatchEmbeddingResult:
     """Embed chunks; isolate a failed batch and retry only failing chunks.
 
@@ -61,14 +69,19 @@ def embed_chunks(
                                  "error": "missing chunk_id"})
             continue
         if chunk_id in seen_ids:
-            result.failed.append({"chunk_id": chunk_id, "attempts": 0, "retryable": False,
-                                 "error": "duplicate chunk_id; duplicate input ignored"})
+            result.skipped.append({"chunk_id": chunk_id,
+                                   "reason": "duplicate chunk_id; duplicate input ignored"})
             continue
         seen_ids.add(chunk_id)
         text = chunk.get("text")
         if not isinstance(text, str) or not text.strip():
             result.failed.append({"chunk_id": chunk_id, "attempts": 0, "retryable": False,
                                  "error": "chunk text is empty or invalid"})
+            continue
+        if len(text) > max_chars:
+            result.failed.append({"chunk_id": chunk_id, "attempts": 0, "retryable": False,
+                                 "error": f"chunk text has {len(text)} characters; limit is {max_chars} "
+                                          "(the model would truncate it silently)"})
             continue
         valid.append(chunk)
 

@@ -36,7 +36,7 @@ def main() -> int:
         model_name=settings.embedding_model,
         revision=settings.embedding_model_revision,
         device=settings.embedding_device,
-        batch_size=settings.embedding_batch_size,
+        batch_size=batch_size,  # one value for both the model's inner batches and the outer batches
     )
     result = embed_chunks(chunks, embedder, batch_size=batch_size, max_retries=args.max_retries)
     output = {
@@ -47,13 +47,16 @@ def main() -> int:
         "input_count": len(chunks),
         "succeeded_count": len(result.succeeded),
         "failed_count": len(result.failed),
+        "skipped_count": len(result.skipped),
         "succeeded": result.succeeded,
         "failed": result.failed,
+        "skipped": result.skipped,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(output, ensure_ascii=False), encoding="utf-8")
     # Keep the summary printable on Windows shells using legacy code pages.
-    print(f"Input: {len(chunks)} | succeeded: {len(result.succeeded)} | failed: {len(result.failed)}")
+    print(f"Input: {len(chunks)} | succeeded: {len(result.succeeded)} | failed: {len(result.failed)}"
+          f" | skipped (duplicate id): {len(result.skipped)}")
     print(f"JSON output: {args.output}")
     return 1 if result.failed else 0
 

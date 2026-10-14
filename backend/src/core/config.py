@@ -32,8 +32,12 @@ class Settings(BaseSettings):
 
     @property
     def embedding_model_ref(self) -> str:
-        """Stable model identity stored with each vector index version."""
-        return f"{self.embedding_model}@{self.embedding_model_revision}"
+        """Stable model identity stored with each vector index version.
+
+        Uses the first 12 characters of the pinned commit: index_versions.embedding_model
+        is varchar(50) and the full 40-character SHA does not fit (52 characters in total).
+        """
+        return f"{self.embedding_model}@{self.embedding_model_revision[:12]}"
 
     # Chunking (same window/overlap as the original browser demo)
     chunk_words: int = 130

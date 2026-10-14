@@ -23,6 +23,7 @@ class EmbeddingService:
     def __init__(
         self,
         model_name: str,
+        *,
         revision: str,
         device: str = "cpu",
         batch_size: int = 8,

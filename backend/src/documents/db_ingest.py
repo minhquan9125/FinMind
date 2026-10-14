@@ -1,5 +1,12 @@
 """Write chunks produced by ``db_chunking`` into ``documents`` and ``text_chunks``.
 
+OWNERSHIP: storing vectors in pgvector is WBS12/WBS17 (Nhan). This module is a
+REFERENCE implementation provided with the chunker so Nhan can reuse or replace
+it; it is not run by default (chunk_from_supabase.py needs --confirmed-with-nhan).
+It already settles: stable document/chunk ids, model label <= 50 characters
+(index_versions.embedding_model is varchar(50)), one transaction per document,
+and removal of chunks that no longer exist.
+
 Pipeline for one run: source documents -> chunks -> embeddings -> upsert.
 
 Rules:
@@ -21,9 +28,9 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Protocol, Sequence
 
+from .batch_embeddings import EMBEDDING_DIM, embed_chunks  # noqa: F401 - EMBEDDING_DIM re-exported
 from .db_chunking import CHUNKER_VERSION, DEFAULT_MAX_WORDS, NAMESPACE, DbChunk, SourceDocument, chunk_document
 
-EMBEDDING_DIM = 1024  # text_chunks.embedding is vector(1024)
 FILE_TYPE = "DB"  # documents.file_type is NOT NULL; these documents come from tables, not files
 
 
@@ -142,19 +149,20 @@ async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk]
     )
 
 
-def embed_all(embedder: Embedder, chunks: Sequence[DbChunk], batch_size: int = 32) -> list[list[float]]:
-    """Embed in batches. Raises on the first failing batch or a wrong vector size."""
-    vectors: list[list[float]] = []
-    for start in range(0, len(chunks), batch_size):
-        batch = [c.text for c in chunks[start:start + batch_size]]
-        out = embedder.embed_texts(batch)
-        if len(out) != len(batch):
-            raise ValueError(f"embedder returned {len(out)} vectors for {len(batch)} texts")
-        for vector in out:
-            if len(vector) != EMBEDDING_DIM:
-                raise ValueError(f"vector has {len(vector)} dimensions, text_chunks needs {EMBEDDING_DIM}")
-        vectors.extend(out)
-    return vectors
+def embed_all(embedder: Embedder, chunks: Sequence[DbChunk], batch_size: int = 32,
+              max_retries: int = 2) -> list[list[float]]:
+    """Embed through batch_embeddings.embed_chunks (per-chunk retry and validation).
+
+    A document is written only when every chunk got a valid vector, so any failure raises.
+    """
+    result = embed_chunks([{"chunk_id": c.chunk_id, "text": c.text} for c in chunks], embedder,
+                          batch_size=batch_size, max_retries=max_retries)
+    if result.failed:
+        first = result.failed[0]
+        raise ValueError(f"{len(result.failed)} chunk khong nhung duoc vector; dau tien "
+                         f"{first['chunk_id']}: {first['error']}")
+    by_id = {item["chunk"]["chunk_id"]: item["embedding"] for item in result.succeeded}
+    return [by_id[c.chunk_id] for c in chunks]
 
 
 async def ingest_documents(conn: Any, docs: Sequence[SourceDocument], embedder: Embedder,

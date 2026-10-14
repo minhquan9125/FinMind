@@ -12,9 +12,9 @@ def test_embedding_model_ref_includes_pinned_revision():
 
     assert settings.embedding_model == "BAAI/bge-m3"
     assert settings.embedding_model_revision == "5617a9f61b028005a4858fdac845db406aefb181"
-    assert settings.embedding_model_ref == (
-        "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181"
-    )
+    assert settings.embedding_model_ref == "BAAI/bge-m3@5617a9f61b02"
+    # index_versions.embedding_model is varchar(50)
+    assert len(settings.embedding_model_ref) <= 50
     assert settings.embedding_dim == 1024
     assert settings.embedding_batch_size == 8
 
