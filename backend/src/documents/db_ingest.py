@@ -13,8 +13,9 @@ Rules:
 * ``text_chunks.embedding`` is NOT NULL, so a document is written only when
   every one of its chunks was embedded. A document that fails is reported and
   skipped; it is never written half way.
-* Everything is an upsert keyed by stable ids: running twice gives the same
-  rows. Chunks of a document that no longer exist are removed.
+* Everything is keyed by stable ids: running twice gives the same rows. A chunk
+  whose content changed is NOT overwritten: the old chunk is retired
+  (superseded_at) and a new chunk is inserted, so citations stay valid.
 * One transaction per document, so a failure never leaves a partial document.
 * The embedder is injected (``embed_texts(list[str]) -> list[list[float]]``),
   so tests never need the 2.2GB model.
@@ -118,38 +119,85 @@ async def upsert_document(conn: Any, doc: SourceDocument, chunks: Sequence[DbChu
     )
 
 
+_INSERT_CHUNK_SQL = """
+INSERT INTO text_chunks
+    (chunk_id, document_id, index_version_id, chunk_index, page_number, section_label,
+     chunk_text, token_count, char_start, char_end, content_hash, embedding, locator_json, created_at)
+VALUES ($1, $2, $3, $4, NULL, $5, $6, $7, $8, $9, $10, $11, $12::jsonb, $13)
+"""
+
+
 async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk],
                        vectors: Sequence[Sequence[float]], index_version_id: str) -> None:
+    """Write chunks without ever changing an existing chunk_id (leader decision, option B).
+
+    * same position, same content  -> left untouched;
+    * same position, content changed -> the old chunk is retired (superseded_at) and a NEW
+      chunk is inserted, so evidence/citations keep pointing at the text they quoted;
+    * position no longer exists     -> retired, never deleted;
+    * content returns to an older text -> the retired chunk with that id is revived.
+    """
     if len(chunks) != len(vectors):
         raise ValueError(f"expected {len(chunks)} vectors, got {len(vectors)}")
     document_id = uuid.UUID(doc.document_id)
     version_id = uuid.UUID(index_version_id)
     now = datetime.now(timezone.utc)
-    # chunks that no longer exist for this document under this index version
-    await conn.execute(
-        "DELETE FROM text_chunks WHERE document_id = $1 AND index_version_id = $2 AND chunk_index >= $3",
-        document_id, version_id, len(chunks),
+
+    current = await conn.fetch(
+        "SELECT chunk_id, chunk_index, content_hash FROM text_chunks "
+        "WHERE document_id = $1 AND index_version_id = $2 AND superseded_at IS NULL",
+        document_id, version_id,
     )
-    await conn.executemany(
-        """
-        INSERT INTO text_chunks
-            (chunk_id, document_id, index_version_id, chunk_index, page_number, section_label,
-             chunk_text, token_count, char_start, char_end, content_hash, embedding, locator_json, created_at)
-        VALUES ($1, $2, $3, $4, NULL, $5, $6, $7, $8, $9, $10, $11, $12::jsonb, $13)
-        ON CONFLICT (index_version_id, document_id, chunk_index) DO UPDATE
-        SET chunk_id = EXCLUDED.chunk_id, section_label = EXCLUDED.section_label,
-            chunk_text = EXCLUDED.chunk_text, token_count = EXCLUDED.token_count,
-            char_start = EXCLUDED.char_start, char_end = EXCLUDED.char_end,
-            content_hash = EXCLUDED.content_hash, embedding = EXCLUDED.embedding,
-            locator_json = EXCLUDED.locator_json
-        """,
-        [
-            (uuid.UUID(stored_chunk_id(index_version_id, c)), document_id, version_id, c.chunk_index,
-             c.section_label[:255], c.text, c.token_count, c.char_start, c.char_end, c.content_hash,
-             list(vector), json.dumps(c.locator, ensure_ascii=False, default=str), now)
-            for c, vector in zip(chunks, vectors)
-        ],
-    )
+    current_by_position = {row["chunk_index"]: row for row in current}
+
+    retire: list[Any] = []
+    links: list[tuple[Any, Any]] = []  # (old chunk_id, new chunk_id)
+    pending: list[tuple[DbChunk, Sequence[float], uuid.UUID]] = []
+    for chunk, vector in zip(chunks, vectors):
+        new_id = uuid.UUID(stored_chunk_id(index_version_id, chunk))
+        old = current_by_position.get(chunk.chunk_index)
+        if old is not None:
+            if str(old["content_hash"]).strip() == chunk.content_hash:
+                continue  # nothing changed
+            retire.append(old["chunk_id"])
+            links.append((old["chunk_id"], new_id))
+        pending.append((chunk, vector, new_id))
+    retire.extend(row["chunk_id"] for position, row in current_by_position.items() if position >= len(chunks))
+
+    if retire:
+        await conn.execute(
+            "UPDATE text_chunks SET superseded_at = $2 WHERE chunk_id = ANY($1::uuid[]) AND superseded_at IS NULL",
+            retire, now,
+        )
+
+    # a text that came back: its old (retired) row already has this id, so revive it instead of inserting
+    revived: set[Any] = set()
+    if pending:
+        existing = await conn.fetch(
+            "SELECT chunk_id FROM text_chunks WHERE chunk_id = ANY($1::uuid[])",
+            [new_id for _, _, new_id in pending],
+        )
+        revived = {row["chunk_id"] for row in existing}
+        if revived:
+            await conn.execute(
+                "UPDATE text_chunks SET superseded_at = NULL, superseded_by_chunk_id = NULL "
+                "WHERE chunk_id = ANY($1::uuid[])",
+                list(revived),
+            )
+
+    rows = [
+        (new_id, document_id, version_id, c.chunk_index, c.section_label[:255], c.text, c.token_count,
+         c.char_start, c.char_end, c.content_hash, list(vector),
+         json.dumps(c.locator, ensure_ascii=False, default=str), now)
+        for c, vector, new_id in pending if new_id not in revived
+    ]
+    if rows:
+        await conn.executemany(_INSERT_CHUNK_SQL, rows)
+    if links:
+        await conn.executemany(
+            "UPDATE text_chunks SET superseded_by_chunk_id = $2 WHERE chunk_id = $1",
+            [pair for pair in links if pair[1] not in revived],
+        )
 
 
 def embed_all(embedder: Embedder, chunks: Sequence[DbChunk], batch_size: int = 32,

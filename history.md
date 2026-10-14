@@ -21,6 +21,35 @@ Quy trình bắt buộc trước khi sửa:
 
 ---
 
+### [2026-10-14] Giữ nguyên chunk_id khi nội dung đổi: chunk cũ bị "thay thế" thay vì bị ghi đè (quyết định của leader, phương án B)
+
+- **File(s) mới:** `supabase/migrations/20261014000300_text_chunks_supersede.sql`
+- **File(s) sửa:** `backend/src/documents/db_ingest.py` (hàm `write_chunks`), `backend/src/documents/repository.py` (3 câu SQL), `backend/tests/test_db_ingest.py`
+- **Sai gì:** Khi nạp lại tài liệu mà nội dung chunk đã đổi, câu `ON CONFLICT ... DO UPDATE SET chunk_id = EXCLUDED.chunk_id` đổi luôn **khóa chính** `chunk_id` của hàng cũ. Bảng `evidence` có khóa ngoại `chunk_id` → `text_chunks`, nên:
+  1. khi đã có trích dẫn, lần nạp lại bị database từ chối (vi phạm khóa ngoại) và tài liệu đó không cập nhật được;
+  2. nếu cho đổi được, trích dẫn cũ sẽ trỏ vào nội dung khác với nội dung đã trích.
+  Ngoài ra khi một vị trí chunk không còn tồn tại, code `DELETE` chunk đó (cũng bị chặn bởi khóa ngoại nếu có trích dẫn).
+- **Tại sao sửa:** Leader chốt phương án B: **không đổi chunk cũ, tạo chunk mới khi nội dung đổi**. Như vậy một trích dẫn luôn trỏ đúng đoạn văn bản tại thời điểm nó được trích, và vẫn truy vết được lịch sử nội dung.
+- **Cách hoạt động mới (mỗi tài liệu, trong một transaction):**
+  | Tình huống | Xử lý |
+  |---|---|
+  | Cùng vị trí, cùng `content_hash` | Không ghi gì |
+  | Cùng vị trí, nội dung đổi | Chunk cũ gán `superseded_at` và `superseded_by_chunk_id`; **chèn chunk mới** với `chunk_id` mới |
+  | Vị trí không còn nữa | Chunk cũ gán `superseded_at` (không xóa) |
+  | Nội dung quay về bản cũ | Hồi sinh chunk đã bị thay có cùng `chunk_id` (bỏ `superseded_at`) thay vì chèn trùng khóa chính |
+- **Thay đổi schema (migration `20261014000300`):** thêm `superseded_at timestamptz` và `superseded_by_chunk_id uuid`; **bỏ** chỉ mục duy nhất `uq_text_chunks_index_document_chunk` (áp dụng cho mọi hàng) và thay bằng chỉ mục duy nhất **một phần** `uq_text_chunks_current_position` trên `(index_version_id, document_id, chunk_index) WHERE superseded_at IS NULL`, để chunk cũ và chunk mới cùng vị trí tồn tại song song.
+- **Ảnh hưởng:**
+  - **Thứ tự bắt buộc: chạy migration `20261014000300` TRƯỚC khi chạy hoặc deploy code mới.** Code mới tham chiếu cột `superseded_at`; thiếu cột thì `repository.py` và `db_ingest.py` báo lỗi. Migration chưa được áp dụng lên Supabase PRODUCTION ở thời điểm ghi mục này.
+  - **Mọi truy vấn ĐỌC `text_chunks` phải lọc `superseded_at IS NULL`** để không trả chunk đã bị thay. Đã thêm bộ lọc vào `repository.get_chunks` và `repository.vector_search`; **các truy vấn mới viết sau này (WBS15, WBS25 của Nhân) phải tự thêm điều kiện này**.
+  - `repository.insert_chunks` (luồng upload PDF/JSON): `ON CONFLICT` thêm `WHERE superseded_at IS NULL` để khớp chỉ mục một phần; hành vi cập nhật tại chỗ giữ nguyên.
+  - `evidence.chunk_id` vẫn là khóa ngoại tới `text_chunks`; chunk cũ được giữ nên trích dẫn cũ luôn hợp lệ.
+  - **`supabase/reset_and_rebuild.sql` và migration gốc `20260929...` vẫn tạo chỉ mục duy nhất đầy đủ**; sau khi dựng lại database phải chạy tiếp migration `20261014000200` rồi `20261014000300`.
+  - Dung lượng: mỗi lần nội dung đổi giữ thêm một hàng (chữ + vector 4 KB). Với quy mô vài nghìn chunk không đáng kể; cần chính sách dọn chunk cũ nếu nội dung đổi liên tục.
+  - `--apply` vẫn thuộc WBS12 của Nhân và vẫn khóa bằng `--confirmed-with-nhan`.
+- **Kiểm chứng:** test nhóm chia chunk, embedding, ghi database, API tìm kiếm và upload JSON: 58 đạt; toàn bộ `backend/tests` từ thư mục gốc: **116 đạt, 1 lỗi có từ trước** (`test_json_ingest::test_financial_json_to_pages_statement_drops_none_values`, kỳ vọng mã chữ thường, đã ghi ở mục 2026-09-27, không liên quan). Test mới: không ghi gì khi không đổi; chunk đổi thì bị thay và chèn mới (không dùng lại `chunk_id` cũ, không có lệnh `SET chunk_id` hay `DELETE`); vị trí biến mất thì bị thay không bị xóa; nội dung quay về thì hồi sinh. **Chưa chạy trên database thật.**
+
+---
+
 ### [2026-10-14] WBS12: lưu vector và locator nguồn vào Supabase pgvector
 
 - **File(s):** `supabase/migrations/20261014000200_pgvector_chunk_metadata.sql`, `backend/src/documents/db_ingest.py`, `backend/scripts/chunk_from_supabase.py`, `backend/tests/test_db_ingest.py`, `docs/embedding/WBS12-pgvector.md`.
