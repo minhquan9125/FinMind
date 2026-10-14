@@ -80,7 +80,7 @@ async def insert_chunks(
             (chunk_id, document_id, index_version_id, chunk_index, page_number,
              chunk_text, token_count, char_start, char_end, content_hash, embedding, created_at)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
-        ON CONFLICT (index_version_id, document_id, chunk_index) DO UPDATE
+        ON CONFLICT (index_version_id, document_id, chunk_index) WHERE superseded_at IS NULL DO UPDATE
         SET page_number = EXCLUDED.page_number,
             chunk_text = EXCLUDED.chunk_text,
             token_count = EXCLUDED.token_count,
@@ -126,7 +126,7 @@ async def get_chunks(
         """
         SELECT chunk_index, page_number AS page, chunk_text AS text, token_count
         FROM text_chunks
-        WHERE document_id = $1 AND index_version_id = $2
+        WHERE document_id = $1 AND index_version_id = $2 AND superseded_at IS NULL
         ORDER BY chunk_index
         """,
         uuid.UUID(document_id),
@@ -149,7 +149,7 @@ async def vector_search(
         SELECT chunk_index, page_number AS page, chunk_text AS text,
                1 - (embedding <=> $3::vector) AS score
         FROM text_chunks
-        WHERE document_id = $1 AND index_version_id = $2
+        WHERE document_id = $1 AND index_version_id = $2 AND superseded_at IS NULL
         ORDER BY embedding <=> $3::vector
         LIMIT $4
         """,

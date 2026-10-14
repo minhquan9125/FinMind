@@ -1,5 +1,6 @@
 import asyncio
 import json
+import uuid
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 
@@ -17,9 +18,11 @@ from src.documents.db_ingest import (
 
 
 class FakeConn:
-    def __init__(self):
+    def __init__(self, current=None, existing_ids=None):
         self.executed = []
         self.many = []
+        self.current = current or []  # rows of currently valid chunks already in the database
+        self.existing_ids = existing_ids or []  # chunk_ids that exist (retired or not)
 
     async def execute(self, sql, *args):
         self.executed.append((sql, args))
@@ -29,6 +32,14 @@ class FakeConn:
 
     async def fetchval(self, sql, *args):
         return None
+
+    async def fetch(self, sql, *args):
+        if "superseded_at IS NULL" in sql and "chunk_index" in sql:
+            return list(self.current)
+        if "WHERE chunk_id = ANY" in sql:
+            wanted = set(args[0])
+            return [{"chunk_id": cid} for cid in self.existing_ids if cid in wanted]
+        return []
 
     @asynccontextmanager
     async def transaction(self):
@@ -112,21 +123,79 @@ def test_wrong_vector_size_is_rejected():
         embed_all(FakeEmbedder(dim=384), chunk_document(fin_doc()))
 
 
-def test_stale_chunks_are_deleted():
-    conn = FakeConn()
-    run(ingest_documents(conn, [fin_doc()], FakeEmbedder(), "m"))
-    deletes = [args for sql, args in conn.executed if sql.strip().startswith("DELETE FROM text_chunks")]
-    assert len(deletes) == 1
-    assert deletes[0][2] == len(chunk_document(fin_doc()))
+def _current_rows(doc, version_id, count=None, change=None):
+    """What the database would already hold for this document (all chunks current)."""
+    chunks = chunk_document(doc)
+    rows = []
+    for c in chunks[: count if count is not None else len(chunks)]:
+        changed = change == c.chunk_index
+        # a row whose text differs was stored under a different (old) chunk_id
+        chunk_id = uuid.uuid4() if changed else uuid.UUID(stored_chunk_id(version_id, c))
+        rows.append({"chunk_id": chunk_id, "chunk_index": c.chunk_index,
+                     "content_hash": "f" * 64 if changed else c.content_hash})
+    return rows
 
 
-def test_chunk_upsert_uses_version_position_and_preserves_creation_time():
-    conn = FakeConn()
-    run(ingest_documents(conn, [fin_doc()], FakeEmbedder(), "m"))
-    sql = conn.many[0][0]
-    assert "ON CONFLICT (index_version_id, document_id, chunk_index)" in sql
-    assert "locator_json = EXCLUDED.locator_json" in sql
-    assert "created_at = EXCLUDED.created_at" not in sql
+def test_unchanged_document_writes_nothing():
+    doc = fin_doc()
+    version = index_version_id_for(130, "m")
+    conn = FakeConn(current=_current_rows(doc, version))
+    run(ingest_documents(conn, [doc], FakeEmbedder(), "m"))
+    assert conn.many == []  # nothing inserted
+    assert not any("UPDATE text_chunks" in sql for sql, _ in conn.executed)
+
+
+def test_changed_chunk_is_retired_and_a_new_chunk_is_inserted():
+    doc = fin_doc()
+    version = index_version_id_for(130, "m")
+    conn = FakeConn(current=_current_rows(doc, version, change=1))
+    run(ingest_documents(conn, [doc], FakeEmbedder(), "m"))
+    old_id = conn.current[1]["chunk_id"]
+    retire = [args for sql, args in conn.executed if "SET superseded_at = $2" in sql]
+    assert len(retire) == 1 and retire[0][0] == [old_id]  # the old chunk, by id
+    inserted = [row for sql, rows in conn.many if "INSERT INTO text_chunks" in sql for row in rows]
+    assert len(inserted) == 1 and inserted[0][3] == 1  # only position 1 is rewritten
+    assert inserted[0][0] != old_id  # the old chunk_id is never reused for new content
+    links = [rows for sql, rows in conn.many if "superseded_by_chunk_id = $2" in sql]
+    assert links == [[(old_id, inserted[0][0])]]
+
+
+def test_no_statement_ever_changes_an_existing_chunk_id():
+    doc = fin_doc()
+    version = index_version_id_for(130, "m")
+    conn = FakeConn(current=_current_rows(doc, version, change=0))
+    run(ingest_documents(conn, [doc], FakeEmbedder(), "m"))
+    all_sql = [sql for sql, _ in conn.executed] + [sql for sql, _ in conn.many]
+    assert not any("SET chunk_id" in sql or "chunk_id = EXCLUDED.chunk_id" in sql for sql in all_sql)
+    assert not any("DELETE FROM text_chunks" in sql for sql in all_sql)
+
+
+def test_chunks_that_no_longer_exist_are_retired_not_deleted():
+    doc = fin_doc()
+    version = index_version_id_for(130, "m")
+    total = len(chunk_document(doc))
+    rows = _current_rows(doc, version)
+    extra = {"chunk_id": uuid.uuid4(), "chunk_index": total + 2, "content_hash": "a" * 64}
+    conn = FakeConn(current=rows + [extra])
+    run(ingest_documents(conn, [doc], FakeEmbedder(), "m"))
+    retire = [args for sql, args in conn.executed if "SET superseded_at = $2" in sql]
+    assert retire and extra["chunk_id"] in retire[0][0]
+    assert not any("DELETE FROM text_chunks" in sql for sql, _ in conn.executed)
+
+
+def test_old_text_coming_back_revives_the_retired_chunk():
+    doc = fin_doc()
+    version = index_version_id_for(130, "m")
+    chunks = chunk_document(doc)
+    # position 0 currently holds other text; the retired row with the original id still exists
+    original_id = uuid.UUID(stored_chunk_id(version, chunks[0]))
+    current = _current_rows(doc, version, change=0)
+    conn = FakeConn(current=current, existing_ids=[original_id])
+    run(ingest_documents(conn, [doc], FakeEmbedder(), "m"))
+    revive = [args for sql, args in conn.executed if "SET superseded_at = NULL" in sql]
+    assert revive and revive[0][0] == [original_id]
+    inserted = [row for sql, rows in conn.many if "INSERT INTO text_chunks" in sql for row in rows]
+    assert inserted == []  # revived, not inserted a second time
 
 
 def test_write_chunks_rejects_missing_vectors_before_database_changes():
