@@ -17,6 +17,7 @@ import React, {
 import {
   getStoredSession,
   mockLogin,
+  mockLoginWithGoogle,
   mockRegister,
   mockLogout,
   mockExpireCurrentSession,
@@ -36,6 +37,8 @@ const AuthContext = createContext({
   isSessionExpired: false,
   /** @type {(email:string, password:string, rememberMe?:boolean) => Promise<void>} */
   login: async () => {},
+  /** @type {(rememberMe?:boolean) => Promise<void>} */
+  loginWithGoogle: async () => {},
   /** @type {(name:string, email:string, password:string) => Promise<void>} */
   register: async () => {},
   /** @type {() => Promise<void>} */
@@ -88,6 +91,12 @@ export function AuthProvider({ children }) {
     setIsSessionExpired(false);
   }, []);
 
+  const loginWithGoogle = useCallback(async (rememberMe = true) => {
+    const session = await mockLoginWithGoogle(rememberMe);
+    setUser(session.user);
+    setIsSessionExpired(false);
+  }, []);
+
   const register = useCallback(async (name, email, password) => {
     const session = await mockRegister(name, email, password);
     setUser(session.user);
@@ -115,11 +124,12 @@ export function AuthProvider({ children }) {
       isLoading,
       isSessionExpired,
       login,
+      loginWithGoogle,
       register,
       logout,
       expireSessionNow,
     }),
-    [user, isLoading, isSessionExpired, login, register, logout, expireSessionNow],
+    [user, isLoading, isSessionExpired, login, loginWithGoogle, register, logout, expireSessionNow],
   );
 
   return (

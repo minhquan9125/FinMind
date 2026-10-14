@@ -18,6 +18,14 @@ export const MOCK_USERS = {
     avatar: null,
     role: "admin",
   },
+  google: {
+    id: "usr-google-001",
+    email: "user.google@finmind.vn",
+    name: "Nguyễn Văn An (Google)",
+    avatar: "https://lh3.googleusercontent.com/a/default-user",
+    role: "user",
+    provider: "google",
+  },
 };
 
 // Mật khẩu mẫu — chỉ phục vụ kiểm thử giao diện, không bảo mật.
@@ -65,6 +73,34 @@ export async function mockLogin(email, password, rememberMe = false) {
   const expiresAtTimestamp = now + ttl;
 
   // Lưu phiên vào localStorage kèm mốc thời gian hết hạn
+  const session = {
+    user,
+    token,
+    rememberMe,
+    loginAt: new Date(now).toISOString(),
+    expiresAt: new Date(expiresAtTimestamp).toISOString(),
+    expiresAtTimestamp,
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+
+  return session;
+}
+
+/**
+ * Giả lập đăng nhập bằng tài khoản Google (OAuth 2.0).
+ * @param {boolean} [rememberMe=true]
+ * @returns {Promise<{user: object, token: string, loginAt: string, expiresAt: string, expiresAtTimestamp: number}>}
+ */
+export async function mockLoginWithGoogle(rememberMe = true) {
+  // Giả lập độ trễ xác thực popup Google
+  await new Promise((r) => setTimeout(r, 600));
+
+  const user = MOCK_USERS.google;
+  const token = `mock-google-token-${Date.now()}`;
+  const now = Date.now();
+  const ttl = rememberMe ? REMEMBER_ME_DURATION_MS : SESSION_DURATION_MS;
+  const expiresAtTimestamp = now + ttl;
+
   const session = {
     user,
     token,
