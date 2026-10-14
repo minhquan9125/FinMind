@@ -93,6 +93,9 @@ async def run(args: argparse.Namespace) -> int:
             all_docs += docs
         if failed_sources:
             print(f"\nNguon doc loi: {', '.join(failed_sources)} (kiem tra bang da duoc tao chua)", file=sys.stderr)
+            if args.apply:
+                print("Dung --apply: khong ghi khi mot nguon du lieu doc loi.", file=sys.stderr)
+                return 1
 
         if args.vectors_out:
             # Supabase -> chunk -> vector -> file JSON. Khong ghi gi vao database.
@@ -150,6 +153,7 @@ async def run(args: argparse.Namespace) -> int:
                     print(f"LOI: {outcome.documents_failed} tai lieu khong ghi duoc (khong ghi do dang):", file=sys.stderr)
                     for err in outcome.errors[:10]:
                         print("  -", err, file=sys.stderr)
+                    return 1
     finally:
         await conn.close()
 

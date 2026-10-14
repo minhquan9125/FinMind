@@ -21,6 +21,17 @@ Quy trình bắt buộc trước khi sửa:
 
 ---
 
+### [2026-10-14] WBS12: lưu vector và locator nguồn vào Supabase pgvector
+
+- **File(s):** `supabase/migrations/20261014000200_pgvector_chunk_metadata.sql`, `backend/src/documents/db_ingest.py`, `backend/scripts/chunk_from_supabase.py`, `backend/tests/test_db_ingest.py`, `docs/embedding/WBS12-pgvector.md`.
+- **Sai gì:** Supabase đang thiếu khóa duy nhất `(index_version_id, document_id, chunk_index)` mặc dù code `ON CONFLICT` dùng khóa này; `embedding` vẫn nullable; `text_chunks` không có chỗ lưu `DbChunk.locator`. Lệnh `--apply` trước đây có thể báo thành công dù một nguồn đọc lỗi hoặc tài liệu ghi lỗi, và lần upsert cập nhật lại `created_at`.
+- **Tại sao sửa:** Cần lưu vector 1024 chiều cùng nguồn chính xác, ghi lại an toàn và xác minh được. Migration khôi phục các khóa/ràng buộc đã có trong schema gốc, thêm `locator_json` cho row keys, đồng thời làm lệnh ghi báo lỗi rõ ràng.
+- **Ảnh hưởng:** `text_chunks` thêm cột `locator_json` (nullable cho luồng upload cũ); vector, document ID, index version ID và chunk index được yêu cầu không NULL. Tạo chỉ mục unique cho vị trí chunk và `documents.sha256`. `db_ingest.py` ghi locator JSON và giữ nguyên `created_at` khi rerun; `--apply` thoát mã lỗi nếu nguồn hoặc tài liệu lỗi. API upload cũ vẫn có thể bỏ trống locator. Không đổi crawler, chunker, model, frontend hoặc Neo4j.
+- **Kiểm chứng:** 35 test liên quan đạt. Migration đã áp dụng trên Supabase; trước khi ghi, `documents`, `text_chunks`, `index_versions` đều 0 dòng. Ghi thật một hồ sơ FPT cho 1 tài liệu, 1 chunk, 1 index version; vector 1024 chiều, norm gần 1, locator có `source_table=companies`, source ID và `row_keys`; truy vấn pgvector trả đúng chunk. Chạy lại cùng lệnh vẫn 1/1/1, `chunk_id` và `created_at` không đổi.
+- **Giới hạn:** WBS12 mới kiểm chứng một tài liệu hoàn chỉnh, chưa ingest toàn bộ 1.950 chunk (WBS17). API search cũ dùng `word-window-v1` nên chưa thấy index `db-v1` (WBS25).
+
+---
+
 ### [2026-10-14] Thêm quy trình Supabase → chia chunk → nhúng vector (WBS06) và hướng dẫn chạy cho cả nhóm
 
 - **File(s) mới (commit 7eb5a9c, ngày 13/10):** `backend/src/documents/db_chunking.py`, `backend/src/documents/db_source.py`, `backend/src/documents/db_ingest.py`, `backend/scripts/chunk_from_supabase.py`, `backend/tests/test_db_chunking.py`, `backend/tests/test_db_chunking_sources.py`, `backend/tests/test_db_ingest.py`

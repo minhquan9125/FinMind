@@ -1,4 +1,5 @@
 import asyncio
+import json
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 
@@ -11,6 +12,7 @@ from src.documents.db_ingest import (
     index_version_id_for,
     ingest_documents,
     stored_chunk_id,
+    write_chunks,
 )
 
 
@@ -72,6 +74,8 @@ def test_writes_documents_and_chunks_with_vectors():
     rows = written_rows(conn)
     assert len(rows) == expected
     assert all(len(row[10]) == EMBEDDING_DIM for row in rows)  # embedding column
+    assert all(json.loads(row[11])["source_table"] == "financial_reports" for row in rows)
+    assert all(json.loads(row[11])["row_keys"] for row in rows)
 
 
 def test_rerun_produces_identical_ids():
@@ -114,6 +118,25 @@ def test_stale_chunks_are_deleted():
     deletes = [args for sql, args in conn.executed if sql.strip().startswith("DELETE FROM text_chunks")]
     assert len(deletes) == 1
     assert deletes[0][2] == len(chunk_document(fin_doc()))
+
+
+def test_chunk_upsert_uses_version_position_and_preserves_creation_time():
+    conn = FakeConn()
+    run(ingest_documents(conn, [fin_doc()], FakeEmbedder(), "m"))
+    sql = conn.many[0][0]
+    assert "ON CONFLICT (index_version_id, document_id, chunk_index)" in sql
+    assert "locator_json = EXCLUDED.locator_json" in sql
+    assert "created_at = EXCLUDED.created_at" not in sql
+
+
+def test_write_chunks_rejects_missing_vectors_before_database_changes():
+    conn = FakeConn()
+    doc = fin_doc()
+    chunks = chunk_document(doc)
+    with pytest.raises(ValueError, match="expected .* vectors"):
+        run(write_chunks(conn, doc, chunks, [], index_version_id_for(130, "m")))
+    assert conn.executed == []
+    assert conn.many == []
 
 
 def test_news_documents_are_written_with_url():
