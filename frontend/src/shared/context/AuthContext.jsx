@@ -1,9 +1,6 @@
-// Context quản lý trạng thái xác thực toàn cục.
+// Context quản lý trạng thái xác thực toàn cục kết nối Backend thật (/api/v1/auth).
 // Bọc ứng dụng bằng <AuthProvider> để mọi component con
 // đều có thể gọi useAuth() lấy thông tin người dùng và phiên làm việc.
-//
-// Hiện tại dùng mock (authMock.js). Khi backend sẵn sàng, chỉ cần thay
-// phần thân của login/logout bằng fetch tới API, không đổi giao diện.
 
 import React, {
   createContext,
@@ -14,19 +11,37 @@ import React, {
   useState,
 } from "react";
 
-import {
-  getStoredSession,
-  mockLogin,
-  mockRegister,
-  mockLogout,
-  mockExpireCurrentSession,
-} from "../../mocks/authMock.js";
+import { apiLogin, apiRegister } from "../api/authApi.js";
 
-// ─── Context mặc định (chưa có Provider) ────────────────────────────────────
+// ─── Key lưu phiên trong localStorage ────────────────────────────────────────
+// Chỉ lưu profile người dùng và access token; TUYỆT ĐỐI KHÔNG LƯU MẬT KHẨU
+const STORAGE_KEY = "finmind_auth_session";
+
+function getStoredSession() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const session = JSON.parse(raw);
+    if (!session || !session.expiresAtTimestamp) {
+      localStorage.removeItem(STORAGE_KEY);
+      return null;
+    }
+    if (Date.now() > session.expiresAtTimestamp) {
+      localStorage.removeItem(STORAGE_KEY);
+      return { isExpired: true };
+    }
+    return { ...session, isExpired: false };
+  } catch {
+    localStorage.removeItem(STORAGE_KEY);
+    return null;
+  }
+}
+
+// ─── Context mặc định ────────────────────────────────────────────────────────
 const AuthContext = createContext({
   /** @type {object|null} Thông tin người dùng hiện tại */
   user: null,
-  /** @type {string|null} "user" | "admin" | null */
+  /** @type {string|null} "researcher" | "admin" | null */
   role: null,
   /** @type {boolean} Đã đăng nhập hay chưa */
   isAuthenticated: false,
@@ -36,11 +51,11 @@ const AuthContext = createContext({
   isSessionExpired: false,
   /** @type {(email:string, password:string, rememberMe?:boolean) => Promise<void>} */
   login: async () => {},
-  /** @type {(name:string, email:string, password:string) => Promise<void>} */
+  /** @type {(name:string, email:string, password:string, confirmPassword?:string) => Promise<void>} */
   register: async () => {},
   /** @type {() => Promise<void>} */
   logout: async () => {},
-  /** @type {() => void} Giả lập làm hết hạn phiên ngay lập tức để test */
+  /** @type {() => void} Làm hết hạn phiên ngay lập tức để test */
   expireSessionNow: () => {},
 });
 
@@ -54,11 +69,9 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const session = getStoredSession();
     if (session?.isExpired) {
-      // Phiên đã quá hạn
       setUser(null);
       setIsSessionExpired(true);
     } else if (session?.user) {
-      // Phiên còn hạn hợp lệ
       setUser(session.user);
       setIsSessionExpired(false);
     }
@@ -66,8 +79,8 @@ export function AuthProvider({ children }) {
   }, []);
 
   // 2. Cơ chế ngầm kiểm tra định kỳ (Heartbeat):
-  // Khi người dùng đang ở trong ứng dụng, định kỳ mỗi 5 giây kiểm tra thời hạn phiên.
-  // Nếu phiên hết hạn trong lúc đang mở web, tự động ngắt phiên và kích hoạt cờ isSessionExpired.
+  // Định kỳ mỗi 5 giây kiểm tra thời hạn phiên.
+  // Nếu phiên hết hạn trong lúc đang mở web, tự động ngắt phiên và bật cờ isSessionExpired.
   useEffect(() => {
     if (!user) return;
 
@@ -83,26 +96,57 @@ export function AuthProvider({ children }) {
   }, [user]);
 
   const login = useCallback(async (email, password, rememberMe = false) => {
-    const session = await mockLogin(email, password, rememberMe);
-    setUser(session.user);
+    const res = await apiLogin(email, password);
+
+    const now = Date.now();
+    // RememberMe: 7 ngày; Mặc định: theo expires_in từ backend hoặc 15 phút
+    const ttlMs = rememberMe
+      ? 7 * 24 * 60 * 60 * 1000
+      : (res.expires_in || 900) * 1000;
+    const expiresAtTimestamp = now + ttlMs;
+
+    const primaryRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
+    const authUser = {
+      id: res.user.user_id,
+      email: res.user.email,
+      name: res.user.full_name,
+      role: primaryRole,
+      roles: res.user.roles || ["RESEARCHER"],
+    };
+
+    const session = {
+      user: authUser,
+      token: res.access_token,
+      rememberMe,
+      loginAt: new Date(now).toISOString(),
+      expiresAt: new Date(expiresAtTimestamp).toISOString(),
+      expiresAtTimestamp,
+    };
+
+    // Lưu phiên vào localStorage (không lưu password, confirmPassword hay secret)
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+
+    setUser(authUser);
     setIsSessionExpired(false);
   }, []);
 
-  const register = useCallback(async (name, email, password) => {
-    const session = await mockRegister(name, email, password);
-    setUser(session.user);
-    setIsSessionExpired(false);
-  }, []);
+  const register = useCallback(async (name, email, password, confirmPassword) => {
+    // 1. Gọi đăng ký tài khoản mới lên Backend
+    await apiRegister(name, email, password, confirmPassword || password);
+
+    // 2. Tự động đăng nhập để cấp access token và khởi tạo phiên cho người dùng
+    await login(email, password, false);
+  }, [login]);
 
   const logout = useCallback(async () => {
-    await mockLogout();
+    localStorage.removeItem(STORAGE_KEY);
     setUser(null);
     setIsSessionExpired(false);
   }, []);
 
   // Hàm hỗ trợ test: làm hết hạn phiên ngay lập tức
   const expireSessionNow = useCallback(() => {
-    mockExpireCurrentSession();
+    localStorage.removeItem(STORAGE_KEY);
     setUser(null);
     setIsSessionExpired(true);
   }, []);
@@ -128,12 +172,6 @@ export function AuthProvider({ children }) {
 }
 
 // ─── Hook tiện ích ───────────────────────────────────────────────────────────
-/**
- * Hook lấy trạng thái xác thực.
- *
- * @example
- *   const { user, role, isAuthenticated, isSessionExpired, login, logout, expireSessionNow } = useAuth();
- */
-export function useAuth() {
+  export function useAuth() {
   return useContext(AuthContext);
 }

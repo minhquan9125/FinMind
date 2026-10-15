@@ -9,7 +9,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
+from pydantic import SecretStr
 ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 
 
@@ -43,6 +43,15 @@ class Settings(BaseSettings):
     financial_data_dir: str = "../data/normalized"
 
 
+
+    # Cấu hình Auth / JWT (Tự phát triển - Custom Auth)
+    jwt_secret_key: SecretStr = SecretStr("cadcf6b6010185805672e56de43183706ab20fe8d6d25f383d3111fceb4e36d1")
+    access_token_minutes: int = 15
+    refresh_token_days: int = 7
+
+    # Rate limiting & Account Lockout
+    auth_max_failed_attempts: int = 5
+    auth_lockout_minutes: int = 15
 @lru_cache
 def get_settings() -> Settings:
     return Settings()

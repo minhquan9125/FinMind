@@ -18,3 +18,5 @@ pytest-asyncio==0.24.0
 requests>=2.32,<3
 tzdata>=2024.1
 
+pwdlib[argon2]
+PyJWT

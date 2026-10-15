@@ -1,0 +1,60 @@
+{
+  "pdf": "D:\\finmind\\data_pipeline\\ocr-router\\FPT_2024_498332 (1).pdf",
+  "pages": 2,
+  "routes": {
+    "tesseract": 2
+  },
+  "status": {
+    "REVIEW": 2
+  },
+  "flags": {
+    "LOW_CONF": 2
+  },
+  "reviewPages": [
+    1,
+    2
+  ],
+  "seconds": {
+    "textLayer": 0.261,
+    "renderAndTesseract": 6.579,
+    "gemini": 0.0,
+    "total": 7.288
+  },
+  "geminiApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 0,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\ocr_router_out",
+    "pages": "1-2",
+    "mode": "never",
+    "model": "gemini-3.8-flash",
+    "openrouterModel": "liquid/lfm-2.5-2.6b:free",
+    "batch": 4,
+    "geminiConcurrency": 2,
+    "geminiTimeout": 300,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

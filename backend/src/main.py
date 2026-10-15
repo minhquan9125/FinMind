@@ -14,9 +14,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .api.routers import documents, search
+from .api.routers import auth, documents, search
 from .core.config import get_settings
 from .core.db import connect, disconnect
+
 
 settings = get_settings()
 
@@ -46,7 +47,7 @@ app.add_middleware(
 
 app.include_router(documents.router)
 app.include_router(search.router)
-
+app.include_router(auth.router)
 
 @app.get("/api/health")
 async def health() -> dict:
