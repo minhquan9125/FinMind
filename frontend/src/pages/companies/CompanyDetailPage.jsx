@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "../../app/router.jsx";
 import { Button, Card, EmptyState, ErrorState, Select, Sidebar, Skeleton, Stat, StatusBadge } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
 import { researcherMock } from "../dashboard/mock.js";
 import { getCompanyDetail } from "./detailApi.js";
 import { detailPeriods } from "./detailMock.js";
+import { getSavedNews, refreshLivePrice, refreshCompanyNews } from "./marketDataApi.js";
+import { loadCompanyNews } from "./companyData.js";
+import { startPricePolling } from "./pricePolling.js";
+import PriceHistory from "./PriceHistory.jsx";
 
 const menuPaths = {
   dashboard: "/dashboard", companies: "/companies", copilot: "/research",
@@ -18,12 +22,15 @@ const tabs = [
 ];
 
 const formatNumber = (value) => new Intl.NumberFormat("vi-VN").format(value);
+const localTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }) : "Chưa rõ";
 
 export default function CompanyDetailPage() {
   const navigate = useNavigate();
   const { ticker: routeTicker } = useParams();
   const [params] = useSearchParams();
   const ticker = (routeTicker || "").toUpperCase();
+  const currentTicker = useRef(ticker);
+  currentTicker.current = ticker;
   const fixture = ["empty", "error", "loading"].includes(params.get("fixture")) ? params.get("fixture") : "success";
   const [company, setCompany] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,6 +39,17 @@ export default function CompanyDetailPage() {
   const [activeTab, setActiveTab] = useState("overview");
   const [period, setPeriod] = useState(detailPeriods.some((item) => item.value === params.get("period")) ? params.get("period") : "FY2025");
   const [followed, setFollowed] = useState(false);
+  const [marketData, setMarketData] = useState(null);
+  const [marketLoading, setMarketLoading] = useState(true);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [marketError, setMarketError] = useState(null);
+  const [marketCheckedAt, setMarketCheckedAt] = useState(null);
+  const [newsData, setNewsData] = useState(null);
+  const [newsLoading, setNewsLoading] = useState(true);
+  const [newsError, setNewsError] = useState(null);
+  const [dataRetryCount, setDataRetryCount] = useState(0);
+  const [newsRetryCount, setNewsRetryCount] = useState(0);
+  const [refreshingPrice, setRefreshingPrice] = useState(false);
 
   useEffect(() => {
     if (fixture === "loading") {
@@ -50,6 +68,53 @@ export default function CompanyDetailPage() {
     return () => { cancelled = true; };
   }, [ticker, fixture, retryCount]);
 
+  useEffect(() => {
+    setMarketLoading(true);
+    setHistoryLoading(false);
+    setMarketError(null);
+    setMarketData(null);
+    setMarketCheckedAt(null);
+  }, [ticker]);
+
+  useEffect(() => {
+    if (activeTab !== "overview" || loading || error || company?.id !== ticker) return;
+    return startPricePolling({
+      symbol: ticker,
+      onResult: setMarketData,
+      onError: setMarketError,
+      onChecked: (stamp) => { setMarketCheckedAt(stamp); setMarketError(null); },
+      onSettled: () => setMarketLoading(false),
+      onHistoryLoading: setHistoryLoading,
+    });
+  }, [ticker, activeTab, dataRetryCount, loading, error, company]);
+
+  async function refreshPrices() {
+    if (refreshingPrice) return;
+    const requestedTicker = ticker;
+    setRefreshingPrice(true);
+    setNewsRetryCount((count) => count + 1);
+    try {
+      await refreshLivePrice(requestedTicker);
+      if (currentTicker.current === requestedTicker) setDataRetryCount((count) => count + 1);
+    } catch (caught) {
+      if (currentTicker.current === requestedTicker) setMarketError(caught.message);
+    } finally {
+      setRefreshingPrice(false);
+    }
+  }
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setNewsLoading(true);
+    setNewsError(null);
+    setNewsData(null);
+    loadCompanyNews({ symbol: ticker, signal: controller.signal,
+      api: { read: getSavedNews, refresh: refreshCompanyNews },
+      onResult: setNewsData, onError: setNewsError, onSettled: () => setNewsLoading(false) });
+
+    return () => controller.abort();
+  }, [ticker, newsRetryCount]);
+
   const selectedFinancial = company?.financials.find((item) => item.period === period);
   const graphAvailable = ticker === "FPT" || ticker === "VCB";
 
@@ -64,14 +129,17 @@ export default function CompanyDetailPage() {
             <Link to="/companies" className="hover:text-blue-600">Doanh nghiệp</Link><span>/</span>
             <span className="font-semibold text-slate-900">{ticker}</span>
           </nav>
-          <StatusBadge tone="neutral">Mock · EOD · Dữ liệu cuối ngày</StatusBadge>
+          <div className="flex flex-wrap items-center gap-2">
+            <StatusBadge tone="neutral">Hồ sơ mock · Giá/tin từ nguồn dữ liệu</StatusBadge>
+            <Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs" disabled={refreshingPrice} onClick={refreshPrices}>{refreshingPrice ? "Đang lấy giá…" : "Làm mới giá/tin"}</Button>
+          </div>
         </header>
 
         <div className="mx-auto w-full max-w-[1240px] space-y-6 px-4 py-6 sm:px-6 lg:px-8">
           {loading ? <Skeleton rows={8} /> : error ? (
             <ErrorState message={error} onRetry={() => setRetryCount((count) => count + 1)} />
           ) : !company ? (
-            <EmptyState title="Không có dữ liệu doanh nghiệp" description={`Không tìm thấy mã ${ticker} trong 10 doanh nghiệp được hỗ trợ.`}
+            <EmptyState title="Mã chứng khoán không hợp lệ" description="Nhập mã cổ phiếu gồm 3 chữ cái, ví dụ CTR."
               action={<Link className="text-sm font-semibold text-blue-600" to="/companies">Xem danh mục doanh nghiệp →</Link>} />
           ) : (
             <>
@@ -124,11 +192,29 @@ export default function CompanyDetailPage() {
                       <Stat label="Sàn" value={company.exchange || "—"} />
                       <Stat label="Kỳ dữ liệu mẫu" value="FY2025" />
                     </div>
-                    <Card title={`Giá & khối lượng cuối ngày · ${ticker}`} description="EOD · Chưa kết nối dữ liệu thị trường đã kiểm định">
-                      <EmptyState title="Chưa có chuỗi giá EOD" description="Biểu đồ sẽ hiển thị khi có nguồn dữ liệu được nạp." />
+                    <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Lịch sử đã lưu và giá KBS trong phiên · Chưa xác nhận cơ sở giá">
+                      <p className="mb-3 text-xs text-slate-500">Tự kiểm tra khi đang xem · Nguồn cập nhật: {localTime(marketData?.fetched_at)} · Kiểm tra lần cuối: {localTime(marketCheckedAt)}</p>
+                      {historyLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang tải lịch sử khoảng 6 tháng…</p>}
+                      {marketData?.live && <p role="status" className={`mb-3 text-xs ${marketData.live.stale ? "text-amber-700" : "text-slate-500"}`}>{marketData.live.reason}</p>}
+                      {marketError && marketData && <p role="status" className="mb-3 text-xs text-amber-700">{marketError}. Đang giữ biểu đồ đã tải.</p>}
+                      {marketLoading && !marketData ? <Skeleton rows={3} /> : marketError && !marketData ? <ErrorState message={marketError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : <PriceHistory data={marketData} />}
                     </Card>
-                    <Card title={`Tin tức gần đây · ${ticker}`} description="Tin từ các nguồn được phê duyệt">
-                      <EmptyState title="Chưa có tin tức được kiểm định" description={`Hiện chưa có tin tức được kiểm định cho ${ticker}.`} />
+                    <Card title={`Tin FireAnt gần đây · ${ticker}`} description="Tự lấy tin khi mở mã · Cache 60 giây · Marker không xác minh sự thật">
+                      {newsLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang kiểm tra tin mới…</p>}
+                      {newsError && newsData?.articles?.length > 0 && <p role="status" className="mb-3 text-xs text-amber-700">{newsError}</p>}
+                      {newsLoading && !newsData ? <Skeleton rows={3} /> : newsError && !newsData?.articles?.length ? <ErrorState message={newsError} onRetry={() => setNewsRetryCount((count) => count + 1)} /> : newsData?.articles.length ? (
+                        <div className="space-y-3">
+                          {newsData.articles.map((article) => <article key={article.id} className="rounded-lg border border-slate-200 p-3.5">
+                            <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                              <StatusBadge tone={article.marker === "check" ? "info" : "neutral"}>{article.marker === "check" ? "Có bài tương đồng" : "Chưa đối chiếu"}</StatusBadge>
+                              <span>FireAnt · {article.published_at ? new Date(article.published_at).toLocaleString("vi-VN") : "Chưa rõ ngày"}</span>
+                            </div>
+                            <h3 className="text-sm font-semibold">{article.title}</h3>
+                            {article.description && <p className="mt-1 text-xs text-slate-600">{article.description}</p>}
+                            {article.url && <a className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline" href={article.url} target="_blank" rel="noopener noreferrer">Xem bài gốc →</a>}
+                          </article>)}
+                        </div>
+                      ) : <EmptyState title={`Chưa có tin FireAnt đã lưu cho ${ticker}`} />}
                     </Card>
                   </>}
 
@@ -144,6 +230,7 @@ export default function CompanyDetailPage() {
                   </Card>}
 
                   {activeTab === "reports" && <Card title="Báo cáo & nguồn công bố" description="Bản ghi minh họa; chưa có tài liệu gốc được kiểm định">
+                    {company.reports.length === 0 && <EmptyState title="Chưa có báo cáo đã lưu cho mã này" />}
                     <div className="space-y-3">
                       {company.reports.map((report) => <article key={report.id} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
                         <h3 className="text-sm font-semibold">{report.title}</h3>

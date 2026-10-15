@@ -20,9 +20,17 @@ from ..core.config import get_settings
 
 
 class EmbeddingService:
-    def __init__(self, model_name: str, device: str = "cpu"):
+    def __init__(
+        self,
+        model_name: str,
+        revision: str,
+        device: str = "cpu",
+        batch_size: int = 8,
+    ):
         self.model_name = model_name
+        self.revision = revision
         self.device = device
+        self.batch_size = batch_size
         self._model = None
 
     def _load(self):
@@ -32,7 +40,11 @@ class EmbeddingService:
             # or a downloaded model to be present.
             from sentence_transformers import SentenceTransformer
 
-            self._model = SentenceTransformer(self.model_name, device=self.device)
+            self._model = SentenceTransformer(
+                self.model_name,
+                revision=self.revision,
+                device=self.device,
+            )
         return self._model
 
     def embed_texts(self, texts: list[str]) -> list[list[float]]:
@@ -44,6 +56,7 @@ class EmbeddingService:
             normalize_embeddings=True,  # L2-normalize so cosine == dot product
             convert_to_numpy=True,
             show_progress_bar=False,
+            batch_size=self.batch_size,
         )
         return np.asarray(vectors, dtype=np.float32).tolist()
 
@@ -54,4 +67,9 @@ class EmbeddingService:
 @lru_cache
 def get_embedding_service() -> EmbeddingService:
     settings = get_settings()
-    return EmbeddingService(model_name=settings.embedding_model, device=settings.embedding_device)
+    return EmbeddingService(
+        model_name=settings.embedding_model,
+        revision=settings.embedding_model_revision,
+        device=settings.embedding_device,
+        batch_size=settings.embedding_batch_size,
+    )
