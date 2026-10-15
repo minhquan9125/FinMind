@@ -10,11 +10,11 @@
 | `documents` | Một tài liệu nguồn, liên kết công ty/kỳ và hash nội dung |
 | `text_chunks` | Nội dung chunk, vector 1024 chiều, vị trí và `locator_json` trỏ về dòng nguồn |
 
-Mỗi tài liệu được ghi trong một transaction. Nếu một chunk của tài liệu không tạo được vector hoặc ghi lỗi, tài liệu đó không bị ghi dở. `chunk_id` lưu trong database có tính cả `index_version_id`, nên hai phiên bản index không dùng chung khóa. Rerun cùng đầu vào cập nhật cùng vị trí chunk, không thêm bản trùng.
+Mỗi tài liệu được ghi trong một transaction. Nếu một chunk của tài liệu không tạo được vector hoặc ghi lỗi, tài liệu đó không bị ghi dở. `chunk_id` lưu trong database có tính cả `index_version_id`, nên hai phiên bản index không dùng chung khóa. Chạy lại cùng đầu vào không thêm bản trùng; nếu nội dung đổi, chunk cũ được giữ cho citation và đánh dấu `superseded_at`, chunk mới trở thành bản hiện hành.
 
 ## Chuẩn bị schema
 
-Migration [`20261014000200_pgvector_chunk_metadata.sql`](../../supabase/migrations/20261014000200_pgvector_chunk_metadata.sql) thêm `locator_json`, khóa duy nhất `(index_version_id, document_id, chunk_index)`, khóa duy nhất `documents.sha256` và yêu cầu vector/khóa chunk không NULL. Schema gốc đã khai báo các ràng buộc này, nhưng database Supabase của nhóm chưa có. Migration đã được áp dụng cho project đang dùng ngày 14/10/2026. Với database khác, chạy migration trước khi dùng `--apply`.
+Migration [`20261014000200_pgvector_chunk_metadata.sql`](../../supabase/migrations/20261014000200_pgvector_chunk_metadata.sql) thêm `locator_json`, khóa duy nhất ban đầu `(index_version_id, document_id, chunk_index)`, khóa duy nhất `documents.sha256` và yêu cầu vector/khóa chunk không NULL. Migration [`20261014000300_text_chunks_supersede.sql`](../../supabase/migrations/20261014000300_text_chunks_supersede.sql) thêm hai cột `superseded_at`, `superseded_by_chunk_id` và thay khóa duy nhất ban đầu bằng chỉ mục duy nhất **cho chunk hiện hành** (`superseded_at IS NULL`). Cả hai migration đã được áp dụng cho Supabase của nhóm; schema được kiểm tra lại ngày 15/10/2026. Với database khác, phải chạy lần lượt hai migration trước khi dùng code hiện tại với `--apply`.
 
 Backend lấy `DATABASE_URL` từ `backend/.env`. Giữ file này ở máy, không đưa mật khẩu vào Git hoặc chat.
 
@@ -52,9 +52,12 @@ JOIN public.documents AS d ON d.document_id = t.document_id
 JOIN public.index_versions AS i ON i.index_version_id = t.index_version_id
 LEFT JOIN public.companies AS c ON c.company_id = d.company_id
 WHERE c.symbol = 'FPT' AND d.doc_type = 'COMPANY_PROFILE'
+  AND t.superseded_at IS NULL
 ORDER BY t.chunk_index;
 ```
 
 Ngày 14/10/2026, ghi thử hồ sơ FPT hai lần cho kết quả ổn định: 1 tài liệu, 1 chunk, 1 index version; vector 1024 chiều, norm khoảng 1, locator về `companies` và các `row_keys` của FPT. `chunk_id` và `created_at` không đổi ở lần ghi thứ hai.
 
 API search hiện dùng index version của chunker `word-window-v1`; dữ liệu này dùng `db-v1`. Vì vậy API search cũ chưa truy ra các chunk mới. Việc chọn đúng index/corpus cho tìm kiếm thuộc WBS25; WBS12 xác nhận lưu và đọc ngược trực tiếp từ pgvector.
+
+Biên bản kiểm chứng trên hai tài liệu thật, gồm kết quả chạy lại, SQL đối chiếu và phép thử supersede có rollback: [WBS12-acceptance-2026-10-15.md](WBS12-acceptance-2026-10-15.md). Dòng `Xu ly thanh cong` của CLI đếm **chunk đầu vào xử lý thành công**, kể cả chunk đã có từ lần chạy trước; dùng truy vấn DB để đếm hàng mới hoặc chunk hiện hành.

@@ -21,6 +21,15 @@ Quy trình bắt buộc trước khi sửa:
 
 ---
 
+### [2026-10-15] WBS12: nghiệm thu vector và metadata trên hai tài liệu FPT thật
+
+- **File(s):** `docs/embedding/WBS12-acceptance-2026-10-15.md`, `docs/embedding/WBS12-pgvector.md`, `backend/scripts/chunk_from_supabase.py`, `backend/src/documents/db_ingest.py`.
+- **Sai gì:** Hướng dẫn WBS12 chưa phản ánh migration supersede mới; SQL ví dụ chưa lọc chunk đã bị thay. CLI ghi "Đã ghi N chunk" cả khi chạy lại không chèn hàng mới, dễ nhầm số chunk xử lý với số hàng được thêm. Trước đó mới kiểm chứng một hồ sơ FPT, chưa có biên bản nghiệm thu tập nhiều chunk với phạm vi cố định.
+- **Tại sao sửa:** Task yêu cầu chứng minh vector 1024 chiều, metadata truy ngược đúng tài liệu/index, chạy lại không trùng, quy tắc supersede và số liệu đầu vào/thành công/lỗi trên Supabase thật. Sửa nhãn log cho đúng ý nghĩa, cập nhật hướng dẫn và lưu biên bản đối chiếu để nhóm review.
+- **Ảnh hưởng:** Không đổi schema hay hành vi ghi; chỉ sửa nhãn CLI và tài liệu. Tập nghiệm thu từ Supabase gồm hồ sơ FPT (1 chunk) và lịch sử giá FPT (34 chunk), cùng index `1e029e66-0adf-53ac-8f28-431ed7312745`. Hai lần chạy: 35/35 chunk xử lý thành công, 0 lỗi, DB có 35 chunk hiện hành đúng phạm vi; `chunk_id` và `created_at` không đổi. Phép thử supersede trên DB thật dùng transaction rollback nên không để lại bản ghi thử. Full-load là bước riêng; manifest/cô lập corpus thuộc WBS16.
+
+---
+
 ### [2026-10-14] Giữ nguyên chunk_id khi nội dung đổi: chunk cũ bị "thay thế" thay vì bị ghi đè (quyết định của leader, phương án B)
 
 - **File(s) mới:** `supabase/migrations/20261014000300_text_chunks_supersede.sql`
