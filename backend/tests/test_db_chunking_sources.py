@@ -107,3 +107,20 @@ def test_news_limit_zero_means_all():
     conn = FakeConn([])
     asyncio.run(fetch_news_documents(conn, None, 0))
     assert conn.calls[0][1] == (None, None)  # LIMIT NULL reads every article
+
+
+def test_company_fact_keys_are_column_names_of_the_companies_table():
+    from src.documents.db_chunking import company_documents
+    doc = company_documents([{"company_id": "c1", "symbol": "FPT", "company_name": "FPT Corp",
+                              "industry_type": "IT", "sector": "Công nghệ", "exchange": "HOSE", "is_active": True}])[0]
+    keys = [row.key for row in doc.sections[0].rows]
+    assert keys == ["FPT:symbol", "FPT:company_name", "FPT:exchange", "FPT:industry_type", "FPT:sector", "FPT:is_active"]
+
+
+def test_news_day_uses_vietnam_time_not_utc():
+    from datetime import datetime, timezone
+    from src.documents.db_chunking import chunk_document, news_documents
+    row = {"article_id": "a9", "source": "cafef", "title": "Tin", "content": "Nội dung.",
+           "published_at": datetime(2026, 10, 1, 20, 30, tzinfo=timezone.utc), "symbols": [], "url": "u"}
+    chunk = chunk_document(news_documents([row])[0])[0]
+    assert "2026-10-02" in chunk.text and chunk.locator["published_at"] == "2026-10-02"

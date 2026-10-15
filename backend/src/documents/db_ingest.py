@@ -1,13 +1,21 @@
 """Write chunks produced by ``db_chunking`` into ``documents`` and ``text_chunks``.
 
+OWNERSHIP: storing vectors in pgvector is WBS12/WBS17 (Nhan). This module is a
+REFERENCE implementation provided with the chunker so Nhan can reuse or replace
+it; it is not run by default (chunk_from_supabase.py needs --confirmed-with-nhan).
+It already settles: stable document/chunk ids, model label <= 50 characters
+(index_versions.embedding_model is varchar(50)), one transaction per document,
+and retirement of chunks that no longer exist.
+
 Pipeline for one run: source documents -> chunks -> embeddings -> upsert.
 
 Rules:
 * ``text_chunks.embedding`` is NOT NULL, so a document is written only when
   every one of its chunks was embedded. A document that fails is reported and
   skipped; it is never written half way.
-* Everything is an upsert keyed by stable ids: running twice gives the same
-  rows. Chunks of a document that no longer exist are removed.
+* Everything is keyed by stable ids: running twice gives the same rows. A chunk
+  whose content changed is NOT overwritten: the old chunk is retired
+  (superseded_at) and a new chunk is inserted, so citations stay valid.
 * One transaction per document, so a failure never leaves a partial document.
 * The embedder is injected (``embed_texts(list[str]) -> list[list[float]]``),
   so tests never need the 2.2GB model.
@@ -16,14 +24,15 @@ Rules:
 from __future__ import annotations
 
 import hashlib
+import json
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Protocol, Sequence
 
+from .batch_embeddings import EMBEDDING_DIM, embed_chunks  # noqa: F401 - EMBEDDING_DIM re-exported
 from .db_chunking import CHUNKER_VERSION, DEFAULT_MAX_WORDS, NAMESPACE, DbChunk, SourceDocument, chunk_document
 
-EMBEDDING_DIM = 1024  # text_chunks.embedding is vector(1024)
 FILE_TYPE = "DB"  # documents.file_type is NOT NULL; these documents come from tables, not files
 
 
@@ -35,7 +44,7 @@ class Embedder(Protocol):
 class IngestResult:
     documents_ok: int = 0
     documents_failed: int = 0
-    chunks_written: int = 0
+    chunks_written: int = 0  # Input chunks committed successfully; reruns may insert no new rows.
     errors: list[dict[str, Any]] = field(default_factory=list)
 
 
@@ -110,51 +119,125 @@ async def upsert_document(conn: Any, doc: SourceDocument, chunks: Sequence[DbChu
     )
 
 
+def _locator_changed(row: Any, locator: dict[str, Any]) -> bool:
+    """True when the stored locator_json differs from the freshly computed locator."""
+    try:
+        stored = row["locator_json"]
+    except (KeyError, IndexError):
+        return False  # row has no locator information to compare
+    if isinstance(stored, (str, bytes)):
+        try:
+            stored = json.loads(stored)
+        except ValueError:
+            return True
+    return stored != json.loads(json.dumps(locator, ensure_ascii=False, default=str))
+
+
+_INSERT_CHUNK_SQL = """
+INSERT INTO text_chunks
+    (chunk_id, document_id, index_version_id, chunk_index, page_number, section_label,
+     chunk_text, token_count, char_start, char_end, content_hash, embedding, locator_json, created_at)
+VALUES ($1, $2, $3, $4, NULL, $5, $6, $7, $8, $9, $10, $11, $12::jsonb, $13)
+"""
+
+
 async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk],
                        vectors: Sequence[Sequence[float]], index_version_id: str) -> None:
+    """Write chunks without ever changing an existing chunk_id (leader decision, option B).
+
+    * same position, same content  -> left untouched;
+    * same position, content changed -> the old chunk is retired (superseded_at) and a NEW
+      chunk is inserted, so evidence/citations keep pointing at the text they quoted;
+    * position no longer exists     -> retired, never deleted;
+    * content returns to an older text -> the retired chunk with that id is revived.
+    """
+    if len(chunks) != len(vectors):
+        raise ValueError(f"expected {len(chunks)} vectors, got {len(vectors)}")
     document_id = uuid.UUID(doc.document_id)
     version_id = uuid.UUID(index_version_id)
     now = datetime.now(timezone.utc)
-    # chunks that no longer exist for this document under this index version
-    await conn.execute(
-        "DELETE FROM text_chunks WHERE document_id = $1 AND index_version_id = $2 AND chunk_index >= $3",
-        document_id, version_id, len(chunks),
+
+    current = await conn.fetch(
+        "SELECT chunk_id, chunk_index, content_hash, locator_json FROM text_chunks "
+        "WHERE document_id = $1 AND index_version_id = $2 AND superseded_at IS NULL",
+        document_id, version_id,
     )
-    await conn.executemany(
-        """
-        INSERT INTO text_chunks
-            (chunk_id, document_id, index_version_id, chunk_index, page_number, section_label,
-             chunk_text, token_count, char_start, char_end, content_hash, embedding, created_at)
-        VALUES ($1, $2, $3, $4, NULL, $5, $6, $7, $8, $9, $10, $11, $12)
-        ON CONFLICT (index_version_id, document_id, chunk_index) DO UPDATE
-        SET chunk_id = EXCLUDED.chunk_id, section_label = EXCLUDED.section_label,
-            chunk_text = EXCLUDED.chunk_text, token_count = EXCLUDED.token_count,
-            char_start = EXCLUDED.char_start, char_end = EXCLUDED.char_end,
-            content_hash = EXCLUDED.content_hash, embedding = EXCLUDED.embedding,
-            created_at = EXCLUDED.created_at
-        """,
-        [
-            (uuid.UUID(stored_chunk_id(index_version_id, c)), document_id, version_id, c.chunk_index,
-             c.section_label[:255], c.text, c.token_count, c.char_start, c.char_end, c.content_hash,
-             list(vector), now)
-            for c, vector in zip(chunks, vectors)
-        ],
-    )
+    current_by_position = {row["chunk_index"]: row for row in current}
+
+    retire: list[Any] = []
+    relocate: list[tuple[Any, str]] = []  # same content, locator metadata changed
+    links: list[tuple[Any, Any]] = []  # (old chunk_id, new chunk_id)
+    pending: list[tuple[DbChunk, Sequence[float], uuid.UUID]] = []
+    for chunk, vector in zip(chunks, vectors):
+        new_id = uuid.UUID(stored_chunk_id(index_version_id, chunk))
+        old = current_by_position.get(chunk.chunk_index)
+        if old is not None:
+            if str(old["content_hash"]).strip() == chunk.content_hash:
+                # same text: keep the chunk (and its id); only refresh metadata that lives outside the text
+                if _locator_changed(old, chunk.locator):
+                    relocate.append((old["chunk_id"], json.dumps(chunk.locator, ensure_ascii=False, default=str)))
+                continue
+            retire.append(old["chunk_id"])
+            links.append((old["chunk_id"], new_id))
+        pending.append((chunk, vector, new_id))
+    retire.extend(row["chunk_id"] for position, row in current_by_position.items() if position >= len(chunks))
+
+    if relocate:
+        await conn.executemany(
+            "UPDATE text_chunks SET locator_json = $2::jsonb WHERE chunk_id = $1 AND superseded_at IS NULL",
+            relocate,
+        )
+
+    if retire:
+        await conn.execute(
+            "UPDATE text_chunks SET superseded_at = $2 WHERE chunk_id = ANY($1::uuid[]) AND superseded_at IS NULL",
+            retire, now,
+        )
+
+    # a text that came back: its old (retired) row already has this id, so revive it instead of inserting
+    revived: set[Any] = set()
+    if pending:
+        existing = await conn.fetch(
+            "SELECT chunk_id FROM text_chunks WHERE chunk_id = ANY($1::uuid[])",
+            [new_id for _, _, new_id in pending],
+        )
+        revived = {row["chunk_id"] for row in existing}
+        if revived:
+            await conn.execute(
+                "UPDATE text_chunks SET superseded_at = NULL, superseded_by_chunk_id = NULL "
+                "WHERE chunk_id = ANY($1::uuid[])",
+                list(revived),
+            )
+
+    rows = [
+        (new_id, document_id, version_id, c.chunk_index, c.section_label[:255], c.text, c.token_count,
+         c.char_start, c.char_end, c.content_hash, list(vector),
+         json.dumps(c.locator, ensure_ascii=False, default=str), now)
+        for c, vector, new_id in pending if new_id not in revived
+    ]
+    if rows:
+        await conn.executemany(_INSERT_CHUNK_SQL, rows)
+    if links:
+        await conn.executemany(
+            "UPDATE text_chunks SET superseded_by_chunk_id = $2 WHERE chunk_id = $1",
+            [pair for pair in links if pair[1] not in revived],
+        )
 
 
-def embed_all(embedder: Embedder, chunks: Sequence[DbChunk], batch_size: int = 32) -> list[list[float]]:
-    """Embed in batches. Raises on the first failing batch or a wrong vector size."""
-    vectors: list[list[float]] = []
-    for start in range(0, len(chunks), batch_size):
-        batch = [c.text for c in chunks[start:start + batch_size]]
-        out = embedder.embed_texts(batch)
-        if len(out) != len(batch):
-            raise ValueError(f"embedder returned {len(out)} vectors for {len(batch)} texts")
-        for vector in out:
-            if len(vector) != EMBEDDING_DIM:
-                raise ValueError(f"vector has {len(vector)} dimensions, text_chunks needs {EMBEDDING_DIM}")
-        vectors.extend(out)
-    return vectors
+def embed_all(embedder: Embedder, chunks: Sequence[DbChunk], batch_size: int = 32,
+              max_retries: int = 2) -> list[list[float]]:
+    """Embed through batch_embeddings.embed_chunks (per-chunk retry and validation).
+
+    A document is written only when every chunk got a valid vector, so any failure raises.
+    """
+    result = embed_chunks([{"chunk_id": c.chunk_id, "text": c.text} for c in chunks], embedder,
+                          batch_size=batch_size, max_retries=max_retries)
+    if result.failed:
+        first = result.failed[0]
+        raise ValueError(f"{len(result.failed)} chunk khong nhung duoc vector; dau tien "
+                         f"{first['chunk_id']}: {first['error']}")
+    by_id = {item["chunk"]["chunk_id"]: item["embedding"] for item in result.succeeded}
+    return [by_id[c.chunk_id] for c in chunks]
 
 
 async def ingest_documents(conn: Any, docs: Sequence[SourceDocument], embedder: Embedder,

@@ -50,10 +50,28 @@ def test_empty_text_and_duplicate_id_are_reported_without_model_calls():
     ], embedder)
 
     assert [item["chunk"]["chunk_id"] for item in result.succeeded] == ["c2"]
-    assert [item["error"] for item in result.failed] == [
-        "chunk text is empty or invalid", "duplicate chunk_id; duplicate input ignored",
-    ]
+    assert [item["error"] for item in result.failed] == ["chunk text is empty or invalid"]
+    assert result.skipped == [{"chunk_id": "c2", "reason": "duplicate chunk_id; duplicate input ignored"}]
     assert embedder.calls == [["valid"]]
+
+
+def test_text_longer_than_limit_is_reported_without_model_call():
+    embedder = FakeEmbedder()
+    result = embed_chunks([chunk("c1", "x" * 50), chunk("c2", "ok")], embedder, max_chars=40)
+
+    assert [item["chunk"]["chunk_id"] for item in result.succeeded] == ["c2"]
+    assert result.failed[0]["chunk_id"] == "c1"
+    assert result.failed[0]["retryable"] is False
+    assert "limit is 40" in result.failed[0]["error"]
+    assert embedder.calls == [["ok"]]
+
+
+def test_embedding_service_requires_revision_by_keyword():
+    import pytest
+    from src.documents.embeddings import EmbeddingService
+
+    with pytest.raises(TypeError):
+        EmbeddingService("BAAI/bge-m3", "cpu")  # old positional style must not silently set revision="cpu"
 
 
 def test_wrong_dimension_is_reported_without_retry():
