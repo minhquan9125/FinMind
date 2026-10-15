@@ -8,8 +8,8 @@ Writing to the database is WBS12 (Nhan), not part of the chunking task (WBS06).
 --apply therefore refuses to run unless --confirmed-with-nhan is also given.
 When allowed it embeds the chunks (BAAI/bge-m3 by default, ~2.2GB on first run)
 and writes ``documents`` and ``text_chunks``. text_chunks.embedding is NOT NULL,
-so embedding and writing happen together. Re-running is safe: every row is an
-upsert with a stable id.
+so embedding and writing happen together. Re-running unchanged input keeps the
+same rows; changed chunks supersede old rows so citations remain valid.
 
 Examples (run from the FinMind root, DATABASE_URL in .env):
     py -X utf8 backend/scripts/chunk_from_supabase.py                  # tat ca nguon, tat ca ma
@@ -148,7 +148,9 @@ async def run(args: argparse.Namespace) -> int:
                 print(f"\nDang nhung vector bang {index_label} va ghi {len(results)} chunk (lan dau tai mo hinh se lau)...")
                 outcome = await ingest_documents(
                     conn, all_docs, embedder, index_label, args.max_words, args.batch_size)
-                print(f"Da ghi: {outcome.documents_ok} tai lieu, {outcome.chunks_written} chunk.")
+                print(f"Xu ly thanh cong: {outcome.documents_ok} tai lieu, "
+                      f"{outcome.chunks_written} chunk dau vao "
+                      "(co the gom chunk da co; xem DB de dem hang moi).")
                 if outcome.documents_failed:
                     print(f"LOI: {outcome.documents_failed} tai lieu khong ghi duoc (khong ghi do dang):", file=sys.stderr)
                     for err in outcome.errors[:10]:

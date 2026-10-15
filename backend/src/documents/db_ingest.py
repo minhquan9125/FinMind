@@ -5,7 +5,7 @@ REFERENCE implementation provided with the chunker so Nhan can reuse or replace
 it; it is not run by default (chunk_from_supabase.py needs --confirmed-with-nhan).
 It already settles: stable document/chunk ids, model label <= 50 characters
 (index_versions.embedding_model is varchar(50)), one transaction per document,
-and removal of chunks that no longer exist.
+and retirement of chunks that no longer exist.
 
 Pipeline for one run: source documents -> chunks -> embeddings -> upsert.
 
@@ -44,7 +44,7 @@ class Embedder(Protocol):
 class IngestResult:
     documents_ok: int = 0
     documents_failed: int = 0
-    chunks_written: int = 0
+    chunks_written: int = 0  # Input chunks committed successfully; reruns may insert no new rows.
     errors: list[dict[str, Any]] = field(default_factory=list)
 
 
