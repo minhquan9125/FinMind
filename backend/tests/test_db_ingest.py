@@ -218,3 +218,47 @@ def test_news_documents_are_written_with_url():
     assert result.documents_ok == 1
     insert = [args for sql, args in conn.executed if "INSERT INTO documents" in sql][0]
     assert "https://x/y" in insert
+
+
+def _news_doc(title="FPT: Nghị quyết HĐQT về cổ tức"):
+    return news_documents([{
+        "article_id": "a2", "source": "cafef", "title": title, "content": "Đoạn một.\n\nĐoạn hai.",
+        "published_at": datetime(2026, 10, 1, tzinfo=timezone.utc), "symbols": ["FPT"], "url": "https://x/z",
+    }])[0]
+
+
+def test_news_chunk_locator_carries_type_but_chunk_id_ignores_it():
+    chunks = chunk_document(_news_doc())
+    loc = chunks[0].locator
+    assert loc["news_type"] == "CONG_BO_THONG_TIN" and loc["news_priority"] == 1
+    assert "CONG_BO_THONG_TIN" not in chunks[0].text  # type lives in the locator, not in the text
+    other = chunk_document(_news_doc("FPT: Nghị quyết HĐQT về cổ tức"))
+    assert [c.chunk_id for c in chunks] == [c.chunk_id for c in other]
+
+
+@pytest.mark.parametrize("title,expected", [
+    ("FPT: Nghị quyết HĐQT thông qua phương án phát hành", "CONG_BO_THONG_TIN"),
+    ("FPT báo lợi nhuận quý 3 tăng 20%", "KET_QUA_KINH_DOANH"),
+    ("FPT hợp tác chiến lược với đối tác Nhật", "CHIEN_LUOC_DOANH_NGHIEP"),
+    ("Khối ngoại mua ròng phiên hôm nay", "DIEN_BIEN_GIA"),
+    ("Góc nhìn thị trường tuần tới", "BINH_LUAN_KHAC"),
+    ("", "BINH_LUAN_KHAC"),
+])
+def test_classify_news(title, expected):
+    from src.documents.db_chunking import classify_news
+    assert classify_news(title) == expected
+
+
+def test_unchanged_text_but_new_locator_refreshes_locator_only():
+    doc = _news_doc()
+    version = index_version_id_for(130, "m")
+    rows = _current_rows(doc, version)
+    for row in rows:
+        row["locator_json"] = '{"source_table": "news_articles"}'  # old locator without the type
+    conn = FakeConn(current=rows)
+    run(ingest_documents(conn, [doc], FakeEmbedder(), "m"))
+    updates = [r for sql, r in conn.many if "SET locator_json" in sql]
+    assert len(updates) == 1 and len(updates[0]) == len(rows)
+    assert all(json.loads(loc)["news_type"] == "CONG_BO_THONG_TIN" for _, loc in updates[0])
+    assert not any("INSERT INTO text_chunks" in sql for sql, _ in conn.many)  # no re-embedding, no new chunk
+    assert not any("SET superseded_at" in sql for sql, _ in conn.executed)
