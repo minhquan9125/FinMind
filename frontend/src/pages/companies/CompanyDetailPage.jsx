@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams, useSearchParams } from "../../app/router.jsx";
+import { Link, useNavigate, useParams, useSearchParams, useAuth } from "../../app/router.jsx";
 import { Button, Card, EmptyState, ErrorState, Select, Sidebar, Skeleton, Stat, StatusBadge } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
-import { researcherMock } from "../dashboard/mock.js";
 import { getCompanyDetail } from "./detailApi.js";
 import { detailPeriods } from "./detailMock.js";
 import { getSavedNews, refreshLivePrice, refreshCompanyNews } from "./marketDataApi.js";
@@ -26,6 +25,7 @@ const localTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { t
 
 export default function CompanyDetailPage() {
   const navigate = useNavigate();
+  const { userProfile, logout } = useAuth();
   const { ticker: routeTicker } = useParams();
   const [params] = useSearchParams();
   const ticker = (routeTicker || "").toUpperCase();
@@ -121,7 +121,7 @@ export default function CompanyDetailPage() {
   return (
     <div className="flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
       <Sidebar groups={userMenu} activeId="companies" onSelect={(id) => navigate(menuPaths[id])}
-        profile={researcherMock} onProfile={() => navigate("/profile")} onLogout={() => navigate("/login")} />
+        profile={userProfile} onProfile={() => navigate("/profile")} onLogout={logout} />
       <main className="min-w-0 flex-1">
         <header className="flex min-h-16 flex-wrap items-center justify-between gap-2 border-b border-slate-200 bg-white px-4 py-3 sm:px-6 lg:px-8">
           <nav aria-label="Đường dẫn" className="flex items-center gap-2 text-xs text-slate-500">

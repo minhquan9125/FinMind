@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
+import { Link, useNavigate, useSearchParams, useAuth } from "../../app/router.jsx";
 import { Card, EmptyState, ErrorState, Input, Sidebar, Skeleton, StatusBadge } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
 import { companyCatalog } from "../companies/mock.js";
@@ -16,6 +16,22 @@ const menuPaths = {
 
 export default function DashboardPage() {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  const displayName = user?.name || researcherMock.name;
+  const initials = (() => {
+    if (!displayName) return "U";
+    const parts = displayName.trim().split(/\s+/);
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  })();
+
+  const userProfile = {
+    initials,
+    name: displayName,
+    role: user?.role === "admin" ? "Quản trị viên" : "Nhà nghiên cứu",
+  };
+
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -50,7 +66,7 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
       <Sidebar groups={userMenu} activeId="dashboard" onSelect={(id) => navigate(menuPaths[id])}
-        profile={researcherMock} onProfile={() => navigate("/profile")} onLogout={() => navigate("/login")} />
+        profile={userProfile} onProfile={() => navigate("/profile")} onLogout={logout} />
       <main className="min-w-0 flex-1">
         <header className="flex h-16 items-center justify-end border-b border-slate-200 bg-white px-4 sm:px-6 lg:px-8">
           <StatusBadge tone="neutral">Giá và tin từ dữ liệu nguồn · Hồ sơ minh họa</StatusBadge>
@@ -58,7 +74,7 @@ export default function DashboardPage() {
         <div className="mx-auto w-full max-w-[1240px] space-y-7 px-4 py-6 sm:px-6 lg:px-8">
           <section aria-labelledby="hero-title" className="rounded-2xl border border-[#BCCEFB] bg-[#E8F0FF] p-5 shadow-sm md:p-6">
             <StatusBadge tone="info">Khám phá doanh nghiệp</StatusBadge>
-            <h1 id="hero-title" className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">Chào buổi sáng, {researcherMock.name}!</h1>
+            <h1 id="hero-title" className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">Chào buổi sáng, {displayName}!</h1>
             <p className="mt-1.5 text-sm text-slate-600">Bạn muốn tìm hiểu doanh nghiệp nào hôm nay?</p>
             <div className="relative mt-5">
               <Input label="TÌM DOANH NGHIỆP" type="search" autoComplete="off"

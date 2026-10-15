@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
+import { Link, useNavigate, useSearchParams, useAuth } from "../../app/router.jsx";
 import { Button, Drawer, EmptyState, ErrorState, Select, Sidebar, Skeleton, StatusBadge } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
-import { researcherMock } from "../dashboard/mock.js";
 import { getGraph } from "./api.js";
 import GraphCanvas from "./GraphCanvas.jsx";
 import { canExpand, getVisibleGraph, MAX_HOPS } from "./graphModel.js";

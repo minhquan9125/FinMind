@@ -91,3 +91,20 @@ export async function apiRegister(fullName, email, password, confirmPassword) {
     throw netErr;
   }
 }
+/**
+ * Gửi Google ID Token lên backend để xác thực và lấy session JWT của FinMind
+ * @param {string} credential - Token Google trả về sau khi đăng nhập thành công
+ */
+export async function apiGoogleLogin(credential) {
+  const res = await fetch("/api/v1/auth/google", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ credential }),
+  });
+
+  const body = await res.json();
+  if (!res.ok) {
+    throw new Error(body.detail || "Đăng nhập bằng tài khoản Google thất bại.");
+  }
+  return body.data;
+}

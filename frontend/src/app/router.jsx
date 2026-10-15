@@ -71,7 +71,8 @@ function ProtectedRoute({ routeConfig, children }) {
   }
 
   // 3. Đã đăng nhập nhưng không có quyền → chuyển hướng phù hợp
-  if (requiresAuth && isAuthenticated && allowedRoles && !allowedRoles.includes(role)) {
+  const effectiveRole = (role === "researcher" || !role) ? "user" : role;
+  if (requiresAuth && isAuthenticated && allowedRoles && !allowedRoles.includes(role) && !allowedRoles.includes(effectiveRole)) {
     const fallback = role === "admin" ? "/admin" : "/dashboard";
     return <Navigate to={fallback} replace />;
   }

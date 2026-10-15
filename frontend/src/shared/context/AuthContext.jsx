@@ -11,8 +11,7 @@ import React, {
   useState,
 } from "react";
 
-import { apiLogin, apiRegister } from "../api/authApi.js";
-
+import { apiLogin, apiRegister,apiGoogleLogin } from "../api/authApi.js";
 // ─── Key lưu phiên trong localStorage ────────────────────────────────────────
 // Chỉ lưu profile người dùng và access token; TUYỆT ĐỐI KHÔNG LƯU MẬT KHẨU
 const STORAGE_KEY = "finmind_auth_session";
@@ -51,6 +50,8 @@ const AuthContext = createContext({
   isSessionExpired: false,
   /** @type {(email:string, password:string, rememberMe?:boolean) => Promise<void>} */
   login: async () => {},
+  /** @type {(credential:string, rememberMe?:boolean) => Promise<void>} */
+  loginWithGoogle: async () => {},
   /** @type {(name:string, email:string, password:string, confirmPassword?:string) => Promise<void>} */
   register: async () => {},
   /** @type {() => Promise<void>} */
@@ -105,7 +106,8 @@ export function AuthProvider({ children }) {
       : (res.expires_in || 900) * 1000;
     const expiresAtTimestamp = now + ttlMs;
 
-    const primaryRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
+    const rawRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
+    const primaryRole = rawRole === "admin" ? "admin" : "user";
     const authUser = {
       id: res.user.user_id,
       email: res.user.email,
@@ -126,6 +128,40 @@ export function AuthProvider({ children }) {
     // Lưu phiên vào localStorage (không lưu password, confirmPassword hay secret)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
 
+    setUser(authUser);
+    setIsSessionExpired(false);
+  }, []);
+
+  const loginWithGoogle = useCallback(async (credential, rememberMe = true) => {
+    // 1. Gửi Google credential lên Backend FinMind để xác thực thật
+    const res = await apiGoogleLogin(credential);
+
+    const now = Date.now();
+    const ttlMs = rememberMe
+      ? 7 * 24 * 60 * 60 * 1000
+      : (res.expires_in || 900) * 1000;
+    const expiresAtTimestamp = now + ttlMs;
+
+    const rawRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
+    const primaryRole = rawRole === "admin" ? "admin" : "user";
+    const authUser = {
+      id: res.user.user_id,
+      email: res.user.email,
+      name: res.user.full_name,
+      role: primaryRole,
+      roles: res.user.roles || ["RESEARCHER"],
+    };
+
+    const session = {
+      user: authUser,
+      token: res.access_token,
+      rememberMe,
+      loginAt: new Date(now).toISOString(),
+      expiresAt: new Date(expiresAtTimestamp).toISOString(),
+      expiresAtTimestamp,
+    };
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
     setUser(authUser);
     setIsSessionExpired(false);
   }, []);
@@ -151,19 +187,36 @@ export function AuthProvider({ children }) {
     setIsSessionExpired(true);
   }, []);
 
+  const userProfile = useMemo(() => {
+    const displayName = user?.name || "Nhà nghiên cứu";
+    const parts = displayName.trim().split(/\s+/).filter(Boolean);
+    const initials = parts.length === 0
+      ? "NN"
+      : parts.length === 1
+      ? parts[0].slice(0, 2).toUpperCase()
+      : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    return {
+      initials,
+      name: displayName,
+      role: user?.role === "admin" ? "Quản trị viên" : "Nhà nghiên cứu",
+    };
+  }, [user]);
+
   const value = useMemo(
     () => ({
       user,
-      role: user?.role ?? null,
+      userProfile,
+      role: user?.role === "admin" ? "admin" : (user ? "user" : null),
       isAuthenticated: !!user,
       isLoading,
       isSessionExpired,
       login,
+      loginWithGoogle,
       register,
       logout,
       expireSessionNow,
     }),
-    [user, isLoading, isSessionExpired, login, register, logout, expireSessionNow],
+    [user, userProfile, isLoading, isSessionExpired, login, loginWithGoogle, register, logout, expireSessionNow],
   );
 
   return (

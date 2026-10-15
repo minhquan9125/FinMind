@@ -66,3 +66,7 @@ class LoginRequest(BaseModel):
     @classmethod
     def clean_login_email(cls, value: str) -> str:
         return value.strip().lower()
+
+class GoogleLoginRequest(BaseModel):
+    credential: str
+    

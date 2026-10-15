@@ -49,6 +49,11 @@ app.include_router(documents.router)
 app.include_router(search.router)
 app.include_router(auth.router)
 
+@app.get("/")
+async def root() -> dict:
+    return {"message": "FinMind Backend API is running successfully!", "docs": "/docs", "health": "/api/health"}
+
+
 @app.get("/api/health")
 async def health() -> dict:
     return {"status": "ok"}

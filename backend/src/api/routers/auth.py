@@ -4,7 +4,7 @@ from starlette.concurrency import run_in_threadpool
 
 from ...auth import repository
 from ...auth.rate_limiter import login_limiter
-from ...auth.schemas import LoginRequest, RegisterRequest
+from ...auth.schemas import GoogleLoginRequest, LoginRequest, RegisterRequest
 from ...auth.service import (
     DUMMY_HASH,
     create_access_token,
@@ -14,6 +14,9 @@ from ...auth.service import (
 )
 from ...core.config import get_settings
 from ...core.db import get_pool
+import os
+from google.oauth2 import id_token
+from google.auth.transport import requests as google_requests
 
 router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
 
@@ -123,6 +126,67 @@ async def login(payload: LoginRequest):
             "access_token": create_access_token(
                 user["user_id"], settings, user_roles
             ),
+            "refresh_token": refresh_token,
+            "token_type": "Bearer",
+            "expires_in": settings.access_token_minutes * 60,
+            "user": {
+                "user_id": str(user["user_id"]),
+                "email": user["email"],
+                "full_name": user["full_name"],
+                "roles": user_roles,
+            },
+        },
+    }
+
+@router.post("/google")
+async def login_with_google(payload: GoogleLoginRequest):
+    settings = get_settings()
+    google_client_id = os.getenv("GOOGLE_CLIENT_ID", "")
+
+    try:
+        # google-auth tự động gọi server Google kiểm tra chữ ký điện tử của ID Token
+        id_info = id_token.verify_oauth2_token(
+            payload.credential,
+            google_requests.Request(),
+            google_client_id if google_client_id else None,
+        )
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=f"Token Google không hợp lệ hoặc đã hết hạn: {str(exc)}",
+        )
+
+    email = id_info.get("email")
+    name = id_info.get("name", "")
+
+    if not email:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Không lấy được địa chỉ email từ tài khoản Google.",
+        )
+
+    pool = get_pool()
+
+    user = await repository.get_or_create_google_user(pool, email=email, full_name=name)
+
+    if not user.get("is_active", True):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Tài khoản của bạn đã bị khóa.",
+        )
+
+    # 3. Lấy quyền và cấp JWT của FinMind
+    user_roles = await repository.get_user_roles(pool, user["user_id"])
+    refresh_token, token_hash = create_refresh_token()
+    await repository.create_session(
+        pool, user["user_id"], token_hash, settings.refresh_token_days
+    )
+    await repository.record_login(pool, user["user_id"])
+
+    return {
+        "success": True,
+        "data": {
+            "access_token": create_access_token(user["user_id"], settings, user_roles),
             "refresh_token": refresh_token,
             "token_type": "Bearer",
             "expires_in": settings.access_token_minutes * 60,

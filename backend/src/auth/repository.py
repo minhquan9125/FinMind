@@ -5,7 +5,7 @@ import asyncpg
 
 
 DEFAULT_ROLE_CODE = "RESEARCHER"
-DEFAULT_ROLE_DESC = "Nha nghien cuu mac dinh"
+DEFAULT_ROLE_DESC = "Nha nghien cuu "
 
 
 async def get_or_create_role(
@@ -139,3 +139,43 @@ async def record_login(pool: asyncpg.Pool, user_id: UUID) -> None:
         """,
         user_id,
     )
+
+async def get_or_create_google_user(
+    pool: asyncpg.Pool,
+    email: str,
+    full_name: str,
+    default_role_code: str = DEFAULT_ROLE_CODE,
+) -> dict:
+    """Tìm user theo email; nếu chưa có thì tạo mới (không cần password) và cấp quyền mặc định."""
+    async with pool.acquire() as conn:
+        async with conn.transaction():
+            user = await conn.fetchrow(
+                "SELECT user_id, email, full_name, is_active FROM public.users WHERE email = $1",
+                email,
+            )
+            if user is None:
+                new_id = uuid4()
+                # Tạo user mới, password_hash để None vì đăng nhập qua Google
+                user = await conn.fetchrow(
+                    """
+                    INSERT INTO public.users (user_id, email, full_name, password_hash, is_active, created_at, updated_at)
+                    VALUES ($1, $2, $3, NULL, true, now(), now())
+                    RETURNING user_id, email, full_name, is_active
+                    """,
+                    new_id,
+                    email,
+                    full_name or email.split("@")[0],
+                )
+                # Gán quyền RESEARCHER mặc định
+                role = await get_or_create_role(conn, default_role_code)
+                await conn.execute(
+                    """
+                    INSERT INTO public.user_roles (user_id, role_id)
+                    VALUES ($1, $2)
+                    ON CONFLICT DO NOTHING
+                    """,
+                    new_id,
+                    role["role_id"],
+                )
+            return dict(user)
+            
