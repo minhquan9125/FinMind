@@ -21,6 +21,103 @@ Quy trình bắt buộc trước khi sửa:
 
 ---
 
+### [2026-10-15] Ngày trong tiêu đề chunk tin tức tính theo giờ Việt Nam (UTC+7), không theo UTC
+
+- **File(s) sửa:** `backend/src/documents/db_chunking.py`, `backend/tests/test_db_chunking_sources.py`, `history.md`
+- **Sai gì / Thiếu gì:** Ngày của tin lấy `published_at.date()` theo UTC, nên tin đăng sau 17:00 UTC (tức sáng hôm sau ở Việt Nam) bị ghi lùi một ngày trong tiêu đề chunk. Khoảng 15% tin lệch so với `chunks_thu.json`.
+- **Tại sao sửa:** Leader/nhóm chốt dùng giờ Việt Nam. Người dùng hỏi theo ngày Việt Nam, và đây là ngày hiển thị trên báo.
+- **Ảnh hưởng:**
+  - Tin có `published_at` kèm múi giờ được đổi sang UTC+7 (offset cố định, VN không có giờ mùa hè) trước khi lấy ngày; dữ liệu không kèm múi giờ giữ nguyên.
+  - Chữ tiêu đề đổi ở các tin lệch ngày, nên `content_hash` và `chunk_id` của các chunk đó đổi. Theo phương án B, chunk cũ được giữ và đánh dấu thay thế (tin tức không bị retention xoá); các tin còn lại không đổi.
+  - Cần chạy lại ingest tin tức để DB cập nhật; chunk bị đổi sẽ phải nhúng lại.
+  - Test: 153 pass, 1 lỗi có sẵn ở `test_json_ingest`.
+
+---
+
+### [2026-10-15] WBS11 bước 3: script kiểm tra locator `verify_locators.py` và sửa so sánh ngày trong bộ giải
+
+- **File(s):** `backend/scripts/verify_locators.py` (mới), `backend/src/documents/locator_resolver.py` (sửa), `backend/tests/test_locator_resolver.py`, `history.md`
+- **Sai gì / Thiếu gì:** Chưa có cách chạy kiểm tra locator trên dữ liệu thật. Khi chạy lần đầu trên Supabase, bộ giải lỗi vì asyncpg không nhận chuỗi cho `$2::date`.
+- **Tại sao sửa:** WBS11 cần báo cáo ~20 chunk mẫu. Sửa so sánh thành `trade_date::text = $2` nên không phụ thuộc kiểu tham số.
+- **Ảnh hưởng:**
+  - Script chỉ đọc DB (SELECT), không ghi. Dùng: `py -X utf8 backend/scripts/verify_locators.py --chunks <file chunk> [--per-table N] [--report file.md]`.
+  - Kết quả mẫu 4 chunk mỗi bảng: giá 4/4, chỉ số 4/4, tin tức 4/4, hồ sơ công ty 4/4 (sau khi chunk lại với khoá mới; file `tat_ca_chunks.json` cũ vẫn mang khoá cũ nên 0/4).
+  - Báo cáo tài chính chưa kiểm tra được vì bảng `observations` đang rỗng.
+  - Tin tức mới kiểm tra bài/url tồn tại, chưa so được từng đoạn `pN`.
+  - Test: 15 test locator pass.
+
+---
+
+### [2026-10-15] WBS11 bước 2: bộ giải locator (từ chunk tìm lại dòng nguồn và kiểm tra)
+
+- **File(s) thêm:** `backend/src/documents/locator_resolver.py`, `backend/tests/test_locator_resolver.py` (file mới, không sửa file nào có sẵn), `history.md`
+- **Sai gì / Thiếu gì:** Locator có `source_table`, `source_id`, `row_keys` nhưng chưa có code nào biến chúng thành truy vấn tìm dòng nguồn, cũng chưa có cách kiểm tra chunk khớp nguồn.
+- **Tại sao sửa:** WBS11 yêu cầu mỗi chunk truy ngược được về dòng nguồn để dùng làm trích dẫn (evidence).
+- **Ảnh hưởng:**
+  - `resolve_locator` trả về các truy vấn chỉ đọc (observations, news_articles, price_bars, market_index_bars, companies); `verify_chunk` chạy chúng và báo lỗi nếu thiếu dòng hoặc chữ chunk không nhắc tới ngày/mã/giá trị của dòng đó.
+  - Không ghi DB, không đổi schema, không đổi chunk_id. Chưa có script nào gọi module này (bước 3).
+  - Test: 14 test mới pass.
+
+---
+
+### [2026-10-15] WBS11 bước 1: khoá dòng của hồ sơ doanh nghiệp trỏ tới đúng cột trong bảng companies
+
+- **File(s) sửa:** `backend/src/documents/db_chunking.py`, `backend/tests/test_db_chunking_sources.py`, `history.md`
+- **Sai gì / Thiếu gì:** Khoá dòng của hồ sơ doanh nghiệp là `<mã>:<nhãn tiếng Việt>` (ví dụ `FPT:Sàn niêm yết`), không tra ngược được về cột nguồn.
+- **Tại sao sửa:** WBS11 cần locator của mỗi chunk resolve được về đúng dòng/cột nguồn. Khoá mới là `<mã>:<tên cột>` (ví dụ `FPT:exchange`).
+- **Ảnh hưởng:**
+  - Chỉ đổi `row_keys` trong locator. Chữ chunk, `content_hash`, `chunk_id` không đổi, không phải nhúng lại.
+  - Chunk hồ sơ doanh nghiệp đã có trên DB sẽ được làm mới `locator_json` ở lần ingest sau (cơ chế làm mới locator đã thêm cùng ngày).
+  - Khoá dòng giá (`price_id`), chỉ số (`<mã>:<ngày>`) và tin (`p1`, `p2`) giữ nguyên vì đã tra được; dòng tổng kết tháng `<mã>:<YYYY-MM>:summary` giữ nguyên và sẽ được resolver hiểu là "cả tháng".
+  - Test: 137 test pass, 1 lỗi có sẵn từ trước ở `test_json_ingest`, không liên quan.
+
+---
+
+### [2026-10-15] Thêm "loại tin" vào locator của chunk tin tức và làm mới locator khi nội dung không đổi
+
+- **File(s) sửa:** `backend/src/documents/db_chunking.py`, `backend/src/documents/db_ingest.py`, `backend/tests/test_db_ingest.py`, `history.md`
+- **Sai gì / Thiếu gì:**
+  1. Chunk tin tức chưa có thông tin loại tin (công bố chính thức, kết quả kinh doanh, chiến lược, diễn biến giá, bình luận), nên truy xuất không lọc/ưu tiên được nguồn đáng tin.
+  2. `write_chunks` bỏ qua chunk có nội dung không đổi, nên metadata nằm ngoài chữ (locator_json) không bao giờ được cập nhật cho chunk cũ.
+- **Tại sao sửa:** Leader/nhóm đồng ý thêm loại tin. Đặt trong `locator` (không đổi chữ chunk) nên `chunk_id` và vector không đổi, không cần nhúng lại.
+- **Ảnh hưởng:**
+  - Locator tin tức có thêm `news_type`, `news_priority` (1 = công bố chính thức … 5 = bình luận), `classifier` (`news-type-v1`). Phân loại theo luật từ tiêu đề, không dùng mô hình.
+  - Chạy lại ingest sẽ chỉ `UPDATE locator_json` cho chunk cũ, không chèn chunk mới, không đánh dấu thay thế, không nhúng lại.
+  - Chữ chunk và `chunk_id` không đổi (có test). Nhân (WBS12) cần biết vì `db_ingest.py` có thêm một lệnh UPDATE.
+  - Test: 50 test liên quan pass.
+
+---
+
+### [2026-10-15] Chính sách dọn chunk giá và chỉ số đã bị thay thế sau 30 ngày (chống phình dữ liệu của phương án B)
+
+- **File(s) mới:** `backend/src/documents/retention.py`, `backend/scripts/cleanup_superseded_chunks.py`, `backend/tests/test_retention.py`
+- **Thiếu gì:** Phương án B giữ lại chunk cũ mỗi khi nội dung chunk đổi. Với **giá và chỉ số**, mỗi ngày giao dịch có vài chunk của tháng hiện tại đổi nội dung (dòng "Tổng kết tháng" và dòng ngày mới), nên chunk cũ tích tụ đều đặn. Ước tính (chưa đo trên database thật): mỗi chunk ~6 đến 10 KB gồm cả vector 4 KB và chỉ mục; giữ lại cho 6 mã khoảng 3.000 hàng mỗi năm, nếu mở rộng 100 mã thì khoảng 50.000 hàng mỗi năm (~400 MB), trong khi gói Supabase Free giới hạn 500 MB.
+- **Tại sao thêm:** Leader/nhóm chốt: chunk giá và chỉ số bị thay thế được xóa định kỳ sau 30 ngày. Tin tức và báo cáo tài chính ít khi đổi và là nguồn trích dẫn nên giữ nguyên.
+- **Chính sách:**
+  | Loại tài liệu (`documents.doc_type`) | Chunk đã bị thay thế |
+  |---|---|
+  | `PRICE_HISTORY` (giá cổ phiếu), `MARKET_INDEX` (chỉ số) | **Xóa sau 30 ngày** |
+  | `NEWS`, `FINANCIAL_STATEMENT`, `COMPANY_PROFILE` | **Không bao giờ xóa** (code từ chối nếu truyền vào) |
+  | Mọi loại, nếu còn bị `evidence` trỏ tới | **Không xóa** (giữ trích dẫn hợp lệ) |
+  Điều kiện đầy đủ: `superseded_at` có giá trị, cũ hơn N ngày, thuộc loại cho phép, không có dòng `evidence` nào trỏ tới `chunk_id`.
+- **Cách chạy (từ thư mục gốc `FinMind`, cần `DATABASE_URL`):**
+  ```powershell
+  py -X utf8 backend/scripts/cleanup_superseded_chunks.py            # chỉ báo cáo, KHÔNG xóa (mặc định)
+  py -X utf8 backend/scripts/cleanup_superseded_chunks.py --apply    # xóa thật
+  py -X utf8 backend/scripts/cleanup_superseded_chunks.py --days 60 --apply
+  ```
+  In ra số chunk và dung lượng ước tính theo từng loại. Nên đặt lịch chạy mỗi ngày bằng Windows Task Scheduler (hoặc `pg_cron` của Supabase), **sau khi** đã áp dụng migration `20261014000300`. Script tự kiểm tra cột `superseded_at` có tồn tại, thiếu thì dừng và báo.
+- **Ảnh hưởng:**
+  - Chỉ **thêm file mới**, không đổi code đang chạy; chưa có gì tự động xóa vì mặc định là chạy thử và chưa đặt lịch.
+  - Chỉ xóa hàng trong `text_chunks` (vector và chữ của chunk cũ). Không đụng `documents`, `index_versions`, `evidence`, bảng nguồn.
+  - Chunk giá cũ bị xóa nghĩa là **không truy ngược được nội dung giá của một ngày cũ từ chunk đó**; nếu câu trả lời cũ đã trích dẫn nó thì chunk được giữ (điều kiện `evidence`).
+  - Dung lượng mỗi ngày dọn được tính theo `pg_column_size(embedding) + length(chunk_text)`, chưa tính chỉ mục.
+  - `ON DELETE`: `superseded_by_chunk_id` không có khóa ngoại nên xóa chunk cũ không ảnh hưởng chunk thay thế.
+- **Kiểm chứng:** 42 test đạt (test mới: chạy thử không xóa; xóa đúng tham số; từ chối loại được bảo vệ; số ngày phải >= 1; SQL luôn có điều kiện `superseded_at`, tuổi và `NOT EXISTS evidence`). **Chưa chạy trên database thật.**
+- **Giới hạn / việc còn lại:** chưa đặt lịch tự động; chưa đo dung lượng thật của Supabase (`pg_database_size`); chưa có chính sách cho tin tức nếu cần dọn sau này.
+
+---
+
 ### [2026-10-15] WBS12: nghiệm thu vector và metadata trên hai tài liệu FPT thật
 
 - **File(s):** `docs/embedding/WBS12-acceptance-2026-10-15.md`, `docs/embedding/WBS12-pgvector.md`, `backend/scripts/chunk_from_supabase.py`, `backend/src/documents/db_ingest.py`.

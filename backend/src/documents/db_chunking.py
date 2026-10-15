@@ -30,7 +30,7 @@ import hashlib
 import re
 import uuid
 from dataclasses import dataclass, field
-from datetime import date, datetime
+from datetime import date, datetime, timedelta, timezone
 from typing import Any, Iterable
 
 # Same namespace as backend/scripts/ingest_*.py so ids line up across tools.
@@ -170,7 +170,8 @@ def chunk_section(doc: SourceDocument, section_index: int, first_chunk_index: in
                 "symbol": doc.symbol,
                 "section": section.label,
                 "row_keys": [row.key for row, _ in group],
-                **{k: v for k, v in doc.meta.items() if k in ("url", "published_at", "period_code")},
+                **{k: v for k, v in doc.meta.items()
+                   if k in ("url", "published_at", "period_code", "news_type", "news_priority", "classifier")},
             },
         ))
     return chunks
@@ -299,6 +300,50 @@ def _split_long(text: str, max_words: int) -> list[str]:
     return units
 
 
+# Vietnam has no daylight saving, a fixed UTC+7 offset is exact and needs no tz database.
+VIETNAM_TZ = timezone(timedelta(hours=7))
+
+# ----------------------------------------------------------------- news type
+# Priority 1 is the most reliable evidence for a securities question. The type is stored in the
+# chunk locator only (never in the chunk text), so adding or changing it does not change chunk_id.
+NEWS_CLASSIFIER_VERSION = "news-type-v1"
+NEWS_PRIORITY = {
+    "CONG_BO_THONG_TIN": 1,        # official disclosure of a company
+    "KET_QUA_KINH_DOANH": 2,       # results, revenue, profit
+    "CHIEN_LUOC_DOANH_NGHIEP": 3,  # strategy, partnership, people
+    "DIEN_BIEN_GIA": 4,            # price, foreign flow, room
+    "BINH_LUAN_KHAC": 5,           # commentary and everything else
+}
+_TICKER_PREFIX = re.compile(r"^\s*[A-Z0-9]{3,4}\s*:")
+_DISCLOSURE = re.compile(
+    r"nghị quyết|hđqt|điều lệ|đại hội|đhđcđ|phát hành|cổ tức|công bố thông tin|thông báo|giải trình|"
+    r"báo cáo kết quả|ngày đăng ký cuối cùng|giao dịch cổ phiếu|giao dịch của người nội bộ|"
+    r"thay đổi nhân sự|bổ nhiệm|miễn nhiệm|từ nhiệm|cổ đông lớn|chào bán|trái phiếu|niêm yết", re.I)
+_RESULTS = re.compile(r"lợi nhuận|doanh thu|kết quả kinh doanh|quý\s*[1-4]|báo cáo tài chính|bctc|lãi ròng|lỗ", re.I)
+_STRATEGY = re.compile(r"hợp tác|chiến lược|công nghệ|nhân sự|dự án|đối tác|mở rộng|chuyển đổi|đầu tư vào", re.I)
+_PRICE = re.compile(r"cổ phiếu|vn-?index|khối ngoại|room|thanh khoản|phiên|mua ròng|bán ròng|vốn hóa|đáy|đỉnh", re.I)
+
+
+def classify_news(title: str) -> str:
+    """Rule-based news type from the title (deterministic, no model). See NEWS_PRIORITY."""
+    title = (title or "").strip()
+    if not title:
+        return "BINH_LUAN_KHAC"
+    if _DISCLOSURE.search(title) and (_TICKER_PREFIX.match(title) or re.search(r"công bố|thông báo|nghị quyết", title, re.I)):
+        return "CONG_BO_THONG_TIN"
+    if _RESULTS.search(title):
+        return "KET_QUA_KINH_DOANH"
+    if _TICKER_PREFIX.match(title) and _PRICE.search(title):
+        return "DIEN_BIEN_GIA"
+    if _STRATEGY.search(title):
+        return "CHIEN_LUOC_DOANH_NGHIEP"
+    if _PRICE.search(title):
+        return "DIEN_BIEN_GIA"
+    if _DISCLOSURE.search(title):
+        return "CONG_BO_THONG_TIN"
+    return "BINH_LUAN_KHAC"
+
+
 def news_documents(rows: Iterable[dict[str, Any]], max_words: int = DEFAULT_MAX_WORDS) -> list[SourceDocument]:
     """One document per news article. Expected keys: article_id, source, title,
     content, published_at, symbols, url."""
@@ -308,6 +353,8 @@ def news_documents(rows: Iterable[dict[str, Any]], max_words: int = DEFAULT_MAX_
         if not content:
             continue
         published = row.get("published_at")
+        if isinstance(published, datetime) and published.tzinfo is not None:
+            published = published.astimezone(VIETNAM_TZ)  # the day readers see in Vietnam, not the UTC day
         day = published.date().isoformat() if isinstance(published, datetime) else (
             published.isoformat() if isinstance(published, date) else "không rõ ngày")
         title = (row.get("title") or "").strip()
@@ -326,7 +373,9 @@ def news_documents(rows: Iterable[dict[str, Any]], max_words: int = DEFAULT_MAX_
             source_table="news_articles", source_id=str(row["article_id"]), doc_type="NEWS",
             title=title, symbol=symbols[0] if symbols else None, language="vi",
             sections=[SourceSection(label="Nội dung", header=header, rows=rows_out)],
-            meta={"url": row.get("url"), "published_at": day},
+            meta={"url": row.get("url"), "published_at": day,
+                  "news_type": (news_type := classify_news(title)),
+                  "news_priority": NEWS_PRIORITY[news_type], "classifier": NEWS_CLASSIFIER_VERSION},
         ))
     return docs
 
@@ -438,16 +487,18 @@ def company_documents(rows: Iterable[dict[str, Any]]) -> list[SourceDocument]:
         symbol = row.get("symbol")
         if not symbol:
             continue
+        # key = "<symbol>:<column of the companies table>", so a locator resolves to one cell of one row
         facts = [
-            ("Mã chứng khoán", symbol),
-            ("Tên doanh nghiệp", row.get("company_name")),
-            ("Sàn niêm yết", row.get("exchange")),
-            ("Loại hình ngành", row.get("industry_type")),
-            ("Lĩnh vực", row.get("sector")),
-            ("Trạng thái", None if row.get("is_active") is None else
+            ("symbol", "Mã chứng khoán", symbol),
+            ("company_name", "Tên doanh nghiệp", row.get("company_name")),
+            ("exchange", "Sàn niêm yết", row.get("exchange")),
+            ("industry_type", "Loại hình ngành", row.get("industry_type")),
+            ("sector", "Lĩnh vực", row.get("sector")),
+            ("is_active", "Trạng thái", None if row.get("is_active") is None else
              ("đang hoạt động" if row.get("is_active") else "ngừng hoạt động")),
         ]
-        lines = [SourceRow(key=f"{symbol}:{name}", text=f"{name}: {value}") for name, value in facts if value]
+        lines = [SourceRow(key=f"{symbol}:{column}", text=f"{name}: {value}")
+                 for column, name, value in facts if value]
         docs.append(SourceDocument(
             source_table="companies", source_id=str(row.get("company_id") or symbol),
             doc_type="COMPANY_PROFILE", title=f"Hồ sơ doanh nghiệp {symbol}", symbol=symbol, language="vi",

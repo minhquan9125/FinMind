@@ -119,6 +119,20 @@ async def upsert_document(conn: Any, doc: SourceDocument, chunks: Sequence[DbChu
     )
 
 
+def _locator_changed(row: Any, locator: dict[str, Any]) -> bool:
+    """True when the stored locator_json differs from the freshly computed locator."""
+    try:
+        stored = row["locator_json"]
+    except (KeyError, IndexError):
+        return False  # row has no locator information to compare
+    if isinstance(stored, (str, bytes)):
+        try:
+            stored = json.loads(stored)
+        except ValueError:
+            return True
+    return stored != json.loads(json.dumps(locator, ensure_ascii=False, default=str))
+
+
 _INSERT_CHUNK_SQL = """
 INSERT INTO text_chunks
     (chunk_id, document_id, index_version_id, chunk_index, page_number, section_label,
@@ -144,13 +158,14 @@ async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk]
     now = datetime.now(timezone.utc)
 
     current = await conn.fetch(
-        "SELECT chunk_id, chunk_index, content_hash FROM text_chunks "
+        "SELECT chunk_id, chunk_index, content_hash, locator_json FROM text_chunks "
         "WHERE document_id = $1 AND index_version_id = $2 AND superseded_at IS NULL",
         document_id, version_id,
     )
     current_by_position = {row["chunk_index"]: row for row in current}
 
     retire: list[Any] = []
+    relocate: list[tuple[Any, str]] = []  # same content, locator metadata changed
     links: list[tuple[Any, Any]] = []  # (old chunk_id, new chunk_id)
     pending: list[tuple[DbChunk, Sequence[float], uuid.UUID]] = []
     for chunk, vector in zip(chunks, vectors):
@@ -158,11 +173,20 @@ async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk]
         old = current_by_position.get(chunk.chunk_index)
         if old is not None:
             if str(old["content_hash"]).strip() == chunk.content_hash:
-                continue  # nothing changed
+                # same text: keep the chunk (and its id); only refresh metadata that lives outside the text
+                if _locator_changed(old, chunk.locator):
+                    relocate.append((old["chunk_id"], json.dumps(chunk.locator, ensure_ascii=False, default=str)))
+                continue
             retire.append(old["chunk_id"])
             links.append((old["chunk_id"], new_id))
         pending.append((chunk, vector, new_id))
     retire.extend(row["chunk_id"] for position, row in current_by_position.items() if position >= len(chunks))
+
+    if relocate:
+        await conn.executemany(
+            "UPDATE text_chunks SET locator_json = $2::jsonb WHERE chunk_id = $1 AND superseded_at IS NULL",
+            relocate,
+        )
 
     if retire:
         await conn.execute(
