@@ -222,3 +222,45 @@ export function mockExpireCurrentSession() {
     localStorage.removeItem(STORAGE_KEY);
   }
 }
+
+/**
+ * Giả lập gửi hướng dẫn đặt lại mật khẩu qua email (Quên mật khẩu).
+ * @param {string} email
+ * @returns {Promise<{success: boolean, message: string}>}
+ */
+export async function mockForgotPassword(email) {
+  // Giả lập độ trễ mạng
+  await new Promise((r) => setTimeout(r, 450));
+
+  const trimmed = (email || "").trim().toLowerCase();
+  if (!trimmed) {
+    throw new Error("Vui lòng nhập địa chỉ email.");
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(trimmed)) {
+    throw new Error("Địa chỉ email không hợp lệ. Vui lòng kiểm tra lại.");
+  }
+
+  return {
+    success: true,
+    message: `Hướng dẫn đặt lại mật khẩu đã được gửi tới ${trimmed}. Vui lòng kiểm tra hộp thư của bạn.`,
+  };
+}
+
+/**
+ * Giả lập đặt lại mật khẩu mới.
+ * @param {string} token
+ * @param {string} newPassword
+ * @returns {Promise<{success: boolean, message: string}>}
+ */
+export async function mockResetPassword(token, newPassword) {
+  await new Promise((r) => setTimeout(r, 400));
+  if (!newPassword || newPassword.length < 6) {
+    throw new Error("Mật khẩu mới phải có ít nhất 6 ký tự.");
+  }
+  return {
+    success: true,
+    message: "Mật khẩu đã được đặt lại thành công. Bạn có thể đăng nhập ngay.",
+  };
+}
