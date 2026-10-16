@@ -700,6 +700,18 @@ export const fetchAuthRegisterMock = (name, email, password, { shouldFail = fals
 export const fetchAuthLogoutMock = () =>
   mockEndpoint({ loggedOut: true }, "CIT-AUTH-LOGOUT");
 
+export const fetchAuthForgotPasswordMock = (email, { shouldFail = false, errorCode = 400 } = {}) => {
+  if (shouldFail) return mockEndpoint(null, null, true, errorCode);
+  if (!email || !email.trim()) return mockEndpoint(null, null, true, 400);
+  return mockEndpoint(
+    {
+      success: true,
+      message: `Hướng dẫn đặt lại mật khẩu đã được gửi tới ${email.trim()}. Vui lòng kiểm tra hộp thư của bạn.`
+    },
+    "CIT-AUTH-FORGOT-PASSWORD"
+  );
+};
+
 // ─── 16. DOCUMENTS (DÙNG CHO COMPONENT DocumentList.jsx) ──────────────────────
 const MOCK_DOCUMENTS_RAW = [
   {

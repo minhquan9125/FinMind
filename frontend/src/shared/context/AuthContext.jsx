@@ -11,7 +11,7 @@ import React, {
   useState,
 } from "react";
 
-import { apiLogin, apiRegister,apiGoogleLogin } from "../api/authApi.js";
+import { apiLogin, apiRegister, apiGoogleLogin, apiForgotPassword } from "../api/authApi.js";
 // ─── Key lưu phiên trong localStorage ────────────────────────────────────────
 // Chỉ lưu profile người dùng và access token; TUYỆT ĐỐI KHÔNG LƯU MẬT KHẨU
 const STORAGE_KEY = "finmind_auth_session";
@@ -54,6 +54,8 @@ const AuthContext = createContext({
   loginWithGoogle: async () => {},
   /** @type {(name:string, email:string, password:string, confirmPassword?:string) => Promise<void>} */
   register: async () => {},
+  /** @type {(email:string) => Promise<any>} */
+  forgotPassword: async () => {},
   /** @type {() => Promise<void>} */
   logout: async () => {},
   /** @type {() => void} Làm hết hạn phiên ngay lập tức để test */
@@ -174,6 +176,10 @@ export function AuthProvider({ children }) {
     await login(email, password, false);
   }, [login]);
 
+  const forgotPassword = useCallback(async (email) => {
+    return await apiForgotPassword(email);
+  }, []);
+
   const logout = useCallback(async () => {
     localStorage.removeItem(STORAGE_KEY);
     setUser(null);
@@ -213,10 +219,11 @@ export function AuthProvider({ children }) {
       login,
       loginWithGoogle,
       register,
+      forgotPassword,
       logout,
       expireSessionNow,
     }),
-    [user, userProfile, isLoading, isSessionExpired, login, loginWithGoogle, register, logout, expireSessionNow],
+    [user, userProfile, isLoading, isSessionExpired, login, loginWithGoogle, register, forgotPassword, logout, expireSessionNow],
   );
 
   return (

@@ -348,6 +348,12 @@ export default function LoginPage() {
                   📝 Sang trang Đăng ký
                 </Link>
               )}
+              <Link
+                to={PATHS.forgotPassword}
+                className="text-xs px-2.5 py-1.5 rounded-md bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium transition-colors border border-amber-200/60 no-underline"
+              >
+                Sang trang Quên mật khẩu
+              </Link>
             </div>
           </div>
         </div>
