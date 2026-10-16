@@ -9,6 +9,8 @@ GRANT ALL ON SCHEMA public TO postgres, service_role;
 -- Baseline schema generated from the user supplied ERD in ERD.md.
 -- The ERD specifies columns, SQL-like types, primary keys, and foreign-key relationships only.
 -- Defaults, non-PK nullability, unique/check constraints, indexes, and RLS policies are not inferred.
+-- text_chunks below also includes the current pgvector locator/supersede contract from
+-- migrations 20261014000200 and 20261014000300 so a fresh rebuild works with current code.
 CREATE EXTENSION IF NOT EXISTS vector;
 
 CREATE TABLE public."users" (
@@ -270,6 +272,9 @@ CREATE TABLE public."text_chunks" (
     "char_end" integer NOT NULL,
     "content_hash" char(64) NOT NULL,
     "embedding" vector(1024) NOT NULL,
+    "locator_json" jsonb,
+    "superseded_at" timestamptz,
+    "superseded_by_chunk_id" uuid,
     "created_at" timestamptz NOT NULL,
     PRIMARY KEY ("chunk_id")
 );
@@ -287,8 +292,9 @@ CREATE TABLE public."index_versions" (
 
 CREATE UNIQUE INDEX IF NOT EXISTS "uq_documents_sha256"
     ON public."documents" ("sha256");
-CREATE UNIQUE INDEX IF NOT EXISTS "uq_text_chunks_index_document_chunk"
-    ON public."text_chunks" ("index_version_id", "document_id", "chunk_index");
+CREATE UNIQUE INDEX IF NOT EXISTS "uq_text_chunks_current_position"
+    ON public."text_chunks" ("index_version_id", "document_id", "chunk_index")
+    WHERE "superseded_at" IS NULL;
 
 CREATE TABLE public."evidence" (
     "evidence_id" uuid NOT NULL,
