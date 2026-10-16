@@ -1,5 +1,14 @@
 # History thay đổi code
 
+### [2026-10-16] Viết lại README cho thành viên clone và chạy ứng dụng
+
+- **File(s):** `README.md`, `history.md`.
+- **Sai gì:** README trộn hướng dẫn backend chung 8000 với server độc lập 8001, tài khoản mock và đường dẫn máy cá nhân; thiếu các bước tạo .venv, SDK, môi trường và xử lý lỗi sau clone.
+- **Tại sao sửa:** Thành viên cần một quy trình thống nhất từ cài lần đầu đến `cd backend` / `npm run dev`, frontend localhost:5173 và tự kiểm tra API.
+- **Ảnh hưởng:** Chỉ cập nhật tài liệu. Giữ phần ingest/Supabase và ghi chú Vector RAG phía dưới; không chạy server, cài thư viện hay đổi DB. Nêu rõ Google client ID backend hiện lấy từ biến môi trường terminal.
+
+---
+
 File này ghi lại mọi lần sửa/bổ sung code trong dự án. Mỗi mục bắt buộc có 3 phần: **Sai gì**, **Tại sao sửa**, **Ảnh hưởng**.
 
 Quy trình bắt buộc trước khi sửa:
@@ -10,7 +19,45 @@ Quy trình bắt buộc trước khi sửa:
 
 ---
 
+### [2026-10-16] Backend auth đọc thêm cấu hình .env ở gốc repo
+
+- **File(s):** `backend/src/core/config.py`, `backend/tests/test_env_config.py`, `history.md`.
+- **Sai gì:** Settings chỉ đọc `backend/.env` nhưng máy này lưu DATABASE_URL trong `.env` gốc; backend dùng database localhost mặc định và lỗi ConnectionRefusedError khi khởi động. Các script chunk/manifest đọc cả hai nên vẫn chạy được, dễ hiểu nhầm DB đã kết nối thì auth cũng chạy.
+- **Tại sao sửa:** Backend cần đọc cùng cấu hình kết nối với script dữ liệu.
+- **Ảnh hưởng:** Đọc `.env` gốc rồi `backend/.env` (backend ưu tiên), biến môi trường tiến trình vẫn ưu tiên cao nhất. Không sao chép hay in mật khẩu, không sửa cấu hình DB thật.
+- **Kiểm chứng:** 14 test auth/cấu hình đạt; backend khởi động với Supabase, health qua Vite proxy trả 200; hai route login/register nhận request và trả 422 với body rỗng. Tạo user, xác minh mật khẩu, tạo session/JWT trên DB thật trong transaction rollback đều đạt, không giữ tài khoản thử.
+
+---
+
+### [2026-10-16] Bổ sung dependency backend đăng nhập Google
+
+- **File(s):** `backend/requirements.txt`, `history.md`.
+- **Sai gì:** Router auth import `google.oauth2` và `google.auth.transport` nhưng chưa khai báo `google-auth`. Python trên máy cũng chưa cài PyJWT nên backend lỗi `ModuleNotFoundError: jwt` trước khi mở API.
+- **Tại sao sửa:** Backend cần đầy đủ dependency auth để khởi động; thiếu dependency Google làm hỏng cả đăng nhập email vì router được import cùng ứng dụng.
+- **Ảnh hưởng:** Thêm `google-auth>=2,<3`; dùng `requests` đã có trong requirements. Không thay đổi tài khoản, mật khẩu, schema hay dữ liệu người dùng.
+
+---
+
 ## Template
+
+### [2026-10-16] Thêm lệnh npm chạy nhanh trong backend
+
+- **File(s):** `backend/package.json`, `backend/scripts/run-backend.mjs`, `README.md`, `history.md`.
+- **Sai gì:** Lệnh backend dài, dễ nhầm thư mục và đường dẫn Python giữa các máy.
+- **Tại sao sửa:** Người dùng muốn dùng `npm run ...` sau khi clone và cài đặt.
+- **Ảnh hưởng:** Theo yêu cầu người dùng, `cd backend` rồi `npm run dev` (hoặc `npm start`) dùng Python trong `.venv` gốc để chạy `src.main:app` ở 8000 với một worker. Thiếu .venv sẽ báo hướng dẫn, không dùng Python toàn máy hoặc tự cài thư viện. Không đổi API hay DB; không còn package chạy npm ở gốc.
+
+---
+
+### [2026-10-16] Ghép API giá/tin vào backend chính cổng 8000
+
+- **File(s):** `backend/src/main.py`, `frontend/src/pages/companies/marketDataApi.js`, `backend/tests/test_unified_app.py`, `README.md`, `history.md`.
+- **Sai gì:** Auth ở 8000 nhưng frontend gọi giá/tin mặc định sang 8001; phải mở thêm server và dễ lỗi khi quên chạy.
+- **Tại sao sửa:** Người dùng yêu cầu dùng chung backend. Đăng ký market router trong main và tái dùng lifespan collector/news, đảm bảo đóng DB cả khi khởi động collector thất bại.
+- **Ảnh hưởng:** Frontend mặc định gọi `/api/market-data` cùng origin, dùng proxy Vite hiện có sang 8000. Vẫn hỗ trợ URL API tường minh qua biến môi trường. Backend chung chạy một worker vì collector có khóa độc quyền; server standalone 8001 vẫn còn cho nhu cầu riêng nhưng không chạy đồng thời. Không đổi schema hay dữ liệu Supabase.
+- **Kiểm chứng:** 23 test auth, vòng đời backend chung, API dữ liệu và API live đạt; frontend build thành công.
+
+---
 
 ### [YYYY-MM-DD] Tiêu đề ngắn gọn
 

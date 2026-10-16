@@ -11,10 +11,12 @@ from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr
 ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
+ENV_FILES = (ENV_PATH.parent.parent / ".env", ENV_PATH)
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=ENV_PATH, extra="ignore")
+    # Read root defaults first; backend-specific values take precedence.
+    model_config = SettingsConfigDict(env_file=ENV_FILES, extra="ignore")
 
 
     # PostgreSQL / pgvector (ADR01)

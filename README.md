@@ -1,50 +1,146 @@
 # FinMind
 
-## Chạy backend giá/tin và frontend trên Windows
+## Hướng dẫn chạy sau khi clone — Windows / PowerShell
 
-Mở **hai terminal PowerShell riêng** và giữ cả hai chạy trong lúc sử dụng web. Cần có Python và Node.js/npm.
+Ứng dụng dùng **hai terminal**: backend chung ở **8000**, frontend ở **5173**. Backend đã ghép đăng ký/đăng nhập, tài liệu/tìm kiếm và API giá/tin; **không cần chạy server 8001**. Các lệnh bên dưới dùng đường dẫn tương đối, không phụ thuộc tên người dùng hoặc ổ đĩa của người viết.
 
-### 1. Backend giá/tin — cổng 8001
+### 1. Chuẩn bị máy
+
+- Cài Python **3.12**, bật **Add python.exe to PATH** khi cài.
+- Cài Node.js LTS có npm và Git. Mở lại terminal sau khi cài.
+- Nhận cấu hình Supabase và Google OAuth của nhóm qua kênh riêng.
+
+Kiểm tra:
 
 ```powershell
-cd "D:\Win\Capstone 1\FinMind"
-python -B -m uvicorn backend.src.market_data.app:app --host 127.0.0.1 --port 8001 --workers 1
+python --version
+node --version
+npm.cmd --version
 ```
 
-- API: http://127.0.0.1:8001
-- Swagger: http://127.0.0.1:8001/docs
-- Thử đọc giá FPT: http://127.0.0.1:8001/api/market-data/stocks/FPT/ohlcv?limit=5
+Nếu `python` không nhận, thử `py -3.12 --version`. Có thể thay `python` ở bước tạo môi trường bằng `py -3.12`, hoặc dùng `& "đường-dẫn-tới-python.exe"`. Không tiếp tục cài dependency khi bước tạo `.venv` chưa thành công.
 
-Nếu thiếu các thư viện để chạy API nhỏ này, cài một lần vào môi trường Python đang dùng:
+### 2. Clone và cài lần đầu
 
 ```powershell
-python -m pip install fastapi uvicorn httpx
+git clone https://github.com/minhquan9125/FinMind.git
+cd FinMind
 ```
 
-API giá/tin đọc lịch sử đã lưu và tự cập nhật giá theo nhóm mã đang xem trong phiên, không cần khởi động PostgreSQL, Neo4j hoặc Supabase. Chỉ chạy một worker. Ngoài phiên, dùng nút **Làm mới giá/tin**. Sau khi sửa code backend, cần dừng và chạy lại server. Kiểm tra `http://127.0.0.1:8001/api/market-data/live/status`: khi đang mở chart ở tab Tổng quan, mục `symbols` phải có mã đang xem. Tham khảo thêm [hướng dẫn API giá/tin](backend/src/market_data/README.md).
+Nếu nhóm làm trên nhánh khác mặc định, chuyển sang đúng nhánh leader yêu cầu trước khi cài. Nhánh cần có `backend/package.json`, `backend/scripts/run-backend.mjs` và bản `main.py` đã ghép market API.
 
-### 2. Frontend — cổng 5173
-
-Trong terminal thứ hai:
+Các lệnh sau chạy tại **gốc FinMind**, nơi có `backend`, `frontend`, `README.md`:
 
 ```powershell
-cd "D:\Win\Capstone 1\FinMind\frontend"
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
+npm.cmd --prefix frontend ci
+```
+
+Dependency embedding có Torch nên lần cài đầu có thể tải nhiều GB. Chờ lệnh kết thúc thành công. Không cần `npm install` trong backend: package đó chỉ là lệnh gọi Python. `.venv` phải nằm tại **FinMind/.venv**, không phải `backend/.venv`; không cần activate.
+
+Để tải giá mới từ vnstock/KBS trên máy mới, cài thêm SDK vào chính môi trường này:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r data_pipeline/ScrapersOHLCV/requirements/vnstock.txt
+```
+
+Nếu SDK yêu cầu xác thực hoặc hạn mức, thực hiện theo hướng dẫn của SDK/nhóm. Không có SDK thì dữ liệu đã lưu vẫn đọc được, nhưng chức năng tải lịch sử/cập nhật giá mới có thể thất bại. Xem thêm [hướng dẫn giá/tin](backend/src/market_data/README.md).
+
+### 3. Cấu hình kết nối
+
+Tạo **`.env` tại gốc FinMind**, cùng cấp `backend` và `frontend`:
+
+```dotenv
+DATABASE_URL=chuoi_ket_noi_Supabase_do_nhom_cung_cap
+JWT_SECRET_KEY=khoa_JWT_do_nhom_cung_cap
+```
+
+Thay các giá trị mẫu bằng cấu hình thật, không để nguyên placeholder. Backend đọc `.env` gốc rồi `backend/.env` (nếu có); giá trị trong `backend/.env` được ưu tiên. Biến môi trường terminal ưu tiên cao hơn cả hai file. Nếu vô tình giữ `backend/.env` cũ trỏ localhost, sửa/xóa cấu hình cũ đó. Database dùng chung đã có schema: **không chạy reset database** để khởi động ứng dụng.
+
+Không commit `.env`, mật khẩu hoặc khóa JWT. Không cần cài PostgreSQL/Neo4j local để chạy luồng đăng nhập và giá/tin này khi dùng Supabase của nhóm.
+
+**Nếu dùng đăng nhập Google:**
+
+Tạo `frontend/.env.local` với client ID do nhóm cung cấp:
+
+```dotenv
+VITE_GOOGLE_CLIENT_ID=client_id_cua_nhom.apps.googleusercontent.com
+```
+
+Router Google hiện đọc `GOOGLE_CLIENT_ID` từ môi trường tiến trình. Trong terminal backend, đặt cùng client ID trước khi chạy npm:
+
+```powershell
+$env:GOOGLE_CLIENT_ID='client_id_cua_nhom.apps.googleusercontent.com'
+```
+
+Không điền Google client secret vào frontend. Người quản lý OAuth phải cho phép **http://localhost:5173** trong **Authorized JavaScript origins** của đúng client ID. Luôn mở địa chỉ này để tránh `origin_mismatch`; `127.0.0.1` và cổng 5174 là origin khác. Đăng nhập email/mật khẩu không cần cấu hình Google.
+
+Bỏ cấu hình `VITE_MARKET_DATA_API_URL` cũ trỏ cổng 8001 nếu có trong các file môi trường frontend. Mặc định frontend gọi `/api` qua proxy Vite sang 8000. Sau khi sửa môi trường, dừng và chạy lại server.
+
+### 4. Chạy hằng ngày
+
+**Terminal 1 — backend:** mở terminal tại gốc FinMind rồi chạy:
+
+```powershell
+cd backend
 npm run dev
 ```
 
-Lần đầu trên máy mới hoặc sau khi thay đổi dependency, chạy `npm ci` trong folder `frontend` trước `npm run dev`.
+Đợi thấy `Application startup complete` và địa chỉ **http://127.0.0.1:8000**. Lệnh tự dùng Python trong `.venv` gốc; có thể dùng `npm start` thay thế. Backend chỉ chạy một worker vì collector giá dùng khóa độc quyền.
 
-Mở địa chỉ Vite in trong terminal, thường là **http://localhost:5173**. Trang xem biểu đồ FPT: **http://localhost:5173/companies/FPT**. Nếu chuyển đến trang đăng nhập, dùng tài khoản mock của giao diện. Frontend mặc định gọi API giá/tin ở `http://127.0.0.1:8001`.
+**Terminal 2 — frontend:** mở terminal mới tại gốc FinMind rồi chạy:
 
-Nếu cổng 5173 đang được dùng, Vite có thể chuyển sang 5174; mở đúng địa chỉ được in ra. Cổng 8765 đang dành cho ứng dụng quản lý Codex, không dùng cho FinMind.
+```powershell
+cd frontend
+npm run dev -- --host localhost --port 5173 --strictPort
+```
 
-Trên **Tổng quan**, bấm **VN-INDEX / VN30 / HNX-INDEX / UPCOM-INDEX** để tải biểu đồ chỉ số từ vnstock/KBS; chưa bấm thì chưa gọi nguồn. Tin thị trường thật đã thu thập hiển thị ngay bên dưới. Ô tìm kiếm ở Tổng quan và Doanh nghiệp nhận mã 3 chữ cái như **CTR**, kể cả khi chưa có hồ sơ trong danh mục mẫu. Trang mã mới vẫn đọc giá/tin đã lưu và đăng ký giá trong phiên; hồ sơ, tài chính hoặc tin chưa có dữ liệu sẽ hiện trạng thái trống.
+Mở **http://localhost:5173/**. Giữ cả hai terminal chạy. `--strictPort` giúp báo lỗi cổng bận thay vì tự chuyển 5174. Nếu PowerShell chặn `npm.ps1`, dùng `npm.cmd run dev` với các tham số tương ứng, không cần đổi execution policy.
 
-Khi mở trang một mã, web tự tải khoảng **6 tháng lịch sử giá** trước khi bật cập nhật giá trong phiên, đồng thời lấy **10 tin FireAnt mới nhất mà nguồn cung cấp** cho mã đó. Cache 60 giây giúp giảm gọi nguồn khi mở lại. Lịch sử/tin mới được lưu riêng tại `.agent-state/market-data/stocks/symbol-MÃ/`, không ghi vào `ScrapersOHLCV`. Nút **Làm mới giá/tin** lấy lại tin và giá; nếu nguồn lỗi, giao diện giữ dữ liệu cũ và báo rõ.
+Dùng tài khoản thật: đăng ký trước hoặc đăng nhập tài khoản nhóm đã cấp; không dùng thông tin mock trong giao diện để coi là tài khoản DB thật. Nhấn **Ctrl+C** ở mỗi terminal để dừng. Khi sửa code backend, dừng và chạy lại `npm run dev`; lệnh này hiện không tự reload.
 
-### 3. Tắt sau khi test
+### 5. Kiểm tra sau khi chạy
 
-Nhấn **Ctrl+C** tại mỗi terminal để dừng backend và frontend. Khi sửa code backend, dừng rồi chạy lại lệnh backend để nạp bản mới.
+| Địa chỉ | Kết quả mong đợi |
+|---|---|
+| http://localhost:5173/ | Giao diện FinMind |
+| http://127.0.0.1:8000/api/health | `{"status":"ok"}` |
+| http://127.0.0.1:8000/docs | Swagger có cả auth và market-data |
+| http://localhost:5173/api/market-data/news?limit=2 | JSON tin tức qua proxy frontend |
+| http://localhost:5173/api/market-data/stocks/FPT/ohlcv?limit=5 | JSON giá FPT đã lưu |
+
+Trên Tổng quan, bấm chỉ số để tải biểu đồ. Trang doanh nghiệp lấy lịch sử giá và tin theo mã; nguồn không có dữ liệu sẽ hiện trạng thái trống. Cập nhật mới phụ thuộc mạng, SDK và hạn mức nguồn. Cache mới nằm ở `.agent-state/market-data/`; không cần chạy crawler riêng để mở giao diện.
+
+### 6. Khi pull code mới
+
+Dừng server bằng Ctrl+C, pull đúng nhánh của nhóm, rồi cập nhật dependency tại gốc FinMind:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
+npm.cmd --prefix frontend ci
+```
+
+Sau đó chạy lại hai terminal ở bước 4. Giữ `.env` và `.venv` của từng máy, không sao chép môi trường Python từ máy khác. Nếu `npm ci` báo `EPERM` ở `esbuild.exe`, dừng Vite trước rồi chạy lại.
+
+### 7. Lỗi thường gặp khi khởi động
+
+| Lỗi | Kiểm tra / xử lý |
+|---|---|
+| `Python was not found` | Python chưa có trên PATH; dùng `py -3.12` hoặc đường dẫn Python của máy để tạo `.venv`. |
+| Không tìm thấy `.venv/Scripts/python.exe` | Tạo `.venv` ở gốc FinMind; không tạo trong backend. |
+| `Missing script: dev` / không tìm thấy package.json | Backend: đứng trong `FinMind/backend`; frontend: trong `FinMind/frontend`. Kiểm tra đã pull file chạy npm mới. |
+| `npm.ps1 ... running scripts is disabled` | Dùng `npm.cmd` thay `npm`. |
+| `ModuleNotFoundError: jwt`, `pwdlib`, `google`... | Cài lại `backend/requirements.txt` bằng Python trong `.venv` gốc. |
+| `Failed to resolve import @react-oauth/google` | Dừng Vite, chạy `npm.cmd ci` trong frontend, bật lại. |
+| Backend lỗi kết nối localhost / connection refused | Kiểm tra DATABASE_URL và thứ tự ưu tiên `.env`; chờ backend startup thành công trước khi đăng nhập. |
+| Backend lỗi kết nối Supabase | Kiểm tra mạng, chuỗi kết nối, mật khẩu và cấu hình do leader cấp. Không in chuỗi có mật khẩu vào log công khai. |
+| Cổng 5173 hoặc 8000 đang dùng | Dừng server cũ bằng Ctrl+C trong terminal đã mở nó; chỉ giữ một frontend và một backend. |
+| `400: origin_mismatch` khi đăng nhập Google | Mở đúng `http://localhost:5173`; nhờ người quản lý OAuth thêm origin này cho client ID đang dùng. |
+| Collector lock đang được giữ | Dừng backend 8001/bản backend khác; chỉ chạy main 8000, một worker. Không xóa lock khi server khác còn chạy. |
+| Giao diện báo không kết nối API | Kiểm tra backend 8000 và health; xóa URL frontend cũ trỏ 8001, khởi động lại Vite. |
+
+Các phần dưới là thao tác ingest dữ liệu riêng, **không phải bước bắt buộc để mở ứng dụng**.
 
 ## Đưa dữ liệu giá/tin lên Supabase
 
