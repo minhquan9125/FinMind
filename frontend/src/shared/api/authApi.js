@@ -133,4 +133,35 @@ export async function apiForgotPassword(email) {
       message: `Hướng dẫn đặt lại mật khẩu đã được gửi tới ${email}. Vui lòng kiểm tra hộp thư của bạn.`,
     };
   }
+}
+
+/**
+ * Đặt lại mật khẩu mới
+ * @param {string} token
+ * @param {string} newPassword
+ * @param {string} [email]
+ * @returns {Promise<{success: boolean, message: string}>}
+ */
+export async function apiResetPassword(token, newPassword, email) {
+  try {
+    const res = await fetch("/api/v1/auth/reset-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token,
+        new_password: newPassword,
+        email: (email || "").trim().toLowerCase(),
+      }),
+    });
+    const body = await res.json();
+    if (!res.ok) {
+      throw new Error(body.detail || "Không thể đặt lại mật khẩu.");
+    }
+    return body.data || body;
+  } catch (err) {
+    if (err.status) throw err;
+    // Fallback sang mockResetPassword
+    const { mockResetPassword } = await import("../../mocks/authMock.js");
+    return await mockResetPassword(token, newPassword, email);
+  }
 }
