@@ -21,6 +21,11 @@ export default function ResetPasswordPage() {
     setErrorMessage("");
     setSuccessMessage("");
 
+    if (!token) {
+      setErrorMessage("Liên kết đặt mật khẩu không hợp lệ. Vui lòng yêu cầu liên kết mới.");
+      return;
+    }
+
     if (!newPassword) {
       setErrorMessage("Vui lòng nhập mật khẩu mới.");
       return;
@@ -136,6 +141,9 @@ export default function ResetPasswordPage() {
                   }}
                   className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 transition-all"
                 />
+                <p className="mt-1.5 text-xs text-slate-500">
+                  Ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.
+                </p>
               </div>
 
               <div>
@@ -175,32 +183,6 @@ export default function ResetPasswordPage() {
               </Link>
             </div>
 
-            {/* Khu vực hỗ trợ thử nghiệm Mock */}
-            <div className="mt-6 pt-4 border-t border-dashed border-slate-200">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-400">
-                  Thử nghiệm nhanh (Mock)
-                </span>
-                {email && (
-                  <span className="text-[11px] text-blue-600 font-medium">
-                    Tài khoản: {email}
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setNewPassword("newpass123");
-                    setConfirmPassword("newpass123");
-                    setErrorMessage("");
-                  }}
-                  className="text-xs px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors cursor-pointer border border-slate-200/60"
-                >
-                  Điền mật khẩu mới: newpass123
-                </button>
-              </div>
-            </div>
           </div>
 
           {/* Dòng chữ chân trang */}
