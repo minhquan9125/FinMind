@@ -182,6 +182,11 @@ async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk]
         pending.append((chunk, vector, new_id))
     retire.extend(row["chunk_id"] for position, row in current_by_position.items() if position >= len(chunks))
 
+    # A rerun may pass empty placeholders for chunks that matched the preflight read.
+    # If a chunk changed meanwhile, fail before touching any row; the caller can retry.
+    if any(len(vector) != EMBEDDING_DIM for _, vector, _ in pending):
+        raise ValueError("current chunks changed during ingest; retry with embeddings")
+
     if relocate:
         await conn.executemany(
             "UPDATE text_chunks SET locator_json = $2::jsonb WHERE chunk_id = $1 AND superseded_at IS NULL",
@@ -240,6 +245,22 @@ def embed_all(embedder: Embedder, chunks: Sequence[DbChunk], batch_size: int = 3
     return [by_id[c.chunk_id] for c in chunks]
 
 
+async def _current_content_matches(conn: Any, doc: SourceDocument,
+                                   chunks: Sequence[DbChunk], index_version_id: str) -> bool:
+    """Skip embedding only when every current position has the same content hash."""
+    rows = await conn.fetch(
+        "SELECT chunk_index, content_hash FROM text_chunks "
+        "WHERE document_id = $1 AND index_version_id = $2 AND superseded_at IS NULL",
+        uuid.UUID(doc.document_id), uuid.UUID(index_version_id),
+    )
+    if len(rows) != len(chunks):
+        return False
+    hashes = {row["chunk_index"]: str(row["content_hash"]).strip() for row in rows}
+    return len(hashes) == len(chunks) and all(
+        hashes.get(chunk.chunk_index) == chunk.content_hash for chunk in chunks
+    )
+
+
 async def ingest_documents(conn: Any, docs: Sequence[SourceDocument], embedder: Embedder,
                            embedding_model: str, max_words: int = DEFAULT_MAX_WORDS,
                            batch_size: int = 32) -> IngestResult:
@@ -250,7 +271,10 @@ async def ingest_documents(conn: Any, docs: Sequence[SourceDocument], embedder: 
         if not chunks:
             continue
         try:
-            vectors = embed_all(embedder, chunks, batch_size)
+            if await _current_content_matches(conn, doc, chunks, index_version_id):
+                vectors = [() for _ in chunks]  # write_chunks can still refresh locator metadata.
+            else:
+                vectors = embed_all(embedder, chunks, batch_size)
             async with conn.transaction():
                 await upsert_document(conn, doc, chunks)
                 await write_chunks(conn, doc, chunks, vectors, index_version_id)

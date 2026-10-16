@@ -34,6 +34,13 @@ venv/
 ENV/
 backend/.tmp/
 
+# Test caches and generated coverage reports
+.pytest_cache/
+pytest-cache-files-*/
+.coverage
+.coverage.*
+htmlcov/
+
 # Node
 node_modules/
 npm-debug.log*
