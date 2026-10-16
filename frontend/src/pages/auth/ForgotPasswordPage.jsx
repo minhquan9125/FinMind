@@ -8,11 +8,13 @@ export default function ForgotPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [resetUrl, setResetUrl] = useState("");
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
     setErrorMessage("");
     setSuccessMessage("");
+    setResetUrl("");
 
     if (!email.trim()) {
       setErrorMessage("Vui lòng nhập địa chỉ email của bạn.");
@@ -24,6 +26,9 @@ export default function ForgotPasswordPage() {
     try {
       const res = await mockForgotPassword(email.trim());
       setSuccessMessage(res.message || `Hướng dẫn đặt lại mật khẩu đã được gửi tới ${email.trim()}.`);
+      if (res.resetUrl) {
+        setResetUrl(res.resetUrl);
+      }
     } catch (err) {
       setErrorMessage(err.message || "Không thể gửi yêu cầu đặt lại mật khẩu. Vui lòng thử lại.");
     } finally {
@@ -73,7 +78,17 @@ export default function ForgotPasswordPage() {
             {/* Thông báo thành công */}
             {successMessage && (
               <div className="mb-5 p-3.5 rounded-lg bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-sm">
-                {successMessage}
+                <div>{successMessage}</div>
+                {resetUrl && (
+                  <div className="mt-2 pt-2 border-t border-emerald-200/60">
+                    <Link
+                      to={resetUrl}
+                      className="inline-flex items-center gap-1 font-semibold text-blue-600 hover:text-blue-800 underline transition-colors"
+                    >
+                      Bấm vào đây để chuyển tới trang Đặt lại mật khẩu &rarr;
+                    </Link>
+                  </div>
+                )}
               </div>
             )}
 
