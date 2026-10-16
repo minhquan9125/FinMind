@@ -21,6 +21,16 @@ Quy trình bắt buộc trước khi sửa:
 
 ---
 
+### [2026-10-16] WBS16: manifest phiên bản corpus từ chunk đã ingest
+
+- **File(s):** `backend/src/documents/corpus_manifest.py`, `backend/scripts/freeze_corpus.py`, `backend/tests/test_corpus_manifest.py`, `docs/embedding/WBS16-corpus-manifest.md`, `history.md`.
+- **Sai gì:** Đã ingest toàn bộ nguồn nhưng chưa có danh sách chunk đóng băng và chưa đăng ký `corpus_versions`/`corpus_documents`; index version chỉ mô tả cấu hình, không chốt tập dữ liệu.
+- **Tại sao sửa:** Cần corpus ID, hash và snapshot nội dung/locator để các thành viên đối chiếu đúng phiên bản khi test. Cùng dữ liệu tạo cùng ID; thay thành viên/nội dung/locator tạo phiên bản khác.
+- **Ảnh hưởng:** Thêm CLI mặc định chỉ đọc và xuất JSON; `--apply` đăng ký hai bảng corpus trong transaction, từ chối ghi đè nhãn và file khác nội dung. Không đổi schema, chunk/vector, API, crawler hay retention. Khi chốt có khóa SHARE ngắn hạn trên documents/text_chunks. Snapshot JSON phải được giữ/bàn giao; WBS25 phải dùng chunk ID trong manifest để cô lập corpus. Chưa có bảo vệ chunk corpus khỏi retention; xem giới hạn trong tài liệu.
+- **Kiểm chứng:** 85 test manifest/chunking/ingest/embedding/locator/retention đạt; xuất thật 249 tài liệu / 2.048 chunk từ Supabase, ID `7c2ea700-fd01-5adc-a467-af4fea532741`. Đã đăng ký `corpus-v1` vào Supabase; chạy lại trả `already_registered`, đối chiếu đủ 249 liên kết tài liệu và hash, không ghi thêm hay đổi phiên bản cũ. Manifest cục bộ: `backend/.tmp/corpus-v1.manifest.json`.
+
+---
+
 ### [2026-10-16] Bỏ qua cache và báo cáo test sinh tự động
 
 - **File(s):** `.gitignore`, `history.md`.
