@@ -1,7 +1,7 @@
 // Read saved history with the shared live-price overlay. Change the URL when served
 // by the main FastAPI app or Supabase-backed repository; the UI does not change.
 import { retryRateLimited } from "./companyData.js";
-const apiBase = (import.meta.env?.VITE_MARKET_DATA_API_URL || "http://127.0.0.1:8001").replace(/\/$/, "");
+const apiBase = (import.meta.env?.VITE_MARKET_DATA_API_URL || "").replace(/\/$/, "");
 
 async function readJson(path, signal) {
   let response;
@@ -9,7 +9,7 @@ async function readJson(path, signal) {
     response = await fetch(`${apiBase}${path}`, { signal });
   } catch (error) {
     if (error.name === "AbortError") throw error;
-    throw new Error("Không kết nối được API dữ liệu đã lưu. Hãy kiểm tra server ở cổng 8001.");
+    throw new Error("Không kết nối được API dữ liệu. Hãy kiểm tra backend đang chạy.");
   }
   if (!response.ok) {
     let body = null;
@@ -29,7 +29,7 @@ export async function getSavedOhlcv(symbol, signal, etag) {
     });
   } catch (error) {
     if (error.name === "AbortError") throw error;
-    throw new Error("Không kết nối được API dữ liệu đã lưu. Hãy kiểm tra server ở cổng 8001.");
+    throw new Error("Không kết nối được API dữ liệu. Hãy kiểm tra backend đang chạy.");
   }
   if (response.status === 304) return { unchanged: true, etag };
   if (!response.ok) {
