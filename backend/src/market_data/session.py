@@ -1,8 +1,11 @@
 """Read the existing explicit exchange calendar without importing/writing crawler modules."""
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, time, timedelta, timezone
 import json
 from pathlib import Path
 import runpy
+
+VN = timezone(timedelta(hours=7))
+AUTO_COLLECTION_END = time(15, 1)
 
 
 class SessionGate:
@@ -21,4 +24,18 @@ class SessionGate:
     def __call__(self, exchange):
         if exchange not in ("HOSE", "HNX", "UPCOM") or self.calendar is None:
             return False
-        return self.calendar.is_collecting(exchange, self.now())
+        now = self.now().astimezone(VN)
+        if now.time() >= AUTO_COLLECTION_END:
+            return False
+        if self.calendar.is_collecting(exchange, now):
+            return True
+        # Keep fetching closing quotes after the exchange's regular session.
+        # An explicit holiday, halt or special early close stays authoritative.
+        sessions = self.calendar.sessions(exchange, now.date())
+        if not sessions:
+            return False
+        last = sessions[-1]
+        regular_end = {"HOSE": "14:45", "HNX": "15:00", "UPCOM": "15:00"}[exchange]
+        return (last["end"] == regular_end
+                and last["phase"] in ("ato", "continuous", "atc", "after_hours")
+                and time.fromisoformat(regular_end) <= now.time())

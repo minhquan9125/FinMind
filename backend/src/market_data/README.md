@@ -74,6 +74,8 @@ Không cần mở `Mo-bieu-do.cmd` khi dùng cập nhật giá trên frontend. P
 
 ## Phiên giao dịch, hạn mức và cấu hình
 
+Giá cổ phiếu HOSE, HNX và UPCOM được lấy tự động đến trước **15:01 (giờ Việt Nam)** vào ngày giao dịch được lịch xác nhận. Đây là thời gian lấy dữ liệu được kéo dài để nhận giá cuối phiên, không thay đổi giờ giao dịch của sàn. Từ 15:01 dùng nút **Làm mới giá/tin** để lấy thủ công. Nghỉ trưa, ngày nghỉ, lịch thiếu và các ngoại lệ đóng cửa sớm vẫn được giữ nguyên. Thời điểm dừng nằm ở `AUTO_COLLECTION_END` trong `session.py`; khởi động lại backend sau khi sửa.
+
 Backend đọc lịch có ngày giao dịch được xác nhận trong `ScrapersOHLCV/config/calendar.live.json`. Nghỉ trưa, cuối tuần, ngày nghỉ, lịch thiếu hoặc ngày ngoài phạm vi lịch đều dừng tự lấy giá. Hiện lịch bao phủ năm 2026; cần bổ sung lịch đã xác nhận trước khi dùng tự động sang năm khác. Kiểm tra lại phiên ngay trước request trong tiến trình SDK và trước khi nhận kết quả. Giá nguồn sai ngày, sai OHLC, sai đơn vị/kiểu, khối lượng lùi, biên độ thu hẹp hoặc khác cơ sở giá sẽ bị bỏ; giảm giá đóng cửa bình thường vẫn được nhận.
 
 Một batch 10 mã mỗi 5 giây tương đương khoảng 12 request/phút, chưa tính lỗi/retry. Tự động và thủ công dùng chung ngân sách 16 lượt/phút, cách nhau ít nhất 5 giây; lỗi cũng tiêu lượt và tăng thời gian nghỉ tới 60 giây. SDK giữ nguyên cơ chế guest/auth/quota của nó trong một tiến trình con tồn tại lâu dài. Không nên đồng thời chạy nhiều công cụ lấy giá cùng nguồn/tài khoản vì ngân sách này chỉ quản lý collector mới. Nguồn có thể trễ; đây không phải feed tick-by-tick hoặc cam kết giá mới mỗi 5 giây.
