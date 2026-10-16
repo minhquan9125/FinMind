@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "../../app/router.jsx";
 import { PATHS } from "../../shared/paths.js";
-import { mockForgotPassword } from "../../mocks/authMock.js";
+import { apiForgotPassword } from "../../shared/api/authApi.js";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -24,11 +24,10 @@ export default function ForgotPasswordPage() {
     setLoading(true);
 
     try {
-      const res = await mockForgotPassword(email.trim());
-      setSuccessMessage(res.message || `Hướng dẫn đặt lại mật khẩu đã được gửi tới ${email.trim()}.`);
-      if (res.resetUrl) {
-        setResetUrl(res.resetUrl);
-      }
+      const res = await apiForgotPassword(email.trim());
+      setSuccessMessage(
+        res.message || "Nếu email đã đăng ký, bạn sẽ nhận được liên kết đặt lại mật khẩu."
+      );
     } catch (err) {
       setErrorMessage(err.message || "Không thể gửi yêu cầu đặt lại mật khẩu. Vui lòng thử lại.");
     } finally {
@@ -134,38 +133,6 @@ export default function ForgotPasswordPage() {
               </Link>
             </div>
 
-            {/* Khu vực hỗ trợ thử nghiệm Mock */}
-            <div className="mt-6 pt-4 border-t border-dashed border-slate-200">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-400">
-                  Thử nghiệm nhanh (Mock)
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmail("user@finmind.vn");
-                    setErrorMessage("");
-                    setSuccessMessage("");
-                  }}
-                  className="text-xs px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors cursor-pointer border border-slate-200/60"
-                >
-                  Điền user@finmind.vn
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmail("admin@finmind.vn");
-                    setErrorMessage("");
-                    setSuccessMessage("");
-                  }}
-                  className="text-xs px-2.5 py-1.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium transition-colors cursor-pointer border border-blue-200/60"
-                >
-                  Điền admin@finmind.vn
-                </button>
-              </div>
-            </div>
           </div>
 
           {/* Dòng chữ chân trang */}

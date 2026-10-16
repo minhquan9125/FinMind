@@ -61,3 +61,35 @@ def create_refresh_token() -> tuple[str, str]:
 
 def hash_refresh_token(raw_token: str) -> str:
     return hashlib.sha256(raw_token.encode("utf-8")).hexdigest()
+
+def create_password_reset_token(
+    user_id: UUID, password_hash: str, settings: Settings
+) -> str:
+    now = datetime.now(timezone.utc)
+    return jwt.encode(
+        {
+            "sub": str(user_id),
+            "type": "password_reset",
+            "pwd_ver": hashlib.sha256(password_hash.encode()).hexdigest(),
+            "iat": now,
+            "exp": now + timedelta(minutes=15),
+        },
+        settings.jwt_secret_key.get_secret_value(),
+        algorithm="HS256",
+    )
+
+
+def read_password_reset_token(token: str, settings: Settings) -> tuple[UUID, str]:
+    payload = jwt.decode(
+        token,
+        settings.jwt_secret_key.get_secret_value(),
+        algorithms=["HS256"],
+        options={"require": ["sub", "type", "pwd_ver", "iat", "exp"]},
+    )
+    if payload["type"] != "password_reset":
+        raise jwt.InvalidTokenError("Wrong token type")
+
+    try:
+        return UUID(payload["sub"]), payload["pwd_ver"]
+    except (ValueError, TypeError) as exc:
+        raise jwt.InvalidTokenError("Invalid user ID") from exc

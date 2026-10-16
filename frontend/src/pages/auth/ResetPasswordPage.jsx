@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
+import { Link, useLocation, useNavigate, useSearchParams } from "../../app/router.jsx";
 import { PATHS } from "../../shared/paths.js";
-import { mockResetPassword } from "../../mocks/authMock.js";
 import { apiResetPassword } from "../../shared/api/authApi.js";
 
 export default function ResetPasswordPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const token = searchParams.get("token") || "";
+  const location = useLocation();
+  const token = new URLSearchParams(location.hash.slice(1)).get("token") || searchParams.get("token") || "";
   const email = searchParams.get("email") || "";
 
   const [newPassword, setNewPassword] = useState("");
@@ -26,8 +26,8 @@ export default function ResetPasswordPage() {
       return;
     }
 
-    if (newPassword.length < 6) {
-      setErrorMessage("Mật khẩu mới phải có ít nhất 6 ký tự.");
+    if (newPassword.length < 8) {
+      setErrorMessage("Mật khẩu mới phải có ít nhất 8 ký tự.");
       return;
     }
 
@@ -44,8 +44,7 @@ export default function ResetPasswordPage() {
     setLoading(true);
 
     try {
-      // Ưu tiên gọi API qua wrapper (tự động fallback mock nếu backend chưa hỗ trợ)
-      const res = await apiResetPassword(token, newPassword, email);
+      const res = await apiResetPassword(token, newPassword, confirmPassword);
       setSuccessMessage(
         res.message || "Đặt lại mật khẩu thành công. Đang chuyển hướng về trang đăng nhập..."
       );

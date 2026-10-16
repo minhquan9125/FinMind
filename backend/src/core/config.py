@@ -66,6 +66,12 @@ class Settings(BaseSettings):
     # Rate limiting & Account Lockout
     auth_max_failed_attempts: int = 5
     auth_lockout_minutes: int = 15
+    smtp_host: str = "smtp.gmail.com"
+    smtp_port: int = 587
+    smtp_username: str = ""
+    smtp_password: SecretStr = SecretStr("")
+    smtp_from: str = ""
+    frontend_url: str = "http://localhost:5173"
 @lru_cache
 def get_settings() -> Settings:
     return Settings()

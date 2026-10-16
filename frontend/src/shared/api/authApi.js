@@ -115,53 +115,46 @@ export async function apiGoogleLogin(credential) {
  * @returns {Promise<{success: boolean, message: string}>}
  */
 export async function apiForgotPassword(email) {
-  try {
-    const res = await fetch("/api/v1/auth/forgot-password", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: (email || "").trim().toLowerCase() }),
-    });
-    const body = await res.json();
-    if (!res.ok) {
-      throw new Error(body.detail || "Không thể gửi yêu cầu đặt lại mật khẩu.");
-    }
-    return body.data || body;
-  } catch (err) {
-    // Nếu backend chưa có route này, fallback sang mock thành công
-    return {
-      success: true,
-      message: `Hướng dẫn đặt lại mật khẩu đã được gửi tới ${email}. Vui lòng kiểm tra hộp thư của bạn.`,
-    };
+  const response = await fetch("/api/v1/auth/password/forgot", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: email.trim().toLowerCase() }),
+  });
+
+  const body = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(
+      typeof body.detail === "string"
+        ? body.detail
+        : "Không thể gửi yêu cầu. Vui lòng thử lại."
+    );
   }
+  return body;
 }
 
 /**
- * Đặt lại mật khẩu mới
- * @param {string} token
- * @param {string} newPassword
- * @param {string} [email]
- * @returns {Promise<{success: boolean, message: string}>}
+ * Đặt lại mật khẩu bằng mã nhận qua email.
  */
-export async function apiResetPassword(token, newPassword, email) {
-  try {
-    const res = await fetch("/api/v1/auth/reset-password", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        token,
-        new_password: newPassword,
-        email: (email || "").trim().toLowerCase(),
-      }),
-    });
-    const body = await res.json();
-    if (!res.ok) {
-      throw new Error(body.detail || "Không thể đặt lại mật khẩu.");
-    }
-    return body.data || body;
-  } catch (err) {
-    if (err.status) throw err;
-    // Fallback sang mockResetPassword
-    const { mockResetPassword } = await import("../../mocks/authMock.js");
-    return await mockResetPassword(token, newPassword, email);
+export async function apiResetPassword(token, newPassword, confirmPassword) {
+  const response = await fetch("/api/v1/auth/password/reset", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      recovery_code: token,
+      new_password: newPassword,
+      confirm_password: confirmPassword,
+    }),
+  });
+
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const detail = body.detail;
+    const message = Array.isArray(detail)
+      ? detail.map((item) => item.msg).join(". ")
+      : detail;
+    throw new Error(message || "Không thể đặt lại mật khẩu.");
   }
-}
+
+  return { success: true, message: "Đặt lại mật khẩu thành công." };
+}
