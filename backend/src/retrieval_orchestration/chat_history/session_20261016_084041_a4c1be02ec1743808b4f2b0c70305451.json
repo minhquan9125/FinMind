@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "session_id": "5b0b079b-b6ff-4a3b-8d6f-e66113db8d8c",
+  "started_at": "2026-10-16T08:36:09.959629+00:00",
+  "saved_at": "2026-10-16T08:40:41.641239+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "lợi nhuận trước thuế bao nhiêu",
+      "timestamp": "2026-10-16T08:36:18.806400+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn muốn xem công ty nào?\nĐã ghi nhận: Chỉ tiêu: Lợi nhuận trước thuế",
+      "timestamp": "2026-10-16T08:36:18.810786+00:00",
+      "result": {
+        "request_id": "30a47d16-82da-4716-b96f-9c5c0e95ae02",
+        "query_id": null,
+        "execution_mode": "FIXTURE",
+        "b1_decision": "ASK_CLARIFICATION",
+        "status": "ASK_CLARIFICATION",
+        "reason_code": "MISSING_COMPANY",
+        "message": "Bạn muốn xem công ty nào?",
+        "scope": {
+          "companies": [],
+          "periods": [],
+          "metric_code": "PROFIT_BEFORE_TAX",
+          "topic": null,
+          "measure_basis": null,
+          "reporting_entity": "UNKNOWN",
+          "source_type": "BCTC"
+        },
+        "clarification": "Bạn muốn xem công ty nào?",
+        "evidence_pack": null,
+        "errors": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "vcb",
+      "timestamp": "2026-10-16T08:36:28.974582+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn muốn xem kỳ nào? Ví dụ: năm 2025 hoặc quý 2/2026.\nĐã ghi nhận: Công ty: VCB | Chỉ tiêu: Lợi nhuận trước thuế",
+      "timestamp": "2026-10-16T08:36:28.975375+00:00",
+      "result": {
+        "request_id": "372e64b5-41b5-4f12-98cc-b3db06fa4d50",
+        "query_id": null,
+        "execution_mode": "FIXTURE",
+        "b1_decision": "ASK_CLARIFICATION",
+        "status": "ASK_CLARIFICATION",
+        "reason_code": "MISSING_PERIOD",
+        "message": "Bạn muốn xem kỳ nào? Ví dụ: năm 2025 hoặc quý 2/2026.",
+        "scope": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [],
+          "metric_code": "PROFIT_BEFORE_TAX",
+          "topic": null,
+          "measure_basis": null,
+          "reporting_entity": "UNKNOWN",
+          "source_type": "BCTC"
+        },
+        "clarification": "Bạn muốn xem kỳ nào? Ví dụ: năm 2025 hoặc quý 2/2026.",
+        "evidence_pack": null,
+        "errors": []
+      }
+    }
+  ]
+}
