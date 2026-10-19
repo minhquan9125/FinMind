@@ -1,5 +1,21 @@
 # History thay đổi code
 
+### [2026-10-19] Kiểm tra trích dẫn và chuẩn hóa câu trả lời B1 tích hợp locator resolver của Vũ
+
+- **File(s):** `backend/src/documents/b1_citation_verifier.py`, `backend/scripts/verify_b1_citations.py`, `backend/tests/test_b1_citation_verifier.py`, `docs/b1_audit_report.md`, `history.md`.
+- **Sai gì:** B1 trước đây mới chỉ kiểm tra intent/slots ở tầng câu hỏi hoặc dữ liệu giả lập (fixture) mà chưa có module kiểm tra đối chiếu trích dẫn (citations) và các nhận định (claims) trong câu trả lời thực tế; chưa tích hợp bộ giải định vị `locator_resolver.py` của Vũ để xác minh citation có mở được bản ghi gốc trong Supabase; câu trả lời mẫu có nguy cơ chứa claim vô nguồn (ungrounded / hallucination) hoặc khẳng định một chiều khi gặp nguồn mâu thuẫn.
+- **Tại sao sửa:** B1 cần cơ chế verifier 3 bước: (1) Thu thập ca mẫu (nguồn đầy đủ, nguồn thiếu, nguồn mâu thuẫn); (2) Đối chiếu từng nhận định với mã bằng chứng và mở locator thật trong CSDL thông qua `resolve_locator` và `verify_chunk`; (3) Tự động hiệu chỉnh câu trả lời với nhận định không chứng minh được thành dạng thận trọng hoặc thông báo chưa đủ bằng chứng, đảm bảo triệt tiêu 100% claim vô nguồn và mọi citation đều mở được locator thực tế.
+- **Ảnh hưởng:** Bổ sung module `src.documents.b1_citation_verifier`, script chạy nghiệm thu CLI `verify_b1_citations.py` và bộ unit test `test_b1_citation_verifier.py`. Tái sử dụng trực tiếp các hàm `resolve_locator` và `verify_chunk` của Vũ (`backend/src/documents/locator_resolver.py`). Không thay đổi schema DB, không sửa các file bị ghim mã băm SHA256 (`contracts.py`, `fixtures.json`, `intent.py`, `orchestrator.py`).
+- **Kiểm chứng:** 
+  - Đã chạy kiểm tra trực tiếp với Supabase thật trên 3 ca mẫu:
+    + Ca 1 (Nguồn đầy đủ): 2/2 claim verified, mở thành công 2 locator (`companies` FPT:company_name/exchange và `price_bars` FPT:2026-09-29).
+    + Ca 2 (Nguồn thiếu): Phát hiện chính xác 1 claim vô nguồn (dự phóng lợi nhuận Q4/2026 không có bằng chứng), tự động sửa thành thông báo chưa đủ bằng chứng; câu trả lời sau sửa sạch hoàn toàn claim vô nguồn.
+    + Ca 3 (Nguồn mâu thuẫn): Phát hiện xung đột giữa báo cáo Inside Retail Asia (bán lẻ top 11 châu Á) và báo cáo Mirae Asset (lưu ý sức mua bán lẻ nội địa, tập trung AI), tự động chuyển câu trả lời thành thận trọng, đa chiều; cả 2 citation mở thành công locator `news_articles`.
+  - 6/6 test trong `backend/tests/test_b1_citation_verifier.py` đạt (cả offline mock và online Supabase).
+  - Toàn bộ 109 test hiện hữu của `retrieval_orchestration` tiếp tục đạt 100%. Báo cáo nghiệm thu chi tiết được xuất ra `docs/b1_audit_report.md`.
+
+---
+
 ### [2026-10-16] Viết lại README cho thành viên clone và chạy ứng dụng
 
 - **File(s):** `README.md`, `history.md`.
