@@ -85,10 +85,17 @@ function ProtectedRoute({ routeConfig, children }) {
 }
 
 const pageModules = import.meta.glob("../pages/*/*.jsx");
+const pageCache = new Map();
 
 function lazyPage(componentPath) {
-  const loader = pageModules[`../pages/${componentPath}.jsx`];
-  return lazy(() => (loader ? loader() : Promise.resolve({ default: Placeholder })));
+  if (!pageCache.has(componentPath)) {
+    const loader = pageModules[`../pages/${componentPath}.jsx`];
+    pageCache.set(
+      componentPath,
+      lazy(() => (loader ? loader() : Promise.resolve({ default: Placeholder })))
+    );
+  }
+  return pageCache.get(componentPath);
 }
 
 /**
@@ -364,7 +371,13 @@ function Placeholder() {
  */
 export function AppRoutes() {
   return (
-    <Suspense fallback={null}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-[#F8FAFC]">
+          <div className="w-8 h-8 border-3 border-blue-600/20 border-t-blue-600 rounded-full animate-spin" />
+        </div>
+      }
+    >
       <Routes>
         {routes.map((routeConfig) => {
           const { path, component } = routeConfig;

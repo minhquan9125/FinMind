@@ -34,6 +34,30 @@ const MOCK_PASSWORDS = {
   "admin@finmind.vn": "admin123",
 };
 
+const PASSWORDS_STORAGE_KEY = "finmind_mock_passwords";
+const RESET_TOKENS_STORAGE_KEY = "finmind_mock_reset_tokens";
+
+export function getMockPasswords() {
+  try {
+    const raw = localStorage.getItem(PASSWORDS_STORAGE_KEY);
+    const custom = raw ? JSON.parse(raw) : {};
+    return { ...MOCK_PASSWORDS, ...custom };
+  } catch {
+    return { ...MOCK_PASSWORDS };
+  }
+}
+
+export function setMockPassword(email, newPassword) {
+  try {
+    const raw = localStorage.getItem(PASSWORDS_STORAGE_KEY);
+    const custom = raw ? JSON.parse(raw) : {};
+    custom[email] = newPassword;
+    localStorage.setItem(PASSWORDS_STORAGE_KEY, JSON.stringify(custom));
+  } catch {
+    MOCK_PASSWORDS[email] = newPassword;
+  }
+}
+
 // ─── Cấu hình thời hạn phiên làm việc (Session TTL) ─────────────────────────
 // Mặc định phiên sống trong 30 phút. Nếu chọn "Ghi nhớ đăng nhập" thì sống 7 ngày.
 export const SESSION_DURATION_MS = 30 * 60 * 1000; // 30 phút
@@ -56,7 +80,8 @@ export async function mockLogin(email, password, rememberMe = false) {
   // Giả lập độ trễ mạng
   await new Promise((r) => setTimeout(r, 400));
 
-  const correctPassword = MOCK_PASSWORDS[email];
+  const allPasswords = getMockPasswords();
+  const correctPassword = allPasswords[email] || MOCK_PASSWORDS[email];
   if (!correctPassword || correctPassword !== password) {
     throw new Error("Email hoặc mật khẩu không đúng.");
   }
@@ -222,3 +247,72 @@ export function mockExpireCurrentSession() {
     localStorage.removeItem(STORAGE_KEY);
   }
 }
+
+/**
+ * Giả lập gửi hướng dẫn đặt lại mật khẩu qua email (Quên mật khẩu).
+ * @param {string} email
+ * @returns {Promise<{success: boolean, message: string, token: string, resetUrl: string, email: string}>}
+ */
+export async function mockForgotPassword(email) {
+  // Giả lập độ trễ mạng
+  await new Promise((r) => setTimeout(r, 450));
+
+  const trimmed = (email || "").trim().toLowerCase();
+  if (!trimmed) {
+    throw new Error("Vui lòng nhập địa chỉ email.");
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(trimmed)) {
+    throw new Error("Địa chỉ email không hợp lệ. Vui lòng kiểm tra lại.");
+  }
+
+  const token = `mock-reset-${Date.now()}`;
+  try {
+    const tokens = JSON.parse(localStorage.getItem(RESET_TOKENS_STORAGE_KEY) || "{}");
+    tokens[token] = trimmed;
+    localStorage.setItem(RESET_TOKENS_STORAGE_KEY, JSON.stringify(tokens));
+  } catch {}
+
+  return {
+    success: true,
+    token,
+    email: trimmed,
+    resetUrl: `/reset-password?token=${token}&email=${encodeURIComponent(trimmed)}`,
+    message: `Hướng dẫn đặt lại mật khẩu đã được gửi tới ${trimmed}. Vui lòng kiểm tra hộp thư của bạn.`,
+  };
+}
+
+/**
+ * Giả lập đặt lại mật khẩu mới.
+ * @param {string} token
+ * @param {string} newPassword
+ * @param {string} [email]
+ * @returns {Promise<{success: boolean, message: string, email: string}>}
+ */
+export async function mockResetPassword(token, newPassword, email) {
+  await new Promise((r) => setTimeout(r, 400));
+  if (!newPassword || newPassword.length < 6) {
+    throw new Error("Mật khẩu mới phải có ít nhất 6 ký tự.");
+  }
+
+  let targetEmail = (email || "").trim().toLowerCase();
+  if (!targetEmail && token) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem(RESET_TOKENS_STORAGE_KEY) || "{}");
+      targetEmail = tokens[token] || "";
+    } catch {}
+  }
+  if (!targetEmail) {
+    targetEmail = "user@finmind.vn";
+  }
+
+  setMockPassword(targetEmail, newPassword);
+
+  return {
+    success: true,
+    email: targetEmail,
+    message: "Mật khẩu đã được đặt lại thành công. Bạn có thể đăng nhập ngay.",
+  };
+}
+

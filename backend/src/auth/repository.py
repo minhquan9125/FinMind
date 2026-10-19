@@ -140,6 +140,7 @@ async def record_login(pool: asyncpg.Pool, user_id: UUID) -> None:
         user_id,
     )
 
+
 async def get_or_create_google_user(
     pool: asyncpg.Pool,
     email: str,
@@ -178,4 +179,48 @@ async def get_or_create_google_user(
                     role["role_id"],
                 )
             return dict(user)
-            
+
+async def find_user_by_id(pool: asyncpg.Pool, user_id: UUID):
+    return await pool.fetchrow(
+        """
+        SELECT user_id, password_hash, is_active
+        FROM public.users
+        WHERE user_id = $1
+        """,
+        user_id,
+    )
+
+
+async def replace_password_if_current(
+    pool: asyncpg.Pool,
+    user_id: UUID,
+    current_hash: str,
+    new_hash: str,
+) -> bool:
+    async with pool.acquire() as conn:
+        async with conn.transaction():
+            changed = await conn.fetchval(
+                """
+                UPDATE public.users
+                SET password_hash = $3, updated_at = now()
+                WHERE user_id = $1
+                  AND password_hash = $2
+                  AND is_active IS TRUE
+                RETURNING user_id
+                """,
+                user_id,
+                current_hash,
+                new_hash,
+            )
+            if changed is None:
+                return False
+
+            await conn.execute(
+                """
+                UPDATE public.sessions
+                SET revoked_at = now()
+                WHERE user_id = $1 AND revoked_at IS NULL
+                """,
+                user_id,
+            )
+            return True

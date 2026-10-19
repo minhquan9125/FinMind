@@ -1,6 +1,6 @@
 """FastAPI entrypoint for the FinMind backend.
 
-Currently wires up only the Vector RAG module (document ingestion + vector
+Wires up authentication, market data and the Vector RAG module (document ingestion + vector
 search), which is the B1 baseline described in the project proposal
 (Section 6.5, Table 13). Structured Retrieval, the Neo4j graph branch,
 Evidence Gate, Answer Verification and Gemini synthesis are separate,
@@ -14,7 +14,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .api.routers import auth, documents, search
+from .api.routers import auth, documents, search, market_data
+from .market_data.app import lifespan as market_lifespan
 from .core.config import get_settings
 from .core.db import connect, disconnect
 
@@ -23,10 +24,13 @@ settings = get_settings()
 
 
 @asynccontextmanager
-async def lifespan(_: FastAPI):
+async def lifespan(app: FastAPI):
     await connect()
-    yield
-    await disconnect()
+    try:
+        async with market_lifespan(app):
+            yield
+    finally:
+        await disconnect()
 
 
 app = FastAPI(title="FinMind Vector RAG API", version="0.1.0", lifespan=lifespan)
@@ -43,11 +47,13 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["ETag", "Retry-After"],
 )
 
 app.include_router(documents.router)
 app.include_router(search.router)
 app.include_router(auth.router)
+app.include_router(market_data.router)
 
 @app.get("/")
 async def root() -> dict:

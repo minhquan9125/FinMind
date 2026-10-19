@@ -140,7 +140,9 @@ def test_unchanged_document_writes_nothing():
     doc = fin_doc()
     version = index_version_id_for(130, "m")
     conn = FakeConn(current=_current_rows(doc, version))
-    run(ingest_documents(conn, [doc], FakeEmbedder(), "m"))
+    # If embedding is attempted, this fails; a rerun should reuse stored vectors.
+    result = run(ingest_documents(conn, [doc], FakeEmbedder(fail_on="FPT"), "m"))
+    assert result.documents_ok == 1 and result.documents_failed == 0
     assert conn.many == []  # nothing inserted
     assert not any("UPDATE text_chunks" in sql for sql, _ in conn.executed)
 
@@ -256,9 +258,32 @@ def test_unchanged_text_but_new_locator_refreshes_locator_only():
     for row in rows:
         row["locator_json"] = '{"source_table": "news_articles"}'  # old locator without the type
     conn = FakeConn(current=rows)
-    run(ingest_documents(conn, [doc], FakeEmbedder(), "m"))
+    result = run(ingest_documents(conn, [doc], FakeEmbedder(fail_on="FPT"), "m"))
+    assert result.documents_ok == 1 and result.documents_failed == 0
     updates = [r for sql, r in conn.many if "SET locator_json" in sql]
     assert len(updates) == 1 and len(updates[0]) == len(rows)
     assert all(json.loads(loc)["news_type"] == "CONG_BO_THONG_TIN" for _, loc in updates[0])
     assert not any("INSERT INTO text_chunks" in sql for sql, _ in conn.many)  # no re-embedding, no new chunk
     assert not any("SET superseded_at" in sql for sql, _ in conn.executed)
+
+
+def test_changed_chunk_after_preflight_cannot_write_empty_vector():
+    doc = fin_doc()
+    version = index_version_id_for(130, "m")
+
+    class ChangingConn(FakeConn):
+        reads = 0
+
+        async def fetch(self, sql, *args):
+            if "superseded_at IS NULL" in sql and "chunk_index" in sql:
+                self.reads += 1
+                if self.reads == 2:
+                    self.current = _current_rows(doc, version, change=0)
+            return await super().fetch(sql, *args)
+
+    conn = ChangingConn(current=_current_rows(doc, version))
+    result = run(ingest_documents(conn, [doc], FakeEmbedder(fail_on="FPT"), "m"))
+    assert result.documents_failed == 1
+    assert "retry with embeddings" in result.errors[0]["error"]
+    assert not any("UPDATE text_chunks" in sql for sql, _ in conn.executed)
+    assert not any("INSERT INTO text_chunks" in sql for sql, _ in conn.many)

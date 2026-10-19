@@ -1,5 +1,14 @@
 # History thay đổi code
 
+### [2026-10-16] Viết lại README cho thành viên clone và chạy ứng dụng
+
+- **File(s):** `README.md`, `history.md`.
+- **Sai gì:** README trộn hướng dẫn backend chung 8000 với server độc lập 8001, tài khoản mock và đường dẫn máy cá nhân; thiếu các bước tạo .venv, SDK, môi trường và xử lý lỗi sau clone.
+- **Tại sao sửa:** Thành viên cần một quy trình thống nhất từ cài lần đầu đến `cd backend` / `npm run dev`, frontend localhost:5173 và tự kiểm tra API.
+- **Ảnh hưởng:** Chỉ cập nhật tài liệu. Giữ phần ingest/Supabase và ghi chú Vector RAG phía dưới; không chạy server, cài thư viện hay đổi DB. Nêu rõ Google client ID backend hiện lấy từ biến môi trường terminal.
+
+---
+
 File này ghi lại mọi lần sửa/bổ sung code trong dự án. Mỗi mục bắt buộc có 3 phần: **Sai gì**, **Tại sao sửa**, **Ảnh hưởng**.
 
 Quy trình bắt buộc trước khi sửa:
@@ -10,7 +19,45 @@ Quy trình bắt buộc trước khi sửa:
 
 ---
 
+### [2026-10-16] Backend auth đọc thêm cấu hình .env ở gốc repo
+
+- **File(s):** `backend/src/core/config.py`, `backend/tests/test_env_config.py`, `history.md`.
+- **Sai gì:** Settings chỉ đọc `backend/.env` nhưng máy này lưu DATABASE_URL trong `.env` gốc; backend dùng database localhost mặc định và lỗi ConnectionRefusedError khi khởi động. Các script chunk/manifest đọc cả hai nên vẫn chạy được, dễ hiểu nhầm DB đã kết nối thì auth cũng chạy.
+- **Tại sao sửa:** Backend cần đọc cùng cấu hình kết nối với script dữ liệu.
+- **Ảnh hưởng:** Đọc `.env` gốc rồi `backend/.env` (backend ưu tiên), biến môi trường tiến trình vẫn ưu tiên cao nhất. Không sao chép hay in mật khẩu, không sửa cấu hình DB thật.
+- **Kiểm chứng:** 14 test auth/cấu hình đạt; backend khởi động với Supabase, health qua Vite proxy trả 200; hai route login/register nhận request và trả 422 với body rỗng. Tạo user, xác minh mật khẩu, tạo session/JWT trên DB thật trong transaction rollback đều đạt, không giữ tài khoản thử.
+
+---
+
+### [2026-10-16] Bổ sung dependency backend đăng nhập Google
+
+- **File(s):** `backend/requirements.txt`, `history.md`.
+- **Sai gì:** Router auth import `google.oauth2` và `google.auth.transport` nhưng chưa khai báo `google-auth`. Python trên máy cũng chưa cài PyJWT nên backend lỗi `ModuleNotFoundError: jwt` trước khi mở API.
+- **Tại sao sửa:** Backend cần đầy đủ dependency auth để khởi động; thiếu dependency Google làm hỏng cả đăng nhập email vì router được import cùng ứng dụng.
+- **Ảnh hưởng:** Thêm `google-auth>=2,<3`; dùng `requests` đã có trong requirements. Không thay đổi tài khoản, mật khẩu, schema hay dữ liệu người dùng.
+
+---
+
 ## Template
+
+### [2026-10-16] Thêm lệnh npm chạy nhanh trong backend
+
+- **File(s):** `backend/package.json`, `backend/scripts/run-backend.mjs`, `README.md`, `history.md`.
+- **Sai gì:** Lệnh backend dài, dễ nhầm thư mục và đường dẫn Python giữa các máy.
+- **Tại sao sửa:** Người dùng muốn dùng `npm run ...` sau khi clone và cài đặt.
+- **Ảnh hưởng:** Theo yêu cầu người dùng, `cd backend` rồi `npm run dev` (hoặc `npm start`) dùng Python trong `.venv` gốc để chạy `src.main:app` ở 8000 với một worker. Thiếu .venv sẽ báo hướng dẫn, không dùng Python toàn máy hoặc tự cài thư viện. Không đổi API hay DB; không còn package chạy npm ở gốc.
+
+---
+
+### [2026-10-16] Ghép API giá/tin vào backend chính cổng 8000
+
+- **File(s):** `backend/src/main.py`, `frontend/src/pages/companies/marketDataApi.js`, `backend/tests/test_unified_app.py`, `README.md`, `history.md`.
+- **Sai gì:** Auth ở 8000 nhưng frontend gọi giá/tin mặc định sang 8001; phải mở thêm server và dễ lỗi khi quên chạy.
+- **Tại sao sửa:** Người dùng yêu cầu dùng chung backend. Đăng ký market router trong main và tái dùng lifespan collector/news, đảm bảo đóng DB cả khi khởi động collector thất bại.
+- **Ảnh hưởng:** Frontend mặc định gọi `/api/market-data` cùng origin, dùng proxy Vite hiện có sang 8000. Vẫn hỗ trợ URL API tường minh qua biến môi trường. Backend chung chạy một worker vì collector có khóa độc quyền; server standalone 8001 vẫn còn cho nhu cầu riêng nhưng không chạy đồng thời. Không đổi schema hay dữ liệu Supabase.
+- **Kiểm chứng:** 23 test auth, vòng đời backend chung, API dữ liệu và API live đạt; frontend build thành công.
+
+---
 
 ### [YYYY-MM-DD] Tiêu đề ngắn gọn
 
@@ -18,6 +65,43 @@ Quy trình bắt buộc trước khi sửa:
 - **Sai gì:** mô tả lỗi/thiếu sót cụ thể
 - **Tại sao sửa:** lý do, nguyên nhân gốc
 - **Ảnh hưởng:** những module/file/chức năng khác có thể bị ảnh hưởng (hoặc "Không ảnh hưởng gì ngoài file này")
+
+---
+
+### [2026-10-16] WBS16: manifest phiên bản corpus từ chunk đã ingest
+
+- **File(s):** `backend/src/documents/corpus_manifest.py`, `backend/scripts/freeze_corpus.py`, `backend/tests/test_corpus_manifest.py`, `docs/embedding/WBS16-corpus-manifest.md`, `history.md`.
+- **Sai gì:** Đã ingest toàn bộ nguồn nhưng chưa có danh sách chunk đóng băng và chưa đăng ký `corpus_versions`/`corpus_documents`; index version chỉ mô tả cấu hình, không chốt tập dữ liệu.
+- **Tại sao sửa:** Cần corpus ID, hash và snapshot nội dung/locator để các thành viên đối chiếu đúng phiên bản khi test. Cùng dữ liệu tạo cùng ID; thay thành viên/nội dung/locator tạo phiên bản khác.
+- **Ảnh hưởng:** Thêm CLI mặc định chỉ đọc và xuất JSON; `--apply` đăng ký hai bảng corpus trong transaction, từ chối ghi đè nhãn và file khác nội dung. Không đổi schema, chunk/vector, API, crawler hay retention. Khi chốt có khóa SHARE ngắn hạn trên documents/text_chunks. Snapshot JSON phải được giữ/bàn giao; WBS25 phải dùng chunk ID trong manifest để cô lập corpus. Chưa có bảo vệ chunk corpus khỏi retention; xem giới hạn trong tài liệu.
+- **Kiểm chứng:** 85 test manifest/chunking/ingest/embedding/locator/retention đạt; xuất thật 249 tài liệu / 2.048 chunk từ Supabase, ID `7c2ea700-fd01-5adc-a467-af4fea532741`. Đã đăng ký `corpus-v1` vào Supabase; chạy lại trả `already_registered`, đối chiếu đủ 249 liên kết tài liệu và hash, không ghi thêm hay đổi phiên bản cũ. Manifest cục bộ: `backend/.tmp/corpus-v1.manifest.json`.
+
+---
+
+### [2026-10-16] Bỏ qua cache và báo cáo test sinh tự động
+
+- **File(s):** `.gitignore`, `history.md`.
+- **Sai gì:** Các thư mục `pytest-cache-files-*` do pytest tạo xuất hiện trong workspace và làm `git status` báo lỗi quyền truy cập khi quét file tạm.
+- **Tại sao sửa:** Cache và báo cáo coverage chỉ phục vụ máy chạy test, không cần đưa lên Git.
+- **Ảnh hưởng:** Thêm quy tắc ignore cho cache pytest và file coverage. `.env`, virtualenv và `backend/.tmp/` đã được ignore từ trước; không thay đổi các file đang được Git theo dõi.
+
+---
+
+### [2026-10-16] WBS17: đối chiếu full corpus Supabase với pgvector
+
+- **File(s):** `backend/src/documents/db_ingest.py`, `backend/tests/test_db_ingest.py`, `docs/embedding/WBS17-ingest-2026-10-16.md`, `history.md`.
+- **Sai gì:** Sau WBS12, pgvector mới có tập nghiệm thu hai tài liệu; chưa có đối chiếu theo toàn bộ nguồn Supabase và log số chunk hợp lệ/thiếu theo từng loại.
+- **Tại sao sửa:** WBS17 cần thấy corpus hiện có được lưu đủ vector và metadata đúng index, đúng tài liệu, truy lại được nguồn; lần chạy lại phải có log hoàn tất và không tính lại embedding cho nội dung đã lưu.
+- **Ảnh hưởng:** Ingest giờ bỏ qua embedding khi toàn bộ hash hiện hành của tài liệu khớp, vẫn cập nhật locator; nếu DB đổi giữa bước kiểm tra và ghi thì từ chối vector placeholder trước khi sửa chunk. Không đổi API hay schema live. Đã cập nhật 6 hồ sơ công ty, bổ sung giá và chỉ số còn thiếu; 234 bài tin đã được nhóm nạp trước đó. Lệnh `--apply` full chạy xong **249/249 tài liệu, 2.048 chunk đầu vào, 0 lỗi**. Đối chiếu DB: 2.048/2.048 chunk hiện hành khớp, 0 sai lệch, 0 trùng vị trí, 0 vector/locator không hợp lệ; chạy lại giữ nguyên ID và `created_at`. Truy vấn pgvector bằng vector FPT trả đúng chunk FPT với khoảng cách 0; 63 test liên quan đạt. `observations` vẫn rỗng nên chưa có chunk tài chính.
+
+---
+
+### [2026-10-15] Đồng bộ file reset schema với contract chunk hiện tại và cập nhật 6 hồ sơ công ty
+
+- **File(s):** `supabase/reset_and_rebuild.sql`, `history.md`.
+- **Sai gì:** File reset còn tạo `text_chunks` thiếu `locator_json`, `superseded_at`, `superseded_by_chunk_id` và dùng chỉ mục unique đầy đủ cũ. Nếu dựng một database mới chỉ bằng file này, code ingest hiện tại sẽ lỗi hoặc không giữ được chunk cũ cùng vị trí. Supabase đang lưu locator FPT theo khóa nhãn tiếng Việt cũ.
+- **Tại sao sửa:** Schema dựng mới cần tương thích các migration `20261014000200`/`20261014000300`; 6 hồ sơ công ty cần khóa locator dạng `MÃ:tên_cột` để bộ resolver WBS11 truy về nguồn.
+- **Ảnh hưởng:** Chỉ sửa file reset; **không chạy file reset trên Supabase dùng chung**. Đã chạy ingest từ bảng `companies` trên Supabase cho CTR, FPT, MBB, MSN, NLG, VCB: 6/6 tài liệu/chunk thành công, vector 1024 chiều, locator đúng khóa cột. FPT giữ nguyên `chunk_id`, nội dung, `created_at` và vector; 5 công ty còn lại là chunk mới. Phần full-load WBS17 được ghi riêng ở mục ngày 16/10.
 
 ---
 

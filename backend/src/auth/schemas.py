@@ -69,4 +69,46 @@ class LoginRequest(BaseModel):
 
 class GoogleLoginRequest(BaseModel):
     credential: str
-    
+
+
+class ForgotPasswordRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    email: str = Field(min_length=3, max_length=255)
+
+    @field_validator("email")
+    @classmethod
+    def clean_email(cls, value: str) -> str:
+        value = value.strip().lower()
+        if not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", value):
+            raise ValueError("Email không hợp lệ.")
+        return value
+
+class ResetPasswordRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    recovery_code: str = Field(min_length=20, max_length=4096)
+    new_password: str = Field(min_length=8, max_length=128)
+    confirm_password: str = Field(max_length=128)
+
+    @field_validator("new_password")
+    @classmethod
+    def check_password_strength(cls, value: str) -> str:
+        if (
+            any(char.isspace() for char in value)
+            or not any(char.isupper() for char in value)
+            or not any(char.islower() for char in value)
+            or not any(char.isdigit() for char in value)
+            or not any(char in string.punctuation for char in value)
+        ):
+            raise ValueError(
+                "Mật khẩu cần có chữ hoa, chữ thường, số và ký tự đặc biệt; "
+                "không chứa khoảng trắng."
+            )
+        return value
+
+    @model_validator(mode="after")
+    def passwords_must_match(self):
+        if self.new_password != self.confirm_password:
+            raise ValueError("Mật khẩu xác nhận không khớp.")
+        return self

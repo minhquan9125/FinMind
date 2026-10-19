@@ -11,10 +11,12 @@ from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr
 ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
+ENV_FILES = (ENV_PATH.parent.parent / ".env", ENV_PATH)
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=ENV_PATH, extra="ignore")
+    # Read root defaults first; backend-specific values take precedence.
+    model_config = SettingsConfigDict(env_file=ENV_FILES, extra="ignore")
 
 
     # PostgreSQL / pgvector (ADR01)
@@ -64,6 +66,12 @@ class Settings(BaseSettings):
     # Rate limiting & Account Lockout
     auth_max_failed_attempts: int = 5
     auth_lockout_minutes: int = 15
+    smtp_host: str = "smtp.gmail.com"
+    smtp_port: int = 587
+    smtp_username: str = ""
+    smtp_password: SecretStr = SecretStr("")
+    smtp_from: str = ""
+    frontend_url: str = "http://localhost:5173"
 @lru_cache
 def get_settings() -> Settings:
     return Settings()

@@ -31,6 +31,7 @@ import {
   fetchAuthLoginMock,
   fetchAuthRegisterMock,
   fetchAuthLogoutMock,
+  fetchAuthForgotPasswordMock,
   fetchDocumentsMock,
 } from "./mockApi";
 
@@ -605,6 +606,12 @@ export const logoutUser = (options = {}) =>
   callApi(
     () => fetchAuthLogoutMock(options),
     (raw) => raw.payload ?? { loggedOut: true }
+  );
+
+export const forgotPasswordUser = (email, options = {}) =>
+  callApi(
+    () => fetchAuthForgotPasswordMock(email, options),
+    (raw) => raw.payload ?? { success: true }
   );
 
 // ─── 16. DOCUMENTS (DÙNG CHO COMPONENT DocumentList.jsx) ──────────────────────
