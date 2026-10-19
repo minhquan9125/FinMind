@@ -2,7 +2,8 @@ from pathlib import Path
 import hashlib
 PINS = {'intent.py': '8d1f077bb22b5adcbdf09f2534a45fb979b760dc963cfd0b1de260dcde3d014e', 'contracts.py': '10b580d1dbc6657d38540fc1f9f1506e975757d468c7db81708a71a5451b6910', 'orchestrator.py': '3a727093b88b913d84ca44f9b05fba1bd39586c63d6cde4277601427f53b7a85', 'fixtures.json': 'f4cc6896fe141834a9e002beb306362af624ed6fe4df9b0b98ab8ee1a3a1096d'}
 for name, digest in PINS.items():
-    if hashlib.sha256((Path(__file__).resolve().parents[1] / 'retrieval_flow' / name).read_bytes()).hexdigest() != digest:
+    data = (Path(__file__).resolve().parents[1] / 'retrieval_flow' / name).read_bytes().replace(b'\r\n', b'\n')
+    if hashlib.sha256(data).hexdigest() != digest:
         raise RuntimeError('Runtime dependency changed: ' + name)
 import asyncio
 from datetime import date

@@ -2,7 +2,8 @@ from pathlib import Path
 import hashlib
 RUNTIME_PINS = {'retrieval_flow/contracts.py': '10b580d1dbc6657d38540fc1f9f1506e975757d468c7db81708a71a5451b6910', 'retrieval_flow/fixtures.json': 'f4cc6896fe141834a9e002beb306362af624ed6fe4df9b0b98ab8ee1a3a1096d', 'retrieval_flow/intent.py': '8d1f077bb22b5adcbdf09f2534a45fb979b760dc963cfd0b1de260dcde3d014e'}
 for name, expected in RUNTIME_PINS.items():
-    actual = hashlib.sha256((Path(__file__).resolve().parents[1] / name).read_bytes()).hexdigest()
+    data = (Path(__file__).resolve().parents[1] / name).read_bytes().replace(b'\r\n', b'\n')
+    actual = hashlib.sha256(data).hexdigest()
     if actual != expected:
         raise RuntimeError("Approved runtime dependency changed: " + name)
 

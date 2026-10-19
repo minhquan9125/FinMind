@@ -8,12 +8,27 @@ Từ thư mục gốc dự án, chạy hỏi đáp tương tác:
 
 ```powershell
 python -X utf8 backend/src/retrieval_orchestration/hoi.py
-
 ```
 
 Trong folder này có thể chạy ngắn hơn: `python -X utf8 hoi.py`.
 Gõ câu hỏi rồi Enter để xem phản hồi tiếng Việt; gõ `exit` để thoát.
 `/moi` xóa ngữ cảnh; `/json` xem JSON kỹ thuật của kết quả gần nhất.
+
+Các lệnh để tiếp tục phiên cũ:
+
+| Lệnh | Chức năng |
+| --- | --- |
+| `/lichsu` | Liệt kê các file lịch sử hợp lệ, mới nhất trước. |
+| `/mo 1` | Mở phiên số 1 trong danh sách và khôi phục câu hỏi đang dở. |
+| `/mo ten_file.json` | Mở file trong folder `chat_history`. |
+| `/tomtat` | Xem mã, kỳ, chỉ tiêu đang được theo dõi và thông tin còn thiếu. |
+| `/help` | Xem tất cả lệnh. |
+
+Ví dụ: `lợi nhuận năm 2025` → `BID, sau thuế` → `không, là VCB` →
+`ý tôi là năm 2024`. Có thể bổ sung nhiều thông tin trong một câu như
+`VCB năm 2024` hoặc `sau thuế quý 2/2026`. Nếu nêu nhiều lựa chọn mâu thuẫn,
+hệ thống hỏi lại thay vì chọn đại. `năm ngoái`, `quý này`, `quý trước` dùng ngày
+của phiên và xử lý chuyển năm khi cần.
 
 Phiên ghi nhớ thông tin bổ sung cho câu hỏi chỉ tiêu: ví dụ `lợi nhuận năm 2025`
 → `BID` → `sau thuế`. Có thể thay thông tin bằng `đổi sang VCB`, `năm 2024`,
@@ -26,7 +41,15 @@ hoặc Ctrl+C, lịch sử được lưu UTF-8 vào `chat_history/session_<thờ
 cạnh file `hoi.py`. Mỗi lần chạy có file riêng, gồm mã phiên, thời gian và toàn bộ
 lượt hỏi/phản hồi cùng kết quả JSON kỹ thuật. Terminal in đường dẫn sau khi lưu.
 `/moi` xóa ngữ cảnh nhưng vẫn giữ các lượt trước đó trong lịch sử của lần chạy.
-Phiên chưa có lượt chat không tạo file. Mở lại chương trình chưa tự nạp file lịch sử.
+Phiên chưa có lượt chat không tạo file. Khi chạy lại, gõ `/lichsu` rồi `/mo 1`
+để tiếp tục. Chương trình phân tích lại các câu người dùng đã lưu; không dùng kết quả
+hay số liệu trong phản hồi cũ làm bằng chứng. Ngày tương đối của lượt cũ giữ theo ngày
+cũ, câu hỏi mới dùng ngày hiện tại. Lịch sử phiên tiếp tục được lưu thành file con riêng,
+có `resumed_from`, `parent_session_id`, `continued_at`; file gốc không bị ghi đè.
+Mở phiên rồi thoát mà chưa chat thêm không tạo bản sao. Nếu chuyển phiên khi đang chat
+dở, chương trình lưu phần đang dở trước; khi lưu lỗi thì giữ nguyên phiên hiện tại.
+Các file bị lỗi cấu trúc hoặc vượt giới hạn đọc được báo lỗi/bỏ qua, không làm mất
+ngữ cảnh đang dùng. Ngữ cảnh không tự nạp khi vừa khởi động nếu chưa chọn `/mo`.
 
 Phạm vi fixture theo đặc tả gồm VCB, BID, CTG, MBB, TCB, FPT, CMG, ELC, ITD, ICT.
 SSI/ssi/SSi được báo ngoài phạm vi, không bị hiểu là thiếu công ty. Việc cập nhật
