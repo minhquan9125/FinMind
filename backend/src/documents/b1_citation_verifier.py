@@ -11,9 +11,13 @@ Thuc hien kiem tra trich dan va chuan hoa cau tra loi B1 theo quy trinh 3 buoc:
 
 from __future__ import annotations
 
+import asyncio
 import enum
+import logging
 from dataclasses import dataclass, field
 from typing import Any, Mapping
+
+logger = logging.getLogger("finmind.b1_verifier")
 
 from src.documents.locator_resolver import (
     LocatorError,
@@ -56,11 +60,11 @@ class Claim:
 class B1AnswerCase:
     """Ca mau cau tra loi B1 kem danh sach nhan dinh va goi bang chung."""
     case_id: str
-    case_type: str  # "FULL_SOURCES", "MISSING_SOURCES", "CONFLICTING_SOURCES"
+    case_type: str  # "FULL_SOURCES", "MISSING_SOURCES", "CONFLICTING_SOURCES", "DYNAMIC"
     query: str
     raw_answer: str
-    claims: list[Claim]
-    evidence_pack: dict[str, Evidence]
+    claims: list[Claim] | None = None
+    evidence_pack: dict[str, Evidence] = field(default_factory=dict)
 
 
 @dataclass
@@ -207,23 +211,174 @@ def build_sample_cases() -> dict[str, B1AnswerCase]:
         },
     )
 
+    # Evidence 5: Bao cao tai chinh BCTC (observations)
+    evid_bctc = Evidence(
+        evidence_id="EVID-BID-BCTC-CASH",
+        locator={
+            "source_table": "financial_reports",
+            "source_id": "3de1df00-1dff-562d-aa18-60e7b190f920",
+            "row_keys": ["7890ebbc-950b-585a-9a45-59ac96c13e9f"],
+        },
+        chunk_text="Báo cáo tài chính: Tiền mặt, vàng bạc, đá quý (CASH_AND_GOLD) đạt 12.509 tỷ đồng.",
+        title="Báo cáo tài chính hợp nhất",
+    )
+
+    # Ca 4: Báo cáo tài chính BCTC
+    case_bctc = B1AnswerCase(
+        case_id="B1-CASE-04-BCTC",
+        case_type="FINANCIAL_REPORTS",
+        query="Cho biết giá trị khoản mục tiền mặt trên BCTC?",
+        raw_answer="Khoản mục tiền mặt, vàng bạc đá quý (CASH_AND_GOLD) đạt 12.509 tỷ đồng [EVID-BID-BCTC-CASH].",
+        claims=[
+            Claim(
+                claim_id="C1",
+                statement="Khoản mục tiền mặt, vàng bạc đá quý (CASH_AND_GOLD) đạt 12.509 tỷ đồng theo BCTC.",
+                evidence_id="EVID-BID-BCTC-CASH",
+            )
+        ],
+        evidence_pack={
+            "EVID-BID-BCTC-CASH": evid_bctc,
+        },
+    )
+
     return {
         "full_sources": case_full,
         "missing_sources": case_missing,
         "conflicting_sources": case_conflicting,
+        "bctc_sources": case_bctc,
     }
 
 
-async def audit_b1_answer(b1_case: B1AnswerCase, conn: Any = None) -> AuditReport:
-    """Quy trinh 3 buoc kiem tra va chuan hoa cau tra loi B1:
-    - Buoc 1: Tiep nhan cau tra loi B1 theo phan loai nguon.
-    - Buoc 2: Kiem tra tung nhan dinh co ma bang chung va trich dan mo duoc locator.
-    - Buoc 3: Sua cau tra loi thanh than trong hoac bao chua du bang chung doi voi nhan dinh chua chung minh duoc.
+def extract_claims_from_answer(
+    raw_answer: str,
+    evidence_pack: Mapping[str, Evidence] | None = None,
+) -> list[Claim]:
+    """Tu dong phan ra cau tra loi tho thanh cac nhan dinh (claims) va boc tach ma bang chung [TAG].
+    
+    Toi uu Production:
+    - Bao ve cac tu viet tat tieng Viet tai chinh (TP., CTCP., đ/cp., v.v.) tranh bi ngat nham cau.
+    - Chuan hoa khoang trang va nhan dien chinh xac ma trich dan.
     """
+    import re
+
+    if not raw_answer or not raw_answer.strip():
+        return []
+
+    # Bao ve tu viet tat tranh bi tach nham boi dau cham
+    protected_answer = raw_answer
+    abbrevs = ["TP.", "ThS.", "TS.", "CTCP.", "TNHH.", "đ/cp.", "Q.", "TW.", "TT."]
+    for idx, abbr in enumerate(abbrevs):
+        protected_answer = protected_answer.replace(abbr, f"__ABBR_{idx}__")
+
+    raw_sentences = re.split(r"(?<=[.!?])\s+|\n+", protected_answer.strip())
+    claims: list[Claim] = []
+    tag_pattern = re.compile(r"\[([A-Za-z0-9_\-]+)\]")
+
+    claim_idx = 1
+    for s in raw_sentences:
+        # Phuc hoi tu viet tat
+        s_restored = s
+        for idx, abbr in enumerate(abbrevs):
+            s_restored = s_restored.replace(f"__ABBR_{idx}__", abbr)
+
+        s_clean = s_restored.strip()
+        if not s_clean:
+            continue
+
+        tags = tag_pattern.findall(s_clean)
+        clean_stmt = tag_pattern.sub("", s_clean).strip()
+
+        if not tags:
+            # Nhận định khẳng định không có trích dẫn nguồn
+            if len(s_clean) >= 5:
+                claims.append(
+                    Claim(
+                        claim_id=f"C{claim_idx}",
+                        statement=s_clean,
+                        evidence_id=None,
+                        status=ClaimStatus.UNGROUNDED,
+                    )
+                )
+                claim_idx += 1
+        else:
+            for tag in tags:
+                conflicts = [t for t in tags if t != tag]
+                claims.append(
+                    Claim(
+                        claim_id=f"C{claim_idx}",
+                        statement=clean_stmt if clean_stmt else s_clean,
+                        evidence_id=tag,
+                        status=ClaimStatus.UNGROUNDED,
+                        conflicting_with=conflicts,
+                    )
+                )
+                claim_idx += 1
+
+    return claims
+
+
+async def audit_b1_answer(
+    b1_case: B1AnswerCase,
+    conn: Any = None,
+    timeout: float = 5.0,
+) -> AuditReport:
+    """Quy trinh 3 buoc kiem tra va chuan hoa cau tra loi B1:
+    - Buoc 1: Tiep nhan cau tra loi B1 theo phan loai nguon (tu dong trich xuat claims neu chua co).
+    - Buoc 2: Kiem tra song song (parallel) cac locator qua locator_resolver cua Vu va CSDL Supabase.
+    - Buoc 3: Sua cau tra loi thanh than trong hoac bao chua du bang chung doi voi nhan dinh chua chung minh duoc.
+    Hoan toan dong cho moi cong ty, moi bao cao, toi uu song song va chong treo he thong bang timeout.
+    """
+    # Tu dong trich xuat claims neu b1_case.claims chua duoc cung cap (None)
+    if b1_case.claims is None:
+        b1_case.claims = extract_claims_from_answer(b1_case.raw_answer, b1_case.evidence_pack)
+
     # -------------------------------------------------------------
-    # BUOC 1 & 2: Kiem tra tung nhan dinh (Claim verification)
+    # BUOC 1 & 2: Kiem tra song song va doi chieu tung nhan dinh
     # -------------------------------------------------------------
     citations_opened: list[dict[str, Any]] = []
+
+    # Toi uu Production: Xac minh CSDL song song (Parallel Gather) & Cache theo Evidence ID
+    verified_evidences: dict[str, VerifyResult] = {}
+    valid_eids = {
+        c.evidence_id for c in b1_case.claims 
+        if c.evidence_id and c.evidence_id in b1_case.evidence_pack
+    }
+
+    if conn is not None and valid_eids:
+        is_pool = hasattr(conn, "acquire") and callable(conn.acquire)
+
+        async def _verify_single(eid: str) -> tuple[str, VerifyResult]:
+            ev = b1_case.evidence_pack[eid]
+            cur_conn = conn
+            acquired = False
+            if is_pool:
+                cur_conn = await conn.acquire()
+                acquired = True
+            try:
+                res = await asyncio.wait_for(
+                    verify_chunk(cur_conn, ev.locator, ev.chunk_text),
+                    timeout=timeout,
+                )
+                return eid, res
+            except asyncio.TimeoutError:
+                return eid, VerifyResult(False, problems=[f"Xác minh CSDL cho '{eid}' quá thời gian ({timeout}s)."])
+            except Exception as exc:
+                return eid, VerifyResult(False, problems=[f"Lỗi truy vấn CSDL cho '{eid}': {exc}"])
+            finally:
+                if acquired and hasattr(conn, "release"):
+                    await conn.release(cur_conn)
+
+        if is_pool:
+            # Voi Connection Pool: Chay song song thuc su bang asyncio.gather
+            results = await asyncio.gather(*[_verify_single(eid) for eid in valid_eids])
+        else:
+            # Voi Single Connection (asyncpg chi cho phep 1 query/socket tai 1 thoi diem): Chay tuan tu kem caching
+            results = []
+            for eid in valid_eids:
+                results.append(await _verify_single(eid))
+
+        for eid, res in results:
+            verified_evidences[eid] = res
 
     for claim in b1_case.claims:
         claim.issues = []
@@ -251,9 +406,9 @@ async def audit_b1_answer(b1_case: B1AnswerCase, conn: Any = None) -> AuditRepor
             claim.issues.append(f"Không thể mở locator: {exc}")
             continue
 
-        # 3. Neu co ket noi DB (conn), xac minh thuc te qua verify_chunk cua Vu
-        if conn is not None:
-            v_res: VerifyResult = await verify_chunk(conn, evidence.locator, evidence.chunk_text)
+        # 3. Kiem tra ket qua xac minh tu CSDL (lay tu cache song song)
+        if conn is not None and claim.evidence_id in verified_evidences:
+            v_res = verified_evidences[claim.evidence_id]
             if not v_res.ok:
                 claim.status = ClaimStatus.UNGROUNDED
                 claim.issues.extend(v_res.problems)
@@ -279,56 +434,85 @@ async def audit_b1_answer(b1_case: B1AnswerCase, conn: Any = None) -> AuditRepor
             claim.status = ClaimStatus.VERIFIED
 
     # -------------------------------------------------------------
-    # BUOC 3: Hieu chinh cau tra loi (Answer revision)
+    # BUOC 3: Hieu chinh cau tra loi tong quat (Answer revision)
     # -------------------------------------------------------------
     verified_claims = [c for c in b1_case.claims if c.status == ClaimStatus.VERIFIED]
     ungrounded_claims = [c for c in b1_case.claims if c.status == ClaimStatus.UNGROUNDED]
     conflicting_claims = [c for c in b1_case.claims if c.status == ClaimStatus.CONFLICTING]
 
+    if ungrounded_claims:
+        logger.warning(
+            "[%s] Phat hien %d nhan dinh vo nguon can hieu chinh: %s",
+            b1_case.case_id,
+            len(ungrounded_claims),
+            [c.statement for c in ungrounded_claims],
+        )
+
     revised_parts: list[str] = []
     final_revised_claims: list[Claim] = []
 
-    # Xu ly cac claim da xac minh (Verified)
+    # 1. Xu ly cac claim da xac minh (Verified)
     for c in verified_claims:
-        revised_parts.append(f"{c.statement} [{c.evidence_id}]")
+        stmt = c.statement.strip()
+        if c.evidence_id and f"[{c.evidence_id}]" not in stmt:
+            stmt = f"{stmt} [{c.evidence_id}]"
+        revised_parts.append(stmt)
         final_revised_claims.append(c)
 
-    # Xu ly cac claim vo nguon / thieu nguon (Ungrounded)
+    # 2. Xu ly cac claim vo nguon / thieu nguon (Ungrounded)
     if ungrounded_claims:
         cautious_statements: list[str] = []
         for c in ungrounded_claims:
+            stmt = c.statement.strip().rstrip('.')
+            if c.evidence_id:
+                reason = f"mã bằng chứng '{c.evidence_id}' không mở được và chưa đủ bằng chứng xác thực trong hệ thống"
+            else:
+                reason = "chưa đủ bằng chứng tài chính hoặc dữ liệu chưa được công bố chính thức trong hệ thống để xác nhận"
+
             cautious_statements.append(
-                f"Đối với thông tin '{c.statement}': Hiện tại chưa đủ bằng chứng tài chính hoặc dữ liệu chưa được công bố chính thức trong hệ thống để xác nhận."
+                f"Đối với thông tin '{stmt}': Hiện tại {reason}."
             )
-            # Tao mot claim than trong da duoc chuan hoa
             safe_claim = Claim(
                 claim_id=f"{c.claim_id}_SAFE_AUDITED",
-                statement=f"Chưa đủ bằng chứng để xác nhận thông tin: {c.statement}",
+                statement=f"Chưa đủ bằng chứng để xác nhận thông tin: {stmt}",
                 evidence_id=None,
-                status=ClaimStatus.VERIFIED,  # Da duoc bao ve ve mat audit, khong con la claim vo nguon khang dinh sai
+                status=ClaimStatus.VERIFIED,  # Da duoc bao ve ve mat audit
                 issues=[],
             )
             final_revised_claims.append(safe_claim)
 
         revised_parts.append(" ".join(cautious_statements))
 
-    # Xu ly cac claim mau thuan giua cac nguon (Conflicting)
+    # 3. Xu ly cac claim mau thuan giua cac nguon (Conflicting) - HOAN TOAN DONG THEO CAU HOI VA BANG CHUNG
     if conflicting_claims:
-        conflicting_text = (
-            "Về triển vọng của FPT, các nguồn phân tích hiện có sự khác biệt: "
-            "Bảng xếp hạng Brand Conviction Index ghi nhận FPT Shop đứng thứ 11 trong Top nhà bán lẻ tin cậy châu Á [EVID-FPT-RETAIL-11]. "
-            "Tuy nhiên, CTCK Mirae Asset nhấn mạnh động lực cốt lõi đến từ AI và thị trường quốc tế (Nhật/EU), "
-            "đồng thời lưu ý sức mua ngành bán lẻ nội địa vẫn đối mặt thách thức [EVID-FPT-MIRAE-AI]. "
-            "Do có sự khác biệt giữa các kênh phân tích, nhà đầu tư cần thận trọng và tiếp tục theo dõi báo cáo định kỳ."
-        )
+        conflict_items: list[str] = []
+        for c in conflicting_claims:
+            stmt = c.statement.strip().rstrip('.')
+            evid_str = f" [{c.evidence_id}]" if c.evidence_id else ""
+            conflict_items.append(f"{stmt}{evid_str}")
+
+        if len(conflict_items) == 2:
+            conflicting_text = (
+                f"Về nội dung này, các nguồn phân tích hiện có sự khác biệt: "
+                f"Một mặt, {conflict_items[0]}. "
+                f"Mặt khác, {conflict_items[1]}. "
+                f"Do có sự khác biệt giữa các kênh thông tin, người dùng cần thận trọng và tiếp tục theo dõi các báo cáo cập nhật."
+            )
+        else:
+            joined = "; đồng thời ".join(conflict_items)
+            conflicting_text = (
+                f"Về nội dung này, các nguồn thông tin hiện có sự khác biệt hoặc chưa thống nhất: "
+                f"{joined}. "
+                f"Do tồn tại thông tin đa chiều giữa các nguồn, cần đánh giá thận trọng và đối chiếu thêm các công bố chính thức."
+            )
+
         revised_parts.append(conflicting_text)
         for c in conflicting_claims:
             final_revised_claims.append(c)
 
-    revised_answer = " ".join(revised_parts)
+    revised_answer = " ".join(part for part in revised_parts if part).strip()
 
     # Kiem tra tieu chi: Khong co claim vo nguon nao duoc phep ton tai trong cau tra loi sau hieu chinh
-    # Claim ungrounded goc da duoc sua thanh thong bao "chua du bang chung"
     is_clean = len(ungrounded_claims) == 0 or all(
         c.status != ClaimStatus.UNGROUNDED for c in final_revised_claims
     )
@@ -347,3 +531,23 @@ async def audit_b1_answer(b1_case: B1AnswerCase, conn: Any = None) -> AuditRepor
         is_clean=is_clean,
         citations_opened=citations_opened,
     )
+
+
+async def audit_b1_raw_answer(
+    query: str,
+    raw_answer: str,
+    evidence_pack: dict[str, Evidence],
+    case_id: str = "B1-DYNAMIC-AUDIT",
+    conn: Any = None,
+    timeout: float = 5.0,
+) -> AuditReport:
+    """Ham API tien ich giup kiem tra va chuan hoa truc tiep mot cau tra loi B1 tho bat ky."""
+    b1_case = B1AnswerCase(
+        case_id=case_id,
+        case_type="DYNAMIC",
+        query=query,
+        raw_answer=raw_answer,
+        claims=None,  # Se tu dong phan ra bang extract_claims_from_answer
+        evidence_pack=evidence_pack,
+    )
+    return await audit_b1_answer(b1_case, conn=conn, timeout=timeout)
