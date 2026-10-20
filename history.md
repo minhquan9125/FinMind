@@ -489,3 +489,34 @@ Quy trình bắt buộc trước khi sửa:
 - Upload mới dùng bản nguồn PDF/JSON gốc trong raw_payloads hiện có; locator upload-source-v1; không thêm bảng, không lưu text chunk trùng lặp.
 - 80 test đạt; đọc mẫu nguồn của 4 nhóm sau DROP COLUMN thành công. Không khởi động server, không commit/push.
 - Các máy chạy backend cần cập nhật code và restart vì schema không tương thích code cũ còn dùng chunk_text.
+
+---
+
+### [2026-10-20] WBS19: sửa năm lỗi chunker tài chính và kiểm tra dữ liệu cào mới
+
+- **Vấn đề và thay đổi:**
+  1. Tiêu đề tài chính không còn tự gán mọi giá trị là triệu VND.
+  2. Từng dòng có đơn vị trống hoặc SOURCE_NATIVE ghi “đơn vị chưa xác minh”; không tự quy đổi số.
+  3. Cùng report_id nhưng period_code khác nhau: báo lỗi rõ kỳ và báo cáo, không dựng chunk.
+  4. Cùng report_id nhưng symbol khác nhau: báo lỗi rõ hai mã công ty, không dựng chunk.
+  5. observation_id trùng trong đầu vào, kể cả giữa nhóm/báo cáo: báo lỗi; không tự bỏ dòng, cộng số hoặc tạo tham chiếu mơ hồ.
+- **File chính:** backend/src/documents/db_chunking.py, db_source.py, chunk_reconstruction.py;
+  backend/tests/test_clean_financial_chunk_edge_cases.py, test_chunk_reconstruction.py.
+- **Tương thích:** chunk tài chính mới dùng db-financial-v3; giữ bộ dựng db-v1 và db-financial-v2 để đọc chunk đã lưu theo phiên bản locator. Chỉnh cách ghi đơn vị làm thay đổi chữ/hash/ID và cách đóng gói chunk mới, không tự cập nhật vector cũ.
+- **Collector:** collect_financial_data.py bị thụt lề dư bốn khoảng trắng trên toàn module, gây IndentationError từ dòng 1. Đã bỏ lớp thụt lề dư; không thay logic API/retry/chuẩn hóa/ghi file. CLI run_financial_pipeline.py --help chạy được.
+- **Công cụ kiểm tra:** backend/scripts/check_financial_flow.py kiểm tra dữ liệu đã có và đọc Supabase; check_new_financial_flow.py cào mới vào thư mục thử riêng rồi chạy clean, bộ đọc nhập và chunk. Cả hai không ghi database hoặc gọi embedding.
+- **Dữ liệu đang có:** 10 công ty, 419 báo cáo, 72.096 observations trên Supabase; đọc bằng READ ONLY REPEATABLE READ, tạo 13.003 chunk trong bộ nhớ. Đủ mã dòng, không lặp ID, dựng lại đúng nội dung/hash; không chunk trên 130 từ.
+- **Dữ liệu vừa cào:** Entrade/Vietcap, 20/10/2026 08:41 UTC; 10/10 công ty đạt, hợp 429 kỳ/báo cáo, 72.524 giá trị tài chính giữ sau clean, 13.126 chunk. Không mất/lặp dòng, toàn bộ chunk dựng lại đúng hash, không chunk trên 130 từ. Đây là kiểm tra chức năng, chưa xác minh đơn vị/phương pháp của nhà cung cấp.
+- **Giá nguồn:** 21.298 phiên hợp lệ; bộ chuẩn hóa hiện có loại 18 bản ghi trùng ngày hoặc OHLC không hợp lệ và ghi cảnh báo. Không tự điền các kỳ tài chính nguồn không trả.
+- **Kiểm thử:** bộ backend liên quan 90 passed; FinancialCleaner 15 passed, 1 failed vì thiếu .agent-state/source-hashes.json, nên chưa chứng minh được tính bất biến so với baseline lịch sử. Không tạo baseline mới để giả làm bằng chứng cũ.
+- **Ảnh hưởng:** dữ liệu cào thử nằm riêng tại backend/.tmp/new-financial-flow/20261020T084108964907Z/. Không ghi đè data/raw, data/normalized hoặc bộ clean chuẩn; không INSERT/UPDATE/DELETE Supabase, không đổi schema, không tạo embedding hoặc kiểm tra tìm kiếm bằng dữ liệu mới. Chưa kiểm tra INSERT thực tế của lượt cào mới.
+- **Báo cáo:** docs/embedding/WBS19-clean-chunker-test-20261020.md,
+  financial-flow-check-20261020.md và financial-flow-fresh-data-20261020.md.
+
+### [2026-10-20] Bàn giao corpus-v1 cho WBS20 và đối chiếu danh mục chỉ tiêu
+
+- Manifest gốc backend/.tmp/corpus-v1.manifest.json còn nguyên: 249 tài liệu, 2.048 chunk, chunker db-v1, index_version_id 1e029e66-0adf-53ac-8f28-431ed7312745, manifest_sha256 e9391c8af33b64888ea7b7c386a526110c35aab7fc2c469366e648f41c393f41. Không tạo lại bằng chunker mới.
+- Làm rõ ghi chú ngày 19/10: ba chunk hồ sơ cũ FPT/MBB/VCB không dựng lại được từ nguồn sống đã đổi, nhưng nội dung cũ vẫn có trong manifest đóng băng. Khi benchmark giữ đúng membership; không tự loại ba chunk chỉ vì superseded. Cần xác nhận vector cũ của đủ 2.048 ID truy vấn được trước khi đo WBS20; manifest không chứa vector.
+- Đã hướng dẫn người dùng add manifest bằng git add -f vì thư mục .tmp bị ignore. Ảnh git show do người dùng gửi xác nhận commit a5d8b5a trên task_3 chứa manifest và các file WBS19/collector; chưa xác nhận commit đó đã lên nhánh remote đích.
+- Bảng nối danh mục cục bộ: 234/348 mã đã nối tên/định nghĩa theo bộ tiêu chí người dùng cung cấp; 35 mã chưa được giữ, 79 mã còn cần xác minh phạm vi/công thức hoặc mục tương đương. Lượt rà 134 mã bổ sung 41 cách nối; không tự thay quyết định Excel, không chứng nhận đơn vị hay cho phép quy đổi số API.
+- Code đối chiếu danh mục và báo cáo còn riêng, không đồng nghĩa đã nằm trong commit WBS19. Không sửa Supabase, formatter hoặc vector để áp dụng bảng nối này.
