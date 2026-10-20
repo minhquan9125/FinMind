@@ -4,7 +4,7 @@ import json
 import re
 from dataclasses import dataclass
 
-from .db_chunking import CHUNKER_VERSION
+from .db_chunking import CHUNKER_VERSION, FINANCIAL_RENDERER_VERSIONS
 from .db_source import fetch_locator_document
 from .source_signature import section_fingerprint
 
@@ -28,8 +28,10 @@ def _metadata(locator):
         if isinstance(locator, str):
             locator = json.loads(locator)
         meta = locator['reconstruction']
-        if meta['schema_version'] != 'source-locator-v2' or meta['chunker_version'] != CHUNKER_VERSION:
+        if meta['schema_version'] != 'source-locator-v2' or meta['chunker_version'] not in FINANCIAL_RENDERER_VERSIONS:
             raise ReconstructionError('UNSUPPORTED_VERSION', 'Unsupported locator/chunker version')
+        if meta['chunker_version'] != CHUNKER_VERSION and locator['source_table'] != 'financial_reports':
+            raise ReconstructionError('UNSUPPORTED_VERSION', 'Financial renderer requires a financial source')
         for key in ('max_words', 'section_index', 'row_start', 'row_end', 'char_start', 'char_end', 'chunk_index'):
             if type(meta[key]) is not int or meta[key] < 0:
                 raise ValueError(key)
@@ -98,7 +100,9 @@ async def reconstruct_chunk(conn, locator, expected_hash):
     """
     locator, meta = _metadata(locator)
     try:
-        doc = await fetch_locator_document(conn, locator['source_table'], locator['source_id'], meta['max_words'])
+        kwargs = ({'financial_renderer_version': meta['chunker_version']}
+                  if locator['source_table'] == 'financial_reports' else {})
+        doc = await fetch_locator_document(conn, locator['source_table'], locator['source_id'], meta['max_words'], **kwargs)
     except ValueError as exc:
         raise ReconstructionError('INVALID_LOCATOR', str(exc)) from exc
     if doc is None:

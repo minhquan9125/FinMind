@@ -52,6 +52,39 @@ def test_locator_only_change_preserves_chunk_identity():
     assert first.chunk_id == str(uuid.uuid5(NAMESPACE, f'chunk:{doc.document_id}:{CHUNKER_VERSION}:0:0:{first.content_hash}'))
 
 
+@pytest.mark.parametrize('version', ['db-v1', 'db-financial-v2', 'db-financial-v3'])
+def test_financial_reader_preserves_old_text_and_uses_versioned_new_header(version):
+    import hashlib
+    import uuid
+    from src.documents.db_chunking import NAMESPACE
+    row = {'report_id': 'report-1', 'symbol': 'FPT', 'company_name': 'FPT',
+           'period_code': '2026-Q2', 'statement_scope': 'UNKNOWN',
+           'section': 'BALANCE_SHEET', 'code': 'TOTAL_ASSETS', 'canonical_name': 'Tổng tài sản',
+           'observation_id': 'observation-1', 'value': 123, 'unit': 'SOURCE_NATIVE'}
+    doc = financial_documents([row], renderer_version=version)[0]
+    chunk = chunk_document(doc)[0]
+    if version == 'db-v1':
+        expected = ('FPT (FPT) | Bảng Cân đối kế toán | tại cuối quý 2/2026 | '
+                    'Phạm vi: UNKNOWN | Đơn vị: triệu VND, trừ EPS (VND/cổ phiếu) và chỉ số tỷ lệ\n'
+                    'Tổng tài sản (TOTAL_ASSETS): 123')
+        assert chunk.text == expected
+        digest = hashlib.sha256(expected.encode('utf-8')).hexdigest()
+        assert chunk.chunk_id == str(uuid.uuid5(NAMESPACE, f'chunk:{doc.document_id}:db-v1:0:0:{digest}'))
+    else:
+        assert 'triệu VND' not in chunk.text
+        assert 'chưa xác minh' in chunk.text
+        row_text = doc.sections[0].rows[0].text
+        assert ('đơn vị chưa xác minh' in row_text) == (version == 'db-financial-v3')
+    assert chunk.locator['reconstruction']['chunker_version'] == version
+
+    class Conn:
+        async def fetch(self, sql, *params):
+            assert 'text_chunks' not in sql
+            return [row]
+
+    assert asyncio.run(reconstruct_chunk(Conn(), chunk.locator, chunk.content_hash)).text == chunk.text
+
+
 def test_changed_source_cannot_silently_use_new_text():
     doc = source_docs()[0]
     chunk = chunk_document(doc)[0]
