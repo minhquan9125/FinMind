@@ -1,5 +1,55 @@
 # History thay đổi code
 
+### [2026-10-19] Ngừng ghi text cho chunk nguồn mới, giữ text cũ
+
+- **File(s):** `backend/src/documents/db_ingest.py`, `backend/src/documents/corpus_manifest.py`, `backend/src/documents/retention.py`, `backend/tests/test_db_ingest.py`, `supabase/migrations/20261019000000_nullable_source_chunk_text.sql`, `supabase/reset_and_rebuild.sql`, `docs/embedding/source-locator-v2.md`, `history.md`.
+- **Sai gì:** Luồng source ingest vẫn sao chép text vào text_chunks dù reader đã dựng lại từ nguồn; manifest/retention chưa xử lý trường hợp text NULL.
+- **Tại sao sửa:** Người dùng đồng ý tiếp tục bước ngừng ghi mới trong tiến trình bỏ text. Ghi NULL cho chunk source mới có locator v2, manifest dùng reader và retention tính được vector khi text NULL.
+- **Ảnh hưởng:** Đã nới nullable trên Supabase với CHECK yêu cầu v2 khi NULL, đồng bộ reset file. Không xóa text cũ hoặc cột, không đổi vector/ID/metadata hiện có; upload word-window-v1 vẫn giữ text. Cần cập nhật/restart backend các máy trước khi dùng writer mới. Nguồn lịch sử chưa đầy đủ, reader fail-closed nếu nguồn đổi/mất.
+- **Kiểm chứng:** 60 test đạt. So fingerprint 2.051 bản ghi trước/sau migration không đổi. Thử text NULL đọc lại nguồn đúng, NULL thiếu locator bị từ chối; rollback lượt thử. Cuối cùng vẫn 2.051/2.051 bản ghi có text.
+
+---
+
+### [2026-10-19] API trả nội dung dựng từ nguồn cho locator v2
+
+- **File(s):** `backend/src/documents/repository.py`, `backend/src/documents/schemas.py`, `backend/src/api/routers/search.py`, `backend/src/api/routers/documents.py`, `backend/src/main.py`, `backend/tests/test_source_result_reader.py`, `backend/tests/test_api_search.py`, `docs/embedding/source-locator-v2.md`, `history.md`.
+- **Sai gì:** API vẫn trả chunk_text trực tiếp và tính index word-window-v1 ngay cả tài liệu DB db-v1; page bắt buộc số nguyên dù nguồn DB không có trang PDF.
+- **Tại sao sửa:** Tiếp tục quy trình đã chốt: đọc nội dung theo locator v2 từ Supabase trước khi tính tới bỏ text. Dựng nguồn, kiểm tra hash và so với text hiện có; nguồn lệch/mất thì trả lỗi 409 reason_code thay vì dùng bằng chứng cũ âm thầm.
+- **Ảnh hưởng:** Search/chunk details/vocab dùng reader chung trong transaction chỉ đọc snapshot nhất quán. DB chọn db-v1, upload cũ giữ word-window-v1 và DB text có kiểm tra hash. Page chấp nhận null. Không xóa/đổi schema, không ghi dữ liệu, không bỏ chunk_text, không đổi retention/corpus; backend đang chạy cần restart. API search vẫn theo document_id, chưa phải corpus-aware search đầy đủ.
+- **Kiểm chứng:** 61 test đạt; kiểm tra HTTP search/chunk/vocab với pool Supabase chỉ đọc đều 200 trên mẫu 4 nhóm hiện có. Dùng vector thật đã lưu làm truy vấn để kiểm tra pgvector/bộ đọc, không tuyên bố đánh giá chất lượng semantic model hoặc tài chính API end-to-end.
+
+---
+
+### [2026-10-19] Làm mới 3 hồ sơ và backfill locator v2 hiện hành
+
+- **File(s):** `backend/scripts/backfill_source_locators.py`, `backend/tests/test_backfill_source_locators.py`, `docs/embedding/source-locator-v2.md`, `history.md`.
+- **Sai gì:** 3 chunk hồ sơ FPT/MBB/VCB lệch nguồn sau khi bổ sung ngành; 2.045 chunk còn lại chưa có reconstruction metadata trong DB.
+- **Tại sao sửa:** Người dùng đồng ý tiếp tục để chuẩn bị đọc nội dung từ nguồn Supabase. Kiểm tra citation/corpus trước khi cập nhật; backfill chỉ khi khớp text/hash/ID và locator nguồn.
+- **Ảnh hưởng:** Đã tạo 3 vector mới bằng model ghim, supersede/liên kết 3 chunk cũ (đều thuộc corpus-v1); không xóa bản cũ hay sửa manifest. Đã cập nhật locator_json của 2.045 chunk, giữ nguyên mọi cột còn lại. API search và chunk_text vẫn như cũ; chưa thực hiện xóa cột hoặc lịch sử.
+- **Kiểm chứng:** 39 test đạt; backfill đối chiếu fingerprint tất cả trường ngoài locator không đổi. DB có 2.048 hiện hành với v2 và 3 superseded; 2.051/2.051 còn text. Chạy lại read-only: 2.048 khớp nguồn, 0 cập nhật cần thiết.
+
+---
+
+### [2026-10-19] Locator v2 và bộ đọc nội dung từ nguồn Supabase
+
+- **File(s):** `backend/src/documents/db_chunking.py`, `backend/src/documents/db_source.py`, `backend/src/documents/source_signature.py`, `backend/src/documents/chunk_reconstruction.py`, `backend/tests/test_chunk_reconstruction.py`, `docs/embedding/source-locator-v2.md`, `history.md`.
+- **Sai gì:** Locator cũ chỉ định bài/dòng nhưng thiếu cấu hình tái tạo và fingerprint nguồn; chưa có hàm dựng lại đúng nội dung chunk để đối chiếu với text đang lưu.
+- **Tại sao sửa:** Người dùng chỉ chốt chuẩn hóa locator và bộ lấy nội dung từ nguồn Supabase. Bổ sung contract source-locator-v2, khoảng dòng/ký tự, cấu hình chunker và hash phiên bản mục chuẩn hóa; viết hàm SELECT nguồn và dựng lại đoạn, từ chối nguồn đổi/mất/hash sai.
+- **Ảnh hưởng:** Giữ text/hash/chunk ID và các khóa locator cũ; chunk mới có thêm metadata reconstruction. Chưa cập nhật DB, chưa xóa chunk_text, chưa chuyển API search, không dùng file ngoài và không sửa retention. Hash nguồn không phải archive lịch sử; locator cũ chưa tự chuyển sang v2.
+- **Kiểm chứng:** 78 test đạt. Chỉ đọc Supabase xác nhận 2.045/2.048 chunk khớp nội dung; 3 hồ sơ FPT/MBB/VCB lệch do nguồn đã bổ sung ngành. Truy vấn đích mẫu cả 5 nhóm nguồn đạt; tài chính chỉ thử trên chunk mới dựng trong bộ nhớ, chưa có chunk lưu. Chi tiết contract/giới hạn trong `docs/embedding/source-locator-v2.md`.
+
+---
+
+### [2026-10-16] Bổ sung hồ sơ công ty còn trống khi nhập tài chính clean
+
+- **File(s):** `backend/scripts/import_clean_financials.py`, `history.md`.
+- **Sai gì:** Công ty đã tồn tại được dùng lại ID nhưng importer bỏ qua ngành/sector đang NULL dù file clean có dữ liệu.
+- **Tại sao sửa:** Bổ sung trường thiếu từ nguồn clean, không ghi đè hồ sơ đã có.
+- **Ảnh hưởng:** Hàm ensure_company dùng CASE để chỉ điền NULL/chuỗi trắng ở tên, ngành, sector và sàn; giữ ID, is_active và trường có giá trị. Cờ --companies-only chỉ xử lý hồ sơ, không nhập lại tài chính hay sửa schema. Chỉ dùng 10 mã có file nguồn, không đoán ngành CTR/MSN/NLG.
+- **Kiểm chứng:** 3 test importer đạt. Đã commit transaction DB bổ sung 5 ô: FPT ngành/sector, VCB ngành/sector, MBB sector. Đối chiếu toàn bộ companies xác nhận mọi giá trị có sẵn giữ nguyên; chạy lại không đổi dữ liệu. CTR/MSN/NLG còn thiếu vì không có file clean trong bộ này. Không sửa số liệu tài chính hoặc chunk/vector.
+
+---
+
 ### [2026-10-16] Viết lại README cho thành viên clone và chạy ứng dụng
 
 - **File(s):** `README.md`, `history.md`.
@@ -430,3 +480,12 @@ Quy trình bắt buộc trước khi sửa:
   - `docker-compose.yml` giờ chỉ khởi chạy 2 container cơ sở dữ liệu: `postgres` (port 5433, đổi từ 5432 để tránh xung đột với service PostgreSQL có sẵn trên Windows của máy host) và `neo4j` (port 7474 giao diện web, port 7687 bolt). Khởi động cực nhanh (chỉ vài chục giây).
   - Backend (FastAPI) và Frontend (Vite React) sẽ được chạy trực tiếp trên máy Windows thông qua PowerShell, hỗ trợ Hot Reload và tải thư viện nhanh.
   - Không có breaking change về mặt logic code hay schema dữ liệu.
+# 2026-10-19: Bỏ cột text_chunks.chunk_text theo xác nhận của người dùng
+
+- Người dùng chấp nhận mất khả năng đọc lại 3 chunk lịch sử FPT/MBB/VCB thuộc corpus-v1.
+- Đã áp dụng migration 20261019000100_drop_chunk_text.sql; bỏ cột và constraint liên quan, không xóa dòng chunk/vector.
+- Đối chiếu nguồn chính xác cho 2.048 chunk hiện hành trước migration; fingerprint các trường còn lại của toàn bộ 2.051 dòng giữ nguyên sau migration.
+- Bộ đọc/ghi, manifest, retention, script backfill, schema rebuild và ERD đồng bộ với việc bỏ cột.
+- Upload mới dùng bản nguồn PDF/JSON gốc trong raw_payloads hiện có; locator upload-source-v1; không thêm bảng, không lưu text chunk trùng lặp.
+- 80 test đạt; đọc mẫu nguồn của 4 nhóm sau DROP COLUMN thành công. Không khởi động server, không commit/push.
+- Các máy chạy backend cần cập nhật code và restart vì schema không tương thích code cũ còn dùng chunk_text.

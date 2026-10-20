@@ -84,9 +84,11 @@ def test_writes_documents_and_chunks_with_vectors():
     assert result.chunks_written == expected
     rows = written_rows(conn)
     assert len(rows) == expected
-    assert all(len(row[10]) == EMBEDDING_DIM for row in rows)  # embedding column
-    assert all(json.loads(row[11])["source_table"] == "financial_reports" for row in rows)
-    assert all(json.loads(row[11])["row_keys"] for row in rows)
+    assert all(len(row[9]) == EMBEDDING_DIM for row in rows)  # embedding column
+    assert all(json.loads(row[10])["source_table"] == "financial_reports" for row in rows)
+    assert all(json.loads(row[10])["row_keys"] for row in rows)
+    assert all("chunk_text" not in sql for sql, _ in conn.many)
+    assert all(json.loads(row[10])['reconstruction']['schema_version'] == 'source-locator-v2' for row in rows)
 
 
 def test_rerun_produces_identical_ids():

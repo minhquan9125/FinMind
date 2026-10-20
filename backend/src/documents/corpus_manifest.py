@@ -64,11 +64,17 @@ async def read_manifest(conn, index_id: str) -> dict:
         raise ValueError('Index version does not exist')
     rows = await conn.fetch(
         'SELECT d.document_id::text, d.sha256 AS document_hash, d.doc_type, d.title, '
-        'd.external_id, d.source_url, t.chunk_id::text, t.chunk_index, t.chunk_text, '
+        'd.external_id, d.source_url, t.chunk_id::text, t.chunk_index, '
         't.content_hash, t.locator_json, vector_dims(t.embedding) AS dimensions '
         'FROM public.text_chunks t JOIN public.documents d USING(document_id) '
         'WHERE t.index_version_id=$1 AND t.superseded_at IS NULL', uuid.UUID(index_id))
-    return build_manifest(dict(index), [dict(row) for row in rows])
+    from .repository import resolve_result_rows
+    materialized = [dict(row) for row in rows]
+    lookup = [dict(row, chunker_version=index['chunker_version']) for row in materialized]
+    rebuilt = await resolve_result_rows(conn, lookup)
+    for row, resolved in zip(materialized, rebuilt):
+        row['chunk_text'] = resolved['text']
+    return build_manifest(dict(index), materialized)
 
 
 async def register_manifest(conn, manifest: dict, label: str) -> bool:

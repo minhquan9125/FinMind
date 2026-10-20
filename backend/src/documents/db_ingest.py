@@ -136,8 +136,8 @@ def _locator_changed(row: Any, locator: dict[str, Any]) -> bool:
 _INSERT_CHUNK_SQL = """
 INSERT INTO text_chunks
     (chunk_id, document_id, index_version_id, chunk_index, page_number, section_label,
-     chunk_text, token_count, char_start, char_end, content_hash, embedding, locator_json, created_at)
-VALUES ($1, $2, $3, $4, NULL, $5, $6, $7, $8, $9, $10, $11, $12::jsonb, $13)
+     token_count, char_start, char_end, content_hash, embedding, locator_json, created_at)
+VALUES ($1, $2, $3, $4, NULL, $5, $6, $7, $8, $9, $10, $11::jsonb, $12)
 """
 
 
@@ -150,6 +150,7 @@ async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk]
       chunk is inserted, so evidence/citations keep pointing at the text they quoted;
     * position no longer exists     -> retired, never deleted;
     * content returns to an older text -> the retired chunk with that id is revived.
+    * source chunks store only vectors/locators/metadata, requiring reconstruction v2.
     """
     if len(chunks) != len(vectors):
         raise ValueError(f"expected {len(chunks)} vectors, got {len(vectors)}")
@@ -187,6 +188,12 @@ async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk]
     if any(len(vector) != EMBEDDING_DIM for _, vector, _ in pending):
         raise ValueError("current chunks changed during ingest; retry with embeddings")
 
+    # Source-backed chunks must be reconstructable before omitting stored text.
+    for chunk, _, _ in pending:
+        reconstruction = chunk.locator.get('reconstruction') or {}
+        if reconstruction.get('schema_version') != 'source-locator-v2' or reconstruction.get('content_hash') != chunk.content_hash:
+            raise ValueError('Source locator v2 is required before storing a chunk without text')
+
     if relocate:
         await conn.executemany(
             "UPDATE text_chunks SET locator_json = $2::jsonb WHERE chunk_id = $1 AND superseded_at IS NULL",
@@ -215,7 +222,7 @@ async def write_chunks(conn: Any, doc: SourceDocument, chunks: Sequence[DbChunk]
             )
 
     rows = [
-        (new_id, document_id, version_id, c.chunk_index, c.section_label[:255], c.text, c.token_count,
+        (new_id, document_id, version_id, c.chunk_index, c.section_label[:255], c.token_count,
          c.char_start, c.char_end, c.content_hash, list(vector),
          json.dumps(c.locator, ensure_ascii=False, default=str), now)
         for c, vector, new_id in pending if new_id not in revived

@@ -14,6 +14,16 @@ const menuPaths = {
 
 export default function GraphPage() {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const displayName = user?.name?.trim() || "Người dùng";
+  const nameParts = displayName.split(/\s+/);
+  const userProfile = {
+    name: displayName,
+    initials: nameParts.length === 1
+      ? nameParts[0].slice(0, 2).toUpperCase()
+      : (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase(),
+    role: user?.role === "admin" ? "Quản trị viên" : "Nhà nghiên cứu",
+  };
   const [params] = useSearchParams();
   const queryRoot = `company:${(params.get("company") || "FPT").toUpperCase()}`;
   const [rootId, setRootId] = useState(rootOptions.some((item) => item.value === queryRoot) ? queryRoot : rootOptions[0].value);
@@ -64,7 +74,7 @@ export default function GraphPage() {
 
   return (
     <div className="flex min-h-screen bg-[#FAF8FF] text-[#131B2E]">
-      <Sidebar groups={userMenu} activeId="graph" onSelect={(id) => navigate(menuPaths[id])} profile={researcherMock}
+      <Sidebar groups={userMenu} activeId="graph" onSelect={(id) => navigate(menuPaths[id])} profile={userProfile}
         onProfile={() => navigate("/profile")} onLogout={() => navigate("/login")} />
       <main className="min-w-0 flex-1">
         <header className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DAE2FD] bg-white px-4 py-4 sm:px-6">

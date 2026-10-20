@@ -213,12 +213,12 @@ erDiagram
     int chunk_index
     int page_number
     varchar_255_ section_label
-    text chunk_text
     int token_count
     int char_start
     int char_end
     char_64_ content_hash
     vector_1024_ embedding
+    jsonb locator_json
     timestamptz created_at
   }
   index_versions {
@@ -573,4 +573,3 @@ erDiagram
   usage_events }o..o| graph_versions : "graph_version_id → graph_version_id"
   usage_events }o..o| index_versions : "index_version_id → index_version_id"
 ```
-
