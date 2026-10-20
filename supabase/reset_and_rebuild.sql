@@ -266,7 +266,6 @@ CREATE TABLE public."text_chunks" (
     "chunk_index" integer NOT NULL,
     "page_number" integer,
     "section_label" varchar(255),
-    "chunk_text" text NOT NULL,
     "token_count" integer NOT NULL,
     "char_start" integer NOT NULL,
     "char_end" integer NOT NULL,

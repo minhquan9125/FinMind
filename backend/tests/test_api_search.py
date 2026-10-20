@@ -74,3 +74,32 @@ def test_search_rejects_empty_query(monkeypatch):
 
     response = client.post("/api/search", json={"document_id": "doc-1", "query": "   "})
     assert response.status_code == 400
+
+
+def test_search_source_failure_returns_reason_without_results(monkeypatch):
+    from src.documents.chunk_reconstruction import ReconstructionError
+    async def get_document(*args): return {'id': 'doc', 'file_type': 'DB'}
+    async def fail(*args): raise ReconstructionError('SOURCE_CHANGED', 'source changed')
+    monkeypatch.setattr(repository, 'get_document', get_document)
+    monkeypatch.setattr(repository, 'vector_search', fail)
+    monkeypatch.setattr('src.api.routers.search.get_pool', lambda: object())
+    response = client.post('/api/search', json={'document_id': 'doc', 'query': 'FPT'})
+    assert response.status_code == 409
+    assert response.json()['reason_code'] == 'SOURCE_CHANGED'
+    assert 'results' not in response.json()
+
+
+def test_search_db_source_allows_null_page_and_uses_db_index(monkeypatch):
+    from src.documents.db_ingest import index_version_id_for
+    from src.core.config import get_settings
+    async def get_document(*args): return {'id': 'doc', 'file_type': 'DB'}
+    async def search(pool, document, index, vector, top_k):
+        settings = get_settings()
+        assert index == index_version_id_for(settings.chunk_words, settings.embedding_model_ref)
+        return [{'chunk_index': 0, 'page': None, 'text': 'FPT source content', 'score': 1.0}]
+    monkeypatch.setattr(repository, 'get_document', get_document)
+    monkeypatch.setattr(repository, 'vector_search', search)
+    monkeypatch.setattr('src.api.routers.search.get_pool', lambda: object())
+    response = client.post('/api/search', json={'document_id': 'doc', 'query': 'FPT'})
+    assert response.status_code == 200
+    assert response.json()['results'][0]['page'] is None

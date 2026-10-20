@@ -32,6 +32,7 @@ import uuid
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from typing import Any, Iterable
+from .source_signature import section_fingerprint
 
 # Same namespace as backend/scripts/ingest_*.py so ids line up across tools.
 NAMESPACE = uuid.UUID("b77dbd7f-5d89-479d-90a3-421e5f0981ea")
@@ -150,6 +151,8 @@ def chunk_section(doc: SourceDocument, section_index: int, first_chunk_index: in
         groups.append(current)
 
     chunks: list[DbChunk] = []
+    source_view_hash = section_fingerprint(doc, section_index)
+    row_cursor = 0
     for position, group in enumerate(groups):
         body = "\n".join(row.text for row, _ in group)
         text = f"{section.header}\n{body}" if section.header else body
@@ -170,10 +173,26 @@ def chunk_section(doc: SourceDocument, section_index: int, first_chunk_index: in
                 "symbol": doc.symbol,
                 "section": section.label,
                 "row_keys": [row.key for row, _ in group],
+                "reconstruction": {
+                    "schema_version": "source-locator-v2",
+                    "chunker_version": CHUNKER_VERSION,
+                    "max_words": max_words,
+                    "document_id": document_id,
+                    "source_chunk_id": chunk_id,
+                    "chunk_index": chunk_index,
+                    "section_index": section_index,
+                    "row_start": row_cursor,
+                    "row_end": row_cursor + len(group),
+                    "char_start": start,
+                    "char_end": end,
+                    "source_view_sha256": source_view_hash,
+                    "content_hash": content_hash,
+                },
                 **{k: v for k, v in doc.meta.items()
                    if k in ("url", "published_at", "period_code", "news_type", "news_priority", "classifier")},
             },
         ))
+        row_cursor += len(group)
     return chunks
 
 

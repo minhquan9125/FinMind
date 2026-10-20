@@ -33,7 +33,7 @@ WHERE d.doc_type = ANY($1::text[])
 
 COUNT_SQL = f"""
 SELECT d.doc_type AS doc_type, count(*) AS chunks,
-       coalesce(sum(pg_column_size(t.embedding) + length(t.chunk_text)), 0) AS bytes
+       coalesce(sum(pg_column_size(t.embedding) + coalesce(pg_column_size(t.locator_json), 0)), 0) AS bytes
 {_WHERE}
 GROUP BY d.doc_type
 ORDER BY d.doc_type
