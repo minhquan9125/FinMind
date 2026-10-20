@@ -37,6 +37,8 @@ from .source_signature import section_fingerprint
 # Same namespace as backend/scripts/ingest_*.py so ids line up across tools.
 NAMESPACE = uuid.UUID("b77dbd7f-5d89-479d-90a3-421e5f0981ea")
 CHUNKER_VERSION = "db-v1"
+FINANCIAL_CHUNKER_VERSION = "db-financial-v3"
+FINANCIAL_RENDERER_VERSIONS = (CHUNKER_VERSION, "db-financial-v2", FINANCIAL_CHUNKER_VERSION)
 DEFAULT_MAX_WORDS = 130  # same order of magnitude as the PDF window (130 words)
 
 SECTION_ORDER = ("INCOME_STATEMENT", "BALANCE_SHEET", "CASH_FLOW", "RATIO")
@@ -134,6 +136,7 @@ def chunk_section(doc: SourceDocument, section_index: int, first_chunk_index: in
         return []
     budget = max(max_words - _words(section.header), 1)
     document_id = doc.document_id
+    version = doc.meta.get('chunker_version', CHUNKER_VERSION)
 
     groups: list[list[tuple[SourceRow, int]]] = []  # (row, char offset in body)
     current: list[tuple[SourceRow, int]] = []
@@ -159,7 +162,7 @@ def chunk_section(doc: SourceDocument, section_index: int, first_chunk_index: in
         content_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
         chunk_index = first_chunk_index + position
         chunk_id = str(uuid.uuid5(
-            NAMESPACE, f"chunk:{document_id}:{CHUNKER_VERSION}:{section_index}:{position}:{content_hash}"))
+            NAMESPACE, f"chunk:{document_id}:{version}:{section_index}:{position}:{content_hash}"))
         start = group[0][1]
         end = group[-1][1] + len(group[-1][0].text)
         chunks.append(DbChunk(
@@ -175,7 +178,7 @@ def chunk_section(doc: SourceDocument, section_index: int, first_chunk_index: in
                 "row_keys": [row.key for row, _ in group],
                 "reconstruction": {
                     "schema_version": "source-locator-v2",
-                    "chunker_version": CHUNKER_VERSION,
+                    "chunker_version": version,
                     "max_words": max_words,
                     "document_id": document_id,
                     "source_chunk_id": chunk_id,
@@ -247,19 +250,48 @@ def format_value(value: Any, unit: str | None) -> str:
 
 # ------------------------------------------- rows -> SourceDocument builders
 
-def financial_documents(rows: Iterable[dict[str, Any]]) -> list[SourceDocument]:
+def financial_documents(rows: Iterable[dict[str, Any]], *, renderer_version: str = FINANCIAL_CHUNKER_VERSION) -> list[SourceDocument]:
     """Group observation rows into one document per financial report.
 
     Expected keys per row: report_id, symbol, company_name, period_code,
     statement_scope, section, code, canonical_name, observation_id, value, unit.
     """
+    if renderer_version not in FINANCIAL_RENDERER_VERSIONS:
+        raise ValueError('Unsupported financial renderer version')
     reports: dict[str, list[dict[str, Any]]] = {}
+    observation_reports: dict[str, str] = {}
     for row in rows:
-        reports.setdefault(str(row["report_id"]), []).append(row)
+        report_id = str(row['report_id'])
+        observation_id = str(row.get('observation_id'))
+        if observation_id in observation_reports:
+            raise ValueError(
+                f"Báo cáo {report_id}: observation_id trùng {observation_id!r} "
+                f"(đã xuất hiện trong báo cáo {observation_reports[observation_id]}); "
+                "không thể tạo tham chiếu duy nhất cho từng chỉ tiêu."
+            )
+        observation_reports[observation_id] = report_id
+        reports.setdefault(report_id, []).append(row)
 
     docs: list[SourceDocument] = []
     for report_id, items in reports.items():
         first = items[0]
+        # Check the entire report before selecting a header from its first row.
+        # Never silently assign another period's observations to that header.
+        expected_period = first.get('period_code')
+        expected_symbol = first.get('symbol')
+        for item in items[1:]:
+            if item.get('period_code') != expected_period:
+                raise ValueError(
+                    f"Báo cáo {report_id}: period_code không thống nhất "
+                    f"({expected_period!r} và {item.get('period_code')!r}); "
+                    "không thể chia chunk cho các kỳ khác nhau trong cùng báo cáo."
+                )
+            if item.get('symbol') != expected_symbol:
+                raise ValueError(
+                    f"Báo cáo {report_id}: symbol không thống nhất "
+                    f"({expected_symbol!r} và {item.get('symbol')!r}); "
+                    "không thể chia chunk cho các công ty khác nhau trong cùng báo cáo."
+                )
         symbol = first.get("symbol")
         scope = first.get("statement_scope") or "không rõ phạm vi"
         company = first.get("company_name") or symbol or ""
@@ -274,10 +306,16 @@ def financial_documents(rows: Iterable[dict[str, Any]]) -> list[SourceDocument]:
             label_vi = SECTION_LABEL_VI.get(section, section)
             header = (f"{company} ({symbol}) | {label_vi} | {period_text(period_code, section)} | "
                       f"Phạm vi: {scope} | Đơn vị: triệu VND, trừ EPS (VND/cổ phiếu) và chỉ số tỷ lệ")
+            if renderer_version != CHUNKER_VERSION:
+                header = (f"{company} ({symbol}) | {label_vi} | {period_text(period_code, section)} | "
+                          f"Phạm vi: {scope} | Đơn vị: theo từng chỉ tiêu; đơn vị nguồn chưa xác minh nếu không ghi rõ")
             lines = []
             for item in sorted(by_section[section], key=lambda r: str(r.get("code") or "")):
                 name = item.get("canonical_name") or item.get("code") or ""
                 text = f"{name} ({item.get('code')}): {format_value(item.get('value'), item.get('unit'))}"
+                if (renderer_version == FINANCIAL_CHUNKER_VERSION
+                        and str(item.get('unit') or '').strip().upper() in ('', 'SOURCE_NATIVE')):
+                    text += ' (đơn vị chưa xác minh)'
                 lines.append(SourceRow(key=str(item.get("observation_id")), text=text))
             sections.append(SourceSection(label=f"{label_vi} · {period_text(period_code, section)}",
                                           header=header, rows=lines))
@@ -285,7 +323,7 @@ def financial_documents(rows: Iterable[dict[str, Any]]) -> list[SourceDocument]:
             source_table="financial_reports", source_id=report_id, doc_type="FINANCIAL_STATEMENT",
             title=f"Báo cáo tài chính {symbol} {period_text(period_code, 'RATIO')} ({scope})",
             symbol=symbol, language="vi", sections=sections,
-            meta={"period_code": period_code},
+            meta={"period_code": period_code, "chunker_version": renderer_version},
         ))
     return docs
 
