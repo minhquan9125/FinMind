@@ -520,3 +520,11 @@ Quy trình bắt buộc trước khi sửa:
 - Đã hướng dẫn người dùng add manifest bằng git add -f vì thư mục .tmp bị ignore. Ảnh git show do người dùng gửi xác nhận commit a5d8b5a trên task_3 chứa manifest và các file WBS19/collector; chưa xác nhận commit đó đã lên nhánh remote đích.
 - Bảng nối danh mục cục bộ: 234/348 mã đã nối tên/định nghĩa theo bộ tiêu chí người dùng cung cấp; 35 mã chưa được giữ, 79 mã còn cần xác minh phạm vi/công thức hoặc mục tương đương. Lượt rà 134 mã bổ sung 41 cách nối; không tự thay quyết định Excel, không chứng nhận đơn vị hay cho phép quy đổi số API.
 - Code đối chiếu danh mục và báo cáo còn riêng, không đồng nghĩa đã nằm trong commit WBS19. Không sửa Supabase, formatter hoặc vector để áp dụng bảng nối này.
+
+### [2026-10-20] Chuẩn bị corpus-v2, giữ nguyên corpus-v1
+
+- Theo yêu cầu tạo corpus-v2, thêm prepare_corpus_v2.py và kiểm tra bằng test_prepare_corpus_v2.py (2 passed).
+- Đã đóng băng nội dung từ năm bộ đọc nguồn Supabase trong transaction chỉ đọc: 675 tài liệu, 15.058 chunk; gồm 419 báo cáo tài chính/13.003 chunk, 234 tin/1.750 chunk, 6 lịch sử giá/204 chunk, 13 hồ sơ/13 chunk, 3 chỉ số/88 chunk.
+- File backend/.tmp/corpus-v2.content.manifest.json; canonical manifest_sha256: 86e880eef3b39ddf2515951252025a8f58e700f80416ba24d6fabfe324362bd7. Đủ mã dòng, ID chunk không trùng và dựng lại đúng nội dung/hash cho toàn bộ chunk. Hash toàn file corpus-v1 trước/sau giữ nguyên.
+- Đây là CONTENT_FROZEN_AWAITING_VECTOR_INGEST, không phải manifest corpus đã đăng ký/vector-ready. Không ghi DB, không chạy embedding. Chưa bao gồm file UPCOMINDEX cục bộ hoặc dữ liệu mới cào chưa nhập nguồn Supabase.
+- Phải tạo index riêng và xử lý versioning ingest/search trước khi ghi chunk financial v3; không tái dùng index corpus-v1 hoặc nhầm source_chunk_id với khóa text_chunks. Chi tiết tại docs/embedding/corpus-v2-handoff.md.
