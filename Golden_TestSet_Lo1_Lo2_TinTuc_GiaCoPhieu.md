@@ -481,7 +481,8 @@ Lô 2 gồm 10 câu hỏi khai thác dữ liệu bảng `price_bars` trong Supab
 - **Dự án**: FinMind – Research Copilot for Vietnamese Listed Companies
 - **Doanh nghiệp mục tiêu**: Công ty Cổ phần FPT (Mã CK: `FPT`, Sàn: `HOSE`, Ngành: `Công nghệ thông tin`)
 - **Tài liệu nguồn**: File dữ liệu BCTC chuẩn hóa `tai_chinh_clean.json`  
-  - *SHA256 nguồn*: `7b7a5889647bf14d8f334f5f54e8cd29b1e9f62b288f4197390dbf80821d462b`  
+  - *SHA256 file dữ liệu sạch (`tai_chinh_clean.json`)*: `2a35b402f944499913f313307309d40afe0b169c15d2766524cc5e141f73cd45`  
+  - *SHA256 nguồn thô (`FPT.json`)*: `7b7a5889647bf14d8f334f5f54e8cd29b1e9f62b288f4197390dbf80821d462b`  
   - *Nguồn tài chính*: `VIETCAP_VCI`  
   - *Phạm vi thời gian*: 42 kỳ báo cáo quý (`2018-Q1` đến `2026-Q2`)
 - **Quy chuẩn đối soát**: Đặc tả yêu cầu phần mềm FinMind ([SOFTWARE REQUIREMENTS SPECIFICATION (2).docx](file:///c:/Users/dieuh/Downloads/FPT/SOFTWARE%20REQUIREMENTS%20SPECIFICATION%20(2).docx))
@@ -499,12 +500,12 @@ Lô 2 gồm 10 câu hỏi khai thác dữ liệu bảng `price_bars` trong Supab
 | ID | Mã câu | Phân nhóm chỉ tiêu | Câu hỏi kiểm thử | Đáp án chuẩn ngắn gọn | Đơn vị tính | Kỳ báo cáo | Locator kiểm chứng trong `tai_chinh_clean.json` | Trạng thái rà soát & Lưu ý kỹ thuật |
 | :---: | :---: | :--- | :--- | :--- | :---: | :---: | :--- | :--- |
 | **QA-FPT-BCTC-001** | **Q31** | Cân đối kế toán *(Tiền & tương đương tiền)* | Tại thời điểm kết thúc quý 2/2026 (30/06/2026), tổng giá trị Tiền và các khoản tương đương tiền trên Bảng cân đối kế toán hợp nhất của FPT là bao nhiêu? | **8.843.161.132.730** *(hoặc ~8.843,16 tỷ)* | VND | 2026-Q2 *(30/06/2026)* | `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → kỳ `2026-Q2` → `mã_chuẩn`: `CASH_AND_CASH_EQUIVALENTS` *(trường gốc: `bsa2`)* | ✅ **Đã xác thực** |
-| **QA-FPT-BCTC-002** | **Q32** | Cân đối kế toán *(Nợ vay ngắn hạn)* | Dư nợ vay và nợ thuê tài chính ngắn hạn của FPT tại thời điểm cuối quý 2/2026 ghi nhận con số là bao nhiêu? | **16.368.916.886.521** *(hoặc ~16.368,92 tỷ)* | VND | 2026-Q2 *(30/06/2026)* | `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → kỳ `2026-Q2` → `mã_chuẩn`: `SHORT_TERM_LOANS_AND_FINANCE_LEASES` *(trường gốc: `bsa55`)* | ⚠️ **Lưu ý rà soát** *(Phân biệt với Nợ ngắn hạn `bsa54` là 29.194 tỷ và Tổng nợ `bsa53` là 32.567 tỷ)* |
-| **QA-FPT-BCTC-003** | **Q33** | Cân đối kế toán *(Vốn CSH - Lợi nhuận lũy kế)* | Lợi nhuận sau thuế chưa phân phối lũy kế trên Bảng cân đối kế toán hợp nhất của FPT tại cuối quý 2/2026 đạt bao nhiêu? | **20.370.550.280.517** *(hoặc ~20.370,55 tỷ)* | VND | 2026-Q2 *(30/06/2026)* | `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → kỳ `2026-Q2` → `mã_chuẩn`: `RETAINED_EARNINGS` *(trường gốc: `bsa79`)* | ⚠️ **Tiềm ẩn bất đồng** *(Phân biệt với chỉ tiêu con LNST chưa phân phối riêng kỳ này `bsa80` là 5.054 tỷ)* |
+| **QA-FPT-BCTC-002** | **Q32** | Cân đối kế toán *(Nợ vay ngắn hạn)* | Dư nợ vay và nợ thuê tài chính ngắn hạn của FPT tại thời điểm cuối quý 2/2026 ghi nhận con số là bao nhiêu? | **16.368.916.886.521** *(hoặc ~16.368,92 tỷ)* | VND | 2026-Q2 *(30/06/2026)* | `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → kỳ `2026-Q2` → `mã_chuẩn`: `SHORT_TERM_LOANS_AND_FINANCE_LEASES` *(trường gốc: `bsa56`)* | ⚠️ **Lưu ý rà soát** *(Phân biệt với Nợ ngắn hạn `bsa55` là 29.194 tỷ và Tổng nợ `bsa54` là 32.567 tỷ; Tổng nguồn vốn `bsa53` là 73.563 tỷ)* |
+| **QA-FPT-BCTC-003** | **Q33** | Cân đối kế toán *(Vốn CSH - Lợi nhuận lũy kế)* | Lợi nhuận sau thuế chưa phân phối lũy kế trên Bảng cân đối kế toán hợp nhất của FPT tại cuối quý 2/2026 đạt bao nhiêu? | **20.370.550.280.517** *(hoặc ~20.370,55 tỷ)* | VND | 2026-Q2 *(30/06/2026)* | `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → kỳ `2026-Q2` → `mã_chuẩn`: `RETAINED_EARNINGS` *(trường gốc: `bsa90`)* | ⚠️ **Tiềm ẩn bất đồng** *(Phân biệt với chỉ tiêu con LNST chưa phân phối riêng kỳ này `bsa178` là 5.054 tỷ; Tổng VCSH `bsa79` là 40.995 tỷ, Vốn điều lệ `bsa80` là 17.035 tỷ)* |
 | **QA-FPT-BCTC-004** | **Q34** | Kết quả kinh doanh *(Doanh thu thuần)* | Doanh thu thuần về bán hàng và cung cấp dịch vụ của FPT riêng trong quý 2/2026 đạt bao nhiêu? | **13.788.503.461.199** *(hoặc ~13.788,50 tỷ)* | VND | Quý 2/2026 *(2026-Q2)* | `báo_cáo_tài_chính.kết_quả_kinh_doanh` → kỳ `2026-Q2` → `mã_chuẩn`: `NET_REVENUE` *(trường gốc: `isa3`)* | ✅ **Đã xác thực** *(Doanh thu gộp `isa1`: 13.810 tỷ, Giảm trừ `isa2`: -21,8 tỷ)* |
-| **QA-FPT-BCTC-005** | **Q35** | Kết quả kinh doanh *(LNST cổ đông mẹ & EPS)* | Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ của FPT trong quý 2/2026 là bao nhiêu và Lãi cơ bản trên cổ phiếu (EPS) tương ứng của quý là bao nhiêu? | **2.567.587.014.434 VND** *(~2.567,59 tỷ)*; **EPS: 1.507 VND/CP** | VND & VND/CP | Quý 2/2026 *(2026-Q2)* | `báo_cáo_tài_chính.kết_quả_kinh_doanh` → kỳ `2026-Q2` → `mã_chuẩn`: `PARENT_NET_PROFIT` *(trường `isa21`)* & `BASIC_EARNINGS_PER_SHARE` *(trường `isa22`)* | ⚠️ **Lưu ý rà soát** *(Tránh nhầm với Tổng LNST hợp nhất toàn tập đoàn `isa19` là 2.570.339.099.621 VND)* |
-| **QA-FPT-BCTC-006** | **Q36** | Lưu chuyển tiền tệ *(Dòng tiền kinh doanh CFO)* | Lưu chuyển tiền thuần từ hoạt động kinh doanh (CFO) của FPT trong quý 2/2026 đạt con số bao nhiêu? | **1.702.147.711.404** *(hoặc ~1.702,15 tỷ)* | VND | Quý 2/2026 *(2026-Q2)* | `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → kỳ `2026-Q2` → `mã_chuẩn`: `CASH_FLOW_OPERATING` *(trường gốc: `cfa15`)* | ✅ **Đã xác thực** |
-| **QA-FPT-BCTC-007** | **Q37** | Lưu chuyển tiền tệ *(Chi mua sắm TSCĐ - Capex)* | Số tiền thực tế FPT đã chi ra để mua sắm, xây dựng tài sản cố định trong quý 2/2026 là bao nhiêu? | **-747.414.308.012** *(hoặc chi 747.414.308.012, tương đương ~747,41 tỷ)* | VND | Quý 2/2026 *(2026-Q2)* | `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → kỳ `2026-Q2` → `mã_chuẩn`: `PURCHASE_FIXED_ASSETS` *(trường gốc: `cfa16`)* | ⚠️ **Tiềm ẩn bất đồng dấu** *(Báo cáo kế toán ghi số âm `-747 tỷ`, câu hỏi nêu "tiền đã chi" chấp nhận cả số dương 747 tỷ)* |
+| **QA-FPT-BCTC-005** | **Q35** | Kết quả kinh doanh *(LNST cổ đông mẹ & EPS)* | Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ của FPT trong quý 2/2026 là bao nhiêu và Lãi cơ bản trên cổ phiếu (EPS) tương ứng của quý là bao nhiêu? | **2.567.587.014.434 VND** *(~2.567,59 tỷ)*; **EPS: 1.507 VND/CP** | VND & VND/CP | Quý 2/2026 *(2026-Q2)* | `báo_cáo_tài_chính.kết_quả_kinh_doanh` → kỳ `2026-Q2` → `mã_chuẩn`: `PARENT_NET_PROFIT` *(trường `isa22`)* & `BASIC_EARNINGS_PER_SHARE` *(trường `isa23`)* | ⚠️ **Lưu ý rà soát** *(Tránh nhầm với Tổng LNST hợp nhất toàn tập đoàn `isa20` là 2.570.339.099.621 VND; CĐ không kiểm soát `isa21` là 2.752.085.187 VND)* |
+| **QA-FPT-BCTC-006** | **Q36** | Lưu chuyển tiền tệ *(Dòng tiền kinh doanh CFO)* | Lưu chuyển tiền thuần từ hoạt động kinh doanh (CFO) của FPT trong quý 2/2026 đạt con số bao nhiêu? | **1.702.147.711.404** *(hoặc ~1.702,15 tỷ)* | VND | Quý 2/2026 *(2026-Q2)* | `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → kỳ `2026-Q2` → `mã_chuẩn`: `CASH_FLOW_OPERATING` *(trường gốc: `cfa18`)* | ✅ **Đã xác thực** |
+| **QA-FPT-BCTC-007** | **Q37** | Lưu chuyển tiền tệ *(Chi mua sắm TSCĐ - Capex)* | Số tiền thực tế FPT đã chi ra để mua sắm, xây dựng tài sản cố định trong quý 2/2026 là bao nhiêu? | **-747.414.308.012** *(hoặc chi 747.414.308.012, tương đương ~747,41 tỷ)* | VND | Quý 2/2026 *(2026-Q2)* | `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → kỳ `2026-Q2` → `mã_chuẩn`: `PURCHASE_FIXED_ASSETS` *(trường gốc: `cfa19`)* | ⚠️ **Tiềm ẩn bất đồng dấu** *(Báo cáo kế toán ghi số âm `-747 tỷ`, câu hỏi nêu "tiền đã chi" chấp nhận cả số dương 747 tỷ)* |
 | **QA-FPT-BCTC-008** | **Q38** | Chỉ số tài chính *(Tỷ suất ROE & Biên LN gộp)* | Tỷ suất sinh lời trên vốn chủ sở hữu (ROE) và Biên lợi nhuận gộp (Gross Margin) của FPT tại kỳ quý 2/2026 ghi nhận lần lượt là bao nhiêu? | **ROE: 0,2647 (26,47%)**; **Gross Margin: 0,3468 (34,68%)** | Số thập phân / % | 2026-Q2 | `báo_cáo_tài_chính.chỉ_số_tài_chính` → kỳ `2026-Q2` → `mã_chuẩn`: `ROE` *(0.264747)* & `GROSS_MARGIN` *(0.346802)* | ⚠️ **Tiềm ẩn bất đồng quy ước** *(Chấp nhận cả biểu diễn số thập phân `0,2647` lẫn phần trăm `26,47%` theo dung sai ±0.1%)* |
 | **QA-FPT-BCTC-009** | **Q39** | Tính toán tăng trưởng liên kỳ *(FR07 Deterministic)* | So sánh doanh thu thuần của FPT giữa quý 2/2026 và quý 1/2026: Doanh thu quý 2/2026 tăng bao nhiêu tiền và tỷ lệ tăng trưởng là bao nhiêu %? | Tăng **1.308.506.254.424 VND** *(~1.308,51 tỷ VND)*, tương ứng tăng trưởng **10,48%** | VND & % | 2026-Q2 so với 2026-Q1 | `báo_cáo_tài_chính.kết_quả_kinh_doanh` → kỳ `2026-Q2` *(13.788.503.461.199)* & kỳ `2026-Q1` *(12.479.997.206.775)*; trường `isa3` | ✅ **Đã xác thực** *(Đánh giá năng lực tính toán tất định logic số học theo FR07)* |
 | **QA-FPT-BCTC-010** | **Q40** | Kiểm thử biên âm / Từ chối an toàn *(Safe Refusal)* | Theo báo cáo tài chính của FPT, tổng doanh thu thuần và lợi nhuận sau thuế của quý 4 năm 2026 (2026-Q4) là bao nhiêu? | **Không có thông tin / Hệ thống phải từ chối trả lời (Safe Refusal)** | N/A | Ngoài phạm vi dữ liệu *(2026-Q4)* | Toàn bộ file `tai_chinh_clean.json`: Dải kỳ báo cáo kết thúc ở `2026-Q2`. Kỳ `2026-Q4` chưa phát sinh BCTC. | ⚠️ **Ca kiểm thử biên âm (Negative Test)** *(Đánh giá tiêu chí Insufficient-Data Safety & BR-15: Chống ảo giác bịa đặt số liệu)* |
@@ -536,11 +537,11 @@ Lô 2 gồm 10 câu hỏi khai thác dữ liệu bảng `price_bars` trong Supab
 - **Câu hỏi**: Dư nợ vay và nợ thuê tài chính ngắn hạn của FPT tại thời điểm cuối quý 2/2026 ghi nhận con số là bao nhiêu?
 - **Đáp án chuẩn**: `16.368.916.886.521 VND` (hoặc `16.368,92 tỷ VND`).
 - **Lưu ý bẫy dữ liệu**: Tuyệt đối không chấp nhận các con số:
-  - `29.194.331.060.043 VND` (đây là Tổng Nợ ngắn hạn `CURRENT_LIABILITIES` tại `bsa54`).
-  - `32.567.425.051.243 VND` (đây là Tổng Nợ phải trả `TOTAL_LIABILITIES` tại `bsa53`).
+  - `29.194.331.060.043 VND` (đây là Tổng Nợ ngắn hạn `CURRENT_LIABILITIES` tại `bsa55`).
+  - `32.567.425.051.243 VND` (đây là Tổng Nợ phải trả `TOTAL_LIABILITIES` tại `bsa54`).
 - **Vị trí đối soát JSON**:
   - Khối: `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → `2026-Q2`
-  - Mã chuẩn: `SHORT_TERM_LOANS_AND_FINANCE_LEASES` (Trường gốc: `bsa55`)
+  - Mã chuẩn: `SHORT_TERM_LOANS_AND_FINANCE_LEASES` (Trường gốc: `bsa56`)
   - Giá trị số: `16368916886521.0`
 - **Trạng thái**: ⚠️ Lưu ý rà soát (Bẫy nhận diện chính xác tài khoản nợ vay thay vì lấy nhầm tổng nợ).
 
@@ -552,11 +553,11 @@ Lô 2 gồm 10 câu hỏi khai thác dữ liệu bảng `price_bars` trong Supab
 - **Câu hỏi**: Lợi nhuận sau thuế chưa phân phối lũy kế trên Bảng cân đối kế toán hợp nhất của FPT tại cuối quý 2/2026 đạt bao nhiêu?
 - **Đáp án chuẩn**: `20.370.550.280.517 VND` (hoặc `20.370,55 tỷ VND`).
 - **Lưu ý bẫy dữ liệu**: Cần phân biệt giữa:
-  - Lợi nhuận sau thuế chưa phân phối lũy kế toàn bộ (`RETAINED_EARNINGS` / `bsa79`): `20.370.550.280.517 VND`.
-  - Lợi nhuận sau thuế chưa phân phối kỳ này (`CURRENT_PERIOD_RETAINED_EARNINGS` / `bsa80`): `5.054.848.107.391 VND`.
+  - Lợi nhuận sau thuế chưa phân phối lũy kế toàn bộ (`RETAINED_EARNINGS` / `bsa90`): `20.370.550.280.517 VND`.
+  - Lợi nhuận sau thuế chưa phân phối kỳ này (`CURRENT_PERIOD_RETAINED_EARNINGS` / `bsa178`): `5.054.848.107.391 VND` (Lưu ý: `bsa79` là Tổng VCSH 40.995 tỷ, `bsa80` là Vốn điều lệ 17.035 tỷ).
 - **Vị trí đối soát JSON**:
   - Khối: `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → `2026-Q2`
-  - Mã chuẩn: `RETAINED_EARNINGS` (Trường gốc: `bsa79`)
+  - Mã chuẩn: `RETAINED_EARNINGS` (Trường gốc: `bsa90`)
   - Giá trị số: `20370550280517.0`
 - **Trạng thái**: ⚠️ Tiềm ẩn bất đồng (Cần quy định rõ thuật ngữ "lũy kế" để tránh trả lời ra chỉ tiêu kỳ này).
 
@@ -581,11 +582,11 @@ Lô 2 gồm 10 câu hỏi khai thác dữ liệu bảng `price_bars` trong Supab
 
 - **Câu hỏi**: Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ của FPT trong quý 2/2026 là bao nhiêu và Lãi cơ bản trên cổ phiếu (EPS) tương ứng của quý là bao nhiêu?
 - **Đáp án chuẩn**: LNST cổ đông công ty mẹ: `2.567.587.014.434 VND` (hoặc `2.567,59 tỷ VND`); EPS cơ bản: `1.507 VND/cổ phiếu`.
-- **Lưu ý bẫy dữ liệu**: Không nhầm lẫn với Tổng lợi nhuận sau thuế toàn tập đoàn (`PROFIT_AFTER_TAX` / `isa19` là `2.570.339.099.621 VND`, trong đó có phần của cổ đông không kiểm soát `isa20` là 2.752.085.187 VND).
+- **Lưu ý bẫy dữ liệu**: Không nhầm lẫn với Tổng lợi nhuận sau thuế toàn tập đoàn (`PROFIT_AFTER_TAX` / `isa20` là `2.570.339.099.621 VND`, trong đó có phần của cổ đông không kiểm soát `isa21` là 2.752.085.187 VND).
 - **Vị trí đối soát JSON**:
   - Khối: `báo_cáo_tài_chính.kết_quả_kinh_doanh` → `2026-Q2`
-  - Mã chuẩn 1: `PARENT_NET_PROFIT` (Trường gốc: `isa21`, giá trị: `2567587014434.0`)
-  - Mã chuẩn 2: `BASIC_EARNINGS_PER_SHARE` (Trường gốc: `isa22`, giá trị: `1507.0`)
+  - Mã chuẩn 1: `PARENT_NET_PROFIT` (Trường gốc: `isa22`, giá trị: `2567587014434.0`)
+  - Mã chuẩn 2: `BASIC_EARNINGS_PER_SHARE` (Trường gốc: `isa23`, giá trị: `1507.0`)
 - **Trạng thái**: ⚠️ Lưu ý rà soát (Đòi hỏi mô hình trích xuất đồng thời 2 chỉ tiêu gắn liền).
 
 ---
@@ -597,7 +598,7 @@ Lô 2 gồm 10 câu hỏi khai thác dữ liệu bảng `price_bars` trong Supab
 - **Đáp án chuẩn**: `1.702.147.711.404 VND` (hoặc `1.702,15 tỷ VND`).
 - **Vị trí đối soát JSON**:
   - Khối: `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → `2026-Q2`
-  - Mã chuẩn: `CASH_FLOW_OPERATING` (Trường gốc: `cfa15`)
+  - Mã chuẩn: `CASH_FLOW_OPERATING` (Trường gốc: `cfa18`)
   - Giá trị số: `1702147711404.0`
 - **Trạng thái**: ✅ Đã xác thực 100%.
 
@@ -611,7 +612,7 @@ Lô 2 gồm 10 câu hỏi khai thác dữ liệu bảng `price_bars` trong Supab
 - **Lưu ý bẫy dấu âm/dương**: Trong bảng lưu chuyển tiền tệ kế toán, dòng tiền ra được ký hiệu bằng số âm (`-747.414.308.012`). Khi câu hỏi dùng cụm từ *"đã chi ra"*, câu trả lời có thể mang số dương hoặc số âm. Bộ so khớp chấp nhận cả hai giá trị.
 - **Vị trí đối soát JSON**:
   - Khối: `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → `2026-Q2`
-  - Mã chuẩn: `PURCHASE_FIXED_ASSETS` (Trường gốc: `cfa16`)
+  - Mã chuẩn: `PURCHASE_FIXED_ASSETS` (Trường gốc: `cfa19`)
   - Giá trị số: `-747414308012.0`
 - **Trạng thái**: ⚠️ Tiềm ẩn bất đồng quy ước dấu (Cần chấp nhận giá trị tuyệt đối khi câu hỏi đã hàm ý hướng dòng tiền).
 
