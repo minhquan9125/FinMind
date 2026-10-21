@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
 import {
   Button,
@@ -14,6 +14,8 @@ import {
   Spinner,
   StatusBadge,
 } from "../../shared/ui/index.js";
+import ResearchChat from "./ResearchChat.jsx";
+import { useAuth } from "../../shared/context/AuthContext.jsx";
 import { userMenu } from "../../mocks/componentMock.js";
 import { researcherMock } from "../dashboard/mock.js";
 import {
@@ -40,6 +42,10 @@ const menuPaths = {
 
 export default function ResearchPage() {
   const navigate = useNavigate();
+  const { userProfile, logout } = useAuth();
+  const [chatResetKey, setChatResetKey] = useState(0);
+  const [webHistoryCount, setWebHistoryCount] = useState(0);
+  const [webBusy, setWebBusy] = useState(false);
   const [params, setParams] = useSearchParams();
   const messagesEndRef = useRef(null);
 
@@ -83,6 +89,7 @@ export default function ResearchPage() {
   const [historyDrawerOpen, setHistoryDrawerOpen] = useState(
     params.get("history") === "1"
   );
+  const closeChatHistory = useCallback(() => setHistoryDrawerOpen(false), []);
   const [historyList, setHistoryList] = useState(getStoredResearchHistory);
   const [historySearch, setHistorySearch] = useState("");
   const [historyFilter, setHistoryFilter] = useState("all");
@@ -120,62 +127,6 @@ export default function ResearchPage() {
     }
   }, [params]);
 
-  // Evaluate query when question or filter context changes
-  useEffect(() => {
-    if (!currentQuestion) {
-      setEvaluation(null);
-      return;
-    }
-    setIsLoading(true);
-    setFeedbackRating(null); // Reset feedback for new question
-
-    const timer = setTimeout(() => {
-      const res = evaluateResearchQuery(currentQuestion, company, period);
-      setEvaluation(res);
-      setIsLoading(false);
-
-      // Tự động ghi nhận vào Lịch sử nghiên cứu (theo user)
-      const compMeta = getCompanyMeta(company);
-      setHistoryList((prev) => {
-        if (
-          prev.length > 0 &&
-          prev[0].question === currentQuestion &&
-          prev[0].company === company
-        ) {
-          return prev;
-        }
-        const newItem = {
-          id: `h_${Date.now()}`,
-          company,
-          companyName: compMeta.fullName,
-          period,
-          question: currentQuestion,
-          time: "Vừa xong",
-          status: res.status,
-          statusLabel:
-            res.status === "verified"
-              ? "Đã kiểm chứng"
-              : res.status === "partial"
-              ? "Bằng chứng một phần"
-              : res.status === "insufficient"
-              ? "Chưa đủ dữ liệu"
-              : res.status === "refusal"
-              ? "Tuân thủ FinMind"
-              : "Chưa kiểm chứng",
-          isPinned: false,
-        };
-        const updated = [
-          newItem,
-          ...prev.filter((item) => item.question !== currentQuestion),
-        ];
-        saveStoredResearchHistory(updated);
-        return updated;
-      });
-    }, 400);
-
-    return () => clearTimeout(timer);
-  }, [currentQuestion, company, period]);
-
   // Auto scroll to bottom when question or evaluation updates
   useEffect(() => {
     if (currentQuestion) {
@@ -194,6 +145,9 @@ export default function ResearchPage() {
 
   // Switch to new research (empty prompt state)
   const handleNewResearch = () => {
+    if (webBusy) return;
+    setActiveTab("copilot");
+    setChatResetKey((value) => value + 1);
     setCurrentQuestion("");
     setQueryInput("");
     setEvaluation(null);
@@ -413,9 +367,9 @@ export default function ResearchPage() {
         groups={userMenu}
         activeId="copilot"
         onSelect={(id) => navigate(menuPaths[id] || "/dashboard")}
-        profile={researcherMock}
+        profile={userProfile}
         onProfile={() => navigate("/profile")}
-        onLogout={() => navigate("/login")}
+        onLogout={async () => { await logout(); navigate("/login"); }}
       />
 
       {/* 2. Main Research Viewport */}
@@ -427,11 +381,11 @@ export default function ResearchPage() {
               <h1 className="text-lg font-bold tracking-tight text-slate-900">
                 Trợ lý nghiên cứu & So sánh
               </h1>
-              <StatusBadge tone="neutral">R01 · Chuỗi dữ liệu</StatusBadge>
+              <StatusBadge tone="neutral">Dữ liệu mẫu</StatusBadge>
             </div>
 
             {/* Quick Actions & Tab Switcher */}
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <div className="flex bg-slate-100 p-0.5 rounded-lg border border-slate-200">
                 <button
                   type="button"
@@ -460,16 +414,19 @@ export default function ResearchPage() {
               <Button
                 variant="secondary"
                 size="sm"
+                disabled={webBusy}
                 onClick={() => setHistoryDrawerOpen(true)}
                 className="gap-1.5 text-xs"
               >
                 <span>🕒</span>
-                <span>Lịch sử ({historyList.length})</span>
+                <span>Lịch sử ({activeTab === "copilot" ? webHistoryCount : historyList.length})</span>
               </Button>
 
               <Button
                 variant="primary"
                 size="sm"
+                disabled={webBusy}
+                aria-label="Nghiên cứu mới"
                 onClick={handleNewResearch}
                 className="gap-1 text-xs"
               >
@@ -480,6 +437,7 @@ export default function ResearchPage() {
           </div>
         </header>
 
+        {activeTab === "compare" && (<>
         {/* Global Context Bar: Company & Period Selector */}
         <section className="shrink-0 bg-white border-b border-slate-200 px-6 py-2.5 shadow-2xs z-10">
           <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3">
@@ -543,475 +501,15 @@ export default function ResearchPage() {
           </div>
         </section>
 
+        </>)}
+
         {/* ─── SCROLLABLE MIDDLE CONVERSATION & ANALYSIS CANVAS ─── */}
-        <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-6">
-          <div className="max-w-4xl mx-auto space-y-6">
-            {/* TAB 1: COPILOT CONVERSATION CONTENT */}
+        <div className={`flex-1 min-h-0 px-4 sm:px-6 py-4 ${activeTab === "copilot" ? "flex flex-col" : "overflow-y-auto"}`}>
+          <div className={`max-w-4xl mx-auto w-full ${activeTab === "copilot" ? "flex flex-1 min-h-0 flex-col" : "space-y-6"}`}>
             {activeTab === "copilot" && (
-              <div className="space-y-5">
-                {/* 0. WELCOME EMPTY STATE (Khi chưa có câu hỏi nào) */}
-                {!currentQuestion && (
-                  <div className="py-12 px-4 text-center max-w-lg mx-auto space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center mx-auto text-2xl text-blue-600 shadow-2xs">
-                      💬
-                    </div>
-                    <div>
-                      <h2 className="text-lg font-bold text-slate-900 tracking-tight">
-                        Bắt đầu nghiên cứu về {compMeta.code}
-                      </h2>
-                      <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                        Đặt câu hỏi về tài chính, biên lợi nhuận hoặc kỳ báo cáo{" "}
-                        <strong>{period}</strong> ở thanh nhập liệu bên dưới.
-                      </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left pt-2">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setCurrentQuestion(
-                            `Doanh thu ${company} ${period} thay đổi như thế nào?`
-                          )
-                        }
-                        className="p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50/30 transition-all text-xs shadow-2xs cursor-pointer"
-                      >
-                        <span className="font-bold text-blue-700 block">
-                          {company} · {period}
-                        </span>
-                        <span className="text-slate-500 mt-0.5 block">
-                          Tăng trưởng doanh thu & TOI?
-                        </span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setCurrentQuestion(
-                            `So sánh doanh thu ${company} và ${compareCompany} trong cùng kỳ`
-                          )
-                        }
-                        className="p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50/30 transition-all text-xs shadow-2xs cursor-pointer"
-                      >
-                        <span className="font-bold text-amber-700 block">
-                          {company} vs {compareCompany}
-                        </span>
-                        <span className="text-slate-500 mt-0.5 block">
-                          Đối chiếu chéo chỉ tiêu trong kỳ?
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* 1. CURRENT USER QUESTION BUBBLE */}
-                {currentQuestion && (
-                  <div className="flex items-center justify-between bg-blue-50/80 border border-blue-200 rounded-xl px-4 py-3 shadow-2xs">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-6 h-6 rounded-md bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0">
-                        Q
-                      </span>
-                      <span className="text-sm font-semibold text-blue-950">
-                        {currentQuestion}
-                      </span>
-                    </div>
-                    <span className="text-xs text-slate-500 font-medium hidden sm:inline shrink-0">
-                      {compMeta.fullName} · {period}
-                    </span>
-                  </div>
-                )}
-
-                {/* 2. LOADING SKELETON */}
-                {isLoading && (
-                  <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Spinner size="sm" />
-                      <span className="text-xs font-semibold text-slate-600">
-                        FinMind đang truy xuất dữ liệu công bố và đối soát bằng chứng...
-                      </span>
-                    </div>
-                    <Skeleton className="h-4 w-3/4 rounded" />
-                    <Skeleton className="h-4 w-5/6 rounded" />
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                      <Skeleton className="h-16 rounded-lg" />
-                      <Skeleton className="h-16 rounded-lg" />
-                      <Skeleton className="h-16 rounded-lg" />
-                      <Skeleton className="h-16 rounded-lg" />
-                    </div>
-                  </div>
-                )}
-
-                {/* 3. ETHICAL REFUSAL / COMPLIANCE STATE */}
-                {!isLoading && evaluation?.status === "refusal" && (
-                  <div className="bg-white rounded-xl border border-rose-200 p-5 shadow-xs space-y-4">
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                      <div className="flex items-center gap-2 text-rose-700">
-                        <span className="text-lg">🛡️</span>
-                        <h3 className="font-bold text-sm tracking-tight text-rose-900">
-                          {evaluation.title}
-                        </h3>
-                      </div>
-                      <StatusBadge tone="danger">Quy định từ chối</StatusBadge>
-                    </div>
-
-                    <div className="p-3.5 rounded-lg bg-rose-50 border border-rose-200 text-xs text-rose-900 leading-relaxed font-medium">
-                      {evaluation.warningText}
-                    </div>
-
-                    <div>
-                      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
-                        ĐỀ XUẤT CHUYỂN HƯỚNG CÂU HỎI NGHIÊN CỨU:
-                      </span>
-                      <div className="space-y-1.5">
-                        {evaluation.suggestions.map((sug, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => setCurrentQuestion(sug)}
-                            className="w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 hover:border-blue-400 text-xs text-slate-800 transition-colors flex items-center justify-between cursor-pointer"
-                          >
-                            <span>{sug}</span>
-                            <span className="text-blue-600 text-xs font-medium">
-                              Áp dụng →
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* 4. UNVERIFIED / PROJECTION REFUSAL */}
-                {!isLoading && evaluation?.status === "unverified" && (
-                  <div className="bg-white rounded-xl border border-amber-200 p-5 shadow-xs space-y-4">
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                      <div className="flex items-center gap-2 text-amber-700">
-                        <span className="text-lg">⚠</span>
-                        <h3 className="font-bold text-sm tracking-tight text-slate-900">
-                          {evaluation.title}
-                        </h3>
-                      </div>
-                      <StatusBadge tone="warning">Không thể xác minh</StatusBadge>
-                    </div>
-
-                    <p className="text-xs text-slate-700 leading-relaxed">
-                      {evaluation.errorText}
-                    </p>
-
-                    <div className="flex gap-2 pt-2 border-t border-slate-100">
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={() => handleOpenSource("1")}
-                      >
-                        Xem nguồn hiện có
-                      </Button>
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        onClick={() =>
-                          setCurrentQuestion(
-                            `Doanh thu ${company} ${period} thay đổi như thế nào?`
-                          )
-                        }
-                      >
-                        Đặt câu hỏi khác
-                      </Button>
-                    </div>
-                  </div>
-                )}
-
-                {/* 5. VERIFIED STATE (KẾT QUẢ ĐÃ ĐƯỢC ĐỐI SOÁT KIỂM TOÁN) */}
-                {!isLoading && evaluation?.status === "verified" && (
-                  <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs space-y-5">
-                    {/* Header */}
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                      <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded bg-blue-600 text-white flex items-center justify-center font-bold text-xs">
-                          FM
-                        </span>
-                        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                          KẾT QUẢ NGHIÊN CỨU
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <StatusBadge tone="success">✓ Đã kiểm chứng</StatusBadge>
-                        <button
-                          type="button"
-                          onClick={() => handleOpenSource("1")}
-                          className="text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
-                        >
-                          2 trích dẫn
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Copilot Natural Language Answer */}
-                    <p className="text-sm text-slate-800 leading-relaxed font-medium">
-                      {evaluation.summary}
-                    </p>
-
-                    {/* Fact Metric Cards */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                      {evaluation.facts.map((fact, idx) => (
-                        <div
-                          key={idx}
-                          className="p-3 rounded-lg border border-slate-100 bg-slate-50/70"
-                        >
-                          <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
-                            {fact.label}
-                          </span>
-                          <span className="text-base font-bold text-slate-900 font-mono mt-0.5 block">
-                            {fact.value}
-                          </span>
-                          <span className="text-[11px] text-slate-500 font-medium">
-                            {fact.sub}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Accordion: Analysis Metadata & Scope */}
-                    <div className="border border-slate-200 rounded-lg overflow-hidden">
-                      <button
-                        type="button"
-                        onClick={() => setIsAccordionOpen(!isAccordionOpen)}
-                        className="w-full flex items-center justify-between p-3 bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-700 transition-colors cursor-pointer"
-                      >
-                        <span>Thông tin kỳ dữ liệu & phạm vi đối soát</span>
-                        <span>{isAccordionOpen ? "▲" : "▼"}</span>
-                      </button>
-                      {isAccordionOpen && (
-                        <div className="p-3 bg-white text-xs text-slate-600 space-y-1.5 border-t border-slate-200">
-                          <div>
-                            Kỳ báo cáo:{" "}
-                            <strong className="text-slate-800">
-                              {evaluation.analysis.period}
-                            </strong>
-                          </div>
-                          <div>
-                            Phạm vi dữ liệu:{" "}
-                            <strong className="text-slate-800">
-                              {evaluation.analysis.scope}
-                            </strong>
-                          </div>
-                          <div>
-                            Số lượng nguồn đối soát:{" "}
-                            <strong className="text-slate-800">
-                              {evaluation.analysis.sourcesCount} nguồn chính thức
-                            </strong>
-                          </div>
-                          <div>
-                            Thời điểm cập nhật:{" "}
-                            <strong className="text-slate-800">
-                              {evaluation.analysis.updatedAt}
-                            </strong>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Clickable Citations */}
-                    <div>
-                      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
-                        Nguồn trích dẫn tham chiếu (Click để mở chi tiết Locator / Fact / Provenance)
-                      </span>
-                      <div className="space-y-2">
-                        {evaluation.sources.map((src) => (
-                          <button
-                            key={src.id}
-                            type="button"
-                            onClick={() => handleOpenSource(src.id)}
-                            className="w-full flex items-center justify-between p-2.5 rounded-lg border border-slate-200 bg-white hover:border-blue-400 hover:bg-blue-50/30 text-left transition-colors shadow-2xs cursor-pointer"
-                          >
-                            <div className="flex items-center gap-2.5">
-                              <span className="w-5 h-5 rounded bg-blue-50 text-blue-700 font-bold text-xs flex items-center justify-center border border-blue-200">
-                                [{src.id}]
-                              </span>
-                              <span className="text-xs font-semibold text-slate-800">
-                                {src.title}
-                              </span>
-                              <span className="text-[11px] text-slate-400 hidden sm:inline">
-                                · {src.locator || src.location}
-                              </span>
-                            </div>
-                            <span className="text-xs text-blue-600 font-medium">
-                              Xem bằng chứng →
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* FEEDBACK SECTION */}
-                    <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs">
-                      <div className="flex items-center gap-2 text-slate-500">
-                        <span className="font-semibold text-slate-600">
-                          Đánh giá câu trả lời này:
-                        </span>
-                        <button
-                          type="button"
-                          onClick={handleRateHelpful}
-                          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md border text-xs font-medium transition-colors cursor-pointer ${
-                            feedbackRating === "helpful"
-                              ? "bg-emerald-50 border-emerald-300 text-emerald-700 font-semibold"
-                              : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
-                          }`}
-                        >
-                          <span>👍</span>
-                          <span>Hữu ích</span>
-                        </button>
-                        <button
-                          type="button"
-                          onClick={handleOpenFeedbackModal}
-                          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md border text-xs font-medium transition-colors cursor-pointer ${
-                            feedbackRating === "unhelpful"
-                              ? "bg-amber-50 border-amber-300 text-amber-700 font-semibold"
-                              : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
-                          }`}
-                        >
-                          <span>👎</span>
-                          <span>Cần cải thiện</span>
-                        </button>
-                      </div>
-
-                      {feedbackToast && (
-                        <span className="text-emerald-600 font-semibold text-[11px] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                          {feedbackToast}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Follow-up Chips */}
-                    <div className="pt-3 border-t border-slate-100">
-                      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
-                        Bạn có thể tìm hiểu tiếp
-                      </span>
-                      <div className="flex flex-wrap gap-2">
-                        {evaluation.followUps.map((chip, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => setCurrentQuestion(chip)}
-                            className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-medium text-slate-700 hover:border-blue-300 hover:bg-blue-50/50 transition-colors shadow-2xs cursor-pointer"
-                          >
-                            {chip}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* 6. PARTIAL STATE (BẰNG CHỨNG MỘT PHẦN) */}
-                {!isLoading && evaluation?.status === "partial" && (
-                  <div className="bg-white rounded-xl border border-amber-200 p-5 shadow-xs space-y-4">
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                      <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded bg-blue-600 text-white flex items-center justify-center font-bold text-xs">
-                          FM
-                        </span>
-                        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                          KẾT QUẢ NGHIÊN CỨU
-                        </span>
-                      </div>
-                      <StatusBadge tone="warning">⚠ Bằng chứng một phần</StatusBadge>
-                    </div>
-
-                    <p className="text-sm text-slate-800 leading-relaxed font-medium">
-                      {evaluation.desc}
-                    </p>
-
-                    <div className="bg-amber-50/80 border border-amber-200 rounded-lg p-3 text-xs space-y-2">
-                      <div className="flex items-center gap-2 text-emerald-800 font-medium">
-                        <span>✓</span>
-                        <span>{evaluation.check1}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-amber-800 font-medium">
-                        <span>⚠</span>
-                        <span>{evaluation.check2}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex gap-2 pt-2 border-t border-slate-100">
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={() => handleOpenSource("1")}
-                      >
-                        Xem nguồn của {company}
-                      </Button>
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        onClick={() => setActiveTab("compare")}
-                      >
-                        Chuyển sang Bảng so sánh đầy đủ →
-                      </Button>
-                    </div>
-
-                    {/* Feedback bar */}
-                    <div className="pt-2 border-t border-slate-100 flex items-center gap-2 text-xs">
-                      <span className="text-slate-500 font-medium">
-                        Phản hồi về kết quả:
-                      </span>
-                      <button
-                        type="button"
-                        onClick={handleRateHelpful}
-                        className="px-2 py-0.5 rounded border border-slate-200 text-slate-600 hover:bg-slate-50 cursor-pointer"
-                      >
-                        👍 Hữu ích
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleOpenFeedbackModal}
-                        className="px-2 py-0.5 rounded border border-slate-200 text-slate-600 hover:bg-slate-50 cursor-pointer"
-                      >
-                        👎 Cần bổ sung
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* 7. INSUFFICIENT STATE (THIẾU SỐ LIỆU ĐÃ KIỂM ĐỊNH) */}
-                {!isLoading && evaluation?.status === "insufficient" && (
-                  <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs space-y-4">
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                      <div className="flex items-center gap-2 text-slate-700">
-                        <span className="text-lg">ℹ️</span>
-                        <h3 className="font-bold text-sm tracking-tight text-slate-900">
-                          {evaluation.title}
-                        </h3>
-                      </div>
-                      <StatusBadge tone="neutral">Chưa đủ dữ liệu</StatusBadge>
-                    </div>
-
-                    <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                      {evaluation.desc}
-                    </p>
-
-                    <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-600 space-y-1">
-                      <strong className="text-slate-800 block">Lý do kỹ thuật:</strong>
-                      <p>{evaluation.reason}</p>
-                    </div>
-
-                    <p className="text-[11px] text-slate-400 italic">
-                      {evaluation.evidence}
-                    </p>
-
-                    <div className="pt-2 border-t border-slate-100">
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={() => setPeriod("FY2025")}
-                      >
-                        Xem kỳ FY2025 có số liệu kiểm toán
-                      </Button>
-                    </div>
-                  </div>
-                )}
-
-                <div ref={messagesEndRef} />
-              </div>
+              <ResearchChat historyOpen={historyDrawerOpen}
+                onHistoryClose={closeChatHistory} resetKey={chatResetKey}
+                onHistoryCount={setWebHistoryCount} onBusyChange={setWebBusy} />
             )}
 
             {/* TAB 2: BẢNG SO SÁNH CHỈ TIÊU (COMPARE VIEW) */}
@@ -1043,110 +541,11 @@ export default function ResearchPage() {
           </div>
         </div>
 
-        {/* ─── 3. STICKY BOTTOM INPUT BAR (THANH CÂU HỎI NẰM DƯỚI CÙNG) ─── */}
-        <div className="shrink-0 bg-white border-t border-slate-200 p-3 sm:p-4 z-20 shadow-[0_-2px_10px_rgba(0,0,0,0.02)]">
-          <div className="max-w-4xl mx-auto space-y-2">
-            {activeTab === "copilot" ? (
-              <>
-                {/* Context Badges Bar */}
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">
-                    <span>{company}</span>
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">
-                    <span>{period}</span>
-                  </span>
-                  <span className="text-[11px] text-slate-400">
-                    Ngữ cảnh nghiên cứu đang khóa
-                  </span>
-                </div>
-
-                {/* Question Input Form with Send Button */}
-                <form onSubmit={handleSubmitQuery} className="relative flex items-center">
-                  <input
-                    type="text"
-                    value={queryInput}
-                    onChange={(e) => setQueryInput(e.target.value)}
-                    placeholder={`Hỏi thêm về ${company} (${period}) (ví dụ: cơ cấu doanh thu theo mảng, biên lợi nhuận, chi phí)...`}
-                    className="w-full h-11 pl-4 pr-24 rounded-lg bg-white border border-slate-200 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all shadow-2xs"
-                  />
-                  <button
-                    type="submit"
-                    disabled={!queryInput.trim()}
-                    className="absolute right-1.5 h-8 px-3.5 rounded-md bg-blue-600 text-white font-semibold text-xs flex items-center gap-1 hover:bg-blue-700 disabled:opacity-40 transition-colors shadow-xs cursor-pointer"
-                  >
-                    <span>Gửi</span>
-                    <span className="text-xs">➔</span>
-                  </button>
-                </form>
-
-                {/* Quick Sample Prompt Chips */}
-                <div className="flex flex-wrap items-center gap-1.5 pt-0.5 text-xs">
-                  <span className="text-[11px] text-slate-400 font-medium">
-                    Thử câu hỏi mẫu:
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setCurrentQuestion(
-                        `Doanh thu ${company} ${period} thay đổi như thế nào?`
-                      )
-                    }
-                    className="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-medium transition-colors cursor-pointer"
-                  >
-                    📊 Doanh thu chuẩn
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setCurrentQuestion(
-                        `So sánh doanh thu ${company} và ${compareCompany} trong cùng kỳ`
-                      )
-                    }
-                    className="px-2 py-0.5 rounded bg-amber-50 hover:bg-amber-100 text-amber-800 text-[11px] border border-amber-200 font-medium transition-colors cursor-pointer"
-                  >
-                    ⚠ So sánh 2 bên
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setCurrentQuestion(
-                        `Dự báo doanh thu ${company} quý tới đạt bao nhiêu?`
-                      )
-                    }
-                    className="px-2 py-0.5 rounded bg-purple-50 hover:bg-purple-100 text-purple-800 text-[11px] border border-purple-200 font-medium transition-colors cursor-pointer"
-                  >
-                    🔮 Dự đoán
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setCurrentQuestion(
-                        `Có nên mua cổ phiếu ${company} vào lúc này không?`
-                      )
-                    }
-                    className="px-2 py-0.5 rounded bg-rose-50 hover:bg-rose-100 text-rose-800 text-[11px] border border-rose-200 font-medium transition-colors cursor-pointer"
-                  >
-                    ⛔ Hỏi đầu tư
-                  </button>
-                </div>
-              </>
-            ) : (
-              <div className="text-center py-1">
-                <span className="text-xs text-slate-500 font-medium">
-                  Đang xem Bảng đối chiếu chỉ tiêu tài chính giữa {company} và {compareCompany} ({period})
-                </span>
-              </div>
-            )}
-
-            {/* Footer Disclaimer */}
-            <div className="text-center pt-1">
-              <span className="text-[11px] text-slate-400 tracking-tight">
-                Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư
-              </span>
-            </div>
+        {activeTab === "compare" && (
+          <div className="shrink-0 border-t border-slate-200 bg-white p-4 text-center text-xs text-slate-500">
+            Bảng so sánh dùng dữ liệu minh họa · Không phải khuyến nghị đầu tư
           </div>
-        </div>
+        )}
 
         {/* ───────────────────────────────────────────────────────────── */}
         {/* 4. EVIDENCE DRAWER (HIỂN THỊ LOCATOR / FACT / PROVENANCE)    */}
@@ -1244,6 +643,7 @@ export default function ResearchPage() {
         {/* ───────────────────────────────────────────────────────────── */}
         {/* 5. HISTORY DRAWER (XEM / XÓA / PIN / UNPIN)                  */}
         {/* ───────────────────────────────────────────────────────────── */}
+        {activeTab === "compare" && (
         <Drawer
           open={historyDrawerOpen}
           title="LỊCH SỬ NGHIÊN CỨU"
@@ -1363,6 +763,7 @@ export default function ResearchPage() {
             </div>
           </div>
         </Drawer>
+        )}
 
         {/* ───────────────────────────────────────────────────────────── */}
         {/* 6. MODAL XÁC NHẬN XÓA LỊCH SỬ                                */}

@@ -27,6 +27,8 @@ git clone https://github.com/minhquan9125/FinMind.git
 cd FinMind
 ```
 
+Có thể chạy `Chay-FinMind.cmd` để tự kiểm tra máy trước khi khởi động. Nếu thiếu Python/Node hoặc thư viện của dự án, launcher sẽ nêu danh sách cần cài và hỏi xác nhận; chỉ sau khi bạn đồng ý nó mới dùng `winget`, `pip` hoặc `npm` để cài. Từ chối hoặc cài lỗi thì ứng dụng dừng và không mở server. Dependency backend có Torch nên có thể tải nhiều GB. Khi cài xong, launcher kiểm tra lại rồi mở backend và frontend trong hai cửa sổ terminal. Lệnh `Chay-FinMind.cmd --check` chỉ kiểm tra, không hỏi, cài đặt hay khởi động ứng dụng.
+
 Nếu nhóm làm trên nhánh khác mặc định, chuyển sang đúng nhánh leader yêu cầu trước khi cài. Nhánh cần có `backend/package.json`, `backend/scripts/run-backend.mjs` và bản `main.py` đã ghép market API.
 
 Các lệnh sau chạy tại **gốc FinMind**, nơi có `backend`, `frontend`, `README.md`:
@@ -79,6 +81,19 @@ Không điền Google client secret vào frontend. Người quản lý OAuth ph�
 Bỏ cấu hình `VITE_MARKET_DATA_API_URL` cũ trỏ cổng 8001 nếu có trong các file môi trường frontend. Mặc định frontend gọi `/api` qua proxy Vite sang 8000. Sau khi sửa môi trường, dừng và chạy lại server.
 
 ### 4. Chạy hằng ngày
+
+Cách nhanh tại gốc FinMind: double-click **`Chay-FinMind.cmd`** hoặc chạy:
+
+```powershell
+.\Chay-FinMind.cmd
+```
+
+Lệnh mở hai terminal cho backend và frontend hiện có. Đợi backend báo
+`Application startup complete`, rồi mở **http://localhost:5173/research**.
+Nhấn **Ctrl+C ở từng terminal** để dừng. Máy vẫn cần cài dependency và cấu hình
+`.env` theo các bước trên; script không tự cài đặt hay tắt ứng dụng đang chiếm cổng.
+
+Cũng có thể chạy thủ công bằng hai terminal:
 
 **Terminal 1 — backend:** mở terminal tại gốc FinMind rồi chạy:
 

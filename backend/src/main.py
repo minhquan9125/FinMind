@@ -1,12 +1,7 @@
-"""FastAPI entrypoint for the FinMind backend.
+"""FinMind backend: auth, market data, Vector RAG and fixture research chat.
 
-Wires up authentication, market data and the Vector RAG module (document ingestion + vector
-search), which is the B1 baseline described in the project proposal
-(Section 6.5, Table 13). Structured Retrieval, the Neo4j graph branch,
-Evidence Gate, Answer Verification and Gemini synthesis are separate,
-not-yet-implemented modules (see readmerepair.md for what is and is not
-covered by this change) and are intentionally left out of this app so the
-API surface matches only what has actually been built.
+Research chat reuses intent/evidence validation with fixed fixtures. It does not
+query the live vector search or generate financial answers from real data.
 """
 
 from contextlib import asynccontextmanager
@@ -14,7 +9,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .api.routers import auth, documents, search, market_data
+from .api.routers import auth, documents, search, market_data, research_chat
 from .market_data.app import lifespan as market_lifespan
 from .core.config import get_settings
 from .core.db import connect, disconnect
@@ -54,6 +49,7 @@ app.include_router(documents.router)
 app.include_router(search.router)
 app.include_router(auth.router)
 app.include_router(market_data.router)
+app.include_router(research_chat.router)
 
 @app.get("/")
 async def root() -> dict:
