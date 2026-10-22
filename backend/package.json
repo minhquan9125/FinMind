@@ -2,6 +2,8 @@
   "name": "finmind-backend",
   "private": true,
   "scripts": {
+    "check:sources": "node scripts/check-shared-sources.mjs",
+    "check:v4": "node scripts/check-corpus-v4.mjs",
     "dev": "node scripts/run-backend.mjs",
     "start": "node scripts/run-backend.mjs"
   }

@@ -29,6 +29,7 @@ wheels/
 /tmp/pdfs/*.png
 /tmp/pdfs/ocr-review/
 .venv
+.venv-gpu/
 .venv-paddleocr/
 venv/
 ENV/

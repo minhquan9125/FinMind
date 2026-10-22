@@ -47,6 +47,14 @@ class Settings(BaseSettings):
 
     default_top_k: int = 5
 
+    # Staged only: leave unset until corpus registration and readiness checks pass.
+    default_corpus_version_id: str | None = None
+    default_corpus_manifest_sha256: str | None = None
+    # Opt-in immutable source binding for a staged corpus release.
+    source_snapshot_path: str | None = None
+    # Staged: "supabase" reads versioned shared sources, never local snapshots/live fallback.
+    source_read_backend: str = "local"
+
     frontend_origin: str = "http://localhost:5173"
 
     # Folder holding data_pipeline's normalized financial JSON

@@ -33,8 +33,7 @@ NEWS_DIR = PROJECT_ROOT / "data_pipeline" / "scrapers" / "data"
 NAMESPACE = uuid.UUID("b77dbd7f-5d89-479d-90a3-421e5f0981ea")
 # vnstock/KBS quotes prices in thousand VND (57.3 = 57,300 VND); same price_scale as ingest_to_supabase.py.
 PRICE_SCALE = 1000
-# False: every distinct file content gets its own job/payload row (history, used by backfill).
-# True: one job/payload row per file path, overwritten in place (used by the crawler sink).
+# Legacy import-compatible flag. Payload IDs now always include the content digest.
 STABLE_PAYLOAD_IDS = False
 INDEX_SYMBOLS = {"VNINDEX", "VN30", "HNXINDEX", "UPCOMINDEX", "HNX", "UPCOM"}
 
@@ -186,7 +185,9 @@ async def store_payload(conn: Any, path: Path, source: str, source_type: str, no
                         payload: Any, count: int) -> uuid.UUID:
     raw = canonical_json(payload)
     digest = hashlib.sha256(raw.encode("utf-8")).hexdigest()
-    version = "latest" if STABLE_PAYLOAD_IDS else digest
+    # Original payloads are immutable: changing a file creates a new version.
+    # Keep the legacy flag import-compatible, but never overwrite a "latest" row.
+    version = digest
     job_id = stable_id("job", rel(path), version)
     payload_id = stable_id("payload", rel(path), version)
     source_id = await ensure_source(conn, source, source_type, note)
@@ -203,10 +204,15 @@ async def store_payload(conn: Any, path: Path, source: str, source_type: str, no
     await conn.execute(
         """INSERT INTO public.raw_payloads (payload_id, job_id, source_uri, sha256, payload, stored_at)
            VALUES ($1, $2, $3, $4, $5::jsonb, $6)
-           ON CONFLICT (payload_id) DO UPDATE SET source_uri = EXCLUDED.source_uri,
-             payload = EXCLUDED.payload, stored_at = EXCLUDED.stored_at""",
+           ON CONFLICT (payload_id) DO NOTHING""",
         payload_id, job_id, rel(path), digest, raw, now,
     )
+    saved = await conn.fetchrow('SELECT source_uri,sha256,payload FROM public.raw_payloads WHERE payload_id=$1',payload_id)
+    if not saved:
+        raise ValueError('Original payload missing after insert')
+    saved_payload=json.loads(saved['payload']) if isinstance(saved['payload'],str) else saved['payload']
+    if saved['source_uri']!=rel(path) or saved['sha256'].strip()!=digest or canonical_json(saved_payload)!=raw:
+        raise ValueError('Immutable original payload conflict; refusing to reuse')
     return payload_id
 
 

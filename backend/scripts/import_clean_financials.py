@@ -5,6 +5,7 @@ import argparse
 import asyncio
 from decimal import Decimal
 import hashlib
+import json
 from pathlib import Path
 import sys
 import uuid
@@ -16,6 +17,7 @@ from cleaner import codec
 from cleaner.core import SECTIONS, validate_symbol
 from cleaner.mapping import load_mapping
 from ingest_to_supabase import parse_period, stable_id, verify_schema
+from src.financial.import_plan import load_rules, load_workbook_approved_overrides, make_plan, require_frozen_configuration, release_values
 
 SECTION = {'balance_sheet': 'BALANCE_SHEET', 'income_statement': 'INCOME_STATEMENT',
            'cash_flow_statement': 'CASH_FLOW', 'ratios': 'RATIO'}
@@ -82,13 +84,15 @@ async def ensure_company(conn, data):
     return company_id
 
 
-async def apply_one(conn, item):
+async def apply_one(conn, item, financial_plan=None):
     data, symbol, digest = item['data'], item['symbol'], item['digest']
     source_name = data['nguồn_dữ_liệu'].get('nguồn_tài_chính') or 'UNKNOWN'
     source_id = stable_id('source', source_name)
     await conn.execute("INSERT INTO sources(source_id,name,source_type,approval_status,scope_note,is_enabled) VALUES($1,$2,'FINANCIAL_DATA','PENDING',$3,false) ON CONFLICT(source_id) DO NOTHING",
                        source_id, source_name, 'FinancialCleaner JSON; native units and reporting basis unverified')
-    job_id, payload_id = stable_id('clean-job', symbol, digest), stable_id('clean-payload', symbol, digest)
+    version = financial_plan['mapping_manifest_sha256'] if financial_plan else None
+    version_args = (version,) if version else ()
+    job_id, payload_id = stable_id('clean-job', symbol, digest, *version_args), stable_id('clean-payload', symbol, digest, *version_args)
     await conn.execute("INSERT INTO ingestion_jobs(job_id,source_id,trigger_type,status,schema_version,started_at,finished_at,records_ok,records_quarantined) VALUES($1,$2,'BATCH','SUCCEEDED','clean-v1',now(),now(),$3,0) ON CONFLICT(job_id) DO NOTHING",
                        job_id, source_id, len(item['values']))
     await conn.execute('INSERT INTO raw_payloads(payload_id,job_id,source_uri,sha256,payload,stored_at) VALUES($1,$2,$3,$4,$5::jsonb,now()) ON CONFLICT(payload_id) DO NOTHING',
@@ -105,12 +109,14 @@ async def apply_one(conn, item):
             await conn.execute('INSERT INTO reporting_periods(period_id,period_code,fiscal_year,quarter,period_type,start_date,end_date) VALUES($1,$2,$3,$4,$5,$6,$7)',
                                period_id, period, year, quarter, kind, start, end)
         # Immutable report version per exact source file. No overwrite of older reports.
-        report_id = stable_id('clean-report', symbol, period, digest)
+        report_id = stable_id('clean-report', symbol, period, digest, *version_args)
         reports[period] = report_id
         await conn.execute("INSERT INTO financial_reports(report_id,company_id,period_id,payload_id,job_id,statement_scope,audit_status,report_version) VALUES($1,$2,$3,$4,$5,'UNKNOWN','UNKNOWN',1) ON CONFLICT(report_id) DO NOTHING",
                            report_id, company_id, period_id, payload_id, job_id)
     observation_rows = []
     metric_rows = {}
+    decisions = ({(e['period'],e['section'],e['code']):e for e in financial_plan['entries']}
+                 if financial_plan else {})
     for period, section, metric, value in item['values']:
         code = metric['mã_chuẩn']
         metric_id = stable_id('metric', data['ngành'], SECTION[section], code)
@@ -121,13 +127,26 @@ async def apply_one(conn, item):
                    'mapping_sha256': data['nguồn_dữ_liệu'].get('sha256_mapping'),
                    'source_section': section, 'source_field': metric['trường_gốc'], 'period_code': period,
                    'metric_code': code, 'period_basis': 'UNVERIFIED', 'unit_status': 'UNVERIFIED'}
-        observation_rows.append((stable_id('observation', reports[period], metric_id), reports[period], metric_id, value, codec.dumps(locator)))
+        decision = decisions.get((period,section,code))
+        unit, scale, currency = 'SOURCE_NATIVE', 1, None
+        if financial_plan:
+            if decision is None or Decimal(decision['source_value']) != value:
+                raise ValueError('Import plan differs from current observation')
+            locator['financial_mapping'] = decision.get('financial_mapping') or {
+                'schema_version':'financial-mapping-locator-v1',
+                'config_version_id':financial_plan['config_version_id'],
+                'mapping_manifest_sha256':version,'status':'UNVERIFIED','reason':decision['reason']}
+            if decision['status'] in ('VERIFIED_SNAPSHOT','WORKBOOK_APPROVED'):
+                unit,scale,currency=decision['unit'],decision['scale'],decision['currency']
+                locator.update(unit_status=decision['status'],period_basis='POINT_IN_TIME')
+        observation_rows.append((stable_id('observation', reports[period], metric_id), reports[period], metric_id,
+                                 value, codec.dumps(locator),unit,scale,currency))
     await conn.executemany("INSERT INTO metrics(metric_id,code,canonical_name,section,default_unit,industry_scope,mapping_status) VALUES($1,$2,$3,$4,'SOURCE_NATIVE',$5,'MAPPED') ON CONFLICT(metric_id) DO NOTHING", list(metric_rows.values()))
-    await conn.executemany("INSERT INTO observations(observation_id,report_id,metric_id,value,unit,scale,currency,locator_json) VALUES($1,$2,$3,$4,'SOURCE_NATIVE',1,NULL,$5::jsonb) ON CONFLICT(observation_id) DO NOTHING", observation_rows)
+    await conn.executemany("INSERT INTO observations(observation_id,report_id,metric_id,value,locator_json,unit,scale,currency) VALUES($1,$2,$3,$4,$5::jsonb,$6,$7,$8) ON CONFLICT(observation_id) DO NOTHING", observation_rows)
     # Exact value and locator comparison catches precision loss and ID conflicts.
-    stored = await conn.fetch('SELECT observation_id,value,locator_json FROM observations WHERE report_id=ANY($1::uuid[])', list(reports.values()))
-    actual = {r['observation_id']: (r['value'], codec.loads(r['locator_json'])) for r in stored}
-    expected = {r[0]: (r[3], codec.loads(r[4])) for r in observation_rows}
+    stored = await conn.fetch('SELECT observation_id,value,locator_json,unit,scale,currency FROM observations WHERE report_id=ANY($1::uuid[])', list(reports.values()))
+    actual = {r['observation_id']: (r['value'], codec.loads(r['locator_json']),r['unit'],r['scale'],r['currency']) for r in stored}
+    expected = {r[0]: (r[3], codec.loads(r[4]),r[5],r[6],r[7]) for r in observation_rows}
     if actual != expected:
         raise ValueError(f'Exact DB verification failed: {symbol}')
     return len(reports), len(observation_rows)
@@ -143,17 +162,70 @@ async def run(args):
     items = [read_input(p) for p in paths]
     if not items:
         raise ValueError('No input files')
+    rules_path=getattr(args,'financial_rules',None)
+    bundle=load_rules(Path(rules_path)) if rules_path else None
+    workbook_overrides = load_workbook_approved_overrides(Path(args.workbook_overrides)) if args.workbook_overrides else None
+    plans=[make_plan(item,bundle,workbook_overrides) for item in items] if bundle else None
+    if plans:
+        output=Path(getattr(args,'plan_out',None) or ROOT/'outputs/financial-import-plan/plan.json')
+        if not output.is_absolute():
+            output=ROOT/output
+        output.parent.mkdir(parents=True,exist_ok=True)
+        output.write_text(json.dumps({'database_writes':False,'plans':plans},ensure_ascii=False,indent=2),encoding='utf-8')
+        draft={'status':'DRAFT_NOT_REGISTERED_OR_FROZEN','config_version_id':plans[0]['config_version_id'],
+               'version_label':'financial-bs-v1','system_configs':release_values(bundle)}
+        output.with_name('configuration-draft.json').write_text(json.dumps(draft,ensure_ascii=False,indent=2),encoding='utf-8')
+        release_manifest={
+            'schema_version':'financial-controlled-release-v1',
+            'status':'DRAFT_NOT_REGISTERED_OR_FROZEN',
+            'database_writes':False,
+            'production_enabled':False,
+            'source_family':'clean',
+            'mapping_manifest_sha256':plans[0]['mapping_manifest_sha256'],
+            'workbook_overrides':bool(workbook_overrides),
+            'workbook_override_status':'WORKBOOK_APPROVED' if workbook_overrides else None,
+            'plan_path':str(output.relative_to(ROOT)).replace('\\','/'),
+            'configuration_path':str(output.with_name('configuration-draft.json').relative_to(ROOT)).replace('\\','/'),
+            'corpus_mutation':'FORBIDDEN_CORPUS_V2_IS_FROZEN',
+        }
+        output.with_name('controlled-release-manifest.json').write_text(
+            json.dumps(release_manifest,ensure_ascii=False,indent=2),encoding='utf-8'
+        )
+        total=sum(len(p['entries']) for p in plans)
+        verified=sum(p['counts'].get('VERIFIED_SNAPSHOT',0) for p in plans)
+        lines=['# Kế hoạch nhập theo bộ quy tắc tài chính', '',
+               f'Đã kiểm tra {len(plans)} công ty, {total} giá trị. Đủ bằng chứng: {verified}; giữ nguồn chưa xác minh: {total-verified}.',
+               'Không kết nối hoặc ghi database khi chạy mặc định. Không sửa số liệu đầu vào.', '',
+               '| Công ty | Đủ bằng chứng | Chưa có quy tắc | Có quy tắc nhưng kỳ chưa được đối chiếu |',
+               '|---|---:|---:|---:|']
+        for p in plans:
+            lines.append(f"| {p['symbol']} | {p['counts'].get('VERIFIED_SNAPSHOT',0)} | {p['reasons'].get('NO_REVIEWED_RULE',0)} | {p['reasons'].get('PERIOD_NOT_IN_VERIFIED_SAMPLES',0)} |")
+        lines += ['', 'Chi tiết từng giá trị và các lý do khác (file thay đổi, số thay đổi, sai nguồn) nằm trong plan.json.',
+                  'configuration-draft.json chứa bản nháp đủ bốn nhóm cấu hình; chưa đăng ký, đóng băng hoặc kích hoạt trên Supabase.',
+                  'Các số chưa xác minh vẫn giữ nguyên với SOURCE_NATIVE; không bỏ dữ liệu, không thay bằng 0, không tự suy đơn vị.',
+                  'Nhánh nhập mới tạo ID report/job/payload theo cả hash nguồn và hash mapping, rồi gắn config/rule/evidence vào locator.',
+                  'Dữ liệu cũ giữ nguyên. Vì bản mới tồn tại song song bản cũ, reader phải chọn phiên bản/config rõ ràng trước khi triển khai ghi chung; không cộng cả hai bản.',
+                  'report.statement_scope vẫn UNKNOWN cho báo cáo chứa nhiều loại số chưa kiểm chứng; scope và ngày chốt đã xác minh nằm ở locator của từng số.',
+                  'Mã metric và tên hiện có không đổi toàn cục; canonical_metric_code và hash định nghĩa nằm trong financial_mapping.',
+                  'Để ghi cần cấu hình cùng ID đã đóng băng, đủ bốn nhóm system_configs khớp và chính sách VERIFIED_SNAPSHOT_IMPORT rõ ràng. Chưa thực hiện bước này.',
+                  'Kiểm thử nhập lặp và xung đột dùng DB mô phỏng, không phải xác nhận đã chạy ghi/rollback trên Supabase thật.']
+        output.with_name('Ke_hoach_nhap.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+        for p in plans:print('FINANCIAL_RULE_PLAN',p['symbol'],p['counts'],p['reasons'],flush=True)
     for item in items:
         print('PLAN', item['symbol'], 'periods', len({v[0] for v in item['values']}), 'observations', len(item['values']), flush=True)
     if not (args.apply or args.rollback):
-        print('DRY_RUN_ONLY; units/scope/period basis remain unverified')
+        print('DRY_RUN_ONLY; verified and workbook-approved decisions are limited to listed snapshots; other observations remain native/unverified')
         return
     import asyncpg
     from src.core.config import get_settings
     conn = await asyncpg.connect(get_settings().database_url, ssl='require', statement_cache_size=0, timeout=25)
-    tx = conn.transaction()
+    tx = conn.transaction(isolation='repeatable_read')
     await tx.start()
     try:
+        if plans:
+            if args.companies_only or args.allow_schema_widening:
+                raise ValueError('Financial rule import cannot change profiles only or widen the shared schema')
+            await require_frozen_configuration(conn,plans,bundle)
         await conn.execute('SELECT pg_advisory_xact_lock(167217)')
         if args.companies_only:
             for item in items:
@@ -173,13 +245,13 @@ async def run(args):
                 raise ValueError('Source exceeds value precision / metric code width; apply reviewed widening migration first')
             await conn.execute('ALTER TABLE public.observations ALTER COLUMN value TYPE numeric')
             await conn.execute('ALTER TABLE public.metrics ALTER COLUMN code TYPE varchar(100)')
-        for item in items:
-            counts = await apply_one(conn, item)
+        for i,item in enumerate(items):
+            counts = await apply_one(conn, item,plans[i] if plans else None)
             print('VERIFIED', item['symbol'], 'reports', counts[0], 'observations', counts[1], flush=True)
         # Repeat the exact input in the same transaction to prove idempotent IDs/counts.
         before = await conn.fetchrow('SELECT (SELECT count(*) FROM observations) AS o,(SELECT count(*) FROM financial_reports) AS r')
-        for item in items:
-            await apply_one(conn, item)
+        for i,item in enumerate(items):
+            await apply_one(conn, item,plans[i] if plans else None)
         after = await conn.fetchrow('SELECT (SELECT count(*) FROM observations) AS o,(SELECT count(*) FROM financial_reports) AS r')
         if before != after:
             raise ValueError('Rerun inserted duplicates')
@@ -205,6 +277,9 @@ if __name__ == '__main__':
     mode.add_argument('--rollback', action='store_true')
     parser.add_argument('--allow-schema-widening', action='store_true')
     parser.add_argument('--companies-only', action='store_true', help='Only fill missing company profile fields; no financial/schema writes')
+    parser.add_argument('--financial-rules', help='Reviewed source-rule package; writes also require a matching frozen DB configuration')
+    parser.add_argument('--plan-out', help='Write the offline financial decision plan to this JSON file')
+    parser.add_argument('--workbook-overrides', help='Approved workbook unit mappings for the controlled offline release')
     try:
         asyncio.run(run(parser.parse_args()))
     except Exception as exc:

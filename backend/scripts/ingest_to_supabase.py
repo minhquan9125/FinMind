@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 from datetime import date, datetime, timedelta, timezone
+from decimal import Decimal
 import hashlib
 import json
 import os
@@ -27,6 +28,9 @@ NAMESPACE = uuid.UUID("b77dbd7f-5d89-479d-90a3-421e5f0981ea")
 if str(PROJECT_ROOT / "backend") not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT / "backend"))
 from src.financial.mapping import META_KEYS, get_code, get_label_vi  # noqa: E402
+from src.financial import exact_json  # noqa: E402
+
+FINANCIAL_INGEST_VERSION = 'normalized-financial-v2'
 
 SECTIONS = {
     "income_statement": "INCOME_STATEMENT",
@@ -63,7 +67,7 @@ def sha256_bytes(value: bytes) -> str:
 
 
 def canonical_json(value: Any) -> str:
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return exact_json.dumps(value)
 
 
 def parse_period(label: str) -> tuple[int, int | None, str, date, date]:
@@ -86,7 +90,7 @@ def parse_period(label: str) -> tuple[int, int | None, str, date, date]:
 
 def normalize_payload(path: Path) -> dict[str, Any]:
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        data = exact_json.loads(path.read_text(encoding="utf-8-sig"))
     except (OSError, json.JSONDecodeError) as exc:
         raise ValueError(f"Cannot read valid JSON from {path}: {exc}") from exc
     if not isinstance(data, dict):
@@ -116,8 +120,10 @@ def payload_identity(path: Path, data: dict[str, Any], source_name: str, section
     raw = canonical_json(section_payload).encode("utf-8")
     digest = sha256_bytes(raw)
     version = str(data.get("dataset_version") or "unknown")
-    job_id = stable_id("job", data["symbol"], source_name, version, digest)
-    payload_id = stable_id("payload", data["symbol"], source_name, version, digest)
+    # Financial import semantics changed: never reuse the legacy mutable batch IDs.
+    revision = (FINANCIAL_INGEST_VERSION,) if isinstance(section_payload, dict) else ()
+    job_id = stable_id("job", data["symbol"], source_name, version, digest, *revision)
+    payload_id = stable_id("payload", data["symbol"], source_name, version, digest, *revision)
     source_uri = f"{path.name}#{'price_history' if isinstance(section_payload, list) else 'financial_data'}"
     return job_id, payload_id, digest, source_uri
 
@@ -149,7 +155,9 @@ def financial_rows(data: dict[str, Any], company_id: uuid.UUID, payload_id: uuid
                 result["periods"].append((period_id, period_code, year, quarter, period_type, start_date, end_date))
                 periods_seen.add(period_code)
 
-            report_id = stable_id("report", data["symbol"], period_code, report_scope)
+            # One statement per report, bound to an immutable source snapshot.
+            report_id = stable_id("report", data["symbol"], period_code, report_scope,
+                                  payload_id, FINANCIAL_INGEST_VERSION)
             if report_id not in reports_seen:
                 published_at = row.get("publicDate") or row.get("published_at")
                 if isinstance(published_at, str) and published_at:
@@ -160,19 +168,23 @@ def financial_rows(data: dict[str, Any], company_id: uuid.UUID, payload_id: uuid
                     published_at = None
                 result["reports"].append((
                     report_id, company_id, period_id, None, payload_id, job_id,
-                    report_scope, "UNKNOWN", 1, None, published_at,
+                    "UNKNOWN", "UNKNOWN", 1, None, published_at,
                 ))
                 reports_seen.add(report_id)
 
             for raw_key, value in row.items():
-                if raw_key in META_KEYS or value is None or isinstance(value, bool) or not isinstance(value, (int, float)):
+                if raw_key in META_KEYS or value is None or isinstance(value, bool) or not isinstance(value, (int, float, Decimal)):
                     continue
+                if isinstance(value, float):
+                    raise ValueError('Financial float is not accepted; load JSON with normalize_payload/Decimal')
+                value = Decimal(value)
+                if not value.is_finite():
+                    raise ValueError(f'Nonfinite financial value: {data["symbol"]}/{raw_key}')
                 code = get_code(raw_key, json_section, industry)
                 canonical_name = get_label_vi(code)
                 metric_id = stable_id("metric", industry, report_scope, code)
-                unit = "SOURCE_NATIVE" if json_section == "ratios" else (
-                    "VND_PER_SHARE" if code in {"BASIC_EARNINGS_PER_SHARE", "DILUTED_EARNINGS_PER_SHARE"} else "VND"
-                )
+                # A section/code alone does not certify the source unit.
+                unit = "SOURCE_NATIVE"
                 mapping_status = "MAPPED" if code != raw_key.upper() else "UNMAPPED"
                 metrics_seen[metric_id] = (
                     metric_id, code, canonical_name, report_scope, unit, industry, mapping_status,
@@ -180,12 +192,19 @@ def financial_rows(data: dict[str, Any], company_id: uuid.UUID, payload_id: uuid
                 observation_id = stable_id("observation", report_id, metric_id)
                 observation_unit = "SOURCE_NATIVE" if json_section == "ratios" else unit
                 currency = "VND" if observation_unit in {"VND", "VND_PER_SHARE"} else None
-                locator = json.dumps({
+                locator = canonical_json({
                     "source_field": raw_key,
                     "source_section": json_section,
                     "dataset_version": version,
                     "ratio_type": row.get("ratioType") if json_section == "ratios" else None,
-                }, ensure_ascii=False, separators=(",", ":"))
+                    "ingest_family": "normalized",
+                    "ingest_version": FINANCIAL_INGEST_VERSION,
+                    "source_payload_id": str(payload_id),
+                    "unit_status": "UNVERIFIED",
+                    "period_basis": "UNVERIFIED",
+                })
+                if observation_id in observations:
+                    raise ValueError(f'Duplicate financial metric: {data["symbol"]}/{period_code}/{report_scope}/{code}')
                 observations[observation_id] = (
                     observation_id, report_id, metric_id, value, observation_unit, 1, currency, locator,
                 )
@@ -258,14 +277,13 @@ async def store_job_and_payload(
            ON CONFLICT (job_id) DO UPDATE SET
              status = EXCLUDED.status, finished_at = EXCLUDED.finished_at,
              records_ok = EXCLUDED.records_ok""",
-        job_id, source_id, str(data.get("schema_version") or "1.0"), now, record_count,
+        job_id, source_id, (FINANCIAL_INGEST_VERSION if source_type == 'FINANCIAL_DATA'
+                            else str(data.get("schema_version") or "1.0")), now, record_count,
     )
     await conn.execute(
         """INSERT INTO public.raw_payloads (payload_id, job_id, source_uri, sha256, payload, stored_at)
            VALUES ($1, $2, $3, $4, $5::jsonb, $6)
-           ON CONFLICT (payload_id) DO UPDATE SET
-             source_uri = EXCLUDED.source_uri, sha256 = EXCLUDED.sha256,
-             payload = EXCLUDED.payload, stored_at = EXCLUDED.stored_at""",
+           ON CONFLICT (payload_id) DO NOTHING""",
         payload_id, job_id, source_uri, digest, canonical_json(section_payload), now,
     )
     return job_id, payload_id
@@ -302,23 +320,25 @@ async def upsert_rows(conn: asyncpg.Connection, rows: dict[str, list[tuple]]) ->
         ("reports", """INSERT INTO public.financial_reports
              (report_id, company_id, period_id, document_id, payload_id, job_id, statement_scope,
               audit_status, report_version, restated_from_id, published_at)
-           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) ON CONFLICT (report_id) DO UPDATE SET
-             payload_id=EXCLUDED.payload_id, job_id=EXCLUDED.job_id, audit_status=EXCLUDED.audit_status,
-             published_at=EXCLUDED.published_at"""),
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) ON CONFLICT (report_id) DO NOTHING"""),
         ("metrics", """INSERT INTO public.metrics
              (metric_id, code, canonical_name, section, default_unit, industry_scope, mapping_status)
-           VALUES ($1,$2,$3,$4,$5,$6,$7) ON CONFLICT (metric_id) DO UPDATE SET
-             canonical_name=EXCLUDED.canonical_name, default_unit=EXCLUDED.default_unit,
-             mapping_status=EXCLUDED.mapping_status"""),
+           VALUES ($1,$2,$3,$4,$5,$6,$7) ON CONFLICT (metric_id) DO NOTHING"""),
         ("observations", """INSERT INTO public.observations
              (observation_id, report_id, metric_id, value, unit, scale, currency, locator_json)
-           VALUES ($1,$2,$3,$4,$5,$6,$7,$8::jsonb) ON CONFLICT (observation_id) DO UPDATE SET
-             value=EXCLUDED.value, unit=EXCLUDED.unit, scale=EXCLUDED.scale,
-             currency=EXCLUDED.currency, locator_json=EXCLUDED.locator_json"""),
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8::jsonb) ON CONFLICT (observation_id) DO NOTHING"""),
     ]
     for key, sql in statements:
         if rows.get(key):
             await conn.executemany(sql, rows[key])
+    if rows.get('observations'):
+        stored = await conn.fetch('''SELECT observation_id,report_id,metric_id,value,unit,scale,currency,locator_json
+            FROM public.observations WHERE report_id=ANY($1::uuid[])''', [r[0] for r in rows['reports']])
+        actual = {r['observation_id']: (r['report_id'],r['metric_id'],r['value'],r['unit'],r['scale'],r['currency'],
+                  exact_json.loads(r['locator_json']) if isinstance(r['locator_json'],str) else r['locator_json']) for r in stored}
+        expected = {r[0]: (*r[1:7],exact_json.loads(r[7])) for r in rows['observations']}
+        if actual != expected:
+            raise ValueError('Exact financial readback failed; transaction must roll back')
 
 
 async def apply_file(conn: asyncpg.Connection, path: Path, data: dict[str, Any]) -> dict[str, int]:
@@ -391,7 +411,9 @@ async def run(args: argparse.Namespace) -> int:
     for path in paths:
         data = normalize_payload(path)
         company_id = stable_id("company", data["symbol"])
-        rows = financial_rows(data, company_id, stable_id("payload", "preview"), stable_id("job", "preview"))
+        source = source_info(data)[1]
+        job_id, payload_id, _, _ = payload_identity(path, data, source[0], source[3])
+        rows = financial_rows(data, company_id, payload_id, job_id)
         counts = {
             "price_bars": len(price_rows(data, company_id, stable_id("payload", "preview"))),
             "reporting_periods": len(rows["periods"]),

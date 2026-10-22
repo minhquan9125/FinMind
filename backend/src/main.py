@@ -15,6 +15,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from .documents.chunk_reconstruction import ReconstructionError
+from .documents.corpus_scope import CorpusScopeError
 
 from .api.routers import auth, documents, search, market_data
 from .market_data.app import lifespan as market_lifespan
@@ -44,6 +45,11 @@ async def source_reconstruction_error(request, exc):
         'detail': 'Không thể xác minh nội dung nguồn của kết quả. Cần kiểm tra hoặc lập chỉ mục lại nguồn.',
         'reason_code': exc.code,
     })
+
+
+@app.exception_handler(CorpusScopeError)
+async def corpus_scope_error(request,exc):
+    return JSONResponse(status_code=409,content={'detail':str(exc),'reason_code':exc.code})
 
 app.add_middleware(
     CORSMiddleware,

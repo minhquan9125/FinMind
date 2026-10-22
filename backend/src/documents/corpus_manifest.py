@@ -70,7 +70,11 @@ async def read_manifest(conn, index_id: str) -> dict:
         'WHERE t.index_version_id=$1 AND t.superseded_at IS NULL', uuid.UUID(index_id))
     from .repository import resolve_result_rows
     materialized = [dict(row) for row in rows]
-    lookup = [dict(row, chunker_version=index['chunker_version']) for row in materialized]
+    lookup = [
+        dict(row, chunker_version=index['chunker_version'],
+             index_version_id=index['index_version_id'])
+        for row in materialized
+    ]
     rebuilt = await resolve_result_rows(conn, lookup)
     for row, resolved in zip(materialized, rebuilt):
         row['chunk_text'] = resolved['text']

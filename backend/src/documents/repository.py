@@ -18,9 +18,30 @@ def index_for_document(document, chunk_words, overlap, model):
     return index_version_id_for(chunk_words, overlap, model)
 
 
+async def index_for_read(pool, document, settings):
+    """Use the configured corpus for DB document detail reads as well as search."""
+    if document.get('file_type')=='DB' and settings.default_corpus_version_id:
+        from .corpus_scope import load_scope,CorpusScopeError
+        async with pool.acquire() as conn:
+            async with conn.transaction(readonly=True,isolation='repeatable_read'):
+                scope=await load_scope(conn,settings.default_corpus_version_id,model=settings.embedding_model_ref,
+                                       expected_hash=settings.default_corpus_manifest_sha256)
+                member=await conn.fetchval('SELECT 1 FROM public.corpus_documents WHERE corpus_version_id=$1 AND document_id=$2',
+                    uuid.UUID(scope.corpus_version_id),uuid.UUID(str(document['id'])))
+                if not member:raise CorpusScopeError('DOCUMENT_OUTSIDE_CORPUS','Document is outside configured corpus')
+                return scope.index_version_id
+    return index_for_document(document,settings.chunk_words,settings.chunk_words-settings.chunk_stride,settings.embedding_model_ref)
+
+
 async def resolve_result_rows(conn, rows):
     """Rebuild result text exclusively from verified sources."""
     resolved, sources = [], {}
+    from .core_snapshot import configured_source_snapshot
+    from ..core.config import get_settings
+    source_backend=get_settings().source_read_backend
+    if source_backend not in ('local','supabase'):
+        raise ReconstructionError('INVALID_SOURCE_BACKEND','Unknown source read backend')
+    snapshot = configured_source_snapshot() if source_backend=='local' else None
     for record in rows:
         row = dict(record)
         try:
@@ -34,9 +55,29 @@ async def resolve_result_rows(conn, rows):
             # Validate metadata before using max_words in a source query.
             from .chunk_reconstruction import _metadata
             _, meta = _metadata(locator)
-            key = (locator['source_table'], locator['source_id'], meta['max_words'])
+            if source_backend=='supabase' and row.get('chunker_version')=='db-corpus-v2':
+                from .shared_source import resolve_shared_source
+                if not row.get('index_version_id'):
+                    raise ReconstructionError('INVALID_LOCATOR','Shared source requires index identity')
+                row['text']=await resolve_shared_source(conn,row['index_version_id'],locator,row['content_hash'],sources)
+                resolved.append(row)
+                continue
+            archived = row.get('chunker_version') == 'db-corpus-v2' and locator['source_table'] == 'financial_reports'
+            index_id = row.get('index_version_id') if archived else None
+            if archived and not index_id:
+                raise ReconstructionError('INVALID_LOCATOR', 'Archived financial source requires index identity')
+            if snapshot is not None:
+                row['text'] = snapshot.resolve(locator, row['content_hash'])
+                resolved.append(row)
+                continue
+            key = (locator['source_table'], locator['source_id'], meta['max_words'], meta['chunker_version'], str(index_id))
             if key not in sources:
-                sources[key] = await fetch_locator_document(conn, *key)
+                kwargs = ({'financial_renderer_version': meta['chunker_version']}
+                          if locator['source_table'] == 'financial_reports' else {})
+                sources[key] = await fetch_locator_document(conn, *key[:3], **kwargs)
+                if archived and sources[key] is not None:
+                    from .renderer_context import read_renderer_context
+                    sources[key] = await read_renderer_context(conn, index_id, sources[key])
             source = sources[key]
             if source is None:
                 raise ReconstructionError('SOURCE_MISSING', 'Source no longer available')
@@ -108,7 +149,7 @@ async def get_chunks(pool, document_id, index_version_id):
     async with pool.acquire() as conn:
         async with conn.transaction(readonly=True, isolation='repeatable_read'):
             rows = await conn.fetch(
-                'SELECT t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,'
+                'SELECT t.index_version_id,t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,'
                 't.token_count,i.chunker_version FROM text_chunks t JOIN index_versions i USING(index_version_id) '
                 'WHERE t.document_id=$1 AND t.index_version_id=$2 AND t.superseded_at IS NULL '
                 'ORDER BY t.chunk_index', uuid.UUID(document_id), uuid.UUID(index_version_id))
@@ -119,9 +160,60 @@ async def vector_search(pool, document_id, index_version_id, query_embedding, to
     async with pool.acquire() as conn:
         async with conn.transaction(readonly=True, isolation='repeatable_read'):
             rows = await conn.fetch(
-                'SELECT t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,i.chunker_version,'
+                'SELECT t.index_version_id,t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,i.chunker_version,'
                 '1-(t.embedding <=> $3::vector) AS score FROM text_chunks t JOIN index_versions i USING(index_version_id) '
                 'WHERE t.document_id=$1 AND t.index_version_id=$2 AND t.superseded_at IS NULL '
                 'ORDER BY t.embedding <=> $3::vector LIMIT $4',
                 uuid.UUID(document_id), uuid.UUID(index_version_id), query_embedding, top_k)
             return await resolve_result_rows(conn, rows)
+
+
+async def corpus_vector_search(pool, corpus_id, query_embedding, top_k, *, model,
+                               document_id=None, expected_hash=None,symbols=None,period_codes=None,metric_codes=None):
+    """Search exactly one registered corpus; no BUILDING/legacy fallback."""
+    from .corpus_scope import load_scope, CorpusScopeError
+    async with pool.acquire() as conn:
+        async with conn.transaction(readonly=True,isolation='repeatable_read'):
+            scope=await load_scope(conn,corpus_id,model=model,expected_hash=expected_hash)
+            mismatched=await conn.fetchval('''SELECT count(*) FROM public.corpus_documents cd
+                LEFT JOIN public.documents d USING(document_id) WHERE cd.corpus_version_id=$1
+                AND (d.document_id IS NULL OR d.sha256 IS DISTINCT FROM cd.document_hash)''',uuid.UUID(scope.corpus_version_id))
+            if mismatched:raise CorpusScopeError('CORPUS_DOCUMENT_CHANGED','Corpus document identity/hash changed')
+            if document_id:
+                member=await conn.fetchval('''SELECT 1 FROM public.corpus_documents
+                    WHERE corpus_version_id=$1 AND document_id=$2''',
+                    uuid.UUID(scope.corpus_version_id),uuid.UUID(document_id))
+                if not member:raise CorpusScopeError('DOCUMENT_OUTSIDE_CORPUS','Document is not in requested corpus')
+            metric_rows=None
+            if metric_codes is not None:
+                selected=await conn.fetch('''SELECT o.observation_id::text
+                    FROM public.corpus_facts cf JOIN public.observations o USING(observation_id)
+                    JOIN public.metrics m USING(metric_id)
+                    JOIN public.financial_reports fr ON fr.report_id=o.report_id
+                    JOIN public.reporting_periods rp USING(period_id)
+                    JOIN public.companies c ON c.company_id=fr.company_id
+                    WHERE cf.corpus_version_id=$1 AND c.symbol=ANY($2::text[])
+                      AND rp.period_code=ANY($3::text[]) AND m.code=ANY($4::text[])''',
+                    uuid.UUID(scope.corpus_version_id),symbols,period_codes,metric_codes)
+                metric_rows=[r['observation_id'] for r in selected]
+            rows=await conn.fetch('''SELECT t.chunk_id::text,t.document_id::text,t.index_version_id,
+                t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,i.chunker_version,
+                1-(t.embedding <=> $3::vector) AS score
+                FROM public.corpus_documents cd JOIN public.documents d USING(document_id)
+                JOIN public.text_chunks t ON t.document_id=d.document_id
+                JOIN public.index_versions i ON i.index_version_id=t.index_version_id
+                WHERE cd.corpus_version_id=$1 AND t.index_version_id=$2
+                  AND t.superseded_at IS NULL AND d.sha256=cd.document_hash
+                  AND ($4::uuid IS NULL OR t.document_id=$4)
+                  AND ($6::text[] IS NULL OR EXISTS (
+                    SELECT 1 FROM public.financial_reports fr
+                    JOIN public.reporting_periods rp ON rp.period_id=fr.period_id
+                    JOIN public.companies c ON c.company_id=fr.company_id
+                    WHERE fr.report_id::text=t.locator_json->>'source_id'
+                      AND t.locator_json->>'source_table'='financial_reports'
+                      AND c.symbol=ANY($6::text[]) AND rp.period_code=ANY($7::text[])))
+                  AND ($8::text[] IS NULL OR (t.locator_json->'row_keys') ?| $8::text[])
+                ORDER BY t.embedding <=> $3::vector,t.chunk_id LIMIT $5''',
+                uuid.UUID(scope.corpus_version_id),uuid.UUID(scope.index_version_id),query_embedding,
+                uuid.UUID(document_id) if document_id else None,top_k,symbols,period_codes,metric_rows)
+            return scope,await resolve_result_rows(conn,rows)

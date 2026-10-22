@@ -14,6 +14,18 @@ from fastapi.testclient import TestClient
 from src.documents import repository
 from src.documents.embeddings import get_embedding_service
 from src.main import app
+import pytest
+from src.core.config import Settings,get_settings
+
+
+@pytest.fixture(autouse=True)
+def isolated_settings():
+    previous=dict(app.dependency_overrides)
+    app.dependency_overrides[get_settings]=lambda: Settings(_env_file=None)
+    app.dependency_overrides[get_embedding_service]=lambda: FakeEmbedder()
+    yield
+    app.dependency_overrides.clear()
+    app.dependency_overrides.update(previous)
 
 
 class FakeEmbedder:

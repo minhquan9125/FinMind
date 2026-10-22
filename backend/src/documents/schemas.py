@@ -1,6 +1,7 @@
 """Pydantic request/response models for the Vector RAG API."""
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from uuid import UUID
 
 
 class DocumentOut(BaseModel):
@@ -43,12 +44,15 @@ class VocabResponse(BaseModel):
 
 
 class SearchRequest(BaseModel):
-    document_id: str
+    document_id: str | None = None
+    corpus_version_id: UUID | None = None
     query: str
-    top_k: int | None = None
+    top_k: int | None = Field(default=None, ge=1, le=100)
 
 
 class SearchResultOut(BaseModel):
+    chunk_id: str | None = None
+    document_id: str | None = None
     chunk_index: int
     page: int | None
     text: str
@@ -57,4 +61,6 @@ class SearchResultOut(BaseModel):
 
 
 class SearchResponse(BaseModel):
+    corpus_version_id: str | None = None
+    index_version_id: str | None = None
     results: list[SearchResultOut]

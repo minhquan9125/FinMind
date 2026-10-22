@@ -1,0 +1,1614 @@
+{
+  "schema_version": "unmatched-metric-review-v1",
+  "database_writes": false,
+  "reviews": [
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "ACCRUED_EXPENSES_PAYABLE",
+      "canonical_name": "Chi phí phải trả",
+      "source_fields": [
+        "bsb272"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Chi phí phải trả có thể gồm cả khoản ngoài lãi/phí; không nối vào riêng lãi/phí phải trả của ngân hàng."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "DEPOSITS_FROM_OTHER_BANKS",
+      "canonical_name": "Tiền gửi của các tổ chức tín dụng khác",
+      "source_fields": [
+        "bsb270"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.interbank_deposits_received",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "DERIVATIVES_AND_OTHER_FINANCIAL_LIABILITIES",
+      "canonical_name": "Công cụ tài chính phái sinh và các khoản nợ tài chính khác",
+      "source_fields": [
+        "bsb114"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.derivative_financial_liabilities",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "DERIVATIVES_ASSETS",
+      "canonical_name": "Tài sản tài chính phái sinh",
+      "source_fields": [
+        "bsb102"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Tên nguồn chỉ nêu phái sinh; mục đích còn gồm tài sản tài chính khác. Cần xác nhận đầy đủ cấu phần nguồn."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "DUE_TO_AND_BORROWINGS_FROM_BANKS",
+      "canonical_name": "Tiền gửi và vay các tổ chức tín dụng khác",
+      "source_fields": [
+        "bsb112"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.interbank_funding_total",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "DUE_TO_GOVT_AND_CENTRAL_BANK",
+      "canonical_name": "Các khoản nợ Chính phủ và Ngân hàng Nhà nước",
+      "source_fields": [
+        "bsb111"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.government_central_bank_debts",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "FOREIGN_EXCHANGE_COMMITMENTS",
+      "canonical_name": "Cam kết giao dịch hối đoái",
+      "source_fields": [
+        "bsb179"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.fx_transaction_commitments",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "FOREIGN_EXCHANGE_SWAP_COMMITMENTS",
+      "canonical_name": "Cam kết giao dịch hoán đổi ngoại tệ",
+      "source_fields": [
+        "bsb182"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.fx_swap_commitments",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "FUNDS_GRANTS_TRUSTS",
+      "canonical_name": "Nguồn vốn tài trợ, ủy thác đầu tư",
+      "source_fields": [
+        "bsb115"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Mục đích yêu cầu ngân hàng chịu rủi ro; tên nguồn chưa xác nhận điều kiện này."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "INTANGIBLE_FA_DEPRECIATION",
+      "canonical_name": "Hao mòn lũy kế tài sản cố định vô hình",
+      "source_fields": [
+        "bsa38"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.intangible_fixed_assets_accumulated_depreciation",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "INTANGIBLE_FA_GROSS",
+      "canonical_name": "Nguyên giá tài sản cố định vô hình",
+      "source_fields": [
+        "bsa37"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.intangible_fixed_assets_gross",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "INVESTMENT_PROPERTY_DEPRECIATION",
+      "canonical_name": "Hao mòn bất động sản đầu tư",
+      "source_fields": [
+        "bsa42"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.investment_property_accumulated_depreciation",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "INVESTMENT_PROPERTY_NET",
+      "canonical_name": "Bất động sản đầu tư, giá trị còn lại",
+      "source_fields": [
+        "bsa40"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.investment_property",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "INVESTMENTS_IN_ASSOCIATES_JV",
+      "canonical_name": "Đầu tư vào công ty liên kết, liên doanh",
+      "source_fields": [
+        "bsa45"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.investments_in_associates_joint_ventures",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "JV_INVESTMENTS",
+      "canonical_name": "Đầu tư vào công ty liên doanh",
+      "source_fields": [
+        "bsa276"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.investments_in_joint_ventures",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "LETTERS_OF_CREDIT_COMMITMENTS",
+      "canonical_name": "Cam kết trong nghiệp vụ thư tín dụng",
+      "source_fields": [
+        "bsb185"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.letter_of_credit_commitments",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "LOAN_GUARANTEES",
+      "canonical_name": "Bảo lãnh vay vốn",
+      "source_fields": [
+        "bsb158"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.loan_guarantee_commitments",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "LONG_TERM_INVESTMENTS",
+      "canonical_name": "Đầu tư tài chính dài hạn",
+      "source_fields": [
+        "bsa43"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận đây là tổng đầu tư vốn thuần sau dự phòng, không phải mọi khoản đầu tư tài chính dài hạn."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "OTHER_ASSET_RECEIVABLES",
+      "canonical_name": "Các khoản phải thu trong tài sản Có khác",
+      "source_fields": [
+        "bsb264"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.other_receivables",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "OTHER_ASSETS",
+      "canonical_name": "Tài sản khác",
+      "source_fields": [
+        "bsb110"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.other_assets_total",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "OTHER_ASSETS_DETAIL",
+      "canonical_name": "Tài sản Có khác, chi tiết",
+      "source_fields": [
+        "bsb267"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.other_assets_residual",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "OTHER_GUARANTEES",
+      "canonical_name": "Bảo lãnh khác",
+      "source_fields": [
+        "bsb131"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.other_guarantee_commitments",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "OTHER_LIABILITIES",
+      "canonical_name": "Nợ phải trả khác",
+      "source_fields": [
+        "bsb117"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.other_liabilities_total",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "OTHER_OFF_BALANCE_COMMITMENTS",
+      "canonical_name": "Các cam kết khác ngoài bảng",
+      "source_fields": [
+        "bsb186"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.other_off_balance_commitments",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PROVISION_FOR_OTHER_LIABILITIES",
+      "canonical_name": "Dự phòng các khoản nợ khác",
+      "source_fields": [
+        "bsb275"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Dự phòng nợ khác không mặc định chỉ là dự phòng công nợ tiềm ẩn."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PROVISION_FOR_OTHER_ON_BALANCE_SHEET_ASSETS",
+      "canonical_name": "Dự phòng rủi ro cho tài sản Có nội bảng khác",
+      "source_fields": [
+        "bsb269"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.other_assets_allowance",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PROVISION_INVESTMENT_SECURITIES",
+      "canonical_name": "Dự phòng giảm giá chứng khoán đầu tư",
+      "source_fields": [
+        "bsb109"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.investment_securities_provision",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PROVISION_LOANS_OTHER_BANKS",
+      "canonical_name": "Dự phòng rủi ro cho vay các tổ chức tín dụng khác",
+      "source_fields": [
+        "bsb260"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.interbank_credit_loss_allowance",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PROVISION_LONG_TERM_INVESTMENTS",
+      "canonical_name": "Dự phòng tổn thất đầu tư vào đơn vị khác",
+      "source_fields": [
+        "bsa47"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.long_term_equity_investments_allowance",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PROVISION_TRADING_SECURITIES",
+      "canonical_name": "Dự phòng giảm giá chứng khoán kinh doanh",
+      "source_fields": [
+        "bsb101"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.trading_securities_provision",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PURCHASED_DEBTS_GROSS",
+      "canonical_name": "Mua nợ, giá trị gộp",
+      "source_fields": [
+        "bsb262"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "banking.purchased_debt_gross",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PURCHASED_DEBTS_NET",
+      "canonical_name": "Hoạt động mua nợ, giá trị thuần",
+      "source_fields": [
+        "bsb261"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "banking.purchased_debt_net",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "PURCHASED_DEBTS_PROVISION",
+      "canonical_name": "Dự phòng rủi ro hoạt động mua nợ",
+      "source_fields": [
+        "bsb263"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "banking.purchased_debt_allowance",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "TANGIBLE_FA_DEPRECIATION",
+      "canonical_name": "Hao mòn lũy kế tài sản cố định hữu hình",
+      "source_fields": [
+        "bsa32"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.tangible_fixed_assets_accumulated_depreciation",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "TANGIBLE_FA_GROSS",
+      "canonical_name": "Nguyên giá tài sản cố định hữu hình",
+      "source_fields": [
+        "bsa31"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.tangible_fixed_assets_gross",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "TOTAL_FX_LC_AND_OTHER_COMMITMENTS",
+      "canonical_name": "Tổng cam kết ngoại hối, thư tín dụng và cam kết khác",
+      "source_fields": [
+        "bsb132"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Nguồn gộp ngoại hối, thư tín dụng và cam kết khác; không nối vào một thành phần."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "TOTAL_GUARANTEE_OBLIGATIONS",
+      "canonical_name": "Tổng nghĩa vụ bảo lãnh",
+      "source_fields": [
+        "bsb126"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Tổng nghĩa vụ bảo lãnh không thay riêng bảo lãnh vay vốn hoặc bảo lãnh khác."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "BALANCE_SHEET",
+      "code": "TRADING_SECURITIES",
+      "canonical_name": "Chứng khoán kinh doanh, giá trị thuần",
+      "source_fields": [
+        "bsb99"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.trading_securities_net",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "BANK_INTEREST_PAID_DIRECT_METHOD",
+      "canonical_name": "Tiền lãi và các khoản tương tự đã trả theo LCTT trực tiếp ngân hàng",
+      "source_fields": [
+        "cfb76"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.interest_cash_paid",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CASH_PAID_FOR_DISPOSAL_OF_FIXED_ASSETS",
+      "canonical_name": "Tiền chi từ thanh lý, nhượng bán tài sản cố định",
+      "source_fields": [
+        "cfb67"
+      ],
+      "category": "linked",
+      "proposed_target": "common.fixed_asset_disposal_cash_paid",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CASH_PAID_FROM_CREDIT_INSTITUTION_FUNDS",
+      "canonical_name": "Tiền chi từ các quỹ của tổ chức tín dụng",
+      "source_fields": [
+        "cfb65"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.bank_funds_cash_paid",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_CREDIT_LOSS_PROVISIONS",
+      "canonical_name": "Tăng/giảm dự phòng rủi ro tín dụng, chứng khoán, đầu tư và phải thu",
+      "source_fields": [
+        "cfb54"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Nguồn gồm dự phòng tín dụng, chứng khoán, đầu tư và phải thu; khác sử dụng dự phòng cho vay riêng."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_CUSTOMER_DEPOSITS",
+      "canonical_name": "Tăng/giảm tiền gửi của khách hàng",
+      "source_fields": [
+        "cfb58"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.customer_deposits_cash_change",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_CUSTOMER_LOANS_AND_DEBT_PURCHASES",
+      "canonical_name": "Tăng/giảm cho vay khách hàng và mua nợ",
+      "source_fields": [
+        "cfb52"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Nguồn gồm cho vay khách hàng và mua nợ; mục cho vay riêng không bao phủ phần mua nợ."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_DEPOSITS_AND_LOANS_TO_OTHER_BANKS",
+      "canonical_name": "Tăng/giảm tiền gửi và cho vay các tổ chức tín dụng khác",
+      "source_fields": [
+        "cfb49"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.interbank_assets_cash_change",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_DERIVATIVES_AND_OTHER_FINANCIAL_ASSETS",
+      "canonical_name": "Tăng/giảm công cụ tài chính phái sinh và tài sản tài chính khác",
+      "source_fields": [
+        "cfb51"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.derivative_assets_cash_change",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_DERIVATIVES_AND_OTHER_FINANCIAL_LIABILITIES",
+      "canonical_name": "Tăng/giảm công cụ tài chính phái sinh và nợ tài chính khác",
+      "source_fields": [
+        "cfb59"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.derivative_liabilities_cash_change",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_GOVERNMENT_AND_CENTRAL_BANK_LIABILITIES",
+      "canonical_name": "Tăng/giảm các khoản nợ Chính phủ và Ngân hàng Nhà nước",
+      "source_fields": [
+        "cfb56"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.government_sbv_debts_cash_change",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_INTERBANK_DEPOSITS_AND_BORROWINGS",
+      "canonical_name": "Tăng/giảm tiền gửi và tiền vay các tổ chức tín dụng khác",
+      "source_fields": [
+        "cfb57"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.interbank_funding_cash_change",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_RISK_BORNE_TRUSTED_FUNDS",
+      "canonical_name": "Tăng/giảm vốn tài trợ, ủy thác và cho vay mà tổ chức tín dụng chịu rủi ro",
+      "source_fields": [
+        "cfb60"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.entrusted_funding_cash_change",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "CHANGE_IN_VALUABLE_PAPERS_ISSUED",
+      "canonical_name": "Tăng/giảm phát hành giấy tờ có giá",
+      "source_fields": [
+        "cfb61"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.issued_securities_cash_change",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "DIVIDENDS_RECEIVED",
+      "canonical_name": "Cổ tức và lợi nhuận được chia đã nhận",
+      "source_fields": [
+        "cfa25"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận nguồn chỉ gồm cổ tức/lợi nhuận hay cả lãi cho vay; không thay tổng tiền lãi và cổ tức khi thiếu cấu phần."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "EMPLOYEE_AND_ADMIN_CASH_PAID",
+      "canonical_name": "Tiền chi trả cho nhân viên, quản lý và công vụ",
+      "source_fields": [
+        "cfb81"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.staff_admin_cash_paid",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "FX_EFFECT_ON_CASH",
+      "canonical_name": "Điều chỉnh ảnh hưởng của thay đổi tỷ giá đến tiền và tương đương tiền",
+      "source_fields": [
+        "cfa37"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.exchange_effect_on_cash",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "INTEREST_RECEIVED",
+      "canonical_name": "Tiền lãi và các khoản tương tự đã thu",
+      "source_fields": [
+        "cfb75"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.interest_cash_received",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "OPERATING_FX_CASH_DIFFERENCE",
+      "canonical_name": "Chênh lệch tiền thực thu/chi từ hoạt động kinh doanh do ngoại tệ, vàng bạc, chứng khoán",
+      "source_fields": [
+        "cfb79"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.net_trading_cash_flow",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "OPERATING_PROFIT_BEFORE_WC",
+      "canonical_name": "Lợi nhuận kinh doanh trước thay đổi vốn lưu động",
+      "source_fields": [
+        "cfa9"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Lợi nhuận trước thay đổi vốn lưu động cần đối chiếu các điều chỉnh trước khi coi là dòng tiền trước thay đổi tài sản/nợ."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "PROCEEDS_FROM_LONG_TERM_BORROWINGS_AND_BONDS",
+      "canonical_name": "Tiền thu từ phát hành giấy tờ có giá dài hạn và vay dài hạn",
+      "source_fields": [
+        "cfb71"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận phạm vi giấy tờ có giá tính vốn tự có và phân loại hoạt động tài chính; mục trong Excel cũng chưa chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "PROCEEDS_FROM_SHARE_ISSUANCE",
+      "canonical_name": "Tiền thu từ góp vốn và phát hành cổ phiếu",
+      "source_fields": [
+        "cfa27"
+      ],
+      "category": "decision_pending",
+      "proposed_target": "common.financing_cash_inflow_equity_issued",
+      "reason": "Có mục tương ứng, nhưng Excel chưa cho giữ. Không tự thay quyết định đã chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "PURCHASE_FIXED_ASSETS",
+      "canonical_name": "Tiền chi mua sắm, xây dựng tài sản cố định",
+      "source_fields": [
+        "cfa19"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Phải xác nhận nguồn có gồm tài sản dài hạn khác hay chỉ TSCĐ trước khi chọn mục mua TSCĐ riêng hoặc tổng chi đầu tư."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "RECOVERY_OF_WRITTEN_OFF_DEBTS",
+      "canonical_name": "Tiền thu các khoản nợ đã xử lý, xóa hoặc bù đắp bằng nguồn rủi ro",
+      "source_fields": [
+        "cfb106"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.written_off_debt_cash_recovered",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "REPAYMENTS_OF_LONG_TERM_BORROWINGS_AND_BONDS",
+      "canonical_name": "Tiền chi trả giấy tờ có giá dài hạn và các khoản vay dài hạn",
+      "source_fields": [
+        "cfb72"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận phạm vi giấy tờ có giá tính vốn tự có và phân loại hoạt động tài chính; mục trong Excel cũng chưa chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "SERVICE_FEES_RECEIVED",
+      "canonical_name": "Tiền thu từ hoạt động dịch vụ",
+      "source_fields": [
+        "cfb77"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Nguồn ghi tiền thu dịch vụ; mục đích là thu dịch vụ thuần. Chưa rõ đã trừ tiền chi hay chưa."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "CASH_FLOW",
+      "code": "TAX_PAID",
+      "canonical_name": "Thuế đã nộp",
+      "source_fields": [
+        "cfa43"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Thuế đã nộp có thể gồm nhiều loại thuế; không thay riêng tiền thuế TNDN đã nộp."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "INCOME_STATEMENT",
+      "code": "DIVIDEND_INCOME",
+      "canonical_name": "Thu nhập cổ tức và lợi nhuận được chia",
+      "source_fields": [
+        "isb37"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.equity_investment_income",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "INCOME_STATEMENT",
+      "code": "MINORITY_INTEREST",
+      "canonical_name": "Lợi nhuận thuộc cổ đông không kiểm soát",
+      "source_fields": [
+        "isa21"
+      ],
+      "category": "linked",
+      "proposed_target": "common.profit_noncontrolling",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "INCOME_STATEMENT",
+      "code": "OPERATING_PROFIT_BEFORE_PROVISION",
+      "canonical_name": "Lợi nhuận thuần từ hoạt động kinh doanh trước chi phí dự phòng",
+      "source_fields": [
+        "isb40"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.pre_provision_profit",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "INCOME_STATEMENT",
+      "code": "OTHER_OPERATING_INCOME",
+      "canonical_name": "Thu nhập hoạt động khác",
+      "source_fields": [
+        "isb34"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.other_operating_income_gross",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "INCOME_STATEMENT",
+      "code": "PARENT_NET_PROFIT",
+      "canonical_name": "Lợi nhuận sau thuế thuộc cổ đông công ty mẹ",
+      "source_fields": [
+        "isa22"
+      ],
+      "category": "linked",
+      "proposed_target": "common.profit_parent",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "INCOME_STATEMENT",
+      "code": "TAX_EXPENSE_TOTAL",
+      "canonical_name": "Tổng chi phí thuế thu nhập doanh nghiệp",
+      "source_fields": [
+        "isa19"
+      ],
+      "category": "linked",
+      "proposed_target": "common.income_tax_expense",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "INCOME_STATEMENT",
+      "code": "TOTAL_OPERATING_EXPENSES",
+      "canonical_name": "Tổng chi phí hoạt động",
+      "source_fields": [
+        "isb39"
+      ],
+      "category": "linked",
+      "proposed_target": "banking.operating_expenses",
+      "reason": "Khác cách đặt tên; cùng loại khoản mục và nhóm báo cáo. Chỉ nối danh mục; còn phải xác minh trường API, dấu và đơn vị."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "AFTER_TAX_MARGIN",
+      "canonical_name": "Tỷ suất lợi nhuận sau thuế",
+      "source_fields": [
+        "afterTaxProfitMargin"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận mẫu số thu nhập của ngân hàng; không dùng doanh thu doanh nghiệp thông thường thay tổng thu nhập hoạt động. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "ASSET_TURNOVER",
+      "canonical_name": "Vòng quay tổng tài sản",
+      "source_fields": [
+        "assetTurnover"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Vòng quay tài sản cần xác nhận doanh thu và tài sản bình quân; không thay chỉ tiêu tự tính trong bộ tiêu chí. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "AVG_COST_OF_FINANCING",
+      "canonical_name": "Chi phí vốn bình quân",
+      "source_fields": [
+        "averageCostOfFinancing"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần phương pháp và phạm vi nguồn vốn của nhà cung cấp; mục chi phí huy động trong Excel chưa chốt."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "AVG_YIELD_EARNING_ASSETS",
+      "canonical_name": "Tỷ suất sinh lời bình quân của tài sản sinh lãi",
+      "source_fields": [
+        "averageYieldOnEarningAssets"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Lợi suất tài sản sinh lãi không phải NIM: chưa trừ chi phí lãi."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "CASH_CYCLE",
+      "canonical_name": "Chu kỳ tiền mặt",
+      "source_fields": [
+        "cashCycle"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Chu kỳ tiền gồm ngày tồn kho, phải thu và phải trả; chưa có mục được giữ cùng công thức cho nguồn này. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "CASH_RATIO",
+      "canonical_name": "Tỷ số thanh toán bằng tiền mặt",
+      "source_fields": [
+        "cashRatio"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận tử số gồm tiền hay cả tương đương tiền và đầu tư ngắn hạn; không thay chỉ số tự tính. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "CURRENT_RATIO",
+      "canonical_name": "Hệ số thanh toán hiện hành",
+      "source_fields": [
+        "currentRatio"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Chưa có mục được giữ áp dụng cho BANK; không ép phân loại tài sản/nợ ngắn hạn của doanh nghiệp lên ngân hàng. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "DAYS_INVENTORY_OUTSTANDING",
+      "canonical_name": "Số ngày tồn kho bình quân",
+      "source_fields": [
+        "daysInventoryOutstanding"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Chỉ số ngày tồn kho không mặc định áp dụng ngân hàng; cần chốt tính phù hợp và công thức. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "DAYS_PAYABLE_OUTSTANDING",
+      "canonical_name": "Số ngày phải trả bình quân",
+      "source_fields": [
+        "daysPayableOutstanding"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần số dư phải trả bình quân và cơ sở giá vốn/mua hàng, số ngày; chưa có mục được giữ cùng công thức. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "DAYS_SALES_OUTSTANDING",
+      "canonical_name": "Số ngày thu tiền bình quân",
+      "source_fields": [
+        "daySaleOutstanding"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận phải thu nào, doanh thu nào và số ngày; không thay vòng quay phải thu. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "DEBT_PER_EQUITY",
+      "canonical_name": "Tỷ lệ nợ trên vốn chủ sở hữu",
+      "source_fields": [
+        "debtPerEquity"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Chưa xác nhận nợ vay hay tổng nợ phải trả trong tử số; không tự chọn tỷ lệ nợ/vốn chủ."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "DEPOSIT_GROWTH",
+      "canonical_name": "Tăng trưởng tiền gửi",
+      "source_fields": [
+        "depositGrowth"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần kỳ gốc và phạm vi tiền gửi để phân biệt tăng trưởng quý, năm và cùng kỳ; chưa chốt mục tương đương. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "DIVIDEND_YIELD",
+      "canonical_name": "Tỷ suất cổ tức",
+      "source_fields": [
+        "dividendYield"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Lợi suất cổ tức cần cổ tức tiền mặt, giá và ngày đo; khác tỷ lệ chi trả cổ tức trên lợi nhuận. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "EBIT_MARGIN",
+      "canonical_name": "Biên lợi nhuận trước lãi vay và thuế",
+      "source_fields": [
+        "ebitMargin"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần định nghĩa EBIT và mẫu số doanh thu; không thay biên lợi nhuận hoạt động hoặc biên EBITDA. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "EQUITY_TO_LIABILITIES",
+      "canonical_name": "Tỷ lệ vốn chủ sở hữu trên nợ phải trả",
+      "source_fields": [
+        "equityToLiabilities"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Vốn chủ/nợ phải trả khác nợ/vốn chủ và vốn chủ/tổng tài sản."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "EQUITY_TO_LOANS",
+      "canonical_name": "Tỷ lệ vốn chủ sở hữu trên tổng dư nợ cho vay",
+      "source_fields": [
+        "equityToLoans"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Vốn chủ/cho vay khác vốn chủ/tổng tài sản và hệ số an toàn vốn CAR."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "EQUITY_TO_TOTAL_ASSETS",
+      "canonical_name": "Tỷ lệ vốn chủ sở hữu trên tổng tài sản",
+      "source_fields": [
+        "totalEquityTotalAsset"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận nguồn dùng cuối kỳ hay bình quân và định nghĩa vốn chủ; không thay CAR."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "EV_TO_EBITDA",
+      "canonical_name": "Hệ số EV trên EBITDA",
+      "source_fields": [
+        "evToEbitda"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần định nghĩa giá trị doanh nghiệp, EBITDA và kỳ đo; không thay P/E hay chỉ tiêu lợi nhuận. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "FINANCIAL_LEVERAGE",
+      "canonical_name": "Đòn bẩy tài chính",
+      "source_fields": [
+        "financialLeverage"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần công thức nhà cung cấp và cơ sở bình quân/cuối kỳ; không suy công thức chỉ từ tên đòn bẩy."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "FIXED_ASSET_TURNOVER",
+      "canonical_name": "Vòng quay tài sản cố định",
+      "source_fields": [
+        "fixedAssetTurnover"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần TSCĐ thuần hay gộp, bình quân hay cuối kỳ và cơ sở doanh thu; không thay vòng quay tổng tài sản. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "GROSS_MARGIN",
+      "canonical_name": "Tỷ suất lợi nhuận gộp",
+      "source_fields": [
+        "grossMargin"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Không dùng biên lãi gộp doanh nghiệp thay NIM hoặc biên lợi nhuận ngân hàng. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "LLR_TO_LOANS",
+      "canonical_name": "Tỷ lệ dự phòng trên dư nợ cho vay",
+      "source_fields": [
+        "loansLossReserveToLoans"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Mẫu số nguồn là dư nợ cho vay; LLR trong bộ tiêu chí dùng nợ xấu. Hai tỷ lệ khác nhau."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "LOANS_GROWTH",
+      "canonical_name": "Tăng trưởng tín dụng",
+      "source_fields": [
+        "loansGrowth"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần kỳ gốc và phạm vi cho vay/tín dụng; chưa chốt mục tăng trưởng tương đương. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "MARKET_CAP",
+      "canonical_name": "Giá trị vốn hóa thị trường",
+      "source_fields": [
+        "marketCap"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Vốn hóa là giá thị trường nhân số cổ phiếu theo ngày đo; khác vốn điều lệ hoặc vốn chủ sổ sách. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "NON_INTEREST_INCOME_RATIO",
+      "canonical_name": "Tỷ trọng thu nhập ngoài lãi",
+      "source_fields": [
+        "nonAndInterestIncome"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Tỷ trọng thu nhập ngoài lãi không thay riêng thu nhập phí hoặc tỷ lệ chi phí/thu nhập."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "NUMBER_OF_SHARES_MKT_CAP",
+      "canonical_name": "Số lượng cổ phiếu lưu hành tính vốn hóa",
+      "source_fields": [
+        "numberOfSharesMktCap"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Số cổ phiếu dùng tính vốn hóa cần xác nhận ngày đo và loại cổ phiếu; không mặc định bằng số cổ phiếu lưu hành cuối kỳ."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "OWNERS_EQUITY_RATIO",
+      "canonical_name": "Tỷ lệ vốn chủ sở hữu",
+      "source_fields": [
+        "ownersEquity"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận mẫu số và cách tính của trường ownersEquity trước khi chọn tỷ lệ vốn chủ."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "PB",
+      "canonical_name": "Hệ số giá trên giá trị sổ sách",
+      "source_fields": [
+        "pb"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "P/B cần giá cổ phiếu và giá trị sổ sách trên cổ phiếu; chưa có mục P/B được giữ để nối. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "PE",
+      "canonical_name": "Hệ số giá trên thu nhập",
+      "source_fields": [
+        "pe"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "P/E cần giá cổ phiếu và EPS đúng kỳ; chưa có mục P/E được giữ để nối, không thay EPS. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "PRE_TAX_MARGIN",
+      "canonical_name": "Tỷ suất lợi nhuận trước thuế",
+      "source_fields": [
+        "preTaxProfitMargin"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần cơ sở doanh thu/thu nhập và kỳ đo; không thay biên sau thuế hoặc lợi nhuận trước thuế tuyệt đối. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "PRICE_TO_CASH_FLOW",
+      "canonical_name": "Hệ số giá trên dòng tiền",
+      "source_fields": [
+        "priceToCashFlow"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần phân biệt dòng tiền hoạt động hay dòng tiền khác trong mẫu số; chưa chốt mục được giữ tương đương. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "PROVISION_TO_LOANS",
+      "canonical_name": "Tỷ lệ dự phòng trên tổng dư nợ",
+      "source_fields": [
+        "provisionToOutstandingLoans"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Mẫu số là dư nợ cho vay, không phải nợ xấu; không thay tỷ lệ bao phủ nợ xấu."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "PS",
+      "canonical_name": "Hệ số giá trên doanh thu (P/S)",
+      "source_fields": [
+        "ps"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "P/S cần giá trị thị trường và doanh thu đúng kỳ; chưa có mục P/S được giữ để nối. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "QUICK_RATIO",
+      "canonical_name": "Hệ số thanh toán nhanh",
+      "source_fields": [
+        "quickRatio"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Chưa có mục được giữ áp dụng cho BANK; cần định nghĩa tài sản thanh khoản và nợ ngắn hạn nguồn. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "BANK",
+      "section": "RATIO",
+      "code": "ROIC",
+      "canonical_name": "Tỷ suất sinh lời trên vốn đầu tư (ROIC)",
+      "source_fields": [
+        "roic"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "ROIC dùng vốn đầu tư và lợi nhuận sau thuế điều chỉnh; không thay ROE hoặc ROA. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "BALANCE_SHEET",
+      "code": "INVESTMENTS_IN_SUBSIDIARIES_ASSOCIATES_JV",
+      "canonical_name": "Đầu tư vào công ty con, công ty liên doanh, liên kết",
+      "source_fields": [
+        "bsa45"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Nguồn gộp công ty con/liên kết/liên doanh; không nối vào một nhóm hẹp hơn."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "BALANCE_SHEET",
+      "code": "OTHER_LONG_TERM_INVESTMENTS",
+      "canonical_name": "Đầu tư dài hạn khác",
+      "source_fields": [
+        "bsa46"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Đầu tư dài hạn khác chưa chắc chỉ là đầu tư vốn; không mặc định loại các khoản đầu tư nợ."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "CASH_FLOW",
+      "code": "CASH_INVESTED_IN_SUBSIDIARIES_ASSOCIATES_JV",
+      "canonical_name": "Tiền chi đầu tư góp vốn vào công ty con, công ty liên kết, liên doanh",
+      "source_fields": [
+        "cfa23"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Nguồn chỉ nêu đầu tư công ty con/liên kết/liên doanh; cần xác nhận phạm vi so với tổng chi đầu tư góp vốn."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "CASH_FLOW",
+      "code": "DIVIDENDS_RECEIVED",
+      "canonical_name": "Cổ tức và lợi nhuận được chia đã nhận",
+      "source_fields": [
+        "cfa25"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận nguồn chỉ gồm cổ tức/lợi nhuận hay cả lãi cho vay; không thay tổng tiền lãi và cổ tức khi thiếu cấu phần."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "CASH_FLOW",
+      "code": "INTEREST_EXPENSE_ADJUSTMENT",
+      "canonical_name": "Điều chỉnh chi phí lãi vay",
+      "source_fields": [
+        "cfa7"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Đây là điều chỉnh chi phí lãi trong LCTT; không thay chi phí lãi trên KQKD hoặc tiền lãi thực trả."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "CASH_FLOW",
+      "code": "OTHER_OPERATING_CASH_FLOWS",
+      "canonical_name": "Tiền thu/chi khác từ hoạt động kinh doanh",
+      "source_fields": [
+        "cfa17"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Nguồn gộp dòng tiền hoạt động khác; không tự tách thành tiền thu khác và tiền chi khác."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "CASH_FLOW",
+      "code": "PROFIT_BEFORE_TAX",
+      "canonical_name": "Lợi nhuận trước thuế",
+      "source_fields": [
+        "cfa1"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Đây là dòng bắt đầu LCTT; chưa nối sang mục KQKD khi chưa đối chiếu phạm vi và kỳ báo cáo."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "CASH_FLOW",
+      "code": "PURCHASE_FIXED_ASSETS",
+      "canonical_name": "Tiền chi mua sắm, xây dựng tài sản cố định",
+      "source_fields": [
+        "cfa19"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Phải xác nhận nguồn có gồm tài sản dài hạn khác hay chỉ TSCĐ trước khi chọn mục mua TSCĐ riêng hoặc tổng chi đầu tư."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "ASSET_TURNOVER",
+      "canonical_name": "Vòng quay tổng tài sản",
+      "source_fields": [
+        "assetTurnover"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Vòng quay tài sản cần xác nhận doanh thu và tài sản bình quân; không thay chỉ tiêu tự tính trong bộ tiêu chí. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "CASH_CYCLE",
+      "canonical_name": "Chu kỳ tiền mặt",
+      "source_fields": [
+        "cashCycle"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Chu kỳ tiền gồm ngày tồn kho, phải thu và phải trả; chưa có mục được giữ cùng công thức cho nguồn này. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "CASH_RATIO",
+      "canonical_name": "Tỷ số thanh toán bằng tiền mặt",
+      "source_fields": [
+        "cashRatio"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận tử số gồm tiền hay cả tương đương tiền và đầu tư ngắn hạn; không thay chỉ số tự tính. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "DAYS_PAYABLE_OUTSTANDING",
+      "canonical_name": "Số ngày phải trả bình quân",
+      "source_fields": [
+        "daysPayableOutstanding"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần số dư phải trả bình quân và cơ sở giá vốn/mua hàng, số ngày; chưa có mục được giữ cùng công thức. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "DAYS_SALES_OUTSTANDING",
+      "canonical_name": "Số ngày thu tiền bình quân",
+      "source_fields": [
+        "daySaleOutstanding"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận phải thu nào, doanh thu nào và số ngày; không thay vòng quay phải thu. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "DEBT_PER_EQUITY",
+      "canonical_name": "Tỷ lệ nợ trên vốn chủ sở hữu",
+      "source_fields": [
+        "debtPerEquity"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Chưa xác nhận nợ vay hay tổng nợ phải trả trong tử số; không tự chọn tỷ lệ nợ/vốn chủ."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "DIVIDEND_YIELD",
+      "canonical_name": "Tỷ suất cổ tức",
+      "source_fields": [
+        "dividendYield"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Lợi suất cổ tức cần cổ tức tiền mặt, giá và ngày đo; khác tỷ lệ chi trả cổ tức trên lợi nhuận. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "EBIT_MARGIN",
+      "canonical_name": "Biên lợi nhuận trước lãi vay và thuế",
+      "source_fields": [
+        "ebitMargin"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần định nghĩa EBIT và mẫu số doanh thu; không thay biên lợi nhuận hoạt động hoặc biên EBITDA. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "EV_TO_EBITDA",
+      "canonical_name": "Hệ số EV trên EBITDA",
+      "source_fields": [
+        "evToEbitda"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần định nghĩa giá trị doanh nghiệp, EBITDA và kỳ đo; không thay P/E hay chỉ tiêu lợi nhuận. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "FINANCIAL_LEVERAGE",
+      "canonical_name": "Đòn bẩy tài chính",
+      "source_fields": [
+        "financialLeverage"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần công thức nhà cung cấp và cơ sở bình quân/cuối kỳ; không suy công thức chỉ từ tên đòn bẩy."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "FIXED_ASSET_TURNOVER",
+      "canonical_name": "Vòng quay tài sản cố định",
+      "source_fields": [
+        "fixedAssetTurnover"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần TSCĐ thuần hay gộp, bình quân hay cuối kỳ và cơ sở doanh thu; không thay vòng quay tổng tài sản. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "MARKET_CAP",
+      "canonical_name": "Giá trị vốn hóa thị trường",
+      "source_fields": [
+        "marketCap"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Vốn hóa là giá thị trường nhân số cổ phiếu theo ngày đo; khác vốn điều lệ hoặc vốn chủ sổ sách. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "NUMBER_OF_SHARES_MKT_CAP",
+      "canonical_name": "Số lượng cổ phiếu lưu hành tính vốn hóa",
+      "source_fields": [
+        "numberOfSharesMktCap"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Số cổ phiếu dùng tính vốn hóa cần xác nhận ngày đo và loại cổ phiếu; không mặc định bằng số cổ phiếu lưu hành cuối kỳ."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "OWNERS_EQUITY_RATIO",
+      "canonical_name": "Tỷ lệ vốn chủ sở hữu",
+      "source_fields": [
+        "ownersEquity"
+      ],
+      "category": "scope_pending",
+      "proposed_target": null,
+      "reason": "Cần xác nhận mẫu số và cách tính của trường ownersEquity trước khi chọn tỷ lệ vốn chủ."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "PB",
+      "canonical_name": "Hệ số giá trên giá trị sổ sách",
+      "source_fields": [
+        "pb"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "P/B cần giá cổ phiếu và giá trị sổ sách trên cổ phiếu; chưa có mục P/B được giữ để nối. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "PE",
+      "canonical_name": "Hệ số giá trên thu nhập",
+      "source_fields": [
+        "pe"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "P/E cần giá cổ phiếu và EPS đúng kỳ; chưa có mục P/E được giữ để nối, không thay EPS. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "PRE_TAX_MARGIN",
+      "canonical_name": "Tỷ suất lợi nhuận trước thuế",
+      "source_fields": [
+        "preTaxProfitMargin"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần cơ sở doanh thu/thu nhập và kỳ đo; không thay biên sau thuế hoặc lợi nhuận trước thuế tuyệt đối. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "PRICE_TO_CASH_FLOW",
+      "canonical_name": "Hệ số giá trên dòng tiền",
+      "source_fields": [
+        "priceToCashFlow"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "Cần phân biệt dòng tiền hoạt động hay dòng tiền khác trong mẫu số; chưa chốt mục được giữ tương đương. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "PS",
+      "canonical_name": "Hệ số giá trên doanh thu (P/S)",
+      "source_fields": [
+        "ps"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "P/S cần giá trị thị trường và doanh thu đúng kỳ; chưa có mục P/S được giữ để nối. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    },
+    {
+      "industry_scope": "TECH",
+      "section": "RATIO",
+      "code": "ROIC",
+      "canonical_name": "Tỷ suất sinh lời trên vốn đầu tư (ROIC)",
+      "source_fields": [
+        "roic"
+      ],
+      "category": "method_or_catalogue_pending",
+      "proposed_target": null,
+      "reason": "ROIC dùng vốn đầu tư và lợi nhuận sau thuế điều chỉnh; không thay ROE hoặc ROA. Giữ nguyên dữ liệu nguồn và loại kỳ TTM/năm."
+    }
+  ]
+}

@@ -71,7 +71,13 @@ def _symbols(symbols: Sequence[str] | None) -> list[str] | None:
 
 
 async def fetch_financial_documents(conn: Any, symbols: Sequence[str] | None = None) -> list[SourceDocument]:
-    rows = await conn.fetch(FINANCIAL_SQL, _symbols(symbols))
+    # Existing index builders read legacy reports only. Versioned financial imports
+    # require an explicit configuration-aware reader; never merge both versions.
+    sql = FINANCIAL_SQL.replace('ORDER BY', """AND NOT (COALESCE(o.locator_json,'{}'::jsonb) ? 'financial_mapping')
+AND NOT EXISTS (SELECT 1 FROM public.ingestion_jobs ij
+                WHERE ij.job_id=fr.job_id AND ij.schema_version='normalized-financial-v2')
+ORDER BY""",1)
+    rows = await conn.fetch(sql, _symbols(symbols))
     return financial_documents(dict(r) for r in rows)
 
 

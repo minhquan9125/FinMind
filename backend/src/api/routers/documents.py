@@ -203,12 +203,7 @@ async def get_chunk_details(
     if document is None:
         raise HTTPException(status_code=404, detail="Document not found.")
 
-    index_version_id = repository.index_for_document(
-        document,
-        settings.chunk_words,
-        settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model_ref,
-    )
+    index_version_id = await repository.index_for_read(pool, document, settings)
     chunk_rows = await repository.get_chunks(pool, document_id, index_version_id)
     chunk_texts = [row["text"] for row in chunk_rows]
     tf_list, df, _ttf = term_frequencies(chunk_texts)
@@ -246,12 +241,7 @@ async def get_vocab(
     if document is None:
         raise HTTPException(status_code=404, detail="Document not found.")
 
-    index_version_id = repository.index_for_document(
-        document,
-        settings.chunk_words,
-        settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model_ref,
-    )
+    index_version_id = await repository.index_for_read(pool, document, settings)
     chunk_rows = await repository.get_chunks(pool, document_id, index_version_id)
     chunk_texts = [row["text"] for row in chunk_rows]
     _tf_list, df, ttf = term_frequencies(chunk_texts)

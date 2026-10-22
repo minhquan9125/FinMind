@@ -57,7 +57,7 @@ def _load_ingest() -> Any:
         module = importlib.util.module_from_spec(spec)
         sys.modules[spec.name] = module
         spec.loader.exec_module(module)
-        module.STABLE_PAYLOAD_IDS = True  # một payload/job cho mỗi file, ghi đè tại chỗ
+        module.STABLE_PAYLOAD_IDS = False  # mỗi nội dung là một phiên bản; giữ nguồn lịch sử
         _ingest = module
     return _ingest
 

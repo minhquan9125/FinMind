@@ -1,5 +1,15 @@
 # History thay đổi code
 
+### [2026-10-22] Triển khai nguồn phiên bản dùng chung và kích hoạt corpus-v4
+
+- Theo phê duyệt triển khai/test: ghi một metadata root dùng lại 43 payload gốc Supabase; đăng ký v4 FROZEN, index ACTIVE, 675 tài liệu/7.158 vector, membership 72.096 facts và 737 phiên giá. Không thêm chunk_text/bảng/cột; giữ các corpus cũ.
+- Reader truy ngược locator về đúng nguồn đã ghim và giữ đầy đủ kiểm tra hash. Reader giá dùng raw bars lịch sử, không lấy OHLCV mới từ bảng live. Crawler giữ payload theo content ID cho lần ingest sau.
+- Thêm lọc công ty/kỳ/chỉ tiêu rõ ràng trong câu hỏi tài chính, sau đó xếp hạng vector; dùng nhãn nguồn và alias tỷ suất/biên lợi nhuận, không thay số liệu hoặc tự chứng nhận đơn vị.
+- Sửa cách cô lập cấu hình test và truy cập settings snapshot để tránh giữ nhầm getter giả lập khi import. 190 test hồi quy PASS dưới cấu hình v4; có cảnh báo deprecation thư viện.
+- Audit DB và đọc nguồn chung 7.158/7.158 PASS; 43 truy vấn HTTP thật PASS về transport/source; 12 dòng evidence Q31–Q39 khớp đúng observation/kỳ/giá trị hiển thị. Q40 trả rỗng khi thiếu kỳ; corpus không tồn tại trả 409.
+- Chuyển đúng bốn khóa backend/.env sang v4 sau các chốt kiểm tra; lưu bốn khóa cũ trong backend/.tmp, không thay bí mật kết nối/model. Chưa commit/push.
+- Hướng dẫn mới: docs/CORPUS_V4_QUICK_START.md. Bằng chứng và giới hạn: outputs/corpus-v4-reuse-audit-20261022/Ket_qua_kiem_thu.md. Không chứng nhận toàn bộ 40 đáp án cuối, citation PDF hoặc đơn vị chưa xác minh chỉ từ HTTP 200.
+
 ### [2026-10-19] Ngừng ghi text cho chunk nguồn mới, giữ text cũ
 
 - **File(s):** `backend/src/documents/db_ingest.py`, `backend/src/documents/corpus_manifest.py`, `backend/src/documents/retention.py`, `backend/tests/test_db_ingest.py`, `supabase/migrations/20261019000000_nullable_source_chunk_text.sql`, `supabase/reset_and_rebuild.sql`, `docs/embedding/source-locator-v2.md`, `history.md`.
@@ -528,3 +538,229 @@ Quy trình bắt buộc trước khi sửa:
 - File backend/.tmp/corpus-v2.content.manifest.json; canonical manifest_sha256: 86e880eef3b39ddf2515951252025a8f58e700f80416ba24d6fabfe324362bd7. Đủ mã dòng, ID chunk không trùng và dựng lại đúng nội dung/hash cho toàn bộ chunk. Hash toàn file corpus-v1 trước/sau giữ nguyên.
 - Đây là CONTENT_FROZEN_AWAITING_VECTOR_INGEST, không phải manifest corpus đã đăng ký/vector-ready. Không ghi DB, không chạy embedding. Chưa bao gồm file UPCOMINDEX cục bộ hoặc dữ liệu mới cào chưa nhập nguồn Supabase.
 - Phải tạo index riêng và xử lý versioning ingest/search trước khi ghi chunk financial v3; không tái dùng index corpus-v1 hoặc nhầm source_chunk_id với khóa text_chunks. Chi tiết tại docs/embedding/corpus-v2-handoff.md.
+
+### [2026-10-21] Bắt đầu nhúng và ghi vector corpus-v2 theo yêu cầu
+
+- Người dùng yêu cầu thực hiện bước 2 (embedding/ingest v2). Thêm backend/scripts/ingest_corpus_v2.py, verify_corpus_v2_vectors.py và tests/test_ingest_corpus_v2.py. Sửa repository.resolve_result_rows chọn/cache renderer theo locator để đọc đúng financial v1/v2/v3.
+- Đối chiếu toàn bộ 15.058 chunk snapshot với nguồn sống trước ingest: đúng nội dung/hash. Model BAAI/bge-m3 revision 5617a9f61b028005a4858fdac845db406aefb181 đã nạp và tạo vector 1024 chiều thật; CPU, không có CUDA.
+- Ghi vào index riêng 434ef5e0-6516-578d-8d18-721d21347e01 (db-corpus-v2, BUILDING), document/chunk namespace riêng; chỉ INSERT dữ liệu mới, không đổi bảng nguồn, không ghi chunk_text, không UPDATE/supersede corpus-v1. Chỉ tái sử dụng vector cùng model và đúng content_hash; kiểm tra shape/finite trước ghi.
+- Checkpoint đầu đã audit 120 vector lưu thật: hash, locator, số chiều và norm đạt. Đối chiếu 2.048 ID v1 vẫn còn đúng hash/số chiều, hash file manifest v1 không đổi. Chưa tuyên bố hoàn thành toàn bộ 15.058 vector.
+- Đã chuyển worker sang chạy nền ẩn, có log, checkpoint/resume và session advisory lock chống chạy trùng. Worker tự audit toàn bộ sau khi nhúng xong. Tiến độ: backend/.tmp/corpus-v2-ingest-progress.json; log: corpus-v2-ingest.log; audit: corpus-v2-vector-audit.json; mã kết thúc: corpus-v2-worker-exit.json.
+- 51 test ingest/manifest/reconstruction/versioning liên quan đạt. Chưa đăng ký corpus-v2 FROZEN, chưa đánh dấu benchmark-ready và chưa chạy B1/citation test; cần kiểm chứng đủ vector rồi xuất manifest lưu thật và giới hạn truy vấn đúng membership.
+
+### [2026-10-21] Đối chiếu Golden Set với nguồn/vector hiện hành (chỉ đọc)
+
+- Thêm audit_golden_sources.py và báo cáo docs/embedding/golden-source-audit-20261021.md; không sửa Golden Set, không chạy B1. Snapshot 09:29:34 giờ Việt Nam.
+- Q01–Q09 khớp đủ 9 bài theo tiêu đề/ngày; Q15/Q17/Q19 có đúng phiên giá và vector active db-v1. Dựng lại 75 chunk tin/giá liên quan, nội dung/hash PASS.
+- Q10: DB 234 bài (CafeF 119, FireAnt 115), khác tập Golden cố định 224. Các phép tính giá được đối chiếu trực tiếp từ 737 bars; Q13 có hai ngày cùng highest close 69,7: 10/04 và 20/05/2026, Golden chỉ ghi ngày đầu.
+- Q31–Q39: đủ giá trị FPT 2026-Q2/Q1 được hỏi nhưng tại snapshot chưa có vector cho các observation cụ thể. Sáu locator gốc trong Golden lệch trường DB: Q32 bsa56, Q33 bsa90, Q35 isa22/isa23, Q36 cfa18, Q37 cfa19. Đơn vị/phạm vi nguồn chưa xác minh; Q38 có RATIO_TTM, không coi là riêng quý.
+- Chưa có PDF BCTN/BCTC FPT 2024 được ingest cho Q21–Q29. Q40 không có hàng FPT 2026-Q4; hành vi từ chối Q30/Q40 vẫn cần chạy B1 thật mới chấm được.
+- Index v2 đang BUILDING với 835 chunk ở snapshot; không tuyên bố đủ nguồn/vector chỉ từ tổng tiến độ.
+
+### [2026-10-21] Chuyển nhúng corpus-v2 từ CPU sang GPU theo yêu cầu
+
+- Xác nhận máy có NVIDIA GeForce RTX 2050 4 GB, driver 555.97; trước đó .venv dùng PyTorch 2.6.0+cpu nên CUDA không khả dụng.
+- Tạo môi trường .venv-gpu riêng với torch 2.6.0+cu124 từ kho PyTorch chính thức, giữ nguyên .venv CPU; thêm .venv-gpu/ vào .gitignore. Tải gói CUDA khoảng 2,5 GB, không phát sinh phí API embedding.
+- Thử BGE-M3 cùng revision trên GPU: 6 đoạn trong 1,219 giây, đỉnh VRAM 2.204 MiB, 1.024 chiều; so với 4 vector CPU đã lưu, cosine >0,99999999999. Không đổi model hoặc hạ precision.
+- Thêm --device cho ingest_corpus_v2.py, device/batch_size trong checkpoint và runner run_corpus_v2_gpu.ps1. 5 test snapshot/index/versioning liên quan đạt. Dừng đúng runner CPU sau khi GPU probe đạt, tiếp tục index v2 hiện có bằng --device cuda --batch-size 2, không làm lại vector đã commit.
+- Runner GPU chạy nền ẩn, log corpus-v2-ingest.gpu.log và .gpu.stderr.log, tiến độ chung corpus-v2-ingest-progress.json; tự audit khi xong. Không chạm corpus-v1 và chưa đánh dấu toàn bộ vector/benchmark hoàn thành.
+
+### [2026-10-21 10:50 +07:00] Hoàn tất nhúng và ghi vector corpus-v2
+
+- Worker GPU đã kết thúc exit_code=0. Supabase có đủ 15.058/15.058 vector trong index riêng 434ef5e0-6516-578d-8d18-721d21347e01.
+- Audit cuối VECTORS_VERIFIED: đủ ID, document/hash/locator đúng snapshot, vector 1.024 chiều và norm hợp lệ, không bị supersede. 2.048 thành viên corpus-v1 còn đúng hash/số chiều; file manifest v1 không đổi.
+- Kết quả: backend/.tmp/corpus-v2-vector-audit.json và corpus-v2-worker-exit.json. Không còn worker cần nhúng phần còn thiếu của lượt này; không chạy lại từ đầu.
+- Hoàn thành bước embedding/ingest, chưa đăng ký corpus-v2 FROZEN, chưa xuất manifest với khóa chunk lưu DB và chưa chạy B1/citation; chưa tuyên bố benchmark-ready. Cập nhật kết quả cuối trong docs/embedding/corpus-v2-handoff.md.
+
+### [2026-10-21] Soạn Golden40 v6 đề xuất theo bản v5 người dùng gửi
+
+- Đọc file v5 trong Downloads (SHA-256 cd53c32cea638ceb93bfd1d8790ba1ae1e3734e5d276cfa2ecde054a37d04eb1), giữ nguyên file gốc và bộ Golden cũ trong repo. Không làm theo các tuyên bố “100%” của tài liệu như kết quả kiểm thử mới.
+- Thêm build_golden40_v6.py, xuất vào outputs/golden40-v6/: Golden40_Cau_hoi_sau_sua.md (bản dễ đọc), Golden40_V6_De_xuat.md (đề và cách chấm/giới hạn), Golden40_V6_De_xuat.json (cấu trúc để duyệt).
+- Giữ 40 ID, phân 27 câu tìm đoạn, 9 câu truy vấn/tính toán, 2 câu tra phiên giá, 2 câu từ chối. Q02 chỉ trích bài báo; câu giá cố định cửa sổ, cực trị xử lý đồng hạng; câu clean không tự gán VND/hợp nhất/riêng quý; Q38 rà TTM, Q39 có điều kiện về cơ sở so sánh.
+- Giữ đủ 40 đáp án v5 dưới nhãn tham khảo chưa duyệt lại; không tự điền gold/đáp án được duyệt. Phân biệt source_chunk_id ứng viên với ID vector lưu DB, không dùng ID gold để lọc truy vấn. Đề xuất evidence-group Recall@5/@10, tách chấm phép tính và refusal.
+- Nêu rõ thiếu lịch sử giá/PDF đúng phạm vi và khác bản nguồn ngay tại Q15 (v5 close 64,07, DB trước đó 64,13). Đây là DRAFT_NOT_BENCHMARK_READY, không tự cập nhật corpus/vector hoặc chạy B1. Đã kiểm tra đủ 40 câu duy nhất và giữ đủ 40 đáp án tham khảo.
+
+### [2026-10-21] WBS24: đối chiếu retrieval/locator v2 thật, phát hiện nguồn thay đổi
+
+- Theo yêu cầu đối chiếu, chạy check_wbs24_v2_locators.py: 18 câu v6 (Q01–Q10, Q31–Q38), BGE-M3 GPU thật, top-5 cosine không lọc trên index v2; transaction chỉ đọc, không sửa nguồn/vector/API.
+- 90 lần kết quả: 31 locator dựng lại đúng hash, 59 SOURCE_CHANGED. Đây không phải điểm Recall hay điểm đúng đáp án; chưa có gold đã duyệt và chưa chạy câu trả lời B1/citation đầy đủ.
+- 8/59 lần lỗi được xác định chỉ do header đổi (CTCP FPT → Công ty Cổ phần FPT); 51 lần còn lại không chỉ khác header. Ví dụ section ngân hàng có tên chỉ tiêu tiếng Việt bị đổi thành mã. Không tự kết luận số liệu thay đổi hoặc mọi lỗi cùng nguyên nhân khi chưa so toàn bộ.
+- API hiện chưa chọn index v2 trực tiếp và chưa xuất đủ trường citation/locator; PDF nhiều trang và hai version chưa kiểm tra. WBS24 chưa hoàn thành. Kết quả chi tiết: docs/embedding/WBS24-v2-locator-check-20261021.md và các JSON trong backend/.tmp/.
+
+### [2026-10-21 11:37 +07:00] Kiểm tra lại lý do có ID nhưng bị chặn nội dung
+
+- Thêm recheck_wbs24_sources.py, đọc lại các ID và nguồn bằng READ ONLY REPEATABLE READ. 90 lần kết quả tương ứng 82 ID vector duy nhất; đủ 82 bản ghi tồn tại, không có nguồn bị thiếu. Vẫn 31 PASS, 59 SOURCE_CHANGED.
+- Mở rộng so toàn bộ section: cả 59 lượt lỗi giữ nguyên mã dòng/thứ tự/mã chỉ tiêu và chuỗi giá trị/đơn vị hiển thị; chỉ khác header và/hoặc nhãn. Đây không phải audit bất biến mọi chữ số raw vì formatter có làm tròn.
+- Làm rõ: SQL cosine tìm ID từ embedding được; phần đọc nguồn vẫn hoạt động, nhưng bước reconstruction/hash chặn xuất text khác phiên bản. Không phải không có dữ liệu hoặc locator trỏ vào hàng đã mất. Chưa sửa production/DB/vector; báo cáo WBS24 đã cập nhật, bằng chứng backend/.tmp/wbs24-v2-recheck.json.
+
+### [2026-10-21 11:47 +07:00] Làm riêng bước 1: so metadata toàn bộ corpus-v2
+
+- Theo yêu cầu “làm 1”, thêm compare_corpus_v2_metadata.py và xuất outputs/corpus-v2-step1/Doi_chieu_metadata_corpus_v2.md cùng JSON. Chỉ SELECT trong READ ONLY REPEATABLE READ; không sửa DB, vector hoặc code ứng dụng.
+- Đã so 675 tài liệu/15.058 chunk đóng băng, 1.963 section: 455 không đổi, 1.444 chỉ đổi header/nhãn, 43 chỉ đổi header, 5 chỉ dịch vị trí section, 16 có khác nội dung cần rà riêng. 423 tài liệu có ít nhất một khác biệt; có 21 section dịch vị trí vì nguồn đã bổ sung lịch sử.
+- So đúng section theo nhãn tháng/kỳ, đồng thời ghi vị trí cũ/mới để không so nhầm tháng 2026 với 2018. Thống kê nhãn là 905 khác biệt phân theo công ty/mã, không phải 905 mã chỉ tiêu độc lập.
+- Trích metadata đóng băng (header, nhãn theo row_key/code) vào JSON để chuẩn bị bước sau; chưa áp dụng runtime. Xác nhận manifest v2 giữ nguyên hash. Đối chiếu rendered text không thay cho kiểm toán mọi chữ số raw.
+
+### [2026-10-21] Bước 2: lưu metadata bất biến cho báo cáo tài chính corpus-v2
+
+- Thêm backend/scripts/store_corpus_v2_renderer_context.py: mặc định kiểm tra chỉ đọc; --apply lưu vào raw_payloads có sẵn, không thêm bảng/cột hoặc chunk_text. Payload chỉ chứa liên kết phiên bản, header và tên chỉ tiêu gốc theo ID dòng/mã.
+- Đã kiểm tra 419 báo cáo/13.003 chunk dựng lại đúng ID, hash và locator trước khi ghi. Đã thêm 419 payload và đọc lại kiểm chứng SHA-256 trong một giao dịch; từ chối ghi đè metadata khác.
+- Không sửa số liệu nguồn, vector, manifest hoặc locator đang lưu; chưa bật đọc metadata trong ứng dụng. Bước 3 mới nối vào reconstruction rồi chạy lại kiểm thử. Các trường hợp giá/hồ sơ có thay đổi nội dung vẫn cần xử lý riêng.
+- Bằng chứng: outputs/corpus-v2-step2/archive-result.json và Ket_qua_buoc_2.md.
+
+### [2026-10-21] Bước 3: nối metadata gốc vào đọc kết quả tài chính corpus-v2
+
+- Thêm backend/src/documents/renderer_context.py: đọc raw_payloads theo index và nguồn, kiểm tra duy nhất một bản, SHA-256, UUID xác định, schema và liên kết phiên bản. Khôi phục header/tên chỉ tiêu; giá trị vẫn lấy từ nguồn hiện tại.
+- repository.resolve_result_rows chỉ dùng metadata cho tài chính thuộc db-corpus-v2; cache tách theo index. get_chunks/vector_search SELECT thêm index_version_id. Giữ nguyên kiểm tra fingerprint, hash, offset và ID chunk; không sửa vector, nguồn, manifest hay locator DB.
+- Kiểm thử guard và luồng repository: metadata khôi phục được tên cũ; đổi số liệu, sai checksum/index vẫn bị từ chối. Các kiểm thử search/upload/reconstruction liên quan đạt.
+- Thử chạy lại 18 câu/90 locator bằng GPU nhưng kết nối Supabase thất bại ở DNS (socket.gaierror 11001 getaddrinfo failed), trước truy vấn. Chưa có số PASS mới; không nghiệm thu WBS24 hoặc tuyên bố toàn bộ corpus hoạt động. Kết quả trước sửa được sao lưu backend/.tmp/wbs24-v2-locator-before-step3.json.
+- Phạm vi chỉ tài chính 13.003/15.058 chunk. Các thay đổi nguồn giá/hồ sơ, chọn index v2 trên API và full B1 citation vẫn là việc riêng chưa hoàn tất.
+
+### [2026-10-22] Rà bộ chỉ tiêu đã duyệt và khả năng áp dụng vào Supabase
+
+- Chỉ rà soát, không sửa DB. Local có 348 định danh: 215 linked, 19 linked_with_conditions, 35 not_retained, 79 no_match. Toàn bộ chưa xác minh đơn vị nguồn/chưa cho quy đổi.
+- get_metric_link chưa được gọi trong pipeline/app. Importer lấy nhãn JSON clean, không dùng bộ reviewed; metric trùng ID dùng DO NOTHING. SOURCE_NATIVE/scale=1/currency=NULL và trạng thái UNVERIFIED vẫn được importer ghi. MAPPED không đồng nghĩa đã đối chiếu Excel.
+- Thêm audit_reviewed_metric_database.py để SELECT đối chiếu. Lần thử Supabase ngày này lỗi DNS gaierror; không kết luận trạng thái DB hiện hành. Báo cáo: outputs/metric-audit-20261022/Ket_qua_ra_soat.md và audit.json.
+
+### [2026-10-22] Bước 1 thiết kế bộ chỉ tiêu dùng chung nhiều sprint
+
+- Đối chiếu ERD.md, schema migration, importer và mapping hiện có. Tạo docs/embedding/Thiet-ke-chi-tieu-dung-chung-20261022.md.
+- Thiết kế dùng config_versions/system_configs cho danh mục, mapping provider/schema/ngành/section, unit rules và checksum; giữ metrics/observations IDs cũ, gắn tham chiếu cấu hình vào locator JSON cho dữ liệu mới. Không tạo bảng, không ghi DB hoặc sửa pipeline.
+- Làm rõ 234/348 mới nối danh mục, chưa xác minh đơn vị; cần version-aware reader, report ID chứa mapping hash cho các lần nhập mới, không cộng các phiên bản. Tách nguồn/native khỏi số chuẩn tính lại để tránh cộng trùng/đổi hệ số hai lần.
+- Bản thiết kế dựa schema repo; schema live vẫn chưa xác nhận do lỗi DNS lần audit. Có lộ trình triển khai/tiêu chí nghiệm thu và giới hạn retention; không thay corpus-v2.
+
+### [2026-10-22] Tiếp phần dùng chung: kiểm tra đầu vào mapping trước khi xây bản cấu hình
+
+- Thêm backend/src/financial/config_validation.py và CLI backend/scripts/validate_financial_configuration.py. Chỉ đọc file local; không ghi Supabase, không đổi JSON gốc hoặc importer.
+- Rà 348 định danh nguồn/706 dòng tiêu chí: cấu trúc và target tham chiếu chính xác đạt, 234 nối danh mục, 114 chưa nối/không được giữ. 0 mục đủ đưa importer vì còn thiếu provider/schema/rule/definition revision, xác minh đơn vị/ngữ cảnh, quy tắc đơn vị, phạm vi/kỳ và bản cấu hình đóng băng.
+- Validator đơn vị kiểm tra hệ số Decimal dạng chuỗi, hữu hạn/dương, chiều đơn vị, tiền tệ và cờ duyệt. Kiểm tra này không tự chứng nhận bằng chứng provider hoặc bật quy tắc.
+- Báo cáo dễ đọc từng mục: outputs/financial-config-review-20261022/Ket_qua_kiem_tra.md; JSON có hash đầu vào: validation.json. Đây là kiểm tra đầu vào cũ; chưa phải validator đầy đủ cho hợp đồng rule mới hoặc kiểm tra điều kiện chồng lấn giữa các provider.
+
+### [2026-10-22] Truy vết nhóm chỉ tiêu cơ bản trước khi duyệt quy tắc nguồn
+
+- Thêm trace_pilot_financial_metrics.py, đối chiếu bằng Decimal các trường bsa53/TOTAL_ASSETS, bsa54/TOTAL_LIABILITIES, bsa78/OWNERS_EQUITY từ raw đến normalized và clean trên 10 công ty BANK/TECH.
+- 1.257/1.257 giá trị khớp; 10/10 hash nguồn normalized được ghi trong file clean khớp file hiện có. Có hash 30 file và chi tiết từng giá trị trong outputs/financial-pilot-review-20261022/source_trace.json, báo cáo Ket_qua_truy_vet.md.
+- Nhận diện provider local là VIETCAP_VCI; schema 1.0 là wrapper của dự án, không tự nhận là version provider. Raw balance data chỉ có years/quarters, chưa có metadata xác nhận unit/scale/currency. Không dùng chú thích mapping hoặc độ lớn số để duyệt đơn vị.
+- Xuất 30 ứng viên theo công ty ở trạng thái DRAFT, approved=false, factor/unit/currency chưa xác nhận. Chưa ghi DB, chưa chuyển đơn vị hoặc kích hoạt importer; cần xác nhận provider unit và phạm vi/kỳ trước khi đóng băng rule. Các con số khớp local không chứng nhận báo cáo gốc hoặc độ chính xác trước lúc raw được lưu.
+
+### [2026-10-22] Xác minh cụ thể đơn vị/phạm vi bằng báo cáo FPT và VCB 2024
+
+- Đọc PDF local, render và xem trực quan FPT PDF 150–152 (trang in 148–150), VCB PDF 67 (trang in 130–131). Dùng pypdfium2 trong backend/.tmp/pdf-rendering để render, không thay dependencies ứng dụng. Web xác nhận bản chính thức VCB tiếng Anh; các link FPT 2024 tìm thấy nhưng mở web 404, nên dùng PDF local đã lưu làm bằng chứng chính.
+- Sáu giá trị (3 chỉ tiêu x 2 công ty) ngày 31/12/2024 khớp báo cáo hợp nhất. 12 bản YEAR/Q4 khớp nhưng cùng một ngày chốt, không coi là 12 mẫu độc lập. FPT báo cáo bằng VND; VCB báo cáo triệu VND nhưng JSON đã bằng số báo cáo x 1.000.000. Hệ số từ JSON hiện tại sang VND là 1 trong các mẫu, không nhân triệu lại.
+- FPT bsa78 khớp tổng mã 400, bsa79 khớp nhóm 410, lệch 2.750.000.000 VND do nguồn kinh phí/quỹ khác. Đọc lại reviewed criteria xác nhận định nghĩa common.equity/TECH đã bao quát đúng; đây là điều kiện cần giữ khi triển khai, không phải lỗi mapping mới.
+- Thêm backend/scripts/verify_pilot_report_evidence.py, kiểm tra số trong PDF, số normalized/clean, phân rã vốn và hash file. Chạy đạt 12/12 bản, 6 giá trị/ngày độc lập. Kết luận và JSON: outputs/financial-evidence-20261022/Ket_luan_don_vi_va_pham_vi.md, verified_samples.json.
+- Không ghi Supabase, sửa mapping, importer hoặc corpus. Đã xác minh mẫu cụ thể; chưa có hợp đồng endpoint chứng nhận mọi kỳ/ngành nên không bật rule toàn nguồn hoặc gán verified cho 348 mục.
+
+### [2026-10-22] Hoàn thành rà 10 công ty/2 niên độ và lập quy tắc nguồn có bằng chứng
+
+- Theo yêu cầu làm bước 1 và 2, rà 20 hồ sơ niên độ 2024–2025 của 5 BANK (VCB/BID/CTG/MBB/TCB), 5 TECH (FPT/CMG/ELC/ITD/ICT). Quét PDF chỉ tạo ứng viên; đọc/render bảng nguồn để chốt ngày, cột, đơn vị, phạm vi. 19 hồ sơ có 57 giá trị khớp báo cáo và raw/normalized/clean; 1 hồ sơ ITD FY2024 thiếu phụ lục BCTC gốc (local 46 trang kết thúc ở bìa chương tài chính). Không tuyên bố hồ sơ thiếu đã đạt.
+- Phát hiện BID 2024 hiện khớp cột trình bày lại trong BCTN 2025; CMC FY2024/FY2025 khớp provider 2025-Q1/2026-Q1 (ngày 31/3); ITD FY2025 khớp 2026-Q1. ICT có báo cáo TỔNG HỢP, không được gán hợp nhất. Các snapshot kiểm tra đã là VND, factor JSON sang VND=1; không nhân lại triệu đồng của báo cáo ngân hàng.
+- Thêm balance_sheet_evidence_cases_v1.json (20 hồ sơ đã rà) và build_balance_source_rules.py tạo balance_sheet_source_rules_review_v1.json: 30 rule theo công ty/trường, mã chuẩn/định nghĩa/điều kiện, hash PDF và raw/normalized/clean, danh sách mẫu được xác nhận. Chỉ REVIEWED_SNAPSHOTS_ONLY, production_enabled=false, file mới yêu cầu rà; không giả đã xác minh hợp đồng/schema endpoint.
+- Thêm source_rule_review.py và tests: kiểm tra hash, rule trùng, tham chiếu mẫu, trộn kỳ/phạm vi, nhân hệ số lần hai, kích hoạt nhầm production. 44 kiểm thử liên quan đạt.
+- Bàn giao outputs/financial-all10-review-20261022/Ket_qua_va_quy_tac.md, summary.json, ảnh trang và gói rule trong backend/src/financial/data. Chưa sửa importer, Supabase, dữ liệu cũ hoặc corpus-v2. Đã thử tra ITD official annual report page nhưng bảng tài liệu không có link trong lần đọc; còn cần BCTC hợp nhất kiểm toán đầy đủ chốt 31/03/2025 để hoàn tất bằng chứng gốc cho hồ sơ đó.
+
+### [2026-10-22] Bổ sung hồ sơ cuối và chốt bước 1–2: đủ 20/20, 60/60
+
+- Tiếp tục tìm hồ sơ ITD FY2024, tải bản issuer English đầy đủ 91 trang từ https://cmsv5.fiingroup.vn/medialib/FG/2025/2025-06/2025-06-25/ITD/20250624--ITD--Annual-Report-2024.pdf. Lưu riêng outputs/financial-all10-review-20261022/ITD-Annual-Report-2024-EN.pdf, giữ nguyên bản tiếng Việt 46 trang thiếu phụ lục.
+- Render/xem trực quan PDF 51–52: số chốt 31/03/2025 tài sản 681884657089, nợ 272241766116, vốn 409642890973 VND. Đúng raw/normalized/clean provider 2025-Q1. Cập nhật case, rule, báo cáo và test. Trạng thái thiếu ghi ở mục history trước đã được giải quyết trong cùng lượt công việc này.
+- Kết quả cuối: 20/20 hồ sơ xác minh có giới hạn theo snapshot, 60/60 giá trị đúng, 30 rule có bằng chứng. Manifest 7cb565b8aef4747dd6689a9b4a8a088d53ce4c3e7e951f3a59e00952d3c61960. Chưa bật production; cần gắn cấu hình phiên bản vào importer ở bước tiếp theo. Không sửa Supabase/corpus-v2.
+
+### [2026-10-22] Bước 3: tích hợp quy tắc vào importer, kiểm tra offline trước khi ghi chung
+
+- Thêm src/financial/import_plan.py: kiểm hash bộ review, chọn rule theo provider/ngành/section/trường/công ty/kỳ, ràng buộc đúng hash clean/normalized và số mẫu. Mẫu mới/file đổi không tự được verified. Bản chưa xác minh giữ SOURCE_NATIVE và lý do riêng, không xóa hoặc đoán đơn vị.
+- import_clean_financials.py có --financial-rules và --plan-out. Chạy mặc định offline xuất plan.json, Ke_hoach_nhap.md và configuration-draft.json (đủ catalogue/source mapping/unit rules/manifest). 10 công ty, 72096 số: 60 verified snapshots, 72036 chưa xác minh. Bản kế hoạch JSON đầy đủ khoảng 27,7 MB là đầu ra rà soát, không cần stage/push cùng source code.
+- Nhánh ghi có điều kiện dùng ID job/payload/report chứa cả hash mapping; observation locator lưu config/rule/evidence/ngày chốt/phạm vi; chỉ 60 số đủ bằng chứng có VND/scale1/currencyVND. Không đổi metric/name toàn cục. Đọc lại so cả số, locator, đơn vị/hệ số/tiền tệ để phát hiện xung đột dù INSERT DO NOTHING.
+- Trước ghi bắt buộc config_version_id đúng đã frozen trong Supabase, cả bốn config JSON và manifest phải khớp, mode VERIFIED_SNAPSHOT_IMPORT và policy giữ số native rõ ràng. Chưa đăng ký/đóng băng cấu hình hoặc chạy --apply/--rollback trên Supabase. Giao dịch repeatable_read, không sửa corpus-v2.
+- 55 kiểm thử liên quan đạt, gồm SQL-facing DB mô phỏng chạy apply_one: nhập lặp không tăng số dòng, phiên bản mới không ghi đè legacy, sai unit bị bắt, chưa có config/đơn vị cấu hình bị đổi thì chặn. Chưa phải kiểm thử ghi thật Supabase.
+- Trước triển khai ghi chung còn phải cho reader chọn đúng config/report version để không cộng hai phiên bản, và đọc scope/date từ metadata đúng. Hiện financial_reports.scope để UNKNOWN cho report chứa lẫn số chưa xác minh; scope xác minh lưu ở từng observation, không gán cả report theo ba dòng.
+
+### [2026-10-22] Reader tài chính chọn phiên bản rõ ràng
+
+- Hiểu yêu cầu “render đi” theo mạch trao đổi là làm reader, đã thông báo trước khi sửa. Thêm src/financial/reader.py: chọn symbol/period/config/report; không tự latest hoặc trộn legacy với config, nhiều report thì yêu cầu ID, thiếu bản chọn trả rỗng không fallback.
+- Đọc nguồn và kiểm frozen config bốn nhóm, hash mapping/định nghĩa/evidence/file và unit/scale/currency/số trước khi trả standard_value. Chưa xác minh vẫn có số nguồn, standard_value=None kèm lý do. Trả niên độ issuer/ngày chốt/provider period/scope riêng, phân biệt BID restated và ICT AGGREGATED.
+- db_source.fetch_financial_documents loại observation có financial_mapping khỏi luồng tạo index legacy; không đổi locators/hash/nguồn lịch sử. Chưa tạo chunk/index mới hoặc nối frontend; consumer mới dùng hàm/CLI reader chuẩn hóa.
+- Thêm read_financial_facts.py CLI READ ONLY REPEATABLE READ và test_financial_reader.py. 91 kiểm thử liên quan đạt, gồm đủ 20 hồ sơ/60 giá trị và hồi quy importer/chunker/metadata reconstruction.
+- Thử live FPT 2024-YEAR thất bại do connection closed trong giao dịch (InterfaceError Transaction.__aexit__ underlying connection is closed). Không khẳng định nguyên nhân là DNS, chưa có kết quả live đạt. Không ghi Supabase; cấu hình/import mới/corpus-v2 giữ nguyên.
+- Bàn giao outputs/financial-reader-step4/Reader_va_cach_kiem_tra.md. Việc còn lại trước triển khai là kiểm tra kết nối và chạy thử đọc/nhập rollback trên DB thật sau khi chuẩn bị cấu hình; hiện mới xác nhận offline.
+
+### [2026-10-22] Chẩn đoán lại thông báo kết nối reader bị đóng
+
+- Thêm diagnose_financial_connection.py: CONNECT/SELECT1/giao dịch readonly/query/reader được log riêng, không in DSN. Kết nối lần này thành công 0,94s; SELECT1 đạt; query tài chính FPT/2024-YEAR trả 900 dòng sau ~21,17s. Server statement_timeout=2min, idle_in_transaction_session_timeout=0.
+- 900 dòng thuộc 5 report ID với số dòng 160/287/47/225/181. Chọn cụ thể 977450b0-824d-598d-80ee-99e5448de582 đọc thành công 160 facts legacy; đây chỉ là mẫu chẩn đoán, không chọn bản chuẩn thay nhóm.
+- Không chọn report thì lỗi đúng là FinancialReadError AMBIGUOUS_REPORT_VERSION, kết nối vẫn mở. Không kết luận lần đóng kết nối trước cùng nguyên nhân vì không có log lỗi gốc thời điểm đó.
+- Sửa CLI reader dùng command_timeout=30 và quản lý rollback không che lỗi body khi connection đã đóng/cleanup lỗi. 35 tests reader/CLI đạt, gồm 2 regression về giữ nguyên lỗi gốc.
+- Không ghi Supabase. Evidence outputs/financial-reader-step4/connection-diagnostic.json; cập nhật Reader_va_cach_kiem_tra.md với kết quả live legacy đã đọc được khi chọn rõ report.
+
+### [2026-10-22] Đối chiếu năm bản ghi FPT 2024 (chỉ đọc)
+
+- Đính chính: một report clean 160 observations và bốn report theo phần cùng payload/job (287/47/225/181), không có bằng chứng là năm lần sửa báo cáo. Tổng 900 observations.
+- 130 chỉ tiêu tiền chung bằng nhau theo Decimal; 30 chỉ số chung có 4 bằng nhau và 26 khớp dấu vết float-to-Decimal. Metadata đơn vị giữa hai đường nhập khác nhau.
+- Nguyên nhân reader dừng: hai cách tổ chức report cùng tồn tại, chưa chọn nguồn nên AMBIGUOUS_REPORT_VERSION. Importer nguồn còn dùng tên phần báo cáo làm statement_scope. Không sửa importer hay dữ liệu trong lần đối chiếu này.
+- config_versions đang rỗng; cấu hình chỉ tiêu mới chưa đăng ký/đóng băng. Corpus cố định khác với kết nối bị đóng. Lần đọc lại kết nối vẫn mở; chưa xác định nguyên nhân lỗi đóng kết nối lịch sử.
+- Thêm compare_fpt_report_versions.py và outputs/financial-reader-step4/Doi_chieu_FPT_2024.md, fpt-report-comparison.json. Đối chiếu tách giá trị Decimal khỏi metadata đơn vị; không ghi Supabase.
+
+### [2026-10-22] Sửa luồng chọn nguồn tài chính, importer và lập kế hoạch Supabase (4 bước)
+
+- Theo yêu cầu người dùng: chỉ sửa code/local và kiểm tra SELECT; mọi thay đổi Supabase phải chờ người dùng đồng ý. Không chạy --apply/rollback/migration, không đăng ký cấu hình, không tạo lại corpus/index, không git add/commit/push.
+- Reader bổ sung source-family clean/normalized và payload-id; normalized ghép các phần cùng payload/job, giữ ID gốc. Chặn trộn nhiều payload, nhiều report cùng phần, báo cáo restated, phạm vi không nhất quán và payload/job sai. Không tự chọn bản mới nhất; không có nguồn phù hợp thì không fallback.
+- Importer normalized đọc JSON bằng Decimal, từ chối float/NaN/khóa trùng/chỉ tiêu trùng. Version normalized-financial-v2 tạo report/payload/job ID mới theo snapshot, statement_scope UNKNOWN, đơn vị SOURCE_NATIVE khi chưa xác minh. Không ghi đè report/observation/payload/tên metric cũ; thêm kiểm tra đọc lại chính xác. Luồng clean có quy tắc xác minh trước đây giữ nguyên.
+- db_source loại normalized-financial-v2 khỏi bộ tạo index legacy; truy vấn đọc locator gốc giữ nguyên. Reader mới hiện là thư viện/CLI, chưa nối API/frontend.
+- Kiểm tra offline 10 công ty BANK/TECH, 419 tổ hợp công ty/kỳ, 308739 giá trị normalized; 156 tests liên quan đạt. Dry-run không mở kết nối DB; CLI đọc dùng READ ONLY REPEATABLE READ và rollback, có regression tests.
+- SELECT metadata Supabase: 2072 report, 380835 observations, 419 tổ hợp đều có clean + normalized; 1653 report dùng section làm statement_scope. Đây là inventory metadata toàn bộ nhóm, chưa đối chiếu từng giá trị live toàn DB.
+- Kiểm tra reader live FPT 2024: clean 160 facts, normalized 740 facts; không gộp hai họ nguồn. Không sửa các đuôi float lịch sử hay tự chuẩn hóa số/đơn vị cũ.
+- Bàn giao outputs/financial-source-fix-20261022/Ket_qua_va_ke_hoach.md, audit.json, supabase-review-plan.json, live-fpt-clean.json, live-fpt-normalized.json và verification.json. Kế hoạch Supabase là REVIEW_ONLY_NOT_APPROVED; phải rà tham chiếu corpus/citation trước khi cập nhật. Lỗi đóng kết nối lịch sử chưa xác định nguyên nhân.
+
+### [2026-10-22] Chuẩn bị corpus-v2 làm bản chính — bước 1–3, chưa cập nhật Supabase
+
+- Theo phạm vi người dùng duyệt: kiểm tra nguồn/vector, sửa code chọn corpus và xuất kế hoạch đăng ký; mọi truy cập DB READ ONLY REPEATABLE READ. Không đăng ký/kích hoạt corpus/index, không sửa .env thực tế hay dữ liệu nguồn, không git add/commit/push.
+- Thêm corpus_scope.py: kiểm tra registry FROZEN/index ACTIVE/model/hash/index identity; hash số bằng Decimal; đọc giá theo corpus_prices có kiểm tra giá/scale/indicators. financial.reader lọc corpus_facts, kiểm tra value_hash và ý nghĩa metric ID, áp dụng cấu hình mặc định cho CLI/thư viện.
+- API search nhận corpus_version_id, lọc corpus_documents và index tương ứng, trả chunk/document/corpus/index ID. Chunk/vocab detail DB dùng cùng corpus mặc định. Upload dùng index riêng. Cấu hình default_corpus_version_id/default_corpus_manifest_sha256 để rỗng; corpus chưa sẵn sàng báo 409, không fallback.
+- prepare_corpus_v2_release.py không có chế độ apply, chỉ SELECT và xuất plan local. Chia lô metadata vector/financial/context sau một lỗi DNS và một truy vấn lớn timeout; kiểm tra live hoàn tất.
+- V2: 675 docs, 15058/15058 vector khớp ID/hash/locator/dim/norm; 14955 chunk dựng lại đạt, 103 không khớp (giá VCB/MBB/FPT mỗi mã 34, hồ sơ FPT 1). Toàn bộ 13003 chunk tài chính đạt. Kế hoạch gồm 72096 observation và 737 price ID; value_hash là baseline số chính xác hiện tại, không chứng nhận số gốc lúc freeze. Activation_ready=false, blocker SOURCE_RECONSTRUCTION_FAILED.
+- diagnose_corpus_v2_release_sources.py READ ONLY xác định: 21 section giá dịch vị trí (tháng đầu từ 0 sang 99), có thêm phiên và thay đổi giá/tổng kết; hồ sơ FPT đổi company_name. Không bỏ kiểm tra hash, không dùng text manifest làm fallback runtime, không làm tròn/sửa nguồn.
+- Xác nhận local manifest v1 không đổi; 2048 vector v1 còn đúng hash/1024 chiều; 249 documents membership/hash còn nguyên. Chưa thử dựng lại toàn bộ nguồn v1.
+- Tests: 203 hồi quy rộng đạt; sau tinh chỉnh cuối 73 tests tập trung đạt, không cộng hai số. Không gọi embedding/model/GPU. Chưa chạy B1 sinh câu trả lời và chấm semantic toàn Golden Set.
+- Bàn giao outputs/corpus-v2-release-20261022/Ket_qua_buoc_1_2_3.md, preflight.json, source-differences.json, registration-plan.json (DRAFT_NOT_APPROVED), default-corpus.env.proposed, v1-preservation.json, verification.json. Corpus đề xuất 232fbd29-355f-5a77-ba28-a06b8d5ceb40, index 434ef5e0-6516-578d-8d18-721d21347e01. Chưa đủ điều kiện xin kích hoạt; phải xác minh/đọc được nguồn cũ hoặc tạo phiên bản mới rồi chạy lại preflight và xin duyệt DB.
+
+### [2026-10-22 21:20 Asia/Bangkok] Tiếp tục ingest corpus-v4 theo yêu cầu
+
+- Kiểm tra SELECT READ ONLY Supabase xác nhận index e3725b7d-1a39-5196-b000-3496dbab388f BUILDING, 5807 stored/active chunks; khớp progress local 5807/7158, còn 1351.
+- Khởi chạy nền CPU batch-size 8 với manifest/snapshot v4 hiện có, --apply chỉ append phần thiếu; script có advisory lock chống worker trùng và kiểm tra ID/hash các chunk đã tồn tại.
+- Tiến trình launcher 33420, Python worker quan sát được 31188. Snapshot preflight VALIDATED 7158; chưa có batch progress mới ở lần kiểm tra ngay sau khởi chạy. Không khẳng định đã ingest xong.
+- Log và PID được lưu outputs/corpus-v4-clean-mapped-20261022/resume-process.json và resume-20261022-212018.stdout.log/.stderr.log.
+- Chưa freeze/register/activate v4, chưa đổi default từ v3, chưa sửa financial configuration. Các việc này tiếp tục chờ người dùng duyệt.
+
+### [2026-10-22] Kiểm tra SOURCE_CHANGED Q31 sau bàn giao v3/v4
+
+- SELECT READ ONLY kiểm tra lại 5 chunk Q31 từ wbs24-v2-locator-results.json: cả 5 PASS qua repository hiện tại; 5 bản tương ứng trong index default v3 cũng PASS. Audit toàn bộ 15058 chunks active của v3 với configured snapshot: PASS 15058, FAIL 0.
+- Cấu hình local chọn corpus-v3-workbook 06171160-c31a-5ff7-8bf0-66308ad72520, snapshot v3 local. Cơ chế mới đọc snapshot và kiểm tra locator/hash; không bỏ guard để trả 200. Không khẳng định tất cả v2 tương thích snapshot v3.
+- Chưa chạy embedding retrieval lại/HTTP live vì backend 8000 không thấy listen; chưa kiểm tra máy thành viên GamingGear. Thành viên cần code + artifact snapshot + config cùng release + restart backend. Golden40 v6 còn ghim index v2.
+- Thêm check_q31_source_fix.py và outputs/q31-source-fix-check-20261022/audit.json, Ket_luan.md. 38 tests đạt sau khi cô lập test legacy khỏi snapshot .env; không sửa production để né lỗi test.
+- Phát hiện ingest v4 resume 21:20 dừng ở query tái sử dụng vector vì statement_timeout. Đổi query sang lô 32 content_hash chỉ cho phần thiếu; khởi chạy lại CPU lúc 21:30, log resume-20261022-213043.* và resume-process.json. Không activate/register/default-switch, không tuyên bố ingest hoàn tất.
+
+### [2026-10-22] Chuẩn bị hoàn tất bàn giao corpus-v4, chưa kích hoạt
+
+- Thêm check_corpus_v4.py và npm run check:v4 (chạy trong backend): kiểm tra liên kết release/snapshot/manifest, toàn bộ 7158 chunk, giữ 72096 clean row, không có warning đơn vị; --database chỉ SELECT vector/hash/locator/norm/documents; --runtime thêm registry ACTIVE/FROZEN và config/snapshot đúng release.
+- Tạo registration-manifest.proposed.json theo build_manifest, proposed corpus ID 33d33730-0f0a-5274-a7f8-8d32a6be07e8, registered-manifest hash 73f2e87a1cf5cd50a8fec3ee825e8bad211070c9e994b37c45a61ee86c6723c1. Chưa đăng ký. Không nhầm ingest hash với registered manifest hash.
+- Audit lần này: offline PASS, DB 5807 chunks hợp lệ, thiếu 1351; chưa đủ một số documents do ingest còn chạy. Công cụ sau đó phân biệt documents chưa ingest với hash thực sự sai.
+- 32 tests handoff/snapshot/API/ingest đạt. Chuẩn bị smoke request Q31–Q39 và bsa90, trạng thái draft không coi là approved gold và chưa chạy HTTP nghiệm thu.
+- Thêm docs/CORPUS_V4_MEMBER_TEST.md và package_corpus_v4.py: ZIP artifact 21004274 bytes, có checksum/manifest/snapshot/request test và hướng dẫn; không có .env/model/credential, code phải pull riêng. Runtime env chỉ là file đề xuất theo đường dẫn từng máy, không sửa .env thực tế.
+- Ingest vẫn chạy bước REUSE_LOOKUP (quan sát 320/1351 hash cần xét), chưa có batch progress mới. Bật watcher wait worker 16684 rồi audit READ ONLY nếu progress đủ 7158 VECTORS_WRITTEN_PENDING_VERIFICATION; chỉ đóng gói lại khi audit đạt, không tự register/activate/default-switch.
+- Chưa hoàn thành ingest, API thực tế trên máy clone mới hoặc thay default. Các thao tác Supabase đăng ký/kích hoạt và cấu hình tiếp tục chờ người dùng duyệt sau khi audit đạt.
+
+### [2026-10-22] Nguồn dùng chung theo phiên bản cho corpus-v4 (chưa triển khai DB)
+
+- Theo yêu cầu bỏ phụ thuộc ZIP từng máy: đối chiếu ERD/raw_payloads READ ONLY, xây shared_source.py + source_read_backend opt-in, reader theo index/locator đọc normalized source sections từ raw_payloads, kiểm tra checksum/UUID/root corpus binding/locator/span/content hash, cache trong query. Không fallback local/live khi shared source thiếu hoặc lỗi. Config thực tế vẫn local.
+- prepare_shared_source_plan.py không có apply mode; tạo outputs/corpus-v4-shared-source-plan-20261022/source-plan.json và summary.json, 675 source documents + 1 release root = 676 INSERT đề xuất, 15585845 bytes canonical JSON. Schema thật đã SELECT kiểm tra, job_id nullable, 0 URI đã có/0 conflict. Không thêm bảng/cột hoặc chunk_text vào vector.
+- Source sections được tạo từ snapshot v4, không giả gọi là original PDF/JSON; vẫn lưu nội dung chữ ở nguồn. Không xóa nguồn đang có corpus lịch sử tham chiếu theo TTL độc lập.
+- 7158/7158 reconstruction local đúng hash/locator. 44 tests nguồn chung/snapshot/API/locator đạt; hai client fake DB độc lập không dùng local files; thiếu/sửa nguồn/hash/locator/registration/index/trùng URI đều chặn. Chưa triển khai payload nên chưa test shared-source API/DB thật hoặc máy clone mới.
+- Thêm npm run check:sources, docs/CORPUS_V4_SHARED_SOURCES.md; đánh dấu CORPUS_V4_MEMBER_TEST.md hướng ZIP đã bị thay thế; cập nhật HANDOFF_CURRENT.md. Không đổi .env, corpus default hoặc policy citation/units.
+- Phần cần duyệt: 676 nguồn mới, register/activate v4 và chuyển SOURCE_READ_BACKEND/default corpus. Không chạy bất kỳ bước ghi nguồn/registration/activation/config nào. Ingest vector đã được duyệt trước vẫn riêng, quan sát REUSE_LOOKUP 704/1351, chưa tuyên bố hoàn tất.
+
+### [2026-10-22] Tận dụng nguồn đã có — thay kế hoạch 676 bản bằng 1 metadata root
+
+- Theo người dùng chọn hướng hạn chế trùng: SELECT audit toàn 675 docs/7158 chunk. 419 BCTC clean dựng từ payload gốc + renderer metadata; 234 tin dựng từ payload gốc (9 bài cần metadata hiển thị cũ); 6 lịch sử giá và 3 chỉ số dựng từ raw bars gốc + indicators thiếu; 13 hồ sơ giữ bộ trường nhỏ của bản cũ.
+- 662 tài liệu tái dùng 43 raw_payloads đang tồn tại. Kế hoạch mới reuse-root.proposed.json: 1 bản metadata raw_payloads, 2428715 canonical bytes. Không sao chép giá trị BCTC/nội dung bài/OHLCV. Nhãn/rule deduplicate dùng chung; observation IDs dựng theo công thức đã kiểm chứng.
+- Reader shared_source/reused_source xử lý pin payload_id/storedhash/semantic hash, renderer metadata, date membership, full fingerprint và content hash; không phụ thuộc local ZIP và không lấy latest. Chưa bật SOURCE_READ_BACKEND hoặc đổi .env.
+- verify_v4_reuse_plan.py: dữ liệu gốc thật SELECT READ ONLY, root/registry mô phỏng local, hai client mới mỗi client dựng chính xác 7158/7158. Chưa phải triển khai API/máy thật. 49 tests related đạt.
+- Ngăn tái diễn ở code nhập tương lai: supabase_sink không ép stable overwrite; ingest_market_news_to_supabase dùng digest-version IDs, raw_payload DO NOTHING + readback, xung đột từ chối. Không chạy crawler hoặc ghi payload thật. Cần giữ nguồn được tham chiếu theo retention nhóm chốt; không xóa âm thầm khi vẫn hỗ trợ lịch sử.
+- Kế hoạch cũ 676 bản đã đánh dấu SUPERSEDED_DO_NOT_APPLY local. Tài liệu mới docs/CORPUS_V4_REUSE_EXISTING_SOURCES.md; banner thay thế trong docs cũ và HANDOFF_CURRENT. Không ghi nguồn/corpus registry, không activate/default-switch, không git add/commit/push.
