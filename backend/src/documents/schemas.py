@@ -1,6 +1,6 @@
 """Pydantic request/response models for the Vector RAG API."""
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class DocumentOut(BaseModel):
@@ -58,3 +58,45 @@ class SearchResultOut(BaseModel):
 
 class SearchResponse(BaseModel):
     results: list[SearchResultOut]
+
+
+class FilteredSearchRequest(BaseModel):
+    """Search across stored database chunks with optional source-scope filters."""
+
+    query: str = Field(min_length=1, max_length=4000)
+    company_symbol: str | None = Field(default=None, min_length=1, max_length=16)
+    period: str | None = Field(default=None, min_length=1, max_length=32)
+    doc_type: str | None = Field(default=None, min_length=1, max_length=40)
+    top_k: int = Field(default=5, ge=1, le=20)
+
+
+class FilteredSearchResultOut(BaseModel):
+    chunk_id: str
+    document_id: str
+    chunk_index: int
+    title: str
+    doc_type: str
+    company_symbol: str | None = None
+    period: str | None = None
+    locator: dict
+    text: str
+    score: float
+
+
+class FilteredSearchResponse(BaseModel):
+    index_version_id: str
+    results: list[FilteredSearchResultOut]
+
+
+class PriceQueryRequest(BaseModel):
+    question: str = Field(min_length=1, max_length=4000)
+    company_symbol: str | None = Field(default=None, min_length=1, max_length=16)
+    period: str | None = Field(default=None, min_length=1, max_length=32)
+
+
+class PriceQueryResponse(BaseModel):
+    question: str
+    operation: str
+    scope: dict
+    data: dict
+    sources: list[dict]

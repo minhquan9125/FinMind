@@ -20,8 +20,8 @@ def fixture():
 def test_reads_source_without_stored_text_and_caches_source(monkeypatch):
     doc, row = fixture()
     calls = []
-    async def fetch(conn, *args):
-        calls.append(args)
+    async def fetch(conn, *args, **kwargs):
+        calls.append((args, kwargs))
         return doc
     monkeypatch.setattr(repository, 'fetch_locator_document', fetch)
     row['reference_text'] = None
@@ -36,7 +36,7 @@ def test_no_fallback_to_retained_text(monkeypatch, case, code):
     doc, row = fixture()
     if case == 'changed': doc.sections[0].header += 'changed'
     if case == 'comparison': row['reference_text'] = 'wrong retained text'
-    async def fetch(*args): return None if case == 'missing' else doc
+    async def fetch(*args, **kwargs): return None if case == 'missing' else doc
     monkeypatch.setattr(repository, 'fetch_locator_document', fetch)
     with pytest.raises(ReconstructionError) as error:
         asyncio.run(repository.resolve_result_rows(object(), [row]))
@@ -58,6 +58,23 @@ def test_legacy_source_chunk_requires_backfill():
     with pytest.raises(ReconstructionError) as error:
         asyncio.run(repository.resolve_result_rows(object(), [row]))
     assert error.value.code == 'INVALID_LOCATOR'
+
+
+def test_financial_reader_uses_renderer_from_locator(monkeypatch):
+    _, row = fixture()
+    row['locator_json']['source_table'] = 'financial_reports'
+    row['locator_json']['reconstruction']['chunker_version'] = 'db-financial-v3'
+    calls = []
+
+    async def fetch(*args, **kwargs):
+        calls.append(kwargs)
+        return None
+
+    monkeypatch.setattr(repository, 'fetch_locator_document', fetch)
+    with pytest.raises(ReconstructionError) as error:
+        asyncio.run(repository.resolve_result_rows(object(), [row]))
+    assert error.value.code == 'SOURCE_MISSING'
+    assert calls == [{'financial_renderer_version': 'db-financial-v3'}]
 
 
 def test_document_index_selects_correct_chunker():
