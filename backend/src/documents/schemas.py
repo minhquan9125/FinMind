@@ -20,7 +20,7 @@ class TraceWordOut(BaseModel):
 
 class ChunkDetailOut(BaseModel):
     index: int
-    page: int
+    page: int | None
     text: str
     word_count: int
     token_count: int
@@ -50,7 +50,7 @@ class SearchRequest(BaseModel):
 
 class SearchResultOut(BaseModel):
     chunk_index: int
-    page: int
+    page: int | None
     text: str
     score: float
     matched_terms: list[str]

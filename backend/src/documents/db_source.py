@@ -94,3 +94,25 @@ async def fetch_index_documents(conn: Any, symbols: Sequence[str] | None = None)
 async def fetch_company_documents(conn: Any, symbols: Sequence[str] | None = None) -> list[SourceDocument]:
     rows = await conn.fetch(COMPANIES_SQL, _symbols(symbols))
     return company_documents(dict(r) for r in rows)
+
+
+async def fetch_locator_document(conn: Any, table: str, source_id: str, max_words: int = 130, *, financial_renderer_version: str = 'db-v1') -> SourceDocument | None:
+    """SELECT one source document only; no text_chunks reads, writes or embedding."""
+    if table == 'news_articles':
+        rows = await conn.fetch(
+            'SELECT article_id,source,title,content,published_at,symbols,url '
+            'FROM public.news_articles WHERE article_id::text=$1', source_id)
+        docs = news_documents((dict(r) for r in rows), max_words=max_words)
+    elif table == 'financial_reports':
+        sql = FINANCIAL_SQL.replace('($1::text[] IS NULL OR c.symbol = ANY($1::text[]))', 'fr.report_id::text=$1')
+        docs = financial_documents((dict(r) for r in await conn.fetch(sql, source_id)), renderer_version=financial_renderer_version)
+    elif table == 'companies':
+        sql = COMPANIES_SQL.replace('($1::text[] IS NULL OR symbol = ANY($1::text[]))', 'company_id::text=$1')
+        docs = company_documents(dict(r) for r in await conn.fetch(sql, source_id))
+    elif table == 'price_bars':
+        docs = await fetch_price_documents(conn, [source_id])
+    elif table == 'market_index_bars':
+        docs = await fetch_index_documents(conn, [source_id])
+    else:
+        raise ValueError('Unsupported locator source_table')
+    return next((doc for doc in docs if str(doc.source_id) == source_id), None)

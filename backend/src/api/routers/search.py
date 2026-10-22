@@ -32,7 +32,8 @@ async def search(
 
     top_k = payload.top_k or settings.default_top_k
     query_embedding = embedder.embed_query(query)
-    index_version_id = repository.index_version_id_for(
+    index_version_id = repository.index_for_document(
+        document,
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
         settings.embedding_model_ref,

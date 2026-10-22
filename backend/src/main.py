@@ -13,6 +13,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from .documents.chunk_reconstruction import ReconstructionError
 
 from .api.routers import auth, documents, search, market_data
 from .market_data.app import lifespan as market_lifespan
@@ -34,6 +36,14 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="FinMind Vector RAG API", version="0.1.0", lifespan=lifespan)
+
+
+@app.exception_handler(ReconstructionError)
+async def source_reconstruction_error(request, exc):
+    return JSONResponse(status_code=409, content={
+        'detail': 'Không thể xác minh nội dung nguồn của kết quả. Cần kiểm tra hoặc lập chỉ mục lại nguồn.',
+        'reason_code': exc.code,
+    })
 
 app.add_middleware(
     CORSMiddleware,
