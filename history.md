@@ -1,5 +1,16 @@
 # History thay đổi code
 
+### [2026-10-22] WBS20/WBS25: chỉ mục HNSW, tìm vector có lọc và kiểm tra Golden
+
+- **File(s):** `supabase/migrations/20261020000100_text_chunks_hnsw.sql`; `backend/src/documents/repository.py`, `schemas.py`, `price_queries.py`; `backend/src/api/routers/search.py`; `backend/scripts/benchmark_pgvector.py`, `audit_golden_q01_q20.py`, `diagnose_golden_price_recall.py`, `audit_golden_price_sql.py`, `golden_v6.py`, `audit_golden_v6.py`, `fixtures/wbs20_filtered_questions.json`; `backend/tests/test_api_search.py`, `test_source_result_reader.py`, `test_filtered_search_api.py`, `test_filtered_vector_search.py`, `test_golden_v6.py`, `test_price_queries.py`; `Golden_TestSet_Lo1_Lo2_TinTuc_GiaCoPhieu.md`; `docs/embedding/WBS20-WBS25-filtered-baseline.md`, `results/wbs20-pgvector-benchmark.json`, `results/golden-q01-q20-audit.md`; `history.md`.
+- **Sai gì:** Chưa có truy vấn vector giới hạn theo công ty/kỳ/loại tài liệu và chưa có phép đo cố định để so sánh HNSW. Bộ audit cũ chỉ đọc định dạng Golden trước v6. Reader chưa chọn đúng renderer tài chính v3 từ locator; lọc kỳ chưa xét `locator_json.period_code`.
+- **Tại sao sửa:** WBS20 cần chỉ mục và baseline; WBS25 cần trả đúng chunk trong phạm vi yêu cầu, kèm điểm và nguồn. Golden v6 cần công cụ kiểm tra riêng để phân biệt truy xuất kỹ thuật với đáp án được duyệt.
+- **Ảnh hưởng:** Thêm migration HNSW cosine và `POST /api/search/filtered` cho các chunk hiện hành của một `index_version_id`, lọc công ty/kỳ/loại tài liệu; thêm `POST /api/search/price` dùng SQL chỉ đọc cho câu hỏi giá có cấu trúc. Bổ sung script benchmark, audit Golden và tài liệu kết quả. API filtered hiện tự chọn index theo cấu hình backend, nên thử qua Swagger **không tương đương** audit v2 chọn index tường minh. Không thay đổi dữ liệu nguồn hay tự đăng ký corpus-v2.
+- **Kiểm chứng:** 28 test liên quan đạt, `git diff --check` đạt. Audit chỉ đọc Golden v6 xác nhận 40 câu gồm 27 vector, 9 tính toán, 2 tra dòng giá, 2 từ chối. 10 câu tin Q01–Q10 truy xuất được 5 hit có phạm vi/câu và không lỗi dựng nguồn trong mẫu; đây **chưa phải** 10 câu đạt đáp án chính thức vì thiếu gold evidence đã duyệt. 8 câu tài chính Q31–Q38 có 40/40 top hit mẫu bị chặn do fingerprint nguồn hiện tại khác lúc lập index. 22 câu còn lại chưa được audit vector này chấm. Corpus-v2 còn trạng thái BUILDING/chưa đăng ký; chưa nghiệm thu Golden v6 hoặc retrieval v2. Chi tiết giới hạn ở tài liệu baseline và báo cáo audit.
+- **Git:** commit `ab44d09` trên nhánh `nhan-sprint-321` chứa các file code/tài liệu trên; mục history này được bổ sung sau commit đó.
+
+---
+
 ### [2026-10-19] Ngừng ghi text cho chunk nguồn mới, giữ text cũ
 
 - **File(s):** `backend/src/documents/db_ingest.py`, `backend/src/documents/corpus_manifest.py`, `backend/src/documents/retention.py`, `backend/tests/test_db_ingest.py`, `supabase/migrations/20261019000000_nullable_source_chunk_text.sql`, `supabase/reset_and_rebuild.sql`, `docs/embedding/source-locator-v2.md`, `history.md`.
