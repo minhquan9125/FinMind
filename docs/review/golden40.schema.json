@@ -1,0 +1,214 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FinMind Golden40 Manifest Schema",
+  "description": "JSON Schema định nghĩa cấu trúc dữ liệu và ràng buộc kỹ thuật của bộ kiểm chuẩn Golden40 (Calibration Split) phục vụ CI/CD Runner và nghiệm thu Sprint 4.",
+  "type": "object",
+  "required": [
+    "manifest_name",
+    "version_label",
+    "status",
+    "created_at",
+    "description",
+    "target_sprint",
+    "total_cases",
+    "manifest_sha256",
+    "corpus_reference",
+    "batch_distribution",
+    "questions"
+  ],
+  "properties": {
+    "manifest_name": {
+      "type": "string",
+      "minLength": 5
+    },
+    "version_label": {
+      "type": "string",
+      "pattern": "^golden40-v[0-9]+\\.[0-9]+-(draft|frozen)$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["FROZEN", "DRAFT_PENDING_FREEZE", "DRAFT_SYNCED"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "frozen_at": {
+      "type": ["string", "null"]
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10
+    },
+    "target_sprint": {
+      "type": "string",
+      "enum": ["Sprint 4"]
+    },
+    "total_cases": {
+      "type": "integer",
+      "minimum": 40,
+      "maximum": 40
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "corpus_reference": {
+      "type": "object",
+      "required": [
+        "corpus_version_label",
+        "corpus_version_id",
+        "corpus_manifest_sha256",
+        "index_version_id",
+        "embedding_model",
+        "vector_dimensions",
+        "db_snapshot_anchor"
+      ],
+      "properties": {
+        "corpus_version_label": {
+          "type": "string",
+          "enum": ["corpus-v1"]
+        },
+        "corpus_version_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "corpus_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "index_version_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "embedding_model": {
+          "type": "string"
+        },
+        "vector_dimensions": {
+          "type": "integer",
+          "enum": [1024]
+        },
+        "db_snapshot_anchor": {
+          "type": "string"
+        }
+      }
+    },
+    "batch_distribution": {
+      "type": "object",
+      "required": ["BATCH-01", "BATCH-02", "BATCH-03", "BATCH-04"],
+      "properties": {
+        "BATCH-01": { "type": "integer", "enum": [10] },
+        "BATCH-02": { "type": "integer", "enum": [10] },
+        "BATCH-03": { "type": "integer", "enum": [10] },
+        "BATCH-04": { "type": "integer", "enum": [10] }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 40,
+      "maxItems": 40,
+      "items": {
+        "type": "object",
+        "required": [
+          "question_id",
+          "legacy_id",
+          "batch_id",
+          "data_source",
+          "category",
+          "question_text",
+          "reference_answer",
+          "unit",
+          "period",
+          "locator",
+          "structured_locator",
+          "is_safe_refusal",
+          "slots",
+          "sign_off_reviewer",
+          "verification_status"
+        ],
+        "properties": {
+          "question_id": {
+            "type": "string",
+            "pattern": "^GOLDEN40-Q[0-9]{2}$"
+          },
+          "legacy_id": {
+            "type": "string",
+            "pattern": "^Q[0-9]{2}$"
+          },
+          "batch_id": {
+            "type": "string",
+            "enum": ["BATCH-01", "BATCH-02", "BATCH-03", "BATCH-04"]
+          },
+          "data_source": {
+            "type": "string",
+            "enum": [
+              "news_articles",
+              "price_bars",
+              "bctn_bctc_pdf_2024",
+              "tai_chinh_clean"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "minLength": 2
+          },
+          "question_text": {
+            "type": "string",
+            "minLength": 10
+          },
+          "reference_answer": {
+            "type": "string",
+            "minLength": 3
+          },
+          "unit": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string"
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 5
+          },
+          "structured_locator": {
+            "type": "object",
+            "required": ["source_table", "source_file", "scope"],
+            "properties": {
+              "source_table": { "type": "string" },
+              "source_file": { "type": "string" },
+              "scope": { "type": "string" },
+              "company_symbol": { "type": "string" },
+              "raw_reference": { "type": "string" }
+            }
+          },
+          "verification_detail": {
+            "type": "string"
+          },
+          "status_note": {
+            "type": "string"
+          },
+          "is_safe_refusal": {
+            "type": "boolean"
+          },
+          "slots": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "tolerance_eps": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "sign_off_reviewer": {
+            "type": "string",
+            "minLength": 3
+          },
+          "verification_status": {
+            "type": "string",
+            "enum": ["VERIFIED_ACCURATE"]
+          }
+        }
+      }
+    }
+  }
+}

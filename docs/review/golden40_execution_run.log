@@ -1,0 +1,57 @@
+===================================================================================================================
+FINMIND GOLDEN40 EXECUTION BENCHMARK LOG — SPRINT 4 ACCEPTANCE RUN
+Execution Timestamp: 2026-10-21T03:59:06.307399+00:00
+Manifest Version: golden40-v1.0-frozen | SHA-256: 7b530a2293e5ceaea1a55bc89a6fefdb9088f7b953c77f7f4393b477276ff10b
+Corpus Snapshot: corpus-v1 (7c2ea700-fd01-5adc-a467-af4fea532741)
+===================================================================================================================
+QID   | Batch    | Reviewer               | M_num | M_cite | M_comp | Gate   | S_case | Lat(ms) | Recall@5 | Status
+-------------------------------------------------------------------------------------------------------------------
+Q01   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 38      | 1.00     | PASS
+Q02   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 21      | 1.00     | PASS
+Q03   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 18      | 1.00     | PASS
+Q04   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 41      | 1.00     | PASS
+Q05   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 26      | 1.00     | PASS
+Q06   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 25      | 1.00     | PASS
+Q07   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 25      | 1.00     | PASS
+Q08   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 22      | 1.00     | PASS
+Q09   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 41      | 1.00     | PASS
+Q10   | BATCH-01 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 21      | 1.00     | PASS
+Q11   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 39      | 1.00     | PASS
+Q12   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 41      | 1.00     | PASS
+Q13   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 46      | 1.00     | PASS
+Q14   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 35      | 1.00     | PASS
+Q15   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 20      | 1.00     | PASS
+Q16   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 36      | 1.00     | PASS
+Q17   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 31      | 1.00     | PASS
+Q18   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 19      | 1.00     | PASS
+Q19   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 18      | 1.00     | PASS
+Q20   | BATCH-02 | Hưng (Data Lead)       | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 20      | 1.00     | PASS
+Q21   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 165     | 0.98     | PASS
+Q22   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 239     | 1.00     | PASS
+Q23   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 116     | 1.00     | PASS
+Q24   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 160     | 1.00     | PASS
+Q25   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 217     | 0.98     | PASS
+Q26   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 224     | 1.00     | PASS
+Q27   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 181     | 0.96     | PASS
+Q28   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 150     | 1.00     | PASS
+Q29   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 197     | 1.00     | PASS
+Q30   | BATCH-03 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 149     | 0.98     | PASS
+Q31   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 43      | 1.00     | PASS
+Q32   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 28      | 1.00     | PASS
+Q33   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 27      | 1.00     | PASS
+Q34   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 46      | 1.00     | PASS
+Q35   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 28      | 1.00     | PASS
+Q36   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 44      | 1.00     | PASS
+Q37   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 44      | 1.00     | PASS
+Q38   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 38      | 1.00     | PASS
+Q39   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 24      | 1.00     | PASS
+Q40   | BATCH-04 | Quân (Financial Analyst) | 1.00  | 1.00   | 1.00   | PASS   | 1.00   | 51      | 1.00     | PASS
+-------------------------------------------------------------------------------------------------------------------
+SUMMARY ACCEPTANCE METRICS:
+  * Total Test Cases: 40/40
+  * Passed Cases: 40/40 (100.0%) [Threshold >= 85.0% => PASS]
+  * Knockout Gate Trips (Critical P0/P1 Failures): 0 ca vi phạm
+  * Latency Profile: p50 = 39ms, p95 = 224ms, avg = 68.8ms [SLA: p95 < 500ms => PASS]
+  * HNSW Vector Recall@5 (vs Exact Flat Cosine): 0.997 (99.8%) [Threshold >= 95.0% => PASS]
+  * Final Sprint 4 Handover Verdict: ELIGIBLE FOR FORMAL HANDOVER (DU DIEU KIEN BAN GIAO)
+===================================================================================================================

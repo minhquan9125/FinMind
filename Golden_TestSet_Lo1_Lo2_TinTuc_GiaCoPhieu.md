@@ -322,6 +322,7 @@ Lô 2 gồm 10 câu hỏi khai thác dữ liệu bảng `price_bars` trong Supab
 | **Q25** | bctn_thuyết_minh_ngoại | FPT | Triệu VND, Tỷ VND | ⚠️ Cần đối chiếu | Đạt chuẩn (100%) |
 | **Q26** | bctn_cơ_cấu_cổ_đông | FPT | Cổ phần, % | ✅ Chính xác | Đạt chuẩn (100%) |
 | **Q27** | bctn_thù_lao_hđqt | FPT | VND | ✅ Chính xác | Đạt chuẩn (100%) |
+
 | **Q28** | bctn_esg_nhân_sự | FPT | % | ✅ Chính xác | Đạt chuẩn (100%) |
 | **Q29** | bctn_kiểm_toán_độc_lập | FPT | Pháp nhân, ý  kiến | ✅ Chính xác | Đạt chuẩn (100%) |
 | **Q30** | safe_refusal_giá_cp | FPT | N/A | ⚠️ Kiểm thử biên | Đạt chuẩn (100%) |

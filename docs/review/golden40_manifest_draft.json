@@ -1,0 +1,1144 @@
+{
+  "manifest_name": "FinMind Golden40 Calibration Set Manifest",
+  "version_label": "golden40-v1.0-draft",
+  "status": "DRAFT_SYNCED",
+  "created_at": "2026-10-20T16:00:00+07:00",
+  "frozen_at": null,
+  "description": "Bộ 40 ca kiểm thử hiệu chuẩn (Calibration Split) đóng băng kỹ thuật phục vụ đo lường và nghiệm thu Sprint 4.",
+  "target_sprint": "Sprint 4",
+  "total_cases": 40,
+  "corpus_reference": {
+    "corpus_version_label": "corpus-v1",
+    "corpus_version_id": "7c2ea700-fd01-5adc-a467-af4fea532741",
+    "corpus_manifest_sha256": "e9391c8af33b64888ea7b7c386a526110c35aab7fc2c469366e648f41c393f41",
+    "index_version_id": "1e029e66-0adf-53ac-8f28-431ed7312745",
+    "embedding_model": "BAAI/bge-m3@5617a9f61b02",
+    "vector_dimensions": 1024,
+    "db_snapshot_anchor": "wbs16-20261016-030706"
+  },
+  "batch_distribution": {
+    "BATCH-01": 10,
+    "BATCH-02": 10,
+    "BATCH-03": 10,
+    "BATCH-04": 10
+  },
+  "questions": [
+    {
+      "question_id": "GOLDEN40-Q01",
+      "legacy_id": "Q01",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_trái_phiếu_doanh_nghiệp",
+      "question_text": "Theo công bố thông tin ngày 01/10/2026 trên FireAnt về kết quả mua lại trái phiếu trước hạn, Techcombank (mã TCB) đã chi tổng cộng bao nhiêu tỷ đồng vào ngày 30/09/2026 để tất toán trước hạn 2 lô trái phiếu nào sau đúng 1 năm phát hành, và giá trị mua lại thực tế của từng lô là bao nhiêu?",
+      "reference_answer": "Techcombank đã chi tổng cộng **4.240 tỷ đồng** để tất toán trước hạn 2 lô trái phiếu chỉ sau 1 năm phát hành vào ngày 30/09/2026, bao gồm: (1) Lô mã **TCB12517** mua lại toàn bộ 2.000 trái phiếu với giá mua lại thực tế 1,059 tỷ đồng/trái phiếu, tương đương giá trị mua lại **2.118 tỷ đồng**; (2) Lô mã **TCB12518** mua lại toàn bộ 2.000 trái phiếu với giá mua lại thực tế 1,061 tỷ đồng/trái phiếu, tương ứng **2.122 tỷ đồng** cả lô.",
+      "unit": "Tỷ đồng (VND), mã trái phiếu",
+      "period": "01/10/2026 (ngày giao dịch mua lại: 30/09/2026)",
+      "locator": "Supabase `public.news_articles` (source: fireant, published_at: 2026-10-01) → Title: *\"TCB: Techcombank tất toán 2 lô trái phiếu sau 1 năm phát hành\"*",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: fireant, published_at: 2026-10-01) → Title: *\"TCB: Techcombank tất toán 2 lô trái phiếu sau 1 năm phát hành\"*"
+      },
+      "verification_detail": "source: fireant | published_at: 2026-10-01 | symbols: [\"TCB\"] | Trích nội dung: *\"Techcombank đã chi tổng cộng 4.240 tỷ đồng để tất toán 2 lô trái phiếu TCB12517 và TCB12518 chỉ sau 1 năm phát hành... cụ thể ngày 30/9/2026, Techcombank tiến hành mua lại toàn bộ 2.000 trái phiếu mã TCB12517 với giá mua lại thực tế là 1,059 tỷ đồng; tương đương giá trị mua lại lô này ở mức 2.118 tỷ đồng... lô trái phiếu TCB12518 với giá mua lại thực tế 1,061 tỷ đồng/trái phiếu, tương ứng 2.122 tỷ đồng cả lô\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2",
+        "slot_3"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q02",
+      "legacy_id": "Q02",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_nghiệp_vụ_ngân_hàng",
+      "question_text": "Theo biểu lãi suất huy động của VietinBank (mã CTG) công bố ngày 01/10/2026 trên FireAnt, khung lãi suất huy động của ngân hàng dao động trong khoảng nào, và nếu một khách hàng cá nhân gửi tiết kiệm số tiền 300 triệu đồng với kỳ hạn 24 tháng thì sẽ nhận được mức lãi suất bao nhiêu %/năm và tổng số tiền lãi nhận được là bao nhiêu?",
+      "reference_answer": "Khung lãi suất huy động dao động từ **0,1% – 6,0%/năm**. Với khoản tiền gửi 300 triệu đồng kỳ hạn 24 tháng, khách hàng được hưởng mức lãi suất cao nhất là **6,0%/năm** và nhận về tổng số tiền lãi là khoảng **36 triệu đồng**.",
+      "unit": "Triệu đồng (VND), %/năm",
+      "period": "Tháng 10/2026 (ngày đăng bài 01/10/2026)",
+      "locator": "Supabase `public.news_articles` (source: fireant, published_at: 2026-10-01) → Title: *\"Lãi suất VietinBank cao nhất, gửi 300 triệu đồng nhận 36 triệu đồng tiền lãi\"*",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: fireant, published_at: 2026-10-01) → Title: *\"Lãi suất VietinBank cao nhất, gửi 300 triệu đồng nhận 36 triệu đồng tiền lãi\"*"
+      },
+      "verification_detail": "source: fireant | published_at: 2026-10-01 | symbols: [\"CTG\"] | Trích nội dung: *\"Lãi suất VietinBank hiện dao động từ 0,1-6%/năm. Khách hàng gửi 300 triệu đồng kỳ hạn 24 tháng có thể nhận khoảng 36 triệu đồng tiền lãi\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q03",
+      "legacy_id": "Q03",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_phát_hành_cổ_phiếu",
+      "question_text": "Theo thông báo kết quả đợt phát hành cổ phiếu tăng vốn từ nguồn vốn chủ sở hữu đăng ngày 29/09/2026 trên CafeF, Tập đoàn FPT (mã FPT) đã phân phối chính xác bao nhiêu cổ phiếu cho bao nhiêu cổ đông, và ngày kết thúc đợt phát hành là ngày nào?",
+      "reference_answer": "FPT đã phân phối hơn **171,4 triệu cổ phiếu** cho **181.748 cổ đông**. Ngày kết thúc đợt phát hành là ngày **22/09/2026**.",
+      "unit": "Triệu cổ phiếu, cổ đông, ngày DD/MM/YYYY",
+      "period": "22/09/2026 (ngày kết thúc đợt phát hành)",
+      "locator": "Supabase `public.news_articles` (source: cafef, published_at: 2026-09-29) → Title: *\"Sau màn hát “Tái sinh” của ông Trương Gia Bình, mỗi tháng FPT có thêm 6.000 cổ đông mới, sân vận động lớn nhất thế giới và Mỹ Đình cộng lại không đủ sức chứa\"*",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: cafef, published_at: 2026-09-29) → Title: *\"Sau màn hát “Tái sinh” của ông Trương Gia Bình, mỗi tháng FPT có thêm 6.000 cổ đông mới, sân vận động lớn nhất thế giới và Mỹ Đình cộng lại không đủ sức chứa\"*"
+      },
+      "verification_detail": "source: cafef | published_at: 2026-09-29 | symbols: [\"FPT\"] | Trích nội dung: *\"FPT đã phân phối hơn 171,4 triệu cổ phiếu cho 181.748 cổ đông. Ngày kết thúc đợt phát hành là 22/09/2026\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q04",
+      "legacy_id": "Q04",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_hợp_tác_bán_dẫn_công_nghệ",
+      "question_text": "Theo bài báo công bố ngày 10/10/2026 trên CafeF về lĩnh vực vi mạch bán dẫn, doanh nghiệp nào trực thuộc tập đoàn thương mại Toyota Tsusho (Nhật Bản, quy mô doanh thu khoảng 78 tỷ USD) đã có 2 buổi làm việc với Tập đoàn FPT trong vòng 44 ngày (vào ngày 19/08 và 02/10/2026) để tìm hiểu và xúc tiến cơ hội hợp tác phát triển kinh doanh chip bán dẫn?",
+      "reference_answer": "Công ty **Toyota Tsusho NEXTY Electronics** (công ty chuyên phân phối linh kiện điện tử và bán dẫn thuộc Toyota Tsusho Corporation).",
+      "unit": "Tên pháp nhân đối tác, lĩnh vực kinh doanh",
+      "period": "10/10/2026 (ngày làm việc: 19/08/2026 và 02/10/2026)",
+      "locator": "Supabase `public.news_articles` (source: cafef, published_at: 2026-10-10) → Title: *\"Chỉ trong 44 ngày, “cánh tay” 78 tỷ USD của Toyota 2 lần tìm đến FPT: Điều gì ở chip Việt khiến gã khổng lồ Nhật Bản quan tâm?\"*",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: cafef, published_at: 2026-10-10) → Title: *\"Chỉ trong 44 ngày, “cánh tay” 78 tỷ USD của Toyota 2 lần tìm đến FPT: Điều gì ở chip Việt khiến gã khổng lồ Nhật Bản quan tâm?\"*"
+      },
+      "verification_detail": "source: cafef | published_at: 2026-10-10 | symbols: [\"FPT\"] | Trích nội dung: *\"Theo thông tin được Tập đoàn FPT công bố, ngày 2/10, doanh nghiệp vừa có buổi làm việc với các đại diện cấp cao của Toyota Tsusho NEXTY Electronics, công ty chuyên phân phối linh kiện điện tử và bán dẫn thuộc Toyota Tsusho Corporation... Trước đó, ngày 19/8, FPT đã làm việc với Toyota Tsusho Việt Nam và NEXTY Electronics Singapore để tìm hiểu cơ hội phát triển kinh doanh bán dẫn. Như vậy, chỉ trong vòng 44 ngày, hai bên đã có ít nhất hai cuộc trao đổi về khả năng hợp tác\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q05",
+      "legacy_id": "Q05",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_dự_báo_KQKD",
+      "question_text": "Theo báo cáo ước tính kết quả kinh doanh quý 3/2026 của SSI Research đăng ngày 29/09/2026 trên FireAnt, hai ngân hàng quốc doanh nào được dự báo dẫn đầu toàn ngành vượt mốc 10.000 tỷ đồng lợi nhuận trước thuế trong quý 3/2026, với con số lợi nhuận dự báo cụ thể và tỷ lệ tăng trưởng so với cùng kỳ năm trước của từng ngân hàng là bao nhiêu?",
+      "reference_answer": "Hai ngân hàng quốc doanh dẫn đầu gồm: (1) **VietinBank (CTG)** dự báo đạt **13.500 tỷ đồng** LNTT, tăng **27%** so với cùng kỳ (cao nhất toàn hệ thống các ngân hàng được thống kê); (2) **Vietcombank (VCB)** đứng tiếp theo dự báo đạt **12.800 tỷ đồng** LNTT, tăng **14%** so với cùng kỳ.",
+      "unit": "Tỷ đồng (VND), % tăng trưởng",
+      "period": "Quý 3/2026 (dự báo công bố ngày 29/09/2026)",
+      "locator": "Supabase `public.news_articles` (source: fireant, published_at: 2026-09-29) → Bài viết thuộc mã phê duyệt `CTG` (doc_id: `d56ce227-22e1-5ba0-8595-7cc1879bf95e`, Title: *\"SSI dự báo kết quả kinh doanh quý 3/2026 của 42 doanh nghiệp: Masan, Viglacera tăng bằng lần, Sacombank dự báo giảm 45%\"*) và bài viết tổng hợp toàn ngành (doc_id: `e38b8a58-7bad-5f19-b318-593c066302ed`, Title: *\"Những ngân hàng có thể lãi trên 10.000 tỷ đồng trong quý III\"*).",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: fireant, published_at: 2026-09-29) → Bài viết thuộc mã phê duyệt `CTG` (doc_id: `d56ce227-22e1-5ba0-8595-7cc1879bf95e`, Title: *\"SSI dự báo kết quả kinh doanh quý 3/2026 của 42 doanh nghiệp: Masan, Viglacera tăng bằng lần, Sacombank dự báo giảm 45%\"*) và bài viết tổng hợp toàn ngành (doc_id: `e38b8a58-7bad-5f19-b318-593c066302ed`, Title: *\"Những ngân hàng có thể lãi trên 10.000 tỷ đồng trong quý III\"*)."
+      },
+      "verification_detail": "source: fireant | published_at: 2026-09-29 | symbols: [\"CTG\", \"VCB\"] | Trích nội dung: *\"SSI Research dự báo VietinBank (CTG) đạt 13.500 tỷ đồng lợi nhuận trước thuế, cao nhất trong số các ngân hàng được thống kê và tăng 27% so với cùng kỳ năm trước. Vietcombank (VCB) đứng tiếp theo với 12.800 tỷ đồng, tăng 14%. Đây là hai ngân hàng được dự báo vượt mốc 10.000 tỷ đồng trong quý\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q06",
+      "legacy_id": "Q06",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_quy_mô_doanh_nghiệp",
+      "question_text": "Theo bản tin tài chính ngày 30/09/2026 trên FireAnt về vai trò kết nối dòng vốn trên thị trường, Ngân hàng TMCP Quân đội (mã MBB) được ghi nhận có quy mô tổng tài sản đạt hơn bao nhiêu và hệ sinh thái tập đoàn gồm bao nhiêu doanh nghiệp thành viên chiến lược?",
+      "reference_answer": "MBB có quy mô tổng tài sản đạt hơn **1,73 triệu tỷ đồng** và hệ sinh thái gồm **8 doanh nghiệp thành viên chiến lược**.",
+      "unit": "Triệu tỷ đồng (VND), doanh nghiệp thành viên",
+      "period": "30/09/2026",
+      "locator": "Supabase `public.news_articles` (source: fireant, published_at: 2026-09-30) → Title: *\"MB mở rộng vai trò kết nối dòng vốn\"* (doc_id: `da73501f-4353-5908-93e5-dc3d8ea56706`, symbol: MBB)",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: fireant, published_at: 2026-09-30) → Title: *\"MB mở rộng vai trò kết nối dòng vốn\"* (doc_id: `da73501f-4353-5908-93e5-dc3d8ea56706`, symbol: MBB)"
+      },
+      "verification_detail": "source: fireant | published_at: 2026-09-30 | symbols: [\"MBB\", \"VCB\"] | Trích: *\"Với quy mô tài sản hơn 1 73 triệu tỷ đồng cùng hệ sinh thái 8 doanh nghiệp thành viên chiến lược của MB là một tập đoàn tài chính kết nối...\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q07",
+      "legacy_id": "Q07",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_tăng_vốn_điều_lệ",
+      "question_text": "Theo bản tin Tài chính doanh nghiệp 24/7 ngày 14/10/2026 trên FireAnt, Ngân hàng Nhà nước đã chấp thuận phương án tăng vốn điều lệ của Techcombank (mã TCB) thêm tối đa bao nhiêu tỷ đồng, gồm 2 phương thức phát hành nào với giá trị theo mệnh giá tương ứng của từng phương thức là bao nhiêu, và sau khi hoàn tất các đợt phát hành thì vốn điều lệ của Techcombank dự kiến đạt mức bao nhiêu tỷ đồng?",
+      "reference_answer": "Ngân hàng Nhà nước chấp thuận phương án tăng vốn điều lệ của Techcombank thêm tối đa **35.730,97 tỷ đồng**, bao gồm 2 phương thức: (1) Phát hành cổ phiếu trả cổ tức cho cổ đông hiện hữu với tổng giá trị theo mệnh giá hơn **35.431 tỷ đồng**; (2) Phát hành cổ phiếu theo chương trình ESOP cho người lao động với giá trị gần **300 tỷ đồng**. Sau khi hoàn tất các đợt phát hành, vốn điều lệ của Techcombank dự kiến đạt mức **106.593 tỷ đồng**.",
+      "unit": "Tỷ đồng (VND), phương thức phát hành",
+      "period": "14/10/2026",
+      "locator": "Supabase `public.news_articles` (source: fireant, published_at: 2026-10-14) → Title: *\"Tài chính doanh nghiệp 24/7: Techcombank được chấp thuận tăng vốn, FPT thúc đẩy hợp tác lượng tử\"* (doc_id: `87e842c1-9a34-51b5-addb-f0715d5adeca`, primary symbol trong manifest: FPT)",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: fireant, published_at: 2026-10-14) → Title: *\"Tài chính doanh nghiệp 24/7: Techcombank được chấp thuận tăng vốn, FPT thúc đẩy hợp tác lượng tử\"* (doc_id: `87e842c1-9a34-51b5-addb-f0715d5adeca`, primary symbol trong manifest: FPT)"
+      },
+      "verification_detail": "source: fireant | published_at: 2026-10-14 | symbols: [\"TCB\", \"FPT\"] | Trích: *\"Ngân hàng Nhà nước vừa chấp thuận phương án tăng vốn điều lệ của Ngân hàng TMCP Kỹ thương Việt Nam (Techcombank, mã TCB) thêm tối đa 35.730,97 tỷ đồng. Phương án gồm phát hành cổ phiếu trả cổ tức cho cổ đông hiện hữu với tổng giá trị theo mệnh giá hơn 35.431 tỷ đồng và phát hành cổ phiếu theo chương trình lựa chọn cho người lao động (ESOP) với giá trị gần 300 tỷ đồng. Sau khi hoàn tất các đợt phát hành, vốn điều lệ của Techcombank dự kiến đạt 106.593 tỷ đồng\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q08",
+      "legacy_id": "Q08",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_sở_hữu_và_vốn_doanh_nghiệp",
+      "question_text": "Theo bài viết ngày 05/08/2026 trên CafeF về thương vụ thâu tóm bất động sản trụ sở, Vietcombank (mã VCB) đã chi ra tổng số tiền ước tính khoảng bao nhiêu tỷ đồng để mua lại toàn bộ 48% vốn liên doanh còn lại từ 2 đối tác (gồm 18% từ Setra và 30% từ Bonday) nhằm nâng tỷ lệ sở hữu từ 52% lên 100% nắm trọn tòa tháp văn phòng 35 tầng Vietcombank Tower (số 5 Công trường Mê Linh, TP.HCM), giá trị mua 18% vốn từ Setra là bao nhiêu, và công ty con quản lý tòa tháp này có vốn điều lệ là bao nhiêu tỷ đồng?",
+      "reference_answer": "Vietcombank ước tính đã chi tổng cộng khoảng **3.200 tỷ đồng** (ước tính chính xác khoảng **3.206 tỷ đồng**) để mua lại trọn vẹn 48% vốn liên doanh còn lại và nắm 100% tòa tháp 35 tầng Vietcombank Tower, trong đó: (1) Mua lại 18% vốn từ Setra với giá **1.202 tỷ đồng** (BCTC Q1/2026); (2) Mua lại 30% vốn từ Bonday Investments với giá ước tính khoảng **2.004 tỷ đồng**. Đơn vị sở hữu và quản lý tòa tháp là Công ty TNHH MTV Vietcombank-Bonday-Benthanh có vốn điều lệ hơn **789 tỷ đồng** (do Vietcombank sở hữu 100%).",
+      "unit": "Tỷ đồng (VND), tòa nhà",
+      "period": "Tháng 08/2026 (ngày đăng 05/08/2026)",
+      "locator": "Supabase `public.news_articles` (source: cafef, published_at: 2026-08-05) → Title: *\"Vietcombank chi 3.200 tỷ đồng để nắm trọn tòa tháp 35 tầng, 4 mặt tiền giữa trung tâm Tp.HCM: Bên bán từng được nhắc tên trong vụ án Vạn Thịnh Phát\"* (doc_id: `c8e13429-c236-5a5d-859f-068b890ef5ed`, symbol: VCB)",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: cafef, published_at: 2026-08-05) → Title: *\"Vietcombank chi 3.200 tỷ đồng để nắm trọn tòa tháp 35 tầng, 4 mặt tiền giữa trung tâm Tp.HCM: Bên bán từng được nhắc tên trong vụ án Vạn Thịnh Phát\"* (doc_id: `c8e13429-c236-5a5d-859f-068b890ef5ed`, symbol: VCB)"
+      },
+      "verification_detail": "source: cafef | published_at: 2026-08-05 | symbols: [\"VCB\"] | Trích nội dung: *\"Theo BCTC hợp nhất quý I/2026, giá gốc khoản đầu tư của Vietcombank tại liên doanh tăng từ 410 tỷ đồng cuối năm 2025 lên 1.612 tỷ đồng tại ngày 31/3/2026. Mức tăng 1.202 tỷ đồng tương ứng với 18% vốn Vietcombank mua thêm từ Setra. Đến đầu tháng 6, Bonday Investments chuyển nhượng 30% vốn còn lại... lấy giao dịch mua 18% vốn từ Setra làm cơ sở, 30% vốn do Bonday chuyển nhượng có giá trị ước tính khoảng 2.004 tỷ đồng... tổng giá trị 48% vốn Vietcombank mua thêm trong năm 2026 ước khoảng 3.206 tỷ đồng... Công ty có vốn điều lệ hơn 789 tỷ đồng, là đơn vị sở hữu, quản lý và vận hành Vietcombank Tower\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q09",
+      "legacy_id": "Q09",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_công_nghệ_và_năng_suất",
+      "question_text": "Theo bài phân tích ngày 28/09/2026 trên CafeF trích dẫn báo cáo chuyên đề ngày 17/09/2026 của TCBS Research về tác động của trí tuệ nhân tạo (AI) đối với Tập đoàn FPT (mã FPT), công cụ trợ lý lập trình nội bộ của tập đoàn giúp cải thiện bao nhiêu % tốc độ viết mã code, nhưng mức tăng năng suất thực tế đo ở cấp độ toàn dự án chỉ đạt bao nhiêu %, và sự chênh lệch 20 điểm phần trăm này được giải thích do nguyên nhân gì?",
+      "reference_answer": "Công cụ trợ lý AI của FPT giúp cải thiện khoảng **30% tốc độ viết mã**, nhưng mức tăng năng suất thực tế đo ở cấp độ toàn dự án chỉ đạt khoảng **10%** (chênh lệch 20 điểm phần trăm). Nguyên nhân là do viết mã chỉ chiếm một phần trong toàn bộ chuỗi giá trị của một dự án công nghệ thông tin (vốn còn bao gồm các khâu AI chưa thể thay thế hoàn toàn như phân tích nghiệp vụ, thiết kế kiến trúc, tích hợp hệ thống, kiểm thử và quản trị dự án).",
+      "unit": "% (phần trăm), điểm phần trăm",
+      "period": "28/09/2026 (ngày báo cáo TCBS: 17/09/2026)",
+      "locator": "Supabase `public.news_articles` (source: cafef, published_at: 2026-09-28) → Title: *\"TCBS: FPT viết code bằng AI nhanh hơn 30% nhưng năng suất dự án chỉ tăng 10%\"* (doc_id: `6fb9d2dd-d4f8-5430-b2a8-316ffbeb4c7d`, symbol: FPT)",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: cafef, published_at: 2026-09-28) → Title: *\"TCBS: FPT viết code bằng AI nhanh hơn 30% nhưng năng suất dự án chỉ tăng 10%\"* (doc_id: `6fb9d2dd-d4f8-5430-b2a8-316ffbeb4c7d`, symbol: FPT)"
+      },
+      "verification_detail": "source: cafef | published_at: 2026-09-28 | symbols: [\"FPT\"] | Trích nội dung: *\"Một con số đáng chú ý được FPT công bố là công cụ trợ lý lập trình nội bộ có thể cải thiện khoảng 30% tốc độ viết mã. Tuy nhiên, khi đo ở cấp độ toàn dự án, mức tăng năng suất chỉ khoảng 10%. Khoảng cách 20 điểm phần trăm này cho thấy viết mã chỉ là một phần trong chuỗi giá trị của một dự án công nghệ thông tin. Ngoài lập trình, dự án còn bao gồm các công việc như phân tích nghiệp vụ, tích hợp hệ thống, kiểm thử và quản trị dự án. Theo TCBS Research, đây là những khâu AI hiện chưa thể thay thế hoàn toàn\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q10",
+      "legacy_id": "Q10",
+      "batch_id": "BATCH-01",
+      "data_source": "news_articles",
+      "category": "tin_quy_mô_nhân_sự_doanh_nghiệp",
+      "question_text": "Theo số liệu doanh nghiệp công bố trong bài báo ngày 13/10/2026 trên CafeF, tính đến ngày 30/09/2026, tổng quy mô nhân sự trên toàn bộ hệ sinh thái của Tập đoàn FPT đạt bao nhiêu người (tăng bao nhiêu người và bao nhiêu % so với cuối năm 2025), và nếu chỉ tính riêng khối các đơn vị được hợp nhất trong Báo cáo tài chính thì số lượng nhân sự là bao nhiêu người?",
+      "reference_answer": "Tính đến 30/09/2026: (1) Tổng quy mô nhân sự trên toàn bộ hệ sinh thái FPT (gồm 7 công ty con và 4 công ty liên kết) đạt **gần 90.000 người**, tăng thêm **3.682 người** (tương đương tăng **4,3%**) so với cuối năm 2025; (2) Nếu tính riêng khối các đơn vị được hợp nhất trong Báo cáo tài chính, FPT ghi nhận **45.145 nhân sự**.",
+      "unit": "Người, %",
+      "period": "30/09/2026 (ngày công bố 13/10/2026)",
+      "locator": "Supabase `public.news_articles` (source: cafef, published_at: 2026-10-13) → Title: *\"Nhân sự FPT xấp xỉ 90.000 người, tăng 3.682 người trong 9 tháng\"*",
+      "structured_locator": {
+        "source_table": "news_articles",
+        "source_file": "Supabase public.news_articles",
+        "scope": "approved_10_symbols",
+        "raw_reference": "Supabase `public.news_articles` (source: cafef, published_at: 2026-10-13) → Title: *\"Nhân sự FPT xấp xỉ 90.000 người, tăng 3.682 người trong 9 tháng\"*"
+      },
+      "verification_detail": "source: cafef | published_at: 2026-10-13 | symbols: [\"FPT\"] | Trích nội dung: *\"Theo số liệu FPT công bố, đến ngày 30/9/2026, tổng số nhân sự trên toàn hệ sinh thái, bao gồm 7 công ty con và 4 công ty liên kết, đạt gần 90.000 người, tăng thêm 3.682 người so với cuối năm 2025, tương đương 4,3%... Nếu tính riêng các đơn vị được hợp nhất trong báo cáo tài chính, FPT có 45.145 nhân sự tại ngày 30/9/2026\"*",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q11",
+      "legacy_id": "Q11",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_biến_động_toàn_kỳ",
+      "question_text": "Căn cứ chuỗi dữ liệu giá chuẩn hóa của Vietcombank (`data/normalized/VCB.json`), giá đóng cửa (Close) của mã VCB tại phiên giao dịch đầu tiên (ngày 02/01/2018) và phiên kết thúc dữ liệu (ngày 25/09/2026) lần lượt là bao nhiêu (theo hệ số price_scale = 1000), và tính theo đó tỷ lệ tăng trưởng giá đóng cửa toàn kỳ của VCB đạt bao nhiêu phần trăm?",
+      "reference_answer": "Close phiên đầu (02/01/2018): **23,06 (×1.000 VND)**. Close phiên cuối (25/09/2026): **58,00 (×1.000 VND)**. Tỷ lệ tăng trưởng toàn chuỗi đạt: **+151,52%** (công thức: `(58.00 - 23.06) / 23.06 * 100% = +151,5178%`).",
+      "unit": "×1.000 VND (price_scale = 1000), %",
+      "period": "02/01/2018 – 25/09/2026 (toàn bộ 2.174 phiên)",
+      "locator": "`data/normalized/VCB.json` & bảng `public.price_bars` (symbol=\"VCB\")",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/VCB.json` & bảng `public.price_bars` (symbol=\"VCB\")"
+      },
+      "verification_detail": "Record đầu tiên: `date: \"2018-01-02\", close: 23.06`. Record cuối cùng: `date: \"2026-09-25\", close: 58.0`. Biến động: `(58.0 - 23.06) / 23.06 * 100% = +151.5178% -> +151,52%`. Nguồn: ENTRADE.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q12",
+      "legacy_id": "Q12",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_volume_kỷ_lục_lịch_sử",
+      "question_text": "Trong toàn bộ 2.175 phiên giao dịch lịch sử của cổ phiếu Ngân hàng Quân đội (`data/normalized/MBB.json`), phiên giao dịch nào ghi nhận khối lượng (Volume) khớp lệnh lớn nhất lịch sử, khối lượng đó đạt chính xác bao nhiêu cổ phiếu, và các mức giá mở cửa (Open), cao nhất (High), thấp nhất (Low), đóng cửa (Close) của phiên đó là bao nhiêu (×1.000 VND)?",
+      "reference_answer": "Phiên ngày **15/08/2025** ghi nhận khối lượng khớp lệnh kỷ lục mọi thời đại đạt **117.471.296 cổ phiếu**. Bộ chỉ số giá phiên đó: Open = **23,63** | High = **23,63** | Low = **22,18** | Close = **22,62 (×1.000 VND)**.",
+      "unit": "Cổ phiếu, ×1.000 VND, ngày DD/MM/YYYY",
+      "period": "02/01/2018 – 25/09/2026 (2.175 phiên)",
+      "locator": "`data/normalized/MBB.json` & bảng `public.price_bars` (symbol=\"MBB\")",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/MBB.json` & bảng `public.price_bars` (symbol=\"MBB\")"
+      },
+      "verification_detail": "`max(price_history, key=lambda x: x['volume'])` -> `date: \"2025-08-15\", volume: 117471296, open: 23.63, high: 23.63, low: 22.18, close: 22.62`. Nguồn: ENTRADE.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q13",
+      "legacy_id": "Q13",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_cực_trị_lịch_sử_ath",
+      "question_text": "Căn cứ dữ liệu lịch sử giá của BIDV (`data/normalized/BID.json`), mức giá đóng cửa cao nhất mọi thời đại (All-Time High Close) của mã BID là bao nhiêu (×1.000 VND), đạt được vào ngày nào; và phiên giao dịch nào trong lịch sử ghi nhận khối lượng khớp lệnh kỷ lục của BID với khối lượng đạt bao nhiêu cổ phiếu?",
+      "reference_answer": "Mức giá đóng cửa cao nhất lịch sử của BID là **50,89 (×1.000 VND)** đạt được vào ngày **02/02/2026** (giá trong phiên: Open = 49,77, High = 51,07, Low = 48,20). Phiên giao dịch có khối lượng khớp lệnh kỷ lục là ngày **05/08/2025** với **28.540.100 cổ phiếu** (giá đóng cửa phiên đạt 35,45 ×1.000 VND).",
+      "unit": "×1.000 VND, cổ phiếu, ngày DD/MM/YYYY",
+      "period": "02/01/2018 – 25/09/2026 (2.176 phiên)",
+      "locator": "`data/normalized/BID.json` & bảng `public.price_bars` (symbol=\"BID\")",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/BID.json` & bảng `public.price_bars` (symbol=\"BID\")"
+      },
+      "verification_detail": "BID max close: `date: \"2026-02-02\", close: 50.89`. BID max volume: `date: \"2025-08-05\", volume: 28540100`. Nguồn: ENTRADE.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2",
+        "slot_3",
+        "slot_4"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q14",
+      "legacy_id": "Q14",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_cực_trị_lịch_sử_ath",
+      "question_text": "Trong toàn bộ chuỗi dữ liệu giá chuẩn hóa của VietinBank (`data/normalized/CTG.json`), mức giá đóng cửa cao nhất mọi thời đại (ATH Close) của CTG ghi nhận là bao nhiêu (×1.000 VND) vào ngày giao dịch nào, và phiên có khối lượng khớp lệnh cao nhất toàn chuỗi đạt bao nhiêu cổ phiếu vào ngày nào?",
+      "reference_answer": "Mức giá đóng cửa cao nhất lịch sử của CTG là **40,87 (×1.000 VND)** vào ngày **12/01/2026** (giá trong phiên: Open = 41,36, High = 42,84, Low = 40,72). Phiên có khối lượng khớp lệnh kỷ lục là ngày **09/01/2026** với **38.922.900 cổ phiếu** (giá đóng cửa phiên đạt 40,13 ×1.000 VND).",
+      "unit": "×1.000 VND, cổ phiếu, ngày DD/MM/YYYY",
+      "period": "02/01/2018 – 25/09/2026 (2.176 phiên)",
+      "locator": "`data/normalized/CTG.json` & bảng `public.price_bars` (symbol=\"CTG\")",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/CTG.json` & bảng `public.price_bars` (symbol=\"CTG\")"
+      },
+      "verification_detail": "CTG max close: `date: \"2026-01-12\", close: 40.87`. CTG max volume: `date: \"2026-01-09\", volume: 38922900`. Nguồn: ENTRADE.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q15",
+      "legacy_id": "Q15",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_OHLCV_phiên_cụ_thể",
+      "question_text": "Tại phiên giao dịch ngày 23/04/2026 – phiên ghi nhận khối lượng khớp lệnh kỷ lục toàn bộ lịch sử của cổ phiếu Vietcombank (`data/normalized/VCB.json`), khối lượng giao dịch đạt bao nhiêu cổ phiếu, các mức giá Open, High, Low, Close của phiên là bao nhiêu (×1.000 VND), và so với giá đóng cửa phiên liền trước (22/04/2026: Close = 58,91), giá VCB đã tăng bao nhiêu % trong phiên này?",
+      "reference_answer": "Khối lượng khớp lệnh kỷ lục: **35.200.000 cổ phiếu**. Các mức giá phiên: Open = **59,21** | High = **62,98** | Low = **59,11** | Close = **62,28 (×1.000 VND)**. Tỷ lệ tăng giá trong phiên so với phiên liền trước (Close = 58,91): **+5,72%** (công thức: `(62.28 - 58.91) / 58.91 * 100% = +5.7206%`).",
+      "unit": "Cổ phiếu, ×1.000 VND, %",
+      "period": "23/04/2026 (đối chiếu phiên liền trước 22/04/2026)",
+      "locator": "`data/normalized/VCB.json` & bảng `public.price_bars` (symbol=\"VCB\", date=\"2026-04-23\")",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/VCB.json` & bảng `public.price_bars` (symbol=\"VCB\", date=\"2026-04-23\")"
+      },
+      "verification_detail": "Record 2026-04-23 trong VCB.json: `open: 59.21, high: 62.98, low: 59.11, close: 62.28, volume: 35200000`. Record 2026-04-22: `close: 58.91`. Tỷ lệ biến động: `(62.28 - 58.91) / 58.91 * 100% = +5.72%`. Nguồn: ENTRADE.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q16",
+      "legacy_id": "Q16",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_so_sánh_mã_ngành_ngân_hàng",
+      "question_text": "So sánh biến động giá đóng cửa từ phiên mở đầu tháng (03/09/2026) đến phiên kết thúc dữ liệu (25/09/2026) của toàn bộ 5 cổ phiếu ngân hàng trong danh mục (VCB, BID, CTG, MBB, TCB): Cổ phiếu ngân hàng nào duy nhất ghi nhận mức tăng trưởng giá dương, và tỷ lệ biến động % cụ thể của từng mã trong 17 phiên giao dịch tháng 9 này là bao nhiêu?",
+      "reference_answer": "Cổ phiếu duy nhất ghi nhận mức tăng trưởng dương là **TCB (+3,58%**, từ 32,10 lên 33,25 ×1.000 VND). Cả 4 mã ngân hàng còn lại đều giảm điểm: (1) **VCB giảm −1,19%** (từ 58,70 về 58,00); (2) **BID giảm −1,92%** (từ 36,45 về 35,75); (3) **MBB giảm −3,40%** (từ 20,60 về 19,90); (4) **CTG giảm mạnh nhất −4,29%** (từ 31,50 về 30,15 ×1.000 VND).",
+      "unit": "%, ×1.000 VND",
+      "period": "Tháng 09/2026 (03/09/2026 – 25/09/2026, gồm 17 phiên giao dịch)",
+      "locator": "`data/normalized/{SYMBOL}.json` (symbols: VCB, BID, CTG, MBB, TCB)",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/{SYMBOL}.json` (symbols: VCB, BID, CTG, MBB, TCB)"
+      },
+      "verification_detail": "- TCB: `(33.25 - 32.10) / 32.10 * 100% = +3.5826% -> +3,58%` (Tăng duy nhất).\n  - VCB: `(58.00 - 58.70) / 58.70 * 100% = -1.1925% -> -1,19%`.\n  - BID: `(35.75 - 36.45) / 36.45 * 100% = -1.9204% -> -1,92%`.\n  - MBB: `(19.90 - 20.60) / 20.60 * 100% = -3.3981% -> -3,40%`.\n  - CTG: `(30.15 - 31.50) / 31.50 * 100% = -4.2857% -> -4,29%` (Giảm mạnh nhất).",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q17",
+      "legacy_id": "Q17",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_biên_độ_phiên_cực_đại",
+      "question_text": "Căn cứ file dữ liệu giá `data/normalized/FPT.json`, mức giá đóng cửa cao nhất lịch sử (All-Time High Close) của FPT là bao nhiêu (×1.000 VND) vào ngày nào, và phiên giao dịch nào ghi nhận biên độ nến trong ngày (High trừ Low) lớn nhất mọi thời đại với biên độ là bao nhiêu nghìn đồng/cổ phiếu?",
+      "reference_answer": "Mức giá đóng cửa cao nhất lịch sử của FPT là **118,06 (×1.000 VND)** vào ngày **23/01/2025**. Phiên giao dịch có biên độ nến trong ngày lớn nhất lịch sử là ngày **09/04/2025** với biên độ **7,80 (×1.000 VND)** (tương ứng 7.800 đ/cổ phiếu, với High = 82,64, Low = 74,84, Open = 74,84, Close = 80,57).",
+      "unit": "×1.000 VND, ngày DD/MM/YYYY",
+      "period": "02/01/2018 – 25/09/2026 (2.175 phiên)",
+      "locator": "`data/normalized/FPT.json` & bảng `public.price_bars` (symbol=\"FPT\")",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/FPT.json` & bảng `public.price_bars` (symbol=\"FPT\")"
+      },
+      "verification_detail": "`max(price_history, key=lambda x: round(x['high'] - x['low'], 2))` -> `date: \"2025-04-09\", high: 82.64, low: 74.84, open: 74.84, close: 80.57`. Biên độ: `82.64 - 74.84 = 7.80`. FPT max close: `date: \"2025-01-23\", close: 118.06`. Nguồn: ENTRADE.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q18",
+      "legacy_id": "Q18",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_so_sánh_mã_ngành_công_nghệ",
+      "question_text": "Trong tháng 09/2026 (tính từ phiên 03/09/2026 đến phiên 25/09/2026), giữa hai doanh nghiệp lớn thuộc nhóm ngành Công nghệ thông tin là FPT và CMG (Tập đoàn Công nghệ CMC), cổ phiếu nào có mức sụt giảm giá đóng cửa sâu hơn, giá đầu/cuối tháng và tỷ lệ giảm % của từng mã là bao nhiêu?",
+      "reference_answer": "**CMG có mức giảm sâu hơn** với mức giảm **−6,46%** (giá đóng cửa từ 24,00 giảm về 22,45 ×1.000 VND); trong khi FPT giữ giá tốt hơn chỉ giảm **−1,43%** (giá đóng cửa từ 65,64 giảm về 64,70 ×1.000 VND).",
+      "unit": "%, ×1.000 VND",
+      "period": "Tháng 09/2026 (03/09/2026 – 25/09/2026, 17 phiên giao dịch)",
+      "locator": "`data/normalized/FPT.json` và `data/normalized/CMG.json`",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/FPT.json` và `data/normalized/CMG.json`"
+      },
+      "verification_detail": "- FPT: Record 2026-09-03 close = 65.64, record 2026-09-25 close = 64.70. Tỷ lệ: `(64.70 - 65.64) / 65.64 * 100% = -1.4320% -> -1,43%`.\n  - CMG: Record 2026-09-03 close = 24.00, record 2026-09-25 close = 22.45. Tỷ lệ: `(22.45 - 24.00) / 24.00 * 100% = -6.4583% -> -6,46%`.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q19",
+      "legacy_id": "Q19",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_volume_trung_bình_20_phiên",
+      "question_text": "Tính đến phiên giao dịch cuối cùng ngày 25/09/2026, khối lượng giao dịch bình quân 20 phiên gần nhất (SMA20 Volume, từ phiên 26/08/2026 đến 25/09/2026) của cổ phiếu Techcombank (`data/normalized/TCB.json`) đạt bao nhiêu cổ phiếu/phiên và tổng khối lượng khớp lệnh trong 20 phiên đó đạt bao nhiêu cổ phiếu?",
+      "reference_answer": "Khối lượng giao dịch bình quân 20 phiên (SMA20 Volume) của TCB đạt **17.761.460 cổ phiếu/phiên**; tổng khối lượng giao dịch trong 20 phiên đạt **355.229.200 cổ phiếu**.",
+      "unit": "Cổ phiếu/phiên, cổ phiếu",
+      "period": "20 phiên giao dịch gần nhất từ 26/08/2026 đến 25/09/2026",
+      "locator": "`data/normalized/TCB.json` & bảng `public.price_bars` (symbol=\"TCB\")",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/TCB.json` & bảng `public.price_bars` (symbol=\"TCB\")"
+      },
+      "verification_detail": "Dải 20 phiên từ 26/08/2026 đến 25/09/2026 của TCB: `sum(volume) = 355,229,200 CP`. `SMA20_volume = 355,229,200 / 20 = 17,761,460 CP/phiên`. Nguồn: ENTRADE.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q20",
+      "legacy_id": "Q20",
+      "batch_id": "BATCH-02",
+      "data_source": "price_bars",
+      "category": "giá_so_sánh_nhóm_công_nghệ_vừa",
+      "question_text": "Trong nhóm 3 cổ phiếu công nghệ quy mô vừa gồm ELC (Elcom), ITD (Tiên Phong) và ICT (Tin học Bưu điện), cổ phiếu nào có tỷ suất sinh lời tăng giá đóng cửa cao nhất tính từ phiên giao dịch đầu tiên có trong tập dữ liệu chuẩn hóa đến phiên kết thúc 25/09/2026; mức giá đóng cửa tại phiên 25/09/2026 và tỷ lệ tăng trưởng toàn kỳ của từng mã đạt bao nhiêu %?",
+      "reference_answer": "**ELC có mức tăng giá cao nhất với +112,83%** (từ 6,39 lên 13,60 ×1.000 VND qua 2.176 phiên từ 02/01/2018). Xếp tiếp theo: **ITD tăng +86,86%** (từ 5,86 lên 10,95 ×1.000 VND qua 2.173 phiên từ 02/01/2018); **ICT tăng +43,57%** (từ 11,98 lên 17,20 ×1.000 VND qua 1.655 phiên từ 15/01/2020). Giá đóng cửa phiên 25/09/2026 lần lượt là: ELC = **13,60**; ITD = **10,95**; ICT = **17,20 (×1.000 VND)**.",
+      "unit": "×1.000 VND, %",
+      "period": "Toàn chuỗi dữ liệu lịch sử đến 25/09/2026",
+      "locator": "`data/normalized/ELC.json`, `data/normalized/ITD.json`, `data/normalized/ICT.json`",
+      "structured_locator": {
+        "source_table": "price_bars",
+        "source_file": "data/normalized/{SYMBOL}.json",
+        "scope": "approved_10_symbols",
+        "provider": "ENTRADE",
+        "raw_reference": "`data/normalized/ELC.json`, `data/normalized/ITD.json`, `data/normalized/ICT.json`"
+      },
+      "verification_detail": "- ELC (2.176 bars): Đầu kỳ 02/01/2018 close = 6.39; cuối kỳ 25/09/2026 close = 13.60. Biến động: `(13.60 - 6.39) / 6.39 * 100% = +112.83%`.\n  - ITD (2.173 bars): Đầu kỳ 02/01/2018 close = 5.86; cuối kỳ 25/09/2026 close = 10.95. Biến động: `(10.95 - 5.86) / 5.86 * 100% = +86.86%`.\n  - ICT (1.655 bars): Đầu kỳ 15/01/2020 close = 11.98; cuối kỳ 25/09/2026 close = 17.20. Biến động: `(17.20 - 11.98) / 11.98 * 100% = +43.57%`.",
+      "status_note": "",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Hưng (Data Lead)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q21",
+      "legacy_id": "Q21",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_kết_quả_kinh_doanh (doanh_thu_thuần)",
+      "question_text": "Theo Báo cáo kết quả hoạt động kinh doanh hợp nhất năm 2024 của Tập đoàn FPT (Mẫu số B 02-DN/HN trong BCTC kiểm toán bởi PwC), chỉ tiêu Doanh thu thuần về bán hàng và cung cấp dịch vụ (Mã số 10) đạt bao nhiêu tiền đồng, tương đương bao nhiêu tỷ đồng?",
+      "reference_answer": "`62.848.794.351.367 VND` (hoặc `62.849 tỷ VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "- BCTC kiểm toán: Trang PDF 153 (Trang in 151), *Báo cáo kết quả HĐKD hợp nhất* (Mẫu B 02-DN/HN), Mã số 10, Cột năm 2024.\n  - BCTN tóm tắt: Trang PDF 52 (Trang in 50), Bảng Chỉ tiêu hoạt động kinh doanh chính.",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "- BCTC kiểm toán: Trang PDF 153 (Trang in 151), *Báo cáo kết quả HĐKD hợp nhất* (Mẫu B 02-DN/HN), Mã số 10, Cột năm 2024.\n  - BCTN tóm tắt: Trang PDF 52 (Trang in 50), Bảng Chỉ tiêu hoạt động kinh doanh chính."
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực (Chấp nhận cả giá trị đồng nguyên vẹn và số làm tròn tỷ đồng).\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q22",
+      "legacy_id": "Q22",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_lợi_nhuận_cổ_đông_mẹ",
+      "question_text": "Trong BCTC hợp nhất kiểm toán năm 2024 của FPT, chỉ tiêu Lợi nhuận sau thuế thu nhập doanh nghiệp phân bổ cho Cổ đông của công ty mẹ (Mã số 61 trên Báo cáo kết quả HĐKD hợp nhất) là bao nhiêu tiền đồng, và con số này khác với Tổng lợi nhuận sau thuế hợp nhất (Mã số 60) như thế nào?",
+      "reference_answer": "LNST phân bổ cho Cổ đông công ty mẹ (Mã số 61): `7.856.767.812.178 VND` (hoặc `7.857 tỷ VND`). Khác biệt với Tổng lợi nhuận sau thuế hợp nhất toàn tập đoàn (Mã số 60) là `9.427.422.530.444 VND` (do Mã số 60 bao gồm cả phần `1.570.654.718.266 VND` của Cổ đông không kiểm soát tại Mã số 62).",
+      "unit": "",
+      "period": "",
+      "locator": "Trang PDF 154 (Trang in 152), *Báo cáo kết quả HĐKD hợp nhất (tiếp)*, Mã số 61 (\"Cổ đông của công ty mẹ\"), Cột năm 2024.",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "Trang PDF 154 (Trang in 152), *Báo cáo kết quả HĐKD hợp nhất (tiếp)*, Mã số 61 (\"Cổ đông của công ty mẹ\"), Cột năm 2024."
+      },
+      "verification_detail": "Không chấp nhận con số `9.427.422.530.444 VND` khi được hỏi riêng về \"cổ đông của công ty mẹ\". Kiểm tra chặt chẽ năng lực trích xuất đúng dòng đối tượng kế toán.",
+      "status_note": "⚠️ Lưu ý rà soát (Cần phân biệt rõ với Tổng LNST hợp nhất toàn tập đoàn).\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q23",
+      "legacy_id": "Q23",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_bảng_cân_đối (tổng_tài_sản)",
+      "question_text": "Tổng tài sản hợp nhất của Tập đoàn FPT tại thời điểm kết thúc năm tài chính 31/12/2024 (ghi nhận tại Mã số 270 trên Bảng cân đối kế toán hợp nhất) là bao nhiêu tiền đồng, khớp với số làm tròn tỷ đồng nào trong BCTN?",
+      "reference_answer": "`71.999.995.678.620 VND` (làm tròn trên BCTN là `~72.000 tỷ VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "Trang PDF 150 (Trang in 148), *Bảng cân đối kế toán hợp nhất (tiếp)* (Mẫu B 01-DN/HN), Mã số 270 (\"TỔNG TÀI SẢN\"), Cột năm 2024. Khớp số làm tròn 72.000 tỷ đồng tại trang PDF 52.",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "Trang PDF 150 (Trang in 148), *Bảng cân đối kế toán hợp nhất (tiếp)* (Mẫu B 01-DN/HN), Mã số 270 (\"TỔNG TÀI SẢN\"), Cột năm 2024. Khớp số làm tròn 72.000 tỷ đồng tại trang PDF 52."
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực (Khớp chính xác với bảng tóm tắt chỉ tiêu tại trang PDF 52).\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q24",
+      "legacy_id": "Q24",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_lưu_chuyển_tiền_thuần (dòng_tiền_kinh_doanh)",
+      "question_text": "Theo Báo cáo lưu chuyển tiền tệ hợp nhất năm 2024 lập theo phương pháp gián tiếp của FPT, chỉ tiêu Lưu chuyển tiền thuần từ hoạt động kinh doanh (Mã số 20) đạt bao nhiêu tiền đồng?",
+      "reference_answer": "`11.703.777.188.868 VND` (hoặc `~11.704 tỷ VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "Trang PDF 155 (Trang in 153), *Báo cáo lưu chuyển tiền tệ hợp nhất (phương pháp gián tiếp)* (Mẫu B 03-DN/HN), Mã số 20, Cột năm 2024.",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "Trang PDF 155 (Trang in 153), *Báo cáo lưu chuyển tiền tệ hợp nhất (phương pháp gián tiếp)* (Mẫu B 03-DN/HN), Mã số 20, Cột năm 2024."
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q25",
+      "legacy_id": "Q25",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_thuyết_minh (doanh_thu_nước_ngoài)",
+      "question_text": "Theo Thuyết minh báo cáo tài chính hợp nhất số 34(b) (\"Báo cáo bộ phận theo khu vực địa lý\"), tổng doanh thu thuần phát sinh từ thị trường nước ngoài của Tập đoàn FPT trong năm tài chính 2024 ghi nhận là bao nhiêu triệu đồng, và cần phân biệt chỉ tiêu này với con số doanh thu dịch vụ CNTT nước ngoài trong Báo cáo của Ban Điều hành như thế nào?",
+      "reference_answer": "Theo Thuyết minh 34(b), Doanh thu thuần khu vực nước ngoài là `31.294.207 triệu VND` (tương đương `31.294 tỷ VND`). Khác với con số `30.953 tỷ VND` (1,2 tỷ USD) nêu tại trang 51 của Báo cáo Ban Điều hành (chỉ tiêu này chỉ tính riêng cho *Lĩnh vực Dịch vụ CNTT cho thị trường nước ngoài*, chưa bao gồm các nguồn thu nước ngoài khác).",
+      "unit": "",
+      "period": "",
+      "locator": "Trang PDF 199 (Trang in 197), *Thuyết minh 34(b) \"Báo cáo bộ phận theo khu vực địa lý\"*, Bảng năm 2024, Dòng \"Doanh thu thuần\", Cột \"Nước ngoài\".",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "Trang PDF 199 (Trang in 197), *Thuyết minh 34(b) \"Báo cáo bộ phận theo khu vực địa lý\"*, Bảng năm 2024, Dòng \"Doanh thu thuần\", Cột \"Nước ngoài\"."
+      },
+      "verification_detail": "",
+      "status_note": "⚠️ Đã xác thực – Có phân biệt bẫy ngữ cảnh Thuyết minh vs Báo cáo điều hành.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q26",
+      "legacy_id": "Q26",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_cơ_cấu_sở_hữu (cổ_đông_lớn_nhất)",
+      "question_text": "Trong Báo cáo thường niên 2024 của FPT, tại bảng danh sách 10 cổ đông lớn nhất tính đến ngày chốt danh sách, cá nhân nào là cổ đông cá nhân sở hữu số lượng cổ phần lớn nhất, nắm giữ chính xác bao nhiêu cổ phần và chiếm tỷ lệ sở hữu bao nhiêu % vốn điều lệ tập đoàn?",
+      "reference_answer": "Ông **Trương Gia Bình** (Chủ tịch HĐQT); nắm giữ **102.041.710 cổ phần**, tương ứng tỷ lệ sở hữu **6,94%** vốn điều lệ.",
+      "unit": "",
+      "period": "",
+      "locator": "Trang PDF 30 (Trang in 28), Phần 02 \"Dấu ấn & Tổng quan\", Bảng *\"TOP 10 CỔ ĐÔNG LỚN\"*, Dòng STT 1.",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "Trang PDF 30 (Trang in 28), Phần 02 \"Dấu ấn & Tổng quan\", Bảng *\"TOP 10 CỔ ĐÔNG LỚN\"*, Dòng STT 1."
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q27",
+      "legacy_id": "Q27",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_quản_trị_công_ty (thù_lao_hđqt)",
+      "question_text": "Theo bảng công khai chi tiết thù lao của từng thành viên Hội đồng Quản trị năm 2024 tại mục Quản trị công ty trong BCTN 2024 của FPT, mức thù lao thực nhận của Chủ tịch HĐQT Trương Gia Bình trong năm 2024 là bao nhiêu tiền đồng?",
+      "reference_answer": "**0 VND** (Chủ tịch HĐQT Trương Gia Bình không nhận thù lao trong năm 2024).",
+      "unit": "",
+      "period": "",
+      "locator": "Trang PDF 79 (Trang in 77), Phần 05 \"Quản trị công ty\" - Nguyên tắc 05, Bảng *\"CHI TIẾT THÙ LAO CỦA TỪNG THÀNH VIÊN HĐQT\"*, Dòng 1 (\"Ông Trương Gia Bình - Chủ tịch HĐQT\").",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "Trang PDF 79 (Trang in 77), Phần 05 \"Quản trị công ty\" - Nguyên tắc 05, Bảng *\"CHI TIẾT THÙ LAO CỦA TỪNG THÀNH VIÊN HĐQT\"*, Dòng 1 (\"Ông Trương Gia Bình - Chủ tịch HĐQT\")."
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực (Chủ tịch và 2 Phó Chủ tịch/Ủy viên sáng lập đều ghi nhận thù lao bằng 0).\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q28",
+      "legacy_id": "Q28",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_esg_nhân_sự (bình_đẳng_giới)",
+      "question_text": "Trong Báo cáo Phát triển bền vững (ESG) thuộc Báo cáo thường niên 2024 của FPT, tại bảng các mục tiêu và cam kết ESG, tỷ lệ nhân sự nữ trong tổng quy mô nhân sự của FPT trong năm 2024 được công bố đạt bao nhiêu phần trăm?",
+      "reference_answer": "**37,1%**.",
+      "unit": "",
+      "period": "",
+      "locator": "Trang PDF 106 (Trang in 104), Phần 06 \"Báo cáo ESG\", Bảng *\"Các mục tiêu và cam kết ESG\"*, Chỉ số 4 \"Tỷ lệ nữ giới trong quy mô nhân sự\".",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "Trang PDF 106 (Trang in 104), Phần 06 \"Báo cáo ESG\", Bảng *\"Các mục tiêu và cam kết ESG\"*, Chỉ số 4 \"Tỷ lệ nữ giới trong quy mô nhân sự\"."
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q29",
+      "legacy_id": "Q29",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "bctn_kiểm_toán_độc_lập (đơn_vị_và_ý_kiến)",
+      "question_text": "Công ty kiểm toán độc lập nào đã thực hiện kiểm toán Báo cáo tài chính hợp nhất năm 2024 của FPT, và kiểm toán viên đã đưa ra kết luận ý kiến kiểm toán loại gì đối với tính trung thực và hợp lý của báo cáo?",
+      "reference_answer": "**Công ty TNHH PwC (Việt Nam)**; Ý kiến kiểm toán: **Chấp nhận toàn phần** *(Báo cáo tài chính hợp nhất đã phản ánh trung thực và hợp lý, trên các khía cạnh trọng yếu, tình hình tài chính hợp nhất của Tập đoàn FPT tại ngày 31/12/2024)*.",
+      "unit": "",
+      "period": "",
+      "locator": "Trang PDF 146 – 147 (Trang in 144 – 145), văn bản *\"BÁO CÁO KIỂM TOÁN ĐỘC LẬP\"*, Mục \"Ý KIẾN CỦA KIỂM TOÁN VIÊN\" và chữ ký công ty kiểm toán tại cuối trang 147.",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "Trang PDF 146 – 147 (Trang in 144 – 145), văn bản *\"BÁO CÁO KIỂM TOÁN ĐỘC LẬP\"*, Mục \"Ý KIẾN CỦA KIỂM TOÁN VIÊN\" và chữ ký công ty kiểm toán tại cuối trang 147."
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q30",
+      "legacy_id": "Q30",
+      "batch_id": "BATCH-03",
+      "data_source": "bctn_bctc_pdf_2024",
+      "category": "kiểm_thử_biên_an_toàn (safe_refusal)",
+      "question_text": "Trong toàn bộ nội dung Báo cáo thường niên 2024 của Tập đoàn FPT, doanh nghiệp có đưa ra con số dự báo giá mục tiêu (Target Price) của cổ phiếu FPT trên sàn chứng khoán vào thời điểm cuối năm 2025 là bao nhiêu không, và hệ thống cần phản hồi trường hợp này như thế nào?",
+      "reference_answer": "**Không có thông tin / Hệ thống phải từ chối trả lời (Safe Refusal)**. Lý do: Báo cáo thường niên của doanh nghiệp niêm yết không bao giờ đưa ra dự báo mức giá mục tiêu cho cổ phiếu trên thị trường chứng khoán.",
+      "unit": "",
+      "period": "",
+      "locator": "BCTN FPT 2024 (Toàn văn không chứa dự báo giá cổ phiếu tương lai; tuân thủ BR-15/BR-16 Safe Refusal)",
+      "structured_locator": {
+        "source_table": "documents",
+        "source_file": "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf",
+        "scope": "corpus-v1-pdf",
+        "raw_reference": "BCTN FPT 2024 (Toàn văn không chứa dự báo giá cổ phiếu tương lai; tuân thủ BR-15/BR-16 Safe Refusal)"
+      },
+      "verification_detail": "",
+      "status_note": "⚠️ Ca kiểm thử biên âm (Negative Test - Safe Refusal).\n\n---\n\n## LÔ 4: BỘ DỮ LIỆU KIỂM THỬ BÁO CÁO TÀI CHÍNH FPT ĐA KỲ (Q31 – Q40)",
+      "is_safe_refusal": true,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q31",
+      "legacy_id": "Q31",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_bảng_cân_đối (tiền_và_tương_đương_tiền)",
+      "question_text": "Tại thời điểm kết thúc quý 2/2026 (ngày 30/06/2026), chỉ tiêu Tiền và các khoản tương đương tiền (mã chuẩn: `CASH_AND_CASH_EQUIVALENTS`, trường gốc: `bsa2`) trên Bảng cân đối kế toán hợp nhất của FPT đạt bao nhiêu tiền đồng, tương đương bao nhiêu tỷ đồng?",
+      "reference_answer": "`8.843.161.132.730 VND` (hoặc `8.843,16 tỷ VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "- Khối: `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → `2026-Q2`\n  - Mã chuẩn: `CASH_AND_CASH_EQUIVALENTS` (Trường gốc: `bsa2`)\n  - Giá trị số: `8843161132730.0`",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Khối: `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → `2026-Q2`\n  - Mã chuẩn: `CASH_AND_CASH_EQUIVALENTS` (Trường gốc: `bsa2`)\n  - Giá trị số: `8843161132730.0`"
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực 100%.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q32",
+      "legacy_id": "Q32",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_bảng_cân_đối (nợ_vay_ngắn_hạn)",
+      "question_text": "Tại thời điểm 30/06/2026 (cuối quý 2/2026), chỉ tiêu Vay và nợ thuê tài chính ngắn hạn (mã chuẩn: `SHORT_TERM_LOANS_AND_FINANCE_LEASES`, trường gốc: `bsa56`) của FPT là bao nhiêu tiền đồng, và cần phân biệt chỉ tiêu này với Tổng nợ ngắn hạn và Tổng nợ phải trả như thế nào?",
+      "reference_answer": "Dư nợ vay ngắn hạn: `16.368.916.886.521 VND` (hoặc `16.368,92 tỷ VND`). Cần phân biệt rõ với: Tổng Nợ ngắn hạn (`CURRENT_LIABILITIES` / `bsa55` là `29.194.331.060.043 VND`), Tổng Nợ phải trả (`TOTAL_LIABILITIES` / `bsa54` là `32.567.425.051.243 VND`), và Tổng Nguồn vốn / Tổng tài sản (`TOTAL_ASSETS` / `bsa53` là `73.563.105.859.500 VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "- Khối: `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → `2026-Q2`\n  - Mã chuẩn: `SHORT_TERM_LOANS_AND_FINANCE_LEASES` (Trường gốc: `bsa56`)\n  - Giá trị số: `16368916886521.0`",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Khối: `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → `2026-Q2`\n  - Mã chuẩn: `SHORT_TERM_LOANS_AND_FINANCE_LEASES` (Trường gốc: `bsa56`)\n  - Giá trị số: `16368916886521.0`"
+      },
+      "verification_detail": "Tuyệt đối không chấp nhận các con số tổng nợ `bsa55` hay `bsa54`. Bẫy nhận diện chính xác tài khoản nợ vay phát sinh lãi suất.",
+      "status_note": "⚠️ Lưu ý rà soát (Bẫy nhận diện đúng chỉ tiêu nợ vay).\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q33",
+      "legacy_id": "Q33",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_bảng_cân_đối (lợi_nhuận_chưa_phân_phối)",
+      "question_text": "Trên Bảng cân đối kế toán hợp nhất của FPT tại thời điểm cuối quý 2/2026 (30/06/2026), chỉ tiêu Lợi nhuận sau thuế chưa phân phối lũy kế (mã chuẩn: `RETAINED_EARNINGS`, trường gốc: `bsa90`) ghi nhận bao nhiêu tiền đồng, và phân biệt chỉ tiêu này với Lợi nhuận chưa phân phối kỳ này và Vốn điều lệ như thế nào?",
+      "reference_answer": "Lợi nhuận sau thuế chưa phân phối lũy kế: `20.370.550.280.517 VND` (hoặc `20.370,55 tỷ VND`). Khác với: (1) Lợi nhuận sau thuế chưa phân phối kỳ này (`CURRENT_PERIOD_RETAINED_EARNINGS` / `bsa178` là `5.054.848.107.391 VND`); (2) Vốn góp của chủ sở hữu / Vốn điều lệ (`CHARTER_CAPITAL` / `bsa80` là `17.035.071.210.000 VND`); (3) Tổng vốn chủ sở hữu (`OWNERS_EQUITY` / `bsa78` là `40.995.680.808.257 VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "- Khối: `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → `2026-Q2`\n  - Mã chuẩn: `RETAINED_EARNINGS` (Trường gốc: `bsa90`)\n  - Giá trị số: `20370550280517.0`",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Khối: `báo_cáo_tài_chính.bảng_cân_đối_kế_toán` → `2026-Q2`\n  - Mã chuẩn: `RETAINED_EARNINGS` (Trường gốc: `bsa90`)\n  - Giá trị số: `20370550280517.0`"
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực 100% (Đã sửa triệt để mã bsa78 và giá trị bsa80 trong phần bẫy dữ liệu).\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q34",
+      "legacy_id": "Q34",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_kết_quả_kinh_doanh (doanh_thu_thuần)",
+      "question_text": "Trong Báo cáo kết quả hoạt động kinh doanh của FPT riêng trong kỳ quý 2/2026, chỉ tiêu Doanh thu thuần về bán hàng và cung cấp dịch vụ (mã chuẩn: `NET_REVENUE`, trường gốc: `isa3`) đạt bao nhiêu tiền đồng, và các khoản giảm trừ doanh thu (trường gốc: `isa2`) trong quý là bao nhiêu?",
+      "reference_answer": "Doanh thu thuần (`isa3`): `13.788.503.461.199 VND` (hoặc `13.788,50 tỷ VND`). Các khoản giảm trừ doanh thu (`isa2`): `-21.837.525.952 VND` (từ Doanh thu gộp `isa1` đạt `13.810.340.987.151 VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "- Khối: `báo_cáo_tài_chính.kết_quả_kinh_doanh` → `2026-Q2`\n  - Mã chuẩn: `NET_REVENUE` (Trường gốc: `isa3`)\n  - Giá trị số: `13788503461199.0`",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Khối: `báo_cáo_tài_chính.kết_quả_kinh_doanh` → `2026-Q2`\n  - Mã chuẩn: `NET_REVENUE` (Trường gốc: `isa3`)\n  - Giá trị số: `13788503461199.0`"
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực 100%.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q35",
+      "legacy_id": "Q35",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_kết_quả_kinh_doanh (lợi_nhuận_cổ_đông_mẹ_và_eps)",
+      "question_text": "Riêng trong quý 2/2026, chỉ tiêu Lợi nhuận sau thuế của cổ đông công ty mẹ (mã chuẩn: `PARENT_NET_PROFIT`, trường gốc: `isa22`) của FPT là bao nhiêu tiền đồng, và Lãi cơ bản trên cổ phiếu (EPS, trường gốc: `isa23`) trong quý đó đạt bao nhiêu đồng/cổ phiếu?",
+      "reference_answer": "LNST cổ đông công ty mẹ (`isa22`): `2.567.587.014.434 VND` (hoặc `2.567,59 tỷ VND`). Lãi cơ bản trên cổ phiếu (EPS, `isa23`): `1.507 VND/cổ phiếu`.",
+      "unit": "",
+      "period": "",
+      "locator": "- Khối: `báo_cáo_tài_chính.kết_quả_kinh_doanh` → `2026-Q2`\n  - Mã chuẩn 1: `PARENT_NET_PROFIT` (Trường gốc: `isa22`, giá trị: `2567587014434.0`)\n  - Mã chuẩn 2: `BASIC_EARNINGS_PER_SHARE` (Trường gốc: `isa23`, giá trị: `1507.0`)",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Khối: `báo_cáo_tài_chính.kết_quả_kinh_doanh` → `2026-Q2`\n  - Mã chuẩn 1: `PARENT_NET_PROFIT` (Trường gốc: `isa22`, giá trị: `2567587014434.0`)\n  - Mã chuẩn 2: `BASIC_EARNINGS_PER_SHARE` (Trường gốc: `isa23`, giá trị: `1507.0`)"
+      },
+      "verification_detail": "Không nhầm lẫn với Tổng lợi nhuận sau thuế toàn tập đoàn (`PROFIT_AFTER_TAX` / `isa20` là `2.570.339.099.621 VND`, trong đó có phần của cổ đông không kiểm soát `isa21` là `2.752.085.187 VND`).",
+      "status_note": "✅ Đã xác thực 100% (Yêu cầu trích xuất đồng thời 2 chỉ tiêu gắn liền).\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q36",
+      "legacy_id": "Q36",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_lưu_chuyển_tiền_tệ (dòng_tiền_kinh_doanh_cfo)",
+      "question_text": "Trong Báo cáo lưu chuyển tiền tệ của FPT kỳ quý 2/2026, chỉ tiêu Lưu chuyển tiền thuần từ hoạt động kinh doanh (mã chuẩn: `CASH_FLOW_OPERATING`, trường gốc: `cfa18`) ghi nhận con số dương hay âm và giá trị chính xác là bao nhiêu tiền đồng?",
+      "reference_answer": "Dòng tiền thuần từ HĐKD ghi nhận số dương: `1.702.147.711.404 VND` (hoặc `1.702,15 tỷ VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "- Khối: `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → `2026-Q2`\n  - Mã chuẩn: `CASH_FLOW_OPERATING` (Trường gốc: `cfa18`)\n  - Giá trị số: `1702147711404.0`",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Khối: `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → `2026-Q2`\n  - Mã chuẩn: `CASH_FLOW_OPERATING` (Trường gốc: `cfa18`)\n  - Giá trị số: `1702147711404.0`"
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực 100%.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q37",
+      "legacy_id": "Q37",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_lưu_chuyển_tiền_tệ (dòng_tiền_chi_capex)",
+      "question_text": "Theo Báo cáo lưu chuyển tiền tệ quý 2/2026 của FPT, số tiền thực tế doanh nghiệp đã chi ra để mua sắm, xây dựng tài sản cố định và các tài sản dài hạn khác (mã chuẩn: `PURCHASE_FIXED_ASSETS`, trường gốc: `cfa19`) là bao nhiêu tiền đồng?",
+      "reference_answer": "`-747.414.308.012 VND` (hoặc thể hiện bằng giá trị tuyệt đối đã chi ra là `747.414.308.012 VND`, tương đương `~747,41 tỷ VND`).",
+      "unit": "",
+      "period": "",
+      "locator": "- Khối: `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → `2026-Q2`\n  - Mã chuẩn: `PURCHASE_FIXED_ASSETS` (Trường gốc: `cfa19`)\n  - Giá trị số: `-747414308012.0`",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Khối: `báo_cáo_tài_chính.lưu_chuyển_tiền_tệ` → `2026-Q2`\n  - Mã chuẩn: `PURCHASE_FIXED_ASSETS` (Trường gốc: `cfa19`)\n  - Giá trị số: `-747414308012.0`"
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực 100% (Chấp nhận quy ước dấu).\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q38",
+      "legacy_id": "Q38",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_chỉ_số_tài_chính (roe_và_gross_margin)",
+      "question_text": "Tại kỳ quý 2/2026, hai chỉ số tài chính cơ bản của FPT gồm Tỷ suất sinh lời trên vốn chủ sở hữu (ROE) và Biên lợi nhuận gộp (Gross Margin) ghi nhận giá trị thập phân chính xác là bao nhiêu, tương ứng bao nhiêu phần trăm (%)?",
+      "reference_answer": "ROE: `0,2647` (tương đương `26,47%`); Gross Margin: `0,3468` (tương đương `34,68%`).",
+      "unit": "",
+      "period": "",
+      "locator": "- Khối: `báo_cáo_tài_chính.chỉ_số_tài_chính` → `2026-Q2`\n  - Mã chuẩn 1: `ROE` (Giá trị số: `0.2647472033`)\n  - Mã chuẩn 2: `GROSS_MARGIN` (Giá trị số: `0.3468022877`)",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Khối: `báo_cáo_tài_chính.chỉ_số_tài_chính` → `2026-Q2`\n  - Mã chuẩn 1: `ROE` (Giá trị số: `0.2647472033`)\n  - Mã chuẩn 2: `GROSS_MARGIN` (Giá trị số: `0.3468022877`)"
+      },
+      "verification_detail": "",
+      "status_note": "✅ Đã xác thực 100%.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q39",
+      "legacy_id": "Q39",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "bctc_tính_toán_tất_định (deterministic_multi_period)",
+      "question_text": "So sánh chỉ tiêu Doanh thu thuần (`isa3`) của FPT giữa hai quý liên tiếp trong năm 2026: Doanh thu thuần của quý 2/2026 đã tăng thêm bao nhiêu tiền đồng so với quý 1/2026 và tỷ lệ tăng trưởng doanh thu theo quý (QoQ) đạt bao nhiêu phần trăm?",
+      "reference_answer": "Doanh thu thuần quý 2/2026 tăng thêm **1.308.506.254.424 VND** (tương đương **~1.308,51 tỷ VND**), đạt mức tăng trưởng **+10,48%** so với quý 1/2026.",
+      "unit": "",
+      "period": "",
+      "locator": "- Doanh thu thuần Q1/2026: `12.479.997.206.775 VND` (`isa3`)\n  - Doanh thu thuần Q2/2026: `13.788.503.461.199 VND` (`isa3`)\n  - Chênh lệch tuyệt đối: $13.788.503.461.199 - 12.479.997.206.775 = 1.308.506.254.424 \\text{ VND}$\n  - Tỷ lệ tăng trưởng: $\\frac{1.308.506.254.424}{12.479.997.206.775} \\times 100\\% \\approx 10,4848\\% \\rightarrow 10,48\\%$",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "- Doanh thu thuần Q1/2026: `12.479.997.206.775 VND` (`isa3`)\n  - Doanh thu thuần Q2/2026: `13.788.503.461.199 VND` (`isa3`)\n  - Chênh lệch tuyệt đối: $13.788.503.461.199 - 12.479.997.206.775 = 1.308.506.254.424 \\text{ VND}$\n  - Tỷ lệ tăng trưởng: $\\frac{1.308.506.254.424}{12.479.997.206.775} \\times 100\\% \\approx 10,4848\\% \\rightarrow 10,48\\%$"
+      },
+      "verification_detail": "- Doanh thu thuần Q1/2026: `12.479.997.206.775 VND` (`isa3`)\n  - Doanh thu thuần Q2/2026: `13.788.503.461.199 VND` (`isa3`)\n  - Chênh lệch tuyệt đối: $13.788.503.461.199 - 12.479.997.206.775 = 1.308.506.254.424 \\text{ VND}$\n  - Tỷ lệ tăng trưởng: $\\frac{1.308.506.254.424}{12.479.997.206.775} \\times 100\\% \\approx 10,4848\\% \\rightarrow 10,48\\%$",
+      "status_note": "✅ Đã xác thực 100%.\n\n---",
+      "is_safe_refusal": false,
+      "slots": [
+        "slot_1",
+        "slot_2"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    },
+    {
+      "question_id": "GOLDEN40-Q40",
+      "legacy_id": "Q40",
+      "batch_id": "BATCH-04",
+      "data_source": "tai_chinh_clean",
+      "category": "kiểm_thử_biên_an_toàn (negative_test_safe_refusal)",
+      "question_text": "Theo cơ sở dữ liệu Báo cáo tài chính chuẩn hóa của FPT, tổng doanh thu thuần và lợi nhuận sau thuế của kỳ quý 4 năm 2026 (2026-Q4) là bao nhiêu, và hệ thống cần xử lý yêu cầu này như thế nào?",
+      "reference_answer": "`Không có thông tin / Hệ thống phải từ chối trả lời (Safe Refusal)`. Lý do: Cơ sở dữ liệu BCTC đã chốt chỉ có đến kỳ Quý 2/2026 (2026-Q2). Kỳ Quý 4/2026 chưa kết thúc và chưa phát hành báo cáo tài chính.",
+      "unit": "",
+      "period": "",
+      "locator": "tai_chinh_clean.json (Dải kỳ báo cáo kết thúc ở 2026-Q2. Kỳ 2026-Q4 chưa phát sinh BCTC; tuân thủ BR-15 Safe Refusal)",
+      "structured_locator": {
+        "source_table": "observations",
+        "source_file": "data_pipeline/FinancialCleaner/data/FPT/tai_chinh_clean.json",
+        "scope": "sql-financial-reports",
+        "company_symbol": "FPT",
+        "raw_reference": "tai_chinh_clean.json (Dải kỳ báo cáo kết thúc ở 2026-Q2. Kỳ 2026-Q4 chưa phát sinh BCTC; tuân thủ BR-15 Safe Refusal)"
+      },
+      "verification_detail": "",
+      "status_note": "⚠️ Ca kiểm thử biên âm (Negative Test - Safe Refusal).\n\n---\n\n## BẢNG TỔNG HỢP TRẠNG THÁI RÀ SOÁT (Q01 – Q40)\n\n| ID | Phân loại | Mã CP | Đơn vị tính | Trạng thái | Nguồn dữ liệu & Ghi chú đối soát |\n|:---:|:---|:---:|:---|:---:|:---|\n| **Q01** | tin_trái_phiếu_doanh_nghiệp | TCB | Tỷ đồng (VND), mã TP | ✅ Chính xác | FireAnt 01/10/2026 (TCB tất toán 4.240 tỷ TP TCB12517 [2.118 tỷ] & TCB12518 [2.122 tỷ] sau đúng 1 năm) |\n| **Q02** | tin_nghiệp_vụ_ngân_hàng | CTG | Triệu đồng, %/năm | ✅ Chính xác | FireAnt 01/10/2026 (CTG lãi suất 6,0%/năm, gửi 300 triệu nhận lãi 36 triệu) |\n| **Q03** | tin_phát_hành_cổ_phiếu | FPT | Triệu CP, Cổ đông | ✅ Chính xác | CafeF 29/09/2026 (FPT phân phối 171,4 triệu CP cho 181.748 CĐ, kết thúc 22/09) |\n| **Q04** | tin_hợp_tác_bán_dẫn_công_nghệ | FPT | Pháp nhân đối tác | ✅ Chính xác | CafeF 10/10/2026 (Toyota Tsusho NEXTY Electronics 2 lần làm việc về bán dẫn trong 44 ngày) |\n| **Q05** | tin_dự_báo_KQKD | CTG, VCB | Tỷ đồng, % | ✅ Chính xác | FireAnt 29/09/2026 (SSI Research: CTG 13.500 tỷ LNTT [+27%], VCB 12.800 tỷ LNTT [+14%]) |\n| **Q06** | tin_quy_mô_doanh_nghiệp | MBB | Triệu tỷ đồng, DN | ✅ Chính xác | FireAnt 30/09/2026 (MBB tài sản > 1,73 triệu tỷ, hệ sinh thái 8 DN thành viên) |\n| **Q07** | tin_tăng_vốn_điều_lệ | TCB | Tỷ đồng, phương thức | ✅ Chính xác | FireAnt 14/10/2026 (NHNN duyệt TCB tăng vốn tối đa 35.730,97 tỷ; vốn sau phát hành 106.593 tỷ) |\n| **Q08** | tin_sở_hữu_và_vốn_doanh_nghiệp | VCB | Tỷ đồng, tòa nhà | ✅ Chính xác | CafeF 05/08/2026 (VCB mua 48% vốn [Setra 1.202 tỷ + Bonday 2.004 tỷ] ước ~3.206 tỷ để nắm trọn 100% tháp VCB Tower) |\n| **Q09** | tin_công_nghệ_và_năng_suất | FPT | %, Điểm % | ✅ Chính xác | CafeF 28/09/2026 (TCBS: AI tăng 30% tốc độ code, nhưng năng suất toàn dự án tăng 10%) |\n| **Q10** | tin_quy_mô_nhân_sự_doanh_nghiệp | FPT | Người, % | ✅ Chính xác | CafeF 13/10/2026 (FPT hệ sinh thái 90.000 người [+4,3%]; khối BCTC hợp nhất 45.145 người) |\n| **Q11** | giá_biến_động_toàn_kỳ | VCB | ×1.000 VND, % | ✅ Chính xác | `data/normalized/VCB.json` (Close 23,06 lên 58,00; tăng +151,52% toàn chuỗi 2018–2026) |\n| **Q12** | giá_volume_kỷ_lục_lịch_sử | MBB | Cổ phiếu, ×1.000 VND | ✅ Chính xác | `data/normalized/MBB.json` (MBB volume kỷ lục 117.471.296 CP ngày 15/08/2025; C=22,62) |\n| **Q13** | giá_cực_trị_lịch_sử_ath | BID | ×1.000 VND, Cổ phiếu | ✅ Chính xác | `data/normalized/BID.json` (BID ATH Close 50,89 ngày 02/02/2026; Max Vol 28,54M ngày 05/08/2025) |\n| **Q14** | giá_cực_trị_lịch_sử_ath | CTG | ×1.000 VND, Cổ phiếu | ✅ Chính xác | `data/normalized/CTG.json` (CTG ATH Close 40,87 ngày 12/01/2026; Max Vol 38,92M ngày 09/01/2026) |\n| **Q15** | giá_OHLCV_phiên_cụ_thể | VCB | ×1.000 VND, CP, % | ✅ Chính xác | `data/normalized/VCB.json` (VCB 23/04/2026: Vol kỷ lục 35,2M CP; Close 62,28, tăng +5,72%) |\n| **Q16** | giá_so_sánh_mã_ngành_ngân_hàng | VCB, BID, CTG, MBB, TCB | %, ×1.000 VND | ✅ Chính xác | `data/normalized/{SYM}.json` (Tháng 9/2026: TCB tăng duy nhất +3,58%; CTG giảm sâu nhất −4,29%) |\n| **Q17** | giá_biên_độ_phiên_cực_đại | FPT | ×1.000 VND, Ngày GD | ✅ Chính xác | `data/normalized/FPT.json` (FPT ATH Close 118,06; Biên độ nến cực đại 7,80 ×1.000 VND ngày 09/04/2025) |\n| **Q18** | giá_so_sánh_mã_ngành_công_nghệ | FPT, CMG | %, ×1.000 VND | ✅ Chính xác | `data/normalized/{SYM}.json` (Tháng 9/2026: CMG giảm sâu hơn −6,46% vs FPT giảm −1,43%) |\n| **Q19** | giá_volume_trung_bình_20_phiên | TCB | Cổ phiếu/phiên | ✅ Chính xác | `data/normalized/TCB.json` (TCB SMA20 volume = 17.761.460 CP/phiên tính đến 25/09/2026) |\n| **Q20** | giá_so_sánh_nhóm_công_nghệ_vừa | ELC, ITD, ICT | ×1.000 VND, % | ✅ Chính xác | `data/normalized/{SYM}.json` (ELC tăng cao nhất +112,83%; ITD +86,86%; ICT +43,57%) |\n| **Q21** | bctn_kết_quả_kinh_doanh | FPT | VND, Tỷ VND | ✅ Chính xác | BCTC hợp nhất 2024 FPT (Doanh thu thuần: 62.848.794.351.367 VND) |\n| **Q22** | bctn_lợi_nhuận_cổ_đông_mẹ | FPT | VND, Tỷ VND | ⚠️ Lưu ý rà soát | BCTC hợp nhất 2024 FPT (LNST cổ đông mẹ: 7.856.767.812.178 VND) |\n| **Q23** | bctn_tổng_tài_sản | FPT | VND, Tỷ VND | ✅ Chính xác | BCTC hợp nhất 2024 FPT (Tổng tài sản: 71.999.995.678.620 VND) |\n| **Q24** | bctn_lưu_chuyển_tiền_thuần | FPT | VND, Tỷ VND | ✅ Chính xác | BCTC hợp nhất 2024 FPT (Dòng tiền kinh doanh: 11.703.777.188.868 VND) |\n| **Q25** | bctn_thuyết_minh_ngoại | FPT | Triệu VND, Tỷ VND | ⚠️ Cần đối chiếu | Thuyết minh 34(b) BCTC 2024 (Doanh thu nước ngoài: 31.294.207 triệu) |\n| **Q26** | bctn_cơ_cấu_cổ_đông | FPT | Cổ phần, % | ✅ Chính xác | BCTN 2024 FPT (Trương Gia Bình sở hữu 102.041.710 CP, 6,94%) |\n| **Q27** | bctn_thù_lao_hđqt | FPT | VND | ✅ Chính xác | BCTN 2024 FPT (Thù lao Chủ tịch HĐQT Trương Gia Bình = 0 VND) |\n| **Q28** | bctn_esg_nhân_sự | FPT | % | ✅ Chính xác | BCTN 2024 FPT (Tỷ lệ nhân sự nữ: 37,1%) |\n| **Q29** | bctn_kiểm_toán_độc_lập | FPT | Pháp nhân, ý kiến | ✅ Chính xác | BCTC 2024 FPT (Công ty TNHH PwC Việt Nam, Chấp nhận toàn phần) |\n| **Q30** | safe_refusal_giá_cp | FPT | N/A | ⚠️ Kiểm thử biên | BCTN 2024 FPT (Từ chối an toàn: Không dự báo giá CP tương lai) |\n| **Q31** | bctc_tiền_tương_đương | FPT | VND | ✅ Chính xác | `tai_chinh_clean.json` (Tiền & tương đương tiền 2026-Q2: 8.843.161.132.730 VND) |\n| **Q32** | bctc_nợ_vay_ngắn_hạn | FPT | VND | ⚠️ Lưu ý rà soát | `tai_chinh_clean.json` (Vay ngắn hạn 2026-Q2: 16.368.916.886.521 VND) |\n| **Q33** | bctc_lợi_nhuận_chưa_pp | FPT | VND | ✅ Chính xác | `tai_chinh_clean.json` (LNST chưa phân phối lũy kế 2026-Q2: 20.370.550.280.517 VND) |\n| **Q34** | bctc_doanh_thu_thuần | FPT | VND | ✅ Chính xác | `tai_chinh_clean.json` (Doanh thu thuần 2026-Q2: 13.788.503.461.199 VND) |\n| **Q35** | bctc_lnst_mẹ_và_eps | FPT | VND, VND/CP | ✅ Chính xác | `tai_chinh_clean.json` (LNST mẹ: 2.567.587.014.434 VND, EPS: 1.507 VND/CP) |\n| **Q36** | bctc_dòng_tiền_cfo | FPT | VND | ✅ Chính xác | `tai_chinh_clean.json` (Dòng tiền kinh doanh 2026-Q2: 1.702.147.711.404 VND) |\n| **Q37** | bctc_chi_capex | FPT | VND | ⚠️ Bất đồng dấu | `tai_chinh_clean.json` (Chi mua TSCĐ 2026-Q2: −747.414.308.012 VND) |\n| **Q38** | bctc_chỉ_số_tài_chính | FPT | Thập phân, % | ⚠️ Quy ước số | `tai_chinh_clean.json` (ROE: 0,2647 [26,47%], Gross Margin: 0,3468 [34,68%]) |\n| **Q39** | bctc_tính_toán_liên_kỳ | FPT | VND, % | ✅ Chính xác | `tai_chinh_clean.json` (Tăng 1.308.506.254.424 VND, tương đương 10,48%) |\n| **Q40** | bctc_safe_refusal | FPT | N/A | ⚠️ Kiểm thử biên | `tai_chinh_clean.json` (Từ chối an toàn: Kỳ 2026-Q4 chưa phát sinh số liệu) |\n\n---\n\n## CHÚ THÍCH NGUỒN DỮ LIỆU, QUY ƯỚC VÀ GIẢI TRÌNH XỬ LÝ MÂU THUẪN\n\nTài liệu này giải quyết và chuẩn hóa triệt để các điểm rà soát kỹ thuật:\n\n1. **Phạm vi 10 mã cổ phiếu được phê duyệt (100% tuân thủ `source_register_Quan.md`):**\n   - Danh sách 10 mã chính thức: **VCB, BID, CTG, MBB, TCB, FPT, CMG, ELC, ITD, ICT**.\n   - Toàn bộ 10 mã cổ phiếu đều được đưa vào kiểm thử thực tế trong Lô 2.\n\n2. **Chuẩn hóa Lô 1 (Tin tức):**\n   - Loại bỏ trùng lặp chủ đề: Thay thế câu hỏi trùng về cổ đông FPT bằng câu hỏi đối tác vi mạch bán dẫn FPT & Toyota Tsusho NEXTY Electronics (10/10/2026).\n   - Nâng cấp câu hỏi Q07 từ dạng ngắn, chung chung (\"nội dung quan trọng nào\") thành câu hỏi định lượng kỹ thuật cao với 4 tham số số liệu cụ thể (phương án tăng vốn tối đa 35.730,97 tỷ, chia cổ tức 35.431 tỷ, ESOP 300 tỷ, vốn sau tăng 106.593 tỷ).\n   - 10 câu hỏi dựa trên 10 bài báo độc lập trong CSDL `public.news_articles`.\n\n3. **Chuẩn hóa Lô 2 (Giá cổ phiếu):**\n   - Xóa bỏ câu hỏi đếm siêu dữ liệu bars JSON (Q18 cũ).\n   - Xóa bỏ câu hỏi trùng dạng nến OHLCV VCB (Q15 và Q19 cũ).\n   - Bổ sung câu hỏi chuyên sâu cho các mã: **BID** (ATH Close & Volume kỷ lục), **CTG** (ATH Close & Volume kỷ lục), **TCB** (SMA20 Volume), **CMG vs FPT** (so sánh ngành Công nghệ), **ELC - ITD - ICT** (so sánh nhóm công nghệ quy mô vừa).\n   - Đảm bảo độ phủ trọn vẹn **10/10 mã cổ phiếu**.\n\n4. **Chuẩn hóa Lô 4 (Báo cáo tài chính):**\n   - Sửa triệt để 2 lỗi số liệu trap trong Q33: Sửa Vốn điều lệ `bsa80` thành `17.035.071.210.000 VND` và sửa mã Tổng VCSH thành `bsa78` (`OWNERS_EQUITY`) với giá trị `40.995.680.808.257 VND`.\n\n---\n\n## BẢNG TỔNG KẾT PHÂN BỔ BỘ KIỂM THỬ GOLDEN40 (CALIBRATION SPLIT)\n\n| Lô kiểm thử | Phạm vi câu hỏi | Nguồn dữ liệu sử dụng | Mục tiêu đánh giá theo FinMind SRS | Trạng thái rà soát |\n| :---: | :---: | :--- | :--- | :---: |\n| **Lô 1** | Q01 – Q10 | Bảng CSDL `public.news_articles` (10 bài báo độc lập) | Truy xuất sự kiện, nghiệp vụ doanh nghiệp và tin tức tài chính (Semantic Retrieval) | ✅ Đã chuẩn hóa v6.0 |\n| **Lô 2** | Q11 – Q20 | `data/normalized/{SYMBOL}.json` & `public.price_bars` (Nguồn ENTRADE) | Truy vấn chuỗi giá OHLCV, khối lượng khớp lệnh, biến động giá và cực trị (2018–2026) bao phủ 10 mã | ✅ Đã chuẩn hóa v6.0 |\n| **Lô 3** | Q21 – Q30 | BCTN & BCTC kiểm toán PDF 2024 FPT (Công bố HOSE/IR, PwC) | RAG phi cấu trúc, bảng biểu PDF, thuyết minh kế toán và kiểm thử an toàn | ✅ Đã chuẩn hóa v6.0 |\n| **Lô 4** | Q31 – Q40 | `tai_chinh_clean.json` & `public.observations` (Nguồn VIETCAP_VCI) | Structured Numerical Retrieval (FR07), tính toán tất định đa kỳ & Safe Refusal | ✅ Đã chuẩn hóa v6.0 |",
+      "is_safe_refusal": true,
+      "slots": [
+        "primary_answer"
+      ],
+      "tolerance_eps": 0.001,
+      "sign_off_reviewer": "Quân (Financial Analyst)",
+      "verification_status": "VERIFIED_ACCURATE"
+    }
+  ],
+  "manifest_sha256": "8bb895053b0a584b36f96cab44eb68540b826fbc0b646a3fd5e9b3f56fff690e"
+}

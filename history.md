@@ -1,6 +1,26 @@
 # History thay đổi code
 
-### [2026-10-19] Ngừng ghi text cho chunk nguồn mới, giữ text cũ
+### [2026-10-22] Chuẩn hóa toàn diện Golden Test Set v6.0 và sửa triệt để các lỗi số liệu đối soát
+
+- **File(s):** `Golden_TestSet_Lo1_Lo2_TinTuc_GiaCoPhieu.md`, `backend/scripts/generate_golden40_manifest.py`, `docs/review/golden40_manifest_frozen.json`, `docs/review/golden40_manifest_draft.json`, `history.md`.
+- **Sai gì:** 
+  1. *Q01 (Lô 1 - Tin tức):* Đáp án cũ tự suy diễn chia 4.240 tỷ thành 1.740 tỷ (TCB12517) và 2.500 tỷ (TCB12518); trong khi văn bản gốc HNX và chunk FireAnt công bố rõ: Techcombank mua lại 2.000 TP TCB12517 giá 1,059 tỷ/TP = 2.118 tỷ đồng, và 2.000 TP TCB12518 giá 1,061 tỷ/TP = 2.122 tỷ đồng. Bảng tóm tắt dòng 598 cũng chưa đồng bộ chi tiết này.
+  2. *Q08 (Lô 1 - Tin tức):* Câu hỏi cũ diễn đạt nhầm lẫn: hỏi Vietcombank chi bao nhiêu tiền để nhận chuyển nhượng 18% vốn Setra mà đáp án lại ghi 3.200 tỷ (trong khi bài báo ghi 18% từ Setra giá 1.202 tỷ, 30% từ Bonday ước 2.004 tỷ, và tổng 48% mua thêm để sở hữu 100% tòa tháp mới là ước khoảng 3.206 tỷ đồng). Đã tách bạch chính xác cả 3 số liệu.
+  3. *Q09 (Lô 1 - Tin tức):* Làm rõ ngày xuất bản bài báo CafeF (28/09/2026) trích dẫn báo cáo ngành Công nghệ - Viễn thông ngày 17/09/2026 của TCBS Research, tránh nhầm lẫn ngày tháng.
+  4. *Q32 (Lô 4 - BCTC):* Ghi chú bẫy dữ liệu ghi số liệu Tổng Nguồn vốn `TOTAL_RESOURCES / bsa53 là 73.563.023.235.213 VND` bị sai lệch so với file nguồn `tai_chinh_clean.json` (giá trị thực tế của `bsa53` `TOTAL_ASSETS` là `73.563.105.859.500 VND`).
+  5. *Placeholder embedding model trong manifest:* `generate_golden40_manifest.py` và 2 file JSON manifest lưu placeholder sai `text-embedding-3-small` thay vì model chuẩn hóa của dự án `BAAI/bge-m3@5617a9f61b02` dimension 1024 theo ADR04 và `config.py`.
+  6. *Khái quát hóa số phiên:* Phần mở đầu Markdown ghi chung số phiên 2.173 – 2.176 từ 02/01/2018 chưa tách biệt đặc thù TCB (2.076 phiên từ 04/06/2018) và ICT (1.655 phiên từ 15/01/2020).
+  7. *Rà soát dữ liệu vector corpus-v2:* Dữ liệu giá trong `corpus-v2.content.manifest.json` chỉ có 6 mã (`CTR, MSN, NLG, FPT, MBB, VCB`, chứa mã ngoài danh mục và thiếu 7 mã chốt); các câu hỏi giá Lô 2 cho 7 mã thiếu phải đối soát trên CSDL `public.price_bars` và file chuẩn hóa `data/normalized/`. Bài báo Q05 và Q07 trong corpus-v2 bị gán symbol đầu tiên là `ACB` và `FPT`, đã bổ sung ghi chú truy vết chính xác.
+- **Tại sao sửa:** Người dùng yêu cầu kiểm tra kỹ lưỡng lại toàn bộ bộ câu hỏi kiểm thử sau khi phát hiện có lỗi sai, đảm bảo các câu hỏi không chung chung, không trùng lặp, bám sát dữ liệu vector mới đẩy và nguồn chuẩn hóa, bao phủ 100% 10 mã đã chốt (`VCB, BID, CTG, MBB, TCB, FPT, CMG, ELC, ITD, ICT`).
+- **Ảnh hưởng:** Chuẩn hóa toàn diện 40/40 câu hỏi (Q01–Q40) đạt chuẩn Golden Test Set v6.0:
+  - Lô 1: 10 câu hỏi nghiệp vụ định lượng cao, trích xuất sự kiện và giao dịch cụ thể từ 10 bài báo độc lập.
+  - Lô 2: Phủ trọn 10 mã chốt, loại bỏ câu hỏi đếm bars, thay bằng câu hỏi tính toán chỉ số kỹ thuật thực chiến (ATH Close, Max Volume, Biên độ nến cực đại, SMA20 Volume, tỷ suất tăng trưởng dài hạn và so sánh ngành).
+  - Lô 3: 10 câu hỏi đối soát PDF BCTN & BCTC kiểm toán FPT 2024 (PwC) chuẩn từng số trang và chỉ tiêu.
+  - Lô 4: 10 câu hỏi cấu trúc BCTC đa kỳ (đã sửa triệt để các mã bẫy bsa78, bsa80, bsa53).
+  - Tái lập và đóng băng manifest: `golden40_manifest_frozen.json` (SHA-256: `8bb895053b0a584b36f96cab44eb68540b826fbc0b646a3fd5e9b3f56fff690e`) và `golden40_manifest_draft.json`.
+- **Kiểm chứng:** Chạy script tự động kiểm chứng toàn diện: Lô 1 khớp 100% bài viết Supabase và candidate corpus-v2; Lô 2 khớp 100% chuỗi thời gian ENTRADE; Lô 3 khớp 100% số liệu và trang in/PDF; Lô 4 khớp 100% trường và số liệu `tai_chinh_clean.json`. Không còn câu hỏi chung chung hay lỗi số liệu.
+
+---
 
 - **File(s):** `backend/src/documents/db_ingest.py`, `backend/src/documents/corpus_manifest.py`, `backend/src/documents/retention.py`, `backend/tests/test_db_ingest.py`, `supabase/migrations/20261019000000_nullable_source_chunk_text.sql`, `supabase/reset_and_rebuild.sql`, `docs/embedding/source-locator-v2.md`, `history.md`.
 - **Sai gì:** Luồng source ingest vẫn sao chép text vào text_chunks dù reader đã dựng lại từ nguồn; manifest/retention chưa xử lý trường hợp text NULL.

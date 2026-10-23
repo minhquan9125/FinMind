@@ -1,0 +1,44 @@
+================================================================================
+KIEM TRA DONG NHAT GIUA BO CAU HOI VA DATA TREN SUPABASE
+================================================================================
+
+>>> [LO 1: TIN TUC - news_articles]
+Tong so bai tin trong public.news_articles: 234
+Q01 (MSN MBS): [KHOP 100%] Title: 'MBS dự báo KQKD quý 3/2026 ngành bán lẻ: Thế Giới Di Động và FPT Retail tiếp tục bứt phá, hai tên tuổi tăng trưởng đột biến 3 chữ số' | 3.984 ti: True | 230%: True | Nui Phao: True
+Q02 (CTR H1/26): [KHOP] Title: 'Một doanh nghiệp quân đội báo lãi quý 2 tăng trưởn' | 7.959 ti: True | 402 ti: True
+Q03 (FPT Phat hanh): [KHOP] Title: 'Sau màn hát “Tái sinh” của ông Trương Gia Bình, mỗ'
+Q09 (CTR no xau): [KHOP] Title: 'Viettel Construction dự phòng 100% với 3 khoản nợ '
+Q10 (Phan bo nguon trong DB): [{'source': 'cafef', 'cnt': 119}, {'source': 'fireant', 'cnt': 115}]
+
+>>> [LO 2: GIA CO PHIEU - price_bars]
+Tong so ban ghi price_bars: 737
+Q11 (VCB start/end): First date=2026-04-09, close=58.9600 | Last date=2026-10-06, close=57.3000
+Q13 (FPT Extreme close): Highest close date=2026-04-10, close=69.7000 | Lowest close date=2026-07-27, close=56.5600
+Q15 (VCB 2026-09-25): open=58.2000, high=58.5000, low=57.7000, close=58.0000, vol=4390100
+Q19 (VCB Max Volume): date=2026-04-23, volume=35,200,000, close=62.3400
+Q20 (MBB): 30/09 close=19.6500 | 06/10 close=19.2000 | Diff=-0.45 (-2.29%)
+
+>>> [LO 3: TAI LIEU BCTN/BCTC PDF - documents]
+Phan bo doc_type trong public.documents: [{'doc_type': 'NEWS', 'cnt': 239}, {'doc_type': 'MARKET_INDEX', 'cnt': 3}, {'doc_type': 'USER_UPLOAD', 'cnt': 1}, {'doc_type': 'COMPANY_PROFILE', 'cnt': 6}, {'doc_type': 'PRICE_HISTORY', 'cnt': 6}, {'doc_type': 'FINANCIAL_STATEMENT', 'cnt': 12}]
+Tai lieu FPT trong public.documents: 31 tai lieu
+  - [PRICE_HISTORY] Lịch sử giá cổ phiếu FPT
+  - [NEWS] FPT và hành trình làm chủ công nghệ lõi
+  - [COMPANY_PROFILE] Hồ sơ doanh nghiệp FPT
+  - [NEWS] FPT: Cổ phiếu FPT về đáy 3 năm, 'hở room ngoại' hơn 20%
+  - [NEWS] FPT: Cơn bĩ cực của cổ đông FPT: 3 tuần không thấy màu "xanh", thị giá rơi xuống vùng đáy gần 3 năm
+
+>>> [LO 4: BCTC CO CAU TRUC - observations]
+Cac cot cua observations: ['observation_id', 'report_id', 'metric_id', 'value', 'unit', 'scale', 'currency', 'locator_json']
+Cac cot cua metrics: ['metric_id', 'code', 'canonical_name', 'section', 'default_unit', 'industry_scope', 'mapping_status']
+Cac cot cua reporting_periods: ['period_id', 'period_code', 'fiscal_year', 'quarter', 'period_type', 'start_date', 'end_date']
+So metrics quan trong cua FPT 2026-Q2 tim thay trong Supabase: 10/10
+  * CASH_AND_CASH_EQUIVALENTS (Tiền và các khoản tương đương tiền): 8,843,161,132,730.0
+  * SHORT_TERM_LOANS_AND_FINANCE_LEASES (Vay và nợ thuê tài chính ngắn hạn): 16,368,916,886,521.0
+  * RETAINED_EARNINGS (Lợi nhuận sau thuế chưa phân phối): 20,370,550,280,517.0
+  * NET_REVENUE (Doanh thu thuần): 13,788,503,461,199.0
+  * PARENT_NET_PROFIT (Lợi nhuận sau thuế thuộc cổ đông công ty mẹ): 2,567,587,014,434.0
+  * BASIC_EARNINGS_PER_SHARE (Lãi cơ bản trên cổ phiếu): 1,507.0
+  * CASH_FLOW_OPERATING (Lưu chuyển tiền thuần từ hoạt động kinh doanh): 1,702,147,711,404.0
+  * PURCHASE_FIXED_ASSETS (Tiền chi mua sắm, xây dựng tài sản cố định): -747,414,308,012.0
+  * ROE (Tỷ suất lợi nhuận trên vốn chủ sở hữu): 0.2647472033
+  * GROSS_MARGIN (Tỷ suất lợi nhuận gộp): 0.3468022877
