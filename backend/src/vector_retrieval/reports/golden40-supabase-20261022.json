@@ -1,0 +1,909 @@
+{
+  "started_at": "2026-10-22T01:47:31.560805+00:00",
+  "read_only": true,
+  "golden_sha256": "403b9d49eed3192ae2a2212a1b5469ac019ee37771fb95cb51a2efbefac3a65b",
+  "index_version_id": "434ef5e0-6516-578d-8d18-721d21347e01",
+  "method": "Actual integrated HybridRetriever.search; no alternate cache or bypass",
+  "top_k": 5,
+  "candidates": 50,
+  "allow_building": true,
+  "model_downloads": false,
+  "gemini_called": false,
+  "gold_approved": false,
+  "recall": null,
+  "mrr": null,
+  "initial_cli_build": {
+    "exit_code": 1,
+    "error": "SOURCE_CHANGED",
+    "cache_created": false
+  },
+  "questions": [
+    {
+      "id": "Q01",
+      "number": 1,
+      "kind": "vector",
+      "question": "Theo bài FireAnt ngày 01/10/2026 về Techcombank (TCB), hai lô trái phiếu được tất toán trước hạn có mã gì, giá trị từng lô và tổng giá trị được bài viết nêu là bao nhiêu?",
+      "scope": {
+        "company": "TCB",
+        "period": "2026-10",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 914.8,
+      "quality_pass": null,
+      "metadata_scope_chunks": 37,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q02",
+      "number": 2,
+      "kind": "vector",
+      "question": "Theo bài FireAnt ngày 01/10/2026 về lãi suất VietinBank (CTG), bài viết nêu khách gửi 300 triệu đồng kỳ hạn 24 tháng có thể nhận khoảng bao nhiêu tiền lãi và áp dụng mức lãi suất nào? Chỉ trích thông tin bài viết đã nêu, không tính một sản phẩm tiết kiệm khác.",
+      "scope": {
+        "company": "CTG",
+        "period": "2026-10",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 889.7,
+      "quality_pass": null,
+      "metadata_scope_chunks": 7,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q03",
+      "number": 3,
+      "kind": "vector",
+      "question": "Theo bài CafeF ngày 29/09/2026 về đợt tăng vốn FPT, số cổ phiếu đã phân phối, số cổ đông nhận cổ phiếu và ngày kết thúc phát hành được nêu là bao nhiêu?",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-09",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 867.7,
+      "quality_pass": null,
+      "metadata_scope_chunks": 147,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q04",
+      "number": 4,
+      "kind": "vector",
+      "question": "Theo bài FireAnt ngày 29/09/2026, số lượng cổ đông FPT và tỷ lệ sở hữu của khối ngoại tại thời điểm bài viết là bao nhiêu?",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-09",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 1182.7,
+      "quality_pass": null,
+      "metadata_scope_chunks": 147,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q05",
+      "number": 5,
+      "kind": "vector",
+      "question": "Theo bản tin dẫn SSI Research ngày 29/09/2026, CTG và VCB được dự báo lợi nhuận trước thuế quý 3/2026 lần lượt bao nhiêu? Đây là dự báo hay kết quả đã thực hiện?",
+      "scope": {
+        "company": null,
+        "period": "2026-09",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 838.1,
+      "quality_pass": null,
+      "metadata_scope_chunks": 840,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q06",
+      "number": 6,
+      "kind": "vector",
+      "question": "Theo bài FireAnt ngày 30/09/2026, quy mô tổng tài sản của MBB và số doanh nghiệp thành viên trong hệ sinh thái được bài viết nêu là bao nhiêu?",
+      "scope": {
+        "company": "MBB",
+        "period": "2026-09",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 871.7,
+      "quality_pass": null,
+      "metadata_scope_chunks": 56,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q07",
+      "number": 7,
+      "kind": "vector",
+      "question": "Theo bản tin FireAnt ngày 14/10/2026, Techcombank nhận được chấp thuận về nội dung gì và cơ quan nào chấp thuận? Nếu bài không nêu rõ cơ quan thì không suy đoán.",
+      "scope": {
+        "company": "TCB",
+        "period": "2026-10",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 1325.0,
+      "quality_pass": null,
+      "metadata_scope_chunks": 37,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q08",
+      "number": 8,
+      "kind": "vector",
+      "question": "Theo bài CafeF ngày 05/08/2026 về Vietcombank Tower, bài viết nêu Vietcombank chi bao nhiêu tiền? Phân biệt giao dịch tăng sở hữu từ 52% lên 70% với thông tin chủ sở hữu 100% tại thời điểm đăng ký doanh nghiệp được dẫn trong bài.",
+      "scope": {
+        "company": "VCB",
+        "period": "2026-08",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 1218.1,
+      "quality_pass": null,
+      "metadata_scope_chunks": 41,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q09",
+      "number": 9,
+      "kind": "vector",
+      "question": "Theo bài CafeF dẫn TCBS Research ngày 28/09/2026, trợ lý lập trình AI của FPT cải thiện tốc độ viết mã bao nhiêu phần trăm và năng suất toàn dự án bao nhiêu phần trăm? Nêu đúng hai cấp độ đo.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-09",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 1012.7,
+      "quality_pass": null,
+      "metadata_scope_chunks": 147,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q10",
+      "number": 10,
+      "kind": "vector",
+      "question": "Theo bài CafeF ngày 13/10/2026, tại 30/09/2026 nhân sự toàn hệ sinh thái FPT xấp xỉ bao nhiêu người và tăng thêm bao nhiêu so với cuối năm 2025? Không dùng nhân sự các đơn vị hợp nhất thay tổng hệ sinh thái.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-10",
+        "doc_type": "NEWS"
+      },
+      "latency_ms": 1016.2,
+      "quality_pass": null,
+      "metadata_scope_chunks": 98,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q11",
+      "number": 11,
+      "kind": "calculation",
+      "question": "Trong bản giá ENTRADE đã đóng băng của VCB, lấy giá đóng cửa tại đúng hai ngày 02/01/2018 và 25/09/2026. Hai giá là bao nhiêu và biến động phần trăm giữa hai ngày là bao nhiêu?",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q12",
+      "number": 12,
+      "kind": "calculation",
+      "question": "Trong bản giá ENTRADE đã đóng băng của MBB, chỉ xét từ 02/01/2018 đến hết 25/09/2026, phiên hoặc các phiên nào có volume lớn nhất và volume đó là bao nhiêu?",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q13",
+      "number": 13,
+      "kind": "calculation",
+      "question": "Trong bản giá ENTRADE đã đóng băng của FPT từ 02/01/2018 đến hết 25/09/2026, giá đóng cửa cao nhất và thấp nhất là bao nhiêu? Liệt kê tất cả ngày đồng hạng ở từng cực trị.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q14",
+      "number": 14,
+      "kind": "calculation",
+      "question": "Trong bản giá ENTRADE đã đóng băng của MBB, chọn đúng 20 phiên có giao dịch gần nhất không muộn hơn 25/09/2026. Tổng volume và volume bình quân của 20 phiên là bao nhiêu? Nêu ngày đầu và cuối của cửa sổ thực tế.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q15",
+      "number": 15,
+      "kind": "price_row",
+      "question": "Theo bản giá ENTRADE đã đóng băng của VCB, ngày 20/05/2026 có open, high, low, close và volume bao nhiêu? Nêu price_scale và đơn vị theo chính bản nguồn này.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q16",
+      "number": 16,
+      "kind": "calculation",
+      "question": "Theo bản giá ENTRADE đã đóng băng, tính phần trăm biến động close của VCB, MBB và FPT từ đúng phiên 03/09/2026 đến 25/09/2026. Mã nào có mức biến động cao nhất? Nếu bằng nhau, liệt kê tất cả mã đồng hạng.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q17",
+      "number": 17,
+      "kind": "calculation",
+      "question": "Trong bản giá ENTRADE đã đóng băng của FPT từ 02/01/2018 đến hết 25/09/2026, phiên hoặc các phiên nào có high trừ low lớn nhất? Nêu high, low và biên độ, giữ cùng cơ sở giá và price_scale.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q18",
+      "number": 18,
+      "kind": "calculation",
+      "question": "Trong bản giá ENTRADE đã đóng băng của VCB từ 02/01/2018 đến hết 25/09/2026, có bao nhiêu ngày giao dịch phân biệt với bản ghi hợp lệ? Không tính bản trùng ngày, không suy số phiên từ số ngày làm việc.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q19",
+      "number": 19,
+      "kind": "price_row",
+      "question": "Theo bản giá ENTRADE đã đóng băng của VCB, ngày 23/04/2026 có volume, open, high, low và close bao nhiêu? Chỉ tra phiên này; không mặc định đây là kỷ lục toàn lịch sử.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q20",
+      "number": 20,
+      "kind": "calculation",
+      "question": "Theo bản giá ENTRADE đã đóng băng của MBB, close tại đúng ngày 17/09/2026 và 25/09/2026 là bao nhiêu? Tính chênh lệch có dấu và phần trăm biến động giữa hai ngày.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q21",
+      "number": 21,
+      "kind": "vector",
+      "question": "Theo BCTC hợp nhất kiểm toán trong đúng PDF FPT 2024 đã chốt phiên bản, doanh thu thuần năm 2024 là bao nhiêu? Dẫn dòng, cột năm và đơn vị trên bảng.",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 973.9,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q22",
+      "number": 22,
+      "kind": "vector",
+      "question": "Theo đúng PDF FPT 2024 đã chốt phiên bản, lợi nhuận sau thuế năm 2024 thuộc cổ đông công ty mẹ là bao nhiêu? Không thay bằng tổng lợi nhuận sau thuế hợp nhất.",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 960.9,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q23",
+      "number": 23,
+      "kind": "vector",
+      "question": "Theo bảng cân đối kế toán hợp nhất trong đúng PDF FPT 2024 đã chốt phiên bản, tổng tài sản tại 31/12/2024 là bao nhiêu? Dẫn đúng cột cuối năm và đơn vị.",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 863.8,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q24",
+      "number": 24,
+      "kind": "vector",
+      "question": "Theo báo cáo lưu chuyển tiền tệ hợp nhất trong đúng PDF FPT 2024 đã chốt phiên bản, lưu chuyển tiền thuần từ hoạt động kinh doanh năm 2024 là bao nhiêu?",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 1192.2,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q25",
+      "number": 25,
+      "kind": "vector",
+      "question": "Theo Thuyết minh 34(b), báo cáo bộ phận theo khu vực địa lý trong đúng PDF FPT 2024, doanh thu thuần ở cột Nước ngoài năm 2024 là bao nhiêu và bảng ghi đơn vị gì? Không thay bằng doanh thu riêng dịch vụ CNTT nước ngoài.",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 969.0,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q26",
+      "number": 26,
+      "kind": "vector",
+      "question": "Theo bảng Top 10 cổ đông lớn trong đúng PDF BCTN FPT 2024, cá nhân nào có số cổ phần lớn nhất trong bảng, số cổ phần và tỷ lệ sở hữu là bao nhiêu? Dẫn ngày chốt danh sách nếu tài liệu có nêu.",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 1005.0,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q27",
+      "number": 27,
+      "kind": "vector",
+      "question": "Theo bảng chi tiết thù lao HĐQT trong đúng PDF BCTN FPT 2024, mức thù lao thực nhận năm 2024 của ông Trương Gia Bình là bao nhiêu? Phân biệt số 0 với ô trống hoặc không công bố.",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 885.4,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q28",
+      "number": 28,
+      "kind": "vector",
+      "question": "Theo phần ESG trong đúng PDF BCTN FPT 2024, tỷ lệ nhân sự nữ được công bố là bao nhiêu và mẫu số/phạm vi nhân sự được tài liệu mô tả thế nào? Nếu không nêu rõ phạm vi thì ghi chưa rõ.",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 998.1,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q29",
+      "number": 29,
+      "kind": "vector",
+      "question": "Theo báo cáo kiểm toán độc lập trong đúng PDF FPT 2024, tên đơn vị kiểm toán và loại ý kiến đối với BCTC hợp nhất năm 2024 là gì? Dẫn đoạn ý kiến và tên đơn vị ký báo cáo.",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 1058.0,
+      "quality_pass": null,
+      "metadata_scope_chunks": 134,
+      "required_source": "Exact frozen FPT 2024 PDF, not clean financial data",
+      "exact_pdf_scope_supported": false,
+      "pdf_source_candidate_count": 0,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q30",
+      "number": 30,
+      "kind": "refusal",
+      "question": "Chỉ dựa trên đúng PDF BCTN FPT 2024 trong tập kiểm thử, mức giá mục tiêu cổ phiếu FPT vào cuối năm 2025 được tài liệu dự báo là bao nhiêu?",
+      "scope": {
+        "company": "FPT",
+        "period": "2024",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q31",
+      "number": 31,
+      "kind": "vector",
+      "question": "Trong bản dữ liệu clean FPT đã đóng băng, tại kỳ 2026-Q2, tiền và các khoản tương đương tiền có giá trị gốc bao nhiêu? Nêu đơn vị và phạm vi báo cáo nếu nguồn xác nhận; nếu chưa thì ghi chưa xác minh.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-Q2",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 951.5,
+      "quality_pass": null,
+      "metadata_scope_chunks": 27,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q32",
+      "number": 32,
+      "kind": "vector",
+      "question": "Trong bản dữ liệu clean FPT đã đóng băng, tại kỳ 2026-Q2, dư nợ vay và nợ thuê tài chính ngắn hạn có giá trị gốc bao nhiêu? Không thay bằng tổng nợ ngắn hạn hoặc tổng nợ phải trả.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-Q2",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 904.1,
+      "quality_pass": null,
+      "metadata_scope_chunks": 27,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q33",
+      "number": 33,
+      "kind": "vector",
+      "question": "Trong bản dữ liệu clean FPT đã đóng băng, tại kỳ 2026-Q2, lợi nhuận sau thuế chưa phân phối lũy kế có giá trị gốc bao nhiêu? Phân biệt số dư lũy kế với phần chưa phân phối riêng kỳ này.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-Q2",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 908.8,
+      "quality_pass": null,
+      "metadata_scope_chunks": 27,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q34",
+      "number": 34,
+      "kind": "vector",
+      "question": "Trong bản dữ liệu clean FPT đã đóng băng, doanh thu thuần bán hàng và cung cấp dịch vụ gắn nhãn kỳ 2026-Q2 có giá trị gốc bao nhiêu? Nêu nguồn đã xác nhận riêng quý hay lũy kế chưa; không tự suy từ nhãn kỳ.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-Q2",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 1081.3,
+      "quality_pass": null,
+      "metadata_scope_chunks": 27,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q35",
+      "number": 35,
+      "kind": "vector",
+      "question": "Trong bản dữ liệu clean FPT đã đóng băng, kỳ 2026-Q2 có lợi nhuận sau thuế thuộc cổ đông công ty mẹ và lãi cơ bản trên cổ phiếu lần lượt bao nhiêu? Nêu đơn vị/cơ sở kỳ khi có bằng chứng; không dùng tổng LNST thay LNST cổ đông mẹ.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-Q2",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 1037.4,
+      "quality_pass": null,
+      "metadata_scope_chunks": 27,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q36",
+      "number": 36,
+      "kind": "vector",
+      "question": "Trong bản dữ liệu clean FPT đã đóng băng, lưu chuyển tiền thuần từ hoạt động kinh doanh gắn nhãn kỳ 2026-Q2 có giá trị gốc và dấu thế nào? Nêu riêng quý/lũy kế nếu nguồn xác nhận.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-Q2",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 849.7,
+      "quality_pass": null,
+      "metadata_scope_chunks": 27,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q37",
+      "number": 37,
+      "kind": "vector",
+      "question": "Trong bản dữ liệu clean FPT đã đóng băng, tiền chi mua sắm và xây dựng tài sản cố định gắn nhãn kỳ 2026-Q2 có giá trị gốc, dấu dòng tiền và độ lớn khoản chi bao nhiêu? Không tự thêm tài sản dài hạn khác vào phạm vi chỉ tiêu.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-Q2",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 873.1,
+      "quality_pass": null,
+      "metadata_scope_chunks": 27,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q38",
+      "number": 38,
+      "kind": "vector",
+      "question": "Theo dữ liệu nguồn tại kỳ 2026-Q2, tỷ suất sinh lời trên vốn chủ sở hữu (ROE) và biên lợi nhuận gộp của FPT có giá trị gốc bao nhiêu và được nguồn ghi theo cơ sở kỳ nào? Không mặc định các tỷ lệ chỉ tính riêng ba tháng Q2.",
+      "scope": {
+        "company": "FPT",
+        "period": "2026-Q2",
+        "doc_type": "FINANCIAL_STATEMENT"
+      },
+      "latency_ms": 1196.3,
+      "quality_pass": null,
+      "metadata_scope_chunks": 27,
+      "status": "BLOCKED",
+      "error": "CACHE_BUILD_REQUIRED"
+    },
+    {
+      "id": "Q39",
+      "number": 39,
+      "kind": "calculation",
+      "question": "Lấy hai giá trị doanh thu thuần gắn nhãn 2026-Q1 và 2026-Q2 trong cùng bản clean FPT đã đóng băng. Nếu đơn vị, phạm vi và cơ sở kỳ so sánh được đã xác minh, tính chênh lệch và phần trăm biến động; nếu chưa, nêu hai số gốc và điều kiện còn thiếu, không khẳng định tăng trưởng kinh tế.",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    },
+    {
+      "id": "Q40",
+      "number": 40,
+      "kind": "refusal",
+      "question": "Chỉ dựa trên bản clean FPT được đóng băng trong tập kiểm thử này, doanh thu thuần và lợi nhuận sau thuế kỳ 2026-Q4 là bao nhiêu?",
+      "scope": null,
+      "latency_ms": null,
+      "quality_pass": null,
+      "status": "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE",
+      "reason": "Needs structured price/calculation or answering/refusal layer; no semantic pass claimed"
+    }
+  ],
+  "samples": [
+    {
+      "chunk_id": "67c086c3-467b-5e97-bdbc-027e1f6344b4",
+      "document_id": "0007942d-c33f-59ec-8875-0866db4a660f",
+      "source_table": "financial_reports",
+      "source_id": "c198d50c-2f4f-544e-a3e0-3f47a5a62382",
+      "expected_content_hash": "94fceb4e263a6759bdf9af76807f6a51579a168d8a531c4ab891b58b43fc46ab",
+      "locator": {
+        "symbol": "FPT",
+        "section": "Báo cáo Kết quả hoạt động kinh doanh · quý 1/2026 (riêng quý)",
+        "doc_type": "FINANCIAL_STATEMENT",
+        "row_keys": [
+          "5c1a92d9-54fe-57b1-a5fa-ce746df8d124",
+          "9c203604-66b5-522e-b470-d9e8f2ae9489",
+          "6c9d7824-d4c2-5ec2-9d64-ea6efa01ef2c",
+          "e51bc03b-e178-55da-b64d-1ccbcca6889a",
+          "bb219aba-afde-5622-a19b-9b3ddeb30b9d",
+          "4a037ce9-b79c-528c-af16-3782ec8f6c2e",
+          "86e81706-6ae3-58c6-acf9-5040449dd2df"
+        ],
+        "source_id": "c198d50c-2f4f-544e-a3e0-3f47a5a62382",
+        "period_code": "2026-Q1",
+        "source_table": "financial_reports",
+        "reconstruction": {
+          "row_end": 7,
+          "char_end": 641,
+          "max_words": 130,
+          "row_start": 0,
+          "char_start": 0,
+          "chunk_index": 0,
+          "document_id": "7fba931a-f1ed-560e-b424-48f29aca1a8c",
+          "content_hash": "94fceb4e263a6759bdf9af76807f6a51579a168d8a531c4ab891b58b43fc46ab",
+          "section_index": 0,
+          "schema_version": "source-locator-v2",
+          "chunker_version": "db-financial-v3",
+          "source_chunk_id": "c07dbec3-eb22-5c86-b751-d2a44af13c88",
+          "source_view_sha256": "dc79f6c9e967decc383fe40551afcd877d3b0fe3ea25f5cc58d2ec017d078769"
+        }
+      },
+      "company": "FPT",
+      "period": "2026-Q1",
+      "sample_rule": "first document/chunk by UUID, not Golden labels",
+      "status": "ERROR",
+      "error": "SOURCE_CHANGED",
+      "expected_section_fingerprint": "dc79f6c9e967decc383fe40551afcd877d3b0fe3ea25f5cc58d2ec017d078769",
+      "current_section_fingerprint": "1834dca8f2b734c640dcb74eb8425efa250223a815778bfdffd7ecbc801c38ca",
+      "renderer": "db-financial-v3"
+    },
+    {
+      "chunk_id": "86cacc28-ffab-5661-b06a-38074c842d8c",
+      "document_id": "00edec3f-b547-59e1-9f3b-a7b6c3c717a2",
+      "source_table": "news_articles",
+      "source_id": "b0e78124-c243-5a9b-b567-ce8ccdf3cd57",
+      "expected_content_hash": "3a6662e31f11968a01e5603cf408086d1c87281689a1fdee17340d260654f84e",
+      "locator": {
+        "url": "https://cafef.vn/du-lieu/vic-2985706/vic-thong-bao-giao-dich-co-phieu-cua-to-chuc-co-lien-quan-cua-nguoi-noi-bo-cong-ty-co-phan-tap-doan-dau-tu-viet-nam.chn",
+        "symbol": "VIC",
+        "section": "Nội dung",
+        "doc_type": "NEWS",
+        "row_keys": [
+          "p1"
+        ],
+        "news_type": "CONG_BO_THONG_TIN",
+        "source_id": "b0e78124-c243-5a9b-b567-ce8ccdf3cd57",
+        "classifier": "news-type-v1",
+        "published_at": "2026-09-28",
+        "source_table": "news_articles",
+        "news_priority": 1,
+        "reconstruction": {
+          "row_end": 1,
+          "char_end": 276,
+          "max_words": 130,
+          "row_start": 0,
+          "char_start": 0,
+          "chunk_index": 0,
+          "document_id": "77a220a5-1d59-55d6-8f68-1b109dd3a62e",
+          "content_hash": "3a6662e31f11968a01e5603cf408086d1c87281689a1fdee17340d260654f84e",
+          "section_index": 0,
+          "schema_version": "source-locator-v2",
+          "chunker_version": "db-v1",
+          "source_chunk_id": "aa2e91c4-be7c-5026-9b77-da3dffa174ed",
+          "source_view_sha256": "8bf7d6ce143bf456db930081ca43f7760102af49ced2458fc0d12340e2caadbc"
+        }
+      },
+      "company": "VIC",
+      "period": "2026-09-28",
+      "sample_rule": "first document/chunk by UUID, not Golden labels",
+      "status": "VERIFIED",
+      "actual_content_hash": "3a6662e31f11968a01e5603cf408086d1c87281689a1fdee17340d260654f84e"
+    },
+    {
+      "chunk_id": "b0ce04dc-9f50-537a-a03c-e008f3b54bfd",
+      "document_id": "0162b1f5-9728-5638-b0ef-b9451a33488c",
+      "source_table": "price_bars",
+      "source_id": "CTR",
+      "expected_content_hash": "2935d8409ecb70a3389d9df9e8b52fbadec08572c5557253d8558ca3f79bc88a",
+      "locator": {
+        "symbol": "CTR",
+        "section": "Lịch sử giá cổ phiếu · tháng 2026-04",
+        "doc_type": "PRICE_HISTORY",
+        "row_keys": [
+          "CTR:2026-04:summary",
+          "a5b99f2d-41ba-53a1-befe-d28cc43a2cec",
+          "9f076c89-d447-5326-b351-aa286a9bcbb0",
+          "c0ec80dd-4d4c-5ac8-b777-a26652dda308",
+          "d4aa6a8a-4802-5e9a-a998-2dd6fc3c557e"
+        ],
+        "source_id": "CTR",
+        "source_table": "price_bars",
+        "reconstruction": {
+          "row_end": 5,
+          "char_end": 557,
+          "max_words": 130,
+          "row_start": 0,
+          "char_start": 0,
+          "chunk_index": 0,
+          "document_id": "0d3a3671-4f0c-5020-8199-6d4ace004e98",
+          "content_hash": "2935d8409ecb70a3389d9df9e8b52fbadec08572c5557253d8558ca3f79bc88a",
+          "section_index": 0,
+          "schema_version": "source-locator-v2",
+          "chunker_version": "db-v1",
+          "source_chunk_id": "d7473dbb-0166-581f-818d-ee5f51b69ca7",
+          "source_view_sha256": "1dfa3c345c6df9753de4db1ea5222341bb465b1951842d6ace7591617894bb5c"
+        }
+      },
+      "company": "CTR",
+      "period": "Lịch sử giá cổ phiếu · tháng 2026-04",
+      "sample_rule": "first document/chunk by UUID, not Golden labels",
+      "status": "VERIFIED",
+      "actual_content_hash": "2935d8409ecb70a3389d9df9e8b52fbadec08572c5557253d8558ca3f79bc88a"
+    },
+    {
+      "chunk_id": "97dbc697-74b2-5852-a451-9fde948ae526",
+      "document_id": "49b87531-d14f-5a58-8934-65f298c7f1fb",
+      "source_table": "market_index_bars",
+      "source_id": "HNXINDEX",
+      "expected_content_hash": "780b56f3ae440769bc13d516b0a9ded569dd7e4c9a545bf751c95dd44d0767b1",
+      "locator": {
+        "symbol": null,
+        "section": "Lịch sử chỉ số · tháng 2026-04",
+        "doc_type": "MARKET_INDEX",
+        "row_keys": [
+          "HNXINDEX:2026-04:summary",
+          "HNXINDEX:2026-04-13",
+          "HNXINDEX:2026-04-14",
+          "HNXINDEX:2026-04-15",
+          "HNXINDEX:2026-04-16",
+          "HNXINDEX:2026-04-17"
+        ],
+        "source_id": "HNXINDEX",
+        "source_table": "market_index_bars",
+        "reconstruction": {
+          "row_end": 6,
+          "char_end": 674,
+          "max_words": 130,
+          "row_start": 0,
+          "char_start": 0,
+          "chunk_index": 0,
+          "document_id": "500234fa-e9b7-57c4-a795-26fc69bd95e6",
+          "content_hash": "780b56f3ae440769bc13d516b0a9ded569dd7e4c9a545bf751c95dd44d0767b1",
+          "section_index": 0,
+          "schema_version": "source-locator-v2",
+          "chunker_version": "db-v1",
+          "source_chunk_id": "93fe3cf3-32c5-535f-aec8-b5048d93c74b",
+          "source_view_sha256": "0cadf17f2d7351d5c28d72dfc8761056723afa6f7fa3e7f0be293dab0ae7e27e"
+        }
+      },
+      "company": null,
+      "period": "Lịch sử chỉ số · tháng 2026-04",
+      "sample_rule": "first document/chunk by UUID, not Golden labels",
+      "status": "VERIFIED",
+      "actual_content_hash": "780b56f3ae440769bc13d516b0a9ded569dd7e4c9a545bf751c95dd44d0767b1"
+    },
+    {
+      "chunk_id": "9c248413-7723-5e97-a90f-d78d7ff0b4c1",
+      "document_id": "020234a7-3ef7-5b30-b30a-22c6155bbe8d",
+      "source_table": "companies",
+      "source_id": "8635c01b-08cb-521b-9318-5424b0b400e1",
+      "expected_content_hash": "4c61d0df513d1d0497ee844cc8b2041098faa9eea0e4c6a393eea3191c3b2c6b",
+      "locator": {
+        "symbol": "FPT",
+        "section": "Hồ sơ doanh nghiệp",
+        "doc_type": "COMPANY_PROFILE",
+        "row_keys": [
+          "FPT:symbol",
+          "FPT:company_name",
+          "FPT:exchange",
+          "FPT:industry_type",
+          "FPT:sector",
+          "FPT:is_active"
+        ],
+        "source_id": "8635c01b-08cb-521b-9318-5424b0b400e1",
+        "source_table": "companies",
+        "reconstruction": {
+          "row_end": 6,
+          "char_end": 144,
+          "max_words": 130,
+          "row_start": 0,
+          "char_start": 0,
+          "chunk_index": 0,
+          "document_id": "3684f2cb-e649-51be-83c6-f6670d1ffbfe",
+          "content_hash": "4c61d0df513d1d0497ee844cc8b2041098faa9eea0e4c6a393eea3191c3b2c6b",
+          "section_index": 0,
+          "schema_version": "source-locator-v2",
+          "chunker_version": "db-v1",
+          "source_chunk_id": "4577e27c-0972-559e-8445-9bc84b9b58a9",
+          "source_view_sha256": "f75e84895b0560c254d8cf3daef685b2e43ca610901b56823f1e8b2ff460829c"
+        }
+      },
+      "company": "FPT",
+      "period": "Hồ sơ doanh nghiệp",
+      "sample_rule": "first document/chunk by UUID, not Golden labels",
+      "status": "ERROR",
+      "error": "SOURCE_CHANGED",
+      "expected_section_fingerprint": "f75e84895b0560c254d8cf3daef685b2e43ca610901b56823f1e8b2ff460829c",
+      "current_section_fingerprint": "4f9c08e02f19493c6862c09153e68b133c661b8fb5a396db8b42a0a8161743b7",
+      "renderer": "db-v1"
+    }
+  ],
+  "transaction_read_only": "on",
+  "index": {
+    "embedding_model": "BAAI/bge-m3@5617a9f61b02",
+    "status": "BUILDING"
+  },
+  "hnsw_ef_search": null,
+  "active_chunks": 15058,
+  "index_definitions": [
+    {
+      "indexname": "idx_text_chunks_embedding_hnsw",
+      "indexdef": "CREATE INDEX idx_text_chunks_embedding_hnsw ON public.text_chunks USING hnsw (embedding vector_cosine_ops) WITH (m='16', ef_construction='64') WHERE (superseded_at IS NULL)"
+    }
+  ],
+  "source_inventory": [
+    {
+      "source_table": "companies",
+      "doc_type": "COMPANY_PROFILE",
+      "chunks": 13,
+      "documents": 13
+    },
+    {
+      "source_table": "financial_reports",
+      "doc_type": "FINANCIAL_STATEMENT",
+      "chunks": 13003,
+      "documents": 419
+    },
+    {
+      "source_table": "market_index_bars",
+      "doc_type": "MARKET_INDEX",
+      "chunks": 88,
+      "documents": 3
+    },
+    {
+      "source_table": "news_articles",
+      "doc_type": "NEWS",
+      "chunks": 1750,
+      "documents": 234
+    },
+    {
+      "source_table": "price_bars",
+      "doc_type": "PRICE_HISTORY",
+      "chunks": 204,
+      "documents": 6
+    }
+  ],
+  "pdf_fpt_2024_chunks": 0,
+  "summary": {
+    "statuses": {
+      "BLOCKED": 27,
+      "OUTSIDE_RETRIEVAL_ONLY_ACCEPTANCE": 13
+    },
+    "errors": {
+      "CACHE_BUILD_REQUIRED": 27
+    },
+    "source_samples": {
+      "ERROR": 2,
+      "VERIFIED": 3
+    }
+  },
+  "golden_unchanged": true,
+  "elapsed_seconds": 38.68,
+  "finished_at": "2026-10-22T01:48:10.235840+00:00"
+}

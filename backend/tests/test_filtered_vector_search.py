@@ -76,6 +76,15 @@ def test_filtered_search_binds_frozen_corpus_membership():
     assert "cd.corpus_version_id=$7::uuid" in connection.sql
 
 
+def test_financial_year_scope_can_use_exact_period_without_matching_quarters():
+    connection = FakeConnection()
+    asyncio.run(vector_search_filtered(FakePool(connection), str(uuid.uuid4()), [0.1], 5,
+                                      period='2025', exact_period=True))
+    assert "coalesce(p.period_code, t.locator_json->>'period_code') = $3" in connection.sql
+    assert "ILIKE" not in connection.sql
+    assert connection.args[2] == '2025'
+
+
 def test_filtered_search_parameterizes_user_filter_values():
     connection = FakeConnection()
     index_id = str(uuid.uuid4())

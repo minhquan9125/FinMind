@@ -37,12 +37,13 @@ def main():
                 today = datetime.now(timezone(timedelta(hours=7))).date()
                 with contextlib.redirect_stdout(sys.stderr):
                     instrument = market.index(symbol) if is_index else market.equity(symbol)
-                    frame = instrument.ohlcv(start=str(today - timedelta(days=180)),
+                    frame = instrument.ohlcv(source='kbs', start=str(today - timedelta(days=180)),
                                                       end=str(today), interval="1D", count=250).copy()
                     for field in ("open", "high", "low", "close"):
                         frame[field] = frame[field].map(str)
                     rows = json.loads(frame.to_json(orient="records", date_format="iso", double_precision=15))
-                result = {"fetched_at": datetime.now(timezone(timedelta(hours=7))).isoformat(), "rows": rows}
+                result = {"fetched_at": datetime.now(timezone(timedelta(hours=7))).isoformat(), "rows": rows,
+                          "price_unit": "points" if is_index else "thousand_vnd"}
                 sys.stdout.write(json.dumps(result, allow_nan=False) + "\n")
                 sys.stdout.flush()
                 continue

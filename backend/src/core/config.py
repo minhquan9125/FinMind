@@ -7,9 +7,10 @@ same image works locally and inside Docker Compose without code changes.
 from functools import lru_cache
 
 from pathlib import Path
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import SecretStr
+from pydantic import SecretStr, Field
 ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 ENV_FILES = (ENV_PATH.parent.parent / ".env", ENV_PATH)
 
@@ -46,6 +47,17 @@ class Settings(BaseSettings):
     chunk_stride: int = 100
 
     default_top_k: int = 5
+
+    # Existing research chat uses a pinned, read-only corpus. Fixture CLI stays separate.
+    research_chat_live: bool = True
+    research_retrieval_backend: Literal['dense', 'hybrid'] = 'hybrid'
+    research_corpus_version_id: str = Field(default='33d33730-0f0a-5274-a7f8-8d32a6be07e8',
+        pattern=r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')
+    research_retrieval_timeout_seconds: float = Field(default=120.0, gt=0, le=600, allow_inf_nan=False)
+    research_warmup_enabled: bool = True
+    research_warmup_timeout_seconds: float = Field(default=180.0, gt=0, le=600, allow_inf_nan=False)
+    gemini_api_key: SecretStr = SecretStr('')
+    b1_gemini_free_tier_confirmed: bool = False
 
     frontend_origin: str = "http://localhost:5173"
 

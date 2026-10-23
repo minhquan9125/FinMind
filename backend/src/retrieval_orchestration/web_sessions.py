@@ -53,8 +53,26 @@ def _is_link(path: Path) -> bool:
 class SessionStore:
     """Persists web chat sessions per owner UUID in JSON files."""
 
-    def __init__(self, root: Path) -> None:
+    def __init__(self, root: Path, *, engine=None) -> None:
         self.root = Path(root)
+        self.engine = engine
+
+    def _live_summary(self, doc):
+        from .live_research import METRIC_ALIASES
+        scope = doc.get('metadata', {}).get('live_context', {})
+        if not scope:
+            return 'Nhập mã công ty, kỳ và chỉ tiêu hoặc chủ đề tin tức cần tra cứu.'
+        return ' | '.join(filter(None, (
+            'Công ty: ' + ', '.join(scope.get('companies', [])) if scope.get('companies') else '',
+            'Kỳ: ' + ', '.join(scope.get('periods', [])) if scope.get('periods') else '',
+            'Chỉ tiêu: ' + METRIC_ALIASES.get(scope['metric_code'], (scope['metric_code'],))[0] if scope.get('metric_code') else '',
+            'Nguồn: ' + scope['source_type'] if scope.get('source_type') else '',
+        )))
+
+    async def _summary(self, doc):
+        if doc.get('metadata', {}).get('execution_mode') == 'LIVE':
+            return self._live_summary(doc)
+        return (await restore_session(doc)).context_summary()
 
     def _check_root_safe(self) -> None:
         if any(_is_link(path) for path in (self.root, *self.root.parents)):
@@ -164,18 +182,16 @@ class SessionStore:
             "started_at": now,
             "saved_at": now,
             "messages": [],
-            "metadata": {},
+            "metadata": {"execution_mode": "LIVE" if self.engine else "FIXTURE"},
         }
         with self._exclusive_lock(target_path):
             self._atomic_write_json(target_path, doc)
-        reconstructed = await restore_session(doc)
-        reconstructed.session_id = session_id
         return {
             "session_id": session_id,
             "revision": 0,
             "messages": [],
-            "context": reconstructed.context_summary(),
-            "execution_mode": "FIXTURE",
+            "context": await self._summary(doc),
+            "execution_mode": doc['metadata']['execution_mode'],
         }
 
     async def list(self, owner: str) -> list[dict]:
@@ -212,14 +228,12 @@ class SessionStore:
     async def get(self, owner: str, session_id: str) -> dict:
         target = self._resolve_session_path(owner, session_id, must_exist=True)
         doc = self._load_raw_doc(target)
-        reconstructed = await restore_session(doc)
-        reconstructed.session_id = doc["session_id"]
         return {
             "session_id": doc["session_id"],
             "revision": doc.get("revision", 0),
             "messages": doc.get("messages", []),
-            "context": reconstructed.context_summary(),
-            "execution_mode": "FIXTURE",
+            "context": await self._summary(doc),
+            "execution_mode": doc.get('metadata', {}).get('execution_mode', 'FIXTURE'),
         }
 
     async def send(self, owner: str, session_id: str, text: str, revision: int) -> dict:
@@ -240,13 +254,32 @@ class SessionStore:
             if len(doc.get("messages", [])) + 2 > MAX_MESSAGES:
                 raise ChatError(422, f"Số lượng tin nhắn vượt quá giới hạn {MAX_MESSAGES}.")
 
-            reconstructed = await restore_session(doc)
-            reconstructed.session_id = doc["session_id"]
             try:
-                chat_response = await asyncio.wait_for(reconstructed.ask(cleaned_text), timeout=10)
+                if self.engine is not None:
+                    from .live_research import render_live_response
+                    live_context = doc.get('metadata', {}).get('live_context', {})
+                    previous_result = None
+                    for message in reversed(doc.get('messages', [])):
+                        if message.get('role') == 'user' and message.get('content', '').strip().lower() in ('/moi', '/new'):
+                            break
+                        candidate = message.get('result') or {}
+                        if ((candidate.get('answering') or {}).get('status') == 'DRAFT_READY'
+                                or (candidate.get('scope', {}).get('source_type') == 'NEWS'
+                                    and (candidate.get('evidence_pack') or {}).get('schema_version') == '1.2')):
+                            previous_result = candidate
+                            break
+                    chat_response = await asyncio.wait_for(
+                        self.engine.answer(cleaned_text, doc['session_id'], live_context, previous_result=previous_result),
+                        self.engine.retrieval_timeout + self.engine.limits.read_timeout_seconds + 5,
+                    )
+                    content = render_live_response(chat_response)
+                else:
+                    reconstructed = await restore_session(doc)
+                    reconstructed.session_id = doc['session_id']
+                    chat_response = await asyncio.wait_for(reconstructed.ask(cleaned_text), timeout=10)
+                    content = render_response(chat_response)
             except (TimeoutError, OSError) as exc:
                 raise ChatError(503, "Xử lý tạm thời không thành công. Vui lòng thử lại.") from exc
-            content = render_response(chat_response)
 
             now_dt = datetime.now(timezone.utc)
             now_str = now_dt.isoformat()
@@ -269,14 +302,17 @@ class SessionStore:
             updated_doc["revision"] = current_rev + 1
             updated_doc["saved_at"] = now_str
             updated_doc.setdefault("messages", []).extend([user_msg, assistant_msg])
+            if self.engine is not None:
+                updated_doc.setdefault('metadata', {}).update(
+                    execution_mode='LIVE', live_context=copy.deepcopy(chat_response['scope']))
             self._atomic_write_json(target, updated_doc)
 
             return {
                 "session_id": updated_doc["session_id"],
                 "revision": updated_doc["revision"],
                 "messages": updated_doc["messages"],
-                "context": reconstructed.context_summary(),
-                "execution_mode": "FIXTURE",
+                "context": await self._summary(updated_doc),
+                "execution_mode": updated_doc.get('metadata', {}).get('execution_mode', 'FIXTURE'),
             }
 
     async def resume(self, owner: str, session_id: str) -> dict:
@@ -287,9 +323,6 @@ class SessionStore:
         new_target = self._resolve_session_path(owner, new_session_id, must_exist=False)
         now = _now_iso()
 
-        reconstructed = await restore_session(source_doc)
-        reconstructed.session_id = new_session_id
-
         new_doc = {
             "schema_version": "1.0",
             "session_id": new_session_id,
@@ -299,6 +332,7 @@ class SessionStore:
             "saved_at": now,
             "messages": copy.deepcopy(source_doc.get("messages", [])),
             "metadata": {
+                **copy.deepcopy(source_doc.get('metadata', {})),
                 "parent_session_id": source_doc["session_id"]
             },
         }
@@ -310,6 +344,6 @@ class SessionStore:
             "session_id": new_session_id,
             "revision": 0,
             "messages": new_doc["messages"],
-            "context": reconstructed.context_summary(),
-            "execution_mode": "FIXTURE",
+            "context": await self._summary(new_doc),
+            "execution_mode": new_doc['metadata'].get('execution_mode', 'FIXTURE'),
         }

@@ -381,7 +381,7 @@ export default function ResearchPage() {
               <h1 className="text-lg font-bold tracking-tight text-slate-900">
                 Trợ lý nghiên cứu & So sánh
               </h1>
-              <StatusBadge tone="neutral">Dữ liệu mẫu</StatusBadge>
+              <StatusBadge tone="neutral">{activeTab === 'compare' ? 'Dữ liệu mẫu' : 'Hội thoại nghiên cứu'}</StatusBadge>
             </div>
 
             {/* Quick Actions & Tab Switcher */}

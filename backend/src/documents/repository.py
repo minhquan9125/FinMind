@@ -179,6 +179,7 @@ async def vector_search_filtered(
     corpus_version_id=None,
     preview_source_changed=False,
     on_ranked=None,
+    exact_period=False,
 ):
     """Search active chunks in one embedding version, applying source filters first.
 
@@ -188,11 +189,19 @@ async def vector_search_filtered(
     """
     async with pool.acquire() as conn:
         async with conn.transaction(readonly=True, isolation='repeatable_read'):
+            # Only fixed SQL fragments are selected; the period remains a bound value.
+            period_predicate = (
+                "coalesce(p.period_code, t.locator_json->>'period_code') = $3"
+                if exact_period else
+                "coalesce(p.period_code, t.locator_json->>'period_code', "
+                "t.locator_json->>'published_at', t.locator_json->>'section', "
+                "d.title) ILIKE '%' || $3 || '%'"
+            )
             rows = await conn.fetch(
-                '''
+                f'''
                 SELECT t.chunk_id::text, t.document_id::text, t.chunk_index,
                        t.content_hash, t.locator_json, t.index_version_id::text, i.chunker_version,
-                       d.title, d.doc_type,
+                       d.title, d.doc_type, d.sha256 AS source_sha256,
                        coalesce(c.symbol, t.locator_json->>'symbol') AS company_symbol,
                        coalesce(p.period_code, t.locator_json->>'period_code',
                                 t.locator_json->>'published_at',
@@ -211,10 +220,7 @@ async def vector_search_filtered(
                            SELECT 1 FROM public.news_articles n
                            WHERE n.article_id::text=t.locator_json->>'source_id'
                              AND upper($2)=ANY(n.symbols))))
-                  AND ($3::text IS NULL OR coalesce(p.period_code,
-                       t.locator_json->>'period_code',
-                       t.locator_json->>'published_at', t.locator_json->>'section',
-                       d.title) ILIKE '%' || $3 || '%')
+                  AND ($3::text IS NULL OR {period_predicate})
                   AND ($4::text IS NULL OR upper(d.doc_type)=upper($4))
                   AND ($7::uuid IS NULL OR EXISTS (
                       SELECT 1 FROM public.corpus_documents cd

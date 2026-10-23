@@ -5,7 +5,9 @@ import time
 from ..core.policy import Budget, Limits, PolicyError
 from ..evidence.citations import CitationError, prepare_evidence, validate_draft
 from ..evidence.prompt import PROMPT_VERSION, build_request
+from ..evidence import grounded
 from ..providers.gemini import GeminiError, GeminiProvider
+from .presentation import present_answer
 
 
 async def complete_retrieval(question, result, *, provider, limits=None, budget=None):
@@ -14,22 +16,35 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
     if budget.limits != limits or getattr(provider, 'limits', limits) != limits:
         raise PolicyError('LIMITS_MISMATCH')
     out, trace = copy.deepcopy(result), []
+    natural = result.get('execution_mode') == 'LIVE'
     manifest = {
         'mode': 'B1', 'config_version': limits.version, 'model_requested': limits.model,
-        'model_returned': None, 'prompt_version': PROMPT_VERSION,
+        'model_returned': None, 'prompt_version': grounded.PROMPT_VERSION if natural else PROMPT_VERSION,
         'max_input_tokens': limits.max_input_tokens, 'max_output_tokens': limits.max_output_tokens,
         'read_timeout_seconds': limits.read_timeout_seconds, 'retrieval_mode': result.get('execution_mode'),
+        'retrieval_backend': result.get('retrieval_backend', 'fixture'),
         'billing_policy': 'FREE_TIER_ATTESTED_ONLY',
-        'components': {'gemini': False, 'citation_binding': True, 'extractive_claim_check': True,
+        'components': {'gemini': False, 'citation_binding': True, 'extractive_claim_check': not natural,
+                       'support_quote_check': natural, 'numeric_source_check': natural,
                        'b3_evidence_gate': False, 'b3_answer_verification': False, 'tools': False},
     }
 
     def finish(status, code, message, draft=None):
+        if draft and natural:
+            draft = present_answer(draft, evidence, result.get('scope') or {})
+            from ..evidence.news_policy import present_news
+            draft = present_news(draft, evidence, result.get('scope') or {})
+            if not draft['draft'].strip():
+                return failure('UNSUPPORTED_CLAIM')
+            if draft.get('presentation'):
+                manifest['answer_style_version'] = draft['presentation']['version']
         snapshot = budget.snapshot()
         out['answering'] = {
             'status': status, 'reason_code': code, 'message': message,
             'draft': draft['draft'] if draft else None,
             'claims': draft['claims'] if draft else [], 'citations': draft['citations'] if draft else [],
+            'cautions': draft.get('cautions', []) if draft else [],
+            'presentation': draft.get('presentation') if draft else None,
             'manifest': manifest, 'trace': trace + [{'event': 'budget_snapshot', **snapshot}], 'budget': snapshot,
         }
         return out
@@ -48,7 +63,8 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
         return failure('PROVIDER_NOT_CONFIGURED')
     try:
         evidence = prepare_evidence(result.get('evidence_pack'))
-        request = build_request(question, evidence, limits)
+        request = (grounded.build_grounded_request(question, evidence, limits, result.get('scope'))
+                   if natural else build_request(question, evidence, limits))
     except CitationError as exc:
         return failure(exc.code)
     snap = budget.snapshot()
@@ -96,11 +112,36 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
     manifest['model_returned'] = generated.get('model_version')
     try:
         budget.settle(ticket, generated.get('usage'))
-        draft = validate_draft(generated.get('payload'), evidence)
-    except (PolicyError, CitationError) as exc:
+    except PolicyError as exc:
+        return failure(exc.code)
+    try:
+        draft = (grounded.validate_grounded(generated.get('payload'), evidence, result.get('scope'))
+                 if natural else validate_draft(generated.get('payload'), evidence))
+    except CitationError as exc:
+        if natural:
+            if exc.code in ('UNSUPPORTED_CLAIM', 'INVALID_CITATION') and result.get('scope', {}).get('source_type') == 'NEWS':
+                from ..evidence.news_binding import bind_article_quotes
+                rebound = bind_article_quotes(generated.get('payload'), evidence, result['scope'])
+                if rebound:
+                    try:
+                        news_draft = grounded.validate_grounded(rebound[0], evidence, result['scope'])
+                    except CitationError:
+                        pass
+                    else:
+                        trace.append({'event': 'article_quotes_bound', 'bindings': rebound[1]})
+                        return finish('DRAFT_READY', 'NEWS_QUOTE_BOUND',
+                                      'Bản tóm tắt có đoạn trích từ đúng nội dung bài.', news_draft)
+            draft = grounded.source_row_fallback(evidence, result.get('scope'), reason_code=exc.code)
+            if draft:
+                trace.append({'event': 'draft_bound_to_source_row', 'reason_code': exc.code})
+                return finish('DRAFT_READY', 'SOURCE_EXTRACT_FALLBACK',
+                              'Trả lời trực tiếp theo đúng dòng chỉ tiêu trong nguồn; '
+                              'Gemini chưa tạo được bản diễn đạt hợp lệ.', draft)
         return failure(exc.code)
     trace.append({'event': 'draft_bound_to_evidence'})
-    return finish('DRAFT_READY', 'SUCCESS', 'Bản nháp trích nguyên văn từ nguồn ứng viên.', draft)
+    return finish('DRAFT_READY', 'SUCCESS',
+                  'Bản nháp diễn đạt từ bằng chứng có trích dẫn.' if natural
+                  else 'Bản nháp trích nguyên văn từ nguồn ứng viên.', draft)
 
 
 async def answer_question(question, session_id, *, context=None, provider, limits=None, budget=None, retriever=None):

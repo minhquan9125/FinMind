@@ -17,12 +17,45 @@ from ...retrieval_orchestration.web_sessions import ChatError, SessionStore
 router = APIRouter(prefix="/api/research/chat", tags=["research-chat"])
 
 _bearer_scheme = HTTPBearer(auto_error=False)
+_market_services = (None, None)
+
+
+def configure_market_services(live=None, news=None):
+    """Bind existing app services; never create a second collector for chat."""
+    global _market_services
+    _market_services = (live, news)
+    get_store.cache_clear()
 
 
 @lru_cache(maxsize=1)
 def get_store() -> SessionStore:
     """Default SessionStore factory using settings."""
-    return SessionStore(Path(__file__).resolve().parents[2] / "retrieval_orchestration" / "chat_history" / "web")
+    settings = get_settings()
+    engine = None
+    if settings.research_chat_live:
+        from ...core.db import get_pool
+        from ...documents.embeddings import get_embedding_service
+        from ...retrieval_orchestration.live_research import DenseEvidenceRetriever, LiveResearchService
+        from ...b1_answering.core.policy import Limits
+        from ...b1_answering.providers.gemini import GeminiProvider
+        from ...retrieval_orchestration.market_research import MarketResearch
+        from ...market_data.repository import FileMarketDataRepository
+        limits = Limits.load()
+        provider = None
+        if settings.gemini_api_key.get_secret_value() and settings.b1_gemini_free_tier_confirmed:
+            provider = GeminiProvider(limits, api_key=settings.gemini_api_key.get_secret_value(),
+                                      free_tier_confirmed=True)
+        engine = LiveResearchService(
+            DenseEvidenceRetriever(get_pool(), get_embedding_service(),
+                                   corpus_version_id=settings.research_corpus_version_id,
+                                   model_ref=settings.embedding_model_ref,
+                                   backend=settings.research_retrieval_backend),
+            provider=provider, limits=limits,
+            retrieval_timeout=settings.research_retrieval_timeout_seconds,
+            market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
+        )
+    return SessionStore(Path(__file__).resolve().parents[2] / "retrieval_orchestration" / "chat_history" / "web",
+                        engine=engine)
 
 
 def get_owner(

@@ -3,8 +3,14 @@ import { useAuth } from "../../shared/context/AuthContext.jsx";
 import { useSearchParams } from "../../app/router.jsx";
 import { Drawer } from "../../shared/ui/index.js";
 import { createSession, listSessions, getSession, sendMessage, resumeSession } from "./chatApi.js";
+import { citationView, modeLabel } from './citationView.js';
+import { clarificationChoices } from './clarificationView.js';
 
 const statusLabels = { ASK_CLARIFICATION: "Cần làm rõ", EVIDENCE_READY: "Có bằng chứng mẫu",
+  CLARIFICATION_STALLED: 'Cần chọn thông tin cụ thể',
+  DRAFT_READY: 'Câu trả lời có nguồn', SOURCE_EXTRACT_FALLBACK: 'Câu trả lời từ nguồn',
+  INSUFFICIENT_EVIDENCE: 'Chưa đủ bằng chứng',
+  SYSTEM_UNAVAILABLE: 'Lỗi tạm thời', BUDGET_EXCEEDED: 'Đã chạm giới hạn',
   NO_DATA: "Chưa đủ bằng chứng", ERROR: "Lỗi tạm thời", UNSUPPORTED: "Ngoài phạm vi" };
 const empty = owner => ({ owner, snapshot: null, history: [], error: null, historyError: null,
   loading: false, historyLoading: false });
@@ -113,7 +119,9 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
 
   function submit(event) {
     event.preventDefault();
-    const text = input.trim();
+    submitText(input.trim());
+  }
+  function submitText(text) {
     if (!text) return;
     void run(async epoch => {
       let current = snapshot;
@@ -150,18 +158,42 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
   if (!owner) return <p>Vui lòng <a href="/login" className="text-blue-600 underline">đăng nhập</a> để bắt đầu hội thoại.</p>;
   return <section aria-label="Hội thoại nghiên cứu" className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
     <div className="shrink-0 border-b border-slate-100 px-4 py-3">
-      <p className="text-xs text-amber-800">Dữ liệu mẫu · Chưa phải số liệu tài chính thật</p>
+      <p className="text-xs text-amber-800">{modeLabel(snapshot)}</p>
       <p className="mt-1 whitespace-pre-wrap break-words text-sm text-slate-600">{snapshot?.context || "Nhập câu hỏi để bắt đầu. Bạn có thể bổ sung mã, kỳ hoặc chỉ tiêu ở lượt sau."}</p>
     </div>
     <div ref={scroll} className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4" role="log" aria-label="Các lượt hỏi đáp" aria-live="polite">
       {!snapshot?.messages.length && !view.loading && <p className="py-8 text-center text-sm text-slate-500">Bạn muốn tra cứu điều gì?</p>}
       {(snapshot?.messages || []).map((message, index) => <div key={`${index}-${message.timestamp}`} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
         <div className={`min-w-0 max-w-[92%] rounded-xl px-4 py-3 sm:max-w-[85%] ${message.role === "user" ? "bg-blue-600 text-white" : "border border-slate-200 bg-slate-50 text-slate-900"}`}>
-          <p className={`mb-1 text-xs font-semibold ${message.role === "user" ? "text-blue-100" : "text-blue-700"}`}>{message.role === "user" ? "Bạn" : statusLabels[message.result?.status] || "FinMind"}</p>
+          <p className={`mb-1 text-xs font-semibold ${message.role === "user" ? "text-blue-100" : "text-blue-700"}`}>{message.role === "user" ? "Bạn" : message.result?.scope?.source_type === 'PRICE' ? 'Giá cổ phiếu' : message.result?.answering?.manifest?.response_mode === 'NEWS_LIST' ? 'Tin tức' : message.result?.execution_mode === 'LIVE' && message.result?.status === 'EVIDENCE_READY' && message.result?.answering?.status !== 'DRAFT_READY' ? 'Nguồn ứng viên' : statusLabels[message.result?.answering?.status] || statusLabels[message.result?.status] || "FinMind"}</p>
           <p className="whitespace-pre-wrap break-words text-sm leading-relaxed">{message.content}</p>
+          {clarificationChoices(message.result).length > 0 && <div className="mt-3 grid gap-2 sm:grid-cols-2" aria-label="Lựa chọn làm rõ câu hỏi">
+            {clarificationChoices(message.result).map(option => <button key={option.id} type="button"
+              disabled={view.loading || index !== snapshot.messages.length - 1}
+              onClick={() => submitText(option.reply)}
+              className="min-h-11 rounded-lg border border-blue-200 bg-white px-3 py-2 text-left text-sm text-blue-900 hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 disabled:cursor-default disabled:opacity-50">
+              <span className="block font-medium">{option.id}. {option.label}</span>
+              {option.description && <span className="mt-1 block text-xs text-slate-600">{option.description}</span>}
+            </button>)}
+          </div>}
+          {citationView(message.result).length > 0 && <div className="mt-3 space-y-2 border-t border-slate-200 pt-3" aria-label="Nguồn của phản hồi">
+            <p className="text-xs font-semibold text-slate-600">{citationView(message.result).every(source => source.compact) ? 'Bài viết' : 'Mở nguồn để xem đoạn trích và vị trí dữ liệu'}</p>
+            {citationView(message.result).map(source => source.compact ? source.url && <a key={source.id} href={source.url}
+              target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center break-words text-sm text-blue-700 underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">
+              {source.citationNumber ? `[${source.citationNumber}] ` : ''}{source.title}
+            </a> : <details key={source.id} className="rounded-lg border border-slate-200 bg-white p-3">
+              <summary className="min-h-11 cursor-pointer break-words text-sm font-medium text-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">
+                {source.citationNumber ? `[${source.citationNumber}] ` : ''}{source.used ? 'Đã trích dẫn' : 'Nguồn ứng viên'} · {source.title}
+              </summary>
+              <p className="mt-2 text-xs text-slate-600">{source.location}</p>
+              <blockquote className="mt-2 whitespace-pre-wrap break-words border-l-2 border-blue-200 pl-3 text-sm leading-relaxed">{source.passage}</blockquote>
+              {source.rows.length > 0 && <p className="mt-2 break-all text-xs text-slate-500">Vị trí dòng dữ liệu: {source.rows.join(', ')}</p>}
+              {source.url && <a href={source.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm text-blue-700 underline">Mở bài gốc</a>}
+            </details>)}
+          </div>}
         </div>
       </div>)}
-      {view.loading && <p role="status" className="text-sm text-slate-500">Đang xử lý...</p>}
+      {view.loading && <p role="status" className="text-sm text-slate-500">Đang xử lý… Lần tìm kiếm đầu tiên có thể cần thêm thời gian để nạp mô hình.</p>}
       {view.error && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
         <p>{view.error.message}</p>
         {view.error.status === 401 && <a href="/login" className="underline">Đăng nhập lại</a>}

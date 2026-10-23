@@ -10,8 +10,10 @@ Chạy backend và frontend theo [README gốc](../../../README.md), đăng nh�
 mở **Trợ lý nghiên cứu** tại `http://localhost:5173/research`.
 Nhập câu hỏi và nhấn Enter hoặc nút gửi. Có thể trả lời ngắn để bổ sung thông tin,
 ví dụ `lợi nhuận năm 2025` → `BID, sau thuế` → `không, là VCB`.
-Các phản hồi và ngữ cảnh được lấy từ backend; nhãn **Dữ liệu mẫu** nhắc rằng
-đây vẫn là fixture, chưa phải dữ liệu tài chính thật.
+Web mặc định tìm nguồn thật trong corpus-v4 bằng dense + BM25/RRF, giữ mã/kỳ/chỉ tiêu giữa các lượt.
+Mở ô nguồn dưới phản hồi để xem đoạn trích và vị trí. Gemini chỉ chạy khi backend có key và xác nhận Free Tier;
+nếu chưa cấu hình, giao diện hiển thị nguồn ứng viên thật. CLI bên dưới vẫn là fixture.
+Xem [hợp đồng và cấu hình LIVE 1.1](notes/LIVE_CHAT_CONTRACT.md).
 
 Lịch sử trên web tách riêng theo tài khoản tại
 `chat_history/web/<UUID người dùng>/<UUID phiên>.json`. Mỗi lượt gửi thành công
