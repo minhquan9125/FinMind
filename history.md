@@ -1,5 +1,34 @@
 # History thay đổi code
 
+### [2026-10-23] Kiểm tra bộ 40 câu mới của Huyền trên corpus-v4
+
+- **File(s):** `bo cau hoi cua huyen 40 cau.md` (bộ đề mới được bàn giao); báo cáo thử cục bộ `backend/.tmp/huyen-golden40-corpus-v4-audit.json` được Git ignore. Lượt này không sửa thuật toán retrieval hay dữ liệu DB.
+- **Cách chạy:** Đọc đủ Q01–Q40, dùng câu hỏi mới để tìm top 5 trên corpus-v4 `33d33730-0f0a-5274-a7f8-8d32a6be07e8` ở các câu tin/tài chính; thử Q11–Q20 qua SQL giá hiện có. Các truy vấn DB là chỉ đọc. Không dùng parser/phạm vi cứng của Golden v6 cũ để chấm bộ mới.
+- **Kết quả vector:** Q01–Q09 và Q31–Q38 đều có 5 hit/câu, 0 lỗi dựng nguồn. Q31, Q32, Q34–Q38 có chỉ tiêu và số tương ứng trong top 5; Q33 có đúng `RETAINED_EARNINGS` ở hạng 5 nhưng chunk hiển thị `20,370,550.28 triệu VND` đã làm tròn, không còn số VND nguyên chính xác của đáp án. Q35/Q38 cần ghép hai đoạn. Tin Q06/Q07 khác dấu phân cách số/ngày so với đáp án; cần chuẩn hóa trước khi so khớp chữ.
+- **Giới hạn bộ đề/DB:** Q10 ghi 224 bài, trong khi DB hiện có 234 bài (119 CafeF, 115 FireAnt). Q11–Q20 chạy được SQL nhưng chỉ Q14/Q17/Q20 khớp số tham khảo không vướng khác phạm vi; Q16 ra NLG -24,26% nhưng so trên 13 mã, không phải 6 mã của bộ đề. Q11/Q12/Q13/Q15/Q18/Q19 lệch số hoặc phạm vi: API đọc toàn bộ bảng giá hiện có (21.523 phiên), còn đáp án Huyền dựa tập 737 phiên. Cùng ngày Q11/Q15/Q19 còn có giá khác, cần đối chiếu snapshot nguồn. Corpus-v4 không chứa PDF cho Q21–Q29; Q30/Q40 là ca từ chối chưa có luồng trả lời để chấm; Q39 cần tính toán hai kỳ. FPT 2026-Q4 có 0 chunk trong corpus-v4 nhưng đó chưa phải kiểm chứng tính năng từ chối.
+- **Kết luận:** Đây là kiểm tra retrieval/nguồn và khả năng của endpoint hiện tại, không phải 40/40 câu trả lời đúng. WBS20/WBS25 tiếp tục ở trạng thái review cho đến khi chốt tiêu chí nghiệm thu và snapshot dữ liệu; không đánh dấu Golden40 mới đã pass.
+
+---
+
+### [2026-10-23] Đọc nguồn corpus-v4 trên nhánh Nhân
+
+- **Sai gì:** Index v4 trên Supabase đã có chunk `db-financial-v4`, nhưng reader của branch Nhân chỉ hỗ trợ đến v3; Q31–Q38 tìm được 40 hit nhưng tất cả báo `UNSUPPORTED_VERSION`. Chỉ thêm nhãn v4 vẫn lệch fingerprint vì v4 dùng nguồn và metadata lịch sử khác bảng live.
+- **Tại sao sửa:** Chuyển đường đọc nguồn v4 từ `backup-demo`: lấy payload gốc đã ghim trong `raw_payloads`, dùng metadata release để dựng lại và kiểm tra membership/hash. Ghép riêng vào index v4 để giữ nguyên các thay đổi WBS20/WBS30 và đường đọc v2/v3.
+- **Ảnh hưởng:** Chỉ thay đọc kết quả index v4, không ghi Supabase, không đổi vector/chunk, không merge toàn bộ `backup-demo`. Thêm các module reader nguồn dùng chung và renderer v4; audit Golden dùng được đường đọc này. File kết quả local nằm trong `.tmp`.
+- **Kiểm chứng:** Bộ 55 test code/API/reader và bộ 53 test chunking/edge-case/API tài liệu qua. Audit Q31–Q38 trên corpus-v4: 8 câu × 5 hit, 0/40 lỗi dựng nguồn, lọc sai công ty/kỳ rỗng. API thử với vector đã lưu trả 200/5 hit và trace success. Đây là kiểm chứng nguồn/retrieval mẫu, chưa chấm đúng đáp án 40 câu Golden. Chi tiết: `docs/embedding/WBS25-corpus-v4-source-recheck.md`.
+
+---
+
+### [2026-10-22] Cho phép thử index v2 qua API tìm kiếm có lọc
+
+- **File(s):** `backend/src/api/routers/search.py`, `backend/src/documents/schemas.py`, `backend/tests/test_filtered_search_api.py`, `docs/embedding/WBS20-WBS25-filtered-baseline.md`, `history.md`.
+- **Sai gì:** API `/api/search/filtered` luôn chọn index v1 theo cấu hình, nên gọi Q31–Q32 trên Swagger không kiểm tra được các chunk tài chính thuộc v2. Ví dụ request cũ còn ghi sai `doc_type` là `FINANCIAL_REPORT`; giá trị trong DB là `FINANCIAL_STATEMENT`.
+- **Tại sao sửa:** Người dùng cần thử chính Q31–Q32 trên dữ liệu v2 bằng backend API, không chỉ bằng script audit.
+- **Ảnh hưởng:** Request có thể truyền `index_version_id` v2 đã ghim; bỏ trống vẫn dùng v1 như trước. ID khác bị từ chối 400. Chỉ tìm kiếm read-only, không sửa schema/vector hoặc chuyển trạng thái index/corpus. V2 vẫn là phiên `BUILDING` để thử, chưa nghiệm thu.
+- **Kiểm chứng:** 22 test API/reader liên quan đạt. Chạy backend cổng 8765 với model cache offline, gửi Q31 và Q32 qua HTTP thật: cả hai trả 409 `SOURCE_CHANGED`, đúng lỗi nguồn tài chính đã thấy trong audit. Một lần thử trước đó trả 500 do môi trường bị chặn khi truy cập Hugging Face để tải/kiểm tra model; bật offline với cache đã có mới đến bước truy vấn DB.
+
+---
+
 ### [2026-10-22] WBS20/WBS25: chỉ mục HNSW, tìm vector có lọc và kiểm tra Golden
 
 - **File(s):** `supabase/migrations/20261020000100_text_chunks_hnsw.sql`; `backend/src/documents/repository.py`, `schemas.py`, `price_queries.py`; `backend/src/api/routers/search.py`; `backend/scripts/benchmark_pgvector.py`, `audit_golden_q01_q20.py`, `diagnose_golden_price_recall.py`, `audit_golden_price_sql.py`, `golden_v6.py`, `audit_golden_v6.py`, `fixtures/wbs20_filtered_questions.json`; `backend/tests/test_api_search.py`, `test_source_result_reader.py`, `test_filtered_search_api.py`, `test_filtered_vector_search.py`, `test_golden_v6.py`, `test_price_queries.py`; `Golden_TestSet_Lo1_Lo2_TinTuc_GiaCoPhieu.md`; `docs/embedding/WBS20-WBS25-filtered-baseline.md`, `results/wbs20-pgvector-benchmark.json`, `results/golden-q01-q20-audit.md`; `history.md`.
@@ -539,3 +568,31 @@ Quy trình bắt buộc trước khi sửa:
 - File backend/.tmp/corpus-v2.content.manifest.json; canonical manifest_sha256: 86e880eef3b39ddf2515951252025a8f58e700f80416ba24d6fabfe324362bd7. Đủ mã dòng, ID chunk không trùng và dựng lại đúng nội dung/hash cho toàn bộ chunk. Hash toàn file corpus-v1 trước/sau giữ nguyên.
 - Đây là CONTENT_FROZEN_AWAITING_VECTOR_INGEST, không phải manifest corpus đã đăng ký/vector-ready. Không ghi DB, không chạy embedding. Chưa bao gồm file UPCOMINDEX cục bộ hoặc dữ liệu mới cào chưa nhập nguồn Supabase.
 - Phải tạo index riêng và xử lý versioning ingest/search trước khi ghi chunk financial v3; không tái dùng index corpus-v1 hoặc nhầm source_chunk_id với khóa text_chunks. Chi tiết tại docs/embedding/corpus-v2-handoff.md.
+
+### [2026-10-22] Thử retrieval theo corpus-v2 đã đăng ký
+
+- **Sai gì:** API `/api/search/filtered` và audit Golden v6 trước đây chỉ chọn `index_version_id`; cùng một index có thể gắn nhiều corpus, nên chưa chứng minh kết quả nằm trong corpus-v2 cụ thể.
+- **Tại sao sửa:** Thêm `corpus_version_id` cho API và audit, tra index của corpus `FROZEN`/`ACTIVE` trong DB và giới hạn tìm kiếm bằng `corpus_documents.document_id` cùng `document_hash`. Có test cho phạm vi corpus và các ID không hợp lệ.
+- **Ảnh hưởng:** Chỉ thay truy vấn đọc và hướng dẫn test; không ghi DB, không sửa vector. Luồng chọn index cũ vẫn dùng được. Kiểm tra nguồn/hash khi dựng lại chunk vẫn giữ nguyên, nên dữ liệu nguồn đã đổi vẫn có thể trả `SOURCE_CHANGED`.
+- **Kiểm tra:** 16 test API/repository/Golden qua; audit DB thật ở chế độ read-only trên corpus ID `232fbd29-355f-5a77-ba28-a06b8d5ceb40` chạy đủ 40 câu. Q01–Q10 có hit và dựng nguồn được; Q31–Q38 có hit nhưng mọi hit thử đều lỗi dựng nguồn. Các câu còn lại không được chấm bởi nhánh vector. Không khẳng định bộ Golden đã đạt.
+- **HTTP thật:** Q03 qua `/api/search/filtered` trả 200/5 hit theo corpus ID mới; Q31 trả 409 `SOURCE_CHANGED`. Không thay đổi database khi thử.
+
+### [2026-10-22] Thêm preview SOURCE_CHANGED cho thử nghiệm retrieval
+
+- **Sai gì:** Khi nguồn tài chính thay tên hiển thị sau khi lập chỉ mục, `/api/search/filtered` trả 409; người kiểm thử không xem được những đoạn nguồn hiện tại mà 5 vector đã tìm tới.
+- **Tại sao sửa:** Thêm cờ `preview_source_changed` mặc định `false`, yêu cầu `corpus_version_id`. Chỉ khi kiểm tra nghiêm ngặt gặp `SOURCE_CHANGED`, backend dựng chữ hiện tại theo locator và `row_keys`, rồi trả `source_verified=false` cùng mã cảnh báo; sai định danh hoặc locator vẫn bị chặn.
+- **Ảnh hưởng:** Chỉ endpoint filtered-search có chế độ xem trước; không thay đổi dữ liệu, embedding hay kiểm tra mặc định. Chữ preview chưa xác minh với vector cũ nên không dùng làm bằng chứng hoặc đáp án chính thức. 49 test liên quan qua; HTTP Q31 thử bật cờ trả 200/5 hit đều chưa xác minh, tắt cờ trả 409.
+
+### [2026-10-22] WBS30 — log timing và lỗi filtered vector retrieval
+
+- **Sai gì:** `/api/search/filtered` trả kết quả hoặc lỗi nhưng chưa để lại trace có thời gian embedding/truy vấn, số hit, điểm và mã lỗi; ca 0 hit dễ bị hiểu nhầm là lỗi.
+- **Tại sao sửa:** Ghi một JSONL trace mỗi lần endpoint chạy, gồm `trace_id`, UTC, phạm vi lọc đã giới hạn, index/corpus ID, timing, số hit và `{chunk_id, score}` hoặc mã lỗi. Không lưu câu hỏi, nội dung chunk, locator, secret hoặc exception message.
+- **Ảnh hưởng:** Log ở console và `backend/.tmp/retrieval-traces.jsonl` (đã ignore); không ghi Supabase, không đổi response hay logic chunk. Chỉ áp dụng cho filtered vector endpoint. File local cần được quản lý dung lượng khi vận hành dài hạn.
+- **Kiểm chứng:** Test helper/API và HTTP thật trên Q03 có 5 hit, lọc `NOPE` trả 0 hit, Q31 trả 409 `SOURCE_CHANGED`; cả ba có trace, và không thấy câu hỏi hoặc chunk text trong JSONL. Chi tiết: `docs/embedding/WBS30-retrieval-trace.md`.
+
+### [2026-10-22] Bổ sung số hit trước khi xác minh nguồn cho WBS30
+
+- **Sai gì:** Khi SQL đã tìm được chunk nhưng dựng lại nguồn báo `SOURCE_CHANGED`, trace cũ ghi `hit_count: null` và không có điểm, gây nhầm với lỗi chưa chạy tìm kiếm.
+- **Tại sao sửa:** Repository chuyển riêng `{chunk_id, score}` của các hàng SQL đã xếp hạng cho trace trước bước kiểm tra nguồn. Trace phân biệt `hit_count` (SQL tìm được) với `returned_hit_count` (API trả thành công); lỗi trước SQL vẫn có `hit_count: null`.
+- **Ảnh hưởng:** Chỉ thêm dữ liệu chẩn đoán vào log local/console của `/api/search/filtered`; không đổi kết quả API, dữ liệu nguồn hay Supabase. Trace không chứa câu hỏi, nội dung chunk hoặc thông tin kết nối.
+- **Kiểm chứng:** 28 test liên quan API, repository và trace qua. Thử đường đi SQL → kiểm tra nguồn → trace trên DB thật bằng vector đã lưu trong index (không tải model): HTTP 409, SQL tìm 5 hit/5 điểm, không có kết quả trả, `SOURCE_CHANGED`. Đây không phải phép đo chất lượng embedding theo câu hỏi.

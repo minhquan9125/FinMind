@@ -61,7 +61,19 @@ def test_filtered_search_is_read_only_and_binds_all_values():
     assert "t.superseded_at IS NULL" in connection.sql
     assert "t.locator_json->>'period_code'" in connection.sql
     assert "upper(d.doc_type)=upper($4)" in connection.sql
-    assert connection.args == (uuid.UUID(index_id), "FPT", "2026-05", "PRICE_HISTORY", [0.1, 0.2], 5)
+    assert connection.args == (uuid.UUID(index_id), "FPT", "2026-05", "PRICE_HISTORY", [0.1, 0.2], 5, None)
+    assert "cd.document_hash=d.sha256" in connection.sql
+
+
+def test_filtered_search_binds_frozen_corpus_membership():
+    connection = FakeConnection()
+    corpus_id = uuid.uuid4()
+    asyncio.run(vector_search_filtered(
+        FakePool(connection), str(uuid.uuid4()), [0.1], 5,
+        corpus_version_id=corpus_id,
+    ))
+    assert connection.args[-1] == corpus_id
+    assert "cd.corpus_version_id=$7::uuid" in connection.sql
 
 
 def test_filtered_search_parameterizes_user_filter_values():

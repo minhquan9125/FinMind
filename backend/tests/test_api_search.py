@@ -109,7 +109,7 @@ def test_filtered_search_passes_scope_and_returns_provenance(monkeypatch):
     from src.documents.db_ingest import index_version_id_for
     from src.core.config import get_settings
 
-    async def search(pool, index, vector, top_k, company_symbol=None, period=None, doc_type=None):
+    async def search(pool, index, vector, top_k, company_symbol=None, period=None, doc_type=None, on_ranked=None):
         settings = get_settings()
         assert index == index_version_id_for(settings.chunk_words, settings.embedding_model_ref)
         assert vector == [0.1] * 4

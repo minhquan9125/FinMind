@@ -54,6 +54,71 @@ $env:HF_HUB_OFFLINE = "1"  # Nếu model đã có trong cache
 
 Script dùng transaction read-only cho các truy vấn benchmark và ghi kết quả chi tiết vào đường dẫn `--out`.
 
+## Thử Q31–Q32 trên index v2 qua backend API (22/10/2026)
+
+`POST /api/search/filtered` giữ index v1 khi không gửi `index_version_id`. Để thử index v2 đang `BUILDING`, truyền ID `434ef5e0-6516-578d-8d18-721d21347e01` tường minh. Endpoint chỉ chấp nhận index mặc định và ID v2 thử nghiệm này; truy vấn không ghi database. Loại tài liệu tài chính đúng là `FINANCIAL_STATEMENT`.
+
+Trong CMD, khởi động backend từ thư mục `backend` (model BGE-M3 cần có sẵn trong cache khi bật offline):
+
+```cmd
+set FINMIND_LIVE_ENABLED=0
+set HF_HUB_OFFLINE=1
+set TRANSFORMERS_OFFLINE=1
+.venv\Scripts\python.exe -m uvicorn src.main:app --host 127.0.0.1 --port 8000
+```
+
+Mở `http://127.0.0.1:8000/docs`, chọn `POST /api/search/filtered` → `Try it out`. Body Q31:
+
+```json
+{
+  "query": "Trong bản dữ liệu clean FPT đã đóng băng, tại kỳ 2026-Q2, tiền và các khoản tương đương tiền có giá trị gốc bao nhiêu?",
+  "index_version_id": "434ef5e0-6516-578d-8d18-721d21347e01",
+  "company_symbol": "FPT",
+  "period": "2026-Q2",
+  "doc_type": "FINANCIAL_STATEMENT",
+  "top_k": 5
+}
+```
+
+Q32 dùng cùng body, thay `query` bằng: `Trong bản dữ liệu clean FPT đã đóng băng, tại kỳ 2026-Q2, dư nợ vay và nợ thuê tài chính ngắn hạn có giá trị gốc bao nhiêu?`
+
+Lần gọi HTTP thật ngày 22/10/2026: **Q31 và Q32 đều trả 409 `SOURCE_CHANGED`**. API đã chọn v2 và truy vấn được tới bước dựng lại chunk, nhưng fingerprint của nguồn tài chính hiện tại lệch bản đã index; đây không phải kết quả truy xuất đúng hay đáp án Golden đã đạt. Lần chạy đầu khi chưa bật offline trả 500 vì môi trường thử không kết nối được Hugging Face để kiểm tra model, trước khi truy vấn DB. Nếu máy chưa tải BGE-M3 vào cache, cần chuẩn bị model trước; bật offline không tự tải model.
+
+## Thử theo corpus-v2 đã đóng băng
+
+Để kiểm tra đúng phiên corpus `232fbd29-355f-5a77-ba28-a06b8d5ceb40`, dùng `corpus_version_id` thay cho `index_version_id` trong body `POST /api/search/filtered`. Backend lấy index gắn với corpus từ DB, chỉ tìm trong các tài liệu thuộc `corpus_documents` có `document_hash` trùng với `documents.sha256`, và bỏ chunk đã supersede. Không gửi hai ID phiên bản cùng lúc. Ví dụ Q31:
+
+```json
+{
+  "query": "Trong bản dữ liệu clean FPT đã đóng băng, tại kỳ 2026-Q2, tiền và các khoản tương đương tiền có giá trị gốc bao nhiêu?",
+  "corpus_version_id": "232fbd29-355f-5a77-ba28-a06b8d5ceb40",
+  "company_symbol": "FPT",
+  "period": "2026-Q2",
+  "doc_type": "FINANCIAL_STATEMENT",
+  "top_k": 5
+}
+```
+
+Chạy audit Golden v6 từ thư mục repo bằng CMD (chỉ đọc DB, ghi file kết quả cục bộ):
+
+```cmd
+set HF_HUB_OFFLINE=1
+set TRANSFORMERS_OFFLINE=1
+backend\.venv\Scripts\python.exe -X utf8 backend\scripts\audit_golden_v6.py --corpus-version-id 232fbd29-355f-5a77-ba28-a06b8d5ceb40 --ids Q01,Q31,Q32 --out backend\.tmp\golden-v6-corpus-v2.json
+```
+
+Audit này đo retrieval tạm thời, chưa chấm đáp án Golden. Nếu nguồn hiện tại không dựng lại được đúng hash chunk đã index, API vẫn trả `409 SOURCE_CHANGED`; chọn đúng corpus không tự khắc phục lỗi nguồn.
+
+Lần chạy toàn bộ Golden v6 ngày 22/10/2026 với corpus trên, `top_k=5`: Q01–Q10 có 5 hit/câu, không lỗi dựng nguồn; Q31–Q38 cũng có 5 hit/câu nhưng cả 5 hit ở từng câu đều lỗi dựng lại nguồn. Cả 18 câu đều trả rỗng khi cố ý lọc sai công ty hoặc kỳ. Q11–Q20 và Q39 thuộc nhánh SQL giá/tính toán, Q21–Q29 cần PDF chưa có trong v2, Q30/Q40 là ca từ chối; audit vector không chấm các câu đó. Không có `retrieval_error`, nhưng 8 câu tài chính **chưa đạt kiểm tra nguồn** và không có điểm chất lượng chính thức vì Golden chưa có nhãn đáp án/nguồn được duyệt. Báo cáo chi tiết cục bộ: `backend/.tmp/golden-v6-corpus-v2-full.json`.
+
+Thử qua HTTP thật cùng `corpus_version_id`: Q03 trả `200` với 5 kết quả; Q31 trả `409 SOURCE_CHANGED`. Đây là lỗi xác minh nguồn của chunk tài chính, không phải lỗi chọn corpus hay không tìm được vector.
+
+### Xem trước khi nguồn đổi (chỉ dùng để chẩn đoán)
+
+Trong Swagger, thêm `"preview_source_changed": true` vào body Q31 ở trên rồi Execute. Nếu phần nguồn hiện tại còn đúng định danh báo cáo, section và `row_keys`, API trả kết quả kèm `source_verified: false`, `source_warning: "SOURCE_CHANGED"`; trường `text` là chữ dựng từ **Supabase hiện tại**, không phải chữ đã xác minh của corpus-v2. Điểm `score` vẫn là điểm của vector cũ. Chế độ này không tạo câu trả lời hay bằng chứng được duyệt. Bỏ trường này hoặc đặt `false` để quay về kiểm tra nghiêm ngặt và HTTP 409. Chỉ dùng công tắc với `corpus_version_id`.
+
+Đã thử HTTP thật với Q31: bật preview trả `200`/5 hit, cả 5 có `source_verified: false`; tắt preview vẫn trả `409 SOURCE_CHANGED`. Không sửa hay ghi dữ liệu Supabase.
+
 ## Thay đổi database và rollback
 
 Migration `supabase/migrations/20261020000100_text_chunks_hnsw.sql` đã tạo index trên Supabase chính sau khi có baseline trước index. Tạo/xóa index chỉ thay đổi schema và tài nguyên lưu trữ/thời gian build; không sửa hay xóa các hàng chunk/vector. Rollback index:
@@ -64,4 +129,4 @@ DROP INDEX IF EXISTS public.idx_text_chunks_embedding_hnsw;
 
 ## Giới hạn
 
-Benchmark này đo retrieval và scope, không đánh giá chất lượng câu trả lời cuối. HNSW là approximate nearest-neighbor; cần tiếp tục theo dõi recall và latency khi dữ liệu tăng. `corpus_version_id` chưa được áp dụng vào API này; manifest-based isolation vẫn là phần việc riêng.
+Benchmark này đo retrieval và scope, không đánh giá chất lượng câu trả lời cuối. HNSW là approximate nearest-neighbor; cần tiếp tục theo dõi recall và latency khi dữ liệu tăng. API nay có lọc tài liệu theo `corpus_version_id`; kiểm chứng dữ liệu nguồn dựng lại và chất lượng đáp án vẫn là bước riêng.

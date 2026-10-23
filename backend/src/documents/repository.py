@@ -6,8 +6,14 @@ import hashlib
 from datetime import datetime, timezone
 
 import asyncpg
-from .chunk_reconstruction import ReconstructionError, reconstruct_document_chunk
+from .chunk_reconstruction import (
+    ReconstructionError, reconstruct_document_chunk, preview_changed_document_chunk,
+)
 from .db_source import fetch_locator_document
+
+# This frozen release stores immutable source bindings in raw_payloads. Older
+# indices still use their existing reconstruction path.
+V4_SHARED_INDEX_ID = 'e3725b7d-1a39-5196-b000-3496dbab388f'
 
 
 def index_for_document(document, chunk_words, overlap, model):
@@ -18,7 +24,7 @@ def index_for_document(document, chunk_words, overlap, model):
     return index_version_id_for(chunk_words, overlap, model)
 
 
-async def resolve_result_rows(conn, rows):
+async def resolve_result_rows(conn, rows, *, preview_source_changed=False):
     """Rebuild result text exclusively from verified sources."""
     resolved, sources = [], {}
     for record in rows:
@@ -35,6 +41,14 @@ async def resolve_result_rows(conn, rows):
             # Validate metadata before using max_words in a source query.
             from .chunk_reconstruction import _metadata
             _, meta = _metadata(locator)
+            if (row.get('chunker_version') == 'db-corpus-v2'
+                    and str(row.get('index_version_id')) == V4_SHARED_INDEX_ID):
+                from .shared_source import resolve_shared_source
+                row['text'] = await resolve_shared_source(
+                    conn, V4_SHARED_INDEX_ID, locator, row['content_hash'], sources,
+                )
+                resolved.append(row)
+                continue
             renderer = meta['chunker_version'] if locator['source_table'] == 'financial_reports' else 'db-v1'
             key = (locator['source_table'], locator['source_id'], meta['max_words'], renderer)
             if key not in sources:
@@ -44,7 +58,14 @@ async def resolve_result_rows(conn, rows):
             source = sources[key]
             if source is None:
                 raise ReconstructionError('SOURCE_MISSING', 'Source no longer available')
-            result = reconstruct_document_chunk(source, locator, row['content_hash'].strip())
+            try:
+                result = reconstruct_document_chunk(source, locator, row['content_hash'].strip())
+            except ReconstructionError as exc:
+                if not preview_source_changed or exc.code != 'SOURCE_CHANGED':
+                    raise
+                result = preview_changed_document_chunk(source, locator, row['content_hash'].strip())
+                row['source_verified'] = False
+                row['source_warning'] = 'SOURCE_CHANGED'
             row['text'] = result.text
         elif locator.get('schema_version') == 'upload-source-v1' and locator.get('source_table') == 'raw_payloads':
             from .upload_source import read_upload_chunks
@@ -112,7 +133,7 @@ async def get_chunks(pool, document_id, index_version_id):
     async with pool.acquire() as conn:
         async with conn.transaction(readonly=True, isolation='repeatable_read'):
             rows = await conn.fetch(
-                'SELECT t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,'
+                'SELECT t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,t.index_version_id::text,'
                 't.token_count,i.chunker_version FROM text_chunks t JOIN index_versions i USING(index_version_id) '
                 'WHERE t.document_id=$1 AND t.index_version_id=$2 AND t.superseded_at IS NULL '
                 'ORDER BY t.chunk_index', uuid.UUID(document_id), uuid.UUID(index_version_id))
@@ -123,12 +144,28 @@ async def vector_search(pool, document_id, index_version_id, query_embedding, to
     async with pool.acquire() as conn:
         async with conn.transaction(readonly=True, isolation='repeatable_read'):
             rows = await conn.fetch(
-                'SELECT t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,i.chunker_version,'
+                'SELECT t.chunk_index,t.page_number AS page,t.content_hash,t.locator_json,t.index_version_id::text,i.chunker_version,'
                 '1-(t.embedding <=> $3::vector) AS score FROM text_chunks t JOIN index_versions i USING(index_version_id) '
                 'WHERE t.document_id=$1 AND t.index_version_id=$2 AND t.superseded_at IS NULL '
                 'ORDER BY t.embedding <=> $3::vector LIMIT $4',
                 uuid.UUID(document_id), uuid.UUID(index_version_id), query_embedding, top_k)
             return await resolve_result_rows(conn, rows)
+
+
+async def get_corpus_index(pool, corpus_version_id):
+    """Return the index and statuses pinned by a corpus, without changing data."""
+    async with pool.acquire() as conn:
+        async with conn.transaction(readonly=True, isolation='repeatable_read'):
+            row = await conn.fetchrow(
+                '''SELECT cv.corpus_version_id::text, cv.index_version_id::text,
+                          cv.status AS corpus_status, iv.status AS index_status,
+                          iv.embedding_model
+                   FROM public.corpus_versions cv
+                   JOIN public.index_versions iv USING(index_version_id)
+                   WHERE cv.corpus_version_id=$1::uuid''',
+                uuid.UUID(str(corpus_version_id)),
+            )
+            return dict(row) if row else None
 
 
 async def vector_search_filtered(
@@ -139,6 +176,9 @@ async def vector_search_filtered(
     company_symbol=None,
     period=None,
     doc_type=None,
+    corpus_version_id=None,
+    preview_source_changed=False,
+    on_ranked=None,
 ):
     """Search active chunks in one embedding version, applying source filters first.
 
@@ -151,7 +191,7 @@ async def vector_search_filtered(
             rows = await conn.fetch(
                 '''
                 SELECT t.chunk_id::text, t.document_id::text, t.chunk_index,
-                       t.content_hash, t.locator_json, i.chunker_version,
+                       t.content_hash, t.locator_json, t.index_version_id::text, i.chunker_version,
                        d.title, d.doc_type,
                        coalesce(c.symbol, t.locator_json->>'symbol') AS company_symbol,
                        coalesce(p.period_code, t.locator_json->>'period_code',
@@ -176,10 +216,21 @@ async def vector_search_filtered(
                        t.locator_json->>'published_at', t.locator_json->>'section',
                        d.title) ILIKE '%' || $3 || '%')
                   AND ($4::text IS NULL OR upper(d.doc_type)=upper($4))
+                  AND ($7::uuid IS NULL OR EXISTS (
+                      SELECT 1 FROM public.corpus_documents cd
+                      WHERE cd.corpus_version_id=$7::uuid
+                        AND cd.document_id=t.document_id
+                        AND cd.document_hash=d.sha256))
                 ORDER BY t.embedding <=> $5::vector
                 LIMIT $6
                 ''',
                 uuid.UUID(index_version_id), company_symbol, period, doc_type,
                 query_embedding, top_k,
+                uuid.UUID(str(corpus_version_id)) if corpus_version_id else None,
             )
-            return await resolve_result_rows(conn, rows)
+            if on_ranked is not None:
+                on_ranked([{"chunk_id": row["chunk_id"], "score": row["score"]}
+                           for row in rows])
+            return await resolve_result_rows(
+                conn, rows, preview_source_changed=preview_source_changed,
+            )

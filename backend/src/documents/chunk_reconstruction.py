@@ -93,6 +93,34 @@ def reconstruct_document_chunk(doc, locator, expected_hash):
     return ReconstructedChunk(text, digest, original.chunk_id, doc.document_id)
 
 
+def preview_changed_document_chunk(doc, locator, expected_hash):
+    """Show current source text for a matched locator, without claiming hash verification.
+
+    Only the filtered-search diagnostic path calls this after strict reconstruction
+    has already failed with SOURCE_CHANGED. Identity and row keys still must match.
+    """
+    locator, meta = _metadata(locator)
+    if meta['content_hash'] != expected_hash.strip():
+        raise ReconstructionError('HASH_MISMATCH', 'Locator differs from stored chunk hash')
+    if (doc.source_table != locator['source_table'] or str(doc.source_id) != locator['source_id']
+            or doc.document_id != meta['document_id']):
+        raise ReconstructionError('SOURCE_MISMATCH', 'Locator refers to another source document')
+    try:
+        section = doc.sections[meta['section_index']]
+    except IndexError as exc:
+        raise ReconstructionError('SOURCE_CHANGED', 'Source section no longer exists') from exc
+    start, end = meta['row_start'], meta['row_end']
+    if not 0 <= start < end <= len(section.rows):
+        raise ReconstructionError('INVALID_LOCATOR', 'Row range outside source section')
+    selected = section.rows[start:end]
+    if [row.key for row in selected] != locator['row_keys'] or section.label != locator['section']:
+        raise ReconstructionError('SOURCE_MISMATCH', 'Source rows or section do not match locator')
+    body = '\n'.join(row.text for row in selected)
+    text = f'{section.header}\n{body}' if section.header else body
+    return ReconstructedChunk(text, hashlib.sha256(text.encode('utf-8')).hexdigest(),
+                              meta['source_chunk_id'], doc.document_id)
+
+
 async def reconstruct_chunk(conn, locator, expected_hash):
     """Only reads source tables; never falls back to chunk_text or external files.
 

@@ -38,7 +38,11 @@ from .source_signature import section_fingerprint
 NAMESPACE = uuid.UUID("b77dbd7f-5d89-479d-90a3-421e5f0981ea")
 CHUNKER_VERSION = "db-v1"
 FINANCIAL_CHUNKER_VERSION = "db-financial-v3"
-FINANCIAL_RENDERER_VERSIONS = (CHUNKER_VERSION, "db-financial-v2", FINANCIAL_CHUNKER_VERSION)
+FINANCIAL_CLEAN_RENDERER_VERSION = "db-financial-v4"
+FINANCIAL_RENDERER_VERSIONS = (
+    CHUNKER_VERSION, "db-financial-v2", FINANCIAL_CHUNKER_VERSION,
+    FINANCIAL_CLEAN_RENDERER_VERSION,
+)
 DEFAULT_MAX_WORDS = 130  # same order of magnitude as the PDF window (130 words)
 
 SECTION_ORDER = ("INCOME_STATEMENT", "BALANCE_SHEET", "CASH_FLOW", "RATIO")
@@ -306,9 +310,12 @@ def financial_documents(rows: Iterable[dict[str, Any]], *, renderer_version: str
             label_vi = SECTION_LABEL_VI.get(section, section)
             header = (f"{company} ({symbol}) | {label_vi} | {period_text(period_code, section)} | "
                       f"Phạm vi: {scope} | Đơn vị: triệu VND, trừ EPS (VND/cổ phiếu) và chỉ số tỷ lệ")
-            if renderer_version != CHUNKER_VERSION:
+            if renderer_version in ("db-financial-v2", FINANCIAL_CHUNKER_VERSION):
                 header = (f"{company} ({symbol}) | {label_vi} | {period_text(period_code, section)} | "
                           f"Phạm vi: {scope} | Đơn vị: theo từng chỉ tiêu; đơn vị nguồn chưa xác minh nếu không ghi rõ")
+            elif renderer_version == FINANCIAL_CLEAN_RENDERER_VERSION:
+                header = (f"{company} ({symbol}) | {label_vi} | {period_text(period_code, section)} | "
+                          f"Phạm vi: {scope} | Đơn vị: theo từng chỉ tiêu")
             lines = []
             for item in sorted(by_section[section], key=lambda r: str(r.get("code") or "")):
                 name = item.get("canonical_name") or item.get("code") or ""

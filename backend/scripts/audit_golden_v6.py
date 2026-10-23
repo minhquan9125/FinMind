@@ -21,6 +21,7 @@ from src.documents import repository
 from src.documents.embeddings import get_embedding_service
 
 V2_INDEX_ID = "434ef5e0-6516-578d-8d18-721d21347e01"
+V2_CORPUS_ID = "232fbd29-355f-5a77-ba28-a06b8d5ceb40"
 
 # Every value below is visible in the revised question itself. The month filter
 # avoids UTC publication-date ambiguity; no gold IDs or answers are used.
@@ -56,7 +57,7 @@ def classify_status(question):
     return "separate_structured_query_not_vector_recall"
 
 
-async def search(pool, index_id, vector, top_k, company, period, doc_type):
+async def search(pool, index_id, vector, top_k, company, period, doc_type, corpus_id=None):
     """Read ranked IDs first; one stale source must not hide the other hits."""
     async with pool.acquire() as conn:
         async with conn.transaction(readonly=True, isolation="repeatable_read"):
@@ -64,7 +65,7 @@ async def search(pool, index_id, vector, top_k, company, period, doc_type):
             rows = await conn.fetch(
                 """
                 SELECT t.chunk_id::text,t.document_id::text,t.chunk_index,
-                       t.content_hash,t.locator_json,i.chunker_version,
+                       t.content_hash,t.locator_json,t.index_version_id::text,i.chunker_version,
                        d.title,d.doc_type,
                        coalesce(c.symbol,t.locator_json->>'symbol') AS company_symbol,
                        coalesce(p.period_code,t.locator_json->>'period_code',
@@ -88,9 +89,14 @@ async def search(pool, index_id, vector, top_k, company, period, doc_type):
                        t.locator_json->>'published_at',t.locator_json->>'section',
                        d.title) ILIKE '%' || $3 || '%')
                   AND ($4::text IS NULL OR upper(d.doc_type)=upper($4))
+                  AND ($7::uuid IS NULL OR EXISTS (
+                      SELECT 1 FROM public.corpus_documents cd
+                      WHERE cd.corpus_version_id=$7::uuid
+                        AND cd.document_id=t.document_id
+                        AND cd.document_hash=d.sha256))
                 ORDER BY t.embedding <=> $5::vector LIMIT $6
                 """,
-                index_id, company, period, doc_type, vector, top_k,
+                index_id, company, period, doc_type, vector, top_k, corpus_id,
             )
             retrieval_ms = round((time.perf_counter() - start) * 1000, 3)
             hits = []
@@ -122,26 +128,45 @@ async def run(args):
     await connect()
     try:
         pool = get_pool()
+        if args.corpus_version_id and args.index_version_id:
+            raise ValueError("Choose --corpus-version-id or --index-version-id, not both")
+        corpus_id = args.corpus_version_id
+        index_id = args.index_version_id or V2_INDEX_ID
         async with pool.acquire() as conn:
             async with conn.transaction(readonly=True, isolation="repeatable_read"):
+                corpus = None
+                if corpus_id:
+                    corpus = await conn.fetchrow(
+                        "SELECT cv.corpus_version_id::text,cv.version_label,cv.status,"
+                        "cv.index_version_id::text,iv.status AS index_status "
+                        "FROM public.corpus_versions cv "
+                        "JOIN public.index_versions iv USING(index_version_id) "
+                        "WHERE cv.corpus_version_id=$1::uuid", corpus_id,
+                    )
+                    if corpus is None:
+                        raise ValueError("Selected corpus_version_id does not exist")
+                    if corpus["status"] != "FROZEN" or corpus["index_status"] != "ACTIVE":
+                        raise ValueError("Selected corpus or index is not ready")
+                    index_id = corpus["index_version_id"]
                 index = await conn.fetchrow(
                     "SELECT index_version_id::text,chunker_version,embedding_model,status "
                     "FROM public.index_versions WHERE index_version_id=$1::uuid",
-                    args.index_version_id,
+                    index_id,
                 )
                 if index is None:
                     raise ValueError("Selected index_version_id does not exist")
                 active_chunks = await conn.fetchval(
                     "SELECT count(*) FROM public.text_chunks "
                     "WHERE index_version_id=$1::uuid AND superseded_at IS NULL",
-                    args.index_version_id,
+                    index_id,
                 )
                 if not active_chunks:
                     raise ValueError("Selected index has no active chunks")
-                corpus = await conn.fetchrow(
-                    "SELECT version_label,status FROM public.corpus_versions "
-                    "WHERE index_version_id=$1::uuid", args.index_version_id,
-                )
+                if not corpus:
+                    corpus = await conn.fetchrow(
+                        "SELECT corpus_version_id::text,version_label,status FROM public.corpus_versions "
+                        "WHERE index_version_id=$1::uuid ORDER BY frozen_at DESC LIMIT 1", index_id,
+                    )
 
         embedder = get_embedding_service() if any(
             item["number"] in QUESTION_SCOPE for item in questions
@@ -164,20 +189,20 @@ async def run(args):
                 vector = embedder.embed_query(question["question"])
                 item["embedding_ms"] = round((time.perf_counter() - started) * 1000, 3)
                 unfiltered, unfiltered_ms = await search(
-                    pool, args.index_version_id, vector, args.top_k,
-                    None, None, None,
+                    pool, index_id, vector, args.top_k,
+                    None, None, None, corpus_id,
                 )
                 scoped, scoped_ms = await search(
-                    pool, args.index_version_id, vector, args.top_k,
-                    company, period, doc_type,
+                    pool, index_id, vector, args.top_k,
+                    company, period, doc_type, corpus_id,
                 )
                 bad_company, _ = await search(
-                    pool, args.index_version_id, vector, args.top_k,
-                    "NO_SUCH_COMPANY", period, doc_type,
+                    pool, index_id, vector, args.top_k,
+                    "NO_SUCH_COMPANY", period, doc_type, corpus_id,
                 )
                 bad_period, _ = await search(
-                    pool, args.index_version_id, vector, args.top_k,
-                    company, "1900-01", doc_type,
+                    pool, index_id, vector, args.top_k,
+                    company, "1900-01", doc_type, corpus_id,
                 )
                 item.update(
                     unfiltered_ms=unfiltered_ms, scoped_ms=scoped_ms,
@@ -216,6 +241,7 @@ async def run(args):
             "measured_at": datetime.now(timezone.utc).isoformat(),
             "golden_file": str(args.golden),
             "index": dict(index),
+            "corpus_version_id": corpus_id,
             "active_chunks": active_chunks,
             "registered_corpus": dict(corpus) if corpus else None,
             "top_k": args.top_k,
@@ -237,7 +263,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--golden", type=Path, default=DEFAULT_GOLDEN)
     parser.add_argument("--out", type=Path)
-    parser.add_argument("--index-version-id", default=V2_INDEX_ID)
+    parser.add_argument("--index-version-id")
+    parser.add_argument("--corpus-version-id", help=f"Frozen corpus ID, e.g. {V2_CORPUS_ID}")
     parser.add_argument("--top-k", type=int, default=5)
     parser.add_argument("--ids", help="Comma-separated question IDs, e.g. Q01,Q31")
     parser.add_argument("--validate-only", action="store_true")
