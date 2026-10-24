@@ -1,5 +1,14 @@
 # History thay đổi code
 
+### [2026-10-23] WBS34 — mẫu E2E vector retrieval Q03 trên corpus-v4
+
+- **File(s):** `backend/scripts/audit_vector_e2e.py`, `backend/tests/test_audit_vector_e2e.py`, `docs/embedding/WBS34-vector-e2e.md`, `history.md`.
+- **Mục tiêu:** Theo một bài tin FPT từ membership corpus, chunk/locator, vector và nguồn đã ghim đến kết quả top 5 của API; có ca sai phạm vi và đối chiếu chạy lặp. Script chỉ đọc Supabase, báo cáo JSON cục bộ trong `backend/.tmp`.
+- **Kiểm chứng:** Bài Q03 có 8 chunk hiện hành; 8/8 đúng ID, vị trí, hash nguồn và 1024 chiều. Vector tạo lại từ một chunk đã xác minh có cosine `1.0` với vector DB. Q03 trả đúng bài và ba dữ kiện ở hạng 1/5; hai lượt retrieval cho cùng ID, lọc sai công ty/kỳ rỗng. Route HTTP thử qua ASGI client trả 200/5 hit, cả 5 xác minh nguồn. 10/10 check của script và 49 test liên quan đạt.
+- **Giới hạn:** Chưa chạy lại writer corpus-v4 trên DB thật vì repo hiện chưa có lệnh tái nạp release `db-corpus-v2`; test idempotence writer `db-v1` và biên bản WBS17 là bằng chứng riêng, không được tính thành rerun v4. Không chấm toàn bộ Golden40 hay câu trả lời cuối. Cần owner luồng tạo v4 cung cấp cách rerun an toàn hoặc DB dev cùng release để hoàn tất điều kiện này.
+
+---
+
 ### [2026-10-23] Kiểm tra bộ 40 câu mới của Huyền trên corpus-v4
 
 - **File(s):** `bo cau hoi cua huyen 40 cau.md` (bộ đề mới được bàn giao); báo cáo thử cục bộ `backend/.tmp/huyen-golden40-corpus-v4-audit.json` được Git ignore. Lượt này không sửa thuật toán retrieval hay dữ liệu DB.
