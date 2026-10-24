@@ -14,6 +14,7 @@ def test_router_defaults_to_corpus_hybrid_without_gemini(monkeypatch):
     api.get_store.cache_clear()
     try:
         store = api.get_store()
+        assert store.__class__.__name__ == 'PostgresSessionStore'
         assert store.engine.execution_mode == 'LIVE'
         assert store.engine.provider is None
         assert store.engine.retriever.backend == 'hybrid'
@@ -22,10 +23,15 @@ def test_router_defaults_to_corpus_hybrid_without_gemini(monkeypatch):
         api.get_store.cache_clear()
 
 
-def test_fixture_override_does_not_touch_database(monkeypatch):
+def test_fixture_web_chat_still_uses_database_but_does_not_load_embedder(monkeypatch):
     monkeypatch.setattr(api, 'get_settings', lambda: Settings(_env_file=None, research_chat_live=False))
-    def forbidden(): raise AssertionError('fixture mode must not acquire DB pool')
-    monkeypatch.setattr(db, 'get_pool', forbidden)
+    marker = object()
+    monkeypatch.setattr(db, 'get_pool', lambda: marker)
+    def forbidden(): raise AssertionError('fixture mode must not load embedding service')
+    monkeypatch.setattr(embeddings, 'get_embedding_service', forbidden)
     api.get_store.cache_clear()
-    try: assert api.get_store().engine is None
+    try:
+        store = api.get_store()
+        assert store.engine is None
+        assert store.repository.pool is marker
     finally: api.get_store.cache_clear()

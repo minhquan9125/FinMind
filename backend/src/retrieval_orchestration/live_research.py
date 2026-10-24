@@ -26,6 +26,8 @@ from .retrieval_flow.conversation import _resolve_relative_periods, STOP_WORDS
 from .retrieval_flow.intent import _fold, _period, TICKERS
 from .clarifications import apply_clarification, metric_group, resolve_reply
 from .market_dialogue import article_query, calendar_day, news_reference
+from .input_normalization import normalize_user_text
+from .market_dates import price_date_request, temporal_reply
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
@@ -102,6 +104,12 @@ def _market_intent(norm, context, today):
     day = calendar_day(norm, today)
     action = 'SUMMARY' if re.search(r'\b(?:tom tat|tong hop|diem tin)\b', norm) else 'LIST'
     prior = (context or {}).get('_market_request')
+    financial = metric_group(norm) or any(_fold(a) in norm for aliases in METRIC_ALIASES.values() for a in aliases)
+    company_selection = (norm.isdigit() and
+                         str(((context or {}).get('_clarification_state') or {}).get('id', '')).startswith('company:'))
+    if not financial and not news and not company_selection:
+        partial = price_date_request(norm, prior, explicit_price=price)
+        if partial: return partial
     if (day is None and re.search(r'\b(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{2}-\d{2})\b', norm)
             and (price or (prior and prior.get('kind') == 'QUOTE'))):
         return {'kind': 'QUOTE', 'day': None, 'action': 'LIST', 'invalid_date': True}
@@ -127,6 +135,7 @@ def _market_intent(norm, context, today):
 def analyze_live(text, context=None, *, today=None):
     """Resolve explicit slots and follow-ups without generating values or SQL."""
     today = today or datetime.now(timezone(timedelta(hours=7))).date()
+    text = normalize_user_text(text, context)
     market_request = _market_intent(_fold(text), context, today)
     norm = _fold(_resolve_relative_periods(text, today))
     norm = resolve_reply(norm, context)
@@ -193,6 +202,10 @@ def analyze_live(text, context=None, *, today=None):
                      metric_code='LAST_PRICE' if market_request['kind'] == 'QUOTE' else None,
                      periods=[market_request['day']] if market_request['day'] else [],
                      _market_request=market_request)
+        calendar_issue = scope['_market_request'].pop('_calendar_issue', None)
+        calendar_message = scope['_market_request'].pop('_calendar_message', '')
+        if calendar_issue:
+            return finish('ASK_CLARIFICATION', calendar_issue, calendar_message)
         if scope['_market_request'].pop('invalid_date', False):
             return finish('ASK_CLARIFICATION', 'INVALID_DATE', 'Ngày chưa hợp lệ. Bạn muốn xem ngày nào? Ví dụ: 22/10/2026.')
         publishers = [p for p in ('cafef', 'fireant') if re.search(r'\b'+p+r'\b', norm)]
@@ -523,7 +536,16 @@ class LiveResearchService:
         return result
 
     async def answer(self, question, session_id, context=None, *, previous_result=None, today=None):
-        decision = news_reference(question, context, previous_result) or analyze_live(question, context, today=today)
+        interpreted = normalize_user_text(question, context)
+        prior_scope = (previous_result or {}).get('scope') or {}
+        # Recover only legacy, topic-less clarification state; never override an
+        # explicitly active financial/news question or a different company.
+        if (context and not context.get('source_type') and not context.get('metric_code')
+                and not context.get('_pending_metric') and prior_scope.get('source_type') == 'PRICE'
+                and context.get('companies') == prior_scope.get('companies')
+                and temporal_reply(_fold(interpreted))):
+            context = copy.deepcopy(prior_scope)
+        decision = news_reference(interpreted, context, previous_result) or analyze_live(interpreted, context, today=today)
         scope = decision['scope']
         result = dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
                       b1_decision=decision['decision'], status=decision['decision'],
@@ -534,10 +556,10 @@ class LiveResearchService:
         if decision['decision'] == 'RESOLVE_REFERENCE':
             return self._source_reference(result, previous_result)
         if decision['decision'] == 'MARKET_LOOKUP':
-            return await self._answer_market(question, result, previous_result)
+            return await self._answer_market(interpreted, result, previous_result)
         if decision['decision'] != 'SEARCH': return result
         label = METRIC_ALIASES.get(scope.get('metric_code'), ('tin tức',))[0]
-        query = f"{label} {' '.join(scope['companies'])} {' '.join(scope['periods'])}. {question}"
+        query = f"{label} {' '.join(scope['companies'])} {' '.join(scope['periods'])}. {interpreted}"
         try:
             pack = await asyncio.wait_for(self.retriever.retrieve(query, scope), self.retrieval_timeout)
             if not isinstance(pack, dict) or not isinstance(pack.get('items'), list):
@@ -583,6 +605,7 @@ class LiveResearchService:
         result['query_id'] = pack['query_id']
         if market['status'] == 'PRICE_READY':
             item = next(iter(evidence.values()))
+            result['scope']['_market_request']['anchor_day'] = item['snapshot']['trading_day']
             citation = {key: copy.deepcopy(item[key]) for key in (
                 'evidence_id', 'source_id', 'chunk_id', 'source_sha256', 'content_sha256',
                 'source_verified', 'source_type', 'title', 'locator')}

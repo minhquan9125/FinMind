@@ -115,7 +115,10 @@ def apply_clarification(decision, previous, today):
     reason = decision['reason_code']
     if reason == 'NEW_CONVERSATION':
         return decision
-    if reason in ('MISSING_METRIC', 'MULTIPLE_METRICS'):
+    if scope.get('source_type') == 'PRICE' and reason in ('MISSING_MARKET_DATE', 'INVALID_DATE', 'UNSUPPORTED_PERIOD'):
+        field, label, keys = 'market_date', 'ngày tra cứu giá', []
+        message = decision['message']
+    elif reason in ('MISSING_METRIC', 'MULTIPLE_METRICS'):
         group = scope.get('_pending_metric', 'GENERIC')
         label, keys = GROUPS.get(group, GROUPS['GENERIC'])
         keys = (scope.get('_metric_candidates') or keys)[:8]
@@ -145,7 +148,7 @@ def apply_clarification(decision, previous, today):
         message = decision['message']
     signature = {key: deepcopy(scope.get(key)) for key in (
         'companies', 'periods', 'metric_code', 'source_type', 'reporting_entity', 'measure_basis',
-        '_pending_metric', '_pending_quarter', 'publisher')}
+        '_pending_metric', '_pending_quarter', 'publisher', '_market_request')}
     old = (previous or {}).get('_clarification_state') or {}
     ident = f'{field}:{scope.get("_pending_metric", "")}'
     same = old.get('id') == ident and old.get('signature') == signature

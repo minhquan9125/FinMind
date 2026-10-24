@@ -2,6 +2,8 @@
 
 Chat tại `/research` hiện dùng corpus-v4 thật, kết hợp vector + BM25/RRF và nguồn đã xác minh. Cấu hình Gemini Free Tier, cách mở trích dẫn và phạm vi hỗ trợ: [hướng dẫn chat LIVE](backend/src/retrieval_orchestration/notes/LIVE_CHAT_CONTRACT.md). CLI fixture và trang so sánh mẫu vẫn tách riêng.
 
+Lịch sử web chat hiện lưu trên Supabase, tách theo tài khoản bằng JWT và RLS; không ghi JSON lịch sử mới. DB mới cần migration trước khi chạy backend; xem [triển khai và nhập lịch sử cũ](backend/src/retrieval_orchestration/notes/POSTGRES_HISTORY.md).
+
 ## Hướng dẫn chạy sau khi clone — Windows / PowerShell
 
 Ứng dụng dùng **hai terminal**: backend chung ở **8000**, frontend ở **5173**. Backend đã ghép đăng ký/đăng nhập, tài liệu/tìm kiếm và API giá/tin; **không cần chạy server 8001**. Các lệnh bên dưới dùng đường dẫn tương đối, không phụ thuộc tên người dùng hoặc ổ đĩa của người viết.

@@ -2,6 +2,8 @@
 
 Cập nhật 23/10/2026. Dùng lại frontend `/research` và API `/api/research/chat/sessions` hiện có. CLI fixture và evidence schema 1.0 tiếp tục phục vụ kiểm thử riêng.
 
+**Cập nhật lưu trữ24/10/2026:** web chat hiện dùng Supabase Postgres theo [POSTGRES_HISTORY.md](POSTGRES_HISTORY.md), không ghi JSON lịch sử mới. Snapshot/auth/revision và nguồn giữ nguyên; mô tả lưu JSON ở các phần lịch sử dưới đây không còn áp dụng cho đường web mặc định.
+
 ## Luồng hiện tại
 
 `ResearchChat → SessionStore → LiveResearchService → corpus retrieval → nguồn đã xác minh → B1.complete_retrieval → JSON phiên → giao diện/trích dẫn`.
@@ -13,6 +15,8 @@ Corpus mặc định `33d33730-0f0a-5274-a7f8-8d32a6be07e8` (v4), index được
 Cache BM25 chứa token/metadata, không lưu đoạn văn/vector/key; file tại `vector_retrieval/.cache/corpus-<UUID>.json`. Tự dựng khi thiếu/hết hạn 60 phút/thay membership, ghi atomic sau khi xác minh đủ nguồn. Lỗi hash/nguồn không bị che bằng fallback. Khóa dựng cache và khóa nạp embedding tách biệt; warm query không bị khóa bởi thao tác dựng cache của chính nó. Source binding được kiểm tra lại khi đọc hit.
 
 ## Phạm vi câu hỏi và ngữ cảnh
+
+Chat LIVE có bước chuẩn hóa viết tắt/Telex và điền ngày tra giá rút gọn theo ngữ cảnh đã biết; xem [chuẩn hóa câu nhập](INPUT_NORMALIZATION.md). Lịch sử vẫn giữ câu gõ nguyên bản, evidence không bị chuẩn hóa.
 
 Parser xác định mã, kỳ và chỉ tiêu tài chính đã khai báo trong `live_research.METRIC_ALIASES`, hoặc chủ đề tin tức. Ví dụ: `tiền và tương đương tiền FPT quý 2/2026`, `tin tức FPT tháng 9/2026`. Có thể bổ sung `SSI`, `còn VCB`, `năm 2025`, hoặc chọn `sau`/`trước` khi đang làm rõ lợi nhuận. `/moi` xóa phạm vi hội thoại, giữ ngân sách đang dùng. Giá hiện tại và tin mới đi qua `MARKET_LOOKUP` dùng dịch vụ web hiện có; xem [hợp đồng nguồn đang cập nhật](MARKET_CHAT_CONTRACT.md). Câu giá lịch sử/PDF chưa hỗ trợ không tự biến thành câu tài chính cũ.
 

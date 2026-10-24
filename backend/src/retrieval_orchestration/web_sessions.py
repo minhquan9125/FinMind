@@ -12,38 +12,14 @@ import uuid
 
 from .retrieval_flow.conversation import ChatSession, render_response
 from .retrieval_flow.history import VIETNAM, _timestamp, load_history, restore_session
+from .chat_types import ChatError, validate_uuid as _validate_uuid, now_iso as _now_iso
+from .chat_logic import append_turn
 
 MAX_BYTES = 2 * 1024 * 1024
 MAX_MESSAGES = 2000
 MAX_TEXT_LEN = 4000
 LOCK_TIMEOUT_SECONDS = 5.0
 LOCK_RETRY_INTERVAL_SECONDS = 0.05
-
-
-class ChatError(Exception):
-    """Domain chat error with HTTP-equivalent status code."""
-
-    def __init__(self, status: int, message: str) -> None:
-        super().__init__(message)
-        self.status = status
-        self.message = message
-
-
-def _validate_uuid(val: str, name: str) -> str:
-    if not isinstance(val, str) or not val.strip():
-        raise ChatError(422, f"{name} không hợp lệ.")
-    val_str = val.strip().lower()
-    try:
-        parsed = uuid.UUID(val_str)
-        if str(parsed) != val_str:
-            raise ValueError()
-        return val_str
-    except (ValueError, AttributeError):
-        raise ChatError(422, f"{name} phải là chuỗi UUID chuẩn.")
-
-
-def _now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _is_link(path: Path) -> bool:
@@ -254,57 +230,7 @@ class SessionStore:
             if len(doc.get("messages", [])) + 2 > MAX_MESSAGES:
                 raise ChatError(422, f"Số lượng tin nhắn vượt quá giới hạn {MAX_MESSAGES}.")
 
-            try:
-                if self.engine is not None:
-                    from .live_research import render_live_response
-                    live_context = doc.get('metadata', {}).get('live_context', {})
-                    previous_result = None
-                    for message in reversed(doc.get('messages', [])):
-                        if message.get('role') == 'user' and message.get('content', '').strip().lower() in ('/moi', '/new'):
-                            break
-                        candidate = message.get('result') or {}
-                        if ((candidate.get('answering') or {}).get('status') == 'DRAFT_READY'
-                                or (candidate.get('scope', {}).get('source_type') == 'NEWS'
-                                    and (candidate.get('evidence_pack') or {}).get('schema_version') == '1.2')):
-                            previous_result = candidate
-                            break
-                    chat_response = await asyncio.wait_for(
-                        self.engine.answer(cleaned_text, doc['session_id'], live_context, previous_result=previous_result),
-                        self.engine.retrieval_timeout + self.engine.limits.read_timeout_seconds + 5,
-                    )
-                    content = render_live_response(chat_response)
-                else:
-                    reconstructed = await restore_session(doc)
-                    reconstructed.session_id = doc['session_id']
-                    chat_response = await asyncio.wait_for(reconstructed.ask(cleaned_text), timeout=10)
-                    content = render_response(chat_response)
-            except (TimeoutError, OSError) as exc:
-                raise ChatError(503, "Xử lý tạm thời không thành công. Vui lòng thử lại.") from exc
-
-            now_dt = datetime.now(timezone.utc)
-            now_str = now_dt.isoformat()
-            now_ref = now_dt.astimezone(VIETNAM).date().isoformat()
-
-            user_msg = {
-                "role": "user",
-                "content": cleaned_text,
-                "timestamp": now_str,
-                "reference_date": now_ref,
-            }
-            assistant_msg = {
-                "role": "assistant",
-                "content": content,
-                "timestamp": now_str,
-                "result": chat_response,
-            }
-
-            updated_doc = copy.deepcopy(doc)
-            updated_doc["revision"] = current_rev + 1
-            updated_doc["saved_at"] = now_str
-            updated_doc.setdefault("messages", []).extend([user_msg, assistant_msg])
-            if self.engine is not None:
-                updated_doc.setdefault('metadata', {}).update(
-                    execution_mode='LIVE', live_context=copy.deepcopy(chat_response['scope']))
+            updated_doc = await append_turn(doc, cleaned_text, self.engine)
             self._atomic_write_json(target, updated_doc)
 
             return {

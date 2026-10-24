@@ -4,7 +4,6 @@ from __future__ import annotations
 import jwt
 from typing import Optional
 from functools import lru_cache
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -12,7 +11,8 @@ from pydantic import BaseModel, Field, field_validator
 
 from ...auth.service import read_access_token
 from ...core.config import get_settings
-from ...retrieval_orchestration.web_sessions import ChatError, SessionStore
+from ...retrieval_orchestration.chat_types import ChatError
+from ...retrieval_orchestration.postgres_sessions import PostgresSessionStore
 
 router = APIRouter(prefix="/api/research/chat", tags=["research-chat"])
 
@@ -28,12 +28,12 @@ def configure_market_services(live=None, news=None):
 
 
 @lru_cache(maxsize=1)
-def get_store() -> SessionStore:
-    """Default SessionStore factory using settings."""
+def get_store() -> PostgresSessionStore:
+    """Web history always uses Postgres, including fixture-mode web sessions."""
+    from ...core.db import get_pool
     settings = get_settings()
     engine = None
     if settings.research_chat_live:
-        from ...core.db import get_pool
         from ...documents.embeddings import get_embedding_service
         from ...retrieval_orchestration.live_research import DenseEvidenceRetriever, LiveResearchService
         from ...b1_answering.core.policy import Limits
@@ -54,8 +54,7 @@ def get_store() -> SessionStore:
             retrieval_timeout=settings.research_retrieval_timeout_seconds,
             market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
         )
-    return SessionStore(Path(__file__).resolve().parents[2] / "retrieval_orchestration" / "chat_history" / "web",
-                        engine=engine)
+    return PostgresSessionStore(get_pool(), engine=engine)
 
 
 def get_owner(
@@ -115,7 +114,7 @@ class SessionListResponse(BaseModel):
 @router.post("/sessions", response_model=SessionSnapshot, status_code=status.HTTP_201_CREATED)
 async def create_session(
     owner: str = Depends(get_owner),
-    store: SessionStore = Depends(get_store),
+    store: PostgresSessionStore = Depends(get_store),
 ) -> dict:
     """Create a new chat session."""
     try:
@@ -129,7 +128,7 @@ async def create_session(
 @router.get("/sessions", response_model=SessionListResponse)
 async def list_sessions(
     owner: str = Depends(get_owner),
-    store: SessionStore = Depends(get_store),
+    store: PostgresSessionStore = Depends(get_store),
 ) -> dict:
     """List all chat sessions for the authenticated user."""
     try:
@@ -145,7 +144,7 @@ async def list_sessions(
 async def get_session(
     session_id: str,
     owner: str = Depends(get_owner),
-    store: SessionStore = Depends(get_store),
+    store: PostgresSessionStore = Depends(get_store),
 ) -> dict:
     """Get a specific chat session."""
     try:
@@ -161,7 +160,7 @@ async def send_message(
     session_id: str,
     body: SendMessageRequest,
     owner: str = Depends(get_owner),
-    store: SessionStore = Depends(get_store),
+    store: PostgresSessionStore = Depends(get_store),
 ) -> dict:
     """Send a message to a chat session."""
     try:
@@ -176,7 +175,7 @@ async def send_message(
 async def resume_session(
     session_id: str,
     owner: str = Depends(get_owner),
-    store: SessionStore = Depends(get_store),
+    store: PostgresSessionStore = Depends(get_store),
 ) -> dict:
     """Resume a chat session as a new child session."""
     try:
@@ -185,3 +184,14 @@ async def resume_session(
         raise HTTPException(status_code=e.status, detail=e.message)
     except Exception:
         raise HTTPException(status_code=503, detail="Lỗi hệ thống. Vui lòng thử lại.")
+
+
+@router.delete('/sessions/{session_id}', status_code=status.HTTP_204_NO_CONTENT)
+async def delete_session(session_id: str, owner: str = Depends(get_owner),
+                         store: PostgresSessionStore = Depends(get_store)):
+    try:
+        await store.delete(owner, session_id)
+    except ChatError as exc:
+        raise HTTPException(status_code=exc.status, detail=exc.message)
+    except Exception:
+        raise HTTPException(status_code=503, detail='Lỗi hệ thống. Vui lòng thử lại.')

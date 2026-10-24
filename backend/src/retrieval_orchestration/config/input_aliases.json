@@ -1,0 +1,24 @@
+{
+  "version": "vi-user-input-v1",
+  "aliases": {
+    "bn": "bao nhieu", "bnh": "bao nhieu", "bnhieu": "bao nhieu", "baonhieu": "bao nhieu",
+    "ko": "khong", "kh": "khong", "k": "khong", "khg": "khong", "hok": "khong",
+    "dc": "duoc", "đc": "duoc",
+    "trc": "truoc", "ntn": "nhu the nao", "nnao": "nhu the nao",
+    "vs": "voi", "j": "gi", "z": "vay", "r": "roi", "mik": "minh", "mk": "minh",
+    "t": "toi", "b": "ban", "mn": "moi nguoi", "pls": "giup toi", "plz": "giup toi",
+    "hqua": "hom qua", "hki": "hom kia", "bjo": "bay gio",
+    "thg": "thang", "ng": "ngay", "ck": "co phieu", "cophieu": "co phieu",
+    "tintuc": "tin tuc", "tomtat": "tom tat", "chitiet": "chi tiet",
+    "ln": "loi nhuan", "lnst": "loi nhuan sau thue", "lntt": "loi nhuan truoc thue",
+    "lnstctm": "loi nhuan sau thue thuoc co dong cong ty me",
+    "dtt": "doanh thu thuan", "tts": "tong tai san", "npt": "no phai tra",
+    "vcsh": "von chu so huu", "vdl": "von dieu le"
+  },
+  "contextual_aliases": {
+    "cp": ["co phieu", "chi phi"], "dt": ["doanh thu", "dau tu"],
+    "hn": ["hom nay", "ha noi"], "dk": ["duoc", "dang ky"],
+    "bh": ["bay gio", "bao hiem"], "tr": ["trieu", "truoc"]
+  },
+  "telex_vocabulary": "a ai anh an am ap ba bai ban bang bao bat bay be ben biet bien bo boi bon buoc cach cac cai can cao cap cau chao chi chieu chinh cho chu chua chuyen co con cong cung cua cuoi da dai dan dang dao dat dau day de den deu dieu do doc doi don dong du dua duoc duoi dung duong gia giam gian giao gi gio giup goi gon gui hai han hang hau hay he hien hieu ho hoan hoat hoi hom hop huong huu ich in it ke ket khi khoan khong kiem kia kinh ky la lai lam lan lap lay le len lien lieu lo loai loi lon luc luu ly ma mai mat mau may me mien minh mo moi mot mua muc nam nao nay ngan ngay nghe nghiep nghin nguoi nguyen nhan nhap nhat nhau nhieu nhu nhuan noi no nuoc o ong phai phan pham phi phieu phien phoi phong phu phuong qua quan quay quy ra rang rat rieng roi ruot sa sach sau sang san so su tai tang tao tat te the thi thich thieu thoi thong thua thu thuan thuc thue thuoc thuong tien tiep tiet tim tin tinh to toi tom tong tot tra tram tren trieu trinh trong tru truoc tu tua tuong tuy ty va van vao vay ve vi viet vien viec voi von vua vu xac xem xin xu yeu tieng dau sac huyen hoi nga nang chuyen doi dang nhan dien tat khac ngoai pham dich dinh nghia so sanh phat trien cong bo thay doi quyet dinh thong bao dang ky"
+}
