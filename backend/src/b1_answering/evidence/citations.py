@@ -1,5 +1,6 @@
 from copy import deepcopy
 import re
+import uuid
 
 
 class CitationError(Exception):
@@ -17,8 +18,18 @@ def prepare_evidence(pack: dict) -> dict[str, dict]:
         raise CitationError("INVALID_EVIDENCE")
     if pack.get("conflicts"):
         raise CitationError("INVALID_EVIDENCE")
-    if pack.get("schema_version") != "1.0":
+    if pack.get('schema_version') == '1.2':
+        from .market_contract import prepare_market_evidence
+        return prepare_market_evidence(pack)
+    live = pack.get('schema_version') == '1.1'
+    if pack.get("schema_version") not in ("1.0", "1.1"):
         raise CitationError("INVALID_EVIDENCE")
+    if live:
+        try:
+            uuid.UUID(pack['corpus_version_id'])
+            uuid.UUID(pack['data_version']['id'])
+        except (KeyError, ValueError, TypeError, AttributeError):
+            raise CitationError('INVALID_EVIDENCE') from None
     qid = pack.get("query_id")
     if not isinstance(qid, str) or not qid.strip():
         raise CitationError("INVALID_EVIDENCE")
@@ -56,8 +67,11 @@ def prepare_evidence(pack: dict) -> dict[str, dict]:
             raise CitationError("INVALID_EVIDENCE")
         if not isinstance(loc, dict) or not loc:
             raise CitationError("INVALID_EVIDENCE")
+        if live:
+            from .live_contract import validate_live_item
+            validate_live_item(it)
         valid_loc = {}
-        for k, v in loc.items():
+        for k, v in (() if live else loc.items()):
             if k == "page_number":
                 if isinstance(v, bool) or not isinstance(v, int) or v <= 0:
                     raise CitationError("INVALID_EVIDENCE")
@@ -111,6 +125,7 @@ def validate_draft(payload: dict, evidence: dict[str, dict]) -> dict:
                     "chunk_id": ev["chunk_id"],
                     "source_sha256": ev["source_sha256"],
                     "locator": deepcopy(ev["locator"]),
+                    **{key: deepcopy(ev[key]) for key in ('content_sha256', 'source_verified', 'title', 'source_type') if key in ev},
                 })
         validated_claims.append({"text": txt, "evidence_ids": list(eids)})
         cit_tags = "".join(f"[{eid}]" for eid in eids)

@@ -1,5 +1,7 @@
 # Hợp đồng tích hợp hội thoại lên giao diện
 
+> Bản này mô tả giai đoạn FIXTURE trước 23/10/2026. Đường web mặc định hiện đã nâng cấp theo [LIVE_CHAT_CONTRACT.md](LIVE_CHAT_CONTRACT.md); HTTP/auth/revision cũ tiếp tục tương thích, GET/resume LIVE không replay retrieval/generation.
+
 Phạm vi: dùng lại ChatSession và render_response hiện tại; vẫn FIXTURE, không kết nối vector, LLM, dữ liệu thật hay sửa bộ intent/evidence. Trang /research dùng hội thoại thật qua API; bảng so sánh cũ giữ ở /research?mode=compare và ghi nhãn dữ liệu mẫu.
 
 ## Dịch vụ JSON

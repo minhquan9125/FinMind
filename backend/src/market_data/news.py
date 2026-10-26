@@ -47,8 +47,7 @@ class FireAntNews:
                 chunks.append(chunk)
             return b"".join(chunks).decode("utf-8")
 
-    def __call__(self, symbol):
-        stock_symbol(symbol)
+    def _authenticate(self):
         if self.anonymous is None:
             page = self._get("https://fireant.vn")
             scripts = re.findall(r'<script\b[^>]*\bsrc=["\']([^"\']+)["\']', page)
@@ -65,6 +64,10 @@ class FireAntNews:
                     break
             if self.anonymous is None:
                 raise RuntimeError("Public news unavailable")
+
+    def __call__(self, symbol):
+        stock_symbol(symbol)
+        self._authenticate()
         try:
             rows = json.loads(self._get("https://restv2.fireant.vn/posts",
                 params={"type": 1, "symbol": symbol, "offset": 0, "limit": 20},
@@ -96,6 +99,23 @@ class FireAntNews:
                 break
         return articles
 
+    def article(self, url):
+        """Read only a known FireAnt article ID, never a user-provided host."""
+        parsed = urlsplit(url)
+        match = re.fullmatch(r'/bai-viet/[^/]+/(\d+)/?', parsed.path)
+        if (parsed.scheme != 'https' or parsed.hostname not in ('fireant.vn', 'www.fireant.vn')
+                or parsed.username or parsed.password or parsed.port not in (None, 443) or not match):
+            raise ValueError('Invalid article URL')
+        self._authenticate()
+        row = json.loads(self._get('https://restv2.fireant.vn/posts/'+match[1],
+                                  headers={'Authorization': 'Bearer '+self.anonymous}))
+        if not isinstance(row, dict) or row.get('type') != 1 or str(row.get('postID')) != match[1]:
+            raise ValueError('Invalid article response')
+        content = str(Text(row.get('content') or row.get('originalContent')))
+        if not content.strip(): raise ValueError('Article has no readable content')
+        return {'url': url, 'content': content, 'title': str(Text(row.get('title'))),
+                'published_at': row.get('date')}
+
 
 class NewsService:
     def __init__(self, fetch, repository, *, clock=time.monotonic):
@@ -103,6 +123,34 @@ class NewsService:
         self.lock = threading.Lock()
         self.cache = OrderedDict()
         self.calls = deque()
+
+    def _reserve(self):
+        now = self.clock()
+        while self.calls and self.calls[0] <= now - 60:
+            self.calls.popleft()
+        wait = max(0, self.calls[-1] + 2 - now) if self.calls else 0
+        if len(self.calls) >= 10:
+            wait = max(wait, self.calls[0] + 60 - now)
+        if wait > 0: raise BusyError(wait)
+        self.calls.append(now)
+
+    def article(self, url):
+        """Share the same request quota, nonblocking lock and bounded cache."""
+        if not self.lock.acquire(blocking=False): raise BusyError(2)
+        try:
+            key = 'article:'+url
+            cached = self.cache.get(key)
+            if cached and self.clock() < cached[1]:
+                self.cache.move_to_end(key)
+                return cached[0]
+            self._reserve()
+            value = self.fetch.article(url)
+            self.cache[key] = (value, self.clock()+60)
+            self.cache.move_to_end(key)
+            while len(self.cache) > 100: self.cache.popitem(last=False)
+            return value
+        finally:
+            self.lock.release()
 
     def refresh(self, symbol):
         stock_symbol(symbol)
@@ -114,14 +162,7 @@ class NewsService:
             if cached and now < cached[1]:
                 self.cache.move_to_end(symbol)
                 return cached[0]
-            while self.calls and self.calls[0] <= now - 60:
-                self.calls.popleft()
-            wait = max(0, self.calls[-1] + 2 - now) if self.calls else 0
-            if len(self.calls) >= 10:
-                wait = max(wait, self.calls[0] + 60 - now)
-            if wait > 0:
-                raise BusyError(wait)
-            self.calls.append(now)
+            self._reserve()
             try:
                 articles = self.fetch(symbol)
                 payload = {"symbol": symbol, "source": "fireant", "articles": articles,

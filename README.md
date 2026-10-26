@@ -1,5 +1,9 @@
 # FinMind
 
+Chat tại `/research` hiện dùng corpus-v4 thật, kết hợp vector + BM25/RRF và nguồn đã xác minh. Cấu hình Gemini Free Tier, cách mở trích dẫn và phạm vi hỗ trợ: [hướng dẫn chat LIVE](backend/src/retrieval_orchestration/notes/LIVE_CHAT_CONTRACT.md). CLI fixture và trang so sánh mẫu vẫn tách riêng.
+
+Lịch sử web chat hiện lưu trên Supabase, tách theo tài khoản bằng JWT và RLS; không ghi JSON lịch sử mới. DB mới cần migration trước khi chạy backend; xem [triển khai và nhập lịch sử cũ](backend/src/retrieval_orchestration/notes/POSTGRES_HISTORY.md).
+
 ## Hướng dẫn chạy sau khi clone — Windows / PowerShell
 
 Ứng dụng dùng **hai terminal**: backend chung ở **8000**, frontend ở **5173**. Backend đã ghép đăng ký/đăng nhập, tài liệu/tìm kiếm và API giá/tin; **không cần chạy server 8001**. Các lệnh bên dưới dùng đường dẫn tương đối, không phụ thuộc tên người dùng hoặc ổ đĩa của người viết.
@@ -88,8 +92,7 @@ Cách nhanh tại gốc FinMind: double-click **`Chay-FinMind.cmd`** hoặc ch�
 .\Chay-FinMind.cmd
 ```
 
-Lệnh mở hai terminal cho backend và frontend hiện có. Đợi backend báo
-`Application startup complete`, rồi mở **http://localhost:5173/research**.
+Lệnh mở hai terminal cho backend và frontend hiện có. Backend mở API trước, đồng thời warmup model/cache ở nền. Đăng nhập dùng được ngay; chat đầu tiên sẽ đợi cùng tài nguyên warmup nếu tiến trình chưa nạp xong. Đợi backend báo `Application startup complete`, rồi mở **http://localhost:5173/research**.
 Nhấn **Ctrl+C ở từng terminal** để dừng. Máy vẫn cần cài dependency và cấu hình
 `.env` theo các bước trên; script không tự cài đặt hay tắt ứng dụng đang chiếm cổng.
 
@@ -102,7 +105,7 @@ cd backend
 npm run dev
 ```
 
-Đợi thấy `Application startup complete` và địa chỉ **http://127.0.0.1:8000**. Lệnh tự dùng Python trong `.venv` gốc; có thể dùng `npm start` thay thế. Backend chỉ chạy một worker vì collector giá dùng khóa độc quyền.
+Đợi thấy `Application startup complete` và địa chỉ **http://127.0.0.1:8000**. Backend mở API trước rồi nạp BGE-M3 và cache BM25 ở nền; console báo `Research warmup ready` khi xong. Nếu user gửi câu chat trong lúc warmup, lượt đó sẽ chờ và dùng cùng model/cache. Warmup không gọi Gemini. Có thể tắt bằng `RESEARCH_WARMUP_ENABLED=0`; xem trạng thái tại `/api/health` và chi tiết trong [hướng dẫn chat LIVE](backend/src/retrieval_orchestration/notes/LIVE_CHAT_CONTRACT.md). Lệnh tự dùng Python trong `.venv` gốc; có thể dùng `npm start` thay thế. Backend chỉ chạy một worker vì collector giá dùng khóa độc quyền.
 
 **Terminal 2 — frontend:** mở terminal mới tại gốc FinMind rồi chạy:
 
@@ -120,7 +123,7 @@ Dùng tài khoản thật: đăng ký trước hoặc đăng nhập tài khoản
 | Địa chỉ | Kết quả mong đợi |
 |---|---|
 | http://localhost:5173/ | Giao diện FinMind |
-| http://127.0.0.1:8000/api/health | `{"status":"ok"}` |
+| http://127.0.0.1:8000/api/health | `status: ok`, kèm `research_warmup.status` |
 | http://127.0.0.1:8000/docs | Swagger có cả auth và market-data |
 | http://localhost:5173/api/market-data/news?limit=2 | JSON tin tức qua proxy frontend |
 | http://localhost:5173/api/market-data/stocks/FPT/ohlcv?limit=5 | JSON giá FPT đã lưu |

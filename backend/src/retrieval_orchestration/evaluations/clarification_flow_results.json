@@ -1,0 +1,173 @@
+{
+  "mode": "ACTUAL_CORPUS_AND_GEMINI",
+  "conversations": [
+    {
+      "topic": "nợ",
+      "turns": [
+        {
+          "user": "nợ của fpt trong quý 2 2026 là bao nhiêu",
+          "status": "ASK_CLARIFICATION",
+          "response": "Bạn muốn xem loại nợ nào? 1. Tổng nợ phải trả. 2. Nợ ngắn hạn. 3. Nợ dài hạn. 4. Nợ vay.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Tổng nợ phải trả",
+              "reply": "Tổng nợ phải trả",
+              "description": "Toàn bộ các khoản phải trả, không chỉ tiền vay.",
+              "metric_code": "TOTAL_LIABILITIES"
+            },
+            {
+              "id": "2",
+              "label": "Nợ ngắn hạn",
+              "reply": "Nợ ngắn hạn",
+              "description": "Toàn bộ nợ phải trả được phân loại ngắn hạn.",
+              "metric_code": "CURRENT_LIABILITIES"
+            },
+            {
+              "id": "3",
+              "label": "Nợ dài hạn",
+              "reply": "Nợ dài hạn",
+              "description": "Toàn bộ nợ phải trả được phân loại dài hạn.",
+              "metric_code": "NON_CURRENT_LIABILITIES"
+            },
+            {
+              "id": "4",
+              "label": "Nợ vay",
+              "reply": "Nợ vay",
+              "description": "Chỉ các khoản vay và nợ thuê tài chính."
+            }
+          ],
+          "generation_calls": 0
+        },
+        {
+          "user": "nợ",
+          "status": "ASK_CLARIFICATION",
+          "response": "Mình vẫn chưa xác định được nợ. Hãy chọn một mục dưới đây hoặc nhập số thứ tự. 1. Tổng nợ phải trả. 2. Nợ ngắn hạn. 3. Nợ dài hạn. 4. Nợ vay.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Tổng nợ phải trả",
+              "reply": "Tổng nợ phải trả",
+              "description": "Toàn bộ các khoản phải trả, không chỉ tiền vay.",
+              "metric_code": "TOTAL_LIABILITIES"
+            },
+            {
+              "id": "2",
+              "label": "Nợ ngắn hạn",
+              "reply": "Nợ ngắn hạn",
+              "description": "Toàn bộ nợ phải trả được phân loại ngắn hạn.",
+              "metric_code": "CURRENT_LIABILITIES"
+            },
+            {
+              "id": "3",
+              "label": "Nợ dài hạn",
+              "reply": "Nợ dài hạn",
+              "description": "Toàn bộ nợ phải trả được phân loại dài hạn.",
+              "metric_code": "NON_CURRENT_LIABILITIES"
+            },
+            {
+              "id": "4",
+              "label": "Nợ vay",
+              "reply": "Nợ vay",
+              "description": "Chỉ các khoản vay và nợ thuê tài chính."
+            }
+          ],
+          "generation_calls": 0
+        },
+        {
+          "user": "tổng",
+          "status": "DRAFT_READY",
+          "response": "Nợ phải trả của Công ty Cổ phần FPT tại cuối quý 2/2026 là 32,567,425,051,243 [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+          "options": [],
+          "generation_calls": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "topic": "doanh thu",
+      "turns": [
+        {
+          "user": "doanh thu FPT quý 2/2026",
+          "status": "ASK_CLARIFICATION",
+          "response": "Bạn muốn xem loại doanh thu nào? 1. Doanh thu trước giảm trừ. 2. Doanh thu thuần.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Doanh thu trước giảm trừ",
+              "reply": "Doanh thu trước giảm trừ",
+              "description": "Doanh thu bán hàng và cung cấp dịch vụ trước giảm trừ.",
+              "metric_code": "GROSS_REVENUE"
+            },
+            {
+              "id": "2",
+              "label": "Doanh thu thuần",
+              "reply": "Doanh thu thuần",
+              "description": "Doanh thu sau các khoản giảm trừ.",
+              "metric_code": "NET_REVENUE"
+            }
+          ],
+          "generation_calls": 0
+        },
+        {
+          "user": "doanh thu",
+          "status": "ASK_CLARIFICATION",
+          "response": "Mình vẫn chưa xác định được doanh thu. Hãy chọn một mục dưới đây hoặc nhập số thứ tự. 1. Doanh thu trước giảm trừ. 2. Doanh thu thuần.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Doanh thu trước giảm trừ",
+              "reply": "Doanh thu trước giảm trừ",
+              "description": "Doanh thu bán hàng và cung cấp dịch vụ trước giảm trừ.",
+              "metric_code": "GROSS_REVENUE"
+            },
+            {
+              "id": "2",
+              "label": "Doanh thu thuần",
+              "reply": "Doanh thu thuần",
+              "description": "Doanh thu sau các khoản giảm trừ.",
+              "metric_code": "NET_REVENUE"
+            }
+          ],
+          "generation_calls": 0
+        },
+        {
+          "user": "doanh thu",
+          "status": "CLARIFICATION_STALLED",
+          "response": "Mình tạm dừng yêu cầu vì chưa xác định được doanh thu. Bạn có thể bấm một lựa chọn dưới đây, nhập tên cụ thể hoặc gõ /moi để bắt đầu lại. 1. Doanh thu trước giảm trừ. 2. Doanh thu thuần.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Doanh thu trước giảm trừ",
+              "reply": "Doanh thu trước giảm trừ",
+              "description": "Doanh thu bán hàng và cung cấp dịch vụ trước giảm trừ.",
+              "metric_code": "GROSS_REVENUE"
+            },
+            {
+              "id": "2",
+              "label": "Doanh thu thuần",
+              "reply": "Doanh thu thuần",
+              "description": "Doanh thu sau các khoản giảm trừ.",
+              "metric_code": "NET_REVENUE"
+            }
+          ],
+          "generation_calls": 0
+        },
+        {
+          "user": "thuần",
+          "status": "DRAFT_READY",
+          "response": "Doanh thu thuần của FPT trong quý 2/2026 là 13,788,503,461,199. [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+          "options": [],
+          "generation_calls": 1
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "budget": {
+    "calls_used": 2,
+    "tokens_reserved": 2407,
+    "unknown_usage": 0,
+    "policy_version": "b1-limits-v1"
+  }
+}

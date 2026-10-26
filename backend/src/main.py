@@ -1,10 +1,13 @@
-"""FinMind backend: auth, market data, Vector RAG and fixture research chat.
+"""FinMind backend: auth, market data, Vector RAG and corpus research chat.
 
-Research chat reuses intent/evidence validation with fixed fixtures. It does not
-query the live vector search or generate financial answers from real data.
+Research chat defaults to a pinned corpus and verified sources. Gemini is enabled
+only with a configured key and explicit Free Tier confirmation; fixture CLI remains separate.
 """
 
 from contextlib import asynccontextmanager
+import asyncio
+import logging
+import time
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,15 +21,52 @@ from .core.db import connect, disconnect
 
 
 settings = get_settings()
+logger = logging.getLogger('uvicorn.error')
+
+
+async def warmup_research(app: FastAPI):
+    """Finish shared retrieval initialization before accepting the first request."""
+    app.state.research_warmup = {'status': 'disabled'}
+    if not settings.research_chat_live or not settings.research_warmup_enabled:
+        return
+    started = time.monotonic()
+    app.state.research_warmup = {'status': 'warming'}
+    logger.info('Research warmup started: loading embedding model and retrieval cache')
+    try:
+        store = research_chat.get_store()
+        details = await asyncio.wait_for(store.engine.retriever.warmup(),
+                                         timeout=settings.research_warmup_timeout_seconds)
+    except Exception as exc:
+        # Do not expose raw exceptions: DB/model errors may contain credentials/paths.
+        code = 'WARMUP_TIMEOUT' if isinstance(exc, TimeoutError) else 'WARMUP_FAILED'
+        app.state.research_warmup = {'status': 'failed', 'reason_code': code,
+                                    'elapsed_seconds': round(time.monotonic()-started, 2)}
+        logger.warning('Research warmup failed (%s); retrieval will retry on demand', code)
+    else:
+        app.state.research_warmup = {'status': 'ready', **details,
+                                    'elapsed_seconds': round(time.monotonic()-started, 2)}
+        logger.info('Research warmup ready (%.2fs)', time.monotonic()-started)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await connect()
+    research_chat.get_store.cache_clear()
     try:
         async with market_lifespan(app):
-            yield
+            research_chat.configure_market_services(getattr(app.state, 'live', None), getattr(app.state, 'news', None))
+            # Serve auth and health without waiting for model/cache initialization.
+            # The chat shares this task's model lock and hybrid cache lock.
+            warmup_task = asyncio.create_task(warmup_research(app), name='research-warmup')
+            app.state.research_warmup_task = warmup_task
+            await asyncio.sleep(0)
+            try:
+                yield
+            finally:
+                # Keep the event loop and DB pool alive until bounded warmup finishes.
+                await warmup_task
     finally:
+        research_chat.configure_market_services()
         await disconnect()
 
 
@@ -68,7 +108,7 @@ async def root() -> dict:
 
 @app.get("/api/health")
 async def health() -> dict:
-    return {"status": "ok"}
+    return {"status": "ok", "research_warmup": getattr(app.state, 'research_warmup', {'status': 'not_started'})}
 
 
 if __name__ == "__main__":
