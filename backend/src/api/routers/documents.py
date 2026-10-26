@@ -6,6 +6,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query, UploadFile
 
+from ...auth.authorization import READ_ROLES, WRITE_ROLES, require_roles
 from ...core.config import Settings, get_settings
 from ...core.db import get_pool
 from ...documents import repository
@@ -101,7 +102,7 @@ async def _ingest_pages(
     )
 
 
-@router.post("", response_model=DocumentOut)
+@router.post("", response_model=DocumentOut, dependencies=[Depends(require_roles(*WRITE_ROLES))])
 async def upload_document(
     file: UploadFile,
     settings: Settings = Depends(get_settings),
@@ -124,7 +125,7 @@ async def upload_document(
     )
 
 
-@router.post("/json", response_model=DocumentOut)
+@router.post("/json", response_model=DocumentOut, dependencies=[Depends(require_roles(*WRITE_ROLES))])
 async def upload_json_document(
     file: UploadFile,
     settings: Settings = Depends(get_settings),
@@ -162,7 +163,7 @@ async def upload_json_document(
     )
 
 
-@router.post("/import-symbol/{symbol}", response_model=DocumentOut)
+@router.post("/import-symbol/{symbol}", response_model=DocumentOut, dependencies=[Depends(require_roles(*WRITE_ROLES))])
 async def import_symbol(
     symbol: str,
     settings: Settings = Depends(get_settings),
@@ -193,7 +194,7 @@ async def import_symbol(
     )
 
 
-@router.get("/{document_id}/chunks", response_model=list[ChunkDetailOut])
+@router.get("/{document_id}/chunks", response_model=list[ChunkDetailOut], dependencies=[Depends(require_roles(*READ_ROLES))])
 async def get_chunk_details(
     document_id: str,
     settings: Settings = Depends(get_settings),
@@ -234,7 +235,7 @@ async def get_chunk_details(
     return out
 
 
-@router.get("/{document_id}/vocab", response_model=VocabResponse)
+@router.get("/{document_id}/vocab", response_model=VocabResponse, dependencies=[Depends(require_roles(*READ_ROLES))])
 async def get_vocab(
     document_id: str,
     q: str | None = Query(default=None, description="Filter tokens containing this substring"),

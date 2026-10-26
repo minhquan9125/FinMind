@@ -2,6 +2,7 @@ import { getSavedOhlcv, watchLivePrice, unwatchLivePrice, loadStockHistory } fro
 
 // Each visible chart owns a lease; GETs never directly fetch from the provider.
 export function startPricePolling({ symbol, onResult, onError, onChecked, onSettled, onHistoryLoading = () => {},
+  canPrepare = true,
   document = globalThis.document, timers = globalThis,
   viewerId = globalThis.crypto.randomUUID(),
   api = { read: getSavedOhlcv, watch: watchLivePrice, unwatch: unwatchLivePrice, prepare: loadStockHistory } }) {
@@ -21,7 +22,7 @@ export function startPricePolling({ symbol, onResult, onError, onChecked, onSett
     inFlight = true;
     controller = new AbortController();
     try {
-      if (!prepared && api.prepare) {
+      if (!prepared && canPrepare && api.prepare) {
         onHistoryLoading(true);
         // Show the saved chart immediately, then backfill before registering live quotes.
         try {

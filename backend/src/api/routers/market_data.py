@@ -9,10 +9,11 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request, Response
 from pydantic import BaseModel, Field
 
+from ...auth.authorization import READ_ROLES, require_roles, WRITE_ROLES
 from ...market_data.repository import FileMarketDataRepository
 from ...market_data.live import BusyError, stock_symbol
 
-router = APIRouter(prefix="/api/market-data", tags=["market-data"])
+router = APIRouter(prefix="/api/market-data", tags=["market-data"], dependencies=[Depends(require_roles(*READ_ROLES))])
 
 
 def get_market_data_repository() -> FileMarketDataRepository:
@@ -87,7 +88,7 @@ def unwatch_price(viewer_id: UUID, service=Depends(get_live_service)):
     return {"watching": False}
 
 
-@router.post("/stocks/{symbol}/refresh")
+@router.post("/stocks/{symbol}/refresh", dependencies=[Depends(require_roles(*WRITE_ROLES))])
 def refresh_price(symbol: str, service=Depends(get_live_service)) -> dict:
     try:
         return service.refresh(stock_symbol(symbol.upper()))
@@ -104,7 +105,7 @@ def live_status(service=Depends(get_live_service)) -> dict:
     return service.status()
 
 
-@router.post("/stocks/{symbol}/history")
+@router.post("/stocks/{symbol}/history", dependencies=[Depends(require_roles(*WRITE_ROLES))])
 def load_stock_history(symbol: str, service=Depends(get_live_service)) -> dict:
     try:
         return service.stock_history(stock_symbol(symbol.upper()))
@@ -116,7 +117,7 @@ def load_stock_history(symbol: str, service=Depends(get_live_service)) -> dict:
         raise HTTPException(status_code=503, detail="Chưa tải được lịch sử cổ phiếu; giữ biểu đồ đã có.") from None
 
 
-@router.post("/companies/{symbol}/news/refresh")
+@router.post("/companies/{symbol}/news/refresh", dependencies=[Depends(require_roles(*WRITE_ROLES))])
 def refresh_company_news(symbol: str, request: Request) -> dict:
     service = getattr(request.app.state, "news", None)
     if service is None:

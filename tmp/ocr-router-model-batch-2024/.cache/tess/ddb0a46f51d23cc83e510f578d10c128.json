@@ -1,0 +1,88 @@
+{
+  "text": "VietnBonk©\n\nNông giá trị cuộc sống",
+  "chars": 28,
+  "words": 6,
+  "wordItems": [
+    {
+      "text": "VietnBonk©",
+      "bbox": [
+        419,
+        457,
+        681,
+        536
+      ],
+      "conf": 0.0,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Nông",
+      "bbox": [
+        531,
+        540,
+        566,
+        553
+      ],
+      "conf": 86.114174,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "giá",
+      "bbox": [
+        571,
+        540,
+        591,
+        553
+      ],
+      "conf": 93.618301,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "trị",
+      "bbox": [
+        596,
+        541,
+        608,
+        550
+      ],
+      "conf": 96.73262,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cuộc",
+      "bbox": [
+        613,
+        540,
+        645,
+        550
+      ],
+      "conf": 96.73262,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "sống",
+      "bbox": [
+        649,
+        538,
+        681,
+        553
+      ],
+      "conf": 82.343285,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 76,
+  "lowConfRatio": 0.167,
+  "seconds": 0.3
+}

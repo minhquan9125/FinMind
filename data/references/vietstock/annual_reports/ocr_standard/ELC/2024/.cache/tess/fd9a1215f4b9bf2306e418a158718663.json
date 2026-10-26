@@ -1,0 +1,88 @@
+{
+  "text": "TA b.\n\nTHÔNG TIN CHUNG 32.2",
+  "chars": 21,
+  "words": 6,
+  "wordItems": [
+    {
+      "text": "TA",
+      "bbox": [
+        471,
+        344,
+        829,
+        702
+      ],
+      "conf": 55.06987,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "b.",
+      "bbox": [
+        948,
+        344,
+        1270,
+        702
+      ],
+      "conf": 22.644157,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THÔNG",
+      "bbox": [
+        295,
+        1158,
+        735,
+        1270
+      ],
+      "conf": 92.501762,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TIN",
+      "bbox": [
+        775,
+        1184,
+        979,
+        1270
+      ],
+      "conf": 90.909714,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHUNG",
+      "bbox": [
+        1024,
+        1182,
+        1460,
+        1270
+      ],
+      "conf": 96.76519,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "32.2",
+      "bbox": [
+        2159,
+        1121,
+        2766,
+        1317
+      ],
+      "conf": 0.0,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 60,
+  "lowConfRatio": 0.5,
+  "seconds": 0.643
+}

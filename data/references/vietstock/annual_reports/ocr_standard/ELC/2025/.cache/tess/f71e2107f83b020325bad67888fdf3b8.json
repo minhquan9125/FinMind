@@ -1,0 +1,62 @@
+{
+  "text": "Tổng quơn về ELCOM",
+  "chars": 15,
+  "words": 4,
+  "wordItems": [
+    {
+      "text": "Tổng",
+      "bbox": [
+        179,
+        520,
+        242,
+        550
+      ],
+      "conf": 93.268799,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "quơn",
+      "bbox": [
+        253,
+        529,
+        320,
+        550
+      ],
+      "conf": 69.334366,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "về",
+      "bbox": [
+        330,
+        521,
+        360,
+        544
+      ],
+      "conf": 93.304703,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ELCOM",
+      "bbox": [
+        371,
+        523,
+        463,
+        544
+      ],
+      "conf": 78.250015,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 84,
+  "lowConfRatio": 0,
+  "seconds": 0.609
+}

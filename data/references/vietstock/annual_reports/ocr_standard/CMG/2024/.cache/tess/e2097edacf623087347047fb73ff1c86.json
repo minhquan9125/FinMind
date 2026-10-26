@@ -1,0 +1,374 @@
+{
+  "text": "VD\n\nCMC CORPORATION\n\n: BÁO CÁO CỦA BẠN ĐIỀU HÀNH VỀ\n| KẾT QUÁ SẢN XUẤT KINH DOANH NĂM 2024\n‹ & KẾ HOẠCH KINH DOANH NĂM 2025",
+  "chars": 94,
+  "words": 28,
+  "wordItems": [
+    {
+      "text": "VD",
+      "bbox": [
+        1270,
+        272,
+        1468,
+        403
+      ],
+      "conf": 17.968918,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        1127,
+        435,
+        1231,
+        468
+      ],
+      "conf": 91.704857,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        1249,
+        435,
+        1610,
+        468
+      ],
+      "conf": 91.641655,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": ":",
+      "bbox": [
+        546,
+        2756,
+        580,
+        2786
+      ],
+      "conf": 44.536648,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        821,
+        2745,
+        950,
+        2799
+      ],
+      "conf": 89.531052,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        975,
+        2745,
+        1107,
+        2799
+      ],
+      "conf": 93.242012,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỦA",
+      "bbox": [
+        1133,
+        2743,
+        1259,
+        2799
+      ],
+      "conf": 79.99192,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BẠN",
+      "bbox": [
+        1285,
+        2756,
+        1409,
+        2798
+      ],
+      "conf": 82.394989,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐIỀU",
+      "bbox": [
+        1436,
+        2741,
+        1577,
+        2799
+      ],
+      "conf": 91.711632,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HÀNH",
+      "bbox": [
+        1605,
+        2745,
+        1776,
+        2798
+      ],
+      "conf": 92.483643,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VỀ",
+      "bbox": [
+        1802,
+        2741,
+        1880,
+        2799
+      ],
+      "conf": 95.936157,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "|",
+      "bbox": [
+        579,
+        2843,
+        580,
+        2847
+      ],
+      "conf": 51.494949,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "KẾT",
+      "bbox": [
+        821,
+        2821,
+        931,
+        2878
+      ],
+      "conf": 96.528206,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "QUÁ",
+      "bbox": [
+        956,
+        2823,
+        1091,
+        2879
+      ],
+      "conf": 25.942665,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "SẢN",
+      "bbox": [
+        1114,
+        2823,
+        1236,
+        2879
+      ],
+      "conf": 90.211739,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "XUẤT",
+      "bbox": [
+        1263,
+        2821,
+        1429,
+        2879
+      ],
+      "conf": 93.305244,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "KINH",
+      "bbox": [
+        1455,
+        2837,
+        1594,
+        2878
+      ],
+      "conf": 90.221954,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        1624,
+        2836,
+        1846,
+        2879
+      ],
+      "conf": 92.534225,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NĂM",
+      "bbox": [
+        1876,
+        2824,
+        2009,
+        2878
+      ],
+      "conf": 95.865059,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        2034,
+        2836,
+        2181,
+        2879
+      ],
+      "conf": 95.74839,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "‹",
+      "bbox": [
+        535,
+        2902,
+        579,
+        2954
+      ],
+      "conf": 62.970181,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "&",
+      "bbox": [
+        817,
+        2916,
+        854,
+        2959
+      ],
+      "conf": 85.563438,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "KẾ",
+      "bbox": [
+        879,
+        2901,
+        954,
+        2958
+      ],
+      "conf": 96.506149,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "HOẠCH",
+      "bbox": [
+        979,
+        2916,
+        1197,
+        2966
+      ],
+      "conf": 93.30072,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "KINH",
+      "bbox": [
+        1226,
+        2917,
+        1365,
+        2958
+      ],
+      "conf": 91.126755,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        1394,
+        2916,
+        1617,
+        2959
+      ],
+      "conf": 91.925659,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "NĂM",
+      "bbox": [
+        1646,
+        2904,
+        1779,
+        2958
+      ],
+      "conf": 95.849701,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        1805,
+        2916,
+        1948,
+        2959
+      ],
+      "conf": 95.849701,
+      "block": 4,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 83,
+  "lowConfRatio": 0.143,
+  "seconds": 0.873
+}

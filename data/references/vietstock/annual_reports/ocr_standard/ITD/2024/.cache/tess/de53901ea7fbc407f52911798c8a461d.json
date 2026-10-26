@@ -1,0 +1,75 @@
+{
+  "text": "04\n\nBẢO CÁO\nQUAN TRỊ",
+  "chars": 15,
+  "words": 5,
+  "wordItems": [
+    {
+      "text": "04",
+      "bbox": [
+        180,
+        163,
+        469,
+        364
+      ],
+      "conf": 96.631096,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BẢO",
+      "bbox": [
+        667,
+        1322,
+        1187,
+        1662
+      ],
+      "conf": 95.294235,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1286,
+        1322,
+        1810,
+        1551
+      ],
+      "conf": 93.650459,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUAN",
+      "bbox": [
+        646,
+        1666,
+        1351,
+        1866
+      ],
+      "conf": 84.129868,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TRỊ",
+      "bbox": [
+        1446,
+        1669,
+        1827,
+        1897
+      ],
+      "conf": 54.381443,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 85,
+  "lowConfRatio": 0.2,
+  "seconds": 0.725
+}

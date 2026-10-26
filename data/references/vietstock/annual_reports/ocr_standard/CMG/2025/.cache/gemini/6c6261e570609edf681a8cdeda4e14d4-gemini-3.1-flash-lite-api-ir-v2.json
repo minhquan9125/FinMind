@@ -1,0 +1,670 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        97,
+        131,
+        474,
+        913
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            97,
+            131,
+            143,
+            191
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Phân loại theo tiêu chí cổ đông"
+          ],
+          "box_2d": [
+            97,
+            191,
+            143,
+            533
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Số lượng",
+            "cổ đông"
+          ],
+          "box_2d": [
+            97,
+            533,
+            143,
+            641
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Số lượng cổ phần"
+          ],
+          "box_2d": [
+            97,
+            641,
+            143,
+            815
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Tỷ lệ"
+          ],
+          "box_2d": [
+            97,
+            815,
+            143,
+            913
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Phân loại CĐ theo vị trí địa lý",
+          "note": null,
+          "box_2d": [
+            143,
+            131,
+            175,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phân loại CĐ theo vị trí địa lý",
+              "box_2d": [
+                143,
+                191,
+                175,
+                533
+              ]
+            }
+          ]
+        },
+        {
+          "code": "1.1",
+          "label_raw": "Cổ đông trong nước",
+          "note": null,
+          "box_2d": [
+            175,
+            131,
+            201,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông trong nước",
+              "box_2d": [
+                175,
+                191,
+                201,
+                533
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "12.217",
+              "box_2d": [
+                175,
+                533,
+                201,
+                641
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "143.933.629",
+              "box_2d": [
+                175,
+                641,
+                201,
+                815
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "61,79%",
+              "box_2d": [
+                175,
+                815,
+                201,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "1.2",
+          "label_raw": "Cổ đông nước ngoài",
+          "note": null,
+          "box_2d": [
+            201,
+            131,
+            227,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông nước ngoài",
+              "box_2d": [
+                201,
+                191,
+                227,
+                533
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "421",
+              "box_2d": [
+                201,
+                533,
+                227,
+                641
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "89.020.979",
+              "box_2d": [
+                201,
+                641,
+                227,
+                815
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "38,21%",
+              "box_2d": [
+                201,
+                815,
+                227,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Phân loại CĐ theo tỷ lệ sở hữu",
+          "note": null,
+          "box_2d": [
+            227,
+            131,
+            259,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phân loại CĐ theo tỷ lệ sở hữu",
+              "box_2d": [
+                227,
+                191,
+                259,
+                533
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2.1",
+          "label_raw": "Cổ đông sở hữu từ 5% cổ phần trở lên",
+          "note": null,
+          "box_2d": [
+            259,
+            131,
+            285,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông sở hữu từ 5% cổ phần trở lên",
+              "box_2d": [
+                259,
+                191,
+                285,
+                533
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "03",
+              "box_2d": [
+                259,
+                533,
+                285,
+                641
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "112.528.816",
+              "box_2d": [
+                259,
+                641,
+                285,
+                815
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "48,31%",
+              "box_2d": [
+                259,
+                815,
+                285,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2.2",
+          "label_raw": "Cổ đông sở hữu dưới 5% cổ phần",
+          "note": null,
+          "box_2d": [
+            285,
+            131,
+            311,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông sở hữu dưới 5% cổ phần",
+              "box_2d": [
+                285,
+                191,
+                311,
+                533
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "12.635",
+              "box_2d": [
+                285,
+                533,
+                311,
+                641
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "120.425.792",
+              "box_2d": [
+                285,
+                641,
+                311,
+                815
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "51,69%",
+              "box_2d": [
+                285,
+                815,
+                311,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Phân loại CĐ theo loại hình sở hữu",
+          "note": null,
+          "box_2d": [
+            311,
+            131,
+            343,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phân loại CĐ theo loại hình sở hữu",
+              "box_2d": [
+                311,
+                191,
+                343,
+                533
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3.1",
+          "label_raw": "Cổ đông là tổ chức",
+          "note": null,
+          "box_2d": [
+            343,
+            131,
+            369,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông là tổ chức",
+              "box_2d": [
+                343,
+                191,
+                369,
+                533
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "87",
+              "box_2d": [
+                343,
+                533,
+                369,
+                641
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "150.007.718",
+              "box_2d": [
+                343,
+                641,
+                369,
+                815
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "64,41%",
+              "box_2d": [
+                343,
+                815,
+                369,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3.2",
+          "label_raw": "Cổ đông là cá nhân",
+          "note": null,
+          "box_2d": [
+            369,
+            131,
+            395,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông là cá nhân",
+              "box_2d": [
+                369,
+                191,
+                395,
+                533
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "12.551",
+              "box_2d": [
+                369,
+                533,
+                395,
+                641
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "82.893.190",
+              "box_2d": [
+                369,
+                641,
+                395,
+                815
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "35,59%",
+              "box_2d": [
+                369,
+                815,
+                395,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Phân loại CĐ theo đại diện sở hữu",
+          "note": null,
+          "box_2d": [
+            395,
+            131,
+            427,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phân loại CĐ theo đại diện sở hữu",
+              "box_2d": [
+                395,
+                191,
+                427,
+                533
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4.1",
+          "label_raw": "Cổ đông nhà nước",
+          "note": null,
+          "box_2d": [
+            427,
+            131,
+            453,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông nhà nước",
+              "box_2d": [
+                427,
+                191,
+                453,
+                533
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "0",
+              "box_2d": [
+                427,
+                533,
+                453,
+                641
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0",
+              "box_2d": [
+                427,
+                641,
+                453,
+                815
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0.00%",
+              "box_2d": [
+                427,
+                815,
+                453,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4.2",
+          "label_raw": "Cổ đông khác",
+          "note": null,
+          "box_2d": [
+            453,
+            131,
+            474,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông khác",
+              "box_2d": [
+                453,
+                191,
+                474,
+                533
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "12.638",
+              "box_2d": [
+                453,
+                533,
+                474,
+                641
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "232.954.608",
+              "box_2d": [
+                453,
+                641,
+                474,
+                815
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "100%",
+              "box_2d": [
+                453,
+                815,
+                474,
+                913
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "4.3. Tình hình thay đổi vốn đầu tư của chủ sở hữu: Trong năm tài chính 2025, Công ty Cổ phần Tập đoàn Công nghệ CMC có sự thay đổi về vốn cổ phần: - Vốn đầu tư của chủ sở hữu năm 2024: 2.113.396.070.000 VND - Vốn đầu tư tăng thêm: 216.150.010.000 VND - Vốn đầu tư của chủ sở hữu năm 2025: 2.329.546.080.000 VND Lý do thay đổi: Công ty tăng vốn điều lệ do phát hành cổ phiếu theo chương trình lựa chọn cho người lao động và phát hành cổ phiếu để trả cổ tức năm 2024.",
+      "box_2d": [
+        482,
+        119,
+        641,
+        913
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "4.4. Giao dịch cổ phiếu quỹ: Trong năm tài chính 2025, Công ty Cổ phần Tập đoàn Công nghệ CMC thực hiện 01 đợt mua lại cổ phiếu ESOP của các CBNV nghỉ việc theo quy chế phát hành ESOP. Số lượng CP mua lại làm CP Quỹ: 17.900 cổ phiếu.",
+      "box_2d": [
+        648,
+        119,
+        723,
+        913
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "4.5. Các chứng khoán khác: Trong năm tài chính 2025, Công ty Cổ phần Tập đoàn Công nghệ CMC thực hiện 01 đợt chào bán và phát hành trái phiếu doanh nghiệp theo hình thức riêng lẻ. Tổng khối lượng trái phiếu chào bán: 12.500 trái phiếu.",
+      "box_2d": [
+        751,
+        119,
+        826,
+        913
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "5. Báo cáo tác động liên quan đến môi trường và xã hội của công ty: 5.1. Tác động lên môi trường:",
+      "box_2d": [
+        843,
+        119,
+        881,
+        787
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "34",
+      "box_2d": [
+        926,
+        905,
+        941,
+        925
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "STT\nPhân loại theo tiêu chí cổ đông\nSố lượng\ncổ đông\nSố lượng cổ phần\nTỷ lệ\n1 Phân loại CĐ theo vị trí địa lý Phân loại CĐ theo vị trí địa lý\n1.1 Cổ đông trong nước Cổ đông trong nước 12.217 143.933.629 61,79%\n1.2 Cổ đông nước ngoài Cổ đông nước ngoài 421 89.020.979 38,21%\n2 Phân loại CĐ theo tỷ lệ sở hữu Phân loại CĐ theo tỷ lệ sở hữu\n2.1 Cổ đông sở hữu từ 5% cổ phần trở lên Cổ đông sở hữu từ 5% cổ phần trở lên 03 112.528.816 48,31%\n2.2 Cổ đông sở hữu dưới 5% cổ phần Cổ đông sở hữu dưới 5% cổ phần 12.635 120.425.792 51,69%\n3 Phân loại CĐ theo loại hình sở hữu Phân loại CĐ theo loại hình sở hữu\n3.1 Cổ đông là tổ chức Cổ đông là tổ chức 87 150.007.718 64,41%\n3.2 Cổ đông là cá nhân Cổ đông là cá nhân 12.551 82.893.190 35,59%\n4 Phân loại CĐ theo đại diện sở hữu Phân loại CĐ theo đại diện sở hữu\n4.1 Cổ đông nhà nước Cổ đông nhà nước 0 0 0.00%\n4.2 Cổ đông khác Cổ đông khác 12.638 232.954.608 100%\n4.3. Tình hình thay đổi vốn đầu tư của chủ sở hữu: Trong năm tài chính 2025, Công ty Cổ phần Tập đoàn Công nghệ CMC có sự thay đổi về vốn cổ phần: - Vốn đầu tư của chủ sở hữu năm 2024: 2.113.396.070.000 VND - Vốn đầu tư tăng thêm: 216.150.010.000 VND - Vốn đầu tư của chủ sở hữu năm 2025: 2.329.546.080.000 VND Lý do thay đổi: Công ty tăng vốn điều lệ do phát hành cổ phiếu theo chương trình lựa chọn cho người lao động và phát hành cổ phiếu để trả cổ tức năm 2024.\n4.4. Giao dịch cổ phiếu quỹ: Trong năm tài chính 2025, Công ty Cổ phần Tập đoàn Công nghệ CMC thực hiện 01 đợt mua lại cổ phiếu ESOP của các CBNV nghỉ việc theo quy chế phát hành ESOP. Số lượng CP mua lại làm CP Quỹ: 17.900 cổ phiếu.\n4.5. Các chứng khoán khác: Trong năm tài chính 2025, Công ty Cổ phần Tập đoàn Công nghệ CMC thực hiện 01 đợt chào bán và phát hành trái phiếu doanh nghiệp theo hình thức riêng lẻ. Tổng khối lượng trái phiếu chào bán: 12.500 trái phiếu.\n5. Báo cáo tác động liên quan đến môi trường và xã hội của công ty: 5.1. Tác động lên môi trường:\n34",
+  "unreadable": []
+}

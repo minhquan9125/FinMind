@@ -1,0 +1,20 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\FPT\\2024\\FPT_2024_498332.pdf",
+  "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+  "overrides_applied": [],
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 138
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "observations": "table/observations.json",
+    "pages": 67,
+    "structuredTablePages": 9,
+    "notesTextOnlyPages": 53,
+    "totalObservations": 230,
+    "verifiedObservations": 222
+  }
+}

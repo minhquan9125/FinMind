@@ -1,0 +1,62 @@
+{
+  "text": "01\n\nIỊP,\nNĂM 2024",
+  "chars": 13,
+  "words": 4,
+  "wordItems": [
+    {
+      "text": "01",
+      "bbox": [
+        180,
+        163,
+        430,
+        364
+      ],
+      "conf": 94.46138,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "IỊP,",
+      "bbox": [
+        1055,
+        1508,
+        1428,
+        1687
+      ],
+      "conf": 27.49202,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NĂM",
+      "bbox": [
+        660,
+        1763,
+        1193,
+        1987
+      ],
+      "conf": 96.381294,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        1286,
+        1807,
+        1830,
+        1990
+      ],
+      "conf": 96.047485,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 79,
+  "lowConfRatio": 0.25,
+  "seconds": 0.646
+}

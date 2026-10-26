@@ -1,4 +1,3 @@
-import hashlib
 import hmac
 import os
 from urllib.parse import quote
@@ -17,6 +16,8 @@ from ...auth.schemas import (
     ForgotPasswordRequest,
     GoogleLoginRequest,
     LoginRequest,
+    LogoutRequest,
+    RefreshRequest,
     RegisterRequest,
     ResetPasswordRequest,
 )
@@ -26,6 +27,8 @@ from ...auth.service import (
     create_password_reset_token,
     create_refresh_token,
     hash_password,
+    hash_refresh_token,
+    password_hash_version,
     read_password_reset_token,
     verify_password,
 )
@@ -33,6 +36,46 @@ from ...core.config import get_settings
 from ...core.db import get_pool
 
 router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
+
+
+@router.post("/refresh")
+async def refresh(payload: RefreshRequest):
+    settings = get_settings()
+    new_refresh_token, new_token_hash = create_refresh_token()
+    user = await repository.rotate_session(
+        get_pool(),
+        hash_refresh_token(payload.refresh_token),
+        new_token_hash,
+        settings.refresh_token_days,
+    )
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Phiên đăng nhập không hợp lệ hoặc đã hết hạn.",
+        )
+
+    roles = await repository.get_user_roles(get_pool(), user["user_id"])
+    return {
+        "success": True,
+        "data": {
+            "access_token": create_access_token(user["user_id"], settings, roles),
+            "refresh_token": new_refresh_token,
+            "token_type": "Bearer",
+            "expires_in": settings.access_token_minutes * 60,
+            "user": {
+                "user_id": str(user["user_id"]),
+                "email": user["email"],
+                "full_name": user["full_name"],
+                "roles": roles,
+            },
+        },
+    }
+
+
+@router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
+async def logout(payload: LogoutRequest):
+    await repository.revoke_session(get_pool(), hash_refresh_token(payload.refresh_token))
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.post("/register", status_code=status.HTTP_201_CREATED)
@@ -163,6 +206,7 @@ async def login_with_google(payload: GoogleLoginRequest):
             payload.credential,
             google_requests.Request(),
             google_client_id if google_client_id else None,
+            clock_skew_in_seconds=5,  # Chấp nhận sai lệch đồng hồ nhỏ giữa Google và backend.
         )
     except Exception as exc:
         raise HTTPException(
@@ -221,7 +265,7 @@ async def forgot_password(
     message = "Nếu email đã đăng ký, bạn sẽ nhận được liên kết đặt lại mật khẩu."
     user = await repository.find_user_by_email(get_pool(), payload.email)
 
-    if user and user["is_active"] and user["password_hash"]:
+    if user and user["is_active"]:
         settings = get_settings()
         token = create_password_reset_token(
             user["user_id"],
@@ -251,11 +295,11 @@ async def reset_password(payload: ResetPasswordRequest):
 
     pool = get_pool()
     user = await repository.find_user_by_id(pool, user_id)
-    if not user or not user["is_active"] or not user["password_hash"]:
+    if not user or not user["is_active"]:
         raise HTTPException(status_code=400, detail=invalid_message)
 
     current_hash = user["password_hash"]
-    current_version = hashlib.sha256(current_hash.encode()).hexdigest()
+    current_version = password_hash_version(current_hash)
     if not hmac.compare_digest(current_version, token_password_version):
         raise HTTPException(status_code=400, detail=invalid_message)
 

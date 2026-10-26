@@ -25,7 +25,8 @@ const localTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { t
 
 export default function CompanyDetailPage() {
   const navigate = useNavigate();
-  const { userProfile, logout } = useAuth();
+  const { user, userProfile, logout } = useAuth();
+  const canManageData = user?.roles?.some((role) => ["DATA_ENGINEER", "ADMINISTRATOR"].includes(role)) ?? false;
   const { ticker: routeTicker } = useParams();
   const [params] = useSearchParams();
   const ticker = (routeTicker || "").toUpperCase();
@@ -85,11 +86,12 @@ export default function CompanyDetailPage() {
       onChecked: (stamp) => { setMarketCheckedAt(stamp); setMarketError(null); },
       onSettled: () => setMarketLoading(false),
       onHistoryLoading: setHistoryLoading,
+      canPrepare: canManageData,
     });
-  }, [ticker, activeTab, dataRetryCount, loading, error, company]);
+  }, [ticker, activeTab, dataRetryCount, loading, error, company, canManageData]);
 
   async function refreshPrices() {
-    if (refreshingPrice) return;
+    if (refreshingPrice || !canManageData) return;
     const requestedTicker = ticker;
     setRefreshingPrice(true);
     setNewsRetryCount((count) => count + 1);
@@ -109,11 +111,11 @@ export default function CompanyDetailPage() {
     setNewsError(null);
     setNewsData(null);
     loadCompanyNews({ symbol: ticker, signal: controller.signal,
-      api: { read: getSavedNews, refresh: refreshCompanyNews },
+      api: { read: getSavedNews, refresh: canManageData ? refreshCompanyNews : null },
       onResult: setNewsData, onError: setNewsError, onSettled: () => setNewsLoading(false) });
 
     return () => controller.abort();
-  }, [ticker, newsRetryCount]);
+  }, [ticker, newsRetryCount, canManageData]);
 
   const selectedFinancial = company?.financials.find((item) => item.period === period);
   const graphAvailable = ticker === "FPT" || ticker === "VCB";
@@ -131,7 +133,7 @@ export default function CompanyDetailPage() {
           </nav>
           <div className="flex flex-wrap items-center gap-2">
             <StatusBadge tone="neutral">Hồ sơ mock · Giá/tin từ nguồn dữ liệu</StatusBadge>
-            <Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs" disabled={refreshingPrice} onClick={refreshPrices}>{refreshingPrice ? "Đang lấy giá…" : "Làm mới giá/tin"}</Button>
+            {canManageData && <Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs" disabled={refreshingPrice} onClick={refreshPrices}>{refreshingPrice ? "Đang lấy giá…" : "Làm mới giá/tin"}</Button>}
           </div>
         </header>
 

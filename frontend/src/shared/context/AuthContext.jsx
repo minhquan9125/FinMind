@@ -11,7 +11,7 @@ import React, {
   useState,
 } from "react";
 
-import { apiLogin, apiRegister, apiGoogleLogin, apiForgotPassword } from "../api/authApi.js";
+import { apiLogin, apiRegister, apiGoogleLogin, apiForgotPassword, apiRefreshSession, apiLogout } from "../api/authApi.js";
 // ─── Key lưu phiên trong localStorage ────────────────────────────────────────
 // Chỉ lưu profile người dùng và access token; TUYỆT ĐỐI KHÔNG LƯU MẬT KHẨU
 const STORAGE_KEY = "finmind_auth_session";
@@ -25,11 +25,7 @@ function getStoredSession() {
       localStorage.removeItem(STORAGE_KEY);
       return null;
     }
-    if (Date.now() > session.expiresAtTimestamp) {
-      localStorage.removeItem(STORAGE_KEY);
-      return { isExpired: true };
-    }
-    return { ...session, isExpired: false };
+    return { ...session, isExpired: Date.now() >= session.expiresAtTimestamp };
   } catch {
     localStorage.removeItem(STORAGE_KEY);
     return null;
@@ -68,44 +64,66 @@ export function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isSessionExpired, setIsSessionExpired] = useState(false);
 
-  // 1. Khôi phục phiên đã lưu khi mount lần đầu (F5 / mở tab mới).
-  useEffect(() => {
-    const session = getStoredSession();
-    if (session?.isExpired) {
-      setUser(null);
-      setIsSessionExpired(true);
-    } else if (session?.user) {
-      setUser(session.user);
-      setIsSessionExpired(false);
-    }
-    setIsLoading(false);
+  const refreshSession = useCallback(async (session) => {
+    if (!session?.refreshToken) throw new Error("Missing refresh token");
+    const response = await apiRefreshSession(session.refreshToken);
+    const now = Date.now();
+    const next = {
+      ...session,
+      token: response.access_token,
+      refreshToken: response.refresh_token,
+      expiresAt: new Date(now + response.expires_in * 1000).toISOString(),
+      expiresAtTimestamp: now + response.expires_in * 1000,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    setUser(next.user);
+    setIsSessionExpired(false);
   }, []);
 
-  // 2. Cơ chế ngầm kiểm tra định kỳ (Heartbeat):
-  // Định kỳ mỗi 5 giây kiểm tra thời hạn phiên.
-  // Nếu phiên hết hạn trong lúc đang mở web, tự động ngắt phiên và bật cờ isSessionExpired.
+  // Khôi phục phiên khi mở lại ứng dụng; refresh an toàn nếu access token đã hết hạn.
+  useEffect(() => {
+    let cancelled = false;
+    const restore = async () => {
+      const session = getStoredSession();
+      if (session?.user) {
+        if (session.isExpired) {
+          try { await refreshSession(session); }
+          catch {
+            localStorage.removeItem(STORAGE_KEY);
+            if (!cancelled) setIsSessionExpired(true);
+          }
+        } else if (!cancelled) {
+          setUser(session.user);
+          setIsSessionExpired(false);
+        }
+      }
+      if (!cancelled) setIsLoading(false);
+    };
+    restore();
+    return () => { cancelled = true; };
+  }, [refreshSession]);
+
+  // Xoay refresh token trước khi access token hết hạn.
   useEffect(() => {
     if (!user) return;
-
-    const interval = setInterval(() => {
-      const session = getStoredSession();
-      if (!session || session.isExpired) {
+    const session = getStoredSession();
+    if (!session) return;
+    const timeout = setTimeout(async () => {
+      try { await refreshSession(session); }
+      catch {
+        localStorage.removeItem(STORAGE_KEY);
         setUser(null);
         setIsSessionExpired(true);
       }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [user]);
+    }, Math.max(0, session.expiresAtTimestamp - Date.now() - 30_000));
+    return () => clearTimeout(timeout);
+  }, [user, refreshSession]);
 
   const login = useCallback(async (email, password, rememberMe = false) => {
     const res = await apiLogin(email, password);
 
     const now = Date.now();
-    // RememberMe: 7 ngày; Mặc định: theo expires_in từ backend hoặc 15 phút
-    const ttlMs = rememberMe
-      ? 7 * 24 * 60 * 60 * 1000
-      : (res.expires_in || 900) * 1000;
+    const ttlMs = (res.expires_in || 900) * 1000;
     const expiresAtTimestamp = now + ttlMs;
 
     const rawRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
@@ -121,6 +139,7 @@ export function AuthProvider({ children }) {
     const session = {
       user: authUser,
       token: res.access_token,
+      refreshToken: res.refresh_token,
       rememberMe,
       loginAt: new Date(now).toISOString(),
       expiresAt: new Date(expiresAtTimestamp).toISOString(),
@@ -139,9 +158,7 @@ export function AuthProvider({ children }) {
     const res = await apiGoogleLogin(credential);
 
     const now = Date.now();
-    const ttlMs = rememberMe
-      ? 7 * 24 * 60 * 60 * 1000
-      : (res.expires_in || 900) * 1000;
+    const ttlMs = (res.expires_in || 900) * 1000;
     const expiresAtTimestamp = now + ttlMs;
 
     const rawRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
@@ -157,6 +174,7 @@ export function AuthProvider({ children }) {
     const session = {
       user: authUser,
       token: res.access_token,
+      refreshToken: res.refresh_token,
       rememberMe,
       loginAt: new Date(now).toISOString(),
       expiresAt: new Date(expiresAtTimestamp).toISOString(),
@@ -181,9 +199,16 @@ export function AuthProvider({ children }) {
   }, []);
 
   const logout = useCallback(async () => {
-    localStorage.removeItem(STORAGE_KEY);
-    setUser(null);
-    setIsSessionExpired(false);
+    const session = getStoredSession();
+    try {
+      if (session?.refreshToken) await apiLogout(session.refreshToken);
+    } catch {
+      // Luôn xóa trạng thái cục bộ để người dùng thoát được khi backend không phản hồi.
+    } finally {
+      localStorage.removeItem(STORAGE_KEY);
+      setUser(null);
+      setIsSessionExpired(false);
+    }
   }, []);
 
   // Hàm hỗ trợ test: làm hết hạn phiên ngay lập tức

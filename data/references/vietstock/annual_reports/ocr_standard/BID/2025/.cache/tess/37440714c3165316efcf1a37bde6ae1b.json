@@ -1,0 +1,101 @@
+{
+  "text": "BIDVS\n\nDẪN DẮT _\nCHUYỂN ĐỔI\n\n2025",
+  "chars": 25,
+  "words": 7,
+  "wordItems": [
+    {
+      "text": "BIDVS",
+      "bbox": [
+        2929,
+        192,
+        3341,
+        325
+      ],
+      "conf": 84.828064,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "DẪN",
+      "bbox": [
+        1927,
+        1094,
+        2183,
+        1213
+      ],
+      "conf": 93.278206,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "DẮT",
+      "bbox": [
+        2237,
+        1095,
+        2475,
+        1253
+      ],
+      "conf": 85.219093,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "_",
+      "bbox": [
+        2622,
+        1235,
+        2641,
+        1253
+      ],
+      "conf": 40.886974,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHUYỂN",
+      "bbox": [
+        1921,
+        1249,
+        2424,
+        1352
+      ],
+      "conf": 95.552139,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐỔI",
+      "bbox": [
+        2468,
+        1249,
+        2690,
+        1352
+      ],
+      "conf": 32.042458,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        2797,
+        2112,
+        3330,
+        2293
+      ],
+      "conf": 95.736893,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 75,
+  "lowConfRatio": 0.286,
+  "seconds": 0.578
+}

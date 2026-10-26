@@ -109,7 +109,6 @@ export default function ForgotPasswordPage() {
                   className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 transition-all"
                 />
               </div>
-
               <button
                 type="submit"
                 disabled={loading}
@@ -118,7 +117,6 @@ export default function ForgotPasswordPage() {
                 {loading ? "Đang gửi hướng dẫn..." : "Gửi hướng dẫn đặt lại mật khẩu"}
               </button>
             </form>
-
             {/* Phân cách */}
             <div className="my-6 border-t border-slate-100" />
 
@@ -132,9 +130,7 @@ export default function ForgotPasswordPage() {
                 Đăng nhập
               </Link>
             </div>
-
           </div>
-
           {/* Dòng chữ chân trang */}
           <p className="text-center text-xs text-slate-400 mt-8 tracking-tight">
             Chỉ hỗ trợ mục đích nghiên cứu - Không phải khuyến nghị đầu tư

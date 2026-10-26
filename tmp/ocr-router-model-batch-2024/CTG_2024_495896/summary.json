@@ -1,0 +1,54 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\CTG\\2024\\CTG_2024_495896.pdf",
+  "pages": 3,
+  "routes": {
+    "tesseract+gemini": 3
+  },
+  "status": {
+    "OK": 3
+  },
+  "flags": {},
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 1.179,
+    "renderAndTesseract": 6.878,
+    "gemini": 30.369,
+    "total": 38.505
+  },
+  "geminiApi": {
+    "calls": 1,
+    "failedCalls": 0,
+    "seconds": 30.356,
+    "input_tokens": 3639,
+    "output_tokens": 1613,
+    "thinking_tokens": 864,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 0,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\tmp\\ocr-router-model-batch-2024",
+    "pages": "1,2,186",
+    "mode": "always",
+    "model": "gemini-3.8-flash",
+    "batch": 4,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 300,
+    "tessWorkers": 2,
+    "minChars": 999999,
+    "minConf": 90,
+    "longSide": 2200
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "text": "elcom~\n\nBóo cóo .\nthường niên'\n2025",
+  "chars": 28,
+  "words": 7,
+  "wordItems": [
+    {
+      "text": "elcom~",
+      "bbox": [
+        301,
+        600,
+        766,
+        695
+      ],
+      "conf": 64.603928,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Bóo",
+      "bbox": [
+        308,
+        811,
+        656,
+        955
+      ],
+      "conf": 88.141029,
+      "block": 2,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "cóo",
+      "bbox": [
+        718,
+        811,
+        1059,
+        955
+      ],
+      "conf": 72.477539,
+      "block": 2,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": ".",
+      "bbox": [
+        1264,
+        912,
+        1339,
+        962
+      ],
+      "conf": 89.613403,
+      "block": 2,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "thường",
+      "bbox": [
+        298,
+        1019,
+        954,
+        1204
+      ],
+      "conf": 49.43539,
+      "block": 2,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "niên'",
+      "bbox": [
+        1028,
+        1019,
+        1460,
+        1166
+      ],
+      "conf": 82.957123,
+      "block": 2,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        300,
+        1226,
+        731,
+        1373
+      ],
+      "conf": 95.400894,
+      "block": 2,
+      "paragraph": 2,
+      "line": 3
+    }
+  ],
+  "meanConf": 78,
+  "lowConfRatio": 0.143,
+  "seconds": 0.872
+}

@@ -1,0 +1,90 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\FPT\\2024\\FPT_2024_498332.pdf",
+  "pages": 1,
+  "routes": {
+    "tesseract": 1
+  },
+  "status": {
+    "REVIEW": 1
+  },
+  "flags": {
+    "GEMINI_FAILED": 1
+  },
+  "reviewPages": [
+    2
+  ],
+  "seconds": {
+    "textLayer": 0.254,
+    "renderAndTesseract": 1.142,
+    "gemini": 0.527,
+    "total": 2.16
+  },
+  "geminiApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 1,
+    "failedCalls": 1,
+    "seconds": 0.525,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "codecraftApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "omnirouteApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 1,
+    "geminiHits": 0,
+    "openrouterHits": 0,
+    "codecraftHits": 0,
+    "omnirouteHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\tmp\\ocr-openrouter-dots-replacement-smoke",
+    "pages": "2",
+    "mode": "always",
+    "provider": "openrouter",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "text",
+    "openrouterModel": "dots-studio/dots-3-note-preview:free",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 300,
+    "tessWorkers": 1,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 2200
+  }
+}

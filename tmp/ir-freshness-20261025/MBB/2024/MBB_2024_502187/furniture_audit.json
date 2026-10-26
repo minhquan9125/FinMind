@@ -1,0 +1,207 @@
+{
+  "scope": "all_text_layer_pages_from_pages_jsonl",
+  "pages_checked": 175,
+  "minimum_repeated_pages": 88,
+  "position_grid": "2% of page width and height",
+  "repeated_groups": [
+    {
+      "text": "báo cáo thường niên 2024",
+      "x_bin": 2,
+      "y_bin": 2,
+      "pages": 172
+    },
+    {
+      "text": "doanh nghiệp số tập đoàn tài chính dẫn đầu",
+      "x_bin": 28,
+      "y_bin": 2,
+      "pages": 172
+    }
+  ],
+  "promoted_blocks": 172,
+  "sidebar_associated_blocks": 0,
+  "page_number_blocks": 5,
+  "demoted_unverified_blocks": 2336,
+  "demoted_examples": [
+    {
+      "page": 76,
+      "block_id": "p76-b19",
+      "text": "150",
+      "matching_pages": 1
+    },
+    {
+      "page": 76,
+      "block_id": "p76-b20",
+      "text": "Đoàn kết",
+      "matching_pages": 1
+    },
+    {
+      "page": 76,
+      "block_id": "p76-b21",
+      "text": "Hiệu quả",
+      "matching_pages": 1
+    },
+    {
+      "page": 76,
+      "block_id": "p76-b22",
+      "text": "Tin cậy",
+      "matching_pages": 1
+    },
+    {
+      "page": 76,
+      "block_id": "p76-b23",
+      "text": "Thực thi",
+      "matching_pages": 1
+    },
+    {
+      "page": 77,
+      "block_id": "p77-b19",
+      "text": "152",
+      "matching_pages": 1
+    },
+    {
+      "page": 77,
+      "block_id": "p77-b20",
+      "text": "bền vững NGUYÊN TẮC XÂY DỰNG BÁO CÁO",
+      "matching_pages": 1
+    },
+    {
+      "page": 77,
+      "block_id": "p77-b21",
+      "text": "PHẠM VI BÁO CÁO",
+      "matching_pages": 1
+    },
+    {
+      "page": 77,
+      "block_id": "p77-b22",
+      "text": "thống của MB.",
+      "matching_pages": 1
+    },
+    {
+      "page": 77,
+      "block_id": "p77-b23",
+      "text": "THÔNG TIN LIÊN HỆ/ ĐẦU MỐI PHỤ TRÁCH HOẠT ĐỘNG PTBV TẠI MB",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b26",
+      "text": "154",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b27",
+      "text": "ĐỊNH HƯỚNG PHÁT TRIỂN BỀN VỮNG: “Là tổ chức phát triển bền vững”",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b28",
+      "text": "Quản trị Củng cố nền tảng quản trị vững mạnh, tiên tiến, bền vững và hội nhập theo xu hướng toàn cầu",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b29",
+      "text": "• Tuân thủ quy định",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b30",
+      "text": "• Đạo đức kinh doanh",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b31",
+      "text": "Quản trị",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b32",
+      "text": "Chuyển đổi số",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b33",
+      "text": "Xã hội",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b34",
+      "text": "Xã hội Đẩy mạnh đào tạo, nâng cao kỹ năng đội ngũ nhân sự, tăng cường cam kết trách nhiệm xã hội và đóng góp cho cộng đồ",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b35",
+      "text": "• Giáo dục & Đào tạo",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b36",
+      "text": "• Đóng góp cho cộng đồng địa phương",
+      "matching_pages": 1
+    },
+    {
+      "page": 78,
+      "block_id": "p78-b37",
+      "text": "• Quản lý rủi ro liên quan đến khí hậu",
+      "matching_pages": 1
+    },
+    {
+      "page": 79,
+      "block_id": "p79-b32",
+      "text": "156",
+      "matching_pages": 1
+    },
+    {
+      "page": 80,
+      "block_id": "p80-b42",
+      "text": "158",
+      "matching_pages": 1
+    },
+    {
+      "page": 80,
+      "block_id": "p80-b43",
+      "text": "QUẢN TRỊ",
+      "matching_pages": 1
+    },
+    {
+      "page": 80,
+      "block_id": "p80-b44",
+      "text": "01",
+      "matching_pages": 0
+    },
+    {
+      "page": 80,
+      "block_id": "p80-b45",
+      "text": "100% bảo đảm tuân thủ: 100% lãnh đạo và cán bộ lãnh đạo và cán bộ nhân viên MB trong toàn hệ thống được phổ biến và quán",
+      "matching_pages": 1
+    },
+    {
+      "page": 80,
+      "block_id": "p80-b46",
+      "text": "04",
+      "matching_pages": 0
+    },
+    {
+      "page": 80,
+      "block_id": "p80-b47",
+      "text": "Phân công trách nhiệm quản trị, giám sát thực hành ESG cho các thành viên HĐQT và Ban Điều hành giúp MB không chỉ tuân t",
+      "matching_pages": 1
+    },
+    {
+      "page": 81,
+      "block_id": "p81-b35",
+      "text": "160",
+      "matching_pages": 1
+    }
+  ],
+  "furniture_table_overlaps": []
+}

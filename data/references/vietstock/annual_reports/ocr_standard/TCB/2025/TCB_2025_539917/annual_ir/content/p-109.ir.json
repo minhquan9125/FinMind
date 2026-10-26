@@ -1,0 +1,208 @@
+{
+  "ir_version": "1",
+  "page": 109,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+    "file_name": "TCB_2025_539917.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p109-b1",
+      "type": "paragraph",
+      "text": "Năm 2025, Techcombank tiếp tục khẳng định vị thế tiên phong trong quản trị rủi ro thanh",
+      "bbox": [214.01, 104.94, 544.22, 113.44]
+    },
+    {"id": "p109-b2", "type": "paragraph", "text": "Nền tảng vững vàng của Tech 217", "bbox": [1036.23, 25.6, 1148.03, 32.7]},
+    {"id": "p109-b3", "type": "heading", "text": "QUẢN TRỊ RỦI RO HOẠT ĐỘNG", "bbox": [646.3, 105.52, 809.28, 117.52]},
+    {
+      "id": "p109-b4",
+      "type": "paragraph",
+      "text": "khoản, đáp ứng các chuẩn mực quốc tế và nâng cao năng lực quản trị toàn diện. Các điểm",
+      "bbox": [214.01, 115.43, 544.28, 123.93]
+    },
+    {"id": "p109-b5", "type": "heading", "text": "- CÔNG NGHỆ - GIAN LẬN", "bbox": [646.3, 119.53, 781.89, 131.53]},
+    {
+      "id": "p109-b6",
+      "type": "paragraph",
+      "text": "Hoàn tất xác thực độc lập các tính toán Ứng dụng AI tiên tiến vào phân tích và\nLCR và NSFR bởi đối tác tư vấn hàng giám sát thông qua Dashboard Quản trị\nđầu, đảm bảo tính chính xác và minh Rủi ro Thanh khoản, nâng cao khả năng\nbạch theo Basel III.",
+      "bbox": [228.08, 187.08, 529.58, 227.12]
+    },
+    {
+      "id": "p109-b7",
+      "type": "paragraph",
+      "text": "Triển khai Phase 1 của ILAAP, thực hiện Xây dựng và nâng cấp khung quản trị\nphân tích khoảng cách (gap analysis), rủi ro thanh khoản theo thông lệ quốc tế,\ntập trung vào rà soát và nâng cao năng thiết lập ngưỡng quản trị cho dòng tiền\nlực kiểm tra sức chịu đựng thanh khoản hành vi, đảm bảo kiểm soát chủ động.\n(liquidity stress test) và quản trị thanh\nkhoản trong ngày (intraday liquidity).",
+      "bbox": [228.08, 271.11, 529.7, 332.1]
+    },
+    {
+      "id": "p109-b8",
+      "type": "paragraph",
+      "text": "Áp dụng mô hình hành vi về dòng tiền Nâng cấp hệ thống dữ liệu và công cụ\nmột cách toàn diện, thực hiện xây dựng quản trị trên nền tảng cloud, bao gồm\nvà áp dụng kết quả mô hình hành vi vào dữ liệu intraday và các dashboard phân\nkiểm tra sức chịu đựng (liquidity stress tích chuyên sâu sử dụng công nghệ\ntest), bao gồm cả kiểm tra sức chịu hiện đại như Databricks.\nđựng ngược (reverse liquidity stress\ntest) theo thông lệ.",
+      "bbox": [228.08, 376.32, 529.56, 447.58]
+    },
+    {
+      "id": "p109-b9",
+      "type": "paragraph",
+      "text": "Những bước tiến này không chỉ củng cố nền tảng vững chắc cho Techcombank mà còn\nkhẳng định năng lực quản trị rủi ro ngang tầm các ngân hàng hàng đầu khu vực.",
+      "bbox": [214.01, 489.57, 544.26, 508.57]
+    },
+    {
+      "id": "p109-b10",
+      "type": "paragraph",
+      "text": "ỨNG DỤNG MẠNH MẼ CÔNG Năm 2025, Techcombank tiếp tục khẳng định vị thế tiên phong trong quản trị rủi ro lãi suất\ntrên sổ ngân hàng, ứng dụng mạnh mẽ công nghệ và AI vào công tác quản trị rủi ro, đồng\nthời tiếp tục nâng cao năng lực quản trị toàn diện. Các điểm nhấn bao gồm:",
+      "bbox": [42.52, 518.18, 544.31, 550.57]
+    },
+    {
+      "id": "p109-b11",
+      "type": "paragraph",
+      "text": "• Tập trung dữ liệu theo nhiều chiều thông • Ứng dụng AI (Copilot) phân tích chỉ số\ntin lên Data Lake, tạo nền tảng cho tự IRRBB, cung cấp insight kịp thời cho các\nđộng hóa, AI và ML (Công nghệ học máy). cấp lãnh đạo.",
+      "bbox": [214.01, 582.04, 544.26, 611.54]
+    },
+    {
+      "id": "p109-b12",
+      "type": "paragraph",
+      "text": "• Tự động hóa tối đa quy trình từ KRM lên\nnên tảng phân tích Power BI, tự động cập\nnhật và gửi trạng thái rủi ro hàng ngày.",
+      "bbox": [214.01, 624.05, 372.76, 653.54]
+    },
+    {
+      "id": "p109-b13",
+      "type": "paragraph",
+      "text": "• Phát triển phương pháp tiên tiến (VaR) • Nâng cấp KRM để tăng độ chính xác, đáp\ntrên hệ thống KRM",
+      "bbox": [214.01, 682.23, 544.24, 701.23]
+    },
+    {
+      "id": "p109-b14",
+      "type": "paragraph",
+      "text": "• Bước đầu triển khai quản trị rủi ro lãi suất cho sản phẩm bảo hiểm nhân thọ, đặt nền\nmóng cho quản trị IRRBB toàn hệ sinh thái.",
+      "bbox": [214.01, 740.19, 544.19, 759.19]
+    },
+    {"id": "p109-b15", "type": "paragraph", "text": "dự báo và ra quyết định nhanh chóng.", "bbox": [385.17, 218.57, 524.48, 227.07]},
+    {"id": "p109-b16", "type": "paragraph", "text": "ứng sản phẩm tài chính phức tạp, hỗ trợ\ndự báo biến động lãi suất.", "bbox": [394.01, 692.73, 544.26, 711.73]},
+    {
+      "id": "p109-b17",
+      "type": "paragraph",
+      "text": "Trong bối cảnh ngân hàng và hệ sinh thái Ngân hàng không ngừng đầu tư vào công",
+      "bbox": [817.79, 171.73, 1148.03, 180.25]
+    },
+    {"id": "p109-b18", "type": "paragraph", "text": "Rủi ro hoạt động", "bbox": [671.36, 172.22, 744.88, 182.22]},
+    {
+      "id": "p109-b19",
+      "type": "paragraph",
+      "text": "đều có những thay đổi lớn, với những nghiệp nghệ & dữ liệu để tối ưu hóa công tác quản\nvụ, lĩnh vực mới và thách thức. Việc thực hiện trị rủi ro, giúp đưa ra các quyết định chủ\nnhận diện & đánh giá rủi ro ngay từ giai đoạn động và chuẩn xác hơn.\nthiết kế giúp ngân hàng chủ động kiểm soát\nvà xử lý rủi ro sớm và phù hợp.",
+      "bbox": [817.79, 182.23, 1148.03, 232.73]
+    },
+    {
+      "id": "p109-b20",
+      "type": "paragraph",
+      "text": "Tổn thất do rủi ro hoạt động luôn được kiểm đạo cấp cao nhất cho tới từng cán bộ nhân\nsoát ở mức thấp, thấp hơn đáng kể so với viên (CBNV) của tất cả các đơn vị nghiệp vụ\nhạn mức rủi ro hoạt động nội bộ, ngay cả trong ngân hàng.\ntrong bối cảnh các mối đe dọa bên ngoài và\ncông nghệ mới liên tục xuất hiện.",
+      "bbox": [817.79, 245.22, 1148.05, 295.73]
+    },
+    {
+      "id": "p109-b21",
+      "type": "paragraph",
+      "text": "Thực hiện hiệu quả việc nhận diện và đánh vững uy tín và hình ảnh Techcombank là",
+      "bbox": [817.79, 324.47, 1148.03, 333.01]
+    },
+    {"id": "p109-b22", "type": "paragraph", "text": "Rủi ro công nghệ", "bbox": [671.36, 325.01, 746.77, 335.01]},
+    {
+      "id": "p109-b23",
+      "type": "paragraph",
+      "text": "giá rủi ro Công nghệ thông tin (CNTT) và An ngân hàng số hàng đầu về độ tin cậy và an\nninh thông tin (ANTT) đối với các sản phẩm toàn tại Việt Nam, hỗ trợ tăng trưởng nguồn\nsố chiến lược như Sinh lời tự động, Chứng huy động vốn cùng tệp khách hàng kênh trực\nchỉ tiền gửi (CDB++) tính năng quản lý phân tuyến, tạo nền tảng vững chắc cho hiệu suất\nquyền tập trung, hành trình số hóa cho phép tài chính và giá trị dành cho cổ đông.\nkhách hàng chủ động khởi tạo và quản lý\nngười dùng trực tuyến trên Techcombank Năm 2025 cũng là năm dấu ấn của hàng loạt\nBusiness, sản phẩm Ủy thác cho vay Home các văn bản pháp luật được cập nhật và ban\ncredit… đảm bảo an ninh thông tin ngay từ giai hành, có ảnh hưởng sâu rộng đến các sản\nđoạn phát triển ban đầu. Việc này giúp ngân phẩm/dịch vụ của Techcombank cũng như\nhàng chủ động phát hiện và giảm thiểu các hệ sinh thái mà Quản trị rủi ro CNTT và ANTT\nrủi ro tiềm ẩn liên quan đến tấn công mạng đóng vai trò quan trọng đảm bảo đáp ứng\ncũng như gian lận trên các kênh số, giúp tuân thủ những yêu cầu mới với hệ thống để\nngân hàng hạn chế tổn thất vận hành và tài đảm bảo nền tảng công nghệ an toàn, trải\nchính, đồng thời duy trì tính liên tục của dịch nghiệm số hóa hoàn chỉnh đến cho Khách\nvụ dành cho khách hàng cá nhân lẫn doanh hàng, tạo dựng niềm tin vững chắc giữa\nnghiệp. Những hoạt động này góp phần giữ khách hàng và ngân hàng.",
+      "bbox": [817.79, 334.96, 1148.06, 511.47]
+    },
+    {
+      "id": "p109-b24",
+      "type": "paragraph",
+      "text": "Năm 2025 đánh dấu bước tiến quan trọng trong công tác quản trị rủi ro gian lận với những",
+      "bbox": [817.79, 540.22, 1148.01, 548.72]
+    },
+    {"id": "p109-b25", "type": "paragraph", "text": "Rủi ro gian lận", "bbox": [671.36, 540.8, 734.61, 550.8]},
+    {"id": "p109-b26", "type": "paragraph", "text": "kết quả đạt được tiêu biểu như sau:", "bbox": [817.79, 550.72, 947.02, 559.22]},
+    {
+      "id": "p109-b27",
+      "type": "paragraph",
+      "text": "• Chuẩn hóa và tăng cường khung quản trị nội bộ, giao dịch tại quầy, giao dịch ngoại",
+      "bbox": [817.79, 571.97, 1148.03, 580.5]
+    },
+    {"id": "p109-b28", "type": "paragraph", "text": "Hoàn thành", "bbox": [645.99, 572.11, 688.92, 580.61]},
+    {
+      "id": "p109-b29",
+      "type": "paragraph",
+      "text": "rủi ro gian lận: Hoàn thành sửa đổi và ban tệ và Quỹ trái phiếu; xây dựng chương",
+      "bbox": [826.29, 582.47, 1148.0, 590.99]
+    },
+    {"id": "p109-b30", "type": "paragraph", "text": "180 báo cáo", "bbox": [645.99, 583.51, 712.51, 605.51]},
+    {
+      "id": "p109-b31",
+      "type": "paragraph",
+      "text": "hành mới các văn bản thực thi quan trọng trình kiểm soát bí mật như một công cụ",
+      "bbox": [826.29, 592.96, 1148.02, 601.49]
+    },
+    {"id": "p109-b32", "type": "paragraph", "text": "đánh giá rủi ro", "bbox": [682.79, 594.38, 735.87, 602.88]},
+    {
+      "id": "p109-b33",
+      "type": "paragraph",
+      "text": "như Quy định Quản trị rủi ro gian lận (bao phát hiện gian lận chủ động, phục vụ\ngồm quy định về quản lý danh sách đen/ công tác điều tra và quản trị rủi ro gian",
+      "bbox": [826.29, 603.46, 1148.05, 622.48]
+    },
+    {"id": "p109-b34", "type": "paragraph", "text": "Ngăn chặn nguy cơ tổn thất", "bbox": [645.99, 622.51, 747.71, 631.01]},
+    {"id": "p109-b35", "type": "paragraph", "text": "danh sách nghi ngờ gian lận, danh mục lận trên toàn hàng.", "bbox": [826.29, 624.46, 1066.67, 632.98]},
+    {"id": "p109-b36", "type": "paragraph", "text": "1.400 tỷ", "bbox": [645.99, 633.02, 708.3, 655.02]},
+    {"id": "p109-b37", "type": "paragraph", "text": "kịch bản gian lận), quy trình điều tra gian", "bbox": [826.29, 634.98, 976.56, 643.48]},
+    {"id": "p109-b38", "type": "paragraph", "text": "đồng", "bbox": [701.68, 644.21, 720.88, 652.71]},
+    {
+      "id": "p109-b39",
+      "type": "paragraph",
+      "text": "lận hợp nhất và hướng dẫn nhận diện dấu • Nâng cao năng lực giám sát và phân tích\nhiệu nghi ngờ gian lận, lừa đảo. Điều này dữ liệu: Hoàn thành 5 báo cáo dashboard\nđã tạo nền tảng vững chắc cho công tác cho các phân khúc khách hàng cá nhân-\nquản trị rủi ro gian lận tại Techcombank.",
+      "bbox": [826.29, 645.46, 1148.05, 685.47]
+    },
+    {
+      "id": "p109-b40",
+      "type": "paragraph",
+      "text": "• Tái cấu trúc các nhóm chức năng quản trị (công ty thuộc hệ sinh thái), hỗ trợ công\nrủi ro gian lận, trong đó mở rộng phạm vi tác phát hiện sớm gian lận.\nđiều tra sang các mảng mới như gian lận",
+      "bbox": [817.79, 697.95, 1148.0, 727.47]
+    },
+    {
+      "id": "p109-b41",
+      "type": "paragraph",
+      "text": "Giảm thiểu và ngăn ngừa tổn thất: Ngân hàng hoàn thành 180 báo cáo đánh giá rủi ro trong\nđó 17 báo cáo được hội chẩn đánh giá chuyên sâu cho các quy trình/sản phẩm có rủi ro gian\nlận cao thuộc phân khúc khách hàng doanh nghiệp và khách hàng cá nhân. Thực hiện điều",
+      "bbox": [817.79, 740.76, 1148.1, 770.26]
+    },
+    {
+      "id": "p109-b42",
+      "type": "paragraph",
+      "text": "Văn hóa quản trị rủi ro hoạt động được\nthiết lập và thống nhất thông điệp từ lãnh",
+      "bbox": [989.29, 224.23, 1148.05, 243.22]
+    },
+    {
+      "id": "p109-b43",
+      "type": "paragraph",
+      "text": "vay không tài sản đảm bảo, hộ kinh\ndoanh, SME và báo cáo cho Sao Mộc",
+      "bbox": [997.79, 676.95, 1148.05, 695.95]
+    },
+    {"id": "p109-b44", "type": "paragraph", "text": "216 Báo cáo thường niên 2025", "bbox": [42.52, 25.6, 147.45, 32.7]},
+    {"id": "p109-b45", "type": "paragraph", "text": "QUẢN TRỊ RỦI RO\nTHANH KHOẢN:", "bbox": [42.52, 105.52, 136.85, 131.53]},
+    {"id": "p109-b46", "type": "paragraph", "text": "nhấn bao gồm:", "bbox": [214.01, 125.93, 269.22, 134.43]},
+    {"id": "p109-b47", "type": "paragraph", "text": "NỀN TẢNG VỮNG CHẮC,\nSẴN SÀNG BỨT PHÁ", "bbox": [42.52, 133.53, 173.86, 159.54]},
+    {"id": "p109-b48", "type": "paragraph", "text": "QUẢN TRỊ RỦI RO LÃI SUẤT\nTRÊN SỔ NGÂN HÀNG (IRRBB):", "bbox": [42.52, 490.17, 201.58, 516.18]},
+    {"id": "p109-b49", "type": "paragraph", "text": "NGHỆ VÀ AI VÀO CÔNG TÁC\nQUẢN TRỊ RỦI RO", "bbox": [42.52, 532.19, 189.42, 558.19]},
+    {
+      "id": "p109-b50",
+      "type": "paragraph",
+      "text": "1 Áp dụng tối đa trí tuệ nhân tạo và\ntự động hóa trong quản trị IRRBB",
+      "bbox": [46.92, 582.31, 185.78, 601.31]
+    },
+    {"id": "p109-b51", "type": "paragraph", "text": "2 Tăng cường mô hình IRRBB & tiếp\ntục hoàn thiện hệ thống KRM", "bbox": [45.84, 682.5, 186.67, 701.5]},
+    {"id": "p109-b52", "type": "paragraph", "text": "3 Mở rộng phạm vi quản trị rủi ro", "bbox": [45.95, 740.18, 176.17, 748.97]},
+    {
+      "id": "p109-b53",
+      "type": "paragraph",
+      "text": "tra gian lận hồ sơ tín dụng trước giải ngân và đã ngăn chặn nguy cơ tổn thất lên đến ~1.400\ntỷ đồng (hạn mức tín dụng của các hồ sơ gian lận) cho ngân hàng.",
+      "bbox": [817.79, 772.26, 1148.01, 791.25]
+    }
+  ]
+}

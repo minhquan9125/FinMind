@@ -1,0 +1,187 @@
+{
+  "document_sha256": "e247879a9f33058799aae35d1d3f9d2aa634e36985cf7d8c3f09ac1592802fa0",
+  "scope": "audited_financial_statements",
+  "pages": 8,
+  "page_ranges": [
+    {
+      "start": 7,
+      "end": 7
+    },
+    {
+      "start": 51,
+      "end": 52
+    },
+    {
+      "start": 54,
+      "end": 56
+    },
+    {
+      "start": 59,
+      "end": 60
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "income_statement",
+      "start": 7,
+      "end": 7
+    },
+    {
+      "page_class": "toc",
+      "start": 51,
+      "end": 51
+    },
+    {
+      "page_class": "other",
+      "start": 52,
+      "end": 52
+    },
+    {
+      "page_class": "auditor_report",
+      "start": 54,
+      "end": 54
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 55,
+      "end": 56
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 59,
+      "end": 59
+    },
+    {
+      "page_class": "notes",
+      "start": 60,
+      "end": 60
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 7,
+      "printed_page": "7",
+      "file": "p-007.ir.json",
+      "page_class": "income_statement",
+      "title": "income_statement",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 51,
+      "printed_page": null,
+      "file": "p-051.ir.json",
+      "page_class": "toc",
+      "title": "toc",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 52,
+      "printed_page": null,
+      "file": "p-052.ir.json",
+      "page_class": "other",
+      "title": "BÁO CÁO CỦA BAN TÔNG GIÁM ĐÓC",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 54,
+      "printed_page": null,
+      "file": "p-054.ir.json",
+      "page_class": "auditor_report",
+      "title": "F 4",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 55,
+      "printed_page": null,
+      "file": "p-055.ir.json",
+      "page_class": "balance_sheet",
+      "title": "balance_sheet",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 56,
+      "printed_page": null,
+      "file": "p-056.ir.json",
+      "page_class": "balance_sheet",
+      "title": "balance_sheet",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 59,
+      "printed_page": null,
+      "file": "p-059.ir.json",
+      "page_class": "cash_flow",
+      "title": "cash_flow",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 60,
+      "printed_page": null,
+      "file": "p-060.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    }
+  ],
+  "structured_table_ranges": [],
+  "needs_review": [
+    {
+      "pdf_page": 7,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "reason": "statement_columns_or_rows_unverified"
+    }
+  ],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": "TT200_NONBANK",
+  "arithmetic_template_id": "vn_nonbank_b01_b02_b03_v1",
+  "arithmetic_template_sha256": "b827359542c40d4ce71a754b248232aae0b8bc2f30f0ce7ddf99e82381a4748a",
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [
+    {
+      "start": 60,
+      "end": 60
+    }
+  ],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

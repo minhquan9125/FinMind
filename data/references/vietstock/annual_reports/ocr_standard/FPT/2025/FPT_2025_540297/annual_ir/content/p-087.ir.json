@@ -1,0 +1,131 @@
+{
+  "ir_version": "1",
+  "page": 87,
+  "printed_page": "85",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "5ea9b229656594f65e858ff7465ec600332fd623c501ce27d5b95de098275a35",
+    "file_name": "FPT_2025_540297.pdf"
+  },
+  "blocks": [
+    {"id": "p87-b1", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.06, 40.48, 190.51, 69.69]},
+    {"id": "p87-b2", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.27, 109.12, 155.09, 117.31]},
+    {"id": "p87-b3", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.27, 135.12, 96.79, 143.31]},
+    {"id": "p87-b4", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.27, 161.12, 122.39, 169.31]},
+    {"id": "p87-b5", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.27, 187.12, 142.23, 195.31]},
+    {"id": "p87-b6", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.27, 213.12, 189.99, 221.31]},
+    {"id": "p87-b7", "type": "furniture", "text": "0066 QUẢN TRỊ CÔNG TY", "bbox": [25.27, 239.31, 121.1, 247.31]},
+    {"id": "p87-b8", "type": "furniture", "text": "Mô hình quản trị và vai trò của\ncác bên liên quan", "bbox": [65.65, 259.75, 176.41, 278.75]},
+    {"id": "p87-b9", "type": "furniture", "text": "Quản trị công ty năm 2025", "bbox": [65.65, 286.75, 163.57, 294.75]},
+    {"id": "p87-b10", "type": "furniture", "text": "Báo cáo của HĐQT", "bbox": [65.65, 302.75, 135.64, 310.75]},
+    {"id": "p87-b11", "type": "furniture", "text": "Báo cáo của Ban Kiểm soát", "bbox": [65.65, 318.75, 166.1, 326.75]},
+    {"id": "p87-b12", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.27, 341.12, 100.21, 349.31]},
+    {"id": "p87-b13", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.27, 367.12, 166.3, 375.31]},
+    {
+      "id": "p87-t1",
+      "type": "table",
+      "title": "Danh sách Thành viên HĐQT nhiệm kỳ 2022-2027 và số cuộc họp tham dự trong năm 2025",
+      "continued": false,
+      "bbox": [258.9, 43.62, 1002.9, 501.45],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Chức vụ tại FPT và", "các công ty khác"], "bbox": [380.56, 81.51, 462.39, 102.01]},
+        {"key": "c2", "header_lines": ["Kinh nghiệm", "chuyên môn"], "bbox": [587.77, 81.51, 642.15, 102.01]},
+        {"key": "c3", "header_lines": ["Tỷ lệ", "sở hữu"], "bbox": [675.73, 81.51, 704.49, 102.01]},
+        {"key": "c4", "header_lines": ["Ngày bắt đầu là", "thành viên HĐQT HĐQT"], "bbox": [751.45, 81.51, 879.31, 102.01]},
+        {"key": "c5", "header_lines": ["Số buổi họp", "tham dự tham dự"], "bbox": [866.86, 81.51, 984.13, 102.68]},
+        {"key": "c6", "header_lines": ["Tỷ lệ", "họp"], "bbox": [982.48, 82.18, 1002.9, 102.68]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Ông Trương Gia Bình",
+          "note": null,
+          "bbox": [267.82, 129.98, 1002.88, 205.49],
+          "cells": {
+            "c1": {
+              "raw": "Chủ tịch HĐQT FPT\nThành viên HĐQT FPT Telecom\nChủ tịch HĐTV FPT Education\nThành viên Hội đồng Trường Đại học FPT",
+              "bbox": [382.92, 129.98, 558.79, 205.49]
+            },
+            "c2": {"raw": "CNTT", "bbox": [587.78, 129.99, 612.76, 139.49]},
+            "c3": {"raw": "6,89%", "bbox": [676.85, 129.99, 704.5, 139.49]},
+            "c4": {"raw": "07/04/2022\nTái bầu cử", "bbox": [751.45, 130.03, 807.98, 152.03]},
+            "c5": {"raw": "07/07", "bbox": [886.38, 130.03, 914.22, 140.03]},
+            "c6": {"raw": "100%", "bbox": [977.43, 130.03, 1002.88, 140.03]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Ông Bùi Quang Ngọc",
+          "note": null,
+          "bbox": [267.81, 228.81, 1002.88, 282.32],
+          "cells": {
+            "c1": {"raw": "Phó chủ tịch HĐQT FPT\nChủ sở hữu Công ty TNHH BĐS BQ\nThành viên Hội đồng Trường Đại học FPT", "bbox": [383.12, 228.81, 558.99, 282.32]},
+            "c2": {"raw": "CNTT", "bbox": [587.77, 229.24, 612.75, 238.74]},
+            "c3": {"raw": "1,48%", "bbox": [678.49, 229.24, 704.49, 238.74]},
+            "c4": {"raw": "07/04/2022\nTái bầu cử", "bbox": [751.45, 229.29, 807.98, 251.29]},
+            "c5": {"raw": "06/07", "bbox": [885.73, 229.29, 914.22, 239.29]},
+            "c6": {"raw": "86%", "bbox": [982.49, 229.29, 1002.88, 239.29]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Ông Đỗ Cao Bảo",
+          "note": null,
+          "bbox": [267.81, 308.44, 1002.88, 419.94],
+          "cells": {
+            "c1": {
+              "raw": "Ủy viên HĐQT FPT\nCổ đông lớn Công ty CP Đầu tư và\nThương mại BDM\nỦy viên HĐQT Công ty Cổ phần Đô thị\nFPT Đà Nẵng\nThành viên góp vốn Công ty TNHH\nBDMD Aumoria Đà Nẵng",
+              "bbox": [382.91, 308.44, 546.58, 419.94]
+            },
+            "c2": {"raw": "CNTT", "bbox": [587.77, 308.44, 612.75, 317.94]},
+            "c3": {"raw": "0,93%", "bbox": [676.35, 308.44, 704.49, 317.94]},
+            "c4": {"raw": "07/04/2022\nTái bầu cử", "bbox": [751.45, 308.49, 807.98, 330.49]},
+            "c5": {"raw": "07/07", "bbox": [886.38, 308.49, 914.22, 318.49]},
+            "c6": {"raw": "100%", "bbox": [977.43, 308.49, 1002.88, 318.49]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Ông Jean-Charles Belliol",
+          "note": null,
+          "bbox": [267.81, 446.22, 1002.88, 468.27],
+          "cells": {
+            "c1": {"raw": "Ủy viên HĐQT độc lập", "bbox": [382.91, 446.22, 477.64, 455.72]},
+            "c2": {"raw": "Tài chính", "bbox": [587.77, 446.22, 626.99, 455.72]},
+            "c3": {"raw": "0,00%", "bbox": [675.3, 446.22, 704.49, 455.72]},
+            "c4": {"raw": "07/04/2022\nTái bầu cử", "bbox": [751.45, 446.27, 807.98, 468.27]},
+            "c5": {"raw": "07/07", "bbox": [886.38, 446.27, 914.22, 456.27]},
+            "c6": {"raw": "100%", "bbox": [977.43, 446.27, 1002.88, 456.27]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Ông Hiroshi Yokotsuka",
+          "note": null,
+          "bbox": [267.81, 491.4, 1002.88, 501.45],
+          "cells": {
+            "c1": {"raw": "Ủy viên HĐQT độc lập", "bbox": [382.91, 491.4, 477.64, 500.9]},
+            "c2": {"raw": "CNTT", "bbox": [587.77, 491.4, 612.75, 500.9]},
+            "c3": {"raw": "0,00%", "bbox": [675.3, 491.4, 704.49, 500.9]},
+            "c4": {"raw": "07/04/2022", "bbox": [751.45, 491.45, 807.98, 501.45]},
+            "c5": {"raw": "07/07", "bbox": [886.38, 491.45, 914.22, 501.45]},
+            "c6": {"raw": "100%", "bbox": [977.43, 491.45, 1002.88, 501.45]}
+          }
+        }
+      ]
+    },
+    {"id": "p87-b15", "type": "furniture", "text": "85", "bbox": [60.9, 546.47, 75.27, 558.52]},
+    {"id": "p87-b14", "type": "paragraph", "text": "Thành", "bbox": [308.11, 43.62, 336.31, 53.62]},
+    {"id": "p87-b16", "type": "paragraph", "text": "viên", "bbox": [338.28, 43.62, 357.07, 53.62]},
+    {"id": "p87-b17", "type": "paragraph", "text": "HĐQT", "bbox": [359.04, 43.62, 386.19, 53.62]}
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "ir_version": "1",
+  "page": 152,
+  "printed_page": null,
+  "page_class": "cash_flow",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+    "file_name": "TCB_2025_539917.pdf"
+  },
+  "blocks": [
+    {"id": "p152-b1", "type": "paragraph", "text": "B04/TCTD-HN", "bbox": [490.08, 62.52, 544.25, 71.02]},
+    {"id": "p152-b2", "type": "paragraph", "text": "Thuyết minh", "bbox": [292.17, 110.82, 334.29, 118.32]},
+    {"id": "p152-b3", "type": "paragraph", "text": "2025", "bbox": [423.63, 110.82, 441.73, 118.32]},
+    {"id": "p152-b4", "type": "paragraph", "text": "2024", "bbox": [520.56, 110.82, 538.58, 118.32]},
+    {"id": "p152-b5", "type": "paragraph", "text": "Triệu đồng", "bbox": [406.25, 120.49, 441.73, 127.99]},
+    {"id": "p152-b6", "type": "paragraph", "text": "Triệu đồng", "bbox": [503.1, 120.49, 538.58, 127.99]},
+    {
+      "id": "p152-b7",
+      "type": "paragraph",
+      "text": "Thuyết minh báo cáo tài chính hợp nhất\ntại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [646.79, 106.06, 986.09, 138.74]
+    },
+    {"id": "p152-b8", "type": "paragraph", "text": "Báo cáo tài chính 303", "bbox": [1069.29, 25.6, 1148.03, 32.7]},
+    {"id": "p152-b9", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [1093.69, 62.52, 1148.03, 71.02]},
+    {"id": "p152-b10", "type": "heading", "text": "1. THÔNG TIN CHUNG", "bbox": [646.48, 167.9, 763.55, 179.9]},
+    {"id": "p152-b11", "type": "paragraph", "text": "Thuyết minh", "bbox": [292.17, 319.2, 334.29, 326.7]},
+    {"id": "p152-b12", "type": "paragraph", "text": "2025", "bbox": [423.63, 319.2, 441.73, 326.7]},
+    {"id": "p152-b13", "type": "paragraph", "text": "2024", "bbox": [520.56, 319.2, 538.58, 326.7]},
+    {"id": "p152-b14", "type": "paragraph", "text": "Triệu đồng", "bbox": [406.25, 328.87, 441.73, 336.37]},
+    {"id": "p152-b15", "type": "paragraph", "text": "Triệu đồng", "bbox": [503.1, 328.87, 538.58, 336.37]},
+    {"id": "p152-b16", "type": "paragraph", "text": "Hà Nội, Việt Nam\nNgày 16 tháng 3 năm 2026", "bbox": [444.6, 511.67, 544.25, 530.67]},
+    {"id": "p152-b17", "type": "paragraph", "text": "Người phê duyệt:", "bbox": [229.72, 549.14, 294.3, 557.64]},
+    {"id": "p152-b18", "type": "paragraph", "text": "Người phê duyệt:", "bbox": [412.04, 549.14, 476.61, 557.64]},
+    {"id": "p152-b19", "type": "paragraph", "text": "_________________________", "bbox": [229.72, 648.64, 348.55, 657.14]},
+    {"id": "p152-b20", "type": "paragraph", "text": "_________________________\nÔng Jens Lottner", "bbox": [412.04, 648.64, 530.87, 667.89]},
+    {"id": "p152-b21", "type": "paragraph", "text": "Bà Nguyễn Thị Trà My\nKế toán Trưởng", "bbox": [229.72, 659.4, 312.34, 678.39]},
+    {"id": "p152-b22", "type": "paragraph", "text": "Tổng Giám đốc", "bbox": [412.04, 669.89, 469.27, 678.39]},
+    {
+      "id": "p152-b23",
+      "type": "paragraph",
+      "text": "Ngân hàng Thương mại Cổ phần Kỹ thương Việt Nam (sau đây gọi tắt là “Ngân hàng”) là một ngân hàng thương mại cổ phần được thành\nlập và đăng ký tại nước Cộng hòa Xã hội Chủ nghĩa Việt Nam.",
+      "bbox": [646.66, 197.8, 1148.09, 216.8]
+    },
+    {
+      "id": "p152-b24",
+      "type": "paragraph",
+      "text": "Ngân hàng hoạt động theo Giấy phép thành lập và hoạt động Ngân hàng số 0038/GP-",
+      "bbox": [817.98, 255.63, 1147.86, 264.13]
+    },
+    {"id": "p152-b25", "type": "paragraph", "text": "Thành lập và hoạt động", "bbox": [646.48, 256.1, 750.84, 266.1]},
+    {
+      "id": "p152-b26",
+      "type": "paragraph",
+      "text": "NHNN do Ngân hàng Nhà nước Việt Nam (“NHNN”) cấp ngày 6 tháng 3 năm 2018 (cấp đổi\nlại cho Giấy phép hoạt động số 0040/NH-GP cấp ngày 6 tháng 8 năm 1993) và các Quyết\nđịnh sửa đổi, bổ sung Giấy phép thành lập và hoạt động Ngân hàng từng thời kỳ. Thời gian\nhoạt động của Ngân hàng là 99 năm kể từ ngày 6 tháng 8 năm 1993.",
+      "bbox": [817.98, 266.12, 1147.87, 306.12]
+    },
+    {
+      "id": "p152-b27",
+      "type": "paragraph",
+      "text": "Các hoạt động chính của Ngân hàng bao gồm huy động và nhận tiền gửi ngắn, trung và dài\nhạn từ các tổ chức và cá nhân; cung cấp tín dụng ngắn, trung và dài hạn dựa trên tính chất\nvà khả năng cung ứng nguồn vốn của Ngân hàng; thực hiện các nghiệp vụ thanh toán và\nngân quỹ và các dịch vụ ngân hàng khác được NHNN cho phép; thực hiện đầu tư vào công\nty con, công ty liên kết, công ty liên doanh, và các công ty khác; đầu tư trái phiếu và kinh\ndoanh ngoại tệ theo quy định của pháp luật.",
+      "bbox": [817.98, 318.62, 1147.88, 379.61]
+    },
+    {
+      "id": "p152-b28",
+      "type": "paragraph",
+      "text": "Vốn điều lệ của Ngân hàng tại ngày 31 tháng 12 năm 2025 là 70.862.404.140.000 đồng",
+      "bbox": [817.98, 418.43, 1137.8, 426.93]
+    },
+    {"id": "p152-b29", "type": "paragraph", "text": "Vốn điều lệ", "bbox": [646.48, 418.93, 696.73, 428.93]},
+    {"id": "p152-b30", "type": "paragraph", "text": "(ngày 31 tháng 12 năm 2024: 70.648.517.390.000 đồng).", "bbox": [817.98, 428.93, 1023.07, 437.43]},
+    {
+      "id": "p152-b31",
+      "type": "paragraph",
+      "text": "Hội sở chính của Ngân hàng đặt tại số 6 Quang Trung, phường Cửa Nam, Hà Nội. Tại ngày",
+      "bbox": [817.98, 477.95, 1147.82, 486.45]
+    },
+    {"id": "p152-b32", "type": "paragraph", "text": "Mạng lưới hoạt động", "bbox": [646.48, 478.45, 737.7, 488.45]},
+    {
+      "id": "p152-b33",
+      "type": "paragraph",
+      "text": "31 tháng 12 năm 2025, Ngân hàng có một (1) Hội sở chính, hai (2) văn phòng đại diện, ba\ntrăm lẻ hai (302) chi nhánh, phòng giao dịch trên cả nước và năm (5) công ty con, một (1)\ncông ty liên kết.",
+      "bbox": [817.98, 488.45, 1147.84, 517.94]
+    },
+    {
+      "id": "p152-t1",
+      "type": "table",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT (tiếp theo) B04/TCTD-HN",
+      "continued": true,
+      "logical_table_id": "cash_flow",
+      "bbox": [48.15, 110.82, 538.58, 287.77],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["2025", "đồng"], "bbox": [423.63, 110.82, 441.73, 127.99]},
+        {"key": "c2", "header_lines": ["2024", "đồng"], "bbox": [520.56, 110.82, 538.58, 127.99]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG ĐẦU TƯ",
+          "note": null,
+          "indent": 48.18,
+          "bbox": [48.18, 139.5, 199.5, 147.0],
+          "cells": {}
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Mua sắm tài sản cố định",
+          "note": null,
+          "indent": 48.18,
+          "bbox": [48.18, 157.86, 538.57, 165.36],
+          "cells": {
+            "c1": {"raw": "(657.030)", "bbox": [410.63, 157.86, 441.72, 165.36]},
+            "c2": {"raw": "(1.618.886)", "bbox": [504.0, 157.86, 538.57, 165.36]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Tiền thu từ thanh lý tài sản cố định",
+          "note": null,
+          "indent": 48.18,
+          "bbox": [48.18, 176.54, 538.56, 184.04],
+          "cells": {
+            "c1": {"raw": "3.503", "bbox": [422.47, 176.54, 441.72, 184.04]},
+            "c2": {"raw": "1.741.528", "bbox": [508.98, 176.54, 538.56, 184.04]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Tiền chi từ thanh lý tài sản cố định",
+          "note": null,
+          "indent": 48.17,
+          "bbox": [48.17, 195.22, 538.56, 202.72],
+          "cells": {
+            "c1": {"raw": "(3.015)", "bbox": [420.3, 195.22, 441.71, 202.72]},
+            "c2": {"raw": "(1.249.743)", "bbox": [503.94, 195.22, 538.56, 202.72]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Tiền thu từ bán bất động sản đầu tư",
+          "note": null,
+          "indent": 48.16,
+          "bbox": [48.16, 213.91, 538.55, 221.41],
+          "cells": {
+            "c1": {"raw": "-", "bbox": [439.45, 213.91, 441.7, 221.41]},
+            "c2": {"raw": "736.219", "bbox": [512.74, 213.91, 538.55, 221.41]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "Tiền chi đầu tư, góp vốn vào các đơn vị khác",
+          "note": null,
+          "indent": 48.15,
+          "bbox": [48.15, 232.59, 538.55, 240.09],
+          "cells": {
+            "c1": {"raw": "(199.836)", "bbox": [411.81, 232.59, 441.7, 240.09]},
+            "c2": {"raw": "(56.278)", "bbox": [511.35, 232.59, 538.55, 240.09]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Tiền thu cổ tức và lợi nhuận được chia từ các khoản đầu tư, góp vốn dài hạn",
+          "note": "31",
+          "indent": 48.15,
+          "bbox": [48.15, 251.27, 538.54, 268.77],
+          "cells": {
+            "c1": {"raw": "39.938", "bbox": [418.44, 251.27, 441.69, 258.77]},
+            "c2": {"raw": "64.561", "bbox": [516.61, 251.27, 538.54, 258.77]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": null,
+          "label_raw": "Lưu chuyển tiền thuần sử dụng vào hoạt động đầu tư",
+          "note": null,
+          "indent": 48.15,
+          "bbox": [48.15, 280.27, 538.54, 287.77],
+          "cells": {
+            "c1": {"raw": "(816.440)", "bbox": [409.23, 280.27, 441.69, 287.77]},
+            "c2": {"raw": "(382.599)", "bbox": [504.74, 280.27, 538.54, 287.77]}
+          }
+        }
+      ]
+    },
+    {
+      "id": "p152-t2",
+      "type": "table",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT (tiếp theo) B04/TCTD-HN",
+      "continued": true,
+      "logical_table_id": "cash_flow",
+      "bbox": [48.17, 319.2, 538.58, 486.15],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["2025", "đồng"], "bbox": [423.63, 319.2, 441.73, 336.37]},
+        {"key": "c2", "header_lines": ["2024", "đồng"], "bbox": [520.56, 319.2, 538.58, 336.37]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG TÀI CHÍNH",
+          "note": null,
+          "indent": 48.18,
+          "bbox": [48.18, 347.88, 208.62, 355.38],
+          "cells": {}
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Tăng vốn cổ phần từ phát hành cổ phiếu",
+          "note": null,
+          "indent": 48.18,
+          "bbox": [48.18, 366.24, 538.57, 373.74],
+          "cells": {
+            "c1": {"raw": "213.822", "bbox": [415.47, 366.24, 441.72, 373.74]},
+            "c2": {"raw": "198.242", "bbox": [512.28, 366.24, 538.57, 373.74]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Tiền thu được từ góp vốn của cổ đông không kiểm soát",
+          "note": null,
+          "indent": 48.18,
+          "bbox": [48.18, 384.92, 538.56, 392.42],
+          "cells": {
+            "c1": {"raw": "12.106.839", "bbox": [407.03, 384.92, 441.72, 392.42]},
+            "c2": {"raw": "2.253", "bbox": [519.27, 384.92, 538.56, 392.42]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Cổ tức trả cho cổ đông",
+          "note": null,
+          "indent": 48.17,
+          "bbox": [48.17, 403.6, 538.56, 411.1],
+          "cells": {
+            "c1": {"raw": "(7.084.911)", "bbox": [408.39, 403.6, 441.72, 411.1]},
+            "c2": {"raw": "(5.210.255)", "bbox": [502.02, 403.6, 538.56, 411.1]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Lưu chuyển tiền thuần từ/(sử dụng vào) hoạt động tài chính",
+          "note": null,
+          "indent": 48.17,
+          "bbox": [48.17, 422.61, 538.56, 430.11],
+          "cells": {
+            "c1": {"raw": "5.235.750", "bbox": [406.8, 422.61, 441.72, 430.11]},
+            "c2": {"raw": "(5.009.760)", "bbox": [498.88, 422.61, 538.56, 430.11]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "Lưu chuyển tiền thuần trong năm",
+          "note": null,
+          "indent": 48.17,
+          "bbox": [48.17, 441.29, 538.56, 448.79],
+          "cells": {
+            "c1": {"raw": "44.342.928", "bbox": [401.6, 441.29, 441.72, 448.79]},
+            "c2": {"raw": "36.984.196", "bbox": [500.38, 441.29, 538.56, 448.79]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Tiền và các khoản tương đương tiền đầu năm",
+          "note": "35",
+          "indent": 48.17,
+          "bbox": [48.17, 459.97, 538.56, 467.47],
+          "cells": {
+            "c1": {"raw": "147.484.415", "bbox": [400.94, 459.97, 441.72, 467.47]},
+            "c2": {"raw": "110.500.219", "bbox": [497.85, 459.97, 538.56, 467.47]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": null,
+          "label_raw": "Tiền và các khoản tương đương tiền cuối năm",
+          "note": "35",
+          "indent": 48.17,
+          "bbox": [48.17, 478.65, 538.56, 486.15],
+          "cells": {
+            "c1": {"raw": "191.827.343", "bbox": [401.07, 478.65, 441.72, 486.15]},
+            "c2": {"raw": "147.484.415", "bbox": [497.79, 478.65, 538.56, 486.15]}
+          }
+        }
+      ]
+    },
+    {"id": "p152-b36", "type": "paragraph", "text": "302 Báo cáo thường niên 2025", "bbox": [42.52, 25.6, 152.46, 32.7]},
+    {
+      "id": "p152-b37",
+      "type": "paragraph",
+      "text": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT (tiếp theo)\ncho năm tài chính kết thúc ngày 31 tháng 12 năm 2025",
+      "bbox": [42.52, 62.52, 242.96, 80.12]
+    },
+    {"id": "p152-b38", "type": "paragraph", "text": "Người lập:", "bbox": [42.52, 549.14, 80.73, 557.64]},
+    {"id": "p152-b39", "type": "paragraph", "text": "_________________________\nBà Trần Thu Vân\nKế toán", "bbox": [42.52, 648.65, 161.35, 678.4]}
+  ]
+}

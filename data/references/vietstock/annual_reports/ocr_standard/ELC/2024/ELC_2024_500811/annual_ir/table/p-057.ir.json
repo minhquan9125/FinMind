@@ -1,0 +1,82 @@
+{
+  "ir_version": "1",
+  "page": 57,
+  "printed_page": null,
+  "page_class": "notes",
+  "page_size": {"width": 841.89, "height": 595.569, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "937811ef432d7fb384a7d37bc6a8161e567e4d3519e8b10b5198e8126f6bb7fe",
+    "file_name": "ELC_2024_500811.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p57-b1",
+      "type": "paragraph",
+      "text": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM\nTòa nhà Elcom, phố Duy Tân, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội",
+      "bbox": [62.65, 76.22, 382.93, 98.61]
+    },
+    {
+      "id": "p57-b2",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (TIẾP)\n(Các thuyết minh này là bộ phận hợp thành và cần được đọc đồng thời với Báo cáo tài chính hợp nhất )",
+      "bbox": [62.53, 107.22, 476.2, 129.57]
+    },
+    {"id": "p57-b3", "type": "heading", "text": "17. PHẢI TRẢ NGƯỜI BÁN", "bbox": [62.53, 142.61, 213.44, 154.34]},
+    {
+      "id": "p57-b4",
+      "type": "paragraph",
+      "text": "- Công ty TNHH phát triển THT\n- Ciena Communications Inc\n- Hudson Capital Holding Ltd\n- TWS International Trading Pte Ltd\n- Công ty TNHH Kết cấu thép 568\n- Công ty CP Thép Kỳ Nam",
+      "bbox": [100.95, 224.22, 265.14, 300.67]
+    },
+    {
+      "id": "p57-b5",
+      "type": "paragraph",
+      "text": "Ban hành theo Thông tư số 202/2014/TT - BTC ngày 22/12/2014 của Bộ Tài chính",
+      "bbox": [440.6, 87.76, 768.11, 98.61]
+    },
+    {"id": "p57-b6", "type": "paragraph", "text": "31/12/2024\nGiá trị Số có khả năng\ntrả nợ", "bbox": [437.85, 156.16, 566.86, 193.53]},
+    {"id": "p57-b7", "type": "paragraph", "text": "VND", "bbox": [446.5, 195.32, 469.41, 205.46]},
+    {
+      "id": "p57-b8",
+      "type": "paragraph",
+      "text": "VND\n443.447.980.646 443.447.980.646 474.894.502.331 474.894.502.331\n191.343.202.600 191.343.202.600\n74.309.721.621",
+      "bbox": [393.77, 195.32, 762.83, 247.53]
+    },
+    {"id": "p57-b9", "type": "paragraph", "text": "74.309.721.621 180.456.183.108 180.456.183.108", "bbox": [496.89, 237.38, 762.83, 247.53]},
+    {"id": "p57-b10", "type": "paragraph", "text": "86.043.707.928", "bbox": [399.26, 250.44, 469.24, 260.58]},
+    {"id": "p57-b11", "type": "paragraph", "text": "86.043.707.928", "bbox": [496.89, 250.44, 566.87, 260.58]},
+    {"id": "p57-b12", "type": "paragraph", "text": "36.313.081.200", "bbox": [399.26, 263.5, 469.24, 273.64]},
+    {"id": "p57-b13", "type": "paragraph", "text": "36.313.081.200\n-\n-\n-\n55.438.267.297", "bbox": [399.26, 263.5, 566.87, 325.87]},
+    {
+      "id": "p57-b14",
+      "type": "paragraph",
+      "text": "55.438.267.297 123.277.917.441 123.277.917.441\n-\n443.447.980.646 443.447.980.646 474.894.502.331 474.894.502.331",
+      "bbox": [393.77, 315.73, 762.83, 354.88]
+    },
+    {"id": "p57-b15", "type": "heading", "text": "BÁO CÁO TÀI CHÍNH", "bbox": [724.11, 29.4, 798.66, 37.4]},
+    {"id": "p57-b16", "type": "form_code", "text": "MẪU SỐ B09 -DN/HN", "bbox": [673.91, 76.22, 768.23, 87.28]},
+    {"id": "p57-b17", "type": "paragraph", "text": "01/01/2024\nGiá trị Số có khả năng\ntrả nợ", "bbox": [633.85, 156.16, 762.86, 193.53]},
+    {"id": "p57-b18", "type": "paragraph", "text": "VND", "bbox": [642.5, 195.32, 665.4, 205.46]},
+    {"id": "p57-b19", "type": "paragraph", "text": "VND", "bbox": [740.1, 195.32, 763.0, 205.46]},
+    {"id": "p57-b20", "type": "paragraph", "text": "-", "bbox": [661.4, 224.32, 665.07, 234.47]},
+    {"id": "p57-b21", "type": "paragraph", "text": "-", "bbox": [758.99, 224.32, 762.66, 234.47]},
+    {"id": "p57-b22", "type": "paragraph", "text": "-", "bbox": [661.4, 250.44, 665.07, 260.58]},
+    {"id": "p57-b23", "type": "paragraph", "text": "-", "bbox": [758.99, 250.44, 762.66, 260.58]},
+    {"id": "p57-b24", "type": "paragraph", "text": "34.734.128.000", "bbox": [595.27, 263.5, 665.25, 273.64]},
+    {"id": "p57-b25", "type": "paragraph", "text": "34.734.128.000", "bbox": [692.87, 263.5, 762.84, 273.64]},
+    {"id": "p57-b26", "type": "paragraph", "text": "-\n70.238.790.846", "bbox": [563.01, 276.55, 665.25, 286.7]},
+    {"id": "p57-b27", "type": "paragraph", "text": "70.238.790.846", "bbox": [692.87, 276.55, 762.84, 286.7]},
+    {"id": "p57-b28", "type": "paragraph", "text": "-\n32.988.973.233", "bbox": [563.01, 289.61, 665.25, 299.75]},
+    {"id": "p57-b29", "type": "paragraph", "text": "32.988.973.233", "bbox": [692.87, 289.61, 762.84, 299.75]},
+    {"id": "p57-b30", "type": "paragraph", "text": "-\n33.198.509.703", "bbox": [563.01, 302.67, 665.25, 312.81]},
+    {"id": "p57-b31", "type": "paragraph", "text": "33.198.509.703", "bbox": [692.87, 302.67, 762.84, 312.81]},
+    {"id": "p57-b32", "type": "paragraph", "text": "-", "bbox": [563.01, 328.76, 566.68, 338.91]},
+    {"id": "p57-b33", "type": "paragraph", "text": "-", "bbox": [661.4, 328.76, 665.07, 338.91]},
+    {"id": "p57-b34", "type": "paragraph", "text": "-", "bbox": [758.99, 328.76, 762.66, 338.91]},
+    {"id": "p57-b35", "type": "paragraph", "text": "Báo cáo thường niên 2024\n110044", "bbox": [50.01, 29.01, 170.2, 51.9]},
+    {"id": "p57-b36", "type": "paragraph", "text": "Ngắn hạn", "bbox": [100.95, 212.41, 146.38, 222.55]},
+    {"id": "p57-b37", "type": "paragraph", "text": "- Công ty TNHH BST\n- Các đối tượng khác\nb) Dài hạn\nCộng", "bbox": [100.95, 302.57, 200.41, 356.0]}
+  ]
+}

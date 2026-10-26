@@ -1,0 +1,142 @@
+{
+  "document_sha256": "25325fe208bd565c45e0ac92587df429199b050a5eac7d0309eb05968511f2ae",
+  "scope": "audited_financial_statements",
+  "pages": 5,
+  "page_ranges": [
+    {
+      "start": 129,
+      "end": 133
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "auditor_report",
+      "start": 129,
+      "end": 129
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 130,
+      "end": 131
+    },
+    {
+      "page_class": "income_statement",
+      "start": 132,
+      "end": 132
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 133,
+      "end": 133
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 129,
+      "printed_page": null,
+      "file": "p-129.ir.json",
+      "page_class": "auditor_report",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 130,
+      "printed_page": null,
+      "file": "p-130.ir.json",
+      "page_class": "balance_sheet",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 131,
+      "printed_page": "27",
+      "file": "p-131.ir.json",
+      "page_class": "balance_sheet",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 132,
+      "printed_page": null,
+      "file": "p-132.ir.json",
+      "page_class": "income_statement",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 133,
+      "printed_page": null,
+      "file": "p-133.ir.json",
+      "page_class": "cash_flow",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    }
+  ],
+  "structured_table_ranges": [
+    {
+      "start": 130,
+      "end": 133
+    }
+  ],
+  "needs_review": [
+    {
+      "pdf_page": 130,
+      "reason": "arithmetic_template_unknown"
+    },
+    {
+      "pdf_page": 131,
+      "reason": "arithmetic_template_unknown"
+    },
+    {
+      "pdf_page": 132,
+      "reason": "arithmetic_template_unknown"
+    },
+    {
+      "pdf_page": 133,
+      "reason": "arithmetic_template_unknown"
+    }
+  ],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [
+    {
+      "name": "template_unknown",
+      "reason": "template_not_implemented",
+      "detected_profile": "TT49_BANK",
+      "pdf_pages": [
+        130,
+        131,
+        132,
+        133
+      ]
+    }
+  ],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": "TT49_BANK",
+  "arithmetic_template_id": "TEMPLATE_UNKNOWN",
+  "arithmetic_template_sha256": null,
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

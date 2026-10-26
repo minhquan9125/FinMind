@@ -14,10 +14,29 @@ from .repository import FileMarketDataRepository
 from .sdk import BatchSDKClient, CollectorLock
 from .session import SessionGate
 from .news import FireAntNews, NewsService
+from ..core.db import connect, disconnect, get_pool
 
 
 @asynccontextmanager
 async def lifespan(app):
+    # The standalone market API needs the same user/role store as the main app.
+    # When nested by src.main, its pool already exists and remains owned there.
+    owns_pool = False
+    try:
+        get_pool()
+    except RuntimeError:
+        await connect()
+        owns_pool = True
+    try:
+        async with market_lifespan(app):
+            yield
+    finally:
+        if owns_pool:
+            await disconnect()
+
+
+@asynccontextmanager
+async def market_lifespan(app):
     app.state.live = None
     root = Path(os.getenv("FINMIND_DATA_ROOT") or Path(__file__).resolve().parents[3]).resolve()
     news_fetch = FireAntNews()
