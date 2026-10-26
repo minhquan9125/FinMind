@@ -1,0 +1,1198 @@
+{
+  "evaluation_date": "2026-10-23",
+  "parser_conversations": [
+    {
+      "persona": "pho_thong",
+      "title": "Hỏi bổ sung từng thông tin",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuận là bao nhiêu",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "MISSING_COMPANY",
+          "response": "Bạn muốn xem công ty nào?",
+          "scope": {
+            "source_type": "BCTC",
+            "metric_code": null,
+            "_pending_metric": "PROFIT",
+            "reporting_entity": "UNKNOWN"
+          },
+          "mismatches": []
+        },
+        {
+          "question": "fpt",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "MISSING_METRIC",
+          "response": "Bạn muốn lợi nhuận trước thuế hay sau thuế?",
+          "scope": {
+            "source_type": "BCTC",
+            "metric_code": null,
+            "_pending_metric": "PROFIT",
+            "reporting_entity": "UNKNOWN",
+            "companies": [
+              "FPT"
+            ]
+          },
+          "mismatches": []
+        },
+        {
+          "question": "sau thuế",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "MISSING_PERIOD",
+          "response": "Bạn muốn xem kỳ nào? Ví dụ: quý 2/2026, năm 2025 hoặc tin tức tháng 9/2026.",
+          "scope": {
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "companies": [
+              "FPT"
+            ]
+          },
+          "mismatches": []
+        },
+        {
+          "question": "quý 4 2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "companies": [
+              "FPT"
+            ],
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Câu đầy đủ nhưng thứ tự từ tự nhiên",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuận của fpt quý 4 sau thuế năm 2025 là bao nhiêu",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Nhớ quý khi người dùng bổ sung năm",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuận của fpt quý 4 sau thuế là bao nhiêu",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "MISSING_YEAR",
+          "response": "Bạn muốn xem quý 4 của năm nào?",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "_pending_quarter": 4,
+            "_pending_ytd": false
+          },
+          "mismatches": []
+        },
+        {
+          "question": "2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Dùng từ lời thay lợi nhuận",
+      "passed": true,
+      "turns": [
+        {
+          "question": "FPT lời bao nhiêu năm 2025",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "MISSING_METRIC",
+          "response": "Bạn muốn lợi nhuận trước thuế hay sau thuế?",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": null,
+            "_pending_metric": "PROFIT",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "measure_basis": "FULL_YEAR"
+          },
+          "mismatches": []
+        },
+        {
+          "question": "sau thuế",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "measure_basis": "FULL_YEAR"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Gõ không dấu",
+      "passed": true,
+      "turns": [
+        {
+          "question": "loi nhuan cua fpt quy 4 sau thue nam 2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Gõ sai một dấu trong lợi nhuận",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuân fpt năm 2025",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "MISSING_METRIC",
+          "response": "Bạn muốn lợi nhuận trước thuế hay sau thuế?",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": null,
+            "_pending_metric": "PROFIT",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "measure_basis": "FULL_YEAR"
+          },
+          "mismatches": []
+        },
+        {
+          "question": "sau thuế",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "measure_basis": "FULL_YEAR"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Đổi mã bằng câu ngắn",
+      "passed": true,
+      "turns": [
+        {
+          "question": "tiền và tương đương tiền FPT quý 2/2026",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "CASH_AND_CASH_EQUIVALENTS",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2026-Q2"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        },
+        {
+          "question": "còn SSI",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "SSI"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "CASH_AND_CASH_EQUIVALENTS",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2026-Q2"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Đổi năm bằng câu ngắn",
+      "passed": true,
+      "turns": [
+        {
+          "question": "tổng tài sản FPT năm 2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "TOTAL_ASSETS",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        },
+        {
+          "question": "còn năm 2024",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "TOTAL_ASSETS",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2024"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Bắt đầu lại hội thoại",
+      "passed": true,
+      "turns": [
+        {
+          "question": "tổng tài sản FPT năm 2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "TOTAL_ASSETS",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        },
+        {
+          "question": "/moi",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "NEW_CONVERSATION",
+          "response": "Đã bắt đầu câu hỏi mới. Bạn muốn xem mã, chỉ tiêu hoặc tin tức nào?",
+          "scope": {},
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Hỏi nguồn của câu trước",
+      "passed": true,
+      "turns": [
+        {
+          "question": "tổng tài sản FPT năm 2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "TOTAL_ASSETS",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        },
+        {
+          "question": "nguồn đâu",
+          "decision": "RESOLVE_REFERENCE",
+          "reason_code": "SOURCE_REFERENCE",
+          "response": "Xem nguồn của câu trả lời trước.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "TOTAL_ASSETS",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Hỏi giá cổ phiếu",
+      "passed": true,
+      "turns": [
+        {
+          "question": "giá cổ phiếu FPT hôm nay",
+          "decision": "UNSUPPORTED",
+          "reason_code": "PRICE_QUERY_SEPARATE",
+          "response": "Câu hỏi giá cần luồng tra cứu giá có cấu trúc; chat này hiện tìm báo cáo tài chính và tin tức.",
+          "scope": {},
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "pho_thong",
+      "title": "Hỏi nên mua hay không",
+      "passed": true,
+      "turns": [
+        {
+          "question": "nên mua FPT không",
+          "decision": "UNSUPPORTED",
+          "reason_code": "UNSUPPORTED_ADVICE",
+          "response": "Chức năng này không cung cấp tư vấn mua bán.",
+          "scope": {},
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Viết tắt LNST",
+      "passed": true,
+      "turns": [
+        {
+          "question": "LNST FPT quý 4/2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Viết tắt LNTT",
+      "passed": true,
+      "turns": [
+        {
+          "question": "LNTT FPT quý 4/2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_BEFORE_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "LNST cổ đông công ty mẹ phải khác LNST tổng",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuận sau thuế thuộc cổ đông công ty mẹ FPT quý 4/2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PARENT_NET_PROFIT",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Lợi nhuận chưa phân phối phải khác LNST",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuận sau thuế chưa phân phối FPT quý 4/2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "RETAINED_EARNINGS",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Lũy kế không được lấy riêng quý",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuận sau thuế FPT lũy kế quý 3/2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q3"
+            ],
+            "measure_basis": "YTD"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Riêng quý không được lấy lũy kế",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuận sau thuế FPT quý 4/2025",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Kỳ canonical vẫn phải hiểu riêng quý",
+      "passed": true,
+      "turns": [
+        {
+          "question": "PROFIT_AFTER_TAX FPT 2025-Q4",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025-Q4"
+            ],
+            "measure_basis": "STANDALONE_QUARTER"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Yêu cầu báo cáo hợp nhất",
+      "passed": true,
+      "turns": [
+        {
+          "question": "tổng tài sản FPT hợp nhất quý 2/2026",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "TOTAL_ASSETS",
+            "reporting_entity": "CONSOLIDATED",
+            "periods": [
+              "2026-Q2"
+            ],
+            "measure_basis": "POINT_IN_TIME"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Tách câu hỏi có nhiều chỉ tiêu",
+      "passed": true,
+      "turns": [
+        {
+          "question": "doanh thu thuần và lợi nhuận sau thuế FPT năm 2025",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "MULTIPLE_METRICS",
+          "response": "Bạn muốn xem chỉ tiêu nào trước? Hãy tách mỗi chỉ tiêu thành một câu hỏi.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "metric_code": null
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Hai nhà xuất bản cần làm rõ",
+      "passed": true,
+      "turns": [
+        {
+          "question": "tin tức FPT từ CafeF và FireAnt tháng 9/2026",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "AMBIGUOUS_PUBLISHER",
+          "response": "Bạn muốn xem nguồn CafeF hay FireAnt trước?",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "NEWS",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN"
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Ngày tin tức chính xác",
+      "passed": true,
+      "turns": [
+        {
+          "question": "tin tức FPT CafeF ngày 29/9/2026",
+          "decision": "SEARCH",
+          "reason_code": "SCOPE_READY",
+          "response": "Đang tìm bằng chứng trong corpus đã chọn.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "NEWS",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN",
+            "publisher": "cafef",
+            "periods": [
+              "2026-09-29"
+            ],
+            "measure_basis": null
+          },
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "persona": "chuyen_mon",
+      "title": "Kỳ không hợp lệ phải hỏi lại",
+      "passed": true,
+      "turns": [
+        {
+          "question": "lợi nhuận sau thuế FPT quý 5/2025",
+          "decision": "ASK_CLARIFICATION",
+          "reason_code": "AMBIGUOUS_PERIOD",
+          "response": "Bạn muốn xem quý nào? Vui lòng nêu một kỳ hợp lệ từ quý 1 đến quý 4.",
+          "scope": {},
+          "mismatches": []
+        }
+      ]
+    }
+  ],
+  "live": {
+    "status": "COMPLETED",
+    "elapsed_seconds": 113.78,
+    "budget": {
+      "calls_used": 8,
+      "tokens_reserved": 10499,
+      "unknown_usage": 0,
+      "policy_version": "b1-limits-v1"
+    },
+    "conversations": [
+      {
+        "persona": "pho_thong",
+        "title": "Bổ sung thông tin và lấy số lợi nhuận",
+        "passed": true,
+        "turns": [
+          {
+            "question": "lợi nhuận là bao nhiêu",
+            "status": "ASK_CLARIFICATION",
+            "reason_code": "MISSING_COMPANY",
+            "response": "Bạn muốn xem công ty nào?",
+            "scope": {
+              "source_type": "BCTC",
+              "metric_code": null,
+              "_pending_metric": "PROFIT",
+              "reporting_entity": "UNKNOWN"
+            },
+            "seconds": 0.01,
+            "citations": 0,
+            "model_returned": null,
+            "prompt_version": null,
+            "generation_calls_this_turn": 0,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false
+          },
+          {
+            "question": "fpt",
+            "status": "ASK_CLARIFICATION",
+            "reason_code": "MISSING_METRIC",
+            "response": "Bạn muốn lợi nhuận trước thuế hay sau thuế?",
+            "scope": {
+              "source_type": "BCTC",
+              "metric_code": null,
+              "_pending_metric": "PROFIT",
+              "reporting_entity": "UNKNOWN",
+              "companies": [
+                "FPT"
+              ]
+            },
+            "seconds": 0.0,
+            "citations": 0,
+            "model_returned": null,
+            "prompt_version": null,
+            "generation_calls_this_turn": 0,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false
+          },
+          {
+            "question": "sau thuế",
+            "status": "ASK_CLARIFICATION",
+            "reason_code": "MISSING_PERIOD",
+            "response": "Bạn muốn xem kỳ nào? Ví dụ: quý 2/2026, năm 2025 hoặc tin tức tháng 9/2026.",
+            "scope": {
+              "source_type": "BCTC",
+              "metric_code": "PROFIT_AFTER_TAX",
+              "reporting_entity": "UNKNOWN",
+              "companies": [
+                "FPT"
+              ]
+            },
+            "seconds": 0.0,
+            "citations": 0,
+            "model_returned": null,
+            "prompt_version": null,
+            "generation_calls_this_turn": 0,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false
+          },
+          {
+            "question": "quý 4 2025",
+            "status": "DRAFT_READY",
+            "reason_code": "SUCCESS",
+            "response": "Lợi nhuận sau thuế của Công ty Cổ phần FPT trong quý 4/2025 (riêng quý) là 2,994,964,817,096. [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+            "scope": {
+              "source_type": "BCTC",
+              "metric_code": "PROFIT_AFTER_TAX",
+              "reporting_entity": "UNKNOWN",
+              "companies": [
+                "FPT"
+              ],
+              "periods": [
+                "2025-Q4"
+              ],
+              "measure_basis": "STANDALONE_QUARTER"
+            },
+            "seconds": 7.03,
+            "citations": 1,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 1,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false
+          },
+          {
+            "question": "nguồn đâu",
+            "status": "DRAFT_READY",
+            "reason_code": "SOURCE_REFERENCE",
+            "response": "Nguồn của câu trả lời trước:\n\n[1] Clean mapped financial report 57d5a4ab-366e-55f6-8a4a-025d70490673 — Báo cáo Kết quả hoạt động kinh doanh · quý 4/2025 (riêng quý)",
+            "scope": {
+              "source_type": "BCTC",
+              "metric_code": "PROFIT_AFTER_TAX",
+              "reporting_entity": "UNKNOWN",
+              "companies": [
+                "FPT"
+              ],
+              "periods": [
+                "2025-Q4"
+              ],
+              "measure_basis": "STANDALONE_QUARTER"
+            },
+            "seconds": 0.0,
+            "citations": 1,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 0,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      },
+      {
+        "persona": "pho_thong",
+        "title": "Câu tự nhiên đủ thông tin",
+        "passed": true,
+        "turns": [
+          {
+            "question": "lợi nhuận của fpt quý 4 sau thuế năm 2025 là bao nhiêu",
+            "status": "DRAFT_READY",
+            "reason_code": "SOURCE_EXTRACT_FALLBACK",
+            "response": "FPT ghi nhận lợi nhuận sau thuế trong quý 4/2025 là 2,994,964,817,096. [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "PROFIT_AFTER_TAX",
+              "reporting_entity": "UNKNOWN",
+              "periods": [
+                "2025-Q4"
+              ],
+              "measure_basis": "STANDALONE_QUARTER"
+            },
+            "seconds": 6.27,
+            "citations": 1,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 1,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      },
+      {
+        "persona": "pho_thong",
+        "title": "Đổi mã giữ câu trước",
+        "passed": true,
+        "turns": [
+          {
+            "question": "tiền và tương đương tiền FPT quý 2/2026",
+            "status": "DRAFT_READY",
+            "reason_code": "SUCCESS",
+            "response": "Tại cuối quý 2/2026, tiền và các khoản tương đương tiền của FPT là 8,843,161,132,730. [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "CASH_AND_CASH_EQUIVALENTS",
+              "reporting_entity": "UNKNOWN",
+              "periods": [
+                "2026-Q2"
+              ],
+              "measure_basis": "POINT_IN_TIME"
+            },
+            "seconds": 6.3,
+            "citations": 1,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 1,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false
+          },
+          {
+            "question": "còn SSI",
+            "status": "NO_DATA",
+            "reason_code": "NO_DATA",
+            "response": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.",
+            "scope": {
+              "companies": [
+                "SSI"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "CASH_AND_CASH_EQUIVALENTS",
+              "reporting_entity": "UNKNOWN",
+              "periods": [
+                "2026-Q2"
+              ],
+              "measure_basis": "POINT_IN_TIME"
+            },
+            "seconds": 2.0,
+            "citations": 0,
+            "model_returned": null,
+            "prompt_version": null,
+            "generation_calls_this_turn": 0,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      },
+      {
+        "persona": "chuyen_mon",
+        "title": "Lợi nhuận trước thuế riêng quý",
+        "passed": true,
+        "turns": [
+          {
+            "question": "lợi nhuận trước thuế FPT quý 4/2025",
+            "status": "DRAFT_READY",
+            "reason_code": "SUCCESS",
+            "response": "Lợi nhuận trước thuế của Công ty Cổ phần FPT trong quý 4/2025 là 3,503,168,140,397. [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "PROFIT_BEFORE_TAX",
+              "reporting_entity": "UNKNOWN",
+              "periods": [
+                "2025-Q4"
+              ],
+              "measure_basis": "STANDALONE_QUARTER"
+            },
+            "seconds": 11.87,
+            "citations": 1,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 1,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      },
+      {
+        "persona": "chuyen_mon",
+        "title": "Tin theo nhà xuất bản và ngày",
+        "passed": true,
+        "turns": [
+          {
+            "question": "tin tức FPT theo CafeF ngày 29/9/2026",
+            "status": "DRAFT_READY",
+            "reason_code": "SUCCESS",
+            "response": "Ngày 25/9, Công ty Cổ phần FPT công bố báo cáo kết quả đợt phát hành cổ phiếu để tăng vốn từ nguồn vốn chủ sở hữu với hơn 171,4 triệu cổ phiếu đã được phân phối cho 181.748 cổ đông. [1]\n\nLũy kế 8 tháng đầu năm 2026, FPT ghi nhận doanh thu 35.408 tỷ đồng và lợi nhuận trước thuế 7.648 tỷ đồng, lần lượt tăng 13,5% và 17,5% so với cùng kỳ. [2]",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "NEWS",
+              "metric_code": null,
+              "reporting_entity": "UNKNOWN",
+              "publisher": "cafef",
+              "periods": [
+                "2026-09-29"
+              ],
+              "measure_basis": null
+            },
+            "seconds": 8.71,
+            "citations": 2,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 1,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      },
+      {
+        "persona": "chuyen_mon",
+        "title": "Kỳ tương lai không có nguồn",
+        "passed": true,
+        "turns": [
+          {
+            "question": "tổng tài sản FPT quý 4/2099",
+            "status": "NO_DATA",
+            "reason_code": "NO_DATA",
+            "response": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "TOTAL_ASSETS",
+              "reporting_entity": "UNKNOWN",
+              "periods": [
+                "2099-Q4"
+              ],
+              "measure_basis": "POINT_IN_TIME"
+            },
+            "seconds": 2.12,
+            "citations": 0,
+            "model_returned": null,
+            "prompt_version": null,
+            "generation_calls_this_turn": 0,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      },
+      {
+        "persona": "chuyen_mon",
+        "title": "LNST thuộc cổ đông công ty mẹ",
+        "passed": true,
+        "turns": [
+          {
+            "question": "LNST cổ đông công ty mẹ FPT quý 4/2025",
+            "status": "DRAFT_READY",
+            "reason_code": "SOURCE_EXTRACT_FALLBACK",
+            "response": "FPT ghi nhận lợi nhuận sau thuế thuộc cổ đông công ty mẹ trong quý 4/2025 là 2,509,522,220,120. [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "PARENT_NET_PROFIT",
+              "reporting_entity": "UNKNOWN",
+              "periods": [
+                "2025-Q4"
+              ],
+              "measure_basis": "STANDALONE_QUARTER"
+            },
+            "seconds": 9.17,
+            "citations": 1,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 1,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      },
+      {
+        "persona": "pho_thong",
+        "title": "Bổ sung năm giữ quý trước đó",
+        "passed": true,
+        "turns": [
+          {
+            "question": "lợi nhuận của FPT quý 4 sau thuế là bao nhiêu",
+            "status": "ASK_CLARIFICATION",
+            "reason_code": "MISSING_YEAR",
+            "response": "Bạn muốn xem quý 4 của năm nào?",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "PROFIT_AFTER_TAX",
+              "reporting_entity": "UNKNOWN",
+              "_pending_quarter": 4,
+              "_pending_ytd": false
+            },
+            "seconds": 0.0,
+            "citations": 0,
+            "model_returned": null,
+            "prompt_version": null,
+            "generation_calls_this_turn": 0,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false
+          },
+          {
+            "question": "2025",
+            "status": "DRAFT_READY",
+            "reason_code": "SUCCESS",
+            "response": "Lợi nhuận sau thuế quý 4/2025 của Công ty Cổ phần FPT đạt 2,994,964,817,096. [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "PROFIT_AFTER_TAX",
+              "reporting_entity": "UNKNOWN",
+              "periods": [
+                "2025-Q4"
+              ],
+              "measure_basis": "STANDALONE_QUARTER"
+            },
+            "seconds": 8.57,
+            "citations": 1,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 1,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      },
+      {
+        "persona": "chuyen_mon",
+        "title": "Viết tắt LNTT",
+        "passed": true,
+        "turns": [
+          {
+            "question": "LNTT FPT quý 4/2025",
+            "status": "DRAFT_READY",
+            "reason_code": "SUCCESS",
+            "response": "Lợi nhuận trước thuế của Công ty Cổ phần FPT trong quý 4/2025 là 3,503,168,140,397. [1]\n\nNguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.\n\nNguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.",
+            "scope": {
+              "companies": [
+                "FPT"
+              ],
+              "source_type": "BCTC",
+              "metric_code": "PROFIT_BEFORE_TAX",
+              "reporting_entity": "UNKNOWN",
+              "periods": [
+                "2025-Q4"
+              ],
+              "measure_basis": "STANDALONE_QUARTER"
+            },
+            "seconds": 6.76,
+            "citations": 1,
+            "model_returned": "gemini-3.5-flash-lite",
+            "prompt_version": "b1-grounded-v3",
+            "generation_calls_this_turn": 1,
+            "raw_metric_in_answer": false,
+            "uuid_in_answer": false,
+            "mismatches": []
+          }
+        ]
+      }
+    ]
+  }
+}

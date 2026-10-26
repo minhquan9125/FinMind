@@ -7,16 +7,21 @@ depends on embed_texts()/embed_query() and never touches the model directly -
 that keeps the retriever swappable per ADR03 (versioned adapters/contracts)
 without touching callers.
 
-The model is loaded lazily (on first use, not at import time) because it is
-~2.2GB and requires network access to Hugging Face on first run. Unit tests
-should inject a fake EmbeddingService instead of loading the real model.
+The model loads on first use, not at import time. The research app warms this
+shared service during startup by default. It is ~2.2GB and requires access to
+Hugging Face if no local weights exist. Tests should inject a fake service.
 """
 
 from functools import lru_cache
+import os
+from pathlib import Path
+import threading
 
 import numpy as np
 
 from ..core.config import get_settings
+
+PROJECT_MODEL_CACHE = Path(__file__).resolve().parents[1] / 'vector_retrieval' / '.cache' / 'huggingface'
 
 
 class EmbeddingService:
@@ -33,18 +38,29 @@ class EmbeddingService:
         self.device = device
         self.batch_size = batch_size
         self._model = None
+        self._load_lock = threading.Lock()
 
     def _load(self):
+        with self._load_lock:
+            return self._load_once()
+
+    def _load_once(self):
         if self._model is None:
             # Imported lazily so the package can be imported (e.g. for tests
             # that stub out embeddings) without requiring sentence-transformers
             # or a downloaded model to be present.
             from sentence_transformers import SentenceTransformer
 
+            options = {}
+            snapshot = PROJECT_MODEL_CACHE / ('models--' + self.model_name.replace('/', '--')) / 'snapshots' / self.revision
+            if (not os.getenv('HF_HUB_CACHE') and (snapshot / 'config.json').is_file()
+                    and any((snapshot / name).is_file() for name in ('pytorch_model.bin', 'model.safetensors'))):
+                options = {'cache_folder': str(PROJECT_MODEL_CACHE), 'local_files_only': True}
             self._model = SentenceTransformer(
                 self.model_name,
                 revision=self.revision,
                 device=self.device,
+                **options,
             )
         return self._model
 

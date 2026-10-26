@@ -63,6 +63,15 @@ async def _ingest_pages(
         hashlib.sha256(source_bytes).hexdigest(),
         doc_type,
     )
+    from ...documents.upload_source import store_upload_source
+    symbol = None
+    if file_type == 'JSON' and doc_type == 'FINANCIAL_JSON':
+        data = json.loads(source_bytes)
+        symbol = data.get('symbol') or Path(filename).stem.upper()
+    source_id = await store_upload_source(pool, source_bytes, file_type, doc_type, symbol)
+    locator = {'schema_version': 'upload-source-v1', 'source_table': 'raw_payloads',
+               'source_id': source_id, 'chunk_size': settings.chunk_words,
+               'chunk_overlap': settings.chunk_words - settings.chunk_stride}
     rows = []
     total_tokens = 0
     for index, (chunk, tf, vector) in enumerate(zip(raw_chunks, tf_list, embeddings)):
@@ -71,6 +80,7 @@ async def _ingest_pages(
         rows.append(
             {
                 "chunk_index": index,
+                "locator_json": locator,
                 "page": chunk.page,
                 "text": chunk.text,
                 "token_count": token_count,
@@ -194,7 +204,8 @@ async def get_chunk_details(
     if document is None:
         raise HTTPException(status_code=404, detail="Document not found.")
 
-    index_version_id = repository.index_version_id_for(
+    index_version_id = repository.index_for_document(
+        document,
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
         settings.embedding_model_ref,
@@ -236,7 +247,8 @@ async def get_vocab(
     if document is None:
         raise HTTPException(status_code=404, detail="Document not found.")
 
-    index_version_id = repository.index_version_id_for(
+    index_version_id = repository.index_for_document(
+        document,
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
         settings.embedding_model_ref,

@@ -46,5 +46,8 @@ def normalize_history(symbol, result, *, is_index=False):
         bars[day] = {"date": day.isoformat(), **{key: str(value) for key, value in prices.items()},
                      "volume": volume, "source": "vnstock_kbs", "status": "pending_reconciliation",
                      "quality": "complete", "price_basis": "index_points" if is_index else "unknown", "volume_basis": "unknown"}
+        if not is_index and result.get('price_unit') == 'thousand_vnd':
+            bars[day]['price_unit'] = 'thousand_vnd'
     return {"symbol": symbol, "interval": "1D", "source": "vnstock_kbs", "fetched_at": result["fetched_at"],
-            "price_unit": "points" if is_index else "unknown", "bars": [bars[day] for day in sorted(bars)]}
+            "price_unit": "points" if is_index else ('thousand_vnd' if result.get('price_unit') == 'thousand_vnd' else 'unknown'),
+            "bars": [bars[day] for day in sorted(bars)]}

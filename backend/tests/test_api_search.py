@@ -84,3 +84,84 @@ def test_search_rejects_empty_query(monkeypatch):
 
     response = client.post("/api/search", json={"document_id": "doc-1", "query": "   "})
     assert response.status_code == 400
+
+
+def test_search_source_failure_returns_reason_without_results(monkeypatch):
+    from src.documents.chunk_reconstruction import ReconstructionError
+    async def get_document(*args): return {'id': 'doc', 'file_type': 'DB'}
+    async def fail(*args): raise ReconstructionError('SOURCE_CHANGED', 'source changed')
+    monkeypatch.setattr(repository, 'get_document', get_document)
+    monkeypatch.setattr(repository, 'vector_search', fail)
+    monkeypatch.setattr('src.api.routers.search.get_pool', lambda: object())
+    response = client.post('/api/search', json={'document_id': 'doc', 'query': 'FPT'})
+    assert response.status_code == 409
+    assert response.json()['reason_code'] == 'SOURCE_CHANGED'
+    assert 'results' not in response.json()
+
+
+def test_search_db_source_allows_null_page_and_uses_db_index(monkeypatch):
+    from src.documents.db_ingest import index_version_id_for
+    from src.core.config import get_settings
+    async def get_document(*args): return {'id': 'doc', 'file_type': 'DB'}
+    async def search(pool, document, index, vector, top_k):
+        settings = get_settings()
+        assert index == index_version_id_for(settings.chunk_words, settings.embedding_model_ref)
+        return [{'chunk_index': 0, 'page': None, 'text': 'FPT source content', 'score': 1.0}]
+    monkeypatch.setattr(repository, 'get_document', get_document)
+    monkeypatch.setattr(repository, 'vector_search', search)
+    monkeypatch.setattr('src.api.routers.search.get_pool', lambda: object())
+    response = client.post('/api/search', json={'document_id': 'doc', 'query': 'FPT'})
+    assert response.status_code == 200
+    assert response.json()['results'][0]['page'] is None
+
+
+def test_filtered_search_passes_scope_and_returns_provenance(monkeypatch):
+    from src.documents.db_ingest import index_version_id_for
+    from src.core.config import get_settings
+
+    async def search(pool, index, vector, top_k, company_symbol=None, period=None, doc_type=None, on_ranked=None):
+        settings = get_settings()
+        assert index == index_version_id_for(settings.chunk_words, settings.embedding_model_ref)
+        assert vector == [0.1] * 4
+        assert (top_k, company_symbol, period, doc_type) == (5, 'FPT', '2026-05', 'PRICE_HISTORY')
+        return [{
+            'chunk_id': 'chunk-1', 'document_id': 'doc-1', 'chunk_index': 2,
+            'title': 'Lịch sử giá FPT', 'doc_type': 'PRICE_HISTORY',
+            'company_symbol': 'FPT', 'period': 'Lịch sử giá · tháng 2026-05',
+            'locator_json': {'source_table': 'price_bars'},
+            'text': 'FPT tháng 5', 'score': 0.91,
+        }]
+
+    monkeypatch.setattr(repository, 'vector_search_filtered', search)
+    monkeypatch.setattr('src.api.routers.search.get_pool', lambda: object())
+    response = client.post('/api/search/filtered', json={
+        'query': 'Giá cổ phiếu FPT tháng 5 năm 2026',
+        'company_symbol': 'FPT', 'period': '2026-05', 'doc_type': 'PRICE_HISTORY',
+    })
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body['index_version_id'] == index_version_id_for(
+        get_settings().chunk_words, get_settings().embedding_model_ref)
+    assert body['results'][0]['chunk_id'] == 'chunk-1'
+    assert body['results'][0]['locator'] == {'source_table': 'price_bars'}
+
+
+def test_filtered_search_returns_empty_for_nonmatching_scope(monkeypatch):
+    async def search(*args, **kwargs):
+        assert kwargs['company_symbol'] == 'NOPE'
+        return []
+
+    monkeypatch.setattr(repository, 'vector_search_filtered', search)
+    monkeypatch.setattr('src.api.routers.search.get_pool', lambda: object())
+    response = client.post('/api/search/filtered', json={
+        'query': 'Tin tức về công ty', 'company_symbol': 'NOPE',
+    })
+
+    assert response.status_code == 200
+    assert response.json()['results'] == []
+
+
+def test_filtered_search_rejects_blank_query():
+    response = client.post('/api/search/filtered', json={'query': '   '})
+    assert response.status_code == 400

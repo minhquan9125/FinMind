@@ -1,0 +1,116 @@
+{
+  "schema_version": "finmind-wbs20-golden-subset-v1",
+  "source": "Golden_TestSet_Lo1_Lo2_TinTuc_GiaCoPhieu.md",
+  "notes": [
+    "Subset uses supported news and price questions from the approved Golden Test Set.",
+    "English prompts are direct translations of the approved Vietnamese questions; expected sources are unchanged.",
+    "Q10 is excluded because it checks an aggregate count and its saved answer (224) is stale; DB currently has 234 news rows.",
+    "Q21-Q40 are excluded because their financial/report chunks are not in the existing db-v1 vector index."
+  ],
+  "questions": [
+    {
+      "id": "Q03-vi",
+      "source_question_id": "Q03",
+      "language": "vi",
+      "query": "Theo tin tức trong corpus, FPT đã phân phối bao nhiêu cổ phiếu tăng vốn từ nguồn vốn chủ sở hữu, cho bao nhiêu cổ đông và kết thúc đợt phát hành ngày nào?",
+      "company_symbol": "FPT",
+      "period": "2026-09",
+      "doc_type": "NEWS",
+      "expected_title_contains": "gần 182.000 cổ đông"
+    },
+    {
+      "id": "Q03-en",
+      "source_question_id": "Q03",
+      "language": "en",
+      "query": "According to the news in the corpus, how many bonus shares did FPT distribute, to how many shareholders, and when did the issuance end?",
+      "company_symbol": "FPT",
+      "period": "2026-09",
+      "doc_type": "NEWS",
+      "expected_title_contains": "gần 182.000 cổ đông"
+    },
+    {
+      "id": "Q09-vi",
+      "source_question_id": "Q09",
+      "language": "vi",
+      "query": "Viettel Construction đã dự phòng 100% cho bao nhiêu tiền nợ xấu liên quan đến FLC và Novaland?",
+      "company_symbol": "CTR",
+      "period": "2026-09",
+      "doc_type": "NEWS",
+      "expected_title_contains": "dự phòng 100%"
+    },
+    {
+      "id": "Q09-en",
+      "source_question_id": "Q09",
+      "language": "en",
+      "query": "How much bad debt related to FLC and Novaland did Viettel Construction fully provision for?",
+      "company_symbol": "CTR",
+      "period": "2026-09",
+      "doc_type": "NEWS",
+      "expected_title_contains": "dự phòng 100%"
+    },
+    {
+      "id": "Q15-vi",
+      "source_question_id": "Q15",
+      "language": "vi",
+      "query": "Ngày 20/05/2026, giá mở cửa, cao nhất, thấp nhất và đóng cửa của VCB lần lượt là bao nhiêu?",
+      "company_symbol": "VCB",
+      "period": "2026-05",
+      "doc_type": "PRICE_HISTORY",
+      "expected_title_contains": "Lịch sử giá cổ phiếu VCB",
+      "expected_row_key": "d902998c-b0e6-5c21-bdd1-ae174a3970ee"
+    },
+    {
+      "id": "Q15-en",
+      "source_question_id": "Q15",
+      "language": "en",
+      "query": "On May 20, 2026, what were VCB's opening, highest, lowest, and closing prices?",
+      "company_symbol": "VCB",
+      "period": "2026-05",
+      "doc_type": "PRICE_HISTORY",
+      "expected_title_contains": "Lịch sử giá cổ phiếu VCB",
+      "expected_row_key": "d902998c-b0e6-5c21-bdd1-ae174a3970ee"
+    },
+    {
+      "id": "Q17-vi",
+      "source_question_id": "Q17",
+      "language": "vi",
+      "query": "Ngày 27/07/2026, giá đóng cửa MSN là bao nhiêu và biên độ dao động trong ngày là bao nhiêu?",
+      "company_symbol": "MSN",
+      "period": "2026-07",
+      "doc_type": "PRICE_HISTORY",
+      "expected_title_contains": "Lịch sử giá cổ phiếu MSN",
+      "expected_row_key": "d4f0d5f2-7e86-53d9-95fd-831fd7798d64"
+    },
+    {
+      "id": "Q17-en",
+      "source_question_id": "Q17",
+      "language": "en",
+      "query": "On July 27, 2026, what was MSN's closing price and its intraday trading range?",
+      "company_symbol": "MSN",
+      "period": "2026-07",
+      "doc_type": "PRICE_HISTORY",
+      "expected_title_contains": "Lịch sử giá cổ phiếu MSN",
+      "expected_row_key": "d4f0d5f2-7e86-53d9-95fd-831fd7798d64"
+    },
+    {
+      "id": "scope-empty-company",
+      "source_question_id": "Q15",
+      "language": "vi",
+      "query": "Giá OHLCV của VCB ngày 20/05/2026",
+      "company_symbol": "NO-SUCH-COMPANY",
+      "period": "2026-05",
+      "doc_type": "PRICE_HISTORY",
+      "expected_empty": true
+    },
+    {
+      "id": "scope-empty-period",
+      "source_question_id": "Q17",
+      "language": "vi",
+      "query": "Giá MSN ngày 27/07/2026",
+      "company_symbol": "MSN",
+      "period": "2099-01",
+      "doc_type": "PRICE_HISTORY",
+      "expected_empty": true
+    }
+  ]
+}

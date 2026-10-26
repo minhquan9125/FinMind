@@ -49,6 +49,8 @@ def _patch_storage(monkeypatch):
     async def fake_insert_chunks(pool, document_id, index_version_id, rows):
         fake_insert_chunks.rows = rows
 
+    async def fake_store_source(*args): return 'source-1'
+    monkeypatch.setattr('src.documents.upload_source.store_upload_source', fake_store_source)
     monkeypatch.setattr(repository, "ensure_index_version", fake_ensure_index_version)
     monkeypatch.setattr(repository, "create_document", fake_create_document)
     monkeypatch.setattr(repository, "insert_chunks", fake_insert_chunks)

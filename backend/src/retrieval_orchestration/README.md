@@ -1,8 +1,47 @@
 # Luồng truy xuất bằng fixture và xử lý câu hỏi mơ hồ
 
 Module thử nghiệm độc lập bằng Python3.11+ và thư viện chuẩn. Không cần API key,
-vector, DB hoặc giao diện. Chỉ xử lý fixture cố định, chưa tạo đáp án tài chính.
-Chưa nối module vào API backend đang chạy.
+vector hay DB khi chạy CLI. Chỉ xử lý fixture cố định, chưa tạo đáp án tài chính.
+Giao diện dùng API hội thoại riêng trong backend chung.
+
+## Hỏi đáp trên giao diện
+
+Chạy backend và frontend theo [README gốc](../../../README.md), đăng nhập rồi
+mở **Trợ lý nghiên cứu** tại `http://localhost:5173/research`.
+Nhập câu hỏi và nhấn Enter hoặc nút gửi. Có thể trả lời ngắn để bổ sung thông tin,
+ví dụ `lợi nhuận năm 2025` → `BID, sau thuế` → `không, là VCB`.
+Web mặc định tìm nguồn thật trong corpus-v4 bằng dense + BM25/RRF, giữ mã/kỳ/chỉ tiêu giữa các lượt.
+Mở ô nguồn dưới phản hồi để xem đoạn trích và vị trí. Gemini chỉ chạy khi backend có key và xác nhận Free Tier;
+nếu chưa cấu hình, giao diện hiển thị nguồn ứng viên thật. CLI bên dưới vẫn là fixture.
+Xem [hợp đồng và cấu hình LIVE 1.1](notes/LIVE_CHAT_CONTRACT.md).
+
+Lịch sử trên web tách riêng theo tài khoản tại
+`chat_history/web/<UUID người dùng>/<UUID phiên>.json`. Mỗi lượt gửi thành công
+được lưu ngay; tải lại trang sẽ khôi phục phiên đang xem. Chọn một phiên trong
+lịch sử để mở và tiếp tục vào phiên con, giữ nguyên file gốc. Các file CLI cũ
+không tự đưa lên web vì chưa có thông tin chủ sở hữu.
+
+API dùng Bearer token đăng nhập hiện có:
+
+| Phương thức | Đường dẫn | Chức năng |
+| --- | --- | --- |
+| POST | `/api/research/chat/sessions` | Tạo phiên |
+| GET | `/api/research/chat/sessions` | Liệt kê phiên của tài khoản |
+| GET | `/api/research/chat/sessions/{id}` | Đọc phiên và khôi phục ngữ cảnh |
+| POST | `/api/research/chat/sessions/{id}/messages` | Gửi `{text, revision}` |
+| POST | `/api/research/chat/sessions/{id}/resume` | Tạo phiên tiếp nối |
+
+`revision` lấy từ snapshot gần nhất. Nếu hai tab cùng gửi vào một phiên,
+lượt dùng phiên bản cũ nhận HTTP409; tải lại phiên trước khi gửi tiếp.
+Thiếu token hoặc token hết hạn nhận HTTP401 và cần đăng nhập lại.
+Lỗi lưu file không ghi nhận lượt gửi thành công; giao diện giữ nội dung nhập
+để người dùng thử lại. Không có cơ chế thay câu trả lời bằng mock frontend khi API lỗi.
+
+JSON web lưu trên đĩa của máy chạy backend và được bỏ qua bởi Git; chưa lưu vào
+Supabase. Sao lưu thư mục này nếu cần giữ lịch sử khi chuyển máy triển khai.
+Bảng so sánh cũ tại `/research?mode=compare` vẫn dùng dữ liệu minh họa riêng.
+
+## Hỏi đáp bằng terminal
 
 Từ thư mục gốc dự án, chạy hỏi đáp tương tác:
 

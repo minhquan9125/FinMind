@@ -11,6 +11,9 @@ def test_combined_lifecycle_and_cleanup(monkeypatch, fail_market):
 
     async def connect(): events.append('db-open')
     async def disconnect(): events.append('db-close')
+    async def warmup(app):
+        events.append('warmup')
+        app.state.research_warmup = {'status': 'ready'}
 
     @asynccontextmanager
     async def market(app):
@@ -27,6 +30,7 @@ def test_combined_lifecycle_and_cleanup(monkeypatch, fail_market):
     monkeypatch.setattr(main, 'connect', connect)
     monkeypatch.setattr(main, 'disconnect', disconnect)
     monkeypatch.setattr(main, 'market_lifespan', market)
+    monkeypatch.setattr(main, 'warmup_research', warmup, raising=False)
     if fail_market:
         with pytest.raises(RuntimeError, match='collector unavailable'):
             with TestClient(main.app): pass
@@ -34,8 +38,9 @@ def test_combined_lifecycle_and_cleanup(monkeypatch, fail_market):
     else:
         with TestClient(main.app) as client:
             assert client.get('/api/health').status_code == 200
+            assert client.get('/api/health').json()['research_warmup']['status'] == 'ready'
             paths = client.get('/openapi.json').json()['paths']
             assert '/api/v1/auth/login' in paths
             assert '/api/market-data/news' in paths
             assert '/api/market-data/live/viewers/{viewer_id}' in paths
-        assert events == ['db-open', 'market-open', 'market-close', 'db-close']
+        assert events == ['db-open', 'market-open', 'warmup', 'market-close', 'db-close']
