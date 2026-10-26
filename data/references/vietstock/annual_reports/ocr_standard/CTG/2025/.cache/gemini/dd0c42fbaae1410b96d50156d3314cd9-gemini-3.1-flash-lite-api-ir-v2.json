@@ -1,0 +1,875 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "PHẦN 5 QUẢN TRỊ CÔNG TY",
+      "box_2d": [
+        26,
+        65,
+        36,
+        179
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "2 - HOẠT ĐỘNG CỦA HỘI ĐỒNG QUẢN TRỊ NĂM 2025",
+      "box_2d": [
+        53,
+        59,
+        63,
+        226
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "ĐÀO TẠO VỀ QUẢN TRỊ CÔNG TY",
+      "box_2d": [
+        89,
+        59,
+        100,
+        186
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Trong năm 2025, Ban Lãnh đạo VietinBank cùng các Lãnh đạo phòng/ban/đơn vị tại TSC và các CN đã tham dự các khóa học, chương trình hội nghị, hội thảo, tọa đàm do các đơn vị trong nước và quốc tế, các đối tác chiến lược tổ chức bằng hình thức trực tiếp và trực tuyến để cập nhật, chia sẻ kiến thức, kinh nghiệm về quản trị công ty. Do vậy, Ban Lãnh đạo VietinBank và các cấp quản lý của VietinBank đã liên tục cập nhật các kiến thức mới và chuẩn mực quản trị công ty theo thông lệ quốc tế nhằm không ngừng cải tiến, tiếp thu, chọn lọc và ứng dụng vào thực tế tình hình quản trị, điều hành HĐKD tại VietinBank.",
+      "box_2d": [
+        117,
+        59,
+        217,
+        441
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Một số chương trình Ban Lãnh đạo, các cấp quản lý và Ban Thư ký HĐQT & QHCĐ của VietinBank đã và đang tham dự trong năm 2025 được liệt kê dưới đây:",
+      "box_2d": [
+        91,
+        559,
+        117,
+        941
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        127,
+        559,
+        653,
+        941
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            127,
+            559,
+            162,
+            578
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "TÊN KHÓA HỌC"
+          ],
+          "box_2d": [
+            127,
+            578,
+            162,
+            715
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "ĐƠN VỊ TỔ CHỨC"
+          ],
+          "box_2d": [
+            127,
+            715,
+            162,
+            811
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "THỜI LƯỢNG",
+            "CHƯƠNG TRÌNH"
+          ],
+          "box_2d": [
+            127,
+            811,
+            162,
+            867
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "SỐ LƯỢNG NGƯỜI",
+            "THAM GIA"
+          ],
+          "box_2d": [
+            127,
+            867,
+            162,
+            941
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Nâng cao năng lực Lãnh đạo thông qua đọc sách",
+          "note": null,
+          "box_2d": [
+            162,
+            559,
+            188,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Nâng cao năng lực Lãnh đạo thông qua đọc sách",
+              "box_2d": [
+                162,
+                578,
+                188,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "VietinBank",
+              "box_2d": [
+                162,
+                715,
+                188,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "137 ngày",
+              "box_2d": [
+                162,
+                811,
+                188,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "5 người",
+              "box_2d": [
+                162,
+                867,
+                188,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Lãnh đạo quản trị hiệu quả trong kỷ nguyên AI",
+          "note": null,
+          "box_2d": [
+            188,
+            559,
+            214,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Lãnh đạo quản trị hiệu quả trong kỷ nguyên AI",
+              "box_2d": [
+                188,
+                578,
+                214,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "VietinBank",
+              "box_2d": [
+                188,
+                715,
+                214,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1 ngày",
+              "box_2d": [
+                188,
+                811,
+                214,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "4 người",
+              "box_2d": [
+                188,
+                867,
+                214,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Tọa đàm MUFG Now: Chiến lược đổi mới bền vững hướng tới bút phá xanh",
+          "note": null,
+          "box_2d": [
+            214,
+            559,
+            253,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Tọa đàm MUFG Now: Chiến lược đổi mới bền vững hướng tới bút phá xanh",
+              "box_2d": [
+                214,
+                578,
+                253,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "VietinBank và MUFG Bank",
+              "box_2d": [
+                214,
+                715,
+                253,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1 ngày",
+              "box_2d": [
+                214,
+                811,
+                253,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "1 người",
+              "box_2d": [
+                214,
+                867,
+                253,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Tọa đàm Kinh nghiệm quốc tế và vai trò của hệ thống ngân hàng trong xây dựng Trung tâm Tài chính",
+          "note": null,
+          "box_2d": [
+            253,
+            559,
+            292,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Tọa đàm Kinh nghiệm quốc tế và vai trò của hệ thống ngân hàng trong xây dựng Trung tâm Tài chính",
+              "box_2d": [
+                253,
+                578,
+                292,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Thời báo Ngân hàng",
+              "box_2d": [
+                253,
+                715,
+                292,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1 ngày",
+              "box_2d": [
+                253,
+                811,
+                292,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "1 người",
+              "box_2d": [
+                253,
+                867,
+                292,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "Hội thảo giới thiệu Cẩm nang quản trị công ty 2024",
+          "note": null,
+          "box_2d": [
+            292,
+            559,
+            318,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Hội thảo giới thiệu Cẩm nang quản trị công ty 2024",
+              "box_2d": [
+                292,
+                578,
+                318,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Ủy ban Chứng khoán Nhà nước",
+              "box_2d": [
+                292,
+                715,
+                318,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1 ngày",
+              "box_2d": [
+                292,
+                811,
+                318,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "2 người",
+              "box_2d": [
+                292,
+                867,
+                318,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "6",
+          "label_raw": "Khóa học chuyên sâu dành cho thư ký quản trị công ty",
+          "note": null,
+          "box_2d": [
+            318,
+            559,
+            357,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khóa học chuyên sâu dành cho thư ký quản trị công ty",
+              "box_2d": [
+                318,
+                578,
+                357,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Viện Thành viên HĐQT Việt Nam (VIOD)",
+              "box_2d": [
+                318,
+                715,
+                357,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1,5 ngày",
+              "box_2d": [
+                318,
+                811,
+                357,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "2 người",
+              "box_2d": [
+                318,
+                867,
+                357,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "7",
+          "label_raw": "Nâng cao năng lực Lãnh đạo và Quản trị trên các nền tảng Udemy Busines, Coursera, Fonos",
+          "note": null,
+          "box_2d": [
+            357,
+            559,
+            396,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Nâng cao năng lực Lãnh đạo và Quản trị trên các nền tảng Udemy Busines, Coursera, Fonos",
+              "box_2d": [
+                357,
+                578,
+                396,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "VietinBank",
+              "box_2d": [
+                357,
+                715,
+                396,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "321 ngày",
+              "box_2d": [
+                357,
+                811,
+                396,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "3 người",
+              "box_2d": [
+                357,
+                867,
+                396,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "8",
+          "label_raw": "Hội thảo khoa học “Vai trò của doanh nghiệp nhà nước trong các ngành trọng yếu của nền kinh tế”",
+          "note": null,
+          "box_2d": [
+            396,
+            559,
+            461,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Hội thảo khoa học “Vai trò của doanh nghiệp nhà nước trong các ngành trọng yếu của nền kinh tế”",
+              "box_2d": [
+                396,
+                578,
+                461,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Bộ Biên tập Tạp chí Cộng sản, Ban Chính sách, Chiến lược Trung ương và Ủy ban Kinh tế và Tài chính của Quốc hội",
+              "box_2d": [
+                396,
+                715,
+                461,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1 ngày",
+              "box_2d": [
+                396,
+                811,
+                461,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "1 người",
+              "box_2d": [
+                396,
+                867,
+                461,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "9",
+          "label_raw": "Chương trình đào tạo nâng cao nhận thức về Thể điểm Quản trị Công ty (ACGS)",
+          "note": null,
+          "box_2d": [
+            461,
+            559,
+            487,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Chương trình đào tạo nâng cao nhận thức về Thể điểm Quản trị Công ty (ACGS)",
+              "box_2d": [
+                461,
+                578,
+                487,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Ủy ban Chứng khoán Nhà nước",
+              "box_2d": [
+                461,
+                715,
+                487,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1 buổi",
+              "box_2d": [
+                461,
+                811,
+                487,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "2 người",
+              "box_2d": [
+                461,
+                867,
+                487,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "10",
+          "label_raw": "Khóa học ESG Pioneers",
+          "note": null,
+          "box_2d": [
+            487,
+            559,
+            513,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khóa học ESG Pioneers",
+              "box_2d": [
+                487,
+                578,
+                513,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "MCG Management Consulting",
+              "box_2d": [
+                487,
+                715,
+                513,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "7 buổi",
+              "box_2d": [
+                487,
+                811,
+                513,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "2 người",
+              "box_2d": [
+                487,
+                867,
+                513,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "11",
+          "label_raw": "Diễn đàn thường niên về Quản trị công ty lần thứ 8",
+          "note": null,
+          "box_2d": [
+            513,
+            559,
+            552,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Diễn đàn thường niên về Quản trị công ty lần thứ 8",
+              "box_2d": [
+                513,
+                578,
+                552,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Viện Thành viên HĐQT Việt Nam (VIOD)",
+              "box_2d": [
+                513,
+                715,
+                552,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1 ngày",
+              "box_2d": [
+                513,
+                811,
+                552,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "2 người",
+              "box_2d": [
+                513,
+                867,
+                552,
+                941
+              ]
+            }
+          ]
+        },
+        {
+          "code": "12",
+          "label_raw": "Hội nghị truyền thông Nghị định của Chính phủ quy định về xử phát hành chính trong lĩnh vực chứng khoán và thị trường chứng khoán",
+          "note": null,
+          "box_2d": [
+            552,
+            559,
+            653,
+            941
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Hội nghị truyền thông Nghị định của Chính phủ quy định về xử phát hành chính trong lĩnh vực chứng khoán và thị trường chứng khoán",
+              "box_2d": [
+                552,
+                578,
+                653,
+                715
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Ủy ban Chứng khoán Nhà nước",
+              "box_2d": [
+                552,
+                715,
+                653,
+                811
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1 buổi",
+              "box_2d": [
+                552,
+                811,
+                653,
+                867
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "1 người",
+              "box_2d": [
+                552,
+                867,
+                653,
+                941
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Trong thời gian tới, VietinBank sẽ tiếp tục nghiên cứu triển khai các khóa học về quản trị công ty do UBCKNN và các đơn vị đào tạo có uy tín trên thế giới tổ chức; đẩy mạnh tham gia các hội nghị, hội thảo, tọa đàm dành cho Ban Lãnh đạo và các cấp quản lý của VietinBank nhằm nâng cao kiến thức về quản trị, xây dựng và quản trị chiến lược, hướng đến xây dựng VietinBank là một trong những ngân hàng hàng đầu của Việt Nam, phát triển an toàn, bền vững, chủ động hội nhập quốc tế.",
+      "box_2d": [
+        665,
+        559,
+        738,
+        941
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "194",
+      "box_2d": [
+        956,
+        65,
+        966,
+        76
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "VietinBank",
+      "box_2d": [
+        956,
+        223,
+        967,
+        263
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "BÁO CÁO THƯỜNG NIÊN 2025",
+      "box_2d": [
+        951,
+        721,
+        967,
+        745
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "BẢN LĨNH ĐỔI MỚI KIẾN TẠO DẪN ĐẦU",
+      "box_2d": [
+        951,
+        752,
+        967,
+        827
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "195",
+      "box_2d": [
+        956,
+        922,
+        966,
+        934
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "PHẦN 5 QUẢN TRỊ CÔNG TY\n2 - HOẠT ĐỘNG CỦA HỘI ĐỒNG QUẢN TRỊ NĂM 2025\nĐÀO TẠO VỀ QUẢN TRỊ CÔNG TY\nTrong năm 2025, Ban Lãnh đạo VietinBank cùng các Lãnh đạo phòng/ban/đơn vị tại TSC và các CN đã tham dự các khóa học, chương trình hội nghị, hội thảo, tọa đàm do các đơn vị trong nước và quốc tế, các đối tác chiến lược tổ chức bằng hình thức trực tiếp và trực tuyến để cập nhật, chia sẻ kiến thức, kinh nghiệm về quản trị công ty. Do vậy, Ban Lãnh đạo VietinBank và các cấp quản lý của VietinBank đã liên tục cập nhật các kiến thức mới và chuẩn mực quản trị công ty theo thông lệ quốc tế nhằm không ngừng cải tiến, tiếp thu, chọn lọc và ứng dụng vào thực tế tình hình quản trị, điều hành HĐKD tại VietinBank.\nMột số chương trình Ban Lãnh đạo, các cấp quản lý và Ban Thư ký HĐQT & QHCĐ của VietinBank đã và đang tham dự trong năm 2025 được liệt kê dưới đây:\nSTT\nTÊN KHÓA HỌC\nĐƠN VỊ TỔ CHỨC\nTHỜI LƯỢNG\nCHƯƠNG TRÌNH\nSỐ LƯỢNG NGƯỜI\nTHAM GIA\n1 Nâng cao năng lực Lãnh đạo thông qua đọc sách Nâng cao năng lực Lãnh đạo thông qua đọc sách VietinBank 137 ngày 5 người\n2 Lãnh đạo quản trị hiệu quả trong kỷ nguyên AI Lãnh đạo quản trị hiệu quả trong kỷ nguyên AI VietinBank 1 ngày 4 người\n3 Tọa đàm MUFG Now: Chiến lược đổi mới bền vững hướng tới bút phá xanh Tọa đàm MUFG Now: Chiến lược đổi mới bền vững hướng tới bút phá xanh VietinBank và MUFG Bank 1 ngày 1 người\n4 Tọa đàm Kinh nghiệm quốc tế và vai trò của hệ thống ngân hàng trong xây dựng Trung tâm Tài chính Tọa đàm Kinh nghiệm quốc tế và vai trò của hệ thống ngân hàng trong xây dựng Trung tâm Tài chính Thời báo Ngân hàng 1 ngày 1 người\n5 Hội thảo giới thiệu Cẩm nang quản trị công ty 2024 Hội thảo giới thiệu Cẩm nang quản trị công ty 2024 Ủy ban Chứng khoán Nhà nước 1 ngày 2 người\n6 Khóa học chuyên sâu dành cho thư ký quản trị công ty Khóa học chuyên sâu dành cho thư ký quản trị công ty Viện Thành viên HĐQT Việt Nam (VIOD) 1,5 ngày 2 người\n7 Nâng cao năng lực Lãnh đạo và Quản trị trên các nền tảng Udemy Busines, Coursera, Fonos Nâng cao năng lực Lãnh đạo và Quản trị trên các nền tảng Udemy Busines, Coursera, Fonos VietinBank 321 ngày 3 người\n8 Hội thảo khoa học “Vai trò của doanh nghiệp nhà nước trong các ngành trọng yếu của nền kinh tế” Hội thảo khoa học “Vai trò của doanh nghiệp nhà nước trong các ngành trọng yếu của nền kinh tế” Bộ Biên tập Tạp chí Cộng sản, Ban Chính sách, Chiến lược Trung ương và Ủy ban Kinh tế và Tài chính của Quốc hội 1 ngày 1 người\n9 Chương trình đào tạo nâng cao nhận thức về Thể điểm Quản trị Công ty (ACGS) Chương trình đào tạo nâng cao nhận thức về Thể điểm Quản trị Công ty (ACGS) Ủy ban Chứng khoán Nhà nước 1 buổi 2 người\n10 Khóa học ESG Pioneers Khóa học ESG Pioneers MCG Management Consulting 7 buổi 2 người\n11 Diễn đàn thường niên về Quản trị công ty lần thứ 8 Diễn đàn thường niên về Quản trị công ty lần thứ 8 Viện Thành viên HĐQT Việt Nam (VIOD) 1 ngày 2 người\n12 Hội nghị truyền thông Nghị định của Chính phủ quy định về xử phát hành chính trong lĩnh vực chứng khoán và thị trường chứng khoán Hội nghị truyền thông Nghị định của Chính phủ quy định về xử phát hành chính trong lĩnh vực chứng khoán và thị trường chứng khoán Ủy ban Chứng khoán Nhà nước 1 buổi 1 người\nTrong thời gian tới, VietinBank sẽ tiếp tục nghiên cứu triển khai các khóa học về quản trị công ty do UBCKNN và các đơn vị đào tạo có uy tín trên thế giới tổ chức; đẩy mạnh tham gia các hội nghị, hội thảo, tọa đàm dành cho Ban Lãnh đạo và các cấp quản lý của VietinBank nhằm nâng cao kiến thức về quản trị, xây dựng và quản trị chiến lược, hướng đến xây dựng VietinBank là một trong những ngân hàng hàng đầu của Việt Nam, phát triển an toàn, bền vững, chủ động hội nhập quốc tế.\n194\nVietinBank\nBÁO CÁO THƯỜNG NIÊN 2025\nBẢN LĨNH ĐỔI MỚI KIẾN TẠO DẪN ĐẦU\n195",
+  "unreadable": []
+}

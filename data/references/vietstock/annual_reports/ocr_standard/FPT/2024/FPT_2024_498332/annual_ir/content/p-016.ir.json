@@ -1,0 +1,65 @@
+{
+  "ir_version": "1",
+  "page": 16,
+  "printed_page": "14",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p16-b1",
+      "type": "paragraph",
+      "text": "GIÁ TRỊ THƯƠNG HIỆU ĐẠT GẦN 01 TỶ USD, GHI NHẬN\nNHIỀU GIẢI THƯỞNG LỚN",
+      "bbox": [428.22, 563.28, 877.26, 605.27]
+    },
+    {
+      "id": "p16-b2",
+      "type": "paragraph",
+      "text": "Giá trị thương hiệu FPT xấp xỉ mốc 01 tỷ USD và đứng\ntrong Top 5 Thương hiệu mạnh nhất Việt Nam theo công\nbố của Brand Finance. Đồng thời, FPT được đánh giá\nvượt trội về chỉ số “thương hiệu đáng ngưỡng mộ” và\n“tăng trưởng”.",
+      "bbox": [428.22, 625.45, 877.26, 739.42]
+    },
+    {
+      "id": "p16-b3",
+      "type": "paragraph",
+      "text": "FPT tiếp tục khẳng định vị thế doanh nghiệp đầu ngành\nkhi đứng trong các bảng xếp hạng lớn trên toàn cầu như:\nTop 50 Công ty dịch vụ CNTT châu Á; Công ty dịch vụ\nCNTT lớn nhất Đông Nam Á; Top 10 Doanh nghiệp quản\ntrị công ty tốt nhất; Top 10 Công ty đại chúng uy tín;\nTop 50 Công ty niêm yết tốt nhất; Top 3 Doanh nghiệp\nnhóm vốn hóa lớn lĩnh vực phi tài chính có hoạt động IR\nđược nhà đầu tư yêu thích nhất và Top 3 Doanh nghiệp\nnhóm vốn hóa lớn lĩnh vực phi tài chính có hoạt động IR\nđược Định chế tài chính đánh giá cao nhất; môi trường",
+      "bbox": [428.22, 759.6, 877.28, 993.55]
+    },
+    {"id": "p16-b4", "type": "heading", "text": "LẬP KỶ LỤC VỚI HỢP ĐỒNG TRÊN 200 TRIỆU USD", "bbox": [919.85, 60.5, 1332.87, 78.5]},
+    {
+      "id": "p16-b5",
+      "type": "paragraph",
+      "text": "Doanh thu dịch vụ CNTT từ thị trường nước ngoài tiếp tục đạt mức tăng trưởng cao 27,4%. Đặc biệt, lần đầu tiên FPT\nthắng hợp đồng dịch vụ CNTT trị giá 225 triệu USD từ khách hàng Mỹ, phá vỡ mọi kỷ lục về giá trị hợp đồng trước\nđây của FPT.",
+      "bbox": [919.85, 98.68, 1860.04, 164.67]
+    },
+    {
+      "id": "p16-b6",
+      "type": "paragraph",
+      "text": "FPT còn khẳng định vị thế toàn cầu khi ký kết thành công nhiều hợp đồng giá trị trên 100 triệu USD tại các thị trường\nchiến lược. Tháng 6, FPT ký kết hợp đồng lớn nhất từ trước đến nay tại Singapore với giá trị 110 triệu USD; tháng 11,\nký hợp đồng 115 triệu USD tại Đức ..., đánh dấu bước tiến vượt bậc trên hành trình chinh phục thị trường quốc tế. Bên\ncạnh đó, FPT còn ký kết hợp tác với nhiều doanh nghiệp lớn như RWE, Siemens, Ericsson, SCSK, KitZ ....",
+      "bbox": [919.85, 184.85, 1859.75, 274.83]
+    },
+    {
+      "id": "p16-b7",
+      "type": "paragraph",
+      "text": "Bên cạnh đó, lần đầu tiên FPT ký hợp đồng triệu USD trong lĩnh vực AI. Đây là hợp đồng trọn gói trị giá 1,2 triệu USD\nvới nhà cung cấp sản phẩm và vật liệu kết cấu xây dựng nhà ở hàng đầu của Mỹ.",
+      "bbox": [919.85, 295.01, 1859.74, 337.0]
+    },
+    {"id": "p16-b8", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p16-b9", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
+    {"id": "p16-b10", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
+    {"id": "p16-b11", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
+    {"id": "p16-b12", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
+    {"id": "p16-b13", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
+    {"id": "p16-b14", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
+    {"id": "p16-b15", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
+    {"id": "p16-b16", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
+    {"id": "p16-b17", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
+    {"id": "p16-b18", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
+    {"id": "p16-b19", "type": "furniture", "text": "14", "bbox": [293.0, 988.53, 318.8, 1011.4]},
+    {"id": "p16-b20", "type": "paragraph", "text": "làm việc tốt nhất ở Việt Nam, Philippines, Đức ....", "bbox": [428.22, 999.54, 822.92, 1017.54]}
+  ]
+}

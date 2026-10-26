@@ -1,11 +1,12 @@
 import pytest
 from datetime import datetime, timezone
+from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
 from fastapi.testclient import TestClient
 
 from src.main import app
 from src.auth.rate_limiter import login_limiter
-from src.auth.service import hash_password
+from src.auth.service import hash_password, verify_password
 
 client = TestClient(app)
 
@@ -252,3 +253,171 @@ def test_login_consecutive_failed_attempts_rate_limiting(monkeypatch):
     )
     assert resp_6.status_code == 429
     assert "Tài khoản tạm thời bị khóa" in resp_6.json()["detail"]
+
+
+@pytest.mark.parametrize("has_existing_password", [True, False])
+def test_forgot_and_reset_password_flow(monkeypatch, has_existing_password):
+    """Exercise the reset link and password update without DB or SMTP writes."""
+    user_id = uuid4()
+    email = "reset.test@finmind.vn"
+    original_hash = hash_password("OldPassword!2026") if has_existing_password else None
+    account = {"password_hash": original_hash}
+    sent_links = []
+    replacement = {}
+
+    async def fake_find_user_by_email(pool, requested_email):
+        assert requested_email == email
+        return {
+            "user_id": user_id,
+            "email": email,
+            "password_hash": account["password_hash"],
+            "is_active": True,
+        }
+
+    async def fake_find_user_by_id(pool, requested_id):
+        assert requested_id == user_id
+        return {"user_id": user_id, "password_hash": account["password_hash"], "is_active": True}
+
+    async def fake_replace_password(pool, requested_id, current_hash, new_hash):
+        if account["password_hash"] != current_hash:
+            return False
+        account["password_hash"] = new_hash
+        replacement.update(user_id=requested_id, old=current_hash, new=new_hash)
+        return True
+
+    monkeypatch.setattr("src.auth.repository.find_user_by_email", fake_find_user_by_email)
+    monkeypatch.setattr("src.auth.repository.find_user_by_id", fake_find_user_by_id)
+    monkeypatch.setattr("src.auth.repository.replace_password_if_current", fake_replace_password)
+    monkeypatch.setattr(
+        "src.api.routers.auth.send_reset_email",
+        lambda to_email, reset_url: sent_links.append((to_email, reset_url)),
+    )
+
+    forgot = client.post("/api/v1/auth/password/forgot", json={"email": email})
+    assert forgot.status_code == 202
+    assert sent_links[0][0] == email
+    token = parse_qs(urlsplit(sent_links[0][1]).fragment)["token"][0]
+
+    reset = client.post(
+        "/api/v1/auth/password/reset",
+        json={
+            "recovery_code": token,
+            "new_password": "NewPassword!2026",
+            "confirm_password": "NewPassword!2026",
+        },
+    )
+    assert reset.status_code == 204
+    assert replacement["user_id"] == user_id
+    assert replacement["old"] == original_hash
+    assert verify_password("NewPassword!2026", replacement["new"])
+
+    replay = client.post(
+        "/api/v1/auth/password/reset",
+        json={
+            "recovery_code": token,
+            "new_password": "AnotherPassword!2026",
+            "confirm_password": "AnotherPassword!2026",
+        },
+    )
+    assert replay.status_code == 400
+
+
+def test_reset_password_rejects_invalid_token():
+    response = client.post(
+        "/api/v1/auth/password/reset",
+        json={
+            "recovery_code": "invalid-token-of-sufficient-length",
+            "new_password": "NewPassword!2026",
+            "confirm_password": "NewPassword!2026",
+        },
+    )
+    assert response.status_code == 400
+
+
+def test_google_login_tolerates_small_clock_skew(monkeypatch):
+    observed = {}
+    user_id = uuid4()
+
+    def fake_verify_token(credential, request, audience, clock_skew_in_seconds=0):
+        observed["credential"] = credential
+        observed["skew"] = clock_skew_in_seconds
+        return {"email": "google.test@finmind.vn", "name": "Google Test"}
+
+    async def fake_get_or_create_user(pool, email, full_name):
+        return {"user_id": user_id, "email": email, "full_name": full_name, "is_active": True}
+
+    async def fake_get_user_roles(pool, requested_id):
+        return ["RESEARCHER"]
+
+    async def fake_create_session(pool, requested_id, token_hash, days):
+        return None
+
+    async def fake_record_login(pool, requested_id):
+        return None
+
+    monkeypatch.setattr("src.api.routers.auth.id_token.verify_oauth2_token", fake_verify_token)
+    monkeypatch.setattr("src.auth.repository.get_or_create_google_user", fake_get_or_create_user)
+    monkeypatch.setattr("src.auth.repository.get_user_roles", fake_get_user_roles)
+    monkeypatch.setattr("src.auth.repository.create_session", fake_create_session)
+    monkeypatch.setattr("src.auth.repository.record_login", fake_record_login)
+
+    response = client.post("/api/v1/auth/google", json={"credential": "test-google-token"})
+    assert response.status_code == 200
+    assert observed == {"credential": "test-google-token", "skew": 5}
+
+
+def test_refresh_rotates_token_and_rejects_replay(monkeypatch):
+    user_id = uuid4()
+    active_hashes = set()
+    from src.auth.service import create_refresh_token, hash_refresh_token
+    raw, digest = create_refresh_token()
+    active_hashes.add(digest)
+
+    async def fake_rotate(pool, old_hash, new_hash, days):
+        if old_hash not in active_hashes:
+            return None
+        active_hashes.remove(old_hash)
+        active_hashes.add(new_hash)
+        return {"user_id": user_id, "email": "session@finmind.vn", "full_name": "Session User"}
+
+    async def fake_roles(pool, requested_id):
+        return ["RESEARCHER"]
+
+    monkeypatch.setattr("src.auth.repository.rotate_session", fake_rotate)
+    monkeypatch.setattr("src.auth.repository.get_user_roles", fake_roles)
+
+    first = client.post("/api/v1/auth/refresh", json={"refresh_token": raw})
+    assert first.status_code == 200
+    new_raw = first.json()["data"]["refresh_token"]
+    assert hash_refresh_token(new_raw) in active_hashes
+
+    replay = client.post("/api/v1/auth/refresh", json={"refresh_token": raw})
+    assert replay.status_code == 401
+    invalid = client.post("/api/v1/auth/refresh", json={"refresh_token": "x" * 40})
+    assert invalid.status_code == 401
+
+
+def test_logout_revokes_refresh_session(monkeypatch):
+    revoked = []
+
+    async def fake_revoke(pool, token_hash):
+        revoked.append(token_hash)
+        return True
+
+    monkeypatch.setattr("src.auth.repository.revoke_session", fake_revoke)
+    from src.auth.service import hash_refresh_token
+    raw = "a" * 48
+    response = client.post("/api/v1/auth/logout", json={"refresh_token": raw})
+    assert response.status_code == 204
+    assert revoked == [hash_refresh_token(raw)]
+
+
+def test_refresh_rejects_expired_session(monkeypatch):
+    async def expired_session(pool, old_hash, new_hash, days):
+        return None
+
+    monkeypatch.setattr("src.auth.repository.rotate_session", expired_session)
+    response = client.post(
+        "/api/v1/auth/refresh", json={"refresh_token": "e" * 48}
+    )
+    assert response.status_code == 401

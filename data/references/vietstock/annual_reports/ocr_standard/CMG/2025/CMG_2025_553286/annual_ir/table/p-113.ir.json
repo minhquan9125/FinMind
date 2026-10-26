@@ -1,0 +1,512 @@
+{
+  "ir_version": "1",
+  "page": 113,
+  "printed_page": "39",
+  "page_class": "notes",
+  "page_size": {"width": 3508, "height": 2487, "unit": "px"},
+  "source": {
+    "engine": "MERGED",
+    "tool": "gemini-3.1-flash-lite + tesseract vie",
+    "document_sha256": "4ed2a0ed75c3585adbf1925b0ce210d03d48142adc54f0a386553041c9c55f56",
+    "file_name": "CMG_2025_553286.pdf",
+    "image_sha256": "85fa0c5dbc974fd199af006f0b303e648831ef28e2530da4300f20a031dc0526",
+    "render": {
+      "dpi": 302.42,
+      "rotation": 0
+    },
+    "prompt_version": "api-ir-v2"
+  },
+  "blocks": [
+    {"id": "p113-b1", "type": "paragraph", "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC", "bbox": [308.7, 149.22, 1466.34, 186.53]},
+    {"id": "p113-b2", "type": "paragraph", "text": "B09-DN/HN", "bbox": [3094.06, 174.09, 3230.87, 206.42]},
+    {
+      "id": "p113-b3",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [308.7, 256.16, 1645.25, 360.62]
+    },
+    {"id": "p113-b4", "type": "paragraph", "text": "20. VAY (tiếp theo)", "bbox": [308.7, 457.61, 743.7, 492.43]},
+    {"id": "p113-b5", "type": "paragraph", "text": "20.1 Các khoản vay ngân hàng ngắn hạn", "bbox": [308.7, 552.11, 1069.94, 584.45]},
+    {
+      "id": "p113-t1",
+      "type": "table",
+      "title": null,
+      "bbox": [308.7, 649.11, 3230.87, 2250.74],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Khoản vay"], "bbox": [459.55, 649.11, 656.0, 733.66]},
+        {"key": "c2", "header_lines": ["Ngày 31 tháng 3", "năm 2026", "(VND)"], "bbox": [929.62, 649.11, 1168.16, 803.3]},
+        {"key": "c3", "header_lines": ["Kỳ hạn trả gốc và lãi"], "bbox": [1276.91, 649.11, 1754.0, 733.66]},
+        {"key": "c4", "header_lines": ["Lãi suất", "(%/năm)"], "bbox": [2206.53, 649.11, 2462.62, 733.66]},
+        {"key": "c5", "header_lines": ["Hình thức đảm bảo"], "bbox": [2480.16, 649.11, 2841.48, 733.66]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Ngân hàng TNHH MTV Shinhan Việt Nam",
+          "note": null,
+          "bbox": [459.55, 803.3, 859.46, 927.65],
+          "cells": {
+            "c2": {
+              "raw": "149.293.567.383",
+              "bbox": [929.62, 803.3, 1238.32, 835.63],
+              "votes": {
+                "GEMINI": {
+                  "raw": "149.293.567.383",
+                  "conf": null
+                }
+              }
+            },
+            "c3": {
+              "raw": "Gốc vay có kỳ hạn 4 đến 5 tháng với khoản vay cuối cùng đáo hạn vào ngày 25 tháng 8 năm 2026. Lãi vay trả hàng tháng.",
+              "bbox": [1276.91, 803.3, 2157.42, 927.65],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Gốc vay có kỳ hạn 4 đến 5 tháng với khoản vay cuối cùng đáo hạn vào ngày 25 tháng 8 năm 2026. Lãi vay trả hàng tháng.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Gốc đến kỳ khoản có hạn 4 5 tháng với vay cuôi cùng đáo hạn tháng vào ngày 25 8 vay",
+                  "conf": 95.89
+                }
+              }
+            },
+            "c4": {
+              "raw": "4,0% - 7,2%",
+              "bbox": [2206.53, 803.3, 2448.58, 835.63],
+              "votes": {
+                "GEMINI": {
+                  "raw": "4,0% - 7,2%",
+                  "conf": null
+                }
+              }
+            },
+            "c5": {
+              "raw": "Tín chấp.",
+              "bbox": [2480.16, 803.3, 2648.54, 835.63],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Tín chấp.",
+                  "conf": null
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Ngoại thương Việt Nam",
+          "note": null,
+          "bbox": [459.55, 982.37, 859.46, 1106.71],
+          "cells": {
+            "c2": {
+              "raw": "144.788.964.188",
+              "bbox": [929.62, 982.37, 1238.32, 1014.7],
+              "votes": {
+                "GEMINI": {
+                  "raw": "144.788.964.188",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "144. 788.964.188",
+                  "conf": 12.62
+                }
+              }
+            },
+            "c3": {
+              "raw": "Gốc vay có kỳ hạn 5 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 22 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+              "bbox": [1276.91, 982.37, 2157.42, 1106.71],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Gốc vay có kỳ hạn 5 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 22 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Gốc đến khoản kỳ có hạn 5 6 tháng với vay cuôi cùng hạn đáo vào ngày 22 tháng 9 Vay trả 2026. Lãi năm",
+                  "conf": 96.24
+                }
+              }
+            },
+            "c4": {
+              "raw": "1,3% - 4,4%",
+              "bbox": [2206.53, 982.37, 2448.58, 1014.7],
+              "votes": {
+                "GEMINI": {
+                  "raw": "1,3% - 4,4%",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "1,3% 4.4%",
+                  "conf": 91.48
+                }
+              }
+            },
+            "c5": {
+              "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Ngoại thương Việt Nam.",
+              "bbox": [2480.16, 982.37, 3209.82, 1074.38],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Ngoại thương Việt Nam.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "đồng tiền gửi Hợp tại Ngân hàng TMCP Ngoại thương Việt Nam.",
+                  "conf": 95.1
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Ngân hàng TNHH Một Thành viên HSBC Việt Nam - Chi nhánh Hà Nội",
+          "note": null,
+          "bbox": [459.55, 1161.43, 859.46, 1285.78],
+          "cells": {
+            "c2": {
+              "raw": "123.648.692.485",
+              "bbox": [929.62, 1161.43, 1238.32, 1193.76],
+              "votes": {
+                "GEMINI": {
+                  "raw": "123.648.692.485",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "123.648.692.485",
+                  "conf": 92.36
+                }
+              }
+            },
+            "c3": {
+              "raw": "Gốc vay có kỳ hạn 4 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 15 tháng 7 năm 2026. Lãi vay trả hàng tháng.",
+              "bbox": [1276.91, 1161.43, 2157.42, 1285.78],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Gốc vay có kỳ hạn 4 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 15 tháng 7 năm 2026. Lãi vay trả hàng tháng.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Gốc đến có kỳ khoản hạn 4 6 tháng với vay cuôi cùng đáo hạn tháng vào ngày 15 7 vay trả 2026. Lãi năm hàng tháng. vay",
+                  "conf": 96.11
+                }
+              }
+            },
+            "c4": {
+              "raw": "4,6% - 7,2%",
+              "bbox": [2206.53, 1161.43, 2448.58, 1193.76],
+              "votes": {
+                "GEMINI": {
+                  "raw": "4,6% - 7,2%",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "4,6% 7,2% -",
+                  "conf": 93.05
+                }
+              }
+            },
+            "c5": {
+              "raw": "Tín chấp và hợp đồng tiền gửi tại Ngân hàng TNHH Một thành viên HSBC Việt Nam.",
+              "bbox": [2480.16, 1161.43, 3209.82, 1285.78],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Tín chấp và hợp đồng tiền gửi tại Ngân hàng TNHH Một thành viên HSBC Việt Nam.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "chấp đồng tiền Tín gửi hợp và tại Ngân hàng TNHH thành HSBC Một viên Việt Nam.",
+                  "conf": 94.51
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Kỹ thương Việt Nam",
+          "note": null,
+          "bbox": [459.55, 1340.49, 859.46, 1464.84],
+          "cells": {
+            "c2": {
+              "raw": "115.495.321.784",
+              "bbox": [929.62, 1340.49, 1238.32, 1372.82],
+              "votes": {
+                "GEMINI": {
+                  "raw": "115.495.321.784",
+                  "conf": null
+                }
+              }
+            },
+            "c3": {
+              "raw": "Gốc vay có kỳ hạn 4 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 9 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+              "bbox": [1276.91, 1340.49, 2157.42, 1464.84],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Gốc vay có kỳ hạn 4 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 9 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Gốc đến khoản có kỳ hạn 6 4 tháng với vay cuối cùng đáo hạn vào ngày 9 tháng 9 vay",
+                  "conf": 91.48
+                }
+              }
+            },
+            "c4": {
+              "raw": "4,3% - 5,54%",
+              "bbox": [2206.53, 1340.49, 2462.62, 1372.82],
+              "votes": {
+                "GEMINI": {
+                  "raw": "4,3% - 5,54%",
+                  "conf": null
+                }
+              }
+            },
+            "c5": {
+              "raw": "Tín chấp.",
+              "bbox": [2480.16, 1340.49, 2648.54, 1372.82],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Tín chấp.",
+                  "conf": null
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Quân đội Việt Nam - Chi nhánh Hoàn Kiếm",
+          "note": null,
+          "bbox": [459.55, 1519.56, 859.46, 1678.72],
+          "cells": {
+            "c2": {
+              "raw": "108.566.704.716",
+              "bbox": [929.62, 1519.56, 1238.32, 1551.89],
+              "votes": {
+                "GEMINI": {
+                  "raw": "108.566.704.716",
+                  "conf": null
+                }
+              }
+            },
+            "c3": {
+              "raw": "Gốc vay có kỳ hạn 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 24 tháng 6 năm 2026. Lãi vay trả hàng tháng.",
+              "bbox": [1276.91, 1519.56, 2157.42, 1643.91],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Gốc vay có kỳ hạn 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 24 tháng 6 năm 2026. Lãi vay trả hàng tháng.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Gốc cuối khoản có kỳ hạn 6 tháng với vay vay cùng đáo hạn vào 24 tháng ngày 6 20286. năm",
+                  "conf": 93.56
+                }
+              }
+            },
+            "c4": {
+              "raw": "4,5% - 6,5%",
+              "bbox": [2206.53, 1519.56, 2448.58, 1551.89],
+              "votes": {
+                "GEMINI": {
+                  "raw": "4,5% - 6,5%",
+                  "conf": null
+                }
+              }
+            },
+            "c5": {
+              "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Quân Đội - Chi nhánh Hoàn Kiếm.",
+              "bbox": [2480.16, 1519.56, 3209.82, 1643.91],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Quân Đội - Chi nhánh Hoàn Kiếm.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "đồng tiền gửi Hợp Ngân tại hàng TMCP Kiếm. Quân Đội Chi nhánh Hoàn -",
+                  "conf": 91.16
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam",
+          "note": null,
+          "bbox": [459.55, 1733.44, 859.46, 1857.79],
+          "cells": {
+            "c2": {
+              "raw": "87.870.805.450",
+              "bbox": [929.62, 1733.44, 1238.32, 1765.77],
+              "votes": {
+                "GEMINI": {
+                  "raw": "87.870.805.450",
+                  "conf": null
+                }
+              }
+            },
+            "c3": {
+              "raw": "Gốc vay có kỳ hạn 2 đến 12 tháng với khoản vay cuối cùng đáo hạn vào ngày 31 tháng 3 năm 2027. Lãi vay trả hàng tháng.",
+              "bbox": [1276.91, 1733.44, 2157.42, 1857.79],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Gốc vay có kỳ hạn 2 đến 12 tháng với khoản vay cuối cùng đáo hạn vào ngày 31 tháng 3 năm 2027. Lãi vay trả hàng tháng.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Gốc đến có kỳ hạn 2 12 khoản tháng với vay cuôi cùng đáo hạn vào ngày 31 tháng 3 vay",
+                  "conf": 95.02
+                }
+              }
+            },
+            "c4": {
+              "raw": "4,9% - 7,5%",
+              "bbox": [2206.53, 1733.44, 2448.58, 1765.77],
+              "votes": {
+                "GEMINI": {
+                  "raw": "4,9% - 7,5%",
+                  "conf": null
+                }
+              }
+            },
+            "c5": {
+              "raw": "Tín chấp và hợp đồng tiền gửi tại Ngân hàng TMCP Đầu tư và Phát triển Việt Nam.",
+              "bbox": [2480.16, 1733.44, 3209.82, 1857.79],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Tín chấp và hợp đồng tiền gửi tại Ngân hàng TMCP Đầu tư và Phát triển Việt Nam.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "chấp đồng tiền gửi Tín và hợp tại Ngân Đầu triển hàng TMCP Phát Việt và tư",
+                  "conf": 95.72
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Ngân hàng Đại chúng TNHH Kasikornbank",
+          "note": null,
+          "bbox": [459.55, 1912.5, 859.46, 2036.85],
+          "cells": {
+            "c2": {
+              "raw": "63.295.980.430",
+              "bbox": [929.62, 1912.5, 1238.32, 1944.83],
+              "votes": {
+                "GEMINI": {
+                  "raw": "63.295.980.430",
+                  "conf": null
+                }
+              }
+            },
+            "c3": {
+              "raw": "Gốc vay có kỳ hạn 4 tháng với khoản vay cuối cùng đáo hạn vào ngày 29 tháng 7 năm 2026. Lãi vay trả hàng tháng.",
+              "bbox": [1276.91, 1912.5, 2157.42, 2036.85],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Gốc vay có kỳ hạn 4 tháng với khoản vay cuối cùng đáo hạn vào ngày 29 tháng 7 năm 2026. Lãi vay trả hàng tháng.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Góc cuối khoản có kỳ hạn 4 tháng với vay vay cùng đáo hạn vào tháng ngày 29 7 2026. năm",
+                  "conf": 95.89
+                }
+              }
+            },
+            "c4": {
+              "raw": "2,0% - 6,5%",
+              "bbox": [2206.53, 1912.5, 2448.58, 1944.83],
+              "votes": {
+                "GEMINI": {
+                  "raw": "2,0% - 6,5%",
+                  "conf": null
+                }
+              }
+            },
+            "c5": {
+              "raw": "Hợp đồng tiền gửi tại Ngân hàng Đại chúng TNHH Kasikornbank.",
+              "bbox": [2480.16, 1912.5, 3209.82, 2004.52],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Hợp đồng tiền gửi tại Ngân hàng Đại chúng TNHH Kasikornbank.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "đồng tiền gửi Hợp Ngân tại hàng Đại",
+                  "conf": 96.65
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r8",
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Hàng Hải Việt Nam",
+          "note": null,
+          "bbox": [459.55, 2091.57, 859.46, 2215.92],
+          "cells": {
+            "c2": {
+              "raw": "41.966.464.982",
+              "bbox": [929.62, 2091.57, 1238.32, 2123.9],
+              "votes": {
+                "GEMINI": {
+                  "raw": "41.966.464.982",
+                  "conf": null
+                }
+              }
+            },
+            "c3": {
+              "raw": "Gốc vay có kỳ hạn 5 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 3 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+              "bbox": [1276.91, 2091.57, 2157.42, 2215.92],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Gốc vay có kỳ hạn 5 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 3 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Gốc đến khoản có kỳ hạn 5 6 tháng với vay cuôi cùng đáo hạn vào ngày 3 tháng 9 vay",
+                  "conf": 96.11
+                }
+              }
+            },
+            "c4": {
+              "raw": "5,0% - 7,2%",
+              "bbox": [2206.53, 2091.57, 2448.58, 2123.9],
+              "votes": {
+                "GEMINI": {
+                  "raw": "5,0% - 7,2%",
+                  "conf": null
+                }
+              }
+            },
+            "c5": {
+              "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Hàng Hải Việt Nam.",
+              "bbox": [2480.16, 2091.57, 3209.82, 2183.59],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Hàng Hải Việt Nam.",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "đồng tiền gửi Hợp tại Ngân hàng TMCP Hải Hàng Việt Nam.",
+                  "conf": 95.9
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {"id": "p113-b7", "type": "paragraph", "text": "39", "bbox": [1739.97, 2330.32, 1789.08, 2365.14]}
+  ]
+}

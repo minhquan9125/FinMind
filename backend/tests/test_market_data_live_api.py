@@ -10,6 +10,7 @@ from uuid import uuid4
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from backend.src.api.routers.market_data import get_market_data_repository, router
+from backend.src.auth.authorization import Principal, current_principal
 from backend.src.market_data.live import LiveCoordinator
 from backend.src.market_data.repository import FileMarketDataRepository
 from backend.src.market_data.sdk import CollectorLock
@@ -31,6 +32,7 @@ class LiveApiTests(unittest.TestCase):
         self.app.include_router(router)
         self.app.state.live = self.service
         self.app.dependency_overrides[get_market_data_repository] = lambda: self.repo
+        self.app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({"ADMINISTRATOR"}))
         self.client = TestClient(self.app)
         self.viewer = str(uuid4())
 

@@ -1,0 +1,26 @@
+{
+  "ir_version": "1",
+  "page": 23,
+  "printed_page": "76",
+  "page_class": "income_statement",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TESSERACT",
+    "tool": "tesseract vie",
+    "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+    "file_name": "TCB_2025_539917.pdf",
+    "image_sha256": "f1aac240e7d1958ad307e89cc466ad01e87cd77e15465c071a079d9d60eaa38c",
+    "render": {
+      "dpi": 212.17,
+      "rotation": 0
+    }
+  },
+  "blocks": [
+    {
+      "id": "p23-b1",
+      "type": "paragraph",
+      "text": "03\nTHÀNH TỰU CỦA TECH\nBáo cáo Kết quả kinh doanh | 46\nKhối Ngân hàng Bán lẻ (RBG) | 58\nKhối Ngân hàng Doanh nghiệp và Định chế tài chính (CIBG) | 68\nCác công ty con | 76",
+      "bbox": null
+    }
+  ]
+}

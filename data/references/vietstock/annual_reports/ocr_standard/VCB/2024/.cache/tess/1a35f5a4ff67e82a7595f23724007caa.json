@@ -1,0 +1,166 @@
+{
+  "text": "DẤU XANH\nTỰ HẢO\n\nVietcombank\n\nđ)\n\n&\n\nBáo cáo\nthường niên\n202%",
+  "chars": 46,
+  "words": 12,
+  "wordItems": [
+    {
+      "text": "DẤU",
+      "bbox": [
+        403,
+        1447,
+        663,
+        1582
+      ],
+      "conf": 93.199821,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "XANH",
+      "bbox": [
+        700,
+        1486,
+        1099,
+        1607
+      ],
+      "conf": 91.700638,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TỰ",
+      "bbox": [
+        390,
+        1616,
+        576,
+        1740
+      ],
+      "conf": 94.87085,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "HẢO",
+      "bbox": [
+        614,
+        1620,
+        891,
+        1718
+      ],
+      "conf": 45.470856,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Vietcombank",
+      "bbox": [
+        1808,
+        246,
+        2352,
+        315
+      ],
+      "conf": 93.603737,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đ)",
+      "bbox": [
+        1509,
+        830,
+        1589,
+        907
+      ],
+      "conf": 22.802368,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "&",
+      "bbox": [
+        1379,
+        1778,
+        1492,
+        1891
+      ],
+      "conf": 35.724518,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Báo",
+      "bbox": [
+        2089,
+        3166,
+        2207,
+        3219
+      ],
+      "conf": 96.768341,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cáo",
+      "bbox": [
+        2222,
+        3166,
+        2329,
+        3219
+      ],
+      "conf": 96.633446,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thường",
+      "bbox": [
+        1955,
+        3233,
+        2181,
+        3299
+      ],
+      "conf": 96.375,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "niên",
+      "bbox": [
+        2198,
+        3234,
+        2329,
+        3287
+      ],
+      "conf": 96.866058,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "202%",
+      "bbox": [
+        2149,
+        3306,
+        2329,
+        3356
+      ],
+      "conf": 66.522194,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 78,
+  "lowConfRatio": 0.25,
+  "seconds": 0.598
+}

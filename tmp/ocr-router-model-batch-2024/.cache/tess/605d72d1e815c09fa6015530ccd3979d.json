@@ -1,0 +1,153 @@
+{
+  "text": "dvÐ\n\nCMC CORPORATION\n\n4 TÌNH HÌNH\n; HOẠT ĐỘNG TRONG NĂM",
+  "chars": 43,
+  "words": 11,
+  "wordItems": [
+    {
+      "text": "dvÐ",
+      "bbox": [
+        795,
+        171,
+        920,
+        253
+      ],
+      "conf": 12.672035,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        706,
+        273,
+        770,
+        294
+      ],
+      "conf": 92.153778,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        782,
+        273,
+        1008,
+        294
+      ],
+      "conf": 89.9804,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "4",
+      "bbox": [
+        337,
+        1737,
+        352,
+        1764
+      ],
+      "conf": 88.652374,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÌNH",
+      "bbox": [
+        520,
+        1744,
+        622,
+        1783
+      ],
+      "conf": 92.956978,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HÌNH",
+      "bbox": [
+        643,
+        1744,
+        747,
+        1783
+      ],
+      "conf": 91.920715,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": ";",
+      "bbox": [
+        335,
+        1823,
+        352,
+        1854
+      ],
+      "conf": 35.12162,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "HOẠT",
+      "bbox": [
+        522,
+        1810,
+        648,
+        1847
+      ],
+      "conf": 92.644684,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐỘNG",
+      "bbox": [
+        665,
+        1802,
+        800,
+        1847
+      ],
+      "conf": 93.156662,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TRONG",
+      "bbox": [
+        818,
+        1810,
+        977,
+        1842
+      ],
+      "conf": 91.028717,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NĂM",
+      "bbox": [
+        997,
+        1801,
+        1094,
+        1841
+      ],
+      "conf": 96.132523,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 80,
+  "lowConfRatio": 0.182,
+  "seconds": 0.384
+}

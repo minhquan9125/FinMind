@@ -27,7 +27,7 @@ def create_access_token(
     payload = {
         "sub": str(user_id),
         "type": "access",
-        "roles": roles or ["RESEARCHER"],
+        "roles": ["RESEARCHER"] if roles is None else roles,
         "iat": now,
         "exp": now + timedelta(minutes=settings.access_token_minutes),
     }
@@ -62,15 +62,21 @@ def create_refresh_token() -> tuple[str, str]:
 def hash_refresh_token(raw_token: str) -> str:
     return hashlib.sha256(raw_token.encode("utf-8")).hexdigest()
 
+
+def password_hash_version(password_hash: str | None) -> str:
+    """Bind a reset token to the current password state, including Google-only users."""
+    return hashlib.sha256((password_hash or "").encode("utf-8")).hexdigest()
+
+
 def create_password_reset_token(
-    user_id: UUID, password_hash: str, settings: Settings
+    user_id: UUID, password_hash: str | None, settings: Settings
 ) -> str:
     now = datetime.now(timezone.utc)
     return jwt.encode(
         {
             "sub": str(user_id),
             "type": "password_reset",
-            "pwd_ver": hashlib.sha256(password_hash.encode()).hexdigest(),
+            "pwd_ver": password_hash_version(password_hash),
             "iat": now,
             "exp": now + timedelta(minutes=15),
         },

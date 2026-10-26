@@ -1,0 +1,28 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\BID\\2025\\BID_2025_542007.pdf",
+  "scope": "annual_report_content",
+  "pages": 19,
+  "routes": {
+    "TEXT_LAYER": 19
+  },
+  "blockTypes": {
+    "paragraph": 1735,
+    "furniture": 49,
+    "heading": 80
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 39,
+      "end": 40
+    },
+    {
+      "start": 62,
+      "end": 78
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

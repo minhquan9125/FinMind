@@ -1,0 +1,27 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\TCB\2024\TCB_2024_499236.pdf: 5 trang
+  lớp text: 0 trang dùng được, 5 trang cần OCR (0.358s)
+  [tess] trang 1: conf=86 low=0.115 rot=0 1.136s
+  [tess] trang 2: conf=72 low=0.29 rot=0 0.75s
+  [tess] trang 9: conf=95 low=0.012 rot=0 2.903s
+  [tess] trang 14: conf=95 low=0.009 rot=0 1.875s
+  [tess] trang 26: conf=93 low=0.027 rot=0 1.866s
+  [gemini-api] gemini-3.6-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.6-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.6-flash p-002.png: OK, 10.636s
+  [gemini-api] gemini-3.6-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.6-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.6-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  Gemini chưa xử lý được 4 trang; chuyển sang OmniRouter
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  tuyến: {'tesseract': 4, 'tesseract+gemini': 1}  trạng thái: {'REVIEW': 4, 'OK': 1}
+  cờ: {'GEMINI_FAILED': 4}
+  thời gian (s): {'textLayer': 0.358, 'renderAndTesseract': 11.538, 'gemini': 106.375, 'total': 118.446}
+  Gemini API: 6 lần gọi (5 lỗi), token vào 1421, ra 568
+  OpenRouter: 5 lần gọi (5 lỗi), token vào 0, ra 0
+  → D:\finmind\tmp\ocr-router-model-fallback-2024\TCB_2024_499236

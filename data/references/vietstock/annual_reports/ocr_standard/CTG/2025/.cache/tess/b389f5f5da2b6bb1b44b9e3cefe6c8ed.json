@@ -1,0 +1,88 @@
+{
+  "text": "VietnBonkS\n\nNông gió trị cuộc sống",
+  "chars": 28,
+  "words": 6,
+  "wordItems": [
+    {
+      "text": "VietnBonkS",
+      "bbox": [
+        668,
+        1162,
+        1086,
+        1283
+      ],
+      "conf": 0.0,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Nông",
+      "bbox": [
+        847,
+        1292,
+        903,
+        1314
+      ],
+      "conf": 96.692116,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "gió",
+      "bbox": [
+        910,
+        1292,
+        943,
+        1314
+      ],
+      "conf": 95.599075,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "trị",
+      "bbox": [
+        950,
+        1293,
+        970,
+        1314
+      ],
+      "conf": 96.987801,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cuộc",
+      "bbox": [
+        977,
+        1292,
+        1029,
+        1314
+      ],
+      "conf": 96.80468,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "sống",
+      "bbox": [
+        1035,
+        1290,
+        1086,
+        1314
+      ],
+      "conf": 96.216728,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 80,
+  "lowConfRatio": 0.167,
+  "seconds": 0.54
+}

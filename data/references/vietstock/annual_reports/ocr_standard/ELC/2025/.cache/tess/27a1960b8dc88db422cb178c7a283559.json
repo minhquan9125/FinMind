@@ -1,0 +1,75 @@
+{
+  "text": "elcomï~ n\nANNUAL\n\nREPORT\n2025",
+  "chars": 24,
+  "words": 5,
+  "wordItems": [
+    {
+      "text": "elcomï~",
+      "bbox": [
+        309,
+        530,
+        769,
+        695
+      ],
+      "conf": 66.693146,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "n",
+      "bbox": [
+        1203,
+        666,
+        1289,
+        682
+      ],
+      "conf": 23.760544,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ANNUAL",
+      "bbox": [
+        304,
+        811,
+        1064,
+        955
+      ],
+      "conf": 92.517975,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "REPORT",
+      "bbox": [
+        316,
+        1017,
+        1037,
+        1164
+      ],
+      "conf": 91.585464,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        308,
+        1226,
+        739,
+        1373
+      ],
+      "conf": 93.091476,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 74,
+  "lowConfRatio": 0.2,
+  "seconds": 1.052
+}

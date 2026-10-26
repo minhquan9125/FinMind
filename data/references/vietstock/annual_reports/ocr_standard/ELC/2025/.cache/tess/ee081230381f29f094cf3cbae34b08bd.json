@@ -1,0 +1,127 @@
+{
+  "text": "Béo céo hoọt động củo hội\nđồng quỏn trị",
+  "chars": 31,
+  "words": 9,
+  "wordItems": [
+    {
+      "text": "Béo",
+      "bbox": [
+        169,
+        795,
+        220,
+        816
+      ],
+      "conf": 81.470535,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "céo",
+      "bbox": [
+        229,
+        795,
+        279,
+        816
+      ],
+      "conf": 11.218613,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hoọt",
+      "bbox": [
+        289,
+        795,
+        350,
+        822
+      ],
+      "conf": 90.2481,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "động",
+      "bbox": [
+        360,
+        795,
+        428,
+        822
+      ],
+      "conf": 93.063034,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "củo",
+      "bbox": [
+        438,
+        794,
+        486,
+        816
+      ],
+      "conf": 19.259712,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hội",
+      "bbox": [
+        497,
+        795,
+        534,
+        822
+      ],
+      "conf": 96.58223,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đồng",
+      "bbox": [
+        168,
+        834,
+        236,
+        863
+      ],
+      "conf": 93.30558,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "quỏn",
+      "bbox": [
+        246,
+        835,
+        314,
+        863
+      ],
+      "conf": 56.308266,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "trị",
+      "bbox": [
+        323,
+        837,
+        348,
+        863
+      ],
+      "conf": 96.663734,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 71,
+  "lowConfRatio": 0.333,
+  "seconds": 0.585
+}

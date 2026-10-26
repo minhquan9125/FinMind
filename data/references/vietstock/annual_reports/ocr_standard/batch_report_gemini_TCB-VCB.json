@@ -1,0 +1,149 @@
+{
+  "schema_name": "finmind.annual_ocr_batch",
+  "schema_version": "1.0",
+  "updated_at": "2026-10-23T02:32:26+00:00",
+  "provider": "gemini",
+  "model": "gemini-3.8-flash",
+  "pdf_root": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf",
+  "documents": [
+    {
+      "symbol": "TCB",
+      "year": "2024",
+      "pdf": "TCB/2024/TCB_2024_499236.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\TCB\\2024\\TCB_2024_499236",
+      "sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+      "status": "MODEL_PENDING",
+      "pages": 146,
+      "model_failed_pages": [
+        1,
+        11,
+        17,
+        20,
+        23,
+        40,
+        43,
+        51,
+        57,
+        61,
+        65,
+        73,
+        144,
+        146
+      ],
+      "review_pages": [
+        1,
+        11,
+        17,
+        20,
+        23,
+        40,
+        43,
+        51,
+        57,
+        61,
+        65,
+        73,
+        144,
+        146
+      ],
+      "routes": {
+        "tesseract": 49,
+        "tesseract+gemini": 1,
+        "text_layer": 96
+      },
+      "exit_code": 0,
+      "skipped": false
+    },
+    {
+      "symbol": "TCB",
+      "year": "2025",
+      "pdf": "TCB/2025/TCB_2025_539917.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\TCB\\2025\\TCB_2025_539917",
+      "sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+      "status": "MODEL_PENDING",
+      "pages": 197,
+      "model_failed_pages": [
+        1,
+        2,
+        5,
+        23,
+        73
+      ],
+      "review_pages": [
+        1,
+        2,
+        5,
+        23,
+        73
+      ],
+      "routes": {
+        "tesseract": 7,
+        "text_layer": 190
+      },
+      "exit_code": 0,
+      "skipped": false
+    },
+    {
+      "symbol": "VCB",
+      "year": "2024",
+      "pdf": "VCB/2024/VCB_2024_501264.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\VCB\\2024\\VCB_2024_501264",
+      "sha256": "0a54c7e25712351cef1df5be0e8c3f121ca45577864acaf0113aab2580db1120",
+      "status": "MODEL_PENDING",
+      "pages": 107,
+      "model_failed_pages": [
+        1,
+        2,
+        34,
+        48
+      ],
+      "review_pages": [
+        1,
+        2,
+        34,
+        48
+      ],
+      "routes": {
+        "tesseract": 5,
+        "text_layer": 102
+      },
+      "exit_code": 0,
+      "skipped": false
+    },
+    {
+      "symbol": "VCB",
+      "year": "2025",
+      "pdf": "VCB/2025/541578_pdfs/VCB_Baocaothuongnien_2025.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\VCB\\2025\\VCB_Baocaothuongnien_2025",
+      "sha256": "1c93629bcd35e99ad19221e8af38400b53e84c154b4a9f93dcbaee83a9ebaba3",
+      "status": "MODEL_PENDING",
+      "pages": 113,
+      "model_failed_pages": [
+        1,
+        2,
+        26,
+        32
+      ],
+      "review_pages": [
+        1,
+        2,
+        26,
+        32
+      ],
+      "routes": {
+        "tesseract": 4,
+        "text_layer": 109
+      },
+      "exit_code": 0,
+      "skipped": false
+    }
+  ],
+  "summary": {
+    "pdfs_discovered": 4,
+    "pdfs_attempted": 4,
+    "complete": 0,
+    "pending_or_failed": 4,
+    "pages": 563,
+    "review_pages": 27
+  }
+}

@@ -109,6 +109,25 @@ export async function apiGoogleLogin(credential) {
   return body.data;
 }
 
+async function postSessionAction(path, refreshToken) {
+  const response = await fetch(`/api/v1/auth/${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ refresh_token: refreshToken }),
+  });
+  if (response.status === 204) return null;
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(body.detail || "Phiên đăng nhập không hợp lệ hoặc đã hết hạn.");
+    error.status = response.status;
+    throw error;
+  }
+  return body.data;
+}
+
+export const apiRefreshSession = (refreshToken) => postSessionAction("refresh", refreshToken);
+export const apiLogout = (refreshToken) => postSessionAction("logout", refreshToken);
+
 /**
  * Gửi yêu cầu đặt lại mật khẩu qua email
  * @param {string} email

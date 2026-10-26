@@ -1,0 +1,330 @@
+{
+  "document_sha256": "3e16232e390af4911ead01468310f1c9f0a3b4581a1c2ee46b72be147b84183a",
+  "scope": "audited_financial_statements",
+  "pages": 24,
+  "page_ranges": [
+    {
+      "start": 42,
+      "end": 65
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "toc",
+      "start": 42,
+      "end": 42
+    },
+    {
+      "page_class": "other",
+      "start": 43,
+      "end": 44
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 45,
+      "end": 46
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 47,
+      "end": 47
+    },
+    {
+      "page_class": "notes",
+      "start": 48,
+      "end": 65
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 42,
+      "printed_page": "82",
+      "file": "p-042.ir.json",
+      "page_class": "toc",
+      "title": "toc",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 43,
+      "printed_page": "84",
+      "file": "p-043.ir.json",
+      "page_class": "other",
+      "title": "other",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 44,
+      "printed_page": "86",
+      "file": "p-044.ir.json",
+      "page_class": "other",
+      "title": "other",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 45,
+      "printed_page": "88",
+      "file": "p-045.ir.json",
+      "page_class": "balance_sheet",
+      "title": "balance_sheet",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 46,
+      "printed_page": "90",
+      "file": "p-046.ir.json",
+      "page_class": "balance_sheet",
+      "title": "balance_sheet",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 47,
+      "printed_page": "92",
+      "file": "p-047.ir.json",
+      "page_class": "cash_flow",
+      "title": "cash_flow",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 48,
+      "printed_page": "94",
+      "file": "p-048.ir.json",
+      "page_class": "notes",
+      "title": "CÔNG TY CÔ PHÀN VIÊN THÔNG - TIN HỌC BƯU ĐIỆN",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 49,
+      "printed_page": "96",
+      "file": "p-049.ir.json",
+      "page_class": "notes",
+      "title": "CÔNG TY CÔ PHÀN VIỄN THÔNG - TIN HỌC BƯU ĐIỆN",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 50,
+      "printed_page": "98",
+      "file": "p-050.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 51,
+      "printed_page": "100",
+      "file": "p-051.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 52,
+      "printed_page": "102",
+      "file": "p-052.ir.json",
+      "page_class": "notes",
+      "title": "4.22 Bên liên quan",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 53,
+      "printed_page": "104",
+      "file": "p-053.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 54,
+      "printed_page": "106",
+      "file": "p-054.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 55,
+      "printed_page": "108",
+      "file": "p-055.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 56,
+      "printed_page": "110",
+      "file": "p-056.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 57,
+      "printed_page": "112",
+      "file": "p-057.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 58,
+      "printed_page": "114",
+      "file": "p-058.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 59,
+      "printed_page": "116",
+      "file": "p-059.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 60,
+      "printed_page": "118",
+      "file": "p-060.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 61,
+      "printed_page": "120",
+      "file": "p-061.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 62,
+      "printed_page": "122",
+      "file": "p-062.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 63,
+      "printed_page": "124",
+      "file": "p-063.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 64,
+      "printed_page": "126",
+      "file": "p-064.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 65,
+      "printed_page": "128",
+      "file": "p-065.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    }
+  ],
+  "structured_table_ranges": [
+    {
+      "start": 52,
+      "end": 52
+    }
+  ],
+  "needs_review": [
+    {
+      "pdf_page": 45,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "reason": "statement_columns_or_rows_unverified"
+    }
+  ],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": "TT200_NONBANK",
+  "arithmetic_template_id": "vn_nonbank_b01_b02_b03_v1",
+  "arithmetic_template_sha256": "b827359542c40d4ce71a754b248232aae0b8bc2f30f0ce7ddf99e82381a4748a",
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [
+    {
+      "start": 48,
+      "end": 51
+    },
+    {
+      "start": 53,
+      "end": 65
+    }
+  ],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

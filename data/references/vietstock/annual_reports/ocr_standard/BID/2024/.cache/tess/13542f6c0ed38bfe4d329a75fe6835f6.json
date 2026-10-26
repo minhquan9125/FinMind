@@ -1,0 +1,244 @@
+{
+  "text": "CHƯƠNG\n\nOI\n\nTHÔNG ĐIỆP 2024\n\nThông điệp của Chủ tịch Hội đồng Quản trị\n\nGiải thưởng năm 2024",
+  "chars": 71,
+  "words": 18,
+  "wordItems": [
+    {
+      "text": "CHƯƠNG",
+      "bbox": [
+        3049,
+        959,
+        3340,
+        1015
+      ],
+      "conf": 55.553101,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "OI",
+      "bbox": [
+        3075,
+        1041,
+        3315,
+        1231
+      ],
+      "conf": 26.540237,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THÔNG",
+      "bbox": [
+        2804,
+        1271,
+        3019,
+        1330
+      ],
+      "conf": 91.222435,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐIỆP",
+      "bbox": [
+        3037,
+        1271,
+        3173,
+        1340
+      ],
+      "conf": 90.808472,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        3192,
+        1283,
+        3338,
+        1330
+      ],
+      "conf": 94.148178,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Thông",
+      "bbox": [
+        2757,
+        1416,
+        2845,
+        1448
+      ],
+      "conf": 96.730904,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "điệp",
+      "bbox": [
+        2853,
+        1416,
+        2911,
+        1448
+      ],
+      "conf": 97.019775,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "của",
+      "bbox": [
+        2920,
+        1417,
+        2967,
+        1440
+      ],
+      "conf": 96.925522,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Chủ",
+      "bbox": [
+        2976,
+        1416,
+        3028,
+        1441
+      ],
+      "conf": 97.009933,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tịch",
+      "bbox": [
+        3037,
+        1416,
+        3086,
+        1446
+      ],
+      "conf": 97.017914,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Hội",
+      "bbox": [
+        3097,
+        1416,
+        3142,
+        1446
+      ],
+      "conf": 96.676514,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đồng",
+      "bbox": [
+        3152,
+        1413,
+        3221,
+        1448
+      ],
+      "conf": 96.769051,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Quản",
+      "bbox": [
+        3230,
+        1417,
+        3303,
+        1441
+      ],
+      "conf": 96.932281,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "trị",
+      "bbox": [
+        3312,
+        1417,
+        3339,
+        1446
+      ],
+      "conf": 96.81752,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Giải",
+      "bbox": [
+        3031,
+        1492,
+        3080,
+        1516
+      ],
+      "conf": 96.957207,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thưởng",
+      "bbox": [
+        3090,
+        1491,
+        3188,
+        1523
+      ],
+      "conf": 96.910683,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        3197,
+        1492,
+        3256,
+        1515
+      ],
+      "conf": 97.015495,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        3266,
+        1492,
+        3340,
+        1516
+      ],
+      "conf": 96.177628,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 90,
+  "lowConfRatio": 0.111,
+  "seconds": 0.871
+}

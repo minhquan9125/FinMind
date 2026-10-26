@@ -1,0 +1,361 @@
+{
+  "text": "BÁO CÁO TÀI CHÍNH HỢP NHẤT\n\nCÔNG TY CỔ PHẦN CÔNG NGHỆ ITD\nCho năm tài chính từ ngày 01/04/2025 đến ngày 31/03/2026\n\n(đã được kiểm toán)",
+  "chars": 107,
+  "words": 27,
+  "wordItems": [
+    {
+      "text": "BÁO",
+      "bbox": [
+        440,
+        1182,
+        575,
+        1245
+      ],
+      "conf": 92.600044,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        591,
+        1182,
+        719,
+        1243
+      ],
+      "conf": 96.901398,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        733,
+        1179,
+        834,
+        1242
+      ],
+      "conf": 96.797325,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        851,
+        1177,
+        1042,
+        1240
+      ],
+      "conf": 96.576698,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HỢP",
+      "bbox": [
+        1063,
+        1182,
+        1197,
+        1251
+      ],
+      "conf": 96.556664,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NHẤT",
+      "bbox": [
+        1215,
+        1166,
+        1388,
+        1238
+      ],
+      "conf": 96.880775,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        435,
+        1306,
+        565,
+        1350
+      ],
+      "conf": 96.514748,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        576,
+        1311,
+        633,
+        1348
+      ],
+      "conf": 96.233269,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỔ",
+      "bbox": [
+        643,
+        1297,
+        704,
+        1346
+      ],
+      "conf": 93.30217,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHẦN",
+      "bbox": [
+        717,
+        1295,
+        843,
+        1346
+      ],
+      "conf": 93.013771,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        857,
+        1302,
+        987,
+        1345
+      ],
+      "conf": 96.817795,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NGHỆ",
+      "bbox": [
+        1001,
+        1299,
+        1126,
+        1353
+      ],
+      "conf": 93.301208,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ITD",
+      "bbox": [
+        1141,
+        1307,
+        1214,
+        1342
+      ],
+      "conf": 93.024963,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cho",
+      "bbox": [
+        433,
+        1376,
+        507,
+        1409
+      ],
+      "conf": 96.870636,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        520,
+        1375,
+        598,
+        1408
+      ],
+      "conf": 95.664841,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        612,
+        1374,
+        653,
+        1407
+      ],
+      "conf": 96.953049,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        667,
+        1373,
+        762,
+        1406
+      ],
+      "conf": 96.901093,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        777,
+        1373,
+        815,
+        1405
+      ],
+      "conf": 95.691887,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        829,
+        1373,
+        914,
+        1413
+      ],
+      "conf": 96.558502,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "01/04/2025",
+      "bbox": [
+        927,
+        1370,
+        1129,
+        1404
+      ],
+      "conf": 96.568069,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "đến",
+      "bbox": [
+        1143,
+        1362,
+        1208,
+        1402
+      ],
+      "conf": 97.00029,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        1225,
+        1369,
+        1308,
+        1409
+      ],
+      "conf": 93.043137,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "31/03/2026",
+      "bbox": [
+        1322,
+        1367,
+        1525,
+        1400
+      ],
+      "conf": 96.337212,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "(đã",
+      "bbox": [
+        433,
+        1438,
+        489,
+        1479
+      ],
+      "conf": 96.870537,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "được",
+      "bbox": [
+        503,
+        1438,
+        600,
+        1475
+      ],
+      "conf": 96.961372,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kiểm",
+      "bbox": [
+        614,
+        1429,
+        698,
+        1469
+      ],
+      "conf": 96.214752,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "toán)",
+      "bbox": [
+        711,
+        1434,
+        802,
+        1475
+      ],
+      "conf": 96.968842,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 96,
+  "lowConfRatio": 0,
+  "seconds": 0.686
+}

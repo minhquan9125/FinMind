@@ -1,0 +1,25 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\FPT\\2024\\FPT_2024_498332.pdf",
+  "scope": "annual_report_content",
+  "pages": 138,
+  "routes": {
+    "TEXT_LAYER": 138
+  },
+  "blockTypes": {
+    "heading": 401,
+    "paragraph": 3232,
+    "furniture": 1909,
+    "table": 5
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 4,
+      "end": 141
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

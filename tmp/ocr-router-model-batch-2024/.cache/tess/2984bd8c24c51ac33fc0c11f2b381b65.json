@@ -1,0 +1,231 @@
+{
+  "text": "MB\n\n_ Báo cáo thường niên 2024\n\nDOANH NGHIỆP SỐ %\nTẬP ĐOÀN TÀI CHÍNH DẪN ĐẦU",
+  "chars": 58,
+  "words": 17,
+  "wordItems": [
+    {
+      "text": "MB",
+      "bbox": [
+        107,
+        104,
+        343,
+        207
+      ],
+      "conf": 0.0,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "_",
+      "bbox": [
+        75,
+        1872,
+        77,
+        1895
+      ],
+      "conf": 62.72126,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Báo",
+      "bbox": [
+        111,
+        1878,
+        193,
+        1915
+      ],
+      "conf": 96.507248,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cáo",
+      "bbox": [
+        207,
+        1879,
+        285,
+        1915
+      ],
+      "conf": 96.465988,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thường",
+      "bbox": [
+        297,
+        1877,
+        454,
+        1924
+      ],
+      "conf": 95.969002,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "niên",
+      "bbox": [
+        471,
+        1879,
+        556,
+        1915
+      ],
+      "conf": 96.562431,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        570,
+        1879,
+        673,
+        1915
+      ],
+      "conf": 96.454155,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        111,
+        1935,
+        307,
+        2031
+      ],
+      "conf": 92.532257,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NGHIỆP",
+      "bbox": [
+        339,
+        1935,
+        555,
+        2031
+      ],
+      "conf": 96.552292,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "SỐ",
+      "bbox": [
+        590,
+        1939,
+        671,
+        2026
+      ],
+      "conf": 96.905998,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "%",
+      "bbox": [
+        921,
+        2014,
+        950,
+        2027
+      ],
+      "conf": 0.0,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TẬP",
+      "bbox": [
+        108,
+        2028,
+        216,
+        2088
+      ],
+      "conf": 93.301437,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐOÀN",
+      "bbox": [
+        231,
+        2028,
+        402,
+        2073
+      ],
+      "conf": 91.378784,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        420,
+        2028,
+        506,
+        2073
+      ],
+      "conf": 97.014893,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        526,
+        2028,
+        712,
+        2073
+      ],
+      "conf": 96.609283,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "DẪN",
+      "bbox": [
+        733,
+        2013,
+        853,
+        2073
+      ],
+      "conf": 90.979843,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐẦU",
+      "bbox": [
+        870,
+        2028,
+        989,
+        2073
+      ],
+      "conf": 96.813568,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 82,
+  "lowConfRatio": 0.118,
+  "seconds": 0.464
+}

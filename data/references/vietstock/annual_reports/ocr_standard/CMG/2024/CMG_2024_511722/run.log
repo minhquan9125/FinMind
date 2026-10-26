@@ -1,0 +1,28 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\CMG\2024\CMG_2024_511722.pdf: 77 trang
+  lớp text: 66 trang dùng được, 11 trang cần OCR (0.566s)
+  [tess] trang 1: conf=66 low=0.294 rot=0 (cache)
+  [tess] trang 2: conf=92 low=0.036 rot=0 (cache)
+  [tess] trang 12: conf=87 low=0.077 rot=0 (cache)
+  [tess] trang 13: conf=89 low=0 rot=0 (cache)
+  [tess] trang 24: conf=76 low=0.182 rot=0 (cache)
+  [tess] trang 34: conf=83 low=0.143 rot=0 (cache)
+  [tess] trang 46: conf=78 low=0.182 rot=0 (cache)
+  [tess] trang 54: conf=70 low=0.25 rot=0 (cache)
+  [tess] trang 62: conf=93 low=0 rot=0 (cache)
+  [tess] trang 69: conf=95 low=0 rot=0 (cache)
+  [tess] trang 76: conf=46 low=1 rot=0 (cache)
+  [gemini-api] gemini-3.1-flash-lite p-001.png: OK, 10.952s
+  [gemini-api] gemini-3.1-flash-lite p-002.png: OK, 4.689s
+  [gemini-api] gemini-3.1-flash-lite p-012.png: OK, 3.659s
+  [gemini-api] gemini-3.1-flash-lite p-013.png: OK, 5.927s
+  [gemini-api] gemini-3.1-flash-lite p-024.png: OK, 9.915s
+  [gemini-api] gemini-3.1-flash-lite p-034.png: OK, 12.066s
+  [gemini-api] gemini-3.1-flash-lite p-046.png: OK, 13.503s
+  [gemini-api] gemini-3.1-flash-lite p-054.png: OK, 9.224s
+  tuyến: {'tesseract+gemini': 8, 'text_layer': 66, 'tesseract': 3}  trạng thái: {'REVIEW': 3, 'OK': 74}
+  cờ: {'ENGINES_DISAGREE': 3, 'TEXT_LAYER_BROKEN': 2, 'NEAR_EMPTY': 1}
+  thời gian (s): {'textLayer': 0.566, 'renderAndTesseract': 6.681, 'gemini': 69.994, 'total': 77.745}
+  Gemini API: 8 lần gọi (0 lỗi), token vào 11368, ra 3885
+  → D:\finmind\data\references\vietstock\annual_reports\ocr_standard\CMG\2024\CMG_2024_511722

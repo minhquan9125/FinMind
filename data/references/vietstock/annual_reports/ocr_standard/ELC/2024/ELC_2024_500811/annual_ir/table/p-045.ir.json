@@ -1,0 +1,216 @@
+{
+  "ir_version": "1",
+  "page": 45,
+  "printed_page": null,
+  "page_class": "notes",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "937811ef432d7fb384a7d37bc6a8161e567e4d3519e8b10b5198e8126f6bb7fe",
+    "file_name": "ELC_2024_500811.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p45-b1",
+      "type": "paragraph",
+      "text": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM\nTòa nhà Elcom, phố Duy Tân, phường Dịch Vọng Hậu,",
+      "bbox": [66.95, 66.38, 339.24, 88.75]
+    },
+    {
+      "id": "p45-b2",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (TIẾP)\n(Các thuyết minh này là bộ phận hợp thành và cần được đọc đồng thời với Báo cáo tài chính hợp nhất)",
+      "bbox": [66.11, 104.94, 479.78, 127.17]
+    },
+    {"id": "p45-b3", "type": "heading", "text": "CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)", "bbox": [102.11, 136.94, 330.01, 147.5]},
+    {"id": "p45-b4", "type": "paragraph", "text": " Nếu hợp đồng không qui định tỷ giá thanh toán:", "bbox": [92.75, 182.82, 322.32, 194.82]},
+    {
+      "id": "p45-b5",
+      "type": "paragraph",
+      "text": "- Đối với các khoản góp vốn hoặc nhận vốn góp: tỷ giá mua ngoại tệ của ngân hàng nơi Công\nty mở tài khoản để nhận vốn của nhà đầu tư tại ngày góp vốn.",
+      "bbox": [97.68, 205.46, 519.78, 230.22]
+    },
+    {
+      "id": "p45-b6",
+      "type": "paragraph",
+      "text": "- Đối với nợ phải thu: tỷ giá mua của ngân hàng thương mại nơi Công ty chỉ định khách hàng\nthanh toán tại thời điểm giao dịch phát sinh.",
+      "bbox": [97.69, 236.66, 519.8, 261.54]
+    },
+    {
+      "id": "p45-b7",
+      "type": "paragraph",
+      "text": "- Đối với nợ phải trả: tỷ giá bán của ngân hàng thương mại nơi Công ty dự kiến giao dịch tại",
+      "bbox": [97.7, 268.02, 519.8, 280.05]
+    },
+    {
+      "id": "p45-b8",
+      "type": "paragraph",
+      "text": "- Đối với các giao dịch mua sắm tài sản hoặc các khoản chi phí được thanh toán ngay bằng\nngoại tệ (không qua các tài khoản phải trả): tỷ giá mua của ngân hàng thương mại nơi Công",
+      "bbox": [97.72, 299.34, 519.86, 323.97]
+    },
+    {
+      "id": "p45-b9",
+      "type": "paragraph",
+      "text": "Tỷ giá sử dụng để đánh giá lại số dư các khoản mục tiền tệ có gốc ngoại tệ tại ngày kết thúc\nnăm tài chính được xác định theo nguyên tắc sau:",
+      "bbox": [102.19, 344.25, 519.44, 368.13]
+    },
+    {
+      "id": "p45-b10",
+      "type": "paragraph",
+      "text": " Đối với các khoản ngoại tệ gửi ngân hàng: tỷ giá mua ngoại tệ của ngân hàng nơi Công ty",
+      "bbox": [102.19, 379.38, 520.0, 391.41]
+    },
+    {
+      "id": "p45-b11",
+      "type": "paragraph",
+      "text": " Đối với các khoản mục tiền tệ có gốc ngoại tệ được phân loại là tài sản khác: tỷ giá mua\nngoại tệ của Ngân hàng Công ty thường xuyên có giao dịch.",
+      "bbox": [102.21, 415.54, 519.46, 440.26]
+    },
+    {
+      "id": "p45-b12",
+      "type": "paragraph",
+      "text": " Đối với các khoản mục tiền tệ có gốc ngoại tệ được phân loại là nợ phải trả: tỷ giá bán ngoại\ntệ của Ngân hàng Công ty thường xuyên có giao dịch.",
+      "bbox": [102.22, 451.67, 519.66, 476.39]
+    },
+    {"id": "p45-b13", "type": "heading", "text": "3.4 TIỀN VÀ CÁC KHOẢN TƯƠNG ĐƯƠNG TIỀN", "bbox": [66.11, 486.81, 314.96, 497.87]},
+    {
+      "id": "p45-b14",
+      "type": "paragraph",
+      "text": "Tiền bao gồm tiền mặt, tiền gửi ngân hàng không có kỳ hạn và có kỳ hạn. Các khoản tươ ng\nđương tiền là các khoản đầu tư ngắn hạn có thời hạn thu hồi hoặc đáo hạn không quá 3 tháng\nkể từ ngày mua, dễ dàng chuyển đổi thành một lượng tiền xác định cũng như không có nhiều",
+      "bbox": [102.1, 508.4, 519.78, 545.75]
+    },
+    {
+      "id": "p45-b15",
+      "type": "paragraph",
+      "text": "Chứng khoán kinh doanh là các loại chứng khoán Công ty nắm giữ vì mục đích kinh doanh tức\nlà được Công ty mua vào, bán ra để kiếm lời. Công ty đang nắm giữ các loại chứng khoán kinh",
+      "bbox": [102.11, 614.18, 519.65, 637.82]
+    },
+    {"id": "p45-b16", "type": "paragraph", "text": "- Cổ phiếu, trái phiếu niêm yết trên thị trường chứng khoán;", "bbox": [102.11, 661.18, 377.61, 673.21]},
+    {"id": "p45-b17", "type": "paragraph", "text": "- Các loại chứng khoán và công cụ tài chính khác.", "bbox": [102.11, 683.73, 333.91, 695.77]},
+    {
+      "id": "p45-b18",
+      "type": "paragraph",
+      "text": "Chứng khoán kinh doanh được ghi nhận ban đầu theo giá gốc, bao gồm: Giá mua cộng (+) các\nchi phí liên quan trực tiếp (nếu có) như chi phí môi giới, giao dịch, cung cấp thông tin, thuế, lệ\nphí và phí ngân hàng… Thời điểm ghi nhận các khoản chứng khoán kinh doanh là thời điểm\nnhà đầu tư có quyền sở hữu, cụ thể như sau:",
+      "bbox": [102.1, 707.4, 519.67, 756.38]
+    },
+    {
+      "id": "p45-b19",
+      "type": "paragraph",
+      "text": "MẪU SỐ B09-DN/HN\nBan hành theo Thông tư số 202/2014/TT-\nBTC ngày 22/12/2014 của Bộ Tài chính",
+      "bbox": [352.0, 66.38, 519.17, 100.15]
+    },
+    {"id": "p45-b20", "type": "heading", "text": "BÁO CÁO TÀI CHÍNH", "bbox": [621.17, 29.94, 695.71, 37.94]},
+    {
+      "id": "p45-b21",
+      "type": "paragraph",
+      "text": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM\nTòa nhà Elcom, phố Duy Tân, phường Dịch Vọng Hậu,\nquận Cầu Giấy, Hà Nội\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (TIẾP)\n(Các thuyết minh này là bộ phận hợp thành và cần được đọc đồng thời với Báo cáo tài chính hợp nhất)",
+      "bbox": [651.43, 66.38, 1065.11, 127.17]
+    },
+    {"id": "p45-b22", "type": "paragraph", "text": "3.\nCÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)", "bbox": [651.43, 135.77, 915.33, 147.5]},
+    {"id": "p45-b23", "type": "heading", "text": "3.5 CÁC KHOẢN ĐẦU TƯ TÀI CHÍNH (TIẾP)", "bbox": [651.43, 157.84, 879.62, 168.9]},
+    {
+      "id": "p45-b24",
+      "type": "paragraph",
+      "text": "Tiền lãi, cổ tức và lợi nhuận của các kỳ trước khi chứng khoán kinh doanh được mua được hạch\ntoán giảm giá trị của chính chứng khoán kinh doanh đó. Tiền lãi, cổ tức và lợi nhuận của các kỳ\nsau khi chứng khoán kinh doanh được mua được ghi nhận doanh thu hoạt động tài chính. Cổ\ntức được nhận bằng cổ phiếu chỉ được theo dõi số lượng cổ phiếu tăng thêm, không ghi nhận\ngiá trị cổ phiếu nhận được. Cổ phiếu hoán đổi được xác định theo giá trị hợp lý tại ngày trao\nđổi. Giá trị hợp lý của cổ phiếu được xác định như",
+      "bbox": [687.41, 176.35, 1105.08, 250.73]
+    },
+    {
+      "id": "p45-b25",
+      "type": "paragraph",
+      "text": "- Đối với cổ phiếu của công ty niêm yết, giá trị hợp lý của cổ phiếu là giá đóng cửa niêm yết\ntrên thị trường chứng khoán tại ngày trao đổi hoặc ngày gần nhất có giao dịch tính đến thời\nđiểm trao đổi nếu tại ngày trao đổi thị trường chứng khoán không giao dịch.",
+      "bbox": [687.41, 259.61, 1104.85, 297.08]
+    },
+    {
+      "id": "p45-b26",
+      "type": "paragraph",
+      "text": "- Đối với cổ phiếu chưa niêm yết được giao dịch trên sàn UPCOM, giá trị hợp lý của cổ phiếu\nlà giá giao dịch đóng cửa trên sàn UPCOM tại ngày trao đổi hoặc ngày gần nhất có giao dịch\ntính đế n th ời điểm trao đổ i n ế u t ại ngày trao đổ i sàn UPCOM không giao d ị ch.",
+      "bbox": [687.46, 306.04, 1104.93, 343.39]
+    },
+    {
+      "id": "p45-b27",
+      "type": "paragraph",
+      "text": "- Đố i v ớ i c ổ phi ếu chưa niêm yế t khác, giá tr ị h ợ p lý c ủ a c ổ phi ế u là giá do các bên th ỏ a thu ậ n\ntheo h ợp đồ ng ho ặ c giá tr ị s ổ sách t ạ i th ời điểm trao đổ i.",
+      "bbox": [687.51, 352.36, 1104.99, 377.11]
+    },
+    {
+      "id": "p45-b28",
+      "type": "paragraph",
+      "text": "Dự phòng giảm giá chứng khoán kinh doanh được lập cho từng loại chứng khoán được mua bán\ntrên thị trường và có giá trị hợp lý trên thị trường thấp hơn giá gốc. Giá trị hợp lý của chứng\nkhoán kinh doanh niêm yết trên thị trường chứng khoán hoặc được giao dị ch trên sàn UPCOM\nđược xác định theo giá đóng cửa tại ngày gần nhất có giao dịch tính đến thời điểm khóa sổ lập\nbáo cáo tài chính hợp nhất .",
+      "bbox": [687.54, 387.07, 1105.16, 448.64]
+    },
+    {
+      "id": "p45-b29",
+      "type": "paragraph",
+      "text": "Trường hợp chứng khoán kinh doanh chưa niêm yết, chưa đăng ký giao dịch hoặc đã niêm yết\ntrên thị trường mà không có giá giao dịch trong vòng 30 ngày trước ngày trích lập dự phòng\nhoặc tại ngày trích lập dự phòng, chứng khoán bị hủy niêm yết hoặc bị đình chỉ giao dịch hoặc\nbị ngừng giao dịch thì việc xác định mức trích lập dự phòng tương tự như trường hợp đầu tư\nvào các đơn vị kinh tế khác.",
+      "bbox": [687.53, 456.32, 1105.17, 517.87]
+    },
+    {
+      "id": "p45-b30",
+      "type": "paragraph",
+      "text": "Tăng, giảm số dự phòng giảm giá chứng khoán kinh doanh cần phải trích lập tại ngày khó ổ\nl p b o c o tài ch\nậ á á\nính được ghi nhận vào chi phí tài chính.",
+      "bbox": [687.53, 525.55, 1105.23, 549.19]
+    },
+    {"id": "p45-b31", "type": "paragraph", "text": "Các khoản Đầu tư nắm giữ đến ngày đáo hạn", "bbox": [687.55, 556.75, 888.78, 567.79]},
+    {
+      "id": "p45-b32",
+      "type": "paragraph",
+      "text": "Khoản đầu tư được phân loại là nắm giữ đến ngày đáo hạn khi Công ty có ý định và khả năng\ngiữ đến ngày đáo hạn. Các khoản đầu tư nắm giữ đến ngày đáo hạn bao gồm là các khoản tiền\ngửi ngân hàng có kỳ hạn.",
+      "bbox": [687.55, 578.59, 1105.3, 615.81]
+    },
+    {
+      "id": "p45-b33",
+      "type": "paragraph",
+      "text": "Các khoản đầu tư nắm giữ đến ngày đáo hạn được ghi nhận ban đầu theo giá gốc bao gồm giá\nmua và các chi phí liên quan đến giao dịch mua các khoản đầu tư. Sau khi nhận ban đầu, các\nkhoản đầu tư này được ghi nhận theo giá trị có thể thu hồi. Thu nhập lãi từ các khoản đầu tư\nnắm giữ đến ngày đáo hạn sau ngày mua được ghi nhận trên Báo cáo kết quả hoạt động kinh\ndoanh trên cơ sở dự thu. Lãi được hưởng trước khi Công ty nắm giữ được ghi giảm trừ vào giá\ngốc tại thời điểm mua.",
+      "bbox": [687.55, 623.38, 1105.15, 697.64]
+    },
+    {
+      "id": "p45-b34",
+      "type": "paragraph",
+      "text": "Khi có các bằng chứng chắc chắn cho thấy một phần hoặc toàn bộ khoản đầu tư có thể không\nthu hồi được và số tổn thất được xác định một cách đáng tin cậy thì tổn thất được ghi nhận vào\nchi phí tài chính trong năm và giảm trừ trực tiếp giá trị đầu tư.",
+      "bbox": [687.55, 709.4, 1105.23, 745.66]
+    },
+    {"id": "p45-b35", "type": "paragraph", "text": "Các khoản cho vay", "bbox": [687.55, 753.34, 771.63, 764.38]},
+    {"id": "p45-b36", "type": "paragraph", "text": "8844", "bbox": [1150.11, 41.87, 1162.13, 52.43]},
+    {
+      "id": "p45-b37",
+      "type": "paragraph",
+      "text": "MẪU SỐ B09-DN/HN\nBan hành theo Thông tư số 202/2014/TT-\nBTC ngày 22/12/2014 của Bộ Tài chính",
+      "bbox": [937.32, 66.38, 1104.49, 100.15]
+    },
+    {"id": "p45-b38", "type": "paragraph", "text": "sau:", "bbox": [912.34, 238.7, 930.03, 249.74]},
+    {"id": "p45-b39", "type": "paragraph", "text": "a s", "bbox": [1087.56, 524.56, 1099.76, 535.6]},
+    {"id": "p45-b40", "type": "paragraph", "text": "Báo cáo thường niên 2024\n8833", "bbox": [29.29, 29.54, 146.94, 52.43]},
+    {"id": "p45-b41", "type": "paragraph", "text": "quận Cầu Giấy, Hà Nội", "bbox": [66.95, 90.19, 161.1, 100.15]},
+    {"id": "p45-b42", "type": "paragraph", "text": "3.", "bbox": [66.11, 135.77, 74.03, 146.33]},
+    {"id": "p45-b43", "type": "paragraph", "text": "3.3 NGOẠI TỆ (TIẾP)", "bbox": [66.11, 157.84, 184.21, 168.9]},
+    {"id": "p45-b44", "type": "paragraph", "text": "thời điểm giao dịch phát sinh.", "bbox": [115.72, 280.86, 246.9, 292.89]},
+    {"id": "p45-b45", "type": "paragraph", "text": "ty th ự c hi ệ n thanh toán.", "bbox": [115.76, 324.77, 219.94, 336.81]},
+    {"id": "p45-b46", "type": "paragraph", "text": "mở tài khoản ngoại tệ.", "bbox": [121.05, 393.09, 219.5, 404.13]},
+    {"id": "p45-b47", "type": "paragraph", "text": "rủi ro trong việc chuyển đổi thành tiền.", "bbox": [102.1, 547.31, 273.87, 558.35]},
+    {"id": "p45-b48", "type": "paragraph", "text": "3.5 CÁC KHOẢN ĐẦU TƯ TÀI CHÍNH", "bbox": [66.11, 568.89, 261.81, 579.95]},
+    {"id": "p45-b49", "type": "paragraph", "text": "Chứng khoán kinh doanh", "bbox": [102.11, 591.51, 213.57, 602.55]},
+    {"id": "p45-b50", "type": "paragraph", "text": "doanh gồm:", "bbox": [102.11, 639.37, 154.38, 650.41]},
+    {"id": "p45-b51", "type": "paragraph", "text": "- Chứng khoán niêm yết được ghi nhận tại thời điểm khớp lệnh (T+0);", "bbox": [102.1, 767.02, 423.21, 779.05]},
+    {
+      "id": "p45-b52",
+      "type": "paragraph",
+      "text": "Các khoản cho vay được xác định theo giá gốc trừ đi các khoản dự phòng phải thu khó đòi.",
+      "bbox": [687.55, 774.34, 1088.84, 785.38]
+    },
+    {
+      "id": "p45-b53",
+      "type": "paragraph",
+      "text": "- Chứng khoán chưa niêm yết được ghi nhận tại thời điểm chính thức có quyền sở hữu theo",
+      "bbox": [102.1, 789.7, 519.41, 801.73]
+    },
+    {
+      "id": "p45-b54",
+      "type": "paragraph",
+      "text": "Dự phòng phải thu khó đòi của các khoản cho vay được lập căn cứ vào dự kiến mức tổn thất có",
+      "bbox": [687.55, 792.94, 1105.06, 803.98]
+    },
+    {"id": "p45-b55", "type": "paragraph", "text": "quy định của pháp luật.", "bbox": [120.09, 802.29, 223.15, 814.33]},
+    {"id": "p45-b56", "type": "paragraph", "text": "thể xảy ra.", "bbox": [687.55, 805.66, 733.73, 816.7]}
+  ]
+}

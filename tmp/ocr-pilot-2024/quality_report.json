@@ -1,0 +1,231 @@
+{
+  "schema_name": "finmind.annual_report_json_quality_report",
+  "schema_version": "1.0",
+  "source_manifest": "data/references/vietstock/annual_reports/manifest.json",
+  "ocr_used": true,
+  "summary": {
+    "source_records": 10,
+    "source_pdfs": 11,
+    "processed_pdfs": 10,
+    "pass": 1,
+    "partial": 10,
+    "fail": 0,
+    "warnings": 10,
+    "pages": 1252,
+    "pages_without_text": 1,
+    "pages_from_ocr": 46,
+    "ocr_review_required": 9
+  },
+  "files": [
+    {
+      "status": "PARTIAL",
+      "symbol": "BID",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/BID/2024/501640_pdfs/BID_Baocaothuongnien_2024.pdf",
+      "issues": [],
+      "warnings": [
+        "MANIFEST_PDF_NOT_LOCAL"
+      ]
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "BID",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/BID/2024/501640_pdfs/Bao_cao_thuong_nien_BIDV_2024.FNL.pdf",
+      "json_file": "tmp/ocr-pilot-2024/BID/2024/Bao_cao_thuong_nien_BIDV_2024.FNL.json",
+      "source_sha256": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+      "page_count": 91,
+      "pages_with_text": 91,
+      "pages_needing_review": 0,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": true,
+      "pages_from_ocr": 2,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "CMG",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/CMG/2024/CMG_2024_511722.pdf",
+      "json_file": "tmp/ocr-pilot-2024/CMG/2024/CMG_2024_511722.json",
+      "source_sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
+      "page_count": 77,
+      "pages_with_text": 77,
+      "pages_needing_review": 7,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": true,
+      "pages_from_ocr": 11,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "CTG",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/CTG/2024/CTG_2024_495896.pdf",
+      "json_file": "tmp/ocr-pilot-2024/CTG/2024/CTG_2024_495896.json",
+      "source_sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+      "page_count": 186,
+      "pages_with_text": 186,
+      "pages_needing_review": 1,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": true,
+      "pages_from_ocr": 3,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "ELC",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/ELC/2024/ELC_2024_500811.pdf",
+      "json_file": "tmp/ocr-pilot-2024/ELC/2024/ELC_2024_500811.json",
+      "source_sha256": "937811ef432d7fb384a7d37bc6a8161e567e4d3519e8b10b5198e8126f6bb7fe",
+      "page_count": 139,
+      "pages_with_text": 139,
+      "pages_needing_review": 0,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": true,
+      "pages_from_ocr": 4,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "FPT",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/FPT/2024/FPT_2024_498332.pdf",
+      "json_file": "tmp/ocr-pilot-2024/FPT/2024/FPT_2024_498332.json",
+      "source_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+      "page_count": 215,
+      "pages_with_text": 215,
+      "pages_needing_review": 1,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": true,
+      "pages_from_ocr": 3,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    },
+    {
+      "status": "PASS",
+      "symbol": "ICT",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/ICT/2024/ICT_2024_501210.pdf",
+      "json_file": "tmp/ocr-pilot-2024/ICT/2024/ICT_2024_501210.json",
+      "source_sha256": "078b2f86dbe088ecd5185f54baa9e3832197bcf5416e552814febd2f2226bd12",
+      "page_count": 61,
+      "pages_with_text": 61,
+      "pages_needing_review": 0,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": false,
+      "pages_from_ocr": 0,
+      "ocr_review_required": false,
+      "issues": [],
+      "warnings": []
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "ITD",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/ITD/2024/ITD_2024_509309.pdf",
+      "json_file": "tmp/ocr-pilot-2024/ITD/2024/ITD_2024_509309.json",
+      "source_sha256": "643dc242f7f3bcc8274debb4e55034d2fcc280399850dc16e2a9c0cd5e65e8a2",
+      "page_count": 46,
+      "pages_with_text": 46,
+      "pages_needing_review": 1,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": true,
+      "pages_from_ocr": 7,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "MBB",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/MBB/2024/MBB_2024_502187.pdf",
+      "json_file": "tmp/ocr-pilot-2024/MBB/2024/MBB_2024_502187.json",
+      "source_sha256": "25325fe208bd565c45e0ac92587df429199b050a5eac7d0309eb05968511f2ae",
+      "page_count": 184,
+      "pages_with_text": 183,
+      "pages_needing_review": 0,
+      "pages_without_text": [
+        184
+      ],
+      "text_coverage_percent": 99.46,
+      "ocr_used": true,
+      "pages_from_ocr": 10,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "TCB",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/TCB/2024/TCB_2024_499236.pdf",
+      "json_file": "tmp/ocr-pilot-2024/TCB/2024/TCB_2024_499236.json",
+      "source_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+      "page_count": 146,
+      "pages_with_text": 146,
+      "pages_needing_review": 3,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": true,
+      "pages_from_ocr": 5,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    },
+    {
+      "status": "PARTIAL",
+      "symbol": "VCB",
+      "year": 2024,
+      "source_pdf": "data/references/vietstock/annual_reports/files/VCB/2024/VCB_2024_501264.pdf",
+      "json_file": "tmp/ocr-pilot-2024/VCB/2024/VCB_2024_501264.json",
+      "source_sha256": "0a54c7e25712351cef1df5be0e8c3f121ca45577864acaf0113aab2580db1120",
+      "page_count": 107,
+      "pages_with_text": 107,
+      "pages_needing_review": 0,
+      "pages_without_text": [],
+      "text_coverage_percent": 100.0,
+      "ocr_used": true,
+      "pages_from_ocr": 1,
+      "ocr_review_required": true,
+      "issues": [],
+      "warnings": [
+        "TESSERACT_TEXT_REQUIRES_MANUAL_REVIEW"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "document_sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+  "scope": "audited_financial_statements",
+  "pages": 39,
+  "page_ranges": [
+    {
+      "start": 147,
+      "end": 185
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "auditor_report",
+      "start": 147,
+      "end": 147
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 148,
+      "end": 149
+    },
+    {
+      "page_class": "income_statement",
+      "start": 150,
+      "end": 150
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 151,
+      "end": 151
+    },
+    {
+      "page_class": "notes",
+      "start": 152,
+      "end": 185
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 147,
+      "printed_page": "288",
+      "file": "p-147.ir.json",
+      "page_class": "auditor_report",
+      "title": "Số: 0552/VN1A-HN-BC",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 148,
+      "printed_page": "290",
+      "file": "p-148.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 149,
+      "printed_page": "292",
+      "file": "p-149.ir.json",
+      "page_class": "balance_sheet",
+      "title": "THUYẾT MINH SỐ CUỐI NĂM SỐ ĐẦU NĂM",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 150,
+      "printed_page": "294",
+      "file": "p-150.ir.json",
+      "page_class": "income_statement",
+      "title": "THUYẾT MINH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 151,
+      "printed_page": "296",
+      "file": "p-151.ir.json",
+      "page_class": "cash_flow",
+      "title": "STT CHỈ TIÊU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 152,
+      "printed_page": "18",
+      "file": "p-152.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 153,
+      "printed_page": "300",
+      "file": "p-153.ir.json",
+      "page_class": "notes",
+      "title": "2. CƠ SỞ LẬP BÁO CÁO TÀI CHÍNH HỢP NHẤT VÀ NĂM TÀI CHÍNH",
+      "topics": [
+        "2. CƠ SỞ LẬP BÁO CÁO TÀI CHÍNH HỢP NHẤT VÀ NĂM TÀI CHÍNH",
+        "3. ÁP DỤNG HƯỚNG DẪN KẾ TOÁN MỚI VÀ HƯỚNG DẪN MỚI ĐÃ BAN HÀNH NHƯNG CHƯA ÁP DỤNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 154,
+      "printed_page": "302",
+      "file": "p-154.ir.json",
+      "page_class": "notes",
+      "title": "4. TÓM TẮT CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU",
+      "topics": [
+        "4. TÓM TẮT CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 155,
+      "printed_page": "304",
+      "file": "p-155.ir.json",
+      "page_class": "notes",
+      "title": "4. TÓM TẮT CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 156,
+      "printed_page": "11",
+      "file": "p-156.ir.json",
+      "page_class": "notes",
+      "title": "NHÓM NỢ",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 157,
+      "printed_page": "308",
+      "file": "p-157.ir.json",
+      "page_class": "notes",
+      "title": "4. TÓM TẮT CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 158,
+      "printed_page": "310",
+      "file": "p-158.ir.json",
+      "page_class": "notes",
+      "title": "LOẠI TÀI SẢN",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 159,
+      "printed_page": "312",
+      "file": "p-159.ir.json",
+      "page_class": "notes",
+      "title": "4. TÓM TẮT CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 160,
+      "printed_page": "314",
+      "file": "p-160.ir.json",
+      "page_class": "notes",
+      "title": "4. TÓM TẮT CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 161,
+      "printed_page": "316",
+      "file": "p-161.ir.json",
+      "page_class": "notes",
+      "title": "4. TÓM TẮT CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 162,
+      "printed_page": "318",
+      "file": "p-162.ir.json",
+      "page_class": "notes",
+      "title": "4. TÓM TẮT CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 163,
+      "printed_page": "320",
+      "file": "p-163.ir.json",
+      "page_class": "notes",
+      "title": "5. TIỀN MẶT, VÀNG BẠC, ĐÁ QUÝ",
+      "topics": [
+        "5. TIỀN MẶT, VÀNG BẠC, ĐÁ QUÝ",
+        "6. TIỀN GỬI TẠI NGÂN HÀNG NHÀ NƯỚC (“NHNN”)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 164,
+      "printed_page": "322",
+      "file": "p-164.ir.json",
+      "page_class": "notes",
+      "title": "8. CHỨNG KHOÁN KINH DOANH",
+      "topics": [
+        "8. CHỨNG KHOÁN KINH DOANH"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 165,
+      "printed_page": "324",
+      "file": "p-165.ir.json",
+      "page_class": "notes",
+      "title": "9. CÁC CÔNG CỤ TÀI CHÍNH PHÁI SINH VÀ CÁC TÀI SẢN/CÔNG NỢ TÀI CHÍNH KHÁC",
+      "topics": [
+        "9. CÁC CÔNG CỤ TÀI CHÍNH PHÁI SINH VÀ CÁC TÀI SẢN/CÔNG NỢ TÀI CHÍNH KHÁC",
+        "10. CHO VAY KHÁCH HÀNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 166,
+      "printed_page": "326",
+      "file": "p-166.ir.json",
+      "page_class": "notes",
+      "title": "11. DỰ PHÒNG RỦI RO CHO VAY KHÁCH HÀNG",
+      "topics": [
+        "11. DỰ PHÒNG RỦI RO CHO VAY KHÁCH HÀNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 167,
+      "printed_page": "328",
+      "file": "p-167.ir.json",
+      "page_class": "notes",
+      "title": "SỐ CUỐI NĂM",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 168,
+      "printed_page": "330",
+      "file": "p-168.ir.json",
+      "page_class": "notes",
+      "title": "14. TĂNG, GIẢM TÀI SẢN CỐ ĐỊNH HỮU HÌNH",
+      "topics": [
+        "14. TĂNG, GIẢM TÀI SẢN CỐ ĐỊNH HỮU HÌNH"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 169,
+      "printed_page": "332",
+      "file": "p-169.ir.json",
+      "page_class": "notes",
+      "title": "16. TÀI SẢN CÓ KHÁC",
+      "topics": [
+        "16. TÀI SẢN CÓ KHÁC"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 170,
+      "printed_page": "334",
+      "file": "p-170.ir.json",
+      "page_class": "notes",
+      "title": "19. TIỀN GỬI CỦA KHÁCH HÀNG",
+      "topics": [
+        "19. TIỀN GỬI CỦA KHÁCH HÀNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 171,
+      "printed_page": "336",
+      "file": "p-171.ir.json",
+      "page_class": "notes",
+      "title": "SỐ CUỐI NĂM",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 172,
+      "printed_page": "338",
+      "file": "p-172.ir.json",
+      "page_class": "notes",
+      "title": "23. TÌNH HÌNH THỰC HIỆN NGHĨA VỤ VỚI NGÂN SÁCH NHÀ NƯỚC",
+      "topics": [
+        "23. TÌNH HÌNH THỰC HIỆN NGHĨA VỤ VỚI NGÂN SÁCH NHÀ NƯỚC"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 173,
+      "printed_page": "340",
+      "file": "p-173.ir.json",
+      "page_class": "notes",
+      "title": "3. - . C",
+      "topics": [
+        "3. - . C",
+        "0. T 3 T",
+        "25. THU NHẬP LÃI VÀ CÁC KHOẢN THU NHẬP TƯƠNG TỰ"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 174,
+      "printed_page": "342",
+      "file": "p-174.ir.json",
+      "page_class": "notes",
+      "title": "29. (LỖ) THUẦN TỪ MUA BÁN CHỨNG KHOÁN KINH DOANH VÀ CHỨNG KHOÁN ĐẦU TƯ",
+      "topics": [
+        "29. (LỖ) THUẦN TỪ MUA BÁN CHỨNG KHOÁN KINH DOANH VÀ CHỨNG KHOÁN ĐẦU TƯ",
+        "30. LÃI THUẦN TỪ HOẠT ĐỘNG KHÁC"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 175,
+      "printed_page": "344",
+      "file": "p-175.ir.json",
+      "page_class": "notes",
+      "title": "33. CHI PHÍ THUẾ THU NHẬP DOANH NGHIỆP (TNDN)",
+      "topics": [
+        "33. CHI PHÍ THUẾ THU NHẬP DOANH NGHIỆP (TNDN)",
+        "34. LÃI CƠ BẢN TRÊN CỔ PHIẾU"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 176,
+      "printed_page": "346",
+      "file": "p-176.ir.json",
+      "page_class": "notes",
+      "title": "37. LOẠI HÌNH VÀ GIÁ TRỊ SỔ SÁCH TÀI SẢN THẾ CHẤP",
+      "topics": [
+        "37. LOẠI HÌNH VÀ GIÁ TRỊ SỔ SÁCH TÀI SẢN THẾ CHẤP",
+        "38. HOẠT ĐỘNG NHẬN ỦY THÁC VÀ ĐẠI LÝ TỔ CHỨC TÍN DỤNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 177,
+      "printed_page": "348",
+      "file": "p-177.ir.json",
+      "page_class": "notes",
+      "title": "43. NGHIỆP VỤ VÀ SỐ DƯ VỚI CÁC BÊN LIÊN QUAN",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 178,
+      "printed_page": "350",
+      "file": "p-178.ir.json",
+      "page_class": "notes",
+      "title": "NGÀY BỔ NHIỆM/MIỄN NHIỆM NĂM NAY NĂM TRƯỚC",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 179,
+      "printed_page": "352",
+      "file": "p-179.ir.json",
+      "page_class": "notes",
+      "title": "1. Doanh thu lãi",
+      "topics": [
+        "1. Doanh thu lãi",
+        "2. Doanh thu từ hoạt động dịch vụ",
+        "1. Chi phí lãi",
+        "2. Chi phí khấu hao tài sản cố định",
+        "1. Tiền mặt",
+        "2. Tài sản cố định",
+        "3. Tài sản khác",
+        "1. Nợ phải trả bên ngoài",
+        "2. Nợ phải trả nội bộ"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 180,
+      "printed_page": "354",
+      "file": "p-180.ir.json",
+      "page_class": "notes",
+      "title": "KHÁC ĐIỀU CHỈNH TỔNG CỘNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 181,
+      "printed_page": "356",
+      "file": "p-181.ir.json",
+      "page_class": "notes",
+      "title": "48. RỦI RO LÃI SUẤT",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 182,
+      "printed_page": "358",
+      "file": "p-182.ir.json",
+      "page_class": "notes",
+      "title": "1. 0 G D",
+      "topics": [
+        "1. 0 G D"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 183,
+      "printed_page": "360",
+      "file": "p-183.ir.json",
+      "page_class": "notes",
+      "title": "1. 0 G D",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 184,
+      "printed_page": "362",
+      "file": "p-184.ir.json",
+      "page_class": "notes",
+      "title": "50. RỦI RO TÍN DỤNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 185,
+      "printed_page": "364",
+      "file": "p-185.ir.json",
+      "page_class": "notes",
+      "title": "52. SỰ KIỆN PHÁT SINH SAU NGÀY KHÓA SỔ",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    }
+  ],
+  "structured_table_ranges": [],
+  "needs_review": [
+    {
+      "pdf_page": 148,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 149,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 150,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 151,
+      "reason": "statement_columns_or_rows_unverified"
+    }
+  ],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [
+    {
+      "name": "template_unknown",
+      "reason": "accounting_form_not_identified",
+      "detected_profile": null,
+      "pdf_pages": [
+        148,
+        149,
+        150,
+        151
+      ]
+    }
+  ],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": null,
+  "arithmetic_template_id": "TEMPLATE_UNKNOWN",
+  "arithmetic_template_sha256": null,
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [
+    {
+      "start": 152,
+      "end": 185
+    }
+  ],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

@@ -1,0 +1,361 @@
+{
+  "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC\nBáo cáo tài chính hợp nhất\n\nCho năm tài chính kết thúc ngày 31 tháng 3 năm 2026",
+  "chars": 91,
+  "words": 27,
+  "wordItems": [
+    {
+      "text": "Công",
+      "bbox": [
+        641,
+        633,
+        785,
+        690
+      ],
+      "conf": 96.345818,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ty",
+      "bbox": [
+        806,
+        637,
+        855,
+        690
+      ],
+      "conf": 96.773911,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cổ",
+      "bbox": [
+        876,
+        624,
+        950,
+        679
+      ],
+      "conf": 96.131775,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "phần",
+      "bbox": [
+        973,
+        624,
+        1104,
+        690
+      ],
+      "conf": 81.114838,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Tập",
+      "bbox": [
+        1125,
+        634,
+        1227,
+        690
+      ],
+      "conf": 96.694557,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đoàn",
+      "bbox": [
+        1247,
+        635,
+        1382,
+        679
+      ],
+      "conf": 96.163658,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Công",
+      "bbox": [
+        1403,
+        635,
+        1547,
+        691
+      ],
+      "conf": 96.783005,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "nghệ",
+      "bbox": [
+        1571,
+        635,
+        1706,
+        691
+      ],
+      "conf": 93.145187,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        1726,
+        636,
+        1854,
+        680
+      ],
+      "conf": 92.941147,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Báo",
+      "bbox": [
+        641,
+        756,
+        710,
+        788
+      ],
+      "conf": 96.769104,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "cáo",
+      "bbox": [
+        725,
+        757,
+        791,
+        788
+      ],
+      "conf": 96.627914,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        804,
+        756,
+        846,
+        788
+      ],
+      "conf": 96.759369,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        860,
+        756,
+        960,
+        788
+      ],
+      "conf": 95.455742,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hợp",
+      "bbox": [
+        976,
+        757,
+        1046,
+        796
+      ],
+      "conf": 96.767769,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "nhất",
+      "bbox": [
+        1062,
+        750,
+        1141,
+        788
+      ],
+      "conf": 93.272865,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Cho",
+      "bbox": [
+        639,
+        852,
+        713,
+        884
+      ],
+      "conf": 96.934273,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        728,
+        853,
+        806,
+        884
+      ],
+      "conf": 96.795662,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        819,
+        853,
+        861,
+        884
+      ],
+      "conf": 96.895653,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        876,
+        853,
+        975,
+        884
+      ],
+      "conf": 96.68486,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kết",
+      "bbox": [
+        992,
+        846,
+        1045,
+        885
+      ],
+      "conf": 95.207916,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thúc",
+      "bbox": [
+        1057,
+        853,
+        1136,
+        884
+      ],
+      "conf": 96.744331,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ngày",
+      "bbox": [
+        1151,
+        853,
+        1237,
+        893
+      ],
+      "conf": 96.677673,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "31",
+      "bbox": [
+        1252,
+        853,
+        1290,
+        885
+      ],
+      "conf": 96.76162,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tháng",
+      "bbox": [
+        1309,
+        853,
+        1410,
+        893
+      ],
+      "conf": 96.505569,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "3",
+      "bbox": [
+        1427,
+        853,
+        1447,
+        884
+      ],
+      "conf": 96.948311,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        1462,
+        854,
+        1540,
+        885
+      ],
+      "conf": 96.655243,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2026",
+      "bbox": [
+        1553,
+        853,
+        1644,
+        885
+      ],
+      "conf": 96.542267,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 96,
+  "lowConfRatio": 0,
+  "seconds": 0.687
+}

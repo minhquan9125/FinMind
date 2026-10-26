@@ -1,0 +1,183 @@
+{
+  "ir_version": "1",
+  "page": 49,
+  "printed_page": "4",
+  "page_class": "notes",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "937811ef432d7fb384a7d37bc6a8161e567e4d3519e8b10b5198e8126f6bb7fe",
+    "file_name": "ELC_2024_500811.pdf"
+  },
+  "blocks": [
+    {"id": "p49-b1", "type": "heading", "text": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM", "bbox": [46.95, 73.58, 319.24, 84.64]},
+    {
+      "id": "p49-b2",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (TIẾP)\n(Các thuyết minh này là bộ phận hợp thành và cần được đọc đồng thời với Báo cáo tài chính hợp nhất)",
+      "bbox": [46.11, 112.14, 459.78, 134.37]
+    },
+    {"id": "p49-b3", "type": "heading", "text": "CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)", "bbox": [82.11, 144.14, 310.01, 154.7]},
+    {"id": "p49-b4", "type": "heading", "text": "3.20 GHI NHẬN DOANH THU, THU NHẬP (TIẾP)", "bbox": [46.11, 165.04, 287.23, 176.1]},
+    {
+      "id": "p49-b5",
+      "type": "paragraph",
+      "text": "Doanh thu cho thuê tài sản hoạt động được ghi nhận theo phương pháp đường thẳng trong suốt\nthời gian cho thuê. Tiền cho thuê nhận trước của nhiều kỳ được phân bổ vào doanh thu phù hợp",
+      "bbox": [82.11, 206.23, 499.75, 229.86]
+    },
+    {
+      "id": "p49-b6",
+      "type": "paragraph",
+      "text": "Lãi từ các khoản đầu tư dài hạn được ước tính và ghi nhận quyền nhận các khoản lãi từ các",
+      "bbox": [82.11, 271.86, 499.88, 283.9]
+    },
+    {
+      "id": "p49-b7",
+      "type": "paragraph",
+      "text": "Lãi tiền gửi ngân hàng được ghi nhận dựa trên thông báo hàng kỳ của ngân hàng, lãi cho vay\nđược ghi nhận trên cơ sở thời gian và lãi suất thực tế từng kỳ.",
+      "bbox": [82.11, 304.06, 499.61, 327.81]
+    },
+    {
+      "id": "p49-b8",
+      "type": "paragraph",
+      "text": "Cổ tức và lợi nhuận được chia được ghi nhận khi Công ty được nhận quyền cổ tức hoặc lợi\nnhuận từ việc góp vốn. Cổ tức nhận được bằng cổ phiếu chỉ được theo dõi theo số lượng cổ\nphiếu tăng thêm, không được ghi nhận giá trị cổ phiếu nhận được.",
+      "bbox": [82.11, 356.5, 499.84, 392.85]
+    },
+    {"id": "p49-b9", "type": "heading", "text": "THUẾ VÀ CÁC KHOẢN PHẢI NỘP NHÀ NƯỚC", "bbox": [82.11, 404.49, 300.08, 414.45]},
+    {
+      "id": "p49-b10",
+      "type": "paragraph",
+      "text": "Doanh nghiệp áp dụng việc kê khai, tính thuế GTGT theo hướng dẫn của luật thuế hiện hành.",
+      "bbox": [82.11, 440.64, 493.25, 451.68]
+    },
+    {
+      "id": "p49-b11",
+      "type": "paragraph",
+      "text": "Thuế thu nhập doanh nghiệp thể hiện tổng giá trị của số thuế phải trả hiện tại và số thuế hoãn",
+      "bbox": [82.11, 480.24, 499.34, 491.28]
+    },
+    {
+      "id": "p49-b12",
+      "type": "paragraph",
+      "text": "Số thuế hiện tại phải trả được tính dựa trên thu nhập chịu thuế trong năm. Thu nhập chịu thuế\nkhác với lợi nhuận thuần được trình bày trên Báo cáo Kết quả hoạt động kinh doanh vì không\nbao gồm các khoản thu nhập hay chi phí tính thuế hoặc được khấu trừ trong các năm khác (bao\ngồm cả lỗ mang sang, nếu có) và ngoài ra không bao gồm các chỉ tiêu không chịu thuế hoặc",
+      "bbox": [82.11, 511.56, 499.75, 560.51]
+    },
+    {
+      "id": "p49-b13",
+      "type": "paragraph",
+      "text": "Thuế thu nhập doanh nghiệp được tính theo thuế suất có hiệu lực tại ngày kết thúc niên độ kế",
+      "bbox": [82.11, 580.79, 499.39, 591.83]
+    },
+    {
+      "id": "p49-b14",
+      "type": "paragraph",
+      "text": "Thuế thu nhập hoãn lại được tính trên các khoản chênh lệch giữa giá trị ghi sổ của các khoản\nmục tài sản hoặc công nợ trên Bảng Cân đối kế toán hợp nhất và cơ sở tính thuế thu nhập. Thuế\nthu nhập hoãn lại được kế toán theo phương pháp dựa trên Bảng Cân đối kế toán. Thuế thu nhập\nhoãn lại phải trả phải được ghi nhận cho tất cả các khoản chênh lệch tạm thời còn tài sản thuế\nthu nhập hoãn lại chỉ được ghi nhận khi chắc chắn có đủ lợi nhuận tính thuế trong tương lai để\nkhấu trừ các khoản chênh lệch giữa giá trị ghi sổ và cơ sở tính thuế thu nhập của các khoản mục\ntài sản hoặc công nợ trên báo cáo tài chính hợp nhất .",
+      "bbox": [82.11, 612.14, 499.71, 699.0]
+    },
+    {
+      "id": "p49-b15",
+      "type": "paragraph",
+      "text": "Thuế thu nhập hoãn lại được xác định theo thuế suất dự tính sẽ áp dụng cho năm tài sản được\nthu hồi hay nợ phải trả được thanh toán. Thuế thu nhập hoãn lại được ghi nhận lãi, lỗ trừ trường\nhợp khoản thuế đó có liên quan đến các khoản mục được ghi thẳng vào vốn chủ sở hữu. Trong\ntrường hợp đó, thuế thu nhập hoãn lại cũng được ghi thẳng vào vốn chủ sở hữu.",
+      "bbox": [82.11, 710.76, 499.86, 759.61]
+    },
+    {
+      "id": "p49-b16",
+      "type": "paragraph",
+      "text": "MẪU SỐ B09-DN/HN\nBan hành theo Thông tư số 202/2014/TT-\nBTC ngày 22/12/2014 của Bộ Tài chính",
+      "bbox": [332.0, 73.58, 499.17, 107.35]
+    },
+    {"id": "p49-b17", "type": "heading", "text": "BÁO CÁO TÀI CHÍNH", "bbox": [621.17, 29.94, 695.71, 37.94]},
+    {
+      "id": "p49-b18",
+      "type": "paragraph",
+      "text": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM\nTòa nhà Elcom, phố Duy Tân, phường Dịch Vọng Hậu,\nquận Cầu Giấy, Hà Nội\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (TIẾP)\n(Các thuyết minh này là bộ phận hợp thành và cần được đọc đồng thời với Báo cáo tài chính hợp nhất)",
+      "bbox": [661.43, 73.58, 1075.11, 134.37]
+    },
+    {"id": "p49-b19", "type": "paragraph", "text": "3.\nCÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)", "bbox": [661.43, 142.97, 925.33, 154.7]},
+    {"id": "p49-b20", "type": "heading", "text": "3.21 THUẾ VÀ CÁC KHOẢN PHẢI NỘP NHÀ NƯỚC (TIẾP)", "bbox": [661.43, 165.04, 948.09, 176.1]},
+    {
+      "id": "p49-b21",
+      "type": "paragraph",
+      "text": "Tài sản thuế thu nhập hoãn lại và nợ thuế thu nhập hoãn lại phải trả được bù trừ khi Công ty có\nquyền hợp pháp để bù trừ giữa tài sản thuế thu nhập hiện hành với thuế thu nhập hiện hành phải\nnộp và khi các tài sản thuế thu nhập hoãn lại và nợ thuế thu nhập hoãn lại phải trả liên quan tới\nthuế thu nhập doanh nghiệp được quản lý bởi cùng một cơ quan thuế và Công ty có dự định\nthanh toán thuế thu nhập hiện hành trên cơ sở thuần.",
+      "bbox": [697.43, 187.63, 1114.94, 249.17]
+    },
+    {
+      "id": "p49-b22",
+      "type": "paragraph",
+      "text": "Việc xác định thuế thu nhập của Công ty căn cứ vào các quy định hiện hành về thuế. Tuy nhiên,\nnhững quy định này thay đổi theo từng thời kỳ và việc xác định sau cùng về thuế thu nhập doanh\nnghiệp tùy thuộc vào kết quả kiểm tra của cơ quan thuế có thẩm quyền.",
+      "bbox": [697.43, 260.81, 1115.07, 297.08]
+    },
+    {"id": "p49-b23", "type": "paragraph", "text": "Thuế khác", "bbox": [697.43, 304.76, 743.01, 315.8]},
+    {
+      "id": "p49-b24",
+      "type": "paragraph",
+      "text": "Các loại thuế, phí khác doanh nghiệp thực hiện kê khai và nộp cho cơ quan thuế địa phương\ntheo các luật thuế hiện hành tại Việt Nam.",
+      "bbox": [697.43, 323.38, 1115.68, 347.13]
+    },
+    {"id": "p49-b25", "type": "heading", "text": "3.22 BÊN LIÊN QUAN", "bbox": [661.43, 357.67, 776.7, 367.63]},
+    {
+      "id": "p49-b26",
+      "type": "paragraph",
+      "text": "Các bên được coi là liên quan nếu một bên có khả năng kiểm soát hoặc có ảnh hưởng đáng kể\nđối với bên kia trong việc ra quyết định các chính sách tài chính và hoạt động. Bên liên quan\nbao gồm:\n Những doanh nghiệp có quyền kiểm soát, hoặc bị kiểm soát trực tiếp hoặc gián tiếp thông\nqua một hoặc nhiều bên trung gian, hoặc dưới quyền bị kiểm soát chung với Công ty gồm\nCông ty mẹ, các công ty con cùng Tập đoàn, các bên liên doanh, cơ sở kinh doanh được\nđồng kiểm soát, các công ty liên kết.\n Các cá nhân có quyền trực tiếp hoặc gián tiếp biểu quyết ở các doanh nghiệp Báo cáo dẫn\nđến có ảnh hưởng đáng kể tới doanh nghiệp này, các nhân viên quản lý chủ chốt có quyền và\ntrách nhiệm về việc lập kế hoạch, quản lý và kiểm soát các hoạt động của Công ty kể cả các\nthành viên mật thiết trong gia đình của các cá nhân này.\n Các doanh nghiệp do các cá nhân được nêu trên nắm trực tiếp hoặc gián tiếp quyền biểu\nquyết hoặc người đó có thể có ảnh hưởng đáng kể tới doanh nghiệp.",
+      "bbox": [697.43, 376.18, 1115.35, 553.41]
+    },
+    {
+      "id": "p49-b27",
+      "type": "paragraph",
+      "text": "Khi xem xét từng mối quan hệ của các bên liên quan, bản chất của mối quan hệ được chú ý tới\nchứ không phải chỉ hình thức pháp lý của các quan hệ đó. Theo đó, giao dịch và số dư của các\nbên liên quan trong năm tài chính kết thúc ngày 31/12/2024 được trình bày tại các thuyết minh\ndưới đây .",
+      "bbox": [697.46, 560.97, 1114.98, 609.96]
+    },
+    {"id": "p49-b28", "type": "paragraph", "text": "4.\nTIỀN VÀ CÁC KHOẢN TƯƠNG ĐƯƠNG TIỀN", "bbox": [661.43, 623.29, 921.27, 635.02]},
+    {
+      "id": "p49-b29",
+      "type": "paragraph",
+      "text": "- Tiền mặt\n- Tiền gửi ngân hàng không kỳ hạn\n- Các khoản tương đương tiền (*)",
+      "bbox": [699.81, 680.62, 862.87, 722.65]
+    },
+    {"id": "p49-b30", "type": "paragraph", "text": "Cộng", "bbox": [699.81, 732.74, 724.95, 743.38]},
+    {
+      "id": "p49-b31",
+      "type": "paragraph",
+      "text": "(*) Các khoản tiền gửi có kỳ hạn dưới 3 tháng với lãi suất từ 3, 4 %/năm đến 4,75%/năm.",
+      "bbox": [697.43, 761.43, 1068.09, 772.94]
+    },
+    {"id": "p49-b32", "type": "paragraph", "text": "9922", "bbox": [1150.11, 41.87, 1161.25, 52.43]},
+    {
+      "id": "p49-b33",
+      "type": "paragraph",
+      "text": "MẪU SỐ B09-DN/HN\nBan hành theo Thông tư số 202/2014/TT-\nBTC ngày 22/12/2014 của Bộ Tài chính",
+      "bbox": [947.32, 73.58, 1114.49, 107.35]
+    },
+    {"id": "p49-b34", "type": "paragraph", "text": "31/12/2024", "bbox": [970.07, 644.89, 1020.24, 655.53]},
+    {"id": "p49-b35", "type": "paragraph", "text": "01/01/2024\nVND", "bbox": [997.56, 644.89, 1113.72, 670.73]},
+    {"id": "p49-b36", "type": "paragraph", "text": "VND", "bbox": [1091.06, 660.09, 1114.0, 670.73]},
+    {"id": "p49-b37", "type": "paragraph", "text": "2.048.759.214", "bbox": [955.93, 679.87, 1020.2, 690.51]},
+    {
+      "id": "p49-b38",
+      "type": "paragraph",
+      "text": "2.274.301.529\n185.080.790.067 75.922.485.015\n139.500.000.000 108.000.000.000",
+      "bbox": [944.92, 679.87, 1113.69, 720.91]
+    },
+    {"id": "p49-b39", "type": "paragraph", "text": "326.629.549.281 186.196.786.544", "bbox": [944.92, 730.04, 1113.66, 740.69]},
+    {"id": "p49-b40", "type": "paragraph", "text": "Báo cáo thường niên 2024\n9911", "bbox": [29.29, 29.54, 146.94, 52.43]},
+    {
+      "id": "p49-b41",
+      "type": "paragraph",
+      "text": "Tòa nhà Elcom, phố Duy Tân, phường Dịch Vọng Hậu,\nquận Cầu Giấy, Hà Nội",
+      "bbox": [46.95, 85.99, 269.73, 107.35]
+    },
+    {"id": "p49-b42", "type": "paragraph", "text": "3.", "bbox": [46.11, 142.97, 54.03, 153.53]},
+    {"id": "p49-b43", "type": "paragraph", "text": "Doanh thu cho thuê tài sản hoạt động", "bbox": [82.11, 187.63, 245.17, 198.67]},
+    {"id": "p49-b44", "type": "paragraph", "text": "với thời gian cho thuê.", "bbox": [82.11, 230.55, 181.59, 242.58]},
+    {"id": "p49-b45", "type": "paragraph", "text": "Doanh thu hoạt động tài chính", "bbox": [82.1, 254.22, 217.55, 265.26]},
+    {"id": "p49-b46", "type": "paragraph", "text": "Công ty nhận đầu tư được xác lập.", "bbox": [82.11, 284.46, 233.82, 296.49]},
+    {"id": "p49-b47", "type": "paragraph", "text": "Cổ tức và lợi nhuận được chia", "bbox": [82.11, 335.5, 213.76, 346.54]},
+    {"id": "p49-b48", "type": "paragraph", "text": "3.21", "bbox": [46.11, 403.39, 63.66, 413.35]},
+    {"id": "p49-b49", "type": "paragraph", "text": "Thuế giá trị gia tăng (VAT)", "bbox": [81.51, 421.9, 202.29, 432.94]},
+    {"id": "p49-b50", "type": "paragraph", "text": "Thuế thu nhập doanh nghiệp", "bbox": [82.11, 461.63, 208.63, 472.67]},
+    {"id": "p49-b51", "type": "paragraph", "text": "lại.", "bbox": [82.11, 493.08, 96.01, 504.12]},
+    {"id": "p49-b52", "type": "paragraph", "text": "không được khấu trừ.", "bbox": [82.11, 562.31, 176.9, 573.35]},
+    {"id": "p49-b53", "type": "paragraph", "text": "toán là 20% tính trên thu nhập chịu thuế.", "bbox": [82.11, 593.54, 261.41, 604.58]}
+  ]
+}

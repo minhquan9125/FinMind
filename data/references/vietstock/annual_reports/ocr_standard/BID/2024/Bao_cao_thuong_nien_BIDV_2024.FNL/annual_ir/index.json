@@ -1,0 +1,20 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\BID\\2024\\501640_pdfs\\Bao_cao_thuong_nien_BIDV_2024.FNL.pdf",
+  "document_sha256": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+  "overrides_applied": [],
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 19
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "observations": "table/observations.json",
+    "pages": 11,
+    "structuredTablePages": 0,
+    "notesTextOnlyPages": 7,
+    "totalObservations": 0,
+    "verifiedObservations": 0
+  }
+}

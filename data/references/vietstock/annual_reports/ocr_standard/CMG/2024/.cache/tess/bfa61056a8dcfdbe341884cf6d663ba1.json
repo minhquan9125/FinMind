@@ -1,0 +1,179 @@
+{
+  "text": "KG:\n\nTỈNH THÀNH\nTẠI VIỆT NAM\n\n12\n\nBÁO CÁO THƯỜNG NIÊN | 2024",
+  "chars": 45,
+  "words": 13,
+  "wordItems": [
+    {
+      "text": "KG:",
+      "bbox": [
+        254,
+        2063,
+        385,
+        2248
+      ],
+      "conf": 6.332542,
+      "block": 97,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TỈNH",
+      "bbox": [
+        594,
+        2055,
+        761,
+        2140
+      ],
+      "conf": 91.196671,
+      "block": 98,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THÀNH",
+      "bbox": [
+        790,
+        2061,
+        1057,
+        2174
+      ],
+      "conf": 91.697876,
+      "block": 98,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TẠI",
+      "bbox": [
+        594,
+        2178,
+        705,
+        2256
+      ],
+      "conf": 96.988914,
+      "block": 98,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "VIỆT",
+      "bbox": [
+        733,
+        2178,
+        890,
+        2256
+      ],
+      "conf": 96.90023,
+      "block": 98,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NAM",
+      "bbox": [
+        920,
+        2178,
+        1108,
+        2240
+      ],
+      "conf": 96.65744,
+      "block": 98,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "12",
+      "bbox": [
+        154,
+        3385,
+        188,
+        3409
+      ],
+      "conf": 96.996735,
+      "block": 100,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        1846,
+        3378,
+        1904,
+        3409
+      ],
+      "conf": 92.520027,
+      "block": 101,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1916,
+        3378,
+        1977,
+        3410
+      ],
+      "conf": 96.767166,
+      "block": 101,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        1987,
+        3378,
+        2119,
+        3410
+      ],
+      "conf": 96.488792,
+      "block": 101,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        2133,
+        3379,
+        2202,
+        3409
+      ],
+      "conf": 96.215027,
+      "block": 101,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "|",
+      "bbox": [
+        2224,
+        3385,
+        2226,
+        3414
+      ],
+      "conf": 86.546936,
+      "block": 101,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        2239,
+        3385,
+        2310,
+        3410
+      ],
+      "conf": 86.546936,
+      "block": 101,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 87,
+  "lowConfRatio": 0.077,
+  "seconds": 0.688
+}

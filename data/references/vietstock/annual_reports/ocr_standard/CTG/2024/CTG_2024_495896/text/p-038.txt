@@ -1,0 +1,79 @@
+ PHẦN 1   GIỚI THIỆU VIETINBANK
+
+5 - CÔNG TÁC QUẢN LÝ RỦI RO
+
+
+RỦI RO CNTT                                                 • Triển khai các giải pháp bảo đảm sẵn sàng của các
+                                                              hệ thống CNTT, đồng thời diễn tập chuyển hệ thống
+Nhận diện rủi ro:                                             sang trung tâm dữ liệu dự phòng thảm họa để đảm
+                                                              bảo hệ thống sẵn sàng hoạt động khi xảy ra thảm họa
+Là khả năng xảy ra tổn thất trực tiếp hoặc gián               tại trung tâm dữ liệu chính;
+tiếp do các điểm yếu của tài sản hay một nhóm
+tài sản bị khai thác bởi các mối đe dọa (như lỗ             • Triển khai, áp dụng tiêu chuẩn Chương trình An ninh
+hổng bảo mật bị khai thác bởi các đối tượng                   khách hàng (CSP) cho hệ thống SWIFT, ISO27001:2013
+hacker). Rủi ro CNTT gồm 4 loại rủi ro: Rủi ro ATTT,          cho hệ thống Internet Banking (ngân hàng điện tử),
+rủi ro gián đoạn hoạt động, rủi ro hệ thống CNTT              Bộ Tiêu chuẩn Bảo mật Dữ liệu Thẻ thanh toán (PCI-
+không đáp ứng yêu cầu kinh doanh về mặt tính                  DSS) cho hệ thống thẻ, các tiêu chuẩn bảo mật CIS
+năng và hiệu năng hệ thống và rủi ro tuân thủ.                Benchmark cho các hệ thống quan trọng;
+
+Các biện pháp kiểm soát rủi ro trong năm 2024:              • Văn bản hóa, triển khai các quy trình, chính sách bảo
+                                                              mật: Đánh giá bảo mật, xử lý sự kiện bảo mật…;
+Hệ thống thông tin của VietinBank có quy mô
+lớn, triển khai nhiều SPDV mới có hàm lượng công            • Triển khai hệ thống truy cập Internet tập trung với
+nghệ cao, kết nối với nhiều hệ thống thông tin                công nghệ tiên tiến hơn; tăng cường bảo mật và
+của các đối tác và trên nhiều nền tảng công                   triển khai các giải pháp cho làm việc từ xa;
+nghệ khác nhau. Hoạt động chuyển đổi số của                 • Kiểm soát chặt chẽ kết nối giữa VietinBank với các
+VietinBank được khởi động từ năm 2023, dự kiến                công ty con, đơn vị thành viên cũng như với các đối
+sẽ cho ra đời nhiều SPDV mới trên nhiều kênh                  tác của VietinBank phải đáp ứng các yêu cầu, tiêu
+giao dịch khác nhau, cập nhật các hệ thống                    chuẩn về bảo mật;
+thông tin với các đối tác liên tục, thường xuyên
+hơn, do đó, công tác đảm bảo an toàn, bảo mật               • Nghiên cứu, triển khai, áp dụng giải pháp xác thực
+giao dịch, dữ liệu của Ngân hàng, khách hàng                  sinh trắc học trong các giao dịch tại quầy và thiết bị di
+luôn được coi là then chốt nhằm đem lại sự tin                động; thực hiện bảo mật ở mức cao nhất đối với các dữ
+cậy cho khách hàng. VietinBank luôn chủ động,                 liệu sinh trắc học của khách hàng, tuân thủ các quy định
+thường xuyên đánh giá rủi ro an ninh, an toàn                 của Chính phủ, NHNN về quản lý dữ liệu sinh trắc học;
+trên toàn hệ thống, đồng thời triển khai nhiều              • Triển khai nhiều hệ thống bảo mật để phát hiện
+biện pháp kiểm soát rủi ro như:                               và ngăn chặn việc dò quét tấn công vào hệ thống,
+ • Tăng cường nâng cao năng lực cho cán bộ                    ngăn chặn gửi Email đính kèm mã độc vào hệ thống;
+   chuyên trách, thông qua các khóa học do                  • Nghiên cứu, thử nghiệm các hệ thống, giải pháp
+   NHNN, Bộ Thông tin và Truyền thông hay                     phòng thủ thụ động, chủ động phát hiện các dấu
+   các đối tác tổ chức;                                       hiệu gian lận, thất thoát tài sản thông tin;
+ • Tăng cường phối hợp, trao đổi với các Cơ                 • Tuyên truyền, đào tạo nâng cao nhận thức ATTT cho
+   quan quản lý Nhà nước chuyên trách về                      CBNV Ngân hàng;
+   an ninh mạng và phòng chống tội phạm sử
+   dụng công nghệ cao cũng như các công ty                  • Thường xuyên cảnh báo khách hàng về những rủi ro
+   bảo mật tại Việt Nam và trên thế giới;                     bảo mật thông tin trong các dịch vụ của Ngân hàng.
+
+ • Thường xuyên theo dõi cập nhật các sự kiện               • Ký hợp đồng Bảo hiểm toàn diện an ninh mạng với
+   ATTT trên thế giới, trong nước để có các                   Tổng Công ty Cổ phần Bảo hiểm VietinBank (VBI) nhằm
+   hành động kịp thời;                                        bảo hiểm các sự kiện rủi ro an ninh mạng.
+
+ • Xây dựng và chuẩn hóa hệ thống giám sát các           Kế hoạch trong năm 2025:
+   sự kiện bảo mật (SIEM); triển khai Trung tâm          Năm 2025, ngoài những định hướng đã và đang thực
+   Điều hành an ninh mạng (Security Operation            hiện trên, VietinBank sẽ tập trung triển khai thêm các nội
+   Center - SOC) trong hệ thống CNTT của                 dung khác như:
+   VietinBank để có thể giám sát tập trung các
+                                                            • Tiếp tục vận hành SOC nhằm giám sát 24/7 và xử lý
+   hệ thống bảo mật đơn lẻ, phát hiện sớm các
+                                                              kịp thời các sự kiện bảo mật, dấu hiệu mất ATTT, bất
+   nguy cơ để có hành động xử lý kịp thời;
+                                                              thường xảy ra trên hệ thống thông tin;
+ • Thực hiện đánh giá, nhận diện rủi ro bảo
+                                                            • Triển khai kiện toàn và nâng cấp các hệ thống hạ
+   mật thông tin, vận hành khai thác đối với
+                                                              tầng và bảo mật nhằm bảo đảm hiệu năng và tính
+   các SPDV trước khi xây dựng để triển khai
+                                                              sẵn sàng của các hệ thống thông tin;
+   biện pháp kiểm soát phù hợp;
+                                                            • Triển khai nhiều giải pháp tăng cường mật hệ thống
+ • Đánh giá bảo mật tất cả các hệ thống, dịch
+                                                              như cứng hóa (hardening) máy chủ các hệ thống
+   vụ ngân hàng điện tử và các hệ thống trọng
+                                                              thông tin, áp dụng các tiêu chuẩn bảo mật, kiểm
+   yếu trước khi cung cấp cho khách hàng;
+                                                              soát chặt chẽ các gói phần mềm mới khi triển khai.
+
+                                                          BÁO CÁO
+                                                                     “CHUYỂN ĐỔI SỐ
+                                                       THƯỜNG NIÊN
+ 70                                                           2024      CHUYỂN ĐỔI XANH”                           71

@@ -1,0 +1,44 @@
+{
+  "ir_version": "1",
+  "page": 51,
+  "printed_page": null,
+  "page_class": "toc",
+  "page_size": {"width": 2481, "height": 3508, "unit": "px"},
+  "source": {
+    "engine": "TESSERACT",
+    "tool": "tesseract vie",
+    "document_sha256": "e247879a9f33058799aae35d1d3f9d2aa634e36985cf7d8c3f09ac1592802fa0",
+    "file_name": "ITD_2025_551266.pdf",
+    "image_sha256": "f77a209d9ce134e6fccdc1bb0da5a72b42211e8948acf9ef5394d21f2bc93c89",
+    "render": {
+      "dpi": 299.98,
+      "rotation": 0
+    }
+  },
+  "blocks": [
+    {
+      "id": "p51-b1",
+      "type": "paragraph",
+      "text": "CÔNG TY CỎ PHÀN CÔNG NGHỆ ITD\nLầu 4, Tòa nhà ITD, Số 1 đường Sáng Tạo, Phường Tân Thuận, TP. Hồ Chí Minh, Việt Nam",
+      "bbox": [302, 196, 1834, 306]
+    },
+    {"id": "p51-b2", "type": "heading", "text": "NỘI DUNG", "bbox": [303, 416, 509, 458]},
+    {"id": "p51-b3", "type": "paragraph", "text": "Báo cáo của Ban Tổng Giám đốc", "bbox": [306, 578, 851, 627]},
+    {"id": "p51-b4", "type": "paragraph", "text": "Báo cáo kiểm toán độc lập", "bbox": [306, 670, 743, 714]},
+    {"id": "p51-b5", "type": "paragraph", "text": "Báo cáo tài chính hợp nhất đã được kiểm toán\nBảng cân đối kế toán hợp nhất", "bbox": [307, 749, 1063, 894]},
+    {
+      "id": "p51-b6",
+      "type": "paragraph",
+      "text": "Báo cáo kết quả hoạt động kinh doanh hợp nhất\nBáo cáo lưu chuyển tiền tệ hợp nhất",
+      "bbox": [310, 923, 1096, 1065]
+    },
+    {"id": "p51-b7", "type": "paragraph", "text": "Thuyết mỉnh Báo cáo tài chính hợp nhất", "bbox": [313, 1098, 973, 1157]},
+    {"id": "p51-b8", "type": "paragraph", "text": "Trang", "bbox": [2164, 448, 2263, 486]},
+    {"id": "p51-b9", "type": "paragraph", "text": "02-03\n04", "bbox": [2147, 559, 2264, 678]},
+    {"id": "p51-b10", "type": "paragraph", "text": "05-45 -", "bbox": [2150, 734, 2302, 765]},
+    {"id": "p51-b11", "type": "paragraph", "text": "05 - 06", "bbox": [2152, 822, 2266, 854]},
+    {"id": "p51-b12", "type": "paragraph", "text": "07\n08 - 09\n10-45", "bbox": [2154, 909, 2270, 1115]},
+    {"id": "p51-b13", "type": "paragraph", "text": "ONớGX _®—®O", "bbox": [2447, 1879, 2481, 2151]},
+    {"id": "p51-b14", "type": "paragraph", "text": "//œ®/", "bbox": [2448, 2200, 2481, 2295]}
+  ]
+}

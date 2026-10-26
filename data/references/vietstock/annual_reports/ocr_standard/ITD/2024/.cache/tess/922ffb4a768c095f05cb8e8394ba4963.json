@@ -1,0 +1,270 @@
+{
+  "text": "< Ì CÔNG TY CÓ PHÀN CÔNG NGHỆ TIÊN PHONG\nGRoup_ INNOVATIVE TECHNOLOGY DEVELOPMENT CORPORATION\n\nBẢO CÁO\nTHƯỜNG NIÊN 2024",
+  "chars": 99,
+  "words": 20,
+  "wordItems": [
+    {
+      "text": "<",
+      "bbox": [
+        136,
+        94,
+        220,
+        262
+      ],
+      "conf": 0.0,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Ì",
+      "bbox": [
+        276,
+        98,
+        342,
+        258
+      ],
+      "conf": 28.68425,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        544,
+        156,
+        736,
+        217
+      ],
+      "conf": 96.381027,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        760,
+        168,
+        844,
+        216
+      ],
+      "conf": 96.50029,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÓ",
+      "bbox": [
+        864,
+        156,
+        958,
+        217
+      ],
+      "conf": 93.303986,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHÀN",
+      "bbox": [
+        985,
+        156,
+        1162,
+        216
+      ],
+      "conf": 92.191368,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        1190,
+        156,
+        1382,
+        217
+      ],
+      "conf": 96.891754,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NGHỆ",
+      "bbox": [
+        1411,
+        163,
+        1594,
+        229
+      ],
+      "conf": 96.582771,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TIÊN",
+      "bbox": [
+        1618,
+        156,
+        1764,
+        216
+      ],
+      "conf": 96.532822,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHONG",
+      "bbox": [
+        1792,
+        167,
+        2027,
+        217
+      ],
+      "conf": 96.119453,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "GRoup_",
+      "bbox": [
+        305,
+        265,
+        499,
+        298
+      ],
+      "conf": 16.299454,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "INNOVATIVE",
+      "bbox": [
+        545,
+        243,
+        835,
+        281
+      ],
+      "conf": 86.627106,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TECHNOLOGY",
+      "bbox": [
+        851,
+        244,
+        1200,
+        281
+      ],
+      "conf": 84.774597,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "DEVELOPMENT",
+      "bbox": [
+        1216,
+        244,
+        1590,
+        281
+      ],
+      "conf": 91.217102,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        1606,
+        244,
+        1969,
+        281
+      ],
+      "conf": 91.573921,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "BẢO",
+      "bbox": [
+        715,
+        2785,
+        1198,
+        2995
+      ],
+      "conf": 95.972977,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1282,
+        2785,
+        1771,
+        2995
+      ],
+      "conf": 95.908493,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        99,
+        3060,
+        1115,
+        3269
+      ],
+      "conf": 95.577377,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        1210,
+        3060,
+        1721,
+        3267
+      ],
+      "conf": 95.36515,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        1810,
+        3102,
+        2308,
+        3269
+      ],
+      "conf": 96.061371,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 82,
+  "lowConfRatio": 0.15,
+  "seconds": 1.268
+}

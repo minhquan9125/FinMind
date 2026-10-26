@@ -1,0 +1,218 @@
+{
+  "text": "man ———— ————— ——\n\nNET C CS Cố Cố số lo\n\n`ÑÀ `\\\\ VÀ `V\\ V\\9",
+  "chars": 42,
+  "words": 16,
+  "wordItems": [
+    {
+      "text": "man",
+      "bbox": [
+        1819,
+        726,
+        1847,
+        759
+      ],
+      "conf": 81.794823,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "————",
+      "bbox": [
+        1819,
+        1056,
+        1847,
+        1387
+      ],
+      "conf": 37.742901,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "—————",
+      "bbox": [
+        1820,
+        1443,
+        1848,
+        1551
+      ],
+      "conf": 65.345047,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "——",
+      "bbox": [
+        1820,
+        1574,
+        1848,
+        1618
+      ],
+      "conf": 76.674034,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NET",
+      "bbox": [
+        1804,
+        670,
+        1809,
+        891
+      ],
+      "conf": 9.342316,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "C",
+      "bbox": [
+        1764,
+        973,
+        1828,
+        1017
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CS",
+      "bbox": [
+        1806,
+        1030,
+        1811,
+        1101
+      ],
+      "conf": 18.662415,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cố",
+      "bbox": [
+        1768,
+        1106,
+        1816,
+        1337
+      ],
+      "conf": 33.944435,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cố",
+      "bbox": [
+        1769,
+        1353,
+        1816,
+        1480
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "số",
+      "bbox": [
+        1770,
+        1574,
+        1837,
+        1762
+      ],
+      "conf": 14.003738,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "lo",
+      "bbox": [
+        1772,
+        1842,
+        1819,
+        1934
+      ],
+      "conf": 35.750969,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "`ÑÀ",
+      "bbox": [
+        1690,
+        495,
+        1791,
+        854
+      ],
+      "conf": 0.0,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "`\\\\",
+      "bbox": [
+        1691,
+        953,
+        1761,
+        1066
+      ],
+      "conf": 66.285835,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VÀ",
+      "bbox": [
+        1696,
+        1181,
+        1761,
+        1303
+      ],
+      "conf": 42.830143,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "`V\\",
+      "bbox": [
+        1694,
+        1410,
+        1762,
+        1516
+      ],
+      "conf": 18.562012,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "V\\9",
+      "bbox": [
+        1636,
+        1867,
+        1772,
+        2007
+      ],
+      "conf": 0.0,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 31,
+  "lowConfRatio": 0.75,
+  "seconds": 0.756
+}

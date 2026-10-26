@@ -7,6 +7,9 @@ repository.* so no real database or BAAI/bge-m3 model is required.
 
 import io
 import json
+from uuid import uuid4
+
+import pytest
 
 from fastapi.testclient import TestClient
 
@@ -14,6 +17,7 @@ from src.documents import repository
 from src.core.config import Settings, get_settings
 from src.documents.embeddings import get_embedding_service
 from src.main import app
+from src.auth.authorization import Principal, current_principal
 
 
 class FakeEmbedder:
@@ -26,6 +30,13 @@ class FakeEmbedder:
 
 app.dependency_overrides[get_embedding_service] = lambda: FakeEmbedder()
 client = TestClient(app)
+
+
+@pytest.fixture(autouse=True)
+def authorized_engineer():
+    app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({"DATA_ENGINEER"}))
+    yield
+    app.dependency_overrides.pop(current_principal, None)
 
 
 def _patch_storage(monkeypatch):
