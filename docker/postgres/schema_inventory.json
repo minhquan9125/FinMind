@@ -1,0 +1,3994 @@
+{
+  "source_postgres_version": "17.6",
+  "schemas": [
+    "public",
+    "research_chat"
+  ],
+  "table_count": 56,
+  "constraint_count": 168,
+  "regular_index_count": 7,
+  "optional_hnsw_count": 1,
+  "policy_count": 2,
+  "database_writes": false,
+  "table_data_exported": false,
+  "source_sha256": "4fd879963e07ec9057df9c4b506051ba6cc318252cbe52010d3b25b5fd5ceee3",
+  "tables": [
+    {
+      "schema": "public",
+      "table": "answers",
+      "columns": [
+        {
+          "attname": "answer_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "query_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "attempt",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "decision_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "answer_text",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "reason_code",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "model_name",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "prompt_version",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "latency_ms",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "latency_breakdown_json",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 4,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "audit_logs",
+      "columns": [
+        {
+          "attname": "audit_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "action",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "resource_type",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "resource_id",
+          "type": "character varying(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "outcome",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "ip_address",
+          "type": "inet",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_agent",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "metadata_json",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "calc_inputs",
+      "columns": [
+        {
+          "attname": "evidence_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "input_evidence_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "position",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "citations",
+      "columns": [
+        {
+          "attname": "citation_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "claim_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "evidence_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "ordinal",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "claim_verifications",
+      "columns": [
+        {
+          "attname": "verification_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "claim_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "check_type",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "passed",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "detail",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "claims",
+      "columns": [
+        {
+          "attname": "claim_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "answer_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "ordinal",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "claim_text",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "claim_type",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "verification_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "companies",
+      "columns": [
+        {
+          "attname": "company_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "symbol",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "company_name",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "industry_type",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "sector",
+          "type": "character varying(100)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "exchange",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "is_active",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "config_versions",
+      "columns": [
+        {
+          "attname": "config_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "version_label",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "description",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "is_active",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "frozen_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "frozen_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "corpus_documents",
+      "columns": [
+        {
+          "attname": "corpus_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "document_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "document_hash",
+          "type": "character(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "corpus_facts",
+      "columns": [
+        {
+          "attname": "corpus_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "observation_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "value_hash",
+          "type": "character(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "corpus_prices",
+      "columns": [
+        {
+          "attname": "corpus_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "price_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "value_hash",
+          "type": "character(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "corpus_versions",
+      "columns": [
+        {
+          "attname": "corpus_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "version_label",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "description",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "graph_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "index_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "frozen_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "frozen_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "manifest_sha256",
+          "type": "character(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 4,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "documents",
+      "columns": [
+        {
+          "attname": "document_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "company_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "period_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "job_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "doc_type",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "file_type",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "title",
+          "type": "character varying(500)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "storage_uri",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "source_url",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "external_id",
+          "type": "character varying(100)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "language",
+          "type": "character(2)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "page_count",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "file_size",
+          "type": "bigint",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "published_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "sha256",
+          "type": "character(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "parse_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 4,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "evaluation_results",
+      "columns": [
+        {
+          "attname": "result_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "run_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "question_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "answer_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "gate_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "correctness",
+          "type": "double precision",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "faithfulness",
+          "type": "double precision",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "citation_correctness",
+          "type": "double precision",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "citation_coverage",
+          "type": "double precision",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "context_precision",
+          "type": "double precision",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "retrieval_recall_json",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "latency_ms",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "trace_id",
+          "type": "character varying(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 4,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "evaluation_runs",
+      "columns": [
+        {
+          "attname": "run_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "run_type",
+          "type": "character varying(12)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "configuration",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "corpus_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "golden_set_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "config_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "model_name",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "judge_model",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "ragas_version",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "temperature",
+          "type": "double precision",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "seed",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "prompt_version",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "prompt_hash",
+          "type": "character varying(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "git_commit",
+          "type": "character varying(40)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "config_json",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "started_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "completed_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "triggered_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 5,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "evidence",
+      "columns": [
+        {
+          "attname": "evidence_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "evidence_type",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "chunk_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "observation_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "price_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "extraction_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "calc_formula",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "company_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "period_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "unit",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "statement_scope",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "source_sha256",
+          "type": "character(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "locator_json",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 7,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "feedback",
+      "columns": [
+        {
+          "attname": "feedback_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "query_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "citation_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "evidence_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "issue_type",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "comment",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "resolved_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "resolved_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 6,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "financial_reports",
+      "columns": [
+        {
+          "attname": "report_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "company_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "period_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "document_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "payload_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "job_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "statement_scope",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "audit_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "report_version",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "restated_from_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "published_at",
+          "type": "date",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 7,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "gate_decision_evidence",
+      "columns": [
+        {
+          "attname": "decision_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "evidence_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "role",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "drop_reason",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "gate_decisions",
+      "columns": [
+        {
+          "attname": "decision_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "query_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "attempt",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "reason_code",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "reference_date",
+          "type": "date",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "is_stale",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "has_conflict",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "mandatory_branch_missing",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "relevance_score",
+          "type": "double precision",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "golden_question_companies",
+      "columns": [
+        {
+          "attname": "question_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "company_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "golden_questions",
+      "columns": [
+        {
+          "attname": "question_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "golden_set_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "question_text",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "question_type",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "period_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "answerability",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "expected_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "expected_reason_code",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "reference_answer",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "canonical_numeric_value",
+          "type": "numeric(24,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "gold_locators_json",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "dataset_split",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 4,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "golden_sets",
+      "columns": [
+        {
+          "attname": "golden_set_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "version_label",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "description",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "frozen_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "frozen_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "graph_extractions",
+      "columns": [
+        {
+          "attname": "extraction_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "graph_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "document_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "method",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "subject",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "relation_type",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "object",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "source_span",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "validation_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "reject_reason",
+          "type": "character varying(100)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "neo4j_edge_key",
+          "type": "character varying(100)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "manual_check",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "graph_versions",
+      "columns": [
+        {
+          "attname": "graph_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "built_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "node_count",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "edge_count",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 1,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "index_versions",
+      "columns": [
+        {
+          "attname": "index_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "chunker_version",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "chunk_size",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "chunk_overlap",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "embedding_model",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "built_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 1,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "ingestion_jobs",
+      "columns": [
+        {
+          "attname": "job_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "source_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "triggered_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "trigger_type",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "schema_version",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "started_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "finished_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "records_ok",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "records_quarantined",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "market_index_bars",
+      "columns": [
+        {
+          "attname": "index_symbol",
+          "type": "character varying(20)",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "index_name",
+          "type": "character varying(100)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "exchange",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "trade_date",
+          "type": "date",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "open",
+          "type": "numeric(18,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "high",
+          "type": "numeric(18,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "low",
+          "type": "numeric(18,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "close",
+          "type": "numeric(18,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "volume",
+          "type": "bigint",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "sma20",
+          "type": "numeric",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "sma50",
+          "type": "numeric",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "rsi14",
+          "type": "numeric",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "payload_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "market_live_snapshots",
+      "columns": [
+        {
+          "attname": "symbol",
+          "type": "character varying(20)",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "instrument_type",
+          "type": "character varying(10)",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "'stock'::character varying"
+        },
+        {
+          "attname": "fetched_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "data",
+          "type": "jsonb",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "payload_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "updated_at",
+          "type": "timestamp with time zone",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "now()"
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "metric_aliases",
+      "columns": [
+        {
+          "attname": "alias_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "metric_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "raw_label",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "industry_scope",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "metrics",
+      "columns": [
+        {
+          "attname": "metric_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "code",
+          "type": "character varying(100)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "canonical_name",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "section",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "default_unit",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "industry_scope",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "mapping_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 1,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "news_articles",
+      "columns": [
+        {
+          "attname": "article_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "source",
+          "type": "character varying(30)",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "external_id",
+          "type": "character varying(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "url",
+          "type": "text",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "title",
+          "type": "text",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "description",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "content",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "published_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "crawled_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "symbols",
+          "type": "text[]",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "'{}'::text[]"
+        },
+        {
+          "attname": "attachments",
+          "type": "jsonb",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "'[]'::jsonb"
+        },
+        {
+          "attname": "marker",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "cross_check",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "payload_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "now()"
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "observations",
+      "columns": [
+        {
+          "attname": "observation_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "report_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "metric_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "value",
+          "type": "numeric",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "unit",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "scale",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "currency",
+          "type": "character(3)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "locator_json",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "permissions",
+      "columns": [
+        {
+          "attname": "permission_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "resource",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "action",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "description",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 1,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "price_bars",
+      "columns": [
+        {
+          "attname": "price_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "company_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "payload_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "trade_date",
+          "type": "date",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "is_adjusted",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "price_scale",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "open",
+          "type": "numeric(18,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "high",
+          "type": "numeric(18,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "low",
+          "type": "numeric(18,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "close",
+          "type": "numeric(18,4)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "volume",
+          "type": "bigint",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "price_indicators",
+      "columns": [
+        {
+          "attname": "price_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "sma20",
+          "type": "numeric",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "sma50",
+          "type": "numeric",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "rsi14",
+          "type": "numeric",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "updated_at",
+          "type": "timestamp with time zone",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "now()"
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "quarantine_records",
+      "columns": [
+        {
+          "attname": "record_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "job_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "payload_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "extraction_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "entity_type",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "reason_code",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "reviewed_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "reviewed_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 5,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "queries",
+      "columns": [
+        {
+          "attname": "query_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "run_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "question_text",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "question_type",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "configuration",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "corpus_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "config_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "language",
+          "type": "character(2)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "trace_id",
+          "type": "character varying(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "deleted_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 5,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "query_companies",
+      "columns": [
+        {
+          "attname": "query_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "company_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "raw_payloads",
+      "columns": [
+        {
+          "attname": "payload_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "job_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "source_uri",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "sha256",
+          "type": "character(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "payload",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "stored_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "reason_codes",
+      "columns": [
+        {
+          "attname": "code",
+          "type": "character varying(50)",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "result_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_message",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "is_active",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 1,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "reporting_periods",
+      "columns": [
+        {
+          "attname": "period_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "period_code",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "fiscal_year",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "quarter",
+          "type": "smallint",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "period_type",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "start_date",
+          "type": "date",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "end_date",
+          "type": "date",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "retrieval_results",
+      "columns": [
+        {
+          "attname": "result_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "query_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "attempt",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "evidence_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "branch",
+          "type": "character varying(10)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "score",
+          "type": "double precision",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "rank_before",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "rank_after",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "role_permissions",
+      "columns": [
+        {
+          "attname": "role_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "permission_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "roles",
+      "columns": [
+        {
+          "attname": "role_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "role_code",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "description",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 1,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "sessions",
+      "columns": [
+        {
+          "attname": "session_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "token_hash",
+          "type": "character varying(128)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "issued_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "expires_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "revoked_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "ip_address",
+          "type": "inet",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_agent",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "sources",
+      "columns": [
+        {
+          "attname": "source_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "name",
+          "type": "character varying(100)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "source_type",
+          "type": "character varying(30)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "base_url",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "approval_status",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "approved_by",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "approved_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "scope_note",
+          "type": "text",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "is_enabled",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "system_configs",
+      "columns": [
+        {
+          "attname": "config_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "config_key",
+          "type": "character varying(100)",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "config_value",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 2,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "text_chunks",
+      "columns": [
+        {
+          "attname": "chunk_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "document_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "index_version_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "chunk_index",
+          "type": "integer",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "page_number",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "section_label",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "token_count",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "char_start",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "char_end",
+          "type": "integer",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "content_hash",
+          "type": "character(64)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "embedding",
+          "type": "public.vector(1024)",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "locator_json",
+          "type": "jsonb",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "superseded_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "superseded_by_chunk_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "usage_events",
+      "columns": [
+        {
+          "attname": "usage_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "event_type",
+          "type": "character varying(20)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "model_name",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "answer_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "run_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "graph_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "index_version_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "tokens_input",
+          "type": "bigint",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "tokens_output",
+          "type": "bigint",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "cost_usd",
+          "type": "numeric(10,6)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "recorded_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 5,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "user_roles",
+      "columns": [
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "role_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "users",
+      "columns": [
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "email",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "username",
+          "type": "character varying(50)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "password_hash",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "full_name",
+          "type": "character varying(255)",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "is_active",
+          "type": "boolean",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "last_login_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "updated_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "created_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 1,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "public",
+      "table": "watchlists",
+      "columns": [
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "company_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "pinned_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 3,
+      "rls": true,
+      "force_rls": false
+    },
+    {
+      "schema": "research_chat",
+      "table": "conversations",
+      "columns": [
+        {
+          "attname": "conversation_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "schema_version",
+          "type": "text",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "'1.0'::text"
+        },
+        {
+          "attname": "revision",
+          "type": "integer",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "0"
+        },
+        {
+          "attname": "started_at",
+          "type": "timestamp with time zone",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "saved_at",
+          "type": "timestamp with time zone",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "metadata",
+          "type": "jsonb",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "preview",
+          "type": "text",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "''::text"
+        },
+        {
+          "attname": "turns",
+          "type": "integer",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "0"
+        },
+        {
+          "attname": "lease_id",
+          "type": "uuid",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "lease_expires_at",
+          "type": "timestamp with time zone",
+          "attnotnull": false,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 9,
+      "rls": true,
+      "force_rls": true
+    },
+    {
+      "schema": "research_chat",
+      "table": "messages",
+      "columns": [
+        {
+          "attname": "conversation_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "user_id",
+          "type": "uuid",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "position",
+          "type": "integer",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "payload",
+          "type": "jsonb",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        }
+      ],
+      "constraints": 4,
+      "rls": true,
+      "force_rls": true
+    },
+    {
+      "schema": "research_chat",
+      "table": "schema_migrations",
+      "columns": [
+        {
+          "attname": "version",
+          "type": "text",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "sha256",
+          "type": "text",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": null
+        },
+        {
+          "attname": "applied_at",
+          "type": "timestamp with time zone",
+          "attnotnull": true,
+          "identity": "",
+          "generated": "",
+          "default_expr": "now()"
+        }
+      ],
+      "constraints": 1,
+      "rls": false,
+      "force_rls": false
+    }
+  ],
+  "excluded": "Supabase-managed auth/storage/vault/realtime; platform grants/owners/passwords; extension internal objects; data/seeds/sequence values"
+}
