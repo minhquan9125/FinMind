@@ -1,5 +1,14 @@
 # History thay đổi code
 
+### [2026-10-23] WBS34 — mẫu E2E vector retrieval Q03 trên corpus-v4
+
+- **File(s):** `backend/scripts/audit_vector_e2e.py`, `backend/tests/test_audit_vector_e2e.py`, `docs/embedding/WBS34-vector-e2e.md`, `history.md`.
+- **Mục tiêu:** Theo một bài tin FPT từ membership corpus, chunk/locator, vector và nguồn đã ghim đến kết quả top 5 của API; có ca sai phạm vi và đối chiếu chạy lặp. Script chỉ đọc Supabase, báo cáo JSON cục bộ trong `backend/.tmp`.
+- **Kiểm chứng:** Bài Q03 có 8 chunk hiện hành; 8/8 đúng ID, vị trí, hash nguồn và 1024 chiều. Vector tạo lại từ một chunk đã xác minh có cosine `1.0` với vector DB. Q03 trả đúng bài và ba dữ kiện ở hạng 1/5; hai lượt retrieval cho cùng ID, lọc sai công ty/kỳ rỗng. Route HTTP thử qua ASGI client trả 200/5 hit, cả 5 xác minh nguồn. 10/10 check của script và 49 test liên quan đạt.
+- **Giới hạn:** Chưa chạy lại writer corpus-v4 trên DB thật vì repo hiện chưa có lệnh tái nạp release `db-corpus-v2`; test idempotence writer `db-v1` và biên bản WBS17 là bằng chứng riêng, không được tính thành rerun v4. Không chấm toàn bộ Golden40 hay câu trả lời cuối. Cần owner luồng tạo v4 cung cấp cách rerun an toàn hoặc DB dev cùng release để hoàn tất điều kiện này.
+
+---
+
 ### [2026-10-23] Kiểm tra bộ 40 câu mới của Huyền trên corpus-v4
 
 - **File(s):** `bo cau hoi cua huyen 40 cau.md` (bộ đề mới được bàn giao); báo cáo thử cục bộ `backend/.tmp/huyen-golden40-corpus-v4-audit.json` được Git ignore. Lượt này không sửa thuật toán retrieval hay dữ liệu DB.
@@ -596,3 +605,23 @@ Quy trình bắt buộc trước khi sửa:
 - **Tại sao sửa:** Repository chuyển riêng `{chunk_id, score}` của các hàng SQL đã xếp hạng cho trace trước bước kiểm tra nguồn. Trace phân biệt `hit_count` (SQL tìm được) với `returned_hit_count` (API trả thành công); lỗi trước SQL vẫn có `hit_count: null`.
 - **Ảnh hưởng:** Chỉ thêm dữ liệu chẩn đoán vào log local/console của `/api/search/filtered`; không đổi kết quả API, dữ liệu nguồn hay Supabase. Trace không chứa câu hỏi, nội dung chunk hoặc thông tin kết nối.
 - **Kiểm chứng:** 28 test liên quan API, repository và trace qua. Thử đường đi SQL → kiểm tra nguồn → trace trên DB thật bằng vector đã lưu trong index (không tải model): HTTP 409, SQL tìm 5 hit/5 điểm, không có kết quả trả, `SOURCE_CHANGED`. Đây không phải phép đo chất lượng embedding theo câu hỏi.
+
+### [2026-10-27] Làm lại nguồn News FireAnt cho 10 mã
+
+- Crawler hỗ trợ chọn `--source fireant` và thư mục xuất riêng từ lệnh tổng. Script nạp Supabase lọc FireAnt và 10 mã, có chế độ thay `news_articles` trong một transaction, từ chối xóa nếu tập mới rỗng.
+- Đã cào 10 bài/mã theo hạn mức mặc định của README, gộp còn 85 URL. Trước khi thay bảng đã sao lưu 234 bản ghi tại `backend/.tmp/news_articles_before_fireant_20261027.json` (không đưa lên Git).
+- Sau khi nạp, DB có 85 bài FireAnt, 0 CafeF, 0 bài ngoài 10 mã, 0 URL trùng, 0 bài rỗng và 85/85 bài có payload. Bảng chunk/index/corpus cũ chưa được thay trong task này; nhóm sẽ lập chỉ mục lại sau.
+- Kiểm thử: 3 test bộ lọc/nạp và toàn bộ 27 test crawler qua; bản nạp thử báo 85 bài trước khi ghi DB.
+
+### [2026-10-27] Bổ sung link tệp đính kèm FireAnt
+
+- Crawler lấy `files[].fileContentUrl` từ API chi tiết bài FireAnt vào `attachments`, loại link lặp và giá trị không phải URL HTTP(S). Có test bài có/không có tệp.
+- Đã sao lưu 10 JSON cũ tại `backend/.tmp/fireant_before_attachments_20261027`, đọc lại 85 bài FireAnt và nạp bằng upsert, không xóa bảng. Supabase còn 85 bài; 36 bài có 36 link đính kèm. Bài ELC `42008571` lưu link PDF `https://mobiv2.fireant.vn/News/NewsAttachedFile/1909857` trong cả `news_articles` và payload nguồn liên kết.
+- 12 test của `test_stock_news_collector.py` qua. Không tải nội dung PDF và không thay chunk/index/corpus.
+
+### [2026-10-29] WBS03 — trích xuất ứng viên quan hệ từ BCTN (đang review)
+
+- Tích hợp runtime contract 2.1.0 và registry do Hưng bàn giao; adapter đọc chunk BCTN thuộc corpus đã chọn trong transaction PostgreSQL chỉ đọc, dựng lại text từ snapshot nguồn và kiểm tra hash. Mỗi BCTN xuất một JSON với `document_version` chung của snapshot; không OCR/chia chunk lại, không ghi database hoặc Neo4j.
+- Extractor rule-based tạo ứng viên sở hữu, công ty con, liên kết, hợp tác ở trạng thái `PENDING`, giữ `document_id`, `chunk_id`, locator và câu chứng minh. Rule bỏ qua phủ định, dự kiến, quan hệ quá khứ và tên không đủ rõ; WBS06 quyết định duyệt/từ chối.
+- Chạy trên corpus frozen có 20 BCTN, 15.398 chunk hiện hành: 20 JSON hợp lệ, 1 ứng viên `PENDING` cần người kiểm duyệt. Audit offline chỉ ra các ca OCR/bố cục bảng và tên chưa resolve; chi tiết tại `docs/sprint4/WBS03-relation-gap-audit.md`. Chưa có tập nhãn gold nên chưa đo được precision/recall và chưa đánh dấu WBS03 hoàn thành.
+- Kiểm thử: 22 unit test WBS03 qua; đầu ra và audit local nằm trong `backend/.tmp/` và không đưa lên Git.

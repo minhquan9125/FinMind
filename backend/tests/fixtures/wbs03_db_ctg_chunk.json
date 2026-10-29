@@ -1,0 +1,41 @@
+{
+  "schema_version": "2.1.0",
+  "corpus_id": "a5338f75-5894-5b8a-bf94-0a6da7c26ced",
+  "dataset_version": "bcc6251d-ba1b-51d9-8fd5-92eb893a9ff0",
+  "documents": [
+    {
+      "source_kind": "db",
+      "document_id": "1718b73f-ddf8-5382-b3e8-641ee71c49a4",
+      "document_version": "56f7e0d9d79ba663daa9f8ecd2cd2d0cd355566c472cb1f1e81517eee6de9ee4",
+      "source_uri": "finmind:shared-source:bcc6251d-ba1b-51d9-8fd5-92eb893a9ff0:annual_reports:d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+      "source_sha256": "1220b6ab80d0800e56ae1106f34e2795269e1e5ad778cf0b824e3d2a966d1ff5",
+      "index_version_id": "bcc6251d-ba1b-51d9-8fd5-92eb893a9ff0",
+      "title": "CTG — Báo cáo thường niên 2024",
+      "doc_type": "ANNUAL_REPORT",
+      "pdf_sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+      "database_document_sha256": "718c24c44c59a3aaf9c68a8ee5f857effa1cf8072ae18b071f14c6ae850bac9d"
+    }
+  ],
+  "chunks": [
+    {
+      "document_id": "1718b73f-ddf8-5382-b3e8-641ee71c49a4",
+      "document_version": "56f7e0d9d79ba663daa9f8ecd2cd2d0cd355566c472cb1f1e81517eee6de9ee4",
+      "chunk_id": "875ef858-fb07-559d-9b85-28d3fb518d1c",
+      "text": "CTG | Báo cáo thường niên 2024 | PDF trang 1\nDigitally signed by NGÂN HÀNG NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN CÔNG THƯƠNG VIỆT NAM DN: C=VN, S=HÀ NỘI, L=Quận Hai Bà THƯƠNG MẠI Trưng, CN=NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN CÔNG THƯƠNG VIỆT NAM, CỔ PHẦN OID.0.9.2342.19200300.100.1.1=MST: 0100111948 CÔNG THƯƠNGReason: document I am the author of this Location: your signing location here VIỆT NAM Date: 2025.03.25 15:25:38+07'00' Foxit PDF Reader Version: 11.2.1",
+      "locator": {
+        "kind": "db_text_span",
+        "page": 1,
+        "section_index": 0,
+        "char_start": 0,
+        "char_end": 403,
+        "text_start": 45,
+        "offset_basis": "normalized_section_body",
+        "offset_unit": "unicode_codepoint",
+        "content_hash": "e0915a887a4a16bab4e63a58da87b8c14d3ddf0cd02012274602a1b68b264eb4"
+      }
+    }
+  ],
+  "entities": [],
+  "mentions": [],
+  "relations": []
+}
