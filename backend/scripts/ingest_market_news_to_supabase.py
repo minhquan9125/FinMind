@@ -24,11 +24,14 @@ import os
 from pathlib import Path
 import sys
 from typing import Any
+from urllib.parse import urlsplit
 import uuid
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 OHLCV_DIR = PROJECT_ROOT / "data_pipeline" / "ScrapersOHLCV" / "data" / "stocks"
 NEWS_DIR = PROJECT_ROOT / "data_pipeline" / "scrapers" / "data"
+SCRAPERS_DIR = NEWS_DIR.parent
+PROJECT_SYMBOLS = {"VCB", "BID", "CTG", "MBB", "TCB", "FPT", "CMG", "ELC", "ITD", "ICT"}
 # Same namespace and id recipe as ingest_to_supabase.py so rows line up.
 NAMESPACE = uuid.UUID("b77dbd7f-5d89-479d-90a3-421e5f0981ea")
 # vnstock/KBS quotes prices in thousand VND (57.3 = 57,300 VND); same price_scale as ingest_to_supabase.py.
@@ -129,20 +132,29 @@ def collect_prices(symbols: set[str] | None) -> list[dict[str, Any]]:
 # ----------------------------------------------------------------- news
 
 def merge_file_articles(path: Path, data: Any, merged: dict[tuple[str, str], dict[str, Any]],
-                        symbols: set[str] | None = None) -> dict[str, Any] | None:
+                        symbols: set[str] | None = None,
+                        source_filter: str | None = None) -> dict[str, Any] | None:
     """Add one news file's articles into `merged` (keyed by source+url); return its file plan."""
     articles = data.get("articles") if isinstance(data, dict) else None
     if not isinstance(articles, list):
         return None
-    file_source = str(data.get("source") or path.parent.name)
+    file_source = str(data.get("source") or path.parent.name).lower()
+    if source_filter and file_source != source_filter:
+        return None
     kept = 0
     for art in articles:
         if not isinstance(art, dict) or not art.get("url") or not art.get("title"):
             continue
-        source = str(art.get("source") or file_source)
+        source = str(art.get("source") or file_source).lower()
+        if source_filter and source != source_filter:
+            continue
+        if source == "fireant" and urlsplit(str(art["url"])).hostname not in ("fireant.vn", "www.fireant.vn"):
+            continue
         art_symbols = {str(s).upper() for s in as_list(art.get("matched_symbols")) + as_list(art.get("symbols"))}
         if symbols and not (art_symbols & symbols):
             continue
+        if symbols:
+            art_symbols &= symbols
         key = (source, str(art["url"]))
         kept += 1
         row = merged.get(key)
@@ -159,12 +171,13 @@ def build_news_plan(path: Path, data: Any) -> tuple[list[dict[str, Any]], list[d
     return ([plan] if plan else []), list(merged.values())
 
 
-def collect_news(symbols: set[str] | None) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def collect_news(symbols: set[str] | None, source_filter: str | None = None,
+                 news_dir: Path = NEWS_DIR) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Return (per-file plans, merged unique articles keyed by source+url)."""
     files = []
     merged: dict[tuple[str, str], dict[str, Any]] = {}
-    for path in sorted(NEWS_DIR.rglob("*.json")):
-        plan = merge_file_articles(path, load_json(path), merged, symbols)
+    for path in sorted(news_dir.rglob("*.json")):
+        plan = merge_file_articles(path, load_json(path), merged, symbols, source_filter)
         if plan:
             files.append(plan)
     return files, list(merged.values())
@@ -295,9 +308,14 @@ async def apply_index(conn: Any, plan: dict[str, Any]) -> None:
     print(f"  market_index_bars {plan['symbol']}: {len(plan['bars'])} (live: {'co' if plan['live'] else 'khong'})")
 
 
-async def apply_news(conn: Any, files: list[dict[str, Any]], articles: list[dict[str, Any]]) -> None:
+async def apply_news(conn: Any, files: list[dict[str, Any]], articles: list[dict[str, Any]],
+                     replace: bool = False) -> None:
+    if replace and not articles:
+        raise ValueError("Refusing to replace news_articles with an empty crawl")
     payload_by_file: dict[Path, uuid.UUID] = {}
     async with conn.transaction():
+        if replace:
+            await conn.execute("DELETE FROM public.news_articles")
         for f in files:
             if f["count"]:
                 payload_by_file[f["path"]] = await store_payload(
@@ -330,8 +348,16 @@ async def apply_news(conn: Any, files: list[dict[str, Any]], articles: list[dict
 async def run(args: argparse.Namespace) -> int:
     symbols = {s.upper() for s in args.symbol} or None
     do_prices, do_news = args.only in (None, "prices"), args.only in (None, "news")
+    news_dir = Path(args.news_dir).resolve() if args.news_dir else NEWS_DIR
+    if args.replace_news:
+        if (args.only != "news" or args.news_source != "fireant"
+                or symbols != PROJECT_SYMBOLS or not args.news_dir
+                or not news_dir.is_relative_to(SCRAPERS_DIR) or news_dir == NEWS_DIR):
+            raise ValueError("--replace-news requires --only news, --news-source fireant, all 10 project symbols and a separate --news-dir inside scrapers")
+    if do_news and not news_dir.is_dir():
+        raise ValueError(f"News directory does not exist: {news_dir}")
     price_plans = collect_prices(symbols) if do_prices else []
-    news_files, articles = collect_news(symbols) if do_news else ([], [])
+    news_files, articles = collect_news(symbols, args.news_source, news_dir) if do_news else ([], [])
 
     print("Plan:")
     for p in price_plans:
@@ -339,6 +365,8 @@ async def run(args: argparse.Namespace) -> int:
         print(f"  {table:<17} {p['symbol']:<8} {len(p['bars']):>4} bars, {len(p['indicators']):>3} chi bao, live: {'co' if p['live'] else 'khong'}")
     if do_news:
         print(f"  news_articles: {len(articles)} bai duy nhat tu {sum(1 for f in news_files if f['count'])} file")
+        if args.replace_news and not articles:
+            raise ValueError("No FireAnt articles found; existing news_articles will not be deleted")
 
     if not args.apply:
         print("Dry run: khong ket noi database, khong ghi gi. Them --apply de nap that.")
@@ -362,7 +390,7 @@ async def run(args: argparse.Namespace) -> int:
         if do_prices:
             await apply_prices(conn, price_plans, overwrite=not args.no_overwrite)
         if do_news:
-            await apply_news(conn, news_files, articles)
+            await apply_news(conn, news_files, articles, replace=args.replace_news)
     finally:
         await conn.close()
     print("Xong.")
@@ -374,6 +402,9 @@ def main() -> int:
     parser.add_argument("--apply", action="store_true", help="ghi that vao database (mac dinh chi chay thu)")
     parser.add_argument("--only", choices=["prices", "news"], help="chi nap gia hoac chi nap tin")
     parser.add_argument("--symbol", nargs="*", default=[], help="gioi han theo ma, vd: --symbol VCB FPT")
+    parser.add_argument("--news-source", choices=["cafef", "fireant"], help="chi nap tin tu nguon nay")
+    parser.add_argument("--news-dir", type=Path, help="thu muc JSON news; mac dinh data_pipeline/scrapers/data")
+    parser.add_argument("--replace-news", action="store_true", help="thay toan bo news_articles trong mot transaction; chi dung voi FireAnt/10 ma")
     parser.add_argument("--no-overwrite", action="store_true", help="khong ghi de nen gia da ton tai")
     args = parser.parse_args()
     try:

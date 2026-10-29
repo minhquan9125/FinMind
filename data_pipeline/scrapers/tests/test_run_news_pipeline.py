@@ -88,6 +88,17 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(pipeline.main([]), 0)
             self.assertEqual(run.call_args.args, (['VCB'], 10))
 
+    def test_fireant_only_cli_passes_source_and_isolated_output(self):
+        output = SCRAPERS / 'data_fireant_10_test'
+        with patch.object(pipeline, 'run_pipeline', return_value=(0, {})) as run:
+            code = pipeline.main(['--symbols', 'FPT', 'VCB', '--source', 'fireant',
+                                  '--only-symbols', '--output', str(output)])
+        self.assertEqual(code, 0)
+        self.assertEqual(run.call_args.args, (['FPT', 'VCB'], 10))
+        self.assertEqual(run.call_args.kwargs['source'], 'fireant')
+        self.assertTrue(run.call_args.kwargs['only_symbols'])
+        self.assertEqual(run.call_args.kwargs['root'], output)
+
 
 if __name__ == '__main__':
     unittest.main()

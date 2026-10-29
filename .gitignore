@@ -33,6 +33,7 @@ wheels/
 venv/
 ENV/
 backend/.tmp/
+data_pipeline/scrapers/data_fireant_10_*/
 
 # Test caches and generated coverage reports
 .pytest_cache/

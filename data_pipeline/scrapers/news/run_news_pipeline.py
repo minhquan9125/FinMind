@@ -119,7 +119,8 @@ def format_report(report):
     return '\n'.join(lines) + '\n'
 
 
-def run_pipeline(symbols, limit=10, root=DATA_ROOT, only_symbols=False, new_only=False):
+def run_pipeline(symbols, limit=10, root=DATA_ROOT, only_symbols=False, new_only=False,
+                 source='all'):
     root = Path(root).resolve()
     if not root.is_relative_to(SCRAPERS):
         raise ValueError('Root must be inside scrapers')
@@ -131,14 +132,14 @@ def run_pipeline(symbols, limit=10, root=DATA_ROOT, only_symbols=False, new_only
     scopes = ([] if only_symbols else ['market']) + symbols
     before = inventory(root, scopes)
     old_files = {p for row in before['folders'] for p in row['files']}
-    args = ['--source', 'all', '--symbols', *symbols, '--limit', str(limit)]
+    args = ['--source', source, '--symbols', *symbols, '--limit', str(limit)]
     if root != DATA_ROOT:
         args.extend(['--output', str(root)])
     if only_symbols:
         args.append('--only-symbols')
     if new_only:
         args.append('--new-only')
-    print(f"\nCào CafeF + FireAnt: {', '.join(scopes)}, {limit} bài mỗi nguồn/phạm vi.", flush=True)
+    print(f"\nCào {source}: {', '.join(scopes)}, {limit} bài mỗi nguồn/phạm vi.", flush=True)
     collection, errors = {}, []
     try:
         code = collector.main(args, run_report=collection)
@@ -169,7 +170,7 @@ def run_pipeline(symbols, limit=10, root=DATA_ROOT, only_symbols=False, new_only
     cross_scopes = cross.get('scopes', []) if cross.get('status') == 'ok' else []
     event_summary = event_result.get('summary', {})
     summary = {
-        'requested_collection_groups': len(scopes) * 2,
+        'requested_collection_groups': len(scopes) * (2 if source == 'all' else 1),
         'successful_collection_groups': sum(i['status'] == 'ok' for i in collected),
         'accepted_articles': sum(r['accepted'] for i in collected for r in i['results']),
         'new_article_records': sum(i['new_articles'] for i in collected),
@@ -185,7 +186,7 @@ def run_pipeline(symbols, limit=10, root=DATA_ROOT, only_symbols=False, new_only
     }
     report = {'schema_version': '1.0', 'started_at': started,
               'finished_at': datetime.now(timezone.utc).isoformat(), 'symbols': symbols,
-              'limit': limit, 'scopes': scopes, 'new_only': new_only,
+               'limit': limit, 'scopes': scopes, 'source': source, 'new_only': new_only,
               'status': 'ok' if not errors else 'partial_or_failed', 'summary': summary,
               'collector': collection, 'event_analysis': event_result, 'inventory': after, 'errors': errors}
     output.mkdir(parents=True, exist_ok=True)
@@ -211,6 +212,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--symbols', nargs='+', help='Skip interactive prompt, e.g. FPT HPG')
     parser.add_argument('--limit', type=int, default=10)
+    parser.add_argument('--source', choices=('cafef', 'fireant', 'all'), default='all')
+    parser.add_argument('--output', type=Path, help='Thư mục JSON riêng bên trong scrapers')
     parser.add_argument('--only-symbols', action='store_true')
     parser.add_argument('--new-only', action='store_true')
     args = parser.parse_args(argv)
@@ -231,7 +234,9 @@ def main(argv=None):
             except (EOFError, KeyboardInterrupt):
                 print('\nĐã hủy.')
                 return 1
-    code, _ = run_pipeline(symbols, args.limit, only_symbols=args.only_symbols, new_only=args.new_only)
+    code, _ = run_pipeline(symbols, args.limit, root=args.output or DATA_ROOT,
+                           only_symbols=args.only_symbols, new_only=args.new_only,
+                           source=args.source)
     return code
 
 
