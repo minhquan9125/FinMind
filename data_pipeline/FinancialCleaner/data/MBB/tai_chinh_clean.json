@@ -42183,8 +42183,8 @@
             "mã_chuẩn": "MARKET_CAP",
             "tên_chỉ_tiêu": "Giá trị vốn hóa thị trường",
             "trường_gốc": "marketCap",
-            "giá_trị": 199864685217250.0,
-            "giá_trị_hiển_thị": "199.864.685.217.250"
+            "giá_trị": 194830310274750.0,
+            "giá_trị_hiển_thị": "194.830.310.274.750"
           },
           {
             "mã_chuẩn": "DIVIDEND_YIELD",
@@ -42197,29 +42197,29 @@
             "mã_chuẩn": "PE",
             "tên_chỉ_tiêu": "Hệ số giá trên thu nhập",
             "trường_gốc": "pe",
-            "giá_trị": 6.178226597,
-            "giá_trị_hiển_thị": "6,178226597"
+            "giá_trị": 5.9894967136,
+            "giá_trị_hiển_thị": "5,9894967136"
           },
           {
             "mã_chuẩn": "PB",
             "tên_chỉ_tiêu": "Hệ số giá trên giá trị sổ sách",
             "trường_gốc": "pb",
-            "giá_trị": 1.2698530226,
-            "giá_trị_hiển_thị": "1,2698530226"
+            "giá_trị": 1.2378668004,
+            "giá_trị_hiển_thị": "1,2378668004"
           },
           {
             "mã_chuẩn": "PS",
             "tên_chỉ_tiêu": "Hệ số giá trên doanh thu (P/S)",
             "trường_gốc": "ps",
-            "giá_trị": 2.7382790159,
-            "giá_trị_hiển_thị": "2,7382790159"
+            "giá_trị": 2.6693047334,
+            "giá_trị_hiển_thị": "2,6693047334"
           },
           {
             "mã_chuẩn": "PRICE_TO_CASH_FLOW",
             "tên_chỉ_tiêu": "Hệ số giá trên dòng tiền",
             "trường_gốc": "priceToCashFlow",
-            "giá_trị": 2.2486916743,
-            "giá_trị_hiển_thị": "2,2486916743"
+            "giá_trị": 2.179999581,
+            "giá_trị_hiển_thị": "2,179999581"
           },
           {
             "mã_chuẩn": "EV_TO_EBITDA",
@@ -42878,36 +42878,36 @@
             "mã_chuẩn": "DIVIDEND_YIELD",
             "tên_chỉ_tiêu": "Tỷ suất cổ tức",
             "trường_gốc": "dividendYield",
-            "giá_trị": 0.0503778338,
-            "giá_trị_hiển_thị": "0,0503778338"
+            "giá_trị": 0.0507614213,
+            "giá_trị_hiển_thị": "0,0507614213"
           },
           {
             "mã_chuẩn": "PE",
             "tên_chỉ_tiêu": "Hệ số giá trên thu nhập",
             "trường_gốc": "pe",
-            "giá_trị": 6.5016338085,
-            "giá_trị_hiển_thị": "6,5016338085"
+            "giá_trị": 6.4525030744,
+            "giá_trị_hiển_thị": "6,4525030744"
           },
           {
             "mã_chuẩn": "PB",
             "tên_chỉ_tiêu": "Hệ số giá trên giá trị sổ sách",
             "trường_gốc": "pb",
-            "giá_trị": 1.1744998588,
-            "giá_trị_hiển_thị": "1,1744998588"
+            "giá_trị": 1.165624545,
+            "giá_trị_hiển_thị": "1,165624545"
           },
           {
             "mã_chuẩn": "PS",
             "tên_chỉ_tiêu": "Hệ số giá trên doanh thu (P/S)",
             "trường_gốc": "ps",
-            "giá_trị": 2.3620125062,
-            "giá_trị_hiển_thị": "2,3620125062"
+            "giá_trị": 2.3441635452,
+            "giá_trị_hiển_thị": "2,3441635452"
           },
           {
             "mã_chuẩn": "PRICE_TO_CASH_FLOW",
             "tên_chỉ_tiêu": "Hệ số giá trên dòng tiền",
             "trường_gốc": "priceToCashFlow",
-            "giá_trị": 1.1640563172,
-            "giá_trị_hiển_thị": "1,1640563172"
+            "giá_trị": 1.1552599218,
+            "giá_trị_hiển_thị": "1,1552599218"
           },
           {
             "mã_chuẩn": "EV_TO_EBITDA",
@@ -49391,350 +49391,6 @@
         ]
       },
       {
-        "kỳ_báo_cáo": "2022-Q1",
-        "loại_kỳ": "Quý",
-        "năm": 2022,
-        "quý": 1,
-        "chỉ_tiêu": [
-          {
-            "mã_chuẩn": "NUMBER_OF_SHARES_MKT_CAP",
-            "tên_chỉ_tiêu": "Số lượng cổ phiếu lưu hành tính vốn hóa",
-            "trường_gốc": "numberOfSharesMktCap",
-            "giá_trị": 3778321777,
-            "giá_trị_hiển_thị": "3.778.321.777"
-          },
-          {
-            "mã_chuẩn": "MARKET_CAP",
-            "tên_chỉ_tiêu": "Giá trị vốn hóa thị trường",
-            "trường_gốc": "marketCap",
-            "giá_trị": 95591540958100.0,
-            "giá_trị_hiển_thị": "95.591.540.958.100"
-          },
-          {
-            "mã_chuẩn": "DIVIDEND_YIELD",
-            "tên_chỉ_tiêu": "Tỷ suất cổ tức",
-            "trường_gốc": "dividendYield",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "PE",
-            "tên_chỉ_tiêu": "Hệ số giá trên thu nhập",
-            "trường_gốc": "pe",
-            "giá_trị": 6.9823393028,
-            "giá_trị_hiển_thị": "6,9823393028"
-          },
-          {
-            "mã_chuẩn": "PB",
-            "tên_chỉ_tiêu": "Hệ số giá trên giá trị sổ sách",
-            "trường_gốc": "pb",
-            "giá_trị": 1.4942663391,
-            "giá_trị_hiển_thị": "1,4942663391"
-          },
-          {
-            "mã_chuẩn": "PS",
-            "tên_chỉ_tiêu": "Hệ số giá trên doanh thu (P/S)",
-            "trường_gốc": "ps",
-            "giá_trị": 2.4277401722,
-            "giá_trị_hiển_thị": "2,4277401722"
-          },
-          {
-            "mã_chuẩn": "PRICE_TO_CASH_FLOW",
-            "tên_chỉ_tiêu": "Hệ số giá trên dòng tiền",
-            "trường_gốc": "priceToCashFlow",
-            "giá_trị": 7.7144956066,
-            "giá_trị_hiển_thị": "7,7144956066"
-          },
-          {
-            "mã_chuẩn": "EV_TO_EBITDA",
-            "tên_chỉ_tiêu": "Hệ số EV trên EBITDA",
-            "trường_gốc": "evToEbitda",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CASH_RATIO",
-            "tên_chỉ_tiêu": "Tỷ số thanh toán bằng tiền mặt",
-            "trường_gốc": "cashRatio",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "QUICK_RATIO",
-            "tên_chỉ_tiêu": "Hệ số thanh toán nhanh",
-            "trường_gốc": "quickRatio",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CURRENT_RATIO",
-            "tên_chỉ_tiêu": "Hệ số thanh toán hiện hành",
-            "trường_gốc": "currentRatio",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "OWNERS_EQUITY_RATIO",
-            "tên_chỉ_tiêu": "Tỷ lệ vốn chủ sở hữu",
-            "trường_gốc": "ownersEquity",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "DEBT_PER_EQUITY",
-            "tên_chỉ_tiêu": "Tỷ lệ nợ trên vốn chủ sở hữu",
-            "trường_gốc": "debtPerEquity",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "DEBT_TO_EQUITY",
-            "tên_chỉ_tiêu": "Hệ số nợ trên vốn chủ sở hữu",
-            "trường_gốc": "debtToEquity",
-            "giá_trị": 8.7164196063,
-            "giá_trị_hiển_thị": "8,7164196063"
-          },
-          {
-            "mã_chuẩn": "ROE",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận trên vốn chủ sở hữu",
-            "trường_gốc": "roe",
-            "giá_trị": 0.2255543204,
-            "giá_trị_hiển_thị": "0,2255543204"
-          },
-          {
-            "mã_chuẩn": "ROA",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận trên tài sản",
-            "trường_gốc": "roa",
-            "giá_trị": 0.0230411303,
-            "giá_trị_hiển_thị": "0,0230411303"
-          },
-          {
-            "mã_chuẩn": "DAYS_SALES_OUTSTANDING",
-            "tên_chỉ_tiêu": "Số ngày thu tiền bình quân",
-            "trường_gốc": "daySaleOutstanding",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "DAYS_INVENTORY_OUTSTANDING",
-            "tên_chỉ_tiêu": "Số ngày tồn kho bình quân",
-            "trường_gốc": "daysInventoryOutstanding",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "DAYS_PAYABLE_OUTSTANDING",
-            "tên_chỉ_tiêu": "Số ngày phải trả bình quân",
-            "trường_gốc": "daysPayableOutstanding",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "GROSS_MARGIN",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận gộp",
-            "trường_gốc": "grossMargin",
-            "giá_trị": 0.6648881487,
-            "giá_trị_hiển_thị": "0,6648881487"
-          },
-          {
-            "mã_chuẩn": "EBIT_MARGIN",
-            "tên_chỉ_tiêu": "Biên lợi nhuận trước lãi vay và thuế",
-            "trường_gốc": "ebitMargin",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "PRE_TAX_MARGIN",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận trước thuế",
-            "trường_gốc": "preTaxProfitMargin",
-            "giá_trị": 0.4474748513,
-            "giá_trị_hiển_thị": "0,4474748513"
-          },
-          {
-            "mã_chuẩn": "AFTER_TAX_MARGIN",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận sau thuế",
-            "trường_gốc": "afterTaxProfitMargin",
-            "giá_trị": 0.3437727785,
-            "giá_trị_hiển_thị": "0,3437727785"
-          },
-          {
-            "mã_chuẩn": "ASSET_TURNOVER",
-            "tên_chỉ_tiêu": "Vòng quay tổng tài sản",
-            "trường_gốc": "assetTurnover",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "NIM",
-            "tên_chỉ_tiêu": "Biên lãi thuần",
-            "trường_gốc": "netInterestMargin",
-            "giá_trị": 0.05089312,
-            "giá_trị_hiển_thị": "0,05089312"
-          },
-          {
-            "mã_chuẩn": "AVG_YIELD_EARNING_ASSETS",
-            "tên_chỉ_tiêu": "Tỷ suất sinh lời bình quân của tài sản sinh lãi",
-            "trường_gốc": "averageYieldOnEarningAssets",
-            "giá_trị": 0.0747188444,
-            "giá_trị_hiển_thị": "0,0747188444"
-          },
-          {
-            "mã_chuẩn": "AVG_COST_OF_FINANCING",
-            "tên_chỉ_tiêu": "Chi phí vốn bình quân",
-            "trường_gốc": "averageCostOfFinancing",
-            "giá_trị": -0.0265433378,
-            "giá_trị_hiển_thị": "-0,0265433378"
-          },
-          {
-            "mã_chuẩn": "NON_INTEREST_INCOME_RATIO",
-            "tên_chỉ_tiêu": "Tỷ trọng thu nhập ngoài lãi",
-            "trường_gốc": "nonAndInterestIncome",
-            "giá_trị": 0.4053545721,
-            "giá_trị_hiển_thị": "0,4053545721"
-          },
-          {
-            "mã_chuẩn": "COST_TO_INCOME",
-            "tên_chỉ_tiêu": "Tỷ lệ chi phí trên thu nhập",
-            "trường_gốc": "costToIncome",
-            "giá_trị": -0.3351118513,
-            "giá_trị_hiển_thị": "-0,3351118513"
-          },
-          {
-            "mã_chuẩn": "LOANS_GROWTH",
-            "tên_chỉ_tiêu": "Tăng trưởng tín dụng",
-            "trường_gốc": "loansGrowth",
-            "giá_trị": 0.218767868,
-            "giá_trị_hiển_thị": "0,218767868"
-          },
-          {
-            "mã_chuẩn": "DEPOSIT_GROWTH",
-            "tên_chỉ_tiêu": "Tăng trưởng tiền gửi",
-            "trường_gốc": "depositGrowth",
-            "giá_trị": 0.2371099725,
-            "giá_trị_hiển_thị": "0,2371099725"
-          },
-          {
-            "mã_chuẩn": "EQUITY_TO_LIABILITIES",
-            "tên_chỉ_tiêu": "Tỷ lệ vốn chủ sở hữu trên nợ phải trả",
-            "trường_gốc": "equityToLiabilities",
-            "giá_trị": 0.1147260051,
-            "giá_trị_hiển_thị": "0,1147260051"
-          },
-          {
-            "mã_chuẩn": "EQUITY_TO_LOANS",
-            "tên_chỉ_tiêu": "Tỷ lệ vốn chủ sở hữu trên tổng dư nợ cho vay",
-            "trường_gốc": "equityToLoans",
-            "giá_trị": 0.1718751252,
-            "giá_trị_hiển_thị": "0,1718751252"
-          },
-          {
-            "mã_chuẩn": "EQUITY_TO_TOTAL_ASSETS",
-            "tên_chỉ_tiêu": "Tỷ lệ vốn chủ sở hữu trên tổng tài sản",
-            "trường_gốc": "totalEquityTotalAsset",
-            "giá_trị": 0.1029185688,
-            "giá_trị_hiển_thị": "0,1029185688"
-          },
-          {
-            "mã_chuẩn": "LDR",
-            "tên_chỉ_tiêu": "Tỷ lệ cho vay trên huy động",
-            "trường_gốc": "ldrLoanDepositRatio",
-            "giá_trị": 0.9450537872,
-            "giá_trị_hiển_thị": "0,9450537872"
-          },
-          {
-            "mã_chuẩn": "NPL_RATIO",
-            "tên_chỉ_tiêu": "Tỷ lệ nợ xấu",
-            "trường_gốc": "npl",
-            "giá_trị": 0.0089891131,
-            "giá_trị_hiển_thị": "0,0089891131"
-          },
-          {
-            "mã_chuẩn": "LLR_TO_NPLS",
-            "tên_chỉ_tiêu": "Tỷ lệ bao phủ nợ xấu",
-            "trường_gốc": "loansLossReservesToNPLs",
-            "giá_trị": -2.6798011649,
-            "giá_trị_hiển_thị": "-2,6798011649"
-          },
-          {
-            "mã_chuẩn": "LLR_TO_LOANS",
-            "tên_chỉ_tiêu": "Tỷ lệ dự phòng trên dư nợ cho vay",
-            "trường_gốc": "loansLossReserveToLoans",
-            "giá_trị": 0.0240890356,
-            "giá_trị_hiển_thị": "0,0240890356"
-          },
-          {
-            "mã_chuẩn": "PROVISION_TO_LOANS",
-            "tên_chỉ_tiêu": "Tỷ lệ dự phòng trên tổng dư nợ",
-            "trường_gốc": "provisionToOutstandingLoans",
-            "giá_trị": -0.0242654065,
-            "giá_trị_hiển_thị": "-0,0242654065"
-          },
-          {
-            "mã_chuẩn": "EBIT",
-            "tên_chỉ_tiêu": "Lợi nhuận trước lãi vay và thuế (EBIT)",
-            "trường_gốc": "ebit",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "EBITDA",
-            "tên_chỉ_tiêu": "Lợi nhuận trước lãi vay, thuế, khấu hao và phân bổ (EBITDA)",
-            "trường_gốc": "ebitda",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "ROIC",
-            "tên_chỉ_tiêu": "Tỷ suất sinh lời trên vốn đầu tư (ROIC)",
-            "trường_gốc": "roic",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CASH_CYCLE",
-            "tên_chỉ_tiêu": "Chu kỳ tiền mặt",
-            "trường_gốc": "cashCycle",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "FIXED_ASSET_TURNOVER",
-            "tên_chỉ_tiêu": "Vòng quay tài sản cố định",
-            "trường_gốc": "fixedAssetTurnover",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "FINANCIAL_LEVERAGE",
-            "tên_chỉ_tiêu": "Đòn bẩy tài chính",
-            "trường_gốc": "financialLeverage",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CIR",
-            "tên_chỉ_tiêu": "Tỷ lệ chi phí trên thu nhập (CIR)",
-            "trường_gốc": "cir",
-            "giá_trị": -0.3351118513,
-            "giá_trị_hiển_thị": "-0,3351118513"
-          },
-          {
-            "mã_chuẩn": "CAR",
-            "tên_chỉ_tiêu": "Tỷ lệ an toàn vốn (CAR)",
-            "trường_gốc": "car",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CASA_RATIO",
-            "tên_chỉ_tiêu": "Tỷ lệ tiền gửi không kỳ hạn",
-            "trường_gốc": "casaRatio",
-            "giá_trị": 0.4474701149,
-            "giá_trị_hiển_thị": "0,4474701149"
-          }
-        ]
-      },
-      {
         "kỳ_báo_cáo": "2021-YEAR",
         "loại_kỳ": "Năm",
         "năm": 2021,
@@ -50068,350 +49724,6 @@
             "trường_gốc": "car",
             "giá_trị": 0.1128,
             "giá_trị_hiển_thị": "0,1128"
-          },
-          {
-            "mã_chuẩn": "CASA_RATIO",
-            "tên_chỉ_tiêu": "Tỷ lệ tiền gửi không kỳ hạn",
-            "trường_gốc": "casaRatio",
-            "giá_trị": 0.487435404,
-            "giá_trị_hiển_thị": "0,487435404"
-          }
-        ]
-      },
-      {
-        "kỳ_báo_cáo": "2021-Q4",
-        "loại_kỳ": "Quý",
-        "năm": 2021,
-        "quý": 4,
-        "chỉ_tiêu": [
-          {
-            "mã_chuẩn": "NUMBER_OF_SHARES_MKT_CAP",
-            "tên_chỉ_tiêu": "Số lượng cổ phiếu lưu hành tính vốn hóa",
-            "trường_gốc": "numberOfSharesMktCap",
-            "giá_trị": 3778321777,
-            "giá_trị_hiển_thị": "3.778.321.777"
-          },
-          {
-            "mã_chuẩn": "MARKET_CAP",
-            "tên_chỉ_tiêu": "Giá trị vốn hóa thị trường",
-            "trường_gốc": "marketCap",
-            "giá_trị": 118639303797800.0,
-            "giá_trị_hiển_thị": "118.639.303.797.800"
-          },
-          {
-            "mã_chuẩn": "DIVIDEND_YIELD",
-            "tên_chỉ_tiêu": "Tỷ suất cổ tức",
-            "trường_gốc": "dividendYield",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "PE",
-            "tên_chỉ_tiêu": "Hệ số giá trên thu nhập",
-            "trường_gốc": "pe",
-            "giá_trị": 9.3434776188,
-            "giá_trị_hiển_thị": "9,3434776188"
-          },
-          {
-            "mã_chuẩn": "PB",
-            "tên_chỉ_tiêu": "Hệ số giá trên giá trị sổ sách",
-            "trường_gốc": "pb",
-            "giá_trị": 1.9914331915,
-            "giá_trị_hiển_thị": "1,9914331915"
-          },
-          {
-            "mã_chuẩn": "PS",
-            "tên_chỉ_tiêu": "Hệ số giá trên doanh thu (P/S)",
-            "trường_gốc": "ps",
-            "giá_trị": 3.212154225,
-            "giá_trị_hiển_thị": "3,212154225"
-          },
-          {
-            "mã_chuẩn": "PRICE_TO_CASH_FLOW",
-            "tên_chỉ_tiêu": "Hệ số giá trên dòng tiền",
-            "trường_gốc": "priceToCashFlow",
-            "giá_trị": 26.5503411114,
-            "giá_trị_hiển_thị": "26,5503411114"
-          },
-          {
-            "mã_chuẩn": "EV_TO_EBITDA",
-            "tên_chỉ_tiêu": "Hệ số EV trên EBITDA",
-            "trường_gốc": "evToEbitda",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CASH_RATIO",
-            "tên_chỉ_tiêu": "Tỷ số thanh toán bằng tiền mặt",
-            "trường_gốc": "cashRatio",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "QUICK_RATIO",
-            "tên_chỉ_tiêu": "Hệ số thanh toán nhanh",
-            "trường_gốc": "quickRatio",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CURRENT_RATIO",
-            "tên_chỉ_tiêu": "Hệ số thanh toán hiện hành",
-            "trường_gốc": "currentRatio",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "OWNERS_EQUITY_RATIO",
-            "tên_chỉ_tiêu": "Tỷ lệ vốn chủ sở hữu",
-            "trường_gốc": "ownersEquity",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "DEBT_PER_EQUITY",
-            "tên_chỉ_tiêu": "Tỷ lệ nợ trên vốn chủ sở hữu",
-            "trường_gốc": "debtPerEquity",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "DEBT_TO_EQUITY",
-            "tên_chỉ_tiêu": "Hệ số nợ trên vốn chủ sở hữu",
-            "trường_gốc": "debtToEquity",
-            "giá_trị": 8.4412795483,
-            "giá_trị_hiển_thị": "8,4412795483"
-          },
-          {
-            "mã_chuẩn": "ROE",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận trên vốn chủ sở hữu",
-            "trường_gốc": "roe",
-            "giá_trị": 0.203137064,
-            "giá_trị_hiển_thị": "0,203137064"
-          },
-          {
-            "mã_chuẩn": "ROA",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận trên tài sản",
-            "trường_gốc": "roa",
-            "giá_trị": 0.0212995961,
-            "giá_trị_hiển_thị": "0,0212995961"
-          },
-          {
-            "mã_chuẩn": "DAYS_SALES_OUTSTANDING",
-            "tên_chỉ_tiêu": "Số ngày thu tiền bình quân",
-            "trường_gốc": "daySaleOutstanding",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "DAYS_INVENTORY_OUTSTANDING",
-            "tên_chỉ_tiêu": "Số ngày tồn kho bình quân",
-            "trường_gốc": "daysInventoryOutstanding",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "DAYS_PAYABLE_OUTSTANDING",
-            "tên_chỉ_tiêu": "Số ngày phải trả bình quân",
-            "trường_gốc": "daysPayableOutstanding",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "GROSS_MARGIN",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận gộp",
-            "trường_gốc": "grossMargin",
-            "giá_trị": 0.6481723276,
-            "giá_trị_hiển_thị": "0,6481723276"
-          },
-          {
-            "mã_chuẩn": "EBIT_MARGIN",
-            "tên_chỉ_tiêu": "Biên lợi nhuận trước lãi vay và thuế",
-            "trường_gốc": "ebitMargin",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "PRE_TAX_MARGIN",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận trước thuế",
-            "trường_gốc": "preTaxProfitMargin",
-            "giá_trị": 0.4181285542,
-            "giá_trị_hiển_thị": "0,4181285542"
-          },
-          {
-            "mã_chuẩn": "AFTER_TAX_MARGIN",
-            "tên_chỉ_tiêu": "Tỷ suất lợi nhuận sau thuế",
-            "trường_gốc": "afterTaxProfitMargin",
-            "giá_trị": 0.3214911036,
-            "giá_trị_hiển_thị": "0,3214911036"
-          },
-          {
-            "mã_chuẩn": "ASSET_TURNOVER",
-            "tên_chỉ_tiêu": "Vòng quay tổng tài sản",
-            "trường_gốc": "assetTurnover",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "NIM",
-            "tên_chỉ_tiêu": "Biên lãi thuần",
-            "trường_gốc": "netInterestMargin",
-            "giá_trị": 0.0510283205,
-            "giá_trị_hiển_thị": "0,0510283205"
-          },
-          {
-            "mã_chuẩn": "AVG_YIELD_EARNING_ASSETS",
-            "tên_chỉ_tiêu": "Tỷ suất sinh lời bình quân của tài sản sinh lãi",
-            "trường_gốc": "averageYieldOnEarningAssets",
-            "giá_trị": 0.0760026823,
-            "giá_trị_hiển_thị": "0,0760026823"
-          },
-          {
-            "mã_chuẩn": "AVG_COST_OF_FINANCING",
-            "tên_chỉ_tiêu": "Chi phí vốn bình quân",
-            "trường_gốc": "averageCostOfFinancing",
-            "giá_trị": -0.0279884082,
-            "giá_trị_hiển_thị": "-0,0279884082"
-          },
-          {
-            "mã_chuẩn": "NON_INTEREST_INCOME_RATIO",
-            "tên_chỉ_tiêu": "Tỷ trọng thu nhập ngoài lãi",
-            "trường_gốc": "nonAndInterestIncome",
-            "giá_trị": 0.3341630349,
-            "giá_trị_hiển_thị": "0,3341630349"
-          },
-          {
-            "mã_chuẩn": "COST_TO_INCOME",
-            "tên_chỉ_tiêu": "Tỷ lệ chi phí trên thu nhập",
-            "trường_gốc": "costToIncome",
-            "giá_trị": -0.3475464924,
-            "giá_trị_hiển_thị": "-0,3475464924"
-          },
-          {
-            "mã_chuẩn": "LOANS_GROWTH",
-            "tên_chỉ_tiêu": "Tăng trưởng tín dụng",
-            "trường_gốc": "loansGrowth",
-            "giá_trị": 0.0159428153,
-            "giá_trị_hiển_thị": "0,0159428153"
-          },
-          {
-            "mã_chuẩn": "DEPOSIT_GROWTH",
-            "tên_chỉ_tiêu": "Tăng trưởng tiền gửi",
-            "trường_gốc": "depositGrowth",
-            "giá_trị": 0.0013249389,
-            "giá_trị_hiển_thị": "0,0013249389"
-          },
-          {
-            "mã_chuẩn": "EQUITY_TO_LIABILITIES",
-            "tên_chỉ_tiêu": "Tỷ lệ vốn chủ sở hữu trên nợ phải trả",
-            "trường_gốc": "equityToLiabilities",
-            "giá_trị": 0.1184654523,
-            "giá_trị_hiển_thị": "0,1184654523"
-          },
-          {
-            "mã_chuẩn": "EQUITY_TO_LOANS",
-            "tên_chỉ_tiêu": "Tỷ lệ vốn chủ sở hữu trên tổng dư nợ cho vay",
-            "trường_gốc": "equityToLoans",
-            "giá_trị": 0.1749190767,
-            "giá_trị_hiển_thị": "0,1749190767"
-          },
-          {
-            "mã_chuẩn": "EQUITY_TO_TOTAL_ASSETS",
-            "tên_chỉ_tiêu": "Tỷ lệ vốn chủ sở hữu trên tổng tài sản",
-            "trường_gốc": "totalEquityTotalAsset",
-            "giá_trị": 0.1059178467,
-            "giá_trị_hiển_thị": "0,1059178467"
-          },
-          {
-            "mã_chuẩn": "LDR",
-            "tên_chỉ_tiêu": "Tỷ lệ cho vay trên huy động",
-            "trường_gốc": "ldrLoanDepositRatio",
-            "giá_trị": 0.9781274508,
-            "giá_trị_hiển_thị": "0,9781274508"
-          },
-          {
-            "mã_chuẩn": "NPL_RATIO",
-            "tên_chỉ_tiêu": "Tỷ lệ nợ xấu",
-            "trường_gốc": "npl",
-            "giá_trị": 0.009471439,
-            "giá_trị_hiển_thị": "0,009471439"
-          },
-          {
-            "mã_chuẩn": "LLR_TO_NPLS",
-            "tên_chỉ_tiêu": "Tỷ lệ bao phủ nợ xấu",
-            "trường_gốc": "loansLossReservesToNPLs",
-            "giá_trị": -2.3280370394,
-            "giá_trị_hiển_thị": "-2,3280370394"
-          },
-          {
-            "mã_chuẩn": "LLR_TO_LOANS",
-            "tên_chỉ_tiêu": "Tỷ lệ dự phòng trên dư nợ cho vay",
-            "trường_gốc": "loansLossReserveToLoans",
-            "giá_trị": 0.0220498608,
-            "giá_trị_hiển_thị": "0,0220498608"
-          },
-          {
-            "mã_chuẩn": "PROVISION_TO_LOANS",
-            "tên_chỉ_tiêu": "Tỷ lệ dự phòng trên tổng dư nợ",
-            "trường_gốc": "provisionToOutstandingLoans",
-            "giá_trị": -0.0246344623,
-            "giá_trị_hiển_thị": "-0,0246344623"
-          },
-          {
-            "mã_chuẩn": "EBIT",
-            "tên_chỉ_tiêu": "Lợi nhuận trước lãi vay và thuế (EBIT)",
-            "trường_gốc": "ebit",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "EBITDA",
-            "tên_chỉ_tiêu": "Lợi nhuận trước lãi vay, thuế, khấu hao và phân bổ (EBITDA)",
-            "trường_gốc": "ebitda",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "ROIC",
-            "tên_chỉ_tiêu": "Tỷ suất sinh lời trên vốn đầu tư (ROIC)",
-            "trường_gốc": "roic",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CASH_CYCLE",
-            "tên_chỉ_tiêu": "Chu kỳ tiền mặt",
-            "trường_gốc": "cashCycle",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "FIXED_ASSET_TURNOVER",
-            "tên_chỉ_tiêu": "Vòng quay tài sản cố định",
-            "trường_gốc": "fixedAssetTurnover",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "FINANCIAL_LEVERAGE",
-            "tên_chỉ_tiêu": "Đòn bẩy tài chính",
-            "trường_gốc": "financialLeverage",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
-          },
-          {
-            "mã_chuẩn": "CIR",
-            "tên_chỉ_tiêu": "Tỷ lệ chi phí trên thu nhập (CIR)",
-            "trường_gốc": "cir",
-            "giá_trị": -0.3475464924,
-            "giá_trị_hiển_thị": "-0,3475464924"
-          },
-          {
-            "mã_chuẩn": "CAR",
-            "tên_chỉ_tiêu": "Tỷ lệ an toàn vốn (CAR)",
-            "trường_gốc": "car",
-            "giá_trị": 0.0,
-            "giá_trị_hiển_thị": "0"
           },
           {
             "mã_chuẩn": "CASA_RATIO",
@@ -56273,8 +55585,8 @@
     ]
   },
   "thống_kê_lọc": {
-    "tổng_chỉ_tiêu_giữ": 7846,
-    "số_bản_ghi_giá_đã_bỏ": 2175,
+    "tổng_chỉ_tiêu_giữ": 7750,
+    "số_bản_ghi_giá_đã_bỏ": 2199,
     "chi_tiết_phần": {
       "bảng_cân_đối_kế_toán": {
         "số_kỳ_nguồn": 42,
@@ -56910,19 +56222,19 @@
         }
       },
       "chỉ_số_tài_chính": {
-        "số_kỳ_nguồn": 41,
-        "số_kỳ_giữ": 41,
-        "số_chỉ_tiêu_giữ": 1968,
-        "số_giá_trị_loại": 205,
+        "số_kỳ_nguồn": 39,
+        "số_kỳ_giữ": 39,
+        "số_chỉ_tiêu_giữ": 1872,
+        "số_giá_trị_loại": 195,
         "trường_đã_loại": {
-          "bsb113": 41,
-          "equity": 41,
-          "nob66": 41,
-          "nob69": 41,
-          "nob70": 41
+          "bsb113": 39,
+          "equity": 39,
+          "nob66": 39,
+          "nob69": 39,
+          "nob70": 39
         },
         "lý_do_loại": {
-          "chưa_có_mapping": 205
+          "chưa_có_mapping": 195
         }
       }
     }
@@ -56936,10 +56248,10 @@
   },
   "nguồn_dữ_liệu": {
     "file_nguồn": "MBB.json",
-    "sha256_nguồn": "a199fd6d7b68af049302538ce06d11d244f31caebe8cc718b940ff4db6c6495e",
-    "sha256_mapping": "6cc2c55254427e39cc4061bb363ca592710db4864d6eab73054d51aa9c18045d",
+    "sha256_nguồn": "d55e1c3ed801cfa77d13425d213a5b5a1bc2040e398a4dfce808e0f281fe5417",
+    "sha256_mapping": "ec660e0f5cf1bd6f1b114d3a216af45577ba97d80f5c43098a49ec3ac949d8e8",
     "nguồn_tài_chính": "VIETCAP_VCI",
-    "thời_điểm_tạo_nguồn": "2026-09-25T08:25:17.206746Z",
+    "thời_điểm_tạo_nguồn": "2026-10-29T08:37:32.277621Z",
     "đơn_vị_giá_trị": "Giữ nguyên đơn vị và giá trị trong JSON nguồn; không quy đổi hoặc làm tròn.",
     "bỏ_chỉ_số_định_giá": false
   }
