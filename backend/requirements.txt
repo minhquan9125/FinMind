@@ -19,3 +19,5 @@ tzdata>=2024.1
 pwdlib[argon2]
 PyJWT
 google-auth>=2,<3
+scikit-learn==1.9.1
+joblib==1.6.0

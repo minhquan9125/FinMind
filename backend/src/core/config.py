@@ -84,6 +84,11 @@ class Settings(BaseSettings):
     smtp_password: SecretStr = SecretStr("")
     smtp_from: str = ""
     frontend_url: str = "http://localhost:5173"
+
+    # Hybrid Router live adapter control (Bước 12)
+    hybrid_router_mode: Literal["mock", "shadow", "live"] = "mock"
+    hybrid_router_index_id: str = ""  # UUID của index dùng cho LiveContentAdapter
+
 @lru_cache
 def get_settings() -> Settings:
     return Settings()

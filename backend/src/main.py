@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from .documents.chunk_reconstruction import ReconstructionError
 
-from .api.routers import auth, documents, search, market_data, research_chat
+from .api.routers import auth, documents, search, market_data, research_chat, hybrid_router
 from .market_data.app import lifespan as market_lifespan
 from .core.config import get_settings
 from .core.db import connect, disconnect
@@ -27,11 +27,24 @@ logger = logging.getLogger('uvicorn.error')
 async def warmup_research(app: FastAPI):
     """Finish shared retrieval initialization before accepting the first request."""
     app.state.research_warmup = {'status': 'disabled'}
+    app.state.router_warmup = {'status': 'disabled'}
     if not settings.research_chat_live or not settings.research_warmup_enabled:
         return
     started = time.monotonic()
     app.state.research_warmup = {'status': 'warming'}
+    app.state.router_warmup = {'status': 'warming'}
     logger.info('Research warmup started: loading embedding model and retrieval cache')
+    try:
+        await asyncio.wait_for(
+            asyncio.to_thread(hybrid_router.warmup_router),
+            timeout=settings.research_warmup_timeout_seconds,
+        )
+    except Exception:
+        app.state.router_warmup = {'status': 'failed', 'reason_code': 'ROUTER_WARMUP_FAILED'}
+        logger.warning('Hybrid router warmup failed; the first request will retry')
+    else:
+        app.state.router_warmup = {'status': 'ready'}
+        logger.info('Hybrid router warmup ready')
     try:
         store = research_chat.get_store()
         details = await asyncio.wait_for(store.engine.retriever.warmup(),
@@ -100,6 +113,7 @@ app.include_router(search.router)
 app.include_router(auth.router)
 app.include_router(market_data.router)
 app.include_router(research_chat.router)
+app.include_router(hybrid_router.router)
 
 @app.get("/")
 async def root() -> dict:
@@ -108,7 +122,11 @@ async def root() -> dict:
 
 @app.get("/api/health")
 async def health() -> dict:
-    return {"status": "ok", "research_warmup": getattr(app.state, 'research_warmup', {'status': 'not_started'})}
+    return {
+        "status": "ok",
+        "research_warmup": getattr(app.state, 'research_warmup', {'status': 'not_started'}),
+        "router_warmup": getattr(app.state, 'router_warmup', {'status': 'not_started'}),
+    }
 
 
 if __name__ == "__main__":

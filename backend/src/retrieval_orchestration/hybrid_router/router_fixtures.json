@@ -1,0 +1,2308 @@
+{
+  "schema_version": "1.0",
+  "status": "PROPOSED_REQUIRES_TEAM_REVIEW",
+  "execution_mode": "MOCK",
+  "purpose": "Development fixtures for routing, policy and future adapter integration; not training data or an independent holdout.",
+  "capability_profiles": {
+    "fixture_mvp": {
+      "content_enabled": true,
+      "annual_report_enabled": false,
+      "graph_subsidiaries_enabled": true,
+      "graph_execution": "MOCK_ONLY",
+      "both_workflow": "GRAPH_THEN_CONTENT",
+      "source_lookup_by_id": "only_when_explicit_in_mock"
+    }
+  },
+  "conventions": {
+    "labels_order": [
+      "needs_graph",
+      "needs_content"
+    ],
+    "scope": "Expected upstream-resolved scope; not parsed by keyword baseline.",
+    "task_params": "Illustrative operations/metric codes require team approval.",
+    "final_status": "Post-policy/execution expectation, distinct from the route. Full statuses are outside RouterOutput MVP.",
+    "evidence": "All source IDs, hashes, values and companies prefixed MOCK are synthetic, never verified LIVE evidence.",
+    "default_mocks": "Absent response means unspecified; do not infer executable success.",
+    "no_search": "Non-SEARCH cases must not call GRAPH/CONTENT; existing market/reference handlers may perform their own operations.",
+    "as_of": "31/12/2025 is explicit in graph questions; do not infer relation dates from a year alone.",
+    "evaluation": "Score baseline only on classifier_evaluation.eligible resolved inputs. Repeated fault scenarios are not independent language samples.",
+    "holdout": "These fixtures are visible during development. Freeze a separate unseen acceptance set before claiming generalization."
+  },
+  "fixtures": [
+    {
+      "id": "V01",
+      "question": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "TOTAL_ASSETS",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "FPT"
+              ]
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {
+        "v1": {
+          "status": "OK",
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1",
+              "company": "FPT",
+              "period": "2025",
+              "metric_code": "TOTAL_ASSETS",
+              "value": 100,
+              "unit": "MOCK_UNIT"
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "V02",
+      "question": "Lợi nhuận sau thuế hợp nhất VCB riêng quý 2/2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "2025-Q2"
+          ],
+          "metric_code": "PROFIT_AFTER_TAX",
+          "measure_basis": "QUARTER_ONLY",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025-Q2"
+              ],
+              "metric_code": "PROFIT_AFTER_TAX",
+              "measure_basis": "QUARTER_ONLY",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "VCB"
+              ]
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Lợi nhuận sau thuế hợp nhất VCB riêng quý 2/2025 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "V03",
+      "question": "BCTN FPT năm 2025 trình bày quản trị rủi ro thế nào?",
+      "context": {},
+      "upstream": {
+        "source_type": "ANNUAL_REPORT",
+        "source_enabled": false
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "UNSUPPORTED",
+        "route": null,
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "SOURCE_NOT_AVAILABLE"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": [
+        "capability_gate"
+      ]
+    },
+    {
+      "id": "V04",
+      "question": "Tổng tài sản hợp nhất FPT năm 2020 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2020"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2020"
+              ],
+              "metric_code": "TOTAL_ASSETS",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "FPT"
+              ]
+            }
+          }
+        ],
+        "final_status": "NO_DATA"
+      },
+      "mock_adapter_responses": {
+        "v1": {
+          "status": "NO_DATA",
+          "evidence": []
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Tổng tài sản hợp nhất FPT năm 2020 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "V05",
+      "question": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "TOTAL_ASSETS",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "FPT"
+              ]
+            }
+          }
+        ],
+        "final_status": "INSUFFICIENT_EVIDENCE"
+      },
+      "mock_adapter_responses": {
+        "v1": {
+          "status": "OK",
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": false,
+              "dataset_version": "fixture-v1",
+              "expected_hash": "fixture-hash-v1",
+              "actual_hash": "fixture-hash-v2"
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "V06",
+      "question": "Tổng tài sảnn hợp nhất FPT năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {
+        "resolved_question": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+        "normalization": "approved_typo_correction"
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "TOTAL_ASSETS",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "FPT"
+              ]
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "V07",
+      "question": "Tổng tài sản FPT theo báo cáo riêng năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "SEPARATE"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "TOTAL_ASSETS",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "SEPARATE",
+              "companies": [
+                "FPT"
+              ]
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {
+        "v1": {
+          "status": "OK",
+          "required_reporting_entity": "SEPARATE",
+          "reject_reporting_entity": "CONSOLIDATED"
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Tổng tài sản FPT theo báo cáo riêng năm 2025 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "V08",
+      "question": "Lợi nhuận sau thuế hợp nhất VCB lũy kế 6 tháng đầu năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "2025-H1"
+          ],
+          "metric_code": "PROFIT_AFTER_TAX",
+          "measure_basis": "YEAR_TO_DATE",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025-H1"
+              ],
+              "metric_code": "PROFIT_AFTER_TAX",
+              "measure_basis": "YEAR_TO_DATE",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "VCB"
+              ]
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {
+        "v1": {
+          "status": "OK",
+          "required_measure_basis": "YEAR_TO_DATE",
+          "reject_measure_basis": "QUARTER_ONLY"
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Lợi nhuận sau thuế hợp nhất VCB lũy kế 6 tháng đầu năm 2025 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "G01",
+      "question": "FPT có những công ty con nào tại ngày 31/12/2025?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "GRAPH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "OK",
+          "companies": [
+            "MOCK_SUB_A"
+          ],
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1"
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "FPT có những công ty con nào tại ngày 31/12/2025?",
+        "labels": [
+          1,
+          0
+        ]
+      },
+      "tags": [
+        "relation_as_of"
+      ]
+    },
+    {
+      "id": "G02",
+      "question": "FPT có những công ty con nào tại ngày 31/12/2025?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "GRAPH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          }
+        ],
+        "final_status": "NO_DATA"
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "NO_DATA",
+          "companies": [],
+          "evidence": []
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "FPT có những công ty con nào tại ngày 31/12/2025?",
+        "labels": [
+          1,
+          0
+        ]
+      },
+      "tags": [
+        "relation_as_of"
+      ]
+    },
+    {
+      "id": "G03",
+      "question": "FPT có những công ty con nào tại ngày 31/12/2025?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "GRAPH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "OK",
+          "companies": [
+            "MOCK_SUB_A"
+          ],
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1"
+            }
+          ],
+          "source_lookup_by_id_supported": true
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "FPT có những công ty con nào tại ngày 31/12/2025?",
+        "labels": [
+          1,
+          0
+        ]
+      },
+      "tags": [
+        "relation_as_of"
+      ]
+    },
+    {
+      "id": "G04",
+      "question": "FPT có những công ty con nào tại ngày 31/12/2025?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "GRAPH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          }
+        ],
+        "final_status": "INSUFFICIENT_EVIDENCE"
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "OK",
+          "companies": [
+            "MOCK_SUB_A"
+          ],
+          "evidence": [
+            {
+              "source_id": null,
+              "source_verified": false
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "FPT có những công ty con nào tại ngày 31/12/2025?",
+        "labels": [
+          1,
+          0
+        ]
+      },
+      "tags": [
+        "relation_as_of"
+      ]
+    },
+    {
+      "id": "G05",
+      "question": "FPT có những công ty con nào tại ngày 31/12/2025?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "GRAPH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          }
+        ],
+        "final_status": "SYSTEM_UNAVAILABLE"
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "ERROR",
+          "error_code": "TIMEOUT"
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "FPT có những công ty con nào tại ngày 31/12/2025?",
+        "labels": [
+          1,
+          0
+        ]
+      },
+      "tags": [
+        "relation_as_of"
+      ]
+    },
+    {
+      "id": "G06",
+      "question": "FPT có những công ty con nào tại ngày 31/12/2025?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "GRAPH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          }
+        ],
+        "final_status": "INSUFFICIENT_EVIDENCE"
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "OK",
+          "companies": [
+            "MOCK_SUB_A"
+          ],
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1",
+              "valid_from": "2026-01-01",
+              "valid_to": null
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "FPT có những công ty con nào tại ngày 31/12/2025?",
+        "labels": [
+          1,
+          0
+        ]
+      },
+      "tags": [
+        "relation_as_of"
+      ]
+    },
+    {
+      "id": "B01",
+      "question": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "BOTH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "REVENUE_NET",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "SEPARATE"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          },
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "REVENUE_NET",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "SEPARATE",
+              "companies_from": "g1"
+            },
+            "depends_on": "g1"
+          }
+        ],
+        "final_status": "OK",
+        "executed_task_ids": [
+          "g1",
+          "v1"
+        ]
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "OK",
+          "companies": [
+            "MOCK_SUB_A"
+          ],
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1"
+            }
+          ]
+        },
+        "v1": {
+          "status": "OK",
+          "covered_companies": [
+            "MOCK_SUB_A"
+          ],
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1"
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+        "labels": [
+          1,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "B02",
+      "question": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "BOTH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "REVENUE_NET",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "SEPARATE"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          },
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "REVENUE_NET",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "SEPARATE",
+              "companies_from": "g1"
+            },
+            "depends_on": "g1"
+          }
+        ],
+        "final_status": "NO_DATA",
+        "executed_task_ids": [
+          "g1"
+        ]
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "NO_DATA",
+          "companies": []
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+        "labels": [
+          1,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "B03",
+      "question": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "BOTH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "REVENUE_NET",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "SEPARATE"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          },
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "REVENUE_NET",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "SEPARATE",
+              "companies_from": "g1"
+            },
+            "depends_on": "g1"
+          }
+        ],
+        "final_status": "INSUFFICIENT_EVIDENCE",
+        "executed_task_ids": [
+          "g1",
+          "v1"
+        ]
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "OK",
+          "companies": [
+            "MOCK_SUB_A",
+            "MOCK_SUB_B"
+          ]
+        },
+        "v1": {
+          "status": "PARTIAL",
+          "covered_companies": [
+            "MOCK_SUB_A"
+          ],
+          "missing_companies": [
+            "MOCK_SUB_B"
+          ],
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1"
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+        "labels": [
+          1,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "B04",
+      "question": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "BOTH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "REVENUE_NET",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "SEPARATE"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          },
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "REVENUE_NET",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "SEPARATE",
+              "companies_from": "g1"
+            },
+            "depends_on": "g1"
+          }
+        ],
+        "final_status": "INSUFFICIENT_EVIDENCE",
+        "executed_task_ids": [
+          "g1",
+          "v1"
+        ]
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "OK",
+          "companies": [
+            "MOCK_SUB_A"
+          ],
+          "dataset_version": "fixture-v1"
+        },
+        "v1": {
+          "status": "OK",
+          "dataset_version": "fixture-v2",
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1"
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+        "labels": [
+          1,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "B05",
+      "question": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "BOTH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "REVENUE_NET",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "SEPARATE"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          },
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "REVENUE_NET",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "SEPARATE",
+              "companies_from": "g1"
+            },
+            "depends_on": "g1"
+          }
+        ],
+        "final_status": "SYSTEM_UNAVAILABLE",
+        "executed_task_ids": [
+          "g1",
+          "v1"
+        ]
+      },
+      "mock_adapter_responses": {
+        "g1": {
+          "status": "OK",
+          "companies": [
+            "MOCK_SUB_A"
+          ]
+        },
+        "v1": {
+          "status": "ERROR",
+          "error_code": "TIMEOUT"
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Doanh thu thuần theo báo cáo riêng cả năm 2025 của từng công ty con FPT tại 31/12/2025 là bao nhiêu?",
+        "labels": [
+          1,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "C01",
+      "question": "Tổng tài sản hợp nhất năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS"
+        },
+        "missing_fields": [
+          "company"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Bạn muốn tra cứu doanh nghiệp nào?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "C02",
+      "question": "Lợi nhuận FPT là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {
+          "companies": [
+            "FPT"
+          ]
+        },
+        "missing_fields": [
+          "period",
+          "metric_code"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Bạn muốn lợi nhuận trước hay sau thuế và cho kỳ nào?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "C03",
+      "question": "Tổng tài sản hợp nhất của công ty An Phát năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {
+        "company_candidates": [
+          "MOCK_CO_A",
+          "MOCK_CO_B"
+        ]
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS"
+        },
+        "missing_fields": [
+          "company"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Bạn muốn nói đến doanh nghiệp An Phát nào?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "C04",
+      "question": "Tổng tài sản hợp nhất FPT quý 5/2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {
+        "invalid_period": "2025-Q5"
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "metric_code": "TOTAL_ASSETS"
+        },
+        "missing_fields": [
+          "period"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Quý 5 không hợp lệ. Bạn muốn tra quý nào?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "C05",
+      "question": "Tổng tài sản của công ty đó năm 2025 là bao nhiêu?",
+      "context": {
+        "session_id": "fixture-session-A",
+        "owner_id": "fixture-owner-A",
+        "topics": [
+          "FPT",
+          "VCB"
+        ]
+      },
+      "upstream": {
+        "context_ambiguous": true
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS"
+        },
+        "missing_fields": [
+          "company"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Bạn đang nói đến FPT hay VCB?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "C06",
+      "question": "Cho tôi doanh thu FPT năm 2025 và giá VCB mới nhất.",
+      "context": {},
+      "upstream": {
+        "mixed_intents": [
+          "RESEARCH_QUERY",
+          "MARKET_LOOKUP"
+        ],
+        "combined_workflow_supported": false
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {
+          "companies": [
+            "FPT",
+            "VCB"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [
+          "request_selection"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Bạn muốn tra doanh thu FPT hay giá VCB trước?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "C07",
+      "question": "Cho tôi thông tin liên quan FPT năm 2025.",
+      "context": {},
+      "upstream": {
+        "classifier_scores": {
+          "needs_graph": 0.49,
+          "needs_content": 0.51
+        },
+        "score_thresholds": {
+          "needs_graph": 0.5,
+          "needs_content": 0.5
+        },
+        "ambiguity_band": 0.05
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [
+          "requested_operation"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Bạn muốn tra chỉ tiêu tài chính hay quan hệ công ty con?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "H01",
+      "question": "Còn VCB?",
+      "context": {
+        "session_id": "fixture-session-A",
+        "owner_id": "fixture-owner-A",
+        "previous_question": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?"
+      },
+      "upstream": {
+        "resolved_question": "Tổng tài sản hợp nhất VCB năm 2025 là bao nhiêu?"
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "TOTAL_ASSETS",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "VCB"
+              ]
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Tổng tài sản hợp nhất VCB năm 2025 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": []
+    },
+    {
+      "id": "H02",
+      "question": "Nguồn đâu?",
+      "context": {
+        "session_id": "fixture-session-A",
+        "owner_id": "fixture-owner-A",
+        "last_evidence": [
+          {
+            "source_id": "fixture-source-001",
+            "source_hash": "fixture-hash-v1",
+            "locator": {
+              "page": 10
+            },
+            "source_verified": true,
+            "dataset_version": "fixture-v1"
+          }
+        ]
+      },
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESOLVE_REFERENCE",
+        "decision": "RESOLVE_REFERENCE",
+        "route": null,
+        "scope": {},
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": [
+        "no_retrieval",
+        "session_evidence"
+      ]
+    },
+    {
+      "id": "H03",
+      "question": "Công ty đó là công ty nào?",
+      "context": {
+        "session_id": "fixture-session-A",
+        "owner_id": "fixture-owner-A",
+        "events": [
+          "/moi"
+        ],
+        "active_scope": null
+      },
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {},
+        "missing_fields": [
+          "company"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Bạn muốn hỏi doanh nghiệp nào?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "H04",
+      "question": "Tôi có nên mua cổ phiếu FPT bây giờ không?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "OUT_OF_SCOPE",
+        "decision": "UNSUPPORTED",
+        "route": null,
+        "scope": {},
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "OUT_OF_SCOPE"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "X01",
+      "question": "Giá cổ phiếu FPT mới nhất là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "MARKET_LOOKUP",
+        "decision": "MARKET_LOOKUP",
+        "route": null,
+        "scope": {
+          "companies": [
+            "FPT"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "DELEGATE_EXISTING_HANDLER"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "X02",
+      "question": "Giải thích lại câu vừa rồi dễ hiểu hơn.",
+      "context": {
+        "session_id": "fixture-session-A",
+        "owner_id": "fixture-owner-A",
+        "last_evidence": [
+          {
+            "source_id": "fixture-source-001",
+            "source_hash": "fixture-hash-v1",
+            "locator": {
+              "page": 10
+            },
+            "source_verified": true,
+            "dataset_version": "fixture-v1"
+          }
+        ]
+      },
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "EXPLAIN",
+        "decision": "EXPLAIN",
+        "route": null,
+        "scope": {},
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "DELEGATE_EXISTING_HANDLER"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": []
+    },
+    {
+      "id": "X03",
+      "question": "Xin chào.",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "OTHER",
+        "decision": "DELEGATE_EXISTING_HANDLER",
+        "route": null,
+        "scope": {},
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "DELEGATE_EXISTING_HANDLER"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": [
+        "zero_labels",
+        "no_forced_both"
+      ]
+    },
+    {
+      "id": "X04",
+      "question": "Nguồn đâu?",
+      "context": {
+        "session_id": "fixture-session-B",
+        "owner_id": "fixture-owner-B",
+        "last_evidence": [],
+        "foreign_evidence_accessible": false
+      },
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESOLVE_REFERENCE",
+        "decision": "RESOLVE_REFERENCE",
+        "route": null,
+        "scope": {},
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "NO_SESSION_EVIDENCE"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": [
+        "owner_isolation",
+        "no_retrieval"
+      ]
+    },
+    {
+      "id": "X05",
+      "question": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {
+        "classifier_state": "ARTIFACT_MISSING",
+        "fallback_enabled": false
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SYSTEM_UNAVAILABLE",
+        "route": null,
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "SYSTEM_UNAVAILABLE"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": [
+        "model_lifecycle"
+      ]
+    },
+    {
+      "id": "X06",
+      "question": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {
+        "classifier_state": "VERSION_MISMATCH",
+        "fallback_enabled": false
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SYSTEM_UNAVAILABLE",
+        "route": null,
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "SYSTEM_UNAVAILABLE"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": [
+        "model_lifecycle"
+      ]
+    },
+    {
+      "id": "X07",
+      "question": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {
+        "classifier_state": "CLASSIFIER_TIMEOUT",
+        "fallback_enabled": false
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SYSTEM_UNAVAILABLE",
+        "route": null,
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [],
+        "final_status": "SYSTEM_UNAVAILABLE"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": [
+        "model_lifecycle"
+      ]
+    },
+    {
+      "id": "X08",
+      "question": "Thông tin FPT năm 2025.",
+      "context": {},
+      "upstream": {
+        "classifier_scores": {
+          "needs_graph": 0.5,
+          "needs_content": 0.5
+        },
+        "score_thresholds": {
+          "needs_graph": 0.5,
+          "needs_content": 0.5
+        },
+        "ambiguity_band": 0.05
+      },
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "ASK_CLARIFICATION",
+        "route": "CLARIFY",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [
+          "requested_operation"
+        ],
+        "tasks": [],
+        "final_status": "ASK_CLARIFICATION",
+        "clarification_question": "Bạn muốn tra thông tin nào?"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": false,
+        "input": null,
+        "labels": null
+      },
+      "tags": [
+        "threshold_boundary"
+      ]
+    },
+    {
+      "id": "X09",
+      "question": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "TOTAL_ASSETS",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "FPT"
+              ]
+            }
+          }
+        ],
+        "final_status": "INSUFFICIENT_EVIDENCE"
+      },
+      "mock_adapter_responses": {
+        "v1": {
+          "status": "OK",
+          "evidence": [
+            {
+              "source_id": "fixture-source-001",
+              "source_hash": "fixture-hash-v1",
+              "locator": {
+                "page": 10
+              },
+              "source_verified": true,
+              "dataset_version": "fixture-v1",
+              "company": "VCB",
+              "period": "2024",
+              "unit": null
+            }
+          ]
+        }
+      },
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Tổng tài sản hợp nhất FPT năm 2025 là bao nhiêu?",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": [
+        "scope_and_citation"
+      ]
+    },
+    {
+      "id": "X10",
+      "question": "Chỉ liệt kê công ty con FPT tại 31/12/2025, không cần doanh thu.",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "GRAPH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Chỉ liệt kê công ty con FPT tại 31/12/2025, không cần doanh thu.",
+        "labels": [
+          1,
+          0
+        ]
+      },
+      "tags": [
+        "negation",
+        "baseline_challenge"
+      ]
+    },
+    {
+      "id": "X11",
+      "question": "Tổng tài sản hợp nhất FPT năm 2025, không cần danh sách công ty con.",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "TOTAL_ASSETS",
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "CONSOLIDATED"
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "periods": [
+                "2025"
+              ],
+              "metric_code": "TOTAL_ASSETS",
+              "measure_basis": "FULL_YEAR",
+              "reporting_entity": "CONSOLIDATED",
+              "companies": [
+                "FPT"
+              ]
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Tổng tài sản hợp nhất FPT năm 2025, không cần danh sách công ty con.",
+        "labels": [
+          0,
+          1
+        ]
+      },
+      "tags": [
+        "negation",
+        "baseline_challenge"
+      ]
+    },
+    {
+      "id": "X12",
+      "question": "Những đơn vị trực thuộc FPT tại 31/12/2025 là các công ty con nào?",
+      "context": {},
+      "upstream": {},
+      "execution_mode": "MOCK",
+      "capability_profile": "fixture_mvp",
+      "expected": {
+        "intent": "RESEARCH_QUERY",
+        "decision": "SEARCH",
+        "route": "GRAPH",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2025"
+          ]
+        },
+        "missing_fields": [],
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_subsidiaries",
+            "params": {
+              "company": "FPT",
+              "as_of": "2025-12-31"
+            }
+          }
+        ],
+        "final_status": "OK"
+      },
+      "mock_adapter_responses": {},
+      "classifier_evaluation": {
+        "eligible": true,
+        "input": "Những đơn vị trực thuộc FPT tại 31/12/2025 là các công ty con nào?",
+        "labels": [
+          1,
+          0
+        ]
+      },
+      "tags": [
+        "paraphrase"
+      ]
+    },
+    {
+      "id": "RF01",
+      "question": "FPT có liên quan đến vụ cháy chung cư MSN không?",
+      "expected_route": "BOTH",
+      "expected_companies": ["FPT", "MSN"],
+      "tags": ["refactor", "event", "multi_entity"]
+    },
+    {
+      "id": "RF02",
+      "question": "Ông Nguyễn Thành Nam bị bắt có ảnh hưởng đến cổ phiếu FPT không?",
+      "expected_route": "BOTH",
+      "expected_companies": ["FPT"],
+      "tags": ["refactor", "event", "person_alias"]
+    },
+    {
+      "id": "RF03",
+      "question": "Nếu lãi suất tăng thì ngân hàng nào chịu ảnh hưởng nhiều nhất?",
+      "expected_route": "BOTH",
+      "expected_industry": "BANKING",
+      "tags": ["refactor", "industry", "macro"]
+    },
+    {
+      "id": "RF04",
+      "question": "Mấy mã thép nào hưởng lợi?",
+      "expected_route": "BOTH",
+      "expected_industry": "STEEL",
+      "tags": ["refactor", "industry", "implicit_comparison"]
+    },
+    {
+      "id": "RF05",
+      "question": "Mấy công ty con của FPT năm 2025 làm ăn thế nào?",
+      "expected_route": "BOTH",
+      "expected_companies": ["FPT"],
+      "tags": ["refactor", "multi_hop"]
+    },
+    {
+      "id": "RF06",
+      "question": "Đặt FPT và CMG lên bàn cân xem bên nào tốt hơn.",
+      "expected_route": "BOTH",
+      "expected_companies": ["FPT", "CMG"],
+      "tags": ["refactor", "slang", "comparison"]
+    },
+    {
+      "id": "RF07",
+      "question": "Công ty FPT hoạt động trong lĩnh vực gì?",
+      "expected_route": "VECTOR",
+      "expected_companies": ["FPT"],
+      "tags": ["refactor", "static_info"]
+    },
+    {
+      "id": "RF08",
+      "question": "Bách Hóa Xanh thuộc công ty mẹ nào?",
+      "expected_route": "GRAPH",
+      "expected_companies": ["MWG"],
+      "tags": ["refactor", "brand_alias", "graph"]
+    },
+    {
+      "id": "RF09",
+      "question": "Doanh thu Hòa Phát dạo này bao nhiêu?",
+      "expected_route": "CLARIFY",
+      "expected_companies": ["HPG"],
+      "tags": ["refactor", "vague_time"]
+    },
+    {
+      "id": "RF10",
+      "question": "Ban lãnh đạo FPT chia sẻ gì về kế hoạch AI năm 2025?",
+      "expected_route": "BOTH",
+      "expected_companies": ["FPT"],
+      "tags": ["refactor", "multi_hop", "leadership"]
+    },
+    {
+      "id": "RF11",
+      "question": "Masan với Thế Giới Di Động bên nào doanh thu cao hơn?",
+      "expected_route": "BOTH",
+      "expected_companies": ["MSN", "MWG"],
+      "tags": ["refactor", "brand_alias", "comparison"]
+    },
+    {
+      "id": "RF12",
+      "question": "Nguyễn Thành Nam có liên quan tin đồn nào khiến FPT giảm không?",
+      "expected_route": "BOTH",
+      "expected_companies": ["FPT"],
+      "tags": ["refactor", "person_alias", "event"]
+    }
+  ]
+}
