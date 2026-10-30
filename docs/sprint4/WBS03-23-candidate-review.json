@@ -1,0 +1,1139 @@
+{
+  "schema": "wbs03-review-handoff-v1",
+  "basis": "offline_reextract_of_previously_verified_bctn_envelopes",
+  "corpus_id": "b2550a0b-c423-5c50-9b15-6fb6af12e2c6",
+  "index_version_id": "ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d",
+  "database_verified_this_run": false,
+  "candidate_count": 23,
+  "candidates": [
+    {
+      "relation_id": "rel:54a63c17919c89a13b9a364669a20138",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-0f97e7886f56415b4b5e",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NGOẠI THƯƠNG VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-b8be5e060a250f8e43a1",
+        "canonical_name": "Công ty TNHH Một thành viên Cho thuê tài chính Vietcombank",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "679baa3e-b39c-5b53-be43-3cd19d738dca",
+        "title": "VCB — Báo cáo thường niên 2025",
+        "document_version": "29c252bf1bd104e63bf092442f5ca191e9576a93e8695be07f0b5021188ed36a"
+      },
+      "evidence": [
+        {
+          "document_id": "679baa3e-b39c-5b53-be43-3cd19d738dca",
+          "chunk_id": "2ceea344-77ec-52e7-92e3-a5037a1eb64b",
+          "page": 18,
+          "content_hash": "52478694913d8d8d2c65e666229ef8bffb02ee79458893c184bdac6ab686d3df",
+          "quote": "công ty con\nVCBL"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:a6e698eb7ae99ff04d7e694ffe12eb87",
+      "relation_type": "OWNS_SHARES",
+      "subject": {
+        "entity_id": "CMP-0f97e7886f56415b4b5e",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NGOẠI THƯƠNG VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-b8be5e060a250f8e43a1",
+        "canonical_name": "Công ty TNHH Một thành viên Cho thuê tài chính Vietcombank",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "ownership_percent": "100"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "679baa3e-b39c-5b53-be43-3cd19d738dca",
+        "title": "VCB — Báo cáo thường niên 2025",
+        "document_version": "29c252bf1bd104e63bf092442f5ca191e9576a93e8695be07f0b5021188ed36a"
+      },
+      "evidence": [
+        {
+          "document_id": "679baa3e-b39c-5b53-be43-3cd19d738dca",
+          "chunk_id": "2ceea344-77ec-52e7-92e3-a5037a1eb64b",
+          "page": 18,
+          "content_hash": "52478694913d8d8d2c65e666229ef8bffb02ee79458893c184bdac6ab686d3df",
+          "quote": "VCBL là Công ty do Vietcombank sở hữu 100%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:b619ed16494a3f38a14729f21f1b1910",
+      "relation_type": "OWNS_SHARES",
+      "subject": {
+        "entity_id": "CMP-0f97e7886f56415b4b5e",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NGOẠI THƯƠNG VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-d27f5b286c4c2486c719",
+        "canonical_name": "Công ty TNHH Chứng khoán Vietcombank",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "ownership_percent": "100"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "679baa3e-b39c-5b53-be43-3cd19d738dca",
+        "title": "VCB — Báo cáo thường niên 2025",
+        "document_version": "29c252bf1bd104e63bf092442f5ca191e9576a93e8695be07f0b5021188ed36a"
+      },
+      "evidence": [
+        {
+          "document_id": "679baa3e-b39c-5b53-be43-3cd19d738dca",
+          "chunk_id": "8b2d615a-ce16-53ae-a636-ab227e4ad934",
+          "page": 18,
+          "content_hash": "e4c49a9e503ff4e39653b66bb3ed93a845bdd4c7c237dd8c4aa9347b7d93c8f5",
+          "quote": "VCBS là công ty do Vietcombank sở hữu 100%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:f11468f41fb1cae28c0617bd7eec521f",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-0f97e7886f56415b4b5e",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NGOẠI THƯƠNG VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-34833799b9bc2cb0d161",
+        "canonical_name": "Công ty TNHH Một thành viên Kiều hối Vietcombank",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "ownership_percent": "100"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "679baa3e-b39c-5b53-be43-3cd19d738dca",
+        "title": "VCB — Báo cáo thường niên 2025",
+        "document_version": "29c252bf1bd104e63bf092442f5ca191e9576a93e8695be07f0b5021188ed36a"
+      },
+      "evidence": [
+        {
+          "document_id": "679baa3e-b39c-5b53-be43-3cd19d738dca",
+          "chunk_id": "4eb699ea-63f8-58c3-a0e6-55f1bb62f66c",
+          "page": 18,
+          "content_hash": "008c6d9663fceb29929967d90a532f2bd9bb85d62efd4452ad8249eb916d2185",
+          "quote": "VCBR là công ty con do Vietcombank sở hữu 100%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:16e385867ed1c8eefa0e59387714180e",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-00e0481af8b436b4645f",
+        "canonical_name": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-322902610d1a878d95d3",
+        "canonical_name": "Công ty Cổ phần Chứng khoán Kỹ Thương",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "85deaf00-3748-5f3d-95a2-68495dc229fc",
+        "title": "TCB — Báo cáo thường niên 2025",
+        "document_version": "835e04340143d6d419cad400389ca1161da0178e4497cdd9ec34c2966cb0c14b"
+      },
+      "evidence": [
+        {
+          "document_id": "85deaf00-3748-5f3d-95a2-68495dc229fc",
+          "chunk_id": "b102a5c0-6c8e-54fd-bf09-f9e5234948be",
+          "page": 39,
+          "content_hash": "7030e79968050565861f797422d1f4d8682b2a2ce764e464607e4c6a09fb0c15",
+          "quote": "Công ty con\nCông Ty Cổ Phần Chứng Khoán Kỹ Thương"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:9e97a35a4e008840693a5d46ba4feac4",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-00e0481af8b436b4645f",
+        "canonical_name": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-86005f871b8a0a90961f",
+        "canonical_name": "Công ty TNHH Một thành viên Quản lý nợ và Khai thác tài sản – Ngân hàng TMCP Kỹ thương Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "85deaf00-3748-5f3d-95a2-68495dc229fc",
+        "title": "TCB — Báo cáo thường niên 2025",
+        "document_version": "835e04340143d6d419cad400389ca1161da0178e4497cdd9ec34c2966cb0c14b"
+      },
+      "evidence": [
+        {
+          "document_id": "85deaf00-3748-5f3d-95a2-68495dc229fc",
+          "chunk_id": "c558329f-1d80-5890-8000-d81b2cbe9e75",
+          "page": 160,
+          "content_hash": "ba8651dbd48971b51efd0adf15ded05be0b0bbf87b7575eeadcea4b1b5158b70",
+          "quote": "công ty con\nCông ty TNHH một thành viên Quản lý nợ và khai thác tài sản - Ngân hàng Thương mại\nCổ phần Kỹ thương Việt Nam"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:62a5afb99dd07bcd82125889511cb6df",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-00e0481af8b436b4645f",
+        "canonical_name": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-86005f871b8a0a90961f",
+        "canonical_name": "Công ty TNHH Một thành viên Quản lý nợ và Khai thác tài sản – Ngân hàng TMCP Kỹ thương Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "100"
+      },
+      "temporal": {
+        "as_of": "2024-12-31",
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+        "title": "TCB — Báo cáo thường niên 2024",
+        "document_version": "df5ca6bcba21cc11e59b3333755de1dd6ebc72870a1d9d8a83e8bff21cb0ef0f"
+      },
+      "evidence": [
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "55516317-3d71-5d14-ac57-9cdba6eda1fe",
+          "page": 12,
+          "content_hash": "438c4c3c39895bc1ad4e8bc04650dccdce8bb8611261c5dbede5d6dada13ef83",
+          "quote": "TỶ LỆ SỞ HỮU CỦA TECHCOMBANK TẠI CÁC CÔNG TY CON (31/12/2024)\nTECHCOMBANK\nTCBS (94,1%) TechAMC (100%)"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "4690db74-eb51-595e-b467-2c8deaf4a0fa",
+          "page": 36,
+          "content_hash": "c49328b398216c6714939e0c6488866b2b8770d478e6dacd237c6ef0ab1d13ad",
+          "quote": "CÁC CÔNG TY CON\nCÔNG TY TNHH MỘT THÀNH VIÊN QUẢN LÝ NỢ VÀ\nKHAI THÁC TÀI SẢN – TechAMC"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "4690db74-eb51-595e-b467-2c8deaf4a0fa",
+          "page": 36,
+          "content_hash": "c49328b398216c6714939e0c6488866b2b8770d478e6dacd237c6ef0ab1d13ad",
+          "quote": "CÁC CÔNG TY CON"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "4690db74-eb51-595e-b467-2c8deaf4a0fa",
+          "page": 36,
+          "content_hash": "c49328b398216c6714939e0c6488866b2b8770d478e6dacd237c6ef0ab1d13ad",
+          "quote": "CÔNG TY TNHH MỘT THÀNH VIÊN QUẢN LÝ NỢ VÀ\nKHAI THÁC TÀI SẢN – TechAMC"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "afb131a9-536a-5bdb-85a7-a726ff027c84",
+          "page": 111,
+          "content_hash": "9b58e7a96e6365cee79f9ef6e1ea86fa0072d80087ff956ef16e5e50531db9e6",
+          "quote": "công ty con:\nCông ty TNHH một thành viên Quản lý nợ và khai thác tài sản - Ngân hàng Thương mại Cổ\nphần Kỹ thương Việt Nam"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:66a5737a3df9ffceaaa5bbf016c1e442",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-00e0481af8b436b4645f",
+        "canonical_name": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-322902610d1a878d95d3",
+        "canonical_name": "Công ty Cổ phần Chứng khoán Kỹ Thương",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "94.1"
+      },
+      "temporal": {
+        "as_of": "2024-12-31",
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+        "title": "TCB — Báo cáo thường niên 2024",
+        "document_version": "df5ca6bcba21cc11e59b3333755de1dd6ebc72870a1d9d8a83e8bff21cb0ef0f"
+      },
+      "evidence": [
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "55516317-3d71-5d14-ac57-9cdba6eda1fe",
+          "page": 12,
+          "content_hash": "438c4c3c39895bc1ad4e8bc04650dccdce8bb8611261c5dbede5d6dada13ef83",
+          "quote": "TỶ LỆ SỞ HỮU CỦA TECHCOMBANK TẠI CÁC CÔNG TY CON (31/12/2024)\nTECHCOMBANK\nTCBS (94,1%)"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "b32c6e1a-7d50-5e9a-8036-9b0fe7a59590",
+          "page": 32,
+          "content_hash": "143e839b235645ae30321c95a4af631b01ac5c52bfb17f2082ba385c0f7230cd",
+          "quote": "CÁC CÔNG TY CON\nCÔNG TY CỔ PHẦN CHỨNG KHOÁN KỸ THƯƠNG"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "b32c6e1a-7d50-5e9a-8036-9b0fe7a59590",
+          "page": 32,
+          "content_hash": "143e839b235645ae30321c95a4af631b01ac5c52bfb17f2082ba385c0f7230cd",
+          "quote": "CÁC CÔNG TY CON"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "b32c6e1a-7d50-5e9a-8036-9b0fe7a59590",
+          "page": 32,
+          "content_hash": "143e839b235645ae30321c95a4af631b01ac5c52bfb17f2082ba385c0f7230cd",
+          "quote": "CÔNG TY CỔ PHẦN CHỨNG KHOÁN KỸ THƯƠNG"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:c2867016259752857acb355f89f81cc1",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-00e0481af8b436b4645f",
+        "canonical_name": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-71694ed9bf829484bade",
+        "canonical_name": "Công ty Cổ phần Quản lý Quỹ Kỹ Thương",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "88.99"
+      },
+      "temporal": {
+        "as_of": "2024-12-31",
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+        "title": "TCB — Báo cáo thường niên 2024",
+        "document_version": "df5ca6bcba21cc11e59b3333755de1dd6ebc72870a1d9d8a83e8bff21cb0ef0f"
+      },
+      "evidence": [
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "55516317-3d71-5d14-ac57-9cdba6eda1fe",
+          "page": 12,
+          "content_hash": "438c4c3c39895bc1ad4e8bc04650dccdce8bb8611261c5dbede5d6dada13ef83",
+          "quote": "TỶ LỆ SỞ HỮU CỦA TECHCOMBANK TẠI CÁC CÔNG TY CON (31/12/2024)\nTECHCOMBANK\nTCBS (94,1%) TechAMC (100%) TCC (88,99%)"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "4ce022d2-27b0-5053-a55b-a9fafd332cb9",
+          "page": 35,
+          "content_hash": "e059b6c826d0382122f96580bf8bb12b0df067117572ce22a1d5c45b63a16af1",
+          "quote": "CÁC CÔNG TY CON\nCÔNG TY CỔ PHẦN QUẢN LÝ QUỸ KỸ THƯƠNG"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "4ce022d2-27b0-5053-a55b-a9fafd332cb9",
+          "page": 35,
+          "content_hash": "e059b6c826d0382122f96580bf8bb12b0df067117572ce22a1d5c45b63a16af1",
+          "quote": "CÁC CÔNG TY CON"
+        },
+        {
+          "document_id": "8ec9c4e6-cd43-559a-837b-49335340f4c5",
+          "chunk_id": "4ce022d2-27b0-5053-a55b-a9fafd332cb9",
+          "page": 35,
+          "content_hash": "e059b6c826d0382122f96580bf8bb12b0df067117572ce22a1d5c45b63a16af1",
+          "quote": "CÔNG TY CỔ PHẦN QUẢN LÝ QUỸ KỸ THƯƠNG"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:dd01697e444a009d219d8956a9b09077",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-c7f85408f08fed1482bf",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-5b089951c0151837994a",
+        "canonical_name": "Tổng Công ty Cổ phần Bảo hiểm BIDV",
+        "resolution_status": "resolved"
+      },
+      "attributes": {},
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "c0a80084-f786-5abe-9f16-84b1f466c118",
+        "title": "BID — Báo cáo thường niên 2025",
+        "document_version": "4b7206684a8deceac7c47c610881945631be07771d0c200927b8f9fc6255d99f"
+      },
+      "evidence": [
+        {
+          "document_id": "c0a80084-f786-5abe-9f16-84b1f466c118",
+          "chunk_id": "8e2d6222-9db8-506b-9b44-500f6b356682",
+          "page": 63,
+          "content_hash": "1de2a25a6d6397b948db65d872fd01fffd5df1f9bbe24334d58b23d8163a9aa6",
+          "quote": "BIC- Công ty con của BIDV"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:a308917230b9e53c1db06a113af0f530",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-0f97e7886f56415b4b5e",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NGOẠI THƯƠNG VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-34833799b9bc2cb0d161",
+        "canonical_name": "Công ty TNHH Một thành viên Kiều hối Vietcombank",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "ownership_percent": "100",
+        "inference_basis": "document_issuer"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+        "title": "VCB — Báo cáo thường niên 2024",
+        "document_version": "4ac47e7c74117735d925da467ae591c5420f321ec8a560a4473c31c4fe441510"
+      },
+      "evidence": [
+        {
+          "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+          "chunk_id": "4da429da-4ebd-5fef-9fad-4054093f8eb5",
+          "page": 19,
+          "content_hash": "7df528a7a34c9ae9efc86d17cdf317d0b334b259869d54ff9babb13ae49dbd5d",
+          "quote": "VCBR là công ty con do Vietcombank sở hữu 100%"
+        },
+        {
+          "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+          "chunk_id": "4da429da-4ebd-5fef-9fad-4054093f8eb5",
+          "page": 19,
+          "content_hash": "7df528a7a34c9ae9efc86d17cdf317d0b334b259869d54ff9babb13ae49dbd5d",
+          "quote": "Công ty TNHH MTV Kiều hối\nVietcombank\nVCBR\nLợi nhuận trước thuế năm 2024\n31,49 TỶ ĐỒNG\nVCBR là công ty con do Vietcombank sở hữu 100%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:c3d36770dd3753c0b5d30a0a291b4f50",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-0f97e7886f56415b4b5e",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NGOẠI THƯƠNG VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-b8be5e060a250f8e43a1",
+        "canonical_name": "Công ty TNHH Một thành viên Cho thuê tài chính Vietcombank",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+        "title": "VCB — Báo cáo thường niên 2024",
+        "document_version": "4ac47e7c74117735d925da467ae591c5420f321ec8a560a4473c31c4fe441510"
+      },
+      "evidence": [
+        {
+          "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+          "chunk_id": "f45912ed-4282-5edb-88ce-a43c11c3776b",
+          "page": 19,
+          "content_hash": "898fd2fdff85c1c499bd87c115952801b2508559118b502830fe2fd14d598580",
+          "quote": "công ty con\nCông ty TNHH Một thành viên\nCho thuê tài chính Vietcombank"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:deb37325f74612ded314754484380a9f",
+      "relation_type": "OWNS_SHARES",
+      "subject": {
+        "entity_id": "CMP-0f97e7886f56415b4b5e",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NGOẠI THƯƠNG VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-d27f5b286c4c2486c719",
+        "canonical_name": "Công ty TNHH Chứng khoán Vietcombank",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "ownership_percent": "100"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+        "title": "VCB — Báo cáo thường niên 2024",
+        "document_version": "4ac47e7c74117735d925da467ae591c5420f321ec8a560a4473c31c4fe441510"
+      },
+      "evidence": [
+        {
+          "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+          "chunk_id": "1f233fca-f45b-5996-a9c3-31566c16a351",
+          "page": 19,
+          "content_hash": "5afdeaeed1f83a08bc6f4056f320beacc7546ec252532cc7515856ffc6214b8a",
+          "quote": "VCBS là công ty do Vietcombank sở hữu 100%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:f25bca89fa66800b87257166d554bad9",
+      "relation_type": "OWNS_SHARES",
+      "subject": {
+        "entity_id": "CMP-0f97e7886f56415b4b5e",
+        "canonical_name": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NGOẠI THƯƠNG VIỆT NAM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-b8be5e060a250f8e43a1",
+        "canonical_name": "Công ty TNHH Một thành viên Cho thuê tài chính Vietcombank",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "ownership_percent": "100"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+        "title": "VCB — Báo cáo thường niên 2024",
+        "document_version": "4ac47e7c74117735d925da467ae591c5420f321ec8a560a4473c31c4fe441510"
+      },
+      "evidence": [
+        {
+          "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+          "chunk_id": "f45912ed-4282-5edb-88ce-a43c11c3776b",
+          "page": 19,
+          "content_hash": "898fd2fdff85c1c499bd87c115952801b2508559118b502830fe2fd14d598580",
+          "quote": "VCBL là Công ty do Vietcombank sở hữu 100%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:088f2d6504272e84004f05147c25f31c",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-9e6e541df71d1e6663b7",
+        "canonical_name": "Công ty Cổ phần Datanova Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-79c3c067da6ed3a0c9de",
+        "canonical_name": "Công ty Cổ phần Đầu tư Smartek",
+        "resolution_status": "resolved"
+      },
+      "attributes": {},
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+        "title": "ELC — Báo cáo thường niên 2024",
+        "document_version": "a642eb22d8a7fb50694e8fad32972c24e767179561572bd2e360a3ca753bef9e"
+      },
+      "evidence": [
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "e67bc152-bd52-539e-9cde-32ef4bfca7a6",
+          "page": 14,
+          "content_hash": "2101c41f3326711bd68e1c9bf1124e5cbb304a78e9fbab50bd69c27b98891e8f",
+          "quote": "Công ty Cổ phần đầu tư Smartek (Là\ncông ty con của Công ty Cổ phần\nDatanova Việt Nam)"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:1fb8958ce30f9da65baf366fd359a26f",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-5e8ffe9a518de32ce4d6",
+        "canonical_name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-9e6e541df71d1e6663b7",
+        "canonical_name": "Công ty Cổ phần Datanova Việt Nam",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "93"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+        "title": "ELC — Báo cáo thường niên 2024",
+        "document_version": "a642eb22d8a7fb50694e8fad32972c24e767179561572bd2e360a3ca753bef9e"
+      },
+      "evidence": [
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "107c2ccc-3f33-5117-a521-7fed698f78a9",
+          "page": 14,
+          "content_hash": "026a6df74b7b6b4c1ceb29a2c98250d2c969867efcd34bb4993c330a9491bba3",
+          "quote": "Các công ty con kiểm soát trực tiếp"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "107c2ccc-3f33-5117-a521-7fed698f78a9",
+          "page": 14,
+          "content_hash": "026a6df74b7b6b4c1ceb29a2c98250d2c969867efcd34bb4993c330a9491bba3",
+          "quote": "Công ty Cổ phần Datanova Việt Nam"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "8aa9e55d-fe91-5107-9147-817842ffa98a",
+          "page": 14,
+          "content_hash": "8a4ab9ad6f10d176ab5a6ba9b88614036b8816d6d8365956d4514d9ab5841c56",
+          "quote": "Tỷ lệ sở hữu: 93% vốn điều lệ"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:4c99ccafaaa13f8bcc2c08851e807591",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-5e8ffe9a518de32ce4d6",
+        "canonical_name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-8e576e01e934df8a42c1",
+        "canonical_name": "Công ty Cổ phần Tập đoàn Thương mại Hà Nội",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "68.68"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+        "title": "ELC — Báo cáo thường niên 2024",
+        "document_version": "a642eb22d8a7fb50694e8fad32972c24e767179561572bd2e360a3ca753bef9e"
+      },
+      "evidence": [
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "107c2ccc-3f33-5117-a521-7fed698f78a9",
+          "page": 14,
+          "content_hash": "026a6df74b7b6b4c1ceb29a2c98250d2c969867efcd34bb4993c330a9491bba3",
+          "quote": "Các công ty con kiểm soát trực tiếp"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "e3343e86-4b79-54ac-bff5-cc137867284d",
+          "page": 14,
+          "content_hash": "b6d1c56d20100244b1f71af15ce0fc63da9076c7fda76d21353b5785fb0553f8",
+          "quote": "Công ty Cổ phần Tập đoàn Thương\nmại Hà Nội"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "e3343e86-4b79-54ac-bff5-cc137867284d",
+          "page": 14,
+          "content_hash": "b6d1c56d20100244b1f71af15ce0fc63da9076c7fda76d21353b5785fb0553f8",
+          "quote": "Tỷ lệ sở hữu: 68,68%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:6722a28cffaea98a9304ecc3affa0250",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-5e8ffe9a518de32ce4d6",
+        "canonical_name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-79c3c067da6ed3a0c9de",
+        "canonical_name": "Công ty Cổ phần Đầu tư Smartek",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+        "title": "ELC — Báo cáo thường niên 2024",
+        "document_version": "a642eb22d8a7fb50694e8fad32972c24e767179561572bd2e360a3ca753bef9e"
+      },
+      "evidence": [
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "e67bc152-bd52-539e-9cde-32ef4bfca7a6",
+          "page": 14,
+          "content_hash": "2101c41f3326711bd68e1c9bf1124e5cbb304a78e9fbab50bd69c27b98891e8f",
+          "quote": "Các công ty con kiểm soát gián tiếp\nCông ty Cổ phần đầu tư Smartek"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "e67bc152-bd52-539e-9cde-32ef4bfca7a6",
+          "page": 14,
+          "content_hash": "2101c41f3326711bd68e1c9bf1124e5cbb304a78e9fbab50bd69c27b98891e8f",
+          "quote": "Các công ty con kiểm soát gián tiếp"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "e67bc152-bd52-539e-9cde-32ef4bfca7a6",
+          "page": 14,
+          "content_hash": "2101c41f3326711bd68e1c9bf1124e5cbb304a78e9fbab50bd69c27b98891e8f",
+          "quote": "Công ty Cổ phần đầu tư Smartek"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:6a839b61aac7db4b668726835ac84645",
+      "relation_type": "HAS_ASSOCIATE",
+      "subject": {
+        "entity_id": "CMP-5e8ffe9a518de32ce4d6",
+        "canonical_name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-91f9515cb90617070ee4",
+        "canonical_name": "Công ty Cổ phần Công nghệ VFT",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "41.58"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+        "title": "ELC — Báo cáo thường niên 2024",
+        "document_version": "a642eb22d8a7fb50694e8fad32972c24e767179561572bd2e360a3ca753bef9e"
+      },
+      "evidence": [
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "81715bf0-2032-5764-834b-cfefb59d3bc7",
+          "page": 14,
+          "content_hash": "e37cfcb4907fe9adb80f507b9d1c051219e7e02755a647fcc2debf81b11b5ff2",
+          "quote": "Các công ty liên kết"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "81715bf0-2032-5764-834b-cfefb59d3bc7",
+          "page": 14,
+          "content_hash": "e37cfcb4907fe9adb80f507b9d1c051219e7e02755a647fcc2debf81b11b5ff2",
+          "quote": "Công ty Cổ Phần Công nghệ VFT"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "bf298599-26a5-5eb8-bcfe-eea50a1f1545",
+          "page": 14,
+          "content_hash": "e9b90dda3cfe710cebb38cf83cf98925f0e74dea847fa8717db91f5021619ed6",
+          "quote": "Tỷ lệ sở hữu: 41,58%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:bfea0864087f9da2227fcfcf44d80dc6",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-5e8ffe9a518de32ce4d6",
+        "canonical_name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-74b614f19910dfdbd6ad",
+        "canonical_name": "Công ty TNHH Giải pháp phần mềm ELCOM",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "100"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+        "title": "ELC — Báo cáo thường niên 2024",
+        "document_version": "a642eb22d8a7fb50694e8fad32972c24e767179561572bd2e360a3ca753bef9e"
+      },
+      "evidence": [
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "107c2ccc-3f33-5117-a521-7fed698f78a9",
+          "page": 14,
+          "content_hash": "026a6df74b7b6b4c1ceb29a2c98250d2c969867efcd34bb4993c330a9491bba3",
+          "quote": "Các công ty con kiểm soát trực tiếp\nCông ty TNHH Giải pháp phần mềm\nELCOM"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "107c2ccc-3f33-5117-a521-7fed698f78a9",
+          "page": 14,
+          "content_hash": "026a6df74b7b6b4c1ceb29a2c98250d2c969867efcd34bb4993c330a9491bba3",
+          "quote": "Các công ty con kiểm soát trực tiếp"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "107c2ccc-3f33-5117-a521-7fed698f78a9",
+          "page": 14,
+          "content_hash": "026a6df74b7b6b4c1ceb29a2c98250d2c969867efcd34bb4993c330a9491bba3",
+          "quote": "Công ty TNHH Giải pháp phần mềm\nELCOM"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "107c2ccc-3f33-5117-a521-7fed698f78a9",
+          "page": 14,
+          "content_hash": "026a6df74b7b6b4c1ceb29a2c98250d2c969867efcd34bb4993c330a9491bba3",
+          "quote": "Tỷ lệ sở hữu: 100% vốn điều lệ"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:c47542be243328ffc45f1c1b2cebbab3",
+      "relation_type": "HAS_SUBSIDIARY",
+      "subject": {
+        "entity_id": "CMP-5e8ffe9a518de32ce4d6",
+        "canonical_name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-0349325d1dcf476c1d40",
+        "canonical_name": "Công ty Cổ phần ElcomPrime",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "70"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+        "title": "ELC — Báo cáo thường niên 2024",
+        "document_version": "a642eb22d8a7fb50694e8fad32972c24e767179561572bd2e360a3ca753bef9e"
+      },
+      "evidence": [
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "107c2ccc-3f33-5117-a521-7fed698f78a9",
+          "page": 14,
+          "content_hash": "026a6df74b7b6b4c1ceb29a2c98250d2c969867efcd34bb4993c330a9491bba3",
+          "quote": "Các công ty con kiểm soát trực tiếp"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "8aa9e55d-fe91-5107-9147-817842ffa98a",
+          "page": 14,
+          "content_hash": "8a4ab9ad6f10d176ab5a6ba9b88614036b8816d6d8365956d4514d9ab5841c56",
+          "quote": "Công ty Cổ phần ElcomPrime"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "8aa9e55d-fe91-5107-9147-817842ffa98a",
+          "page": 14,
+          "content_hash": "8a4ab9ad6f10d176ab5a6ba9b88614036b8816d6d8365956d4514d9ab5841c56",
+          "quote": "Tỷ lệ sở hữu: 70% vốn điều lệ"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:f3ba537b3df1a1ffc8d18c69f64000dd",
+      "relation_type": "HAS_ASSOCIATE",
+      "subject": {
+        "entity_id": "CMP-5e8ffe9a518de32ce4d6",
+        "canonical_name": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-ee23d22ff77c0dacd04a",
+        "canonical_name": "Công ty Cổ phần Công nghệ Vật liệu mới Bắc Kạn",
+        "resolution_status": "resolved"
+      },
+      "attributes": {
+        "inference_basis": "document_issuer",
+        "ownership_percent": "42.97"
+      },
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+        "title": "ELC — Báo cáo thường niên 2024",
+        "document_version": "a642eb22d8a7fb50694e8fad32972c24e767179561572bd2e360a3ca753bef9e"
+      },
+      "evidence": [
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "81715bf0-2032-5764-834b-cfefb59d3bc7",
+          "page": 14,
+          "content_hash": "e37cfcb4907fe9adb80f507b9d1c051219e7e02755a647fcc2debf81b11b5ff2",
+          "quote": "Các công ty liên kết"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "81715bf0-2032-5764-834b-cfefb59d3bc7",
+          "page": 14,
+          "content_hash": "e37cfcb4907fe9adb80f507b9d1c051219e7e02755a647fcc2debf81b11b5ff2",
+          "quote": "Công ty Cổ phần Công nghệ Vật liệu\nmới Bắc Kạn"
+        },
+        {
+          "document_id": "f0730a07-8ab5-548a-a3b8-e099489d0f29",
+          "chunk_id": "81715bf0-2032-5764-834b-cfefb59d3bc7",
+          "page": 14,
+          "content_hash": "e37cfcb4907fe9adb80f507b9d1c051219e7e02755a647fcc2debf81b11b5ff2",
+          "quote": "Tỷ lệ sở hữu: 42,97%"
+        }
+      ]
+    },
+    {
+      "relation_id": "rel:023629b35242df030f87b93a34d85b58",
+      "relation_type": "COOPERATES_WITH",
+      "subject": {
+        "entity_id": "CMP-25a1ce33704a58fe6fe4",
+        "canonical_name": "Ngân hàng Thương mại Cổ phần Quân đội",
+        "resolution_status": "resolved"
+      },
+      "object": {
+        "entity_id": "CMP-fbb705553b47c681f6ae",
+        "canonical_name": "Công ty Cổ phần FPT",
+        "resolution_status": "resolved"
+      },
+      "attributes": {},
+      "temporal": {
+        "as_of": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      "review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "document": {
+        "document_id": "faf61b2a-9dba-57d4-91e4-d7eca3edb4c7",
+        "title": "MBB — Báo cáo thường niên 2025",
+        "document_version": "ddb21d14a5bbcd9b122692ffa68af049ed55d4edd89b64f8f95a743dc05bab3a"
+      },
+      "evidence": [
+        {
+          "document_id": "faf61b2a-9dba-57d4-91e4-d7eca3edb4c7",
+          "chunk_id": "f4303a40-b295-5f6b-99b8-a2ddfdb6edc9",
+          "page": 77,
+          "content_hash": "762c34ba3a1ea04536669ace9f2c3f6fce44417d6e85d9cb88d51ce5b038ab6b",
+          "quote": "hợp tác giữa Ngân hàng TMCP Quân đội (MB) và Tập đoàn FPT"
+        }
+      ]
+    }
+  ]
+}
