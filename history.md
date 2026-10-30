@@ -626,6 +626,13 @@ Quy trình bắt buộc trước khi sửa:
 - Chạy trên corpus frozen có 20 BCTN, 15.398 chunk hiện hành: 20 JSON hợp lệ, 1 ứng viên `PENDING` cần người kiểm duyệt. Audit offline chỉ ra các ca OCR/bố cục bảng và tên chưa resolve; chi tiết tại `docs/sprint4/WBS03-relation-gap-audit.md`. Chưa có tập nhãn gold nên chưa đo được precision/recall và chưa đánh dấu WBS03 hoàn thành.
 - Kiểm thử: 22 unit test WBS03 qua; đầu ra và audit local nằm trong `backend/.tmp/` và không đưa lên Git.
 
+### [2026-10-29] WBS08 — bộ ghi graph Sprint 4
+
+- Thêm `Sprint4GraphStore` riêng với graph tài chính/giá hiện có. Đầu vào là contract 2.1.0, chỉ đưa quan hệ `APPROVED` cùng thực thể liên quan vào Neo4j; giữ ID, chiều quan hệ, phiên, thời gian và evidence/locator.
+- Mỗi batch được ghi trong một transaction, chạy lại cùng dữ liệu là no-op, ID trùng nhưng nội dung khác bị chặn. Phiên graph ở `BUILDING` đến khi đối chiếu đủ danh sách batch và công bố `READY`; truy vấn chỉ đọc phiên READY.
+- Thêm constraint/index, fixture, CLI và hướng dẫn ở `docs/sprint4/WBS08-graph-store.md`. 8 test WBS08 và 22 test WBS03 liên quan qua.
+- Ngày 30/10: dựng Neo4j Community 2026.10.1 trong container riêng trên VPS, cổng chỉ bind localhost, kết nối qua SSH tunnel. Thử fixture trên Neo4j thật: 2 node/1 cạnh APPROVED, PENDING không tạo cạnh, chạy lại không trùng, publish thiếu batch bị chặn, đọc lại đúng ID/chiều/evidence ở phiên READY. CLI hỗ trợ `--env-file` riêng; 30 test liên quan qua. Chỉ ghi dữ liệu thử vào Neo4j mới, không ghi PostgreSQL. Chưa chạy tích hợp quan hệ BCTN thật đã duyệt.
+
 ### [2026-10-30] WBS03 — đọc corpus BCTN mới bằng release alias
 
 - Vũ bàn giao `release_identity.py` và `annual_source_reader.py`. Reader WBS03 dùng bộ kiểm tra binding chính thức thay so sánh trực tiếp source document ID với release document ID; vẫn xác minh source release, snapshot, trang, chunk ID và content hash. Không sửa locator hay database.
