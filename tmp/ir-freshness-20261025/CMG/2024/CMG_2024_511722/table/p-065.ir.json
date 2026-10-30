@@ -1,0 +1,127 @@
+{
+  "ir_version": "1",
+  "page": 65,
+  "printed_page": "CMC",
+  "page_class": "balance_sheet",
+  "page_size": {"width": 595.276, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
+    "file_name": "CMG_2024_511722.pdf"
+  },
+  "blocks": [
+    {"id": "p65-b1", "type": "heading", "text": "BẢNG CÂN ĐỐI KẾ TOÁN RIÊNG", "bbox": [190.95, 78.67, 404.31, 92.67]},
+    {"id": "p65-b2", "type": "paragraph", "text": "Ngày 31 tháng 3 năm 2025", "bbox": [232.23, 94.58, 363.04, 104.58]},
+    {"id": "p65-b3", "type": "paragraph", "text": "TM", "bbox": [298.85, 124.38, 313.95, 134.38]},
+    {"id": "p65-b4", "type": "paragraph", "text": "Số cuối năm", "bbox": [358.18, 124.38, 418.27, 134.38]},
+    {"id": "p65-b5", "type": "paragraph", "text": "Đơn vị tính: VND", "bbox": [470.78, 108.38, 534.41, 116.38]},
+    {"id": "p65-b6", "type": "paragraph", "text": "Số đầu năm", "bbox": [471.42, 124.38, 528.83, 134.38]},
+    {"id": "p65-b7", "type": "heading", "text": "TÀI SẢN", "bbox": [152.56, 124.93, 192.22, 134.93]},
+    {"id": "p65-b8", "type": "heading", "text": "TÀI SẢN NGẮN HẠN", "bbox": [123.91, 153.06, 200.78, 161.06]},
+    {"id": "p65-b9", "type": "paragraph", "text": "Đầu tư tài chính ngắn hạn", "bbox": [124.57, 203.84, 224.45, 211.84]},
+    {"id": "p65-b10", "type": "paragraph", "text": "Đầu tư nắm giữ đến ngày đáo hạn", "bbox": [124.57, 217.52, 255.53, 225.52]},
+    {"id": "p65-b11", "type": "paragraph", "text": "Các khoản phải thu ngắn hạn", "bbox": [124.44, 233.75, 237.39, 241.75]},
+    {
+      "id": "p65-b12",
+      "type": "paragraph",
+      "text": "Phải thu ngắn hạn của khách hàng\nTrả trước cho người bán ngắn hạn\nPhải thu về cho vay ngắn hạn\nPhải thu ngắn hạn khác\nDự phòng phải thu ngắn hạn khó đòi",
+      "bbox": [124.56, 248.46, 265.78, 308.46]
+    },
+    {
+      "id": "p65-b13",
+      "type": "paragraph",
+      "text": "Tài sản ngắn hạn khác\nChi phí trả trước ngắn hạn\nThuế giá trị gia tăng được khấu trừ",
+      "bbox": [124.56, 319.69, 259.68, 353.69]
+    },
+    {"id": "p65-b14", "type": "heading", "text": "TÀI SẢN DÀI HẠN", "bbox": [124.84, 374.86, 192.36, 382.86]},
+    {"id": "p65-b15", "type": "paragraph", "text": "Các khoản phải thu dài hạn\nPhải thu dài hạn khác", "bbox": [124.57, 400.02, 230.29, 421.02]},
+    {
+      "id": "p65-b16",
+      "type": "paragraph",
+      "text": "Tài sản cố định\nTài sản cố định hữu hình\nNguyên giá\nGiá trị khấu hao lũy kế\nTài sản cố định vô hình\nNguyên giá\nGiá trị hao mòn lũy kế",
+      "bbox": [124.56, 439.02, 220.56, 525.02]
+    },
+    {"id": "p65-b17", "type": "paragraph", "text": "Tài sản dở dang dài hạn\nChi phí xây dựng cơ bản dở dang", "bbox": [124.56, 543.02, 251.75, 564.02]},
+    {
+      "id": "p65-b18",
+      "type": "paragraph",
+      "text": "Đầu tư tài chính dài hạn\nĐầu tư vào công ty con\nĐầu tư vào công ty liên kết\nDự phòng đầu tư tài chính dài hạn",
+      "bbox": [124.56, 582.02, 256.62, 629.02]
+    },
+    {"id": "p65-b19", "type": "paragraph", "text": "Tài sản dài hạn khác\nChi phí trả trước dài hạn", "bbox": [124.57, 647.02, 218.8, 668.02]},
+    {"id": "p65-b20", "type": "heading", "text": "270 TỔNG CỘNG TÀI SẢN", "bbox": [52.56, 715.31, 170.73, 723.31]},
+    {"id": "p65-b21", "type": "paragraph", "text": "567.324.779.254", "bbox": [362.52, 153.06, 429.43, 161.06]},
+    {"id": "p65-b22", "type": "paragraph", "text": "4\n7.392.260.782\n7.392.260.782", "bbox": [304.87, 177.68, 428.43, 198.81]},
+    {"id": "p65-b23", "type": "paragraph", "text": "5", "bbox": [304.55, 217.52, 309.05, 225.52]},
+    {"id": "p65-b24", "type": "paragraph", "text": "548.506.765.849", "bbox": [361.53, 233.75, 428.43, 241.75]},
+    {
+      "id": "p65-b25",
+      "type": "paragraph",
+      "text": "117.255.841.708\n5.1\n8.281.870.950\n5.2\n22.970.000.000\n30\n410.463.427.469\n6\n(10.464.374.278)\n7",
+      "bbox": [304.53, 248.16, 428.41, 308.46]
+    },
+    {"id": "p65-b26", "type": "paragraph", "text": "11.425.752.623\n13\n7.765.372.855\n3.660.379.768", "bbox": [303.57, 319.69, 429.54, 353.69]},
+    {"id": "p65-b27", "type": "paragraph", "text": "3.023.989.744.874", "bbox": [354.07, 374.86, 428.58, 382.86]},
+    {"id": "p65-b28", "type": "paragraph", "text": "2.066.977.934.424\n5.005.000.000\n6\n5.005.000.000", "bbox": [306.59, 392.86, 427.75, 420.97]},
+    {
+      "id": "p65-b29",
+      "type": "paragraph",
+      "text": "608.174.215.409\n8\n604.291.430.651\n915.064.498.520\n(310.773.067.869)\n9\n3.882.784.758\n28.043.185.150\n(24.160.400.392)",
+      "bbox": [306.59, 439.07, 428.78, 525.07]
+    },
+    {"id": "p65-b30", "type": "paragraph", "text": "931.831.174.375\n10\n931.831.174.375", "bbox": [304.16, 543.07, 428.78, 564.07]},
+    {
+      "id": "p65-b31",
+      "type": "paragraph",
+      "text": "12\n1.405.304.709.598\n1.575.851.401.467\n7.258.356.000\n(177.805.047.869)",
+      "bbox": [304.08, 581.69, 428.78, 629.07]
+    },
+    {"id": "p65-b32", "type": "paragraph", "text": "73.674.645.492\n13\n73.674.645.492", "bbox": [304.16, 647.07, 428.77, 668.07]},
+    {"id": "p65-b33", "type": "paragraph", "text": "3.591.314.524.128", "bbox": [351.29, 715.31, 425.8, 723.31]},
+    {"id": "p65-b34", "type": "paragraph", "text": "566.824.466.792", "bbox": [472.71, 153.06, 539.62, 161.06]},
+    {"id": "p65-b35", "type": "paragraph", "text": "12.399.440.394\n12.399.440.394\n182.000.000.000\n-", "bbox": [424.8, 177.68, 539.61, 211.77]},
+    {"id": "p65-b36", "type": "paragraph", "text": "182.000.000.000\n-", "bbox": [424.8, 217.83, 538.72, 227.23]},
+    {"id": "p65-b37", "type": "paragraph", "text": "369.850.448.899", "bbox": [472.71, 233.75, 539.62, 241.75]},
+    {
+      "id": "p65-b38",
+      "type": "paragraph",
+      "text": "88.918.611.402\n13.888.794.928\n18.650.000.000\n258.857.416.847\n(10.464.374.278)",
+      "bbox": [473.12, 249.16, 539.59, 309.16]
+    },
+    {"id": "p65-b39", "type": "paragraph", "text": "2.574.577.499\n803.740.308\n1.770.837.191", "bbox": [482.6, 319.69, 539.63, 353.77]},
+    {"id": "p65-b40", "type": "paragraph", "text": "2.631.679.362.887", "bbox": [466.3, 374.86, 540.81, 382.86]},
+    {"id": "p65-b41", "type": "paragraph", "text": "2.066.977.934.424\n5.000.000.000\n5.000.000.000", "bbox": [465.45, 392.86, 539.97, 420.97]},
+    {
+      "id": "p65-b42",
+      "type": "paragraph",
+      "text": "650.234.636.019\n646.599.258.124\n911.749.870.163\n(265.150.612.039)\n3.635.377.895\n26.808.529.204\n(23.173.151.309)",
+      "bbox": [468.62, 438.77, 539.95, 524.77]
+    },
+    {"id": "p65-b43", "type": "paragraph", "text": "761.970.466.552\n761.970.466.552", "bbox": [473.05, 542.77, 539.95, 563.77]},
+    {
+      "id": "p65-b44",
+      "type": "paragraph",
+      "text": "1.136.089.155.063\n1.265.851.401.467\n7.258.356.000\n(137.020.602.404)",
+      "bbox": [465.44, 581.77, 539.95, 628.77]
+    },
+    {"id": "p65-b45", "type": "paragraph", "text": "78.385.105.253\n78.385.105.253", "bbox": [477.98, 646.77, 539.94, 667.77]},
+    {"id": "p65-b46", "type": "paragraph", "text": "3.198.503.829.679", "bbox": [464.94, 715.31, 539.46, 723.31]},
+    {"id": "p65-b47", "type": "paragraph", "text": "MS", "bbox": [52.5, 124.38, 67.73, 134.38]},
+    {"id": "p65-b48", "type": "paragraph", "text": "100 A.", "bbox": [52.55, 153.06, 95.11, 161.06]},
+    {"id": "p65-b49", "type": "paragraph", "text": "110 I.\nTiền\n111 1.\nTiền", "bbox": [52.38, 177.68, 141.12, 197.94]},
+    {"id": "p65-b50", "type": "paragraph", "text": "120 II.", "bbox": [52.57, 203.84, 96.62, 211.84]},
+    {"id": "p65-b51", "type": "paragraph", "text": "123 1.", "bbox": [52.56, 217.52, 95.9, 225.52]},
+    {"id": "p65-b52", "type": "paragraph", "text": "130 III.", "bbox": [52.45, 233.75, 99.19, 241.75]},
+    {"id": "p65-b53", "type": "paragraph", "text": "131 1.\n132 2.\n135 3.\n136 4.\n137 5.", "bbox": [52.56, 248.46, 95.9, 308.46]},
+    {"id": "p65-b54", "type": "paragraph", "text": "150 IV.\n151 1.\n152 2.", "bbox": [52.56, 319.69, 99.36, 353.69]},
+    {"id": "p65-b55", "type": "paragraph", "text": "200 B.", "bbox": [52.84, 374.86, 96.76, 382.86]},
+    {"id": "p65-b56", "type": "paragraph", "text": "210 I.\n216 1.", "bbox": [52.56, 400.02, 95.9, 421.02]},
+    {"id": "p65-b57", "type": "paragraph", "text": "220 II.\n221 1.\n222\n223\n227 2.\n228\n229", "bbox": [52.56, 439.02, 96.62, 525.02]},
+    {"id": "p65-b58", "type": "paragraph", "text": "240 III.\n242 1.", "bbox": [52.56, 543.02, 99.31, 564.02]},
+    {"id": "p65-b59", "type": "paragraph", "text": "250 IV.\n251 1.\n252 2.\n254 3.", "bbox": [52.56, 582.02, 99.36, 629.02]},
+    {"id": "p65-b60", "type": "paragraph", "text": "260 V.\n261 1.", "bbox": [52.56, 647.02, 96.67, 668.02]},
+    {"id": "p65-b61", "type": "furniture", "text": "CMC CORPORATION", "bbox": [43.08, 811.15, 116.24, 819.15]},
+    {"id": "p65-b62", "type": "furniture", "text": "67", "bbox": [552.0, 811.15, 561.06, 819.15]}
+  ]
+}

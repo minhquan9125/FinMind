@@ -1,0 +1,23 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\ELC\\2024\\ELC_2024_500811.pdf",
+  "scope": "annual_report_content",
+  "pages": 7,
+  "routes": {
+    "TESSERACT": 7
+  },
+  "blockTypes": {
+    "paragraph": 36,
+    "heading": 1
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 28,
+      "end": 34
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

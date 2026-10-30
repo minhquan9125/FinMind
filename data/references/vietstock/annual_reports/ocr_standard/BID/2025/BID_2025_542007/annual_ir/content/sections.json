@@ -1,0 +1,69 @@
+{
+  "document_sha256": "c95251ea276f8ea9138d58b4d95e45d90cfa8d341b0acabfaf9774f96d2ee586",
+  "sections": [],
+  "unclassified_pages": [
+    39,
+    40,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78
+  ],
+  "topics": [
+    {
+      "id": "company",
+      "title": "Doanh nghiệp, ngành nghề và cơ cấu tổ chức",
+      "pdf_pages": [
+        39,
+        40
+      ]
+    },
+    {
+      "id": "governance",
+      "title": "Quản trị công ty",
+      "pdf_pages": [
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78
+      ]
+    }
+  ],
+  "table_targets": [
+    {
+      "topic": "governance",
+      "pdf_page": 62,
+      "title": "GIAO DỊCH CỔ PHIẾU CỦA CỔ ĐÔNG NỘI BỘ Trong năm 2025 không phát sinh giao dịch cổ phiếu của cổ đông nội bộ tại BIDV.",
+      "ir_file": "p-062.ir.json",
+      "status": "text_only",
+      "needs_review": true,
+      "table_block_id": null
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "5bed59e958fd3149a1a5",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3009025/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban.chn",
+      "title": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+      "description": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản của Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam như sau: Các tập tin đính kèm 20261027 - TCB - TB ve NDKCC thuc hien quyen lay y kien CD bang VB lan 2 nam 2026.pdf Theo HOSE",
+      "published_at": "2026-10-28T11:15:11+00:00",
+      "crawled_at": "2026-10-29T07:43:15.504524+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/281026/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban-0.pdf?v=1793186269476"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7648936170212767,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban/42510093",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "df6d277b83fdb34a8d70",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3009020/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptgd-kem-quyet-dinh.chn",
+      "title": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+      "description": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+      "content": "Công ty Cổ phần Chứng khoán Kỹ Thương thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định) như sau: Các tập tin đính kèm 20261028 - TCB - Thong bao bo nhiem ba Phan Thi Hai Yen la PTGD.pdf Theo HOSE",
+      "published_at": "2026-10-28T11:10:19+00:00",
+      "crawled_at": "2026-10-29T07:43:16.254583+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/281026/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptg-kem-quyet-dinh-0.pdf?v=1793186256403"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7073770491803278,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptgd-kem-quyet-dinh/42510086",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "acdb03b6bac34f311eb5",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3009016/tcb-quyet-dinh-hdqt-ve-bo-nhiem-ptgd-ba-phan-thi-hai-yen.chn",
+      "title": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+      "description": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+      "content": "Công ty Cổ phần Chứng khoán Kỹ Thương công bố Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến như sau: Các tập tin đính kèm 20261028 - TCB - QD bo nhiem ba Phan Thi Hai Yen la PTGD.pdf Theo HOSE",
+      "published_at": "2026-10-28T11:08:35+00:00",
+      "crawled_at": "2026-10-29T07:43:16.963876+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/281026/tcb-quyet-dinh-h-qt-ve-bo-nhiem-ptg-ba-phan-thi-hai-yen-0.pdf?v=1793186248936"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.734375,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-quyet-dinh-hdqt-ve-bo-nhiem-ptgd-ba-phan-thi-hai-yen/42510090",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "d17397b38d7f847d522e",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3008103/tcb-nghi-quyet-hdqt-so-0589-0591-ngay-27102026.chn",
+      "title": "TCB: Nghị quyết HĐQT số 0589, 0591 ngày 27/10/2026",
+      "description": "TCB: Nghị quyết HĐQT số 0589, 0591 ngày 27/10/2026",
+      "content": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam thông báo Nghị quyết HĐQT số 0589, 0591 ngày 27/10/2026 như sau: Các tập tin đính kèm 20261027 - TCB - NQ phe duyet TCBS cung cap dich vu phat hanh trai phieu TBC lan 17,18.pdf Theo HOSE",
+      "published_at": "2026-10-27T10:47:38+00:00",
+      "crawled_at": "2026-10-29T07:43:17.761206+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/271026/tcb-nghi-quyet-h-qt-so-0589-0591-ngay-27-10-2026-0.pdf?v=1793098238563"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.3529411764705882,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-nghi-quyet-hdqt-so-0593-ngay-28-10-2026/42510185",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "924fd585ec574e427736",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3007214/tcb-nghi-quyet-hdqt-so-0586-ngay-26102026.chn",
+      "title": "TCB: Nghị quyết HĐQT số 0586 ngày 26/10/2026",
+      "description": "TCB: Nghị quyết HĐQT số 0586 ngày 26/10/2026",
+      "content": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam công bố Nghị quyết HĐQT số 0586 ngày 26/10/2026 như sau: Các tập tin đính kèm 20261026 - TCB - NQ dieu chinh ve han muc vay cua NQ 0502 cho NLQ.pdf Theo HOSE",
+      "published_at": "2026-10-26T10:53:57+00:00",
+      "crawled_at": "2026-10-29T07:43:18.641673+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/261026/tcb-nghi-quyet-h-qt-so-0586-ngay-26-10-2026-0.pdf?v=1793012229434"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.48124999999999996,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-nghi-quyet-hdqt-so-0593-ngay-28-10-2026/42510185",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "3fc27980c25c23c47c23",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3005140/tcb-nghi-quyet-hdqt-ve-viec-chot-danh-sach-co-dong-lay-y-kien-co-dong-bang-van-ban.chn",
+      "title": "TCB: Nghị quyết HĐQT về việc chốt danh sách cổ đông lấy ý kiến cổ đông bằng văn bản",
+      "description": "TCB: Nghị quyết HĐQT về việc chốt danh sách cổ đông lấy ý kiến cổ đông bằng văn bản",
+      "content": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam thông báo Nghị quyết HĐQT về việc chốt DSCĐ lấy ý kiến cổ đông bằng văn bản như sau: Các tập tin đính kèm 20261022 - TCB - NQ chot DSCD ve LYKCD ve thanh lap NHTM do TCB so huu.pdf Theo HOSE",
+      "published_at": "2026-10-22T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:43:19.391086+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/231026/tcb-nghi-quyet-h-qt-ve-viec-chot-dsc-lay-y-kien-co-dong-bang-van-ban-0.pdf?v=1792748375808"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.33958333333333335,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban/42510093",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "ca6af2ed0fa791f7e761",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3005141/tcb-thong-bao-ngay-dkcc-thuc-hien-quyen-lay-y-kien-co-dong-bang-van-ban.chn",
+      "title": "TCB: Thông báo ngày ĐKCC thực hiện quyền lấy ý kiến cổ đông bằng văn bản",
+      "description": "TCB: Thông báo ngày ĐKCC thực hiện quyền lấy ý kiến cổ đông bằng văn bản",
+      "content": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam thông báo ngày ĐKCC thực hiện quyền lấy ý kiến cổ đông bằng văn bản như sau: Các tập tin đính kèm 20261022 - TCB - Thong bao ve YKCD ve thanh lap NHTM do TCB so huu.pdf Theo HOSE",
+      "published_at": "2026-10-22T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:43:20.078695+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/231026/tcb-thong-bao-ngay-kcc-thuc-hien-quyen-lay-y-kien-co-dong-bang-van-ban-0.pdf?v=1792748377430"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.3662409535972754,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban/42510093",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "1d43d59deec6ce597c3e",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3005334/tcb-29102026-ngay-gdkhq-thuong-cp-ty-le-50.chn",
+      "title": "TCB: 29.10.2026, ngày GDKHQ thưởng cp (tỷ lệ 50%)",
+      "description": "TCB: 29.10.2026, ngày GDKHQ thưởng cp (tỷ lệ 50%)",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM thông báo về ngày đăng ký cuối cùng phát hành cổ phiếu để trả cổ tức cho cổ đông hiện hữu của Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam như sau: Các tập tin đính kèm 20261023 - TCB - TB NDKCC phat hanh CP de tra co tuc.pdf Theo HOSE",
+      "published_at": "2026-10-22T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:43:20.830621+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/231026/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-phat-hanh-co-phieu-de-tra-co-tuc-cho-co-dong-hien-huu-0.pdf?v=1792754039923"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.4434782608695652,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban/42510093",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "745a445e69b54dfd8a44",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/tcb-3004359/tcb-nghi-quyet-hdqt-phe-duyet-tang-von-gop-tai-cong-ty-co-phan-bao-hiem-phi-nhan-tho-techcom-tgins.chn",
+      "title": "TCB: Nghị quyết HĐQT phê duyệt tăng vốn góp tại Công ty Cổ phần Bảo hiểm Phi nhân thọ Techcom (TGIns)",
+      "description": "TCB: Nghị quyết HĐQT phê duyệt tăng vốn góp tại Công ty Cổ phần Bảo hiểm Phi nhân thọ Techcom (TGIns)",
+      "content": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam công bố Nghị quyết HĐQT về phê duyệt tăng vốn góp tại Công ty Cổ phần Bảo hiểm Phi nhân thọ Techcom (TGIns) như sau: Các tập tin đính kèm 20261022 - TCB - NQ Techcombank tang von gop tai TGIns.pdf Theo HOSE",
+      "published_at": "2026-10-21T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:43:21.584454+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/221026/tcb-nghi-quyet-h-qt-ve-phe-duyet-tang-von-gop-tai-cong-ty-co-phan-bao-hiem-phi-nhan-tho-techcom-tgins-0.pdf?v=1792665845582"
+      ],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.33348982785602505,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-nghi-quyet-hdqt-so-0593-ngay-28-10-2026/42510185",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "a844621526c87eb289a8",
+      "source": "cafef",
+      "url": "https://cafef.vn/techcombank-nhan-giai-ngan-hang-tot-nhat-viet-nam-nam-thu-3-lien-tiep-tu-global-finance-tiep-tuc-chuoi-hat-trick-tu-3-to-chuc-danh-gia-the-gioi-188261021103654366.chn",
+      "title": "Techcombank nhận giải “Ngân hàng Tốt nhất Việt Nam” năm thứ 3 liên tiếp từ Global Finance, tiếp tục “chuỗi hat-trick” từ 3 tổ chức danh giá thế giới",
+      "description": "Ngân hàng TMCP Kỹ thương Việt Nam (Techcombank) tiếp tục được Tạp chí tài chính quốc tế Global Finance trao giải \"Ngân hàng Tốt nhất Việt Nam 2026\" tại lễ trao giải World’s Best Banks Awards diễn ra bên lề Hội nghị Thường niên IMF/World Bank tại khách sạn Dusit Thani Bangkok, Thái Lan.",
+      "content": "TCB: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Sự kiện có sự tham dự của Thống đốc Ngân hàng Trung ương, CEO cùng lãnh đạo cấp cao của các định chế tài chính hàng đầu thế giới. Tiến sĩ Jens Lottner – Tổng Giám đốc Techcombank tham dự và nhận giải. Đây là năm thứ ba liên tiếp Techcombank giành được \"hat-trick\" danh hiệu cao nhất dành cho ngân hàng duy nhất tại Việt Nam từ ba tổ chức danh giá hàng đầu thế giới Global Finance, Euromoney và FinanceAsia. Global Finance là một trong những tạp chí tài chính uy tín toàn cầu với hệ thống giải thưởng World’s Best Banks Awards ghi nhận những ngân hàng xuất sắc nhất tại từng quốc gia dựa trên các tiêu chí về năng lực tài chính, hiệu quả hoạt động, đổi mới sáng tạo và chất lượng dịch vụ khách hàng. Trong danh sách World’s Best Banks 2026 , Techcombank cũng là định chế tài chính duy nhất của Việt Nam được vinh danh cùng các tên tuổi hàng đầu châu Á như DBS Bank (Singapore), MUFG (Nhật Bản), Hana Bank (Hàn Quốc) và ICBC (Trung Quốc). Việc góp mặt trong nhóm những ngân hàng dẫn đầu tại các nền kinh tế lớn trong khu vực cho thấy vị thế và năng lực của tổ chức tài chính Việt Nam trên bản đồ tài chính quốc tế. Tiến sĩ Jens Lottner, Tổng Giám đốc Techcombank nhận giải thưởng \"Ngân hàng Tốt nhất Việt Nam 2026\" tại lễ trao giải (Bangkok, Thái Lan). Ảnh Global Finance Techcombank liên tục duy trì vị thế dẫn đầu ngành ngân hàng Việt Nam về hiệu quả hoạt động và chất lượng tăng trưởng. Trong 9 tháng đầu năm 2026, ngân hàng ghi nhận lợi nhuận trước thuế đạt 28,9 nghìn tỷ đồng, tăng 23,7% so với cùng kỳ. Riêng quý III, lợi nhuận trước thuế đạt 10,4 nghìn tỷ đồng, mức cao nhất theo quý trong lịch sử hoạt động của ngân hàng. Động lực tăng trưởng đến từ sự đa dạng hóa nguồn thu, với thu nhập từ hoạt động dịch vụ tăng 40% lên 11,8 nghìn tỷ đồng, góp phần nâng tỷ trọng thu nhập ngoài lãi lên 26,2% tổng thu nhập hoạt động. Kết quả này cho thấy khả năng duy trì tăng trưởng chất lượng cao của Techcombank trong bối cảnh ngành ngân hàng đang bước vào giai đoạn cạnh tranh mới, nơi hiệu quả hoạt động, năng lực quản trị và khả năng đa dạng hóa nguồn thu trở thành những yếu tố quyết định vị thế dẫn đầu. Bên cạnh hiệu quả kinh doanh, Techcombank tiếp tục duy trì chất lượng tài sản thuộc nhóm dẫn đầu ngành với tỷ lệ nợ xấu thấp khoảng 1,26% , đồng thời giữ tỷ lệ an toàn vốn (CAR) duy trì ở mức 15% , tạo nền tảng vững chắc cho tăng trưởng. Mới đây, Techcombank vừa được Ngân hàng Nhà nước chấp thuận tăng vốn điều lệ lên 106.593 tỷ đồng , trở thành ngân hàng có quy mô vốn điều lệ lớn nhất Việt Nam. Việc tăng vốn không chỉ củng cố sức mạnh tài chính mà còn mở rộng dư địa phát triển, giúp ngân hàng nâng cao năng lực phục vụ khách hàng, đáp ứng nhu cầu vốn ngày càng gia tăng của nền kinh tế và thúc đẩy các khoản đầu tư chiến lược vào công nghệ, dữ liệu và đổi mới sáng tạo. Đây là bước đi quan trọng để Techcombank tiếp tục duy trì đà tăng trưởng, củng cố lợi thế cạnh tranh và nâng cao vị thế trên thị trường. Nền tảng khách hàng tiếp tục là một trong những lợi thế cạnh tranh khác biệt của Techcombank. Kết thúc 9 tháng đầu năm 2026, Techcombank phục vụ 19,1 triệu khách hàng, trong đó thu hút thêm 1,8 triệu khách hàng cá nhân mới, với 65,3% đến từ các kênh số. Techcombank đang sở hữu một trong những hệ sinh thái khách hàng lớn và mạnh nhất Việt Nam. T rong quý III/2026, Techcombank dẫn đầu ngành ngân hàng về Chỉ số Sức khỏe Thương hiệu (Brand Equity Index - BEI) đạt 3.8, thuộc nhóm thương hiệu mạnh, đồng thời ghi nhận chỉ số NPS (Net Promoter Score) đạt 98 điểm cao nhất ngành, cho thấy khả năng xây dựng niềm tin, sự gắn kết và lòng trung thành của khách hàng dành cho ngân hàng. Trong quý III/2026, Techcombank dẫn đầu ngành ngân hàng với BEI đạt 3.8 và NPS đạt 98 điểm, phản ánh sức mạnh thương hiệu cùng mức độ tin tưởng, gắn kết vượt trội của khách hàng. Ảnh Techcombank Phát biểu tại lễ trao giải , Tiến sĩ Jens Lottner, Tổng Giám đốc Techcombank , cho biết: \"Giải thưởng này là sự ghi nhận cho chiến lược nhất quán của Techcombank trong việc đầu tư vào công nghệ, dữ liệu và con người để phục vụ khách hàng ngày càng tốt hơn. Khi Việt Nam bước vào một giai đoạn phát triển mới, chúng tôi có vị thế thuận lợi để tiếp tục thúc đẩy đổi mới trong ngành tài chính, mở rộng khả năng tiếp cận các giải pháp tài chính hiện đại và đóng góp vào sự phồn thịnh lâu dài của người dân, doanh nghiệp và nền kinh tế.\" Việc liên tiếp được các tổ chức danh giá toàn cầu vinh danh phản ánh hiệu quả của chiến lược phát triển dài hạn dựa trên năng lực tài chính vững mạnh, bền vững, đổi mới công nghệ, trải nghiệm khách hàng vượt trội, khẳng định vị thế dẫn dắt của một Doanh nghiệp Quốc gia. Ngân hàng TMCP Kỹ thương Việt Nam (Techcombank, HoSE: TCB) là một Doanh nghiệp Quốc gia tiêu biểu, đồng thời cũng là một trong những định chế tài chính có quy mô, giá trị và mức độ ảnh hưởng hàng đầu Việt Nam. Với tầm nhìn \"Chuyển đổi ngành tài chính, nâng tầm giá trị sống\", Techcombank đang tiên phong kiến tạo tương lai của ngành tài chính – ngân hàng, từng bước khẳng định vị thế của một ngân hàng dẫn đầu khu vực châu Á và vươn tầm quốc tế. Với chiến lược khách hàng là trọng tâm, Techcombank hiện đang cung cấp các giải pháp tài chính và dịch vụ ngân hàng đa dạng tới hơn 18 triệu khách hàng cá nhân và doanh nghiệp; thông qua mạng lưới điểm giao dịch trải dài khắp Việt Nam cũng như dịch vụ ngân hàng số dẫn đầu thị trường. Phương pháp tiếp cận hệ sinh thái, hợp tác đối tác của Ngân hàng trong nhiều lĩnh vực kinh tế chủ chốt giúp tạo nên sự khác biệt cho Techcombank tại một trong những nền kinh tế phát triển nhanh nhất thế giới. Techcombank hiện được xếp hạng Ba3 bởi Moody’s, BB bởi S&P, và BB- bởi Fitch, nằm trong nhóm những ngân hàng thương mại cổ phần được xếp hạng tín nhiệm cao nhất tại Việt Nam.",
+      "published_at": "2026-10-21T10:36:00",
+      "crawled_at": "2026-10-29T07:43:22.610196+00:00",
+      "attachments": [],
+      "symbols": [
+        "TCB"
+      ],
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.04449178332318928,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/tcb-techcombank-bo-nhiem-mot-pho-tong-giam-doc/42524201",
+        "matched_file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:43:22.613729+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "TCB",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

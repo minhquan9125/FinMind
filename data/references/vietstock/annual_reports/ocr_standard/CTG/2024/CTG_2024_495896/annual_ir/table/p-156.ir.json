@@ -1,0 +1,170 @@
+{
+  "ir_version": "1",
+  "page": 156,
+  "printed_page": "11",
+  "page_class": "notes",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+    "file_name": "CTG_2024_495896.pdf"
+  },
+  "blocks": [
+    {"id": "p156-b1", "type": "heading", "text": "PHẦN 7 BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ ĐƯỢC KIỂM TOÁN", "bbox": [75.89, 23.46, 304.23, 31.46]},
+    {"id": "p156-b2", "type": "paragraph", "text": "6 - THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (Tiếp theo)", "bbox": [70.87, 46.14, 286.4, 54.14]},
+    {"id": "p156-b3", "type": "paragraph", "text": "Phân loại nợ và trích lập dự phòng rủi ro tín dụng", "bbox": [70.86, 100.63, 297.68, 110.63]},
+    {
+      "id": "p156-b4",
+      "type": "paragraph",
+      "text": "Theo Thông tư 31 và Nghị định 86, Ngân hàng phải thực hiện phân loại nợ, trích lập dự phòng rủi ro\ntín dụng với các tài sản Có (gọi tắt là “nợ”) bao gồm:",
+      "bbox": [70.86, 124.4, 524.45, 146.4]
+    },
+    {
+      "id": "p156-b5",
+      "type": "paragraph",
+      "text": "• Chiết khấu, tái chiết khấu công cụ chuyển nhượng và giấy tờ có giá khác;",
+      "bbox": [70.86, 208.4, 419.04, 218.4]
+    },
+    {"id": "p156-b6", "type": "paragraph", "text": "• Các khoản cấp tín dụng dưới hình thức phát hành thẻ tín dụng;", "bbox": [70.86, 256.4, 370.89, 266.4]},
+    {
+      "id": "p156-b7",
+      "type": "paragraph",
+      "text": "• Các khoản trả thay theo cam kết ngoại bảng bao gồm khoản trả thay nghĩa vụ của khách hàng\ntrong hoạt động bảo lãnh, nghiệp vụ thư tín dụng (trừ các trường hợp trả thay nghĩa vụ của khách\nhàng trong nghiệp vụ thư tín dụng trả chậm có điều khoản thỏa thuận bên thụ hưởng được thanh\ntoán trả ngay hoặc trả trước ngày đến hạn thanh toán thư tín dụng và nghiệp vụ hoàn trả thư tín\ndụng theo hình thức thỏa thuận với khách hàng thanh toán bằng nguồn tiền của ngân hàng hoàn\ntrả kể từ ngày ngân hàng hoàn trả thanh toán cho bên thụ hưởng; nghiệp vụ thương lượng thanh\ntoán thư tín dụng) và các khoản trả thay khác theo cam kết ngoại bảng;",
+      "bbox": [70.86, 280.4, 524.46, 362.4]
+    },
+    {
+      "id": "p156-b8",
+      "type": "paragraph",
+      "text": "• Số tiền mua và ủy thác mua trái phiếu doanh nghiệp (bao gồm cả trái phiếu do tổ chức tín dụng\nkhác phát hành) chưa niêm yết trên thị trường chứng khoán hoặc chưa đăng ký giao dịch trên\nhệ thống giao dịch UPCoM (sau đây gọi tắt là trái phiếu chưa niêm yết), không bao gồm mua trái\nphiếu chưa niêm yết bằng nguồn vốn ủy thác mà bên ủy thác chịu rủi ro;",
+      "bbox": [70.86, 376.4, 524.35, 422.4]
+    },
+    {
+      "id": "p156-b9",
+      "type": "paragraph",
+      "text": "• Tiền gửi (trừ tiền gửi không kỳ hạn tại tổ chức tín dụng, chi nhánh ngân hàng nước ngoài; tiền gửi\ntại ngân hàng chính sách xã hội theo quy định của NHNN về việc các tổ chức tín dụng nhà nước\nduy trì số dư tiền gửi tại ngân hàng chính sách xã hội) tại tổ chức tín dụng, chi nhánh ngân hàng\nnước ngoài theo quy định của pháp luật và gửi tiền (trừ tiền gửi không kỳ hạn) tại tổ chức tín dụng",
+      "bbox": [70.86, 460.4, 524.42, 506.4]
+    },
+    {
+      "id": "p156-b10",
+      "type": "paragraph",
+      "text": "• Mua, bán nợ theo quy định của NHNN trừ hoạt động mua nợ xấu của tổ chức tín dụng, chi nhánh\nngân hàng nước ngoài với Công ty quản lý tài sản của các tổ chức tín dụng Việt Nam;",
+      "bbox": [70.86, 532.4, 524.45, 554.4]
+    },
+    {
+      "id": "p156-b11",
+      "type": "paragraph",
+      "text": "• Mua bán lại trái phiếu Chính phủ trên thị trường chứng khoán theo quy định của pháp luật về phát\nhành, đăng ký, lưu ký, niêm yết và giao dịch công cụ nợ của Chính phủ trên thị trường chứng khoán;",
+      "bbox": [70.86, 568.4, 524.48, 590.4]
+    },
+    {
+      "id": "p156-b12",
+      "type": "paragraph",
+      "text": "• Mua chứng chỉ tiền gửi do tổ chức tín dụng, chi nhánh ngân hàng nước ngoài khác phát hành;",
+      "bbox": [70.86, 604.4, 511.01, 614.4]
+    },
+    {
+      "id": "p156-b13",
+      "type": "paragraph",
+      "text": "• Nghiệp vụ phát hành thư tín dụng trả chậm có điều khoản thỏa thuận bên thụ hưởng được thanh\ntoán trả ngay hoặc trả trước ngày đến hạn thanh toán thư tín dụng và nghiệp vụ hoàn trả thư\ntín dụng theo hình thức thỏa thuận với khách hàng thanh toán bằng nguồn tiền của ngân hàng\nhoàn trả kể từ ngày ngân hàng hoàn trả thanh toán cho bên thụ hưởng; nghiệp vụ thương lượng",
+      "bbox": [70.86, 628.4, 524.46, 674.4]
+    },
+    {
+      "id": "p156-b14",
+      "type": "paragraph",
+      "text": "• Mua hẳn miễn truy đòi bộ chứng từ xuất trình theo thư tín dụng, trừ trường hợp ngân hàng thương\nmại, chi nhánh ngân hàng nước ngoài mua hắn miễn truy đòi bộ chứng từ theo thư tín dụng do\nchính ngân hàng thương mại, chi nhánh ngân hàng nước ngoài đó phát hành.",
+      "bbox": [70.86, 700.4, 524.46, 734.4]
+    },
+    {
+      "id": "p156-b15",
+      "type": "paragraph",
+      "text": "Theo đó, nhóm nợ của khách hàng là nhóm nợ có rủi ro cao nhất khi thực hiện phân loại nợ đồng thời\ntheo Điều 10, Điều 11 của Thông tư 31 và nhóm nợ cao nhất tại các tổ chức tín dụng của khách hàng",
+      "bbox": [70.86, 748.4, 524.41, 770.4]
+    },
+    {
+      "id": "p156-b16",
+      "type": "paragraph",
+      "text": "Ngân hàng Thương mại Cổ phần Công thương Việt Nam\n6 - THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (Tiếp theo)",
+      "bbox": [666.14, 35.62, 881.67, 54.14]
+    },
+    {
+      "id": "p156-b17",
+      "type": "paragraph",
+      "text": "Ngân hàng thực hiện giữ nguyên nhóm nợ đối với một số khoản vay theo quy định tại Thông tư số\n10/2015/TT-NHNN ngày 22 tháng 7 năm 2015 và Thông tư số 25/2018/TT-NHNN ngày 24 tháng 10\nnăm 2018 của NHNN về sửa đổi, bổ sung một số điều của Thông tư số 10/2015/TT-NHNN hướng dẫn\nthực hiện một số nội dung của Nghị định số 55/2015/NĐ-CP ngày 09 tháng 6 năm 2015 (“Nghị định\n55”) của Chính phủ về chính sách tín dụng phục vụ phát triển nông nghiệp, nông thôn; Thông tư 02 và\nThông tư số 06 của NHNN về sửa đổi, bổ sung một số điều của Thông tư 02 quy định về việc tổ chức\ntín dụng, chi nhánh ngân hàng nước ngoài cơ cấu lại thời hạn trả nợ và giữ nguyên nhóm nợ nhằm hỗ\ntrợ khách hàng khó khăn và các văn bản của NHNN về việc phân loại nợ và trích lập dự phòng rủi ro.",
+      "bbox": [666.14, 76.4, 1119.74, 170.4]
+    },
+    {
+      "id": "p156-b18",
+      "type": "paragraph",
+      "text": "Các khoản nợ được phân loại theo các mức độ rủi ro như sau: Nợ đủ tiêu chuẩn, Nợ cần chú ý, Nợ\ndưới tiêu chuẩn, Nợ nghi ngờ và Nợ có khả năng mất vốn. Nợ xấu là các khoản nợ được phân loại là\nNợ dưới tiêu chuẩn, Nợ nghi ngờ và Nợ có khả năng mất vốn. Các khoản nợ được phân loại và trích\nlập dự phòng rủi ro tín dụng vào thời điểm cuối mỗi tháng và được ghi nhận hạch toán vào tháng\ntiếp theo. Dự phòng rủi ro tín dụng tại ngày 31 tháng 12 được ghi nhận vào báo cáo kết quả hoạt\nđộng hợp nhất trong năm đó.",
+      "bbox": [666.14, 184.4, 1119.71, 254.4]
+    },
+    {
+      "id": "p156-b19",
+      "type": "paragraph",
+      "text": "Dự phòng cụ thể tại ngày 31 tháng 12 được xác định bằng dư nợ sau khi trừ đi giá trị tài sản bảo đảm\nđã được khấu trừ nhân với tỷ lệ trích lập dự phòng cụ thể theo kết quả phân loại nhóm nợ tương ứng\ntại ngày 31 tháng 12. Tỷ lệ trích lập dự phòng cụ thể đối với từng nhóm nợ theo quy định tại Nghị định\n86 như sau:",
+      "bbox": [666.14, 268.4, 1119.74, 314.4]
+    },
+    {"id": "p156-b20", "type": "heading", "text": "NHÓM NỢ", "bbox": [711.5, 327.41, 748.78, 335.41]},
+    {"id": "p156-b21", "type": "paragraph", "text": "1\nNợ đủ tiêu chuẩn", "bbox": [668.98, 347.42, 774.78, 355.54]},
+    {"id": "p156-b22", "type": "paragraph", "text": "2\nNợ cần chú ý", "bbox": [668.98, 367.56, 759.26, 375.68]},
+    {"id": "p156-b23", "type": "paragraph", "text": "3\nNợ dưới tiêu chuẩn", "bbox": [668.98, 387.7, 781.45, 395.82]},
+    {"id": "p156-b24", "type": "paragraph", "text": "4\nNợ nghi ngờ", "bbox": [668.98, 407.83, 756.22, 415.95]},
+    {"id": "p156-b25", "type": "paragraph", "text": "5\nNợ có khả năng mất vốn", "bbox": [668.98, 427.97, 802.28, 436.09]},
+    {
+      "id": "p156-b26",
+      "type": "paragraph",
+      "text": "Số dự phòng cụ thể phải trích bổ sung được quy định tại Thông tư 02. Theo đó, Ngân hàng cần thực\nhiện trích dự phòng cụ thể đối với các khách hàng có số dư nợ được cơ cấu lại thời hạn trả nợ theo\nquy định tại Thông tư này như sau:",
+      "bbox": [666.14, 448.4, 1119.75, 482.4]
+    },
+    {
+      "id": "p156-b27",
+      "type": "paragraph",
+      "text": "• Đến ngày 31 tháng 12 năm 2023: tối thiểu 50% số tiền dự phòng cụ thể phải trích bổ sung;",
+      "bbox": [666.14, 496.4, 1082.94, 506.4]
+    },
+    {
+      "id": "p156-b28",
+      "type": "paragraph",
+      "text": "• Đến ngày 31 tháng 12 năm 2024: 100% số tiền dự phòng cụ thể phải trích bổ sung.",
+      "bbox": [666.14, 520.4, 1048.01, 530.4]
+    },
+    {
+      "id": "p156-b29",
+      "type": "paragraph",
+      "text": "Theo Nghị định 86, dự phòng chung được trích lập để dự phòng cho những tổn thất chưa được xác\nđịnh trong quá trình phân loại nợ và trích lập dự phòng cụ thể và trong các trường hợp các tổ chức\ntín dụng gặp khó khăn về tài chính khi chất lượng các khoản nợ suy giảm. Theo đó, Ngân hàng phải\nthực hiện trích lập và duy trì dự phòng chung bằng 0,75% tổng số dư các khoản nợ được phân loại\ntừ nhóm 1 đến nhóm 4, ngoại trừ các khoản tiền gửi tại tổ chức tín dụng, chi nhánh ngân hàng nước\nngoài theo quy định của pháp luật và tiền gửi tại tổ chức tín dụng nước ngoài; các khoản cho vay,\nmua có kỳ hạn giấy tờ có giá giữa các tổ chức tín dụng, chi nhánh ngân hàng nước ngoài tại Việt\nNam; các khoản mua chứng chỉ tiền gửi, trái phiếu do tổ chức tín dụng, chi nhánh ngân hàng nước\nngoài khác phát hành trong nước; các khoản mua bán lại trái phiếu Chính phủ trên thị trường chứng\nkhoán theo quy định của pháp luật về phát hành, đăng ký, lưu ký, niêm yết và giao dịch công cụ\nnợ của Chính phủ trên thị trường chứng khoán và các khoản nợ khác phát sinh giữa các tổ chức tín\ndụng, chi nhánh ngân hàng nước ngoài tại Việt Nam theo quy định của pháp luật.",
+      "bbox": [666.14, 544.4, 1119.75, 686.4]
+    },
+    {"id": "p156-b30", "type": "paragraph", "text": "Xử lý rủi ro tín dụng", "bbox": [666.14, 700.63, 755.66, 710.63]},
+    {
+      "id": "p156-b31",
+      "type": "paragraph",
+      "text": "Dự phòng được ghi nhận như một khoản chi phí trên báo cáo kết quả hoạt động hợp nhất và được\nsử dụng để xử lý các khoản nợ xấu. Theo quy định tại Nghị định 86, Ngân hàng thành lập Hội đồng\nXử lý Rủi ro để xử lý các khoản nợ xấu nếu như chúng được phân loại vào nhóm 5, hoặc nếu khách\nhàng vay là pháp nhân giải thể, phá sản, hoặc là cá nhân bị chết hoặc mất tích.",
+      "bbox": [666.14, 724.4, 1119.71, 770.4]
+    },
+    {"id": "p156-b32", "type": "heading", "text": "TỶ LỆ DỰ PHÒNG CỤ THỂ", "bbox": [1025.58, 327.41, 1116.85, 335.41]},
+    {"id": "p156-b33", "type": "paragraph", "text": "0%", "bbox": [1106.24, 347.36, 1116.85, 355.36]},
+    {"id": "p156-b34", "type": "paragraph", "text": "5%", "bbox": [1106.95, 367.5, 1116.85, 375.5]},
+    {"id": "p156-b35", "type": "paragraph", "text": "20%", "bbox": [1102.1, 387.63, 1116.85, 395.63]},
+    {"id": "p156-b36", "type": "paragraph", "text": "50%", "bbox": [1101.99, 407.77, 1116.85, 415.77]},
+    {"id": "p156-b37", "type": "paragraph", "text": "100%", "bbox": [1098.54, 427.9, 1116.85, 435.9]},
+    {"id": "p156-b38", "type": "paragraph", "text": "Ngân hàng Thương mại Cổ phần Công thương Việt Nam", "bbox": [70.87, 35.62, 251.89, 42.62]},
+    {"id": "p156-b39", "type": "paragraph", "text": "Dự phòng rủi ro tín dụng", "bbox": [70.86, 76.63, 183.71, 86.63]},
+    {"id": "p156-b40", "type": "paragraph", "text": "• Cho vay;", "bbox": [70.86, 160.4, 122.6, 170.4]},
+    {"id": "p156-b41", "type": "paragraph", "text": "• Cho thuê tài chính;", "bbox": [70.86, 184.4, 168.48, 194.4]},
+    {"id": "p156-b42", "type": "paragraph", "text": "• Bao thanh toán;", "bbox": [70.86, 232.4, 156.87, 242.4]},
+    {"id": "p156-b43", "type": "paragraph", "text": "• Ủy thác cấp tín dụng;", "bbox": [70.86, 436.4, 181.07, 446.4]},
+    {"id": "p156-b44", "type": "paragraph", "text": "ở nước ngoài;", "bbox": [82.2, 508.4, 144.87, 518.4]},
+    {"id": "p156-b45", "type": "paragraph", "text": "thanh toán thư tín dụng;", "bbox": [82.2, 676.4, 193.43, 686.4]},
+    {
+      "id": "p156-b46",
+      "type": "paragraph",
+      "text": "do Trung tâm Thông tin tín dụng (“CIC”) của NHNN cung cấp tại thời điểm phân loại nợ.",
+      "bbox": [70.86, 772.4, 467.95, 782.4]
+    },
+    {"id": "p156-b47", "type": "furniture", "text": "BÁO CÁO “CHUYỂN ĐỔI SỐ\nTHƯỜNG NIÊN", "bbox": [853.22, 799.91, 951.1, 811.96]},
+    {"id": "p156-b48", "type": "furniture", "text": "306", "bbox": [78.8, 807.9, 92.43, 815.9]},
+    {"id": "p156-b49", "type": "furniture", "text": "307", "bbox": [1097.32, 807.9, 1110.4, 815.9]},
+    {"id": "p156-b50", "type": "furniture", "text": "2024 CHUYỂN ĐỔI XANH ”", "bbox": [876.62, 810.49, 971.18, 818.54]}
+  ]
+}

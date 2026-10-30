@@ -1,12 +1,13 @@
 // Read saved history with the shared live-price overlay. Change the URL when served
 // by the main FastAPI app or Supabase-backed repository; the UI does not change.
 import { retryRateLimited } from "./companyData.js";
+import { authorizedHeaders } from "../../shared/api/authorization.js";
 const apiBase = (import.meta.env?.VITE_MARKET_DATA_API_URL || "").replace(/\/$/, "");
 
 async function readJson(path, signal) {
   let response;
   try {
-    response = await fetch(`${apiBase}${path}`, { signal });
+    response = await fetch(`${apiBase}${path}`, { signal, headers: authorizedHeaders() });
   } catch (error) {
     if (error.name === "AbortError") throw error;
     throw new Error("Không kết nối được API dữ liệu. Hãy kiểm tra backend đang chạy.");
@@ -25,7 +26,7 @@ export async function getSavedOhlcv(symbol, signal, etag) {
     response = await fetch(`${apiBase}/api/market-data/stocks/${encodeURIComponent(symbol)}/ohlcv?limit=250`, {
       signal,
       cache: "no-store",
-      headers: etag ? { "If-None-Match": etag } : {},
+      headers: authorizedHeaders(etag ? { "If-None-Match": etag } : {}),
     });
   } catch (error) {
     if (error.name === "AbortError") throw error;
@@ -53,7 +54,9 @@ export function getIndexHistory(symbol, signal) {
 }
 
 async function liveRequest(path, options) {
-  const response = await fetch(`${apiBase}/api/market-data${path}`, { cache: "no-store", ...options });
+  const response = await fetch(`${apiBase}/api/market-data${path}`, {
+    cache: "no-store", ...options, headers: authorizedHeaders(options?.headers),
+  });
   if (!response.ok) {
     const body = await response.json().catch(() => null);
     const error = new Error(body?.detail || "Chưa cập nhật được dữ liệu; vui lòng thử lại sau.");

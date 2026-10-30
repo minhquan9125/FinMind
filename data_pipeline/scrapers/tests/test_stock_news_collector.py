@@ -19,6 +19,20 @@ def article(number=1):
 
 
 class NewsTests(unittest.TestCase):
+    def test_fireant_attachment_urls_from_post_files(self):
+        url = 'https://fireant.vn/bai-viet/elc-thay-doi-dang-ky/42008571'
+        pdf = 'https://mobiv2.fireant.vn/News/NewsAttachedFile/1909857'
+        row = {'postID': 42008571, 'type': 1, 'title': 'ELC thay đổi đăng ký',
+               'content': 'Nội dung công bố',
+               'files': [{'fileContentUrl': pdf}, {'fileContentUrl': pdf},
+                         {'fileContentUrl': None}, {'fileContentUrl': 'javascript:bad'}, None]}
+        with patch.object(collector, 'fireant_json', return_value=row):
+            result = collector.fetch_article(url)
+        self.assertEqual(result['attachments'], [pdf])
+        row['files'] = []
+        with patch.object(collector, 'fireant_json', return_value=row):
+            self.assertEqual(collector.fetch_article(url)['attachments'], [])
+
     def test_urls_and_off_topic_filter(self):
         self.assertIsNotNone(collector.clean_url('https://cafef.vn/du-lieu/FPT-12345/cong-bo.chn?utm=x'))
         self.assertIsNone(collector.clean_url('https://cafef.vn/thi-truong-chung-khoan.chn'))

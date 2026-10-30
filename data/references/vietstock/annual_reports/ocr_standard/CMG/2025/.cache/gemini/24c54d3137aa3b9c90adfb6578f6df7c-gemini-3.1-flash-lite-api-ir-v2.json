@@ -1,0 +1,755 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "b. Văn phòng Hội đồng Quản trị:\n- Giúp việc cho HĐQT, Ban Kiểm soát (BKS) của Công ty trong việc tổ chức các cuộc họp định kỳ hoặc bất thường, lấy ý kiến các thành viên HĐQT bằng văn bản khi cần thiết.\n- Soạn thảo và ban hành các văn bản, tài liệu của HĐQT tuân thủ các quy chế hoạt động nội bộ, Điều lệ công ty, Luật doanh nghiệp và các quy định khác.\n- Đóng vai trò đầu mối phụ trách công tác quan hệ cổ đông và quản lý cổ phần cổ phiếu của công ty. Văn phòng Hội đồng Quản trị chịu trách nhiệm chính trong việc phối hợp tổ chức Đại hội đồng cổ đông của Công ty.\n- Văn phòng HĐQT cũng là kênh liên lạc giữa HĐQT, Ban kiểm soát với Ban Điều hành và các ban chức năng của Công ty.",
+      "box_2d": [
+        92,
+        144,
+        303,
+        910
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "1.3. Hoạt động của Hội đồng quản trị:\nTrong năm tài chính 2025, HĐQT đã thực hiện 04 cuộc họp định kỳ và các cuộc họp dưới hình thức lấy ý kiến bằng văn bản, ban hành 30 nghị quyết. Cụ thể như sau:",
+      "box_2d": [
+        311,
+        144,
+        371,
+        910
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        375,
+        119,
+        868,
+        910
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            375,
+            119,
+            411,
+            170
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Số Nghị quyết"
+          ],
+          "box_2d": [
+            375,
+            170,
+            411,
+            323
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Ngày"
+          ],
+          "box_2d": [
+            375,
+            323,
+            411,
+            446
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Nội dung"
+          ],
+          "box_2d": [
+            375,
+            446,
+            411,
+            813
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Tỷ lệ thông qua"
+          ],
+          "box_2d": [
+            375,
+            813,
+            411,
+            910
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "03/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            411,
+            119,
+            473,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "1",
+              "box_2d": [
+                411,
+                119,
+                473,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "03/2025/NQ-HĐQT",
+              "box_2d": [
+                411,
+                170,
+                473,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "09/04/2025",
+              "box_2d": [
+                411,
+                323,
+                473,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phương án thu hồi cổ phiếu của CBNV mua Cổ phiếu ESOP nghỉ việc trong giai đoạn từ khi phát hành đến tháng 03/2025",
+              "box_2d": [
+                411,
+                446,
+                473,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                411,
+                813,
+                473,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "04/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            473,
+            119,
+            529,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "2",
+              "box_2d": [
+                473,
+                119,
+                529,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "04/2025/NQ-HĐQT",
+              "box_2d": [
+                473,
+                170,
+                529,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "23/04/2025",
+              "box_2d": [
+                473,
+                323,
+                529,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Điều chỉnh Cơ cấu tổ chức Công ty Cổ phần Tập đoàn Công nghệ CMC",
+              "box_2d": [
+                473,
+                446,
+                529,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                473,
+                813,
+                529,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "05/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            529,
+            119,
+            579,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "3",
+              "box_2d": [
+                529,
+                119,
+                579,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "05/2025/NQ-HĐQT",
+              "box_2d": [
+                529,
+                170,
+                579,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "05/05/2025",
+              "box_2d": [
+                529,
+                323,
+                579,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Họp Hội đồng quản trị thường kỳ Quý 1 năm 2025",
+              "box_2d": [
+                529,
+                446,
+                579,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                529,
+                813,
+                579,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "06/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            579,
+            119,
+            649,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "4",
+              "box_2d": [
+                579,
+                119,
+                649,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "06/2025/NQ-HĐQT",
+              "box_2d": [
+                579,
+                170,
+                649,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "23/05/2025",
+              "box_2d": [
+                579,
+                323,
+                649,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phê duyệt điều chỉnh, bổ sung nội dung ủy quyền triển khai thực hiện dự án đầu tư CMC Starlake",
+              "box_2d": [
+                579,
+                446,
+                649,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "7/8",
+              "box_2d": [
+                579,
+                813,
+                649,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "07/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            649,
+            119,
+            704,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "5",
+              "box_2d": [
+                649,
+                119,
+                704,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "07/2025/NQ-HĐQT",
+              "box_2d": [
+                649,
+                170,
+                704,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "02/06/2025",
+              "box_2d": [
+                649,
+                323,
+                704,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Kế hoạch tổ chức Đại hội đồng cổ đông thường niên năm 2025",
+              "box_2d": [
+                649,
+                446,
+                704,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                649,
+                813,
+                704,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "6",
+          "label_raw": "08/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            704,
+            119,
+            754,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "6",
+              "box_2d": [
+                704,
+                119,
+                754,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "08/2025/NQ-HĐQT",
+              "box_2d": [
+                704,
+                170,
+                754,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "02/06/2025",
+              "box_2d": [
+                704,
+                323,
+                754,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phê duyệt hạn mức sử dụng tín dụng cho toàn Tập đoàn Công nghệ CMC tại các Tổ chức tín dụng",
+              "box_2d": [
+                704,
+                446,
+                754,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                704,
+                813,
+                754,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "7",
+          "label_raw": "09/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            754,
+            119,
+            799,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "7",
+              "box_2d": [
+                754,
+                119,
+                799,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "09/2025/NQ-HĐQT",
+              "box_2d": [
+                754,
+                170,
+                799,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "09/06/2025",
+              "box_2d": [
+                754,
+                323,
+                799,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Thông qua Chủ trương thực hiện giao dịch với bên liên quan trong năm 2025",
+              "box_2d": [
+                754,
+                446,
+                799,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "8/8",
+              "box_2d": [
+                754,
+                813,
+                799,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "8",
+          "label_raw": "10/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            799,
+            119,
+            849,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "8",
+              "box_2d": [
+                799,
+                119,
+                849,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "10/2025/NQ-HĐQT",
+              "box_2d": [
+                799,
+                170,
+                849,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "11/06/2025",
+              "box_2d": [
+                799,
+                323,
+                849,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phê duyệt ngân sách đầu tư cập nhật năm 2025",
+              "box_2d": [
+                799,
+                446,
+                849,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                799,
+                813,
+                849,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "9",
+          "label_raw": "11/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            849,
+            119,
+            899,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "9",
+              "box_2d": [
+                849,
+                119,
+                899,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "11/2025/NQ-HĐQT",
+              "box_2d": [
+                849,
+                170,
+                899,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "17/06/2025",
+              "box_2d": [
+                849,
+                323,
+                899,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Triển khai phương án phát hành cổ phần đợt 3 theo Chương trình ESOP",
+              "box_2d": [
+                849,
+                446,
+                899,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                849,
+                813,
+                899,
+                910
+              ]
+            }
+          ]
+        },
+        {
+          "code": "10",
+          "label_raw": "12/2025/NQ-HĐQT",
+          "note": null,
+          "box_2d": [
+            899,
+            119,
+            949,
+            910
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "10",
+              "box_2d": [
+                899,
+                119,
+                949,
+                170
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "12/2025/NQ-HĐQT",
+              "box_2d": [
+                899,
+                170,
+                949,
+                323
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "17/06/2025",
+              "box_2d": [
+                899,
+                323,
+                949,
+                446
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Chuyển nhượng cổ phần CMC Telecom mà CMC Corp đang sở hữu",
+              "box_2d": [
+                899,
+                446,
+                949,
+                813
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "7/9",
+              "box_2d": [
+                899,
+                813,
+                949,
+                910
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "64",
+      "box_2d": [
+        921,
+        906,
+        934,
+        925
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "b. Văn phòng Hội đồng Quản trị:\n- Giúp việc cho HĐQT, Ban Kiểm soát (BKS) của Công ty trong việc tổ chức các cuộc họp định kỳ hoặc bất thường, lấy ý kiến các thành viên HĐQT bằng văn bản khi cần thiết.\n- Soạn thảo và ban hành các văn bản, tài liệu của HĐQT tuân thủ các quy chế hoạt động nội bộ, Điều lệ công ty, Luật doanh nghiệp và các quy định khác.\n- Đóng vai trò đầu mối phụ trách công tác quan hệ cổ đông và quản lý cổ phần cổ phiếu của công ty. Văn phòng Hội đồng Quản trị chịu trách nhiệm chính trong việc phối hợp tổ chức Đại hội đồng cổ đông của Công ty.\n- Văn phòng HĐQT cũng là kênh liên lạc giữa HĐQT, Ban kiểm soát với Ban Điều hành và các ban chức năng của Công ty.\n1.3. Hoạt động của Hội đồng quản trị:\nTrong năm tài chính 2025, HĐQT đã thực hiện 04 cuộc họp định kỳ và các cuộc họp dưới hình thức lấy ý kiến bằng văn bản, ban hành 30 nghị quyết. Cụ thể như sau:\nSTT\nSố Nghị quyết\nNgày\nNội dung\nTỷ lệ thông qua\n1 03/2025/NQ-HĐQT 1 03/2025/NQ-HĐQT 09/04/2025 Phương án thu hồi cổ phiếu của CBNV mua Cổ phiếu ESOP nghỉ việc trong giai đoạn từ khi phát hành đến tháng 03/2025 9/9\n2 04/2025/NQ-HĐQT 2 04/2025/NQ-HĐQT 23/04/2025 Điều chỉnh Cơ cấu tổ chức Công ty Cổ phần Tập đoàn Công nghệ CMC 9/9\n3 05/2025/NQ-HĐQT 3 05/2025/NQ-HĐQT 05/05/2025 Họp Hội đồng quản trị thường kỳ Quý 1 năm 2025 9/9\n4 06/2025/NQ-HĐQT 4 06/2025/NQ-HĐQT 23/05/2025 Phê duyệt điều chỉnh, bổ sung nội dung ủy quyền triển khai thực hiện dự án đầu tư CMC Starlake 7/8\n5 07/2025/NQ-HĐQT 5 07/2025/NQ-HĐQT 02/06/2025 Kế hoạch tổ chức Đại hội đồng cổ đông thường niên năm 2025 9/9\n6 08/2025/NQ-HĐQT 6 08/2025/NQ-HĐQT 02/06/2025 Phê duyệt hạn mức sử dụng tín dụng cho toàn Tập đoàn Công nghệ CMC tại các Tổ chức tín dụng 9/9\n7 09/2025/NQ-HĐQT 7 09/2025/NQ-HĐQT 09/06/2025 Thông qua Chủ trương thực hiện giao dịch với bên liên quan trong năm 2025 8/8\n8 10/2025/NQ-HĐQT 8 10/2025/NQ-HĐQT 11/06/2025 Phê duyệt ngân sách đầu tư cập nhật năm 2025 9/9\n9 11/2025/NQ-HĐQT 9 11/2025/NQ-HĐQT 17/06/2025 Triển khai phương án phát hành cổ phần đợt 3 theo Chương trình ESOP 9/9\n10 12/2025/NQ-HĐQT 10 12/2025/NQ-HĐQT 17/06/2025 Chuyển nhượng cổ phần CMC Telecom mà CMC Corp đang sở hữu 7/9\n64",
+  "unreadable": []
+}

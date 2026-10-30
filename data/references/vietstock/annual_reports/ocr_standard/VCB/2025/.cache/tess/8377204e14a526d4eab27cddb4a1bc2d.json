@@ -1,0 +1,166 @@
+{
+  "text": "2025\nANNUAL REPORT Vietcombank\n\nSTEADFAST\n\nON THE PATH TO\nA GREEN FUTURE",
+  "chars": 59,
+  "words": 12,
+  "wordItems": [
+    {
+      "text": "2025",
+      "bbox": [
+        205,
+        228,
+        347,
+        276
+      ],
+      "conf": 96.828697,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ANNUAL",
+      "bbox": [
+        203,
+        300,
+        459,
+        349
+      ],
+      "conf": 90.757362,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "REPORT",
+      "bbox": [
+        480,
+        299,
+        714,
+        349
+      ],
+      "conf": 91.584015,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Vietcombank",
+      "bbox": [
+        1745,
+        284,
+        2264,
+        350
+      ],
+      "conf": 94.6213,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "STEADFAST",
+      "bbox": [
+        1583,
+        700,
+        2264,
+        794
+      ],
+      "conf": 91.78096,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ON",
+      "bbox": [
+        1295,
+        837,
+        1474,
+        931
+      ],
+      "conf": 88.302612,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THE",
+      "bbox": [
+        1508,
+        839,
+        1732,
+        929
+      ],
+      "conf": 88.532135,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PATH",
+      "bbox": [
+        1775,
+        839,
+        2065,
+        929
+      ],
+      "conf": 91.808487,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TO",
+      "bbox": [
+        2099,
+        837,
+        2263,
+        931
+      ],
+      "conf": 92.529861,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "A",
+      "bbox": [
+        1295,
+        975,
+        1378,
+        1061
+      ],
+      "conf": 90.453369,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "GREEN",
+      "bbox": [
+        1408,
+        973,
+        1791,
+        1063
+      ],
+      "conf": 50.085567,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "FUTURE",
+      "bbox": [
+        1835,
+        975,
+        2261,
+        1063
+      ],
+      "conf": 90.962921,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 88,
+  "lowConfRatio": 0.083,
+  "seconds": 0.667
+}

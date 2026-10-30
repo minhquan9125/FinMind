@@ -1,0 +1,68 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\MBB\\2024\\MBB_2024_502187.pdf",
+  "pages": 10,
+  "routes": {
+    "tesseract": 10
+  },
+  "status": {
+    "REVIEW": 10
+  },
+  "flags": {
+    "GEMINI_FAILED": 10,
+    "NEAR_EMPTY": 3
+  },
+  "reviewPages": [
+    1,
+    2,
+    9,
+    34,
+    55,
+    68,
+    75,
+    105,
+    126,
+    184
+  ],
+  "seconds": {
+    "textLayer": 2.188,
+    "renderAndTesseract": 19.437,
+    "gemini": 46.905,
+    "total": 68.719
+  },
+  "geminiApi": {
+    "calls": 13,
+    "failedCalls": 13,
+    "seconds": 25.064,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 13,
+    "failedCalls": 13,
+    "seconds": 21.804000000000006,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 0,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\tmp\\ocr-router-model-batch-2024",
+    "pages": "1,2,9,34,55,68,75,105,126,184",
+    "mode": "always",
+    "model": "gemini-3.8-flash",
+    "batch": 4,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 300,
+    "tessWorkers": 2,
+    "minChars": 999999,
+    "minConf": 90,
+    "longSide": 2200
+  }
+}

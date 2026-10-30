@@ -3,8 +3,11 @@
 from __future__ import annotations
 
 import hashlib
+import argparse
 import json
 from pathlib import Path
+
+from OCR_annuals import safe_repo_file
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -21,21 +24,25 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def audit_file(record: dict, relative_pdf: str) -> dict:
-    source = (ROOT / relative_pdf).resolve()
-    if source != ROOT and ROOT not in source.parents:
-        return {"status": "FAIL", "source_pdf": relative_pdf, "issues": ["PDF_PATH_ESCAPES_REPOSITORY"]}
-    output = EXTRACTED / str(record.get("symbol", "UNKNOWN")).upper() / str(record.get("year", "UNKNOWN")) / f"{source.stem}.json"
+def audit_file(record: dict, relative_pdf: str, extracted_root: Path = EXTRACTED) -> dict:
+    try:
+        source = safe_repo_file(relative_pdf)
+    except ValueError:
+        return {"status": "FAIL", "symbol": record.get("symbol"), "year": record.get("year"),
+                "source_pdf": relative_pdf, "issues": ["PDF_PATH_ESCAPES_REPOSITORY"]}
+    except FileNotFoundError:
+        return {"status": "PARTIAL", "symbol": record.get("symbol"), "year": record.get("year"),
+                "source_pdf": relative_pdf, "issues": [], "warnings": ["MANIFEST_PDF_NOT_LOCAL"]}
+    output = extracted_root / str(record.get("symbol", "UNKNOWN")).upper() / str(record.get("year", "UNKNOWN")) / f"{source.stem}.json"
     issues: list[str] = []
-    if not source.is_file():
-        return {"status": "FAIL", "source_pdf": relative_pdf, "json_file": output.relative_to(ROOT).as_posix(), "issues": ["PDF_MISSING"]}
+    output_label = output.relative_to(ROOT).as_posix() if output.is_relative_to(ROOT) else str(output)
     if not output.is_file():
-        return {"status": "FAIL", "source_pdf": relative_pdf, "json_file": output.relative_to(ROOT).as_posix(), "issues": ["JSON_MISSING"]}
+        return {"status": "FAIL", "source_pdf": relative_pdf, "json_file": output_label, "issues": ["JSON_MISSING"]}
 
     try:
         data = json.loads(output.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
-        return {"status": "FAIL", "source_pdf": relative_pdf, "json_file": output.relative_to(ROOT).as_posix(), "issues": [f"JSON_INVALID: {exc}"]}
+        return {"status": "FAIL", "source_pdf": relative_pdf, "json_file": output_label, "issues": [f"JSON_INVALID: {exc}"]}
 
     document = data.get("document") or {}
     extraction = data.get("extraction") or {}
@@ -97,13 +104,13 @@ def audit_file(record: dict, relative_pdf: str) -> dict:
         "symbol": document.get("symbol"),
         "year": document.get("year"),
         "source_pdf": relative_pdf,
-        "json_file": output.relative_to(ROOT).as_posix(),
+        "json_file": output_label,
         "source_sha256": source_hash,
         "page_count": len(pages),
         "pages_with_text": sum(1 for page in pages if (page.get("text_clean") or page.get("text") or "").strip()),
         "pages_needing_review": sum(1 for page in pages if page.get("needs_review")),
         "pages_without_text": no_text_pages,
-        "text_coverage_percent": extraction.get("text_coverage_percent"),
+        "text_coverage_percent": extraction.get("text_coverage_percent", round(100 * (len(pages) - len(no_text_pages)) / len(pages), 2) if pages else 0),
         "ocr_used": bool(extraction.get("pages_from_ocr", 0)) if combined_schema else extraction.get("ocr_used"),
         "pages_from_ocr": extraction.get("pages_from_ocr", 0),
         "ocr_review_required": bool(extraction.get("review_required", False)) if combined_schema else False,
@@ -113,13 +120,22 @@ def audit_file(record: dict, relative_pdf: str) -> dict:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--symbols", help="Comma-separated ticker filter")
+    parser.add_argument("--years", help="Comma-separated year filter")
+    parser.add_argument("--output-root", type=Path, default=EXTRACTED)
+    args = parser.parse_args()
+    symbols = {value.strip().upper() for value in args.symbols.split(",")} if args.symbols else None
+    years = {int(value.strip()) for value in args.years.split(",")} if args.years else None
+    output_root = args.output_root.resolve()
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    records = [record for record in manifest.get("documents", []) if record.get("status") == "DOWNLOADED"
+               and (symbols is None or str(record.get("symbol", "")).upper() in symbols)
+               and (years is None or int(record.get("year", 0)) in years)]
     results = []
-    for record in manifest.get("documents", []):
-        if record.get("status") != "DOWNLOADED":
-            continue
+    for record in records:
         for pdf_path in record.get("pdf_paths") or []:
-            results.append(audit_file(record, pdf_path))
+            results.append(audit_file(record, pdf_path, output_root))
 
     counts = {status: sum(item["status"] == status for item in results) for status in ("PASS", "PARTIAL", "FAIL")}
     report = {
@@ -128,8 +144,9 @@ def main() -> int:
         "source_manifest": MANIFEST.relative_to(ROOT).as_posix(),
         "ocr_used": any(bool(item.get("ocr_used")) for item in results),
         "summary": {
-            "source_records": sum(record.get("status") == "DOWNLOADED" for record in manifest.get("documents", [])),
+            "source_records": len(records),
             "source_pdfs": len(results),
+            "processed_pdfs": sum("page_count" in item for item in results),
             "pass": counts["PASS"],
             "partial": counts["PARTIAL"],
             "fail": counts["FAIL"],
@@ -141,16 +158,16 @@ def main() -> int:
         },
         "files": results,
     }
-    target = EXTRACTED / "quality_report.json"
+    target = output_root / "quality_report.json"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     lines = [
         "# Báo cáo chất lượng JSON BCTN",
         "",
-        f"- Phương pháp: pypdf cho trang có lớp chữ; Tesseract cho {report['summary']['pages_from_ocr']} trang scan.",
-        f"- Bản ghi nguồn: {report['summary']['source_records']}; tệp PDF: {report['summary']['source_pdfs']}.",
-        f"- Kết quả: {counts['PASS']} đầy đủ text, {counts['PARTIAL']} một phần, {counts['FAIL']} lỗi kiểm tra.",
-        f"- Tổng trang: {report['summary']['pages']}; trang không có lớp chữ: {report['summary']['pages_without_text']}.",
+        f"- Phương pháp: pypdf cho trang có lớp chữ; Tesseract cho {report['summary']['pages_from_ocr']} trang cần OCR.",
+        f"- Bản ghi nguồn: {report['summary']['source_records']}; PDF kê khai: {report['summary']['source_pdfs']}; PDF đã xử lý: {report['summary']['processed_pdfs']}.",
+        f"- Kết quả: {counts['PASS']} đạt không cảnh báo, {counts['PARTIAL']} cần rà soát, {counts['FAIL']} lỗi kiểm tra.",
+        f"- Tổng trang: {report['summary']['pages']}; trang chưa đọc được chữ sau OCR: {report['summary']['pages_without_text']}.",
         "",
         "| Mã | Năm | PDF | Trang | Có chữ | Thiếu chữ | Độ phủ | Trạng thái | Lỗi | Cảnh báo |",
         "|---|---:|---|---:|---:|---:|---:|---|---|---|",
@@ -160,7 +177,7 @@ def main() -> int:
         lines.append(
             f"| {item.get('symbol', '')} | {item.get('year', '')} | {filename} "
             f"| {item.get('page_count', 0)} | {item.get('pages_with_text', 0)} "
-            f"| {len(item.get('pages_without_text', []))} | {item.get('text_coverage_percent', '')}% "
+            f"| {len(item.get('pages_without_text', []))} | {str(item['text_coverage_percent']) + '%' if 'text_coverage_percent' in item else '—'} "
             f"| {item.get('status', 'FAIL')} | {', '.join(item.get('issues', [])) or 'Không'} "
             f"| {', '.join(item.get('warnings', [])) or 'Không'} |"
         )
@@ -168,15 +185,16 @@ def main() -> int:
         "",
         "## Ghi chú",
         "",
-        "`PARTIAL` nghĩa là JSON hợp lệ và hash/trang đã khớp nhưng còn trang không đọc được hoặc có nội dung OCR cần người đối chiếu.",
+        "`PARTIAL` nghĩa là cần rà soát nội dung OCR, trang chưa đọc được chữ, hoặc đường dẫn PDF kê khai chưa có tệp cục bộ.",
         "`FAIL` nghĩa là lỗi cấu trúc, metadata, hash nguồn hoặc khai báo OCR; cần xử lý trước khi nhập corpus.",
+        "`MANIFEST_PDF_NOT_LOCAL` chỉ áp dụng cho đường dẫn PDF cụ thể trong manifest; không có nghĩa mọi PDF của mã đó đều thiếu.",
         "Kiểm tra này xác nhận tính toàn vẹn cấu trúc và nguồn, không bảo đảm bảng/đoạn văn trích xuất đúng thứ tự hoặc nội dung đã được người kiểm duyệt xác nhận.",
         "",
     ])
-    markdown_target = EXTRACTED / "quality_report.md"
+    markdown_target = output_root / "quality_report.md"
     markdown_target.write_text("\n".join(lines), encoding="utf-8")
     print(json.dumps(report["summary"], ensure_ascii=False))
-    print(f"Reports: {target.relative_to(ROOT).as_posix()}, {markdown_target.relative_to(ROOT).as_posix()}")
+    print(f"Reports: {target}, {markdown_target}")
     return 1 if counts["FAIL"] else 0
 
 

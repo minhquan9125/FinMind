@@ -1,0 +1,18 @@
+{
+  "status": "MIGRATION_COMMITTED_TEST_DRAFTS_ROLLED_BACK",
+  "checks": {
+    "real_source_extract_save_read": true,
+    "replay_without_duplicates": true,
+    "wrong_snapshot_hash_rejected": true,
+    "internally_consistent_but_wrong_locator_rejected": true,
+    "wrong_source_uri_rejected": true,
+    "no_auto_approval": true,
+    "runtime_read_roundtrip": true,
+    "runtime_cannot_save": true
+  },
+  "real_candidates": 9,
+  "corpus_version_id": "b2550a0b-c423-5c50-9b15-6fb6af12e2c6",
+  "ai_calls": 0,
+  "approved_relations_created": 0,
+  "test_drafts_persisted": 0
+}

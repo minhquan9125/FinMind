@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-06T07:12:01.554142+00:00",
+  "generated_at": "2026-10-29T07:56:31.819059+00:00",
   "method": "local_tfidf_entities_event_rules_v1",
   "limitations": [
     "Candidates require manual review; scores are not probabilities or fact verification.",
@@ -24,18 +24,18 @@
     "naive_publication_timezone": "UTC+7"
   },
   "summary": {
-    "uncheck_records": 94,
-    "unique_uncheck_articles": 94,
-    "unique_candidate_pairs": 2,
-    "unique_rewritten_candidate_pairs": 2,
-    "unique_same_title_candidate_pairs": 0,
-    "unique_uncheck_articles_with_candidates": 4,
-    "unique_uncheck_articles_with_rewritten_candidates": 4,
-    "unique_uncheck_articles_without_candidates": 90
+    "uncheck_records": 192,
+    "unique_uncheck_articles": 179,
+    "unique_candidate_pairs": 30,
+    "unique_rewritten_candidate_pairs": 11,
+    "unique_same_title_candidate_pairs": 19,
+    "unique_uncheck_articles_with_candidates": 58,
+    "unique_uncheck_articles_with_rewritten_candidates": 21,
+    "unique_uncheck_articles_without_candidates": 121
   },
   "scopes": [
     {
-      "scope": "MWG",
+      "scope": "BID",
       "uncheck_records": 20,
       "unique_uncheck_articles": 20,
       "candidate_pairs": 0,
@@ -45,133 +45,1872 @@
       "uncheck_articles_without_candidates": 20
     },
     {
-      "scope": "market",
-      "uncheck_records": 74,
-      "unique_uncheck_articles": 74,
-      "candidate_pairs": 2,
-      "rewritten_candidate_pairs": 2,
+      "scope": "CMG",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 1,
+      "rewritten_candidate_pairs": 0,
+      "same_title_candidate_pairs": 1,
+      "uncheck_articles_with_candidates": 2,
+      "uncheck_articles_without_candidates": 18
+    },
+    {
+      "scope": "CTG",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 0,
+      "rewritten_candidate_pairs": 0,
       "same_title_candidate_pairs": 0,
+      "uncheck_articles_with_candidates": 0,
+      "uncheck_articles_without_candidates": 20
+    },
+    {
+      "scope": "ELC",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 6,
+      "rewritten_candidate_pairs": 2,
+      "same_title_candidate_pairs": 4,
+      "uncheck_articles_with_candidates": 11,
+      "uncheck_articles_without_candidates": 9
+    },
+    {
+      "scope": "FPT",
+      "uncheck_records": 16,
+      "unique_uncheck_articles": 16,
+      "candidate_pairs": 3,
+      "rewritten_candidate_pairs": 2,
+      "same_title_candidate_pairs": 1,
+      "uncheck_articles_with_candidates": 5,
+      "uncheck_articles_without_candidates": 11
+    },
+    {
+      "scope": "ICT",
+      "uncheck_records": 16,
+      "unique_uncheck_articles": 16,
+      "candidate_pairs": 8,
+      "rewritten_candidate_pairs": 3,
+      "same_title_candidate_pairs": 5,
+      "uncheck_articles_with_candidates": 16,
+      "uncheck_articles_without_candidates": 0
+    },
+    {
+      "scope": "ITD",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 7,
+      "rewritten_candidate_pairs": 4,
+      "same_title_candidate_pairs": 3,
+      "uncheck_articles_with_candidates": 14,
+      "uncheck_articles_without_candidates": 6
+    },
+    {
+      "scope": "MBB",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 2,
+      "rewritten_candidate_pairs": 0,
+      "same_title_candidate_pairs": 2,
       "uncheck_articles_with_candidates": 4,
-      "uncheck_articles_without_candidates": 70
+      "uncheck_articles_without_candidates": 16
+    },
+    {
+      "scope": "TCB",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 3,
+      "rewritten_candidate_pairs": 0,
+      "same_title_candidate_pairs": 3,
+      "uncheck_articles_with_candidates": 6,
+      "uncheck_articles_without_candidates": 14
+    },
+    {
+      "scope": "VCB",
+      "uncheck_records": 20,
+      "unique_uncheck_articles": 20,
+      "candidate_pairs": 0,
+      "rewritten_candidate_pairs": 0,
+      "same_title_candidate_pairs": 0,
+      "uncheck_articles_with_candidates": 0,
+      "uncheck_articles_without_candidates": 20
     }
   ],
   "candidates": [
     {
-      "status": "possible_rewritten_event",
-      "event_score": 0.823169,
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.907746,
       "evidence": {
-        "title_tfidf_cosine": 0.409994,
-        "body_tfidf_cosine": 0.764225,
-        "existing_text_overlap": 0.2114181818181818,
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.736417,
+        "existing_text_overlap": 0.7253846153846154,
         "shared_entities": [
-          "HAG"
+          "MBB"
         ],
         "shared_event_types": [
           "agreement"
         ],
-        "publication_gap_days": 0.6847222222222222,
-        "shared_numeric_anchors": [
-          "1.000",
-          "20.000",
-          "3.000",
-          "5.000",
-          "6.300",
-          "7.000"
-        ],
-        "matching_route": "body_with_numeric_anchors",
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
         "missing_publication_date": false,
         "shared_title_keywords": [
-          "000",
-          "bầu",
-          "gần",
-          "ngày",
-          "thụ",
-          "tiêu",
-          "tấn",
-          "đức"
+          "dominicana",
+          "dịch",
+          "giao",
+          "giữa",
+          "hđqt",
+          "hợp",
+          "mb",
+          "mbb",
+          "qua",
+          "thông",
+          "viettel",
+          "đồng"
         ]
       },
       "left": {
         "source": "cafef",
-        "url": "https://cafef.vn/bau-duc-co-dong-thai-dac-biet-tai-trung-quoc-sau-cu-rot-gan-800-ty-vao-loai-cay-tieu-thu-29000-tan-ngay-188261001145226172.chn",
-        "title": "Bầu Đức có động thái đặc biệt tại Trung Quốc sau cú rót gần 800 tỷ vào loại cây tiêu thụ 29.000 tấn/ngày",
-        "published_at": "2026-10-01T14:53:00",
+        "url": "https://cafef.vn/du-lieu/mbb-3007936/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana.chn",
+        "title": "MBB: HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana",
+        "published_at": "2026-10-27T08:50:46+00:00",
         "files": [
-          "tin_tuc_chung/cafef/01-10-2026.json"
+          "tin_tuc_theo_ma/MBB/cafef/29-10-2026.json"
         ],
         "uncheck_files": [
-          "tin_tuc_chung/cafef/01-10-2026.json"
+          "tin_tuc_theo_ma/MBB/cafef/29-10-2026.json"
         ],
-        "excerpt": "TIN MỚI Công ty Cổ phần Đầu tư Quốc tế Hoàng Anh Gia Lai (HGI), công ty con nòng cốt trong hệ sinh thái của Tập đoàn Hoàng Anh Gia Lai (HAGL) do ông Đoàn Nguyên Đức (bầu Đức) làm Chủ tịch HĐQT, đã ký kết Biên bản ghi nhớ (MOU) hợp tác dài hạn với MQ Coffee (Minh Khiêm Cà phê), doanh nghiệp hoạt động trong chế biến, cung ứng và phân phối cà phê, có trụ sở tại Thượng Hải, Trung Quốc. MQ Coffee được thành lập năm 2009 tại Thượng Hải, với chuỗi hoạt động từ vùng nguyên liệu, rang xay đến bán buôn, gia công (OEM/ODM) và bán lẻ. Doanh nghiệp hiện vận hành nhà máy rang xay với công suất trên 5.000 tấ"
+        "excerpt": "Ngân hàng Thương mại Cổ phần Quân Đội thông báo HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana như sau: Các tập tin đính kèm 20261027 - MBB - Thong qua hop dong giao dich giua MB va Viettel Dominicana.pdf Theo HOSE"
       },
       "right": {
         "source": "fireant",
-        "url": "https://fireant.vn/bai-viet/bau-duc-dich-than-sang-ky-ban-1-000-tan-ca-phe-ngay-nam-nay-nang-len-5-000-tan-tai-1-thi-truong-tieu-thu-gan-1-000-tan-ngay/42032748",
-        "title": "Bầu Đức đích thân sang ký bán 1.000 tấn cà phê ngay năm nay, nâng lên 5.000 tấn tại 1 thị trường tiêu thụ gần 1.000 tấn/ngày",
-        "published_at": "2026-09-30T22:27:00+07:00",
+        "url": "https://fireant.vn/bai-viet/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana/42484957",
+        "title": "MBB: HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana",
+        "published_at": "2026-10-27T15:50:46+07:00",
         "files": [
-          "tin_tuc_chung/fireant/01-10-2026.json"
+          "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json"
         ],
         "uncheck_files": [
-          "tin_tuc_chung/fireant/01-10-2026.json"
+          "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json"
         ],
-        "excerpt": "Bầu Đức trực tiếp sang Thượng Hải trong lúc HAGL tăng tốc với cây cà phê, nhắm tới một thị trường đang tiêu thụ gần 1.000 tấn mỗi ngày. Lễ ký kết Biên bản ghi nhớ hợp tác dài hạn giữa HAGL, HGI và MQ Coffee tại Thượng Hải Ngày 30/9, Tập đoàn Hoàng Anh Gia Lai (HAGL) công bố Công ty CP Đầu tư Quốc tế Hoàng Anh Gia Lai (HGI) đã ký biên bản ghi nhớ hợp tác dài hạn với MQ Coffee, doanh nghiệp cà phê có trụ sở tại Thượng Hải, Trung Quốc. Lễ ký thực tế diễn ra tại Thượng Hải ngày 25/8. Theo thỏa thuận có thời hạn 5 năm, HGI sẽ cung cấp cà phê Arabica nhân xanh từ các vùng nguyên liệu của doanh nghiệ"
+        "excerpt": "Ngân hàng Thương mại Cổ phần Quân Đội thông báo HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana như sau:"
       },
-      "scope": "market"
+      "scope": "MBB"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.887337,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.678105,
+        "existing_text_overlap": 0.734375,
+        "shared_entities": [
+          "TCB"
+        ],
+        "shared_event_types": [
+          "appointment"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "bà",
+          "bổ",
+          "hđqt",
+          "hải",
+          "nhiệm",
+          "phan",
+          "ptgđ",
+          "quyết",
+          "tcb",
+          "thị",
+          "yến",
+          "định"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/tcb-3009016/tcb-quyet-dinh-hdqt-ve-bo-nhiem-ptgd-ba-phan-thi-hai-yen.chn",
+        "title": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+        "published_at": "2026-10-28T11:08:35+00:00",
+        "files": [
+          "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Chứng khoán Kỹ Thương công bố Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến như sau: Các tập tin đính kèm 20261028 - TCB - QD bo nhiem ba Phan Thi Hai Yen la PTGD.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/tcb-quyet-dinh-hdqt-ve-bo-nhiem-ptgd-ba-phan-thi-hai-yen/42510090",
+        "title": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+        "published_at": "2026-10-28T18:08:35+07:00",
+        "files": [
+          "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Chứng khoán Kỹ Thương công bố Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến như sau:"
+      },
+      "scope": "TCB"
     },
     {
       "status": "possible_rewritten_event",
-      "event_score": 0.553201,
+      "event_score": 0.883707,
       "evidence": {
-        "title_tfidf_cosine": 0.529082,
-        "body_tfidf_cosine": 0.463446,
-        "existing_text_overlap": 0.1070528967254408,
+        "title_tfidf_cosine": 0.968376,
+        "body_tfidf_cosine": 0.71743,
+        "existing_text_overlap": 0.752403846153846,
         "shared_entities": [
-          "HNX",
-          "HOSE"
+          "CTIN",
+          "ICT"
         ],
         "shared_event_types": [
-          "listing"
+          "agreement"
         ],
-        "publication_gap_days": 0.8576388888888888,
+        "publication_gap_days": 0.7464583333333333,
         "shared_numeric_anchors": [],
         "matching_route": "headline_and_body",
         "missing_publication_date": false,
         "shared_title_keywords": [
-          "chuyển",
-          "hnx",
-          "hose",
+          "2026",
+          "bên",
+          "chấp",
+          "chủ",
+          "ctin",
+          "dịch",
+          "giao",
+          "giữa",
+          "hđqt",
+          "hợp",
+          "ict",
+          "liên",
+          "nghị",
+          "năm",
+          "qua",
+          "quan",
+          "quyết",
+          "thuận",
+          "thông",
+          "trương",
+          "đồng"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/ict-2983567/ict-nghi-quyet-hdqt-thong-qua-chu-truong-chap-thuan-cac-hop-dong-giao-dich-giua-ctin-va-cac-ben-co-lien-quan-nam-2026.chn",
+        "title": "ICT: Nghị quyết HĐQT thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+        "published_at": "2026-09-23T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện công bố Nghị quyết HĐQT về việc thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026 như sau: Các tập tin đính kèm 20260924 - ICT - CBTT Chu truong chap thuan cac hop dong, giao dich giua CTIN va ben co lien quan 2026.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/ict-nghi-quyet-hdqt-ve-viec-thong-qua-chu-truong-chap-thuan-cac-hop-dong-giao-dich-giua-ctin-va-cac-ben-co-lien-quan-nam-2026/41939366",
+        "title": "ICT: Nghị quyết HĐQT về việc thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+        "published_at": "2026-09-24T17:54:54+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện công bố Nghị quyết HĐQT về việc thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026 như sau:"
+      },
+      "scope": "ICT"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.87285,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.636714,
+        "existing_text_overlap": 0.7648936170212767,
+        "shared_entities": [
+          "TCB"
+        ],
+        "shared_event_types": [
+          "shareholders"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "báo",
+          "bản",
+          "bằng",
+          "cuối",
+          "cổ",
+          "kiến",
+          "ký",
+          "lấy",
+          "ngày",
+          "tcb",
+          "thông",
+          "văn",
+          "đông",
+          "đăng"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/tcb-3009025/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban.chn",
+        "title": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+        "published_at": "2026-10-28T11:15:11+00:00",
+        "files": [
+          "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Sở Giao dịch Chứng khoán TP.HCM thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản của Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam như sau: Các tập tin đính kèm 20261027 - TCB - TB ve NDKCC thuc hien quyen lay y kien CD bang VB lan 2 nam 2026.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban/42510093",
+        "title": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+        "published_at": "2026-10-28T18:15:11+07:00",
+        "files": [
+          "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Sở Giao dịch Chứng khoán TP.HCM thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản của Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam như sau:"
+      },
+      "scope": "TCB"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.871807,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.633733,
+        "existing_text_overlap": 0.6940000000000001,
+        "shared_entities": [
+          "BCTC",
+          "ITD"
+        ],
+        "shared_event_types": [
+          "agreement"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "2026",
+          "bctc",
+          "báo",
+          "hợp",
+          "itd",
+          "kiểm",
+          "ký",
+          "thông",
+          "toán",
+          "đồng"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/itd-2972021/itd-thong-bao-ky-hop-dong-kiem-toan-bctc-2026.chn",
+        "title": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+        "published_at": "2026-09-08T10:35:35+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo ký hợp đồng kiểm toán BCTC 2026 như sau: Các tập tin đính kèm 20260908 - ITD - Thong bao ky hop dong kiem toan.signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/itd-thong-bao-ky-hop-dong-kiem-toan-bctc-2026/41705584",
+        "title": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+        "published_at": "2026-09-08T17:35:35+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo ký hợp đồng kiểm toán BCTC 2026 như sau:"
+      },
+      "scope": "ITD"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.868866,
+      "evidence": {
+        "title_tfidf_cosine": 0.943538,
+        "body_tfidf_cosine": 0.714057,
+        "existing_text_overlap": 0.7782363977485929,
+        "shared_entities": [
+          "ITD"
+        ],
+        "shared_event_types": [
+          "dividend"
+        ],
+        "publication_gap_days": 0.7324421296296296,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "báo",
+          "cáo",
+          "công",
+          "cổ",
+          "hành",
+          "itd",
+          "kết",
+          "liệu",
+          "nhận",
+          "phát",
+          "quả",
+          "trả",
+          "tài",
+          "tức",
+          "ubcknn",
+          "văn",
+          "đợt"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/itd-2959044/itd-nhan-duoc-cong-van-cua-ubcknn-ve-tai-lieu-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tra-co-tuc.chn",
+        "title": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức",
+        "published_at": "2026-08-18T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức như sau: Các tập tin đính kèm 20260819 - ITD - Cong van nhan ket qua cua UBCK.signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/itd-nhan-duoc-cong-van-cua-ubcknn-ve-tai-lieu-bao-cao-ket-qua-dot-phat-hanh-cp-de-tra-co-tuc/41496893",
+        "title": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức",
+        "published_at": "2026-08-19T17:34:43+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức như sau:"
+      },
+      "scope": "ITD"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.863742,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.610691,
+        "existing_text_overlap": 0.7073770491803278,
+        "shared_entities": [
+          "TCB"
+        ],
+        "shared_event_types": [
+          "appointment"
+        ],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "báo",
+          "bổ",
+          "kèm",
+          "nhiệm",
+          "nhân",
+          "ptgđ",
+          "quyết",
+          "sự",
+          "tcb",
+          "thay",
+          "thông",
+          "định",
+          "đổi"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/tcb-3009020/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptgd-kem-quyet-dinh.chn",
+        "title": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+        "published_at": "2026-10-28T11:10:19+00:00",
+        "files": [
+          "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Chứng khoán Kỹ Thương thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định) như sau: Các tập tin đính kèm 20261028 - TCB - Thong bao bo nhiem ba Phan Thi Hai Yen la PTGD.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptgd-kem-quyet-dinh/42510086",
+        "title": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+        "published_at": "2026-10-28T18:10:19+07:00",
+        "files": [
+          "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Chứng khoán Kỹ Thương thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định) như sau:"
+      },
+      "scope": "TCB"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.813161,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.75189,
+        "existing_text_overlap": 0.7964788732394366,
+        "shared_entities": [
+          "BCTC",
+          "ICT",
+          "LNST"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "2026",
+          "bctc",
+          "biến",
+          "giải",
+          "hợp",
+          "ict",
+          "kỳ",
+          "lnst",
+          "năm",
+          "quý",
+          "so",
+          "trình",
+          "trước",
+          "tổng",
+          "động"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/ict-3008910/ict-giai-trinh-bien-dong-lnst-bctc-tong-hop-quy-32026-so-voi-cung-ky-nam-truoc.chn",
+        "title": "ICT: Giải trình biến động LNST BCTC Tổng hợp quý 3/2026 so với cùng kỳ năm trước",
+        "published_at": "2026-10-28T10:07:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện giải trình biến động LNST BCTC Tổng hợp quý 3/2026 so với cùng kỳ năm trước như sau: Các tập tin đính kèm 20261028 - ICT - Bao cao giai trinh Q3 2026.PDF Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/ict-giai-trinh-bien-dong-lnst-bctc-tong-hop-quy-3-2026-so-voi-cung-ky-nam-truoc/42509335",
+        "title": "ICT: Giải trình biến động LNST BCTC Tổng hợp quý 3/2026 so với cùng kỳ năm trước",
+        "published_at": "2026-10-28T17:07:00+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện giải trình biến động LNST BCTC Tổng hợp quý 3/2026 so với cùng kỳ năm trước như sau:"
+      },
+      "scope": "ICT"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.808832,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.73952,
+        "existing_text_overlap": 0.7849397590361445,
+        "shared_entities": [
+          "CBTT",
+          "ICT"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "cbtt",
+          "chậm",
+          "hội",
+          "ict",
+          "nghị",
+          "nhắc",
+          "nhở",
+          "quyết",
+          "quản",
+          "trị",
+          "đồng"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/ict-2984525/ict-nhac-nho-cham-cbtt-nghi-quyet-hoi-dong-quan-tri.chn",
+        "title": "ICT: Nhắc nhở chậm CBTT Nghị quyết Hội đồng quản trị",
+        "published_at": "2026-09-25T11:32:28+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Sở Giao dịch Chứng khoán TP.HCM thông báo nhắc nhở chậm CBTT Nghị quyết Hội đồng quản trị đối với Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau: Các tập tin đính kèm 20260925 - ICT - Nhac nho cham CBTT NQ HDQT thong qua giao dich BLQ.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/ict-nhac-nho-cham-cbtt-nghi-quyet-hoi-dong-quan-tri/41960318",
+        "title": "ICT: Nhắc nhở chậm CBTT Nghị quyết Hội đồng quản trị",
+        "published_at": "2026-09-25T18:32:28+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Sở Giao dịch Chứng khoán TP.HCM thông báo nhắc nhở chậm CBTT Nghị quyết Hội đồng quản trị đối với Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau:"
+      },
+      "scope": "ICT"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.801472,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.718491,
+        "existing_text_overlap": 0.7776923076923077,
+        "shared_entities": [
+          "ICT",
+          "LNST"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "2026",
+          "chênh",
+          "giải",
+          "ict",
+          "kỳ",
+          "lnst",
+          "lệch",
+          "năm",
+          "quý",
+          "so",
+          "trình",
+          "trước"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/ict-2941422/ict-giai-trinh-chenh-lech-lnst-quy-22026-so-voi-cung-ky-nam-truoc.chn",
+        "title": "ICT: Giải trình chênh lệch LNST quý 2/2026 so với cùng kỳ năm trước",
+        "published_at": "2026-07-30T03:33:12+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện giải trình chênh lệch LNST quý 2/2026 so với cùng kỳ năm trước như sau: Các tập tin đính kèm 20260728 - ICT - Bao cao giai trinh Q2 2026.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/ict-giai-trinh-chenh-lech-lnst-quy-2-2026-so-voi-cung-ky-nam-truoc/41203366",
+        "title": "ICT: Giải trình chênh lệch LNST quý 2/2026 so với cùng kỳ năm trước",
+        "published_at": "2026-07-30T10:33:12+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện giải trình chênh lệch LNST quý 2/2026 so với cùng kỳ năm trước như sau:"
+      },
+      "scope": "ICT"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.79175,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.690713,
+        "existing_text_overlap": 0.7258064516129032,
+        "shared_entities": [
+          "ITD"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "37",
+          "chứng",
+          "doanh",
+          "giấy",
+          "itd",
+          "ký",
+          "lần",
+          "nghiệp",
+          "nhận",
+          "thay",
+          "thứ",
+          "đăng",
+          "đổi"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/itd-2965393/itd-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-37.chn",
+        "title": "ITD: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 37",
+        "published_at": "2026-08-28T06:54:13+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 37 như sau: Các tập tin đính kèm 20260827 - ITD - Thong bao thay doi giay phep DKDN tang von.signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/itd-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-37/41628188",
+        "title": "ITD: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 37",
+        "published_at": "2026-08-28T13:54:13+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 37 như sau:"
+      },
+      "scope": "ITD"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.782689,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.664826,
+        "existing_text_overlap": 0.7335820895522388,
+        "shared_entities": [
+          "ELC"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.7411111111111112,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "36",
+          "chứng",
+          "doanh",
+          "elc",
+          "giấy",
+          "ký",
+          "lần",
+          "nghiệp",
+          "nhận",
+          "thay",
+          "thứ",
+          "đăng",
+          "đổi"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/elc-2987787/elc-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-36.chn",
+        "title": "ELC: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36",
+        "published_at": "2026-09-28T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36 như sau: Các tập tin đính kèm 20260929 - ELC - Thong bao thay doi Giay chung nhan DKDN lan thu 36.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/elc-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-36/42008387",
+        "title": "ELC: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36",
+        "published_at": "2026-09-29T17:47:12+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36 như sau:"
+      },
+      "scope": "ELC"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.7823,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.663713,
+        "existing_text_overlap": 0.7602564102564102,
+        "shared_entities": [
+          "MBB",
+          "VSDC"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "báo",
+          "chỉnh",
+          "chứng",
+          "công",
+          "khoán",
+          "ký",
+          "lượng",
+          "mbb",
+          "số",
+          "thông",
+          "tin",
+          "việc",
+          "vsdc",
+          "văn",
+          "điều",
+          "đăng"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/mbb-3005138/mbb-thong-bao-cong-van-cua-vsdc-ve-viec-dieu-chinh-thong-tin-so-luong-chung-khoan-dang-ky-cua-mbb.chn",
+        "title": "MBB: Thông báo công văn của VSDC về việc điều chỉnh thông tin số lượng chứng khoán đăng ký của MBB",
+        "published_at": "2026-10-23T09:36:08+00:00",
+        "files": [
+          "tin_tuc_theo_ma/MBB/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/MBB/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Quân Đội thông báo công văn của VSDC về việc điều chỉnh thông tin số lượng chứng khoán đăng ký của MBB như sau: Các tập tin đính kèm 20261022 - MBB - VB cua VSDC ve dieu chinh thong tin so luong co phieu.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/mbb-thong-bao-cong-van-cua-vsdc-ve-viec-dieu-chinh-thong-tin-so-luong-chung-khoan-dang-ky-cua-mbb/42439783",
+        "title": "MBB: Thông báo công văn của VSDC về việc điều chỉnh thông tin số lượng chứng khoán đăng ký của MBB",
+        "published_at": "2026-10-23T16:36:08+07:00",
+        "files": [
+          "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Ngân hàng Thương mại Cổ phần Quân Đội thông báo công văn của VSDC về việc điều chỉnh thông tin số lượng chứng khoán đăng ký của MBB như sau:"
+      },
+      "scope": "MBB"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.77911,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.654599,
+        "existing_text_overlap": 0.75,
+        "shared_entities": [
+          "CMG"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.7306597222222222,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "2026",
+          "2028",
+          "chính",
+          "chọn",
+          "cmg",
+          "hđqt",
+          "kiểm",
+          "lập",
+          "lựa",
+          "nghị",
+          "năm",
+          "quyết",
+          "toán",
+          "tài",
+          "việc",
+          "vị",
+          "đơn",
+          "độc"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/cmg-2999803/cmg-nghi-quyet-hdqt-ve-viec-lua-chon-don-vi-kiem-toan-doc-lap-cho-nam-tai-chinh-20262028.chn",
+        "title": "CMG: Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028",
+        "published_at": "2026-10-15T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/CMG/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/CMG/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Tập đoàn Công nghệ CMC công bố Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028 như sau: Các tập tin đính kèm 20261016 - CMG - NQ HDQT phe duyet lua chon don vi kiem toan doc lap 2026-2028 - signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-ve-viec-lua-chon-don-vi-kiem-toan-doc-lap-cho-nam-tai-chinh-2026-2028/42321609",
+        "title": "CMG: Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028",
+        "published_at": "2026-10-16T17:32:09+07:00",
+        "files": [
+          "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Tập đoàn Công nghệ CMC công bố Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028 như sau:"
+      },
+      "scope": "CMG"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.775097,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.643134,
+        "existing_text_overlap": 0.7328571428571429,
+        "shared_entities": [
+          "ELC"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.7127777777777777,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "bán",
+          "báo",
+          "chào",
+          "cáo",
+          "dụng",
+          "elc",
+          "sử",
+          "thu",
+          "tiến",
+          "vốn",
+          "độ",
+          "đợt"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/elc-2994814/elc-bao-cao-tien-do-su-dung-von-thu-duoc-tu-dot-chao-ban.chn",
+        "title": "ELC: Báo cáo tiến độ sử dụng vốn thu được từ đợt chào bán",
+        "published_at": "2026-10-08T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố báo cáo tiến độ sử dụng vốn thu được từ đợt chào bán như sau: Các tập tin đính kèm 20261009 - ELC - Bao cao tien do su dung von tu dot chao ban cp.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/elc-bao-cao-tien-do-su-dung-von-thu-duoc-tu-dot-chao-ban/42206775",
+        "title": "ELC: Báo cáo tiến độ sử dụng vốn thu được từ đợt chào bán",
+        "published_at": "2026-10-09T17:06:24+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố báo cáo tiến độ sử dụng vốn thu được từ đợt chào bán như sau:"
+      },
+      "scope": "ELC"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.775062,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.643034,
+        "existing_text_overlap": 0.6320895522388059,
+        "shared_entities": [
+          "ELC"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.7512384259259259,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "36",
+          "chứng",
+          "doanh",
+          "elc",
+          "giấy",
+          "ký",
+          "lần",
+          "nghiệp",
+          "nhận",
+          "thay",
+          "thứ",
+          "đăng",
+          "đổi"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/elc-2987787/elc-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-36.chn",
+        "title": "ELC: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36",
+        "published_at": "2026-09-28T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36 như sau: Các tập tin đính kèm 20260929 - ELC - Thong bao thay doi Giay chung nhan DKDN lan thu 36.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/elc-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-36/42008571",
+        "title": "ELC: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36",
+        "published_at": "2026-09-29T18:01:47+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM thông báo Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36 như sau:"
+      },
+      "scope": "ELC"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.771987,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.634249,
+        "existing_text_overlap": 0.7515384615384616,
+        "shared_entities": [
+          "ICT"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "2026",
+          "báo",
+          "cáo",
+          "công",
+          "hình",
+          "ict",
+          "năm",
+          "quản",
+          "tháng",
+          "trị",
+          "ty",
+          "tình",
+          "đầu"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/ict-2941848/ict-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026.chn",
+        "title": "ICT: Báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026",
+        "published_at": "2026-07-30T08:56:46+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026 như sau: Các tập tin đính kèm 20260730 - ICT - BC QT 6 thang dau nam 2026 - Bo TTCN.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/ict-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026/41216572",
+        "title": "ICT: Báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026",
+        "published_at": "2026-07-30T15:56:46+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026 như sau:"
+      },
+      "scope": "ICT"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.761757,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.60502,
+        "existing_text_overlap": 0.7166666666666667,
+        "shared_entities": [
+          "ICT"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "2026",
+          "báo",
+          "chỉnh",
+          "cáo",
+          "hình",
+          "ict",
+          "năm",
+          "quản",
+          "tháng",
+          "trị",
+          "tình",
+          "điều",
+          "đầu"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/ict-2976057/ict-dieu-chinh-bao-cao-tinh-hinh-quan-tri-6-thang-dau-nam-2026.chn",
+        "title": "ICT: Điều chỉnh Báo cáo tình hình quản trị 6 tháng đầu năm 2026",
+        "published_at": "2026-09-14T10:41:24+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện thông báo điều chỉnh Báo cáo tình hình quản trị 6 tháng đầu năm 2026 như sau: Các tập tin đính kèm 20260914 - ICT - CBTT ban dieu chinh bao cao quan tri 6 thang dau nam 2026 - Bo TNCN.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/ict-dieu-chinh-bao-cao-tinh-hinh-quan-tri-6-thang-dau-nam-2026/41779829",
+        "title": "ICT: Điều chỉnh Báo cáo tình hình quản trị 6 tháng đầu năm 2026",
+        "published_at": "2026-09-14T17:41:24+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tin học Bưu điện thông báo điều chỉnh Báo cáo tình hình quản trị 6 tháng đầu năm 2026 như sau:"
+      },
+      "scope": "ICT"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.758466,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.595616,
+        "existing_text_overlap": 0.7273584905660377,
+        "shared_entities": [
+          "ELC"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "công",
+          "elc",
+          "lệ",
+          "mới",
+          "ty",
+          "vốn",
+          "điều"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/elc-2982607/elc-dieu-le-cong-ty-theo-von-moi.chn",
+        "title": "ELC: Điều lệ công ty theo vốn mới",
+        "published_at": "2026-09-23T10:32:57+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố Điều lệ công ty theo vốn mới như sau: Các tập tin đính kèm 20260923 - ELC - Dieu le Cong ty theo von moi.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/elc-dieu-le-cong-ty-theo-von-moi/41918721",
+        "title": "ELC: Điều lệ công ty theo vốn mới",
+        "published_at": "2026-09-23T17:32:57+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố Điều lệ công ty theo vốn mới như sau:"
+      },
+      "scope": "ELC"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.749587,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.570248,
+        "existing_text_overlap": 0.6398305084745762,
+        "shared_entities": [
+          "FPT"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.0,
+        "shared_numeric_anchors": [
+          "02.10"
+        ],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "02",
+          "10",
+          "2026",
+          "27",
+          "fpt",
+          "hđqt",
+          "nghị",
+          "ngày",
+          "quyết",
+          "số"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/fpt-3009003/fpt-nghi-quyet-hdqt-so-02102026-ngay-27102026.chn",
+        "title": "FPT: Nghị quyết HĐQT số 02.10-2026 ngày 27/10/2026",
+        "published_at": "2026-10-28T11:03:26+00:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần FPT công bố Nghị quyết HĐQT số 02.10-2026 ngày 27/10/2026 như sau: Các tập tin đính kèm 20261028 - FPT - Nghi quyet HDQT so 02.10.2026 vv tam ung co tuc tien dot 1 nam 2026.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/fpt-nghi-quyet-hdqt-so-02-10-2026-ngay-27-10-2026/42509944",
+        "title": "FPT: Nghị quyết HĐQT số 02.10-2026 ngày 27/10/2026",
+        "published_at": "2026-10-28T18:03:26+07:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần FPT công bố Nghị quyết HĐQT số 02.10-2026 ngày 27/10/2026 như sau:"
+      },
+      "scope": "FPT"
+    },
+    {
+      "status": "same_title_low_body_overlap",
+      "event_score": 0.745064,
+      "evidence": {
+        "title_tfidf_cosine": 1.0,
+        "body_tfidf_cosine": 0.557325,
+        "existing_text_overlap": 0.6883333333333334,
+        "shared_entities": [
+          "ITD"
+        ],
+        "shared_event_types": [],
+        "publication_gap_days": 0.7328125,
+        "shared_numeric_anchors": [],
+        "matching_route": "same_title",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "hđqt",
+          "itd",
+          "lệ",
+          "nghị",
+          "quyết",
+          "thay",
+          "việc",
+          "vốn",
+          "điều",
+          "đổi"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/itd-2953251/itd-nghi-quyet-hdqt-ve-viec-thay-doi-von-dieu-le.chn",
+        "title": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+        "published_at": "2026-08-13T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo Nghị quyết HĐQT về việc thay đổi vốn điều lệ như sau: Các tập tin đính kèm 20260813 - ITD - Nghi quyet HDQT ve ban hanh Dieu le va tang von.signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/itd-nghi-quyet-hdqt-ve-viec-thay-doi-von-dieu-le/41445326",
+        "title": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+        "published_at": "2026-08-14T17:35:15+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo Nghị quyết HĐQT về việc thay đổi vốn điều lệ như sau:"
+      },
+      "scope": "ITD"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.716422,
+      "evidence": {
+        "title_tfidf_cosine": 0.739795,
+        "body_tfidf_cosine": 0.598671,
+        "existing_text_overlap": 0.6582089552238806,
+        "shared_entities": [
+          "ITD"
+        ],
+        "shared_event_types": [
+          "voting_shares"
+        ],
+        "publication_gap_days": 0.6952546296296296,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "biểu",
+          "cổ",
+          "hành",
+          "itd",
+          "lưu",
+          "lượng",
+          "phiếu",
+          "quyết",
+          "quyền",
+          "số"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/itd-2952386/itd-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh-la-30883052-cp.chn",
+        "title": "ITD: Số lượng cổ phiếu có quyền biểu quyết đang lưu hành là 30.883.052 cp",
+        "published_at": "2026-08-12T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành như sau: Các tập tin đính kèm 20260813 - ITD - Thong bao thay doi so luong co phan co quyen bieu quyet.signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/itd-thong-bao-thay-doi-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh/41424553",
+        "title": "ITD: Thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành",
+        "published_at": "2026-08-13T16:41:10+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành như sau:"
+      },
+      "scope": "ITD"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.711284,
+      "evidence": {
+        "title_tfidf_cosine": 0.671374,
+        "body_tfidf_cosine": 0.691508,
+        "existing_text_overlap": 0.6444912280701754,
+        "shared_entities": [
+          "ITD"
+        ],
+        "shared_event_types": [
+          "appointment"
+        ],
+        "publication_gap_days": 0.7416435185185185,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "bổ",
+          "chính",
+          "giám",
+          "hđqt",
+          "itd",
+          "nghị",
+          "nhiệm",
+          "quyết",
+          "tài",
+          "đốc"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/itd-2962503/itd-nghi-quyet-hdqt-bo-nhiem-ba-nguyen-thi-thu-suong-giu-chuc-giam-doc-tai-chinh.chn",
+        "title": "ITD: Nghị quyết HĐQT bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính",
+        "published_at": "2026-08-23T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính như sau: Các tập tin đính kèm 20260824 - ITD - Nghi quyet HDQT bo nhiem GDTC.signed.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/itd-nghi-quyet-hdqt-ve-viec-bo-nhiem-giam-doc-tai-chinh/41560692",
+        "title": "ITD: Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính",
+        "published_at": "2026-08-24T17:47:58+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Công nghệ ITD thông báo Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính như sau:"
+      },
+      "scope": "ITD"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.63757,
+      "evidence": {
+        "title_tfidf_cosine": 0.460129,
+        "body_tfidf_cosine": 0.812854,
+        "existing_text_overlap": 0.66,
+        "shared_entities": [
+          "ITD"
+        ],
+        "shared_event_types": [
+          "listing"
+        ],
+        "publication_gap_days": 0.5955324074074074,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "dịch",
+          "giao",
+          "itd",
           "niêm",
           "yết"
         ]
       },
       "left": {
         "source": "cafef",
-        "url": "https://cafef.vn/nong-toan-bo-co-phieu-niem-yet-tren-hnx-sap-chuyen-sang-hose-188260930192254094.chn",
-        "title": "Nóng: Toàn bộ cổ phiếu niêm yết trên HNX sắp chuyển sang HOSE",
-        "published_at": "2026-09-30T19:24:00",
+        "url": "https://cafef.vn/du-lieu/itd-2976530/itd-2292026-giao-dich-4710245-cp-niem-yet-bo-sung.chn",
+        "title": "ITD: 22.9.2026, giao dịch 4.710.245 cp niêm yết bổ sung",
+        "published_at": "2026-09-14T17:00:00+00:00",
         "files": [
-          "tin_tuc_chung/cafef/01-10-2026.json"
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
         ],
         "uncheck_files": [
-          "tin_tuc_chung/cafef/01-10-2026.json"
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
         ],
-        "excerpt": "TIN MỚI Sở Giao dịch Chứng khoán Việt Nam (VNX) vừa công bố các mốc thời gian thực hiện việc chuyển cổ phiếu niêm yết từ Sở Giao dịch Chứng khoán Hà Nội (HNX) sang Sở Giao dịch Chứng khoán TP.HCM (HOSE), trong khuôn khổ lộ trình sắp xếp lại thị trường giao dịch cổ phiếu. Theo kế hoạch, ngày 23/12/2026 sẽ là ngày giao dịch cuối cùng của toàn bộ cổ phiếu niêm yết tại HNX . Sau phiên này, các cổ phiếu thuộc phạm vi chuyển giao sẽ tạm ngừng giao dịch trong hai ngày 24 và 25/12/2026. Trong khoảng thời gian tạm ngừng nói trên, hoạt động giao dịch chứng khoán tại HOSE cũng như các thị trường khác do "
+        "excerpt": "Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết của Công ty Cổ phần Công nghệ ITD như sau: Các tập tin đính kèm 20260914 - ITD - TB vv giao dich cp thay doi niem yet.pdf Theo HOSE"
       },
       "right": {
         "source": "fireant",
-        "url": "https://fireant.vn/bai-viet/quy-mo-hnx-ra-sao-truoc-khi-chuyen-niem-yet-ve-hose/42052046",
-        "title": "Quy mô HNX ra sao trước khi chuyển niêm yết về HOSE?",
-        "published_at": "2026-10-01T15:59:00+07:00",
+        "url": "https://fireant.vn/bai-viet/itd-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet/41794276",
+        "title": "ITD: Thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết",
+        "published_at": "2026-09-15T14:17:34+07:00",
         "files": [
-          "tin_tuc_chung/fireant/01-10-2026.json"
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
         ],
         "uncheck_files": [
-          "tin_tuc_chung/fireant/01-10-2026.json"
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
         ],
-        "excerpt": "Số liệu cuối tháng 9 cho thấy quy mô thị trường niêm yết của HNX khá khiêm tốn. Tổng khối lượng gần 21 tỷ cổ phiếu và giá trị vốn hóa gần 460.000 tỷ đồng, chỉ bằng 9% và khoảng 5% so với quy mô HOSE. Sở Giao dịch chứng khoán Việt Nam (VNX) mới đây đưa ra lộ trình sắp xếp lại thị trường, khi chuyển cổ phiếu niêm yết từ Sở Giao dịch chứng khoán Hà Nội (HNX) sang Sở Giao dịch chứng khoán TP HCM (HOSE). Ngày giao dịch cuối cùng của toàn bộ cổ phiếu niêm yết tại HNX là 23/12. Các cổ phiếu thuộc phạm vi chuyển giao sẽ tạm ngừng giao dịch trong ngày 24-25/12 và chính thức giao dịch tại HOSE vào ngày "
+        "excerpt": "Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết của Công ty Cổ phần Công nghệ ITD như sau:"
       },
-      "scope": "market"
+      "scope": "ITD"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.627052,
+      "evidence": {
+        "title_tfidf_cosine": 0.543198,
+        "body_tfidf_cosine": 0.652266,
+        "existing_text_overlap": 0.5952380952380952,
+        "shared_entities": [
+          "ELC"
+        ],
+        "shared_event_types": [
+          "shareholders"
+        ],
+        "publication_gap_days": 0.7266666666666667,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "cổ",
+          "elc",
+          "mai",
+          "nguyễn",
+          "phương",
+          "thị",
+          "đông"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/elc-2997325/elc-co-dong-nguyen-thi-mai-phuong-da-mua-944900-cp.chn",
+        "title": "ELC: Cổ đông Nguyễn Thị Mai Phương đã mua 944.900 cp",
+        "published_at": "2026-10-12T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Nguyễn Thị Mai Phương báo cáo thay đổi sở hữu cổ đông lớn Công ty Cổ phần Công nghệ - Viễn thông ELCOM như sau: Các tập tin đính kèm 20261013 - ELC - Bao cao thay doi ty le so huu cua co dong lon.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/elc-bao-cao-thay-doi-so-huu-co-dong-lon-nguyen-thi-mai-phuong/42255239",
+        "title": "ELC: Báo cáo thay đổi sở hữu cổ đông lớn Nguyễn Thị Mai Phương",
+        "published_at": "2026-10-13T17:26:24+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Nguyễn Thị Mai Phương báo cáo thay đổi sở hữu cổ đông lớn Công ty Cổ phần Công nghệ - Viễn thông ELCOM như sau:"
+      },
+      "scope": "ELC"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.617968,
+      "evidence": {
+        "title_tfidf_cosine": 0.114875,
+        "body_tfidf_cosine": 0.490624,
+        "existing_text_overlap": 0.07477558348294434,
+        "shared_entities": [
+          "FPT"
+        ],
+        "shared_event_types": [
+          "dividend",
+          "shareholders"
+        ],
+        "publication_gap_days": 0.5069444444444444,
+        "shared_numeric_anchors": [
+          "1.000",
+          "35.515"
+        ],
+        "matching_route": "body_with_numeric_anchors",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "cổ",
+          "fpt",
+          "năm"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/co-phieu-thung-day-3-nam-fpt-phat-thong-bao-quan-trong-188261028224606129.chn",
+        "title": "Cổ phiếu \"thủng\" đáy 3 năm, FPT phát thông báo quan trọng",
+        "published_at": "2026-10-28T22:49:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Hội đồng quản trị CTCP FPT (HoSE: FPT) vừa thông qua phương án tạm ứng cổ tức đợt 1 năm 2026 bằng tiền mặt với tỷ lệ 10%, tương ứng 1.000 đồng/cổ phiếu. Ngày đăng ký cuối cùng để thực hiện quyền là 30/11/2026, thời gian thanh toán dự kiến vào ngày 10/12/2026. Với hơn 1,8 tỷ cổ phiếu đang lưu hành, FPT dự kiến chi khoảng 1.885 tỷ đồng cho đợt tạm ứng này. Trước đó, vào tháng 9/2026, FPT đã thực hiện phát hành cổ phiếu thưởng cho cổ đông hiện hữu với tỷ lệ 10:1, tức mỗi 10 cổ phiếu được nhận thêm 1 cổ phiếu mới. Ngày đăng ký cuối cùng là "
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/fpt-co-dong-don-tin-vui-nhan-tam-ung-co-tuc-nam-2026/42522048",
+        "title": "FPT: Cổ đông đón tin vui, nhận tạm ứng cổ tức năm 2026",
+        "published_at": "2026-10-29T10:59:00+07:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Hội đồng quản trị Công ty Cổ phần FPT (HOSE: FPT ) đã thông qua nghị quyết chi trả cổ tức bằng tiền mặt với tỷ lệ 10% mệnh giá, tương ứng 1.000 đồng cho mỗi cổ phiếu. Theo kế hoạch, ngày chốt danh sách cổ đông hưởng quyền là 30/11 và ngày thực hiện chi trả cổ tức là 10/12. Cổ đông FPT sẽ được nhận tạm ứng cổ tức năm 2026 tỷ lệ 10% Theo đó, HĐQT FPT thông qua phương án tạm ứng cổ tức năm 2026 bằng tiền với tỷ lệ 10%/cổ phiếu (1 cổ phiếu nhận 1.000 đồng). Ngày chốt danh sách cổ đông là ngày 30/11 và ngày thực hiện chi trả là 10/12/2026. Thông tin chi trả cổ tức được đưa ra sau khi FPT ghi nhận k"
+      },
+      "scope": "FPT"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.612253,
+      "evidence": {
+        "title_tfidf_cosine": 0.087077,
+        "body_tfidf_cosine": 0.483004,
+        "existing_text_overlap": 0.08014285714285714,
+        "shared_entities": [
+          "FPT"
+        ],
+        "shared_event_types": [
+          "trading"
+        ],
+        "publication_gap_days": 1.0840277777777778,
+        "shared_numeric_anchors": [
+          "11,6",
+          "12,4",
+          "14,8",
+          "16,6",
+          "23,1",
+          "28.538",
+          "35.515",
+          "36.137",
+          "40.023",
+          "5.052"
+        ],
+        "matching_route": "body_with_numeric_anchors",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "cổ",
+          "fpt",
+          "phiếu"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/ban-rong-trien-mien-khoi-ngoai-van-con-nam-hon-455-trieu-co-phieu-fpt-188261028190244374.chn",
+        "title": "Bán ròng triền miên, khối ngoại vẫn còn nắm hơn 455 triệu cổ phiếu FPT",
+        "published_at": "2026-10-28T19:01:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [],
+        "excerpt": "FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Khối ngoại bán ròng FPT đang dần trở thành một điều quen thuộc trên thị trường chứng khoán Việt Nam. Tính đến ngày 28/10, nhà đầu tư nước ngoài đã bán ròng 8 phiên liên tiếp trên cổ phiếu công nghệ này. Từ đầu năm đến nay, khối ngoại đã bán ròng tổng cộng gần 211 triệu cổ phiếu FPT , tương ứng giá trị 16.500 tỷ. Con số này khiến FPT trở thành cái tên bị xả mạnh thứ 2 toàn sàn. Tính đến ngày 28/10, khối ngoại còn nắm hơn 455 triệu cổ phiếu FPT, tương ứng tỷ lệ sở hữu nước ngoài dưới 27%, thấp nhất trong nhiều năm. Điều này đồng nghĩa với"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/fpt-co-phieu-thung-day-du-doanh-nghiep-bao-lai-ky-luc/42485664",
+        "title": "FPT: Cổ phiếu thủng đáy dù doanh nghiệp báo lãi kỷ lục",
+        "published_at": "2026-10-27T17:00:00+07:00",
+        "files": [
+          "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Đóng cửa phiên 27.10, giá cổ phiếu FPT 'thủng' mốc 56.000 đồng, giảm còn 55.400 đồng/cổ phiếu - mức thấp nhất từ 2024 tới nay. Vào đầu phiên sáng 27.10, nhịp hồi đầu tiên đẩy giá cổ phiếu FPT (mã chứng khoán: FPT ) nhích lên 56.200 đồng so với giá tham chiếu 56.000 đồng chốt phiên ngày hôm qua 26.10. Tuy nhiên, ngay sau đó, áp lực bán ròng của khối ngoại đã ép giá xuyên thủng mốc 56.000 đồng và rơi về 55.200 đồng. Chốt phiên chiều 27.10, mức giá cổ phiếu FPT giảm còn 55.400 đồng/cổ phiếu. Đây là mức giá thấp nhất trong gần 3 năm trở lại đây. Với mức giá này, cổ phiếu FPT đã \"bốc hơi\" khoảng 53"
+      },
+      "scope": "FPT"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.590503,
+      "evidence": {
+        "title_tfidf_cosine": 0.403226,
+        "body_tfidf_cosine": 0.767796,
+        "existing_text_overlap": 0.655421686746988,
+        "shared_entities": [
+          "ELC"
+        ],
+        "shared_event_types": [
+          "listing"
+        ],
+        "publication_gap_days": 0.7275578703703703,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "dịch",
+          "elc",
+          "giao",
+          "niêm",
+          "yết"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/elc-2994847/elc-19102026-giao-dich-7700890-cp-niem-yet-bo-sung.chn",
+        "title": "ELC: 19.10.2026, giao dịch 7.700.890 cp niêm yết bổ sung",
+        "published_at": "2026-10-08T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Sở Giao dịch Chứng khoán TP.HCM thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết của Công ty Cổ phần Công nghệ - Viễn thông ELCOM như sau: Các tập tin đính kèm 20261009 - ELC - TB vv giao dich chung khoan thay doi dkny.pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/elc-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet/42207010",
+        "title": "ELC: Thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết",
+        "published_at": "2026-10-09T17:27:41+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Sở Giao dịch Chứng khoán TP.HCM thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết của Công ty Cổ phần Công nghệ - Viễn thông ELCOM như sau:"
+      },
+      "scope": "ELC"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.585749,
+      "evidence": {
+        "title_tfidf_cosine": 0.479806,
+        "body_tfidf_cosine": 0.633873,
+        "existing_text_overlap": 0.6829166666666666,
+        "shared_entities": [
+          "ICT"
+        ],
+        "shared_event_types": [
+          "shareholders"
+        ],
+        "publication_gap_days": 0.7248263888888888,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "công",
+          "cổ",
+          "hiệu",
+          "ict",
+          "phần",
+          "sắt",
+          "thành",
+          "thông",
+          "trở",
+          "ty",
+          "tín",
+          "viễn",
+          "đường"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/ict-2998124/ict-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat-da-mua-10300-cp-tro-thanh-cdl-tu-8102026.chn",
+        "title": "ICT: Công ty Cổ phần Viễn thông - Tín hiệu đường sắt đã mua 10.300 cp, trở thành CĐL từ 8.10.2026",
+        "published_at": "2026-10-13T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tín hiệu đường sắt báo cáo về ngày trở thành cổ đông lớn Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau: Các tập tin đính kèm 20261014 - ICT - BC tro thanh CDL CTCP Vien Thong Tin Hieu Duong Sat (8.10.2026).pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/ict-bao-cao-ve-ngay-tro-thanh-co-dong-lon-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat/42277196",
+        "title": "ICT: Báo cáo về ngày trở thành cổ đông lớn Công ty Cổ phần Viễn thông - Tín hiệu đường sắt",
+        "published_at": "2026-10-14T17:23:45+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tín hiệu đường sắt báo cáo về ngày trở thành cổ đông lớn Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau:"
+      },
+      "scope": "ICT"
+    },
+    {
+      "status": "possible_rewritten_event",
+      "event_score": 0.565473,
+      "evidence": {
+        "title_tfidf_cosine": 0.502428,
+        "body_tfidf_cosine": 0.540394,
+        "existing_text_overlap": 0.6376466275659823,
+        "shared_entities": [
+          "ICT"
+        ],
+        "shared_event_types": [
+          "shareholders"
+        ],
+        "publication_gap_days": 0.7275347222222223,
+        "shared_numeric_anchors": [],
+        "matching_route": "headline_and_body",
+        "missing_publication_date": false,
+        "shared_title_keywords": [
+          "công",
+          "cổ",
+          "hiệu",
+          "ict",
+          "phần",
+          "sắt",
+          "thông",
+          "ty",
+          "tín",
+          "viễn",
+          "đường"
+        ]
+      },
+      "left": {
+        "source": "cafef",
+        "url": "https://cafef.vn/du-lieu/ict-2981863/ict-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat-da-mua-2000-cp.chn",
+        "title": "ICT: Công ty Cổ phần Viễn thông - Tín hiệu đường sắt đã mua 2.000 cp",
+        "published_at": "2026-09-21T17:00:00+00:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tín hiệu đường sắt báo cáo về ngày trở thành cổ đông lớn Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau: Các tập tin đính kèm 20260922 - ICT - BC tro thanh CDL, NDT nam giu tu 5 phan tram tro len (CTCP Vien thong - Tin hieu duong sat).pdf Theo HOSE"
+      },
+      "right": {
+        "source": "fireant",
+        "url": "https://fireant.vn/bai-viet/ict-bao-cao-ve-ngay-tro-thanh-co-dong-lon-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat/41900514",
+        "title": "ICT: Báo cáo về ngày trở thành cổ đông lớn Công ty Cổ phần Viễn thông - Tín hiệu đường sắt",
+        "published_at": "2026-09-22T17:27:39+07:00",
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "uncheck_files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "excerpt": "Công ty Cổ phần Viễn thông - Tín hiệu đường sắt báo cáo về ngày trở thành cổ đông lớn Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau:"
+      },
+      "scope": "ICT"
     }
   ]
 }

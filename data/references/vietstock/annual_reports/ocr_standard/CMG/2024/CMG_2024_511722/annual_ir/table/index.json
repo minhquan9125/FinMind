@@ -1,0 +1,215 @@
+{
+  "document_sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
+  "scope": "audited_financial_statements",
+  "pages": 10,
+  "page_ranges": [
+    {
+      "start": 64,
+      "end": 68
+    },
+    {
+      "start": 71,
+      "end": 75
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "auditor_report",
+      "start": 64,
+      "end": 64
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 65,
+      "end": 66
+    },
+    {
+      "page_class": "income_statement",
+      "start": 67,
+      "end": 67
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 68,
+      "end": 68
+    },
+    {
+      "page_class": "auditor_report",
+      "start": 71,
+      "end": 71
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 72,
+      "end": 73
+    },
+    {
+      "page_class": "income_statement",
+      "start": 74,
+      "end": 74
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 75,
+      "end": 75
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 64,
+      "printed_page": "66",
+      "file": "p-064.ir.json",
+      "page_class": "auditor_report",
+      "title": "BÁO CÁO KIỂM TOÁN ĐỘC LẬP",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 65,
+      "printed_page": "CMC",
+      "file": "p-065.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN RIÊNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 66,
+      "printed_page": "68",
+      "file": "p-066.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN RIÊNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 67,
+      "printed_page": "CMC",
+      "file": "p-067.ir.json",
+      "page_class": "income_statement",
+      "title": "CHỈ TIÊU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 68,
+      "printed_page": "70",
+      "file": "p-068.ir.json",
+      "page_class": "cash_flow",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ RIÊNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 71,
+      "printed_page": "CMC",
+      "file": "p-071.ir.json",
+      "page_class": "auditor_report",
+      "title": "BÁO CÁO KIỂM TOÁN ĐỘC LẬP",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 72,
+      "printed_page": "74",
+      "file": "p-072.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 73,
+      "printed_page": "CMC",
+      "file": "p-073.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 74,
+      "printed_page": "76",
+      "file": "p-074.ir.json",
+      "page_class": "income_statement",
+      "title": "CHỈ TIÊU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 75,
+      "printed_page": "CMC",
+      "file": "p-075.ir.json",
+      "page_class": "cash_flow",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    }
+  ],
+  "structured_table_ranges": [],
+  "needs_review": [
+    {
+      "pdf_page": 65,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 66,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 73,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 75,
+      "reason": "statement_columns_or_rows_unverified"
+    }
+  ],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": "TT200_NONBANK",
+  "arithmetic_template_id": "vn_nonbank_b01_b02_b03_v1",
+  "arithmetic_template_sha256": "b827359542c40d4ce71a754b248232aae0b8bc2f30f0ce7ddf99e82381a4748a",
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

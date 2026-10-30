@@ -26,6 +26,15 @@ The manifest is `data/references/vietstock/annual_reports/manifest.json`. Downlo
 
 ## Text extraction and OCR
 
+If the manifest still points at `files/` but local PDFs have been moved to
+`files_pdf/`, the extractor resolves the matching mirror automatically while
+retaining the manifest path as provenance. If one manifest PDF path is not
+present locally, the extractor reports that path and continues processing the
+other PDFs in the same record. Use `--output-root tmp/ocr-pilot` for a
+trial that leaves the existing `extracted/` corpus untouched. Pages with a
+garbled text layer are sent to OCR; the original layer is preserved as
+`text_layer_raw` and marked `BROKEN_TEXT_LAYER` for review.
+
 Run extraction from the repository root. Native PDF text is preferred; Tesseract OCR handles pages without usable text:
 
 ```powershell
@@ -38,7 +47,7 @@ To normalize existing OCR text without running OCR again:
 python data_pipeline/annual_reports/OCR_annuals.py --symbols FPT --years 2024 --reclean-existing-json
 ```
 
-The extractor uses Tesseract with Vietnamese and English (`vie+eng`, page segmentation mode 3) for pages without a usable text layer. It keeps the original PDF unchanged and writes page text plus provenance JSON under `extracted/`. Each OCR page preserves Tesseract output in `text_raw`; the extractor's initial `text_clean` only applies Unicode NFC, hidden-character removal, and whitespace collapse. Gemini then reads `text_raw` directly and replaces `text_clean`. BCTN content is not merged into the BCTC API JSON.
+The extractor uses Tesseract with Vietnamese and English (`vie+eng`, page segmentation mode 3) for pages without a usable text layer. When that mode finds no text, it retries the rendered page with mode 6 and marks any result for review. It keeps the original PDF unchanged and writes page text plus provenance JSON under `extracted/`. Each OCR page preserves Tesseract output in `text_raw`; the extractor's initial `text_clean` only applies Unicode NFC, hidden-character removal, and whitespace collapse. Gemini then reads `text_raw` directly and replaces `text_clean`. BCTN content is not merged into the BCTC API JSON.
 
 Tesseract is a system program, so installing Python packages alone does not install it. On Windows, install Tesseract OCR and include both English and Vietnamese language data. Then verify that `tesseract --list-langs` lists `eng` and `vie`. The Python dependencies are:
 
@@ -68,6 +77,9 @@ Install the SDK and clean pages that already contain Tesseract OCR text:
 python -m pip install -r data_pipeline/annual_reports/requirements-ocr.txt
 python data_pipeline/annual_reports/model_gemini.py --symbols FPT --years 2024
 ```
+
+For a pilot extraction written with `--output-root`, pass the same directory to
+the cleaner. `--pages` can limit a model check to specific PDF page numbers.
 
 The default model is `gemini-3.8-flash`; override it with `--model` or `GEMINI_MODEL`. Providers are tried in this order: Gemini, Groq, another configured OpenAI-compatible API, then local Qwen through Ollama. Configure Groq with `GROQ_API_KEY`; optionally set `GROQ_MODEL` (default `openai/gpt-oss-20b`) and `GROQ_BASE_URL` (default `https://api.groq.com/openai/v1`). If `GROQ_API_KEY` is absent and the existing `OAI_BASE_URL` points to `api.groq.com`, the cleaner reuses `OAI_API_KEY` but uses the Groq model setting/default. The Groq request uses JSON output, limits generation to 4096 tokens, and validates numeric tokens before saving. The separate OpenAI-compatible provider still requires `OAI_BASE_URL`, `OAI_MODEL`, and `OAI_API_KEY`. Qwen requires Ollama and the model installed locally; it does not require another API key. Install Ollama from https://ollama.com/download/windows, then run `ollama pull qwen2.5:7b-instruct`. Pages already cleaned by Gemini, Groq, OpenAI-compatible, or Qwen are skipped unless `--refresh` is given.
 

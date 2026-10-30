@@ -1,0 +1,62 @@
+{
+  "text": "QUẢN TRỊ\nCÔNG TY",
+  "chars": 13,
+  "words": 4,
+  "wordItems": [
+    {
+      "text": "QUẢN",
+      "bbox": [
+        605,
+        1092,
+        953,
+        1231
+      ],
+      "conf": 81.7285,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRỊ",
+      "bbox": [
+        995,
+        1125,
+        1189,
+        1237
+      ],
+      "conf": 90.926331,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        605,
+        1263,
+        950,
+        1376
+      ],
+      "conf": 95.990349,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        990,
+        1290,
+        1146,
+        1373
+      ],
+      "conf": 96.717819,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 91,
+  "lowConfRatio": 0,
+  "seconds": 0.642
+}

@@ -1,0 +1,131 @@
+{
+  "ir_version": "1",
+  "page": 136,
+  "printed_page": null,
+  "page_class": "notes",
+  "page_size": {"width": 1190.88, "height": 841.68, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+    "file_name": "TCB_2024_499236.pdf"
+  },
+  "blocks": [
+    {"id": "p136-b1", "type": "paragraph", "text": "Ngân hàng TMCP Kỹ thương Việt Nam", "bbox": [79.22, 39.6, 322.57, 53.64]},
+    {
+      "id": "p136-b2",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\ntại ngày 31 tháng 12 năm 2024 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [79.23, 66.24, 398.74, 87.75]
+    },
+    {
+      "id": "p136-b3",
+      "type": "paragraph",
+      "text": "Rủi ro lãi suất phát sinh khi có sự chênh lệch về thời hạn định lại lãi suất giữa tài sản có và tài sản\nnợ. Tất cả các hoạt động tín dụng, huy động, đầu tư của Ngân hàng đều phát sinh rủi ro lãi suất.",
+      "bbox": [115.22, 155.91, 523.8, 177.39]
+    },
+    {
+      "id": "p136-b4",
+      "type": "paragraph",
+      "text": "Dựa trên cơ sở trạng thái “nhạy cảm với lãi suất” theo từng kỳ thay đổi lãi suất, các chỉ tiêu\nlà tài sản, nguồn vốn và các tài sản ngoại bảng được xếp vào các kỳ hạn của bảng “khe hở",
+      "bbox": [115.19, 190.48, 523.42, 211.96]
+    },
+    {
+      "id": "p136-b5",
+      "type": "paragraph",
+      "text": "Thời hạn định lại lãi suất đối với các khoản mục có lãi suất cố định là thời gian còn lại cho\nđến khi đáo hạn của tài sản, đối với lãi suất thả nổi là thời gian còn lại cho đến kỳ định lại lãi",
+      "bbox": [115.17, 236.45, 523.41, 257.94]
+    },
+    {
+      "id": "p136-b6",
+      "type": "paragraph",
+      "text": "Các giả định và điều kiện sau được áp dụng trong xây dựng bảng “khe hở lãi suất”:",
+      "bbox": [115.14, 282.46, 484.2, 292.42]
+    },
+    {
+      "id": "p136-b7",
+      "type": "paragraph",
+      "text": "► Tiền mặt và vàng; góp vốn, đầu tư dài hạn, tài sản cố định và các tài sản Có khác, các\nkhoản nợ khác được xếp loại vào khoản mục “Không nhạy cảm lãi suất”;",
+      "bbox": [115.22, 299.93, 523.48, 321.41]
+    },
+    {
+      "id": "p136-b8",
+      "type": "paragraph",
+      "text": "► Tiền gửi tại NHNN, tiền gửi tại các tổ chức tài chính, các TCTD khác không kỳ hạn, các\nkhoản nợ Chính phủ và NHNN được xếp loại vào khoản mục “Không nhạy cảm lãi suất”;",
+      "bbox": [115.22, 328.97, 523.6, 350.45]
+    },
+    {
+      "id": "p136-b9",
+      "type": "paragraph",
+      "text": "► Thời gian định lại lãi suất của chứng khoán kinh doanh và chứng khoán đầu tư được tính\ndựa trên thời gian thanh toán/đáo hạn còn lại theo hợp đồng tại thời điểm lập báo cáo tài\nchính hợp nhất nếu chứng khoán đó có lãi suất cố định hoặc dựa trên thời gian định lại\nlãi suất theo hợp đồng nếu chứng khoán đó có lãi suất thả nổi;",
+      "bbox": [115.22, 357.89, 523.58, 402.42]
+    },
+    {
+      "id": "p136-b10",
+      "type": "paragraph",
+      "text": "► Thời gian định lại lãi suất của các khoản tiền gửi tại và cấp tín dụng cho các tổ chức tài\nchính, các TCTD khác; các công cụ tài chính phái sinh và các tài sản/(các khoản nợ) tài\nchính khác; các khoản cho vay khách hàng; hoạt động mua nợ; các khoản nợ Chính phủ\nvà NHNN; các khoản tiền gửi và vay các tổ chức tài chính, các TCTD khác và khoản mục\ntiền gửi của khách hàng được xác định như sau:",
+      "bbox": [115.22, 415.49, 523.57, 471.44]
+    },
+    {
+      "id": "p136-b11",
+      "type": "paragraph",
+      "text": "- Các khoản mục có lãi suất cố định trong suốt thời gian của hợp đồng: thời gian định\nlại lãi suất dựa trên thời gian thanh toán/đáo hạn theo hợp đồng tính từ thời điểm kết",
+      "bbox": [133.22, 478.99, 523.55, 500.47]
+    },
+    {
+      "id": "p136-b12",
+      "type": "paragraph",
+      "text": "- Các khoản mục có lãi suất thả nổi: thời gian định lại lãi suất dựa trên kỳ định lại lãi\nsuất gần nhất theo hợp đồng tính từ thời điểm kết thúc năm tài chính;\n- Đối với tiền gửi không kỳ hạn của khách hàng: thời gian định lại lãi suất sẽ tương\nứng với mức độ ổn định của danh mục tiền gửi không kỳ hạn theo thời gian, dựa trên\nkết quả phân tích mô hình hành vi của danh mục này trong kịch bản căng thẳng vừa",
+      "bbox": [133.22, 517.39, 523.52, 577.4]
+    },
+    {
+      "id": "p136-b13",
+      "type": "paragraph",
+      "text": "► Thời gian định lại lãi suất của khoản mục phát hành giấy tờ có giá dựa trên thời gian\nthanh toán/đáo hạn theo hợp đồng của từng loại giấy tờ có giá nếu giấy tờ có giá có lãi\nsuất cố định hoặc dựa trên thời gian định lại lãi suất theo hợp đồng nếu là lãi suất thả",
+      "bbox": [115.22, 596.47, 523.4, 629.39]
+    },
+    {"id": "p136-b14", "type": "paragraph", "text": "Ngân hàng TMCP Kỹ thương Việt Nam", "bbox": [674.66, 39.6, 918.01, 53.64]},
+    {"id": "p136-b15", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [459.1, 42.36, 524.01, 52.32]},
+    {
+      "id": "p136-b16",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\ntại ngày 31 tháng 12 năm 2024 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [674.67, 66.24, 994.18, 87.75]
+    },
+    {"id": "p136-b17", "type": "paragraph", "text": "45. RỦI RO THỊ TRƯỜNG (tiếp theo)", "bbox": [674.65, 112.23, 860.23, 122.7]},
+    {"id": "p136-b18", "type": "paragraph", "text": "45.1 Rủi ro lãi suất (tiếp theo)", "bbox": [674.66, 132.98, 824.51, 143.45]},
+    {"id": "p136-b19", "type": "paragraph", "text": "Độ nhạy đối với lãi suất", "bbox": [710.67, 155.91, 814.48, 165.87]},
+    {
+      "id": "p136-b20",
+      "type": "paragraph",
+      "text": "Với giả định là các biến số khác không thay đổi, các biến động trong lãi suất của các khoản\nmục có lãi suất thả nổi có ảnh hưởng đến lợi nhuận trước thuế và vốn chủ sở hữu của Ngân\nhàng và các công ty con như sau:",
+      "bbox": [710.59, 178.95, 1118.95, 211.96]
+    },
+    {"id": "p136-b21", "type": "paragraph", "text": "Tại ngày 31/12/2024\nUSD\nVND", "bbox": [710.9, 269.36, 804.1, 304.37]},
+    {
+      "id": "p136-b22",
+      "type": "paragraph",
+      "text": "Bảng dưới đây trình bày các tài sản và công nợ của Ngân hàng theo mô hình “khe hở lãi\nsuất” tại ngày 31 tháng 12 năm 2024:",
+      "bbox": [710.66, 317.33, 1118.94, 338.82]
+    },
+    {"id": "p136-b23", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [1054.54, 42.36, 1119.45, 52.32]},
+    {"id": "p136-b24", "type": "paragraph", "text": "Ảnh hưởng đến\nMức tăng Lợi nhuận trước thuế", "bbox": [874.85, 224.9, 1055.4, 247.94]},
+    {"id": "p136-b25", "type": "paragraph", "text": "Vốn chủ sở hữu", "bbox": [1047.94, 237.98, 1118.64, 247.94]},
+    {"id": "p136-b26", "type": "paragraph", "text": "lãi suất", "bbox": [884.93, 249.62, 916.51, 259.58]},
+    {"id": "p136-b27", "type": "paragraph", "text": "triệu đồng", "bbox": [975.55, 249.62, 1019.96, 259.58]},
+    {"id": "p136-b28", "type": "paragraph", "text": "triệu đồng", "bbox": [1074.22, 249.62, 1118.63, 259.58]},
+    {"id": "p136-b29", "type": "paragraph", "text": "1,50%", "bbox": [888.29, 280.97, 916.45, 290.93]},
+    {"id": "p136-b30", "type": "paragraph", "text": "32.362", "bbox": [989.47, 280.97, 1019.95, 290.93]},
+    {"id": "p136-b31", "type": "paragraph", "text": "25.890", "bbox": [1088.14, 280.97, 1118.64, 290.93]},
+    {"id": "p136-b32", "type": "paragraph", "text": "3,00%", "bbox": [888.29, 293.69, 916.45, 303.65]},
+    {"id": "p136-b33", "type": "paragraph", "text": "7.580.349", "bbox": [975.55, 293.69, 1019.93, 303.65]},
+    {"id": "p136-b34", "type": "paragraph", "text": "6.064.279", "bbox": [1074.22, 293.69, 1118.63, 303.65]},
+    {"id": "p136-b35", "type": "paragraph", "text": "45. RỦI RO THỊ TRƯỜNG", "bbox": [79.21, 112.74, 216.85, 122.7]},
+    {"id": "p136-b36", "type": "paragraph", "text": "45.1 Rủi ro lãi suất", "bbox": [79.22, 133.49, 181.13, 143.45]},
+    {"id": "p136-b37", "type": "paragraph", "text": "lãi suất” của toàn Ngân hàng.", "bbox": [115.17, 213.4, 245.74, 223.36]},
+    {"id": "p136-b38", "type": "paragraph", "text": "suất gần nhất.", "bbox": [115.15, 259.53, 178.39, 269.49]},
+    {"id": "p136-b39", "type": "paragraph", "text": "thúc năm tài chính;", "bbox": [151.23, 501.91, 235.63, 511.87]},
+    {"id": "p136-b40", "type": "paragraph", "text": "phải;", "bbox": [151.19, 578.96, 172.8, 588.92]},
+    {"id": "p136-b41", "type": "paragraph", "text": "nổi.", "bbox": [133.09, 630.95, 149.06, 640.91]}
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "text": "05\n\nBÁO CÁO\nPHÁT TRIÊN\nBÉN VỮNG",
+  "chars": 24,
+  "words": 7,
+  "wordItems": [
+    {
+      "text": "05",
+      "bbox": [
+        113,
+        102,
+        293,
+        228
+      ],
+      "conf": 96.311646,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        418,
+        828,
+        749,
+        972
+      ],
+      "conf": 86.627312,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        806,
+        828,
+        1141,
+        1029
+      ],
+      "conf": 93.156128,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHÁT",
+      "bbox": [
+        318,
+        1016,
+        731,
+        1218
+      ],
+      "conf": 91.045914,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TRIÊN",
+      "bbox": [
+        780,
+        1032,
+        1235,
+        1158
+      ],
+      "conf": 66.051788,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "BÉN",
+      "bbox": [
+        366,
+        1221,
+        673,
+        1347
+      ],
+      "conf": 26.837158,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "VỮNG",
+      "bbox": [
+        729,
+        1209,
+        1189,
+        1349
+      ],
+      "conf": 96.184135,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 79,
+  "lowConfRatio": 0.143,
+  "seconds": 0.518
+}

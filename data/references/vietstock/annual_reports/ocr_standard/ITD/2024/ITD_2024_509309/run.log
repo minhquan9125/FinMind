@@ -1,0 +1,17 @@
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\ITD\2024\ITD_2024_509309.pdf: 46 trang
+  lớp text: 36 trang dùng được, 10 trang cần OCR (0.38s)
+  [tess] trang 1: conf=86 low=0.102 rot=0 1.91s
+  [tess] trang 3: conf=91 low=0.069 rot=0 1.266s
+  [tess] trang 5: conf=79 low=0.25 rot=0 0.682s
+  [tess] trang 2: conf=82 low=0.15 rot=0 1.268s
+  [tess] trang 6: conf=95 low=0.016 rot=0 1.602s
+  [tess] trang 10: conf=92 low=0 rot=0 0.706s
+  [tess] trang 17: conf=73 low=0.167 rot=0 0.756s
+  [tess] trang 27: conf=85 low=0.2 rot=0 0.725s
+  [tess] trang 46: conf=94 low=0 rot=0 0.803s
+  [tess] trang 44: conf=83 low=0.286 rot=0 0.87s
+  tuyến: {'tesseract': 10, 'text_layer': 36}  trạng thái: {'REVIEW': 4, 'OK': 42}
+  cờ: {'LOW_CONF': 4, 'NEAR_EMPTY': 4}
+  thời gian (s): {'textLayer': 0.38, 'renderAndTesseract': 29.274, 'gemini': 0.0, 'total': 29.817}
+  → D:\finmind\data\references\vietstock\annual_reports\ocr_standard\ITD\2024\ITD_2024_509309

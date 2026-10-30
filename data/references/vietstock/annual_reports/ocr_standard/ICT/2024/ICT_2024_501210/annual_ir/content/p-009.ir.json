@@ -1,0 +1,38 @@
+{
+  "ir_version": "1",
+  "page": 9,
+  "printed_page": "17",
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "078b2f86dbe088ecd5185f54baa9e3832197bcf5416e552814febd2f2226bd12",
+    "file_name": "ICT_2024_501210.pdf"
+  },
+  "blocks": [
+    {"id": "p9-b1", "type": "paragraph", "text": "4.2.Chiến lược phát triển trung và dài hạn", "bbox": [649.38, 67.16, 960.27, 82.16]},
+    {
+      "id": "p9-b2",
+      "type": "paragraph",
+      "text": "- Chiến lược phát triển trung và dài hạn đối với thị trường nhà mạng viễn\nthông truyền thống: Tập trung tăng trưởng doanh thu trong lĩnh vực tích\nhợp hệ thống để giữ vững vị trí số 1 tại 2 nhà mạng truyền thống VNPT và\nMobifone, đồng thời phát triển mở rộng thị phần tại thị trường Viettel;",
+      "bbox": [657.64, 101.82, 1136.73, 162.31]
+    },
+    {
+      "id": "p9-b3",
+      "type": "paragraph",
+      "text": "- Chiến lược phát triển trung và dài hạn đối với thị trường Chính phủ -\nDoanh nghiệp:\n• Triển khai đa dạng hóa các giải pháp tích hợp cao;\n• Tham gia sâu rộng vào các chương trình mua sắm đầu tư công của\nChính phủ và các doanh nghiệp lớn;\n• Tập trung phát triển các dự án đầu tư, vận hành thuê và thu phí cho các\nđối tượng khách hàng trong thị trường Chính phủ - Doanh nghiệp;\n• Nâng cao năng lực tư vấn, đề xuất các giải pháp đầu tư nhằm mở rộng, nâng\ncao hiệu quả hoạt động sản xuất kinh doanh của khách hàng.",
+      "bbox": [657.64, 179.82, 1136.73, 322.61]
+    },
+    {"id": "p9-b4", "type": "paragraph", "text": "- Chiến lược phát triển trung và dài hạn đối với mảng dịch vụ số:", "bbox": [657.64, 336.48, 1073.62, 350.17]},
+    {
+      "id": "p9-b5",
+      "type": "paragraph",
+      "text": "• Thúc đẩy mô hình liên kết/ hợp tác với các đối tác và các nhà mạng nhằm\ncung cấp các giải pháp, sản phẩm và dịch vụ số cho các khách hàng Chính\nphủ - Doanh nghiệp;\n• Hợp tác với các nhà khai thác dịch vụ viễn thông – tin học nhằm cung cấp\ncác dịch vụ số cho khách hàng tiêu dùng cuối cùng (B2C). Đồng thời, khai\nthác dữ liệu khách hàng (big data mining) nhằm phát triển thêm các dịch vụ.",
+      "bbox": [669.69, 358.45, 1136.71, 449.45]
+    },
+    {"id": "p9-b6", "type": "paragraph", "text": "Báo cáo thường niên 17", "bbox": [1047.14, 806.67, 1166.52, 818.94]},
+    {"id": "p9-b7", "type": "paragraph", "text": "16 Công ty Cổ phần Viễn thông – Tin học Bưu điện", "bbox": [21.27, 807.83, 242.3, 818.83]},
+    {"id": "p9-b8", "type": "furniture", "text": "2024", "bbox": [1109.93, 816.27, 1131.05, 824.27]}
+  ]
+}

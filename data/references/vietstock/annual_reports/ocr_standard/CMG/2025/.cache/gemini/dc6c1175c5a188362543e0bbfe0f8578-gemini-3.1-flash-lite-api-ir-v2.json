@@ -1,0 +1,251 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "a. Cơ cấu quản lý theo các khối kinh doanh gồm: (i) Khối Hạ Tầng số: • Công ty Cổ phần Hạ tầng Viễn thông CMC (CMC Telecom) • Công ty Cổ phần NetNam (NETNAM) (ii) Khối Công nghệ & Giải pháp: • Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC (CMC TS) • Công ty TNHH CMC Consulting • Công ty TNHH An ninh An toàn thông tin (CMC CS) • Công ty TNHH Hạ tầng số CMC (CMC ADI) (iii) Khối Công nghệ mới - Công nghệ chiến lược: • Công ty Cổ phần CMC OpenAI (C-OpenAI) • Viện nghiên cứu ứng dụng công nghệ CMC (CMC ATI) (iv) Khối Kinh doanh toàn cầu: • Công ty TNHH CMC Global (bao gồm: CMC Japan, CMC-APAC, CMC Korea, CMC MALAY, CMC North America, CMC Deutschland) (v) Khối Giáo dục & Phát triển nguồn lực: • Công ty TNHH CMC Education (CMC Education) • Công ty Cổ phần Đầu tư Đại học CMC (CMC Uni) • Trường Đại học CMC (CMC University) (vi) Khối khác: • Công ty TNHH CMC Invesment (CMC Invest) • Công ty TNHH CMC Đà Nẵng (CMC Da Nang) • Công ty TNHH CMC Hòa Lạc (CMC Hoa Lac) • Chi nhánh Công ty Cổ phần Tập đoàn Công nghệ CMC (Tp. Hà Nội) b. Các công ty con, công ty liên kết:",
+      "box_2d": [
+        118,
+        93,
+        683,
+        833
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        681,
+        83,
+        861,
+        926
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            681,
+            83,
+            718,
+            145
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Tên Công ty"
+          ],
+          "box_2d": [
+            681,
+            145,
+            718,
+            287
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Tên viết tắt"
+          ],
+          "box_2d": [
+            681,
+            287,
+            718,
+            415
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Địa chỉ"
+          ],
+          "box_2d": [
+            681,
+            415,
+            718,
+            681
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Lĩnh vực",
+            "hoạt động"
+          ],
+          "box_2d": [
+            681,
+            681,
+            718,
+            808
+          ]
+        },
+        {
+          "key": "c6",
+          "header_lines": [
+            "Tỷ lệ sở",
+            "hữu"
+          ],
+          "box_2d": [
+            681,
+            808,
+            718,
+            926
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "1",
+          "note": null,
+          "box_2d": [
+            718,
+            83,
+            809,
+            926
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC",
+              "box_2d": [
+                718,
+                145,
+                809,
+                287
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC TS",
+              "box_2d": [
+                718,
+                287,
+                809,
+                415
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                718,
+                415,
+                809,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Giải pháp Công nghệ thông tin",
+              "box_2d": [
+                718,
+                681,
+                809,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                718,
+                808,
+                809,
+                926
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "2",
+          "note": null,
+          "box_2d": [
+            809,
+            83,
+            861,
+            926
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH CMC Consulting",
+              "box_2d": [
+                809,
+                145,
+                861,
+                287
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC Consulting",
+              "box_2d": [
+                809,
+                287,
+                861,
+                415
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                809,
+                415,
+                861,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Dịch vụ phần mềm",
+              "box_2d": [
+                809,
+                681,
+                861,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                809,
+                808,
+                861,
+                926
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "furniture",
+      "text": "6",
+      "box_2d": [
+        907,
+        870,
+        921,
+        881
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "a. Cơ cấu quản lý theo các khối kinh doanh gồm: (i) Khối Hạ Tầng số: • Công ty Cổ phần Hạ tầng Viễn thông CMC (CMC Telecom) • Công ty Cổ phần NetNam (NETNAM) (ii) Khối Công nghệ & Giải pháp: • Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC (CMC TS) • Công ty TNHH CMC Consulting • Công ty TNHH An ninh An toàn thông tin (CMC CS) • Công ty TNHH Hạ tầng số CMC (CMC ADI) (iii) Khối Công nghệ mới - Công nghệ chiến lược: • Công ty Cổ phần CMC OpenAI (C-OpenAI) • Viện nghiên cứu ứng dụng công nghệ CMC (CMC ATI) (iv) Khối Kinh doanh toàn cầu: • Công ty TNHH CMC Global (bao gồm: CMC Japan, CMC-APAC, CMC Korea, CMC MALAY, CMC North America, CMC Deutschland) (v) Khối Giáo dục & Phát triển nguồn lực: • Công ty TNHH CMC Education (CMC Education) • Công ty Cổ phần Đầu tư Đại học CMC (CMC Uni) • Trường Đại học CMC (CMC University) (vi) Khối khác: • Công ty TNHH CMC Invesment (CMC Invest) • Công ty TNHH CMC Đà Nẵng (CMC Da Nang) • Công ty TNHH CMC Hòa Lạc (CMC Hoa Lac) • Chi nhánh Công ty Cổ phần Tập đoàn Công nghệ CMC (Tp. Hà Nội) b. Các công ty con, công ty liên kết:\nSTT\nTên Công ty\nTên viết tắt\nĐịa chỉ\nLĩnh vực\nhoạt động\nTỷ lệ sở\nhữu\n1 1 Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC CMC TS CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Giải pháp Công nghệ thông tin 100%\n2 2 Công ty TNHH CMC Consulting CMC Consulting CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Dịch vụ phần mềm 100%\n6",
+  "unreadable": []
+}

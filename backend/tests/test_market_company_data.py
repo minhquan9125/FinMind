@@ -8,8 +8,10 @@ from unittest.mock import Mock, patch
 import httpx
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
+from uuid import uuid4
 
 from backend.src.api.routers.market_data import router, get_market_data_repository
+from backend.src.auth.authorization import Principal, current_principal
 from backend.src.market_data.history import normalize_history
 from backend.src.market_data.live import LiveCoordinator, VN, BusyError
 from backend.src.market_data.news import NewsService, FireAntNews
@@ -90,6 +92,7 @@ class CompanyDataTests(unittest.TestCase):
         app.state.live = self.service
         app.state.news = NewsService(Mock(return_value=[]), self.repo)
         app.dependency_overrides[get_market_data_repository] = lambda: self.repo
+        app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({"ADMINISTRATOR"}))
         with TestClient(app) as client:
             result = client.post("/api/market-data/stocks/ctr/history")
             self.assertEqual(result.status_code, 200)

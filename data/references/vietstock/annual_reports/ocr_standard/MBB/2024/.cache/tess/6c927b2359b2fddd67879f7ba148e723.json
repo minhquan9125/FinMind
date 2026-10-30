@@ -1,0 +1,192 @@
+{
+  "text": "\"...........\n__ DOANHNGHIỆPSỐ S11 HỆ\n: -TẬP ĐOÀN TÀI CHÍNH DẪN ĐẤU ˆ THỊ)",
+  "chars": 60,
+  "words": 14,
+  "wordItems": [
+    {
+      "text": "\"...........",
+      "bbox": [
+        15,
+        2950,
+        2461,
+        3113
+      ],
+      "conf": 6.101837,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "__",
+      "bbox": [
+        15,
+        3121,
+        124,
+        3225
+      ],
+      "conf": 55.130348,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "DOANHNGHIỆPSỐ",
+      "bbox": [
+        178,
+        3092,
+        1069,
+        3209
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "S11",
+      "bbox": [
+        1698,
+        3121,
+        1944,
+        3263
+      ],
+      "conf": 10.923157,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "HỆ",
+      "bbox": [
+        2077,
+        3121,
+        2219,
+        3225
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": ":",
+      "bbox": [
+        15,
+        3292,
+        19,
+        3296
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "-TẬP",
+      "bbox": [
+        119,
+        3213,
+        344,
+        3396
+      ],
+      "conf": 29.720467,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "ĐOÀN",
+      "bbox": [
+        385,
+        3213,
+        615,
+        3396
+      ],
+      "conf": 90.662041,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        669,
+        3213,
+        811,
+        3396
+      ],
+      "conf": 97.000916,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        865,
+        3192,
+        1136,
+        3396
+      ],
+      "conf": 95.74398,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "DẪN",
+      "bbox": [
+        1177,
+        3209,
+        1345,
+        3396
+      ],
+      "conf": 95.74398,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "ĐẤU",
+      "bbox": [
+        1385,
+        3154,
+        1553,
+        3396
+      ],
+      "conf": 85.181152,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "ˆ",
+      "bbox": [
+        1594,
+        3188,
+        1636,
+        3396
+      ],
+      "conf": 69.291908,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "THỊ)",
+      "bbox": [
+        1940,
+        3259,
+        2390,
+        3329
+      ],
+      "conf": 10.234062,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 46,
+  "lowConfRatio": 0.571,
+  "seconds": 0.678
+}

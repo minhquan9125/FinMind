@@ -1,0 +1,594 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC",
+      "box_2d": [
+        60,
+        88,
+        75,
+        418
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "B09-DN/HN",
+      "box_2d": [
+        70,
+        882,
+        83,
+        921
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày",
+      "box_2d": [
+        103,
+        88,
+        145,
+        469
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "20. VAY (tiếp theo)",
+      "box_2d": [
+        184,
+        88,
+        198,
+        212
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "20.1 Các khoản vay ngân hàng ngắn hạn",
+      "box_2d": [
+        222,
+        88,
+        235,
+        305
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        261,
+        88,
+        905,
+        921
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Khoản vay"
+          ],
+          "box_2d": [
+            261,
+            131,
+            295,
+            187
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Ngày 31 tháng 3",
+            "năm 2026",
+            "(VND)"
+          ],
+          "box_2d": [
+            261,
+            265,
+            323,
+            333
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Kỳ hạn trả gốc và lãi"
+          ],
+          "box_2d": [
+            261,
+            364,
+            295,
+            500
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Lãi suất",
+            "(%/năm)"
+          ],
+          "box_2d": [
+            261,
+            629,
+            295,
+            702
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Hình thức đảm bảo"
+          ],
+          "box_2d": [
+            261,
+            707,
+            295,
+            810
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Ngân hàng TNHH MTV Shinhan Việt Nam",
+          "note": null,
+          "box_2d": [
+            323,
+            131,
+            373,
+            245
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "149.293.567.383",
+              "box_2d": [
+                323,
+                265,
+                336,
+                353
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Gốc vay có kỳ hạn 4 đến 5 tháng với khoản vay cuối cùng đáo hạn vào ngày 25 tháng 8 năm 2026. Lãi vay trả hàng tháng.",
+              "box_2d": [
+                323,
+                364,
+                373,
+                615
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "4,0% - 7,2%",
+              "box_2d": [
+                323,
+                629,
+                336,
+                698
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Tín chấp.",
+              "box_2d": [
+                323,
+                707,
+                336,
+                755
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Ngoại thương Việt Nam",
+          "note": null,
+          "box_2d": [
+            395,
+            131,
+            445,
+            245
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "144.788.964.188",
+              "box_2d": [
+                395,
+                265,
+                408,
+                353
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Gốc vay có kỳ hạn 5 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 22 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+              "box_2d": [
+                395,
+                364,
+                445,
+                615
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1,3% - 4,4%",
+              "box_2d": [
+                395,
+                629,
+                408,
+                698
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Ngoại thương Việt Nam.",
+              "box_2d": [
+                395,
+                707,
+                432,
+                915
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ngân hàng TNHH Một Thành viên HSBC Việt Nam - Chi nhánh Hà Nội",
+          "note": null,
+          "box_2d": [
+            467,
+            131,
+            517,
+            245
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "123.648.692.485",
+              "box_2d": [
+                467,
+                265,
+                480,
+                353
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Gốc vay có kỳ hạn 4 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 15 tháng 7 năm 2026. Lãi vay trả hàng tháng.",
+              "box_2d": [
+                467,
+                364,
+                517,
+                615
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "4,6% - 7,2%",
+              "box_2d": [
+                467,
+                629,
+                480,
+                698
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Tín chấp và hợp đồng tiền gửi tại Ngân hàng TNHH Một thành viên HSBC Việt Nam.",
+              "box_2d": [
+                467,
+                707,
+                517,
+                915
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Kỹ thương Việt Nam",
+          "note": null,
+          "box_2d": [
+            539,
+            131,
+            589,
+            245
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "115.495.321.784",
+              "box_2d": [
+                539,
+                265,
+                552,
+                353
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Gốc vay có kỳ hạn 4 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 9 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+              "box_2d": [
+                539,
+                364,
+                589,
+                615
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "4,3% - 5,54%",
+              "box_2d": [
+                539,
+                629,
+                552,
+                702
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Tín chấp.",
+              "box_2d": [
+                539,
+                707,
+                552,
+                755
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Quân đội Việt Nam - Chi nhánh Hoàn Kiếm",
+          "note": null,
+          "box_2d": [
+            611,
+            131,
+            675,
+            245
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "108.566.704.716",
+              "box_2d": [
+                611,
+                265,
+                624,
+                353
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Gốc vay có kỳ hạn 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 24 tháng 6 năm 2026. Lãi vay trả hàng tháng.",
+              "box_2d": [
+                611,
+                364,
+                661,
+                615
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "4,5% - 6,5%",
+              "box_2d": [
+                611,
+                629,
+                624,
+                698
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Quân Đội - Chi nhánh Hoàn Kiếm.",
+              "box_2d": [
+                611,
+                707,
+                661,
+                915
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam",
+          "note": null,
+          "box_2d": [
+            697,
+            131,
+            747,
+            245
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "87.870.805.450",
+              "box_2d": [
+                697,
+                265,
+                710,
+                353
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Gốc vay có kỳ hạn 2 đến 12 tháng với khoản vay cuối cùng đáo hạn vào ngày 31 tháng 3 năm 2027. Lãi vay trả hàng tháng.",
+              "box_2d": [
+                697,
+                364,
+                747,
+                615
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "4,9% - 7,5%",
+              "box_2d": [
+                697,
+                629,
+                710,
+                698
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Tín chấp và hợp đồng tiền gửi tại Ngân hàng TMCP Đầu tư và Phát triển Việt Nam.",
+              "box_2d": [
+                697,
+                707,
+                747,
+                915
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ngân hàng Đại chúng TNHH Kasikornbank",
+          "note": null,
+          "box_2d": [
+            769,
+            131,
+            819,
+            245
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "63.295.980.430",
+              "box_2d": [
+                769,
+                265,
+                782,
+                353
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Gốc vay có kỳ hạn 4 tháng với khoản vay cuối cùng đáo hạn vào ngày 29 tháng 7 năm 2026. Lãi vay trả hàng tháng.",
+              "box_2d": [
+                769,
+                364,
+                819,
+                615
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "2,0% - 6,5%",
+              "box_2d": [
+                769,
+                629,
+                782,
+                698
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Hợp đồng tiền gửi tại Ngân hàng Đại chúng TNHH Kasikornbank.",
+              "box_2d": [
+                769,
+                707,
+                806,
+                915
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ngân hàng TMCP Hàng Hải Việt Nam",
+          "note": null,
+          "box_2d": [
+            841,
+            131,
+            891,
+            245
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "41.966.464.982",
+              "box_2d": [
+                841,
+                265,
+                854,
+                353
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Gốc vay có kỳ hạn 5 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 3 tháng 9 năm 2026. Lãi vay trả hàng tháng.",
+              "box_2d": [
+                841,
+                364,
+                891,
+                615
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "5,0% - 7,2%",
+              "box_2d": [
+                841,
+                629,
+                854,
+                698
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Hợp đồng tiền gửi tại Ngân hàng TMCP Hàng Hải Việt Nam.",
+              "box_2d": [
+                841,
+                707,
+                878,
+                915
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "39",
+      "box_2d": [
+        937,
+        496,
+        951,
+        510
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC\nB09-DN/HN\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày\n20. VAY (tiếp theo)\n20.1 Các khoản vay ngân hàng ngắn hạn\nKhoản vay\nNgày 31 tháng 3\nnăm 2026\n(VND)\nKỳ hạn trả gốc và lãi\nLãi suất\n(%/năm)\nHình thức đảm bảo\nNgân hàng TNHH MTV Shinhan Việt Nam 149.293.567.383 Gốc vay có kỳ hạn 4 đến 5 tháng với khoản vay cuối cùng đáo hạn vào ngày 25 tháng 8 năm 2026. Lãi vay trả hàng tháng. 4,0% - 7,2% Tín chấp.\nNgân hàng TMCP Ngoại thương Việt Nam 144.788.964.188 Gốc vay có kỳ hạn 5 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 22 tháng 9 năm 2026. Lãi vay trả hàng tháng. 1,3% - 4,4% Hợp đồng tiền gửi tại Ngân hàng TMCP Ngoại thương Việt Nam.\nNgân hàng TNHH Một Thành viên HSBC Việt Nam - Chi nhánh Hà Nội 123.648.692.485 Gốc vay có kỳ hạn 4 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 15 tháng 7 năm 2026. Lãi vay trả hàng tháng. 4,6% - 7,2% Tín chấp và hợp đồng tiền gửi tại Ngân hàng TNHH Một thành viên HSBC Việt Nam.\nNgân hàng TMCP Kỹ thương Việt Nam 115.495.321.784 Gốc vay có kỳ hạn 4 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 9 tháng 9 năm 2026. Lãi vay trả hàng tháng. 4,3% - 5,54% Tín chấp.\nNgân hàng TMCP Quân đội Việt Nam - Chi nhánh Hoàn Kiếm 108.566.704.716 Gốc vay có kỳ hạn 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 24 tháng 6 năm 2026. Lãi vay trả hàng tháng. 4,5% - 6,5% Hợp đồng tiền gửi tại Ngân hàng TMCP Quân Đội - Chi nhánh Hoàn Kiếm.\nNgân hàng TMCP Đầu tư và Phát triển Việt Nam 87.870.805.450 Gốc vay có kỳ hạn 2 đến 12 tháng với khoản vay cuối cùng đáo hạn vào ngày 31 tháng 3 năm 2027. Lãi vay trả hàng tháng. 4,9% - 7,5% Tín chấp và hợp đồng tiền gửi tại Ngân hàng TMCP Đầu tư và Phát triển Việt Nam.\nNgân hàng Đại chúng TNHH Kasikornbank 63.295.980.430 Gốc vay có kỳ hạn 4 tháng với khoản vay cuối cùng đáo hạn vào ngày 29 tháng 7 năm 2026. Lãi vay trả hàng tháng. 2,0% - 6,5% Hợp đồng tiền gửi tại Ngân hàng Đại chúng TNHH Kasikornbank.\nNgân hàng TMCP Hàng Hải Việt Nam 41.966.464.982 Gốc vay có kỳ hạn 5 đến 6 tháng với khoản vay cuối cùng đáo hạn vào ngày 3 tháng 9 năm 2026. Lãi vay trả hàng tháng. 5,0% - 7,2% Hợp đồng tiền gửi tại Ngân hàng TMCP Hàng Hải Việt Nam.\n39",
+  "unreadable": []
+}

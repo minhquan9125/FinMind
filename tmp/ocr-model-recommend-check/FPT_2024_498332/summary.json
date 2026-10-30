@@ -1,0 +1,58 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\FPT\\2024\\FPT_2024_498332.pdf",
+  "pages": 1,
+  "routes": {
+    "tesseract": 1
+  },
+  "status": {
+    "REVIEW": 1
+  },
+  "flags": {
+    "GEMINI_FAILED": 1
+  },
+  "reviewPages": [
+    2
+  ],
+  "seconds": {
+    "textLayer": 0.358,
+    "renderAndTesseract": 2.584,
+    "gemini": 6.943,
+    "total": 10.14
+  },
+  "geminiApi": {
+    "calls": 1,
+    "failedCalls": 1,
+    "seconds": 6.413,
+    "input_tokens": 1421,
+    "output_tokens": 937,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 1,
+    "failedCalls": 1,
+    "seconds": 0.524,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 0,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\tmp\\ocr-model-recommend-check",
+    "pages": "2",
+    "mode": "always",
+    "model": "gemini-3.5-flash-lite",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 300,
+    "tessWorkers": 1,
+    "minChars": 999999,
+    "minConf": 90,
+    "longSide": 2200
+  }
+}

@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException
 
+from ...auth.authorization import require_roles
 from ...core.config import Settings, get_settings
 from ...core.db import get_pool
 from ...documents import repository
@@ -186,7 +187,7 @@ async def filtered_search(
             logging.getLogger("uvicorn.error").warning("retrieval_trace_unavailable")
 
 
-@router.post("", response_model=SearchResponse)
+@router.post("", response_model=SearchResponse, dependencies=[Depends(require_roles("RESEARCHER", "FINANCIAL_ANALYST", "EVALUATOR", "ADMINISTRATOR"))])
 async def search(
     payload: SearchRequest,
     settings: Settings = Depends(get_settings),

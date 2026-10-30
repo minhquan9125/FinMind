@@ -1,0 +1,88 @@
+{
+  "text": "05\n\nPHẦN TÍCH\n5I9/.0I2)60))IC\nKINH DOANH",
+  "chars": 34,
+  "words": 6,
+  "wordItems": [
+    {
+      "text": "05",
+      "bbox": [
+        180,
+        163,
+        463,
+        364
+      ],
+      "conf": 94.86087,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHẦN",
+      "bbox": [
+        576,
+        1323,
+        1246,
+        1548
+      ],
+      "conf": 77.526276,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÍCH",
+      "bbox": [
+        1341,
+        1322,
+        1900,
+        1551
+      ],
+      "conf": 92.912766,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "5I9/.0I2)60))IC",
+      "bbox": [
+        493,
+        1647,
+        1987,
+        1897
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "KINH",
+      "bbox": [
+        459,
+        1969,
+        1032,
+        2148
+      ],
+      "conf": 85.64183,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        1139,
+        1966,
+        2018,
+        2151
+      ],
+      "conf": 89.669022,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 73,
+  "lowConfRatio": 0.167,
+  "seconds": 0.756
+}

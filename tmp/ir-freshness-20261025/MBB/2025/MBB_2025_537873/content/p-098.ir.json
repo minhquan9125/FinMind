@@ -1,0 +1,42 @@
+{
+  "ir_version": "1",
+  "page": 98,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "d67772421ddeceac697de71c5a84945ae7c34779bae44d6456738844d4950521",
+    "file_name": "MBB_2025_537873.pdf"
+  },
+  "blocks": [
+    {"id": "p98-b1", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN • 2025", "bbox": [448.19, 34.45, 555.59, 41.45]},
+    {"id": "p98-b2", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN • 2025", "bbox": [634.96, 34.45, 742.36, 41.45]},
+    {"id": "p98-b3", "type": "paragraph", "text": "Số lượng nhân sự được tuyển mới", "bbox": [635.21, 84.41, 769.16, 92.91]},
+    {"id": "p98-b4", "type": "paragraph", "text": "MB là một tổ chức ham học hỏi,", "bbox": [813.54, 85.05, 1110.81, 107.05]},
+    {"id": "p98-b5", "type": "paragraph", "text": "trong năm 2025", "bbox": [635.21, 93.41, 696.96, 101.91]},
+    {"id": "p98-b6", "type": "heading", "text": "CHƯƠNG 5 • BÁO CÁO PHÁT TRIỂN BỀN VỮNG • 191", "bbox": [977.11, 34.45, 1150.87, 41.45]},
+    {"id": "p98-b7", "type": "heading", "text": "13.047", "bbox": [463.6, 94.6, 556.09, 124.6]},
+    {"id": "p98-b8", "type": "paragraph", "text": "luôn chú trọng phát triển con người", "bbox": [813.54, 111.45, 1145.35, 133.45]},
+    {"id": "p98-b9", "type": "heading", "text": "2.856 CBNV", "bbox": [635.21, 115.18, 762.12, 151.18]},
+    {"id": "p98-b10", "type": "paragraph", "text": "12.155", "bbox": [384.63, 119.25, 453.01, 143.25]},
+    {"id": "p98-b11", "type": "paragraph", "text": "10.481", "bbox": [297.48, 143.2, 349.93, 161.2]},
+    {"id": "p98-b12", "type": "paragraph", "text": "2023", "bbox": [331.43, 234.63, 349.93, 243.13]},
+    {"id": "p98-b13", "type": "paragraph", "text": "2024", "bbox": [434.33, 234.63, 453.01, 243.13]},
+    {"id": "p98-b14", "type": "paragraph", "text": "2025", "bbox": [537.5, 234.63, 556.09, 243.13]},
+    {
+      "id": "p98-b15",
+      "type": "paragraph",
+      "text": "và tạo ra nhiều cơ hội lớn để thế\nhệ trẻ, kể cả những người chưa có\nnhiều kinh nghiệm, có thể phát triển\nsự nghiệp lâu dài.",
+      "bbox": [813.54, 137.85, 1148.87, 239.05]
+    },
+    {"id": "p98-b16", "type": "paragraph", "text": "190 • CHƯƠNG 5 • BÁO CÁO PHÁT TRIỂN BỀN VỮNG", "bbox": [39.69, 34.45, 215.54, 41.45]},
+    {"id": "p98-b17", "type": "paragraph", "text": "9.986", "bbox": [196.73, 162.95, 246.84, 180.95]},
+    {"id": "p98-b18", "type": "paragraph", "text": "9.600", "bbox": [109.78, 188.05, 143.77, 200.05]},
+    {"id": "p98-b19", "type": "paragraph", "text": "Số lượng nhân sự", "bbox": [39.69, 209.55, 106.84, 218.05]},
+    {"id": "p98-b20", "type": "paragraph", "text": "Năm", "bbox": [39.69, 234.26, 58.54, 242.76]},
+    {"id": "p98-b21", "type": "paragraph", "text": "2021", "bbox": [125.56, 234.63, 142.94, 243.13]},
+    {"id": "p98-b22", "type": "paragraph", "text": "2022", "bbox": [228.45, 234.63, 246.85, 243.13]}
+  ]
+}

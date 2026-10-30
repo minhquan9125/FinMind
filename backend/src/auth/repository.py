@@ -91,7 +91,7 @@ async def get_user_roles(pool: asyncpg.Pool, user_id: UUID) -> list[str]:
         user_id,
     )
     roles = [r["role_code"] for r in rows if r["role_code"]]
-    return roles or [DEFAULT_ROLE_CODE]
+    return roles
 
 
 async def find_user_by_email(
@@ -128,6 +128,48 @@ async def create_session(
         token_hash,
         expires_at,
     )
+
+
+async def rotate_session(
+    pool: asyncpg.Pool,
+    old_token_hash: str,
+    new_token_hash: str,
+    refresh_token_days: int,
+) -> asyncpg.Record | None:
+    """Atomically rotate a live refresh token, rejecting expired or revoked sessions."""
+    expires_at = datetime.now(timezone.utc) + timedelta(days=refresh_token_days)
+    async with pool.acquire() as conn:
+        async with conn.transaction():
+            return await conn.fetchrow(
+                """
+                UPDATE public.sessions AS s
+                SET token_hash = $2, issued_at = now(), expires_at = $3
+                FROM public.users AS u
+                WHERE s.token_hash = $1
+                  AND s.user_id = u.user_id
+                  AND s.revoked_at IS NULL
+                  AND s.expires_at > now()
+                  AND u.is_active IS TRUE
+                RETURNING u.user_id, u.email, u.full_name
+                """,
+                old_token_hash,
+                new_token_hash,
+                expires_at,
+            )
+
+
+async def revoke_session(pool: asyncpg.Pool, token_hash: str) -> bool:
+    """Revoke the session identified by its refresh-token hash."""
+    revoked = await pool.fetchval(
+        """
+        UPDATE public.sessions
+        SET revoked_at = now()
+        WHERE token_hash = $1 AND revoked_at IS NULL
+        RETURNING session_id
+        """,
+        token_hash,
+    )
+    return revoked is not None
 
 
 async def record_login(pool: asyncpg.Pool, user_id: UUID) -> None:
@@ -194,7 +236,7 @@ async def find_user_by_id(pool: asyncpg.Pool, user_id: UUID):
 async def replace_password_if_current(
     pool: asyncpg.Pool,
     user_id: UUID,
-    current_hash: str,
+    current_hash: str | None,
     new_hash: str,
 ) -> bool:
     async with pool.acquire() as conn:
@@ -204,7 +246,7 @@ async def replace_password_if_current(
                 UPDATE public.users
                 SET password_hash = $3, updated_at = now()
                 WHERE user_id = $1
-                  AND password_hash = $2
+                  AND password_hash IS NOT DISTINCT FROM $2
                   AND is_active IS TRUE
                 RETURNING user_id
                 """,

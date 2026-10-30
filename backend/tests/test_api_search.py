@@ -10,10 +10,13 @@ readmerepair.md).
 """
 
 from fastapi.testclient import TestClient
+import pytest
+from uuid import uuid4
 
 from src.documents import repository
 from src.documents.embeddings import get_embedding_service
 from src.main import app
+from src.auth.authorization import Principal, current_principal
 
 
 class FakeEmbedder:
@@ -26,6 +29,13 @@ class FakeEmbedder:
 
 app.dependency_overrides[get_embedding_service] = lambda: FakeEmbedder()
 client = TestClient(app)
+
+
+@pytest.fixture(autouse=True)
+def authorized_researcher():
+    app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({"RESEARCHER"}))
+    yield
+    app.dependency_overrides.pop(current_principal, None)
 
 
 def test_search_returns_404_for_unknown_document(monkeypatch):

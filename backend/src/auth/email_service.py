@@ -8,11 +8,11 @@ def send_reset_email(to_email: str, reset_url: str) -> None:
     settings = get_settings()
 
     message = EmailMessage()
-    message["Subject"] = "Đặt lại mật khẩu FinMind"
+    message["Subject"] = "Đặt mật khẩu FinMind"
     message["From"] = settings.smtp_from
     message["To"] = to_email
     message.set_content(
-        "Bạn vừa yêu cầu đặt lại mật khẩu FinMind.\n\n"
+        "Bạn vừa yêu cầu đặt hoặc đặt lại mật khẩu FinMind.\n\n"
         f"Mở liên kết này để đặt mật khẩu mới:\n{reset_url}\n\n"
         "Nếu bạn không yêu cầu, hãy bỏ qua email này."
     )

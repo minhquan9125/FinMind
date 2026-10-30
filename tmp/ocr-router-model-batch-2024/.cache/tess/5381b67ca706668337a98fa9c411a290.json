@@ -1,0 +1,530 @@
+{
+  "text": "Tổng quan\nvề MB năm 2024\n\n18 Thông tin chung\n\n25 Mô hình quỏn trị vò tổ chức kinh doanh:\n\n48 Chiến lược và định hướng phát triển\n\n52 Công tóc quỏn lý rủi ro\n\nBÁO CÁO THƯỜNG NIÊN 2024",
+  "chars": 138,
+  "words": 40,
+  "wordItems": [
+    {
+      "text": "Tổng",
+      "bbox": [
+        1204,
+        394,
+        1302,
+        441
+      ],
+      "conf": 96.932747,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "quan",
+      "bbox": [
+        1315,
+        408,
+        1417,
+        440
+      ],
+      "conf": 95.694107,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "về",
+      "bbox": [
+        1205,
+        450,
+        1251,
+        488
+      ],
+      "conf": 96.983795,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "MB",
+      "bbox": [
+        1263,
+        454,
+        1327,
+        487
+      ],
+      "conf": 96.931816,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        1340,
+        454,
+        1428,
+        488
+      ],
+      "conf": 96.352631,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        1441,
+        454,
+        1538,
+        488
+      ],
+      "conf": 96.918266,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "18",
+      "bbox": [
+        1184,
+        708,
+        1206,
+        726
+      ],
+      "conf": 92.307091,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Thông",
+      "bbox": [
+        1222,
+        708,
+        1284,
+        730
+      ],
+      "conf": 92.307091,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tin",
+      "bbox": [
+        1290,
+        709,
+        1315,
+        726
+      ],
+      "conf": 96.051682,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chung",
+      "bbox": [
+        1322,
+        708,
+        1383,
+        730
+      ],
+      "conf": 96.079086,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "25",
+      "bbox": [
+        1184,
+        781,
+        1208,
+        799
+      ],
+      "conf": 68.390625,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Mô",
+      "bbox": [
+        1220,
+        776,
+        1247,
+        808
+      ],
+      "conf": 68.390625,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hình",
+      "bbox": [
+        1257,
+        776,
+        1298,
+        808
+      ],
+      "conf": 93.305191,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "quỏn",
+      "bbox": [
+        1307,
+        782,
+        1359,
+        803
+      ],
+      "conf": 90.682564,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "trị",
+      "bbox": [
+        1365,
+        782,
+        1385,
+        804
+      ],
+      "conf": 96.862762,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "vò",
+      "bbox": [
+        1396,
+        776,
+        1412,
+        808
+      ],
+      "conf": 69.278633,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tổ",
+      "bbox": [
+        1422,
+        776,
+        1442,
+        808
+      ],
+      "conf": 96.972618,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chức",
+      "bbox": [
+        1452,
+        776,
+        1492,
+        808
+      ],
+      "conf": 96.565277,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kinh",
+      "bbox": [
+        1501,
+        781,
+        1543,
+        799
+      ],
+      "conf": 96.884308,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "doanh:",
+      "bbox": [
+        1549,
+        781,
+        1613,
+        800
+      ],
+      "conf": 86.433807,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "48",
+      "bbox": [
+        1184,
+        856,
+        1210,
+        873
+      ],
+      "conf": 87.958115,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Chiến",
+      "bbox": [
+        1222,
+        855,
+        1279,
+        873
+      ],
+      "conf": 87.958115,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "lược",
+      "bbox": [
+        1285,
+        856,
+        1329,
+        878
+      ],
+      "conf": 96.663315,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        1335,
+        856,
+        1359,
+        874
+      ],
+      "conf": 96.663315,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "định",
+      "bbox": [
+        1365,
+        856,
+        1408,
+        878
+      ],
+      "conf": 96.626526,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hướng",
+      "bbox": [
+        1415,
+        856,
+        1480,
+        878
+      ],
+      "conf": 97.018829,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "phát",
+      "bbox": [
+        1487,
+        856,
+        1533,
+        877
+      ],
+      "conf": 96.610367,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "triển",
+      "bbox": [
+        1539,
+        854,
+        1583,
+        874
+      ],
+      "conf": 96.965721,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "52",
+      "bbox": [
+        1184,
+        930,
+        1208,
+        948
+      ],
+      "conf": 96.250305,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Công",
+      "bbox": [
+        1222,
+        926,
+        1268,
+        956
+      ],
+      "conf": 96.178429,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tóc",
+      "bbox": [
+        1277,
+        926,
+        1310,
+        956
+      ],
+      "conf": 93.304214,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "quỏn",
+      "bbox": [
+        1320,
+        926,
+        1360,
+        956
+      ],
+      "conf": 87.395035,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "lý",
+      "bbox": [
+        1370,
+        926,
+        1388,
+        956
+      ],
+      "conf": 96.930511,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "rủi",
+      "bbox": [
+        1395,
+        926,
+        1420,
+        956
+      ],
+      "conf": 96.930511,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ro",
+      "bbox": [
+        1430,
+        926,
+        1448,
+        956
+      ],
+      "conf": 96.978928,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        1200,
+        1455,
+        1236,
+        1472
+      ],
+      "conf": 91.772598,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1241,
+        1455,
+        1280,
+        1472
+      ],
+      "conf": 96.759712,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        1284,
+        1455,
+        1362,
+        1472
+      ],
+      "conf": 96.790291,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        1368,
+        1455,
+        1410,
+        1472
+      ],
+      "conf": 96.792961,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        1416,
+        1459,
+        1455,
+        1473
+      ],
+      "conf": 96.968536,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 93,
+  "lowConfRatio": 0,
+  "seconds": 0.407
+}

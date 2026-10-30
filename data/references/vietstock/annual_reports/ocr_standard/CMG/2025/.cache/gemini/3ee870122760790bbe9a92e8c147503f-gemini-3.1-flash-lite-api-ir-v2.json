@@ -1,0 +1,979 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "3.2. Giao dịch cổ phiếu của người nội bộ:",
+      "box_2d": [
+        102,
+        117,
+        116,
+        537
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        142,
+        95,
+        871,
+        928
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT"
+          ],
+          "box_2d": [
+            142,
+            95,
+            243,
+            142
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Người",
+            "thực hiện",
+            "giao dịch"
+          ],
+          "box_2d": [
+            142,
+            142,
+            243,
+            253
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Quan hệ với",
+            "người nội bộ"
+          ],
+          "box_2d": [
+            142,
+            253,
+            243,
+            395
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Số cổ phiếu sở hữu",
+            "đầu kỳ",
+            "Số cổ",
+            "phiếu"
+          ],
+          "box_2d": [
+            142,
+            395,
+            243,
+            498
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Số cổ phiếu sở hữu",
+            "đầu kỳ",
+            "Tỷ lệ"
+          ],
+          "box_2d": [
+            142,
+            498,
+            243,
+            592
+          ]
+        },
+        {
+          "key": "c6",
+          "header_lines": [
+            "Số cổ phiếu sở hữu",
+            "cuối kỳ",
+            "Số cổ",
+            "phiếu"
+          ],
+          "box_2d": [
+            142,
+            592,
+            243,
+            699
+          ]
+        },
+        {
+          "key": "c7",
+          "header_lines": [
+            "Số cổ phiếu sở hữu",
+            "cuối kỳ",
+            "Tỷ lệ"
+          ],
+          "box_2d": [
+            142,
+            699,
+            243,
+            793
+          ]
+        },
+        {
+          "key": "c8",
+          "header_lines": [
+            "Lý do tăng,",
+            "giảm (mua,",
+            "bán, chuyển",
+            "đổi, thưởng...)"
+          ],
+          "box_2d": [
+            142,
+            793,
+            243,
+            928
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1.",
+          "label_raw": "Nguyễn Trung Chính",
+          "note": null,
+          "box_2d": [
+            243,
+            95,
+            311,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Nguyễn Trung Chính",
+              "box_2d": [
+                243,
+                142,
+                311,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Chủ tịch HĐQT / Chủ tịch Điều hành Tập đoàn",
+              "box_2d": [
+                243,
+                253,
+                311,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "2.165.151",
+              "box_2d": [
+                243,
+                395,
+                311,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "1,02%",
+              "box_2d": [
+                243,
+                498,
+                311,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "2.500.551",
+              "box_2d": [
+                243,
+                592,
+                311,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "1,183%",
+              "box_2d": [
+                243,
+                699,
+                311,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua cổ phiếu Mua CP ESOP",
+              "box_2d": [
+                243,
+                793,
+                311,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2.",
+          "label_raw": "Hồ Thanh Tùng",
+          "note": null,
+          "box_2d": [
+            311,
+            95,
+            362,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Hồ Thanh Tùng",
+              "box_2d": [
+                311,
+                142,
+                362,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Tổng Giám đốc Tập đoàn",
+              "box_2d": [
+                311,
+                253,
+                362,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "62.800",
+              "box_2d": [
+                311,
+                395,
+                362,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,03%",
+              "box_2d": [
+                311,
+                498,
+                362,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "72.200",
+              "box_2d": [
+                311,
+                592,
+                362,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,034%",
+              "box_2d": [
+                311,
+                699,
+                362,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                311,
+                793,
+                362,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3.",
+          "label_raw": "Ngô Trọng Hiếu",
+          "note": null,
+          "box_2d": [
+            362,
+            95,
+            423,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Ngô Trọng Hiếu",
+              "box_2d": [
+                362,
+                142,
+                423,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó chủ tịch Điều hành Tập đoàn",
+              "box_2d": [
+                362,
+                253,
+                423,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "59.767",
+              "box_2d": [
+                362,
+                395,
+                423,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,028%",
+              "box_2d": [
+                362,
+                498,
+                423,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "90.867",
+              "box_2d": [
+                362,
+                592,
+                423,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,043%",
+              "box_2d": [
+                362,
+                699,
+                423,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                362,
+                793,
+                423,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4.",
+          "label_raw": "Lê Thanh Sơn",
+          "note": null,
+          "box_2d": [
+            423,
+            95,
+            516,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Lê Thanh Sơn",
+              "box_2d": [
+                423,
+                142,
+                516,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch EVP Tập đoàn / Giám đốc Quản trị Tập đoàn",
+              "box_2d": [
+                423,
+                253,
+                516,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "147.340",
+              "box_2d": [
+                423,
+                395,
+                516,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,07%",
+              "box_2d": [
+                423,
+                498,
+                516,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "160.840",
+              "box_2d": [
+                423,
+                592,
+                516,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,076%",
+              "box_2d": [
+                423,
+                699,
+                516,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                423,
+                793,
+                516,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5.",
+          "label_raw": "Nguyễn Minh Tuệ",
+          "note": null,
+          "box_2d": [
+            516,
+            95,
+            580,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Nguyễn Minh Tuệ",
+              "box_2d": [
+                516,
+                142,
+                580,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Giám đốc Tài chính Tập đoàn",
+              "box_2d": [
+                516,
+                253,
+                580,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "17.430",
+              "box_2d": [
+                516,
+                395,
+                580,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,01%",
+              "box_2d": [
+                516,
+                498,
+                580,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "26.030",
+              "box_2d": [
+                516,
+                592,
+                580,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,012%",
+              "box_2d": [
+                516,
+                699,
+                580,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                516,
+                793,
+                580,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "6.",
+          "label_raw": "Đặng Tùng Sơn",
+          "note": null,
+          "box_2d": [
+            580,
+            95,
+            671,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Đặng Tùng Sơn",
+              "box_2d": [
+                580,
+                142,
+                671,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch cấp cao Tập đoàn / Giám đốc chiến lược Tập đoàn",
+              "box_2d": [
+                580,
+                253,
+                671,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "36.744",
+              "box_2d": [
+                580,
+                395,
+                671,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,017%",
+              "box_2d": [
+                580,
+                498,
+                671,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "57.944",
+              "box_2d": [
+                580,
+                592,
+                671,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,027%",
+              "box_2d": [
+                580,
+                699,
+                671,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                580,
+                793,
+                671,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "7.",
+          "label_raw": "Phó Đức Kiên",
+          "note": null,
+          "box_2d": [
+            671,
+            95,
+            722,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phó Đức Kiên",
+              "box_2d": [
+                671,
+                142,
+                722,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch Tập đoàn",
+              "box_2d": [
+                671,
+                253,
+                722,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "21.521",
+              "box_2d": [
+                671,
+                395,
+                722,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,01%",
+              "box_2d": [
+                671,
+                498,
+                722,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "44.221",
+              "box_2d": [
+                671,
+                592,
+                722,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,021%",
+              "box_2d": [
+                671,
+                699,
+                722,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                671,
+                793,
+                722,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "8.",
+          "label_raw": "Mai Thu Hà",
+          "note": null,
+          "box_2d": [
+            722,
+            95,
+            763,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Mai Thu Hà",
+              "box_2d": [
+                722,
+                142,
+                763,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Trưởng Ban Kiểm Soát",
+              "box_2d": [
+                722,
+                253,
+                763,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0",
+              "box_2d": [
+                722,
+                395,
+                763,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0%",
+              "box_2d": [
+                722,
+                498,
+                763,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "8.200",
+              "box_2d": [
+                722,
+                592,
+                763,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,004%",
+              "box_2d": [
+                722,
+                699,
+                763,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                722,
+                793,
+                763,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "9.",
+          "label_raw": "Tạ Hoàng Linh",
+          "note": null,
+          "box_2d": [
+            763,
+            95,
+            814,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Tạ Hoàng Linh",
+              "box_2d": [
+                763,
+                142,
+                814,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Thành viên BKS",
+              "box_2d": [
+                763,
+                253,
+                814,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "598.159",
+              "box_2d": [
+                763,
+                395,
+                814,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,0283%",
+              "box_2d": [
+                763,
+                498,
+                814,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "604.359",
+              "box_2d": [
+                763,
+                592,
+                814,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,285%",
+              "box_2d": [
+                763,
+                699,
+                814,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                763,
+                793,
+                814,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "10.",
+          "label_raw": "Nguyễn Hồng Phương",
+          "note": null,
+          "box_2d": [
+            814,
+            95,
+            871,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Nguyễn Hồng Phương",
+              "box_2d": [
+                814,
+                142,
+                871,
+                253
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Kế toán trưởng",
+              "box_2d": [
+                814,
+                253,
+                871,
+                395
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0",
+              "box_2d": [
+                814,
+                395,
+                871,
+                498
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0%",
+              "box_2d": [
+                814,
+                498,
+                871,
+                592
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "4.800",
+              "box_2d": [
+                814,
+                592,
+                871,
+                699
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "0,002%",
+              "box_2d": [
+                814,
+                699,
+                871,
+                793
+              ]
+            },
+            {
+              "column_key": "c8",
+              "raw": "Mua CP ESOP",
+              "box_2d": [
+                814,
+                793,
+                871,
+                928
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "text": "3.2. Giao dịch cổ phiếu của người nội bộ:\nTT\nNgười\nthực hiện\ngiao dịch\nQuan hệ với\nngười nội bộ\nSố cổ phiếu sở hữu\nđầu kỳ\nSố cổ\nphiếu\nSố cổ phiếu sở hữu\nđầu kỳ\nTỷ lệ\nSố cổ phiếu sở hữu\ncuối kỳ\nSố cổ\nphiếu\nSố cổ phiếu sở hữu\ncuối kỳ\nTỷ lệ\nLý do tăng,\ngiảm (mua,\nbán, chuyển\nđổi, thưởng...)\n1. Nguyễn Trung Chính Nguyễn Trung Chính Chủ tịch HĐQT / Chủ tịch Điều hành Tập đoàn 2.165.151 1,02% 2.500.551 1,183% Mua cổ phiếu Mua CP ESOP\n2. Hồ Thanh Tùng Hồ Thanh Tùng Tổng Giám đốc Tập đoàn 62.800 0,03% 72.200 0,034% Mua CP ESOP\n3. Ngô Trọng Hiếu Ngô Trọng Hiếu Phó chủ tịch Điều hành Tập đoàn 59.767 0,028% 90.867 0,043% Mua CP ESOP\n4. Lê Thanh Sơn Lê Thanh Sơn Phó Chủ tịch EVP Tập đoàn / Giám đốc Quản trị Tập đoàn 147.340 0,07% 160.840 0,076% Mua CP ESOP\n5. Nguyễn Minh Tuệ Nguyễn Minh Tuệ Giám đốc Tài chính Tập đoàn 17.430 0,01% 26.030 0,012% Mua CP ESOP\n6. Đặng Tùng Sơn Đặng Tùng Sơn Phó Chủ tịch cấp cao Tập đoàn / Giám đốc chiến lược Tập đoàn 36.744 0,017% 57.944 0,027% Mua CP ESOP\n7. Phó Đức Kiên Phó Đức Kiên Phó Chủ tịch Tập đoàn 21.521 0,01% 44.221 0,021% Mua CP ESOP\n8. Mai Thu Hà Mai Thu Hà Trưởng Ban Kiểm Soát 0 0% 8.200 0,004% Mua CP ESOP\n9. Tạ Hoàng Linh Tạ Hoàng Linh Thành viên BKS 598.159 0,0283% 604.359 0,285% Mua CP ESOP\n10. Nguyễn Hồng Phương Nguyễn Hồng Phương Kế toán trưởng 0 0% 4.800 0,002% Mua CP ESOP",
+  "unreadable": []
+}

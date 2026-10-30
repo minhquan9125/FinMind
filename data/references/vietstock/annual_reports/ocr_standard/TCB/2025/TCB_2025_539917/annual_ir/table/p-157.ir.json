@@ -1,0 +1,212 @@
+{
+  "ir_version": "1",
+  "page": 157,
+  "printed_page": null,
+  "page_class": "notes",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+    "file_name": "TCB_2025_539917.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p157-b1",
+      "type": "paragraph",
+      "text": "Ngân hàng trích lập dự phòng chung đối với khách hàng có số dư nợ được cơ cấu lại thời hạn trả nợ và giữ nguyên nhóm nợ theo Thông\ntư 02 theo kết quả phân loại nợ không áp dụng quy định giữ nguyên nhóm nợ.",
+      "bbox": [42.52, 167.32, 544.31, 186.32]
+    },
+    {
+      "id": "p157-b2",
+      "type": "paragraph",
+      "text": "Chính sách phân loại nợ và trích lập dự phòng đối với các khoản cho vay hoạt động ký quỹ và cho vay hoạt động ứng trước tiền bán của\nkhách hàng của Công ty Cổ phần Chứng khoán Kỹ Thương (“TCBS”) – Công ty con của Ngân hàng",
+      "bbox": [42.52, 198.7, 544.38, 217.7]
+    },
+    {
+      "id": "p157-b3",
+      "type": "paragraph",
+      "text": "Dự phòng các khoản cho vay hoạt động ký quỹ và cho vay hoạt động ứng trước tiền bán của khách hàng được trích lập đảm bảo thống\nnhất với báo cáo của TCBS và được tính bằng phần chênh lệch giữa giá thị trường của chứng khoán được dùng làm tài sản đảm bảo cho\nkhoản cho vay và số dư của các khoản cho vay này. Tăng hoặc giảm số dư tài khoản dự phòng được ghi nhận vào khoản mục “Chi phí dự",
+      "bbox": [42.52, 230.32, 544.26, 259.82]
+    },
+    {
+      "id": "p157-b4",
+      "type": "paragraph",
+      "text": "Chứng khoán đầu tư bao gồm chứng khoán đầu tư sẵn sàng để bán và chứng khoán đầu\ntư giữ đến ngày đáo hạn. Ngân hàng ghi nhận ban đầu chứng khoán đầu tư theo giá gốc\nvà phân loại chứng khoán đầu tư thành các loại phù hợp tại thời điểm mua. Theo Công văn\nsố 2601/NHNN-TCKT do NHNN ban hành ngày 14 tháng 4 năm 2009, đối với khoản mục\nchứng khoán đầu tư, Ngân hàng được phép phân loại lại tối đa một lần sau khi mua.",
+      "bbox": [214.02, 316.14, 544.29, 366.63]
+    },
+    {"id": "p157-b5", "type": "paragraph", "text": "Chứng khoán đầu tư sẵn sàng để bán", "bbox": [214.02, 379.14, 351.83, 387.64]},
+    {
+      "id": "p157-b6",
+      "type": "paragraph",
+      "text": "Chứng khoán đầu tư sẵn sàng để bán là chứng khoán nợ hoặc chứng khoán vốn được giữ\ntrong thời gian không ấn định trước và có thể được bán trong mọi thời điểm.",
+      "bbox": [214.02, 400.14, 544.23, 419.14]
+    },
+    {"id": "p157-b7", "type": "paragraph", "text": "Chứng khoán đầu tư giữ đến ngày đáo hạn", "bbox": [214.02, 431.64, 371.12, 440.14]},
+    {
+      "id": "p157-b8",
+      "type": "paragraph",
+      "text": "Chứng khoán đầu tư giữ đến ngày đáo hạn là chứng khoán nợ có kỳ hạn cố định và các\nkhoản thanh toán cố định hoặc có thể xác định được, mà Ngân hàng có ý định và có khả\nnăng nắm giữ đến ngày đáo hạn.",
+      "bbox": [214.02, 452.65, 544.27, 482.14]
+    },
+    {
+      "id": "p157-b9",
+      "type": "paragraph",
+      "text": "Ngân hàng ghi nhận chứng khoán đầu tư vào ngày nhận chuyển phần lớn rủi ro và lợi ích\ncủa việc sở hữu các chứng khoán này.",
+      "bbox": [214.02, 514.87, 539.09, 533.87]
+    },
+    {
+      "id": "p157-b10",
+      "type": "paragraph",
+      "text": "Chứng khoán vốn sẵn sàng để bán được ghi nhận theo giá gốc trừ đi dự phòng giảm giá chứng khoán.",
+      "bbox": [43.18, 604.69, 418.04, 613.19]
+    },
+    {
+      "id": "p157-b11",
+      "type": "paragraph",
+      "text": "Đối với chứng khoán đã niêm yết, giá chứng khoán thực tế trên thị trường được tính theo giá đóng cửa tại ngày gần nhất có giao dịch tính\nđến thời điểm kết thúc năm tài chính. Trường hợp chứng khoán đã niêm yết trên thị trường mà không có giao dịch trong vòng 30 ngày\ntrước ngày trích lập dự phòng thì mức trích dự phòng được xác định cho từng khoản đầu tư chứng khoán theo trình bày tại Thuyết minh 4.9.",
+      "bbox": [43.18, 625.7, 544.27, 655.19]
+    },
+    {
+      "id": "p157-b12",
+      "type": "paragraph",
+      "text": "Đối với chứng khoán vốn sẵn sàng để bán chưa niêm yết nhưng được giao dịch trên thị trường giao dịch của các công ty đại chúng chưa\nniêm yết (UpCom), giá chứng khoán thực tế trên thị trường được xác định là giá tham chiếu bình quân trong 30 ngày giao dịch liền kề gần\nnhất trước thời điểm kết thúc năm tài chính do Sở Giao dịch chứng khoán công bố Trường hợp không có giao dịch trong vòng 30 ngày\ntrước thời điểm kết thúc năm tài chính thì dự phòng cho từng khoản đầu tư chứng khoán được xác định như trình bày tại Thuyết minh 4.9.",
+      "bbox": [43.18, 667.69, 544.27, 707.69]
+    },
+    {
+      "id": "p157-b13",
+      "type": "paragraph",
+      "text": "Chính sách đo lường đối với chứng khoán vốn chưa được niêm yết trong khoản mục chứng khoán sẵn sàng để bán của Công ty Cổ phần",
+      "bbox": [43.18, 720.07, 544.17, 728.57]
+    },
+    {
+      "id": "p157-b14",
+      "type": "paragraph",
+      "text": "Tài sản tài chính sẵn sàng để bán AFS được ghi nhận ban đầu theo giá mua thực tế (đối với chứng khoán chưa niêm yết của Tổ chức phát\nhành) hoặc giá khớp lệnh mua bán chứng khoán trên các Sở Giao dịch chứng khoán (đối với chứng khoán niêm yết). Giá mua tài sản tài",
+      "bbox": [43.18, 751.69, 544.28, 770.69]
+    },
+    {"id": "p157-b15", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [489.91, 62.52, 544.25, 71.02]},
+    {
+      "id": "p157-b16",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\ntại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [646.3, 62.52, 862.55, 80.12]
+    },
+    {
+      "id": "p157-b17",
+      "type": "paragraph",
+      "text": "Tại ngày lập báo cáo tình hình tài chính hợp nhất, Ngân hàng cũng đánh giá liệu có hay không bằng chứng khách quan rằng công cụ vốn\nkhông có giá niêm yết trên thị trường hoạt động bị suy giảm giá trị. Tăng hoặc giảm số dư tài khoản dự phòng được ghi nhận vào báo cáo\nkết quả hoạt động hợp nhất trên khoản mục “Lãi thuần từ mua bán chứng khoán đầu tư”.",
+      "bbox": [646.3, 167.2, 1147.96, 196.7]
+    },
+    {"id": "p157-b18", "type": "paragraph", "text": "Chứng khoán nợ", "bbox": [646.3, 209.2, 707.45, 217.7]},
+    {
+      "id": "p157-b19",
+      "type": "paragraph",
+      "text": "Chứng khoán nợ được ghi nhận ban đầu theo giá gốc, bao gồm các chi phí giao dịch và các chi phí có liên quan trực tiếp khác. Sau đó,\nchứng khoán nợ được ghi nhận theo giá gốc được phân bổ (chịu tác động của việc phân bổ giá trị chiết khấu và giá trị phụ trội) trừ đi dự\nphòng rủi ro tín dụng và dự phòng giảm giá chứng khoán. Giá trị phụ trội và giá trị chiết khấu phát sinh từ việc mua các chứng khoán nợ\nđược phân bổ vào báo cáo kết quả hoạt động hợp nhất theo phương pháp đường thẳng tính từ ngày mua chứng khoán đến ngày đáo hạn\ncủa chứng khoán đó.",
+      "bbox": [646.3, 230.21, 1148.08, 280.7]
+    },
+    {
+      "id": "p157-b20",
+      "type": "paragraph",
+      "text": "Lãi sau khi mua của chứng khoán nợ sẵn sàng để bán và chứng khoán đầu tư giữ đến ngày đáo hạn được ghi nhận trên báo cáo kết quả\nhoạt động hợp nhất trên cơ sở dồn tích. Khoản tiền lãi dồn tích trước khi Ngân hàng mua chứng khoán nợ sẽ được ghi giảm giá trị của tài\nkhoản lãi dự thu khi nhận được.",
+      "bbox": [646.3, 293.2, 1148.11, 322.69]
+    },
+    {
+      "id": "p157-b21",
+      "type": "paragraph",
+      "text": "Chứng khoán nợ được lập dự phòng giảm giá khi giá trị ghi sổ cao hơn giá thị trường. Dự phòng giảm giá được ghi nhận vào báo cáo kết\nquả hoạt động hợp nhất trên khoản mục “Lãi/(lỗ) thuần từ mua bán chứng khoán đầu tư”.",
+      "bbox": [646.3, 335.2, 1148.04, 354.19]
+    },
+    {
+      "id": "p157-b22",
+      "type": "paragraph",
+      "text": "Đối với trái phiếu Chính phủ, trái phiếu được Chính phủ bảo lãnh và trái phiếu chính quyền địa phương, Ngân hàng không thực hiện trích\nlập dự phòng đối với các khoản đầu tư này.",
+      "bbox": [646.3, 366.7, 1148.05, 385.7]
+    },
+    {
+      "id": "p157-b23",
+      "type": "paragraph",
+      "text": "Đối với trái phiếu doanh nghiệp đã niêm yết, đăng ký giao dịch, giá trái phiếu trên thị trường là giá giao dịch gần nhất tại Sở Giao dịch\nChứng khoán trong vòng 10 ngày tính đến ngày kết thúc năm tài chính. Trường hợp không có giao dịch trong vòng 10 ngày tính đến ngày\nkết thúc năm tài chính, Ngân hàng không thực hiện trích lập dự phòng đối với các khoản đầu tư này.",
+      "bbox": [646.3, 398.2, 1148.15, 427.69]
+    },
+    {
+      "id": "p157-b24",
+      "type": "paragraph",
+      "text": "Đối với trái phiếu doanh nghiệp chưa niêm yết trên thị trường chứng khoán (bao gồm cả chứng khoán do TCTD khác phát hành) hoặc chưa\nđăng ký giao dịch trên thị trường giao dịch của các doanh nghiệp đại chúng chưa niêm yết, dự phòng rủi ro tín dụng được xác định theo\nThông tư 31 và Nghị định 86 như được trình bày tại Thuyết minh 4.6.",
+      "bbox": [646.3, 440.2, 1148.11, 469.69]
+    },
+    {
+      "id": "p157-b25",
+      "type": "paragraph",
+      "text": "Các khoản chứng khoán nợ chưa niêm yết còn lại (không bao gồm trái phiếu doanh nghiệp chưa niêm yết kể trên) được ghi nhận theo giá\ngốc trừ đi dự phòng giảm giá được xác định theo giá trị thị trường của chứng khoán. Trong trường hợp không có giá trị thị trường của chứng\nkhoán hoặc giá thị trường không thể xác định một cách đáng tin cậy, các chứng khoán này sẽ được ghi nhận theo giá trị sổ sách kế toán.",
+      "bbox": [646.3, 482.2, 1148.05, 511.69]
+    },
+    {
+      "id": "p157-b26",
+      "type": "paragraph",
+      "text": "Dự phòng chứng khoán đầu tư sẽ được hoàn nhập khi việc tăng lên sau đó của giá trị có thể thu hồi của chứng khoán đầu tư là do sự kiện\nkhách quan xảy ra sau khi khoản dự phòng được ghi nhận. Khoản dự phòng chỉ được hoàn nhập đến mức tối đa bằng giá trị ghi sổ của các\nchứng khoán này khi chưa lập dự phòng.",
+      "bbox": [646.3, 524.19, 1148.14, 553.69]
+    },
+    {
+      "id": "p157-b27",
+      "type": "paragraph",
+      "text": "Chứng khoán đầu tư được dừng ghi nhận khi các quyền lợi nhận các luồng tiền từ các chứng",
+      "bbox": [817.79, 586.42, 1148.06, 594.92]
+    },
+    {"id": "p157-b28", "type": "paragraph", "text": "4.7.4. Dừng ghi nhận", "bbox": [646.3, 592.35, 722.71, 600.85]},
+    {
+      "id": "p157-b29",
+      "type": "paragraph",
+      "text": "khoán này đã chấm dứt hoặc Ngân hàng đã chuyển giao phần lớn rủi ro và lợi ích của việc\nsở hữu các chứng khoán này.",
+      "bbox": [817.79, 596.92, 1148.02, 615.92]
+    },
+    {
+      "id": "p157-b30",
+      "type": "paragraph",
+      "text": "Những chứng khoán được bán đồng thời được cam kết sẽ mua lại vào một thời điểm nhất",
+      "bbox": [818.83, 648.66, 1148.69, 657.16]
+    },
+    {"id": "p157-b31", "type": "paragraph", "text": "4.8. Các hợp đồng mua lại", "bbox": [647.33, 649.14, 762.58, 659.14]},
+    {
+      "id": "p157-b32",
+      "type": "paragraph",
+      "text": "định trong tương lai vẫn được ghi nhận trong báo cáo tài chính hợp nhất. Khoản tiền nhận",
+      "bbox": [818.83, 659.16, 1148.71, 667.66]
+    },
+    {"id": "p157-b33", "type": "paragraph", "text": "và bán lại", "bbox": [647.33, 662.14, 689.43, 672.14]},
+    {
+      "id": "p157-b34",
+      "type": "paragraph",
+      "text": "được theo thỏa thuận này được ghi nhận như một khoản đi vay trên báo cáo tình hình tài\nchính hợp nhất và phần chênh lệch giữa giá bán và giá mua được ghi nhận vào báo cáo kết\nquả hoạt động hợp nhất theo lãi suất hợp đồng.",
+      "bbox": [818.83, 669.66, 1148.74, 699.15]
+    },
+    {
+      "id": "p157-b35",
+      "type": "paragraph",
+      "text": "Những chứng khoán được mua đồng thời được cam kết sẽ bán lại vào một thời điểm nhất\nđịnh trong tương lai không được ghi nhận trong báo cáo tài chính hợp nhất. Khoản tiền\nthanh toán theo thỏa thuận này được ghi nhận như một khoản cho vay trên báo cáo tình\nhình tài chính hợp nhất và phần chênh lệch giữa giá bán và giá mua được ghi nhận vào báo\ncáo kết quả hoạt động hợp nhất theo lãi suất hợp đồng.",
+      "bbox": [818.83, 711.66, 1148.76, 762.15]
+    },
+    {"id": "p157-b36", "type": "paragraph", "text": "Báo cáo tài chính 313", "bbox": [1069.29, 25.6, 1148.03, 32.7]},
+    {"id": "p157-b37", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [1093.69, 62.52, 1148.03, 71.02]},
+    {"id": "p157-b38", "type": "paragraph", "text": "312 Báo cáo thường niên 2025", "bbox": [42.52, 25.6, 152.46, 32.7]},
+    {
+      "id": "p157-b39",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\ntại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [42.52, 62.52, 258.77, 80.12]
+    },
+    {"id": "p157-b40", "type": "paragraph", "text": "phòng rủi ro tín dụng” trên báo cáo kết quả hoạt động hợp nhất.", "bbox": [42.52, 261.7, 277.68, 270.31]},
+    {"id": "p157-b41", "type": "paragraph", "text": "4.7. Chứng khoán đầu tư", "bbox": [42.52, 289.17, 149.15, 299.17]},
+    {"id": "p157-b42", "type": "paragraph", "text": "4.7.1. Phân loại", "bbox": [42.52, 316.4, 95.91, 324.9]},
+    {"id": "p157-b43", "type": "paragraph", "text": "4.7.2. Ghi nhận", "bbox": [42.52, 515.13, 97.64, 523.63]},
+    {"id": "p157-b44", "type": "paragraph", "text": "4.7.3. Đo lường", "bbox": [43.18, 566.85, 98.75, 575.35]},
+    {"id": "p157-b45", "type": "paragraph", "text": "Chứng khoán vốn", "bbox": [43.18, 583.69, 108.45, 592.19]},
+    {"id": "p157-b46", "type": "paragraph", "text": "Chứng khoán Kỹ Thương (“TCBS”) – Công ty con của Ngân hàng", "bbox": [43.18, 730.57, 281.05, 739.07]},
+    {
+      "id": "p157-b47",
+      "type": "paragraph",
+      "text": "chính sẵn sàng để bán AFS bao gồm cả các chi phí phát sinh trực tiếp liên quan đến việc mua các tài sản tài chính này, như: phí môi giới,\nphí giao dịch và phí ngân hàng. Sau ghi nhận ban đầu, các khoản đầu tư vào công cụ vốn không có giá niêm yết trên thị trường hoạt động\nvà các khoản đầu tư mà giá trị của nó không thể xác định một cách đáng tin cậy sẽ được phản ánh theo giá gốc.",
+      "bbox": [43.18, 772.69, 544.25, 802.18]
+    }
+  ]
+}

@@ -28,6 +28,7 @@ export async function loadCompanyNews({ symbol, signal, api, onResult, onError, 
     } catch (error) {
       if (signal.aborted || error.name === "AbortError") return;
     }
+    if (!api.refresh) return;
     const fresh = await api.refresh(symbol, signal);
     if (signal.aborted) return;
     onResult(fresh);

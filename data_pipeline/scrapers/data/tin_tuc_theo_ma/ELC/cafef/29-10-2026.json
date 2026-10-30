@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "56aec0904b9390a523b2",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2997325/elc-co-dong-nguyen-thi-mai-phuong-da-mua-944900-cp.chn",
+      "title": "ELC: Cổ đông Nguyễn Thị Mai Phương đã mua 944.900 cp",
+      "description": "ELC: Cổ đông Nguyễn Thị Mai Phương đã mua 944.900 cp",
+      "content": "Nguyễn Thị Mai Phương báo cáo thay đổi sở hữu cổ đông lớn Công ty Cổ phần Công nghệ - Viễn thông ELCOM như sau: Các tập tin đính kèm 20261013 - ELC - Bao cao thay doi ty le so huu cua co dong lon.pdf Theo HOSE",
+      "published_at": "2026-10-12T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:39.409628+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/131026/elc-bao-cao-thay-doi-so-huu-co-dong-lon-nguyen-thi-mai-phuong-0.pdf?v=1791887437778"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.5952380952380952,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-bao-cao-thay-doi-so-huu-co-dong-lon-nguyen-thi-mai-phuong/42255239",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "e4dca66025cae1422540",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2994847/elc-19102026-giao-dich-7700890-cp-niem-yet-bo-sung.chn",
+      "title": "ELC: 19.10.2026, giao dịch 7.700.890 cp niêm yết bổ sung",
+      "description": "ELC: 19.10.2026, giao dịch 7.700.890 cp niêm yết bổ sung",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết của Công ty Cổ phần Công nghệ - Viễn thông ELCOM như sau: Các tập tin đính kèm 20261009 - ELC - TB vv giao dich chung khoan thay doi dkny.pdf Theo HOSE",
+      "published_at": "2026-10-08T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:40.247453+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/091026/elc-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet-0.pdf?v=1791541952593"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.655421686746988,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet/42207010",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "0e57a51be91c86e788aa",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2994849/elc-ong-phan-chien-thang-chu-tich-hdqt-dang-ky-mua-500000-cp.chn",
+      "title": "ELC: Ông Phan Chiến Thắng - Chủ tịch HĐQT đăng ký mua 500.000 cp",
+      "description": "ELC: Ông Phan Chiến Thắng - Chủ tịch HĐQT đăng ký mua 500.000 cp",
+      "content": "Phan Chiến Thắng thông báo giao dịch cổ phiếu của người nội bộ Công ty Cổ phần Công nghệ - Viễn thông ELCOM như sau: Các tập tin đính kèm 20261009 - ELC - Thong bao giao dich co phieu nguoi noi bo Phan Chien Thang.pdf Theo HOSE",
+      "published_at": "2026-10-08T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:40.997570+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/091026/elc-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-phan-chien-thang-0.pdf?v=1791541956394"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.5797101449275363,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-phan-chien-thang/42207008",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "460a19a77bc5fbe1fc3f",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2994814/elc-bao-cao-tien-do-su-dung-von-thu-duoc-tu-dot-chao-ban.chn",
+      "title": "ELC: Báo cáo tiến độ sử dụng vốn thu được từ đợt chào bán",
+      "description": "ELC: Báo cáo tiến độ sử dụng vốn thu được từ đợt chào bán",
+      "content": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố báo cáo tiến độ sử dụng vốn thu được từ đợt chào bán như sau: Các tập tin đính kèm 20261009 - ELC - Bao cao tien do su dung von tu dot chao ban cp.pdf Theo HOSE",
+      "published_at": "2026-10-08T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:41.793751+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/091026/elc-bao-cao-tien-do-su-dung-von-thu-duoc-tu-dot-chao-ban-0.pdf?v=1791540551822"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7328571428571429,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-bao-cao-tien-do-su-dung-von-thu-duoc-tu-dot-chao-ban/42206775",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "70f9b9a0ff103540f04d",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2993056/elc-8102026-niem-yet-bo-sung-7700890-cp.chn",
+      "title": "ELC: 8.10.2026, niêm yết bổ sung 7.700.890 cp",
+      "description": "ELC: 8.10.2026, niêm yết bổ sung 7.700.890 cp",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM công bố Quyết định về việc chấp thuận cho Công ty Cổ phần Công nghệ - Viễn thông ELCOM được thay đổi đăng ký niêm yết với nội dung như sau: Các tập tin đính kèm 20261006 - ELC - QD vv thay doi dang ky niem yet.pdf Theo HOSE",
+      "published_at": "2026-10-06T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:42.539141+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/071026/elc-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet-0.pdf?v=1791362807364"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6761363636363635,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet/42153591",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "e5f25014ceff478dd11b",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2987787/elc-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-36.chn",
+      "title": "ELC: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36",
+      "description": "ELC: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36",
+      "content": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 36 như sau: Các tập tin đính kèm 20260929 - ELC - Thong bao thay doi Giay chung nhan DKDN lan thu 36.pdf Theo HOSE",
+      "published_at": "2026-09-28T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:43.245944+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/300926/elc-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-36-0.pdf?v=1790759954134"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7335820895522388,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-36/42008387",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "5a390cab4aa78794a40a",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2982607/elc-dieu-le-cong-ty-theo-von-moi.chn",
+      "title": "ELC: Điều lệ công ty theo vốn mới",
+      "description": "ELC: Điều lệ công ty theo vốn mới",
+      "content": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố Điều lệ công ty theo vốn mới như sau: Các tập tin đính kèm 20260923 - ELC - Dieu le Cong ty theo von moi.pdf Theo HOSE",
+      "published_at": "2026-09-23T10:32:57+00:00",
+      "crawled_at": "2026-10-29T07:44:43.953765+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/230926/elc-ieu-le-cong-ty-theo-von-moi-0.pdf?v=1790159849656"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7273584905660377,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-dieu-le-cong-ty-theo-von-moi/41918721",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "d9373a0788fa94592adf",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2982599/elc-nghi-quyet-hdqt-dang-ky-tang-von-dieu-le-do-hoan-thanh-dot-phat-hanh-co-phieu.chn",
+      "title": "ELC: Nghị quyết HĐQT đăng ký tăng vốn Điều lệ do hoàn thành đợt phát hành cổ phiếu",
+      "description": "ELC: Nghị quyết HĐQT đăng ký tăng vốn Điều lệ do hoàn thành đợt phát hành cổ phiếu",
+      "content": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM công bố Nghị quyết HĐQT số 03-09/2026 ngày 23/09/2026 như sau: Các tập tin đính kèm 20260923 - ELC - Nghi quyet HDQT so 03-09.2026.NQ-HDQT.pdf Theo HOSE",
+      "published_at": "2026-09-22T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:44.685997+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/230926/elc-nghi-quyet-h-qt-so-03-09-2026-ngay-23-09-2026-0.pdf?v=1790159586327"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.626302729528536,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-nghi-quyet-hdqt-so-03-09-2026-ngay-23-09-2026/41918712",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "56777193fb2d8b8b23da",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2978641/elc-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh-dang-luu-hanh-la-117748108-cp.chn",
+      "title": "ELC: Số lượng cổ phiếu có quyền biểu quyết đang lưu hành đang lưu hành là 117.748.108 cp",
+      "description": "ELC: Số lượng cổ phiếu có quyền biểu quyết đang lưu hành đang lưu hành là 117.748.108 cp",
+      "content": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM thông báo thay đổi số lượng CP có quyền biểu quyết đang lưu hành như sau: Các tập tin đính kèm 20260917 - ELC - Thay doi so luong co phieu co quyen bieu quyet dang luu hanh.pdf Theo HOSE",
+      "published_at": "2026-09-16T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:45.362912+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/170926/elc-cbtt-thay-doi-so-luong-cp-co-quyen-bieu-quyet-dang-luu-hanh-0.pdf?v=1789643482329"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.2217391304347826,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-36/42008571",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    },
+    {
+      "id": "a29ac5702d9deb977e3d",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/elc-2978634/elc-da-phat-hanh-7700890-cp-de-tra-co-tuc-va-tang-von-co-phan-tu-nguon-von-csh.chn",
+      "title": "ELC: Đã phát hành 7.700.890 cp để trả cổ tức và tăng vốn cổ phần từ nguồn vốn CSH",
+      "description": "ELC: Đã phát hành 7.700.890 cp để trả cổ tức và tăng vốn cổ phần từ nguồn vốn CSH",
+      "content": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM báo cáo kết quả đợt phát hành CP để trả cổ tức và tăng vốn cổ phần từ nguồn vốn CSH như sau: Các tập tin đính kèm 20260917 - ELC - Bao cao ket qua phat hanh co phieu de tra co tuc va CPT.pdf Theo HOSE",
+      "published_at": "2026-09-16T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:46.112874+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/170926/elc-bao-cao-ket-qua-dot-phat-hanh-cp-de-tra-co-tuc-va-tang-von-co-phan-tu-nguon-von-csh-0.pdf?v=1789643462003"
+      ],
+      "symbols": [
+        "ELC"
+      ],
+      "matched_symbols": [
+        "ELC"
+      ],
+      "scopes": [
+        "ELC"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.16527777777777777,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/elc-dieu-le-cong-ty-theo-von-moi/41918721",
+        "matched_file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:50.090364+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:44:46.116888+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "ELC",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

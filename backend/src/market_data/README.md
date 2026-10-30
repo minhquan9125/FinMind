@@ -17,9 +17,9 @@ Mở terminal ở **thư mục gốc FinMind**, dùng Python có FastAPI/Uvicorn
 python -B -m uvicorn backend.src.market_data.app:app --host 127.0.0.1 --port 8001 --workers 1
 ```
 
-Nếu máy khác chưa có môi trường, tạo bằng `python -m venv venv` rồi cài gói tối thiểu `.\venv\Scripts\python.exe -m pip install fastapi uvicorn httpx`. Dùng Python của môi trường đó thay cho `python` trong lệnh trên. Không cần cài mô hình embedding.
+Nếu máy khác chưa có môi trường, cài các gói trong `backend/requirements.txt` vào Python sẽ chạy dịch vụ. Không cần tải mô hình embedding để đọc giá/tin.
 
-App nhỏ này **không cần PostgreSQL, Neo4j hay Supabase**. SDK chạy trong tiến trình con riêng và chỉ khởi động khi thật sự cần lấy giá. Kiểm tra tại `http://127.0.0.1:8001/docs` hoặc chạy:
+API chạy riêng hiện cần cùng cấu hình PostgreSQL và `JWT_SECRET_KEY` với backend chính để xác thực tài khoản và đọc vai trò hiện tại. SDK chạy trong tiến trình con riêng và chỉ khởi động khi thật sự cần lấy giá. Kiểm tra tại `http://127.0.0.1:8001/docs` bằng access JWT của tài khoản đã đăng nhập; các lệnh gọi dữ liệu cần header `Authorization: Bearer <access_token>`.
 
 ```powershell
 curl.exe "http://127.0.0.1:8001/api/market-data/stocks/FPT/ohlcv?limit=5"

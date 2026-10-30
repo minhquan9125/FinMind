@@ -1,0 +1,404 @@
+{
+  "schema_name": "finmind.annual_report_extraction",
+  "schema_version": "2.0",
+  "source": "VIETSTOCK_FINANCE",
+  "document": {
+    "symbol": "ICT",
+    "year": 2024,
+    "document_type": "annual_report",
+    "title": "Báo cáo thường niên năm 2024",
+    "source_page_url": "https://finance.vietstock.vn/tai-lieu/bao-cao-thuong-nien.htm",
+    "source_file_url": "https://static2.vietstock.vn/data/HOSE/2024/BCTN/VN/ICT_Baocaothuongnien_2024.pdf",
+    "provider_file_id": "501210",
+    "downloaded_at": "2026-09-30T03:38:42Z",
+    "filename": "ICT_2024_501210.pdf",
+    "relative_path": "data/references/vietstock/annual_reports/files/ICT/2024/ICT_2024_501210.pdf",
+    "sha256": "078b2f86dbe088ecd5185f54baa9e3832197bcf5416e552814febd2f2226bd12",
+    "page_count": 61
+  },
+  "extracted_at": "2026-10-22T00:44:18Z",
+  "extraction": {
+    "methods": [
+      "PDF_TEXT_LAYER"
+    ],
+    "ocr_scope": "PAGES_WITHOUT_USABLE_TEXT_LAYER",
+    "ocr_engine": null,
+    "ocr_model": null,
+    "ocr_language": null,
+    "text_cleaning": null,
+    "ocr_config": null,
+    "pages_from_pdf_text_layer": 61,
+    "pages_from_ocr": 0,
+    "pages_without_text": [],
+    "status": "COMPLETE",
+    "review_required": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "text": "Báo cáo thường niên\n2024\n1\nCÔNG TY CỔ PHẦN\nVIỄN THÔNG - TIN HỌC BƯU ĐIỆN\nĐịa chỉ  158/2 phố Hồng Mai, Phường Bạch Mai,\n Quận Hai Bà Trưng, Thành phố Hà Nội, Việt Nam\nĐiện thoại 024.38634597   \nWebsite www.ctin.vn \nSuccess together",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 2,
+      "text": "1.  Thông tin khái quát\n2.  Ngành nghề và địa bàn kinh doanh\n3.  Thông tin về mô hình quản trị, tổ chức\n kinh doanh và bộ máy quản lý\n4.  Định hướng phát triển\n5.  Các rủi ro\n1.  Đánh giá của Hội đồng quản trị về các   \n mặt hoạt động của Công ty\n2.  Đánh giá của Hội đồng quản trị về hoạt động   \n của Ban Tổng Giám đốc công ty\n3.  Các kế hoạch, định hướng của Hội đồng quản trị\n1.  Hội đồng quản trị\n2.  Ban Kiểm soát\n3.  Các giao dịch, thù lao và các khoản lợi ích của\n Hội đồng quản trị, Ban giám đốc và Ban kiểm soát\n1.  Ý kiến kiểm toán: Theo Phụ lục đính kèm\n2.  Báo cáo tài chính được kiểm toán: Theo Phụ lục\n đính kèm\n1.  Tình hình hoạt động sản xuất kinh doanh\n2.  Tổ chức và nhân sự\n3. Tình hình đầu tư, tình hình thực hiện các dự án\n4.  Tình hình tài chính\n5.  Cơ cấu cổ đông, thay đổi vốn đầu tư của chủ sở hữu\n6.  Báo cáo tác động liên quan đến môi trường\n và xã hội của công ty\n1.  Đánh giá kết quả hoạt động sản xuất kinh doanh\n2.  Tình hình tài chính\n3.  Những cải tiến về cơ cấu tổ chức, chính sách, quản lý\n4.  Kế hoạch phát triển trong tương lai\n5.  Giải trình của Ban Giám đốc với ý kiến kiểm toán\n6.  Báo cáo đánh giá liên quan đến trách nhiệm về\n môi trường và xã hội của công ty\nThông tin chung Đánh giá của Hội đồng quản trị\nvề hoạt động của Công ty\nTình hình hoạt động trong năm\nQuản trị công ty\nBáo cáo tài chínhBáo cáo và đánh giá của Ban Giám đốc\n Báo cáo thường niên\n2024 3Công ty Cổ phần Viễn thông – Tin học Bưu điện2",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 3,
+      "text": "Success together\nI. Thông tin chung\n1.  Thông tin khái quát\n2.  Ngành nghề và địa bàn kinh doanh\n3.  Thông tin về mô hình quản trị, tổ chức\n kinh doanh và bộ máy quản lý\n4.  Định hướng phát triển\n5.  Các rủi ro\n Báo cáo thường niên\n2024 5Công ty Cổ phần Viễn thông – Tin học Bưu điện4",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 4,
+      "text": "Báo cáo thường niên\n2024\n7\nTên công ty Công ty Cổ phần Viễn thông – Tin học Bưu điện\n (Sau đây gọi là “Công ty CTIN”) \nGiấy chứng nhận đăng ký 0100683374\ndoanh nghiệp số:\nVốn điều lệ: 321.850.000.000 đồng \nĐịa chỉ: 158/2 phố Hồng Mai, Phường Bạch Mai,\n Quận Hai Bà Trưng, Thành phố Hà Nội, Việt Nam\nĐịa điểm kinh doanh Tầng 6 và Tầng 12, Tòa nhà Văn phòng\n Tổng công ty 789, số 147, Đường Hoàng Quốc Việt,  \n Phường Nghĩa Đô, Quận Cầu Giấy, Hà Nội.\nSố điện thoại 024.38634597\nFax 024.38632061\nWebsite www.ctin.vn\nMã cổ phiếu: ICT\n1. Thông tin khái quát\nI. THÔNG TIN CHUNG\nCông ty Cổ phần Viễn thông – Tin học Bưu điện6",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 5,
+      "text": "• Thành lập Xí nghiệp Sửa chữa \nThiết bị Thông tin I.\n(Sau đó đổi tên thành Xí nghiệp \nKhoa học Sản xuất Thiết bị \nThông tin I)\n• Đối tác Bạc (Silver Partner) của \nCisco.\n• Top 500 doanh nghiệp lớn nhất \nViệt Nam 2013.\n• Top 200 doanh nghiệp đóng \nthuế thu nhập lớn nhất VN.\n• Top 10 Doanh nghiệp Công nghệ \ncung cấp dịch vụ, giải pháp phần \nmềm & tích hợp hệ thống uy tín.\n• Top 10 Doanh nghiệp CNTT hạng \nmục Dịch vụ và Giải pháp CNTT.\n• Top 10 Doanh nghiệp cung \ncấp giải pháp, dịch vụ CNTT và \nchuyển đổi số.\n• Chuyển đổi từ xí nghiệp sang \nCông ty Cổ phần.\n• Top 500 doanh nghiệp lớn nhất Việt \nNam năm 2010.\n• Chứng chỉ “Global Silver Engineering \nPartner” của Huawei.\n• Top 10 Doanh nghiệp CNTT Việt \nNam hạng mục Cung cấp dịch vụ & \nGiải pháp CNTT năm thứ 8 liên tiếp\n• Nhận giải thưởng “Vinh danh \nđóng góp nổi bật” từ hãng ZTE\n• Đối tác chỉ định đầu tiên cung cấp \ncông nghệ cao trong các dự án mạng \nquang của Cisco tại Việt Nam.\n• Một trong 3 đối tác ATP của\nCisco tại khu vực ASEAN và thứ 7 \ntoàn châu Á.\n• Nhận Bằng khen “Doanh nghiệp \nquản lý chất lượng sản xuất phần \nmềm” của Bộ Bưu chính Viễn thông.\n• Chứng nhận “Đối tác triển khai giải \npháp Viễn thông xuất sắc nhất năm \n2011” của IBM.\n• Năm thứ 5 liên tiếp lọt vào Top 50\nDoanh nghiệp CNTT hàng đầu Việt Nam.\n• Top doanh nghiệp Giải pháp phần \nmềm và Tích hợp hệ thống uy tín\nnăm 2018.\n• Top 10 doanh nghiệp cung cấp giải \npháp CNTT.\n• Đạt giải thưởng Top Optical \nPartner FY 2006 của Cisco.\n• Đạt chứng chỉ CMMi level 3.\n• Top 500 doanh nghiệp lớn nhất \nViệt Nam 2012.\n• Top 200 doanh nghiệp đóng \nthuế thu nhập lớn nhất Việt Nam.\n• Lần thứ 6 liên tiếp nhận danh \nhiệu Doanh nghiệp CNTT hàng \nđầu Việt Nam.\n• Top 10 Doanh nghiệp CNTT \nmảng Dịch vụ - Giải pháp CNTT\n1972\n2007\n2013\n2020\n2024\n2001\n2010\n2014\n2021\n2002 2005\n2011\n2018\n2022\n2006\n2012\n2019\n2023\nQuá trình hình thành và phát triển:\n Báo cáo thường niên\n2024 9Công ty Cổ phần Viễn thông – Tin học Bưu điện8",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 6,
+      "text": "• Cung cấp dịch vụ tư vấn trong lĩnh vực viễn thông, \ncông nghệ thông tin;\n• Cung cấp giải pháp, sản phẩm và dịch vụ trong lĩnh \nvực viễn thông, công nghệ thông tin;\n• Xây lắp hạ tầng viễn thông, công nghệ thông tin;\n• Cung cấp các dịch vụ số.\n 2. Ngành nghề và địa bàn kinh doanh\nĐỊA BÀN KINH DOANH\n Báo cáo thường niên\n2024 11Công ty Cổ phần Viễn thông – Tin học Bưu điện10",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 7,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n1312\n3.Thông tin về mô hình quản trị,tổ chức kinh doanh và bộ máy quản lý\nCơ cấu tổ chức của Công ty\nMô hình quản trị:\nH/uni1ED9i đ/uni1ED3ng Qu/uni1EA3n tr/uni1ECB\nBan Ki/uni1EC3m soát\nPhó T/uni1ED5ng giám đ/uni1ED1cPhó T/uni1ED5ng giám đ/uni1ED1c Phó T/uni1ED5ng giám đ/uni1ED1c\nTrung tâm Tư v/uni1EA5n gi/uni1EA3i pháp\nTrung tâm Tri/uni1EC3n khai\nBan Qu/uni1EA3n lý d/uni1EF1 án\nVăn phòng công ty\nT/uni1ED5 d/uni1EF1 án Vietlott\nChi nhánh t/uni1EA1i H/uni1ED3 Chí Minh\nChi nhánh t/uni1EA1i Đà N/uni1EB5ng\nT/uni1ED5ng giám đ/uni1ED1c\nBan Kinh doanh\nBan Tài chính\nBan Nhân l/uni1EF1c\nBan K/uni1EBF ho/uni1EA1ch T/uni1ED5ng h/uni1EE3p\nĐ/uni1EA1i h/uni1ED9i đ/uni1ED3ng C/uni1ED5 đông\nĐại hội đồng cổ đông, Hội đồng quản trị, \nBan Tổng giám đốc và Ban kiểm soát. \nBan Tổng Giám đốc gồm: \n- Tổng Giám đốc và 03 Phó Tổng Giám đốc. \n- Cơ cấu tổ chức Công ty gồm 11 đơn vị chức \nnăng theo sơ đồ cơ cấu tổ chức.\nKhông có\nCơ cấu bộ máy quản lý: Các công ty con, Công ty liên kết:",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 8,
+      "text": "4. Định hướng phát triển\n4.1.Các mục tiêu chủ yếu của Công ty \nCông ty CTIN cam kết là đối tác kỹ thuật tin cậy \nđồng hành cùng Chính phủ và Doanh nghiệp \ntrong công cuộc chuyển đổi số, góp phần tạo \nnên động lực phát triển mới cho doanh nghiệp \nViệt và những giá trị mới cho cuộc sống của \nngười dân Việt.\n• \nCustomer centric – Lấy khách hàng là trung tâm:\nSứ mệnh của mỗi người CTIN là mang tới cho khách hàng \nnhững trải nghiệm tốt nhất về sản phẩm và dịch vụ.\n• \nThirst - Khát vọng vươn lên: Khát vọng là sức mạnh \ngiúp chúng ta vượt qua những khó khăn và thử thách, \nlà động lực thúc đẩy chúng ta cống hiến để đưa Công \nty vươn lên tầm cao mới. \n• \nInnovation – Đổi mới sáng tạo: Không có sáng tạo \ncó nghĩa là dừng lại. Những ý tưởng sáng tạo dù là nhỏ \nnhất cũng là động lực cho sự phát triển, vì vậy mỗi \nngười CTIN sẽ luôn phát huy tinh thần đổi mới sáng \ntạo để trở nên tốt hơn, hoàn thiện hơn mỗi ngày, để \ncùng nhau làm nên một CTIN giàu sức sống và luôn \ntiến về phía trước.\n• \nNonstop Learning – Học tập không ngừng: Thế \ngiới đang thay đổi một cách nhanh chóng, chúng ta \ncần liên tục cập nhật những kiến thức mới và bằng \nnhiều cách học mới để làm chủ hiện tại và bắt kịp \ntương lai.\n• \nCooperation - Hợp tác để cùng thành công: Hợp \ntác giúp cộng hưởng sức mạnh để tạo nên những giá \ntrị gia tăng. Hợp tác để cùng nhau thành công là cách \nmà mỗi người CTIN chọn để đi đến thành công.\nCông ty CTIN không ngừng nỗ lực và đổi mới để \ntrở thành một CÔNG TY CÔNG NGHỆ HÀNG ĐẦU \nVIỆT NAM cung cấp các giải pháp, sản phẩm và \ndịch vụ viễn thông và công nghệ thông tin. \n• Dẫn đầu trong lĩnh vực cung cấp dịch vụ Tích \nhợp hệ thống thị trường nhà mạng viễn thông \ntruyền thống.\n• Top 5 công ty dẫn dắt chuyển đổi số quốc gia.\n• Trở thành đối tác chiến lược và tin cậy của các \nHãng công nghệ lớn trên thế giới, đồng hành \ncùng Chính phủ và các doanh nghiệp trong công \ncuộc Chuyển đổi số. \n \nSỨ MỆNH GIÁ TRỊ\nCỐT LÕI \nTẦM NHÌN \nMỤC TIÊU \n Báo cáo thường niên\n2024 15Công ty Cổ phần Viễn thông – Tin học Bưu điện14",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 9,
+      "text": "Báo cáo thường niên\n2024\n17\n4.2.Chiến lược phát triển trung và dài hạn\n- Chiến lược phát triển trung và dài hạn đối với thị trường nhà mạng viễn \nthông truyền thống: Tập trung tăng trưởng doanh thu trong lĩnh vực tích \nhợp hệ thống để giữ vững vị trí số 1 tại 2 nhà mạng truyền thống VNPT và \nMobifone, đồng thời phát triển mở rộng thị phần tại thị trường Viettel;\n- Chiến lược phát triển trung và dài hạn đối với thị trường Chính phủ - \nDoanh nghiệp:\n- Chiến lược phát triển trung và dài hạn đối với mảng dịch vụ số:\n• Triển khai đa dạng hóa các giải pháp tích hợp cao;  \n• Tham gia sâu rộng vào các chương trình mua sắm đầu tư công của \nChính phủ và các doanh nghiệp lớn;\n• Tập trung phát triển các dự án đầu tư, vận hành thuê và thu phí cho các \nđối tượng khách hàng trong thị trường Chính phủ - Doanh nghiệp;\n• Nâng cao năng lực tư vấn, đề xuất các giải pháp đầu tư nhằm mở rộng, nâng \ncao hiệu quả hoạt động sản xuất kinh doanh của khách hàng. \n• Thúc đẩy mô hình liên kết/ hợp tác với các đối tác và các nhà mạng nhằm \ncung cấp các giải pháp, sản phẩm và dịch vụ số cho các khách hàng Chính \nphủ - Doanh nghiệp;\n• Hợp tác với các nhà khai thác dịch vụ viễn thông – tin học nhằm cung cấp \ncác dịch vụ số cho khách hàng tiêu dùng cuối cùng (B2C). Đồng thời, khai \nthác dữ liệu khách hàng (big data mining) nhằm phát triển thêm các dịch vụ.\nCông ty Cổ phần Viễn thông – Tin học Bưu điện16",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 10,
+      "text": "Báo cáo thường niên\n2024\n19\n4.3. Các mục tiêu phát triển bền vững (môi trường, xã hội và cộng \nđồng) và chương trình chính liên quan đến ngắn hạn và trung hạn \ncủa Công ty\nCông ty CTIN đã và đang tổ chức thực hiện các chương trình thu \nhút nhân tài, xây dựng môi trường làm việc, chế độ, chính sách \nkhen thưởng, chính sách phúc lợi, truyền thông nội bộ, chương \ntrình kiểm toán nội bộ định kỳ…nhằm hiện thực hóa các mục tiêu \nphát triển bền vững nêu trên. \n- Xây dựng môi trường làm việc đảm bảo an toàn, bình đẳng, không phân \nbiệt đối xử, dân chủ, minh bạch, chăm lo đời sống sức khỏe và tinh thần nhân \nviên;\n- Xây dựng vườn ươm nhân tài thông qua các hoạt động tìm kiếm, phát hiện, \nđào tạo, xây dựng lộ trình thăng tiến đảm bảo thu nhập, phúc lợi;\n“ “\n- Khuyến khích, tạo điều kiện để Người lao động cân bằng giữa công việc và cuộc \nsống, tham gia, đóng góp tích cực vào các hoạt động phục vụ Cộng đồng;\n- Đảm bảo, bảo vệ quyền lợi của Cổ đông, Chủ sở hữu Công ty được quy định tại \nđiều lệ Công ty và theo pháp luật Việt Nam thông qua việc minh bạch thông tin, \nmô hình quản trị Công ty với các hệ thống kiểm soát rủi ro chặt chẽ, áp dụng các \nhệ thống tiêu chuẩn quản lý chất lượng…;\n- Đảm bảo tuân thủ các quy định của Pháp luật về bảo vệ môi trường, sử dụng \ncác nguồn tài nguyên một cách tiết kiệm và hiệu quả. Công ty Cổ phần Viễn thông – Tin học Bưu điện18",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 11,
+      "text": "5. Các rủi ro\nLãi suất tăng, tỷ lệ lạm phát \ntăng, biến động tỷ giá…gây \nnhững ảnh hưởng không tốt \nđến tình hình tài chính, kinh \ndoanh của Công ty. \nTrong những năm gần đây, \nCông ty đã và đang đối diện với \nrủi ro về năng lực cạnh tranh \nvới các đối thủ mới, phát triển \nnhanh, bộ máy tinh gọn sử dụng \nnhiều cách như giảm giá, chịu lỗ \nđể giành thị phần \nThiên tai đã và đang diễn ra rất \nnghiêm trọng với những yếu tố \nhết sức cực đoan, bất thường, \nkhó dự báo, cảnh báo. Thiên tai, \ndịch bệnh, các rủi ro khác liên \nquan đến môi trường có thể gây \ntổn thất nặng nề về người, tài \nsản, cơ sở hạ tầng, tác động xấu \nđến môi trường sống, sản xuất \nkinh doanh. \nTrước những thay đổi nhanh \nchóng về xu hướng công \nnghệ, Công ty đối mặt với rủi \nro không nắm bắt kịp, ứng \ndụng các công nghệ mới, ảnh \nhưởng đến khả năng thích \nứng và tính cạnh tranh trong \nbối cảnh kinh doanh của \nngành ngày càng cạnh tranh \nmạnh mẽ. \nRủi ro tài chính Rủi ro về năng lực\ncạnh tranh\nRủi ro về môi trường, \nthiên tai, dịch bệnh:\nRủi ro về\ncông nghệ \nThị thường nhân lực ngành \ncông nghệ thông tin có nhu \ncầu rất lớn và mức độ cạnh \ntranh cao, vì vậy Công ty luôn \nphải đối mặt với rủi ro mất \nnguồn nhân lực kỹ thuật chất \nlượng cao. \nRủi ro về\nnguồn nhân lực\nchất lượng cao\nThông tin là tài sản quan trọng \nđối với doanh nghiệp, đặc biệt \ntrong bối cảnh doanh nghiệp \nđang trong giai đoạn số hóa, \nchuyển đổi số, việc lộ thông tin/\nbị tấn công mạng có thể hưởng \nnghiêm trọng đến kinh doanh, \nuy tín, chiến lược phát triển của \nCông ty. \nRủi ro về\nbảo mật thông tin \nvà an ninh mạng\n Báo cáo thường niên\n2024 21Công ty Cổ phần Viễn thông – Tin học Bưu điện20",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 12,
+      "text": "Success together\nII. Tình hình hoạt động trong năm\n1.  Tình hình hoạt động sản xuất kinh doanh\n2.  Tổ chức và nhân sự\n3. Tình hình đầu tư, tình hình thực hiện các dự án\n4.  Tình hình tài chính\n5.  Cơ cấu cổ đông, thay đổi vốn đầu tư của\n chủ sở hữu\n6.  Báo cáo tác động liên quan đến môi trường\n và xã hội của công ty\n Báo cáo thường niên\n2024 23Công ty Cổ phần Viễn thông – Tin học Bưu điện22",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 13,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n2524\n1. Tình hình hoạt động sản xuất kinh doanh\nII. TÌNH HÌNH HOẠT ĐỘNG TRONG NĂM\nKết quả sản xuất kinh doanh đạt được năm 2024 so với kế hoạch:\nKết quả sản xuất kinh doanh đạt được năm 2024 so với năm 2023: \nSTT Chỉ tiêu ĐVT Kế hoạch\nnăm 2024 \nThực hiện \nnăm 2025\n% hoàn thành\nkế hoạch \n1 Tổng doanh thu Tỷ đồng 1.650,00 1.625,57 98,52%\n2 Lợi nhuận sau thuế Tỷ đồng 34,339 31,10 91,48%\nSTT Chỉ tiêu ĐVT Năm 2023 Năm 2024 % Tăng \ngiảm\n1 Tổng doanh thu Tỷ đồng 1.526,69 1.625,57 6,48%\n2 Lợi nhuận thuần từ HĐKD Tỷ đồng 10,00 24,54 145,43%\n3 Lợi nhuận trước thuế Tỷ đồng 20,03 37,18 85,60%\n4 Lợi nhuận sau thuế Tỷ đồng 14,92 31,10 108,42%\n5 Tổng tài sản Tỷ đồng 1.441,23 1.475,38 2,37%\n6 Vốn chủ sở hữu Tỷ đồng 643,08 656,22 2,04%\n7 BVPS (31/12) Đồng 19.981 20.389 2,04%\n8 EPS Đồng 463,69 966,42 108,42%\n0\n200\n400\n600\n800\n1,000\n1,200\n1,400\n1,600\n1,800\nDOANH THU\n1,527\n1,626\nT/uni1ED4NG\nTÀI S/uni1EA2N\n1,441 1,475\nVCSH\n643 656\n15 31\n20 37\nL/uni1EE2I NHU/uni1EACN\nTHU/uni1EA6N\n10 25\nLNTT LNST\n2023 2024\nL/uni1EE3i nhu/uni1EADn trư/uni1EDBc \nthu/uni1EBF năm 2024\nđ/uni1EA1t 37,18\nt/uni1EF7 đ/uni1ED3ng\ntăng 85,6% \nso v/uni1EDBi năm 2023 \nL/uni1EE3i nhu/uni1EADn sau thu/uni1EBF \nnăm 2024\nđ/uni1EA1t 31,10  \nt/uni1EF7 đ/uni1ED3ng\ntăng 108,42%  \nso v/uni1EDBi năm 2023 \nT/uni1ED5ng doanh thu\nnăm 2024\nhoàn thành 98,52% \nk/uni1EBF ho/uni1EA1ch ĐHĐCĐ \nđ/uni1EC1 ra.\nđ/uni1EA1t 1.625,57\nt/uni1EF7 đ/uni1ED3ng\ntăng 6% \nso v/uni1EDBi năm 2023 \nDoanh thu bán hàng \nvà cung c/uni1EA5p d/uni1ECBch v/uni1EE5\nđ/uni1EA1t 1.572,51 \nt/uni1EF7 đ/uni1ED3ng\ntăng 5% \nso v/uni1EDBi năm 2023 \nT/uni1EF7 su/uni1EA5t l/uni1EE3i nhu/uni1EADn \nthu/uni1EA7n trên doanh thu \nbán hàng và cung c/uni1EA5p \nd/uni1ECBch v/uni1EE5 năm 2024\n 1,56%\ntăng 0,89% \nso v/uni1EDBi năm 2023\nhoàn thành 91,48%  \nk/uni1EBF ho/uni1EA1ch c/uni1EE7a Đ/uni1EA1i h/uni1ED9i \nđ/uni1ED3ng c/uni1ED5 đông \nTrong bối cảnh vĩ mô, nền kinh tế Việt Nam năm 2024 có xu hướng phục hồi, \ntổng sản phẩm quốc nội (GDP) năm 2024 ước tính tăng khoảng 7,09% so với \nnăm trước, lạm phát được kiểm soát tốt hơn; kết quả sản xuất kinh doanh của \nCông ty năm 2024 cũng có những cải thiện đáng kể so với năm 2023, cụ thể:",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 14,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n2726\n•\nSuccess together\n2. Tổ chức và nhân sự\n2.1. Giới thiệu Ban điều hành: \n2.1.1. Hội đồng Quản trị\n1. Ông Hoàng Anh Lộc Chủ tịch Hội đồng quản trị\n2. * Ông Tô Hoài Văn Thành viên Hội đồng quản trị\n3. * Ông Hà Thanh Hải Thành viên Hội đồng quản trị\n4. Ông Lưu Công Nguyên Thành viên Hội đồng quản trị\n5. Ông Nguyễn Thế Thịnh Thành viên Hội đồng quản trị\nSTT Họ và tên Chức danh\nTrình độ chuyên môn: \n• Thạc sỹ Quản trị kinh doanh\n• Kỹ sư nhiệt Công nghiệp.\nQuá trình công tác:\nTừ tháng 09/1994 đến nay: Công tác tại Xí nghiệp Khoa học Sản xuất \nThiết bị Thông tin I (nay là Công ty Cổ phần Viễn thông – Tin học Bưu \nđiện (CTIN)), các vị trí công tác:\n - Từ tháng 01/2003 đến tháng 12/2009: Phó Phòng kinh doanh Công ty. \n - Từ tháng 01/2010 đến tháng 10/2016: Thành viên HĐQT kiêm Giám đốc \nKinh doanh.\n - Từ tháng 11/2016 đến 6/2022: Thành viên HĐQT kiêm Phó Tổng Giám đốc.\n - Từ 7/2022 đến nay: Chủ tịch Hội đồng quản trị.\nÔng Hoàng Anh Lộc\nChức danh: Chủ tịch Hội đồng Quản trị\nNăm sinh: 1972\nGIỚI THIỆU VỀ HỘI ĐỒNG QUẢN TRỊ\n* Chi tiết tại phần giới thiệu về Ban Tổng Giám đốc Công ty.",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 15,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n2928\nSuccess together\nTrình độ chuyên môn: \n• Thạc sỹ Kinh tế\nQuá trình công tác: Hơn 30 năm kinh nghiệm trong lĩnh vực Công nghệ \nthông tin và viễn thông, các vị trí công tác: \n- Tháng 05/1995 đến tháng 02/2020: Làm việc tại Công ty Hoàng Đạo, \ncác chức danh: Nhân viên kế toán, Kế toán trưởng, Phó Giám đốc, Tổng \nGiám đốc, Phó Chủ tịch HĐQT.\n- Tháng 02/2020 đến nay: Thành viên Hội đồng quản trị Công ty cổ phần \nkỹ thuật số Việt, kiêm Chủ tịch HĐQT Công ty ZDS. \n- Tháng 06/2022 đến nay : Thành viên HĐQT Công ty CTIN\nÔng Lưu Công Nguyên\nChức danh: Thành viên \nHội đồng quản trị độc lập\nNăm sinh: 1973\nTrình độ chuyên môn: \n• Thạc sỹ Quản trị Kinh doanh\n• Kỹ sư nhiệt Công nghiệp.\nQuá trình công tác:\n- Từ tháng 12/1987 đến tháng 04/1992: Kỹ sư Viện thiết kế kỹ thuật Thương \nmại – Bộ Nội thương.\n- Từ tháng 04/1992 đến tháng 12/2001: Công tác Xí nghiệp Khoa học sản \nxuất Thiết bị Thông tin I (nay là Công ty Cổ phần Viễn thông – Tin học Bưu \nđiện CTIN), các vị trí công tác:\n- Từ tháng 01/2002 đến tháng 09/2009: Thành viên HĐQT kiêm Trưởng \nphòng kinh doanh Công ty CTIN.\n- Từ tháng 10/2009 đến 30/06/2022:  PhóTổng Giám đốc Công ty CTIN. \n- Từ tháng 01/2018 đến 31/12/2021:  Được điều động biệt phái giữ chức vụ \nThành viên HĐQT kiêm Tổng Giám đốc Công ty Cổ phần Dịch vụ Kỹ thuật \nViễn thông Hà Nội. \n- Từ tháng 10/2009 đến nay: Thành viên HĐQT Công ty CTIN.\n- Từ tháng 1/2022 đến nay: Phó Tổng Giám đốc Công ty Cổ phần Dịch vụ Kỹ \nthuật Viễn thông Hà Nội. \nÔng Nguyễn Thế Thịnh\nChức danh: Thành viên\nHội đồng quản trị\nNăm sinh: 1964\nSuccess together\n• Từ tháng 02/1996 đến tháng 12/1998: Phó phòng kinh tế Xí nghiệp \nKhoa học sản xuất Thiết bị Thông tin I.\n• Từ tháng 01/1999 đến tháng 12/2001: Trưởng phòng kinh doanh.",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 16,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n3130\nTrình độ chuyên môn: \n• Kỹ sư Công nghệ thực phẩm\n• Thạc sỹ Thạc sỹ Quản trị kinh doanh.\nQuá trình công tác:\n- Từ năm 1997 –  đến năm 2002: chuyên viên tư vấn tài chính, kinh doanh \nvà thuế, Công ty TNHH Andersen Việt Nam.\n- Từ năm 2002: chuyên viên tư vấn thuế, Công ty TNHH KPMG Việt Nam.\n- Từ năm 2003 – đến năm 2007: chuyên viên, Vụ Chính sách tiền tệ, Ngân \nhàng Nhà nước Việt Nam.\n- Từ năm 2007 – đến năm 2009: Trưởng phòng Kinh doanh Ngoại hối & \nThị trường vốn, Ngân hàng HSBC Việt Nam – Chi nhánh Hà Nội.\n- Từ năm 2009 – đến năm 2014: Phó Tổng giám đốc Dịch vụ thuế kiêm \nTrưởng bộ phận Quản trị nguồn nhân lực, Công ty TNHH Kiểm toán và Tư \nvấn Nexia ACPA.\n- Từ năm 2014 – đến năm 2022: Phó Tổng giám đốc Dịch vụ Thuế, Công \nty TNHH Grant Thornton (Việt Nam)\n- Từ ngày 30/6/2022 đến nay: Trưởng ban kiểm soát Công ty CTIN.\nÔng Nguyễn Đình Du\nChức danh: Trưởng Ban kiểm soát\nNăm sinh: 1972\nGIỚI THIỆU VỀ THÀNH VIÊN BAN KIỂM SOÁT\n2.1.2. Thành viên Ban kiểm soát\n1. Ông Nguyễn Đình Du Trưởng Ban kiểm soát\n2. Ông Nguyễn Thành Hiếu Thành viên Ban kiểm soát\n3. Bà Nguyễn Thị Thuý Hà Thành viên Ban kiểm soát \nSTT Họ và tên Chức danh\nSuccess together\nTrình độ chuyên môn: \n• Cử nhân Vật lý\n• Cử nhân Kinh tế chuyên ngành Tài chính – Ngân hàng.\nQuá trình công tác: \n- Từ năm 1995 đến tháng 12/2001: Công tác Xí nghiệp Khoa học sản xuất \nThiết bị Thông tin I (nay là Công ty Cổ phần Viễn thông – Tin học Bưu điện \n(CTIN), các vị trí công tác:\n- Từ năm 2001 đến nay: Phó Giám đốc Kinh doanh, Công ty CTIN.\n- Từ tháng 10/2019 đến nay: Thành viên Ban kiểm soát Công ty CTIN.\nÔng Nguyễn Thành Hiếu\nChức danh: Thành viên Ban kiểm soát\nNăm sinh: 1974\n• Từ năm 1995 đến năm 1999: Cán bộ kỹ thuật Trung tâm ứng dụng công \nnghệ Viễn thông mới. \n• Từ năm 1999 đến năm 2001: Phó trưởng Trung tâm ứng dụng công \nnghệ viễn thông mới. \nTrình độ chuyên môn: \n• Cử nhân chuyên ngành kế toán\n• Thạc sỹ Quản trị kinh doanh.\nQuá trình công tác:\nCông tác tại Ban Kế toán Tài chính – Tập đoàn Bưu chính Viễn thông Việt Nam.\nTừ ngày 19/6/2020: Thành viên Ban kiểm soát Công ty CTIN.\nBà Nguyễn Thị Thuý Hà\nChức danh: Thành viên Ban kiểm soát\nNăm sinh: 1975\nSuccess together\nSuccess together",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 17,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n3332\n2.1.3. Thành viên Ban Tổng giám đốc, Kế toán trưởng\n1. Ông Hà Thanh Hải Tổng Giám đốc\n2. Ông Tô Hoài Văn Phó Tổng Giám đốc\n3. Ông Lê Thanh Sơn Phó Tổng Giám đốc\n4. Ông Lê Ánh Dương Phó Tổng Giám đốc\n5. Nguyễn Ngọc Sơn Kế toán trưởng\nSTT Họ và tên Chức danh\nTrình độ chuyên môn: \n• Kỹ sư Điện – Điện tử;\n• Cử nhân Kinh tế chuyên ngành Tài chính – Ngân hàng;\n• Cử nhân Chính trị học chuyên ngành Chính trị học Phát triển;\n• Thạc sĩ Quản lý Kinh doanh;\n• Tiến sỹ Quản trị Kinh doanh.\nQuá trình công tác:\n- Từ tháng 04/2001 đến tháng 03/2008: Kỹ sư, chuyên viên bán hàng tại \nCông ty CTIN.\n- Từ tháng 09/2007 đến tháng 09/2017: Cán bộ biệt phái của Công ty \nCTIN, thành viên HĐQT kiêm Tổng Giám đốc Công ty Cổ phần Dịch vụ Kỹ \nthuật Viễn thông Hà Nội.\n- Từ tháng 11/2016 đến tháng 09/2018: Phó Tổng Giám đốc Công ty CTIN.\n- Từ tháng 09/2018 đến 06/02/2025: Tổng Giám đốc Công ty CTIN.\n- Từ tháng 05/2017 đến nay: Thành viên HĐQT Công ty CTIN. \nÔng Hà Thanh Hải\nChức danh: Tổng Giám đốc\nNăm sinh: 1976\nSuccess together\nGIỚI THIỆU VỀ THÀNH VIÊN BAN TỔNG GIÁM ĐỐC",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 18,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n3534\nSuccess together\nTrình độ chuyên môn: \n• Thạc sỹ Kinh tế\n• Kỹ sư máy tính.\nQuá trình công tác:\n- Từ tháng 01/1990 đến tháng 11/1991: Kỹ sư máy tính viện vật lí – viện khoa \nhọc Việt Nam. \n- Từ tháng 11/1991 đến tháng 12/2001: Công tác Xí nghiệp Khoa học sản \nxuất Thiết bị Thông tin I (nay là Công ty Cổ phần Viễn thông – Tin học Bưu \nđiện (CTIN)), các vị trí công tác: \n- Từ tháng 11/2001 đến nay: Thành viên Hội đồng quản trị kiêm Phó Tổng \ngiám đốc Công ty CTIN.\nÔng Tô Hoài Văn\nChức danh: Phó Tổng Giám đốc\nNăm sinh: 1964\nTrình độ chuyên môn: \n• Cử nhân Kinh tế phát triển.\nQuá trình công tác:\n- Từ tháng 04/1999 đến nay: Công tác tại Xí nghiệp Khoa học Sản xuất Thiết \nbị Thông tin (nay là Công ty Cổ phần Viễn thông – Tin học Bưu điện (CTIN)), \ncác vị trí công tác: \nÔng Lê Thanh Sơn\nChức danh: Phó Tổng Giám đốc\nNăm sinh: 1972\nSuccess together\n• Từ tháng 11/1991 đến tháng 09/1992: Kỹ sư máy tính – phân xưởng tổng đài. \n• Từ tháng 09/1992 đến tháng 03/1994: Phó phòng kinh tế. \n• Từ tháng 03/1994 đến 04/1996: Trưởng phòng kế hoạch. \n• Từ tháng 04/1996 đến tháng 11/2001: Phó Giám đốc. \n• Từ tháng 01/2010 đến tháng 12/2020: Phó Giám đốc Kinh doanh.\n• Từ tháng 01/2021 đến tháng 06/2022: Giám đốc Kinh doanh.\n• Từ tháng 07/2022 đến 06/02/2025: Phó Tổng Giám đốc, kiêm nhiệm \nGiám đốc Kinh doanh.\n• Từ 07/02/2025 đến nay: Tổng Giám đốc.",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 19,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n3736\nTrình độ chuyên môn: \n• Kỹ sư điện tử viễn thông, chuyên gia CCIE - Cisco \nQuá trình công tác: \n- Từ tháng 06/2001 đến tháng 10/2001: Kỹ sư tư vấn giải pháp - Trung tâm \nphần mềm, Công ty phần mềm và truyền thông VASC, Tập đoàn Bưu chính \nViễn thông Việt Nam.\n- Từ tháng 11/2001 đến tháng 10/2002: Kỹ sư tư vấn giải pháp - Công ty cổ \nphần truyền thông số 1 (One JSC).\n- Từ tháng 11/2002 đến tháng 08/2007: Giám đốc kỹ thuật - Công ty cổ phần \ntư vấn và chuyển giao công nghệ ITC.\n- Từ tháng 08/2007 đến nay: công tác tại Công ty cổ phần Viễn Thông - Tin \nhọc Bưu điện (CTIN), các vị trí công tác: \nÔng Lê Ánh Dương\nChức danh: Phó Tổng Giám đốc\nNăm sinh: 1978\nTrình độ chuyên môn: \n• Cử nhân Tài chính – Tín dụng\nQuá trình công tác:\n- Từ tháng 10/1993 đến tháng 09/1998: Công tác tại phòng Kế toán thống kê \ntài chính, Công ty Xi măng Hà Tiên II. \n- Từ tháng 09/1998 đến tháng 10/1999: Công tác tại phòng Kế toán thống kê \ntài chính, Công ty Xi măng Bút sơn. \n- Từ tháng 11/1999 đến nay: Công tác tại Phòng Tài chính, Xí nghiệp Khoa học \nsản xuất Thiết bị Thông tin I (nay là Công ty Cổ phần Viễn thông – Tin học \nBưu điện CTIN).\n• Từ tháng 11/1999 đến tháng 11/2009: Nhân viên Phòng tài chính.\n• Từ tháng 11/2001 đến tháng 07/2017: Thành viên Ban Kiểm soát.\n• Từ tháng 07/2007 đến tháng 04/2016: Trưởng Ban kiểm soát.\n• Từ tháng 12/2009 đến tháng 02/2016: Phó Giám đốc tài chính.\n• Từ tháng 02/2016 đến tháng 11/2016: Phó Giám đốc tài chính – Phụ trách \nphòng Tài chính Kế toán.\n• Từ tháng 05/2017 đến 29/6/2021: Thành viên HĐQT.\n• Từ tháng 11/2016 đến đến nay: Kế toán trưởng kiêm Giám đốc Tài chính .\nÔng Nguyễn Ngọc Sơn\nChức danh: Kế toán trưởng\nNăm sinh: 1972\nSuccess together\nSuccess together\n• Từ năm 2007 đến 2009: chuyên gia tư vấn, Trung tâm NGN.\n• Từ năm 2010 đến 2011: Giám đốc giải pháp công nghệ, phòng Kinh doanh.\n• Từ năm 2011 đến 2020: Giám đốc Trung tâm Tích hợp hệ thống.\n• Từ năm 2020 đến tháng 09/2024: Giám đốc Trung tâm Nghiên cứu và \nPhát Triển (đổi tên thành Trung tâm Tư vấn Giải pháp từ 01/08/2024).\n• Từ tháng 9/2024 đến nay: Phó Tổng Giám đốc Công ty\nGIỚI THIỆU VỀ KẾ TOÁN TRƯỞNG",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 20,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n3938\n2.2. Những thay đổi trong ban điều hành\n2.3. Tình hình nhân sự, chính sách và những thay đổi \ntrong chính sách với người lao động\nBổ nhiệm Ông Lê Ánh Dương – Giám đốc Trung tâm Tư vấn giải pháp \ngiữ chức danh Phó Tổng Giám đốc từ ngày 18/9/2024. Cơ cấu Ban Tổng \ngiám đốc Công ty gồm: Tổng Giám đốc và 03 Phó Tổng giám đốc. \nTại thời điểm 31/12/2024, tổng số \nnhân sự của Công ty:\n282 nhân sự, với trình độ như sau:\nTrình độ trên Đại học:  30\nTrình độ Đại học & tương đương 195\nTrình độ Cao đẳng & tương đương 26\nTrình độ Trung cấp & tương đương 20\nTrình độ Công nhân & Tốt nghiệp PTTH 11\nChính sách và những thay đổi trong chính sách với người lao động:\n- Chế độ làm việc: \n- Chính sách đãi ngộ, tuyển dụng, đào tạo:\n- Thay đổi trong chính sách với Người lao động: \n30\n11\n20\n26\n195\nNhân sự kỹ thuật sở hữu các chứng chỉ của các hãng công nghệ nổi tiếng \ntrên thế giới như Cisco, Dell, EMC, Huawei, Juniper, Vmware,  Oracle, IBM, \nCommscope…trong đó phải kể đến số, chứng chỉ cao nhất của hãng Cisco \n(CCIE): 09,  chứng chỉ quản lý dự án của PMI (PMP): 10. \n• Cán bộ nhân viên được tham gia và hưởng các chế độ về bảo hiểm \nxã hội, bảo hiểm y tế, bảo hiểm thất nghiệp theo quy định. Bên cạnh \nđó, Công ty có các chế độ phúc lợi khác như: thường xuyên tổ chức \ncác hoạt động tham quan, nghỉ mát hàng năm cho Cán bộ nhân viên, \nthưởng trong các dịp lễ tết, từ đó tạo niềm tin, sự gắn kết và tạo động \nlực cho người lao động, đóng góp vào sự phát triển của Công ty;\n• Hàng năm, Công ty thực hiện chế độ nghỉ dưỡng sức cho nhân viên \nđi kèm những chính sách đãi ngộ khác như: tổ chức khám bệnh định \nkỳ hàng năm, tổ chức các hoạt động văn hóa thể thao, chăm sóc \nthiếu niên nhi đồng là con em của cán bộ nhân viên Công ty thông \nqua các tổ chức đoàn thể của Công ty.\n• Năm 2024 Công ty đã thực hiện điều chỉnh chính sách lương, đánh \ngiá hiệu suất công việc, chính sách đào tạo nhằm xây dựng nguồn \nnhân lực chất lượng cao theo đúng định hướng chiến lược phát triển \nnguồn nhân lực bền vững đáp ứng các yêu cầu về kinh doanh của \nCông ty.\n• Thời gian và chế độ làm việc của Công ty hợp lý, đảm bảo quyền lợi \ncủa Người lao động theo đúng quy định của Bộ Luật Lao động. Người \nlao động được trang bị đầy đủ các công cụ, điều kiện, môi trường làm \nviệc tốt nhất. \n282\nnhân sự của Công ty\ncó trình độ trên đại học\nvà đại học. \n80% \nKhoảng",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 21,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n4140\n3. Tình hình đầu tư, tình hình thực hiện các dự án\nMột số khoản đầu tư tài chính dài hạn của Công ty CTIN\nTrong năm 2024, Công ty đã thực hiện một số dự án lớn: \nSTT Đầu tư dài hạn Giá gốc (VND)\n1. Công ty Cổ phần Dịch vụ An toàn thông tin \nthành phố Hồ Chí Minh\n22.500.000.000\n2. Công ty Cổ phần Đầu tư Kỹ thuật số Việt 20.000.000.000\n3. Công ty Cổ phần Dịch vụ Kỹ thuật Viễn \nthông Hà Nội\n12.000.000.000\n4. Công ty Cổ phần Công nghệ Truyền thông \nViệt Nam\n8.049.000.000\n5. Công ty Cổ phần ITTA 3.200.000.000\n6. Công ty Cổ phần Đầu tư Phát triển Công \nnghệ và Truyền thông\n625.000.000\nTổng cộng 66.374.000.000\nSTT Dự án Khách hàng\n1. Khảo sát, thiết kế, cung cấp và đo \nkiểm dung lượng trang bị hệ thống \ntruyền dẫn Backbone\nTổng công ty Hạ tầng \nmạng\n2. Nâng cấp và mở rộng mạng vô tuyến \nkhu vực 18 tỉnh miền Bắc mạng\nVinaphone\nTổng công ty Hạ tầng \nmạng\n3. Trang bị giao diện 100GE kết nối\nMetro core lên ASBR\nTổng Công ty Viễn thông \nMobifone\n4. Hệ thống thiết bị chuyển mạch định \ntuyến lớp lõi, các nút mạng truy nhập \ncủa Mạng truyền số liệu chuyên dùng\nCục Bưu điện trung ương\n5. Cung cấp hệ thống mạng tại Trung \ntâm dữ liệu chính, Trung tâm dữ liệu \ndự phòng của Tổng cục thuế và dịch \nvụ triển khai\nTổng cục thuế\n6. Xây dựng cơ sở dữ liệu ngành và triển \nkhai các nhiệm vụ, giải pháp về Chính \nphủ điện tử cho Bộ Giáo dục và Đào \ntạo\nBan QLDA giáo dục trung \nhọc cơ sở khu vực khó \nkhăn nhất giai đoạn 2\n7. Cung cấp lắp đặt các hạng mục phụ \ntrợ và thiết bị phục vụ hoạt động khối \nnhà ICT 1\nBan Quản lý dự án đầu tư \nxây dựng các công trình \ndân dụng và công nghiệp \nĐà Nẵng\n8. Xây dựng cơ sở hạ tầng Công nghệ \nthông tin tập trung phục vụ các nhiệm \nvụ thuộc chương trình 1719\nỦy Ban dân tộc\n9. Mua sắm thiết bị và phần mềm Hệ \nthống công nghệ thông tin theo Kế \nhoạch năm 2023 của Tập đoàn\nDầu khí Việt Nam\nTập đoàn Dầu khí Việt Nam",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 22,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n4342\n4. Tình hình tài chính\n4.1 Tình hình tài chính\n4.2. Các chỉ tiêu tài chính chủ yếu:\nChỉ tiêu  Đơn vị Năm 2023 Năm 2024 % tăng/giảm\nTổng tài sản  Tỷ đồng 1.441    1.475 2%\nDoanh thu thuần Tỷ đồng   1.496 1.573 5%\nDoanh thu tài chính Tỷ đồng 14  25  75%\nLợi nhuận thuần từ \nHĐKD\nTỷ đồng   10    25  145%\nLợi nhuận khác Tỷ đồng 10 13 26%\nLợi nhuận trước thuế Tỷ đồng    20   37 86%\nLợi nhuận sau thuế Tỷ đồng    15   31 108%\nTỷ lệ chi trả cổ tức % 5% Dự kiến 9% 80%\nCác chỉ tiêu 2023 2024 % tăng giảm\n1. Chỉ tiêu về khả năng thanh toán\nHệ số thanh toán ngắn hạn 1,52 1,53 0,7%\nHệ số thanh toán nhanh 1,44 1,44 0,0%\n2. Chỉ tiêu về cơ cấu vốn\nNợ phải trả/Tổng tài sản  55%  56% 0,3%\nNợ phải trả/VCSH  124%  125% 0,6%\n3. Chỉ tiêu năng lực hoạt động\nVòng quay hàng tồn kho 11,59 21,76 87,8%\nVòng quay Tổng tài sản  1,04  1,07 2,7%\nVòng quay khoản phải thu 1,61 1,78 10,3%\nVòng quay khoản phải trả 1,59 1,80 12,9%\n4. Chỉ tiêu về khả năng sinh lời\nHệ số LNST/ Tổng tài sản 1,04% 2,11% 103,6%\nHệ số LNST/Vốn chủ sở hữu      2,32% 4,74% 104,2%\nHệ số LNST/Doanh thu thuần 1,00% 1,98% 98,3%\nHệ số LN từ HĐKD/Doanh thu thuần 0,67% 1,56% 133,5%\nCác chỉ tiêu về tình hình tài chính của Công ty (khả năng thanh toán ngắn \nhạn, năng lực hoạt động và khả năng sinh lời) năm 2024 của Công ty cải \nthiện hơn so với năm 2023, cụ thể: \n• Hệ số thanh toán ngắn hạn, hệ số thanh toán nhanh không biến động \nnhiều, phản ánh khả năng thanh toán, thanh khoản của Công ty tương \nđối an toàn và ổn định. \n• Vòng quay hàng tồn kho tăng mạnh từ 11,59 lên 21,76 (tăng 87,8%) \nphản ánh hàng hóa được luân chuyển nhanh hơn, cải thiện hiệu quả quản \nlý tồn kho.\n• Vòng quay khoản phải thu và vòng quay khoản phải trả đều cải thiện \nđáng kể (tăng lần lượt 10,3% và 12,9%) phản ánh hiệu quả trong việc thu \nhồi nợ và quản lý nợ phải trả.\n• Các chỉ tiêu về khả năng sinh lời năm 2024 tăng từ 98,3% đến 133,5% \nso với năm 2023, phản ánh hiệu quả kinh doanh và quản lý vốn của Công \nty trong năm 2024.",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 23,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n4544\n5. Cơ cấu cổ đông, thay đổi vốn đầu tư của chủ sở hữu.\n5.1. Cổ phần: \n5.2. Cơ cấu cổ đông: \n5.3. Tình hình thay đổi vốn đầu tư của chủ sở hữu: \nTổng số cổ phiếu\nđang lưu hành\n32.185.000\nCổ phiếu\n- Loại cổ phần đang lưu hành:\nCổ phiếu phổ thông\n- Tổng số cổ phiếu chuyển nhượng tự do: \n32.185.000 cổ phiếu\nCổ đông lớn tại ngày 31/12/2024: Tập đoàn Bưu chính Viễn thông Việt Nam\n- Địa chỉ: 57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội.\n- Số CP sở hữu: 10.117.108 CP.\n- Tổng giá trị theo mệnh giá: 101.171.080.000 VNĐ.\n- Tỉ lệ sở hữu: 31,43%.\nTừ thời điểm chuyển đổi thành Công ty cổ phần (12/12/2001), vốn điều lệ \ncủa công ty CTIN là 10.000.000.000 đồng, đến nay, Công ty đã có 4 lần \ntăng vốn. Cụ thể như sau:\nTăng vốn lần 1 – Thời gian phát hành: Năm 2008\nSố lượng cổ phiếu phát \nhành thành công (cổ phiếu) \n10.117.471\nGiá trị vốn tăng thêm \n(VND)\n101.174.710.000\nVốn điều lệ trước phát hành \n(VND)\n10.000.000.000\nVốn điều lệ sau phát hành \n(VND)\n111.174.710.000\nHình thức tăng vốn (1) Phát hành 2.705.671 cổ phần thưởng cho \ncổ đông hiện hữu: \n- Tỷ lệ phân bổ quyền: Thưởng cho cổ đông \nhiện hữu theo tỉ lệ 1:2,7059; nghĩa là cổ đông \nsở hữu 01 cổ phần cũ được thưởng thêm \n2,7059 cổ phần mới theo nguyên tắc làm tròn \nxuống đến hàng đơn vị.\n- Ngày chốt Danh sách cổ đông: 08/07/2008.\n- Ngày phát hành: 08/07/2008.\n- Số lượng cổ đông: 320.\n(2) Phát hành 7.411.800 cổ phần cho cổ đông \nhiện hữu:\n- Tỷ lệ phân bổ quyền: Phân phối cho cổ đông \nhiện hữu theo tỉ lệ 1:2; nghĩa là cổ đông sở \nhữu 01 cổ phần cũ (bao gồm cả số cổ phiếu \nthưởng vừa nhận ở đợt 1) được mua 02 cổ \nphần phát hành thêm lần này.\n- Giá phát hành: 10.000 đồng/ cổ phiếu cho \n7.396.829 cổ phiếu chào bán cho cổ đông \nhiện hữu 12.000 đồng/cổ phiếu cho 14.971 cổ \nphiếu lẻ và cổ phiếu chưa bán hết theo Nghị \nquyết HĐQT số 05/NQHĐQT/2008 ngày \n05/08/2008.\n- Ngày chốt Danh sách cổ đông: 08/07/2008.\n- Ngày phát hành: 04/08/2008.\n- Số lượng cổ đông: 363.\nSTT Danh mục Số lượng\ncổ phiếu\nTỉ lệ % Số \nlượng \ncổ \nđông\nCơ cấu\ncổ đông\nTổ \nchức\nCá \nnhân\n 1 Tổng số lượng cổ phiếu 32.185.000 100% 1.628 19 1.609\n 1.1\n \n \nCổ đông lớn (sở hữu từ \n5% cổ phần trở lên)\n 10.117.108 31,43% 1 1  \nTrong nước 10.117.108 31,43% 1 1\nNước ngoài 0 0 0 0\n 1.2 Cổ đông khác 22.067.892 68,57% 1.627 18 1.609\n \n \nTrong nước 21.982.942 68,30% 1.593 11 1.582\nNước ngoài 84.950 0,26% 34 7 27\n 1.3 Cổ phiếu quỹ",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 24,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n4746\nTăng vốn lần 2 – Thời gian phát hành: Năm 2009\nSố lượng cổ phiếu phát \nhành thành công (cổ phiếu) \n522.610\nGiá trị vốn tăng thêm \n(VND)\n5.226.100.000\nVốn điều lệ trước phát hành \n(VND)\n111.177.000.000\nVốn điều lệ sau phát hành \n(VND)\n116.400.810.000\nHình thức tăng vốn Phát hành cổ phần cho cán bộ, nhân viên trong \nCông ty: \n- Giá phát hành: 11.000 đồng/cổ phiếu.\n- Ngày phát hành: 20/08/2009.\n- Thời gian bị hạn chế chuyển nhượng: Từ \n20/08/2009 đến 19/08/2011 (Hạn chế chuyển \nnhượng 2 năm kể từ ngày phát hành theo Quy \nchế phân phối cổ phiếu cho CBCNV của Công \nty Cổ phần Viễn thông – Tin học Bưu điện ngày \n25/06/2009).\n- Số lượng cổ đông: 183.\nTăng vốn lần 3 – Thời gian phát hành: Năm 2010\nSố lượng cổ phiếu phát \nhành thành công (cổ phiếu) \n4.059.919\nGiá trị vốn tăng thêm \n(VND)\n40.599.190.000\nVốn điều lệ trước phát hành \n(VND)\n116.400.810.000\nVốn điều lệ sau phát hành \n(VND)\n157.000.000.000\nHình thức tăng vốn (1) Phát hành 3.492.024 cổ phần cho cổ đông \nhiện hữu:\nTỷ lệ phân bổ quyền: Phân phối cho cổ đông \nhiện hữu theo tỷ lệ 10:3, nghĩa là cổ đông sở hữu \n10 cổ phần cũ được mua 03 cổ phần phát hành \nthêm. Cổ phần phát hành thêm sẽ được làm tròn \ntheo nguyên tắc làm tròn xuống đến hàng đơn \nvị.\nGiá phát hành: 13.000 đồng/ cổ phiếu cho \n3.489.265 cổ phiếu chào bán cho cổ đông hiện \nhữu, 15.000 đồng/ cổ phiếu đối với 2.759 cổ \nphiếu lẻ không bán hết.\n- Ngày chốt Danh sách cổ đông: 29/06/2010.\n- Ngày phát hành: 21/07/2010.\n- Số lượng cổ đông: 472.\nTăng vốn lần 4 – Thời gian phát hành: Năm 2017\nSố lượng cổ phiếu phát hành\nthành công (cổ phiếu) \n16.485.000\nGiá trị vốn tăng thêm (VND) 164.850.000.000\nVốn điều lệ trước phát hành (VND) 157.000.000.000\nVốn điều lệ sau phát hành (VND) 321.850.000.000\nHình thức tăng vốn (1) Phát hành 15.700.000 cổ phiếu thưởng cho \ncổ đông hiện hữu:\n- Tỷ lệ phân bổ quyền: Phát hành cổ phiếu thưởng \ncho cổ đông hiện hữu theo tỉ lệ 1:1; nghĩa là cổ \nđông sở hữu 01 cổ phiếu cũ sẽ được thưởng 01 \ncổ phiếu thưởng.\n- Ngày chốt Danh sách cổ đông: 20/09/2017. \n- Ngày phát hành: 20/09/2017.\n- Thời gian hạn chế chuyển nhượng: 20/09/2017 \n– 19/09/2019 (Hạn chế chuyển nhượng 2 năm \nkể từ ngày phát hành theo nghị quyết ĐHĐCĐ \nthường niên năm 2017 Công ty Cổ phần Viễn \nthông – Tin học Bưu điện số 15/2017/NQ-ĐHĐCĐ \nngày 11/05/2017).\n- Số lượng cổ đông: 498.\n(2) Phát hành 785.000 cổ phần cho cán bộ nhân \nviên trong Công ty:\n- Giá phát hành: 13.200 đồng /cổ phiếu.\n- Ngày phát hành: 10/10/2017.\n- Thời gian bị hạn chế chuyển nhượng: Từ \n10/10/2017 đến 09/10/2019 (Hạn chế chuyển \nnhượng 2 năm kể từ ngày phát hành theo nghị \nquyết ĐHĐCĐ thường niên năm 2017 Công ty Cổ \nphần Viễn thông – Tin học Bưu điện số 15/2017/\nNQ-ĐHĐCĐ ngày 11/05/2017).\n- Số lượng cổ đông: 291.\nTăng vốn lần 3 – Thời gian phát hành: Năm 2010\nHình thức tăng vốn (2) Phát hành 567.895 cổ phần cho cán bộ, \nnhân viên trong Công ty:\n- Giá phát hành: 15.000 đồng/ cổ phiếu.\n- Ngày phát hành: 21/07/2010.\n- Thời gian bị hạn chế chuyển nhượng: Từ \n21/07/2010 đến 20/07/2011 (Hạn chế chuyển \nnhượng 1 năm kể từ ngày phát hành theo Nghị \nquyết ĐHĐCĐ thường niên năm 2010 Công \nty Cổ phần Viễn thông – Tin học Bưu điện số \n045/2010/NQ-ĐHĐCĐ ngày 18/04/2010).\n- Số lượng cổ đông: 224.\n5.4. Giao dịch cổ phiếu quỹ: Không có.\n5.5. Các chứng khoán khác: Không có.",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 25,
+      "text": "Báo cáo thường niên\n2024\n49\n6. Báo cáo tác động liên quan đến môi trường và xã hội \ncủa công ty\n6.1. Tác động lên môi trường\n6.2. Quản lý nguồn nguyên vật liệu\n6.4. Tiêu thụ nước\n6.5. Tuân thủ pháp luật về bảo vệ môi trường\n6.3. Tiêu thụ năng lượng\n- Tổng phát thải khí nhà kính (GHG) trực tiếp và gián tiếp: Không có.\n- Các sáng kiến và biện pháp giảm thiểu phát thải khí nhà kính: Không có.\n- Tổng lượng nguyên vật liệu được sử dụng để sản xuất và đóng gói các sản \nphẩm, dịch vụ chính của tổ chức trong năm: Không có.\n- Báo cáo tỉ lệ phần trăm nguyên vật liệu được tái chế sử dụng để sản xuất \nsản phẩm và dịch vụ chính của tổ chức trong năm: Không có.\n- Nguồn cung cấp nước và lượng nước sử dụng: 1.230 m3/năm.\n- Tỷ lệ phần trăm và tổng lượng nước tái chế và tái sử dụng: Không có.\n- Số lần bị xử phạt vi phạm do không tuân thủ luật pháp và các quy định về \nmôi trường: Không có.\n- Tổng số tiền do bị xử phạt vi phạm do không tuân thủ luật pháp và các \nquy định về môi trường: Không có. \n- Năng lượng tiêu thụ trực tiếp: 270.445 kW/năm.\n- Năng lượng tiết kiệm được thông qua các sáng kiến sử dụng năng lượng \nhiệu quả: Không có.\n- Các báo cáo sáng kiến tiết kiệm năng lượng: Công ty luôn ý thức được \ntầm quan trọng của nguồn tài nguyên hữu hạn này đối với nhu cầu chung \ncủa xã hội và luôn cố gắng kiểm soát và sử dụng tiết kiệm điện, nước; tạo \ndựng một văn hóa nội bộ Công ty để hướng đến môi trường xanh, sạch, \nđẹp. Chúng tôi áp dụng thực hiện chương trình tiết kiệm điện, nước trong \ntoàn Công ty và phổ biến đến từng cán bộ nhân viên ý thức được việc sử \ndụng hợp lý, tiết kiệm các nguồn năng lượng này như: Tắt các thiết bị điện \nkhi không sử dụng, không mở cửa sổ, cửa ra vào khi đang bật điều hòa, thay \nthế các thiết bị tiết kiệm điện năng.\n- Báo cáo tỉ lệ phần trăm nguyên vật liệu được tái chế sử dụng để sản xuất \nsản phẩm và dịch vụ chính của tổ chức trong năm: Không có.\nCông ty Cổ phần Viễn thông – Tin học Bưu điện48",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 26,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n5150\n6.8. Báo cáo liên quan đến hoạt động thị trường vốn xanh \ntheo hướng dẫn của UBCKNN: Không có.\n6.7. Báo cáo liên quan đến trách nhiệm đối với cộng đồng\nđịa phương: \n6.8. Báo cáo liên quan đến hoạt động thị trường vốn xanh theo \nhướng dẫn của UBCKNN: Không có.\n6.6. Chính sách liên quan đến người lao động\nVới chiến lược phát triển nguồn nhân lực bền vững, có trình độ cao, Công \nty liên tục hoàn thiện, cải tiến các chính sách liên quan đến người lao động \nphù hợp với bối cảnh xã hội, bối cảnh kinh doanh. Một số điểm nổi bật trong \nchính sách liên quan đến người lao động năm 2024:\n- Chính sách đãi ngộ: Công ty thực hiện điều chỉnh chính sách lương, xây \ndựng lộ trình phát triển nghề nghiệp nhằm khuyến khích và giữ chân nhân \nsự chất lượng cao, đồng thời đảm bảo sự công bằng và cạnh tranh trên thị \ntrường lao động. Việc điều chỉnh này không chỉ phản ánh sự ghi nhận kịp \nthời từ phía công ty đối với nỗ lực của người lao động, mà còn là một phần \ntrong chiến lược phát triển nguồn nhân lực bền vững trong dài hạn. \n- Chính sách phát triển nguồn nhân lực: Công ty tiếp tục chú trọng công \ntác phát triển nguồn nhân lực nhằm xây dựng đội ngũ nhân sự có năng \nlực chuyên môn cao, có khả năng thích ứng nhanh với yêu cầu công việc, \nthông qua các hoạt động trọng tâm như:\n- Chính sách liên quan đến đánh giá hiệu suất: Hệ thống quản lý hiệu suất \ntheo mô hình OKR/KPI tiếp tục được cải tiến nhằm nâng cao tính minh \nbạch, công bằng, khách quan trong việc đánh giá hiệu suất công việc của \nngười lao động.\nTrong năm 2024, Công ty CTIN đồng hành tham gia một số hoạt động \ncủa Quỹ xã hội “Tâm Tài Việt” nhằm lan tỏa tinh thần “Tài sẻ chia - Tâm lan \ntỏa” và sứ mệnh “Vì một cộng đồng tốt đẹp hơn” (Quỹ Tâm Tài Việt được \nthành lập năm 2023 do Công ty CTIN, Công ty Xổ số Điện toán Việt Nam \n(Vietlott), Thời báo Tài chính Việt Nam đồng sáng lập).\n• Đẩy mạnh các chương trình đào tạo nội bộ, đặc biệt trong khối kỹ thuật \nvà triển khai dự án, nhằm cập nhật công nghệ và nâng cao năng lực \nchuyên môn cho đội ngũ nhân sự chủ lực.\n• Triển khai chính sách tài trợ đào tạo, khuyến khích nhân viên học tập, \nthi và đạt các chứng chỉ quốc tế có giá trị, phục vụ yêu cầu công việc và \nphát triển nghề nghiệp lâu dài.\n• Tập trung phát triển đội ngũ kế cận và nhóm quản lý trẻ, thông qua các \nchương trình luân chuyển công việc, bổ nhiệm các vị trí quản lý theo lộ trình.",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 27,
+      "text": "Success together\n1.  Đánh giá kết quả hoạt động sản xuất kinh doanh\n2.  Tình hình tài chính\n3.  Những cải tiến về cơ cấu tổ chức, chính sách,   \n quản lý\n4.  Kế hoạch phát triển trong tương lai\n5.  Giải trình của Ban Giám đốc với ý kiến kiểm toán\n6.  Báo cáo đánh giá liên quan đến trách nhiệm về   \n môi trường và xã hội của công ty\nIII. Báo cáo và đánh giá của\nBan Giám đốc\n Báo cáo thường niên\n2024 53Công ty Cổ phần Viễn thông – Tin học Bưu điện52",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 28,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n5554\nIII. BÁO CÁO VÀ ĐÁNH GIÁ CỦA BAN GIÁM ĐỐC \n(BAN GIÁM ĐỐC BÁO CÁO VÀ ĐÁNH GIÁ VỀ TÌNH \nHÌNH MỌI MẶT CỦA CÔNG TY)\n2. Tình hình tài chính\n1. Đánh giá kết quả hoạt động sản xuất kinh doanh\n3. Những cải tiến về cơ cấu tổ chức, chính sách, quản lý \nSTT Danh mục Thực\nhiện\nnăm\n2023 \nKế \nhoạch \nnăm \n2024 \nThực \nhiện \nnăm \n2024\nSo sánh\nSo với \nThực hiện \nnăm 2023\nSo với \nKế hoạch \nnăm 2024\n1 Tổng doanh thu 1.526,69 1.650 1.625,57 106,48% 98,52%\n2 Lợi nhuận trước thuế 20,03 - 37,18 185,60% -\n3 Lợi nhuận sau thuế 14,92 34,339 31,10 208,42% 91,48%\nKết quả sản xuất kinh doanh đạt được năm 2024 so với kế hoạch và so với \nnăm 2023 như sau: \nMột số nét chính về kết quả sản xuất kinh doanh 2024:\nCác chỉ tiêu về tài chính năm 2024 của Công ty cải thiện hơn so với năm \n2023, phản ánh hiệu quả trong hoạt động kinh doanh, thu hồi công nợ và \nquản lý vốn của Công ty, cụ thể:   \nCải tiến về cơ cấu tổ chức: Trong năm 2024, Công ty đã thực hiện tái cấu \ntrúc trên quy mô toàn công ty. Việc tái cấu trúc này nhằm tối ưu nguồn lực, \nnâng cao hiệu quả vận hành, tăng khả năng thích nghi với bối cảnh kinh \ndoanh ngày càng cạnh tranh và nhiều biến động. Mô hình tổ chức Công ty \nđược xây dựng theo hướng tinh, gọn, quản lý tập trung, các bộ phận có tính \nchuyên môn hóa cao.\nCải tiến về chính sách, quản lý: Tham chiếu đến mục II.2.3 và II.6.6\n- Về tổng doanh thu: Doanh thu năm 2024 đạt 1.625,57 tỷ đồng, tăng \ntrưởng 6,48% so với năm 2023, hoàn thành 98,52% kế hoạch của ĐHĐCĐ \nnăm 2024.\n- Doanh thu từ các hoạt động cung cấp hàng hóa và dịch vụ năm 2024 \nđạt 1.572,51 tỷ đồng, tăng trưởng 05% so với năm 2023, và chiếm 96,74% \ntổng doanh thu năm 2024 của Công ty.\n- Doanh thu từ hoạt động tài chính năm 2024 đạt 24,84 tỷ đồng tăng \ntrưởng 75% so với năm 2023.\n- Lợi nhuận: Lợi nhuận trước thuế năm 2024 đạt 37,18 tỷ đồng, tăng \n85,6% so với năm 2023. Lợi nhuận sau thuế năm 2024 đạt 31,10 tỷ đồng, \ntăng 108,42% so với năm 2023 và đạt 91,48% so với kế hoạch ĐHĐCĐ.\n- Chỉ tiêu về hiệu quả tài chính: Tỉ suất lợi nhuận trên vốn chủ sở hữu \n(ROE) năm 2024 của Công ty đạt 4,8%, tăng 109% so với năm 2023.\n- Một số dự án của Công ty không thực hiện đúng kế hoạch dẫn đến \ndoanh thu và lợi nhuận chưa hoàn thành theo kế hoạch đề ra. Tuy nhiên, \ntrong bối cảnh thị trường cạnh tranh khốc liệt, nhiều biến động, tiềm ẩn \nrất nhiều rủi ro; kết quả sản xuất kinh doanh năm 2024 phản ánh nỗ lực \ncủa HĐQT và Ban Tổng Giám đốc Công ty trong việc quản trị và điều \nhành Công ty. \n- Vòng quay tổng tài sản năm 2024 cao hơn năm 2023 0,04 lần.\n- Vòng quay khoản phải thu và vòng quay khoản phải trả đều cải thiện \nđáng kể (tăng lần lượt 0,17 lần và 0,21 lần).\n \nSTT Chỉ tiêu Thực hiện \n2023\n(1)\nThực hiện \n2024\n(2)\nChênh lệch\n(2)-(1)\n1 Tổng tài sản   1.441,23    1.475,38 34,15\n1.1 Tài sản ngắn hạn   1.208,43    1.244,67   36,24\n1.2 Tài sản dài hạn   232,81 230,71   (2,10)\n2 Nợ phải trả   798,15 819,16   21,01\n2.1 Nợ phải trả ngắn hạn   795,16 813,70 18,54\n2.2 Nợ phải trả dài hạn   2,99 5,46 2,47\n3 Nợ phải trả/Tổng tài sản  0,55  0,56 0,01\n4 Vòng quay tổng tài sản  1,03  1,08 0,04\n5 Vòng quay khoản phải thu  1,61  1,78 0,17\n6 Vòng quay khoản phải trả  1,59  1,80 0,21\nĐơn vị tính: Tỷ đồng",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 29,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n5756\n4. Kế hoạch phát triển trong tương lai\n5. Giải trình của Ban Giám đốc với ý kiến kiểm toán\n6. Báo cáo đánh giá liên quan đến trách nhiệm về môi \ntrường và xã hội của công ty\nBan Tổng giám đốc Công ty xác định xây dựng kế \nhoạch phát triển trong tương lai theo định hướng: \nKhông có ý kiến ngoại trừ của kiểm toán \nTham chiếu đến II.6 Báo cáo tác động liên quan đến môi trường và xã hội của \nCông ty.\n- Về quản trị tổ chức: Quản trị tổ chức theo hướng chuyên nghiệp hóa, sử \ndụng các công cụ quản trị chiến lược, chuyển đổi số, tin học hóa các hoạt \nđộng của Công ty. \n- Về xây dựng thương hiệu và truyền thông: Hướng tới truyền thông chủ \nđộng, đa phương tiện. \n- Về nhân lực: Tìm kiếm và phát triển nhân tài, xây dựng chính sách đào tạo, \nlộ trình phát triển sự nghiệp để gắn kết, giữ chân, thúc đẩy sự đóng góp của \nnhân tài với sự phát triển của Công ty. \n- Về kinh doanh: Xác định thị trường mục tiêu trọng yếu, xây dựng định \nhướng về công nghệ, giải pháp, sản phẩm đối với từng thị trường, khách \nhàng mục tiêu, xây dựng các kế hoạch mục tiêu theo năm, kịch bản và định \nhướng hành động.\n- Về Công nghệ: Bên cạnh các mảng công nghệ truyền thống được coi là thế \nmạnh của Công ty CTIN, Công ty chấp nhận rủi ro đầu tư vào các xu hướng \ncông nghệ mới có thể tạo ra khả năng bứt phá cho Công ty trong giai đoạn \nsắp tới, với mục tiêu gia tăng hàm lượng chất xám, giá trị do chính Công ty \nCTIN tạo ra cho những giải pháp, dịch vụ trong lĩnh vực công nghệ thông \ntin và viễn thông. \n- Về tài chính: Xây dựng các chính sách, kế hoạch bảo toàn và sử dụng hiệu \nquả vốn chủ sở hữu, phát triển vốn vay đảm bảo an toàn. \n- Về tổ chức: Tiếp tục cải tiến, tối ưu cơ cấu tổ chức Công ty theo hướng tinh \ngọn, linh hoạt và hiệu quả. \n“ “",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 30,
+      "text": "Success together\nIV. Đánh giá của Hội đồng quản trị\nvề hoạt động của Công ty \n1.  Đánh giá của Hội đồng quản trị về các   \n mặt hoạt động của Công ty\n2.  Đánh giá của Hội đồng quản trị về hoạt động   \n của Ban Tổng Giám đốc công ty\n3.  Các kế hoạch, định hướng của Hội đồng quản trị\n Báo cáo thường niên\n2024 59Công ty Cổ phần Viễn thông – Tin học Bưu điện58",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 31,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n6160\n1. Đánh giá của Hội đồng quản trị về các mặt hoạt động \ncủa Công ty\n2. Đánh giá của Hội đồng quản trị về hoạt động của Ban \nTổng Giám đốc Công ty\n3. Các kế hoạch, định hướng của Hội đồng quản trị\nTrong giai đoạn 2025-2026\nCông ty tiếp tục kiên định với những mục tiêu và định hướng phát triển từ \nđầu nhiệm kỳ 2022 – 2026. Trước bối cảnh kinh tế trong nước và quốc tế \ncòn nhiều biến động, không thể lường trước được, Hội đồng quản trị Công \nty đặt kế hoạch mục tiêu năm 2025 doanh thu, lợi nhuận tăng trưởng từ \n8% đến 10%, ROE đạt tối thiểu 5% so với năm 2024.  \nTrong trung và dài hạn\nCông ty CTIN không ngừng nỗ lực và đổi mới để hiện thực hóa tầm nhìn \n“Trở thành Công ty Công nghệ hàng đầu Việt Nam”, gia tăng hàm lượng \nchất xám, hàm lượng giá trị gia tăng trong các giải pháp, dịch vụ trong lĩnh \nvực Viễn thông và công nghệ thông tin. \nTrong năm 2025, để hoàn thành kế hoạch sản xuất kinh doanh do ĐHĐCĐ \nđề ra, Công ty CTIN sẽ tiến hành xây dựng, thực thi các chương trình, kế \nhoạch theo định hướng: \n- Triển khai đa dạng hóa các giải pháp và sản phẩm Công nghệ cao. Tham \ngia sâu rộng vào các chương trình mua sắm đầu tư công của Chính phủ và \ncác doanh nghiệp lớn;\n- Nâng cao năng lực tư vấn về công nghệ, giúp khách hàng đa dạng hoá \ntrong việc lựa chọn các giải pháp đầu tư, mở rộng hoạt động sản xuất kinh \ndoanh và tăng hiệu quả công việc;\n- Chấp nhận rủi ro, đầu tư vào hợp tác nghiên cứu và phát triển các công \nnghệ mới, gia tăng hàm lượng giá trị do Công ty tạo ra trong sản phẩm, \ngiải pháp;\n- Tối ưu vốn chủ sở hữu, phát triển các nguồn vốn vay an toàn, hiệu quả;\n- Triển khai công tác xây dựng và quản trị chiến lược. Tăng cường kiểm \nsoát nội bộ, quản trị và phòng ngừa rủi ro trong các hoạt động điều hành \nsản xuất kinh doanh.\nÔng Hà Thanh Hải và ông Tô Hoài Văn là thành viên Hội đồng quản trị Công \nty, đồng thời kiêm nhiệm các chức vụ chủ chốt trong Ban Tổng Giám đốc \nCông ty, vì vậy, các định hướng chiến lược và quyết sách của Hội đồng quản \ntrị đều được Ban Tổng Giám đốc Công ty nắm rõ và triển khai kịp thời, hiệu \nquả trong hoạt động điều hành sản xuất kinh doanh.\nTình hình sản xuất kinh doanh của Công ty năm 2024 cũng có những cải \nthiện đáng kể so với năm 2023, cụ thể: \nTrong năm 2024, Công ty có những cải tiến về cơ cấu tổ chức, chính sách, \nquản lý như:\n- Doanh thu năm 2024 đạt 1.625,57 tỷ đồng, hoàn thành 98,52% kế hoạch \ncủa ĐHĐCĐ, tăng trưởng 6,48% so với năm 2023.\n- Lợi nhuận trước thuế đạt 37,18 tỷ đồng, tăng trưởng 85,6% so với năm \n2023. Lợi nhuận sau thuế đạt 31,10 tỷ đồng, hoàn thành 91,48% kế hoạch \nĐHĐCĐ và tăng 108,42% so với năm 2023. \n- Tỉ suất lợi nhuận trên vốn chủ sở hữu (ROE) năm 2024 của Công ty đạt \n4,8%, tăng 109% so với năm 2023.\n- Cải tiến về cơ cấu tổ chức: Cơ cấu tổ chức của Công ty được hoàn thiện \ntheo hướng chuyên môn hóa cao, tinh gọn và tối ưu hơn. \n- Tổ chức quản trị công ty theo hướng chuyên nghiệp hóa, tăng cường kiểm \ntra, giám sát, nâng cao tính minh bạch và hiệu quả, chú trọng kiểm soát \nrủi ro, tăng cường khả năng dự báo, chủ động xây dựng các kịch bản, kế \nhoạch hành động ứng phó. \n- Cải cách chính sách lương thưởng, tăng năng lực cạnh tranh của Công ty \ntrong việc giữ chân, thu hút nguồn nhân lực chất lượng cao. \n- Xây dựng định hướng, lộ trình phát triển đội ngũ kế cận, tập trung phát \ntriển nguồn nhân lực chất lượng cao cho các đơn vị có vai trò chiến lược \ntrong tổ chức. \nIV. ĐÁNH GIÁ CỦA HỘI ĐỒNG QUẢN TRỊ VỀ HOẠT ĐỘNG \nCỦA CÔNG TY",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 32,
+      "text": "Success together\nV. Quản trị công ty \n1.  Hội đồng quản trị\n2.  Ban Kiểm soát\n3.  Các giao dịch, thù lao và các khoản lợi ích của\n Hội đồng quản trị, Ban giám đốc và Ban kiểm soát\n Báo cáo thường niên\n2024 63Công ty Cổ phần Viễn thông – Tin học Bưu điện62",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 33,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n6564\n1. Hội đồng quản trị\n1.1. Thành viên và cơ cấu của Hội đồng quản trị\n1.2. Các tiểu ban thuộc Hội đồng quản trị: Tiểu ban kiểm toán nội bộ\n1.3. Hoạt động của Hội đồng quản trị:\nSTT Họ và tên Chức danh Ngày bắt đầu Số cổ phiếu sở hữu\nvà tỉ lệ % \n1. Ông Hoàng\nAnh Lộc\nChủ tịch\nHội đồng\nquản trị\n30/06/2022 Số cổ phiếu sở hữu: \n3.522.436; chiếm 10,94 %, \ntrong đó: \n- Số cổ phiếu đại diện cho \nVNPT: 3.035.132.\n- Sổ cổ phiếu cá nhân sở \nhữu: 487.304.\n2 Ông Hà Thanh \nHải\nThành viên \nHội đồng \nquản trị\n11/05/2017 Số cổ phiếu sở hữu: \n4.166.017; chiếm 12,94%, \ntrong đó: \n- Số cổ phiếu đại diện cho \nVNPT: 4.046.843.\n- Sổ cổ phiếu cá nhân sở \nhữu: 119.174.\n3 Ông Tô Hoài \nVăn\nThành viên \nHội đồng \nquản trị\n11/05/2017 - Số cổ phiếu cá nhân sở \nhữu: 534.239, chiếm 1,66 %.\n4 Ông Nguyễn \nThế Thịnh\nThành viên \nHội đồng \nquản trị\n11/05/2017 Số cổ phiếu sở hữu: \n3.317.364; chiếm 10,31 %, \ntrong đó: \n- Số cổ phiếu đại diện cho \nVNPT: 3.035.132.\n- Số cổ phiếu sở hữu: \n282.232.\n5 Ông Lưu Công \nNguyên\nThành viên \nHội đồng \nquản trị \nđộc lập\n30/6/2022 Số cổ phiếu sở hữu: 0; \nchiếm 0%.\nThông tin về  thành viên của Hội đồng quản trị: \nCác chức vụ đang nắm giữ của Hội đồng quản trị tại các Công ty khác\nSTT Tên công ty Chức danh hiện đang nắm giữ\n1. Công ty Cổ phần Đầu tư Kỹ \nthuật số Việt\nÔng Hoàng Anh Lộc - Chủ tịch HĐQT\n2. Công ty cổ phần ITTA Ông Hoàng Anh Lộc - Thành viên HĐQT\n3. Công ty Cổ phần Dịch vụ kỹ \nthuật Viễn thông Hà Nội\nÔng Tô Hoài Văn - Phó Chủ tịch HĐQT\nÔng Nguyễn Thế Thịnh – Thành viên HĐQT\n4. Công ty Cổ phần KASATI Ông Tô Hoài Văn - Chủ tịch HĐQT\n5. Công ty Cổ phần KASACO Ông Tô Hoài Văn - Chủ tịch HĐQT\n- Hoạt động giám sát của HĐQT đối với Ban Tổng Giám đốc: Trong năm \n2024, Hội đồng quản trị đã thực hiện tốt công tác giám sát đối với Ban Tổng \ngiám đốc Công ty.\n- Số lượng cuộc họp Hội đồng quản trị trong năm 2024: 04 cuộc họp, với tỷ \nlệ tham gia của 100% thành viên Hội đồng quản trị. Các Nghị quyết/Quyết \nđịnh của Hội đồng quản trị trong năm 2024:\nSTT Số Nghị quyết Ngày Nội dung\n1 01/2024/NQ/\nHĐQT-CTIN\n02/01/2024 Thông qua việc liên danh với Công ty Cổ \nphần Kasati ký hợp đồng thực hiện gói \nthầu: “Cung cấp Multiband các loại”\n2 02/2024/NQ/\nHĐQT-CTIN\n28/02/2024 Thông qua Phương án tái cơ cấu, tổ chức \nCông ty\n3 02.01/2024/\nNQ/HĐQT-CTIN\n28/02/2024 Thông qua Kế hoạch kiểm toán nội bộ năm \n2024\n4 03/2024/NQ/\nHĐQT-CTIN\n10/04/2024 Gia hạn thời gian tổ chức Đại hội đồng cổ \nđông thường niên 2024\n5 10/2024/NQ/\nHĐQT-CTIN\n14/05/2024 Tổ chức Đại hội đồng cổ đông thường niên \n2024\n6 04/2024/NQ/\nHĐQT- CTIN\n01/07/2024 Thông qua tổng hạn mức tín dụng năm \n2024 – 2025\n7 05/2024/NQ/\nHĐQT- CTIN\n01/07/2024 Phê duyệt hạn mức cấp tín dụng tại Ngân \nhàng TMCP Quân đội - Chi nhánh Hoàn Kiếm\n8 06/2024/NQ/\nHĐQT- CTIN\n16/7/2024 Phân bổ thù lao HĐQT và BKS năm tài \nchính 2023\n9 07/2024/NQ/\nHĐQT- CTIN\n18/07/2024 Thông qua phương án chi trả cổ tức năm \n2023\nV. QUẢN TRỊ CÔNG TY",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 34,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n6766\n15 14/2024/NQ/\nHĐQT- CTIN\n23/09/2024 Thông qua việc vay vốn tại Ngân hàng \nTMCP Ngoại thương \nViệt Nam – Chi nhánh Sở giao dịch\n16 15/2024/NQ/\nHĐQT- CTIN\n30/10/2024 Thông qua việc bổ sung ngành nghề kinh \ndoanh của Công ty Cổ phần Đầu tư kỹ \nthuật số Việt\n17 16/2024/NQ/\nHĐQT\n25/11/2024 Thông qua việc vay vốn, bảo lãnh, mở thư tín \ndụng và đảm bảo cấp tín dụng tại Vietinbank\n18 17/2024/NQ/\nHĐQT\n25/11/2024 Thông qua việc vay vốn, bảo lãnh, mở \nthư tín dụng và đảm bảo cấp tín dụng tại \nTechcombank\n19 18/2024/NQ/\nHĐQT\n30/12/2024 Chuyển đổi hình thức hạch toán kế toán \ncủa 02 chi nhánh trực thuộc Công ty\n1.4. Hoạt động của thành viên Hội đồng quản trị độc lập: Trong \nnăm 2024, Tiểu ban kiểm toán nội bộ đã thực hiện hoạt động kiểm \ntoán 01 dự án kinh doanh điển hình của Công ty. \n1.5. Danh sách thành viên có Hội đồng tham gia các chương trình \nvề quản trị Công ty: Không có. \n2. Ban Kiểm soát\n2.1. Thành viên và cơ cấu của Ban kiểm soát: \n2.2. Hoạt động của Ban kiểm soát:\nThông tin về  thành viên Ban kiểm soát (BKS):\nThông tin về  thành viên Ban kiểm soát (BKS):\nBan kiểm soát đã thực hiện các chức năng, nhiệm vụ theo quy định tại điều \nlệ Công ty và Quy chế nội bộ về quản trị Công ty, cụ thể: \nGiám sát tổ chức Đại hội đồng cổ đông thường niên năm 2024 và thực \nhiện nghị quyết của Đại hội:\n • Công ty đã thực hiện chi trả cổ tức 2023 bằng tiền mặt theo mức 5%  \n mệnh giá cổ phần, đúng như Nghị quyết ĐHĐCĐ 2024 đã thông qua.\n • Công ty chi trả thù lao cho HĐQT và Ban Kiểm soát theo đúng nghị   \n quyết của ĐHĐCĐ 2024.\nGiám sát hoạt động của HĐQT và Tổng Giám đốc:\n- Ban Kiểm soát đã giám sát việc thực hiện các nghị quyết của ĐHĐCĐ \n2024, của HĐQT và các quyết định của Ban Tổng Giám đốc trong hoạt \nđộng sản xuất kinh doanh theo các quy định hiện hành.\nSTT Họ và tên Chức vụ Số lượng\ncổ phiếu\nsở hữu\nTỉ lệ% sở hữu\ncổ phần\nbiểu quyết\n1 Ông Nguyễn \nĐình Du\nTrưởng ban Kiểm soát 0 0%\n2 Ông Nguyễn \nThành Hiếu\nThành viên Ban kiểm soát 406.542 1,26%\n3 Bà Nguyễn Thị \nThúy Hà\nThành viên Ban kiểm soát 0 0%\nSTT Thành viên BKS Số buổi họp \ntham dự\nTỷ lệ tham \ngia\nTỷ lệ biểu \nquyết\n1 Ông Nguyễn Đình Du 4 3/3 100%\n2 Ông Nguyễn Thành Hiếu 4 3/3 100%\n3 Bà Nguyễn Thị Thúy Hà 4 3/3 100%\n10 08/2024/NQ/\nHĐQT- CTIN\n19/07/2024 Thông qua phương án chi trả cổ tức năm \n2023\n11 09/2024/NQ/\nHĐQT- CTIN\n26/07/2024 Phê duyệt hạn mức cấp tín dụng tại Ngân \nhàng TMCP Đầu tư và Phát triển Việt Nam\n12 11/2024/NQ/\nHĐQT- CTIN\n06/08/2024 Thông qua chương trình kiểm toán nội bộ \ncác dự án đầu tư hệ thống Inbuilding để \ncho thuê của Công ty\n13 12/2024/NQ/\nHĐQT- CTIN\n18/09/2024 Điều chỉnh cơ cấu Ban Tổng Giám đốc\n14 13/2024/NQ/\nHĐQT- CTIN\n18/09/2024 Bổ nhiệm ông Lê Ánh Dương giữ chức vụ \nPhó Tổng Giám đốc\nSTT Số Nghị quyết Ngày Nội dung",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 35,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n6968\n- Tham dự đầy đủ các phiên họp của HĐQT và thường xuyên xem xét, rà \nsoát các báo cáo kinh doanh định kỳ, báo cáo tài chính bán niên và cả năm \ncủa Công ty, nắm bắt các tồn tại, khó khăn trong hoạt động sản xuất kinh \ndoanh của Công ty. Từ đó, đưa ra các kiến nghị kịp thời cho HĐQT và Ban \nTổng Giám đốc trong việc thực hiện các mục tiêu đã được thông qua tại \nĐHĐCĐ 2024.\n- Trong năm 2024, các vấn đề trọng tâm được bàn bạc trong các phiên \nhọp HĐQT bao gồm:\n- Các cuộc họp HĐQT có sự đồng thuận và thống nhất cao, đảm bảo đúng \nquy định của pháp luật và Điều lệ Công ty, quy chế hoạt động của HĐQT \nvà quy chế quản trị nội bộ công ty.\n- Tổng Giám đốc đã thực hiện đúng chức năng nhiệm vụ theo Điều lệ công \nty cũng như ủy quyền và phân cấp của HĐQT trong việc ký kết các hợp \nđồng kinh tế, tổ chức điều hành các hoạt động sản xuất kinh doanh hàng \nngày, cũng như hoàn thiện cơ cấu tổ chức công ty, báo cáo định kỳ đầy đủ \ncác nội dung quản trị công ty cho HĐQT và Ban Kiểm soát.\n- Tổng Giám đốc thực hiện đúng việc xin ý kiến của Cổ đông, của Chủ tịch \nHĐQT, HĐQT đối với các giao dịch liên quan đến SXKD theo đúng Điều lệ \ncủa Công ty.\n- HĐQT đã thực hiện đúng quy trình thảo luận, lấy phiếu tín nhiệm và các \nthủ tục khác trong việc miễn nhiệm và bổ nhiệm một số thành viên Ban \nTổng Giám đốc điều hành Công ty.\nGiám sát hoạt động kinh doanh và tình hình tài chính năm 2024:\n+ Rà soát, điều chỉnh việc thực hiện kế hoạch sản xuất kinh doanh, các \nchỉ tiêu tài chính, trích lập các quỹ của năm tài chính 2024.\n+ Thảo luận về tình hình thực hiện kế hoạch sản xuất kinh doanh hàng \ntháng, quý.\n+ Xây dựng kế hoạch sản xuất kinh doanh, các chỉ tiêu tài chính, trích \nlập các quỹ của năm tài chính 2025.\n+ Rà soát, phê duyệt hạn mức tín dụng, vay vốn, bảo lãnh, mở thư \ntín dụng và bảo đảm cấp tín dụng của Công ty tại một số ngân hàng \nthương mại trong năm tài chính 2024.\n+ Xây dựng kế hoạch làm việc của Tiểu ban Kiểm toán nội bộ trong \nnăm 2024.\n+ Miễn nhiệm & bổ nhiệm một số thành viên Ban Tổng Giám đốc điều \nhành của Công ty.\n+ Trong năm 2024, Ban Kiểm soát được HĐQT mời tham gia và tham \ngia đầy đủ các cuộc họp định kỳ của HĐQT, được HĐQT gửi các biên \nbản cuộc họp và các nghị quyết HĐQT. Ban Kiểm soát cũng được Ban \nTổng Giám đốc điều hành gửi báo cáo tài chính định kỳ hàng quý, năm \nvà các báo cáo kinh doanh định kỳ theo quy định chung của Công ty.\nTheo báo cáo tài chính kiểm toán cho năm tài chính kết thúc ngày 31 tháng \n12 năm 2024, thu nhập của Hội đồng quản trị, Ban Tổng Giám đốc và Ban \nkiểm soát trong năm như sau:\n3.1 Lương, thưởng, thù lao, các khoản lợi ích\nSTT Họ và tên Chức danh Thu nhập (VNĐ)\n1. Ông Hoàng Anh Lộc Chủ tịch Hội đồng quản trị 1.544.000.000\n2. Ông Tô Hoài Văn Thành viên Hội đồng quản trị, \nPhó Tổng Giám đốc\n1.361.710.446\n3. Ông Hà Thanh Hải Thành viên Hội đồng quản trị, \nTổng Giám đốc\n1.649.254.112\n4. Ông Lê Thanh Sơn Phó Tổng Giám đốc 1.495.897.488\n5. Ông Lê Ánh Dương Phó Tổng Giám đốc ( bổ \nnhiệm từ ngày 18/09/2024)\n466.744.709\n6. Ông Nguyễn Đình Du Trưởng Ban kiểm soát 643.840.000\n7. Ông Nguyễn Thành HiếuThành viên Ban kiểm soát 934.115.200\n8. Bà Nguyễn Thị Thúy HàThành viên Ban kiểm soát 0\n3. Các giao dịch, thù lao và các khoản lợi ích của Hội đồng \nquản trị, Ban giám đốc và Ban kiểm soát:\n+ Trong năm 2024, Ban Kiểm soát đã thực hiện thẩm tra báo cáo tài \nchính đã kiểm toán, bán niên và cả năm, theo thẩm quyền quy định tại \nĐiều lệ Công ty. Ban Kiểm soát cũng thông báo cho HĐQT, Ban Tổng \nGiám đốc nội dung các cuộc họp của Ban và thông báo kịp thời các \nvướng mắc, tồn tại trong hoạt động SXKD cho Ban Tổng Giám đốc \ntrong quá trình thực hiện chức năng nhiệm vụ.\n+ Ban Kiểm soát nắm bắt đầy đủ tình hình hoạt động kinh doanh và tài \nchính của Công ty trong năm 2024, phân tích báo cáo tài chính định \nkỳ của Công ty, một số báo cáo quản trị nội bộ và số liệu do Ban Tổng \nGiám đốc trình bày trong các cuộc họp HĐQT và các bộ phận liên quan \ncung cấp.\n+ Sau khi góp ý, hỗ trợ Ban Tổng Giám đốc lựa chọn đơn vị kiểm toán \nđộc lập cho năm tài chính 2024 của Công ty, Ban Kiểm soát đã nắm bắt \nviệc thực hiện kiểm toán độc lập Báo cáo tài chính 6 tháng đầu năm \n2024 và Báo cáo tài chính cả năm 2024 của Công ty.",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 36,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n7170\n3.3 Hợp đồng, giao dịch với người nội bộ: \n3.4 Đánh giá việc thực hiện các quy định về quản trị công ty: \n1. Ý kiến kiểm toán: Chi tiết tại Báo cáo tài chính đã được kiểm toán \nnăm 2024.\n2. Báo cáo tài chính được kiểm toán: Chi tiết tại Báo cáo tài chính đã \nđược kiểm toán năm 2024.\nSTT Giao dịch Mối quan hệ Số tiền (VNĐ)\n1. Bán hàng 879.210.750.484\nTập đoàn Bưu chính - Viễn \nthông Việt Nam\nCổ đông 875.843.826.158\nCông ty Cổ phần Đầu tư Kỹ \nthuật số Việt\nCùng thành viên HĐQT 58.838.511\nCông ty Cổ phần ITTA Cùng thành viên HĐQT 1.404.325.013\nCông ty Cổ phần Dịch vụ Kỹ \nthuật Viễn thông Hà Nội\nCùng thành viên HĐQT 1.120.650.682\nCông ty Cổ phần KASATI Cùng thành viên HĐQT 783.110.120\n2. Mua hàng 9.448.959.220\nTập đoàn Bưu chính - Viễn \nthông Việt Nam\nCổ đông 6.454.506.462\nCông ty Cổ phần Đầu tư Kỹ \nthuật số Việt\nCùng thành viên HĐQT 1.624.701.766\nCông ty Cổ phần ITTA Cùng thành viên HĐQT 383.431.140\nCông ty CP Dịch vụ Kỹ thuật \nViễn thông Hà Nội\nCùng thành viên HĐQT 986.319.852\n3. Cổ tức đã trả 5.058.554.000\nTập đoàn Bưu chính - Viễn \nthông Việt Nam\nCổ đông 5.058.554.000\n4. Cổ tức nhận được 8.567.200.000\nCông ty Cổ phần ITTA Cùng thành viên HĐQT 377.600.000\nCông ty CP Dịch vụ Kỹ thuật \nViễn thông Hà Nội\nCùng thành viên HĐQT 8.189.600.000\nGiao dịch ký hợp đồng theo nghị quyết số: 01/2024/NQ/HĐQT-CTIN ngày \n02/01/2024: Công ty liên danh với Công ty Cổ phần Kasati ký hợp đồng thực \nhiện gói thầu: “Cung cấp aten Multiband các loại” thuộc kế hoạch mua sắm \ntập trung “Trang bị vật tư, thiết bị anten phục vụ các dự án mở rộng mạng \nvô tuyến Vinaphone giai đoạn 2023 – 2024”, giá trị hợp đồng đã bao gồm \nthuế GTGT: 118.339.836.000 VNĐ (Bằng chữ: Một trăm mười tám tỷ, ba trăm \nba mươi chín triệu, tám trăm ba mươi sáu nghìn đồng).\nVề cơ bản, Công ty tuân thủ theo các quy định pháp luật về quản trị công \nty hiện hành.\nVI. BÁO CÁO TÀI CHÍNH\n3.2 Giao dịch cổ phiếu của người nội bộ: Không có. \nNơi nhận:\n- Như trên;\n- Lưu HĐQT.\nXÁC NHẬN CỦA ĐẠI DIỆN \nTHEO PHÁP LUẬT CỦA CÔNG TY",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 37,
+      "text": "Success together\nIV. Báo cáo tài chính\n1.  Ý kiến kiểm toán: Theo Phụ lục đính kèm\n2.  Báo cáo tài chính được kiểm toán: \n Theo Phụ lục đính kèm\n Báo cáo thường niên\n2024 73Công ty Cổ phần Viễn thông – Tin học Bưu điện72",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 38,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n7574",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 39,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n7776",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 40,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n7978",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 41,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n8180",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 42,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n8382",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 43,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n8584",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 44,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n8786",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 45,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n8988",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 46,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n9190",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 47,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n9392",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 48,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n9594",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 49,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n9796",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 50,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n9998",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 51,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n101100",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 52,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n103102",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 53,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n105104",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 54,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n107106",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 55,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n109108",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 56,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n111110",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 57,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n113112",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 58,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n115114",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 59,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n117116",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 60,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n119118",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    },
+    {
+      "page_number": 61,
+      "text": "Công ty Cổ phần Viễn thông – Tin học Bưu điện  Báo cáo thường niên\n2024\n121120",
+      "status": "TEXT_EXTRACTED",
+      "extraction_method": "pdf_text_layer"
+    }
+  ]
+}

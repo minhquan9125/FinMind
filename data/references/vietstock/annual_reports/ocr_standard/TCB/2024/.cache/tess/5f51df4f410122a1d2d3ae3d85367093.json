@@ -1,0 +1,569 @@
+{
+  "text": "CÂU CHUYỆN CỦA TECH _\n\nVề chúng tôi\n\n$> CÂU CHUYỆN n\n\nCâu chuyện Thương hiệu\n\nCỦA TECH SeMP2BHNEEA\n\nCơ cấu Cổ đông và Hoạt động Quan hệ Nhà đầu tư\n\n18 BÁO CÁO THƯỜNG NIÊN TECHCOMBANK 2024 EXPONENTIAL THINKING - SUSTAINABLE BUILDING",
+  "chars": 183,
+  "words": 43,
+  "wordItems": [
+    {
+      "text": "CÂU",
+      "bbox": [
+        134,
+        81,
+        176,
+        99
+      ],
+      "conf": 93.305344,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHUYỆN",
+      "bbox": [
+        186,
+        81,
+        273,
+        103
+      ],
+      "conf": 92.388229,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỦA",
+      "bbox": [
+        283,
+        81,
+        327,
+        99
+      ],
+      "conf": 75.518944,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TECH",
+      "bbox": [
+        335,
+        85,
+        389,
+        99
+      ],
+      "conf": 92.630386,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "_",
+      "bbox": [
+        434,
+        85,
+        447,
+        98
+      ],
+      "conf": 0.0,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Về",
+      "bbox": [
+        1887,
+        1975,
+        1929,
+        2005
+      ],
+      "conf": 96.740761,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chúng",
+      "bbox": [
+        1943,
+        1978,
+        2042,
+        2012
+      ],
+      "conf": 96.772247,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tôi",
+      "bbox": [
+        2056,
+        1978,
+        2094,
+        2005
+      ],
+      "conf": 96.955475,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "$>",
+      "bbox": [
+        145,
+        2018,
+        270,
+        2102
+      ],
+      "conf": 47.376587,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÂU",
+      "bbox": [
+        329,
+        1989,
+        578,
+        2100
+      ],
+      "conf": 93.305725,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHUYỆN",
+      "bbox": [
+        623,
+        1989,
+        1130,
+        2122
+      ],
+      "conf": 91.203156,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "n",
+      "bbox": [
+        1887,
+        2034,
+        1925,
+        2064
+      ],
+      "conf": 0.085312,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Câu",
+      "bbox": [
+        1888,
+        2096,
+        1950,
+        2123
+      ],
+      "conf": 96.793503,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chuyện",
+      "bbox": [
+        1965,
+        2096,
+        2083,
+        2130
+      ],
+      "conf": 95.973755,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Thương",
+      "bbox": [
+        2097,
+        2098,
+        2222,
+        2130
+      ],
+      "conf": 96.642952,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hiệu",
+      "bbox": [
+        2238,
+        2096,
+        2304,
+        2129
+      ],
+      "conf": 96.157906,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỦA",
+      "bbox": [
+        148,
+        2112,
+        406,
+        2225
+      ],
+      "conf": 88.787941,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TECH",
+      "bbox": [
+        441,
+        2138,
+        757,
+        2225
+      ],
+      "conf": 91.030602,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "SeMP2BHNEEA",
+      "bbox": [
+        1888,
+        2155,
+        2243,
+        2189
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cơ",
+      "bbox": [
+        1888,
+        2215,
+        1932,
+        2241
+      ],
+      "conf": 96.527359,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cấu",
+      "bbox": [
+        1946,
+        2211,
+        2001,
+        2241
+      ],
+      "conf": 96.720566,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Cổ",
+      "bbox": [
+        2016,
+        2210,
+        2060,
+        2241
+      ],
+      "conf": 96.519226,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đông",
+      "bbox": [
+        2074,
+        2214,
+        2156,
+        2248
+      ],
+      "conf": 96.639885,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        2170,
+        2214,
+        2205,
+        2241
+      ],
+      "conf": 96.956177,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Hoạt",
+      "bbox": [
+        2221,
+        2216,
+        2298,
+        2247
+      ],
+      "conf": 96.751678,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "động",
+      "bbox": [
+        2310,
+        2214,
+        2392,
+        2248
+      ],
+      "conf": 95.992973,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Quan",
+      "bbox": [
+        2407,
+        2215,
+        2494,
+        2242
+      ],
+      "conf": 96.422455,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hệ",
+      "bbox": [
+        2510,
+        2214,
+        2548,
+        2247
+      ],
+      "conf": 96.317238,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Nhà",
+      "bbox": [
+        2562,
+        2214,
+        2625,
+        2241
+      ],
+      "conf": 96.200035,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đầu",
+      "bbox": [
+        2640,
+        2211,
+        2698,
+        2241
+      ],
+      "conf": 96.899902,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tư",
+      "bbox": [
+        2712,
+        2218,
+        2744,
+        2241
+      ],
+      "conf": 96.571129,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "18",
+      "bbox": [
+        134,
+        2367,
+        151,
+        2381
+      ],
+      "conf": 93.695053,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        201,
+        2363,
+        243,
+        2381
+      ],
+      "conf": 92.078842,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        250,
+        2363,
+        293,
+        2381
+      ],
+      "conf": 95.988129,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        301,
+        2363,
+        390,
+        2381
+      ],
+      "conf": 96.674423,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        398,
+        2363,
+        445,
+        2381
+      ],
+      "conf": 93.305344,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TECHCOMBANK",
+      "bbox": [
+        453,
+        2367,
+        614,
+        2381
+      ],
+      "conf": 91.262581,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        622,
+        2367,
+        672,
+        2381
+      ],
+      "conf": 96.682083,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "EXPONENTIAL",
+      "bbox": [
+        2828,
+        2367,
+        2960,
+        2381
+      ],
+      "conf": 92.058067,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THINKING",
+      "bbox": [
+        2967,
+        2367,
+        3058,
+        2381
+      ],
+      "conf": 91.14077,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "-",
+      "bbox": [
+        3065,
+        2373,
+        3076,
+        2375
+      ],
+      "conf": 71.829422,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "SUSTAINABLE",
+      "bbox": [
+        3083,
+        2367,
+        3212,
+        2381
+      ],
+      "conf": 90.506767,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BUILDING",
+      "bbox": [
+        3220,
+        2367,
+        3309,
+        2381
+      ],
+      "conf": 92.219604,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 86,
+  "lowConfRatio": 0.093,
+  "seconds": 0.765
+}

@@ -1,0 +1,23 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\CMG\2024\CMG_2024_511722.pdf: 11 trang
+  lớp text: 0 trang dùng được, 11 trang cần OCR (0.684s)
+  [tess] trang 2: conf=91 low=0.072 rot=0 0.76s
+  [tess] trang 1: conf=71 low=0.235 rot=0 0.442s
+  [tess] trang 13: conf=88 low=0.1 rot=0 0.36s
+  [tess] trang 34: conf=87 low=0.074 rot=0 0.435s
+  [tess] trang 24: conf=80 low=0.182 rot=0 0.384s
+  [tess] trang 46: conf=82 low=0.182 rot=0 0.365s
+  [tess] trang 54: conf=65 low=0.333 rot=0 0.375s
+  [tess] trang 69: conf=94 low=0 rot=0 0.339s
+  [tess] trang 62: conf=83 low=0.091 rot=0 0.352s
+  [tess] trang 76: conf=0 low=1 rot=0 0.392s
+  [tess] trang 77: conf=80 low=0.083 rot=0 0.609s
+  [gemini-api] gemini-3.8-flash p-001.png,p-002.png,p-013.png,p-024.png: OK, 29.611s
+  [gemini-api] gemini-3.8-flash p-034.png,p-046.png,p-054.png,p-062.png: OK, 23.226s
+  [gemini-api] gemini-3.8-flash p-069.png,p-076.png,p-077.png: OK, 30.042s
+  tuyến: {'tesseract+gemini': 11}  trạng thái: {'REVIEW': 4, 'OK': 7}
+  cờ: {'ENGINES_DISAGREE': 4, 'NEAR_EMPTY': 1}
+  thời gian (s): {'textLayer': 0.684, 'renderAndTesseract': 31.574, 'gemini': 82.921, 'total': 115.292}
+  Gemini API: 3 lần gọi (0 lỗi), token vào 13135, ra 4454
+  → D:\finmind\tmp\ocr-router-model-batch-2024\CMG_2024_511722

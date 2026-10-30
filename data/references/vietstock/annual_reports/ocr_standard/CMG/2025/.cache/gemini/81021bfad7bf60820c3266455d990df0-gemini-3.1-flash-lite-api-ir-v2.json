@@ -1,0 +1,616 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        112,
+        82,
+        873,
+        918
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            112,
+            82,
+            147,
+            143
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Tên Công ty"
+          ],
+          "box_2d": [
+            112,
+            143,
+            147,
+            291
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Tên viết tắt"
+          ],
+          "box_2d": [
+            112,
+            291,
+            147,
+            418
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Địa chỉ"
+          ],
+          "box_2d": [
+            112,
+            418,
+            147,
+            681
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Lĩnh vực",
+            "hoạt động"
+          ],
+          "box_2d": [
+            112,
+            681,
+            147,
+            808
+          ]
+        },
+        {
+          "key": "c6",
+          "header_lines": [
+            "Tỷ lệ sở",
+            "hữu"
+          ],
+          "box_2d": [
+            112,
+            808,
+            147,
+            918
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "3",
+          "label_raw": "3",
+          "note": null,
+          "box_2d": [
+            147,
+            82,
+            225,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH An ninh an toàn Thông tin CMC",
+              "box_2d": [
+                147,
+                143,
+                225,
+                291
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC CS",
+              "box_2d": [
+                147,
+                291,
+                225,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                147,
+                418,
+                225,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Dịch vụ phần mềm",
+              "box_2d": [
+                147,
+                681,
+                225,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                147,
+                808,
+                225,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "4",
+          "note": null,
+          "box_2d": [
+            225,
+            82,
+            285,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH CMC Global",
+              "box_2d": [
+                225,
+                143,
+                285,
+                291
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC Global",
+              "box_2d": [
+                225,
+                291,
+                285,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                225,
+                418,
+                285,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Xuất bản phần mềm",
+              "box_2d": [
+                225,
+                681,
+                285,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                225,
+                808,
+                285,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Các công ty con của Công ty TNHH CMC Global (CMC Global) bao gồm:",
+          "note": null,
+          "box_2d": [
+            285,
+            82,
+            318,
+            918
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH CMC Châu Á Thái Bình Dương",
+          "note": null,
+          "box_2d": [
+            318,
+            82,
+            402,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "CMC-APAC",
+              "box_2d": [
+                318,
+                291,
+                402,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Singapore",
+              "box_2d": [
+                318,
+                418,
+                402,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Dịch vụ phần mềm",
+              "box_2d": [
+                318,
+                681,
+                402,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "CMC Global sở hữu 100% vốn góp",
+              "box_2d": [
+                318,
+                808,
+                402,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần CMC Japan",
+          "note": null,
+          "box_2d": [
+            402,
+            82,
+            477,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "CMC Japan",
+              "box_2d": [
+                402,
+                291,
+                477,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Yokohama, tỉnh Kanagawa, Nhật Bản",
+              "box_2d": [
+                402,
+                418,
+                477,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Dịch vụ phần mềm",
+              "box_2d": [
+                402,
+                681,
+                477,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "CMC Global sở hữu 100% vốn góp",
+              "box_2d": [
+                402,
+                808,
+                477,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH CMC Korea",
+          "note": null,
+          "box_2d": [
+            477,
+            82,
+            562,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "CMC Korea",
+              "box_2d": [
+                477,
+                291,
+                562,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Jung-gu, Seoul, Hàn Quốc",
+              "box_2d": [
+                477,
+                418,
+                562,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Dịch vụ phần mềm",
+              "box_2d": [
+                477,
+                681,
+                562,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "CMC Global sở hữu 100% vốn góp",
+              "box_2d": [
+                477,
+                808,
+                562,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH CMC Malay",
+          "note": null,
+          "box_2d": [
+            562,
+            82,
+            637,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "CMC Malay",
+              "box_2d": [
+                562,
+                291,
+                637,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Kuala Lumpur, Malaysia",
+              "box_2d": [
+                562,
+                418,
+                637,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Dịch vụ phần mềm",
+              "box_2d": [
+                562,
+                681,
+                637,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "CMC Global sở hữu 100% vốn góp",
+              "box_2d": [
+                562,
+                808,
+                637,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH CMC North America",
+          "note": null,
+          "box_2d": [
+            637,
+            82,
+            715,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "CMC North America",
+              "box_2d": [
+                637,
+                291,
+                715,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "251 Little Falls Drive, Wilmington, Delaware 19808, Mỹ",
+              "box_2d": [
+                637,
+                418,
+                715,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Dịch vụ phần mềm",
+              "box_2d": [
+                637,
+                681,
+                715,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "CMC Global sở hữu 100% vốn góp",
+              "box_2d": [
+                637,
+                808,
+                715,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH CMC Deutschland",
+          "note": null,
+          "box_2d": [
+            715,
+            82,
+            797,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "CMC Deutschland",
+              "box_2d": [
+                715,
+                291,
+                797,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Theodor-Heuss-Allee 112, 60486 Frankfurt am Main, Cộng hòa Liên bang Đức",
+              "box_2d": [
+                715,
+                418,
+                797,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Dịch vụ phần mềm",
+              "box_2d": [
+                715,
+                681,
+                797,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "CMC Global sở hữu 100% vốn góp",
+              "box_2d": [
+                715,
+                808,
+                797,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "5",
+          "note": null,
+          "box_2d": [
+            797,
+            82,
+            873,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty Cổ phần Hạ tầng Viễn thông CMC",
+              "box_2d": [
+                797,
+                143,
+                873,
+                291
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC Telecom",
+              "box_2d": [
+                797,
+                291,
+                873,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                797,
+                418,
+                873,
+                681
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Viễn thông - Internet",
+              "box_2d": [
+                797,
+                681,
+                873,
+                808
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "54,628%",
+              "box_2d": [
+                797,
+                808,
+                873,
+                918
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "text": "STT\nTên Công ty\nTên viết tắt\nĐịa chỉ\nLĩnh vực\nhoạt động\nTỷ lệ sở\nhữu\n3 3 Công ty TNHH An ninh an toàn Thông tin CMC CMC CS CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Dịch vụ phần mềm 100%\n4 4 Công ty TNHH CMC Global CMC Global CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Xuất bản phần mềm 100%\nCác công ty con của Công ty TNHH CMC Global (CMC Global) bao gồm:\nCông ty TNHH CMC Châu Á Thái Bình Dương CMC-APAC Singapore Dịch vụ phần mềm CMC Global sở hữu 100% vốn góp\nCông ty Cổ phần CMC Japan CMC Japan Yokohama, tỉnh Kanagawa, Nhật Bản Dịch vụ phần mềm CMC Global sở hữu 100% vốn góp\nCông ty TNHH CMC Korea CMC Korea Jung-gu, Seoul, Hàn Quốc Dịch vụ phần mềm CMC Global sở hữu 100% vốn góp\nCông ty TNHH CMC Malay CMC Malay Kuala Lumpur, Malaysia Dịch vụ phần mềm CMC Global sở hữu 100% vốn góp\nCông ty TNHH CMC North America CMC North America 251 Little Falls Drive, Wilmington, Delaware 19808, Mỹ Dịch vụ phần mềm CMC Global sở hữu 100% vốn góp\nCông ty TNHH CMC Deutschland CMC Deutschland Theodor-Heuss-Allee 112, 60486 Frankfurt am Main, Cộng hòa Liên bang Đức Dịch vụ phần mềm CMC Global sở hữu 100% vốn góp\n5 5 Công ty Cổ phần Hạ tầng Viễn thông CMC CMC Telecom CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Viễn thông - Internet 54,628%",
+  "unreadable": []
+}

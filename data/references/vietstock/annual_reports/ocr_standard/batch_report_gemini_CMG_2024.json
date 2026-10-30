@@ -1,0 +1,42 @@
+{
+  "schema_name": "finmind.annual_ocr_batch",
+  "schema_version": "1.0",
+  "updated_at": "2026-10-23T02:59:48+00:00",
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "pdf_root": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf",
+  "documents": [
+    {
+      "symbol": "CMG",
+      "year": "2024",
+      "pdf": "CMG/2024/CMG_2024_511722.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\CMG\\2024\\CMG_2024_511722",
+      "sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
+      "status": "COMPLETE",
+      "pages": 77,
+      "model_failed_pages": [],
+      "review_pages": [
+        1,
+        12,
+        13
+      ],
+      "routes": {
+        "tesseract+gemini": 8,
+        "text_layer": 66,
+        "tesseract": 3
+      },
+      "exit_code": 0,
+      "skipped": false
+    }
+  ],
+  "summary": {
+    "pdfs_discovered": 1,
+    "pdfs_attempted": 1,
+    "complete": 1,
+    "pending_or_failed": 0,
+    "pages": 77,
+    "model_pending_pages": 0,
+    "review_pages": 3,
+    "review_without_model_failure_pages": 3
+  }
+}

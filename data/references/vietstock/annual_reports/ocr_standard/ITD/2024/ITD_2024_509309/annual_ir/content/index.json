@@ -1,0 +1,28 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\ITD\\2024\\ITD_2024_509309.pdf",
+  "scope": "annual_report_content",
+  "pages": 13,
+  "routes": {
+    "TEXT_LAYER": 13
+  },
+  "blockTypes": {
+    "paragraph": 291,
+    "heading": 4,
+    "furniture": 1
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 28,
+      "end": 39
+    },
+    {
+      "start": 45,
+      "end": 45
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

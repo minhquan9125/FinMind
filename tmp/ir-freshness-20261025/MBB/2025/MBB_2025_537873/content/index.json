@@ -1,0 +1,36 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\MBB\\2025\\MBB_2025_537873.pdf",
+  "scope": "annual_report_content",
+  "pages": 66,
+  "routes": {
+    "TEXT_LAYER": 66
+  },
+  "blockTypes": {
+    "furniture": 130,
+    "heading": 134,
+    "paragraph": 3474
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 72,
+      "end": 92
+    },
+    {
+      "start": 94,
+      "end": 95
+    },
+    {
+      "start": 97,
+      "end": 108
+    },
+    {
+      "start": 110,
+      "end": 140
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

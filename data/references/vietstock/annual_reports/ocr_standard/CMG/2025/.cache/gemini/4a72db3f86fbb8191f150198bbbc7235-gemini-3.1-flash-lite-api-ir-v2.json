@@ -1,0 +1,287 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        97,
+        118,
+        861,
+        924
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT"
+          ],
+          "box_2d": [
+            97,
+            118,
+            148,
+            164
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Họ tên"
+          ],
+          "box_2d": [
+            97,
+            164,
+            148,
+            271
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Chức danh"
+          ],
+          "box_2d": [
+            97,
+            271,
+            148,
+            393
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Tỷ lệ sở",
+            "hữu (%)"
+          ],
+          "box_2d": [
+            97,
+            393,
+            148,
+            497
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Tóm tắt lý lịch"
+          ],
+          "box_2d": [
+            97,
+            497,
+            148,
+            924
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "13",
+          "note": null,
+          "box_2d": [
+            148,
+            118,
+            510,
+            924
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "13",
+              "box_2d": [
+                148,
+                118,
+                510,
+                164
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "Nguyễn Việt Bách",
+              "box_2d": [
+                148,
+                164,
+                510,
+                271
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch VP Tập đoàn",
+              "box_2d": [
+                148,
+                271,
+                510,
+                393
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0,02%",
+              "box_2d": [
+                148,
+                393,
+                510,
+                497
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "- 2009 - 2010: Phó Trưởng phòng Kỹ thuật - Công ty Cổ phần Hạ tầng viễn thông CMC\n- 2008 - 2009: Quản lý Dự án - Công ty Cổ phần Hạ tầng viễn thông CMC\n- 2002 - 2008: Phó Giám đốc Trung tâm xử lý tín hiệu - Công ty Dịch vụ Truyền thanh\n- 2001 - 2002: Trưởng phòng kinh doanh - Công ty TNHH Viễn thông Việt Nam\nNăm sinh: 1980. Gia nhập CMC: 2022.\nTrình độ: Cử nhân - Công nghệ thông tin - Trường Đại học Kinh tế quốc dân (1998).\nQuá trình công tác:\n- 07/2025 đến nay: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC\n- 07/2025 đến nay: Phó Tổng Giám đốc / Giám đốc sản xuất (CDO) - Công ty TNHH CMC Global\n- 03/2019 - 06/2025: Phó Chủ tịch kiêm Giám đốc Sản xuất - Công ty TNHH CMC Global\n- 06/2016 - 02/2019: Quản lý sản xuất - FPT ASIA PACIFIC, SINGAPORE\n- 04/2004 - 06/2016: Quản lý sản xuất - Công ty TNHH Phần mềm FPT",
+              "box_2d": [
+                148,
+                497,
+                510,
+                924
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "14",
+          "note": null,
+          "box_2d": [
+            510,
+            118,
+            768,
+            924
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "14",
+              "box_2d": [
+                510,
+                118,
+                768,
+                164
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "Lê Anh Linh",
+              "box_2d": [
+                510,
+                164,
+                768,
+                271
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch VP Tập đoàn",
+              "box_2d": [
+                510,
+                271,
+                768,
+                393
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0,01%",
+              "box_2d": [
+                510,
+                393,
+                768,
+                497
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Năm sinh: 1986. Gia nhập CMC: 2007.\nTrình độ: Cử nhân BCA - Computer Application - Bangalore University (2007); Cử nhân Bcom - Commercial - Rajasthan University (2007).\nQuá trình công tác:\n- 07/2025 - 06/2026: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC\n- 02/2024 - 06/2026: Phó Tổng giám đốc/Giám đốc kinh doanh - Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC\n- 04/2019 - 01/2024: Giám đốc Khối BFSI (HN) - Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC\n- 2017 - 03/2019: Giám đốc TTKD FSI1 kiêm Giám đốc phụ trách Quan hệ đối tác - Công ty tích hợp hệ thống CMC",
+              "box_2d": [
+                510,
+                497,
+                768,
+                924
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "15",
+          "note": null,
+          "box_2d": [
+            768,
+            118,
+            861,
+            924
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "15",
+              "box_2d": [
+                768,
+                118,
+                861,
+                164
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "Nguyễn Hải Sơn",
+              "box_2d": [
+                768,
+                164,
+                861,
+                271
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch VP Tập đoàn",
+              "box_2d": [
+                768,
+                271,
+                861,
+                393
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0,00%",
+              "box_2d": [
+                768,
+                393,
+                861,
+                497
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Năm sinh: 1972. Gia nhập CMC: 2023.\nTrình độ: Thạc sĩ Quản trị kinh doanh - Viện Công nghệ Châu Á (AIT).\nQuá trình công tác:\n- 07/2025 đến nay: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC",
+              "box_2d": [
+                768,
+                497,
+                861,
+                924
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "27",
+      "box_2d": [
+        923,
+        904,
+        936,
+        924
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "TT\nHọ tên\nChức danh\nTỷ lệ sở\nhữu (%)\nTóm tắt lý lịch\n13 13 Nguyễn Việt Bách Phó Chủ tịch VP Tập đoàn 0,02% - 2009 - 2010: Phó Trưởng phòng Kỹ thuật - Công ty Cổ phần Hạ tầng viễn thông CMC\n- 2008 - 2009: Quản lý Dự án - Công ty Cổ phần Hạ tầng viễn thông CMC\n- 2002 - 2008: Phó Giám đốc Trung tâm xử lý tín hiệu - Công ty Dịch vụ Truyền thanh\n- 2001 - 2002: Trưởng phòng kinh doanh - Công ty TNHH Viễn thông Việt Nam\nNăm sinh: 1980. Gia nhập CMC: 2022.\nTrình độ: Cử nhân - Công nghệ thông tin - Trường Đại học Kinh tế quốc dân (1998).\nQuá trình công tác:\n- 07/2025 đến nay: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC\n- 07/2025 đến nay: Phó Tổng Giám đốc / Giám đốc sản xuất (CDO) - Công ty TNHH CMC Global\n- 03/2019 - 06/2025: Phó Chủ tịch kiêm Giám đốc Sản xuất - Công ty TNHH CMC Global\n- 06/2016 - 02/2019: Quản lý sản xuất - FPT ASIA PACIFIC, SINGAPORE\n- 04/2004 - 06/2016: Quản lý sản xuất - Công ty TNHH Phần mềm FPT\n14 14 Lê Anh Linh Phó Chủ tịch VP Tập đoàn 0,01% Năm sinh: 1986. Gia nhập CMC: 2007.\nTrình độ: Cử nhân BCA - Computer Application - Bangalore University (2007); Cử nhân Bcom - Commercial - Rajasthan University (2007).\nQuá trình công tác:\n- 07/2025 - 06/2026: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC\n- 02/2024 - 06/2026: Phó Tổng giám đốc/Giám đốc kinh doanh - Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC\n- 04/2019 - 01/2024: Giám đốc Khối BFSI (HN) - Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC\n- 2017 - 03/2019: Giám đốc TTKD FSI1 kiêm Giám đốc phụ trách Quan hệ đối tác - Công ty tích hợp hệ thống CMC\n15 15 Nguyễn Hải Sơn Phó Chủ tịch VP Tập đoàn 0,00% Năm sinh: 1972. Gia nhập CMC: 2023.\nTrình độ: Thạc sĩ Quản trị kinh doanh - Viện Công nghệ Châu Á (AIT).\nQuá trình công tác:\n- 07/2025 đến nay: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC\n27",
+  "unreadable": []
+}

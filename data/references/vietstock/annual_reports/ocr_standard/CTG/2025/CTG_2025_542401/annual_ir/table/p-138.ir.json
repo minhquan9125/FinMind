@@ -1,0 +1,401 @@
+{
+  "ir_version": "1",
+  "page": 138,
+  "printed_page": "270",
+  "page_class": "balance_sheet",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "bb4d98a8b3e7122f5cc8c73d9e9fdf7d34652d68e0094307bcad99e5792f5650",
+    "file_name": "CTG_2025_542401.pdf"
+  },
+  "blocks": [
+    {"id": "p138-b1", "type": "heading", "text": "PHẦN 7 BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ ĐƯỢC KIỂM TOÁN", "bbox": [75.89, 23.46, 304.23, 31.46]},
+    {"id": "p138-b2", "type": "heading", "text": "4 - BÁO CÁO TÌNH HÌNH TÀI CHÍNH HỢP NHẤT", "bbox": [666.14, 46.14, 833.41, 54.14]},
+    {"id": "p138-b3", "type": "paragraph", "text": "Mẫu số B02/TCTD-HN", "bbox": [1017.5, 54.44, 1119.68, 64.44]},
+    {"id": "p138-b4", "type": "heading", "text": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH HỢP NHẤT", "bbox": [666.14, 76.63, 859.38, 86.63]},
+    {
+      "id": "p138-b5",
+      "type": "paragraph",
+      "text": "Báo cáo tài chính hợp nhất của Ngân hàng và các công ty con cho năm tài chính kết thúc ngày 31\ntháng 12 năm 2024 do một công ty kiểm toán khác kiểm toán và báo cáo của họ (cid:22)ề ngày 28 tháng\n2 năm 2025 (cid:22)ã (cid:22)ưa ra ý kiến kiểm toán chấp nhận toàn phần.",
+      "bbox": [70.87, 100.4, 524.44, 134.4]
+    },
+    {"id": "p138-b6", "type": "paragraph", "text": "Thay mặt và Èại diện cho Công ty TNHH PwC (Việt Nam)", "bbox": [70.87, 148.63, 330.5, 158.63]},
+    {"id": "p138-b7", "type": "paragraph", "text": "Nguyễn Văn Nam\nSố Giấy CN ĐKHN kiểm toán:\n5082-2024-006-1", "bbox": [318.65, 287.46, 451.29, 324.97]},
+    {"id": "p138-b8", "type": "paragraph", "text": "TẠI NGÀY 31 THÁNG 12 NĂM\nTHUYẾT\nMINH", "bbox": [942.54, 99.41, 1116.85, 121.88]},
+    {"id": "p138-b9", "type": "paragraph", "text": "2025\n2024", "bbox": [1028.4, 119.54, 1116.85, 127.54]},
+    {"id": "p138-b10", "type": "paragraph", "text": "Triệu Èồng\nTriệu Èồng", "bbox": [1006.65, 140.92, 1116.85, 148.92]},
+    {
+      "id": "p138-t1",
+      "type": "table",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH HỢP NHẤT",
+      "continued": false,
+      "logical_table_id": "balance_sheet",
+      "bbox": [668.9, 119.54, 1116.85, 767.87],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["2025"], "bbox": [1028.4, 119.54, 1045.99, 127.54]},
+        {"key": "c2", "header_lines": ["2024"], "bbox": [1099.01, 119.54, 1116.85, 127.54]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "A TÀI SẢN",
+          "note": null,
+          "indent": 668.98,
+          "bbox": [668.98, 163.03, 726.12, 171.03],
+          "cells": {}
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "I Tiền mặt, vàng bạc, Èá quý",
+          "note": "3",
+          "indent": 668.98,
+          "bbox": [668.98, 185.14, 1116.85, 193.14],
+          "cells": {
+            "c1": {"raw": "12.583.484", "bbox": [1007.41, 185.14, 1045.99, 193.14]},
+            "c2": {"raw": "11.147.549", "bbox": [1082.79, 185.14, 1116.85, 193.14]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "II Tiền gửi tại Ngân hàng Nhà nước Việt Nam",
+          "note": "4",
+          "indent": 668.98,
+          "bbox": [668.98, 207.25, 1116.84, 215.25],
+          "cells": {
+            "c1": {"raw": "35.225.543", "bbox": [1007.15, 207.25, 1045.98, 215.25]},
+            "c2": {"raw": "34.431.657", "bbox": [1078.96, 207.25, 1116.84, 215.25]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "III Tiền gửi và cho vay các tổ chức tín dụng (“TCTD”) khác",
+          "note": null,
+          "indent": 668.97,
+          "bbox": [668.97, 229.37, 1116.84, 237.37],
+          "cells": {
+            "c1": {"raw": "476.487.530", "bbox": [1003.76, 229.37, 1045.98, 237.37]},
+            "c2": {"raw": "378.482.885", "bbox": [1073.05, 229.37, 1116.84, 237.37]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "1 Tiền gửi tại các TCTD khác",
+          "note": "5.1",
+          "indent": 668.97,
+          "bbox": [668.97, 251.29, 1116.84, 259.29],
+          "cells": {
+            "c1": {"raw": "463.381.166", "bbox": [1007.04, 251.29, 1045.97, 259.29]},
+            "c2": {"raw": "370.530.038", "bbox": [1073.85, 251.29, 1116.84, 259.29]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "2 Cho vay các TCTD khác",
+          "note": "5.2",
+          "indent": 668.97,
+          "bbox": [668.97, 273.41, 1116.84, 281.41],
+          "cells": {
+            "c1": {"raw": "13.106.364", "bbox": [1010.65, 273.41, 1045.97, 281.41]},
+            "c2": {"raw": "7.952.847", "bbox": [1085.93, 273.41, 1116.84, 281.41]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "IV Chứng khoán kinh doanh",
+          "note": "6",
+          "indent": 668.97,
+          "bbox": [668.97, 295.7, 1116.84, 303.7],
+          "cells": {
+            "c1": {"raw": "2.942.431", "bbox": [1012.85, 295.7, 1045.97, 303.7]},
+            "c2": {"raw": "2.798.875", "bbox": [1082.89, 295.7, 1116.84, 303.7]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": null,
+          "label_raw": "1 Chứng khoán kinh doanh",
+          "note": null,
+          "indent": 668.97,
+          "bbox": [668.97, 317.63, 1116.84, 325.63],
+          "cells": {
+            "c1": {"raw": "3.044.151", "bbox": [1014.83, 317.63, 1045.97, 325.63]},
+            "c2": {"raw": "2.990.692", "bbox": [1083.81, 317.63, 1116.84, 325.63]}
+          }
+        },
+        {
+          "id": "r9",
+          "code": null,
+          "label_raw": "2 Dự phòng rủi ro chứng khoán kinh doanh",
+          "note": null,
+          "indent": 668.97,
+          "bbox": [668.97, 339.74, 1116.84, 347.74],
+          "cells": {
+            "c1": {"raw": "(101.720)", "bbox": [1016.94, 339.74, 1045.97, 347.74]},
+            "c2": {"raw": "(191.817)", "bbox": [1090.56, 339.74, 1116.84, 347.74]}
+          }
+        },
+        {
+          "id": "r10",
+          "code": null,
+          "label_raw": "V Các công cụ tài chính phái sinh và các tài sản tài chính khác",
+          "note": "7",
+          "indent": 668.97,
+          "bbox": [668.97, 362.04, 1116.83, 370.04],
+          "cells": {
+            "c1": {"raw": "228.448", "bbox": [1016.85, 362.04, 1045.96, 370.04]},
+            "c2": {"raw": "-", "bbox": [1112.79, 362.04, 1116.83, 370.04]}
+          }
+        },
+        {
+          "id": "r11",
+          "code": null,
+          "label_raw": "VI Cho vay khách hàng",
+          "note": "8",
+          "indent": 668.96,
+          "bbox": [668.96, 384.15, 1116.83, 392.15],
+          "cells": {
+            "c1": {"raw": "1.957.462.503", "bbox": [998.86, 384.15, 1045.96, 392.15]},
+            "c2": {"raw": "1.685.290.589", "bbox": [1067.39, 384.15, 1116.83, 392.15]}
+          }
+        },
+        {
+          "id": "r12",
+          "code": null,
+          "label_raw": "1 Cho vay khách hàng",
+          "note": null,
+          "indent": 668.96,
+          "bbox": [668.96, 406.08, 1116.83, 414.08],
+          "cells": {
+            "c1": {"raw": "1.992.272.868", "bbox": [1000.74, 406.08, 1045.96, 414.08]},
+            "c2": {"raw": "1.721.954.714", "bbox": [1074.78, 406.08, 1116.83, 414.08]}
+          }
+        },
+        {
+          "id": "r13",
+          "code": null,
+          "label_raw": "2 Dự phòng rủi ro cho vay khách hàng",
+          "note": null,
+          "indent": 668.96,
+          "bbox": [668.96, 428.19, 1116.83, 436.19],
+          "cells": {
+            "c1": {"raw": "(34.810.365)", "bbox": [1004.85, 428.19, 1045.96, 436.19]},
+            "c2": {"raw": "(36.664.125)", "bbox": [1076.38, 428.19, 1116.83, 436.19]}
+          }
+        },
+        {
+          "id": "r14",
+          "code": null,
+          "label_raw": "VIII Chứng khoán Èầu tư",
+          "note": "9",
+          "indent": 668.96,
+          "bbox": [668.96, 450.49, 1116.83, 458.49],
+          "cells": {
+            "c1": {"raw": "211.880.390", "bbox": [1003.79, 450.49, 1045.96, 458.49]},
+            "c2": {"raw": "214.607.153", "bbox": [1076.89, 450.49, 1116.83, 458.49]}
+          }
+        },
+        {
+          "id": "r15",
+          "code": null,
+          "label_raw": "1 Chứng khoán ‚ầu tư sẵn sàng ‚ể bán",
+          "note": "9.1",
+          "indent": 668.96,
+          "bbox": [668.96, 472.41, 1116.82, 480.41],
+          "cells": {
+            "c1": {"raw": "203.605.111", "bbox": [1007.91, 472.41, 1045.96, 480.41]},
+            "c2": {"raw": "188.557.477", "bbox": [1078.48, 472.41, 1116.82, 480.41]}
+          }
+        },
+        {
+          "id": "r16",
+          "code": null,
+          "label_raw": "2 Chứng khoán ‚ầu tư giữ ‚ến ngày ‚áo hạn",
+          "note": "9.2, 9.3",
+          "indent": 668.95,
+          "bbox": [668.95, 494.53, 1116.81, 502.53],
+          "cells": {
+            "c1": {"raw": "8.806.918", "bbox": [1013.8, 494.53, 1045.95, 502.53]},
+            "c2": {"raw": "26.635.861", "bbox": [1081.35, 494.53, 1116.81, 502.53]}
+          }
+        },
+        {
+          "id": "r17",
+          "code": null,
+          "label_raw": "3 Dự phòng rủi ro chứng khoán ‚ầu tư",
+          "note": "9.5",
+          "indent": 668.94,
+          "bbox": [668.94, 516.64, 1116.81, 524.64],
+          "cells": {
+            "c1": {"raw": "(531.639)", "bbox": [1016.15, 516.64, 1045.95, 524.64]},
+            "c2": {"raw": "(586.185)", "bbox": [1086.65, 516.64, 1116.81, 524.64]}
+          }
+        },
+        {
+          "id": "r18",
+          "code": null,
+          "label_raw": "IX Góp vốn, Èầu tư dài hạn",
+          "note": "10",
+          "indent": 668.94,
+          "bbox": [668.94, 538.93, 1116.81, 546.93],
+          "cells": {
+            "c1": {"raw": "4.428.296", "bbox": [1010.72, 538.93, 1045.95, 546.93]},
+            "c2": {"raw": "3.933.844", "bbox": [1082.24, 538.93, 1116.81, 546.93]}
+          }
+        },
+        {
+          "id": "r19",
+          "code": null,
+          "label_raw": "2 Vốn góp liên doanh",
+          "note": null,
+          "indent": 668.94,
+          "bbox": [668.94, 560.86, 1116.81, 568.86],
+          "cells": {
+            "c1": {"raw": "4.193.834", "bbox": [1013.8, 560.86, 1045.95, 568.86]},
+            "c2": {"raw": "3.706.673", "bbox": [1084.03, 560.86, 1116.81, 568.86]}
+          }
+        },
+        {
+          "id": "r20",
+          "code": null,
+          "label_raw": "4 Đầu tư dài hạn khác",
+          "note": null,
+          "indent": 668.94,
+          "bbox": [668.94, 582.97, 1116.81, 590.97],
+          "cells": {
+            "c1": {"raw": "234.462", "bbox": [1018.07, 582.97, 1045.94, 590.97]},
+            "c2": {"raw": "234.462", "bbox": [1088.93, 582.97, 1116.81, 590.97]}
+          }
+        },
+        {
+          "id": "r21",
+          "code": null,
+          "label_raw": "5 Dự phòng giảm giá ‚ầu tư dài hạn",
+          "note": null,
+          "indent": 668.93,
+          "bbox": [668.93, 605.09, 1116.8, 613.09],
+          "cells": {
+            "c1": {"raw": "-", "bbox": [1041.67, 605.09, 1045.93, 613.09]},
+            "c2": {"raw": "(7.291)", "bbox": [1097.05, 605.09, 1116.8, 613.09]}
+          }
+        },
+        {
+          "id": "r22",
+          "code": null,
+          "label_raw": "X Tài sản cố Èịnh",
+          "note": null,
+          "indent": 668.93,
+          "bbox": [668.93, 627.38, 1116.79, 635.38],
+          "cells": {
+            "c1": {"raw": "10.826.743", "bbox": [1008.43, 627.38, 1045.93, 635.38]},
+            "c2": {"raw": "10.002.157", "bbox": [1079.34, 627.38, 1116.79, 635.38]}
+          }
+        },
+        {
+          "id": "r23",
+          "code": null,
+          "label_raw": "1 Tài sản cố ‚ịnh hữu hình",
+          "note": "11",
+          "indent": 668.92,
+          "bbox": [668.92, 649.31, 1116.78, 657.31],
+          "cells": {
+            "c1": {"raw": "6.729.017", "bbox": [1015.98, 649.31, 1045.92, 657.31]},
+            "c2": {"raw": "6.149.216", "bbox": [1087.81, 649.31, 1116.78, 657.31]}
+          }
+        },
+        {
+          "id": "r24",
+          "code": null,
+          "label_raw": "a Nguyên giá",
+          "note": null,
+          "indent": 668.91,
+          "bbox": [668.91, 671.42, 1116.78, 679.42],
+          "cells": {
+            "c1": {"raw": "18.510.909", "bbox": [1010.68, 671.42, 1045.92, 679.42]},
+            "c2": {"raw": "17.253.570", "bbox": [1082.37, 671.42, 1116.78, 679.42]}
+          }
+        },
+        {
+          "id": "r25",
+          "code": null,
+          "label_raw": "b Giá trị hao mòn lũy kế",
+          "note": null,
+          "indent": 668.91,
+          "bbox": [668.91, 693.53, 1116.78, 701.53],
+          "cells": {
+            "c1": {"raw": "(11.781.892)", "bbox": [1009.45, 693.53, 1045.92, 701.53]},
+            "c2": {"raw": "(11.104.354)", "bbox": [1078.42, 693.53, 1116.78, 701.53]}
+          }
+        },
+        {
+          "id": "r26",
+          "code": null,
+          "label_raw": "3 Tài sản cố ‚ịnh vô hình",
+          "note": "12",
+          "indent": 668.91,
+          "bbox": [668.91, 715.65, 1116.78, 723.65],
+          "cells": {
+            "c1": {"raw": "4.097.726", "bbox": [1014.08, 715.65, 1045.92, 723.65]},
+            "c2": {"raw": "3.852.941", "bbox": [1085.82, 715.65, 1116.78, 723.65]}
+          }
+        },
+        {
+          "id": "r27",
+          "code": null,
+          "label_raw": "a Nguyên giá",
+          "note": null,
+          "indent": 668.91,
+          "bbox": [668.91, 737.76, 1116.77, 745.76],
+          "cells": {
+            "c1": {"raw": "7.363.859", "bbox": [1014.32, 737.76, 1045.91, 745.76]},
+            "c2": {"raw": "6.927.826", "bbox": [1086.05, 737.76, 1116.77, 745.76]}
+          }
+        },
+        {
+          "id": "r28",
+          "code": null,
+          "label_raw": "b Giá trị hao mòn lũy kế",
+          "note": null,
+          "indent": 668.9,
+          "bbox": [668.9, 759.87, 1116.77, 767.87],
+          "cells": {
+            "c1": {"raw": "(3.266.133)", "bbox": [1010.48, 759.87, 1045.9, 767.87]},
+            "c2": {"raw": "(3.074.885)", "bbox": [1079.28, 759.87, 1116.77, 767.87]}
+          }
+        }
+      ]
+    },
+    {"id": "p138-b12", "type": "paragraph", "text": "3 - BÁO CÁO KIỂM TOÁN ĐỘC LẬP (Tiếp theo)", "bbox": [70.87, 46.14, 234.41, 54.14]},
+    {"id": "p138-b13", "type": "paragraph", "text": "Vấn Èề khác", "bbox": [70.87, 76.63, 128.55, 86.63]},
+    {
+      "id": "p138-b14",
+      "type": "paragraph",
+      "text": "Trần Hồng Kiên\nSố Giấy CN ĐKHN kiểm toán:\n0298-2023-006-1\nChữ ký ¢ược ủy quyền",
+      "bbox": [74.87, 287.46, 207.51, 338.8]
+    },
+    {
+      "id": "p138-b15",
+      "type": "paragraph",
+      "text": "Số hiệu báo cáo kiểm toán: HAN 4452\nTP. Hồ Chí Minh, ngày 30 tháng 3 năm 2026",
+      "bbox": [74.87, 362.32, 271.78, 383.32]
+    },
+    {
+      "id": "p138-b16",
+      "type": "paragraph",
+      "text": "Các thuyết minh từ trang 12 (cid:13)ến trang 83 là một phần cấu thành báo cáo tài chính hợp nhất này.\nBÁO CÁO BẢN LĨNH ĐỔI MỚI\nTHƯỜNG NIÊN",
+      "bbox": [666.14, 789.48, 976.61, 811.04]
+    },
+    {"id": "p138-b17", "type": "furniture", "text": "270", "bbox": [78.8, 807.9, 91.66, 815.9]},
+    {"id": "p138-b18", "type": "furniture", "text": "271", "bbox": [1099.56, 807.9, 1110.4, 815.9]},
+    {"id": "p138-b19", "type": "furniture", "text": "KIẾN TẠO DẪN ĐẦU\n2025", "bbox": [855.65, 809.12, 951.27, 816.98]}
+  ]
+}

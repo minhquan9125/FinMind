@@ -1,0 +1,124 @@
+{
+  "ir_version": "1",
+  "page": 66,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+    "file_name": "TCB_2025_539917.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p66-b1",
+      "type": "paragraph",
+      "text": "Năng suất phát triển phần mềm được cải giúp giảm việc tái xây dựng các chức năng\nthiện rõ rệt thông qua việc kết hợp AI hỗ trợ tương tự giữa các hệ thống. Tỷ lệ tái sử dụng\nlập trình với các tiêu chuẩn kiểm soát chất dịch vụ đạt 50%, vượt hơn 40% so với mục\nlượng chặt chẽ hơn. Amazon Q – công cụ AI tiêu năm 2025 là 35%. Đồng thời, tỷ lệ mã\nhỗ trợ lập trình viên trong việc viết và rà soát nguồn trùng lặp được phát hiện trong quá\nmã nguồn – đã được triển khai rộng rãi trên trình quét giảm xuống 77,7%, vượt xa mục\ntoàn bộ đội ngũ kỹ thuật. Đến cuối năm, đã tiêu giảm 50% đã đặt ra.\ncó 75–80% lập trình viên sử dụng Amazon\nQ hàng tuần, giúp tăng trung bình khoảng Về chất lượng, việc tăng cường tự động\n700 dòng code mỗi lập trình viên mỗi tuần. hóa cho phép phát hiện lỗi sớm hơn trong\nMức tăng trưởng năng lực này đạt được mà vòng đời phát triển phần mềm. Tỷ lệ kiểm\nkhông cần gia tăng quy mô nhân sự, phản thử chức năng tự động đạt 83,8%, vượt\nánh hiệu quả rõ rệt của việc ứng dụng AI mục tiêu 78%. Đáng chú ý, tỷ lệ lỗi lọt sang\nvào phát triển phần mềm",
+      "bbox": [214.02, 167.29, 544.27, 312.29]
+    },
+    {
+      "id": "p66-b2",
+      "type": "paragraph",
+      "text": "Những cải thiện về năng suất tiếp tục được gần gấp đôi mức cải thiện kế hoạch, qua đó\ncủng cố thông qua việc đẩy mạnh việc tái nâng cao độ ổn định khi phát hành và giảm\nsử dụng các dịch vụ phần mềm hiện có, rủi ro vận hành.",
+      "bbox": [214.02, 324.76, 544.26, 354.29]
+    },
+    {"id": "p66-b3", "type": "paragraph", "text": "Techcombank thúc đẩy đổi mới sáng tạo", "bbox": [214.02, 394.82, 521.31, 412.82]},
+    {
+      "id": "p66-b4",
+      "type": "paragraph",
+      "text": "giai đoạn Kiểm thử Chấp nhận Người dùng\n(User Acceptance Test – UAT giảm 57,9%,",
+      "bbox": [385.51, 303.76, 544.24, 322.76]
+    },
+    {"id": "p66-b5", "type": "paragraph", "text": "Hành trình chuyển đổi của Tech 131", "bbox": [1030.78, 25.6, 1148.03, 32.7]},
+    {
+      "id": "p66-b6",
+      "type": "paragraph",
+      "text": "An ninh mạng đóng vai trò trọng yếu với định đảm bảo tính liên tục trong kinh doanh,",
+      "bbox": [817.79, 405.41, 1148.04, 413.93]
+    },
+    {"id": "p66-b7", "type": "heading", "text": "AN NINH MẠNG", "bbox": [646.3, 406.01, 731.46, 418.01]},
+    {
+      "id": "p66-b8",
+      "type": "paragraph",
+      "text": "bằng việc đưa AI vào vận hành thực tế\ntrong môi trường ngân hàng được kiểm\nsoát chặt chẽ, tập trung vào các giá trị có\nthể đo lường như nâng cao năng suất, tăng\ntốc hỗ trợ đội ngũ tuyến đầu và cải thiện\nchất lượng ra quyết định.",
+      "bbox": [214.02, 416.81, 540.75, 544.79]
+    },
+    {
+      "id": "p66-b9",
+      "type": "paragraph",
+      "text": "Ngân hàng tiếp tục hoàn thiện nền tảng kiểm thử và phát triển phần mềm. Tầm nhìn\nGenAI và triển khai Agent Phân tích Nghiệp dài hạn là xây dựng một “đội ngũ phát triển\nvụ (Business Analyst Agent), giúp giảm ảo”, gồm các AI agent chuyên môn hóa,\nkhoảng 70% khối lượng công việc thủ công giúp nhân lên nhiều lần năng suất kỹ thuật,\ntrong các tác vụ phân tích nghiệp vụ trọng đồng thời nâng cao độ chính xác thông qua\nyếu. Trên nền tảng đó, lộ trình năm 2026 việc kết nối và khai thác dữ liệu hiệu quả, từ\nsẽ mở rộng sang các AI agent chuyên biệt đó hỗ trợ phân tích và ra quyết định nhanh\nkhác trong toàn bộ vòng đời phát triển, bao hơn, tin cậy hơn.\ngồm hỗ trợ thiết kế kiến trúc – giải pháp,",
+      "bbox": [214.02, 566.78, 544.27, 659.28]
+    },
+    {
+      "id": "p66-b10",
+      "type": "paragraph",
+      "text": "Nhằm nâng cao hiệu quả tư vấn tại tuyến khoảng 94% khi đội ngũ tuyến đầu cần câu\nđầu, Khối Công nghệ đã triển khai AE+ trả lời nhanh và nhất quán trong quá trình\nchatbot với hơn 200 bộ hỏi – đáp được tư vấn khách hàng, qua đó cải thiện tốc độ\ntuyển chọn từ kho tri thức sản phẩm AE+. phục vụ và trải nghiệm khách hàng tại quầy.\nGiải pháp này giúp giảm thời gian phản hồi",
+      "bbox": [214.02, 685.71, 543.55, 736.21]
+    },
+    {
+      "id": "p66-b11",
+      "type": "paragraph",
+      "text": "Khối Công nghệ cũng ra mắt Intelligence môi trường ngân hàng an toàn, có kiểm soát",
+      "bbox": [214.02, 762.09, 542.82, 770.6]
+    },
+    {"id": "p66-b12", "type": "paragraph", "text": "Các kết quả nổi bật về\nAn ninh Thông tin năm 2025", "bbox": [646.3, 495.89, 773.07, 518.89]},
+    {
+      "id": "p66-b13",
+      "type": "paragraph",
+      "text": "Techcombank. Là một trong những ngân niềm tin của khách hàng và tuân thủ quy\nhàng lớn nhất Việt Nam, Techcombank vận định pháp lý. Điều này được hiện thực hóa\nhành trên quy mô lớn và luôn là mục tiêu thông qua đội ngũ An ninh Thông tin lành\ncủa các mối đe dọa an ninh mạng trong nghề với năng lực kỹ thuật chuyên sâu và tự\nngành. Trong bối cảnh môi trường đe dọa động hóa ở mức cao.\nngày càng phức tạp, Ngân hàng vẫn kiên",
+      "bbox": [817.79, 415.91, 1148.04, 476.92]
+    },
+    {
+      "id": "p66-b14",
+      "type": "paragraph",
+      "text": "Phát hiện và xử lý 142.548 sự kiện an Xác định và xử lý 28.423 thông tin xác\nninh (tăng 5,3% so với cùng kỳ năm thực bị rò rỉ và dữ liệu khách hàng nhạy\nngoái), không gây ảnh hưởng đến độ cảm bị lộ trên Internet (cao gấp 2 lần\nsẵn sàng của hệ thống, bao gồm 57.371 so với 2024)\ncuộc tấn công mức trung bình và 41.143\ncuộc tấn công mức cao",
+      "bbox": [829.13, 507.79, 1137.45, 568.78]
+    },
+    {
+      "id": "p66-b15",
+      "type": "paragraph",
+      "text": "Phát hiện và ngăn chặn 2.642 website, Phát hiện và khắc phục 5 lỗ hổng\nứng dụng, trang mạng xã hội và tin nghiêm trọng trên hạ tầng AWS,\nngăn chặn nguy cơ rò rỉ dữ liệu quy",
+      "bbox": [829.13, 588.4, 1136.66, 617.9]
+    },
+    {"id": "p66-b16", "type": "paragraph", "text": "nhắn lừa đảo giả mạo Techcombank", "bbox": [829.13, 610.22, 963.35, 618.72]},
+    {"id": "p66-b17", "type": "paragraph", "text": "mô lớn cũng như các rủi ro về tài\nchính và uy tín", "bbox": [995.19, 619.89, 1136.64, 638.89]},
+    {
+      "id": "p66-b18",
+      "type": "paragraph",
+      "text": "Tự động phân tích 37.429 Các lỗ hổng và Hoàn thành đánh giá lỗ hổng trên\nđiểm yếu bảo mật phổ biến (CVE) mới, 100% tài sản CNTT của Techcombank\nrút ngắn thời gian phát hiện và phản ứng (27.468 tài sản), giúp chủ động\nvới các lỗ hổng mức cao và nghiêm trọng phòng ngừa và ngăn chặn nguy cơ\nxuống còn 4,34 giờ (nhanh hơn 38% so bị khai thác\nvới cùng kỳ năm ngoái)",
+      "bbox": [829.13, 657.34, 1136.65, 718.33]
+    },
+    {
+      "id": "p66-b19",
+      "type": "paragraph",
+      "text": "Tự xây dựng và triển khai các công cụ Thiết lập bộ kiểm soát an ninh AI tiêu\nan ninh nội bộ (Red Team Hunter, AI chuẩn, tạo nền tảng cho việc triển khai\nthreat modeling, audit firewall, kiểm AI agent an toàn và có khả năng mở",
+      "bbox": [829.13, 737.46, 1136.65, 766.96]
+    },
+    {"id": "p66-b20", "type": "paragraph", "text": "130 Báo cáo thường niên 2025", "bbox": [42.52, 25.6, 147.46, 32.7]},
+    {"id": "p66-b21", "type": "paragraph", "text": "Kỹ thuật Xuất sắc", "bbox": [42.52, 106.06, 191.61, 126.06]},
+    {"id": "p66-b22", "type": "paragraph", "text": "THÚC ĐẨY NĂNG SUẤT\nTHÔNG QUA AI VÀ KỶ LUẬT\nKỸ THUẬT", "bbox": [42.52, 167.9, 191.67, 207.91]},
+    {"id": "p66-b23", "type": "paragraph", "text": "ĐỔI MỚI SÁNG TẠO", "bbox": [42.52, 394.04, 147.91, 406.04]},
+    {"id": "p66-b24", "type": "paragraph", "text": "GenAI Platform\n(Nền tảng AI cấp\ndoanh nghiệp)", "bbox": [65.4, 567.27, 139.03, 603.27]},
+    {"id": "p66-b25", "type": "paragraph", "text": "AE+ Chatbot\n(Hỗ trợ sản phẩm cho\nđội ngũ tuyến đầu)", "bbox": [65.4, 686.23, 160.14, 722.23]},
+    {"id": "p66-b26", "type": "paragraph", "text": "Intelligence Hub", "bbox": [65.4, 762.6, 137.76, 772.6]},
+    {"id": "p66-b27", "type": "paragraph", "text": "tra cấu hình…), vừa nâng cao hiệu quả rộng trên toàn Ngân hàng.", "bbox": [829.13, 768.95, 1089.16, 777.46]},
+    {
+      "id": "p66-b28",
+      "type": "paragraph",
+      "text": "Hub, cung cấp cho cán bộ nhân viên quyền và được quản trị chặt chẽ, nhằm ngăn ngừa",
+      "bbox": [214.02, 772.59, 542.85, 781.1]
+    },
+    {"id": "p66-b29", "type": "paragraph", "text": "(Truy cập an toàn các", "bbox": [65.4, 775.6, 159.04, 785.6]},
+    {"id": "p66-b30", "type": "paragraph", "text": "bảo vệ, vừa giảm chi phí bản quyền", "bbox": [829.13, 779.46, 973.25, 787.96]},
+    {
+      "id": "p66-b31",
+      "type": "paragraph",
+      "text": "truy cập đến các công cụ AI hàng đầu (như rò rỉ dữ liệu và bảo vệ thông tin nhạy cảm.",
+      "bbox": [214.02, 783.08, 538.27, 791.59]
+    },
+    {"id": "p66-b32", "type": "paragraph", "text": "công cụ AI hàng đầu)", "bbox": [65.4, 788.6, 159.01, 798.6]},
+    {"id": "p66-b33", "type": "paragraph", "text": "bên ngoài", "bbox": [829.13, 789.95, 867.18, 798.45]},
+    {"id": "p66-b34", "type": "paragraph", "text": "ChatGPT, DeepSeek, Claude, …) trong một", "bbox": [214.02, 793.59, 372.05, 802.09]}
+  ]
+}

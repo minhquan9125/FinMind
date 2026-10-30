@@ -131,6 +131,15 @@ def fireant_urls(limit: int) -> list[str]:
     return [item['url'] for item in islice(fireant_candidates(), limit)]
 
 
+def fireant_attachment_urls(row: dict) -> list[str]:
+    return list(dict.fromkeys(
+        file['fileContentUrl'] for file in row.get('files') or []
+        if isinstance(file, dict)
+        and isinstance(file.get('fileContentUrl'), str)
+        and urlparse(file['fileContentUrl']).scheme in ('http', 'https')
+    ))
+
+
 def fetch_article(url: str, candidate: dict | None = None) -> dict | None:
     source = "cafef" if urlparse(url).hostname == "cafef.vn" else "fireant"
     if source == "fireant":
@@ -145,6 +154,7 @@ def fetch_article(url: str, candidate: dict | None = None) -> dict | None:
         return {
             'id': hashlib.sha256(final_url.encode('utf-8')).hexdigest()[:20],
             'source': source, **item, 'url': final_url, 'content': content,
+            'attachments': fireant_attachment_urls(row),
             'crawled_at': datetime.now(timezone.utc).isoformat(),
         }
     else:

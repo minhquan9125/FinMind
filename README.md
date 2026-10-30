@@ -120,13 +120,7 @@ Dùng tài khoản thật: đăng ký trước hoặc đăng nhập tài khoản
 
 ### 5. Kiểm tra sau khi chạy
 
-| Địa chỉ | Kết quả mong đợi |
-|---|---|
-| http://localhost:5173/ | Giao diện FinMind |
-| http://127.0.0.1:8000/api/health | `status: ok`, kèm `research_warmup.status` |
-| http://127.0.0.1:8000/docs | Swagger có cả auth và market-data |
-| http://localhost:5173/api/market-data/news?limit=2 | JSON tin tức qua proxy frontend |
-| http://localhost:5173/api/market-data/stocks/FPT/ohlcv?limit=5 | JSON giá FPT đã lưu |
+
 
 Trên Tổng quan, bấm chỉ số để tải biểu đồ. Trang doanh nghiệp lấy lịch sử giá và tin theo mã; nguồn không có dữ liệu sẽ hiện trạng thái trống. Cập nhật mới phụ thuộc mạng, SDK và hạn mức nguồn. Cache mới nằm ở `.agent-state/market-data/`; không cần chạy crawler riêng để mở giao diện.
 
@@ -143,20 +137,20 @@ Sau đó chạy lại hai terminal ở bước 4. Giữ `.env` và `.venv` của
 
 ### 7. Lỗi thường gặp khi khởi động
 
-| Lỗi | Kiểm tra / xử lý |
-|---|---|
-| `Python was not found` | Python chưa có trên PATH; dùng `py -3.12` hoặc đường dẫn Python của máy để tạo `.venv`. |
-| Không tìm thấy `.venv/Scripts/python.exe` | Tạo `.venv` ở gốc FinMind; không tạo trong backend. |
-| `Missing script: dev` / không tìm thấy package.json | Backend: đứng trong `FinMind/backend`; frontend: trong `FinMind/frontend`. Kiểm tra đã pull file chạy npm mới. |
-| `npm.ps1 ... running scripts is disabled` | Dùng `npm.cmd` thay `npm`. |
-| `ModuleNotFoundError: jwt`, `pwdlib`, `google`... | Cài lại `backend/requirements.txt` bằng Python trong `.venv` gốc. |
-| `Failed to resolve import @react-oauth/google` | Dừng Vite, chạy `npm.cmd ci` trong frontend, bật lại. |
-| Backend lỗi kết nối localhost / connection refused | Kiểm tra DATABASE_URL và thứ tự ưu tiên `.env`; chờ backend startup thành công trước khi đăng nhập. |
-| Backend lỗi kết nối Supabase | Kiểm tra mạng, chuỗi kết nối, mật khẩu và cấu hình do leader cấp. Không in chuỗi có mật khẩu vào log công khai. |
-| Cổng 5173 hoặc 8000 đang dùng | Dừng server cũ bằng Ctrl+C trong terminal đã mở nó; chỉ giữ một frontend và một backend. |
-| `400: origin_mismatch` khi đăng nhập Google | Mở đúng `http://localhost:5173`; nhờ người quản lý OAuth thêm origin này cho client ID đang dùng. |
-| Collector lock đang được giữ | Dừng backend 8001/bản backend khác; chỉ chạy main 8000, một worker. Không xóa lock khi server khác còn chạy. |
-| Giao diện báo không kết nối API | Kiểm tra backend 8000 và health; xóa URL frontend cũ trỏ 8001, khởi động lại Vite. |
+| Lỗi                                                     | Kiểm tra / xử lý                                                                                                               |
+| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `Python was not found`                                 | Python chưa có trên PATH; dùng `py -3.12` hoặc đường dẫn Python của máy để tạo `.venv`.                         |
+| Không tìm thấy `.venv/Scripts/python.exe`           | Tạo `.venv` ở gốc FinMind; không tạo trong backend.                                                                        |
+| `Missing script: dev` / không tìm thấy package.json | Backend: đứng trong `FinMind/backend`; frontend: trong `FinMind/frontend`. Kiểm tra đã pull file chạy npm mới.         |
+| `npm.ps1 ... running scripts is disabled`              | Dùng `npm.cmd` thay `npm`.                                                                                                   |
+| `ModuleNotFoundError: jwt`, `pwdlib`, `google`...  | Cài lại `backend/requirements.txt` bằng Python trong `.venv` gốc.                                                         |
+| `Failed to resolve import @react-oauth/google`         | Dừng Vite, chạy `npm.cmd ci` trong frontend, bật lại.                                                                       |
+| Backend lỗi kết nối localhost / connection refused    | Kiểm tra DATABASE_URL và thứ tự ưu tiên `.env`; chờ backend startup thành công trước khi đăng nhập.               |
+| Backend lỗi kết nối Supabase                          | Kiểm tra mạng, chuỗi kết nối, mật khẩu và cấu hình do leader cấp. Không in chuỗi có mật khẩu vào log công khai. |
+| Cổng 5173 hoặc 8000 đang dùng                        | Dừng server cũ bằng Ctrl+C trong terminal đã mở nó; chỉ giữ một frontend và một backend.                              |
+| `400: origin_mismatch` khi đăng nhập Google         | Mở đúng `http://localhost:5173`; nhờ người quản lý OAuth thêm origin này cho client ID đang dùng.                   |
+| Collector lock đang được giữ                        | Dừng backend 8001/bản backend khác; chỉ chạy main 8000, một worker. Không xóa lock khi server khác còn chạy.           |
+| Giao diện báo không kết nối API                     | Kiểm tra backend 8000 và health; xóa URL frontend cũ trỏ 8001, khởi động lại Vite.                                       |
 
 Các phần dưới là thao tác ingest dữ liệu riêng, **không phải bước bắt buộc để mở ứng dụng**.
 
@@ -257,7 +251,6 @@ Thứ tự làm để chạy được:
 5. Kiểm tra một câu hỏi mẫu như “Tổng tài sản BID tại 30/06/2026 là bao nhiêu?” để xác nhận kết quả trả về đúng số, kỳ và đơn vị.
    Trong đó, mục 1 là lỗi cần sửa trực tiếp để nội dung Vector RAG không gây hiểu sai. Mục 2–4 cần làm trước khi tin kết quả tài chính.
 6. 
-
 
 ```
 py-m uvicorn src.main:app --reload --port 8000

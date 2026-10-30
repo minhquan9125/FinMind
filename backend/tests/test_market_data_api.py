@@ -7,8 +7,10 @@ from pathlib import Path
 from unittest.mock import patch
 
 from fastapi.testclient import TestClient
+from uuid import uuid4
 
 from backend.src.api.routers.market_data import get_market_data_repository
+from backend.src.auth.authorization import Principal, current_principal
 from backend.src.market_data.app import app
 from backend.src.market_data.repository import FileMarketDataRepository
 
@@ -23,13 +25,17 @@ class MarketDataApiTests(unittest.TestCase):
         # Snapshot contract tests must not acquire the running server's collector lock.
         self.disabled_live = patch.dict("os.environ", {"FINMIND_LIVE_ENABLED": "0"})
         self.disabled_live.start()
+        self.db_pool = patch("backend.src.market_data.app.get_pool", lambda: object())
+        self.db_pool.start()
         self.tempdir = tempfile.TemporaryDirectory()
         self.root = Path(self.tempdir.name)
         app.dependency_overrides[get_market_data_repository] = lambda: FileMarketDataRepository(self.root)
+        app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({"RESEARCHER"}))
 
     def tearDown(self):
         app.dependency_overrides.clear()
         self.tempdir.cleanup()
+        self.db_pool.stop()
         self.disabled_live.stop()
 
     def test_ohlcv_reads_saved_bars_and_limits_response(self):

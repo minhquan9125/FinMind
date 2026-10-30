@@ -332,6 +332,8 @@ def main() -> int:
     parser.add_argument("--symbols", help="Comma-separated ticker filter")
     parser.add_argument("--years", help="Comma-separated report-year filter")
     parser.add_argument("--pages", help="Comma-separated page numbers to process")
+    parser.add_argument("--output-root", type=Path, default=OUTPUT_ROOT,
+                        help="Directory containing OCR extraction JSON files")
     parser.add_argument("--model", default=load_config_value("GEMINI_MODEL", DEFAULT_MODEL), help="Preferred Gemini model")
     parser.add_argument("--oai-base-url", default=default_oai_base_url, help="OpenAI-compatible API base URL")
     parser.add_argument("--oai-model", default=default_oai_model, help="OpenAI-compatible model name")
@@ -387,12 +389,18 @@ def main() -> int:
 
     cleaned = 0
     failures: list[dict[str, Any]] = []
+    unavailable_pdfs: list[dict[str, Any]] = []
+    output_root = args.output_root.resolve()
     for record in records:
         symbol = str(record.get("symbol", "")).upper()
         year = int(record.get("year", 0))
         for relative_pdf in record.get("pdf_paths") or []:
-            pdf = safe_repo_file(relative_pdf)
-            json_path = OUTPUT_ROOT / symbol / str(year) / f"{pdf.stem}.json"
+            try:
+                pdf = safe_repo_file(relative_pdf)
+            except FileNotFoundError:
+                unavailable_pdfs.append({"symbol": symbol, "year": year, "manifest_pdf": relative_pdf})
+                continue
+            json_path = output_root / symbol / str(year) / f"{pdf.stem}.json"
             if not json_path.is_file():
                 continue
             try:
@@ -455,7 +463,8 @@ def main() -> int:
             if changed:
                 atomic_json(json_path, payload)
 
-    print(json.dumps({"text_clean_pages": cleaned, "failures": failures}, ensure_ascii=False))
+    print(json.dumps({"text_clean_pages": cleaned, "unavailable_pdfs": unavailable_pdfs,
+                      "failures": failures}, ensure_ascii=False))
     return 1 if failures else 0
 
 
