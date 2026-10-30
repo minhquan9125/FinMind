@@ -29,7 +29,23 @@ _BREAK = re.compile(r"(?<!\d)[.!?;](?!\d)|\n")
 _ISSUER_SUBSIDIARY = re.compile(
     r"\b(?:các\s+)?công ty con\s*(?:kiểm soát\s+(?:trực tiếp|gián tiếp)\s*)?(?::|là|gồm)?\s*",
     re.I)
-_SECTION = re.compile(r"^\s*các công ty (con|liên kết)(?:\s+kiểm soát\s+(?:trực tiếp|gián tiếp))?\s*$", re.I)
+_SECTION = re.compile(r"^\s*các công ty (con|liên kết)(?:\s+kiểm soát\s+(trực tiếp|gián tiếp))?\s*$", re.I)
+_ROW_PERCENT = re.compile(r"^\s*Tỷ lệ sở hữu\s*:?\s*(\d{1,3}(?:[.,]\d{1,3})?)\s*%", re.I)
+_CODE = r"[A-ZĐ][A-Za-z0-9&]{1,11}"
+# "Full legal name (BIDV)" or "Full name (Techcom Securities - TCBS)" defines a document-local code.
+_ABBREVIATION = re.compile(r"\(\s*(?:[^()\n]{1,40}?\s[-–]\s*)?(" + _CODE + r")\s*\)")
+_APPOSITIVE = re.compile(
+    r"(?<![\w-])(?P<child>" + _CODE + r")\s*[-–]\s*(?i:công ty con)(?P<indirect>\s+(?i:gián tiếp))?"
+    r"\s+(?i:của)\s+(?P<parent>" + _CODE + r")(?![\w-])")
+_PASSIVE_OWNER = re.compile(
+    r"(?<![\w-])(?P<child>" + _CODE + r")\s+là\s+(?:một\s+)?"
+    r"(?P<kind>(?i:công ty con|công ty liên kết|công ty|doanh nghiệp))\s+do\s+(?P<parent>" + _CODE + r")"
+    r"\s+(?i:sở hữu|nắm giữ)\s+(?P<percent>\d{1,3}(?:[.,]\d{1,3})?)\s*%")
+_BETWEEN = re.compile(r"(?P<cue>(?i:hợp tác|liên doanh))\s+(?i:giữa)\s+")
+_STRUCTURE = re.compile(
+    r"tỷ lệ sở hữu\b[^%()]{0,80}?công ty con\s*\(\s*(\d{1,2})/(\d{1,2})/(20\d{2})\s*\)", re.I)
+_STRUCTURE_ITEM = re.compile(
+    r"(?:^|(?<=\)))[ \t]*(?P<name>[^\s()][^\n()]{0,40}?)\s*\(\s*(?P<percent>\d{1,3}(?:[.,]\d{1,3})?)\s*%\s*\)", re.M)
 _LEGAL_LINE = re.compile(r"^(?:Tổng\s+)?Công ty\s+(?:Cổ phần|CP|TNHH|Trách nhiệm hữu hạn)\s+\S", re.I)
 _FIELD_LINE = re.compile(r"^(?:Địa chỉ|Điện thoại|Fax|Email|Tỷ lệ|Lĩnh vực|Tên cũ|Vốn|Mã số|Website|Lợi nhuận)\b", re.I)
 _SUBSIDIARY_OF = re.compile(
@@ -38,7 +54,72 @@ _SUBSIDIARY_OF = re.compile(
 _GENERIC_COMPANY_NAMES = {
     'công ty cổ phần', 'công ty cp', 'công ty tnhh',
     'công ty trách nhiệm hữu hạn', 'ngân hàng thương mại cổ phần',
+    'công ty', 'ngân hàng', 'tập đoàn',
 }
+_BLOCKERS = (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)
+# A name ending in "và"/"&"/"," was cut by table columns or a line break.
+_CUT_NAME = re.compile(r"(?:\bvà|&|,)$", re.I)
+
+
+def _percent(raw):
+    """Contract decimal string, or None outside 0-100."""
+    value = raw.replace(',', '.')
+    if float(value) > 100:
+        return None
+    return str(float(value)).rstrip('0').rstrip('.') if '.' in value else str(int(value))
+
+
+def _blocked(text, start, end):
+    """Check the whole clause around a match for negated/planned/conditional/past wording."""
+    left = max(text.rfind(mark, 0, start) for mark in '.!?;\n') + 1
+    rights = [i for i in (text.find(mark, end) for mark in '.!?;\n') if i >= 0]
+    return any(p.search(text[left:min(rights, default=len(text))]) for p in _BLOCKERS)
+
+
+def _registry_index(registry):
+    """Verified Company rows by normalized alias; generic legal forms identify nobody."""
+    index = {}
+    for row in registry:
+        if row['entity_type'] != 'Company' or row['verified'] is not True or not row.get('identity_key'):
+            continue
+        for alias in [row['canonical_name']] + row['aliases']:
+            key = text_view(alias)[0].strip()
+            if key and key not in _GENERIC_COMPANY_NAMES:
+                index.setdefault(key, {})[row['entity_id']] = row
+    return index
+
+
+def _registry_entity(row, raw):
+    return {'entity_id': row['entity_id'], 'entity_type': 'Company',
+            'canonical_name': row['canonical_name'], 'aliases': [raw],
+            'resolution_status': 'resolved', 'identity_key': row['identity_key'], 'attributes': {}}
+
+
+def _abbreviations(chunks, index):
+    """Codes defined in this document right after a verified, unambiguous full name."""
+    by_last = {}
+    for key in index:
+        if len(key.split()) >= 3:
+            by_last.setdefault(key.rsplit(' ', 1)[-1], []).append(key)
+    found = {}
+    for chunk in chunks:
+        text = chunk['text']
+        for match in _ABBREVIATION.finditer(text):
+            before = text_view(text[max(0, match.start() - 160):match.start()])[0].rstrip()
+            if not before:
+                continue
+            keys = [k for k in by_last.get(before.rsplit(' ', 1)[-1], [])
+                    if before.endswith(k) and (len(before) == len(k) or not before[-len(k) - 1].isalnum())
+                    and len(index[k]) == 1]
+            if keys:
+                found.setdefault(match.group(1), set()).update(index[max(keys, key=len)])
+    result = {}
+    for code, ids in found.items():
+        registered = set(index.get(text_view(code)[0].strip(), {}))
+        # A code defined twice, or already registered to someone else, is ambiguous.
+        if len(ids) == 1 and (not registered or registered == ids):
+            result[code] = ids.pop()
+    return result
 
 
 def _sentences(text):
@@ -138,10 +219,8 @@ def _recognize(sentence, first, second):
             return None
         attributes = {}
         matches = _PERCENT.findall(between + after[:80])
-        if len(matches) == 1:
-            value = matches[0].replace(',', '.')
-            if float(value) <= 100:
-                attributes['ownership_percent'] = str(float(value)).rstrip('0').rstrip('.') if '.' in value else value
+        if len(matches) == 1 and _percent(matches[0]) is not None:
+            attributes['ownership_percent'] = _percent(matches[0])
         if re.search(r"\bgián tiếp\b", between, re.I):
             attributes['holding_basis'] = 'indirect'
         elif re.search(r"\btrực tiếp\b", between, re.I):
@@ -150,7 +229,7 @@ def _recognize(sentence, first, second):
     return None
 
 
-def _issuer_entity(document, registry):
+def _issuer_entity(document, index):
     """Use the DB company binding only when it exactly matches one verified registry row."""
     if document.get('doc_type') != 'ANNUAL_REPORT':
         return None
@@ -159,18 +238,13 @@ def _issuer_entity(document, registry):
         return None
     if not re.match(r'^\s*' + re.escape(symbol) + r'\s*[—–-]', document.get('title', ''), re.I):
         return None
-    key = text_view(name)[0].strip()
-    matches = [row for row in registry if row['entity_type'] == 'Company' and row['verified']
-               and row.get('identity_key') and any(text_view(alias)[0].strip() == key
-               for alias in [row['canonical_name']] + row['aliases'])]
+    matches = list(index.get(text_view(name)[0].strip(), {}).values())
     if len(matches) != 1:
         return None
     row = matches[0]
     if text_view(row['canonical_name'])[0].strip() in _GENERIC_COMPANY_NAMES:
         return None
-    return {'entity_id': row['entity_id'], 'entity_type': 'Company',
-            'canonical_name': row['canonical_name'], 'aliases': [name],
-            'resolution_status': 'resolved', 'identity_key': row['identity_key'], 'attributes': {}}
+    return _registry_entity(row, name)
 
 
 def extract_candidates(envelope, registry):
@@ -201,14 +275,18 @@ def extract_candidates(envelope, registry):
         return (entity['resolution_status'] == 'resolved'
                 and entity['canonical_name'] is not None
                 and text_view(entity['canonical_name'])[0].strip() not in _GENERIC_COMPANY_NAMES)
-    def reviewable_company(mention):
+    def reviewable_company(mention, allow_cut=False):
+        """allow_cut: a cut name may still be rescued by a verified alias (entry_identity)."""
         entity = entities[mention['entity_id']]
         name = mention['raw_name'].strip()
         return (entity['resolution_status'] == 'unresolved'
                 and 4 <= len(name.split()) <= 14 and len(name) <= 100
                 and re.match(r'^(?:Công ty|CTCP|Tổng Công ty|Ngân hàng)\b', name, re.I) is not None
                 and text_view(name)[0].strip() not in _GENERIC_COMPANY_NAMES
-                and not re.search(r'[.;]|\s(?:và|&)\s', name, re.I))
+                and not re.search(r'[.;]|\s(?:và|&)\s', name, re.I)
+                and (allow_cut or not _CUT_NAME.search(name)))
+    def cut_and_unresolved(child, child_id):
+        return child_id == child['entity_id'] and _CUT_NAME.search(child['raw_name'].strip()) is not None
     def credible_mention(mention):
         name = mention['raw_name'].strip()
         if not complete_company(mention['entity_id']):
@@ -234,9 +312,54 @@ def extract_candidates(envelope, registry):
             alias = min(aliases, key=lambda m: m['start'])
             return alias['entity_id'], max(child['end'], alias['end'])
         return child['entity_id'], child['end']
+    index = _registry_index(registry)
+    rows_by_id = {row['entity_id']: row for rows in index.values() for row in rows.values()}
+    by_first = {}
+    for key in index:
+        by_first.setdefault(key.split(' ', 1)[0], []).append(key)
+    by_document = {}
+    for chunk in result['chunks']:
+        by_document.setdefault(chunk['document_id'], []).append(chunk)
+    abbreviations = {doc_id: _abbreviations(chunks, index) for doc_id, chunks in by_document.items()}
+    def ensure(entity_id, raw):
+        if entity_id not in entities:
+            entities[entity_id] = _registry_entity(rows_by_id[entity_id], raw)
+            result['entities'].append(entities[entity_id])
+        return entity_id
+    def resolve_code(document_id, raw, allow_ticker):
+        """A short code resolves through this document's definition or one registry row.
+
+        A bare ticker is accepted only where the clause itself says it is a company
+        (allow_ticker), mirroring the shared resolver's ticker cue rule.
+        """
+        if raw in abbreviations.get(document_id, {}):
+            return ensure(abbreviations[document_id][raw], raw)
+        key = text_view(raw)[0].strip()
+        rows = index.get(key, {})
+        if len(rows) != 1:
+            return None
+        row = next(iter(rows.values()))
+        if not allow_ticker and key in {text_view(t)[0].strip() for t in row.get('ticker_aliases', [])}:
+            return None
+        return ensure(row['entity_id'], raw)
+    def party(document_id, text, start):
+        """Longest verified name (or defined code) starting at start: (entity_id, end)."""
+        norm, spans = text_view(text[start:start + 160])
+        keys = [k for k in by_first.get(norm.split(' ', 1)[0], [])
+                if norm.startswith(k) and (len(norm) == len(k) or not norm[len(k)].isalnum())
+                and len(index[k]) == 1]
+        if keys:
+            key = max(keys, key=len)
+            row = next(iter(index[key].values()))
+            if key not in {text_view(t)[0].strip() for t in row.get('ticker_aliases', [])}:
+                return ensure(row['entity_id'], text[start:start + spans[len(key) - 1][1]]), start + spans[len(key) - 1][1]
+        code = re.match(_CODE + r'(?![\w-])', text[start:])
+        if code and code.group() in abbreviations.get(document_id, {}):
+            return resolve_code(document_id, code.group(), False), start + code.end()
+        return None
     issuers = {}
     for document in result['documents']:
-        issuer = _issuer_entity(document, registry)
+        issuer = _issuer_entity(document, index)
         if issuer:
             issuers[document['document_id']] = issuer['entity_id']
             if issuer['entity_id'] not in entities:
@@ -247,12 +370,12 @@ def extract_candidates(envelope, registry):
         if entities[mention['entity_id']]['entity_type'] == 'Company':
             by_chunk.setdefault((mention['document_id'], mention['chunk_id']), []).append(mention)
     # A heading may be in the preceding chunk, but only on the same verified page.
-    sections = {}
+    sections, rows = {}, {}
     for chunk in sorted(result['chunks'], key=lambda c: (c['document_id'], c['locator']['page'],
                                                            c['locator'].get('section_index', 0),
                                                            c['locator'].get('char_start', 0))):
         page_key = chunk['document_id'], chunk['locator']['page']
-        section = sections.get(page_key)
+        section, row = sections.get(page_key), rows.get(page_key)
         lines = chunk['text'].splitlines(keepends=True)
         offset = 0
         entries = []
@@ -261,28 +384,79 @@ def extract_candidates(envelope, registry):
             if heading:
                 kind = 'HAS_SUBSIDIARY' if heading.group(1).lower() == 'con' else 'HAS_ASSOCIATE'
                 section = (kind, {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'],
-                                  'quote': line.strip()})
+                                  'quote': line.strip()}, (heading.group(2) or '').lower() == 'gián tiếp')
+                row = None
             if section and _LEGAL_LINE.match(line.strip()):
-                entries.append((offset + len(line) - len(line.lstrip()), section))
+                # One list row runs until the next legal name/heading, possibly into the next chunk.
+                row = {'shares': [], 'indirect': section[2]}
+                entries.append((offset + len(line) - len(line.lstrip()), section[:2], row))
+            elif row is not None and _ROW_PERCENT.match(line.strip()):
+                row['shares'].append((_percent(_ROW_PERCENT.match(line.strip()).group(1)),
+                                      {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'],
+                                       'quote': line.strip()}))
             offset += len(line)
-        sections[page_key] = section
+        sections[page_key], rows[page_key] = section, row
         chunk['_wbs03_entries'] = entries
-    relations = {}
+    relations = []
     def record(kind, subject, target, attributes, temporal, evidence):
-        key = (kind, subject, target, json.dumps(attributes, ensure_ascii=False, sort_keys=True),
-               json.dumps(temporal, sort_keys=True))
-        if key in relations:
-            if evidence not in relations[key]['evidence']:
-                relations[key]['evidence'].append(evidence)
+        """Merge compatible statements of one pair in one report; keep conflicting values apart."""
+        for relation in relations:
+            if ((relation['relation_type'], relation['subject_id'], relation['object_id'], relation['_document'])
+                    != (kind, subject, target, evidence['document_id'])):
+                continue
+            if (any(relation['attributes'].get(k, v) != v for k, v in attributes.items())
+                    or any(v is not None and relation['temporal'][k] not in (None, v) for k, v in temporal.items())):
+                continue
+            relation['attributes'].update(attributes)
+            relation['temporal'].update({k: v for k, v in temporal.items() if v is not None})
+            if evidence not in relation['evidence']:
+                relation['evidence'].append(evidence)
             return
-        digest = hashlib.sha256(json.dumps(key, ensure_ascii=False).encode('utf-8')).hexdigest()[:32]
-        relations[key] = {'relation_id': 'rel:' + digest, 'relation_type': kind,
-                          'subject_id': subject, 'object_id': target, 'attributes': attributes,
-                          'temporal': temporal, 'evidence': [evidence],
-                          'review': {'status': 'PENDING', 'reviewer': None, 'reviewed_at': None}}
+        relations.append({'_document': evidence['document_id'], 'relation_type': kind,
+                          'subject_id': subject, 'object_id': target, 'attributes': dict(attributes),
+                          'temporal': dict(temporal), 'evidence': [evidence],
+                          'review': {'status': 'PENDING', 'reviewer': None, 'reviewed_at': None}})
 
     for chunk in result['chunks']:
         mentions = by_chunk.get((chunk['document_id'], chunk['chunk_id']), [])
+        text, doc_id = chunk['text'], chunk['document_id']
+        def cite(start, end):
+            return {'document_id': doc_id, 'chunk_id': chunk['chunk_id'], 'quote': text[start:end]}
+        # "(BIC- Công ty con của BIDV)": a code in apposition to "công ty con của <owner>".
+        for match in _APPOSITIVE.finditer(text):
+            child = resolve_code(doc_id, match.group('child'), True)
+            parent = resolve_code(doc_id, match.group('parent'), True)
+            if child and parent and child != parent and not _blocked(text, match.start(), match.end()):
+                record('HAS_SUBSIDIARY', parent, child,
+                       {'holding_basis': 'indirect'} if match.group('indirect') else {},
+                       {'as_of': None, 'valid_from': None, 'valid_to': None}, cite(*match.span()))
+        # "VCBR là công ty con do Vietcombank sở hữu 100% vốn".
+        for match in _PASSIVE_OWNER.finditer(text):
+            child = resolve_code(doc_id, match.group('child'), True)
+            parent = resolve_code(doc_id, match.group('parent'), False)
+            percent = _percent(match.group('percent'))
+            if not child or not parent or child == parent or percent is None or _blocked(text, *match.span()):
+                continue
+            kind = {'công ty con': 'HAS_SUBSIDIARY', 'công ty liên kết': 'HAS_ASSOCIATE'}.get(
+                match.group('kind').lower(), 'OWNS_SHARES')
+            record(kind, parent, child, {'ownership_percent': percent},
+                   {'as_of': None, 'valid_from': None, 'valid_to': None}, cite(*match.span()))
+        # "hợp tác/liên doanh giữa A và B" with exactly two verified parties.
+        for match in _BETWEEN.finditer(text):
+            first = party(doc_id, text, match.end())
+            link = first and re.match(r'\s*(?:\([^()\n]{1,30}\))?\s*(?:và|với)\s+', text[first[1]:])
+            second = link and party(doc_id, text, first[1] + link.end())
+            if not second or second[0] == first[0]:
+                continue
+            word = re.match(r'\s*(?:\([^()\n]{1,30}\))?[ \t]*(\S*)', text[second[1]:]).group(1)
+            # A capitalized word or another "và" means the name list continues: not two parties.
+            if word and not (word[0] in '.;:)' or (word[0].islower() and word != 'và')):
+                continue
+            if _blocked(text, match.start(), second[1]):
+                continue
+            attributes = {'cooperation_scope': 'liên doanh'} if match.group('cue').lower() == 'liên doanh' else {}
+            record('COOPERATES_WITH', *sorted((first[0], second[0])), attributes,
+                   {'as_of': None, 'valid_from': None, 'valid_to': None}, cite(match.start(), second[1]))
         for start, end, sentence in _sentences(chunk['text']):
             quote = sentence.strip()
             if not quote or any(p.search(quote) for p in (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)):
@@ -331,6 +505,20 @@ def extract_candidates(envelope, registry):
         entries = chunk.pop('_wbs03_entries', [])
         if not issuer_id:
             continue
+        # "TỶ LỆ SỞ HỮU ... TẠI CÁC CÔNG TY CON (31/12/2024)" then "TCBS (94,1%) TechAMC (100%)".
+        for heading in _STRUCTURE.finditer(text):
+            try:
+                as_of = date(int(heading.group(3)), int(heading.group(2)), int(heading.group(1))).isoformat()
+            except ValueError:
+                continue
+            for item in _STRUCTURE_ITEM.finditer(text, heading.end(), min(len(text), heading.end() + 300)):
+                child = resolve_code(doc_id, item.group('name').strip(), False)
+                percent = _percent(item.group('percent'))
+                if child and child != issuer_id and percent is not None:
+                    record('HAS_SUBSIDIARY', issuer_id, child,
+                           {'inference_basis': 'document_issuer', 'ownership_percent': percent},
+                           {'as_of': as_of, 'valid_from': None, 'valid_to': None},
+                           cite(heading.start(), item.end()))
         for cue in _ISSUER_SUBSIDIARY.finditer(chunk['text']):
             # The child must immediately follow an explicit subsidiary heading.
             following = sorted((m for m in mentions if cue.end() <= m['start'] <= cue.end() + 12),
@@ -339,11 +527,11 @@ def extract_candidates(envelope, registry):
                 continue
             child = next((m for m in following if credible_mention(m)), None)
             if child is None:
-                child = next((m for m in following if reviewable_company(m)), None)
+                child = next((m for m in following if reviewable_company(m, allow_cut=True)), None)
             if child is None:
                 continue
             child_id, evidence_end = entry_identity(child, mentions, chunk, issuer_id)
-            if child_id == issuer_id:
+            if child_id == issuer_id or cut_and_unresolved(child, child_id):
                 continue
             quote = chunk['text'][cue.start():evidence_end]
             if any(p.search(quote) for p in (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)):
@@ -352,25 +540,30 @@ def extract_candidates(envelope, registry):
             record('HAS_SUBSIDIARY', issuer_id, child_id,
                    {'inference_basis': 'document_issuer'},
                    {'as_of': None, 'valid_from': None, 'valid_to': None}, evidence)
-        for position, (kind, heading_evidence) in entries:
+        for position, (kind, heading_evidence), row in entries:
             following = _best_company_mentions(mentions, position, min(len(chunk['text']), position + 180),
-                                                lambda m: credible_mention(m) or reviewable_company(m), entities)
+                                                lambda m: credible_mention(m) or reviewable_company(m, True), entities)
             child = next((m for m in following if m['start'] == position), None)
             if child is None:
                 continue
-            # The source excerpt contains the actual name; do not infer a percentage or date
-            # from a different row/chunk of the report.
             child_id, evidence_end = entry_identity(child, mentions, chunk, issuer_id)
-            if child_id == issuer_id:
+            if child_id == issuer_id or cut_and_unresolved(child, child_id):
                 continue
             quote = chunk['text'][child['start']:evidence_end]
             if any(p.search(quote) for p in (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)):
                 continue
             evidence = {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'], 'quote': quote}
-            record(kind, issuer_id, child_id, {'inference_basis': 'document_issuer'},
-                   {'as_of': None, 'valid_from': None, 'valid_to': None}, heading_evidence)
-            record(kind, issuer_id, child_id, {'inference_basis': 'document_issuer'},
-                   {'as_of': None, 'valid_from': None, 'valid_to': None}, evidence)
+            attributes = {'inference_basis': 'document_issuer'}
+            values = {value for value, _ in row['shares']}
+            # Only this row's own "Tỷ lệ sở hữu" line; an indirect row's percentage
+            # belongs to the intermediate owner, not to the issuer.
+            if not row['indirect'] and len(values) == 1 and None not in values:
+                attributes['ownership_percent'] = values.pop()
+            no_time = {'as_of': None, 'valid_from': None, 'valid_to': None}
+            record(kind, issuer_id, child_id, attributes, no_time, heading_evidence)
+            record(kind, issuer_id, child_id, attributes, no_time, evidence)
+            if 'ownership_percent' in attributes:
+                record(kind, issuer_id, child_id, attributes, no_time, row['shares'][0][1])
         # A short code can point to the complete legal heading immediately above it.
         # Require the clause itself to resolve the named owner to this report's issuer.
         for name_start, name_end in _company_name_spans(chunk):
@@ -384,12 +577,22 @@ def extract_candidates(envelope, registry):
                           and (credible_mention(m) or reviewable_company(m))), None)
             if not owner or not child or child['entity_id'] == issuer_id:
                 continue
-            quote = chunk['text'][name_start:owner['end']]
+            share = re.match(r'\s+(?:sở hữu|nắm giữ)\s+(\d{1,3}(?:[.,]\d{1,3})?)\s*%', text[owner['end']:], re.I)
+            attributes = {'inference_basis': 'document_issuer'}
+            if share and _percent(share.group(1)) is not None:
+                attributes['ownership_percent'] = _percent(share.group(1))
+            quote = text[name_start:owner['end'] + (share.end() if share else 0)]
             if any(p.search(quote) for p in (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)):
                 continue
             evidence = {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'], 'quote': quote}
-            record('HAS_SUBSIDIARY', issuer_id, child['entity_id'],
-                   {'inference_basis': 'document_issuer'},
+            record('HAS_SUBSIDIARY', issuer_id, child['entity_id'], attributes,
                    {'as_of': None, 'valid_from': None, 'valid_to': None}, evidence)
-    result['relations'] = sorted(relations.values(), key=lambda r: r['relation_id'])
+    output = []
+    for relation in relations:
+        # The report is part of the identity: one pair in two annual reports is two statements.
+        key = (relation.pop('_document'), relation['relation_type'], relation['subject_id'],
+               relation['object_id'], relation['attributes'], relation['temporal'])
+        digest = hashlib.sha256(json.dumps(key, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()[:32]
+        output.append({'relation_id': 'rel:' + digest, **relation})
+    result['relations'] = sorted(output, key=lambda r: r['relation_id'])
     return validate_envelope(result)
