@@ -63,6 +63,12 @@ dist-ssr/
 Thumbs.db
 
 # Downloaded/generated company-report artifacts (keep scripts and manifests tracked)
+outputs/docker-backup-*/
+outputs/vps-backup-*/
+*.dump
+.runtime-gpu/
+.runtime-contract/
+.runtime-pdf-audit/
 data/references/vietstock/annual_reports/files/
 data/references/vietstock/annual_reports/searchable/
 data/references/vietstock/annual_reports/extracted/
