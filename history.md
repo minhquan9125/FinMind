@@ -625,3 +625,27 @@ Quy trình bắt buộc trước khi sửa:
 - Extractor rule-based tạo ứng viên sở hữu, công ty con, liên kết, hợp tác ở trạng thái `PENDING`, giữ `document_id`, `chunk_id`, locator và câu chứng minh. Rule bỏ qua phủ định, dự kiến, quan hệ quá khứ và tên không đủ rõ; WBS06 quyết định duyệt/từ chối.
 - Chạy trên corpus frozen có 20 BCTN, 15.398 chunk hiện hành: 20 JSON hợp lệ, 1 ứng viên `PENDING` cần người kiểm duyệt. Audit offline chỉ ra các ca OCR/bố cục bảng và tên chưa resolve; chi tiết tại `docs/sprint4/WBS03-relation-gap-audit.md`. Chưa có tập nhãn gold nên chưa đo được precision/recall và chưa đánh dấu WBS03 hoàn thành.
 - Kiểm thử: 22 unit test WBS03 qua; đầu ra và audit local nằm trong `backend/.tmp/` và không đưa lên Git.
+
+### [2026-10-30] WBS03 — đọc corpus BCTN mới bằng release alias
+
+- Vũ bàn giao `release_identity.py` và `annual_source_reader.py`. Reader WBS03 dùng bộ kiểm tra binding chính thức thay so sánh trực tiếp source document ID với release document ID; vẫn xác minh source release, snapshot, trang, chunk ID và content hash. Không sửa locator hay database.
+- Chạy PostgreSQL chỉ đọc trên corpus `b2550a0b-c423-5c50-9b15-6fb6af12e2c6`: 20/20 BCTN, 17.664/17.664 chunk dựng lại thành công, 20 envelope hợp contract; trích được 8 ứng viên PENDING. ELC 2024 trang 14 đã có chữ Smartek; 5/8 đối tượng chưa resolve. Hai BCTN TCB khác năm dùng cùng relation ID cho TCB–TCBS, cần quy tắc gom evidence/định danh trước khi nạp Neo4j.
+- 32 test liên quan WBS03/WBS08 qua. Đầu ra ở `backend/.tmp/wbs03-vps-web-elc-20261030/` (ignore). Chưa có nhãn gold hay duyệt WBS06 nên chưa nghiệm thu độ chính xác và chưa ghi quan hệ BCTN thật vào graph.
+
+### [2026-10-30] WBS03 — cải tiến từ gói đối chiếu thủ công của Hưng
+
+- Bổ sung nhận tên pháp lý xuống dòng và danh sách công ty con/liên kết tiếp tục qua chunk cùng trang trong `relation_extractor.py`; dùng resolver/registry chung, giữ heading cùng tên trong evidence và mọi ứng viên `PENDING`. Không sửa contract, registry, database hoặc Neo4j.
+- Chạy lại offline trên 20 envelope BCTN đã xác minh trước đó: 14 ứng viên `PENDING` (trước là 8); bốn ca dương tính P01–P04 có đúng cặp/loại quan hệ, bốn ca âm tính N01–N04 không sinh cạnh giữa cặp bị cấm. Chưa gán tỷ lệ/ngày từ chunk hoặc sơ đồ khác; tên thiếu canonical ID vẫn unresolved.
+- 28 test WBS03 qua, gồm ca tên xuống dòng, danh sách nhiều chunk, mã viết tắt và cùng xuất hiện không có quan hệ. Đây là đối chiếu giới hạn theo gói Hưng, chưa phải precision/recall toàn corpus hay phê duyệt WBS06. Chi tiết tại `docs/sprint4/WBS03-BCTN-relation-candidates.md`.
+- Xuất 20 JSON offline mới vào `backend/.tmp/wbs03-hung-review-20261030/` (14 ứng viên; thư mục local bị Git ignore). Rà từng ứng viên trong `docs/sprint4/WBS03-14-candidate-review-20261030.md`: 12 cặp có Hưng đối chiếu nguồn, 2 cặp ELC→VFT và ELC→Tập đoàn Thương mại Hà Nội cần hỏi thêm; ba tên TechAMC, BIC và Smartek cần sửa cách lấy tên trong WBS03. Không đổi trạng thái `PENDING`.
+
+### [2026-10-30] WBS03 — tích hợp registry r1 Hưng bàn giao
+
+- Xác minh 19/19 thành viên ZIP theo SHA256; giữ nguyên registry cũ 1.430 ID, thêm bản có phiên `company.registry.20261030.r1.json` với 1.440 ID. Chỉ đổi mặc định của hai CLI WBS03 sang bản mới, không sửa resolver/contract WBS02 hoặc database.
+- Chặn nhận nhầm “Chủ sở hữu” thành động từ sở hữu; dùng alias đã verified trong heading TechAMC để tránh trùng ứng viên tên cụt; cắt phần giải thích khỏi tên Smartek; thêm mẫu câu rõ “Smartek là công ty con của Datanova”.
+- Chạy lại offline 20 JSON BCTN đã xác minh: 17 ứng viên PENDING, 16 đối tượng resolved, BIC còn unresolved vì bảng tách cột và ticker thiếu ngữ cảnh resolver. Hai ca ELC→VFT/Hà Nội được Hưng xác nhận trong gói mới; hai ca mới theo năm TCB 2025→TechAMC và VCB 2025→VCBL cần đối chiếu tay. 29 test WBS03 qua. Kết quả chi tiết tại `docs/sprint4/WBS03-registry-r1-review-20261030.md`; đầu ra local trong `backend/.tmp/wbs03-registry-r1-20261030/`. Không ghi PostgreSQL/Neo4j, không đổi review state.
+
+### [2026-10-30] WBS03 — tự đối chiếu hai ứng viên BCTN 2025
+
+- Đối chiếu TCB→TechAMC với chunk trang 160 (mục công ty con) và trang 84 (vốn góp của Techcombank); đối chiếu VCB→VCBL với chunk trang 18 (sở hữu 100%) và trang 41 (danh sách công ty con) trong hai snapshot đã ghim. Không suy ngày bắt đầu quan hệ từ ngày nghị quyết và chưa tự gắn tỷ lệ vào JSON.
+- Cập nhật `docs/sprint4/WBS03-registry-r1-review-20261030.md`. Cả hai ứng viên vẫn `PENDING`; BID→BIC vẫn `unresolved` do ngữ cảnh bảng/ticker. Đây là rà bằng chứng trên JSON BCTN đã đọc trước đó, chưa phải duyệt WBS06 hay đo precision/recall toàn corpus. Không đọc/ghi database hoặc Neo4j trong lượt này.

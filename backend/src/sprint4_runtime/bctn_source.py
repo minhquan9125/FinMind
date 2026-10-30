@@ -4,7 +4,8 @@ import json
 import uuid
 
 from ..documents.corpus_manifest import sha256
-from ..documents.shared_source import read_envelope, read_release_root, resolve_shared_source
+from ..documents.annual_source_reader import resolve_annual_member_row
+from ..documents.shared_source import read_envelope, read_release_root
 
 
 async def read_verified_bctn_chunks(conn, corpus_version_id, limit=None, document_id=None):
@@ -31,11 +32,11 @@ async def read_verified_bctn_chunks(conn, corpus_version_id, limit=None, documen
     if release['corpus_version_id'] != str(corpus_id):
         raise ValueError('Source release and corpus differ')
     rows = await conn.fetch('''
-        SELECT d.document_id::text, d.title, d.doc_type, d.company_id::text,
+        SELECT d.document_id::text, d.title, d.source_url, d.doc_type, d.company_id::text,
                company.symbol AS issuer_symbol, company.company_name AS issuer_company_name,
                d.sha256 AS database_document_sha256, d.external_id,
                cd.document_hash,
-               t.chunk_id::text, t.chunk_index, t.page_number,
+               t.chunk_id::text, t.index_version_id::text, t.chunk_index, t.page_number,
                t.char_start, t.char_end, t.content_hash, t.locator_json
         FROM public.text_chunks AS t
         JOIN public.documents AS d ON d.document_id=t.document_id
@@ -63,8 +64,6 @@ async def read_verified_bctn_chunks(conn, corpus_version_id, limit=None, documen
         meta = locator.get('reconstruction')
         if not isinstance(meta, dict) or meta.get('schema_version') != 'source-locator-v2':
             raise ValueError('Unsupported BCTN source locator')
-        if meta.get('document_id') != row['document_id']:
-            raise ValueError('Locator document mismatch')
         if locator.get('symbol') != row['issuer_symbol']:
             raise ValueError('BCTN issuer differs from source locator')
         member = members.get((locator.get('source_table'), locator.get('source_id')))
@@ -78,8 +77,10 @@ async def read_verified_bctn_chunks(conn, corpus_version_id, limit=None, documen
                 raise ValueError('Snapshot version differs from source binding')
             verified_versions[member['source_uri']] = version
             cache[('shared-document', member['payload_id'])] = snapshot
-        text = await resolve_shared_source(conn, index_id, locator, row['content_hash'], cache)
-        row['text'] = text
+        verified = await resolve_annual_member_row(conn, row, corpus_id, cache)
+        row['text'] = verified['chunk_text']
+        row['source_document_id'] = verified['source_document_id']
+        row['document_id_binding'] = verified['document_id_binding']
         row['locator_json'] = locator
         row['source_binding'] = binding
         row['document_version'] = verified_versions[member['source_uri']]
