@@ -1,0 +1,339 @@
+{
+  "dataset_version": "router-v3-year-correlation-challenge-v2-reviewed",
+  "created_at": "2026-10-28",
+  "purpose": "Independent acceptance cases that break year-based routing shortcuts.",
+  "excluded_from_training": true,
+  "independence_policy": "No challenge question may exactly match a main or development question. Contextual cases must use a different follow-up wording, company pair, metric, and period pattern.",
+  "route_contract": "expected_route is the predicted retrieval need after valid resolution; execution_route controls calls now. ASK_CLARIFICATION always has execution_route null and expected_adapter_calls empty.",
+  "reporting_entity_policy": "Omitted reporting entity remains UNKNOWN.",
+  "source": "AI_AUTHORED_SYNTHETIC",
+  "review_status": "APPROVED",
+  "cases": [
+    {
+      "id": "YC01",
+      "question": "FPT năm 2025 bao nhiêu?",
+      "context": null,
+      "expected_decision": "ASK_CLARIFICATION",
+      "expected_route": null,
+      "execution_route": null,
+      "expected_adapter_calls": [],
+      "missing_fields": [
+        "metric_code"
+      ],
+      "year_present": true,
+      "execution_mode": "NON_EXECUTING_ACCEPTANCE",
+      "required_capabilities": [
+        "CLARIFICATION_POLICY"
+      ],
+      "capability_status": "CONTRACT_ONLY",
+      "currently_answerable": false,
+      "review_status": "APPROVED"
+    },
+    {
+      "id": "YC02",
+      "question": "Dòng tiền kinh doanh ELC trong năm tài chính gần nhất là bao nhiêu?",
+      "context": null,
+      "expected_decision": "SEARCH",
+      "expected_route": "VECTOR",
+      "execution_route": "VECTOR",
+      "expected_scope": {
+        "companies": [
+          "ELC"
+        ],
+        "metric_code": "CASH_FLOW_OPERATING",
+        "time_reference": "LATEST_AVAILABLE_FISCAL_YEAR",
+        "reporting_entity": "UNKNOWN"
+      },
+      "year_present": false,
+      "execution_mode": "MOCK",
+      "required_capabilities": [
+        "CONTENT_ADAPTER",
+        "RELATIVE_TIME_RESOLUTION"
+      ],
+      "capability_status": "MOCK_ONLY",
+      "currently_answerable": true,
+      "review_status": "APPROVED",
+      "relative_time_resolution": {
+        "token": "LATEST_AVAILABLE_FISCAL_YEAR",
+        "fixture_required": true
+      },
+      "expected_adapter_calls": [
+        "mock_content_adapter"
+      ]
+    },
+    {
+      "id": "YC03",
+      "question": "Cùng kỳ đó, CTG thay đổi thế nào?",
+      "context": {
+        "previous_user_turn": "Doanh thu thuần MBB tăng bao nhiêu từ 2024 đến 2025?",
+        "resolved_scope": {
+          "metric_code": "NET_REVENUE",
+          "comparison_periods": [
+            "2024",
+            "2025"
+          ]
+        }
+      },
+      "expected_decision": "SEARCH",
+      "expected_route": "VECTOR",
+      "execution_route": "VECTOR",
+      "expected_scope": {
+        "companies": [
+          "CTG"
+        ],
+        "metric_code": "NET_REVENUE",
+        "comparison_periods": [
+          "2024",
+          "2025"
+        ],
+        "reporting_entity": "UNKNOWN"
+      },
+      "year_present": false,
+      "execution_mode": "MOCK",
+      "required_capabilities": [
+        "CONTENT_ADAPTER",
+        "CALCULATION",
+        "CONTEXT_RESOLUTION"
+      ],
+      "capability_status": "MOCK_ONLY",
+      "currently_answerable": true,
+      "review_status": "APPROVED",
+      "expected_adapter_calls": [
+        "mock_content_adapter"
+      ]
+    },
+    {
+      "id": "YC04",
+      "question": "Tổng tài sản FPT quý 5/2025?",
+      "context": null,
+      "expected_decision": "ASK_CLARIFICATION",
+      "expected_route": "VECTOR",
+      "execution_route": null,
+      "expected_adapter_calls": [],
+      "validation_error": "INVALID_QUARTER",
+      "year_present": true,
+      "execution_mode": "NON_EXECUTING_ACCEPTANCE",
+      "required_capabilities": [
+        "INPUT_VALIDATION"
+      ],
+      "capability_status": "CONTRACT_ONLY",
+      "currently_answerable": false,
+      "review_status": "APPROVED"
+    },
+    {
+      "id": "YC05",
+      "question": "MBB trong kỳ vừa công bố có bao nhiêu vốn chủ sở hữu?",
+      "context": null,
+      "expected_decision": "SEARCH",
+      "expected_route": "VECTOR",
+      "execution_route": "VECTOR",
+      "expected_scope": {
+        "companies": [
+          "MBB"
+        ],
+        "metric_code": "TOTAL_EQUITY",
+        "time_reference": "LATEST_PUBLISHED_PERIOD",
+        "reporting_entity": "UNKNOWN"
+      },
+      "year_present": false,
+      "execution_mode": "MOCK",
+      "required_capabilities": [
+        "CONTENT_ADAPTER",
+        "RELATIVE_TIME_RESOLUTION"
+      ],
+      "capability_status": "MOCK_ONLY",
+      "currently_answerable": true,
+      "review_status": "APPROVED",
+      "relative_time_resolution": {
+        "token": "LATEST_PUBLISHED_PERIOD",
+        "fixture_required": true
+      },
+      "expected_adapter_calls": [
+        "mock_content_adapter"
+      ]
+    },
+    {
+      "id": "YC06",
+      "question": "Nợ dài hạn năm 2025 là bao nhiêu?",
+      "context": null,
+      "expected_decision": "ASK_CLARIFICATION",
+      "expected_route": "VECTOR",
+      "execution_route": null,
+      "expected_adapter_calls": [],
+      "missing_fields": [
+        "companies"
+      ],
+      "year_present": true,
+      "execution_mode": "NON_EXECUTING_ACCEPTANCE",
+      "required_capabilities": [
+        "CLARIFICATION_POLICY"
+      ],
+      "capability_status": "CONTRACT_ONLY",
+      "currently_answerable": false,
+      "review_status": "APPROVED"
+    },
+    {
+      "id": "YC07",
+      "question": "Tổng tài sản TCB năm 2024 hay 2025?",
+      "context": null,
+      "expected_decision": "ASK_CLARIFICATION",
+      "expected_route": "VECTOR",
+      "execution_route": null,
+      "expected_adapter_calls": [],
+      "conflicts": [
+        "multiple_periods_without_comparison_intent"
+      ],
+      "year_present": true,
+      "execution_mode": "NON_EXECUTING_ACCEPTANCE",
+      "required_capabilities": [
+        "CONFLICT_DETECTION"
+      ],
+      "capability_status": "CONTRACT_ONLY",
+      "currently_answerable": false,
+      "review_status": "APPROVED"
+    },
+    {
+      "id": "YC08",
+      "question": "Ai hiện giữ chức chủ tịch hội đồng quản trị tại BID?",
+      "context": null,
+      "expected_decision": "SEARCH",
+      "expected_route": "GRAPH",
+      "execution_route": "GRAPH",
+      "expected_scope": {
+        "companies": [
+          "BID"
+        ],
+        "position": "CHAIR",
+        "time_reference": "CURRENT"
+      },
+      "year_present": false,
+      "execution_mode": "MOCK",
+      "required_capabilities": [
+        "GRAPH_ADAPTER",
+        "RELATIVE_TIME_RESOLUTION"
+      ],
+      "capability_status": "MOCK_ONLY",
+      "currently_answerable": true,
+      "review_status": "APPROVED",
+      "relative_time_resolution": {
+        "token": "CURRENT",
+        "resolved_at": "2026-10-28T10:00:00+07:00"
+      },
+      "expected_adapter_calls": [
+        "mock_graph_adapter"
+      ]
+    },
+    {
+      "id": "YC09",
+      "question": "Năm 2025 công ty nào sở hữu trọn đơn vị đó?",
+      "context": null,
+      "expected_decision": "ASK_CLARIFICATION",
+      "expected_route": "GRAPH",
+      "execution_route": null,
+      "expected_adapter_calls": [],
+      "missing_fields": [
+        "relationship_target"
+      ],
+      "year_present": true,
+      "execution_mode": "NON_EXECUTING_ACCEPTANCE",
+      "required_capabilities": [
+        "CLARIFICATION_POLICY",
+        "GRAPH_ADAPTER"
+      ],
+      "capability_status": "CONTRACT_ONLY",
+      "currently_answerable": false,
+      "review_status": "APPROVED"
+    },
+    {
+      "id": "YC10",
+      "question": "CMG đang kiểm soát gián tiếp những pháp nhân nào?",
+      "context": null,
+      "expected_decision": "SEARCH",
+      "expected_route": "GRAPH",
+      "execution_route": "GRAPH",
+      "expected_scope": {
+        "companies": [
+          "CMG"
+        ],
+        "relationship_type": "INDIRECT_CONTROL",
+        "time_reference": "CURRENT"
+      },
+      "year_present": false,
+      "execution_mode": "MOCK",
+      "required_capabilities": [
+        "GRAPH_ADAPTER",
+        "RELATIVE_TIME_RESOLUTION"
+      ],
+      "capability_status": "MOCK_ONLY",
+      "currently_answerable": true,
+      "review_status": "APPROVED",
+      "relative_time_resolution": {
+        "token": "CURRENT",
+        "resolved_at": "2026-10-28T10:00:00+07:00"
+      },
+      "expected_adapter_calls": [
+        "mock_graph_adapter"
+      ]
+    },
+    {
+      "id": "YC11",
+      "question": "Lợi nhuận năm 2025 của VCB là bao nhiêu?",
+      "context": null,
+      "expected_decision": "ASK_CLARIFICATION",
+      "expected_route": "VECTOR",
+      "execution_route": null,
+      "expected_adapter_calls": [],
+      "missing_fields": [
+        "metric_code"
+      ],
+      "ambiguity": "PROFIT_BEFORE_OR_AFTER_TAX",
+      "year_present": true,
+      "execution_mode": "NON_EXECUTING_ACCEPTANCE",
+      "required_capabilities": [
+        "AMBIGUITY_DETECTION"
+      ],
+      "capability_status": "CONTRACT_ONLY",
+      "currently_answerable": false,
+      "review_status": "APPROVED"
+    },
+    {
+      "id": "YC12",
+      "question": "Tiền của ICT tại cuối quý trước còn bao nhiêu?",
+      "context": null,
+      "expected_decision": "ASK_CLARIFICATION",
+      "expected_route": "VECTOR",
+      "execution_route": null,
+      "expected_adapter_calls": [],
+      "missing_fields": [
+        "metric_code"
+      ],
+      "ambiguity": "CASH_OR_CASH_EQUIVALENTS",
+      "year_present": false,
+      "execution_mode": "NON_EXECUTING_ACCEPTANCE",
+      "required_capabilities": [
+        "AMBIGUITY_DETECTION",
+        "RELATIVE_TIME_RESOLUTION"
+      ],
+      "capability_status": "CONTRACT_ONLY",
+      "currently_answerable": false,
+      "review_status": "APPROVED",
+      "relative_time_resolution": {
+        "token": "PREVIOUS_QUARTER",
+        "resolved_period": "2026-Q3"
+      }
+    }
+  ],
+  "reviewed_at": "2026-10-28",
+  "evaluation_context": {
+    "reference_time": "2026-10-28T10:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "mock_snapshot_id": "router-challenge-snapshot-2026-10-28",
+    "mock_data_cutoff": "2026-10-27T23:59:59+07:00",
+    "relative_time_policy": {
+      "CURRENT": "Resolve at reference_time.",
+      "LATEST_AVAILABLE_FISCAL_YEAR": "Use the latest complete fiscal year in the fixed mock snapshot, never wall-clock data.",
+      "LATEST_PUBLISHED_PERIOD": "Use the maximum published period in the fixed mock snapshot with published_at <= mock_data_cutoff.",
+      "PREVIOUS_QUARTER": "Use the immediately completed calendar quarter before reference_time; here it is 2026-Q3."
+    }
+  }
+}

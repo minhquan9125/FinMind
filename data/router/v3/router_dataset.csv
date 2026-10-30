@@ -1,0 +1,201 @@
+﻿id,question,needs_graph,needs_content,paraphrase_group,semantic_group,leakage_group
+R001,"Tra tổng tài sản trên BCTC riêng của BID tại 31/12/2024, trình bày theo tỷ đồng.",0,1,sg_total_assets_explicit,sg_total_assets_explicit,lg_total_assets
+R002,bang can doi ke toan rieng BID chot ngay 31/12/2024 ghi tong tai san bao nhieu ty dong.,0,1,sg_total_assets_explicit,sg_total_assets_explicit,lg_total_assets
+R003,Tổng tài sản BID theo báo cáo riêng năm 2024 là bao nhiêu?,0,1,sg_total_assets_explicit_scope,sg_total_assets_explicit_scope,lg_total_assets
+R004,BID có bao nhiêu tổng tài sản ở kỳ báo cáo gần nhất?,0,1,sg_total_assets_relative_time,sg_total_assets_relative_time,lg_total_assets
+R005,Tiền và các khoản tương đương tiền hợp nhất CMG tại 30/06/2025 là bao nhiêu.,0,1,sg_cash_equivalents_explicit,sg_cash_equivalents_explicit,lg_cash_equivalents
+R006,cho biet so du tien cong tuong duong tien cua CMG tren bctc hop nhat ngay 30/06/2025.,0,1,sg_cash_equivalents_explicit,sg_cash_equivalents_explicit,lg_cash_equivalents
+R007,CMG chốt nửa đầu 2025 có bao nhiêu cash and cash equivalents theo báo cáo hợp nhất.,0,1,sg_cash_equivalents_explicit,sg_cash_equivalents_explicit,lg_cash_equivalents
+R008,CMG còn bao nhiêu tiền?,0,1,sg_cash_equivalents_missing_required_scope,sg_cash_equivalents_missing_required_scope,lg_cash_equivalents
+R009,Vay và nợ thuê tài chính ngắn hạn của ELC trên báo cáo riêng tại 31/12/2025 là bao nhiêu.,0,1,sg_short_term_borrowings_explicit,sg_short_term_borrowings_explicit,lg_short_term_borrowings
+R010,"ELC ghi nhan no vay ngan han cung no thue tai chinh ngan han bao nhieu vao cuoi 2025, pham vi rieng.",0,1,sg_short_term_borrowings_explicit,sg_short_term_borrowings_explicit,lg_short_term_borrowings
+R011,Đọc giúp khoản vay và nợ thuê tài chính ngắn hạn trong BCTC riêng ELC chốt 31/12/2025.,0,1,sg_short_term_borrowings_explicit,sg_short_term_borrowings_explicit,lg_short_term_borrowings
+R012,ELC vay ngắn hạn bao nhiêu?,0,1,sg_short_term_borrowings_missing_time_scope,sg_short_term_borrowings_missing_time_scope,lg_short_term_borrowings
+R013,Nợ vay và thuê tài chính dài hạn trên BCTC riêng ITD tại 31/12/2024 bao nhiêu?,0,1,sg_long_term_borrowings_explicit,sg_long_term_borrowings_explicit,lg_long_term_borrowings
+R014,cho so du vay va no thue tai chinh dai han ITD vao 31/12/2024 theo bao cao rieng.,0,1,sg_long_term_borrowings_explicit,sg_long_term_borrowings_explicit,lg_long_term_borrowings
+R015,Khoản vay và nợ thuê tài chính dài hạn ITD ở thời điểm cuối năm 2024 được ghi nhận thế nào trong báo cáo riêng?,0,1,sg_long_term_borrowings_explicit,sg_long_term_borrowings_explicit,lg_long_term_borrowings
+R016,ITD vay dài hạn bao nhiêu?,0,1,sg_long_term_borrowings_missing_time_scope,sg_long_term_borrowings_missing_time_scope,lg_long_term_borrowings
+R017,ICT có tổng nợ ngắn hạn bao nhiêu tại 30/06/2026 theo BCTC riêng?,0,1,sg_current_liabilities_explicit,sg_current_liabilities_explicit,lg_current_liabilities
+R018,lay tong cong no ngan han cua ICT trong bao cao rieng chot 30/06/2026.,0,1,sg_current_liabilities_explicit,sg_current_liabilities_explicit,lg_current_liabilities
+R019,"Trên bảng cân đối kế toán riêng ICT cuối Q2/2026, tổng nợ ngắn hạn là bao nhiêu?",0,1,sg_current_liabilities_explicit,sg_current_liabilities_explicit,lg_current_liabilities
+R020,ICT đang nợ ngắn hạn bao nhiêu?,0,1,sg_current_liabilities_missing_time_scope,sg_current_liabilities_missing_time_scope,lg_current_liabilities
+R021,Tổng nợ dài hạn hợp nhất FPT ngày 31/12/2023 là bao nhiêu?,0,1,sg_noncurrent_liabilities_explicit,sg_noncurrent_liabilities_explicit,lg_noncurrent_liabilities
+R022,bctc hop nhat FPT cuoi nam 2023 ghi tong no dai han bao nhieu?,0,1,sg_noncurrent_liabilities_explicit,sg_noncurrent_liabilities_explicit,lg_noncurrent_liabilities
+R023,Đọc số tổng cộng nợ dài hạn FPT trong bảng cân đối hợp nhất tại 31/12/2023.,0,1,sg_noncurrent_liabilities_explicit,sg_noncurrent_liabilities_explicit,lg_noncurrent_liabilities
+R024,FPT có bao nhiêu nợ dài hạn?,0,1,sg_noncurrent_liabilities_missing_time_scope,sg_noncurrent_liabilities_missing_time_scope,lg_noncurrent_liabilities
+R025,Lợi nhuận sau thuế chưa phân phối của TCB tại 31/12/2025 theo BCTC riêng là bao nhiêu?,0,1,sg_retained_earnings_explicit,sg_retained_earnings_explicit,lg_retained_earnings
+R026,TCB con so du loi nhuan chua phan phoi bao nhieu o cuoi 2025 tren bao cao rieng?,0,1,sg_retained_earnings_explicit,sg_retained_earnings_explicit,lg_retained_earnings
+R027,Tìm khoản LNST chưa phân phối trong bảng cân đối riêng TCB ngày 31/12/2025.,0,1,sg_retained_earnings_explicit,sg_retained_earnings_explicit,lg_retained_earnings
+R028,TCB còn bao nhiêu lợi nhuận giữ lại?,0,1,sg_retained_earnings_missing_time_scope,sg_retained_earnings_missing_time_scope,lg_retained_earnings
+R029,"Doanh thu thuần hợp nhất FPT cho cả năm 2024, đơn vị tỷ đồng, là bao nhiêu.",0,1,sg_net_revenue_explicit,sg_net_revenue_explicit,lg_net_revenue
+R030,"cho so doanh thu sau giam tru cua FPT nam tai chinh 2024 tren bctc hop nhat, theo ty dong.",0,1,sg_net_revenue_explicit,sg_net_revenue_explicit,lg_net_revenue
+R031,"Trong báo cáo kết quả kinh doanh hợp nhất FPT năm 2024, doanh thu thuần đạt bao nhiêu tỷ đồng.",0,1,sg_net_revenue_explicit,sg_net_revenue_explicit,lg_net_revenue
+R032,FPT thu được bao nhiêu?,0,1,sg_net_revenue_missing_required_scope,sg_net_revenue_missing_required_scope,lg_net_revenue
+R033,"Tìm đoạn BCTC riêng CMG năm 2025 nói về công ty con, kèm trang nguồn.",0,1,sg_content_subsidiary_passage_explicit,sg_content_subsidiary_passage_explicit,lg_content_subsidiary_passage
+R034,bctc rieng CMG 2025 co doan nao nhac cac cong ty con? trich giup minh.,0,1,sg_content_subsidiary_passage_explicit,sg_content_subsidiary_passage_explicit,lg_content_subsidiary_passage
+R035,Cho mình phần văn bản trong BCTC riêng CMG năm 2025 đề cập đơn vị được kiểm soát trực tiếp.,0,1,sg_content_subsidiary_passage_explicit,sg_content_subsidiary_passage_explicit,lg_content_subsidiary_passage
+R036,CMG có nhắc gì về công ty con?,0,1,sg_content_subsidiary_passage_missing_time_scope,sg_content_subsidiary_passage_missing_time_scope,lg_content_subsidiary_passage
+R037,Lợi nhuận trước thuế hợp nhất VCB riêng quý 1/2026 là bao nhiêu?,0,1,sg_profit_before_tax_explicit,sg_profit_before_tax_explicit,lg_profit_before_tax
+R038,VCB lai truoc thue bao nhieu trong rieng ba thang dau 2026 tren bao cao hop nhat?,0,1,sg_profit_before_tax_explicit,sg_profit_before_tax_explicit,lg_profit_before_tax
+R039,"Lấy LNTT của VCB Q1/2026, phạm vi hợp nhất.",0,1,sg_profit_before_tax_explicit,sg_profit_before_tax_explicit,lg_profit_before_tax
+R040,VCB lãi trước thuế bao nhiêu?,0,1,sg_profit_before_tax_missing_time_scope,sg_profit_before_tax_missing_time_scope,lg_profit_before_tax
+R041,Lợi nhuận sau thuế hợp nhất MBB lũy kế 6 tháng đầu 2026 là bao nhiêu?,0,1,sg_profit_after_tax_explicit,sg_profit_after_tax_explicit,lg_profit_after_tax
+R042,MBB dat lnst bao nhieu trong nua dau 2026 theo bao cao hop nhat?,0,1,sg_profit_after_tax_explicit,sg_profit_after_tax_explicit,lg_profit_after_tax
+R043,"Tra kết quả sau thuế từ đầu năm đến 30/06/2026 của MBB, phạm vi hợp nhất.",0,1,sg_profit_after_tax_explicit,sg_profit_after_tax_explicit,lg_profit_after_tax
+R044,LNST MBB là bao nhiêu?,0,1,sg_profit_after_tax_missing_time_scope,sg_profit_after_tax_missing_time_scope,lg_profit_after_tax
+R045,LNST thuộc cổ đông công ty mẹ của FPT trên báo cáo hợp nhất cả năm 2023 là bao nhiêu.,0,1,sg_parent_attributable_profit_explicit,sg_parent_attributable_profit_explicit,lg_parent_attributable_profit
+R046,"cho loi nhuan sau thue phan bo cho co dong cong ty me FPT nam 2023, ky ca nam theo bao cao hop nhat.",0,1,sg_parent_attributable_profit_explicit,sg_parent_attributable_profit_explicit,lg_parent_attributable_profit
+R047,Tìm phần LNST thuộc về cổ đông của công ty mẹ trong BCTC hợp nhất FPT năm 2023.,0,1,sg_parent_attributable_profit_explicit,sg_parent_attributable_profit_explicit,lg_parent_attributable_profit
+R048,FPT lãi thuộc cổ đông mẹ bao nhiêu?,0,1,sg_parent_attributable_profit_missing_time_scope,sg_parent_attributable_profit_missing_time_scope,lg_parent_attributable_profit
+R049,Lưu chuyển tiền thuần từ hoạt động kinh doanh hợp nhất CTG cả năm 2025 là bao nhiêu?,0,1,sg_operating_cash_flow_explicit,sg_operating_cash_flow_explicit,lg_operating_cash_flow
+R050,CTG co dong tien thuan hoat dong kinh doanh bao nhieu trong 2025 theo bao cao hop nhat?,0,1,sg_operating_cash_flow_explicit,sg_operating_cash_flow_explicit,lg_operating_cash_flow
+R051,Đọc dòng tiền ròng từ kinh doanh của CTG cả năm 2025 trên báo cáo lưu chuyển tiền tệ hợp nhất.,0,1,sg_operating_cash_flow_explicit,sg_operating_cash_flow_explicit,lg_operating_cash_flow
+R052,CTG kinh doanh tạo ra bao nhiêu tiền?,0,1,sg_operating_cash_flow_missing_time_scope,sg_operating_cash_flow_missing_time_scope,lg_operating_cash_flow
+R053,Dòng tiền thuần từ hoạt động đầu tư riêng ITD lũy kế 6 tháng đầu năm 2025 là bao nhiêu?,0,1,sg_investing_cash_flow_explicit,sg_investing_cash_flow_explicit,lg_investing_cash_flow
+R054,tra luu chuyen tien thuan tu hoat dong dau tu cua ITD nua dau 2025 theo bctc rieng.,0,1,sg_investing_cash_flow_explicit,sg_investing_cash_flow_explicit,lg_investing_cash_flow
+R055,"ITD ghi dòng tiền ròng hoạt động đầu tư bao nhiêu từ 01/01 đến 30/06/2025, phạm vi riêng?",0,1,sg_investing_cash_flow_explicit,sg_investing_cash_flow_explicit,lg_investing_cash_flow
+R056,Dòng tiền đầu tư ròng ITD bao nhiêu?,0,1,sg_investing_cash_flow_missing_time_scope,sg_investing_cash_flow_missing_time_scope,lg_investing_cash_flow
+R057,Lưu chuyển tiền thuần từ hoạt động tài chính của ELC cả năm 2024 theo BCTC riêng là bao nhiêu?,0,1,sg_financing_cash_flow_explicit,sg_financing_cash_flow_explicit,lg_financing_cash_flow
+R058,ELC co dong tien rong hoat dong tai chinh bao nhieu nam 2024 tren bao cao rieng?,0,1,sg_financing_cash_flow_explicit,sg_financing_cash_flow_explicit,lg_financing_cash_flow
+R059,Lấy số thuần ở phần hoạt động tài chính trong báo cáo lưu chuyển tiền tệ riêng ELC năm 2024.,0,1,sg_financing_cash_flow_explicit,sg_financing_cash_flow_explicit,lg_financing_cash_flow
+R060,Dòng tiền tài chính ròng ELC bao nhiêu?,0,1,sg_financing_cash_flow_missing_time_scope,sg_financing_cash_flow_missing_time_scope,lg_financing_cash_flow
+R061,Vốn điều lệ của BID tại 31/12/2025 trên báo cáo riêng là bao nhiêu?,0,1,sg_charter_capital_explicit,sg_charter_capital_explicit,lg_charter_capital
+R062,BID ghi nhan von dieu le bao nhieu o thoi diem cuoi nam 2025 theo bctc rieng?,0,1,sg_charter_capital_explicit,sg_charter_capital_explicit,lg_charter_capital
+R063,"Cho giá trị vốn điều lệ BID ngày 31/12/2025, dựa trên báo cáo riêng.",0,1,sg_charter_capital_explicit,sg_charter_capital_explicit,lg_charter_capital
+R064,BID có vốn điều lệ bao nhiêu?,0,1,sg_charter_capital_missing_time_scope,sg_charter_capital_missing_time_scope,lg_charter_capital
+R065,Tổng nợ phải trả hợp nhất TCB tại 30/06/2025 là bao nhiêu?,0,1,sg_total_liabilities_explicit,sg_total_liabilities_explicit,lg_total_liabilities
+R066,TCB co tong nghia vu no phai tra bao nhieu cuoi quy 2/2025 tren bctc hop nhat?,0,1,sg_total_liabilities_explicit,sg_total_liabilities_explicit,lg_total_liabilities
+R067,Đọc khoản tổng cộng nợ phải trả trong bảng cân đối hợp nhất TCB ngày 30/06/2025.,0,1,sg_total_liabilities_explicit,sg_total_liabilities_explicit,lg_total_liabilities
+R068,TCB đang nợ tổng cộng bao nhiêu?,0,1,sg_total_liabilities_missing_time_scope,sg_total_liabilities_missing_time_scope,lg_total_liabilities
+R069,Tổng vốn chủ sở hữu hợp nhất ICT tại 31/12/2024 là bao nhiêu.,0,1,sg_total_equity_explicit,sg_total_equity_explicit,lg_total_equity
+R070,cho so von chu so huu ICT tren bang can doi hop nhat ngay 31/12/2024.,0,1,sg_total_equity_explicit,sg_total_equity_explicit,lg_total_equity
+R071,"ICT có bao nhiêu equity ở cuối năm 2024, theo BCTC hợp nhất.",0,1,sg_total_equity_explicit,sg_total_equity_explicit,lg_total_equity
+R072,ICT có bao nhiêu vốn chủ?,0,1,sg_total_equity_missing_time_scope,sg_total_equity_missing_time_scope,lg_total_equity
+R073,"Tính mức tăng phần trăm doanh thu thuần hợp nhất CMG năm 2025 so với 2024, kèm số gốc từng năm.",0,1,sg_revenue_growth_explicit,sg_revenue_growth_explicit,lg_revenue_growth
+R074,doanh thu thuan hop nhat CMG thay doi bao nhieu phan tram tu 2024 sang 2025? cho ca hai so dung tinh.,0,1,sg_revenue_growth_explicit,sg_revenue_growth_explicit,lg_revenue_growth
+R075,So doanh thu thuần cả năm 2025 với 2024 của CMG trên cùng phạm vi hợp nhất và tính tốc độ tăng.,0,1,sg_revenue_growth_explicit,sg_revenue_growth_explicit,lg_revenue_growth
+R076,Doanh thu CMG tăng bao nhiêu?,0,1,sg_revenue_growth_missing_required_scope,sg_revenue_growth_missing_required_scope,lg_revenue_growth
+R077,Tính tỷ số tổng nợ phải trả trên tổng vốn chủ sở hữu riêng VCB tại 31/12/2025 và nêu hai số gốc.,0,1,sg_debt_equity_ratio_explicit,sg_debt_equity_ratio_explicit,lg_debt_equity_ratio
+R078,VCB co he so no phai tra chia von chu so huu bao nhieu cuoi 2025 tren bctc rieng?,0,1,sg_debt_equity_ratio_explicit,sg_debt_equity_ratio_explicit,lg_debt_equity_ratio
+R079,Lấy tổng nợ và tổng vốn chủ sở hữu của VCB cùng ngày 31/12/2025 trên báo cáo riêng rồi tính tỷ số.,0,1,sg_debt_equity_ratio_explicit,sg_debt_equity_ratio_explicit,lg_debt_equity_ratio
+R080,Nợ của VCB so với vốn thế nào?,0,1,sg_debt_equity_ratio_missing_time_scope,sg_debt_equity_ratio_missing_time_scope,lg_debt_equity_ratio
+R081,Ai là chủ tịch HĐQT FPT tại 31/12/2025?,1,0,sg_chair_fpt_explicit,sg_chair_fpt_explicit,lg_chair_fpt
+R082,chuc chu tich hoi dong quan tri FPT cuoi nam 2025 do ai dam nhiem?,1,0,sg_chair_fpt_explicit,sg_chair_fpt_explicit,lg_chair_fpt
+R083,Ai lãnh đạo FPT trong năm 2025?,1,0,sg_chair_fpt_missing_required_scope,sg_chair_fpt_missing_required_scope,lg_chair_fpt
+R084,Ai đang là chủ tịch FPT?,1,0,sg_chair_fpt_relative_time,sg_chair_fpt_relative_time,lg_chair_fpt
+R085,Những công ty con cấp hai của CMG tại 31/12/2024 là đơn vị nào? Chỉ xét đúng hai cấp quan hệ.,1,0,sg_indirect_subsidiaries_explicit,sg_indirect_subsidiaries_explicit,lg_indirect_subsidiaries
+R086,liet ke cac phap nhan con gian tiep cach CMG dung hai canh cong ty con o cuoi 2024.,1,0,sg_indirect_subsidiaries_explicit,sg_indirect_subsidiaries_explicit,lg_indirect_subsidiaries
+R087,CMG có các đơn vị con qua một công ty trung gian nào tại 31/12/2024? Không đưa công ty con trực tiếp vào danh sách.,1,0,sg_indirect_subsidiaries_explicit,sg_indirect_subsidiaries_explicit,lg_indirect_subsidiaries
+R088,CMG có công ty cháu nào?,1,0,sg_indirect_subsidiaries_missing_time_scope,sg_indirect_subsidiaries_missing_time_scope,lg_indirect_subsidiaries
+R089,MBB nắm bao nhiêu phần trăm tại từng doanh nghiệp được kiểm soát trực tiếp ngày 31/12/2025?,1,0,sg_ownership_mbb_explicit,sg_ownership_mbb_explicit,lg_ownership_mbb
+R090,cho ty le so huu truc tiep cua MBB o cac phap nhan thuoc quyen kiem soat cuoi 2025.,1,0,sg_ownership_mbb_explicit,sg_ownership_mbb_explicit,lg_ownership_mbb
+R091,MBB giữ mấy phần trăm vốn trong từng đơn vị được kiểm soát trực tiếp tại 31/12/2025?,1,0,sg_ownership_mbb_explicit,sg_ownership_mbb_explicit,lg_ownership_mbb
+R092,MBB nắm bao nhiêu phần trăm tại các công ty con trực tiếp vào 31/12/2025?,1,0,sg_ownership_mbb_explicit_scope,sg_ownership_mbb_explicit_scope,lg_ownership_mbb
+R093,Doanh nghiệp nào BID nắm trực tiếp trên 50% vốn tại 31/12/2025?,1,0,sg_majority_bid_explicit,sg_majority_bid_explicit,lg_majority_bid
+R094,BID so huu qua mot nua von o nhung don vi nao cuoi 2025 theo so huu truc tiep.,1,0,sg_majority_bid_explicit,sg_majority_bid_explicit,lg_majority_bid
+R095,Lọc pháp nhân BID giữ hơn 50% vốn trực tiếp ngày 31/12/2025.,1,0,sg_majority_bid_explicit,sg_majority_bid_explicit,lg_majority_bid
+R096,BID nắm quá nửa ở đâu?,1,0,sg_majority_bid_missing_time_scope,sg_majority_bid_missing_time_scope,lg_majority_bid
+R097,Doanh nghiệp nào CTG sở hữu trực tiếp 100% tại 30/06/2026?,1,0,sg_wholly_ctg_explicit,sg_wholly_ctg_explicit,lg_wholly_ctg
+R098,CTG nam tron von o cac phap nhan nao ngay 30/06/2026?,1,0,sg_wholly_ctg_explicit,sg_wholly_ctg_explicit,lg_wholly_ctg
+R099,Cho đơn vị được CTG giữ toàn bộ vốn trực tiếp cuối Q2/2026.,1,0,sg_wholly_ctg_explicit,sg_wholly_ctg_explicit,lg_wholly_ctg
+R100,CTG sở hữu trọn công ty nào?,1,0,sg_wholly_ctg_missing_time_scope,sg_wholly_ctg_missing_time_scope,lg_wholly_ctg
+R101,TCB có bao nhiêu công ty con trực tiếp tại 31/12/2024? Đếm pháp nhân không trùng ID.,1,0,sg_count_direct_explicit,sg_count_direct_explicit,lg_count_direct
+R102,"dem so don vi con cap mot con quan he voi TCB cuoi nam 2024, moi phap nhan chi tinh mot lan.",1,0,sg_count_direct_explicit,sg_count_direct_explicit,lg_count_direct
+R103,"Cho số lượng công ty con trực tiếp của TCB ngày 31/12/2024, không lấy tổng số công ty trong tài liệu.",1,0,sg_count_direct_explicit,sg_count_direct_explicit,lg_count_direct
+R104,TCB có bao nhiêu công ty con trực tiếp?,1,0,sg_count_direct_missing_time_scope,sg_count_direct_missing_time_scope,lg_count_direct
+R105,Ai giữ chức tổng giám đốc VCB tại 30/06/2026?,1,0,sg_ceo_vcb_explicit,sg_ceo_vcb_explicit,lg_ceo_vcb
+R106,nguoi dieu hanh o vi tri tong giam doc VCB ngay 30/06/2026 la ai?,1,0,sg_ceo_vcb_explicit,sg_ceo_vcb_explicit,lg_ceo_vcb
+R107,VCB có ai làm tổng giám đốc ở cuối Q2/2026?,1,0,sg_ceo_vcb_explicit,sg_ceo_vcb_explicit,lg_ceo_vcb
+R108,Ai đang điều hành VCB trong năm 2026?,1,0,sg_ceo_vcb_missing_required_scope,sg_ceo_vcb_missing_required_scope,lg_ceo_vcb
+R109,Sự kiện Alpha của FPT ngày 15/06/2025 có những doanh nghiệp nào tham gia?,1,0,sg_event_participants_explicit,sg_event_participants_explicit,lg_event_participants
+R110,Liệt kê các bên tham gia Sự kiện Alpha liên quan FPT ngày 15/06/2025.,1,0,sg_event_participants_explicit,sg_event_participants_explicit,lg_event_participants
+R111,Doanh nghiệp nào góp mặt trong Sự kiện Alpha của FPT ngày 15/06/2025?,1,0,sg_event_participants_explicit,sg_event_participants_explicit,lg_event_participants
+R112,Ai tham gia Sự kiện Alpha của FPT?,1,0,sg_event_participants_missing_time_scope,sg_event_participants_missing_time_scope,lg_event_participants
+R113,Sự kiện Beta của ICT ngày 20/08/2025 tác động tới những doanh nghiệp nào?,1,0,sg_event_affected_explicit,sg_event_affected_explicit,lg_event_affected
+R114,Những đơn vị nào chịu ảnh hưởng bởi Sự kiện Beta liên quan ICT ngày 20/08/2025?,1,0,sg_event_affected_explicit,sg_event_affected_explicit,lg_event_affected
+R115,Liệt kê các bên bị tác động trong Sự kiện Beta của ICT ngày 20/08/2025.,1,0,sg_event_affected_explicit,sg_event_affected_explicit,lg_event_affected
+R116,Sự kiện Beta của ICT ảnh hưởng ai?,1,0,sg_event_affected_missing_time_scope,sg_event_affected_missing_time_scope,lg_event_affected
+R117,"Sự kiện Gamma của ITD ngày 10/09/2025 có bên nào tham gia, kèm nguồn?",1,0,sg_event_evidence_explicit,sg_event_evidence_explicit,lg_event_evidence
+R118,Cho mình các doanh nghiệp tham gia Sự kiện Gamma liên quan ITD ngày 10/09/2025 và nguồn.,1,0,sg_event_evidence_explicit,sg_event_evidence_explicit,lg_event_evidence
+R119,Ai góp mặt trong Sự kiện Gamma của ITD ngày 10/09/2025? Cho mình xem bằng chứng.,1,0,sg_event_evidence_explicit,sg_event_evidence_explicit,lg_event_evidence
+R120,Ai tham gia Sự kiện Gamma của ITD?,1,0,sg_event_evidence_missing_time_scope,sg_event_evidence_missing_time_scope,lg_event_evidence
+R121,"Trong danh mục 10 mã FinMind, doanh nghiệp nào do CMG kiểm soát trực tiếp tại 30/06/2026?",1,0,sg_approved_control_cmg_explicit,sg_approved_control_cmg_explicit,lg_approved_control_cmg
+R122,loc cac ma duoc duyet co quan he chiu kiem soat truc tiep cua CMG ngay 30/06/2026.,1,0,sg_approved_control_cmg_explicit,sg_approved_control_cmg_explicit,lg_approved_control_cmg
+R123,CMG kiểm soát trực tiếp mã nào thuộc danh mục được phép ở cuối Q2/2026?,1,0,sg_approved_control_cmg_explicit,sg_approved_control_cmg_explicit,lg_approved_control_cmg
+R124,CMG kiểm soát mã nào trong danh mục?,1,0,sg_approved_control_cmg_missing_time_scope,sg_approved_control_cmg_missing_time_scope,lg_approved_control_cmg
+R125,"Vẽ bằng danh sách đường đi các quan hệ công ty con từ FPT tại 31/12/2024, sâu tối đa hai cấp.",1,0,sg_paths_to_two_hops_explicit,sg_paths_to_two_hops_explicit,lg_paths_to_two_hops
+R126,"cho cac chuoi FPT den cong ty con hoac cong ty con cap hai tai 31/12/2024, kem phap nhan trung gian.",1,0,sg_paths_to_two_hops_explicit,sg_paths_to_two_hops_explicit,lg_paths_to_two_hops
+R127,"Liệt kê đường đi quan hệ con của FPT cuối 2024 với tối đa hai cạnh, không truy sâu hơn.",1,0,sg_paths_to_two_hops_explicit,sg_paths_to_two_hops_explicit,lg_paths_to_two_hops
+R128,FPT kiểm soát gián tiếp đơn vị nào?,1,0,sg_paths_to_two_hops_missing_time_scope,sg_paths_to_two_hops_missing_time_scope,lg_paths_to_two_hops
+R129,Ai là chủ tịch HĐQT CMG ngày 31/12/2025? Kèm nguồn gắn sẵn với quan hệ chức vụ.,1,0,sg_chair_cmg_source_explicit,sg_chair_cmg_source_explicit,lg_chair_cmg_source
+R130,"CMG co ai giu chuc chu tich hoi dong quan tri cuoi 2025, theo bang chung da luu?",1,0,sg_chair_cmg_source_explicit,sg_chair_cmg_source_explicit,lg_chair_cmg_source
+R131,"Cho tên chủ tịch HĐQT CMG tại 31/12/2025 và nguồn đã liên kết theo ID, không tìm thêm bài.",1,0,sg_chair_cmg_source_explicit,sg_chair_cmg_source_explicit,lg_chair_cmg_source
+R132,"Chủ tịch CMG là ai, nguồn đâu?",1,0,sg_chair_cmg_source_missing_time_scope,sg_chair_cmg_source_missing_time_scope,lg_chair_cmg_source
+R133,"Ai thực sự giữ chức chủ tịch HĐQT BID tại 30/06/2025, không tính người mới được đề cử?",1,0,sg_actual_chair_bid_explicit,sg_actual_chair_bid_explicit,lg_actual_chair_bid
+R134,"cho chu tich hdqt BID da nhan chuc o ngay 30/06/2025, bo ke hoach bo nhiem.",1,0,sg_actual_chair_bid_explicit,sg_actual_chair_bid_explicit,lg_actual_chair_bid
+R135,BID có ai làm chủ tịch hội đồng quản trị vào 30/06/2025? Không lấy ứng viên dự kiến.,1,0,sg_actual_chair_bid_explicit,sg_actual_chair_bid_explicit,lg_actual_chair_bid
+R136,Ai thực sự là chủ tịch BID?,1,0,sg_actual_chair_bid_missing_time_scope,sg_actual_chair_bid_missing_time_scope,lg_actual_chair_bid
+R137,Chủ tịch HĐQT MBB tại 30/06/2024 là ai? Không hỏi lợi nhuận.,1,0,sg_chair_mbb_no_metric_explicit,sg_chair_mbb_no_metric_explicit,lg_chair_mbb_no_metric
+R138,"cho ten nguoi giu chuc chu tich hdqt MBB ngay 30/06/2024, chua can doanh thu.",1,0,sg_chair_mbb_no_metric_explicit,sg_chair_mbb_no_metric_explicit,lg_chair_mbb_no_metric
+R139,"MBB có ai làm chủ tịch hội đồng quản trị cuối Q2/2024, không cần số tài sản?",1,0,sg_chair_mbb_no_metric_explicit,sg_chair_mbb_no_metric_explicit,lg_chair_mbb_no_metric
+R140,Chủ tịch MBB là ai?,1,0,sg_chair_mbb_no_metric_missing_time_scope,sg_chair_mbb_no_metric_missing_time_scope,lg_chair_mbb_no_metric
+R141,"Với các doanh nghiệp được kiểm soát trực tiếp CMG tại 31/12/2024, tra doanh thu thuần cả năm 2024 trên BCTC riêng của từng đơn vị.",1,1,sg_subsidiary_net_revenue_explicit,sg_subsidiary_net_revenue_explicit,lg_subsidiary_net_revenue
+R142,tim tap con cap mot CMG cuoi 2024 roi lay doanh thu thuan nam 2024 cua moi phap nhan theo bao cao rieng.,1,1,sg_subsidiary_net_revenue_explicit,sg_subsidiary_net_revenue_explicit,lg_subsidiary_net_revenue
+R143,"Cho danh sách pháp nhân thuộc quyền kiểm soát trực tiếp CMG ngày 31/12/2024 kèm doanh thu sau giảm trừ năm 2024 của từng công ty, phạm vi riêng.",1,1,sg_subsidiary_net_revenue_explicit,sg_subsidiary_net_revenue_explicit,lg_subsidiary_net_revenue
+R144,Doanh thu công ty con CMG bao nhiêu?,1,1,sg_subsidiary_net_revenue_missing_required_scope,sg_subsidiary_net_revenue_missing_required_scope,lg_subsidiary_net_revenue
+R145,Các doanh nghiệp được kiểm soát trực tiếp TCB tại 30/06/2025 có lợi nhuận trước thuế riêng quý 2/2025 bao nhiêu theo BCTC riêng?,1,1,sg_subsidiary_profit_before_tax_explicit,sg_subsidiary_profit_before_tax_explicit,lg_subsidiary_profit_before_tax
+R146,"tim con cap mot TCB o 30/06/2025 va tra lntt quy 2/2025, so rieng quy tren bao cao rieng tung don vi.",1,1,sg_subsidiary_profit_before_tax_explicit,sg_subsidiary_profit_before_tax_explicit,lg_subsidiary_profit_before_tax
+R147,"Liệt kê pháp nhân thuộc quyền kiểm soát trực tiếp TCB ngày 30/06/2025 cùng lãi trước thuế trong riêng Q2/2025 của họ, phạm vi riêng.",1,1,sg_subsidiary_profit_before_tax_explicit,sg_subsidiary_profit_before_tax_explicit,lg_subsidiary_profit_before_tax
+R148,Công ty con TCB lãi trước thuế?,1,1,sg_subsidiary_profit_before_tax_missing_time_scope,sg_subsidiary_profit_before_tax_missing_time_scope,lg_subsidiary_profit_before_tax
+R149,Lấy doanh nghiệp được kiểm soát trực tiếp CTG tại 30/06/2026 rồi tra LNST lũy kế 6 tháng đầu 2026 theo báo cáo riêng từng công ty.,1,1,sg_subsidiary_profit_after_tax_explicit,sg_subsidiary_profit_after_tax_explicit,lg_subsidiary_profit_after_tax
+R150,nhung don vi con cap mot CTG o 30/06/2026 dat loi nhuan sau thue nua dau 2026 bao nhieu tren bctc rieng?,1,1,sg_subsidiary_profit_after_tax_explicit,sg_subsidiary_profit_after_tax_explicit,lg_subsidiary_profit_after_tax
+R151,"Lập bảng LNST từ đầu 2026 đến 30/06/2026 cho từng pháp nhân thuộc quyền kiểm soát trực tiếp CTG tại ngày đó, phạm vi riêng.",1,1,sg_subsidiary_profit_after_tax_explicit,sg_subsidiary_profit_after_tax_explicit,lg_subsidiary_profit_after_tax
+R152,Công ty con CTG lãi sau thuế?,1,1,sg_subsidiary_profit_after_tax_missing_time_scope,sg_subsidiary_profit_after_tax_missing_time_scope,lg_subsidiary_profit_after_tax
+R153,Tra dòng tiền thuần hoạt động kinh doanh cả năm 2025 theo BCTC riêng từng doanh nghiệp được kiểm soát trực tiếp VCB tại 31/12/2025.,1,1,sg_subsidiary_operating_cash_explicit,sg_subsidiary_operating_cash_explicit,lg_subsidiary_operating_cash
+R154,"VCB co nhung don vi con cap mot nao cuoi 2025 va moi don vi co luu chuyen tien thuan kinh doanh nam 2025 bao nhieu, pham vi rieng?",1,1,sg_subsidiary_operating_cash_explicit,sg_subsidiary_operating_cash_explicit,lg_subsidiary_operating_cash
+R155,"Từ tập pháp nhân thuộc quyền kiểm soát trực tiếp VCB ngày 31/12/2025, tìm dòng tiền kinh doanh ròng năm 2025 của từng pháp nhân theo báo cáo riêng.",1,1,sg_subsidiary_operating_cash_explicit,sg_subsidiary_operating_cash_explicit,lg_subsidiary_operating_cash
+R156,Tiền kinh doanh của công ty con VCB?,1,1,sg_subsidiary_operating_cash_missing_time_scope,sg_subsidiary_operating_cash_missing_time_scope,lg_subsidiary_operating_cash
+R157,Các doanh nghiệp được kiểm soát trực tiếp ITD tại 31/12/2025 có dòng tiền thuần đầu tư cả năm 2025 bao nhiêu trên báo cáo riêng?,1,1,sg_subsidiary_investing_cash_explicit,sg_subsidiary_investing_cash_explicit,lg_subsidiary_investing_cash
+R158,"tim con cap mot ITD ngay 31/12/2025 roi lay luu chuyen tien thuan tu hoat dong dau tu nam 2025 cua tung don vi, pham vi rieng.",1,1,sg_subsidiary_investing_cash_explicit,sg_subsidiary_investing_cash_explicit,lg_subsidiary_investing_cash
+R159,Cho bảng dòng tiền đầu tư ròng năm 2025 trên BCTC riêng của các pháp nhân con trực tiếp ITD tại 31/12/2025.,1,1,sg_subsidiary_investing_cash_explicit,sg_subsidiary_investing_cash_explicit,lg_subsidiary_investing_cash
+R160,Dòng tiền đầu tư công ty con ITD?,1,1,sg_subsidiary_investing_cash_missing_time_scope,sg_subsidiary_investing_cash_missing_time_scope,lg_subsidiary_investing_cash
+R161,Tìm doanh nghiệp được kiểm soát trực tiếp ELC tại 31/12/2023 rồi tra dòng tiền thuần tài chính năm 2023 trên BCTC riêng từng đơn vị.,1,1,sg_subsidiary_financing_cash_explicit,sg_subsidiary_financing_cash_explicit,lg_subsidiary_financing_cash
+R162,"nhung don vi con cap mot ELC cuoi 2023 co luu chuyen tien thuan hoat dong tai chinh ca nam 2023 bao nhieu, pham vi rieng?",1,1,sg_subsidiary_financing_cash_explicit,sg_subsidiary_financing_cash_explicit,lg_subsidiary_financing_cash
+R163,Lập bảng cash flow from financing activities cả năm 2023 theo báo cáo riêng cho từng pháp nhân thuộc quyền kiểm soát trực tiếp ELC ngày 31/12/2023.,1,1,sg_subsidiary_financing_cash_explicit,sg_subsidiary_financing_cash_explicit,lg_subsidiary_financing_cash
+R164,Dòng tiền tài chính công ty con ELC?,1,1,sg_subsidiary_financing_cash_missing_time_scope,sg_subsidiary_financing_cash_missing_time_scope,lg_subsidiary_financing_cash
+R165,"Tại 30/06/2026, các doanh nghiệp được kiểm soát trực tiếp FPT có tổng tài sản bao nhiêu theo BCTC riêng của từng đơn vị?",1,1,sg_subsidiary_total_assets_explicit,sg_subsidiary_total_assets_explicit,lg_subsidiary_assets
+R166,tim danh sach con cap mot FPT ngay 30/06/2026 roi tra tong tai san tung phap nhan cung ngay tren bao cao rieng.,1,1,sg_subsidiary_total_assets_explicit,sg_subsidiary_total_assets_explicit,lg_subsidiary_assets
+R167,Cho tổng tài sản riêng chốt 30/06/2026 của từng công ty thuộc tập con trực tiếp FPT ở ngày đó.,1,1,sg_subsidiary_total_assets_explicit,sg_subsidiary_total_assets_explicit,lg_subsidiary_assets
+R168,Tài sản từng công ty con FPT?,1,1,sg_subsidiary_total_assets_missing_time_scope,sg_subsidiary_total_assets_missing_time_scope,lg_subsidiary_assets
+R169,Tìm các doanh nghiệp được kiểm soát trực tiếp ICT tại 31/12/2025 và tra tiền cùng tương đương tiền riêng từng đơn vị vào ngày đó.,1,1,sg_subsidiary_cash_equivalents_explicit,sg_subsidiary_cash_equivalents_explicit,lg_subsidiary_cash_equivalents
+R170,moi phap nhan con cap mot ICT cuoi 2025 co so du tien va cac khoan tuong duong tien bao nhieu tren bao cao rieng?,1,1,sg_subsidiary_cash_equivalents_explicit,sg_subsidiary_cash_equivalents_explicit,lg_subsidiary_cash_equivalents
+R171,Cho bảng tiền và tương đương tiền ngày 31/12/2025 theo BCTC riêng của tập pháp nhân thuộc quyền kiểm soát trực tiếp ICT tại mốc này.,1,1,sg_subsidiary_cash_equivalents_explicit,sg_subsidiary_cash_equivalents_explicit,lg_subsidiary_cash_equivalents
+R172,Tiền của từng công ty con ICT?,1,1,sg_subsidiary_cash_equivalents_missing_time_scope,sg_subsidiary_cash_equivalents_missing_time_scope,lg_subsidiary_cash_equivalents
+R173,Các doanh nghiệp được kiểm soát trực tiếp MBB tại 31/12/2024 có tổng vốn chủ sở hữu riêng từng công ty bao nhiêu vào cùng ngày?,1,1,sg_subsidiary_equity_explicit,sg_subsidiary_equity_explicit,lg_subsidiary_equity
+R174,"tu danh sach con cap mot MBB cuoi 2024, tra tong von chu so huu tai 31/12/2024 tren bctc rieng moi don vi.",1,1,sg_subsidiary_equity_explicit,sg_subsidiary_equity_explicit,lg_subsidiary_equity
+R175,Cho bảng vốn chủ sở hữu riêng ngày 31/12/2024 của các pháp nhân thuộc quan hệ con trực tiếp MBB tại mốc đó.,1,1,sg_subsidiary_equity_explicit,sg_subsidiary_equity_explicit,lg_subsidiary_equity
+R176,Vốn từng công ty con MBB?,1,1,sg_subsidiary_equity_missing_time_scope,sg_subsidiary_equity_missing_time_scope,lg_subsidiary_equity
+R177,Tìm doanh nghiệp được kiểm soát trực tiếp BID tại 30/06/2026 và cho tổng nợ phải trả theo BCTC riêng từng đơn vị cùng ngày.,1,1,sg_subsidiary_liabilities_explicit,sg_subsidiary_liabilities_explicit,lg_subsidiary_liabilities
+R178,moi don vi con cap mot BID tai 30/06/2026 co tong no phai tra bao nhieu tren bang can doi rieng?,1,1,sg_subsidiary_liabilities_explicit,sg_subsidiary_liabilities_explicit,lg_subsidiary_liabilities
+R179,Lập danh sách con trực tiếp BID ngày 30/06/2026 kèm toàn bộ nợ phải trả riêng của mỗi pháp nhân tại mốc đó.,1,1,sg_subsidiary_liabilities_explicit,sg_subsidiary_liabilities_explicit,lg_subsidiary_liabilities
+R180,Nợ từng công ty con BID?,1,1,sg_subsidiary_liabilities_missing_time_scope,sg_subsidiary_liabilities_missing_time_scope,lg_subsidiary_liabilities
+R181,"Trong các doanh nghiệp được kiểm soát trực tiếp CMG tại 31/12/2025 mà CMG nắm trên 50%, tra doanh thu thuần riêng năm 2025 từng đơn vị.",1,1,sg_owned_subsidiaries_revenue_explicit,sg_owned_subsidiaries_revenue_explicit,lg_owned_subsidiaries_revenue
+R182,"loc cong ty con cap mot CMG cuoi 2025 theo ty le so huu truc tiep lon hon 50%, roi lay doanh thu thuan ca nam 2025 tren bao cao rieng.",1,1,sg_owned_subsidiaries_revenue_explicit,sg_owned_subsidiaries_revenue_explicit,lg_owned_subsidiaries_revenue
+R183,Cho doanh thu thuần riêng năm 2025 của từng pháp nhân con trực tiếp CMG có tỷ lệ nắm giữ trên 50% ở 31/12/2025.,1,1,sg_owned_subsidiaries_revenue_explicit,sg_owned_subsidiaries_revenue_explicit,lg_owned_subsidiaries_revenue
+R184,Doanh thu các đơn vị CMG kiểm soát?,1,1,sg_owned_subsidiaries_revenue_missing_time_scope,sg_owned_subsidiaries_revenue_missing_time_scope,lg_owned_subsidiaries_revenue
+R185,Các doanh nghiệp được kiểm soát trực tiếp CTG được sở hữu đúng 100% tại 31/12/2025 có LNST riêng cả năm 2025 bao nhiêu?,1,1,sg_wholly_owned_profit_explicit,sg_wholly_owned_profit_explicit,lg_wholly_owned_profit
+R186,"loc con cap mot CTG cuoi 2025 co ty le so huu truc tiep bang 100%, roi tra loi nhuan sau thue 2025 theo bctc rieng tung don vi.",1,1,sg_wholly_owned_profit_explicit,sg_wholly_owned_profit_explicit,lg_wholly_owned_profit
+R187,Cho bảng LNST riêng năm 2025 của các pháp nhân thuộc quyền kiểm soát trực tiếp CTG mà cạnh quan hệ tại 31/12/2025 ghi tỷ lệ đúng 100%.,1,1,sg_wholly_owned_profit_explicit,sg_wholly_owned_profit_explicit,lg_wholly_owned_profit
+R188,Công ty CTG sở hữu trọn lãi bao nhiêu?,1,1,sg_wholly_owned_profit_missing_time_scope,sg_wholly_owned_profit_missing_time_scope,lg_wholly_owned_profit
+R189,"Trong tập doanh nghiệp được kiểm soát trực tiếp FPT tại 31/12/2025, xếp giảm dần LNST riêng cả năm 2025 của từng đơn vị; ghi rõ đơn vị thiếu số.",1,1,sg_rank_subsidiaries_profit_explicit,sg_rank_subsidiaries_profit_explicit,lg_rank_subsidiaries_profit
+R190,"tim cac con cap mot FPT cuoi 2025, lay loi nhuan sau thue 2025 theo bao cao rieng roi sap tu cao xuong thap.",1,1,sg_rank_subsidiaries_profit_explicit,sg_rank_subsidiaries_profit_explicit,lg_rank_subsidiaries_profit
+R191,Cho thứ tự pháp nhân thuộc quyền kiểm soát trực tiếp FPT ngày 31/12/2025 theo LNST năm 2025 trên BCTC riêng; không bỏ qua công ty chưa có dữ liệu.,1,1,sg_rank_subsidiaries_profit_explicit,sg_rank_subsidiaries_profit_explicit,lg_rank_subsidiaries_profit
+R192,Công ty con FPT nào lãi nhất?,1,1,sg_rank_subsidiaries_profit_missing_time_scope,sg_rank_subsidiaries_profit_missing_time_scope,lg_rank_subsidiaries_profit
+R193,"Lấy tập doanh nghiệp được kiểm soát trực tiếp TCB tại 31/12/2025, so doanh thu thuần riêng năm 2025 với 2024 của từng công ty.",1,1,sg_subsidiary_revenue_change_explicit,sg_subsidiary_revenue_change_explicit,lg_subsidiary_revenue_change
+R194,"voi cung danh sach con cap mot TCB chot 31/12/2025, cho thay doi doanh thu thuan tu 2024 sang 2025 tren bctc rieng tung don vi.",1,1,sg_subsidiary_revenue_change_explicit,sg_subsidiary_revenue_change_explicit,lg_subsidiary_revenue_change
+R195,Tìm con trực tiếp TCB ở cuối 2025 rồi lấy doanh thu thuần riêng cả năm 2024 và 2025 để đối chiếu từng pháp nhân.,1,1,sg_subsidiary_revenue_change_explicit,sg_subsidiary_revenue_change_explicit,lg_subsidiary_revenue_change
+R196,Doanh thu công ty con TCB tăng sao?,1,1,sg_subsidiary_revenue_change_missing_time_scope,sg_subsidiary_revenue_change_missing_time_scope,lg_subsidiary_revenue_change
+R197,"Tìm doanh nghiệp được kiểm soát trực tiếp ITD tại 31/12/2025, rồi tính tổng nợ phải trả chia vốn chủ sở hữu riêng từng công ty cùng ngày.",1,1,sg_subsidiary_debt_equity_explicit,sg_subsidiary_debt_equity_explicit,lg_subsidiary_debt_equity
+R198,Tỷ lệ nợ/vốn công ty con ITD?,1,1,sg_subsidiary_debt_equity_missing_time_scope,sg_subsidiary_debt_equity_missing_time_scope,lg_subsidiary_debt_equity
+R199,"Liệt kê doanh nghiệp được kiểm soát trực tiếp ELC tại 30/06/2026 rồi tìm đoạn BCTC riêng chứng minh tổng tài sản từng đơn vị cùng ngày, kèm trang nguồn.",1,1,sg_subsidiary_assets_with_new_passage_explicit,sg_subsidiary_assets_with_new_passage_explicit,lg_subsidiary_assets
+R200,"Tài sản công ty con ELC, nguồn đâu?",1,1,sg_subsidiary_assets_with_new_passage_missing_time_scope,sg_subsidiary_assets_with_new_passage_missing_time_scope,lg_subsidiary_assets
