@@ -673,3 +673,9 @@ Quy trình bắt buộc trước khi sửa:
 - Chạy lại rule mới **offline** trên 20 envelope BCTN đã xác minh từ lượt trước: 23 ứng viên `PENDING` (16 công ty con, 4 sở hữu cổ phần, 2 liên kết, 1 hợp tác), 23/23 có hai đầu resolved. Kiểm 17.664/17.664 chunk khớp hash và phiên tài liệu, 49/49 quote nằm trong đúng chunk. Đầu ra local tại `backend/.tmp/wbs03-after-fix-20261030/` (Git ignore).
 - Tạo `docs/sprint4/WBS03-handoff-23-candidates-20261030.md` và `docs/sprint4/WBS03-23-candidate-review.json` để WBS06 xem ID, trang, quote và thuộc tính mà không cần toàn bộ chunk. 38 test WBS03 qua trong `backend/.venv`.
 - **Chưa kiểm tra DB lại trong lượt này:** SSH tunnel `127.0.0.1:15433` chưa mở, SSH bằng khóa bị từ chối, cổng PostgreSQL VPS không công khai. Chưa chạy `save_bctn_relations.py` dry-run hay `--apply`; không ghi PostgreSQL/Neo4j và không thay đổi review state.
+
+### [2026-10-30] WBS03 — kiểm tra lại trên DB qua SSH tunnel
+
+- Sau khi tunnel được mở, chạy `extract_bctn_from_db.py` trong transaction chỉ đọc trên corpus `b2550a0b-c423-5c50-9b15-6fb6af12e2c6`: 20 BCTN, 17.664 chunk đã dựng/xác minh, 23 ứng viên `PENDING`. Cả 20 tài liệu trùng lượt offline trước về phiên nguồn và danh sách quan hệ.
+- Chạy `save_bctn_relations.py` **không có `--apply`**: 12 envelope theo section, 27 bản quan hệ, toàn bộ `SOURCE_VERIFIED_DRY_RUN`, `database_writes: 0`. Cập nhật gói bàn giao trong `docs/sprint4/WBS03-handoff-23-candidates-20261030.md` và `docs/sprint4/WBS03-23-candidate-review.json` thành kết quả đã kiểm trên DB.
+- Không ghi PostgreSQL/Neo4j, không đổi review state; WBS06 vẫn cần kiểm duyệt từng ứng viên.

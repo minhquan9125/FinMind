@@ -1,9 +1,9 @@
 # WBS03 — bàn giao 23 ứng viên BCTN (30/10/2026)
 
 - Corpus: `b2550a0b-c423-5c50-9b15-6fb6af12e2c6`; index: `ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d`.
-- Nguồn bảng: chạy lại rule WBS03 trên 20 envelope BCTN đã xác minh trước đó, lưu local tại `backend/.tmp/wbs03-after-fix-20261030/`. Đây là lượt **offline**, chưa đọc lại PostgreSQL trong lượt bàn giao này.
+- Nguồn bảng: đọc lại corpus BCTN trên PostgreSQL trong transaction chỉ đọc, xuất 20 JSON tại `backend/.tmp/wbs03-live-after-fix-20261030/`. Kết quả trùng với lượt chạy offline trước đó về phiên nguồn và danh sách quan hệ.
 - Kết quả: 23 quan hệ `PENDING`; 16 `HAS_SUBSIDIARY`, 4 `OWNS_SHARES`, 2 `HAS_ASSOCIATE`, 1 `COOPERATES_WITH`; 23/23 có hai đầu `resolved`. Chưa có quan hệ nào được WBS06 phê duyệt.
-- Kiểm tra offline lượt này: 17.664/17.664 chunk khớp `content_hash` và `document_version`, 49/49 đoạn evidence nằm trong đúng chunk; không có đầu quan hệ unresolved hoặc trạng thái khác `PENDING`. Đây không thay thế việc đọc lại DB hiện hành.
+- Kiểm tra lượt này: reader dựng và xác minh 17.664/17.664 chunk từ nguồn DB; 49/49 đoạn evidence nằm trong đúng chunk; không có đầu quan hệ unresolved hoặc trạng thái khác `PENDING`. `save_bctn_relations.py` kiểm lại nguồn cho 12 envelope/27 bản quan hệ theo section trong transaction chỉ đọc: `SOURCE_VERIFIED_DRY_RUN`, `database_writes: 0`.
 - Mỗi dòng dẫn đến chunk nguồn và trích đoạn rút gọn; quote đầy đủ, locator, phiên tài liệu và các evidence khác nằm trong JSON ứng viên. Thư mục `.tmp` không được đưa lên Git.
 - Gói bàn giao gọn `WBS03-23-candidate-review.json` chứa cả 23 quan hệ và 49 evidence với ID, trang, quote, hash, thuộc tính và phiên tài liệu; không chứa toàn bộ 17.664 chunk. Người review vẫn phải đối chiếu source qua ID/locator khi duyệt.
 
@@ -35,6 +35,6 @@
 
 ## Kiểm tra trước khi Huyền review
 
-- Chạy lại từ DB hiện hành bằng `extract_bctn_from_db.py --corpus-version-id b2550a0b-c423-5c50-9b15-6fb6af12e2c6 --output-dir <thư mục mới>` khi tunnel PostgreSQL hoạt động; không dùng số 23 như số bắt buộc nếu nguồn/corpus thay đổi.
-- Chạy `save_bctn_relations.py --input-dir <thư mục mới> --output-dir <thư mục envelope>` **không có `--apply`** để `verify_sources` trong transaction chỉ đọc. Lượt kiểm này chưa thực hiện vì tunnel `127.0.0.1:15433` chưa mở.
+- Lượt đọc DB dùng `extract_bctn_from_db.py --corpus-version-id b2550a0b-c423-5c50-9b15-6fb6af12e2c6 --output-dir backend/.tmp/wbs03-live-after-fix-20261030`. Nếu nguồn/corpus thay đổi ở lần sau, không dùng số 23 như số bắt buộc.
+- Lượt kiểm lại nguồn dùng `save_bctn_relations.py --input-dir backend/.tmp/wbs03-live-after-fix-20261030 --output-dir backend/.tmp/wbs03-live-after-fix-20261030-verified` **không có `--apply`**. Không có ghi PostgreSQL hoặc Neo4j.
 - Chuyển danh sách và evidence cho WBS06 kiểm duyệt. Không tự đổi `PENDING` thành `APPROVED`, không ghi Neo4j.

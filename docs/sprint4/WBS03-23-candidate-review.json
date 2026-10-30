@@ -1,9 +1,9 @@
 {
   "schema": "wbs03-review-handoff-v1",
-  "basis": "offline_reextract_of_previously_verified_bctn_envelopes",
+  "basis": "live_readonly_extraction_from_frozen_corpus",
   "corpus_id": "b2550a0b-c423-5c50-9b15-6fb6af12e2c6",
   "index_version_id": "ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d",
-  "database_verified_this_run": false,
+  "database_verified_this_run": true,
   "candidate_count": 23,
   "candidates": [
     {
@@ -1135,5 +1135,13 @@
         }
       ]
     }
-  ]
+  ],
+  "verification": {
+    "source_verified_dry_run": true,
+    "database_writes": 0,
+    "documents": 20,
+    "verified_chunks": 17664,
+    "section_envelopes": 12,
+    "relation_copies": 27
+  }
 }
