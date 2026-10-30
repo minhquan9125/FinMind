@@ -29,6 +29,12 @@ _BREAK = re.compile(r"(?<!\d)[.!?;](?!\d)|\n")
 _ISSUER_SUBSIDIARY = re.compile(
     r"\b(?:các\s+)?công ty con\s*(?:kiểm soát\s+(?:trực tiếp|gián tiếp)\s*)?(?::|là|gồm)?\s*",
     re.I)
+_SECTION = re.compile(r"^\s*các công ty (con|liên kết)(?:\s+kiểm soát\s+(?:trực tiếp|gián tiếp))?\s*$", re.I)
+_LEGAL_LINE = re.compile(r"^(?:Tổng\s+)?Công ty\s+(?:Cổ phần|CP|TNHH|Trách nhiệm hữu hạn)\s+\S", re.I)
+_FIELD_LINE = re.compile(r"^(?:Địa chỉ|Điện thoại|Fax|Email|Tỷ lệ|Lĩnh vực|Tên cũ|Vốn|Mã số|Website|Lợi nhuận)\b", re.I)
+_SUBSIDIARY_OF = re.compile(
+    r"\(\s*là\s+công ty con\s+của\s+(?P<parent>(?:Tổng\s+)?Công ty\s+"
+    r"(?:Cổ phần|CP|TNHH|Trách nhiệm hữu hạn)\s+[^)\n]+(?:\n[^)\n]+)?)\)", re.I)
 _GENERIC_COMPANY_NAMES = {
     'công ty cổ phần', 'công ty cp', 'công ty tnhh',
     'công ty trách nhiệm hữu hạn', 'ngân hàng thương mại cổ phần',
@@ -59,6 +65,50 @@ def _day(text):
     return None
 
 
+def _company_name_spans(chunk):
+    """Offer the shared resolver complete legal names broken across two OCR lines."""
+    text = chunk['text']
+    lines = list(re.finditer(r'[^\n]+', text))
+    for index, line in enumerate(lines):
+        first = line.group().strip()
+        if not _LEGAL_LINE.match(first):
+            continue
+        start = line.start() + len(line.group()) - len(line.group().lstrip())
+        end = line.start() + len(line.group().rstrip())
+        if index + 1 < len(lines):
+            next_line = lines[index + 1].group().strip()
+            # A continuation is short, contains no field label and is not a new legal name.
+            if (next_line and len(next_line.split()) <= 8 and len(next_line) <= 80
+                    and ':' not in next_line and not _FIELD_LINE.match(next_line)
+                    and not _LEGAL_LINE.match(next_line) and not next_line.startswith('(')
+                    and not (re.fullmatch(r'[A-Z]{2,5}', next_line) and len(next_line) < 5)):
+                end = lines[index + 1].start() + len(lines[index + 1].group().rstrip())
+        # Parentheses introduce an explanation such as "(Là công ty con...)".
+        # They are not part of the legal name to resolve.
+        parenthesis = text.find('(', start, end)
+        if parenthesis >= 0:
+            end = parenthesis
+        while end > start and text[end - 1] in ') ,':
+            end -= 1
+        while end > start and text[end - 1].isspace():
+            end -= 1
+        yield start, end
+
+
+def _best_company_mentions(mentions, start, end, credible, entities):
+    """Prefer a verified identity over a longer unresolved OCR span."""
+    found = {}
+    for mention in mentions:
+        if start <= mention['start'] < mention['end'] <= end and credible(mention):
+            previous = found.get(mention['start'])
+            rank = (entities[mention['entity_id']]['resolution_status'] == 'resolved', mention['end'])
+            old_rank = ((entities[previous['entity_id']]['resolution_status'] == 'resolved', previous['end'])
+                        if previous else None)
+            if old_rank is None or rank > old_rank:
+                found[mention['start']] = mention
+    return [found[key] for key in sorted(found)]
+
+
 def _recognize(sentence, first, second):
     """Return (type, subject, object, attributes) only for an explicit cue."""
     between = sentence[first['end']:second['start']]
@@ -80,6 +130,8 @@ def _recognize(sentence, first, second):
         if re.search(r"\bcó\b.{0,25}(?:công ty|doanh nghiệp) liên kết\s+(?:là\s*)?$", between, re.I):
             return 'HAS_ASSOCIATE', first['entity_id'], second['entity_id'], {}
     if _OWN.search(between) and len(between) <= 100 and not _SUB.search(between) and not _ASSOC.search(between):
+        if re.search(r'\bchủ\s+sở hữu\b', between, re.I) and not re.search(r'\bnắm giữ\b', between, re.I):
+            return None
         if re.search(r"\bnắm giữ\b", between, re.I) and not re.search(r"(?:%|cổ phần|cổ phiếu|vốn|quyền sở hữu)", between + after[:50], re.I):
             return None
         if re.search(r"\bsở hữu\s+(?:công nghệ|sản phẩm|thương hiệu|lợi thế|vị thế|năng lực|giải pháp)\b", between, re.I):
@@ -130,9 +182,18 @@ def extract_candidates(envelope, registry):
     result = deepcopy(envelope)
     if result['relations'] or result['entities'] or result['mentions']:
         raise ValueError('Expected document/chunk-only input')
+    list_pages = {(chunk['document_id'], chunk['locator']['page']) for chunk in result['chunks']
+                  if any(_SECTION.match(line) for line in chunk['text'].splitlines())}
     relevant_chunks = [chunk for chunk in result['chunks']
-                       if any(pattern.search(chunk['text']) for pattern in (_OWN, _SUB, _ASSOC, _COOP))]
-    resolved = normalize(relevant_chunks, registry=registry)
+                       if (chunk['document_id'], chunk['locator']['page']) in list_pages
+                       or any(pattern.search(chunk['text']) for pattern in (_OWN, _SUB, _ASSOC, _COOP))]
+    proposals = [dict(document_id=chunk['document_id'], chunk_id=chunk['chunk_id'],
+                      entity_type='Company', start=start, end=end)
+                 for chunk in relevant_chunks for start, end in _company_name_spans(chunk)]
+    proposals.extend(dict(document_id=chunk['document_id'], chunk_id=chunk['chunk_id'],
+                          entity_type='Company', start=match.start('parent'), end=match.end('parent'))
+                     for chunk in relevant_chunks for match in _SUBSIDIARY_OF.finditer(chunk['text']))
+    resolved = normalize(relevant_chunks, registry=registry, proposals=proposals)
     result.update(resolved)
     entities = {e['entity_id']: e for e in result['entities']}
     def complete_company(entity_id):
@@ -157,6 +218,22 @@ def extract_candidates(envelope, registry):
         if len(name.split()) == 1:
             return (name.isupper() and name.isalpha() and 2 <= len(name) <= 5) or (len(name) >= 5 and name[0].isupper())
         return name[0].isupper() and not name.islower()
+    def entry_identity(child, mentions, chunk, issuer_id):
+        """Use a verified short alias printed inside a longer OCR heading."""
+        if entities[child['entity_id']]['resolution_status'] == 'resolved':
+            return child['entity_id'], child['end']
+        aliases = [m for m in mentions
+                   if child['start'] < m['start'] < m['end'] <= child['end'] + 80
+                   and m['entity_id'] != issuer_id
+                   and entities[m['entity_id']]['resolution_status'] == 'resolved'
+                   and re.fullmatch(r'[A-Za-z]{3,10}', m['raw_name'])
+                   and not any(_FIELD_LINE.match(line.strip()) or _LEGAL_LINE.match(line.strip())
+                               for line in chunk['text'][child['end']:m['start']].splitlines())]
+        ids = {m['entity_id'] for m in aliases}
+        if len(ids) == 1:
+            alias = min(aliases, key=lambda m: m['start'])
+            return alias['entity_id'], max(child['end'], alias['end'])
+        return child['entity_id'], child['end']
     issuers = {}
     for document in result['documents']:
         issuer = _issuer_entity(document, registry)
@@ -169,6 +246,27 @@ def extract_candidates(envelope, registry):
     for mention in result['mentions']:
         if entities[mention['entity_id']]['entity_type'] == 'Company':
             by_chunk.setdefault((mention['document_id'], mention['chunk_id']), []).append(mention)
+    # A heading may be in the preceding chunk, but only on the same verified page.
+    sections = {}
+    for chunk in sorted(result['chunks'], key=lambda c: (c['document_id'], c['locator']['page'],
+                                                           c['locator'].get('section_index', 0),
+                                                           c['locator'].get('char_start', 0))):
+        page_key = chunk['document_id'], chunk['locator']['page']
+        section = sections.get(page_key)
+        lines = chunk['text'].splitlines(keepends=True)
+        offset = 0
+        entries = []
+        for line in lines:
+            heading = _SECTION.match(line)
+            if heading:
+                kind = 'HAS_SUBSIDIARY' if heading.group(1).lower() == 'con' else 'HAS_ASSOCIATE'
+                section = (kind, {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'],
+                                  'quote': line.strip()})
+            if section and _LEGAL_LINE.match(line.strip()):
+                entries.append((offset + len(line) - len(line.lstrip()), section))
+            offset += len(line)
+        sections[page_key] = section
+        chunk['_wbs03_entries'] = entries
     relations = {}
     def record(kind, subject, target, attributes, temporal, evidence):
         key = (kind, subject, target, json.dumps(attributes, ensure_ascii=False, sort_keys=True),
@@ -210,7 +308,27 @@ def extract_candidates(envelope, registry):
             temporal = {'as_of': _day(quote), 'valid_from': None, 'valid_to': None}
             evidence = {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'], 'quote': quote}
             record(kind, subject, target, attributes, temporal, evidence)
+        for match in _SUBSIDIARY_OF.finditer(chunk['text']):
+            preceding = [span for span in _company_name_spans(chunk) if span[1] <= match.start()
+                         and not chunk['text'][span[1]:match.start()].strip()]
+            if not preceding:
+                continue
+            child_start, child_end = preceding[-1]
+            child = next((m for m in mentions if m['start'] == child_start and m['end'] == child_end
+                          and (credible_mention(m) or reviewable_company(m))), None)
+            parent = next((m for m in mentions if m['start'] == match.start('parent')
+                           and m['end'] == match.end('parent')
+                           and (credible_mention(m) or reviewable_company(m))), None)
+            if child is None or parent is None or child['entity_id'] == parent['entity_id']:
+                continue
+            quote = chunk['text'][child_start:match.end()]
+            if any(p.search(quote) for p in (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)):
+                continue
+            evidence = {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'], 'quote': quote}
+            record('HAS_SUBSIDIARY', parent['entity_id'], child['entity_id'], {},
+                   {'as_of': None, 'valid_from': None, 'valid_to': None}, evidence)
         issuer_id = issuers.get(chunk['document_id'])
+        entries = chunk.pop('_wbs03_entries', [])
         if not issuer_id:
             continue
         for cue in _ISSUER_SUBSIDIARY.finditer(chunk['text']):
@@ -222,9 +340,51 @@ def extract_candidates(envelope, registry):
             child = next((m for m in following if credible_mention(m)), None)
             if child is None:
                 child = next((m for m in following if reviewable_company(m)), None)
-            if child is None or child['entity_id'] == issuer_id:
+            if child is None:
                 continue
-            quote = chunk['text'][cue.start():child['end']]
+            child_id, evidence_end = entry_identity(child, mentions, chunk, issuer_id)
+            if child_id == issuer_id:
+                continue
+            quote = chunk['text'][cue.start():evidence_end]
+            if any(p.search(quote) for p in (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)):
+                continue
+            evidence = {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'], 'quote': quote}
+            record('HAS_SUBSIDIARY', issuer_id, child_id,
+                   {'inference_basis': 'document_issuer'},
+                   {'as_of': None, 'valid_from': None, 'valid_to': None}, evidence)
+        for position, (kind, heading_evidence) in entries:
+            following = _best_company_mentions(mentions, position, min(len(chunk['text']), position + 180),
+                                                lambda m: credible_mention(m) or reviewable_company(m), entities)
+            child = next((m for m in following if m['start'] == position), None)
+            if child is None:
+                continue
+            # The source excerpt contains the actual name; do not infer a percentage or date
+            # from a different row/chunk of the report.
+            child_id, evidence_end = entry_identity(child, mentions, chunk, issuer_id)
+            if child_id == issuer_id:
+                continue
+            quote = chunk['text'][child['start']:evidence_end]
+            if any(p.search(quote) for p in (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)):
+                continue
+            evidence = {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'], 'quote': quote}
+            record(kind, issuer_id, child_id, {'inference_basis': 'document_issuer'},
+                   {'as_of': None, 'valid_from': None, 'valid_to': None}, heading_evidence)
+            record(kind, issuer_id, child_id, {'inference_basis': 'document_issuer'},
+                   {'as_of': None, 'valid_from': None, 'valid_to': None}, evidence)
+        # A short code can point to the complete legal heading immediately above it.
+        # Require the clause itself to resolve the named owner to this report's issuer.
+        for name_start, name_end in _company_name_spans(chunk):
+            tail = chunk['text'][name_end:name_end + 180]
+            match = re.match(r'\s*([A-Z]{2,5})\s*\n.{0,100}?\b\1\s+là\s+công ty con\s+do\s+', tail, re.I | re.S)
+            if not match:
+                continue
+            owner_start = name_end + match.end()
+            owner = next((m for m in mentions if m['start'] == owner_start and m['entity_id'] == issuer_id), None)
+            child = next((m for m in mentions if m['start'] == name_start and m['end'] == name_end
+                          and (credible_mention(m) or reviewable_company(m))), None)
+            if not owner or not child or child['entity_id'] == issuer_id:
+                continue
+            quote = chunk['text'][name_start:owner['end']]
             if any(p.search(quote) for p in (_NEGATE, _PLANNED, _CONDITIONAL, _HISTORICAL)):
                 continue
             evidence = {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'], 'quote': quote}

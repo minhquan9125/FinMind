@@ -24,7 +24,7 @@ def main():
     parser.add_argument('--reextract', action='store_true',
                         help='Re-run rules on a previously verified envelope; preserve documents/chunks')
     parser.add_argument('--registry', type=Path,
-                        default=Path(__file__).resolve().parents[1] / 'src' / 'sprint4_runtime' / 'company.registry.json')
+                        default=Path(__file__).resolve().parents[1] / 'src' / 'sprint4_runtime' / 'company.registry.20261030.r1.json')
     args = parser.parse_args()
     if args.output.exists():
         parser.error('Output exists; choose a new path')

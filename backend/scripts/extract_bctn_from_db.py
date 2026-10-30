@@ -57,7 +57,7 @@ def main():
     parser.add_argument('--document-id', help='Run one complete BCTN; omit for the full corpus')
     parser.add_argument('--output-dir', required=True, type=Path)
     parser.add_argument('--registry', type=Path,
-                        default=Path(__file__).resolve().parents[1] / 'src' / 'sprint4_runtime' / 'company.registry.json')
+                        default=Path(__file__).resolve().parents[1] / 'src' / 'sprint4_runtime' / 'company.registry.20261030.r1.json')
     args = parser.parse_args()
     try:
         asyncio.run(run(args))

@@ -67,6 +67,7 @@ class RelationExtractorTests(unittest.TestCase):
                      'Alpha Việt luôn giữ vị thế tiên phong trước Beta Việt.',
                      'Alpha Việt nắm giữ vị thế của Beta Việt.',
                      'Alpha Việt sở hữu lợi thế cạnh tranh tiên phong.',
+                     'Alpha Việt về Chủ sở hữu – Beta Việt trong năm 2024.',
                      'Alpha Việt và Beta Việt cùng xuất hiện trong báo cáo.'):
             with self.subTest(text=text):
                 self.assertEqual(extract_candidates(envelope(text), REGISTRY)['relations'], [])
