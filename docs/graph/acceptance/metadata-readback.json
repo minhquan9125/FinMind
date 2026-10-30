@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "application_role": {
+    "current_user": "finmind_chat_runtime",
+    "rolsuper": false,
+    "rolbypassrls": false
+  },
+  "assertions_read_and_hash_verified": 184,
+  "source_bindings_checked": 6278,
+  "human_approvals": 0,
+  "database_writes": 0
+}

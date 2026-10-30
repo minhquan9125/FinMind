@@ -1,0 +1,44 @@
+{
+  "status": "COMMITTED_AND_READBACK_VERIFIED",
+  "graph_version_id": "6f1504e8-3eef-59e7-9d20-8c5957cb4427",
+  "corpus_version_id": "b2550a0b-c423-5c50-9b15-6fb6af12e2c6",
+  "index_version_id": "ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d",
+  "bound_extractions": 184,
+  "company_counts": {
+    "MBB": 26,
+    "ITD": 11,
+    "ICT": 4,
+    "VCB": 15,
+    "CTG": 36,
+    "TCB": 31,
+    "FPT": 8,
+    "CMG": 9,
+    "BID": 29,
+    "ELC": 15
+  },
+  "statuses": {
+    "SOURCE_VERIFIED": 182,
+    "FUTURE_EFFECTIVE": 2
+  },
+  "deferred": [
+    {
+      "extraction_id": "16a69a2b-d784-5d02-8e2c-e3ccee8f269e",
+      "reason": "SOURCE_CONFLICT",
+      "symbol": "ICT"
+    },
+    {
+      "extraction_id": "7e09fb82-8878-58f0-861e-1448415724c0",
+      "reason": "SOURCE_CONFLICT",
+      "symbol": "ICT"
+    },
+    {
+      "extraction_id": "d0c73c80-6617-58cd-8e67-d06041e682ec",
+      "reason": "SOURCE_CONFLICT",
+      "symbol": "CTG"
+    }
+  ],
+  "source_units_replayed": 16,
+  "historical_graph_preserved": true,
+  "manifest_sha256": "9648b7ca4c004751c55c683be702e102b1d36454d5c866a762938b7340b1de7e",
+  "neo4j_writes": 0
+}
