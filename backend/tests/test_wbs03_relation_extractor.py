@@ -75,6 +75,58 @@ class RelationExtractorTests(unittest.TestCase):
     def test_unknown_name_not_promoted_to_relation(self):
         self.assertEqual(extract_candidates(envelope('Alpha Việt hợp tác với Gamma Việt.'), REGISTRY)['relations'], [])
 
+    def test_appositive_code_uses_document_abbreviation(self):
+        registry = REGISTRY + [
+            {'entity_id': 'company:bank', 'entity_type': 'Company',
+             'canonical_name': 'Ngân hàng TMCP Đầu tư Alpha', 'aliases': ['Ngân hàng TMCP Đầu tư Alpha'],
+             'ticker_aliases': [], 'identity_key': 'name:bank', 'verified': True},
+            {'entity_id': 'company:bic', 'entity_type': 'Company',
+             'canonical_name': 'Tổng Công ty Cổ phần Bảo hiểm Alpha', 'aliases': ['BIC'],
+             'ticker_aliases': ['BIC'], 'identity_key': 'name:bic', 'verified': True}]
+        text = ('Ngân hàng TMCP Đầu tư Alpha (BIDV) công bố.\n'
+                'Hợp đồng bảo hiểm trách nhiệm (BIC- Công ty con của BIDV)')
+        result = extract_candidates(envelope(text), registry)
+        self.assertEqual([(r['relation_type'], r['subject_id'], r['object_id']) for r in result['relations']],
+                         [('HAS_SUBSIDIARY', 'company:bank', 'company:bic')])
+        self.assertEqual(result['relations'][0]['evidence'][0]['quote'], 'BIC- Công ty con của BIDV')
+        # Without the document's own "(BIDV)" definition the owner is unknown.
+        self.assertEqual(extract_candidates(envelope('(BIC- Công ty con của BIDV)'), registry)['relations'], [])
+
+    def test_passive_owner_with_percent(self):
+        registry = REGISTRY + [{'entity_id': 'company:vcbl', 'entity_type': 'Company',
+                                'canonical_name': 'Công ty TNHH Cho thuê Alpha', 'aliases': ['VCBL'],
+                                'ticker_aliases': [], 'identity_key': 'name:vcbl', 'verified': True},
+                               {'entity_id': 'company:alpha2', 'entity_type': 'Company',
+                                'canonical_name': 'Alphabank', 'aliases': ['Alphabank'],
+                                'ticker_aliases': [], 'identity_key': 'name:alphabank', 'verified': True}]
+        cases = {'VCBL là công ty con do Alphabank nắm giữ 87,5% vốn.': ('HAS_SUBSIDIARY', '87.5'),
+                 'VCBL là Công ty do Alphabank sở hữu 100% vốn.': ('OWNS_SHARES', '100')}
+        for text, (kind, percent) in cases.items():
+            with self.subTest(text=text):
+                relation, = extract_candidates(envelope(text), registry)['relations']
+                self.assertEqual((relation['relation_type'], relation['subject_id'], relation['object_id']),
+                                 (kind, 'company:alpha2', 'company:vcbl'))
+                self.assertEqual(relation['attributes']['ownership_percent'], percent)
+        blocked = 'VCBL không còn là công ty con do Alphabank sở hữu 100% vốn.'
+        self.assertEqual(extract_candidates(envelope(blocked), registry)['relations'], [])
+
+    def test_cooperation_between_exactly_two_named_parties(self):
+        relation, = extract_candidates(envelope('Dự án hợp tác giữa Alpha Việt và Beta Việt triển khai.'),
+                                       REGISTRY)['relations']
+        self.assertEqual((relation['relation_type'], relation['subject_id'], relation['object_id']),
+                         ('COOPERATES_WITH', 'company:alpha', 'company:beta'))
+        self.assertEqual(relation['evidence'][0]['quote'], 'hợp tác giữa Alpha Việt và Beta Việt')
+        joint, = extract_candidates(envelope('Công ty liên doanh giữa Alpha Việt với Beta Việt.'),
+                                    REGISTRY)['relations']
+        self.assertEqual(joint['attributes'], {'cooperation_scope': 'liên doanh'})
+        for text in ('hợp tác giữa hai bên.',
+                     'liên doanh giữa Alpha Việt, Beta Việt và Gamma.',
+                     'liên doanh giữa Alpha Việt và Beta Việt và Gamma.',
+                     'hợp tác giữa Alpha Việt và Beta Việt Holdings.',
+                     'Dự kiến hợp tác giữa Alpha Việt và Beta Việt.'):
+            with self.subTest(text=text):
+                self.assertEqual(extract_candidates(envelope(text), REGISTRY)['relations'], [])
+
     def test_common_alias_does_not_become_company_relation(self):
         misleading = {'entity_id': 'company:pioneer', 'entity_type': 'Company',
                       'canonical_name': 'Công ty Cổ phần Công nghệ Tiên Phong',

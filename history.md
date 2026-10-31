@@ -656,3 +656,32 @@ Quy trình bắt buộc trước khi sửa:
 
 - Đối chiếu TCB→TechAMC với chunk trang 160 (mục công ty con) và trang 84 (vốn góp của Techcombank); đối chiếu VCB→VCBL với chunk trang 18 (sở hữu 100%) và trang 41 (danh sách công ty con) trong hai snapshot đã ghim. Không suy ngày bắt đầu quan hệ từ ngày nghị quyết và chưa tự gắn tỷ lệ vào JSON.
 - Cập nhật `docs/sprint4/WBS03-registry-r1-review-20261030.md`. Cả hai ứng viên vẫn `PENDING`; BID→BIC vẫn `unresolved` do ngữ cảnh bảng/ticker. Đây là rà bằng chứng trên JSON BCTN đã đọc trước đó, chưa phải duyệt WBS06 hay đo precision/recall toàn corpus. Không đọc/ghi database hoặc Neo4j trong lượt này.
+
+### [2026-10-30] WBS03 — hoàn thiện rule quan hệ BCTN, tỷ lệ/thời điểm và script lưu DB
+
+- **File(s):** `backend/src/sprint4_runtime/relation_extractor.py`, `backend/scripts/save_bctn_relations.py` (mới), `backend/tests/test_wbs03_relation_extractor.py`, `backend/tests/test_wbs03_db_adapter.py`, `backend/tests/test_wbs03_save_split.py` (mới), `docs/sprint4/WBS03-BCTN-relation-candidates.md`, `history.md`. Không sửa resolver/contract/registry WBS02.
+- **BID → BIC:** bỏ ứng viên tên cụt “…Ngân hàng Đầu tư và” do bảng giao dịch bên liên quan trộn cột (tên kết thúc “và”/“&”/“,” chỉ được dùng khi nối được alias verified ngay dưới, như TechAMC). Thêm nhận viết tắt trong chính tài liệu: “<tên đầy đủ khớp duy nhất registry verified> (ABBR)”; không nhận nếu viết tắt xung đột alias registry hoặc được định nghĩa hai lần. Quan hệ BIC nay lấy từ câu “BIC- Công ty con của BIDV” (BID 2025 trang 63), BIDV được nối với ngân hàng phát hành nhờ dòng “Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (BIDV)”.
+- **Tỷ lệ/thời điểm:** gắn `ownership_percent` từ dòng “Tỷ lệ sở hữu” của đúng hàng trong danh sách công ty con/liên kết (kể cả tràn sang chunk sau cùng trang), từ câu “X là công ty con do Y sở hữu N%”, và từ sơ đồ “TỶ LỆ SỞ HỮU … TẠI CÁC CÔNG TY CON (dd/mm/yyyy)” — chỉ sơ đồ này cho `as_of`. Hàng dưới “kiểm soát gián tiếp” không gắn tỷ lệ cho issuer; tên trong sơ đồ là ticker trần không được resolve. Không suy ngày từ năm báo cáo.
+- **`relation_id`:** khóa gồm thêm `document_id`, nên cùng cặp ở hai BCTN khác năm là hai phát biểu riêng (TCB→TCBS 2024/2025). Trong một BCTN, phát biểu tương thích của cùng cặp/loại được gộp evidence và thuộc tính; giá trị mâu thuẫn tách thành quan hệ riêng.
+- **Rule mới (regex, không dùng LLM):** `X - công ty con [gián tiếp] của Y`; `X là công ty con|công ty liên kết|công ty do Y sở hữu/nắm giữ N%` (“công ty” → `OWNS_SHARES`); `hợp tác|liên doanh giữa A và|với B` chỉ khi đúng hai bên verified. Mọi mẫu đều qua bộ lọc phủ định/dự kiến/điều kiện/quá khứ của cả mệnh đề.
+- **Script lưu DB:** `save_bctn_relations.py` tách envelope theo trang (intake `WBS03Repository` pin `document_version` theo section), so text chunk với nguồn DB rồi `verify_sources`. Mặc định chạy transaction READ ONLY, không ghi; `--apply` ghi tất cả trong một transaction với role `finmind_graph_writer`, trạng thái `EXTRACTED_PENDING`.
+- **Kiểm chứng:** Chạy lại VPS chỉ đọc, corpus `b2550a0b-c423-5c50-9b15-6fb6af12e2c6`: 20 BCTN, 17.664 chunk, 23 ứng viên `PENDING` (trước 17), cả 23 resolved hai đầu; giữ đủ 17 ứng viên cũ. Mới: BID→BIC resolved, MB↔FPT (ca A08), VCB→VCBS/VCBL `OWNS_SHARES` 100%, VCB 2025→VCBR. Tỷ lệ khớp đối chiếu Hưng: ELC 100/93/70/68,68/42,97/41,58%; TCB 2024 TCBS 94,1%, TechAMC 100%, TCC 88,99% tại 2024-12-31. Chạy thử script lưu: 12 envelope/27 bản quan hệ xác minh nguồn, `database_writes: 0`. 38 test WBS03 qua (cài thêm `jsonschema` cho `.venv` gốc).
+- **Giới hạn:** Chưa chạy `--apply` (chờ xác nhận), chưa ghi PostgreSQL/Neo4j, không đổi trạng thái review. Chỉ TCB 2024 có `as_of`; sơ đồ TCB 2025 trộn cột nên không gắn. Chưa bắt TCBS ở TCB 2024 trang 43 (hai cột trộn chữ); VFC, VCBM, MUFG, NVIDIA chưa có trong registry. Chưa có tập gold nên chưa đo precision/recall; WBS06 vẫn phải duyệt.
+
+### [2026-10-30] WBS03 — chuẩn bị gói bàn giao 23 ứng viên
+
+- Chạy lại rule mới **offline** trên 20 envelope BCTN đã xác minh từ lượt trước: 23 ứng viên `PENDING` (16 công ty con, 4 sở hữu cổ phần, 2 liên kết, 1 hợp tác), 23/23 có hai đầu resolved. Kiểm 17.664/17.664 chunk khớp hash và phiên tài liệu, 49/49 quote nằm trong đúng chunk. Đầu ra local tại `backend/.tmp/wbs03-after-fix-20261030/` (Git ignore).
+- Tạo `docs/sprint4/WBS03-handoff-23-candidates-20261030.md` và `docs/sprint4/WBS03-23-candidate-review.json` để WBS06 xem ID, trang, quote và thuộc tính mà không cần toàn bộ chunk. 38 test WBS03 qua trong `backend/.venv`.
+- **Chưa kiểm tra DB lại trong lượt này:** SSH tunnel `127.0.0.1:15433` chưa mở, SSH bằng khóa bị từ chối, cổng PostgreSQL VPS không công khai. Chưa chạy `save_bctn_relations.py` dry-run hay `--apply`; không ghi PostgreSQL/Neo4j và không thay đổi review state.
+
+### [2026-10-30] WBS03 — kiểm tra lại trên DB qua SSH tunnel
+
+- Sau khi tunnel được mở, chạy `extract_bctn_from_db.py` trong transaction chỉ đọc trên corpus `b2550a0b-c423-5c50-9b15-6fb6af12e2c6`: 20 BCTN, 17.664 chunk đã dựng/xác minh, 23 ứng viên `PENDING`. Cả 20 tài liệu trùng lượt offline trước về phiên nguồn và danh sách quan hệ.
+- Chạy `save_bctn_relations.py` **không có `--apply`**: 12 envelope theo section, 27 bản quan hệ, toàn bộ `SOURCE_VERIFIED_DRY_RUN`, `database_writes: 0`. Cập nhật gói bàn giao trong `docs/sprint4/WBS03-handoff-23-candidates-20261030.md` và `docs/sprint4/WBS03-23-candidate-review.json` thành kết quả đã kiểm trên DB.
+- Không ghi PostgreSQL/Neo4j, không đổi review state; WBS06 vẫn cần kiểm duyệt từng ứng viên.
+
+### [2026-10-31] WBS08 — chuẩn bị đối chiếu graph sau WBS06
+
+- Chạy lại 8 test GraphStore thành công. `prepare_batch` với envelope BCTN VCB 2025 thật có 4 quan hệ `PENDING` tạo 0 node/0 cạnh, đúng quy tắc chỉ nạp `APPROVED`; không kết nối hoặc ghi Neo4j.
+- Thêm `backend/scripts/verify_sprint4_graph.py` để **đọc** phiên `READY` và đối chiếu batch/cạnh với envelope đã được WBS06 duyệt: ID, chiều, loại, thuộc tính, thời gian và evidence. Thêm `backend/tests/test_verify_sprint4_graph.py`; tổng 12 test WBS08 qua. Cách chạy và giới hạn ghi trong `docs/sprint4/WBS08-graph-store.md`.
+- Chưa có envelope BCTN `APPROVED` để kiểm thử đường nạp thật; gói 23 ứng viên WBS03 vẫn `PENDING`. Cổng Neo4j tunnel `127.0.0.1:17687` chưa mở. Không publish phiên graph mới trong lượt này.
