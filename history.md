@@ -679,3 +679,9 @@ Quy trình bắt buộc trước khi sửa:
 - Sau khi tunnel được mở, chạy `extract_bctn_from_db.py` trong transaction chỉ đọc trên corpus `b2550a0b-c423-5c50-9b15-6fb6af12e2c6`: 20 BCTN, 17.664 chunk đã dựng/xác minh, 23 ứng viên `PENDING`. Cả 20 tài liệu trùng lượt offline trước về phiên nguồn và danh sách quan hệ.
 - Chạy `save_bctn_relations.py` **không có `--apply`**: 12 envelope theo section, 27 bản quan hệ, toàn bộ `SOURCE_VERIFIED_DRY_RUN`, `database_writes: 0`. Cập nhật gói bàn giao trong `docs/sprint4/WBS03-handoff-23-candidates-20261030.md` và `docs/sprint4/WBS03-23-candidate-review.json` thành kết quả đã kiểm trên DB.
 - Không ghi PostgreSQL/Neo4j, không đổi review state; WBS06 vẫn cần kiểm duyệt từng ứng viên.
+
+### [2026-10-31] WBS08 — chuẩn bị đối chiếu graph sau WBS06
+
+- Chạy lại 8 test GraphStore thành công. `prepare_batch` với envelope BCTN VCB 2025 thật có 4 quan hệ `PENDING` tạo 0 node/0 cạnh, đúng quy tắc chỉ nạp `APPROVED`; không kết nối hoặc ghi Neo4j.
+- Thêm `backend/scripts/verify_sprint4_graph.py` để **đọc** phiên `READY` và đối chiếu batch/cạnh với envelope đã được WBS06 duyệt: ID, chiều, loại, thuộc tính, thời gian và evidence. Thêm `backend/tests/test_verify_sprint4_graph.py`; tổng 12 test WBS08 qua. Cách chạy và giới hạn ghi trong `docs/sprint4/WBS08-graph-store.md`.
+- Chưa có envelope BCTN `APPROVED` để kiểm thử đường nạp thật; gói 23 ứng viên WBS03 vẫn `PENDING`. Cổng Neo4j tunnel `127.0.0.1:17687` chưa mở. Không publish phiên graph mới trong lượt này.
