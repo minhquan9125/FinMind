@@ -77,7 +77,6 @@ def validate_chunk(chunk):
                  and box[0] <= box[2] and box[1] <= box[3], 'Invalid bbox')
     return chunk
 
-
 def validate_envelope(payload):
     """Kiểm cấu trúc/nhất quán nguồn; không xác nhận sự thật ngoài đời."""
     try:
