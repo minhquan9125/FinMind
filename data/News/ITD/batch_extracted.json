@@ -1,0 +1,864 @@
+[
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "3768423a-7ffc-59c1-aa01-e529ea70ae6c",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet/41794276",
+    "publish_date": "2026-09-15",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "corporate_action",
+        "event_name": "niêm yết",
+        "event_name_evidence": "ITD: Thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "b0ebbed7-6934-5125-a9cd-be1d58634d53",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2976530/itd-2292026-giao-dich-4710245-cp-niem-yet-bo-sung.chn",
+    "publish_date": "2026-09-15",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "corporate_action",
+        "event_name": "niêm yết",
+        "event_name_evidence": "ITD: 22.9.2026, giao dịch 4.710.245 cp niêm yết bổ sung",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: 22.9.2026, giao dịch 4.710.245 cp niêm yết bổ sung",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: 22.9.2026, giao dịch 4.710.245 cp niêm yết bổ sung",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "4.710.245 cp",
+            "context": "ITD: 22.9.2026, giao dịch 4.710.245 cp niêm yết bổ sung",
+            "evidence": "ITD: 22.9.2026, giao dịch 4.710.245 cp niêm yết bổ sung"
+          }
+        ],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "0f981fdd-e2f8-5552-ab54-ab2344fb210e",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet/41733326",
+    "publish_date": "2026-09-10",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "corporate_action",
+        "event_name": "niêm yết",
+        "event_name_evidence": "ITD: Quyết định về việc thay đổi đăng ký niêm yết",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Quyết định về việc thay đổi đăng ký niêm yết",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Quyết định về việc thay đổi đăng ký niêm yết",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "3a3a6751-7c34-549f-921f-cc7907ea9458",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2973273/itd-1192026-niem-yet-bo-sung-4710245-cp.chn",
+    "publish_date": "2026-09-10",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "corporate_action",
+        "event_name": "niêm yết",
+        "event_name_evidence": "ITD: 11.9.2026, niêm yết bổ sung 4.710.245 cp",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: 11.9.2026, niêm yết bổ sung 4.710.245 cp",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: 11.9.2026, niêm yết bổ sung 4.710.245 cp",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "4.710.245 cp",
+            "context": "ITD: 11.9.2026, niêm yết bổ sung 4.710.245 cp",
+            "evidence": "ITD: 11.9.2026, niêm yết bổ sung 4.710.245 cp"
+          }
+        ],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "2d74b0c4-fece-5510-8d60-09f4ba50f4d8",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-thong-bao-ky-hop-dong-kiem-toan-bctc-2026/41705584",
+    "publish_date": "2026-09-08",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "agreement_signing",
+        "event_name": "ký hợp đồng",
+        "event_name_evidence": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "counterparty",
+            "role_evidence": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "1ace1e56-2500-5d44-9417-30566e5213bb",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2972021/itd-thong-bao-ky-hop-dong-kiem-toan-bctc-2026.chn",
+    "publish_date": "2026-09-08",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "agreement_signing",
+        "event_name": "ký hợp đồng",
+        "event_name_evidence": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "counterparty",
+            "role_evidence": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "0092530a-98cd-5f78-a2f0-8d94cb3ab3a9",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-37/41628188",
+    "publish_date": "2026-08-28",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "6a8ca7c1-129a-529d-9e01-83cd5b6f48df",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2965393/itd-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-37.chn",
+    "publish_date": "2026-08-28",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "1f042bc0-d3d4-5e31-aef0-0d9b47db490e",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-thong-bao-thay-doi-nhan-su/41560758",
+    "publish_date": "2026-08-24",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "cc625013-f2b1-52f7-9553-458d07ba8d96",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-nghi-quyet-hdqt-ve-viec-bo-nhiem-giam-doc-tai-chinh/41560692",
+    "publish_date": "2026-08-24",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "appointment",
+        "event_name": "bổ nhiệm",
+        "event_name_evidence": "ITD: Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "ad5453a3-d532-56c2-8cd3-da318e99860c",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2962509/itd-nghi-quyet-hdqt-bo-nhiem-ba-nguyen-thi-thu-suong-giu-chuc-giam-doc-tai-chinh-tu-192026.chn",
+    "publish_date": "2026-08-24",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "appointment",
+        "event_name": "bổ nhiệm",
+        "event_name_evidence": "ITD: Nghị quyết HĐQT bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính từ 1.9.2026",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Nghị quyết HĐQT bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính từ 1.9.2026",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Nghị quyết HĐQT bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính từ 1.9.2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "5d9a5566-4256-5703-b789-c80e0cee3d45",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2962650/itd-bo-nhiem-ba-nguyen-thi-thu-suong-giu-chuc-giam-doc-tai-chinh-tu-192026.chn",
+    "publish_date": "2026-08-24",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "appointment",
+        "event_name": "Bổ nhiệm",
+        "event_name_evidence": "ITD: Bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính từ 1.9.2026",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính từ 1.9.2026",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính từ 1.9.2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "ac011cb3-3618-5c0c-9ff3-44d5a68bfdc4",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2962503/itd-nghi-quyet-hdqt-bo-nhiem-ba-nguyen-thi-thu-suong-giu-chuc-giam-doc-tai-chinh.chn",
+    "publish_date": "2026-08-24",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "appointment",
+        "event_name": "bổ nhiệm",
+        "event_name_evidence": "ITD: Nghị quyết HĐQT bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Nghị quyết HĐQT bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Nghị quyết HĐQT bổ nhiệm bà Nguyễn Thị Thu Sương giữ chức Giám đốc Tài chính",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "37495d85-7f6c-598d-a39d-78d248ed7801",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-nhan-duoc-cong-van-cua-ubcknn-ve-tai-lieu-bao-cao-ket-qua-dot-phat-hanh-cp-de-tra-co-tuc/41496893",
+    "publish_date": "2026-08-19",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "corporate_action",
+        "event_name": "cổ tức",
+        "event_name_evidence": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "4bebedcc-b371-5292-a095-d5ac88d1b004",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2959044/itd-nhan-duoc-cong-van-cua-ubcknn-ve-tai-lieu-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tra-co-tuc.chn",
+    "publish_date": "2026-08-19",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "corporate_action",
+        "event_name": "phát hành cổ phiếu",
+        "event_name_evidence": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "bb3c9d80-a43c-503a-aa68-a2e58f67b227",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-nghi-quyet-hdqt-ve-viec-thay-doi-von-dieu-le/41445326",
+    "publish_date": "2026-08-14",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "shareholder_meeting",
+        "event_name": "Nghị quyết HĐQT",
+        "event_name_evidence": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "e869cfdd-745f-51f1-a800-4c8c3c893ee4",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2953251/itd-nghi-quyet-hdqt-ve-viec-thay-doi-von-dieu-le.chn",
+    "publish_date": "2026-08-14",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "shareholder_meeting",
+        "event_name": "Nghị quyết HĐQT",
+        "event_name_evidence": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "2dcd384a-4682-520f-975a-d8aabf43b888",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-thong-bao-thay-doi-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh/41424553",
+    "publish_date": "2026-08-13",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "d57e9a6b-00a8-5242-9c70-ac171ffb3365",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/itd-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tra-co-tuc/41424627",
+    "publish_date": "2026-08-13",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "corporate_action",
+        "event_name": "phát hành cổ phiếu",
+        "event_name_evidence": "ITD: Báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức",
+        "subjects": [
+          "ITD"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ITD: Báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ITD",
+            "name_normalized": "ITD",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ITD: Báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "0189406e-98c5-516f-ae28-f6916a1d94c4",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/itd-2952386/itd-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh-la-30883052-cp.chn",
+    "publish_date": "2026-08-13",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  }
+]

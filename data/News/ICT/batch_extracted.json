@@ -1,0 +1,358 @@
+[
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "da6e32ed-47a9-58f8-9d5c-296ab29403e7",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-3008910/ict-giai-trinh-bien-dong-lnst-bctc-tong-hop-quy-32026-so-voi-cung-ky-nam-truoc.chn",
+    "publish_date": "2026-10-28",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "eb808c07-68f4-5a4c-b08f-a2cefcf9c94f",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-giai-trinh-bien-dong-lnst-bctc-tong-hop-quy-3-2026-so-voi-cung-ky-nam-truoc/42509335",
+    "publish_date": "2026-10-28",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "08321658-b4d6-5048-a256-17d28d5bd6d0",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-bao-cao-ve-ngay-tro-thanh-co-dong-lon-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat/42277196",
+    "publish_date": "2026-10-14",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "bcd6b3a8-1baf-5a1f-a9e1-e783f0a8c533",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2998124/ict-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat-da-mua-10300-cp-tro-thanh-cdl-tu-8102026.chn",
+    "publish_date": "2026-10-14",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "9fd05740-610b-5c12-b52b-00e6398fdc24",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2984525/ict-nhac-nho-cham-cbtt-nghi-quyet-hoi-dong-quan-tri.chn",
+    "publish_date": "2026-09-25",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "1ca54e0e-89dc-597f-9772-59c0dd6f6704",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-nhac-nho-cham-cbtt-nghi-quyet-hoi-dong-quan-tri/41960318",
+    "publish_date": "2026-09-25",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "b81646f0-8581-595b-9756-63a689ec798b",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-nghi-quyet-hdqt-ve-viec-thong-qua-chu-truong-chap-thuan-cac-hop-dong-giao-dich-giua-ctin-va-cac-ben-co-lien-quan-nam-2026/41939366",
+    "publish_date": "2026-09-24",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "shareholder_meeting",
+        "event_name": "Nghị quyết HĐQT",
+        "event_name_evidence": "ICT: Nghị quyết HĐQT về việc thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+        "subjects": [
+          "ICT"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ICT: Nghị quyết HĐQT về việc thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ICT",
+            "name_normalized": "ICT",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ICT: Nghị quyết HĐQT về việc thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "906a534e-35e8-5420-a573-407e39bfe70e",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2983567/ict-nghi-quyet-hdqt-thong-qua-chu-truong-chap-thuan-cac-hop-dong-giao-dich-giua-ctin-va-cac-ben-co-lien-quan-nam-2026.chn",
+    "publish_date": "2026-09-24",
+    "relevance": "relevant",
+    "relevance_reason": "Khớp 1 sự kiện theo bộ cụm từ v0.2.0.",
+    "events": [
+      {
+        "local_event_id": "e1",
+        "event_type": "shareholder_meeting",
+        "event_name": "Nghị quyết HĐQT",
+        "event_name_evidence": "ICT: Nghị quyết HĐQT thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+        "subjects": [
+          "ICT"
+        ],
+        "location": null,
+        "location_evidence": null,
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "status": "unconfirmed",
+        "status_evidence": "ICT: Nghị quyết HĐQT thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+        "status_signals": [],
+        "needs_followup": true,
+        "parties": [
+          {
+            "name_raw": "ICT",
+            "name_normalized": "ICT",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ICT: Nghị quyết HĐQT thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "confidence": 0.6,
+        "notes": "no_status_signal"
+      }
+    ],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "ab99bd62-6170-5620-8ad6-99ca0ed2d1b5",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-bao-cao-ve-ngay-tro-thanh-co-dong-lon-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat/41900514",
+    "publish_date": "2026-09-22",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "dcd798ab-672f-5dab-a91e-6a2a0f300825",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2981863/ict-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat-da-mua-2000-cp.chn",
+    "publish_date": "2026-09-22",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "a75065d6-e4a2-5902-8546-e00c2557cccc",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2976057/ict-dieu-chinh-bao-cao-tinh-hinh-quan-tri-6-thang-dau-nam-2026.chn",
+    "publish_date": "2026-09-14",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "7670f083-cb28-58da-a3e7-5e9b908e0d0e",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-dieu-chinh-bao-cao-tinh-hinh-quan-tri-6-thang-dau-nam-2026/41779829",
+    "publish_date": "2026-09-14",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "064b82cc-a452-5e9d-8976-349d1fc73e67",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2965765/ict-giai-trinh-bien-dong-lnst-tren-bctc-ban-nien-2026-soat-xet-so-voi-cung-ky-nam-truoc.chn",
+    "publish_date": "2026-08-28",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "e82eed64-96c9-563b-9c7f-648981b52465",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-giai-trinh-bien-dong-lnst-tren-bctc-ban-nien-2026-soat-xet-so-voi-cung-ky-nam-truoc/41632719",
+    "publish_date": "2026-08-28",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "4e46fd82-a6c8-565b-a284-46ce1eb14b41",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2953250/ict-nhac-nho-cham-cbtt-tai-lieu-hop-dhdcd-thuong-nien.chn",
+    "publish_date": "2026-08-14",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "06e178ae-b9cf-566b-ada5-241ee84bf542",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-nhac-nho-cham-cbtt-tai-lieu-hop-dhdcd-thuong-nien/41445244",
+    "publish_date": "2026-08-14",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "ac95a81f-8dd8-5619-9099-b9e9225e3c02",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026/41216572",
+    "publish_date": "2026-07-30",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "b5149090-a7f6-5bc0-bfaa-fe0bc4f323f3",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2941848/ict-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026.chn",
+    "publish_date": "2026-07-30",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "6d461f18-735d-51a7-b42d-8bb261c56e4f",
+    "source_name": "fireant",
+    "url": "https://fireant.vn/bai-viet/ict-giai-trinh-chenh-lech-lnst-quy-2-2026-so-voi-cung-ky-nam-truoc/41203366",
+    "publish_date": "2026-07-30",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  },
+  {
+    "schema_version": "0.1",
+    "extractor_version": "0.2.0",
+    "article_id": "28502224-eda5-598a-9c18-8104cf9524ec",
+    "source_name": "cafef",
+    "url": "https://cafef.vn/du-lieu/ict-2941422/ict-giai-trinh-chenh-lech-lnst-quy-22026-so-voi-cung-ky-nam-truoc.chn",
+    "publish_date": "2026-07-30",
+    "relevance": "not_relevant",
+    "relevance_reason": "Không khớp cụm từ sự kiện nào trong bộ từ điển hiện tại (có thể bỏ sót).",
+    "events": [],
+    "qa": {
+      "evidence_unverified": []
+    }
+  }
+]

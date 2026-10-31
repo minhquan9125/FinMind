@@ -1,0 +1,1065 @@
+{
+  "meta": {
+    "name": "VN Stock News Knowledge-Graph Extraction Template",
+    "version": "1.3.0",
+    "created": "2026-10-30",
+    "language": "vi",
+    "purpose": "Chuẩn hoá bóc tách entity / node / edge / event / bên liên quan từ tin tức chứng khoán Việt Nam cho Graph RAG. Dùng được cho cả extractor rule-based (alias + trigger) và LLM (schema + prompt).",
+    "universe": {
+      "vn30_period": "Kỳ rà soát 7/2026, hiệu lực 03/08/2026 (thêm MCH, TCX; loại PLX, TPB). Dự phòng: VCK, BCM, GEE, VPX, PLX.",
+      "vn30": ["ACB", "BID", "BSR", "BVH", "CTG", "FPT", "GAS", "GVR", "HDB", "HPG", "MBB", "MCH", "MSN", "MWG", "POW", "SAB", "SSB", "SSI", "STB", "TCB", "TCX", "VCB", "VHM", "VIB", "VIC", "VJC", "VNM", "VPB", "VPL", "VRE"],
+      "watchlist_extra": ["CMG", "ELC", "ITD", "ICT"],
+      "note": "Danh sách VN30 = danh sách kỳ 01/2026 (nguồn aas.com.vn) áp thay đổi kỳ 07/2026 (HoSE công bố 15/07/2026). Cần đối chiếu lại trên hsx.vn mỗi kỳ rà soát (tháng 1 và tháng 7)."
+    },
+    "corpus": {
+      "source": "fireant.vn — tab Tin tức của từng mã",
+      "file": "articles.jsonl",
+      "rule": "Chỉ lấy bài có text; bỏ bài chỉ có tiêu đề + file đính kèm (PDF).",
+      "collected_at": "2026-10-30",
+      "batches": [
+        {"batch": 1, "articles": 159, "rule": "5 bài mới nhất/mã (cho phép trùng bài giữa các mã)", "shortfall": {"ELC": 1, "ITD": 2, "ICT": 1}},
+        {"batch": 2, "articles": 300, "rule": "300 bài mới, không trùng post_id với batch 1 và giữa các mã; chia vòng tròn 1 bài/mã/vòng", "per_ticker": "9 bài/mã; TCX, CMG, ELC, ICT 8; ITD 7"},
+        {"batch": 3, "articles": 500, "rule": "500 bài mới không trùng: 380 từ ~40 bài gần nhất/mã, 120 từ ~100 bài gần nhất/mã (20 mã có ít bài nhất)", "note": "ITD, VCB, VPB, TCB, ICT ít bài vì phần lớn trùng bài đã lấy hoặc chỉ có file"},
+        {"batch": 4, "articles": 500, "rule": "500 bài mới không trùng, từ ~100 bài gần nhất của 20 mã (VCB, TCB, STB, ACB, CTG, BID, SSI, MSN, HDB, FPT, GAS, MWG, MBB, HPG, BVH, SSB, SAB, BSR, GVR, POW)", "note": "Link sâu của 12 mã còn lại đã gom sẵn trong links3/ cho lần sau"}
+      ],
+      "articles": 1459,
+      "unique_post_ids": 1427
+    }
+  },
+
+  "extraction_rules": {
+    "text_normalization": [
+      "Chuẩn hoá Unicode NFC trước khi match (tiếng Việt có 2 kiểu dựng dấu).",
+      "Không bỏ dấu khi match alias tiếng Việt; chỉ dùng bản không dấu làm fallback cho slug/URL.",
+      "Đổi dấu nháy cong “ ” ‘ ’ thành nháy thẳng; gộp khoảng trắng."
+    ],
+    "alias_matching": [
+      "Ưu tiên alias dài nhất trước (longest-match-first): 'Ngân hàng TMCP Ngoại thương Việt Nam' thắng 'Ngoại thương'.",
+      "Alias có case_sensitive=true chỉ match đúng hoa/thường và phải đứng riêng (word boundary): 'MB', 'GAS', 'SSI', 'CMC', 'VIB'.",
+      "Mã chứng khoán (3 chữ in hoa) chỉ được nhận khi: thuộc universe/known_tickers HOẶC đứng sau các mẫu 'mã', 'cổ phiếu', '(HOSE:', '(HNX:', '(UPCoM:', 'HoSE:'.",
+      "Alias nằm trong 'ambiguity_rules' phải qua bước kiểm tra ngữ cảnh trước khi gán ticker.",
+      "Tiêu đề FireAnt dạng 'XXX: ...' => XXX là chủ thể chính (subject) của bài.",
+      "taggedSymbols của FireAnt chỉ là gợi ý (FireAnt gắn cả mã liên quan gián tiếp) — không tự động tạo edge từ tag."
+    ],
+    "event_triggering": [
+      "Event chỉ được kích hoạt khi câu chứa ≥1 từ trong 'triggers' (trigger mạnh) VÀ ≥1 entity đã link được trong cùng câu (hoặc tiêu đề dạng 'XXX: ...').",
+      "'context_words' (từ ngữ cảnh yếu) KHÔNG tự kích hoạt event; chỉ dùng để tăng confidence (+0.1 mỗi từ, tối đa +0.2) và làm bộ lọc trước khi gửi LLM.",
+      "1 câu có thể sinh nhiều event (VD: KQKD + PLAN_ACHIEVEMENT). Nếu 2 event cùng type, cùng subject, cùng ngày trong 1 bài thì gộp làm 1.",
+      "taggedSymbols của FireAnt không đủ để làm subject: bài 'Petrovietnam sau 50 năm' được tag GAS nhưng không nhắc PV GAS."
+    ],
+    "event_status": {
+      "description": "Tin tức bất định → mọi event bắt buộc có status để phân biệt dự kiến / đã xảy ra / tin đồn.",
+      "values": {
+        "planned": ["dự kiến", "kế hoạch", "sắp", "chuẩn bị", "lên kế hoạch", "đặt mục tiêu", "hướng tới", "trình", "đề xuất", "muốn", "đăng ký mua", "đăng ký bán", "phương án"],
+        "approved": ["thông qua", "phê duyệt", "chấp thuận", "nghị quyết", "quyết định", "chốt"],
+        "in_progress": ["đang", "triển khai", "thi công", "tiến hành", "thực hiện"],
+        "completed": ["đã", "hoàn tất", "hoàn thành", "kết quả giao dịch", "báo cáo kết quả", "ghi nhận", "đạt", "chính thức"],
+        "cancelled": ["hủy", "huỷ", "dừng", "tạm dừng", "không thực hiện", "rút hồ sơ"],
+        "rumor_or_forecast": ["dự báo", "ước tính", "ước", "kỳ vọng", "nhận định", "có thể", "khả năng", "theo nguồn tin", "đồn"],
+        "denied": ["bác bỏ", "phủ nhận", "không đúng sự thật", "đính chính"]
+      },
+      "default": "completed"
+    },
+    "polarity": {
+      "description": "Chiều tác động lên giá trị / chủ thể (dùng cho edge AFFECTS và thuộc tính event).",
+      "positive": ["tăng", "tăng trưởng", "vượt", "kỷ lục", "lãi", "khởi sắc", "bứt phá", "đột biến", "phục hồi", "hồi phục", "nâng hạng", "nâng xếp hạng", "mua ròng", "khuyến nghị mua", "khả quan", "tích cực", "tăng trần", "đi lên", "cải thiện", "xanh"],
+      "negative": ["giảm", "sụt giảm", "lỗ", "thua lỗ", "đi lùi", "lao dốc", "giảm sâu", "hụt hơi", "bán ròng", "áp lực", "sức ép", "nợ xấu", "vi phạm", "xử phạt", "cảnh báo", "hạ xếp hạng", "giảm sàn", "đỏ", "chia đôi", "tạm lỗ", "rủi ro", "gián đoạn"],
+      "neutral": ["giữ nguyên", "đi ngang", "giằng co", "phân hóa", "trái chiều", "ổn định"]
+    },
+    "numbers_and_units": {
+      "decimal_comma": "Số tiếng Việt: dấu chấm phân tách nghìn, dấu phẩy là thập phân (23.746 tỷ = 23746 tỷ; 11,5% = 11.5%).",
+      "money_units": {"đồng": 1, "nghìn đồng": 1000, "triệu đồng": 1000000, "tỷ đồng": 1000000000, "tỉ đồng": 1000000000, "nghìn tỷ": 1000000000000, "triệu tỷ": 1000000000000000, "USD": "currency=USD", "triệu USD": "1e6 USD", "tỷ USD": "1e9 USD"},
+      "other_units": ["%", "điểm", "điểm phần trăm", "%/năm", "đồng/cổ phiếu", "đồng/cp", "cổ phiếu", "triệu cổ phiếu", "USD/thùng", "lần", "tấn", "MW", "ha"],
+      "relative": ["so với cùng kỳ", "cùng kỳ năm trước", "YoY", "QoQ", "so với quý trước", "so với đầu năm", "lũy kế", "luỹ kế", "gấp X lần"]
+    },
+    "time_expressions": {
+      "period": ["quý I", "quý II", "quý III", "quý IV", "quý 1", "quý 2", "quý 3", "quý 4", "Q1", "Q2", "Q3", "Q4", "6 tháng đầu năm", "nửa đầu năm", "9 tháng", "cả năm", "năm tài chính", "niên độ"],
+      "session": ["phiên", "phiên sáng", "phiên chiều", "đầu phiên", "cuối phiên", "kết phiên", "ATO", "ATC", "tuần", "tháng"],
+      "date_formats": ["dd/mm/yyyy", "dd/mm", "dd.mm", "ngày dd-mm-yyyy"],
+      "key_dates": ["ngày đăng ký cuối cùng", "ngày ĐKCC", "ngày chốt quyền", "ngày giao dịch không hưởng quyền", "ngày GDKHQ", "ngày thanh toán", "ngày hiệu lực", "đáo hạn"]
+    }
+  },
+
+  "node_types": {
+    "Company": {
+      "label_vi": "Doanh nghiệp / tổ chức kinh tế",
+      "id_rule": "ticker nếu niêm yết (VD 'VCB'); nếu không: 'ORG:' + tên chuẩn hoá (VD 'ORG:BACH_HOA_XANH')",
+      "properties": ["name", "short_name", "ticker", "exchange", "sector", "is_listed", "is_state_owned", "country"]
+    },
+    "Person": {
+      "label_vi": "Cá nhân (lãnh đạo, cổ đông, người nội bộ, chuyên gia)",
+      "id_rule": "'PER:' + họ tên không dấu viết hoa, nối '_' (VD 'PER:NGUYEN_TRUNG_CHINH')",
+      "properties": ["full_name", "gender_title(ông/bà)", "current_roles"]
+    },
+    "Stock": {
+      "label_vi": "Mã chứng khoán (cổ phiếu / chứng chỉ quỹ / CW)",
+      "id_rule": "'STK:' + ticker. Tách khỏi Company để gắn giá, khối lượng, dòng tiền theo phiên.",
+      "properties": ["ticker", "exchange", "instrument_type"]
+    },
+    "Index": {
+      "label_vi": "Chỉ số thị trường",
+      "id_rule": "mã chỉ số chuẩn (VNINDEX, VN30, HNXINDEX, UPCOMINDEX...)",
+      "properties": ["name", "exchange", "constituent_count"]
+    },
+    "Exchange": {
+      "label_vi": "Sở giao dịch / thị trường giao dịch / lưu ký",
+      "id_rule": "HOSE | HNX | UPCOM | VNX | VSDC",
+      "properties": ["name"]
+    },
+    "Regulator": {
+      "label_vi": "Cơ quan quản lý, Chính phủ, ngân hàng trung ương, tổ chức xếp hạng / phân loại thị trường",
+      "id_rule": "mã viết tắt chuẩn (SBV, SSC, MOF, GOV, FED, MSCI, FITCH...)",
+      "properties": ["name", "country", "kind(gov|central_bank|regulator|rating_agency|index_provider)"]
+    },
+    "InvestorGroup": {
+      "label_vi": "Nhóm nhà đầu tư / dòng tiền (khối ngoại, tự doanh, cá nhân, quỹ ETF)",
+      "id_rule": "INV:FOREIGN | INV:PROPRIETARY | INV:RETAIL | INV:INSTITUTIONAL | INV:ETF:<tên quỹ>",
+      "properties": ["name", "kind"]
+    },
+    "Sector": {
+      "label_vi": "Ngành / nhóm ngành",
+      "id_rule": "'SEC:' + mã ngành trong sectors",
+      "properties": ["name"]
+    },
+    "MacroIndicator": {
+      "label_vi": "Chỉ báo vĩ mô / giá hàng hoá / lãi suất / tỷ giá",
+      "id_rule": "'MAC:' + mã trong macro_indicators",
+      "properties": ["name", "unit"]
+    },
+    "FinancialInstrument": {
+      "label_vi": "Công cụ tài chính phát hành cụ thể (lô trái phiếu, đợt cổ phiếu)",
+      "id_rule": "'INS:' + mã lô nếu có (VD 'INS:VIB12506') hoặc issuer+loại+ngày",
+      "properties": ["issuer", "kind(bond|share|cw|certificate_of_deposit)", "face_value_total", "coupon", "tenor", "maturity_date", "offering(public|private)"]
+    },
+    "Project": {
+      "label_vi": "Dự án / nhà máy / khu công nghiệp / công trình",
+      "id_rule": "'PRJ:' + tên chuẩn hoá",
+      "properties": ["name", "kind", "location", "capex", "status", "expected_completion"]
+    },
+    "Location": {
+      "label_vi": "Địa danh / quốc gia / tỉnh thành",
+      "id_rule": "'LOC:' + tên chuẩn hoá",
+      "properties": ["name", "level(country|province|city|district)"]
+    },
+    "Product": {
+      "label_vi": "Sản phẩm / dịch vụ / thương hiệu / chuỗi bán lẻ",
+      "id_rule": "'PRD:' + tên chuẩn hoá",
+      "properties": ["name", "owner"]
+    },
+    "Event": {
+      "label_vi": "Sự kiện (node trung tâm, n-ary). Mọi sự kiện trong event_types đều là NODE, nối với các bên liên quan bằng edge vai trò (role edges).",
+      "id_rule": "'EVT:' + event_type + ':' + subject_id + ':' + yyyymmdd + ':' + hash8(evidence)",
+      "properties": ["event_type", "status", "polarity", "date", "period", "magnitude", "unit", "trigger", "evidence", "source_url", "confidence"]
+    },
+    "Document": {
+      "label_vi": "Bài báo / văn bản nguồn (provenance)",
+      "id_rule": "'DOC:' + post_id",
+      "properties": ["title", "url", "source", "published_at"]
+    }
+  },
+
+  "edge_types": {
+    "_note": "EDGE = quan hệ tĩnh hoặc bán tĩnh giữa 2 node (sở hữu, chức vụ, thuộc ngành...) hoặc vai trò của 1 node trong 1 Event. Mỗi edge bắt buộc có: evidence (câu gốc), source_doc, confidence, valid_from (nếu có).",
+
+    "structural": {
+      "HAS_STOCK": {"label_vi": "có mã CK", "source": "Company", "target": "Stock", "triggers": ["mã chứng khoán", "mã CK", "(HOSE:", "(HNX:", "(UPCoM:", "mã"]},
+      "LISTED_ON": {"label_vi": "niêm yết / đăng ký giao dịch tại", "source": "Stock", "target": "Exchange", "props": ["since"], "triggers": ["niêm yết trên", "niêm yết tại", "giao dịch trên", "đăng ký giao dịch trên", "chuyển sàn", "lên sàn"]},
+      "CONSTITUENT_OF": {"label_vi": "thuộc rổ chỉ số", "source": "Stock", "target": "Index", "props": ["weight", "valid_from", "valid_to"], "triggers": ["rổ VN30", "thuộc VN30", "vào rổ", "lọt rổ", "bị loại khỏi", "danh mục chỉ số", "cổ phiếu thành phần"]},
+      "IN_SECTOR": {"label_vi": "thuộc ngành", "source": "Company", "target": "Sector", "triggers": ["ngành", "nhóm", "nhóm cổ phiếu"]},
+      "LOCATED_IN": {"label_vi": "đặt tại / hoạt động tại", "source": ["Company", "Project"], "target": "Location", "triggers": ["tại", "trụ sở", "đặt tại", "ở tỉnh", "khu vực"]}
+    },
+
+    "ownership_and_control": {
+      "SUBSIDIARY_OF": {"label_vi": "là công ty con của", "source": "Company", "target": "Company", "props": ["ownership_pct"], "triggers": ["công ty con", "đơn vị thành viên", "thuộc", "trực thuộc", "ngân hàng con", "sở hữu 100% vốn", "TNHH một thành viên"]},
+      "AFFILIATE_OF": {"label_vi": "công ty liên kết / cùng hệ sinh thái", "source": "Company", "target": "Company", "props": ["ownership_pct"], "triggers": ["công ty liên kết", "hệ sinh thái", "liên quan", "cùng tập đoàn", "họ Vingroup", "hệ Masan"]},
+      "HOLDS_STAKE": {"label_vi": "sở hữu cổ phần", "source": ["Company", "Person", "InvestorGroup", "Regulator"], "target": "Company", "props": ["shares", "ownership_pct", "as_of", "is_major_shareholder(>=5%)", "is_strategic"], "triggers": ["sở hữu", "nắm giữ", "nắm", "cổ đông lớn", "cổ đông chiến lược", "tỷ lệ sở hữu", "chiếm % vốn", "trở thành cổ đông lớn", "không còn là cổ đông lớn"]},
+      "STATE_OWNS": {"label_vi": "Nhà nước sở hữu (qua cơ quan đại diện)", "source": "Regulator", "target": "Company", "props": ["ownership_pct", "target_pct_2030"], "triggers": ["vốn Nhà nước", "Nhà nước nắm giữ", "Nhà nước giữ", "sở hữu Nhà nước", "cơ cấu lại vốn Nhà nước", "SCIC", "Ủy ban Quản lý vốn"]},
+      "HOLDS_POSITION": {"label_vi": "giữ chức vụ", "source": "Person", "target": "Company", "props": ["role", "since", "until"], "role_values": ["Chủ tịch HĐQT", "Phó Chủ tịch HĐQT", "Thành viên HĐQT", "Thành viên HĐQT độc lập", "Tổng Giám đốc", "Quyền Tổng Giám đốc", "Phó Tổng Giám đốc", "Giám đốc Tài chính", "Kế toán trưởng", "Trưởng Ban kiểm soát", "Thành viên BKS", "CEO", "CFO", "Người phụ trách quản trị", "Người được ủy quyền CBTT"], "triggers": ["Chủ tịch", "Tổng giám đốc", "TGĐ", "CEO", "Phó TGĐ", "PTGĐ", "HĐQT", "BKS", "kế toán trưởng", "giám đốc"]},
+      "RELATED_PERSON_OF": {"label_vi": "người có liên quan (gia đình / ủy quyền)", "source": "Person", "target": "Person", "props": ["relation(vợ|chồng|con|bố|mẹ|anh|chị|em|người đại diện)"], "triggers": ["vợ", "chồng", "con trai", "con gái", "bố", "mẹ", "anh trai", "em gái", "người có liên quan", "người liên quan"]},
+      "RELATED_ORG_OF": {"label_vi": "tổ chức có liên quan đến người nội bộ", "source": "Company", "target": "Person", "triggers": ["tổ chức có liên quan", "tổ chức liên quan đến người nội bộ"]}
+    },
+
+    "business": {
+      "PARTNERS_WITH": {"label_vi": "hợp tác", "source": "Company", "target": "Company", "props": ["scope", "since"], "triggers": ["hợp tác", "bắt tay", "ký kết", "biên bản ghi nhớ", "MOU", "thỏa thuận", "liên danh", "đối tác chiến lược", "quan hệ chiến lược"]},
+      "COMPETES_WITH": {"label_vi": "cạnh tranh", "source": "Company", "target": "Company", "triggers": ["đối thủ", "cạnh tranh", "cuộc đua", "thị phần"]},
+      "SUPPLIES_TO": {"label_vi": "cung cấp cho", "source": "Company", "target": "Company", "props": ["product"], "triggers": ["cung cấp", "cung ứng", "bán cho", "nhà cung cấp", "nguồn cung", "bao tiêu"]},
+      "CUSTOMER_OF": {"label_vi": "là khách hàng của", "source": "Company", "target": "Company", "triggers": ["khách hàng", "mua từ", "đặt hàng"]},
+      "CONTRACTOR_FOR": {"label_vi": "là (tổng) thầu cho", "source": "Company", "target": ["Company", "Project"], "triggers": ["tổng thầu", "nhà thầu", "thi công", "liên danh tổng thầu", "trúng thầu", "gói thầu"]},
+      "DEVELOPS": {"label_vi": "là chủ đầu tư / phát triển", "source": "Company", "target": "Project", "props": ["capex", "stake"], "triggers": ["chủ đầu tư", "phát triển dự án", "đầu tư dự án", "triển khai dự án", "khởi công", "vận hành"]},
+      "OWNS_BRAND": {"label_vi": "sở hữu thương hiệu / chuỗi", "source": "Company", "target": "Product", "triggers": ["thương hiệu", "chuỗi", "nhãn hàng", "sản phẩm"]},
+      "LENDS_TO": {"label_vi": "cấp tín dụng / cho vay", "source": "Company", "target": "Company", "props": ["amount", "tenor"], "triggers": ["cho vay", "hạn mức tín dụng", "khoản vay", "cấp tín dụng", "vay", "tài trợ vốn"]},
+      "GUARANTEES": {"label_vi": "bảo lãnh cho", "source": "Company", "target": "Company", "props": ["amount"], "triggers": ["bảo lãnh", "bảo lãnh vô điều kiện", "cam kết hỗ trợ tài chính"]},
+      "INVESTS_IN": {"label_vi": "đầu tư tài chính vào (cổ phiếu / trái phiếu)", "source": ["Company", "InvestorGroup"], "target": ["Company", "FinancialInstrument"], "props": ["amount", "as_of"], "triggers": ["đầu tư vào", "rót vốn", "nắm giữ trái phiếu", "danh mục đầu tư", "ôm cổ phiếu", "mua trái phiếu"]}
+    },
+
+    "market": {
+      "NET_BUYS": {"label_vi": "mua ròng", "source": "InvestorGroup", "target": ["Stock", "Index", "Exchange"], "props": ["value", "volume", "date", "session"], "triggers": ["mua ròng", "gom", "gom mạnh", "giải ngân"]},
+      "NET_SELLS": {"label_vi": "bán ròng", "source": "InvestorGroup", "target": ["Stock", "Index", "Exchange"], "props": ["value", "volume", "date", "session"], "triggers": ["bán ròng", "xả", "rút vốn", "chốt lời"]},
+      "RECOMMENDS": {"label_vi": "khuyến nghị", "source": "Company", "target": "Stock", "props": ["rating(MUA|KHẢ QUAN|NẮM GIỮ|TRUNG LẬP|BÁN|KÉM KHẢ QUAN)", "target_price", "upside_pct", "date"], "triggers": ["khuyến nghị mua", "khuyến nghị bán", "khuyến nghị nắm giữ", "khả quan", "giá mục tiêu", "dư địa tăng giá", "định giá", "cổ phiếu đáng chú ý", "cổ phiếu cần quan tâm"]},
+      "DRIVES_INDEX": {"label_vi": "tác động lên chỉ số (kéo / đè)", "source": "Stock", "target": "Index", "props": ["points", "direction", "date"], "triggers": ["kéo", "nâng đỡ", "lấy đi", "đóng góp", "dẫn dắt", "đè", "gây sức ép lên chỉ số"]},
+      "MANAGES_FUND": {"label_vi": "quản lý quỹ", "source": "Company", "target": "InvestorGroup", "triggers": ["quỹ", "công ty quản lý quỹ", "ETF"]}
+    },
+
+    "causal": {
+      "AFFECTS": {"label_vi": "tác động đến", "source": ["Event", "MacroIndicator", "Regulator"], "target": ["Company", "Stock", "Sector", "Index", "MacroIndicator"], "props": ["polarity", "mechanism", "horizon"], "triggers": ["tác động", "ảnh hưởng", "gây sức ép", "hưởng lợi", "chịu áp lực", "kéo", "nhờ", "do", "vì", "khiến", "dẫn đến", "thúc đẩy", "hỗ trợ"]},
+      "SENSITIVE_TO": {"label_vi": "nhạy cảm với (beta vĩ mô)", "source": ["Company", "Sector"], "target": "MacroIndicator", "props": ["direction(+/-)"], "triggers": ["phụ thuộc", "nhạy cảm", "biến động theo", "chi phí đầu vào", "giá nguyên liệu"]}
+    },
+
+    "event_roles": {
+      "_note": "Edge từ Event -> node tham gia. role = tên vai trò định nghĩa trong event_types[*].roles.",
+      "HAS_ROLE": {"label_vi": "có vai trò trong sự kiện", "source": "Event", "target": ["Company", "Person", "Stock", "Index", "Regulator", "InvestorGroup", "FinancialInstrument", "Project", "MacroIndicator", "Location", "Product", "Sector"], "props": ["role"]},
+      "REPORTED_IN": {"label_vi": "được đưa tin trong", "source": "Event", "target": "Document", "props": ["sentence_index"]},
+      "FOLLOWS": {"label_vi": "xảy ra sau / là kết quả của", "source": "Event", "target": "Event", "props": ["relation(update|result|cause|cancel)"], "triggers": ["sau khi", "tiếp theo", "kết quả", "trước đó", "báo cáo kết quả"]}
+    }
+  },
+
+  "event_types": {
+    "_note": "Mọi event là NODE type=Event. roles -> sinh edge HAS_ROLE(role). attributes -> thuộc tính của node Event. triggers dùng cho rule-based; examples lấy từ corpus FireAnt 10/2026.",
+
+    "corporate_performance": {
+      "EARNINGS_REPORT": {
+        "label_vi": "Công bố kết quả kinh doanh",
+        "triggers": ["kết quả kinh doanh", "KQKD", "báo lãi", "báo lỗ", "lãi ròng", "lợi nhuận sau thuế", "LNST", "lợi nhuận trước thuế", "LNTT", "doanh thu thuần", "BCTC", "báo cáo tài chính", "thông cáo báo chí về KQKD"],
+        "context_words": ["doanh thu", "lãi", "lỗ", "lợi nhuận"],
+        "roles": {"reporter": "Company", "segment": "Product|Company"},
+        "attributes": ["period", "revenue", "gross_profit", "profit_before_tax", "profit_after_tax", "parent_profit", "yoy_pct", "qoq_pct", "eps", "margin", "currency"],
+        "polarity_rule": "dựa trên yoy_pct (>0 positive, <0 negative)",
+        "examples": ["HPG: Sau 9 tháng, Hòa Phát đạt 23.746 tỷ đồng lợi nhuận sau thuế, vượt 8% kế hoạch năm", "VPL: Vinpearl lãi ròng hơn 2.800 tỷ đồng sau 9 tháng, gấp 6,6 lần cùng kỳ"]
+      },
+      "PLAN_ACHIEVEMENT": {
+        "label_vi": "Hoàn thành / vượt kế hoạch",
+        "triggers": ["vượt kế hoạch", "hoàn thành kế hoạch", "% kế hoạch", "vượt mục tiêu", "bám sát kế hoạch", "về đích", "kế hoạch cả năm", "kế hoạch năm"],
+        "context_words": ["hoàn thành"],
+        "roles": {"company": "Company"},
+        "attributes": ["metric", "achieved_pct", "plan_value", "period"],
+        "examples": ["VRE: Vincom Retail hoàn thành 88% kế hoạch lợi nhuận năm sau 9 tháng"]
+      },
+      "EARNINGS_EXPLANATION": {
+        "label_vi": "Giải trình biến động lợi nhuận",
+        "triggers": ["giải trình", "giải trình biến động", "giải trình chênh lệch", "biến động LNST"],
+        "roles": {"company": "Company"},
+        "attributes": ["period", "change_pct", "reasons"],
+        "examples": ["ACB: Giải trình biến động LNST trên BCTC quý 3/2026", "ICT: Giải trình biến động LNST BCTC tổng hợp quý 3/2026"]
+      },
+      "BUSINESS_PLAN": {
+        "label_vi": "Kế hoạch / mục tiêu kinh doanh",
+        "triggers": ["kế hoạch kinh doanh", "kế hoạch lợi nhuận", "kế hoạch doanh thu", "điều chỉnh kế hoạch", "kế hoạch ngân sách", "đặt mục tiêu", "đặt kế hoạch"],
+        "context_words": ["mục tiêu", "hướng tới", "kế hoạch", "ngân sách"],
+        "roles": {"company": "Company"},
+        "attributes": ["metric", "target_value", "period"],
+        "examples": ["SSB: Nghị quyết phiên họp HĐQT quý III/2026 về điều chỉnh kế hoạch ngân sách năm 2026", "Masan tăng tốc giảm nợ, MSR hướng tới 10.000 tấn vonfram mỗi năm"]
+      },
+      "OPERATING_METRIC": {
+        "label_vi": "Chỉ tiêu vận hành / ngành (sản lượng, tín dụng, nợ xấu, margin...)",
+        "triggers": ["sản lượng", "tăng trưởng tín dụng", "tín dụng tăng", "nợ xấu", "NIM", "CASA", "biên lợi nhuận", "tồn kho", "dòng tiền kinh doanh", "đội tàu bay"],
+        "context_words": ["dư nợ", "huy động", "tổng tài sản"],
+        "roles": {"company": "Company|Sector"},
+        "attributes": ["metric", "value", "change_pct", "period"],
+        "examples": ["KQKD ACB 9 tháng 2026: Tín dụng tăng 11,5%", "POW: sản lượng điện tăng hơn 40%", "STB: Sacombank chịu sức ép kép từ chi phí vốn và nợ xấu"]
+      }
+    },
+
+    "corporate_action": {
+      "DIVIDEND": {
+        "label_vi": "Cổ tức (tiền / cổ phiếu / tạm ứng)",
+        "triggers": ["cổ tức", "tạm ứng cổ tức", "chi trả cổ tức", "trả cổ tức", "cổ phiếu thưởng", "chốt quyền", "ngày đăng ký cuối cùng", "ngày ĐKCC", "GDKHQ"],
+        "roles": {"payer": "Company", "beneficiary": "Company|Person|InvestorGroup"},
+        "attributes": ["kind(cash|stock|bonus_share)", "rate_pct_par", "amount_per_share", "total_amount", "fiscal_year", "record_date", "ex_date", "payment_date"],
+        "examples": ["FPT: Cổ đông đón tin vui, nhận tạm ứng cổ tức năm 2026 (10% mệnh giá)", "VNM: Vinamilk sắp chi hơn 5.200 tỷ đồng tạm ứng cổ tức năm 2026; SCIC và F&N nhận phần lớn"]
+      },
+      "CAPITAL_INCREASE": {
+        "label_vi": "Tăng vốn điều lệ / phát hành cổ phiếu",
+        "triggers": ["tăng vốn điều lệ", "phát hành cổ phiếu", "phát hành thêm", "chào bán cổ phiếu", "phát hành riêng lẻ", "ESOP", "quyền mua", "phát hành để trả cổ tức", "vốn điều lệ lên", "đua tăng vốn", "tăng vốn lên"],
+        "context_words": ["chào bán", "tăng vốn"],
+        "note": "'tăng vốn đầu tư' của dự án là PROJECT_MILESTONE, không phải tăng vốn điều lệ.",
+        "roles": {"issuer": "Company", "subscriber": "Company|Person|InvestorGroup"},
+        "attributes": ["new_charter_capital", "shares_issued", "issue_price", "method(public|private|dividend|bonus|esop|rights)", "record_date"],
+        "examples": ["SSB: Thông báo tăng vốn điều lệ lên 34.688 tỷ đồng", "ELC: Elcom sắp tăng vốn thêm 77 tỷ đồng qua hai phương án phát hành"]
+      },
+      "BOND_ISSUANCE": {
+        "label_vi": "Phát hành trái phiếu / chứng chỉ tiền gửi",
+        "triggers": ["phát hành trái phiếu", "chào bán trái phiếu", "huy động trái phiếu", "huy động lô trái phiếu", "trái phiếu doanh nghiệp", "trái phiếu ra công chúng", "chứng chỉ tiền gửi", "niêm yết trái phiếu", "trái phiếu quốc tế", "trái phiếu xanh", "huy động thành công", "trái phiếu Hàn Quốc"],
+        "context_words": ["riêng lẻ", "lô trái phiếu"],
+        "roles": {"issuer": "Company", "instrument": "FinancialInstrument", "arranger": "Company"},
+        "attributes": ["total_value", "coupon", "tenor", "offering(public|private)", "tranche"],
+        "examples": ["VHM: Vinhomes lên kế hoạch huy động 2.000 tỷ đồng trái phiếu (riêng lẻ)", "TCX: Chào bán 1.500 tỷ đồng trái phiếu ra công chúng"]
+      },
+      "BOND_BUYBACK": {
+        "label_vi": "Mua lại / tất toán trái phiếu trước hạn",
+        "triggers": ["mua lại trước hạn", "tất toán sớm", "tất toán trái phiếu", "mua lại trái phiếu"],
+        "context_words": ["tất toán", "đáo hạn"],
+        "roles": {"issuer": "Company", "instrument": "FinancialInstrument"},
+        "attributes": ["value", "interest_paid", "bond_code"],
+        "examples": ["VIB: Tất toán sớm lô trái phiếu 3.000 tỷ đồng (mã VIB12506)", "CTG: VietinBank chi gần 3.700 tỷ đồng mua lại 35 triệu trái phiếu trước hạn"]
+      },
+      "BOND_DEFAULT": {
+        "label_vi": "Chậm trả / vỡ nợ / gia hạn trái phiếu",
+        "triggers": ["chậm trả", "nợ chậm trả", "chậm thanh toán", "chậm thanh toán gốc", "chậm thanh toán lãi", "gia hạn trái phiếu", "kéo dài kỳ hạn trái phiếu", "mất khả năng thanh toán", "vỡ nợ", "không thanh toán đúng hạn"],
+        "roles": {"issuer": "Company", "instrument": "FinancialInstrument", "creditor": "Company|InvestorGroup"},
+        "attributes": ["overdue_principal", "overdue_interest", "extension_months"],
+        "polarity_rule": "negative",
+        "examples": ["Bức tranh thị trường trái phiếu doanh nghiệp quý 3/2026: Áp lực nợ chậm trả đè nặng"]
+      },
+      "SHARE_BUYBACK": {
+        "label_vi": "Mua lại cổ phiếu quỹ",
+        "triggers": ["cổ phiếu quỹ", "mua lại cổ phiếu", "kết quả giao dịch mua lại cổ phiếu"],
+        "roles": {"company": "Company"},
+        "attributes": ["shares", "price_range", "period"],
+        "examples": ["CMG: Báo cáo kết quả giao dịch mua lại cổ phiếu"]
+      },
+      "LISTING_CHANGE": {
+        "label_vi": "Niêm yết mới / thay đổi niêm yết / chuyển sàn / hủy niêm yết",
+        "triggers": ["thay đổi đăng ký niêm yết", "thay đổi niêm yết", "niêm yết bổ sung", "niêm yết và giao dịch", "chuyển sàn", "hủy niêm yết", "hủy đăng ký giao dịch", "đăng ký giao dịch bổ sung", "lên sàn", "chấp thuận niêm yết"],
+        "roles": {"company": "Company", "stock": "Stock", "exchange": "Exchange"},
+        "attributes": ["shares", "effective_date", "kind(new|additional|transfer|delist)"],
+        "examples": ["FPT: Quyết định về việc thay đổi đăng ký niêm yết", "TCX: Nhận được quyết định của HNX về việc chấp thuận niêm yết trái phiếu"]
+      },
+      "SHAREHOLDER_MEETING": {
+        "label_vi": "Đại hội đồng cổ đông / lấy ý kiến cổ đông",
+        "triggers": ["ĐHĐCĐ", "đại hội đồng cổ đông", "đại hội cổ đông", "lấy ý kiến cổ đông", "tài liệu họp"],
+        "context_words": ["thường niên", "bất thường"],
+        "roles": {"company": "Company"},
+        "attributes": ["kind(annual|extraordinary|written)", "record_date", "meeting_date", "agenda"],
+        "examples": ["TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản"]
+      },
+      "BOARD_RESOLUTION": {
+        "label_vi": "Nghị quyết / quyết định HĐQT (sự kiện khung — cần phân loại tiếp theo nội dung)",
+        "triggers": ["nghị quyết HĐQT", "quyết định HĐQT", "nghị quyết hội đồng quản trị", "HĐQT thông qua"],
+        "roles": {"company": "Company"},
+        "attributes": ["resolution_no", "date", "subject"],
+        "note": "Nếu nội dung nghị quyết khớp event khác (cổ tức, trái phiếu, nhân sự...) thì tạo event đó và nối FOLLOWS(result) với event này.",
+        "examples": ["MBB: HĐQT thông qua hợp đồng giao dịch giữa MB và Viettel Dominicana"]
+      }
+    },
+
+    "ownership": {
+      "INSIDER_TRADE": {
+        "label_vi": "Giao dịch cổ phiếu của người nội bộ / người liên quan",
+        "triggers": ["giao dịch của người nội bộ", "người nội bộ", "đăng ký mua", "đăng ký bán", "người có liên quan", "tổ chức có liên quan"],
+        "context_words": ["kết quả giao dịch", "mua thêm", "bán bớt", "thoái"],
+        "roles": {"trader": "Person|Company", "company": "Company", "related_insider": "Person"},
+        "attributes": ["side(buy|sell|transfer)", "shares_registered", "shares_executed", "pct_before", "pct_after", "method(khớp lệnh|thỏa thuận)", "period_from", "period_to", "purpose"],
+        "status_rule": "'đăng ký' => planned; 'kết quả' / 'báo cáo kết quả' => completed",
+        "examples": ["CMG: Chủ tịch CMC đăng ký mua thêm một triệu cổ phiếu (1,181% -> 1,61%)", "SSB: Chồng bà Nguyễn Thị Nga mua 8 triệu cổ phiếu SeABank"]
+      },
+      "MAJOR_SHAREHOLDER_CHANGE": {
+        "label_vi": "Thay đổi cổ đông lớn / trở thành hoặc không còn là cổ đông lớn",
+        "triggers": ["cổ đông lớn", "trở thành cổ đông lớn", "không còn là cổ đông lớn", "thay đổi sở hữu", "chuyển nhượng cổ phiếu", "nhóm cổ đông", "sở hữu trên 1%", "sở hữu hơn", "gia tăng sở hữu", "nâng sở hữu", "giảm sở hữu", "giao dịch cổ phiếu số lượng lớn", "giao dịch thỏa thuận"],
+        "roles": {"shareholder": "Company|Person|InvestorGroup", "company": "Company", "counterparty": "Company|Person"},
+        "attributes": ["shares", "pct_before", "pct_after", "transaction_date"],
+        "examples": ["VIB: Beston chuyển 85,73 triệu cổ phiếu VIB sang Bellmont; nhóm cổ đông nắm 8,64%", "ICT: Báo cáo về ngày trở thành cổ đông lớn Công ty cổ phần Viễn thông - Tín hiệu đường sắt"]
+      },
+      "STATE_CAPITAL_RESTRUCTURING": {
+        "label_vi": "Cơ cấu lại / thoái vốn Nhà nước",
+        "triggers": ["cơ cấu lại vốn Nhà nước", "thoái vốn", "thoái vốn Nhà nước", "Nhà nước giữ", "tỷ lệ sở hữu Nhà nước", "cổ phần hóa", "bán bớt vốn", "chuyển giao vốn", "SCIC"],
+        "roles": {"state_owner": "Regulator", "company": "Company", "decision_maker": "Regulator|Person"},
+        "attributes": ["decision_no", "current_pct", "target_pct", "deadline"],
+        "examples": ["Quyết định 2054/QĐ-TTg: cơ cấu lại vốn Nhà nước tại 21 doanh nghiệp (BIDV, Vietcombank, VietinBank, Vietnam Airlines, VIMC, VRG)", "BSR dự kiến thoái vốn Nhà nước đầu năm 2027"]
+      },
+      "FOREIGN_OWNERSHIP": {
+        "label_vi": "Room ngoại / tỷ lệ sở hữu nước ngoài",
+        "triggers": ["room ngoại", "sở hữu nước ngoài", "tỷ lệ sở hữu nước ngoài", "mở room", "nới room", "hết room", "FOL", "cổ đông nước ngoài"],
+        "roles": {"company": "Company", "foreign_holder": "Company|InvestorGroup"},
+        "attributes": ["foreign_pct", "room_limit", "room_remaining"],
+        "examples": ["Điểm danh 12 ngân hàng Việt Nam có tỉ lệ sở hữu nước ngoài trên 10%", "PHR: Cao su Phước Hòa ngược dòng mở room ngoại"]
+      },
+      "M_AND_A": {
+        "label_vi": "Mua bán / sáp nhập / chuyển nhượng vốn",
+        "triggers": ["thâu tóm", "sáp nhập", "chuyển nhượng vốn", "nhận chuyển nhượng", "M&A", "mua lại công ty", "mua lại cổ phần", "rút vốn khỏi", "thoái vốn khỏi", "bán hết cổ phiếu"],
+        "context_words": ["mua lại", "thương vụ", "hợp nhất"],
+        "roles": {"acquirer": "Company|Person", "target": "Company", "seller": "Company|Person"},
+        "attributes": ["stake_pct", "deal_value"],
+        "examples": ["DGW: Digiworld rút vốn khỏi cổ phiếu HPG, chuyển hướng sang trái phiếu"]
+      },
+      "CAPITAL_CONTRIBUTION": {
+        "label_vi": "Góp vốn / bơm vốn vào công ty con, liên kết, liên doanh",
+        "triggers": ["góp thêm", "bơm vốn", "rót vốn vào công ty", "tăng vốn cho công ty con", "góp vốn thành lập", "góp vốn vào"],
+        "context_words": ["góp vốn", "liên doanh"],
+        "roles": {"investor": "Company", "investee": "Company"},
+        "attributes": ["amount", "ownership_pct_after"],
+        "creates_edge": "HOLDS_STAKE | SUBSIDIARY_OF",
+        "examples": ["TCB: Techcombank dự kiến góp thêm 680 tỷ đồng vào công ty bảo hiểm phi nhân thọ"]
+      },
+      "SUBSIDIARY_ESTABLISHMENT": {
+        "label_vi": "Thành lập / giải thể công ty con, chi nhánh, PGD",
+        "triggers": ["thành lập ngân hàng con", "thành lập công ty con", "thành lập công ty", "thành lập chi nhánh", "thành lập ngân hàng", "phòng giao dịch", "đóng cửa phòng giao dịch", "giải thể", "lập pháp nhân", "lập hãng", "thêm công ty con", "có thêm công ty con", "bố cáo thành lập", "thành lập và dự kiến hoạt động"],
+        "context_words": ["thành lập", "chi nhánh", "đổi tên"],
+        "roles": {"parent": "Company", "subsidiary": "Company", "location": "Location"},
+        "attributes": ["charter_capital", "ownership_pct", "kind(subsidiary|branch|transaction_office)"],
+        "examples": ["MBB: Thành lập ngân hàng con MB Toàn cầu vốn 3.000 tỷ đồng tại VIFC", "SSI: UBCKNN chấp thuận cho SSI đóng cửa PGD Lê Văn Lương", "CMG: ĐHĐCĐ CMC: Lập pháp nhân tại 4 quốc gia", "ELC: Elcom có thêm 2 công ty con"]
+      }
+    },
+
+    "people": {
+      "EXECUTIVE_CHANGE": {
+        "label_vi": "Bổ nhiệm / miễn nhiệm / từ nhiệm / bầu bổ sung nhân sự cấp cao",
+        "triggers": ["bổ nhiệm", "bổ nhiệm lại", "miễn nhiệm", "từ nhiệm", "đơn từ nhiệm", "bầu bổ sung", "thay đổi nhân sự", "thôi giữ chức", "nghỉ hưu", "giữ chức Bí thư", "giữ chức Phó", "đắc cử", "Bí thư Đảng ủy", "kiện toàn nhân sự", "tân Chủ tịch", "tân Tổng giám đốc"],
+        "context_words": ["thay", "đảm nhiệm", "ứng cử", "đề cử"],
+        "roles": {"person": "Person", "company": "Company", "predecessor": "Person"},
+        "attributes": ["position", "action(appoint|dismiss|resign|elect|reappoint)", "effective_date", "term"],
+        "creates_edge": "HOLDS_POSITION (appoint) | đóng HOLDS_POSITION.until (dismiss/resign)",
+        "examples": ["TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến", "SSB: Thông báo thay đổi nhân sự - Chủ tịch HĐQT kèm đơn từ nhiệm"]
+      },
+      "EXECUTIVE_COMPENSATION": {
+        "label_vi": "Thù lao / thu nhập lãnh đạo",
+        "triggers": ["thù lao", "lương thưởng", "nhận về thu nhập", "thu nhập hơn", "thù lao HĐQT"],
+        "context_words": ["thu nhập", "lương", "thưởng"],
+        "roles": {"person": "Person", "company": "Company"},
+        "attributes": ["amount", "period"],
+        "examples": ["CEO Điện Máy Xanh nhận về thu nhập hơn 850 triệu đồng/tháng"]
+      },
+      "WEALTH_RANKING": {
+        "label_vi": "Xếp hạng tài sản tỷ phú",
+        "triggers": ["tỷ phú", "tỉ phú", "người giàu nhất", "Forbes", "tài sản ròng"],
+        "roles": {"person": "Person", "company": "Company"},
+        "attributes": ["net_worth", "rank"],
+        "examples": ["Vị trí nữ tỉ phú giàu nhất Việt Nam đổi chủ (Phạm Thu Hương vượt Nguyễn Thị Phương Thảo)"]
+      }
+    },
+
+    "business_operation": {
+      "PROJECT_MILESTONE": {
+        "label_vi": "Dự án: khởi công / thi công / vận hành / mở rộng / mở bán",
+        "triggers": ["khởi công", "thi công", "động thổ", "khánh thành", "khai trương", "mở bán", "bàn giao", "chạy thử", "đi vào hoạt động", "nâng cấp mở rộng", "đưa vào khai thác", "vận hành thương mại", "mở rộng quy mô", "tăng vốn đầu tư", "điều chỉnh vốn đầu tư", "khai thác thương mại", "đường bay mới", "mở đường bay", "mở mới các đường bay", "đường bay du lịch", "phê duyệt quy hoạch", "quy hoạch chi tiết", "chấp thuận chủ trương đầu tư", "giấy chứng nhận đầu tư"],
+        "context_words": ["vận hành", "mở rộng", "hoàn thành", "dự án"],
+        "roles": {"developer": "Company", "contractor": "Company", "project": "Project", "location": "Location"},
+        "attributes": ["milestone", "capex", "capacity", "expected_completion"],
+        "examples": ["VinSpeed và liên danh tổng thầu Vinhomes - SGC thi công đồng loạt metro Bến Thành - Cần Giờ", "BSR tăng tốc mở rộng Dung Quất", "Mở rộng quy mô khu công nghiệp Vinhomes Vũng Áng lên hơn 1.400ha"]
+      },
+      "PARTNERSHIP": {
+        "label_vi": "Hợp tác / ký kết / MOU",
+        "triggers": ["ký kết", "bắt tay", "biên bản ghi nhớ", "MOU", "thỏa thuận hợp tác", "quan hệ chiến lược", "hợp tác chiến lược", "ký kết hợp tác"],
+        "context_words": ["hợp tác", "liên kết", "trao đổi giải pháp"],
+        "roles": {"party_a": "Company", "party_b": "Company"},
+        "attributes": ["scope", "value"],
+        "creates_edge": "PARTNERS_WITH",
+        "examples": ["Vincom Retail bắt tay QooQoo Premium Buffet Hàn Quốc", "KBSV và Ngân hàng MB ký kết hợp tác phát triển dịch vụ tài chính số", "PV GAS và EVNGENCO3 trao đổi giải pháp bảo đảm nguồn cung khí và LNG"]
+      },
+      "CONTRACT_AWARD": {
+        "label_vi": "Ký hợp đồng / trúng thầu / thỏa thuận cung ứng / đơn hàng",
+        "triggers": ["ký hợp đồng", "hợp đồng trị giá", "trúng thầu", "thỏa thuận khung", "hợp đồng khung", "hợp đồng mua bán", "hợp đồng ký mới", "giá trị hợp đồng", "hợp đồng EPC", "bao tiêu", "đơn hàng mới"],
+        "context_words": ["đơn hàng", "hợp đồng"],
+        "roles": {"buyer": "Company|Regulator", "seller": "Company", "project": "Project", "product": "Product|MacroIndicator"},
+        "attributes": ["contract_value", "currency", "duration", "volume"],
+        "creates_edge": "SUPPLIES_TO | CONTRACTOR_FOR",
+        "examples": ["BSR trao thỏa thuận khung mua dầu thô với ExxonMobil Châu Á - Thái Bình Dương", "Doosan nắm hợp đồng 618 triệu USD tại Ô Môn III", "ELC: lượng hợp đồng ký mới tăng 126%"]
+      },
+      "HIGH_LEVEL_MEETING": {
+        "label_vi": "Gặp gỡ / làm việc cấp cao (lãnh đạo Nhà nước, đối tác nước ngoài) — tín hiệu yếu",
+        "triggers": ["thăm và làm việc", "phái đoàn", "tiếp đoàn", "hội kiến", "tiếp xúc nhà đầu tư", "làm việc với lãnh đạo", "gặp lãnh đạo"],
+        "roles": {"host": "Company|Regulator", "visitor": "Company|Regulator|Person"},
+        "attributes": ["topic"],
+        "weight": 0.2,
+        "examples": ["Phái đoàn cấp cao Citi gặp lãnh đạo Vietcombank", "Phó Thủ tướng Hồ Quốc Dũng thăm và làm việc tại Tập đoàn công nghệ CMC"]
+      },
+      "PRODUCT_LAUNCH": {
+        "label_vi": "Ra mắt sản phẩm / dịch vụ / công nghệ",
+        "triggers": ["ra mắt", "giới thiệu hệ sinh thái", "giới thiệu sản phẩm", "giới thiệu giải pháp", "sản phẩm mới", "dịch vụ mới", "trình làng"],
+        "context_words": ["giới thiệu", "triển khai", "hệ sinh thái", "nền tảng", "giải pháp", "AI"],
+        "roles": {"company": "Company", "product": "Product"},
+        "attributes": ["product_kind", "market"],
+        "examples": ["Tập đoàn CMC giới thiệu hệ sinh thái AI C-PRODUCT tại Diễn đàn Kinh tế Mùa thu 2026"]
+      },
+      "CREDIT_FACILITY": {
+        "label_vi": "Vay vốn / hạn mức tín dụng / bảo lãnh",
+        "triggers": ["hạn mức tín dụng", "khoản vay", "bảo lãnh", "bảo lãnh vô điều kiện", "cam kết hỗ trợ tài chính", "vay hợp vốn", "gia hạn khoản vay", "gia hạn các khoản vay", "phương án vay"],
+        "context_words": ["vay"],
+        "roles": {"borrower": "Company", "lender": "Company", "guarantor": "Company"},
+        "attributes": ["amount", "tenor", "purpose"],
+        "creates_edge": "LENDS_TO | GUARANTEES",
+        "examples": ["Thế Giới Di Động bảo lãnh vô điều kiện cho Bách Hóa Xanh vay 2.000 tỷ", "LHG: Long Hậu chốt phương án vay BIDV 1.500 tỷ đồng", "ELC: Nghị quyết HĐQT thông qua hạn mức tín dụng tại MB Thăng Long"]
+      },
+      "PRODUCT_PRICE_CHANGE": {
+        "label_vi": "Doanh nghiệp điều chỉnh giá bán / phí dịch vụ",
+        "triggers": ["tăng giá", "giảm giá", "điều chỉnh giá", "biểu phí", "giá vé", "giá bán lẻ", "phí chuyển tiền"],
+        "context_words": ["giá bán", "phí"],
+        "roles": {"company": "Company|Sector", "product": "Product|MacroIndicator"},
+        "attributes": ["old_price", "new_price", "change_pct", "effective_date"],
+        "examples": ["Giá thép liên tục tăng, nhà thầu 'căng mình' tính toán", "Phí chuyển tiền tại quầy VietinBank mới nhất năm 2026", "Vé máy bay Tết tăng nhiệt"]
+      },
+      "AWARD_RANKING": {
+        "label_vi": "Giải thưởng / xếp hạng / vinh danh (tín hiệu yếu)",
+        "triggers": ["vinh danh", "giải thưởng", "thương hiệu quốc gia", "danh hiệu", "được bình chọn", "trao giải", "đạt chứng chỉ", "đạt chứng nhận", "chứng nhận PEFC", "chứng nhận Halal", "chứng nhận ISO", "chứng nhận xuất khẩu"],
+        "context_words": ["Top", "xếp hạng"],
+        "roles": {"company": "Company|Person", "organizer": "Company|Regulator"},
+        "attributes": ["award_name", "rank"],
+        "weight": 0.2,
+        "examples": ["SABECO được vinh danh Nhà sản xuất bia của năm khu vực châu Á", "SeABank xếp thứ 16 trong Top 50 Doanh nghiệp lợi nhuận xuất sắc"]
+      },
+      "BUDGET_CONTRIBUTION": {
+        "label_vi": "Nộp ngân sách / thuế",
+        "triggers": ["nộp ngân sách", "nộp ngân sách lớn nhất", "đóng góp ngân sách", "nộp thuế", "đóng ngân sách"],
+        "roles": {"company": "Company", "recipient": "Regulator|Location"},
+        "attributes": ["amount", "period", "rank"],
+        "examples": ["HPG: Hòa Phát nộp hơn 12.000 tỉ đồng vào ngân sách 20 tỉnh, thành", "Bảo Việt - Doanh nghiệp bảo hiểm nộp ngân sách lớn nhất Việt Nam"]
+      },
+      "CSR_DONATION": {
+        "label_vi": "Ủng hộ / tài trợ / hoạt động cộng đồng (tín hiệu yếu)",
+        "triggers": ["trao tặng", "quỹ vì người nghèo", "an sinh xã hội", "thiện nguyện", "ủng hộ đồng bào", "ủng hộ quỹ", "chắp cánh", "học bổng"],
+        "context_words": ["ủng hộ", "tài trợ"],
+        "roles": {"donor": "Company", "beneficiary": "Location|Company"},
+        "attributes": ["amount"],
+        "weight": 0.1,
+        "examples": ["BSR: Ủng hộ 10 tỷ đồng cho Quỹ Vì người nghèo tỉnh Quảng Ngãi", "Vinamilk cùng 48.000 sản phẩm dinh dưỡng chắp cánh ước mơ tuổi thơ"]
+      },
+      "ESG_INITIATIVE": {
+        "label_vi": "Khung tài chính bền vững / ESG / chỉ số bền vững",
+        "triggers": ["tài chính bền vững", "Khung Tài chính Bền vững", "báo cáo ESG", "xếp hạng ESG", "VNSI", "vốn xanh", "tín dụng xanh", "Net Zero", "trung hòa carbon"],
+        "context_words": ["ESG", "phát triển bền vững", "doanh nghiệp xanh"],
+        "roles": {"company": "Company", "index": "Index"},
+        "attributes": ["framework", "rating"],
+        "examples": ["SSB: SeABank công bố Khung Tài chính Bền vững", "Vincom Retail ghi danh tại VNSI"]
+      },
+      "OPERATIONAL_INCIDENT": {
+        "label_vi": "Sự cố / gián đoạn / cảnh báo an ninh",
+        "triggers": ["gián đoạn", "sự cố", "mã độc", "lừa đảo", "giả mạo", "tấn công mạng", "rò rỉ dữ liệu", "lỗ hổng bảo mật"],
+        "context_words": ["bảo trì", "cảnh báo"],
+        "roles": {"company": "Company", "affected": "Company|InvestorGroup"},
+        "attributes": ["time_window", "severity"],
+        "examples": ["Agribank thông báo gián đoạn chuyển tiền vào các tài khoản Techcombank, ACB, LPBank, MSB...", "Vietcombank cảnh báo mã độc khai thác bảo mật trên iOS"]
+      }
+    },
+
+    "banking": {
+      "INTEREST_RATE_CHANGE": {
+        "label_vi": "Ngân hàng điều chỉnh lãi suất huy động / cho vay",
+        "triggers": ["lãi suất huy động", "lãi suất tiết kiệm", "lãi suất tiền gửi", "lãi suất cho vay", "giảm lãi suất", "tăng lãi suất", "điều chỉnh lãi suất", "biểu lãi suất", "ưu đãi lãi suất", "gói tín dụng"],
+        "roles": {"bank": "Company", "rate": "MacroIndicator", "beneficiary": "Sector|InvestorGroup"},
+        "attributes": ["rate_kind(deposit|lending)", "tenor", "old_rate", "new_rate", "change_bp", "effective_date", "channel(online|counter)"],
+        "examples": ["VPB: VPBank giảm 1,5%/năm lãi suất cho vay hỗ trợ sản xuất kinh doanh từ 26/10/2026", "Sacombank giảm lãi suất cho vay 2% sau chỉ đạo của Chính phủ", "Lãi suất ngân hàng ngày 29/10: hơn 20 NHTMCP và 4 NHTM Nhà nước giảm 0,5 điểm %"]
+      },
+      "DEBT_SALE_COLLATERAL_SEIZURE": {
+        "label_vi": "Rao bán khoản nợ / thu giữ, đấu giá tài sản bảo đảm",
+        "triggers": ["rao bán khoản nợ", "bán khoản nợ", "thu giữ", "thu giữ tài sản", "đấu giá tài sản", "phát mại", "xử lý tài sản bảo đảm", "tài sản thế chấp", "bán đấu giá"],
+        "roles": {"creditor": "Company", "debtor": "Company|Person", "collateral": "Project|FinancialInstrument|Product"},
+        "attributes": ["debt_amount", "starting_price", "collateral_desc"],
+        "polarity_rule": "negative cho debtor",
+        "examples": ["VietinBank rao bán khoản nợ của công ty dược, tài sản thế chấp là lượng lớn cổ phần", "BIDV thu giữ biệt thự tại Vinhomes Riverside"]
+      },
+      "CREDIT_RATING": {
+        "label_vi": "Xếp hạng tín nhiệm",
+        "triggers": ["xếp hạng tín nhiệm", "nâng xếp hạng", "hạ xếp hạng", "Fitch", "FitchRatings", "Moody's", "S&P Global Ratings"],
+        "context_words": ["triển vọng"],
+        "roles": {"rated": "Company|Location", "agency": "Regulator"},
+        "attributes": ["old_rating", "new_rating", "outlook"],
+        "examples": ["FitchRatings nâng xếp hạng tín nhiệm ACB lên BB, triển vọng Ổn định"]
+      }
+    },
+
+    "market": {
+      "INDEX_MOVEMENT": {
+        "label_vi": "Biến động chỉ số / phiên giao dịch",
+        "triggers": ["VN-Index tăng", "VN-Index giảm", "tăng điểm", "giảm điểm", "kết phiên", "chốt phiên", "ngưỡng hỗ trợ", "kháng cự", "điểm của VN-Index", "VN-Index đảo chiều", "VN-Index hồi phục"],
+        "context_words": ["VN-Index", "VN30", "HNX-Index", "đóng cửa", "hồi phục", "điều chỉnh", "giằng co", "đảo chiều", "lùi xuống", "vùng", "điểm"],
+        "roles": {"index": "Index", "leader": "Stock|Sector", "laggard": "Stock|Sector"},
+        "attributes": ["date", "close", "change_points", "change_pct", "liquidity_value", "support", "resistance"],
+        "examples": ["Kết phiên 29/10, VN-Index giảm 11,04 điểm (-0,62%) về 1.755,61 điểm", "VHM và VIC lấy đi hơn 7 điểm của VN-Index phiên 8/10"]
+      },
+      "FOREIGN_FLOW": {
+        "label_vi": "Giao dịch khối ngoại",
+        "triggers": ["khối ngoại", "NĐTNN", "nhà đầu tư nước ngoài", "mua ròng", "bán ròng", "chuỗi bán ròng", "rút vốn"],
+        "roles": {"investor": "InvestorGroup", "stock": "Stock", "market": "Index|Exchange"},
+        "attributes": ["side(net_buy|net_sell)", "value", "volume", "date", "streak_days"],
+        "creates_edge": "NET_BUYS | NET_SELLS",
+        "examples": ["Khối ngoại bán ròng ACB gần 470 tỷ đồng", "NĐTNN bán ròng 430 tỷ đồng trên toàn thị trường phiên 29/10"]
+      },
+      "PROPRIETARY_FLOW": {
+        "label_vi": "Giao dịch tự doanh CTCK",
+        "triggers": ["tự doanh", "tự doanh CTCK", "tự doanh công ty chứng khoán"],
+        "roles": {"investor": "InvestorGroup", "stock": "Stock"},
+        "attributes": ["side", "value", "date", "exchange"],
+        "creates_edge": "NET_BUYS | NET_SELLS",
+        "examples": ["Tự doanh CTCK bán ròng TCB 89 tỷ đồng phiên 29/10"]
+      },
+      "ANALYST_RECOMMENDATION": {
+        "label_vi": "Khuyến nghị / định giá của CTCK",
+        "triggers": ["khuyến nghị mua", "khuyến nghị bán", "khuyến nghị nắm giữ", "giá mục tiêu", "dư địa tăng giá", "cổ phiếu đáng chú ý", "cổ phiếu cần quan tâm"],
+        "context_words": ["khuyến nghị", "định giá", "đánh giá cao", "báo cáo cập nhật", "theo CTCK"],
+        "roles": {"analyst": "Company", "stock": "Stock"},
+        "attributes": ["rating", "target_price", "upside_pct", "rationale"],
+        "creates_edge": "RECOMMENDS",
+        "examples": ["Khuyến nghị mua GAS, OCB, VGC với giá mục tiêu 96.300 đồng, 12.150 đồng và 51.800 đồng", "VPS: Bách Hóa Xanh kéo lãi MWG"]
+      },
+      "STOCK_PRICE_MOVE": {
+        "label_vi": "Biến động giá cổ phiếu riêng lẻ",
+        "triggers": ["về vùng đáy", "tăng trần", "tăng kịch trần", "giảm sàn", "chất đống sàn", "trắng bên mua", "chia đôi", "chia ba", "giảm sâu", "bốc hơi", "chuỗi phiên giảm", "chuỗi phiên tăng", "thủng đáy", "lập đỉnh", "phá đỉnh", "vượt đỉnh lịch sử", "đỉnh lịch sử", "nổi sóng"],
+        "context_words": ["đáy", "đỉnh", "vốn hóa", "thị giá"],
+        "roles": {"stock": "Stock"},
+        "attributes": ["price", "change_pct", "from_peak_pct", "market_cap", "date"],
+        "examples": ["CMG về vùng đáy 5 năm, thấp hơn khoảng 66% so với đỉnh 2024", "Cổ phiếu bất động sản mất 40–50% so với cuối tháng 8/2025"]
+      },
+      "INDEX_REBALANCE": {
+        "label_vi": "Cơ cấu rổ chỉ số / ETF",
+        "triggers": ["cơ cấu danh mục", "kỳ rà soát", "vào rổ", "lọt rổ", "bị loại", "danh mục dự phòng", "ETF mua", "ETF bán", "quỹ mô phỏng", "tái cơ cấu danh mục rổ", "ra mắt bộ chỉ số", "chỉ số mới", "bộ chỉ số"],
+        "context_words": ["thêm vào"],
+        "roles": {"index": "Index", "added": "Stock", "removed": "Stock", "fund": "InvestorGroup"},
+        "attributes": ["review_period", "effective_date", "estimated_flow"],
+        "creates_edge": "CONSTITUENT_OF (valid_from/valid_to)",
+        "examples": ["MCH và TCX vào rổ VN30, PLX và TPB bị loại, hiệu lực 03/08/2026"]
+      },
+      "FUND_ACCUMULATION": {
+        "label_vi": "Quỹ đầu tư gom / xả cổ phiếu (theo báo cáo danh mục quỹ)",
+        "triggers": ["quỹ cùng", "quỹ gom", "quỹ xuống tiền", "đổ tiền vào", "danh mục quỹ", "quỹ ngoại mua", "quỹ ngoại bán", "cá mập"],
+        "roles": {"fund": "InvestorGroup|Company", "stock": "Stock"},
+        "attributes": ["fund_count", "shares", "value", "period"],
+        "creates_edge": "NET_BUYS | NET_SELLS",
+        "examples": ["24 quỹ cùng đổ tiền vào một cổ phiếu quốc dân, miệt mài gom suốt 6 tháng", "Một cổ phiếu ngân hàng được hơn 50 quỹ cùng xuống tiền gom hàng"]
+      },
+      "COVERED_WARRANT": {
+        "label_vi": "Chứng quyền có bảo đảm (phát hành, hạn mức, đáo hạn)",
+        "triggers": ["chứng quyền", "hạn mức chứng quyền", "phát hành chứng quyền", "chứng quyền có bảo đảm", "CW"],
+        "roles": {"issuer": "Company", "underlying": "Stock", "exchange": "Exchange"},
+        "attributes": ["cw_code", "exercise_price", "conversion_ratio", "maturity_date", "limit"],
+        "examples": ["10 mã cổ phiếu thay đổi hạn mức chứng quyền từ 1/10/2026"]
+      },
+      "MARGIN_ELIGIBILITY": {
+        "label_vi": "Cắt margin / danh sách chứng khoán không được giao dịch ký quỹ",
+        "triggers": ["cắt margin", "không được giao dịch ký quỹ", "danh sách chứng khoán không đủ điều kiện ký quỹ", "bị cắt margin", "được margin trở lại", "call margin", "giải chấp"],
+        "roles": {"exchange": "Exchange", "stock": "Stock", "broker": "Company"},
+        "attributes": ["period", "stock_count", "reason"],
+        "polarity_rule": "negative khi bị cắt, positive khi được margin trở lại",
+        "examples": ["HoSE công bố 59 mã chứng khoán bị cắt margin trong quý III/2026"]
+      },
+      "MARKET_UPGRADE": {
+        "label_vi": "Nâng hạng thị trường",
+        "triggers": ["nâng hạng", "thị trường mới nổi", "cận biên", "FTSE Russell", "MSCI", "danh sách theo dõi", "watchlist"],
+        "roles": {"index_provider": "Regulator", "market": "Location", "regulator": "Regulator"},
+        "attributes": ["from_status", "to_status", "effective_date"],
+        "examples": ["Bộ trưởng Bộ Tài chính: Tiếp tục làm việc với MSCI về nâng hạng chứng khoán", "Tuần đầu nâng hạng, dòng tiền ETF sẽ chọn cổ phiếu nào?"]
+      },
+      "SECURITIES_INDUSTRY_RESULT": {
+        "label_vi": "Kết quả ngành chứng khoán (margin, môi giới, tự doanh)",
+        "triggers": ["cho vay margin", "dư nợ margin", "môi giới", "thị phần môi giới", "lãi tự doanh", "lợi nhuận ngành chứng khoán"],
+        "roles": {"company": "Company", "sector": "Sector"},
+        "attributes": ["metric", "value", "change_pct", "period"],
+        "examples": ["TCX: Cho vay margin gánh doanh thu TCBS, chi phí lãi vay tăng mạnh", "Lợi nhuận ngành Chứng khoán quý III giảm 43%"]
+      }
+    },
+
+    "macro_policy": {
+      "MONETARY_POLICY": {
+        "label_vi": "Chính sách tiền tệ (NHNN, Fed...)",
+        "triggers": ["lãi suất điều hành", "Fed giữ nguyên", "Fed tăng", "Fed giảm", "bơm tiền", "hút tiền", "tín phiếu", "OMO", "room tín dụng", "hết room tín dụng", "chỉ tiêu tăng trưởng tín dụng", "nới lỏng tiền tệ", "thắt chặt tiền tệ", "họp khẩn với Thống đốc", "Thống đốc NHNN", "yêu cầu giảm lãi suất"],
+        "context_words": ["NHNN", "Fed", "nới lỏng", "thắt chặt"],
+        "roles": {"authority": "Regulator", "indicator": "MacroIndicator"},
+        "attributes": ["action", "rate", "change_bp", "date"],
+        "examples": ["Lãi suất – tỷ giá hôm nay: Fed giữ nguyên lãi suất, USD diễn biến trái chiều"]
+      },
+      "FX_MOVE": {
+        "label_vi": "Biến động tỷ giá / USD",
+        "triggers": ["tỷ giá", "tỷ giá trung tâm", "DXY", "USD Index", "chỉ số USD", "VND/USD", "USD/VND"],
+        "context_words": ["USD", "đồng USD"],
+        "roles": {"indicator": "MacroIndicator"},
+        "attributes": ["pair", "value", "change", "date"],
+        "examples": ["Tỷ giá trung tâm VND/USD giảm 7 đồng, DXY xuống dưới 102 điểm"]
+      },
+      "COMMODITY_PRICE": {
+        "label_vi": "Biến động giá hàng hoá",
+        "triggers": ["giá dầu", "dầu Brent", "WTI", "giá thép", "giá mủ cao su", "giá cao su", "giá vàng", "giá gas", "giá LNG", "giá than", "giá phân bón", "USD/thùng"],
+        "roles": {"commodity": "MacroIndicator", "affected": "Sector|Company"},
+        "attributes": ["value", "unit", "change_pct", "date"],
+        "creates_edge": "AFFECTS",
+        "examples": ["Giá dầu Brent vượt 104 USD/thùng do căng thẳng Trung Đông", "Ngành cao su 9 tháng 2026: giá mủ chạm đỉnh 13 năm"]
+      },
+      "MACRO_DATA": {
+        "label_vi": "Số liệu vĩ mô",
+        "triggers": ["GDP", "CPI", "lạm phát", "xuất nhập khẩu", "kim ngạch", "FDI", "giải ngân đầu tư công", "PMI", "thu ngân sách", "tăng trưởng kinh tế"],
+        "roles": {"indicator": "MacroIndicator", "location": "Location"},
+        "attributes": ["value", "change_pct", "period"],
+        "examples": ["Tăng trưởng GDP quý III đạt 9,95%", "Xuất nhập khẩu Việt Nam vượt mốc 1.000 tỷ USD sau 10 tháng"]
+      },
+      "REGULATION_POLICY": {
+        "label_vi": "Luật / nghị định / quyết định / chỉ đạo của Nhà nước",
+        "triggers": ["dự thảo", "nghị định", "thông tư", "QĐ-TTg", "chỉ thị", "Luật Chứng khoán", "Luật Các tổ chức tín dụng", "Luật Doanh nghiệp", "luật sửa đổi", "dự án Luật", "NQ/TW"],
+        "context_words": ["Luật", "quyết định", "nghị quyết", "chỉ đạo", "Quốc hội", "Chính phủ", "Thủ tướng", "Bộ Tài chính", "UBCKNN", "sửa đổi", "hiệu lực"],
+        "roles": {"issuer": "Regulator", "affected": "Company|Sector|Index"},
+        "attributes": ["doc_no", "issue_date", "effective_date", "topic"],
+        "creates_edge": "AFFECTS",
+        "examples": ["Dự thảo Luật Chứng khoán sửa đổi bỏ 4 'cửa' tiền kiểm khi thành lập công ty chứng khoán", "Quyết định 2054/QĐ-TTg cơ cấu lại vốn Nhà nước 2026–2030", "Nghị quyết 57-NQ/TW về đổi mới sáng tạo"]
+      },
+      "COMPLIANCE_PENALTY": {
+        "label_vi": "Vi phạm / xử phạt / nhắc nhở / cảnh báo / kiểm soát cổ phiếu",
+        "triggers": ["xử phạt", "vi phạm", "nhắc nhở", "chậm công bố thông tin", "chậm CBTT", "diện cảnh báo", "diện kiểm soát", "hạn chế giao dịch", "đình chỉ", "truy tố", "khởi tố", "thanh tra"],
+        "context_words": ["phạt", "cảnh báo", "kiểm soát"],
+        "roles": {"authority": "Regulator|Exchange", "violator": "Company|Person", "stock": "Stock"},
+        "attributes": ["violation", "penalty_amount", "decision_no"],
+        "polarity_rule": "negative",
+        "examples": ["ICT: Nhắc nhở chậm CBTT nghị quyết Hội đồng quản trị"]
+      },
+      "STATE_ECONOMIC_PROGRAM": {
+        "label_vi": "Chương trình / gói hỗ trợ / định hướng của Nhà nước",
+        "triggers": ["gói tín dụng", "gói hỗ trợ", "chỉ đạo của Chính phủ", "kinh tế nhà nước", "chương trình tín dụng", "chương trình ưu đãi"],
+        "context_words": ["chương trình", "ưu đãi", "hỗ trợ doanh nghiệp", "đầu tàu"],
+        "roles": {"issuer": "Regulator", "participant": "Company", "beneficiary": "Sector"},
+        "attributes": ["size", "period"],
+        "examples": ["Gói tín dụng ưu đãi hơn 450.000 tỷ cho sản xuất kinh doanh", "Các ngân hàng thống nhất 'bơm' 230 nghìn tỷ đồng cho doanh nghiệp và các dự án"]
+      }
+    }
+  },
+
+  "entities": {
+    "tickers": {
+      "ACB": {"name": "Ngân hàng TMCP Á Châu", "aliases": ["ACB", "Á Châu", "Ngân hàng Á Châu", "Ngân hàng Thương mại Cổ phần Á Châu", "Asia Commercial Bank"], "case_sensitive": ["ACB"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "related": [{"name": "Chứng khoán ACB", "aliases": ["ACBS"], "edge": "SUBSIDIARY_OF"}]},
+      "BID": {"name": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam", "aliases": ["BIDV", "BID", "Ngân hàng Đầu tư và Phát triển Việt Nam", "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam"], "case_sensitive": ["BID", "BIDV"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "groups": ["BIG4", "STATE_BANK"], "related": [{"name": "Chứng khoán BIDV", "ticker": "BSI", "edge": "SUBSIDIARY_OF"}, {"name": "Bảo hiểm BIDV", "ticker": "BIC", "edge": "SUBSIDIARY_OF"}]},
+      "BSR": {"name": "CTCP - Tổng Công ty Lọc Hóa dầu Việt Nam", "aliases": ["BSR", "Lọc hóa dầu Việt Nam", "Tổng công ty Lọc hóa dầu Việt Nam", "Lọc hóa dầu Bình Sơn", "Bình Sơn", "Lọc dầu Dung Quất"], "case_sensitive": ["BSR"], "exchange": "HOSE", "sector": "OIL_GAS", "vn30": true, "groups": ["PVN_GROUP", "STATE_OWNED"], "related": [{"name": "Tập đoàn Công nghiệp - Năng lượng Quốc gia Việt Nam", "id": "ORG:PVN", "edge": "SUBSIDIARY_OF"}, {"name": "Nhà máy Lọc dầu Dung Quất", "id": "PRJ:DUNG_QUAT_REFINERY", "edge": "DEVELOPS"}]},
+      "BVH": {"name": "Tập đoàn Bảo Việt", "aliases": ["BVH", "Bảo Việt", "Tập đoàn Bảo Việt", "Baoviet"], "case_sensitive": ["BVH"], "exchange": "HOSE", "sector": "INSURANCE", "vn30": true, "groups": ["STATE_OWNED"], "related": [{"name": "Chứng khoán Bảo Việt", "ticker": "BVS", "edge": "SUBSIDIARY_OF"}, {"name": "Bảo Việt Nhân thọ", "edge": "SUBSIDIARY_OF"}, {"name": "Bộ Tài chính", "id": "MOF", "edge": "STATE_OWNS"}]},
+      "CTG": {"name": "Ngân hàng TMCP Công Thương Việt Nam", "aliases": ["VietinBank", "Vietinbank", "CTG", "Ngân hàng Công Thương", "Ngân hàng Công Thương Việt Nam", "Ngân hàng TMCP Công Thương Việt Nam"], "case_sensitive": ["CTG"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "groups": ["BIG4", "STATE_BANK"], "related": [{"name": "Chứng khoán VietinBank", "ticker": "CTS", "edge": "SUBSIDIARY_OF"}]},
+      "FPT": {"name": "CTCP FPT", "aliases": ["Tập đoàn FPT", "Công ty Cổ phần FPT", "CTCP FPT", "FPT Corporation", "FPT"], "case_sensitive": ["FPT"], "exchange": "HOSE", "sector": "TECH", "vn30": true, "related": [{"name": "FPT Retail", "ticker": "FRT", "edge": "SUBSIDIARY_OF", "warning": "FRT là mã riêng, không gộp vào FPT"}, {"name": "FPT Telecom", "ticker": "FOX", "edge": "SUBSIDIARY_OF"}, {"name": "FPT Software", "edge": "SUBSIDIARY_OF"}, {"name": "FPT Long Châu", "edge": "SUBSIDIARY_OF", "via": "FRT"}, {"name": "Chứng khoán FPT", "ticker": "FTS", "aliases": ["FPTS"], "edge": "AFFILIATE_OF"}]},
+      "GAS": {"name": "Tổng Công ty Khí Việt Nam - CTCP", "aliases": ["PV GAS", "PV Gas", "PVGas", "Tổng Công ty Khí Việt Nam", "Tổng công ty Khí Việt Nam - CTCP", "GAS"], "case_sensitive": ["GAS", "PV GAS"], "exchange": "HOSE", "sector": "OIL_GAS", "vn30": true, "groups": ["PVN_GROUP", "STATE_OWNED"], "related": [{"id": "ORG:PVN", "edge": "SUBSIDIARY_OF"}]},
+      "GVR": {"name": "Tập đoàn Công nghiệp Cao su Việt Nam - CTCP", "aliases": ["VRG", "GVR", "Tập đoàn Công nghiệp Cao su Việt Nam", "Cao su Việt Nam", "Tập đoàn Cao su"], "case_sensitive": ["GVR", "VRG"], "exchange": "HOSE", "sector": "RUBBER_IP", "vn30": true, "groups": ["STATE_OWNED"], "related": [{"name": "Cao su Phước Hòa", "ticker": "PHR", "edge": "SUBSIDIARY_OF"}, {"name": "Cao su Đồng Phú", "ticker": "DPR", "edge": "SUBSIDIARY_OF"}, {"name": "Khu công nghiệp VRG Tây Ninh", "id": "PRJ:KCN_VRG_TAY_NINH", "edge": "DEVELOPS"}]},
+      "HDB": {"name": "Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh", "aliases": ["HDBank", "HDB", "Ngân hàng Phát triển TP.HCM", "Ngân hàng TMCP Phát triển TP.HCM", "Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh"], "case_sensitive": ["HDB"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "groups": ["SOVICO_GROUP"], "related": [{"name": "Chứng khoán HD", "ticker": "HDS", "edge": "AFFILIATE_OF"}, {"name": "HD Saison", "edge": "SUBSIDIARY_OF"}, {"name": "Tập đoàn Sovico", "id": "ORG:SOVICO", "edge": "AFFILIATE_OF"}]},
+      "HPG": {"name": "CTCP Tập đoàn Hòa Phát", "aliases": ["Hòa Phát", "Hoà Phát", "Tập đoàn Hòa Phát", "CTCP Tập đoàn Hòa Phát", "Hoa Phat", "HPG"], "case_sensitive": ["HPG"], "exchange": "HOSE", "sector": "STEEL", "vn30": true, "related": [{"name": "Nông nghiệp Hòa Phát", "ticker": "HPA", "edge": "SUBSIDIARY_OF"}, {"name": "Khu liên hợp Gang thép Hòa Phát Dung Quất", "id": "PRJ:HOA_PHAT_DUNG_QUAT", "edge": "DEVELOPS"}]},
+      "MBB": {"name": "Ngân hàng TMCP Quân đội", "aliases": ["MB", "MBBank", "MB Bank", "MBB", "Ngân hàng Quân đội", "Ngân hàng TMCP Quân Đội"], "case_sensitive": ["MB", "MBB"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "related": [{"name": "Chứng khoán MB", "ticker": "MBS", "edge": "SUBSIDIARY_OF", "warning": "MBS ≠ MSB"}, {"name": "Ngân hàng MBV", "aliases": ["MBV"], "edge": "SUBSIDIARY_OF"}, {"name": "Ngân hàng TNHH MTV MB Toàn cầu", "aliases": ["MB Toàn cầu"], "edge": "SUBSIDIARY_OF", "source": "corpus 10/2026 (planned)"}, {"name": "Tập đoàn Viettel", "id": "ORG:VIETTEL", "edge": "HOLDS_STAKE"}]},
+      "MSN": {"name": "CTCP Tập đoàn Masan", "aliases": ["Masan", "Masan Group", "Tập đoàn Masan", "CTCP Tập đoàn MaSan", "MSN"], "case_sensitive": ["MSN"], "exchange": "HOSE", "sector": "CONSUMER", "vn30": true, "groups": ["MASAN_GROUP"], "related": [{"ticker": "MCH", "edge": "SUBSIDIARY_OF"}, {"name": "Masan High-Tech Materials", "ticker": "MSR", "edge": "SUBSIDIARY_OF"}, {"name": "Masan MEATLife", "ticker": "MML", "edge": "SUBSIDIARY_OF"}, {"name": "WinCommerce", "aliases": ["WCM", "WinMart"], "edge": "SUBSIDIARY_OF"}, {"name": "Phúc Long", "edge": "SUBSIDIARY_OF"}, {"ticker": "TCB", "edge": "AFFILIATE_OF"}]},
+      "MWG": {"name": "CTCP Đầu tư Thế Giới Di Động", "aliases": ["Thế Giới Di Động", "Thế giới Di động", "TGDĐ", "Thegioididong", "MWG"], "case_sensitive": ["MWG", "TGDĐ"], "exchange": "HOSE", "sector": "RETAIL", "vn30": true, "related": [{"name": "Điện Máy Xanh", "aliases": ["ĐMX", "DMX"], "edge": "SUBSIDIARY_OF", "note": "FireAnt tag 'DMX'"}, {"name": "Bách Hóa Xanh", "aliases": ["BHX", "CTCP Thương mại Bách Hóa Xanh"], "edge": "SUBSIDIARY_OF"}, {"name": "An Khang", "edge": "SUBSIDIARY_OF"}, {"name": "TopZone", "edge": "OWNS_BRAND"}]},
+      "POW": {"name": "Tổng Công ty Điện lực Dầu khí Việt Nam - CTCP", "aliases": ["PV Power", "POW", "Tổng Công ty Điện lực Dầu khí Việt Nam", "Điện lực Dầu khí"], "case_sensitive": ["POW"], "exchange": "HOSE", "sector": "UTILITIES_POWER", "vn30": true, "groups": ["PVN_GROUP", "STATE_OWNED"], "related": [{"id": "ORG:PVN", "edge": "SUBSIDIARY_OF"}, {"name": "Điện lực Dầu khí Nhơn Trạch 2", "ticker": "NT2", "edge": "SUBSIDIARY_OF"}, {"name": "Nhà máy điện Nhơn Trạch 3 và 4 (LNG)", "id": "PRJ:NHON_TRACH_3_4", "edge": "DEVELOPS"}]},
+      "SAB": {"name": "Tổng CTCP Bia - Rượu - Nước giải khát Sài Gòn", "aliases": ["Sabeco", "SABECO", "Bia Sài Gòn", "SAB", "Tổng công ty cổ phần Bia - Rượu - Nước giải khát Sài Gòn"], "case_sensitive": ["SAB", "SABECO"], "exchange": "HOSE", "sector": "BEVERAGE", "vn30": true, "related": [{"name": "ThaiBev", "aliases": ["Thai Beverage", "Vietnam Beverage"], "edge": "HOLDS_STAKE"}]},
+      "SSB": {"name": "Ngân hàng TMCP Đông Nam Á", "aliases": ["SeABank", "Seabank", "SSB", "Ngân hàng Đông Nam Á"], "case_sensitive": ["SSB"], "exchange": "HOSE", "sector": "BANK", "vn30": true},
+      "SSI": {"name": "CTCP Chứng khoán SSI", "aliases": ["Chứng khoán SSI", "SSI", "CTCP Chứng khoán SSI"], "case_sensitive": ["SSI"], "exchange": "HOSE", "sector": "SECURITIES", "vn30": true, "related": [{"name": "SSI Asset Management", "aliases": ["SSIAM", "SSI AM"], "edge": "SUBSIDIARY_OF"}, {"id": "INV:ETF:SSIAM_VN30", "edge": "MANAGES_FUND"}]},
+      "STB": {"name": "Ngân hàng TMCP Sài Gòn Thương Tín", "aliases": ["Sacombank", "SACOMBANK", "STB", "Ngân hàng Sài Gòn Thương Tín", "Ngân hàng TMCP Sài Gòn Thương Tín", "Ngân hàng TMCP Sài Gòn Tài Lộc"], "case_sensitive": ["STB"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "note": "FireAnt hiển thị tên 'Ngân hàng TMCP Sài Gòn Tài Lộc' (10/2026) — giữ cả tên cũ để match tin cũ."},
+      "TCB": {"name": "Ngân hàng TMCP Kỹ thương Việt Nam", "aliases": ["Techcombank", "TCB", "Ngân hàng Kỹ thương", "Ngân hàng TMCP Kỹ Thương Việt Nam"], "case_sensitive": ["TCB"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "groups": ["MASAN_GROUP_AFFILIATE"], "related": [{"ticker": "TCX", "edge": "SUBSIDIARY_OF"}, {"name": "Techcom Life", "edge": "SUBSIDIARY_OF"}]},
+      "TCX": {"name": "CTCP Chứng khoán Kỹ thương", "aliases": ["TCBS", "Chứng khoán Kỹ Thương", "Chứng khoán Kỹ thương", "CTCP Chứng khoán Kỹ thương", "Techcom Securities", "TCX"], "case_sensitive": ["TCBS", "TCX"], "exchange": "HOSE", "sector": "SECURITIES", "vn30": true, "related": [{"ticker": "TCB", "edge": "SUBSIDIARY_OF", "direction": "TCX -> TCB"}, {"name": "Sàn tài sản mã hóa TCEX", "aliases": ["TCEX"], "edge": "SUBSIDIARY_OF", "source": "corpus 10/2026"}]},
+      "VCB": {"name": "Ngân hàng TMCP Ngoại thương Việt Nam", "aliases": ["Vietcombank", "VCB", "Ngân hàng Ngoại thương", "Ngân hàng TMCP Ngoại thương Việt Nam", "Ngân hàng Thương mại Cổ phần Ngoại thương Việt Nam"], "case_sensitive": ["VCB"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "groups": ["BIG4", "STATE_BANK"], "related": [{"name": "Chứng khoán Vietcombank", "aliases": ["VCBS"], "edge": "SUBSIDIARY_OF"}, {"name": "Ngân hàng VCBNeo", "aliases": ["VCBNeo", "VCBNEO"], "edge": "SUBSIDIARY_OF"}]},
+      "VHM": {"name": "CTCP Vinhomes", "aliases": ["Vinhomes", "VHM", "CTCP Vinhomes"], "case_sensitive": ["VHM"], "exchange": "HOSE", "sector": "REAL_ESTATE", "vn30": true, "groups": ["VINGROUP"], "related": [{"ticker": "VIC", "edge": "SUBSIDIARY_OF"}, {"name": "Vinhomes Ocean City", "aliases": ["Ocean City"], "id": "PRJ:OCEAN_CITY", "edge": "DEVELOPS"}, {"name": "Vinhomes Green Paradise", "id": "PRJ:VINHOMES_GREEN_PARADISE", "edge": "DEVELOPS"}, {"name": "KCN Vinhomes Vũng Áng", "id": "PRJ:KCN_VINHOMES_VUNG_ANG", "edge": "DEVELOPS"}]},
+      "VIB": {"name": "Ngân hàng TMCP Quốc tế Việt Nam", "aliases": ["VIB", "Ngân hàng Quốc tế", "Ngân hàng Quốc Tế", "Ngân hàng TMCP Quốc tế Việt Nam"], "case_sensitive": ["VIB"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "related": [{"name": "CTCP Beston", "aliases": ["Beston"], "edge": "HOLDS_STAKE", "source": "corpus 10/2026"}, {"name": "CTCP Bellmont", "aliases": ["Bellmont"], "edge": "HOLDS_STAKE", "source": "corpus 10/2026"}]},
+      "VIC": {"name": "Tập đoàn Vingroup - CTCP", "aliases": ["Vingroup", "Tập đoàn Vingroup", "VIC", "Vin Group"], "case_sensitive": ["VIC"], "exchange": "HOSE", "sector": "CONGLOMERATE", "vn30": true, "groups": ["VINGROUP"], "related": [{"ticker": "VHM", "edge": "SUBSIDIARY_OF", "direction": "VHM -> VIC"}, {"ticker": "VRE", "edge": "SUBSIDIARY_OF", "direction": "VRE -> VIC"}, {"ticker": "VPL", "edge": "SUBSIDIARY_OF", "direction": "VPL -> VIC"}, {"name": "VinFast", "ticker": "US.VFS", "aliases": ["VinFast", "VFS"], "edge": "SUBSIDIARY_OF"}, {"name": "VinSpeed", "aliases": ["CTCP Đầu tư và Phát triển Đường sắt cao tốc VinSpeed"], "edge": "AFFILIATE_OF"}, {"name": "Vin Oil&Gas Global", "edge": "AFFILIATE_OF", "source": "corpus 10/2026"}, {"name": "VinEnergo", "edge": "AFFILIATE_OF"}, {"name": "Metro Bến Thành - Cần Giờ", "id": "PRJ:METRO_BEN_THANH_CAN_GIO", "edge": "DEVELOPS", "via": "VinSpeed"}]},
+      "VJC": {"name": "CTCP Hàng không VietJet", "aliases": ["Vietjet", "VietJet", "Vietjet Air", "VJC", "CTCP Hàng không Vietjet"], "case_sensitive": ["VJC"], "exchange": "HOSE", "sector": "AVIATION", "vn30": true, "groups": ["SOVICO_GROUP"], "related": [{"name": "Vietnam Airlines", "ticker": "HVN", "edge": "COMPETES_WITH"}, {"name": "Sân bay Long Thành", "id": "PRJ:LONG_THANH_AIRPORT", "edge": "CUSTOMER_OF", "note": "ACV là chủ đầu tư"}]},
+      "VNM": {"name": "CTCP Sữa Việt Nam", "aliases": ["Vinamilk", "VNM", "Sữa Việt Nam", "CTCP Sữa Việt Nam"], "case_sensitive": ["VNM"], "exchange": "HOSE", "sector": "CONSUMER", "vn30": true, "related": [{"name": "SCIC", "id": "SCIC", "edge": "HOLDS_STAKE"}, {"name": "F&N", "aliases": ["Fraser & Neave", "F&N"], "edge": "HOLDS_STAKE"}, {"name": "Mộc Châu Milk", "ticker": "MCM", "edge": "SUBSIDIARY_OF"}]},
+      "VPB": {"name": "Ngân hàng TMCP Việt Nam Thịnh Vượng", "aliases": ["VPBank", "VPB", "Ngân hàng Việt Nam Thịnh Vượng", "Ngân hàng TMCP Việt Nam Thịnh Vượng"], "case_sensitive": ["VPB"], "exchange": "HOSE", "sector": "BANK", "vn30": true, "related": [{"name": "Chứng khoán VPBank", "ticker": "VPX", "aliases": ["VPBankS"], "edge": "SUBSIDIARY_OF"}, {"name": "FE Credit", "edge": "SUBSIDIARY_OF"}, {"name": "SMBC", "edge": "HOLDS_STAKE"}]},
+      "VPL": {"name": "CTCP Vinpearl", "aliases": ["Vinpearl", "VPL", "CTCP Vinpearl"], "case_sensitive": ["VPL"], "exchange": "HOSE", "sector": "TOURISM", "vn30": true, "groups": ["VINGROUP"]},
+      "VRE": {"name": "CTCP Vincom Retail", "aliases": ["Vincom Retail", "VRE", "CTCP Vincom Retail"], "case_sensitive": ["VRE"], "exchange": "HOSE", "sector": "REAL_ESTATE", "vn30": true, "groups": ["VINGROUP"], "related": [{"name": "Vincom", "edge": "OWNS_BRAND"}]},
+      "MCH": {"name": "CTCP Hàng tiêu dùng Masan", "aliases": ["Masan Consumer", "MCH", "Hàng tiêu dùng Masan", "CTCP Hàng tiêu dùng MASAN", "Masan Consumer Holdings"], "case_sensitive": ["MCH"], "exchange": "HOSE", "sector": "CONSUMER", "vn30": true, "groups": ["MASAN_GROUP"], "related": [{"ticker": "MSN", "edge": "SUBSIDIARY_OF", "direction": "MCH -> MSN"}, {"name": "CTCP Đầu tư Lepus", "aliases": ["Lepus"], "edge": "RELATED_ORG_OF", "source": "corpus 10/2026"}]},
+      "CMG": {"name": "CTCP Tập đoàn Công nghệ CMC", "aliases": ["Tập đoàn Công nghệ CMC", "Tập đoàn CMC", "CMC Corporation", "CMC Corp", "CMG", "CMC"], "case_sensitive": ["CMG", "CMC"], "exchange": "HOSE", "sector": "TECH", "vn30": false},
+      "ELC": {"name": "CTCP Công nghệ - Viễn thông ELCOM", "aliases": ["Elcom", "ELCOM", "ELC", "Công nghệ - Viễn thông Elcom"], "case_sensitive": ["ELC", "ELCOM"], "exchange": "HOSE", "sector": "TECH", "vn30": false},
+      "ITD": {"name": "CTCP Công nghệ ITD", "aliases": ["Tecotec", "Tecotec Group", "ITD", "Công nghệ ITD", "Công nghệ Tiên Phong"], "case_sensitive": ["ITD"], "exchange": "HOSE", "sector": "TECH", "vn30": false},
+      "ICT": {"name": "CTCP Viễn thông - Tin học Bưu điện", "aliases": ["CT-IN", "CTIN", "ICT", "Viễn thông - Tin học Bưu điện"], "case_sensitive": ["ICT", "CTIN", "CT-IN"], "exchange": "HOSE", "sector": "TECH", "vn30": false, "related": [{"name": "VNPT", "id": "ORG:VNPT", "edge": "HOLDS_STAKE"}, {"name": "CTCP Viễn thông - Tín hiệu đường sắt", "edge": "HOLDS_STAKE", "direction": "ICT -> it", "source": "corpus 10/2026"}]}
+    },
+
+    "peer_tickers": {
+      "_note": "Mã ngoài universe nhưng xuất hiện nhiều trong corpus (đếm theo taggedSymbols batch 2). Dùng để nhận diện entity Company/Stock trong bài, không phải mã theo dõi chính. case_sensitive mặc định cho chính mã.",
+      "LPB": {"name": "Ngân hàng TMCP Lộc Phát Việt Nam", "aliases": ["LPBank", "LPB", "Ngân hàng Lộc Phát", "LienVietPostBank"], "sector": "BANK"},
+      "TPB": {"name": "Ngân hàng TMCP Tiên Phong", "aliases": ["TPBank", "TPB", "Ngân hàng Tiên Phong"], "sector": "BANK", "note": "Bị loại khỏi VN30 từ 03/08/2026"},
+      "SHB": {"name": "Ngân hàng TMCP Sài Gòn - Hà Nội", "aliases": ["SHB", "Ngân hàng Sài Gòn - Hà Nội"], "sector": "BANK"},
+      "MSB": {"name": "Ngân hàng TMCP Hàng Hải Việt Nam", "aliases": ["MSB", "Ngân hàng Hàng Hải", "Maritime Bank"], "sector": "BANK"},
+      "ABB": {"name": "Ngân hàng TMCP An Bình", "aliases": ["ABBank", "ABB", "Ngân hàng An Bình"], "sector": "BANK"},
+      "BAB": {"name": "Ngân hàng TMCP Bắc Á", "aliases": ["Bac A Bank", "BacABank", "BAB", "Ngân hàng Bắc Á"], "sector": "BANK"},
+      "NAB": {"name": "Ngân hàng TMCP Nam Á", "aliases": ["Nam A Bank", "NamABank", "NAB", "Ngân hàng Nam Á"], "sector": "BANK"},
+      "EIB": {"name": "Ngân hàng TMCP Xuất Nhập khẩu Việt Nam", "aliases": ["Eximbank", "EIB"], "sector": "BANK"},
+      "OCB": {"name": "Ngân hàng TMCP Phương Đông", "aliases": ["OCB", "Ngân hàng Phương Đông"], "sector": "BANK"},
+      "KLB": {"name": "Ngân hàng TMCP Kiên Long", "aliases": ["KienlongBank", "Kienlongbank", "KLB"], "sector": "BANK"},
+      "BVB": {"name": "Ngân hàng TMCP Bản Việt", "aliases": ["BVBank", "BVB"], "sector": "BANK"},
+      "PLX": {"name": "Tập đoàn Xăng dầu Việt Nam", "aliases": ["Petrolimex", "PLX", "Tập đoàn Xăng dầu Việt Nam"], "sector": "OIL_GAS", "note": "Bị loại khỏi VN30 từ 03/08/2026; còn trong danh mục dự phòng"},
+      "OIL": {"name": "Tổng Công ty Dầu Việt Nam", "aliases": ["PV OIL", "PV Oil", "OIL"], "sector": "OIL_GAS"},
+      "PVD": {"name": "Tổng CTCP Khoan và Dịch vụ Khoan Dầu khí", "aliases": ["PV Drilling", "PVD"], "sector": "OIL_GAS"},
+      "PVS": {"name": "Tổng CTCP Dịch vụ Kỹ thuật Dầu khí Việt Nam", "aliases": ["PTSC", "PVS"], "sector": "OIL_GAS"},
+      "PVT": {"name": "Tổng CTCP Vận tải Dầu khí", "aliases": ["PV Trans", "PVTrans", "PVT"], "sector": "LOGISTICS"},
+      "PVI": {"name": "CTCP PVI", "aliases": ["PVI", "Bảo hiểm PVI"], "sector": "INSURANCE"},
+      "DCM": {"name": "CTCP Phân bón Dầu khí Cà Mau", "aliases": ["Đạm Cà Mau", "DCM", "PVCFC"], "sector": "CHEMICALS_FERTILIZER"},
+      "DPM": {"name": "Tổng Công ty Phân bón và Hóa chất Dầu khí", "aliases": ["Đạm Phú Mỹ", "DPM", "PVFCCo"], "sector": "CHEMICALS_FERTILIZER"},
+      "SHS": {"name": "CTCP Chứng khoán Sài Gòn - Hà Nội", "aliases": ["SHS", "Chứng khoán SHS"], "sector": "SECURITIES"},
+      "VIX": {"name": "CTCP Chứng khoán VIX", "aliases": ["VIX", "Chứng khoán VIX"], "sector": "SECURITIES"},
+      "VCI": {"name": "CTCP Chứng khoán Vietcap", "aliases": ["Vietcap", "VCI", "Chứng khoán Vietcap", "Chứng khoán Bản Việt"], "sector": "SECURITIES"},
+      "VND": {"name": "CTCP Chứng khoán VNDirect", "aliases": ["VNDirect", "VNDIRECT", "VND"], "sector": "SECURITIES", "ambiguous": "VND cũng là đơn vị tiền tệ — chỉ nhận là mã khi đi sau 'mã'/'cổ phiếu' hoặc cùng 'Chứng khoán'"},
+      "HCM": {"name": "CTCP Chứng khoán Thành phố Hồ Chí Minh", "aliases": ["HSC", "Chứng khoán HSC"], "sector": "SECURITIES", "ambiguous": "HCM thường là viết tắt TP.HCM — chỉ nhận alias 'HSC' hoặc 'mã HCM'"},
+      "VPX": {"name": "CTCP Chứng khoán VPBank", "aliases": ["VPBankS", "VPX", "Chứng khoán VPBank"], "sector": "SECURITIES"},
+      "DGW": {"name": "CTCP Thế Giới Số", "aliases": ["Digiworld", "DGW", "Thế Giới Số"], "sector": "RETAIL"},
+      "FRT": {"name": "CTCP Bán lẻ Kỹ thuật số FPT", "aliases": ["FPT Retail", "FRT", "FPT Shop", "Long Châu"], "sector": "RETAIL"},
+      "PNJ": {"name": "CTCP Vàng bạc Đá quý Phú Nhuận", "aliases": ["PNJ", "Vàng bạc Đá quý Phú Nhuận"], "sector": "RETAIL"},
+      "KBC": {"name": "Tổng Công ty Phát triển Đô thị Kinh Bắc", "aliases": ["Kinh Bắc", "KBC", "Đô thị Kinh Bắc"], "sector": "RUBBER_IP"},
+      "IDC": {"name": "Tổng Công ty IDICO", "aliases": ["IDICO", "IDC"], "sector": "RUBBER_IP"},
+      "BCM": {"name": "Tổng Công ty Đầu tư và Phát triển Công nghiệp", "aliases": ["Becamex", "Becamex IDC", "BCM"], "sector": "RUBBER_IP", "note": "Danh mục dự phòng VN30 kỳ 7/2026"},
+      "VGC": {"name": "Tổng Công ty Viglacera", "aliases": ["Viglacera", "VGC"], "sector": "RUBBER_IP"},
+      "PHR": {"name": "CTCP Cao su Phước Hòa", "aliases": ["Cao su Phước Hòa", "PHR"], "sector": "RUBBER_IP", "parent": "GVR"},
+      "DPR": {"name": "CTCP Cao su Đồng Phú", "aliases": ["Cao su Đồng Phú", "DPR"], "sector": "RUBBER_IP", "parent": "GVR"},
+      "TRC": {"name": "CTCP Cao su Tây Ninh", "aliases": ["Cao su Tây Ninh", "TRC"], "sector": "RUBBER_IP", "parent": "GVR"},
+      "KDH": {"name": "CTCP Đầu tư và Kinh doanh Nhà Khang Điền", "aliases": ["Khang Điền", "KDH"], "sector": "REAL_ESTATE"},
+      "NLG": {"name": "CTCP Đầu tư Nam Long", "aliases": ["Nam Long", "NLG"], "sector": "REAL_ESTATE"},
+      "NVL": {"name": "CTCP Tập đoàn Đầu tư Địa ốc No Va", "aliases": ["Novaland", "NVL"], "sector": "REAL_ESTATE"},
+      "PDR": {"name": "CTCP Phát triển Bất động sản Phát Đạt", "aliases": ["Phát Đạt", "PDR"], "sector": "REAL_ESTATE"},
+      "DXG": {"name": "CTCP Tập đoàn Đất Xanh", "aliases": ["Đất Xanh", "DXG"], "sector": "REAL_ESTATE"},
+      "GEX": {"name": "CTCP Tập đoàn GELEX", "aliases": ["GELEX", "Gelex", "GEX"], "sector": "CONGLOMERATE"},
+      "GEE": {"name": "CTCP Điện lực Gelex", "aliases": ["GELEX Electric", "Gelex Electric", "GEE"], "sector": "UTILITIES_POWER", "note": "Danh mục dự phòng VN30 kỳ 7/2026"},
+      "REE": {"name": "CTCP Cơ Điện Lạnh", "aliases": ["REE", "Cơ Điện Lạnh"], "sector": "UTILITIES_POWER"},
+      "NT2": {"name": "CTCP Điện lực Dầu khí Nhơn Trạch 2", "aliases": ["NT2", "Nhơn Trạch 2"], "sector": "UTILITIES_POWER", "parent": "POW"},
+      "GMD": {"name": "CTCP Gemadept", "aliases": ["Gemadept", "GMD"], "sector": "LOGISTICS"},
+      "VSC": {"name": "CTCP Container Việt Nam", "aliases": ["Viconship", "VSC"], "sector": "LOGISTICS"},
+      "HT1": {"name": "CTCP Xi măng Vicem Hà Tiên", "aliases": ["Vicem Hà Tiên", "Xi măng Hà Tiên", "HT1"], "sector": "STEEL"},
+      "VGI": {"name": "Tổng CTCP Đầu tư Quốc tế Viettel", "aliases": ["Viettel Global", "VGI"], "sector": "TECH"},
+      "CTR": {"name": "Tổng CTCP Công trình Viettel", "aliases": ["Viettel Construction", "CTR"], "sector": "TECH"},
+      "FOX": {"name": "CTCP Viễn thông FPT", "aliases": ["FPT Telecom", "FOX"], "sector": "TECH", "parent": "FPT"},
+      "BMI": {"name": "Tổng CTCP Bảo Minh", "aliases": ["Bảo Minh", "BMI"], "sector": "INSURANCE"},
+      "BIC": {"name": "Tổng CTCP Bảo hiểm Ngân hàng Đầu tư và Phát triển Việt Nam", "aliases": ["BIC", "Bảo hiểm BIDV"], "sector": "INSURANCE", "parent": "BID"},
+      "MSR": {"name": "CTCP Masan High-Tech Materials", "aliases": ["Masan High-Tech Materials", "MSR"], "sector": "MATERIALS_MINING", "parent": "MSN"},
+      "HPA": {"name": "CTCP Nông nghiệp Hòa Phát", "aliases": ["Nông nghiệp Hòa Phát", "HPA"], "sector": "CONSUMER", "parent": "HPG"},
+      "MCM": {"name": "CTCP Giống bò sữa Mộc Châu", "aliases": ["Mộc Châu Milk", "MCM"], "sector": "CONSUMER", "parent": "VNM"},
+      "MBS": {"name": "CTCP Chứng khoán MB", "aliases": ["MBS", "Chứng khoán MB"], "sector": "SECURITIES", "parent": "MBB", "ambiguous": "Không fuzzy với MSB"},
+      "DMX": {"name": "CTCP Thương mại Điện Máy Xanh", "aliases": ["Điện Máy Xanh", "ĐMX", "DMX"], "sector": "RETAIL", "parent": "MWG", "note": "FireAnt gắn tag DMX"},
+      "HSG": {"name": "CTCP Tập đoàn Hoa Sen", "aliases": ["Hoa Sen", "Tôn Hoa Sen", "HSG"], "sector": "STEEL"},
+      "NKG": {"name": "CTCP Thép Nam Kim", "aliases": ["Thép Nam Kim", "Nam Kim", "NKG"], "sector": "STEEL"},
+      "DGC": {"name": "CTCP Tập đoàn Hóa chất Đức Giang", "aliases": ["Hóa chất Đức Giang", "Đức Giang", "DGC"], "sector": "CHEMICALS_FERTILIZER"},
+      "DHG": {"name": "CTCP Dược Hậu Giang", "aliases": ["Dược Hậu Giang", "DHG"], "sector": "CONSUMER"},
+      "GEL": {"name": "CTCP GELEX Infra", "aliases": ["Gelex Infra", "GEL"], "sector": "CONGLOMERATE", "parent": "GEX"},
+      "PC1": {"name": "CTCP Tập đoàn PC1", "aliases": ["PC1"], "sector": "UTILITIES_POWER"},
+      "CII": {"name": "CTCP Đầu tư Hạ tầng Kỹ thuật TP.HCM", "aliases": ["CII"], "sector": "REAL_ESTATE"},
+      "BMP": {"name": "CTCP Nhựa Bình Minh", "aliases": ["Nhựa Bình Minh", "BMP"], "sector": "STEEL"},
+      "NTP": {"name": "CTCP Nhựa Thiếu niên Tiền Phong", "aliases": ["Nhựa Tiền Phong", "NTP"], "sector": "STEEL"},
+      "DBC": {"name": "CTCP Tập đoàn Dabaco Việt Nam", "aliases": ["Dabaco", "DBC"], "sector": "CONSUMER"},
+      "PET": {"name": "Tổng CTCP Dịch vụ Tổng hợp Dầu khí", "aliases": ["Petrosetco", "PET"], "sector": "RETAIL"},
+      "DIG": {"name": "Tổng CTCP Đầu tư Phát triển Xây dựng", "aliases": ["DIC Corp", "DIG"], "sector": "REAL_ESTATE"},
+      "TVN": {"name": "Tổng Công ty Thép Việt Nam - CTCP", "aliases": ["VNSteel", "TVN"], "sector": "STEEL"},
+      "TRA": {"name": "CTCP Traphaco", "aliases": ["Traphaco", "TRA"], "sector": "CONSUMER"},
+      "VHC": {"name": "CTCP Vĩnh Hoàn", "aliases": ["Vĩnh Hoàn", "VHC"], "sector": "CONSUMER"},
+      "HDG": {"name": "CTCP Tập đoàn Hà Đô", "aliases": ["Hà Đô", "HDG"], "sector": "REAL_ESTATE"},
+      "QTP": {"name": "CTCP Nhiệt điện Quảng Ninh", "aliases": ["Nhiệt điện Quảng Ninh", "QTP"], "sector": "UTILITIES_POWER"},
+      "FTS": {"name": "CTCP Chứng khoán FPT", "aliases": ["FPTS", "Chứng khoán FPT", "FTS"], "sector": "SECURITIES"},
+      "SBT": {"name": "CTCP Thành Thành Công - Biên Hòa", "aliases": ["TTC AgriS", "SBT"], "sector": "CONSUMER"},
+      "QNS": {"name": "CTCP Đường Quảng Ngãi", "aliases": ["Đường Quảng Ngãi", "QNS"], "sector": "CONSUMER"},
+      "HAH": {"name": "CTCP Vận tải và Xếp dỡ Hải An", "aliases": ["Hải An", "HAH"], "sector": "LOGISTICS"},
+      "BSH": {"name": "CTCP Bia Sài Gòn - Hà Nội", "aliases": ["BSH"], "sector": "BEVERAGE"},
+      "GEG": {"name": "CTCP Điện Gia Lai", "aliases": ["Điện Gia Lai", "GEG"], "sector": "UTILITIES_POWER"},
+      "SZC": {"name": "CTCP Sonadezi Châu Đức", "aliases": ["Sonadezi Châu Đức", "SZC"], "sector": "RUBBER_IP"},
+      "CTD": {"name": "CTCP Xây dựng Coteccons", "aliases": ["Coteccons", "CTD"], "sector": "REAL_ESTATE"},
+      "HVN": {"name": "Tổng Công ty Hàng không Việt Nam", "aliases": ["Vietnam Airlines", "HVN"], "sector": "AVIATION"},
+      "ACV": {"name": "Tổng Công ty Cảng hàng không Việt Nam", "aliases": ["ACV"], "sector": "AVIATION"}
+    },
+
+    "other_organizations": {
+      "ORG:PVN": {"type": "Company", "name": "Tập đoàn Công nghiệp - Năng lượng Quốc gia Việt Nam", "aliases": ["Petrovietnam", "PVN", "Tập đoàn Dầu khí Việt Nam", "Tập đoàn Công nghiệp - Năng lượng Quốc gia"], "state_owned_pct": 100},
+      "ORG:EVN": {"type": "Company", "name": "Tập đoàn Điện lực Việt Nam", "aliases": ["EVN", "Điện lực Việt Nam"], "state_owned_pct": 100},
+      "ORG:TKV": {"type": "Company", "name": "Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam", "aliases": ["TKV", "Vinacomin"], "state_owned_pct": 100},
+      "ORG:VNPT": {"type": "Company", "name": "Tập đoàn Bưu chính Viễn thông Việt Nam", "aliases": ["VNPT"], "state_owned_pct": 100},
+      "ORG:VIETTEL": {"type": "Company", "name": "Tập đoàn Công nghiệp - Viễn thông Quân đội", "aliases": ["Viettel"]},
+      "ORG:AGRIBANK": {"type": "Company", "name": "Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam", "aliases": ["Agribank"], "groups": ["BIG4", "STATE_BANK"], "note": "Chưa niêm yết; FireAnt gắn nhầm tag 'ABB' cho bài về Agribank — ABB là ABBank."},
+      "ORG:SOVICO": {"type": "Company", "name": "Tập đoàn Sovico", "aliases": ["Sovico"]},
+      "SCIC": {"type": "Regulator", "name": "Tổng công ty Đầu tư và Kinh doanh vốn Nhà nước", "aliases": ["SCIC"]},
+      "ORG:VIFC": {"type": "Location", "name": "Trung tâm Tài chính quốc tế Việt Nam", "aliases": ["VIFC"]}
+    },
+
+    "indices": {
+      "VNINDEX": {"name": "VN-Index", "aliases": ["VN-Index", "VNIndex", "VN-INDEX", "VNINDEX", "chỉ số VN-Index", "chỉ số chính"], "exchange": "HOSE"},
+      "VN30": {"name": "VN30-Index", "aliases": ["VN30", "VN30-Index", "rổ VN30", "nhóm VN30", "chỉ số VN30"], "exchange": "HOSE"},
+      "VN100": {"name": "VN100", "aliases": ["VN100"], "exchange": "HOSE"},
+      "VNMIDCAP": {"name": "VNMidcap", "aliases": ["VNMidcap", "VNMID", "vốn hóa vừa"], "exchange": "HOSE"},
+      "VNSMALLCAP": {"name": "VNSmallcap", "aliases": ["VNSmallcap", "VNSML", "vốn hóa nhỏ"], "exchange": "HOSE"},
+      "VNDIAMOND": {"name": "VNDiamond", "aliases": ["VNDiamond", "VN Diamond"], "exchange": "HOSE"},
+      "VNFINLEAD": {"name": "VNFinLead", "aliases": ["VNFinLead", "VNFIN LEAD"], "exchange": "HOSE"},
+      "VNFINSELECT": {"name": "VNFinSelect", "aliases": ["VNFinSelect"], "exchange": "HOSE"},
+      "HNXINDEX": {"name": "HNX-Index", "aliases": ["HNX-Index", "HNXIndex", "HNX-INDEX", "chỉ số HNX"], "exchange": "HNX"},
+      "HNX30": {"name": "HNX30", "aliases": ["HNX30", "HNX30-Index"], "exchange": "HNX"},
+      "UPCOMINDEX": {"name": "UPCoM-Index", "aliases": ["UPCoM-Index", "UPCOM-Index", "UpCom-Index", "UPCOMINDEX", "UPINDEX", "chỉ số UPCoM"], "exchange": "UPCOM", "note": "FireAnt tag là UPINDEX"},
+      "VNXALLSHARE": {"name": "VNX-AllShare", "aliases": ["VNXAllShare", "VNX50"], "exchange": "VNX"},
+      "VN30F": {"name": "Hợp đồng tương lai VN30", "aliases": ["VN30F1M", "VN30F2M", "VN30F", "phái sinh", "hợp đồng tương lai"], "exchange": "HNX", "instrument_type": "futures"},
+      "GLOBAL": {"aliases": {"DOW_JONES": ["Dow Jones", "DJIA"], "SP500": ["S&P 500", "S&P500"], "NASDAQ": ["Nasdaq", "Nasdaq Composite"], "NIKKEI": ["Nikkei 225", "Nikkei"], "SHANGHAI": ["Shanghai Composite"], "KOSPI": ["Kospi"]}}
+    },
+
+    "exchanges": {
+      "HOSE": {"name": "Sở Giao dịch Chứng khoán TP.HCM", "aliases": ["HOSE", "HoSE", "HSX", "Sở GDCK TP.HCM", "Sở Giao dịch Chứng khoán TP.HCM", "Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh", "sàn HOSE", "sàn TP.HCM"]},
+      "HNX": {"name": "Sở Giao dịch Chứng khoán Hà Nội", "aliases": ["HNX", "Sở GDCK Hà Nội", "Sở Giao dịch Chứng khoán Hà Nội", "sàn Hà Nội", "sàn HNX"]},
+      "UPCOM": {"name": "Thị trường UPCoM", "aliases": ["UPCoM", "UPCOM", "Upcom", "sàn UPCoM", "thị trường đăng ký giao dịch"], "operated_by": "HNX"},
+      "VNX": {"name": "Sở Giao dịch Chứng khoán Việt Nam", "aliases": ["VNX", "Sở GDCK Việt Nam", "Sở Giao dịch Chứng khoán Việt Nam"]},
+      "VSDC": {"name": "Tổng công ty Lưu ký và Bù trừ chứng khoán Việt Nam", "aliases": ["VSDC", "VSD", "Tổng công ty Lưu ký và Bù trừ chứng khoán Việt Nam", "Trung tâm Lưu ký"]},
+      "CRYPTO_EXCHANGES": {"name": "Sàn tài sản mã hóa được cấp phép", "aliases": ["CAEX", "SCEX", "TCEX", "sàn tài sản mã hóa", "sàn tài sản số"]}
+    },
+
+    "regulators_and_institutions": {
+      "SBV": {"name": "Ngân hàng Nhà nước Việt Nam", "aliases": ["Ngân hàng Nhà nước", "NHNN", "NHNNVN", "SBV", "nhà điều hành"], "kind": "central_bank"},
+      "SSC": {"name": "Ủy ban Chứng khoán Nhà nước", "aliases": ["Ủy ban Chứng khoán Nhà nước", "UBCKNN", "UBCK", "SSC"], "kind": "regulator"},
+      "MOF": {"name": "Bộ Tài chính", "aliases": ["Bộ Tài chính", "BTC", "MOF"], "kind": "gov", "ambiguous": ["BTC"]},
+      "GOV": {"name": "Chính phủ", "aliases": ["Chính phủ", "Thủ tướng", "Thủ tướng Chính phủ", "Phó Thủ tướng", "TTg"], "kind": "gov"},
+      "NA": {"name": "Quốc hội", "aliases": ["Quốc hội", "đại biểu Quốc hội", "ĐBQH"], "kind": "gov"},
+      "MOIT": {"name": "Bộ Công Thương", "aliases": ["Bộ Công Thương"], "kind": "gov"},
+      "MOC": {"name": "Bộ Xây dựng", "aliases": ["Bộ Xây dựng"], "kind": "gov"},
+      "CAAV": {"name": "Cục Hàng không Việt Nam", "aliases": ["Cục Hàng không Việt Nam", "Cục Hàng không"], "kind": "regulator"},
+      "GSO": {"name": "Cục Thống kê", "aliases": ["Tổng cục Thống kê", "Cục Thống kê", "GSO"], "kind": "gov"},
+      "FED": {"name": "Cục Dự trữ Liên bang Mỹ", "aliases": ["Fed", "FED", "Cục Dự trữ Liên bang Mỹ", "Cục Dự trữ Liên bang"], "kind": "central_bank"},
+      "ECB": {"name": "Ngân hàng Trung ương châu Âu", "aliases": ["ECB"], "kind": "central_bank"},
+      "MSCI": {"name": "MSCI", "aliases": ["MSCI"], "kind": "index_provider"},
+      "FTSE": {"name": "FTSE Russell", "aliases": ["FTSE Russell", "FTSE"], "kind": "index_provider"},
+      "FITCH": {"name": "Fitch Ratings", "aliases": ["Fitch", "FitchRatings", "Fitch Ratings"], "kind": "rating_agency"},
+      "MOODYS": {"name": "Moody's", "aliases": ["Moody's", "Moody’s"], "kind": "rating_agency"},
+      "SP": {"name": "S&P Global Ratings", "aliases": ["S&P Global Ratings", "S&P Global"], "kind": "rating_agency"}
+    },
+
+    "investor_groups": {
+      "INV:FOREIGN": {"name": "Khối ngoại", "aliases": ["khối ngoại", "NĐTNN", "nhà đầu tư nước ngoài", "dòng vốn ngoại", "quỹ ngoại", "foreign"]},
+      "INV:PROPRIETARY": {"name": "Tự doanh công ty chứng khoán", "aliases": ["tự doanh", "tự doanh CTCK", "khối tự doanh", "tự doanh công ty chứng khoán"]},
+      "INV:RETAIL": {"name": "Nhà đầu tư cá nhân trong nước", "aliases": ["nhà đầu tư cá nhân", "NĐT cá nhân", "nhà đầu tư nhỏ lẻ", "F0", "khối cá nhân"]},
+      "INV:INSTITUTIONAL": {"name": "Tổ chức trong nước", "aliases": ["tổ chức trong nước", "khối tổ chức", "nhà đầu tư tổ chức"]},
+      "INV:INSIDER": {"name": "Người nội bộ", "aliases": ["người nội bộ", "cổ đông nội bộ", "ban lãnh đạo"]},
+      "INV:ETF:DCVFMVN30": {"name": "Quỹ ETF DCVFMVN30", "aliases": ["DCVFMVN30 ETF", "E1VFVN30", "DCVFMVN30"]},
+      "INV:ETF:SSIAM_VN30": {"name": "Quỹ ETF SSIAM VN30", "aliases": ["SSIAM VN30 ETF", "FUESSV30"]},
+      "INV:ETF:KIM_VN30": {"name": "Quỹ ETF KIM Growth VN30", "aliases": ["KIM Growth VN30 ETF", "FUEKIV30"]},
+      "INV:ETF:MAFM_VN30": {"name": "Quỹ ETF MAFM VN30", "aliases": ["MAFM VN30 ETF", "FUEMAV30"]},
+      "INV:ETF:VFMVN_DIAMOND": {"name": "Quỹ ETF DCVFMVN Diamond", "aliases": ["FUEVFVND", "DCVFMVN Diamond ETF", "VFMVN Diamond"]},
+      "INV:ETF:VANECK_VIETNAM": {"name": "VanEck Vietnam ETF", "aliases": ["VanEck Vietnam ETF", "VanEck Vectors Vietnam ETF"], "warning": "Mã quỹ trên NYSE là 'VNM' — trùng ticker Vinamilk"},
+      "INV:ETF:FTSE_VIETNAM": {"name": "Xtrackers FTSE Vietnam", "aliases": ["FTSE Vietnam ETF", "Xtrackers FTSE Vietnam"]}
+    },
+
+    "sectors": {
+      "BANK": {"name": "Ngân hàng", "aliases": ["ngân hàng", "nhà băng", "nhóm ngân hàng", "cổ phiếu ngân hàng", "TCTD", "tổ chức tín dụng", "NHTM", "Big4"]},
+      "SECURITIES": {"name": "Chứng khoán", "aliases": ["công ty chứng khoán", "CTCK", "nhóm chứng khoán", "ngành chứng khoán"]},
+      "INSURANCE": {"name": "Bảo hiểm", "aliases": ["bảo hiểm", "bảo hiểm nhân thọ", "bảo hiểm phi nhân thọ", "bancassurance"]},
+      "REAL_ESTATE": {"name": "Bất động sản", "aliases": ["bất động sản", "BĐS", "địa ốc", "nhóm bất động sản", "bất động sản khu công nghiệp", "bán lẻ bất động sản"]},
+      "STEEL": {"name": "Thép / vật liệu", "aliases": ["thép", "ngành thép", "tôn", "vật liệu xây dựng", "VLXD"]},
+      "OIL_GAS": {"name": "Dầu khí", "aliases": ["dầu khí", "lọc hóa dầu", "xăng dầu", "khí", "LNG", "năng lượng"]},
+      "UTILITIES_POWER": {"name": "Điện", "aliases": ["điện", "ngành điện", "điện khí", "điện than", "điện gió", "điện mặt trời", "năng lượng tái tạo", "thủy điện"]},
+      "TECH": {"name": "Công nghệ - viễn thông", "aliases": ["công nghệ", "công nghệ thông tin", "CNTT", "viễn thông", "chuyển đổi số", "AI", "trí tuệ nhân tạo", "phần mềm", "hạ tầng số"]},
+      "RETAIL": {"name": "Bán lẻ", "aliases": ["bán lẻ", "chuỗi bán lẻ", "điện máy", "bách hóa", "nhà thuốc"]},
+      "CONSUMER": {"name": "Hàng tiêu dùng", "aliases": ["hàng tiêu dùng", "tiêu dùng", "FMCG", "thực phẩm", "sữa"]},
+      "BEVERAGE": {"name": "Đồ uống", "aliases": ["bia", "đồ uống", "đồ uống có cồn", "nước giải khát"]},
+      "AVIATION": {"name": "Hàng không", "aliases": ["hàng không", "hãng bay", "vận tải hàng không", "sân bay"]},
+      "TOURISM": {"name": "Du lịch - nghỉ dưỡng", "aliases": ["du lịch", "nghỉ dưỡng", "khách sạn", "vui chơi giải trí"]},
+      "RUBBER_IP": {"name": "Cao su & khu công nghiệp", "aliases": ["cao su", "mủ cao su", "khu công nghiệp", "KCN"]},
+      "CONGLOMERATE": {"name": "Tập đoàn đa ngành", "aliases": ["tập đoàn đa ngành", "hệ sinh thái"]},
+      "CHEMICALS_FERTILIZER": {"name": "Hóa chất / phân bón", "aliases": ["phân bón", "hóa chất", "đạm"]},
+      "LOGISTICS": {"name": "Logistics / cảng / vận tải", "aliases": ["logistics", "cảng biển", "vận tải biển", "hàng hải"]},
+      "MATERIALS_MINING": {"name": "Khai khoáng / vật liệu", "aliases": ["khai khoáng", "vonfram", "khoáng sản", "than"]}
+    },
+
+    "macro_indicators": {
+      "MAC:DEPOSIT_RATE": {"name": "Lãi suất huy động", "aliases": ["lãi suất huy động", "lãi suất tiết kiệm", "lãi suất tiền gửi"], "unit": "%/năm"},
+      "MAC:LENDING_RATE": {"name": "Lãi suất cho vay", "aliases": ["lãi suất cho vay", "lãi vay", "chi phí vốn", "chi phí lãi vay"], "unit": "%/năm"},
+      "MAC:POLICY_RATE": {"name": "Lãi suất điều hành", "aliases": ["lãi suất điều hành", "lãi suất tái cấp vốn", "lãi suất OMO"], "unit": "%/năm"},
+      "MAC:FED_RATE": {"name": "Lãi suất Fed", "aliases": ["lãi suất Fed", "lãi suất quỹ liên bang"], "unit": "%/năm"},
+      "MAC:INTERBANK_RATE": {"name": "Lãi suất liên ngân hàng", "aliases": ["lãi suất liên ngân hàng", "qua đêm"], "unit": "%/năm"},
+      "MAC:USDVND": {"name": "Tỷ giá USD/VND", "aliases": ["tỷ giá", "tỷ giá USD/VND", "tỷ giá trung tâm", "VND/USD", "USD-VND", "giá USD"], "unit": "VND", "note": "FireAnt tag là USD-VND"},
+      "MAC:DXY": {"name": "Chỉ số USD", "aliases": ["DXY", "USD Index", "chỉ số USD", "chỉ số đồng USD"], "unit": "điểm"},
+      "MAC:UST10Y": {"name": "Lợi suất TPCP Mỹ 10 năm", "aliases": ["lợi suất trái phiếu Chính phủ Mỹ", "lợi suất TPCP Mỹ", "lợi suất trái phiếu kho bạc Mỹ"], "unit": "%"},
+      "MAC:CREDIT_GROWTH": {"name": "Tăng trưởng tín dụng", "aliases": ["tăng trưởng tín dụng", "tín dụng", "dư nợ tín dụng"], "unit": "%"},
+      "MAC:GDP": {"name": "GDP", "aliases": ["GDP", "tăng trưởng kinh tế", "tổng sản phẩm trong nước"], "unit": "%"},
+      "MAC:CPI": {"name": "CPI / lạm phát", "aliases": ["CPI", "lạm phát", "chỉ số giá tiêu dùng"], "unit": "%"},
+      "MAC:TRADE": {"name": "Xuất nhập khẩu", "aliases": ["xuất nhập khẩu", "xuất khẩu", "nhập khẩu", "kim ngạch", "cán cân thương mại"], "unit": "USD"},
+      "MAC:FDI": {"name": "FDI", "aliases": ["FDI", "vốn đầu tư trực tiếp nước ngoài"], "unit": "USD"},
+      "MAC:PUBLIC_INVESTMENT": {"name": "Đầu tư công", "aliases": ["đầu tư công", "giải ngân đầu tư công", "giải ngân vốn đầu tư công"], "unit": "%"},
+      "MAC:BRENT": {"name": "Giá dầu Brent", "aliases": ["dầu Brent", "giá dầu Brent", "giá dầu", "dầu thô"], "unit": "USD/thùng"},
+      "MAC:WTI": {"name": "Giá dầu WTI", "aliases": ["WTI", "dầu WTI"], "unit": "USD/thùng"},
+      "MAC:STEEL_PRICE": {"name": "Giá thép", "aliases": ["giá thép", "giá thép xây dựng", "giá HRC", "HRC", "quặng sắt"], "unit": "VND/tấn"},
+      "MAC:RUBBER_PRICE": {"name": "Giá cao su", "aliases": ["giá mủ cao su", "giá cao su", "giá mủ"], "unit": "USD/tấn"},
+      "MAC:GOLD_PRICE": {"name": "Giá vàng", "aliases": ["giá vàng", "vàng SJC", "vàng miếng"], "unit": "VND/lượng"},
+      "MAC:LPG_PRICE": {"name": "Giá gas bán lẻ", "aliases": ["giá gas", "giá gas bán lẻ", "LPG"], "unit": "VND/bình"},
+      "MAC:LNG_PRICE": {"name": "Giá LNG", "aliases": ["giá LNG", "LNG"], "unit": "USD/MMBtu"},
+      "MAC:MARKET_LIQUIDITY": {"name": "Thanh khoản thị trường", "aliases": ["thanh khoản", "giá trị khớp lệnh", "giá trị giao dịch", "dòng tiền"], "unit": "tỷ đồng"},
+      "MAC:MARGIN_DEBT": {"name": "Dư nợ margin", "aliases": ["dư nợ margin", "cho vay margin", "dư nợ cho vay ký quỹ"], "unit": "tỷ đồng"}
+    },
+
+    "locations": {
+      "LOC:VN": {"aliases": ["Việt Nam", "trong nước", "nội địa"]},
+      "LOC:HCMC": {"aliases": ["TP.HCM", "TP. Hồ Chí Minh", "Thành phố Hồ Chí Minh", "Sài Gòn"]},
+      "LOC:HANOI": {"aliases": ["Hà Nội", "Thủ đô"]},
+      "LOC:US": {"aliases": ["Mỹ", "Hoa Kỳ"]},
+      "LOC:CN": {"aliases": ["Trung Quốc"]},
+      "LOC:JP": {"aliases": ["Nhật Bản"]},
+      "LOC:KR": {"aliases": ["Hàn Quốc"]},
+      "LOC:SG": {"aliases": ["Singapore"]},
+      "LOC:MIDDLE_EAST": {"aliases": ["Trung Đông"]},
+      "LOC:EU": {"aliases": ["EU", "châu Âu", "Liên minh châu Âu"]}
+    }
+  },
+
+  "ambiguity_rules": [
+    {"surface": "MB", "candidates": ["MBB", "megabyte"], "rule": "Chỉ gán MBB khi viết hoa và có ngữ cảnh ngân hàng/lãi suất/cổ phiếu trong ±20 từ; 'MBS' là Chứng khoán MB, 'MBV' là ngân hàng con."},
+    {"surface": "MSB / MBS", "candidates": ["MSB (Ngân hàng Hàng Hải)", "MBS (Chứng khoán MB)"], "rule": "Không được fuzzy match giữa 2 mã này."},
+    {"surface": "GAS / gas", "candidates": ["GAS (PV GAS)", "gas (khí hóa lỏng bán lẻ)"], "rule": "'gas' chữ thường hoặc 'giá gas' => MacroIndicator MAC:LPG_PRICE; chỉ 'GAS' viết hoa đứng riêng hoặc 'PV GAS' => ticker GAS."},
+    {"surface": "Masan", "candidates": ["MSN", "MCH"], "rule": "'Masan Consumer' / 'Hàng tiêu dùng Masan' => MCH; 'Masan High-Tech Materials' => MSR; còn lại mặc định MSN."},
+    {"surface": "Techcombank / TCBS", "candidates": ["TCB", "TCX"], "rule": "'TCBS', 'Chứng khoán Kỹ Thương' => TCX; 'Techcombank' => TCB."},
+    {"surface": "CMC", "candidates": ["CMG (Tập đoàn Công nghệ CMC)", "CMC (CTCP Đầu tư CMC — mã khác)"], "rule": "Mặc định CMG khi ngữ cảnh công nghệ/AI/viễn thông/'Tập đoàn CMC'; mã 'CMC' đứng sau 'mã'/'cổ phiếu' trong danh sách mã => giữ nguyên CMC."},
+    {"surface": "FPT", "candidates": ["FPT", "FRT (FPT Retail)", "FOX (FPT Telecom)", "FTS (Chứng khoán FPT)"], "rule": "Match alias dài trước: 'FPT Retail', 'FPT Shop', 'Long Châu' => FRT; 'FPT Telecom' => FOX; 'FPTS', 'Chứng khoán FPT' => FTS."},
+    {"surface": "Vingroup / Vinhomes / Vin*", "candidates": ["VIC", "VHM", "VRE", "VPL", "VinFast", "VinSpeed"], "rule": "Không gộp công ty con về VIC; dùng SUBSIDIARY_OF/AFFILIATE_OF."},
+    {"surface": "VNM", "candidates": ["Vinamilk", "VanEck Vietnam ETF (NYSE: VNM)"], "rule": "Ngữ cảnh 'quỹ', 'ETF', 'VanEck' => InvestorGroup; còn lại Vinamilk."},
+    {"surface": "Agribank / ABB", "candidates": ["Agribank (chưa niêm yết)", "ABB (ABBank)"], "rule": "FireAnt tag ABB cho bài Agribank là sai; 'Agribank' luôn => ORG:AGRIBANK."},
+    {"surface": "Big4", "candidates": ["BID", "CTG", "VCB", "ORG:AGRIBANK"], "rule": "Mở rộng thành 4 node khi bài nói chung 'nhóm Big4'."},
+    {"surface": "BTC", "candidates": ["Bộ Tài chính", "Bitcoin"], "rule": "Ngữ cảnh tiền mã hóa/crypto => Bitcoin; còn lại MOF."},
+    {"surface": "VCBS / VCBNeo / VCB", "candidates": ["Chứng khoán Vietcombank", "Ngân hàng VCBNeo", "VCB"], "rule": "Match alias dài trước, không gộp về VCB."},
+    {"surface": "Sacombank tên mới", "candidates": ["STB"], "rule": "'Sài Gòn Thương Tín' và 'Sài Gòn Tài Lộc' đều => STB."},
+    {"surface": "Elcom / ELCOM", "candidates": ["ELC"], "rule": "Không nhầm với 'Elcom' trong tên công ty khác (VD 'Elcom Smart'). Ưu tiên khi đi cùng 'ELC' hoặc 'Công nghệ - Viễn thông'."},
+    {"surface": "CT-IN / ICT", "candidates": ["ICT (CT-IN)", "ICT (công nghệ thông tin & truyền thông — cụm từ chung)"], "rule": "'ICT' chỉ là ticker khi đứng sau 'mã'/'HOSE:' hoặc trong tiêu đề dạng 'ICT: ...'; 'ngành ICT' => Sector TECH."},
+    {"surface": "ITD", "candidates": ["ITD (Tecotec)"], "rule": "Chỉ nhận dạng viết hoa đúng; 'Tecotec' => ITD."},
+    {"surface": "SSI", "candidates": ["SSI (Chứng khoán SSI)", "SSIAM", "SSI Research"], "rule": "Khi SSI là nguồn khuyến nghị => vai trò analyst trong ANALYST_RECOMMENDATION, không phải subject."},
+    {"surface": "tăng vốn", "candidates": ["CAPITAL_INCREASE (vốn điều lệ)", "PROJECT_MILESTONE (vốn đầu tư dự án)"], "rule": "'tăng vốn đầu tư' / 'vốn đầu tư dự án' => PROJECT_MILESTONE; chỉ 'tăng vốn điều lệ' / 'phát hành cổ phiếu' => CAPITAL_INCREASE."},
+    {"surface": "VND / HCM", "candidates": ["VNDirect / Chứng khoán HSC", "đồng Việt Nam / TP.HCM"], "rule": "Mặc định là tiền tệ / địa danh; chỉ gán mã khi đứng sau 'mã', 'cổ phiếu' hoặc trong danh sách mã."},
+    {"surface": "cá mập", "candidates": ["quỹ đầu tư lớn", "nghĩa đen"], "rule": "Trong tin chứng khoán => InvestorGroup (quỹ/tổ chức lớn), thường kèm quy mô tài sản."},
+    {"surface": "Thống đốc", "candidates": ["Thống đốc NHNN"], "rule": "Mặc định => Person giữ chức Thống đốc tại SBV."}
+  ],
+
+  "market_vocabulary": {
+    "_note": "Từ vựng thị trường chung — map sang node/attribute khi gặp.",
+    "session_terms": {"phiên": "date", "phiên sáng": "session", "phiên chiều": "session", "ATO": "session", "ATC": "session", "khớp lệnh": "match_type", "thỏa thuận": "match_type", "thanh khoản": "MAC:MARKET_LIQUIDITY"},
+    "price_terms": ["giá trần", "giá sàn", "giá tham chiếu", "mở cửa", "đóng cửa", "cao nhất", "thấp nhất", "thị giá", "vốn hóa", "P/E", "P/B", "EPS", "ROE", "ROA", "NIM", "BVPS", "cổ tức/thị giá"],
+    "trend_terms": {"positive": ["tăng điểm", "bứt phá", "hồi phục", "phục hồi", "xanh", "tăng trần", "vượt đỉnh", "uptrend"], "negative": ["giảm điểm", "lao dốc", "điều chỉnh", "đỏ", "giảm sàn", "thủng", "downtrend", "bán tháo"], "neutral": ["giằng co", "đi ngang", "tích lũy", "phân hóa", "trái chiều", "lình xình"]},
+    "flow_terms": {"dòng tiền": "MAC:MARKET_LIQUIDITY", "mua ròng": "NET_BUYS", "bán ròng": "NET_SELLS", "bắt đáy": "intent:buy", "chốt lời": "intent:sell", "cắt lỗ": "intent:sell", "giải ngân": "intent:buy", "margin": "MAC:MARGIN_DEBT", "call margin": "risk"},
+    "technical_terms": ["ngưỡng hỗ trợ", "kháng cự", "vùng", "đáy", "đỉnh", "MA20", "MA50", "MA200", "RSI", "MACD", "breakout", "nhịp hồi kỹ thuật"],
+    "group_terms": {"bluechip": "Index:VN30", "vốn hóa lớn": "Index:VN30", "midcap": "Index:VNMIDCAP", "penny": "group:penny", "cổ phiếu trụ": "Index:VN30"}
+  },
+
+  "financial_metrics": {
+    "_note": "Thuộc tính của Event (EARNINGS_REPORT, OPERATING_METRIC...). Chuẩn hoá về tên chuẩn bên trái.",
+    "revenue": ["doanh thu", "doanh thu thuần", "tổng doanh thu", "doanh thu hợp nhất"],
+    "gross_profit": ["lợi nhuận gộp", "lãi gộp"],
+    "gross_margin": ["biên lợi nhuận gộp", "biên gộp"],
+    "operating_income": ["thu nhập hoạt động", "tổng thu nhập hoạt động", "TOI"],
+    "net_interest_income": ["thu nhập lãi thuần", "NII"],
+    "profit_before_tax": ["lợi nhuận trước thuế", "LNTT", "lãi trước thuế"],
+    "profit_after_tax": ["lợi nhuận sau thuế", "LNST", "lãi sau thuế", "lãi ròng", "lợi nhuận ròng"],
+    "parent_profit": ["LNST cổ đông công ty mẹ", "lợi nhuận thuộc về cổ đông công ty mẹ", "lãi ròng công ty mẹ"],
+    "other_income": ["lợi nhuận khác", "thu nhập khác", "khoản thu bất thường"],
+    "financial_income": ["doanh thu tài chính", "thu nhập lãi tiền gửi", "lãi tiền gửi"],
+    "interest_expense": ["chi phí lãi vay", "chi phí lãi"],
+    "provision": ["chi phí dự phòng", "trích lập dự phòng"],
+    "npl_ratio": ["tỷ lệ nợ xấu", "nợ xấu", "NPL", "nợ nhóm 3-5"],
+    "credit_growth": ["tăng trưởng tín dụng", "tín dụng tăng", "dư nợ cho vay"],
+    "deposits": ["huy động", "tiền gửi khách hàng"],
+    "casa": ["CASA", "tiền gửi không kỳ hạn"],
+    "total_assets": ["tổng tài sản"],
+    "equity": ["vốn chủ sở hữu", "VCSH"],
+    "charter_capital": ["vốn điều lệ"],
+    "cash": ["tiền và tương đương tiền", "tiền mặt", "tiền nhàn rỗi", "tiền gửi ngân hàng"],
+    "debt": ["nợ vay", "nợ phải trả", "nợ vay ròng", "đòn bẩy"],
+    "inventory": ["tồn kho", "hàng tồn kho"],
+    "operating_cash_flow": ["dòng tiền kinh doanh", "dòng tiền từ hoạt động kinh doanh"],
+    "eps": ["EPS", "lãi cơ bản trên cổ phiếu"],
+    "market_cap": ["vốn hóa", "vốn hóa thị trường"],
+    "plan_achievement_pct": ["% kế hoạch", "hoàn thành", "vượt kế hoạch"]
+  },
+
+  "output_schema": {
+    "_note": "Định dạng đầu ra bắt buộc của extractor (cả rule-based và LLM). Mỗi bài 1 object.",
+    "type": "object",
+    "required": ["doc", "nodes", "edges", "events"],
+    "properties": {
+      "doc": {"type": "object", "required": ["id", "url", "title", "published_at", "source"]},
+      "nodes": {"type": "array", "items": {"type": "object", "required": ["id", "type", "name"], "properties": {"id": {"type": "string"}, "type": {"enum": ["Company", "Person", "Stock", "Index", "Exchange", "Regulator", "InvestorGroup", "Sector", "MacroIndicator", "FinancialInstrument", "Project", "Location", "Product", "Event", "Document"]}, "name": {"type": "string"}, "matched_alias": {"type": "string"}, "props": {"type": "object"}}}},
+      "edges": {"type": "array", "items": {"type": "object", "required": ["source", "target", "type", "evidence", "confidence"], "properties": {"source": {"type": "string"}, "target": {"type": "string"}, "type": {"type": "string"}, "props": {"type": "object"}, "evidence": {"type": "string"}, "confidence": {"type": "number", "minimum": 0, "maximum": 1}, "valid_from": {"type": "string"}}}},
+      "events": {"type": "array", "items": {"type": "object", "required": ["id", "type", "status", "polarity", "trigger", "roles", "evidence", "confidence"], "properties": {"id": {"type": "string"}, "type": {"type": "string"}, "status": {"enum": ["planned", "approved", "in_progress", "completed", "cancelled", "rumor_or_forecast", "denied"]}, "polarity": {"enum": ["positive", "negative", "neutral", "mixed"]}, "date": {"type": "string"}, "period": {"type": "string"}, "trigger": {"type": "string"}, "roles": {"type": "object", "additionalProperties": {"type": ["string", "array"]}}, "attributes": {"type": "object"}, "evidence": {"type": "string"}, "confidence": {"type": "number"}}}}
+    },
+    "example": {
+      "doc": {"id": "DOC:42295661", "url": "https://fireant.vn/bai-viet/cmg-ve-vung-day-5-nam-chu-tich-cmc-muon-mua-them-mot-trieu-co-phieu/42295661", "title": "CMG: Về vùng đáy 5 năm, Chủ tịch CMC muốn mua thêm một triệu cổ phiếu", "published_at": "2026-10-15", "source": "FireAnt"},
+      "nodes": [
+        {"id": "CMG", "type": "Company", "name": "CTCP Tập đoàn Công nghệ CMC", "matched_alias": "CMC"},
+        {"id": "STK:CMG", "type": "Stock", "name": "CMG"},
+        {"id": "PER:NGUYEN_TRUNG_CHINH", "type": "Person", "name": "Nguyễn Trung Chính"},
+        {"id": "EVT:INSIDER_TRADE:CMG:20261014:a1b2c3d4", "type": "Event", "name": "Chủ tịch CMC đăng ký mua 1 triệu CP CMG"},
+        {"id": "EVT:STOCK_PRICE_MOVE:CMG:20261015:e5f6a7b8", "type": "Event", "name": "CMG về vùng đáy 5 năm"}
+      ],
+      "edges": [
+        {"source": "PER:NGUYEN_TRUNG_CHINH", "target": "CMG", "type": "HOLDS_POSITION", "props": {"role": "Chủ tịch HĐQT"}, "evidence": "Ông Nguyễn Trung Chính - Chủ tịch HĐQT CMC", "confidence": 0.95},
+        {"source": "PER:NGUYEN_TRUNG_CHINH", "target": "CMG", "type": "HOLDS_STAKE", "props": {"shares": 2750000, "ownership_pct": 1.181}, "evidence": "ông Chính sở hữu hơn 2,75 triệu cổ phiếu CMG, tương ứng 1,181% vốn điều lệ", "confidence": 0.9},
+        {"source": "EVT:INSIDER_TRADE:CMG:20261014:a1b2c3d4", "target": "PER:NGUYEN_TRUNG_CHINH", "type": "HAS_ROLE", "props": {"role": "trader"}, "evidence": "đã đăng ký mua một triệu cổ phiếu CMG", "confidence": 0.95},
+        {"source": "EVT:INSIDER_TRADE:CMG:20261014:a1b2c3d4", "target": "CMG", "type": "HAS_ROLE", "props": {"role": "company"}, "evidence": "đã đăng ký mua một triệu cổ phiếu CMG", "confidence": 0.95}
+      ],
+      "events": [
+        {"id": "EVT:INSIDER_TRADE:CMG:20261014:a1b2c3d4", "type": "INSIDER_TRADE", "status": "planned", "polarity": "positive", "date": "2026-10-14", "trigger": "đăng ký mua", "roles": {"trader": "PER:NGUYEN_TRUNG_CHINH", "company": "CMG"}, "attributes": {"side": "buy", "shares_registered": 1000000, "pct_before": 1.181, "pct_after": 1.61, "method": "khớp lệnh", "period_from": "2026-10-20", "period_to": "2026-11-17"}, "evidence": "Ông Nguyễn Trung Chính - Chủ tịch HĐQT CMC đã đăng ký mua một triệu cổ phiếu CMG", "confidence": 0.95},
+        {"id": "EVT:STOCK_PRICE_MOVE:CMG:20261015:e5f6a7b8", "type": "STOCK_PRICE_MOVE", "status": "completed", "polarity": "negative", "date": "2026-10-15", "trigger": "vùng đáy 5 năm", "roles": {"stock": "STK:CMG"}, "attributes": {"price": 19350, "from_peak_pct": -66, "market_cap": 4471000000000}, "evidence": "cổ phiếu CMG đang về vùng đáy 5 năm ... thấp hơn khoảng 66% so với đỉnh 2024", "confidence": 0.9}
+      ]
+    }
+  },
+
+  "llm_prompt_template": {
+    "system": "Bạn là bộ bóc tách tri thức cho tin chứng khoán Việt Nam. Chỉ dùng node_types, edge_types, event_types trong template. Không suy diễn quan hệ không có trong văn bản. Mỗi edge/event phải kèm evidence là câu nguyên văn. Gán status cho mọi event (planned/approved/in_progress/completed/cancelled/rumor_or_forecast/denied). Chuẩn hoá entity theo entities.*.aliases và ambiguity_rules; entity ngoài danh sách vẫn tạo node với id theo id_rule. Trả về JSON đúng output_schema, không thêm chữ.",
+    "user": "TEMPLATE (rút gọn): {{template_subset}}\n\nBÀI VIẾT:\nTiêu đề: {{title}}\nNgày: {{published_at}}\nNguồn: {{source}}\nURL: {{url}}\nNội dung:\n{{text}}\n\nCác entity đã được rule-based nhận diện trước (gợi ý, có thể sai): {{prelinked_entities}}",
+    "tips": [
+      "Đưa vào {{template_subset}} chỉ những event_types có trigger xuất hiện trong bài (lọc bằng rule-based) để tiết kiệm token.",
+      "Cắt bài dài thành đoạn ~1.500 từ, giữ tiêu đề + sapo ở mọi đoạn.",
+      "Hậu kiểm: loại edge có source/target không tồn tại trong nodes; loại event thiếu role bắt buộc."
+    ]
+  }
+}

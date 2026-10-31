@@ -1,0 +1,906 @@
+[
+  {
+    "event_id": "evt-0e35cb0673468e84",
+    "event_key": "UNMERGED|d4c3bbaf-cd79-5812-90d0-b1ec3f289572|e1",
+    "event_type": "corporate_action",
+    "subjects": [],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-26",
+      "event_date_end": "2026-10-26",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "d4c3bbaf-cd79-5812-90d0-b1ec3f289572",
+        "url": "https://fireant.vn/bai-viet/diem-danh-12-ngan-hang-viet-nam-co-ti-le-so-huu-nuoc-ngoai-tren-10/42463971",
+        "source_name": "fireant",
+        "publish_date": "2026-10-26",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "d4c3bbaf-cd79-5812-90d0-b1ec3f289572",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Ngày 26/10, Sở Giao dịch Chứng khoán Hà Nội (HNX) công bố Số liệu Quản lý Sở hữu của Nhà đầu tư nước ngoài của các doanh nghiệp niêm yết trên sàn chứng khoán.",
+        "dates": {
+          "event_date_start": "2026-10-26",
+          "event_date_end": "2026-10-26",
+          "date_precision": "day",
+          "date_derived": true,
+          "date_evidence": "Ngày 26/10",
+          "date_candidates": [
+            {
+              "date": "2026-10-26",
+              "derived": true,
+              "evidence": "Ngày 26/10"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-26",
+        "article_id": "d4c3bbaf-cd79-5812-90d0-b1ec3f289572"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-2d439413ef39d1ac",
+    "event_key": "UNMERGED|dea88a59-6d75-5214-887c-8bda3249fb63|e1",
+    "event_type": "agreement_signing",
+    "subjects": [
+      "HDB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63",
+        "url": "https://fireant.vn/bai-viet/cac-ngan-hang-vua-thong-nhat-bom-230-nghin-ty-dong-cho-doanh-nghiep-va-cac-du-an-dau-la-nhung-cai-ten-chu-y/42446363",
+        "source_name": "fireant",
+        "publish_date": "2026-10-24",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Vietcombank, VietinBank, BIDV, Agribank, MB, HDBank...đều có mặt ký kết thỏa thuận.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "HDB",
+            "name_normalized": "HDB",
+            "party_type": "organization",
+            "role": "counterparty",
+            "role_evidence": "Vietcombank, VietinBank, BIDV, Agribank, MB, HDBank...đều có mặt ký kết thỏa thuận.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-24",
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-6902238f224eabb8",
+    "event_key": "UNMERGED|58ba5f59-5da6-5080-a97e-40ec3ec1e0d1|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "MBB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "58ba5f59-5da6-5080-a97e-40ec3ec1e0d1",
+        "url": "https://cafef.vn/du-lieu/mbb-3007936/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "58ba5f59-5da6-5080-a97e-40ec3ec1e0d1",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "MBB: HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "MBB",
+            "name_normalized": "MBB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "MBB: HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "58ba5f59-5da6-5080-a97e-40ec3ec1e0d1"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-72872cb753247f67",
+    "event_key": "agreement_signing|nhnn và ubnd tp hcm|2026-10-23",
+    "event_type": "agreement_signing",
+    "subjects": [
+      "NHNN và UBND TP HCM"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-23",
+      "event_date_end": "2026-10-23",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63",
+        "url": "https://fireant.vn/bai-viet/cac-ngan-hang-vua-thong-nhat-bom-230-nghin-ty-dong-cho-doanh-nghiep-va-cac-du-an-dau-la-nhung-cai-ten-chu-y/42446363",
+        "source_name": "fireant",
+        "publish_date": "2026-10-24",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63",
+        "local_event_id": "e2",
+        "status": "unconfirmed",
+        "status_evidence": "Tại Hội nghị \"Ngành Ngân hàng đồng hành khơi thông nguồn lực Tài chính – Ngân hàng phục vụ tăng trưởng vùng Đông Nam bộ giai đoạn 2026 – 2030\" ngày 23/10/2026 do NHNN và UBND TP HCM tổ chức, các ngân hàng và doanh nghiệp đã trao tới 20 thỏa thuận hợp tác cho các dự án, phương án kinh doanh với tổng số tiền khoảng 230 nghìn tỷ đồng.",
+        "dates": {
+          "event_date_start": "2026-10-23",
+          "event_date_end": "2026-10-23",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "23/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-23",
+              "derived": false,
+              "evidence": "23/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "NHNN và UBND TP HCM",
+            "name_normalized": "NHNN và UBND TP HCM",
+            "party_type": "organization",
+            "role": "organizer",
+            "role_evidence": "Tại Hội nghị \"Ngành Ngân hàng đồng hành khơi thông nguồn lực Tài chính – Ngân hàng phục vụ tăng trưởng vùng Đông Nam bộ giai đoạn 2026 – 2030\" ngày 23/10/2026 do NHNN và UBND TP HCM tổ chức, các ngân hàng và doanh nghiệp đã trao tới 20 thỏa thuận hợp tác cho các dự án, phương án kinh doanh với tổng số tiền khoảng 230 nghìn tỷ đồng.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "230 nghìn",
+            "context": "thỏa thuận hợp tác cho các dự án, phương án kinh doanh với tổng số tiền khoảng 230 nghìn tỷ đồng.",
+            "evidence": "Tại Hội nghị \"Ngành Ngân hàng đồng hành khơi thông nguồn lực Tài chính – Ngân hàng phục vụ tăng trưởng vùng Đông Nam bộ giai đoạn 2026 – 2030\" ngày 23/10/2026 do NHNN và UBND TP HCM tổ chức, các ngân hàng và doanh nghiệp đã trao tới 20 thỏa thuận hợp tác cho các dự án, phương án kinh doanh với tổng số tiền khoảng 230 nghìn tỷ đồng."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-24",
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-7a438b51f82c68cd",
+    "event_key": "UNMERGED|dea88a59-6d75-5214-887c-8bda3249fb63|e3",
+    "event_type": "agreement_signing",
+    "subjects": [
+      "HDB",
+      "MBB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63",
+        "url": "https://fireant.vn/bai-viet/cac-ngan-hang-vua-thong-nhat-bom-230-nghin-ty-dong-cho-doanh-nghiep-va-cac-du-an-dau-la-nhung-cai-ten-chu-y/42446363",
+        "source_name": "fireant",
+        "publish_date": "2026-10-24",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63",
+        "local_event_id": "e3",
+        "status": "unconfirmed",
+        "status_evidence": "Trong đó HDBank và Vikki Bank đã trao 5 thỏa thuận hợp tác, Vietcombank tài trợ trao 4 thỏa thuận hợp tác, VietinBank, BIDV, Agribank, MBBank, NCB mỗi ngân hàng trao 2 thỏa thuận hợp tác (bao gồm cả thỏa thuận đồng tài trợ của các ngân hàng) và ACB đã trao 1 thỏa thuận hợp tác.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "HDB",
+            "name_normalized": "HDB",
+            "party_type": "organization",
+            "role": "counterparty",
+            "role_evidence": "Trong đó HDBank và Vikki Bank đã trao 5 thỏa thuận hợp tác, Vietcombank tài trợ trao 4 thỏa thuận hợp tác, VietinBank, BIDV, Agribank, MBBank, NCB mỗi ngân hàng trao 2 thỏa thuận hợp tác (bao gồm cả thỏa thuận đồng tài trợ của các ngân hàng) và ACB đã trao 1 thỏa thuận hợp tác.",
+            "name_source": "sentence"
+          },
+          {
+            "name_raw": "MBB",
+            "name_normalized": "MBB",
+            "party_type": "organization",
+            "role": "counterparty",
+            "role_evidence": "Trong đó HDBank và Vikki Bank đã trao 5 thỏa thuận hợp tác, Vietcombank tài trợ trao 4 thỏa thuận hợp tác, VietinBank, BIDV, Agribank, MBBank, NCB mỗi ngân hàng trao 2 thỏa thuận hợp tác (bao gồm cả thỏa thuận đồng tài trợ của các ngân hàng) và ACB đã trao 1 thỏa thuận hợp tác.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-24",
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-840e21a38cc537ab",
+    "event_key": "UNMERGED|1546c0c6-ba4a-5268-96ee-987e92ecb178|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "MBB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "1546c0c6-ba4a-5268-96ee-987e92ecb178",
+        "url": "https://fireant.vn/bai-viet/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana/42484957",
+        "source_name": "fireant",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "1546c0c6-ba4a-5268-96ee-987e92ecb178",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "MBB: HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "MBB",
+            "name_normalized": "MBB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "MBB: HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "1546c0c6-ba4a-5268-96ee-987e92ecb178"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-9fe2606116be2fb5",
+    "event_key": "corporate_action|vpb|2026-10-24",
+    "event_type": "corporate_action",
+    "subjects": [
+      "VPB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-24",
+      "event_date_end": "2026-10-24",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "url": "https://fireant.vn/bai-viet/ngay-27-10-gui-duoi-1-ty-dong-12-thang-tai-mb-vpbank-techcombank-sacombank-shb-hdbank-va-acb-duoc-huong-lai-suat-bao-nhieu/42475632",
+        "source_name": "fireant",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng.",
+        "dates": {
+          "event_date_start": "2026-10-24",
+          "event_date_end": "2026-10-24",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "24/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-24",
+              "derived": false,
+              "evidence": "24/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "VPB",
+            "name_normalized": "VPB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "6,4%",
+            "context": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất",
+            "evidence": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng."
+          },
+          {
+            "value_raw": "1 tỷ đồng",
+            "context": "suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng.",
+            "evidence": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-cf106fa0c1ec80d4",
+    "event_key": "UNMERGED|5d5aa869-b0a3-56a2-a5c5-a609415ed41f|e3",
+    "event_type": "corporate_action",
+    "subjects": [
+      "HDB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "url": "https://fireant.vn/bai-viet/ngay-27-10-gui-duoi-1-ty-dong-12-thang-tai-mb-vpbank-techcombank-sacombank-shb-hdbank-va-acb-duoc-huong-lai-suat-bao-nhieu/42475632",
+        "source_name": "fireant",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "local_event_id": "e3",
+        "status": "unconfirmed",
+        "status_evidence": "HDBank niêm yết lãi suất tiết kiệm thông thường kỳ hạn 12 tháng ở mức 5,2%/năm.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "HDB",
+            "name_normalized": "HDB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "HDBank niêm yết lãi suất tiết kiệm thông thường kỳ hạn 12 tháng ở mức 5,2%/năm.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "5,2%",
+            "context": "HDBank niêm yết lãi suất tiết kiệm thông thường kỳ hạn 12 tháng ở mức 5,2%/năm.",
+            "evidence": "HDBank niêm yết lãi suất tiết kiệm thông thường kỳ hạn 12 tháng ở mức 5,2%/năm."
+          },
+          {
+            "value_raw": "5,3%",
+            "context": "HDBank niêm yết lãi suất online 5,3%/năm.",
+            "evidence": "HDBank niêm yết lãi suất online 5,3%/năm."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-d13e36a55166f498",
+    "event_key": "UNMERGED|5d5aa869-b0a3-56a2-a5c5-a609415ed41f|e2",
+    "event_type": "corporate_action",
+    "subjects": [],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "url": "https://fireant.vn/bai-viet/ngay-27-10-gui-duoi-1-ty-dong-12-thang-tai-mb-vpbank-techcombank-sacombank-shb-hdbank-va-acb-duoc-huong-lai-suat-bao-nhieu/42475632",
+        "source_name": "fireant",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "local_event_id": "e2",
+        "status": "unconfirmed",
+        "status_evidence": "SHB và MB cùng niêm yết lãi suất tại quầy ở mức 5,7%/năm.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [],
+        "financial_figures_stated": [
+          {
+            "value_raw": "5,7%",
+            "context": "SHB và MB cùng niêm yết lãi suất tại quầy ở mức 5,7%/năm.",
+            "evidence": "SHB và MB cùng niêm yết lãi suất tại quầy ở mức 5,7%/năm."
+          },
+          {
+            "value_raw": "6,8%",
+            "context": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng.",
+            "evidence": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng."
+          },
+          {
+            "value_raw": "50 triệu đồng",
+            "context": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng.",
+            "evidence": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng."
+          },
+          {
+            "value_raw": "500 triệu đồng",
+            "context": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng.",
+            "evidence": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng."
+          },
+          {
+            "value_raw": "6,0%",
+            "context": "SHB niêm yết lãi suất online kỳ hạn 12 tháng ở mức 6,0%/năm.",
+            "evidence": "SHB niêm yết lãi suất online kỳ hạn 12 tháng ở mức 6,0%/năm."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-d9e19d991cad4e2c",
+    "event_key": "UNMERGED|7766c8c6-1170-57ad-9e1a-7977b31373e9|e1",
+    "event_type": "conference_forum",
+    "subjects": [],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "7766c8c6-1170-57ad-9e1a-7977b31373e9",
+        "url": "https://fireant.vn/bai-viet/doanh-nghiep-om-co-phieu-ben-chat-vat-nguoi-thu-hep/42513812",
+        "source_name": "fireant",
+        "publish_date": "2026-10-29",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "7766c8c6-1170-57ad-9e1a-7977b31373e9",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Một trong số đó có ông Nguyễn Thành Tiến, ủy viên HĐQT VLA - người tổ chức các khóa học, hội thảo chia sẻ kinh nghiệm đầu tư bất động sản, tài chính và kinh doanh.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-29",
+        "article_id": "7766c8c6-1170-57ad-9e1a-7977b31373e9"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-df399987cc00aaa3",
+    "event_key": "UNMERGED|dea88a59-6d75-5214-887c-8bda3249fb63|e4",
+    "event_type": "conference_forum",
+    "subjects": [],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63",
+        "url": "https://fireant.vn/bai-viet/cac-ngan-hang-vua-thong-nhat-bom-230-nghin-ty-dong-cho-doanh-nghiep-va-cac-du-an-dau-la-nhung-cai-ten-chu-y/42446363",
+        "source_name": "fireant",
+        "publish_date": "2026-10-24",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63",
+        "local_event_id": "e4",
+        "status": "unconfirmed",
+        "status_evidence": "Các dự án, phương án kinh doanh mà các NHTM và doanh nghiệp trao thỏa thuận tại Hội nghị thuộc đa dạng các ngành, lĩnh vực như: công nghiệp chế tạo, năng lượng, dược phẩm, hạ tầng giao thông, khu công nghiệp, nhà ở xã hội, ...",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": "Hội",
+        "location_evidence": "Các dự án, phương án kinh doanh mà các NHTM và doanh nghiệp trao thỏa thuận tại Hội nghị thuộc đa dạng các ngành, lĩnh vực như: công nghiệp chế tạo, năng lượng, dược phẩm, hạ tầng giao thông, khu công nghiệp, nhà ở xã hội, ...",
+        "parties": [],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-24",
+        "article_id": "dea88a59-6d75-5214-887c-8bda3249fb63"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-dfc2752cd030ad67",
+    "event_key": "corporate_action|mbb|2026-09-25",
+    "event_type": "corporate_action",
+    "subjects": [
+      "MBB"
+    ],
+    "current_best": {
+      "status": "planned",
+      "event_date_start": "2026-09-25",
+      "event_date_end": "2026-09-25",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "4e0e8f89-a310-53b1-808c-62e28f9e1c32",
+        "url": "https://cafef.vn/gia-von-chua-den-3000-dong-cp-doanh-nghiep-thuoc-bo-quoc-phong-muon-chot-lai-25-trieu-co-phieu-mbb-voi-gia-toi-thieu-hon-20000-dong-cp-188261006095702931.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-06",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "4e0e8f89-a310-53b1-808c-62e28f9e1c32",
+        "local_event_id": "e1",
+        "status": "planned",
+        "status_evidence": "Giá chuyển nhượng tối thiểu được phê duyệt là 20.290 đồng/cổ phiếu, trên cơ sở chứng thư thẩm định giá do VAE phát hành ngày 25/09/2026.﻿ Giao dịch dự kiến thực hiện từ quý 4/2026 theo hình thức bán công khai, khớp lệnh trên Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh (HOSE).",
+        "dates": {
+          "event_date_start": "2026-09-25",
+          "event_date_end": "2026-09-25",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "25/09/2026",
+          "date_candidates": [
+            {
+              "date": "2026-09-25",
+              "derived": false,
+              "evidence": "25/09/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "MBB",
+            "name_normalized": "MBB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": null,
+            "name_source": "metadata"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "20.290 đồng",
+            "context": "Giá chuyển nhượng tối thiểu được phê duyệt là 20.290 đồng/cổ phiếu, trên cơ sở chứng thư thẩm định giá do VAE phát hành ngày",
+            "evidence": "Giá chuyển nhượng tối thiểu được phê duyệt là 20.290 đồng/cổ phiếu, trên cơ sở chứng thư thẩm định giá do VAE phát hành ngày 25/09/2026.﻿ Giao dịch dự kiến thực hiện từ quý 4/2026 theo hình thức bán công khai, khớp lệnh trên Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh (HOSE)."
+          },
+          {
+            "value_raw": "15%",
+            "context": "Trong năm 2026, MB đã thực hiện trả cổ tức bằng cổ phiếu với tỷ lệ 15% và bán ưu đãi cổ phiếu cho cổ đông hiện hữu với tỷ lệ thực hiện quyền 10:1 và giá phát hành 10.000 đồng/cổ phiếu.",
+            "evidence": "Trong năm 2026, MB đã thực hiện trả cổ tức bằng cổ phiếu với tỷ lệ 15% và bán ưu đãi cổ phiếu cho cổ đông hiện hữu với tỷ lệ thực hiện quyền 10:1 và giá phát hành 10.000 đồng/cổ phiếu."
+          },
+          {
+            "value_raw": "10.000 đồng",
+            "context": "Trong năm 2026, MB đã thực hiện trả cổ tức bằng cổ phiếu với tỷ lệ 15% và bán ưu đãi cổ phiếu cho cổ đông hiện hữu với tỷ lệ thực hiện quyền 10:1 và giá phát hành 10.000 đồng/cổ phiếu.",
+            "evidence": "Trong năm 2026, MB đã thực hiện trả cổ tức bằng cổ phiếu với tỷ lệ 15% và bán ưu đãi cổ phiếu cho cổ đông hiện hữu với tỷ lệ thực hiện quyền 10:1 và giá phát hành 10.000 đồng/cổ phiếu."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "date_from_adjacent_sentence,planned_date_already_passed"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "planned",
+        "as_of_publish_date": "2026-10-06",
+        "article_id": "4e0e8f89-a310-53b1-808c-62e28f9e1c32"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-ec5af2afa51ce86d",
+    "event_key": "UNMERGED|43c9d2b7-5403-5b46-87cb-5947a06b2406|e1",
+    "event_type": "agreement_signing",
+    "subjects": [
+      "MBB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "43c9d2b7-5403-5b46-87cb-5947a06b2406",
+        "url": "https://fireant.vn/bai-viet/kbsv-va-ngan-hang-mb-ky-ket-hop-tac-phat-trien-dich-vu-tai-chinh-so/42432878",
+        "source_name": "fireant",
+        "publish_date": "2026-10-23",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "43c9d2b7-5403-5b46-87cb-5947a06b2406",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "KBSV và Ngân hàng MB ký kết hợp tác phát triển dịch vụ tài chính số",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "MBB",
+            "name_normalized": "MBB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": null,
+            "name_source": "metadata"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-23",
+        "article_id": "43c9d2b7-5403-5b46-87cb-5947a06b2406"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  }
+]
