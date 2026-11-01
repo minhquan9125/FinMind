@@ -27,7 +27,21 @@ def _resolve_relative_periods(text: str, today: date) -> str:
         previous_quarter = (month - 1) // 3
         previous_quarter_year = year
     current_quarter = (month - 1) // 3 + 1
-    replacements = [('\\bnam nay\\b', f'năm {year}'), ('\\bnam ngoai\\b', f'năm {previous_year}'), ('\\bnam truoc\\b', f'năm {previous_year}'), ('\\bquy nay\\b', f'quý {current_quarter}/{year}'), ('\\bquy truoc\\b', f'quý {previous_quarter}/{previous_quarter_year}')]
+    previous_month_end = today.replace(day=1) - timedelta(days=1)
+    previous_month_quarter = (previous_month_end.month - 1) // 3 + 1
+    previous_week_end = today - timedelta(days=today.weekday() + 1)
+    previous_week_quarter = (previous_week_end.month - 1) // 3 + 1
+    replacements = [
+        ('\\bnam nay\\b', f'năm {year}'),
+        ('\\bnam ngoai\\b', f'năm {previous_year}'),
+        ('\\bnam truoc\\b', f'năm {previous_year}'),
+        ('\\bquy nay\\b', f'quý {current_quarter}/{year}'),
+        ('\\bquy truoc\\b', f'quý {previous_quarter}/{previous_quarter_year}'),
+        ('\\bthang nay\\b', f'quý {current_quarter}/{year}'),
+        ('\\btuan nay\\b', f'quý {current_quarter}/{year}'),
+        ('\\bthang truoc\\b', f'quý {previous_month_quarter}/{previous_month_end.year}'),
+        ('\\btuan truoc\\b', f'quý {previous_week_quarter}/{previous_week_end.year}'),
+    ]
     result = folded
     for pattern, replacement in replacements:
         result = re.sub(pattern, replacement, result, flags=re.IGNORECASE)

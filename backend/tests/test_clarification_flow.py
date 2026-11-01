@@ -61,7 +61,7 @@ def test_registered_metric_groups_accept_choices(word, reply, metric):
     ('doanh thu FPT quý 2/2026', 'doanh thu'),
     ('vốn FPT quý 2/2026', 'vốn'),
     ('nợ', 'nợ'),
-    ('tổng tài sản FPT', 'không biết'),
+    ('tổng tài sản', 'không biết'),
     ('abc xyz', 'abc xyz'),
 ])
 def test_every_unproductive_clarification_is_bounded(question, repeat):

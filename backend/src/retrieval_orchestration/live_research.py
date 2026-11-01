@@ -27,7 +27,7 @@ from .retrieval_flow.intent import _fold, _period, TICKERS
 from .clarifications import apply_clarification, metric_group, resolve_reply
 from .market_dialogue import article_query, calendar_day, news_reference
 from .input_normalization import normalize_user_text
-from .market_dates import price_date_request, temporal_reply
+from .market_dates import price_date_request, relative_market_range, temporal_reply
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
@@ -99,15 +99,40 @@ def _market_intent(norm, context, today):
     short_price = re.search(r'\bgia\s+([a-z]{3})\b', norm)
     price = bool(re.search(r'\b(?:gia co phieu|thi gia|gia hien tai|gia hom nay)\b', norm)
                  or (short_price and short_price[1] not in {'von', 'tri', 'cua', 'ban', 'mua', 'dat', 'san', 'cao', 'day', 'goc'}))
+    causal = bool(re.search(
+        r'\b(?:vi sao|tai sao|nguyen nhan|do dau|ly do|tac dong|anh huong|he qua)\b', norm
+    ))
+    trend = bool(re.search(
+        r'\b(?:dao nay|gan day|tinh hinh|khoi sac|trien vong|bien dong|the nao)\b', norm
+    ))
     dated = bool(re.search(r'\b(?:quy|thang|nam|ngay)\s+\d|\b(?:19|20|21)\d{2}\b', norm))
-    current = bool(re.search(r'\b(?:hom nay|hien tai|moi nhat|moi|bay gio)\b', norm))
+    current = bool(re.search(r'\b(?:hom nay|hien tai|moi nhat|moi|bay gio|hn|hnay|nay)\b', norm))
     day = calendar_day(norm, today)
     action = 'SUMMARY' if re.search(r'\b(?:tom tat|tong hop|diem tin)\b', norm) else 'LIST'
     prior = (context or {}).get('_market_request')
     financial = metric_group(norm) or any(_fold(a) in norm for aliases in METRIC_ALIASES.values() for a in aliases)
+    market_context = bool(re.search(
+        r'\b(?:thi truong|thi truong chung khoan|chung khoan|ttck|tt|ck|vni|vn ?index|vnindex)\b', norm
+    ))
+    daily_digest_language = bool(re.search(
+        r'\b(?:bien dong|co bien|co gi moi|co gi hot|co gi hay|tin moi|tin nong|tin noi bat|'
+        r'diem tin|tong hop|do lua|rung lac|co song|day song|sap|lao doc|bung no|'
+        r'co drama|co chuyen gi|co tin gi|nong gi|len xuong|bat thuong|xanh|do|the nao|nhu nao)\b', norm
+    ))
+    if market_context and current and daily_digest_language and not financial:
+        return {
+            'kind': 'NEWS', 'day': day or today.isoformat(), 'action': 'SUMMARY',
+            'market_wide': True,
+        }
+    if (trend and not financial
+            and not re.search(r'\b(?:nam|quy|thang)\s+\d|\b(?:19|20|21)\d{2}\b', norm)):
+        return {'kind': 'ANALYSIS', 'day': today.isoformat(), 'action': 'ANALYSIS'}
     company_selection = (norm.isdigit() and
                          str(((context or {}).get('_clarification_state') or {}).get('id', '')).startswith('company:'))
     if not financial and not news and not company_selection:
+        relative_range = relative_market_range(norm, today) if price else None
+        if relative_range:
+            return relative_range
         partial = price_date_request(norm, prior, explicit_price=price)
         if partial: return partial
     if (day is None and re.search(r'\b(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{2}-\d{2})\b', norm)
@@ -118,8 +143,9 @@ def _market_intent(norm, context, today):
     market_day = day and (price or re.search(r'\bhom (?:nay|qua|kia)\b', norm) or day == today.isoformat())
     if (news or price) and (not dated or market_day):
         if price or news:
-            return {'kind': 'QUOTE' if price else 'NEWS',
-                    'day': day, 'action': action}
+            if price and causal:
+                return {'kind': 'ANALYSIS', 'day': day, 'action': 'ANALYSIS'}
+            return {'kind': 'QUOTE' if price else 'NEWS', 'day': day, 'action': action}
     financial = metric_group(norm) or any(_fold(a) in norm for aliases in METRIC_ALIASES.values() for a in aliases)
     followup = re.fullmatch(r'(?:(?:con|ma|co phieu|cua|la)\s+)?[a-z]{3,5}|[1-9]|fireant|cafef', norm)
     if prior and not news and not price and not dated and not financial:
@@ -135,8 +161,11 @@ def _market_intent(norm, context, today):
 def analyze_live(text, context=None, *, today=None):
     """Resolve explicit slots and follow-ups without generating values or SQL."""
     today = today or datetime.now(timezone(timedelta(hours=7))).date()
+    raw_market_request = _market_intent(_fold(text), context, today)
     text = normalize_user_text(text, context)
-    market_request = _market_intent(_fold(text), context, today)
+    # Normalized Telex/abbreviations contain the reliable date and action.
+    # Raw intent is only a fallback; otherwise partial raw matches discard them.
+    market_request = _market_intent(_fold(text), context, today) or raw_market_request
     norm = _fold(_resolve_relative_periods(text, today))
     norm = resolve_reply(norm, context)
     scope = copy.deepcopy(context or {})
@@ -171,7 +200,7 @@ def analyze_live(text, context=None, *, today=None):
     ticker_stop = STOP_WORDS | {'mot', 'cuoi', 'thuan', 'nhat', 'rieng', 'hop', 'ngan', 'dai',
                               'thu', 'phi', 'tuc', 'cafef', 'news', 'trong', 'tai', 'ky',
                               'von', 'loi', 'lai', 'tong', 'vay', 'thue', 'dong', 'tien',
-                              'hom', 'hien', 'nay', 'nhieu', 'bao', 'moi', 'nhat'}
+                              'hom', 'hien', 'nay', 'nhieu', 'bao', 'moi', 'nhat', 'khong'}
     ticker_stop |= {word for aliases in METRIC_ALIASES.values() for alias in aliases for word in _fold(alias).split()}
     # Explicit lowercase symbols must replace old scope too, even if not in this corpus.
     company_patterns = (r'\b(?:cua|cong ty|co phieu|ma ck|ma)\s+([a-z]{3,5})\b',
@@ -186,6 +215,10 @@ def analyze_live(text, context=None, *, today=None):
                         r'\b([a-z]{3})\s+(?:gia|hom nay|hien tai|moi nhat)\b'):
             companies += [token.upper() for token in re.findall(pattern, norm)
                           if token not in ticker_stop and token.upper() not in reserved]
+    # Some valid exchange tickers are also ordinary Vietnamese words.  In a
+    # causal phrase, "sao" belongs to "vì sao", not ticker SAO.
+    if re.search(r'\bvi sao\b', norm):
+        companies = [company for company in companies if company != 'SAO']
     if not companies and re.fullmatch(r'(?:con |khong,? la |la )?[a-z]{3}', norm):
         token = norm.split()[-1]
         if token not in ticker_stop | {'sau', 'nam', 'nay', 'cho', 'xem', 'moi'}:
@@ -198,10 +231,16 @@ def analyze_live(text, context=None, *, today=None):
     if market_request:
         scope = {key: value for key, value in scope.items() if key in ('companies', '_clarification_state')}
         decision['scope'] = scope
-        scope.update(source_type='PRICE' if market_request['kind'] == 'QUOTE' else 'NEWS',
-                     metric_code='LAST_PRICE' if market_request['kind'] == 'QUOTE' else None,
+        source_type = {'QUOTE': 'PRICE', 'NEWS': 'NEWS', 'ANALYSIS': 'MARKET_ANALYSIS'}[
+            market_request['kind']
+        ]
+        scope.update(source_type=source_type,
+                     metric_code='LAST_PRICE' if market_request['kind'] in ('QUOTE', 'ANALYSIS') else None,
                      periods=[market_request['day']] if market_request['day'] else [],
                      _market_request=market_request)
+        if market_request.get('market_wide'):
+            scope['companies'] = []
+            scope['topic'] = 'MARKET_DAILY_DIGEST'
         calendar_issue = scope['_market_request'].pop('_calendar_issue', None)
         calendar_message = scope['_market_request'].pop('_calendar_message', '')
         if calendar_issue:
@@ -214,6 +253,9 @@ def analyze_live(text, context=None, *, today=None):
             return finish('ASK_CLARIFICATION', 'AMBIGUOUS_PUBLISHER', 'Bạn muốn xem nguồn CafeF hay FireAnt trước?')
         if publishers: scope['publisher'] = publishers[0]
         elif (context or {}).get('publisher'): scope['publisher'] = context['publisher']
+        if market_request.get('market_wide'):
+            return finish('MARKET_LOOKUP', 'CURRENT_MARKET_DIGEST',
+                          'Dang tra cuu ban tin tong hop va tin noi bat trong ngay.')
         if not scope.get('companies'):
             return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn xem công ty nào?')
         if len(scope['companies']) != 1:
@@ -239,12 +281,45 @@ def analyze_live(text, context=None, *, today=None):
     if 'NON_CURRENT_LIABILITIES' in found and 'CURRENT_LIABILITIES' in found:
         found.remove('CURRENT_LIABILITIES')
     multiple = len(found) > 1
+    company_profile = bool(re.search(
+        r'\b(?:linh vuc|thuoc nganh|nganh gi|nganh nao|hoat dong trong|kinh doanh gi)\b', norm
+    ))
+    comparison = bool(re.search(r'\b(?:so sanh|doi chieu|khac nhau|hon kem)\b', norm))
+    overall_comparison = comparison and not found and not profit_requested
+    relationship_lookup = bool(re.search(
+        r'\b(?:chu tich|ceo|tong giam doc|giam doc|lanh dao|co dong|so huu)\b', norm
+    ))
+    event_impact = bool(
+        re.search(r'\b(?:bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b', norm)
+        and re.search(r'\b(?:co phieu|anh huong|tac dong|he qua)\b', norm)
+    )
     if len(found) == 1 and (context or {}).get('metric_code') and found[0] != context['metric_code']:
         scope.pop('_pending_reporting_entity', None)
     publishers = [name for name in ('cafef', 'fireant') if re.search(r'\b'+name+r'\b', norm)]
-    news = bool(re.search(r'\b(?:tin tuc|tin|news)\b', norm) or (scope.get('source_type') == 'NEWS' and publishers))
-    if news:
+    qualitative_document = bool(re.search(
+        r'\b(?:chia se|phat bieu|noi gi|ke hoach|chien luoc|dinh huong|muc tieu|'
+        r'cam ket|quan diem|co dong lon|danh sach co dong|chu tich|ceo|tong giam doc|'
+        r'lanh dao|bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b', norm
+    ) or re.search(r'\bAI\b', text))
+    news = bool(
+        re.search(r'\b(?:tin tuc|tin|news)\b', norm)
+        or qualitative_document
+        or (scope.get('source_type') == 'NEWS' and publishers)
+    )
+    if event_impact:
+        scope.update(companies=[], source_type='NEWS', metric_code=None,
+                     topic='EVENT_IMPACT', reporting_entity='UNKNOWN')
+        scope.pop('_pending_metric', None)
+    elif company_profile:
+        scope.update(source_type='COMPANY_PROFILE', metric_code=None, topic='COMPANY_PROFILE')
+        scope.pop('_pending_metric', None)
+    elif overall_comparison:
+        scope.update(source_type='COMPANY_OVERVIEW', metric_code=None, topic='OVERALL_COMPARISON')
+        scope.pop('_pending_metric', None)
+    elif news:
         scope.update(source_type='NEWS', metric_code=None, reporting_entity='UNKNOWN')
+        if relationship_lookup:
+            scope['topic'] = 'RELATIONSHIP_LOOKUP'
         scope.pop('_pending_metric', None)
         if len(publishers) > 1:
             scope.pop('publisher', None)
@@ -314,18 +389,27 @@ def analyze_live(text, context=None, *, today=None):
     if metric in POINT_METRICS: scope['measure_basis'] = 'POINT_IN_TIME'
     elif metric and scope.get('measure_basis') == 'POINT_IN_TIME' and scope.get('periods'):
         scope['measure_basis'] = 'STANDALONE_QUARTER' if '-Q' in scope['periods'][0] else 'FULL_YEAR'
-    if not scope.get('companies'):
+    if not scope.get('companies') and scope.get('topic') != 'EVENT_IMPACT':
         return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn xem công ty nào?')
     if scope.get('_pending_publisher'):
         return finish('ASK_CLARIFICATION', 'AMBIGUOUS_PUBLISHER', 'Bạn muốn xem nguồn CafeF hay FireAnt trước?')
     if scope.get('_pending_reporting_entity'):
         return finish('ASK_CLARIFICATION', 'AMBIGUOUS_REPORTING_ENTITY', 'Bạn muốn xem báo cáo hợp nhất hay báo cáo riêng?')
-    if not metric and scope.get('source_type') != 'NEWS':
+    if not metric and scope.get('source_type') not in ('NEWS', 'COMPANY_PROFILE', 'COMPANY_OVERVIEW'):
         return finish('ASK_CLARIFICATION', 'MULTIPLE_METRICS' if multiple else 'MISSING_METRIC', 'Bạn muốn xem chỉ tiêu nào?')
     if not scope.get('periods'):
+        if scope.get('topic') in ('RELATIONSHIP_LOOKUP', 'EVENT_IMPACT'):
+            scope['periods'] = ['LATEST_AVAILABLE_PERIOD']
+            return finish('SEARCH', 'SCOPE_READY', 'Đang tìm nguồn về quan hệ doanh nghiệp và sự kiện liên quan.')
+        if scope.get('source_type') == 'COMPANY_PROFILE':
+            return finish('SEARCH', 'SCOPE_READY', 'Đang tìm hồ sơ doanh nghiệp trong corpus đã chọn.')
+        if scope.get('source_type') == 'COMPANY_OVERVIEW':
+            scope['periods'] = [str(today.year)]
+            return finish('SEARCH', 'SCOPE_READY', 'Đang tìm dữ liệu để so sánh tổng quan.')
         if scope.get('_pending_quarter'):
             return finish('ASK_CLARIFICATION', 'MISSING_YEAR', f"Bạn muốn xem quý {scope['_pending_quarter']} của năm nào?")
-        return finish('ASK_CLARIFICATION', 'MISSING_PERIOD', 'Bạn muốn xem kỳ nào? Ví dụ: quý 2/2026, năm 2025 hoặc tin tức tháng 9/2026.')
+        scope['periods'] = ['LATEST_AVAILABLE_PERIOD']
+        return finish('SEARCH', 'LATEST_PERIOD_DEFAULTED', 'Không có thời gian cụ thể; đang dùng kỳ mới nhất có trong nguồn.')
     if len(scope['companies']) > 2 or len(scope['periods']) > 2:
         return finish('ASK_CLARIFICATION', 'SCOPE_TOO_LARGE', 'Vui lòng hỏi tối đa hai mã và hai kỳ mỗi lần.')
     return finish('SEARCH', 'SCOPE_READY', 'Đang tìm bằng chứng trong corpus đã chọn.')
@@ -385,15 +469,17 @@ class DenseEvidenceRetriever:
                     corpus['index_version_id'], self.cache_dir / ('corpus-' + self.corpus_version_id + '.json'))
         return {'backend': self.backend, 'index_version_id': corpus['index_version_id']}
 
-    async def _hybrid_rows(self, question, scope, corpus, company, period):
+    async def _hybrid_rows(self, question, scope, corpus, company, period, doc_type=None):
         from ..vector_retrieval.backend import RetrievalError
         self._hybrid_instance()
         cache = self.cache_dir / ('corpus-' + self.corpus_version_id + '.json')
+        doc_type = doc_type or ('NEWS' if scope['source_type'] == 'NEWS' else 'FINANCIAL_STATEMENT')
         params = dict(company=company, period=period,
-                      doc_type='NEWS' if scope['source_type'] == 'NEWS' else 'FINANCIAL_STATEMENT',
+                      doc_type=doc_type,
                       publisher=scope.get('publisher'),
-                      published_date=period if scope['source_type'] == 'NEWS' and len(period) == 10 else None,
-                      exact_period=scope['source_type'] != 'NEWS', top_k=20, candidates=100)
+                      published_date=period if doc_type == 'NEWS' and period and len(period) == 10 else None,
+                      exact_period=doc_type == 'FINANCIAL_STATEMENT' and period is not None,
+                      top_k=20, candidates=100)
         rebuildable = ('CACHE_BUILD_REQUIRED', 'CACHE_EXPIRED', 'CACHE_STALE', 'CACHE_VERSION_MISMATCH')
         try:
             result = await self._hybrid.search(question, corpus['index_version_id'], cache, **params)
@@ -416,17 +502,27 @@ class DenseEvidenceRetriever:
         corpus = await self._corpus()
         vector = await self._embed(question) if self.backend == 'dense' else None
         items, seen = [], set()
-        for company in scope['companies']:
-            for period in scope['periods']:
+        source_type = scope['source_type']
+        doc_type = (
+            'COMPANY_PROFILE'
+            if source_type in ('COMPANY_PROFILE', 'COMPANY_OVERVIEW')
+            else 'NEWS' if source_type == 'NEWS' else 'FINANCIAL_STATEMENT'
+        )
+        companies = scope['companies'] or ([None] if scope.get('topic') == 'EVENT_IMPACT' else [])
+        periods = [None] if doc_type == 'COMPANY_PROFILE' else scope['periods']
+        for company in companies:
+            for period in periods:
+                latest_period = period == 'LATEST_AVAILABLE_PERIOD'
+                lookup_period = None if latest_period else period
                 if self.backend == 'hybrid':
-                    rows = await self._hybrid_rows(question, scope, corpus, company, period)
+                    rows = await self._hybrid_rows(question, scope, corpus, company, lookup_period, doc_type)
                 else:
                     rows = await repository.vector_search_filtered(
                         self.pool, corpus['index_version_id'], vector, 20,
-                        company_symbol=company, period=period,
-                        doc_type='NEWS' if scope['source_type'] == 'NEWS' else 'FINANCIAL_STATEMENT',
+                        company_symbol=company, period=lookup_period,
+                        doc_type=doc_type,
                         corpus_version_id=self.corpus_version_id,
-                        exact_period=scope['source_type'] != 'NEWS',
+                        exact_period=doc_type == 'FINANCIAL_STATEMENT' and not latest_period,
                     )
                 matching = []
                 for row in rows:
@@ -439,14 +535,14 @@ class DenseEvidenceRetriever:
                     metric = scope.get('metric_code')
                     if metric and not re.search(r'\('+re.escape(metric)+r'\)', text):
                         continue
-                    entity = scope.get('reporting_entity', 'UNKNOWN')
                     header = _fold(text.split('\n', 1)[0])
-                    if not reporting_entity_matches(text.split('\n', 1)[0], entity):
+                    entity = scope.get('reporting_entity', 'UNKNOWN')
+                    if doc_type == 'FINANCIAL_STATEMENT' and not reporting_entity_matches(text.split('\n', 1)[0], entity):
                         continue
                     basis = scope.get('measure_basis')
-                    if scope['source_type'] != 'NEWS' and basis == 'YTD' and not re.search(r'\b(?:luy ke|ytd)\b', header):
+                    if doc_type == 'FINANCIAL_STATEMENT' and basis == 'YTD' and not re.search(r'\b(?:luy ke|ytd)\b', header):
                         continue
-                    if (scope['source_type'] != 'NEWS' and basis == 'STANDALONE_QUARTER'
+                    if (doc_type == 'FINANCIAL_STATEMENT' and basis == 'STANDALONE_QUARTER'
                             and ('luy ke' in header or 'ytd' in header)):
                         continue
                     if row['chunk_id'] in seen: continue
@@ -456,7 +552,7 @@ class DenseEvidenceRetriever:
                         raise ReconstructionError('HASH_MISMATCH', 'Indexed text differs')
                     matching.append(dict(
                         evidence_id=row['chunk_id'], chunk_id=row['chunk_id'], source_id=row['document_id'],
-                        source_type=scope['source_type'], title=row['title'], passage=text,
+                        source_type=doc_type, title=row['title'], passage=text,
                         source_sha256=row['source_sha256'].strip(), content_sha256=content_hash,
                         source_verified=True, locator=row['locator_json'],
                         score={'type': 'RRF' if self.backend == 'hybrid' else 'COSINE_SIMILARITY', 'value': float(row['score'])},

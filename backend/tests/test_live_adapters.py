@@ -51,6 +51,27 @@ def _make_loop():
 
 class TestLiveContentAdapter:
 
+    def test_telex_query_is_cleaned_for_search_while_original_is_preserved(self):
+        from src.retrieval_orchestration.hybrid_router.decision_engine import DecisionEngine
+        class Predictor:
+            model_version = "normalization-test"
+            def predict(self, question): return .99, .99
+        raw = "duwj ddoan thij truongf chuwsng khoans sawp towi"
+        task = DecisionEngine(Predictor()).decide(raw).tasks[0]
+        adapter = self._adapter()
+        adapter.execute(task)
+        assert task.params["question"] == raw
+        assert adapter.calls[-1]["question"] == "du doan thi truong chung khoan sap toi"
+
+    @pytest.mark.parametrize("period", ["NEXT_WEEK", "NEXT_QUARTER", "LATEST_YEAR-Q2"])
+    def test_symbolic_horizons_keep_original_question_without_invalid_filter(self, period):
+        adapter = self._adapter()
+        question = "dự báo thị trường tuần sau"
+        adapter.execute(_task(question=question, companies=[], periods=[period]))
+        assert adapter.calls[-1]["period"] is None
+        assert adapter.calls[-1]["company"] is None
+        assert adapter.calls[-1]["question"] == question
+
     def _adapter(self, search_result=None, raise_exc=None):
         loop = _make_loop()
 

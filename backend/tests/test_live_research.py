@@ -9,7 +9,7 @@ from uuid import uuid4
 import pytest
 
 from src.b1_answering.evidence.citations import CitationError, prepare_evidence
-from src.documents.db_chunking import chunk_document, financial_documents
+from src.documents.db_chunking import chunk_document, company_documents, financial_documents
 from src.retrieval_orchestration.live_research import (
     DenseEvidenceRetriever, LiveResearchService, analyze_live,
 )
@@ -74,6 +74,28 @@ def test_live_rrf_score_is_not_mislabeled_as_cosine():
     assert next(iter(prepare_evidence(evidence).values()))['score']['type'] == 'RRF'
 
 
+def test_company_profile_locator_is_accepted_as_verified_evidence():
+    company_id = str(uuid4())
+    doc = company_documents([dict(
+        company_id=company_id, symbol='FPT', company_name='FPT Corporation',
+        industry_type='Technology', sector='Information Technology',
+        exchange='HOSE', is_active=True,
+    )])[0]
+    chunk = chunk_document(doc)[0]
+    evidence = dict(
+        schema_version='1.1', query_id='profile-query',
+        data_version={'kind': 'INDEX', 'id': INDEX}, corpus_version_id=CORPUS,
+        items=[dict(
+            evidence_id=str(uuid4()), chunk_id=str(uuid4()), source_id=company_id,
+            source_type='COMPANY_PROFILE', source_sha256='a' * 64,
+            content_sha256=chunk.content_hash, passage=chunk.text,
+            source_verified=True, locator=chunk.locator,
+            score={'type': 'COSINE_SIMILARITY', 'value': 0.8},
+        )],
+    )
+    assert next(iter(prepare_evidence(evidence).values()))['source_type'] == 'COMPANY_PROFILE'
+
+
 @pytest.mark.parametrize('mutation', ['hash', 'unverified', 'locator', 'corpus'])
 def test_live_evidence_fail_closed(mutation):
     evidence = pack()
@@ -107,7 +129,9 @@ def test_live_news_and_advice_are_separate():
     assert news['scope']['source_type'] == 'NEWS'
     assert news['scope']['periods'] == ['2026-09']
     assert analyze_live('nên mua FPT không')['decision'] == 'UNSUPPORTED'
-    assert analyze_live('tổng tài sản FPT')['decision'] == 'ASK_CLARIFICATION'
+    latest = analyze_live('tổng tài sản FPT')
+    assert latest['decision'] == 'SEARCH'
+    assert latest['scope']['periods'] == ['LATEST_AVAILABLE_PERIOD']
 
 
 def test_live_pipeline_binds_draft_and_preserves_unknown_units():

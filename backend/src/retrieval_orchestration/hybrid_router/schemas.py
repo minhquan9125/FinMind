@@ -61,7 +61,8 @@ class RouterOutput(BaseModel):
         if self.missing_fields or self.clarification_question is not None:
             raise ValueError("SEARCH cannot contain unresolved clarification")
         company_optional = (
-            self.scope.topic in {"EVENT_IMPACT", "MARKET_DAILY_DIGEST"}
+            self.scope.topic in {"EVENT_IMPACT", "MARKET_DAILY_DIGEST", "MARKET_ANALYSIS",
+                                 "INVESTING_KNOWLEDGE", "PORTFOLIO_EDUCATION", "SECTOR_RESEARCH"}
             or self.scope.detected_industry is not None
             or bool(self.scope.entity_mentions)
         )

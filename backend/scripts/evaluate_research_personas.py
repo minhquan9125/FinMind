@@ -26,8 +26,7 @@ CASES = [
     ('pho_thong', 'Hỏi bổ sung từng thông tin', [
         step('lợi nhuận là bao nhiêu', 'ASK_CLARIFICATION'),
         step('fpt', 'ASK_CLARIFICATION', companies=['FPT']),
-        step('sau thuế', 'ASK_CLARIFICATION', metric_code='PROFIT_AFTER_TAX'),
-        step('quý 4 2025', metric_code='PROFIT_AFTER_TAX', periods=['2025-Q4'])]),
+        step('sau thuế', metric_code='PROFIT_AFTER_TAX', periods=['LATEST_AVAILABLE_PERIOD'])]),
     ('pho_thong', 'Câu đầy đủ nhưng thứ tự từ tự nhiên', [
         step('lợi nhuận của fpt quý 4 sau thuế năm 2025 là bao nhiêu',
              metric_code='PROFIT_AFTER_TAX', periods=['2025-Q4'])]),

@@ -1,7 +1,33 @@
 """Complete price-date slots from explicit replies and a known prior date."""
 import copy
-from datetime import date
+from datetime import date, timedelta
 import re
+
+
+def relative_market_range(norm, today):
+    """Resolve Vietnamese calendar ranges using the caller's fixed VN date."""
+    if re.search(r'\bthang nay\b', norm):
+        start, end, granularity = today.replace(day=1), today, 'MONTH'
+    elif re.search(r'\bthang truoc\b', norm):
+        previous_end = today.replace(day=1) - timedelta(days=1)
+        start = previous_end.replace(day=1)
+        end, granularity = previous_end, 'MONTH'
+    elif re.search(r'\btuan nay\b', norm):
+        start = today - timedelta(days=today.weekday())
+        end, granularity = today, 'WEEK'
+    elif re.search(r'\btuan truoc\b', norm):
+        this_monday = today - timedelta(days=today.weekday())
+        start = this_monday - timedelta(days=7)
+        end, granularity = this_monday - timedelta(days=1), 'WEEK'
+    else:
+        return None
+    quarter = (end.month - 1) // 3 + 1
+    return {
+        'kind': 'QUOTE', 'day': None, 'action': 'RANGE',
+        'start_day': start.isoformat(), 'end_day': end.isoformat(),
+        'granularity': granularity, 'quarter': f'{end.year}-Q{quarter}',
+        'period_label': f'{start:%d/%m/%Y}–{end:%d/%m/%Y}',
+    }
 
 
 def temporal_reply(norm):
