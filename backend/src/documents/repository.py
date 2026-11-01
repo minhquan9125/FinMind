@@ -41,11 +41,12 @@ async def resolve_result_rows(conn, rows, *, preview_source_changed=False):
             # Validate metadata before using max_words in a source query.
             from .chunk_reconstruction import _metadata
             _, meta = _metadata(locator)
-            if (row.get('chunker_version') == 'db-corpus-v2'
-                    and str(row.get('index_version_id')) == V4_SHARED_INDEX_ID):
+            if (row.get('chunker_version') == 'shared-source-v1'
+                    or (row.get('chunker_version') == 'db-corpus-v2'
+                        and str(row.get('index_version_id')) == V4_SHARED_INDEX_ID)):
                 from .shared_source import resolve_shared_source
                 row['text'] = await resolve_shared_source(
-                    conn, V4_SHARED_INDEX_ID, locator, row['content_hash'], sources,
+                    conn, str(row.get('index_version_id')), locator, row['content_hash'], sources,
                 )
                 resolved.append(row)
                 continue

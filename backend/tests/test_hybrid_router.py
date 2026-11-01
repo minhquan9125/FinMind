@@ -116,16 +116,13 @@ def test_every_section_6_fixture_obeys_router_contract(case_id, pytestconfig):
             failed = total - passed
             ratio = passed / total * 100
             reporter = pytestconfig.pluginmanager.get_plugin("terminalreporter")
-            reporter.write_sep("=", "HYBRID ROUTER - BÁO CÁO 30 CÂU MỤC 6")
-            reporter.write_line(f"Tổng số câu kiểm thử : {total}")
-            reporter.write_line(f"Số câu đúng          : {passed}")
-            reporter.write_line(f"Số câu sai           : {failed}")
-            reporter.write_line(f"Tỷ lệ đúng           : {ratio:.2f}%")
+            reporter.write_sep("=", "HYBRID ROUTER - 30 LEGACY FIXTURE SCHEMA CHECKS")
+            reporter.write_line(f"Valid JSON contracts: {passed}/{total}; invalid: {failed}")
+            reporter.write_line("These checks validate stored contracts, not routing accuracy.")
 
 
 @pytest.mark.parametrize("question,field,reason", [
     ("Tổng tài sản năm 2025?", "companies", "MISSING_SCOPE"),
-    ("Lợi nhuận FPT?", "metric_code", "MISSING_SCOPE"),
     ("Tổng tài sản FPT quý 5/2025?", "periods", "INVALID_QUARTER"),
 ])
 def test_c01_c02_c04_stop_before_classifier_and_adapters(question, field, reason):
@@ -157,11 +154,12 @@ def test_c05_ambiguous_conversation_context_does_not_retrieve():
     assert not engine.content_adapter.calls
 
 
-def test_c06_mixed_intents_asks_user_to_split_request():
+def test_mixed_company_requests_have_a_two_source_plan():
     engine = DecisionEngine(StubPredictor((0.1, 0.9)))
     result = engine.run("Cho tôi doanh thu FPT năm 2025 và giá VCB mới nhất.")
-    assert result.decision.reason_code == "UNSUPPORTED_MIXED_INTENTS"
-    assert result.decision.tasks == []
+    assert result.decision.route == "BOTH"
+    assert result.decision.scope.companies == ["FPT", "VCB"]
+    assert result.decision.tasks[1].depends_on == "g1"
 
 
 def test_complete_scope_with_zero_zero_uses_stronger_label_without_clarifying():
@@ -236,12 +234,11 @@ def test_business_intent_guardrails_override_wrong_classifier_bias(question, rou
     "nguyen nhan gia cp fpt hn giam la gi",
     "Phân tích tác động khiến thị giá FPT hiện tại biến động",
 ])
-def test_causal_market_questions_use_both_with_analysis_tasks(question):
+def test_causal_market_questions_use_content_without_graph(question):
     decision = DecisionEngine(StubPredictor((0.05, 0.95))).decide(question)
-    assert decision.route == "BOTH"
-    assert [task.operation for task in decision.tasks] == [
-        "expand_market_context", "analyze_market_drivers"
-    ]
+    assert decision.route == "VECTOR"
+    assert [task.adapter for task in decision.tasks] == ["CONTENT"]
+    assert decision.tasks[0].params["question"] == question
 
 
 def test_person_plus_document_question_uses_both():
@@ -308,11 +305,11 @@ def test_comparison_accepts_two_companies_and_defaults_to_overall_when_metric_mi
 def test_company_profile_does_not_require_a_reporting_period(question):
     decision = DecisionEngine(StubPredictor((0.9, 0.1))).decide(question)
     assert decision.decision == "SEARCH"
-    assert decision.route == "VECTOR"
+    assert decision.route == "GRAPH"
     assert decision.scope.companies == ["FPT"]
     assert decision.scope.periods == []
     assert decision.scope.topic == "COMPANY_PROFILE"
-    assert decision.tasks[0].operation == "find_company_profile"
+    assert decision.tasks[0].operation == "find_relationships"
 
 
 def test_missing_period_defaults_to_latest_available_period():
@@ -338,15 +335,15 @@ def test_named_person_event_impact_routes_both_without_fake_ticker():
     assert decision.scope.periods == ["LATEST_AVAILABLE_PERIOD"]
 
 
-@pytest.mark.parametrize("question", [
-    "Ai là cổ đông lớn của FPT năm 2025?",
-    "Danh sách cổ đông lớn FPT năm 2025",
-    "Tình hình FPT dạo này có khởi sắc không?",
-    "FPT gần đây có triển vọng thế nào?",
+@pytest.mark.parametrize("question,route", [
+    ("Ai là cổ đông lớn của FPT năm 2025?", "GRAPH"),
+    ("Danh sách cổ đông lớn FPT năm 2025", "GRAPH"),
+    ("Tình hình FPT dạo này có khởi sắc không?", "VECTOR"),
+    ("FPT gần đây có triển vọng thế nào?", "VECTOR"),
 ])
-def test_ownership_evidence_and_recent_trend_questions_use_both(question):
+def test_ownership_and_recent_trends_use_their_respective_sources(question, route):
     decision = DecisionEngine(StubPredictor((0.1, 0.9))).decide(question)
-    assert decision.route == "BOTH"
+    assert decision.route == route
 
 
 @pytest.mark.parametrize("scores,route,task_ids", [

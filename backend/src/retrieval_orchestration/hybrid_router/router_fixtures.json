@@ -2265,7 +2265,7 @@
     {
       "id": "RF07",
       "question": "Công ty FPT hoạt động trong lĩnh vực gì?",
-      "expected_route": "VECTOR",
+      "expected_route": "GRAPH",
       "expected_companies": ["FPT"],
       "tags": ["refactor", "static_info"]
     },
@@ -2279,7 +2279,7 @@
     {
       "id": "RF09",
       "question": "Doanh thu Hòa Phát dạo này bao nhiêu?",
-      "expected_route": "CLARIFY",
+      "expected_route": "VECTOR",
       "expected_companies": ["HPG"],
       "tags": ["refactor", "vague_time"]
     },

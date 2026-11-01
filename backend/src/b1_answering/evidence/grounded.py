@@ -84,6 +84,26 @@ def build_grounded_request(question, evidence, limits, scope=None):
         feed_body = any(item.get('snapshot', {}).get('content') for item in evidence.values())
         body['evidence'] = [{**item, 'passage': item['passage'][:8500 if feed_body else 3500]}
                             for item in body['evidence'][:2 if feed_body else 3]]
+    elif body['scope'].get('source_type') == 'MARKET_ANALYSIS':
+        request['systemInstruction']['parts'][0]['text'] += (
+            ' Với phân tích thị trường: trình bày theo các nhóm diễn biến đã xác minh, '
+            'yếu tố doanh nghiệp, yếu tố ngành/thị trường và ảnh hưởng có bằng chứng. '
+            'Phân biệt rõ nguyên nhân được nguồn nói trực tiếp với yếu tố chỉ liên quan '
+            'hoặc cùng thời điểm. Dữ liệu giá chỉ chứng minh mức giá/ngày giao dịch, '
+            'không tự chứng minh nguyên nhân. Không suy diễn rằng một tin đã làm giá '
+            'tăng hoặc giảm nếu nội dung nguồn không xác nhận quan hệ đó. Nếu chưa đủ '
+            'bằng chứng nhân quả, phải nói rõ chưa thể kết luận và nêu dữ kiện còn thiếu. '
+            'Không đưa khuyến nghị mua, bán hoặc dự báo chắc chắn.'
+        )
+        schema = request['generationConfig']['responseJsonSchema']['properties']['claims']
+        schema['maxItems'] = 6
+        claim['properties']['text']['maxLength'] = 700
+        claim['properties']['evidence_ids']['maxItems'] = 3
+        quotes = claim['properties']['support_quotes']
+        quotes['maxItems'] = 3
+        quotes['items']['properties']['quote']['maxLength'] = 700
+        body['evidence'] = [{**item, 'passage': item['passage'][:5000]}
+                            for item in body['evidence'][:6]]
     content['text'] = json.dumps(body, ensure_ascii=False)
     return request
 

@@ -1,5 +1,62 @@
 # Hybrid router contracts
 
+## Routing policy agreed on 2026-11-01
+
+`intent_policy.py` is the current business policy. `ScopeResolver` first resolves
+the target (company, market, industry, or investing concept). Missing ticker/year
+does not by itself make a market, sector or knowledge question ambiguous.
+
+| Route | Use |
+| --- | --- |
+| VECTOR | Financial metrics/dividends, price explanations, forecasts, market views, investing knowledge and portfolio education |
+| GRAPH | Leadership, ownership, subsidiaries and company business fields without a second content request |
+| BOTH | Entity discovery followed by content, multiple companies, industry impact/beneficiary discovery, event verification |
+| CLARIFY | Missing or genuinely ambiguous target/context, or an invalid explicit reporting period |
+
+Business policy takes priority over classifier scores for recognized intents.
+The existing pinned BGE-M3 + Logistic Regression classifier remains the fallback
+for resolved questions without a policy match; model artifacts were not retrained.
+Original questions are retained in every task. Forecast/partial period tokens
+are not passed as invalid exact corpus filters. New global/conceptual requests
+do not inherit a stale company or metric from conversation context.
+
+Current acceptance examples live in `backend/tests/fixtures/router_acceptance_v2.json`.
+`test_router_acceptance_v2.py` tries each against four adversarial score pairs,
+checks company scope, adapter plans, context boundaries and actual HTTP validation.
+The original Section 6 fixtures below describe a legacy MVP; their JSON schema
+checks are not a measurement of routing accuracy or financial answer quality.
+
+### Shared input normalization
+
+The router and live-research path both use `input_normalization.py`. Its domain
+vocabulary and protected identifiers live in `config/input_aliases.json`.
+Telex vowel shapes and a tone key are decoded before or after each other to
+support suffix and infix typing. Shape-only input is accepted when it resolves
+uniquely to a known word. Existing canonical words and ambiguous candidates are
+retained; this is not a general spelling corrector or a ticker autocorrector.
+
+`test_telex_router_contract.py` independently encodes Unicode Vietnamese into
+three Telex variants for 128 base questions. It checks normalized text, company
+scope, route, repeat-normalization stability and identifier preservation. It
+also covers the literal user input `duwj ddoan thij truongf chuwsng khoans sawp towi`.
+These generated examples supplement the base acceptance suite; they are not an
+independent measure of general Vietnamese-language accuracy.
+
+Tasks retain the original `question` and send `retrieval_question` to content
+search, so raw Telex is not passed through as the search query. `/test` exposes
+`normalized_question`; enter `/debug` in `interactive_test.py` to inspect it and
+the resolved scope when testing a new way of typing.
+
+To verify the running backend without executing live retrieval:
+
+```powershell
+python backend/scripts/verify_router_acceptance.py --output router-http-results.json
+```
+
+`/test` selects routes only. `/run` still depends on adapter capabilities and
+available data; relationship retrieval can return `GRAPH_RELATIONSHIPS_NOT_INDEXED`.
+Selecting VECTOR for a forecast does not guarantee that a prediction is correct.
+
 This module defines the requested MVP JSON contract only; it does not enable
 GRAPH/BOTH retrieval or change the LIVE chat contract. Unsupported/no-data/system
 errors continue to require the existing orchestration status handling.

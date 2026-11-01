@@ -11,6 +11,11 @@ import unicodedata
 
 from .adapters import AdapterResult, MockContentAdapter, MockGraphAdapter
 from .schemas import RouterOutput, RouterScope, RouterTask
+from ..input_normalization import normalize_user_text
+from .intent_policy import (
+    contains, resolve_intent, EVENT_TERMS, MARKET_TERMS, KNOWLEDGE_TERMS,
+    GRAPH_TERMS, PROFILE_TERMS, CONTENT_TERMS, MARKET_ANALYSIS_TERMS,
+)
 
 
 ROOT = Path(__file__).resolve().parents[4]
@@ -19,9 +24,13 @@ DEFAULT_MANIFEST_PATH = ROOT / "models" / "router_manifest.json"
 
 
 def _normalize(text: str) -> str:
+    text = normalize_user_text(text)
     text = unicodedata.normalize("NFKD", text.casefold().replace("đ", "d"))
     text = "".join(char for char in text if not unicodedata.combining(char))
-    return " ".join(re.sub(r"[^a-z0-9]+", " ", text).split())
+    text = " ".join(re.sub(r"[^a-z0-9]+", " ", text).split())
+    aliases = {"bn": "bao nhieu", "cp": "co phieu", "ko": "khong",
+               "kh": "khong", "nhtas": "nhat", "ln": "loi nhuan"}
+    return " ".join(aliases.get(token, token) for token in text.split())
 
 
 class LabelPredictor(Protocol):
@@ -78,6 +87,7 @@ class ResolvedInput:
     missing_fields: tuple[str, ...] = ()
     reason_code: str | None = None
     clarification_question: str | None = None
+    route_hint: str | None = None
 
 
 DEFAULT_COMPANIES = {
@@ -96,11 +106,19 @@ DEFAULT_COMPANIES = {
     "hdb": ("HDB",), "hdbank": ("HDB",), "stb": ("STB",),
     "sacombank": ("STB",), "msn": ("MSN",), "masan": ("MSN",),
     "vic": ("VIC",), "vingroup": ("VIC",),
+    "ctr": ("CTR",), "nlg": ("NLG",), "itd": ("ITD",), "ict": ("ICT",),
+    "vhm": ("VHM",), "vre": ("VRE",), "vnd": ("VND",), "vci": ("VCI",),
+    "fts": ("FTS",), "shb": ("SHB",), "tpb": ("TPB",), "lpb": ("LPB",),
+    "dgc": ("DGC",), "dgw": ("DGW",), "pnj": ("PNJ",), "pow": ("POW",),
+    "pvd": ("PVD",), "pvs": ("PVS",), "bsr": ("BSR",), "sab": ("SAB",),
+    "gvr": ("GVR",), "kdh": ("KDH",), "dxg": ("DXG",), "nvl": ("NVL",),
     "truong gia binh": ("FPT",), "nguyen thanh nam": ("FPT",),
 }
 
 NON_COMPANY_CODES = {
     "BCTC", "BCTN", "CEO", "CFO", "CTCP", "HNX", "HOSE", "UPCOM", "TTCK", "VNI",
+    "DCA", "ETF", "EPS", "ROE", "ROA", "RSI", "MACD", "GDP", "LNST", "LNTT",
+    "VCSH", "VNINDEX", "VN", "INDEX", "FOMO", "FUD", "ATO", "ATC",
 }
 
 METRICS = {
@@ -117,6 +135,9 @@ METRICS = {
     "doanh thu": "REVENUE",
     "dt": "REVENUE",
     "loi nhuan sau thue": "PROFIT_AFTER_TAX",
+    "loi nhuan truoc thue": "PROFIT_BEFORE_TAX",
+    "lntt": "PROFIT_BEFORE_TAX",
+    "loi nhuan": "PROFIT",
     "lnst": "PROFIT_AFTER_TAX",
     "von chu so huu": "TOTAL_EQUITY",
     "vcsh": "TOTAL_EQUITY",
@@ -132,63 +153,12 @@ INDUSTRY_KEYWORDS = {
     "thuy san": "SEAFOOD", "dien": "POWER",
 }
 
-MACRO_KEYWORDS = (
-    "lai suat", "ty gia", "lam phat", "gia dau", "thue", "chinh sach",
-    "dau tu cong", "gdp", "tin dung", "cung tien",
-)
-
-COMPARISON_KEYWORDS = (
-    "so sanh", "doi chieu", "so voi", "ben nao", "ma nao", "con nao",
-    "ai hon", "khoe hon", "tot hon", "ngon hon", "nhieu hon", "it hon",
-    "cao hon", "thap hon", "nang hon", "re hon", "dat len ban can",
-    "so gang", "vuot", "kem hon", "nhieu nhat", "cao nhat", "nang nhat",
-    "huong loi",
-)
-
-GRAPH_RELATION_KEYWORDS = (
-    "cong ty con", "cong ty lien ket", "cong ty me", "don vi thanh vien",
-    "he sinh thai", "so huu", "co dong", "ban lanh dao", "chu tich", "ceo",
-    "tong giam doc", "giam doc", "sep lon", "nam quyen", "giu ghe",
-    "cam nhieu co phieu", "doi thu", "cung nganh", "chung mam", "doi tac",
-    "chuoi cung ung", "kiem soat", "dieu hanh", "lanh dao",
-)
-
-VECTOR_INFO_KEYWORDS = (
-    "doanh thu", "loi nhuan", "lai", "lo", "lam an", "ket qua kinh doanh",
-    "co tuc", "chia chac", "chia giay", "no", "bien loi nhuan", "bao cao",
-    "ke hoach", "nhan dinh", "chia se", "du an", "tien do", "xa rong",
-    "gom rong", "gia co phieu", "tang", "giam", "tin tuc", "so lieu",
-)
-
-EVENT_KEYWORDS = (
-    "lien quan", "dinh dang", "an theo", "anh huong", "tac dong", "vu",
-    "chay", "bi bat", "bat giu", "thanh tra", "bi phat", "xu phat", "khoi to", "tin don",
-    "su kien", "bat tay", "hop tac", "dieu tra", "truy to", "tam giam",
-)
-
-STATIC_INFO_KEYWORDS = (
-    "linh vuc", "nganh nghe", "nganh kinh doanh", "hoat dong trong", "tru so",
-    "lich su", "co cau so huu", "danh sach cong ty con", "ban lanh dao",
-)
-
-VAGUE_TIME_KEYWORDS = ("dao nay", "dot vua roi", "dot nay", "hoi do", "may bua nay")
-
-GRAPH_INTENT_TERMS = GRAPH_RELATION_KEYWORDS
-
-CONTENT_INTENT_TERMS = VECTOR_INFO_KEYWORDS + (
-    "tin tuc", "tin moi", "bao cao", "bctc", "bctn", "ket qua kinh doanh",
-    "so lieu", "chi tieu", "gia co phieu", "gia cp", "gia ck", "thi gia",
-    "chia se", "phat bieu", "noi gi", "ke hoach", "chien luoc", "dinh huong",
-    "muc tieu", "cam ket", "quan diem",
-    "co dong lon", "danh sach co dong", "tinh hinh", "dao nay", "khoi sac",
-    "trien vong", "bien dong",
-)
-
-ANALYSIS_INTENT_TERMS = (
-    "vi sao", "tai sao", "nguyen nhan", "do dau", "ly do", "tac dong",
-    "anh huong", "he qua", "phan tich",
-    "tinh hinh", "dao nay", "khoi sac", "trien vong", "bien dong",
-)
+TICKER_STOP_WORDS = set(" ".join(
+    EVENT_TERMS + MARKET_TERMS + KNOWLEDGE_TERMS + GRAPH_TERMS + PROFILE_TERMS
+    + CONTENT_TERMS + MARKET_ANALYSIS_TERMS + tuple(INDUSTRY_KEYWORDS)
+).split()) | {"nay", "nao", "cua", "thi", "the", "khong", "hom", "bao", "nhieu",
+             "hien", "moi", "dang", "tuan", "thang", "nam", "viet", "trong", "nhom",
+             "check", "thu", "coi", "cho", "giup", "toi", "nguoi", "mua", "ban"}
 
 
 class ScopeResolver:
@@ -206,169 +176,79 @@ class ScopeResolver:
             return self._clarify(question, RouterScope(), ("periods",), "INVALID_QUARTER",
                                  "Quý chỉ có giá trị từ 1 đến 4. Bạn muốn hỏi quý nào?")
 
-        if " va gia " in f" {normalized} " and "moi nhat" in normalized:
-            return self._clarify(
-                question,
-                RouterScope(),
-                ("request_selection",),
-                "UNSUPPORTED_MIXED_INTENTS",
-                "Bạn muốn tra báo cáo tài chính hay giá thị trường trước?",
-            )
-
         candidate_hits: list[tuple[int, str]] = []
         for alias, company_ids in self.company_registry.items():
             match = re.search(rf"\b{re.escape(_normalize(alias))}\b", normalized)
             if match:
+                if len(company_ids) > 1:
+                    return self._clarify(question, RouterScope(), ("companies",),
+                                         "AMBIGUOUS_COMPANY", "Tên này chỉ nhiều công ty. Bạn muốn hỏi công ty nào?")
                 candidate_hits.extend((match.start(), company_id) for company_id in company_ids)
-        # Tickers outside the small annotation fixture must still reach the
-        # classifier.  The retrieval layer remains responsible for deciding
-        # whether that company actually exists in the active corpus.
         for ticker_match in re.finditer(r"(?<![A-Za-z0-9])[A-Z][A-Z0-9]{2,4}(?![A-Za-z0-9])", question):
             ticker = ticker_match.group(0)
-            if ticker not in NON_COMPANY_CODES:
+            if (ticker not in NON_COMPANY_CODES and len(ticker) == 3
+                    and ticker.lower() not in TICKER_STOP_WORDS
+                    and _normalize(ticker) == ticker.lower()):
                 candidate_hits.append((ticker_match.start(), ticker))
-        candidates = list(dict.fromkeys(company for _, company in sorted(candidate_hits)))
+        # Unknown lower-case symbols are accepted only in explicit ticker syntax.
+        for match in re.finditer(r"\b(?:ma|co phieu)\s+([a-z]{3})\b", normalized):
+            token = match.group(1)
+            if token not in TICKER_STOP_WORDS and token.upper() not in NON_COMPANY_CODES:
+                candidate_hits.append((match.start(1), token.upper()))
+        companies = list(dict.fromkeys(company for _, company in sorted(candidate_hits)))
         detected_industry = next(
             (industry for phrase, industry in sorted(
                 INDUSTRY_KEYWORDS.items(), key=lambda item: len(item[0]), reverse=True
-            ) if re.search(rf"\b{re.escape(phrase)}\b", normalized)),
-            None,
+            ) if re.search(rf"\b{re.escape(phrase)}\b", normalized)), None,
         )
-        comparison = any(re.search(rf"\b{re.escape(term)}\b", normalized)
-                         for term in COMPARISON_KEYWORDS)
-        graph_relation = any(re.search(rf"\b{re.escape(term)}\b", normalized)
-                             for term in GRAPH_RELATION_KEYWORDS)
-        vector_info = any(re.search(rf"\b{re.escape(term)}\b", normalized)
-                          for term in VECTOR_INFO_KEYWORDS)
-        event_intent = any(re.search(rf"\b{re.escape(term)}\b", normalized)
-                           for term in EVENT_KEYWORDS)
-        macro_intent = any(re.search(rf"\b{re.escape(term)}\b", normalized)
-                           for term in MACRO_KEYWORDS)
-        static_info = any(re.search(rf"\b{re.escape(term)}\b", normalized)
-                          for term in STATIC_INFO_KEYWORDS) or bool(re.search(
-            r"\b(?:thuoc nganh|nganh gi|nganh nao|kinh doanh gi)\b", normalized
-        ))
         entity_mentions: list[str] = []
-        if event_intent:
+        if contains(normalized, EVENT_TERMS):
             event_prefix = re.search(
-                r"^(.{2,80}?)\s+(?:bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b",
-                normalized,
+                r"^(.{2,80}?)\s+(?:bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b", normalized,
             )
             if event_prefix:
                 mention = re.sub(r"^(?:ong|ba|anh|chi)\s+", "", event_prefix.group(1)).strip()
                 if 2 <= len(mention.split()) <= 6:
                     entity_mentions.append(mention)
-        if len(candidates) > 1 and not (comparison or event_intent):
-            return self._clarify(question, RouterScope(), ("companies",), "AMBIGUOUS_COMPANY",
-                                 "Tên công ty này có nhiều kết quả. Bạn muốn chọn công ty nào?")
 
-        explicit_reference = bool(re.search(
-            r"\b(?:con|cung ky|cong ty do|luc nay|no|con nay|ma nay|ben do|ong ay)\b",
-            normalized,
-        ))
-        if context and explicit_reference and context.ambiguous_companies:
-            return self._clarify(
-                question,
-                RouterScope(),
-                ("companies",),
-                "AMBIGUOUS_CONTEXT",
-                "Có nhiều công ty phù hợp trong hội thoại. Bạn muốn chọn công ty nào?",
-            )
-        companies = candidates
         periods = self._periods(normalized)
         metric = self._metric(normalized)
-        market_context = bool(re.search(
-            r"\b(?:thi truong|thi truong chung khoan|chung khoan|ttck|tt|ck|vni|vn ?index|vnindex)\b",
-            normalized,
+        # A new global/conceptual question must never inherit yesterday's ticker.
+        independent_scope = contains(normalized, MARKET_TERMS + KNOWLEDGE_TERMS)
+        explicit_reference = bool(re.search(
+            r"\b(?:con|cung ky|cong ty do|luc nay|no|con nay|ma nay|ben do|ong ay|ma do)\b", normalized,
         ))
-        daily_market_digest = (
-            market_context
-            and bool(re.search(r"\b(?:hom nay|hien tai|bay gio|moi nhat|hn|hnay|nay)\b", normalized))
-            and bool(re.search(
-                r"\b(?:bien dong|co bien|co gi moi|co gi hot|co gi hay|tin moi|tin nong|"
-                r"tin noi bat|diem tin|tong hop|do lua|rung lac|co song|day song|sap|"
-                r"lao doc|bung no|co drama|co chuyen gi|co tin gi|nong gi|len xuong|"
-                r"bat thuong|xanh|do|the nao)\b",
-                normalized,
-            ))
+        implicit_reference = not companies and not independent_scope and (
+            metric is not None or contains(normalized, ("gia", "loi nhuan", "co tuc", "lai", "lo"))
         )
-        if (
-            metric is None
-            and periods
-            and periods[0] in {
-                "CURRENT", "LATEST_PUBLISHED_PERIOD", "CURRENT_MONTH",
-                "PREVIOUS_MONTH", "CURRENT_WEEK", "PREVIOUS_WEEK",
-            }
-            and re.search(r"\bgia\b", normalized)
-        ):
+        if context and context.confirmed and not independent_scope and (explicit_reference or implicit_reference):
+            if context.ambiguous_companies or (not companies and len(context.companies) > 1):
+                return self._clarify(question, RouterScope(), ("companies",), "AMBIGUOUS_CONTEXT",
+                                     "Có nhiều công ty trong câu trước. Bạn muốn hỏi công ty nào?")
+            if not companies and len(context.companies) == 1:
+                companies = list(context.companies)
+            if explicit_reference:
+                if not periods:
+                    periods = list(context.periods)
+                new_operation = contains(normalized, GRAPH_TERMS + PROFILE_TERMS + CONTENT_TERMS
+                                         + MARKET_ANALYSIS_TERMS + KNOWLEDGE_TERMS)
+                if metric is None and not new_operation:
+                    metric = context.metric_code
+                detected_industry = detected_industry or context.detected_industry
+                entity_mentions = entity_mentions or list(context.entity_mentions)
+        if metric is None and re.search(r"\bgia\b", normalized) and periods and companies:
             metric = "STOCK_PRICE"
         if metric == "STOCK_PRICE" and not periods:
             periods = ["CURRENT"]
-        if context and context.confirmed and explicit_reference:
-            if not companies and len(context.companies) == 1:
-                companies = list(context.companies)
-            if not periods:
-                periods = list(context.periods)
-            if metric is None:
-                metric = context.metric_code
-            if detected_industry is None:
-                detected_industry = context.detected_industry
-            if not entity_mentions:
-                entity_mentions = list(context.entity_mentions)
-
-        multi_entity_both = len(companies) >= 2 and (comparison or event_intent)
-        event_both = (
-            event_intent and metric != "STOCK_PRICE" and bool(companies or entity_mentions)
-        )
-        multi_hop_both = bool(companies) and graph_relation and vector_info
-        industry_both = (
-            not companies and detected_industry is not None
-            and (macro_intent or comparison)
-        )
-        topic = (
-            "MARKET_DAILY_DIGEST" if daily_market_digest
-            else "EVENT_IMPACT" if event_both
-            else "INDUSTRY_ANALYSIS" if industry_both
-            else "MULTI_HOP" if multi_hop_both
-            else "OVERALL_COMPARISON" if multi_entity_both or (comparison and metric is None)
-            else "COMPANY_PROFILE" if static_info and not graph_relation
-            else "RELATIONSHIP_LOOKUP" if graph_relation
-            else None
-        )
-        vague_time = any(re.search(rf"\b{re.escape(term)}\b", normalized)
-                         for term in VAGUE_TIME_KEYWORDS)
-        vague_financial_period = vague_time and not periods and len(companies) == 1 and metric is not None
-        if not periods and topic != "COMPANY_PROFILE" and not vague_financial_period:
+        intent = resolve_intent(normalized, companies, detected_industry, metric, entity_mentions)
+        if not periods and intent.topic not in {"COMPANY_PROFILE", "INVESTING_KNOWLEDGE", "PORTFOLIO_EDUCATION"}:
             periods = ["LATEST_AVAILABLE_PERIOD"]
-        scope = RouterScope(
-            companies=companies,
-            periods=periods,
-            metric_code=metric,
-            topic=topic,
-            detected_industry=detected_industry,
-            entity_mentions=entity_mentions,
-        )
-        missing: list[str] = []
-        if (not companies and detected_industry is None and not entity_mentions
-                and topic != "MARKET_DAILY_DIGEST"):
-            missing.append("companies")
-        if vague_financial_period:
-            missing.append("periods")
-        if "loi nhuan" in normalized and metric is None:
-            missing.append("metric_code")
-        if missing:
-            questions = {
-                "companies": "Bạn muốn hỏi công ty nào?",
-                "periods": "Bạn muốn hỏi kỳ báo cáo nào?",
-                "metric_code": (
-                    "Bạn muốn so sánh chỉ tiêu nào?"
-                    if comparison else "Bạn muốn hỏi loại lợi nhuận nào?"
-                ),
-            }
-            reason = "VAGUE_TIME" if vague_financial_period else "MISSING_SCOPE"
-            return self._clarify(question, scope, tuple(missing), reason,
-                                 " ".join(questions[item] for item in missing))
-        return ResolvedInput(question, scope)
+        scope = RouterScope(companies=companies, periods=periods, metric_code=metric,
+                            topic=intent.topic, detected_industry=detected_industry,
+                            entity_mentions=entity_mentions)
+        if not companies and not detected_industry and not entity_mentions and not intent.company_optional:
+            return self._clarify(question, scope, ("companies",), "MISSING_SCOPE", "Bạn muốn hỏi công ty nào?")
+        return ResolvedInput(question, scope, route_hint=intent.route)
 
     @staticmethod
     def _periods(normalized: str) -> list[str]:
@@ -385,11 +265,17 @@ class ScopeResolver:
             "nam nay": "CURRENT_YEAR",
             "nam ngoai": "PREVIOUS_YEAR",
             "quy nay": "CURRENT_QUARTER",
+            "quy truoc": "PREVIOUS_QUARTER",
+            "quy sau": "NEXT_QUARTER",
             "hom qua": "PREVIOUS_DAY",
             "thang nay": "CURRENT_MONTH",
             "thang truoc": "PREVIOUS_MONTH",
+            "thang sau": "NEXT_MONTH",
             "tuan nay": "CURRENT_WEEK",
             "tuan truoc": "PREVIOUS_WEEK",
+            "tuan sau": "NEXT_WEEK",
+            "tuan toi": "NEXT_WEEK",
+            "ngay mai": "NEXT_DAY",
             "gan day": "CURRENT",
             "ngay hom nay": "CURRENT",
             "hom nay": "CURRENT",
@@ -404,7 +290,10 @@ class ScopeResolver:
         for phrase, token in relative.items():
             if phrase in normalized:
                 return [token]
-        market_terms = r"\b(?:gia|gia cp|gia ck|thi gia|co phieu|ck)\b"
+        quarter_without_year = re.search(r"\b(?:quy\s*|q)([1-4])\b", normalized)
+        if quarter_without_year:
+            return [f"LATEST_YEAR-Q{quarter_without_year.group(1)}"]
+        market_terms = r"\b(?:gia|gia cp|gia ck|thi gia|co phieu|ck|tt|thi truong|vni|vnindex)\b"
         if re.search(market_terms, normalized):
             if re.search(r"\b(?:hn|hnay|homnay|ht|htai|bg|bgio)\b", normalized):
                 return ["CURRENT"]
@@ -416,10 +305,6 @@ class ScopeResolver:
     def _metric(normalized: str) -> str | None:
         for phrase in sorted(METRICS, key=len, reverse=True):
             if re.search(rf"\b{re.escape(phrase)}\b", normalized):
-                if phrase == "loi nhuan sau thue":
-                    return METRICS[phrase]
-                if phrase == "loi nhuan":
-                    return None
                 return METRICS[phrase]
         return None
 
@@ -484,95 +369,51 @@ class DecisionEngine:
                 execution_mode="MOCK",
             )
 
-        normalized = _normalize(resolved.question)
-        graph_intent = any(
-            re.search(rf"\b{re.escape(term)}\b", normalized)
-            for term in GRAPH_INTENT_TERMS
-        )
-        content_intent = (
-            resolved.scope.metric_code is not None
-            or resolved.scope.topic in {
-                "COMPANY_PROFILE", "OVERALL_COMPARISON", "EVENT_IMPACT",
-                "INDUSTRY_ANALYSIS", "MULTI_HOP", "MARKET_DAILY_DIGEST",
-            }
-            or bool(re.search(r"\bAI\b", resolved.question))
-            or any(
-                re.search(rf"\b{re.escape(term)}\b", normalized)
-                for term in CONTENT_INTENT_TERMS
-            )
-        )
-        analysis_intent = any(
-            re.search(rf"\b{re.escape(term)}\b", normalized)
-            for term in ANALYSIS_INTENT_TERMS
-        )
-        forced_both = resolved.scope.topic in {
-            "OVERALL_COMPARISON", "EVENT_IMPACT", "INDUSTRY_ANALYSIS", "MULTI_HOP",
-        }
         graph_score: float | None = None
         content_score: float | None = None
-        if forced_both:
-            route = "BOTH"
-        else:
+        route = resolved.route_hint
+        if route is None:
             graph_score, content_score = self.predictor.predict(resolved.question)
             labels = (int(graph_score >= self.threshold), int(content_score >= self.threshold))
-            if resolved.scope.topic == "COMPANY_PROFILE":
-                route = "VECTOR"
-            elif resolved.scope.topic == "MARKET_DAILY_DIGEST":
-                route = "VECTOR"
-            elif analysis_intent and content_intent:
-                route = "BOTH"
-            elif graph_intent and content_intent:
-                route = "BOTH"
-            elif graph_intent:
-                route = "GRAPH"
-            elif content_intent:
-                route = "VECTOR"
-            else:
-                route = {(0, 1): "VECTOR", (1, 0): "GRAPH", (1, 1): "BOTH"}.get(labels)
-        if route is None:
-            assert graph_score is not None and content_score is not None
-            route = "GRAPH" if graph_score > content_score else "VECTOR"
-        params = resolved.scope.model_dump(exclude_none=True)
+            route = {(0, 1): "VECTOR", (1, 0): "GRAPH", (1, 1): "BOTH"}.get(labels)
+            if route is None:
+                route = "GRAPH" if graph_score > content_score else "VECTOR"
+        # Preserve the actual question: a generic stock/metric fallback loses the
+        # meaning of forecasts, knowledge requests and explanations downstream.
+        params = {**resolved.scope.model_dump(exclude_none=True), "question": question,
+                  "retrieval_question": normalize_user_text(question)}
         if fixture_case:
             params["fixture_case"] = fixture_case
-        tasks: list[RouterTask]
+        topic = resolved.scope.topic
+        content_operations = {
+            "MARKET_DAILY_DIGEST": "find_daily_market_digest",
+            "MARKET_ANALYSIS": "analyze_market_drivers",
+            "PRICE_ANALYSIS": "analyze_market_drivers",
+            "INVESTING_KNOWLEDGE": "find_investing_knowledge",
+            "PORTFOLIO_EDUCATION": "find_investing_knowledge",
+            "SECTOR_RESEARCH": "find_sector_research",
+        }
         if route == "VECTOR":
-            operation = (
-                "find_company_profile" if resolved.scope.topic == "COMPANY_PROFILE"
-                else "find_daily_market_digest" if resolved.scope.topic == "MARKET_DAILY_DIGEST"
-                else "find_metric"
-            )
-            tasks = [RouterTask(id="v1", adapter="CONTENT", operation=operation, params=params)]
+            tasks = [RouterTask(id="v1", adapter="CONTENT",
+                                operation=content_operations.get(topic, "find_metric"), params=params)]
         elif route == "GRAPH":
             tasks = [RouterTask(id="g1", adapter="GRAPH", operation="find_relationships", params=params)]
         else:
             tasks = [
-                RouterTask(
-                    id="g1", adapter="GRAPH",
-                    operation=(
-                        "resolve_event_entities"
-                        if resolved.scope.topic == "EVENT_IMPACT"
-                        else "expand_market_context" if analysis_intent else "find_relationships"
-                    ),
-                    params=params,
-                ),
-                RouterTask(
-                    id="v1", adapter="CONTENT",
-                    operation=(
-                        "compare_company_overview"
-                        if resolved.scope.topic == "OVERALL_COMPARISON"
-                        else "analyze_event_impact" if resolved.scope.topic == "EVENT_IMPACT"
-                        else "analyze_market_drivers" if analysis_intent else "find_metric"
-                    ),
-                    params=params, depends_on="g1",
-                ),
+                RouterTask(id="g1", adapter="GRAPH", operation=(
+                    "resolve_event_entities" if topic == "EVENT_IMPACT" else "find_relationships"
+                ), params=params),
+                RouterTask(id="v1", adapter="CONTENT", operation=(
+                    "compare_company_overview" if topic == "OVERALL_COMPARISON"
+                    else "analyze_event_impact" if topic == "EVENT_IMPACT" else "find_metric"
+                ), params=params, depends_on="g1"),
             ]
         return RouterOutput(
             decision="SEARCH", route=route, scope=resolved.scope, tasks=tasks,
-            request_id=request_id, reason_code="CLASSIFIER_ROUTE",
+            request_id=request_id, reason_code="INTENT_POLICY" if resolved.route_hint else "CLASSIFIER_ROUTE",
             route_reason=(
                 f"rule_override topic={resolved.scope.topic}"
-                if forced_both else
+                if resolved.route_hint else
                 f"scores graph={graph_score:.6f}, content={content_score:.6f}, threshold={self.threshold:.6f}"
             ),
             model_version=self.predictor.model_version, execution_mode="MOCK",
