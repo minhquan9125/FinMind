@@ -29,7 +29,13 @@ def article(day='2026-10-23T02:00:00+00:00', ident='12345'):
 
 class Repository:
     def get_ohlcv(self, symbol, limit): return quote()
-    def get_news(self, symbol, limit): return {'symbol': symbol, 'articles': []}
+    def get_news(self, symbol, limit):
+        if symbol is None:
+            return {'symbol': None, 'articles': [
+                {**article(), 'marker': 'check', 'category': 'market'},
+                article(ident='12346'),
+            ]}
+        return {'symbol': symbol, 'articles': []}
 
 
 class Live:
@@ -56,6 +62,42 @@ def scope(question):
     return analyze_live(question, today=NOW.date())['scope']
 
 
+def test_company_profile_is_searchable_without_financial_metric_or_period():
+    decision = analyze_live('Cong ty FPT hoat dong trong linh vuc gi?', today=NOW.date())
+    assert decision['decision'] == 'SEARCH'
+    assert decision['scope']['companies'] == ['FPT']
+    assert decision['scope']['source_type'] == 'COMPANY_PROFILE'
+    assert decision['scope']['topic'] == 'COMPANY_PROFILE'
+    assert decision['scope'].get('periods') in (None, [])
+
+
+def test_generic_comparison_defaults_to_company_overview():
+    decision = analyze_live('So sanh tong quan FPT va CMG', today=NOW.date())
+    assert decision['decision'] == 'SEARCH'
+    assert decision['scope']['companies'] == ['FPT', 'CMG']
+    assert decision['scope']['source_type'] == 'COMPANY_OVERVIEW'
+    assert decision['scope']['topic'] == 'OVERALL_COMPARISON'
+    assert decision['scope']['periods'] == ['2026']
+
+
+def test_named_person_event_impact_searches_news_without_inventing_a_ticker():
+    decision = analyze_live(
+        'Pham Hoang Nam bi bat co anh huong den co phieu khong?', today=NOW.date()
+    )
+    assert decision['decision'] == 'SEARCH'
+    assert decision['scope']['topic'] == 'EVENT_IMPACT'
+    assert decision['scope']['companies'] == []
+    assert decision['scope']['periods'] == ['LATEST_AVAILABLE_PERIOD']
+
+
+def test_leadership_and_shareholder_without_period_use_latest_available_sources():
+    for question in ('Ai la chu tich FPT?', 'Ai la co dong lon cua FPT?'):
+        decision = analyze_live(question, today=NOW.date())
+        assert decision['decision'] == 'SEARCH'
+        assert decision['scope']['topic'] == 'RELATIONSHIP_LOOKUP'
+        assert decision['scope']['periods'] == ['LATEST_AVAILABLE_PERIOD']
+
+
 @pytest.mark.parametrize('question', [
     'giá cổ phiếu fpt hôm nay là bao nhiêu', 'FPT giá hiện tại bao nhiêu',
     'tóm tắt tin tức mới hôm nay của fpt', 'tin tức mới nhất FPT',
@@ -64,6 +106,136 @@ def test_current_questions_route_to_market(question):
     result = analyze_live(question, today=NOW.date())
     assert result['decision'] == 'MARKET_LOOKUP'
     assert result['scope']['companies'] == ['FPT']
+
+
+@pytest.mark.parametrize('question', [
+    'Hom nay thi truong co bien dong gi?',
+    'TTCK hom nay co gi moi?',
+    'Chung khoan hom nay co gi hot?',
+    'Thi truong hom nay co do lua hay rung lac khong?',
+    'tt hn co bien gi?',
+    'ck nay co drama gi?',
+])
+def test_daily_market_digest_does_not_require_company(question):
+    decision = analyze_live(question, today=NOW.date())
+    assert decision['decision'] == 'MARKET_LOOKUP'
+    assert decision['scope']['companies'] == []
+    assert decision['scope']['topic'] == 'MARKET_DAILY_DIGEST'
+    assert decision['scope']['_market_request']['market_wide'] is True
+    result = asyncio.run(MarketResearch(
+        Repository(), services=lambda: (Live(), News()), now=lambda: NOW
+    ).lookup(decision['scope']))
+    assert result['reason_code'] == 'MARKET_DAILY_DIGEST_READY'
+    assert len(result['evidence_pack']['items']) == 2
+
+
+def test_causal_price_question_collects_price_and_news_for_grounded_analysis():
+    question = 'Vì sao hôm nay giá cổ phiếu FPT giảm?'
+    decision = analyze_live(question, today=NOW.date())
+    assert decision['decision'] == 'MARKET_LOOKUP'
+    assert decision['scope']['source_type'] == 'MARKET_ANALYSIS'
+    assert decision['scope']['_market_request']['action'] == 'ANALYSIS'
+    bridge = MarketResearch(
+        Repository(), services=lambda: (Live(), News()), now=lambda: NOW
+    )
+    result = asyncio.run(bridge.lookup(decision['scope']))
+    assert result['status'] == 'EVIDENCE_READY'
+    kinds = {item['snapshot']['kind'] for item in result['evidence_pack']['items']}
+    assert kinds == {'PRICE', 'NEWS'}
+    assert 'nhân quả' in result['message']
+
+
+def test_person_statement_and_plan_question_searches_documents_not_financial_metric():
+    question = (
+        'Ai đang là chủ tịch của FPT vậy, trong năm 2025 ông ấy có chia sẻ gì '
+        'về kế hoạch làm AI của công ty không?'
+    )
+    decision = analyze_live(question, today=NOW.date())
+    assert decision['decision'] == 'SEARCH'
+    assert decision['scope']['companies'] == ['FPT']
+    assert decision['scope']['periods'] == ['2025']
+    assert decision['scope']['source_type'] == 'NEWS'
+    assert decision['scope']['metric_code'] is None
+
+
+def test_short_msn_price_chat_routes_to_current_market_quote():
+    decision = analyze_live('giá msn hn là bn', today=NOW.date())
+    assert decision['decision'] == 'MARKET_LOOKUP'
+    assert decision['scope']['companies'] == ['MSN']
+    assert decision['scope']['source_type'] == 'PRICE'
+    assert decision['scope']['metric_code'] == 'LAST_PRICE'
+
+
+@pytest.mark.parametrize('question,start,end,quarter', [
+    ('giá FPT tháng này', '2026-10-01', '2026-10-23', '2026-Q4'),
+    ('giá FPT tháng trước', '2026-09-01', '2026-09-30', '2026-Q3'),
+    ('giá FPT tuần này', '2026-10-19', '2026-10-23', '2026-Q4'),
+    ('giá FPT tuần trước', '2026-10-12', '2026-10-18', '2026-Q4'),
+])
+def test_relative_market_ranges_are_fixed_to_vietnam_calendar(
+    question, start, end, quarter
+):
+    decision = analyze_live(question, today=NOW.date())
+    request = decision['scope']['_market_request']
+    assert decision['decision'] == 'MARKET_LOOKUP'
+    assert request['action'] == 'RANGE'
+    assert request['start_day'] == start
+    assert request['end_day'] == end
+    assert request['quarter'] == quarter
+
+
+def test_month_price_range_returns_verified_first_last_session_summary():
+    class RangeLive(Live):
+        def stock_history(self, symbol):
+            return {
+                'symbol': symbol, 'source': 'vnstock_kbs', 'fetched_at': NOW.isoformat(),
+                'bars': [
+                    {'date': '2026-10-01', 'close': '80', 'source': 'vnstock_kbs',
+                     'price_unit': 'thousand_vnd'},
+                    {'date': '2026-10-23', 'close': '84', 'source': 'vnstock_kbs',
+                     'price_unit': 'thousand_vnd'},
+                ],
+            }
+    decision = analyze_live('giá FPT tháng này', today=NOW.date())
+    result = asyncio.run(MarketResearch(
+        Repository(), services=lambda: (RangeLive(), None), now=lambda: NOW
+    ).lookup(decision['scope']))
+    assert result['reason_code'] == 'PRICE_RANGE_READY'
+    assert '2026-Q4' in result['draft']
+    assert '+5.00%' in result['draft']
+    assert len(result['evidence_pack']['items']) == 2
+
+
+@pytest.mark.parametrize('question,period', [
+    ('tổng tài sản FPT tháng này', '2026-Q4'),
+    ('tổng tài sản FPT tuần này', '2026-Q4'),
+    ('tổng tài sản FPT tháng trước', '2026-Q3'),
+    ('tổng tài sản FPT tuần trước', '2026-Q4'),
+])
+def test_relative_month_and_week_map_to_containing_reporting_quarter(question, period):
+    decision = analyze_live(question, today=NOW.date())
+    assert decision['decision'] == 'SEARCH'
+    assert decision['scope']['periods'] == [period]
+
+
+def test_shareholder_question_searches_documents_instead_of_asking_financial_metric():
+    decision = analyze_live('Ai là cổ đông lớn của FPT năm 2025?', today=NOW.date())
+    assert decision['decision'] == 'SEARCH'
+    assert decision['scope']['source_type'] == 'NEWS'
+    assert decision['scope']['companies'] == ['FPT']
+    assert decision['scope']['periods'] == ['2025']
+
+
+@pytest.mark.parametrize('question', [
+    'Tình hình FPT dạo này có khởi sắc không?',
+    'FPT gần đây có triển vọng thế nào?',
+])
+def test_recent_company_outlook_uses_multisource_market_analysis(question):
+    decision = analyze_live(question, today=NOW.date())
+    assert decision['decision'] == 'MARKET_LOOKUP'
+    assert decision['scope']['source_type'] == 'MARKET_ANALYSIS'
+    assert decision['scope']['companies'] == ['FPT']
+    assert decision['scope']['_market_request']['action'] == 'ANALYSIS'
 
 
 def test_current_question_missing_symbol_accepts_company_followup():
@@ -193,8 +365,8 @@ def test_publisher_is_not_silently_replaced_and_missing_company_is_not_hom():
 def test_market_period_does_not_leak_into_new_financial_question():
     context = scope('giá FPT hôm nay')
     result = analyze_live('tổng tài sản FPT', context, today=NOW.date())
-    assert result['reason_code'] == 'MISSING_PERIOD'
-    assert not result['scope'].get('periods')
+    assert result['reason_code'] == 'LATEST_PERIOD_DEFAULTED'
+    assert result['scope']['periods'] == ['LATEST_AVAILABLE_PERIOD']
     switched = analyze_live('còn SSI', context, today=NOW.date())
     assert switched['decision'] == 'MARKET_LOOKUP'
     assert switched['scope']['companies'] == ['SSI']

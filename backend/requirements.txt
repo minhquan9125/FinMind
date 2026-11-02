@@ -4,6 +4,7 @@ python-multipart>=0.0.9
 pydantic>=2.9.2
 pydantic-settings>=2.5.2
 asyncpg>=0.30.0
+python-dotenv>=1.0.0
 sqlalchemy[asyncio]>=2.0.0
 pgvector>=0.3.4
 pypdf>=4.3.1

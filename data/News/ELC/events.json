@@ -1,0 +1,578 @@
+[
+  {
+    "event_id": "evt-0aab980bea146813",
+    "event_key": "UNMERGED|4c2f94b4-6fd3-5de8-b60e-e49984d88625|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "ELC"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "4c2f94b4-6fd3-5de8-b60e-e49984d88625",
+        "url": "https://fireant.vn/bai-viet/elc-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet/42153591",
+        "source_name": "fireant",
+        "publish_date": "2026-10-07",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "4c2f94b4-6fd3-5de8-b60e-e49984d88625",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "ELC: Quyết định về việc thay đổi đăng ký niêm yết",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ELC",
+            "name_normalized": "ELC",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ELC: Quyết định về việc thay đổi đăng ký niêm yết",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-07",
+        "article_id": "4c2f94b4-6fd3-5de8-b60e-e49984d88625"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-10212a6b4d27ae7e",
+    "event_key": "UNMERGED|c1d9b43c-5d30-5917-aba3-a16520fc7508|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "ELC"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "c1d9b43c-5d30-5917-aba3-a16520fc7508",
+        "url": "https://cafef.vn/du-lieu/elc-2978634/elc-da-phat-hanh-7700890-cp-de-tra-co-tuc-va-tang-von-co-phan-tu-nguon-von-csh.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-09-17",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "c1d9b43c-5d30-5917-aba3-a16520fc7508",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "ELC: Đã phát hành 7.700.890 cp để trả cổ tức và tăng vốn cổ phần từ nguồn vốn CSH",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ELC",
+            "name_normalized": "ELC",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ELC: Đã phát hành 7.700.890 cp để trả cổ tức và tăng vốn cổ phần từ nguồn vốn CSH",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "7.700.890 cp",
+            "context": "ELC: Đã phát hành 7.700.890 cp để trả cổ tức và tăng vốn cổ phần từ nguồn vốn CSH",
+            "evidence": "ELC: Đã phát hành 7.700.890 cp để trả cổ tức và tăng vốn cổ phần từ nguồn vốn CSH"
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-09-17",
+        "article_id": "c1d9b43c-5d30-5917-aba3-a16520fc7508"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-6a0078933d12f8cf",
+    "event_key": "UNMERGED|01097e12-0c09-5662-a1be-a6648a5999db|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "ELC"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "01097e12-0c09-5662-a1be-a6648a5999db",
+        "url": "https://cafef.vn/du-lieu/elc-2982599/elc-nghi-quyet-hdqt-dang-ky-tang-von-dieu-le-do-hoan-thanh-dot-phat-hanh-co-phieu.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-09-23",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "01097e12-0c09-5662-a1be-a6648a5999db",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "ELC: Nghị quyết HĐQT đăng ký tăng vốn Điều lệ do hoàn thành đợt phát hành cổ phiếu",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": [
+            {
+              "date": "2026-09-03",
+              "derived": false,
+              "evidence": "03-09/2026"
+            },
+            {
+              "date": "2026-09-23",
+              "derived": false,
+              "evidence": "23/09/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ELC",
+            "name_normalized": "ELC",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ELC: Nghị quyết HĐQT đăng ký tăng vốn Điều lệ do hoàn thành đợt phát hành cổ phiếu",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal,multiple_distinct_dates"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-09-23",
+        "article_id": "01097e12-0c09-5662-a1be-a6648a5999db"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-9defabdf2dcef587",
+    "event_key": "UNMERGED|6c79fa32-9af7-527b-b6b8-5f41512cc4ad|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "ELC"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "6c79fa32-9af7-527b-b6b8-5f41512cc4ad",
+        "url": "https://cafef.vn/du-lieu/elc-2993056/elc-8102026-niem-yet-bo-sung-7700890-cp.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-07",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "6c79fa32-9af7-527b-b6b8-5f41512cc4ad",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "ELC: 8.10.2026, niêm yết bổ sung 7.700.890 cp",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ELC",
+            "name_normalized": "ELC",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ELC: 8.10.2026, niêm yết bổ sung 7.700.890 cp",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "7.700.890 cp",
+            "context": "ELC: 8.10.2026, niêm yết bổ sung 7.700.890 cp",
+            "evidence": "ELC: 8.10.2026, niêm yết bổ sung 7.700.890 cp"
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-07",
+        "article_id": "6c79fa32-9af7-527b-b6b8-5f41512cc4ad"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-c4a49250f0efa5cd",
+    "event_key": "UNMERGED|297bfed7-5c3a-52e2-9453-ccde8bed48b0|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "ELC"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "297bfed7-5c3a-52e2-9453-ccde8bed48b0",
+        "url": "https://cafef.vn/du-lieu/elc-2994847/elc-19102026-giao-dich-7700890-cp-niem-yet-bo-sung.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-09",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "297bfed7-5c3a-52e2-9453-ccde8bed48b0",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "ELC: 19.10.2026, giao dịch 7.700.890 cp niêm yết bổ sung",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ELC",
+            "name_normalized": "ELC",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ELC: 19.10.2026, giao dịch 7.700.890 cp niêm yết bổ sung",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "7.700.890 cp",
+            "context": "ELC: 19.10.2026, giao dịch 7.700.890 cp niêm yết bổ sung",
+            "evidence": "ELC: 19.10.2026, giao dịch 7.700.890 cp niêm yết bổ sung"
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-09",
+        "article_id": "297bfed7-5c3a-52e2-9453-ccde8bed48b0"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-c9f165064f01be51",
+    "event_key": "UNMERGED|b591b72b-919e-5d23-b952-fefef7c4feb8|e1",
+    "event_type": "agreement_signing",
+    "subjects": [
+      "ELC"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "b591b72b-919e-5d23-b952-fefef7c4feb8",
+        "url": "https://fireant.vn/bai-viet/elc-co-dong-lon-gia-tang-so-huu-luong-hop-dong-ky-moi-tang-126/42303691",
+        "source_name": "fireant",
+        "publish_date": "2026-10-15",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "b591b72b-919e-5d23-b952-fefef7c4feb8",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Tiếp nối đà tăng trưởng, doanh nghiệp công bố giá trị hợp đồng ký kết trong 8 tháng đầu năm 2026 tăng 126% so với cùng kỳ.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ELC",
+            "name_normalized": "ELC",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": null,
+            "name_source": "metadata"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "126%",
+            "context": "Tiếp nối đà tăng trưởng, doanh nghiệp công bố giá trị hợp đồng ký kết trong 8 tháng đầu năm 2026 tăng 126% so với cùng kỳ.",
+            "evidence": "Tiếp nối đà tăng trưởng, doanh nghiệp công bố giá trị hợp đồng ký kết trong 8 tháng đầu năm 2026 tăng 126% so với cùng kỳ."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-15",
+        "article_id": "b591b72b-919e-5d23-b952-fefef7c4feb8"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-e174eb9fcf84b5fb",
+    "event_key": "UNMERGED|a0652cd5-94bd-5193-a359-f21161abef4d|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "ELC"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "a0652cd5-94bd-5193-a359-f21161abef4d",
+        "url": "https://fireant.vn/bai-viet/elc-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet/42207010",
+        "source_name": "fireant",
+        "publish_date": "2026-10-09",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "a0652cd5-94bd-5193-a359-f21161abef4d",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "ELC: Thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ELC",
+            "name_normalized": "ELC",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ELC: Thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-09",
+        "article_id": "a0652cd5-94bd-5193-a359-f21161abef4d"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-eff331b3ab310527",
+    "event_key": "UNMERGED|d9847e1e-c15e-5e47-ac4e-dd1f6ab28b7f|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "ELC"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "d9847e1e-c15e-5e47-ac4e-dd1f6ab28b7f",
+        "url": "https://fireant.vn/bai-viet/elc-nghi-quyet-hdqt-so-03-09-2026-ngay-23-09-2026/41918712",
+        "source_name": "fireant",
+        "publish_date": "2026-09-23",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "d9847e1e-c15e-5e47-ac4e-dd1f6ab28b7f",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "ELC: Nghị quyết HĐQT số 03-09/2026 ngày 23/09/2026",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": [
+            {
+              "date": "2026-09-03",
+              "derived": false,
+              "evidence": "03-09/2026"
+            },
+            {
+              "date": "2026-09-23",
+              "derived": false,
+              "evidence": "23/09/2026"
+            },
+            {
+              "date": "2026-09-03",
+              "derived": false,
+              "evidence": "03-09/2026"
+            },
+            {
+              "date": "2026-09-23",
+              "derived": false,
+              "evidence": "23/09/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ELC",
+            "name_normalized": "ELC",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "ELC: Nghị quyết HĐQT số 03-09/2026 ngày 23/09/2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal,multiple_distinct_dates"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-09-23",
+        "article_id": "d9847e1e-c15e-5e47-ac4e-dd1f6ab28b7f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  }
+]

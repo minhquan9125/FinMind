@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
-ROUTER_URL = "http://127.0.0.1:8000/api/hybrid-router/test"
+ROUTER_URL = os.environ.get("FINMIND_ROUTER_URL", "http://127.0.0.1:8000/api/hybrid-router/test")
 
 
 def _ask_backend(question: str, context: dict | None) -> dict:
@@ -42,8 +43,10 @@ def main() -> None:
     if hasattr(sys.stdin, "reconfigure"):
         sys.stdin.reconfigure(encoding="utf-8")
     context: dict | None = None
+    debug = False
 
-    print("FinMind Hybrid Router - End-to-End Interactive Test")
+    print("FinMind Hybrid Router - Routing Test")
+    print(f"Endpoint: {ROUTER_URL}")
     print("BGE-M3 và classifier được dùng chung trong backend.")
     print("Lệnh: /reset để xóa ngữ cảnh, /exit để thoát.\n")
 
@@ -63,15 +66,24 @@ def main() -> None:
             context = None
             print("Đã xóa ngữ cảnh phiên.\n")
             continue
+        if command == "/debug":
+            debug = not debug
+            print(f"DEBUG: {'ON' if debug else 'OFF'}\n")
+            continue
         try:
             result = _ask_backend(question, context)
             print(f"ROUTE: {result['route']}")
+            if debug:
+                print(f"NORMALIZED: {result.get('normalized_question', '(backend chua ho tro)')}")
+                print(f"SCOPE: {json.dumps(result.get('scope', {}), ensure_ascii=False)}")
             if result["route"] == "CLARIFY":
                 print(f"CÂU HỎI LÀM RÕ: {result['clarification_question']}")
             updated = _next_context(result)
             if updated is not None:
                 context = updated
-        except (HTTPError, URLError, TimeoutError) as exc:
+        except HTTPError as exc:
+            print(f"HTTP {exc.code}: {exc.read().decode('utf-8', errors='replace')}")
+        except (URLError, TimeoutError) as exc:
             print(f"LỖI KẾT NỐI BACKEND: {exc}")
         print()
 

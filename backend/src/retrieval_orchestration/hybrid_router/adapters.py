@@ -8,6 +8,7 @@ LIVE evidence.
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+import re
 from typing import Any, Literal, Protocol
 
 from .schemas import RouterTask
@@ -210,18 +211,11 @@ class LiveContentAdapter:
         periods = list(task.params.get("periods") or [])
         company = companies[0] if len(companies) == 1 else None
         period = periods[0] if len(periods) == 1 else None
-        # Normalize period: convert "2025-Q2" -> "2025-Q2" (OK), "2025" -> "2025" (OK)
-        # HybridRetriever accepts YYYY and YYYY-Q[1-4]
-        if period and period not in {
-            "CURRENT", "LATEST_PUBLISHED_PERIOD", "LATEST_AVAILABLE_PERIOD",
-            "CURRENT_YEAR", "PREVIOUS_YEAR", "CURRENT_QUARTER",
-            "CURRENT_MONTH", "PREVIOUS_MONTH", "CURRENT_WEEK", "PREVIOUS_WEEK",
-            "PREVIOUS_DAY",
-        }:
-            pass  # numeric period - usable
-        else:
-            period = None  # symbolic period - retriever can't filter by it
-        question = task.params.get("question") or " ".join(filter(None, [
+        # Forecast horizons and partial dates belong in the original question,
+        # not in a corpus filter that accepts only YYYY / YYYY-Q[1-4].
+        if not re.fullmatch(r"\d{4}(?:-Q[1-4])?", period or ""):
+            period = None
+        question = task.params.get("retrieval_question") or task.params.get("question") or " ".join(filter(None, [
             task.params.get("metric_code"),
             company,
             period,

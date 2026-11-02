@@ -31,8 +31,13 @@ def validate_live_item(item):
                 or hashlib.sha256(item['passage'].encode('utf-8')).hexdigest() != content_hash):
             raise ValueError('content mismatch')
         locator, meta = _metadata(item['locator'])
-        if (item.get('source_type') != {'financial_reports': 'BCTC', 'news_articles': 'NEWS'}.get(locator.get('source_table'))
-                or locator.get('source_table') not in ('financial_reports', 'news_articles')
+        source_types = {
+            'financial_reports': 'BCTC',
+            'news_articles': 'NEWS',
+            'companies': 'COMPANY_PROFILE',
+        }
+        if (item.get('source_type') != source_types.get(locator.get('source_table'))
+                or locator.get('source_table') not in source_types
                 or meta['content_hash'] != content_hash
                 or len(locator['row_keys']) > 1000
                 or any(not isinstance(k, str) or not k for k in locator['row_keys'])):

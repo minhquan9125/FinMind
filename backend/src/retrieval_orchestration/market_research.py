@@ -51,15 +51,94 @@ class MarketResearch:
 
     def _lookup(self, scope, previous_pack):
         symbols = scope.get('companies', [])
+        request = scope.get('_market_request') or {}
+        if request.get('market_wide') and scope.get('source_type') == 'NEWS':
+            return self._market_digest(scope)
         if len(symbols) != 1 or not re.fullmatch(r'[A-Z]{3}', symbols[0]):
             return dict(status='ASK_CLARIFICATION', reason_code='MARKET_SYMBOL_REQUIRED',
                         message='Vui lòng chọn một mã cổ phiếu gồm 3 chữ cái cho mỗi lần tra cứu.')
         live, news = self.services()
-        return self._quote(symbols[0], scope, live) if scope['source_type'] == 'PRICE' else self._news(symbols[0], scope, news, previous_pack)
+        if scope['source_type'] == 'PRICE':
+            return self._quote(symbols[0], scope, live)
+        if scope['source_type'] == 'MARKET_ANALYSIS':
+            return self._analysis(symbols[0], scope, live, news)
+        return self._news(symbols[0], scope, news, previous_pack)
+
+    def _market_digest(self, scope):
+        """Build a daily market-wide digest from the saved general news feed."""
+        payload = self.repository.get_news(None, 30)
+        now = self.now().astimezone(VN)
+        requested = (scope.get('_market_request') or {}).get('day') or now.date().isoformat()
+        snapshots = []
+        for item in payload.get('articles', []):
+            published = publication_time(item.get('published_at'))
+            if not published or published > now or published.date().isoformat() != requested:
+                continue
+            snapshots.append(dict(
+                kind='NEWS', provider='fireant', symbol='MKT',
+                observed_at=now.isoformat(), title=item.get('title'),
+                description=item.get('description') or '', url=item.get('url'),
+                published_at=published.isoformat(), marker=item.get('marker', 'uncheck'),
+                category=item.get('category'),
+            ))
+        snapshots.sort(
+            key=lambda item: (item.get('marker') == 'check', item['published_at']), reverse=True
+        )
+        if not snapshots:
+            return dict(
+                status='NO_DATA', reason_code='NO_DAILY_MARKET_NEWS',
+                message='Chua co ban tin thi truong tong hop hoac tin noi bat dung ngay tu nguon hien co.',
+            )
+        return dict(
+            status='EVIDENCE_READY', reason_code='MARKET_DAILY_DIGEST_READY',
+            evidence_pack=feed_pack(snapshots[:8]),
+            freshness={'stale': False, 'provider': 'fireant'},
+            message='Da lay ban tin tong hop va uu tien cac tin noi bat trong ngay.',
+        )
+
+    def _analysis(self, symbol, scope, live, news):
+        """Collect price and current company news before causal synthesis.
+
+        Co-occurrence is evidence of relevance, not proof of causality; the
+        grounded answering layer may only state causal links supported by the
+        retrieved article text.
+        """
+        quote_scope = {**scope, 'source_type': 'PRICE'}
+        news_scope = {
+            **scope,
+            'source_type': 'NEWS',
+            '_market_request': {**scope.get('_market_request', {}), 'action': 'DETAIL'},
+        }
+        quote = self._quote(symbol, quote_scope, live)
+        articles = self._news(symbol, news_scope, news, None)
+        snapshots = []
+        for result in (quote, articles):
+            pack = result.get('evidence_pack') or {}
+            snapshots.extend(item['snapshot'] for item in pack.get('items', []))
+        if not snapshots:
+            if quote.get('status') == 'SYSTEM_UNAVAILABLE' or articles.get('status') == 'SYSTEM_UNAVAILABLE':
+                return unavailable('MARKET_ANALYSIS_UNAVAILABLE')
+            return dict(status='NO_DATA', reason_code='NO_MARKET_ANALYSIS_EVIDENCE',
+                        message='Chưa có đủ dữ liệu giá và tin liên quan để phân tích nguyên nhân.')
+        return dict(
+            status='EVIDENCE_READY',
+            reason_code='MARKET_ANALYSIS_READY',
+            message=('Đã thu thập dữ liệu giá và tin liên quan. Chỉ kết luận nguyên nhân '
+                     'khi nội dung nguồn hỗ trợ; tương quan thời gian không tự chứng minh nhân quả.'),
+            evidence_pack=feed_pack(snapshots[:10]),
+            freshness={
+                'stale': bool((quote.get('freshness') or {}).get('stale')
+                              or (articles.get('freshness') or {}).get('stale')),
+                'provider': 'vnstock_kbs+fireant',
+            },
+        )
 
     def _quote(self, symbol, scope, live):
+        request = scope.get('_market_request') or {}
+        if request.get('action') == 'RANGE':
+            return self._price_range(symbol, scope, live)
         failed = False
-        requested = (scope.get('_market_request') or {}).get('day')
+        requested = request.get('day')
         historical = requested is not None and date.fromisoformat(requested) < self.now().astimezone(VN).date()
         if requested and date.fromisoformat(requested) > self.now().astimezone(VN).date():
             return dict(status='NO_DATA', reason_code='FUTURE_PRICE', message='Chưa có giá giao dịch cho ngày trong tương lai.')
@@ -121,6 +200,61 @@ class MarketResearch:
         return dict(status='PRICE_READY', reason_code='STALE_PRICE' if old_day else 'PRICE_READY',
                     message='Giá từ nguồn vnstock/KBS, kèm ngày giao dịch và thời điểm lấy dữ liệu.',
                     draft=draft, evidence_pack=pack, freshness={'stale': stale, 'observed_at': observed.isoformat()})
+
+    def _price_range(self, symbol, scope, live):
+        request = scope['_market_request']
+        start = date.fromisoformat(request['start_day'])
+        end = date.fromisoformat(request['end_day'])
+        try:
+            payload = live.stock_history(symbol) if live is not None else self.repository.get_ohlcv(symbol, 250)
+        except BusyError:
+            raise
+        except Exception:
+            payload = self.repository.get_ohlcv(symbol, 250)
+        bars = sorted(
+            (bar for bar in payload.get('bars', [])
+             if start <= date.fromisoformat(bar.get('date', '')) <= end),
+            key=lambda bar: bar['date'],
+        )
+        if not bars:
+            return dict(status='NO_DATA', reason_code='NO_PRICE_IN_RANGE',
+                        message=f'Chưa có phiên giao dịch của {symbol} trong {request["period_label"]}.')
+        observed = publication_time(payload.get('fetched_at'))
+        if observed is None or observed > self.now().astimezone(VN):
+            return unavailable('INVALID_PRICE_TIME')
+
+        def close_vnd(bar):
+            unit = bar.get('price_unit')
+            if bar.get('source') != 'vnstock_kbs' or unit not in ('thousand_vnd', 'VND'):
+                raise ValueError()
+            amount = Decimal(str(bar['close'])) * (1000 if unit == 'thousand_vnd' else 1)
+            if not amount.is_finite() or amount <= 0:
+                raise ValueError()
+            return amount
+
+        try:
+            first_value, last_value = close_vnd(bars[0]), close_vnd(bars[-1])
+        except (InvalidOperation, KeyError, TypeError, ValueError):
+            return dict(status='NO_DATA', reason_code='PRICE_UNIT_UNVERIFIED',
+                        message='Chưa xác minh được đơn vị giá cho khoảng thời gian này.')
+        change = (last_value - first_value) / first_value * 100
+        endpoints = [(bars[0], first_value)]
+        if bars[-1]['date'] != bars[0]['date']:
+            endpoints.append((bars[-1], last_value))
+        snapshots = [
+            dict(kind='PRICE', provider='vnstock_kbs', symbol=symbol,
+                 observed_at=observed.isoformat(), trading_day=bar['date'], price_vnd=str(amount))
+            for bar, amount in endpoints
+        ]
+        draft = (
+            f'{symbol} trong {request["period_label"]} ({request["quarter"]}): '
+            f'từ {first_value:,.0f} VND đến {last_value:,.0f} VND qua {len(bars)} phiên, '
+            f'thay đổi {change:+.2f}%.'
+        )
+        return dict(status='PRICE_READY', reason_code='PRICE_RANGE_READY', draft=draft,
+                    message='Khoảng giá được tính từ phiên đầu và phiên cuối có dữ liệu trong kỳ.',
+                    evidence_pack=feed_pack(snapshots),
+                    freshness={'stale': False, 'observed_at': observed.isoformat()})
 
     def _news(self, symbol, scope, news, previous_pack):
         if scope.get('publisher') not in (None, 'fireant'):

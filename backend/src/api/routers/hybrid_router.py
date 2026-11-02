@@ -13,6 +13,7 @@ from ...retrieval_orchestration.hybrid_router.decision_engine import (
     ArtifactPredictor,
     DecisionEngine,
     SessionScope,
+    _normalize as normalize_router_question,
 )
 from ...retrieval_orchestration.hybrid_router.adapters import (
     LiveContentAdapter,
@@ -32,6 +33,8 @@ class RouterContextPayload(BaseModel):
     companies: list[str] = Field(default_factory=list)
     periods: list[str] = Field(default_factory=list)
     metric_code: str | None = None
+    detected_industry: str | None = None
+    entity_mentions: list[str] = Field(default_factory=list)
 
 
 class RouterTestRequest(BaseModel):
@@ -135,6 +138,8 @@ async def test_router(payload: RouterTestRequest) -> dict:
             companies=tuple(payload.context.companies),
             periods=tuple(payload.context.periods),
             metric_code=payload.context.metric_code,
+            detected_industry=payload.context.detected_industry,
+            entity_mentions=tuple(payload.context.entity_mentions),
             confirmed=True,
         )
     decision = await asyncio.to_thread(
@@ -145,6 +150,10 @@ async def test_router(payload: RouterTestRequest) -> dict:
         "route": decision.route,
         "scope": decision.scope.model_dump(),
         "clarification_question": decision.clarification_question,
+        "reason_code": decision.reason_code,
+        "route_reason": decision.route_reason,
+        "model_version": decision.model_version,
+        "normalized_question": normalize_router_question(payload.question),
     }
 
 
@@ -160,6 +169,8 @@ async def run_router(payload: RouterTestRequest) -> dict:
             companies=tuple(payload.context.companies),
             periods=tuple(payload.context.periods),
             metric_code=payload.context.metric_code,
+            detected_industry=payload.context.detected_industry,
+            entity_mentions=tuple(payload.context.entity_mentions),
             confirmed=True,
         )
 

@@ -23,6 +23,7 @@ def _rules():
     vocabulary = set(data['telex_vocabulary'].split())
     vocabulary.update(word for phrase in data['aliases'].values() for word in phrase.split())
     vocabulary.update(word for variants in data['contextual_aliases'].values() for phrase in variants for word in phrase.split())
+    vocabulary.update(word for phrase in data.get('domain_phrases', []) for word in phrase.split())
     return data, vocabulary
 
 
@@ -33,16 +34,28 @@ def _shape(word):
     return word
 
 
-def _telex(word, vocabulary):
-    if not re.fullmatch('[a-z]+', word): return word
+@lru_cache(maxsize=8192)
+def _telex_candidates(word):
+    """Handle vowel shapes and one tone key in either Vietnamese typing order.
+
+    Try tone removal before AND after shape decoding: tone keys may interrupt
+    a vowel cluster (chuwsng) or sit at the end of the syllable (chuwngs).
+    This is bounded transliteration, never edit-distance correction of tickers.
+    """
     candidates = {_shape(word)}
-    # Vietnamese users place tone keys either at the end or just after a vowel.
-    for _ in range(1):
-        for candidate in tuple(candidates):
-            for index, letter in enumerate(candidate):
-                if letter in 'sfrxj' and index > 0 and (index == len(candidate)-1 or candidate[index-1] in 'aeiouyw'):
-                    candidates.add(_shape(candidate[:index]+candidate[index+1:]))
-    decoded = [candidate for candidate in candidates if candidate in vocabulary and candidate != word]
+    for candidate in (word, _shape(word)):
+        for index, letter in enumerate(candidate):
+            if (letter in 'sfrxj' and index > 0
+                    and (index == len(candidate)-1 or candidate[index-1] in 'aeiouyw')):
+                candidates.add(_shape(candidate[:index]+candidate[index+1:]))
+    return tuple(sorted(candidates))
+
+
+def _telex(word, vocabulary):
+    if len(word) > 32 or not re.fullmatch('[a-z]+', word) or word in vocabulary:
+        return word
+    decoded = [candidate for candidate in _telex_candidates(word)
+               if candidate in vocabulary and candidate != word]
     # Ambiguous reductions are left alone rather than selecting an arbitrary word.
     return decoded[0] if len(decoded) == 1 else word
 
@@ -50,6 +63,7 @@ def _telex(word, vocabulary):
 def normalize_user_text(text, context=None):
     data, vocabulary = _rules()
     aliases = data['aliases']
+    protected = KNOWN_TICKERS | set(data.get('protected_identifiers', []))
     prefix = []
     folded = _fold(text)
     price_context = (context or {}).get('source_type') == 'PRICE' or bool(re.search(r'\b(?:gia|giaf|co phieu)\b', folded))
@@ -65,19 +79,21 @@ def normalize_user_text(text, context=None):
                 return stem+' '+compact[2]
         if any(c.isdigit() for c in token): return token
         key = _fold(token)
+        decoded = _telex(key, vocabulary)
         if key in ('k', 'tr', 'b', 'm') and re.search(r'\d[\d.,]*\s*$', text[:match.start()]):
             return token  # money/quantity suffix, not conversational shorthand
         explicit_ticker = len(token) == 3 and token.isascii() and token.isalpha() and (
             (prefix and prefix[-1] in ('gia', 'ma', 'cua', 'phieu', 'ck'))
             or re.match(r'^(?:gia|co gia|hom|hoom|quy|nam)\b', _fold(text[match.end():]))
             or (pending_company and text.strip() == token))
-        if (token.upper() in KNOWN_TICKERS and key not in aliases and key not in vocabulary and _telex(key, vocabulary) == key
-                or token.isascii() and token.isupper() and 3 <= len(token) <= 5
-                or explicit_ticker):
+        if (token.isascii() and token.isupper() and token in protected
+                or token.upper() in protected and key not in aliases and key not in vocabulary and decoded == key
+                or token.isascii() and token.isupper() and 3 <= len(token) <= 5 and decoded == key
+                or explicit_ticker and _shape(key) == key):
             result = token
         elif key == 'cp':
             if re.search(r'\bcp\s+(?:ban|quan|lai|thue)\b', folded): result = 'chi phi'
-            elif price_context or re.search(r'\bcp\s+[A-Z]{3}\b', text): result = 'co phieu'
+            elif price_context or 'gia' in prefix or 'phieu' in prefix or re.search(r'\bcp\s+[A-Z]{3}\b', text): result = 'co phieu'
             else: result = token
         elif key == 'hn':
             result = 'ha noi' if prefix and prefix[-1] in ('o', 'tai', 'tp', 'ubnd') else ('hom nay' if price_context or 'gia' in prefix or 'phieu' in prefix or 'tin' in folded else token)
@@ -98,7 +114,7 @@ def normalize_user_text(text, context=None):
         elif key in ENGLISH_TERMS:
             result = token
         elif token.isascii():
-            result = _telex(key, vocabulary)
+            result = decoded
         else:
             result = token
         prefix.extend(_fold(result).split())
