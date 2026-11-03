@@ -1,5 +1,11 @@
 # WBS08 – lưu graph Sprint 4 vào Neo4j
 
+**Cập nhật 03/11/2026:** Đã nạp 13 quan hệ BCTN V4 được Huyền duyệt vào
+Neo4j VPS, phiên `s4-bctn-b2550a0b-v4-20261102` đã `READY`; đối chiếu 13/13
+cạnh đạt và chạy lại không trùng. Xem
+[biên bản WBS03–WBS08 V4](WBS03-WBS08-review-v4-status-20261103.md).
+Các đoạn dưới đây ghi lại thiết kế và kết quả fixture trước lần nạp thật này.
+
 ## Quy ước để nhóm tích hợp
 
 Đầu vào là **envelope JSON contract 2.1.0** của WBS01/WBS02. Không đọc PDF,
