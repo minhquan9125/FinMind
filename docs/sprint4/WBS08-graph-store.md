@@ -1,5 +1,11 @@
 # WBS08 – lưu graph Sprint 4 vào Neo4j
 
+**Cập nhật 03/11/2026:** Đã nạp 13 quan hệ BCTN V4 được Huyền duyệt vào
+Neo4j VPS, phiên `s4-bctn-b2550a0b-v4-20261102` đã `READY`; đối chiếu 13/13
+cạnh đạt và chạy lại không trùng. Xem
+[biên bản WBS03–WBS08 V4](WBS03-WBS08-review-v4-status-20261103.md).
+Các đoạn dưới đây ghi lại thiết kế và kết quả fixture trước lần nạp thật này.
+
 ## Quy ước để nhóm tích hợp
 
 Đầu vào là **envelope JSON contract 2.1.0** của WBS01/WBS02. Không đọc PDF,
@@ -75,6 +81,29 @@ Unit test không đụng database:
 ```powershell
 backend/.venv/Scripts/python.exe -X utf8 -m unittest backend.tests.test_sprint4_graph_store -q
 ```
+
+## Đối chiếu một batch BCTN thật sau khi được duyệt
+
+WBS06 cần bàn giao **envelope contract 2.1.0 đầy đủ** với ít nhất một relation
+`APPROVED`, có reviewer, thời điểm review và các thuộc tính contract yêu cầu.
+`WBS03-23-candidate-review.json` chỉ là gói để review; không phải đầu vào nạp
+graph. Không tự sửa `PENDING` thành `APPROVED` để chạy thử.
+
+Sau khi nạp batch vào **phiên graph mới** và công bố đủ danh sách batch là
+`READY`, dùng đúng `graph_version_id` và `batch_id` đã nạp:
+
+```powershell
+backend/.venv/Scripts/python.exe -m backend.scripts.verify_sprint4_graph --input <approved-envelope.json> --version <graph-version-id> --batch-id <batch-id> --env-file backend/.env.neo4j-vps
+backend/.venv/Scripts/python.exe -X utf8 -m unittest backend.tests.test_sprint4_graph_store backend.tests.test_verify_sprint4_graph -q
+```
+
+Lệnh `verify_sprint4_graph.py` chỉ dùng truy vấn đọc. Nó kiểm phiên `READY`,
+corpus/index, hash và số lượng của batch, rồi so từng cạnh `APPROVED` theo
+`relation_id`, chiều subject/object, loại, thuộc tính, thời gian và toàn bộ
+`evidence_json` (document ID, chunk ID, locator, quote). Kết quả `passed: true`
+mới là đối chiếu Neo4j với envelope đã duyệt; lỗi trả `passed: false` và mã
+thoát khác 0. Nó không đối chiếu PDF hoặc nguồn PostgreSQL lần nữa — bước đó
+thuộc reader/kiểm nguồn trước khi duyệt.
 
 Ngày 30/10/2026 đã thử ghi/đọc trên Neo4j Community `2026.10.1` chạy riêng
 trên VPS: nạp batch lần đầu có 2 node và 1 cạnh APPROVED; chạy lại cùng batch

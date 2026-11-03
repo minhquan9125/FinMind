@@ -23,6 +23,7 @@ from ...retrieval_orchestration.hybrid_router.adapters import (
     LiveGraphAdapter,
     MockContentAdapter,
     MockGraphAdapter,
+    UnavailableAdapter,
 )
 from ...core.config import get_settings
 
@@ -138,13 +139,15 @@ def _get_live_engine(event_loop) -> DecisionEngine:
         engine.content_adapter = content
         logger.info("Hybrid router: LiveContentAdapter activated")
     else:
-        logger.warning("Hybrid router: LiveContentAdapter unavailable, using mock")
+        engine.content_adapter = UnavailableAdapter("CONTENT", "CONTENT_NOT_READY")
+        logger.warning("Hybrid router: LiveContentAdapter unavailable")
 
     if graph is not None:
         engine.graph_adapter = graph
         logger.info("Hybrid router: LiveGraphAdapter activated")
     else:
-        logger.warning("Hybrid router: LiveGraphAdapter unavailable, using mock")
+        engine.graph_adapter = UnavailableAdapter("GRAPH", "GRAPH_NOT_READY")
+        logger.warning("Hybrid router: LiveGraphAdapter unavailable")
 
     return engine
 

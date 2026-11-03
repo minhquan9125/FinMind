@@ -129,6 +129,65 @@ class DbAdapterTests(unittest.TestCase):
         self.assertTrue(all(r['review']['status'] == 'PENDING' for r in relations))
         self.assertTrue(all(any(e['quote'] == 'Các công ty con kiểm soát trực tiếp'
                                 for e in r['evidence']) for r in relations))
+        # Datanova's percentage is in the next chunk of the same page; each row keeps its own.
+        percents = {next(e for e in result['entities'] if e['entity_id'] == r['object_id'])['aliases'][0]:
+                    r['attributes'].get('ownership_percent') for r in relations}
+        self.assertEqual(percents, {'Công ty Cổ phần Datanova Việt Nam': '93',
+                                    'Công ty Cổ phần ElcomPrime': '70'})
+
+    def issuer_row(self, body, page=14):
+        expected, row = self.make_row()
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text=f'CTG | Báo cáo thường niên 2024 | PDF trang {page}\n' + body,
+                   page_number=page, char_end=len(body))
+        row['locator_json']['pdf_page'] = page
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        return expected, row
+
+    def test_indirect_row_percentage_is_not_given_to_issuer(self):
+        expected, row = self.issuer_row('Các công ty con kiểm soát gián tiếp\n'
+                                        'Công ty Cổ phần Datanova Việt Nam\nTỷ lệ sở hữu: 74,4%')
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(len(result['relations']), 1)
+        self.assertNotIn('ownership_percent', result['relations'][0]['attributes'])
+
+    def test_ownership_structure_gives_percent_and_as_of(self):
+        expected, row = self.issuer_row('CƠ CẤU VÀ TỶ LỆ SỞ HỮU CỦA ALPHA TẠI CÁC CÔNG TY CON (31/12/2024)\n'
+                                        'ALPHA\nBTV (94,1%) Gamma (100%)', page=12)
+        registry = REGISTRY + [{'entity_id': 'company:btv', 'entity_type': 'Company',
+                                'canonical_name': 'Công ty Cổ phần Chứng khoán Beta', 'aliases': ['BTV'],
+                                'ticker_aliases': [], 'identity_key': 'name:btv', 'verified': True}]
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), registry)
+        self.assertEqual(len(result['relations']), 1)
+        relation = result['relations'][0]
+        self.assertEqual((relation['subject_id'], relation['object_id']), ('company:alpha', 'company:btv'))
+        self.assertEqual(relation['attributes']['ownership_percent'], '94.1')
+        self.assertEqual(relation['temporal']['as_of'], '2024-12-31')
+
+    def test_bare_ticker_is_not_resolved_in_ownership_structure(self):
+        expected, row = self.issuer_row('TỶ LỆ SỞ HỮU TẠI CÁC CÔNG TY CON (31/12/2024)\nAMC (100%)', page=12)
+        registry = REGISTRY + [{'entity_id': 'company:amc', 'entity_type': 'Company',
+                                'canonical_name': 'Công ty Cổ phần Khoáng sản Á Châu', 'aliases': ['AMC'],
+                                'ticker_aliases': ['AMC'], 'identity_key': 'name:amc', 'verified': True}]
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), registry)
+        self.assertEqual(result['relations'], [])
+
+    def test_truncated_table_name_is_not_a_candidate(self):
+        expected, row = self.issuer_row('24 Công ty con Tổng Công ty Cổ phần Bảo hiểm Ngân hàng Đầu tư và\n'
+                                        'bảo hiểm (ngày 17/12/2025)', page=63)
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(result['relations'], [])
+
+    def test_same_pair_in_two_reports_has_two_relation_ids(self):
+        ids = []
+        for document_id in ('11111111-1111-4111-8111-111111111111', '22222222-2222-4222-8222-222222222222'):
+            expected, row = self.issuer_row('công ty con kiểm soát trực tiếp Beta Việt')
+            row['document_id'] = document_id
+            result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+            ids.append(result['relations'][0]['relation_id'])
+        self.assertNotEqual(ids[0], ids[1])
 
     def test_multiline_associate_name(self):
         expected, row = self.make_row()
@@ -146,7 +205,9 @@ class DbAdapterTests(unittest.TestCase):
         relation = result['relations'][0]
         self.assertEqual(relation['relation_type'], 'HAS_ASSOCIATE')
         self.assertTrue(any('mới Bắc Kạn' in evidence['quote'] for evidence in relation['evidence']))
-        self.assertEqual(relation['attributes'], {'inference_basis': 'document_issuer'})
+        self.assertEqual(relation['attributes'], {'inference_basis': 'document_issuer',
+                                                  'ownership_percent': '42.97'})
+        self.assertIn('Tỷ lệ sở hữu: 42,97%', [evidence['quote'] for evidence in relation['evidence']])
 
     def test_abbreviation_links_full_heading_to_explicit_owner(self):
         expected, row = self.make_row()

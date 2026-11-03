@@ -42,6 +42,24 @@ class RouterAdapter(Protocol):
 
 
 @dataclass
+class UnavailableAdapter:
+    """Fail closed when a LIVE dependency is missing; never return fixture facts."""
+
+    adapter: Literal["GRAPH", "CONTENT"]
+    reason_code: str
+    calls: list[dict[str, Any]] = field(default_factory=list, init=False)
+
+    def execute(
+        self, task: RouterTask, *, dependency: AdapterResult | None = None
+    ) -> AdapterResult:
+        self.calls.append({"task_id": task.id, "operation": task.operation})
+        return AdapterResult(
+            task.id, self.adapter, "SYSTEM_UNAVAILABLE", self.reason_code,
+            provenance="LIVE/GRAPH" if self.adapter == "GRAPH" else "LIVE/VECTOR",
+        )
+
+
+@dataclass
 class _MockAdapterBase:
     calls: list[dict[str, Any]] = field(default_factory=list, init=False)
 
