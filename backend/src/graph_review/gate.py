@@ -8,7 +8,10 @@ from .repository import approved_records
 
 
 def core(candidate):
-    return {k: v for k, v in candidate.items() if k != "extractor_metadata"}
+    # from_envelope always emits assertion_status (often None) while from_handoff
+    # omits it; Candidate defaults it to None, so absent and None are the same claim.
+    return {k: v for k, v in candidate.items() if k != "extractor_metadata"
+            and not (k == "assertion_status" and v is None)}
 
 
 @dataclass(frozen=True)
