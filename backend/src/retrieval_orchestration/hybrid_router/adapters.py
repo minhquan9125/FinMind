@@ -284,10 +284,10 @@ class LiveContentAdapter:
 class LiveGraphAdapter:
     """Live graph adapter: wraps GraphStore for Neo4j financial observations.
 
-    NOTE: Company relationship queries (find_relationships for subsidiaries,
-    ownership) are NOT supported in the current Neo4j schema. Those return
-    SYSTEM_UNAVAILABLE with reason GRAPH_RELATIONSHIPS_NOT_INDEXED.
-    Only 'find_observations' for financial metrics is supported.
+    Relationship operations read approved Sprint 4 edges through WBS09
+    RelationRetrieval, only from READY graph versions. Without a retriever or
+    configured versions they return SYSTEM_UNAVAILABLE /
+    GRAPH_RELATIONSHIPS_NOT_INDEXED, as before.
     """
 
     RELATIONSHIP_OPS = {
@@ -295,9 +295,20 @@ class LiveGraphAdapter:
         "find_subsidiaries",
     }
     TIMEOUT_SECONDS = 15
+    # WBS09: operation -> (relation types, hops). None = every approved type.
+    RELATION_PLAN = {
+        "find_relationships": (None, 1),
+        "find_subsidiaries": (("HAS_SUBSIDIARY",), 1),
+        "resolve_event_entities": (("INVOLVES",), 1),
+        "expand_market_context": (None, 2),
+    }
 
-    def __init__(self, store) -> None:  # store: GraphStore
+    def __init__(self, store, relations=None, graph_version_ids=(), tickers=None) -> None:
+        # relations: RelationRetrieval; tickers: {"TCB": "CMP-..."} from the company registry.
         self._store = store
+        self._relations = relations
+        self._versions = tuple(graph_version_ids)
+        self._tickers = dict(tickers or {})
         self.calls: list[dict] = []
 
     def execute(
@@ -309,11 +320,13 @@ class LiveGraphAdapter:
         self.calls.append({"task_id": task.id, "operation": task.operation})
 
         if task.operation in self.RELATIONSHIP_OPS:
-            return AdapterResult(
-                task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
-                "GRAPH_RELATIONSHIPS_NOT_INDEXED",
-                provenance="LIVE/GRAPH",
-            )
+            if self._relations is None or not self._versions:
+                return AdapterResult(
+                    task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
+                    "GRAPH_RELATIONSHIPS_NOT_INDEXED",
+                    provenance="LIVE/GRAPH",
+                )
+            return self._relationships(task)
 
         # find_observations: read financial metrics from Neo4j
         companies = list(task.params.get("companies") or [])
@@ -387,3 +400,54 @@ class LiveGraphAdapter:
             task.id, "GRAPH", "OK", "GRAPH_OBSERVATIONS_OK",
             evidence=evidence, data=data, provenance="LIVE/GRAPH",
         )
+
+    def _relationships(self, task: RouterTask) -> AdapterResult:
+        companies = [str(c).upper() for c in task.params.get("companies") or []]
+        entity_ids = [self._tickers[c] for c in companies if c in self._tickers]
+        if not entity_ids:
+            return AdapterResult(task.id, "GRAPH", "NO_DATA", "GRAPH_ENTITY_UNRESOLVED",
+                                 provenance="LIVE/GRAPH")
+        start, end = _period_window(task.params.get("periods") or [])
+        types, hops = self.RELATION_PLAN.get(task.operation, (None, 1))
+        try:
+            paths = self._relations.query(entity_ids, graph_version_ids=self._versions,
+                                          relation_types=types, start=start, end=end,
+                                          hops=hops, limit=50)
+        except ValueError:
+            return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
+                                 "GRAPH_UNSUPPORTED_SCOPE", provenance="LIVE/GRAPH")
+        except Exception as exc:  # driver timeout/unavailable must not break routing
+            return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
+                                 f"GRAPH_ERROR_{type(exc).__name__}", provenance="LIVE/GRAPH")
+        if not paths:
+            return AdapterResult(task.id, "GRAPH", "NO_DATA", "GRAPH_NO_RELATIONS",
+                                 provenance="LIVE/GRAPH")
+        edges = {e["relation_id"]: (p["graph_version_id"], e) for p in paths for e in p["relations"]}
+        evidence = tuple(
+            {"source_id": f"{e['relation_id']}:{i}", "document_id": src["document_id"],
+             "chunk_id": src["chunk_id"], "document_version": src["document_version"],
+             "locator": src["locator"], "quote": src["quote"], "graph_version_id": version,
+             "source_verified": True, "label": "LIVE/GRAPH"}
+            for version, e in edges.values() for i, src in enumerate(e["evidence"])
+        )
+        return AdapterResult(task.id, "GRAPH", "OK", "GRAPH_RELATIONS_OK", evidence=evidence,
+                             data=tuple(paths), provenance="LIVE/GRAPH")
+
+
+def _period_window(periods: list[str]) -> tuple[str | None, str | None]:
+    """'2025' -> whole year, '2025-Q2' -> that quarter; several periods -> their span."""
+    bounds = []
+    for period in periods:
+        match = re.fullmatch(r"(\d{4})(?:-Q([1-4]))?", str(period))
+        if not match:
+            continue
+        year, quarter = int(match[1]), match[2]
+        if quarter:
+            q = int(quarter)
+            bounds.append((f"{year}-{3 * q - 2:02d}-01",
+                           f"{year}-{3 * q:02d}-{'31' if q in (1, 4) else '30'}"))
+        else:
+            bounds.append((f"{year}-01-01", f"{year}-12-31"))
+    if not bounds:
+        return None, None
+    return min(b[0] for b in bounds), max(b[1] for b in bounds)

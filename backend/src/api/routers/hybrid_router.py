@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
+import os
+from pathlib import Path
 from functools import lru_cache
 
 from fastapi import APIRouter, HTTPException
@@ -95,12 +98,29 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
         return None
 
 
+def _registry_tickers() -> dict[str, str]:
+    """Ticker -> company entity ID; a ticker claimed by two entities is left out."""
+    default = Path(__file__).resolve().parents[2] / "sprint4_runtime" / "company.registry.json"
+    rows = json.loads(Path(os.environ.get("SPRINT4_COMPANY_REGISTRY", default)).read_text("utf-8"))
+    owners: dict[str, set[str]] = {}
+    for row in rows:
+        for ticker in row.get("ticker_aliases") or []:
+            owners.setdefault(ticker.upper(), set()).add(row["entity_id"])
+    return {t: ids.pop() for t, ids in owners.items() if len(ids) == 1}
+
+
 def _build_live_graph_adapter() -> LiveGraphAdapter | None:
     """Build a LiveGraphAdapter connecting to Neo4j."""
     try:
         from ...graph.graph_store import GraphStore
         store = GraphStore.from_environment()
-        return LiveGraphAdapter(store)
+        # WBS09: comma-separated READY graph versions to answer relationship questions.
+        versions = [v.strip() for v in os.environ.get("SPRINT4_GRAPH_VERSIONS", "").split(",") if v.strip()]
+        if not versions:
+            return LiveGraphAdapter(store)
+        from ...graph.relation_retrieval import RelationRetrieval
+        return LiveGraphAdapter(store, RelationRetrieval(store.driver, database=store.database),
+                                versions, _registry_tickers())
     except Exception as exc:
         logger.warning("LiveGraphAdapter init failed (Neo4j may be unavailable): %s", exc)
         return None
