@@ -79,6 +79,8 @@ class GraphMetadataRepository:
   if decision not in ('PENDING','APPROVED','REJECTED','QUARANTINED') or not reason_code.strip() or not note.strip():raise ValueError('Explicit review decision/reason/note required')
   record=await self.read_assertion(extraction_id)
   if record is None:raise ValueError('Unknown assertion')
+  if record['review_status']=='REJECTED' and decision!='REJECTED':
+   raise MetadataConflict('REJECTED is terminal; submit a corrected extraction with a new identity')
   p=record['payload']
   if decision=='APPROVED' and (p['relation_type'] not in ('HOLDS_ROLE','APPOINTS','DISMISSES') or p['validation_status']!='SOURCE_VERIFIED' or not p.get('effective_date') and not p.get('report_year')):
    raise ValueError('Approval requires verified source and temporal basis')

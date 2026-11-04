@@ -127,6 +127,16 @@ class PostgresReviewStore:
 
     async def _quarantine(self, row, actor, extraction_id=None, *, update=False):
         result = row["result"]
+        if update:
+            # Reviewer has UPDATE permission only. An INSERT ... ON CONFLICT
+            # still requires INSERT and may hit policies before conflict handling.
+            changed=await self.c.execute('''UPDATE public.quarantine_records SET
+                reason_code=$2,status=$3,reviewed_by=$4,reviewed_at=now(),
+                reasons=$5::jsonb,evaluation_payload=$6::jsonb WHERE review_id=$1''',
+                uuid.UUID(row['review_id']),next(iter(result['reasons']),None),result['status'],actor.user_id,
+                json.dumps(result['reasons']),json.dumps(result,ensure_ascii=False))
+            if changed!='UPDATE 1':raise ReviewConflict('Expected one existing quarantine review record')
+            return
         sql = """INSERT INTO public.quarantine_records
             (record_id,extraction_id,entity_type,reason_code,status,reviewed_by,reviewed_at,
              review_id,reasons,candidate_payload,evaluation_payload)

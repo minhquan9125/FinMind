@@ -34,6 +34,12 @@ def fixture(text):
 
 
 class PersonRoleTests(unittest.TestCase):
+    def test_neighboring_person_after_appointment_title_is_not_appointee(self):
+        data=fixture('Tiến sĩ Lottner được bổ nhiệm làm Tổng Giám đốc Ông Nguyễn Văn An tham gia FPT từ năm 1994')
+        result,audit=extract(data)
+        self.assertEqual(result['relations'],[])
+        self.assertEqual(audit['abstentions'][0]['reason'],'PERSON_AFTER_EVENT_POSITION_REQUIRES_REVIEW')
+
     def test_repair_names_keeps_source_and_relations_consistent(self):
         from src.person_role.name_repair import repair_person_names
         data=fixture('FPT bổ nhiệm Ông Nguyễn Văn An Tổng Giám đốc.')
