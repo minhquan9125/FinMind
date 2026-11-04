@@ -11,12 +11,14 @@ def main():
     p.add_argument('--output-dir', required=True, help='New directory; never overwrites input')
     p.add_argument('--normalize', action='store_true', help='Run supplied WBS02 resolver first')
     p.add_argument('--registry', help='Shared entity registry JSON used with --normalize')
+    p.add_argument('--person-store',type=Path,help='WBS02 r2 SQLite; apply pinned identity decisions with --normalize')
     a = p.parse_args()
     source = json.loads(Path(a.input).read_text(encoding='utf-8-sig'))
     if a.registry and not a.normalize:
         p.error('--registry requires --normalize')
+    if a.person_store and not a.normalize:p.error('--person-store requires --normalize')
     registry = json.loads(Path(a.registry).read_text(encoding='utf-8-sig')) if a.registry else None
-    result, audit = normalize_and_extract(source, registry) if a.normalize else extract(source)
+    result, audit = normalize_and_extract(source, registry,person_store=a.person_store) if a.normalize else extract(source)
     output = Path(a.output_dir)
     output.mkdir(parents=True, exist_ok=False)
     for name, payload in [('candidates.json', result), ('audit.json', audit)]:

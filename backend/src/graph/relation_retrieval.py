@@ -14,9 +14,10 @@ RELATION_TYPES = {'OWNS_SHARES', 'HAS_SUBSIDIARY', 'HAS_ASSOCIATE', 'COOPERATES_
 
 # Interval facts overlap the window; snapshot facts (as_of only) must fall inside it.
 _IN_WINDOW = '''CASE WHEN r.valid_from IS NULL AND r.valid_to IS NULL
-  THEN ($start IS NULL OR r.as_of >= $start) AND ($end IS NULL OR r.as_of <= $end)
-  ELSE ($start IS NULL OR r.valid_to IS NULL OR r.valid_to >= $start)
-   AND ($end IS NULL OR r.valid_from IS NULL OR r.valid_from <= $end) END'''
+  THEN ($start IS NULL OR coalesce(r.as_of_upper,r.as_of) >= $start)
+   AND ($end IS NULL OR coalesce(r.as_of_lower,r.as_of) <= $end)
+  ELSE ($start IS NULL OR r.valid_to IS NULL OR coalesce(r.valid_to_upper,r.valid_to) >= $start)
+   AND ($end IS NULL OR r.valid_from IS NULL OR coalesce(r.valid_from_lower,r.valid_from) <= $end) END'''
 
 QUERY = '''
 MATCH (v:GraphVersion) WHERE v.id IN $versions AND v.status = 'READY'
@@ -29,6 +30,7 @@ RETURN v.id AS graph_version_id,
                    subject_id: startNode(r).entity_id, subject_name: startNode(r).canonical_name,
                    object_id: endNode(r).entity_id, object_name: endNode(r).canonical_name,
                    as_of: r.as_of, valid_from: r.valid_from, valid_to: r.valid_to,
+                   as_of_precision:r.as_of_precision,valid_from_precision:r.valid_from_precision,valid_to_precision:r.valid_to_precision,
                    attributes_json: r.attributes_json, evidence_json: r.evidence_json,
                    reviewer: r.reviewer, reviewed_at: r.reviewed_at}] AS path
 ORDER BY size(rs), [r IN rs | r.relation_id]

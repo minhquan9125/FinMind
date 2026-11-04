@@ -45,12 +45,32 @@ class FixtureSourceReader:
 
 
 class PostgresSourceReader:
+    ROW_QUERY='''SELECT t.chunk_id,t.document_id,t.index_version_id,t.content_hash,t.locator_json,
+        t.page_number,t.chunk_index,t.superseded_at,d.doc_type,d.title,d.source_url,
+        d.sha256 AS source_sha256,i.chunker_version,cv.corpus_version_id::text AS corpus_id,
+        i.status AS index_status,cv.status AS corpus_status,cd.document_hash
+        FROM public.text_chunks t JOIN public.documents d USING(document_id)
+        JOIN public.index_versions i USING(index_version_id)
+        JOIN public.corpus_versions cv ON cv.index_version_id=i.index_version_id
+        JOIN public.corpus_documents cd ON cd.document_id=d.document_id AND cd.corpus_version_id=cv.corpus_version_id
+        WHERE t.chunk_id=ANY($1::uuid[]) AND cv.corpus_version_id=$2'''
     def __init__(self, connection):
         self.connection = connection
         self.cache = {}
 
     async def resolve(self, evidence: Evidence) -> VerifiedSource:
         return await self.read_current(evidence.chunk_id, evidence.corpus_id)
+
+    async def prefetch(self,chunk_ids,corpus_id):
+        """Bulk-select membership rows only; each read still replays/hash-checks source.
+
+        Use within the same repeatable-read transaction as the subsequent reads.
+        Callers cannot inject raw rows or claim source verification via prefetch.
+        """
+        ids=[uuid.UUID(str(k)) for k in dict.fromkeys(chunk_ids)]
+        if not ids:return
+        rows=await self.connection.fetch(self.ROW_QUERY,ids,uuid.UUID(str(corpus_id)))
+        for row in rows:self.cache[('wbs06-row',str(row['chunk_id']),str(corpus_id))]=row
 
     async def read_current(self, chunk_id: str, corpus_id: str) -> VerifiedSource:
         key = ("wbs06-verified", str(chunk_id), str(corpus_id))
@@ -68,22 +88,13 @@ class PostgresSourceReader:
         from types import SimpleNamespace
         evidence = SimpleNamespace(chunk_id=chunk_id, corpus_id=corpus_id)
         from ..documents.chunk_reconstruction import ReconstructionError
-        from ..documents.annual_source_reader import read_annual_chunk
+        from ..documents.annual_source_reader import resolve_annual_member_row
         from ..documents.shared_source import read_release_root
         from ..documents.repository import resolve_result_rows
         try:
-            row = await self.connection.fetchrow("""
-                SELECT t.*, d.doc_type, d.sha256 AS source_sha256, i.chunker_version,
-                       cv.corpus_version_id::text AS corpus_id,
-                       i.status AS index_status, cv.status AS corpus_status,
-                       cd.document_hash
-                FROM public.text_chunks t JOIN public.documents d USING(document_id)
-                JOIN public.index_versions i USING(index_version_id)
-                JOIN public.corpus_versions cv ON cv.index_version_id=i.index_version_id
-                JOIN public.corpus_documents cd ON cd.document_id=d.document_id
-                  AND cd.corpus_version_id=cv.corpus_version_id
-                WHERE t.chunk_id=$1 AND cv.corpus_version_id=$2
-            """, uuid.UUID(evidence.chunk_id), uuid.UUID(evidence.corpus_id))
+            row=self.cache.get(('wbs06-row',str(chunk_id),str(corpus_id)))
+            if row is None:
+                row=await self.connection.fetchrow(self.ROW_QUERY,[uuid.UUID(evidence.chunk_id)],uuid.UUID(evidence.corpus_id))
             if row is None:
                 raise SourceProblem("ERR_LOCATOR_ORPHAN")
             if row.get("superseded_at") is not None:
@@ -93,7 +104,10 @@ class PostgresSourceReader:
             if not row["document_hash"] or row["document_hash"].strip() != row["source_sha256"].strip():
                 raise SourceProblem("ERR_SOURCE_HASH_MISMATCH")
             if row["doc_type"] == "ANNUAL_REPORT":
-                verified = await read_annual_chunk(self.connection, evidence.chunk_id, evidence.corpus_id, self.cache)
+                if row['corpus_status']!='FROZEN':raise SourceProblem('ERR_SOURCE_VERSION_INACTIVE')
+                annual_row=dict(row)
+                for field in ('chunk_id','document_id','index_version_id'):annual_row[field]=str(annual_row[field])
+                verified = await resolve_annual_member_row(self.connection,annual_row,evidence.corpus_id,self.cache)
                 locator = verified["locator"]
                 root = await read_release_root(self.connection, verified["index_version_id"], self.cache)
                 member = next((m for m in root["sources"] if m["source_table"] == locator["source_table"]
@@ -114,7 +128,7 @@ class PostgresSourceReader:
                     evidence.chunk_id, evidence.corpus_id, verified["index_version_id"],
                     member["sha256"], verified["content_hash"], contract_locator, verified["chunk_text"])
             # Non-annual sources must also replay through their registered locator.
-            rows = await resolve_result_rows(self.connection, [dict(row) | {'page': row.get('page_number')}])
+            rows = await resolve_result_rows(self.connection, [dict(row) | {'page': row.get('page_number')}],source_cache=self.cache)
             actual = rows[0]
             locator = actual["locator_json"]
             return VerifiedSource(str(row["document_id"]), row["source_sha256"].strip(),

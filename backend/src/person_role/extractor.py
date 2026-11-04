@@ -100,6 +100,12 @@ def extract(envelope):
                 reason = 'PERSON_POSITION_SPAN_OVERLAP'
             appointed = bool(re.search(r'bổ\s+nhiệm', low))
             dismissed = bool(re.search(r'miễn\s+nhiệm|bãi\s+nhiệm', low))
+            if not reason and (appointed or dismissed) and all(
+                m['start'] >= start+roles[0].end() for m in local
+                if entities[m['entity_id']]['entity_type']=='Person'):
+                # A neighboring profile/column can start after the office title.
+                # Do not attach its person to the preceding appointment sentence.
+                reason='PERSON_AFTER_EVENT_POSITION_REQUIRES_REVIEW'
             held = bool(re.search(r'giữ\s+chức|đảm\s+nhiệm|\blà\b', low))
             if not reason and (appointed and dismissed):
                 reason = 'MULTIPLE_EVENTS'
@@ -142,7 +148,7 @@ def extract(envelope):
                         source_verification='CONTRACT_AND_CHUNK_HASH_ONLY_NOT_LIVE_REPLAY')
 
 
-def normalize_and_extract(envelope, registry=None, proposals=None):
+def normalize_and_extract(envelope, registry=None, proposals=None,person_store=None):
     """Use the supplied WBS02 resolver without inventing canonical IDs."""
     from .contract.entities import normalize
     validate_envelope(envelope)
@@ -150,7 +156,14 @@ def normalize_and_extract(envelope, registry=None, proposals=None):
         raise ValueError('Normalization requires empty entities/mentions/relations')
     normalized = deepcopy(envelope)
     safe_registry, removed=scoped_registry(registry)
-    normalized.update(normalize(normalized['chunks'], safe_registry, proposals))
+    identity_audit=None
+    if person_store is not None:
+        from .person_identity import resolve_person_identity
+        companies=[r for r in (safe_registry or []) if r.get('entity_type')=='Company']
+        normalized,identity_audit=resolve_person_identity(normalized,person_store,companies,proposals)
+    else:
+        normalized.update(normalize(normalized['chunks'], safe_registry, proposals))
     result,audit=extract(normalized)
     audit['registry_aliases_excluded']=removed
+    if identity_audit is not None:audit['person_identity']=identity_audit
     return result,audit
