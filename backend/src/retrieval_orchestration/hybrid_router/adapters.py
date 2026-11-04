@@ -321,12 +321,14 @@ class LiveGraphAdapter:
         "expand_market_context": (None, 2),
     }
 
-    def __init__(self, store, relations=None, graph_version_ids=(), tickers=None) -> None:
+    def __init__(self, store, relations=None, graph_version_ids=(), tickers=None,
+                 verify_sources=None) -> None:
         # relations: RelationRetrieval; tickers: {"TCB": "CMP-..."} from the company registry.
         self._store = store
         self._relations = relations
         self._versions = tuple(graph_version_ids)
         self._tickers = dict(tickers or {})
+        self._verify_sources = verify_sources
         self.calls: list[dict] = []
 
     def execute(
@@ -421,11 +423,21 @@ class LiveGraphAdapter:
 
     def _relationships(self, task: RouterTask) -> AdapterResult:
         companies = [str(c).upper() for c in task.params.get("companies") or []]
+        if not companies or any(c not in self._tickers for c in companies):
+            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
+                                 "GRAPH_ENTITY_UNRESOLVED", provenance="LIVE/GRAPH")
+        # WBS10 has not distinguished "compare two companies" from "find a
+        # relation between them". A union of both neighborhoods would answer
+        # the latter incorrectly, so wait for an explicit multi-entity plan.
+        if len(set(companies)) > 1:
+            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
+                                 "GRAPH_MULTI_COMPANY_SCOPE_UNSUPPORTED", provenance="LIVE/GRAPH")
         entity_ids = [self._tickers[c] for c in companies if c in self._tickers]
-        if not entity_ids:
-            return AdapterResult(task.id, "GRAPH", "NO_DATA", "GRAPH_ENTITY_UNRESOLVED",
-                                 provenance="LIVE/GRAPH")
-        start, end = _period_window(task.params.get("periods") or [])
+        try:
+            start, end = _period_window(task.params.get("periods") or [])
+        except ValueError:
+            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
+                                 "GRAPH_UNSUPPORTED_PERIOD", provenance="LIVE/GRAPH")
         types, hops = self.RELATION_PLAN.get(task.operation, (None, 1))
         try:
             paths = self._relations.query(entity_ids, graph_version_ids=self._versions,
@@ -434,20 +446,33 @@ class LiveGraphAdapter:
         except ValueError:
             return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
                                  "GRAPH_UNSUPPORTED_SCOPE", provenance="LIVE/GRAPH")
+        except TimeoutError:
+            return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
+                                 "GRAPH_TIMEOUT", provenance="LIVE/GRAPH")
         except Exception as exc:  # driver timeout/unavailable must not break routing
             return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
                                  f"GRAPH_ERROR_{type(exc).__name__}", provenance="LIVE/GRAPH")
         if not paths:
             return AdapterResult(task.id, "GRAPH", "NO_DATA", "GRAPH_NO_RELATIONS",
                                  provenance="LIVE/GRAPH")
-        edges = {e["relation_id"]: (p["graph_version_id"], e) for p in paths for e in p["relations"]}
-        evidence = tuple(
-            {"source_id": f"{e['relation_id']}:{i}", "document_id": src["document_id"],
-             "chunk_id": src["chunk_id"], "document_version": src["document_version"],
-             "locator": src["locator"], "quote": src["quote"], "graph_version_id": version,
-             "source_verified": True, "label": "LIVE/GRAPH"}
-            for version, e in edges.values() for i, src in enumerate(e["evidence"])
-        )
+        if self._verify_sources is None:
+            return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
+                                 "GRAPH_SOURCE_READER_NOT_READY", provenance="LIVE/GRAPH")
+        try:
+            evidence = self._verify_sources(paths)
+        except TimeoutError:
+            return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
+                                 "GRAPH_SOURCE_TIMEOUT", provenance="LIVE/GRAPH")
+        except Exception as exc:
+            from ...graph_review.models import SourceProblem
+            if not isinstance(exc, SourceProblem):
+                return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
+                                     "GRAPH_SOURCE_UNAVAILABLE", provenance="LIVE/GRAPH")
+            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
+                                 "GRAPH_SOURCE_MISMATCH", provenance="LIVE/GRAPH")
+        if not evidence:
+            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
+                                 "GRAPH_EVIDENCE_MISSING", provenance="LIVE/GRAPH")
         return AdapterResult(task.id, "GRAPH", "OK", "GRAPH_RELATIONS_OK", evidence=evidence,
                              data=tuple(paths), provenance="LIVE/GRAPH")
 
@@ -458,7 +483,7 @@ def _period_window(periods: list[str]) -> tuple[str | None, str | None]:
     for period in periods:
         match = re.fullmatch(r"(\d{4})(?:-Q([1-4]))?", str(period))
         if not match:
-            continue
+            raise ValueError("Unsupported graph period")
         year, quarter = int(match[1]), match[2]
         if quarter:
             q = int(quarter)

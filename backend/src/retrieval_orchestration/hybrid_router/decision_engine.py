@@ -436,7 +436,8 @@ class DecisionEngine:
             if result.status != "OK":
                 break
         status = next((item.status for item in results if item.status != "OK"), "OK")
-        reason = next((item.reason_code for item in results if item.status != "OK"), "MOCK_EXECUTION_OK")
+        reason = next((item.reason_code for item in results if item.status != "OK"),
+                      results[-1].reason_code if results else "EXECUTION_OK")
         # Determine execution mode from adapter types
         from .adapters import MockGraphAdapter as _MockG, MockContentAdapter as _MockC
         live_adapters = not (isinstance(self.graph_adapter, _MockG) and isinstance(self.content_adapter, _MockC))
