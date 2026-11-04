@@ -12,6 +12,7 @@ from datetime import date
 
 from .contracts import validate_envelope
 from .entities import normalize, text_view
+from .ownership_tables import table_rows
 
 
 _OWN = re.compile(r"\b(?:sở hữu|nắm giữ)\b", re.I)
@@ -239,6 +240,11 @@ def _issuer_entity(document, index):
     if not re.match(r'^\s*' + re.escape(symbol) + r'\s*[—–-]', document.get('title', ''), re.I):
         return None
     matches = list(index.get(text_view(name)[0].strip(), {}).values())
+    if not matches:
+        # The DB company name may be a short form ("Tập đoàn Công nghệ CMC"); the listed
+        # ticker of this report, already checked against its title, identifies the issuer.
+        matches = list({row['entity_id']: row for rows in index.values() for row in rows.values()
+                        if symbol in row.get('ticker_aliases', [])}.values())
     if len(matches) != 1:
         return None
     row = matches[0]
@@ -247,11 +253,13 @@ def _issuer_entity(document, index):
     return _registry_entity(row, name)
 
 
-def extract_candidates(envelope, registry):
+def extract_candidates(envelope, registry, diagnostics=None):
     """Resolve names and add PENDING candidate relations to a 2.1.0 envelope.
 
     All input documents/chunks must already be verified. Ambiguous, negated,
     planned and historical sentences are skipped rather than asserted as facts.
+    diagnostics, when a list, receives ownership-table rows that could not become
+    candidates (unknown name, ambiguous section...) so they are fixed, not lost.
     """
     result = deepcopy(envelope)
     if result['relations'] or result['entities'] or result['mentions']:
@@ -587,6 +595,35 @@ def extract_candidates(envelope, registry):
             evidence = {'document_id': chunk['document_id'], 'chunk_id': chunk['chunk_id'], 'quote': quote}
             record('HAS_SUBSIDIARY', issuer_id, child['entity_id'], attributes,
                    {'as_of': None, 'valid_from': None, 'valid_to': None}, evidence)
+    for row in table_rows(result['chunks'], registry, index):
+        parent = issuers.get(row['document_id']) if row['parent'] == 'ISSUER' else row['parent']
+        reason = row['reason'] or (None if parent else 'ISSUER_UNRESOLVED')
+        if reason is None and parent == row['child']:
+            reason = 'CHILD_IS_PARENT'
+        if reason:
+            if diagnostics is not None:
+                diagnostics.append({k: row[k] for k in ('document_id', 'page', 'chunk_id', 'label', 'line')}
+                                   | {'reason': reason})
+            continue
+        attributes = {'inference_basis': 'ownership_table'}
+        percent = _percent(row['percent'])  # None above 100%, e.g. an OCR "400%"
+        if percent is not None:
+            attributes['ownership_percent'] = percent
+        if row['label'] == 'công ty liên doanh':
+            attributes['relation_label'] = row['label']
+        for entity_id in (parent, row['child']):
+            ensure(entity_id, rows_by_id[entity_id]['canonical_name'])
+        same = next((r for r in relations if (r['relation_type'], r['subject_id'], r['object_id'], r['_document'])
+                     == (row['kind'], parent, row['child'], row['document_id'])), None)
+        if same is not None:
+            # Another rule already states this pair for this report: add the table as evidence
+            # only. A second statement with other attributes would be a false conflict in WBS09,
+            # and changing the first one's attributes would change its reviewed relation_id.
+            same['evidence'] += [e for e in row['evidence'] if e not in same['evidence']]
+            continue
+        for evidence in row['evidence']:
+            record(row['kind'], parent, row['child'], attributes,
+                   {'as_of': row['as_of'], 'valid_from': None, 'valid_to': None}, evidence)
     output = []
     for relation in relations:
         # The report is part of the identity: one pair in two annual reports is two statements.

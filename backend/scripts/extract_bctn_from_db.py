@@ -39,15 +39,21 @@ async def run(args):
     total = 0
     for doc_id, document_rows in sorted(by_document.items()):
         payload = document_envelope(document_rows, args.corpus_version_id)
-        result = extract_candidates(payload, registry)
+        diagnostics = []
+        result = extract_candidates(payload, registry, diagnostics)
         target = targets[doc_id]
         with target.open('x', encoding='utf-8') as handle:
             json.dump(result, handle, ensure_ascii=False, indent=2)
             handle.write('\n')
+        if diagnostics:
+            # Table rows that did not become candidates: extend the registry or fix the source.
+            with target.with_suffix('.diagnostics.json').open('x', encoding='utf-8') as handle:
+                json.dump(diagnostics, handle, ensure_ascii=False, indent=2)
+                handle.write('\n')
         count = len(result['relations'])
         total += count
-        print(f'document={doc_id} chunks={len(document_rows)} pending_candidates={count} output={target}',
-              flush=True)
+        print(f'document={doc_id} chunks={len(document_rows)} pending_candidates={count} '
+              f'unresolved_table_rows={len(diagnostics)} output={target}', flush=True)
     print(f'complete documents={len(by_document)} verified_chunks={len(rows)} pending_candidates={total}')
 
 
@@ -57,7 +63,7 @@ def main():
     parser.add_argument('--document-id', help='Run one complete BCTN; omit for the full corpus')
     parser.add_argument('--output-dir', required=True, type=Path)
     parser.add_argument('--registry', type=Path,
-                        default=Path(__file__).resolve().parents[1] / 'src' / 'sprint4_runtime' / 'company.registry.20261030.r1.json')
+                        default=Path(__file__).resolve().parents[1] / 'src' / 'sprint4_runtime' / 'company.registry.20261104.r2.json')
     args = parser.parse_args()
     try:
         asyncio.run(run(args))

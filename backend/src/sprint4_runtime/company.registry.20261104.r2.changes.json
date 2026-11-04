@@ -1,0 +1,238 @@
+{
+  "base": "company.registry.20261030.r1.json",
+  "result": "company.registry.20261104.r2.json",
+  "id_rule": "New entity_id = 'CMP-' + sha256('finmind-registry-r2|' + identity_key)[:20]; identity_key = 'name:' + casefolded canonical name with punctuation removed.",
+  "source_review": "docs/sprint4/WBS03-FPT-CMG-CTG-source-review-20261104.md",
+  "add_aliases": [
+    {
+      "entity_id": "CMP-bda9e53cfba37e417ef8",
+      "aliases": [
+        "Tập đoàn Công nghệ CMC"
+      ],
+      "source": "DB documents.issuer_company_name of CMG annual reports"
+    },
+    {
+      "entity_id": "CMP-1e129dd1c23200f469a7",
+      "aliases": [
+        "Công ty Cổ phần Chứng khoán VietinBank",
+        "Công ty Cổ phần Chứng khoán Ngân hàng Công thương Việt Nam"
+      ],
+      "source": "CTG BCTN 2025 PDF p.142 note 1 row 2, incl. \"(trước đây là Công ty Cổ phần Chứng khoán Ngân hàng Công thương Việt Nam)\""
+    }
+  ],
+  "remove_aliases": [
+    {
+      "entity_id": "CMP-c8ff5c1af9a79b27bdfb",
+      "aliases": [
+        "VietinBank Leasing"
+      ],
+      "reason": "Name of CTG's leasing subsidiary, not of CTG; moved to that subsidiary below"
+    }
+  ],
+  "add_entities": [
+    {
+      "canonical_name": "Công ty TNHH Phần mềm FPT",
+      "aliases": [
+        "FPT Software"
+      ],
+      "source": "FPT BCTN 2025 PDF p.175 note 1(i); p.32 org chart"
+    },
+    {
+      "canonical_name": "Công ty TNHH FPT IS",
+      "aliases": [],
+      "source": "FPT BCTN 2025 PDF p.175 note 1(i)"
+    },
+    {
+      "canonical_name": "Công ty TNHH Giáo dục FPT",
+      "aliases": [],
+      "source": "FPT BCTN 2025 PDF p.175 note 1(i)"
+    },
+    {
+      "canonical_name": "Công ty Cổ phần Dịch vụ Trực tuyến FPT",
+      "aliases": [],
+      "source": "FPT BCTN 2025 PDF p.175 note 1(i)"
+    },
+    {
+      "canonical_name": "Công ty TNHH Đầu tư FPT",
+      "aliases": [],
+      "source": "FPT BCTN 2025 PDF p.175 note 1(i)"
+    },
+    {
+      "canonical_name": "Công ty TNHH FPT Smart Cloud",
+      "aliases": [],
+      "source": "FPT BCTN 2025 PDF p.175 note 1(i)"
+    },
+    {
+      "canonical_name": "Công ty TNHH FPT Digital",
+      "aliases": [],
+      "source": "FPT BCTN 2025 PDF p.175 note 1(i)"
+    },
+    {
+      "canonical_name": "Công ty Cổ phần Synnex FPT",
+      "aliases": [],
+      "source": "FPT BCTN 2025 PDF p.176 note 1(ii)"
+    },
+    {
+      "canonical_name": "Công ty Cho thuê tài chính TNHH MTV Ngân hàng TMCP Công thương Việt Nam",
+      "aliases": [
+        "VietinBank Leasing"
+      ],
+      "source": "CTG BCTN 2025 PDF p.142 note 1 row 1; p.8"
+    },
+    {
+      "canonical_name": "Công ty TNHH MTV Quản lý nợ và Khai thác Tài sản Ngân hàng TMCP Công thương Việt Nam",
+      "aliases": [
+        "Công ty Quản lý nợ và Khai thác Tài sản Ngân hàng TMCP Công thương Việt Nam"
+      ],
+      "source": "CTG BCTN 2025 PDF p.142 note 1 row 3; p.8"
+    },
+    {
+      "canonical_name": "Tổng Công ty Cổ phần Bảo hiểm - Ngân hàng TMCP Công thương Việt Nam",
+      "aliases": [
+        "Tổng Công ty Cổ phần Bảo hiểm Ngân hàng TMCP Công thương Việt Nam"
+      ],
+      "source": "CTG BCTN 2025 PDF p.142 note 1 row 4; p.8"
+    },
+    {
+      "canonical_name": "Công ty TNHH MTV Vàng bạc Đá quý Ngân hàng TMCP Công thương Việt Nam",
+      "aliases": [
+        "Công ty TNHH Vàng bạc Đá quý Ngân hàng TMCP Công thương Việt Nam"
+      ],
+      "source": "CTG BCTN 2025 PDF p.143 note 1 row 5; p.8"
+    },
+    {
+      "canonical_name": "Công ty TNHH MTV Quản lý Quỹ Ngân hàng TMCP Công thương Việt Nam",
+      "aliases": [],
+      "source": "CTG BCTN 2025 PDF p.143 note 1 row 6; p.8"
+    },
+    {
+      "canonical_name": "Công ty TNHH MTV Chuyển tiền Toàn cầu - Ngân hàng TMCP Công thương Việt Nam",
+      "aliases": [
+        "Công ty TNHH MTV Chuyển tiền Toàn cầu Ngân hàng TMCP Công thương Việt Nam"
+      ],
+      "source": "CTG BCTN 2025 PDF p.143 note 1 row 7; p.8"
+    },
+    {
+      "canonical_name": "Ngân hàng TNHH Công thương Việt Nam tại Lào",
+      "aliases": [],
+      "source": "CTG BCTN 2025 PDF p.143 note 1 row 8"
+    },
+    {
+      "canonical_name": "Ngân hàng TNHH Indovina",
+      "aliases": [
+        "Ngân hàng Liên doanh Indovina"
+      ],
+      "source": "CTG BCTN 2025 PDF p.143 note 1 joint venture; p.8; p.169"
+    },
+    {
+      "canonical_name": "Công ty TNHH Tổng Công ty Công nghệ và Giải pháp CMC",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.7 row 1; notes p.88"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Consulting",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.7 row 2; notes p.88"
+    },
+    {
+      "canonical_name": "Công ty TNHH An ninh an toàn Thông tin CMC",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.8 row 3; notes p.89"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Global",
+      "aliases": [
+        "CMC Global"
+      ],
+      "source": "CMG BCTN 2025 PDF p.8 row 4; notes p.88"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Châu Á Thái Bình Dương",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.8; notes p.89"
+    },
+    {
+      "canonical_name": "Công ty Cổ phần CMC Japan",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.8; notes p.89"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Korea",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.8 (notes p.89 print 'Công ty Cổ phần CMC Korea': legal form not settled)"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Malay",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.8 (identity with 'CMC Global Malaysia SDN.BHD' in notes not settled)"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC North America",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.8"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Deutschland",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.8"
+    },
+    {
+      "canonical_name": "Công ty Cổ phần Hạ tầng Viễn thông CMC",
+      "aliases": [
+        "CMC Telecom"
+      ],
+      "source": "CMG BCTN 2025 PDF p.8 row 5; notes p.88"
+    },
+    {
+      "canonical_name": "Công ty Cổ phần NetNam",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.9 row 6; notes p.109"
+    },
+    {
+      "canonical_name": "Viện Nghiên cứu và Ứng dụng Công nghệ CMC",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.9 row 7; notes p.88"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Invesment",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.9 row 8 (spelling as printed)"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Đà Nẵng",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.9 row 9; notes p.89"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Hòa Lạc",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.9 row 10"
+    },
+    {
+      "canonical_name": "Công ty TNHH CMC Education",
+      "aliases": [
+        "CMC Education"
+      ],
+      "source": "CMG BCTN 2025 PDF p.9 row 11; notes p.89"
+    },
+    {
+      "canonical_name": "Công ty Cổ phần Đầu tư Đại học CMC",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.9; notes p.89"
+    },
+    {
+      "canonical_name": "Trường Đại học CMC",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.9; notes p.89"
+    },
+    {
+      "canonical_name": "Công ty TNHH Hạ tầng số CMC AI",
+      "aliases": [],
+      "source": "CMG BCTN 2025 PDF p.9 row 12; notes p.89"
+    }
+  ],
+  "known_open_issues": [
+    "CMP-7097a7e10282f47ca683 and CMP-7159a1a0f4ea52a1ffd3 both describe Công ty Cổ phần Viễn thông FPT; not merged (identity decision).",
+    "CMC Korea legal form (TNHH vs Cổ phần) and CMC Malay vs CMC Global Malaysia SDN.BHD identity not settled."
+  ]
+}
