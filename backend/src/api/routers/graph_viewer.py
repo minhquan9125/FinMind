@@ -121,7 +121,7 @@ def list_versions(reader: GraphViewerReader = Depends(get_graph_reader)) -> dict
 @router.get("/entities")
 def search_entities(
     graph_version_id: str,
-    q: str = Query(..., min_length=1, max_length=100),
+    q: str = Query("", max_length=100),
     type: str | None = None,
     limit: int = Query(20, ge=1, le=50),
     reader: GraphViewerReader = Depends(get_graph_reader),
