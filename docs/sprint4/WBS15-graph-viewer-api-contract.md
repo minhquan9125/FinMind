@@ -52,7 +52,7 @@ Tìm root (thay `rootOptions` cố định trong `mock.js`).
 | Tham số | Bắt buộc | Mô tả |
 |---|---|---|
 | `graph_version_id` | có | UUID phiên |
-| `q` | có | 1–100 ký tự; mã CK (tra registry → `entity_id`), `entity_id`, hoặc chuỗi con của tên/alias (không phân biệt hoa thường) |
+| `q` | không | 0–100 ký tự; bỏ trống để liệt kê thực thể trong phiên đang chọn. Khi có giá trị: mã CK (tra registry → `entity_id`), `entity_id`, hoặc chuỗi con của tên/alias (không phân biệt hoa thường) |
 | `type` | không | `Company` \| `Person` \| `Event` |
 | `limit` | không | 1–50, mặc định 20 |
 

@@ -56,6 +56,9 @@ class FakeReader:
 
     def entities(self, version, q, entity_type, limit):
         self.calls.append(('entities', q))
+        if not q:
+            items = [dict(n, relation_count=1) for n in NODES.values() if entity_type is None or n['type'] == entity_type]
+            return items[:limit], len(items) > limit
         return [dict(NODES[TCB], relation_count=5)] if q in (TCB, 'tech') else [], False
 
     def neighborhood(self, version, entity_id, **kwargs):
@@ -103,6 +106,21 @@ class GraphViewerApiTests(unittest.TestCase):
         body = client(reader).get('/api/graph/entities', params={'graph_version_id': V, 'q': 'tcb'}).json()
         self.assertEqual(reader.calls[0], ('entities', TCB))
         self.assertEqual(body['items'][0]['ticker'], 'TCB')
+
+    def test_entity_list_without_keyword_is_scoped_and_bounded(self):
+        class Reader(FakeReader):
+            def entities(self, version, q, entity_type, limit):
+                self.list_scope = (version, q, entity_type, limit)
+                return super().entities(version, q, entity_type, limit)
+        reader = Reader()
+        response = client(reader).get('/api/graph/entities', params={
+            'graph_version_id': V, 'type': 'Company', 'limit': 1})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(reader.list_scope, (V, '', 'Company', 1))
+        body = response.json()
+        self.assertEqual(body['meta']['graph_version_id'], V)
+        self.assertEqual(len(body['items']), 1)
+        self.assertTrue(body['truncated'])
 
     def test_neighborhood_shape_matches_contract(self):
         reader = FakeReader()
