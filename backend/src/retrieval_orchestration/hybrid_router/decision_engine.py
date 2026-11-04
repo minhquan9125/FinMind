@@ -78,6 +78,9 @@ class SessionScope:
     entity_mentions: tuple[str, ...] = ()
     confirmed: bool = True
     ambiguous_companies: tuple[str, ...] = ()
+    source_type: str | None = None
+    corpus_version_id: str | None = None
+    index_version_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -359,6 +362,14 @@ class DecisionEngine:
         fixture_case: str | None = None,
     ) -> RouterOutput:
         resolved = self.resolver.resolve(question, context)
+        if context:
+            resolved.scope.source_type=context.source_type
+            resolved.scope.corpus_version_id=context.corpus_version_id
+            resolved.scope.index_version_id=context.index_version_id
+        normalized=_normalize(question)
+        if re.search(r'\b(?:bctn|bao cao thuong nien)\b',normalized):resolved.scope.source_type='BCTN'
+        elif re.search(r'\b(?:bctc|bao cao tai chinh)\b',normalized):resolved.scope.source_type='BCTC'
+        elif re.search(r'\b(?:tin tuc|bai bao)\b',normalized):resolved.scope.source_type='NEWS'
         if resolved.missing_fields:
             return RouterOutput(
                 decision="ASK_CLARIFICATION", route="CLARIFY", scope=resolved.scope,
@@ -441,6 +452,7 @@ class DecisionEngine:
         from .adapters import MockGraphAdapter as _MockG, MockContentAdapter as _MockC
         live_adapters = not (isinstance(self.graph_adapter, _MockG) and isinstance(self.content_adapter, _MockC))
         mode = "LIVE" if live_adapters else "MOCK"
+        if mode=='LIVE' and status=='OK':reason='LIVE_EXECUTION_OK'
         return ExecutionResult(decision, status, reason, tuple(results), execution_mode=mode)
 
     def shadow(

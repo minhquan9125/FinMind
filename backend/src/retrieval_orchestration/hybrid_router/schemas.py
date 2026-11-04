@@ -18,6 +18,9 @@ class RouterScope(BaseModel):
     entity_mentions: list[str] = Field(default_factory=list)
     measure_basis: str | None = None
     reporting_entity: str | None = None
+    source_type: Literal['BCTN','BCTC','NEWS','COMPANY_PROFILE'] | None = None
+    corpus_version_id: str | None = None
+    index_version_id: str | None = None
 
 
 class RouterTask(BaseModel):

@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 from .ranking import BM25Index, TOKENIZER_VERSION, rrf, tokenize
 
 MAX_CACHE_BYTES = 64 * 1024 * 1024
+CACHE_VERSION = 3  # Annual report scope uses report year, never PDF_PAGE_N.
 CACHE_BATCH_SIZE = 500
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
 JOIN = '''FROM public.text_chunks t
@@ -30,7 +31,7 @@ FIELDS = '''t.chunk_id::text,t.document_id::text,t.chunk_index,t.page_number AS 
 t.index_version_id::text,i.chunker_version,d.sha256 AS source_sha256,
 t.content_hash,t.locator_json,d.title,d.doc_type,
 coalesce(c.symbol,t.locator_json->>'symbol') AS company,
-coalesce(p.period_code,t.locator_json->>'period_code',
+coalesce(p.period_code,CASE WHEN d.doc_type='ANNUAL_REPORT' THEN t.locator_json->>'reporting_year' END,t.locator_json->>'period_code',
 t.locator_json->>'published_at',t.locator_json->>'section') AS period,
 coalesce(t.locator_json->>'published_at',t.locator_json->>'period_code',t.locator_json->>'section') AS published_date,
 coalesce(t.locator_json->>'url','') AS source_url,n.symbols'''
@@ -195,7 +196,7 @@ def _write_cache(path, payload):
 def _validate_cache(payload, index_id, model, now, max_age):
     if not isinstance(payload, dict) or set(payload) != {'version','tokenizer','index_id','model','built_at','fingerprint','rows'}:
         raise RetrievalError('INVALID_CACHE')
-    if payload['version'] != 2 or type(payload['version']) is not int or payload['tokenizer'] != TOKENIZER_VERSION:
+    if payload['version'] != CACHE_VERSION or type(payload['version']) is not int or payload['tokenizer'] != TOKENIZER_VERSION:
         raise RetrievalError('CACHE_VERSION_MISMATCH')
     if payload['index_id'] != index_id or payload['model'] != model:
         raise RetrievalError('CACHE_INDEX_MISMATCH')
@@ -385,7 +386,7 @@ class HybridRetriever:
                                 raise RetrievalError('HASH_MISMATCH')
                             meta = _metadata(row)
                             prepared.append(dict(meta,tokens=tokenize(text)))
-            payload=dict(version=2,tokenizer=TOKENIZER_VERSION,index_id=index_id,
+            payload=dict(version=CACHE_VERSION,tokenizer=TOKENIZER_VERSION,index_id=index_id,
                          model=info['embedding_model'],built_at=self.clock(),fingerprint=fingerprint,rows=prepared)
             _validate_cache(payload,index_id,info['embedding_model'],self.clock(),self.max_cache_age)
             _write_cache(cache_path,payload)

@@ -28,6 +28,7 @@ class AdapterResult:
     evidence: tuple[dict[str, Any], ...] = ()
     data: tuple[dict[str, Any], ...] = ()
     provenance: Literal["MOCK/FIXTURE", "LIVE/VECTOR", "LIVE/GRAPH"] = "MOCK/FIXTURE"
+    evidence_pack: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

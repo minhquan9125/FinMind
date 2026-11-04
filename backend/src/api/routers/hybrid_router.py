@@ -11,6 +11,7 @@ from functools import lru_cache
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict, Field
+from typing import Literal
 
 from ...retrieval_orchestration.hybrid_router.decision_engine import (
     ArtifactPredictor,
@@ -25,6 +26,7 @@ from ...retrieval_orchestration.hybrid_router.adapters import (
     MockGraphAdapter,
     UnavailableAdapter,
 )
+from ...retrieval_orchestration.hybrid_router.vector_adapter import VectorRAGAdapter
 from ...core.config import get_settings
 
 logger = logging.getLogger("uvicorn.error")
@@ -39,6 +41,9 @@ class RouterContextPayload(BaseModel):
     metric_code: str | None = None
     detected_industry: str | None = None
     entity_mentions: list[str] = Field(default_factory=list)
+    source_type: Literal['BCTN','BCTC','NEWS','COMPANY_PROFILE'] | None = None
+    corpus_version_id: str | None = None
+    index_version_id: str | None = None
 
 
 class RouterTestRequest(BaseModel):
@@ -59,14 +64,14 @@ def warmup_router() -> None:
     engine.predictor.predict("Tổng tài sản FPT năm 2025?")
 
 
-def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
-    """Build a LiveContentAdapter using the research chat's retriever pool."""
+def _build_live_content_adapter(event_loop) -> VectorRAGAdapter | None:
+    """Bind WBS10 to the research chat's corpus-pinned retriever and cache."""
     try:
         from ...core.config import get_settings
         settings = get_settings()
         index_id = settings.hybrid_router_index_id
-        if not index_id:
-            logger.warning("hybrid_router_index_id not set; LiveContentAdapter unavailable")
+        if not settings.research_corpus_version_id:
+            logger.warning("Pinned corpus not set; Vector adapter unavailable")
             return None
 
         from ...vector_retrieval.backend import HybridRetriever
@@ -80,22 +85,38 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
         cache_path = (
             Path(__file__).resolve().parents[3]
             / "src/vector_retrieval/.cache"
-            / f"{index_id}.json"
+            / f"corpus-{corpus_version_id}.json"
         )
-        retriever = HybridRetriever(
-            pool, embedder, corpus_version_id=corpus_version_id
-        )
+        # Share the existing BM25/retrieval instance; do not load a new index per request.
+        from .research_chat import get_store
+        research=get_store().engine
+        retriever=(research.retriever._hybrid_instance() if research is not None
+                   and research.retriever.corpus_version_id==corpus_version_id else
+                   HybridRetriever(pool, embedder, corpus_version_id=corpus_version_id))
 
-        async def search_fn(question: str, company, period, top_k: int):
+        async def search_fn(question: str, *,company, period, doc_type,top_k: int):
+            active_index=await pool.fetchval('SELECT index_version_id::text FROM corpus_versions WHERE corpus_version_id=$1::uuid',corpus_version_id)
+            if not active_index or index_id and active_index!=index_id:
+                from ...vector_retrieval.backend import RetrievalError
+                raise RetrievalError('VECTOR_VERSION_MISMATCH')
             return await retriever.search(
-                question, index_id, str(cache_path),
-                company=company, period=period,
+                question, active_index, str(cache_path),
+                company=company, period=period,doc_type=doc_type,exact_period=doc_type=='FINANCIAL_STATEMENT' and bool(period),
                 top_k=top_k, candidates=max(top_k * 5, 50),
             )
 
-        return LiveContentAdapter(search_fn, event_loop, top_k=5)
+        adapter=VectorRAGAdapter(search_fn,event_loop,corpus_version_id=corpus_version_id,top_k=5)
+        async def warmup():
+            active_index=await pool.fetchval('SELECT index_version_id::text FROM corpus_versions WHERE corpus_version_id=$1::uuid',corpus_version_id)
+            if not active_index or index_id and active_index!=index_id:
+                from ...vector_retrieval.backend import RetrievalError
+                raise RetrievalError('VECTOR_VERSION_MISMATCH')
+            await asyncio.to_thread(embedder.embed_query,'Khởi tạo truy xuất Vector RAG')
+            return await retriever.prepare_cache(active_index,cache_path)
+        adapter.warmup=warmup
+        return adapter
     except Exception as exc:
-        logger.warning("LiveContentAdapter init failed: %s", exc)
+        logger.warning("Vector adapter init failed (%s)", type(exc).__name__)
         return None
 
 
@@ -133,7 +154,6 @@ def _get_live_engine(event_loop) -> DecisionEngine:
     engine = DecisionEngine(predictor, threshold=predictor.threshold)
 
     content = _build_live_content_adapter(event_loop)
-    graph = _build_live_graph_adapter()
 
     if content is not None:
         engine.content_adapter = content
@@ -142,14 +162,24 @@ def _get_live_engine(event_loop) -> DecisionEngine:
         engine.content_adapter = UnavailableAdapter("CONTENT", "CONTENT_NOT_READY")
         logger.warning("Hybrid router: LiveContentAdapter unavailable")
 
-    if graph is not None:
-        engine.graph_adapter = graph
-        logger.info("Hybrid router: LiveGraphAdapter activated")
-    else:
-        engine.graph_adapter = UnavailableAdapter("GRAPH", "GRAPH_NOT_READY")
-        logger.warning("Hybrid router: LiveGraphAdapter unavailable")
+    # VECTOR must not even open a Neo4j connection. Create it only for a GRAPH task.
+    engine.graph_adapter = _LazyGraphAdapter()
 
     return engine
+
+
+class _LazyGraphAdapter:
+    def __init__(self):self.calls=[]
+
+    def execute(self,task,*,dependency=None):
+        self.calls.append(dict(task_id=task.id,operation=task.operation))
+        adapter=_build_live_graph_adapter()
+        if adapter is None:return UnavailableAdapter('GRAPH','GRAPH_NOT_READY').execute(task,dependency=dependency)
+        try:return adapter.execute(task,dependency=dependency)
+        finally:
+            store=getattr(adapter,'_store',None)
+            driver=getattr(store,'driver',None)
+            if driver is not None:driver.close()
 
 
 @router.post("/test")
@@ -164,6 +194,7 @@ async def test_router(payload: RouterTestRequest) -> dict:
             detected_industry=payload.context.detected_industry,
             entity_mentions=tuple(payload.context.entity_mentions),
             confirmed=True,
+            source_type=payload.context.source_type,corpus_version_id=payload.context.corpus_version_id,index_version_id=payload.context.index_version_id,
         )
     decision = await asyncio.to_thread(
         get_router_engine().decide, payload.question, context=context
@@ -195,6 +226,7 @@ async def run_router(payload: RouterTestRequest) -> dict:
             detected_industry=payload.context.detected_industry,
             entity_mentions=tuple(payload.context.entity_mentions),
             confirmed=True,
+            source_type=payload.context.source_type,corpus_version_id=payload.context.corpus_version_id,index_version_id=payload.context.index_version_id,
         )
 
     if mode == "live":
@@ -221,6 +253,7 @@ async def run_router(payload: RouterTestRequest) -> dict:
                 "provenance": ar.provenance,
                 "evidence_count": len(ar.evidence),
                 "data_count": len(ar.data),
+                "evidence_pack": ar.evidence_pack,
             }
             for ar in result.adapter_results
         ],

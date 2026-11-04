@@ -1,0 +1,10 @@
+backend/src/api/routers/hybrid_router.py
+backend/src/retrieval_orchestration/hybrid_router/adapters.py
+backend/src/retrieval_orchestration/hybrid_router/decision_engine.py
+backend/src/retrieval_orchestration/hybrid_router/schemas.py
+backend/src/retrieval_orchestration/hybrid_router/vector_adapter.py
+backend/src/vector_retrieval/backend.py
+backend/tests/test_vector_router_adapter.py
+backend/scripts/verify_vector_router.py
+docs/graph/WBS10_VECTOR_ROUTER_HANDOFF.md
+docs/graph/PUSH_VECTOR_ROUTER_FILES.txt
