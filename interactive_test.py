@@ -38,6 +38,8 @@ def _next_context(result: dict) -> dict | None:
             "topic", "operation", "route_hint", "reporting_entity", "measure_basis",
             "person_name", "position_code", "event_type")},
         "relation_types": scope.get("relation_types") or [],
+        "reporting_entities": scope.get("reporting_entities") or [],
+        "targets": scope.get("targets") or [],
     }
 
 

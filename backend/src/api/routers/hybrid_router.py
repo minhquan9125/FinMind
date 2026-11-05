@@ -9,6 +9,8 @@ import os
 from pathlib import Path
 from functools import lru_cache
 from typing import Literal
+from dataclasses import replace
+import re
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict, Field
@@ -44,6 +46,8 @@ class RouterContextPayload(BaseModel):
     operation: str | None = None
     route_hint: Literal["VECTOR", "GRAPH", "BOTH"] | None = None
     reporting_entity: str | None = None
+    reporting_entities: list[Literal["CONSOLIDATED", "PARENT"]] = Field(default_factory=list)
+    targets: list[dict] = Field(default_factory=list)
     measure_basis: str | None = None
     person_name: str | None = None
     position_code: str | None = None
@@ -52,7 +56,7 @@ class RouterContextPayload(BaseModel):
 
     def to_session_scope(self) -> SessionScope:
         values = self.model_dump()
-        for key in ("companies", "periods", "entity_mentions", "relation_types"):
+        for key in ("companies", "periods", "entity_mentions", "relation_types", "reporting_entities", "targets"):
             values[key] = tuple(values[key])
         return SessionScope(**values)
 
@@ -69,6 +73,61 @@ def get_router_engine() -> DecisionEngine:
     return DecisionEngine(predictor, threshold=predictor.threshold)
 
 
+async def _coverage_periods(task):
+    """Read real indexed reporting periods from the configured frozen corpus."""
+    from ...core.db import get_pool
+    settings = get_settings()
+    index_id = getattr(settings, "hybrid_router_index_id", None) or None
+    corpus_id = getattr(settings, "research_corpus_version_id", None)
+    if not corpus_id or not task.params.get("companies"):
+        return []
+    async with get_pool().acquire() as conn:
+        async with conn.transaction(readonly=True, isolation="repeatable_read"):
+            rows = await conn.fetch("""
+                SELECT DISTINCT coalesce(p.period_code,t.locator_json->>'period_code') AS period
+                FROM public.text_chunks t
+                JOIN public.documents d USING(document_id)
+                JOIN public.index_versions i USING(index_version_id)
+                JOIN public.corpus_versions cv ON cv.index_version_id=i.index_version_id
+                JOIN public.corpus_documents cd ON cd.corpus_version_id=cv.corpus_version_id
+                  AND cd.document_id=d.document_id AND cd.document_hash=d.sha256
+                LEFT JOIN public.companies c USING(company_id)
+                LEFT JOIN public.reporting_periods p USING(period_id)
+                WHERE ($1::uuid IS NULL OR i.index_version_id=$1::uuid) AND cv.corpus_version_id=$2::uuid
+                  AND i.status='ACTIVE' AND cv.status='FROZEN' AND t.superseded_at IS NULL
+                  AND coalesce(c.symbol,t.locator_json->>'symbol')=ANY($3::text[])
+                  AND d.doc_type=ANY($4::text[])
+            """, index_id, corpus_id, task.params["companies"],
+                ["FINANCIAL_STATEMENT", "ANNUAL_REPORT"] if task.adapter == "GRAPH" else ["FINANCIAL_STATEMENT"])
+    periods = set()
+    requested = (task.params.get("periods") or [""])[0]
+    for row in rows:
+        raw = row["period"] or ""
+        raw = re.sub(r"-YEAR$", "", raw)
+        if not re.fullmatch(r"\d{4}(?:-Q[1-4])?", raw):
+            continue
+        if requested.startswith("LATEST_YEAR-Q") and not raw.endswith(requested[-3:]):
+            continue
+        if requested not in {"LATEST_AVAILABLE_PERIOD", "LATEST_PUBLISHED_PERIOD"} and not requested.startswith("LATEST_YEAR-Q"):
+            continue
+        periods.add(raw)
+    return [max(periods, key=lambda p: (int(p[:4]), int(p[-1]) if "-Q" in p else 4, "-Q" not in p))] if periods else []
+
+
+def _with_coverage(engine, event_loop):
+    settings = get_settings()
+    if not getattr(settings, "research_corpus_version_id", None):
+        return engine
+    def resolve(task):
+        future = asyncio.run_coroutine_threadsafe(_coverage_periods(task), event_loop)
+        try:
+            return future.result(timeout=15)
+        except Exception:
+            future.cancel()
+            raise
+    return replace(engine, period_resolver=resolve)
+
+
 def warmup_router() -> None:
     """Exercise the complete shared embedding and classifier path at startup."""
     engine = get_router_engine()
@@ -81,6 +140,20 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
         from ...core.config import get_settings
         settings = get_settings()
         index_id = settings.hybrid_router_index_id
+        if not index_id and settings.research_corpus_version_id:
+            from ...core.db import get_pool
+            async def corpus_index():
+                async with get_pool().acquire() as conn:
+                    return await conn.fetchval("""SELECT cv.index_version_id::text
+                        FROM corpus_versions cv JOIN index_versions i USING(index_version_id)
+                        WHERE cv.corpus_version_id=$1::uuid AND cv.status='FROZEN' AND i.status='ACTIVE'""",
+                        settings.research_corpus_version_id)
+            future = asyncio.run_coroutine_threadsafe(corpus_index(), event_loop)
+            try:
+                index_id = future.result(timeout=15)
+            except Exception:
+                future.cancel()
+                raise
         if not index_id:
             logger.warning("hybrid_router_index_id not set; LiveContentAdapter unavailable")
             return None
@@ -165,7 +238,7 @@ def _get_live_engine(event_loop) -> DecisionEngine:
         engine.graph_adapter = UnavailableAdapter("GRAPH", "GRAPH_NOT_READY")
         logger.warning("Hybrid router: LiveGraphAdapter unavailable")
 
-    return engine
+    return _with_coverage(engine, event_loop)
 
 
 @router.post("/test")
@@ -174,8 +247,9 @@ async def test_router(payload: RouterTestRequest) -> dict:
     context = None
     if payload.context is not None:
         context = payload.context.to_session_scope()
+    engine = _with_coverage(get_router_engine(), asyncio.get_running_loop())
     decision = await asyncio.to_thread(
-        get_router_engine().decide, payload.question, context=context
+        engine.decide, payload.question, context=context
     )
     return {
         "decision": decision.decision,
@@ -187,6 +261,7 @@ async def test_router(payload: RouterTestRequest) -> dict:
         "model_version": decision.model_version,
         "normalized_question": normalize_router_question(payload.question),
         "tasks": [task.model_dump() for task in decision.tasks],
+        "period_resolution_required": any(t.params.get("period_resolution_required") for t in decision.tasks),
     }
 
 
@@ -204,7 +279,7 @@ async def run_router(payload: RouterTestRequest) -> dict:
         loop = asyncio.get_event_loop()
         engine = await asyncio.to_thread(_get_live_engine, loop)
     else:
-        engine = get_router_engine()
+        engine = _with_coverage(get_router_engine(), asyncio.get_running_loop())
 
     result = await asyncio.to_thread(engine.run, payload.question, context=context)
 

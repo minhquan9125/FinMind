@@ -18,6 +18,8 @@ class RouterScope(BaseModel):
     entity_mentions: list[str] = Field(default_factory=list)
     measure_basis: str | None = None
     reporting_entity: str | None = None
+    reporting_entities: list[Literal["CONSOLIDATED", "PARENT"]] = Field(default_factory=list)
+    targets: list[dict[str, Any]] = Field(default_factory=list)
     person_name: str | None = None
     position_code: str | None = None
     event_type: str | None = None

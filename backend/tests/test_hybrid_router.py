@@ -590,3 +590,163 @@ def test_person_content_question_retains_explicit_company_instead_of_path_ids():
     result = e.run("Chủ tịch FPT chia sẻ gì về chiến lược năm 2025?")
     assert result.status == "OK"
     assert content.calls[0][0].params["companies"] == ["FPT"]
+
+
+@pytest.mark.parametrize("question", [
+    "Doanh thu FPT quý 5", "FPT quý 0", "FPT Q9",
+    "Doanh thu FPT quý 1 năm 2025 và quý 5 năm 2025",
+    "Doanh thu FPT quý 1 và quý 0 năm 2025",
+])
+def test_every_explicit_invalid_quarter_stops_before_retrieval(question):
+    e = engine()
+    result = e.run(question)
+    assert result.decision.route == "CLARIFY"
+    assert result.reason_code == "INVALID_QUARTER"
+    assert not e.graph_adapter.calls and not e.content_adapter.calls
+
+
+@pytest.mark.parametrize("question,expected", [
+    ("FPT năm 2024 quý 1 và năm 2025 quý 2", ["2024-Q1", "2025-Q2"]),
+    ("FPT quý 4 năm 2024 và quý 1 năm 2025", ["2024-Q4", "2025-Q1"]),
+    ("FPT năm 2025 quý 1 và quý 2", ["2025-Q1", "2025-Q2"]),
+    ("FPT Q1/24 và Q2/25", ["2024-Q1", "2025-Q2"]),
+])
+def test_quarter_year_attachment_in_both_orders(question, expected):
+    assert ScopeResolver().resolve(question).scope.periods == expected
+
+
+@pytest.mark.parametrize("question,expected", [
+    ("So sánh doanh thu FPT năm 2024 và VCB năm 2025", [("FPT", "2024"), ("VCB", "2025")]),
+    ("So sánh doanh thu FPT quý 1 năm 2024 và VCB quý 2 năm 2025", [("FPT", "2024-Q1"), ("VCB", "2025-Q2")]),
+    ("Doanh thu FPT quý 1 và quý 2 năm 2025 và VCB quý 3 năm 2024", [("FPT", "2025-Q1"), ("FPT", "2025-Q2"), ("VCB", "2024-Q3")]),
+    ("So sánh doanh thu FPT và VCB năm 2025", [("FPT", "2025"), ("VCB", "2025")]),
+])
+def test_company_period_bindings_survive_the_plan_and_adapter_calls(question, expected):
+    e = engine()
+    result = e.run(question)
+    assert result.decision.route == "VECTOR"
+    actual = [(call["params"]["companies"][0], call["params"]["periods"][0]) for call in e.content_adapter.calls]
+    assert actual == expected
+
+
+def test_missing_local_company_period_does_not_create_extra_pairs():
+    decision = engine().decide("So sánh doanh thu FPT năm 2024 và VCB")
+    assert decision.route == "CLARIFY"
+    assert decision.tasks == []
+
+
+def test_parent_report_and_parent_company_lookup_are_different_intents():
+    report = engine().decide("Doanh thu công ty mẹ FPT năm 2025")
+    assert report.route == "VECTOR"
+    assert report.tasks[0].params["reporting_entity"] == "PARENT"
+    relation = engine().decide("Công ty mẹ của FPT là ai?")
+    assert relation.route == "GRAPH"
+    assert relation.scope.reporting_entity is None
+    report = engine().decide("BCTC công ty mẹ FPT năm 2025")
+    assert report.route == "VECTOR"
+    assert report.scope.reporting_entity == "PARENT"
+
+
+def test_comparing_reporting_entities_keeps_two_separate_tasks():
+    e = engine()
+    result = e.run("So sánh doanh thu hợp nhất và riêng lẻ FPT năm 2025")
+    assert result.decision.scope.reporting_entity is None
+    assert result.decision.scope.reporting_entities == ["CONSOLIDATED", "PARENT"]
+    assert [c["params"]["reporting_entity"] for c in e.content_adapter.calls] == ["CONSOLIDATED", "PARENT"]
+
+
+def test_personnel_followup_changes_company_without_losing_filters():
+    e = engine()
+    first = e.decide("Chủ tịch FPT năm 2025 là ai?")
+    from src.retrieval_orchestration.hybrid_router.decision_engine import SessionScope
+    values = {k: v for k, v in first.scope.model_dump().items() if k in SessionScope.__dataclass_fields__}
+    next_turn = e.decide("Còn VCB?", context=SessionScope(**values))
+    assert next_turn.route == "GRAPH"
+    assert next_turn.scope.companies == ["VCB"]
+    assert next_turn.scope.periods == ["2025"]
+    assert next_turn.scope.position_code == "BOARD_CHAIR"
+
+
+def test_latest_coverage_updates_scope_and_exact_adapter_periods():
+    content = LiveRecorder("CONTENT")
+    e = engine(content_adapter=content, period_resolver=lambda task: ["2025-Q3"])
+    result = e.run("Doanh thu FPT kỳ mới nhất")
+    assert result.status == "OK"
+    assert result.decision.scope.periods == ["2025-Q3"]
+    assert content.calls[0][0].params["periods"] == ["2025-Q3"]
+
+
+def test_api_coverage_is_connected_and_preserves_http_context(monkeypatch):
+    async def coverage(task):
+        assert task.params["companies"] == ["FPT"]
+        return ["2025-Q2"]
+    monkeypatch.setattr(api, "_coverage_periods", coverage)
+    monkeypatch.setattr(api, "get_router_engine", engine)
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(
+        hybrid_router_mode="mock", hybrid_router_index_id="index-fixture", research_corpus_version_id="corpus-fixture"))
+    app = FastAPI()
+    app.include_router(api.router)
+    with TestClient(app) as client:
+        data = client.post("/api/hybrid-router/test", json={"question": "Doanh thu FPT kỳ mới nhất"}).json()
+        assert data["scope"]["periods"] == ["2025-Q2"]
+        assert data["period_resolution_required"] is False
+
+
+def test_live_adapter_never_silently_drops_explicit_reporting_scope():
+    from src.retrieval_orchestration.hybrid_router.adapters import LiveContentAdapter
+    adapter = LiveContentAdapter(None, None)
+    task = engine().decide("Doanh thu riêng lẻ FPT năm 2025").tasks[0]
+    result = adapter.execute(task)
+    assert result.reason_code == "CONTENT_REPORTING_SCOPE_UNSUPPORTED"
+    assert adapter.calls == []
+
+
+def test_company_period_reporting_entities_remain_bound():
+    decision = engine().decide("So sánh doanh thu FPT hợp nhất năm 2024 và VCB riêng lẻ năm 2025")
+    assert [(t.params["companies"], t.params["periods"], t.params["reporting_entity"]) for t in decision.tasks] == [
+        (["FPT"], ["2024"], "CONSOLIDATED"), (["VCB"], ["2025"], "PARENT")]
+
+
+def test_coverage_query_is_frozen_corpus_scoped_and_uses_actual_period_rows(monkeypatch):
+    import asyncio
+    from contextlib import asynccontextmanager
+    from src.core import db
+    from src.retrieval_orchestration.hybrid_router.schemas import RouterTask
+    class Connection:
+        @asynccontextmanager
+        async def transaction(self, **options):
+            assert options == {"readonly": True, "isolation": "repeatable_read"}
+            yield
+        async def fetch(self, sql, *args):
+            assert "cd.document_hash=d.sha256" in sql and "cv.status='FROZEN'" in sql
+            assert "t.superseded_at IS NULL" in sql and "i.status='ACTIVE'" in sql
+            assert args == (None, "corpus-fixture", ["FPT"], ["FINANCIAL_STATEMENT"])
+            return [{"period": p} for p in ["2024-YEAR", "2025-Q1", "2025-Q2", "2027-Q9", None]]
+    class Pool:
+        @asynccontextmanager
+        async def acquire(self):
+            yield Connection()
+    monkeypatch.setattr(db, "get_pool", lambda: Pool())
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(
+        hybrid_router_index_id="", research_corpus_version_id="corpus-fixture"))
+    task = RouterTask(id="v1", adapter="CONTENT", operation="find_metric", params={
+        "companies": ["FPT"], "periods": ["LATEST_AVAILABLE_PERIOD"]})
+    assert asyncio.run(api._coverage_periods(task)) == ["2025-Q2"]
+    task.params["periods"] = ["LATEST_YEAR-Q1"]
+    assert asyncio.run(api._coverage_periods(task)) == ["2025-Q1"]
+
+
+def test_scope_aware_content_callback_receives_reporting_and_basis():
+    import asyncio
+    from src.retrieval_orchestration.hybrid_router.adapters import LiveContentAdapter
+    calls = []
+    async def scoped(question, company, period, top_k, **filters):
+        calls.append((company, period, filters))
+        return {"results": []}
+    async def check():
+        adapter = LiveContentAdapter(None, asyncio.get_running_loop(), scope_search_fn=scoped)
+        task = engine().decide("Doanh thu riêng lẻ FPT năm 2025").tasks[0]
+        result = await asyncio.to_thread(adapter.execute, task)
+        assert result.status == "NO_DATA"
+    asyncio.run(check())
+    assert calls == [("FPT", "2025", {"reporting_entity": "PARENT", "measure_basis": "FULL_YEAR"})]

@@ -34,10 +34,31 @@ this; a new standalone market/knowledge question still resets company scope.
 Calendar years/quarters resolve with the Vietnam clock (`reference_date` is
 injectable for fixtures). Latest/source-dependent periods require an injected
 `DecisionEngine.period_resolver(task) -> list[str]` backed by scoped corpus
-coverage. Before LIVE calls, unresolved/invalid periods stop execution with
+coverage. The API now wires this resolver to indexed document periods in the
+configured frozen corpus, with ACTIVE index, document-hash membership and active
+chunks checked in a read-only transaction. An omitted hybrid index is derived
+from that corpus; no latest year is invented. `/test` returns concrete periods
+when coverage exists and exposes `period_resolution_required` otherwise.
+Before LIVE calls, unresolved/invalid periods stop execution with
 `PERIOD_RESOLUTION_REQUIRED`; they are never silently dropped. Wiring the
-coverage lookup and consuming reporting/personnel filters in adapters remains
-the adapter owner's integration work.
+personnel filters in graph adapters remains the adapter owner's integration work.
+
+Every explicit numeric quarter is checked, including a later invalid quarter.
+Year-before-quarter and quarter-before-year are supported. Company-specific
+period clauses are stored in `scope.targets`; shared periods still expand to
+each requested company. Listing/company-switch follow-ups retain topic, role,
+operation and reporting scope. `reporting_entities` retains both CONSOLIDATED
+and PARENT when compared, with separate tasks; `reporting_entity` is null when
+both are requested. Parent financial reports use VECTOR; parent-company identity
+lookups still use GRAPH.
+
+The live content adapter accepts an optional `scope_search_fn` that receives
+reporting_entity/measure_basis. Without this capability an explicit reporting
+entity returns `CONTENT_REPORTING_SCOPE_UNSUPPORTED` before retrieval, rather
+than searching without the requested filter. Current database statement_scope
+values describe statement sections, so they must not be used as a fabricated
+consolidated/parent mapping. Installing a retrieval implementation that supports
+those metadata filters remains necessary for LIVE report-type comparisons.
 
 For BOTH, the content task declares `company_scope_policy`:
 `RELATED_COMPANIES` requires Graph result rows to supply explicit ticker lists

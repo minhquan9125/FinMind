@@ -71,8 +71,17 @@ def reporting_filters(text: str, periods: list[str], metric: str | None) -> dict
     result = {}
     if re.search(r"\bhop nhat\b", text):
         result["reporting_entity"] = "CONSOLIDATED"
-    if re.search(r"\b(?:rieng le|cong ty me)\b", text):
+    if re.search(r"\brieng le\b", text) or ((metric or contains(text, ("bctc", "bao cao tai chinh"))) and re.search(r"\bcong ty me\b", text)
+                                             and not re.search(r"\bcong ty me (?:cua|la)\b", text)):
         result["reporting_entity"] = "PARENT"
+    entities = []
+    if re.search(r"\bhop nhat\b", text):
+        entities.append("CONSOLIDATED")
+    if result.get("reporting_entity") == "PARENT":
+        entities.append("PARENT")
+    result["reporting_entities"] = entities
+    if len(entities) > 1:
+        result["reporting_entity"] = None
     if re.search(r"\b(?:luy ke|ytd|6 thang|9 thang)\b", text):
         result["measure_basis"] = "YTD"
     elif metric in {"TOTAL_ASSETS", "TOTAL_EQUITY", "LONG_TERM_DEBT"}:
@@ -90,7 +99,13 @@ def explicit_quarters(text: str) -> list[str]:
     result = []
     for index, match in enumerate(matches):
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
-        year = re.search(r"\b(\d{4}|\d{2})\b", text[match.end():end])
+        prefix = re.search(r"\b((?:19|20)\d{2})\s*$", text[:match.start()])
+        suffix = text[match.end():end]
+        year = re.search(r"\b(\d{4}|\d{2})\b", suffix)
+        if year and re.search(r"\bva\s+nam\s+$", suffix[:year.start()]):
+            year = None
+        if prefix:
+            year = prefix
         if not year:
             # Shared trailing year: 'quý 1 và quý 2 năm 2025'.
             year = re.search(r"\b((?:19|20)\d{2})\b", text[match.end():])
@@ -169,6 +184,8 @@ class SessionScope:
     operation: str | None = None
     route_hint: str | None = None
     reporting_entity: str | None = None
+    reporting_entities: tuple[str, ...] = ()
+    targets: tuple[dict, ...] = ()
     measure_basis: str | None = None
     person_name: str | None = None
     position_code: str | None = None
@@ -278,10 +295,8 @@ class ScopeResolver:
                 for key in RouterScope.model_fields if hasattr(context, key)
             })
             return ResolvedInput(question, scope, route_hint=context.route_hint)
-        invalid_quarter = re.search(
-            r"\b(?:quy\s*|q)(\d+)(?:\s+nam)?\s+(\d{2}|\d{4})\b", normalized
-        )
-        if invalid_quarter and int(invalid_quarter.group(1)) not in range(1, 5):
+        quarter_numbers = re.findall(r"\b(?:quy\s*|q)(\d+)\b", normalized)
+        if any(int(q) not in range(1, 5) for q in quarter_numbers):
             return self._clarify(question, RouterScope(), ("periods",), "INVALID_QUARTER",
                                  "Quý chỉ có giá trị từ 1 đến 4. Bạn muốn hỏi quý nào?")
 
@@ -305,6 +320,28 @@ class ScopeResolver:
             if token not in TICKER_STOP_WORDS and token.upper() not in NON_COMPANY_CODES:
                 candidate_hits.append((match.start(1), token.upper()))
         companies = list(dict.fromkeys(company for _, company in sorted(candidate_hits)))
+        # Keep local company/period bindings; never form a Cartesian product
+        # when each company has its own explicit period clause.
+        positions = []
+        for company in companies:
+            aliases = [a for a, ids in self.company_registry.items() if company in ids] + [company]
+            hits = [m.start() for a in aliases for m in re.finditer(rf"\b{re.escape(_normalize(a))}\b", normalized)]
+            if hits:
+                positions.append((company, min(hits)))
+        positions.sort(key=lambda item: item[1])
+        bound_periods = {}
+        bound_reporting = {}
+        for i, (company, start) in enumerate(positions):
+            end = positions[i + 1][1] if i + 1 < len(positions) else len(normalized)
+            # Use normalized alias offsets (raw ticker positions may differ).
+            aliases = [a for a, ids in self.company_registry.items() if company in ids]
+            hits = [m.start() for a in aliases for m in re.finditer(rf"\b{re.escape(_normalize(a))}\b", normalized)]
+            if hits:
+                start = min(hits)
+            local = self._periods(normalized[start:end])
+            if local:
+                bound_periods[company] = local
+            bound_reporting[company] = reporting_filters(normalized[start:end], local, self._metric(normalized)).get("reporting_entities", [])
         detected_industry = next(
             (industry for phrase, industry in sorted(
                 INDUSTRY_KEYWORDS.items(), key=lambda item: len(item[0]), reverse=True
@@ -334,6 +371,15 @@ class ScopeResolver:
         explicit_reference = bool(re.search(
             r"\b(?:con|cung ky|cong ty do|luc nay|no|con nay|ma nay|ben do|ong ay|ma do)\b", normalized,
         ))
+        bare_followup = bool(re.fullmatch(r"con\s+\w+(?:\s+\w+)?", normalized)) and bool(companies)
+        if bare_followup and context and context.confirmed and context.topic and context.route_hint:
+            scope = RouterScope(**{
+                key: list(getattr(context, key)) if isinstance(getattr(context, key), tuple) else getattr(context, key)
+                for key in RouterScope.model_fields if hasattr(context, key)
+            })
+            scope.companies = companies
+            scope.targets = [{**t, "company": companies[0]} for t in scope.targets] if len(companies) == 1 else []
+            return ResolvedInput(question, scope, route_hint=context.route_hint)
         implicit_reference = not companies and not independent_scope and (
             metric is not None or contains(normalized, ("gia", "loi nhuan", "co tuc", "lai", "lo"))
         )
@@ -352,11 +398,25 @@ class ScopeResolver:
                     metric = context.metric_code
                 detected_industry = detected_industry or context.detected_industry
                 entity_mentions = entity_mentions or list(context.entity_mentions)
+            years = {p[:4] for p in context.periods if re.fullmatch(r"\d{4}(?:-Q[1-4])?", p)}
+            if len(years) == 1:
+                periods = [p.replace("LATEST_YEAR", next(iter(years))) for p in periods]
         if metric is None and re.search(r"\bgia\b", normalized) and periods and companies:
             metric = "STOCK_PRICE"
         if metric == "STOCK_PRICE" and not periods:
             periods = ["CURRENT"]
-        intent = resolve_intent(normalized, companies, detected_industry, metric, entity_mentions)
+        intent_text = normalized
+        if (metric or contains(normalized, ("bctc", "bao cao tai chinh"))) and re.search(r"\bcong ty me\b", normalized) and not re.search(r"\bcong ty me (?:cua|la)\b", normalized):
+            intent_text = re.sub(r"\bcong ty me\b", " ", normalized)
+        intent = resolve_intent(intent_text, companies, detected_industry, metric, entity_mentions)
+        inherit_operation = (context and context.confirmed and explicit_reference and not independent_scope
+                             and context.topic and context.route_hint
+                             and not contains(normalized, GRAPH_TERMS + PROFILE_TERMS + CONTENT_TERMS
+                                              + MARKET_ANALYSIS_TERMS + KNOWLEDGE_TERMS))
+        if inherit_operation:
+            from .intent_policy import RetrievalIntent
+            intent = RetrievalIntent(context.route_hint, context.topic, not context.companies)
+            personnel = {k: getattr(context, k) for k in ("person_name", "position_code", "event_type", "relation_types")}
         if personnel.get("person_name"):
             from .intent_policy import RetrievalIntent
             intent = RetrievalIntent("GRAPH", "PERSON_LOOKUP", True)
@@ -366,6 +426,19 @@ class ScopeResolver:
                             topic=intent.topic, detected_industry=detected_industry,
                             entity_mentions=entity_mentions, **personnel,
                             **reporting_filters(normalized, periods, metric))
+        if context and context.confirmed and explicit_reference and not independent_scope and not contains(
+                normalized, ("hop nhat", "rieng le", "cong ty me")):
+            scope.reporting_entity = context.reporting_entity
+            scope.reporting_entities = list(context.reporting_entities)
+        if len(companies) > 1 and len(bound_periods) == len(companies):
+            scope.targets = [{"company": c, "period": p} for c in companies
+                             for p in calendar_periods(bound_periods[c], today)]
+            if any(bound_reporting.values()):
+                for target in scope.targets:
+                    target["reporting_entities"] = bound_reporting[target["company"]]
+        elif len(companies) > 1 and bound_periods and set(bound_periods) != {companies[-1]}:
+            return self._clarify(question, scope, ("periods",), "AMBIGUOUS_COMPANY_PERIOD",
+                                 "Bạn muốn dùng kỳ nào cho từng công ty?")
         if not companies and not detected_industry and not entity_mentions and not intent.company_optional:
             return self._clarify(question, scope, ("companies",), "MISSING_SCOPE", "Bạn muốn hỏi công ty nào?")
         return ResolvedInput(question, scope, route_hint=intent.route)
@@ -525,13 +598,22 @@ class DecisionEngine:
         }
         if route == "VECTOR":
             tasks = []
-            for company in resolved.scope.companies or [None]:
-                for period in resolved.scope.periods or [None]:
+            targets = resolved.scope.targets or [
+                {"company": c, "period": p}
+                for c in resolved.scope.companies or [None]
+                for p in resolved.scope.periods or [None]]
+            for target in targets:
+                entities = (target["reporting_entities"] or [None] if "reporting_entities" in target
+                            else [target["reporting_entity"]] if "reporting_entity" in target
+                            else resolved.scope.reporting_entities or [resolved.scope.reporting_entity])
+                for entity in entities:
+                    company, period = target.get("company"), target.get("period")
                     tasks.append(RouterTask(
                         id=f"v{len(tasks) + 1}", adapter="CONTENT",
                         operation=content_operations.get(topic, "find_metric"),
                         params={**params, "companies": [company] if company else [],
-                                "periods": [period] if period else []},
+                                "periods": [period] if period else [], "reporting_entity": entity,
+                                "period_resolution_required": bool(period and not re.fullmatch(r"\d{4}(?:-Q[1-4])?", period))},
                     ))
         elif route == "GRAPH":
             tasks = [RouterTask(id="g1", adapter="GRAPH", operation="find_relationships", params=params)]
@@ -549,6 +631,22 @@ class DecisionEngine:
                 ), params={**params, "company_scope_policy": company_policy,
                            "resolved_companies": []}, depends_on="g1"),
             ]
+        if self.period_resolver:
+            for task in tasks:
+                if task.params.get("period_resolution_required"):
+                    try:
+                        concrete = self.period_resolver(task)
+                        if not concrete or any(not isinstance(p, str) or not re.fullmatch(r"\d{4}(?:-Q[1-4])?", p) for p in concrete):
+                            raise ValueError("No concrete coverage")
+                        task.params.update(periods=concrete, period_resolution_required=False)
+                    except Exception:
+                        task.params["period_resolution_error"] = "PERIOD_RESOLUTION_REQUIRED"
+            if all(not t.params.get("period_resolution_required") for t in tasks):
+                resolved.scope.periods = list(dict.fromkeys(p for t in tasks for p in t.params.get("periods", [])))
+        if route == "VECTOR":
+            resolved.scope.targets = [{"company": c, "period": p, "reporting_entity": t.params.get("reporting_entity")}
+                                      for t in tasks for c in t.params.get("companies") or [None]
+                                      for p in t.params.get("periods") or [None]]
         resolved.scope.operation = tasks[0].operation
         resolved.scope.route_hint = route
         return RouterOutput(

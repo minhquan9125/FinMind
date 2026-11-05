@@ -212,10 +212,12 @@ class LiveContentAdapter:
         event_loop,  # asyncio.AbstractEventLoop - main event loop
         *,
         top_k: int = 5,
+        scope_search_fn=None,
     ) -> None:
         self._search_fn = search_fn
         self._loop = event_loop
         self._top_k = top_k
+        self._scope_search_fn = scope_search_fn
         self.calls: list[dict] = []
 
     def execute(
@@ -239,6 +241,11 @@ class LiveContentAdapter:
             period,
         ])) or "thong tin tai chinh"
 
+        reporting_entity = task.params.get("reporting_entity")
+        if reporting_entity and self._scope_search_fn is None:
+            return AdapterResult(task.id, "CONTENT", "SYSTEM_UNAVAILABLE",
+                                 "CONTENT_REPORTING_SCOPE_UNSUPPORTED", provenance="LIVE/VECTOR")
+
         self.calls.append({
             "task_id": task.id,
             "operation": task.operation,
@@ -249,8 +256,12 @@ class LiveContentAdapter:
 
         try:
             import asyncio
+            search = (self._scope_search_fn(question, company, period, self._top_k,
+                                           reporting_entity=reporting_entity,
+                                           measure_basis=task.params.get("measure_basis"))
+                      if self._scope_search_fn else self._search_fn(question, company, period, self._top_k))
             future = asyncio.run_coroutine_threadsafe(
-                self._search_fn(question, company, period, self._top_k),
+                search,
                 self._loop,
             )
             result = future.result(timeout=self.TIMEOUT_SECONDS)
