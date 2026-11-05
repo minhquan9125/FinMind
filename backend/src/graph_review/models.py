@@ -58,7 +58,7 @@ class Candidate(StrictModel):
     @model_validator(mode="after")
     def attribute_types(self):
         for key in ("position", "cooperation_scope", "consolidation_basis", "accounting_basis",
-                    "holding_basis", "participant_role", "event_type"):
+                    "holding_basis", "participant_role", "event_type", "relation_label"):
             value = self.attributes.get(key)
             if value is not None and (not isinstance(value, str) or not value.strip()):
                 raise ValueError("Invalid attribute type: " + key)

@@ -175,6 +175,16 @@ class ReviewEngine:
         # types where they are not mandatory (e.g. a subsidiary's ownership %).
         checked_optional=({'ownership_percent'} if candidate.relation_type in
                           {'HAS_SUBSIDIARY','HAS_ASSOCIATE'} else set())
+        if 'relation_label' in attrs:
+            # Validate the subtype against its quote instead of treating an
+            # arbitrary label as unchecked metadata. This does not establish
+            # a parent/child link or authorize joint-venture contract mapping.
+            checked_optional.add('relation_label')
+            label = text_key(attrs['relation_label']) if isinstance(attrs['relation_label'], str) else ''
+            if (candidate.relation_type != 'HAS_ASSOCIATE'
+                    or label not in {'công ty liên doanh', 'công ty liên kết'}
+                    or not any(label in q for q in quotes)):
+                errors.add('ERR_FACT_UNSUPPORTED')
         for field in set(attrs) - METADATA - set(REQUIRED_ATTRIBUTES.get(candidate.relation_type, ())) - checked_optional:
             warnings.add("WARN_UNCHECKED_ATTRIBUTE")
         if attrs.get("organization_link_verified") is False or attrs.get("inference_basis") == "document_issuer":
