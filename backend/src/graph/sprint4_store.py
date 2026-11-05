@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 
 from ..sprint4_runtime.contracts import validate_envelope
+from ..graph_temporal import bounds
 
 
 SCHEMA_FILE = Path(__file__).resolve().parents[2] / 'scripts/init_neo4j_sprint4.cypher'
@@ -99,6 +100,10 @@ def prepare_batch(payload, graph_version_id, batch_id):
             'reviewer': item['review']['reviewer'],
             'reviewed_at': item['review']['reviewed_at'],
         }
+        for field in ('as_of','valid_from','valid_to'):
+            if item['temporal'].get(field+'_precision')=='month':
+                lower,upper=bounds(item['temporal'][field],'month')
+                properties.update({field+'_precision':'month',field+'_lower':lower,field+'_upper':upper})
         properties['fingerprint'] = sha256(_json(properties).encode('utf-8')).hexdigest()
         relations.append({
             'subject_key': _key(version, item['subject_id']),
@@ -272,7 +277,7 @@ class Sprint4GraphStore:
                 {'subject_id': record['subject_id'], 'object_id': record['object_id'],
                  **{key: record['relation'].get(key) for key in
                     ('relation_id', 'relation_type', 'evidence_json', 'as_of',
-                     'valid_from', 'valid_to')}}
+                     'valid_from', 'valid_to','as_of_precision','valid_from_precision','valid_to_precision')}}
                 for record in records
             ]
 

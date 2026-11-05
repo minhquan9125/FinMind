@@ -24,9 +24,9 @@ def index_for_document(document, chunk_words, overlap, model):
     return index_version_id_for(chunk_words, overlap, model)
 
 
-async def resolve_result_rows(conn, rows, *, preview_source_changed=False):
+async def resolve_result_rows(conn, rows, *, preview_source_changed=False, source_cache=None):
     """Rebuild result text exclusively from verified sources."""
-    resolved, sources = [], {}
+    resolved, sources = [], {} if source_cache is None else source_cache
     for record in rows:
         row = dict(record)
         try:

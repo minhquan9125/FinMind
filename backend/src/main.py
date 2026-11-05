@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from .documents.chunk_reconstruction import ReconstructionError
 
-from .api.routers import auth, documents, search, market_data, research_chat, hybrid_router
+from .api.routers import auth, documents, search, market_data, research_chat, hybrid_router, graph_viewer
 from .market_data.app import lifespan as market_lifespan
 from .core.config import get_settings
 from .core.db import connect, disconnect
@@ -114,6 +114,7 @@ app.include_router(auth.router)
 app.include_router(market_data.router)
 app.include_router(research_chat.router)
 app.include_router(hybrid_router.router)
+app.include_router(graph_viewer.router)
 
 @app.get("/")
 async def root() -> dict:
