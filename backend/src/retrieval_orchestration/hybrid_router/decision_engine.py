@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
+from datetime import date, datetime, timedelta, timezone
 import json
 from pathlib import Path
 import re
-from typing import Any, Protocol
+from typing import Any, Callable, Protocol
 import unicodedata
 
 from .adapters import AdapterResult, MockContentAdapter, MockGraphAdapter
@@ -32,6 +33,92 @@ def _normalize(text: str) -> str:
                "kh": "khong", "nhtas": "nhat", "ln": "loi nhuan"}
     return " ".join(aliases.get(token, token) for token in text.split())
 
+
+def personnel_filters(text: str) -> dict:
+    positions = (
+        ("DEPUTY_BOARD_CHAIR", "pho chu tich"),
+        ("AUDIT_CHAIR", "chu tich uy ban kiem toan"),
+        ("BOARD_CHAIR", "chu tich"),
+        ("DEPUTY_CEO", "pho tong giam doc"),
+        ("CEO", "tong giam doc"), ("CEO", "ceo"),
+        ("CFO", "giam doc tai chinh"),
+        ("BOARD_MEMBER", "thanh vien hdqt"),
+    )
+    events = (
+        ("RESIGNATION_REQUESTED", "REQUESTS_RESIGNATION", r"xin tu nhiem|don (?:xin )?tu nhiem"),
+        ("DISMISSED", "DISMISSES", r"mien nhiem|bai nhiem"),
+        ("RESIGNED", "RESIGNS", r"tu nhiem|tu chuc"),
+        ("APPOINTED", "APPOINTS", r"bo nhiem|duoc bau"),
+        ("NOMINATED", "NOMINATED", r"de cu|ung cu"),
+    )
+    result = {}
+    for code, phrase in positions:
+        if re.search(rf"\b{phrase}\b", text):
+            result.update(position_code=code, relation_types=["HOLDS_ROLE"])
+            break
+    for stage, relation, pattern in events:
+        if re.search(rf"\b(?:{pattern})\b", text):
+            result.update(event_type=stage, relation_types=[relation])
+            break
+    # A name is a search mention, never an assertion that this person holds a role.
+    person = re.fullmatch(r"(?:(?:ong|ba) )?([a-z]+(?: [a-z]+){1,5}) la ai", text)
+    if person and not re.search(r"\b(?:chu tich|giam doc|ceo|cong ty|nhan su|co dong|thi truong|doi tac)\b", person[1]):
+        result.update(person_name=person[1], relation_types=["HOLDS_ROLE"])
+    return result
+
+
+def reporting_filters(text: str, periods: list[str], metric: str | None) -> dict:
+    result = {}
+    if re.search(r"\bhop nhat\b", text):
+        result["reporting_entity"] = "CONSOLIDATED"
+    if re.search(r"\b(?:rieng le|cong ty me)\b", text):
+        result["reporting_entity"] = "PARENT"
+    if re.search(r"\b(?:luy ke|ytd|6 thang|9 thang)\b", text):
+        result["measure_basis"] = "YTD"
+    elif metric in {"TOTAL_ASSETS", "TOTAL_EQUITY", "LONG_TERM_DEBT"}:
+        result["measure_basis"] = "POINT_IN_TIME"
+    elif re.search(r"\b(?:rieng quy|quy rieng)\b", text):
+        result["measure_basis"] = "STANDALONE_QUARTER"
+    elif metric and periods and all(re.fullmatch(r"\d{4}", p) for p in periods):
+        result["measure_basis"] = "FULL_YEAR"
+    # A quarter alone cannot establish standalone versus YTD without a source profile.
+    return result
+
+
+def explicit_quarters(text: str) -> list[str]:
+    matches = list(re.finditer(r"\b(?:quy\s*|q)([1-4])\b", text))
+    result = []
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        year = re.search(r"\b(\d{4}|\d{2})\b", text[match.end():end])
+        if not year:
+            # Shared trailing year: 'quý 1 và quý 2 năm 2025'.
+            year = re.search(r"\b((?:19|20)\d{2})\b", text[match.end():])
+        if not year:
+            preceding = re.findall(r"\b((?:19|20)\d{2})\b", text[:match.start()])
+            value = preceding[-1] if preceding else None
+        else:
+            value = year[1]
+        if value:
+            value = "20" + value if len(value) == 2 else value
+            result.append(f"{value}-Q{match[1]}")
+        else:
+            result.append(f"LATEST_YEAR-Q{match[1]}")
+    return list(dict.fromkeys(result))
+
+
+def calendar_periods(periods: list[str], today: date) -> list[str]:
+    quarter = (today.month - 1) // 3
+    resolved = []
+    for period in periods:
+        if period in {"PREVIOUS_YEAR", "CURRENT_YEAR"}:
+            period = str(today.year - (period == "PREVIOUS_YEAR"))
+        elif period in {"CURRENT_QUARTER", "PREVIOUS_QUARTER", "NEXT_QUARTER"}:
+            offset = {"CURRENT_QUARTER": 0, "PREVIOUS_QUARTER": -1, "NEXT_QUARTER": 1}[period]
+            year, q = divmod(today.year * 4 + quarter + offset, 4)
+            period = f"{year}-Q{q + 1}"
+        resolved.append(period)
+    return resolved
 
 class LabelPredictor(Protocol):
     model_version: str
@@ -78,6 +165,15 @@ class SessionScope:
     entity_mentions: tuple[str, ...] = ()
     confirmed: bool = True
     ambiguous_companies: tuple[str, ...] = ()
+    topic: str | None = None
+    operation: str | None = None
+    route_hint: str | None = None
+    reporting_entity: str | None = None
+    measure_basis: str | None = None
+    person_name: str | None = None
+    position_code: str | None = None
+    event_type: str | None = None
+    relation_types: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -162,13 +258,26 @@ TICKER_STOP_WORDS = set(" ".join(
 
 
 class ScopeResolver:
-    def __init__(self, company_registry: dict[str, tuple[str, ...]] | None = None) -> None:
+    def __init__(self, company_registry: dict[str, tuple[str, ...]] | None = None,
+                 *, reference_date: date | None = None) -> None:
         self.company_registry = company_registry or DEFAULT_COMPANIES
+        self.reference_date = reference_date
 
     def resolve(self, question: str, context: SessionScope | None = None) -> ResolvedInput:
         if not isinstance(question, str) or not question.strip():
             raise ValueError("question must be a nonempty string")
         normalized = _normalize(question)
+        list_followup = bool(re.fullmatch(
+            r"(?:co the )?(?:liet ke|ke|cho xem danh sach)(?: ra)?(?: khong)?", normalized))
+        if list_followup and context and context.confirmed and context.topic and context.operation and context.route_hint:
+            if context.ambiguous_companies:
+                return self._clarify(question, RouterScope(), ("companies",), "AMBIGUOUS_CONTEXT",
+                                     "Bạn muốn liệt kê cho công ty nào?")
+            scope = RouterScope(**{
+                key: list(getattr(context, key)) if isinstance(getattr(context, key), tuple) else getattr(context, key)
+                for key in RouterScope.model_fields if hasattr(context, key)
+            })
+            return ResolvedInput(question, scope, route_hint=context.route_hint)
         invalid_quarter = re.search(
             r"\b(?:quy\s*|q)(\d+)(?:\s+nam)?\s+(\d{2}|\d{4})\b", normalized
         )
@@ -201,7 +310,10 @@ class ScopeResolver:
                 INDUSTRY_KEYWORDS.items(), key=lambda item: len(item[0]), reverse=True
             ) if re.search(rf"\b{re.escape(phrase)}\b", normalized)), None,
         )
+        personnel = personnel_filters(normalized)
         entity_mentions: list[str] = []
+        if personnel.get("person_name"):
+            entity_mentions.append(personnel["person_name"])
         if contains(normalized, EVENT_TERMS):
             event_prefix = re.search(
                 r"^(.{2,80}?)\s+(?:bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b", normalized,
@@ -211,7 +323,11 @@ class ScopeResolver:
                 if 2 <= len(mention.split()) <= 6:
                     entity_mentions.append(mention)
 
-        periods = self._periods(normalized)
+        today = self.reference_date or datetime.now(timezone(timedelta(hours=7))).date()
+        periods = calendar_periods(self._periods(normalized), today)
+        if contains(normalized, ("nam ngoai", "nam nay")):
+            year = today.year - int(contains(normalized, ("nam ngoai",)))
+            periods = [p.replace("LATEST_YEAR", str(year)) for p in periods]
         metric = self._metric(normalized)
         # A new global/conceptual question must never inherit yesterday's ticker.
         independent_scope = contains(normalized, MARKET_TERMS + KNOWLEDGE_TERMS)
@@ -241,17 +357,24 @@ class ScopeResolver:
         if metric == "STOCK_PRICE" and not periods:
             periods = ["CURRENT"]
         intent = resolve_intent(normalized, companies, detected_industry, metric, entity_mentions)
+        if personnel.get("person_name"):
+            from .intent_policy import RetrievalIntent
+            intent = RetrievalIntent("GRAPH", "PERSON_LOOKUP", True)
         if not periods and intent.topic not in {"COMPANY_PROFILE", "INVESTING_KNOWLEDGE", "PORTFOLIO_EDUCATION"}:
             periods = ["LATEST_AVAILABLE_PERIOD"]
         scope = RouterScope(companies=companies, periods=periods, metric_code=metric,
                             topic=intent.topic, detected_industry=detected_industry,
-                            entity_mentions=entity_mentions)
+                            entity_mentions=entity_mentions, **personnel,
+                            **reporting_filters(normalized, periods, metric))
         if not companies and not detected_industry and not entity_mentions and not intent.company_optional:
             return self._clarify(question, scope, ("companies",), "MISSING_SCOPE", "Bạn muốn hỏi công ty nào?")
         return ResolvedInput(question, scope, route_hint=intent.route)
 
     @staticmethod
     def _periods(normalized: str) -> list[str]:
+        quarters = explicit_quarters(normalized)
+        if quarters:
+            return quarters
         quarter = re.search(r"\b(?:quy\s*|q)([1-4])(?:\s+nam)?\s+(\d{4})\b", normalized)
         if quarter:
             return [f"{quarter.group(2)}-Q{quarter.group(1)}"]
@@ -283,6 +406,7 @@ class ScopeResolver:
             "hien gio": "CURRENT",
             "bay gio": "CURRENT",
             "moi nhat": "LATEST_PUBLISHED_PERIOD",
+            "ky moi nhat": "LATEST_AVAILABLE_PERIOD",
             "ky bao cao gan nhat": "LATEST_AVAILABLE_PERIOD",
             "ky gan nhat": "LATEST_AVAILABLE_PERIOD",
             "ky vua cong bo": "LATEST_PUBLISHED_PERIOD",
@@ -349,6 +473,8 @@ class DecisionEngine:
     resolver: ScopeResolver = field(default_factory=ScopeResolver)
     graph_adapter: Any = field(default_factory=MockGraphAdapter)
     content_adapter: Any = field(default_factory=MockContentAdapter)
+    # Inject a coverage-aware resolver; latest is never guessed from today's date.
+    period_resolver: Callable[[RouterTask], list[str]] | None = None
 
     def decide(
         self,
@@ -384,6 +510,10 @@ class DecisionEngine:
                   "retrieval_question": normalize_user_text(question)}
         if fixture_case:
             params["fixture_case"] = fixture_case
+        params["period_resolution_required"] = any(
+            not re.fullmatch(r"\d{4}(?:-Q[1-4])?", period)
+            for period in resolved.scope.periods
+        )
         topic = resolved.scope.topic
         content_operations = {
             "MARKET_DAILY_DIGEST": "find_daily_market_digest",
@@ -394,11 +524,21 @@ class DecisionEngine:
             "SECTOR_RESEARCH": "find_sector_research",
         }
         if route == "VECTOR":
-            tasks = [RouterTask(id="v1", adapter="CONTENT",
-                                operation=content_operations.get(topic, "find_metric"), params=params)]
+            tasks = []
+            for company in resolved.scope.companies or [None]:
+                for period in resolved.scope.periods or [None]:
+                    tasks.append(RouterTask(
+                        id=f"v{len(tasks) + 1}", adapter="CONTENT",
+                        operation=content_operations.get(topic, "find_metric"),
+                        params={**params, "companies": [company] if company else [],
+                                "periods": [period] if period else []},
+                    ))
         elif route == "GRAPH":
             tasks = [RouterTask(id="g1", adapter="GRAPH", operation="find_relationships", params=params)]
         else:
+            company_policy = ("RELATED_COMPANIES" if contains(_normalize(question),
+                              ("cong ty con", "cong ty lien ket", "don vi thanh vien"))
+                              else "EXPLICIT_OR_RESOLVED")
             tasks = [
                 RouterTask(id="g1", adapter="GRAPH", operation=(
                     "resolve_event_entities" if topic == "EVENT_IMPACT" else "find_relationships"
@@ -406,8 +546,11 @@ class DecisionEngine:
                 RouterTask(id="v1", adapter="CONTENT", operation=(
                     "compare_company_overview" if topic == "OVERALL_COMPARISON"
                     else "analyze_event_impact" if topic == "EVENT_IMPACT" else "find_metric"
-                ), params=params, depends_on="g1"),
+                ), params={**params, "company_scope_policy": company_policy,
+                           "resolved_companies": []}, depends_on="g1"),
             ]
+        resolved.scope.operation = tasks[0].operation
+        resolved.scope.route_hint = route
         return RouterOutput(
             decision="SEARCH", route=route, scope=resolved.scope, tasks=tasks,
             request_id=request_id, reason_code="INTENT_POLICY" if resolved.route_hint else "CLASSIFIER_ROUTE",
@@ -429,8 +572,60 @@ class DecisionEngine:
             dependency = by_id.get(task.depends_on) if task.depends_on else None
             if dependency is not None and dependency.status != "OK":
                 break
+            # Resolve symbolic periods before either LIVE adapter can drop a filter.
+            from .adapters import MockGraphAdapter, MockContentAdapter
             adapter = self.graph_adapter if task.adapter == "GRAPH" else self.content_adapter
-            result = adapter.execute(task, dependency=dependency)
+            if task.params.get("period_resolution_required") and not isinstance(adapter, (MockGraphAdapter, MockContentAdapter)):
+                try:
+                    periods = self.period_resolver(task) if self.period_resolver else []
+                except Exception:
+                    periods = []
+                if not periods or any(not isinstance(p, str) or not re.fullmatch(r"\d{4}(?:-Q[1-4])?", p) for p in periods):
+                    return ExecutionResult(decision, "SYSTEM_UNAVAILABLE", "PERIOD_RESOLUTION_REQUIRED",
+                                           tuple(results), execution_mode="LIVE")
+                task = task.model_copy(update={"params": {**task.params, "periods": periods,
+                                                          "period_resolution_required": False}})
+            if dependency is not None and dependency.provenance != "MOCK/FIXTURE":
+                # Only adapter-declared ticker mappings may cross this seam.
+                # Relation IDs, person IDs and path endpoints are never ticker guesses.
+                declared = [c for row in dependency.data
+                            if isinstance(row.get("resolved_companies"), list)
+                            for c in row["resolved_companies"]
+                            if isinstance(c, str) and re.fullmatch(r"[A-Z][A-Z0-9]{2,4}", c)]
+                companies = list(dict.fromkeys(declared))
+                if task.params.get("company_scope_policy") == "EXPLICIT_OR_RESOLVED":
+                    companies = list(task.params.get("companies") or companies)
+                if not companies:
+                    return ExecutionResult(decision, "INSUFFICIENT_EVIDENCE", "GRAPH_COMPANY_MAPPING_REQUIRED",
+                                           tuple(results), execution_mode="LIVE")
+                task = task.model_copy(update={"params": {**task.params, "companies": companies,
+                                                          "resolved_companies": companies}})
+                # Legacy content adapters consume company_id from dependency.data.
+                dependency = replace(dependency, data=tuple({"company_id": c} for c in companies))
+            adapter = self.graph_adapter if task.adapter == "GRAPH" else self.content_adapter
+            if task.adapter != "GRAPH" and not isinstance(adapter, MockContentAdapter):
+                # Current content adapter accepts one exact company/period per call.
+                partials = []
+                for company in task.params.get("companies") or [None]:
+                    for period in task.params.get("periods") or [None]:
+                        single = task.model_copy(update={"params": {
+                            **task.params, "companies": [company] if company else [],
+                            "resolved_companies": [company] if company else [],
+                            "periods": [period] if period else [],
+                        }})
+                        single_dependency = replace(dependency, data=({"company_id": company},)) if dependency else None
+                        part = adapter.execute(single, dependency=single_dependency)
+                        partials.append(part)
+                        if part.status != "OK":
+                            break
+                    if partials[-1].status != "OK":
+                        break
+                failure = next((p for p in partials if p.status != "OK"), None)
+                result = failure or replace(partials[0],
+                    data=tuple(row for p in partials for row in p.data),
+                    evidence=tuple(row for p in partials for row in p.evidence))
+            else:
+                result = adapter.execute(task, dependency=dependency)
             results.append(result)
             by_id[task.id] = result
             if result.status != "OK":

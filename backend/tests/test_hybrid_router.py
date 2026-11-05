@@ -1,6 +1,14 @@
 """Step 11 acceptance tests for all 30 Section 6 router fixtures."""
 
 from dataclasses import dataclass
+from datetime import date
+from types import SimpleNamespace
+
+from fastapi import FastAPI
+from fastapi.testclient import TestClient
+
+from src.api.routers import hybrid_router as api
+from src.retrieval_orchestration.hybrid_router.adapters import AdapterResult
 import json
 from pathlib import Path
 
@@ -154,12 +162,12 @@ def test_c05_ambiguous_conversation_context_does_not_retrieve():
     assert not engine.content_adapter.calls
 
 
-def test_mixed_company_requests_have_a_two_source_plan():
+def test_numeric_company_requests_have_independent_content_tasks():
     engine = DecisionEngine(StubPredictor((0.1, 0.9)))
     result = engine.run("Cho tôi doanh thu FPT năm 2025 và giá VCB mới nhất.")
-    assert result.decision.route == "BOTH"
+    assert result.decision.route == "VECTOR"
     assert result.decision.scope.companies == ["FPT", "VCB"]
-    assert result.decision.tasks[1].depends_on == "g1"
+    assert all(t.adapter == "CONTENT" and t.depends_on is None for t in result.decision.tasks)
 
 
 def test_complete_scope_with_zero_zero_uses_stronger_label_without_clarifying():
@@ -290,7 +298,7 @@ def test_router_accepts_relative_market_ranges(question, period):
 def test_comparison_accepts_two_companies_and_defaults_to_overall_when_metric_missing():
     engine = DecisionEngine(StubPredictor((0.1, 0.9)))
     resolved = engine.decide("So sánh doanh thu FPT và CMG năm 2025")
-    assert resolved.route == "BOTH"
+    assert resolved.route == "VECTOR"
     assert resolved.scope.companies == ["FPT", "CMG"]
     unclear = engine.decide("So sánh FPT và CMG năm 2025")
     assert unclear.route == "BOTH"
@@ -412,3 +420,173 @@ def test_shadow_records_prediction_without_changing_live_or_calling_adapters():
     assert record.model_version == "fixture-model"
     assert record.adapter_calls == 0
     assert not engine.graph_adapter.calls and not engine.content_adapter.calls
+
+
+# Regression checks for the eight router scope/plan review findings.
+
+class Predictor:
+    model_version = "scope-review-fixture"
+
+    def predict(self, question):
+        raise AssertionError("These explicit intents must not need the classifier")
+
+
+def engine(**kwargs):
+    return DecisionEngine(Predictor(), resolver=ScopeResolver(reference_date=date(2026, 11, 5)), **kwargs)
+
+
+def test_numeric_comparison_does_not_wait_for_graph():
+    e = engine()
+    result = e.run("So sánh doanh thu FPT và VCB năm 2025")
+    assert result.decision.route == "VECTOR"
+    assert not e.graph_adapter.calls
+    assert [c["params"]["companies"] for c in e.content_adapter.calls] == [["FPT"], ["VCB"]]
+
+
+@pytest.mark.parametrize("question,periods", [
+    ("Doanh thu FPT quý 1 và quý 2 năm 2025", ["2025-Q1", "2025-Q2"]),
+    ("Doanh thu FPT quý 4 năm 2024 và quý 1 năm 2025", ["2024-Q4", "2025-Q1"]),
+    ("Doanh thu FPT năm 2025 quý 1 và quý 2", ["2025-Q1", "2025-Q2"]),
+])
+def test_every_quarter_is_preserved_in_scope_and_execution(question, periods):
+    e = engine()
+    result = e.run(question)
+    assert result.decision.scope.periods == periods
+    assert [c["params"]["periods"] for c in e.content_adapter.calls] == [[p] for p in periods]
+
+
+@pytest.mark.parametrize("question,entity,basis", [
+    ("Doanh thu hợp nhất FPT năm 2025", "CONSOLIDATED", "FULL_YEAR"),
+    ("Doanh thu riêng lẻ FPT riêng quý 2 năm 2025", "PARENT", "STANDALONE_QUARTER"),
+    ("Doanh thu hợp nhất FPT lũy kế quý 2 năm 2025", "CONSOLIDATED", "YTD"),
+    ("Tổng tài sản riêng lẻ VCB năm 2025", "PARENT", "POINT_IN_TIME"),
+])
+def test_reporting_scope_reaches_task_params(question, entity, basis):
+    result = engine().decide(question)
+    assert result.scope.reporting_entity == entity
+    assert result.scope.measure_basis == basis
+    assert result.tasks[0].params["reporting_entity"] == entity
+    assert result.tasks[0].params["measure_basis"] == basis
+
+
+def test_quarter_basis_is_not_guessed_from_reporting_entity():
+    result = engine().decide("Doanh thu hợp nhất FPT quý 2 năm 2025")
+    assert result.scope.measure_basis is None
+
+
+class LiveRecorder:
+    def __init__(self, adapter, data=()):
+        self.adapter = adapter
+        self.data = data
+        self.calls = []
+
+    def execute(self, task, *, dependency=None):
+        self.calls.append((task, dependency))
+        return AdapterResult(task.id, self.adapter, "OK", "RECORDED", data=self.data,
+                             provenance="LIVE/GRAPH" if self.adapter == "GRAPH" else "LIVE/VECTOR")
+
+
+def test_previous_year_uses_fixed_vietnam_calendar():
+    assert engine().decide("Doanh thu FPT năm ngoái").scope.periods == ["2025"]
+    assert engine().decide("Doanh thu FPT quý 1 năm ngoái").scope.periods == ["2025-Q1"]
+
+
+def test_previous_quarter_crosses_calendar_year():
+    e = DecisionEngine(Predictor(), resolver=ScopeResolver(reference_date=date(2026, 1, 2)))
+    assert e.decide("Doanh thu FPT quý trước").scope.periods == ["2025-Q4"]
+
+
+def test_coverage_resolver_cannot_pass_symbolic_period_to_live():
+    recorder = LiveRecorder("CONTENT")
+    e = engine(content_adapter=recorder, period_resolver=lambda task: ["LATEST_AVAILABLE_PERIOD"])
+    assert e.run("Doanh thu FPT kỳ mới nhất").reason_code == "PERIOD_RESOLUTION_REQUIRED"
+    assert recorder.calls == []
+
+
+@pytest.mark.parametrize("question,adapter", [
+    ("Doanh thu FPT kỳ mới nhất", "CONTENT"),
+    ("Chủ tịch VCB là ai", "GRAPH"),
+])
+def test_live_latest_requires_coverage_before_any_adapter_call(question, adapter):
+    recorder = LiveRecorder(adapter)
+    e = engine(**{"content_adapter" if adapter == "CONTENT" else "graph_adapter": recorder})
+    assert e.run(question).reason_code == "PERIOD_RESOLUTION_REQUIRED"
+    assert recorder.calls == []
+    e.period_resolver = lambda task: ["2025"]
+    assert e.run(question).status == "OK"
+    assert recorder.calls[0][0].params["periods"] == ["2025"]
+
+
+def test_followup_roundtrips_http_context_and_keeps_topic_operation_filters(monkeypatch):
+    monkeypatch.setattr(api, "get_router_engine", engine)
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(hybrid_router_mode="mock"))
+    app = FastAPI()
+    app.include_router(api.router)
+    with TestClient(app) as client:
+        first = client.post("/api/hybrid-router/test", json={"question": "Nhân sự FPT năm 2025"}).json()
+        context = {k: v for k, v in first["scope"].items() if k in api.RouterContextPayload.model_fields}
+        for endpoint in ("test", "run"):
+            response = client.post(f"/api/hybrid-router/{endpoint}", json={
+                "question": "Có thể liệt kê ra không?", "context": context})
+            assert response.status_code == 200
+            result = response.json()
+            assert result["route"] == "GRAPH"
+            for key in ("companies", "periods", "topic", "operation"):
+                assert result["scope"][key] == first["scope"][key]
+        assert client.post("/api/hybrid-router/test", json={
+            "question": "Có thể liệt kê ra không?"}).json()["route"] == "CLARIFY"
+        assert client.post("/api/hybrid-router/test", json={
+            "question": "DCA là gì", "context": context}).json()["scope"]["companies"] == []
+
+
+@pytest.mark.parametrize("question,event,relation", [
+    ("FPT bổ nhiệm ai năm 2025?", "APPOINTED", "APPOINTS"),
+    ("FPT miễn nhiệm ai năm 2025?", "DISMISSED", "DISMISSES"),
+    ("Ai xin từ nhiệm ở FPT năm 2025?", "RESIGNATION_REQUESTED", "REQUESTS_RESIGNATION"),
+    ("Ai từ nhiệm ở FPT năm 2025?", "RESIGNED", "RESIGNS"),
+])
+def test_personnel_event_stage_is_explicit(question, event, relation):
+    result = engine().decide(question)
+    assert result.route == "GRAPH"
+    assert result.scope.event_type == event
+    assert result.tasks[0].params["relation_types"] == [relation]
+
+
+def test_person_mention_is_not_a_guessed_company():
+    result = engine().decide("Nguyễn Mạnh Hải là ai?")
+    assert result.route == "GRAPH"
+    assert result.scope.companies == []
+    assert result.scope.person_name == "nguyen manh hai"
+    assert result.scope.entity_mentions == ["nguyen manh hai"]
+
+
+def test_role_filter_is_specific_and_deputy_is_not_chair():
+    for question, position in [("Chủ tịch VCB là ai?", "BOARD_CHAIR"),
+                               ("Phó chủ tịch VCB là ai?", "DEPUTY_BOARD_CHAIR")]:
+        result = engine().decide(question)
+        assert result.route == "GRAPH"
+        assert result.tasks[0].params["position_code"] == position
+        assert result.tasks[0].params["relation_types"] == ["HOLDS_ROLE"]
+
+
+def test_graph_paths_without_ticker_mapping_never_become_vector_company_ids():
+    graph = LiveRecorder("GRAPH", ({"path": ["PERSON-1", "CMP-1"]},))
+    content = LiveRecorder("CONTENT")
+    e = engine(graph_adapter=graph, content_adapter=content)
+    result = e.run("Doanh thu công ty con FPT năm 2025")
+    assert result.reason_code == "GRAPH_COMPANY_MAPPING_REQUIRED"
+    assert content.calls == []
+    graph.data = ({"resolved_companies": ["CMG", "ELC"]},)
+    result = e.run("Doanh thu công ty con FPT năm 2025")
+    assert result.status == "OK"
+    assert [call[0].params["resolved_companies"] for call in content.calls] == [["CMG"], ["ELC"]]
+    assert [call[1].data for call in content.calls] == [({"company_id": "CMG"},), ({"company_id": "ELC"},)]
+
+
+def test_person_content_question_retains_explicit_company_instead_of_path_ids():
+    graph = LiveRecorder("GRAPH", ({"path": ["PERSON-1", "CMP-1"]},))
+    content = LiveRecorder("CONTENT")
+    e = engine(graph_adapter=graph, content_adapter=content)
+    result = e.run("Chủ tịch FPT chia sẻ gì về chiến lược năm 2025?")
+    assert result.status == "OK"
+    assert content.calls[0][0].params["companies"] == ["FPT"]

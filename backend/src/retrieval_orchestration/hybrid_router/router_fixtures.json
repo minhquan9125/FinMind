@@ -2293,7 +2293,7 @@
     {
       "id": "RF11",
       "question": "Masan với Thế Giới Di Động bên nào doanh thu cao hơn?",
-      "expected_route": "BOTH",
+      "expected_route": "VECTOR",
       "expected_companies": ["MSN", "MWG"],
       "tags": ["refactor", "brand_alias", "comparison"]
     },

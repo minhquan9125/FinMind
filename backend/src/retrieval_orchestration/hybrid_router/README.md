@@ -10,10 +10,47 @@ does not by itself make a market, sector or knowledge question ambiguous.
 | --- | --- |
 | VECTOR | Financial metrics/dividends, price explanations, forecasts, market views, investing knowledge and portfolio education |
 | GRAPH | Leadership, ownership, subsidiaries and company business fields without a second content request |
-| BOTH | Entity discovery followed by content, multiple companies, industry impact/beneficiary discovery, event verification |
+| BOTH | Entity discovery followed by content, overall company comparison, industry impact/beneficiary discovery, event verification |
 | CLARIFY | Missing or genuinely ambiguous target/context, or an invalid explicit reporting period |
 
 Business policy takes priority over classifier scores for recognized intents.
+Numeric-only comparisons use VECTOR, with separate content tasks for every
+company and period; they do not wait for Graph. Explicit multi-quarter inputs
+retain all year–quarter pairs.
+
+### Scope/context handoff (2026-11-05)
+
+The router emits `reporting_entity` (`CONSOLIDATED`/`PARENT`) and
+`measure_basis` when established by the question. A bare quarter does not prove
+standalone versus YTD. Personnel task parameters include `person_name`,
+`position_code`, `event_type` and `relation_types`; codes follow the existing
+person-role rules. A resignation request is `RESIGNATION_REQUESTED`, not a
+completed dismissal. These are query filters, not extracted facts.
+
+Clients must round-trip `topic`, `operation`, `route_hint` and the scope filters
+alongside companies/periods for listing follow-ups. The interactive client does
+this; a new standalone market/knowledge question still resets company scope.
+
+Calendar years/quarters resolve with the Vietnam clock (`reference_date` is
+injectable for fixtures). Latest/source-dependent periods require an injected
+`DecisionEngine.period_resolver(task) -> list[str]` backed by scoped corpus
+coverage. Before LIVE calls, unresolved/invalid periods stop execution with
+`PERIOD_RESOLUTION_REQUIRED`; they are never silently dropped. Wiring the
+coverage lookup and consuming reporting/personnel filters in adapters remains
+the adapter owner's integration work.
+
+For BOTH, the content task declares `company_scope_policy`:
+`RELATED_COMPANIES` requires Graph result rows to supply explicit ticker lists
+in `resolved_companies`; `EXPLICIT_OR_RESOLVED` keeps explicitly requested
+companies, otherwise uses those lists. Person IDs, relation IDs and path nodes
+are never guessed as tickers. Missing mapping stops before Vector with
+`GRAPH_COMPANY_MAPPING_REQUIRED`. The engine bridges declared tickers into the
+current content dependency format and executes one company/period per call.
+The existing Graph adapter still needs to populate this mapping for discovered
+companies; no adapter, metadata or extractor implementation is changed here.
+
+Regression suite for this handoff: `backend/tests/test_hybrid_router.py`.
+
 The existing pinned BGE-M3 + Logistic Regression classifier remains the fallback
 for resolved questions without a policy match; model artifacts were not retrained.
 Original questions are retained in every task. Forecast/partial period tokens

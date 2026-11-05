@@ -39,6 +39,7 @@ MARKET_ANALYSIS_TERMS = (
     "nhu nao", "dao nay", "gan day", "may phien", "bat day", "vao hang",
 )
 GRAPH_TERMS = (
+    "nhan su", "bo nhiem", "mien nhiem", "bai nhiem", "tu nhiem", "tu chuc",
     "cong ty con", "cong ty lien ket", "cong ty me", "don vi thanh vien",
     "he sinh thai", "so huu", "co dong", "ban lanh dao", "chu tich", "ceo",
     "tong giam doc", "giam doc", "sep lon", "nam quyen", "giu ghe",
@@ -102,6 +103,8 @@ def resolve_intent(text, companies, industry, metric=None, entity_mentions=()):
     macro = contains(text, MACRO_TERMS)
     analysis = contains(text, MARKET_ANALYSIS_TERMS)
 
+    if len(companies) >= 2 and metric and not (graph or profile or event or impact):
+        return RetrievalIntent("VECTOR", "FINANCIAL_COMPARISON")
     if len(companies) >= 2:
         return RetrievalIntent("BOTH", "OVERALL_COMPARISON")
     if event and (companies or entity_mentions):

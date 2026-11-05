@@ -34,6 +34,10 @@ def _next_context(result: dict) -> dict | None:
         "metric_code": scope.get("metric_code"),
         "detected_industry": scope.get("detected_industry"),
         "entity_mentions": scope.get("entity_mentions") or [],
+        **{key: scope.get(key) for key in (
+            "topic", "operation", "route_hint", "reporting_entity", "measure_basis",
+            "person_name", "position_code", "event_type")},
+        "relation_types": scope.get("relation_types") or [],
     }
 
 

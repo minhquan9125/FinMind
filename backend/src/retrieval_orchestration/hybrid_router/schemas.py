@@ -18,6 +18,12 @@ class RouterScope(BaseModel):
     entity_mentions: list[str] = Field(default_factory=list)
     measure_basis: str | None = None
     reporting_entity: str | None = None
+    person_name: str | None = None
+    position_code: str | None = None
+    event_type: str | None = None
+    relation_types: list[str] = Field(default_factory=list)
+    operation: str | None = None
+    route_hint: Literal["VECTOR", "GRAPH", "BOTH"] | None = None
 
 
 class RouterTask(BaseModel):

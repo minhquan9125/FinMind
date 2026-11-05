@@ -8,6 +8,7 @@ import logging
 import os
 from pathlib import Path
 from functools import lru_cache
+from typing import Literal
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict, Field
@@ -39,6 +40,21 @@ class RouterContextPayload(BaseModel):
     metric_code: str | None = None
     detected_industry: str | None = None
     entity_mentions: list[str] = Field(default_factory=list)
+    topic: str | None = None
+    operation: str | None = None
+    route_hint: Literal["VECTOR", "GRAPH", "BOTH"] | None = None
+    reporting_entity: str | None = None
+    measure_basis: str | None = None
+    person_name: str | None = None
+    position_code: str | None = None
+    event_type: str | None = None
+    relation_types: list[str] = Field(default_factory=list)
+
+    def to_session_scope(self) -> SessionScope:
+        values = self.model_dump()
+        for key in ("companies", "periods", "entity_mentions", "relation_types"):
+            values[key] = tuple(values[key])
+        return SessionScope(**values)
 
 
 class RouterTestRequest(BaseModel):
@@ -157,14 +173,7 @@ async def test_router(payload: RouterTestRequest) -> dict:
     """Return routing decision without executing adapters (mode-independent)."""
     context = None
     if payload.context is not None:
-        context = SessionScope(
-            companies=tuple(payload.context.companies),
-            periods=tuple(payload.context.periods),
-            metric_code=payload.context.metric_code,
-            detected_industry=payload.context.detected_industry,
-            entity_mentions=tuple(payload.context.entity_mentions),
-            confirmed=True,
-        )
+        context = payload.context.to_session_scope()
     decision = await asyncio.to_thread(
         get_router_engine().decide, payload.question, context=context
     )
@@ -177,6 +186,7 @@ async def test_router(payload: RouterTestRequest) -> dict:
         "route_reason": decision.route_reason,
         "model_version": decision.model_version,
         "normalized_question": normalize_router_question(payload.question),
+        "tasks": [task.model_dump() for task in decision.tasks],
     }
 
 
@@ -188,14 +198,7 @@ async def run_router(payload: RouterTestRequest) -> dict:
 
     context = None
     if payload.context is not None:
-        context = SessionScope(
-            companies=tuple(payload.context.companies),
-            periods=tuple(payload.context.periods),
-            metric_code=payload.context.metric_code,
-            detected_industry=payload.context.detected_industry,
-            entity_mentions=tuple(payload.context.entity_mentions),
-            confirmed=True,
-        )
+        context = payload.context.to_session_scope()
 
     if mode == "live":
         loop = asyncio.get_event_loop()

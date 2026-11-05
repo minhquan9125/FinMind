@@ -39,7 +39,10 @@ def test_approved_routes_ignore_wrong_classifier_bias(case, scores):
         assert all(task.params["question"] == case["question"] for task in decision.tasks)
         assert decision.reason_code == "INTENT_POLICY"
         adapters = [task.adapter for task in decision.tasks]
-        assert adapters == {"VECTOR": ["CONTENT"], "GRAPH": ["GRAPH"], "BOTH": ["GRAPH", "CONTENT"]}[decision.route]
+        if decision.route == "VECTOR":
+            assert adapters and set(adapters) == {"CONTENT"}
+        else:
+            assert adapters == {"GRAPH": ["GRAPH"], "BOTH": ["GRAPH", "CONTENT"]}[decision.route]
 
 
 def test_single_company_followup_uses_context_but_market_and_knowledge_reset_it():
