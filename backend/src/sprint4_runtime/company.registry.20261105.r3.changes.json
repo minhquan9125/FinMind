@@ -1,0 +1,32 @@
+{
+  "base": "company.registry.20261104.r2.json",
+  "result": "company.registry.20261105.r3.json",
+  "status": "PROPOSED_FOR_WBS02_WBS06_REVIEW",
+  "application_load_allowed": false,
+  "source_review": "docs/sprint4/WBS03-rejected-fixes-20261105.md",
+  "add_aliases": [
+    {
+      "entity_id": "CMP-7097a7e10282f47ca683",
+      "aliases": ["FPT Telecom"],
+      "source": "Hung proposal 05/11/2026 section 8; FPT annual report 2025 pp.56,175-176; subject to WBS02 confirmation"
+    }
+  ],
+  "remove_aliases": [],
+  "add_entities": [],
+  "merge_entities": [
+    {
+      "source_id": "CMP-7159a1a0f4ea52a1ffd3",
+      "target_id": "CMP-7097a7e10282f47ca683",
+      "source": "Same FTEL/FOX entity proposed by WBS02 owner Hung; no database or historical-envelope rewrite"
+    }
+  ],
+  "merged_ids": {
+    "CMP-7159a1a0f4ea52a1ffd3": "CMP-7097a7e10282f47ca683"
+  },
+  "limitations": [
+    "An explicit --registry is required to use this proposed revision; CLI defaults stay on r2.",
+    "Verify references in the actual Neo4j VPS and review store before activation. Absence of local port 7687 is not proof of no graph usage.",
+    "CMC alias changes are deferred pending source/identity review and a clean versioned snapshot.",
+    "Do not overwrite historical registries, reviewed envelopes, or the person-role registry with this proposal."
+  ]
+}

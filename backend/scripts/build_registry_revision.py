@@ -23,13 +23,36 @@ def apply_changes(base, changes):
     """Return the new registry rows; refuse an alias that already names another entity."""
     rows = json.loads(json.dumps(base))
     by_id = {row['entity_id']: row for row in rows}
+    key = lambda alias: text_view(alias)[0].strip()
+    previous_owners = {}
+    for row in base:
+        for alias in [row['canonical_name'], *row['aliases']]:
+            previous_owners.setdefault(key(alias), set()).add(row['entity_id'])
     for change in changes['add_aliases']:
         row = by_id[change['entity_id']]
         row['aliases'] += [alias for alias in change['aliases'] if alias not in row['aliases']]
     for change in changes['remove_aliases']:
         row = by_id[change['entity_id']]
         row['aliases'] = [alias for alias in row['aliases'] if alias not in change['aliases']]
-    key = lambda alias: text_view(alias)[0].strip()
+    merges = changes.get('merge_entities', [])
+    redirects = {item['source_id']: item['target_id'] for item in merges}
+    if len(redirects) != len(merges) or redirects != changes.get('merged_ids', {}):
+        raise ValueError('Explicit merged_ids must match merge_entities')
+    for source_id, target_id in redirects.items():
+        if (source_id == target_id or target_id in redirects
+                or source_id not in by_id or target_id not in by_id):
+            raise ValueError('Invalid or chained registry merge')
+        source, target = by_id[source_id], by_id[target_id]
+        if (source['entity_type'] != target['entity_type']
+                or not source['verified'] or not target['verified']):
+            raise ValueError('Merge requires verified entities of the same type')
+        for alias in [source['canonical_name'], *source['aliases']]:
+            if alias not in target['aliases']:
+                target['aliases'].append(alias)
+        target['ticker_aliases'] = sorted(set(target.get('ticker_aliases', []))
+                                          | set(source.get('ticker_aliases', [])))
+    rows = [row for row in rows if row['entity_id'] not in redirects]
+    by_id = {row['entity_id']: row for row in rows}
     owners = {}
     for row in rows:
         for alias in [row['canonical_name'], *row['aliases']]:
@@ -48,6 +71,10 @@ def apply_changes(base, changes):
             owners.setdefault(key(alias), set()).add(entity_id)
         rows.append(row)
         by_id[entity_id] = row
+    for alias, ids in owners.items():
+        before = {redirects.get(ident, ident) for ident in previous_owners.get(alias, set())}
+        if len(ids) > 1 and not ids <= before:
+            raise ValueError('Alias already names another entity: ' + alias)
     _registry(rows)  # the shared resolver's own validation
     return rows
 
