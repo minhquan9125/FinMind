@@ -14,10 +14,19 @@ class RouterScope(BaseModel):
     periods: list[str] = Field(default_factory=list)
     metric_code: str | None = Field(default=None, min_length=1)
     topic: str | None = Field(default=None, min_length=1)
+    source_type: str | None = None
     detected_industry: str | None = Field(default=None, min_length=1)
     entity_mentions: list[str] = Field(default_factory=list)
     measure_basis: str | None = None
     reporting_entity: str | None = None
+    reporting_entities: list[Literal["CONSOLIDATED", "PARENT"]] = Field(default_factory=list)
+    targets: list[dict[str, Any]] = Field(default_factory=list)
+    person_name: str | None = None
+    position_code: str | None = None
+    event_type: str | None = None
+    relation_types: list[str] = Field(default_factory=list)
+    operation: str | None = None
+    route_hint: Literal["VECTOR", "GRAPH", "BOTH"] | None = None
 
 
 class RouterTask(BaseModel):
