@@ -220,7 +220,10 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
                 norm = normalize_router_question(header)
                 if measure_basis == "YTD" and not re.search(r"\b(?:luy ke|ytd)\b", norm):
                     continue
-                if measure_basis == "STANDALONE_QUARTER" and re.search(r"\b(?:luy ke|ytd)\b", norm):
+                if measure_basis == "STANDALONE_QUARTER" and (
+                        not re.search(r"\b(?:rieng quy|quy rieng)\b", norm)
+                        or re.search(r"\b(?:luy ke|ytd|(?:6|9|12) thang|khong|chua|co the|du kien)\b", norm)
+                        or "?" in header):
                     continue
                 matching.append(hit)
             return {**result, "results": matching[:top_k]}
@@ -228,7 +231,10 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
         async def price_search_fn(question, company, period):
             from ...documents.price_queries import query_price, PriceQueryError
             from datetime import date
-            day = date.fromisoformat(period)
+            try:
+                day = date.fromisoformat(period)
+            except (ValueError, TypeError):
+                return {"sources": [], "data": {}}
             try:
                 return await query_price(pool, f"Giá {company} ngày {day:%d/%m/%Y}", company, period)
             except PriceQueryError:

@@ -160,6 +160,29 @@ def calendar_periods(periods: list[str], today: date) -> list[str]:
         resolved.append(period)
     return resolved
 
+PRICE_DATE_PATTERN = (r"\b(?:(?P<y>\d{4})\s+(?P<m>\d{1,2})\s+(?P<d>\d{1,2})|"
+               r"(?P<day>\d{1,2})\s+(?:thang\s+)?(?P<month>\d{1,2})\s+(?:nam\s+)?(?P<year>\d{4})|"
+               r"(?P<relative>hom nay|hom qua|ngay mai))\b")
+
+
+def price_dates(normalized: str) -> list[str]:
+    """Keep ordered full dates and relative days, rejecting incomplete dates."""
+    pattern = PRICE_DATE_PATTERN
+    remainder = re.sub(pattern, " ", normalized)
+    if re.search(r"\b(?:ngay|thang)\s+\d+\b", remainder):
+        raise ValueError("MISSING_PRICE_DATE")
+    result = []
+    for match in re.finditer(pattern, normalized):
+        if match['relative']:
+            value = {"hom nay": "CURRENT", "hom qua": "PREVIOUS_DAY", "ngay mai": "NEXT_DAY"}[match['relative']]
+        else:
+            fields = (match['y'], match['m'], match['d']) if match['y'] else (match['year'], match['month'], match['day'])
+            value = date(*(int(part) for part in fields)).isoformat()
+        if value not in result:
+            result.append(value)
+    return result
+
+
 class LabelPredictor(Protocol):
     model_version: str
 
@@ -393,6 +416,10 @@ class ScopeResolver:
             year = today.year - int(contains(normalized, ("nam ngoai",)))
             periods = [p.replace("LATEST_YEAR", str(year)) for p in periods]
         metric = self._metric(normalized)
+        if (metric is None and re.search(r"\bgia\b", normalized)
+                and (companies or (context and context.confirmed and context.companies))
+                and (periods or re.search(r"\bngay\s+\d", normalized))):
+            metric = "STOCK_PRICE"
         # A new global/conceptual question must never inherit yesterday's ticker.
         independent_scope = contains(normalized, MARKET_TERMS + KNOWLEDGE_TERMS)
         explicit_reference = bool(re.search(
@@ -428,16 +455,47 @@ class ScopeResolver:
             years = {p[:4] for p in context.periods if re.fullmatch(r"\d{4}(?:-Q[1-4])?", p)}
             if len(years) == 1:
                 periods = [p.replace("LATEST_YEAR", next(iter(years))) for p in periods]
-        if metric is None and re.search(r"\bgia\b", normalized) and periods and companies:
+        if (metric is None and re.search(r"\bgia\b", normalized) and companies
+                and (periods or re.search(r"\bngay\s+\d", normalized))):
             metric = "STOCK_PRICE"
-        if metric == "STOCK_PRICE" and not periods:
-            periods = ["CURRENT"]
+        if metric == "STOCK_PRICE":
+            # Read exact trading dates before the generic year/quarter scope
+            # reaches the daily price callback. Keep financial-report periods unchanged.
+            try:
+                explicit_dates = price_dates(normalized)
+                if explicit_dates:
+                    periods = explicit_dates
+                price_positions = []
+                prefix_dates = {}
+                for company, start in positions:
+                    prefix = re.search(r"(?:ngay\s+)?" + PRICE_DATE_PATTERN + r"\s+(?:cua\s+)?$", normalized[:start])
+                    price_positions.append((company, prefix.start() if prefix else start))
+                    prefix_dates[company] = bool(prefix)
+                bound_clauses = {c: normalized[start:price_positions[i + 1][1] if i + 1 < len(price_positions) else len(normalized)]
+                                 for i, (c, start) in enumerate(price_positions)}
+                bound_periods = {c: local for c, clause in bound_clauses.items()
+                                 if (local := price_dates(clause) or self._periods(clause, today))}
+                if (len(companies) > 1 and set(bound_periods) == {companies[0]}
+                        and prefix_dates.get(companies[0]) and bound_periods[companies[0]] == explicit_dates):
+                    bound_periods = {}  # One leading date scopes the entire company list.
+            except ValueError as exc:
+                code = "MISSING_PRICE_DATE" if str(exc) == "MISSING_PRICE_DATE" else "INVALID_DATE"
+                return self._clarify(question, RouterScope(companies=companies, metric_code=metric),
+                                     ("periods",), code, "Bạn muốn hỏi giá vào ngày nào (ngày/tháng/năm hợp lệ)?")
+            requested_periods = periods + [p for local in bound_periods.values() for p in local]
+            if (any(re.fullmatch(r"\d{4}(?:-Q[1-4])?", p) for p in requested_periods)
+                    or (not explicit_dates and re.search(r"\b(?:ngay|thang)\s+\d+\b", normalized))):
+                return self._clarify(question, RouterScope(companies=companies, metric_code=metric),
+                                     ("periods",), "MISSING_PRICE_DATE", "Bạn muốn hỏi giá vào ngày nào (ngày/tháng/năm)?")
+            if not periods:
+                periods = ["CURRENT"]
         intent_text = normalized
         if (metric or contains(normalized, ("bctc", "bao cao tai chinh"))) and re.search(r"\bcong ty me\b", normalized) and not re.search(r"\bcong ty me (?:cua|la)\b", normalized):
             intent_text = re.sub(r"\bcong ty me\b", " ", normalized)
         intent = resolve_intent(intent_text, companies, detected_industry, metric, entity_mentions)
         inherit_operation = (context and context.confirmed and explicit_reference and not independent_scope
                              and context.topic and context.route_hint
+                             and (metric != "STOCK_PRICE" or context.metric_code == "STOCK_PRICE")
                              and not contains(normalized, GRAPH_TERMS + PROFILE_TERMS + CONTENT_TERMS
                                               + MARKET_ANALYSIS_TERMS + KNOWLEDGE_TERMS))
         if inherit_operation:
@@ -456,9 +514,9 @@ class ScopeResolver:
         scope.source_type = ("BCTN" if contains(normalized, ("bctn", "bao cao thuong nien"))
                              else "PRICE" if metric == "STOCK_PRICE" else
                              "BCTN" if intent.route == "GRAPH" else "BCTC")
-        if inherit_operation and context.source_type:
+        if inherit_operation and context.source_type and metric != "STOCK_PRICE":
             scope.source_type = context.source_type
-        if context and context.confirmed and explicit_reference and not independent_scope and not contains(
+        if context and context.confirmed and explicit_reference and not independent_scope and metric != "STOCK_PRICE" and not contains(
                 normalized, ("hop nhat", "rieng le", "cong ty me")):
             scope.reporting_entity = context.reporting_entity
             scope.reporting_entities = list(context.reporting_entities)
@@ -645,7 +703,7 @@ class DecisionEngine:
             "PORTFOLIO_EDUCATION": "find_investing_knowledge",
             "SECTOR_RESEARCH": "find_sector_research",
         }
-        if resolved.scope.metric_code == "STOCK_PRICE" and topic == "FINANCIAL_RESEARCH":
+        if resolved.scope.metric_code == "STOCK_PRICE" and topic in {"FINANCIAL_RESEARCH", "FINANCIAL_COMPARISON"}:
             content_operations[topic] = "find_price"
         if route == "VECTOR":
             tasks = []
@@ -701,6 +759,9 @@ class DecisionEngine:
             if all(not t.params.get("period_resolution_required") for t in tasks):
                 resolved.scope.periods = list(dict.fromkeys(p for t in tasks for p in t.params.get("periods", [])))
         if route == "VECTOR":
+            if (resolved.scope.metric_code == "STOCK_PRICE"
+                    and any(re.fullmatch(r"\d{4}-\d{2}-\d{2}", p) for p in resolved.scope.periods)):
+                resolved.scope.periods = list(dict.fromkeys(p for t in tasks for p in t.params.get("periods", [])))
             resolved.scope.targets = [{"company": c, "period": p, "reporting_entity": t.params.get("reporting_entity"),
                                        "measure_basis": t.params.get("measure_basis")}
                                       for t in tasks for c in t.params.get("companies") or [None]

@@ -1035,6 +1035,14 @@ def test_review_two_numeric_year_groups_do_not_share_the_previous_year():
      {"companies": ["FPT"], "periods": ["2025"], "position_code": "BOARD_CHAIR"}),
     ("Chủ tịch FPT năm 2025 là ai?", "Vậy ai là phó chủ tịch?",
      {"companies": ["FPT"], "periods": ["2025"], "position_code": "DEPUTY_BOARD_CHAIR"}),
+    ("Giá FPT ngày 04/11/2026", "Còn ngày 03/11/2026?",
+     {"companies": ["FPT"], "periods": ["2026-11-03"], "metric_code": "STOCK_PRICE"}),
+    ("Doanh thu hợp nhất FPT năm 2025", "Còn giá FPT ngày 04/11/2026?",
+     {"companies": ["FPT"], "periods": ["2026-11-04"], "metric_code": "STOCK_PRICE", "source_type": "PRICE",
+      "operation": "find_price", "reporting_entity": None}),
+    ("Doanh thu hợp nhất FPT năm 2025", "Còn giá ngày 04/11/2026?",
+     {"companies": ["FPT"], "periods": ["2026-11-04"], "metric_code": "STOCK_PRICE", "source_type": "PRICE",
+      "operation": "find_price", "reporting_entity": None}),
 ])
 def test_review_context_api_roundtrip(monkeypatch, first, followup, expected):
     monkeypatch.setattr(api, "get_router_engine", engine)
@@ -1051,3 +1059,147 @@ def test_review_context_api_roundtrip(monkeypatch, first, followup, expected):
     assert result.json()["decision"] == "SEARCH", result.text
     for key, value in expected.items():
         assert result.json()["scope"][key] == value, result.text
+
+
+@pytest.mark.parametrize("question,expected_day", [
+    ("Giá FPT ngày 04/11/2026", "2026-11-04"),
+    ("Giá FPT ngày 4/11/2026", "2026-11-04"),
+    ("Giá FPT ngày 2026-11-04", "2026-11-04"),
+    ("Giá FPT ngày 29/02/2024", "2024-02-29"),
+    ("Giá FPT ngày 04-11-2026", "2026-11-04"),
+    ("Giá FPT ngày 04.11.2026", "2026-11-04"),
+    ("Giá FPT ngày 4 tháng 11 năm 2026", "2026-11-04"),
+])
+def test_review_exact_price_date_reaches_factory_callback(monkeypatch, question, expected_day):
+    import asyncio
+    from src.core import db
+    from src.documents import embeddings, price_queries
+    from src.vector_retrieval import backend
+    calls = []
+    class Retriever:
+        def __init__(self, *args, **kwargs):
+            pass
+        async def search(self, *args, **kwargs):
+            pytest.fail("Daily prices must not use vector retrieval")
+    async def price(pool, rewritten_question, company, period):
+        calls.append((company, period))
+        assert price_queries.classify(rewritten_question)[1] == [date.fromisoformat(expected_day)]
+        return {"data": {"close": "123"}, "sources": [{"price_id": "fixture-price", "source_table": "price_bars"}]}
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(
+        hybrid_router_index_id="fixture-index", research_corpus_version_id="fixture-corpus"))
+    monkeypatch.setattr(db, "get_pool", lambda: object())
+    monkeypatch.setattr(embeddings, "get_embedding_service", lambda: object())
+    monkeypatch.setattr(backend, "HybridRetriever", Retriever)
+    monkeypatch.setattr(price_queries, "query_price", price)
+    def coverage(task):
+        pytest.fail("An explicit date must not use financial-report coverage")
+    async def check():
+        adapter = await asyncio.to_thread(api._build_live_content_adapter, asyncio.get_running_loop())
+        result = await asyncio.to_thread(engine(content_adapter=adapter, period_resolver=coverage).run, question)
+        assert result.status == "OK", result
+        assert result.decision.scope.periods == [expected_day]
+        assert result.decision.tasks[0].params["periods"] == [expected_day]
+        assert result.adapter_results[0].reason_code == "PRICE_OK"
+    asyncio.run(check())
+    assert calls == [("FPT", expected_day)]
+
+
+@pytest.mark.parametrize("day", ["31/11/2026", "29/02/2026", "2026-13-04"])
+def test_review_invalid_price_date_is_clarified_before_content(day):
+    result = engine().decide(f"Giá FPT ngày {day}")
+    assert result.decision == "ASK_CLARIFICATION"
+    assert result.reason_code == "INVALID_DATE"
+    assert not result.tasks
+
+
+def test_review_financial_snapshot_date_keeps_report_period():
+    result = engine().decide("Tổng tài sản FPT ngày 04/11/2026")
+    assert result.scope.periods == ["2026"]
+    assert result.tasks[0].operation == "find_metric"
+
+
+@pytest.mark.parametrize("header,body,accepted", [
+    ("FPT | 2025-Q2", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | Phạm vi: riêng", "Doanh thu 100", False),
+    ("FPT | 2025-Q2", "Có nhắc riêng quý ở phần giải thích", False),
+    ("FPT | 2025-Q2 | lũy kế", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | YTD", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | riêng quý | lũy kế", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | không phải riêng quý", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | chưa xác nhận riêng quý", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | riêng quý chưa xác định", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | riêng quý | 6 tháng", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | chưa phải riêng quý", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | không xác nhận riêng quý", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | có thể là riêng quý", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 | riêng quý?", "Doanh thu 100", False),
+    ("FPT | 2025-Q2 (riêng quý)", "Doanh thu 100", True),
+    ("FPT | 2025-Q2 | quý riêng", "Doanh thu 100", True),
+])
+def test_review_standalone_quarter_requires_positive_source_basis(monkeypatch, header, body, accepted):
+    import asyncio
+    from src.core import db
+    from src.documents import embeddings
+    from src.vector_retrieval import backend
+    class Retriever:
+        def __init__(self, *args, **kwargs):
+            pass
+        async def search(self, *args, **kwargs):
+            assert kwargs["exact_period"] is True
+            return {"results": [{"chunk_id": "fixture", "text": header + "\n" + body}]}
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(
+        hybrid_router_index_id="fixture-index", research_corpus_version_id="fixture-corpus"))
+    monkeypatch.setattr(db, "get_pool", lambda: object())
+    monkeypatch.setattr(embeddings, "get_embedding_service", lambda: object())
+    monkeypatch.setattr(backend, "HybridRetriever", Retriever)
+    async def check():
+        adapter = await asyncio.to_thread(api._build_live_content_adapter, asyncio.get_running_loop())
+        task = engine().decide("Doanh thu FPT riêng quý 2 năm 2025").tasks[0]
+        assert task.params["measure_basis"] == "STANDALONE_QUARTER"
+        result = await asyncio.to_thread(adapter.execute, task)
+        assert bool(result.data) is accepted, result
+        if not accepted:
+            assert not result.evidence
+    asyncio.run(check())
+
+
+@pytest.mark.parametrize("question,expected", [
+    ("Giá FPT ngày 04/11/2026 và VCB ngày 03/11/2026", [("FPT", "2026-11-04"), ("VCB", "2026-11-03")]),
+    ("Giá FPT và VCB ngày 04/11/2026", [("FPT", "2026-11-04"), ("VCB", "2026-11-04")]),
+    ("Giá FPT ngày 04/11/2026 và ngày 03/11/2026", [("FPT", "2026-11-04"), ("FPT", "2026-11-03")]),
+    ("Giá FPT ngày 04/11/2026 và hôm nay", [("FPT", "2026-11-04"), ("FPT", "2026-11-05")]),
+    ("Giá FPT ngày 04/11/2026 và VCB hôm qua", [("FPT", "2026-11-04"), ("VCB", "2026-11-04")]),
+    ("Giá FPT hôm nay và VCB ngày 03/11/2026", [("FPT", "2026-11-05"), ("VCB", "2026-11-03")]),
+    ("Giá ngày 04/11/2026 của FPT và ngày 03/11/2026 của VCB", [("FPT", "2026-11-04"), ("VCB", "2026-11-03")]),
+    ("Giá ngày 04/11/2026 của FPT và VCB", [("FPT", "2026-11-04"), ("VCB", "2026-11-04")]),
+])
+def test_review_daily_price_keeps_company_date_pairs(question, expected):
+    import asyncio
+    from src.retrieval_orchestration.hybrid_router.adapters import LiveContentAdapter
+    calls = []
+    async def price(original, company, period):
+        date.fromisoformat(period)
+        calls.append((company, period))
+        return {"data": {"close": "123"}, "sources": [{"price_id": f"fixture-{company}-{period}", "source_table": "price_bars"}]}
+    def no_report_coverage(task):
+        pytest.fail("Full daily price dates must not use report coverage")
+    async def check():
+        adapter = LiveContentAdapter(None, asyncio.get_running_loop(), price_search_fn=price)
+        output = await asyncio.to_thread(engine(content_adapter=adapter, period_resolver=no_report_coverage).run, question)
+        assert output.status == "OK", output
+        result = output.decision
+        assert result.decision == "SEARCH"
+        assert all(t.operation == "find_price" for t in result.tasks)
+        assert [(t.params["companies"][0], t.params["periods"][0]) for t in result.tasks] == expected
+        assert result.scope.periods == list(dict.fromkeys(day for _, day in expected))
+        assert all(row.reason_code == "PRICE_OK" for row in output.adapter_results)
+    asyncio.run(check())
+    assert calls == expected
+
+
+@pytest.mark.parametrize("question", ["Giá FPT năm 2026", "Giá FPT tháng 11/2026", "Giá FPT ngày 04/11",
+    "Giá FPT ngày 04/11/2026 và ngày 05/11", "Giá FPT ngày 04/11/2026 và VCB ngày 05/11"])
+def test_review_daily_price_without_full_date_does_not_reach_daily_callback(question):
+    result = engine().decide(question)
+    assert result.decision == "ASK_CLARIFICATION"
+    assert not result.tasks
