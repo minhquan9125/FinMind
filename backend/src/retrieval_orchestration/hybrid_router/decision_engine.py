@@ -94,13 +94,19 @@ def reporting_filters(text: str, periods: list[str], metric: str | None) -> dict
     return result
 
 
-def explicit_quarters(text: str) -> list[str]:
+def explicit_quarters(text: str, reference_date: date | None = None) -> list[str]:
     matches = list(re.finditer(r"\b(?:quy\s*|q)([1-4])\b", text))
     result = []
     for index, match in enumerate(matches):
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         prefix = re.search(r"\b((?:19|20)\d{2})\s*$", text[:match.start()])
         suffix = text[match.end():end]
+        relative = re.match(r"\s+nam\s+(nay|ngoai)\b", suffix) or re.search(
+            r"\bnam\s+(nay|ngoai)\s*$", text[:match.start()])
+        if relative:
+            today = reference_date or datetime.now(timezone(timedelta(hours=7))).date()
+            result.append(f"{today.year - int(relative[1] == 'ngoai')}-Q{match[1]}")
+            continue
         year = re.search(r"\b(\d{4}|\d{2})\b", suffix)
         if year and re.search(r"\bva\s+nam\s+$", suffix[:year.start()]):
             year = None
@@ -284,8 +290,9 @@ class ScopeResolver:
         if not isinstance(question, str) or not question.strip():
             raise ValueError("question must be a nonempty string")
         normalized = _normalize(question)
+        today = self.reference_date or datetime.now(timezone(timedelta(hours=7))).date()
         list_followup = bool(re.fullmatch(
-            r"(?:co the )?(?:liet ke|ke|cho xem danh sach)(?: ra)?(?: khong)?", normalized))
+            r"(?:co the )?(?:liet ke|ke|cho xem danh sach)(?: ra)?(?: khong| xem)?", normalized))
         if list_followup and context and context.confirmed and context.topic and context.operation and context.route_hint:
             if context.ambiguous_companies:
                 return self._clarify(question, RouterScope(), ("companies",), "AMBIGUOUS_CONTEXT",
@@ -327,18 +334,17 @@ class ScopeResolver:
             aliases = [a for a, ids in self.company_registry.items() if company in ids] + [company]
             hits = [m.start() for a in aliases for m in re.finditer(rf"\b{re.escape(_normalize(a))}\b", normalized)]
             if hits:
-                positions.append((company, min(hits)))
+                start = min(hits)
+                # A reporting qualifier immediately before a company belongs
+                # to that company, not the preceding company's clause.
+                qualifier = re.search(r"\b(?:hop nhat|rieng le)\s*$", normalized[:start])
+                positions.append((company, qualifier.start() if qualifier else start))
         positions.sort(key=lambda item: item[1])
         bound_periods = {}
         bound_reporting = {}
         for i, (company, start) in enumerate(positions):
             end = positions[i + 1][1] if i + 1 < len(positions) else len(normalized)
-            # Use normalized alias offsets (raw ticker positions may differ).
-            aliases = [a for a, ids in self.company_registry.items() if company in ids]
-            hits = [m.start() for a in aliases for m in re.finditer(rf"\b{re.escape(_normalize(a))}\b", normalized)]
-            if hits:
-                start = min(hits)
-            local = self._periods(normalized[start:end])
+            local = self._periods(normalized[start:end], today)
             if local:
                 bound_periods[company] = local
             bound_reporting[company] = reporting_filters(normalized[start:end], local, self._metric(normalized)).get("reporting_entities", [])
@@ -360,8 +366,7 @@ class ScopeResolver:
                 if 2 <= len(mention.split()) <= 6:
                     entity_mentions.append(mention)
 
-        today = self.reference_date or datetime.now(timezone(timedelta(hours=7))).date()
-        periods = calendar_periods(self._periods(normalized), today)
+        periods = calendar_periods(self._periods(normalized, today), today)
         if contains(normalized, ("nam ngoai", "nam nay")):
             year = today.year - int(contains(normalized, ("nam ngoai",)))
             periods = [p.replace("LATEST_YEAR", str(year)) for p in periods]
@@ -369,7 +374,7 @@ class ScopeResolver:
         # A new global/conceptual question must never inherit yesterday's ticker.
         independent_scope = contains(normalized, MARKET_TERMS + KNOWLEDGE_TERMS)
         explicit_reference = bool(re.search(
-            r"\b(?:con|cung ky|cong ty do|luc nay|no|con nay|ma nay|ben do|ong ay|ma do)\b", normalized,
+            r"\b(?:con|vay|cung ky|cong ty do|luc nay|no|con nay|ma nay|ben do|ong ay|ma do)\b", normalized,
         ))
         bare_followup = bool(re.fullmatch(r"con\s+\w+(?:\s+\w+)?", normalized)) and bool(companies)
         if bare_followup and context and context.confirmed and context.topic and context.route_hint:
@@ -430,6 +435,11 @@ class ScopeResolver:
                 normalized, ("hop nhat", "rieng le", "cong ty me")):
             scope.reporting_entity = context.reporting_entity
             scope.reporting_entities = list(context.reporting_entities)
+        if (context and context.confirmed and explicit_reference and not independent_scope
+                and metric == context.metric_code and context.measure_basis in {"YTD", "STANDALONE_QUARTER"}
+                and any("-Q" in p for p in periods)
+                and not contains(normalized, ("luy ke", "ytd", "6 thang", "9 thang", "rieng quy", "quy rieng"))):
+            scope.measure_basis = context.measure_basis
         if len(companies) > 1 and len(bound_periods) == len(companies):
             scope.targets = [{"company": c, "period": p} for c in companies
                              for p in calendar_periods(bound_periods[c], today)]
@@ -444,8 +454,8 @@ class ScopeResolver:
         return ResolvedInput(question, scope, route_hint=intent.route)
 
     @staticmethod
-    def _periods(normalized: str) -> list[str]:
-        quarters = explicit_quarters(normalized)
+    def _periods(normalized: str, reference_date: date | None = None) -> list[str]:
+        quarters = explicit_quarters(normalized, reference_date)
         if quarters:
             return quarters
         quarter = re.search(r"\b(?:quy\s*|q)([1-4])(?:\s+nam)?\s+(\d{4})\b", normalized)

@@ -750,3 +750,49 @@ def test_scope_aware_content_callback_receives_reporting_and_basis():
         assert result.status == "NO_DATA"
     asyncio.run(check())
     assert calls == [("FPT", "2025", {"reporting_entity": "PARENT", "measure_basis": "FULL_YEAR"})]
+
+
+def _review_followup_context(decision):
+    return api.RouterContextPayload(**{
+        k: v for k, v in decision.scope.model_dump().items()
+        if k in api.RouterContextPayload.model_fields
+    }).to_session_scope()
+
+
+def test_review_reporting_prefixes_bind_to_the_following_company():
+    result = engine().decide("So sánh doanh thu hợp nhất FPT năm 2024 và riêng lẻ VCB năm 2025")
+    assert [(t.params["companies"], t.params["periods"], t.params["reporting_entity"]) for t in result.tasks] == [
+        (["FPT"], ["2024"], "CONSOLIDATED"), (["VCB"], ["2025"], "PARENT")]
+
+
+@pytest.mark.parametrize("question,periods", [
+    ("FPT quý 1 năm 2024 và quý 2 năm nay", ["2024-Q1", "2026-Q2"]),
+    ("FPT quý 1 năm 2024 và quý 2 năm ngoái", ["2024-Q1", "2025-Q2"]),
+])
+def test_review_relative_year_is_local_to_each_quarter(question, periods):
+    assert engine().resolver.resolve(question).scope.periods == periods
+
+
+@pytest.mark.parametrize("followup", ["Liệt kê ra xem", "Vậy ai là phó chủ tịch?"])
+def test_review_natural_personnel_followups_keep_company_and_year(followup):
+    e = engine()
+    context = _review_followup_context(e.decide("Chủ tịch FPT năm 2025 là ai?"))
+    result = e.decide(followup, context=context)
+    assert result.route == "GRAPH"
+    assert result.scope.companies == ["FPT"]
+    assert result.scope.periods == ["2025"]
+    assert result.scope.position_code == ("DEPUTY_BOARD_CHAIR" if "phó" in followup else "BOARD_CHAIR")
+
+
+@pytest.mark.parametrize("followup,basis", [
+    ("Còn quý 2?", "YTD"), ("Còn riêng quý 2?", "STANDALONE_QUARTER")])
+def test_review_quarter_followup_preserves_ytd_unless_explicitly_changed(followup, basis):
+    e = engine()
+    context = _review_followup_context(e.decide("Doanh thu hợp nhất FPT lũy kế quý 1/2025"))
+    result = e.decide(followup, context=context)
+    assert result.route == "VECTOR"
+    assert result.scope.companies == ["FPT"]
+    assert result.scope.periods == ["2025-Q2"]
+    assert result.scope.reporting_entity == "CONSOLIDATED"
+    assert result.scope.measure_basis == basis
+    assert all(t.params["measure_basis"] == basis for t in result.tasks)
