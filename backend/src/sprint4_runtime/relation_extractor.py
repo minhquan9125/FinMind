@@ -622,6 +622,11 @@ def extract_candidates(envelope, registry, diagnostics=None):
             # Another rule already states this pair for this report: add the table as evidence
             # only. A second statement with other attributes would be a false conflict in WBS09,
             # and changing the first one's attributes would change its reviewed relation_id.
+            # A list rule can identify the pair without a date. Enrich only
+            # missing time from this table's cited header; never replace an
+            # explicit time from another statement.
+            if same['temporal']['as_of'] is None:
+                same['temporal']['as_of'] = row['as_of']
             same['evidence'] += [e for e in row['evidence'] if e not in same['evidence']]
             continue
         for evidence in row['evidence']:

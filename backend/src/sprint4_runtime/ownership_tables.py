@@ -53,7 +53,7 @@ _MIXED = re.compile(_MARK + r'(?:các\s+)?công ty con\s*(?:,|và)\s*(?:các\s+)
 _ASSOC = re.compile(_MARK + r'(?:các\s+)?(?:công ty|doanh nghiệp) liên (?P<word>kết|doanh)(?:\s*,\s*liên kết)?' + _TAIL, re.I)
 _SUB = re.compile(_MARK + r'(?:các\s+)?công ty con' + _TAIL, re.I)
 # A numbered note heading ("2.4. Cơ sở hợp nhất") closes the table; amounts like "1.000.000 VNĐ" do not.
-_RESET = re.compile(r'^\s*\d{1,2}(?:\.\d{1,2}){1,2}\.\s+[A-ZĐÀ-Ỹ]')
+_RESET = re.compile(r'^\s*(?:\d{1,2}\.|\d{1,2}(?:\.\d{1,2}){1,2}\.?)\s+[A-ZĐÀ-Ỹ]')
 _DAY = r'(?:(?P<d1>\d{1,2})[/.](?P<m1>\d{1,2})[/.](?P<y1>20\d{2})|(?P<d2>\d{1,2})\s+tháng\s+(?P<m2>\d{1,2})\s+năm\s+(?P<y2>20\d{2}))'
 _OTHER_DAY = r'(?:ngày\s+)?(?:\d{1,2}[/.]\d{1,2}[/.]20\d{2}|\d{1,2}\s+tháng\s+\d{1,2}\s+năm\s+20\d{2})'
 # A table header: "Tại ngày 31/12/2025 [và 31/12/2024]" or two period columns "31.12.2025 31.12.2024".
@@ -64,6 +64,8 @@ _DATE_TAIL = re.compile(r'(?:^|\s)(?P<at>tại ngày\s+)' + _DAY + r'(?P<second>
 # Side-menu furniture repeated on every page ("06 QUẢN TRỊ CÔNG TY"): two digits, no lowercase.
 _MENU_START = re.compile(r'^\s*\d{2}\s+\S')
 _DATE_LINE = re.compile(r'^\s*(?P<at>tại ngày\s+)?' + _DAY + r'(?P<second>\s+(?:và\s+)?' + _OTHER_DAY + r')?\s*:?\s*$', re.I)
+_DATE_INTRO = re.compile(r'^\s*Tại ngày\s+' + _DAY
+                         + r',\s*[^.!?]*\bcông ty\s+(?:con|liên kết|liên doanh)\b', re.I)
 _GENERIC = {'công ty cổ phần', 'công ty cp', 'công ty tnhh', 'công ty trách nhiệm hữu hạn',
             'ngân hàng thương mại cổ phần', 'công ty', 'ngân hàng', 'tập đoàn'}
 # "Công ty Cổ phần Chứng khoán" names an industry, not a company: such registry rows are skipped.
@@ -253,6 +255,9 @@ def _owner(text, index):
 
 def _header_day(text):
     """Table date from a header line, or None (a lone date needs "Tại ngày" or a second period)."""
+    match = _DATE_INTRO.match(text)
+    if match:
+        return _day(match)
     match = _DATE_LINE.match(text)
     if match and (match.group('at') or match.group('second')):
         return _day(match)
@@ -329,13 +334,16 @@ def table_rows(chunks, registry, index):
     entities = {row['entity_id']: row for row in registry}
     pages = _page_lines(chunks)
     section, as_of, previous_page = None, None, None
+    as_of_evidence = []
     columns = None
     abbreviation_column = False
     column_evidence = []
     for (document_id, page), lines in sorted(pages.items(), key=lambda item: (item[0][0], item[0][1])):
         # A table may continue on the next page without repeating its heading.
-        if previous_page != (document_id, page - 1) or (section and section.get('carried')):
+        if (previous_page != (document_id, page - 1) or section is None
+                or section.get('carried')):
             section, as_of = None, None
+            as_of_evidence = []
             columns = None
             abbreviation_column, column_evidence = False, []
         elif section:
@@ -346,12 +354,13 @@ def table_rows(chunks, registry, index):
         while index_line < len(lines):
             chunk, start, end, text = lines[index_line]
             index_line += 1
-            if _RESET.match(text):
+            heading = _heading(text, index)
+            if _RESET.match(text) and heading is None:
                 section, as_of = None, None
+                as_of_evidence = []
                 columns, header_lines = None, []
                 abbreviation_column, column_evidence = False, []
                 continue
-            heading = _heading(text, index)
             if heading:
                 kind, label, parent = heading
                 if not parent:
@@ -368,14 +377,15 @@ def table_rows(chunks, registry, index):
                     section.get('outer') if section and section.get('nested') else None)
                 section = {'kind': kind, 'label': label, 'parent': parent or 'ISSUER',
                            'nested': bool(parent), 'outer': outer,
-                           'evidence': _cite([lines[index_line - 1]])}
+                           'evidence': _cite([lines[index_line - 1]]) + as_of_evidence}
                 header_lines = []
                 continue
             dated = _header_day(text)
             if dated:
                 as_of = dated
+                as_of_evidence = _cite([lines[index_line - 1]])
                 if section is not None:
-                    section = dict(section, evidence=section['evidence'] + _cite([lines[index_line - 1]]))
+                    section = dict(section, evidence=section['evidence'] + as_of_evidence)
                 continue
             numbered = _ROW_NUMBER.match(text)
             body = text[numbered.end():] if numbered else text

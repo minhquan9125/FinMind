@@ -108,6 +108,61 @@ CMG_LIKE = {7: [
 
 
 class OwnershipTableTests(unittest.TestCase):
+    def test_date_before_heading_is_cited_for_every_subsection(self):
+        _, _, result = run({3: [
+            '31.12.2025 31.12.2024\nTỷ lệ sở hữu\nCông ty con\n'
+            'Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%\n'
+            'Công ty liên doanh\nNgân hàng TNHH Indochina Cung cấp dịch vụ 50%',
+        ]})
+        self.assertEqual(len(result['relations']), 2)
+        for relation in result['relations']:
+            self.assertEqual(relation['temporal']['as_of'], '2025-12-31')
+            self.assertTrue(any('31.12.2025' in e['quote'] for e in relation['evidence']))
+
+    def test_introductory_date_sentence_is_cited(self):
+        _, _, result = run({3: [
+            'Công ty con\nTại ngày 31 tháng 12 năm 2024, Công ty có tám công ty con như sau:\n'
+            'Tỷ lệ sở hữu\nCông ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%',
+        ]})
+        relation = result['relations'][0]
+        self.assertEqual(relation['temporal']['as_of'], '2024-12-31')
+        self.assertTrue(any('Tại ngày 31 tháng 12 năm 2024' in e['quote'] for e in relation['evidence']))
+
+    def test_unrelated_previous_page_date_does_not_leak(self):
+        triples, _, _ = run({
+            2: ['Tại ngày 31/12/2023\nTiền gửi ngân hàng'],
+            3: ['Công ty con\nTỷ lệ sở hữu\nCông ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%'],
+        })
+        self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '100', None)])
+
+    def test_new_numbered_note_resets_date_and_table(self):
+        for title in ('1. Tiền và các khoản tương đương tiền', '2.4 Cơ sở hợp nhất',
+                      '2.4. Cơ sở hợp nhất'):
+            with self.subTest(title=title):
+                triples, _, _ = run({3: [
+                    'Tại ngày 31/12/2023\n' + title + '\n'
+                    'Công ty con\nTỷ lệ sở hữu\nCông ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%',
+                ]})
+                self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '100', None)])
+
+    def test_numbered_subsidiary_heading_is_not_a_note_reset(self):
+        triples, _, _ = run({3: [
+            'Tại ngày 31/12/2025\n1. Công ty con\nTỷ lệ sở hữu\n'
+            'Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%',
+        ]})
+        self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '100', '2025-12-31')])
+
+    def test_continued_table_keeps_date_quote(self):
+        _, _, result = run({
+            3: ['Công ty con\nTại ngày 31/12/2025\nTỷ lệ sở hữu\n'
+                'Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%'],
+            4: ['Công ty Cổ phần Viễn thông Alpha Cung cấp dịch vụ 45,66%'],
+        })
+        self.assertEqual(len(result['relations']), 2)
+        for relation in result['relations']:
+            self.assertEqual(relation['temporal']['as_of'], '2025-12-31')
+            self.assertTrue(any('31/12/2025' in e['quote'] for e in relation['evidence']))
+
     def test_fpt_layout_menu_lines_split_name_and_associate_section(self):
         triples, diagnostics, result = run(FPT_LIKE)
         self.assertEqual(triples, [
