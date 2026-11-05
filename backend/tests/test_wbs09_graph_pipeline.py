@@ -255,6 +255,7 @@ class CaptureDriver:
 
 
 EDGE = {'relation_id': 'r1', 'relation_type': 'HAS_SUBSIDIARY', 'subject_id': 'CMP-TCB',
+        'corpus_id': 'corpus-v1', 'index_version_id': 'index-v1',
         'subject_name': 'TCB', 'object_id': 'CMP-TCBS', 'object_name': 'TCBS', 'as_of': '2025-12-31',
         'valid_from': None, 'valid_to': None, 'attributes_json': '{"consolidation_basis":"x"}',
         'evidence_json': json.dumps([{'document_id': DOC, 'chunk_id': 'c1', 'document_version': VER,
@@ -286,6 +287,13 @@ class RetrievalTests(unittest.TestCase):
         self.assertEqual(result[0]['relations'][0]['evidence'][0]['quote'], 'TCBS là công ty con')
 
 
+def test_ready_check_requires_every_requested_version():
+    driver = CaptureDriver([{'found': 2, 'ready': 1}])
+    assert not RelationRetrieval(driver).all_versions_ready(['v1', 'v2'])
+    driver = CaptureDriver([{'found': 2, 'ready': 2}])
+    assert RelationRetrieval(driver).all_versions_ready(['v1', 'v2'])
+
+
 class FakeRetrieval:
     def __init__(self, paths):
         self.paths, self.calls = paths, []
@@ -308,7 +316,10 @@ class AdapterTests(unittest.TestCase):
         edge = {k: v for k, v in EDGE.items() if not k.endswith('_json')}
         edge.update(attributes={}, evidence=json.loads(EDGE['evidence_json']))
         fake = FakeRetrieval([{'graph_version_id': 'g-v1', 'relations': [edge]}])
-        adapter = LiveGraphAdapter(None, fake, ['g-v1'], {'TCB': 'CMP-TCB'})
+        def verified(paths):
+            return ({'chunk_id': 'c1', 'source_verified': True, 'label': 'LIVE/GRAPH'},)
+        adapter = LiveGraphAdapter(None, fake, ['g-v1'], {'TCB': 'CMP-TCB'},
+                                   verify_sources=verified)
         result = adapter.execute(task('find_subsidiaries', companies=['tcb'], periods=['2025']))
         self.assertEqual(result.status, 'OK')
         self.assertEqual(result.evidence[0]['chunk_id'], 'c1')
@@ -322,10 +333,36 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(adapter.execute(task('find_relationships', companies=['XYZ'])).reason_code,
                          'GRAPH_ENTITY_UNRESOLVED')
 
+    def test_partial_or_multiple_company_scope_never_returns_other_company_edges(self):
+        retrieval = FakeRetrieval([])
+        adapter = LiveGraphAdapter(None, retrieval, ['g-v1'],
+                                   {'TCB': 'CMP-TCB', 'ELC': 'CMP-ELC'})
+        partial = adapter.execute(task('find_relationships', companies=['TCB', 'UNKNOWN']))
+        assert partial.reason_code == 'GRAPH_ENTITY_UNRESOLVED'
+        multiple = adapter.execute(task('find_relationships', companies=['TCB', 'ELC']))
+        assert multiple.reason_code == 'GRAPH_MULTI_COMPANY_SCOPE_UNSUPPORTED'
+        assert retrieval.calls == []
+
     def test_period_window(self):
         self.assertEqual(_period_window(['2025-Q2']), ('2025-04-01', '2025-06-30'))
         self.assertEqual(_period_window(['2024', '2025-Q1']), ('2024-01-01', '2025-03-31'))
-        self.assertEqual(_period_window(['latest']), (None, None))
+        with self.assertRaises(ValueError):
+            _period_window(['latest'])
+
+    def test_invalid_period_cannot_drop_filter_and_return_unscoped_edges(self):
+        adapter = LiveGraphAdapter(None, FakeRetrieval([]), ['g-v1'], {'TCB': 'CMP-TCB'})
+        result = adapter.execute(task('find_relationships', companies=['TCB'], periods=['2025-Q5']))
+        self.assertEqual(result.reason_code, 'GRAPH_UNSUPPORTED_PERIOD')
+
+    def test_graph_timeout_is_distinct_from_empty_graph(self):
+        class SlowRetrieval:
+            def query(self, *args, **kwargs):
+                raise TimeoutError()
+
+        adapter = LiveGraphAdapter(None, SlowRetrieval(), ['g-v1'], {'TCB': 'CMP-TCB'})
+        result = adapter.execute(task('find_relationships', companies=['TCB']))
+        self.assertEqual(result.reason_code, 'GRAPH_TIMEOUT')
+        self.assertEqual(result.status, 'SYSTEM_UNAVAILABLE')
 
 
 if __name__ == '__main__':

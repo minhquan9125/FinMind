@@ -6,6 +6,7 @@ import asyncio
 import json
 import logging
 import os
+import unicodedata
 from pathlib import Path
 from functools import lru_cache
 
@@ -99,19 +100,53 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
         return None
 
 
-def _registry_tickers() -> dict[str, str]:
-    """Ticker -> company entity ID; a ticker claimed by two entities is left out."""
+def _registry_tickers(company_names=None) -> dict[str, str]:
+    """Map tickers to unique verified registry IDs, using exact DB names as backup."""
     default = Path(__file__).resolve().parents[2] / "sprint4_runtime" / "company.registry.json"
     rows = json.loads(Path(os.environ.get("SPRINT4_COMPANY_REGISTRY", default)).read_text("utf-8"))
     owners: dict[str, set[str]] = {}
+    names: dict[str, set[str]] = {}
+
+    def norm(value):
+        return " ".join(unicodedata.normalize("NFC", value).casefold().split())
+
     for row in rows:
+        if not row.get("verified"):
+            continue
         for ticker in row.get("ticker_aliases") or []:
             owners.setdefault(ticker.upper(), set()).add(row["entity_id"])
+        for name in [row.get("canonical_name"), *(row.get("aliases") or [])]:
+            if name:
+                names.setdefault(norm(name), set()).add(row["entity_id"])
+    for ticker, name in (company_names or {}).items():
+        exact = names.get(norm(name), set())
+        if len(exact) == 1:
+            owners.setdefault(ticker.upper(), set()).update(exact)
     return {t: ids.pop() for t, ids in owners.items() if len(ids) == 1}
 
 
-def _build_live_graph_adapter() -> LiveGraphAdapter | None:
+async def _company_names(pool):
+    async with pool.acquire() as connection:
+        async with connection.transaction(readonly=True):
+            rows = await connection.fetch(
+                "SELECT symbol, company_name FROM public.companies "
+                "WHERE symbol IS NOT NULL AND company_name IS NOT NULL")
+    return {row["symbol"]: row["company_name"] for row in rows}
+
+
+async def _verify_graph_sources(paths, pool):
+    """Replay all citations in one read-only PostgreSQL snapshot."""
+    from ...graph_review.sources import PostgresSourceReader
+    from ...retrieval_orchestration.hybrid_router.graph_source import verify_relation_paths
+
+    async with pool.acquire() as connection:
+        async with connection.transaction(readonly=True, isolation="repeatable_read"):
+            return await verify_relation_paths(paths, PostgresSourceReader(connection))
+
+
+def _build_live_graph_adapter(event_loop=None) -> LiveGraphAdapter | None:
     """Build a LiveGraphAdapter connecting to Neo4j."""
+    store = None
     try:
         from ...graph.graph_store import GraphStore
         store = GraphStore.from_environment()
@@ -120,9 +155,34 @@ def _build_live_graph_adapter() -> LiveGraphAdapter | None:
         if not versions:
             return LiveGraphAdapter(store)
         from ...graph.relation_retrieval import RelationRetrieval
-        return LiveGraphAdapter(store, RelationRetrieval(store.driver, database=store.database),
-                                versions, _registry_tickers())
+        from ...core.db import get_pool
+
+        relations = RelationRetrieval(store.driver, database=store.database)
+        if not relations.all_versions_ready(versions):
+            logger.warning("Configured Sprint 4 graph version is missing or not READY")
+            store.close()
+            return None
+        pool = get_pool()
+        names_future = asyncio.run_coroutine_threadsafe(_company_names(pool), event_loop)
+        try:
+            names = names_future.result(timeout=15)
+        except TimeoutError:
+            names_future.cancel()
+            raise
+
+        def verify_sources(paths):
+            future = asyncio.run_coroutine_threadsafe(_verify_graph_sources(paths, pool), event_loop)
+            try:
+                return future.result(timeout=30)
+            except TimeoutError:
+                future.cancel()
+                raise
+
+        return LiveGraphAdapter(store, relations,
+                                versions, _registry_tickers(names), verify_sources=verify_sources)
     except Exception as exc:
+        if store is not None:
+            store.close()
         logger.warning("LiveGraphAdapter init failed (Neo4j may be unavailable): %s", exc)
         return None
 
@@ -133,7 +193,7 @@ def _get_live_engine(event_loop) -> DecisionEngine:
     engine = DecisionEngine(predictor, threshold=predictor.threshold)
 
     content = _build_live_content_adapter(event_loop)
-    graph = _build_live_graph_adapter()
+    graph = _build_live_graph_adapter(event_loop)
 
     if content is not None:
         engine.content_adapter = content
@@ -203,7 +263,11 @@ async def run_router(payload: RouterTestRequest) -> dict:
     else:
         engine = get_router_engine()
 
-    result = await asyncio.to_thread(engine.run, payload.question, context=context)
+    try:
+        result = await asyncio.to_thread(engine.run, payload.question, context=context)
+    finally:
+        if mode == "live" and isinstance(getattr(engine, "graph_adapter", None), LiveGraphAdapter):
+            await asyncio.to_thread(engine.graph_adapter._store.close)
 
     return {
         "decision": result.decision.decision,
@@ -221,6 +285,8 @@ async def run_router(payload: RouterTestRequest) -> dict:
                 "provenance": ar.provenance,
                 "evidence_count": len(ar.evidence),
                 "data_count": len(ar.data),
+                "data": list(ar.data),
+                "evidence": list(ar.evidence),
             }
             for ar in result.adapter_results
         ],

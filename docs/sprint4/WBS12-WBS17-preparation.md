@@ -1,5 +1,11 @@
 # WBS12 adapter fixture và chuẩn bị đánh giá WBS17
 
+**Cập nhật 04/11/2026:** Phần WBS12 bên dưới ghi lại giai đoạn chuẩn bị fixture.
+Nhánh GRAPH đã được nối WBS09 và kiểm thử trên Neo4j/PostgreSQL thật sau đó;
+xem [WBS12-graph-router-live.md](WBS12-graph-router-live.md) và
+[biên bản bàn giao](Nhan-WBS03-WBS08-WBS12-handoff-20261104.md). Phần chuẩn bị
+WBS17 bên dưới vẫn là kế hoạch, chưa phải kết quả benchmark B1/B2.
+
 Ngày 03/11/2026. Graph BCTN V4 đã READY ở phiên
 `s4-bctn-b2550a0b-v4-20261102`; phần này **chưa nối WBS09 thật** và
 **chưa phải kết quả B1/B2**.

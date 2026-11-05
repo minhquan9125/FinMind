@@ -166,7 +166,7 @@ def test_live_mode_without_graph_never_falls_back_to_fixture(monkeypatch):
             return 0.9, 0.1
 
     monkeypatch.setattr(hybrid_router, "ArtifactPredictor", Predictor)
-    monkeypatch.setattr(hybrid_router, "_build_live_graph_adapter", lambda: None)
+    monkeypatch.setattr(hybrid_router, "_build_live_graph_adapter", lambda loop: None)
     monkeypatch.setattr(hybrid_router, "_build_live_content_adapter", lambda loop: None)
     engine = hybrid_router._get_live_engine(None)
     result = engine.run("FPT có công ty con nào năm 2025?")

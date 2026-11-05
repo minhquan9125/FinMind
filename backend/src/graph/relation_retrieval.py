@@ -27,6 +27,7 @@ WHERE all(r IN rs WHERE r.graph_version_id = v.id
           AND ($types IS NULL OR r.relation_type IN $types) AND %s)
 RETURN v.id AS graph_version_id,
        [r IN rs | {relation_id: r.relation_id, relation_type: r.relation_type,
+                   corpus_id: r.corpus_id, index_version_id: r.index_version_id,
                    subject_id: startNode(r).entity_id, subject_name: startNode(r).canonical_name,
                    object_id: endNode(r).entity_id, object_name: endNode(r).canonical_name,
                    as_of: r.as_of, valid_from: r.valid_from, valid_to: r.valid_to,
@@ -60,6 +61,16 @@ class RelationRetrieval:
         self.driver = driver
         self.database = database
         self.timeout_seconds = timeout_seconds
+
+    def all_versions_ready(self, graph_version_ids):
+        """Distinguish an unavailable graph version from a valid empty search."""
+        versions = _ids(graph_version_ids, 'graph_version_ids')
+        with self.driver.session(database=self.database) as session:
+            rows = list(session.run(Query('''MATCH (v:GraphVersion) WHERE v.id IN $versions
+                RETURN count(v) AS found,
+                       sum(CASE WHEN v.status = 'READY' THEN 1 ELSE 0 END) AS ready''',
+                                    timeout=self.timeout_seconds), versions=versions))
+        return bool(rows) and rows[0]['found'] == rows[0]['ready'] == len(versions)
 
     def query(self, entity_ids, *, graph_version_ids, relation_types=None,
               start=None, end=None, hops=1, limit=50):
