@@ -14,6 +14,7 @@ class RouterScope(BaseModel):
     periods: list[str] = Field(default_factory=list)
     metric_code: str | None = Field(default=None, min_length=1)
     topic: str | None = Field(default=None, min_length=1)
+    source_type: str | None = None
     detected_industry: str | None = Field(default=None, min_length=1)
     entity_mentions: list[str] = Field(default_factory=list)
     measure_basis: str | None = None

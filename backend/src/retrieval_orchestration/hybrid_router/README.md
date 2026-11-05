@@ -40,8 +40,8 @@ chunks checked in a read-only transaction. An omitted hybrid index is derived
 from that corpus; no latest year is invented. `/test` returns concrete periods
 when coverage exists and exposes `period_resolution_required` otherwise.
 Before LIVE calls, unresolved/invalid periods stop execution with
-`PERIOD_RESOLUTION_REQUIRED`; they are never silently dropped. Wiring the
-personnel filters in graph adapters remains the adapter owner's integration work.
+`PERIOD_RESOLUTION_REQUIRED`; they are never silently dropped. Exact daily price
+lookups use a calendar date and the existing price service, not report coverage.
 
 Every explicit numeric quarter is checked, including a later invalid quarter.
 Year-before-quarter and quarter-before-year are supported. Company-specific
@@ -57,8 +57,11 @@ reporting_entity/measure_basis. Without this capability an explicit reporting
 entity returns `CONTENT_REPORTING_SCOPE_UNSUPPORTED` before retrieval, rather
 than searching without the requested filter. Current database statement_scope
 values describe statement sections, so they must not be used as a fabricated
-consolidated/parent mapping. Installing a retrieval implementation that supports
-those metadata filters remains necessary for LIVE report-type comparisons.
+consolidated/parent mapping. The factory now installs this callback and reuses
+the LIVE evidence header matcher for reporting entity and quarter basis.
+Missing scope labels return no matching evidence, rather than another report.
+Search is bounded to 20 verified candidates before header filtering; it is not
+an exhaustive scan of all documents.
 
 For BOTH, the content task declares `company_scope_policy`:
 `RELATED_COMPANIES` requires Graph result rows to supply explicit ticker lists
@@ -67,8 +70,20 @@ companies, otherwise uses those lists. Person IDs, relation IDs and path nodes
 are never guessed as tickers. Missing mapping stops before Vector with
 `GRAPH_COMPANY_MAPPING_REQUIRED`. The engine bridges declared tickers into the
 current content dependency format and executes one company/period per call.
-The existing Graph adapter still needs to populate this mapping for discovered
-companies; no adapter, metadata or extractor implementation is changed here.
+The Graph adapter now populates this mapping from registry company IDs on the
+returned edges, passes requested relation types and checks position/event stage.
+Unknown relation types remain errors; requests are never widened to all edges.
+
+`source_type` is retained in scope/context. BCTN uses ANNUAL_REPORT for coverage
+and retrieval; its pinned document report-year metadata can resolve the latest
+report. BCTC uses FINANCIAL_STATEMENT. Report years are not relation effective dates.
+Exact daily prices use `find_price` and the existing read-only price query service.
+No trading row for the requested date means NO_DATA, not substitution of another day.
+
+Both endpoints require current server authentication and a READ_ROLES grant when
+LIVE/shadow or configured-corpus data can be accessed. Only pure MOCK without a
+configured corpus remains anonymous. Set `FINMIND_ACCESS_TOKEN` for the interactive
+client to attach the bearer token; the client does not print or persist it.
 
 Regression suite for this handoff: `backend/tests/test_hybrid_router.py`.
 

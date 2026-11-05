@@ -187,6 +187,7 @@ class SessionScope:
     confirmed: bool = True
     ambiguous_companies: tuple[str, ...] = ()
     topic: str | None = None
+    source_type: str | None = None
     operation: str | None = None
     route_hint: str | None = None
     reporting_entity: str | None = None
@@ -431,6 +432,11 @@ class ScopeResolver:
                             topic=intent.topic, detected_industry=detected_industry,
                             entity_mentions=entity_mentions, **personnel,
                             **reporting_filters(normalized, periods, metric))
+        scope.source_type = ("BCTN" if contains(normalized, ("bctn", "bao cao thuong nien"))
+                             else "PRICE" if metric == "STOCK_PRICE" else
+                             "BCTN" if intent.route == "GRAPH" else "BCTC")
+        if inherit_operation and context.source_type:
+            scope.source_type = context.source_type
         if context and context.confirmed and explicit_reference and not independent_scope and not contains(
                 normalized, ("hop nhat", "rieng le", "cong ty me")):
             scope.reporting_entity = context.reporting_entity
@@ -591,6 +597,7 @@ class DecisionEngine:
         # meaning of forecasts, knowledge requests and explanations downstream.
         params = {**resolved.scope.model_dump(exclude_none=True), "question": question,
                   "retrieval_question": normalize_user_text(question)}
+        params["doc_type"] = {"BCTN": "ANNUAL_REPORT", "BCTC": "FINANCIAL_STATEMENT"}.get(resolved.scope.source_type)
         if fixture_case:
             params["fixture_case"] = fixture_case
         params["period_resolution_required"] = any(
@@ -606,6 +613,8 @@ class DecisionEngine:
             "PORTFOLIO_EDUCATION": "find_investing_knowledge",
             "SECTOR_RESEARCH": "find_sector_research",
         }
+        if resolved.scope.metric_code == "STOCK_PRICE" and topic == "FINANCIAL_RESEARCH":
+            content_operations[topic] = "find_price"
         if route == "VECTOR":
             tasks = []
             targets = resolved.scope.targets or [
@@ -618,12 +627,16 @@ class DecisionEngine:
                             else resolved.scope.reporting_entities or [resolved.scope.reporting_entity])
                 for entity in entities:
                     company, period = target.get("company"), target.get("period")
+                    if content_operations.get(topic) == "find_price" and period in {"CURRENT", "PREVIOUS_DAY", "NEXT_DAY"}:
+                        today = self.resolver.reference_date or datetime.now(timezone(timedelta(hours=7))).date()
+                        period = (today + timedelta(days={"CURRENT": 0, "PREVIOUS_DAY": -1, "NEXT_DAY": 1}[period])).isoformat()
                     tasks.append(RouterTask(
                         id=f"v{len(tasks) + 1}", adapter="CONTENT",
                         operation=content_operations.get(topic, "find_metric"),
                         params={**params, "companies": [company] if company else [],
                                 "periods": [period] if period else [], "reporting_entity": entity,
-                                "period_resolution_required": bool(period and not re.fullmatch(r"\d{4}(?:-Q[1-4])?", period))},
+                                "period_resolution_required": bool(period and not re.fullmatch(
+                                    r"\d{4}(?:-\d{2}-\d{2})?" if content_operations.get(topic) == "find_price" else r"\d{4}(?:-Q[1-4])?", period))},
                     ))
         elif route == "GRAPH":
             tasks = [RouterTask(id="g1", adapter="GRAPH", operation="find_relationships", params=params)]
@@ -641,6 +654,7 @@ class DecisionEngine:
                 ), params={**params, "company_scope_policy": company_policy,
                            "resolved_companies": []}, depends_on="g1"),
             ]
+            tasks[0].params = {**tasks[0].params, "company_scope_policy": company_policy}
         if self.period_resolver:
             for task in tasks:
                 if task.params.get("period_resolution_required"):

@@ -144,6 +144,12 @@ def _scope(company, period, doc_type):
     return values[0], _period(period), values[1]
 
 
+def _same_period(stored, requested):
+    """A canonical year matches its YEAR label, never any quarter of that year."""
+    return stored == requested or (bool(re.fullmatch(r"\d{4}", requested or ""))
+                                   and stored == requested + "-YEAR")
+
+
 def _matches(row, company, period, doc_type, publisher=None, published_date=None):
     symbols = {s.upper() for s in row['symbols']}
     if row['company']:
@@ -415,7 +421,7 @@ class HybridRetriever:
                     if await self._value(conn,FINGERPRINT,index_id)!=payload['fingerprint']:
                         raise RetrievalError('CACHE_STALE')
                     allowed={r['chunk_id'] for r in payload['rows'] if _matches(r,company,period,doc_type,publisher,published_date)
-                             and (not exact_period or r['period']==period)}
+                             and (not exact_period or _same_period(r['period'], period))}
                     lexical=lexical_index.search(question,limit=candidates,allowed_ids=allowed)
                     dense=[]
                     if allowed:
@@ -438,7 +444,7 @@ class HybridRetriever:
                             row=by_id.get(item['chunk_id'])
                             if row is None or row['chunk_id'] not in allowed or not _matches(_metadata(row),company,period,doc_type,publisher,published_date):
                                 raise RetrievalError('SOURCE_UNAVAILABLE')
-                            if exact_period and _metadata(row)['period'] != period:
+                            if exact_period and not _same_period(_metadata(row)['period'], period):
                                 raise RetrievalError('SOURCE_UNAVAILABLE')
                             if hashlib.sha256(row['text'].encode('utf-8')).hexdigest()!=row['content_hash'].strip():
                                 raise RetrievalError('HASH_MISMATCH')

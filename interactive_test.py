@@ -20,6 +20,9 @@ def _ask_backend(question: str, context: dict | None) -> dict:
         headers={"Content-Type": "application/json"},
         method="POST",
     )
+    token = os.environ.get("FINMIND_ACCESS_TOKEN")
+    if token:
+        request.add_header("Authorization", "Bearer " + token)
     with urlopen(request, timeout=300) as response:
         return json.loads(response.read().decode("utf-8"))
 
@@ -40,6 +43,7 @@ def _next_context(result: dict) -> dict | None:
         "relation_types": scope.get("relation_types") or [],
         "reporting_entities": scope.get("reporting_entities") or [],
         "targets": scope.get("targets") or [],
+        "source_type": scope.get("source_type"),
     }
 
 

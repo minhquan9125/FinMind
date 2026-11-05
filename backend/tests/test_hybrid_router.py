@@ -686,6 +686,7 @@ def test_api_coverage_is_connected_and_preserves_http_context(monkeypatch):
         hybrid_router_mode="mock", hybrid_router_index_id="index-fixture", research_corpus_version_id="corpus-fixture"))
     app = FastAPI()
     app.include_router(api.router)
+    app.dependency_overrides[api.router_access] = lambda: None
     with TestClient(app) as client:
         data = client.post("/api/hybrid-router/test", json={"question": "Doanh thu FPT kỳ mới nhất"}).json()
         assert data["scope"]["periods"] == ["2025-Q2"]
@@ -749,7 +750,7 @@ def test_scope_aware_content_callback_receives_reporting_and_basis():
         result = await asyncio.to_thread(adapter.execute, task)
         assert result.status == "NO_DATA"
     asyncio.run(check())
-    assert calls == [("FPT", "2025", {"reporting_entity": "PARENT", "measure_basis": "FULL_YEAR"})]
+    assert calls == [("FPT", "2025", {"reporting_entity": "PARENT", "measure_basis": "FULL_YEAR", "doc_type": "FINANCIAL_STATEMENT"})]
 
 
 def _review_followup_context(decision):
@@ -796,3 +797,145 @@ def test_review_quarter_followup_preserves_ytd_unless_explicitly_changed(followu
     assert result.scope.reporting_entity == "CONSOLIDATED"
     assert result.scope.measure_basis == basis
     assert all(t.params["measure_basis"] == basis for t in result.tasks)
+
+
+def test_today_price_bypasses_report_coverage_and_reads_exact_date():
+    import asyncio
+    from src.retrieval_orchestration.hybrid_router.adapters import LiveContentAdapter
+    calls = []
+    async def price(question, company, period):
+        calls.append((company, period))
+        return {"data": {"close": "123"}, "sources": [{"price_id": "fixture-price-id", "source_table": "price_bars"}]}
+    def no_report_coverage(task):
+        raise AssertionError("A calendar price date must not use report coverage")
+    async def check():
+        e = engine(period_resolver=no_report_coverage,
+                   content_adapter=LiveContentAdapter(None, asyncio.get_running_loop(), price_search_fn=price))
+        result = await asyncio.to_thread(e.run, "Giá FPT hôm nay")
+        assert result.status == "OK"
+        assert result.decision.tasks[0].operation == "find_price"
+        assert result.adapter_results[0].evidence[0]["source_id"] == "fixture-price-id"
+    asyncio.run(check())
+    assert calls == [("FPT", "2026-11-05")]
+
+
+def test_bctn_coverage_task_is_not_bctc():
+    seen = []
+    def resolve(task):
+        seen.append(task.params["doc_type"])
+        return ["2025"]
+    result = engine(period_resolver=resolve).decide("BCTN FPT kỳ mới nhất")
+    assert result.scope.source_type == "BCTN"
+    assert result.scope.periods == ["2025"]
+    assert seen == ["ANNUAL_REPORT"]
+
+
+def test_factory_wires_reporting_callback_and_filters_verified_headers(monkeypatch):
+    import asyncio
+    from src.core import db
+    from src.documents import embeddings
+    from src.vector_retrieval import backend
+    queries = []
+    class Retriever:
+        def __init__(self, *args, **kwargs):
+            pass
+        async def search(self, *args, **kwargs):
+            queries.append(kwargs)
+            return {"results": [
+                {"chunk_id": "wrong", "text": "FPT | Phạm vi: riêng | lũy kế\nOther report"},
+                {"chunk_id": "right", "text": "FPT | Phạm vi: hợp nhất | lũy kế\nExpected report"}]}
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(
+        hybrid_router_index_id="fixture-index", research_corpus_version_id="fixture-corpus"))
+    monkeypatch.setattr(db, "get_pool", lambda: object())
+    monkeypatch.setattr(embeddings, "get_embedding_service", lambda: object())
+    monkeypatch.setattr(backend, "HybridRetriever", Retriever)
+    async def check():
+        adapter = await asyncio.to_thread(api._build_live_content_adapter, asyncio.get_running_loop())
+        task = engine().decide("Doanh thu hợp nhất FPT lũy kế quý 1/2025").tasks[0]
+        result = await asyncio.to_thread(adapter.execute, task)
+        assert result.status == "OK"
+        assert [row["chunk_id"] for row in result.data] == ["right"]
+    asyncio.run(check())
+    assert queries[0]["doc_type"] == "FINANCIAL_STATEMENT"
+
+
+@pytest.mark.parametrize("endpoint", ["test", "run"])
+def test_live_router_requires_auth_before_loading_engine(monkeypatch, endpoint):
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(hybrid_router_mode="live"))
+    monkeypatch.setattr(api, "get_router_engine", lambda: pytest.fail("Unauthenticated call loaded engine"))
+    app = FastAPI()
+    app.include_router(api.router)
+    with TestClient(app) as client:
+        assert client.post(f"/api/hybrid-router/{endpoint}", json={"question": "Giá FPT hôm nay"}).status_code == 401
+
+
+def test_graph_adapter_applies_role_filter_and_maps_only_registry_companies():
+    from src.retrieval_orchestration.hybrid_router.adapters import LiveGraphAdapter
+    class Relations:
+        def query(self, entities, **kwargs):
+            assert kwargs["relation_types"] == ("HOLDS_ROLE",)
+            return [{"graph_version_id": "ready-fixture", "relations": [
+                {"relation_id": role, "relation_type": "HOLDS_ROLE", "subject_id": "PERSON-fixture",
+                 "object_id": "CMP-FPT", "attributes": {"position_code": role}, "evidence": []}]}
+                for role in ["CEO", "BOARD_CHAIR"]]
+    adapter = LiveGraphAdapter(None, Relations(), ["ready-fixture"], {"FPT": "CMP-FPT"})
+    result = adapter.execute(engine().decide("Chủ tịch FPT năm 2025 là ai?").tasks[0])
+    assert result.status == "OK"
+    assert len(result.data) == 1
+    assert result.data[0]["relations"][0]["attributes"]["position_code"] == "BOARD_CHAIR"
+    assert result.data[0]["resolved_companies"] == ["FPT"]
+
+
+def test_graph_related_company_mapping_reaches_vector_without_path_ids():
+    from src.retrieval_orchestration.hybrid_router.adapters import LiveGraphAdapter
+    class Relations:
+        def query(self, entities, **kwargs):
+            return [{"graph_version_id": "ready-fixture", "relations": [{
+                "relation_id": "subsidiary-fixture", "relation_type": "HAS_SUBSIDIARY",
+                "subject_id": "CMP-FPT", "object_id": "CMP-CMG", "attributes": {}, "evidence": []}]}]
+    graph = LiveGraphAdapter(None, Relations(), ["ready-fixture"], {"FPT": "CMP-FPT", "CMG": "CMP-CMG"})
+    content = LiveRecorder("CONTENT")
+    result = engine(graph_adapter=graph, content_adapter=content).run("Doanh thu công ty con FPT năm 2025")
+    assert result.status == "OK"
+    assert content.calls[0][0].params["companies"] == ["CMG"]
+
+
+def test_graph_appointment_query_keeps_requested_event_stage():
+    from src.retrieval_orchestration.hybrid_router.adapters import LiveGraphAdapter
+    class Relations:
+        def query(self, entities, **kwargs):
+            assert kwargs["relation_types"] == ("APPOINTS",)
+            return [{"graph_version_id": "ready-fixture", "relations": [{
+                "relation_id": stage, "relation_type": "APPOINTS", "subject_id": "CMP-FPT",
+                "object_id": "PERSON-fixture", "attributes": {"proposed_stage": stage}, "evidence": []}]}
+                for stage in ["APPOINTED", "RESIGNATION_REQUESTED"]]
+    adapter = LiveGraphAdapter(None, Relations(), ["ready-fixture"], {"FPT": "CMP-FPT"})
+    result = adapter.execute(engine().decide("FPT bổ nhiệm ai năm 2025?").tasks[0])
+    assert result.status == "OK"
+    assert [path["relations"][0]["relation_id"] for path in result.data] == ["APPOINTED"]
+
+
+@pytest.mark.parametrize("roles,status", [(frozenset(), 403), (frozenset({"RESEARCHER"}), 200)])
+def test_live_router_checks_server_roles(monkeypatch, roles, status):
+    from src.auth.authorization import Principal
+    from uuid import UUID
+    async def principal(credentials):
+        assert credentials.credentials == "fixture-token"
+        return Principal(UUID(int=1), roles)
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(hybrid_router_mode="live"))
+    monkeypatch.setattr(api, "current_principal", principal)
+    monkeypatch.setattr(api, "get_router_engine", engine)
+    app = FastAPI()
+    app.include_router(api.router)
+    with TestClient(app) as client:
+        response = client.post("/api/hybrid-router/test", json={"question": "Doanh thu FPT năm 2025"},
+                               headers={"Authorization": "Bearer fixture-token"})
+        assert response.status_code == status
+
+
+def test_exact_year_lookup_accepts_year_label_without_matching_a_quarter():
+    from src.vector_retrieval.backend import _same_period
+    assert _same_period("2025-YEAR", "2025")
+    assert _same_period("2025", "2025")
+    assert not _same_period("2025-Q1", "2025")
+    assert not _same_period("2024-YEAR", "2025")

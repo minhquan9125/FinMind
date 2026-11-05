@@ -12,7 +12,8 @@ from typing import Literal
 from dataclasses import replace
 import re
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from ...auth.authorization import bearer, current_principal, READ_ROLES
 from pydantic import BaseModel, ConfigDict, Field
 
 from ...retrieval_orchestration.hybrid_router.decision_engine import (
@@ -35,6 +36,17 @@ logger = logging.getLogger("uvicorn.error")
 router = APIRouter(prefix="/api/hybrid-router", tags=["hybrid-router"])
 
 
+async def router_access(credentials=Depends(bearer)):
+    settings = get_settings()
+    if (getattr(settings, "hybrid_router_mode", "mock") == "mock"
+            and not getattr(settings, "research_corpus_version_id", None)):
+        return  # Pure synthetic fixtures access no private data.
+    principal = await current_principal(credentials)
+    if not principal.roles.intersection(READ_ROLES):
+        raise HTTPException(status_code=403, detail="Insufficient role")
+    return principal
+
+
 class RouterContextPayload(BaseModel):
     model_config = ConfigDict(extra="forbid")
     companies: list[str] = Field(default_factory=list)
@@ -43,6 +55,7 @@ class RouterContextPayload(BaseModel):
     detected_industry: str | None = None
     entity_mentions: list[str] = Field(default_factory=list)
     topic: str | None = None
+    source_type: str | None = None
     operation: str | None = None
     route_hint: Literal["VECTOR", "GRAPH", "BOTH"] | None = None
     reporting_entity: str | None = None
@@ -84,7 +97,9 @@ async def _coverage_periods(task):
     async with get_pool().acquire() as conn:
         async with conn.transaction(readonly=True, isolation="repeatable_read"):
             rows = await conn.fetch("""
-                SELECT DISTINCT coalesce(p.period_code,t.locator_json->>'period_code') AS period
+                SELECT DISTINCT CASE WHEN d.doc_type='ANNUAL_REPORT'
+                  THEN coalesce(p.period_code,t.locator_json->>'period_code',substring(d.title from '((19|20)[0-9]{2})$'))
+                  ELSE coalesce(p.period_code,t.locator_json->>'period_code') END AS period
                 FROM public.text_chunks t
                 JOIN public.documents d USING(document_id)
                 JOIN public.index_versions i USING(index_version_id)
@@ -98,7 +113,7 @@ async def _coverage_periods(task):
                   AND coalesce(c.symbol,t.locator_json->>'symbol')=ANY($3::text[])
                   AND d.doc_type=ANY($4::text[])
             """, index_id, corpus_id, task.params["companies"],
-                ["FINANCIAL_STATEMENT", "ANNUAL_REPORT"] if task.adapter == "GRAPH" else ["FINANCIAL_STATEMENT"])
+                [task.params.get("doc_type") or ("ANNUAL_REPORT" if task.adapter == "GRAPH" else "FINANCIAL_STATEMENT")])
     periods = set()
     requested = (task.params.get("periods") or [""])[0]
     for row in rows:
@@ -137,7 +152,6 @@ def warmup_router() -> None:
 def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
     """Build a LiveContentAdapter using the research chat's retriever pool."""
     try:
-        from ...core.config import get_settings
         settings = get_settings()
         index_id = settings.hybrid_router_index_id
         if not index_id and settings.research_corpus_version_id:
@@ -182,7 +196,36 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
                 top_k=top_k, candidates=max(top_k * 5, 50),
             )
 
-        return LiveContentAdapter(search_fn, event_loop, top_k=5)
+        async def scope_search_fn(question, company, period, top_k, *, reporting_entity=None,
+                                  measure_basis=None, doc_type=None):
+            from ...b1_answering.evidence.live_contract import reporting_entity_matches
+            result = await retriever.search(question, index_id, str(cache_path), company=company,
+                period=period, doc_type=doc_type, top_k=20, candidates=200,
+                exact_period=doc_type == "FINANCIAL_STATEMENT")
+            matching = []
+            for hit in result.get("results") or []:
+                header = (hit.get("text") or "").split("\n", 1)[0]
+                if reporting_entity and not reporting_entity_matches(header, reporting_entity):
+                    continue
+                norm = normalize_router_question(header)
+                if measure_basis == "YTD" and not re.search(r"\b(?:luy ke|ytd)\b", norm):
+                    continue
+                if measure_basis == "STANDALONE_QUARTER" and re.search(r"\b(?:luy ke|ytd)\b", norm):
+                    continue
+                matching.append(hit)
+            return {**result, "results": matching[:top_k]}
+
+        async def price_search_fn(question, company, period):
+            from ...documents.price_queries import query_price, PriceQueryError
+            from datetime import date
+            day = date.fromisoformat(period)
+            try:
+                return await query_price(pool, f"Giá {company} ngày {day:%d/%m/%Y}", company, period)
+            except PriceQueryError:
+                return {"sources": [], "data": {}}
+
+        return LiveContentAdapter(search_fn, event_loop, top_k=5,
+                                  scope_search_fn=scope_search_fn, price_search_fn=price_search_fn)
     except Exception as exc:
         logger.warning("LiveContentAdapter init failed: %s", exc)
         return None
@@ -241,7 +284,7 @@ def _get_live_engine(event_loop) -> DecisionEngine:
     return _with_coverage(engine, event_loop)
 
 
-@router.post("/test")
+@router.post("/test", dependencies=[Depends(router_access)])
 async def test_router(payload: RouterTestRequest) -> dict:
     """Return routing decision without executing adapters (mode-independent)."""
     context = None
@@ -265,7 +308,7 @@ async def test_router(payload: RouterTestRequest) -> dict:
     }
 
 
-@router.post("/run")
+@router.post("/run", dependencies=[Depends(router_access)])
 async def run_router(payload: RouterTestRequest) -> dict:
     """Execute routing decision AND run adapters (respects hybrid_router_mode)."""
     settings = get_settings()
