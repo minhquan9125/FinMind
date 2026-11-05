@@ -12,6 +12,7 @@ import React, {
 } from "react";
 
 import { apiLogin, apiRegister, apiGoogleLogin, apiForgotPassword, apiRefreshSession, apiLogout } from "../api/authApi.js";
+import { primaryRole, normalizeAuthUser } from "./authRoles.js";
 // ─── Key lưu phiên trong localStorage ────────────────────────────────────────
 // Chỉ lưu profile người dùng và access token; TUYỆT ĐỐI KHÔNG LƯU MẬT KHẨU
 const STORAGE_KEY = "finmind_auth_session";
@@ -70,6 +71,7 @@ export function AuthProvider({ children }) {
     const now = Date.now();
     const next = {
       ...session,
+      user: normalizeAuthUser(session.user),
       token: response.access_token,
       refreshToken: response.refresh_token,
       expiresAt: new Date(now + response.expires_in * 1000).toISOString(),
@@ -93,7 +95,7 @@ export function AuthProvider({ children }) {
             if (!cancelled) setIsSessionExpired(true);
           }
         } else if (!cancelled) {
-          setUser(session.user);
+          setUser(normalizeAuthUser(session.user));
           setIsSessionExpired(false);
         }
       }
@@ -126,13 +128,11 @@ export function AuthProvider({ children }) {
     const ttlMs = (res.expires_in || 900) * 1000;
     const expiresAtTimestamp = now + ttlMs;
 
-    const rawRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
-    const primaryRole = rawRole === "admin" ? "admin" : "user";
     const authUser = {
       id: res.user.user_id,
       email: res.user.email,
       name: res.user.full_name,
-      role: primaryRole,
+      role: primaryRole(res.user.roles),
       roles: res.user.roles || ["RESEARCHER"],
     };
 
@@ -161,13 +161,11 @@ export function AuthProvider({ children }) {
     const ttlMs = (res.expires_in || 900) * 1000;
     const expiresAtTimestamp = now + ttlMs;
 
-    const rawRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
-    const primaryRole = rawRole === "admin" ? "admin" : "user";
     const authUser = {
       id: res.user.user_id,
       email: res.user.email,
       name: res.user.full_name,
-      role: primaryRole,
+      role: primaryRole(res.user.roles),
       roles: res.user.roles || ["RESEARCHER"],
     };
 

@@ -46,6 +46,36 @@ class Retriever:
         return copy.deepcopy(self.evidence)
 
 
+def test_real_dense_adapter_maps_financial_document_type_to_bctc_contract():
+    sample=pack()['items'][0]
+    class ActualAdapter(DenseEvidenceRetriever):
+        async def _corpus(self): return {'index_version_id':INDEX}
+        async def _hybrid_rows(self,*args):
+            return [dict(chunk_id=sample['chunk_id'],document_id=sample['source_id'],
+                         text=sample['passage'],content_hash=sample['content_sha256'],
+                         source_sha256=sample['source_sha256'],title='FPT BCTC',
+                         locator_json=sample['locator'],score=0.1)]
+    adapter=ActualAdapter(None,None,corpus_version_id=CORPUS,backend='hybrid')
+    result=asyncio.run(adapter.retrieve('FPT',{'companies':['FPT'],'periods':['2026-Q2'],
+        'source_type':'BCTC','metric_code':'CASH_AND_CASH_EQUIVALENTS'}))
+    assert result['items'][0]['source_type']=='BCTC'
+    assert prepare_evidence(result)
+
+
+def test_financial_source_row_remains_available_during_gemini_outage():
+    from src.b1_answering.application.service import complete_retrieval
+    from src.b1_answering.providers.gemini import GeminiError
+    class Down:
+        async def count_tokens(self,request): raise GeminiError('GEMINI_UNAVAILABLE')
+    result=asyncio.run(complete_retrieval('Tiền và tương đương tiền FPT quý 2/2026?',
+        {'status':'EVIDENCE_READY','execution_mode':'LIVE','scope':{
+            'source_type':'BCTC','companies':['FPT'],'periods':['2026-Q2'],
+            'metric_code':'CASH_AND_CASH_EQUIVALENTS'},'evidence_pack':pack()},provider=Down()))
+    assert result['answering']['status']=='DRAFT_READY'
+    assert result['answering']['reason_code']=='SOURCE_EXTRACT_FALLBACK'
+    assert result['answering']['citations']
+
+
 class Provider:
     def __init__(self):
         self.calls = 0

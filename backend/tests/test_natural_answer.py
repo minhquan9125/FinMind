@@ -103,7 +103,7 @@ def test_live_service_sends_natural_prompt_and_accepts_rewording():
     out = asyncio.run(complete_retrieval('Tiền FPT quý 2/2026?', copy.deepcopy(result), provider=Provider()))
     assert out['answering']['status'] == 'DRAFT_READY'
     manifest = out['answering']['manifest']
-    assert manifest['prompt_version'] == 'b1-grounded-v7'
+    assert manifest['prompt_version'] == 'b1-grounded-v8'
     assert not manifest['components']['extractive_claim_check']
     assert not manifest['components']['b3_answer_verification']
     assert out['answering']['budget']['calls_used'] == 1

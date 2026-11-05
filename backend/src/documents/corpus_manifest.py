@@ -56,7 +56,7 @@ def build_manifest(index: dict, rows: list[dict]) -> dict:
             'manifest_sha256': digest, 'manifest': payload}
 
 
-async def read_manifest(conn, index_id: str) -> dict:
+async def read_manifest(conn, index_id: str, *, source_index_id=None) -> dict:
     index = await conn.fetchrow(
         'SELECT index_version_id::text, chunker_version, chunk_size, chunk_overlap, embedding_model '
         'FROM public.index_versions WHERE index_version_id=$1', uuid.UUID(index_id))
@@ -64,13 +64,15 @@ async def read_manifest(conn, index_id: str) -> dict:
         raise ValueError('Index version does not exist')
     rows = await conn.fetch(
         'SELECT d.document_id::text, d.sha256 AS document_hash, d.doc_type, d.title, '
-        'd.external_id, d.source_url, t.chunk_id::text, t.chunk_index, '
+        'd.external_id, d.source_url, t.chunk_id::text, t.index_version_id::text, t.chunk_index, '
         't.content_hash, t.locator_json, vector_dims(t.embedding) AS dimensions '
         'FROM public.text_chunks t JOIN public.documents d USING(document_id) '
         'WHERE t.index_version_id=$1 AND t.superseded_at IS NULL', uuid.UUID(index_id))
     from .repository import resolve_result_rows
     materialized = [dict(row) for row in rows]
     lookup = [dict(row, chunker_version=index['chunker_version']) for row in materialized]
+    if source_index_id:
+        for row in lookup: row['index_version_id'] = str(source_index_id)
     rebuilt = await resolve_result_rows(conn, lookup)
     for row, resolved in zip(materialized, rebuilt):
         row['chunk_text'] = resolved['text']

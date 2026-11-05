@@ -14,12 +14,14 @@ from .live_contract import reporting_entity_matches
 from .news_policy import news_limits
 
 
-PROMPT_VERSION = 'b1-grounded-v7'
+PROMPT_VERSION = 'b1-grounded-v8'
 SYSTEM_PROMPT = (
     'Bạn là trợ lý tài chính B1. Trả lời trực tiếp câu hỏi bằng tiếng Việt tự nhiên, '
     'được diễn đạt lại, chia ý cho dễ đọc; không cần chép nguyên văn câu trả lời. '
     'Mỗi claim chỉ gồm thông tin được nguồn hỗ trợ, kèm evidence_ids và support_quotes: '
     'các đoạn trích NGUYÊN VĂN chứng minh claim, mỗi đoạn có evidence_id và quote. '
+    'Nguồn OCR có thể sai dấu hoặc chính tả: support_quotes phải sao chép đúng phần chữ '
+    'được cung cấp, kể cả lỗi OCR; không sửa dấu, nối các đoạn rời hoặc tự thêm đơn vị vào quote. '
     'Với chỉ tiêu tài chính, quote phải chứa dòng có đúng metric_code trong scope. '
     'Giữ chính xác số liệu, dấu âm, đơn vị, công ty, kỳ và phạm vi báo cáo. '
     'Có thể đổi dấu phân nhóm hàng nghìn cho số nguyên có nhiều nhóm; không làm tròn, '

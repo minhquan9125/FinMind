@@ -141,6 +141,24 @@ const routes = [
   },
 
   // ─── 9. Admin — Theo dõi truy vấn ────────────────────────────────────────
+  { path: "/admin/ingestion", component: "admin/AdminIngestionPage", category: "Admin",
+    label: "Thu thập và duyệt", auth: true, roles: ["admin"] },
+  {
+    path: "/admin/jobs",
+    component: "admin/AdminJobsPage",
+    category: "Admin",
+    label: "Job dữ liệu",
+    auth: true,
+    roles: ["admin"],
+  },
+  {
+    path: "/admin/jobs/:jobId",
+    component: "admin/AdminJobsPage",
+    category: "Admin",
+    label: "Chi tiết job dữ liệu",
+    auth: true,
+    roles: ["admin"],
+  },
   {
     path: "/admin/traces",
     component: "admin/AdminTracesPage",
