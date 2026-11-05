@@ -1,5 +1,6 @@
 import json
 import os
+import logging
 from typing import Any, Dict, Optional
 import httpx
 from ..core.policy import Limits
@@ -79,6 +80,13 @@ class GeminiProvider:
         if resp.status_code == 429:
             raise GeminiError("RATE_LIMITED")
         if resp.status_code != 200:
+            logging.getLogger(__name__).warning('Gemini %s returned HTTP %d', path, resp.status_code)
+            try:
+                error = json.loads(bytes(body)).get('error', {})
+                detail = str(error.get('message', '')).replace(self._api_key, '[REDACTED]')[:400]
+                logging.getLogger(__name__).warning('Gemini error %s: %s', error.get('status','UNKNOWN'), detail)
+            except (ValueError, TypeError, AttributeError):
+                pass
             raise GeminiError("GEMINI_UNAVAILABLE") from None
         return bytes(body)
 

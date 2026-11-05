@@ -9,6 +9,8 @@ export const ADMIN_LINKS = {
   overview: "/admin/overview",
   traces: "/admin/traces",
   sources: "/admin/sources",
+  jobs: "/admin/jobs",
+  ingestion: "/admin/ingestion",
   corpus: "/admin/corpus",
   configuration: "/admin/configuration",
   audit: "/admin/audit",
@@ -20,6 +22,8 @@ const groups = [
     { id: "traces", label: "Theo dõi truy vấn", icon: "∿" },
   ] },
   { label: "Quản trị dữ liệu", items: [
+    { id: "ingestion", label: "Thu thập & duyệt", icon: "↓" },
+    { id: "jobs", label: "Job dữ liệu", icon: "▤" },
     { id: "sources", label: "Cấu hình nguồn", icon: "◍" },
     { id: "corpus", label: "Phiên bản kho dữ liệu", icon: "☰" },
   ] },

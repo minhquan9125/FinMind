@@ -167,6 +167,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
         <div className={`min-w-0 max-w-[92%] rounded-xl px-4 py-3 sm:max-w-[85%] ${message.role === "user" ? "bg-blue-600 text-white" : "border border-slate-200 bg-slate-50 text-slate-900"}`}>
           <p className={`mb-1 text-xs font-semibold ${message.role === "user" ? "text-blue-100" : "text-blue-700"}`}>{message.role === "user" ? "Bạn" : message.result?.scope?.source_type === 'PRICE' ? 'Giá cổ phiếu' : message.result?.answering?.manifest?.response_mode === 'NEWS_LIST' ? 'Tin tức' : message.result?.execution_mode === 'LIVE' && message.result?.status === 'EVIDENCE_READY' && message.result?.answering?.status !== 'DRAFT_READY' ? 'Nguồn ứng viên' : statusLabels[message.result?.answering?.status] || statusLabels[message.result?.status] || "FinMind"}</p>
           <p className="whitespace-pre-wrap break-words text-sm leading-relaxed">{message.content}</p>
+          {message.result?.timings && <p className="mt-2 text-xs text-slate-500">Tìm nguồn: {message.result.timings.retrieval_seconds}s · Trả lời: {message.result.timings.answer_seconds}s · Tổng: {message.result.timings.total_seconds}s</p>}
           {clarificationChoices(message.result).length > 0 && <div className="mt-3 grid gap-2 sm:grid-cols-2" aria-label="Lựa chọn làm rõ câu hỏi">
             {clarificationChoices(message.result).map(option => <button key={option.id} type="button"
               disabled={view.loading || index !== snapshot.messages.length - 1}

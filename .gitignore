@@ -66,6 +66,10 @@ Thumbs.db
 # Downloaded/generated company-report artifacts (keep scripts and manifests tracked)
 outputs/docker-backup-*/
 outputs/vps-backup-*/
+outputs/admin-ingestion/
+outputs/wbs16-jobs/
+outputs/ocr-ai-demo/
+outputs/tools/
 *.dump
 .runtime-gpu/
 .runtime-contract/

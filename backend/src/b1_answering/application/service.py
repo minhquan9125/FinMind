@@ -50,6 +50,25 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
         return out
 
     def failure(code):
+        if (natural and result.get('scope', {}).get('source_type')=='BCTC'
+                and code in ('GEMINI_UNAVAILABLE','GEMINI_TIMEOUT')):
+            row = grounded.source_row_fallback(evidence,result['scope'],reason_code=code)
+            if row:
+                manifest['response_mode']='SOURCE_EXTRACT'
+                trace.append({'event':'financial_source_row_on_provider_outage','generation_failure':code})
+                return finish('DRAFT_READY','SOURCE_EXTRACT_FALLBACK',
+                              'Trả dòng chỉ tiêu từ nguồn đã kiểm tra khi dịch vụ diễn đạt tạm thời lỗi.',row)
+        if (natural and result.get('scope', {}).get('_allow_source_extract')
+                and code in ('GEMINI_UNAVAILABLE', 'GEMINI_TIMEOUT', 'PROVIDER_NOT_CONFIGURED',
+                             'INVALID_CITATION', 'UNSUPPORTED_CLAIM', 'INVALID_GEMINI_RESPONSE')):
+            from ..evidence.news_extract import source_excerpt
+            excerpt = source_excerpt(question, evidence, result['scope'])
+            if excerpt:
+                excerpt['draft'] = 'Trích nguyên văn từ tài liệu:\n' + excerpt['draft']
+                manifest['response_mode'] = 'SOURCE_EXTRACT'
+                trace.append({'event':'indexed_news_source_excerpt','generation_failure':code})
+                return finish('DRAFT_READY', 'NEWS_SOURCE_EXTRACT',
+                              'Hiển thị đoạn nguồn đã kiểm tra trích dẫn; không phải bản diễn đạt của mô hình.', excerpt)
         if code in ('NO_EVIDENCE', 'INVALID_EVIDENCE', 'INVALID_CITATION', 'UNSUPPORTED_CLAIM'):
             return finish('INSUFFICIENT_EVIDENCE', code, 'Chưa đủ bằng chứng phù hợp để trả lời.')
         if code in ('INPUT_LIMIT_EXCEEDED', 'CALL_LIMIT_EXCEEDED', 'BUDGET_EXCEEDED', 'OUTPUT_LIMIT_EXCEEDED', 'USAGE_LIMIT_EXCEEDED'):
@@ -59,10 +78,20 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
     if result.get('status') != 'EVIDENCE_READY':
         trace.append({'event': 'retrieval_not_ready'})
         return finish('SKIPPED', 'UPSTREAM_NOT_READY', 'Giữ phản hồi của bước hiểu câu hỏi và tìm bằng chứng.')
-    if provider is None:
-        return failure('PROVIDER_NOT_CONFIGURED')
     try:
         evidence = prepare_evidence(result.get('evidence_pack'))
+        if natural and result.get('scope', {}).get('_allow_source_extract'):
+            from ..evidence.news_extract import missing_quarters, missing_years
+            missing = missing_quarters(question, evidence)
+            if missing:
+                return finish('INSUFFICIENT_EVIDENCE', 'REQUESTED_PERIOD_NOT_IN_SOURCE',
+                              'Tài liệu tìm thấy không cung cấp thông tin cho quý ' + ', '.join(missing) + '; không suy ra từ quý khác.')
+            years=missing_years(question,evidence)
+            if years:
+                return finish('INSUFFICIENT_EVIDENCE','REQUESTED_PERIOD_NOT_IN_SOURCE',
+                              'Tài liệu tìm thấy không cung cấp thông tin cho năm ' + ', '.join(years) + '; không lấy số liệu của năm khác để trả lời.')
+        if provider is None:
+            return failure('PROVIDER_NOT_CONFIGURED')
         request = (grounded.build_grounded_request(question, evidence, limits, result.get('scope'))
                    if natural else build_request(question, evidence, limits))
     except CitationError as exc:
@@ -89,7 +118,7 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
     except (GeminiError, PolicyError) as exc:
         return failure(exc.code)
     trace.append({'event': 'generation_reserved', 'input_tokens': tokens})
-    manifest['components']['gemini'] = isinstance(provider, GeminiProvider)
+    manifest['components']['gemini'] = isinstance(provider, GeminiProvider) or isinstance(getattr(provider,'delegate',None), GeminiProvider)
 
     def retain_unknown():
         try:

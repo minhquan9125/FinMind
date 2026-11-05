@@ -36,6 +36,10 @@ def validate_live_item(item):
             'news_articles': 'NEWS',
             'companies': 'COMPANY_PROFILE',
         }
+        binding = locator.get('admin_news_snapshot')
+        if (isinstance(binding, dict) and binding.get('payload_id') == locator.get('source_id')
+                and isinstance(binding.get('sha256'), str) and re.fullmatch('[a-f0-9]{64}', binding['sha256'])):
+            source_types['raw_payloads'] = 'NEWS'
         if (item.get('source_type') != source_types.get(locator.get('source_table'))
                 or locator.get('source_table') not in source_types
                 or meta['content_hash'] != content_hash

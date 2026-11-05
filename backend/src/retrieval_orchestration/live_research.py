@@ -418,7 +418,7 @@ def analyze_live(text, context=None, *, today=None):
 class DenseEvidenceRetriever:
     """Corpus-bound adapter with dense or independently indexed BM25/RRF retrieval."""
     def __init__(self, pool, embedder, *, corpus_version_id=V4_CORPUS, model_ref=MODEL,
-                 backend='dense', cache_dir=None):
+                 backend='dense', cache_dir=None, corpus_resolver=None):
         if backend not in ('dense', 'hybrid'):
             raise ValueError('Unsupported retrieval backend')
         self.pool, self.embedder = pool, embedder
@@ -428,6 +428,7 @@ class DenseEvidenceRetriever:
         self.cache_dir = Path(cache_dir) if cache_dir is not None else Path(__file__).resolve().parents[1] / 'vector_retrieval' / '.cache'
         self._hybrid = None
         self._cache_lock = asyncio.Lock()
+        self.corpus_resolver = corpus_resolver
 
     def _hybrid_instance(self):
         from ..vector_retrieval.backend import HybridRetriever
@@ -439,10 +440,18 @@ class DenseEvidenceRetriever:
                 def embed_query(self, text):
                     with _embedding_lock:
                         return delegate.embed_query(text)
-            self._hybrid = HybridRetriever(self.pool, LockedEmbedder(), corpus_version_id=self.corpus_version_id)
+            # Frozen corpora are immutable. Membership/model fingerprints and
+            # returned source hashes are still checked on every search.
+            self._hybrid = HybridRetriever(self.pool, LockedEmbedder(), corpus_version_id=self.corpus_version_id,
+                                           max_cache_age=7*24*3600)
         return self._hybrid
 
     async def _corpus(self):
+        if self.corpus_resolver is not None:
+            current = str(uuid.UUID(await asyncio.to_thread(self.corpus_resolver)))
+            if current != self.corpus_version_id:
+                self.corpus_version_id = current
+                self._hybrid = None
         corpus = await repository.get_corpus_index(self.pool, self.corpus_version_id)
         if (not corpus or corpus['corpus_status'] != 'FROZEN' or corpus['index_status'] != 'ACTIVE'
                 or corpus['embedding_model'] != self.model_ref):
@@ -526,6 +535,9 @@ class DenseEvidenceRetriever:
                     )
                 matching = []
                 for row in rows:
+                    if scope.get('_admin_source_url'):
+                        locator = row.get('locator_json') or {}
+                        if locator.get('url') != scope['_admin_source_url']: continue
                     if row.get('source_verified', True) is not True:
                         raise ReconstructionError('UNVERIFIED_SOURCE', 'Preview cannot be evidence')
                     text = row['text']
@@ -552,7 +564,8 @@ class DenseEvidenceRetriever:
                         raise ReconstructionError('HASH_MISMATCH', 'Indexed text differs')
                     matching.append(dict(
                         evidence_id=row['chunk_id'], chunk_id=row['chunk_id'], source_id=row['document_id'],
-                        source_type=doc_type, title=row['title'], passage=text,
+                        source_type='BCTC' if doc_type == 'FINANCIAL_STATEMENT' else doc_type,
+                        title=row['title'], passage=text,
                         source_sha256=row['source_sha256'].strip(), content_sha256=content_hash,
                         source_verified=True, locator=row['locator_json'],
                         score={'type': 'RRF' if self.backend == 'hybrid' else 'COSINE_SIMILARITY', 'value': float(row['score'])},
@@ -573,9 +586,10 @@ class DenseEvidenceRetriever:
 class LiveResearchService:
     execution_mode = 'LIVE'
 
-    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None):
+    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None):
         self.retriever, self.provider = retriever, provider
         self.market = market
+        self.admin_news = admin_news
         self.limits = limits or Limits.load()
         self.budget = Budget(self.limits)
         self.retrieval_timeout = retrieval_timeout
@@ -633,6 +647,10 @@ class LiveResearchService:
 
     async def answer(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
+        if self.admin_news is not None:
+            indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
+                                                   limits=self.limits, budget=self.budget)
+            if indexed is not None: return indexed
         prior_scope = (previous_result or {}).get('scope') or {}
         # Recover only legacy, topic-less clarification state; never override an
         # explicitly active financial/news question or a different company.
@@ -747,6 +765,8 @@ def render_live_response(result):
     answering = result.get('answering') or {}
     if answering.get('status') == 'DRAFT_READY':
         return answering['draft']
+    if answering.get('reason_code') == 'REQUESTED_PERIOD_NOT_IN_SOURCE':
+        return answering['message']
     if result.get('status') != 'EVIDENCE_READY':
         return result['message']
     if answering.get('reason_code') == 'PROVIDER_NOT_CONFIGURED':

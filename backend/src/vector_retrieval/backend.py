@@ -46,6 +46,40 @@ class RetrievalError(Exception):
         super().__init__(code)
 
 
+async def cache_verified_manifest(conn, manifest, cache_path):
+    """Prepare search from a just-verified manifest, without rereading every source."""
+    from ..documents.corpus_manifest import sha256
+    payload=manifest['manifest']
+    if sha256(payload)!=manifest['manifest_sha256']:
+        raise RetrievalError('HASH_MISMATCH')
+    index_id=_uuid(payload['index']['index_version_id'])
+    reader=HybridRetriever(None,None,corpus_version_id=manifest['corpus_version_id'])
+    info=await reader._index(conn,index_id,False)
+    if info['embedding_model']!=payload['index']['embedding_model']:
+        raise RetrievalError('CACHE_INDEX_MISMATCH')
+    rows=await reader._fetch(conn,ROWS+' ORDER BY t.chunk_id',uuid.UUID(index_id))
+    texts={chunk['chunk_id']:dict(chunk,document_id=doc['document_id'],document_hash=doc['document_hash'])
+           for doc in payload['documents'] for chunk in doc['chunks']}
+    if len(rows)!=len(texts) or len(texts)!=payload['chunk_count']: raise RetrievalError('CACHE_STALE')
+    prepared=[]
+    for record in rows:
+        row=dict(record)
+        if isinstance(row.get('locator_json'),str): row['locator_json']=json.loads(row['locator_json'])
+        chunk=texts.get(row['chunk_id'])
+        if (not chunk or chunk['content_hash']!=row['content_hash'].strip()
+                or chunk['document_id']!=row['document_id'] or chunk['chunk_index']!=row['chunk_index']
+                or chunk['document_hash']!=row['source_sha256'].strip() or chunk['locator']!=row['locator_json']
+                or hashlib.sha256(chunk['text'].encode('utf-8')).hexdigest()!=chunk['content_hash']):
+            raise RetrievalError('HASH_MISMATCH')
+        prepared.append(dict(_metadata(row),tokens=tokenize(chunk['text'])))
+    fingerprint=await reader._value(conn,FINGERPRINT,uuid.UUID(index_id))
+    result=dict(version=2,tokenizer=TOKENIZER_VERSION,index_id=index_id,
+                model=payload['index']['embedding_model'],built_at=reader.clock(),fingerprint=fingerprint,rows=prepared)
+    _validate_cache(result,index_id,result['model'],reader.clock(),reader.max_cache_age)
+    _write_cache(cache_path,result)
+    return {'chunks':len(prepared),'status':'CACHE_READY'}
+
+
 def _canonical(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True,
                       separators=(',', ':'), allow_nan=False).encode('utf-8')
