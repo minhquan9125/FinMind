@@ -100,9 +100,28 @@ def explicit_quarters(text: str, reference_date: date | None = None) -> list[str
     for index, match in enumerate(matches):
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         prefix = re.search(r"\b((?:19|20)\d{2})\s*$", text[:match.start()])
+        if (prefix and index and prefix.start() >= matches[index - 1].end()
+                and not re.search(r"\bva\s+nam\s*$", text[:prefix.start()])):
+            # A year following the preceding quarter is its suffix, not
+            # an explicit year prefix for this quarter.
+            prefix = None
         suffix = text[match.end():end]
-        relative = re.match(r"\s+nam\s+(nay|ngoai)\b", suffix) or re.search(
-            r"\bnam\s+(nay|ngoai)\s*$", text[:match.start()])
+        relative = re.match(r"\s+nam\s+(nay|ngoai)\b", suffix)
+        if not relative:
+            # A trailing year belongs to every quarter in its connector group.
+            trailing = text[match.end():]
+            anchor = re.search(r"\bnam\s+(nay|ngoai)\b|\b(?:19|20)\d{2}\b", trailing)
+            if anchor:
+                connectors = re.sub(r"\b(?:quy\s*|q)[1-4]\b|\bva\b", "", trailing[:anchor.start()])
+                connectors = re.sub(r"\bnam\s*$", "", connectors)
+                if not connectors.strip():
+                    if anchor[1]:
+                        relative = anchor
+                    elif not prefix:
+                        result.append(f"{anchor[0]}-Q{match[1]}")
+                        continue
+        if not relative:
+            relative = re.search(r"\bnam\s+(nay|ngoai)\s*$", text[:match.start()])
         if relative:
             today = reference_date or datetime.now(timezone(timedelta(hours=7))).date()
             result.append(f"{today.year - int(relative[1] == 'ngoai')}-Q{match[1]}")
@@ -338,14 +357,16 @@ class ScopeResolver:
                 start = min(hits)
                 # A reporting qualifier immediately before a company belongs
                 # to that company, not the preceding company's clause.
-                qualifier = re.search(r"\b(?:hop nhat|rieng le)\s*$", normalized[:start])
+                qualifier = re.search(r"\b(?:(?:hop nhat|rieng le|luy ke|ytd|rieng quy|quy rieng)\s+)+(?:cua\s+)?$", normalized[:start])
                 positions.append((company, qualifier.start() if qualifier else start))
         positions.sort(key=lambda item: item[1])
         bound_periods = {}
         bound_reporting = {}
+        bound_clauses = {}
         for i, (company, start) in enumerate(positions):
             end = positions[i + 1][1] if i + 1 < len(positions) else len(normalized)
             local = self._periods(normalized[start:end], today)
+            bound_clauses[company] = normalized[start:end]
             if local:
                 bound_periods[company] = local
             bound_reporting[company] = reporting_filters(normalized[start:end], local, self._metric(normalized)).get("reporting_entities", [])
@@ -455,6 +476,17 @@ class ScopeResolver:
         elif len(companies) > 1 and bound_periods and set(bound_periods) != {companies[-1]}:
             return self._clarify(question, scope, ("periods",), "AMBIGUOUS_COMPANY_PERIOD",
                                  "Bạn muốn dùng kỳ nào cho từng công ty?")
+        if len(companies) > 1:
+            if not scope.targets:
+                scope.targets = [{"company": c, "period": p} for c in companies for p in periods or [None]]
+            for target in scope.targets:
+                if any(bound_reporting.values()):
+                    target["reporting_entities"] = bound_reporting[target["company"]]
+                local_filters = reporting_filters(bound_clauses.get(target["company"], ""),
+                                                  [target["period"]] if target["period"] else [], metric)
+                target["measure_basis"] = local_filters.get("measure_basis")
+            if len({t["measure_basis"] for t in scope.targets}) > 1:
+                scope.measure_basis = None
         if not companies and not detected_industry and not entity_mentions and not intent.company_optional:
             return self._clarify(question, scope, ("companies",), "MISSING_SCOPE", "Bạn muốn hỏi công ty nào?")
         return ResolvedInput(question, scope, route_hint=intent.route)
@@ -635,6 +667,7 @@ class DecisionEngine:
                         operation=content_operations.get(topic, "find_metric"),
                         params={**params, "companies": [company] if company else [],
                                 "periods": [period] if period else [], "reporting_entity": entity,
+                                "measure_basis": target.get("measure_basis", resolved.scope.measure_basis),
                                 "period_resolution_required": bool(period and not re.fullmatch(
                                     r"\d{4}(?:-\d{2}-\d{2})?" if content_operations.get(topic) == "find_price" else r"\d{4}(?:-Q[1-4])?", period))},
                     ))
@@ -668,7 +701,8 @@ class DecisionEngine:
             if all(not t.params.get("period_resolution_required") for t in tasks):
                 resolved.scope.periods = list(dict.fromkeys(p for t in tasks for p in t.params.get("periods", [])))
         if route == "VECTOR":
-            resolved.scope.targets = [{"company": c, "period": p, "reporting_entity": t.params.get("reporting_entity")}
+            resolved.scope.targets = [{"company": c, "period": p, "reporting_entity": t.params.get("reporting_entity"),
+                                       "measure_basis": t.params.get("measure_basis")}
                                       for t in tasks for c in t.params.get("companies") or [None]
                                       for p in t.params.get("periods") or [None]]
         resolved.scope.operation = tasks[0].operation

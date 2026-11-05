@@ -47,6 +47,15 @@ async def router_access(credentials=Depends(bearer)):
     return principal
 
 
+class RouterContextTarget(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    company: str | None = None
+    period: str | None = None
+    reporting_entity: Literal["CONSOLIDATED", "PARENT"] | None = None
+    reporting_entities: list[Literal["CONSOLIDATED", "PARENT"]] = Field(default_factory=list)
+    measure_basis: str | None = None
+
+
 class RouterContextPayload(BaseModel):
     model_config = ConfigDict(extra="forbid")
     companies: list[str] = Field(default_factory=list)
@@ -60,7 +69,7 @@ class RouterContextPayload(BaseModel):
     route_hint: Literal["VECTOR", "GRAPH", "BOTH"] | None = None
     reporting_entity: str | None = None
     reporting_entities: list[Literal["CONSOLIDATED", "PARENT"]] = Field(default_factory=list)
-    targets: list[dict] = Field(default_factory=list)
+    targets: list[RouterContextTarget] = Field(default_factory=list)
     measure_basis: str | None = None
     person_name: str | None = None
     position_code: str | None = None
@@ -69,6 +78,7 @@ class RouterContextPayload(BaseModel):
 
     def to_session_scope(self) -> SessionScope:
         values = self.model_dump()
+        values["targets"] = [target.model_dump(exclude_unset=True) for target in self.targets]
         for key in ("companies", "periods", "entity_mentions", "relation_types", "reporting_entities", "targets"):
             values[key] = tuple(values[key])
         return SessionScope(**values)

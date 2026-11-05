@@ -939,3 +939,115 @@ def test_exact_year_lookup_accepts_year_label_without_matching_a_quarter():
     assert _same_period("2025", "2025")
     assert not _same_period("2025-Q1", "2025")
     assert not _same_period("2024-YEAR", "2025")
+
+
+def test_review_reporting_qualifier_with_cua_binds_to_its_company():
+    result = engine().decide("So sánh doanh thu hợp nhất của FPT năm 2024 và riêng lẻ của VCB năm 2025")
+    assert [(t.params["companies"], t.params["periods"], t.params["reporting_entity"]) for t in result.tasks] == [
+        (["FPT"], ["2024"], "CONSOLIDATED"), (["VCB"], ["2025"], "PARENT")]
+
+
+@pytest.mark.parametrize("question", [
+    "So sánh doanh thu FPT lũy kế quý 2/2025 và VCB riêng quý 2/2025",
+    "So sánh doanh thu FPT lũy kế và VCB riêng quý 2/2025",
+])
+def test_review_measure_basis_is_bound_to_company_not_the_whole_question(question):
+    result = engine().decide(question)
+    assert [(t.params["companies"], t.params["periods"], t.params["measure_basis"]) for t in result.tasks] == [
+        (["FPT"], ["2025-Q2"], "YTD"), (["VCB"], ["2025-Q2"], "STANDALONE_QUARTER")]
+
+
+def test_review_grouped_quarters_use_their_own_relative_year():
+    result = engine().resolver.resolve("Q1 và Q2 năm ngoái, Q3 và Q4 năm nay")
+    assert result.scope.periods == ["2025-Q1", "2025-Q2", "2026-Q3", "2026-Q4"]
+
+
+@pytest.mark.parametrize("context", [
+    {"reporting_entities": 1},
+    {"targets": [{"company": "FPT", "period": "2025", "reporting_entities": 1}]},
+])
+@pytest.mark.parametrize("endpoint", ["test", "run"])
+def test_review_bad_context_types_return_422_not_500(monkeypatch, context, endpoint):
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(hybrid_router_mode="mock"))
+    monkeypatch.setattr(api, "get_router_engine", engine)
+    app = FastAPI()
+    app.include_router(api.router)
+    app.dependency_overrides[api.router_access] = lambda: None
+    with TestClient(app, raise_server_exceptions=False) as client:
+        response = client.post(f"/api/hybrid-router/{endpoint}", json={
+            "question": "Còn VCB?", "context": {"companies": ["FPT"], "periods": ["2025"],
+                "topic": "FINANCIAL_RESEARCH", "route_hint": "VECTOR", **context}})
+        assert response.status_code == 422, response.text
+
+
+@pytest.mark.parametrize("question", [
+    "So sánh doanh thu hợp nhất của FPT và riêng lẻ của VCB năm 2025",
+    "So sánh doanh thu FPT hợp nhất và VCB riêng lẻ năm 2025",
+    "So sánh doanh thu hợp nhất của FPT năm 2025 và riêng lẻ của VCB năm 2025",
+])
+@pytest.mark.parametrize("endpoint", ["test", "run"])
+def test_review_report_bindings_through_api(monkeypatch, question, endpoint):
+    monkeypatch.setattr(api, "get_router_engine", engine)
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(hybrid_router_mode="mock"))
+    app = FastAPI()
+    app.include_router(api.router)
+    app.dependency_overrides[api.router_access] = lambda: None
+    with TestClient(app) as client:
+        response = client.post(f"/api/hybrid-router/{endpoint}", json={"question": question})
+    assert response.status_code == 200, response.text
+    payload = response.json()
+    assert [(t["company"], t["period"], t["reporting_entity"])
+            for t in payload["scope"]["targets"]] == [
+                ("FPT", "2025", "CONSOLIDATED"), ("VCB", "2025", "PARENT")]
+
+
+@pytest.mark.parametrize("question,expected", [
+    ("So sánh doanh thu lũy kế của FPT quý 2/2025 và riêng quý của VCB quý 2/2025",
+     ["YTD", "STANDALONE_QUARTER"]),
+    ("So sánh doanh thu FPT riêng quý 2/2025 và VCB lũy kế quý 2/2025",
+     ["STANDALONE_QUARTER", "YTD"]),
+    ("So sánh doanh thu FPT lũy kế quý 2/2025 và VCB quý 2/2025", ["YTD", None]),
+])
+def test_review_basis_variants(question, expected):
+    result = engine().decide(question)
+    assert [t.params["measure_basis"] for t in result.tasks] == expected
+
+
+@pytest.mark.parametrize("question,expected", [
+    ("Q1 và Q2 năm nay, Q3 và Q4 năm ngoái", ["2026-Q1", "2026-Q2", "2025-Q3", "2025-Q4"]),
+    ("Q1 và Q2 năm 2024, Q3 và Q4 năm nay", ["2024-Q1", "2024-Q2", "2026-Q3", "2026-Q4"]),
+    ("Q1 và Q2 năm ngoái, Q3 và Q4 năm 2026", ["2025-Q1", "2025-Q2", "2026-Q3", "2026-Q4"]),
+    ("Q1 và Q2 năm ngoái, Q3 năm nay", ["2025-Q1", "2025-Q2", "2026-Q3"]),
+])
+def test_review_quarter_group_variants(question, expected):
+    assert engine().resolver.resolve(question).scope.periods == expected
+
+
+def test_review_two_numeric_year_groups_do_not_share_the_previous_year():
+    assert engine().resolver.resolve("Q1 và Q2 năm 2024, Q3 và Q4 năm 2025").scope.periods == [
+        "2024-Q1", "2024-Q2", "2025-Q3", "2025-Q4"]
+
+
+@pytest.mark.parametrize("first,followup,expected", [
+    ("Doanh thu hợp nhất lũy kế FPT quý 1/2025", "Còn quý 2?",
+     {"companies": ["FPT"], "periods": ["2025-Q2"], "reporting_entity": "CONSOLIDATED", "measure_basis": "YTD"}),
+    ("Chủ tịch FPT năm 2025 là ai?", "Liệt kê ra xem",
+     {"companies": ["FPT"], "periods": ["2025"], "position_code": "BOARD_CHAIR"}),
+    ("Chủ tịch FPT năm 2025 là ai?", "Vậy ai là phó chủ tịch?",
+     {"companies": ["FPT"], "periods": ["2025"], "position_code": "DEPUTY_BOARD_CHAIR"}),
+])
+def test_review_context_api_roundtrip(monkeypatch, first, followup, expected):
+    monkeypatch.setattr(api, "get_router_engine", engine)
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(hybrid_router_mode="mock"))
+    app = FastAPI()
+    app.include_router(api.router)
+    app.dependency_overrides[api.router_access] = lambda: None
+    with TestClient(app) as client:
+        previous = client.post("/api/hybrid-router/test", json={"question": first})
+        assert previous.status_code == 200
+        context = {k: v for k, v in previous.json()["scope"].items() if k in api.RouterContextPayload.model_fields}
+        result = client.post("/api/hybrid-router/test", json={"question": followup, "context": context})
+    assert result.status_code == 200, result.text
+    assert result.json()["decision"] == "SEARCH", result.text
+    for key, value in expected.items():
+        assert result.json()["scope"][key] == value, result.text
