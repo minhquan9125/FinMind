@@ -92,3 +92,44 @@ Kiểm thử: 78 test WBS03/WBS08/WBS09; 1.036 test router, WBS06, person-role �
 - CMC Malay: BCTN ghi mẹ CMC Global, thuyết minh ghi CMC-APAC → WBS06 quyết.
 - Registry có hai ID cho FTEL (`CMP-7097a7e10282f47ca683`, `CMP-7159a1a0f4ea52a1ffd3`); chưa gộp.
 - Rule bảng neo vào registry: công ty con mới chưa có trong registry sẽ nằm ở diagnostics, không tự xuất.
+
+## Bổ sung kiểm tra dòng bảng sau review ngày 04/11
+
+Ba ca thử bổ sung cho thấy rule bảng trước đây còn nhận câu phủ định/dự kiến,
+lấy phần trăm đầu tiên khi cột biểu quyết đứng trước sở hữu, và khớp tên dài
+vào prefix của một tên registry ngắn hơn. Đây là lỗi tái hiện trên ca thử;
+không phải kết luận 69 ứng viên của lượt Hưng đều sai.
+
+Đã bổ sung trong `ownership_tables.py`:
+
+- Dòng chứa phát biểu phủ định, dự kiến, điều kiện hoặc quan hệ đã chấm dứt
+  được đưa vào diagnostics `RELATION_NOT_CURRENT_OR_ASSERTED`. Chỉ kiểm phần
+  dòng thuộc quan hệ và dòng trạng thái nối ngay sau đó; từ “không dây” trong
+  ngành nghề và “trước đây là Công ty…” trong giấy phép không tự chặn quan hệ.
+- Lấy tỷ lệ theo nhãn cột sở hữu/biểu quyết, kể cả tiêu đề xuống dòng hoặc
+  xếp nhiều tầng. Thêm quote của tiêu đề cột vào evidence. Câu “X sở hữu N%”
+  tự xác định đại lượng. Nếu không xác định được cột sở hữu, vẫn giữ quan hệ
+  được nêu rõ nhưng bỏ `ownership_percent` và ghi `OWNERSHIP_COLUMN_UNRESOLVED`
+  với `candidate_emitted: true`; đây là cảnh báo, không phải dòng bị loại.
+- Kiểm tra phần chữ ngay sau tên registry. Hậu tố chưa xác minh như “Miền Nam”
+  hoặc “Beta” không được gán vào ID của tên ngắn. Tên dài đã có registry thì
+  ưu tiên khớp tên dài. Giữ các ranh giới cột rõ như giấy phép, hoạt động,
+  địa chỉ có nhãn và tên viết tắt được tách cột; trường hợp chưa rõ ghi
+  `CHILD_NAME_BOUNDARY_UNCLEAR`. Đây vẫn là rule theo text, không phải bộ đọc
+  bố cục tổng quát cho mọi PDF.
+
+`extract_bctn_from_db.py` phân biệt `unresolved_table_rows` (dòng bị bỏ)
+với `table_warnings` (ứng viên giữ lại nhưng thiếu tỷ lệ). JSON contract,
+registry r2 và quyết định WBS06 không đổi.
+
+Kiểm chứng tại máy Nhân:
+
+- 243 test WBS03/graph/router liên quan đạt, trong đó file test bảng có 18 test.
+- Chạy lại offline trên 20 JSON của
+  `backend/.tmp/wbs03-candidates-20261103-gapcheck/` chứa 17.664 chunk thật
+  đã được reader xác minh ở lượt trước, đối chiếu với bản Hưng chạy cùng đầu
+  vào và registry r2: **69 → 69**, không thêm/mất ID hoặc thay đổi thuộc tính
+  quan hệ. Evidence được bổ sung tiêu đề cột; diagnostics có thể đổi lý do.
+- Báo cáo local: `backend/.tmp/wbs03-ownership-guards-replay.json` (Git ignore).
+  Đây là chạy lại trên bản lưu; không phải một lượt xác minh DB live mới,
+  không ghi PostgreSQL/Neo4j và không phê duyệt 69 ứng viên.

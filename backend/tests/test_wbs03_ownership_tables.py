@@ -171,7 +171,7 @@ class OwnershipTableTests(unittest.TestCase):
         self.assertEqual([d['reason'] for d in diagnostics], ['CHILD_UNRESOLVED', 'CHILD_UNRESOLVED'])
 
     def test_table_without_date_header_keeps_as_of_empty(self):
-        pages = {3: ['(i) Công ty con trực tiếp\nSTT Tên Tỷ lệ\nCông ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%']}
+        pages = {3: ['(i) Công ty con trực tiếp\nSTT Tên Tỷ lệ sở hữu\nCông ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%']}
         triples, _, _ = run(pages)
         self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '100', None)])
 
@@ -182,6 +182,107 @@ class OwnershipTableTests(unittest.TestCase):
         self.assertEqual([(r['subject_id'], r['object_id']) for r in result['relations']], [('p', 's1')])
         quotes = [e['quote'] for e in result['relations'][0]['evidence']]
         self.assertIn('Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%', quotes)
+
+    def test_nonasserted_rows_never_become_relations(self):
+        for wording in ('không phải công ty con', 'chưa là công ty con',
+                        'dự kiến mua trong năm sau', 'sẽ mua', 'nếu mua được',
+                        'đã thoái vốn', 'từng là công ty con'):
+            with self.subTest(wording=wording):
+                pages = {3: ['(i) Công ty con trực tiếp\nTại ngày 31/12/2025\n'
+                             'Tỷ lệ sở hữu\nCông ty TNHH Phần mềm Alpha '
+                             + wording + ' 100%']}
+                triples, diagnostics, result = run(pages)
+                self.assertEqual(triples, [])
+                self.assertEqual(result['relations'], [])
+                self.assertEqual(diagnostics[0]['reason'], 'RELATION_NOT_CURRENT_OR_ASSERTED')
+
+    def test_wrapped_nonasserted_text_is_also_blocked(self):
+        triples, diagnostics, _ = run({3: [
+            '(i) Công ty con trực tiếp\nTỷ lệ sở hữu\n'
+            'Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%\n'
+            'Dự kiến mua trong năm sau',
+        ]})
+        self.assertEqual(triples, [])
+        self.assertEqual(diagnostics[0]['reason'], 'RELATION_NOT_CURRENT_OR_ASSERTED')
+
+    def test_incidental_negation_and_former_legal_name_do_not_block_a_row(self):
+        triples, diagnostics, _ = run({3: [
+            '(i) Công ty con trực tiếp\nTỷ lệ sở hữu\n'
+            'Công ty TNHH Phần mềm Alpha Cung cấp dịch vụ không dây 100%\n'
+            'Giấy phép: trước đây là Công ty TNHH Beta',
+        ]})
+        self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '100', None)])
+        self.assertEqual(diagnostics, [])
+
+    def test_voting_column_before_ownership_is_not_used_as_ownership(self):
+        for header in ('Tỷ lệ quyền biểu quyết Tỷ lệ sở hữu',
+                       'Tỷ lệ quyền\nbiểu quyết Tỷ lệ sở\nhữu'):
+            with self.subTest(header=header):
+                triples, diagnostics, result = run({3: [
+                    '(i) Công ty con trực tiếp\nTại ngày 31/12/2025\n' + header + '\n'
+                    'Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 80,15% 49,52%',
+                ]})
+                self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '49.52', '2025-12-31')])
+                self.assertEqual(diagnostics, [])
+                quotes = '\n'.join(e['quote'] for e in result['relations'][0]['evidence'])
+                self.assertIn(header, quotes)
+
+    def test_stacked_ctg_header_preserves_column_order(self):
+        triples, _, _ = run({3: [
+            '31.12.2025 31.12.2024\n'
+            'TỶ LỆ TỶ LỆ\nQUYỀN QUYỀN\nBIỂU TỶ LỆ BIỂU TỶ LỆ\n'
+            'QUYẾT SỞ HỮU QUYẾT SỞ HỮU\n(i) Công ty con trực tiếp\n'
+            'Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 80,15% 49,52% 70% 40%',
+        ]})
+        self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '49.52', '2025-12-31')])
+
+    def test_unknown_or_voting_only_columns_omit_ownership_and_report_warning(self):
+        for header in ('STT Tên Tỷ lệ', 'Tỷ lệ quyền biểu quyết'):
+            with self.subTest(header=header):
+                triples, diagnostics, result = run({3: [
+                    '(i) Công ty con trực tiếp\n' + header + '\n'
+                    'Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 80,15%',
+                ]})
+                self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', None, None)])
+                self.assertNotIn('ownership_percent', result['relations'][0]['attributes'])
+                self.assertEqual(diagnostics[0]['reason'], 'OWNERSHIP_COLUMN_UNRESOLVED')
+                self.assertTrue(diagnostics[0]['candidate_emitted'])
+
+    def test_single_stacked_ownership_header_is_supported(self):
+        triples, diagnostics, _ = run({3: [
+            '(i) Công ty con trực tiếp\nLĨNH VỰC TỶ LỆ\n'
+            'TÊN CÔNG TY HOẠT ĐỘNG SỞ HỮU CỦA\nSTT CÔNG TY MẸ\n'
+            'Công ty TNHH Phần mềm Alpha Cung cấp phần mềm 100%',
+        ]})
+        self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '100', None)])
+        self.assertEqual(diagnostics, [])
+
+    def test_wrapped_labelled_address_is_a_field_not_a_legal_name_suffix(self):
+        triples, diagnostics, _ = run({3: [
+            '(i) Công ty con trực tiếp\nTỷ lệ sở hữu Tỷ lệ quyền biểu quyết\n'
+            'Công ty TNHH Phần mềm Cung cấp phần mềm Phường 49,52% 80,15%\n'
+            'Alpha Bình An, Quận 2, Thành phố Hồ Chí Minh',
+        ]})
+        self.assertEqual(triples, [('HAS_SUBSIDIARY', 'p', 's1', '49.52', None)])
+        self.assertEqual(diagnostics, [])
+
+    def test_longer_unknown_legal_name_is_not_the_registry_prefix(self):
+        for suffix in ('Miền Nam', 'Beta', '\nMiền Nam', '\nBeta'):
+            with self.subTest(suffix=suffix):
+                # Put the ratio on the first line as in the interleaved source tables.
+                row = ('Công ty TNHH Phần mềm Alpha 100%' + suffix if suffix.startswith('\n')
+                       else 'Công ty TNHH Phần mềm Alpha ' + suffix + ' Cung cấp phần mềm 100%')
+                triples, diagnostics, _ = run({3: ['(i) Công ty con trực tiếp\nTỷ lệ sở hữu\n' + row]})
+                self.assertEqual(triples, [])
+                self.assertEqual(diagnostics[0]['reason'], 'CHILD_NAME_BOUNDARY_UNCLEAR')
+
+    def test_complete_registered_long_name_wins_over_shorter_entity(self):
+        registry = REGISTRY + [company('south', 'Công ty TNHH Phần mềm Alpha Miền Nam')]
+        payload = envelope({3: ['(i) Công ty con trực tiếp\nTỷ lệ sở hữu\n'
+                                'Công ty TNHH Phần mềm Alpha Miền Nam Cung cấp phần mềm 100%']})
+        result = extract_candidates(payload, registry, [])
+        relations = [r for r in result['relations'] if r['attributes'].get('inference_basis') == 'ownership_table']
+        self.assertEqual([r['object_id'] for r in relations], ['south'])
 
 
 class RegistryRevisionTests(unittest.TestCase):

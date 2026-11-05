@@ -605,8 +605,11 @@ def extract_candidates(envelope, registry, diagnostics=None):
                 diagnostics.append({k: row[k] for k in ('document_id', 'page', 'chunk_id', 'label', 'line')}
                                    | {'reason': reason})
             continue
+        if row['percent_reason'] and diagnostics is not None:
+            diagnostics.append({k: row[k] for k in ('document_id', 'page', 'chunk_id', 'label', 'line')}
+                               | {'reason': row['percent_reason'], 'candidate_emitted': True})
         attributes = {'inference_basis': 'ownership_table'}
-        percent = _percent(row['percent'])  # None above 100%, e.g. an OCR "400%"
+        percent = _percent(row['percent']) if row['percent'] is not None else None
         if percent is not None:
             attributes['ownership_percent'] = percent
         if row['label'] == 'công ty liên doanh':

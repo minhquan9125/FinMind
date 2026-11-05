@@ -46,14 +46,17 @@ async def run(args):
             json.dump(result, handle, ensure_ascii=False, indent=2)
             handle.write('\n')
         if diagnostics:
-            # Table rows that did not become candidates: extend the registry or fix the source.
+            # Rejected table rows and warnings on retained candidates. A warning
+            # has candidate_emitted=True (e.g. an unidentifiable ownership column).
             with target.with_suffix('.diagnostics.json').open('x', encoding='utf-8') as handle:
                 json.dump(diagnostics, handle, ensure_ascii=False, indent=2)
                 handle.write('\n')
         count = len(result['relations'])
         total += count
+        unresolved = sum(not item.get('candidate_emitted', False) for item in diagnostics)
+        warnings = len(diagnostics) - unresolved
         print(f'document={doc_id} chunks={len(document_rows)} pending_candidates={count} '
-              f'unresolved_table_rows={len(diagnostics)} output={target}', flush=True)
+              f'unresolved_table_rows={unresolved} table_warnings={warnings} output={target}', flush=True)
     print(f'complete documents={len(by_document)} verified_chunks={len(rows)} pending_candidates={total}')
 
 

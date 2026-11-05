@@ -3,8 +3,9 @@
 Annual reports list group structure as multi-column tables. In the stored chunk
 text one table row becomes several lines where the legal-name column is
 interleaved with address, licence or activity columns. A row is accepted only
-when the first words of its lines spell exactly one verified registry name, so
-a column boundary is never guessed and no identity is created here.
+when the first words of its lines spell one verified registry name and its end
+has a recognizable field boundary. Unclear suffixes are reported instead of
+assuming a shorter registry prefix. No identity is created here.
 
 The relation kind comes only from an explicit section heading ("Công ty con",
 "(ii) Công ty liên kết trực tiếp", "Công ty liên doanh", "Các công ty con của X
@@ -22,6 +23,25 @@ _LEGAL_START = re.compile(r'(?:Tổng\s+)?Công\s+ty\b|Ngân\s+hàng\b|Trường
 _NUM = r'\d{1,3}(?:[.,]\d{1,3})?'
 _PCT_TAIL = re.compile(r'(?<![\d.,])(?P<p>' + _NUM + r')\s*%(?:\s+' + _NUM + r'\s*%){0,3}\s*(?:\(\*+\))?\s*$')
 _OWNER_TAIL = re.compile(r'\s(?:sở hữu|nắm giữ)\s+(?P<p>' + _NUM + r')\s*%\s*(?:vốn góp|vốn điều lệ|cổ phần)?\s*$', re.I)
+_PERCENT_VALUE = re.compile(_NUM + r'\s*%')
+# These concern the relationship, not incidental wording such as "không dây" or
+# "trước đây là Công ty ..." in a licence/name-history column.
+_ROW_STATUS = re.compile(
+    r'\b(?:không|chưa|chẳng)\s+(?:(?:còn|phải|là)\s+)*'
+    r'(?:công ty con|công ty liên kết|sở hữu|nắm giữ|thuộc)\b'
+    r'|\b(?:dự kiến|dự định|có kế hoạch|đề xuất|đang đàm phán|sẽ|nếu|tùy thuộc|tuỳ thuộc)\b'
+    r'|\b(?:đã thoái vốn|chấm dứt)\b'
+    r'|\bđã bán\s+(?:hết|toàn bộ|phần vốn|cổ phần|công ty)\b'
+    r'|\b(?:từng là|trước đây là)\s+(?:công ty con|công ty liên kết)\b', re.I)
+_COLUMN_LABEL = re.compile(r'tỷ\s+lệ\s+(sở\s+hữu|(?:quyền\s+)?biểu\s+quyết)', re.I)
+# A name must end at a recognizable next field. Unknown words may be a longer
+# legal name (e.g. "Alpha Miền Nam"), so matching a registry prefix is insufficient.
+_FIELD_START = re.compile(
+    r'^(?:\d|cung cấp\b|dịch vụ\b|sản xuất\b|phân phối\b|bán lẻ\b|cho thuê\b|tư vấn\b'
+    r'|đầu tư tài chính\b|công nghệ thông tin\b|phần mềm và\b|mềm và thiết bị\b|chứng khoán\b'
+    r'|giấy phép\b|giấy chứng nhận\b|quyết định\b|đăng ký\b|điều chỉnh số\b|cấp ngày\b|năm\s+\d'
+    r'|[a-zđ/-]+\s+do\s+(?:bộ|ngân hàng|sở|ủy ban)\b'
+    r'|tòa nhà\b|toà nhà\b|tầng\b|số\b|lô\b|phường\b|quận\b|địa chỉ\b)', re.I)
 _ROW_NUMBER = re.compile(r'^\s*\d{1,2}(?:\s+\d{1,2}){0,2}\s+(?=\S)')
 # A heading is the whole line, or follows a list marker such as "(ii)" or "b." after a side menu;
 # prose that merely ends with "... các công ty con" is not a heading.
@@ -94,20 +114,21 @@ def name_index(registry):
 
 
 def _spells(lines, alias):
-    """Last contributing line index when alias = non-empty prefix of line 0 + prefixes of
+    """Return (last contributing line, tokens used on that line) when alias matches
+    non-empty prefixes of line 0 + prefixes of
     following lines, else None.
 
     Up to MAX_SKIPPED_LINES consecutive lines may contribute nothing: they belong
     to another column (licence text, a side menu) between two name fragments.
     """
     def go(line, position, skipped):
-        if position == len(alias):
-            return line - 1 - skipped  # index of the last line that contributed a word
         if line == len(lines):
             return None
         words = lines[line]
         for size in range(min(len(words), len(alias) - position), 0, -1):
             if tuple(words[:size]) == alias[position:position + size]:
+                if position + size == len(alias):
+                    return line, size
                 last = go(line + 1, position + size, 0)
                 if last is not None:
                     return last
@@ -119,24 +140,105 @@ def _spells(lines, alias):
     return go(0, 0, 0)
 
 
-def _row_name(lines, by_first):
+def _name_end_is_clear(tail, entity, abbreviation_column=False):
+    # Strip footnote markers only, not arbitrary parenthesized company-name suffixes.
+    tail = re.sub(r'^\(\*+\)\s*', '', tail).strip()
+    if not tail or _FIELD_START.match(tail):
+        return True
+    # A verified short name may be repeated in the abbreviation column.
+    for alias in [entity['canonical_name'], *entity['aliases']]:
+        short = ' '.join(_tokens(alias))
+        if tail == short or tail.startswith(short + ' '):
+            return True
+    # In an explicitly labelled abbreviation column, a repeated brand/acronym
+    # (e.g. "CMC-APAC") starts a different cell, not a legal-name suffix. It
+    # never resolves identity: that still comes from the complete legal name.
+    if abbreviation_column:
+        first = tail.split()[0].split('-')[0]
+        distinctive = set(_tokens(entity['canonical_name'])) - _FORM_WORDS - _INDUSTRY_WORDS
+        if first in distinctive:
+            return True
+    return False
+
+
+def _row_name(lines, by_first, entities, abbreviation_column=False, following_line=''):
     """(entity_id, last_line, None) for exactly one longest verified name, else (None, 0, reason)."""
     tokens = [_tokens(text) for text in lines]
     if not tokens[0]:
         return None, 0, 'CHILD_UNRESOLVED'
     found = []
     for alias, entity_id in by_first.get(tokens[0][0], []):
-        last = _spells(tokens, alias)
-        if last is not None:
-            found.append((len(alias), entity_id, last))
+        match = _spells(tokens, alias)
+        if match is not None:
+            found.append((len(alias), entity_id, *match))
     if not found:
         return None, 0, 'CHILD_UNRESOLVED'
-    best = max(size for size, _, _ in found)
-    winners = {(entity_id, last) for size, entity_id, last in found if size == best}
-    if len({entity_id for entity_id, _ in winners}) != 1:
+    best = max(size for size, _, _, _ in found)
+    winners = {(entity_id, last, used) for size, entity_id, last, used in found if size == best}
+    if len({entity_id for entity_id, _, _ in winners}) != 1:
         return None, 0, 'CHILD_AMBIGUOUS'
-    entity_id, last = min(winners)
+    entity_id, last, used = min(winners)
+    tail = ' '.join(tokens[last][used:])
+    continuation = ' '.join(tokens[last + 1]) if last + 1 < len(tokens) else ' '.join(_tokens(following_line))
+    clear = _name_end_is_clear(tail, entities[entity_id], abbreviation_column)
+    if not clear and continuation:
+        # A column value may itself wrap: "chứng" / "khoán".
+        clear = _name_end_is_clear(tail + ' ' + continuation, entities[entity_id], abbreviation_column)
+    if not clear and last:
+        # A labelled address can wrap around the percentage columns. Require
+        # both the unfinished field label and its comma-separated continuation;
+        # a bare geographical suffix such as "Miền Nam" remains unresolved.
+        previous = ' '.join(lines[:last])
+        clear = bool(re.search(r'\b(?:phường|quận)\s+[\d.,%\s()*]+$', previous, re.I)
+                     and re.match(r'[^,]+,\s*(?:quận|phường|thành phố|tp\.)\b', tail, re.I))
+    if not clear:
+        return None, last, 'CHILD_NAME_BOUNDARY_UNCLEAR'
+    # A name suffix can also wrap to the next line.
+    if (not tail or re.fullmatch(r'[\d.,%\s()*]+', tail)) and continuation:
+        raw_continuation = lines[last + 1].strip() if last + 1 < len(lines) else following_line.strip()
+        possible_suffix = (re.match(r'^(?:miền\s+(?:nam|bắc|trung)|chi nhánh)\b', continuation)
+                           or re.fullmatch(r'[A-ZĐÀ-Ỹ][\w-]*(?:\s+[A-ZĐÀ-Ỹ][\w-]*){0,3}', raw_continuation))
+        if possible_suffix and not _name_end_is_clear(continuation, entities[entity_id], abbreviation_column):
+            return None, last, 'CHILD_NAME_BOUNDARY_UNCLEAR'
     return entity_id, last, None
+
+
+def _column_order(header_lines):
+    """Ownership/voting order only from column labels, including wrapped labels."""
+    text = ' '.join(' '.join(header_lines).casefold().split())
+    if 'tỷ lệ' not in text:
+        return None
+    labels = [m.group(1).casefold() for m in _COLUMN_LABEL.finditer(text)]
+    if labels:
+        return tuple('ownership' if label.startswith('sở') else 'voting' for label in labels)
+    # CTG's stacked header ends "SỞ HỮU QUYẾT SỞ HỮU QUYẾT"; the preceding
+    # lines explicitly supply "TỶ LỆ", "QUYỀN" and "BIỂU".
+    if all(word in text.casefold() for word in ('tỷ lệ', 'quyền', 'biểu')):
+        for line in reversed(header_lines):
+            labels = re.findall(r'sở\s+hữu|quyết', line, re.I)
+            if any(label.casefold().startswith('sở') for label in labels):
+                return tuple('ownership' if label.casefold().startswith('sở') else 'voting'
+                             for label in labels)
+    # A single ownership label may span columns as "TỶ LỆ" / "TÊN CÔNG TY ...
+    # SỞ HỮU CỦA"; it still explicitly identifies the measure (CTG 2024).
+    if 'tỷ lệ' in text.casefold():
+        for line in reversed(header_lines):
+            labels = re.findall(r'sở\s+hữu|(?:quyền\s+)?biểu\s+quyết', line, re.I)
+            if labels:
+                return tuple('ownership' if label.casefold().startswith('sở') else 'voting'
+                             for label in labels)
+    return None
+
+
+def _ownership_percent(share, body, columns):
+    if _OWNER_TAIL.search(body):
+        return share.group('p'), None  # "X sở hữu N%" explicitly names the measure.
+    values = [value.group().rstrip('%').strip() for value in _PERCENT_VALUE.finditer(share.group())]
+    if columns and 'ownership' in columns:
+        position = columns.index('ownership')
+        if position < len(values):
+            return values[position], None
+    return None, 'OWNERSHIP_COLUMN_UNRESOLVED'
 
 
 def _owner(text, index):
@@ -224,30 +326,50 @@ def table_rows(chunks, registry, index):
     Rows with a reason are diagnostics, never relations.
     """
     by_first = name_index(registry)
+    entities = {row['entity_id']: row for row in registry}
     pages = _page_lines(chunks)
     section, as_of, previous_page = None, None, None
+    columns = None
+    abbreviation_column = False
+    column_evidence = []
     for (document_id, page), lines in sorted(pages.items(), key=lambda item: (item[0][0], item[0][1])):
         # A table may continue on the next page without repeating its heading.
         if previous_page != (document_id, page - 1) or (section and section.get('carried')):
             section, as_of = None, None
+            columns = None
+            abbreviation_column, column_evidence = False, []
         elif section:
             section = dict(section, carried=True)
         previous_page = (document_id, page)
+        header_lines = []
         index_line = 0
         while index_line < len(lines):
             chunk, start, end, text = lines[index_line]
             index_line += 1
             if _RESET.match(text):
                 section, as_of = None, None
+                columns, header_lines = None, []
+                abbreviation_column, column_evidence = False, []
                 continue
             heading = _heading(text, index)
             if heading:
                 kind, label, parent = heading
+                if not parent:
+                    new_columns = _column_order(header_lines)
+                    if new_columns:
+                        columns = new_columns
+                        column_evidence = _cite(lines[max(0, index_line - 1 - len(header_lines)):index_line - 1])
+                    elif section is None:
+                        columns, column_evidence = None, []
+                    # Subsections in one table share its column header (e.g.
+                    # CTG's subsidiaries then joint ventures).
+                    abbreviation_column |= 'tên viết tắt' in ' '.join(header_lines).casefold()
                 outer = section if parent and section and not section.get('nested') else (
                     section.get('outer') if section and section.get('nested') else None)
                 section = {'kind': kind, 'label': label, 'parent': parent or 'ISSUER',
                            'nested': bool(parent), 'outer': outer,
                            'evidence': _cite([lines[index_line - 1]])}
+                header_lines = []
                 continue
             dated = _header_day(text)
             if dated:
@@ -255,14 +377,24 @@ def table_rows(chunks, registry, index):
                 if section is not None:
                     section = dict(section, evidence=section['evidence'] + _cite([lines[index_line - 1]]))
                 continue
-            if section is None:
-                continue
             numbered = _ROW_NUMBER.match(text)
             body = text[numbered.end():] if numbered else text
             share = _OWNER_TAIL.search(body) or _PCT_TAIL.search(body)
             legal = _LEGAL_START.search(body)
             if not share or not legal or legal.start() >= share.start():
+                # Row prose (including its percentages) must not redefine the
+                # column order; only the preceding non-row header may do that.
+                header_lines = (header_lines + [text])[-8:]
+                parsed_columns = _column_order(header_lines)
+                if parsed_columns:
+                    columns = parsed_columns
+                    column_evidence = _cite(lines[max(0, index_line - len(header_lines)):index_line])
+                abbreviation_column |= 'tên viết tắt' in ' '.join(header_lines).casefold()
                 continue
+            if section is None:
+                header_lines = []
+                continue
+            header_lines = []
             section['carried'] = False
             if numbered and section.get('nested'):
                 # A numbered row belongs to the outer table again.
@@ -282,9 +414,16 @@ def table_rows(chunks, registry, index):
             child, last, reason = None, 0, 'CHILD_UNRESOLVED'
             for start_match in _LEGAL_START.finditer(body, 0, share.start()):
                 prefix_end = len(text) - len(body) + start_match.start()
-                child, last, reason = _row_name([text[prefix_end:]] + [line[3] for line in block[1:]], by_first)
-                if child or reason == 'CHILD_AMBIGUOUS':
+                child, last, reason = _row_name([text[prefix_end:]] + [line[3] for line in block[1:]],
+                                               by_first, entities, abbreviation_column,
+                                               lines[index_line][3] if index_line < len(lines) else '')
+                if child or reason in ('CHILD_AMBIGUOUS', 'CHILD_NAME_BOUNDARY_UNCLEAR'):
                     break
+            status_lines = block[:last + 1]
+            if last + 1 < len(block) and _ROW_STATUS.match(block[last + 1][3].strip()):
+                status_lines += [block[last + 1]]
+            if _ROW_STATUS.search(' '.join(line[3] for line in status_lines)):
+                reason = 'RELATION_NOT_CURRENT_OR_ASSERTED'
             parent = section['parent']
             if _OWNER_TAIL.search(body):
                 parent = _owner(body[:share.start()], index) or 'UNRESOLVED'
@@ -294,9 +433,11 @@ def table_rows(chunks, registry, index):
                 reason = 'PARENT_UNRESOLVED'
             if reason is None and parent == child:
                 reason = 'CHILD_IS_PARENT'
+            percent, percent_reason = _ownership_percent(share, body, columns)
             yield {'document_id': document_id, 'page': page, 'kind': section['kind'],
                    'label': section['label'], 'parent': parent, 'child': child,
-                   'percent': share.group('p'), 'as_of': as_of, 'reason': reason,
+                   'percent': percent, 'percent_reason': percent_reason,
+                   'as_of': as_of, 'reason': reason,
                    'line': text.strip(), 'chunk_id': chunk['chunk_id'],
                    # Quote the row only up to the last line that spells the name.
-                   'evidence': section['evidence'] + _cite(block[:last + 1])}
+                   'evidence': section['evidence'] + column_evidence + _cite(block[:last + 1])}
