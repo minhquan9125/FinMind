@@ -103,7 +103,8 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
 def _registry_tickers(company_names=None) -> dict[str, str]:
     """Map tickers to unique verified registry IDs, using exact DB names as backup."""
     default = Path(__file__).resolve().parents[2] / "sprint4_runtime" / "company.registry.json"
-    rows = json.loads(Path(os.environ.get("SPRINT4_COMPANY_REGISTRY", default)).read_text("utf-8"))
+    configured = os.environ.get("SPRINT4_COMPANY_REGISTRY") or getattr(get_settings(), "sprint4_company_registry", "")
+    rows = json.loads(Path(configured or default).read_text("utf-8"))
     owners: dict[str, set[str]] = {}
     names: dict[str, set[str]] = {}
 
@@ -151,7 +152,8 @@ def _build_live_graph_adapter(event_loop=None) -> LiveGraphAdapter | None:
         from ...graph.graph_store import GraphStore
         store = GraphStore.from_environment()
         # WBS09: comma-separated READY graph versions to answer relationship questions.
-        versions = [v.strip() for v in os.environ.get("SPRINT4_GRAPH_VERSIONS", "").split(",") if v.strip()]
+        configured = os.environ.get("SPRINT4_GRAPH_VERSIONS", getattr(get_settings(), "sprint4_graph_versions", ""))
+        versions = [v.strip() for v in configured.split(",") if v.strip()]
         if not versions:
             return LiveGraphAdapter(store)
         from ...graph.relation_retrieval import RelationRetrieval
