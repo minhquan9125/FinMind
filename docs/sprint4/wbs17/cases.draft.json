@@ -1,0 +1,903 @@
+{
+  "schema_version": "wbs17-retrieval-v1",
+  "created_at": "2026-11-06",
+  "owner": "Ho Pham Dang Nhan",
+  "scope": {
+    "corpus_version_id": "b2550a0b-c423-5c50-9b15-6fb6af12e2c6",
+    "index_version_id": "ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d",
+    "graph_version_ids": [
+      "s4-bctn-b2550a0b-v4-20261102",
+      "95260e20-ea3f-4d76-9ae5-185356cd437d",
+      "96cc8e0d-f78e-49d0-83ac-56c53245c1ed"
+    ]
+  },
+  "note": "All labels are DRAFT. Three READY cases have imported source references for human review. Remaining cases require gold/data/fault harness before execution. This does not certify WBS09 review-store sync or WBS17 completion.",
+  "cases": [
+    {
+      "case_id": "G01",
+      "group": "enterprise",
+      "question": "FPT có quan hệ với những doanh nghiệp nào trong năm 2024?",
+      "readiness": "READY",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2024"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": "OK",
+        "b1_status": "OK",
+        "relations": [
+          {
+            "subject_id": "CMP-fbb705553b47c681f6ae",
+            "object_id": "CMP-7097a7e10282f47ca683",
+            "relation_type": "HAS_SUBSIDIARY",
+            "as_of": "2024-12-31",
+            "graph_version_id": "96cc8e0d-f78e-49d0-83ac-56c53245c1ed"
+          }
+        ],
+        "chunk_ids": [
+          "d147aade-b63a-5eef-ae7e-791cb249f291"
+        ],
+        "document_ids": [
+          "5d1e6cb3-4b7b-589d-9234-ab178ea935f3"
+        ]
+      },
+      "review_context": {
+        "original_case": "N30",
+        "subject_name": "Công ty Cổ phần FPT",
+        "object_name": "Công ty Cổ phần Viễn thông FPT",
+        "attributes": {
+          "inference_basis": "ownership_table",
+          "ownership_percent": "45.66",
+          "consolidation_basis": "kiểm soát"
+        },
+        "source_refs": [
+          {
+            "document_id": "5d1e6cb3-4b7b-589d-9234-ab178ea935f3",
+            "chunk_id": "d147aade-b63a-5eef-ae7e-791cb249f291",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 158,
+              "section_index": 157,
+              "char_start": 0,
+              "char_end": 463,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "dbfb9d33e4b279390f78eb623081f7964ed96cf5f13216c3c46dc4d56f56b745"
+            },
+            "quote": "(i) Công ty con trực tiếp"
+          },
+          {
+            "document_id": "5d1e6cb3-4b7b-589d-9234-ab178ea935f3",
+            "chunk_id": "d147aade-b63a-5eef-ae7e-791cb249f291",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 158,
+              "section_index": 157,
+              "char_start": 0,
+              "char_end": 463,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "dbfb9d33e4b279390f78eb623081f7964ed96cf5f13216c3c46dc4d56f56b745"
+            },
+            "quote": "Công ty con Hoạt động chính Nơi thành lập, đăng ký hoạt động Tại ngày 31/12/2024 và 31/12/2023"
+          },
+          {
+            "document_id": "5d1e6cb3-4b7b-589d-9234-ab178ea935f3",
+            "chunk_id": "d147aade-b63a-5eef-ae7e-791cb249f291",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 158,
+              "section_index": 157,
+              "char_start": 0,
+              "char_end": 463,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "dbfb9d33e4b279390f78eb623081f7964ed96cf5f13216c3c46dc4d56f56b745"
+            },
+            "quote": "03 CHIẾN LƯỢC PHÁT TRIỂN Tỷ lệ sở hữu Tỷ lệ quyền biểu quyết\n% %"
+          },
+          {
+            "document_id": "5d1e6cb3-4b7b-589d-9234-ab178ea935f3",
+            "chunk_id": "a5b96c37-191d-5ddf-baa1-169cf135806f",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 158,
+              "section_index": 157,
+              "char_start": 995,
+              "char_end": 1468,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "8dea110e355a0569c48d695f1aa8f28e1578b74247bc51f86cac5f0b108f55e9"
+            },
+            "quote": "Công ty Cổ phần Viễn thông FPT (*) Cung cấp các dịch vụ ADSL, cho thuê Tầng 2, tòa nhà FPT Cầu Giấy, số 17 phố Duy Tân, 45,66% (*)"
+          },
+          {
+            "document_id": "5d1e6cb3-4b7b-589d-9234-ab178ea935f3",
+            "chunk_id": "4b7e4205-f25e-5e6e-b7cd-dc369dd5d468",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 161,
+              "section_index": 160,
+              "char_start": 0,
+              "char_end": 511,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "b33274f29e494e3544b189039e2ddb08b8d7b67069f582b2a2743598534e5013"
+            },
+            "quote": "FPT | Báo cáo thường niên 2024 | PDF trang 161\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT\nMẪU SỐ B 09 – DN/HN\nCHO NĂM TÀI CHÍNH KẾT THÚC NGÀY 31 THÁNG 12 NĂM 2024\nBÁO CÁO THƯỜNG NIÊN 2024\n2 CÁC CHÍNH SÁCH KẾ TOÁN CHỦ YẾU (tiếp theo)\n01 THÔNG ĐIỆP BAN LÃNH ĐẠO\n2.5 Cơ sở hợp nhất báo cáo tài chính\nCông ty con Nghiệp vụ và lợi ích của cổ đông không kiểm soát\n02 DẤU ẤN 2024 & TỔNG QUAN VỀ FPT\nBáo cáo tài chính hợp nhất bao gồm báo cáo tài chính của công ty mẹ và các báo cáo tài Tập đoàn áp dụng chính sách cho các nghiệp vụ đối với cổ đông không kiểm soát giống"
+          },
+          {
+            "document_id": "5d1e6cb3-4b7b-589d-9234-ab178ea935f3",
+            "chunk_id": "b3b3764c-99ab-5f1b-bfa7-42c4bf206b38",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 161,
+              "section_index": 160,
+              "char_start": 512,
+              "char_end": 1044,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "ec2990967e3e7c575ccf16a5dc4f23caaf1bf451a57d2079d9f3211b30c4b328"
+            },
+            "quote": "FPT | Báo cáo thường niên 2024 | PDF trang 161\n03 chính của các công ty con do Tập đoàn kiểm soát được lập từ ngày 1 tháng 1 năm 2024 như nghiệp vụ với các bên không thuộc Tập đoàn.\nCHIẾN LƯỢC PHÁT TRIỂN\nđến ngày 31 tháng 12 năm 2024. Việc kiểm soát này đạt được khi Tập đoàn có khả năng\nLợi ích của cổ đông không kiểm soát bao gồm giá trị các lợi ích của cổ đông không kiểm\nkiểm soát các chính sách tài chính và hoạt động của các công ty nhận đầu tư nhằm thu\n04 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH\nsoát tại ngày hợp nhất kinh doanh ban đầu và phần lợi ích của cổ đông không kiểm soát"
+          }
+        ],
+        "import_relation_id": "review-import:355a6e507894c559b49cd8d5bb40d492",
+        "envelope_sha256": "4119989f41b4d64492676b26913156dd01056060470e7178372dbdd1460ce076",
+        "note": "Draft target-presence smoke case, not complete gold for the question. Reviewer must choose sufficient source spans, check B1 chunk target fairness and adjudicate the complete expected result before claiming recall/precision. Source import provenance is Codex-live-revalidation-on-user-request, not a reviewer-export byte copy."
+      }
+    },
+    {
+      "case_id": "G02",
+      "group": "enterprise",
+      "question": "FPT có quan hệ với những doanh nghiệp nào trong năm 2025?",
+      "readiness": "READY",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": "OK",
+        "b1_status": "OK",
+        "relations": [
+          {
+            "subject_id": "CMP-fbb705553b47c681f6ae",
+            "object_id": "CMP-7097a7e10282f47ca683",
+            "relation_type": "HAS_SUBSIDIARY",
+            "as_of": "2025-12-31",
+            "graph_version_id": "96cc8e0d-f78e-49d0-83ac-56c53245c1ed"
+          }
+        ],
+        "chunk_ids": [
+          "9863814b-16d3-5e90-aa59-2a27529870f6"
+        ],
+        "document_ids": [
+          "c5eb8271-54db-5e8d-8790-cdcf3ad86757"
+        ]
+      },
+      "review_context": {
+        "original_case": "N40",
+        "subject_name": "Công ty Cổ phần FPT",
+        "object_name": "Công ty Cổ phần Viễn thông FPT",
+        "attributes": {
+          "inference_basis": "ownership_table",
+          "ownership_percent": "45.66",
+          "consolidation_basis": "hợp nhất toàn bộ"
+        },
+        "source_refs": [
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "9863814b-16d3-5e90-aa59-2a27529870f6",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 175,
+              "section_index": 174,
+              "char_start": 0,
+              "char_end": 456,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "687b241118ecf08aa7c2cecb735609aa4351da01c6ef3891b5ac992c0476bffa"
+            },
+            "quote": "02 DẤU ẤN 2025 (i) Công ty con trực tiếp"
+          },
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "9863814b-16d3-5e90-aa59-2a27529870f6",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 175,
+              "section_index": 174,
+              "char_start": 0,
+              "char_end": 456,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "687b241118ecf08aa7c2cecb735609aa4351da01c6ef3891b5ac992c0476bffa"
+            },
+            "quote": "Tại ngày 31/12/2025 và 31/12/2024"
+          },
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "9863814b-16d3-5e90-aa59-2a27529870f6",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 175,
+              "section_index": 174,
+              "char_start": 0,
+              "char_end": 456,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "687b241118ecf08aa7c2cecb735609aa4351da01c6ef3891b5ac992c0476bffa"
+            },
+            "quote": "04 CHIẾN LƯỢC PHÁT TRIỂN Công ty con Hoạt động chính Nơi thành lập, đăng ký hoạt động Tỷ lệ sở hữu Tỷ lệ quyền biểu quyết"
+          },
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "c0648c1c-8b58-5d47-8962-6b61d0bbbaa0",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 175,
+              "section_index": 174,
+              "char_start": 457,
+              "char_end": 953,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "8183f88c7f6ad46354f1547992a77c549c6c520a2db7a167d6e5cd23915f0705"
+            },
+            "quote": "Công ty Cổ phần Cung cấp các dịch vụ ADSL, Tầng 2, tòa nhà FPT Cầu Giấy, số 17 phố Duy Tân, 45,66% (*)\nViễn thông FPT (*) cho thuê đường truyền, truyền hình Phường Cầu Giấy, Thành phố Hà Nội, Việt Nam"
+          },
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "d772bc16-0492-5ac8-8a6e-f23a7ad7b86b",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 176,
+              "section_index": 175,
+              "char_start": 909,
+              "char_end": 1433,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "1ce4a8df2ee23fb501a9ac603ac754cde0b6ae48b116ce668054b58ad4a24502"
+            },
+            "quote": "FTEL và hợp nhất báo cáo tài chính của FTEL với tư cách là công ty con vào báo"
+          },
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "d772bc16-0492-5ac8-8a6e-f23a7ad7b86b",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 176,
+              "section_index": 175,
+              "char_start": 909,
+              "char_end": 1433,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "1ce4a8df2ee23fb501a9ac603ac754cde0b6ae48b116ce668054b58ad4a24502"
+            },
+            "quote": "chính của FTEL từ hợp nhất theo phương pháp hợp nhất toàn bộ áp dụng cho công"
+          },
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "260e22fc-c0f1-56e9-8ef3-f193a3d86b36",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 176,
+              "section_index": 175,
+              "char_start": 0,
+              "char_end": 471,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "42a9838878995875cfab9c50a5c94940281330aacb954ed8b5d2e10e84259a9f"
+            },
+            "quote": "(*) Cơ sở hợp nhất báo cáo tài chính của Công ty Cổ phần Viễn thông FPT (“FTEL”) tài chính của Tập đoàn FPT đến hết ngày 31 tháng 12 năm 2025. Trong năm 2026,"
+          },
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "c80c4893-5161-544d-bc8f-4d1afa240206",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 176,
+              "section_index": 175,
+              "char_start": 1434,
+              "char_end": 1872,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "11b4225d9919a8e73f377bddedc0abbe3565cf051cc96e73f8e8e56d11ddf5c7"
+            },
+            "quote": "doanh, liên kết theo chính sách kế toán được nêu tại Thuyết minh 2.5 của báo cáo\ntài chính hợp nhất từ năm tài chính 2026."
+          },
+          {
+            "document_id": "c5eb8271-54db-5e8d-8790-cdcf3ad86757",
+            "chunk_id": "6c2dd115-519b-5027-b8b3-22b855d3cf72",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 176,
+              "section_index": 175,
+              "char_start": 1873,
+              "char_end": 2384,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "09e3aa56e571467a2e256caede33f01a3cb0ad652d427865a0aa5d277ed1dc2f"
+            },
+            "quote": "đối với năm tài chính 2025, Tập là công ty con được trình bày trong Thuyết minh 34(a) - Báo cáo bộ phận, bao gồm\nđoàn FPT có quyền kiểm soát và hợp nhất báo cáo tài chính của FTEL vào báo cáo toàn bộ số liệu của bộ phận Viễn thông và Nội dung số."
+          }
+        ],
+        "import_relation_id": "review-import:25e28c8167617b291e20a8e9a98ef04a",
+        "envelope_sha256": "3d4b021760d3639d28ff9b7c2d9d5a39ce19749e5ef6ab8e8839f16e35f42636",
+        "note": "Draft target-presence smoke case, not complete gold for the question. Reviewer must choose sufficient source spans, check B1 chunk target fairness and adjudicate the complete expected result before claiming recall/precision. Source import provenance is Codex-live-revalidation-on-user-request, not a reviewer-export byte copy."
+      }
+    },
+    {
+      "case_id": "G03",
+      "group": "enterprise",
+      "question": "VietinBank có quan hệ với những doanh nghiệp nào trong năm 2025?",
+      "readiness": "READY",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "CTG"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": "OK",
+        "b1_status": "OK",
+        "relations": [
+          {
+            "subject_id": "CMP-c8ff5c1af9a79b27bdfb",
+            "object_id": "CMP-c47d12249b83f3acd49f",
+            "relation_type": "HAS_ASSOCIATE",
+            "as_of": "2025-12-31",
+            "graph_version_id": "96cc8e0d-f78e-49d0-83ac-56c53245c1ed"
+          }
+        ],
+        "chunk_ids": [
+          "c9d669e7-957c-58e2-819b-fb811d0efd02"
+        ],
+        "document_ids": [
+          "26c58a92-9b65-5ce3-a1c2-5f3b71717ddc"
+        ]
+      },
+      "review_context": {
+        "original_case": "N18",
+        "subject_name": "Ngân Hàng Thương Mại Cổ Phần Công Thương Việt Nam",
+        "object_name": "Ngân hàng TNHH Indovina",
+        "attributes": {
+          "inference_basis": "ownership_table",
+          "ownership_percent": "50",
+          "relation_label": "công ty liên doanh",
+          "accounting_basis": "phương pháp vốn chủ sở hữu"
+        },
+        "source_refs": [
+          {
+            "document_id": "26c58a92-9b65-5ce3-a1c2-5f3b71717ddc",
+            "chunk_id": "c9d669e7-957c-58e2-819b-fb811d0efd02",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 143,
+              "section_index": 142,
+              "char_start": 1571,
+              "char_end": 2088,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "01ea6e063e9051bcf5f553b5d9cdbfcec9d27abc347e09533ccdb33aac49c1b6"
+            },
+            "quote": "Công ty liên doanh"
+          },
+          {
+            "document_id": "26c58a92-9b65-5ce3-a1c2-5f3b71717ddc",
+            "chunk_id": "eba3d544-1147-54c5-9d00-d3ddacf46c2e",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 143,
+              "section_index": 142,
+              "char_start": 0,
+              "char_end": 510,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "58ad134c613afb07725606036a078fbd299952b65bb03a58d8a5622aa6e4a2f7"
+            },
+            "quote": "Mẫu số B05/TCTD-HN\n7 - THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT\ncho năm tài chính kết thúc ngày 31 tháng 12 năm 2025 (Tiếp theo)\n31.12.2025 31.12.2024\nLĨNH VỰC TỶ LỆ TỶ LỆ\nHOẠT QUYỀN QUYỀN\nTÊN CÔNG ĐỘNG TỶ LỆ BIỂU TỶ LỆ BIỂU\nSTT TY ĐƯỢC THÀNH LẬP THEO CHÍNH SỞ HỮU QUYẾT SỞ HỮU QUYẾT"
+          },
+          {
+            "document_id": "26c58a92-9b65-5ce3-a1c2-5f3b71717ddc",
+            "chunk_id": "c9d669e7-957c-58e2-819b-fb811d0efd02",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 143,
+              "section_index": 142,
+              "char_start": 1571,
+              "char_end": 2088,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "01ea6e063e9051bcf5f553b5d9cdbfcec9d27abc347e09533ccdb33aac49c1b6"
+            },
+            "quote": "1 Ngân hàng Giấy phép Thành lập và Hoạt động số Tài chính 50% 50% 50% 50%\nTNHH 08/NH-GP do Ngân hàng Nhà nước ngân\ncấp ngày 29 tháng 10 năm 1992 và các hàng\nIndovina"
+          },
+          {
+            "document_id": "26c58a92-9b65-5ce3-a1c2-5f3b71717ddc",
+            "chunk_id": "91aef6a2-2cef-5208-ad0e-ea9e2b562b48",
+            "locator": {
+              "kind": "db_text_span",
+              "page": 144,
+              "section_index": 143,
+              "char_start": 1860,
+              "char_end": 2352,
+              "text_start": 47,
+              "offset_basis": "normalized_section_body",
+              "offset_unit": "unicode_codepoint",
+              "content_hash": "56e40bcb5a9dbfe4c2651682c0c73738eeb10f1e858baf89515ab3d869e58205"
+            },
+            "quote": "CTG | Báo cáo thường niên 2025 | PDF trang 144\nLiên doanh là thỏa thuận bằng hợp ồng của hai hoặc nhiều bên ể cùng thực hiện hoạt ộng kinh\ntế, mà hoạt ộng này ược ồng kiểm soát bởi các bên góp vốn liên doanh. Các khoản ầu tư vào\nliên doanh ược hạch toán theo phương pháp vốn chủ sở hữu và ược ghi nhận ban ầu theo giá\ngốc. Khoản ầu tư của Ngân hàng vào liên doanh bao gồm lợi thế thương mại phát sinh khi ầu tư,\ntrừ i những khoản tổn thất lũy kế.\nSau ó, phần sở hữu của Ngân hàng trong lãi hoặc lỗ của công ty liên doanh sau ngày ầu tư ược"
+          }
+        ],
+        "import_relation_id": "review-import:977ab81471289b418e26058a29e4d4ae",
+        "envelope_sha256": "13d83a4529d6e1facb30ab02b296edcb23b3292187699f19add55257266e9468",
+        "note": "Draft target-presence smoke case, not complete gold for the question. Reviewer must choose sufficient source spans, check B1 chunk target fairness and adjudicate the complete expected result before claiming recall/precision. Source import provenance is Codex-live-revalidation-on-user-request, not a reviewer-export byte copy."
+      }
+    },
+    {
+      "case_id": "G04",
+      "group": "enterprise",
+      "question": "TCB có những công ty con nào trong năm 2025?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Select all subsidiary edges and source IDs from the pinned graph; exclude associates.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "TCB"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "V01",
+      "group": "vector",
+      "question": "Doanh thu FPT năm 2025 là bao nhiêu?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Approve financial value, unit, reporting basis and gold chunk IDs.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "VECTOR",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "V02",
+      "group": "vector",
+      "question": "Lợi nhuận sau thuế CTG năm 2025 là bao nhiêu?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Approve financial value, unit, reporting basis and gold chunk IDs.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "CTG"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "VECTOR",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "V03",
+      "group": "vector",
+      "question": "FPT trình bày rủi ro kinh doanh năm 2024 như thế nào?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Review narrative answer and relevant paragraphs; do not infer from question alone.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2024"
+        ]
+      },
+      "expected": {
+        "route": "VECTOR",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "V04",
+      "group": "vector",
+      "question": "Tổng tài sản TCB năm 2025 là bao nhiêu?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Approve financial value, unit, reporting basis and gold chunk IDs.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "TCB"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "VECTOR",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "B01",
+      "group": "both",
+      "question": "FPT có những công ty con nào năm 2025 và doanh thu của các công ty đó là bao nhiêu?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Confirm dependent company scope, BOTH plan, vector coverage and separate branch expectations.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "BOTH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "B02",
+      "group": "both",
+      "question": "Ai là chủ tịch FPT năm 2025 và báo cáo nêu gì về người này?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Need role graph and source paragraphs in the same approved scope.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "BOTH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "R01",
+      "group": "role",
+      "question": "Ai là chủ tịch FPT tại ngày 31/12/2025?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Need approved role graph version added to suite and config, time adjudication and source IDs.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "E01",
+      "group": "event",
+      "question": "FPT có sự kiện mua bán doanh nghiệp nào trong năm 2025?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Need approved event graph, planned/completed/cancelled labels and source IDs.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "X01",
+      "group": "error",
+      "question": "FPT có những công ty con nào trong năm 2001?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Verify pinned graph has no in-scope facts; B1 expectation must be adjudicated separately.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2001"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": "NO_DATA",
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "X02",
+      "group": "error",
+      "question": "Công ty An Bình có những công ty con nào?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Confirm genuine registry ambiguity and expected clarification; no invented entity ID.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [],
+        "periods": []
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "X03",
+      "group": "error",
+      "question": "Tỷ lệ sở hữu FPT Telecom năm 2025 là bao nhiêu?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Prepare controlled conflicting sources; distinguish ownership from voting percentage.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "X04",
+      "group": "error",
+      "question": "FPT có quan hệ với doanh nghiệp nào năm 2025?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Controlled stale-version/source mismatch test in isolated environment, never modify production corpus.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "X05",
+      "group": "error",
+      "question": "FPT có những công ty con nào năm 2025?",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Controlled graph timeout in isolated environment; question text cannot inject a timeout.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "GRAPH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    },
+    {
+      "case_id": "X06",
+      "group": "error",
+      "question": "Tìm công ty con FPT và doanh thu của họ năm 2025.",
+      "readiness": "NOT_READY",
+      "blocked_reason": "Controlled one-branch timeout and partial-result expectations; dedicated harness needed.",
+      "gold": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_at": null,
+        "complete": false
+      },
+      "context": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "2025"
+        ]
+      },
+      "expected": {
+        "route": "BOTH",
+        "status": null,
+        "relations": [],
+        "chunk_ids": [],
+        "document_ids": []
+      }
+    }
+  ]
+}

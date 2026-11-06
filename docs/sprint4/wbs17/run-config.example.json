@@ -1,0 +1,31 @@
+{
+  "scope": {
+    "corpus_version_id": "b2550a0b-c423-5c50-9b15-6fb6af12e2c6",
+    "index_version_id": "ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d",
+    "graph_version_ids": [
+      "s4-bctn-b2550a0b-v4-20261102",
+      "95260e20-ea3f-4d76-9ae5-185356cd437d",
+      "96cc8e0d-f78e-49d0-83ac-56c53245c1ed"
+    ]
+  },
+  "operator_confirmed_same_environment": false,
+  "embedding_model_ref": null,
+  "deployment_ref": null,
+  "machine_ref": null,
+  "level": "retrieval_only",
+  "profiles": {
+    "B1": {
+      "kind": "B1",
+      "url": "http://127.0.0.1:8000/api/search/filtered"
+    },
+    "B2": {
+      "kind": "B2",
+      "url": "http://127.0.0.1:8000/api/hybrid-router/run"
+    }
+  },
+  "notes": [
+    "B1 is dense filtered vector retrieval; B2 uses router/graph/hybrid content retrieval. This is not an answer-quality benchmark.",
+    "Set B2 server research_corpus_version_id, hybrid_router_index_id and graph versions to match scope; record embedding model and deployment receipt. Same model settings are operator-attested, not inferred by this client.",
+    "No credentials belong in this file; optional profile token_env names an environment variable."
+  ]
+}
