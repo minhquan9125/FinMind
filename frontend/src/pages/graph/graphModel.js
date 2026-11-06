@@ -48,7 +48,28 @@ export function canExpand(graph, visibleGraph, nodeId) {
   });
 }
 
-export const RELATION_TYPES = ["OWNS_SHARES", "HAS_SUBSIDIARY", "HAS_ASSOCIATE", "COOPERATES_WITH", "HOLDS_ROLE", "APPOINTS", "DISMISSES", "INVOLVES"];
+export const SOURCE_RELATION_TYPES = ["HOLDS_ROLE", "APPOINTS", "DISMISSES", "FORMER_ROLE", "RESIGNS", "REQUESTS_RESIGNATION"];
+export const RELATION_TYPES = ["OWNS_SHARES", "HAS_SUBSIDIARY", "HAS_ASSOCIATE", "COOPERATES_WITH", "HOLDS_ROLE", "APPOINTS", "DISMISSES", "INVOLVES", "FORMER_ROLE", "RESIGNS", "REQUESTS_RESIGNATION"];
+function reviewed(meta, edge) {
+  if (meta.serving_scope === "SOURCE_DOCUMENT_ASSERTIONS") return edge.review?.status === "SOURCE_REVIEWED" &&
+    SOURCE_RELATION_TYPES.includes(edge.type) && edge.attributes?.identity_scope === "SOURCE_OCCURRENCE" &&
+    edge.attributes?.time_scope === "SOURCE_DOCUMENT_NOT_CURRENT_OFFICE" &&
+    edge.attributes?.source_review_status === "APPROVED_IN_SOURCE_REPORT";
+  return edge.review?.status === "APPROVED" && !["FORMER_ROLE", "RESIGNS", "REQUESTS_RESIGNATION"].includes(edge.type);
+}
+
+// No version IDs are cached or pinned. Refresh only while the page is visible.
+export function watchGraphUpdates(refresh, win = window, doc = document) {
+  const update = () => { if (doc.visibilityState === "visible") refresh(); };
+  const timer = win.setInterval(update, 30000);
+  win.addEventListener("focus", update);
+  doc.addEventListener("visibilitychange", update);
+  return () => {
+    win.clearInterval(timer);
+    win.removeEventListener("focus", update);
+    doc.removeEventListener("visibilitychange", update);
+  };
+}
 const fail = () => { throw new Error("Dữ liệu graph sai contract hoặc không khớp phạm vi/phiên đang xem."); };
 const hasText = value => typeof value === "string" && value.trim().length > 0;
 const sorted = value => Array.isArray(value) ? [...value].sort() : [];
@@ -72,7 +93,7 @@ export function validateGraph(data, query) {
   if (!ids.has(query.entity_id)) fail();
   for (const edge of data.edges) {
     if (!hasText(edge.id) || edgeIds.has(edge.id) || !ids.has(edge.source) || !ids.has(edge.target) ||
-        !RELATION_TYPES.includes(edge.type) || edge.review?.status !== "APPROVED" || !edge.temporal || !edge.attributes) fail();
+        !RELATION_TYPES.includes(edge.type) || !reviewed(data.meta, edge) || !edge.temporal || !edge.attributes) fail();
     if (query.relation_type?.length && !query.relation_type.includes(edge.type)) fail();
     const t = edge.temporal;
     if (!t.valid_from && !t.valid_to) {
@@ -88,7 +109,7 @@ export function validateGraph(data, query) {
 export function validateRelation(data, version, id, expectedEdge) {
   versionMeta(data, version);
   const r = data.relation;
-  if (r?.id !== id || !RELATION_TYPES.includes(r.type) || r.review?.status !== "APPROVED" ||
+  if (r?.id !== id || !RELATION_TYPES.includes(r.type) || !reviewed(data.meta, r) ||
       !r.source?.id || !r.target?.id || !r.temporal || !r.attributes || !r.extraction || !Array.isArray(data.evidence)) fail();
   if (r.extraction.relation_id !== id) fail();
   if (expectedEdge && (r.source.id !== expectedEdge.source || r.target.id !== expectedEdge.target || r.type !== expectedEdge.type ||
