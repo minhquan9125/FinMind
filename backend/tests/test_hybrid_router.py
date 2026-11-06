@@ -229,6 +229,24 @@ def test_business_intent_guardrails_override_wrong_classifier_bias(question, rou
     assert decision.route == route
 
 
+@pytest.mark.parametrize('source', ['BCTN', 'báo cáo thường niên', 'BCTC', 'báo cáo tài chính'])
+def test_report_source_qualifier_does_not_add_a_content_task(source):
+    question = f'Theo {source} FPT 2024, FPT Online có phải công ty con trực tiếp của FPT tại 31/12/2024 không?'
+    result = DecisionEngine(StubPredictor((0.05, 0.95))).decide(question)
+    assert result.route == 'GRAPH'
+    assert result.scope.companies == ['FPT'] and result.scope.periods == ['2024']
+
+
+@pytest.mark.parametrize('question,route', [
+    ('Theo BCTN FPT 2024, doanh thu công ty con của FPT là bao nhiêu?', 'BOTH'),
+    ('Phân tích BCTN và các công ty con của FPT năm 2024', 'BOTH'),
+    ('Theo BCTN FPT 2024, doanh thu là bao nhiêu?', 'VECTOR'),
+    ('Trong báo cáo thường niên FPT 2024, công ty con của FPT là ai?', 'GRAPH'),
+])
+def test_source_qualifier_preserves_real_content_requests(question, route):
+    assert DecisionEngine(StubPredictor((0.05, 0.95))).decide(question).route == route
+
+
 @pytest.mark.parametrize("question", [
     "Vì sao hôm nay giá cổ phiếu FPT giảm?",
     "nguyen nhan gia cp fpt hn giam la gi",

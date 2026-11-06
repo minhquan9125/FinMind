@@ -93,6 +93,13 @@ def resolve_intent(text, companies, industry, metric=None, entity_mentions=()):
     # Leadership phrases contain 'giam'; ownership phrases contain stock words.
     # Remove whole relationship phrases before looking for a second content task.
     content_text = text
+    # A report cited as the source of a fact is not a second retrieval intent.
+    # Keep other content words (e.g. revenue) and requests to analyse the report.
+    content_text = re.sub(
+        r'\b(?:theo|trong|dua tren|can cu vao)\s+'
+        r'(?:bctn|bctc|bao cao(?:\s+(?:thuong nien|tai chinh))?)\b',
+        ' ', content_text,
+    )
     for phrase in sorted(GRAPH_TERMS + PROFILE_TERMS, key=len, reverse=True):
         content_text = re.sub(rf"\b{re.escape(phrase)}\b", " ", content_text)
     content = (metric is not None or contains(content_text, CONTENT_TERMS)
