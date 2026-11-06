@@ -194,7 +194,12 @@ export default function CompanyDetailPage() {
                       <Stat label="Sàn" value={company.exchange || "—"} />
                       <Stat label="Kỳ dữ liệu mẫu" value="FY2025" />
                     </div>
-                    <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Lịch sử đã lưu và giá KBS trong phiên · Chưa xác nhận cơ sở giá">
+                    <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Lịch sử đã lưu và giá KBS trong phiên · Chưa xác nhận cơ sở giá"
+                      action={<Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs"
+                        disabled={marketLoading || historyLoading || refreshingPrice}
+                        onClick={() => setDataRetryCount((count) => count + 1)}>
+                        {marketLoading || historyLoading ? "Đang tải…" : "Làm mới biểu đồ"}
+                      </Button>}>
                       <p className="mb-3 text-xs text-slate-500">Tự kiểm tra khi đang xem · Nguồn cập nhật: {localTime(marketData?.fetched_at)} · Kiểm tra lần cuối: {localTime(marketCheckedAt)}</p>
                       {historyLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang tải lịch sử khoảng 6 tháng…</p>}
                       {marketData?.live && <p role="status" className={`mb-3 text-xs ${marketData.live.stale ? "text-amber-700" : "text-slate-500"}`}>{marketData.live.reason}</p>}
