@@ -202,7 +202,7 @@ export default function CompanyDetailPage() {
                       </Button>}>
                       <p className="mb-3 text-xs text-slate-500">Tự kiểm tra khi đang xem · Nguồn cập nhật: {localTime(marketData?.fetched_at)} · Kiểm tra lần cuối: {localTime(marketCheckedAt)}</p>
                       {historyLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang tải lịch sử khoảng 6 tháng…</p>}
-                      {marketData?.live && <p role="status" className={`mb-3 text-xs ${marketData.live.stale ? "text-amber-700" : "text-slate-500"}`}>{marketData.live.reason}</p>}
+                      {marketData?.live && <p role="status" className={`mb-3 text-xs ${['CLOSED', 'BREAK'].includes(marketData.live.session_status) ? "text-slate-500" : marketData.live.stale ? "text-amber-700" : "text-slate-500"}`}>{marketData.live.reason}</p>}
                       {marketError && marketData && <p role="status" className="mb-3 text-xs text-amber-700">{marketError}. Đang giữ biểu đồ đã tải.</p>}
                       {(marketLoading && !marketData) || (historyLoading && !marketData?.bars?.length) ? <Skeleton rows={3} /> : marketError && !marketData?.bars?.length ? <ErrorState message={marketError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : <PriceHistory data={marketData} />}
                     </Card>

@@ -21,6 +21,22 @@ class SessionGate:
         except (OSError, ValueError, KeyError, TypeError):
             pass
 
+    def status(self, exchange=None):
+        """Explain the configured gate without claiming an unverified market state."""
+        exchanges = (exchange,) if exchange else ("HOSE", "HNX", "UPCOM")
+        now = self.now().astimezone(VN)
+        if (self.calendar is None or not self.calendar.is_known(now.date())
+                or any(item not in ("HOSE", "HNX", "UPCOM") for item in exchanges)):
+            return "UNKNOWN_CALENDAR"
+        if any(self(item) for item in exchanges):
+            return "OPEN"
+        phases = {self.calendar.phase(item, now) for item in exchanges}
+        if phases == {"lunch"}:
+            return "BREAK"
+        if phases == {"halted"}:
+            return "HALTED"
+        return "CLOSED"
+
     def __call__(self, exchange):
         if exchange not in ("HOSE", "HNX", "UPCOM") or self.calendar is None:
             return False
