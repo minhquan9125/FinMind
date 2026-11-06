@@ -275,6 +275,39 @@ def test_current_question_missing_symbol_accepts_company_followup():
     assert analyze_live('FPT', first['scope'], today=NOW.date())['decision'] == 'MARKET_LOOKUP'
 
 
+@pytest.mark.parametrize('question', [
+    'hôm nay giá như nào', 'hom nay gia nhu nao', 'HOM NAY GIA NHU NAO',
+    'giá như thế nào hôm nay', 'giá mới nhất hôm nay', 'cho tôi xem giá hôm nay',
+    'hôm nay giá ra sao',
+])
+def test_price_followup_never_treats_conversational_words_as_tickers(question):
+    previous = scope('giá FPT hôm nay')
+    result = analyze_live(question, previous, today=NOW.date())
+    assert result['decision'] == 'MARKET_LOOKUP'
+    assert result['scope']['companies'] == ['FPT']
+    assert result['scope']['periods'] == [NOW.date().isoformat()]
+    assert result['scope']['source_type'] == 'PRICE'
+
+
+@pytest.mark.parametrize('previous', [None, {'companies': ['NHU'], 'source_type': 'PRICE',
+    '_market_request': {'kind': 'QUOTE', 'day': None, 'action': 'LIST'}}])
+def test_no_confirmed_company_asks_instead_of_fetching_a_phantom_symbol(previous):
+    first = analyze_live('hôm nay giá như nào', previous, today=NOW.date())
+    assert first['reason_code'] == 'MISSING_COMPANY'
+    assert first['scope'].get('companies') in (None, [])
+    next_turn = analyze_live('FPT', first['scope'], today=NOW.date())
+    assert next_turn['decision'] == 'MARKET_LOOKUP'
+    assert next_turn['scope']['companies'] == ['FPT']
+
+
+def test_real_catalog_ticker_is_kept_when_its_letters_overlap_language():
+    from src.retrieval_orchestration.input_normalization import registered_symbols
+    assert 'CEO' in registered_symbols()
+    result = analyze_live('giá CEO hôm nay', today=NOW.date())
+    assert result['decision'] == 'MARKET_LOOKUP'
+    assert result['scope']['companies'] == ['CEO']
+
+
 @pytest.mark.parametrize('question', ['giá xyz hôm nay', 'xyz giá hiện tại', 'tin tức xyz mới nhất'])
 def test_current_explicit_lowercase_symbol_is_not_limited_to_corpus_tickers(question):
     result = analyze_live(question, today=NOW.date())
