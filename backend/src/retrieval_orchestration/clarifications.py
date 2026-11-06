@@ -124,6 +124,10 @@ def apply_clarification(decision, previous, today):
         keys = (scope.get('_metric_candidates') or keys)[:8]
         field = 'metric'
         message = f'Bạn muốn xem loại {label} nào?'
+    elif reason == 'SCOPE_TOO_LARGE' and len(scope.get('companies') or []) > 1:
+        field, label = 'company', 'mã cổ phiếu'
+        keys = ['TEXT:' + company for company in dict.fromkeys(scope['companies'])][:8]
+        message = 'Bạn muốn tra cứu mã nào trước? Chọn một mã dưới đây để tiếp tục.'
     elif reason == 'MISSING_COMPANY':
         field, label, keys = 'company', 'công ty', ['TEXT:FPT', 'TEXT:SSI', 'TEXT:VCB']
         message = decision['message']

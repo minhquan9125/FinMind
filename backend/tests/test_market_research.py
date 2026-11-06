@@ -251,6 +251,34 @@ def test_current_explicit_lowercase_symbol_is_not_limited_to_corpus_tickers(ques
     assert result['scope']['companies'] == ['XYZ']
 
 
+@pytest.mark.parametrize('word', ['bik', 'bít', 'biết'])
+def test_conversational_know_is_not_mistaken_for_an_extra_ticker(word):
+    previous = analyze_live('FPT', today=NOW.date())['scope']
+    result = analyze_live(f'cho tôi {word} giá hôm nay FPT là bao nhiêu', previous, today=NOW.date())
+    assert result['decision'] == 'MARKET_LOOKUP'
+    assert result['scope']['companies'] == ['FPT']
+    assert result['scope']['source_type'] == 'PRICE'
+    assert result['scope']['periods'] == [NOW.date().isoformat()]
+    assert not result.get('clarification_options')
+
+
+def test_multiple_market_tickers_offer_real_choices_and_keep_date_when_selected():
+    first = analyze_live('giá FPT và CMG hôm nay', today=NOW.date())
+    assert first['reason_code'] == 'SCOPE_TOO_LARGE'
+    assert [o['reply'] for o in first['clarification_options']] == ['FPT', 'CMG']
+    selected = analyze_live('2', first['scope'], today=NOW.date())
+    assert selected['decision'] == 'MARKET_LOOKUP'
+    assert selected['scope']['companies'] == ['CMG']
+    assert selected['scope']['periods'] == [NOW.date().isoformat()]
+
+
+@pytest.mark.parametrize('question', ['giá BIK hôm nay', 'giá bik hôm nay', 'cho tôi mã BIK giá hôm nay'])
+def test_explicit_symbol_is_not_rewritten_as_conversational_verb(question):
+    result = analyze_live(question, today=NOW.date())
+    assert result['decision'] == 'MARKET_LOOKUP'
+    assert result['scope']['companies'] == ['BIK']
+
+
 def test_live_news_does_not_silently_choose_between_publishers():
     first = analyze_live('tin tức CafeF và FireAnt mới nhất FPT', today=NOW.date())
     assert first['reason_code'] == 'AMBIGUOUS_PUBLISHER'
