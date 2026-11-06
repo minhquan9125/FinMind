@@ -247,6 +247,43 @@ def test_source_qualifier_preserves_real_content_requests(question, route):
     assert DecisionEngine(StubPredictor((0.05, 0.95))).decide(question).route == route
 
 
+@pytest.mark.parametrize('question', [
+    'Chép đúng câu ghi ngày bổ nhiệm Chủ tịch HĐQT Nguyễn Thanh Tùng trong BCTN VCB 2024.',
+    'Hãy trích nguyên văn ngày bổ nhiệm chủ tịch FPT năm 2024 trong nguồn.',
+    'Theo đoạn tiểu sử BIDV đã chốt, ông Lê Ngọc Lâm sinh năm nào?',
+])
+def test_explicit_source_fact_requests_use_content_even_with_role_words(question):
+    assert DecisionEngine(StubPredictor((0.95, 0.95))).decide(question).route == 'VECTOR'
+
+
+def test_graph_discovery_followed_by_quotation_still_uses_both():
+    result=DecisionEngine(StubPredictor((0.05,0.95))).decide(
+        'Tìm công ty con của FPT năm 2024 rồi trích nguyên văn doanh thu trong báo cáo.')
+    assert result.route == 'BOTH'
+
+
+@pytest.mark.parametrize('unit', ['VNĐ', 'VND', 'tỷ VND'])
+def test_currency_unit_is_not_a_second_company(unit):
+    result=DecisionEngine(StubPredictor((0.95,0.95))).decide(
+        f'Theo BCTN FPT 2025, doanh thu thuần năm 2025 là bao nhiêu {unit}?')
+    assert result.scope.companies == ['FPT']
+    assert result.route == 'VECTOR'
+
+
+def test_explicit_vnd_ticker_is_kept_alongside_a_currency_unit():
+    result=DecisionEngine(StubPredictor((0.95,0.95))).decide(
+        'So sánh doanh thu FPT và mã VND năm 2025, đơn vị VNĐ.')
+    assert result.scope.companies == ['FPT','VND']
+
+
+@pytest.mark.parametrize('question', [
+    'Từ FPT, tìm công ty liên kết trực tiếp có tỷ lệ sở hữu 46,54% tại 31/12/2025, rồi nêu hoạt động chính theo báo cáo.',
+    'Xác định quan hệ FPT–FTEL tại 31/12/2025 rồi đọc chú thích giải thích cơ sở hợp nhất và thay đổi từ năm tài chính 2026.',
+])
+def test_relationship_discovery_followed_by_activity_or_consolidation_uses_both(question):
+    assert DecisionEngine(StubPredictor((0.05,0.95))).decide(question).route == 'BOTH'
+
+
 @pytest.mark.parametrize("question", [
     "Vì sao hôm nay giá cổ phiếu FPT giảm?",
     "nguyen nhan gia cp fpt hn giam la gi",

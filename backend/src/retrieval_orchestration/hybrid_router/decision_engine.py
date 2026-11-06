@@ -176,22 +176,31 @@ class ScopeResolver:
             return self._clarify(question, RouterScope(), ("periods",), "INVALID_QUARTER",
                                  "Quý chỉ có giá trị từ 1 đến 4. Bạn muốn hỏi quý nào?")
 
+        # Currency VNĐ is not the VND ticker. Preserve explicit ticker mentions
+        # elsewhere in the same question; only mask currency-shaped spans.
+        company_question = re.sub(r'\bvnđ\b', ' ', question, flags=re.I)
+        company_question = re.sub(
+            r'\b(bao nhiêu|bao nhieu|đơn vị|don vi|tính bằng|tinh bang|'
+            r'tỷ|ty|triệu|trieu|nghìn|nghin|\d[\d.,]*)\s+vnd\b',
+            r'\1 ', company_question, flags=re.I,
+        )
+        company_normalized = _normalize(company_question)
         candidate_hits: list[tuple[int, str]] = []
         for alias, company_ids in self.company_registry.items():
-            match = re.search(rf"\b{re.escape(_normalize(alias))}\b", normalized)
+            match = re.search(rf"\b{re.escape(_normalize(alias))}\b", company_normalized)
             if match:
                 if len(company_ids) > 1:
                     return self._clarify(question, RouterScope(), ("companies",),
                                          "AMBIGUOUS_COMPANY", "Tên này chỉ nhiều công ty. Bạn muốn hỏi công ty nào?")
                 candidate_hits.extend((match.start(), company_id) for company_id in company_ids)
-        for ticker_match in re.finditer(r"(?<![A-Za-z0-9])[A-Z][A-Z0-9]{2,4}(?![A-Za-z0-9])", question):
+        for ticker_match in re.finditer(r"(?<![A-Za-z0-9])[A-Z][A-Z0-9]{2,4}(?![A-Za-z0-9])", company_question):
             ticker = ticker_match.group(0)
             if (ticker not in NON_COMPANY_CODES and len(ticker) == 3
                     and ticker.lower() not in TICKER_STOP_WORDS
                     and _normalize(ticker) == ticker.lower()):
                 candidate_hits.append((ticker_match.start(), ticker))
         # Unknown lower-case symbols are accepted only in explicit ticker syntax.
-        for match in re.finditer(r"\b(?:ma|co phieu)\s+([a-z]{3})\b", normalized):
+        for match in re.finditer(r"\b(?:ma|co phieu)\s+([a-z]{3})\b", company_normalized):
             token = match.group(1)
             if token not in TICKER_STOP_WORDS and token.upper() not in NON_COMPANY_CODES:
                 candidate_hits.append((match.start(1), token.upper()))

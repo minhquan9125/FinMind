@@ -57,6 +57,7 @@ CONTENT_TERMS = (
     "gia cp", "gia ck", "thi gia", "tang", "giam", "tin tuc", "so lieu",
     "tong tai san", "von chu so huu", "dong tien", "chien luoc", "muc tieu",
     "cam ket", "quan diem", "tin moi", "lich su", "tru so",
+    "hoat dong chinh", "co so hop nhat",
 )
 EVENT_TERMS = (
     "lien quan", "dinh dang", "an theo", "vu chay", "chay", "bi bat", "bat giu",
@@ -79,6 +80,13 @@ class RetrievalIntent:
 
 
 def resolve_intent(text, companies, industry, metric=None, entity_mentions=()):
+    # Reading an explicitly identified passage is a content task even when the
+    # quoted sentence mentions a position. A later quote after graph discovery
+    # does not match these anchored reading requests.
+    if re.match(r'^(?:hay\s+)?(?:chep|trich)\s+(?:dung|nguyen van)\b', text) or re.match(
+        r'^(?:theo|dua tren)\s+(?:doan\s+)?tieu su\b', text
+    ):
+        return RetrievalIntent('VECTOR', 'SOURCE_FACT_LOOKUP')
     market = contains(text, MARKET_TERMS)
     knowledge = contains(text, KNOWLEDGE_TERMS) or (
         not companies and contains(text, ("la gi", "khai niem", "dinh nghia", "giai thich",
@@ -88,7 +96,7 @@ def resolve_intent(text, companies, industry, metric=None, entity_mentions=()):
     portfolio = bool(re.search(
         r"\b(?:von|co|cam)\s+\d+\s*(?:cu|trieu|tr|ty|trd)\b", text
     )) and contains(text, ("chia", "phan bo", "bao nhieu ma", "bn ma", "dau tu", "nen mua"))
-    graph = contains(text, GRAPH_TERMS)
+    graph = contains(text, GRAPH_TERMS) or bool(re.search(r'\b(?:xac dinh|tim)\s+quan he\b', text))
     profile = contains(text, PROFILE_TERMS)
     # Leadership phrases contain 'giam'; ownership phrases contain stock words.
     # Remove whole relationship phrases before looking for a second content task.
