@@ -53,3 +53,17 @@ test('citation numbers follow answer order instead of retrieval order', () => {
   assert.equal(view[1].citationNumber, 1);
   assert.equal(view[2].citationNumber, null);
 });
+
+test('personnel graph shows exact source quotes, document page and verified source URL', () => {
+  const result = { execution_mode: 'LIVE', presentation: { sources: 'GRAPH_QUOTES' },
+    evidence_pack: { items: [{ evidence_id: 'graph-1', source_verified: true, source_type: 'GRAPH_SOURCE',
+      title: 'FPT · Nguồn nhân sự', passage: 'Tên người và chức vụ trong nguồn', locator: { page: 12 }, source_url: 'https://fpt.com/source.pdf' }] },
+    answering: { status: 'DRAFT_READY', citations: [{ evidence_id: 'graph-1', citation_number: 1 }] } };
+  const [source] = citationView(result);
+  assert.equal(source.compact, false);
+  assert.equal(source.used, true);
+  assert.equal(source.citationNumber, 1);
+  assert.equal(source.location, 'Trang 12');
+  assert.equal(source.url, 'https://fpt.com/source.pdf');
+  assert.equal(source.passage, 'Tên người và chức vụ trong nguồn');
+});

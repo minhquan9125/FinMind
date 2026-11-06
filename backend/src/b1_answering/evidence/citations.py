@@ -18,6 +18,9 @@ def prepare_evidence(pack: dict) -> dict[str, dict]:
         raise CitationError("INVALID_EVIDENCE")
     if pack.get("conflicts"):
         raise CitationError("INVALID_EVIDENCE")
+    if pack.get('schema_version') == 'graph-source-v1':
+        from .graph_source_contract import prepare_graph_source_evidence
+        return prepare_graph_source_evidence(pack)
     if pack.get('schema_version') == '1.2':
         from .market_contract import prepare_market_evidence
         return prepare_market_evidence(pack)

@@ -171,6 +171,31 @@ Báo cáo máy đọc và thời gian từng câu: outputs/ocr-ai-demo/web-api-r
 Các báo cáo ai-report.json và diagnostic-report.json là kết quả trước sửa;
 không dùng chúng làm kết luận cho phiên chung hiện tại.
 
+### Chat nhân sự từ graph theo nguồn
+
+Các câu hỏi hội đồng quản trị/HĐQT, chủ tịch, ban điều hành và ban kiểm soát
+được nối với graph `person-source-claims-v1` trong cùng Neo4j của Graph Viewer.
+Không ghim ID phiên: mỗi lượt chọn phiên READY mới nhất có công ty được hỏi.
+Chỉ đọc claim đã duyệt tại nguồn, giữ nguyên các loại bổ nhiệm/miễn nhiệm,
+chức vụ trước đây, từ nhiệm và đề nghị từ nhiệm. Không hợp nhất tên trùng
+thành một người hay khẳng định chức vụ hiện tại từ những claim này.
+
+Trước khi trả lời, bộ đọc phát lại nguồn qua PostgreSQL trong transaction
+READ ONLY REPEATABLE READ, đối chiếu corpus/index/document/chunk, hash,
+locator và offset đoạn trích. Nguồn đổi hoặc không còn hoạt động thì dừng;
+không dùng văn bản trong graph thay cho bằng chứng DB. Không cần migration
+hay nạp lại dữ liệu đã công bố. Cần cấu hình Neo4j và quyền đọc corpus gốc
+của các bằng chứng trong PostgreSQL. Thư mục dữ liệu xuất local không tham
+gia luồng Chat này.
+
+Kết quả ghi `GRAPH_SOURCE_CLAIMS`, có tên/chức vụ, loại ghi nhận, năm tài liệu
+nếu nguồn có, đoạn trích và link nguồn. Năm báo cáo không phải ngày hiệu lực;
+câu hỏi chỉ rõ năm không được lấy nguồn khác năm hay nguồn không ghi năm để
+bù. Danh sách là những ghi nhận đã nạp, chưa bảo đảm toàn bộ nhân sự. Các
+danh sách này được dựng từ trường đã đối chiếu, không gọi Gemini; thống kê
+model/token ghi đúng 0 lần gọi. Câu hỏi tài chính và tin tức tiếp tục đi theo
+luồng cũ. Có thể hỏi tiếp `xem nguồn` và mở lại phiên mà giữ các citation.
+
 ### Biểu đồ chỉ số thị trường
 
 Trang chi tiết công ty tự đọc cache rồi tải lịch sử khoảng sáu tháng khi mở,

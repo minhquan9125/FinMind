@@ -41,6 +41,7 @@ def get_store() -> PostgresSessionStore:
         from ...retrieval_orchestration.market_research import MarketResearch
         from ...market_data.repository import FileMarketDataRepository
         from ...documents.admin_news_chat import AdminNewsChat
+        from ...retrieval_orchestration.person_graph_chat import PersonGraphChat, get_source_personnel_reader
         from ...documents.admin_ingestion import Queue
         limits = Limits.load()
         provider = None
@@ -57,6 +58,7 @@ def get_store() -> PostgresSessionStore:
             provider=provider, limits=limits,
             retrieval_timeout=settings.research_retrieval_timeout_seconds,
             market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
+            person_graph=PersonGraphChat(get_source_personnel_reader, get_pool()),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
         )
         from ...documents.research_metrics import ObservedResearch, ResearchMetrics

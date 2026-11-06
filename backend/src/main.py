@@ -94,6 +94,8 @@ async def lifespan(app: FastAPI):
                 await warmup_task
     finally:
         research_chat.configure_market_services()
+        from .retrieval_orchestration.person_graph_chat import close_source_personnel_reader
+        await asyncio.to_thread(close_source_personnel_reader)
         await disconnect()
 
 

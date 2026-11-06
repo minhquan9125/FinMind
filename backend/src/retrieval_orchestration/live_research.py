@@ -27,6 +27,7 @@ from .retrieval_flow.intent import _fold, _period, TICKERS
 from .clarifications import apply_clarification, metric_group, resolve_reply
 from .market_dialogue import article_query, calendar_day, news_reference
 from .input_normalization import normalize_user_text
+from .person_graph_chat import personnel_role
 from .market_dates import price_date_request, relative_market_range, temporal_reply
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
@@ -96,6 +97,9 @@ def _market_intent(norm, context, today):
     if query:
         return {'kind': 'NEWS', 'day': None, 'action': 'SUMMARY' if 'tom tat' in norm else 'DETAIL', 'query': query}
     news = bool(re.search(r'\b(?:tin tuc|tin|news)\b', norm))
+    if (personnel_role(norm) and re.search(r'\bthong tin\b', norm)
+            and not re.search(r'\b(?:tin tuc|tin moi|ban tin|news)\b', norm)):
+        news = False  # "thông tin hội đồng" requests personnel information, not a news feed.
     short_price = re.search(r'\bgia\s+([a-z]{3})\b', norm)
     price = bool(re.search(r'\b(?:gia co phieu|thi gia|gia hien tai|gia hom nay)\b', norm)
                  or (short_price and short_price[1] not in {'von', 'tri', 'cua', 'ban', 'mua', 'dat', 'san', 'cao', 'day', 'goc'}))
@@ -124,7 +128,7 @@ def _market_intent(norm, context, today):
             'kind': 'NEWS', 'day': day or today.isoformat(), 'action': 'SUMMARY',
             'market_wide': True,
         }
-    if (trend and not financial
+    if (trend and not financial and not personnel_role(norm)
             and not re.search(r'\b(?:nam|quy|thang)\s+\d|\b(?:19|20|21)\d{2}\b', norm)):
         return {'kind': 'ANALYSIS', 'day': today.isoformat(), 'action': 'ANALYSIS'}
     company_selection = (norm.isdigit() and
@@ -335,11 +339,14 @@ def analyze_live(text, context=None, *, today=None):
         scope.update(source_type='NEWS', metric_code=None, reporting_entity='UNKNOWN')
         if relationship_lookup:
             scope['topic'] = 'RELATIONSHIP_LOOKUP'
+            scope['_person_role'] = personnel_role(norm)
             for key in ('_pending_quarter', '_pending_ytd', '_pending_reporting_entity',
                         'measure_basis', '_metric_candidates'):
                 scope.pop(key, None)
             # A new organizational question does not inherit an unrelated report period.
             scope.pop('periods', None)
+        else:
+            scope.pop('_person_role', None)
         scope.pop('_pending_metric', None)
         if len(publishers) > 1:
             scope.pop('publisher', None)
@@ -606,10 +613,11 @@ class DenseEvidenceRetriever:
 class LiveResearchService:
     execution_mode = 'LIVE'
 
-    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None):
+    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None, person_graph=None):
         self.retriever, self.provider = retriever, provider
         self.market = market
         self.admin_news = admin_news
+        self.person_graph = person_graph
         self.limits = limits or Limits.load()
         self.budget = Budget(self.limits)
         self.retrieval_timeout = retrieval_timeout
@@ -646,8 +654,12 @@ class LiveResearchService:
         parts = ['Nguồn của câu trả lời trước:']
         for number, citation in enumerate(citations, 1):
             citation.setdefault('citation_number', number)
-            title = (citation.get('title') or 'Nguồn thị trường') if citation.get('source_type') in ('NEWS', 'PRICE') else (
-                'Báo cáo tài chính '+', '.join(old_scope.get('companies', [])))
+            if citation.get('source_type') == 'GRAPH_SOURCE':
+                title = citation.get('title') or 'Nguồn nhân sự'
+            elif citation.get('source_type') in ('NEWS', 'PRICE'):
+                title = citation.get('title') or 'Nguồn thị trường'
+            else:
+                title = 'Báo cáo tài chính '+', '.join(old_scope.get('companies', []))
             section = citation['locator'].get('section')
             parts.append(f"[{citation['citation_number']}] {title}"+(f' — {section}' if section else ''))
         manifest = copy.deepcopy(answer.get('manifest', {}))
@@ -667,7 +679,7 @@ class LiveResearchService:
 
     async def answer(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
-        if self.admin_news is not None:
+        if self.admin_news is not None and not (self.person_graph is not None and personnel_role(interpreted)):
             indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
                                                    limits=self.limits, budget=self.budget)
             if indexed is not None: return indexed
@@ -692,6 +704,13 @@ class LiveResearchService:
         if decision['decision'] == 'MARKET_LOOKUP':
             return await self._answer_market(interpreted, result, previous_result)
         if decision['decision'] != 'SEARCH': return result
+        if self.person_graph is not None:
+            try:
+                personnel = await asyncio.wait_for(self.person_graph.answer(interpreted, result), self.retrieval_timeout)
+            except TimeoutError:
+                result.update(status='SYSTEM_UNAVAILABLE', reason_code='PERSON_GRAPH_TIMEOUT', message='Đối chiếu nguồn nhân sự quá thời gian chờ. Vui lòng thử lại.')
+                return result
+            if personnel is not None: return personnel
         label = METRIC_ALIASES.get(scope.get('metric_code'), ('tin tức',))[0]
         query = f"{label} {' '.join(scope['companies'])} {' '.join(scope['periods'])}. {interpreted}"
         try:

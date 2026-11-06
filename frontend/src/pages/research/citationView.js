@@ -27,10 +27,10 @@ export function citationView(result) {
     used: bound.has(item.evidence_id),
     citationNumber: numbers.get(item.evidence_id) ?? null,
     title: item.title || (item.source_type === 'NEWS' ? 'Bài tin' : 'Báo cáo tài chính'),
-    location: item.locator?.section || 'Đoạn nguồn',
+    location: item.locator?.section || (item.locator?.page ? `Trang ${item.locator.page}` : 'Đoạn nguồn'),
     passage: item.passage,
     rows: Array.isArray(item.locator?.row_keys) ? item.locator.row_keys : [],
-    url: safeSourceUrl(item.locator?.url),
+    url: safeSourceUrl(item.source_url || item.locator?.url),
     compact: item.source_type === 'NEWS',
   }));
 }
