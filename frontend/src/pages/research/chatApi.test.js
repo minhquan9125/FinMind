@@ -131,7 +131,7 @@ test('sends message with correct payload and revision', async (t) => {
   assert.deepEqual(result, mockResult);
 });
 
-test('resumes a session via POST', async (t) => {
+test('opening history reads the original session without creating a fork', async (t) => {
   resetEnv();
   const token = 'resume-token';
   const storage = new SimpleStorage();
@@ -139,16 +139,35 @@ test('resumes a session via POST', async (t) => {
   globalThis.localStorage = storage;
 
   const sessionId = 'parent-xyz';
-  const mockResume = { session_id: 'child-123', messages: [], revision: 0, context: '' };
+  const mockResume = { session_id: sessionId, messages: [{ role: 'user', content: 'Old question' }], revision: 7, context: 'Existing context' };
   globalThis.fetch = async (url, opts) => {
-    assert.equal(url, `/api/research/chat/sessions/${encodeURIComponent(sessionId)}/resume`);
-    assert.equal(opts.method, 'POST');
+    assert.equal(url, `/api/research/chat/sessions/${encodeURIComponent(sessionId)}`);
+    assert.equal(opts.method, 'GET');
     assert.equal(opts.headers.Authorization, `Bearer ${token}`);
     return { ok: true, json: async () => mockResume };
   };
 
   const data = await chatApi.resumeSession(sessionId);
   assert.deepEqual(data, mockResume);
+});
+
+test('reopening repeatedly then sending continues the original ID and revision', async () => {
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'fixture' }));
+  const calls = [];
+  globalThis.fetch = async (url, opts) => {
+    calls.push([url, opts.method]);
+    if (opts.method === 'GET') return { ok: true, json: async () => ({ session_id: 'original', revision: 9, messages: [{ content: 'Saved answer' }] }) };
+    assert.equal(url, '/api/research/chat/sessions/original/messages');
+    assert.deepEqual(JSON.parse(opts.body), { text: 'Continue', revision: 9 });
+    return { ok: true, json: async () => ({ session_id: 'original', revision: 10 }) };
+  };
+  await chatApi.resumeSession('original');
+  const reopened = await chatApi.resumeSession('original');
+  const sent = await chatApi.sendMessage(reopened.session_id, 'Continue', reopened.revision);
+  assert.equal(sent.session_id, 'original');
+  assert.deepEqual(calls.map(([, method]) => method), ['GET', 'GET', 'POST']);
+  assert.ok(calls.every(([url]) => !url.endsWith('/resume')));
 });
 
 test('converts non‑ok HTTP response into an Error with status and message', async (t) => {

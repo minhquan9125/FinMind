@@ -5,6 +5,7 @@ import { Drawer } from "../../shared/ui/index.js";
 import { createSession, listSessions, getSession, sendMessage, resumeSession } from "./chatApi.js";
 import { citationView, modeLabel } from './citationView.js';
 import { clarificationChoices } from './clarificationView.js';
+import ChatActivity from './ChatActivity.jsx';
 
 const statusLabels = { ASK_CLARIFICATION: "Cần làm rõ", EVIDENCE_READY: "Có bằng chứng mẫu",
   CLARIFICATION_STALLED: 'Cần chọn thông tin cụ thể',
@@ -13,7 +14,7 @@ const statusLabels = { ASK_CLARIFICATION: "Cần làm rõ", EVIDENCE_READY: "Có
   SYSTEM_UNAVAILABLE: 'Lỗi tạm thời', BUDGET_EXCEEDED: 'Đã chạm giới hạn',
   NO_DATA: "Chưa đủ bằng chứng", ERROR: "Lỗi tạm thời", UNSUPPORTED: "Ngoài phạm vi" };
 const empty = owner => ({ owner, snapshot: null, history: [], error: null, historyError: null,
-  loading: false, historyLoading: false });
+  loading: false, loadingKind: 'chat', historyLoading: false });
 const storageKey = owner => `chat_active_${owner}`;
 function stored(owner, value) {
   // Session storage is optional convenience; JSON on the backend remains authoritative.
@@ -61,7 +62,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
     const epoch = generation.current;
     busy.current = true;
     onBusyChange?.(true);
-    setModel(previous => ({ ...previous, loading: true, error: null }));
+    setModel(previous => ({ ...previous, loading: true, loadingKind: kind, error: null }));
     try { await operation(epoch); }
     catch (error) {
       if (valid(epoch)) setModel(previous => ({ ...previous, error,
@@ -86,7 +87,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
       if (id) {
         busy.current = true;
         onBusyChange?.(true);
-        setModel(previous => ({ ...previous, loading: true }));
+        setModel(previous => ({ ...previous, loading: true, loadingKind: 'history' }));
         getSession(id).then(data => { if (valid(epoch)) adopt(data); })
           .catch(error => {
             if (!valid(epoch)) return;
@@ -152,7 +153,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
     void run(async epoch => {
       const next = await getSession(snapshot.session_id);
       if (valid(epoch)) adopt(next);
-    });
+    }, 'history');
   }
   if (authLoading) return <p role="status">Đang kiểm tra phiên đăng nhập...</p>;
   if (!owner) return <p>Vui lòng <a href="/login" className="text-blue-600 underline">đăng nhập</a> để bắt đầu hội thoại.</p>;
@@ -194,7 +195,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
           </div>}
         </div>
       </div>)}
-      {view.loading && <p role="status" className="text-sm text-slate-500">Đang xử lý… Lần tìm kiếm đầu tiên có thể cần thêm thời gian để nạp mô hình.</p>}
+      {view.loading && <ChatActivity kind={view.loadingKind} />}
       {view.error && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
         <p>{view.error.message}</p>
         {view.error.status === 401 && <a href="/login" className="underline">Đăng nhập lại</a>}
