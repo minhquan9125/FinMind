@@ -6,6 +6,27 @@ from src.api.routers import hybrid_router as api
 from src.core.config import Settings
 
 
+def test_live_content_reuses_preloaded_retriever_for_same_pool_and_scope(monkeypatch):
+    from src.vector_retrieval import backend
+    constructed, loaded = [], []
+    class Retriever:
+        def __init__(self, pool, embedder, **kwargs):
+            constructed.append((pool, kwargs))
+        def load_local_cache(self, index, path):
+            loaded.append((index, path))
+    monkeypatch.setattr(backend, 'HybridRetriever', Retriever)
+    api._content_retriever.cache_clear()
+    pool, embedder = object(), object()
+    try:
+        one = api._content_retriever(pool, embedder, 'corpus1', 'index1', 'cache1')
+        assert api._content_retriever(pool, embedder, 'corpus1', 'index1', 'cache1') is one
+        assert len(constructed) == len(loaded) == 1
+        assert api._content_retriever(pool, embedder, 'corpus2', 'index2', 'cache2') is not one
+        assert len(constructed) == len(loaded) == 2
+    finally:
+        api._content_retriever.cache_clear()
+
+
 def test_settings_read_graph_scope_and_registry_from_env_file(tmp_path):
     env = tmp_path / 'runtime.env'
     env.write_text('SPRINT4_GRAPH_VERSIONS=v1,v2\nSPRINT4_COMPANY_REGISTRY=registry-r3.json\n', 'utf-8')

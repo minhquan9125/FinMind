@@ -80,7 +80,8 @@ def test_financial_year_scope_can_use_exact_period_without_matching_quarters():
     connection = FakeConnection()
     asyncio.run(vector_search_filtered(FakePool(connection), str(uuid.uuid4()), [0.1], 5,
                                       period='2025', exact_period=True))
-    assert "coalesce(p.period_code, t.locator_json->>'period_code') = $3" in connection.sql
+    from src.documents.retrieval_period import EXACT_PERIOD_SQL
+    assert EXACT_PERIOD_SQL + ' = $3' in connection.sql
     assert "ILIKE" not in connection.sql
     assert connection.args[2] == '2025'
 

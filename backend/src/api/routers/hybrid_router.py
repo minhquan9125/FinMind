@@ -60,6 +60,15 @@ def warmup_router() -> None:
     engine.predictor.predict("Tổng tài sản FPT năm 2025?")
 
 
+@lru_cache(maxsize=1)
+def _content_retriever(pool, embedder, corpus_version_id, index_id, cache_path):
+    """Reuse one pool/scope-bound BM25 index across per-request router engines."""
+    from ...vector_retrieval.backend import HybridRetriever
+    retriever = HybridRetriever(pool, embedder, corpus_version_id=corpus_version_id)
+    retriever.load_local_cache(index_id, cache_path)
+    return retriever
+
+
 def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
     """Build a LiveContentAdapter using the research chat's retriever pool."""
     try:
@@ -70,7 +79,6 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
             logger.warning("hybrid_router_index_id not set; LiveContentAdapter unavailable")
             return None
 
-        from ...vector_retrieval.backend import HybridRetriever
         from ...documents.embeddings import get_embedding_service
         from ...core.db import get_pool
         from pathlib import Path
@@ -83,9 +91,7 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
             / "src/vector_retrieval/.cache"
             / f"{index_id}.json"
         )
-        retriever = HybridRetriever(
-            pool, embedder, corpus_version_id=corpus_version_id
-        )
+        retriever = _content_retriever(pool, embedder, corpus_version_id, index_id, str(cache_path))
 
         async def search_fn(question: str, company, period, top_k: int):
             return await retriever.search(

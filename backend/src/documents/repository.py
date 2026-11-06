@@ -6,6 +6,7 @@ import hashlib
 from datetime import datetime, timezone
 
 import asyncpg
+from .retrieval_period import PERIOD_SQL, EXACT_PERIOD_SQL, FILTER_PERIOD_SQL
 from .chunk_reconstruction import (
     ReconstructionError, reconstruct_document_chunk, preview_changed_document_chunk,
 )
@@ -192,11 +193,9 @@ async def vector_search_filtered(
         async with conn.transaction(readonly=True, isolation='repeatable_read'):
             # Only fixed SQL fragments are selected; the period remains a bound value.
             period_predicate = (
-                "coalesce(p.period_code, t.locator_json->>'period_code') = $3"
+                f"{EXACT_PERIOD_SQL} = $3"
                 if exact_period else
-                "coalesce(p.period_code, t.locator_json->>'period_code', "
-                "t.locator_json->>'published_at', t.locator_json->>'section', "
-                "d.title) ILIKE '%' || $3 || '%'"
+                f"{FILTER_PERIOD_SQL} ILIKE '%' || $3 || '%'"
             )
             rows = await conn.fetch(
                 f'''
@@ -204,9 +203,7 @@ async def vector_search_filtered(
                        t.content_hash, t.locator_json, t.index_version_id::text, i.chunker_version,
                        d.title, d.doc_type, d.sha256 AS source_sha256,
                        coalesce(c.symbol, t.locator_json->>'symbol') AS company_symbol,
-                       coalesce(p.period_code, t.locator_json->>'period_code',
-                                t.locator_json->>'published_at',
-                                t.locator_json->>'section') AS period,
+                       {PERIOD_SQL} AS period,
                        1-(t.embedding <=> $5::vector) AS score
                 FROM public.text_chunks t
                 JOIN public.index_versions i USING(index_version_id)

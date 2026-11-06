@@ -102,6 +102,14 @@ class BackendTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(result['scope_mode'],'INDEX')
         self.assertNotIn('corpus_id',result)
 
+    async def test_verified_hits_expose_the_period_used_to_filter_them(self):
+        await self.build()
+        result = await self.search(company='FPT', period='2026-Q2')
+        self.assertTrue(result['results'])
+        for hit in result['results']:
+            self.assertEqual(hit['period'], '2026-Q2')
+            self.assertEqual(hit['company'], 'FPT')
+
     async def test_cache_is_reused_without_source_rebuild(self):
         await self.build(); self.resolutions.clear()
         with patch.object(mod,'BM25Index',wraps=mod.BM25Index) as constructor:

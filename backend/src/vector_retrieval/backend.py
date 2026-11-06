@@ -14,6 +14,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from .ranking import BM25Index, TOKENIZER_VERSION, rrf, tokenize
+from ..documents.retrieval_period import PERIOD_SQL
 
 MAX_CACHE_BYTES = 64 * 1024 * 1024
 CACHE_BATCH_SIZE = 500
@@ -26,17 +27,16 @@ LEFT JOIN public.reporting_periods p USING(period_id)
 LEFT JOIN public.news_articles n ON t.locator_json->>'source_table'='news_articles'
  AND n.article_id::text=t.locator_json->>'source_id'
 WHERE t.index_version_id=$1::uuid AND t.superseded_at IS NULL'''
-FIELDS = '''t.chunk_id::text,t.document_id::text,t.chunk_index,t.page_number AS page,
+FIELDS = f'''t.chunk_id::text,t.document_id::text,t.chunk_index,t.page_number AS page,
 t.index_version_id::text,i.chunker_version,d.sha256 AS source_sha256,
 t.content_hash,t.locator_json,d.title,d.doc_type,
 coalesce(c.symbol,t.locator_json->>'symbol') AS company,
-coalesce(p.period_code,t.locator_json->>'period_code',
-t.locator_json->>'published_at',t.locator_json->>'section') AS period,
+{PERIOD_SQL} AS period,
 coalesce(t.locator_json->>'published_at',t.locator_json->>'period_code',t.locator_json->>'section') AS published_date,
 coalesce(t.locator_json->>'url','') AS source_url,n.symbols'''
 ROWS = 'SELECT ' + FIELDS + ' ' + JOIN
 FINGERPRINT = '''SELECT md5(coalesce(string_agg(md5(ROW(t.chunk_id,t.content_hash,
-t.locator_json,d.company_id,d.period_id,d.doc_type,c.symbol,p.period_code,n.symbols)::text),
+t.locator_json,d.title,d.company_id,d.period_id,d.doc_type,c.symbol,p.period_code,n.symbols)::text),
 '' ORDER BY t.chunk_id),'')) ''' + JOIN
 
 
@@ -195,7 +195,7 @@ def _write_cache(path, payload):
 def _validate_cache(payload, index_id, model, now, max_age):
     if not isinstance(payload, dict) or set(payload) != {'version','tokenizer','index_id','model','built_at','fingerprint','rows'}:
         raise RetrievalError('INVALID_CACHE')
-    if payload['version'] != 2 or type(payload['version']) is not int or payload['tokenizer'] != TOKENIZER_VERSION:
+    if payload['version'] != 3 or type(payload['version']) is not int or payload['tokenizer'] != TOKENIZER_VERSION:
         raise RetrievalError('CACHE_VERSION_MISMATCH')
     if payload['index_id'] != index_id or payload['model'] != model:
         raise RetrievalError('CACHE_INDEX_MISMATCH')
@@ -316,6 +316,15 @@ class HybridRetriever:
         except Exception:
             raise RetrievalError('INVALID_CACHE') from None
 
+    def load_local_cache(self, index_id, cache_path):
+        """Preload verified local BM25 data before a request's search timeout.
+
+        This does not certify database readiness: search still checks index,
+        corpus, fingerprint and reconstructed sources on every call.
+        """
+        model = self.embedder.model_name + '@' + self.embedder.revision[:12]
+        self._cache(cache_path, _uuid(index_id), model)
+
     async def prepare_cache(self, index_id, cache_path):
         """Validate/rebuild the lexical cache and load BM25 without a user search."""
         index_id = _uuid(index_id)
@@ -385,7 +394,7 @@ class HybridRetriever:
                                 raise RetrievalError('HASH_MISMATCH')
                             meta = _metadata(row)
                             prepared.append(dict(meta,tokens=tokenize(text)))
-            payload=dict(version=2,tokenizer=TOKENIZER_VERSION,index_id=index_id,
+            payload=dict(version=3,tokenizer=TOKENIZER_VERSION,index_id=index_id,
                          model=info['embedding_model'],built_at=self.clock(),fingerprint=fingerprint,rows=prepared)
             _validate_cache(payload,index_id,info['embedding_model'],self.clock(),self.max_cache_age)
             _write_cache(cache_path,payload)
@@ -443,7 +452,8 @@ class HybridRetriever:
                             if hashlib.sha256(row['text'].encode('utf-8')).hexdigest()!=row['content_hash'].strip():
                                 raise RetrievalError('HASH_MISMATCH')
                             item.update(document_id=row['document_id'],locator=row['locator_json'],content_hash=row['content_hash'].strip(),text=row['text'],
-                                        title=row['title'],source_sha256=row.get('source_sha256'))
+                                        title=row['title'],source_sha256=row.get('source_sha256'),
+                                        company=row['company'],period=row['period'],doc_type=row['doc_type'])
             return dict(index_version_id=index_id,index_status=info['status'],scope_mode='CORPUS' if self.corpus_version_id else 'INDEX',
                         **({'corpus_version_id':self.corpus_version_id} if self.corpus_version_id else {}),
                         scope=dict(company=company,period=period,doc_type=doc_type,publisher=publisher,published_date=published_date),results=fused)

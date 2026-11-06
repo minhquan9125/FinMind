@@ -1,5 +1,7 @@
 # WBS17 — bộ ca nháp và runner truy xuất B1/B2
 
+**Cập nhật 06/11:** cấu hình VECTOR local đã được sửa và cache đã dựng; lỗi lọc năm BCTN đã khắc phục. Xem [biên bản sửa và kiểm LIVE](../WBS17-vector-period-fix-20261106.md). Các giá trị “trước sửa” bên dưới là bằng chứng chẩn đoán, không phải cấu hình hiện tại.
+
 Ngày 06/11/2026. Phụ trách benchmark: Hồ Phạm Đăng Nhân; Huyền xác nhận gold và kiểm E2E theo phân công. Đây là công cụ chuẩn bị đánh giá, **chưa phải báo cáo nghiệm thu WBS17**.
 
 ## Những gì đã chuẩn bị
