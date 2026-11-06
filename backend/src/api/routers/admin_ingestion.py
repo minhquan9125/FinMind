@@ -1,9 +1,12 @@
 """Admin collection/review/index actions; each request rechecks server grants."""
 import uuid
+import asyncio
+from datetime import date
+from decimal import Decimal
 from pathlib import Path
 from typing import Literal
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from ...documents.admin_ingestion import DEFAULT
 from starlette.concurrency import run_in_threadpool
@@ -25,6 +28,48 @@ def operation(fn):
     try: return fn()
     except ValueError as exc:
         raise HTTPException(409, detail=str(exc)) from None
+
+
+@router.get('/overview')
+async def overview(request: Request):
+    from ...core.db import get_pool
+    settings = get_settings()
+    data = await run_in_threadpool(lambda: queue().overview(settings.research_corpus_version_id))
+    from ...documents.research_metrics import ResearchMetrics
+    try:
+        data['telemetry'] = await run_in_threadpool(lambda: ResearchMetrics(settings.admin_ingestion_directory).summary())
+    except Exception:
+        data['telemetry'] = {'status': 'unavailable'}
+    from ...documents.api_budget import ApiBudget
+    try:data['api_budget']=await run_in_threadpool(lambda:ApiBudget(settings.admin_ingestion_directory).snapshot())
+    except Exception:data['api_budget']={'status':'unavailable'}
+    # Warmup only proves local initialization, not the availability of the LLM provider.
+    data['initialization'] = {
+        key: getattr(request.app.state, key + '_warmup', {}).get('status', 'not_started')
+        for key in ('research', 'router')
+    }
+    async def inspect():
+        async with get_pool().acquire() as conn:
+            return await conn.fetchrow('''SELECT cv.status AS corpus_status,iv.status AS index_status,
+                iv.index_version_id::text AS index_id,
+                (SELECT count(*) FROM public.corpus_documents cd WHERE cd.corpus_version_id=cv.corpus_version_id) AS documents,
+                (SELECT count(*) FROM public.text_chunks t WHERE t.index_version_id=iv.index_version_id
+                    AND t.superseded_at IS NULL) AS chunks
+                FROM public.corpus_versions cv JOIN public.index_versions iv USING(index_version_id)
+                WHERE cv.corpus_version_id=$1::uuid''', uuid.UUID(data['corpus_id']))
+    try:
+        row = await asyncio.wait_for(inspect(), timeout=5)
+        data['storage'] = {'status': 'available' if row else 'missing', **(dict(row) if row else {})}
+    except Exception:
+        # Do not expose connection strings or provider errors to the browser.
+        data['storage'] = {'status': 'unavailable'}
+    return data
+
+
+@router.get('/audit')
+async def audit_events(offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100),
+                       category: Literal['operation', 'review'] | None = None):
+    return await run_in_threadpool(lambda: queue().audit_page(offset, limit, category))
 
 
 class SourceConfig(BaseModel):
@@ -49,6 +94,66 @@ class SourceConfig(BaseModel):
     def scope_required(self):
         if not self.symbols and not self.include_market: raise ValueError('Select tickers or market news')
         return self
+
+
+class ModelRate(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    model: str=Field(min_length=1,max_length=100,pattern=r'^[a-zA-Z0-9_.:/@-]+$')
+    input_per_million: Decimal=Field(ge=0,le=1000000,max_digits=14,decimal_places=6,allow_inf_nan=False)
+    output_per_million: Decimal=Field(ge=0,le=1000000,max_digits=14,decimal_places=6,allow_inf_nan=False)
+
+
+class BudgetConfig(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    mode: Literal['unconfigured','free','paid']
+    period: Literal['day','month']
+    limit_usd: Decimal=Field(gt=0,le=1000000,max_digits=14,decimal_places=6,allow_inf_nan=False)
+    warn_at: int=Field(ge=1,le=100)
+    rates: list[ModelRate]=Field(default_factory=list,max_length=30)
+    reason: str=Field(min_length=3,max_length=1000)
+    expected_version: uuid.UUID | None=None
+
+    @model_validator(mode='after')
+    def valid_rates(self):
+        if len({r.model for r in self.rates})!=len(self.rates):raise ValueError('Duplicate model')
+        if self.mode=='paid' and not self.rates:raise ValueError('Paid mode requires prices')
+        if len(self.reason.strip())<3:raise ValueError('Reason required')
+        return self
+
+
+@router.get('/budget')
+async def budget():
+    from ...documents.api_budget import ApiBudget
+    return await run_in_threadpool(lambda:ApiBudget(get_settings().admin_ingestion_directory).snapshot())
+
+
+@router.put('/budget')
+async def configure_budget(payload: BudgetConfig,principal=Depends(access)):
+    from ...documents.api_budget import ApiBudget
+    def save():
+        cfg=payload.model_dump(mode='json',exclude={'reason','expected_version'})
+        store=ApiBudget(get_settings().admin_ingestion_directory)
+        version=operation(lambda:store.save(cfg,str(principal.user_id),payload.reason.strip(),str(payload.expected_version) if payload.expected_version else None))
+        queue().audit(str(principal.user_id),'BUDGET_CONFIG',version)
+        return store.snapshot()
+    return await run_in_threadpool(save)
+
+
+@router.get('/traces')
+async def traces(offset: int=Query(0,ge=0),limit: int=Query(30,ge=1,le=100),
+    outcome: Literal['SUCCESS','ERROR','INSUFFICIENT_EVIDENCE','CLARIFICATION','OTHER'] | None=None,
+    company: str | None=Query(None,pattern=r'^[A-Z0-9]{1,15}$'),day: date | None=None):
+    from ...documents.research_metrics import ResearchMetrics
+    return await run_in_threadpool(lambda:ResearchMetrics(get_settings().admin_ingestion_directory).list(
+        offset,limit,outcome_filter=outcome,company=company,day=day.isoformat() if day else None))
+
+
+@router.get('/traces/{trace_id}')
+async def trace_detail(trace_id: uuid.UUID):
+    from ...documents.research_metrics import ResearchMetrics
+    item=await run_in_threadpool(lambda:ResearchMetrics(get_settings().admin_ingestion_directory).detail(str(trace_id)))
+    if not item:raise HTTPException(404,detail='TRACE_NOT_FOUND')
+    return item
 
 
 class Review(BaseModel):
@@ -207,9 +312,19 @@ async def publish(job_id: uuid.UUID, principal=Depends(access)):
 @router.post('/jobs/{job_id}/retry', status_code=202)
 async def retry_index(job_id: uuid.UUID, tasks: BackgroundTasks, principal=Depends(access)):
     q=queue()
-    operation(lambda: q.retry_index(str(job_id),str(principal.user_id)))
-    tasks.add_task(index_job,q,str(job_id),get_settings())
-    return {'job_id':str(job_id),'status':'QUEUED'}
+    ident=operation(lambda: q.retry_index(str(job_id),str(principal.user_id)))
+    tasks.add_task(index_job,q,ident,get_settings())
+    return {'job_id':ident,'status':q.get_job(ident)['status']}
+
+
+@router.post('/jobs/{job_id}/resume',status_code=202)
+async def resume_job(job_id: uuid.UUID,tasks: BackgroundTasks,principal=Depends(access)):
+    from ...documents.admin_news_ocr import ocr_job,recheck_job
+    q=queue();ident=operation(lambda:q.resume_job(str(job_id),str(principal.user_id)))
+    kind=q.get_job(ident)['kind']
+    if kind=='INDEX':tasks.add_task(index_job,q,ident,get_settings())
+    else:tasks.add_task({'CRAWL':crawl_job,'OCR':ocr_job,'RECHECK':recheck_job}[kind],q,ident)
+    return {'job_id':ident,'status':q.get_job(ident)['status']}
 
 
 @router.post('/jobs/{job_id}/search')

@@ -42,6 +42,24 @@ def test_verified_manifest_prepares_search_without_rereading_sources(tmp_path,mo
     assert saved['rows'][0]['company']=='ICT'
 
 
+def test_verified_cache_validates_real_index_without_loading_embedder(tmp_path,monkeypatch):
+    manifest,row=fixture()
+    class Conn:
+        async def fetchrow(self,sql,*args):
+            if 'embedding_model,status' in sql:
+                return {'embedding_model':cache.MODEL,'status':'ACTIVE'}
+            return {'index_version_id':manifest['manifest']['index']['index_version_id'],'status':'FROZEN'}
+        async def fetchval(self,sql,*args):
+            return 'vector(1024)' if 'format_type' in sql else 'a'*32
+        async def fetch(self,sql,*args):return [row]
+    result=asyncio.run(cache.cache_verified_manifest(Conn(),manifest,tmp_path/'cache.json'))
+    assert result['status']=='CACHE_READY'
+    manifest['manifest']['index']['embedding_model']='wrong-model'
+    manifest['manifest_sha256']=sha256(manifest['manifest'])
+    with pytest.raises(cache.RetrievalError,match='MODEL_MISMATCH'):
+        asyncio.run(cache.cache_verified_manifest(Conn(),manifest,tmp_path/'bad-cache.json'))
+
+
 @pytest.mark.parametrize('changed',['content_hash','source_sha256','document_id','locator_json'])
 def test_mismatched_db_rows_cannot_seed_search_cache(tmp_path,monkeypatch,changed):
     manifest,row=fixture()

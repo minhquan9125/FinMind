@@ -59,6 +59,8 @@ def get_store() -> PostgresSessionStore:
             market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
         )
+        from ...documents.research_metrics import ObservedResearch, ResearchMetrics
+        engine = ObservedResearch(engine, ResearchMetrics(settings.admin_ingestion_directory))
     return PostgresSessionStore(get_pool(), engine=engine)
 
 

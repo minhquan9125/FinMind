@@ -89,7 +89,8 @@ Chi phí tài chính: liên quan biến động tỉ giá. Tài liệu không cu
 
 ## Duyệt dữ liệu mới
 
-Cào → đọc PDF/OCR nếu thiếu chữ → kiểm tra và duyệt → chọn bài, bấm
+Cào (tự đọc PDF/OCR nếu nội dung chính nằm trong tệp/ảnh) → Chờ duyệt
+với văn bản đã đọc → kiểm tra và duyệt → chọn bài, bấm
 **Tạo chunk & lưu dữ liệu** một lần. Hệ thống tự chia chunk, tạo vector,
 lưu vào DB chung và hoàn tất chuyển Chat sang phiên dữ liệu chung mở rộng.
 Không có nút kích hoạt riêng trong luồng bình thường. Khi job **Đã nạp xong**
@@ -99,7 +100,51 @@ Các snapshot cũ được giữ nguyên để trích dẫn còn tái dựng đ�
 Nếu lỗi, job báo FAILED và giữ dữ liệu phục vụ trước đó. **Chạy lại lần nạp**
 tiếp tục bước cuối nếu chunk/vector đã lưu, không cần tạo lại vector đó.
 
+OCR là bước trong `crawl_job`, dùng chung cho cào tay và scheduler. Nguồn thô
+cần đọc tệp được giữ khỏi hàng đợi duyệt, tạo revision PENDING sau khi đọc xong;
+lỗi đọc đưa vào Cần kiểm tra và không làm dừng các bài khác. Cào lặp không OCR
+lại nguồn đã có revision; nguồn lỗi tự động có thể được thử lại khi cào gặp lại.
+Nút Đọc PDF/OCR trong chi tiết là công cụ phục hồi, không phải bước bắt buộc sau
+Đã duyệt. Bản OCR vẫn cần kiểm tra chữ/số trước duyệt, không tự nhận là chính xác.
+
 ## Cách đọc kết quả
+
+Trang `/admin/overview` lấy số bài và job từ SQLite trên máy đang chạy backend,
+đồng thời đọc số tài liệu/chunk của phiên phục vụ từ PostgreSQL chung. Tự cập nhật
+mỗi 30 giây. Nếu DB mất kết nối, trang vẫn trả số liệu hàng đợi và cảnh báo phần kho
+dữ liệu; không suy ra rằng model đang hoạt động chỉ từ trạng thái DB.
+Bố cục giữ các phần KPI truy vấn, ngân sách, truy vấn gần đây, cảnh báo, hoạt động
+quản trị và dịch vụ cốt lõi. Truy vấn Chat LIVE, kết quả, thời gian và token Gemini
+được ghi từ khi bật theo dõi vào `outputs/admin-ingestion/research-metrics.sqlite`.
+Thống kê ngày theo giờ Việt Nam; dữ liệu còn sau khi khởi động lại, không cộng
+các phiên fixture hoặc suy đoán token từ lịch sử trước khi bật. Phạm vi là backend
+trên máy này, không phải toàn bộ lượt dùng chung API key ở các máy/dịch vụ khác.
+Trace mới lưu câu hỏi người dùng (tối đa 4.000 ký tự), nguồn đã trích dẫn, mã nguyên
+nhân, model và thời gian. Không lưu prompt nội bộ, văn bản nguồn, câu trả lời đầy đủ,
+khóa API hay exception thô trong ledger. Trace cũ thiếu chi tiết sẽ để trống.
+Lấy usageMetadata trước kiểm tra nội dung để giữ token đã dùng cả khi câu trả lời
+bị chặn hoặc không hợp lệ. Lỗi không có usage ghi số lần **không xác định** riêng;
+tổng hiển thị là phần đã biết. Token dự trù trong Budget không phải token thực tế.
+Không gọi Gemini (làm rõ câu hỏi, giá trực tiếp...) có thể là 0 token thật.
+Token đầu vào/đầu ra/tổng theo từng model; tổng có thể gồm suy luận ngoài đầu ra.
+Không tự suy ra hóa đơn. Đơn giá và hạn mức tiền chưa cấu hình sẽ ghi rõ.
+KPI “truy vấn thành công” là nhận được câu trả lời (kể cả trích nguyên văn dự phòng),
+không khẳng định đã kiểm chứng toàn bộ tài chính. Request lỗi ngoài dự kiến/hủy
+vẫn ghi ERROR nếu tiến trình còn hoạt động; tắt cưỡng bức có thể mất lượt đang chạy.
+Khởi tạo Research và
+Router lấy từ app.state của backend; giám sát Graph/Gate/Verifier/Telemetry chưa
+được kết nối. Nhật ký quản trị gần đây dùng API audit thực tế.
+
+Trang `/admin/audit` đọc lịch sử quyết định từ bảng reviews (gồm lịch sử trước khi
+thêm trang) và các thao tác đã ghi trong bảng audit: cấu hình nguồn, thử nạp lại,
+ngắt job. Có lọc nhóm và phân trang; đây chưa phải nhật ký toàn bộ hành động của
+mọi module. Hai API đều yêu cầu vai trò ADMINISTRATOR từ máy chủ. Các mục
+Cấu hình nguồn và Phiên bản kho dữ liệu riêng vẫn là giao diện minh họa; thao tác
+nguồn thật nằm trong Thu thập & duyệt. `/admin/traces` có danh sách/chi tiết thật,
+lọc ngày Việt Nam, công ty, trạng thái và phân trang. `/admin/configuration` lưu
+ngân sách/đơn giá thật theo phiên bản, cảnh báo và hiển thị chi phí ước tính; các
+ngưỡng Evidence Gate, Retrieval và Token khác chưa nối chỉnh sửa qua giao diện.
+Xem thêm [ADMIN_OPERATIONS.md](ADMIN_OPERATIONS.md) về phục hồi job và ngân sách.
 
 Gemini có thể trả HTTP 503 khi quá tải. Hệ thống không tự gọi lại vô hạn.
 Khi có dòng nguồn phù hợp đã xác minh, kết quả sẽ ghi rõ trích nguyên văn,
