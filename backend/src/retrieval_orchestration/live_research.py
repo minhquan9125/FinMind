@@ -195,7 +195,7 @@ def analyze_live(text, context=None, *, today=None):
         return finish('ASK_CLARIFICATION', 'AMBIGUOUS_PERIOD', 'Bạn muốn xem quý nào? Vui lòng nêu một kỳ hợp lệ từ quý 1 đến quý 4.')
     companies = [s for s in (*TICKERS, 'SSI', 'CTR', 'VNM', 'MSN', 'NLG') if re.search(r'\b'+s.lower()+r'\b', norm)]
     reserved = {'BCTC', 'BCTN', 'YTD', 'VND', 'USD', 'EUR', 'UBND', 'CTCP', 'TNHH',
-                'NEWS', 'CASH', 'TOTAL', 'CAFEF', 'LNST', 'LNTT'}
+                'NEWS', 'CASH', 'TOTAL', 'CAFEF', 'LNST', 'LNTT', 'HDQT', 'HDTV', 'BKS', 'BGD', 'BDH'}
     companies += [s for s in re.findall(r'\b[A-Z]{3,5}\b', text) if s not in reserved and s not in companies]
     ticker_stop = STOP_WORDS | {'mot', 'cuoi', 'thuan', 'nhat', 'rieng', 'hop', 'ngan', 'dai',
                               'thu', 'phi', 'tuc', 'cafef', 'news', 'trong', 'tai', 'ky',
@@ -287,8 +287,22 @@ def analyze_live(text, context=None, *, today=None):
     comparison = bool(re.search(r'\b(?:so sanh|doi chieu|khac nhau|hon kem)\b', norm))
     overall_comparison = comparison and not found and not profit_requested
     relationship_lookup = bool(re.search(
-        r'\b(?:chu tich|ceo|tong giam doc|giam doc|lanh dao|co dong|so huu)\b', norm
+        r'\b(?:chu tich|ceo|tong giam doc|giam doc|lanh dao|co dong|so huu|'
+        r'hoi dong|hdqt|hdtv|ban dieu hanh|ban kiem soat|nhan su quan ly)\b', norm
     ))
+    ambiguous_members = bool(re.search(r'\bthanh vien\b', norm)) or bool(scope.get('_pending_membership'))
+    if ambiguous_members and not relationship_lookup and not found and not profit_requested:
+        for key in ('_pending_metric', '_metric_candidates', '_pending_quarter', '_pending_ytd',
+                    '_pending_reporting_entity', '_pending_publisher', 'measure_basis', 'publisher'):
+            scope.pop(key, None)
+        scope.update(source_type='NEWS', metric_code=None, periods=[], reporting_entity='UNKNOWN',
+                     topic='MEMBERSHIP_SELECTION', _pending_membership=True)
+        if not scope.get('companies'):
+            return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn xem thành viên của công ty nào?')
+        return finish('ASK_CLARIFICATION', 'AMBIGUOUS_COMPANY_MEMBERS',
+                      'Bạn muốn xem thành viên hội đồng quản trị hay ban điều hành?')
+    if relationship_lookup or found or profit_requested:
+        scope.pop('_pending_membership', None)
     event_impact = bool(
         re.search(r'\b(?:bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b', norm)
         and re.search(r'\b(?:co phieu|anh huong|tac dong|he qua)\b', norm)
@@ -304,6 +318,7 @@ def analyze_live(text, context=None, *, today=None):
     news = bool(
         re.search(r'\b(?:tin tuc|tin|news)\b', norm)
         or qualitative_document
+        or (relationship_lookup and not found and not profit_requested)
         or (scope.get('source_type') == 'NEWS' and publishers)
     )
     if event_impact:
@@ -320,6 +335,11 @@ def analyze_live(text, context=None, *, today=None):
         scope.update(source_type='NEWS', metric_code=None, reporting_entity='UNKNOWN')
         if relationship_lookup:
             scope['topic'] = 'RELATIONSHIP_LOOKUP'
+            for key in ('_pending_quarter', '_pending_ytd', '_pending_reporting_entity',
+                        'measure_basis', '_metric_candidates'):
+                scope.pop(key, None)
+            # A new organizational question does not inherit an unrelated report period.
+            scope.pop('periods', None)
         scope.pop('_pending_metric', None)
         if len(publishers) > 1:
             scope.pop('publisher', None)
