@@ -131,8 +131,14 @@ def refresh_company_news(symbol: str, request: Request) -> dict:
 
 
 @router.get("/indices/{symbol}/ohlcv")
-def get_index_history(symbol: str, service=Depends(get_live_service)) -> dict:
+def get_index_history(symbol: str, request: Request, cached: bool=False,
+                      repository: FileMarketDataRepository=Depends(get_market_data_repository)) -> dict:
     try:
+        service=getattr(request.app.state,'live',None)
+        if cached:
+            if service is not None:return service.saved_index_history(symbol.upper())
+            return {**repository.read_index_history(symbol.upper()),'refresh':{'needed':True,'stale':True}}
+        if service is None:raise HTTPException(503,detail='Tự cập nhật giá đang tắt; vẫn có thể xem bản đã lưu.')
         return service.index_history(symbol.upper())
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from None

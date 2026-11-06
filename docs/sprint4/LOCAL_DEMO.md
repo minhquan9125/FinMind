@@ -170,3 +170,15 @@ Không coi các test trong một bài demo là cam kết mọi câu hỏi đều
 Báo cáo máy đọc và thời gian từng câu: outputs/ocr-ai-demo/web-api-report.json.
 Các báo cáo ai-report.json và diagnostic-report.json là kết quả trước sửa;
 không dùng chúng làm kết luận cho phiên chung hiện tại.
+
+### Biểu đồ chỉ số thị trường
+
+Dashboard tự mở VN-INDEX và đọc bản lưu của bốn chỉ số qua
+`GET /api/market-data/indices/{symbol}/ohlcv?cached=true` (vẫn yêu cầu đăng nhập).
+Đọc cache không gọi SDK và không tiêu hạn mức nguồn. Bản lưu được hiển thị ngay
+với ngày dữ liệu; frontend cập nhật lần lượt ở nền, ưu tiên chỉ số đang chọn và
+tự chờ theo `Retry-After` khi gặp 429 (tối đa bốn lần gọi). Nếu cập nhật lỗi, giữ
+biểu đồ đã lưu và hiện cảnh báo. Chỉ số chưa có bản lưu phải chờ lần tải đầu.
+Các lần tải thành công được lưu nguyên đơn vị điểm tại
+`.agent-state/market-data/indices/index-{symbol}/history.json`, dùng lại sau khi
+khởi động backend; không coi bản lưu hay thời điểm lấy dữ liệu là giá realtime.

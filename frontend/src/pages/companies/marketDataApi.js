@@ -49,8 +49,8 @@ export function getMarketNews(signal) {
   return readJson("/api/market-data/news?limit=10", signal);
 }
 
-export function getIndexHistory(symbol, signal) {
-  return readJson(`/api/market-data/indices/${encodeURIComponent(symbol)}/ohlcv`, signal);
+export function getIndexHistory(symbol, signal, { cached = false } = {}) {
+  return liveRequest(`/indices/${encodeURIComponent(symbol)}/ohlcv${cached ? "?cached=true" : ""}`, { signal });
 }
 
 async function liveRequest(path, options) {

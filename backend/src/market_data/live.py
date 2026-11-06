@@ -202,9 +202,26 @@ class LiveCoordinator:
                 raise RuntimeError("Chưa lấy được lịch sử chỉ số; vui lòng thử lại sau.") from None
             with self._lock:
                 self._histories[symbol] = (result, self.clock())
+            try:self.repository.write_index_history(symbol,result)
+            except OSError:
+                import logging
+                logging.getLogger(__name__).warning('index_history_cache_write_failed')
             return result
         finally:
             self._fetch_lock.release()
+
+    def saved_index_history(self,symbol):
+        from .history import INDEX_NAMES
+        if symbol not in INDEX_NAMES:raise ValueError('Chỉ số không được hỗ trợ.')
+        with self._lock:cached=self._histories.get(symbol)
+        if cached:
+            data=cached[0];fresh=0<=self.clock()-cached[1]<self.cache_seconds
+        else:
+            data=self.repository.read_index_history(symbol);fresh=False
+            if data.get('fetched_at'):
+                age=(self.now()-datetime.fromisoformat(data['fetched_at'])).total_seconds()
+                fresh=0<=age<self.cache_seconds
+        return {**data,'refresh':{'needed':not fresh,'stale':not fresh}}
 
     def stock_history(self, symbol):
         from .history import normalize_history

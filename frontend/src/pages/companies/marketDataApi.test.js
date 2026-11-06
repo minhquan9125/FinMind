@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { getMarketNews, getSavedOhlcv } from "./marketDataApi.js";
+import { getIndexHistory, getMarketNews, getSavedOhlcv } from "./marketDataApi.js";
 
 test("market news sends a bearer token and returns saved articles", async () => {
   const oldFetch=globalThis.fetch, oldStorage=globalThis.localStorage;
@@ -31,4 +31,20 @@ test("conditional OHLCV requests retain the ETag while authenticating", async ()
   };
   try { assert.deepEqual(await getSavedOhlcv("BID",undefined,"etag-1"),{unchanged:true,etag:"etag-1"}); }
   finally {globalThis.fetch=oldFetch;globalThis.localStorage=oldStorage;}
+});
+
+test("index cached reads are explicit and fresh reads retain Retry-After", async () => {
+  const oldFetch = globalThis.fetch, oldStorage = globalThis.localStorage;
+  globalThis.localStorage = { getItem: () => JSON.stringify({ token: "fixture-token" }) };
+  const urls = [];
+  globalThis.fetch = async url => {
+    urls.push(url);
+    if (url.endsWith('?cached=true')) return { ok: true, json: async () => ({ bars: [1] }) };
+    return { ok: false, status: 429, headers: new Headers({ 'Retry-After': '7' }), json: async () => ({ detail: 'quota' }) };
+  };
+  try {
+    assert.deepEqual(await getIndexHistory('VNINDEX', undefined, { cached: true }), { bars: [1] });
+    await assert.rejects(getIndexHistory('VNINDEX'), error => error.status === 429 && error.retryAfter === '7');
+    assert.deepEqual(urls, ['/api/market-data/indices/VNINDEX/ohlcv?cached=true', '/api/market-data/indices/VNINDEX/ohlcv']);
+  } finally { globalThis.fetch = oldFetch; globalThis.localStorage = oldStorage; }
 });
