@@ -173,6 +173,12 @@ không dùng chúng làm kết luận cho phiên chung hiện tại.
 
 ### Biểu đồ chỉ số thị trường
 
+Trang chi tiết công ty tự đọc cache rồi tải lịch sử khoảng sáu tháng khi mở,
+kể cả với vai trò RESEARCHER. `GET /api/market-data/stocks/{symbol}/history`
+yêu cầu quyền xem, dùng cache và hạn mức SDK chung; thao tác POST thủ công
+vẫn yêu cầu DATA_ENGINEER/ADMINISTRATOR. Mã chưa có cache hiển thị đang tải,
+lỗi tải hiển thị nút thử lại; không báo đã có biểu đồ khi nguồn chưa trả dữ liệu.
+
 Dashboard tự mở VN-INDEX và đọc bản lưu của bốn chỉ số qua
 `GET /api/market-data/indices/{symbol}/ohlcv?cached=true` (vẫn yêu cầu đăng nhập).
 Đọc cache không gọi SDK và không tiêu hạn mức nguồn. Bản lưu được hiển thị ngay

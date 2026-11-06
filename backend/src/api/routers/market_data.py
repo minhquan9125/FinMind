@@ -105,6 +105,7 @@ def live_status(service=Depends(get_live_service)) -> dict:
     return service.status()
 
 
+@router.get("/stocks/{symbol}/history")
 @router.post("/stocks/{symbol}/history", dependencies=[Depends(require_roles(*WRITE_ROLES))])
 def load_stock_history(symbol: str, service=Depends(get_live_service)) -> dict:
     try:

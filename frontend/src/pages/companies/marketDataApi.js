@@ -83,7 +83,7 @@ export function refreshLivePrice(symbol) {
 }
 
 export function loadStockHistory(symbol, signal) {
-  return retryRateLimited(() => liveRequest(`/stocks/${encodeURIComponent(symbol)}/history`, { method: "POST", signal }), signal);
+  return retryRateLimited(() => liveRequest(`/stocks/${encodeURIComponent(symbol)}/history`, { signal }), signal);
 }
 
 export function refreshCompanyNews(symbol, signal) {
