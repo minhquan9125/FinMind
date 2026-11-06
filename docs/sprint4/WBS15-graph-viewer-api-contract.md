@@ -254,6 +254,10 @@ Theo kiểu FastAPI hiện có: `{"detail": {"code": "...", "message": "..."}}`.
 
 ## 9. Phía backend (đã triển khai, WBS09)
 
+Bổ sung 2026-11-06: API tự khám phá các phiên `SourcePersonGraphVersion` có contract `person-source-claims-v1`, scope `SOURCE_DOCUMENT_ASSERTIONS`, trạng thái `READY`. `meta.serving_scope` được giữ ở cả entities/neighborhood/relation detail; `review.status=SOURCE_REVIEWED` biểu thị duyệt tại nguồn, không tương đương một sự thật chức vụ đương nhiệm đã hợp nhất danh tính. Chỉ đọc claim `APPROVED_IN_SOURCE_REPORT`, giữ `SOURCE_OCCURRENCE` và `SOURCE_DOCUMENT_NOT_CURRENT_OFFICE`. Các predicate bổ sung là `FORMER_ROLE`, `RESIGNS`, `REQUESTS_RESIGNATION`; không đổi chiều hoặc loại sự kiện. Ngày hiệu lực chưa được xác nhận trả null; không suy từ năm báo cáo. Không trộn phiên hoặc schema vào đồ thị sự thật chung.
+
+Frontend đọc lại API mỗi 30 giây khi trang đang hiển thị, khi quay lại tab hoặc bấm cập nhật; không lưu cứng ID phiên. Thêm dữ liệu đúng contract trong DB không cần nối lại. Phiên mới chỉ bổ sung lựa chọn, không thay phiên đang xem. Đã đối chiếu read-only trên Neo4j: 10 công ty, 185 claim nhân sự, đủ 6 predicate; dữ liệu qua API được validator frontend chấp nhận.
+
 - `neighborhood` dùng `RelationRetrieval.query` (`backend/src/graph/relation_retrieval.py`), xin thêm
   1 đường đi để biết `truncated`; node đọc từ `GraphEntity` của cùng phiên.
 - `versions`, `entities`, `relations/{id}` là truy vấn đọc trên Neo4j (`GraphVersion`,

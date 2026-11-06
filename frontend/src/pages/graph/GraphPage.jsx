@@ -4,26 +4,26 @@ import { Button, Drawer, EmptyState, ErrorState, Select, Sidebar, Skeleton, Stat
 import { userMenu } from "../../mocks/componentMock.js";
 import { createGraphApi } from "./api.js";
 import GraphCanvas from "./GraphCanvas.jsx";
-import { canExpand, evidenceLink, getVisibleGraph, MAX_HOPS, RELATION_TYPES } from "./graphModel.js";
+import { canExpand, evidenceLink, getVisibleGraph, MAX_HOPS, RELATION_TYPES, SOURCE_RELATION_TYPES, watchGraphUpdates } from "./graphModel.js";
 import { nodeTypes } from "./mock.js";
 
 const menuPaths = { dashboard: "/dashboard", companies: "/companies", copilot: "/research", watchlist: "/watchlist", graph: "/graph" };
 const fieldClass = "min-h-11 w-full min-w-0 rounded border border-slate-300 bg-white px-3 text-sm";
 const unknown = "Chưa có thông tin";
-function useRequest(load, key, enabled = true) {
+function useRequest(load, key, enabled = true, refresh = 0) {
   const latest = useRef(load); latest.current = load;
   const [state, setState] = useState({ key: null, loading: false, data: null, error: null });
   useEffect(() => {
     if (!enabled) return;
     const controller = new AbortController();
-    setState({ key, loading: true, data: null, error: null });
+    setState(previous => ({ key, loading: !(previous.key === key && previous.data), data: previous.key === key ? previous.data : null, error: null }));
     Promise.resolve().then(() => latest.current(controller.signal)).then(data => {
       if (!controller.signal.aborted) setState({ key, loading: false, data, error: null });
     }).catch(error => {
       if (!controller.signal.aborted) setState({ key, loading: false, data: null, error });
     });
     return () => controller.abort();
-  }, [key, enabled]);
+  }, [key, enabled, refresh]);
   return enabled && state.key === key ? state : { loading: enabled, data: null, error: null };
 }
 function Evidence({ item }) {
@@ -69,16 +69,17 @@ export default function GraphPage() {
     query.relation_type.every(t => RELATION_TYPES.includes(t)) &&
     [query.from, query.to].every(d => !d || (/^\d{4}-\d{2}-\d{2}$/.test(d) && Number.isFinite(Date.parse(d)) && new Date(d).toISOString().slice(0, 10) === d)) &&
     !(query.from && query.to && query.from > query.to);
-  const graphKey = JSON.stringify([fixture, query, retry]);
-  const versions = useRequest(signal => api.versions({ signal }), JSON.stringify([fixture, retry]));
+  const graphKey = JSON.stringify([fixture, query]);
+  const versions = useRequest(signal => api.versions({ signal }), JSON.stringify([fixture]), true, retry);
+  useEffect(() => fixture ? undefined : watchGraphUpdates(() => setRetry(n => n + 1)), [fixture]);
   const activeSearch = searchTask?.version === version ? searchTask.q : "";
   const results = useRequest(signal => api.entities({ graph_version_id: version, q: activeSearch, type: entityType || null, limit: 50 }, { signal }),
-    JSON.stringify([fixture, version, activeSearch, entityType, searchTask?.nonce, retry]), Boolean(version));
-  const graphRequest = useRequest(signal => api.graph(query, { signal }), graphKey, Boolean(version && rootId && validQuery));
+    JSON.stringify([fixture, version, activeSearch, entityType, searchTask?.nonce]), Boolean(version), retry);
+  const graphRequest = useRequest(signal => api.graph(query, { signal }), graphKey, Boolean(version && rootId && validQuery), retry);
   const graph = graphRequest.data;
   const selectedEdge = graph?.edges.find(e => e.id === relationId);
   const detailKey = JSON.stringify([graphKey, relationId]);
-  const detail = useRequest(signal => api.relation(relationId, version, selectedEdge, { signal }), detailKey, Boolean(selectedEdge));
+  const detail = useRequest(signal => api.relation(relationId, version, selectedEdge, { signal }), detailKey, Boolean(selectedEdge), retry);
   const visible = useMemo(() => graph ? getVisibleGraph(graph, rootId, expandedIds) : null, [graph, rootId, expandedIds]);
   const selectedNode = graph?.nodes.find(n => n.id === selectedNodeId);
   const canExpandSelection = graph && visible && canExpand(graph, visible, selectedNodeId);
@@ -134,9 +135,11 @@ export default function GraphPage() {
     if (draft.from && draft.to && draft.from > draft.to) { setFilterError("Ngày bắt đầu phải trước hoặc bằng ngày kết thúc."); return; }
     change({ relation_type: draft.type ? [draft.type] : [], from: draft.from, to: draft.to, hops: draft.hops, limit: draft.limit });
   }
-  const versionOptions = versions.data?.versions.map(v => ({ value: v.graph_version_id, label: `${v.graph_version_id} · ${v.relation_count} quan hệ` })) || [];
+  const versionOptions = versions.data?.versions.map(v => ({ value: v.graph_version_id, label: `${v.serving_scope === "SOURCE_DOCUMENT_ASSERTIONS" ? "Nhân sự theo nguồn · " : ""}${v.graph_version_id} · ${v.relation_count} quan hệ` })) || [];
   if (!versionOptions.some(v => v.value === version)) versionOptions.unshift({ value: version, label: version || "Chọn phiên graph" });
   const relation = detail.data?.relation;
+  const sourceVersion = versions.data?.versions.find(v => v.graph_version_id === version)?.serving_scope === "SOURCE_DOCUMENT_ASSERTIONS";
+  const availableTypes = sourceVersion ? SOURCE_RELATION_TYPES : RELATION_TYPES.filter(t => !["FORMER_ROLE", "RESIGNS", "REQUESTS_RESIGNATION"].includes(t));
   const entityOptions = [{ value: "", label: "Chọn thực thể để xem đồ thị" }, ...(results.data?.items || []).map(n => ({
     value: n.id, label: `${n.label} · ${n.type}${n.relation_count != null ? ` · ${n.relation_count} quan hệ` : ""}`,
   }))];
@@ -152,10 +155,12 @@ export default function GraphPage() {
         <div className="flex flex-wrap items-center gap-3"><StatusBadge tone={fixture ? "warning" : "info"}>{fixture ? "Fixture · Không phải dữ liệu thật" : "API graph · Tối đa 2 hop"}</StatusBadge><Link to="/research" className="text-sm text-blue-700 underline">Chat</Link></div>
       </header>
       <div className="space-y-4 border-b bg-white p-4 sm:px-6">
+        {!fixture && <div className="flex items-center gap-3 text-xs text-slate-600"><p>Tự cập nhật mỗi 30 giây và khi quay lại trang; giữ nguyên phiên đang xem. Phiên mới xuất hiện trong danh sách.</p><Button variant="secondary" onClick={() => setRetry(n => n + 1)}>Cập nhật ngay</Button></div>}
+        {sourceVersion && <p role="status" className="text-sm text-amber-800">Nhân sự theo nguồn tài liệu: danh tính theo từng lần xuất hiện, không khẳng định chức vụ đương nhiệm. Chưa xác nhận ngày hiệu lực; lọc theo ngày sẽ không trả các quan hệ này.</p>}
         {versions.loading ? <p role="status" className="text-sm">Đang tải phiên graph…</p> : versions.error ? <ErrorState message={versions.error.message} onRetry={() => setRetry(n => n + 1)} /> : !versions.data?.versions.length && !version ?
           <EmptyState title="Chưa có phiên graph được công bố" description="Backend chưa có phiên READY để xem." /> : null}
         <Select label="Phiên graph" options={versionOptions} value={version} disabled={versions.loading}
-          className="min-w-0 [&_select]:max-w-full" onChange={e => change({ graph_version_id: e.target.value, entity_id: null })} />
+          className="min-w-0 [&_select]:max-w-full" onChange={e => change({ graph_version_id: e.target.value, entity_id: null, relation_type: [] })} />
         {relationId && !version && <p role="alert" className="text-sm text-amber-800">Liên kết thiếu phiên graph. Hãy chọn đúng phiên trước khi mở quan hệ.</p>}
         <form onSubmit={findEntity} className="grid min-w-0 items-end gap-3 sm:grid-cols-[minmax(0,1fr)_160px_auto]">
           <label className="min-w-0 text-xs font-semibold">Lọc theo mã, ID hoặc tên (để trống: tất cả)<input aria-label="Tìm thực thể" className={fieldClass + " mt-1"} value={searchText} maxLength={100} onChange={e => setSearchText(e.target.value)} /></label>
@@ -169,7 +174,7 @@ export default function GraphPage() {
           {results.data.truncated && <p role="status" className="mt-2 text-sm text-amber-800">Có nhiều kết quả. Hãy nhập tên cụ thể hơn.</p>}
         </div> : null}
         <form onSubmit={applyFilters} className="grid min-w-0 items-end gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <Select label="Loại quan hệ" options={[{ value: "", label: "Tất cả" }, ...RELATION_TYPES.map(value => ({ value, label: value }))]} value={draft.type} onChange={e => setDraft(d => ({ ...d, type: e.target.value }))} />
+          <Select label="Loại quan hệ" options={[{ value: "", label: "Tất cả" }, ...availableTypes.map(value => ({ value, label: value }))]} value={draft.type} onChange={e => setDraft(d => ({ ...d, type: e.target.value }))} />
           <label className="min-w-0 text-xs font-semibold">Từ ngày<input type="date" className={fieldClass + " mt-1"} value={draft.from} onChange={e => setDraft(d => ({ ...d, from: e.target.value }))} /></label>
           <label className="min-w-0 text-xs font-semibold">Đến ngày<input type="date" className={fieldClass + " mt-1"} value={draft.to} onChange={e => setDraft(d => ({ ...d, to: e.target.value }))} /></label>
           <Select label="Số hop" options={[{ value: "1", label: "1" }, { value: "2", label: "2" }]} value={draft.hops} onChange={e => setDraft(d => ({ ...d, hops: e.target.value }))} />
