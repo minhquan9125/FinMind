@@ -158,6 +158,7 @@ export function AuthProvider({ children }) {
 
     setUser(authUser);
     setIsSessionExpired(false);
+    return authUser;
   }, []);
 
   const loginWithGoogle = useCallback(async (credential, rememberMe = true) => {
@@ -189,6 +190,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
     setUser(authUser);
     setIsSessionExpired(false);
+    return authUser;
   }, []);
 
   const register = useCallback(async (name, email, password, confirmPassword) => {
