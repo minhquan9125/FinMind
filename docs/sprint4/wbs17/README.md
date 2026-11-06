@@ -13,6 +13,12 @@ Ngày 06/11/2026. Phụ trách benchmark: Hồ Phạm Đăng Nhân; Huyền xác
 
 ## Phạm vi so sánh
 
+**Bộ chạy hiện tại là Excel chung 53 ca**, không tiếp tục mở rộng bộ JSON
+18 ca nháp. Xem [cách chạy Excel chung](SHARED_WORKBOOK.md). Lượt đầy đủ
+đọc 15 ca READY_RETRIEVAL và ghi rõ 38 ca thiếu setup; mỗi ca READY có
+1 warmup và tối thiểu 5 lượt đo/profile. Tài liệu G01–G03 và JSON nháp dưới
+đây được giữ làm lịch sử chuẩn bị runner, không phải bộ đề riêng cho Nhân.
+
 | Profile | API hiện có | Chấm được |
 |---|---|---|
 | B1 | `/api/search/filtered` — tìm kiếm vector dense | Chunk/document nguồn kỳ vọng, xác minh nguồn, scope, latency |

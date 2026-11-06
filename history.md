@@ -1,5 +1,13 @@
 # History thay đổi code
 
+### [2026-11-06] WBS17 — sửa scope/intent và đo đủ 15 ca sẵn dữ liệu
+
+- Sửa route “theo BCTN” không tự thêm CONTENT; yêu cầu chép câu/đọc tiểu sử đi VECTOR; phân biệt đơn vị VNĐ với mã VND; câu tìm quan hệ rồi đọc hoạt động/cơ sở hợp nhất đi BOTH. Có kiểm thử RED trước sửa và 196 test hồi quy đạt trên bản cuối.
+- Chạy hai lượt đầy đủ, giữ log trước/sau; lượt cuối `live02` dùng runtime `d06f500`, 15 ca x 5 lượt đo x 2 profile = 150 lượt, cộng 30 warmup. 15/15 ca khớp route; tất cả lượt đo HTTP 200/OK, không lỗi scope. Không suy ra chất lượng Answer/E2E.
+- Xác minh 39 tham chiếu của 15/15 ca bằng PostgreSQL chỉ đọc: active, document binding, hash và locator đúng. Thống kê corpus 44.930 chunk, NEWS 977 chunk/192 tài liệu, không thiếu embedding; chưa thay nghiệm thu full-load WBS16.
+- Điền trực tiếp Excel chung: 15 ca đã chạy, 38 ca Blocked, log và owner. Giữ 292 ghi chú, đề/gold gốc và phần E2E của Huyền; kiểm công thức bằng Microsoft Excel chỉ đọc.
+- Ghi lỗi còn lại: TC_VECTOR_09 top 5 chưa lấy bảng lợi nhuận gộp PDF 170; FTEL lệch tập nguồn gốc/envelope nhập lại; UI mock, auth deployment và full-load còn cần nghiệm thu. WBS17 vẫn đang làm. Xem `docs/sprint4/WBS17-finalization-20261106.md`.
+
 ### [2026-11-06] WBS17 — đọc bộ Excel chung và chạy thử ba ca doanh nghiệp
 
 - Runner đọc trực tiếp Master/ghi chú/cấu hình từ Excel, chọn Test_ID, giữ câu hỏi gốc; tách scope lọc tài liệu B1 khỏi câu hỏi B2. Chặn LIVE fixture và số lượt dưới mức tối thiểu của bộ chung.
