@@ -60,7 +60,7 @@ Sao chép `run-config.example.json` và suite sang thư mục local, ví dụ `b
   --suite backend/.tmp/wbs17-input/cases.json `
   --config backend/.tmp/wbs17-input/run-config.json `
   --output backend/.tmp/wbs17-run-01 `
-  --warmups 1 --repeats 3 --timeout 60
+  --warmups 1 --repeats 5 --timeout 180
 ```
 
 READY/DRAFT được gọi API để thu thập, nhưng ghi UNREVIEWED. NOT_READY được bỏ qua và liệt kê lý do. Không biến timeout/HTTP lỗi thành NO_DATA. Lỗi không dừng các ca sau. Không chạy đồng thời hoặc retry ngầm; lượt warmup và thứ tự đo đều được lưu. Lượt đầu sau khi khởi động không tự được coi là phép đo cold-start có kiểm soát.

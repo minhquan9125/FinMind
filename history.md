@@ -1,5 +1,13 @@
 # History thay đổi code
 
+### [2026-11-06] WBS17 — đọc bộ Excel chung và chạy thử ba ca doanh nghiệp
+
+- Runner đọc trực tiếp Master/ghi chú/cấu hình từ Excel, chọn Test_ID, giữ câu hỏi gốc; tách scope lọc tài liệu B1 khỏi câu hỏi B2. Chặn LIVE fixture và số lượt dưới mức tối thiểu của bộ chung.
+- Thêm diagnostic_checks cho gold DRAFT (vẫn UNREVIEWED), đối chiếu thuộc tính quan hệ dạng tập con, thống kê p50/p95/route/trạng thái từng ca; mặc định 5 lượt đo, 1 warmup, timeout 180s.
+- 24 test đạt; dry-run đủ 53 ca nhận 15 READY. Ba ca TC_GRAPH_01–03 chạy 30 lượt đo + 6 warmup, tất cả lượt đo OK. Phát hiện TC_GRAPH_01 bị policy BCTN đẩy BOTH; TC_GRAPH_03 thiếu một chunk tham chiếu, cần đối chiếu nguồn.
+- Cache hết hạn được xây lại và xác minh 44.930 chunk trước run02; giữ riêng log run01 lỗi. Đã cập nhật Excel kết quả, giữ 292 ghi chú và sheet E2E, kiểm công thức bằng Microsoft Excel chỉ đọc. Chưa kết luận chất lượng Answer/E2E hay hoàn thành WBS17.
+- Chi tiết: `docs/sprint4/WBS17-pilot-20261106.md`, `docs/sprint4/wbs17/SHARED_WORKBOOK.md`. Không thay dữ liệu PostgreSQL/Neo4j; API thử nghiệm đã dừng.
+
 ### [2026-10-23] WBS34 — mẫu E2E vector retrieval Q03 trên corpus-v4
 
 - **File(s):** `backend/scripts/audit_vector_e2e.py`, `backend/tests/test_audit_vector_e2e.py`, `docs/embedding/WBS34-vector-e2e.md`, `history.md`.

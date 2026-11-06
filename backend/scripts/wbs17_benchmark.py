@@ -54,7 +54,7 @@ def validate_suite(suite):
 def request_body(kind, case, scope):
     if kind == 'B2':
         return {'question': case['question'], 'context': case.get('context', {})}
-    context = case.get('context', {})
+    context = case.get('b1_context', case.get('context', {}))
     companies, periods = context.get('companies', []), context.get('periods', [])
     if len(companies) > 1 or len(periods) > 1:
         raise ValueError('B1 filtered endpoint cannot represent multi-company/period scope')
@@ -66,6 +66,7 @@ def request_body(kind, case, scope):
 def normalize(kind, payload, scope):
     """Keep factual fields; never infer citations/relations from generated prose."""
     result = {'route': 'VECTOR' if kind == 'B1' else payload.get('route'),
+              'decision': None if kind == 'B1' else payload.get('decision'),
               'status': payload.get('status'), 'execution_mode': payload.get('execution_mode'),
               'relations': [], 'evidence': [], 'scope_errors': [], 'scope': payload.get('scope', {})}
     def check(value, expected, field):
@@ -110,8 +111,7 @@ def normalize(kind, payload, scope):
 
 
 def evaluate(case, response, profile='B2'):
-    if case['gold']['status'] != 'APPROVED':
-        return {'verdict': 'UNREVIEWED', 'relation_precision': None, 'relation_recall': None}
+    approved = case['gold']['status'] == 'APPROVED'
     expected = case['expected']
     evidence, relations = response['evidence'], response['relations']
     chunks = {e.get('chunk_id') or e.get('source_id') for e in evidence}
@@ -122,16 +122,22 @@ def evaluate(case, response, profile='B2'):
               'gold_chunks': wanted_chunks <= chunks, 'gold_documents': wanted_docs <= documents}
     if profile == 'B2':
         checks.update(route=response['route'] == expected['route'], status=response['status'] == expected['status'])
+        if expected.get('decision'):
+            checks['decision'] = response.get('decision') == expected['decision']
         for field in ('companies', 'periods'):
             requested = case.get('context', {}).get(field, [])
             if requested:
                 checks[field] = set(response.get('scope', {}).get(field, [])) == set(requested)
-        checks['relations'] = all(any(all(actual.get(k) == v for k, v in gold.items())
-                                     for actual in relations) for gold in expected.get('relations', []))
+        def matches(actual, gold):
+            return isinstance(actual, dict) and all(
+                matches(actual.get(k), v) if isinstance(v, dict) else actual.get(k) == v
+                for k, v in gold.items())
+        checks['relations'] = all(any(matches(actual, gold) for actual in relations)
+                                  for gold in expected.get('relations', []))
     else:
         checks['status'] = response['status'] == expected.get('b1_status', 'OK')
         for field in ('companies', 'periods'):
-            requested = set(case.get('context', {}).get(field, []))
+            requested = set(case.get('b1_context', case.get('context', {})).get(field, []))
             if requested and evidence:
                 checks[field] = set(response.get('scope', {}).get(field, [])) == requested
     if expected['status'] == 'OK':
@@ -140,14 +146,15 @@ def evaluate(case, response, profile='B2'):
         checks['no_facts_on_error'] = not relations and not evidence
     # Exact-set relation metrics are possible only with complete adjudicated gold.
     precision = recall = None
-    if profile == 'B2' and case['gold'].get('complete') and expected.get('relations'):
+    if approved and profile == 'B2' and case['gold'].get('complete') and expected.get('relations'):
         fields = ('subject_id', 'object_id', 'relation_type', 'as_of', 'graph_version_id')
         keys = lambda rows: {tuple(r.get(k) for k in fields) for r in rows}
         actual, gold = keys(relations), keys(expected['relations'])
         correct = len(actual & gold)
         precision, recall = correct / len(actual) if actual else 0.0, correct / len(gold)
         checks['exact_relations'] = actual == gold
-    return {'verdict': 'PASS' if all(checks.values()) else 'FAIL', 'checks': checks,
+    return {'verdict': ('PASS' if all(checks.values()) else 'FAIL') if approved else 'UNREVIEWED',
+            'checks' if approved else 'diagnostic_checks': checks,
             'relation_precision': precision, 'relation_recall': recall,
             'required_chunk_coverage': len(wanted_chunks & chunks)/len(wanted_chunks) if wanted_chunks else None}
 
@@ -180,7 +187,20 @@ def summarize(rows):
             'by_group': {group: dict(Counter(r['evaluation']['verdict'] for r in measured if r['group']==group))
                          for group in sorted({r['group'] for r in measured})},
             'failed_checks': dict(Counter(check for r in measured for check, ok in r['evaluation'].get('checks', {}).items() if not ok))}
-    return {'profiles': profiles, 'skipped': [r for r in rows if r['phase'] == 'SKIPPED'],
+    by_case = {}
+    for cid in sorted({r['case_id'] for r in rows if r['phase'] == 'MEASURED'}):
+        by_case[cid] = {}
+        for profile in ('B1', 'B2'):
+            measured = [r for r in rows if r['phase'] == 'MEASURED' and r['case_id'] == cid and r['profile'] == profile]
+            times = sorted(r['latency_ms'] for r in measured if r.get('http_status') == 200 and not r.get('error'))
+            by_case[cid][profile] = {'attempts': len(measured),
+                'http200_p50_ms': median(times) if times else None,
+                'http200_p95_ms': times[math.ceil(len(times)*.95)-1] if times else None,
+                'routes': dict(Counter(r.get('normalized', {}).get('route') for r in measured)),
+                'statuses': dict(Counter(r.get('normalized', {}).get('status') for r in measured)),
+                'verdicts': dict(Counter(r['evaluation']['verdict'] for r in measured)),
+                'diagnostic_mismatches': dict(Counter(k for r in measured for k, ok in r['evaluation'].get('diagnostic_checks', {}).items() if not ok))}
+    return {'profiles': profiles, 'by_case': by_case, 'skipped': [r for r in rows if r['phase'] == 'SKIPPED'],
             'quality_claim': 'No B2 superiority claim; draft cases excluded from scoring.',
             'level': 'retrieval_only', 'latency_note': 'HTTP round trip; HTTP-200 application errors retained in status counts; warmup excluded.'}
 
@@ -201,10 +221,12 @@ def write_report(output, report):
     (output/'report.md').write_text('\n'.join(lines)+'\n', 'utf-8')
 
 
-def run_benchmark(suite, config, output, *, send=http_send, warmups=1, repeats=3, timeout=60, manifest=None):
+def run_benchmark(suite, config, output, *, send=http_send, warmups=1, repeats=5, timeout=180, manifest=None):
     validate_suite(suite)
     if warmups < 0 or repeats < 1:
         raise ValueError('Invalid warmup/repeat count')
+    if repeats < suite.get('minimum_repeats', 1):
+        raise ValueError('Measured repeats below suite minimum')
     output.mkdir(parents=True, exist_ok=False)
     if manifest is not None:
         (output/'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), 'utf-8')
@@ -250,16 +272,26 @@ def run_benchmark(suite, config, output, *, send=http_send, warmups=1, repeats=3
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--suite', type=Path, default=Path('docs/sprint4/wbs17/cases.draft.json'))
+    parser.add_argument('--workbook', type=Path, help='Read the shared XLSX directly instead of the draft JSON')
+    parser.add_argument('--case-ids', nargs='+', help='Select exact Test_ID values from the workbook')
     parser.add_argument('--config', type=Path, default=Path('docs/sprint4/wbs17/run-config.example.json'))
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--dry-run', action='store_true', help='Validate and write a plan; no HTTP calls')
     parser.add_argument('--warmups', type=int, default=1)
-    parser.add_argument('--repeats', type=int, default=3)
-    parser.add_argument('--timeout', type=float, default=60)
+    parser.add_argument('--repeats', type=int, default=5)
+    parser.add_argument('--timeout', type=float, default=180)
     args = parser.parse_args()
-    suite = json.loads(args.suite.read_text('utf-8'))
+    if args.workbook:
+        from backend.scripts.wbs17_workbook import load_workbook_suite
+        suite = load_workbook_suite(args.workbook, case_ids=args.case_ids)
+    else:
+        if args.case_ids:
+            parser.error('--case-ids requires --workbook')
+        suite = json.loads(args.suite.read_text('utf-8'))
     config = json.loads(args.config.read_text('utf-8'))
     validate_suite(suite)
+    if args.repeats < suite.get('minimum_repeats', 1):
+        raise ValueError('Measured repeats below suite minimum')
     if config['scope'] != suite['scope']:
         raise ValueError('Run config must match the suite corpus/index/graph scope exactly')
     for kind, profile in config['profiles'].items():
@@ -273,7 +305,7 @@ def main():
     if not args.dry_run and not all(config.get(k) for k in ('embedding_model_ref', 'deployment_ref', 'machine_ref')):
         raise ValueError('Record model, deployment commit/config receipt, and machine before running')
     revision = subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True, check=True).stdout.strip()
-    manifest = {'suite_sha256': hashlib.sha256(args.suite.read_bytes()).hexdigest(),
+    manifest = {'suite_sha256': hashlib.sha256((args.workbook or args.suite).read_bytes()).hexdigest(),
                 'config_sha256': hashlib.sha256(args.config.read_bytes()).hexdigest(),
                 'suite': suite, 'config': config, 'dry_run': args.dry_run,
                 'warmups': args.warmups, 'repeats': args.repeats, 'timeout_seconds': args.timeout,

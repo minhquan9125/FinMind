@@ -34,6 +34,29 @@ def test_draft_is_captured_but_never_scored():
     assert evaluate(case('DRAFT'), observed())['verdict'] == 'UNREVIEWED'
 
 
+def test_draft_retains_diagnostic_checks_without_a_quality_verdict():
+    response = observed()
+    response['route'] = 'VECTOR'
+    result = evaluate(case('DRAFT'), response)
+    assert result['verdict'] == 'UNREVIEWED'
+    assert result['diagnostic_checks']['route'] is False
+    assert result['relation_precision'] is None
+
+
+def test_b1_document_scope_does_not_override_router_question_interpretation():
+    c = case()
+    c['context'] = {}
+    c['b1_context'] = {'companies': ['FPT'], 'periods': ['2025']}
+    assert request_body('B1', c, {'corpus_version_id': 'c'})['period'] == '2025'
+    assert request_body('B2', c, {})['context'] == {}
+
+
+def test_shared_workbook_requires_five_measured_repeats_before_creating_output(tmp_path):
+    with pytest.raises(ValueError, match='minimum'):
+        run_benchmark({'cases': [case()], 'minimum_repeats': 5}, {}, tmp_path/'run', repeats=3)
+    assert not (tmp_path/'run').exists()
+
+
 @pytest.mark.parametrize('field,value', [('subject_id', 'ftel'), ('as_of', '2024-12-31'),
                                         ('relation_type', 'HAS_ASSOCIATE'), ('graph_version_id', 'v2')])
 def test_wrong_direction_time_type_or_version_fails(field, value):
@@ -46,6 +69,15 @@ def test_partial_gold_reports_target_checks_without_precision_or_recall():
     result = evaluate(case(), observed())
     assert result['verdict'] == 'PASS'
     assert result['relation_precision'] is None and result['relation_recall'] is None
+
+
+def test_gold_attributes_are_required_but_extra_runtime_metadata_is_allowed():
+    c, response = case(), observed()
+    c['expected']['relations'][0]['attributes'] = {'ownership_percent': '45.66'}
+    response['relations'][0]['attributes'] = {'ownership_percent': '45.66', 'inference_basis': 'ownership_table'}
+    assert evaluate(c, response)['verdict'] == 'PASS'
+    response['relations'][0]['attributes']['ownership_percent'] = '80.15'
+    assert evaluate(c, response)['verdict'] == 'FAIL'
 
 
 def test_complete_gold_penalizes_extra_relations_and_deduplicates_paths():
