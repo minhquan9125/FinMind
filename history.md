@@ -1,5 +1,13 @@
 # History thay đổi code
 
+### [2026-11-06] WBS17 — kiểm thử bổ sung và mở ứng dụng, không sửa sản phẩm
+
+- Chỉ thêm hai script kiểm thử và báo cáo; không sửa `backend/src`/`frontend/src`. Khởi động backend thật cổng 8000 và Vite cổng 5173 theo yêu cầu, tắt collector thị trường tự động trong tiến trình test; health và proxy HTTP 200.
+- Chạy 10 ca biên x 5 lượt bằng fixture cô lập: 5 ca PASS_BACKEND, 4 ca FAIL_BACKEND, 1 ca FOLLOWUP_REQUIRED. Ghi rõ giới hạn predictor fixture, component timeout và phần UI/Answer chưa kiểm; không dùng thay kết quả classifier/E2E.
+- Kiểm TC_EDGE_24 trên backend đang chạy: không token và token giả đều HTTP 200, kỳ vọng 401/403. Đối chứng endpoint chat trả 401; chưa thử tài khoản hợp lệ nhưng thiếu role hoặc proxy khác.
+- Build frontend đạt (132 module); 48 test hồi quy offline B1 về bằng chứng/citation/trình bày/scope đạt. Chưa gọi Gemini thật vì thiếu cấu hình; công cụ browser/native không kết nối nên không nghiệm thu UI.
+- Cập nhật Excel chung cột T:W và bug log: 11 ca có thêm kiểm tra backend một phần, giữ số đo 15 ca LIVE, đề/gold, phần Huyền và 292 ghi chú. WBS17 còn đang làm; không tự sửa lỗi. Xem `docs/sprint4/WBS17-remaining-tests-20261106.md`.
+
 ### [2026-11-06] WBS17 — sửa scope/intent và đo đủ 15 ca sẵn dữ liệu
 
 - Sửa route “theo BCTN” không tự thêm CONTENT; yêu cầu chép câu/đọc tiểu sử đi VECTOR; phân biệt đơn vị VNĐ với mã VND; câu tìm quan hệ rồi đọc hoạt động/cơ sở hợp nhất đi BOTH. Có kiểm thử RED trước sửa và 196 test hồi quy đạt trên bản cuối.

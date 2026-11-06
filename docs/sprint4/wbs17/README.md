@@ -13,6 +13,11 @@ Ngày 06/11/2026. Phụ trách benchmark: Hồ Phạm Đăng Nhân; Huyền xác
 
 ## Phạm vi so sánh
 
+Kết quả kiểm thử bổ sung (component/API, tách riêng benchmark LIVE) ở
+[báo cáo các ca còn lại](../WBS17-remaining-tests-20261106.md).
+Các script probe chỉ kiểm phần backend đã mô tả, không xác nhận Answer/UI
+và không tự sửa code sản phẩm khi tìm thấy lỗi.
+
 **Bộ chạy hiện tại là Excel chung 53 ca**, không tiếp tục mở rộng bộ JSON
 18 ca nháp. Xem [cách chạy Excel chung](SHARED_WORKBOOK.md). Lượt đầy đủ
 đọc 15 ca READY_RETRIEVAL và ghi rõ 38 ca thiếu setup; mỗi ca READY có
