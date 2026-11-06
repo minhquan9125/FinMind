@@ -143,10 +143,15 @@ def get_index_history(symbol: str, service=Depends(get_live_service)) -> dict:
 
 
 @router.get("/news")
-def get_market_news(limit: int = Query(10, ge=1, le=50),
+def get_market_news(request: Request, limit: int = Query(10, ge=1, le=50),
                     repository: FileMarketDataRepository = Depends(get_market_data_repository)) -> dict:
     try:
-        return repository.get_news(None, limit)
+        result=repository.get_news(None, limit)
+        root=getattr(request.app.state,'admin_news_queue_root',None)
+        if not result.get('articles') and root:
+            from ...market_data.admin_news import published_admin_news
+            result={**result,'articles':published_admin_news(root,limit)}
+        return result
     except (OSError, ValueError, TypeError) as exc:
         raise HTTPException(status_code=503, detail="Không đọc được tin thị trường đã lưu.") from exc
 

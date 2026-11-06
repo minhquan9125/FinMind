@@ -65,6 +65,7 @@ async def warmup_research(app: FastAPI):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await connect()
+    app.state.admin_news_queue_root=get_settings().admin_ingestion_directory
     research_chat.get_store.cache_clear()
     try:
         async with market_lifespan(app):

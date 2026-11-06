@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Card, ErrorState, Skeleton } from "../../shared/ui/index.js";
 import { getIndexHistory } from "../companies/marketDataApi.js";
 import PriceHistory from "../companies/PriceHistory.jsx";
+import { useAuth } from "../../shared/context/AuthContext.jsx";
 
 const indices = [["VNINDEX", "VN-INDEX"], ["VN30", "VN30"], ["HNXINDEX", "HNX-INDEX"], ["UPCOMINDEX", "UPCOM-INDEX"]];
 
 export default function MarketOverview() {
+  const { user } = useAuth();
   const [symbol, setSymbol] = useState(null);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -22,7 +24,7 @@ export default function MarketOverview() {
       .catch((caught) => { if (!controller.signal.aborted) setError(caught.message); })
       .finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
-  }, [symbol, retry]);
+  }, [symbol, retry, user?.id]);
   return <section aria-label="Tổng quan thị trường" className="space-y-4">
     <h2 className="text-sm font-bold">Tổng quan thị trường</h2>
     <p className="text-xs text-slate-500">Bấm một chỉ số để tải biểu đồ thật. Dữ liệu ngày từ vnstock/KBS; không tự cập nhật từng giao dịch.</p>

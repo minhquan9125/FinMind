@@ -109,6 +109,18 @@ Nút Đọc PDF/OCR trong chi tiết là công cụ phục hồi, không phải 
 
 ## Cách đọc kết quả
 
+Nếu Dashboard hiện `Authentication required`, F5 và đăng nhập lại một lần nếu
+phiên cũ thiếu token. Frontend loại phiên chỉ có profile, gộp refresh đồng thời
+(kể cả React StrictMode), dùng Web Locks để phối hợp các tab, đồng bộ đăng xuất
+và không để phản hồi refresh cũ ghi đè lần đăng nhập mới. API thị trường thử refresh
+một lần khi gặp 401; 403 giữ là lỗi quyền, không tự đăng xuất. Không bỏ kiểm tra
+token/role ở backend để né lỗi. Phiên hết hạn hoặc bị thu hồi vẫn cần đăng nhập.
+
+Dashboard đọc kho tin thị trường trước. Nếu kho này trống, backend chính dùng metadata
+các bài FireAnt INDEXED của admin làm nguồn dự phòng; không trả bài chờ duyệt, bị giữ
+hoặc từ chối, không trả lịch sử review/payload thô. Nguồn dự phòng dùng cùng queue
+local với admin, chưa phải nguồn đồng bộ metadata giữa nhiều máy.
+
 Trang `/admin/overview` lấy số bài và job từ SQLite trên máy đang chạy backend,
 đồng thời đọc số tài liệu/chunk của phiên phục vụ từ PostgreSQL chung. Tự cập nhật
 mỗi 30 giây. Nếu DB mất kết nối, trang vẫn trả số liệu hàng đợi và cảnh báo phần kho
