@@ -80,6 +80,13 @@ def normalize_user_text(text, context=None):
         if any(c.isdigit() for c in token): return token
         key = _fold(token)
         decoded = _telex(key, vocabulary)
+        # Conversational shorthand after a pronoun is a verb, not a ticker
+        # just because the next word is "giá". Preserve explicit uppercase IDs.
+        if (token == token.lower() and key in ('bik', 'bit') and prefix
+                and prefix[-1] in ('toi', 'minh', 't', 'em', 'ban', 'anh', 'chi', 'cho')):
+            prefix.append('biet')
+            del prefix[:-5]
+            return 'biet'
         if key in ('k', 'tr', 'b', 'm') and re.search(r'\d[\d.,]*\s*$', text[:match.start()]):
             return token  # money/quantity suffix, not conversational shorthand
         explicit_ticker = len(token) == 3 and token.isascii() and token.isalpha() and (

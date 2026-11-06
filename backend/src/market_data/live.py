@@ -7,6 +7,7 @@ import threading
 import time
 
 from .validation import normalize_quote
+from .session import SessionGate
 
 VN = timezone(timedelta(hours=7))
 EXCHANGES = ("HOSE", "HNX", "UPCOM")
@@ -202,9 +203,26 @@ class LiveCoordinator:
                 raise RuntimeError("Chưa lấy được lịch sử chỉ số; vui lòng thử lại sau.") from None
             with self._lock:
                 self._histories[symbol] = (result, self.clock())
+            try:self.repository.write_index_history(symbol,result)
+            except OSError:
+                import logging
+                logging.getLogger(__name__).warning('index_history_cache_write_failed')
             return result
         finally:
             self._fetch_lock.release()
+
+    def saved_index_history(self,symbol):
+        from .history import INDEX_NAMES
+        if symbol not in INDEX_NAMES:raise ValueError('Chỉ số không được hỗ trợ.')
+        with self._lock:cached=self._histories.get(symbol)
+        if cached:
+            data=cached[0];fresh=0<=self.clock()-cached[1]<self.cache_seconds
+        else:
+            data=self.repository.read_index_history(symbol);fresh=False
+            if data.get('fetched_at'):
+                age=(self.now()-datetime.fromisoformat(data['fetched_at'])).total_seconds()
+                fresh=0<=age<self.cache_seconds
+        return {**data,'refresh':{'needed':not fresh,'stale':not fresh}}
 
     def stock_history(self, symbol):
         from .history import normalize_history
@@ -255,13 +273,22 @@ class LiveCoordinator:
                     pass
             supported = bool(re.fullmatch(r"[A-Z]{3}", symbol))
             is_open = self._is_open(symbol) if supported else False
+            session_status = ("OPEN" if is_open else
+                              self.gate.status(entry[0]["exchange"] if entry else None)
+                              if isinstance(self.gate, SessionGate) else "UNKNOWN_CALENDAR")
+            session_reason = {
+                "CLOSED": "Ngoài giờ cập nhật giá tự động theo lịch đã cấu hình. Bạn vẫn có thể bấm Làm mới biểu đồ.",
+                "BREAK": "Đang nghỉ giữa phiên theo lịch đã cấu hình. Bạn vẫn có thể bấm Làm mới biểu đồ.",
+                "HALTED": "Lịch đã cấu hình ghi nhận tạm ngừng giao dịch; đang giữ dữ liệu đã lưu. Bạn vẫn có thể bấm Làm mới biểu đồ.",
+            }.get(session_status, "Chưa xác nhận được lịch giao dịch; tạm dừng tự cập nhật giá. Bạn vẫn có thể bấm Làm mới biểu đồ.")
             stale = not valid or self.clock() - entry[3] > 2 * self.poll_seconds or bool(self._failures)
             reason = ("Chỉ số hiện đọc dữ liệu đã lưu; chưa tham gia nhóm cập nhật cổ phiếu." if not supported
-                      else "Ngoài phiên hoặc lịch chưa xác nhận; dùng nút Làm mới giá/tin." if not is_open
+                      else session_reason if not is_open
                       else "Chưa đăng ký tự cập nhật; đang hiển thị dữ liệu gần nhất." if not active
                       else "Nguồn có thể trễ; giữ giá hợp lệ gần nhất." if stale
                       else "Đang tự cập nhật giá theo nhóm mã.")
             live = {"enabled": supported, "active": active and is_open, "stale": stale,
+                    "session_status": session_status,
                     "last_success_at": entry[2] if valid else None,
                     "poll_seconds": self.poll_seconds, "reason": reason}
         ordered = sorted(bars.values(), key=lambda bar: bar["date"])

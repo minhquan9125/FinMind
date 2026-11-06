@@ -54,7 +54,7 @@ async def cache_verified_manifest(conn, manifest, cache_path):
         raise RetrievalError('HASH_MISMATCH')
     index_id=_uuid(payload['index']['index_version_id'])
     reader=HybridRetriever(None,None,corpus_version_id=manifest['corpus_version_id'])
-    info=await reader._index(conn,index_id,False)
+    info=await reader._index(conn,index_id,False,payload['index']['embedding_model'])
     if info['embedding_model']!=payload['index']['embedding_model']:
         raise RetrievalError('CACHE_INDEX_MISMATCH')
     rows=await reader._fetch(conn,ROWS+' ORDER BY t.chunk_id',uuid.UUID(index_id))
@@ -305,7 +305,7 @@ class HybridRetriever:
         sql, args = self._statement(sql, args)
         return await conn.fetchval(sql, *args)
 
-    async def _index(self, conn, index_id, allow_building):
+    async def _index(self, conn, index_id, allow_building, model_ref=None):
         row = await conn.fetchrow('SELECT embedding_model,status FROM public.index_versions WHERE index_version_id=$1::uuid',index_id)
         if row is None:
             raise RetrievalError('INDEX_NOT_FOUND')
@@ -318,7 +318,9 @@ class HybridRetriever:
                 raise RetrievalError('CORPUS_NOT_READY')
             if corpus['index_version_id'] != index_id:
                 raise RetrievalError('CORPUS_INDEX_MISMATCH')
-        model = self.embedder.model_name + '@' + self.embedder.revision[:12]
+        # Cache preparation uses verified vectors already stored in DB and does
+        # not need to construct an embedding service. Still enforce MODEL below.
+        model = model_ref if model_ref is not None else self.embedder.model_name + '@' + self.embedder.revision[:12]
         if model != MODEL or row['embedding_model'] != model:
             raise RetrievalError('MODEL_MISMATCH')
         kind = await conn.fetchval("SELECT format_type(atttypid,atttypmod) FROM pg_attribute WHERE attrelid='public.text_chunks'::regclass AND attname='embedding'")

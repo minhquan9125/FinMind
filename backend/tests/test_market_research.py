@@ -99,6 +99,37 @@ def test_leadership_and_shareholder_without_period_use_latest_available_sources(
 
 
 @pytest.mark.parametrize('question', [
+    'cho tôi biết tất cả hội đồng của FPT', 'thành viên hội đồng quản trị FPT',
+    'danh sách HĐQT FPT', 'danh sách HDQT FPT', 'ban điều hành FPT gồm những ai',
+    'danh sách ban kiểm soát FPT',
+])
+def test_organizational_question_leaves_old_financial_clarification(question):
+    old = analyze_live('FPT', today=NOW.date())['scope']
+    old.update(periods=['2025'], _pending_quarter=2, _pending_reporting_entity=True)
+    result = analyze_live(question, old, today=NOW.date())
+    assert result['decision'] == 'SEARCH'
+    assert result['scope']['companies'] == ['FPT']
+    assert result['scope']['topic'] == 'RELATIONSHIP_LOOKUP'
+    assert result['scope']['source_type'] == 'NEWS'
+    assert result['scope']['metric_code'] is None
+    assert result['scope']['periods'] == ['LATEST_AVAILABLE_PERIOD']
+    assert not result['scope'].get('_pending_metric')
+    assert not result.get('clarification_options')
+
+
+def test_unspecified_members_asks_for_people_group_then_accepts_numeric_choice():
+    old = analyze_live('FPT', today=NOW.date())['scope']
+    first = analyze_live('cho tôi bik tất cả thành viên của FPT', old, today=NOW.date())
+    assert first['reason_code'] == 'AMBIGUOUS_COMPANY_MEMBERS'
+    assert [o['reply'] for o in first['clarification_options']] == ['Thành viên hội đồng quản trị', 'Ban điều hành']
+    for choice in ('1', '2'):
+        selected = analyze_live(choice, first['scope'], today=NOW.date())
+        assert selected['decision'] == 'SEARCH'
+        assert selected['scope']['topic'] == 'RELATIONSHIP_LOOKUP'
+        assert selected['scope']['companies'] == ['FPT']
+
+
+@pytest.mark.parametrize('question', [
     'giá cổ phiếu fpt hôm nay là bao nhiêu', 'FPT giá hiện tại bao nhiêu',
     'tóm tắt tin tức mới hôm nay của fpt', 'tin tức mới nhất FPT',
 ])
@@ -249,6 +280,34 @@ def test_current_explicit_lowercase_symbol_is_not_limited_to_corpus_tickers(ques
     result = analyze_live(question, today=NOW.date())
     assert result['decision'] == 'MARKET_LOOKUP'
     assert result['scope']['companies'] == ['XYZ']
+
+
+@pytest.mark.parametrize('word', ['bik', 'bít', 'biết'])
+def test_conversational_know_is_not_mistaken_for_an_extra_ticker(word):
+    previous = analyze_live('FPT', today=NOW.date())['scope']
+    result = analyze_live(f'cho tôi {word} giá hôm nay FPT là bao nhiêu', previous, today=NOW.date())
+    assert result['decision'] == 'MARKET_LOOKUP'
+    assert result['scope']['companies'] == ['FPT']
+    assert result['scope']['source_type'] == 'PRICE'
+    assert result['scope']['periods'] == [NOW.date().isoformat()]
+    assert not result.get('clarification_options')
+
+
+def test_multiple_market_tickers_offer_real_choices_and_keep_date_when_selected():
+    first = analyze_live('giá FPT và CMG hôm nay', today=NOW.date())
+    assert first['reason_code'] == 'SCOPE_TOO_LARGE'
+    assert [o['reply'] for o in first['clarification_options']] == ['FPT', 'CMG']
+    selected = analyze_live('2', first['scope'], today=NOW.date())
+    assert selected['decision'] == 'MARKET_LOOKUP'
+    assert selected['scope']['companies'] == ['CMG']
+    assert selected['scope']['periods'] == [NOW.date().isoformat()]
+
+
+@pytest.mark.parametrize('question', ['giá BIK hôm nay', 'giá bik hôm nay', 'cho tôi mã BIK giá hôm nay'])
+def test_explicit_symbol_is_not_rewritten_as_conversational_verb(question):
+    result = analyze_live(question, today=NOW.date())
+    assert result['decision'] == 'MARKET_LOOKUP'
+    assert result['scope']['companies'] == ['BIK']
 
 
 def test_live_news_does_not_silently_choose_between_publishers():

@@ -10,6 +10,7 @@ from datetime import datetime
 from .admin_ingestion import canonical, sha
 from .db_chunking import news_documents, chunk_document, CHUNKER_VERSION
 from .db_ingest import embed_all, upsert_document, write_chunks
+from .job_recovery import job_worker
 from .chunk_reconstruction import ReconstructionError, reconstruct_document_chunk
 
 
@@ -152,6 +153,7 @@ async def activate(queue, ident, settings):
     finally: await conn.close()
 
 
+@job_worker
 def index_job(queue, ident, settings):
     async def run():
         job=queue.get_job(ident)

@@ -103,6 +103,8 @@ class GeminiProvider:
             raise GeminiError("INVALID_GEMINI_RESPONSE") from None
 
     async def generate(self, request: Dict[str, Any]) -> Dict[str, Any]:
+        from ...core.usage_tracking import begin_generation, capture_usage
+        call = begin_generation(self.limits.model)
         raw = await self._post("generateContent", request)
 
         def _pairs(pairs):
@@ -124,6 +126,9 @@ class GeminiProvider:
 
         if not isinstance(data, dict):
             raise GeminiError("INVALID_GEMINI_RESPONSE")
+
+        # Retain real usage even when the answer is blocked or fails validation.
+        capture_usage(call, data.get('usageMetadata'))
 
         feedback = data.get("promptFeedback")
         if isinstance(feedback, dict) and feedback.get("blockReason"):

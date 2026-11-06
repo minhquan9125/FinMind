@@ -9,6 +9,7 @@ import sqlite3
 import uuid
 import re
 import unicodedata
+from .job_recovery import job_worker
 from urllib.parse import urlparse
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
@@ -50,7 +51,11 @@ def auto_review_reasons(payload):
     folded = ''.join(c for c in unicodedata.normalize('NFD',body.lower().replace('đ','d')) if unicodedata.category(c) != 'Mn')
     attachments = source_attachments(payload)
     raw_html = str(raw.get('content') or raw.get('originalContent') or '') if isinstance(raw, dict) else ''
-    if '<img' in raw_html.lower() and not payload.get('extraction'):
+    # Full article text with an illustrative photo does not require OCR.
+    image_text_required = (len(body) < 300 or len(body.split()) < 50
+        or raw.get('isInfographic') is True
+        or re.search(r'(?:chi tiet|noi dung|so lieu|tai lieu|thong tin).{0,50}(?:trong|tai)\s+(?:hinh|anh)', folded)) if isinstance(raw, dict) else False
+    if '<img' in raw_html.lower() and not payload.get('extraction') and image_text_required:
         reasons.append('OCR_REQUIRED')
     elif attachments and (len(body) < 80 or (len(body) < 300 and re.search(r'nhu sau\s*[:.]?$|(?:xem|chi tiet).*(?:dinh kem|file|tai lieu)', folded))):
         reasons.append('ATTACHMENT_TEXT_REQUIRED')
@@ -164,14 +169,43 @@ class Queue:
     def retry_index(self, ident, actor):
         with self.connect() as c:
             row=c.execute('SELECT kind,status,details FROM jobs WHERE id=?',(ident,)).fetchone()
-            if not row or row['kind']!='INDEX' or row['status'] not in ('FAILED','INDEXED'):
+            if not row or row['kind']!='INDEX' or row['status'] not in ('FAILED','INDEXED','INTERRUPTED'):
                 raise ValueError('INDEX_RETRY_NOT_AVAILABLE')
             if c.execute("SELECT 1 FROM jobs WHERE status IN ('QUEUED','RUNNING')").fetchone():
                 raise ValueError('ANOTHER_JOB_IS_RUNNING')
-            data=json.loads(row['details']);data.pop('error',None)
+            data=json.loads(row['details'])
+            if data.get('recovery_job_id'):return data['recovery_job_id']
+            if not data.get('manifest_sha256'):
+                # A crash may have committed a BUILDING index before writing its
+                # manifest. Use a new ID rather than collide with that partial index.
+                ids=data.get('article_ids',[])
+                if not ids or any(c.execute('SELECT status FROM articles WHERE id=?',(aid,)).fetchone()[0]!='APPROVED' for aid in ids):
+                    raise ValueError('ARTICLE_NOT_APPROVED')
+                successor=str(uuid.uuid4())
+                c.execute('INSERT INTO jobs VALUES(?,?,?,?,?,?,?,?)',(successor,'INDEX','QUEUED',actor,now(),now(),None,
+                    canonical({'article_ids':ids,'recovered_from':ident})))
+                data['recovery_job_id']=successor
+                c.execute('UPDATE jobs SET details=? WHERE id=?',(canonical(data),ident))
+                c.execute('INSERT INTO audit(actor,action,resource,at) VALUES(?,?,?,?)',(actor,'RETRY_INDEX',successor,now()))
+                return successor
+            data.pop('error',None)
             data.update(phase='PUBLISHING' if data.get('manifest_sha256') else 'CHUNKING',auto_publish=True)
             c.execute("UPDATE jobs SET status='QUEUED',updated_at=?,details=? WHERE id=?",(now(),canonical(data),ident))
             c.execute('INSERT INTO audit(actor,action,resource,at) VALUES(?,?,?,?)',(actor,'RETRY_INDEX',ident,now()))
+            return ident
+
+    def resume_job(self,ident,actor):
+        job=self.get_job(ident)
+        if job['kind']=='INDEX':return self.retry_index(ident,actor)
+        with self.connect() as c:
+            row=c.execute('SELECT kind,status,details FROM jobs WHERE id=?',(ident,)).fetchone()
+            if row['kind'] not in ('CRAWL','OCR','RECHECK') or row['status'] not in ('FAILED','INTERRUPTED'):
+                raise ValueError('JOB_RETRY_NOT_AVAILABLE')
+            if c.execute("SELECT 1 FROM jobs WHERE status IN ('QUEUED','RUNNING')").fetchone():raise ValueError('ANOTHER_JOB_IS_RUNNING')
+            data=json.loads(row['details']);data.pop('error',None)
+            c.execute("UPDATE jobs SET status='QUEUED',updated_at=?,details=? WHERE id=?",(now(),canonical(data),ident))
+            c.execute('INSERT INTO audit(actor,action,resource,at) VALUES(?,?,?,?)',(actor,'RETRY_JOB',ident,now()))
+        return ident
 
     def create_job(self, kind, actor, daily_key=None, article_ids=None):
         ident = str(uuid.uuid4())
@@ -191,7 +225,10 @@ class Queue:
             if kind == 'OCR':
                 if len(ids) != 1: raise ValueError('SELECT_ONE_OCR_ARTICLE')
                 row = c.execute('SELECT status FROM articles WHERE id=?', (ids[0],)).fetchone()
-                if not row or row[0] not in {'PENDING', 'QUARANTINED'}:
+                approved_needs_ocr = (row and row[0] == 'APPROVED' and
+                    {'OCR_REQUIRED','ATTACHMENT_TEXT_REQUIRED'} & set(auto_review_reasons(json.loads(
+                        c.execute('SELECT payload FROM articles WHERE id=?',(ids[0],)).fetchone()[0]))))
+                if not row or (row[0] not in {'PENDING', 'QUARANTINED'} and not approved_needs_ocr):
                     raise ValueError('OCR_REQUIRES_UNDECIDED_ARTICLE')
             if kind == 'INDEX':
                 if not ids: raise ValueError('NO_APPROVED_ARTICLES_SELECTED')
@@ -224,6 +261,34 @@ class Queue:
         with self.connect() as c:
             return [{**dict(row), 'details': json.loads(row['details'])}
                     for row in c.execute('SELECT * FROM jobs ORDER BY created_at DESC LIMIT 100')]
+
+    def overview(self, default_corpus):
+        """Read consistent counts without loading article bodies or job manifests."""
+        with self.connect() as c:
+            counts = {r[0]: r[1] for r in c.execute('SELECT status,count(*) FROM articles GROUP BY status')}
+            jobs = {r[0]: r[1] for r in c.execute('SELECT status,count(*) FROM jobs GROUP BY status')}
+            recent = [dict(r) for r in c.execute('''SELECT id,kind,status,created_at,updated_at
+                FROM jobs ORDER BY created_at DESC,id DESC LIMIT 8''')]
+            serving = c.execute('SELECT corpus_id FROM serving_corpus WHERE id=1').fetchone()
+            config = {**DEFAULT, **json.loads(c.execute('SELECT value FROM config WHERE id=1').fetchone()[0])}
+        return {'counts': counts, 'job_counts': jobs, 'recent_jobs': recent,
+                'corpus_id': serving[0] if serving else default_corpus,
+                'schedule': {k: config[k] for k in ('enabled','hour','limit','auto_approve')},
+                'observed_at': now()}
+
+    def audit_page(self, offset=0, limit=30, category=None):
+        # Existing reviews are part of the journal, including pre-feature history.
+        union = '''SELECT 'operation' AS category,'operation:' || id AS id,actor,action,resource,
+                          at AS created_at,NULL AS note FROM audit
+                   UNION ALL
+                   SELECT 'review','review:' || id,actor,decision,article_id,created_at,note FROM reviews'''
+        where = ' WHERE category=?' if category else ''
+        params = (category,) if category else ()
+        with self.connect() as c:
+            total = c.execute('SELECT count(*) FROM (' + union + ')' + where, params).fetchone()[0]
+            items = [dict(r) for r in c.execute('SELECT * FROM (' + union + ')' + where +
+                ' ORDER BY created_at DESC,id DESC LIMIT ? OFFSET ?', (*params,limit,offset))]
+        return {'items': items, 'total': total, 'offset': offset, 'limit': limit}
 
     def save_article(self, job_id, payload):
         # Include editorial content and metadata, exclude volatile fetch timestamps.
@@ -319,9 +384,11 @@ class Queue:
         ident = str(uuid.uuid5(uuid.NAMESPACE_URL, 'finmind-news-ocr:' + checksum))
         with self.connect() as c:
             job = c.execute('SELECT status FROM jobs WHERE id=?', (job_id,)).fetchone()
-            parent = c.execute('SELECT status FROM articles WHERE id=?', (parent_id,)).fetchone()
+            parent = c.execute('SELECT status,payload FROM articles WHERE id=?', (parent_id,)).fetchone()
             if not job or job[0] != 'RUNNING': raise ValueError('JOB_NOT_RUNNING')
-            if not parent or parent[0] not in {'PENDING','QUARANTINED'}:
+            approved_needs_ocr = (parent and parent[0] == 'APPROVED' and
+                {'OCR_REQUIRED','ATTACHMENT_TEXT_REQUIRED'} & set(auto_review_reasons(json.loads(parent[1]))))
+            if not parent or (parent[0] not in {'PENDING','QUARANTINED'} and not approved_needs_ocr):
                 raise ValueError('ARTICLE_ALREADY_DECIDED')
             c.execute('INSERT INTO articles VALUES(?,?,?,?,?,?)',
                       (ident, job_id, checksum, canonical(payload), 'PENDING', now()))
@@ -362,6 +429,19 @@ class Queue:
     def audit(self, actor, action, resource):
         with self.connect() as c:
             c.execute('INSERT INTO audit(actor,action,resource,at) VALUES(?,?,?,?)', (actor,action,resource,now()))
+
+    def repair_legacy_source_approvals(self):
+        """Keep old approvals in history, but never advertise unread sources as ready."""
+        changed = []
+        with self.connect() as c:
+            for row in c.execute("SELECT id,payload FROM articles WHERE status='APPROVED'").fetchall():
+                if {'OCR_REQUIRED','ATTACHMENT_TEXT_REQUIRED'} & set(auto_review_reasons(json.loads(row['payload']))):
+                    c.execute("UPDATE articles SET status='QUARANTINED' WHERE id=?",(row['id'],))
+                    c.execute('INSERT INTO reviews(article_id,actor,decision,note,created_at) VALUES(?,?,?,?,?)',
+                        (row['id'],'auto:source-preprocessing-migration','QUARANTINED',
+                         'source-preprocess-v1: Cần đọc nguồn trước khi duyệt; giữ quyết định cũ trong lịch sử.',now()))
+                    changed.append(row['id'])
+        return changed
 
     def interrupt(self, ident, actor):
         with self.connect() as c:
@@ -411,7 +491,8 @@ def collect_fireant(limit, *, symbols=None, max_pages=5, include_market=True):
     return articles, errors
 
 
-def crawl_job(queue, ident, collector=None):
+@job_worker
+def crawl_job(queue, ident, collector=None, extractor=None):
     queue.update_job(ident, 'RUNNING', phase='COLLECTING')
     try:
         cfg = queue.config()
@@ -419,13 +500,46 @@ def crawl_job(queue, ident, collector=None):
             symbols=cfg['symbols'], max_pages=cfg['max_pages'], include_market=cfg['include_market']))
         created = 0
         new_ids = set()
+        extraction_ids = set()
         for article in articles:
             aid, fresh = queue.save_article(ident, article); created += fresh
             if fresh: new_ids.add(aid)
+            if {'OCR_REQUIRED','ATTACHMENT_TEXT_REQUIRED'} & set(auto_review_reasons(article)):
+                record = queue.article(aid)
+                if fresh:
+                    # Hold immediately: an unread PDF/image is not a review-ready article.
+                    queue.review(aid,'QUARANTINED','source-preprocess-v1: Đang đọc PDF/OCR trước khi duyệt.',
+                                 'auto:crawl:' + ident)
+                    extraction_ids.add(aid)
+                elif (record['status']=='QUARANTINED' and record['reviews']
+                      and record['reviews'][-1]['actor'].startswith('auto:') and not record['replacement_article_id']):
+                    extraction_ids.add(aid)
+        from .admin_news_ocr import extract_revision
+        read_source = extractor or extract_revision
+        results = []
+        for position, aid in enumerate(sorted(extraction_ids), 1):
+            queue.update_job(ident,'RUNNING',phase='OCR',current_article_id=aid,
+                             completed=position-1,total=len(extraction_ids))
+            new_ids.discard(aid)
+            try:
+                revision, files = read_source(queue,ident,aid,'auto:crawl:' + ident)
+                results.append({'source_article_id':aid,'article_id':revision,'files':files,'status':'PENDING'})
+                # OCR revisions stay pending for a human text/number check; raw
+                # originals are immutable and marked SUPERSEDED, never approved.
+            except Exception as exc:
+                if queue.get_job(ident)['status']=='INTERRUPTED': return
+                errors.append({'article_id':aid,'phase':'SOURCE_EXTRACTION','code':type(exc).__name__})
+                current=queue.article(aid)
+                if (current['status']=='QUARANTINED' and current['reviews']
+                        and current['reviews'][-1]['actor'].startswith('auto:')):
+                    queue.review(aid,'QUARANTINED','source-preprocess-v1: Đọc nguồn thất bại: ' + type(exc).__name__,
+                                 'auto:crawl:' + ident)
+            queue.update_job(ident,'RUNNING',completed=position,total=len(extraction_ids),results=results,errors=errors)
         auto = queue.auto_review('crawl:' + ident, new_ids) if cfg['auto_approve'] else None
         queue.update_job(ident, 'PARTIAL' if errors else 'COMPLETED', phase='WAITING_REVIEW',
                          fetched=len(articles), new_articles=created, duplicates=len(articles)-created, errors=errors,
-                         auto_review=auto, scope={k:cfg[k] for k in ('provider','symbols','max_pages','include_market','limit')})
+                         extracted=len(results),results=results,auto_review=auto,
+                         scope={k:cfg[k] for k in ('provider','symbols','max_pages','include_market','limit')})
     except Exception as exc:
         if queue.get_job(ident)['status'] != 'INTERRUPTED':
             queue.update_job(ident, 'FAILED', phase='COLLECTING', error=type(exc).__name__)

@@ -149,6 +149,13 @@ phải dùng nguồn và phạm vi nhóm đã chốt.
 
 ### Đọc PDF / OCR News
 
+Luồng chính tự thực hiện bước này ngay trong `crawl_job`, trước khi xét duyệt.
+Nguồn gốc được lưu trước; bản thiếu chữ được giữ QUARANTINED trong khi xử lý,
+revision đọc xong vào PENDING để admin kiểm tra. Nguồn đọc lỗi giữ ở Cần kiểm tra,
+ghi mã lỗi riêng và xử lý tiếp các bài còn lại. Nguồn đã có revision không bị OCR
+lặp khi cào trùng. Nút thủ công bên dưới phục vụ thử lại/phục hồi, không yêu cầu
+người dùng làm OCR sau khi bài đã được duyệt.
+
 Trong Xem nguồn, nút **Đọc PDF / OCR ảnh** chạy job `OCR` cho một bài
 PENDING/QUARANTINED. Adapter `admin_news_ocr.py` tái sử dụng hàm đọc lớp chữ,
 render trang và Tesseract từ `data_pipeline/annual_reports/OCR_annuals.py`.
@@ -182,6 +189,16 @@ Các bản nguồn từng bị gắn REJECTED do thay bằng revision được s
 SUPERSEDED khi mở Queue, chỉ khi liên kết revision và lịch sử thay thế khớp.
 Quyết định từ chối của người duyệt giữ nguyên. Trigger tương thích worker cũ
 phân loại các revision đang chạy sang SUPERSEDED mà không cần ngắt job OCR.
+
+Ảnh minh họa không tự động làm bài đầy đủ văn bản bị chặn: bài có ít nhất
+300 ký tự và 50 từ vẫn dùng văn bản đã lưu, trừ khi nguồn đánh dấu infographic
+hoặc nội dung chỉ dẫn đọc số liệu/tài liệu trong hình. Bài chỉ có ảnh, lời dẫn
+ngắn và infographic vẫn yêu cầu OCR. Đây là điều kiện định tuyến trích xuất,
+không phải cam kết mọi ảnh đều không chứa thông tin bổ sung.
+Bài APPROVED từ quy tắc cũ nhưng thực sự cần OCR vẫn có thể mở nguồn và chạy
+OCR để tạo revision PENDING mới; bản đã duyệt cũ thành SUPERSEDED, giữ lịch sử.
+Revision mới phải được kiểm tra/duyệt trước khi nạp. Lỗi API và trạng thái lần
+nạp gần nhất hiển thị ngay tại khu vực chọn bài, ngoài lịch sử phía cuối trang.
 
 ```powershell
 $env:PYTHONPATH='.;backend'

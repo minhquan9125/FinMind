@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate, useLocation, useAuth } from "../../app/router.jsx";
 import { PATHS } from "../../shared/paths.js";
 import { GoogleLogin } from "@react-oauth/google";
+import { loginDestination } from "../../shared/context/loginDestination.js";
 export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,9 +34,9 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      await login(email.trim(), password, rememberMe);
+      const authUser = await login(email.trim(), password, rememberMe);
       // Điều hướng về trang trước đó nếu có, hoặc vào trang tương ứng
-      const destination = location.state?.from?.pathname || (email.includes("admin") ? PATHS.admin : PATHS.dashboard);
+      const destination = loginDestination(authUser, location.state?.from);
       navigate(destination, { replace: true });
     } catch (err) {
       setErrorMessage(err.message || "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.");
@@ -44,18 +45,8 @@ export default function LoginPage() {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    setErrorMessage("");
-    setGoogleLoading(true);
-    try {
-      await loginWithGoogle(rememberMe);
-      const destination = location.state?.from?.pathname || PATHS.dashboard;
-      navigate(destination, { replace: true });
-    } catch (err) {
-      setErrorMessage(err.message || "Đăng nhập bằng tài khoản Google thất bại.");
-    } finally {
-      setGoogleLoading(false);
-    }
+  const handleGoogleLogin = () => {
+    setErrorMessage("Vui lòng dùng nút đăng nhập Google bên trên để xác thực.");
   };
 
   // Nút điền nhanh tài khoản thử nghiệm
@@ -252,8 +243,8 @@ export default function LoginPage() {
         setErrorMessage("");
         setGoogleLoading(true);
         try {
-          await loginWithGoogle(credentialResponse.credential, rememberMe);
-          const destination = location.state?.from?.pathname || PATHS.dashboard;
+          const authUser = await loginWithGoogle(credentialResponse.credential, rememberMe);
+          const destination = loginDestination(authUser, location.state?.from);
           navigate(destination, { replace: true });
         } catch (err) {
           setErrorMessage(err.message || "Đăng nhập bằng tài khoản Google thất bại.");
