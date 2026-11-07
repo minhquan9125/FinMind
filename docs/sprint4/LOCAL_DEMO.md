@@ -7,20 +7,60 @@
 Từ thư mục gốc repository:
 
 ```powershell
-python -m venv .venv
+git switch backup-demo
+git pull --ff-only origin backup-demo
+py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
-Copy-Item backend/.env.example backend/.env
+if (-not (Test-Path backend/.env)) { Copy-Item backend/.env.example backend/.env }
 ```
 
-Sửa `backend/.env`: kết nối PostgreSQL đọc/ghi, JWT secret và corpus thực tế.
-Không ghi đè `.env` nếu máy đã có cấu hình. Nếu dùng DB chung của nhóm ở lượt
-demo đã kiểm tra, `.env.example` đã ghi corpus
-`924c00e5-8bd9-5141-8f8d-30a49c107b70` (44.939 chunk tại lúc bàn giao).
-Dùng DB khác thì phải đặt corpus FROZEN/ACTIVE thực sự của DB đó.
+Chuẩn bị Python 3.12, Node.js LTS >=20, npm và Git. Nếu không có `py`, dùng
+`python -m venv .venv` sau khi kiểm tra `python --version` đúng phiên bản.
+Không sao chép `.venv` từ máy khác; môi trường này chứa đường dẫn Python của máy tạo.
+
+Nhận cấu hình thật qua kênh riêng của nhóm, rồi sửa `backend/.env`:
+
+| Mục | Thành viên cần có |
+| --- | --- |
+| `DATABASE_URL` | PostgreSQL của nhóm có schema, corpus/chunk/vector và quyền runtime/auth/chat |
+| `ADMIN_INGEST_DATABASE_URL` | Kết nối writer cho chức năng tạo chunk, vector và nạp DB của admin |
+| `JWT_SECRET_KEY` | Secret theo môi trường backend; thay placeholder, không đưa lên Git |
+| `NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD` | Neo4j của nhóm có phiên graph READY; PostgreSQL không thay thế Neo4j |
+| `RESEARCH_CORPUS_VERSION_ID` | ID corpus thực sự tồn tại trong đúng DB đang kết nối |
+| `GEMINI_API_KEY` | Key hợp lệ nếu cần sinh/tóm tắt câu trả lời bằng Gemini |
+
+File mẫu dùng `127.0.0.1:15433` và `127.0.0.1:17687` làm ví dụ tunnel local.
+Mỗi thành viên phải mở tunnel trên chính máy mình hoặc dùng địa chỉ DB được nhóm
+cấp; clone Git không tạo tunnel. Không gửi `.env` lên Git hay qua chat công khai.
+`run_demo_backend.py` vẫn chạy khi không có `.env.operator` nếu writer đã đặt trong
+`backend/.env`; không cần lấy file `.env.operator` riêng của máy người khác.
+
+Nếu dùng DB chung, xác nhận corpus mẫu với leader vì phiên phục vụ có thể đã đổi.
+Git chỉ cung cấp ID mẫu, không tự tạo dữ liệu cho ID đó. Dùng DB mới phải triển
+khai schema/migration và nạp corpus/index/vector trước; chỉ tạo DB rỗng chưa đủ.
+Xem [lịch sử Chat và migration](../../backend/src/retrieval_orchestration/notes/POSTGRES_HISTORY.md).
+Không chạy reset/migration nhập dữ liệu thử lên DB chung chỉ để mở web.
 Queue local có thể trống trên máy mới; chat vẫn đọc bài đã nạp từ corpus DB.
 Muốn chia sẻ cả lịch sử thu thập/duyệt, sao lưu/chuyển thư mục
 `outputs/admin-ingestion` riêng giữa các máy và giữ cùng corpus; thư mục này
 không nằm trong Git. Đây vẫn là control plane cho một máy, chưa phải hàng đợi đa máy.
+
+### SDK giá trên máy mới
+
+`backend/requirements.txt` chưa cài `vnstock`. Để có lịch sử và giá mới, cài
+SDK riêng; backend tự nhận đường dẫn dưới đây, tránh trộn dependency SDK và RAG:
+
+```powershell
+py -3.12 -m venv data_pipeline/ScrapersOHLCV/.agent-state/vnstock-venv
+.\data_pipeline\ScrapersOHLCV\.agent-state\vnstock-venv\Scripts\python.exe -m pip install -r data_pipeline/ScrapersOHLCV/requirements/vnstock.txt
+```
+
+Nếu đã cài SDK trong `.venv` chính thì không bắt buộc tạo môi trường thứ hai.
+Nếu SDK yêu cầu tài khoản/hạn mức, dùng cơ chế chính thức của SDK và cấu hình của
+nhóm. Có SDK chưa đồng nghĩa nguồn luôn trả dữ liệu. Không có SDK thì chỉ các bản
+giá đã lưu dùng được; dễ gặp lỗi tải giá mới dù đăng nhập và Chat vẫn mở được.
+
+### OCR và frontend
 
 Cài [Tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html) và
 [Poppler](https://poppler.freedesktop.org/), đặt trên PATH hoặc cấu hình
@@ -62,8 +102,42 @@ npm.cmd run dev -- --host 127.0.0.1 --port 5173
 Kiểm tra `http://127.0.0.1:8000/api/health`: research_warmup và router_warmup
 cần ở trạng thái ready trước khi đo thời gian. Lần khởi động đầu dựng cache
 có thể lâu hơn các lần đã có cache. Không đóng backend/tunnel khi demo.
+Máy mới có thể phải tải model `BAAI/bge-m3` theo revision ghim từ Hugging Face;
+cần mạng và dung lượng cho Torch/model/cache. Những file này không đi cùng Git.
 Cache corpus FROZEN dùng được tối đa 7 ngày; mỗi lần tìm vẫn kiểm fingerprint
 membership/mô hình và hash nguồn trả về. Đổi corpus tự dùng cache khác.
+
+### Checklist bàn giao cho thành viên
+
+```powershell
+.\Chay-FinMind.cmd --check
+.\.venv\Scripts\python.exe -m pip check
+```
+
+Launcher `--check` chỉ kiểm tra dependency cơ bản và có file cấu hình; chưa xác
+minh nội dung secret, DB/tunnel, corpus, Neo4j, SDK giá, OCR hoặc quota Gemini.
+Thông báo `[OK]` của launcher chưa phải xác nhận toàn bộ chức năng sẵn sàng.
+
+Sau khi mở hai server, kiểm tra từng luồng:
+
+1. Đăng nhập bằng tài khoản của thành viên. Tài khoản mới mặc định RESEARCHER;
+   leader cấp ADMINISTRATOR từ DB nếu cần admin, không sửa role ở frontend.
+2. `/api/health` phản hồi và hai warmup ở trạng thái `ready`.
+3. Mở công ty, đợi lịch sử giá tải và kiểm tra ngày dữ liệu; thiếu SDK/quota có
+   thể làm giá lỗi dù DB vẫn hoạt động.
+4. Mở Đồ thị, có phiên READY và xem được quan hệ/bằng chứng. Kiểm tra tunnel
+   Neo4j riêng nếu danh sách phiên lỗi.
+5. Hỏi một câu có nguồn trong corpus chung rồi mở citation. Key/đơn giá/hạn mức
+   của nhà cung cấp không được xác minh chỉ bằng health check.
+6. Nếu làm admin: thử OCR một tệp và kiểm tra đủ Tesseract, Poppler, `vie+eng`,
+   rồi nạp một bài đã duyệt bằng writer DSN. Lịch cào tự động dùng tiến trình
+   scheduler riêng (`backend/scripts/run_admin_scheduler.py`); mở web không
+   tự khởi động lịch đó.
+
+Nếu dùng Google login, cần client ID khớp frontend/backend và origin đã được
+Google cho phép. Xem hướng dẫn Google trong README gốc; đăng nhập email/mật khẩu
+không yêu cầu Google OAuth. Không dùng dữ liệu/phiên bản ở file minh họa để
+khẳng định DB đã được nạp đầy đủ.
 
 ## Dữ liệu và câu hỏi kiểm tra
 
