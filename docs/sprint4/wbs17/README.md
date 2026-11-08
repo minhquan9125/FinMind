@@ -1,5 +1,7 @@
 # WBS17 — bộ ca nháp và runner truy xuất B1/B2
 
+**Phần Nhân:** [báo cáo bàn giao riêng ngày 08/11](../WBS17-NHAN-HANDOFF-20261108.md) tổng hợp số đo, đối chiếu nguồn, ca sai và đầu vào còn chờ. E2E thuộc Huyền, không nằm trong lượt thực hiện này.
+
 **Cập nhật 08/11:** đã review và kiểm thử snapshot `backup-demo` mới nhất; xem [kết quả và các điều kiện còn thiếu](../WBS17-backup-demo-review-20261108.md). Kết quả 06/11 bên dưới không tự áp dụng cho nhánh mới.
 
 **Cập nhật 06/11:** cấu hình VECTOR local đã được sửa và cache đã dựng; lỗi lọc năm BCTN đã khắc phục. Xem [biên bản sửa và kiểm LIVE](../WBS17-vector-period-fix-20261106.md). Các giá trị “trước sửa” bên dưới là bằng chứng chẩn đoán, không phải cấu hình hiện tại.

@@ -1,5 +1,11 @@
 # History thay đổi code
 
+### [2026-11-08] WBS17 — hoàn thiện hồ sơ riêng phần Nhân
+
+- Theo yêu cầu chỉ làm phần Nhân, dừng mở rộng sang E2E. Tổng hợp lại 150 lượt benchmark retrieval/30 warmup từ run live02 cố định d06f500; đối chiếu số liệu với summary gốc, không chạy lại hoặc trộn kết quả backup-demo.
+- Bổ sung phân tích B1 thiếu đúng bài News ở TC_VECTOR_04; B2 thiếu chunk lợi nhuận gộp TC_VECTOR_09; nguồn FTEL còn chờ chốt gold. Làm rõ raw periods diagnostic 2025/2025-YEAR của B1 là nhãn tương đương năm, chưa phải bằng chứng dữ liệu sai kỳ.
+- Thêm báo cáo WBS17-NHAN-HANDOFF-20261108.md và tổng hợp trong sheet Nhân; giữ nguyên số đo gốc, đề/gold, công thức/notes và phần Huyền. Tách rõ việc đã làm với benchmark chức vụ/sự kiện, Answer, gold và báo cáo WBS16 còn chờ đầu vào. Không sửa code sản phẩm hoặc tự đóng task.
+
 ### [2026-11-08] WBS17 — review và kiểm thử backup-demo tách biệt
 
 - Lấy remote `backup-demo` tại `f9f1864d`, không merge đè nhánh Nhân hoặc sửa code sản phẩm. Chạy 359 backend test và 77 frontend test đạt, frontend build đạt. Hồi quy chéo graph từ nhánh Nhân có 19 đạt/6 thất bại, chỉ rõ guard nguồn/scope/phiên/kỳ/timeout cần giữ khi tích hợp.
