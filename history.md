@@ -1,5 +1,12 @@
 # History thay đổi code
 
+### [2026-11-08] WBS17 — review và kiểm thử backup-demo tách biệt
+
+- Lấy remote `backup-demo` tại `f9f1864d`, không merge đè nhánh Nhân hoặc sửa code sản phẩm. Chạy 359 backend test và 77 frontend test đạt, frontend build đạt. Hồi quy chéo graph từ nhánh Nhân có 19 đạt/6 thất bại, chỉ rõ guard nguồn/scope/phiên/kỳ/timeout cần giữ khi tích hợp.
+- Chạy lại 10 ca component, mỗi ca 5 lượt; thêm kiểm auth API thật: tổng 11 ca biên có 7 đạt phần backend/4 chưa đạt. Scope hai quý/ngày cụ thể và auth đã cải thiện; chưa chấm Answer hoặc E2E.
+- Thêm script đọc graph/nguồn SELECT-only. Đọc 7 phiên READY, xác nhận có phiên 185 claims theo tài liệu; 77 lượt tham chiếu (31 chunk duy nhất) replay nguồn đạt trên mẫu, hai phiên smoke ghi riêng. Không nạp/duyệt/sửa DB, không dùng graph nguồn để khẳng định chức vụ hiện tại.
+- Cập nhật Excel chung T:W, môi trường và Bug Log; xác minh giữ nguyên đề/gold, số đo LIVE, công thức, notes và toàn bộ sheet Huyền. Task vẫn IN_PROGRESS do còn Answer/E2E, gold/dữ liệu chức vụ-sự kiện và receipt full-load WBS16. Xem `docs/sprint4/WBS17-backup-demo-review-20261108.md`.
+
 ### [2026-11-06] WBS17 — kiểm thử bổ sung và mở ứng dụng, không sửa sản phẩm
 
 - Chỉ thêm hai script kiểm thử và báo cáo; không sửa `backend/src`/`frontend/src`. Khởi động backend thật cổng 8000 và Vite cổng 5173 theo yêu cầu, tắt collector thị trường tự động trong tiến trình test; health và proxy HTTP 200.
