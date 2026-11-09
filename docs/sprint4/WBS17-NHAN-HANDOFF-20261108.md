@@ -1,5 +1,7 @@
 # WBS17 — phần kiểm thử của Hồ Phạm Đăng Nhân
 
+**Bổ sung 09/11:** đã tách 12 câu GRAPH/BOTH còn thiếu thành [6 gói dữ liệu cụ thể](WBS17-NHAN-12-CASE-PREP-20261109.md), có nguồn đầu mối, mapping/receipt còn thiếu và điều kiện mở lượt đo. Đây là phần chuẩn bị, không thay kết quả benchmark bên dưới.
+
 Ngày tổng hợp: 08/11/2026. Phạm vi: benchmark, đối chiếu truy xuất và phân tích
 ca sai của Nhân (phân công 7 giờ). Không thực hiện hoặc ký thay phần E2E của Huyền.
 

@@ -1,5 +1,11 @@
 # History thay đổi code
 
+### [2026-11-09] WBS17 — chuẩn bị 12 ca GRAPH/BOTH của Nhân
+
+- Tách nguyên 12 câu đang chờ thành 6 gói (3 nhân sự, 3 sự kiện), nối đầu mối document/chunk từ 6 câu VECTOR tương ứng. Chỉ ghi nguồn gợi ý; không replay mới, không đổi gold/readiness hoặc giả lập kết quả chạy.
+- Lập yêu cầu bàn giao canonical IDs, role/stage/thời gian, registry/commit, phiên phục vụ, receipt review/publish và nguồn có locator/quote. Đối chiếu hai registry local: ITD/ELC chưa có ticker mapping; chưa kết luận về registry triển khai.
+- Ghi riêng BOTH_05 cần hàng Nguyễn Hồng Minh và BOTH_06 cần span lịch sử chức vụ; không coi các chunk VECTOR cũ tự đủ mọi chi tiết. Cập nhật ghi chú 12 dòng và bảng chuẩn bị từ dòng 91 trong sheet Nhân, giữ phần Huyền và số đo cũ.
+
 ### [2026-11-08] WBS17 — hoàn thiện hồ sơ riêng phần Nhân
 
 - Theo yêu cầu chỉ làm phần Nhân, dừng mở rộng sang E2E. Tổng hợp lại 150 lượt benchmark retrieval/30 warmup từ run live02 cố định d06f500; đối chiếu số liệu với summary gốc, không chạy lại hoặc trộn kết quả backup-demo.

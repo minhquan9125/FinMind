@@ -1,0 +1,540 @@
+{
+  "schema_version": "wbs17-nhan-preparation-v1",
+  "prepared_date": "2026-11-09",
+  "purpose": "Data handoff request only; not an import envelope, approval or benchmark result.",
+  "source_workbook_sha256": "5e9607bc8edb243e0338267c0ab2b7c306fe7078b0a77d03c5d78865695c2bd6",
+  "local_registry": {
+    "path": "backend\\src\\sprint4_runtime\\company.registry.20261105.r3.json",
+    "sha256": "3fd14ec243b989225363333f1e53ac4e890c64f8e6e6718776f43c22fc634498",
+    "serving_confirmed": false
+  },
+  "existing_benchmark_scope": {
+    "corpus_version_id": "b2550a0b-c423-5c50-9b15-6fb6af12e2c6",
+    "index_version_id": "ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d",
+    "graph_version_ids": [
+      "s4-bctn-b2550a0b-v4-20261102",
+      "95260e20-ea3f-4d76-9ae5-185356cd437d",
+      "96cc8e0d-f78e-49d0-83ac-56c53245c1ed"
+    ]
+  },
+  "scope_note": "New graph versions must be explicitly validated and pinned for a new run. No automatic configuration writes.",
+  "source_replay_today": false,
+  "bundles": [
+    {
+      "bundle_id": "P1",
+      "test_ids": [
+        "TC_GRAPH_04",
+        "TC_BOTH_04"
+      ],
+      "source_companion_case": "TC_VECTOR_01",
+      "company_symbol": "VCB",
+      "person_name_from_draft": "Nguyễn Thanh Tùng",
+      "relation_type_from_draft": "APPOINTS",
+      "direction": "Company -> Person",
+      "event_effective_date_from_draft": "2024-07-26",
+      "published_at": null,
+      "origin_extraction_id": "410eeedf-b506-5d45-8113-d9e7165d1c09",
+      "article_id": null,
+      "candidate_company_ids_from_local_registry": [
+        "CMP-0f97e7886f56415b4b5e"
+      ],
+      "company_mapping_status": "UNIQUE_LOCAL_CANDIDATE_SERVING_UNCONFIRMED",
+      "source_reference": [
+        {
+          "document_id": "dd94d5da-f8b1-5776-8c5e-f211d18ae26b",
+          "url": "https://static2.vietstock.vn/data/HOSE/2024/BCTN/VN/VCB_Baocaothuongnien_2024.pdf",
+          "pdf_page": 65,
+          "source_view_sha256": "4ee095497823547593f90cb39e32e5919342ada0c636aa01c936a1b49acb38c3",
+          "extraction_id": "410eeedf-b506-5d45-8113-d9e7165d1c09"
+        }
+      ],
+      "candidate_document_ids": [
+        "dd94d5da-f8b1-5776-8c5e-f211d18ae26b"
+      ],
+      "candidate_chunk_ids": [
+        "8203616d-60a9-5572-8594-c012730a6169",
+        "9b28a95a-083c-5fa1-ba74-8f9321bd6f01",
+        "b8de74c0-bde2-55a4-936f-ec16c5034c37"
+      ],
+      "source_candidate_status": "FROM_EXISTING_VECTOR_CASE_NOT_NEW_LIVE_REPLAY",
+      "both_extra_requirement": "Nguyên văn hàng bổ nhiệm, không suy chức vụ hiện tại hoặc valid_to.",
+      "handoff_required": {
+        "serving_commit": null,
+        "registry_path_and_sha256": null,
+        "canonical_company_id": null,
+        "canonical_person_id": null,
+        "canonical_event_id": null,
+        "relation_id": null,
+        "graph_version_id": null,
+        "corpus_version_id": null,
+        "index_version_id": null,
+        "review_receipt_path": null,
+        "publication_receipt_path": null,
+        "event_stage": null,
+        "position_code": null,
+        "date_mapping_contract": null,
+        "evidence_chunk_ids": [],
+        "document_versions_and_hashes": [],
+        "quote_locator_offsets": [],
+        "event_date_status": "CONFIRM_FROM_SOURCE",
+        "participant_role_from_evidence": null,
+        "graph_query_readback_path": null,
+        "serving_route_readback_path": null,
+        "content_span_readback_path": null,
+        "ready_scope_config_reference": null
+      },
+      "owner_request": "Hưng WBS02 + Vũ nhân sự; Huyền review; owner publish + Nhân xác minh",
+      "state": "PREPARED_BLOCKED_NOT_RUN"
+    },
+    {
+      "bundle_id": "P2",
+      "test_ids": [
+        "TC_GRAPH_05",
+        "TC_BOTH_05"
+      ],
+      "source_companion_case": "TC_VECTOR_02",
+      "company_symbol": "ITD",
+      "person_name_from_draft": "Nguyễn Vĩnh Thuận",
+      "relation_type_from_draft": "DISMISSES",
+      "direction": "Company -> Person",
+      "event_effective_date_from_draft": "2025-06-26",
+      "published_at": null,
+      "origin_extraction_id": "130c0546-aeb9-56ac-8039-6ab15e2e80b2",
+      "article_id": null,
+      "candidate_company_ids_from_local_registry": [],
+      "company_mapping_status": "MISSING_LOCAL_TICKER_MAPPING",
+      "source_reference": [
+        {
+          "document_id": "a2c071fb-25bf-5ec4-903b-e973c623b85d",
+          "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/ITD_Baocaothuongnien_2025.pdf",
+          "pdf_page": 52,
+          "source_view_sha256": "d29acf9d280d7310222afee6a10edbd47b99492988edf6f82320997cda5ee3e5",
+          "extraction_id": "130c0546-aeb9-56ac-8039-6ab15e2e80b2"
+        }
+      ],
+      "candidate_document_ids": [
+        "a2c071fb-25bf-5ec4-903b-e973c623b85d"
+      ],
+      "candidate_chunk_ids": [
+        "9c58ad01-d5d9-5d7e-a2d1-eb8ee588565e"
+      ],
+      "source_candidate_status": "FROM_EXISTING_VECTOR_CASE_NOT_NEW_LIVE_REPLAY",
+      "both_extra_requirement": "BOTH_05 cần thêm span riêng: Nguyễn Hồng Minh, Phó Tổng Giám đốc, bổ nhiệm 04/11/2025. Không gán ngày/hàng này cho Nguyễn Vĩnh Thuận.",
+      "handoff_required": {
+        "serving_commit": null,
+        "registry_path_and_sha256": null,
+        "canonical_company_id": null,
+        "canonical_person_id": null,
+        "canonical_event_id": null,
+        "relation_id": null,
+        "graph_version_id": null,
+        "corpus_version_id": null,
+        "index_version_id": null,
+        "review_receipt_path": null,
+        "publication_receipt_path": null,
+        "event_stage": null,
+        "position_code": null,
+        "date_mapping_contract": null,
+        "evidence_chunk_ids": [],
+        "document_versions_and_hashes": [],
+        "quote_locator_offsets": [],
+        "event_date_status": "CONFIRM_FROM_SOURCE",
+        "participant_role_from_evidence": null,
+        "graph_query_readback_path": null,
+        "serving_route_readback_path": null,
+        "content_span_readback_path": null,
+        "ready_scope_config_reference": null
+      },
+      "owner_request": "Hưng WBS02 + Vũ nhân sự; Huyền review; owner publish + Nhân xác minh",
+      "state": "PREPARED_BLOCKED_NOT_RUN"
+    },
+    {
+      "bundle_id": "P3",
+      "test_ids": [
+        "TC_GRAPH_06",
+        "TC_BOTH_06"
+      ],
+      "source_companion_case": "TC_VECTOR_03",
+      "company_symbol": "BID",
+      "person_name_from_draft": "Lê Ngọc Lâm",
+      "relation_type_from_draft": "APPOINTS",
+      "direction": "Company -> Person",
+      "event_effective_date_from_draft": "2026-07-01",
+      "published_at": null,
+      "origin_extraction_id": "f600faf7-022f-567b-86b1-4ff467de6387",
+      "article_id": null,
+      "candidate_company_ids_from_local_registry": [
+        "CMP-c7f85408f08fed1482bf"
+      ],
+      "company_mapping_status": "UNIQUE_LOCAL_CANDIDATE_SERVING_UNCONFIRMED",
+      "source_reference": [
+        {
+          "document_id": "7c8d45c4-6d1a-5b1e-a04e-4cd3f1e70190",
+          "url": "https://bidv.com.vn/vn/ve-bidv/ban-lanh-dao",
+          "pdf_page": null,
+          "source_view_sha256": "da6f0211ebf6ee83cd6983571fbeec008196b5e66acab7055bf093ab1f9abfcf",
+          "extraction_id": "f600faf7-022f-567b-86b1-4ff467de6387"
+        }
+      ],
+      "candidate_document_ids": [
+        "7c8d45c4-6d1a-5b1e-a04e-4cd3f1e70190"
+      ],
+      "candidate_chunk_ids": [
+        "183e7b12-084d-5bc0-8a6d-978e3aa8419f"
+      ],
+      "source_candidate_status": "FROM_EXISTING_VECTOR_CASE_NOT_NEW_LIVE_REPLAY",
+      "both_extra_requirement": "BOTH_06 cần span chức vụ từ 12/03/2021: Thành viên HĐQT kiêm Tổng Giám đốc. Không dùng chunk sinh năm 1975 làm bằng chứng mặc định cho cả tiểu sử.",
+      "handoff_required": {
+        "serving_commit": null,
+        "registry_path_and_sha256": null,
+        "canonical_company_id": null,
+        "canonical_person_id": null,
+        "canonical_event_id": null,
+        "relation_id": null,
+        "graph_version_id": null,
+        "corpus_version_id": null,
+        "index_version_id": null,
+        "review_receipt_path": null,
+        "publication_receipt_path": null,
+        "event_stage": null,
+        "position_code": null,
+        "date_mapping_contract": null,
+        "evidence_chunk_ids": [],
+        "document_versions_and_hashes": [],
+        "quote_locator_offsets": [],
+        "event_date_status": "CONFIRM_FROM_SOURCE",
+        "participant_role_from_evidence": null,
+        "graph_query_readback_path": null,
+        "serving_route_readback_path": null,
+        "content_span_readback_path": null,
+        "ready_scope_config_reference": null
+      },
+      "owner_request": "Hưng WBS02 + Vũ nhân sự; Huyền review; owner publish + Nhân xác minh",
+      "state": "PREPARED_BLOCKED_NOT_RUN"
+    },
+    {
+      "bundle_id": "E1",
+      "test_ids": [
+        "TC_GRAPH_07",
+        "TC_BOTH_07"
+      ],
+      "source_companion_case": "TC_VECTOR_04",
+      "company_symbol": "FPT",
+      "person_name_from_draft": null,
+      "relation_type_from_draft": "INVOLVES",
+      "direction": "Event -> Company",
+      "event_effective_date_from_draft": null,
+      "published_at": "2026-10-29",
+      "origin_extraction_id": null,
+      "article_id": "b421f949-205d-507e-b421-a988aeafee72",
+      "candidate_company_ids_from_local_registry": [
+        "CMP-fbb705553b47c681f6ae"
+      ],
+      "company_mapping_status": "UNIQUE_LOCAL_CANDIDATE_SERVING_UNCONFIRMED",
+      "source_reference": [
+        {
+          "source_table": "news_articles",
+          "article_id": "b421f949-205d-507e-b421-a988aeafee72",
+          "url": "https://fireant.vn/bai-viet/fpt-co-dong-don-tin-vui-nhan-tam-ung-co-tuc-nam-2026/42522048",
+          "published_at": "2026-10-29",
+          "pdf_page": null
+        }
+      ],
+      "candidate_document_ids": [
+        "bf912c6c-4857-5a04-908b-d9116b38c255"
+      ],
+      "candidate_chunk_ids": [
+        "f2c46deb-e739-502b-a6b7-4dcdae20e828"
+      ],
+      "source_candidate_status": "FROM_EXISTING_VECTOR_CASE_NOT_NEW_LIVE_REPLAY",
+      "both_extra_requirement": "Giai đoạn thông qua nghị quyết cổ tức. BOTH_07 cần span 10% mệnh giá, 1.000 đồng/cổ phiếu; không nói đã chi trả.",
+      "handoff_required": {
+        "serving_commit": null,
+        "registry_path_and_sha256": null,
+        "canonical_company_id": null,
+        "canonical_person_id": null,
+        "canonical_event_id": null,
+        "relation_id": null,
+        "graph_version_id": null,
+        "corpus_version_id": null,
+        "index_version_id": null,
+        "review_receipt_path": null,
+        "publication_receipt_path": null,
+        "event_stage": null,
+        "position_code": null,
+        "date_mapping_contract": null,
+        "evidence_chunk_ids": [],
+        "document_versions_and_hashes": [],
+        "quote_locator_offsets": [],
+        "event_date_status": "UNKNOWN_UNLESS_SOURCE_PROVES_DATE",
+        "participant_role_from_evidence": null,
+        "graph_query_readback_path": null,
+        "serving_route_readback_path": null,
+        "content_span_readback_path": null,
+        "ready_scope_config_reference": null
+      },
+      "owner_request": "Quân sự kiện + Hưng Company registry; Huyền review; owner publish + Nhân xác minh",
+      "state": "PREPARED_BLOCKED_NOT_RUN"
+    },
+    {
+      "bundle_id": "E2",
+      "test_ids": [
+        "TC_GRAPH_08",
+        "TC_BOTH_08"
+      ],
+      "source_companion_case": "TC_VECTOR_05",
+      "company_symbol": "ELC",
+      "person_name_from_draft": null,
+      "relation_type_from_draft": "INVOLVES",
+      "direction": "Event -> Company",
+      "event_effective_date_from_draft": null,
+      "published_at": "2026-09-17",
+      "origin_extraction_id": null,
+      "article_id": "c1d9b43c-5d30-5917-aba3-a16520fc7508",
+      "candidate_company_ids_from_local_registry": [],
+      "company_mapping_status": "MISSING_LOCAL_TICKER_MAPPING",
+      "source_reference": [
+        {
+          "source_table": "news_articles",
+          "article_id": "c1d9b43c-5d30-5917-aba3-a16520fc7508",
+          "url": "https://cafef.vn/du-lieu/elc-2978634/elc-da-phat-hanh-7700890-cp-de-tra-co-tuc-va-tang-von-co-phan-tu-nguon-von-csh.chn",
+          "published_at": "2026-09-17",
+          "pdf_page": null
+        }
+      ],
+      "candidate_document_ids": [
+        "a184caae-530f-5353-9b2c-abb999dad0df"
+      ],
+      "candidate_chunk_ids": [
+        "31ccb2e7-2c4c-58da-adc0-2d8df793b5cc"
+      ],
+      "source_candidate_status": "FROM_EXISTING_VECTOR_CASE_NOT_NEW_LIVE_REPLAY",
+      "both_extra_requirement": "Giai đoạn đã phát hành. BOTH_08 cần span 7.700.890 cổ phiếu, trả cổ tức và tăng vốn từ nguồn vốn chủ sở hữu.",
+      "handoff_required": {
+        "serving_commit": null,
+        "registry_path_and_sha256": null,
+        "canonical_company_id": null,
+        "canonical_person_id": null,
+        "canonical_event_id": null,
+        "relation_id": null,
+        "graph_version_id": null,
+        "corpus_version_id": null,
+        "index_version_id": null,
+        "review_receipt_path": null,
+        "publication_receipt_path": null,
+        "event_stage": null,
+        "position_code": null,
+        "date_mapping_contract": null,
+        "evidence_chunk_ids": [],
+        "document_versions_and_hashes": [],
+        "quote_locator_offsets": [],
+        "event_date_status": "UNKNOWN_UNLESS_SOURCE_PROVES_DATE",
+        "participant_role_from_evidence": null,
+        "graph_query_readback_path": null,
+        "serving_route_readback_path": null,
+        "content_span_readback_path": null,
+        "ready_scope_config_reference": null
+      },
+      "owner_request": "Quân sự kiện + Hưng Company registry; Huyền review; owner publish + Nhân xác minh",
+      "state": "PREPARED_BLOCKED_NOT_RUN"
+    },
+    {
+      "bundle_id": "E3",
+      "test_ids": [
+        "TC_GRAPH_09",
+        "TC_BOTH_09"
+      ],
+      "source_companion_case": "TC_VECTOR_06",
+      "company_symbol": "BID",
+      "person_name_from_draft": null,
+      "relation_type_from_draft": "INVOLVES",
+      "direction": "Event -> Company",
+      "event_effective_date_from_draft": null,
+      "published_at": "2026-10-16",
+      "origin_extraction_id": null,
+      "article_id": "9cad8358-1095-590e-a3a3-1f26d4e54e6b",
+      "candidate_company_ids_from_local_registry": [
+        "CMP-c7f85408f08fed1482bf"
+      ],
+      "company_mapping_status": "UNIQUE_LOCAL_CANDIDATE_SERVING_UNCONFIRMED",
+      "source_reference": [
+        {
+          "source_table": "news_articles",
+          "article_id": "9cad8358-1095-590e-a3a3-1f26d4e54e6b",
+          "url": "https://cafef.vn/du-lieu/bid-2999491/bid-nghi-quyet-hdqt-phe-duyet-phuong-an-phat-hanh-trai-phieu-tang-von-bidv-theo-hinh-thuc-rieng-le-quy-iv2026.chn",
+          "published_at": "2026-10-16",
+          "pdf_page": null
+        }
+      ],
+      "candidate_document_ids": [
+        "f3160868-7d46-53f4-b6d8-86de0bd09e0f"
+      ],
+      "candidate_chunk_ids": [
+        "25d8726a-722a-571d-849a-fe265e078c7d"
+      ],
+      "source_candidate_status": "FROM_EXISTING_VECTOR_CASE_NOT_NEW_LIVE_REPLAY",
+      "both_extra_requirement": "Giai đoạn phê duyệt phương án; BOTH_09 cần span trái phiếu tăng vốn, riêng lẻ, quý IV/2026. Không nói đã phát hành.",
+      "handoff_required": {
+        "serving_commit": null,
+        "registry_path_and_sha256": null,
+        "canonical_company_id": null,
+        "canonical_person_id": null,
+        "canonical_event_id": null,
+        "relation_id": null,
+        "graph_version_id": null,
+        "corpus_version_id": null,
+        "index_version_id": null,
+        "review_receipt_path": null,
+        "publication_receipt_path": null,
+        "event_stage": null,
+        "position_code": null,
+        "date_mapping_contract": null,
+        "evidence_chunk_ids": [],
+        "document_versions_and_hashes": [],
+        "quote_locator_offsets": [],
+        "event_date_status": "UNKNOWN_UNLESS_SOURCE_PROVES_DATE",
+        "participant_role_from_evidence": null,
+        "graph_query_readback_path": null,
+        "serving_route_readback_path": null,
+        "content_span_readback_path": null,
+        "ready_scope_config_reference": null
+      },
+      "owner_request": "Quân sự kiện + Hưng Company registry; Huyền review; owner publish + Nhân xác minh",
+      "state": "PREPARED_BLOCKED_NOT_RUN"
+    }
+  ],
+  "cases": [
+    {
+      "test_id": "TC_GRAPH_04",
+      "question": "VCB bổ nhiệm ông Nguyễn Thanh Tùng làm Chủ tịch HĐQT vào ngày nào theo BCTN 2024?",
+      "expected_route": "GRAPH",
+      "draft_expected_answer": "VCB → Nguyễn Thanh Tùng, APPOINTS, Chủ tịch HĐQT, 26/07/2024. Không suy valid_to hoặc khẳng định đương nhiệm hôm nay.",
+      "bundle_id": "P1",
+      "workbook_row": 10,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_BOTH_04",
+      "question": "Tìm người được VCB bổ nhiệm Chủ tịch HĐQT ngày 26/07/2024, rồi trích nguyên văn hàng bổ nhiệm trong báo cáo.",
+      "expected_route": "BOTH",
+      "draft_expected_answer": "Graph: Nguyễn Thanh Tùng; Vector: “Ông Nguyễn Thanh Tùng Chủ tịch Bổ nhiệm ngày 26 tháng 7 năm 2024”.",
+      "bundle_id": "P1",
+      "workbook_row": 25,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_GRAPH_05",
+      "question": "ITD miễn nhiệm ai ở vị trí Phó Chủ tịch HĐQT ngày 26/06/2025?",
+      "expected_route": "GRAPH",
+      "draft_expected_answer": "ITD → Nguyễn Vĩnh Thuận, DISMISSES, Phó Chủ tịch HĐQT, 26/06/2025.",
+      "bundle_id": "P2",
+      "workbook_row": 11,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_BOTH_05",
+      "question": "Tìm Phó Chủ tịch HĐQT bị ITD miễn nhiệm ngày 26/06/2025, rồi đọc cùng bảng để nêu ngày bổ nhiệm Phó Tổng Giám đốc Nguyễn Hồng Minh.",
+      "expected_route": "BOTH",
+      "draft_expected_answer": "Graph: Nguyễn Vĩnh Thuận bị miễn nhiệm. Vector: Nguyễn Hồng Minh được bổ nhiệm Phó Tổng Giám đốc ngày 04/11/2025; không gán ngày này cho Nguyễn Vĩnh Thuận.",
+      "bundle_id": "P2",
+      "workbook_row": 26,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_GRAPH_06",
+      "question": "Theo hồ sơ lãnh đạo BIDV được chốt trong nguồn, ai được bổ nhiệm Chủ tịch HĐQT từ 01/07/2026?",
+      "expected_route": "GRAPH",
+      "draft_expected_answer": "BID → Lê Ngọc Lâm, APPOINTS, Chủ tịch HĐQT, 01/07/2026; chỉ trong phạm vi snapshot nguồn.",
+      "bundle_id": "P3",
+      "workbook_row": 12,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_BOTH_06",
+      "question": "Tìm người được BIDV bổ nhiệm Chủ tịch HĐQT từ 01/07/2026 rồi tóm tắt chức vụ ông này giữ từ 12/03/2021 trong tiểu sử.",
+      "expected_route": "BOTH",
+      "draft_expected_answer": "Graph: Lê Ngọc Lâm. Văn bản: từ 12/03/2021 là Thành viên HĐQT kiêm Tổng Giám đốc BIDV; từ 01/07/2026 được bổ nhiệm Chủ tịch HĐQT.",
+      "bundle_id": "P3",
+      "workbook_row": 27,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_GRAPH_07",
+      "question": "Trong graph gắn bài b421f949-205d-507e-b421-a988aeafee72, sự kiện thông qua nghị quyết cổ tức liên quan doanh nghiệp nào?",
+      "expected_route": "GRAPH",
+      "draft_expected_answer": "FPT là doanh nghiệp liên quan nghị quyết chi trả cổ tức. Đây là thông qua nghị quyết; chưa chứng minh đã thanh toán.",
+      "bundle_id": "E1",
+      "workbook_row": 13,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_BOTH_07",
+      "question": "Từ sự kiện thông qua nghị quyết cổ tức của bài b421f949-205d-507e-b421-a988aeafee72, tìm doanh nghiệp liên quan rồi nêu tỷ lệ và số tiền trong bài.",
+      "expected_route": "BOTH",
+      "draft_expected_answer": "Graph: FPT; Vector: 10% mệnh giá, 1.000 đồng/cổ phiếu; chưa chứng minh đã trả tiền.",
+      "bundle_id": "E1",
+      "workbook_row": 28,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_GRAPH_08",
+      "question": "Sự kiện đã phát hành cổ phiếu trong bài c1d9b43c-5d30-5917-aba3-a16520fc7508 liên quan doanh nghiệp nào?",
+      "expected_route": "GRAPH",
+      "draft_expected_answer": "ELC. Nguồn nói đã phát hành cổ phiếu; không dùng published_at làm ngày phát hành.",
+      "bundle_id": "E2",
+      "workbook_row": 14,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_BOTH_08",
+      "question": "Từ sự kiện phát hành trong bài c1d9b43c-5d30-5917-aba3-a16520fc7508, tìm doanh nghiệp liên quan rồi nêu số cổ phiếu và mục đích.",
+      "expected_route": "BOTH",
+      "draft_expected_answer": "Graph: ELC; Vector: 7.700.890 cổ phiếu để trả cổ tức và tăng vốn cổ phần từ nguồn vốn chủ sở hữu.",
+      "bundle_id": "E2",
+      "workbook_row": 29,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_GRAPH_09",
+      "question": "Sự kiện HĐQT phê duyệt phương án trái phiếu trong bài 9cad8358-1095-590e-a3a3-1f26d4e54e6b liên quan doanh nghiệp nào?",
+      "expected_route": "GRAPH",
+      "draft_expected_answer": "BID/BIDV; sự kiện được chứng minh là phê duyệt phương án, không phải đã phát hành trái phiếu.",
+      "bundle_id": "E3",
+      "workbook_row": 15,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "test_id": "TC_BOTH_09",
+      "question": "Từ sự kiện phê duyệt phương án trong bài 9cad8358-1095-590e-a3a3-1f26d4e54e6b, tìm doanh nghiệp rồi đọc chi tiết loại giao dịch và kỳ dự kiến.",
+      "expected_route": "BOTH",
+      "draft_expected_answer": "Graph: BIDV; Vector: phương án phát hành trái phiếu tăng vốn, hình thức riêng lẻ quý IV/2026. Không khẳng định phát hành đã xảy ra.",
+      "bundle_id": "E3",
+      "workbook_row": 30,
+      "gold_status": "DRAFT_UNCHANGED",
+      "readiness": "SETUP_REQUIRED_UNCHANGED",
+      "test_status": "NOT_RUN"
+    }
+  ]
+}
