@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-10",
+  "task": "S5-WBS03.1",
+  "labels": 7,
+  "boundary_pairs": 20,
+  "boundary_sentences": 40,
+  "annotation_examples": 5,
+  "approval": "PENDING_TEAM_REVIEW",
+  "runtime_executed": false,
+  "offline_policy_probe_executed": true,
+  "boundary_rules": 14,
+  "mixed_boundary_examples_with_valid_components": 5,
+  "existing_merge_index_unchanged": true,
+  "backup_demo_adapter_unchanged": true,
+  "files": {
+    "docs\\sprint5\\S5-WBS03.1-intent-labels.md": "20c23e0aede5d50b8c6c4091c73038c254c2e1a6e446ff6dc97c99925327ce0a",
+    "docs\\sprint5\\intent-labels.v1.json": "df8c540beb278233f038e8c77d5108e282e004a58050e6cc4b57855361a9f3d5"
+  }
+}

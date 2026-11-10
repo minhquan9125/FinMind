@@ -1,0 +1,617 @@
+{
+  "label_schema_version": "s5-intent-labels-v1-draft2",
+  "task_id": "S5-WBS03.1",
+  "prepared_date": "2026-11-10",
+  "prepared_for": "Hồ Phạm Đăng Nhân",
+  "approval": {
+    "status": "PENDING_TEAM_REVIEW",
+    "reviewer": null,
+    "reviewed_at": null
+  },
+  "runtime_enabled": false,
+  "scope": "LABEL_DEFINITION_ONLY",
+  "labels": [
+    {
+      "id": "NUMERIC",
+      "display_name": "Số liệu",
+      "include_when": "Lấy giá trị, tỷ lệ hoặc so sánh/chênh lệch số học của chỉ tiêu tài chính/giá tại phạm vi cụ thể",
+      "exclude_when": "Hỏi chiều hướng/đánh giá; đếm quan hệ hoặc hỏi ngày bổ nhiệm chỉ vì đáp án có số",
+      "example": "“Lợi nhuận sau thuế FPT năm 2025 bao nhiêu?”"
+    },
+    {
+      "id": "REPORT_CONTENT",
+      "display_name": "Nội dung BCTC/BCTN",
+      "include_when": "Tìm, trích, tóm tắt, giải thích BCTC/BCTN; đọc chính sách, chiến lược, đoạn mô tả/tiểu sử trong các báo cáo đó",
+      "exclude_when": "Nội dung bài tin/thông báo được hỏi như một bài tin; tên BCTN chỉ làm nguồn cho câu hỏi số liệu/chức vụ/quan hệ",
+      "example": "“BCTN FPT 2024 trình bày chiến lược phát triển thế nào?”"
+    },
+    {
+      "id": "NEWS",
+      "display_name": "Tin tức",
+      "include_when": "Tìm/liệt kê/trích nguyên văn/tóm tắt/đối chiếu bài tin hoặc thông báo; hỏi nội dung tin bổ nhiệm/sự kiện như một bài tin",
+      "exclude_when": "Xác định người giữ chức hoặc cạnh quan hệ; lấy một con số từ bài đã chỉ định; yêu cầu tự đánh giá xu hướng thay vì thuật lại nội dung tin",
+      "example": "“Tóm tắt tin bổ nhiệm lãnh đạo FPT trong tuần.”"
+    },
+    {
+      "id": "PERSON_ROLE",
+      "display_name": "Chức vụ",
+      "include_when": "Xác định người, chức vụ, đơn vị hoặc ngày/giai đoạn bổ nhiệm, miễn nhiệm, giữ chức theo nguồn/phạm vi",
+      "exclude_when": "Xin bài tin về bổ nhiệm; yêu cầu chép nguyên văn một hàng đã xác định; suy người đương nhiệm từ năm báo cáo",
+      "example": "“Ai giữ chức Chủ tịch HĐQT FPT tại thời điểm được hỏi?”"
+    },
+    {
+      "id": "ENTITY_RELATION",
+      "display_name": "Quan hệ",
+      "include_when": "Xác định/liệt kê/đếm quan hệ sở hữu của người hoặc doanh nghiệp, công ty con/liên kết/mẹ, đối tác; tìm thực thể tham gia sự kiện cụ thể",
+      "exclude_when": "Thông tin chỉ về chức vụ một người; chỉ số tài chính; mô tả bài tin; hồ sơ một công ty đã biết không yêu cầu quan hệ",
+      "example": "“FPT có những công ty con trực tiếp nào?”"
+    },
+    {
+      "id": "TREND",
+      "display_name": "Xu hướng",
+      "include_when": "Nhận định tăng/giảm/trái chiều, diễn biến hoặc tác động dựa trên chuỗi giá và/hoặc tài chính theo thời gian",
+      "exclude_when": "Chỉ đọc một giá trị hoặc tính chênh lệch đã xác định; nhiều chỉ tiêu cùng phục vụ một nhận định không tự là MIXED",
+      "example": "“Giá và tình hình tài chính FPT cho tín hiệu xu hướng thế nào?”"
+    },
+    {
+      "id": "MIXED",
+      "display_name": "Kết hợp",
+      "include_when": "Có ít nhất hai mục tiêu thông tin khác nhãn, kể cả tìm quan hệ/thực thể rồi dùng kết quả đó đọc/đánh giá nội dung thuộc nhãn khác",
+      "exclude_when": "Chỉ có hai công ty, hai kỳ, nhiều chỉ tiêu, câu dài hoặc từ “và”; các mục chỉ cùng một nhãn",
+      "example": "“Tìm công ty con của FPT rồi so sánh doanh thu các công ty đó.”",
+      "example_component_intents": [
+        "ENTITY_RELATION",
+        "NUMERIC"
+      ]
+    }
+  ],
+  "source_types": [
+    "BCTC",
+    "BCTN",
+    "NEWS",
+    "PRICE"
+  ],
+  "decision_not_business_label": [
+    "ASK_CLARIFICATION",
+    "FALLBACK",
+    "OUT_OF_SCOPE",
+    "SYSTEM_UNAVAILABLE"
+  ],
+  "annotation_statuses": [
+    "LABELED",
+    "NEEDS_CONTEXT",
+    "OUTSIDE_TAXONOMY",
+    "UNRESOLVED"
+  ],
+  "scope_statuses": [
+    "RESOLVED",
+    "PARTIAL",
+    "NEEDS_CONTEXT",
+    "NOT_APPLICABLE"
+  ],
+  "annotation_fields_proposed": [
+    "id",
+    "text",
+    "intent_label",
+    "source_types",
+    "operation",
+    "component_intents",
+    "annotation_status",
+    "scope_status",
+    "annotation_note",
+    "split",
+    "label_schema_version"
+  ],
+  "mixed_policy": {
+    "different_intent_components_or_discovery_dependency_required": true,
+    "multiple_companies_alone": false,
+    "multiple_metrics_alone": false,
+    "multiple_periods_alone": false,
+    "source_mention_alone": false,
+    "implies_both_route": false,
+    "allowed_component_labels": [
+      "ENTITY_RELATION",
+      "NEWS",
+      "NUMERIC",
+      "PERSON_ROLE",
+      "REPORT_CONTENT",
+      "TREND"
+    ],
+    "supporting_citation_alone": false,
+    "minimum_distinct_component_labels": 2,
+    "discovery_requires_different_intent_component": true
+  },
+  "boundary_examples": {
+    "purpose": "LABEL_DEFINITION_EXAMPLES_NOT_TRAINING_OR_HELDOUT",
+    "used_for_embedding": false,
+    "used_for_evaluation": false,
+    "pairs": [
+      {
+        "id": "B01",
+        "a": {
+          "text": "Doanh thu FPT 2025 bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Tóm tắt chiến lược FPT trong BCTN 2025.",
+          "intent_label": "REPORT_CONTENT",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Giá trị chỉ tiêu / nội dung tài liệu"
+      },
+      {
+        "id": "B02",
+        "a": {
+          "text": "Theo BCTN 2024, doanh thu FPT bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Tìm BCTN FPT 2024.",
+          "intent_label": "REPORT_CONTENT",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Chỉ nguồn / tìm tài liệu"
+      },
+      {
+        "id": "B03",
+        "a": {
+          "text": "Ai là Chủ tịch HĐQT FPT tại ngày được hỏi?",
+          "intent_label": "PERSON_ROLE",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Tìm các tin về việc bổ nhiệm Chủ tịch HĐQT FPT.",
+          "intent_label": "NEWS",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Fact vai trò / tập bài tin"
+      },
+      {
+        "id": "B04",
+        "a": {
+          "text": "VCB bổ nhiệm ông X ngày nào theo BCTN?",
+          "intent_label": "PERSON_ROLE",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Trích nguyên văn hàng bổ nhiệm ông X trong BCTN VCB.",
+          "intent_label": "REPORT_CONTENT",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Xác định thời điểm / chép hàng đã biết"
+      },
+      {
+        "id": "B05",
+        "a": {
+          "text": "FPT sở hữu bao nhiêu phần trăm công ty X?",
+          "intent_label": "ENTITY_RELATION",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Biên lợi nhuận gộp FPT bao nhiêu phần trăm?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Thuộc tính cạnh / chỉ tiêu tài chính"
+      },
+      {
+        "id": "B06",
+        "a": {
+          "text": "FPT có bao nhiêu công ty con?",
+          "intent_label": "ENTITY_RELATION",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Tổng tài sản FPT là bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Đếm tập quan hệ / đọc chỉ tiêu"
+      },
+      {
+        "id": "B07",
+        "a": {
+          "text": "Theo bài tin X, mức cổ tức FPT là bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Tóm tắt bài tin X về cổ tức FPT.",
+          "intent_label": "NEWS",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Một giá trị / nội dung bài tin"
+      },
+      {
+        "id": "B08",
+        "a": {
+          "text": "Giá FPT đầu/cuối tháng và chênh lệch bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Giá FPT đang có xu hướng tăng hay giảm?",
+          "intent_label": "TREND",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Tính số / nhận định diễn biến"
+      },
+      {
+        "id": "B09",
+        "a": {
+          "text": "So sánh doanh thu FPT và CMG năm 2025.",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Tìm công ty con của FPT rồi so sánh doanh thu các công ty đó.",
+          "intent_label": "MIXED",
+          "annotation_status": "LABELED",
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        "boundary": "Hai công ty không tạo MIXED / graph discovery rồi số liệu"
+      },
+      {
+        "id": "B10",
+        "a": {
+          "text": "Doanh thu và lợi nhuận FPT năm 2025?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Ai là Chủ tịch FPT và có những tin bổ nhiệm nào?",
+          "intent_label": "MIXED",
+          "annotation_status": "LABELED",
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        "boundary": "Nhiều chỉ tiêu cùng nhãn / hai mục tiêu khác nhãn"
+      },
+      {
+        "id": "B11",
+        "a": {
+          "text": "FPT có quan hệ hợp tác với công ty X không?",
+          "intent_label": "ENTITY_RELATION",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Tóm tắt tin về hợp tác FPT và công ty X.",
+          "intent_label": "NEWS",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Xác nhận cạnh / đọc tin"
+      },
+      {
+        "id": "B12",
+        "a": {
+          "text": "Chép câu ghi chức vụ ông X trong BCTN đã chỉ định.",
+          "intent_label": "REPORT_CONTENT",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Tìm người được bổ nhiệm rồi trích tiểu sử người đó trong BCTN.",
+          "intent_label": "MIXED",
+          "annotation_status": "LABELED",
+          "component_intents": [
+            "PERSON_ROLE",
+            "REPORT_CONTENT"
+          ]
+        },
+        "boundary": "Nội dung đã định danh / phụ thuộc bước tìm người"
+      },
+      {
+        "id": "B13",
+        "a": {
+          "text": "Trong sự kiện X, doanh nghiệp nào tham gia?",
+          "intent_label": "ENTITY_RELATION",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Bài tin X mô tả sự kiện đó thế nào?",
+          "intent_label": "NEWS",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Event → Company / nội dung bài"
+      },
+      {
+        "id": "B14",
+        "a": {
+          "text": "Đánh giá xu hướng FPT từ giá và lợi nhuận.",
+          "intent_label": "TREND",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Liệt kê đối tác FPT rồi đánh giá xu hướng từng doanh nghiệp đó.",
+          "intent_label": "MIXED",
+          "annotation_status": "LABELED",
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        },
+        "boundary": "Một nhận định đa tín hiệu / khám phá quan hệ rồi nhận định"
+      },
+      {
+        "id": "B15",
+        "a": {
+          "text": "Tóm tắt chính sách kế toán trong BCTC FPT.",
+          "intent_label": "REPORT_CONTENT",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Theo BCTC, dòng tiền hoạt động FPT bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Giải thích chính sách / giá trị chỉ tiêu"
+      },
+      {
+        "id": "B16",
+        "a": {
+          "text": "Tóm tắt BCTN và tin mới của FPT.",
+          "intent_label": "MIXED",
+          "annotation_status": "LABELED",
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        "b": {
+          "text": "Tóm tắt hai BCTN FPT 2024 và 2025.",
+          "intent_label": "REPORT_CONTENT",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Hai loại mục tiêu nguồn / cùng loại nội dung nhiều kỳ"
+      },
+      {
+        "id": "B17",
+        "a": {
+          "text": "Trích nguyên văn đoạn bổ nhiệm ông X trong bài tin đã chỉ định.",
+          "intent_label": "NEWS",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Trích nguyên văn đoạn bổ nhiệm ông X trong BCTN đã chỉ định.",
+          "intent_label": "REPORT_CONTENT",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Cùng thao tác chép, khác loại nội dung"
+      },
+      {
+        "id": "B18",
+        "a": {
+          "text": "EPS FPT năm 2025 bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "EPS là gì?",
+          "intent_label": null,
+          "annotation_status": "OUTSIDE_TAXONOMY",
+          "component_intents": []
+        },
+        "boundary": "Giá trị chỉ tiêu / khái niệm đầu tư ngoài thư viện bản đầu"
+      },
+      {
+        "id": "B19",
+        "a": {
+          "text": "Theo BCTC riêng của công ty mẹ FPT, doanh thu 2025 bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Công ty mẹ của công ty X là doanh nghiệp nào?",
+          "intent_label": "ENTITY_RELATION",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Phạm vi báo cáo riêng / xác định quan hệ mẹ–con"
+      },
+      {
+        "id": "B20",
+        "a": {
+          "text": "Ông X giữ chức vụ gì tại FPT?",
+          "intent_label": "PERSON_ROLE",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "b": {
+          "text": "Ông X sở hữu bao nhiêu cổ phần FPT?",
+          "intent_label": "ENTITY_RELATION",
+          "annotation_status": "LABELED",
+          "component_intents": []
+        },
+        "boundary": "Chức vụ / sở hữu, cùng nhắc một người"
+      }
+    ]
+  },
+  "runtime_mapping_status": "NOT_IMPLEMENTED_NO_EXISTING_ENUM_CHANGED",
+  "source_document": "S5-WBS03.1-intent-labels.md",
+  "annotation_conventions": {
+    "labeled_requires_valid_intent_label": true,
+    "other_annotation_statuses_require_null_label": true,
+    "non_mixed_component_intents": [],
+    "known_intent_missing_scope": {
+      "annotation_status": "LABELED",
+      "scope_status": "PARTIAL"
+    },
+    "operation_is_runtime_enum": false,
+    "literal_quote_report_content_requires_report_source": true,
+    "literal_quote_news_source_label": "NEWS",
+    "unknown_content_source_without_context_status": "UNRESOLVED",
+    "event_impact_without_clear_trend_goal_status": "UNRESOLVED"
+  },
+  "annotation_examples": {
+    "purpose": "LABEL_DEFINITION_EXAMPLES_NOT_TRAINING_OR_HELDOUT",
+    "used_for_embedding": false,
+    "used_for_evaluation": false,
+    "items": [
+      {
+        "text": "Doanh thu năm 2025 bao nhiêu?",
+        "intent_label": "NUMERIC",
+        "annotation_status": "LABELED",
+        "scope_status": "PARTIAL",
+        "component_intents": [],
+        "annotation_note": "[] — thiếu công ty"
+      },
+      {
+        "text": "Còn công ty đó?",
+        "intent_label": null,
+        "annotation_status": "NEEDS_CONTEXT",
+        "scope_status": "NEEDS_CONTEXT",
+        "component_intents": [],
+        "annotation_note": "[] — chưa có hội thoại trước hợp lệ"
+      },
+      {
+        "text": "EPS là gì?",
+        "intent_label": null,
+        "annotation_status": "OUTSIDE_TAXONOMY",
+        "scope_status": "NOT_APPLICABLE",
+        "component_intents": [],
+        "annotation_note": "[] — hỏi khái niệm, ngoài bảy nhãn bản đầu"
+      },
+      {
+        "text": "Trích đoạn ghi chức vụ ông X trong nguồn đã chỉ định.",
+        "intent_label": null,
+        "annotation_status": "UNRESOLVED",
+        "scope_status": "PARTIAL",
+        "component_intents": [],
+        "annotation_note": "[] — giả định chưa có nguồn hoặc ngữ cảnh xác định loại nội dung"
+      },
+      {
+        "text": "Tóm tắt BCTN 2025 và tin mới hôm nay của FPT.",
+        "intent_label": "MIXED",
+        "annotation_status": "LABELED",
+        "scope_status": "RESOLVED",
+        "component_intents": [
+          "REPORT_CONTENT",
+          "NEWS"
+        ],
+        "annotation_note": "[REPORT_CONTENT, NEWS]"
+      }
+    ]
+  },
+  "post_merge_review": {
+    "date": "2026-11-10",
+    "proposal_revision": 2,
+    "evidence_file": "../../outputs/s5_wbs031_20261110/post-merge-reassessment.json",
+    "runtime_topic_is_gold_label": false,
+    "runtime_default_source_is_gold_source": false,
+    "web_chat_uses_new_library": false,
+    "existing_router_scores_are_intent_similarity": false,
+    "taxonomy_coverage": "SEVEN_WBS_LABELS_NOT_ALL_APPLICATION_CAPABILITIES",
+    "existing_topics_requiring_explicit_coverage_review": [
+      "COMPANY_PROFILE",
+      "INVESTING_KNOWLEDGE",
+      "PORTFOLIO_EDUCATION",
+      "SECTOR_RESEARCH",
+      "INDUSTRY_ANALYSIS",
+      "EVENT_IMPACT",
+      "OVERALL_COMPARISON"
+    ]
+  },
+  "boundary_rules": [
+    {
+      "id": 1,
+      "text": "**Đọc mục tiêu, không chỉ khớp từ khóa.** Có chữ “bổ nhiệm” không mặc định PERSON_ROLE; có chữ “báo cáo” không mặc định REPORT_CONTENT."
+    },
+    {
+      "id": 2,
+      "text": "**Nguồn không tạo ý định thứ hai.** “Theo bài X, cổ tức bao nhiêu?” là NUMERIC với nguồn NEWS. “Theo BCTN, A có phải công ty con B?” là ENTITY_RELATION."
+    },
+    {
+      "id": 3,
+      "text": "**Trích nguyên văn phân theo loại nội dung được yêu cầu.** Khi người/hàng đã xác định và chỉ cần chép câu trong BCTC/BCTN: REPORT_CONTENT; chép đoạn trong bài tin/thông báo được yêu cầu như một bài tin: NEWS. REPORT_CONTENT không bao trùm mọi văn bản có nguồn. Nếu chưa biết loại nguồn và không có ngữ cảnh hợp lệ, để UNRESOLVED thay vì đoán. Khi phải tìm người rồi trích tiểu sử trong BCTN về người vừa tìm: MIXED (PERSON_ROLE + REPORT_CONTENT). Yêu cầu dẫn nguồn hoặc trích bằng chứng chỉ để chứng minh cùng một fact không tự tạo MIXED."
+    },
+    {
+      "id": 4,
+      "text": "**Chức vụ khác tin chức vụ.** Hỏi ai/ngày nào giữ hoặc được bổ nhiệm: PERSON_ROLE. Xin tin/bài/thông báo về việc bổ nhiệm: NEWS. Từ “vừa”, “mới”, “hôm nay” không tự quyết định nhãn; chúng còn là phạm vi thời gian cần xác nhận."
+    },
+    {
+      "id": 5,
+      "text": "**Số không đồng nghĩa số liệu tài chính.** “Có bao nhiêu công ty con?” là ENTITY_RELATION; “bổ nhiệm ngày nào?” là PERSON_ROLE. Tỷ lệ sở hữu cụ thể gắn cạnh doanh nghiệp thuộc ENTITY_RELATION, không gán NUMERIC chỉ vì có `%`."
+    },
+    {
+      "id": 6,
+      "text": "**So sánh số học khác nhận định.** “Giá đầu/cuối kỳ và chênh lệch bao nhiêu?” là NUMERIC. “Xu hướng giá tăng hay giảm, dựa vào đâu?” là TREND. Một nhận định xu hướng sử dụng giá + doanh thu + lợi nhuận vẫn là TREND nếu đó là một mục tiêu trả lời thống nhất."
+    },
+    {
+      "id": 7,
+      "text": "**Kết hợp phải nêu được các thành phần.** Ghi hai nhãn thành phần hoặc nhu cầu phụ thuộc đầu ra bước trước. “Doanh thu và lợi nhuận FPT” vẫn NUMERIC; “tóm tắt BCTN và các tin mới” là MIXED nhưng có thể chỉ cần truy xuất văn bản. MIXED không tự là BOTH, cũng không có nghĩa mọi câu phải có graph."
+    },
+    {
+      "id": 8,
+      "text": "**Thiếu scope không xóa ý định.** “Doanh thu năm 2025 bao nhiêu?” vẫn nhận biết được NUMERIC nhưng thiếu công ty. Việc hỏi lại do bước điều phối sau quyết định; không thêm nhãn nghiệp vụ ASK_CLARIFICATION vào bảy nhãn."
+    },
+    {
+      "id": 9,
+      "text": "**Ngữ cảnh phải đã được xác minh.** “Còn công ty đó?” một mình chưa đủ để gán nhãn. Nếu chưa có ngữ cảnh hợp lệ, để chưa xác định; không tự mượn công ty/kỳ từ phiên khác. Thiếu công ty không luôn là lỗi, ví dụ tin thị trường."
+    },
+    {
+      "id": 10,
+      "text": "**Không ép mọi câu vào bảy nhãn.** Chào hỏi, yêu cầu tổng hợp hội thoại, hỏi nguồn của câu trả lời trước, khái niệm đầu tư, hoặc câu vô nghĩa có thể nằm ngoài thư viện này. Giữ trạng thái ngoài phạm vi/chưa rõ để task sau xử lý, không nhét vào MIXED để đủ nhãn."
+    },
+    {
+      "id": 11,
+      "text": "**Dữ liệu thiếu không đổi ý định.** Graph rỗng, tài liệu chưa nạp, token hết hạn, lỗi kết nối hoặc không đủ quyền là kết quả xử lý, không phải nhãn mới."
+    },
+    {
+      "id": 12,
+      "text": "**Hình thức không đổi nghĩa.** Có dấu/không dấu/viết tắt/paraphrase giữ cùng nhãn khi nghĩa đủ rõ; viết tắt mơ hồ phải đánh dấu cần ngữ cảnh, không đoán."
+    },
+    {
+      "id": 13,
+      "text": "**Người, công ty mẹ và tên chỉ tiêu không tự quyết định nhãn.** Hỏi cổ phần ông X nắm giữ là ENTITY_RELATION; hỏi chức vụ ông X là PERSON_ROLE. “BCTC riêng của công ty mẹ FPT” là phạm vi báo cáo của câu NUMERIC/REPORT_CONTENT, khác với “Công ty mẹ của X là ai?”. “EPS là gì?” hỏi khái niệm, khác “EPS FPT 2025 bao nhiêu?”."
+    },
+    {
+      "id": 14,
+      "text": "**Giá trị runtime không phải nhãn chuẩn.** Không sao chép topic, source_type, operation hoặc route do router dự đoán vào dữ liệu gán nhãn như đáp án đúng. Người gán nhãn đọc yêu cầu và ngữ cảnh hợp lệ; nguồn không được yêu cầu để [] dù runtime tự chọn BCTC/BCTN. Có thể lưu kết quả runtime riêng để đối chiếu."
+    }
+  ],
+  "leader_feedback": {
+    "source": "USER_RELAYED_LEADER_FEEDBACK",
+    "assessment": "SUFFICIENT_FOR_WBS03_1_DOCUMENTATION_AND_STARTING_WBS03_2_DRAFTING",
+    "requested_mixed_examples": 5,
+    "mixed_components_added": true,
+    "team_label_confirmation_pending": true,
+    "web_chat_integration_completed": false
+  }
+}

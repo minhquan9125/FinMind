@@ -1,0 +1,193 @@
+{
+  "date": "2026-11-10",
+  "branch": "nhan-sprint-501",
+  "head": "ae049bf5a65061852179f7573b4d2320bc07d513",
+  "merge_head": "f9f1864db273eb47fec18bc9df864140819ce9be",
+  "index_sha256": "ef363a974e4239b6c91c95a3e85d484d959d08e3514077de4c23de9a2192f0d1",
+  "adapter_sha256": "ad95e309fee37b534dd0048a68d7f612a855519cc243b1d6afb98cef6b19d36e",
+  "source_scan_description": "Tracked source inventory, hashes and Python AST scan; not a line-by-line manual review of every file.",
+  "source_files": 665,
+  "modules": {
+    ".manual_remaining_ocr.py": 1,
+    ".recover_embedded_pdf_text.py": 1,
+    "backend": 395,
+    "data_pipeline": 84,
+    "docker": 9,
+    "docs": 2,
+    "frontend": 138,
+    "interactive_test.py": 1,
+    "interface": 7,
+    "run_event_news.py": 1,
+    "supabase": 10,
+    "test_wbs16_extractor.py": 1,
+    "tmp": 14,
+    "wbs16_extractor.py": 1
+  },
+  "syntax_errors": [],
+  "probe_mode": "OFFLINE_SCOPE_POLICY_STUB_SCORES_NO_ADAPTER_EXECUTION_NO_MODEL_NO_DB",
+  "probes": [
+    {
+      "question": "Theo BCTN 2024, doanh thu FPT bao nhiêu?",
+      "decision": "SEARCH",
+      "route": "VECTOR",
+      "topic": "FINANCIAL_RESEARCH",
+      "source_type": "BCTN",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_metric"
+      ]
+    },
+    {
+      "question": "FPT có bao nhiêu công ty con?",
+      "decision": "SEARCH",
+      "route": "GRAPH",
+      "topic": "RELATIONSHIP_LOOKUP",
+      "source_type": "BCTN",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_relationships"
+      ]
+    },
+    {
+      "question": "Ai là Chủ tịch HĐQT FPT?",
+      "decision": "SEARCH",
+      "route": "GRAPH",
+      "topic": "RELATIONSHIP_LOOKUP",
+      "source_type": "BCTN",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_relationships"
+      ]
+    },
+    {
+      "question": "Tìm các tin về việc bổ nhiệm Chủ tịch HĐQT FPT.",
+      "decision": "SEARCH",
+      "route": "GRAPH",
+      "topic": "RELATIONSHIP_LOOKUP",
+      "source_type": "BCTN",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_relationships"
+      ]
+    },
+    {
+      "question": "Trích nguyên văn hàng bổ nhiệm ông X trong BCTN VCB.",
+      "decision": "SEARCH",
+      "route": "VECTOR",
+      "topic": "SOURCE_FACT_LOOKUP",
+      "source_type": "BCTN",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_metric"
+      ]
+    },
+    {
+      "question": "Tóm tắt bài tin về cổ tức FPT.",
+      "decision": "SEARCH",
+      "route": "VECTOR",
+      "topic": "FINANCIAL_RESEARCH",
+      "source_type": "BCTC",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_metric"
+      ]
+    },
+    {
+      "question": "Giá FPT ngày 04/11/2026 bao nhiêu?",
+      "decision": "SEARCH",
+      "route": "VECTOR",
+      "topic": "FINANCIAL_RESEARCH",
+      "source_type": "PRICE",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_price"
+      ]
+    },
+    {
+      "question": "Giá FPT đang có xu hướng tăng hay giảm?",
+      "decision": "SEARCH",
+      "route": "VECTOR",
+      "topic": "PRICE_ANALYSIS",
+      "source_type": "BCTC",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "analyze_market_drivers"
+      ]
+    },
+    {
+      "question": "So sánh doanh thu FPT và CMG năm 2025.",
+      "decision": "SEARCH",
+      "route": "VECTOR",
+      "topic": "FINANCIAL_COMPARISON",
+      "source_type": "BCTC",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_metric",
+        "find_metric"
+      ]
+    },
+    {
+      "question": "Tìm công ty con của FPT rồi so sánh doanh thu các công ty đó.",
+      "decision": "SEARCH",
+      "route": "BOTH",
+      "topic": "MULTI_HOP",
+      "source_type": "BCTC",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_relationships",
+        "find_metric"
+      ]
+    },
+    {
+      "question": "FPT hoạt động trong lĩnh vực nào?",
+      "decision": "SEARCH",
+      "route": "GRAPH",
+      "topic": "COMPANY_PROFILE",
+      "source_type": "BCTN",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_relationships"
+      ]
+    },
+    {
+      "question": "EPS là gì?",
+      "decision": "SEARCH",
+      "route": "VECTOR",
+      "topic": "INVESTING_KNOWLEDGE",
+      "source_type": "BCTC",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_investing_knowledge"
+      ]
+    },
+    {
+      "question": "Tin bổ nhiệm ảnh hưởng FPT thế nào?",
+      "decision": "SEARCH",
+      "route": "GRAPH",
+      "topic": "RELATIONSHIP_LOOKUP",
+      "source_type": "BCTN",
+      "reason_code": "INTENT_POLICY",
+      "operations": [
+        "find_relationships"
+      ]
+    },
+    {
+      "question": "Doanh thu năm 2025 bao nhiêu?",
+      "decision": "ASK_CLARIFICATION",
+      "route": "CLARIFY",
+      "topic": "FINANCIAL_RESEARCH",
+      "source_type": "BCTC",
+      "reason_code": "MISSING_SCOPE",
+      "operations": []
+    },
+    {
+      "question": "Còn công ty đó?",
+      "decision": "ASK_CLARIFICATION",
+      "route": "CLARIFY",
+      "topic": null,
+      "source_type": "BCTC",
+      "reason_code": "MISSING_SCOPE",
+      "operations": []
+    }
+  ]
+}
