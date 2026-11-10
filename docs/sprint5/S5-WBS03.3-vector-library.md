@@ -34,7 +34,9 @@ manifest thư viện riêng với task S5-WBS03.3 và status READY; không sửa
 
 ## Cách đã thực hiện
 
-1. Kiểm tra bộ dữ liệu 03.2, checksum và trạng thái duyệt trước khi nạp model.
+1. Chụp snapshot toàn bộ đầu vào, kiểm tra bộ dữ liệu 03.2, checksum và trạng thái
+   duyệt trước khi nạp model. Ghi ra đúng snapshot đã đọc, không đọc lại nguồn sau
+   embedding để tránh trộn hai phiên bản nếu nguồn bị sửa trong lúc model chạy.
 2. Chỉ đọc text từ library.jsonl theo đúng thứ tự, gọi embed_texts của dịch vụ
    embedding hiện có. Đây không phải model router trả graph_score/content_score.
 3. Kiểm tra đủ hàng, đúng số chiều, hữu hạn và norm gần 1; chỉ sau đó tạo thư mục
@@ -44,8 +46,8 @@ manifest thư viện riêng với task S5-WBS03.3 và status READY; không sửa
 5. Tạo lại ba câu đại diện bằng model thật nạp lại ở tiến trình khác và so với
    vector đã lưu. Kết quả chi tiết nằm trong báo cáo verification.json.
 
-Mười bài test artifact dùng encoder giả để thử các nhánh lỗi, không coi đó là
-bằng chứng đã chạy BGE-M3. Cùng 14 bài test dữ liệu 03.2, tổng 24 bài đã đạt.
+Mười bốn bài test artifact dùng encoder giả để thử các nhánh lỗi, không coi đó là
+bằng chứng đã chạy BGE-M3. Cùng 14 bài test dữ liệu 03.2, tổng 28 bài đã đạt.
 Việc embedding thật được chứng minh bằng artifact, manifest model và báo cáo
 [kiểm tra đọc lại/tái tạo](../../outputs/s5_wbs033_20261110/verification.json).
 
@@ -83,6 +85,20 @@ Model name/revision trong môi trường chạy phải khớp thư viện. Batch
 phiên bản Torch/Transformers và phần cứng có thể làm khác sai số dấu phẩy động;
 phép so tái tạo dùng atol=rtol=1e-5, không hứa bit giống nhau trên mọi thiết bị.
 Giữ LF cho các file JSON/JSONL để checksum không đổi khi checkout Windows/Linux.
+
+## Rà soát trước khi gửi review
+
+Đã sửa lỗi đọc lại schema/manifest sau khi model chạy. Test tái hiện thay đổi file
+trong lúc encode từng thất bại trước sửa và đã đạt sau sửa. Bổ sung kiểm tra đầu
+vào chưa duyệt và checksum sai phải dừng trước khi gọi encoder. Không đổi cách
+tính embedding hoặc dữ liệu; artifact thật vẫn giữ nguyên checksum vector.
+
+Đọc lại artifact thật: đủ 90 × 1024, 7 nhãn, float32/L2, không NaN/Inf, không nhúng
+câu test. Bằng chứng tạo lại ba câu bằng model thật ở tiến trình khác đã đạt với
+chênh lệch tối đa 7.8231e-8. Không chạy lại model chỉ vì sửa cách giữ snapshot.
+
+Hướng dẫn bàn giao, dependency tối thiểu và cách chạy 28 bài kiểm tra:
+[S5-WBS03.3-HANDOFF.md](S5-WBS03.3-HANDOFF.md).
 
 ## Giới hạn và bước tiếp theo
 

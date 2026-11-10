@@ -71,16 +71,19 @@ def build_library(dataset_dir, schema_path, output_dir, embedder, *, library_ver
     dataset_dir, schema_path, output_dir = map(Path, (dataset_dir, schema_path, output_dir))
     if output_dir.exists():
         raise FileExistsError(output_dir)
-    dataset, schema = _json(dataset_dir / 'manifest.json'), _json(schema_path)
+    # Snapshot every source before the potentially long model call. Persist these
+    # same bytes even if a reviewer edits the source files while encoding runs.
+    dataset_raw = (dataset_dir / 'manifest.json').read_bytes()
+    schema_raw = schema_path.read_bytes()
+    raw = (dataset_dir / 'library.jsonl').read_bytes()
+    dataset, schema = json.loads(dataset_raw), json.loads(schema_raw)
     if dataset['approval_status'] != 'APPROVED_FOR_WBS03_3' or schema['approval']['status'] != 'APPROVED':
         raise ValueError('INPUT_NOT_APPROVED')
-    library_path = dataset_dir / 'library.jsonl'
-    if (_sha(library_path) != dataset['files']['library.jsonl']['sha256']
-            or _sha(schema_path) != dataset['label_schema_sha256']):
+    if (hashlib.sha256(raw).hexdigest() != dataset['files']['library.jsonl']['sha256']
+            or hashlib.sha256(schema_raw).hexdigest() != dataset['label_schema_sha256']):
         raise ValueError('INPUT_CHECKSUM_MISMATCH')
     if not library_version.strip() or not embedder.model_name.strip() or not re.fullmatch(r'[0-9a-f]{40}', embedder.revision):
         raise ValueError('UNPINNED_MODEL_OR_VERSION')
-    raw = library_path.read_bytes()
     rows = _rows(raw, schema)
     if len(rows) != dataset['files']['library.jsonl']['rows']:
         raise ValueError('INPUT_ROW_COUNT_MISMATCH')
@@ -88,8 +91,8 @@ def build_library(dataset_dir, schema_path, output_dir, embedder, *, library_ver
     # No input text normalization: preserve accents and abbreviations as reviewed.
     output_dir.mkdir(parents=True, exist_ok=False)
     (output_dir / 'library.jsonl').write_bytes(raw)
-    (output_dir / 'label-schema.json').write_bytes(schema_path.read_bytes())
-    (output_dir / 'dataset-manifest.json').write_bytes((dataset_dir / 'manifest.json').read_bytes())
+    (output_dir / 'label-schema.json').write_bytes(schema_raw)
+    (output_dir / 'dataset-manifest.json').write_bytes(dataset_raw)
     np.save(output_dir / 'vectors.npy', vectors, allow_pickle=False)
     versions = {}
     for package in ('numpy', 'torch', 'sentence-transformers', 'transformers', 'huggingface-hub'):

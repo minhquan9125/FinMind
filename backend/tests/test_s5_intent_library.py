@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+import shutil
 
 import numpy as np
 import pytest
@@ -106,4 +107,63 @@ def test_existing_artifact_is_never_overwritten_or_reencoded(tmp_path):
     encoder = Encoder()
     with pytest.raises(FileExistsError):
         build(tmp_path, encoder)
+    assert encoder.calls == []
+
+
+def input_snapshot(tmp_path):
+    dataset = tmp_path / 'inputs'
+    dataset.mkdir()
+    for name in ('library.jsonl', 'manifest.json'):
+        shutil.copyfile(DATASET / name, dataset / name)
+    schema = tmp_path / 'schema.json'
+    shutil.copyfile(SCHEMA, schema)
+    return dataset, schema
+
+
+def test_input_snapshot_is_preserved_if_source_changes_during_embedding(tmp_path):
+    dataset, schema = input_snapshot(tmp_path)
+    original_manifest = (dataset / 'manifest.json').read_bytes()
+    original_schema = schema.read_bytes()
+    encoder = Encoder()
+    encode = encoder.embed_texts
+    def mutate_after_read(texts):
+        manifest = json.loads(original_manifest)
+        manifest['dataset_version'] = 'changed-during-encoding'
+        (dataset / 'manifest.json').write_text(json.dumps(manifest), encoding='utf-8')
+        schema.write_text('{}', encoding='utf-8')
+        return encode(texts)
+    encoder.embed_texts = mutate_after_read
+    artifact = build_library(dataset, schema, tmp_path / 'result', encoder,
+                             library_version='snapshot-test', expected_dimension=2)
+    assert artifact.manifest['dataset_version'] == json.loads(original_manifest)['dataset_version']
+    assert (tmp_path / 'result/dataset-manifest.json').read_bytes() == original_manifest
+    assert (tmp_path / 'result/label-schema.json').read_bytes() == original_schema
+
+
+@pytest.mark.parametrize('unapproved', ['dataset', 'schema'])
+def test_unapproved_input_stops_before_encoder_and_output(tmp_path, unapproved):
+    dataset, schema = input_snapshot(tmp_path)
+    path = dataset / 'manifest.json' if unapproved == 'dataset' else schema
+    value = json.loads(path.read_text(encoding='utf-8'))
+    if unapproved == 'dataset':
+        value['approval_status'] = 'PENDING'
+    else:
+        value['approval']['status'] = 'PENDING'
+    path.write_text(json.dumps(value), encoding='utf-8')
+    encoder = Encoder()
+    with pytest.raises(ValueError, match='INPUT_NOT_APPROVED'):
+        build_library(dataset, schema, tmp_path / 'result', encoder,
+                      library_version='test', expected_dimension=2)
+    assert encoder.calls == []
+    assert not (tmp_path / 'result').exists()
+
+
+def test_changed_library_checksum_stops_before_encoder(tmp_path):
+    dataset, schema = input_snapshot(tmp_path)
+    path = dataset / 'library.jsonl'
+    path.write_bytes(path.read_bytes() + b'\n')
+    encoder = Encoder()
+    with pytest.raises(ValueError, match='INPUT_CHECKSUM_MISMATCH'):
+        build_library(dataset, schema, tmp_path / 'result', encoder,
+                      library_version='test', expected_dimension=2)
     assert encoder.calls == []
