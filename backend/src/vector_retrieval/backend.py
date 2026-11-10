@@ -46,6 +46,40 @@ class RetrievalError(Exception):
         super().__init__(code)
 
 
+async def cache_verified_manifest(conn, manifest, cache_path):
+    """Prepare search from a just-verified manifest, without rereading every source."""
+    from ..documents.corpus_manifest import sha256
+    payload=manifest['manifest']
+    if sha256(payload)!=manifest['manifest_sha256']:
+        raise RetrievalError('HASH_MISMATCH')
+    index_id=_uuid(payload['index']['index_version_id'])
+    reader=HybridRetriever(None,None,corpus_version_id=manifest['corpus_version_id'])
+    info=await reader._index(conn,index_id,False,payload['index']['embedding_model'])
+    if info['embedding_model']!=payload['index']['embedding_model']:
+        raise RetrievalError('CACHE_INDEX_MISMATCH')
+    rows=await reader._fetch(conn,ROWS+' ORDER BY t.chunk_id',uuid.UUID(index_id))
+    texts={chunk['chunk_id']:dict(chunk,document_id=doc['document_id'],document_hash=doc['document_hash'])
+           for doc in payload['documents'] for chunk in doc['chunks']}
+    if len(rows)!=len(texts) or len(texts)!=payload['chunk_count']: raise RetrievalError('CACHE_STALE')
+    prepared=[]
+    for record in rows:
+        row=dict(record)
+        if isinstance(row.get('locator_json'),str): row['locator_json']=json.loads(row['locator_json'])
+        chunk=texts.get(row['chunk_id'])
+        if (not chunk or chunk['content_hash']!=row['content_hash'].strip()
+                or chunk['document_id']!=row['document_id'] or chunk['chunk_index']!=row['chunk_index']
+                or chunk['document_hash']!=row['source_sha256'].strip() or chunk['locator']!=row['locator_json']
+                or hashlib.sha256(chunk['text'].encode('utf-8')).hexdigest()!=chunk['content_hash']):
+            raise RetrievalError('HASH_MISMATCH')
+        prepared.append(dict(_metadata(row),tokens=tokenize(chunk['text'])))
+    fingerprint=await reader._value(conn,FINGERPRINT,uuid.UUID(index_id))
+    result=dict(version=2,tokenizer=TOKENIZER_VERSION,index_id=index_id,
+                model=payload['index']['embedding_model'],built_at=reader.clock(),fingerprint=fingerprint,rows=prepared)
+    _validate_cache(result,index_id,result['model'],reader.clock(),reader.max_cache_age)
+    _write_cache(cache_path,result)
+    return {'chunks':len(prepared),'status':'CACHE_READY'}
+
+
 def _canonical(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True,
                       separators=(',', ':'), allow_nan=False).encode('utf-8')
@@ -142,6 +176,12 @@ def _scope(company, period, doc_type):
             raise RetrievalError(code)
         values.append(value.strip().upper() if value is not None else None)
     return values[0], _period(period), values[1]
+
+
+def _same_period(stored, requested):
+    """A canonical year matches its YEAR label, never any quarter of that year."""
+    return stored == requested or (bool(re.fullmatch(r"\d{4}", requested or ""))
+                                   and stored == requested + "-YEAR")
 
 
 def _matches(row, company, period, doc_type, publisher=None, published_date=None):
@@ -265,7 +305,7 @@ class HybridRetriever:
         sql, args = self._statement(sql, args)
         return await conn.fetchval(sql, *args)
 
-    async def _index(self, conn, index_id, allow_building):
+    async def _index(self, conn, index_id, allow_building, model_ref=None):
         row = await conn.fetchrow('SELECT embedding_model,status FROM public.index_versions WHERE index_version_id=$1::uuid',index_id)
         if row is None:
             raise RetrievalError('INDEX_NOT_FOUND')
@@ -278,7 +318,9 @@ class HybridRetriever:
                 raise RetrievalError('CORPUS_NOT_READY')
             if corpus['index_version_id'] != index_id:
                 raise RetrievalError('CORPUS_INDEX_MISMATCH')
-        model = self.embedder.model_name + '@' + self.embedder.revision[:12]
+        # Cache preparation uses verified vectors already stored in DB and does
+        # not need to construct an embedding service. Still enforce MODEL below.
+        model = model_ref if model_ref is not None else self.embedder.model_name + '@' + self.embedder.revision[:12]
         if model != MODEL or row['embedding_model'] != model:
             raise RetrievalError('MODEL_MISMATCH')
         kind = await conn.fetchval("SELECT format_type(atttypid,atttypmod) FROM pg_attribute WHERE attrelid='public.text_chunks'::regclass AND attname='embedding'")
@@ -424,7 +466,7 @@ class HybridRetriever:
                     if await self._value(conn,FINGERPRINT,index_id)!=payload['fingerprint']:
                         raise RetrievalError('CACHE_STALE')
                     allowed={r['chunk_id'] for r in payload['rows'] if _matches(r,company,period,doc_type,publisher,published_date)
-                             and (not exact_period or r['period']==period)}
+                             and (not exact_period or _same_period(r['period'], period))}
                     lexical=lexical_index.search(question,limit=candidates,allowed_ids=allowed)
                     dense=[]
                     if allowed:
@@ -447,7 +489,7 @@ class HybridRetriever:
                             row=by_id.get(item['chunk_id'])
                             if row is None or row['chunk_id'] not in allowed or not _matches(_metadata(row),company,period,doc_type,publisher,published_date):
                                 raise RetrievalError('SOURCE_UNAVAILABLE')
-                            if exact_period and _metadata(row)['period'] != period:
+                            if exact_period and not _same_period(_metadata(row)['period'], period):
                                 raise RetrievalError('SOURCE_UNAVAILABLE')
                             if hashlib.sha256(row['text'].encode('utf-8')).hexdigest()!=row['content_hash'].strip():
                                 raise RetrievalError('HASH_MISMATCH')

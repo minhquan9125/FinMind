@@ -101,6 +101,7 @@ def test_literal_case_is_accepted_through_real_fastapi_validation(monkeypatch, r
     monkeypatch.setattr(api, "get_router_engine", lambda: DecisionEngine(Predictor()))
     app = FastAPI()
     app.include_router(api.router)
+    app.dependency_overrides[api.router_access] = lambda: None
     with TestClient(app) as client:
         response = client.post("/api/hybrid-router/test", json={"question": raw})
     assert response.status_code == 200

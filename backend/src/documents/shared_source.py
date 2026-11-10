@@ -88,7 +88,8 @@ async def resolve_shared_source(conn,index_id,locator,expected_hash,cache):
 async def _resolve_shared_source(conn,index_id,locator,expected_hash,cache):
     index_id=str(uuid.UUID(str(index_id)))
     root=await read_release_root(conn,index_id,cache)
-    return await _resolve_member(conn,index_id,root,locator,expected_hash,cache)
+    origin = str(uuid.UUID(root.get('source_index_version_id', index_id)))
+    return await _resolve_member(conn,origin,root,locator,expected_hash,cache)
 
 
 async def read_release_root(conn,index_id,cache):

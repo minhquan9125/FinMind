@@ -15,7 +15,7 @@ from starlette.concurrency import run_in_threadpool
 from ...auth.authorization import READ_ROLES, require_roles
 from ...core.db import get_pool
 from ...graph.relation_retrieval import RELATION_TYPES
-from ...graph.viewer import GraphViewerReader, NODE_TYPES, VersionNotFound, VersionNotReady
+from ...graph.viewer import GraphViewerReader, NODE_TYPES, SOURCE_SCOPE, SOURCE_TYPES, VersionNotFound, VersionNotReady
 
 logger = logging.getLogger("uvicorn.error")
 
@@ -108,7 +108,7 @@ def _day(value: str | None, name: str) -> str | None:
 
 
 def _with_ticker(node: dict, tickers: dict[str, str]) -> dict:
-    ticker = tickers.get(node["id"])
+    ticker = tickers.get(node["id"]) or node["attributes"].get("symbol")
     detail = ticker or node["attributes"].get("event_type")
     return {**node, "ticker": ticker, "detail": detail}
 
@@ -134,8 +134,9 @@ def search_entities(
     query = q.strip()
     # A ticker is not stored on Neo4j nodes; resolve it through the same registry as the router.
     by_ticker = {t: e for e, t in tickers.items()}
-    items, truncated = _call(reader.entities, version, by_ticker.get(query.upper(), query), type, limit)
-    return {"meta": {"graph_version_id": version, "status": meta["status"]},
+    resolved = query if meta.get("serving_scope") == SOURCE_SCOPE else by_ticker.get(query.upper(), query)
+    items, truncated = _call(reader.entities, version, resolved, type, limit)
+    return {"meta": meta,
             "items": [_with_ticker(item, tickers) for item in items], "truncated": truncated}
 
 
@@ -151,13 +152,16 @@ def neighborhood(
     reader: GraphViewerReader = Depends(get_graph_reader),
     tickers: dict = Depends(get_ticker_map),
 ) -> dict:
-    if not set(relation_type) <= RELATION_TYPES:
+    if not set(relation_type) <= RELATION_TYPES | SOURCE_TYPES:
         raise _error(400, "INVALID_PARAMETER", "relation_type không hợp lệ.")
     start, end = _day(from_, "from"), _day(to, "to")
     if start and end and start > end:
         raise _error(400, "INVALID_PARAMETER", "from phải trước hoặc bằng to.")
     version = _version(graph_version_id)
     meta = _call(reader.ready_version, version)
+    allowed = SOURCE_TYPES if meta.get("serving_scope") == SOURCE_SCOPE else RELATION_TYPES
+    if not set(relation_type) <= allowed:
+        raise _error(400, "INVALID_PARAMETER", "relation_type không thuộc contract của phiên graph.")
     root = _call(reader.nodes, version, [entity_id]).get(entity_id)
     if root is None:
         raise _error(404, "ENTITY_NOT_FOUND", "Thực thể không có trong phiên graph này.")
@@ -174,7 +178,7 @@ def neighborhood(
             "id": e["relation_id"], "source": e["subject_id"], "target": e["object_id"],
             "type": e["relation_type"], "attributes": e["attributes"],
             "temporal": {k: e[k] for k in ("as_of", "valid_from", "valid_to")},
-            "review": {"status": "APPROVED", "reviewer": e["reviewer"], "reviewed_at": e["reviewed_at"]},
+            "review": {"status": e.get("review_status", "APPROVED"), "reviewer": e["reviewer"], "reviewed_at": e["reviewed_at"]},
             "evidence_count": len(e["evidence"]),
             "evidence_preview": ({"document_id": e["evidence"][0]["document_id"],
                                   "page": e["evidence"][0]["locator"].get("page"),
@@ -216,13 +220,13 @@ async def relation_detail(
         sources = {}
     endpoint = lambda i: {k: nodes.get(i, {}).get(k) for k in ("type", "label")} | {"id": i}
     return {
-        "meta": {"graph_version_id": version, "status": meta["status"]},
+        "meta": meta,
         "relation": {
             "id": rel["relation_id"], "type": rel["relation_type"],
             "source": endpoint(found["subject_id"]), "target": endpoint(found["object_id"]),
             "attributes": json.loads(rel["attributes_json"]),
             "temporal": {k: rel.get(k) for k in ("as_of", "valid_from", "valid_to")},
-            "review": {"status": "APPROVED", "reviewer": rel.get("reviewer"), "reviewed_at": rel.get("reviewed_at")},
+            "review": {"status": rel.get("review_status", "APPROVED"), "reviewer": rel.get("reviewer"), "reviewed_at": rel.get("reviewed_at")},
             "extraction": {k: rel.get(k) for k in ("relation_id", "source_batch_id", "corpus_id", "index_version_id")},
         },
         "evidence": [{

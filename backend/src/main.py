@@ -14,10 +14,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from .documents.chunk_reconstruction import ReconstructionError
 
-from .api.routers import auth, documents, search, market_data, research_chat, hybrid_router, graph_viewer
+from .api.routers import auth, documents, search, market_data, research_chat, hybrid_router, graph_viewer, admin_jobs
 from .market_data.app import lifespan as market_lifespan
 from .core.config import get_settings
 from .core.db import connect, disconnect
+from .api.routers import admin_ingestion
 
 
 settings = get_settings()
@@ -64,6 +65,7 @@ async def warmup_research(app: FastAPI):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await connect()
+    app.state.admin_news_queue_root=get_settings().admin_ingestion_directory
     research_chat.get_store.cache_clear()
     try:
         async with market_lifespan(app):
@@ -71,11 +73,23 @@ async def lifespan(app: FastAPI):
             # Serve auth and health without waiting for model/cache initialization.
             # The chat shares this task's model lock and hybrid cache lock.
             warmup_task = asyncio.create_task(warmup_research(app), name='research-warmup')
+            async def recover_queue():
+                from .documents.admin_ingestion import Queue
+                from .documents.job_recovery import recover_stopped_jobs
+                while True:
+                    try:
+                        await asyncio.to_thread(recover_stopped_jobs,Queue(get_settings().admin_ingestion_directory))
+                    except Exception:logger.warning('admin_job_recovery_unavailable')
+                    await asyncio.sleep(15)
+            recovery_task=asyncio.create_task(recover_queue(),name='admin-job-recovery')
             app.state.research_warmup_task = warmup_task
             await asyncio.sleep(0)
             try:
                 yield
             finally:
+                recovery_task.cancel()
+                try:await recovery_task
+                except asyncio.CancelledError:pass
                 # Keep the event loop and DB pool alive until bounded warmup finishes.
                 await warmup_task
     finally:
@@ -115,6 +129,8 @@ app.include_router(market_data.router)
 app.include_router(research_chat.router)
 app.include_router(hybrid_router.router)
 app.include_router(graph_viewer.router)
+app.include_router(admin_jobs.router)
+app.include_router(admin_ingestion.router)
 
 @app.get("/")
 async def root() -> dict:

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Card, EmptyState, ErrorState, Skeleton } from "../../shared/ui/index.js";
 import { getMarketNews } from "../companies/marketDataApi.js";
+import { useAuth } from "../../shared/context/AuthContext.jsx";
 
 export default function MarketNews() {
+  const { user } = useAuth();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ export default function MarketNews() {
       .catch((caught) => { if (!controller.signal.aborted) setError(caught.message); })
       .finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
-  }, [retry]);
+  }, [retry, user?.id]);
   return <Card title="Tin tức thị trường" description="Tin FireAnt đã thu thập · Ngày đăng hiển thị trên từng bài"
     action={<button type="button" className="text-xs text-blue-700" onClick={() => setRetry((value) => value + 1)}>Làm mới tin</button>}>
     {loading ? <Skeleton rows={3} /> : error ? <ErrorState message={error} onRetry={() => setRetry((value) => value + 1)} /> : data?.articles?.length ? <div className="grid gap-3 md:grid-cols-2">

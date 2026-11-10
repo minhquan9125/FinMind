@@ -1,9 +1,13 @@
 import { useEffect, useId, useRef, useState } from "react";
 import SidebarItem from "./SidebarItem.jsx";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.jsx";
+import { PATHS } from "../paths.js";
 
 // groups: [{ label: "Nghiên cứu chính", items: [{ id, label, icon }] }]
 // The parent page owns activeId and decides what onSelect does.
 export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinMind", badge, profile, onProfile, onLogout }) {
+  const { role } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuId = useId();
   const accountRef = useRef(null);
@@ -38,6 +42,9 @@ export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinM
         {badge && <span className="hidden rounded bg-[#EFF6FF] px-1.5 py-0.5 text-[10px] font-semibold text-[#1D4ED8] md:block">{badge}</span>}
       </div>
       <nav aria-label={`${brand} menu`} className="flex-1 space-y-5 overflow-y-auto px-2 py-3 md:px-3">
+        {role === 'admin' && badge !== 'ADMIN' && <Link to={PATHS.admin} title="Về quản trị" className="flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100">
+          <span aria-hidden="true">⚙</span><span className="hidden md:inline">Về quản trị</span>
+        </Link>}
         {groups.map((group, index) => (
           <div key={group.label || index}>
             {group.label && <p className="mb-1 hidden px-3 text-[10px] font-bold uppercase tracking-wide text-[#94A3B8] md:block">{group.label}</p>}

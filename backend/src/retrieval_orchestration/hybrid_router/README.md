@@ -10,10 +10,83 @@ does not by itself make a market, sector or knowledge question ambiguous.
 | --- | --- |
 | VECTOR | Financial metrics/dividends, price explanations, forecasts, market views, investing knowledge and portfolio education |
 | GRAPH | Leadership, ownership, subsidiaries and company business fields without a second content request |
-| BOTH | Entity discovery followed by content, multiple companies, industry impact/beneficiary discovery, event verification |
+| BOTH | Entity discovery followed by content, overall company comparison, industry impact/beneficiary discovery, event verification |
 | CLARIFY | Missing or genuinely ambiguous target/context, or an invalid explicit reporting period |
 
 Business policy takes priority over classifier scores for recognized intents.
+Numeric-only comparisons use VECTOR, with separate content tasks for every
+company and period; they do not wait for Graph. Explicit multi-quarter inputs
+retain all year–quarter pairs.
+
+### Scope/context handoff (2026-11-05)
+
+The router emits `reporting_entity` (`CONSOLIDATED`/`PARENT`) and
+`measure_basis` when established by the question. A bare quarter does not prove
+standalone versus YTD. Personnel task parameters include `person_name`,
+`position_code`, `event_type` and `relation_types`; codes follow the existing
+person-role rules. A resignation request is `RESIGNATION_REQUESTED`, not a
+completed dismissal. These are query filters, not extracted facts.
+
+Clients must round-trip `topic`, `operation`, `route_hint` and the scope filters
+alongside companies/periods for listing follow-ups. The interactive client does
+this; a new standalone market/knowledge question still resets company scope.
+
+Calendar years/quarters resolve with the Vietnam clock (`reference_date` is
+injectable for fixtures). Latest/source-dependent periods require an injected
+`DecisionEngine.period_resolver(task) -> list[str]` backed by scoped corpus
+coverage. The API now wires this resolver to indexed document periods in the
+configured frozen corpus, with ACTIVE index, document-hash membership and active
+chunks checked in a read-only transaction. An omitted hybrid index is derived
+from that corpus; no latest year is invented. `/test` returns concrete periods
+when coverage exists and exposes `period_resolution_required` otherwise.
+Before LIVE calls, unresolved/invalid periods stop execution with
+`PERIOD_RESOLUTION_REQUIRED`; they are never silently dropped. Exact daily price
+lookups use a calendar date and the existing price service, not report coverage.
+
+Every explicit numeric quarter is checked, including a later invalid quarter.
+Year-before-quarter and quarter-before-year are supported. Company-specific
+period clauses are stored in `scope.targets`; shared periods still expand to
+each requested company. Listing/company-switch follow-ups retain topic, role,
+operation and reporting scope. `reporting_entities` retains both CONSOLIDATED
+and PARENT when compared, with separate tasks; `reporting_entity` is null when
+both are requested. Parent financial reports use VECTOR; parent-company identity
+lookups still use GRAPH.
+
+The live content adapter accepts an optional `scope_search_fn` that receives
+reporting_entity/measure_basis. Without this capability an explicit reporting
+entity returns `CONTENT_REPORTING_SCOPE_UNSUPPORTED` before retrieval, rather
+than searching without the requested filter. Current database statement_scope
+values describe statement sections, so they must not be used as a fabricated
+consolidated/parent mapping. The factory now installs this callback and reuses
+the LIVE evidence header matcher for reporting entity and quarter basis.
+Missing scope labels return no matching evidence, rather than another report.
+Search is bounded to 20 verified candidates before header filtering; it is not
+an exhaustive scan of all documents.
+
+For BOTH, the content task declares `company_scope_policy`:
+`RELATED_COMPANIES` requires Graph result rows to supply explicit ticker lists
+in `resolved_companies`; `EXPLICIT_OR_RESOLVED` keeps explicitly requested
+companies, otherwise uses those lists. Person IDs, relation IDs and path nodes
+are never guessed as tickers. Missing mapping stops before Vector with
+`GRAPH_COMPANY_MAPPING_REQUIRED`. The engine bridges declared tickers into the
+current content dependency format and executes one company/period per call.
+The Graph adapter now populates this mapping from registry company IDs on the
+returned edges, passes requested relation types and checks position/event stage.
+Unknown relation types remain errors; requests are never widened to all edges.
+
+`source_type` is retained in scope/context. BCTN uses ANNUAL_REPORT for coverage
+and retrieval; its pinned document report-year metadata can resolve the latest
+report. BCTC uses FINANCIAL_STATEMENT. Report years are not relation effective dates.
+Exact daily prices use `find_price` and the existing read-only price query service.
+No trading row for the requested date means NO_DATA, not substitution of another day.
+
+Both endpoints require current server authentication and a READ_ROLES grant when
+LIVE/shadow or configured-corpus data can be accessed. Only pure MOCK without a
+configured corpus remains anonymous. Set `FINMIND_ACCESS_TOKEN` for the interactive
+client to attach the bearer token; the client does not print or persist it.
+
+Regression suite for this handoff: `backend/tests/test_hybrid_router.py`.
+
 The existing pinned BGE-M3 + Logistic Regression classifier remains the fallback
 for resolved questions without a policy match; model artifacts were not retrained.
 Original questions are retained in every task. Forecast/partial period tokens

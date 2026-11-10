@@ -26,7 +26,7 @@ from .retrieval_flow.conversation import _resolve_relative_periods, STOP_WORDS
 from .retrieval_flow.intent import _fold, _period, TICKERS
 from .clarifications import apply_clarification, metric_group, resolve_reply
 from .market_dialogue import article_query, calendar_day, news_reference
-from .input_normalization import normalize_user_text
+from .input_normalization import normalize_user_text, conversational_words, registered_symbols
 from .market_dates import price_date_request, relative_market_range, temporal_reply
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
@@ -97,7 +97,7 @@ def _market_intent(norm, context, today):
         return {'kind': 'NEWS', 'day': None, 'action': 'SUMMARY' if 'tom tat' in norm else 'DETAIL', 'query': query}
     news = bool(re.search(r'\b(?:tin tuc|tin|news)\b', norm))
     short_price = re.search(r'\bgia\s+([a-z]{3})\b', norm)
-    price = bool(re.search(r'\b(?:gia co phieu|thi gia|gia hien tai|gia hom nay)\b', norm)
+    price = bool(re.search(r'\b(?:gia co phieu|thi gia|gia hien tai|gia hom nay|gia ra sao|gia bao nhieu|gia nhu (?:the )?nao)\b', norm)
                  or (short_price and short_price[1] not in {'von', 'tri', 'cua', 'ban', 'mua', 'dat', 'san', 'cao', 'day', 'goc'}))
     causal = bool(re.search(
         r'\b(?:vi sao|tai sao|nguyen nhan|do dau|ly do|tac dong|anh huong|he qua)\b', norm
@@ -124,7 +124,7 @@ def _market_intent(norm, context, today):
             'kind': 'NEWS', 'day': day or today.isoformat(), 'action': 'SUMMARY',
             'market_wide': True,
         }
-    if (trend and not financial
+    if (trend and not financial and (not price or causal)
             and not re.search(r'\b(?:nam|quy|thang)\s+\d|\b(?:19|20|21)\d{2}\b', norm)):
         return {'kind': 'ANALYSIS', 'day': today.isoformat(), 'action': 'ANALYSIS'}
     company_selection = (norm.isdigit() and
@@ -169,6 +169,13 @@ def analyze_live(text, context=None, *, today=None):
     norm = _fold(_resolve_relative_periods(text, today))
     norm = resolve_reply(norm, context)
     scope = copy.deepcopy(context or {})
+    language = conversational_words()
+    registered = registered_symbols()
+    # Repair scopes persisted by the old heuristic (e.g. 'như' -> NHU).
+    # A real catalog ticker that overlaps a language word remains available.
+    if scope.get('companies'):
+        scope['companies'] = [symbol for symbol in scope['companies']
+                              if symbol in registered or symbol.lower() not in language]
     decision = {'decision': 'ASK_CLARIFICATION', 'scope': scope, 'message': '', 'reason_code': 'MISSING_SCOPE'}
     def finish(branch, reason, message):
         decision.update(decision=branch, reason_code=reason, message=message)
@@ -195,7 +202,7 @@ def analyze_live(text, context=None, *, today=None):
         return finish('ASK_CLARIFICATION', 'AMBIGUOUS_PERIOD', 'Bạn muốn xem quý nào? Vui lòng nêu một kỳ hợp lệ từ quý 1 đến quý 4.')
     companies = [s for s in (*TICKERS, 'SSI', 'CTR', 'VNM', 'MSN', 'NLG') if re.search(r'\b'+s.lower()+r'\b', norm)]
     reserved = {'BCTC', 'BCTN', 'YTD', 'VND', 'USD', 'EUR', 'UBND', 'CTCP', 'TNHH',
-                'NEWS', 'CASH', 'TOTAL', 'CAFEF', 'LNST', 'LNTT'}
+                'NEWS', 'CASH', 'TOTAL', 'CAFEF', 'LNST', 'LNTT', 'HDQT', 'HDTV', 'BKS', 'BGD', 'BDH'}
     companies += [s for s in re.findall(r'\b[A-Z]{3,5}\b', text) if s not in reserved and s not in companies]
     ticker_stop = STOP_WORDS | {'mot', 'cuoi', 'thuan', 'nhat', 'rieng', 'hop', 'ngan', 'dai',
                               'thu', 'phi', 'tuc', 'cafef', 'news', 'trong', 'tai', 'ky',
@@ -223,6 +230,7 @@ def analyze_live(text, context=None, *, today=None):
         token = norm.split()[-1]
         if token not in ticker_stop | {'sau', 'nam', 'nay', 'cho', 'xem', 'moi'}:
             companies = [token.upper()]
+    companies = [symbol for symbol in companies if symbol in registered or symbol.lower() not in language]
     if companies:
         scope['companies'] = list(dict.fromkeys(companies))
         if (context or {}).get('companies') and scope['companies'] != context['companies']:
@@ -287,8 +295,22 @@ def analyze_live(text, context=None, *, today=None):
     comparison = bool(re.search(r'\b(?:so sanh|doi chieu|khac nhau|hon kem)\b', norm))
     overall_comparison = comparison and not found and not profit_requested
     relationship_lookup = bool(re.search(
-        r'\b(?:chu tich|ceo|tong giam doc|giam doc|lanh dao|co dong|so huu)\b', norm
+        r'\b(?:chu tich|ceo|tong giam doc|giam doc|lanh dao|co dong|so huu|'
+        r'hoi dong|hdqt|hdtv|ban dieu hanh|ban kiem soat|nhan su quan ly)\b', norm
     ))
+    ambiguous_members = bool(re.search(r'\bthanh vien\b', norm)) or bool(scope.get('_pending_membership'))
+    if ambiguous_members and not relationship_lookup and not found and not profit_requested:
+        for key in ('_pending_metric', '_metric_candidates', '_pending_quarter', '_pending_ytd',
+                    '_pending_reporting_entity', '_pending_publisher', 'measure_basis', 'publisher'):
+            scope.pop(key, None)
+        scope.update(source_type='NEWS', metric_code=None, periods=[], reporting_entity='UNKNOWN',
+                     topic='MEMBERSHIP_SELECTION', _pending_membership=True)
+        if not scope.get('companies'):
+            return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn xem thành viên của công ty nào?')
+        return finish('ASK_CLARIFICATION', 'AMBIGUOUS_COMPANY_MEMBERS',
+                      'Bạn muốn xem thành viên hội đồng quản trị hay ban điều hành?')
+    if relationship_lookup or found or profit_requested:
+        scope.pop('_pending_membership', None)
     event_impact = bool(
         re.search(r'\b(?:bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b', norm)
         and re.search(r'\b(?:co phieu|anh huong|tac dong|he qua)\b', norm)
@@ -304,6 +326,7 @@ def analyze_live(text, context=None, *, today=None):
     news = bool(
         re.search(r'\b(?:tin tuc|tin|news)\b', norm)
         or qualitative_document
+        or (relationship_lookup and not found and not profit_requested)
         or (scope.get('source_type') == 'NEWS' and publishers)
     )
     if event_impact:
@@ -320,6 +343,11 @@ def analyze_live(text, context=None, *, today=None):
         scope.update(source_type='NEWS', metric_code=None, reporting_entity='UNKNOWN')
         if relationship_lookup:
             scope['topic'] = 'RELATIONSHIP_LOOKUP'
+            for key in ('_pending_quarter', '_pending_ytd', '_pending_reporting_entity',
+                        'measure_basis', '_metric_candidates'):
+                scope.pop(key, None)
+            # A new organizational question does not inherit an unrelated report period.
+            scope.pop('periods', None)
         scope.pop('_pending_metric', None)
         if len(publishers) > 1:
             scope.pop('publisher', None)
@@ -418,7 +446,7 @@ def analyze_live(text, context=None, *, today=None):
 class DenseEvidenceRetriever:
     """Corpus-bound adapter with dense or independently indexed BM25/RRF retrieval."""
     def __init__(self, pool, embedder, *, corpus_version_id=V4_CORPUS, model_ref=MODEL,
-                 backend='dense', cache_dir=None):
+                 backend='dense', cache_dir=None, corpus_resolver=None):
         if backend not in ('dense', 'hybrid'):
             raise ValueError('Unsupported retrieval backend')
         self.pool, self.embedder = pool, embedder
@@ -428,6 +456,7 @@ class DenseEvidenceRetriever:
         self.cache_dir = Path(cache_dir) if cache_dir is not None else Path(__file__).resolve().parents[1] / 'vector_retrieval' / '.cache'
         self._hybrid = None
         self._cache_lock = asyncio.Lock()
+        self.corpus_resolver = corpus_resolver
 
     def _hybrid_instance(self):
         from ..vector_retrieval.backend import HybridRetriever
@@ -439,10 +468,18 @@ class DenseEvidenceRetriever:
                 def embed_query(self, text):
                     with _embedding_lock:
                         return delegate.embed_query(text)
-            self._hybrid = HybridRetriever(self.pool, LockedEmbedder(), corpus_version_id=self.corpus_version_id)
+            # Frozen corpora are immutable. Membership/model fingerprints and
+            # returned source hashes are still checked on every search.
+            self._hybrid = HybridRetriever(self.pool, LockedEmbedder(), corpus_version_id=self.corpus_version_id,
+                                           max_cache_age=7*24*3600)
         return self._hybrid
 
     async def _corpus(self):
+        if self.corpus_resolver is not None:
+            current = str(uuid.UUID(await asyncio.to_thread(self.corpus_resolver)))
+            if current != self.corpus_version_id:
+                self.corpus_version_id = current
+                self._hybrid = None
         corpus = await repository.get_corpus_index(self.pool, self.corpus_version_id)
         if (not corpus or corpus['corpus_status'] != 'FROZEN' or corpus['index_status'] != 'ACTIVE'
                 or corpus['embedding_model'] != self.model_ref):
@@ -526,6 +563,9 @@ class DenseEvidenceRetriever:
                     )
                 matching = []
                 for row in rows:
+                    if scope.get('_admin_source_url'):
+                        locator = row.get('locator_json') or {}
+                        if locator.get('url') != scope['_admin_source_url']: continue
                     if row.get('source_verified', True) is not True:
                         raise ReconstructionError('UNVERIFIED_SOURCE', 'Preview cannot be evidence')
                     text = row['text']
@@ -552,7 +592,8 @@ class DenseEvidenceRetriever:
                         raise ReconstructionError('HASH_MISMATCH', 'Indexed text differs')
                     matching.append(dict(
                         evidence_id=row['chunk_id'], chunk_id=row['chunk_id'], source_id=row['document_id'],
-                        source_type=doc_type, title=row['title'], passage=text,
+                        source_type='BCTC' if doc_type == 'FINANCIAL_STATEMENT' else doc_type,
+                        title=row['title'], passage=text,
                         source_sha256=row['source_sha256'].strip(), content_sha256=content_hash,
                         source_verified=True, locator=row['locator_json'],
                         score={'type': 'RRF' if self.backend == 'hybrid' else 'COSINE_SIMILARITY', 'value': float(row['score'])},
@@ -573,9 +614,10 @@ class DenseEvidenceRetriever:
 class LiveResearchService:
     execution_mode = 'LIVE'
 
-    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None):
+    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None):
         self.retriever, self.provider = retriever, provider
         self.market = market
+        self.admin_news = admin_news
         self.limits = limits or Limits.load()
         self.budget = Budget(self.limits)
         self.retrieval_timeout = retrieval_timeout
@@ -633,6 +675,10 @@ class LiveResearchService:
 
     async def answer(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
+        if self.admin_news is not None:
+            indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
+                                                   limits=self.limits, budget=self.budget)
+            if indexed is not None: return indexed
         prior_scope = (previous_result or {}).get('scope') or {}
         # Recover only legacy, topic-less clarification state; never override an
         # explicitly active financial/news question or a different company.
@@ -747,6 +793,8 @@ def render_live_response(result):
     answering = result.get('answering') or {}
     if answering.get('status') == 'DRAFT_READY':
         return answering['draft']
+    if answering.get('reason_code') == 'REQUESTED_PERIOD_NOT_IN_SOURCE':
+        return answering['message']
     if result.get('status') != 'EVIDENCE_READY':
         return result['message']
     if answering.get('reason_code') == 'PROVIDER_NOT_CONFIGURED':

@@ -201,7 +201,7 @@ def preprocess_for_tesseract(image: Path) -> Path:
 
 def run_tesseract(image: Path, executable: str, language: str, psm: int) -> str:
     command = [executable, str(image), "stdout", "-l", language, "--oem", str(TESSERACT_OEM), "--psm", str(psm)] + TESSERACT_EXTRA_CONFIG
-    completed = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", check=False)
+    completed = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", check=False, timeout=120)
     if completed.returncode:
         detail = (completed.stderr or completed.stdout)[-1500:]
         raise RuntimeError(f"Tesseract exited with code {completed.returncode}: {detail}")
@@ -211,7 +211,7 @@ def run_tesseract(image: Path, executable: str, language: str, psm: int) -> str:
 def tesseract_tsv_confidence(image: Path, executable: str, language: str, psm: int) -> float | None:
     try:
         command = [executable, str(image), "stdout", "-l", language, "--oem", str(TESSERACT_OEM), "--psm", str(psm), "tsv"] + TESSERACT_EXTRA_CONFIG
-        completed = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", check=False)
+        completed = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", check=False, timeout=120)
         if completed.returncode or not completed.stdout:
             return None
         lines = completed.stdout.splitlines()
@@ -241,7 +241,7 @@ def tesseract_tsv_confidence(image: Path, executable: str, language: str, psm: i
 def render_page(pdf: Path, page_number: int, dpi: int, pdftoppm: str, directory: Path) -> Path:
     prefix = directory / f"page-{page_number:04d}"
     command = [pdftoppm, "-f", str(page_number), "-l", str(page_number), "-singlefile", "-r", str(dpi), "-png", str(pdf), str(prefix)]
-    completed = subprocess.run(command, capture_output=True, text=True, check=False)
+    completed = subprocess.run(command, capture_output=True, text=True, check=False, timeout=120)
     image = prefix.with_suffix(".png")
     if completed.returncode or not image.is_file() or image.stat().st_size == 0:
         raise RuntimeError(f"Cannot render PDF page {page_number}: {(completed.stderr or completed.stdout)[-1500:]}")

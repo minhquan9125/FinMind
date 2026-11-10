@@ -40,20 +40,27 @@ def get_store() -> PostgresSessionStore:
         from ...b1_answering.providers.gemini import GeminiProvider
         from ...retrieval_orchestration.market_research import MarketResearch
         from ...market_data.repository import FileMarketDataRepository
+        from ...documents.admin_news_chat import AdminNewsChat
+        from ...documents.admin_ingestion import Queue
         limits = Limits.load()
         provider = None
         if settings.gemini_api_key.get_secret_value() and settings.b1_gemini_free_tier_confirmed:
             provider = GeminiProvider(limits, api_key=settings.gemini_api_key.get_secret_value(),
                                       free_tier_confirmed=True)
-        engine = LiveResearchService(
-            DenseEvidenceRetriever(get_pool(), get_embedding_service(),
+        retriever = DenseEvidenceRetriever(get_pool(), get_embedding_service(),
                                    corpus_version_id=settings.research_corpus_version_id,
                                    model_ref=settings.embedding_model_ref,
-                                   backend=settings.research_retrieval_backend),
+                                   backend=settings.research_retrieval_backend,
+                                   corpus_resolver=lambda: Queue(settings.admin_ingestion_directory).serving_corpus(settings.research_corpus_version_id))
+        engine = LiveResearchService(
+            retriever,
             provider=provider, limits=limits,
             retrieval_timeout=settings.research_retrieval_timeout_seconds,
             market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
+            admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
         )
+        from ...documents.research_metrics import ObservedResearch, ResearchMetrics
+        engine = ObservedResearch(engine, ResearchMetrics(settings.admin_ingestion_directory))
     return PostgresSessionStore(get_pool(), engine=engine)
 
 

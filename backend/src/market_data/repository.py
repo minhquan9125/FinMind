@@ -62,6 +62,38 @@ class FileMarketDataRepository:
                     "fetched_at": runtime.get("fetched_at"), "source": runtime.get("source")}
         return {**data, "bars": data["bars"][-limit:]}
 
+    def index_history_path(self, symbol):
+        from .history import INDEX_NAMES
+        if symbol not in INDEX_NAMES:raise ValueError('Chỉ số không được hỗ trợ.')
+        return self.root/'.agent-state/market-data/indices'/('index-'+symbol)/'history.json'
+
+    def write_index_history(self, symbol, data):
+        path=self.index_history_path(symbol);path.parent.mkdir(parents=True,exist_ok=True)
+        temporary=path.with_name(path.name+'.'+uuid4().hex+'.tmp')
+        try:
+            temporary.write_text(json.dumps(data,ensure_ascii=False,allow_nan=False),encoding='utf-8')
+            temporary.replace(path)
+        finally:temporary.unlink(missing_ok=True)
+
+    def read_index_history(self, symbol):
+        from .history import normalize_index_history
+        path=self.index_history_path(symbol)
+        sources=[path,self.root/'data_pipeline/ScrapersOHLCV/data/stocks'/symbol/'data.json']
+        for source in sources:
+            try:
+                data=json.loads(source.read_text(encoding='utf-8'))
+                provenance=data.get('provenance') or {}
+                if source==path:
+                    if data.get('symbol')!=symbol or data.get('price_unit')!='points':continue
+                    stamp=data['fetched_at'];rows=[{**r,'time':r['date']} for r in data['bars']]
+                else:
+                    if provenance.get('instrument_type')!='index' or provenance.get('price_units')!='points':continue
+                    stamp=provenance.get('fetched_at') or provenance.get('history_fetched_at')
+                    rows=[{**r,'time':r['trade_date']} for r in data['bars'] if r.get('symbol')==symbol]
+                return normalize_index_history(symbol,{'fetched_at':stamp,'rows':rows})
+            except (OSError,ValueError,KeyError,TypeError,AttributeError):continue
+        return {'symbol':symbol,'interval':'1D','source':None,'fetched_at':None,'price_unit':'points','bars':[]}
+
     def _get_saved_ohlcv(self, symbol: str, limit: int) -> dict:
         path = self.root / "data_pipeline" / "ScrapersOHLCV" / "data" / "stocks" / symbol / "data.json"
         if not path.is_file():

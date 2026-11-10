@@ -7,7 +7,7 @@ asyncpg>=0.30.0
 python-dotenv>=1.0.0
 sqlalchemy[asyncio]>=2.0.0
 pgvector>=0.3.4
-pypdf>=4.3.1
+pypdf>=5,<7
 sentence-transformers>=3.1.1
 torch>=2.6.0
 numpy>=2.1.0
@@ -16,6 +16,8 @@ neo4j>=5.15.0
 pytest>=8.3.3
 pytest-asyncio>=0.24.0
 requests>=2.32,<3
+Pillow>=10,<13
+scrapling>=0.4,<1
 tzdata>=2024.1
 pwdlib[argon2]
 PyJWT

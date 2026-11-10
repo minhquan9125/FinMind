@@ -212,10 +212,14 @@ class LiveContentAdapter:
         event_loop,  # asyncio.AbstractEventLoop - main event loop
         *,
         top_k: int = 5,
+        scope_search_fn=None,
+        price_search_fn=None,
     ) -> None:
         self._search_fn = search_fn
         self._loop = event_loop
         self._top_k = top_k
+        self._scope_search_fn = scope_search_fn
+        self._price_search_fn = price_search_fn
         self.calls: list[dict] = []
 
     def execute(
@@ -231,13 +235,20 @@ class LiveContentAdapter:
         period = periods[0] if len(periods) == 1 else None
         # Forecast horizons and partial dates belong in the original question,
         # not in a corpus filter that accepts only YYYY / YYYY-Q[1-4].
-        if not re.fullmatch(r"\d{4}(?:-Q[1-4])?", period or ""):
+        if not re.fullmatch(r"\d{4}(?:-Q[1-4]|-\d{2}-\d{2})?", period or ""):
             period = None
         question = task.params.get("retrieval_question") or task.params.get("question") or " ".join(filter(None, [
             task.params.get("metric_code"),
             company,
             period,
         ])) or "thong tin tai chinh"
+
+        reporting_entity = task.params.get("reporting_entity")
+        if task.operation == "find_price" and self._price_search_fn is None:
+            return AdapterResult(task.id, "CONTENT", "SYSTEM_UNAVAILABLE", "PRICE_NOT_READY", provenance="LIVE/VECTOR")
+        if reporting_entity and self._scope_search_fn is None:
+            return AdapterResult(task.id, "CONTENT", "SYSTEM_UNAVAILABLE",
+                                 "CONTENT_REPORTING_SCOPE_UNSUPPORTED", provenance="LIVE/VECTOR")
 
         self.calls.append({
             "task_id": task.id,
@@ -249,8 +260,16 @@ class LiveContentAdapter:
 
         try:
             import asyncio
+            extra = {"doc_type": task.params["doc_type"]} if task.params.get("doc_type") else {}
+            if task.operation == "find_price":
+                search = self._price_search_fn(question, company, period)
+            elif self._scope_search_fn:
+                search = self._scope_search_fn(question, company, period, self._top_k,
+                    reporting_entity=reporting_entity, measure_basis=task.params.get("measure_basis"), **extra)
+            else:
+                search = self._search_fn(question, company, period, self._top_k)
             future = asyncio.run_coroutine_threadsafe(
-                self._search_fn(question, company, period, self._top_k),
+                search,
                 self._loop,
             )
             result = future.result(timeout=self.TIMEOUT_SECONDS)
@@ -267,6 +286,12 @@ class LiveContentAdapter:
                 return AdapterResult(task.id, "CONTENT", "INSUFFICIENT_EVIDENCE", f"RETRIEVER_{code}", provenance="LIVE/VECTOR")
             return AdapterResult(task.id, "CONTENT", "SYSTEM_UNAVAILABLE", "CONTENT_ERROR", provenance="LIVE/VECTOR")
 
+        if task.operation == "find_price":
+            sources = result.get("sources") or []
+            return AdapterResult(task.id, "CONTENT", "OK" if sources else "NO_DATA",
+                "PRICE_OK" if sources else "PRICE_NO_RESULTS", data=(result.get("data", {}),) if sources else (),
+                evidence=tuple({**s, "source_id": s.get("price_id"), "source_verified": True, "label": "LIVE/VECTOR"} for s in sources),
+                provenance="LIVE/VECTOR")
         hits = result.get("results") or []
         if not hits:
             return AdapterResult(task.id, "CONTENT", "NO_DATA", "CONTENT_NO_RESULTS", provenance="LIVE/VECTOR")
@@ -321,14 +346,12 @@ class LiveGraphAdapter:
         "expand_market_context": (None, 2),
     }
 
-    def __init__(self, store, relations=None, graph_version_ids=(), tickers=None,
-                 verify_sources=None) -> None:
+    def __init__(self, store, relations=None, graph_version_ids=(), tickers=None) -> None:
         # relations: RelationRetrieval; tickers: {"TCB": "CMP-..."} from the company registry.
         self._store = store
         self._relations = relations
         self._versions = tuple(graph_version_ids)
         self._tickers = dict(tickers or {})
-        self._verify_sources = verify_sources
         self.calls: list[dict] = []
 
     def execute(
@@ -423,22 +446,14 @@ class LiveGraphAdapter:
 
     def _relationships(self, task: RouterTask) -> AdapterResult:
         companies = [str(c).upper() for c in task.params.get("companies") or []]
-        if not companies or any(c not in self._tickers for c in companies):
-            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
-                                 "GRAPH_ENTITY_UNRESOLVED", provenance="LIVE/GRAPH")
-        # WBS10 has not distinguished "compare two companies" from "find a
-        # relation between them". A union of both neighborhoods would answer
-        # the latter incorrectly, so wait for an explicit multi-entity plan.
-        if len(set(companies)) > 1:
-            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
-                                 "GRAPH_MULTI_COMPANY_SCOPE_UNSUPPORTED", provenance="LIVE/GRAPH")
         entity_ids = [self._tickers[c] for c in companies if c in self._tickers]
-        try:
-            start, end = _period_window(task.params.get("periods") or [])
-        except ValueError:
-            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
-                                 "GRAPH_UNSUPPORTED_PERIOD", provenance="LIVE/GRAPH")
+        if not entity_ids:
+            return AdapterResult(task.id, "GRAPH", "NO_DATA", "GRAPH_ENTITY_UNRESOLVED",
+                                 provenance="LIVE/GRAPH")
+        start, end = _period_window(task.params.get("periods") or [])
         types, hops = self.RELATION_PLAN.get(task.operation, (None, 1))
+        if task.params.get("relation_types"):
+            types = tuple(task.params["relation_types"])
         try:
             paths = self._relations.query(entity_ids, graph_version_ids=self._versions,
                                           relation_types=types, start=start, end=end,
@@ -446,33 +461,53 @@ class LiveGraphAdapter:
         except ValueError:
             return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
                                  "GRAPH_UNSUPPORTED_SCOPE", provenance="LIVE/GRAPH")
-        except TimeoutError:
-            return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
-                                 "GRAPH_TIMEOUT", provenance="LIVE/GRAPH")
         except Exception as exc:  # driver timeout/unavailable must not break routing
             return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
                                  f"GRAPH_ERROR_{type(exc).__name__}", provenance="LIVE/GRAPH")
+        if task.params.get("position_code") or task.params.get("event_type"):
+            from .decision_engine import personnel_filters, _normalize
+            filtered = []
+            for path in paths:
+                edges = path.get("relations") or []
+                def matches(edge):
+                    attrs = edge.get("attributes") or {}
+                    role = attrs.get("position_code") or personnel_filters(_normalize(attrs.get("position", ""))).get("position_code")
+                    event = attrs.get("event_type") or attrs.get("proposed_stage") or {
+                        "APPOINTS": "APPOINTED", "DISMISSES": "DISMISSED"}.get(edge.get("relation_type"))
+                    return ((not task.params.get("position_code") or role == task.params["position_code"])
+                            and (not task.params.get("event_type") or event == task.params["event_type"]))
+                if edges and all(matches(edge) for edge in edges):
+                    filtered.append(path)
+            paths = filtered
         if not paths:
             return AdapterResult(task.id, "GRAPH", "NO_DATA", "GRAPH_NO_RELATIONS",
                                  provenance="LIVE/GRAPH")
-        if self._verify_sources is None:
-            return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
-                                 "GRAPH_SOURCE_READER_NOT_READY", provenance="LIVE/GRAPH")
-        try:
-            evidence = self._verify_sources(paths)
-        except TimeoutError:
-            return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
-                                 "GRAPH_SOURCE_TIMEOUT", provenance="LIVE/GRAPH")
-        except Exception as exc:
-            from ...graph_review.models import SourceProblem
-            if not isinstance(exc, SourceProblem):
-                return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
-                                     "GRAPH_SOURCE_UNAVAILABLE", provenance="LIVE/GRAPH")
-            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
-                                 "GRAPH_SOURCE_MISMATCH", provenance="LIVE/GRAPH")
-        if not evidence:
-            return AdapterResult(task.id, "GRAPH", "INSUFFICIENT_EVIDENCE",
-                                 "GRAPH_EVIDENCE_MISSING", provenance="LIVE/GRAPH")
+        # Only IDs explicitly mapped by the trusted company registry become tickers.
+        inverse = {}
+        for ticker, entity_id in self._tickers.items():
+            inverse.setdefault(entity_id, []).append(ticker)
+        mapped = []
+        for path in paths:
+            related = set()
+            for edge in path.get("relations") or []:
+                if edge.get("subject_id") in entity_ids and edge.get("relation_type") in {
+                        "HAS_SUBSIDIARY", "HAS_ASSOCIATE", "OWNS_SHARES", "COOPERATES_WITH"}:
+                    related.add(edge.get("object_id"))
+                elif edge.get("object_id") in entity_ids and edge.get("relation_type") == "COOPERATES_WITH":
+                    related.add(edge.get("subject_id"))
+            resolved = [ts[0] for ident in sorted(related) if len(ts := inverse.get(ident, [])) == 1]
+            if task.params.get("company_scope_policy") != "RELATED_COMPANIES":
+                resolved = companies or resolved
+            mapped.append({**path, "resolved_companies": resolved})
+        paths = mapped
+        edges = {e["relation_id"]: (p["graph_version_id"], e) for p in paths for e in p["relations"]}
+        evidence = tuple(
+            {"source_id": f"{e['relation_id']}:{i}", "document_id": src["document_id"],
+             "chunk_id": src["chunk_id"], "document_version": src["document_version"],
+             "locator": src["locator"], "quote": src["quote"], "graph_version_id": version,
+             "source_verified": True, "label": "LIVE/GRAPH"}
+            for version, e in edges.values() for i, src in enumerate(e["evidence"])
+        )
         return AdapterResult(task.id, "GRAPH", "OK", "GRAPH_RELATIONS_OK", evidence=evidence,
                              data=tuple(paths), provenance="LIVE/GRAPH")
 
@@ -483,7 +518,7 @@ def _period_window(periods: list[str]) -> tuple[str | None, str | None]:
     for period in periods:
         match = re.fullmatch(r"(\d{4})(?:-Q([1-4]))?", str(period))
         if not match:
-            raise ValueError("Unsupported graph period")
+            continue
         year, quarter = int(match[1]), match[2]
         if quarter:
             q = int(quarter)

@@ -5,6 +5,7 @@ import { Drawer } from "../../shared/ui/index.js";
 import { createSession, listSessions, getSession, sendMessage, resumeSession } from "./chatApi.js";
 import { citationView, modeLabel } from './citationView.js';
 import { clarificationChoices } from './clarificationView.js';
+import ChatActivity from './ChatActivity.jsx';
 
 const statusLabels = { ASK_CLARIFICATION: "Cần làm rõ", EVIDENCE_READY: "Có bằng chứng mẫu",
   CLARIFICATION_STALLED: 'Cần chọn thông tin cụ thể',
@@ -13,7 +14,7 @@ const statusLabels = { ASK_CLARIFICATION: "Cần làm rõ", EVIDENCE_READY: "Có
   SYSTEM_UNAVAILABLE: 'Lỗi tạm thời', BUDGET_EXCEEDED: 'Đã chạm giới hạn',
   NO_DATA: "Chưa đủ bằng chứng", ERROR: "Lỗi tạm thời", UNSUPPORTED: "Ngoài phạm vi" };
 const empty = owner => ({ owner, snapshot: null, history: [], error: null, historyError: null,
-  loading: false, historyLoading: false });
+  loading: false, loadingKind: 'chat', historyLoading: false });
 const storageKey = owner => `chat_active_${owner}`;
 function stored(owner, value) {
   // Session storage is optional convenience; JSON on the backend remains authoritative.
@@ -61,7 +62,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
     const epoch = generation.current;
     busy.current = true;
     onBusyChange?.(true);
-    setModel(previous => ({ ...previous, loading: true, error: null }));
+    setModel(previous => ({ ...previous, loading: true, loadingKind: kind, error: null }));
     try { await operation(epoch); }
     catch (error) {
       if (valid(epoch)) setModel(previous => ({ ...previous, error,
@@ -86,7 +87,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
       if (id) {
         busy.current = true;
         onBusyChange?.(true);
-        setModel(previous => ({ ...previous, loading: true }));
+        setModel(previous => ({ ...previous, loading: true, loadingKind: 'history' }));
         getSession(id).then(data => { if (valid(epoch)) adopt(data); })
           .catch(error => {
             if (!valid(epoch)) return;
@@ -152,7 +153,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
     void run(async epoch => {
       const next = await getSession(snapshot.session_id);
       if (valid(epoch)) adopt(next);
-    });
+    }, 'history');
   }
   if (authLoading) return <p role="status">Đang kiểm tra phiên đăng nhập...</p>;
   if (!owner) return <p>Vui lòng <a href="/login" className="text-blue-600 underline">đăng nhập</a> để bắt đầu hội thoại.</p>;
@@ -167,6 +168,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
         <div className={`min-w-0 max-w-[92%] rounded-xl px-4 py-3 sm:max-w-[85%] ${message.role === "user" ? "bg-blue-600 text-white" : "border border-slate-200 bg-slate-50 text-slate-900"}`}>
           <p className={`mb-1 text-xs font-semibold ${message.role === "user" ? "text-blue-100" : "text-blue-700"}`}>{message.role === "user" ? "Bạn" : message.result?.scope?.source_type === 'PRICE' ? 'Giá cổ phiếu' : message.result?.answering?.manifest?.response_mode === 'NEWS_LIST' ? 'Tin tức' : message.result?.execution_mode === 'LIVE' && message.result?.status === 'EVIDENCE_READY' && message.result?.answering?.status !== 'DRAFT_READY' ? 'Nguồn ứng viên' : statusLabels[message.result?.answering?.status] || statusLabels[message.result?.status] || "FinMind"}</p>
           <p className="whitespace-pre-wrap break-words text-sm leading-relaxed">{message.content}</p>
+          {message.result?.timings && <p className="mt-2 text-xs text-slate-500">Tìm nguồn: {message.result.timings.retrieval_seconds}s · Trả lời: {message.result.timings.answer_seconds}s · Tổng: {message.result.timings.total_seconds}s</p>}
           {clarificationChoices(message.result).length > 0 && <div className="mt-3 grid gap-2 sm:grid-cols-2" aria-label="Lựa chọn làm rõ câu hỏi">
             {clarificationChoices(message.result).map(option => <button key={option.id} type="button"
               disabled={view.loading || index !== snapshot.messages.length - 1}
@@ -193,7 +195,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
           </div>}
         </div>
       </div>)}
-      {view.loading && <p role="status" className="text-sm text-slate-500">Đang xử lý… Lần tìm kiếm đầu tiên có thể cần thêm thời gian để nạp mô hình.</p>}
+      {view.loading && <ChatActivity kind={view.loadingKind} />}
       {view.error && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
         <p>{view.error.message}</p>
         {view.error.status === 401 && <a href="/login" className="underline">Đăng nhập lại</a>}

@@ -26,4 +26,5 @@ export const createSession = () => request("", "POST");
 export const listSessions = () => request();
 export const getSession = id => request(`/${encodeURIComponent(id)}`);
 export const sendMessage = (id, text, revision) => request(`/${encodeURIComponent(id)}/messages`, "POST", { text, revision });
-export const resumeSession = id => request(`/${encodeURIComponent(id)}/resume`, "POST");
+// Opening history continues the same session; POST /resume creates a separate fork.
+export const resumeSession = getSession;

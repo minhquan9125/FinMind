@@ -38,7 +38,10 @@ async def resolve_result_rows(conn, rows, *, preview_source_changed=False, sourc
         except (TypeError, ValueError) as exc:
             raise ReconstructionError('INVALID_LOCATOR', 'Invalid stored locator') from exc
         row['locator_json'] = locator
-        if 'reconstruction' in locator:
+        if 'admin_news_snapshot' in locator:
+            from .admin_news_index import resolve_snapshot
+            row['text'] = await resolve_snapshot(conn, locator, row['content_hash'].strip())
+        elif 'reconstruction' in locator:
             # Validate metadata before using max_words in a source query.
             from .chunk_reconstruction import _metadata
             _, meta = _metadata(locator)

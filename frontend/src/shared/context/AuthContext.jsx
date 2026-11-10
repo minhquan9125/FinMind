@@ -11,9 +11,11 @@ import React, {
   useState,
 } from "react";
 
-import { apiLogin, apiRegister, apiGoogleLogin, apiForgotPassword, apiRefreshSession, apiLogout } from "../api/authApi.js";
+import { apiLogin, apiRegister, apiGoogleLogin, apiForgotPassword, apiLogout } from "../api/authApi.js";
+import { primaryRole, normalizeAuthUser } from "./authRoles.js";
+import { refreshStoredSession, AUTH_CHANGED_EVENT } from "../api/authSession.js";
 // ─── Key lưu phiên trong localStorage ────────────────────────────────────────
-// Chỉ lưu profile người dùng và access token; TUYỆT ĐỐI KHÔNG LƯU MẬT KHẨU
+// Lưu profile và token phiên làm việc; TUYỆT ĐỐI KHÔNG LƯU MẬT KHẨU
 const STORAGE_KEY = "finmind_auth_session";
 
 function getStoredSession() {
@@ -21,7 +23,7 @@ function getStoredSession() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const session = JSON.parse(raw);
-    if (!session || !session.expiresAtTimestamp) {
+    if (!session || typeof session.token !== "string" || !session.token.trim() || !Number.isFinite(session.expiresAtTimestamp) || !session.user) {
       localStorage.removeItem(STORAGE_KEY);
       return null;
     }
@@ -65,17 +67,7 @@ export function AuthProvider({ children }) {
   const [isSessionExpired, setIsSessionExpired] = useState(false);
 
   const refreshSession = useCallback(async (session) => {
-    if (!session?.refreshToken) throw new Error("Missing refresh token");
-    const response = await apiRefreshSession(session.refreshToken);
-    const now = Date.now();
-    const next = {
-      ...session,
-      token: response.access_token,
-      refreshToken: response.refresh_token,
-      expiresAt: new Date(now + response.expires_in * 1000).toISOString(),
-      expiresAtTimestamp: now + response.expires_in * 1000,
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    const next = await refreshStoredSession(session);
     setUser(next.user);
     setIsSessionExpired(false);
   }, []);
@@ -89,11 +81,14 @@ export function AuthProvider({ children }) {
         if (session.isExpired) {
           try { await refreshSession(session); }
           catch {
-            localStorage.removeItem(STORAGE_KEY);
-            if (!cancelled) setIsSessionExpired(true);
+            const latest = getStoredSession();
+            if (!cancelled) {
+              setUser(latest && !latest.isExpired ? normalizeAuthUser(latest.user) : null);
+              setIsSessionExpired(!latest || latest.isExpired);
+            }
           }
         } else if (!cancelled) {
-          setUser(session.user);
+          setUser(normalizeAuthUser(session.user));
           setIsSessionExpired(false);
         }
       }
@@ -103,20 +98,34 @@ export function AuthProvider({ children }) {
     return () => { cancelled = true; };
   }, [refreshSession]);
 
+  useEffect(() => {
+    const sync = event => {
+      if (event.type === "storage" && event.key !== STORAGE_KEY && event.key !== null) return;
+      const session = getStoredSession();
+      setUser(session && !session.isExpired ? normalizeAuthUser(session.user) : null);
+      setIsSessionExpired(!session || session.isExpired);
+    };
+    window.addEventListener("storage", sync);
+    window.addEventListener(AUTH_CHANGED_EVENT, sync);
+    return () => { window.removeEventListener("storage", sync); window.removeEventListener(AUTH_CHANGED_EVENT, sync); };
+  }, []);
+
   // Xoay refresh token trước khi access token hết hạn.
   useEffect(() => {
     if (!user) return;
     const session = getStoredSession();
     if (!session) return;
+    let active = true;
     const timeout = setTimeout(async () => {
-      try { await refreshSession(session); }
+      try { await refreshSession(getStoredSession() || session); }
       catch {
-        localStorage.removeItem(STORAGE_KEY);
-        setUser(null);
-        setIsSessionExpired(true);
+        if (!active) return;
+        const latest = getStoredSession();
+        setUser(previous => latest && !latest.isExpired ? (previous || normalizeAuthUser(latest.user)) : null);
+        setIsSessionExpired(!latest || latest.isExpired);
       }
     }, Math.max(0, session.expiresAtTimestamp - Date.now() - 30_000));
-    return () => clearTimeout(timeout);
+    return () => { active = false; clearTimeout(timeout); };
   }, [user, refreshSession]);
 
   const login = useCallback(async (email, password, rememberMe = false) => {
@@ -126,13 +135,11 @@ export function AuthProvider({ children }) {
     const ttlMs = (res.expires_in || 900) * 1000;
     const expiresAtTimestamp = now + ttlMs;
 
-    const rawRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
-    const primaryRole = rawRole === "admin" ? "admin" : "user";
     const authUser = {
       id: res.user.user_id,
       email: res.user.email,
       name: res.user.full_name,
-      role: primaryRole,
+      role: primaryRole(res.user.roles),
       roles: res.user.roles || ["RESEARCHER"],
     };
 
@@ -151,6 +158,7 @@ export function AuthProvider({ children }) {
 
     setUser(authUser);
     setIsSessionExpired(false);
+    return authUser;
   }, []);
 
   const loginWithGoogle = useCallback(async (credential, rememberMe = true) => {
@@ -161,13 +169,11 @@ export function AuthProvider({ children }) {
     const ttlMs = (res.expires_in || 900) * 1000;
     const expiresAtTimestamp = now + ttlMs;
 
-    const rawRole = (res.user.roles?.[0] || "RESEARCHER").toLowerCase();
-    const primaryRole = rawRole === "admin" ? "admin" : "user";
     const authUser = {
       id: res.user.user_id,
       email: res.user.email,
       name: res.user.full_name,
-      role: primaryRole,
+      role: primaryRole(res.user.roles),
       roles: res.user.roles || ["RESEARCHER"],
     };
 
@@ -184,6 +190,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
     setUser(authUser);
     setIsSessionExpired(false);
+    return authUser;
   }, []);
 
   const register = useCallback(async (name, email, password, confirmPassword) => {
@@ -200,14 +207,14 @@ export function AuthProvider({ children }) {
 
   const logout = useCallback(async () => {
     const session = getStoredSession();
+    // Clear immediately so a late refresh cannot restore a logged-out session.
+    localStorage.removeItem(STORAGE_KEY);
+    setUser(null);
+    setIsSessionExpired(false);
     try {
       if (session?.refreshToken) await apiLogout(session.refreshToken);
     } catch {
       // Luôn xóa trạng thái cục bộ để người dùng thoát được khi backend không phản hồi.
-    } finally {
-      localStorage.removeItem(STORAGE_KEY);
-      setUser(null);
-      setIsSessionExpired(false);
     }
   }, []);
 

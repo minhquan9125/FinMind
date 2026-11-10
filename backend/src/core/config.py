@@ -19,6 +19,14 @@ class Settings(BaseSettings):
     # Read root defaults first; backend-specific values take precedence.
     model_config = SettingsConfigDict(env_file=ENV_FILES, extra="ignore")
 
+    # Only this directory is exposed by the read-only admin job browser.
+    admin_jobs_directory: Path = Path(__file__).resolve().parents[3] / 'outputs' / 'wbs16-jobs'
+    admin_ingestion_directory: Path = Path(__file__).resolve().parents[3] / 'outputs' / 'admin-ingestion'
+    admin_ingest_database_url: SecretStr | None = None
+    tesseract_cmd: str | None = None
+    pdftoppm_cmd: str | None = None
+    tessdata_prefix: str | None = None
+
 
     # PostgreSQL / pgvector (ADR01)
     database_url: str = "postgresql://finmind:finmind@localhost:5432/finmind"
@@ -58,6 +66,7 @@ class Settings(BaseSettings):
     research_warmup_timeout_seconds: float = Field(default=180.0, gt=0, le=600, allow_inf_nan=False)
     gemini_api_key: SecretStr = SecretStr('')
     b1_gemini_free_tier_confirmed: bool = False
+    admin_news_generation_timeout_seconds: float = Field(default=20.0, ge=1, le=120)
 
     frontend_origin: str = "http://localhost:5173"
 

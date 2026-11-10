@@ -1,11 +1,41 @@
 import test from "node:test";
-import { defaultGraphPositions } from "./graphModel.js";
+import { defaultGraphPositions, watchGraphUpdates, SOURCE_RELATION_TYPES } from "./graphModel.js";
 import assert from "node:assert/strict";
 import { createGraphApi } from "./api.js";
 import { canExpand, getVisibleGraph, validateGraph, validateRelation, evidenceLink } from "./graphModel.js";
 import { fixtureVersion, fixtureEvidence, fixtureRelation } from "./mock.js";
 const query = { graph_version_id: fixtureVersion, entity_id: "fixture:company", hops: 2, limit: 50, relation_type: [], from: null, to: null };
 const fake = mode => createGraphApi({ fixture: mode || "success" });
+
+test("refresh on timer/focus/visibility, skip hidden tabs, release listeners", () => {
+  let callback, count = 0, cleared = false;
+  const listeners = new Map();
+  const win = { setInterval: (fn, ms) => { assert.equal(ms, 30000); callback = fn; return 7; },
+    clearInterval: id => { assert.equal(id, 7); cleared = true; },
+    addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name) };
+  const doc = { ...win, visibilityState: "visible" };
+  const stop = watchGraphUpdates(() => count++, win, doc);
+  callback(); listeners.get("focus")();
+  doc.visibilityState = "hidden"; callback(); listeners.get("focus")();
+  assert.equal(count, 2);
+  doc.visibilityState = "visible"; listeners.get("visibilitychange")();
+  assert.equal(count, 3);
+  stop(); assert.equal(cleared, true); assert.equal(listeners.size, 0);
+});
+
+test("source claims preserve six predicates and cannot masquerade as global facts", async () => {
+  for (const type of SOURCE_RELATION_TYPES) {
+    const graph = structuredClone(await fake().graph(query));
+    graph.meta.serving_scope = "SOURCE_DOCUMENT_ASSERTIONS";
+    graph.edges.forEach(edge => {
+      edge.type = type; edge.review.status = "SOURCE_REVIEWED";
+      edge.attributes = { identity_scope: "SOURCE_OCCURRENCE", time_scope: "SOURCE_DOCUMENT_NOT_CURRENT_OFFICE", source_review_status: "APPROVED_IN_SOURCE_REPORT" };
+    });
+    assert.equal(validateGraph(graph, query), graph);
+    delete graph.meta.serving_scope;
+    assert.throws(() => validateGraph(graph, query));
+  }
+});
 
 test("ELCOM initial layout keeps the Datanova–Smartek edge clear of the root and other spokes", () => {
   const peers = ["VFT", "ElcomPrime", "Datanova", "HaNoi", "BacKan", "Smartek", "ELCOMSoftware"];

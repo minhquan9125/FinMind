@@ -10,7 +10,7 @@ from neo4j.exceptions import Neo4jError, ServiceUnavailable
 
 from backend.src.api.routers import graph_viewer
 from backend.src.auth.authorization import Principal, current_principal
-from backend.src.graph.viewer import GraphViewerReader, VersionNotFound, VersionNotReady
+from backend.src.graph.viewer import GraphViewerReader, SOURCE_SCOPE, SOURCE_TYPES, _source_edge, VersionNotFound, VersionNotReady
 
 V = 'ae47d046-fb4f-579c-8d78-2287770bf8ea'
 TCB, TCBS = 'CMP-00e0481af8b436b4645f', 'CMP-322902610d1a878d95d3'
@@ -196,8 +196,57 @@ class FakeRetrieval:
 
 
 class ReaderTests(unittest.TestCase):
+    def test_source_versions_must_be_ready_before_reading_nodes(self):
+        reader = GraphViewerReader(driver=None)
+        reader._run = lambda cypher, **kw: ([{'graph_version_id': 'source', 'status': 'BUILDING', 'serving_scope': SOURCE_SCOPE}]
+                                           if 'SourcePersonGraphVersion' in cypher else [])
+        with self.assertRaises(VersionNotReady):
+            reader.nodes('source', ['person'])
+
+    def test_new_source_versions_are_discovered_without_cached_ids(self):
+        reader = GraphViewerReader(driver=None)
+        published = []
+        reader._run = lambda cypher, **kw: list(published) if 'SourcePersonGraphVersion' in cypher else []
+        self.assertEqual(reader.versions(), [])
+        published.append({'graph_version_id': 'new-publication', 'status': 'READY', 'serving_scope': SOURCE_SCOPE})
+        self.assertEqual(reader.versions()[0]['graph_version_id'], 'new-publication')
+
+    def test_source_contract_direction_evidence_and_time_are_preserved(self):
+        for kind in SOURCE_TYPES:
+            row = {'subject_id': 'company' if kind in ('APPOINTS', 'DISMISSES') else 'person',
+                   'object_id': 'person' if kind in ('APPOINTS', 'DISMISSES') else 'company',
+                   'relation': {'key': 'claim:'+kind, 'relation_type': kind, 'evidence_json': json.dumps(EVIDENCE),
+                                'source_report_year': '2025', 'identity_scope': 'SOURCE_OCCURRENCE',
+                                'time_scope': 'SOURCE_DOCUMENT_NOT_CURRENT_OFFICE', 'source_review_status': 'APPROVED_IN_SOURCE_REPORT'}}
+            edge = _source_edge(row)
+            self.assertEqual((edge['subject_id'], edge['object_id']), (row['subject_id'], row['object_id']))
+            self.assertEqual(edge['evidence'], EVIDENCE)
+            self.assertEqual((edge['as_of'], edge['valid_from'], edge['valid_to']), (None, None, None))
+            self.assertEqual(edge['review_status'], 'SOURCE_REVIEWED')
+
+    def test_source_report_year_cannot_satisfy_effective_date_filter(self):
+        reader = GraphViewerReader(driver=None)
+        reader.ready_version = lambda version: {'serving_scope': SOURCE_SCOPE}
+        reader._run = lambda *a, **kw: self.fail('must not infer calendar dates')
+        self.assertEqual(reader.neighborhood('source', 'person', hops=2, relation_types=None,
+                                            start='2025-01-01', end=None, limit=50), ([], False))
+
+    def test_source_api_does_not_translate_symbol_to_global_entity_id(self):
+        reader = FakeReader()
+        reader.ready_version = lambda version: {'graph_version_id': version, 'status': 'READY', 'serving_scope': SOURCE_SCOPE}
+        response = client(reader).get('/api/graph/entities', params={'graph_version_id': V, 'q': 'TCB'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(reader.calls[-1], ('entities', 'TCB'))
+        self.assertEqual(response.json()['meta']['serving_scope'], SOURCE_SCOPE)
+
+    def test_source_only_predicates_rejected_for_global_contract(self):
+        response = client(FakeReader()).get('/api/graph/neighborhood', params={
+            'graph_version_id': V, 'entity_id': TCB, 'relation_type': 'REQUESTS_RESIGNATION'})
+        self.assertEqual(response.status_code, 400)
+
     def test_neighborhood_asks_one_extra_path_to_detect_truncation_and_dedups_edges(self):
         reader = GraphViewerReader(driver=None)
+        reader.ready_version = lambda version: {'graph_version_id': version, 'status': 'READY'}
         reader.retrieval = FakeRetrieval([{'graph_version_id': V, 'relations': [EDGE]}] * 3)
         edges, truncated = reader.neighborhood(V, TCB, hops=2, relation_types=None, start=None, end=None, limit=2)
         self.assertEqual((reader.retrieval.limit, len(edges), truncated), (3, 1, True))
