@@ -8,10 +8,11 @@ from src.person_role.extractor import normalize_and_extract
 from src.person_role.review import review_source,build_review_envelope
 
 REGISTRY=ROOT/'backend/resources/person_role/company.registry.json'
-async def extract_registered(c,corpus,chunk_ids,review_candidates=False):
+async def extract_registered(c,corpus,chunk_ids,review_candidates=False,person_store=None):
  envelope=await build_db_envelope(c,corpus,chunk_ids)
  registry=json.loads(REGISTRY.read_text('utf-8'))
- if not review_candidates:return normalize_and_extract(envelope,registry)
+ if not review_candidates:return normalize_and_extract(envelope,registry,person_store=person_store)
+ if person_store:raise ValueError('--person-store requires the standard normalization path, not --review-candidates')
  items=[]
  for ch in envelope['chunks']:
   raw=await c.fetchval('SELECT locator_json FROM text_chunks WHERE chunk_id=$1',uuid.UUID(ch['chunk_id']))
@@ -25,7 +26,7 @@ async def main(args):
   async with c.transaction(isolation='repeatable_read'):
    await c.execute('SET LOCAL ROLE finmind_graph_writer')
    if args.input:payload=json.loads(args.input.read_text('utf-8'));audit={'mode':'existing-WBS03-envelope'}
-   else:payload,audit=await extract_registered(c,args.corpus,args.chunk,args.review_candidates)
+   else:payload,audit=await extract_registered(c,args.corpus,args.chunk,args.review_candidates,args.person_store)
    repo=WBS03Repository(c)
    if args.apply:result=await repo.save(payload)
    else:
@@ -38,6 +39,8 @@ async def main(args):
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--input',type=Path);p.add_argument('--corpus',default='b2550a0b-c423-5c50-9b15-6fb6af12e2c6');p.add_argument('--chunk',action='append',default=[])
  p.add_argument('--review-candidates',action='store_true');p.add_argument('--apply',action='store_true');p.add_argument('--output',type=Path,required=True)
+ p.add_argument('--person-store',type=Path,help='WBS02 r2 SQLite used before relation extraction')
  args=p.parse_args()
  if bool(args.input)==bool(args.chunk):p.error('Supply --input or one/more --chunk, exclusively')
+ if args.person_store and (args.input or args.review_candidates):p.error('--person-store requires --chunk and cannot combine with --review-candidates')
  asyncio.run(main(args))

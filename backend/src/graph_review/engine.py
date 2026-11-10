@@ -11,6 +11,8 @@ from pydantic import ValidationError
 
 from .models import Candidate, Entity, ReviewResult, SourceProblem, digest
 from .sources import SourceReader, compare_source
+from .positions import position_supported
+from ..graph_temporal import validate_temporal,bounds,month_supported
 
 DIRECTIONS = {
     "HAS_SUBSIDIARY": ("company", {"Company"}, {"Company"}),
@@ -203,12 +205,23 @@ class ReviewEngine:
         if candidate.relation_type == "HOLDS_ROLE" and re.search(r"\b(?:nguyên|từng|từ nhiệm|miễn nhiệm|đã thôi)\b", quote):
             warnings.add("WARN_HISTORICAL_ROLE")
         periods = candidate.temporal
+        try:
+            validate_temporal(periods,allow_month=candidate.extractor_metadata.get('envelope_schema_version')=='2.2.0')
+        except ValueError:errors.add('ERR_TEMPORAL_INVALID')
         if not periods.get("as_of") and not periods.get("valid_from"):
             warnings.add("WARN_TEMPORAL_BASIS_MISSING")
         for key, value in periods.items():
+            if key.endswith('_precision'):continue
             if key not in {"as_of", "valid_from", "valid_to"}:
                 errors.add("ERR_REQUIRED_FIELD")
             if value is None:
+                continue
+            if periods.get(key+'_precision')=='month':
+                try:
+                    lower,_=bounds(value,'month')
+                    if not any(month_supported(value,q) for q in quotes):errors.add('ERR_FACT_UNSUPPORTED')
+                    if date.fromisoformat(lower)>self.today:warnings.add('WARN_FUTURE_FACT')
+                except ValueError:errors.add('ERR_TEMPORAL_INVALID')
                 continue
             try:
                 parsed = date.fromisoformat(value)
@@ -221,8 +234,6 @@ class ReviewEngine:
                 errors.add("ERR_FACT_UNSUPPORTED")
             if parsed > self.today:
                 warnings.add("WARN_FUTURE_FACT")
-        if periods.get("valid_from") and periods.get("valid_to") and periods["valid_from"] > periods["valid_to"]:
-            errors.add("ERR_TEMPORAL_INVALID")
         if "ownership_percent" in attrs:
             try:
                 percent = Decimal(str(attrs["ownership_percent"]))
@@ -236,7 +247,8 @@ class ReviewEngine:
                 # in a table/list to THIS company still needs evidence review.
                 warnings.add('WARN_EVIDENCE_INSUFFICIENT')
         for field in ("position", "cooperation_scope", "consolidation_basis", "accounting_basis"):
-            if attrs.get(field) and text_key(str(attrs[field])) not in quote:
+            supported_field = position_supported(str(attrs[field]),quote) if field=='position' and attrs.get(field) else text_key(str(attrs.get(field,''))) in quote
+            if attrs.get(field) and not supported_field:
                 errors.add("ERR_FACT_UNSUPPORTED")
         if "holding_basis" in attrs:
             phrase = {"direct": "trực tiếp", "indirect": "gián tiếp"}.get(attrs["holding_basis"])

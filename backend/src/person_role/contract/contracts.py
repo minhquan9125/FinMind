@@ -9,10 +9,12 @@ from datetime import date, datetime
 from decimal import Decimal
 from pathlib import Path
 from jsonschema import Draft202012Validator, FormatChecker
+from ...graph_temporal import extended_validator,validate_temporal
 
 SCHEMA_VERSION = '2.1.0'
 SCHEMA = json.loads(Path(__file__).with_name('contract.schema.json').read_text('utf-8'))
 _validator = Draft202012Validator(SCHEMA, format_checker=FormatChecker())
+_month_validator = extended_validator(SCHEMA)
 _chunk_validator = Draft202012Validator({'$ref': '#/$defs/chunk', '$defs': SCHEMA['$defs']}, format_checker=FormatChecker())
 _legacy_schema = json.loads(Path(__file__).with_name('contract.v1.schema.json').read_text('utf-8'))
 _legacy_validator = Draft202012Validator(_legacy_schema, format_checker=FormatChecker())
@@ -84,7 +86,8 @@ def validate_envelope(payload):
         json.dumps(payload, ensure_ascii=False, allow_nan=False).encode('utf-8')
     except (TypeError, ValueError) as error:
         raise ValueError('Non-JSON or nonfinite input') from error
-    error = next(_validator.iter_errors(payload), None)
+    validator = _month_validator if payload.get('schema_version') == '2.2.0' else _validator
+    error = next(validator.iter_errors(payload), None)
     if error:
         raise ValueError('Schema: ' + error.message[:180])
     _require(_nonblank(payload['corpus_id']) and _nonblank(payload['dataset_version']), 'Blank corpus/version')
@@ -132,9 +135,7 @@ def validate_envelope(payload):
         if stamp is not None:
             _require(re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})', stamp), 'Review timestamp with timezone required')
             datetime.fromisoformat(stamp)
-        for value in t.values():
-            _day(value)
-        _require(not(t['valid_from'] and t['valid_to']) or t['valid_from'] <= t['valid_to'], 'Reversed interval')
+        validate_temporal(t, allow_month=payload['schema_version']=='2.2.0')
         if r['relation_type'] == 'COOPERATES_WITH':
             _require(r['subject_id'] < r['object_id'], 'Cooperation uses sorted Company IDs; do not store reverse edge')
             scope = a.get('cooperation_scope')

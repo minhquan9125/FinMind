@@ -21,9 +21,11 @@ async def build_db_envelope(connection,corpus_id,chunk_ids,cache=None):
   loc=r['locator'];meta=loc['reconstruction'];iid=r['index_version_id']
   root=await read_release_root(connection,iid,cache)
   member=next(m for m in root['sources'] if m['source_table']==loc['source_table'] and m['source_id']==loc['source_id'])
-  doc=dict(source_kind='db',document_id=r['document_id'],document_version=meta['source_view_sha256'],source_uri=member['source_uri'],
+  # One snapshot version for the whole annual report. Section hashes are
+  # independently verified by read_annual_chunk and may differ across chunks.
+  doc=dict(source_kind='db',document_id=r['document_id'],document_version=member['sha256'],source_uri=member['source_uri'],
    source_sha256=member['sha256'],index_version_id=iid,title=r['title'],doc_type='ANNUAL_REPORT')
-  if r['document_id'] in documents and documents[r['document_id']]!=doc:raise ValueError('Document has inconsistent source versions; split envelopes by source view')
+  if r['document_id'] in documents and documents[r['document_id']]!=doc:raise ValueError('Document has inconsistent source snapshot versions')
   documents[r['document_id']]=doc
   text=r['chunk_text'];header,sep,_=text.partition('\n')
   chunks.append(dict(document_id=r['document_id'],document_version=doc['document_version'],chunk_id=r['chunk_id'],text=text,

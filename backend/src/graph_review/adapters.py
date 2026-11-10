@@ -84,7 +84,7 @@ def from_envelope(payload):
             subject=endpoint("subject_id"), object=endpoint("object_id"), evidence=evidence,
             attributes=raw.get("attributes", {}), temporal=raw.get("temporal", {}),
             assertion_status=raw.get("attributes", {}).get("assertion_status"),
-            extractor_metadata={"format": "WBS01-2.1.0", "input_errors": errors, "raw_sha256": digest(raw)}))
+            extractor_metadata={"format": "WBS01-2.1.0", "envelope_schema_version":payload.get('schema_version'), "input_errors": errors, "raw_sha256": digest(raw)}))
     return output
 
 
