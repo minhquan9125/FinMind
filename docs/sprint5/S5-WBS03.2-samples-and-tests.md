@@ -89,7 +89,7 @@ Chạy ở thư mục gốc FinMind:
 
 Lượt kiểm tra đã đạt: đủ nhãn và ba hình thức ở mỗi nhãn trong cả hai bộ; trường,
 trạng thái, nhãn MIXED, checksum, family và trùng sau chuẩn hóa đều hợp lệ.
-11 test bảo vệ trình kiểm tra đã qua. Đây là kiểm tra dữ liệu, không phải 11 ca
+12 test bảo vệ trình kiểm tra và định dạng file đã qua. Đây là kiểm tra dữ liệu, không phải 12 ca
 chứng minh classifier phân loại đúng. 24 ca test router tồn tại trước task này
 chưa được sửa; bộ mới không thay runtime nên không chạy lại toàn bộ ứng dụng.
 

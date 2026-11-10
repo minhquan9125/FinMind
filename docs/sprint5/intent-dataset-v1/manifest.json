@@ -4,7 +4,7 @@
   "prepared_for": "Hồ Phạm Đăng Nhân",
   "prepared_date": "2026-11-10",
   "label_schema_version": "s5-intent-labels-v1-draft2",
-  "label_schema_sha256": "df8c540beb278233f038e8c77d5108e282e004a58050e6cc4b57855361a9f3d5",
+  "label_schema_sha256": "2b7304a1f8b32ab547d6f03d8d6d13b48335ade78df3c8ab971e5ce847655729",
   "approval_status": "DRAFT_PENDING_TEAM_LABEL_CONFIRMATION_AND_DATA_REVIEW",
   "runtime_enabled": false,
   "embedding_generated": false,
@@ -52,11 +52,11 @@
   "files": {
     "library.jsonl": {
       "rows": 84,
-      "sha256": "9d7b4ed791c812a6c14e68fe1b71e2c9b36f0bb26fd47d3691323deb5b513042"
+      "sha256": "092261668cd34b8b7ce5d36ea9e840553be17ec4ef66e7d14447b082afb247e5"
     },
     "test.jsonl": {
       "rows": 54,
-      "sha256": "eb583d9b162a7b7047402bbbe6c564b13560fb8e44bd68c0d46f6d7432d12d02"
+      "sha256": "2cc244eb55ca0bfb951400ac9f24ff8735b994c018ed1f2a1251ea0521f6d76d"
     }
   }
 }

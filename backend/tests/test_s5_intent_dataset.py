@@ -69,3 +69,10 @@ def test_dataset_matches_pinned_schema_and_declared_coverage():
     assert summary['library_rows'] == 84
     assert summary['test_rows'] == 54
     assert summary['test_unlabeled_rows'] == 9
+
+
+def test_pinned_files_use_lf_so_git_checkout_preserves_checksums():
+    paths = [ROOT / 'docs/sprint5/intent-labels.v1.json']
+    paths.extend((ROOT / 'docs/sprint5/intent-dataset-v1').glob('*.json*'))
+    for path in paths:
+        assert b'\r\n' not in path.read_bytes(), f'{path.name}: CRLF would change on checkout'

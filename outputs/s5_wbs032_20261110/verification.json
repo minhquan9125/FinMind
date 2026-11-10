@@ -27,13 +27,13 @@
     "approval": "DRAFT_PENDING_TEAM_LABEL_CONFIRMATION_AND_DATA_REVIEW",
     "classification_accuracy_measured": false
   },
-  "checker_tests_passed": 11,
+  "checker_tests_passed": 12,
   "checks": "structure, labels, components, forms, status, checksums, cross-split normalized text and family, definition exact reuse, contrast IDs",
   "classifier_executed": false,
   "embeddings_generated": false,
   "files": {
-    "library.jsonl": "9d7b4ed791c812a6c14e68fe1b71e2c9b36f0bb26fd47d3691323deb5b513042",
-    "manifest.json": "b60483964eb3e0d3b2c09370907fbc86da4c3e3b71afd98ccccf8c526745d9cb",
-    "test.jsonl": "eb583d9b162a7b7047402bbbe6c564b13560fb8e44bd68c0d46f6d7432d12d02"
+    "library.jsonl": "092261668cd34b8b7ce5d36ea9e840553be17ec4ef66e7d14447b082afb247e5",
+    "manifest.json": "059109b59550bfe29e22fde702ed345b814b47c058b10a72ceffc1acf23e33fd",
+    "test.jsonl": "2cc244eb55ca0bfb951400ac9f24ff8735b994c018ed1f2a1251ea0521f6d76d"
   }
 }
