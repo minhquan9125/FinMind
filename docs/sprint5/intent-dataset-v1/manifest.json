@@ -1,6 +1,6 @@
 {
   "task_id": "S5-WBS03.2",
-  "dataset_version": "s5-intent-dataset-v1-draft1",
+  "dataset_version": "s5-intent-dataset-v1-draft2",
   "prepared_for": "Hồ Phạm Đăng Nhân",
   "prepared_date": "2026-11-10",
   "label_schema_version": "s5-intent-labels-v1-draft2",
@@ -46,17 +46,34 @@
         "S5-T-025"
       ],
       "boundary": "Chức vụ của người / sở hữu cổ phần của người"
+    },
+    {
+      "id": "C05",
+      "ids": [
+        "S5-T-003",
+        "S5-T-034"
+      ],
+      "boundary": "Giá trị và chênh lệch ROE / nhận định xu hướng ROE trên cùng giai đoạn"
+    },
+    {
+      "id": "C06",
+      "ids": [
+        "S5-T-024",
+        "S5-T-038"
+      ],
+      "boundary": "Chức vụ kèm bằng chứng cùng fact / tìm người rồi đọc thêm tiểu sử"
     }
   ],
   "facts_policy": "Synthetic question scenarios, not assertions of real appointments, ownership, documents or financial values. No answers are fabricated.",
   "files": {
     "library.jsonl": {
-      "rows": 84,
-      "sha256": "092261668cd34b8b7ce5d36ea9e840553be17ec4ef66e7d14447b082afb247e5"
+      "rows": 90,
+      "sha256": "70aa35389109e81529c199e52a0688a402edfc8a91d281cc71229de681f62a6f"
     },
     "test.jsonl": {
       "rows": 54,
-      "sha256": "2cc244eb55ca0bfb951400ac9f24ff8735b994c018ed1f2a1251ea0521f6d76d"
+      "sha256": "fb016ecc7c41a764fc9fc6d6e97f7938d306a3dbbc13250adb11d33f518bf498"
     }
-  }
+  },
+  "revision_note": "Content review added two library MIXED families and strengthened two test contrast pairs before any model evaluation; no scores were observed."
 }

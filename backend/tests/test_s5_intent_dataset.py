@@ -1,6 +1,7 @@
 """Protect the intent dataset against invalid labels and evaluation leakage."""
 import copy
 import importlib.util
+import json
 from pathlib import Path
 
 import pytest
@@ -66,7 +67,7 @@ def test_rejects_bad_sources_ids_and_schema_version():
 def test_dataset_matches_pinned_schema_and_declared_coverage():
     errors, summary = validator.validate_dataset(ROOT / 'docs/sprint5/intent-dataset-v1')
     assert errors == []
-    assert summary['library_rows'] == 84
+    assert summary['library_rows'] == 90
     assert summary['test_rows'] == 54
     assert summary['test_unlabeled_rows'] == 9
 
@@ -76,3 +77,10 @@ def test_pinned_files_use_lf_so_git_checkout_preserves_checksums():
     paths.extend((ROOT / 'docs/sprint5/intent-dataset-v1').glob('*.json*'))
     for path in paths:
         assert b'\r\n' not in path.read_bytes(), f'{path.name}: CRLF would change on checkout'
+
+
+def test_library_covers_mixed_patterns_used_by_the_test_set():
+    folder = ROOT / 'docs/sprint5/intent-dataset-v1'
+    load = lambda name: [json.loads(line) for line in (folder / name).read_text(encoding='utf-8').splitlines()]
+    patterns = lambda items: {frozenset(r['component_intents']) for r in items if r['intent_label'] == 'MIXED'}
+    assert patterns(load('test.jsonl')) <= patterns(load('library.jsonl'))
