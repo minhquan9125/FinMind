@@ -129,3 +129,17 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   [kết quả và ca sai](S5-WBS04.1-baseline-results.md),
   [đầu ra run01](../../outputs/s5_wbs041_20261110/run01),
   [biên bản kiểm tra](../../outputs/s5_wbs041_20261110/verification.json).
+
+## 11/11/2026 — Rà soát trước review S5-WBS04.1
+
+- Sửa batch để chỉ nhận list/tuple; chặn dict/set/bytes/generator/None trước encode.
+- Gắn manifest được chụp với artifact thực sự đã nạp; dừng đánh giá nếu nguồn đổi.
+  Có test tái hiện lỗi trước sửa và kiểm tra thứ tự query/vector.
+- Tổng **54 test đạt**: 24 matching, 2 evaluation, 14 artifact, 14 dataset.
+- Chạy lại 56 query bằng BGE-M3 thật và tính cosine theo biểu thức độc lập:
+  toàn bộ thứ hạng nhóm khớp run01, sai lệch điểm tối đa `8,89e-16`.
+  Kiểm tra ba query batch so với đơn sai lệch tối đa `1,16e-7`.
+- Không thay dữ liệu hoặc policy; top-1 vẫn 22/47, top-3 41/47. Chưa nghiệm thu
+  chất lượng phân loại, chưa tích hợp router và chưa có xác nhận review 04.1.
+- Bàn giao: [hướng dẫn](S5-WBS04.1-HANDOFF.md),
+  [kiểm chứng model thật](../../outputs/s5_wbs041_review_20261111/real-model-audit.json).

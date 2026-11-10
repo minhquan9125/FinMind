@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "audit_date": "2026-11-11",
+  "real_model_questions": 56,
+  "model_name": "BAAI/bge-m3",
+  "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "cosine_recomputed_independently": true,
+  "all_group_rankings_reproduced": true,
+  "max_group_score_difference": 8.881784197001252e-16,
+  "batch_vs_single_real_encoder": [
+    {
+      "id": "S5-T-001",
+      "max_absolute_difference": 7.82310962677002e-08
+    },
+    {
+      "id": "S5-T-028",
+      "max_absolute_difference": 8.009374141693115e-08
+    },
+    {
+      "id": "S5-T-056",
+      "max_absolute_difference": 1.1548399925231934e-07
+    }
+  ],
+  "single_match_api_verified": true,
+  "top1_correct": 22,
+  "top3_correct": 41,
+  "labeled_cases": 47,
+  "null_cases": 9,
+  "macro_f1": 0.468047218887555,
+  "library_and_run01_unchanged": true,
+  "elapsed_seconds": 65.44056469999487,
+  "run01_file_hashes": {
+    "method.json": "9b82245d2cd88bc446263ce8110009b91e6c65701eda62e1f8a1eee1becefa18",
+    "test-input.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+    "results.jsonl": "088c08dc5de24a9ae9355ae17b9dd3881a5c03f4580f1849ab1233d8bab4c8c3",
+    "summary.json": "6e206720722b535cd8ed6a7066c123028dea0f2540efa19d9f1d42d1aa3463ad"
+  }
+}

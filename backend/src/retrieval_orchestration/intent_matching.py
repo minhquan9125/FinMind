@@ -34,7 +34,7 @@ class IntentMatcher:
 
     def match_many(self, questions, *, top_groups=3, top_examples=5):
         self._check_limits(top_groups, top_examples)
-        if isinstance(questions, str):
+        if not isinstance(questions, (list, tuple)):
             raise ValueError('QUESTIONS_MUST_BE_A_SEQUENCE')
         questions = list(questions)
         for question in questions:

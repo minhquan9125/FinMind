@@ -1,0 +1,89 @@
+{
+  "status": "READY_FOR_REVIEW_LOW_TOP1_NOT_REVIEWER_APPROVAL",
+  "task_id": "S5-WBS04.1",
+  "tests_passed": 54,
+  "fresh_zip_extraction_passed": true,
+  "real_model_audit": {
+    "status": "PASS",
+    "audit_date": "2026-11-11",
+    "real_model_questions": 56,
+    "model_name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "cosine_recomputed_independently": true,
+    "all_group_rankings_reproduced": true,
+    "max_group_score_difference": 8.881784197001252e-16,
+    "batch_vs_single_real_encoder": [
+      {
+        "id": "S5-T-001",
+        "max_absolute_difference": 7.82310962677002e-08
+      },
+      {
+        "id": "S5-T-028",
+        "max_absolute_difference": 8.009374141693115e-08
+      },
+      {
+        "id": "S5-T-056",
+        "max_absolute_difference": 1.1548399925231934e-07
+      }
+    ],
+    "single_match_api_verified": true,
+    "top1_correct": 22,
+    "top3_correct": 41,
+    "labeled_cases": 47,
+    "null_cases": 9,
+    "macro_f1": 0.468047218887555,
+    "library_and_run01_unchanged": true,
+    "elapsed_seconds": 65.44056469999487,
+    "run01_file_hashes": {
+      "method.json": "9b82245d2cd88bc446263ce8110009b91e6c65701eda62e1f8a1eee1becefa18",
+      "test-input.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+      "results.jsonl": "088c08dc5de24a9ae9355ae17b9dd3881a5c03f4580f1849ab1233d8bab4c8c3",
+      "summary.json": "6e206720722b535cd8ed6a7066c123028dea0f2540efa19d9f1d42d1aa3463ad"
+    }
+  },
+  "zip_file": "S5-WBS04.1-review.zip",
+  "zip_sha256": "4a8f85b770a88eed8da05b64e5e53ec14e47c2e34709b04089dff3649fec6eaf",
+  "source_files": {
+    ".gitattributes": "6421a24863a4d251db6959dbfcea04482b1b8777460b744a89df984dccb239e6",
+    "backend/requirements.txt": "c3f42fcfbd463228feefd1d9dcf4e4f335a5d19ba516c68c9ee308bdbd7c3f34",
+    "backend/scripts/audit_s5_intent_matching.py": "d69693421d486692a91e4147548fe06799bbdbe3f9b73dea6f0385e30f1467a7",
+    "backend/scripts/build_s5_intent_library.py": "1eec78846623055f5aae01397733036a8c35a3c83a45c84adee360405cfdfe1e",
+    "backend/scripts/evaluate_s5_intent_matching.py": "2a20c660500b8b499669fd58eb8965e21fad7670cb7ad6d5c75f55795e52d26d",
+    "backend/scripts/match_s5_intent.py": "f71455b8443899a957221d60f2f64e386b55316e84966710ea604b5c7a8c1e5f",
+    "backend/scripts/validate_s5_intent_dataset.py": "f23ace3ef21826688c36b163450968bb39ab80463eec534047826b0821c16eb6",
+    "backend/scripts/verify_s5_intent_library.py": "17446334ee276460915473d3e845485a00b9cdc37d08dedaeba8c1c391954560",
+    "backend/src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/src/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/src/core/config.py": "89adae17d0b3d0e1e9df489303bbf7b18e4841eed145e71ec0c1b30ac826bf41",
+    "backend/src/documents/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/src/documents/embeddings.py": "39d9ad9081c37b51da864427eee960a763d97347ed592a738bee73e6162a7294",
+    "backend/src/retrieval_orchestration/intent_library.py": "74b7f085cd576c3e15aa9995fcdd56ea439e02dbf3543141e124858e9a780165",
+    "backend/src/retrieval_orchestration/intent_matching.py": "f351d081045ad717a80fe63b01ace29e7bc437151338a3698b091f05879da2d9",
+    "backend/tests/test_s5_intent_dataset.py": "a8b9574f4749e87a5d7fb62c2513c5a947829fb375abf2bc20feeeda61448fcc",
+    "backend/tests/test_s5_intent_evaluation.py": "135c0e329d7f8c4ecee38dafb8341c2daec0b5d392722e4b1af73653089e2043",
+    "backend/tests/test_s5_intent_library.py": "4a47e3c6e84c7104135ba92b3c40be4613369028697d4df1a053980fe37e1b38",
+    "backend/tests/test_s5_intent_matching.py": "2bf4eaf50642eea5e756224c2b22e03ffc171599a0d0f0e8679cc20ce0736d7f",
+    "docs/sprint5/S5-WBS04.1-HANDOFF.md": "3343258c2c2f3cb531417725ca977cc2927df04a6903594d632ff8f61f0a1967",
+    "docs/sprint5/S5-WBS04.1-baseline-results.md": "f47203684f08a7f13b6225aa9b28aaa57931c632a419b8078b14a1a2e2a3e3ed",
+    "docs/sprint5/S5-WBS04.1-intent-matching.md": "025847b54d259b9cd79dd3404716bf358b68396b84b6327a25da753f6a447b1c",
+    "docs/sprint5/history.md": "8f54c748d7a486d7e0bdcc7dab2603699e1db461dd4f9b30b53bc78d34957be4",
+    "docs/sprint5/intent-dataset-v1/library.jsonl": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5",
+    "docs/sprint5/intent-dataset-v1/manifest.json": "b81be2fc049036663d8addea12e94d0c9c766c9dbf65e1c661f6515d9ac80278",
+    "docs/sprint5/intent-dataset-v1/test.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+    "docs/sprint5/intent-labels.v1.json": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+    "docs/sprint5/requirements-s5-library-check.txt": "5f43a016fbf68a9b865604e17ea86681796c1de711c599f655cc895695896d5a",
+    "outputs/s5_wbs033_20261110/intent-library-v1/dataset-manifest.json": "b81be2fc049036663d8addea12e94d0c9c766c9dbf65e1c661f6515d9ac80278",
+    "outputs/s5_wbs033_20261110/intent-library-v1/label-schema.json": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+    "outputs/s5_wbs033_20261110/intent-library-v1/library.jsonl": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5",
+    "outputs/s5_wbs033_20261110/intent-library-v1/manifest.json": "d679eab18f7368d9ab44e4695d399b5662ab3a539da9319378d2aae220298221",
+    "outputs/s5_wbs033_20261110/intent-library-v1/vectors.npy": "67e61d4dbae5252e9ff473ee8c84d1ac47c435b16cb1e747250bd9a28cf2f7a8",
+    "outputs/s5_wbs041_20261110/run01/method.json": "9b82245d2cd88bc446263ce8110009b91e6c65701eda62e1f8a1eee1becefa18",
+    "outputs/s5_wbs041_20261110/run01/results.jsonl": "088c08dc5de24a9ae9355ae17b9dd3881a5c03f4580f1849ab1233d8bab4c8c3",
+    "outputs/s5_wbs041_20261110/run01/summary.json": "6e206720722b535cd8ed6a7066c123028dea0f2540efa19d9f1d42d1aa3463ad",
+    "outputs/s5_wbs041_20261110/run01/test-input.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+    "outputs/s5_wbs041_20261110/verification.json": "52f15e03bfc742bf5db59b99e08fedd8339f88e071afcad7b3a602f1fa9178d6",
+    "outputs/s5_wbs041_review_20261111/independent-rankings.json": "3b814918815da3eb3b79ea0a119e51807b7596928a822cc15e478717da4cd6d7",
+    "outputs/s5_wbs041_review_20261111/real-model-audit.json": "fd8507ee3308eb5a4effc7065bb4a40c8a7bc1dc5839248ed83dd9f7aaf9d526",
+    "outputs/s5_wbs041_review_20261111/unit-tests.xml": "22a984bc20944cdbc7fe75fdb006910d3e20d85a80666d4d149d60414f0126c1"
+  }
+}

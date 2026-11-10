@@ -1,0 +1,1850 @@
+[
+  {
+    "id": "S5-T-001",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.6027516968879315
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5885310281150522
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5542277592391568
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5540489664456539
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5341169094329639
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4732642110546925
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.3777526415175875
+      }
+    ]
+  },
+  {
+    "id": "S5-T-002",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.5790930940007947
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.5640140998381015
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5228656854181717
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5127606266917034
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4973264005830917
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.47210291964961004
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4500112873345281
+      }
+    ]
+  },
+  {
+    "id": "S5-T-003",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.6908710079764018
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.6793010423717767
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.6273266660096263
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.6246280264718788
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5832268100540826
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5763946373360359
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.5230517215268435
+      }
+    ]
+  },
+  {
+    "id": "S5-T-004",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.6356977507539644
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.6041229189210597
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5988435538506761
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5759853760221447
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5511740348046259
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4605958447397616
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.3785533594055376
+      }
+    ]
+  },
+  {
+    "id": "S5-T-005",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.5284881228158362
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5174683054597686
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.494175666095687
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4786826875811392
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.44841922807098206
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.44653786423988256
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.43034853226997
+      }
+    ]
+  },
+  {
+    "id": "S5-T-006",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.6684054585345912
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5732557558844048
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5608196610613311
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5430232938951763
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5407538799342341
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.46687886275928014
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.43631139100043426
+      }
+    ]
+  },
+  {
+    "id": "S5-T-007",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.6447446796337942
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.63847238046641
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5815370111994248
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5423336207745348
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5159376511741323
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.49224137027760706
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4653595592970648
+      }
+    ]
+  },
+  {
+    "id": "S5-T-008",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.6069204650533766
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5762209364559934
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5597317829627839
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.52401089962571
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5046395518577487
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5040552655402089
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4741848261344869
+      }
+    ]
+  },
+  {
+    "id": "S5-T-009",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.6649188184024478
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.6469515802931747
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.6064295734034175
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5973192356708067
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.5546262460276699
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5452139942217482
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5419517929257761
+      }
+    ]
+  },
+  {
+    "id": "S5-T-010",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.7268517821679575
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.6930001897186148
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.6842538271321341
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.6335507930424495
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5823654531936409
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5685109987365575
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.49374617741829885
+      }
+    ]
+  },
+  {
+    "id": "S5-T-011",
+    "groups": [
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5305675517715995
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5241371772575432
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5011823160051315
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4994225007915998
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4847776640812415
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.47726768129201186
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.40433032806242936
+      }
+    ]
+  },
+  {
+    "id": "S5-T-012",
+    "groups": [
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.6260400822751716
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.566401708167324
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.5661892970999841
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5587790401395406
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5192242152239892
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5006062760434635
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.3940905148516652
+      }
+    ]
+  },
+  {
+    "id": "S5-T-013",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.5195354268544865
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.49940687269549133
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4424893424156744
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.44063511831255703
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4314822713183785
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.42705118414259724
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4011383521216706
+      }
+    ]
+  },
+  {
+    "id": "S5-T-014",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.6074822005947289
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5453115459262426
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.4932657725280985
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4766417634570189
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.43086315118086504
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.42640394975730417
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.3945232101073888
+      }
+    ]
+  },
+  {
+    "id": "S5-T-015",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.6467005294701292
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.6328044645364822
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5916462881783104
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5602597368039374
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5234307624187513
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5021272857923613
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5011554912516518
+      }
+    ]
+  },
+  {
+    "id": "S5-T-016",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.6383487224918531
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5973338455600937
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5686284863443858
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5394635202417776
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5348152521900923
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5313203212499208
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5307388603334161
+      }
+    ]
+  },
+  {
+    "id": "S5-T-017",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.5713330685888547
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.5584280366135403
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5319453103645176
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5038302673274627
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.46349689536251787
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.46120558869244715
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4354496306731898
+      }
+    ]
+  },
+  {
+    "id": "S5-T-018",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.5776766482638215
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.55009120205765
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5265923887709785
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5249166437544217
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.49071409919793063
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.477083143565689
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.47704751317582167
+      }
+    ]
+  },
+  {
+    "id": "S5-T-019",
+    "groups": [
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5773709390657165
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5051186095867923
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4662610573178885
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.46577478968272895
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.46124287546707504
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.4559401165158447
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.43122708794983244
+      }
+    ]
+  },
+  {
+    "id": "S5-T-020",
+    "groups": [
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4810604920459753
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.4661913509957777
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.44278698148420303
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.43710646581372836
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4327609324668351
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.3996595141311632
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.3879380176136043
+      }
+    ]
+  },
+  {
+    "id": "S5-T-021",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.6168204469710435
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.6164770258320185
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5927605312818035
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5877670917502087
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.568015757671526
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5045635699198063
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4691883635559079
+      }
+    ]
+  },
+  {
+    "id": "S5-T-022",
+    "groups": [
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.6066841959777427
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5972869913466341
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5875282217897635
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5389418476827493
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4961504261695758
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.48156089156367754
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4403960569844292
+      }
+    ]
+  },
+  {
+    "id": "S5-T-023",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.5254810016974041
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5132135625303278
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4995289771725985
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4160213378571328
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.4146490323793173
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4114714072156834
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4037633291617537
+      }
+    ]
+  },
+  {
+    "id": "S5-T-024",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.5802927743918649
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.521675231070757
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.49898031807466897
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4975419673789276
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4811255395103503
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.42863957588447626
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.384341045523617
+      }
+    ]
+  },
+  {
+    "id": "S5-T-025",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5349086179684074
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5013389613669769
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4855266261524345
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.464103845250756
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4531865392092079
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.41358208975347927
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.38885601516273915
+      }
+    ]
+  },
+  {
+    "id": "S5-T-026",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.5490889137771228
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4961046030169709
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4686240989701644
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4645464461956413
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4492877110949384
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.42330743669564563
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4185707851651705
+      }
+    ]
+  },
+  {
+    "id": "S5-T-027",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.6273261625265718
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5695213907043449
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5656490889801128
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5493568160513488
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5201113222314441
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5119026462067159
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4559750146403691
+      }
+    ]
+  },
+  {
+    "id": "S5-T-028",
+    "groups": [
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.6003827458951838
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.47175506946955437
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.46623783398589347
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.46396496561442196
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4544645701379045
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.42466453527959014
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.40579076075261894
+      }
+    ]
+  },
+  {
+    "id": "S5-T-029",
+    "groups": [
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5634948941064026
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5330000698853598
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5059186198428886
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4913329943505004
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.485642386982737
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.4755965223081172
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.37784538880053886
+      }
+    ]
+  },
+  {
+    "id": "S5-T-030",
+    "groups": [
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.47755553333216827
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.43725100678100154
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4326771543440318
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4324664305033722
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.41428345907622827
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.41347972712543424
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.36372247428675797
+      }
+    ]
+  },
+  {
+    "id": "S5-T-031",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.6082404708968356
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5180717050310213
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4710621754944335
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4598802909708773
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4493733762914424
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.4331810485240721
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.42456065415799144
+      }
+    ]
+  },
+  {
+    "id": "S5-T-032",
+    "groups": [
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.6040690081916863
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5912364029322458
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.563631286042946
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5549293301926894
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5217628748340746
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.46472399486442006
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4522308496604858
+      }
+    ]
+  },
+  {
+    "id": "S5-T-033",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.6284048465416694
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5913662640581075
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5465515237674935
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5429484752890659
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5387991065858114
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4910200198368509
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4860524429454181
+      }
+    ]
+  },
+  {
+    "id": "S5-T-034",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.6145590668717599
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5919346160596406
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5852549852808664
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5812451328494385
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5619333517849242
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5309765335036941
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4927028078794474
+      }
+    ]
+  },
+  {
+    "id": "S5-T-035",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.5783219861162343
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5135755157072535
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5133637891001314
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5051003205174687
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.49497176187061814
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.48910408403584477
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.44221758259417143
+      }
+    ]
+  },
+  {
+    "id": "S5-T-036",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.5742963178695997
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5465298529095751
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5244318918687879
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5210395885643527
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4644005517633856
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.45124880684586866
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4220133461667145
+      }
+    ]
+  },
+  {
+    "id": "S5-T-037",
+    "groups": [
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.6620171798873187
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5827853586107224
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5498981979603453
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5301164569543633
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5149648263026988
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4951348072754878
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4388479132862913
+      }
+    ]
+  },
+  {
+    "id": "S5-T-038",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.5402177977088614
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5362825251973311
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5202849189867762
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4735220142117544
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.40778808434511266
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.40629977747937107
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.3954400991211587
+      }
+    ]
+  },
+  {
+    "id": "S5-T-039",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.7147112007348997
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.6781683174347136
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.6759700583949702
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.652206692393055
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.6404185597801031
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.6150994553687557
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.6043689073957341
+      }
+    ]
+  },
+  {
+    "id": "S5-T-040",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.6160143486736842
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.6088111953234205
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5971847037374934
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5900119677314041
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5898447803365381
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.5508091249307301
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5116204796181922
+      }
+    ]
+  },
+  {
+    "id": "S5-T-041",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.6058567558467313
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5982717874164791
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5797746885028628
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5466850520579818
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5391148543062244
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5060641299159624
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.46796713725010664
+      }
+    ]
+  },
+  {
+    "id": "S5-T-042",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.5562821684530708
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.5219876529839809
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5194005617744165
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5114047504326248
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5048486723076442
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.4925151541008587
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.3886273498406935
+      }
+    ]
+  },
+  {
+    "id": "S5-T-043",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.389485264296496
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.3825953485256857
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.3757774647433229
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.3660772258927324
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.3477702748311976
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.33569860062155216
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.3283282295496962
+      }
+    ]
+  },
+  {
+    "id": "S5-T-044",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.35877210857042224
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.3407907969153701
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.3398955831709289
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.3397778606613754
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.3346906684568026
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.3232680545459324
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.32211152159961776
+      }
+    ]
+  },
+  {
+    "id": "S5-T-045",
+    "groups": [
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.48927542950768416
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.4772073158432876
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.4513864740702459
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4473997047683393
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4430722651383749
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4271561379815556
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.37254376323441957
+      }
+    ]
+  },
+  {
+    "id": "S5-T-046",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.3398610305199592
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.3396783323299527
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.33387838749354426
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.31383888188025905
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.2982022783724546
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.2766368809917102
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.24786259645248931
+      }
+    ]
+  },
+  {
+    "id": "S5-T-047",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.4530624090705939
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4136784754849665
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.391116935840092
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.38934626616730383
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.38786654486496863
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.38161995692277323
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.3570039368805206
+      }
+    ]
+  },
+  {
+    "id": "S5-T-048",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.5239068894754108
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.4963783454144989
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.4593326892571801
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.452040319163132
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.41533855446966206
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4049260329648226
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.3722838469461881
+      }
+    ]
+  },
+  {
+    "id": "S5-T-049",
+    "groups": [
+      {
+        "intent_label": "TREND",
+        "score": 0.4633554764236166
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4418550271117349
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.43158056545012935
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.3964918493996182
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.393655188203615
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.39007429984340897
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.3879172478939186
+      }
+    ]
+  },
+  {
+    "id": "S5-T-050",
+    "groups": [
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.6515633002077478
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.5770390068304363
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5370185806906564
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5121037516738417
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.47945721863544455
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4763495920347484
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.43734014471285154
+      }
+    ]
+  },
+  {
+    "id": "S5-T-051",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.5405627063897408
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5118012982217798
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.4991896299305016
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.49734396614409443
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4706152055509
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.4084025603334373
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.39320552056874314
+      }
+    ]
+  },
+  {
+    "id": "S5-T-052",
+    "groups": [
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.7286057013796197
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.566057163959948
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5451020625223898
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5227403109258854
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.48003027737629855
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4338074370914586
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.3689588033374728
+      }
+    ]
+  },
+  {
+    "id": "S5-T-053",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.7089782533925119
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.7007032718182188
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.6251961099878923
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.6107831980962113
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.608047021096605
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.5366851133843807
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5331685327034713
+      }
+    ]
+  },
+  {
+    "id": "S5-T-054",
+    "groups": [
+      {
+        "intent_label": "MIXED",
+        "score": 0.6016474317092854
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.5454574118443491
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5392910820817072
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5192760941906991
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5061843782024215
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4831132634846277
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.4685759720253722
+      }
+    ]
+  },
+  {
+    "id": "S5-T-055",
+    "groups": [
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.5820373556203859
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.5571726514518667
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5152645521708747
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.47516168773876766
+      },
+      {
+        "intent_label": "NEWS",
+        "score": 0.46494738742556896
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.4623356528990424
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.42343150506555566
+      }
+    ]
+  },
+  {
+    "id": "S5-T-056",
+    "groups": [
+      {
+        "intent_label": "NEWS",
+        "score": 0.6970343012473821
+      },
+      {
+        "intent_label": "MIXED",
+        "score": 0.6330244737676864
+      },
+      {
+        "intent_label": "TREND",
+        "score": 0.5434899832497994
+      },
+      {
+        "intent_label": "REPORT_CONTENT",
+        "score": 0.5283268811492086
+      },
+      {
+        "intent_label": "PERSON_ROLE",
+        "score": 0.49007476472822387
+      },
+      {
+        "intent_label": "NUMERIC",
+        "score": 0.47379932000898817
+      },
+      {
+        "intent_label": "ENTITY_RELATION",
+        "score": 0.4664102307433155
+      }
+    ]
+  }
+]

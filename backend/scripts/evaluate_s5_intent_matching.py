@@ -19,6 +19,36 @@ def write_json(path, value):
                     encoding='utf-8', newline='\n')
 
 
+def capture_evaluation_inputs(library_dir, test_path):
+    """Bind disk fingerprints to the exact in-memory artifact used for ranking."""
+    library_dir, test_path = Path(library_dir), Path(test_path)
+    manifest_raw = (library_dir / 'manifest.json').read_bytes()
+    library = load_library(library_dir)
+    if json.loads(manifest_raw) != library.manifest:
+        raise ValueError('LIBRARY_CHANGED_DURING_CAPTURE')
+    snapshot_raw = (library_dir / 'dataset-manifest.json').read_bytes()
+    schema_raw = (library_dir / 'label-schema.json').read_bytes()
+    for name, raw in [('dataset-manifest.json', snapshot_raw), ('label-schema.json', schema_raw)]:
+        if hashlib.sha256(raw).hexdigest() != library.manifest['files'][name]:
+            raise ValueError('LIBRARY_CHANGED_DURING_CAPTURE')
+    raw = test_path.read_bytes()
+    snapshot = json.loads(snapshot_raw)
+    if hashlib.sha256(raw).hexdigest() != snapshot['files']['test.jsonl']['sha256']:
+        raise ValueError('TEST_SET_DIFFERS_FROM_REVIEWED_SNAPSHOT')
+    return dict(library=library, schema=json.loads(schema_raw), test_raw=raw,
+                cases=[json.loads(line) for line in raw.decode('utf-8').splitlines() if line.strip()],
+                library_manifest_sha256=hashlib.sha256(manifest_raw).hexdigest())
+
+
+def assert_library_unchanged(directory, manifest_sha256):
+    directory = Path(directory)
+    if hashlib.sha256((directory / 'manifest.json').read_bytes()).hexdigest() != manifest_sha256:
+        raise ValueError('LIBRARY_CHANGED_DURING_EVALUATION')
+    load_library(directory)
+    if hashlib.sha256((directory / 'manifest.json').read_bytes()).hexdigest() != manifest_sha256:
+        raise ValueError('LIBRARY_CHANGED_DURING_EVALUATION')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--library', type=Path, default=ROOT / 'outputs/s5_wbs033_20261110/intent-library-v1')
@@ -31,14 +61,9 @@ def main():
     errors, _ = validate_dataset(args.dataset)
     if errors:
         raise ValueError(f'DATASET_VALIDATION_FAILED: {errors}')
-    library = load_library(args.library)
-    snapshot = json.loads((args.library / 'dataset-manifest.json').read_text(encoding='utf-8'))
-    raw = (args.dataset / 'test.jsonl').read_bytes()
+    frozen = capture_evaluation_inputs(args.library, args.dataset / 'test.jsonl')
+    library, schema, raw, cases = (frozen[key] for key in ('library', 'schema', 'test_raw', 'cases'))
     test_hash = hashlib.sha256(raw).hexdigest()
-    if test_hash != snapshot['files']['test.jsonl']['sha256']:
-        raise ValueError('TEST_SET_DIFFERS_FROM_REVIEWED_SNAPSHOT')
-    cases = [json.loads(line) for line in raw.decode('utf-8').splitlines() if line.strip()]
-    schema = json.loads((args.library / 'label-schema.json').read_text(encoding='utf-8'))
     labels = [item['id'] for item in schema['labels']]
     from src.documents.embeddings import get_embedding_service
     matcher = IntentMatcher(library, get_embedding_service())
@@ -53,7 +78,7 @@ def main():
                   labeled_metrics=['top1_accuracy', 'top3_recall', 'macro_f1'],
                   unlabeled_policy='RANK_ONLY_EXCLUDED_FROM_ACCURACY_NO_THRESHOLD_OR_FALLBACK',
                   test_sha256=test_hash,
-                  library_manifest_sha256=hashlib.sha256((args.library / 'manifest.json').read_bytes()).hexdigest(),
+                  library_manifest_sha256=frozen['library_manifest_sha256'],
                   model=library.manifest['model'], library_version=library.manifest['library_version'],
                   dataset_version=library.manifest['dataset_version'],
                   frozen_before_inference=True, library_examples_modified=False,
@@ -76,7 +101,6 @@ def main():
                    total_cases=len(cases), batch_embedding_and_ranking_seconds=elapsed,
                    latency_note='One whole batch including lazy model load; not per-request response latency.',
                    unlabeled_status_counts=dict(Counter(r['annotation_status'] for r in cases if r['intent_label'] is None)),
-                   library_unchanged=hashlib.sha256((args.library / 'manifest.json').read_bytes()).hexdigest() == method['library_manifest_sha256'],
                    route_or_threshold_implemented=False)
     for field in ('linguistic_form', 'scope_status'):
         summary['by_' + field] = {}
@@ -84,8 +108,9 @@ def main():
             indices = [i for i, c in enumerate(cases) if c[field] == value]
             part = summarize_evaluation([cases[i] for i in indices], [rankings[i] for i in indices], labels)
             summary['by_' + field][value] = {k: part[k] for k in ('labeled_cases', 'unlabeled_cases', 'top1_accuracy', 'top3_recall')}
-    # Readback checks hashes and vectors too; the evaluation never rebuilds the library.
-    load_library(args.library)
+    # Abort instead of publishing a successful summary with changed provenance.
+    assert_library_unchanged(args.library, frozen['library_manifest_sha256'])
+    summary.update(status='COMPLETED', library_unchanged=True)
     write_json(args.output / 'summary.json', summary)
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 

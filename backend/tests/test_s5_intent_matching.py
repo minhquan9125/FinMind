@@ -112,3 +112,19 @@ def test_evaluation_reports_wrong_cases_and_excludes_unlabeled_questions():
     assert summary['top3_recall'] == 1
     assert summary['macro_f1'] == pytest.approx(2/3)
     assert summary['wrong_case_ids'] == ['2']
+
+
+@pytest.mark.parametrize('questions', [None, {'first': 'q'}, {'q1', 'q2'}, b'q', iter(['q'])])
+def test_batch_rejects_unordered_or_non_sequence_input_before_embedding(questions):
+    encoder = Encoder()
+    with pytest.raises(ValueError, match='QUESTIONS_MUST_BE_A_SEQUENCE'):
+        IntentMatcher(library(), encoder).match_many(questions)
+    assert encoder.calls == []
+
+
+def test_distinct_batch_vectors_keep_their_question_association():
+    encoder = Encoder()
+    encoder.embed_texts = lambda texts: [[10, 0], [0, 10]]
+    result = IntentMatcher(library(), encoder).match_many(('number question', 'news question'))
+    assert [r['groups'][0]['intent_label'] for r in result] == ['NUMERIC', 'NEWS']
+    assert [r['question'] for r in result] == ['number question', 'news question']
