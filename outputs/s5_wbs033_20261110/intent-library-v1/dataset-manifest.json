@@ -1,0 +1,172 @@
+{
+  "task_id": "S5-WBS03.2",
+  "dataset_version": "s5-intent-dataset-v1-draft3",
+  "prepared_for": "Hồ Phạm Đăng Nhân",
+  "prepared_date": "2026-11-10",
+  "label_schema_version": "s5-intent-labels-v1-draft2",
+  "label_schema_sha256": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+  "approval_status": "APPROVED_FOR_WBS03_3",
+  "runtime_enabled": false,
+  "embedding_generated": false,
+  "classification_accuracy_measured": false,
+  "authoring_method": "Curated synthetic questions; library-only unaccented variants generated deterministically; test questions authored separately.",
+  "split_policy": "Seed paraphrase families remain in one split; test is a separate file and never embedded into the library.",
+  "blind_evaluation": false,
+  "notes": "Definition authors also authored test. Different families reduce direct leakage but do not establish a blind or independent human evaluation.",
+  "reference_date": "2026-11-10",
+  "contrast_sets": [
+    {
+      "id": "C01",
+      "ids": [
+        "S5-T-002",
+        "S5-T-014"
+      ],
+      "boundary": "Giá trị cổ tức trong bài tin / tóm tắt chính bài tin"
+    },
+    {
+      "id": "C02",
+      "ids": [
+        "S5-T-013",
+        "S5-T-019"
+      ],
+      "boundary": "Tìm bài tin miễn nhiệm / hỏi ngày hiệu lực miễn nhiệm"
+    },
+    {
+      "id": "C03",
+      "ids": [
+        "S5-T-012",
+        "S5-T-015"
+      ],
+      "boundary": "Trích văn bản BCTN / trích văn bản bài tin"
+    },
+    {
+      "id": "C04",
+      "ids": [
+        "S5-T-020",
+        "S5-T-025"
+      ],
+      "boundary": "Chức vụ của người / sở hữu cổ phần của người"
+    },
+    {
+      "id": "C05",
+      "ids": [
+        "S5-T-003",
+        "S5-T-034"
+      ],
+      "boundary": "Giá trị và chênh lệch ROE / nhận định xu hướng ROE trên cùng giai đoạn"
+    },
+    {
+      "id": "C06",
+      "ids": [
+        "S5-T-024",
+        "S5-T-038"
+      ],
+      "boundary": "Chức vụ kèm bằng chứng cùng fact / chức vụ và mục chính sách độc lập trong báo cáo"
+    },
+    {
+      "id": "C07",
+      "ids": [
+        "S5-T-055",
+        "S5-T-056"
+      ],
+      "boundary": "Cùng bổ nhiệm TGĐ DGC tháng 09/2025: hỏi người nhận chức / xin bài tin"
+    }
+  ],
+  "facts_policy": "Synthetic question scenarios, not assertions of real appointments, ownership, documents or financial values. No answers are fabricated.",
+  "files": {
+    "library.jsonl": {
+      "rows": 90,
+      "sha256": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5"
+    },
+    "test.jsonl": {
+      "rows": 56,
+      "sha256": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82"
+    }
+  },
+  "revision_note": "Address Hung feedback relayed by user: rewrite all six MIXED test scenarios, add a direct appointment fact/article contrast, simplify abbreviations and ownership question. No model evaluation scores were used.",
+  "review_feedback": {
+    "reviewer": "Hưng (feedback relayed by user)",
+    "source": "USER_RELAYED_FEEDBACK_NOT_TEAM_APPROVAL",
+    "accepted_items": [
+      1,
+      2,
+      3
+    ],
+    "rejected_items": [],
+    "mixed_test_changes": [
+      {
+        "id": "S5-T-037",
+        "before": "Tóm lược định hướng quản trị trong BCTN VNM 2023 rồi liệt kê bài tin về VNM tháng 02/2024.",
+        "after": "Đối chiếu phần quản trị rủi ro trong BCTN VNM 2023 với bài tin VNM ngày 15/02/2024: hai tài liệu nêu những điểm giống và khác nào?",
+        "component_intents": [
+          "REPORT_CONTENT",
+          "NEWS"
+        ]
+      },
+      {
+        "id": "S5-T-038",
+        "before": "Tìm ai được REE bổ nhiệm làm kế toán trưởng năm 2022 rồi chép mục tiểu sử người đó trong BCTN 2022.",
+        "after": "BCTN REE 2022 ghi bà Mai đảm nhiệm chức danh nào? Báo cáo mô tả chính sách kiểm soát nội bộ ra sao?",
+        "component_intents": [
+          "PERSON_ROLE",
+          "REPORT_CONTENT"
+        ]
+      },
+      {
+        "id": "S5-T-039",
+        "before": "Tim doanh nghiep do HPG kiem soat cuoi 2023 roi doc von chu so huu 2023 cua tung ben tu BCTC.",
+        "after": "Can xac nhan HPG kiem soat cong ty Binh Minh tai 31/12/2023 hay khong; dong thoi cho biet von chu so huu tren BCTC rieng HPG nam 2023.",
+        "component_intents": [
+          "ENTITY_RELATION",
+          "NUMERIC"
+        ]
+      },
+      {
+        "id": "S5-T-040",
+        "before": "Ai la ke toan truong SSI tai cuoi 2023 va co nhung bai tin mien nhiem vi tri nay trong 2023?",
+        "after": "Bai tin SSI ngay 10/08/2023 mo ta quyet dinh thay doi nhan su ra sao? Trong nam 2023 ong Binh giu chuc vu nao tai SSI?",
+        "component_intents": [
+          "NEWS",
+          "PERSON_ROLE"
+        ]
+      },
+      {
+        "id": "S5-T-041",
+        "before": "LNST ACB năm 2023 là bn và liệt kê tin ACB tháng 01/2024.",
+        "after": "Tóm tắt tin ACB mở chi nhánh ngày 20/02/2025; kèm bảng EPS của ACB cho 2022–2023 theo BCTC.",
+        "component_intents": [
+          "NEWS",
+          "NUMERIC"
+        ]
+      },
+      {
+        "id": "S5-T-042",
+        "before": "Xác định cty con NY của PNJ cuối 2023 rồi đánh giá XH giá từng cty trong Q1/2024.",
+        "after": "Cty Hoa Mai có phải đơn vị do PNJ kiểm soát cuối 2023 không, và XH giá PNJ trong Q1/2024 ra sao?",
+        "component_intents": [
+          "ENTITY_RELATION",
+          "TREND"
+        ]
+      }
+    ],
+    "clarification": "No normalized duplicates is not proof of semantic or template independence; manual content review remains required."
+  },
+  "content_review": {
+    "status": "PASSED",
+    "reviewer": "Hưng",
+    "source": "USER_RELAYED_REVIEW_CONFIRMATION",
+    "dataset_version": "s5-intent-dataset-v1-draft3",
+    "confirmed_counts": {
+      "library_rows": 90,
+      "test_rows": 56
+    },
+    "scope": "Content review only; see separate team_label_confirmation for label approval."
+  },
+  "team_label_confirmation": {
+    "status": "CONFIRMED",
+    "source": "USER_REPORTED_TEAM_CONFIRMATION",
+    "reviewer": null,
+    "note": "Tên người xác nhận sẽ do Nhân bổ sung."
+  },
+  "release_note": "Content-reviewed draft3 snapshot and referenced label definitions are now confirmed. Keep version identifiers to identify exactly the reviewed content; only approval metadata changed."
+}

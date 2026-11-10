@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "task_id": "S5-WBS03.3",
+  "library_version": "s5-intent-library-v1",
+  "dataset_version": "s5-intent-dataset-v1-draft3",
+  "model": {
+    "name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "dtype": "float32",
+    "normalization": "L2",
+    "input_preprocessing": "NONE_EXACT_REVIEWED_TEXT",
+    "device": "cpu",
+    "batch_size": 8,
+    "max_sequence_length": 8192,
+    "encoder_class": "src.documents.embeddings.EmbeddingService"
+  },
+  "shape": [
+    90,
+    1024
+  ],
+  "dtype": "float32",
+  "counts": {
+    "NUMERIC": 12,
+    "REPORT_CONTENT": 12,
+    "NEWS": 12,
+    "PERSON_ROLE": 12,
+    "ENTITY_RELATION": 12,
+    "TREND": 12,
+    "MIXED": 18
+  },
+  "norm_min": 0.9999998807907104,
+  "norm_max": 1.0000001192092896,
+  "all_finite": true,
+  "checksums_passed": true,
+  "test_rows_embedded": 0,
+  "vectors_sha256": "67e61d4dbae5252e9ff473ee8c84d1ac47c435b16cb1e747250bd9a28cf2f7a8",
+  "reencoding": {
+    "executed": true,
+    "row_ids": [
+      "S5-L-001",
+      "S5-L-046",
+      "S5-L-090"
+    ],
+    "max_absolute_difference": 7.82310962677002e-08,
+    "atol": 1e-05,
+    "rtol": 1e-05,
+    "passed": true
+  },
+  "classification_accuracy_measured": false
+}
