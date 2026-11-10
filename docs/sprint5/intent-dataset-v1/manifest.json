@@ -4,8 +4,8 @@
   "prepared_for": "Hồ Phạm Đăng Nhân",
   "prepared_date": "2026-11-10",
   "label_schema_version": "s5-intent-labels-v1-draft2",
-  "label_schema_sha256": "2b7304a1f8b32ab547d6f03d8d6d13b48335ade78df3c8ab971e5ce847655729",
-  "approval_status": "CONTENT_REVIEW_PASSED_PENDING_TEAM_LABEL_CONFIRMATION",
+  "label_schema_sha256": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+  "approval_status": "APPROVED_FOR_WBS03_3",
   "runtime_enabled": false,
   "embedding_generated": false,
   "classification_accuracy_measured": false,
@@ -160,6 +160,13 @@
       "library_rows": 90,
       "test_rows": 56
     },
-    "scope": "Content review only; team label confirmation and final release remain pending."
-  }
+    "scope": "Content review only; see separate team_label_confirmation for label approval."
+  },
+  "team_label_confirmation": {
+    "status": "CONFIRMED",
+    "source": "USER_REPORTED_TEAM_CONFIRMATION",
+    "reviewer": null,
+    "note": "Tên người xác nhận sẽ do Nhân bổ sung."
+  },
+  "release_note": "Content-reviewed draft3 snapshot and referenced label definitions are now confirmed. Keep version identifiers to identify exactly the reviewed content; only approval metadata changed."
 }

@@ -3,7 +3,7 @@
 Phụ trách: Hồ Phạm Đăng Nhân. Ngày soạn: 10/11/2026. Giờ dự kiến WBS: 4 giờ;
 không phải giờ công thực tế đã ghi nhận.
 
-**Trạng thái: Hưng đã xác nhận đạt review nội dung draft3; chờ nhóm xác nhận nhãn 03.1.**
+**Trạng thái: nội dung draft3 đã qua review Hưng; Nhân xác nhận nhóm đã duyệt bảng nhãn 03.1. Sẵn sàng làm 03.3.**
 Được soạn theo bảng nhãn `s5-intent-labels-v1-draft2`, đáp ứng phần chuẩn bị dữ liệu
 của 03.2. Chưa vector hóa, chưa đo chất lượng phân loại, chưa tích hợp WebChat.
 
@@ -332,3 +332,11 @@ ACCENTED = có dấu; UNACCENTED = không dấu; ABBREVIATED = có viết tắt.
 | S5-T-054 | Ai là KTT tại 31/12/2023? KTT = kế toán trưởng. | PERSON_ROLE | Ý định chức vụ rõ nhưng thiếu đơn vị. Scope: PARTIAL. |
 | S5-T-055 | Ai được bổ nhiệm làm TGĐ DGC trong tháng 09/2025? | PERSON_ROLE | Hỏi người nhận chức trong sự kiện bổ nhiệm, không yêu cầu bài tin. Cùng vai trò, doanh nghiệp và tháng với T-056. |
 | S5-T-056 | Tìm bài tin về việc bổ nhiệm TGĐ DGC trong tháng 09/2025. | NEWS | Xin bài tin về cùng sự kiện của T-055, không chỉ xác định người được bổ nhiệm. |
+
+## Cập nhật điều kiện bàn giao
+
+Nhân đã xác nhận bảng nhãn 03.1 được nhóm duyệt. Kết hợp review nội dung đạt
+của Hưng, bộ 03.2 đủ điều kiện chuyển sang vector hóa ở 03.3. Giữ nguyên phiên
+bản draft3 để định danh đúng nội dung đã review; chỉ cập nhật metadata duyệt và
+pin checksum của JSON nhãn. Các mô tả “chờ xác nhận” phía trên là lịch sử trước
+khi Nhân xác nhận. Tên người xác nhận do Nhân bổ sung. Chưa tạo vector hoặc nối WebChat.

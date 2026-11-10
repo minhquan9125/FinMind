@@ -4,9 +4,11 @@
   "prepared_date": "2026-11-10",
   "prepared_for": "Hồ Phạm Đăng Nhân",
   "approval": {
-    "status": "PENDING_TEAM_REVIEW",
+    "status": "APPROVED",
     "reviewer": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "confirmation_source": "USER_REPORTED_TEAM_CONFIRMATION",
+    "note": "Nhân xác nhận nhóm đã duyệt bảng nhãn; Nhân sẽ bổ sung tên người xác nhận. Không tự gán tên hoặc thời điểm duyệt."
   },
   "runtime_enabled": false,
   "scope": "LABEL_DEFINITION_ONLY",
@@ -611,7 +613,7 @@
     "assessment": "SUFFICIENT_FOR_WBS03_1_DOCUMENTATION_AND_STARTING_WBS03_2_DRAFTING",
     "requested_mixed_examples": 5,
     "mixed_components_added": true,
-    "team_label_confirmation_pending": true,
+    "team_label_confirmation_pending": false,
     "web_chat_integration_completed": false
   }
 }

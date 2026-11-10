@@ -3,11 +3,11 @@
 Phụ trách: Hồ Phạm Đăng Nhân. Ngày soạn: 10/11/2026. Giờ dự kiến theo WBS: 2;
 không phải giờ thực tế đã ghi nhận.
 
-**Trạng thái: bản đề xuất v2 sau đối chiếu code backup-demo, chờ nhóm thống nhất.** Bảng nhãn và ví dụ
-đã soạn; chưa có xác nhận nhãn của nhóm, chưa thay classifier/router đang chạy.
+**Trạng thái cập nhật: Nhân xác nhận nhóm đã duyệt bảng nhãn bản v2 sau đối chiếu backup-demo.** Bảng nhãn và ví dụ
+đã soạn và được nhóm xác nhận theo thông tin Nhân cung cấp; chưa thay classifier/router đang chạy.
 Bản dữ liệu kèm theo: [intent-labels.v1.json](intent-labels.v1.json).
 Giữ tên file JSON để có một bản dùng chung; revision nội dung hiện tại là
-`s5-intent-labels-v1-draft2` (bảy ID chưa đổi, chưa đóng phiên bản chính thức).
+`s5-intent-labels-v1-draft2` (giữ ID phiên bản đã được review; trạng thái duyệt cập nhật trong metadata).
 
 ## 1. Cách hiểu
 
@@ -291,3 +291,10 @@ và `source-inventory.json`. Bản v2 bổ sung B17–B20, quy tắc 13–14 và
 giữ nguyên bảy ID. Chưa sửa runtime hoặc 24 ca test thất bại đã báo ở lần kiểm tra merge.
 Nhóm cần xác nhận rõ việc giữ hồ sơ doanh nghiệp/kiến thức đầu tư ngoài thư viện
 bản đầu trước khi đóng phiên bản; nếu muốn mở rộng phải thống nhất lại phạm vi WBS.
+
+## Cập nhật xác nhận của nhóm
+
+Nhân xác nhận nhóm đã duyệt bảng bảy nhãn. Người xác nhận và thời điểm duyệt
+sẽ do Nhân bổ sung; không tự suy tên người duyệt từ người báo lại. Các đoạn
+“chờ xác nhận” ở phần lịch sử review phía trên mô tả thời điểm soạn trước đó.
+Không thay quy tắc nhãn hoặc ID trong lần cập nhật metadata này.

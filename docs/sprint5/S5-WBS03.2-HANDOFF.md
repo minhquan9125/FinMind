@@ -1,8 +1,8 @@
 # Bàn giao S5-WBS03.2 — draft3
 
 Phụ trách: Hồ Phạm Đăng Nhân. Nội dung draft3 đã được Hưng xác nhận đạt review,
-theo phản hồi Nhân chuyển lại. Bảng nhãn 03.1 vẫn chờ xác nhận của nhóm; không
-ghi task Done hoặc chuyển bản này thành bản phát hành chính thức thay nhóm.
+theo phản hồi Nhân chuyển lại. Nhân đã xác nhận bảng nhãn 03.1 được nhóm duyệt.
+Bộ 03.2 sẵn sàng chuyển sang 03.3; tên người xác nhận sẽ do Nhân bổ sung.
 
 ## Nội dung gói bàn giao
 
@@ -47,8 +47,8 @@ phân loại đúng. Không thay file dữ liệu hoặc xuống dòng trước 
 
 ## Điều kiện chuyển 03.3
 
-Review nội dung 03.2: đạt. Xác nhận bảng nhãn 03.1 của nhóm: chưa có thông tin xác nhận.
-Khi có xác nhận, ghi rõ người xác nhận và phiên bản nhãn rồi chốt phiên bản dữ liệu.
+Review nội dung 03.2: đạt. Xác nhận bảng nhãn 03.1 của nhóm: Nhân xác nhận đã duyệt.
+Nhân bổ sung tên người xác nhận vào hồ sơ; không tự gán Hưng là người duyệt bảng nhãn.
 Nếu chỉ cập nhật metadata review trong JSON nhãn, cần cập nhật pin checksum tương
 ứng ở manifest; nếu thay quy tắc nhãn, phải rà lại những câu chịu ảnh hưởng.
 
