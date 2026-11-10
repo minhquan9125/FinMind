@@ -3,12 +3,13 @@
 Phụ trách: Hồ Phạm Đăng Nhân. Ngày soạn: 10/11/2026. Giờ dự kiến WBS: 4 giờ;
 không phải giờ công thực tế đã ghi nhận.
 
-**Trạng thái: đã soạn và kiểm tra cấu trúc; chờ nhóm xác nhận nhãn và review nội dung.**
+**Trạng thái: Hưng đã xác nhận đạt review nội dung draft3; chờ nhóm xác nhận nhãn 03.1.**
 Được soạn theo bảng nhãn `s5-intent-labels-v1-draft2`, đáp ứng phần chuẩn bị dữ liệu
 của 03.2. Chưa vector hóa, chưa đo chất lượng phân loại, chưa tích hợp WebChat.
 
 ## File dùng chung
 
+- [Gói bàn giao và hướng dẫn chạy lại 14 bài kiểm tra](S5-WBS03.2-HANDOFF.md).
 - [library.jsonl](intent-dataset-v1/library.jsonl): 90 câu mẫu, chỉ file này được đưa vào thư viện embedding ở 03.3 sau khi chốt nhãn.
 - [test.jsonl](intent-dataset-v1/test.jsonl): 56 câu test và nhãn kỳ vọng; không đưa vào thư viện embedding hay dùng để chỉnh câu mẫu theo kết quả từng câu.
 - [manifest.json](intent-dataset-v1/manifest.json): version, checksum dữ liệu và bảng nhãn, trạng thái duyệt, chính sách tách bộ và bảy cặp đối chiếu.
@@ -99,8 +100,8 @@ chưa được sửa; bộ mới không thay runtime nên không chạy lại to
 
 ## Điều kiện chuyển bước
 
-Nhân đã chuẩn bị đủ file mẫu/test và kết quả kiểm tra để leader review 03.2.
-Nhóm xác nhận nhãn 03.1 và nội dung mẫu/test, rồi đóng version dataset; nếu bảng
+Hưng đã xác nhận nội dung draft3 đạt review theo phản hồi Nhân chuyển lại.
+Nhóm xác nhận nhãn 03.1, rồi đóng version dataset; nếu bảng
 nhãn thay đổi phải rà các câu chịu ảnh hưởng và cập nhật pin/checksum tương ứng.
 Sau đó mới làm 03.3: tạo vector từ library.jsonl, lưu model/revision và version
 thư viện. 04.1 dùng cùng model để đối chiếu câu hỏi với thư viện và trả nhóm/điểm;
@@ -118,9 +119,9 @@ nhãn trước khi gửi review, chưa chạy classifier hoặc xem điểm đ�
   thêm một mục chính sách độc lập là MIXED. Không đổi nhãn chỉ vì yêu cầu trích dẫn.
 - Sau phản hồi Hưng: 56 câu test; kiểm tra câu trùng chuẩn hóa/family, thành phần MIXED và checksum đạt.
 - Đây là bộ khởi đầu nhỏ do cùng tác giả soạn, chưa phải kết quả nghiệm thu mô hình.
-  Leader cần xem lại nhãn kỳ vọng và độ tự nhiên của câu viết tắt; nhóm chưa xác nhận nhãn.
+  Nội dung đã qua review Hưng; nhóm vẫn chưa có thông tin xác nhận bảng nhãn 03.1.
 
-Kết luận nội bộ: đủ để gửi review nội dung 03.2, chưa đóng phiên bản để nghiệm thu
+Kết luận cập nhật: đã qua review nội dung 03.2, chưa đóng phiên bản để nghiệm thu
 chất lượng phân loại hoặc đưa vào WebChat. Bốn giờ là ước lượng backlog, không phải
 số giờ thực tế hoặc bằng chứng thay cho kết quả bàn giao.
 

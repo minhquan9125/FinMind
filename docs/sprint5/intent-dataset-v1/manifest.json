@@ -5,7 +5,7 @@
   "prepared_date": "2026-11-10",
   "label_schema_version": "s5-intent-labels-v1-draft2",
   "label_schema_sha256": "2b7304a1f8b32ab547d6f03d8d6d13b48335ade78df3c8ab971e5ce847655729",
-  "approval_status": "DRAFT_PENDING_TEAM_LABEL_CONFIRMATION_AND_DATA_REVIEW",
+  "approval_status": "CONTENT_REVIEW_PASSED_PENDING_TEAM_LABEL_CONFIRMATION",
   "runtime_enabled": false,
   "embedding_generated": false,
   "classification_accuracy_measured": false,
@@ -150,5 +150,16 @@
       }
     ],
     "clarification": "No normalized duplicates is not proof of semantic or template independence; manual content review remains required."
+  },
+  "content_review": {
+    "status": "PASSED",
+    "reviewer": "Hưng",
+    "source": "USER_RELAYED_REVIEW_CONFIRMATION",
+    "dataset_version": "s5-intent-dataset-v1-draft3",
+    "confirmed_counts": {
+      "library_rows": 90,
+      "test_rows": 56
+    },
+    "scope": "Content review only; team label confirmation and final release remain pending."
   }
 }

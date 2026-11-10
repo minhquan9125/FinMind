@@ -24,7 +24,7 @@
     },
     "test_unlabeled_rows": 9,
     "dataset_version": "s5-intent-dataset-v1-draft3",
-    "approval": "DRAFT_PENDING_TEAM_LABEL_CONFIRMATION_AND_DATA_REVIEW",
+    "approval": "CONTENT_REVIEW_PASSED_PENDING_TEAM_LABEL_CONFIRMATION",
     "classification_accuracy_measured": false
   },
   "checker_tests_passed": 14,
@@ -33,7 +33,17 @@
   "embeddings_generated": false,
   "files": {
     "library.jsonl": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5",
-    "manifest.json": "3338b843547a1a9aea7b72aaf34b33647424126729c1067d8acc379042d01016",
+    "manifest.json": "1e9c04f0efb570d9faca8320b98791444bbd6b08cefac6c9995cdc8ac750f32d",
     "test.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82"
+  },
+  "handoff": {
+    "archive": "S5-WBS03.2-draft3-handoff.zip",
+    "archive_sha256": "4bec999a74fb3f1a973ea3e07133e0acdb3851acc5eaf1e8abf7ec894deed28f",
+    "tested_from_fresh_extraction": true,
+    "validator_passed": true,
+    "tests_passed": 14,
+    "pytest_plugin_autoload": false,
+    "content_review": "PASSED",
+    "team_label_confirmation": "PENDING"
   }
 }
