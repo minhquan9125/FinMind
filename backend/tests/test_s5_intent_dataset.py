@@ -68,7 +68,7 @@ def test_dataset_matches_pinned_schema_and_declared_coverage():
     errors, summary = validator.validate_dataset(ROOT / 'docs/sprint5/intent-dataset-v1')
     assert errors == []
     assert summary['library_rows'] == 90
-    assert summary['test_rows'] == 54
+    assert summary['test_rows'] == 56
     assert summary['test_unlabeled_rows'] == 9
 
 
@@ -84,3 +84,18 @@ def test_library_covers_mixed_patterns_used_by_the_test_set():
     load = lambda name: [json.loads(line) for line in (folder / name).read_text(encoding='utf-8').splitlines()]
     patterns = lambda items: {frozenset(r['component_intents']) for r in items if r['intent_label'] == 'MIXED'}
     assert patterns(load('test.jsonl')) <= patterns(load('library.jsonl'))
+
+
+def test_has_direct_appointment_fact_vs_article_contrast():
+    folder = ROOT / 'docs/sprint5/intent-dataset-v1'
+    manifest = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
+    items = {r['id']: r for r in map(json.loads, (folder / 'test.jsonl').read_text(encoding='utf-8').splitlines())}
+    pair = next((p for p in manifest['contrast_sets'] if p['id'] == 'C07'), None)
+    assert pair is not None
+    members = [items[ident] for ident in pair['ids']]
+    assert {r['intent_label'] for r in members} == {'PERSON_ROLE', 'NEWS'}
+    for member in members:
+        assert 'bổ nhiệm' in member['text']
+        assert 'TGĐ' in member['text']
+        assert 'DGC' in member['text']
+        assert '09/2025' in member['text']

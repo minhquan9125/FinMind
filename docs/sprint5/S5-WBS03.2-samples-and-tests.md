@@ -10,8 +10,8 @@ của 03.2. Chưa vector hóa, chưa đo chất lượng phân loại, chưa tí
 ## File dùng chung
 
 - [library.jsonl](intent-dataset-v1/library.jsonl): 90 câu mẫu, chỉ file này được đưa vào thư viện embedding ở 03.3 sau khi chốt nhãn.
-- [test.jsonl](intent-dataset-v1/test.jsonl): 54 câu test và nhãn kỳ vọng; không đưa vào thư viện embedding hay dùng để chỉnh câu mẫu theo kết quả từng câu.
-- [manifest.json](intent-dataset-v1/manifest.json): version, checksum dữ liệu và bảng nhãn, trạng thái duyệt, chính sách tách bộ và sáu cặp đối chiếu.
+- [test.jsonl](intent-dataset-v1/test.jsonl): 56 câu test và nhãn kỳ vọng; không đưa vào thư viện embedding hay dùng để chỉnh câu mẫu theo kết quả từng câu.
+- [manifest.json](intent-dataset-v1/manifest.json): version, checksum dữ liệu và bảng nhãn, trạng thái duyệt, chính sách tách bộ và bảy cặp đối chiếu.
 - [Bảng nhãn 03.1](S5-WBS03.1-intent-labels.md): quy tắc giải thích nhãn.
 - [Trình kiểm tra dữ liệu](../../backend/scripts/validate_s5_intent_dataset.py): chạy offline bằng Python chuẩn, không gọi dịch vụ ngoài.
 
@@ -27,14 +27,14 @@ Các file JSON/JSONL có checksum dùng UTF-8 và xuống dòng LF, được c�
 |---|---:|---:|---:|
 | NUMERIC | 12 | 6 | 1 |
 | REPORT_CONTENT | 12 | 6 | 0 |
-| NEWS | 12 | 6 | 1 |
-| PERSON_ROLE | 12 | 6 | 1 |
+| NEWS | 12 | 7 | 1 |
+| PERSON_ROLE | 12 | 7 | 1 |
 | ENTITY_RELATION | 12 | 6 | 0 |
 | TREND | 12 | 6 | 0 |
 | MIXED | 18 | 6 | 0 |
 
 Ngoài ra có 9 câu test không gán nhãn nghiệp vụ: 3 NEEDS_CONTEXT, 3 OUTSIDE_TAXONOMY,
-3 UNRESOLVED. Tổng test = 42 câu rõ + 3 câu rõ nhãn thiếu scope + 9 câu chưa gán nhãn = 54.
+3 UNRESOLVED. Tổng test = 44 câu rõ + 3 câu rõ nhãn thiếu scope + 9 câu chưa gán nhãn = 56.
 Không dùng chín câu null để tính accuracy bảy lớp; báo cáo riêng giới hạn/khả năng
 tách khỏi nhãn nghiệp vụ khi task 04.2 triển khai quyết định hỏi lại/fallback.
 
@@ -79,7 +79,8 @@ thử riêng; việc cần graph hay vector chưa phải đáp án của bộ d�
 | C03 | S5-T-012, S5-T-015 | Trích văn bản BCTN / trích văn bản bài tin |
 | C04 | S5-T-020, S5-T-025 | Chức vụ của người / sở hữu cổ phần của người |
 | C05 | S5-T-003, S5-T-034 | Giá trị và chênh lệch ROE / nhận định xu hướng ROE trên cùng giai đoạn |
-| C06 | S5-T-024, S5-T-038 | Chức vụ kèm bằng chứng cùng fact / tìm người rồi đọc thêm tiểu sử |
+| C06 | S5-T-024, S5-T-038 | Chức vụ kèm bằng chứng cùng fact / chức vụ và mục chính sách độc lập trong báo cáo |
+| C07 | S5-T-055, S5-T-056 | Cùng bổ nhiệm TGĐ DGC tháng 09/2025: hỏi người nhận chức / xin bài tin |
 
 ## Cách kiểm tra lại
 
@@ -92,7 +93,7 @@ Chạy ở thư mục gốc FinMind:
 
 Lượt kiểm tra đã đạt: đủ nhãn và ba hình thức ở mỗi nhãn trong cả hai bộ; trường,
 trạng thái, nhãn MIXED, checksum, family và trùng sau chuẩn hóa đều hợp lệ.
-13 test bảo vệ trình kiểm tra và định dạng file đã qua. Đây là kiểm tra dữ liệu, không phải 13 ca
+14 test bảo vệ trình kiểm tra và định dạng file đã qua. Đây là kiểm tra dữ liệu, không phải 14 ca
 chứng minh classifier phân loại đúng. 24 ca test router tồn tại trước task này
 chưa được sửa; bộ mới không thay runtime nên không chạy lại toàn bộ ứng dụng.
 
@@ -107,21 +108,39 @@ việc quyết định route/ngưỡng/hỏi lại nằm ở task sau.
 
 ## Kết quả tự review nội dung
 
-Revision hiện tại: s5-intent-dataset-v1-draft2. Đã đọc lại toàn bộ câu và lý do gán
+Revision hiện tại: s5-intent-dataset-v1-draft3. Đã đọc lại toàn bộ câu và lý do gán
 nhãn trước khi gửi review, chưa chạy classifier hoặc xem điểm để chỉnh dữ liệu.
 
 - Bổ sung hai nhóm MIXED còn thiếu trong thư viện: PERSON_ROLE + REPORT_CONTENT
   và NUMERIC + NEWS. Mỗi nhóm có ba hình thức; bộ mẫu tăng từ 84 lên 90 câu.
 - Làm rõ C05: lấy ROE và tính chênh lệch khác đánh giá xu hướng ROE, cùng công ty/kỳ.
-- Làm rõ C06: xin bằng chứng cho cùng fact chức vụ vẫn PERSON_ROLE; tìm người rồi
-  đọc thêm tiểu sử là MIXED. Không đổi nhãn chỉ vì có yêu cầu trích dẫn.
-- Giữ 54 câu test; kiểm tra câu trùng chuẩn hóa/family, thành phần MIXED và checksum đạt.
+- C06: xin bằng chứng cho cùng fact chức vụ vẫn PERSON_ROLE; hỏi chức vụ và đọc
+  thêm một mục chính sách độc lập là MIXED. Không đổi nhãn chỉ vì yêu cầu trích dẫn.
+- Sau phản hồi Hưng: 56 câu test; kiểm tra câu trùng chuẩn hóa/family, thành phần MIXED và checksum đạt.
 - Đây là bộ khởi đầu nhỏ do cùng tác giả soạn, chưa phải kết quả nghiệm thu mô hình.
   Leader cần xem lại nhãn kỳ vọng và độ tự nhiên của câu viết tắt; nhóm chưa xác nhận nhãn.
 
 Kết luận nội bộ: đủ để gửi review nội dung 03.2, chưa đóng phiên bản để nghiệm thu
 chất lượng phân loại hoặc đưa vào WebChat. Bốn giờ là ước lượng backlog, không phải
 số giờ thực tế hoặc bằng chứng thay cho kết quả bàn giao.
+
+## Xử lý nhận xét của Hưng
+
+Đã đối chiếu phản hồi được Nhân chuyển lại với dữ liệu trong repository; không
+khẳng định đã kiểm tra một bản sprint5.zip khác. Tiếp thu cả ba góp ý, không có
+điểm cần phản bác. Việc không trùng sau chuẩn hóa không chứng minh độc lập ngữ
+nghĩa: bản draft2 vẫn có các test quá gần khung mẫu dù kiểm tra cấu trúc đạt.
+
+| Góp ý | Thay đổi ở draft3 |
+|---|---|
+| T041/L090 và T038/L085 gần cùng khung | Viết lại cả T037–T042, giữ nhãn thành phần. T038 hỏi chức danh người đã nêu và một mục chính sách độc lập; T041 tóm tắt tin mở chi nhánh rồi lập bảng EPS nhiều kỳ. Các câu còn lại chuyển sang đối chiếu nguồn hoặc xác minh quan hệ/đối tượng đã biết thay cho chỉ tìm tập công ty rồi đọc số. |
+| Cần cặp cùng sự kiện bổ nhiệm | Thêm C07 với T055/T056: cùng bổ nhiệm TGĐ DGC tháng 09/2025, phân biệt hỏi người nhận chức và tìm bài tin. Giữ C02 miễn nhiệm để không mất ca cũ. |
+| Viết tắt/câu sở hữu thiếu tự nhiên | L084 viết đầy đủ “niêm yết”; T042 bỏ cụm dồn NY/XH và đổi tình huống; T025 dùng “nắm bao nhiêu phần trăm cổ phần SSI”. |
+
+Không thay bảng nhãn 03.1, không đổi nhãn để chạy theo router, không xem điểm mô
+hình trước khi sửa. Lưu revision và lý do sửa trong manifest; giữ trạng thái chờ
+nhóm xác nhận. Các pattern ý định đương nhiên vẫn có thể giống nhau giữa hai bộ;
+không tuyên bố đã loại bỏ mọi paraphrase gần nghĩa chỉ nhờ đổi tình huống.
 
 ## Toàn bộ câu mẫu để review
 
@@ -244,7 +263,7 @@ ACCENTED = có dấu; UNACCENTED = không dấu; ABBREVIATED = có viết tắt.
 | S5-L-081 | Tóm tắt KH ở BCTN CTG 2024 và tin CTG tháng 01/2025. | ABBREVIATED | REPORT_CONTENT, NEWS |
 | S5-L-082 | Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó. | ACCENTED | ENTITY_RELATION, TREND |
 | S5-L-083 | Tim cac doi tac niem yet cua ELC tai cuoi nam 2024 roi danh gia xu huong gia tung doanh nghiep trong nam do. | UNACCENTED | ENTITY_RELATION, TREND |
-| S5-L-084 | Tìm đối tác NY của ELC cuối 2024 rồi nhận định XH giá từng DN năm 2024. | ABBREVIATED | ENTITY_RELATION, TREND |
+| S5-L-084 | Tìm đối tác niêm yết của ELC cuối 2024 rồi nhận định XH giá từng doanh nghiệp năm 2024. | ABBREVIATED | ENTITY_RELATION, TREND |
 | S5-L-085 | Xác định ai được BID bổ nhiệm làm trưởng ban kiểm soát năm 2024 rồi đọc tiểu sử người đó trong BCTN 2024. | ACCENTED | PERSON_ROLE, REPORT_CONTENT |
 | S5-L-086 | Xac dinh ai duoc BID bo nhiem lam truong ban kiem soat nam 2024 roi doc tieu su nguoi do trong BCTN 2024. | UNACCENTED | PERSON_ROLE, REPORT_CONTENT |
 | S5-L-087 | Tìm người được bổ nhiệm TBKS BID năm 2024 rồi đọc tiểu sử ở BCTN 2024; TBKS = trưởng ban kiểm soát. | ABBREVIATED | PERSON_ROLE, REPORT_CONTENT |
@@ -280,7 +299,7 @@ ACCENTED = có dấu; UNACCENTED = không dấu; ABBREVIATED = có viết tắt.
 | S5-T-022 | Ong Binh dam nhan vai tro nao tai VNM trong nam 2023? | PERSON_ROLE | Người đã biết, hỏi chức vụ tại doanh nghiệp. |
 | S5-T-023 | Ai đảm nhiệm PTGĐ PNJ tại 30/06/2023? PTGĐ là phó tổng giám đốc. | PERSON_ROLE | Viết tắt được giải nghĩa rõ. |
 | S5-T-024 | Theo BCTN REE 2022, ai được bổ nhiệm làm KTT? Trích câu làm bằng chứng cho câu trả lời; KTT = kế toán trưởng. | PERSON_ROLE | Chỉ xác định chức vụ; trích bằng chứng cho cùng fact không tạo ý định thứ hai. Khác T-038 đọc thêm tiểu sử. |
-| S5-T-025 | Tại cuối năm 2023, bà Hoa nắm giữ tỷ lệ cổ phần nào tại SSI? | ENTITY_RELATION | Người là chủ sở hữu, không phải hỏi chức vụ. |
+| S5-T-025 | Cuối năm 2023, bà Hoa nắm bao nhiêu phần trăm cổ phần SSI? | ENTITY_RELATION | Người là chủ sở hữu, không phải hỏi chức vụ. |
 | S5-T-026 | Cuối năm 2022, VNM có bao nhiêu doanh nghiệp liên kết trực tiếp? | ENTITY_RELATION | Đếm quan hệ, không phải số liệu tài chính. |
 | S5-T-027 | Theo BCTN REE 2023, REE va cong ty Song Xanh co quan he hop tac khong? | ENTITY_RELATION | Xác minh cạnh hợp tác dù nguồn là báo cáo. |
 | S5-T-028 | Su kien mo nha may cua HPG ngay 12/05/2025 co nhung doanh nghiep nao tham gia? | ENTITY_RELATION | Hỏi tập thực thể tham gia, không tóm tắt sự kiện. |
@@ -292,12 +311,12 @@ ACCENTED = có dấu; UNACCENTED = không dấu; ABBREVIATED = có viết tắt.
 | S5-T-034 | Danh gia chieu huong ROE cua ACB qua cac nam 2020–2023: dang cai thien hay suy yeu? | TREND | Cùng chỉ tiêu, công ty và giai đoạn với T-003 nhưng yêu cầu nhận định xu hướng. |
 | S5-T-035 | XH thanh khoản giao dịch ACB trong Q1/2025 đang cải thiện hay suy yếu? | TREND | Thanh khoản giao dịch theo chuỗi thuộc diễn biến thị trường. |
 | S5-T-036 | LNST PNJ qua 2020–2023 tăng tốc hay chậm lại? Giải thích XH đó. | TREND | Tăng tốc/chậm lại là đánh giá diễn biến. |
-| S5-T-037 | Tóm lược định hướng quản trị trong BCTN VNM 2023 rồi liệt kê bài tin về VNM tháng 02/2024. | MIXED | REPORT_CONTENT + NEWS. Hai đầu ra báo cáo và tin độc lập. |
-| S5-T-038 | Tìm ai được REE bổ nhiệm làm kế toán trưởng năm 2022 rồi chép mục tiểu sử người đó trong BCTN 2022. | MIXED | PERSON_ROLE + REPORT_CONTENT. Danh tính phải được tìm trước khi đọc mục tiểu sử. |
-| S5-T-039 | Tim doanh nghiep do HPG kiem soat cuoi 2023 roi doc von chu so huu 2023 cua tung ben tu BCTC. | MIXED | ENTITY_RELATION + NUMERIC. Khám phá quan hệ rồi lấy giá trị từ báo cáo. |
-| S5-T-040 | Ai la ke toan truong SSI tai cuoi 2023 va co nhung bai tin mien nhiem vi tri nay trong 2023? | MIXED | PERSON_ROLE + NEWS. Fact chức vụ và tập tin là hai yêu cầu. |
-| S5-T-041 | LNST ACB năm 2023 là bn và liệt kê tin ACB tháng 01/2024. | MIXED | NUMERIC + NEWS. Đọc số và tìm tin, không phải dẫn nguồn cho cùng fact. |
-| S5-T-042 | Xác định cty con NY của PNJ cuối 2023 rồi đánh giá XH giá từng cty trong Q1/2024. | MIXED | ENTITY_RELATION + TREND. Khám phá đối tượng rồi nhận định xu hướng. |
+| S5-T-037 | Đối chiếu phần quản trị rủi ro trong BCTN VNM 2023 với bài tin VNM ngày 15/02/2024: hai tài liệu nêu những điểm giống và khác nào? | MIXED | REPORT_CONTENT + NEWS. Phải đọc nội dung cả báo cáo lẫn bài tin để đối chiếu; không chỉ tóm tắt hai nguồn tuần tự. |
+| S5-T-038 | BCTN REE 2022 ghi bà Mai đảm nhiệm chức danh nào? Báo cáo mô tả chính sách kiểm soát nội bộ ra sao? | MIXED | PERSON_ROLE + REPORT_CONTENT. Một fact chức vụ và một mục chính sách độc lập, không còn khung tìm người bổ nhiệm rồi đọc tiểu sử. Khác T-024 chỉ xin bằng chứng cho cùng fact. |
+| S5-T-039 | Can xac nhan HPG kiem soat cong ty Binh Minh tai 31/12/2023 hay khong; dong thoi cho biet von chu so huu tren BCTC rieng HPG nam 2023. | MIXED | ENTITY_RELATION + NUMERIC. Xác minh quan hệ có hai đầu mút đã nêu, kèm chỉ tiêu của HPG; không khám phá công ty rồi lấy số từng công ty. |
+| S5-T-040 | Bai tin SSI ngay 10/08/2023 mo ta quyet dinh thay doi nhan su ra sao? Trong nam 2023 ong Binh giu chuc vu nao tai SSI? | MIXED | NEWS + PERSON_ROLE. Đọc một bài tin xác định và trả fact chức vụ của người đã biết, khác khung hỏi người đương nhiệm rồi liệt kê tin. |
+| S5-T-041 | Tóm tắt tin ACB mở chi nhánh ngày 20/02/2025; kèm bảng EPS của ACB cho 2022–2023 theo BCTC. | MIXED | NEWS + NUMERIC. Tin về mở chi nhánh và bảng EPS nhiều kỳ là hai sản phẩm độc lập, khác khung LNST rồi xin danh sách tin. |
+| S5-T-042 | Cty Hoa Mai có phải đơn vị do PNJ kiểm soát cuối 2023 không, và XH giá PNJ trong Q1/2024 ra sao? | MIXED | ENTITY_RELATION + TREND. Xác minh một cạnh cụ thể kèm xu hướng giá PNJ; không tìm tập công ty con rồi nhận định từng công ty. Dùng cty/XH thay cho dồn NY/XH. |
 | S5-T-043 | Còn bên ấy thì sao nhỉ? | null (NEEDS_CONTEXT) | Không có phiên trước để xác định mục tiêu hay đối tượng. Scope: NEEDS_CONTEXT. |
 | S5-T-044 | con nguoi do? | null (NEEDS_CONTEXT) | Đại từ không kèm ngữ cảnh đã xác minh. Scope: NEEDS_CONTEXT. |
 | S5-T-045 | Cho xem DS đó tiếp. | null (NEEDS_CONTEXT) | DS nghĩa là danh sách; chưa xác định danh sách nào. Scope: NEEDS_CONTEXT. |
@@ -310,3 +329,5 @@ ACCENTED = có dấu; UNACCENTED = không dấu; ABBREVIATED = có viết tắt.
 | S5-T-052 | Tổng nợ phải trả cuối năm 2023 là bao nhiêu? | NUMERIC | Ý định rõ nhưng thiếu doanh nghiệp. Scope: PARTIAL. |
 | S5-T-053 | Tim bai tin mien nhiem trong thang 06/2025. | NEWS | Xin bài tin rõ nhưng thiếu đối tượng nhân sự/doanh nghiệp. Scope: PARTIAL. |
 | S5-T-054 | Ai là KTT tại 31/12/2023? KTT = kế toán trưởng. | PERSON_ROLE | Ý định chức vụ rõ nhưng thiếu đơn vị. Scope: PARTIAL. |
+| S5-T-055 | Ai được bổ nhiệm làm TGĐ DGC trong tháng 09/2025? | PERSON_ROLE | Hỏi người nhận chức trong sự kiện bổ nhiệm, không yêu cầu bài tin. Cùng vai trò, doanh nghiệp và tháng với T-056. |
+| S5-T-056 | Tìm bài tin về việc bổ nhiệm TGĐ DGC trong tháng 09/2025. | NEWS | Xin bài tin về cùng sự kiện của T-055, không chỉ xác định người được bổ nhiệm. |

@@ -12,28 +12,28 @@
       "REPORT_CONTENT": 12,
       "TREND": 12
     },
-    "test_rows": 54,
+    "test_rows": 56,
     "test_labels": {
       "ENTITY_RELATION": 6,
       "MIXED": 6,
-      "NEWS": 7,
+      "NEWS": 8,
       "NUMERIC": 7,
-      "PERSON_ROLE": 7,
+      "PERSON_ROLE": 8,
       "REPORT_CONTENT": 6,
       "TREND": 6
     },
     "test_unlabeled_rows": 9,
-    "dataset_version": "s5-intent-dataset-v1-draft2",
+    "dataset_version": "s5-intent-dataset-v1-draft3",
     "approval": "DRAFT_PENDING_TEAM_LABEL_CONFIRMATION_AND_DATA_REVIEW",
     "classification_accuracy_measured": false
   },
-  "checker_tests_passed": 13,
+  "checker_tests_passed": 14,
   "checks": "structure, labels, components, forms, status, checksums, cross-split normalized text and family, definition exact reuse, contrast IDs",
   "classifier_executed": false,
   "embeddings_generated": false,
   "files": {
-    "library.jsonl": "70aa35389109e81529c199e52a0688a402edfc8a91d281cc71229de681f62a6f",
-    "manifest.json": "3149ffb4313170a5334a9050be39c60d22bf720c37fccec64e622796286b8fac",
-    "test.jsonl": "fb016ecc7c41a764fc9fc6d6e97f7938d306a3dbbc13250adb11d33f518bf498"
+    "library.jsonl": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5",
+    "manifest.json": "3338b843547a1a9aea7b72aaf34b33647424126729c1067d8acc379042d01016",
+    "test.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82"
   }
 }
