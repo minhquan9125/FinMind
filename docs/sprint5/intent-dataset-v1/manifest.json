@@ -1,0 +1,62 @@
+{
+  "task_id": "S5-WBS03.2",
+  "dataset_version": "s5-intent-dataset-v1-draft1",
+  "prepared_for": "Hồ Phạm Đăng Nhân",
+  "prepared_date": "2026-11-10",
+  "label_schema_version": "s5-intent-labels-v1-draft2",
+  "label_schema_sha256": "df8c540beb278233f038e8c77d5108e282e004a58050e6cc4b57855361a9f3d5",
+  "approval_status": "DRAFT_PENDING_TEAM_LABEL_CONFIRMATION_AND_DATA_REVIEW",
+  "runtime_enabled": false,
+  "embedding_generated": false,
+  "classification_accuracy_measured": false,
+  "authoring_method": "Curated synthetic questions; library-only unaccented variants generated deterministically; test questions authored separately.",
+  "split_policy": "Seed paraphrase families remain in one split; test is a separate file and never embedded into the library.",
+  "blind_evaluation": false,
+  "notes": "Definition authors also authored test. Different families reduce direct leakage but do not establish a blind or independent human evaluation.",
+  "reference_date": "2026-11-10",
+  "contrast_sets": [
+    {
+      "id": "C01",
+      "ids": [
+        "S5-T-002",
+        "S5-T-014"
+      ],
+      "boundary": "Giá trị cổ tức trong bài tin / tóm tắt chính bài tin"
+    },
+    {
+      "id": "C02",
+      "ids": [
+        "S5-T-013",
+        "S5-T-019"
+      ],
+      "boundary": "Tìm bài tin miễn nhiệm / hỏi ngày hiệu lực miễn nhiệm"
+    },
+    {
+      "id": "C03",
+      "ids": [
+        "S5-T-012",
+        "S5-T-015"
+      ],
+      "boundary": "Trích văn bản BCTN / trích văn bản bài tin"
+    },
+    {
+      "id": "C04",
+      "ids": [
+        "S5-T-020",
+        "S5-T-025"
+      ],
+      "boundary": "Chức vụ của người / sở hữu cổ phần của người"
+    }
+  ],
+  "facts_policy": "Synthetic question scenarios, not assertions of real appointments, ownership, documents or financial values. No answers are fabricated.",
+  "files": {
+    "library.jsonl": {
+      "rows": 84,
+      "sha256": "9d7b4ed791c812a6c14e68fe1b71e2c9b36f0bb26fd47d3691323deb5b513042"
+    },
+    "test.jsonl": {
+      "rows": 54,
+      "sha256": "eb583d9b162a7b7047402bbbe6c564b13560fb8e44bd68c0d46f6d7432d12d02"
+    }
+  }
+}
