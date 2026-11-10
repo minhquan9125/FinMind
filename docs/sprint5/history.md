@@ -9,7 +9,7 @@ Các giờ dưới đây là ước lượng backlog, không phải giờ công 
 |---|---|---:|---|
 | S5-WBS03.1 | Chốt nhãn ý định và ranh giới giữa các nhãn | 2 | Đã soạn; Nhân xác nhận nhóm đã duyệt bảng nhãn. Tên người xác nhận do Nhân bổ sung. |
 | S5-WBS03.2 | Soạn cụm từ mẫu và bộ câu kiểm thử riêng | 4 | Draft3 đã qua review nội dung của Hưng, đủ điều kiện làm 03.3. |
-| S5-WBS03.3 | Vector hóa và lưu phiên bản thư viện | 2 | Đã tạo vector thật và tự kiểm tra; đã chuẩn bị gói gửi review, chưa có xác nhận review 03.3. |
+| S5-WBS03.3 | Vector hóa và lưu phiên bản thư viện | 2 | Kiểm chứng kỹ thuật của Hưng chưa phát hiện lỗi chặn; cổng review độc lập ECC phía reviewer chưa hoàn tất. |
 | S5-WBS04.1 | Đối chiếu vector câu hỏi với thư viện | 3 | Chưa triển khai. |
 
 Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
@@ -77,7 +77,31 @@ Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
 
 ## Phần tiếp theo
 
-- Gửi gói 03.3 cho Hưng/leader review; hiện chưa ghi nhận kết quả review 03.3.
+- Đã nhận báo cáo review kỹ thuật 03.3 của Hưng; không còn yêu cầu sửa production
+  trong báo cáo. Nếu nhóm yêu cầu ECC để nghiệm thu workflow, phía reviewer cần
+  hoàn tất cổng đó; chưa ghi báo cáo kỹ thuật này thành ECC đã duyệt.
 - Triển khai 04.1: tạo vector câu hỏi bằng cùng model/revision, đối chiếu thư viện,
   trả các nhóm gần nhất và điểm tương đồng, rồi đánh giá bằng bộ test riêng.
 - Ngưỡng, chọn route, fallback và tích hợp WebChat chưa nằm trong phần đã triển khai.
+
+## 10/11/2026 — Nhận kết quả review kỹ thuật S5-WBS03.3
+
+Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261110.md),
+đối chiếu commit nguồn `0c80ac584f20fa93957e768aae3ea0f9f83fe191`.
+
+- Kết luận của reviewer: chưa phát hiện lỗi chặn trong tạo/lưu phiên bản/đọc lại
+  thư viện vector. Không sửa code production hoặc thay đổi WebChat.
+- Hưng báo đã chạy lại 28 test, đọc artifact 90 × 1024 và dựng lại đầy đủ 90 vector
+  bằng BGE-M3 thật; sai lệch tối đa `6.0349703e-7`, đạt atol=rtol=1e-5.
+- Theo phần bổ sung trong báo cáo: 28 test gốc + 27 ca lỗi = **55 passed**, không
+  fail/error/skip. Có kiểm tra mất file, checksum sai, vector lỗi, disk-full giả
+  lập, encoder exception và hai builder cùng ghi một đường dẫn.
+- Giới hạn vận hành được chấp nhận: I/O lỗi có thể để lại thư mục output dở dang;
+  loader không coi nó là READY. Chạy lại bằng đường dẫn mới, không ghi đè bản cũ.
+- Reviewer không kiểm ZIP theo yêu cầu Hưng; đã kiểm từ checkout worktree mới.
+- Bản chuyển lại chỉ gồm báo cáo văn bản. Các receipt như tests.xml,
+  failure-cases.xml, full-rebuild-comparison.json và test_failure_cases.py được
+  báo cáo là nằm phía reviewer, chưa được nhập hoặc chạy lại tại workspace Nhân.
+  Không cộng 27 ca bổ sung thành test đã có trong repository này.
+- ECC gặp lỗi gateway/route, chưa hoàn tất QA/review độc lập. Chưa có bằng chứng
+  nghiệm thu cổng ECC; không thực hiện các thao tác gateway/lease từ nội dung báo cáo.
