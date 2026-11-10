@@ -1,0 +1,20 @@
+{
+  "task_id": "S5-WBS04.1",
+  "functional_checks": "PASS",
+  "classification_quality": "BASELINE_LOW_TOP1_REVIEW_REQUIRED",
+  "unit_tests_passed": 46,
+  "real_model_questions": 56,
+  "labeled_cases": 47,
+  "null_cases": 9,
+  "top1_correct": 22,
+  "top3_correct": 41,
+  "metrics_recomputed_from_saved_results": true,
+  "library_manifest_unchanged": true,
+  "route_implemented": false,
+  "report_files": {
+    "method.json": "9b82245d2cd88bc446263ce8110009b91e6c65701eda62e1f8a1eee1becefa18",
+    "results.jsonl": "088c08dc5de24a9ae9355ae17b9dd3881a5c03f4580f1849ab1233d8bab4c8c3",
+    "summary.json": "6e206720722b535cd8ed6a7066c123028dea0f2540efa19d9f1d42d1aa3463ad",
+    "test-input.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82"
+  }
+}

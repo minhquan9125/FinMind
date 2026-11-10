@@ -1,0 +1,35 @@
+{
+  "task_id": "S5-WBS04.1",
+  "evaluation_id": "run01",
+  "created_at": "2026-11-10T16:39:20.934678+00:00",
+  "ranking_policy": "cosine-max-per-label-v1",
+  "group_score": "MAX_COSINE_OVER_EXAMPLES_WITH_SAME_LABEL",
+  "tie_break": "score descending, label ascending, example ID ascending",
+  "top_groups_returned": 7,
+  "top_examples_returned": 5,
+  "labeled_metrics": [
+    "top1_accuracy",
+    "top3_recall",
+    "macro_f1"
+  ],
+  "unlabeled_policy": "RANK_ONLY_EXCLUDED_FROM_ACCURACY_NO_THRESHOLD_OR_FALLBACK",
+  "test_sha256": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+  "library_manifest_sha256": "d679eab18f7368d9ab44e4695d399b5662ab3a539da9319378d2aae220298221",
+  "model": {
+    "name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "dtype": "float32",
+    "normalization": "L2",
+    "input_preprocessing": "NONE_EXACT_REVIEWED_TEXT",
+    "device": "cpu",
+    "batch_size": 8,
+    "max_sequence_length": 8192,
+    "encoder_class": "src.documents.embeddings.EmbeddingService"
+  },
+  "library_version": "s5-intent-library-v1",
+  "dataset_version": "s5-intent-dataset-v1-draft3",
+  "frozen_before_inference": true,
+  "library_examples_modified": false,
+  "test_is_blind_evaluation": false
+}

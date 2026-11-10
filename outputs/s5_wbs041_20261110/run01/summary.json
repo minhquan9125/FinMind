@@ -1,0 +1,201 @@
+{
+  "labeled_cases": 47,
+  "unlabeled_cases": 9,
+  "top1_accuracy": 0.46808510638297873,
+  "top3_recall": 0.8723404255319149,
+  "macro_f1": 0.468047218887555,
+  "per_label": {
+    "NUMERIC": {
+      "support": 7,
+      "precision": 0.5,
+      "recall": 0.7142857142857143,
+      "f1": 0.588235294117647
+    },
+    "REPORT_CONTENT": {
+      "support": 6,
+      "precision": 0.25,
+      "recall": 0.16666666666666666,
+      "f1": 0.2
+    },
+    "NEWS": {
+      "support": 8,
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "f1": 0.5714285714285715
+    },
+    "PERSON_ROLE": {
+      "support": 8,
+      "precision": 0.75,
+      "recall": 0.375,
+      "f1": 0.5
+    },
+    "ENTITY_RELATION": {
+      "support": 6,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666
+    },
+    "TREND": {
+      "support": 6,
+      "precision": 0.5,
+      "recall": 0.8333333333333334,
+      "f1": 0.625
+    },
+    "MIXED": {
+      "support": 6,
+      "precision": 0.1,
+      "recall": 0.16666666666666666,
+      "f1": 0.125
+    }
+  },
+  "confusion_matrix": {
+    "NUMERIC": {
+      "NUMERIC": 5,
+      "REPORT_CONTENT": 0,
+      "NEWS": 0,
+      "PERSON_ROLE": 0,
+      "ENTITY_RELATION": 0,
+      "TREND": 1,
+      "MIXED": 1
+    },
+    "REPORT_CONTENT": {
+      "NUMERIC": 2,
+      "REPORT_CONTENT": 1,
+      "NEWS": 1,
+      "PERSON_ROLE": 1,
+      "ENTITY_RELATION": 0,
+      "TREND": 1,
+      "MIXED": 0
+    },
+    "NEWS": {
+      "NUMERIC": 0,
+      "REPORT_CONTENT": 0,
+      "NEWS": 4,
+      "PERSON_ROLE": 0,
+      "ENTITY_RELATION": 0,
+      "TREND": 0,
+      "MIXED": 4
+    },
+    "PERSON_ROLE": {
+      "NUMERIC": 1,
+      "REPORT_CONTENT": 1,
+      "NEWS": 0,
+      "PERSON_ROLE": 3,
+      "ENTITY_RELATION": 0,
+      "TREND": 0,
+      "MIXED": 3
+    },
+    "ENTITY_RELATION": {
+      "NUMERIC": 2,
+      "REPORT_CONTENT": 0,
+      "NEWS": 0,
+      "PERSON_ROLE": 0,
+      "ENTITY_RELATION": 3,
+      "TREND": 0,
+      "MIXED": 1
+    },
+    "TREND": {
+      "NUMERIC": 0,
+      "REPORT_CONTENT": 1,
+      "NEWS": 0,
+      "PERSON_ROLE": 0,
+      "ENTITY_RELATION": 0,
+      "TREND": 5,
+      "MIXED": 0
+    },
+    "MIXED": {
+      "NUMERIC": 0,
+      "REPORT_CONTENT": 1,
+      "NEWS": 1,
+      "PERSON_ROLE": 0,
+      "ENTITY_RELATION": 0,
+      "TREND": 3,
+      "MIXED": 1
+    }
+  },
+  "wrong_case_ids": [
+    "S5-T-002",
+    "S5-T-005",
+    "S5-T-007",
+    "S5-T-008",
+    "S5-T-009",
+    "S5-T-010",
+    "S5-T-012",
+    "S5-T-013",
+    "S5-T-017",
+    "S5-T-018",
+    "S5-T-021",
+    "S5-T-022",
+    "S5-T-023",
+    "S5-T-024",
+    "S5-T-025",
+    "S5-T-026",
+    "S5-T-027",
+    "S5-T-032",
+    "S5-T-037",
+    "S5-T-039",
+    "S5-T-040",
+    "S5-T-041",
+    "S5-T-042",
+    "S5-T-053",
+    "S5-T-054"
+  ],
+  "evaluation_id": "run01",
+  "ranking_policy": "cosine-max-per-label-v1",
+  "total_cases": 56,
+  "batch_embedding_and_ranking_seconds": 140.00698700000066,
+  "latency_note": "One whole batch including lazy model load; not per-request response latency.",
+  "unlabeled_status_counts": {
+    "NEEDS_CONTEXT": 3,
+    "OUTSIDE_TAXONOMY": 3,
+    "UNRESOLVED": 3
+  },
+  "library_unchanged": true,
+  "route_or_threshold_implemented": false,
+  "by_linguistic_form": {
+    "ABBREVIATED": {
+      "labeled_cases": 17,
+      "unlabeled_cases": 2,
+      "top1_accuracy": 0.47058823529411764,
+      "top3_recall": 0.8235294117647058
+    },
+    "ACCENTED": {
+      "labeled_cases": 15,
+      "unlabeled_cases": 4,
+      "top1_accuracy": 0.4666666666666667,
+      "top3_recall": 0.9333333333333333
+    },
+    "UNACCENTED": {
+      "labeled_cases": 15,
+      "unlabeled_cases": 3,
+      "top1_accuracy": 0.4666666666666667,
+      "top3_recall": 0.8666666666666667
+    }
+  },
+  "by_scope_status": {
+    "NEEDS_CONTEXT": {
+      "labeled_cases": 0,
+      "unlabeled_cases": 4,
+      "top1_accuracy": null,
+      "top3_recall": null
+    },
+    "NOT_APPLICABLE": {
+      "labeled_cases": 0,
+      "unlabeled_cases": 3,
+      "top1_accuracy": null,
+      "top3_recall": null
+    },
+    "PARTIAL": {
+      "labeled_cases": 3,
+      "unlabeled_cases": 2,
+      "top1_accuracy": 0.3333333333333333,
+      "top3_recall": 1.0
+    },
+    "RESOLVED": {
+      "labeled_cases": 44,
+      "unlabeled_cases": 0,
+      "top1_accuracy": 0.4772727272727273,
+      "top3_recall": 0.8636363636363636
+    }
+  }
+}

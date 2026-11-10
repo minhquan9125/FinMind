@@ -10,7 +10,7 @@ Các giờ dưới đây là ước lượng backlog, không phải giờ công 
 | S5-WBS03.1 | Chốt nhãn ý định và ranh giới giữa các nhãn | 2 | Đã soạn; Nhân xác nhận nhóm đã duyệt bảng nhãn. Tên người xác nhận do Nhân bổ sung. |
 | S5-WBS03.2 | Soạn cụm từ mẫu và bộ câu kiểm thử riêng | 4 | Draft3 đã qua review nội dung của Hưng, đủ điều kiện làm 03.3. |
 | S5-WBS03.3 | Vector hóa và lưu phiên bản thư viện | 2 | Kiểm chứng kỹ thuật của Hưng chưa phát hiện lỗi chặn; cổng review độc lập ECC phía reviewer chưa hoàn tất. |
-| S5-WBS04.1 | Đối chiếu vector câu hỏi với thư viện | 3 | Chưa triển khai. |
+| S5-WBS04.1 | Đối chiếu vector câu hỏi với thư viện | 3 | Đã triển khai trả nhóm/điểm và đo baseline; 46 test đạt. Top-1 46,81%, top-3 87,23%; chờ review kết quả, chưa dùng để chọn route. |
 
 Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
 
@@ -80,8 +80,9 @@ Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
 - Đã nhận báo cáo review kỹ thuật 03.3 của Hưng; không còn yêu cầu sửa production
   trong báo cáo. Nếu nhóm yêu cầu ECC để nghiệm thu workflow, phía reviewer cần
   hoàn tất cổng đó; chưa ghi báo cáo kỹ thuật này thành ECC đã duyệt.
-- Triển khai 04.1: tạo vector câu hỏi bằng cùng model/revision, đối chiếu thư viện,
-  trả các nhóm gần nhất và điểm tương đồng, rồi đánh giá bằng bộ test riêng.
+- Review baseline 04.1: chức năng trả ứng viên/điểm đã chạy, top-1 còn thấp.
+  Nếu nâng chất lượng, thống nhất development/test mới và phiên bản dữ liệu;
+  không sửa bộ mẫu đã duyệt theo đáp án của run01 rồi coi đó là kết quả độc lập.
 - Ngưỡng, chọn route, fallback và tích hợp WebChat chưa nằm trong phần đã triển khai.
 
 ## 10/11/2026 — Nhận kết quả review kỹ thuật S5-WBS03.3
@@ -105,3 +106,26 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   Không cộng 27 ca bổ sung thành test đã có trong repository này.
 - ECC gặp lỗi gateway/route, chưa hoàn tất QA/review độc lập. Chưa có bằng chứng
   nghiệm thu cổng ECC; không thực hiện các thao tác gateway/lease từ nội dung báo cáo.
+
+## 10/11/2026 — S5-WBS04.1
+
+- Thêm IntentMatcher, CLI câu hỏi đơn và script đánh giá batch. Ràng buộc cùng
+  model/revision với thư viện 03.3 trước khi encode. Không thay router hoặc WebChat.
+- Policy chọn trước khi đo: cosine-max-per-label-v1; điểm mỗi nhãn là cosine cao
+  nhất của các mẫu cùng nhãn, không cộng phiếu các biến thể. Trả nhóm khác nhau,
+  điểm, ví dụ gần nhất và thông tin phiên bản. Cosine không phải xác suất.
+- 18 test đối chiếu mới + 28 test dữ liệu/artifact đang có: **46 passed**.
+- Chạy model BGE-M3 thật offline cho 56 câu test làm truy vấn tạm, không thêm vào
+  thư viện 90 mẫu. Lưu method và snapshot test trước khi quan sát điểm.
+- Trong 47 câu có nhãn, top-1 đúng **22/47 (46,81%)**, nhãn đúng trong top-3
+  **41/47 (87,23%)**, macro-F1 **0,4680**. Chín câu null chỉ quan sát, không tính
+  accuracy và chưa có quyết định từ chối/hỏi lại.
+- Lưu đầu ra từng câu, confusion matrix, phân nhóm hình thức/scope, 25 ca sai
+  top-1 và sáu ca thiếu nhãn đúng trong top-3. Phép đếm kiểm tra độc lập từ file
+  kết quả khớp metrics. Artifact thư viện đọc lại hợp lệ và không bị thay đổi.
+- Chức năng đối chiếu đã có bằng chứng chạy thật; chất lượng top-1 còn thấp,
+  chưa coi là nghiệm thu chất lượng phân loại hoặc tự động điều phối.
+- Bàn giao: [hợp đồng và cách chạy](S5-WBS04.1-intent-matching.md),
+  [kết quả và ca sai](S5-WBS04.1-baseline-results.md),
+  [đầu ra run01](../../outputs/s5_wbs041_20261110/run01),
+  [biên bản kiểm tra](../../outputs/s5_wbs041_20261110/verification.json).
