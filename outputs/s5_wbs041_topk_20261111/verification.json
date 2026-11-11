@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "independent_rank_histogram": {
+    "1": 22,
+    "2": 14,
+    "3": 5,
+    "4": 3,
+    "5": 2,
+    "6": 1
+  },
+  "counts": [
+    22,
+    41,
+    46
+  ],
+  "source_unchanged": true,
+  "per_label_crosscheck": true,
+  "zip_reproduction_passed": true,
+  "zip_sha256": "84fa942206d70160c72f3ff6d784dc96b3002f6522e3d00ccf63cb4c4fdc9990"
+}

@@ -143,3 +143,14 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   chất lượng phân loại, chưa tích hợp router và chưa có xác nhận review 04.1.
 - Bàn giao: [hướng dẫn](S5-WBS04.1-HANDOFF.md),
   [kiểm chứng model thật](../../outputs/s5_wbs041_review_20261111/real-model-audit.json).
+
+## 11/11/2026 — Bổ sung phân tích top-k theo yêu cầu Hưng
+
+- Dùng đầu ra run01 đã lưu đủ bảy nhóm để đối chiếu top-1/3/5 trên cùng 47 câu
+  có nhãn, loại 9 câu null. Không chạy lại model hoặc thay cách xếp hạng.
+- Kết quả lần lượt 22/47 (46,81%), 41/47 (87,23%), 46/47 (97,87%). Top-5 thêm
+  năm câu so với top-3; vẫn bỏ sót T027, nhãn ENTITY_RELATION ở hạng 6.
+- Báo cáo theo từng nhãn, hình thức câu, độ đầy đủ ngữ cảnh và giới hạn:
+  top-5 trả 5/7 nhãn, không phải accuracy chọn nhãn cuối.
+- [Báo cáo](S5-WBS04.1-top1-top3-top5-report.md), script
+  `backend/scripts/report_s5_intent_topk.py`, dữ liệu `outputs/s5_wbs041_topk_20261111/comparison.json`.

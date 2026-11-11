@@ -9,6 +9,8 @@ không coi unit test qua là accuracy đạt và không đưa kết quả vào r
 
 - [Hợp đồng và cách chạy](S5-WBS04.1-intent-matching.md).
 - [Toàn bộ 25 ca sai, metrics và giới hạn](S5-WBS04.1-baseline-results.md).
+- [Phân tích bổ sung top-1 / top-3 / top-5](S5-WBS04.1-top1-top3-top5-report.md):
+  cùng thứ hạng run01, lần lượt 22/47, 41/47 và 46/47; không phải ba model khác nhau.
 - `outputs/s5_wbs041_20261110/run01`: method đã chọn trước inference,
   snapshot test, kết quả từng câu và summary. Giữ nguyên run01 sau khi đo.
 - `outputs/s5_wbs041_review_20261111`: test sau rà soát và kiểm chứng lại model thật.
