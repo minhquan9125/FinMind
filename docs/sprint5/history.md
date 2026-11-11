@@ -154,3 +154,17 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   top-5 trả 5/7 nhãn, không phải accuracy chọn nhãn cuối.
 - [Báo cáo](S5-WBS04.1-top1-top3-top5-report.md), script
   `backend/scripts/report_s5_intent_topk.py`, dữ liệu `outputs/s5_wbs041_topk_20261111/comparison.json`.
+
+## 11/11/2026 — Đối chứng sau chẩn đoán của Huyền
+
+- Tái hiện bằng model thật vấn đề đổi công ty làm đổi nhãn và nhầm đơn/kết hợp.
+- Đóng băng kế hoạch 2 × 2 trước inference: gốc/cân bằng mẫu × nguyên văn/che ticker.
+  So sánh trên 84 dev, 47 regression có nhãn và 8 known probes; 28 later-check chưa chấm.
+- Chuẩn bị 112 mẫu cân bằng DRAFT riêng. Không sửa taxonomy, thư viện/vectors chính,
+  matcher runtime, ngưỡng 0,65/0,08 hoặc payload top-3 của Huyền.
+- Balanced sửa 8/8 known probes, nhưng dev chỉ 40/84; regression tăng 22→26/47
+  với 13 ca sửa đúng và 9 ca đang đúng thành sai. Chưa đề nghị thay baseline.
+- Masking không được mặc định áp dụng: có regression và sai tuyến vượt ngưỡng.
+- 61 unit test đạt (54 cũ + 7 mới); kiểm chứng độc lập lại 592 bảng thứ hạng từ
+  vector model thật, sai lệch cosine tối đa 1,23e-15; source checksum giữ nguyên.
+- [Kế hoạch](S5-WBS04.1-improvement-plan.md), [kết quả và giới hạn](S5-WBS04.1-improvement-results.md).

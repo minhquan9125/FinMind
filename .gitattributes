@@ -9,3 +9,7 @@ outputs/s5_wbs041_20261110/**/*.json text eol=lf
 outputs/s5_wbs041_20261110/**/*.jsonl text eol=lf
 outputs/s5_wbs041_review_20261111/*.json text eol=lf
 outputs/s5_wbs041_topk_20261111/*.json text eol=lf
+docs/sprint5/intent-experiment-v2/*.json text eol=lf
+docs/sprint5/intent-experiment-v2/*.jsonl text eol=lf
+outputs/s5_intent_experiment_20261111/**/*.json text eol=lf
+outputs/s5_intent_experiment_20261111/**/*.npy binary

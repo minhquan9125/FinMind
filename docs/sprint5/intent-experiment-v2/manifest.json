@@ -1,0 +1,21 @@
+{
+  "version": "intent-experiment-v2-draft1",
+  "approval": "DRAFT_NOT_RUNTIME",
+  "authored_by_same_agent": true,
+  "blind_test": false,
+  "later_check_policy": "NOT_SCORED_BY_RUNNER_REQUIRES_TEAM_REVIEW",
+  "files": {
+    "library-draft.jsonl": {
+      "rows": 112,
+      "sha256": "ad9ba0f3505178a82d44b07b8f586b6ff92d462052633427592abbe06a0e61ee"
+    },
+    "development.jsonl": {
+      "rows": 84,
+      "sha256": "57dd29ba5d0a028ad16143a8b78121724f0e63b024f2608d2be39cd949215116"
+    },
+    "later-check-UNSCORED.jsonl": {
+      "rows": 28,
+      "sha256": "4439afa73db4d4f3d0b21f30f9da2171a46168e14efbebcb2709742a8ced4eef"
+    }
+  }
+}

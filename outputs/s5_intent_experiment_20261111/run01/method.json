@@ -1,0 +1,33 @@
+{
+  "status": "FROZEN_BEFORE_INFERENCE",
+  "plan": "docs/sprint5/S5-WBS04.1-improvement-plan.md",
+  "input_hashes": {
+    "outputs\\s5_wbs033_20261110\\intent-library-v1\\dataset-manifest.json": "b81be2fc049036663d8addea12e94d0c9c766c9dbf65e1c661f6515d9ac80278",
+    "outputs\\s5_wbs033_20261110\\intent-library-v1\\label-schema.json": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+    "outputs\\s5_wbs033_20261110\\intent-library-v1\\library.jsonl": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5",
+    "outputs\\s5_wbs033_20261110\\intent-library-v1\\manifest.json": "d679eab18f7368d9ab44e4695d399b5662ab3a539da9319378d2aae220298221",
+    "outputs\\s5_wbs033_20261110\\intent-library-v1\\vectors.npy": "67e61d4dbae5252e9ff473ee8c84d1ac47c435b16cb1e747250bd9a28cf2f7a8",
+    "outputs\\s5_wbs041_20261110\\run01\\method.json": "9b82245d2cd88bc446263ce8110009b91e6c65701eda62e1f8a1eee1becefa18",
+    "outputs\\s5_wbs041_20261110\\run01\\results.jsonl": "088c08dc5de24a9ae9355ae17b9dd3881a5c03f4580f1849ab1233d8bab4c8c3",
+    "outputs\\s5_wbs041_20261110\\run01\\summary.json": "6e206720722b535cd8ed6a7066c123028dea0f2540efa19d9f1d42d1aa3463ad",
+    "outputs\\s5_wbs041_20261110\\run01\\test-input.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+    "docs\\sprint5\\intent-experiment-v2\\manifest.json": "8287b81f654199ddbf3592b1d6691356109484c40f0dc87c2edc562c5dfd2d9e",
+    "docs\\sprint5\\intent-experiment-v2\\library-draft.jsonl": "ad9ba0f3505178a82d44b07b8f586b6ff92d462052633427592abbe06a0e61ee",
+    "docs\\sprint5\\intent-experiment-v2\\development.jsonl": "57dd29ba5d0a028ad16143a8b78121724f0e63b024f2608d2be39cd949215116",
+    "docs\\sprint5\\S5-WBS04.1-improvement-plan.md": "08240961c24bd4c13106c2f2b9d91c8d45a7949db586039dc3b80b5936ac7236",
+    "docs\\sprint5\\intent-dataset-v1\\test.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+    "docs\\sprint5\\intent-experiment-v2\\known-diagnostic.jsonl": "49d3db169896e47cecc09f0d06ea9424a4197bdb1f132c0f2b511ff4dc8465e0"
+  },
+  "threshold": 0.65,
+  "gap": 0.08,
+  "payload_groups": 3,
+  "reported_groups": 7,
+  "variants": [
+    "original",
+    "original_masked",
+    "balanced",
+    "balanced_masked"
+  ],
+  "later_check_scored": false,
+  "policy_simulation_not_actual_wbs042": true
+}
