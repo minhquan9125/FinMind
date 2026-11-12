@@ -1,6 +1,11 @@
 # Nhờ review S5-WBS04.1 — 12/11/2026
 
-Mới nhất: [guard số liệu và các lỗi còn lại](S5-WBS04.1-numeric-results.md).
+Mới nhất: [sửa mục tiêu bài tin và tách nhiều ý](S5-WBS04.1-news-mixed-results.md).
+NV-13/NV-19/NV-20 đã đúng; bộ 20 câu đã xem đạt 20/20 khi chạy hồi quy,
+313 hàng không có đúng→sai và 162 unit test đạt. Nhờ review mục tiêu NEWS,
+tách vế Đọc và hợp đồng evidence; chưa xác nhận router/Web Chat hoàn thành.
+
+Vòng trước: [guard số liệu và các lỗi còn lại](S5-WBS04.1-numeric-results.md).
 Nhờ kiểm ranh giới lấy giá trị với đếm quan hệ/tin/nội dung/nhận định;
 đọc cả 20 câu kiểm tra bổ sung và ba ca chưa đúng, không chỉ REVIEW-03 đã sửa.
 

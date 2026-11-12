@@ -82,3 +82,11 @@ calibration/consumer ở trên vẫn mở; không đổi trạng thái thành Do
 - [x] Replay 293 câu: sửa REVIEW-03 và FINAL-NUMERIC-2-DPM, không phát sinh đúng→sai.
 - [x] Bộ 15 review đã xem đạt 15; 20 kiểm tra bổ sung bằng model thật đạt 17, giữ ba lỗi.
 - [x] Audit 313 quyết định, toàn bộ 144 unit test qua, báo cáo và history; chưa nối router.
+
+## Sửa NEWS/MIXED sau NV-13/NV-19/NV-20
+
+- [x] Viết test tái hiện trên bản cũ: 9 fail, 9 pass.
+- [x] Thêm mục tiêu thao tác bài tin và tách vế Đọc độc lập; 18 test mới qua.
+- [x] Replay 313 câu: sửa NV-13/NV-19/NV-20 và FINAL-MIXED-2-DPM/VRE; không đúng→sai.
+- [x] Audit 313 quyết định, raw ranking/checksum bất biến; 162 unit test ý định qua.
+- [x] Cập nhật báo cáo/history; bộ 20 nay đã xem đạt 20/20 hồi quy, chưa nối runtime.

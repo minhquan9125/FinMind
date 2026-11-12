@@ -151,3 +151,11 @@ Các lát: (1) test tái hiện và ca âm; (2) đóng băng logic rồi replay 
 xem từ vector có sẵn, điều kiện không làm sai câu V4 đang đúng; (3) kiểm chứng
 thêm các chỉ tiêu/cách hỏi, lưu mọi lỗi và audit; (4) báo cáo/history. Không
 gọi 15 probe cũ là test mới; ranh giới kế hoạch lợi nhuận vẫn DRAFT.
+
+## Sửa NEWS và yêu cầu mở đầu bằng Đọc
+
+Nhân đồng ý sửa ba lỗi NV-13/NV-19/NV-20. Kế hoạch đóng băng riêng tại
+`docs/sprint5/S5-WBS04.1-news-mixed-plan.md`. Viết test đỏ trên bản NUMERIC,
+thêm mục tiêu bài tin và nhận diện vế Đọc độc lập ở module kế tiếp. Chỉ nâng
+thành MIXED từ các mục tiêu rõ ràng; không nới ngưỡng ghép xác suất. Kiểm tra
+hồi quy toàn bộ 313 câu đã xem và giữ model, training, nhãn, raw ranking.

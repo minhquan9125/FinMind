@@ -253,3 +253,16 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   Confidence=null, raw ranking bất biến; V3/V4 và audit cũ giữ nguyên.
 - [Báo cáo](S5-WBS04.1-numeric-results.md). Chưa calibration, chưa nối consumer
   04.2/router/Web Chat; ranh giới kế hoạch lợi nhuận vẫn chờ nhóm chốt.
+
+## 12/11/2026 — Sửa mục tiêu bài tin và câu nhiều ý
+
+- Nhân đồng ý xử lý NV-13/NV-19/NV-20 sau khi nghe giải thích nguyên nhân.
+  Test bản cũ có 9 fail/9 pass; bản sửa có 18 test mới, toàn bộ 162 test ý định qua.
+- Module offline kế tiếp nhận mục tiêu thao tác bài tin và tách vế Đọc giá trị
+  khi có yêu cầu độc lập; ghép mục tiêu rõ NUMERIC + NEWS/PERSON_ROLE thành MIXED.
+- Replay 313 hàng: ba ca đã đúng, bộ 20 câu nay đã xem đạt 20/20; sửa thêm
+  FINAL-MIXED-2-DPM/VRE, bộ 28 câu cũ đạt 28/28. Không phát sinh đúng→sai.
+- Model BGE-M3/revision, head C=1, training/gold và điểm gốc giữ nguyên;
+  chỉ vector hóa hai đoạn mới tách. Không có ngoại lệ theo tên doanh nghiệp.
+- [Báo cáo và giới hạn](S5-WBS04.1-news-mixed-results.md). Không coi kết quả
+  hồi quy là test mù. Chưa calibration, chưa tích hợp consumer/router/Web Chat.

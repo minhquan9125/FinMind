@@ -1,6 +1,10 @@
 # Bàn giao review S5-WBS04.1 — cập nhật 12/11/2026
 
-Vòng tiếp theo: [xử lý câu hỏi lấy số liệu](S5-WBS04.1-numeric-results.md).
+Mới nhất: [sửa NEWS/MIXED và nhận diện yêu cầu Đọc](S5-WBS04.1-news-mixed-results.md).
+20/20 trên bộ 20 câu nay đã xem, 313 hàng hồi quy không có đúng→sai;
+162 unit test ý định qua. Raw ranking giữ nguyên, evidence chưa nối runtime.
+
+Vòng trước: [xử lý câu hỏi lấy số liệu](S5-WBS04.1-numeric-results.md).
 REVIEW-03 đã sửa ở lớp quyết định; 15/15 review cũ, 17/20 kiểm tra bổ sung,
 144 test đạt. Chưa thay điểm classifier hay tích hợp consumer.
 

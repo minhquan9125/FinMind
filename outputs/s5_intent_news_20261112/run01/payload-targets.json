@@ -1,0 +1,152 @@
+[
+  {
+    "id": "NV-13",
+    "question": "Tìm bài tin cho biết doanh thu của VJC trong năm 2024.",
+    "gold": "NEWS",
+    "evaluation_set": "additional_checks",
+    "prior_label": "MIXED",
+    "parts": [
+      "Tìm bài tin cho biết doanh thu của VJC trong năm 2024."
+    ],
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v4",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Tìm bài tin cho biết doanh thu của VJC trong năm 2024.",
+          "intent_label": "NEWS"
+        }
+      ]
+    },
+    "component_probabilities": [],
+    "base_ranking_ref": {
+      "path": "outputs/s5_intent_numeric_20261112/run01/results.json",
+      "evaluation_set": "additional_checks",
+      "id": "NV-13"
+    }
+  },
+  {
+    "id": "NV-19",
+    "question": "Cho biết LNST VJC 2024 rồi tìm bài tin VJC mở đường bay mới.",
+    "gold": "MIXED",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NEWS",
+    "parts": [
+      "Cho biết LNST VJC 2024",
+      "tìm bài tin VJC mở đường bay mới"
+    ],
+    "final_label": "MIXED",
+    "resolution": {
+      "intent_label": "MIXED",
+      "confidence": null,
+      "reason": "TWO_EXPLICIT_REQUEST_TYPES",
+      "component_labels": [
+        "NEWS",
+        "NUMERIC"
+      ],
+      "ranking_policy": "intent-request-objectives-v4",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Cho biết LNST VJC 2024",
+          "intent_label": "NUMERIC"
+        },
+        {
+          "text": "tìm bài tin VJC mở đường bay mới",
+          "intent_label": "NEWS"
+        }
+      ]
+    },
+    "component_probabilities": [
+      [
+        0.08966220905043848,
+        0.15509158131388334,
+        0.10658724545196395,
+        0.2540724360746861,
+        0.10001236923448542,
+        0.1230129157975227,
+        0.17156124307701998
+      ],
+      [
+        0.11516514318792956,
+        0.10268389693758342,
+        0.4530732801981125,
+        0.0879754611611325,
+        0.07400562265604432,
+        0.07801947309969505,
+        0.0890771227595025
+      ]
+    ],
+    "base_ranking_ref": {
+      "path": "outputs/s5_intent_numeric_20261112/run01/results.json",
+      "evaluation_set": "additional_checks",
+      "id": "NV-19"
+    }
+  },
+  {
+    "id": "NV-20",
+    "question": "Đọc tổng tài sản PNJ cuối năm 2024 và xác định ai là CEO của PNJ.",
+    "gold": "MIXED",
+    "evaluation_set": "additional_checks",
+    "prior_label": "PERSON_ROLE",
+    "parts": [
+      "Đọc tổng tài sản PNJ cuối năm 2024",
+      "xác định ai là CEO của PNJ"
+    ],
+    "final_label": "MIXED",
+    "resolution": {
+      "intent_label": "MIXED",
+      "confidence": null,
+      "reason": "TWO_EXPLICIT_REQUEST_TYPES",
+      "component_labels": [
+        "NUMERIC",
+        "PERSON_ROLE"
+      ],
+      "ranking_policy": "intent-request-objectives-v4",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Đọc tổng tài sản PNJ cuối năm 2024",
+          "intent_label": "NUMERIC"
+        },
+        {
+          "text": "xác định ai là CEO của PNJ",
+          "intent_label": "PERSON_ROLE"
+        }
+      ]
+    },
+    "component_probabilities": [
+      [
+        0.10709321854890909,
+        0.19921867121544187,
+        0.11180920521007388,
+        0.2295691847907301,
+        0.09532667655946983,
+        0.12565732779237296,
+        0.1313257158830023
+      ],
+      [
+        0.21434003318624123,
+        0.1334911100010609,
+        0.12051286908342866,
+        0.10386822846591705,
+        0.2605118504891821,
+        0.08497681142563673,
+        0.08229909734853334
+      ]
+    ],
+    "base_ranking_ref": {
+      "path": "outputs/s5_intent_numeric_20261112/run01/results.json",
+      "evaluation_set": "additional_checks",
+      "id": "NV-20"
+    }
+  }
+]
