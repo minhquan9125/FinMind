@@ -48,3 +48,9 @@ backend/scripts/check_s5_intent_objectives_final.py text eol=lf
 docs/sprint5/S5-WBS04.1-composition-plan.md text eol=lf
 docs/sprint5/S5-WBS04.1-consensus-plan.md text eol=lf
 docs/sprint5/S5-WBS04.1-objective-plan.md text eol=lf
+backend/src/retrieval_orchestration/intent_request_review.py text eol=lf
+backend/scripts/run_s5_intent_reviewfix.py text eol=lf
+docs/sprint5/S5-WBS04.1-reviewfix-plan.md text eol=lf
+outputs/s5_intent_reviewfix_20261112/**/*.json text eol=lf
+outputs/s5_intent_reviewfix_20261112/**/*.py text eol=lf
+outputs/s5_intent_reviewfix_20261112/**/*.npy binary

@@ -224,3 +224,17 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   câu hỏi review logic/bằng chứng cho Hưng và ranh giới consumer cho Huyền.
 - Nhân xác nhận đẩy cả code, vector, dữ liệu kiểm thử và báo cáo lên nhánh
   `nhan-sprint-501` để nhóm review; không coi push là hoàn thành tích hợp router.
+
+## 12/11/2026 — Sửa sau nhận xét Hưng
+
+- Xác nhận lỗi AI/ai và thiếu câu hỏi chức vụ bằng test trước khi sửa. Tạo
+  module V4 riêng, giữ nguyên source/artifact V3 đã review và head BGE-M3/C=1.
+- 18 test mới; 278 câu hồi quy giữ nguyên nhãn V3. BGE-M3 thật trên 15 probe
+  theo review đạt 14/15; còn câu doanh thu AI/cloud của ABC sai, không ép nhãn.
+- Toàn bộ 119/119 test Sprint 5 đạt (101 cũ + 18 mới).
+- Giữ bằng chứng các lượt unit lỗi, snapshot run01 và run02 dùng lại 19 vector;
+  audit tái tạo 293 quyết định. Nhãn confidence=null, raw ranking không đổi.
+- Viết đề xuất ranh giới kế hoạch lợi nhuận và contract consumer ở DRAFT;
+  không tự sửa schema APPROVED hoặc source 04.2 chưa có tại local.
+- Tạm dừng task 01.2 theo yêu cầu Nhân; chưa tích hợp router/E2E.
+- [Kết quả và phạm vi cần review lại](S5-WBS04.1-reviewfix-results.md).

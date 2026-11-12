@@ -120,3 +120,22 @@ hóa và lượt sửa UTF-8 đều được giữ lại, không đổi model/ru
 Đầu ra vẫn là offline advisory: resolution.confidence=null, raw ranking không
 đổi. Chưa thực hiện calibration/coverage hoặc tích hợp 04.2; các việc này cần
 hợp đồng tiêu thụ evidence riêng. Xem báo cáo objective-results và payload T038.
+
+## Sửa sau review Hưng — 12/11/2026
+
+S5-WBS01.2 tạm dừng theo yêu cầu Nhân. Tiếp tục đúng phần 04.1, giữ V3 và
+checksum lịch sử; phiên bản kế tiếp nằm trong module riêng intent_request_review.
+
+1. Viết test tái hiện AI/ai và đảo cách hỏi chức vụ/CEO; sửa tối thiểu, kiểm cả
+   câu một ý, câu kết hợp thật và các mục tiêu bài tin/số liệu/trích nguyên văn.
+2. Đóng băng trước đánh giá; dùng lại 278 câu đã xem để hồi quy với cùng head,
+   embedding và gold. Không làm sai ca V3 đang đúng; không gọi chúng là test mới.
+   Chạy probe review với model thật khi khả dụng, giữ cả lỗi thay vì sửa tiếp
+   theo điểm đã xem. Không refit hoặc thay ngưỡng Huyền.
+3. Ghi đề xuất ranh giới REPORT_CONTENT/NUMERIC/TREND riêng ở trạng thái chờ
+   nhóm chốt; không đổi schema đã APPROVED. Ghi hợp đồng metadata bắt buộc và
+   các trường hợp phải từ chối cho consumer 04.2, chưa sửa source chưa có ở local.
+
+Điều kiện: test lỗi mới qua, audit V3 cũ còn qua, báo đầy đủ hồi quy và giới hạn;
+chưa gọi là sẵn sàng nối router khi hợp đồng/nhãn còn mở. Kiểm bằng pytest tập
+Sprint 5, replay từ vector và checksum nguồn. Tách sửa logic, đo và tài liệu.

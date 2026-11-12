@@ -1,5 +1,8 @@
 # Nhờ review S5-WBS04.1 — 12/11/2026
 
+Cập nhật sau nhận xét Hưng: [báo cáo sửa AI/ai và cách hỏi chức vụ](S5-WBS04.1-reviewfix-results.md).
+Review V3 bên dưới là lịch sử; chưa xem V4 là đã được Hưng duyệt.
+
 Nhánh: `nhan-sprint-501`. Nhân gửi phần đối chiếu ý định và các thử nghiệm cải
 thiện sau chẩn đoán của Huyền. Mục tiêu lần review này là kiểm tra chất lượng
 nhãn, khả năng tái tạo và hợp đồng đầu ra trước khi cân nhắc tích hợp 04.2.

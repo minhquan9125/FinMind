@@ -1,5 +1,8 @@
 # Bàn giao review S5-WBS04.1 — cập nhật 12/11/2026
 
+Sau review Hưng: [hai lỗi đã sửa, bằng chứng V4 và phần còn mở](S5-WBS04.1-reviewfix-results.md).
+V4 vẫn là ứng viên offline; schema và hợp đồng consumer bổ sung còn chờ nhóm.
+
 Bắt đầu review trên nhánh tại [đã làm gì và cần review gì](S5-WBS04.1-REVIEW-REQUEST.md).
 
 Cập nhật mới nhất: [báo cáo quyết định theo từng yêu cầu](S5-WBS04.1-objective-results.md).

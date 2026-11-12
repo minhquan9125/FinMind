@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="10" skipped="0" tests="16" time="2.234" timestamp="2026-11-12T14:08:55.539089+07:00" hostname="DESKTOP-1PMP5V4"><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_ai_acronym_does_not_create_two_requests[Doanh thu m\u1ea3ng AI v\xe0 d\u1ecbch v\u1ee5 cloud c\u1ee7a FPT n\u0103m 2025 l\xe0 bao nhi\xeau?]" time="0.012"><failure message="AssertionError: assert ['Doanh thu m...là bao nhiêu'] == ['Doanh thu m...à bao nhiêu?']&#10;  &#10;  At index 0 diff: 'Doanh thu mảng AI' != 'Doanh thu mảng AI và dịch vụ cloud của FPT năm 2025 là bao nhiêu?'&#10;  Left contains one more item: 'dịch vụ cloud của FPT năm 2025 là bao nhiêu'&#10;  Use -v to get more diff">question = 'Doanh thu mảng AI và dịch vụ cloud của FPT năm 2025 là bao nhiêu?'
+
+    @pytest.mark.parametrize('question', [
+        'Doanh thu mảng AI và dịch vụ cloud của FPT năm 2025 là bao nhiêu?',
+        'Cho biết doanh thu cloud và AI của FPT năm 2025 là bao nhiêu?',
+        'Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?',
+    ])
+    def test_ai_acronym_does_not_create_two_requests(question):
+&gt;       assert requests(question) == [question]
+E       AssertionError: assert ['Doanh thu m...là bao nhiêu'] == ['Doanh thu m...à bao nhiêu?']
+E
+E         At index 0 diff: 'Doanh thu mảng AI' != 'Doanh thu mảng AI và dịch vụ cloud của FPT năm 2025 là bao nhiêu?'
+E         Left contains one more item: 'dịch vụ cloud của FPT năm 2025 là bao nhiêu'
+E         Use -v to get more diff
+
+backend\tests\test_s5_intent_review_fixes.py:15: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_ai_acronym_does_not_create_two_requests[Cho bi\u1ebft doanh thu cloud v\xe0 AI c\u1ee7a FPT n\u0103m 2025 l\xe0 bao nhi\xeau?]" time="0.008"><failure message="AssertionError: assert ['Cho biết do...là bao nhiêu'] == ['Cho biết do...à bao nhiêu?']&#10;  &#10;  At index 0 diff: 'Cho biết doanh thu cloud' != 'Cho biết doanh thu cloud và AI của FPT năm 2025 là bao nhiêu?'&#10;  Left contains one more item: 'AI của FPT năm 2025 là bao nhiêu'&#10;  Use -v to get more diff">question = 'Cho biết doanh thu cloud và AI của FPT năm 2025 là bao nhiêu?'
+
+    @pytest.mark.parametrize('question', [
+        'Doanh thu mảng AI và dịch vụ cloud của FPT năm 2025 là bao nhiêu?',
+        'Cho biết doanh thu cloud và AI của FPT năm 2025 là bao nhiêu?',
+        'Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?',
+    ])
+    def test_ai_acronym_does_not_create_two_requests(question):
+&gt;       assert requests(question) == [question]
+E       AssertionError: assert ['Cho biết do...là bao nhiêu'] == ['Cho biết do...à bao nhiêu?']
+E
+E         At index 0 diff: 'Cho biết doanh thu cloud' != 'Cho biết doanh thu cloud và AI của FPT năm 2025 là bao nhiêu?'
+E         Left contains one more item: 'AI của FPT năm 2025 là bao nhiêu'
+E         Use -v to get more diff
+
+backend\tests\test_s5_intent_review_fixes.py:15: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_ai_acronym_does_not_create_two_requests[Doanh thu AI v\xe0 cloud c\u1ee7a doanh nghi\u1ec7p ABC l\xe0 bao nhi\xeau?]" time="0.002"><failure message="AssertionError: assert ['Doanh thu A...là bao nhiêu'] == ['Doanh thu A...à bao nhiêu?']&#10;  &#10;  At index 0 diff: 'Doanh thu AI' != 'Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?'&#10;  Left contains one more item: 'cloud của doanh nghiệp ABC là bao nhiêu'&#10;  Use -v to get more diff">question = 'Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?'
+
+    @pytest.mark.parametrize('question', [
+        'Doanh thu mảng AI và dịch vụ cloud của FPT năm 2025 là bao nhiêu?',
+        'Cho biết doanh thu cloud và AI của FPT năm 2025 là bao nhiêu?',
+        'Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?',
+    ])
+    def test_ai_acronym_does_not_create_two_requests(question):
+&gt;       assert requests(question) == [question]
+E       AssertionError: assert ['Doanh thu A...là bao nhiêu'] == ['Doanh thu A...à bao nhiêu?']
+E
+E         At index 0 diff: 'Doanh thu AI' != 'Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?'
+E         Left contains one more item: 'cloud của doanh nghiệp ABC là bao nhiêu'
+E         Use -v to get more diff
+
+backend\tests\test_s5_intent_review_fixes.py:15: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_ai_acronym_does_not_hide_a_real_second_request" time="0.001" /><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_uppercase_who_question_still_splits_real_requests" time="0.001" /><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_common_role_phrasings[Ch\u1ee7 t\u1ecbch H\u0110QT c\u1ee7a FPT l\xe0 ai?]" time="0.006"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('Chủ tịch HĐQT của FPT là ai?')">question = 'Chủ tịch HĐQT của FPT là ai?'
+
+    @pytest.mark.parametrize('question', [
+        'Chủ tịch HĐQT của FPT là ai?',
+        'Chu tich HDQT cua ABC la ai?',
+        'Ông Nguyễn Văn A giữ chức gì tại FPT?',
+        'CEO của FPT là ai?',
+        'Ai là CEO của ABC?',
+        'Who is the CEO of ABC?',
+    ])
+    def test_common_role_phrasings(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('Chủ tịch HĐQT của FPT là ai?')
+
+backend\tests\test_s5_intent_review_fixes.py:36: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_common_role_phrasings[Chu tich HDQT cua ABC la ai?]" time="0.002"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('Chu tich HDQT cua ABC la ai?')">question = 'Chu tich HDQT cua ABC la ai?'
+
+    @pytest.mark.parametrize('question', [
+        'Chủ tịch HĐQT của FPT là ai?',
+        'Chu tich HDQT cua ABC la ai?',
+        'Ông Nguyễn Văn A giữ chức gì tại FPT?',
+        'CEO của FPT là ai?',
+        'Ai là CEO của ABC?',
+        'Who is the CEO of ABC?',
+    ])
+    def test_common_role_phrasings(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('Chu tich HDQT cua ABC la ai?')
+
+backend\tests\test_s5_intent_review_fixes.py:36: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_common_role_phrasings[\xd4ng Nguy\u1ec5n V\u0103n A gi\u1eef ch\u1ee9c g\xec t\u1ea1i FPT?]" time="0.003"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('Ông Nguyễn Văn A giữ chức gì tại FPT?')">question = 'Ông Nguyễn Văn A giữ chức gì tại FPT?'
+
+    @pytest.mark.parametrize('question', [
+        'Chủ tịch HĐQT của FPT là ai?',
+        'Chu tich HDQT cua ABC la ai?',
+        'Ông Nguyễn Văn A giữ chức gì tại FPT?',
+        'CEO của FPT là ai?',
+        'Ai là CEO của ABC?',
+        'Who is the CEO of ABC?',
+    ])
+    def test_common_role_phrasings(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('Ông Nguyễn Văn A giữ chức gì tại FPT?')
+
+backend\tests\test_s5_intent_review_fixes.py:36: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_common_role_phrasings[CEO c\u1ee7a FPT l\xe0 ai?]" time="0.002"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('CEO của FPT là ai?')">question = 'CEO của FPT là ai?'
+
+    @pytest.mark.parametrize('question', [
+        'Chủ tịch HĐQT của FPT là ai?',
+        'Chu tich HDQT cua ABC la ai?',
+        'Ông Nguyễn Văn A giữ chức gì tại FPT?',
+        'CEO của FPT là ai?',
+        'Ai là CEO của ABC?',
+        'Who is the CEO of ABC?',
+    ])
+    def test_common_role_phrasings(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('CEO của FPT là ai?')
+
+backend\tests\test_s5_intent_review_fixes.py:36: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_common_role_phrasings[Ai l\xe0 CEO c\u1ee7a ABC?]" time="0.002"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('Ai là CEO của ABC?')">question = 'Ai là CEO của ABC?'
+
+    @pytest.mark.parametrize('question', [
+        'Chủ tịch HĐQT của FPT là ai?',
+        'Chu tich HDQT cua ABC la ai?',
+        'Ông Nguyễn Văn A giữ chức gì tại FPT?',
+        'CEO của FPT là ai?',
+        'Ai là CEO của ABC?',
+        'Who is the CEO of ABC?',
+    ])
+    def test_common_role_phrasings(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('Ai là CEO của ABC?')
+
+backend\tests\test_s5_intent_review_fixes.py:36: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_common_role_phrasings[Who is the CEO of ABC?]" time="0.002"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('Who is the CEO of ABC?')">question = 'Who is the CEO of ABC?'
+
+    @pytest.mark.parametrize('question', [
+        'Chủ tịch HĐQT của FPT là ai?',
+        'Chu tich HDQT cua ABC la ai?',
+        'Ông Nguyễn Văn A giữ chức gì tại FPT?',
+        'CEO của FPT là ai?',
+        'Ai là CEO của ABC?',
+        'Who is the CEO of ABC?',
+    ])
+    def test_common_role_phrasings(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('Who is the CEO of ABC?')
+
+backend\tests\test_s5_intent_review_fixes.py:36: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_role_words_do_not_override_other_objectives[T\xecm b\xe0i tin v\u1ec1 vi\u1ec7c b\u1ed5 nhi\u1ec7m CEO FPT.]" time="0.002" /><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_role_words_do_not_override_other_objectives[Tr\xedch nguy\xean v\u0103n h\xe0ng ch\u1ee9c v\u1ee5 CEO trong BCTN.]" time="0.004" /><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_role_words_do_not_override_other_objectives[L\u01b0\u01a1ng CEO c\u1ee7a FPT n\u0103m 2025 l\xe0 bao nhi\xeau?]" time="0.004" /><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_role_words_do_not_override_other_objectives[BCTN m\xf4 t\u1ea3 chi\u1ebfn l\u01b0\u1ee3c ph\xe1t tri\u1ec3n AI v\xe0 cloud ra sao?]" time="0.003" /><testcase classname="backend.tests.test_s5_intent_review_fixes" name="test_role_fix_preserves_raw_scores_and_null_confidence" time="0.016"><failure message="AssertionError: assert 'NUMERIC' == 'PERSON_ROLE'&#10;  &#10;  - PERSON_ROLE&#10;  + NUMERIC">def test_role_fix_preserves_raw_scores_and_null_confidence():
+        labels = ['MIXED', 'NUMERIC', 'PERSON_ROLE', 'REPORT_CONTENT', 'TREND']
+        base = [.1, .6, .1, .1, .1]
+        original = base.copy()
+        result = resolve_objectives(base, [], labels, ['CEO của FPT là ai?'])
+&gt;       assert result['intent_label'] == 'PERSON_ROLE'
+E       AssertionError: assert 'NUMERIC' == 'PERSON_ROLE'
+E
+E         - PERSON_ROLE
+E         + NUMERIC
+
+backend\tests\test_s5_intent_review_fixes.py:54: AssertionError</failure></testcase></testsuite></testsuites>

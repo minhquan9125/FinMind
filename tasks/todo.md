@@ -63,3 +63,14 @@ File dự kiến: dữ liệu kiểm tra, báo cáo và script calibration; runt
 
 Chỉ phần đóng băng/kiểm tra mới của bước 4 đã thực hiện cho V3. Các checkbox
 calibration/consumer ở trên vẫn mở; không đổi trạng thái thành Done toàn luồng.
+
+## Sau review Hưng — 12/11/2026
+
+- [x] Tái hiện lỗi AI/ai và mẫu hỏi chức vụ bằng test trên V3: 10 fail, 6 pass.
+- [x] Sửa ở module kế tiếp, giữ nguyên source/artifact V3 đã kiểm chứng; 18 test mới qua.
+- [x] Chạy hồi quy 278 câu: không đổi nhãn; 15 probe với model thật đạt 14, giữ ca sai.
+- [x] Đề xuất ranh giới nhãn riêng ở DRAFT để nhóm chốt, giữ schema APPROVED không đổi.
+- [x] Ghi yêu cầu consumer bắt buộc ranking_policy/score_type và bốn điểm contract.
+- [x] Lưu bằng chứng, audit 293 quyết định, 119 test; cập nhật history/hướng dẫn review.
+- [ ] Nhóm xác nhận ranh giới kế hoạch lợi nhuận; chưa cập nhật schema chính thức.
+- [ ] Huyền sửa/kiểm consumer thiếu metadata trên source của mình; chưa tích hợp router.
