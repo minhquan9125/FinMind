@@ -1,0 +1,6 @@
+# Offline audits and the 101 Sprint 5 tests; no embedding model loading.
+-r requirements-s5-scorer-check.txt
+# Encoding-guard test imports the frozen real-model producer/config module.
+pydantic==2.9.2
+pydantic-settings==2.5.2
+python-dotenv==1.2.4

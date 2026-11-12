@@ -1,4 +1,13 @@
-# Bàn giao review S5-WBS04.1 — 11/11/2026
+# Bàn giao review S5-WBS04.1 — cập nhật 12/11/2026
+
+Cập nhật mới nhất: [báo cáo quyết định theo từng yêu cầu](S5-WBS04.1-objective-results.md).
+Ứng viên V3 sửa T038, đạt 41/47 hồi quy, 32/32 kiểm soát; bộ mới sau đóng băng
+25/28. Có 101 unit test và audit tái tạo từ vector. Đây là ứng viên offline,
+confidence chưa calibration và không dùng ngưỡng cosine cũ; chưa tích hợp 04.2.
+`base_ranking` giữ nguyên, nhãn đề xuất nằm riêng trong `resolution`.
+Gói review tổng hợp: `outputs/s5_intent_composition_20261112/S5-WBS04.1-objectives-review.zip`.
+
+Phần dưới lưu cách chạy và kết quả baseline gốc, không thay số cũ bằng số V3.
 
 Đã triển khai trả nhóm ý định gần nhất và điểm cosine, có output từ BGE-M3 thật.
 Chưa có xác nhận review 04.1. Chất lượng top-1 còn thấp: **22/47 (46,81%)**;

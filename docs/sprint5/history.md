@@ -201,3 +201,19 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   giống nhau từng phần tử, không fit lần ba. Xem recovery-note.json.
 - [Kết quả](S5-WBS04.1-scorer-results.md), [contract](S5-WBS04.1-scorer-contract.md),
   [kế hoạch và điểm dừng](../../tasks/plan.md).
+
+## 12/11/2026 — Kiểm tra đơn/kết hợp và quy tắc mục tiêu
+
+- V1 dùng điểm thành phần không đạt: T038 vẫn sai, phát sinh hồi quy T003.
+  V2 đối chiếu cả câu/từng yêu cầu sửa T038 nhưng còn nhầm 10/32 kiểm soát.
+- V3 thêm quy tắc hẹp theo mục tiêu ROLE/REPORT; không ngoại lệ theo công ty
+  hoặc mã câu. Hồi quy 41/47, kiểm soát 32/32, dev 70/84; không có linear
+  đang đúng thành sai trên các tập đã đo. Chẩn đoán cũ còn KNOWN-07/08 sai.
+- Sau đóng băng V3, bộ mới 28 câu đạt 25/28; classifier 23/28, cosine 18/28.
+  Bộ do cùng tác giả soạn, 14 khung × 2 công ty; không coi là test mù độc lập.
+- Giữ lượt mã hóa lỗi và script gốc, sửa UTF-8 và thêm guard trước embedding;
+  audit xác nhận cùng head/rules. Không điều chỉnh V3 sau khi xem 28 câu này.
+- 101 unit test; audit V3 tái hiện 278 quyết định và tái tính điểm từ vector.
+  Nhãn resolution riêng, confidence=null; không thay raw ranking, ngưỡng
+  0,65/0,08 hoặc router. Chưa calibration, chưa tích hợp consumer 04.2/E2E.
+- [Báo cáo tổng hợp và giới hạn](S5-WBS04.1-objective-results.md).

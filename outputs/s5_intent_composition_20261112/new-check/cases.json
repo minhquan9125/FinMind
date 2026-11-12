@@ -1,0 +1,338 @@
+[
+  {
+    "id": "NEW-NUMERIC-1-VHC",
+    "text": "Chi phí lãi vay của VHC trong năm 2020 là bao nhiêu?",
+    "intent_label": "NUMERIC",
+    "family_id": "NEW-NUMERIC-1",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NUMERIC-1-DBC",
+    "text": "Chi phí lãi vay của DBC trong năm 2020 là bao nhiêu?",
+    "intent_label": "NUMERIC",
+    "family_id": "NEW-NUMERIC-1",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NUMERIC-2-VHC",
+    "text": "Cho biết giá trị hàng tồn kho VHC tại 30/06/2020.",
+    "intent_label": "NUMERIC",
+    "family_id": "NEW-NUMERIC-2",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NUMERIC-2-DBC",
+    "text": "Cho biết giá trị hàng tồn kho DBC tại 30/06/2020.",
+    "intent_label": "NUMERIC",
+    "family_id": "NEW-NUMERIC-2",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NUMERIC-3-VHC",
+    "text": "Tỷ lệ chi trả cổ tức của VHC năm 2020 bằng bao nhiêu phần trăm?",
+    "intent_label": "NUMERIC",
+    "family_id": "NEW-NUMERIC-3",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NUMERIC-3-DBC",
+    "text": "Tỷ lệ chi trả cổ tức của DBC năm 2020 bằng bao nhiêu phần trăm?",
+    "intent_label": "NUMERIC",
+    "family_id": "NEW-NUMERIC-3",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-1-VHC",
+    "text": "BCTN VHC năm 2020 mô tả định hướng chuyển đổi số như thế nào?",
+    "intent_label": "REPORT_CONTENT",
+    "family_id": "NEW-REPORT_CONTENT-1",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-1-DBC",
+    "text": "BCTN DBC năm 2020 mô tả định hướng chuyển đổi số như thế nào?",
+    "intent_label": "REPORT_CONTENT",
+    "family_id": "NEW-REPORT_CONTENT-1",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-2-VHC",
+    "text": "Giải thích phương pháp ghi nhận hàng tồn kho trong thuyết minh BCTC VHC năm 2020.",
+    "intent_label": "REPORT_CONTENT",
+    "family_id": "NEW-REPORT_CONTENT-2",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-2-DBC",
+    "text": "Giải thích phương pháp ghi nhận hàng tồn kho trong thuyết minh BCTC DBC năm 2020.",
+    "intent_label": "REPORT_CONTENT",
+    "family_id": "NEW-REPORT_CONTENT-2",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-3-VHC",
+    "text": "Trích nguyên văn đoạn cam kết về an toàn lao động trong BCTN VHC năm 2020.",
+    "intent_label": "REPORT_CONTENT",
+    "family_id": "NEW-REPORT_CONTENT-3",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-3-DBC",
+    "text": "Trích nguyên văn đoạn cam kết về an toàn lao động trong BCTN DBC năm 2020.",
+    "intent_label": "REPORT_CONTENT",
+    "family_id": "NEW-REPORT_CONTENT-3",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NEWS-1-VHC",
+    "text": "Tìm các bản tin về VHC ký hợp đồng xuất khẩu trong tháng 08/2020.",
+    "intent_label": "NEWS",
+    "family_id": "NEW-NEWS-1",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NEWS-1-DBC",
+    "text": "Tìm các bản tin về DBC ký hợp đồng xuất khẩu trong tháng 08/2020.",
+    "intent_label": "NEWS",
+    "family_id": "NEW-NEWS-1",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NEWS-2-VHC",
+    "text": "Tóm lược bài báo về VHC triển khai dự án đăng ngày 12/09/2020.",
+    "intent_label": "NEWS",
+    "family_id": "NEW-NEWS-2",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NEWS-2-DBC",
+    "text": "Tóm lược bài báo về DBC triển khai dự án đăng ngày 12/09/2020.",
+    "intent_label": "NEWS",
+    "family_id": "NEW-NEWS-2",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NEWS-3-VHC",
+    "text": "Cho danh sách bài tin VHC phát hành trái phiếu trong quý III/2020.",
+    "intent_label": "NEWS",
+    "family_id": "NEW-NEWS-3",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-NEWS-3-DBC",
+    "text": "Cho danh sách bài tin DBC phát hành trái phiếu trong quý III/2020.",
+    "intent_label": "NEWS",
+    "family_id": "NEW-NEWS-3",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-1-VHC",
+    "text": "Ai giữ chức Phó Tổng giám đốc VHC tại cuối năm 2020?",
+    "intent_label": "PERSON_ROLE",
+    "family_id": "NEW-PERSON_ROLE-1",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-1-DBC",
+    "text": "Ai giữ chức Phó Tổng giám đốc DBC tại cuối năm 2020?",
+    "intent_label": "PERSON_ROLE",
+    "family_id": "NEW-PERSON_ROLE-1",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-2-VHC",
+    "text": "Ông Lâm được bổ nhiệm làm Giám đốc tài chính VHC vào ngày nào trong năm 2020?",
+    "intent_label": "PERSON_ROLE",
+    "family_id": "NEW-PERSON_ROLE-2",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-2-DBC",
+    "text": "Ông Lâm được bổ nhiệm làm Giám đốc tài chính DBC vào ngày nào trong năm 2020?",
+    "intent_label": "PERSON_ROLE",
+    "family_id": "NEW-PERSON_ROLE-2",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-3-VHC",
+    "text": "Ai đảm trách vị trí kế toán trưởng VHC cuối 2020? Trích câu làm bằng chứng cho câu trả lời.",
+    "intent_label": "PERSON_ROLE",
+    "family_id": "NEW-PERSON_ROLE-3",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-3-DBC",
+    "text": "Ai đảm trách vị trí kế toán trưởng DBC cuối 2020? Trích câu làm bằng chứng cho câu trả lời.",
+    "intent_label": "PERSON_ROLE",
+    "family_id": "NEW-PERSON_ROLE-3",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-1-VHC",
+    "text": "Doanh nghiệp nào nắm cổ phần chi phối VHC tại cuối năm 2020?",
+    "intent_label": "ENTITY_RELATION",
+    "family_id": "NEW-ENTITY_RELATION-1",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-1-DBC",
+    "text": "Doanh nghiệp nào nắm cổ phần chi phối DBC tại cuối năm 2020?",
+    "intent_label": "ENTITY_RELATION",
+    "family_id": "NEW-ENTITY_RELATION-1",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-2-VHC",
+    "text": "Liệt kê các đơn vị do VHC kiểm soát tại 30/06/2020.",
+    "intent_label": "ENTITY_RELATION",
+    "family_id": "NEW-ENTITY_RELATION-2",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-2-DBC",
+    "text": "Liệt kê các đơn vị do DBC kiểm soát tại 30/06/2020.",
+    "intent_label": "ENTITY_RELATION",
+    "family_id": "NEW-ENTITY_RELATION-2",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-3-VHC",
+    "text": "Có bao nhiêu công ty liên kết của VHC tại cuối năm 2020?",
+    "intent_label": "ENTITY_RELATION",
+    "family_id": "NEW-ENTITY_RELATION-3",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-3-DBC",
+    "text": "Có bao nhiêu công ty liên kết của DBC tại cuối năm 2020?",
+    "intent_label": "ENTITY_RELATION",
+    "family_id": "NEW-ENTITY_RELATION-3",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-TREND-1-VHC",
+    "text": "Nhận định đà cải thiện biên lợi nhuận VHC trong các năm 2017–2020 có ổn định không?",
+    "intent_label": "TREND",
+    "family_id": "NEW-TREND-1",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-TREND-1-DBC",
+    "text": "Nhận định đà cải thiện biên lợi nhuận DBC trong các năm 2017–2020 có ổn định không?",
+    "intent_label": "TREND",
+    "family_id": "NEW-TREND-1",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-TREND-2-VHC",
+    "text": "Diễn biến giá VHC và dòng tiền kinh doanh trong 2017–2020 cho tín hiệu cùng chiều hay trái chiều?",
+    "intent_label": "TREND",
+    "family_id": "NEW-TREND-2",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-TREND-2-DBC",
+    "text": "Diễn biến giá DBC và dòng tiền kinh doanh trong 2017–2020 cho tín hiệu cùng chiều hay trái chiều?",
+    "intent_label": "TREND",
+    "family_id": "NEW-TREND-2",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-TREND-3-VHC",
+    "text": "Đánh giá chiều hướng ROA VHC qua các năm 2017–2020.",
+    "intent_label": "TREND",
+    "family_id": "NEW-TREND-3",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-TREND-3-DBC",
+    "text": "Đánh giá chiều hướng ROA DBC qua các năm 2017–2020.",
+    "intent_label": "TREND",
+    "family_id": "NEW-TREND-3",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-MIXED-1-VHC",
+    "text": "Ai giữ chức Phó Tổng giám đốc VHC cuối 2020? BCTN VHC mô tả định hướng chuyển đổi số như thế nào?",
+    "intent_label": "MIXED",
+    "family_id": "NEW-MIXED-1",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-MIXED-1-DBC",
+    "text": "Ai giữ chức Phó Tổng giám đốc DBC cuối 2020? BCTN DBC mô tả định hướng chuyển đổi số như thế nào?",
+    "intent_label": "MIXED",
+    "family_id": "NEW-MIXED-1",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-MIXED-2-VHC",
+    "text": "Cho biết chi phí lãi vay VHC năm 2020 và tìm các bản tin phát hành trái phiếu VHC quý III/2020.",
+    "intent_label": "MIXED",
+    "family_id": "NEW-MIXED-2",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-MIXED-2-DBC",
+    "text": "Cho biết chi phí lãi vay DBC năm 2020 và tìm các bản tin phát hành trái phiếu DBC quý III/2020.",
+    "intent_label": "MIXED",
+    "family_id": "NEW-MIXED-2",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-MIXED-3-VHC",
+    "text": "Liệt kê các đơn vị do VHC kiểm soát cuối 2020 rồi hãy lấy giá trị doanh thu 2020 của từng đơn vị.",
+    "intent_label": "MIXED",
+    "family_id": "NEW-MIXED-3",
+    "company": "VHC",
+    "split": "FINAL_CHECK_ONLY"
+  },
+  {
+    "id": "NEW-MIXED-3-DBC",
+    "text": "Liệt kê các đơn vị do DBC kiểm soát cuối 2020 rồi hãy lấy giá trị doanh thu 2020 của từng đơn vị.",
+    "intent_label": "MIXED",
+    "family_id": "NEW-MIXED-3",
+    "company": "DBC",
+    "split": "FINAL_CHECK_ONLY"
+  }
+]

@@ -1,7 +1,8 @@
 # Tối ưu ý định — danh sách đề xuất 12/11/2026
 
-Đã làm các bước 1–3; dừng ở checkpoint chất lượng. Bước 4 chưa được kích hoạt
-vì còn hồi quy, không phải vì chờ quyền chạy thử nghiệm. Xem [kế hoạch](plan.md).
+Các bước 1–3 và checkpoint raw scorer được lưu dưới đây. Cập nhật cuối file:
+V3 đã qua kiểm soát hồi quy và chạy bộ mới; calibration/consumer vẫn còn mở.
+Xem [kế hoạch](plan.md).
 
 ## 1. Chốt hợp đồng đầu ra — nhỏ, 2–3 file
 
@@ -49,3 +50,16 @@ Chưa thực hiện theo điểm dừng đã đặt trước; không gọi 28 c�
 Điều kiện đạt: có bằng chứng chất lượng và hợp đồng điểm rõ; chưa tuyên bố E2E/90% khi chưa chạy thật.
 Kiểm chứng: test riêng, trace khi có bản tích hợp và báo cáo hồi quy. Phụ thuộc: 3 và điểm dừng.
 File dự kiến: dữ liệu kiểm tra, báo cáo và script calibration; runtime thay đổi là bước riêng.
+
+## Bổ sung sau kiểm tra đơn/kết hợp — 12/11/2026
+
+- [x] Giữ kết quả V1 không đạt và kiểm soát không hồi quy cho V2/V3.
+- [x] T038 được sửa; 32/32 kiểm soát đạt, hồi quy 41/47; score thô giữ nguyên.
+- [x] Đóng băng V3 và đo bộ mới 28 câu: 25/28, không chỉnh quy tắc sau kết quả.
+- [x] Lưu lượt lỗi mã hóa và guard UTF-8; audit đối chiếu cùng head/rules.
+- [x] Báo cáo từng câu, test và gói có thể chạy lại, ghi giới hạn đầu ra advisory.
+- [ ] Calibration và hợp đồng consumer 04.2; chưa có source mới của Huyền tại local.
+- [ ] Kiểm thử router tích hợp, fallback/coverage và E2E khi có bản tích hợp.
+
+Chỉ phần đóng băng/kiểm tra mới của bước 4 đã thực hiện cho V3. Các checkbox
+calibration/consumer ở trên vẫn mở; không đổi trạng thái thành Done toàn luồng.

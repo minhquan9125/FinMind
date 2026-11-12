@@ -1,0 +1,8 @@
+{
+  "status": "INVALID_INPUT_NOT_QUALITY_EVALUATION",
+  "reason": "PowerShell pipeline replaced Vietnamese Unicode characters inside words with question marks",
+  "producer_snapshot_sha256": "dd2d6566bd132a00ad7aa5918416f359e378854a9cb3767a2a5c3a25a58eed31",
+  "original_intended_templates_unchanged": true,
+  "head_or_rules_not_changed": true,
+  "corrected_run": "final-check-v3-utf8"
+}

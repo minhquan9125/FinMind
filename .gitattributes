@@ -32,3 +32,19 @@ outputs/s5_intent_scorer_20261112/**/*.npz binary
 backend/src/retrieval_orchestration/intent_scoring.py text eol=lf
 backend/scripts/prepare_s5_intent_scorer.py text eol=lf
 backend/scripts/run_s5_intent_scorer.py text eol=lf
+docs/sprint5/intent-composition-v1/*.json text eol=lf
+docs/sprint5/intent-composition-v1/*.jsonl text eol=lf
+outputs/s5_intent_composition_20261112/**/*.json text eol=lf
+outputs/s5_intent_composition_20261112/**/*.npy binary
+outputs/s5_intent_composition_20261112/**/*.py text eol=lf
+backend/src/retrieval_orchestration/intent_composition.py text eol=lf
+backend/src/retrieval_orchestration/intent_request_consensus.py text eol=lf
+backend/src/retrieval_orchestration/intent_request_objectives.py text eol=lf
+backend/scripts/run_s5_intent_composition.py text eol=lf
+backend/scripts/run_s5_intent_consensus.py text eol=lf
+backend/scripts/run_s5_intent_objectives.py text eol=lf
+backend/scripts/check_s5_intent_consensus_new.py text eol=lf
+backend/scripts/check_s5_intent_objectives_final.py text eol=lf
+docs/sprint5/S5-WBS04.1-composition-plan.md text eol=lf
+docs/sprint5/S5-WBS04.1-consensus-plan.md text eol=lf
+docs/sprint5/S5-WBS04.1-objective-plan.md text eol=lf

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "decisions_recomputed": 250,
+  "raw_classifier_rankings_preserved": true,
+  "new_check_correct": {
+    "original": 27,
+    "linear": 37,
+    "consensus": 37
+  },
+  "max_probability_difference": 7.771561172376096e-16,
+  "confidence_not_fabricated": true,
+  "legacy_threshold_not_applied": true,
+  "frozen_sources_unchanged": true,
+  "no_training": true
+}

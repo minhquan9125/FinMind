@@ -1,0 +1,5890 @@
+[
+  {
+    "id": "FINAL-NUMERIC-1-DPM",
+    "question": "T? l? n? tr?n v?n ch? s? h?u DPM cu?i n?m 2019 l? bao nhi?u?",
+    "gold": "NUMERIC",
+    "final_label": "PERSON_ROLE",
+    "resolution": {
+      "intent_label": "PERSON_ROLE",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "T? l? n? tr?n v?n ch? s? h?u DPM cu?i n?m 2019 l? bao nhi?u?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.19364823084811963
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.1621523962071084
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.15128326270999903
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.14024383152642936
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.12401006710647634
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.1202204571355154
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.10844175446635188
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "T? l? n? tr?n v?n ch? s? h?u DPM cu?i n?m 2019 l? bao nhi?u?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5014993826060543,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5014993826060543,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4980320225202662,
+          "best_example": {
+            "id": "S5-L-018",
+            "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4980320225202662,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.49091359163122406,
+          "best_example": {
+            "id": "S5-L-002",
+            "text": "Loi nhuan truoc thue cua BID nam 2024 dat bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.49091359163122406,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.4867673508605548,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.4867673508605548,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.47577979426120487,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.47577979426120487,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4752885367188474,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4752885367188474,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.40755839002116007,
+          "best_example": {
+            "id": "S5-L-026",
+            "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.40755839002116007,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5014993826060543,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-018",
+          "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4980320225202662,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-002",
+          "text": "Loi nhuan truoc thue cua BID nam 2024 dat bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.49091359163122406,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.4867673508605548,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.4820985091897529,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "T? l? n? tr?n v?n ch? s? h?u DPM cu?i n?m 2019 l? bao nhi?u?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NUMERIC-1-VRE",
+    "question": "T? l? n? tr?n v?n ch? s? h?u VRE cu?i n?m 2019 l? bao nhi?u?",
+    "gold": "NUMERIC",
+    "final_label": "NUMERIC",
+    "resolution": {
+      "intent_label": "NUMERIC",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "T? l? n? tr?n v?n ch? s? h?u VRE cu?i n?m 2019 l? bao nhi?u?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.2087782055664246
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.1733777879650017
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.1499476195687635
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.14381236638435166
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.11029918881086387
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.10822489989631723
+        },
+        {
+          "rank": 7,
+          "intent_label": "MIXED",
+          "score": 0.10555993180827741
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "T? l? n? tr?n v?n ch? s? h?u VRE cu?i n?m 2019 l? bao nhi?u?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.4819170879644367,
+          "best_example": {
+            "id": "S5-L-005",
+            "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.4819170879644367,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.44002028345401606,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.44002028345401606,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.43515665910859314,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.43515665910859314,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.4345023798967923,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.4345023798967923,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.42980142028153856,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.42980142028153856,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4224221529353273,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4224221529353273,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.3863869801455473,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.3863869801455473,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.4819170879644367,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-011",
+          "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+          "intent_label": "NUMERIC",
+          "score": 0.4404682461141211,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.44002028345401606,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.43515665910859314,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.4345023798967923,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "T? l? n? tr?n v?n ch? s? h?u VRE cu?i n?m 2019 l? bao nhi?u?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NUMERIC-2-DPM",
+    "question": "Cho bi?t l?i nhu?n gi? l?i c?a DPM t?i 31/12/2019.",
+    "gold": "NUMERIC",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Cho bi?t l?i nhu?n gi? l?i c?a DPM t?i 31/12/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.2283416980877268
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.18429954571353727
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.13162755538901078
+        },
+        {
+          "rank": 4,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.12692397051833337
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.12613554664819848
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.10361656910903211
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.09905511453416131
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Cho bi?t l?i nhu?n gi? l?i c?a DPM t?i 31/12/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "MIXED",
+          "score": 0.606831058488557,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.606831058488557,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.6033605604943131,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.6033605604943131,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.5756011007944459,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.5756011007944459,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.5563912116821694,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.5563912116821694,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5260468223205276,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5260468223205276,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5204786195788063,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5204786195788063,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NUMERIC",
+          "score": 0.492649491432275,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.492649491432275,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.606831058488557,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-050",
+          "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.6033605604943131,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-077",
+          "text": "Cho biet ai giu chuc Tong giam doc MBB tai 31/12/2024 va liet ke cac bai tin bo nhiem vi tri do trong nam 2024.",
+          "intent_label": "MIXED",
+          "score": 0.5797232126849169,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5756011007944459,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-026",
+          "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5660001434374864,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Cho bi?t l?i nhu?n gi? l?i c?a DPM t?i 31/12/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NUMERIC-2-VRE",
+    "question": "Cho bi?t l?i nhu?n gi? l?i c?a VRE t?i 31/12/2019.",
+    "gold": "NUMERIC",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Cho bi?t l?i nhu?n gi? l?i c?a VRE t?i 31/12/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.23626313078398645
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.1514917638317945
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.13228606323699488
+        },
+        {
+          "rank": 4,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.13000296583873058
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.12767639235445927
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.12279722137532784
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.09948246257870645
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Cho bi?t l?i nhu?n gi? l?i c?a VRE t?i 31/12/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5958451506905519,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5958451506905519,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5659019590633796,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5659019590633796,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.5629459599774663,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.5629459599774663,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.5610167244434558,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.5610167244434558,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.5074158102745404,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.5074158102745404,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5037445452156835,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5037445452156835,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.47203937271660007,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.47203937271660007,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-050",
+          "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5958451506905519,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5659019590633796,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5629459599774663,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-062",
+          "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+          "intent_label": "TREND",
+          "score": 0.5610167244434558,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-077",
+          "text": "Cho biet ai giu chuc Tong giam doc MBB tai 31/12/2024 va liet ke cac bai tin bo nhiem vi tri do trong nam 2024.",
+          "intent_label": "MIXED",
+          "score": 0.5427833299137554,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Cho bi?t l?i nhu?n gi? l?i c?a VRE t?i 31/12/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-1-DPM",
+    "question": "BCTN DPM n?m 2019 m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+    "gold": "REPORT_CONTENT",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "BCTN DPM n?m 2019 m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.33004949070714923
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.16329748545709238
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.16296286653037134
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.11904696588270042
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.09694036639018912
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.07495407069941283
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.05274875433308458
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "BCTN DPM n?m 2019 m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.6107120783831617,
+          "best_example": {
+            "id": "S5-L-005",
+            "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.6107120783831617,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5703497035260086,
+          "best_example": {
+            "id": "S5-L-014",
+            "text": "Tom tat muc quan tri rui ro trong BCTN BID nam 2024.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5703497035260086,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5596758512657618,
+          "best_example": {
+            "id": "S5-L-044",
+            "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5596758512657618,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.5425487685932263,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.5425487685932263,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.5423380538374272,
+          "best_example": {
+            "id": "S5-L-090",
+            "text": "LNST CTG 2024 là bn và có các tin CTG nào tháng 03/2025?",
+            "intent_label": "MIXED",
+            "score": 0.5423380538374272,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5031530788958737,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5031530788958737,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.4330039081631822,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.4330039081631822,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.6107120783831617,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-006",
+          "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+          "intent_label": "NUMERIC",
+          "score": 0.5897721887811177,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-014",
+          "text": "Tom tat muc quan tri rui ro trong BCTN BID nam 2024.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5703497035260086,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-044",
+          "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5596758512657618,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-017",
+          "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.559135071922523,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "BCTN DPM n?m 2019 m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-1-VRE",
+    "question": "BCTN VRE n?m 2019 m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+    "gold": "REPORT_CONTENT",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "BCTN VRE n?m 2019 m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.3244686062079586
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.18826266817955542
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.14295903953078104
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.11003104999659263
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.10097297985714931
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08104629416218166
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.05225936206578131
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "BCTN VRE n?m 2019 m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.6178481671258955,
+          "best_example": {
+            "id": "S5-L-005",
+            "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.6178481671258955,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5495916853008687,
+          "best_example": {
+            "id": "S5-L-014",
+            "text": "Tom tat muc quan tri rui ro trong BCTN BID nam 2024.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5495916853008687,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.538744141091472,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.538744141091472,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5317186769389148,
+          "best_example": {
+            "id": "S5-L-044",
+            "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5317186769389148,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.512946859011258,
+          "best_example": {
+            "id": "S5-L-080",
+            "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.512946859011258,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4779974496514857,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4779974496514857,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.42351567561664255,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.42351567561664255,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.6178481671258955,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-006",
+          "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+          "intent_label": "NUMERIC",
+          "score": 0.5870924349966576,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-014",
+          "text": "Tom tat muc quan tri rui ro trong BCTN BID nam 2024.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5495916853008687,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.538744141091472,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-044",
+          "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5317186769389148,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "BCTN VRE n?m 2019 m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-2-DPM",
+    "question": "Gi?i th?ch chi?n l??c m? r?ng th? tr??ng tr?nh b?y trong b?o c?o th??ng ni?n DPM n?m 2019.",
+    "gold": "REPORT_CONTENT",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Gi?i th?ch chi?n l??c m? r?ng th? tr??ng tr?nh b?y trong b?o c?o th??ng ni?n DPM n?m 2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.1597764523911749
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.15937214578087083
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.15933127693548685
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.1487408835634735
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.1319016572696903
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.12109362835452678
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.11978395570477682
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Gi?i th?ch chi?n l??c m? r?ng th? tr??ng tr?nh b?y trong b?o c?o th??ng ni?n DPM n?m 2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5427406301436178,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5427406301436178,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5279559903762414,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5279559903762414,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.5205533346823077,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.5205533346823077,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5167145168689844,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5167145168689844,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.49348461715927106,
+          "best_example": {
+            "id": "S5-L-002",
+            "text": "Loi nhuan truoc thue cua BID nam 2024 dat bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.49348461715927106,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.48230666006247036,
+          "best_example": {
+            "id": "S5-L-026",
+            "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.48230666006247036,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4749771751976172,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4749771751976172,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-023",
+          "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5427406301436178,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5279559903762414,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-068",
+          "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+          "intent_label": "TREND",
+          "score": 0.5205533346823077,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.5180791668139931,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5167145168689844,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Gi?i th?ch chi?n l??c m? r?ng th? tr??ng tr?nh b?y trong b?o c?o th??ng ni?n DPM n?m 2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-2-VRE",
+    "question": "Gi?i th?ch chi?n l??c m? r?ng th? tr??ng tr?nh b?y trong b?o c?o th??ng ni?n VRE n?m 2019.",
+    "gold": "REPORT_CONTENT",
+    "final_label": "NUMERIC",
+    "resolution": {
+      "intent_label": "NUMERIC",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Gi?i th?ch chi?n l??c m? r?ng th? tr??ng tr?nh b?y trong b?o c?o th??ng ni?n VRE n?m 2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.1652133163492264
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.16409294539705968
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.15543814509661816
+        },
+        {
+          "rank": 4,
+          "intent_label": "NEWS",
+          "score": 0.1512634104269462
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.13057434513250538
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.11706026046945285
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.11635757712819145
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Gi?i th?ch chi?n l??c m? r?ng th? tr??ng tr?nh b?y trong b?o c?o th??ng ni?n VRE n?m 2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5256870145051037,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5256870145051037,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.5029207151862289,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.5029207151862289,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.4961885911372045,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.4961885911372045,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.49036105595693735,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.49036105595693735,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4793789679086687,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4793789679086687,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4683452172162915,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4683452172162915,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.4607109793226179,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.4607109793226179,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-023",
+          "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5256870145051037,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-011",
+          "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+          "intent_label": "NUMERIC",
+          "score": 0.5029207151862289,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.4961885911372045,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.49036105595693735,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.48821075138112247,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Gi?i th?ch chi?n l??c m? r?ng th? tr??ng tr?nh b?y trong b?o c?o th??ng ni?n VRE n?m 2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NEWS-1-DPM",
+    "question": "T?m c?c b?i tin v? DPM c?ng b? chia c? t?c trong th?ng 06/2019.",
+    "gold": "NEWS",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "T?m c?c b?i tin v? DPM c?ng b? chia c? t?c trong th?ng 06/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.4379411112638734
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.16864835498997008
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.10962633423934377
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.0864794632172438
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08248120563851283
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.06252741097815837
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.052296119672897816
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "T?m c?c b?i tin v? DPM c?ng b? chia c? t?c trong th?ng 06/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.6100657529057957,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.6100657529057957,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.6006780279571685,
+          "best_example": {
+            "id": "S5-L-080",
+            "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.6006780279571685,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.5782486808849483,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.5782486808849483,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5360963279236586,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5360963279236586,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.535785383492521,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.535785383492521,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5121552734827586,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5121552734827586,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.48545853089490065,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.48545853089490065,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.6100657529057957,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.6006780279571685,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-026",
+          "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5986948957028017,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-030",
+          "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+          "intent_label": "NEWS",
+          "score": 0.5905347093428668,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5814141247074807,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "T?m c?c b?i tin v? DPM c?ng b? chia c? t?c trong th?ng 06/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NEWS-1-VRE",
+    "question": "T?m c?c b?i tin v? VRE c?ng b? chia c? t?c trong th?ng 06/2019.",
+    "gold": "NEWS",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "T?m c?c b?i tin v? VRE c?ng b? chia c? t?c trong th?ng 06/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.4653325519021422
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.1398415356884273
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.10888774760916951
+        },
+        {
+          "rank": 4,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08290783861969492
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.08045430008801056
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.07548553843941862
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.04709048765313688
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "T?m c?c b?i tin v? VRE c?ng b? chia c? t?c trong th?ng 06/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.602755089515242,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.602755089515242,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "TREND",
+          "score": 0.5828873321246825,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.5828873321246825,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.5802339351990347,
+          "best_example": {
+            "id": "S5-L-080",
+            "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5802339351990347,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.5445298147799965,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.5445298147799965,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5227663735175925,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5227663735175925,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5081189421176906,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5081189421176906,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.43939984474424154,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.43939984474424154,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.602755089515242,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-036",
+          "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+          "intent_label": "NEWS",
+          "score": 0.5902304219632182,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-030",
+          "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+          "intent_label": "NEWS",
+          "score": 0.5846809539740057,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-062",
+          "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+          "intent_label": "TREND",
+          "score": 0.5828873321246825,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5802339351990347,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "T?m c?c b?i tin v? VRE c?ng b? chia c? t?c trong th?ng 06/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NEWS-2-DPM",
+    "question": "H?y t?m t?t b?i b?o DPM kh?nh th?nh c? s? s?n xu?t ??ng ng?y 15/07/2019.",
+    "gold": "NEWS",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "H?y t?m t?t b?i b?o DPM kh?nh th?nh c? s? s?n xu?t ??ng ng?y 15/07/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.3036088068605728
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.1596085198347749
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.13172873519457548
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.1210909816720775
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.10656739265137079
+        },
+        {
+          "rank": 6,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.09139995925239067
+        },
+        {
+          "rank": 7,
+          "intent_label": "NUMERIC",
+          "score": 0.08599560453423787
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "H?y t?m t?t b?i b?o DPM kh?nh th?nh c? s? s?n xu?t ??ng ng?y 15/07/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "MIXED",
+          "score": 0.5514156864141478,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5514156864141478,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "TREND",
+          "score": 0.5462327733033833,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.5462327733033833,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.5461653840320422,
+          "best_example": {
+            "id": "S5-L-026",
+            "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.5461653840320422,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5146291501743432,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5146291501743432,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5082718724955104,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5082718724955104,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.49191300712650476,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.49191300712650476,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4899220975198447,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4899220975198447,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5514156864141478,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-062",
+          "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+          "intent_label": "TREND",
+          "score": 0.5462327733033833,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-026",
+          "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5461653840320422,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5341693049376586,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5332031102141104,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "H?y t?m t?t b?i b?o DPM kh?nh th?nh c? s? s?n xu?t ??ng ng?y 15/07/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NEWS-2-VRE",
+    "question": "H?y t?m t?t b?i b?o VRE kh?nh th?nh c? s? s?n xu?t ??ng ng?y 15/07/2019.",
+    "gold": "NEWS",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "H?y t?m t?t b?i b?o VRE kh?nh th?nh c? s? s?n xu?t ??ng ng?y 15/07/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.3080560703729616
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.13449768174547969
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.13092003466679297
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.11584802240349429
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.11224295801883004
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.10897847341135802
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.08945675938108327
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "H?y t?m t?t b?i b?o VRE kh?nh th?nh c? s? s?n xu?t ??ng ng?y 15/07/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.5643666119675042,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.5643666119675042,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "NEWS",
+          "score": 0.5391401602921577,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.5391401602921577,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.5256948959794454,
+          "best_example": {
+            "id": "S5-L-080",
+            "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5256948959794454,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5220432238251627,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5220432238251627,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.5182439069838467,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.5182439069838467,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4785096128483217,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4785096128483217,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4722743173842384,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4722743173842384,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-062",
+          "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+          "intent_label": "TREND",
+          "score": 0.5643666119675042,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5391401602921577,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-026",
+          "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5367472709071364,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5256948959794454,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5231908940107289,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "H?y t?m t?t b?i b?o VRE kh?nh th?nh c? s? s?n xu?t ??ng ng?y 15/07/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-1-DPM",
+    "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh DPM t?i cu?i n?m 2019?",
+    "gold": "PERSON_ROLE",
+    "final_label": "PERSON_ROLE",
+    "resolution": {
+      "intent_label": "PERSON_ROLE",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh DPM t?i cu?i n?m 2019?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.253274145100962
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.15792428313332163
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.14210715492138457
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.13768551966024514
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.10653962838421821
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.105218371378749
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.09725089742111945
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh DPM t?i cu?i n?m 2019?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.49246157013221464,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.49246157013221464,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.4747136082595894,
+          "best_example": {
+            "id": "S5-L-002",
+            "text": "Loi nhuan truoc thue cua BID nam 2024 dat bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.4747136082595894,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.46811453615979365,
+          "best_example": {
+            "id": "S5-L-018",
+            "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.46811453615979365,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.46158555016901615,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.46158555016901615,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.45523206070165123,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.45523206070165123,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.42951067704085066,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.42951067704085066,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.39261393127479904,
+          "best_example": {
+            "id": "S5-L-026",
+            "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.39261393127479904,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.49246157013221464,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-041",
+          "text": "Ong Nam duoc BID bo nhiem lam Giam doc tai chinh vao ngay nao trong nam 2024?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4922849885527685,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-002",
+          "text": "Loi nhuan truoc thue cua BID nam 2024 dat bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.4747136082595894,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-018",
+          "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.46811453615979365,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.46158555016901615,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Ai gi? ch?c Gi?m ??c t?i ch?nh DPM t?i cu?i n?m 2019?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-1-VRE",
+    "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh VRE t?i cu?i n?m 2019?",
+    "gold": "PERSON_ROLE",
+    "final_label": "PERSON_ROLE",
+    "resolution": {
+      "intent_label": "PERSON_ROLE",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh VRE t?i cu?i n?m 2019?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.23788564494444256
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.1790233003434642
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.1566346251305402
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.12085922536734554
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.10550879392023815
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.10076383015717497
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.09932458013679446
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh VRE t?i cu?i n?m 2019?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4436194310415309,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4436194310415309,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.4389849747172575,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.4389849747172575,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4321155311985156,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4321155311985156,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.4300153848390542,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.4300153848390542,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.4203924077238542,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.4203924077238542,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3964938941451257,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3964938941451257,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.3889874016960183,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.3889874016960183,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4436194310415309,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-011",
+          "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+          "intent_label": "NUMERIC",
+          "score": 0.4389849747172575,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-041",
+          "text": "Ong Nam duoc BID bo nhiem lam Giam doc tai chinh vao ngay nao trong nam 2024?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4326922555073546,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-023",
+          "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4321155311985156,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.4300153848390542,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Ai gi? ch?c Gi?m ??c t?i ch?nh VRE t?i cu?i n?m 2019?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-2-DPM",
+    "question": "Theo BCTN DPM 2019, ai l? Ch? t?ch H?QT? Tr?ch c?u l?m b?ng ch?ng cho c?u tr? l?i.",
+    "gold": "PERSON_ROLE",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Theo BCTN DPM 2019, ai l? Ch? t?ch H?QT? Tr?ch c?u l?m b?ng ch?ng cho c?u tr? l?i.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.2623249698605424
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.15522570659156465
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.13188240836558568
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.12485407766615995
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.12014786574367842
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.11341216185981924
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.09215280991264979
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Theo BCTN DPM 2019, ai l? Ch? t?ch H?QT? Tr?ch c?u l?m b?ng ch?ng cho c?u tr? l?i.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.6132450180733657,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.6132450180733657,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "TREND",
+          "score": 0.5982871899875642,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.5982871899875642,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.5739422001607264,
+          "best_example": {
+            "id": "S5-L-005",
+            "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.5739422001607264,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.5729827809669655,
+          "best_example": {
+            "id": "S5-L-080",
+            "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5729827809669655,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5476885701099239,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5476885701099239,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5046285715566347,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5046285715566347,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.4925633510817996,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.4925633510817996,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-023",
+          "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.6132450180733657,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.5982871899875642,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.5739422001607264,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5729827809669655,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5722637598901508,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Theo BCTN DPM 2019, ai l? Ch? t?ch H?QT? Tr?ch c?u l?m b?ng ch?ng cho c?u tr? l?i."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-2-VRE",
+    "question": "Theo BCTN VRE 2019, ai l? Ch? t?ch H?QT? Tr?ch c?u l?m b?ng ch?ng cho c?u tr? l?i.",
+    "gold": "PERSON_ROLE",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Theo BCTN VRE 2019, ai l? Ch? t?ch H?QT? Tr?ch c?u l?m b?ng ch?ng cho c?u tr? l?i.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.26350605011221573
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.15166915284171223
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.13551087134282216
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.12438931557884593
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.11786096093446916
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.11615708004318202
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.09090656914675274
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Theo BCTN VRE 2019, ai l? Ch? t?ch H?QT? Tr?ch c?u l?m b?ng ch?ng cho c?u tr? l?i.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.6095249037046306,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.6095249037046306,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "TREND",
+          "score": 0.6003437021312982,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.6003437021312982,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.5790534534269871,
+          "best_example": {
+            "id": "S5-L-005",
+            "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.5790534534269871,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.5684029309124556,
+          "best_example": {
+            "id": "S5-L-080",
+            "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5684029309124556,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5180240502733899,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5180240502733899,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.49267875056794463,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.49267875056794463,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4832303790710351,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4832303790710351,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-023",
+          "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.6095249037046306,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.6003437021312982,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.5790534534269871,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5684029309124556,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-006",
+          "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+          "intent_label": "NUMERIC",
+          "score": 0.5645018731788747,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Theo BCTN VRE 2019, ai l? Ch? t?ch H?QT? Tr?ch c?u l?m b?ng ch?ng cho c?u tr? l?i."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-1-DPM",
+    "question": "C?ng ty m? c?a DPM t?i 31/12/2019 l? ??n v? n?o?",
+    "gold": "ENTITY_RELATION",
+    "final_label": "PERSON_ROLE",
+    "resolution": {
+      "intent_label": "PERSON_ROLE",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "C?ng ty m? c?a DPM t?i 31/12/2019 l? ??n v? n?o?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.18112451113229522
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.17642459046678516
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.165799253029902
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.14959964554723032
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.12206499574639301
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.10811981234204432
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.09686719173534988
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "C?ng ty m? c?a DPM t?i 31/12/2019 l? ??n v? n?o?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5356217869365514,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5356217869365514,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5176774530734057,
+          "best_example": {
+            "id": "S5-L-077",
+            "text": "Cho biet ai giu chuc Tong giam doc MBB tai 31/12/2024 va liet ke cac bai tin bo nhiem vi tri do trong nam 2024.",
+            "intent_label": "MIXED",
+            "score": 0.5176774530734057,
+            "component_intents": [
+              "PERSON_ROLE",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4839760996750619,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4839760996750619,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.47816172886638775,
+          "best_example": {
+            "id": "S5-L-018",
+            "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.47816172886638775,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.47549532530380756,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.47549532530380756,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.45495903249776765,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.45495903249776765,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NUMERIC",
+          "score": 0.45228616314766895,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.45228616314766895,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-050",
+          "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5356217869365514,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-077",
+          "text": "Cho biet ai giu chuc Tong giam doc MBB tai 31/12/2024 va liet ke cac bai tin bo nhiem vi tri do trong nam 2024.",
+          "intent_label": "MIXED",
+          "score": 0.5176774530734057,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.50576118125822,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4839760996750619,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-018",
+          "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.47816172886638775,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "C?ng ty m? c?a DPM t?i 31/12/2019 l? ??n v? n?o?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-1-VRE",
+    "question": "C?ng ty m? c?a VRE t?i 31/12/2019 l? ??n v? n?o?",
+    "gold": "ENTITY_RELATION",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "C?ng ty m? c?a VRE t?i 31/12/2019 l? ??n v? n?o?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.1668287293272402
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.1652667691951261
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.16477678121107447
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.14199951366758579
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.13418851457014963
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.12457776948173385
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.10236192254708981
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "C?ng ty m? c?a VRE t?i 31/12/2019 l? ??n v? n?o?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.542423143734977,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.542423143734977,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.46859505829102854,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.46859505829102854,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.46375083790084637,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.46375083790084637,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.4537593903548424,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.4537593903548424,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.45321346139718766,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.45321346139718766,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4342331779240091,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4342331779240091,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4250752544076698,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4250752544076698,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-050",
+          "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.542423143734977,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.46859505829102854,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-077",
+          "text": "Cho biet ai giu chuc Tong giam doc MBB tai 31/12/2024 va liet ke cac bai tin bo nhiem vi tri do trong nam 2024.",
+          "intent_label": "MIXED",
+          "score": 0.4656042605448176,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.46375083790084637,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.4607948401749902,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "C?ng ty m? c?a VRE t?i 31/12/2019 l? ??n v? n?o?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-2-DPM",
+    "question": "Li?t k? doanh nghi?p h?p t?c v?i DPM trong d? ?n tri?n khai n?m 2019.",
+    "gold": "ENTITY_RELATION",
+    "final_label": "ENTITY_RELATION",
+    "resolution": {
+      "intent_label": "ENTITY_RELATION",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Li?t k? doanh nghi?p h?p t?c v?i DPM trong d? ?n tri?n khai n?m 2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.29670072127557423
+        },
+        {
+          "rank": 2,
+          "intent_label": "NEWS",
+          "score": 0.14161819497574507
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.1372510727392266
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.11659420107455022
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.11454800224671936
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.11263562074957707
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.08065218693860753
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Li?t k? doanh nghi?p h?p t?c v?i DPM trong d? ?n tri?n khai n?m 2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.49331824009909053,
+          "best_example": {
+            "id": "S5-L-060",
+            "text": "DN nào tham gia sự kiện ký kết HT với BID ngày 15/10/2026?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.49331824009909053,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.47169385155316157,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.47169385155316157,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.47104430980746903,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.47104430980746903,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.464261591637423,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.464261591637423,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.46232406095453543,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.46232406095453543,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.45489209213923165,
+          "best_example": {
+            "id": "S5-L-002",
+            "text": "Loi nhuan truoc thue cua BID nam 2024 dat bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.45489209213923165,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.4249002121014165,
+          "best_example": {
+            "id": "S5-L-034",
+            "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.4249002121014165,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-060",
+          "text": "DN nào tham gia sự kiện ký kết HT với BID ngày 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.49331824009909053,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-059",
+          "text": "Nhung doanh nghiep nao tham gia su kien ky ket hop tac voi BID ngay 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4779049139339204,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-051",
+          "text": "DS cty con trực tiếp MBB tại 31/12/2024 gồm những bên nào?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4777156533395588,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-058",
+          "text": "Những doanh nghiệp nào tham gia sự kiện ký kết hợp tác với BID ngày 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.47361498979526506,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-016",
+          "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.47169385155316157,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Li?t k? doanh nghi?p h?p t?c v?i DPM trong d? ?n tri?n khai n?m 2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-2-VRE",
+    "question": "Li?t k? doanh nghi?p h?p t?c v?i VRE trong d? ?n tri?n khai n?m 2019.",
+    "gold": "ENTITY_RELATION",
+    "final_label": "ENTITY_RELATION",
+    "resolution": {
+      "intent_label": "ENTITY_RELATION",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Li?t k? doanh nghi?p h?p t?c v?i VRE trong d? ?n tri?n khai n?m 2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.28494468405905765
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.14817238341910807
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.13850074556307787
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.130410775376
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.11975924152711835
+        },
+        {
+          "rank": 6,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.10092052255597656
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.07729164749966161
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Li?t k? doanh nghi?p h?p t?c v?i VRE trong d? ?n tri?n khai n?m 2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4795525662192778,
+          "best_example": {
+            "id": "S5-L-059",
+            "text": "Nhung doanh nghiep nao tham gia su kien ky ket hop tac voi BID ngay 15/10/2026?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4795525662192778,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.4742956417695476,
+          "best_example": {
+            "id": "S5-L-074",
+            "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.4742956417695476,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4339130369873526,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4339130369873526,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NEWS",
+          "score": 0.4305521633108742,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.4305521633108742,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.42985839935556563,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.42985839935556563,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.4050470471405719,
+          "best_example": {
+            "id": "S5-L-004",
+            "text": "Theo BCTN MBB năm 2023, tỷ lệ nợ trên vốn chủ sở hữu là bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.4050470471405719,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.4036381092755529,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.4036381092755529,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-059",
+          "text": "Nhung doanh nghiep nao tham gia su kien ky ket hop tac voi BID ngay 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4795525662192778,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-074",
+          "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.4742956417695476,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-060",
+          "text": "DN nào tham gia sự kiện ký kết HT với BID ngày 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4697255026982974,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-083",
+          "text": "Tim cac doi tac niem yet cua ELC tai cuoi nam 2024 roi danh gia xu huong gia tung doanh nghiep trong nam do.",
+          "intent_label": "MIXED",
+          "score": 0.4641353247576303,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        },
+        {
+          "id": "S5-L-058",
+          "text": "Những doanh nghiệp nào tham gia sự kiện ký kết hợp tác với BID ngày 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.45936663496282426,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Li?t k? doanh nghi?p h?p t?c v?i VRE trong d? ?n tri?n khai n?m 2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-TREND-1-DPM",
+    "question": "??nh gi? chi?u h??ng kh? n?ng sinh l?i DPM qua giai ?o?n 2016?2019.",
+    "gold": "TREND",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "??nh gi? chi?u h??ng kh? n?ng sinh l?i DPM qua giai ?o?n 2016?2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.2119410060591874
+        },
+        {
+          "rank": 2,
+          "intent_label": "TREND",
+          "score": 0.18674209370999717
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.16457750179104425
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.1394315463134412
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.10263641427232924
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.10134488521514988
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.0933265526388509
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "??nh gi? chi?u h??ng kh? n?ng sinh l?i DPM qua giai ?o?n 2016?2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.516801089315609,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.516801089315609,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5000791112435867,
+          "best_example": {
+            "id": "S5-L-077",
+            "text": "Cho biet ai giu chuc Tong giam doc MBB tai 31/12/2024 va liet ke cac bai tin bo nhiem vi tri do trong nam 2024.",
+            "intent_label": "MIXED",
+            "score": 0.5000791112435867,
+            "component_intents": [
+              "PERSON_ROLE",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.49423340317305775,
+          "best_example": {
+            "id": "S5-L-026",
+            "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.49423340317305775,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.47575637808401156,
+          "best_example": {
+            "id": "S5-L-041",
+            "text": "Ong Nam duoc BID bo nhiem lam Giam doc tai chinh vao ngay nao trong nam 2024?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.47575637808401156,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4745305216091794,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4745305216091794,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.4593221264368112,
+          "best_example": {
+            "id": "S5-L-008",
+            "text": "Gia dong cua CTG ngay 02/11/2026 va 03/11/2026 chenh nhau bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.4593221264368112,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.43892976027215763,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.43892976027215763,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.516801089315609,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-062",
+          "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+          "intent_label": "TREND",
+          "score": 0.5030224639423638,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-077",
+          "text": "Cho biet ai giu chuc Tong giam doc MBB tai 31/12/2024 va liet ke cac bai tin bo nhiem vi tri do trong nam 2024.",
+          "intent_label": "MIXED",
+          "score": 0.5000791112435867,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.49529695017422093,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-026",
+          "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.49423340317305775,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "??nh gi? chi?u h??ng kh? n?ng sinh l?i DPM qua giai ?o?n 2016?2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-TREND-1-VRE",
+    "question": "??nh gi? chi?u h??ng kh? n?ng sinh l?i VRE qua giai ?o?n 2016?2019.",
+    "gold": "TREND",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "??nh gi? chi?u h??ng kh? n?ng sinh l?i VRE qua giai ?o?n 2016?2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.20724667466389268
+        },
+        {
+          "rank": 2,
+          "intent_label": "TREND",
+          "score": 0.19609484825827478
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.14855386968649256
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.13843576106702615
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.12164425486435476
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.09676914582705147
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.09125544563290741
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "??nh gi? chi?u h??ng kh? n?ng sinh l?i VRE qua giai ?o?n 2016?2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.526789485477299,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.526789485477299,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.4866187740411342,
+          "best_example": {
+            "id": "S5-L-080",
+            "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.4866187740411342,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.46649921482548734,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.46649921482548734,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.4595894822026322,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.4595894822026322,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.45062619410252336,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.45062619410252336,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.43569228781357716,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.43569228781357716,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.42555564434648696,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.42555564434648696,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-062",
+          "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+          "intent_label": "TREND",
+          "score": 0.526789485477299,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.49335604774324315,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.4866187740411342,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.46649921482548734,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-074",
+          "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.46297244017831557,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "??nh gi? chi?u h??ng kh? n?ng sinh l?i VRE qua giai ?o?n 2016?2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-TREND-2-DPM",
+    "question": "Nh?n ??nh ?? t?ng gi? c? phi?u DPM trong qu? II/2019 c? b?n v?ng kh?ng?",
+    "gold": "TREND",
+    "final_label": "TREND",
+    "resolution": {
+      "intent_label": "TREND",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Nh?n ??nh ?? t?ng gi? c? phi?u DPM trong qu? II/2019 c? b?n v?ng kh?ng?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.17951121601696862
+        },
+        {
+          "rank": 2,
+          "intent_label": "NEWS",
+          "score": 0.15645399911329255
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.15611325227399692
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.14302207932112188
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.12415748632364507
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.12182991559030229
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.11891205136067254
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Nh?n ??nh ?? t?ng gi? c? phi?u DPM trong qu? II/2019 c? b?n v?ng kh?ng?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.4905057246225919,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.4905057246225919,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.47201371981118767,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.47201371981118767,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.46658783299006246,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.46658783299006246,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.45809280929357804,
+          "best_example": {
+            "id": "S5-L-018",
+            "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.45809280929357804,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.4541553746760503,
+          "best_example": {
+            "id": "S5-L-009",
+            "text": "Chênh lệch giá ĐC CTG 02/11/2026 so với 03/11/2026 là bn?",
+            "intent_label": "NUMERIC",
+            "score": 0.4541553746760503,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.4180861380917702,
+          "best_example": {
+            "id": "S5-L-026",
+            "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.4180861380917702,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.41375127176377935,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.41375127176377935,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-068",
+          "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+          "intent_label": "TREND",
+          "score": 0.4905057246225919,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.47201371981118767,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.46722200368569616,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.46658783299006246,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-018",
+          "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.45809280929357804,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Nh?n ??nh ?? t?ng gi? c? phi?u DPM trong qu? II/2019 c? b?n v?ng kh?ng?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-TREND-2-VRE",
+    "question": "Nh?n ??nh ?? t?ng gi? c? phi?u VRE trong qu? II/2019 c? b?n v?ng kh?ng?",
+    "gold": "TREND",
+    "final_label": "TREND",
+    "resolution": {
+      "intent_label": "TREND",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Nh?n ??nh ?? t?ng gi? c? phi?u VRE trong qu? II/2019 c? b?n v?ng kh?ng?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.17714805399381126
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.16619541025102344
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.15806527000555853
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.1311729752732005
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.1250537891743982
+        },
+        {
+          "rank": 6,
+          "intent_label": "MIXED",
+          "score": 0.12423961513412249
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.11812488616788569
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Nh?n ??nh ?? t?ng gi? c? phi?u VRE trong qu? II/2019 c? b?n v?ng kh?ng?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.43729486357738856,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.43729486357738856,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4291812563002009,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4291812563002009,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.42678497379600466,
+          "best_example": {
+            "id": "S5-L-008",
+            "text": "Gia dong cua CTG ngay 02/11/2026 va 03/11/2026 chenh nhau bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.42678497379600466,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.42595562045234425,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.42595562045234425,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4100680665679149,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4100680665679149,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.40285437228781895,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.40285437228781895,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3930257282673677,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3930257282673677,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-068",
+          "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+          "intent_label": "TREND",
+          "score": 0.43729486357738856,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.43587254506421397,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-062",
+          "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+          "intent_label": "TREND",
+          "score": 0.4311099418193185,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4291812563002009,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-008",
+          "text": "Gia dong cua CTG ngay 02/11/2026 va 03/11/2026 chenh nhau bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.42678497379600466,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Nh?n ??nh ?? t?ng gi? c? phi?u VRE trong qu? II/2019 c? b?n v?ng kh?ng?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-MIXED-1-DPM",
+    "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh DPM cu?i n?m 2019? BCTN DPM m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+    "gold": "MIXED",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh DPM cu?i n?m 2019? BCTN DPM m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.24005711521800704
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.1756380221757174
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.16938290753385024
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.13981751040501028
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.11366386595797207
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08875697664153967
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.07268360206790334
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh DPM cu?i n?m 2019? BCTN DPM m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.5804784973452545,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.5804784973452545,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5758488923627089,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5758488923627089,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5744893147659748,
+          "best_example": {
+            "id": "S5-L-017",
+            "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5744893147659748,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.5616782157506074,
+          "best_example": {
+            "id": "S5-L-005",
+            "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.5616782157506074,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.561038755500649,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.561038755500649,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.49534068750186244,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.49534068750186244,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.46954270085953165,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.46954270085953165,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.5804784973452545,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-047",
+          "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5758488923627089,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-017",
+          "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5744893147659748,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-014",
+          "text": "Tom tat muc quan tri rui ro trong BCTN BID nam 2024.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5719111340643921,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-023",
+          "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.567418345480479,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Ai gi",
+      "c ra sao"
+    ],
+    "component_probabilities": [
+      [
+        0.1815209383766736,
+        0.1388706835428543,
+        0.21606680605716239,
+        0.1224381075238692,
+        0.11456109719654238,
+        0.09868496503422945,
+        0.1278574022686685
+      ],
+      [
+        0.19191052415544704,
+        0.12410239988568814,
+        0.23563196038330456,
+        0.12567569990168945,
+        0.11104215301382567,
+        0.10526276927316797,
+        0.10637449338687706
+      ]
+    ]
+  },
+  {
+    "id": "FINAL-MIXED-1-VRE",
+    "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh VRE cu?i n?m 2019? BCTN VRE m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+    "gold": "MIXED",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh VRE cu?i n?m 2019? BCTN VRE m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.2547018261121272
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.16813433986226092
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.1602058235058064
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.14827884906957514
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.10280485380436025
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.09687372475415106
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.069000582891719
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Ai gi? ch?c Gi?m ??c t?i ch?nh VRE cu?i n?m 2019? BCTN VRE m? t? ch?nh s?ch ph?t tri?n nh?n l?c ra sao?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.5828162014468891,
+          "best_example": {
+            "id": "S5-L-005",
+            "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+            "intent_label": "NUMERIC",
+            "score": 0.5828162014468891,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5804322824183761,
+          "best_example": {
+            "id": "S5-L-014",
+            "text": "Tom tat muc quan tri rui ro trong BCTN BID nam 2024.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5804322824183761,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.5788896392866363,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.5788896392866363,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.5517272801057842,
+          "best_example": {
+            "id": "S5-L-080",
+            "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5517272801057842,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5433026323645194,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5433026323645194,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4716440548156945,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4716440548156945,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.4605238758297493,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.4605238758297493,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.5828162014468891,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-014",
+          "text": "Tom tat muc quan tri rui ro trong BCTN BID nam 2024.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5804322824183761,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.5788896392866363,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-011",
+          "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+          "intent_label": "NUMERIC",
+          "score": 0.5564252921416168,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-023",
+          "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5553937561913114,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Ai gi",
+      "c ra sao"
+    ],
+    "component_probabilities": [
+      [
+        0.1815209383766736,
+        0.1388706835428543,
+        0.21606680605716239,
+        0.1224381075238692,
+        0.11456109719654238,
+        0.09868496503422945,
+        0.1278574022686685
+      ],
+      [
+        0.19191052415544704,
+        0.12410239988568814,
+        0.23563196038330456,
+        0.12567569990168945,
+        0.11104215301382567,
+        0.10526276927316797,
+        0.10637449338687706
+      ]
+    ]
+  },
+  {
+    "id": "FINAL-MIXED-2-DPM",
+    "question": "Cho bi?t l?i nhu?n gi? l?i DPM cu?i n?m 2019 r?i t?m c?c b?i tin chia c? t?c DPM th?ng 06/2019.",
+    "gold": "MIXED",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Cho bi?t l?i nhu?n gi? l?i DPM cu?i n?m 2019 r?i t?m c?c b?i tin chia c? t?c DPM th?ng 06/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.379657602411035
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.20246232975206924
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.10675216835901356
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.10446610605777124
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.07461535151198978
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.07383455529776001
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.058211886610361294
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Cho bi?t l?i nhu?n gi? l?i DPM cu?i n?m 2019 r?i t?m c?c b?i tin chia c? t?c DPM th?ng 06/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "MIXED",
+          "score": 0.6258962484236295,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.6258962484236295,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "NEWS",
+          "score": 0.617568886435836,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.617568886435836,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.6034057597063062,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.6034057597063062,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.5531084230425862,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.5531084230425862,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5433509554734574,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5433509554734574,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5325913993446236,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5325913993446236,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5231144191579875,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5231144191579875,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.6258962484236295,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.617568886435836,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.6034057597063062,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-080",
+          "text": "Tom tat ke hoach trong BCTN CTG 2024 va tom tat cac bai tin ve CTG trong thang 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.6015570959853196,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-026",
+          "text": "Tim cac bai tin ve viec bo nhiem Tong giam doc TCB trong thang 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5996388719276629,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Cho bi?t l?i nhu?n gi? l?i DPM cu?i n?m 2019 r?i t?m c?c b?i tin chia c? t?c DPM th?ng 06/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-MIXED-2-VRE",
+    "question": "Cho bi?t l?i nhu?n gi? l?i VRE cu?i n?m 2019 r?i t?m c?c b?i tin chia c? t?c VRE th?ng 06/2019.",
+    "gold": "MIXED",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Cho bi?t l?i nhu?n gi? l?i VRE cu?i n?m 2019 r?i t?m c?c b?i tin chia c? t?c VRE th?ng 06/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.4048452113694377
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.1682756039410022
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.1076685427404648
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.1004720862634036
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.09007608471823586
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.0730605548360319
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.05560191613142405
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Cho bi?t l?i nhu?n gi? l?i VRE cu?i n?m 2019 r?i t?m c?c b?i tin chia c? t?c VRE th?ng 06/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.6028585219510849,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.6028585219510849,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.592682183233679,
+          "best_example": {
+            "id": "S5-L-089",
+            "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.592682183233679,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.5898611309116956,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.5898611309116956,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.5712024617539593,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.5712024617539593,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5290383921989851,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5290383921989851,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5204055982075874,
+          "best_example": {
+            "id": "S5-L-023",
+            "text": "Trich nguyen van muc tieu su ong Minh trong BCTN ITD nam 2023 da chi dinh.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5204055982075874,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4771278320898629,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4771278320898629,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-029",
+          "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.6028585219510849,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-089",
+          "text": "Cho biet loi nhuan sau thue CTG nam 2024 va liet ke bai tin CTG trong thang 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.592682183233679,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-062",
+          "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+          "intent_label": "TREND",
+          "score": 0.5898611309116956,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-065",
+          "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+          "intent_label": "TREND",
+          "score": 0.5853144353732082,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-074",
+          "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.5799699239997451,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Cho bi?t l?i nhu?n gi? l?i VRE cu?i n?m 2019 r?i t?m c?c b?i tin chia c? t?c VRE th?ng 06/2019."
+    ],
+    "component_probabilities": []
+  }
+]

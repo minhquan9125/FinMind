@@ -105,3 +105,18 @@ Kết quả: classifier dev 66/84 (baseline 34/84), regression 35/47 (22/47),
 previous-check đã xem 24/28 (19/28). Còn T038 đúng→sai; centroid còn 3 ca hồi quy.
 Không tự hạ điều kiện hoặc áp ngưỡng cũ: dừng ở checkpoint sau bước 3.
 Xem `docs/sprint5/S5-WBS04.1-scorer-results.md`. Chưa thay matcher/router chính thức.
+
+## Cập nhật sau kiểm tra đơn/kết hợp — 12/11/2026
+
+Giữ nguyên điểm dừng của raw linear/centroid ở trên. Sau đó thử riêng lớp quyết
+định theo từng yêu cầu: V1 thất bại, V2 sửa T038 nhưng còn lỗi kiểm soát, V3 thêm
+quy tắc hẹp ROLE/REPORT theo taxonomy. Không đổi training/gold/head/ngưỡng cũ.
+
+V3 đạt 41/47 hồi quy, 32/32 kiểm soát, không làm sai câu linear đang đúng trên
+các tập đã đo. Đóng băng rồi kiểm tra 28 câu mới: 25/28; giữ nguyên ba lỗi sau
+phép đo. Bộ 42 câu từng mới ở V2 được ghi rõ là đã xem khi làm V3. Lượt lỗi mã
+hóa và lượt sửa UTF-8 đều được giữ lại, không đổi model/rules giữa hai lượt.
+
+Đầu ra vẫn là offline advisory: resolution.confidence=null, raw ranking không
+đổi. Chưa thực hiện calibration/coverage hoặc tích hợp 04.2; các việc này cần
+hợp đồng tiêu thụ evidence riêng. Xem báo cáo objective-results và payload T038.

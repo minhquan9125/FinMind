@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "decisions_replayed": 278,
+  "final_check_correct": {
+    "original": 18,
+    "linear": 23,
+    "consensus": 25
+  },
+  "max_score_difference": 6.106226635438361e-16,
+  "raw_rankings_preserved": true,
+  "frozen_sources_unchanged": true,
+  "no_refit": true,
+  "confidence_not_fabricated": true,
+  "invalid_encoding_attempt_retained_and_excluded": true,
+  "semantic_rule_replay_is_not_independent_label_review": true
+}
