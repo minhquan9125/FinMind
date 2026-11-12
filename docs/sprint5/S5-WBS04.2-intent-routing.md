@@ -1,8 +1,9 @@
 # S5-WBS04.2 — Ngưỡng tin cậy và quy tắc chọn nhánh
 
-Ngày: 11/11/2026. Đầu vào: code Nhân ở `81fa5541`, `IntentMatcher` của 04.1
-và thư viện `s5-intent-library-v1` của 03.3. Đã đọc lại implementation và hợp đồng
-04.1 trước khi bổ sung policy. Không sửa matcher, mẫu, vector hay taxonomy của Nhân.
+Khởi tạo: 11/11/2026; cập nhật review: **12/11/2026**, trên code Nhân `c37060d6`.
+Dùng `IntentMatcher` của 04.1 và thư viện `s5-intent-library-v1` của 03.3.
+Đã đối chiếu cả classifier/resolution mới. Không sửa matcher, mẫu, vector,
+classifier/head hoặc taxonomy của Nhân.
 
 Sản phẩm: cấu hình/bảng mapping, hàm quyết định và kiểm thử đủ 5 kết quả yêu cầu.
 Hàm trả route/tín hiệu, không chạy retrieval hoặc AI fallback. Việc nối factory
@@ -27,14 +28,17 @@ graph_score/content_score của route model cũ.
 | NEWS | NEWS | VECTOR |
 | CHUC_VU | PERSON_ROLE | GRAPH |
 | QUAN_HE | ENTITY_RELATION | GRAPH |
-| KET_HOP | MIXED | BOTH |
+| KET_HOP | MIXED | Theo thành phần câu hỏi đã xác minh; thiếu thì fallback |
 | XU_HUONG | TREND | BOTH |
 
 Thực tế có **7 nhãn**, tương ứng đủ taxonomy Nhân đã bàn giao. Hàm nhận các alias
 cố định trong đề bài để chạy ca mẫu; đầu ra giữ ID chuẩn, không đổi ID trong thư viện.
-MIXED và TREND đủ ngưỡng đi BOTH theo **quyết định policy của yêu cầu lần này**;
-không sửa định nghĩa ý định của 03.1. Không sao chép component_intents của mẫu
-gần nhất thành các thành phần đã xác minh của câu hỏi mới.
+Review 12/11 thay quy tắc MIXED mặc định BOTH của bản đầu. Truyền
+`query_components` và `query_components_confirmed=True` từ bộ phân tích câu hỏi
+đã xác minh: tất cả cần VECTOR thì VECTOR, tất cả cần GRAPH thì GRAPH, cần cả hai
+thì BOTH. TREND vẫn giữ mapping đã giao. Thiếu thành phần được xác minh thì trả
+NEED_FALLBACK/MIXED_COMPONENTS_REQUIRED; không sao chép component_intents của mẫu
+gần nhất hoặc suy thành phần chỉ từ nhiều nhãn gần điểm nhau.
 
 ## 2. Ba chốt chặn theo thứ tự
 
@@ -61,7 +65,15 @@ Server chỉ đặt false với yêu cầu không cần công ty, ví dụ tin t
 
 ### Chốt 2 — NEED_FALLBACK
 
-Sau khi scope hợp lệ, lấy top_1/top_2 từ **hai nhóm khác nhau** trong `groups`
+Sau khi scope hợp lệ, **bắt buộc** hai khóa `ranking_policy` và `score_type`
+không thiếu/null/rỗng, phải đúng cặp được hỗ trợ. Không có giá trị mặc định.
+Payload hỏng ném `IntentClassificationContractError` với `code`, không tạo route
+hay payload gọi AI. Caller xử lý lỗi contract riêng (không dùng catch-all để gọi
+fallback và ghi phân loại thành công). Đây là lỗi kỹ thuật, không phải ý định thứ tám
+hoặc một tuyến truy xuất mới.
+
+Với cặp `cosine-max-per-label-v1` / `COSINE_SIMILARITY_NOT_PROBABILITY`,
+lấy top_1/top_2 từ **hai nhóm khác nhau** trong `groups`
 đã được IntentMatcher xếp hạng. Không lấy hai `examples`, vì chúng có thể cùng nhãn.
 Điểm là cosine [-1,1], không phải xác suất. Không làm tròn điểm trước khi quyết định.
 
@@ -71,18 +83,23 @@ Sau khi scope hợp lệ, lấy top_1/top_2 từ **hai nhóm khác nhau** trong 
 | top_1 ≥ 0.65 và gap < 0.08 | SMALL_GAP |
 | top_1 < 0.65 và gap < 0.08 | LOW_CONFIDENCE_AND_SMALL_GAP |
 | Matcher ném lỗi/timeout | CLASSIFICATION_ERROR |
-| Output thiếu/sai, <2 nhóm, nhãn trùng/lạ, score sai kiểu/NaN/Inf, sai thứ tự hoặc ranking của câu khác | INVALID_CLASSIFICATION |
+| MIXED đủ ngưỡng nhưng thiếu thành phần query đã xác minh | MIXED_COMPONENTS_REQUIRED |
+| Classifier/evidence đúng contract nhưng chưa hiệu chỉnh | UNCALIBRATED_CLASSIFICATION |
+| Nhãn đầu base_ranking khác resolution.intent_label | LABEL_DISAGREEMENT |
 
 Tất cả trường hợp trên: decision=NEED_FALLBACK, need_fallback=true, route=null,
 fallback_task=S5-WBS07.2. Hòa điểm có gap=0 phải fallback, không suy thành MIXED.
 Đầu ra có `fallback_payload` gồm `question`, `scope`, `reason_code`,
 `allowed_labels`, `candidates` và `score_type`. `candidates` giữ tối đa **3 nhóm
 nhãn khác nhau** theo thứ tự matcher, mỗi nhóm có `rank`, `intent_label`, `score`;
-đây không phải 5 câu ví dụ gần nhất. Điểm cosine không được diễn giải là xác suất.
+đây không phải 5 câu ví dụ gần nhất. Loại điểm đi kèm candidates phải được giữ
+nguyên; cosine không được diễn giải là xác suất, probability chưa hiệu chỉnh
+không được gọi là độ tin cậy đã kiểm chứng.
 Chỉ truyền scope đã phân giải (công ty, kỳ, nguồn công ty CURRENT/CONTEXT), không
 chuyển toàn bộ lịch sử chat hoặc component_intents của ví dụ thành ý định câu mới.
-Matcher lỗi hoặc output không hợp lệ thì candidates rỗng; không chuyển nhãn/điểm
-chưa được kiểm tra. ASK_CLARIFICATION và SEARCH có fallback_payload=null.
+Matcher lỗi thì candidates rỗng. Output hỏng/nhãn trùng hoặc lạ, score sai kiểu,
+NaN/Inf, sai thứ tự hoặc ranking của câu khác là **lỗi contract**, không chuyển
+nhãn/điểm chưa được kiểm tra. ASK_CLARIFICATION và SEARCH có fallback_payload=null.
 Hàm thuần không được cung cấp question có thể trả question=null cho fixture;
 caller thực tế phải truyền câu hỏi không rỗng, hoặc dùng IntentRoutingPolicy.
 Không ép chọn top-1 hoặc route mặc định. Policy chỉ phát tín hiệu, không tự gọi
@@ -91,8 +108,9 @@ thành fallback, không tạo thêm thread hoặc bộ gọi AI trong task này.
 
 ### Chốt 3 — SEARCH với route chính thức
 
-Chỉ khi scope/ranking hợp lệ và **top_1 ≥ 0.65, gap ≥ 0.08** mới trả SEARCH,
-route theo bảng trên, need_fallback=false và gate=3. Giá trị bằng đúng ngưỡng
+Chỉ khi scope/ranking cosine hợp lệ và **top_1 ≥ 0.65, gap ≥ 0.08**, cùng đủ
+thành phần query nếu MIXED, mới trả SEARCH, route theo bảng trên,
+need_fallback=false và gate=3. Giá trị bằng đúng ngưỡng
 được chấp nhận. Chốt 1 ưu tiên hơn mọi lỗi/điểm phân loại; chốt 2 ưu tiên hơn mapping route.
 
 ## 3. Hàm sử dụng
@@ -105,7 +123,9 @@ Hàm thuần nhận kết quả có sẵn hoặc bộ input kiểm thử:
 from src.retrieval_orchestration.intent_routing import decide_intent_route
 
 result = decide_intent_route(
-    {"groups": [
+    {"ranking_policy": "cosine-max-per-label-v1",
+     "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+     "groups": [
         {"intent_label": "PERSON_ROLE", "score": 0.88},
         {"intent_label": "NEWS", "score": 0.48}
     ]},
@@ -136,7 +156,8 @@ chốt 1. Hàm thuần không thể hủy embedding nếu caller đã thực hi�
 
 Đầu ra có decision, route, need_fallback, fallback_task, gate, reason_code,
 scope (company_ticker/period/company_source), intent_label, top_1_score,
-top_2_score, score_gap, clarification_question. Chốt 1 không đọc/công bố score;
+top_2_score, score_gap, clarification_question, classification_evidence.
+Chốt 1 không đọc/công bố score;
 chốt 2 chưa xác nhận nhãn nên intent_label=null. Chỉ SEARCH có route chính thức.
 Đây là DTO policy mới, không thay enum `RouterOutput` hoặc API cũ.
 
@@ -148,7 +169,7 @@ Các điểm dưới đây do đề bài cung cấp, không phải phép đo l�
 |---|---|---|---|---|---|
 | 1 | CHUC_VU 0.88 | NEWS 0.48 | 0.40 | VCB | SEARCH / GRAPH |
 | 2 | BCTC_BCTN 0.91 | NEWS 0.41 | 0.50 | FPT | SEARCH / VECTOR |
-| 3 | KET_HOP 0.85 | NEWS 0.55 | 0.30 | FPT | SEARCH / BOTH |
+| 3 | KET_HOP 0.85 + thành phần đã xác minh PERSON_ROLE, REPORT_CONTENT | NEWS 0.55 | 0.30 | FPT | SEARCH / BOTH |
 | 4 | BCTC_BCTN 0.85 | Không cần đọc | Không cần đọc | null | ASK_CLARIFICATION |
 | 5 | CHUC_VU 0.68 | NEWS 0.64 | 0.04 | VCB | NEED_FALLBACK=true, route=null |
 
@@ -208,10 +229,74 @@ Nếu kết quả lỗi/không hợp lệ/timeout thì không tự chuyển thà
 nhãn đầu làm đáp án. Việc gọi provider, kiểm tra response và nối WebChat thuộc
 bước tích hợp 07.2, chưa được thực thi hay nghiệm thu trong policy 04.2 này.
 
-Kiểm chứng sau bổ sung: **119 test passed**, gồm hồi quy matcher/library/dataset
+Kiểm chứng lịch sử ngày 11/11 sau bổ sung: **119 test passed**, gồm hồi quy matcher/library/dataset
 và kiểm payload, alias, scope kế thừa, lỗi matcher, JSON hữu hạn, không sửa input.
 Replay điểm model thật trong results.jsonl của mục 5 kiểm được **66 quyết định**:
 50 NEED_FALLBACK đều giữ đúng top 3; 15 ASK_CLARIFICATION và 1 SEARCH không có
 payload. Một ca thiếu scope tiếp tục bỏ qua. Các decision/route/reason_code giữ
 nguyên; đây là replay điểm cũ, không phải lượt inference mới hoặc test AI fallback.
 Báo cáo model thật cũ giữ nguyên để bảo toàn bằng chứng tại thời điểm chạy.
+
+## 7. Contract consumer sau review 12/11
+
+| Đầu vào | Xử lý |
+|---|---|
+| Metadata thiếu/null/rỗng, cặp policy/type không khớp, nhãn/score/rank hỏng | Ném IntentClassificationContractError; không tạo tín hiệu gọi AI |
+| Cosine max-per-label hợp lệ | Xét ngưỡng 0,65/0,08 như mục 2 |
+| intent-linear-v1 + CLASSIFIER_PROBABILITY_UNCALIBRATED | NEED_FALLBACK/UNCALIBRATED_CLASSIFICATION; không xét ngưỡng cosine |
+| intent-request-objectives-v1..v4 hoặc intent-request-consensus-v1 + DECISION_EVIDENCE_NO_CONFIDENCE | confidence phải khai báo null; cần fallback xác minh |
+| Envelope gồm base_ranking và resolution, nhãn khác nhau | NEED_FALLBACK/LABEL_DISAGREEMENT; giữ cả hai nhãn và lý do |
+
+Envelope hợp lệ có dạng `{"base_ranking": {...}, "resolution": {...}}`;
+hai phần tự khai báo metadata riêng. Không trộn thêm groups/intent_label/policy
+ở cấp ngoài để tạo hai cách diễn giải. Consumer không sửa ranking gốc.
+
+`classification_evidence` giữ snapshot `base_ranking` (tối đa 3 nhóm nhãn/điểm gốc),
+`resolution` (nhãn cuối, confidence=null, reason, component_labels) và
+`label_disagreement`. Snapshot này cũng có trong fallback_payload để 07.2 thấy
+cả hai nguồn quyết định. Không gán điểm của nhãn gốc cho nhãn cuối. Khi đi nhánh
+chưa hiệu chỉnh, intent_label/top_1_score/top_2_score/score_gap ở đầu ra policy
+đều null; điểm gốc chỉ được giữ ở đúng phần evidence/candidates với score_type gốc.
+Ngay cả hai nhãn trùng nhau cũng chưa đủ để SEARCH khi confidence còn null.
+
+Đây là contract phía 04.2 để xử lý an toàn đầu ra mới, không thay đổi trạng thái
+duyệt/calibration của classifier Nhân hoặc tự kết luận tích hợp WebChat đã xong.
+
+Caller cần tách lỗi dữ liệu khỏi nhánh fallback:
+
+```python
+from src.retrieval_orchestration.intent_routing import (
+    IntentClassificationContractError, decide_intent_route,
+)
+
+try:
+    result = decide_intent_route(producer_output, question=question, company_ticker="FPT")
+except IntentClassificationContractError as error:
+    # Trả lỗi contract theo API của caller; ghi error.code, không gọi AI ở đây.
+    raise
+# Chỉ result["need_fallback"] == True mới là dữ liệu bàn giao cho S5-WBS07.2.
+```
+
+Ví dụ MIXED có score cosine hợp lệ và đủ ngưỡng:
+
+```python
+result = decide_intent_route(
+    ranking, question=question, company_ticker="FPT",
+    query_components=["NUMERIC", "NEWS"], query_components_confirmed=True,
+)
+# SEARCH/VECTOR: hai mục tiêu đều dùng tài liệu.
+# PERSON_ROLE + ENTITY_RELATION -> GRAPH.
+# PERSON_ROLE + REPORT_CONTENT -> BOTH.
+```
+
+`query_components_confirmed` là xác nhận của caller đã phân giải mục tiêu câu
+hỏi; không lấy từ best_example hoặc tự bật vì cosine cao. Ít nhất hai nhãn thành
+phần khác nhau, không chứa MIXED; alias được chuẩn hóa. Dữ liệu thành phần đã
+xác nhận nhưng sai cấu trúc là lỗi contract. Chốt scope và ngưỡng cosine vẫn
+ưu tiên trước việc chọn tuyến theo thành phần.
+
+Kiểm chứng sau sửa review: **267 test ý định Sprint 5 qua**; bao gồm 105 test
+policy và test dùng trực tiếp resolution của Nhân. Bằng chứng mới trong
+`outputs/s5_wbs042_retest_20261112/fix01/`. Suite toàn dự án chưa chạy được vì
+thu thập test lỗi import `hoi`/`retrieval_flow` ở ba test chat/contracts cũ;
+không lấy 266 test này làm bằng chứng toàn ứng dụng qua hoặc calibration đạt.
