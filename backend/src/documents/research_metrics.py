@@ -30,6 +30,38 @@ def outcome(result):
     return 'OTHER'
 
 
+GROUNDING_CHECKS = ('citation_binding', 'extractive_claim_check', 'support_quote_check', 'numeric_source_check')
+B3_COMPONENTS = ('b3_evidence_gate', 'b3_answer_verification')
+
+
+def observed_details(result):
+    """Measured routing/grounding facts of one request. Only what the pipeline really reported:
+    no values are inferred, and the B3 gate/verifier are reported as off when the manifest says so."""
+    answer = result.get('answering') or {}
+    manifest = answer.get('manifest') or {}
+    components = manifest.get('components') or {}
+    router = result.get('hybrid_router') or {}
+    evidence_types = {}
+    for item in (result.get('evidence_pack') or {}).get('items') or []:
+        kind = item.get('source_type') if isinstance(item, dict) else None
+        evidence_types[kind or 'UNKNOWN'] = evidence_types.get(kind or 'UNKNOWN', 0) + 1
+    events = [e.get('event') for e in (answer.get('trace') or []) if isinstance(e, dict) and isinstance(e.get('event'), str)][:30]
+    rejection = next((e.get('reason_code') for e in (answer.get('trace') or [])
+                      if isinstance(e, dict) and e.get('event') == 'draft_bound_to_source_row'), None)
+    return {
+        'router': {'route': router.get('route') if isinstance(router.get('route'), str) else None,
+                   'adapters': [t.get('adapter') for t in router.get('tasks', []) if isinstance(t, dict) and isinstance(t.get('adapter'), str)][:10],
+                   'graph_calls': router.get('graph_calls') if type(router.get('graph_calls')) is int else None,
+                   'vector_calls': router.get('vector_calls') if type(router.get('vector_calls')) is int else None} if router else None,
+        'evidence_types': evidence_types,
+        'grounding': {'status': answer.get('status'), 'reason_code': answer.get('reason_code'),
+                      'citations': len(answer.get('citations') or []), 'response_mode': manifest.get('response_mode'),
+                      'checks': {k: components[k] for k in GROUNDING_CHECKS if type(components.get(k)) is bool},
+                      'draft_rejected_reason': rejection, 'events': events} if answer else None,
+        'b3': {k: components[k] for k in B3_COMPONENTS if type(components.get(k)) is bool},
+    }
+
+
 class ResearchMetrics:
     def __init__(self, root):
         self.path = Path(root) / 'research-metrics.sqlite'
@@ -82,6 +114,7 @@ class ResearchMetrics:
                 'evidence_count':len(pack.get('items') or []),'sources':sources,
                 'timings':{k:v for k,v in (result.get('timings') or {}).items() if k in ('retrieval_seconds','answer_seconds','total_seconds') and type(v) in (int,float)},
                 'components':{k:v for k,v in (answer.get('manifest') or {}).get('components',{}).items() if type(v) is bool}}
+            details.update(observed_details(result))
             conn.execute('INSERT OR IGNORE INTO requests(id,created_at,duration_ms,outcome,companies,response_mode,calls,known_input,known_output,known_total,unknown_calls,details) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',
                 (ident, created_at, duration_ms, 'ERROR' if failed else outcome(result),
                  json.dumps((result.get('scope') or {}).get('companies', [])),
@@ -111,7 +144,27 @@ class ResearchMetrics:
                 'tracking_started_at':tracking,'total':sum(counts.values()),'outcomes':counts,
                 'input_tokens':usage[0],'output_tokens':usage[1],'total_tokens':usage[2],
                 'unknown_calls':usage[3], 'models':models, 'scope':'LIVE_WEB_CHAT_GEMINI_GENERATION',
-                'recent':self.list(limit=5)['items']}
+                'recent':self.list(limit=5)['items'], 'pipeline':self.rollup(start,end)}
+
+    def rollup(self, start, end):
+        """Today's routing and grounding counts, from the per-request details only."""
+        with self.connect() as conn:
+            rows = conn.execute('SELECT details FROM requests WHERE created_at>=? AND created_at<? ORDER BY created_at DESC',
+                                (start.isoformat(), end.isoformat())).fetchall()
+        routes, graph_calls, vector_calls, with_answer, rejected, observed, b3 = {}, 0, 0, 0, 0, 0, {}
+        for (raw,) in rows:
+            try: detail = json.loads(raw)
+            except ValueError: continue
+            router, grounding = detail.get('router') or {}, detail.get('grounding') or {}
+            if router or grounding: observed += 1
+            b3 = b3 or detail.get('b3') or {}
+            if router.get('route'): routes[router['route']] = routes.get(router['route'], 0) + 1
+            graph_calls += router.get('graph_calls') or 0
+            vector_calls += router.get('vector_calls') or 0
+            with_answer += grounding.get('status') == 'DRAFT_READY'
+            rejected += bool(grounding.get('draft_rejected_reason'))
+        return {'requests_observed': observed, 'routes': routes, 'graph_calls': graph_calls, 'vector_calls': vector_calls,
+                'grounded_answers': with_answer, 'drafts_rejected_by_source_check': rejected, 'b3': b3}
 
     def list(self, offset=0, limit=30, *, outcome_filter=None, company=None, day=None):
         where=[];args=[]

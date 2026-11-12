@@ -1,4 +1,5 @@
 import { getOperations, localTime, STATE_LABELS } from "./operationsApi.js";
+import { pipelineServices } from "./traceMetrics.js";
 
 export function overviewData(operations, journal = null) {
   const storage = operations.storage;
@@ -35,9 +36,7 @@ export function overviewData(operations, journal = null) {
       text: `${e.actor} · ${STATE_LABELS[e.action] || ({ SOURCE_CONFIG: "Cập nhật cấu hình nguồn", RETRY_INDEX: "Thử nạp lại", INTERRUPT: "Ngắt lần chạy" })[e.action] || e.action}`,
       resource: e.resource })),
     activityDate: "Giờ Việt Nam",
-    services: [...measured, { id: "telemetry", name: "Telemetry", tone: telemetry ? "success" : "warning", label: telemetry ? "Đã kết nối thống kê" : "Chưa đọc được thống kê", desc: "Ghi nhận truy vấn Chat và token Gemini trên máy này." }, ...[
-      ["graph", "Graph Service"], ["gate", "Evidence Gate"], ["verifier", "Verifier"],
-    ].map(([id, name]) => ({ id, name, label: "Chưa triển khai giám sát", tone: "neutral", desc: "Chưa có phép đo vận hành để xác nhận trạng thái tại đây." }))],
+    services: [...measured, { id: "telemetry", name: "Telemetry", tone: telemetry ? "success" : "warning", label: telemetry ? "Đã kết nối thống kê" : "Chưa đọc được thống kê", desc: "Ghi nhận truy vấn Chat và token Gemini trên máy này." }, ...pipelineServices(telemetry?.pipeline)],
   };
 }
 

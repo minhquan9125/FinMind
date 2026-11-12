@@ -10,6 +10,7 @@ const METRIC_LABELS = {
   PARENT_NET_PROFIT: 'LNST cổ đông công ty mẹ', CASH_FLOW_OPERATING: 'Dòng tiền kinh doanh',
   CASH_FLOW_INVESTING: 'Dòng tiền đầu tư', CASH_FLOW_FINANCING: 'Dòng tiền tài chính',
   CHARTER_CAPITAL: 'Vốn điều lệ', TOTAL_LIABILITIES: 'Tổng nợ phải trả', TOTAL_EQUITY: 'Vốn chủ sở hữu',
+  LAST_PRICE: 'Giá gần nhất',
 };
 const SOURCE_LABELS = { BCTC: 'Báo cáo tài chính', NEWS: 'Tin tức', PRICE: 'Giá cổ phiếu',
   BCTN: 'Báo cáo thường niên', MARKET_ANALYSIS: 'Phân tích thị trường' };
@@ -23,6 +24,8 @@ function periodLabel(value) {
   const quarter = raw.match(/^(\d{4})-Q([1-4])$/);
   if (quarter) return `Quý ${quarter[2]}/${quarter[1]}`;
   if (/^\d{4}$/.test(raw)) return `Năm ${raw}`;
+  const day = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (day) return `${day[3]}/${day[2]}/${day[1]}`;
   return raw;
 }
 
@@ -56,13 +59,18 @@ const EXPLANATIONS = {
 };
 
 /** Lời giải thích phạm vi hỗ trợ cho các kết quả "không trả lời được"; null nếu không cần. */
+const NEWS_NO_DATA = 'Kho tin tức chưa có bài phù hợp với mã và khoảng thời gian bạn hỏi. '
+  + 'Dữ liệu tin có thể chưa cập nhật tới ngày gần đây; thử hỏi một ngày hoặc một tháng cụ thể.';
+
 export function outcomeNotice(result) {
   if (!result) return null;
-  const status = result.status;
-  if (result.reason_code && EXPLANATIONS[result.reason_code] && status !== 'EVIDENCE_READY') {
-    return EXPLANATIONS[result.reason_code];
+  const { status, reason_code: reason } = result;
+  if (status === 'NO_DATA' && (!reason || reason === 'NO_DATA')) {
+    return result.scope?.source_type === 'NEWS' ? NEWS_NO_DATA : EXPLANATIONS.NO_DATA;
   }
-  if (['NO_DATA', 'UNSUPPORTED', 'BUDGET_EXCEEDED'].includes(status)) return EXPLANATIONS[status];
+  // A specific reason (e.g. PRICE_UNIT_UNVERIFIED) already has its own accurate backend message.
+  if (reason && EXPLANATIONS[reason] && status !== 'EVIDENCE_READY') return EXPLANATIONS[reason];
+  if (!reason && ['UNSUPPORTED', 'BUDGET_EXCEEDED'].includes(status)) return EXPLANATIONS[status];
   return null;
 }
 

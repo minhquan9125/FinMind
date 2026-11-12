@@ -65,6 +65,11 @@ class Settings(BaseSettings):
     research_warmup_enabled: bool = True
     research_warmup_timeout_seconds: float = Field(default=180.0, gt=0, le=600, allow_inf_nan=False)
     gemini_api_key: SecretStr = SecretStr('')
+    # Extra keys of this team, comma or newline separated (GEMINI_API_KEYS). Used for failover
+    # rotation together with gemini_api_key; see b1_answering/providers/key_pool.py.
+    gemini_api_keys: SecretStr = SecretStr('')
+    # Encrypts keys added from the admin page (>= 16 chars). Not derived from the JWT secret on purpose.
+    gemini_keys_secret: SecretStr = SecretStr('')
     b1_gemini_free_tier_confirmed: bool = False
     admin_news_generation_timeout_seconds: float = Field(default=20.0, ge=1, le=120)
 

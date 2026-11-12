@@ -231,3 +231,28 @@ def test_shared_release_alias_requires_exact_frozen_parent_and_same_origin(monke
         asyncio.run(_annual_binding(Conn(), {**row, 'document_id':str(uuid4())}, locator, CID, {}))
     with pytest.raises(ReconstructionError, match='No registered source-release lineage'):
         asyncio.run(_annual_binding(Conn(), row, locator, str(uuid4()), {}))
+
+
+def test_processed_article_miss_falls_through_to_the_general_news_path():
+    class Retriever:
+        async def retrieve(self, question, scope):
+            return {'items': []}
+    news = AsyncMock()
+    news.answer.return_value = {'status': 'NO_DATA', 'reason_code': 'NO_DATA', 'scope': {}}
+    service = LiveResearchService(Retriever(), admin_news=news)
+    result = asyncio.run(service.answer('Tin tức FPT mới nhất', 'test'))
+    news.answer.assert_awaited()
+    # The admin-article NO_DATA must not be what the user sees as the final answer.
+    assert result['scope'].get('source_type') == 'NEWS'
+    assert result['scope'].get('companies') == ['FPT']
+
+
+def test_processed_article_answer_is_still_returned_when_it_has_content():
+    class Retriever:
+        async def retrieve(self, question, scope):
+            raise AssertionError('general path must not run')
+    news = AsyncMock()
+    news.answer.return_value = {'status': 'EVIDENCE_READY', 'reason_code': 'X', 'scope': {'source_type': 'NEWS'}}
+    service = LiveResearchService(Retriever(), admin_news=news)
+    result = asyncio.run(service.answer('Theo bài FPT, lợi nhuận quý 2 là bao nhiêu?', 'test'))
+    assert result['status'] == 'EVIDENCE_READY'

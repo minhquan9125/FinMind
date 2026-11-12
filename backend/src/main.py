@@ -82,14 +82,18 @@ async def lifespan(app: FastAPI):
                     except Exception:logger.warning('admin_job_recovery_unavailable')
                     await asyncio.sleep(15)
             recovery_task=asyncio.create_task(recover_queue(),name='admin-job-recovery')
+            from .core.db import get_pool
+            from .documents.shared_serving import refresh_loop
+            serving_task=asyncio.create_task(refresh_loop(get_pool),name='shared-serving-corpus')
             app.state.research_warmup_task = warmup_task
             await asyncio.sleep(0)
             try:
                 yield
             finally:
-                recovery_task.cancel()
-                try:await recovery_task
-                except asyncio.CancelledError:pass
+                for background in (recovery_task, serving_task):
+                    background.cancel()
+                    try:await background
+                    except asyncio.CancelledError:pass
                 # Keep the event loop and DB pool alive until bounded warmup finishes.
                 await warmup_task
     finally:

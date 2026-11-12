@@ -1,9 +1,10 @@
 import json
 import os
 import logging
-from typing import Any, Dict, Optional
+from typing import Any, Callable, Dict, Optional, Sequence
 import httpx
 from ..core.policy import Limits
+from .key_pool import KeyPool
 
 MAX_RESPONSE_BYTES = 1024 * 1024
 
@@ -14,34 +15,52 @@ class GeminiError(Exception):
         self.code = code
 
 
+class _KeyRejected(Exception):
+    """This key was refused before any generation ran (quota or credentials)."""
+
+    def __init__(self, quota: bool):
+        super().__init__("key rejected")
+        self.quota = quota
+
+
 class GeminiProvider:
     def __init__(
         self,
         limits: Limits,
         *,
         api_key: Optional[str] = None,
+        api_keys: Optional[Sequence[str]] = None,
+        key_source: Optional[Callable[[], Any]] = None,
         free_tier_confirmed: bool = False,
         transport: Optional[httpx.AsyncBaseTransport] = None,
     ):
         if not isinstance(limits, Limits):
             raise GeminiError("INVALID_LIMITS")
         self.limits = limits
-        key = api_key if api_key is not None else os.environ.get("GEMINI_API_KEY")
-        if not isinstance(key, str) or not key.strip() or any(c in key for c in "\r\n"):
+        if api_keys is not None:
+            keys = [k.strip() for k in api_keys if isinstance(k, str) and k.strip()]
+        else:
+            key = api_key if api_key is not None else os.environ.get("GEMINI_API_KEY")
+            if not isinstance(key, str) or not key.strip() or any(c in key for c in "\r\n"):
+                raise GeminiError("MISSING_API_KEY")
+            keys = [key]
+        if not keys or any(any(c in k for c in "\r\n,;") for k in keys):
             raise GeminiError("MISSING_API_KEY")
         confirmed = (free_tier_confirmed is True) or os.environ.get("B1_GEMINI_FREE_TIER_CONFIRMED") == "1"
         if not confirmed:
             raise GeminiError("FREE_TIER_NOT_CONFIRMED")
-        self._api_key = key
+        self.pool = KeyPool(keys)
+        # Optional callable returning (keys, meta): lets keys be added or removed while running.
+        self._key_source = key_source
         self._transport = transport
         self._base_url = f"https://generativelanguage.googleapis.com/v1beta/models/{limits.model}"
 
     def __repr__(self) -> str:
         return f"GeminiProvider(model={self.limits.model!r})"
 
-    def _client(self) -> httpx.AsyncClient:
+    def _client(self, key: str) -> httpx.AsyncClient:
         timeouts = httpx.Timeout(self.limits.read_timeout_seconds, connect=10.0, write=10.0, pool=10.0)
-        headers = {"x-goog-api-key": self._api_key, "content-type": "application/json"}
+        headers = {"x-goog-api-key": key, "content-type": "application/json"}
         return httpx.AsyncClient(
             transport=self._transport,
             timeout=timeouts,
@@ -51,8 +70,42 @@ class GeminiProvider:
         )
 
     async def _post(self, path: str, payload: Dict[str, Any]) -> bytes:
+        """Try keys in rotation. Only a rejection before any generation (quota or credentials)
+        moves on to the next key; timeouts, 5xx and bad bodies are reported as they are."""
+        self._sync_keys()
+        tried: list = []
+        last = GeminiError("RATE_LIMITED")
+        while True:
+            key = self.pool.acquire(exclude=tried)
+            if key is None:
+                raise last
+            tried.append(key)
+            try:
+                body = await self._post_with(key, path, payload)
+            except _KeyRejected as rejected:
+                (self.pool.quota_exhausted if rejected.quota else self.pool.invalid)(key)
+                last = GeminiError("RATE_LIMITED" if rejected.quota else "GEMINI_UNAVAILABLE")
+                logging.getLogger(__name__).warning(
+                    'Gemini key %d/%d %s; %s', self.pool.position(key), len(self.pool),
+                    'is out of quota' if rejected.quota else 'was rejected',
+                    'trying the next key' if len(tried) < len(self.pool) else 'no key left')
+                continue
+            self.pool.success(key)
+            return body
+
+    def _sync_keys(self) -> None:
+        if self._key_source is None:
+            return
+        try:
+            keys, meta = self._key_source()
+        except Exception:
+            return                       # a broken key store never blocks the keys already in use
+        if keys:
+            self.pool.sync(keys, meta)
+
+    async def _post_with(self, key: str, path: str, payload: Dict[str, Any]) -> bytes:
         url = f"{self._base_url}:{path}"
-        async with self._client() as client:
+        async with self._client(key) as client:
             try:
                 req = client.build_request("POST", url, json=payload)
                 resp = await client.send(req, stream=True)
@@ -78,12 +131,16 @@ class GeminiProvider:
                 await resp.aclose()
 
         if resp.status_code == 429:
-            raise GeminiError("RATE_LIMITED")
+            raise _KeyRejected(quota=True)
+        if resp.status_code in (401, 403):
+            raise _KeyRejected(quota=False)
+        if resp.status_code == 400 and b"API_KEY_INVALID" in bytes(body):
+            raise _KeyRejected(quota=False)
         if resp.status_code != 200:
             logging.getLogger(__name__).warning('Gemini %s returned HTTP %d', path, resp.status_code)
             try:
                 error = json.loads(bytes(body)).get('error', {})
-                detail = str(error.get('message', '')).replace(self._api_key, '[REDACTED]')[:400]
+                detail = str(error.get('message', '')).replace(key, '[REDACTED]')[:400]
                 logging.getLogger(__name__).warning('Gemini error %s: %s', error.get('status','UNKNOWN'), detail)
             except (ValueError, TypeError, AttributeError):
                 pass
@@ -232,3 +289,19 @@ class GeminiProvider:
         ver = data.get("modelVersion")
         model_version = ver.strip() if isinstance(ver, str) and ver.strip() else None
         return {"payload": payload, "usage": usage, "model_version": model_version}
+
+
+async def probe_key(key: str, limits: Optional[Limits] = None, transport: Optional[httpx.AsyncBaseTransport] = None) -> str:
+    """Check a key without generating anything (countTokens). One of OK, QUOTA, INVALID, UNAVAILABLE.
+
+    QUOTA means the key is valid but out of quota right now; INVALID means Google refused it."""
+    limits = limits or Limits.load()
+    provider = GeminiProvider(limits, api_key=key, free_tier_confirmed=True, transport=transport)
+    body = {"generateContentRequest": {"model": f"models/{limits.model}", "contents": [{"parts": [{"text": "ping"}]}]}}
+    try:
+        await provider._post_with(key, "countTokens", body)
+    except _KeyRejected as rejected:
+        return "QUOTA" if rejected.quota else "INVALID"
+    except GeminiError:
+        return "UNAVAILABLE"
+    return "OK"

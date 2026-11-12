@@ -27,8 +27,8 @@ class BusyError(RuntimeError):
 
 class LiveCoordinator:
     def __init__(self, fetch, gate, repository, *, clock=time.monotonic,
-                 now=None, poll_seconds=5, lease_seconds=20, cache_seconds=60, manual_fetch=None, history_fetch=None):
-        for value, minimum in ((poll_seconds, 5), (lease_seconds, 15), (cache_seconds, 1)):
+                 now=None, poll_seconds=5, lease_seconds=20, cache_seconds=60, manual_fetch=None, history_fetch=None, max_wait_seconds=0):
+        for value, minimum in ((poll_seconds, 5), (lease_seconds, 15), (cache_seconds, 1), (max_wait_seconds, 0)):
             if type(value) not in (int, float) or not math.isfinite(value) or value < minimum:
                 raise ValueError("Cấu hình thời gian không hợp lệ.")
         self.fetch, self.gate, self.repository = fetch, gate, repository
@@ -38,6 +38,9 @@ class LiveCoordinator:
         self.clock = clock
         self.now = now or (lambda: datetime.now(VN))
         self.poll_seconds, self.lease_seconds, self.cache_seconds = poll_seconds, lease_seconds, cache_seconds
+        # Seconds a user-initiated lookup may queue behind another fetch instead of failing at once.
+        # 0 keeps the old fail-fast behaviour; the per-source spacing and budget are never relaxed.
+        self.max_wait_seconds = max_wait_seconds
         self._lock, self._fetch_lock = threading.RLock(), threading.Lock()
         self._viewers = {}
         self._overlays = OrderedDict()
@@ -84,6 +87,25 @@ class LiveCoordinator:
             raise BusyError(wait)
         # Failed requests retain their reservation, and changing ticker never resets it.
         self._calls.append(current)
+
+    def _acquire_fetch(self, end):
+        """Take the single fetch slot; queue for it until `end` when waiting is enabled."""
+        if self._fetch_lock.acquire(blocking=False):
+            return True
+        remaining = end - self.clock()
+        return remaining > 0 and self._fetch_lock.acquire(timeout=remaining)
+
+    def _wait_turn(self, end):
+        """Reserve a source call, sleeping until the existing spacing allows it, never past `end`."""
+        while True:
+            try:
+                with self._lock:
+                    self._reserve()
+                return
+            except BusyError as exc:
+                if self.clock() + exc.wait_seconds > end:
+                    raise
+                time.sleep(exc.wait_seconds)
 
     def _previous(self, symbol):
         data = self.repository.get_ohlcv(symbol, 250)
@@ -132,9 +154,12 @@ class LiveCoordinator:
                     continue
         return accepted
 
-    def _request(self, symbols, automatic):
-        with self._lock:
-            self._reserve()
+    def _request(self, symbols, automatic, wait_until=None):
+        if wait_until is None:
+            with self._lock:
+                self._reserve()
+        else:
+            self._wait_turn(wait_until)
         try:
             result = (self.fetch if automatic else self.manual_fetch)(symbols)
             accepted = self._ingest(result, symbols, automatic)
@@ -166,16 +191,24 @@ class LiveCoordinator:
         finally:
             self._fetch_lock.release()
 
-    def refresh(self, symbol):
-        stock_symbol(symbol)
+    def _fresh_overlay(self, symbol):
         with self._lock:
             entry = self._overlays.get(symbol)
-            if entry and self.clock() - entry[3] < self.cache_seconds and datetime.fromisoformat(entry[2]).astimezone(VN).date() == self.now().astimezone(VN).date():
-                return self.read(symbol, 250)
-        if not self._fetch_lock.acquire(blocking=False):
+            return bool(entry and self.clock() - entry[3] < self.cache_seconds
+                        and datetime.fromisoformat(entry[2]).astimezone(VN).date() == self.now().astimezone(VN).date())
+
+    def refresh(self, symbol):
+        stock_symbol(symbol)
+        if self._fresh_overlay(symbol):
+            return self.read(symbol, 250)
+        end = self.clock() + self.max_wait_seconds
+        if not self._acquire_fetch(end):
             raise BusyError(self.poll_seconds)
         try:
-            self._request([symbol], False)
+            # Another request may have just fetched this symbol while we queued.
+            if self._fresh_overlay(symbol):
+                return self.read(symbol, 250)
+            self._request([symbol], False, wait_until=end if self.max_wait_seconds else None)
             return self.read(symbol, 250)
         finally:
             self._fetch_lock.release()
@@ -184,17 +217,25 @@ class LiveCoordinator:
         from .history import INDEX_NAMES, normalize_index_history
         if symbol not in INDEX_NAMES:
             raise ValueError("Chỉ số không được hỗ trợ.")
-        with self._lock:
-            cached = self._histories.get(symbol)
-            if cached and self.clock() - cached[1] < self.cache_seconds:
-                return cached[0]
+        def fresh():
+            with self._lock:
+                cached = self._histories.get(symbol)
+                return cached[0] if cached and self.clock() - cached[1] < self.cache_seconds else None
+        if (hit := fresh()) is not None:
+            return hit
         if self.history_fetch is None:
             raise RuntimeError("Chưa bật nguồn lịch sử chỉ số.")
-        if not self._fetch_lock.acquire(blocking=False):
+        end = self.clock() + self.max_wait_seconds
+        if not self._acquire_fetch(end):
             raise BusyError(self.poll_seconds)
         try:
-            with self._lock:
-                self._reserve()
+            if (hit := fresh()) is not None:
+                return hit
+            if self.max_wait_seconds:
+                self._wait_turn(end)
+            else:
+                with self._lock:
+                    self._reserve()
             try:
                 result = normalize_index_history(symbol, self.history_fetch(symbol))
             except Exception:
@@ -237,11 +278,21 @@ class LiveCoordinator:
                 pass
         if self.history_fetch is None:
             raise RuntimeError("Chưa bật nguồn lịch sử.")
-        if not self._fetch_lock.acquire(blocking=False):
+        end = self.clock() + self.max_wait_seconds
+        if not self._acquire_fetch(end):
             raise BusyError(self.poll_seconds)
         try:
-            with self._lock:
-                self._reserve()
+            if self.max_wait_seconds:
+                recheck = self.repository.runtime_read(symbol, "history")
+                try:
+                    if recheck and 0 <= (self.now() - datetime.fromisoformat(recheck["fetched_at"])).total_seconds() < self.cache_seconds:
+                        return self.read(symbol, 250)
+                except (KeyError, TypeError, ValueError):
+                    pass
+                self._wait_turn(end)
+            else:
+                with self._lock:
+                    self._reserve()
             try:
                 data = normalize_history(symbol, self.history_fetch(symbol))
                 self.repository.runtime_write(symbol, "history", data)

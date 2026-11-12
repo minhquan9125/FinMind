@@ -710,13 +710,16 @@ class DenseEvidenceRetriever:
 class LiveResearchService:
     execution_mode = 'LIVE'
 
-    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None, hybrid_router=None):
+    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None, hybrid_router=None,
+                 limits_source=None):
         self.retriever, self.provider = retriever, provider
         self.market = market
         self.admin_news = admin_news
         self.hybrid_router = hybrid_router
         self.limits = limits or Limits.load()
         self.budget = Budget(self.limits)
+        # Optional callable returning the limits to use for the next request (admin overrides).
+        self.limits_source = limits_source
         self.retrieval_timeout = retrieval_timeout
 
     def _source_reference(self, result, previous_result):
@@ -773,13 +776,28 @@ class LiveResearchService:
                                  'trace': [{'event': 'saved_source_reference'}]})
         return result
 
+    def _current_limits(self):
+        """Limits for this request: the admin overrides when configured, else the fixed ones."""
+        if self.limits_source is None:
+            return self.limits
+        try:
+            limits = self.limits_source()
+        except Exception:
+            return self.limits
+        provider = self.provider
+        from ..b1_answering.providers.gemini import GeminiProvider
+        if isinstance(provider, GeminiProvider):
+            provider.limits = limits           # keeps the HTTP timeout in step with the limits
+        return limits
+
     async def answer(self, question, session_id, context=None, *, previous_result=None, today=None):
         # The API caches this service. Never attach request usage to that shared
         # instance or reset it in place: concurrent users would share/reset it.
         # A shallow request worker keeps pooled retrievers/providers reusable,
         # while every route and fallback in this turn receives the same budget.
         worker = copy.copy(self)
-        worker.budget = Budget(self.limits)
+        worker.limits = self._current_limits()
+        worker.budget = Budget(worker.limits)
         result = await worker._answer_turn(question, session_id, context,
             previous_result=previous_result, today=today)
         if isinstance(result.get('answering'), dict):
@@ -812,7 +830,9 @@ class LiveResearchService:
         if self.admin_news is not None and not annual_requested(_fold(interpreted), context) and not (explicit_profile or bare_company):
             indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
                                                    limits=self.limits, budget=self.budget)
-            if indexed is not None: return indexed
+            # A processed-article lookup that finds nothing must not shadow the general news path
+            # (e.g. "tin tức FPT mới nhất" matches an FPT article only by ticker, not by content).
+            if indexed is not None and indexed.get('status') != 'NO_DATA': return indexed
         prior_scope = (previous_result or {}).get('scope') or {}
         # Recover only legacy, topic-less clarification state; never override an
         # explicitly active financial/news question or a different company.

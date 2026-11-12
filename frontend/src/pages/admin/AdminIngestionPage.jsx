@@ -4,6 +4,7 @@ import { Button, EmptyState, StatusBadge, Modal } from "../../shared/ui";
 import { authorizedHeaders } from "../../shared/api/authorization.js";
 import { retainApprovedSelection, toggleArticleSelection } from "./ingestionSelection.js";
 import { qualityLabel, reviewNote, replacementArticleId } from "./sourceQuality.js";
+import { withPipelineFlag, pipelineSummary, canActivate, pipelineResult, deleteResultMessage } from "./ingestionPipeline.js";
 
 async function api(path, method = "GET", body) {
   const response = await fetch(`/api/v1/admin/ingestion${path}`, {
@@ -21,7 +22,12 @@ async function api(path, method = "GET", body) {
       INCOMPLETE_SOURCE: "Nguồn còn thiếu tiêu đề, nội dung hoặc URL nên chưa thể duyệt.",
       SOURCE_TEXT_EXTRACTION_REQUIRED: "Phải đọc PDF / OCR ảnh để có nội dung chính trước khi duyệt hoặc tạo chunk.",
       NO_AUTOMATICALLY_HELD_ARTICLES: "Không còn bài bị giữ tự động để kiểm tra lại. Các bài do người duyệt giữ cần mở và xử lý riêng.",
-      INDEX_CHANGED_SINCE_BUILD: "Chỉ mục đã thay đổi sau khi tạo. Cần kiểm tra lại trước khi kích hoạt." };
+      INDEX_CHANGED_SINCE_BUILD: "Chỉ mục đã thay đổi sau khi tạo. Cần kiểm tra lại trước khi kích hoạt.",
+      INDEX_NOT_READY: "Lần lưu này chưa sẵn sàng để chuyển corpus.",
+      SHARED_BASE_CHANGED_REBUILD_REQUIRED: "Corpus nền đã thay đổi sau khi lưu. Cần tạo lại lần lưu mới.",
+      INDEX_STATE_CHANGED: "Trạng thái chỉ mục đã đổi. Làm mới rồi thử lại.",
+      ARTICLE_NOT_FOUND: "Bài này không còn tồn tại.",
+      ARTICLE_IN_INDEX_JOB: "Bài đang nằm trong lần lưu database chưa chuyển corpus nên chưa xóa được." };
     throw new Error(messages[data.detail] || (response.status === 401 ? "Phiên đăng nhập hết hạn." : response.status === 403 ? "Tài khoản không có quyền quản trị." : typeof data.detail === "string" ? data.detail : `Yêu cầu thất bại (${response.status})`));
   }
   return data;
@@ -97,6 +103,17 @@ export default function AdminIngestionPage() {
     catch (e) { setError(e.message || "Không kết nối được backend."); }
     finally { setBusy(false); }
   }
+  async function deleteArticles(ids) {
+    if (!ids.length) return;
+    const text = ids.length === 1 ? "Xóa bài đã duyệt này? Nội dung bị xóa khỏi hàng đợi và bài sẽ không được thu thập lại."
+      : `Xóa ${ids.length} bài đã duyệt? Nội dung bị xóa khỏi hàng đợi và các bài này sẽ không được thu thập lại.`;
+    if (!window.confirm(text)) return;
+    await action(async () => {
+      const result = await api("/articles/delete", "POST", { article_ids: ids });
+      setSelected(current => current.filter(id => !result.deleted.includes(id)));
+      setMessage(deleteResultMessage(result));
+    }, null);
+  }
   const running = jobs.some(j => ["RUNNING", "QUEUED"].includes(j.status));
   const latestIndexJob = jobs.find(j => j.kind === "INDEX");
   return <AdminLayout>
@@ -113,12 +130,16 @@ export default function AdminIngestionPage() {
         <label className="flex gap-2 text-sm"><input type="checkbox" checked={source.enabled} onChange={e => setSource({ ...source, enabled: e.target.checked })} />Bật lịch hằng ngày</label>
         <Button disabled={busy} onClick={() => action(() => api("/source", "PUT", source), "Đã lưu lịch. Scheduler phải đang chạy để thực thi.")}>Lưu cấu hình</Button>
         <Button disabled={busy || running} onClick={() => action(() => api("/crawl", "POST"), "Đã bắt đầu cào và tự đọc PDF/OCR. Bài đọc xong mới vào hàng đợi duyệt; bài đọc lỗi vào Cần kiểm tra.")}>Cào ngay</Button>
+        <Button disabled={busy || running} variant="secondary" onClick={() => action(() => api("/pipeline", "POST"), "Đã bắt đầu chạy: " + pipelineSummary(source) + ". Theo dõi ở Các lần chạy gần nhất.")}>Chạy toàn bộ ngay</Button>
       </div>
       <div className="flex flex-wrap gap-5 text-sm">
         <label className="flex gap-2"><input type="checkbox" checked={source.include_market} onChange={e => setSource({ ...source, include_market: e.target.checked })} />Gồm tin thị trường chung</label>
         <label className="flex gap-2"><input type="checkbox" checked={source.auto_approve} onChange={e => setSource({ ...source, auto_approve: e.target.checked })} />Tự động duyệt bài mới đạt kiểm tra nguồn</label>
+        <label className="flex gap-2"><input type="checkbox" checked={!!source.auto_index} onChange={e => setSource(withPipelineFlag(source, "auto_index", e.target.checked))} />Tự động tạo chunk, vector và lưu vào database sau khi duyệt</label>
+        <label className="flex gap-2"><input type="checkbox" checked={!!source.auto_activate} onChange={e => setSource(withPipelineFlag(source, "auto_activate", e.target.checked))} />Tự động chuyển corpus cho Chat sau khi lưu</label>
       </div>
       <label className="block text-sm">Mã cổ phiếu (cách nhau bằng dấu phẩy)<input className="mt-1 block w-full rounded border p-2" value={(source.symbols || []).join(",")} onChange={e => setSource({ ...source, symbols: e.target.value.toUpperCase().split(",") })} onBlur={() => setSource({ ...source, symbols: [...new Set(source.symbols.map(s => s.trim()).filter(Boolean))] })} /></label>
+      <p className="rounded-lg bg-slate-50 p-3 text-sm text-slate-700">Chuỗi tự động mỗi lần chạy: <strong>{pipelineSummary(source)}</strong>.{!source.auto_activate && source.auto_index ? " Lần lưu xong sẽ chờ bạn bấm Chuyển corpus." : ""} Hai ô tự động lưu database và chuyển corpus đang tắt thì không có gì tự đổi dữ liệu của Chat.</p>
       <p className="text-sm text-slate-500">Nguồn: FireAnt → tin theo các mã trên{source.include_market ? " và thị trường chung" : ""}. Đọc luân phiên từng mã, chống trùng URL. Giới hạn số bài là toàn lượt, không phải mỗi mã; không bảo đảm đủ toàn bộ lịch sử.</p>
       <p className="text-sm text-slate-500">Khi cào, hệ thống tự đọc PDF hoặc OCR ảnh nếu nội dung chính nằm trong tệp/hình. Chỉ bài có văn bản mới tới bước duyệt; đọc lỗi sẽ vào Cần kiểm tra. Bản OCR cần kiểm tra chữ và số liệu trước khi duyệt. Duyệt không tự tạo vector; bài Đã duyệt chỉ còn bước Tạo chunk & lưu dữ liệu.</p>
     </section>}
@@ -137,6 +158,7 @@ export default function AdminIngestionPage() {
         <Button variant="secondary" disabled={busy || running || !selectionInfo.approved_ids.length} onClick={() => setSelected([...selectionInfo.approved_ids])}>{(selectionInfo.counts.APPROVED || 0) > selectionInfo.selection_limit ? `Chọn ${selectionInfo.selection_limit} bài đầu đã duyệt` : "Chọn tất cả bài đã duyệt"}</Button>
         <Button variant="ghost" disabled={!selected.length || busy} onClick={() => setSelected([])}>Bỏ chọn tất cả</Button>
         <Button disabled={busy || running || !selected.length} onClick={() => action(() => api("/index", "POST", { article_ids: selected }), "Đã nhận yêu cầu nạp dữ liệu. Theo dõi trạng thái lần nạp ngay bên dưới.")}>Tạo chunk & lưu dữ liệu ({selected.length})</Button>
+        <Button variant="secondary" disabled={busy || running || !selected.length} onClick={() => deleteArticles(selected)}>Xóa bài đã chọn ({selected.length})</Button>
       </div>}</div>
       {articleStatus === "APPROVED" && <p className="text-sm text-slate-500">Mở lại từng bài để kiểm tra. Có thể chọn tất cả trên các trang rồi bỏ tick bài chưa muốn xử lý. Đang chọn {selected.length} bài, tối đa {selectionInfo.selection_limit} bài/lượt.</p>}
       {articleStatus === "APPROVED" && <p className="text-sm text-slate-500">Một lần bấm sẽ chia chunk, tạo vector, lưu vào dữ liệu chung và cho Chat sử dụng sau khi nạp xong.</p>}
@@ -152,7 +174,7 @@ export default function AdminIngestionPage() {
       {articles.length ? <div className="overflow-x-auto rounded-xl border bg-white"><table className="w-full text-left text-sm"><thead className="bg-slate-50"><tr><th className="p-3">Chọn</th><th className="p-3">Bài viết</th><th className="p-3">Trạng thái</th><th className="p-3">Chi tiết</th></tr></thead>
         <tbody>{articles.map(a => <tr key={a.id} className="border-t"><td className="p-3">{a.status === "APPROVED" ? <input aria-label={`Chọn ${a.title}`} type="checkbox" disabled={busy || running || !selectionInfo.approved_ids.includes(a.id) || (selected.length >= selectionInfo.selection_limit && !selected.includes(a.id))} checked={selected.includes(a.id)} onChange={e => setSelected(ids => toggleArticleSelection(ids, a.id, e.target.checked))} /> : "—"}</td>
           <td className="max-w-lg p-3"><p className="font-medium">{a.title || "Thiếu tiêu đề"}</p><p className="text-xs text-slate-500">{a.source} · {(a.symbols || []).join(", ") || "Tin thị trường chung"} · {a.published_at || "Chưa rõ ngày đăng"}</p></td><td className="p-3">{STATUS[a.status]}{(a.status === "QUARANTINED" || (a.status === "APPROVED" && a.quality_reasons?.some(code => ["OCR_REQUIRED", "ATTACHMENT_TEXT_REQUIRED"].includes(code)))) && <p className="mt-1 max-w-xs text-xs text-amber-800">{(a.quality_reasons || []).length ? a.quality_reasons.map(qualityLabel).join("; ") : "Đạt điều kiện mới — có thể kiểm tra lại"}</p>}</td>
-          <td className="p-3"><Button disabled={busy} variant="secondary" onClick={() => openSource(a.id)}>{a.status === "INDEXED" ? "Xem bài & chunk" : "Xem nguồn"}</Button></td></tr>)}</tbody></table></div>
+          <td className="p-3"><div className="flex flex-wrap gap-2"><Button disabled={busy} variant="secondary" onClick={() => openSource(a.id)}>{a.status === "INDEXED" ? "Xem bài & chunk" : "Xem nguồn"}</Button>{a.status === "APPROVED" && <Button disabled={busy || running} variant="ghost" onClick={() => deleteArticles([a.id])}>Xóa</Button>}</div></td></tr>)}</tbody></table></div>
         : <EmptyState title={`Chưa có bài trong mục ${STATUS[articleStatus] || "này"}`} description="Chọn mục khác để xem bài ở bước tương ứng." />}
       <div className="flex flex-wrap items-center justify-between gap-3 text-sm"><span>{articleTotal ? `${articleOffset+1}–${Math.min(articleOffset+50,articleTotal)} / ${articleTotal}` : "0 bài"}</span><div className="flex gap-2"><Button disabled={!articleOffset} onClick={() => setArticleOffset(n => Math.max(0,n-50))}>Trước</Button><Button disabled={articleOffset+50>=articleTotal} onClick={() => setArticleOffset(n => n+50)}>Sau</Button></div></div>
     </section>
@@ -188,7 +210,8 @@ export default function AdminIngestionPage() {
     </Modal>
     <section className="space-y-3"><h2 className="text-lg font-semibold">Các lần chạy gần nhất</h2>
       {jobs.map(j => <div key={j.id} className="space-y-2 rounded-xl border bg-white p-4"><div className="flex flex-wrap items-center justify-between gap-3"><div><StatusBadge tone={j.status === "FAILED" ? "error" : "neutral"}>{STATUS[j.status] || j.status}</StatusBadge><span className="ml-3 text-sm">{j.kind === "CRAWL" ? "Thu thập nguồn" : j.kind === "RECHECK" ? "Kiểm tra lại & OCR" : j.kind === "OCR" ? "Đọc PDF / OCR ảnh" : "Chunk và vector"} · {PHASE[j.details.phase] || "Đang đợi"}</span></div>
-        {["INDEX","CRAWL","OCR","RECHECK"].includes(j.kind) && ["FAILED","INDEXED","INTERRUPTED"].includes(j.status) && !j.details.recovery_job_id && <Button disabled={busy || running} onClick={() => action(() => api(`/jobs/${j.id}/resume`, "POST"), "Đã nhận yêu cầu tiếp tục. Nếu đã lưu manifest, hệ thống tiếp tục bước hoàn tất; lần ghi dở dùng mã mới để tránh xung đột.")}>Tiếp tục / chạy lại</Button>}</div>
+        {["INDEX","CRAWL","OCR","RECHECK"].includes(j.kind) && ["FAILED","INDEXED","INTERRUPTED"].includes(j.status) && !j.details.recovery_job_id && <Button disabled={busy || running} onClick={() => action(() => api(`/jobs/${j.id}/resume`, "POST"), "Đã nhận yêu cầu tiếp tục. Nếu đã lưu manifest, hệ thống tiếp tục bước hoàn tất; lần ghi dở dùng mã mới để tránh xung đột.")}>Tiếp tục / chạy lại</Button>}
+        {canActivate(j) && <Button disabled={busy || running} onClick={() => action(() => api(`/jobs/${j.id}/activate`, "POST"), "Đã chuyển corpus. Chat dùng dữ liệu mới.")}>Chuyển corpus</Button>}</div>
         {j.details.recovery_job_id && <p className="break-all text-xs text-slate-500">Đã chuyển sang lần chạy: {j.details.recovery_job_id}</p>}
         <p className="break-all font-mono text-xs text-slate-500">{j.id}</p><p className="text-sm">Bài mới: {j.details.new_articles ?? "—"} · Trùng: {j.details.duplicates ?? "—"} · Chunk: {j.details.chunks ?? "—"}</p>
         {j.details.shared_chunk_count > 0 && <p className="text-sm text-blue-700">Dữ liệu tìm kiếm chung: {j.details.shared_chunk_count.toLocaleString("vi-VN")} chunk</p>}
@@ -205,6 +228,7 @@ export default function AdminIngestionPage() {
             action(() => api(`/jobs/${j.id}/interrupt`, "POST"), "Đã yêu cầu ngắt job; phiên dữ liệu đang phục vụ được giữ nguyên.");
         }}>Ngắt / giải phóng job bị treo</Button>}
         {j.kind !== "RECHECK" && j.details.errors?.length > 0 && <p className="text-sm text-red-700">{j.details.errors.length} bài thu thập lỗi; xem lại lượt chạy.</p>}
+        {pipelineResult(j) && <p className="text-sm text-slate-700">{pipelineResult(j).text}</p>}
         {j.details.corpus_version_id && <p className="break-all text-xs">Corpus mới: {j.details.corpus_version_id}</p>}
         {j.status === "ACTIVE" && <div className="flex flex-wrap gap-3"><input aria-label="Câu hỏi tìm thử phiên mới" className="min-w-64 flex-1 rounded border p-2 text-sm" placeholder="Nhập câu hỏi để tìm thử trên phiên mới…" value={question} onChange={e => setQuestion(e.target.value)} />
           <Button disabled={busy || question.trim().length < 3} onClick={() => action(async () => setSearchResult(await api(`/jobs/${j.id}/search`, "POST", { question })), "Đã tìm trên corpus mới.")}>Tìm thử phiên mới</Button></div>}

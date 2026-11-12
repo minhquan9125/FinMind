@@ -15,11 +15,27 @@ test('latest-period marker and year are readable', () => {
   assert.equal(scopeChips({ scope: { periods: ['2025'] } })[0].value, 'Năm 2025');
 });
 
+test('price scope shows a readable day and metric instead of raw codes', () => {
+  const chips = scopeChips({ scope: { companies: ['FPT'], periods: ['2026-11-12'], metric_code: 'LAST_PRICE', source_type: 'PRICE' } });
+  assert.deepEqual(chips.map(c => c.value), ['FPT', '12/11/2026', 'Giá gần nhất', 'Giá cổ phiếu']);
+});
+
 test('unanswerable outcomes get a plain-language explanation, answers do not', () => {
   assert.match(outcomeNotice({ status: 'NO_DATA', reason_code: 'NO_DATA' }), /chưa có đoạn nguồn/);
   assert.match(outcomeNotice({ status: 'UNSUPPORTED', reason_code: 'SOURCE_NOT_AVAILABLE' }), /báo cáo thường niên/);
   assert.equal(outcomeNotice({ status: 'DRAFT_READY' }), null);
   assert.equal(outcomeNotice(null), null);
+});
+
+test('a specific no-data reason keeps the backend message instead of the generic notice', () => {
+  assert.equal(outcomeNotice({ status: 'NO_DATA', reason_code: 'PRICE_UNIT_UNVERIFIED', scope: { source_type: 'PRICE' } }), null);
+  assert.equal(outcomeNotice({ status: 'NO_DATA', reason_code: 'PRICE_UNAVAILABLE' }), null);
+});
+
+test('news with no matching articles gets a news-specific explanation', () => {
+  const notice = outcomeNotice({ status: 'NO_DATA', reason_code: 'NO_DATA', scope: { source_type: 'NEWS' } });
+  assert.match(notice, /Kho tin tức/);
+  assert.doesNotMatch(notice, /chỉ tiêu/);
 });
 
 test('follow-ups come from the returned scope and are suppressed while choices are pending', () => {
