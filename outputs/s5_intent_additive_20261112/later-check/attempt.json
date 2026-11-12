@@ -1,0 +1,32 @@
+{
+  "status": "STARTED_NOT_YET_COMPLETED",
+  "selection_sha256": "6087a4d3f813e096673e39bf80ff2c9d1d9b824f4fbf83a971daa6be36c2afb3",
+  "selected": {
+    "name": "add_focused",
+    "eligible": false,
+    "wrong_regression": 0,
+    "wrong_dev": 0,
+    "regressed": 0,
+    "dev_hits": 30,
+    "regression_hits": 27,
+    "rows": 138
+  },
+  "script_sha256": "0ced1e33a48284e958932db0e8325146210da9c1d03fc78022f720111986088c",
+  "later_sha256": "4439afa73db4d4f3d0b21f30f9da2171a46168e14efbebcb2709742a8ced4eef",
+  "model": {
+    "name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "dtype": "float32",
+    "normalization": "L2",
+    "input_preprocessing": "NONE_EXACT_REVIEWED_TEXT",
+    "device": "cpu",
+    "batch_size": 8,
+    "max_sequence_length": 8192,
+    "encoder_class": "src.documents.embeddings.EmbeddingService"
+  },
+  "threshold": 0.65,
+  "gap": 0.08,
+  "payload_groups": 3,
+  "independent_blind_test": false
+}

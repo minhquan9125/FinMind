@@ -1,0 +1,34 @@
+{
+  "status": "FROZEN_BEFORE_SCORING",
+  "input_hashes": {
+    "outputs/s5_wbs033_20261110/intent-library-v1/dataset-manifest.json": "b81be2fc049036663d8addea12e94d0c9c766c9dbf65e1c661f6515d9ac80278",
+    "outputs/s5_wbs033_20261110/intent-library-v1/label-schema.json": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+    "outputs/s5_wbs033_20261110/intent-library-v1/library.jsonl": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5",
+    "outputs/s5_wbs033_20261110/intent-library-v1/manifest.json": "d679eab18f7368d9ab44e4695d399b5662ab3a539da9319378d2aae220298221",
+    "outputs/s5_wbs033_20261110/intent-library-v1/vectors.npy": "67e61d4dbae5252e9ff473ee8c84d1ac47c435b16cb1e747250bd9a28cf2f7a8",
+    "outputs/s5_intent_experiment_20261111/run01/embedded-texts.json": "31e7722587771b7b6a41c77551eb4b7230fe0390012407629b414cab5ae4acd0",
+    "outputs/s5_intent_experiment_20261111/run01/experiment-vectors.npy": "b28706d1585456342db95003315a43070fb8f0511992a99d1ceb45abc4632f26",
+    "docs/sprint5/intent-experiment-v2/library-draft.jsonl": "ad9ba0f3505178a82d44b07b8f586b6ff92d462052633427592abbe06a0e61ee",
+    "docs/sprint5/intent-experiment-v2/development.jsonl": "57dd29ba5d0a028ad16143a8b78121724f0e63b024f2608d2be39cd949215116",
+    "docs/sprint5/intent-experiment-v2/known-diagnostic.jsonl": "49d3db169896e47cecc09f0d06ea9424a4197bdb1f132c0f2b511ff4dc8465e0",
+    "docs/sprint5/intent-experiment-v2/manifest.json": "8287b81f654199ddbf3592b1d6691356109484c40f0dc87c2edc562c5dfd2d9e",
+    "docs/sprint5/intent-dataset-v1/test.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+    "docs/sprint5/S5-WBS04.1-additive-plan.md": "ee6f3293305aea52f4729b0effb14d7440036108e829bd6803c9ae46fe100034",
+    "backend/scripts/run_s5_intent_additive.py": "4278835e0e1a7bfb8bbb03ba4508342ec07e8ab2a132f79f99fb856b145baa45",
+    "backend/src/retrieval_orchestration/intent_additive.py": "291164da335e37d060d7d880ceed9f8d69ecba0f68344fe89f1cb5d5416d6700",
+    "backend/src/retrieval_orchestration/intent_matching.py": "f351d081045ad717a80fe63b01ace29e7bc437151338a3698b091f05879da2d9",
+    "backend/scripts/run_s5_intent_experiment.py": "82404b010784a5d341ba04e1600c4364ccfda2e736506358cd0f8e583cf2d892",
+    "backend/src/retrieval_orchestration/intent_experiment.py": "511a598d3a27a96e1971efd411272e8ed520bd8d9d03c849e998cb04ab339510"
+  },
+  "variants": [
+    "original",
+    "add_all",
+    "add_focused"
+  ],
+  "cached_real_embeddings": true,
+  "threshold": 0.65,
+  "gap": 0.08,
+  "payload_groups": 3,
+  "later_check_scored": false,
+  "selection_rule": "S5-WBS04.1-additive-plan.md"
+}

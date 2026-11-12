@@ -1,0 +1,226 @@
+{
+  "status": "COMPLETED_ONE_LATER_CHECK_NOT_PRODUCTION_APPROVAL",
+  "selected": {
+    "name": "add_focused",
+    "eligible": false,
+    "wrong_regression": 0,
+    "wrong_dev": 0,
+    "regressed": 0,
+    "dev_hits": 30,
+    "regression_hits": 27,
+    "rows": 138
+  },
+  "independent_blind_test": false,
+  "selection_sha256": "6087a4d3f813e096673e39bf80ff2c9d1d9b824f4fbf83a971daa6be36c2afb3",
+  "metrics": {
+    "original": {
+      "total": 28,
+      "labeled": 28,
+      "hits": {
+        "1": 19,
+        "3": 26,
+        "5": 26
+      },
+      "per_label": {
+        "NUMERIC": {
+          "total": 4,
+          "hits": {
+            "1": 1,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "REPORT_CONTENT": {
+          "total": 4,
+          "hits": {
+            "1": 3,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "NEWS": {
+          "total": 4,
+          "hits": {
+            "1": 1,
+            "3": 2,
+            "5": 2
+          }
+        },
+        "TREND": {
+          "total": 4,
+          "hits": {
+            "1": 4,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "PERSON_ROLE": {
+          "total": 4,
+          "hits": {
+            "1": 3,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "ENTITY_RELATION": {
+          "total": 4,
+          "hits": {
+            "1": 3,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "MIXED": {
+          "total": 4,
+          "hits": {
+            "1": 4,
+            "3": 4,
+            "5": 4
+          }
+        }
+      },
+      "accepted": 1,
+      "fallback": 27,
+      "accepted_correct_route": 1,
+      "accepted_wrong_route": 0,
+      "accepted_wrong_route_ids": [],
+      "accepted_coverage": 0.03571428571428571,
+      "wrong_route_rate_among_accepted": 0.0,
+      "single_misread_as_mixed": [
+        "LATER-NEWS-1-DGC",
+        "LATER-NEWS-2-PNJ",
+        "LATER-PERSON_ROLE-1-PNJ"
+      ],
+      "mixed_misread_as_single": [],
+      "company_control_families": 14,
+      "company_changed_top1": [
+        "LATER-NUMERIC-2",
+        "LATER-REPORT_CONTENT-2",
+        "LATER-NEWS-1",
+        "LATER-NEWS-2",
+        "LATER-PERSON_ROLE-1",
+        "LATER-ENTITY_RELATION-1"
+      ],
+      "company_all_correct": [
+        "LATER-REPORT_CONTENT-1",
+        "LATER-PERSON_ROLE-2",
+        "LATER-ENTITY_RELATION-2",
+        "LATER-TREND-1",
+        "LATER-TREND-2",
+        "LATER-MIXED-1",
+        "LATER-MIXED-2"
+      ],
+      "null_policy_observations": []
+    },
+    "selected": {
+      "total": 28,
+      "labeled": 28,
+      "hits": {
+        "1": 19,
+        "3": 25,
+        "5": 26
+      },
+      "per_label": {
+        "NUMERIC": {
+          "total": 4,
+          "hits": {
+            "1": 1,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "REPORT_CONTENT": {
+          "total": 4,
+          "hits": {
+            "1": 2,
+            "3": 3,
+            "5": 4
+          }
+        },
+        "NEWS": {
+          "total": 4,
+          "hits": {
+            "1": 1,
+            "3": 2,
+            "5": 2
+          }
+        },
+        "TREND": {
+          "total": 4,
+          "hits": {
+            "1": 3,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "PERSON_ROLE": {
+          "total": 4,
+          "hits": {
+            "1": 4,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "ENTITY_RELATION": {
+          "total": 4,
+          "hits": {
+            "1": 4,
+            "3": 4,
+            "5": 4
+          }
+        },
+        "MIXED": {
+          "total": 4,
+          "hits": {
+            "1": 4,
+            "3": 4,
+            "5": 4
+          }
+        }
+      },
+      "accepted": 2,
+      "fallback": 26,
+      "accepted_correct_route": 2,
+      "accepted_wrong_route": 0,
+      "accepted_wrong_route_ids": [],
+      "accepted_coverage": 0.07142857142857142,
+      "wrong_route_rate_among_accepted": 0.0,
+      "single_misread_as_mixed": [
+        "LATER-REPORT_CONTENT-1-DGC",
+        "LATER-NEWS-1-DGC",
+        "LATER-TREND-2-PNJ"
+      ],
+      "mixed_misread_as_single": [],
+      "company_control_families": 14,
+      "company_changed_top1": [
+        "LATER-NUMERIC-2",
+        "LATER-REPORT_CONTENT-1",
+        "LATER-REPORT_CONTENT-2",
+        "LATER-NEWS-1",
+        "LATER-TREND-2"
+      ],
+      "company_all_correct": [
+        "LATER-PERSON_ROLE-1",
+        "LATER-PERSON_ROLE-2",
+        "LATER-ENTITY_RELATION-1",
+        "LATER-ENTITY_RELATION-2",
+        "LATER-TREND-1",
+        "LATER-MIXED-1",
+        "LATER-MIXED-2"
+      ],
+      "null_policy_observations": []
+    }
+  },
+  "transitions": {
+    "fixed": [
+      "LATER-PERSON_ROLE-1-PNJ",
+      "LATER-ENTITY_RELATION-1-PNJ"
+    ],
+    "regressed": [
+      "LATER-REPORT_CONTENT-1-DGC",
+      "LATER-TREND-2-PNJ"
+    ]
+  },
+  "official_library_unchanged": true,
+  "threshold_unchanged": true
+}

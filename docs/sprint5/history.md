@@ -168,3 +168,18 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
 - 61 unit test đạt (54 cũ + 7 mới); kiểm chứng độc lập lại 592 bảng thứ hạng từ
   vector model thật, sai lệch cosine tối đa 1,23e-15; source checksum giữ nguyên.
 - [Kế hoạch](S5-WBS04.1-improvement-plan.md), [kết quả và giới hạn](S5-WBS04.1-improvement-results.md).
+
+## 12/11/2026 — Giữ mẫu gốc, bổ sung và kiểm tra sau khi đóng băng
+
+- Phân tích 9 ca hồi quy: mất các mẫu tin, sự kiện, xu hướng và ý định kết hợp khi
+  thay thư viện. Thử hai bản nối, giữ nguyên 90 hàng và từng byte vector gốc.
+- add_all (202 hàng): dev 40/84, bộ cũ 27/47; còn hai ca cũ đúng→sai T034/T036.
+- add_focused (138 hàng): bộ cũ 27/47, sửa thêm 5 ca và không làm sai ca cũ đang đúng;
+  nhưng dev giảm 34→30/84, nên không đủ điều kiện thay baseline.
+- Chốt add_focused theo quy tắc chọn đã ghi trước rồi chấm đúng một lượt bộ 28 câu:
+  baseline và ứng viên đều 19/28 top-1; sửa 2 câu, hỏng 2 câu; top-3 giảm 26→25/28.
+  Bộ do cùng tác giả soạn, không gọi là test mù; từ lượt này không còn là chưa xem.
+- 66 test đạt. Kiểm chứng độc lập 500 bảng thứ hạng từ vector thật, sai lệch tối đa
+  1,23e-15; xác nhận nguồn/byte vector gốc không đổi. Chưa triển khai ứng viên mới.
+- Không sửa ngưỡng 0,65/0,08, payload top-3 hoặc code router/WebChat của Huyền.
+- [Kế hoạch](S5-WBS04.1-additive-plan.md), [báo cáo](S5-WBS04.1-additive-results.md).

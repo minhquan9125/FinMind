@@ -1,0 +1,25 @@
+{
+  "status": "EXPERIMENTAL_DRAFT",
+  "model": {
+    "name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "dtype": "float32",
+    "normalization": "L2",
+    "input_preprocessing": "NONE_EXACT_REVIEWED_TEXT",
+    "device": "cpu",
+    "batch_size": 8,
+    "max_sequence_length": 8192,
+    "encoder_class": "src.documents.embeddings.EmbeddingService"
+  },
+  "library_version": "add-focused-draft1",
+  "dataset_version": "intent-additive-draft1",
+  "label_schema_version": "s5-intent-labels-v1-draft2",
+  "original_library_version": "s5-intent-library-v1",
+  "files": {
+    "library.jsonl": "7fa8c8b79120ef452edfb864ab23b8926a20614e18bf125dee79f194ce58f4aa",
+    "vectors.npy": "7f05427076d1f126c2db88adc5d3e57efc9a9f11c3457d094e42ff6e95bca1fa"
+  },
+  "old_prefix_rows": 90,
+  "row_count": 138
+}

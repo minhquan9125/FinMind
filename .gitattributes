@@ -13,3 +13,14 @@ docs/sprint5/intent-experiment-v2/*.json text eol=lf
 docs/sprint5/intent-experiment-v2/*.jsonl text eol=lf
 outputs/s5_intent_experiment_20261111/**/*.json text eol=lf
 outputs/s5_intent_experiment_20261111/**/*.npy binary
+outputs/s5_intent_additive_20261112/**/*.json text eol=lf
+outputs/s5_intent_additive_20261112/**/*.jsonl text eol=lf
+outputs/s5_intent_additive_20261112/**/*.npy binary
+# Source bytes fingerprinted by the offline additive experiment.
+backend/scripts/run_s5_intent_additive.py text eol=lf
+backend/scripts/run_s5_intent_experiment.py text eol=lf
+backend/src/retrieval_orchestration/intent_additive.py text eol=lf
+backend/src/retrieval_orchestration/intent_experiment.py text eol=lf
+backend/src/retrieval_orchestration/intent_matching.py text eol=lf
+docs/sprint5/S5-WBS04.1-additive-plan.md text eol=lf
+docs/sprint5/S5-WBS04.1-improvement-plan.md text eol=lf

@@ -13,6 +13,9 @@ không coi unit test qua là accuracy đạt và không đưa kết quả vào r
   cùng thứ hạng run01, lần lượt 22/47, 41/47 và 46/47; không phải ba model khác nhau.
 - [Thử nghiệm cải thiện sau chẩn đoán](S5-WBS04.1-improvement-results.md):
   bản DRAFT riêng; chưa chọn cấu hình thay baseline vì còn hồi quy và fallback cao.
+- [Thử nghiệm bổ sung trên nền mẫu gốc, 12/11](S5-WBS04.1-additive-results.md):
+  giảm hồi quy ở bộ cũ nhưng chưa tăng chất lượng chung; đã dùng một lượt bộ 28 câu
+  để dành, không còn coi bộ này là chưa chấm. Baseline vẫn giữ nguyên.
 - `outputs/s5_wbs041_20261110/run01`: method đã chọn trước inference,
   snapshot test, kết quả từng câu và summary. Giữ nguyên run01 sau khi đo.
 - `outputs/s5_wbs041_review_20261111`: test sau rà soát và kiểm chứng lại model thật.
