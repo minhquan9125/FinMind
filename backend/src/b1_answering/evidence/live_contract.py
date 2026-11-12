@@ -35,6 +35,7 @@ def validate_live_item(item):
             'financial_reports': 'BCTC',
             'news_articles': 'NEWS',
             'companies': 'COMPANY_PROFILE',
+            'annual_reports': 'BCTN',
         }
         binding = locator.get('admin_news_snapshot')
         if (isinstance(binding, dict) and binding.get('payload_id') == locator.get('source_id')

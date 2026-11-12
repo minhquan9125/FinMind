@@ -30,7 +30,7 @@ export function citationView(result) {
     location: item.locator?.section || 'Đoạn nguồn',
     passage: item.passage,
     rows: Array.isArray(item.locator?.row_keys) ? item.locator.row_keys : [],
-    url: safeSourceUrl(item.locator?.url),
+    url: safeSourceUrl(item.source_url) || safeSourceUrl(item.locator?.url),
     compact: item.source_type === 'NEWS',
   }));
 }

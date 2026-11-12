@@ -39,6 +39,7 @@ MARKET_ANALYSIS_TERMS = (
     "nhu nao", "dao nay", "gan day", "may phien", "bat day", "vao hang",
 )
 GRAPH_TERMS = (
+    "hdqt", "hoi dong quan tri", "ban kiem soat", "thanh vien cong ty",
     "nhan su", "bo nhiem", "mien nhiem", "bai nhiem", "tu nhiem", "tu chuc",
     "cong ty con", "cong ty lien ket", "cong ty me", "don vi thanh vien",
     "he sinh thai", "so huu", "co dong", "ban lanh dao", "chu tich", "ceo",
@@ -47,6 +48,9 @@ GRAPH_TERMS = (
     "chuoi cung ung", "kiem soat", "dieu hanh", "lanh dao",
 )
 PROFILE_TERMS = (
+    "thong tin",
+    "thong tin cong ty", "thong tin doanh nghiep", "gioi thieu", "tong quan",
+    "ho so cong ty", "ho so doanh nghiep", "thong tin ve",
     "linh vuc", "nganh nghe", "nganh kinh doanh", "hoat dong trong",
     "thuoc nganh", "nganh gi", "nganh nao", "kinh doanh gi", "lam mang gi",
 )
@@ -96,6 +100,9 @@ def resolve_intent(text, companies, industry, metric=None, entity_mentions=()):
     content_text = text
     for phrase in sorted(GRAPH_TERMS + PROFILE_TERMS, key=len, reverse=True):
         content_text = re.sub(rf"\b{re.escape(phrase)}\b", " ", content_text)
+    if graph or profile:
+        # Naming the report for a graph citation is not a second content task.
+        content_text = re.sub(r"\b(?:bao cao thuong nien|bao cao tai chinh|bctn|bctc|bao cao)\b", " ", content_text)
     content = (metric is not None or contains(content_text, CONTENT_TERMS)
                or bool(re.search(r"\b(?:ke hoach|du an|chien luoc)\b.*\bai\b", text)))
     event = contains(text, EVENT_TERMS)
@@ -113,12 +120,14 @@ def resolve_intent(text, companies, industry, metric=None, entity_mentions=()):
         return RetrievalIntent("BOTH", "INDUSTRY_ANALYSIS", True)
     if (knowledge or portfolio) and (not companies or not (graph or profile)):
         return RetrievalIntent("VECTOR", "PORTFOLIO_EDUCATION" if portfolio else "INVESTING_KNOWLEDGE", True)
+    if graph and profile:
+        return RetrievalIntent("BOTH", "COMPANY_PROFILE_WITH_RELATIONSHIPS")
     if (graph or profile) and (content or knowledge):
         return RetrievalIntent("BOTH", "MULTI_HOP")
     if graph:
         return RetrievalIntent("GRAPH", "RELATIONSHIP_LOOKUP")
     if profile:
-        return RetrievalIntent("GRAPH", "COMPANY_PROFILE")
+        return RetrievalIntent("VECTOR", "COMPANY_PROFILE")
     if market and not companies:
         digest = contains(text, ("tin tuc", "tin moi", "co gi moi", "diem tin", "tong hop",
                                  "co gi hot", "co bien", "co drama", "the nao", "nhu nao",

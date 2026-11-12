@@ -133,7 +133,8 @@ def apply_clarification(decision, previous, today):
         keys = ['TEXT:' + company for company in dict.fromkeys(scope['companies'])][:8]
         message = 'Bạn muốn tra cứu mã nào trước? Chọn một mã dưới đây để tiếp tục.'
     elif reason == 'MISSING_COMPANY':
-        field, label, keys = 'company', 'công ty', ['TEXT:FPT', 'TEXT:SSI', 'TEXT:VCB']
+        from .retrieval_flow.intent import TICKERS
+        field, label, keys = 'company', 'công ty', ['TEXT:' + symbol for symbol in TICKERS]
         message = decision['message']
     elif reason in ('MISSING_PERIOD', 'MISSING_YEAR'):
         field, label = 'period', 'kỳ hoặc năm báo cáo'

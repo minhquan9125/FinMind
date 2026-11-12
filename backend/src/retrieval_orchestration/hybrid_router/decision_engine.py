@@ -42,7 +42,7 @@ def personnel_filters(text: str) -> dict:
         ("DEPUTY_CEO", "pho tong giam doc"),
         ("CEO", "tong giam doc"), ("CEO", "ceo"),
         ("CFO", "giam doc tai chinh"),
-        ("BOARD_MEMBER", "thanh vien hdqt"),
+        ("BOARD", "thanh vien hdqt"),
     )
     events = (
         ("RESIGNATION_REQUESTED", "REQUESTS_RESIGNATION", r"xin tu nhiem|don (?:xin )?tu nhiem"),
@@ -56,6 +56,8 @@ def personnel_filters(text: str) -> dict:
         if re.search(rf"\b{phrase}\b", text):
             result.update(position_code=code, relation_types=["HOLDS_ROLE"])
             break
+    if not result and re.search(r"\b(?:hdqt|hoi dong quan tri)\b", text):
+        result.update(position_code="BOARD", relation_types=["HOLDS_ROLE"])
     for stage, relation, pattern in events:
         if re.search(rf"\b(?:{pattern})\b", text):
             result.update(event_type=stage, relation_types=[relation])
@@ -64,7 +66,22 @@ def personnel_filters(text: str) -> dict:
     person = re.fullmatch(r"(?:(?:ong|ba) )?([a-z]+(?: [a-z]+){1,5}) la ai", text)
     if person and not re.search(r"\b(?:chu tich|giam doc|ceo|cong ty|nhan su|co dong|thi truong|doi tac)\b", person[1]):
         result.update(person_name=person[1], relation_types=["HOLDS_ROLE"])
+    if not result.get('relation_types'):
+        for pattern, relation in ((r'co dong|so huu|cam nhieu co phieu', 'OWNS_SHARES'),
+                                  (r'cong ty con', 'HAS_SUBSIDIARY'),
+                                  (r'cong ty lien ket', 'HAS_ASSOCIATE')):
+            if re.search(rf'\b(?:{pattern})\b', text):
+                result['relation_types'] = [relation]
+                break
     return result
+
+
+def position_matches(position, requested, code=None):
+    norm = _normalize(position or '')
+    code = code or personnel_filters(norm).get('position_code')
+    if requested == 'BOARD':
+        return code in {'BOARD', 'BOARD_CHAIR', 'DEPUTY_BOARD_CHAIR', 'BOARD_MEMBER'}
+    return not requested or code == requested
 
 
 def reporting_filters(text: str, periods: list[str], metric: str | None) -> dict:
@@ -493,6 +510,20 @@ class ScopeResolver:
         if (metric or contains(normalized, ("bctc", "bao cao tai chinh"))) and re.search(r"\bcong ty me\b", normalized) and not re.search(r"\bcong ty me (?:cua|la)\b", normalized):
             intent_text = re.sub(r"\bcong ty me\b", " ", normalized)
         intent = resolve_intent(intent_text, companies, detected_industry, metric, entity_mentions)
+        # 'Company members' alone does not identify a board or executive team.
+        # Stop before classifier selection and generation, even with old context.
+        if re.search(r'\bthanh vien\b', normalized) and not contains(normalized, GRAPH_TERMS) and not metric:
+            return self._clarify(question, RouterScope(companies=companies),
+                ("membership_group",), "AMBIGUOUS_COMPANY_MEMBERS",
+                "Bạn muốn xem thành viên hội đồng quản trị hay ban điều hành?")
+        if len(companies) == 1 and normalized.strip(' .?!').upper() == companies[0]:
+            from .intent_policy import RetrievalIntent
+            if context and not context.companies and context.topic and context.route_hint:
+                intent = RetrievalIntent(context.route_hint, context.topic)
+                metric = context.metric_code
+                personnel = {k: getattr(context, k) for k in ("person_name", "position_code", "event_type", "relation_types")}
+            else:
+                intent = RetrievalIntent("VECTOR", "COMPANY_PROFILE")
         inherit_operation = (context and context.confirmed and explicit_reference and not independent_scope
                              and context.topic and context.route_hint
                              and (metric != "STOCK_PRICE" or context.metric_code == "STOCK_PRICE")
@@ -511,7 +542,7 @@ class ScopeResolver:
                             topic=intent.topic, detected_industry=detected_industry,
                             entity_mentions=entity_mentions, **personnel,
                             **reporting_filters(normalized, periods, metric))
-        scope.source_type = ("BCTN" if contains(normalized, ("bctn", "bao cao thuong nien"))
+        scope.source_type = ("COMPANY_PROFILE" if intent.topic == "COMPANY_PROFILE" else "BCTN" if contains(normalized, ("bctn", "bao cao thuong nien"))
                              else "PRICE" if metric == "STOCK_PRICE" else
                              "BCTN" if intent.route == "GRAPH" else "BCTC")
         if inherit_operation and context.source_type and metric != "STOCK_PRICE":
@@ -687,7 +718,7 @@ class DecisionEngine:
         # meaning of forecasts, knowledge requests and explanations downstream.
         params = {**resolved.scope.model_dump(exclude_none=True), "question": question,
                   "retrieval_question": normalize_user_text(question)}
-        params["doc_type"] = {"BCTN": "ANNUAL_REPORT", "BCTC": "FINANCIAL_STATEMENT"}.get(resolved.scope.source_type)
+        params["doc_type"] = {"BCTN": "ANNUAL_REPORT", "BCTC": "FINANCIAL_STATEMENT", "COMPANY_PROFILE": "COMPANY_PROFILE"}.get(resolved.scope.source_type)
         if fixture_case:
             params["fixture_case"] = fixture_case
         params["period_resolution_required"] = any(
@@ -696,6 +727,7 @@ class DecisionEngine:
         )
         topic = resolved.scope.topic
         content_operations = {
+            "COMPANY_PROFILE": "find_company_profile",
             "MARKET_DAILY_DIGEST": "find_daily_market_digest",
             "MARKET_ANALYSIS": "analyze_market_drivers",
             "PRICE_ANALYSIS": "analyze_market_drivers",
@@ -741,7 +773,7 @@ class DecisionEngine:
                 ), params=params),
                 RouterTask(id="v1", adapter="CONTENT", operation=(
                     "compare_company_overview" if topic == "OVERALL_COMPARISON"
-                    else "analyze_event_impact" if topic == "EVENT_IMPACT" else "find_metric"
+                    else "analyze_event_impact" if topic == "EVENT_IMPACT" else "find_company_profile" if topic == "COMPANY_PROFILE_WITH_RELATIONSHIPS" else "find_metric"
                 ), params={**params, "company_scope_policy": company_policy,
                            "resolved_companies": []}, depends_on="g1"),
             ]

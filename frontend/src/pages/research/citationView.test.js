@@ -2,6 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { citationView, modeLabel, safeSourceUrl } from './citationView.js';
 
+test('graph evidence opens a verified document URL without rewriting its locator', () => {
+  const locator = { source_table: 'annual_reports', section: 'Hội đồng quản trị' };
+  const item = { evidence_id: 'graph-chunk', source_type: 'BCTN', source_verified: true,
+    source_url: 'https://example.org/annual.pdf', locator };
+  const result = { execution_mode: 'LIVE', evidence_pack: { items: [item] } };
+  assert.equal(citationView(result)[0].url, item.source_url);
+  assert.equal(locator.url, undefined);
+});
+
 test('prices never show citation cards or source links', () => {
   assert.deepEqual(citationView({ execution_mode: 'LIVE', scope: { source_type: 'PRICE' },
     evidence_pack: { items: [{ evidence_id: 'price', source_type: 'PRICE', source_verified: true }] } }), []);

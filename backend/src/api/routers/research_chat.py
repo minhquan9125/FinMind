@@ -52,12 +52,18 @@ def get_store() -> PostgresSessionStore:
                                    model_ref=settings.embedding_model_ref,
                                    backend=settings.research_retrieval_backend,
                                    corpus_resolver=lambda: Queue(settings.admin_ingestion_directory).serving_corpus(settings.research_corpus_version_id))
+        from ...retrieval_orchestration.web_chat_router import WebChatRouter, Neo4jChatRetriever
+        from .hybrid_router import get_router_engine
+        from .graph_viewer import get_graph_reader, get_ticker_map
+        routed = WebChatRouter(get_router_engine, Neo4jChatRetriever(retriever, get_graph_reader, get_ticker_map),
+                               retriever, timeout=min(settings.research_retrieval_timeout_seconds, 30))
         engine = LiveResearchService(
             retriever,
             provider=provider, limits=limits,
             retrieval_timeout=settings.research_retrieval_timeout_seconds,
             market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
+            hybrid_router=routed,
         )
         from ...documents.research_metrics import ObservedResearch, ResearchMetrics
         engine = ObservedResearch(engine, ResearchMetrics(settings.admin_ingestion_directory))

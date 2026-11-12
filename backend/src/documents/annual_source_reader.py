@@ -4,6 +4,47 @@ from .chunk_reconstruction import ReconstructionError,_metadata
 from .release_identity import validate_document_binding
 from .shared_source import resolve_shared_source
 
+
+async def _annual_binding(conn, row, loc, corpus_version_id, cache):
+    try:
+        return validate_document_binding(row['document_id'], row['index_version_id'], loc)
+    except ReconstructionError as exc:
+        if exc.code != 'DOCUMENT_ID_MISMATCH':
+            raise
+    # admin_shared_index.merge_shared preserves the source release's document
+    # aliases, while deriving a fresh chunk ID from the copied parent's ID.
+    # Accept only that explicit protocol, with a registered immutable root and
+    # an exact frozen parent; an arbitrary old alias is never enough.
+    from .shared_source import read_release_root
+    root = await read_release_root(conn, row['index_version_id'], cache)
+    origin = root.get('source_index_version_id')
+    if (root.get('corpus_version_id') != str(corpus_version_id) or not origin
+            or origin == row['index_version_id']):
+        raise ReconstructionError('DOCUMENT_ID_MISMATCH', 'No registered source-release lineage')
+    binding = validate_document_binding(row['document_id'], origin, loc)
+    if binding['mode'] != 'RELEASE_DOCUMENT_ALIAS_V1':
+        raise ReconstructionError('DOCUMENT_ID_MISMATCH', 'Invalid inherited document alias')
+    parents = await conn.fetch('''SELECT DISTINCT p.index_version_id::text AS index_version_id
+        FROM text_chunks p JOIN documents d USING(document_id)
+        JOIN index_versions i ON i.index_version_id=p.index_version_id
+        JOIN corpus_versions cv ON cv.index_version_id=p.index_version_id
+        JOIN corpus_documents cd ON cd.corpus_version_id=cv.corpus_version_id
+          AND cd.document_id=d.document_id AND cd.document_hash=d.sha256
+        WHERE p.document_id=$1::uuid AND p.content_hash=$2 AND p.locator_json=$3::jsonb
+          AND p.index_version_id<>$4::uuid AND p.superseded_at IS NULL
+          AND i.status='ACTIVE' AND cv.status='FROZEN'
+          AND md5('shared:' || $4::uuid::text || ':' || p.chunk_id::text)::uuid=$5::uuid
+        LIMIT 2''', uuid.UUID(row['document_id']), row['content_hash'].strip(), json.dumps(loc),
+        uuid.UUID(row['index_version_id']), uuid.UUID(row['chunk_id']))
+    if len(parents) != 1:
+        raise ReconstructionError('CHUNK_ID_MISMATCH', 'No unique frozen parent for shared chunk identity')
+    parent = await read_release_root(conn, parents[0]['index_version_id'], cache)
+    if parent.get('source_index_version_id', parents[0]['index_version_id']) != origin:
+        raise ReconstructionError('DOCUMENT_ID_MISMATCH', 'Parent source release differs')
+    return {**binding, 'mode':'SHARED_RELEASE_SOURCE_ALIAS_V1',
+            'index_version_id':row['index_version_id'], 'source_index_version_id':origin,
+            'parent_index_version_id':parents[0]['index_version_id']}
+
 async def read_annual_chunk(conn,chunk_id,corpus_version_id,cache=None):
     """Caller supplies an authorized corpus ID; this function writes nothing.
 
@@ -33,7 +74,8 @@ async def resolve_annual_member_row(conn,row,corpus_version_id,cache=None):
     Use read_annual_chunk for untrusted chunk IDs.
     """
     loc=json.loads(row['locator_json']) if isinstance(row['locator_json'],str) else row['locator_json']
-    binding=validate_document_binding(row['document_id'],row['index_version_id'],loc)
+    cache = cache if cache is not None else {}
+    binding=await _annual_binding(conn,row,loc,corpus_version_id,cache)
     _,meta=_metadata(loc)
     if binding['mode']=='RELEASE_DOCUMENT_ALIAS_V1':
         expected=str(uuid.uuid5(uuid.NAMESPACE_URL,f'finmind:release-chunk:{row["index_version_id"]}:{meta["source_chunk_id"]}'))

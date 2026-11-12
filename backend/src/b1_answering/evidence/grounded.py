@@ -51,6 +51,15 @@ def build_grounded_request(question, evidence, limits, scope=None):
     content = request['contents'][0]['parts'][0]
     body = json.loads(content['text'])
     body['scope'] = deepcopy(scope or {})
+    if body['scope'].get('graph_relations'):
+        request['systemInstruction']['parts'][0]['text'] += (
+            ' Quan hệ đã truy xuất từ graph được giới hạn trong graph_relations của scope. '
+            'Chỉ trả lời các quan hệ trong danh sách đó, kèm quote từ evidence_ids tương ứng. '
+            'Giữ nguyên loại quan hệ: xin từ nhiệm không phải đã từ nhiệm hoặc miễn nhiệm. '
+            'Năm báo cáo không phải ngày hiệu lực. Chức vụ trong nguồn lịch sử không xác nhận '
+            'đang đương nhiệm; không gộp người cùng tên giữa tài liệu, không suy thứ bậc chức vụ. '
+            'Nói rõ thông tin theo tài liệu được dẫn; không coi danh sách tìm được là toàn bộ nhân sự.'
+        )
     if body['scope'].get('source_type') == 'NEWS':
         max_claims, max_text, max_quote = news_limits(evidence)
         max_quotes = 2 if max_claims == 4 else 1
