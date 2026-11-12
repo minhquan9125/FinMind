@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button, Card, ErrorState, Skeleton, StatusBadge } from "../../shared/ui";
 import AdminLayout from "./AdminLayout.jsx";
+import AdminLimitsPanel from "./AdminLimitsPanel.jsx";
 import BudgetUsage, { money } from "./BudgetUsage.jsx";
 import { getOperations, localTime } from "./operationsApi.js";
 
-const READONLY_GROUPS = [
-  ["Ngưỡng bằng chứng (Evidence Gate)", [["Ngưỡng relevance"], ["Ngưỡng bằng chứng"], ["Ngưỡng xác minh (Verifier)"], ["Số bằng chứng tối thiểu"], ["Giới hạn độ mới của nguồn"]]],
-  ["Truy xuất & hợp nhất", [["Giới hạn ứng viên Vector"], ["Giới hạn quan hệ Graph"], ["Giới hạn kết quả sau fusion"], ["Rerank limit"]]],
-  ["Giới hạn ngữ cảnh & Token", [["Context ceiling"], ["Input token ceiling", "max_input_tokens"], ["Output token ceiling", "max_output_tokens"], ["Tổng token tối đa / request", "max_total_tokens"], ["Lượt sinh tối đa", "max_generation_calls"], ["Thời gian chờ (giây)", "read_timeout_seconds"]]],
+// Hai nhóm này chưa có giá trị cấu hình tương ứng trong hệ thống: Evidence Gate B3 và Verifier đang tắt,
+// còn giới hạn truy xuất là hằng số trong mã. Không hiển thị số mẫu; giới hạn Token đã chuyển sang bảng sửa được.
+const READONLY_NOTES = [
+  ["Ngưỡng bằng chứng (Evidence Gate / Verifier)", "Evidence Gate B3 và Answer Verification B3 đang tắt trong cấu hình nên chưa có ngưỡng để chỉnh. Việc kiểm tra nguồn của B1 (đoạn trích, số liệu, trích dẫn) luôn chạy và xem được ở từng truy vấn."],
+  ["Truy xuất & hợp nhất", "Số ứng viên Vector, quan hệ Graph và hợp nhất kết quả là hằng số trong mã truy xuất, chưa có cấu hình nên chưa sửa được trên giao diện."],
 ];
 
 export default function AdminConfigurationPage() {
@@ -57,7 +59,8 @@ export default function AdminConfigurationPage() {
           <Button type="submit" disabled={reason.trim().length < 3 || (form.mode === "paid" && !form.rates.length)}>Lưu phiên bản & áp dụng</Button>
         </fieldset>
       </form>
-      <section className="grid items-start gap-5 lg:grid-cols-3">{READONLY_GROUPS.map(([title, fields]) => <Card key={title} title={title} action={<StatusBadge>Chưa nối chỉnh sửa</StatusBadge>}><dl>{fields.map(([label, key]) => <div key={label} className="border-b py-3 text-sm"><dt className="text-slate-600">{label}</dt><dd className="mt-1 font-medium">{key && data.runtime_limits?.[key] != null ? Number(data.runtime_limits[key]).toLocaleString("vi-VN") : "Chưa nối phép đo/cấu hình hiển thị"}</dd></div>)}</dl><p className="mt-3 text-xs text-slate-500">Giá trị token đã đọc từ cấu hình dự án; không thể sửa các ngưỡng này trên giao diện. Các mục chưa nối vẫn được giữ và không gán số mẫu.</p></Card>)}</section>
+      <AdminLimitsPanel />
+      <section className="grid items-start gap-5 lg:grid-cols-2">{READONLY_NOTES.map(([title, text]) => <Card key={title} title={title} action={<StatusBadge>Chưa có cấu hình</StatusBadge>}><p className="text-sm text-slate-600">{text}</p></Card>)}</section>
       <Card title="Lịch sử phiên bản cấu hình"><div className="space-y-3">{data.history.map((version, index) => <details key={version.id} className="rounded-lg border p-3"><summary className="cursor-pointer text-sm">{localTime(version.created_at)} · {index === 0 ? "Đang áp dụng" : "Đã thay thế"} · {version.config.mode} · {money(version.config.limit_usd)}</summary><p className="mt-2 break-all text-xs text-slate-500">{version.id} · {version.actor}</p><p className="mt-2 text-sm">{version.reason}</p><pre className="mt-3 overflow-auto whitespace-pre-wrap text-xs">{JSON.stringify(version.config, null, 2)}</pre></details>)}{!data.history.length && <p className="text-sm text-slate-500">Chưa có phiên bản đã lưu.</p>}</div></Card>
     </>}
   </AdminLayout>;

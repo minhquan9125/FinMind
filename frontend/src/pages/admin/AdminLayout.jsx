@@ -13,6 +13,7 @@ export const ADMIN_LINKS = {
   ingestion: "/admin/ingestion",
   corpus: "/admin/corpus",
   configuration: "/admin/configuration",
+  evaluation: "/admin/evaluation",
   audit: "/admin/audit",
 };
 
@@ -20,6 +21,7 @@ const groups = [
   { label: "Vận hành", items: [
     { id: "overview", label: "Tổng quan vận hành", icon: "▦" },
     { id: "traces", label: "Theo dõi truy vấn", icon: "∿" },
+    { id: "evaluation", label: "Đánh giá chất lượng", icon: "✔" },
   ] },
   { label: "Quản trị dữ liệu", items: [
     { id: "ingestion", label: "Thu thập & duyệt", icon: "↓" },
@@ -44,7 +46,8 @@ function activeIdFor(pathname) {
 export default function AdminLayout({ children }) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const unfinished = ['sources', 'corpus'].includes(activeIdFor(pathname));
+  // Mọi mục trong menu hiện đã dùng dữ liệu thật; thêm id vào mảng này khi có trang mới còn là minh họa.
+  const unfinished = [].includes(activeIdFor(pathname));
 
   return (
     <div className="flex h-screen w-full overflow-hidden bg-[#F8FAFC]">

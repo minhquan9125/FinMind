@@ -85,6 +85,7 @@ Biến môi trường đặt trước khi khởi động API:
 | Biến | Mặc định | Chức năng |
 |---|---|---|
 | `FINMIND_LIVE_POLL_SECONDS` | `5` | Khoảng cách tối thiểu giữa request nguồn, không nhận giá trị dưới 5 |
+| `FINMIND_LIVE_MAX_WAIT_SECONDS` | `8` | Số giây tối đa một lượt hỏi giá/lịch sử của người dùng được xếp hàng chờ lượt lấy giá đang chạy thay vì báo bận ngay. Không làm tăng số request tới nguồn và không rút ngắn khoảng cách 5 giây; đặt `0` để về hành vi báo bận ngay. Vòng tự thu thập nền không chờ |
 | `FINMIND_LIVE_ENABLED` | `1` | Đặt `0` để tắt collector và tải lịch sử SDK; API đọc file và lấy tin thủ công vẫn hoạt động |
 | `FINMIND_VNSTOCK_PYTHON` | Python SDK đã có, nếu không có thì Python hiện chạy API | Đường dẫn Python có `vnstock==4.0.9` và `vnai==2.6.3` |
 | `FINMIND_DATA_ROOT` | Gốc repo | Gốc chứa dữ liệu và runtime mới |

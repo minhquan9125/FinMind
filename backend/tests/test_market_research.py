@@ -487,6 +487,35 @@ def test_quote_failure_uses_cache_with_explicit_freshness_warning():
     assert 'private' not in str(result)
 
 
+def _saved_only_payload(unit):
+    data = quote()
+    data.pop('live')  # no valid live overlay: the source fetch failed, only the saved file remains
+    if unit:
+        data['bars'][0]['price_unit'] = unit
+    return data
+
+
+def test_failed_live_fetch_reports_saved_price_when_the_bar_declares_its_unit():
+    class FailedLive(Live):
+        def refresh(self, symbol): raise RuntimeError('source down')
+    live = FailedLive(_saved_only_payload('thousand_vnd'))
+    result = asyncio.run(MarketResearch(Repository(), services=lambda: (live, None), now=lambda: NOW)
+                         .lookup(scope('giá FPT hôm nay')))
+    assert result['status'] == 'PRICE_READY'
+    assert result['freshness']['stale'] is True
+    assert result['draft'] == 'Giá FPT ngày 23/10/2026: 82,500 VND.'
+
+
+def test_failed_live_fetch_still_refuses_to_guess_an_undeclared_unit():
+    class FailedLive(Live):
+        def refresh(self, symbol): raise RuntimeError('source down')
+    live = FailedLive(_saved_only_payload(None))
+    result = asyncio.run(MarketResearch(Repository(), services=lambda: (live, None), now=lambda: NOW)
+                         .lookup(scope('giá FPT hôm nay')))
+    assert result['status'] != 'PRICE_READY'
+    assert result['reason_code'] == 'PRICE_UNIT_UNVERIFIED'
+
+
 def test_router_factory_uses_configured_market_service_objects(monkeypatch):
     from src.api.routers import research_chat as api
     from src.core.config import Settings

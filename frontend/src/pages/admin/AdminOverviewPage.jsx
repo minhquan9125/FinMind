@@ -124,7 +124,7 @@ function OverviewContent({ data }) {
 
       <section>
         <div className="mb-3 flex items-center gap-3"><SectionTitle>Truy vấn gần đây</SectionTitle><StatusBadge tone={data.telemetry ? "success" : "warning"}>{data.telemetry ? "Dữ liệu thật" : "Chưa đọc được thống kê"}</StatusBadge></div>
-        <p className="-mt-2 mb-3 text-[13px] text-slate-500">Năm truy vấn Chat thật gần nhất. Evidence Gate và Verifier chưa nối phép đo nên để trống; “có câu trả lời” chưa đồng nghĩa với đã kiểm chứng toàn bộ nội dung.</p>
+        <p className="-mt-2 mb-3 text-[13px] text-slate-500">Năm truy vấn Chat thật gần nhất. Mở một truy vấn để xem tuyến xử lý, kiểm tra nguồn và trạng thái Gate/Verifier của từng lượt; “có câu trả lời” chưa đồng nghĩa với đã kiểm chứng toàn bộ nội dung.</p>
         <DataTable columns={traceColumns} rows={data.recentTraces} emptyMessage={data.telemetry ? "Chưa có truy vấn Chat thật kể từ khi bật thống kê" : "Chưa đọc được thống kê truy vấn"} />
       </section>
 

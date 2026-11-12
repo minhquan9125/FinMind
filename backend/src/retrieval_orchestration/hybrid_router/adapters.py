@@ -465,7 +465,7 @@ class LiveGraphAdapter:
             return AdapterResult(task.id, "GRAPH", "SYSTEM_UNAVAILABLE",
                                  f"GRAPH_ERROR_{type(exc).__name__}", provenance="LIVE/GRAPH")
         if task.params.get("position_code") or task.params.get("event_type"):
-            from .decision_engine import personnel_filters, _normalize
+            from .decision_engine import personnel_filters, _normalize, position_matches
             filtered = []
             for path in paths:
                 edges = path.get("relations") or []
@@ -474,7 +474,7 @@ class LiveGraphAdapter:
                     role = attrs.get("position_code") or personnel_filters(_normalize(attrs.get("position", ""))).get("position_code")
                     event = attrs.get("event_type") or attrs.get("proposed_stage") or {
                         "APPOINTS": "APPOINTED", "DISMISSES": "DISMISSED"}.get(edge.get("relation_type"))
-                    return ((not task.params.get("position_code") or role == task.params["position_code"])
+                    return (position_matches(attrs.get('position'), task.params.get('position_code'), role)
                             and (not task.params.get("event_type") or event == task.params["event_type"]))
                 if edges and all(matches(edge) for edge in edges):
                     filtered.append(path)

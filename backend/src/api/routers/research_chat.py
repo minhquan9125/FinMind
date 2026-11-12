@@ -44,20 +44,34 @@ def get_store() -> PostgresSessionStore:
         from ...documents.admin_ingestion import Queue
         limits = Limits.load()
         provider = None
-        if settings.gemini_api_key.get_secret_value() and settings.b1_gemini_free_tier_confirmed:
-            provider = GeminiProvider(limits, api_key=settings.gemini_api_key.get_secret_value(),
-                                      free_tier_confirmed=True)
+        from ...b1_answering.providers.key_pool import parse_keys, set_active
+        from ...b1_answering.providers.key_store import set_key_source
+        keys = parse_keys(settings.gemini_api_key.get_secret_value(), settings.gemini_api_keys.get_secret_value())
+        from ...b1_answering.providers.key_store import CachedKeys, KeyStore
+        key_source = CachedKeys(keys, KeyStore(settings.admin_ingestion_directory, settings.gemini_keys_secret.get_secret_value()))
+        start_keys = key_source()[0]            # .env keys plus enabled keys added from the admin page
+        if start_keys and settings.b1_gemini_free_tier_confirmed:
+            provider = GeminiProvider(limits, api_keys=start_keys, key_source=key_source, free_tier_confirmed=True)
+            set_active(provider.pool)
+            set_key_source(key_source)
         retriever = DenseEvidenceRetriever(get_pool(), get_embedding_service(),
                                    corpus_version_id=settings.research_corpus_version_id,
                                    model_ref=settings.embedding_model_ref,
                                    backend=settings.research_retrieval_backend,
                                    corpus_resolver=lambda: Queue(settings.admin_ingestion_directory).serving_corpus(settings.research_corpus_version_id))
+        from ...retrieval_orchestration.web_chat_router import WebChatRouter, Neo4jChatRetriever
+        from .hybrid_router import get_router_engine
+        from .graph_viewer import get_graph_reader, get_ticker_map
+        routed = WebChatRouter(get_router_engine, Neo4jChatRetriever(retriever, get_graph_reader, get_ticker_map),
+                               retriever, timeout=min(settings.research_retrieval_timeout_seconds, 30))
+        from ...documents.limit_overrides import CachedLimits
         engine = LiveResearchService(
             retriever,
-            provider=provider, limits=limits,
+            provider=provider, limits=limits, limits_source=CachedLimits(settings.admin_ingestion_directory),
             retrieval_timeout=settings.research_retrieval_timeout_seconds,
             market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
+            hybrid_router=routed,
         )
         from ...documents.research_metrics import ObservedResearch, ResearchMetrics
         engine = ObservedResearch(engine, ResearchMetrics(settings.admin_ingestion_directory))

@@ -17,7 +17,8 @@ test("overview preserves original KPI slots without inventing telemetry or budge
   assert.deepEqual(data.recentTraces, []);
   assert.equal(data.services.length, 7);
   assert.equal(data.services.find(s => s.id === "vector").label, "Đã kết nối");
-  assert.equal(data.services.find(s => s.id === "graph").label, "Chưa triển khai giám sát");
+  assert.equal(data.services.find(s => s.id === "graph").label, "Chưa có lượt hỏi nào được ghi nhận hôm nay");
+  assert.equal(data.services.find(s => s.id === "verifier").tone, "neutral");
   assert.equal(data.alerts.length, 2);
 });
 
@@ -50,4 +51,13 @@ test("failed storage and journal remain explicit, review rejection is not a fail
   assert.equal(reviewed.journalAvailable, true);
   assert.match(reviewed.activities[0].text, /Đã từ chối/);
   assert.equal(reviewed.activities[0].ok, undefined);
+});
+
+test("service cards use the measured pipeline numbers when telemetry carries them", () => {
+  const pipeline = { requests_observed: 4, graph_calls: 2, vector_calls: 3, routes: { BOTH: 2, VECTOR: 2 },
+    grounded_answers: 3, drafts_rejected_by_source_check: 1, b3: { b3_evidence_gate: false, b3_answer_verification: false } };
+  const data = overviewData({ ...fixture, telemetry: { status: "available", total: 4, outcomes: {}, input_tokens: 0, output_tokens: 0,
+    total_tokens: 0, unknown_calls: 0, models: [], recent: [], tracking_started_at: "2026-11-01T00:00:00Z", pipeline } }, { items: [] });
+  assert.equal(data.services.find(s => s.id === "graph").label, "2 lần gọi graph hôm nay");
+  assert.equal(data.services.find(s => s.id === "gate").label, "Tắt theo cấu hình");
 });

@@ -201,15 +201,18 @@ async def vector_search_filtered(
                 "t.locator_json->>'published_at', t.locator_json->>'section', "
                 "d.title) ILIKE '%' || $3 || '%'"
             )
+            period_predicate = ("CASE WHEN d.doc_type='ANNUAL_REPORT' "
+                "THEN t.locator_json->>'reporting_year'=$3 ELSE (" + period_predicate + ") END")
             rows = await conn.fetch(
                 f'''
                 SELECT t.chunk_id::text, t.document_id::text, t.chunk_index,
                        t.content_hash, t.locator_json, t.index_version_id::text, i.chunker_version,
                        d.title, d.doc_type, d.sha256 AS source_sha256,
                        coalesce(c.symbol, t.locator_json->>'symbol') AS company_symbol,
-                       coalesce(p.period_code, t.locator_json->>'period_code',
+                       CASE WHEN d.doc_type='ANNUAL_REPORT' THEN t.locator_json->>'reporting_year'
+                       ELSE coalesce(p.period_code, t.locator_json->>'period_code',
                                 t.locator_json->>'published_at',
-                                t.locator_json->>'section') AS period,
+                                t.locator_json->>'section') END AS period,
                        1-(t.embedding <=> $5::vector) AS score
                 FROM public.text_chunks t
                 JOIN public.index_versions i USING(index_version_id)

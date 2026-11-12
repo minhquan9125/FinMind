@@ -57,7 +57,8 @@ async def market_lifespan(app):
         service = LiveCoordinator(lambda symbols: sdk(symbols, automatic=True), SessionGate(root), FileMarketDataRepository(root),
                                   manual_fetch=sdk,
                                   history_fetch=sdk.history,
-                                  poll_seconds=float(os.getenv("FINMIND_LIVE_POLL_SECONDS", "5")))
+                                  poll_seconds=float(os.getenv("FINMIND_LIVE_POLL_SECONDS", "5")),
+                                  max_wait_seconds=float(os.getenv("FINMIND_LIVE_MAX_WAIT_SECONDS", "8")))
         app.state.live = service
 
         async def collect():

@@ -59,7 +59,10 @@ async def run_cli(args):
         key = os.environ.get('GEMINI_API_KEY')
         if not key and sys.stdin.isatty():
             key = getpass.getpass('Nhập Gemini API key (không hiển thị, không lưu): ')
-        provider = GeminiProvider(limits, api_key=key, free_tier_confirmed=True)
+        from src.b1_answering.providers.key_pool import parse_keys
+        extra = parse_keys(key, os.environ.get('GEMINI_API_KEYS'))
+        provider = (GeminiProvider(limits, api_keys=extra, free_tier_confirmed=True) if len(extra) > 1
+                    else GeminiProvider(limits, api_key=key, free_tier_confirmed=True))
         print('Gemini Flash-Lite — project Free Tier đã xác nhận; retrieval vẫn dùng dữ liệu mẫu.', file=banner)
     else:
         provider = FixtureProvider(limits)

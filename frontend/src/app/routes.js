@@ -232,6 +232,16 @@ const routes = [
     roles: ["admin"],
   },
 
+  // ─── 12b. Admin — Đánh giá chất lượng Chat (bộ câu hỏi chuẩn) ────────────
+  {
+    path: "/admin/evaluation",
+    component: "admin/AdminEvaluationPage",
+    category: "Admin",
+    label: "Đánh giá chất lượng",
+    auth: true,
+    roles: ["admin"],
+  },
+
   // ─── 13. Admin — Nhật ký kiểm toán ───────────────────────────────────────
   //   Query params: ?trace=...&config=...&corpus=...&source=...&event=...
   {

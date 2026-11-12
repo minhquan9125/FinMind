@@ -134,7 +134,7 @@ def test_numbered_company_choice_is_not_mistaken_for_day_of_month():
     assert first['reason_code'] == 'MISSING_COMPANY'
     result = analyze_live('1', first['scope'], today=TODAY)
     assert result['decision'] == 'MARKET_LOOKUP'
-    assert result['scope']['companies'] == ['FPT']
+    assert result['scope']['companies'] == ['VCB']
     assert result['scope']['_market_request']['day'] == '2026-10-24'
 
 

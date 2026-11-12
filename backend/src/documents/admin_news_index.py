@@ -150,6 +150,10 @@ async def activate(queue, ident, settings):
                            shared_chunk_count=manifest.get('manifest',{}).get('chunk_count')),
                            corpus_id=manifest.get('corpus_version_id') if base else None,
                            default_corpus=getattr(settings,'research_corpus_version_id',None),expected_base=base)
+        if base:
+            # Tell the other machines which corpus is now served; never fails the activation.
+            from .shared_serving import best_effort_publish
+            await best_effort_publish(conn, manifest.get('corpus_version_id'), ident, str(job.get('actor') or 'admin'))
     finally: await conn.close()
 
 

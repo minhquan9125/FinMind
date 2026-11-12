@@ -18,7 +18,8 @@ from pathlib import Path
 TZ = timezone(timedelta(hours=7))
 DEFAULT = {'enabled': False, 'hour': 7, 'limit': 100, 'provider': 'fireant',
            'symbols': ['VCB','BID','CTG','MBB','TCB','FPT','CMG','ELC','ITD','ICT'],
-           'max_pages': 5, 'include_market': True, 'auto_approve': False}
+           'max_pages': 5, 'include_market': True, 'auto_approve': False,
+           'auto_index': False, 'auto_activate': False}
 
 
 def source_attachments(payload):
@@ -141,6 +142,11 @@ class Queue:
             return {**DEFAULT, **json.loads(c.execute('SELECT value FROM config WHERE id=1').fetchone()[0])}
 
     def serving_corpus(self, default):
+        # The pointer shared through PostgreSQL decides when it is known, so every machine serves
+        # the same corpus; otherwise this machine's own pointer, then the configured default.
+        from .shared_serving import shared_pointer
+        shared = shared_pointer().corpus_id()
+        if shared: return shared
         with self.connect() as c:
             row = c.execute('SELECT corpus_id FROM serving_corpus WHERE id=1').fetchone()
             return row[0] if row else default
@@ -157,8 +163,9 @@ class Queue:
             if not row or row['status']=='INTERRUPTED': raise ValueError('JOB_INTERRUPTED')
             data=json.loads(row['details']);data.update(details)
             if corpus_id:
+                from .shared_serving import shared_pointer
                 current=c.execute('SELECT corpus_id FROM serving_corpus WHERE id=1').fetchone()
-                current=current[0] if current else default_corpus
+                current=shared_pointer().corpus_id() or (current[0] if current else default_corpus)
                 if current not in (expected_base,corpus_id): raise ValueError('SHARED_BASE_CHANGED_REBUILD_REQUIRED')
                 c.execute('INSERT INTO serving_corpus VALUES(1,?,?) ON CONFLICT(id) DO UPDATE SET corpus_id=excluded.corpus_id,index_id=excluded.index_id',
                           (str(uuid.UUID(corpus_id)),str(uuid.UUID(ident))))
@@ -265,15 +272,17 @@ class Queue:
     def overview(self, default_corpus):
         """Read consistent counts without loading article bodies or job manifests."""
         with self.connect() as c:
-            counts = {r[0]: r[1] for r in c.execute('SELECT status,count(*) FROM articles GROUP BY status')}
+            counts = {r[0]: r[1] for r in c.execute("SELECT status,count(*) FROM articles WHERE status!='DELETED' GROUP BY status")}
             jobs = {r[0]: r[1] for r in c.execute('SELECT status,count(*) FROM jobs GROUP BY status')}
             recent = [dict(r) for r in c.execute('''SELECT id,kind,status,created_at,updated_at
                 FROM jobs ORDER BY created_at DESC,id DESC LIMIT 8''')]
             serving = c.execute('SELECT corpus_id FROM serving_corpus WHERE id=1').fetchone()
+            from .shared_serving import shared_pointer
+            serving = (shared_pointer().corpus_id(),) if shared_pointer().corpus_id() else serving
             config = {**DEFAULT, **json.loads(c.execute('SELECT value FROM config WHERE id=1').fetchone()[0])}
         return {'counts': counts, 'job_counts': jobs, 'recent_jobs': recent,
                 'corpus_id': serving[0] if serving else default_corpus,
-                'schedule': {k: config[k] for k in ('enabled','hour','limit','auto_approve')},
+                'schedule': {k: config[k] for k in ('enabled','hour','limit','auto_approve','auto_index','auto_activate')},
                 'observed_at': now()}
 
     def audit_page(self, offset=0, limit=30, category=None):
@@ -306,7 +315,7 @@ class Queue:
     def articles(self, status=None, offset=0, limit=50):
         with self.connect() as c:
             rows = c.execute('SELECT id,status,created_at,payload FROM articles ' +
-                ('WHERE status=? ' if status else '') + 'ORDER BY created_at DESC,id LIMIT ? OFFSET ?',
+                ('WHERE status=? ' if status else "WHERE status!='DELETED' ") + 'ORDER BY created_at DESC,id LIMIT ? OFFSET ?',
                 ((status,) if status else ()) + (limit, offset)).fetchall()
         return [{k: row[k] for k in ('id', 'status', 'created_at')} |
                 {k: json.loads(row['payload']).get(k) for k in ('title', 'url', 'source', 'published_at', 'symbols')} |
@@ -316,12 +325,12 @@ class Queue:
 
     def article_count(self, status=None):
         with self.connect() as c:
-            return c.execute('SELECT count(*) FROM articles' + (' WHERE status=?' if status else ''),
+            return c.execute('SELECT count(*) FROM articles' + (' WHERE status=?' if status else " WHERE status!='DELETED'"),
                              (status,) if status else ()).fetchone()[0]
 
     def selection(self):
         with self.connect() as c:
-            counts = {r['status']:r['n'] for r in c.execute('SELECT status,count(*) AS n FROM articles GROUP BY status')}
+            counts = {r['status']:r['n'] for r in c.execute("SELECT status,count(*) AS n FROM articles WHERE status!='DELETED' GROUP BY status")}
             ids = [r[0] for r in c.execute("SELECT id FROM articles WHERE status='APPROVED' ORDER BY created_at,id LIMIT 500")]
         return {'counts':counts,'approved_ids':ids,'selection_limit':500}
 
@@ -370,7 +379,7 @@ class Queue:
     def article(self, ident):
         with self.connect() as c:
             row = c.execute('SELECT * FROM articles WHERE id=?', (ident,)).fetchone()
-            if not row: raise ValueError('ARTICLE_NOT_FOUND')
+            if not row or row['status'] == 'DELETED': raise ValueError('ARTICLE_NOT_FOUND')
             history = [dict(r) for r in c.execute('SELECT * FROM reviews WHERE article_id=? ORDER BY id', (ident,))]
             payload = json.loads(row['payload'])
             replacement = c.execute("SELECT id FROM articles WHERE json_extract(payload,'$.extraction.parent_article_id')=? LIMIT 1", (ident,)).fetchone()
@@ -425,6 +434,33 @@ class Queue:
         with self.connect() as c:
             for aid in job['details']['article_ids']:
                 c.execute("UPDATE articles SET status='INDEXED' WHERE id=? AND status='APPROVED'", (aid,))
+
+    def delete_articles(self, actor, article_ids):
+        """Remove approved, not-yet-indexed articles from the queue.
+
+        The content is erased but a DELETED tombstone keeps the digest, so the next crawl does not
+        import the same article again. Articles already written to the shared DB (INDEXED) and
+        articles inside a stored-but-not-activated index job are never touched here.
+        Returns {'deleted': [...], 'skipped': [{'id', 'reason'}]}.
+        """
+        ids = list(dict.fromkeys(article_ids))
+        deleted, skipped = [], []
+        with self.connect() as c:
+            if c.execute("SELECT 1 FROM jobs WHERE status IN ('QUEUED','RUNNING')").fetchone():
+                raise ValueError('ANOTHER_JOB_IS_RUNNING')
+            held = set()
+            for (details,) in c.execute("SELECT details FROM jobs WHERE kind='INDEX' AND status='INDEXED'"):
+                held.update(json.loads(details).get('article_ids', []))
+            for aid in ids:
+                row = c.execute('SELECT status FROM articles WHERE id=?', (aid,)).fetchone()
+                if not row or row[0] == 'DELETED': skipped.append({'id': aid, 'reason': 'NOT_FOUND'})
+                elif row[0] != 'APPROVED': skipped.append({'id': aid, 'reason': 'NOT_APPROVED'})
+                elif aid in held: skipped.append({'id': aid, 'reason': 'IN_INDEX_JOB'})
+                else:
+                    c.execute("UPDATE articles SET status='DELETED',payload=? WHERE id=?", (canonical({'deleted': True}), aid))
+                    c.execute('INSERT INTO audit(actor,action,resource,at) VALUES(?,?,?,?)', (actor, 'DELETE_ARTICLE', aid, now()))
+                    deleted.append(aid)
+        return {'deleted': deleted, 'skipped': skipped}
 
     def audit(self, actor, action, resource):
         with self.connect() as c:

@@ -6,6 +6,7 @@ import { createSession, listSessions, getSession, sendMessage, resumeSession } f
 import { citationView, modeLabel } from './citationView.js';
 import { clarificationChoices } from './clarificationView.js';
 import ChatActivity from './ChatActivity.jsx';
+import { scopeChips, outcomeNotice, followUps } from './scopeView.js';
 
 const statusLabels = { ASK_CLARIFICATION: "Cần làm rõ", EVIDENCE_READY: "Có bằng chứng mẫu",
   CLARIFICATION_STALLED: 'Cần chọn thông tin cụ thể',
@@ -40,6 +41,8 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
   const view = model.owner === owner ? model : empty(owner);
   const input = draft.owner === owner ? draft.text : "";
   const snapshot = view.snapshot;
+  const lastResult = [...(snapshot?.messages || [])].reverse().find(m => m.role !== "user" && m.result)?.result;
+  const chips = scopeChips(lastResult);
   const valid = epoch => generation.current === epoch;
   function adopt(data) {
     setModel(previous => ({ ...previous, snapshot: data }));
@@ -161,6 +164,12 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
     <div className="shrink-0 border-b border-slate-100 px-4 py-3">
       <p className="text-xs text-amber-800">{modeLabel(snapshot)}</p>
       <p className="mt-1 whitespace-pre-wrap break-words text-sm text-slate-600">{snapshot?.context || "Nhập câu hỏi để bắt đầu. Bạn có thể bổ sung mã, kỳ hoặc chỉ tiêu ở lượt sau."}</p>
+      {chips.length > 0 && <ul aria-label="Phạm vi đang hỏi" className="mt-2 flex flex-wrap items-center gap-2">
+        <li className="text-xs text-slate-500">Đang hỏi về:</li>
+        {chips.map(chip => <li key={chip.key} className="rounded-full bg-blue-50 px-2.5 py-1 text-xs text-blue-900">
+          <span className="text-blue-700">{chip.label}:</span> {chip.value}
+        </li>)}
+      </ul>}
     </div>
     <div ref={scroll} className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4" role="log" aria-label="Các lượt hỏi đáp" aria-live="polite">
       {!snapshot?.messages.length && !view.loading && <p className="py-8 text-center text-sm text-slate-500">Bạn muốn tra cứu điều gì?</p>}
@@ -169,6 +178,12 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
           <p className={`mb-1 text-xs font-semibold ${message.role === "user" ? "text-blue-100" : "text-blue-700"}`}>{message.role === "user" ? "Bạn" : message.result?.scope?.source_type === 'PRICE' ? 'Giá cổ phiếu' : message.result?.answering?.manifest?.response_mode === 'NEWS_LIST' ? 'Tin tức' : message.result?.execution_mode === 'LIVE' && message.result?.status === 'EVIDENCE_READY' && message.result?.answering?.status !== 'DRAFT_READY' ? 'Nguồn ứng viên' : statusLabels[message.result?.answering?.status] || statusLabels[message.result?.status] || "FinMind"}</p>
           <p className="whitespace-pre-wrap break-words text-sm leading-relaxed">{message.content}</p>
           {message.result?.timings && <p className="mt-2 text-xs text-slate-500">Tìm nguồn: {message.result.timings.retrieval_seconds}s · Trả lời: {message.result.timings.answer_seconds}s · Tổng: {message.result.timings.total_seconds}s</p>}
+          {outcomeNotice(message.result) && <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">{outcomeNotice(message.result)}</p>}
+          {index === snapshot.messages.length - 1 && followUps(message.result, clarificationChoices(message.result).length > 0).length > 0 && <div className="mt-3 flex flex-wrap gap-2" aria-label="Gợi ý tiếp theo">
+            {followUps(message.result, clarificationChoices(message.result).length > 0).map(item => <button key={item.id} type="button"
+              disabled={view.loading} onClick={() => submitText(item.reply)}
+              className="min-h-11 rounded-full border border-blue-200 bg-white px-3 py-1 text-xs text-blue-800 hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 disabled:opacity-50">{item.label}</button>)}
+          </div>}
           {clarificationChoices(message.result).length > 0 && <div className="mt-3 grid gap-2 sm:grid-cols-2" aria-label="Lựa chọn làm rõ câu hỏi">
             {clarificationChoices(message.result).map(option => <button key={option.id} type="button"
               disabled={view.loading || index !== snapshot.messages.length - 1}
