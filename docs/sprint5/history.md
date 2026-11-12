@@ -217,3 +217,10 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   Nhãn resolution riêng, confidence=null; không thay raw ranking, ngưỡng
   0,65/0,08 hoặc router. Chưa calibration, chưa tích hợp consumer 04.2/E2E.
 - [Báo cáo tổng hợp và giới hạn](S5-WBS04.1-objective-results.md).
+
+## 12/11/2026 — Chuẩn bị review trên nhánh
+
+- Bổ sung REVIEW-REQUEST: tóm tắt năm commit thử nghiệm, kết quả, file cần đọc,
+  câu hỏi review logic/bằng chứng cho Hưng và ranh giới consumer cho Huyền.
+- Nhân xác nhận đẩy cả code, vector, dữ liệu kiểm thử và báo cáo lên nhánh
+  `nhan-sprint-501` để nhóm review; không coi push là hoàn thành tích hợp router.

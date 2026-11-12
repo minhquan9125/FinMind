@@ -1,5 +1,7 @@
 # Bàn giao review S5-WBS04.1 — cập nhật 12/11/2026
 
+Bắt đầu review trên nhánh tại [đã làm gì và cần review gì](S5-WBS04.1-REVIEW-REQUEST.md).
+
 Cập nhật mới nhất: [báo cáo quyết định theo từng yêu cầu](S5-WBS04.1-objective-results.md).
 Ứng viên V3 sửa T038, đạt 41/47 hồi quy, 32/32 kiểm soát; bộ mới sau đóng băng
 25/28. Có 101 unit test và audit tái tạo từ vector. Đây là ứng viên offline,
