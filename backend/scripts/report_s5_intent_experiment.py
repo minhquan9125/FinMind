@@ -85,7 +85,7 @@ def main():
               '--output outputs/s5_intent_experiment_20261111/run02` (từ chối ghi đè); '
               'cần cache BGE-M3 đúng revision và thiết lập offline/CPU như tài liệu 04.1. '
               'Bản gốc, run01 cũ và ngưỡng không thay đổi.', '']
-    (ROOT/'docs/sprint5/S5-WBS04.1-improvement-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
+    (ROOT/'docs/sprint5/archive/S5-WBS04.1-improvement-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
 
 
 if __name__=='__main__':

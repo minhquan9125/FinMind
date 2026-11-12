@@ -88,7 +88,7 @@ def main():
               'Không chạy inference lần hai để lựa chọn lại kết quả.',
               '- Nguồn: `outputs/s5_intent_additive_20261112/` gồm method, selection, '
               'thư viện DRAFT và vector, kết quả từng câu, summary later-check và audit.', '']
-    (ROOT/'docs/sprint5/S5-WBS04.1-additive-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
+    (ROOT/'docs/sprint5/archive/S5-WBS04.1-additive-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
 
 
 if __name__=='__main__':

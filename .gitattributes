@@ -69,3 +69,5 @@ outputs/s5_intent_news_20261112/**/*.json text eol=lf
 outputs/s5_intent_news_20261112/**/*.npy binary
 docs/sprint5/S5-WBS04.1-news-mixed-results.md text eol=lf
 backend/src/retrieval_orchestration/intent_library.py text eol=lf
+docs/sprint5/archive/*.md text eol=lf
+docs/sprint5/contracts/*.md text eol=lf

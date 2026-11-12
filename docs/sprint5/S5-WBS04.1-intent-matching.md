@@ -106,7 +106,7 @@ thành p95 hoặc độ trễ mỗi request WebChat. Không thay đổi corpus/v
 Chất lượng top-1 còn thấp, nhất là REPORT_CONTENT và MIXED. Đây là giới hạn của
 baseline đã đo, không phải bằng chứng chất lượng đạt chỉ vì unit test qua.
 Chức năng trả nhóm/điểm đã có; chưa nên dùng nhãn đứng đầu để tự động chọn route.
-Xem [phân tích toàn bộ ca sai](S5-WBS04.1-baseline-results.md).
+Xem [phân tích toàn bộ ca sai](archive/S5-WBS04.1-baseline-results.md).
 Các metrics đã được tính lại trực tiếp từ results.jsonl bằng phép đếm riêng và
 khớp summary; không chỉ đọc giá trị do hàm tổng hợp ban đầu trả ra.
 

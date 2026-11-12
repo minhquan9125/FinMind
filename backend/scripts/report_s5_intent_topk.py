@@ -28,7 +28,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run', type=Path, default=ROOT / 'outputs/s5_wbs041_20261110/run01')
     parser.add_argument('--output', type=Path, default=ROOT / 'outputs/s5_wbs041_topk_20261111')
-    parser.add_argument('--report', type=Path, default=ROOT / 'docs/sprint5/S5-WBS04.1-top1-top3-top5-report.md')
+    parser.add_argument('--report', type=Path, default=ROOT / 'docs/sprint5/archive/S5-WBS04.1-top1-top3-top5-report.md')
     args = parser.parse_args()
     files = ['method.json', 'test-input.jsonl', 'results.jsonl', 'summary.json']
     fingerprints = {name: digest(args.run / name) for name in files}

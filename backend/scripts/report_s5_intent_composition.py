@@ -69,7 +69,7 @@ def main():
               '`python backend/scripts/audit_s5_intent_composition.py` tính lại từ vector đã lưu, '
               'không cần nạp BGE-M3. `python backend/scripts/report_s5_intent_composition.py` '
               'tạo lại báo cáo. Source: outputs/s5_intent_composition_20261112.', '']
-    (ROOT/'docs/sprint5/S5-WBS04.1-composition-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
+    (ROOT/'docs/sprint5/archive/S5-WBS04.1-composition-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
 
 
 if __name__=='__main__': main()

@@ -49,7 +49,7 @@ Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
 - **Hưng đã xác nhận draft3 đạt review nội dung**, theo phản hồi Nhân chuyển lại.
 - Có validator, 14 bài test dữ liệu và hướng dẫn; đã chạy đạt từ ZIP giải nén mới.
 - Commit chính: `ba6459dd`, `d4cf4d00`, `7aa473c6`, `bd747663`, `c7c57962`, `d36295d2`.
-- Bàn giao: [bảng review](S5-WBS03.2-samples-and-tests.md), [hướng dẫn](S5-WBS03.2-HANDOFF.md),
+- Bàn giao: [bảng review](S5-WBS03.2-samples-and-tests.md), [hướng dẫn](archive/S5-WBS03.2-HANDOFF.md),
   [manifest](intent-dataset-v1/manifest.json), [câu mẫu](intent-dataset-v1/library.jsonl),
   [câu test](intent-dataset-v1/test.jsonl).
 
@@ -70,7 +70,7 @@ Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
 - Tổng **28 bài test đạt**: 14 dữ liệu, 14 artifact. ZIP review đã được giải nén
   sang thư mục mới và chạy lại kiểm tra đọc artifact cùng 28 test, đều đạt.
 - Commit chính: `ff295719`, `eb5397e5`.
-- Bàn giao: [báo cáo](S5-WBS03.3-vector-library.md), [hướng dẫn review](S5-WBS03.3-HANDOFF.md),
+- Bàn giao: [báo cáo](S5-WBS03.3-vector-library.md), [hướng dẫn review](archive/S5-WBS03.3-HANDOFF.md),
   [artifact](../../outputs/s5_wbs033_20261110/intent-library-v1),
   [bằng chứng model thật](../../outputs/s5_wbs033_20261110/verification.json),
   [kiểm tra trước review](../../outputs/s5_wbs033_20261110/pre-review-summary.json).
@@ -126,7 +126,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
 - Chức năng đối chiếu đã có bằng chứng chạy thật; chất lượng top-1 còn thấp,
   chưa coi là nghiệm thu chất lượng phân loại hoặc tự động điều phối.
 - Bàn giao: [hợp đồng và cách chạy](S5-WBS04.1-intent-matching.md),
-  [kết quả và ca sai](S5-WBS04.1-baseline-results.md),
+  [kết quả và ca sai](archive/S5-WBS04.1-baseline-results.md),
   [đầu ra run01](../../outputs/s5_wbs041_20261110/run01),
   [biên bản kiểm tra](../../outputs/s5_wbs041_20261110/verification.json).
 
@@ -152,7 +152,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   năm câu so với top-3; vẫn bỏ sót T027, nhãn ENTITY_RELATION ở hạng 6.
 - Báo cáo theo từng nhãn, hình thức câu, độ đầy đủ ngữ cảnh và giới hạn:
   top-5 trả 5/7 nhãn, không phải accuracy chọn nhãn cuối.
-- [Báo cáo](S5-WBS04.1-top1-top3-top5-report.md), script
+- [Báo cáo](archive/S5-WBS04.1-top1-top3-top5-report.md), script
   `backend/scripts/report_s5_intent_topk.py`, dữ liệu `outputs/s5_wbs041_topk_20261111/comparison.json`.
 
 ## 11/11/2026 — Đối chứng sau chẩn đoán của Huyền
@@ -167,7 +167,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
 - Masking không được mặc định áp dụng: có regression và sai tuyến vượt ngưỡng.
 - 61 unit test đạt (54 cũ + 7 mới); kiểm chứng độc lập lại 592 bảng thứ hạng từ
   vector model thật, sai lệch cosine tối đa 1,23e-15; source checksum giữ nguyên.
-- [Kế hoạch](S5-WBS04.1-improvement-plan.md), [kết quả và giới hạn](S5-WBS04.1-improvement-results.md).
+- [Kế hoạch](S5-WBS04.1-improvement-plan.md), [kết quả và giới hạn](archive/S5-WBS04.1-improvement-results.md).
 
 ## 12/11/2026 — Giữ mẫu gốc, bổ sung và kiểm tra sau khi đóng băng
 
@@ -182,7 +182,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
 - 66 test đạt. Kiểm chứng độc lập 500 bảng thứ hạng từ vector thật, sai lệch tối đa
   1,23e-15; xác nhận nguồn/byte vector gốc không đổi. Chưa triển khai ứng viên mới.
 - Không sửa ngưỡng 0,65/0,08, payload top-3 hoặc code router/WebChat của Huyền.
-- [Kế hoạch](S5-WBS04.1-additive-plan.md), [báo cáo](S5-WBS04.1-additive-results.md).
+- [Kế hoạch](S5-WBS04.1-additive-plan.md), [báo cáo](archive/S5-WBS04.1-additive-results.md).
 
 ## 12/11/2026 — Thử classifier và centroid theo kế hoạch đã chốt
 
@@ -199,7 +199,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   độc lập; mutation bỏ guard policy bị test bắt. Không đổi matcher/vector gốc.
 - Hai lỗi ghi báo cáo/pointer đã sửa, giữ bằng chứng lượt lỗi; tham số và CV hai lần
   giống nhau từng phần tử, không fit lần ba. Xem recovery-note.json.
-- [Kết quả](S5-WBS04.1-scorer-results.md), [contract](S5-WBS04.1-scorer-contract.md),
+- [Kết quả](archive/S5-WBS04.1-scorer-results.md), [contract](contracts/S5-WBS04.1-scorer-contract.md),
   [kế hoạch và điểm dừng](../../tasks/plan.md).
 
 ## 12/11/2026 — Kiểm tra đơn/kết hợp và quy tắc mục tiêu
@@ -216,7 +216,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
 - 101 unit test; audit V3 tái hiện 278 quyết định và tái tính điểm từ vector.
   Nhãn resolution riêng, confidence=null; không thay raw ranking, ngưỡng
   0,65/0,08 hoặc router. Chưa calibration, chưa tích hợp consumer 04.2/E2E.
-- [Báo cáo tổng hợp và giới hạn](S5-WBS04.1-objective-results.md).
+- [Báo cáo tổng hợp và giới hạn](archive/S5-WBS04.1-objective-results.md).
 
 ## 12/11/2026 — Chuẩn bị review trên nhánh
 
@@ -237,7 +237,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
 - Viết đề xuất ranh giới kế hoạch lợi nhuận và contract consumer ở DRAFT;
   không tự sửa schema APPROVED hoặc source 04.2 chưa có tại local.
 - Tạm dừng task 01.2 theo yêu cầu Nhân; chưa tích hợp router/E2E.
-- [Kết quả và phạm vi cần review lại](S5-WBS04.1-reviewfix-results.md).
+- [Kết quả và phạm vi cần review lại](archive/S5-WBS04.1-reviewfix-results.md).
 
 ## 12/11/2026 — Nhận diện yêu cầu lấy giá trị tài chính
 
@@ -251,7 +251,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   sau phép đo, chưa giải quyết mọi trường hợp đơn/kết hợp.
 - 144/144 unit test; audit tái hiện 313 quyết định và kiểm lại điểm từ vector.
   Confidence=null, raw ranking bất biến; V3/V4 và audit cũ giữ nguyên.
-- [Báo cáo](S5-WBS04.1-numeric-results.md). Chưa calibration, chưa nối consumer
+- [Báo cáo](archive/S5-WBS04.1-numeric-results.md). Chưa calibration, chưa nối consumer
   04.2/router/Web Chat; ranh giới kế hoạch lợi nhuận vẫn chờ nhóm chốt.
 
 ## 12/11/2026 — Sửa mục tiêu bài tin và câu nhiều ý
@@ -266,3 +266,13 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   chỉ vector hóa hai đoạn mới tách. Không có ngoại lệ theo tên doanh nghiệp.
 - [Báo cáo và giới hạn](S5-WBS04.1-news-mixed-results.md). Không coi kết quả
   hồi quy là test mù. Chưa calibration, chưa tích hợp consumer/router/Web Chat.
+
+## 12/11/2026 — Gọn lại tài liệu Sprint 5
+
+- Thêm [README](README.md) để chọn đúng tài liệu; rút gọn bàn giao hiện tại.
+- Chuyển 13 bản bàn giao/báo cáo cũ vào `archive/`, hai hợp đồng vào `contracts/`;
+  giữ thêm bản bàn giao dài trước dọn để tra cứu, sửa các liên kết tương ứng.
+- Số Markdown trực tiếp trong `docs/sprint5` giảm từ 30 xuống 16. Các kế hoạch
+  đóng băng vẫn ở đường dẫn cũ để giữ checksum và khả năng chạy lại audit.
+- Điều chỉnh nơi xuất của tám script báo cáo cũ để không tạo lại file ở thư mục gốc.
+  Không đổi logic phân loại, nhãn, dữ liệu hoặc kết quả kiểm thử.

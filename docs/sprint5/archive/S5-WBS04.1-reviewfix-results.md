@@ -92,6 +92,6 @@ python -m pytest $tests -q -p no:cacheprovider
 ```
 
 Nhờ Hưng review lại module mới, đặc biệt guard danh sách AI/cloud và các ca âm.
-Nhóm/Huyền xem [đề xuất ranh giới và contract DRAFT](S5-WBS04.1-boundary-and-consumer-DRAFT.md).
+Nhóm/Huyền xem [đề xuất ranh giới và contract DRAFT](../contracts/S5-WBS04.1-boundary-and-consumer-DRAFT.md).
 Chưa đề nghị chốt tích hợp 04.2: chưa calibration, chưa có source consumer mới,
 chưa kiểm chứng E2E. Task 01.2 đang tạm dừng theo yêu cầu Nhân.

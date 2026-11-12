@@ -91,7 +91,7 @@ def main():
               'Dữ liệu thư viện mới vẫn là DRAFT; dữ liệu ít, cùng tác giả và family_id '
               'không bảo đảm không có gần nghĩa giữa các family. OOF không thay cho test mới.',
               '- Phạm vi mã: module/runner thử nghiệm; không thay code matcher/router/WebChat chính thức.', '']
-    (ROOT/'docs/sprint5/S5-WBS04.1-scorer-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
+    (ROOT/'docs/sprint5/archive/S5-WBS04.1-scorer-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
 
 
 if __name__=='__main__': main()

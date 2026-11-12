@@ -78,7 +78,7 @@ def main():
               '`python backend/scripts/audit_s5_intent_composition.py` kiểm vòng 1; '
               '`python backend/scripts/audit_s5_intent_consensus.py` kiểm V2 và bộ mới từ vector đã lưu. '
               '`python backend/scripts/report_s5_intent_consensus.py` tạo lại báo cáo này.', '']
-    (ROOT/'docs/sprint5/S5-WBS04.1-consensus-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
+    (ROOT/'docs/sprint5/archive/S5-WBS04.1-consensus-results.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
 
 
 if __name__=='__main__': main()

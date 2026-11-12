@@ -125,12 +125,12 @@ $intentTests=(Get-ChildItem backend/tests/test_s5_intent_*.py).FullName
 python -m pytest $intentTests -q -p no:cacheprovider
 ```
 
-Kế hoạch đã đóng băng: [V1](S5-WBS04.1-composition-plan.md),
-[V2](S5-WBS04.1-consensus-plan.md), [V3](S5-WBS04.1-objective-plan.md).
+Kế hoạch đã đóng băng: [V1](../S5-WBS04.1-composition-plan.md),
+[V2](../S5-WBS04.1-consensus-plan.md), [V3](../S5-WBS04.1-objective-plan.md).
 Các kết quả chưa đạt: [V1](S5-WBS04.1-composition-results.md),
 [V2](S5-WBS04.1-consensus-results.md).
 """
-    target = ROOT / 'docs/sprint5/S5-WBS04.1-objective-results.md'
+    target = ROOT / 'docs/sprint5/archive/S5-WBS04.1-objective-results.md'
     target.write_text(text, encoding='utf-8', newline='\n')
     sample = next(r for r in read('objectives-v3/results.json')['regression'] if r['id'] == 'S5-T-038')
     payload = dict(case_id=sample['id'], question=sample['question'], resolution=sample['resolution'],

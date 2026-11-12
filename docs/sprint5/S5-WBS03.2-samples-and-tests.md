@@ -9,7 +9,7 @@ của 03.2. Chưa vector hóa, chưa đo chất lượng phân loại, chưa tí
 
 ## File dùng chung
 
-- [Gói bàn giao và hướng dẫn chạy lại 14 bài kiểm tra](S5-WBS03.2-HANDOFF.md).
+- [Gói bàn giao và hướng dẫn chạy lại 14 bài kiểm tra](archive/S5-WBS03.2-HANDOFF.md).
 - [library.jsonl](intent-dataset-v1/library.jsonl): 90 câu mẫu, chỉ file này được đưa vào thư viện embedding ở 03.3 sau khi chốt nhãn.
 - [test.jsonl](intent-dataset-v1/test.jsonl): 56 câu test và nhãn kỳ vọng; không đưa vào thư viện embedding hay dùng để chỉnh câu mẫu theo kết quả từng câu.
 - [manifest.json](intent-dataset-v1/manifest.json): version, checksum dữ liệu và bảng nhãn, trạng thái duyệt, chính sách tách bộ và bảy cặp đối chiếu.

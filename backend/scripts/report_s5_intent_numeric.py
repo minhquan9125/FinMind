@@ -112,7 +112,7 @@ hoạch lợi nhuận vẫn DRAFT; nếu ABC chưa xác định được doanh n
 vẫn cần hỏi lại phạm vi, dù ý định là NUMERIC. Không dùng điểm ENTITY_RELATION
 để gắn confidence cho nhãn NUMERIC mới.
 """
-    target_path = ROOT / 'docs/sprint5/S5-WBS04.1-numeric-results.md'
+    target_path = ROOT / 'docs/sprint5/archive/S5-WBS04.1-numeric-results.md'
     target_path.write_text(text, encoding='utf-8', newline='\n')
     write_target = dict(target, advisory_only=True, legacy_threshold_compatible=False)
     (OUT / 'run01/payload-REVIEW03.json').write_text(json.dumps(write_target, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')

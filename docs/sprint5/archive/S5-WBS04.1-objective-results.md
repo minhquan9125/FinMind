@@ -104,7 +104,7 @@ $intentTests=(Get-ChildItem backend/tests/test_s5_intent_*.py).FullName
 python -m pytest $intentTests -q -p no:cacheprovider
 ```
 
-Kế hoạch đã đóng băng: [V1](S5-WBS04.1-composition-plan.md),
-[V2](S5-WBS04.1-consensus-plan.md), [V3](S5-WBS04.1-objective-plan.md).
+Kế hoạch đã đóng băng: [V1](../S5-WBS04.1-composition-plan.md),
+[V2](../S5-WBS04.1-consensus-plan.md), [V3](../S5-WBS04.1-objective-plan.md).
 Các kết quả chưa đạt: [V1](S5-WBS04.1-composition-results.md),
 [V2](S5-WBS04.1-consensus-results.md).

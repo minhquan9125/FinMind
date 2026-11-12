@@ -1,6 +1,6 @@
 # Nhờ review S5-WBS04.1 — 12/11/2026
 
-Mới nhất: [sửa mục tiêu bài tin và tách nhiều ý](S5-WBS04.1-news-mixed-results.md).
+Mới nhất: [sửa mục tiêu bài tin và tách nhiều ý](../S5-WBS04.1-news-mixed-results.md).
 NV-13/NV-19/NV-20 đã đúng; bộ 20 câu đã xem đạt 20/20 khi chạy hồi quy,
 313 hàng không có đúng→sai và 162 unit test đạt. Nhờ review mục tiêu NEWS,
 tách vế Đọc và hợp đồng evidence; chưa xác nhận router/Web Chat hoàn thành.
@@ -65,15 +65,15 @@ cùng tác giả soạn, gồm 14 khung × hai công ty; không phải test mù 
 ## File nên đọc theo thứ tự
 
 1. [Kết quả V3, ba lỗi mới và giới hạn](S5-WBS04.1-objective-results.md).
-2. [Payload T038](../../outputs/s5_intent_composition_20261112/objectives-v3/payload-T038.json).
-3. [Logic V3](../../backend/src/retrieval_orchestration/intent_request_objectives.py),
-   [đối chiếu cả câu/từng phần](../../backend/src/retrieval_orchestration/intent_request_consensus.py),
-   [test V3](../../backend/tests/test_s5_intent_objectives.py).
-4. [Kết quả từng câu V3](../../outputs/s5_intent_composition_20261112/objectives-v3/results.json),
-   [28 câu mới](../../outputs/s5_intent_composition_20261112/final-check-v3-utf8/results.json),
-   [audit V3](../../outputs/s5_intent_composition_20261112/objectives-v3/audit.json).
-5. [Hợp đồng điểm](S5-WBS04.1-scorer-contract.md),
-   [top-1/3/5](S5-WBS04.1-top1-top3-top5-report.md), [history](history.md).
+2. [Payload T038](../../../outputs/s5_intent_composition_20261112/objectives-v3/payload-T038.json).
+3. [Logic V3](../../../backend/src/retrieval_orchestration/intent_request_objectives.py),
+   [đối chiếu cả câu/từng phần](../../../backend/src/retrieval_orchestration/intent_request_consensus.py),
+   [test V3](../../../backend/tests/test_s5_intent_objectives.py).
+4. [Kết quả từng câu V3](../../../outputs/s5_intent_composition_20261112/objectives-v3/results.json),
+   [28 câu mới](../../../outputs/s5_intent_composition_20261112/final-check-v3-utf8/results.json),
+   [audit V3](../../../outputs/s5_intent_composition_20261112/objectives-v3/audit.json).
+5. [Hợp đồng điểm](../contracts/S5-WBS04.1-scorer-contract.md),
+   [top-1/3/5](S5-WBS04.1-top1-top3-top5-report.md), [history](../history.md).
 
 Hướng dẫn chạy audit và toàn bộ 101 test nằm cuối báo cáo V3. Vector và kết quả
 cần thiết được commit trực tiếp; clone nhánh là có dữ liệu kiểm chứng offline,

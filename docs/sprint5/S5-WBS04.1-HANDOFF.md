@@ -1,103 +1,48 @@
-# Bàn giao review S5-WBS04.1 — cập nhật 12/11/2026
+# Bàn giao hiện tại S5-WBS04.1 — 12/11/2026
 
-Mới nhất: [sửa NEWS/MIXED và nhận diện yêu cầu Đọc](S5-WBS04.1-news-mixed-results.md).
-20/20 trên bộ 20 câu nay đã xem, 313 hàng hồi quy không có đúng→sai;
-162 unit test ý định qua. Raw ranking giữ nguyên, evidence chưa nối runtime.
+Phụ trách: Hồ Phạm Đăng Nhân. Nhánh: `nhan-sprint-501`.
+Đây là bản chờ review, chưa xác nhận hoàn thành tích hợp router/Web Chat.
 
-Vòng trước: [xử lý câu hỏi lấy số liệu](S5-WBS04.1-numeric-results.md).
-REVIEW-03 đã sửa ở lớp quyết định; 15/15 review cũ, 17/20 kiểm tra bổ sung,
-144 test đạt. Chưa thay điểm classifier hay tích hợp consumer.
+## Gửi Hưng review
 
-Sau review Hưng: [hai lỗi đã sửa, bằng chứng V4 và phần còn mở](S5-WBS04.1-reviewfix-results.md).
-V4 vẫn là ứng viên offline; schema và hợp đồng consumer bổ sung còn chờ nhóm.
+Đọc [báo cáo sửa NEWS/MIXED mới nhất](S5-WBS04.1-news-mixed-results.md).
+Nhờ kiểm tra ba điểm:
 
-Bắt đầu review trên nhánh tại [đã làm gì và cần review gì](S5-WBS04.1-REVIEW-REQUEST.md).
+1. Phân biệt tìm/tóm tắt bài tin với lấy số liệu từ bài đã chỉ định.
+2. Tách yêu cầu mở đầu bằng Đọc và ghép các mục tiêu độc lập thành MIXED;
+   danh sách chỉ tiêu hoặc nhiều yêu cầu cùng nhãn không tự thành MIXED.
+3. Chạy lại audit để kiểm điểm gốc, vector/head và các ca đang đúng không bị sai.
 
-Cập nhật mới nhất: [báo cáo quyết định theo từng yêu cầu](S5-WBS04.1-objective-results.md).
-Ứng viên V3 sửa T038, đạt 41/47 hồi quy, 32/32 kiểm soát; bộ mới sau đóng băng
-25/28. Có 101 unit test và audit tái tạo từ vector. Đây là ứng viên offline,
-confidence chưa calibration và không dùng ngưỡng cosine cũ; chưa tích hợp 04.2.
-`base_ranking` giữ nguyên, nhãn đề xuất nằm riêng trong `resolution`.
-Gói review tổng hợp: `outputs/s5_intent_composition_20261112/S5-WBS04.1-objectives-review.zip`.
+## Đã kiểm chứng
 
-Phần dưới lưu cách chạy và kết quả baseline gốc, không thay số cũ bằng số V3.
+- NV-13/NV-19/NV-20 đã đúng; bộ 20 câu **đã xem** đạt 20/20 khi chạy hồi quy.
+- 313 hàng hồi quy: sửa đúng thêm 5 ca, không phát sinh đúng→sai so với V5.
+  Các tập cũ vẫn còn lỗi, liệt kê đầy đủ trong báo cáo; không gọi đây là test mù.
+- 162/162 unit test ý định Sprint 5 qua; audit tái tạo 313 quyết định đạt.
+- Giữ BGE-M3/revision, classifier C=1, training, gold và raw ranking.
+  Lớp quyết định trả evidence riêng với `confidence=null`.
 
-Đã triển khai trả nhóm ý định gần nhất và điểm cosine, có output từ BGE-M3 thật.
-Chưa có xác nhận review 04.1. Chất lượng top-1 còn thấp: **22/47 (46,81%)**;
-nhãn đúng trong top-3: **41/47 (87,23%)**. Không đặt ngưỡng pass sau khi xem điểm,
-không coi unit test qua là accuracy đạt và không đưa kết quả vào router/WebChat.
+Kết quả từng câu: `outputs/s5_intent_news_20261112/run01/`.
+Module: `backend/src/retrieval_orchestration/intent_news_requests.py`.
+Test: `backend/tests/test_s5_intent_news_requests.py`.
 
-## File cần xem trước
-
-- [Hợp đồng và cách chạy](S5-WBS04.1-intent-matching.md).
-- [Toàn bộ 25 ca sai, metrics và giới hạn](S5-WBS04.1-baseline-results.md).
-- [Phân tích bổ sung top-1 / top-3 / top-5](S5-WBS04.1-top1-top3-top5-report.md):
-  cùng thứ hạng run01, lần lượt 22/47, 41/47 và 46/47; không phải ba model khác nhau.
-- [Thử nghiệm cải thiện sau chẩn đoán](S5-WBS04.1-improvement-results.md):
-  bản DRAFT riêng; chưa chọn cấu hình thay baseline vì còn hồi quy và fallback cao.
-- [Thử nghiệm bổ sung trên nền mẫu gốc, 12/11](S5-WBS04.1-additive-results.md):
-  giảm hồi quy ở bộ cũ nhưng chưa tăng chất lượng chung; đã dùng một lượt bộ 28 câu
-  để dành, không còn coi bộ này là chưa chấm. Baseline vẫn giữ nguyên.
-- [Classifier và centroid, 12/11](S5-WBS04.1-scorer-results.md): dev tăng rõ,
-  nhưng còn hồi quy nên chưa thay runtime. Xem [hợp đồng điểm](S5-WBS04.1-scorer-contract.md)
-  trước khi xem xét nối vào 04.2; probability không dùng chung ngưỡng cosine cũ.
-- `outputs/s5_wbs041_20261110/run01`: method đã chọn trước inference,
-  snapshot test, kết quả từng câu và summary. Giữ nguyên run01 sau khi đo.
-- `outputs/s5_wbs041_review_20261111`: test sau rà soát và kiểm chứng lại model thật.
-
-Code chính: `intent_matching.py`; CLI câu hỏi đơn: `match_s5_intent.py`; CLI đánh
-giá: `evaluate_s5_intent_matching.py`. Thư viện mẫu vẫn là artifact 03.3 đã review.
-`component_intents` trong best_example mô tả câu mẫu, không khẳng định hệ thống đã
-trích đúng thành phần ý định của query.
-
-## Kiểm tra không cần model/DB
-
-Giải nén đầy đủ gói và mở PowerShell tại thư mục chứa backend, docs và outputs.
-Dùng Python 3.12 với NumPy 1.26.4, pytest 8.3.3, hoặc môi trường backend có sẵn.
+Từ thư mục gốc, kiểm lại artifact đã lưu bằng:
 
 ```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r docs/sprint5/requirements-s5-library-check.txt
-$env:PYTHONPATH=(Join-Path $PWD.Path 'backend')
-.\.venv\Scripts\python.exe -m pytest backend/tests/test_s5_intent_matching.py backend/tests/test_s5_intent_evaluation.py backend/tests/test_s5_intent_library.py backend/tests/test_s5_intent_dataset.py -q -p no:cacheprovider
-.\.venv\Scripts\python.exe backend/scripts/build_s5_intent_library.py --verify-only
+$env:PYTHONUTF8='1'
+$env:OPENBLAS_NUM_THREADS='4'
+.\backend\.venv\Scripts\python.exe backend/scripts/audit_s5_intent_news.py
 ```
 
-Kỳ vọng 54 passed và artifact READY 90 × 1024. Không cần Torch, model weights,
-Gemini, database hoặc web server cho hai lệnh kiểm tra này sau khi cài dependency.
+## Còn chờ nhóm
 
-## Chạy bằng BGE-M3 thật
+- Hưng review logic và cách tái tạo; chưa tự ghi là đã được duyệt.
+- Huyền đối chiếu [hợp đồng loại điểm](contracts/S5-WBS04.1-scorer-contract.md)
+  và [bốn điểm consumer/ranh giới nhãn DRAFT](contracts/S5-WBS04.1-boundary-and-consumer-DRAFT.md).
+- Chưa calibration hoặc tích hợp 04.2/router/Web Chat. Không áp ngưỡng cosine
+  0,65/0,08 lên xác suất chưa hiệu chỉnh; không gắn điểm nhãn cũ cho nhãn mới.
+  MIXED không mặc định là BOTH. Task 01.2 vẫn tạm dừng theo yêu cầu Nhân.
 
-Cần môi trường backend đầy đủ và cache đúng full revision của artifact 03.3.
-Không kèm weights hoặc .env trong gói. Dùng Python môi trường backend thay cho
-môi trường chỉ cài NumPy/pytest phía trên. Thiết lập offline và CPU thread giống
-hướng dẫn 04.1 nếu muốn tái tạo gần nhất lượt đo đã lưu.
-
-```powershell
-python backend/scripts/match_s5_intent.py --question "Tìm bài tin về việc bổ nhiệm TGĐ DGC trong tháng 09/2025."
-python backend/scripts/evaluate_s5_intent_matching.py --output outputs/s5_wbs041_review_20261111/reviewer-run
-python backend/scripts/audit_s5_intent_matching.py
-```
-
-Không dùng lại đường dẫn đã có. Đánh giá nhúng tạm câu test để làm query, không
-thêm chúng vào thư viện 90 mẫu. Chín câu null không tính accuracy bảy lớp và chưa
-có abstention/hỏi lại. Policy max-per-label giữ nguyên; chưa chỉnh theo ca sai.
-
-## Nội dung đã sửa khi tự review
-
-Kiểm chứng lại ngày 11/11 bằng model thật: cả 56 thứ hạng nhóm khớp run01;
-tính cosine bằng biểu thức độc lập sai lệch tối đa `8,89e-16`. Ba câu kiểm tra
-batch so với encode đơn lệch tối đa `1,16e-7`. Thư viện và run01 giữ nguyên checksum.
-Chi tiết: `outputs/s5_wbs041_review_20261111/real-model-audit.json`.
-Script audit dành riêng cho baseline run01 đã đóng băng; chạy lại sẽ ghi đè hai
-file báo cáo audit trong thư mục review, không ghi đè run01.
-
-- Chặn batch đầu vào không phải list/tuple để tránh nhầm key của dict hoặc thứ tự set.
-- Gắn checksum manifest vào đúng artifact đã nạp và dừng nếu nguồn đổi khi đánh giá.
-- Kiểm tra thứ tự query ↔ vector bằng test có vector khác nhau, không chỉ encoder
-  giả trả cùng một vector cho mọi câu.
-- Giữ nguyên dataset, vector thư viện, cosine/max policy và báo cáo run01.
-
-Đề nghị reviewer tách kết luận chức năng/công thức/tính tái tạo với chất lượng
-baseline. Các ca sai đã được báo đầy đủ; không sửa đáp án hoặc mẫu để tăng điểm
-trên bộ test này. Chưa coi workflow ECC phía reviewer là đã hoàn tất.
+Tra cứu task 03.1–03.3 tại [README](README.md), các mốc ở [history](history.md).
+Các kết quả và hướng dẫn cũ nằm trong `archive/`; bản bàn giao dài trước dọn ở
+[đây](archive/S5-WBS04.1-HANDOFF-before-cleanup.md).
