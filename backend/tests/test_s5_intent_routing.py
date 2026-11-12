@@ -10,12 +10,14 @@ from src.retrieval_orchestration.intent_library import IntentLibrary
 from src.retrieval_orchestration.intent_matching import IntentMatcher
 from src.retrieval_orchestration.intent_routing import (
     CONFIDENCE_THRESHOLD, GAP_THRESHOLD, INTENT_ROUTES,
-    IntentRoutingPolicy, decide_intent_route,
+    IntentClassificationContractError, IntentRoutingPolicy, decide_intent_route,
 )
 
 
 def ranking(first='PERSON_ROLE', score=.88, second='NEWS', second_score=.48):
-    return {'groups': [{'intent_label': first, 'score': score},
+    return {'ranking_policy': 'cosine-max-per-label-v1',
+            'score_type': 'COSINE_SIMILARITY_NOT_PROBABILITY',
+            'groups': [{'intent_label': first, 'score': score},
                        {'intent_label': second, 'score': second_score}]}
 
 
@@ -33,7 +35,10 @@ ACCEPTANCE_CASES = [
 @pytest.mark.parametrize('ident,raw,ticker,decision,route,fallback', ACCEPTANCE_CASES,
                          ids=[case[0] for case in ACCEPTANCE_CASES])
 def test_five_required_outcomes(ident, raw, ticker, decision, route, fallback):
-    result = decide_intent_route(raw, company_ticker=ticker)
+    # Reviewed contract: BOTH also requires verified components of this query.
+    components = dict(query_components=['PERSON_ROLE', 'REPORT_CONTENT'],
+                      query_components_confirmed=True) if ident == 'case3' else {}
+    result = decide_intent_route(raw, company_ticker=ticker, **components)
     assert (result['decision'], result['route'], result['need_fallback']) == (decision, route, fallback)
     assert result['fallback_task'] == ('S5-WBS07.2' if fallback else None)
     if route:
@@ -48,7 +53,11 @@ def test_five_required_outcomes(ident, raw, ticker, decision, route, fallback):
 def test_all_seven_canonical_labels_map_as_requested(label, route):
     other = 'NUMERIC' if label != 'NUMERIC' else 'NEWS'
     result = decide_intent_route(ranking(label, .90, other, .40), company_ticker='FPT')
-    assert result['route'] == route and result['intent_label'] == label
+    assert result['route'] == route
+    if label == 'MIXED':
+        assert result['decision'] == 'NEED_FALLBACK' and result['intent_label'] is None
+    else:
+        assert result['intent_label'] == label
 
 
 def test_label_mapping_matches_nhan_taxonomy():
@@ -109,7 +118,8 @@ def test_gate_one_stops_before_matcher_embedding_and_any_fallback(question, tick
 def test_scope_has_priority_over_missing_or_broken_classification():
     assert decide_intent_route(None)['decision'] == 'ASK_CLARIFICATION'
     assert decide_intent_route(None, company_ticker='FPT', period='2025-Q5')['decision'] == 'ASK_CLARIFICATION'
-    assert decide_intent_route(None, company_ticker='FPT')['decision'] == 'NEED_FALLBACK'
+    with pytest.raises(IntentClassificationContractError):
+        decide_intent_route(None, company_ticker='FPT')
 
 
 def test_prior_company_only_when_confirmed_and_same_session():
@@ -140,15 +150,15 @@ def test_injected_registry_and_company_optional_market_news():
 
 @pytest.mark.parametrize('bad', [None, {}, {'groups': []}, {'groups': [{}]},
     {'groups': [None, None]}, {'graph_score': .9, 'content_score': .2}])
-def test_malformed_classifier_output_needs_fallback(bad):
-    result = decide_intent_route(bad, company_ticker='FPT')
-    assert result['decision'] == 'NEED_FALLBACK'
-    assert result['route'] is None and result['reason_code'] == 'INVALID_CLASSIFICATION'
+def test_malformed_classifier_output_is_contract_error_not_fallback(bad):
+    with pytest.raises(IntentClassificationContractError):
+        decide_intent_route(bad, company_ticker='FPT')
 
 
 @pytest.mark.parametrize('score', [True, '0.9', float('nan'), float('inf'), 1.01, -1.01])
 def test_invalid_cosine_never_passes_gate_two(score):
-    assert decide_intent_route(ranking(score=score), company_ticker='FPT')['need_fallback']
+    with pytest.raises(IntentClassificationContractError):
+        decide_intent_route(ranking(score=score), company_ticker='FPT')
 
 
 @pytest.mark.parametrize('raw', [
@@ -159,7 +169,8 @@ def test_invalid_cosine_never_passes_gate_two(score):
     ranking() | {'question': 'another request'},
 ])
 def test_duplicate_labels_wrong_order_and_stale_queries_fail_closed(raw):
-    assert decide_intent_route(raw, company_ticker='VCB', question='Ai là chủ tịch VCB?')['need_fallback']
+    with pytest.raises(IntentClassificationContractError):
+        decide_intent_route(raw, company_ticker='VCB', question='Ai là chủ tịch VCB?')
 
 
 @pytest.mark.parametrize('error', [TimeoutError('timeout'), ValueError('encoder failed'), RuntimeError('library unavailable')])
@@ -195,7 +206,7 @@ def test_input_ranking_is_not_mutated():
 
 
 def test_fallback_handoff_preserves_top_three_distinct_labels_and_verified_scope():
-    raw = {'groups': [
+    raw = ranking() | {'groups': [
         {'intent_label': label, 'score': score}
         for label, score in [('CHUC_VU', .68), ('NEWS', .64), ('KET_HOP', .60),
                              ('QUAN_HE', .55), ('SO_LIEU', .50)]
@@ -230,10 +241,15 @@ def test_wrapper_hands_candidates_to_fallback_without_calling_external_classifie
 
 
 @pytest.mark.parametrize('mode', ['invalid', 'exception'])
-def test_failed_classification_forwards_question_but_no_untrusted_candidates(mode):
+def test_matcher_failure_forwards_question_but_invalid_payload_is_contract_error(mode):
     matcher = SpyMatcher(result=ranking(score=float('nan')),
                          error=TimeoutError() if mode == 'exception' else None)
-    out = IntentRoutingPolicy(matcher).decide('Who chairs VCB?', company_ticker='VCB')
+    policy = IntentRoutingPolicy(matcher)
+    if mode == 'invalid':
+        with pytest.raises(IntentClassificationContractError):
+            policy.decide('Who chairs VCB?', company_ticker='VCB')
+        return
+    out = policy.decide('Who chairs VCB?', company_ticker='VCB')
     assert out['fallback_payload']['question'] == 'Who chairs VCB?'
     assert out['fallback_payload']['candidates'] == []
     json.dumps(out, allow_nan=False)
@@ -242,3 +258,163 @@ def test_failed_classification_forwards_question_but_no_untrusted_candidates(mod
 def test_no_fallback_payload_when_gate_one_blocks_or_direct_search_succeeds():
     assert decide_intent_route(None)['fallback_payload'] is None
     assert decide_intent_route(ranking(), company_ticker='VCB')['fallback_payload'] is None
+
+
+@pytest.mark.parametrize('missing', [('ranking_policy',), ('score_type',),
+                                     ('ranking_policy', 'score_type')])
+def test_review_requires_explicit_score_metadata_before_thresholds(missing):
+    raw = ranking('NUMERIC', .71, 'NEWS', .20)
+    for key in missing:
+        raw.pop(key)
+    with pytest.raises(ValueError):
+        decide_intent_route(raw, company_ticker='FPT')
+
+
+@pytest.mark.parametrize('key', ['ranking_policy', 'score_type'])
+@pytest.mark.parametrize('value', [None, '', 'UNKNOWN', [], 123])
+def test_review_invalid_metadata_is_contract_error_not_ai_fallback(key, value):
+    raw = ranking('NUMERIC', .71, 'NEWS', .20)
+    raw[key] = value
+    with pytest.raises(ValueError):
+        IntentRoutingPolicy(SpyMatcher(result=raw)).decide('Revenue FPT?', company_ticker='FPT')
+
+
+def classifier_ranking():
+    return ranking('PERSON_ROLE', .99, 'NEWS', .01) | {
+        'ranking_policy': 'intent-linear-v1',
+        'score_type': 'CLASSIFIER_PROBABILITY_UNCALIBRATED',
+    }
+
+
+def resolution(label='NEWS', version='v3'):
+    return {'ranking_policy': 'intent-request-objectives-' + version,
+            'score_type': 'DECISION_EVIDENCE_NO_CONFIDENCE',
+            'intent_label': label, 'confidence': None,
+            'reason': 'EXPLICIT_REQUEST_TYPE', 'component_labels': []}
+
+
+def test_review_uncalibrated_probability_never_uses_cosine_thresholds():
+    out = decide_intent_route(classifier_ranking(), company_ticker='FPT')
+    assert out['decision'] == 'NEED_FALLBACK' and out['route'] is None
+    assert out['reason_code'] == 'UNCALIBRATED_CLASSIFICATION'
+    assert out['top_1_score'] is None and out['score_gap'] is None
+    assert out['fallback_payload']['score_type'] == 'CLASSIFIER_PROBABILITY_UNCALIBRATED'
+    assert out['fallback_payload']['candidates'][0]['score'] == .99
+
+
+@pytest.mark.parametrize('version', ['v1', 'v2', 'v3', 'v4'])
+def test_review_decision_evidence_with_null_confidence_needs_verification(version):
+    out = decide_intent_route(resolution('PERSON_ROLE', version), company_ticker='FPT')
+    assert out['reason_code'] == 'UNCALIBRATED_CLASSIFICATION' and out['route'] is None
+    assert out['classification_evidence']['resolution']['intent_label'] == 'PERSON_ROLE'
+    assert out['classification_evidence']['resolution']['confidence'] is None
+    assert out['fallback_payload']['candidates'] == []
+
+
+def test_review_label_disagreement_preserves_both_labels_without_borrowing_scores():
+    raw = {'base_ranking': classifier_ranking(), 'resolution': resolution()}
+    saved = copy.deepcopy(raw)
+    out = decide_intent_route(raw, company_ticker='FPT')
+    assert out['decision'] == 'NEED_FALLBACK' and out['reason_code'] == 'LABEL_DISAGREEMENT'
+    assert out['route'] is None and out['intent_label'] is None
+    assert out['top_1_score'] is None and out['score_gap'] is None
+    evidence = out['classification_evidence']
+    assert evidence['base_ranking']['groups'][0]['intent_label'] == 'PERSON_ROLE'
+    assert evidence['resolution']['intent_label'] == 'NEWS'
+    assert evidence['resolution']['reason'] == 'EXPLICIT_REQUEST_TYPE'
+    assert evidence['resolution']['confidence'] is None
+    assert out['fallback_payload']['classification_evidence'] == evidence
+    assert raw == saved
+
+
+def test_review_even_agreed_labels_with_null_confidence_cannot_search():
+    out = decide_intent_route({'base_ranking': ranking(), 'resolution': resolution('PERSON_ROLE')},
+                             company_ticker='FPT')
+    assert out['reason_code'] == 'UNCALIBRATED_CLASSIFICATION' and out['route'] is None
+    assert out['top_1_score'] is None and out['score_gap'] is None
+
+
+def test_review_resolution_cannot_invent_calibrated_confidence():
+    raw = resolution() | {'confidence': .99}
+    with pytest.raises(ValueError):
+        decide_intent_route(raw, company_ticker='FPT')
+
+
+def test_review_mixed_without_verified_query_components_never_defaults_to_both():
+    raw = ranking('MIXED', .90, 'NEWS', .40)
+    raw['groups'][0]['best_example'] = {'component_intents': ['PERSON_ROLE', 'REPORT_CONTENT']}
+    out = decide_intent_route(raw, company_ticker='FPT')
+    assert out['decision'] == 'NEED_FALLBACK' and out['route'] is None
+    assert out['reason_code'] == 'MIXED_COMPONENTS_REQUIRED'
+
+
+@pytest.mark.parametrize('components,expected', [
+    (['NUMERIC', 'NEWS'], 'VECTOR'),
+    (['REPORT_CONTENT', 'NEWS'], 'VECTOR'),
+    (['PERSON_ROLE', 'ENTITY_RELATION'], 'GRAPH'),
+    (['PERSON_ROLE', 'REPORT_CONTENT'], 'BOTH'),
+    (['QUAN_HE', 'SO_LIEU'], 'BOTH'),
+])
+def test_review_mixed_route_depends_on_verified_query_components(components, expected):
+    out = decide_intent_route(ranking('MIXED', .90, 'NEWS', .40), company_ticker='FPT',
+                             query_components=components, query_components_confirmed=True)
+    assert out['route'] == expected and out['intent_label'] == 'MIXED'
+
+
+def test_review_unconfirmed_query_components_do_not_allow_search():
+    out = decide_intent_route(ranking('MIXED', .9, 'NEWS', .4), company_ticker='FPT',
+                             query_components=['PERSON_ROLE', 'NEWS'], query_components_confirmed=False)
+    assert out['reason_code'] == 'MIXED_COMPONENTS_REQUIRED' and out['route'] is None
+
+
+@pytest.mark.parametrize('components', [[], ['NEWS'], ['NEWS', 'NEWS'],
+                                          ['MIXED', 'NEWS'], ['UNKNOWN', 'NEWS'], 'NUMERIC,NEWS'])
+def test_review_invalid_verified_components_are_contract_errors(components):
+    with pytest.raises(ValueError):
+        decide_intent_route(ranking('MIXED', .9, 'NEWS', .4), company_ticker='FPT',
+                            query_components=components, query_components_confirmed=True)
+
+
+def test_review_producer_contract_error_must_not_be_reclassified_as_matcher_failure():
+    matcher = SpyMatcher(error=IntentClassificationContractError('MISSING_SCORE_METADATA'))
+    with pytest.raises(IntentClassificationContractError):
+        IntentRoutingPolicy(matcher).decide('Who chairs FPT?', company_ticker='FPT')
+
+
+def test_review_nhan_real_resolution_interface_keeps_raw_and_final_intents_separate():
+    from src.retrieval_orchestration.intent_news_requests import requests, resolve_objectives
+    question = 'Chủ tịch HĐQT VCB là ai?'
+    labels = ['NUMERIC', 'PERSON_ROLE', 'NEWS', 'REPORT_CONTENT', 'ENTITY_RELATION', 'TREND', 'MIXED']
+    resolved = resolve_objectives([.71, .20, .03, .02, .02, .01, .01], [], labels, requests(question))
+    raw = ranking('NUMERIC', .71, 'PERSON_ROLE', .20) | {
+        'ranking_policy': 'intent-linear-v1', 'score_type': 'CLASSIFIER_PROBABILITY_UNCALIBRATED'}
+    out = decide_intent_route({'base_ranking': raw, 'resolution': resolved}, question=question, company_ticker='VCB')
+    assert out['reason_code'] == 'LABEL_DISAGREEMENT' and out['route'] is None
+    assert out['classification_evidence']['resolution']['intent_label'] == 'PERSON_ROLE'
+    assert out['top_1_score'] is None
+
+
+@pytest.mark.parametrize('field', ['base_ranking', 'resolution'])
+def test_review_envelope_does_not_hide_missing_metadata(field):
+    raw = {'base_ranking': classifier_ranking(), 'resolution': resolution()}
+    raw[field].pop('score_type')
+    with pytest.raises(IntentClassificationContractError):
+        decide_intent_route(raw, company_ticker='FPT')
+
+
+def test_review_low_score_is_checked_before_mixed_components():
+    out = decide_intent_route(ranking('MIXED', .60, 'NEWS', .50), company_ticker='FPT',
+                             query_components=['UNKNOWN'], query_components_confirmed=True)
+    assert out['reason_code'] == 'LOW_CONFIDENCE'
+
+
+def test_review_uncalibrated_evidence_handoff_stays_limited_to_top_three():
+    raw = classifier_ranking()
+    raw['groups'] = [{'intent_label': label, 'score': score} for label, score in [
+        ('PERSON_ROLE', .50), ('NEWS', .20), ('MIXED', .15), ('NUMERIC', .10),
+        ('ENTITY_RELATION', .03), ('REPORT_CONTENT', .015), ('TREND', .005)]]
+    out = decide_intent_route(raw, company_ticker='FPT')
+    payload = out['fallback_payload']
+    assert len(payload['candidates']) == 3
+    assert len(payload['classification_evidence']['base_ranking']['groups']) == 3
+    assert len(raw['groups']) == 7

@@ -3,6 +3,7 @@
 This module returns a plan/signal only. It never retrieves data or calls a
 fallback LLM, and is not registered in the existing WebChat/router factory.
 """
+from copy import deepcopy
 from decimal import Decimal
 from datetime import date
 import math
@@ -13,11 +14,20 @@ CONFIDENCE_THRESHOLD = 0.65
 GAP_THRESHOLD = 0.08
 FALLBACK_TASK = 'S5-WBS07.2'
 FALLBACK_TOP_GROUPS = 3
+COSINE_POLICY = 'cosine-max-per-label-v1'
+COSINE_SCORE_TYPE = 'COSINE_SIMILARITY_NOT_PROBABILITY'
+CLASSIFIER_POLICY = 'intent-linear-v1'
+CLASSIFIER_SCORE_TYPE = 'CLASSIFIER_PROBABILITY_UNCALIBRATED'
+EVIDENCE_SCORE_TYPE = 'DECISION_EVIDENCE_NO_CONFIDENCE'
+RESOLUTION_POLICIES = frozenset({
+    'intent-request-consensus-v1',
+    *(f'intent-request-objectives-v{version}' for version in range(1, 5)),
+})
 
 INTENT_ROUTES = {
     'NUMERIC': 'VECTOR', 'REPORT_CONTENT': 'VECTOR', 'NEWS': 'VECTOR',
     'PERSON_ROLE': 'GRAPH', 'ENTITY_RELATION': 'GRAPH',
-    'MIXED': 'BOTH', 'TREND': 'BOTH',
+    'MIXED': None, 'TREND': 'BOTH',
 }
 # Compatibility with the names in the task brief; outputs retain Nhân's IDs.
 LABEL_ALIASES = {
@@ -25,6 +35,14 @@ LABEL_ALIASES = {
     'CHUC_VU': 'PERSON_ROLE', 'QUAN_HE': 'ENTITY_RELATION',
     'KET_HOP': 'MIXED', 'XU_HUONG': 'TREND',
 }
+
+
+class IntentClassificationContractError(ValueError):
+    """Invalid producer data; caller must report the error, not call fallback AI."""
+
+    def __init__(self, code):
+        self.code = code
+        super().__init__(code)
 
 
 def _fold(text):
@@ -80,6 +98,7 @@ def _result(decision, gate, reason, scope, *, route=None, label=None, first=None
         'decision': decision, 'route': route, 'need_fallback': fallback,
         'fallback_task': FALLBACK_TASK if fallback else None,
         'fallback_payload': None,
+        'classification_evidence': None,
         'gate': gate, 'reason_code': reason, 'scope': scope,
         'intent_label': label, 'top_1_score': first, 'top_2_score': second, 'score_gap': gap,
         'clarification_question': (
@@ -91,7 +110,8 @@ def _result(decision, gate, reason, scope, *, route=None, label=None, first=None
     }
 
 
-def _fallback_result(reason, scope, question, *, labels=(), scores=(), first=None, second=None, gap=None):
+def _fallback_result(reason, scope, question, *, labels=(), scores=(), first=None, second=None,
+                     gap=None, score_type=COSINE_SCORE_TYPE):
     result = _result('NEED_FALLBACK', 2, reason, scope, first=first, second=second, gap=gap)
     result['fallback_payload'] = {
         'question': question or None,
@@ -104,7 +124,7 @@ def _fallback_result(reason, scope, question, *, labels=(), scores=(), first=Non
             for i, (label, score) in enumerate(zip(labels, scores))
             if i < FALLBACK_TOP_GROUPS
         ],
-        'score_type': 'COSINE_SIMILARITY_NOT_PROBABILITY',
+        'score_type': score_type,
     }
     return result
 
@@ -135,37 +155,125 @@ def _scope_gate(*, question='', company_ticker=None, period=None,
     return scope, None
 
 
-def _confidence_and_route(ranking, scope, question):
+def _metadata(payload, question):
+    if not isinstance(payload, dict):
+        raise IntentClassificationContractError('INVALID_CLASSIFICATION')
+    if 'question' in payload and question and payload['question'] != question:
+        raise IntentClassificationContractError('STALE_CLASSIFICATION')
+    for key in ('ranking_policy', 'score_type'):
+        if key not in payload or not isinstance(payload[key], str) or not payload[key].strip():
+            raise IntentClassificationContractError('MISSING_SCORE_METADATA')
+    return payload['ranking_policy'], payload['score_type']
+
+
+def _canonical_label(value):
+    if not isinstance(value, str):
+        raise IntentClassificationContractError('INVALID_INTENT_LABEL')
+    label = LABEL_ALIASES.get(value, value)
+    if label not in INTENT_ROUTES:
+        raise IntentClassificationContractError('INVALID_INTENT_LABEL')
+    return label
+
+
+def _validated_ranking(ranking, question):
+    policy, score_type = _metadata(ranking, question)
+    if (policy, score_type) not in {
+        (COSINE_POLICY, COSINE_SCORE_TYPE),
+        (CLASSIFIER_POLICY, CLASSIFIER_SCORE_TYPE),
+    }:
+        raise IntentClassificationContractError('UNSUPPORTED_SCORE_CONTRACT')
     try:
-        if not isinstance(ranking, dict):
-            raise ValueError('Missing classification')
-        if 'question' in ranking and question and ranking['question'] != question:
-            raise ValueError('Stale query ranking')
-        if ranking.get('ranking_policy', 'cosine-max-per-label-v1') != 'cosine-max-per-label-v1':
-            raise ValueError('Wrong score policy')
-        if ranking.get('score_type', 'COSINE_SIMILARITY_NOT_PROBABILITY') != 'COSINE_SIMILARITY_NOT_PROBABILITY':
-            raise ValueError('Wrong score type')
         groups = ranking['groups']
         if not isinstance(groups, list) or not 2 <= len(groups) <= len(INTENT_ROUTES):
             raise ValueError('Two distinct groups are required')
         labels, scores = [], []
         for index, group in enumerate(groups):
-            label = group['intent_label']
-            label = LABEL_ALIASES.get(label, label)
+            label = _canonical_label(group['intent_label'])
             score = group['score']
-            if label not in INTENT_ROUTES or label in labels:
-                raise ValueError('Invalid or duplicate label')
+            if label in labels:
+                raise ValueError('Duplicate label')
             if isinstance(score, bool) or not isinstance(score, (int, float)):
                 raise ValueError('Invalid score type')
-            if not math.isfinite(score) or not -1 <= score <= 1:
-                raise ValueError('Invalid cosine score')
+            lower = -1 if score_type == COSINE_SCORE_TYPE else 0
+            if not math.isfinite(score) or not lower <= score <= 1:
+                raise ValueError('Invalid score')
             if 'rank' in group and (type(group['rank']) is not int or group['rank'] != index + 1):
                 raise ValueError('Invalid rank')
             labels.append(label); scores.append(score)
         if any(scores[i] < scores[i+1] for i in range(len(scores)-1)):
             raise ValueError('Groups are not ranked')
-    except (KeyError, TypeError, ValueError, OverflowError):
-        return _fallback_result('INVALID_CLASSIFICATION', scope, question)
+    except (KeyError, TypeError, ValueError, OverflowError) as exc:
+        raise IntentClassificationContractError('INVALID_CLASSIFICATION') from exc
+    snapshot = dict(ranking_policy=policy, score_type=score_type,
+                    groups=[dict(rank=i + 1, intent_label=label, score=score)
+                            for i, (label, score) in enumerate(zip(labels, scores))])
+    return snapshot, labels, scores
+
+
+def _validated_resolution(resolution, question):
+    policy, score_type = _metadata(resolution, question)
+    if policy not in RESOLUTION_POLICIES or score_type != EVIDENCE_SCORE_TYPE:
+        raise IntentClassificationContractError('UNSUPPORTED_SCORE_CONTRACT')
+    if 'confidence' not in resolution or resolution['confidence'] is not None:
+        raise IntentClassificationContractError('INVALID_RESOLUTION_CONFIDENCE')
+    label = _canonical_label(resolution.get('intent_label'))
+    reason = resolution.get('reason')
+    if not isinstance(reason, str) or not reason.strip():
+        raise IntentClassificationContractError('INVALID_RESOLUTION_REASON')
+    components = resolution.get('component_labels', [])
+    if not isinstance(components, list):
+        raise IntentClassificationContractError('INVALID_QUERY_COMPONENTS')
+    components = [_canonical_label(value) for value in components]
+    if 'MIXED' in components or len(set(components)) != len(components):
+        raise IntentClassificationContractError('INVALID_QUERY_COMPONENTS')
+    return dict(ranking_policy=policy, score_type=score_type, intent_label=label,
+                confidence=None, reason=reason, component_labels=components)
+
+
+def _evidence_fallback(scope, question, base=None, resolution=None):
+    groups = base['groups'] if base else []
+    disagreement = bool(groups and resolution and groups[0]['intent_label'] != resolution['intent_label'])
+    result = _fallback_result('LABEL_DISAGREEMENT' if disagreement else 'UNCALIBRATED_CLASSIFICATION',
+                              scope, question,
+                              labels=[group['intent_label'] for group in groups],
+                              scores=[group['score'] for group in groups],
+                              score_type=base['score_type'] if base else EVIDENCE_SCORE_TYPE)
+    base_evidence = deepcopy(base)
+    if base_evidence is not None:
+        base_evidence['groups'] = base_evidence['groups'][:FALLBACK_TOP_GROUPS]
+    evidence = dict(base_ranking=base_evidence, resolution=deepcopy(resolution),
+                    label_disagreement=disagreement)
+    result['classification_evidence'] = evidence
+    result['fallback_payload']['classification_evidence'] = deepcopy(evidence)
+    return result
+
+
+def _mixed_route(components, confirmed):
+    if confirmed is not True:
+        return None
+    if not isinstance(components, (list, tuple)):
+        raise IntentClassificationContractError('INVALID_QUERY_COMPONENTS')
+    labels = [_canonical_label(value) for value in components]
+    if len(labels) < 2 or len(labels) != len(set(labels)) or 'MIXED' in labels:
+        raise IntentClassificationContractError('INVALID_QUERY_COMPONENTS')
+    routes = {INTENT_ROUTES[label] for label in labels}
+    return 'BOTH' if 'BOTH' in routes or len(routes) > 1 else routes.pop()
+
+
+def _confidence_and_route(ranking, scope, question, components=None, components_confirmed=False):
+    if isinstance(ranking, dict) and ('base_ranking' in ranking or 'resolution' in ranking):
+        if (not {'base_ranking', 'resolution'} <= ranking.keys()
+                or {'groups', 'intent_label', 'ranking_policy', 'score_type'} & ranking.keys()
+                or ('question' in ranking and question and ranking['question'] != question)):
+            raise IntentClassificationContractError('INVALID_CLASSIFICATION_ENVELOPE')
+        base, _, _ = _validated_ranking(ranking['base_ranking'], question)
+        resolved = _validated_resolution(ranking['resolution'], question)
+        return _evidence_fallback(scope, question, base, resolved)
+    if isinstance(ranking, dict) and ranking.get('score_type') == EVIDENCE_SCORE_TYPE:
+        return _evidence_fallback(scope, question, resolution=_validated_resolution(ranking, question))
+    base, labels, scores = _validated_ranking(ranking, question)
+    if base['score_type'] == CLASSIFIER_SCORE_TYPE:
+        return _evidence_fallback(scope, question, base)
     first, second = scores[:2]
     # Compare decimal representations without rounding scores, including equality at 0.08.
     gap = Decimal(str(first)) - Decimal(str(second))
@@ -175,11 +283,17 @@ def _confidence_and_route(ranking, scope, question):
         reason = 'LOW_CONFIDENCE_AND_SMALL_GAP' if low and close else 'LOW_CONFIDENCE' if low else 'SMALL_GAP'
         return _fallback_result(reason, scope, question, labels=labels, scores=scores,
                                 first=first, second=second, gap=float(gap))
-    return _result('SEARCH', 3, 'CONFIDENT_INTENT', scope, route=INTENT_ROUTES[labels[0]],
+    route = INTENT_ROUTES[labels[0]]
+    if labels[0] == 'MIXED':
+        route = _mixed_route(components, components_confirmed)
+        if route is None:
+            return _fallback_result('MIXED_COMPONENTS_REQUIRED', scope, question,
+                                    labels=labels, scores=scores, first=first, second=second, gap=float(gap))
+    return _result('SEARCH', 3, 'CONFIDENT_INTENT', scope, route=route,
                    label=labels[0], first=first, second=second, gap=float(gap))
 
 
-def decide_intent_route(ranking, **scope_input):
+def decide_intent_route(ranking, *, query_components=None, query_components_confirmed=False, **scope_input):
     """Pure gate function over an existing IntentMatcher result (or two-group fixture).
 
     company_ticker/context tickers must come from the upstream verified company
@@ -188,7 +302,8 @@ def decide_intent_route(ranking, **scope_input):
     scope, stopped = _scope_gate(**scope_input)
     if stopped is not None:
         return stopped
-    return _confidence_and_route(ranking, scope, scope_input.get('question', ''))
+    return _confidence_and_route(ranking, scope, scope_input.get('question', ''),
+                                 query_components, query_components_confirmed)
 
 
 class IntentRoutingPolicy:
@@ -196,7 +311,7 @@ class IntentRoutingPolicy:
     def __init__(self, matcher):
         self.matcher = matcher
 
-    def decide(self, question, **scope_input):
+    def decide(self, question, *, query_components=None, query_components_confirmed=False, **scope_input):
         if not isinstance(question, str) or not question.strip() or len(question) > 4000:
             return _result('ASK_CLARIFICATION', 1, 'INVALID_QUESTION', {})
         scope, stopped = _scope_gate(question=question, **scope_input)
@@ -204,6 +319,8 @@ class IntentRoutingPolicy:
             return stopped
         try:
             ranking = self.matcher.match(question, top_groups=FALLBACK_TOP_GROUPS, top_examples=5)
+        except IntentClassificationContractError:
+            raise
         except Exception:
             return _fallback_result('CLASSIFICATION_ERROR', scope, question)
-        return _confidence_and_route(ranking, scope, question)
+        return _confidence_and_route(ranking, scope, question, query_components, query_components_confirmed)
