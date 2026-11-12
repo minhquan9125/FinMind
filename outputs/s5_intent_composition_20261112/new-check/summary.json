@@ -1,0 +1,260 @@
+{
+  "status": "COMPLETED_ONE_NEW_CHECK_NOT_E2E_APPROVAL",
+  "metrics": {
+    "original": {
+      "correct": 27,
+      "labeled": 42,
+      "accuracy": 0.6428571428571429,
+      "macro_f1": 0.6601779173207746,
+      "wrong_ids": [
+        "NEW-NUMERIC-2-VHC",
+        "NEW-NUMERIC-2-DBC",
+        "NEW-REPORT_CONTENT-1-VHC",
+        "NEW-REPORT_CONTENT-3-VHC",
+        "NEW-NEWS-1-VHC",
+        "NEW-NEWS-3-VHC",
+        "NEW-NEWS-3-DBC",
+        "NEW-PERSON_ROLE-3-VHC",
+        "NEW-PERSON_ROLE-3-DBC",
+        "NEW-ENTITY_RELATION-2-VHC",
+        "NEW-ENTITY_RELATION-3-VHC",
+        "NEW-MIXED-1-VHC",
+        "NEW-MIXED-1-DBC",
+        "NEW-MIXED-2-VHC",
+        "NEW-MIXED-2-DBC"
+      ],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 4,
+          "MIXED": 2,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 2,
+          "NEWS": 0,
+          "NUMERIC": 2,
+          "PERSON_ROLE": 2,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 3,
+          "NEWS": 3,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 4,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 2
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 2,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 4,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 1,
+          "PERSON_ROLE": 1,
+          "REPORT_CONTENT": 4,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 6
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "linear": {
+      "correct": 37,
+      "labeled": 42,
+      "accuracy": 0.8809523809523809,
+      "macro_f1": 0.8790923362351933,
+      "wrong_ids": [
+        "NEW-NEWS-3-DBC",
+        "NEW-ENTITY_RELATION-2-VHC",
+        "NEW-ENTITY_RELATION-2-DBC",
+        "NEW-MIXED-1-VHC",
+        "NEW-MIXED-1-DBC"
+      ],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 4,
+          "MIXED": 0,
+          "NEWS": 2,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 4,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 2,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 1,
+          "NEWS": 5,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 6,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 6,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 6,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 6
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "consensus": {
+      "correct": 37,
+      "labeled": 42,
+      "accuracy": 0.8809523809523809,
+      "macro_f1": 0.8790923362351933,
+      "wrong_ids": [
+        "NEW-NEWS-3-DBC",
+        "NEW-ENTITY_RELATION-2-VHC",
+        "NEW-ENTITY_RELATION-2-DBC",
+        "NEW-MIXED-1-VHC",
+        "NEW-MIXED-1-DBC"
+      ],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 4,
+          "MIXED": 0,
+          "NEWS": 2,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 4,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 2,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 1,
+          "NEWS": 5,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 6,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 6,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 6,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 6
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    }
+  },
+  "linear_correct_to_wrong": [],
+  "confidence": null,
+  "calibrated": false,
+  "runtime_unchanged": true,
+  "no_legacy_threshold_applied": true
+}

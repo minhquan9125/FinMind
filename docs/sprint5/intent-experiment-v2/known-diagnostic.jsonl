@@ -1,0 +1,8 @@
+{"id": "KNOWN-01", "text": "Ai là Chủ tịch HĐQT VCB?", "intent_label": "PERSON_ROLE"}
+{"id": "KNOWN-02", "text": "Ai là Chủ tịch HĐQT TCB?", "intent_label": "PERSON_ROLE"}
+{"id": "KNOWN-03", "text": "Ai là Chủ tịch HĐQT FPT?", "intent_label": "PERSON_ROLE"}
+{"id": "KNOWN-04", "text": "Ai là Chủ tịch HĐQT MBB?", "intent_label": "PERSON_ROLE"}
+{"id": "KNOWN-05", "text": "Chủ tịch HĐQT VCB là ai?", "intent_label": "PERSON_ROLE"}
+{"id": "KNOWN-06", "text": "Doanh thu MBB năm 2024 là bao nhiêu?", "intent_label": "NUMERIC"}
+{"id": "KNOWN-07", "text": "Ai là Tổng giám đốc TCB và chiến lược kinh doanh người này nêu trong báo cáo thường niên là gì?", "intent_label": "MIXED"}
+{"id": "KNOWN-08", "text": "Ai là Tổng giám đốc MBB và chiến lược kinh doanh người này nêu trong báo cáo thường niên là gì?", "intent_label": "MIXED"}

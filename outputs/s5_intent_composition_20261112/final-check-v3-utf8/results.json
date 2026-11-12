@@ -1,0 +1,6008 @@
+[
+  {
+    "id": "FINAL-NUMERIC-1-DPM",
+    "question": "Tỷ lệ nợ trên vốn chủ sở hữu DPM cuối năm 2019 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "final_label": "NUMERIC",
+    "resolution": {
+      "intent_label": "NUMERIC",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Tỷ lệ nợ trên vốn chủ sở hữu DPM cuối năm 2019 là bao nhiêu?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.29372189361557294
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.2746635020731012
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.12149340406315372
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.07990270311914338
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.0793975362458891
+        },
+        {
+          "rank": 6,
+          "intent_label": "MIXED",
+          "score": 0.07635995672556901
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.07446100415757063
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Tỷ lệ nợ trên vốn chủ sở hữu DPM cuối năm 2019 là bao nhiêu?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.6399152781325879,
+          "best_example": {
+            "id": "S5-L-004",
+            "text": "Theo BCTN MBB năm 2023, tỷ lệ nợ trên vốn chủ sở hữu là bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.6399152781325879,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4595291589891461,
+          "best_example": {
+            "id": "S5-L-052",
+            "text": "Theo BCTN 2024 của TCB, TCB sở hữu bao nhiêu phần trăm vốn công ty An Phú?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4595291589891461,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.42085229720818856,
+          "best_example": {
+            "id": "S5-L-040",
+            "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.42085229720818856,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.41733590366569845,
+          "best_example": {
+            "id": "S5-L-018",
+            "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.41733590366569845,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.3943515363925024,
+          "best_example": {
+            "id": "S5-L-078",
+            "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+            "intent_label": "MIXED",
+            "score": 0.3943515363925024,
+            "component_intents": [
+              "PERSON_ROLE",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.3778489294237514,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.3778489294237514,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.3034432987608287,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.3034432987608287,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-004",
+          "text": "Theo BCTN MBB năm 2023, tỷ lệ nợ trên vốn chủ sở hữu là bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "score": 0.6399152781325879,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-006",
+          "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+          "intent_label": "NUMERIC",
+          "score": 0.47983561980749806,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-052",
+          "text": "Theo BCTN 2024 của TCB, TCB sở hữu bao nhiêu phần trăm vốn công ty An Phú?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4595291589891461,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-054",
+          "text": "TCB nắm bn % vốn cty An Phú theo BCTN 2024?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4519056147257824,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-051",
+          "text": "DS cty con trực tiếp MBB tại 31/12/2024 gồm những bên nào?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4396755782392005,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Tỷ lệ nợ trên vốn chủ sở hữu DPM cuối năm 2019 là bao nhiêu?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NUMERIC-1-VRE",
+    "question": "Tỷ lệ nợ trên vốn chủ sở hữu VRE cuối năm 2019 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "final_label": "NUMERIC",
+    "resolution": {
+      "intent_label": "NUMERIC",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Tỷ lệ nợ trên vốn chủ sở hữu VRE cuối năm 2019 là bao nhiêu?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.4014152746866451
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.22065289520568515
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.09571309322646586
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.07962920647208513
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.07169064117650237
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.06878764017627498
+        },
+        {
+          "rank": 7,
+          "intent_label": "MIXED",
+          "score": 0.06211124905634147
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Tỷ lệ nợ trên vốn chủ sở hữu VRE cuối năm 2019 là bao nhiêu?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.6054948399571702,
+          "best_example": {
+            "id": "S5-L-004",
+            "text": "Theo BCTN MBB năm 2023, tỷ lệ nợ trên vốn chủ sở hữu là bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.6054948399571702,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3938777980524527,
+          "best_example": {
+            "id": "S5-L-052",
+            "text": "Theo BCTN 2024 của TCB, TCB sở hữu bao nhiêu phần trăm vốn công ty An Phú?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3938777980524527,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.3807856539692323,
+          "best_example": {
+            "id": "S5-L-073",
+            "text": "Xác định công ty liên kết của VCB cuối năm 2024 rồi đọc tổng tài sản 2024 của từng công ty theo BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.3807856539692323,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.345290396102378,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.345290396102378,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3443582691477719,
+          "best_example": {
+            "id": "S5-L-040",
+            "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3443582691477719,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.34180471573713017,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.34180471573713017,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.3044476136259091,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.3044476136259091,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-004",
+          "text": "Theo BCTN MBB năm 2023, tỷ lệ nợ trên vốn chủ sở hữu là bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "score": 0.6054948399571702,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-006",
+          "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+          "intent_label": "NUMERIC",
+          "score": 0.470364787384753,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-012",
+          "text": "Tổng TS VCB với TCB chênh bn theo BCTC HN 2024?",
+          "intent_label": "NUMERIC",
+          "score": 0.4080641527968748,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-052",
+          "text": "Theo BCTN 2024 của TCB, TCB sở hữu bao nhiêu phần trăm vốn công ty An Phú?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3938777980524527,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-010",
+          "text": "So sánh tổng tài sản trên BCTC hợp nhất năm 2024 của VCB và TCB bằng số chênh lệch.",
+          "intent_label": "NUMERIC",
+          "score": 0.39050962924843957,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Tỷ lệ nợ trên vốn chủ sở hữu VRE cuối năm 2019 là bao nhiêu?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NUMERIC-2-DPM",
+    "question": "Cho biết lợi nhuận giữ lại của DPM tại 31/12/2019.",
+    "gold": "NUMERIC",
+    "final_label": "ENTITY_RELATION",
+    "resolution": {
+      "intent_label": "ENTITY_RELATION",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Cho biết lợi nhuận giữ lại của DPM tại 31/12/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.20886357536820857
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.20108846263395322
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.15386149725857953
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.13077178166686593
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.1109923832366732
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.10481796319022324
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.08960433664549627
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Cho biết lợi nhuận giữ lại của DPM tại 31/12/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "MIXED",
+          "score": 0.5020875813408432,
+          "best_example": {
+            "id": "S5-L-088",
+            "text": "Cho biết lợi nhuận sau thuế CTG năm 2024 và liệt kê bài tin CTG trong tháng 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.5020875813408432,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4890073920784834,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4890073920784834,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.4727061379863507,
+          "best_example": {
+            "id": "S5-L-001",
+            "text": "Lợi nhuận trước thuế của BID năm 2024 đạt bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.4727061379863507,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.4637168406324091,
+          "best_example": {
+            "id": "S5-L-064",
+            "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+            "intent_label": "TREND",
+            "score": 0.4637168406324091,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4502289438461289,
+          "best_example": {
+            "id": "S5-L-051",
+            "text": "DS cty con trực tiếp MBB tại 31/12/2024 gồm những bên nào?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4502289438461289,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.40813022954870665,
+          "best_example": {
+            "id": "S5-L-030",
+            "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+            "intent_label": "NEWS",
+            "score": 0.40813022954870665,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3839952232581574,
+          "best_example": {
+            "id": "S5-L-040",
+            "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3839952232581574,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-088",
+          "text": "Cho biết lợi nhuận sau thuế CTG năm 2024 và liệt kê bài tin CTG trong tháng 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.5020875813408432,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-016",
+          "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4890073920784834,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-001",
+          "text": "Lợi nhuận trước thuế của BID năm 2024 đạt bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "score": 0.4727061379863507,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-064",
+          "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+          "intent_label": "TREND",
+          "score": 0.4637168406324091,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-017",
+          "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4563758673508292,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Cho biết lợi nhuận giữ lại của DPM tại 31/12/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NUMERIC-2-VRE",
+    "question": "Cho biết lợi nhuận giữ lại của VRE tại 31/12/2019.",
+    "gold": "NUMERIC",
+    "final_label": "NUMERIC",
+    "resolution": {
+      "intent_label": "NUMERIC",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Cho biết lợi nhuận giữ lại của VRE tại 31/12/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.2768982674109333
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.17447096878230364
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.14976071840996377
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.11383855338223696
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.10636236994351082
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.10159884575048612
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.07707027632056532
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Cho biết lợi nhuận giữ lại của VRE tại 31/12/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "MIXED",
+          "score": 0.44175516259862324,
+          "best_example": {
+            "id": "S5-L-088",
+            "text": "Cho biết lợi nhuận sau thuế CTG năm 2024 và liệt kê bài tin CTG trong tháng 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.44175516259862324,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4248493110425622,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4248493110425622,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.41403232168963267,
+          "best_example": {
+            "id": "S5-L-001",
+            "text": "Lợi nhuận trước thuế của BID năm 2024 đạt bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.41403232168963267,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4130130294973109,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4130130294973109,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.40255505609209763,
+          "best_example": {
+            "id": "S5-L-064",
+            "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+            "intent_label": "TREND",
+            "score": 0.40255505609209763,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.3912047781876702,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.3912047781876702,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3235342275240216,
+          "best_example": {
+            "id": "S5-L-037",
+            "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3235342275240216,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-088",
+          "text": "Cho biết lợi nhuận sau thuế CTG năm 2024 và liệt kê bài tin CTG trong tháng 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.44175516259862324,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-073",
+          "text": "Xác định công ty liên kết của VCB cuối năm 2024 rồi đọc tổng tài sản 2024 của từng công ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.44078963643231683,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-016",
+          "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4248493110425622,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-001",
+          "text": "Lợi nhuận trước thuế của BID năm 2024 đạt bao nhiêu?",
+          "intent_label": "NUMERIC",
+          "score": 0.41403232168963267,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-050",
+          "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4130130294973109,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Cho biết lợi nhuận giữ lại của VRE tại 31/12/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-1-DPM",
+    "question": "BCTN DPM năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+    "gold": "REPORT_CONTENT",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "BCTN DPM năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+          "intent_label": "REPORT_CONTENT"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "BCTN DPM năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.383536415829579
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.17502805115217984
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.10440906910476247
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.0913163921000583
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08957049571173421
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.0836873291750147
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.07245224692667156
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "BCTN DPM năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5247215387078376,
+          "best_example": {
+            "id": "S5-L-018",
+            "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5247215387078376,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5019571025300057,
+          "best_example": {
+            "id": "S5-L-044",
+            "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5019571025300057,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.49414420755279737,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.49414420755279737,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.48361597633225395,
+          "best_example": {
+            "id": "S5-L-072",
+            "text": "XH tăng trưởng DT BID 2021–2024 theo BCTC có ổn định không?",
+            "intent_label": "TREND",
+            "score": 0.48361597633225395,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.4707285476146782,
+          "best_example": {
+            "id": "S5-L-090",
+            "text": "LNST CTG 2024 là bn và có các tin CTG nào tháng 03/2025?",
+            "intent_label": "MIXED",
+            "score": 0.4707285476146782,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4301295233662594,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4301295233662594,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.38556701595803966,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.38556701595803966,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-018",
+          "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5247215387078376,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-016",
+          "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5085040843082403,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-044",
+          "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5019571025300057,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-006",
+          "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+          "intent_label": "NUMERIC",
+          "score": 0.49414420755279737,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.488345217350335,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "BCTN DPM năm 2019 mô tả chính sách phát triển nhân lực ra sao?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-1-VRE",
+    "question": "BCTN VRE năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+    "gold": "REPORT_CONTENT",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "BCTN VRE năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+          "intent_label": "REPORT_CONTENT"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "BCTN VRE năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.3637840886720378
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.16401095827690368
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.12103137709760291
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.09513638238454482
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08906123091965645
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.08851406783909863
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.07846189481015571
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "BCTN VRE năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NUMERIC",
+          "score": 0.48044321275258384,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.48044321275258384,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.46754754198865295,
+          "best_example": {
+            "id": "S5-L-013",
+            "text": "Tóm tắt mục quản trị rủi ro trong BCTN BID năm 2024.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.46754754198865295,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4562945405901835,
+          "best_example": {
+            "id": "S5-L-044",
+            "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4562945405901835,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.44371529212342564,
+          "best_example": {
+            "id": "S5-L-087",
+            "text": "Tìm người được bổ nhiệm TBKS BID năm 2024 rồi đọc tiểu sử ở BCTN 2024; TBKS = trưởng ban kiểm soát.",
+            "intent_label": "MIXED",
+            "score": 0.44371529212342564,
+            "component_intents": [
+              "PERSON_ROLE",
+              "REPORT_CONTENT"
+            ]
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.4404933309554732,
+          "best_example": {
+            "id": "S5-L-072",
+            "text": "XH tăng trưởng DT BID 2021–2024 theo BCTC có ổn định không?",
+            "intent_label": "TREND",
+            "score": 0.4404933309554732,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3904130824581923,
+          "best_example": {
+            "id": "S5-L-053",
+            "text": "Theo BCTN 2024 cua TCB, TCB so huu bao nhieu phan tram von cong ty An Phu?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3904130824581923,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.3687645653445166,
+          "best_example": {
+            "id": "S5-L-029",
+            "text": "Tom tat noi dung bai tin ve chia co tuc MBB cong bo ngay 01/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.3687645653445166,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-006",
+          "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+          "intent_label": "NUMERIC",
+          "score": 0.48044321275258384,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-005",
+          "text": "Theo BCTN MBB nam 2023, ty le no tren von chu so huu la bao nhieu?",
+          "intent_label": "NUMERIC",
+          "score": 0.47227915916375074,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-013",
+          "text": "Tóm tắt mục quản trị rủi ro trong BCTN BID năm 2024.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.46754754198865295,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-016",
+          "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4645483524007144,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-044",
+          "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4562945405901835,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "BCTN VRE năm 2019 mô tả chính sách phát triển nhân lực ra sao?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-2-DPM",
+    "question": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên DPM năm 2019.",
+    "gold": "REPORT_CONTENT",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên DPM năm 2019.",
+          "intent_label": "REPORT_CONTENT"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên DPM năm 2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.2611126122085569
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.20564288480937826
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.19450836275500724
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.13023996596573548
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08100480314864555
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.06399442343796437
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.06349694767471228
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên DPM năm 2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5280850947052862,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.5280850947052862,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.4780572090595635,
+          "best_example": {
+            "id": "S5-L-082",
+            "text": "Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó.",
+            "intent_label": "MIXED",
+            "score": 0.4780572090595635,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "TREND"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.46920985299422635,
+          "best_example": {
+            "id": "S5-L-034",
+            "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.46920985299422635,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.4689384248713156,
+          "best_example": {
+            "id": "S5-L-064",
+            "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+            "intent_label": "TREND",
+            "score": 0.4689384248713156,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.44102583794908895,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.44102583794908895,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.4047342509866586,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.4047342509866586,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4015069201193321,
+          "best_example": {
+            "id": "S5-L-044",
+            "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4015069201193321,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-016",
+          "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.5280850947052862,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-017",
+          "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.48587519380219324,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-082",
+          "text": "Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó.",
+          "intent_label": "MIXED",
+          "score": 0.4780572090595635,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        },
+        {
+          "id": "S5-L-019",
+          "text": "Tìm báo cáo thường niên của ELC năm 2024 để tôi đọc.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4737997254673519,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-022",
+          "text": "Trích nguyên văn mục tiểu sử ông Minh trong BCTN ITD năm 2023 đã chỉ định.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4715102204036109,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên DPM năm 2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-2-VRE",
+    "question": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên VRE năm 2019.",
+    "gold": "REPORT_CONTENT",
+    "final_label": "REPORT_CONTENT",
+    "resolution": {
+      "intent_label": "REPORT_CONTENT",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên VRE năm 2019.",
+          "intent_label": "REPORT_CONTENT"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên VRE năm 2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.2538443866944324
+        },
+        {
+          "rank": 2,
+          "intent_label": "NEWS",
+          "score": 0.19932514868458093
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.18780118026012252
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.13513693243570926
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.08675424373260616
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.07773709861149064
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.05940100958105817
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên VRE năm 2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "MIXED",
+          "score": 0.48626022889837284,
+          "best_example": {
+            "id": "S5-L-082",
+            "text": "Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó.",
+            "intent_label": "MIXED",
+            "score": 0.48626022889837284,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "TREND"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4811831717946897,
+          "best_example": {
+            "id": "S5-L-019",
+            "text": "Tìm báo cáo thường niên của ELC năm 2024 để tôi đọc.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4811831717946897,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NEWS",
+          "score": 0.452191193730968,
+          "best_example": {
+            "id": "S5-L-034",
+            "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.452191193730968,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.4317381000450209,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.4317381000450209,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4173774025749768,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4173774025749768,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.410413921082959,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.410413921082959,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.36846064604130563,
+          "best_example": {
+            "id": "S5-L-044",
+            "text": "Trong BCTN CMG nam 2023, ba Lan duoc ghi nhan giu chuc vu nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.36846064604130563,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-082",
+          "text": "Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó.",
+          "intent_label": "MIXED",
+          "score": 0.48626022889837284,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        },
+        {
+          "id": "S5-L-019",
+          "text": "Tìm báo cáo thường niên của ELC năm 2024 để tôi đọc.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4811831717946897,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-074",
+          "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.4797590464677762,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-016",
+          "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.47779488527129,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-084",
+          "text": "Tìm đối tác niêm yết của ELC cuối 2024 rồi nhận định XH giá từng doanh nghiệp năm 2024.",
+          "intent_label": "MIXED",
+          "score": 0.46470706251470034,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên VRE năm 2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NEWS-1-DPM",
+    "question": "Tìm các bài tin về DPM công bố chia cổ tức trong tháng 06/2019.",
+    "gold": "NEWS",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Tìm các bài tin về DPM công bố chia cổ tức trong tháng 06/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.5599455289042324
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.17869743970452326
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.07509272938639194
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.06153745346471446
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.055737763180235954
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.04057061649727753
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.028418468862624464
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Tìm các bài tin về DPM công bố chia cổ tức trong tháng 06/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.6022555694970961,
+          "best_example": {
+            "id": "S5-L-030",
+            "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+            "intent_label": "NEWS",
+            "score": 0.6022555694970961,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5102499751667339,
+          "best_example": {
+            "id": "S5-L-075",
+            "text": "Tìm cty LK VCB cuối 2024 rồi đọc tổng TS 2024 từng cty từ BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.5102499751667339,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.4174499682962738,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.4174499682962738,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4057404946266739,
+          "best_example": {
+            "id": "S5-L-017",
+            "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4057404946266739,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.3752234437859089,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.3752234437859089,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3690769912504226,
+          "best_example": {
+            "id": "S5-L-049",
+            "text": "Liệt kê các công ty con trực tiếp của MBB tại ngày 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3690769912504226,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3375212593055098,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3375212593055098,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-030",
+          "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+          "intent_label": "NEWS",
+          "score": 0.6022555694970961,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-028",
+          "text": "Tóm tắt nội dung bài tin về chia cổ tức MBB công bố ngày 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5784838007370114,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-025",
+          "text": "Tìm các bài tin về việc bổ nhiệm Tổng giám đốc TCB trong tháng 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5283802884359838,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-027",
+          "text": "Tìm tin bổ nhiệm TGĐ TCB tháng 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5104283801052197,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-075",
+          "text": "Tìm cty LK VCB cuối 2024 rồi đọc tổng TS 2024 từng cty từ BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.5102499751667339,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Tìm các bài tin về DPM công bố chia cổ tức trong tháng 06/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NEWS-1-VRE",
+    "question": "Tìm các bài tin về VRE công bố chia cổ tức trong tháng 06/2019.",
+    "gold": "NEWS",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Tìm các bài tin về VRE công bố chia cổ tức trong tháng 06/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.5818346931967445
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.15627298080255203
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.06535314540747646
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.0624165774145941
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.056140723708599884
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.05135636141025876
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.026625518059774218
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Tìm các bài tin về VRE công bố chia cổ tức trong tháng 06/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.5877797098759725,
+          "best_example": {
+            "id": "S5-L-030",
+            "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+            "intent_label": "NEWS",
+            "score": 0.5877797098759725,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5011866660985309,
+          "best_example": {
+            "id": "S5-L-075",
+            "text": "Tìm cty LK VCB cuối 2024 rồi đọc tổng TS 2024 từng cty từ BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.5011866660985309,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.4441716342270976,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.4441716342270976,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.39455324706218414,
+          "best_example": {
+            "id": "S5-L-019",
+            "text": "Tìm báo cáo thường niên của ELC năm 2024 để tôi đọc.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.39455324706218414,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.38238034432212453,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.38238034432212453,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.34134051036317675,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.34134051036317675,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.2871180264764749,
+          "best_example": {
+            "id": "S5-L-045",
+            "text": "Bà Lan giữ CV nào tại CMG theo BCTN 2023? CV nghĩa là chức vụ.",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.2871180264764749,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-030",
+          "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+          "intent_label": "NEWS",
+          "score": 0.5877797098759725,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-028",
+          "text": "Tóm tắt nội dung bài tin về chia cổ tức MBB công bố ngày 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5285691839087219,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-075",
+          "text": "Tìm cty LK VCB cuối 2024 rồi đọc tổng TS 2024 từng cty từ BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.5011866660985309,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-036",
+          "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+          "intent_label": "NEWS",
+          "score": 0.48477232450390184,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-025",
+          "text": "Tìm các bài tin về việc bổ nhiệm Tổng giám đốc TCB trong tháng 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.4764418052982058,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Tìm các bài tin về VRE công bố chia cổ tức trong tháng 06/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NEWS-2-DPM",
+    "question": "Hãy tóm tắt bài báo DPM khánh thành cơ sở sản xuất đăng ngày 15/07/2019.",
+    "gold": "NEWS",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Hãy tóm tắt bài báo DPM khánh thành cơ sở sản xuất đăng ngày 15/07/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.3727651578275888
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.19539985767214887
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.13355077813313856
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.09348683048668528
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.07711314199180282
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.06706545718348576
+        },
+        {
+          "rank": 7,
+          "intent_label": "NUMERIC",
+          "score": 0.06061877670514987
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Hãy tóm tắt bài báo DPM khánh thành cơ sở sản xuất đăng ngày 15/07/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.4760920600574112,
+          "best_example": {
+            "id": "S5-L-034",
+            "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.4760920600574112,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.45375279426349957,
+          "best_example": {
+            "id": "S5-L-079",
+            "text": "Tóm tắt kế hoạch trong BCTN CTG 2024 và tóm tắt các bài tin về CTG trong tháng 01/2025.",
+            "intent_label": "MIXED",
+            "score": 0.45375279426349957,
+            "component_intents": [
+              "REPORT_CONTENT",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4313716726006926,
+          "best_example": {
+            "id": "S5-L-058",
+            "text": "Những doanh nghiệp nào tham gia sự kiện ký kết hợp tác với BID ngày 15/10/2026?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4313716726006926,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.4274814430370014,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.4274814430370014,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.41736482649014717,
+          "best_example": {
+            "id": "S5-L-024",
+            "text": "Chép nguyên văn tiểu sử ông Minh ở BCTN ITD 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.41736482649014717,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3782716753494525,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3782716753494525,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NUMERIC",
+          "score": 0.3548665658409669,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.3548665658409669,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-034",
+          "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.4760920600574112,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-079",
+          "text": "Tóm tắt kế hoạch trong BCTN CTG 2024 và tóm tắt các bài tin về CTG trong tháng 01/2025.",
+          "intent_label": "MIXED",
+          "score": 0.45375279426349957,
+          "component_intents": [
+            "REPORT_CONTENT",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-028",
+          "text": "Tóm tắt nội dung bài tin về chia cổ tức MBB công bố ngày 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.45333909564976627,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-030",
+          "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+          "intent_label": "NEWS",
+          "score": 0.4360753129034344,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-058",
+          "text": "Những doanh nghiệp nào tham gia sự kiện ký kết hợp tác với BID ngày 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4313716726006926,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Hãy tóm tắt bài báo DPM khánh thành cơ sở sản xuất đăng ngày 15/07/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-NEWS-2-VRE",
+    "question": "Hãy tóm tắt bài báo VRE khánh thành cơ sở sản xuất đăng ngày 15/07/2019.",
+    "gold": "NEWS",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Hãy tóm tắt bài báo VRE khánh thành cơ sở sản xuất đăng ngày 15/07/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.3976206099164898
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.17234700761991883
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.12218330985098684
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.09299816762388372
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.07827722907630519
+        },
+        {
+          "rank": 6,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.07114578192621111
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.06542789398620474
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Hãy tóm tắt bài báo VRE khánh thành cơ sở sản xuất đăng ngày 15/07/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.46038376175511825,
+          "best_example": {
+            "id": "S5-L-034",
+            "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.46038376175511825,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.4257444570751062,
+          "best_example": {
+            "id": "S5-L-074",
+            "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.4257444570751062,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.40145928120715696,
+          "best_example": {
+            "id": "S5-L-058",
+            "text": "Những doanh nghiệp nào tham gia sự kiện ký kết hợp tác với BID ngày 15/10/2026?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.40145928120715696,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.3776317956928281,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.3776317956928281,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.3762008846617718,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.3762008846617718,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.37302370783572886,
+          "best_example": {
+            "id": "S5-L-019",
+            "text": "Tìm báo cáo thường niên của ELC năm 2024 để tôi đọc.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.37302370783572886,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.33667607979835057,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.33667607979835057,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-034",
+          "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.46038376175511825,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-036",
+          "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+          "intent_label": "NEWS",
+          "score": 0.43799250066027573,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-074",
+          "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.4257444570751062,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-030",
+          "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+          "intent_label": "NEWS",
+          "score": 0.4147669546771543,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-075",
+          "text": "Tìm cty LK VCB cuối 2024 rồi đọc tổng TS 2024 từng cty từ BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.4059833657756446,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Hãy tóm tắt bài báo VRE khánh thành cơ sở sản xuất đăng ngày 15/07/2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-1-DPM",
+    "question": "Ai giữ chức Giám đốc tài chính DPM tại cuối năm 2019?",
+    "gold": "PERSON_ROLE",
+    "final_label": "PERSON_ROLE",
+    "resolution": {
+      "intent_label": "PERSON_ROLE",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Ai giữ chức Giám đốc tài chính DPM tại cuối năm 2019?",
+          "intent_label": "PERSON_ROLE"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "Ai giữ chức Giám đốc tài chính DPM tại cuối năm 2019?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.39566304429129173
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.13761596296413217
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.12260683671447464
+        },
+        {
+          "rank": 4,
+          "intent_label": "NEWS",
+          "score": 0.1033574870032373
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.0930853669210101
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.0784078987553025
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.06926340335055144
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Ai giữ chức Giám đốc tài chính DPM tại cuối năm 2019?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5361548202991647,
+          "best_example": {
+            "id": "S5-L-040",
+            "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5361548202991647,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5040752244852047,
+          "best_example": {
+            "id": "S5-L-078",
+            "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+            "intent_label": "MIXED",
+            "score": 0.5040752244852047,
+            "component_intents": [
+              "PERSON_ROLE",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.43279666215107837,
+          "best_example": {
+            "id": "S5-L-051",
+            "text": "DS cty con trực tiếp MBB tại 31/12/2024 gồm những bên nào?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.43279666215107837,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4271349802730503,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4271349802730503,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.39328884387181906,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.39328884387181906,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.38570763451372214,
+          "best_example": {
+            "id": "S5-L-001",
+            "text": "Lợi nhuận trước thuế của BID năm 2024 đạt bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.38570763451372214,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.36215625362045417,
+          "best_example": {
+            "id": "S5-L-027",
+            "text": "Tìm tin bổ nhiệm TGĐ TCB tháng 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.36215625362045417,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-040",
+          "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5361548202991647,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-037",
+          "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5179405853074509,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-078",
+          "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+          "intent_label": "MIXED",
+          "score": 0.5040752244852047,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-076",
+          "text": "Cho biết ai giữ chức Tổng giám đốc MBB tại 31/12/2024 và liệt kê các bài tin bổ nhiệm vị trí đó trong năm 2024.",
+          "intent_label": "MIXED",
+          "score": 0.48564923414902783,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-039",
+          "text": "Ai là TGĐ TCB cuối năm 2024 theo BCTN?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4637911471064088,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Ai giữ chức Giám đốc tài chính DPM tại cuối năm 2019?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-1-VRE",
+    "question": "Ai giữ chức Giám đốc tài chính VRE tại cuối năm 2019?",
+    "gold": "PERSON_ROLE",
+    "final_label": "PERSON_ROLE",
+    "resolution": {
+      "intent_label": "PERSON_ROLE",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Ai giữ chức Giám đốc tài chính VRE tại cuối năm 2019?",
+          "intent_label": "PERSON_ROLE"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "Ai giữ chức Giám đốc tài chính VRE tại cuối năm 2019?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.36401870342876563
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.14318399078105323
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.12518970239620097
+        },
+        {
+          "rank": 4,
+          "intent_label": "NEWS",
+          "score": 0.11368834844510589
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.10654452080196526
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.08076409498224013
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.06661063916466888
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Ai giữ chức Giám đốc tài chính VRE tại cuối năm 2019?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.45688519106985354,
+          "best_example": {
+            "id": "S5-L-037",
+            "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.45688519106985354,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.41551873794924954,
+          "best_example": {
+            "id": "S5-L-078",
+            "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+            "intent_label": "MIXED",
+            "score": 0.41551873794924954,
+            "component_intents": [
+              "PERSON_ROLE",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.35958895622685405,
+          "best_example": {
+            "id": "S5-L-012",
+            "text": "Tổng TS VCB với TCB chênh bn theo BCTC HN 2024?",
+            "intent_label": "NUMERIC",
+            "score": 0.35958895622685405,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.34688803095018445,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.34688803095018445,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.3444757143729093,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.3444757143729093,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3336183491331749,
+          "best_example": {
+            "id": "S5-L-056",
+            "text": "Doanh nghiep nao la cong ty me cua cong ty Sao Bac tai ngay 30/06/2024?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3336183491331749,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.310549568453568,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.310549568453568,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-037",
+          "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.45688519106985354,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-040",
+          "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.45655584747503275,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-078",
+          "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+          "intent_label": "MIXED",
+          "score": 0.41551873794924954,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-076",
+          "text": "Cho biết ai giữ chức Tổng giám đốc MBB tại 31/12/2024 và liệt kê các bài tin bổ nhiệm vị trí đó trong năm 2024.",
+          "intent_label": "MIXED",
+          "score": 0.397934800887066,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-046",
+          "text": "Nhiệm kỳ Chủ tịch Hội đồng quản trị CTG được ghi nhận trong giai đoạn 2020–2024 bắt đầu và kết thúc khi nào?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.39736337488116313,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Ai giữ chức Giám đốc tài chính VRE tại cuối năm 2019?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-2-DPM",
+    "question": "Theo BCTN DPM 2019, ai là Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "final_label": "PERSON_ROLE",
+    "resolution": {
+      "intent_label": "PERSON_ROLE",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Theo BCTN DPM 2019, ai là Chủ tịch HĐQT",
+          "intent_label": "PERSON_ROLE"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "Theo BCTN DPM 2019, ai là Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.28124719199342885
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.1517134389684844
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.1471892149661114
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.14183413271993772
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.13847572323520302
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.08287635094061557
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.056663947176219004
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Theo BCTN DPM 2019, ai là Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5248917624188874,
+          "best_example": {
+            "id": "S5-L-037",
+            "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5248917624188874,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5235560427191729,
+          "best_example": {
+            "id": "S5-L-085",
+            "text": "Xác định ai được BID bổ nhiệm làm trưởng ban kiểm soát năm 2024 rồi đọc tiểu sử người đó trong BCTN 2024.",
+            "intent_label": "MIXED",
+            "score": 0.5235560427191729,
+            "component_intents": [
+              "PERSON_ROLE",
+              "REPORT_CONTENT"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.46770266855821585,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.46770266855821585,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4615639406341681,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4615639406341681,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.44719919807182773,
+          "best_example": {
+            "id": "S5-L-051",
+            "text": "DS cty con trực tiếp MBB tại 31/12/2024 gồm những bên nào?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.44719919807182773,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.42687279157617025,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.42687279157617025,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.40985141287078225,
+          "best_example": {
+            "id": "S5-L-027",
+            "text": "Tìm tin bổ nhiệm TGĐ TCB tháng 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.40985141287078225,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-037",
+          "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5248917624188874,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-085",
+          "text": "Xác định ai được BID bổ nhiệm làm trưởng ban kiểm soát năm 2024 rồi đọc tiểu sử người đó trong BCTN 2024.",
+          "intent_label": "MIXED",
+          "score": 0.5235560427191729,
+          "component_intents": [
+            "PERSON_ROLE",
+            "REPORT_CONTENT"
+          ]
+        },
+        {
+          "id": "S5-L-046",
+          "text": "Nhiệm kỳ Chủ tịch Hội đồng quản trị CTG được ghi nhận trong giai đoạn 2020–2024 bắt đầu và kết thúc khi nào?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5187188593273502,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-039",
+          "text": "Ai là TGĐ TCB cuối năm 2024 theo BCTN?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.49588048700590787,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-078",
+          "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+          "intent_label": "MIXED",
+          "score": 0.49390203513946784,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Theo BCTN DPM 2019, ai là Chủ tịch HĐQT"
+    ],
+    "component_probabilities": [
+      [
+        0.13470227870794493,
+        0.12744581234697358,
+        0.07980857509793962,
+        0.08155550797190142,
+        0.37405027674604163,
+        0.15196494774350952,
+        0.05047260138568918
+      ]
+    ]
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-2-VRE",
+    "question": "Theo BCTN VRE 2019, ai là Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "final_label": "PERSON_ROLE",
+    "resolution": {
+      "intent_label": "PERSON_ROLE",
+      "confidence": null,
+      "reason": "EXPLICIT_REQUEST_TYPE",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Theo BCTN VRE 2019, ai là Chủ tịch HĐQT",
+          "intent_label": "PERSON_ROLE"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "Theo BCTN VRE 2019, ai là Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.28203493063512075
+        },
+        {
+          "rank": 2,
+          "intent_label": "NEWS",
+          "score": 0.1478052469396539
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.14214745459131498
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.1381901204246185
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.13653874522785406
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.09785371227589332
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.055429789905544466
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Theo BCTN VRE 2019, ai là Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5083770533588121,
+          "best_example": {
+            "id": "S5-L-037",
+            "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5083770533588121,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5048502501751786,
+          "best_example": {
+            "id": "S5-L-085",
+            "text": "Xác định ai được BID bổ nhiệm làm trưởng ban kiểm soát năm 2024 rồi đọc tiểu sử người đó trong BCTN 2024.",
+            "intent_label": "MIXED",
+            "score": 0.5048502501751786,
+            "component_intents": [
+              "PERSON_ROLE",
+              "REPORT_CONTENT"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.46702491018129966,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.46702491018129966,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.43136507477030267,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.43136507477030267,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.4127118745250522,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.4127118745250522,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.4086856139283389,
+          "best_example": {
+            "id": "S5-L-065",
+            "text": "Danh gia chieu huong loi nhuan sau thue MBB qua cac nam 2022, 2023 va 2024 dua tren BCTC.",
+            "intent_label": "TREND",
+            "score": 0.4086856139283389,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3911616303060942,
+          "best_example": {
+            "id": "S5-L-057",
+            "text": "Cty mẹ của Sao Bắc tại 30/06/2024 là DN nào?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3911616303060942,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-037",
+          "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5083770533588121,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-085",
+          "text": "Xác định ai được BID bổ nhiệm làm trưởng ban kiểm soát năm 2024 rồi đọc tiểu sử người đó trong BCTN 2024.",
+          "intent_label": "MIXED",
+          "score": 0.5048502501751786,
+          "component_intents": [
+            "PERSON_ROLE",
+            "REPORT_CONTENT"
+          ]
+        },
+        {
+          "id": "S5-L-046",
+          "text": "Nhiệm kỳ Chủ tịch Hội đồng quản trị CTG được ghi nhận trong giai đoạn 2020–2024 bắt đầu và kết thúc khi nào?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.48887298074225927,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-039",
+          "text": "Ai là TGĐ TCB cuối năm 2024 theo BCTN?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.46924254164386053,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-048",
+          "text": "Nhiệm kỳ CT HĐQT CTG giai đoạn 2020–2024 từ ngày nào tới ngày nào?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4675877605169333,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Theo BCTN VRE 2019, ai là Chủ tịch HĐQT"
+    ],
+    "component_probabilities": [
+      [
+        0.130854987374382,
+        0.10918388085810174,
+        0.0837354211206944,
+        0.1051968260966451,
+        0.37361589932350003,
+        0.1497085231064861,
+        0.04770446212019045
+      ]
+    ]
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-1-DPM",
+    "question": "Công ty mẹ của DPM tại 31/12/2019 là đơn vị nào?",
+    "gold": "ENTITY_RELATION",
+    "final_label": "ENTITY_RELATION",
+    "resolution": {
+      "intent_label": "ENTITY_RELATION",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Công ty mẹ của DPM tại 31/12/2019 là đơn vị nào?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.6284850961026811
+        },
+        {
+          "rank": 2,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.09034113610721739
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.07156317430328991
+        },
+        {
+          "rank": 4,
+          "intent_label": "MIXED",
+          "score": 0.06520963922545503
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.05506384157854315
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.048197091938778115
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.04114002074403533
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Công ty mẹ của DPM tại 31/12/2019 là đơn vị nào?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5499161233797161,
+          "best_example": {
+            "id": "S5-L-057",
+            "text": "Cty mẹ của Sao Bắc tại 30/06/2024 là DN nào?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5499161233797161,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.43450665458816917,
+          "best_example": {
+            "id": "S5-L-078",
+            "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+            "intent_label": "MIXED",
+            "score": 0.43450665458816917,
+            "component_intents": [
+              "PERSON_ROLE",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.40562808611708245,
+          "best_example": {
+            "id": "S5-L-018",
+            "text": "Chính sách ghi nhận DT ở thuyết minh BCTC CMG 2023 nói gì?",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.40562808611708245,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.3767144237037493,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.3767144237037493,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3729733921897459,
+          "best_example": {
+            "id": "S5-L-037",
+            "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3729733921897459,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.36576997338174966,
+          "best_example": {
+            "id": "S5-L-001",
+            "text": "Lợi nhuận trước thuế của BID năm 2024 đạt bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.36576997338174966,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.32719336203599036,
+          "best_example": {
+            "id": "S5-L-034",
+            "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.32719336203599036,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-057",
+          "text": "Cty mẹ của Sao Bắc tại 30/06/2024 là DN nào?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5499161233797161,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-051",
+          "text": "DS cty con trực tiếp MBB tại 31/12/2024 gồm những bên nào?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5470106933044185,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-055",
+          "text": "Doanh nghiệp nào là công ty mẹ của công ty Sao Bắc tại ngày 30/06/2024?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5269861045664421,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-049",
+          "text": "Liệt kê các công ty con trực tiếp của MBB tại ngày 31/12/2024.",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.46478037162144076,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-056",
+          "text": "Doanh nghiep nao la cong ty me cua cong ty Sao Bac tai ngay 30/06/2024?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.46421275587600913,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Công ty mẹ của DPM tại 31/12/2019 là đơn vị nào?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-1-VRE",
+    "question": "Công ty mẹ của VRE tại 31/12/2019 là đơn vị nào?",
+    "gold": "ENTITY_RELATION",
+    "final_label": "ENTITY_RELATION",
+    "resolution": {
+      "intent_label": "ENTITY_RELATION",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Công ty mẹ của VRE tại 31/12/2019 là đơn vị nào?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5954152384601431
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.11505676964494525
+        },
+        {
+          "rank": 3,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.08584799565911545
+        },
+        {
+          "rank": 4,
+          "intent_label": "NEWS",
+          "score": 0.05629440133120208
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.05553323801886883
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.049447765930033145
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.042404590955692094
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Công ty mẹ của VRE tại 31/12/2019 là đơn vị nào?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5194719920199138,
+          "best_example": {
+            "id": "S5-L-055",
+            "text": "Doanh nghiệp nào là công ty mẹ của công ty Sao Bắc tại ngày 30/06/2024?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5194719920199138,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.3734288932184339,
+          "best_example": {
+            "id": "S5-L-074",
+            "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.3734288932184339,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.33932509561584967,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.33932509561584967,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.33599604984789344,
+          "best_example": {
+            "id": "S5-L-012",
+            "text": "Tổng TS VCB với TCB chênh bn theo BCTC HN 2024?",
+            "intent_label": "NUMERIC",
+            "score": 0.33599604984789344,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.32152424157028514,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.32152424157028514,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3181829640699639,
+          "best_example": {
+            "id": "S5-L-037",
+            "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3181829640699639,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.3100883692304543,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.3100883692304543,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-055",
+          "text": "Doanh nghiệp nào là công ty mẹ của công ty Sao Bắc tại ngày 30/06/2024?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5194719920199138,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-057",
+          "text": "Cty mẹ của Sao Bắc tại 30/06/2024 là DN nào?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5181051912528727,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-056",
+          "text": "Doanh nghiep nao la cong ty me cua cong ty Sao Bac tai ngay 30/06/2024?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4746353289049041,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-049",
+          "text": "Liệt kê các công ty con trực tiếp của MBB tại ngày 31/12/2024.",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.39657228313539283,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-060",
+          "text": "DN nào tham gia sự kiện ký kết HT với BID ngày 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3848571084804764,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Công ty mẹ của VRE tại 31/12/2019 là đơn vị nào?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-2-DPM",
+    "question": "Liệt kê doanh nghiệp hợp tác với DPM trong dự án triển khai năm 2019.",
+    "gold": "ENTITY_RELATION",
+    "final_label": "ENTITY_RELATION",
+    "resolution": {
+      "intent_label": "ENTITY_RELATION",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Liệt kê doanh nghiệp hợp tác với DPM trong dự án triển khai năm 2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3460488486068147
+        },
+        {
+          "rank": 2,
+          "intent_label": "NEWS",
+          "score": 0.2235234176308241
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.16945751739503434
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.09715738906718528
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.061637605604727266
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.05231673203941771
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.04985848965599667
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Liệt kê doanh nghiệp hợp tác với DPM trong dự án triển khai năm 2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.5127955569722638,
+          "best_example": {
+            "id": "S5-L-034",
+            "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.5127955569722638,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5063787853671337,
+          "best_example": {
+            "id": "S5-L-049",
+            "text": "Liệt kê các công ty con trực tiếp của MBB tại ngày 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.5063787853671337,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.4923701027059919,
+          "best_example": {
+            "id": "S5-L-073",
+            "text": "Xác định công ty liên kết của VCB cuối năm 2024 rồi đọc tổng tài sản 2024 của từng công ty theo BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.4923701027059919,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.41988465934836405,
+          "best_example": {
+            "id": "S5-L-017",
+            "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.41988465934836405,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "TREND",
+          "score": 0.4034897126259842,
+          "best_example": {
+            "id": "S5-L-068",
+            "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+            "intent_label": "TREND",
+            "score": 0.4034897126259842,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.37156074582939286,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.37156074582939286,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3512129349989185,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3512129349989185,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-034",
+          "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5127955569722638,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-049",
+          "text": "Liệt kê các công ty con trực tiếp của MBB tại ngày 31/12/2024.",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5063787853671337,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-058",
+          "text": "Những doanh nghiệp nào tham gia sự kiện ký kết hợp tác với BID ngày 15/10/2026?",
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.5032642909582569,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-073",
+          "text": "Xác định công ty liên kết của VCB cuối năm 2024 rồi đọc tổng tài sản 2024 của từng công ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.4923701027059919,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-082",
+          "text": "Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó.",
+          "intent_label": "MIXED",
+          "score": 0.4922152075444316,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Liệt kê doanh nghiệp hợp tác với DPM trong dự án triển khai năm 2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-2-VRE",
+    "question": "Liệt kê doanh nghiệp hợp tác với VRE trong dự án triển khai năm 2019.",
+    "gold": "ENTITY_RELATION",
+    "final_label": "ENTITY_RELATION",
+    "resolution": {
+      "intent_label": "ENTITY_RELATION",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Liệt kê doanh nghiệp hợp tác với VRE trong dự án triển khai năm 2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3308116324015276
+        },
+        {
+          "rank": 2,
+          "intent_label": "NEWS",
+          "score": 0.2375838595690504
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.15231106515504958
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.0953179399791106
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.0743560926605308
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.06363664937376436
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.045982760860966795
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Liệt kê doanh nghiệp hợp tác với VRE trong dự án triển khai năm 2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.5192775551387141,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.5192775551387141,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5029148898595855,
+          "best_example": {
+            "id": "S5-L-073",
+            "text": "Xác định công ty liên kết của VCB cuối năm 2024 rồi đọc tổng tài sản 2024 của từng công ty theo BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.5029148898595855,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4788172586933693,
+          "best_example": {
+            "id": "S5-L-058",
+            "text": "Những doanh nghiệp nào tham gia sự kiện ký kết hợp tác với BID ngày 15/10/2026?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4788172586933693,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.38779342195482785,
+          "best_example": {
+            "id": "S5-L-011",
+            "text": "So sanh tong tai san tren BCTC hop nhat nam 2024 cua VCB va TCB bang so chenh lech.",
+            "intent_label": "NUMERIC",
+            "score": 0.38779342195482785,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.36857907454817745,
+          "best_example": {
+            "id": "S5-L-019",
+            "text": "Tìm báo cáo thường niên của ELC năm 2024 để tôi đọc.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.36857907454817745,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.3659644584300043,
+          "best_example": {
+            "id": "S5-L-062",
+            "text": "Nhan dinh xu huong gia VCB trong cac phien tu 01/10 den 30/10/2026 dua tren chuoi gia.",
+            "intent_label": "TREND",
+            "score": 0.3659644584300043,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3189724714620981,
+          "best_example": {
+            "id": "S5-L-045",
+            "text": "Bà Lan giữ CV nào tại CMG theo BCTN 2023? CV nghĩa là chức vụ.",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3189724714620981,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-036",
+          "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+          "intent_label": "NEWS",
+          "score": 0.5192775551387141,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-073",
+          "text": "Xác định công ty liên kết của VCB cuối năm 2024 rồi đọc tổng tài sản 2024 của từng công ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.5029148898595855,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-034",
+          "text": "Chép nguyên văn đoạn thông báo hợp tác trong bài tin BID đăng ngày 28/10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.493457117138097,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-082",
+          "text": "Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó.",
+          "intent_label": "MIXED",
+          "score": 0.49174442954223413,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        },
+        {
+          "id": "S5-L-084",
+          "text": "Tìm đối tác niêm yết của ELC cuối 2024 rồi nhận định XH giá từng doanh nghiệp năm 2024.",
+          "intent_label": "MIXED",
+          "score": 0.48117234255479024,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Liệt kê doanh nghiệp hợp tác với VRE trong dự án triển khai năm 2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-TREND-1-DPM",
+    "question": "Đánh giá chiều hướng khả năng sinh lời DPM qua giai đoạn 2016–2019.",
+    "gold": "TREND",
+    "final_label": "TREND",
+    "resolution": {
+      "intent_label": "TREND",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Đánh giá chiều hướng khả năng sinh lời DPM qua giai đoạn 2016–2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.369855418393453
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.13302961193992646
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.13212343674449897
+        },
+        {
+          "rank": 4,
+          "intent_label": "NEWS",
+          "score": 0.1220270541460378
+        },
+        {
+          "rank": 5,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.11802338656115924
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.07476952706366366
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.050171565151261026
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Đánh giá chiều hướng khả năng sinh lời DPM qua giai đoạn 2016–2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.5526226567173279,
+          "best_example": {
+            "id": "S5-L-064",
+            "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+            "intent_label": "TREND",
+            "score": 0.5526226567173279,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4876763937751148,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4876763937751148,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.47664911322414694,
+          "best_example": {
+            "id": "S5-L-088",
+            "text": "Cho biết lợi nhuận sau thuế CTG năm 2024 và liệt kê bài tin CTG trong tháng 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.47664911322414694,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.44312135327542884,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.44312135327542884,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.4305976628838703,
+          "best_example": {
+            "id": "S5-L-030",
+            "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+            "intent_label": "NEWS",
+            "score": 0.4305976628838703,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.4014238778145254,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.4014238778145254,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.39792093791468874,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.39792093791468874,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-064",
+          "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+          "intent_label": "TREND",
+          "score": 0.5526226567173279,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-067",
+          "text": "Dựa trên giá và biên lợi nhuận của CMG trong năm 2024, nhận định các tín hiệu xu hướng có đồng thuận không.",
+          "intent_label": "TREND",
+          "score": 0.5323797333415644,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-016",
+          "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4876763937751148,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-070",
+          "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+          "intent_label": "TREND",
+          "score": 0.48693655468658575,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-017",
+          "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.47904657305118525,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Đánh giá chiều hướng khả năng sinh lời DPM qua giai đoạn 2016–2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-TREND-1-VRE",
+    "question": "Đánh giá chiều hướng khả năng sinh lời VRE qua giai đoạn 2016–2019.",
+    "gold": "TREND",
+    "final_label": "TREND",
+    "resolution": {
+      "intent_label": "TREND",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Đánh giá chiều hướng khả năng sinh lời VRE qua giai đoạn 2016–2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.36353743360012514
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.17472309180855167
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.11886454881279979
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.11780648568510231
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.11590733309289136
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.06621869007963535
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.04294241692089445
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Đánh giá chiều hướng khả năng sinh lời VRE qua giai đoạn 2016–2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.5134025051791009,
+          "best_example": {
+            "id": "S5-L-061",
+            "text": "Nhận định xu hướng giá VCB trong các phiên từ 01/10 đến 30/10/2026 dựa trên chuỗi giá.",
+            "intent_label": "TREND",
+            "score": 0.5134025051791009,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.4704477739415883,
+          "best_example": {
+            "id": "S5-L-082",
+            "text": "Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó.",
+            "intent_label": "MIXED",
+            "score": 0.4704477739415883,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "TREND"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.44196719281083685,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.44196719281083685,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.42958129567425485,
+          "best_example": {
+            "id": "S5-L-019",
+            "text": "Tìm báo cáo thường niên của ELC năm 2024 để tôi đọc.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.42958129567425485,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.4240819910509787,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.4240819910509787,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.38169030103735113,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.38169030103735113,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.36276467597267104,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.36276467597267104,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-061",
+          "text": "Nhận định xu hướng giá VCB trong các phiên từ 01/10 đến 30/10/2026 dựa trên chuỗi giá.",
+          "intent_label": "TREND",
+          "score": 0.5134025051791009,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-063",
+          "text": "Nhận định XH giá VCB 01–30/10/2026 từ chuỗi giá.",
+          "intent_label": "TREND",
+          "score": 0.5029468581526807,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-064",
+          "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+          "intent_label": "TREND",
+          "score": 0.5009150530021584,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-082",
+          "text": "Tìm các đối tác niêm yết của ELC tại cuối năm 2024 rồi đánh giá xu hướng giá từng doanh nghiệp trong năm đó.",
+          "intent_label": "MIXED",
+          "score": 0.4704477739415883,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "TREND"
+          ]
+        },
+        {
+          "id": "S5-L-074",
+          "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.4627722910744795,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Đánh giá chiều hướng khả năng sinh lời VRE qua giai đoạn 2016–2019."
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-TREND-2-DPM",
+    "question": "Nhận định đà tăng giá cổ phiếu DPM trong quý II/2019 có bền vững không?",
+    "gold": "TREND",
+    "final_label": "TREND",
+    "resolution": {
+      "intent_label": "TREND",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Nhận định đà tăng giá cổ phiếu DPM trong quý II/2019 có bền vững không?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.4140452967258427
+        },
+        {
+          "rank": 2,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.1251769436748437
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.12226386350819299
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.10356630123504379
+        },
+        {
+          "rank": 5,
+          "intent_label": "MIXED",
+          "score": 0.09145783497733448
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.0756424624373365
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.06784729744140576
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Nhận định đà tăng giá cổ phiếu DPM trong quý II/2019 có bền vững không?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.5499289241896861,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.5499289241896861,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4338322867851106,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4338322867851106,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.42997725129946834,
+          "best_example": {
+            "id": "S5-L-078",
+            "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+            "intent_label": "MIXED",
+            "score": 0.42997725129946834,
+            "component_intents": [
+              "PERSON_ROLE",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4205289743218929,
+          "best_example": {
+            "id": "S5-L-040",
+            "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.4205289743218929,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.41869556399809066,
+          "best_example": {
+            "id": "S5-L-051",
+            "text": "DS cty con trực tiếp MBB tại 31/12/2024 gồm những bên nào?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.41869556399809066,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.41661390282401245,
+          "best_example": {
+            "id": "S5-L-001",
+            "text": "Lợi nhuận trước thuế của BID năm 2024 đạt bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.41661390282401245,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.344681245571554,
+          "best_example": {
+            "id": "S5-L-030",
+            "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+            "intent_label": "NEWS",
+            "score": 0.344681245571554,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-070",
+          "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+          "intent_label": "TREND",
+          "score": 0.5499289241896861,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-067",
+          "text": "Dựa trên giá và biên lợi nhuận của CMG trong năm 2024, nhận định các tín hiệu xu hướng có đồng thuận không.",
+          "intent_label": "TREND",
+          "score": 0.5065840870798872,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-072",
+          "text": "XH tăng trưởng DT BID 2021–2024 theo BCTC có ổn định không?",
+          "intent_label": "TREND",
+          "score": 0.4909299299218305,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-069",
+          "text": "Giá và biên LN CMG năm 2024 cho tín hiệu XH đồng thuận hay trái chiều?",
+          "intent_label": "TREND",
+          "score": 0.4705800526877307,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-068",
+          "text": "Dua tren gia va bien loi nhuan cua CMG trong nam 2024, nhan dinh cac tin hieu xu huong co dong thuan khong.",
+          "intent_label": "TREND",
+          "score": 0.44984439689387135,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Nhận định đà tăng giá cổ phiếu DPM trong quý II/2019 có bền vững không?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-TREND-2-VRE",
+    "question": "Nhận định đà tăng giá cổ phiếu VRE trong quý II/2019 có bền vững không?",
+    "gold": "TREND",
+    "final_label": "TREND",
+    "resolution": {
+      "intent_label": "TREND",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Nhận định đà tăng giá cổ phiếu VRE trong quý II/2019 có bền vững không?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.38826963784644386
+        },
+        {
+          "rank": 2,
+          "intent_label": "NUMERIC",
+          "score": 0.17807451294488943
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.11608654364126672
+        },
+        {
+          "rank": 4,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.09403177907481297
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.07907890854871684
+        },
+        {
+          "rank": 6,
+          "intent_label": "MIXED",
+          "score": 0.07805994079026374
+        },
+        {
+          "rank": 7,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.06639867715360645
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Nhận định đà tăng giá cổ phiếu VRE trong quý II/2019 có bền vững không?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "TREND",
+          "score": 0.5078802531508698,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.5078802531508698,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.4133777504835271,
+          "best_example": {
+            "id": "S5-L-074",
+            "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.4133777504835271,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.40596949219499245,
+          "best_example": {
+            "id": "S5-L-012",
+            "text": "Tổng TS VCB với TCB chênh bn theo BCTC HN 2024?",
+            "intent_label": "NUMERIC",
+            "score": 0.40596949219499245,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.3649310140776623,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.3649310140776623,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3594008655669677,
+          "best_example": {
+            "id": "S5-L-046",
+            "text": "Nhiệm kỳ Chủ tịch Hội đồng quản trị CTG được ghi nhận trong giai đoạn 2020–2024 bắt đầu và kết thúc khi nào?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3594008655669677,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.35297436216423816,
+          "best_example": {
+            "id": "S5-L-056",
+            "text": "Doanh nghiep nao la cong ty me cua cong ty Sao Bac tai ngay 30/06/2024?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.35297436216423816,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.33685482562633806,
+          "best_example": {
+            "id": "S5-L-033",
+            "text": "Điểm tin TTCK VN ngày 05/11/2026.",
+            "intent_label": "NEWS",
+            "score": 0.33685482562633806,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-070",
+          "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+          "intent_label": "TREND",
+          "score": 0.5078802531508698,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-072",
+          "text": "XH tăng trưởng DT BID 2021–2024 theo BCTC có ổn định không?",
+          "intent_label": "TREND",
+          "score": 0.4399048402604877,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-061",
+          "text": "Nhận định xu hướng giá VCB trong các phiên từ 01/10 đến 30/10/2026 dựa trên chuỗi giá.",
+          "intent_label": "TREND",
+          "score": 0.41964338555741537,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-067",
+          "text": "Dựa trên giá và biên lợi nhuận của CMG trong năm 2024, nhận định các tín hiệu xu hướng có đồng thuận không.",
+          "intent_label": "TREND",
+          "score": 0.41903266322397514,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-074",
+          "text": "Xac dinh cong ty lien ket cua VCB cuoi nam 2024 roi doc tong tai san 2024 cua tung cong ty theo BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.4133777504835271,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        }
+      ]
+    },
+    "parts": [
+      "Nhận định đà tăng giá cổ phiếu VRE trong quý II/2019 có bền vững không?"
+    ],
+    "component_probabilities": []
+  },
+  {
+    "id": "FINAL-MIXED-1-DPM",
+    "question": "Ai giữ chức Giám đốc tài chính DPM cuối năm 2019? BCTN DPM mô tả chính sách phát triển nhân lực ra sao?",
+    "gold": "MIXED",
+    "final_label": "MIXED",
+    "resolution": {
+      "intent_label": "MIXED",
+      "confidence": null,
+      "reason": "TWO_EXPLICIT_REQUEST_TYPES",
+      "component_labels": [
+        "PERSON_ROLE",
+        "REPORT_CONTENT"
+      ],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Ai giữ chức Giám đốc tài chính DPM cuối năm 2019",
+          "intent_label": "PERSON_ROLE"
+        },
+        {
+          "text": "BCTN DPM mô tả chính sách phát triển nhân lực ra sao",
+          "intent_label": "REPORT_CONTENT"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "Ai giữ chức Giám đốc tài chính DPM cuối năm 2019? BCTN DPM mô tả chính sách phát triển nhân lực ra sao?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3208209614640049
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.16411518716820825
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.15347032276411304
+        },
+        {
+          "rank": 4,
+          "intent_label": "NEWS",
+          "score": 0.10527826732709553
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.09599213498515473
+        },
+        {
+          "rank": 6,
+          "intent_label": "TREND",
+          "score": 0.08447168380725469
+        },
+        {
+          "rank": 7,
+          "intent_label": "NUMERIC",
+          "score": 0.07585144248416889
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Ai giữ chức Giám đốc tài chính DPM cuối năm 2019? BCTN DPM mô tả chính sách phát triển nhân lực ra sao?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5448085333935699,
+          "best_example": {
+            "id": "S5-L-040",
+            "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.5448085333935699,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5092973800145946,
+          "best_example": {
+            "id": "S5-L-078",
+            "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+            "intent_label": "MIXED",
+            "score": 0.5092973800145946,
+            "component_intents": [
+              "PERSON_ROLE",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.48836473119611856,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.48836473119611856,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.45984177391318404,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.45984177391318404,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.42917282061239526,
+          "best_example": {
+            "id": "S5-L-051",
+            "text": "DS cty con trực tiếp MBB tại 31/12/2024 gồm những bên nào?",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.42917282061239526,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NUMERIC",
+          "score": 0.42491796310786273,
+          "best_example": {
+            "id": "S5-L-004",
+            "text": "Theo BCTN MBB năm 2023, tỷ lệ nợ trên vốn chủ sở hữu là bao nhiêu?",
+            "intent_label": "NUMERIC",
+            "score": 0.42491796310786273,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "NEWS",
+          "score": 0.4104973026591372,
+          "best_example": {
+            "id": "S5-L-027",
+            "text": "Tìm tin bổ nhiệm TGĐ TCB tháng 10/2026.",
+            "intent_label": "NEWS",
+            "score": 0.4104973026591372,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-040",
+          "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5448085333935699,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-037",
+          "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.5130823330693212,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-078",
+          "text": "Ai là TGĐ MBB tại 31/12/2024 và có những tin bổ nhiệm TGĐ nào năm 2024?",
+          "intent_label": "MIXED",
+          "score": 0.5092973800145946,
+          "component_intents": [
+            "PERSON_ROLE",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-085",
+          "text": "Xác định ai được BID bổ nhiệm làm trưởng ban kiểm soát năm 2024 rồi đọc tiểu sử người đó trong BCTN 2024.",
+          "intent_label": "MIXED",
+          "score": 0.496053423269766,
+          "component_intents": [
+            "PERSON_ROLE",
+            "REPORT_CONTENT"
+          ]
+        },
+        {
+          "id": "S5-L-046",
+          "text": "Nhiệm kỳ Chủ tịch Hội đồng quản trị CTG được ghi nhận trong giai đoạn 2020–2024 bắt đầu và kết thúc khi nào?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.49510421527639764,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Ai giữ chức Giám đốc tài chính DPM cuối năm 2019",
+      "BCTN DPM mô tả chính sách phát triển nhân lực ra sao"
+    ],
+    "component_probabilities": [
+      [
+        0.13126739873929794,
+        0.12036042457381979,
+        0.11441121113180235,
+        0.08644492870963447,
+        0.4049621222826213,
+        0.07082507308348818,
+        0.071728841479336
+      ],
+      [
+        0.0769919304395853,
+        0.10021574214560126,
+        0.0825293999300715,
+        0.07243862933825336,
+        0.11288823538998499,
+        0.4662336574660672,
+        0.08870240529043642
+      ]
+    ]
+  },
+  {
+    "id": "FINAL-MIXED-1-VRE",
+    "question": "Ai giữ chức Giám đốc tài chính VRE cuối năm 2019? BCTN VRE mô tả chính sách phát triển nhân lực ra sao?",
+    "gold": "MIXED",
+    "final_label": "MIXED",
+    "resolution": {
+      "intent_label": "MIXED",
+      "confidence": null,
+      "reason": "TWO_EXPLICIT_REQUEST_TYPES",
+      "component_labels": [
+        "PERSON_ROLE",
+        "REPORT_CONTENT"
+      ],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": [
+        {
+          "text": "Ai giữ chức Giám đốc tài chính VRE cuối năm 2019",
+          "intent_label": "PERSON_ROLE"
+        },
+        {
+          "text": "BCTN VRE mô tả chính sách phát triển nhân lực ra sao",
+          "intent_label": "REPORT_CONTENT"
+        }
+      ]
+    },
+    "base_ranking": {
+      "question": "Ai giữ chức Giám đốc tài chính VRE cuối năm 2019? BCTN VRE mô tả chính sách phát triển nhân lực ra sao?",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3063240419422469
+        },
+        {
+          "rank": 2,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.16102232551747964
+        },
+        {
+          "rank": 3,
+          "intent_label": "MIXED",
+          "score": 0.13733916476776534
+        },
+        {
+          "rank": 4,
+          "intent_label": "NUMERIC",
+          "score": 0.11178705900312295
+        },
+        {
+          "rank": 5,
+          "intent_label": "NEWS",
+          "score": 0.11031124755138538
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08748030183788087
+        },
+        {
+          "rank": 7,
+          "intent_label": "TREND",
+          "score": 0.08573585938011898
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Ai giữ chức Giám đốc tài chính VRE cuối năm 2019? BCTN VRE mô tả chính sách phát triển nhân lực ra sao?",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.48548206933713733,
+          "best_example": {
+            "id": "S5-L-040",
+            "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.48548206933713733,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.45330251278181244,
+          "best_example": {
+            "id": "S5-L-085",
+            "text": "Xác định ai được BID bổ nhiệm làm trưởng ban kiểm soát năm 2024 rồi đọc tiểu sử người đó trong BCTN 2024.",
+            "intent_label": "MIXED",
+            "score": 0.45330251278181244,
+            "component_intents": [
+              "PERSON_ROLE",
+              "REPORT_CONTENT"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.42801636999394865,
+          "best_example": {
+            "id": "S5-L-070",
+            "text": "Theo BCTC BID giai đoạn 2021–2024, tăng trưởng doanh thu có ổn định qua thời gian không?",
+            "intent_label": "TREND",
+            "score": 0.42801636999394865,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4272556713996944,
+          "best_example": {
+            "id": "S5-L-016",
+            "text": "Giải thích chính sách ghi nhận doanh thu trong thuyết minh BCTC CMG năm 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4272556713996944,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.42046079743408105,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.42046079743408105,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "NEWS",
+          "score": 0.3644059499058003,
+          "best_example": {
+            "id": "S5-L-036",
+            "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+            "intent_label": "NEWS",
+            "score": 0.3644059499058003,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.34133983937623724,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.34133983937623724,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-040",
+          "text": "Ông Nam được BID bổ nhiệm làm Giám đốc tài chính vào ngày nào trong năm 2024?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.48548206933713733,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-037",
+          "text": "Theo BCTN TCB năm 2024, ai giữ chức Tổng giám đốc tại thời điểm cuối năm?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4710714267321545,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-046",
+          "text": "Nhiệm kỳ Chủ tịch Hội đồng quản trị CTG được ghi nhận trong giai đoạn 2020–2024 bắt đầu và kết thúc khi nào?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4533820517968831,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-085",
+          "text": "Xác định ai được BID bổ nhiệm làm trưởng ban kiểm soát năm 2024 rồi đọc tiểu sử người đó trong BCTN 2024.",
+          "intent_label": "MIXED",
+          "score": 0.45330251278181244,
+          "component_intents": [
+            "PERSON_ROLE",
+            "REPORT_CONTENT"
+          ]
+        },
+        {
+          "id": "S5-L-039",
+          "text": "Ai là TGĐ TCB cuối năm 2024 theo BCTN?",
+          "intent_label": "PERSON_ROLE",
+          "score": 0.4449742771451308,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Ai giữ chức Giám đốc tài chính VRE cuối năm 2019",
+      "BCTN VRE mô tả chính sách phát triển nhân lực ra sao"
+    ],
+    "component_probabilities": [
+      [
+        0.119149327525121,
+        0.10491523953442095,
+        0.12750324238666955,
+        0.13299737346820206,
+        0.3703358492706648,
+        0.0696110249413141,
+        0.07548794287360729
+      ],
+      [
+        0.07589320662737244,
+        0.09132434443385365,
+        0.08491957959834104,
+        0.10170098622992405,
+        0.10316107780993113,
+        0.44958241076253697,
+        0.0934183945380408
+      ]
+    ]
+  },
+  {
+    "id": "FINAL-MIXED-2-DPM",
+    "question": "Cho biết lợi nhuận giữ lại DPM cuối năm 2019 rồi tìm các bài tin chia cổ tức DPM tháng 06/2019.",
+    "gold": "MIXED",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Cho biết lợi nhuận giữ lại DPM cuối năm 2019 rồi tìm các bài tin chia cổ tức DPM tháng 06/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.3709872151344505
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.2219195263929833
+        },
+        {
+          "rank": 3,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.1050860973755386
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.09743377406072884
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.08478043029503037
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.07371970793494236
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.046073248806325955
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Cho biết lợi nhuận giữ lại DPM cuối năm 2019 rồi tìm các bài tin chia cổ tức DPM tháng 06/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.5651335514625597,
+          "best_example": {
+            "id": "S5-L-030",
+            "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+            "intent_label": "NEWS",
+            "score": 0.5651335514625597,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.532365616243636,
+          "best_example": {
+            "id": "S5-L-088",
+            "text": "Cho biết lợi nhuận sau thuế CTG năm 2024 và liệt kê bài tin CTG trong tháng 03/2025.",
+            "intent_label": "MIXED",
+            "score": 0.532365616243636,
+            "component_intents": [
+              "NUMERIC",
+              "NEWS"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "TREND",
+          "score": 0.4593309733331711,
+          "best_example": {
+            "id": "S5-L-064",
+            "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+            "intent_label": "TREND",
+            "score": 0.4593309733331711,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.44637203855318214,
+          "best_example": {
+            "id": "S5-L-017",
+            "text": "Giai thich chinh sach ghi nhan doanh thu trong thuyet minh BCTC CMG nam 2023.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.44637203855318214,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.41645925416420665,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.41645925416420665,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3998330514138781,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3998330514138781,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.3588883540802615,
+          "best_example": {
+            "id": "S5-L-047",
+            "text": "Nhiem ky Chu tich Hoi dong quan tri CTG duoc ghi nhan trong giai doan 2020–2024 bat dau va ket thuc khi nao?",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.3588883540802615,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-030",
+          "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+          "intent_label": "NEWS",
+          "score": 0.5651335514625597,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-088",
+          "text": "Cho biết lợi nhuận sau thuế CTG năm 2024 và liệt kê bài tin CTG trong tháng 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.532365616243636,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-028",
+          "text": "Tóm tắt nội dung bài tin về chia cổ tức MBB công bố ngày 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.5213865515917826,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-075",
+          "text": "Tìm cty LK VCB cuối 2024 rồi đọc tổng TS 2024 từng cty từ BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.5075019685571238,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-027",
+          "text": "Tìm tin bổ nhiệm TGĐ TCB tháng 10/2026.",
+          "intent_label": "NEWS",
+          "score": 0.4704899594790023,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Cho biết lợi nhuận giữ lại DPM cuối năm 2019",
+      "tìm các bài tin chia cổ tức DPM tháng 06/2019"
+    ],
+    "component_probabilities": [
+      [
+        0.17385809235033206,
+        0.14141438841484416,
+        0.11587110479352604,
+        0.17904397751212275,
+        0.10160117827054153,
+        0.1360016438783222,
+        0.15220961478031142
+      ],
+      [
+        0.1200972952932036,
+        0.12696714176382207,
+        0.5024334310651382,
+        0.06674600824517495,
+        0.053746914616465656,
+        0.06053003893502753,
+        0.06947917008116805
+      ]
+    ]
+  },
+  {
+    "id": "FINAL-MIXED-2-VRE",
+    "question": "Cho biết lợi nhuận giữ lại VRE cuối năm 2019 rồi tìm các bài tin chia cổ tức VRE tháng 06/2019.",
+    "gold": "MIXED",
+    "final_label": "NEWS",
+    "resolution": {
+      "intent_label": "NEWS",
+      "confidence": null,
+      "reason": "WHOLE_QUERY_UNCHANGED",
+      "component_labels": [],
+      "ranking_policy": "intent-request-objectives-v1",
+      "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+      "runtime_enabled": false,
+      "explicit_evidence": []
+    },
+    "base_ranking": {
+      "question": "Cho biết lợi nhuận giữ lại VRE cuối năm 2019 rồi tìm các bài tin chia cổ tức VRE tháng 06/2019.",
+      "ranking_policy": "intent-linear-v1",
+      "score_type": "CLASSIFIER_PROBABILITY_UNCALIBRATED",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "runtime_enabled": false,
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.39035914204762046
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.20316032648406918
+        },
+        {
+          "rank": 3,
+          "intent_label": "NUMERIC",
+          "score": 0.10852277517915407
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.09849174450267979
+        },
+        {
+          "rank": 5,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.08912066860090545
+        },
+        {
+          "rank": 6,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.06949270037802276
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.040852642807548474
+        }
+      ]
+    },
+    "original_ranking": {
+      "question": "Cho biết lợi nhuận giữ lại VRE cuối năm 2019 rồi tìm các bài tin chia cổ tức VRE tháng 06/2019.",
+      "ranking_policy": "cosine-max-per-label-v1",
+      "score_type": "COSINE_SIMILARITY_NOT_PROBABILITY",
+      "model": {
+        "name": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "library_version": "s5-intent-library-v1",
+      "dataset_version": "s5-intent-dataset-v1-draft3",
+      "label_schema_version": "s5-intent-labels-v1-draft2",
+      "groups": [
+        {
+          "rank": 1,
+          "intent_label": "NEWS",
+          "score": 0.5604633675802992,
+          "best_example": {
+            "id": "S5-L-030",
+            "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+            "intent_label": "NEWS",
+            "score": 0.5604633675802992,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 2,
+          "intent_label": "MIXED",
+          "score": 0.5167918371196787,
+          "best_example": {
+            "id": "S5-L-075",
+            "text": "Tìm cty LK VCB cuối 2024 rồi đọc tổng TS 2024 từng cty từ BCTC.",
+            "intent_label": "MIXED",
+            "score": 0.5167918371196787,
+            "component_intents": [
+              "ENTITY_RELATION",
+              "NUMERIC"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "intent_label": "REPORT_CONTENT",
+          "score": 0.4392351170684926,
+          "best_example": {
+            "id": "S5-L-019",
+            "text": "Tìm báo cáo thường niên của ELC năm 2024 để tôi đọc.",
+            "intent_label": "REPORT_CONTENT",
+            "score": 0.4392351170684926,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 4,
+          "intent_label": "TREND",
+          "score": 0.42367369595116783,
+          "best_example": {
+            "id": "S5-L-064",
+            "text": "Đánh giá chiều hướng lợi nhuận sau thuế MBB qua các năm 2022, 2023 và 2024 dựa trên BCTC.",
+            "intent_label": "TREND",
+            "score": 0.42367369595116783,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 5,
+          "intent_label": "NUMERIC",
+          "score": 0.4181216022989104,
+          "best_example": {
+            "id": "S5-L-006",
+            "text": "Đọc tỷ lệ nợ/VCSH MBB 2023 từ BCTN giúp tôi.",
+            "intent_label": "NUMERIC",
+            "score": 0.4181216022989104,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 6,
+          "intent_label": "ENTITY_RELATION",
+          "score": 0.3793230844638342,
+          "best_example": {
+            "id": "S5-L-050",
+            "text": "Liet ke cac cong ty con truc tiep cua MBB tai ngay 31/12/2024.",
+            "intent_label": "ENTITY_RELATION",
+            "score": 0.3793230844638342,
+            "component_intents": []
+          }
+        },
+        {
+          "rank": 7,
+          "intent_label": "PERSON_ROLE",
+          "score": 0.32926131770702965,
+          "best_example": {
+            "id": "S5-L-045",
+            "text": "Bà Lan giữ CV nào tại CMG theo BCTN 2023? CV nghĩa là chức vụ.",
+            "intent_label": "PERSON_ROLE",
+            "score": 0.32926131770702965,
+            "component_intents": []
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "S5-L-030",
+          "text": "Tóm tắt tin chia CT MBB đăng 01/11/2026; CT ở đây là cổ tức.",
+          "intent_label": "NEWS",
+          "score": 0.5604633675802992,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-075",
+          "text": "Tìm cty LK VCB cuối 2024 rồi đọc tổng TS 2024 từng cty từ BCTC.",
+          "intent_label": "MIXED",
+          "score": 0.5167918371196787,
+          "component_intents": [
+            "ENTITY_RELATION",
+            "NUMERIC"
+          ]
+        },
+        {
+          "id": "S5-L-088",
+          "text": "Cho biết lợi nhuận sau thuế CTG năm 2024 và liệt kê bài tin CTG trong tháng 03/2025.",
+          "intent_label": "MIXED",
+          "score": 0.493397623807825,
+          "component_intents": [
+            "NUMERIC",
+            "NEWS"
+          ]
+        },
+        {
+          "id": "S5-L-028",
+          "text": "Tóm tắt nội dung bài tin về chia cổ tức MBB công bố ngày 01/11/2026.",
+          "intent_label": "NEWS",
+          "score": 0.4882696646731395,
+          "component_intents": []
+        },
+        {
+          "id": "S5-L-036",
+          "text": "Trích NV đoạn hợp tác ở tin BID 28/10/2026; NV = nguyên văn.",
+          "intent_label": "NEWS",
+          "score": 0.4736410113130636,
+          "component_intents": []
+        }
+      ]
+    },
+    "parts": [
+      "Cho biết lợi nhuận giữ lại VRE cuối năm 2019",
+      "tìm các bài tin chia cổ tức VRE tháng 06/2019"
+    ],
+    "component_probabilities": [
+      [
+        0.152144090620104,
+        0.11586213857041452,
+        0.10831126914081442,
+        0.26068945774758473,
+        0.08634868607358195,
+        0.12580042154250226,
+        0.1508439363049982
+      ],
+      [
+        0.10946033396974984,
+        0.10835385597226468,
+        0.5281813004769819,
+        0.08706251437278673,
+        0.049260537532055594,
+        0.05526959597027657,
+        0.06241186170588473
+      ]
+    ]
+  }
+]

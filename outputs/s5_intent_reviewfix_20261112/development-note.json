@@ -1,0 +1,10 @@
+{
+  "status": "HISTORICAL_DEVELOPMENT_ATTEMPT",
+  "active_attempt": "run02",
+  "reason": "Two additional imperative-plus-ellipsis unit tests failed after run01; adjusted narrow segmentation guard, preserved head/gold and cached all 19 vectors.",
+  "frozen_runner_recovered_exactly_by_sha256": true,
+  "frozen_module_snapshot_verified": true,
+  "run02_relative_cache_path_preflight_error_fixed_before_output_creation": true,
+  "no_refit": true,
+  "review_probe_wrong_case_not_tuned": true
+}

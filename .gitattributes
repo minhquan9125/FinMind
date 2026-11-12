@@ -8,3 +8,66 @@ outputs/s5_wbs033_20261110/intent-library-v1/*.npy binary
 outputs/s5_wbs041_20261110/**/*.json text eol=lf
 outputs/s5_wbs041_20261110/**/*.jsonl text eol=lf
 outputs/s5_wbs041_review_20261111/*.json text eol=lf
+outputs/s5_wbs041_topk_20261111/*.json text eol=lf
+docs/sprint5/intent-experiment-v2/*.json text eol=lf
+docs/sprint5/intent-experiment-v2/*.jsonl text eol=lf
+outputs/s5_intent_experiment_20261111/**/*.json text eol=lf
+outputs/s5_intent_experiment_20261111/**/*.npy binary
+outputs/s5_intent_additive_20261112/**/*.json text eol=lf
+outputs/s5_intent_additive_20261112/**/*.jsonl text eol=lf
+outputs/s5_intent_additive_20261112/**/*.npy binary
+# Source bytes fingerprinted by the offline additive experiment.
+backend/scripts/run_s5_intent_additive.py text eol=lf
+backend/scripts/run_s5_intent_experiment.py text eol=lf
+backend/src/retrieval_orchestration/intent_additive.py text eol=lf
+backend/src/retrieval_orchestration/intent_experiment.py text eol=lf
+backend/src/retrieval_orchestration/intent_matching.py text eol=lf
+docs/sprint5/S5-WBS04.1-additive-plan.md text eol=lf
+docs/sprint5/S5-WBS04.1-improvement-plan.md text eol=lf
+outputs/s5_intent_scorer_20261112/**/*.json text eol=lf
+outputs/s5_intent_scorer_20261112/**/*.jsonl text eol=lf
+outputs/s5_intent_scorer_20261112/**/*.md text eol=lf
+outputs/s5_intent_scorer_20261112/**/*.npy binary
+outputs/s5_intent_scorer_20261112/**/*.npz binary
+backend/src/retrieval_orchestration/intent_scoring.py text eol=lf
+backend/scripts/prepare_s5_intent_scorer.py text eol=lf
+backend/scripts/run_s5_intent_scorer.py text eol=lf
+docs/sprint5/intent-composition-v1/*.json text eol=lf
+docs/sprint5/intent-composition-v1/*.jsonl text eol=lf
+outputs/s5_intent_composition_20261112/**/*.json text eol=lf
+outputs/s5_intent_composition_20261112/**/*.npy binary
+outputs/s5_intent_composition_20261112/**/*.py text eol=lf
+backend/src/retrieval_orchestration/intent_composition.py text eol=lf
+backend/src/retrieval_orchestration/intent_request_consensus.py text eol=lf
+backend/src/retrieval_orchestration/intent_request_objectives.py text eol=lf
+backend/scripts/run_s5_intent_composition.py text eol=lf
+backend/scripts/run_s5_intent_consensus.py text eol=lf
+backend/scripts/run_s5_intent_objectives.py text eol=lf
+backend/scripts/check_s5_intent_consensus_new.py text eol=lf
+backend/scripts/check_s5_intent_objectives_final.py text eol=lf
+docs/sprint5/S5-WBS04.1-composition-plan.md text eol=lf
+docs/sprint5/S5-WBS04.1-consensus-plan.md text eol=lf
+docs/sprint5/S5-WBS04.1-objective-plan.md text eol=lf
+backend/src/retrieval_orchestration/intent_request_review.py text eol=lf
+backend/scripts/run_s5_intent_reviewfix.py text eol=lf
+docs/sprint5/S5-WBS04.1-reviewfix-plan.md text eol=lf
+outputs/s5_intent_reviewfix_20261112/**/*.json text eol=lf
+outputs/s5_intent_reviewfix_20261112/**/*.py text eol=lf
+outputs/s5_intent_reviewfix_20261112/**/*.npy binary
+backend/src/retrieval_orchestration/intent_numeric_requests.py text eol=lf
+backend/scripts/run_s5_intent_numeric.py text eol=lf
+docs/sprint5/intent-numeric-probes.json text eol=lf
+docs/sprint5/S5-WBS04.1-numeric-plan.md text eol=lf
+docs/sprint5/S5-WBS04.1-numeric-results.md text eol=lf
+outputs/s5_intent_numeric_20261112/**/*.json text eol=lf
+outputs/s5_intent_numeric_20261112/**/*.npy binary
+backend/src/retrieval_orchestration/intent_news_requests.py text eol=lf
+backend/scripts/run_s5_intent_news.py text eol=lf
+backend/scripts/audit_s5_intent_news.py text eol=lf
+docs/sprint5/S5-WBS04.1-news-mixed-plan.md text eol=lf
+outputs/s5_intent_news_20261112/**/*.json text eol=lf
+outputs/s5_intent_news_20261112/**/*.npy binary
+docs/sprint5/S5-WBS04.1-news-mixed-results.md text eol=lf
+backend/src/retrieval_orchestration/intent_library.py text eol=lf
+docs/sprint5/archive/*.md text eol=lf
+docs/sprint5/contracts/*.md text eol=lf

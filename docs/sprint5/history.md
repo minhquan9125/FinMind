@@ -49,7 +49,7 @@ Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
 - **Hưng đã xác nhận draft3 đạt review nội dung**, theo phản hồi Nhân chuyển lại.
 - Có validator, 14 bài test dữ liệu và hướng dẫn; đã chạy đạt từ ZIP giải nén mới.
 - Commit chính: `ba6459dd`, `d4cf4d00`, `7aa473c6`, `bd747663`, `c7c57962`, `d36295d2`.
-- Bàn giao: [bảng review](S5-WBS03.2-samples-and-tests.md), [hướng dẫn](S5-WBS03.2-HANDOFF.md),
+- Bàn giao: [bảng review](S5-WBS03.2-samples-and-tests.md), [hướng dẫn](archive/S5-WBS03.2-HANDOFF.md),
   [manifest](intent-dataset-v1/manifest.json), [câu mẫu](intent-dataset-v1/library.jsonl),
   [câu test](intent-dataset-v1/test.jsonl).
 
@@ -70,7 +70,7 @@ Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
 - Tổng **28 bài test đạt**: 14 dữ liệu, 14 artifact. ZIP review đã được giải nén
   sang thư mục mới và chạy lại kiểm tra đọc artifact cùng 28 test, đều đạt.
 - Commit chính: `ff295719`, `eb5397e5`.
-- Bàn giao: [báo cáo](S5-WBS03.3-vector-library.md), [hướng dẫn review](S5-WBS03.3-HANDOFF.md),
+- Bàn giao: [báo cáo](S5-WBS03.3-vector-library.md), [hướng dẫn review](archive/S5-WBS03.3-HANDOFF.md),
   [artifact](../../outputs/s5_wbs033_20261110/intent-library-v1),
   [bằng chứng model thật](../../outputs/s5_wbs033_20261110/verification.json),
   [kiểm tra trước review](../../outputs/s5_wbs033_20261110/pre-review-summary.json).
@@ -126,7 +126,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
 - Chức năng đối chiếu đã có bằng chứng chạy thật; chất lượng top-1 còn thấp,
   chưa coi là nghiệm thu chất lượng phân loại hoặc tự động điều phối.
 - Bàn giao: [hợp đồng và cách chạy](S5-WBS04.1-intent-matching.md),
-  [kết quả và ca sai](S5-WBS04.1-baseline-results.md),
+  [kết quả và ca sai](archive/S5-WBS04.1-baseline-results.md),
   [đầu ra run01](../../outputs/s5_wbs041_20261110/run01),
   [biên bản kiểm tra](../../outputs/s5_wbs041_20261110/verification.json).
 
@@ -143,3 +143,136 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   chất lượng phân loại, chưa tích hợp router và chưa có xác nhận review 04.1.
 - Bàn giao: [hướng dẫn](S5-WBS04.1-HANDOFF.md),
   [kiểm chứng model thật](../../outputs/s5_wbs041_review_20261111/real-model-audit.json).
+
+## 11/11/2026 — Bổ sung phân tích top-k theo yêu cầu Hưng
+
+- Dùng đầu ra run01 đã lưu đủ bảy nhóm để đối chiếu top-1/3/5 trên cùng 47 câu
+  có nhãn, loại 9 câu null. Không chạy lại model hoặc thay cách xếp hạng.
+- Kết quả lần lượt 22/47 (46,81%), 41/47 (87,23%), 46/47 (97,87%). Top-5 thêm
+  năm câu so với top-3; vẫn bỏ sót T027, nhãn ENTITY_RELATION ở hạng 6.
+- Báo cáo theo từng nhãn, hình thức câu, độ đầy đủ ngữ cảnh và giới hạn:
+  top-5 trả 5/7 nhãn, không phải accuracy chọn nhãn cuối.
+- [Báo cáo](archive/S5-WBS04.1-top1-top3-top5-report.md), script
+  `backend/scripts/report_s5_intent_topk.py`, dữ liệu `outputs/s5_wbs041_topk_20261111/comparison.json`.
+
+## 11/11/2026 — Đối chứng sau chẩn đoán của Huyền
+
+- Tái hiện bằng model thật vấn đề đổi công ty làm đổi nhãn và nhầm đơn/kết hợp.
+- Đóng băng kế hoạch 2 × 2 trước inference: gốc/cân bằng mẫu × nguyên văn/che ticker.
+  So sánh trên 84 dev, 47 regression có nhãn và 8 known probes; 28 later-check chưa chấm.
+- Chuẩn bị 112 mẫu cân bằng DRAFT riêng. Không sửa taxonomy, thư viện/vectors chính,
+  matcher runtime, ngưỡng 0,65/0,08 hoặc payload top-3 của Huyền.
+- Balanced sửa 8/8 known probes, nhưng dev chỉ 40/84; regression tăng 22→26/47
+  với 13 ca sửa đúng và 9 ca đang đúng thành sai. Chưa đề nghị thay baseline.
+- Masking không được mặc định áp dụng: có regression và sai tuyến vượt ngưỡng.
+- 61 unit test đạt (54 cũ + 7 mới); kiểm chứng độc lập lại 592 bảng thứ hạng từ
+  vector model thật, sai lệch cosine tối đa 1,23e-15; source checksum giữ nguyên.
+- [Kế hoạch](S5-WBS04.1-improvement-plan.md), [kết quả và giới hạn](archive/S5-WBS04.1-improvement-results.md).
+
+## 12/11/2026 — Giữ mẫu gốc, bổ sung và kiểm tra sau khi đóng băng
+
+- Phân tích 9 ca hồi quy: mất các mẫu tin, sự kiện, xu hướng và ý định kết hợp khi
+  thay thư viện. Thử hai bản nối, giữ nguyên 90 hàng và từng byte vector gốc.
+- add_all (202 hàng): dev 40/84, bộ cũ 27/47; còn hai ca cũ đúng→sai T034/T036.
+- add_focused (138 hàng): bộ cũ 27/47, sửa thêm 5 ca và không làm sai ca cũ đang đúng;
+  nhưng dev giảm 34→30/84, nên không đủ điều kiện thay baseline.
+- Chốt add_focused theo quy tắc chọn đã ghi trước rồi chấm đúng một lượt bộ 28 câu:
+  baseline và ứng viên đều 19/28 top-1; sửa 2 câu, hỏng 2 câu; top-3 giảm 26→25/28.
+  Bộ do cùng tác giả soạn, không gọi là test mù; từ lượt này không còn là chưa xem.
+- 66 test đạt. Kiểm chứng độc lập 500 bảng thứ hạng từ vector thật, sai lệch tối đa
+  1,23e-15; xác nhận nguồn/byte vector gốc không đổi. Chưa triển khai ứng viên mới.
+- Không sửa ngưỡng 0,65/0,08, payload top-3 hoặc code router/WebChat của Huyền.
+- [Kế hoạch](S5-WBS04.1-additive-plan.md), [báo cáo](archive/S5-WBS04.1-additive-results.md).
+
+## 12/11/2026 — Thử classifier và centroid theo kế hoạch đã chốt
+
+- Dùng 202 hàng LIBRARY/58 family, vector BGE-M3 đã có; validation 4 fold theo
+  family, mọi biến thể cùng nhóm; trọng số cân bằng nhãn/family. Không fit vào test.
+- Logistic Regression C=1 chọn từ OOF trong ba C định trước; dev 66/84, bộ cũ 35/47,
+  bộ 28 câu đã xem 24/28; baseline lần lượt 34/84, 22/47, 19/28.
+- Centroid theo family: dev 66/84, bộ cũ 34/47, bộ 28 câu đã xem 23/28.
+- Linear sửa thêm 14 ca cũ nhưng hỏng T038; centroid sửa 15, hỏng 3. Không qua
+  checkpoint không hồi quy; chưa làm final-check mới hoặc calibration, không hạ tiêu chí.
+- Tách score_type/policy; guard thử nghiệm từ chối dùng ngưỡng 0,65/0,08 cho loại
+  điểm mới. Chưa có source consumer 04.2 mới của Huyền tại local, chưa sửa router thật.
+- 76 test đạt; kiểm chứng lại 528 thứ hạng và grouped OOF selection bằng phép tính
+  độc lập; mutation bỏ guard policy bị test bắt. Không đổi matcher/vector gốc.
+- Hai lỗi ghi báo cáo/pointer đã sửa, giữ bằng chứng lượt lỗi; tham số và CV hai lần
+  giống nhau từng phần tử, không fit lần ba. Xem recovery-note.json.
+- [Kết quả](archive/S5-WBS04.1-scorer-results.md), [contract](contracts/S5-WBS04.1-scorer-contract.md),
+  [kế hoạch và điểm dừng](../../tasks/plan.md).
+
+## 12/11/2026 — Kiểm tra đơn/kết hợp và quy tắc mục tiêu
+
+- V1 dùng điểm thành phần không đạt: T038 vẫn sai, phát sinh hồi quy T003.
+  V2 đối chiếu cả câu/từng yêu cầu sửa T038 nhưng còn nhầm 10/32 kiểm soát.
+- V3 thêm quy tắc hẹp theo mục tiêu ROLE/REPORT; không ngoại lệ theo công ty
+  hoặc mã câu. Hồi quy 41/47, kiểm soát 32/32, dev 70/84; không có linear
+  đang đúng thành sai trên các tập đã đo. Chẩn đoán cũ còn KNOWN-07/08 sai.
+- Sau đóng băng V3, bộ mới 28 câu đạt 25/28; classifier 23/28, cosine 18/28.
+  Bộ do cùng tác giả soạn, 14 khung × 2 công ty; không coi là test mù độc lập.
+- Giữ lượt mã hóa lỗi và script gốc, sửa UTF-8 và thêm guard trước embedding;
+  audit xác nhận cùng head/rules. Không điều chỉnh V3 sau khi xem 28 câu này.
+- 101 unit test; audit V3 tái hiện 278 quyết định và tái tính điểm từ vector.
+  Nhãn resolution riêng, confidence=null; không thay raw ranking, ngưỡng
+  0,65/0,08 hoặc router. Chưa calibration, chưa tích hợp consumer 04.2/E2E.
+- [Báo cáo tổng hợp và giới hạn](archive/S5-WBS04.1-objective-results.md).
+
+## 12/11/2026 — Chuẩn bị review trên nhánh
+
+- Bổ sung REVIEW-REQUEST: tóm tắt năm commit thử nghiệm, kết quả, file cần đọc,
+  câu hỏi review logic/bằng chứng cho Hưng và ranh giới consumer cho Huyền.
+- Nhân xác nhận đẩy cả code, vector, dữ liệu kiểm thử và báo cáo lên nhánh
+  `nhan-sprint-501` để nhóm review; không coi push là hoàn thành tích hợp router.
+
+## 12/11/2026 — Sửa sau nhận xét Hưng
+
+- Xác nhận lỗi AI/ai và thiếu câu hỏi chức vụ bằng test trước khi sửa. Tạo
+  module V4 riêng, giữ nguyên source/artifact V3 đã review và head BGE-M3/C=1.
+- 18 test mới; 278 câu hồi quy giữ nguyên nhãn V3. BGE-M3 thật trên 15 probe
+  theo review đạt 14/15; còn câu doanh thu AI/cloud của ABC sai, không ép nhãn.
+- Toàn bộ 119/119 test Sprint 5 đạt (101 cũ + 18 mới).
+- Giữ bằng chứng các lượt unit lỗi, snapshot run01 và run02 dùng lại 19 vector;
+  audit tái tạo 293 quyết định. Nhãn confidence=null, raw ranking không đổi.
+- Viết đề xuất ranh giới kế hoạch lợi nhuận và contract consumer ở DRAFT;
+  không tự sửa schema APPROVED hoặc source 04.2 chưa có tại local.
+- Tạm dừng task 01.2 theo yêu cầu Nhân; chưa tích hợp router/E2E.
+- [Kết quả và phạm vi cần review lại](archive/S5-WBS04.1-reviewfix-results.md).
+
+## 12/11/2026 — Nhận diện yêu cầu lấy giá trị tài chính
+
+- Nhân đồng ý xử lý tiếp REVIEW-03. Thêm guard NUMERIC theo chỉ tiêu và mục
+  tiêu lấy giá trị; giữ loại trừ đếm quan hệ/ngày/tin/nguyên văn/đánh giá.
+- Guard trả NUMERIC cho REVIEW-03, giữ bảng điểm gốc (ENTITY_RELATION vẫn
+  đứng đầu classifier). Không có ngoại lệ ABC, không refit hoặc đổi gold.
+- 293 câu đã xem: sửa hai ca REVIEW-03 và FINAL-NUMERIC-2-DPM, không làm sai
+  câu V4 đang đúng. Bộ review cũ 15/15; không gọi đây là test mới độc lập.
+- BGE-M3 thật trên 20 kiểm tra bổ sung đạt 17/20. Giữ ba lỗi NV-13/NV-19/NV-20
+  sau phép đo, chưa giải quyết mọi trường hợp đơn/kết hợp.
+- 144/144 unit test; audit tái hiện 313 quyết định và kiểm lại điểm từ vector.
+  Confidence=null, raw ranking bất biến; V3/V4 và audit cũ giữ nguyên.
+- [Báo cáo](archive/S5-WBS04.1-numeric-results.md). Chưa calibration, chưa nối consumer
+  04.2/router/Web Chat; ranh giới kế hoạch lợi nhuận vẫn chờ nhóm chốt.
+
+## 12/11/2026 — Sửa mục tiêu bài tin và câu nhiều ý
+
+- Nhân đồng ý xử lý NV-13/NV-19/NV-20 sau khi nghe giải thích nguyên nhân.
+  Test bản cũ có 9 fail/9 pass; bản sửa có 18 test mới, toàn bộ 162 test ý định qua.
+- Module offline kế tiếp nhận mục tiêu thao tác bài tin và tách vế Đọc giá trị
+  khi có yêu cầu độc lập; ghép mục tiêu rõ NUMERIC + NEWS/PERSON_ROLE thành MIXED.
+- Replay 313 hàng: ba ca đã đúng, bộ 20 câu nay đã xem đạt 20/20; sửa thêm
+  FINAL-MIXED-2-DPM/VRE, bộ 28 câu cũ đạt 28/28. Không phát sinh đúng→sai.
+- Model BGE-M3/revision, head C=1, training/gold và điểm gốc giữ nguyên;
+  chỉ vector hóa hai đoạn mới tách. Không có ngoại lệ theo tên doanh nghiệp.
+- [Báo cáo và giới hạn](S5-WBS04.1-news-mixed-results.md). Không coi kết quả
+  hồi quy là test mù. Chưa calibration, chưa tích hợp consumer/router/Web Chat.
+
+## 12/11/2026 — Gọn lại tài liệu Sprint 5
+
+- Thêm [README](README.md) để chọn đúng tài liệu; rút gọn bàn giao hiện tại.
+- Chuyển 13 bản bàn giao/báo cáo cũ vào `archive/`, hai hợp đồng vào `contracts/`;
+  giữ thêm bản bàn giao dài trước dọn để tra cứu, sửa các liên kết tương ứng.
+- Số Markdown trực tiếp trong `docs/sprint5` giảm từ 30 xuống 16. Các kế hoạch
+  đóng băng vẫn ở đường dẫn cũ để giữ checksum và khả năng chạy lại audit.
+- Điều chỉnh nơi xuất của tám script báo cáo cũ để không tạo lại file ở thư mục gốc.
+  Không đổi logic phân loại, nhãn, dữ liệu hoặc kết quả kiểm thử.

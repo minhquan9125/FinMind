@@ -1,0 +1,42 @@
+{
+  "status": "FROZEN_BEFORE_LATER_CHECK",
+  "selected": {
+    "name": "add_focused",
+    "eligible": false,
+    "wrong_regression": 0,
+    "wrong_dev": 0,
+    "regressed": 0,
+    "dev_hits": 30,
+    "regression_hits": 27,
+    "rows": 138
+  },
+  "candidates": [
+    {
+      "name": "add_all",
+      "eligible": false,
+      "wrong_regression": 0,
+      "wrong_dev": 0,
+      "regressed": 2,
+      "dev_hits": 40,
+      "regression_hits": 27,
+      "rows": 202
+    },
+    {
+      "name": "add_focused",
+      "eligible": false,
+      "wrong_regression": 0,
+      "wrong_dev": 0,
+      "regressed": 0,
+      "dev_hits": 30,
+      "regression_hits": 27,
+      "rows": 138
+    }
+  ],
+  "method_sha256": "7d25a0c1fef05cf6da0f30927159f8da3b07c38a34d1dea54ee5a0bd163af500",
+  "results_sha256": "2b1ca04ec443f82401fc247215556c27a9eed3fcfef3d35cbdd63de3d9fb9322",
+  "candidate_manifest_sha256": "73d2d356194736964d0b53a8b3d7ef73974702fd164a27f0df94bcdb9e20c8b6",
+  "original_manifest_sha256": "d679eab18f7368d9ab44e4695d399b5662ab3a539da9319378d2aae220298221",
+  "later_file_sha256": "4439afa73db4d4f3d0b21f30f9da2171a46168e14efbebcb2709742a8ced4eef",
+  "policy_simulation_not_e2e": true,
+  "do_not_promote_without_quality_confirmation": true
+}

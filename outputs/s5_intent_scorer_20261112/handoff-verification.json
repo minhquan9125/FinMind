@@ -1,0 +1,11 @@
+{
+  "status": "REVIEW_EVIDENCE_NOT_PRODUCTION_APPROVAL",
+  "fresh_zip_audit_passed": true,
+  "tests_passed": 76,
+  "report_reproduced": true,
+  "zip_file": "S5-WBS04.1-scorer-review.zip",
+  "zip_sha256": "729cd439aab8e0df364ab03cf411f2245c94c3fff8b723ec20075260db64dfde",
+  "runtime_unchanged": true,
+  "no_candidate_passed_no_regression_gate": true,
+  "calibration_not_run": true
+}

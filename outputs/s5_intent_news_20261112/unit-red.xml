@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="9" skipped="0" tests="18" time="3.269" timestamp="2026-11-12T15:01:57.032112+07:00" hostname="DESKTOP-1PMP5V4"><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_is_the_requested_output[T\xecm b\xe0i tin cho bi\u1ebft doanh thu c\u1ee7a VJC trong n\u0103m 2024.]" time="0.016"><failure message="AssertionError: assert None == 'NEWS'&#10; +  where None = explicit_intent('Tìm bài tin cho biết doanh thu của VJC trong năm 2024.')">question = 'Tìm bài tin cho biết doanh thu của VJC trong năm 2024.'
+
+    @pytest.mark.parametrize('question', [
+        'Tìm bài tin cho biết doanh thu của VJC trong năm 2024.',
+        'Hãy tìm bài báo về lợi nhuận của HPG.',
+        'Liệt kê bản tin về việc bổ nhiệm CEO của DGC.',
+        'Tóm tắt bài tin về doanh thu của PNJ.',
+        'Đối chiếu hai bài tin về kế hoạch lợi nhuận của VNM.',
+    ])
+    def test_article_is_the_requested_output(question):
+&gt;       assert explicit_intent(question) == 'NEWS'
+E       AssertionError: assert None == 'NEWS'
+E        +  where None = explicit_intent('Tìm bài tin cho biết doanh thu của VJC trong năm 2024.')
+
+backend\tests\test_s5_intent_news_requests.py:19: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_is_the_requested_output[H\xe3y t\xecm b\xe0i b\xe1o v\u1ec1 l\u1ee3i nhu\u1eadn c\u1ee7a HPG.]" time="0.005"><failure message="AssertionError: assert None == 'NEWS'&#10; +  where None = explicit_intent('Hãy tìm bài báo về lợi nhuận của HPG.')">question = 'Hãy tìm bài báo về lợi nhuận của HPG.'
+
+    @pytest.mark.parametrize('question', [
+        'Tìm bài tin cho biết doanh thu của VJC trong năm 2024.',
+        'Hãy tìm bài báo về lợi nhuận của HPG.',
+        'Liệt kê bản tin về việc bổ nhiệm CEO của DGC.',
+        'Tóm tắt bài tin về doanh thu của PNJ.',
+        'Đối chiếu hai bài tin về kế hoạch lợi nhuận của VNM.',
+    ])
+    def test_article_is_the_requested_output(question):
+&gt;       assert explicit_intent(question) == 'NEWS'
+E       AssertionError: assert None == 'NEWS'
+E        +  where None = explicit_intent('Hãy tìm bài báo về lợi nhuận của HPG.')
+
+backend\tests\test_s5_intent_news_requests.py:19: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_is_the_requested_output[Li\u1ec7t k\xea b\u1ea3n tin v\u1ec1 vi\u1ec7c b\u1ed5 nhi\u1ec7m CEO c\u1ee7a DGC.]" time="0.006"><failure message="AssertionError: assert None == 'NEWS'&#10; +  where None = explicit_intent('Liệt kê bản tin về việc bổ nhiệm CEO của DGC.')">question = 'Liệt kê bản tin về việc bổ nhiệm CEO của DGC.'
+
+    @pytest.mark.parametrize('question', [
+        'Tìm bài tin cho biết doanh thu của VJC trong năm 2024.',
+        'Hãy tìm bài báo về lợi nhuận của HPG.',
+        'Liệt kê bản tin về việc bổ nhiệm CEO của DGC.',
+        'Tóm tắt bài tin về doanh thu của PNJ.',
+        'Đối chiếu hai bài tin về kế hoạch lợi nhuận của VNM.',
+    ])
+    def test_article_is_the_requested_output(question):
+&gt;       assert explicit_intent(question) == 'NEWS'
+E       AssertionError: assert None == 'NEWS'
+E        +  where None = explicit_intent('Liệt kê bản tin về việc bổ nhiệm CEO của DGC.')
+
+backend\tests\test_s5_intent_news_requests.py:19: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_is_the_requested_output[T\xf3m t\u1eaft b\xe0i tin v\u1ec1 doanh thu c\u1ee7a PNJ.]" time="0.007"><failure message="AssertionError: assert None == 'NEWS'&#10; +  where None = explicit_intent('Tóm tắt bài tin về doanh thu của PNJ.')">question = 'Tóm tắt bài tin về doanh thu của PNJ.'
+
+    @pytest.mark.parametrize('question', [
+        'Tìm bài tin cho biết doanh thu của VJC trong năm 2024.',
+        'Hãy tìm bài báo về lợi nhuận của HPG.',
+        'Liệt kê bản tin về việc bổ nhiệm CEO của DGC.',
+        'Tóm tắt bài tin về doanh thu của PNJ.',
+        'Đối chiếu hai bài tin về kế hoạch lợi nhuận của VNM.',
+    ])
+    def test_article_is_the_requested_output(question):
+&gt;       assert explicit_intent(question) == 'NEWS'
+E       AssertionError: assert None == 'NEWS'
+E        +  where None = explicit_intent('Tóm tắt bài tin về doanh thu của PNJ.')
+
+backend\tests\test_s5_intent_news_requests.py:19: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_is_the_requested_output[\u0110\u1ed1i chi\u1ebfu hai b\xe0i tin v\u1ec1 k\u1ebf ho\u1ea1ch l\u1ee3i nhu\u1eadn c\u1ee7a VNM.]" time="0.021"><failure message="AssertionError: assert None == 'NEWS'&#10; +  where None = explicit_intent('Đối chiếu hai bài tin về kế hoạch lợi nhuận của VNM.')">question = 'Đối chiếu hai bài tin về kế hoạch lợi nhuận của VNM.'
+
+    @pytest.mark.parametrize('question', [
+        'Tìm bài tin cho biết doanh thu của VJC trong năm 2024.',
+        'Hãy tìm bài báo về lợi nhuận của HPG.',
+        'Liệt kê bản tin về việc bổ nhiệm CEO của DGC.',
+        'Tóm tắt bài tin về doanh thu của PNJ.',
+        'Đối chiếu hai bài tin về kế hoạch lợi nhuận của VNM.',
+    ])
+    def test_article_is_the_requested_output(question):
+&gt;       assert explicit_intent(question) == 'NEWS'
+E       AssertionError: assert None == 'NEWS'
+E        +  where None = explicit_intent('Đối chiếu hai bài tin về kế hoạch lợi nhuận của VNM.')
+
+backend\tests\test_s5_intent_news_requests.py:19: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_as_source_does_not_force_news[Theo b\xe0i tin \u0111\xe3 ch\u1ec9 \u0111\u1ecbnh, doanh thu VJC l\xe0 bao nhi\xeau?]" time="0.007" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_as_source_does_not_force_news[L\u1ea5y s\u1ed1 li\u1ec7u doanh thu trong b\xe0i tin v\u1ec1 PNJ.]" time="0.009" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_as_source_does_not_force_news[CEO xu\u1ea5t hi\u1ec7n trong b\xe0i tin l\xe0 ai?]" time="0.007" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_as_source_does_not_force_news[\u0110\xe1nh gi\xe1 xu h\u01b0\u1edbng doanh thu theo c\xe1c b\xe0i tin.]" time="0.003" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_as_source_does_not_force_news[C\xf3 bao nhi\xeau b\xe0i tin v\u1ec1 VJC?]" time="0.005" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_article_as_source_does_not_force_news[T\xecm gi\xe1 tr\u1ecb doanh thu trong b\xe0i tin \u0111\xe3 ch\u1ec9 \u0111\u1ecbnh.]" time="0.007" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_news_numeric_case_reproduces_wrong_whole_question_head" time="0.058"><failure message="AssertionError: assert 'NEWS' == 'MIXED'&#10;  &#10;  - MIXED&#10;  + NEWS">def test_news_numeric_case_reproduces_wrong_whole_question_head():
+        texts = requests('Cho biết LNST VJC 2024 rồi tìm bài tin VJC mở đường bay mới.')
+        base = [.07, .225, .23, .15, .1, .1, .125]
+        components = [[.08, .15, .1, .27, .1, .13, .17], [.1, .1, .45, .1, .08, .08, .09]]
+        before = np.asarray(base).copy()
+        decision = resolve_objectives(base, components, LABELS, texts)
+&gt;       assert decision['intent_label'] == 'MIXED'
+E       AssertionError: assert 'NEWS' == 'MIXED'
+E
+E         - MIXED
+E         + NEWS
+
+backend\tests\test_s5_intent_news_requests.py:40: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_read_value_and_identify_ceo_are_separate_requests" time="0.006"><failure message="AssertionError: assert ['Đọc tổng tà...CEO của PNJ.'] == ['Đọc tổng tà... CEO của PNJ']&#10;  &#10;  At index 0 diff: 'Đọc tổng tài sản PNJ cuối năm 2024 và xác định ai là CEO của PNJ.' != 'Đọc tổng tài sản PNJ cuối năm 2024'&#10;  Right contains one more item: 'xác định ai là CEO của PNJ'&#10;  Use -v to get more diff">def test_read_value_and_identify_ceo_are_separate_requests():
+        text = 'Đọc tổng tài sản PNJ cuối năm 2024 và xác định ai là CEO của PNJ.'
+&gt;       assert requests(text) == ['Đọc tổng tài sản PNJ cuối năm 2024', 'xác định ai là CEO của PNJ']
+E       AssertionError: assert ['Đọc tổng tà...CEO của PNJ.'] == ['Đọc tổng tà... CEO của PNJ']
+E
+E         At index 0 diff: 'Đọc tổng tài sản PNJ cuối năm 2024 và xác định ai là CEO của PNJ.' != 'Đọc tổng tài sản PNJ cuối năm 2024'
+E         Right contains one more item: 'xác định ai là CEO của PNJ'
+E         Use -v to get more diff
+
+backend\tests\test_s5_intent_news_requests.py:48: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_read_metric_lists_do_not_create_independent_requests[\u0110\u1ecdc doanh thu v\xe0 l\u1ee3i nhu\u1eadn c\u1ee7a PNJ n\u0103m 2024.]" time="0.004" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_read_metric_lists_do_not_create_independent_requests[\u0110\u1ecdc doanh thu AI v\xe0 cloud c\u1ee7a FPT n\u0103m 2025 l\xe0 bao nhi\xeau?]" time="0.014" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_read_metric_lists_do_not_create_independent_requests[\u0110\u1ecdc doanh thu PNJ n\u0103m 2024 v\xe0 n\u0103m 2023.]" time="0.003" /><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_two_news_requests_do_not_become_mixed" time="0.012"><failure message="AssertionError: assert 'MIXED' == 'NEWS'&#10;  &#10;  - NEWS&#10;  + MIXED">def test_two_news_requests_do_not_become_mixed():
+        texts = ['Tìm bài tin bổ nhiệm CEO PNJ', 'tóm tắt bài tin mở rộng nhà máy']
+        decision = resolve_objectives([.1, .4, .1, .1, .1, .1, .1], [], LABELS, texts)
+&gt;       assert decision['intent_label'] == 'NEWS'
+E       AssertionError: assert 'MIXED' == 'NEWS'
+E
+E         - NEWS
+E         + MIXED
+
+backend\tests\test_s5_intent_news_requests.py:63: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_news_requests" name="test_single_news_request_overrides_wrong_mixed_head" time="0.008"><failure message="AssertionError: assert 'MIXED' == 'NEWS'&#10;  &#10;  - NEWS&#10;  + MIXED">def test_single_news_request_overrides_wrong_mixed_head():
+        decision = resolve_objectives([.1, .4, .1, .1, .1, .1, .1], [], LABELS,
+                                      ['Tìm bài tin cho biết doanh thu của VJC trong năm 2024.'])
+&gt;       assert decision['intent_label'] == 'NEWS'
+E       AssertionError: assert 'MIXED' == 'NEWS'
+E
+E         - NEWS
+E         + MIXED
+
+backend\tests\test_s5_intent_news_requests.py:69: AssertionError</failure></testcase></testsuite></testsuites>

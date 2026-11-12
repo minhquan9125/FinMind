@@ -1,0 +1,732 @@
+{
+  "status": "COMPLETED_OFFLINE",
+  "metrics": {
+    "controls": {
+      "correct": 32,
+      "labeled": 32,
+      "accuracy": 1.0,
+      "macro_f1": 0.8571428571428571,
+      "wrong_ids": [],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 7,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 1,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 2,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 14,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 7,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 1
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "development": {
+      "correct": 70,
+      "labeled": 84,
+      "accuracy": 0.8333333333333334,
+      "macro_f1": 0.8270187707029812,
+      "wrong_ids": [
+        "DEV-NUMERIC-2-TCB",
+        "DEV-REPORT_CONTENT-2-VCB",
+        "DEV-REPORT_CONTENT-2-MBB",
+        "DEV-NEWS-1-TCB",
+        "DEV-NEWS-1-FPT",
+        "DEV-TREND-3-VCB",
+        "DEV-TREND-3-TCB",
+        "DEV-TREND-3-FPT",
+        "DEV-MIXED-1-TCB",
+        "DEV-MIXED-2-VCB",
+        "DEV-MIXED-2-TCB",
+        "DEV-MIXED-2-MBB",
+        "DEV-MIXED-2-FPT",
+        "DEV-MIXED-3-MBB"
+      ],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 12,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 6,
+          "NEWS": 4,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 1,
+          "REPORT_CONTENT": 0,
+          "TREND": 1
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 1,
+          "NEWS": 10,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 1,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 1,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 11,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 12,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 10,
+          "TREND": 2
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 3,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 9
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "known_diagnostic": {
+      "correct": 6,
+      "labeled": 8,
+      "accuracy": 0.75,
+      "macro_f1": 0.2619047619047619,
+      "wrong_ids": [
+        "KNOWN-07",
+        "KNOWN-08"
+      ],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 2,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 1,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 5,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "previous_check": {
+      "correct": 24,
+      "labeled": 28,
+      "accuracy": 0.8571428571428571,
+      "macro_f1": 0.8518140589569161,
+      "wrong_ids": [
+        "LATER-REPORT_CONTENT-2-DGC",
+        "LATER-REPORT_CONTENT-2-PNJ",
+        "LATER-NEWS-2-DGC",
+        "LATER-MIXED-2-PNJ"
+      ],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 4,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 3,
+          "NEWS": 1,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 3,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 1,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 4,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 4,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 1,
+          "REPORT_CONTENT": 2,
+          "TREND": 1
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 4
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "regression": {
+      "correct": 41,
+      "labeled": 47,
+      "accuracy": 0.8723404255319149,
+      "macro_f1": 0.8487394957983193,
+      "wrong_ids": [
+        "S5-T-021",
+        "S5-T-027",
+        "S5-T-037",
+        "S5-T-039",
+        "S5-T-041",
+        "S5-T-042"
+      ],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 5,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 1,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 1,
+          "MIXED": 2,
+          "NEWS": 1,
+          "NUMERIC": 1,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 1,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 8,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 7,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 7,
+          "REPORT_CONTENT": 1,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 6,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 6
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "previous_new_check": {
+      "correct": 39,
+      "labeled": 42,
+      "accuracy": 0.9285714285714286,
+      "macro_f1": 0.9274725274725275,
+      "wrong_ids": [
+        "NEW-NEWS-3-DBC",
+        "NEW-ENTITY_RELATION-2-VHC",
+        "NEW-ENTITY_RELATION-2-DBC"
+      ],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 4,
+          "MIXED": 0,
+          "NEWS": 2,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 6,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 1,
+          "NEWS": 5,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 6,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 6,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 6,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 6
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "previous_final_check": {
+      "correct": 28,
+      "labeled": 28,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "wrong_ids": [],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 4,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 4,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 4,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 4,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 4,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 4,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 4
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "review_probes": {
+      "correct": 15,
+      "labeled": 15,
+      "accuracy": 1.0,
+      "macro_f1": 0.7142857142857143,
+      "wrong_ids": [],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 2,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 1,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 4,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 6,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 2,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    },
+    "additional_checks": {
+      "correct": 20,
+      "labeled": 20,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "wrong_ids": [],
+      "confusion_matrix": {
+        "ENTITY_RELATION": {
+          "ENTITY_RELATION": 2,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "MIXED": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 4,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NEWS": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 1,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "NUMERIC": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 8,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "PERSON_ROLE": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 2,
+          "REPORT_CONTENT": 0,
+          "TREND": 0
+        },
+        "REPORT_CONTENT": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 2,
+          "TREND": 0
+        },
+        "TREND": {
+          "ENTITY_RELATION": 0,
+          "MIXED": 0,
+          "NEWS": 0,
+          "NUMERIC": 0,
+          "PERSON_ROLE": 0,
+          "REPORT_CONTENT": 0,
+          "TREND": 1
+        }
+      },
+      "confidence_available": false,
+      "legacy_threshold_not_applied": true
+    }
+  },
+  "fixed": [
+    {
+      "evaluation_set": "previous_final_check",
+      "id": "FINAL-MIXED-2-DPM"
+    },
+    {
+      "evaluation_set": "previous_final_check",
+      "id": "FINAL-MIXED-2-VRE"
+    },
+    {
+      "evaluation_set": "additional_checks",
+      "id": "NV-13"
+    },
+    {
+      "evaluation_set": "additional_checks",
+      "id": "NV-19"
+    },
+    {
+      "evaluation_set": "additional_checks",
+      "id": "NV-20"
+    }
+  ],
+  "regressed": [],
+  "passes_gate": true,
+  "confidence": null,
+  "calibrated": false,
+  "router_integrated": false
+}

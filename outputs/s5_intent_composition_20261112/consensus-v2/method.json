@@ -1,0 +1,20 @@
+{
+  "status": "FROZEN_BEFORE_SCORING",
+  "type": "DEVELOPMENT_REANALYSIS_NOT_INDEPENDENT_TEST",
+  "source_hashes": {
+    "outputs/s5_intent_composition_20261112/method.json": "dc5bb9c39a264438af0ba9ec7f1f4104eb4534073a99863ba86187a43d6aa205",
+    "outputs/s5_intent_composition_20261112/cases.json": "974ae7a3d65690c478df22bec3ba4f54095deba5aa974ae36065b9b432090cef",
+    "outputs/s5_intent_composition_20261112/traces.json": "5ab30090e74ce25cb9f3a0245e9457d42a6050094071910563bff8de17581639",
+    "outputs/s5_intent_composition_20261112/raw-probabilities.json": "11973b5a7861db9f679d81971492ac45dae6decc3fb61a2db97cb59ae34e23bb",
+    "outputs/s5_intent_composition_20261112/results.json": "a1e4d83c5a5227e9fff3773a833b4015ecb431bc4b0cb5c3076d5068534a4c2d",
+    "outputs/s5_intent_composition_20261112/summary.json": "b14f2211c8623f107a6d51f4c924d2fb926538b6d8aa5acc3dfb7c15d860da94",
+    "backend/src/retrieval_orchestration/intent_request_consensus.py": "042faf6990f4ebc5ad2f8bd56318c1d5232a606738d1312ef834611067c9617b",
+    "backend/scripts/run_s5_intent_consensus.py": "cd66f3147341ac3984478ed39c3889616aa552150e9badfc59b451b7c1fd00cc",
+    "docs/sprint5/S5-WBS04.1-consensus-plan.md": "40ba1316383bad7f8fdfbdfb08632efb03f4c4469aa151dd75581440b33ce8dc"
+  },
+  "no_fit": true,
+  "no_new_embeddings": true,
+  "raw_classifier_scores_unchanged": true,
+  "confidence": null,
+  "legacy_threshold_not_applied": true
+}

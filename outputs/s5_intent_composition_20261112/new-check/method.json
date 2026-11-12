@@ -1,0 +1,36 @@
+{
+  "status": "FROZEN_BEFORE_CHECK",
+  "source_hashes": {
+    "outputs/s5_intent_scorer_20261112/fit-recovery01/parameters.npz": "cf2ea6237d55ae340e998ec151010823c75d7679e237f4d0da2e67241740e303",
+    "outputs/s5_intent_composition_20261112/consensus-v2/method.json": "fbd8279a64d64cec2622cecf58af475a9e47c440327e831143fe20bda2b3c44e",
+    "outputs/s5_intent_composition_20261112/consensus-v2/summary.json": "29ab7601123fdf37779768debb99b301378f8bb4635816434de0f13c3405fc97",
+    "backend/src/retrieval_orchestration/intent_request_consensus.py": "042faf6990f4ebc5ad2f8bd56318c1d5232a606738d1312ef834611067c9617b",
+    "backend/src/retrieval_orchestration/intent_composition.py": "bdb7632cd3b885eabdae34273cdee0f0803507af5faa07f1b5a5c49d9e30b576",
+    "backend/src/retrieval_orchestration/intent_scoring.py": "678a23e5c2f2ba987070b93b5dee61b4e9e2e692bbb06ad881b978c25582e919",
+    "backend/scripts/check_s5_intent_consensus_new.py": "6b18768c382096098b28d928f2f5cf921e7b58a1147ef62d996e6b656d2d2d9a",
+    "outputs/s5_wbs033_20261110/intent-library-v1/dataset-manifest.json": "b81be2fc049036663d8addea12e94d0c9c766c9dbf65e1c661f6515d9ac80278",
+    "outputs/s5_wbs033_20261110/intent-library-v1/label-schema.json": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+    "outputs/s5_wbs033_20261110/intent-library-v1/library.jsonl": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5",
+    "outputs/s5_wbs033_20261110/intent-library-v1/manifest.json": "d679eab18f7368d9ab44e4695d399b5662ab3a539da9319378d2aae220298221",
+    "outputs/s5_wbs033_20261110/intent-library-v1/vectors.npy": "67e61d4dbae5252e9ff473ee8c84d1ac47c435b16cb1e747250bd9a28cf2f7a8"
+  },
+  "rows": 42,
+  "authored_by_same_agent": true,
+  "blind_test": false,
+  "no_fit": true,
+  "no_calibration": true,
+  "model": {
+    "name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "dtype": "float32",
+    "normalization": "L2",
+    "input_preprocessing": "NONE_EXACT_REVIEWED_TEXT",
+    "device": "cpu",
+    "batch_size": 8,
+    "max_sequence_length": 8192,
+    "encoder_class": "src.documents.embeddings.EmbeddingService"
+  },
+  "confidence": null,
+  "one_check_after_frozen_development": true
+}

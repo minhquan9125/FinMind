@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "rankings_recomputed": 528,
+  "max_score_difference": 1.2212453270876722e-15,
+  "grouped_split_verified": true,
+  "family_and_label_weights_verified": true,
+  "C_selected_from_OOF_only": 1.0,
+  "centroid_reconstruction_passed": true,
+  "no_evaluation_rows_fitted": true,
+  "recovery_parameter_arrays_identical": true,
+  "official_source_hashes_unchanged": true,
+  "calibrated": false,
+  "legacy_threshold_not_applied_to_candidates": true
+}

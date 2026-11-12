@@ -1,0 +1,12 @@
+{
+  "first_attempt": "fit",
+  "first_failure": "KeyError family_id during reporting; no completed summary",
+  "second_attempt": "fit-recovery01",
+  "second_failure": "Relative CLI path when writing final pointer after completed summary",
+  "model_and_C_selection_unchanged": true,
+  "parameter_arrays_identical_between_attempts": true,
+  "third_fit_not_run": true,
+  "pointer_recovered_after_validating_summary_and_parameters": true,
+  "original_runner_sha256": "8b6352d1165f9703097eacad956b4bb28ddfdf5d813c33c2910fa7081f520642",
+  "corrected_runner_sha256": "87c7f6c004bebc63868d48aab95f278ec52aa9df991d2d04bc18bfce2edfc519"
+}

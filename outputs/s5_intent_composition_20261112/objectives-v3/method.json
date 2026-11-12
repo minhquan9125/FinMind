@@ -1,0 +1,23 @@
+{
+  "status": "FROZEN_BEFORE_SCORING",
+  "source_hashes": {
+    "outputs/s5_intent_composition_20261112/cases.json": "974ae7a3d65690c478df22bec3ba4f54095deba5aa974ae36065b9b432090cef",
+    "outputs/s5_intent_composition_20261112/traces.json": "5ab30090e74ce25cb9f3a0245e9457d42a6050094071910563bff8de17581639",
+    "outputs/s5_intent_composition_20261112/raw-probabilities.json": "11973b5a7861db9f679d81971492ac45dae6decc3fb61a2db97cb59ae34e23bb",
+    "outputs/s5_intent_composition_20261112/results.json": "a1e4d83c5a5227e9fff3773a833b4015ecb431bc4b0cb5c3076d5068534a4c2d",
+    "outputs/s5_intent_composition_20261112/consensus-v2/results.json": "b0849d0a61002ca59918e89bf66847e79903cf7f2951baed71fd5e1d84c38bbb",
+    "outputs/s5_intent_composition_20261112/new-check/results.json": "dc662377f54a9adf92fa9e76240db0547f70235f74e2bcdd8ec2570ffdbe8d30",
+    "outputs/s5_intent_composition_20261112/new-check/summary.json": "2e1363df277b5f7b9867067cdba34df89e12db7b7f995d40c5e2add3a42ded04",
+    "backend/src/retrieval_orchestration/intent_request_objectives.py": "821d2eb86b92a733f4303be664c7422e670e12ddefc7d6dbc53abf8a00fbb737",
+    "backend/src/retrieval_orchestration/intent_request_consensus.py": "042faf6990f4ebc5ad2f8bd56318c1d5232a606738d1312ef834611067c9617b",
+    "docs/sprint5/intent-labels.v1.json": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+    "docs/sprint5/S5-WBS04.1-objective-plan.md": "6fea0c7e9c9cc03337aefa21ee0c3d03b3fdb9efcb39d6e8531209c685ea0a0e",
+    "backend/scripts/run_s5_intent_objectives.py": "1a10576682e095b28ddef0b41246ceafc93a768029a3c0ba4b824958bd48677a"
+  },
+  "all_sets_previously_seen": true,
+  "no_fit": true,
+  "no_new_embeddings": true,
+  "raw_scores_preserved": true,
+  "confidence": null,
+  "runtime_enabled": false
+}

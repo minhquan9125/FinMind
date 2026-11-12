@@ -1,0 +1,1252 @@
+{
+  "task_id": "S5-WBS04.1",
+  "analysis_date": "2026-11-11",
+  "source": "POST_HOC_ANALYSIS_OF_FROZEN_RUN01_NO_NEW_INFERENCE",
+  "ranking_policy": "cosine-max-per-label-v1",
+  "model": {
+    "name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "dtype": "float32",
+    "normalization": "L2",
+    "input_preprocessing": "NONE_EXACT_REVIEWED_TEXT",
+    "device": "cpu",
+    "batch_size": 8,
+    "max_sequence_length": 8192,
+    "encoder_class": "src.documents.embeddings.EmbeddingService"
+  },
+  "source_hashes": {
+    "method.json": "9b82245d2cd88bc446263ce8110009b91e6c65701eda62e1f8a1eee1becefa18",
+    "test-input.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+    "results.jsonl": "088c08dc5de24a9ae9355ae17b9dd3881a5c03f4580f1849ab1233d8bab4c8c3",
+    "summary.json": "6e206720722b535cd8ed6a7066c123028dea0f2540efa19d9f1d42d1aa3463ad"
+  },
+  "total_cases": 56,
+  "excluded_null_cases": 9,
+  "overall": {
+    "1": {
+      "hits": 22,
+      "total": 47,
+      "hit_rate": 0.46808510638297873
+    },
+    "3": {
+      "hits": 41,
+      "total": 47,
+      "hit_rate": 0.8723404255319149
+    },
+    "5": {
+      "hits": 46,
+      "total": 47,
+      "hit_rate": 0.9787234042553191
+    }
+  },
+  "per_label": {
+    "NUMERIC": {
+      "1": {
+        "hits": 5,
+        "total": 7,
+        "hit_rate": 0.7142857142857143
+      },
+      "3": {
+        "hits": 6,
+        "total": 7,
+        "hit_rate": 0.8571428571428571
+      },
+      "5": {
+        "hits": 7,
+        "total": 7,
+        "hit_rate": 1.0
+      }
+    },
+    "REPORT_CONTENT": {
+      "1": {
+        "hits": 1,
+        "total": 6,
+        "hit_rate": 0.16666666666666666
+      },
+      "3": {
+        "hits": 6,
+        "total": 6,
+        "hit_rate": 1.0
+      },
+      "5": {
+        "hits": 6,
+        "total": 6,
+        "hit_rate": 1.0
+      }
+    },
+    "NEWS": {
+      "1": {
+        "hits": 4,
+        "total": 8,
+        "hit_rate": 0.5
+      },
+      "3": {
+        "hits": 7,
+        "total": 8,
+        "hit_rate": 0.875
+      },
+      "5": {
+        "hits": 8,
+        "total": 8,
+        "hit_rate": 1.0
+      }
+    },
+    "PERSON_ROLE": {
+      "1": {
+        "hits": 3,
+        "total": 8,
+        "hit_rate": 0.375
+      },
+      "3": {
+        "hits": 6,
+        "total": 8,
+        "hit_rate": 0.75
+      },
+      "5": {
+        "hits": 8,
+        "total": 8,
+        "hit_rate": 1.0
+      }
+    },
+    "ENTITY_RELATION": {
+      "1": {
+        "hits": 3,
+        "total": 6,
+        "hit_rate": 0.5
+      },
+      "3": {
+        "hits": 5,
+        "total": 6,
+        "hit_rate": 0.8333333333333334
+      },
+      "5": {
+        "hits": 5,
+        "total": 6,
+        "hit_rate": 0.8333333333333334
+      }
+    },
+    "TREND": {
+      "1": {
+        "hits": 5,
+        "total": 6,
+        "hit_rate": 0.8333333333333334
+      },
+      "3": {
+        "hits": 6,
+        "total": 6,
+        "hit_rate": 1.0
+      },
+      "5": {
+        "hits": 6,
+        "total": 6,
+        "hit_rate": 1.0
+      }
+    },
+    "MIXED": {
+      "1": {
+        "hits": 1,
+        "total": 6,
+        "hit_rate": 0.16666666666666666
+      },
+      "3": {
+        "hits": 5,
+        "total": 6,
+        "hit_rate": 0.8333333333333334
+      },
+      "5": {
+        "hits": 6,
+        "total": 6,
+        "hit_rate": 1.0
+      }
+    }
+  },
+  "slices": {
+    "scope_status": {
+      "PARTIAL": {
+        "1": {
+          "hits": 1,
+          "total": 3,
+          "hit_rate": 0.3333333333333333
+        },
+        "3": {
+          "hits": 3,
+          "total": 3,
+          "hit_rate": 1.0
+        },
+        "5": {
+          "hits": 3,
+          "total": 3,
+          "hit_rate": 1.0
+        }
+      },
+      "RESOLVED": {
+        "1": {
+          "hits": 21,
+          "total": 44,
+          "hit_rate": 0.4772727272727273
+        },
+        "3": {
+          "hits": 38,
+          "total": 44,
+          "hit_rate": 0.8636363636363636
+        },
+        "5": {
+          "hits": 43,
+          "total": 44,
+          "hit_rate": 0.9772727272727273
+        }
+      }
+    },
+    "linguistic_form": {
+      "ABBREVIATED": {
+        "1": {
+          "hits": 8,
+          "total": 17,
+          "hit_rate": 0.47058823529411764
+        },
+        "3": {
+          "hits": 14,
+          "total": 17,
+          "hit_rate": 0.8235294117647058
+        },
+        "5": {
+          "hits": 17,
+          "total": 17,
+          "hit_rate": 1.0
+        }
+      },
+      "ACCENTED": {
+        "1": {
+          "hits": 7,
+          "total": 15,
+          "hit_rate": 0.4666666666666667
+        },
+        "3": {
+          "hits": 14,
+          "total": 15,
+          "hit_rate": 0.9333333333333333
+        },
+        "5": {
+          "hits": 15,
+          "total": 15,
+          "hit_rate": 1.0
+        }
+      },
+      "UNACCENTED": {
+        "1": {
+          "hits": 7,
+          "total": 15,
+          "hit_rate": 0.4666666666666667
+        },
+        "3": {
+          "hits": 13,
+          "total": 15,
+          "hit_rate": 0.8666666666666667
+        },
+        "5": {
+          "hits": 14,
+          "total": 15,
+          "hit_rate": 0.9333333333333333
+        }
+      }
+    }
+  },
+  "buckets": {
+    "rank_2_to_3": [
+      "S5-T-002",
+      "S5-T-007",
+      "S5-T-008",
+      "S5-T-009",
+      "S5-T-010",
+      "S5-T-012",
+      "S5-T-017",
+      "S5-T-018",
+      "S5-T-022",
+      "S5-T-023",
+      "S5-T-025",
+      "S5-T-026",
+      "S5-T-032",
+      "S5-T-037",
+      "S5-T-039",
+      "S5-T-040",
+      "S5-T-041",
+      "S5-T-053",
+      "S5-T-054"
+    ],
+    "rank_4_to_5": [
+      "S5-T-005",
+      "S5-T-013",
+      "S5-T-021",
+      "S5-T-024",
+      "S5-T-042"
+    ],
+    "missed_top5": [
+      "S5-T-027"
+    ]
+  },
+  "gold_rank_counts": {
+    "1": 22,
+    "2": 14,
+    "3": 5,
+    "4": 3,
+    "5": 2,
+    "6": 1
+  },
+  "cases": [
+    {
+      "id": "S5-T-001",
+      "question": "Trong BCTC riêng của công ty mẹ HPG năm 2023, số dư tiền cuối năm là bao nhiêu?",
+      "gold": "NUMERIC",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NUMERIC",
+        "REPORT_CONTENT",
+        "MIXED",
+        "PERSON_ROLE",
+        "TREND",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-002",
+      "question": "Bài tin KBC ngày 12/08/2025 nêu mức cổ tức tiền mặt bao nhiêu đồng một cổ phiếu?",
+      "gold": "NUMERIC",
+      "gold_rank": 3,
+      "ordered_labels": [
+        "MIXED",
+        "NEWS",
+        "NUMERIC",
+        "TREND",
+        "ENTITY_RELATION",
+        "REPORT_CONTENT",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-003",
+      "question": "Cho biet ROE cua ACB tung nam 2020–2023 va chenh lech giua nam dau voi nam cuoi la bao nhieu diem phan tram?",
+      "gold": "NUMERIC",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NUMERIC",
+        "ENTITY_RELATION",
+        "TREND",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "MIXED",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-004",
+      "question": "Theo BCTC 2023, doanh thu va gia von cua PNJ lan luot la bao nhieu?",
+      "gold": "NUMERIC",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NUMERIC",
+        "TREND",
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "MIXED",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-005",
+      "question": "Giá ĐC SSI ngày 15/09/2025 là bn đồng/cp?",
+      "gold": "NUMERIC",
+      "gold_rank": 4,
+      "ordered_labels": [
+        "TREND",
+        "MIXED",
+        "ENTITY_RELATION",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-006",
+      "question": "Cho biết EPS và BVPS VNM năm 2023 bằng số.",
+      "gold": "NUMERIC",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NUMERIC",
+        "TREND",
+        "REPORT_CONTENT",
+        "MIXED",
+        "PERSON_ROLE",
+        "NEWS",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-007",
+      "question": "Đọc và tóm lược phần cam kết phát triển bền vững trong BCTN HPG 2023.",
+      "gold": "REPORT_CONTENT",
+      "gold_rank": 3,
+      "ordered_labels": [
+        "NUMERIC",
+        "MIXED",
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "TREND",
+        "NEWS",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-008",
+      "question": "Trích nguyên văn đoạn mô tả giao dịch với bên liên quan trong thuyết minh BCTC ACB 2022 đã nêu.",
+      "gold": "REPORT_CONTENT",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "NEWS",
+        "REPORT_CONTENT",
+        "MIXED",
+        "TREND",
+        "ENTITY_RELATION",
+        "NUMERIC",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-009",
+      "question": "Toi can tai lieu BCTN PNJ nam 2022, hay tim giup.",
+      "gold": "REPORT_CONTENT",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "TREND",
+        "REPORT_CONTENT",
+        "MIXED",
+        "NUMERIC",
+        "NEWS",
+        "PERSON_ROLE",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-010",
+      "question": "Thuyet minh BCTC VNM 2023 mo ta phuong phap khau hao tai san nhu the nao?",
+      "gold": "REPORT_CONTENT",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "NUMERIC",
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "TREND",
+        "MIXED",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-011",
+      "question": "Rút gọn mục đào tạo NLĐ trong BCTN REE 2023; NLĐ là người lao động.",
+      "gold": "REPORT_CONTENT",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "MIXED",
+        "NUMERIC",
+        "TREND",
+        "NEWS",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-012",
+      "question": "Chép nguyên văn dòng ghi CV bà Hoa tại SSI trong BCTN 2022; CV = chức vụ.",
+      "gold": "REPORT_CONTENT",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "NEWS",
+        "MIXED",
+        "NUMERIC",
+        "TREND",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-013",
+      "question": "Có những bài báo nào về quyết định miễn nhiệm Giám đốc tài chính HPG trong tháng 08/2025?",
+      "gold": "NEWS",
+      "gold_rank": 4,
+      "ordered_labels": [
+        "MIXED",
+        "PERSON_ROLE",
+        "TREND",
+        "NEWS",
+        "ENTITY_RELATION",
+        "REPORT_CONTENT",
+        "NUMERIC"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-014",
+      "question": "Bài tin KBC ngày 12/08/2025 trình bày việc trả cổ tức tiền mặt như thế nào? Hãy tóm lược bài.",
+      "gold": "NEWS",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NEWS",
+        "MIXED",
+        "REPORT_CONTENT",
+        "TREND",
+        "NUMERIC",
+        "ENTITY_RELATION",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-015",
+      "question": "Chep dung doan gioi thieu ba Hoa trong bai tin SSI dang ngay 03/09/2025.",
+      "gold": "NEWS",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NEWS",
+        "MIXED",
+        "TREND",
+        "ENTITY_RELATION",
+        "REPORT_CONTENT",
+        "NUMERIC",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-016",
+      "question": "Tong hop tin kinh te vi mo tai Viet Nam trong ngay 18/09/2025.",
+      "gold": "NEWS",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NEWS",
+        "ENTITY_RELATION",
+        "MIXED",
+        "TREND",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "REPORT_CONTENT"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-017",
+      "question": "Tìm các tin PNJ đổi CT HĐQT trong Q3/2025.",
+      "gold": "NEWS",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "MIXED",
+        "NEWS",
+        "TREND",
+        "REPORT_CONTENT",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-018",
+      "question": "Tóm tắt bài tin ACB công bố KQKD Q2/2025, không cần bảng số.",
+      "gold": "NEWS",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "MIXED",
+        "NEWS",
+        "REPORT_CONTENT",
+        "TREND",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-019",
+      "question": "Ngày có hiệu lực quyết định miễn nhiệm Giám đốc tài chính HPG trong tháng 08/2025 là ngày nào?",
+      "gold": "PERSON_ROLE",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "PERSON_ROLE",
+        "MIXED",
+        "NUMERIC",
+        "ENTITY_RELATION",
+        "TREND",
+        "REPORT_CONTENT",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-020",
+      "question": "Theo bài tin SSI ngày 03/09/2025, bà Hoa được bổ nhiệm giữ chức gì?",
+      "gold": "PERSON_ROLE",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "PERSON_ROLE",
+        "MIXED",
+        "TREND",
+        "ENTITY_RELATION",
+        "NEWS",
+        "REPORT_CONTENT",
+        "NUMERIC"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-021",
+      "question": "BCTN REE 2022 ghi nhan ai phu trach vi tri ke toan truong tai cuoi nam?",
+      "gold": "PERSON_ROLE",
+      "gold_rank": 4,
+      "ordered_labels": [
+        "NUMERIC",
+        "REPORT_CONTENT",
+        "TREND",
+        "PERSON_ROLE",
+        "MIXED",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-022",
+      "question": "Ong Binh dam nhan vai tro nao tai VNM trong nam 2023?",
+      "gold": "PERSON_ROLE",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "MIXED",
+        "TREND",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-023",
+      "question": "Ai đảm nhiệm PTGĐ PNJ tại 30/06/2023? PTGĐ là phó tổng giám đốc.",
+      "gold": "PERSON_ROLE",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "MIXED",
+        "PERSON_ROLE",
+        "NEWS",
+        "NUMERIC",
+        "REPORT_CONTENT",
+        "ENTITY_RELATION",
+        "TREND"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-024",
+      "question": "Theo BCTN REE 2022, ai được bổ nhiệm làm KTT? Trích câu làm bằng chứng cho câu trả lời; KTT = kế toán trưởng.",
+      "gold": "PERSON_ROLE",
+      "gold_rank": 5,
+      "ordered_labels": [
+        "MIXED",
+        "REPORT_CONTENT",
+        "TREND",
+        "NEWS",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-025",
+      "question": "Cuối năm 2023, bà Hoa nắm bao nhiêu phần trăm cổ phần SSI?",
+      "gold": "ENTITY_RELATION",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "NUMERIC",
+        "ENTITY_RELATION",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "TREND",
+        "MIXED",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-026",
+      "question": "Cuối năm 2022, VNM có bao nhiêu doanh nghiệp liên kết trực tiếp?",
+      "gold": "ENTITY_RELATION",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "MIXED",
+        "ENTITY_RELATION",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "TREND",
+        "REPORT_CONTENT",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-027",
+      "question": "Theo BCTN REE 2023, REE va cong ty Song Xanh co quan he hop tac khong?",
+      "gold": "ENTITY_RELATION",
+      "gold_rank": 6,
+      "ordered_labels": [
+        "NUMERIC",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "TREND",
+        "MIXED",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-028",
+      "question": "Su kien mo nha may cua HPG ngay 12/05/2025 co nhung doanh nghiep nao tham gia?",
+      "gold": "ENTITY_RELATION",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "ENTITY_RELATION",
+        "MIXED",
+        "TREND",
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-029",
+      "question": "DN nào kiểm soát cty Bình Minh tại 31/12/2023?",
+      "gold": "ENTITY_RELATION",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "ENTITY_RELATION",
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "TREND",
+        "MIXED",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-030",
+      "question": "PNJ góp bn % vốn vào cty Hoa Mai cuối 2022?",
+      "gold": "ENTITY_RELATION",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "ENTITY_RELATION",
+        "TREND",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "MIXED",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-031",
+      "question": "Dựa trên chuỗi giá SSI từ tháng 01 đến tháng 06/2025, nhận định đà phục hồi có bền qua các tháng không.",
+      "gold": "TREND",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "TREND",
+        "MIXED",
+        "NEWS",
+        "ENTITY_RELATION",
+        "NUMERIC",
+        "REPORT_CONTENT",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-032",
+      "question": "Qua BCTC VNM 2020–2023, biên lợi nhuận đang thu hẹp hay mở rộng và vì sao?",
+      "gold": "TREND",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "REPORT_CONTENT",
+        "TREND",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "MIXED",
+        "NEWS",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-033",
+      "question": "Nhan dinh chieu huong gia va dong tien kinh doanh cua REE qua 2021–2023, hai tin hieu co trai chieu khong?",
+      "gold": "TREND",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "TREND",
+        "MIXED",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "NUMERIC",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-034",
+      "question": "Danh gia chieu huong ROE cua ACB qua cac nam 2020–2023: dang cai thien hay suy yeu?",
+      "gold": "TREND",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "TREND",
+        "PERSON_ROLE",
+        "MIXED",
+        "REPORT_CONTENT",
+        "NUMERIC",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-035",
+      "question": "XH thanh khoản giao dịch ACB trong Q1/2025 đang cải thiện hay suy yếu?",
+      "gold": "TREND",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "TREND",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "ENTITY_RELATION",
+        "MIXED",
+        "REPORT_CONTENT",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-036",
+      "question": "LNST PNJ qua 2020–2023 tăng tốc hay chậm lại? Giải thích XH đó.",
+      "gold": "TREND",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "TREND",
+        "MIXED",
+        "REPORT_CONTENT",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "NEWS",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-037",
+      "question": "Đối chiếu phần quản trị rủi ro trong BCTN VNM 2023 với bài tin VNM ngày 15/02/2024: hai tài liệu nêu những điểm giống và khác nào?",
+      "gold": "MIXED",
+      "gold_rank": 3,
+      "ordered_labels": [
+        "REPORT_CONTENT",
+        "NUMERIC",
+        "MIXED",
+        "TREND",
+        "PERSON_ROLE",
+        "NEWS",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-038",
+      "question": "BCTN REE 2022 ghi bà Mai đảm nhiệm chức danh nào? Báo cáo mô tả chính sách kiểm soát nội bộ ra sao?",
+      "gold": "MIXED",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "MIXED",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "TREND",
+        "NUMERIC",
+        "NEWS",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-039",
+      "question": "Can xac nhan HPG kiem soat cong ty Binh Minh tai 31/12/2023 hay khong; dong thoi cho biet von chu so huu tren BCTC rieng HPG nam 2023.",
+      "gold": "MIXED",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "TREND",
+        "MIXED",
+        "NUMERIC",
+        "REPORT_CONTENT",
+        "ENTITY_RELATION",
+        "PERSON_ROLE",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-040",
+      "question": "Bai tin SSI ngay 10/08/2023 mo ta quyet dinh thay doi nhan su ra sao? Trong nam 2023 ong Binh giu chuc vu nao tai SSI?",
+      "gold": "MIXED",
+      "gold_rank": 3,
+      "ordered_labels": [
+        "TREND",
+        "REPORT_CONTENT",
+        "MIXED",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "NEWS",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-041",
+      "question": "Tóm tắt tin ACB mở chi nhánh ngày 20/02/2025; kèm bảng EPS của ACB cho 2022–2023 theo BCTC.",
+      "gold": "MIXED",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "NEWS",
+        "MIXED",
+        "TREND",
+        "NUMERIC",
+        "REPORT_CONTENT",
+        "ENTITY_RELATION",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-042",
+      "question": "Cty Hoa Mai có phải đơn vị do PNJ kiểm soát cuối 2023 không, và XH giá PNJ trong Q1/2024 ra sao?",
+      "gold": "MIXED",
+      "gold_rank": 5,
+      "ordered_labels": [
+        "TREND",
+        "ENTITY_RELATION",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "MIXED",
+        "REPORT_CONTENT",
+        "NEWS"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-052",
+      "question": "Tổng nợ phải trả cuối năm 2023 là bao nhiêu?",
+      "gold": "NUMERIC",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NUMERIC",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "TREND",
+        "MIXED",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "PARTIAL",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-053",
+      "question": "Tim bai tin mien nhiem trong thang 06/2025.",
+      "gold": "NEWS",
+      "gold_rank": 2,
+      "ordered_labels": [
+        "MIXED",
+        "NEWS",
+        "ENTITY_RELATION",
+        "TREND",
+        "REPORT_CONTENT",
+        "NUMERIC",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "PARTIAL",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-054",
+      "question": "Ai là KTT tại 31/12/2023? KTT = kế toán trưởng.",
+      "gold": "PERSON_ROLE",
+      "gold_rank": 3,
+      "ordered_labels": [
+        "MIXED",
+        "NEWS",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "TREND",
+        "ENTITY_RELATION",
+        "NUMERIC"
+      ],
+      "scope_status": "PARTIAL",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-055",
+      "question": "Ai được bổ nhiệm làm TGĐ DGC trong tháng 09/2025?",
+      "gold": "PERSON_ROLE",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "PERSON_ROLE",
+        "MIXED",
+        "REPORT_CONTENT",
+        "ENTITY_RELATION",
+        "NEWS",
+        "TREND",
+        "NUMERIC"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-056",
+      "question": "Tìm bài tin về việc bổ nhiệm TGĐ DGC trong tháng 09/2025.",
+      "gold": "NEWS",
+      "gold_rank": 1,
+      "ordered_labels": [
+        "NEWS",
+        "MIXED",
+        "TREND",
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "RESOLVED",
+      "linguistic_form": "ABBREVIATED"
+    }
+  ],
+  "null_cases": [
+    {
+      "id": "S5-T-043",
+      "question": "Còn bên ấy thì sao nhỉ?",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "MIXED",
+        "TREND",
+        "NUMERIC",
+        "NEWS",
+        "PERSON_ROLE",
+        "REPORT_CONTENT",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "NEEDS_CONTEXT",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-044",
+      "question": "con nguoi do?",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "NEWS",
+        "REPORT_CONTENT",
+        "MIXED",
+        "TREND",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "NEEDS_CONTEXT",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-045",
+      "question": "Cho xem DS đó tiếp.",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "REPORT_CONTENT",
+        "MIXED",
+        "NEWS",
+        "NUMERIC",
+        "TREND",
+        "ENTITY_RELATION",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "NEEDS_CONTEXT",
+      "linguistic_form": "ABBREVIATED"
+    },
+    {
+      "id": "S5-T-046",
+      "question": "DCA hoạt động theo nguyên tắc nào?",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "MIXED",
+        "REPORT_CONTENT",
+        "TREND",
+        "ENTITY_RELATION",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "NEWS"
+      ],
+      "scope_status": "NOT_APPLICABLE",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-047",
+      "question": "FPT kinh doanh linh vuc nao?",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "TREND",
+        "ENTITY_RELATION",
+        "REPORT_CONTENT",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "MIXED",
+        "NEWS"
+      ],
+      "scope_status": "NOT_APPLICABLE",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-048",
+      "question": "Tóm tắt cuộc trò chuyện của chúng ta.",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "NEWS",
+        "REPORT_CONTENT",
+        "MIXED",
+        "TREND",
+        "NUMERIC",
+        "ENTITY_RELATION",
+        "PERSON_ROLE"
+      ],
+      "scope_status": "NOT_APPLICABLE",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-049",
+      "question": "Việc thay lãnh đạo sẽ ảnh hưởng doanh nghiệp ra sao?",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "TREND",
+        "PERSON_ROLE",
+        "MIXED",
+        "NUMERIC",
+        "REPORT_CONTENT",
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "scope_status": "PARTIAL",
+      "linguistic_form": "ACCENTED"
+    },
+    {
+      "id": "S5-T-050",
+      "question": "Trich nguyen van muc nghe nghiep trong tai lieu toi dang noi toi.",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "REPORT_CONTENT",
+        "NEWS",
+        "TREND",
+        "MIXED",
+        "PERSON_ROLE",
+        "NUMERIC",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "PARTIAL",
+      "linguistic_form": "UNACCENTED"
+    },
+    {
+      "id": "S5-T-051",
+      "question": "CT có thay đổi không?",
+      "gold": null,
+      "gold_rank": null,
+      "ordered_labels": [
+        "NEWS",
+        "NUMERIC",
+        "PERSON_ROLE",
+        "MIXED",
+        "TREND",
+        "REPORT_CONTENT",
+        "ENTITY_RELATION"
+      ],
+      "scope_status": "NEEDS_CONTEXT",
+      "linguistic_form": "ABBREVIATED"
+    }
+  ]
+}

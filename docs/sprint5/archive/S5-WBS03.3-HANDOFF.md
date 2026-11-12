@@ -38,7 +38,7 @@ Các test dùng encoder giả để thử lỗi, không tạo vector giả thay 
 - `outputs/s5_wbs033_20261110/pre-review-tests.xml` ghi 28 test dữ liệu/artifact.
 
 Muốn tạo lại bằng BGE-M3 thật, dùng môi trường backend đủ dependency và model
-cache đúng revision. Làm theo [hướng dẫn 03.3](S5-WBS03.3-vector-library.md), dùng
+cache đúng revision. Làm theo [hướng dẫn 03.3](../S5-WBS03.3-vector-library.md), dùng
 thư mục output mới. Artifact có thể kiểm tra độc lập; việc tái tạo model phụ thuộc
 model cache và môi trường, không tự phát sinh khi chỉ giải nén ZIP.
 

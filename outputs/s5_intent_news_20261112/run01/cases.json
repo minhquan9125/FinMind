@@ -1,0 +1,2193 @@
+[
+  {
+    "id": "CONTROL-ROLE-VCB",
+    "question": "Theo báo cáo thường niên VCB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-ROLE-MBB",
+    "question": "Theo báo cáo thường niên MBB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-ROLE-FPT",
+    "question": "Theo báo cáo thường niên FPT năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-ROLE-VNM",
+    "question": "Theo báo cáo thường niên VNM năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-ROLE-SAB",
+    "question": "Theo báo cáo thường niên SAB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-ROLE-HDB",
+    "question": "Theo báo cáo thường niên HDB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-REPORT-VCB",
+    "question": "Báo cáo thường niên VCB năm 2021 giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "controls",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "CONTROL-REPORT-MBB",
+    "question": "Báo cáo thường niên MBB năm 2021 giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "controls",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "CONTROL-REPORT-FPT",
+    "question": "Báo cáo thường niên FPT năm 2021 giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "controls",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "CONTROL-REPORT-VNM",
+    "question": "Báo cáo thường niên VNM năm 2021 giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "controls",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "CONTROL-REPORT-SAB",
+    "question": "Báo cáo thường niên SAB năm 2021 giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "controls",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "CONTROL-REPORT-HDB",
+    "question": "Báo cáo thường niên HDB năm 2021 giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "controls",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "CONTROL-COMBINED-VCB",
+    "question": "Theo báo cáo thường niên VCB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Báo cáo giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "controls",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "CONTROL-COMBINED-MBB",
+    "question": "Theo báo cáo thường niên MBB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Báo cáo giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "controls",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "CONTROL-COMBINED-FPT",
+    "question": "Theo báo cáo thường niên FPT năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Báo cáo giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "controls",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "CONTROL-COMBINED-VNM",
+    "question": "Theo báo cáo thường niên VNM năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Báo cáo giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "controls",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "CONTROL-COMBINED-SAB",
+    "question": "Theo báo cáo thường niên SAB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Báo cáo giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "controls",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "CONTROL-COMBINED-HDB",
+    "question": "Theo báo cáo thường niên HDB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Báo cáo giải thích chính sách kiểm soát rủi ro ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "controls",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "CONTROL-EVIDENCE-VCB",
+    "question": "Theo báo cáo thường niên VCB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-EVIDENCE-MBB",
+    "question": "Theo báo cáo thường niên MBB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-EVIDENCE-FPT",
+    "question": "Theo báo cáo thường niên FPT năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-EVIDENCE-VNM",
+    "question": "Theo báo cáo thường niên VNM năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-EVIDENCE-SAB",
+    "question": "Theo báo cáo thường niên SAB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "CONTROL-EVIDENCE-HDB",
+    "question": "Theo báo cáo thường niên HDB năm 2021, ai đảm nhiệm chức Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "EDGE-01",
+    "question": "Doanh thu và lợi nhuận sau thuế VNM năm 2021 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "controls",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "EDGE-02",
+    "question": "Ai là Tổng giám đốc VNM và ai là Giám đốc tài chính VNM cuối năm 2021?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "EDGE-03",
+    "question": "Trích nguyên văn chính sách quản trị rủi ro trong BCTN SAB 2021.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "controls",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "EDGE-04",
+    "question": "Tìm bài tin bổ nhiệm Chủ tịch HDB tháng 07/2021 rồi dẫn nguồn cho câu trả lời.",
+    "gold": "NEWS",
+    "evaluation_set": "controls",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "EDGE-05",
+    "question": "Doanh thu SAB năm 2021 là bao nhiêu? Giá đóng cửa SAB phiên 03/08/2021 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "controls",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "EDGE-06",
+    "question": "Xác định công ty con VNM cuối năm 2021 rồi cho biết doanh thu năm 2021 của từng công ty.",
+    "gold": "MIXED",
+    "evaluation_set": "controls",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "EDGE-07",
+    "question": "Đánh giá chung chiều hướng giá và ROA HDB trong giai đoạn 2018–2021.",
+    "gold": "TREND",
+    "evaluation_set": "controls",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "EDGE-08",
+    "question": "Ai được bổ nhiệm làm KTT SAB cuối năm 2021? Trích câu làm bằng chứng cho câu trả lời; KTT = kế toán trưởng.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "controls",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-NUMERIC-1-VCB",
+    "question": "EPS của VCB trong kỳ tài chính 2022 bằng mấy đồng?",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-1-TCB",
+    "question": "EPS của TCB trong kỳ tài chính 2022 bằng mấy đồng?",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-1-MBB",
+    "question": "EPS của MBB trong kỳ tài chính 2022 bằng mấy đồng?",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-1-FPT",
+    "question": "EPS của FPT trong kỳ tài chính 2022 bằng mấy đồng?",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-2-VCB",
+    "question": "Xin con số vốn chủ sở hữu VCB tại ngày cuối năm 2023.",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-2-TCB",
+    "question": "Xin con số vốn chủ sở hữu TCB tại ngày cuối năm 2023.",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-NUMERIC-2-MBB",
+    "question": "Xin con số vốn chủ sở hữu MBB tại ngày cuối năm 2023.",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-2-FPT",
+    "question": "Xin con số vốn chủ sở hữu FPT tại ngày cuối năm 2023.",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-3-VCB",
+    "question": "Giá đóng cửa VCB phiên 12/08/2024 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-3-TCB",
+    "question": "Giá đóng cửa TCB phiên 12/08/2024 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-3-MBB",
+    "question": "Giá đóng cửa MBB phiên 12/08/2024 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-NUMERIC-3-FPT",
+    "question": "Giá đóng cửa FPT phiên 12/08/2024 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-1-VCB",
+    "question": "Ban điều hành VCB mô tả kế hoạch mở rộng thế nào trong báo cáo thường niên 2022?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-1-TCB",
+    "question": "Ban điều hành TCB mô tả kế hoạch mở rộng thế nào trong báo cáo thường niên 2022?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-1-MBB",
+    "question": "Ban điều hành MBB mô tả kế hoạch mở rộng thế nào trong báo cáo thường niên 2022?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-1-FPT",
+    "question": "Ban điều hành FPT mô tả kế hoạch mở rộng thế nào trong báo cáo thường niên 2022?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-2-VCB",
+    "question": "Trong thuyết minh báo cáo tài chính 2022 của VCB, nguyên tắc khấu hao được giải thích ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-2-TCB",
+    "question": "Trong thuyết minh báo cáo tài chính 2022 của TCB, nguyên tắc khấu hao được giải thích ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-2-MBB",
+    "question": "Trong thuyết minh báo cáo tài chính 2022 của MBB, nguyên tắc khấu hao được giải thích ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-2-FPT",
+    "question": "Trong thuyết minh báo cáo tài chính 2022 của FPT, nguyên tắc khấu hao được giải thích ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-3-VCB",
+    "question": "Hãy rút gọn phần cam kết môi trường của VCB ở báo cáo thường niên 2023.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-3-TCB",
+    "question": "Hãy rút gọn phần cam kết môi trường của TCB ở báo cáo thường niên 2023.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-3-MBB",
+    "question": "Hãy rút gọn phần cam kết môi trường của MBB ở báo cáo thường niên 2023.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-REPORT_CONTENT-3-FPT",
+    "question": "Hãy rút gọn phần cam kết môi trường của FPT ở báo cáo thường niên 2023.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "development",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "DEV-NEWS-1-VCB",
+    "question": "Có bài báo nào nói về việc thay kế toán trưởng VCB trong tháng 02/2024?",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-1-TCB",
+    "question": "Có bài báo nào nói về việc thay kế toán trưởng TCB trong tháng 02/2024?",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-NEWS-1-MBB",
+    "question": "Có bài báo nào nói về việc thay kế toán trưởng MBB trong tháng 02/2024?",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-1-FPT",
+    "question": "Có bài báo nào nói về việc thay kế toán trưởng FPT trong tháng 02/2024?",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "DEV-NEWS-2-VCB",
+    "question": "Tôi muốn đọc tin về VCB phát hành cổ phiếu tháng 03/2023.",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-2-TCB",
+    "question": "Tôi muốn đọc tin về TCB phát hành cổ phiếu tháng 03/2023.",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-2-MBB",
+    "question": "Tôi muốn đọc tin về MBB phát hành cổ phiếu tháng 03/2023.",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-2-FPT",
+    "question": "Tôi muốn đọc tin về FPT phát hành cổ phiếu tháng 03/2023.",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-3-VCB",
+    "question": "Tóm lược bài tin VCB mở nhà máy đăng ngày 10/04/2024.",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-3-TCB",
+    "question": "Tóm lược bài tin TCB mở nhà máy đăng ngày 10/04/2024.",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-3-MBB",
+    "question": "Tóm lược bài tin MBB mở nhà máy đăng ngày 10/04/2024.",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-NEWS-3-FPT",
+    "question": "Tóm lược bài tin FPT mở nhà máy đăng ngày 10/04/2024.",
+    "gold": "NEWS",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-1-VCB",
+    "question": "Tên người đảm nhiệm ghế Chủ tịch Hội đồng quản trị VCB tại cuối 2022 là gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-1-TCB",
+    "question": "Tên người đảm nhiệm ghế Chủ tịch Hội đồng quản trị TCB tại cuối 2022 là gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-1-MBB",
+    "question": "Tên người đảm nhiệm ghế Chủ tịch Hội đồng quản trị MBB tại cuối 2022 là gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-1-FPT",
+    "question": "Tên người đảm nhiệm ghế Chủ tịch Hội đồng quản trị FPT tại cuối 2022 là gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-2-VCB",
+    "question": "Chức danh của ông Hải tại VCB được ghi trong BCTN 2022 là gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-2-TCB",
+    "question": "Chức danh của ông Hải tại TCB được ghi trong BCTN 2022 là gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-2-MBB",
+    "question": "Chức danh của ông Hải tại MBB được ghi trong BCTN 2022 là gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-2-FPT",
+    "question": "Chức danh của ông Hải tại FPT được ghi trong BCTN 2022 là gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-3-VCB",
+    "question": "Ngày bắt đầu nhiệm kỳ Tổng giám đốc VCB theo báo cáo thường niên 2023 là ngày nào?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-3-TCB",
+    "question": "Ngày bắt đầu nhiệm kỳ Tổng giám đốc TCB theo báo cáo thường niên 2023 là ngày nào?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-3-MBB",
+    "question": "Ngày bắt đầu nhiệm kỳ Tổng giám đốc MBB theo báo cáo thường niên 2023 là ngày nào?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-PERSON_ROLE-3-FPT",
+    "question": "Ngày bắt đầu nhiệm kỳ Tổng giám đốc FPT theo báo cáo thường niên 2023 là ngày nào?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-1-VCB",
+    "question": "VCB và Sao Việt có quan hệ liên kết tại cuối 2022 không?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-1-TCB",
+    "question": "TCB và Sao Việt có quan hệ liên kết tại cuối 2022 không?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-1-MBB",
+    "question": "MBB và Sao Việt có quan hệ liên kết tại cuối 2022 không?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-1-FPT",
+    "question": "FPT và Sao Việt có quan hệ liên kết tại cuối 2022 không?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-2-VCB",
+    "question": "Tìm doanh nghiệp mà VCB nắm quyền kiểm soát tại 30/06/2023.",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-2-TCB",
+    "question": "Tìm doanh nghiệp mà TCB nắm quyền kiểm soát tại 30/06/2023.",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-2-MBB",
+    "question": "Tìm doanh nghiệp mà MBB nắm quyền kiểm soát tại 30/06/2023.",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-2-FPT",
+    "question": "Tìm doanh nghiệp mà FPT nắm quyền kiểm soát tại 30/06/2023.",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-3-VCB",
+    "question": "Những cá nhân nào là cổ đông của VCB tại cuối 2022?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-3-TCB",
+    "question": "Những cá nhân nào là cổ đông của TCB tại cuối 2022?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-3-MBB",
+    "question": "Những cá nhân nào là cổ đông của MBB tại cuối 2022?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-ENTITY_RELATION-3-FPT",
+    "question": "Những cá nhân nào là cổ đông của FPT tại cuối 2022?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "development",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "DEV-TREND-1-VCB",
+    "question": "Khả năng sinh lời VCB có tốt dần trong các năm 2020–2023 không?",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-1-TCB",
+    "question": "Khả năng sinh lời TCB có tốt dần trong các năm 2020–2023 không?",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-1-MBB",
+    "question": "Khả năng sinh lời MBB có tốt dần trong các năm 2020–2023 không?",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-1-FPT",
+    "question": "Khả năng sinh lời FPT có tốt dần trong các năm 2020–2023 không?",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-2-VCB",
+    "question": "Diễn biến thị giá VCB trong tháng 08/2024 nghiêng về chiều nào?",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-2-TCB",
+    "question": "Diễn biến thị giá TCB trong tháng 08/2024 nghiêng về chiều nào?",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-2-MBB",
+    "question": "Diễn biến thị giá MBB trong tháng 08/2024 nghiêng về chiều nào?",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-2-FPT",
+    "question": "Diễn biến thị giá FPT trong tháng 08/2024 nghiêng về chiều nào?",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-3-VCB",
+    "question": "Nhận định đà mở rộng doanh thu VCB từ năm 2020 đến 2023.",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-TREND-3-TCB",
+    "question": "Nhận định đà mở rộng doanh thu TCB từ năm 2020 đến 2023.",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-TREND-3-MBB",
+    "question": "Nhận định đà mở rộng doanh thu MBB từ năm 2020 đến 2023.",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-TREND-3-FPT",
+    "question": "Nhận định đà mở rộng doanh thu FPT từ năm 2020 đến 2023.",
+    "gold": "TREND",
+    "evaluation_set": "development",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "DEV-MIXED-1-VCB",
+    "question": "Cho tên người điều hành VCB cuối 2022, đồng thời giải thích chính sách khấu hao trong BCTC 2022.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "DEV-MIXED-1-TCB",
+    "question": "Cho tên người điều hành TCB cuối 2022, đồng thời giải thích chính sách khấu hao trong BCTC 2022.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "DEV-MIXED-1-MBB",
+    "question": "Cho tên người điều hành MBB cuối 2022, đồng thời giải thích chính sách khấu hao trong BCTC 2022.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "DEV-MIXED-1-FPT",
+    "question": "Cho tên người điều hành FPT cuối 2022, đồng thời giải thích chính sách khấu hao trong BCTC 2022.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "DEV-MIXED-2-VCB",
+    "question": "Xin số vốn chủ sở hữu VCB cuối 2023 kèm danh sách bài báo phát hành cổ phiếu tháng 03/2023.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-MIXED-2-TCB",
+    "question": "Xin số vốn chủ sở hữu TCB cuối 2023 kèm danh sách bài báo phát hành cổ phiếu tháng 03/2023.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-MIXED-2-MBB",
+    "question": "Xin số vốn chủ sở hữu MBB cuối 2023 kèm danh sách bài báo phát hành cổ phiếu tháng 03/2023.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-MIXED-2-FPT",
+    "question": "Xin số vốn chủ sở hữu FPT cuối 2023 kèm danh sách bài báo phát hành cổ phiếu tháng 03/2023.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "DEV-MIXED-3-VCB",
+    "question": "Xác định công ty liên kết VCB cuối 2022, rồi nhận định đà doanh thu VCB từ 2020 đến 2023.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "DEV-MIXED-3-TCB",
+    "question": "Xác định công ty liên kết TCB cuối 2022, rồi nhận định đà doanh thu TCB từ 2020 đến 2023.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "DEV-MIXED-3-MBB",
+    "question": "Xác định công ty liên kết MBB cuối 2022, rồi nhận định đà doanh thu MBB từ 2020 đến 2023.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "DEV-MIXED-3-FPT",
+    "question": "Xác định công ty liên kết FPT cuối 2022, rồi nhận định đà doanh thu FPT từ 2020 đến 2023.",
+    "gold": "MIXED",
+    "evaluation_set": "development",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "KNOWN-01",
+    "question": "Ai là Chủ tịch HĐQT VCB?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "known_diagnostic",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "KNOWN-02",
+    "question": "Ai là Chủ tịch HĐQT TCB?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "known_diagnostic",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "KNOWN-03",
+    "question": "Ai là Chủ tịch HĐQT FPT?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "known_diagnostic",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "KNOWN-04",
+    "question": "Ai là Chủ tịch HĐQT MBB?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "known_diagnostic",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "KNOWN-05",
+    "question": "Chủ tịch HĐQT VCB là ai?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "known_diagnostic",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "KNOWN-06",
+    "question": "Doanh thu MBB năm 2024 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "known_diagnostic",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "KNOWN-07",
+    "question": "Ai là Tổng giám đốc TCB và chiến lược kinh doanh người này nêu trong báo cáo thường niên là gì?",
+    "gold": "MIXED",
+    "evaluation_set": "known_diagnostic",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "KNOWN-08",
+    "question": "Ai là Tổng giám đốc MBB và chiến lược kinh doanh người này nêu trong báo cáo thường niên là gì?",
+    "gold": "MIXED",
+    "evaluation_set": "known_diagnostic",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "LATER-NUMERIC-1-DGC",
+    "question": "Tỷ lệ chi trả cổ tức của DGC trong năm 2021 đạt mức nào?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "LATER-NUMERIC-1-PNJ",
+    "question": "Tỷ lệ chi trả cổ tức của PNJ trong năm 2021 đạt mức nào?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "LATER-NUMERIC-2-DGC",
+    "question": "Mức tiền và tương đương tiền DGC tại 30/06/2022 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "LATER-NUMERIC-2-PNJ",
+    "question": "Mức tiền và tương đương tiền PNJ tại 30/06/2022 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "LATER-REPORT_CONTENT-1-DGC",
+    "question": "Diễn giải mục quản trị rủi ro thanh khoản trong báo cáo tài chính DGC năm 2021.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "LATER-REPORT_CONTENT-1-PNJ",
+    "question": "Diễn giải mục quản trị rủi ro thanh khoản trong báo cáo tài chính PNJ năm 2021.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "LATER-REPORT_CONTENT-2-DGC",
+    "question": "Báo cáo thường niên 2022 của DGC nói gì về đào tạo nhân viên?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "LATER-REPORT_CONTENT-2-PNJ",
+    "question": "Báo cáo thường niên 2022 của PNJ nói gì về đào tạo nhân viên?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "LATER-NEWS-1-DGC",
+    "question": "Tìm các bản tin về DGC ký hợp đồng xuất khẩu tháng 09/2022.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "LATER-NEWS-1-PNJ",
+    "question": "Tìm các bản tin về PNJ ký hợp đồng xuất khẩu tháng 09/2022.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "LATER-NEWS-2-DGC",
+    "question": "Nội dung bài báo DGC tổ chức đại hội ngày 20/04/2022 là gì?",
+    "gold": "NEWS",
+    "evaluation_set": "previous_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "LATER-NEWS-2-PNJ",
+    "question": "Nội dung bài báo PNJ tổ chức đại hội ngày 20/04/2022 là gì?",
+    "gold": "NEWS",
+    "evaluation_set": "previous_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "LATER-PERSON_ROLE-1-DGC",
+    "question": "Ai đảm trách vị trí trưởng ban kiểm soát DGC tại tháng 12/2021?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "LATER-PERSON_ROLE-1-PNJ",
+    "question": "Ai đảm trách vị trí trưởng ban kiểm soát PNJ tại tháng 12/2021?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "LATER-PERSON_ROLE-2-DGC",
+    "question": "Bà Mai thôi chức thành viên HĐQT DGC vào thời điểm nào năm 2022?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "LATER-PERSON_ROLE-2-PNJ",
+    "question": "Bà Mai thôi chức thành viên HĐQT PNJ vào thời điểm nào năm 2022?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "LATER-ENTITY_RELATION-1-DGC",
+    "question": "Nhà đầu tư nào nắm cổ phần chi phối DGC tại cuối 2021?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "LATER-ENTITY_RELATION-1-PNJ",
+    "question": "Nhà đầu tư nào nắm cổ phần chi phối PNJ tại cuối 2021?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "LATER-ENTITY_RELATION-2-DGC",
+    "question": "Tại cuối 2022, DGC là đối tác của doanh nghiệp nào?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "LATER-ENTITY_RELATION-2-PNJ",
+    "question": "Tại cuối 2022, PNJ là đối tác của doanh nghiệp nào?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "LATER-TREND-1-DGC",
+    "question": "Đà tăng chi phí hoạt động DGC giai đoạn 2019–2022 đang nhanh lên hay chậm lại?",
+    "gold": "TREND",
+    "evaluation_set": "previous_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "LATER-TREND-1-PNJ",
+    "question": "Đà tăng chi phí hoạt động PNJ giai đoạn 2019–2022 đang nhanh lên hay chậm lại?",
+    "gold": "TREND",
+    "evaluation_set": "previous_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "LATER-TREND-2-DGC",
+    "question": "Đánh giá diễn biến ROA DGC qua các năm 2019–2022.",
+    "gold": "TREND",
+    "evaluation_set": "previous_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "LATER-TREND-2-PNJ",
+    "question": "Đánh giá diễn biến ROA PNJ qua các năm 2019–2022.",
+    "gold": "TREND",
+    "evaluation_set": "previous_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "LATER-MIXED-1-DGC",
+    "question": "Xem ai là trưởng ban kiểm soát DGC cuối 2021 và lấy tỷ lệ chi trả cổ tức DGC năm đó.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "LATER-MIXED-1-PNJ",
+    "question": "Xem ai là trưởng ban kiểm soát PNJ cuối 2021 và lấy tỷ lệ chi trả cổ tức PNJ năm đó.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "LATER-MIXED-2-DGC",
+    "question": "Tóm tắt phần đào tạo nhân viên trong BCTN DGC 2022, rồi tìm bài báo về đại hội DGC tháng 04/2022.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "LATER-MIXED-2-PNJ",
+    "question": "Tóm tắt phần đào tạo nhân viên trong BCTN PNJ 2022, rồi tìm bài báo về đại hội PNJ tháng 04/2022.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-001",
+    "question": "Trong BCTC riêng của công ty mẹ HPG năm 2023, số dư tiền cuối năm là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "regression",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "S5-T-002",
+    "question": "Bài tin KBC ngày 12/08/2025 nêu mức cổ tức tiền mặt bao nhiêu đồng một cổ phiếu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "regression",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "S5-T-003",
+    "question": "Cho biet ROE cua ACB tung nam 2020–2023 va chenh lech giua nam dau voi nam cuoi la bao nhieu diem phan tram?",
+    "gold": "NUMERIC",
+    "evaluation_set": "regression",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "S5-T-004",
+    "question": "Theo BCTC 2023, doanh thu va gia von cua PNJ lan luot la bao nhieu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "regression",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "S5-T-005",
+    "question": "Giá ĐC SSI ngày 15/09/2025 là bn đồng/cp?",
+    "gold": "NUMERIC",
+    "evaluation_set": "regression",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "S5-T-006",
+    "question": "Cho biết EPS và BVPS VNM năm 2023 bằng số.",
+    "gold": "NUMERIC",
+    "evaluation_set": "regression",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "S5-T-007",
+    "question": "Đọc và tóm lược phần cam kết phát triển bền vững trong BCTN HPG 2023.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-008",
+    "question": "Trích nguyên văn đoạn mô tả giao dịch với bên liên quan trong thuyết minh BCTC ACB 2022 đã nêu.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-009",
+    "question": "Toi can tai lieu BCTN PNJ nam 2022, hay tim giup.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-010",
+    "question": "Thuyet minh BCTC VNM 2023 mo ta phuong phap khau hao tai san nhu the nao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-011",
+    "question": "Rút gọn mục đào tạo NLĐ trong BCTN REE 2023; NLĐ là người lao động.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-012",
+    "question": "Chép nguyên văn dòng ghi CV bà Hoa tại SSI trong BCTN 2022; CV = chức vụ.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-013",
+    "question": "Có những bài báo nào về quyết định miễn nhiệm Giám đốc tài chính HPG trong tháng 08/2025?",
+    "gold": "NEWS",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-014",
+    "question": "Bài tin KBC ngày 12/08/2025 trình bày việc trả cổ tức tiền mặt như thế nào? Hãy tóm lược bài.",
+    "gold": "NEWS",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-015",
+    "question": "Chep dung doan gioi thieu ba Hoa trong bai tin SSI dang ngay 03/09/2025.",
+    "gold": "NEWS",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-016",
+    "question": "Tong hop tin kinh te vi mo tai Viet Nam trong ngay 18/09/2025.",
+    "gold": "NEWS",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-017",
+    "question": "Tìm các tin PNJ đổi CT HĐQT trong Q3/2025.",
+    "gold": "NEWS",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-018",
+    "question": "Tóm tắt bài tin ACB công bố KQKD Q2/2025, không cần bảng số.",
+    "gold": "NEWS",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-019",
+    "question": "Ngày có hiệu lực quyết định miễn nhiệm Giám đốc tài chính HPG trong tháng 08/2025 là ngày nào?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "regression",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "S5-T-020",
+    "question": "Theo bài tin SSI ngày 03/09/2025, bà Hoa được bổ nhiệm giữ chức gì?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "regression",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "S5-T-021",
+    "question": "BCTN REE 2022 ghi nhan ai phu trach vi tri ke toan truong tai cuoi nam?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-022",
+    "question": "Ong Binh dam nhan vai tro nao tai VNM trong nam 2023?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "regression",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "S5-T-023",
+    "question": "Ai đảm nhiệm PTGĐ PNJ tại 30/06/2023? PTGĐ là phó tổng giám đốc.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "regression",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "S5-T-024",
+    "question": "Theo BCTN REE 2022, ai được bổ nhiệm làm KTT? Trích câu làm bằng chứng cho câu trả lời; KTT = kế toán trưởng.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "regression",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "S5-T-025",
+    "question": "Cuối năm 2023, bà Hoa nắm bao nhiêu phần trăm cổ phần SSI?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-026",
+    "question": "Cuối năm 2022, VNM có bao nhiêu doanh nghiệp liên kết trực tiếp?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-027",
+    "question": "Theo BCTN REE 2023, REE va cong ty Song Xanh co quan he hop tac khong?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-028",
+    "question": "Su kien mo nha may cua HPG ngay 12/05/2025 co nhung doanh nghiep nao tham gia?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-029",
+    "question": "DN nào kiểm soát cty Bình Minh tại 31/12/2023?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-030",
+    "question": "PNJ góp bn % vốn vào cty Hoa Mai cuối 2022?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-031",
+    "question": "Dựa trên chuỗi giá SSI từ tháng 01 đến tháng 06/2025, nhận định đà phục hồi có bền qua các tháng không.",
+    "gold": "TREND",
+    "evaluation_set": "regression",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "S5-T-032",
+    "question": "Qua BCTC VNM 2020–2023, biên lợi nhuận đang thu hẹp hay mở rộng và vì sao?",
+    "gold": "TREND",
+    "evaluation_set": "regression",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "S5-T-033",
+    "question": "Nhan dinh chieu huong gia va dong tien kinh doanh cua REE qua 2021–2023, hai tin hieu co trai chieu khong?",
+    "gold": "TREND",
+    "evaluation_set": "regression",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "S5-T-034",
+    "question": "Danh gia chieu huong ROE cua ACB qua cac nam 2020–2023: dang cai thien hay suy yeu?",
+    "gold": "TREND",
+    "evaluation_set": "regression",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "S5-T-035",
+    "question": "XH thanh khoản giao dịch ACB trong Q1/2025 đang cải thiện hay suy yếu?",
+    "gold": "TREND",
+    "evaluation_set": "regression",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "S5-T-036",
+    "question": "LNST PNJ qua 2020–2023 tăng tốc hay chậm lại? Giải thích XH đó.",
+    "gold": "TREND",
+    "evaluation_set": "regression",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "S5-T-037",
+    "question": "Đối chiếu phần quản trị rủi ro trong BCTN VNM 2023 với bài tin VNM ngày 15/02/2024: hai tài liệu nêu những điểm giống và khác nào?",
+    "gold": "MIXED",
+    "evaluation_set": "regression",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "S5-T-038",
+    "question": "BCTN REE 2022 ghi bà Mai đảm nhiệm chức danh nào? Báo cáo mô tả chính sách kiểm soát nội bộ ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "regression",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "S5-T-039",
+    "question": "Can xac nhan HPG kiem soat cong ty Binh Minh tai 31/12/2023 hay khong; dong thoi cho biet von chu so huu tren BCTC rieng HPG nam 2023.",
+    "gold": "MIXED",
+    "evaluation_set": "regression",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "S5-T-040",
+    "question": "Bai tin SSI ngay 10/08/2023 mo ta quyet dinh thay doi nhan su ra sao? Trong nam 2023 ong Binh giu chuc vu nao tai SSI?",
+    "gold": "MIXED",
+    "evaluation_set": "regression",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "S5-T-041",
+    "question": "Tóm tắt tin ACB mở chi nhánh ngày 20/02/2025; kèm bảng EPS của ACB cho 2022–2023 theo BCTC.",
+    "gold": "MIXED",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-042",
+    "question": "Cty Hoa Mai có phải đơn vị do PNJ kiểm soát cuối 2023 không, và XH giá PNJ trong Q1/2024 ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-043",
+    "question": "Còn bên ấy thì sao nhỉ?",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "S5-T-044",
+    "question": "con nguoi do?",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-045",
+    "question": "Cho xem DS đó tiếp.",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-046",
+    "question": "DCA hoạt động theo nguyên tắc nào?",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-047",
+    "question": "FPT kinh doanh linh vuc nao?",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "S5-T-048",
+    "question": "Tóm tắt cuộc trò chuyện của chúng ta.",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-049",
+    "question": "Việc thay lãnh đạo sẽ ảnh hưởng doanh nghiệp ra sao?",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "S5-T-050",
+    "question": "Trich nguyen van muc nghe nghiep trong tai lieu toi dang noi toi.",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-051",
+    "question": "CT có thay đổi không?",
+    "gold": null,
+    "evaluation_set": "regression",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "S5-T-052",
+    "question": "Tổng nợ phải trả cuối năm 2023 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "regression",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "S5-T-053",
+    "question": "Tim bai tin mien nhiem trong thang 06/2025.",
+    "gold": "NEWS",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "S5-T-054",
+    "question": "Ai là KTT tại 31/12/2023? KTT = kế toán trưởng.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "regression",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "S5-T-055",
+    "question": "Ai được bổ nhiệm làm TGĐ DGC trong tháng 09/2025?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "regression",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "S5-T-056",
+    "question": "Tìm bài tin về việc bổ nhiệm TGĐ DGC trong tháng 09/2025.",
+    "gold": "NEWS",
+    "evaluation_set": "regression",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NEW-NUMERIC-1-VHC",
+    "question": "Chi phí lãi vay của VHC trong năm 2020 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NEW-NUMERIC-1-DBC",
+    "question": "Chi phí lãi vay của DBC trong năm 2020 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NEW-NUMERIC-2-VHC",
+    "question": "Cho biết giá trị hàng tồn kho VHC tại 30/06/2020.",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NEW-NUMERIC-2-DBC",
+    "question": "Cho biết giá trị hàng tồn kho DBC tại 30/06/2020.",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NEW-NUMERIC-3-VHC",
+    "question": "Tỷ lệ chi trả cổ tức của VHC năm 2020 bằng bao nhiêu phần trăm?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NEW-NUMERIC-3-DBC",
+    "question": "Tỷ lệ chi trả cổ tức của DBC năm 2020 bằng bao nhiêu phần trăm?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-1-VHC",
+    "question": "BCTN VHC năm 2020 mô tả định hướng chuyển đổi số như thế nào?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-1-DBC",
+    "question": "BCTN DBC năm 2020 mô tả định hướng chuyển đổi số như thế nào?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-2-VHC",
+    "question": "Giải thích phương pháp ghi nhận hàng tồn kho trong thuyết minh BCTC VHC năm 2020.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-2-DBC",
+    "question": "Giải thích phương pháp ghi nhận hàng tồn kho trong thuyết minh BCTC DBC năm 2020.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-3-VHC",
+    "question": "Trích nguyên văn đoạn cam kết về an toàn lao động trong BCTN VHC năm 2020.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "NEW-REPORT_CONTENT-3-DBC",
+    "question": "Trích nguyên văn đoạn cam kết về an toàn lao động trong BCTN DBC năm 2020.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "NEW-NEWS-1-VHC",
+    "question": "Tìm các bản tin về VHC ký hợp đồng xuất khẩu trong tháng 08/2020.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NEW-NEWS-1-DBC",
+    "question": "Tìm các bản tin về DBC ký hợp đồng xuất khẩu trong tháng 08/2020.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NEW-NEWS-2-VHC",
+    "question": "Tóm lược bài báo về VHC triển khai dự án đăng ngày 12/09/2020.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NEW-NEWS-2-DBC",
+    "question": "Tóm lược bài báo về DBC triển khai dự án đăng ngày 12/09/2020.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NEW-NEWS-3-VHC",
+    "question": "Cho danh sách bài tin VHC phát hành trái phiếu trong quý III/2020.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NEW-NEWS-3-DBC",
+    "question": "Cho danh sách bài tin DBC phát hành trái phiếu trong quý III/2020.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-1-VHC",
+    "question": "Ai giữ chức Phó Tổng giám đốc VHC tại cuối năm 2020?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-1-DBC",
+    "question": "Ai giữ chức Phó Tổng giám đốc DBC tại cuối năm 2020?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-2-VHC",
+    "question": "Ông Lâm được bổ nhiệm làm Giám đốc tài chính VHC vào ngày nào trong năm 2020?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-2-DBC",
+    "question": "Ông Lâm được bổ nhiệm làm Giám đốc tài chính DBC vào ngày nào trong năm 2020?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-3-VHC",
+    "question": "Ai đảm trách vị trí kế toán trưởng VHC cuối 2020? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "NEW-PERSON_ROLE-3-DBC",
+    "question": "Ai đảm trách vị trí kế toán trưởng DBC cuối 2020? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-1-VHC",
+    "question": "Doanh nghiệp nào nắm cổ phần chi phối VHC tại cuối năm 2020?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-1-DBC",
+    "question": "Doanh nghiệp nào nắm cổ phần chi phối DBC tại cuối năm 2020?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-2-VHC",
+    "question": "Liệt kê các đơn vị do VHC kiểm soát tại 30/06/2020.",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-2-DBC",
+    "question": "Liệt kê các đơn vị do DBC kiểm soát tại 30/06/2020.",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-3-VHC",
+    "question": "Có bao nhiêu công ty liên kết của VHC tại cuối năm 2020?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "NEW-ENTITY_RELATION-3-DBC",
+    "question": "Có bao nhiêu công ty liên kết của DBC tại cuối năm 2020?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "NEW-TREND-1-VHC",
+    "question": "Nhận định đà cải thiện biên lợi nhuận VHC trong các năm 2017–2020 có ổn định không?",
+    "gold": "TREND",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "NEW-TREND-1-DBC",
+    "question": "Nhận định đà cải thiện biên lợi nhuận DBC trong các năm 2017–2020 có ổn định không?",
+    "gold": "TREND",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "NEW-TREND-2-VHC",
+    "question": "Diễn biến giá VHC và dòng tiền kinh doanh trong 2017–2020 cho tín hiệu cùng chiều hay trái chiều?",
+    "gold": "TREND",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "NEW-TREND-2-DBC",
+    "question": "Diễn biến giá DBC và dòng tiền kinh doanh trong 2017–2020 cho tín hiệu cùng chiều hay trái chiều?",
+    "gold": "TREND",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "NEW-TREND-3-VHC",
+    "question": "Đánh giá chiều hướng ROA VHC qua các năm 2017–2020.",
+    "gold": "TREND",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "NEW-TREND-3-DBC",
+    "question": "Đánh giá chiều hướng ROA DBC qua các năm 2017–2020.",
+    "gold": "TREND",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "NEW-MIXED-1-VHC",
+    "question": "Ai giữ chức Phó Tổng giám đốc VHC cuối 2020? BCTN VHC mô tả định hướng chuyển đổi số như thế nào?",
+    "gold": "MIXED",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NEW-MIXED-1-DBC",
+    "question": "Ai giữ chức Phó Tổng giám đốc DBC cuối 2020? BCTN DBC mô tả định hướng chuyển đổi số như thế nào?",
+    "gold": "MIXED",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NEW-MIXED-2-VHC",
+    "question": "Cho biết chi phí lãi vay VHC năm 2020 và tìm các bản tin phát hành trái phiếu VHC quý III/2020.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NEW-MIXED-2-DBC",
+    "question": "Cho biết chi phí lãi vay DBC năm 2020 và tìm các bản tin phát hành trái phiếu DBC quý III/2020.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NEW-MIXED-3-VHC",
+    "question": "Liệt kê các đơn vị do VHC kiểm soát cuối 2020 rồi hãy lấy giá trị doanh thu 2020 của từng đơn vị.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NEW-MIXED-3-DBC",
+    "question": "Liệt kê các đơn vị do DBC kiểm soát cuối 2020 rồi hãy lấy giá trị doanh thu 2020 của từng đơn vị.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_new_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "FINAL-NUMERIC-1-DPM",
+    "question": "Tỷ lệ nợ trên vốn chủ sở hữu DPM cuối năm 2019 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "FINAL-NUMERIC-1-VRE",
+    "question": "Tỷ lệ nợ trên vốn chủ sở hữu VRE cuối năm 2019 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "FINAL-NUMERIC-2-DPM",
+    "question": "Cho biết lợi nhuận giữ lại của DPM tại 31/12/2019.",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "FINAL-NUMERIC-2-VRE",
+    "question": "Cho biết lợi nhuận giữ lại của VRE tại 31/12/2019.",
+    "gold": "NUMERIC",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-1-DPM",
+    "question": "BCTN DPM năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-1-VRE",
+    "question": "BCTN VRE năm 2019 mô tả chính sách phát triển nhân lực ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-2-DPM",
+    "question": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên DPM năm 2019.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "FINAL-REPORT_CONTENT-2-VRE",
+    "question": "Giải thích chiến lược mở rộng thị trường trình bày trong báo cáo thường niên VRE năm 2019.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "FINAL-NEWS-1-DPM",
+    "question": "Tìm các bài tin về DPM công bố chia cổ tức trong tháng 06/2019.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "FINAL-NEWS-1-VRE",
+    "question": "Tìm các bài tin về VRE công bố chia cổ tức trong tháng 06/2019.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "FINAL-NEWS-2-DPM",
+    "question": "Hãy tóm tắt bài báo DPM khánh thành cơ sở sản xuất đăng ngày 15/07/2019.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "FINAL-NEWS-2-VRE",
+    "question": "Hãy tóm tắt bài báo VRE khánh thành cơ sở sản xuất đăng ngày 15/07/2019.",
+    "gold": "NEWS",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-1-DPM",
+    "question": "Ai giữ chức Giám đốc tài chính DPM tại cuối năm 2019?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-1-VRE",
+    "question": "Ai giữ chức Giám đốc tài chính VRE tại cuối năm 2019?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-2-DPM",
+    "question": "Theo BCTN DPM 2019, ai là Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "FINAL-PERSON_ROLE-2-VRE",
+    "question": "Theo BCTN VRE 2019, ai là Chủ tịch HĐQT? Trích câu làm bằng chứng cho câu trả lời.",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-1-DPM",
+    "question": "Công ty mẹ của DPM tại 31/12/2019 là đơn vị nào?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-1-VRE",
+    "question": "Công ty mẹ của VRE tại 31/12/2019 là đơn vị nào?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-2-DPM",
+    "question": "Liệt kê doanh nghiệp hợp tác với DPM trong dự án triển khai năm 2019.",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "FINAL-ENTITY_RELATION-2-VRE",
+    "question": "Liệt kê doanh nghiệp hợp tác với VRE trong dự án triển khai năm 2019.",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "FINAL-TREND-1-DPM",
+    "question": "Đánh giá chiều hướng khả năng sinh lời DPM qua giai đoạn 2016–2019.",
+    "gold": "TREND",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "FINAL-TREND-1-VRE",
+    "question": "Đánh giá chiều hướng khả năng sinh lời VRE qua giai đoạn 2016–2019.",
+    "gold": "TREND",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "FINAL-TREND-2-DPM",
+    "question": "Nhận định đà tăng giá cổ phiếu DPM trong quý II/2019 có bền vững không?",
+    "gold": "TREND",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "FINAL-TREND-2-VRE",
+    "question": "Nhận định đà tăng giá cổ phiếu VRE trong quý II/2019 có bền vững không?",
+    "gold": "TREND",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "FINAL-MIXED-1-DPM",
+    "question": "Ai giữ chức Giám đốc tài chính DPM cuối năm 2019? BCTN DPM mô tả chính sách phát triển nhân lực ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "FINAL-MIXED-1-VRE",
+    "question": "Ai giữ chức Giám đốc tài chính VRE cuối năm 2019? BCTN VRE mô tả chính sách phát triển nhân lực ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "FINAL-MIXED-2-DPM",
+    "question": "Cho biết lợi nhuận giữ lại DPM cuối năm 2019 rồi tìm các bài tin chia cổ tức DPM tháng 06/2019.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "FINAL-MIXED-2-VRE",
+    "question": "Cho biết lợi nhuận giữ lại VRE cuối năm 2019 rồi tìm các bài tin chia cổ tức VRE tháng 06/2019.",
+    "gold": "MIXED",
+    "evaluation_set": "previous_final_check",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "REVIEW-01",
+    "question": "Doanh thu mảng AI và dịch vụ cloud của FPT năm 2025 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "review_probes",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "REVIEW-02",
+    "question": "Cho biết doanh thu cloud và AI của FPT năm 2025 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "review_probes",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "REVIEW-03",
+    "question": "Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "review_probes",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "REVIEW-04",
+    "question": "Chủ tịch HĐQT của FPT là ai?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "review_probes",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "REVIEW-05",
+    "question": "Chu tich HDQT cua ABC la ai?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "review_probes",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "REVIEW-06",
+    "question": "Ông Nguyễn Văn A giữ chức gì tại FPT?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "review_probes",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "REVIEW-07",
+    "question": "CEO của FPT là ai?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "review_probes",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "REVIEW-08",
+    "question": "Ai là CEO của ABC?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "review_probes",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "REVIEW-09",
+    "question": "Who is the CEO of ABC?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "review_probes",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "REVIEW-10",
+    "question": "Tìm bài tin về việc bổ nhiệm CEO FPT.",
+    "gold": "NEWS",
+    "evaluation_set": "review_probes",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "REVIEW-11",
+    "question": "Trích nguyên văn hàng chức vụ CEO trong BCTN.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "review_probes",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "REVIEW-12",
+    "question": "Lương CEO của FPT năm 2025 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "review_probes",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "REVIEW-13",
+    "question": "BCTN mô tả chiến lược phát triển AI và cloud ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "review_probes",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "REVIEW-14",
+    "question": "Doanh thu mảng AI của FPT năm 2025 là bao nhiêu và tìm bài tin FPT ký hợp đồng cloud.",
+    "gold": "MIXED",
+    "evaluation_set": "review_probes",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "REVIEW-15",
+    "question": "AI giữ chức Chủ tịch? BCTN mô tả chính sách nhân sự ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "review_probes",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NV-01",
+    "question": "Doanh thu xuất khẩu của VJC năm 2024 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NV-02",
+    "question": "LNST cua doanh nghiep LMN nam 2023 la bao nhieu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NV-03",
+    "question": "EPS của PNJ năm 2024 có giá trị bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NV-04",
+    "question": "Cho biết lợi nhuận giữ lại của doanh nghiệp LMN cuối năm 2024.",
+    "gold": "NUMERIC",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NV-05",
+    "question": "Đọc dòng tiền kinh doanh của VJC trong BCTC 2023.",
+    "gold": "NUMERIC",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NV-06",
+    "question": "Gia tri ROA cua PNJ nam 2023 la bao nhieu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NV-07",
+    "question": "Theo bài tin đã chỉ định, cổ tức tiền mặt của VJC là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NV-08",
+    "question": "Theo BCTN PNJ 2024, lợi nhuận mục tiêu cho 2025 là bao nhiêu?",
+    "gold": "NUMERIC",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NUMERIC"
+  },
+  {
+    "id": "NV-09",
+    "question": "Có bao nhiêu công ty con của VJC đã công bố doanh thu?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "additional_checks",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "NV-10",
+    "question": "Ông An sở hữu bao nhiêu phần trăm cổ phần PNJ?",
+    "gold": "ENTITY_RELATION",
+    "evaluation_set": "additional_checks",
+    "prior_label": "ENTITY_RELATION"
+  },
+  {
+    "id": "NV-11",
+    "question": "CEO của VJC được bổ nhiệm vào ngày nào?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "additional_checks",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "NV-12",
+    "question": "Chủ tịch HĐQT của PNJ là ai?",
+    "gold": "PERSON_ROLE",
+    "evaluation_set": "additional_checks",
+    "prior_label": "PERSON_ROLE"
+  },
+  {
+    "id": "NV-13",
+    "question": "Tìm bài tin cho biết doanh thu của VJC trong năm 2024.",
+    "gold": "NEWS",
+    "evaluation_set": "additional_checks",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NV-14",
+    "question": "Trích nguyên văn hàng ghi doanh thu trong BCTC PNJ 2024.",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "additional_checks",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "NV-15",
+    "question": "BCTN VJC 2024 mô tả chính sách ghi nhận doanh thu ra sao?",
+    "gold": "REPORT_CONTENT",
+    "evaluation_set": "additional_checks",
+    "prior_label": "REPORT_CONTENT"
+  },
+  {
+    "id": "NV-16",
+    "question": "Đánh giá xu hướng lợi nhuận của PNJ qua giai đoạn 2021–2024.",
+    "gold": "TREND",
+    "evaluation_set": "additional_checks",
+    "prior_label": "TREND"
+  },
+  {
+    "id": "NV-17",
+    "question": "Cho biết doanh thu VJC 2024. CEO của VJC là ai?",
+    "gold": "MIXED",
+    "evaluation_set": "additional_checks",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NV-18",
+    "question": "EPS PNJ 2024 là bao nhiêu? BCTN PNJ mô tả chiến lược mở rộng ra sao?",
+    "gold": "MIXED",
+    "evaluation_set": "additional_checks",
+    "prior_label": "MIXED"
+  },
+  {
+    "id": "NV-19",
+    "question": "Cho biết LNST VJC 2024 rồi tìm bài tin VJC mở đường bay mới.",
+    "gold": "MIXED",
+    "evaluation_set": "additional_checks",
+    "prior_label": "NEWS"
+  },
+  {
+    "id": "NV-20",
+    "question": "Đọc tổng tài sản PNJ cuối năm 2024 và xác định ai là CEO của PNJ.",
+    "gold": "MIXED",
+    "evaluation_set": "additional_checks",
+    "prior_label": "PERSON_ROLE"
+  }
+]

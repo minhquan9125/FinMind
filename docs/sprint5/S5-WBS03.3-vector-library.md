@@ -98,7 +98,7 @@ câu test. Bằng chứng tạo lại ba câu bằng model thật ở tiến tr�
 chênh lệch tối đa 7.8231e-8. Không chạy lại model chỉ vì sửa cách giữ snapshot.
 
 Hướng dẫn bàn giao, dependency tối thiểu và cách chạy 28 bài kiểm tra:
-[S5-WBS03.3-HANDOFF.md](S5-WBS03.3-HANDOFF.md).
+[S5-WBS03.3-HANDOFF.md](archive/S5-WBS03.3-HANDOFF.md).
 
 ## Giới hạn và bước tiếp theo
 

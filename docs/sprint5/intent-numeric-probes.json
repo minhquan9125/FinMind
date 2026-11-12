@@ -1,0 +1,22 @@
+[
+  {"id":"NV-01","question":"Doanh thu xuất khẩu của VJC năm 2024 là bao nhiêu?","gold":"NUMERIC"},
+  {"id":"NV-02","question":"LNST cua doanh nghiep LMN nam 2023 la bao nhieu?","gold":"NUMERIC"},
+  {"id":"NV-03","question":"EPS của PNJ năm 2024 có giá trị bao nhiêu?","gold":"NUMERIC"},
+  {"id":"NV-04","question":"Cho biết lợi nhuận giữ lại của doanh nghiệp LMN cuối năm 2024.","gold":"NUMERIC"},
+  {"id":"NV-05","question":"Đọc dòng tiền kinh doanh của VJC trong BCTC 2023.","gold":"NUMERIC"},
+  {"id":"NV-06","question":"Gia tri ROA cua PNJ nam 2023 la bao nhieu?","gold":"NUMERIC"},
+  {"id":"NV-07","question":"Theo bài tin đã chỉ định, cổ tức tiền mặt của VJC là bao nhiêu?","gold":"NUMERIC"},
+  {"id":"NV-08","question":"Theo BCTN PNJ 2024, lợi nhuận mục tiêu cho 2025 là bao nhiêu?","gold":"NUMERIC"},
+  {"id":"NV-09","question":"Có bao nhiêu công ty con của VJC đã công bố doanh thu?","gold":"ENTITY_RELATION"},
+  {"id":"NV-10","question":"Ông An sở hữu bao nhiêu phần trăm cổ phần PNJ?","gold":"ENTITY_RELATION"},
+  {"id":"NV-11","question":"CEO của VJC được bổ nhiệm vào ngày nào?","gold":"PERSON_ROLE"},
+  {"id":"NV-12","question":"Chủ tịch HĐQT của PNJ là ai?","gold":"PERSON_ROLE"},
+  {"id":"NV-13","question":"Tìm bài tin cho biết doanh thu của VJC trong năm 2024.","gold":"NEWS"},
+  {"id":"NV-14","question":"Trích nguyên văn hàng ghi doanh thu trong BCTC PNJ 2024.","gold":"REPORT_CONTENT"},
+  {"id":"NV-15","question":"BCTN VJC 2024 mô tả chính sách ghi nhận doanh thu ra sao?","gold":"REPORT_CONTENT"},
+  {"id":"NV-16","question":"Đánh giá xu hướng lợi nhuận của PNJ qua giai đoạn 2021–2024.","gold":"TREND"},
+  {"id":"NV-17","question":"Cho biết doanh thu VJC 2024. CEO của VJC là ai?","gold":"MIXED"},
+  {"id":"NV-18","question":"EPS PNJ 2024 là bao nhiêu? BCTN PNJ mô tả chiến lược mở rộng ra sao?","gold":"MIXED"},
+  {"id":"NV-19","question":"Cho biết LNST VJC 2024 rồi tìm bài tin VJC mở đường bay mới.","gold":"MIXED"},
+  {"id":"NV-20","question":"Đọc tổng tài sản PNJ cuối năm 2024 và xác định ai là CEO của PNJ.","gold":"MIXED"}
+]

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "rankings_recomputed": 592,
+  "max_score_difference": 1.2212453270876722e-15,
+  "baseline_counts_reproduced": {
+    "1": 22,
+    "3": 41,
+    "5": 46
+  },
+  "source_hashes_unchanged": true,
+  "later_check_scored": false,
+  "model_inference_rerun": false,
+  "report": "Independent raw dot/norm cosine calculation from saved real-model vectors."
+}
