@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.700" timestamp="2026-11-12T16:12:57.074775+07:00" hostname="DESKTOP-1PMP5V4"><testcase classname="backend.tests.test_s5_intent_consumer_contract" name="test_mixed_without_query_component_evidence_does_not_default_to_both" time="0.016"><failure message="AssertionError: assert 'SEARCH' == 'NEED_FALLBACK'&#10;  &#10;  - NEED_FALLBACK&#10;  + SEARCH">def test_mixed_without_query_component_evidence_does_not_default_to_both():
+        raw = ranking(groups=[dict(intent_label='MIXED', score=.9), dict(intent_label='NEWS', score=.4)])
+        result = decide_intent_route(raw, company_ticker='FPT')
+&gt;       assert result['decision'] == 'NEED_FALLBACK'
+E       AssertionError: assert 'SEARCH' == 'NEED_FALLBACK'
+E
+E         - NEED_FALLBACK
+E         + SEARCH
+
+backend\tests\test_s5_intent_consumer_contract.py:76: AssertionError</failure></testcase></testsuite></testsuites>

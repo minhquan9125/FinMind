@@ -1,0 +1,35 @@
+{
+  "task": "S5-WBS04.1 review follow-up",
+  "authorized_by": "Nhan requested completion after Hung review",
+  "status": "PLAN_BEFORE_IMPLEMENTATION_AND_MEASUREMENT",
+  "scope": [
+    "Fix lossy Vietnamese homographs in financial-value evidence without modifying frozen sources",
+    "Measure final labels for role paraphrases, indirect news and financial-change explanations",
+    "Read actual Huyen consumer branch and reproduce missing score metadata before fixing the local handoff copy",
+    "Preserve NUMERIC taxonomy for prices and verify separate existing PRICE dispatch without live database access"
+  ],
+  "constraints": {
+    "prior_regression_rows": 313,
+    "no_correct_to_wrong_regressions": true,
+    "no_refit": true,
+    "no_gold_edits": true,
+    "no_company_specific_rules": true,
+    "legacy_thresholds": [0.65, 0.08],
+    "confidence": null,
+    "runtime_integration": false,
+    "existing_tests_are_seen_regression": true,
+    "new_probes_are_same_author_not_blind": true,
+    "pending_taxonomy_decisions_are_not_silently_approved": true
+  },
+  "verification": [
+    "RED/GREEN boundary and metadata tests",
+    "BGE-M3 same revision on newly required text spans and fixed probes",
+    "Independent saved-vector softmax audit, unchanged original ranking references",
+    "Scoped Sprint5 and existing market-routing regressions",
+    "One current review entry with complete remaining limitations"
+  ],
+  "consumer_source": {
+    "branch": "origin/huyen-sprint-sprint501",
+    "commit": "8e854d47748189ad0fbf617d949657bf3c79ac40"
+  }
+}

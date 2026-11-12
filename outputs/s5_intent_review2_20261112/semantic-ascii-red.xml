@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="8.779" timestamp="2026-11-12T16:12:25.614575+07:00" hostname="DESKTOP-1PMP5V4"><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_ambiguous_ascii_read_and_salary_need_context[Doc lap cua loi nhuan FPT voi mang vien thong la the nao?]" time="0.033"><failure message="AssertionError: assert 'NUMERIC' != 'NUMERIC'&#10; +  where 'NUMERIC' = explicit_intent('Doc lap cua loi nhuan FPT voi mang vien thong la the nao?')">question = 'Doc lap cua loi nhuan FPT voi mang vien thong la the nao?'
+
+    @pytest.mark.parametrize('question', [
+        'Doc lap cua loi nhuan FPT voi mang vien thong la the nao?',
+        'Doc luong khach cua VJC nam 2024.',
+    ])
+    def test_ambiguous_ascii_read_and_salary_need_context(question):
+&gt;       assert explicit_intent(question) != 'NUMERIC'
+E       AssertionError: assert 'NUMERIC' != 'NUMERIC'
+E        +  where 'NUMERIC' = explicit_intent('Doc lap cua loi nhuan FPT voi mang vien thong la the nao?')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:98: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_ambiguous_ascii_read_and_salary_need_context[Doc luong khach cua VJC nam 2024.]" time="0.007"><failure message="AssertionError: assert 'NUMERIC' != 'NUMERIC'&#10; +  where 'NUMERIC' = explicit_intent('Doc luong khach cua VJC nam 2024.')">question = 'Doc luong khach cua VJC nam 2024.'
+
+    @pytest.mark.parametrize('question', [
+        'Doc lap cua loi nhuan FPT voi mang vien thong la the nao?',
+        'Doc luong khach cua VJC nam 2024.',
+    ])
+    def test_ambiguous_ascii_read_and_salary_need_context(question):
+&gt;       assert explicit_intent(question) != 'NUMERIC'
+E       AssertionError: assert 'NUMERIC' != 'NUMERIC'
+E        +  where 'NUMERIC' = explicit_intent('Doc luong khach cua VJC nam 2024.')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:98: AssertionError</failure></testcase></testsuite></testsuites>

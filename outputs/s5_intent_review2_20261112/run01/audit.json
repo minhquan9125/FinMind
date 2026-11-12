@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "decisions_replayed": 345,
+  "max_probability_difference": 7.771561172376096e-16,
+  "fixed": [],
+  "regressed": [],
+  "non_forcing_failures": [],
+  "no_refit": true,
+  "raw_rankings_unchanged": true,
+  "source_hashes_unchanged": true,
+  "confidence": null,
+  "router_integrated": false,
+  "non_forcing_checks_do_not_assert_final_label_accuracy": true
+}

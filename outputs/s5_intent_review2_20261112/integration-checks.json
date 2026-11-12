@@ -1,0 +1,974 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "outputs/s5_intent_review2_20261112/consumer-original.py": "489547836c4d388c52baa1b5645879f12be11c866ae185fbb7207106569c092c",
+    "backend/src/retrieval_orchestration/intent_routing.py": "5816e7aeced8be6b5ffb3dfa3950eedc96456dd7716a7b39bf88a4aebc77a59c",
+    "backend/src/retrieval_orchestration/intent_handoff.py": "fe3bef4fbdaf139ed28e7884bbfa887d21ad0509adb955037d68e79709c99926",
+    "backend/src/retrieval_orchestration/live_research.py": "e98bea0a09b516f9396937380a9631173d575716d5a8a56bf1892b6a23868668",
+    "backend/tests/test_s5_intent_consumer_contract.py": "c09ac4df78b375b56d97525bf43661df48eb47ac79c4bd3083d866dab7cee5f4",
+    "backend/tests/test_s5_intent_handoff.py": "2285334bd1eb842f86491f2029f156206ee524aa565857ace78a3793bcdb9f48",
+    "outputs/s5_intent_review2_20261112/run02/results.json": "227c56b6f86d6fb6705f86c0d27f4827ee5de85241ebad2834b617e24ea580a0",
+    "outputs/s5_intent_review2_20261112/consumer-source.json": "a3cc34969505f65c30dafbe2cbb97fe66c3d0b0e42c8157d3f83ead83c26da6e",
+    "backend/scripts/check_s5_intent_handoff.py": "b73c4eeb7ba1f76fc9f1b0e618de432022bb0fb5ec9dd6020218f10b602bd0aa"
+  },
+  "missing_metadata": [
+    {
+      "missing": [
+        "ranking_policy"
+      ],
+      "before": {
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "need_fallback": false,
+        "fallback_task": null,
+        "fallback_payload": null,
+        "gate": 3,
+        "reason_code": "CONFIDENT_INTENT",
+        "scope": {
+          "company_ticker": "FPT",
+          "period": null,
+          "company_source": "CURRENT"
+        },
+        "intent_label": "NUMERIC",
+        "top_1_score": 0.71,
+        "top_2_score": 0.4,
+        "score_gap": 0.31,
+        "clarification_question": null
+      },
+      "after": {
+        "decision": "REJECT_CLASSIFICATION",
+        "route": null,
+        "need_fallback": false,
+        "fallback_task": null,
+        "fallback_payload": null,
+        "gate": 2,
+        "reason_code": "INVALID_SCORE_CONTRACT",
+        "scope": {
+          "company_ticker": "FPT",
+          "period": null,
+          "company_source": "CURRENT"
+        },
+        "intent_label": null,
+        "top_1_score": null,
+        "top_2_score": null,
+        "score_gap": null,
+        "clarification_question": null
+      }
+    },
+    {
+      "missing": [
+        "score_type"
+      ],
+      "before": {
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "need_fallback": false,
+        "fallback_task": null,
+        "fallback_payload": null,
+        "gate": 3,
+        "reason_code": "CONFIDENT_INTENT",
+        "scope": {
+          "company_ticker": "FPT",
+          "period": null,
+          "company_source": "CURRENT"
+        },
+        "intent_label": "NUMERIC",
+        "top_1_score": 0.71,
+        "top_2_score": 0.4,
+        "score_gap": 0.31,
+        "clarification_question": null
+      },
+      "after": {
+        "decision": "REJECT_CLASSIFICATION",
+        "route": null,
+        "need_fallback": false,
+        "fallback_task": null,
+        "fallback_payload": null,
+        "gate": 2,
+        "reason_code": "INVALID_SCORE_CONTRACT",
+        "scope": {
+          "company_ticker": "FPT",
+          "period": null,
+          "company_source": "CURRENT"
+        },
+        "intent_label": null,
+        "top_1_score": null,
+        "top_2_score": null,
+        "score_gap": null,
+        "clarification_question": null
+      }
+    },
+    {
+      "missing": [
+        "ranking_policy",
+        "score_type"
+      ],
+      "before": {
+        "decision": "SEARCH",
+        "route": "VECTOR",
+        "need_fallback": false,
+        "fallback_task": null,
+        "fallback_payload": null,
+        "gate": 3,
+        "reason_code": "CONFIDENT_INTENT",
+        "scope": {
+          "company_ticker": "FPT",
+          "period": null,
+          "company_source": "CURRENT"
+        },
+        "intent_label": "NUMERIC",
+        "top_1_score": 0.71,
+        "top_2_score": 0.4,
+        "score_gap": 0.31,
+        "clarification_question": null
+      },
+      "after": {
+        "decision": "REJECT_CLASSIFICATION",
+        "route": null,
+        "need_fallback": false,
+        "fallback_task": null,
+        "fallback_payload": null,
+        "gate": 2,
+        "reason_code": "INVALID_SCORE_CONTRACT",
+        "scope": {
+          "company_ticker": "FPT",
+          "period": null,
+          "company_source": "CURRENT"
+        },
+        "intent_label": null,
+        "top_1_score": null,
+        "top_2_score": null,
+        "score_gap": null,
+        "clarification_question": null
+      }
+    }
+  ],
+  "valid_cosine_comparisons": [
+    {
+      "label": "NUMERIC",
+      "scores": [
+        0.9,
+        0.4
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "NUMERIC",
+      "scores": [
+        0.65,
+        0.57
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "NUMERIC",
+      "scores": [
+        0.68,
+        0.64
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "NUMERIC",
+      "scores": [
+        0.6,
+        0.4
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "label": "NUMERIC",
+      "scores": [
+        0.9,
+        0.85
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "REPORT_CONTENT",
+      "scores": [
+        0.9,
+        0.4
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "REPORT_CONTENT",
+      "scores": [
+        0.65,
+        0.57
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "REPORT_CONTENT",
+      "scores": [
+        0.68,
+        0.64
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "REPORT_CONTENT",
+      "scores": [
+        0.6,
+        0.4
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "label": "REPORT_CONTENT",
+      "scores": [
+        0.9,
+        0.85
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "NEWS",
+      "scores": [
+        0.9,
+        0.4
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "NEWS",
+      "scores": [
+        0.65,
+        0.57
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "NEWS",
+      "scores": [
+        0.68,
+        0.64
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "NEWS",
+      "scores": [
+        0.6,
+        0.4
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "label": "NEWS",
+      "scores": [
+        0.9,
+        0.85
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "PERSON_ROLE",
+      "scores": [
+        0.9,
+        0.4
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "PERSON_ROLE",
+      "scores": [
+        0.65,
+        0.57
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "PERSON_ROLE",
+      "scores": [
+        0.68,
+        0.64
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "PERSON_ROLE",
+      "scores": [
+        0.6,
+        0.4
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "label": "PERSON_ROLE",
+      "scores": [
+        0.9,
+        0.85
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "ENTITY_RELATION",
+      "scores": [
+        0.9,
+        0.4
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "ENTITY_RELATION",
+      "scores": [
+        0.65,
+        0.57
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "ENTITY_RELATION",
+      "scores": [
+        0.68,
+        0.64
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "ENTITY_RELATION",
+      "scores": [
+        0.6,
+        0.4
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "label": "ENTITY_RELATION",
+      "scores": [
+        0.9,
+        0.85
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "MIXED",
+      "scores": [
+        0.9,
+        0.4
+      ],
+      "before": "SEARCH",
+      "after": "NEED_FALLBACK",
+      "reason": "MIXED_COMPONENTS_UNVERIFIED"
+    },
+    {
+      "label": "MIXED",
+      "scores": [
+        0.65,
+        0.57
+      ],
+      "before": "SEARCH",
+      "after": "NEED_FALLBACK",
+      "reason": "MIXED_COMPONENTS_UNVERIFIED"
+    },
+    {
+      "label": "MIXED",
+      "scores": [
+        0.68,
+        0.64
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "MIXED",
+      "scores": [
+        0.6,
+        0.4
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "label": "MIXED",
+      "scores": [
+        0.9,
+        0.85
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "TREND",
+      "scores": [
+        0.9,
+        0.4
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "TREND",
+      "scores": [
+        0.65,
+        0.57
+      ],
+      "before": "SEARCH",
+      "after": "SEARCH",
+      "reason": "CONFIDENT_INTENT"
+    },
+    {
+      "label": "TREND",
+      "scores": [
+        0.68,
+        0.64
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    },
+    {
+      "label": "TREND",
+      "scores": [
+        0.6,
+        0.4
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "label": "TREND",
+      "scores": [
+        0.9,
+        0.85
+      ],
+      "before": "NEED_FALLBACK",
+      "after": "NEED_FALLBACK",
+      "reason": "SMALL_GAP"
+    }
+  ],
+  "unchanged_valid_cosine": 33,
+  "intentional_mixed_deferrals": 2,
+  "current_price_resolution": {
+    "decision": "MARKET_LOOKUP",
+    "scope": {
+      "companies": [
+        "FPT"
+      ],
+      "source_type": "PRICE",
+      "metric_code": "LAST_PRICE",
+      "periods": [
+        "2026-11-12"
+      ],
+      "_market_request": {
+        "kind": "QUOTE",
+        "day": "2026-11-12",
+        "action": "LIST"
+      }
+    },
+    "message": "Đang tra cứu nguồn giá hoặc tin tức đang cập nhật.",
+    "reason_code": "CURRENT_MARKET_REQUEST"
+  },
+  "advisory_handoffs": [
+    {
+      "id": "R2-01",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNRESOLVED_REQUEST_TARGET",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "NUMERIC",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-02",
+      "proposed_final_label": "PERSON_ROLE",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNRESOLVED_REQUEST_TARGET",
+        "accepted_intent": null,
+        "proposed_intent": "PERSON_ROLE",
+        "raw_top_intent": "PERSON_ROLE",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-03",
+      "proposed_final_label": "REPORT_CONTENT",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "REPORT_CONTENT",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-04",
+      "proposed_final_label": "REPORT_CONTENT",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "REPORT_CONTENT",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-05",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "MIXED",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-06",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "NUMERIC",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-07",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "NUMERIC",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-08",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "REPORT_CONTENT",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-09",
+      "proposed_final_label": "PERSON_ROLE",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "PERSON_ROLE",
+        "raw_top_intent": "PERSON_ROLE",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-10",
+      "proposed_final_label": "PERSON_ROLE",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "PERSON_ROLE",
+        "raw_top_intent": "PERSON_ROLE",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-11",
+      "proposed_final_label": "NEWS",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NEWS",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-12",
+      "proposed_final_label": "NEWS",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "NEWS",
+        "raw_top_intent": "ENTITY_RELATION",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-13",
+      "proposed_final_label": "MIXED",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "MIXED",
+        "raw_top_intent": "NUMERIC",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-14",
+      "proposed_final_label": "MIXED",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "MIXED",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-15",
+      "proposed_final_label": "MIXED",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "MIXED",
+        "raw_top_intent": "MIXED",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-16",
+      "proposed_final_label": "MIXED",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "MIXED",
+        "raw_top_intent": "MIXED",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-17",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "NUMERIC",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-18",
+      "proposed_final_label": "NEWS",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NEWS",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-19",
+      "proposed_final_label": "TREND",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "TREND",
+        "raw_top_intent": "TREND",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-20",
+      "proposed_final_label": "REPORT_CONTENT",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "REPORT_CONTENT",
+        "raw_top_intent": "REPORT_CONTENT",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-21",
+      "proposed_final_label": "NEWS",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NEWS",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-22",
+      "proposed_final_label": "ENTITY_RELATION",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNRESOLVED_REQUEST_TARGET",
+        "accepted_intent": null,
+        "proposed_intent": "ENTITY_RELATION",
+        "raw_top_intent": "ENTITY_RELATION",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-23",
+      "proposed_final_label": "PERSON_ROLE",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "PERSON_ROLE",
+        "raw_top_intent": "PERSON_ROLE",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-24",
+      "proposed_final_label": "TREND",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNRESOLVED_REQUEST_TARGET",
+        "accepted_intent": null,
+        "proposed_intent": "TREND",
+        "raw_top_intent": "TREND",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-25",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "NUMERIC",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-26",
+      "proposed_final_label": "MIXED",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "MIXED",
+        "raw_top_intent": "REPORT_CONTENT",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-27",
+      "proposed_final_label": "NEWS",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NEWS",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-28",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNCALIBRATED_CLASSIFIER",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "NUMERIC",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-29",
+      "proposed_final_label": "NUMERIC",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "LABEL_DISAGREEMENT",
+        "accepted_intent": null,
+        "proposed_intent": "NUMERIC",
+        "raw_top_intent": "PERSON_ROLE",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-30",
+      "proposed_final_label": "NEWS",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNRESOLVED_REQUEST_TARGET",
+        "accepted_intent": null,
+        "proposed_intent": "NEWS",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-31",
+      "proposed_final_label": "NEWS",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNRESOLVED_REQUEST_TARGET",
+        "accepted_intent": null,
+        "proposed_intent": "NEWS",
+        "raw_top_intent": "NEWS",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    },
+    {
+      "id": "R2-32",
+      "proposed_final_label": "MIXED",
+      "handoff": {
+        "status": "NEED_VALIDATION",
+        "reason": "UNRESOLVED_REQUEST_TARGET",
+        "accepted_intent": null,
+        "proposed_intent": "MIXED",
+        "raw_top_intent": "MIXED",
+        "route": null,
+        "confidence": null,
+        "runtime_enabled": false
+      }
+    }
+  ],
+  "patch_sha256": "05a3efc6b7a896e37a72feb3eb283470323c8f80b858fa4624f6a0a70bde8770",
+  "huyen_remote_branch_modified": false,
+  "runtime_registered": false,
+  "no_claim_that_deferral_is_correct_label_or_route": true
+}
