@@ -54,3 +54,10 @@ docs/sprint5/S5-WBS04.1-reviewfix-plan.md text eol=lf
 outputs/s5_intent_reviewfix_20261112/**/*.json text eol=lf
 outputs/s5_intent_reviewfix_20261112/**/*.py text eol=lf
 outputs/s5_intent_reviewfix_20261112/**/*.npy binary
+backend/src/retrieval_orchestration/intent_numeric_requests.py text eol=lf
+backend/scripts/run_s5_intent_numeric.py text eol=lf
+docs/sprint5/intent-numeric-probes.json text eol=lf
+docs/sprint5/S5-WBS04.1-numeric-plan.md text eol=lf
+docs/sprint5/S5-WBS04.1-numeric-results.md text eol=lf
+outputs/s5_intent_numeric_20261112/**/*.json text eol=lf
+outputs/s5_intent_numeric_20261112/**/*.npy binary

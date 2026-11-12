@@ -1,0 +1,33 @@
+{
+  "id": "REVIEW-03",
+  "question": "Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?",
+  "gold": "NUMERIC",
+  "parts": [
+    "Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?"
+  ],
+  "prior_label": "ENTITY_RELATION",
+  "final_label": "NUMERIC",
+  "resolution": {
+    "intent_label": "NUMERIC",
+    "confidence": null,
+    "reason": "EXPLICIT_FINANCIAL_VALUE_REQUEST",
+    "component_labels": [],
+    "ranking_policy": "intent-request-objectives-v3",
+    "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+    "runtime_enabled": false,
+    "explicit_evidence": [
+      {
+        "text": "Doanh thu AI và cloud của doanh nghiệp ABC là bao nhiêu?",
+        "intent_label": "NUMERIC"
+      }
+    ]
+  },
+  "component_probabilities": [],
+  "base_ranking_ref": {
+    "path": "outputs/s5_intent_reviewfix_20261112/run02/results.json",
+    "evaluation_set": "review_probes",
+    "id": "REVIEW-03"
+  },
+  "advisory_only": true,
+  "legacy_threshold_compatible": false
+}

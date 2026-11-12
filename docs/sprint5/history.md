@@ -238,3 +238,18 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   không tự sửa schema APPROVED hoặc source 04.2 chưa có tại local.
 - Tạm dừng task 01.2 theo yêu cầu Nhân; chưa tích hợp router/E2E.
 - [Kết quả và phạm vi cần review lại](S5-WBS04.1-reviewfix-results.md).
+
+## 12/11/2026 — Nhận diện yêu cầu lấy giá trị tài chính
+
+- Nhân đồng ý xử lý tiếp REVIEW-03. Thêm guard NUMERIC theo chỉ tiêu và mục
+  tiêu lấy giá trị; giữ loại trừ đếm quan hệ/ngày/tin/nguyên văn/đánh giá.
+- Guard trả NUMERIC cho REVIEW-03, giữ bảng điểm gốc (ENTITY_RELATION vẫn
+  đứng đầu classifier). Không có ngoại lệ ABC, không refit hoặc đổi gold.
+- 293 câu đã xem: sửa hai ca REVIEW-03 và FINAL-NUMERIC-2-DPM, không làm sai
+  câu V4 đang đúng. Bộ review cũ 15/15; không gọi đây là test mới độc lập.
+- BGE-M3 thật trên 20 kiểm tra bổ sung đạt 17/20. Giữ ba lỗi NV-13/NV-19/NV-20
+  sau phép đo, chưa giải quyết mọi trường hợp đơn/kết hợp.
+- 144/144 unit test; audit tái hiện 313 quyết định và kiểm lại điểm từ vector.
+  Confidence=null, raw ranking bất biến; V3/V4 và audit cũ giữ nguyên.
+- [Báo cáo](S5-WBS04.1-numeric-results.md). Chưa calibration, chưa nối consumer
+  04.2/router/Web Chat; ranh giới kế hoạch lợi nhuận vẫn chờ nhóm chốt.

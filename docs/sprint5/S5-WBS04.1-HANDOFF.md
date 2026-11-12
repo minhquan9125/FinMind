@@ -1,5 +1,9 @@
 # Bàn giao review S5-WBS04.1 — cập nhật 12/11/2026
 
+Vòng tiếp theo: [xử lý câu hỏi lấy số liệu](S5-WBS04.1-numeric-results.md).
+REVIEW-03 đã sửa ở lớp quyết định; 15/15 review cũ, 17/20 kiểm tra bổ sung,
+144 test đạt. Chưa thay điểm classifier hay tích hợp consumer.
+
 Sau review Hưng: [hai lỗi đã sửa, bằng chứng V4 và phần còn mở](S5-WBS04.1-reviewfix-results.md).
 V4 vẫn là ứng viên offline; schema và hợp đồng consumer bổ sung còn chờ nhóm.
 

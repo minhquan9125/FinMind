@@ -74,3 +74,11 @@ calibration/consumer ở trên vẫn mở; không đổi trạng thái thành Do
 - [x] Lưu bằng chứng, audit 293 quyết định, 119 test; cập nhật history/hướng dẫn review.
 - [ ] Nhóm xác nhận ranh giới kế hoạch lợi nhuận; chưa cập nhật schema chính thức.
 - [ ] Huyền sửa/kiểm consumer thiếu metadata trên source của mình; chưa tích hợp router.
+
+## Guard số liệu sau REVIEW-03
+
+- [x] Test trên V4: 10 fail, 12 pass, tái hiện lỗi và các ranh giới cần giữ.
+- [x] Thêm guard NUMERIC theo mục tiêu, giữ nguyên raw score và confidence=null.
+- [x] Replay 293 câu: sửa REVIEW-03 và FINAL-NUMERIC-2-DPM, không phát sinh đúng→sai.
+- [x] Bộ 15 review đã xem đạt 15; 20 kiểm tra bổ sung bằng model thật đạt 17, giữ ba lỗi.
+- [x] Audit 313 quyết định, toàn bộ 144 unit test qua, báo cáo và history; chưa nối router.

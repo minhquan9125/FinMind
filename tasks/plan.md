@@ -139,3 +139,15 @@ checksum lịch sử; phiên bản kế tiếp nằm trong module riêng intent_
 Điều kiện: test lỗi mới qua, audit V3 cũ còn qua, báo đầy đủ hồi quy và giới hạn;
 chưa gọi là sẵn sàng nối router khi hợp đồng/nhãn còn mở. Kiểm bằng pytest tập
 Sprint 5, replay từ vector và checksum nguồn. Tách sửa logic, đo và tài liệu.
+
+## Nhận diện lấy giá trị tài chính — sau REVIEW-03
+
+Nhân đồng ý xử lý tiếp lỗi classifier chọn ENTITY_RELATION cho câu hỏi doanh
+thu. Module mới bổ sung guard NUMERIC theo chỉ tiêu + thao tác lấy giá trị,
+loại trừ đếm quan hệ, chức vụ/ngày, bài tin, trích nguyên văn và đánh giá.
+Không có ngoại lệ ABC hoặc thay schema, vector/head, ngưỡng và router runtime.
+
+Các lát: (1) test tái hiện và ca âm; (2) đóng băng logic rồi replay 293 câu đã
+xem từ vector có sẵn, điều kiện không làm sai câu V4 đang đúng; (3) kiểm chứng
+thêm các chỉ tiêu/cách hỏi, lưu mọi lỗi và audit; (4) báo cáo/history. Không
+gọi 15 probe cũ là test mới; ranh giới kế hoạch lợi nhuận vẫn DRAFT.

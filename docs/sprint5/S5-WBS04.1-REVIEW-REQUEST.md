@@ -1,5 +1,9 @@
 # Nhờ review S5-WBS04.1 — 12/11/2026
 
+Mới nhất: [guard số liệu và các lỗi còn lại](S5-WBS04.1-numeric-results.md).
+Nhờ kiểm ranh giới lấy giá trị với đếm quan hệ/tin/nội dung/nhận định;
+đọc cả 20 câu kiểm tra bổ sung và ba ca chưa đúng, không chỉ REVIEW-03 đã sửa.
+
 Cập nhật sau nhận xét Hưng: [báo cáo sửa AI/ai và cách hỏi chức vụ](S5-WBS04.1-reviewfix-results.md).
 Review V3 bên dưới là lịch sử; chưa xem V4 là đã được Hưng duyệt.
 
