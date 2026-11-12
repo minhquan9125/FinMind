@@ -1,0 +1,7 @@
+{
+  "status": "KILLED",
+  "mutation": "Removed ranking_policy validation so centroid would pass type check",
+  "test_command": "pytest test_s5_intent_scoring.py -k legacy_threshold",
+  "exit_code": 1,
+  "source_restored_exactly": true
+}

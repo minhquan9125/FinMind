@@ -1,0 +1,2167 @@
+{
+  "status": "COMPLETED_OFFLINE_NOT_APPROVED",
+  "labels": [
+    "ENTITY_RELATION",
+    "MIXED",
+    "NEWS",
+    "NUMERIC",
+    "PERSON_ROLE",
+    "REPORT_CONTENT",
+    "TREND"
+  ],
+  "C_selection": {
+    "C": 1.0,
+    "macro_f1": 0.7072943474299951,
+    "accuracy": 0.705654761904762,
+    "iterations": [
+      [
+        44
+      ],
+      [
+        40
+      ],
+      [
+        43
+      ],
+      [
+        46
+      ]
+    ]
+  },
+  "eligible_for_further_check": [],
+  "further_check_and_calibration_required": false,
+  "legacy_threshold_applied_to_candidates": false,
+  "no_runtime_change": true,
+  "metrics": {
+    "original": {
+      "development": {
+        "labeled_cases": 84,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.40476190476190477,
+        "top3_recall": 0.7976190476190477,
+        "macro_f1": 0.3897332860269614,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 12,
+            "precision": 1.0,
+            "recall": 0.16666666666666666,
+            "f1": 0.2857142857142857
+          },
+          "MIXED": {
+            "support": 12,
+            "precision": 0.2727272727272727,
+            "recall": 0.5,
+            "f1": 0.3529411764705882
+          },
+          "NEWS": {
+            "support": 12,
+            "precision": 0.5714285714285714,
+            "recall": 0.3333333333333333,
+            "f1": 0.4210526315789474
+          },
+          "NUMERIC": {
+            "support": 12,
+            "precision": 0.35714285714285715,
+            "recall": 0.4166666666666667,
+            "f1": 0.3846153846153846
+          },
+          "PERSON_ROLE": {
+            "support": 12,
+            "precision": 0.34782608695652173,
+            "recall": 0.6666666666666666,
+            "f1": 0.4571428571428571
+          },
+          "REPORT_CONTENT": {
+            "support": 12,
+            "precision": 0.6666666666666666,
+            "recall": 0.16666666666666666,
+            "f1": 0.26666666666666666
+          },
+          "TREND": {
+            "support": 12,
+            "precision": 0.5384615384615384,
+            "recall": 0.5833333333333334,
+            "f1": 0.5599999999999999
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 2,
+            "MIXED": 3,
+            "NEWS": 1,
+            "NUMERIC": 1,
+            "PERSON_ROLE": 4,
+            "REPORT_CONTENT": 0,
+            "TREND": 1
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 6,
+            "NEWS": 2,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 2,
+            "REPORT_CONTENT": 1,
+            "TREND": 1
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 6,
+            "NEWS": 4,
+            "NUMERIC": 1,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 3,
+            "NEWS": 0,
+            "NUMERIC": 5,
+            "PERSON_ROLE": 3,
+            "REPORT_CONTENT": 0,
+            "TREND": 1
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 3,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "PERSON_ROLE": 8,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 0,
+            "NUMERIC": 4,
+            "PERSON_ROLE": 2,
+            "REPORT_CONTENT": 2,
+            "TREND": 3
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 2,
+            "PERSON_ROLE": 3,
+            "REPORT_CONTENT": 0,
+            "TREND": 7
+          }
+        },
+        "wrong_case_ids": [
+          "DEV-NUMERIC-1-TCB",
+          "DEV-NUMERIC-1-MBB",
+          "DEV-NUMERIC-1-FPT",
+          "DEV-NUMERIC-2-VCB",
+          "DEV-NUMERIC-2-TCB",
+          "DEV-NUMERIC-3-TCB",
+          "DEV-NUMERIC-3-MBB",
+          "DEV-REPORT_CONTENT-1-VCB",
+          "DEV-REPORT_CONTENT-1-TCB",
+          "DEV-REPORT_CONTENT-1-MBB",
+          "DEV-REPORT_CONTENT-1-FPT",
+          "DEV-REPORT_CONTENT-2-VCB",
+          "DEV-REPORT_CONTENT-2-TCB",
+          "DEV-REPORT_CONTENT-2-MBB",
+          "DEV-REPORT_CONTENT-3-VCB",
+          "DEV-REPORT_CONTENT-3-TCB",
+          "DEV-REPORT_CONTENT-3-MBB",
+          "DEV-NEWS-1-VCB",
+          "DEV-NEWS-1-TCB",
+          "DEV-NEWS-1-MBB",
+          "DEV-NEWS-1-FPT",
+          "DEV-NEWS-2-VCB",
+          "DEV-NEWS-2-FPT",
+          "DEV-NEWS-3-VCB",
+          "DEV-NEWS-3-FPT",
+          "DEV-PERSON_ROLE-1-MBB",
+          "DEV-PERSON_ROLE-2-VCB",
+          "DEV-PERSON_ROLE-2-MBB",
+          "DEV-PERSON_ROLE-3-MBB",
+          "DEV-ENTITY_RELATION-1-VCB",
+          "DEV-ENTITY_RELATION-1-TCB",
+          "DEV-ENTITY_RELATION-1-MBB",
+          "DEV-ENTITY_RELATION-1-FPT",
+          "DEV-ENTITY_RELATION-2-VCB",
+          "DEV-ENTITY_RELATION-2-TCB",
+          "DEV-ENTITY_RELATION-3-VCB",
+          "DEV-ENTITY_RELATION-3-TCB",
+          "DEV-ENTITY_RELATION-3-MBB",
+          "DEV-ENTITY_RELATION-3-FPT",
+          "DEV-TREND-1-VCB",
+          "DEV-TREND-1-TCB",
+          "DEV-TREND-2-VCB",
+          "DEV-TREND-2-TCB",
+          "DEV-TREND-3-TCB",
+          "DEV-MIXED-1-VCB",
+          "DEV-MIXED-1-TCB",
+          "DEV-MIXED-1-FPT",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB",
+          "DEV-MIXED-3-MBB"
+        ],
+        "hits": {
+          "1": 34,
+          "3": 67,
+          "5": 80
+        },
+        "argmax_route_wrong_without_threshold": [
+          "DEV-NUMERIC-1-TCB",
+          "DEV-NUMERIC-1-MBB",
+          "DEV-NUMERIC-2-VCB",
+          "DEV-NUMERIC-2-TCB",
+          "DEV-NUMERIC-3-TCB",
+          "DEV-NUMERIC-3-MBB",
+          "DEV-REPORT_CONTENT-1-TCB",
+          "DEV-REPORT_CONTENT-1-MBB",
+          "DEV-REPORT_CONTENT-2-TCB",
+          "DEV-NEWS-1-TCB",
+          "DEV-NEWS-1-MBB",
+          "DEV-NEWS-1-FPT",
+          "DEV-NEWS-2-VCB",
+          "DEV-NEWS-2-FPT",
+          "DEV-NEWS-3-VCB",
+          "DEV-NEWS-3-FPT",
+          "DEV-PERSON_ROLE-1-MBB",
+          "DEV-PERSON_ROLE-2-VCB",
+          "DEV-PERSON_ROLE-2-MBB",
+          "DEV-PERSON_ROLE-3-MBB",
+          "DEV-ENTITY_RELATION-1-VCB",
+          "DEV-ENTITY_RELATION-1-MBB",
+          "DEV-ENTITY_RELATION-1-FPT",
+          "DEV-ENTITY_RELATION-2-VCB",
+          "DEV-ENTITY_RELATION-2-TCB",
+          "DEV-ENTITY_RELATION-3-MBB",
+          "DEV-TREND-1-TCB",
+          "DEV-TREND-2-TCB",
+          "DEV-TREND-3-TCB",
+          "DEV-MIXED-1-VCB",
+          "DEV-MIXED-1-TCB",
+          "DEV-MIXED-1-FPT",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB",
+          "DEV-MIXED-3-MBB"
+        ],
+        "single_to_mixed": [
+          "DEV-NUMERIC-1-MBB",
+          "DEV-NUMERIC-2-VCB",
+          "DEV-NUMERIC-3-MBB",
+          "DEV-REPORT_CONTENT-1-MBB",
+          "DEV-NEWS-1-MBB",
+          "DEV-NEWS-1-FPT",
+          "DEV-NEWS-2-VCB",
+          "DEV-NEWS-2-FPT",
+          "DEV-NEWS-3-VCB",
+          "DEV-NEWS-3-FPT",
+          "DEV-PERSON_ROLE-1-MBB",
+          "DEV-PERSON_ROLE-2-MBB",
+          "DEV-PERSON_ROLE-3-MBB",
+          "DEV-ENTITY_RELATION-1-MBB",
+          "DEV-ENTITY_RELATION-2-VCB",
+          "DEV-ENTITY_RELATION-3-MBB"
+        ],
+        "mixed_to_single": [
+          "DEV-MIXED-1-VCB",
+          "DEV-MIXED-1-TCB",
+          "DEV-MIXED-1-FPT",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB",
+          "DEV-MIXED-3-MBB"
+        ],
+        "company_changed_top1": [
+          "DEV-NUMERIC-1",
+          "DEV-NUMERIC-2",
+          "DEV-NUMERIC-3",
+          "DEV-REPORT_CONTENT-1",
+          "DEV-REPORT_CONTENT-2",
+          "DEV-REPORT_CONTENT-3",
+          "DEV-NEWS-1",
+          "DEV-NEWS-2",
+          "DEV-NEWS-3",
+          "DEV-PERSON_ROLE-1",
+          "DEV-PERSON_ROLE-2",
+          "DEV-PERSON_ROLE-3",
+          "DEV-ENTITY_RELATION-1",
+          "DEV-ENTITY_RELATION-2",
+          "DEV-ENTITY_RELATION-3",
+          "DEV-TREND-1",
+          "DEV-TREND-2",
+          "DEV-TREND-3",
+          "DEV-MIXED-1",
+          "DEV-MIXED-2",
+          "DEV-MIXED-3"
+        ],
+        "company_all_correct": [],
+        "legacy_policy_applied": true,
+        "legacy_policy": {
+          "accepted": 15,
+          "fallback": 69,
+          "wrong_route_ids": [
+            "DEV-REPORT_CONTENT-1-TCB",
+            "DEV-NEWS-1-TCB",
+            "DEV-NEWS-1-MBB",
+            "DEV-PERSON_ROLE-1-MBB",
+            "DEV-ENTITY_RELATION-3-MBB",
+            "DEV-MIXED-1-TCB",
+            "DEV-MIXED-3-MBB"
+          ]
+        }
+      },
+      "known_diagnostic": {
+        "labeled_cases": 8,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.375,
+        "top3_recall": 0.875,
+        "macro_f1": 0.1285714285714286,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "MIXED": {
+            "support": 2,
+            "precision": 0.3333333333333333,
+            "recall": 0.5,
+            "f1": 0.4
+          },
+          "NEWS": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "NUMERIC": {
+            "support": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0
+          },
+          "PERSON_ROLE": {
+            "support": 5,
+            "precision": 0.6666666666666666,
+            "recall": 0.4,
+            "f1": 0.5
+          },
+          "REPORT_CONTENT": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "TREND": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 0,
+            "NUMERIC": 2,
+            "PERSON_ROLE": 2,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          }
+        },
+        "wrong_case_ids": [
+          "KNOWN-01",
+          "KNOWN-04",
+          "KNOWN-05",
+          "KNOWN-06",
+          "KNOWN-07"
+        ],
+        "hits": {
+          "1": 3,
+          "3": 7,
+          "5": 7
+        },
+        "argmax_route_wrong_without_threshold": [
+          "KNOWN-01",
+          "KNOWN-04",
+          "KNOWN-05",
+          "KNOWN-06",
+          "KNOWN-07"
+        ],
+        "single_to_mixed": [
+          "KNOWN-04",
+          "KNOWN-06"
+        ],
+        "mixed_to_single": [
+          "KNOWN-07"
+        ],
+        "company_changed_top1": [],
+        "company_all_correct": [],
+        "legacy_policy_applied": true,
+        "legacy_policy": {
+          "accepted": 5,
+          "fallback": 3,
+          "wrong_route_ids": [
+            "KNOWN-04",
+            "KNOWN-06",
+            "KNOWN-07"
+          ]
+        }
+      },
+      "previous_check": {
+        "labeled_cases": 28,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.6785714285714286,
+        "top3_recall": 0.9285714285714286,
+        "macro_f1": 0.6581347224204367,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.75,
+            "f1": 0.8571428571428571
+          },
+          "MIXED": {
+            "support": 4,
+            "precision": 0.5714285714285714,
+            "recall": 1.0,
+            "f1": 0.7272727272727273
+          },
+          "NEWS": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "NUMERIC": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "PERSON_ROLE": {
+            "support": 4,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          "REPORT_CONTENT": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.75,
+            "f1": 0.8571428571428571
+          },
+          "TREND": {
+            "support": 4,
+            "precision": 0.4444444444444444,
+            "recall": 1.0,
+            "f1": 0.6153846153846153
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 3,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 1
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 4,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 2,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 3
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 3,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 3,
+            "TREND": 1
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 4
+          }
+        },
+        "wrong_case_ids": [
+          "LATER-NUMERIC-1-DGC",
+          "LATER-NUMERIC-1-PNJ",
+          "LATER-NUMERIC-2-PNJ",
+          "LATER-REPORT_CONTENT-2-PNJ",
+          "LATER-NEWS-1-DGC",
+          "LATER-NEWS-2-DGC",
+          "LATER-NEWS-2-PNJ",
+          "LATER-PERSON_ROLE-1-PNJ",
+          "LATER-ENTITY_RELATION-1-PNJ"
+        ],
+        "hits": {
+          "1": 19,
+          "3": 26,
+          "5": 26
+        },
+        "argmax_route_wrong_without_threshold": [
+          "LATER-NEWS-1-DGC",
+          "LATER-NEWS-2-DGC",
+          "LATER-NEWS-2-PNJ",
+          "LATER-PERSON_ROLE-1-PNJ",
+          "LATER-ENTITY_RELATION-1-PNJ"
+        ],
+        "single_to_mixed": [
+          "LATER-NEWS-1-DGC",
+          "LATER-NEWS-2-PNJ",
+          "LATER-PERSON_ROLE-1-PNJ"
+        ],
+        "mixed_to_single": [],
+        "company_changed_top1": [
+          "LATER-NUMERIC-2",
+          "LATER-REPORT_CONTENT-2",
+          "LATER-NEWS-1",
+          "LATER-NEWS-2",
+          "LATER-PERSON_ROLE-1",
+          "LATER-ENTITY_RELATION-1"
+        ],
+        "company_all_correct": [
+          "LATER-REPORT_CONTENT-1",
+          "LATER-PERSON_ROLE-2",
+          "LATER-ENTITY_RELATION-2",
+          "LATER-TREND-1",
+          "LATER-TREND-2",
+          "LATER-MIXED-1",
+          "LATER-MIXED-2"
+        ],
+        "legacy_policy_applied": true,
+        "legacy_policy": {
+          "accepted": 1,
+          "fallback": 27,
+          "wrong_route_ids": []
+        }
+      },
+      "regression": {
+        "labeled_cases": 47,
+        "unlabeled_cases": 9,
+        "top1_accuracy": 0.46808510638297873,
+        "top3_recall": 0.8723404255319149,
+        "macro_f1": 0.468047218887555,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          "MIXED": {
+            "support": 6,
+            "precision": 0.1,
+            "recall": 0.16666666666666666,
+            "f1": 0.125
+          },
+          "NEWS": {
+            "support": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1": 0.5714285714285715
+          },
+          "NUMERIC": {
+            "support": 7,
+            "precision": 0.5,
+            "recall": 0.7142857142857143,
+            "f1": 0.588235294117647
+          },
+          "PERSON_ROLE": {
+            "support": 8,
+            "precision": 0.75,
+            "recall": 0.375,
+            "f1": 0.5
+          },
+          "REPORT_CONTENT": {
+            "support": 6,
+            "precision": 0.25,
+            "recall": 0.16666666666666666,
+            "f1": 0.2
+          },
+          "TREND": {
+            "support": 6,
+            "precision": 0.5,
+            "recall": 0.8333333333333334,
+            "f1": 0.625
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 3,
+            "MIXED": 1,
+            "NEWS": 0,
+            "NUMERIC": 2,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 1,
+            "TREND": 3
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 4,
+            "NEWS": 4,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 0,
+            "NUMERIC": 5,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 1
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 3,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "PERSON_ROLE": 3,
+            "REPORT_CONTENT": 1,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 1,
+            "NUMERIC": 2,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 1,
+            "TREND": 1
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 1,
+            "TREND": 5
+          }
+        },
+        "wrong_case_ids": [
+          "S5-T-002",
+          "S5-T-005",
+          "S5-T-007",
+          "S5-T-008",
+          "S5-T-009",
+          "S5-T-010",
+          "S5-T-012",
+          "S5-T-013",
+          "S5-T-017",
+          "S5-T-018",
+          "S5-T-021",
+          "S5-T-022",
+          "S5-T-023",
+          "S5-T-024",
+          "S5-T-025",
+          "S5-T-026",
+          "S5-T-027",
+          "S5-T-032",
+          "S5-T-037",
+          "S5-T-039",
+          "S5-T-040",
+          "S5-T-041",
+          "S5-T-042",
+          "S5-T-053",
+          "S5-T-054"
+        ],
+        "hits": {
+          "1": 22,
+          "3": 41,
+          "5": 46
+        },
+        "argmax_route_wrong_without_threshold": [
+          "S5-T-002",
+          "S5-T-012",
+          "S5-T-013",
+          "S5-T-017",
+          "S5-T-018",
+          "S5-T-021",
+          "S5-T-022",
+          "S5-T-023",
+          "S5-T-024",
+          "S5-T-025",
+          "S5-T-026",
+          "S5-T-027",
+          "S5-T-037",
+          "S5-T-039",
+          "S5-T-040",
+          "S5-T-041",
+          "S5-T-042",
+          "S5-T-053",
+          "S5-T-054"
+        ],
+        "single_to_mixed": [
+          "S5-T-002",
+          "S5-T-013",
+          "S5-T-017",
+          "S5-T-018",
+          "S5-T-023",
+          "S5-T-024",
+          "S5-T-026",
+          "S5-T-053",
+          "S5-T-054"
+        ],
+        "mixed_to_single": [
+          "S5-T-037",
+          "S5-T-039",
+          "S5-T-040",
+          "S5-T-041",
+          "S5-T-042"
+        ],
+        "company_changed_top1": [],
+        "company_all_correct": [],
+        "legacy_policy_applied": true,
+        "legacy_policy": {
+          "accepted": 2,
+          "fallback": 45,
+          "wrong_route_ids": []
+        }
+      }
+    },
+    "centroid": {
+      "development": {
+        "labeled_cases": 84,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.7857142857142857,
+        "top3_recall": 0.9761904761904762,
+        "macro_f1": 0.7799864353537517,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 12,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "MIXED": {
+            "support": 12,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          "NEWS": {
+            "support": 12,
+            "precision": 0.7272727272727273,
+            "recall": 0.6666666666666666,
+            "f1": 0.6956521739130435
+          },
+          "NUMERIC": {
+            "support": 12,
+            "precision": 0.7058823529411765,
+            "recall": 1.0,
+            "f1": 0.8275862068965517
+          },
+          "PERSON_ROLE": {
+            "support": 12,
+            "precision": 0.9230769230769231,
+            "recall": 1.0,
+            "f1": 0.9600000000000001
+          },
+          "REPORT_CONTENT": {
+            "support": 12,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          "TREND": {
+            "support": 12,
+            "precision": 0.5384615384615384,
+            "recall": 0.5833333333333334,
+            "f1": 0.5599999999999999
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 12,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 9,
+            "NEWS": 3,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 3,
+            "NEWS": 8,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 12,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 12,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 6,
+            "TREND": 6
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 5,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 7
+          }
+        },
+        "wrong_case_ids": [
+          "DEV-REPORT_CONTENT-1-VCB",
+          "DEV-REPORT_CONTENT-1-TCB",
+          "DEV-REPORT_CONTENT-1-MBB",
+          "DEV-REPORT_CONTENT-1-FPT",
+          "DEV-REPORT_CONTENT-2-VCB",
+          "DEV-REPORT_CONTENT-2-MBB",
+          "DEV-NEWS-1-VCB",
+          "DEV-NEWS-1-TCB",
+          "DEV-NEWS-1-MBB",
+          "DEV-NEWS-1-FPT",
+          "DEV-TREND-1-VCB",
+          "DEV-TREND-1-TCB",
+          "DEV-TREND-3-VCB",
+          "DEV-TREND-3-TCB",
+          "DEV-TREND-3-FPT",
+          "DEV-MIXED-2-VCB",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB"
+        ],
+        "hits": {
+          "1": 66,
+          "3": 82,
+          "5": 84
+        },
+        "argmax_route_wrong_without_threshold": [
+          "DEV-NEWS-1-VCB",
+          "DEV-NEWS-1-TCB",
+          "DEV-NEWS-1-MBB",
+          "DEV-NEWS-1-FPT",
+          "DEV-MIXED-2-VCB",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB"
+        ],
+        "single_to_mixed": [
+          "DEV-NEWS-1-VCB",
+          "DEV-NEWS-1-MBB",
+          "DEV-NEWS-1-FPT"
+        ],
+        "mixed_to_single": [
+          "DEV-MIXED-2-VCB",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB"
+        ],
+        "company_changed_top1": [
+          "DEV-REPORT_CONTENT-2",
+          "DEV-NEWS-1",
+          "DEV-TREND-1",
+          "DEV-TREND-3",
+          "DEV-MIXED-2"
+        ],
+        "company_all_correct": [
+          "DEV-NUMERIC-1",
+          "DEV-NUMERIC-2",
+          "DEV-NUMERIC-3",
+          "DEV-REPORT_CONTENT-3",
+          "DEV-NEWS-2",
+          "DEV-NEWS-3",
+          "DEV-PERSON_ROLE-1",
+          "DEV-PERSON_ROLE-2",
+          "DEV-PERSON_ROLE-3",
+          "DEV-ENTITY_RELATION-1",
+          "DEV-ENTITY_RELATION-2",
+          "DEV-ENTITY_RELATION-3",
+          "DEV-TREND-2",
+          "DEV-MIXED-1",
+          "DEV-MIXED-3"
+        ],
+        "legacy_policy_applied": false
+      },
+      "known_diagnostic": {
+        "labeled_cases": 8,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.75,
+        "top3_recall": 0.75,
+        "macro_f1": 0.2619047619047619,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "MIXED": {
+            "support": 2,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0
+          },
+          "NEWS": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "NUMERIC": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 5,
+            "precision": 0.7142857142857143,
+            "recall": 1.0,
+            "f1": 0.8333333333333333
+          },
+          "REPORT_CONTENT": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "TREND": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 2,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 5,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          }
+        },
+        "wrong_case_ids": [
+          "KNOWN-07",
+          "KNOWN-08"
+        ],
+        "hits": {
+          "1": 6,
+          "3": 6,
+          "5": 8
+        },
+        "argmax_route_wrong_without_threshold": [
+          "KNOWN-07",
+          "KNOWN-08"
+        ],
+        "single_to_mixed": [],
+        "mixed_to_single": [
+          "KNOWN-07",
+          "KNOWN-08"
+        ],
+        "company_changed_top1": [],
+        "company_all_correct": [],
+        "legacy_policy_applied": false
+      },
+      "previous_check": {
+        "labeled_cases": 28,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.8214285714285714,
+        "top3_recall": 0.9642857142857143,
+        "macro_f1": 0.8159142444856731,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "MIXED": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.75,
+            "f1": 0.8571428571428571
+          },
+          "NEWS": {
+            "support": 4,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1": 0.5714285714285715
+          },
+          "NUMERIC": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 4,
+            "precision": 0.5714285714285714,
+            "recall": 1.0,
+            "f1": 0.7272727272727273
+          },
+          "REPORT_CONTENT": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          "TREND": {
+            "support": 4,
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.888888888888889
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 4,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 3,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 2,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 2,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 4,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 4,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 2,
+            "TREND": 1
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 4
+          }
+        },
+        "wrong_case_ids": [
+          "LATER-REPORT_CONTENT-2-DGC",
+          "LATER-REPORT_CONTENT-2-PNJ",
+          "LATER-NEWS-2-DGC",
+          "LATER-NEWS-2-PNJ",
+          "LATER-MIXED-2-PNJ"
+        ],
+        "hits": {
+          "1": 23,
+          "3": 27,
+          "5": 28
+        },
+        "argmax_route_wrong_without_threshold": [
+          "LATER-REPORT_CONTENT-2-DGC",
+          "LATER-NEWS-2-DGC",
+          "LATER-NEWS-2-PNJ",
+          "LATER-MIXED-2-PNJ"
+        ],
+        "single_to_mixed": [],
+        "mixed_to_single": [
+          "LATER-MIXED-2-PNJ"
+        ],
+        "company_changed_top1": [
+          "LATER-REPORT_CONTENT-2",
+          "LATER-MIXED-2"
+        ],
+        "company_all_correct": [
+          "LATER-NUMERIC-1",
+          "LATER-NUMERIC-2",
+          "LATER-REPORT_CONTENT-1",
+          "LATER-NEWS-1",
+          "LATER-PERSON_ROLE-1",
+          "LATER-PERSON_ROLE-2",
+          "LATER-ENTITY_RELATION-1",
+          "LATER-ENTITY_RELATION-2",
+          "LATER-TREND-1",
+          "LATER-TREND-2",
+          "LATER-MIXED-1"
+        ],
+        "legacy_policy_applied": false
+      },
+      "regression": {
+        "labeled_cases": 47,
+        "unlabeled_cases": 9,
+        "top1_accuracy": 0.723404255319149,
+        "top3_recall": 0.9361702127659575,
+        "macro_f1": 0.720686456400742,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 6,
+            "precision": 0.8333333333333334,
+            "recall": 0.8333333333333334,
+            "f1": 0.8333333333333334
+          },
+          "MIXED": {
+            "support": 6,
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1": 0.3333333333333333
+          },
+          "NEWS": {
+            "support": 8,
+            "precision": 0.8333333333333334,
+            "recall": 0.625,
+            "f1": 0.7142857142857143
+          },
+          "NUMERIC": {
+            "support": 7,
+            "precision": 0.875,
+            "recall": 1.0,
+            "f1": 0.9333333333333333
+          },
+          "PERSON_ROLE": {
+            "support": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1": 0.5714285714285715
+          },
+          "REPORT_CONTENT": {
+            "support": 6,
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.7499999999999999
+          },
+          "TREND": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 5,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 1,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 1,
+            "MIXED": 2,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 2,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 2,
+            "NEWS": 5,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 7,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 2,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 4,
+            "REPORT_CONTENT": 1,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 6,
+            "TREND": 0
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 5
+          }
+        },
+        "wrong_case_ids": [
+          "S5-T-013",
+          "S5-T-014",
+          "S5-T-018",
+          "S5-T-021",
+          "S5-T-023",
+          "S5-T-024",
+          "S5-T-027",
+          "S5-T-034",
+          "S5-T-037",
+          "S5-T-038",
+          "S5-T-040",
+          "S5-T-042",
+          "S5-T-054"
+        ],
+        "hits": {
+          "1": 34,
+          "3": 44,
+          "5": 47
+        },
+        "argmax_route_wrong_without_threshold": [
+          "S5-T-013",
+          "S5-T-014",
+          "S5-T-018",
+          "S5-T-021",
+          "S5-T-023",
+          "S5-T-024",
+          "S5-T-027",
+          "S5-T-037",
+          "S5-T-038",
+          "S5-T-040",
+          "S5-T-042",
+          "S5-T-054"
+        ],
+        "single_to_mixed": [
+          "S5-T-014",
+          "S5-T-018",
+          "S5-T-024",
+          "S5-T-054"
+        ],
+        "mixed_to_single": [
+          "S5-T-037",
+          "S5-T-038",
+          "S5-T-040",
+          "S5-T-042"
+        ],
+        "company_changed_top1": [],
+        "company_all_correct": [],
+        "legacy_policy_applied": false
+      }
+    },
+    "linear": {
+      "development": {
+        "labeled_cases": 84,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.7857142857142857,
+        "top3_recall": 1.0,
+        "macro_f1": 0.777080613621967,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 12,
+            "precision": 0.9230769230769231,
+            "recall": 1.0,
+            "f1": 0.9600000000000001
+          },
+          "MIXED": {
+            "support": 12,
+            "precision": 0.8571428571428571,
+            "recall": 0.5,
+            "f1": 0.631578947368421
+          },
+          "NEWS": {
+            "support": 12,
+            "precision": 0.7142857142857143,
+            "recall": 0.8333333333333334,
+            "f1": 0.7692307692307692
+          },
+          "NUMERIC": {
+            "support": 12,
+            "precision": 0.7857142857142857,
+            "recall": 0.9166666666666666,
+            "f1": 0.8461538461538461
+          },
+          "PERSON_ROLE": {
+            "support": 12,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1": 0.923076923076923
+          },
+          "REPORT_CONTENT": {
+            "support": 12,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          "TREND": {
+            "support": 12,
+            "precision": 0.5625,
+            "recall": 0.75,
+            "f1": 0.6428571428571429
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 12,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 6,
+            "NEWS": 4,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 0,
+            "TREND": 1
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 10,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 1,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 11,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 12,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 6,
+            "TREND": 6
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 3,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 9
+          }
+        },
+        "wrong_case_ids": [
+          "DEV-NUMERIC-2-TCB",
+          "DEV-REPORT_CONTENT-1-VCB",
+          "DEV-REPORT_CONTENT-1-TCB",
+          "DEV-REPORT_CONTENT-1-MBB",
+          "DEV-REPORT_CONTENT-1-FPT",
+          "DEV-REPORT_CONTENT-2-VCB",
+          "DEV-REPORT_CONTENT-2-MBB",
+          "DEV-NEWS-1-TCB",
+          "DEV-NEWS-1-FPT",
+          "DEV-TREND-3-VCB",
+          "DEV-TREND-3-TCB",
+          "DEV-TREND-3-FPT",
+          "DEV-MIXED-1-TCB",
+          "DEV-MIXED-2-VCB",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB",
+          "DEV-MIXED-2-FPT",
+          "DEV-MIXED-3-MBB"
+        ],
+        "hits": {
+          "1": 66,
+          "3": 84,
+          "5": 84
+        },
+        "argmax_route_wrong_without_threshold": [
+          "DEV-NUMERIC-2-TCB",
+          "DEV-NEWS-1-TCB",
+          "DEV-NEWS-1-FPT",
+          "DEV-MIXED-1-TCB",
+          "DEV-MIXED-2-VCB",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB",
+          "DEV-MIXED-2-FPT",
+          "DEV-MIXED-3-MBB"
+        ],
+        "single_to_mixed": [
+          "DEV-NEWS-1-FPT"
+        ],
+        "mixed_to_single": [
+          "DEV-MIXED-1-TCB",
+          "DEV-MIXED-2-VCB",
+          "DEV-MIXED-2-TCB",
+          "DEV-MIXED-2-MBB",
+          "DEV-MIXED-2-FPT",
+          "DEV-MIXED-3-MBB"
+        ],
+        "company_changed_top1": [
+          "DEV-NUMERIC-2",
+          "DEV-REPORT_CONTENT-2",
+          "DEV-NEWS-1",
+          "DEV-TREND-3",
+          "DEV-MIXED-1",
+          "DEV-MIXED-3"
+        ],
+        "company_all_correct": [
+          "DEV-NUMERIC-1",
+          "DEV-NUMERIC-3",
+          "DEV-REPORT_CONTENT-3",
+          "DEV-NEWS-2",
+          "DEV-NEWS-3",
+          "DEV-PERSON_ROLE-1",
+          "DEV-PERSON_ROLE-2",
+          "DEV-PERSON_ROLE-3",
+          "DEV-ENTITY_RELATION-1",
+          "DEV-ENTITY_RELATION-2",
+          "DEV-ENTITY_RELATION-3",
+          "DEV-TREND-1",
+          "DEV-TREND-2"
+        ],
+        "legacy_policy_applied": false
+      },
+      "known_diagnostic": {
+        "labeled_cases": 8,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.75,
+        "top3_recall": 1.0,
+        "macro_f1": 0.2619047619047619,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "MIXED": {
+            "support": 2,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0
+          },
+          "NEWS": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "NUMERIC": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 5,
+            "precision": 0.7142857142857143,
+            "recall": 1.0,
+            "f1": 0.8333333333333333
+          },
+          "REPORT_CONTENT": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "TREND": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 2,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 5,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          }
+        },
+        "wrong_case_ids": [
+          "KNOWN-07",
+          "KNOWN-08"
+        ],
+        "hits": {
+          "1": 6,
+          "3": 8,
+          "5": 8
+        },
+        "argmax_route_wrong_without_threshold": [
+          "KNOWN-07",
+          "KNOWN-08"
+        ],
+        "single_to_mixed": [],
+        "mixed_to_single": [
+          "KNOWN-07",
+          "KNOWN-08"
+        ],
+        "company_changed_top1": [],
+        "company_all_correct": [],
+        "legacy_policy_applied": false
+      },
+      "previous_check": {
+        "labeled_cases": 28,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.8571428571428571,
+        "top3_recall": 1.0,
+        "macro_f1": 0.8518140589569161,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "MIXED": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.75,
+            "f1": 0.8571428571428571
+          },
+          "NEWS": {
+            "support": 4,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          "NUMERIC": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 4,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8
+          },
+          "REPORT_CONTENT": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          "TREND": {
+            "support": 4,
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.888888888888889
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 4,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 3,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 3,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 4,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 4,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 1,
+            "REPORT_CONTENT": 2,
+            "TREND": 1
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 4
+          }
+        },
+        "wrong_case_ids": [
+          "LATER-REPORT_CONTENT-2-DGC",
+          "LATER-REPORT_CONTENT-2-PNJ",
+          "LATER-NEWS-2-DGC",
+          "LATER-MIXED-2-PNJ"
+        ],
+        "hits": {
+          "1": 24,
+          "3": 28,
+          "5": 28
+        },
+        "argmax_route_wrong_without_threshold": [
+          "LATER-REPORT_CONTENT-2-DGC",
+          "LATER-NEWS-2-DGC",
+          "LATER-MIXED-2-PNJ"
+        ],
+        "single_to_mixed": [],
+        "mixed_to_single": [
+          "LATER-MIXED-2-PNJ"
+        ],
+        "company_changed_top1": [
+          "LATER-REPORT_CONTENT-2",
+          "LATER-NEWS-2",
+          "LATER-MIXED-2"
+        ],
+        "company_all_correct": [
+          "LATER-NUMERIC-1",
+          "LATER-NUMERIC-2",
+          "LATER-REPORT_CONTENT-1",
+          "LATER-NEWS-1",
+          "LATER-PERSON_ROLE-1",
+          "LATER-PERSON_ROLE-2",
+          "LATER-ENTITY_RELATION-1",
+          "LATER-ENTITY_RELATION-2",
+          "LATER-TREND-1",
+          "LATER-TREND-2",
+          "LATER-MIXED-1"
+        ],
+        "legacy_policy_applied": false
+      },
+      "regression": {
+        "labeled_cases": 47,
+        "unlabeled_cases": 9,
+        "top1_accuracy": 0.7446808510638298,
+        "top3_recall": 0.9148936170212766,
+        "macro_f1": 0.7019334049409238,
+        "per_label": {
+          "ENTITY_RELATION": {
+            "support": 6,
+            "precision": 0.8333333333333334,
+            "recall": 0.8333333333333334,
+            "f1": 0.8333333333333334
+          },
+          "MIXED": {
+            "support": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0
+          },
+          "NEWS": {
+            "support": 8,
+            "precision": 0.7272727272727273,
+            "recall": 1.0,
+            "f1": 0.8421052631578948
+          },
+          "NUMERIC": {
+            "support": 7,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1": 0.5714285714285715
+          },
+          "REPORT_CONTENT": {
+            "support": 6,
+            "precision": 0.5555555555555556,
+            "recall": 0.8333333333333334,
+            "f1": 0.6666666666666667
+          },
+          "TREND": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_matrix": {
+          "ENTITY_RELATION": {
+            "ENTITY_RELATION": 5,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 1,
+            "TREND": 0
+          },
+          "MIXED": {
+            "ENTITY_RELATION": 1,
+            "MIXED": 0,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 2,
+            "REPORT_CONTENT": 2,
+            "TREND": 0
+          },
+          "NEWS": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 8,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "NUMERIC": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 7,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 0
+          },
+          "PERSON_ROLE": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 2,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 4,
+            "REPORT_CONTENT": 1,
+            "TREND": 0
+          },
+          "REPORT_CONTENT": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 5,
+            "TREND": 0
+          },
+          "TREND": {
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "PERSON_ROLE": 0,
+            "REPORT_CONTENT": 0,
+            "TREND": 6
+          }
+        },
+        "wrong_case_ids": [
+          "S5-T-012",
+          "S5-T-021",
+          "S5-T-023",
+          "S5-T-024",
+          "S5-T-027",
+          "S5-T-037",
+          "S5-T-038",
+          "S5-T-039",
+          "S5-T-040",
+          "S5-T-041",
+          "S5-T-042",
+          "S5-T-054"
+        ],
+        "hits": {
+          "1": 35,
+          "3": 43,
+          "5": 47
+        },
+        "argmax_route_wrong_without_threshold": [
+          "S5-T-021",
+          "S5-T-023",
+          "S5-T-024",
+          "S5-T-027",
+          "S5-T-037",
+          "S5-T-038",
+          "S5-T-039",
+          "S5-T-040",
+          "S5-T-041",
+          "S5-T-042",
+          "S5-T-054"
+        ],
+        "single_to_mixed": [
+          "S5-T-024",
+          "S5-T-054"
+        ],
+        "mixed_to_single": [
+          "S5-T-037",
+          "S5-T-038",
+          "S5-T-039",
+          "S5-T-040",
+          "S5-T-041",
+          "S5-T-042"
+        ],
+        "company_changed_top1": [],
+        "company_all_correct": [],
+        "legacy_policy_applied": false
+      }
+    }
+  },
+  "regression_transitions": {
+    "centroid": {
+      "fixed": [
+        "S5-T-002",
+        "S5-T-005",
+        "S5-T-007",
+        "S5-T-008",
+        "S5-T-009",
+        "S5-T-010",
+        "S5-T-012",
+        "S5-T-017",
+        "S5-T-022",
+        "S5-T-025",
+        "S5-T-026",
+        "S5-T-032",
+        "S5-T-039",
+        "S5-T-041",
+        "S5-T-053"
+      ],
+      "regressed": [
+        "S5-T-014",
+        "S5-T-034",
+        "S5-T-038"
+      ]
+    },
+    "linear": {
+      "fixed": [
+        "S5-T-002",
+        "S5-T-005",
+        "S5-T-007",
+        "S5-T-008",
+        "S5-T-009",
+        "S5-T-010",
+        "S5-T-013",
+        "S5-T-017",
+        "S5-T-018",
+        "S5-T-022",
+        "S5-T-025",
+        "S5-T-026",
+        "S5-T-032",
+        "S5-T-053"
+      ],
+      "regressed": [
+        "S5-T-038"
+      ]
+    }
+  },
+  "parameter_sha256": "cf2ea6237d55ae340e998ec151010823c75d7679e237f4d0da2e67241740e303"
+}

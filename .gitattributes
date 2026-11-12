@@ -24,3 +24,11 @@ backend/src/retrieval_orchestration/intent_experiment.py text eol=lf
 backend/src/retrieval_orchestration/intent_matching.py text eol=lf
 docs/sprint5/S5-WBS04.1-additive-plan.md text eol=lf
 docs/sprint5/S5-WBS04.1-improvement-plan.md text eol=lf
+outputs/s5_intent_scorer_20261112/**/*.json text eol=lf
+outputs/s5_intent_scorer_20261112/**/*.jsonl text eol=lf
+outputs/s5_intent_scorer_20261112/**/*.md text eol=lf
+outputs/s5_intent_scorer_20261112/**/*.npy binary
+outputs/s5_intent_scorer_20261112/**/*.npz binary
+backend/src/retrieval_orchestration/intent_scoring.py text eol=lf
+backend/scripts/prepare_s5_intent_scorer.py text eol=lf
+backend/scripts/run_s5_intent_scorer.py text eol=lf

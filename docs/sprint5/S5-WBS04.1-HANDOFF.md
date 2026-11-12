@@ -16,6 +16,9 @@ không coi unit test qua là accuracy đạt và không đưa kết quả vào r
 - [Thử nghiệm bổ sung trên nền mẫu gốc, 12/11](S5-WBS04.1-additive-results.md):
   giảm hồi quy ở bộ cũ nhưng chưa tăng chất lượng chung; đã dùng một lượt bộ 28 câu
   để dành, không còn coi bộ này là chưa chấm. Baseline vẫn giữ nguyên.
+- [Classifier và centroid, 12/11](S5-WBS04.1-scorer-results.md): dev tăng rõ,
+  nhưng còn hồi quy nên chưa thay runtime. Xem [hợp đồng điểm](S5-WBS04.1-scorer-contract.md)
+  trước khi xem xét nối vào 04.2; probability không dùng chung ngưỡng cosine cũ.
 - `outputs/s5_wbs041_20261110/run01`: method đã chọn trước inference,
   snapshot test, kết quả từng câu và summary. Giữ nguyên run01 sau khi đo.
 - `outputs/s5_wbs041_review_20261111`: test sau rà soát và kiểm chứng lại model thật.

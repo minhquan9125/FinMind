@@ -1,0 +1,70 @@
+{
+  "status": "FROZEN_BEFORE_FIT",
+  "date": "2026-11-12",
+  "model": {
+    "name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "dtype": "float32",
+    "normalization": "L2",
+    "input_preprocessing": "NONE_EXACT_REVIEWED_TEXT",
+    "device": "cpu",
+    "batch_size": 8,
+    "max_sequence_length": 8192,
+    "encoder_class": "src.documents.embeddings.EmbeddingService"
+  },
+  "training_rows": 202,
+  "training_families": 58,
+  "folds": 4,
+  "split_policy": "SORT_FAMILIES_WITHIN_LABEL_ROUND_ROBIN_FOLD",
+  "sample_weight": "EQUAL_LABEL_TOTAL_AND_EQUAL_FAMILY_TOTAL_WITHIN_LABEL_MEAN_WEIGHT_ONE",
+  "candidates": [
+    "family_centroid",
+    "logistic_regression"
+  ],
+  "C_grid": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "solver": "lbfgs",
+  "l1_ratio": 0.0,
+  "max_iter": 2000,
+  "tol": 1e-08,
+  "C_selection": "POOLED_OOF_MACRO_F1_THEN_ACCURACY_THEN_SMALLER_C",
+  "eligibility": "DEV_TOP1_AND_MACRO_F1_IMPROVE_AND_ZERO_OLD_CORRECT_TO_WRONG",
+  "evaluation_sets_seen": true,
+  "no_test_rows_fitted": true,
+  "no_runtime_change": true,
+  "probability_calibrated": false,
+  "legacy_threshold_not_applied_to_candidates": true,
+  "source_hashes": {
+    "outputs/s5_wbs033_20261110/intent-library-v1/dataset-manifest.json": "b81be2fc049036663d8addea12e94d0c9c766c9dbf65e1c661f6515d9ac80278",
+    "outputs/s5_wbs033_20261110/intent-library-v1/label-schema.json": "4936c2e226d1b8004564d2e9f74d90413040837cea07fe093dfdd72cdf9d7caf",
+    "outputs/s5_wbs033_20261110/intent-library-v1/library.jsonl": "4ac73d493a74952aab5cbaaabf62459469b1d144d8864c68fbd7ad2fbcf9dae5",
+    "outputs/s5_wbs033_20261110/intent-library-v1/manifest.json": "d679eab18f7368d9ab44e4695d399b5662ab3a539da9319378d2aae220298221",
+    "outputs/s5_wbs033_20261110/intent-library-v1/vectors.npy": "67e61d4dbae5252e9ff473ee8c84d1ac47c435b16cb1e747250bd9a28cf2f7a8",
+    "outputs/s5_intent_additive_20261112/add_all/manifest.json": "373636cfd701056beb0f71aee948a4706d07021ee72b36c852b0c2906f83bd4d",
+    "outputs/s5_intent_additive_20261112/add_all/library.jsonl": "d74ba35ea8713e667d160f198475b882d06f75cde554c236e074be00ea2843ea",
+    "outputs/s5_intent_additive_20261112/add_all/vectors.npy": "641ba9e866279baf2426bd25a75ca6d623216ed2bed35c01357e6a529dfce82a",
+    "outputs/s5_intent_experiment_20261111/run01/embedded-texts.json": "31e7722587771b7b6a41c77551eb4b7230fe0390012407629b414cab5ae4acd0",
+    "outputs/s5_intent_experiment_20261111/run01/experiment-vectors.npy": "b28706d1585456342db95003315a43070fb8f0511992a99d1ceb45abc4632f26",
+    "outputs/s5_intent_additive_20261112/later-check/query-vectors.npy": "dd87a86433e777df62d78f18940076a39f852f1f6c1e8f071ac201169509fc40",
+    "docs/sprint5/intent-experiment-v2/development.jsonl": "57dd29ba5d0a028ad16143a8b78121724f0e63b024f2608d2be39cd949215116",
+    "docs/sprint5/intent-dataset-v1/test.jsonl": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+    "docs/sprint5/intent-experiment-v2/known-diagnostic.jsonl": "49d3db169896e47cecc09f0d06ea9424a4197bdb1f132c0f2b511ff4dc8465e0",
+    "outputs/s5_intent_additive_20261112/later-check/input.jsonl": "4439afa73db4d4f3d0b21f30f9da2171a46168e14efbebcb2709742a8ced4eef",
+    "backend/src/retrieval_orchestration/intent_scoring.py": "678a23e5c2f2ba987070b93b5dee61b4e9e2e692bbb06ad881b978c25582e919",
+    "backend/src/retrieval_orchestration/intent_matching.py": "f351d081045ad717a80fe63b01ace29e7bc437151338a3698b091f05879da2d9",
+    "backend/scripts/prepare_s5_intent_scorer.py": "2809e166d3487e8f8d932b07284f49d481eab324c1508d28d926f3698cc2a1f5"
+  },
+  "files": {
+    "training.jsonl": "d74ba35ea8713e667d160f198475b882d06f75cde554c236e074be00ea2843ea",
+    "training-vectors.npy": "641ba9e866279baf2426bd25a75ca6d623216ed2bed35c01357e6a529dfce82a",
+    "plan-snapshot.md": "afc686b00009196c5bb432924f6845c60e6b157e21e61024988082b219eb8c03",
+    "weights.npy": "e6666fd6b77734659794309785b4b182cca8eabe412e9c30e1f9b5234c6714c1",
+    "folds.npy": "f4adc3a9c549bef79cff197696bbd68dc9778a63744f29b43ae1e4eda53b13ef",
+    "evaluation-cases.json": "582f08334a12cc1c6483b13ac69903245c0ae2ff8a1f7034c03dab7b85274e77",
+    "evaluation-vectors.npy": "267e67959e17a89a4dc87d4debed4cc1a625e2670fd024defcae4e6a861d0fad"
+  }
+}

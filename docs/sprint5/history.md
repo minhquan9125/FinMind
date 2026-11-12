@@ -183,3 +183,21 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   1,23e-15; xác nhận nguồn/byte vector gốc không đổi. Chưa triển khai ứng viên mới.
 - Không sửa ngưỡng 0,65/0,08, payload top-3 hoặc code router/WebChat của Huyền.
 - [Kế hoạch](S5-WBS04.1-additive-plan.md), [báo cáo](S5-WBS04.1-additive-results.md).
+
+## 12/11/2026 — Thử classifier và centroid theo kế hoạch đã chốt
+
+- Dùng 202 hàng LIBRARY/58 family, vector BGE-M3 đã có; validation 4 fold theo
+  family, mọi biến thể cùng nhóm; trọng số cân bằng nhãn/family. Không fit vào test.
+- Logistic Regression C=1 chọn từ OOF trong ba C định trước; dev 66/84, bộ cũ 35/47,
+  bộ 28 câu đã xem 24/28; baseline lần lượt 34/84, 22/47, 19/28.
+- Centroid theo family: dev 66/84, bộ cũ 34/47, bộ 28 câu đã xem 23/28.
+- Linear sửa thêm 14 ca cũ nhưng hỏng T038; centroid sửa 15, hỏng 3. Không qua
+  checkpoint không hồi quy; chưa làm final-check mới hoặc calibration, không hạ tiêu chí.
+- Tách score_type/policy; guard thử nghiệm từ chối dùng ngưỡng 0,65/0,08 cho loại
+  điểm mới. Chưa có source consumer 04.2 mới của Huyền tại local, chưa sửa router thật.
+- 76 test đạt; kiểm chứng lại 528 thứ hạng và grouped OOF selection bằng phép tính
+  độc lập; mutation bỏ guard policy bị test bắt. Không đổi matcher/vector gốc.
+- Hai lỗi ghi báo cáo/pointer đã sửa, giữ bằng chứng lượt lỗi; tham số và CV hai lần
+  giống nhau từng phần tử, không fit lần ba. Xem recovery-note.json.
+- [Kết quả](S5-WBS04.1-scorer-results.md), [contract](S5-WBS04.1-scorer-contract.md),
+  [kế hoạch và điểm dừng](../../tasks/plan.md).
