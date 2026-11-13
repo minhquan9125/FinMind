@@ -81,6 +81,8 @@ from src.retrieval_orchestration.intent_v2_rules import explicit_intent, request
         ("Theo BCTN, ai là KTT? Trích câu làm bằng chứng cho câu trả lời.", "PERSON_ROLE"),
         ("Sự kiện này có những doanh nghiệp nào tham gia?", "ENTITY_RELATION"),
         ("LNST đang tăng tốc hay chậm lại? Giải thích XH đó.", "ANALYSIS"),
+        ("Vui lòng: Liệt kê vốn chủ sở hữu VNM qua các năm 2021, 2022 và 2023.", "NUMERIC"),
+        ("Vui lòng: Nội dung bài tin về đại hội cổ đông DGC là gì?", "NEWS"),
     ],
 )
 def test_explicit_intent_follows_the_requested_goal(question, expected):

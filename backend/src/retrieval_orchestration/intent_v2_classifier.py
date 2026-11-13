@@ -10,7 +10,7 @@ import numpy as np
 from .intent_library import load_library
 from .intent_matching import IntentMatcher
 from .intent_scoring import classifier_probabilities, normalized, rankings
-from .intent_v2_rules import explicit_components, explicit_intent, has, plain, requests
+from .intent_v2_rules import explicit_components, explicit_intent, requests, standalone_conversation
 
 DEFAULT_ARTIFACT = Path(__file__).resolve().parents[3] / 'outputs/s5_intent_v2_20261113/artifact-v2'
 LABELS = {'PRICE', 'NUMERIC', 'ANALYSIS', 'NEWS', 'REPORT_CONTENT', 'PERSON_ROLE',
@@ -91,8 +91,10 @@ class IntentClassifier:
         # A mixed prediction alone cannot invent its constituent requests.
         if (label == 'MIXED' and len(components) < 2) or (unresolved and len(parts) > 1):
             status = 'UNRESOLVED'
-        standalone_conversation = has(r'^(?:xin chao|chao|hello|hi|cam on)\b|\b(?:phien|nghien cuu).*moi\b', plain(question))
-        if (label == 'CONVERSATION' or 'CONVERSATION' in components) and not standalone_conversation:
+        conversation_parts = [e['request'] for e in evidence if e['explicit_label'] == 'CONVERSATION']
+        if label == 'CONVERSATION' and not conversation_parts:
+            conversation_parts = [question]
+        if status == 'PROPOSED' and any(not standalone_conversation(part) for part in conversation_parts):
             if not context or context.get('verified') is not True:
                 status = 'NEEDS_CONTEXT'
         source = self.matcher.library.manifest
@@ -106,7 +108,7 @@ class IntentClassifier:
                         unresolved_requests=unresolved,
                         explicit_evidence=[dict(text=e['request'], intent_label=e['explicit_label'])
                                            for e in evidence if e['explicit_label'] is not None],
-                        ranking_policy='intent-request-objectives-v2-11',
+                        ranking_policy='intent-request-objectives-v2-11-r2',
                         score_type='DECISION_EVIDENCE_NO_CONFIDENCE', confidence=None,
                         runtime_enabled=False))
 

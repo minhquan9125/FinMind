@@ -173,3 +173,73 @@ def test_contract_has_question_and_explicit_evidence_without_invented_scores(art
 def test_session_creation_does_not_require_previous_context(artifact):
     result = IntentClassifier.load(artifact, Encoder('CONVERSATION')).classify('Tạo phiên nghiên cứu mới.')
     assert result['resolution']['status'] == 'PROPOSED'
+
+
+# Gold comes from frozen library families, not from the classifier's prediction.
+REVIEW_FAMILIES = {
+    'L2-NUMERIC-016': ('NUMERIC', []),
+    'L2-ANALYSIS-014': ('ANALYSIS', []),
+    'L2-NEWS-007': ('NEWS', []),
+    'L2-NEWS-020': ('NEWS', []),
+    'L2-PERSON_ROLE-008': ('PERSON_ROLE', []),
+    'L2-PERSON_ROLE-012': ('PERSON_ROLE', []),
+    'L2-MIXED-006': ('MIXED', ['NEWS', 'NUMERIC']),
+    'L2-NEWS-006': ('NEWS', []),
+    'L2-MIXED-019': ('MIXED', ['OUT_OF_SCOPE', 'PRICE']),
+}
+REVIEW_ROWS = [json.loads(line) for line in (ROOT / 'docs/sprint5/intent-v2/library.jsonl')
+               .read_text(encoding='utf-8').splitlines() if json.loads(line)['family_id'] in REVIEW_FAMILIES]
+
+
+@pytest.mark.parametrize('row', REVIEW_ROWS, ids=lambda row: row['id'])
+def test_review_families_do_not_override_correct_classifier_with_wrong_goal(artifact, row):
+    expected, components = REVIEW_FAMILIES[row['family_id']]
+    assert row['intent_label'] == expected
+    result = IntentClassifier.load(artifact, Encoder(expected)).classify(row['text'])
+    assert result['base_ranking']['groups'][0]['intent_label'] == expected
+    assert result['resolution']['intent_label'] == expected
+    assert result['resolution']['component_labels'] == components
+    assert result['resolution']['status'] == 'PROPOSED'
+
+
+@pytest.mark.parametrize('question', [
+    'Xin chào, tôi có nên mua FPT không?',
+    'Chào bạn, hãy khuyên tôi nên bán hay giữ SSI.',
+    'Cảm ơn bạn, hãy dự đoán giá HPG vào tuần sau.',
+])
+def test_salutation_cannot_remove_restricted_request(artifact, question):
+    result = IntentClassifier.load(artifact, Encoder('OUT_OF_SCOPE')).classify(question)
+    assert result['resolution']['intent_label'] == 'OUT_OF_SCOPE'
+    assert result['resolution']['contains_restricted_component'] is True
+
+
+@pytest.mark.parametrize('question', ['Xin chào, còn SSI thì sao?', 'Cảm ơn bạn, số 2 nhé.'])
+def test_salutation_does_not_supply_followup_context(artifact, question):
+    classifier = IntentClassifier.load(artifact, Encoder('CONVERSATION'))
+    result = classifier.classify(question)
+    assert result['resolution']['intent_label'] == 'CONVERSATION'
+    assert result['resolution']['status'] == 'NEEDS_CONTEXT'
+    assert classifier.classify(question, context={'verified': True})['resolution']['status'] == 'PROPOSED'
+
+
+@pytest.mark.parametrize('question', ['Xin chào!', 'Chào bạn.', 'Cảm ơn bạn!',
+    'Chào bạn, rất vui được trò chuyện.', 'Cảm ơn phần giải đáp vừa rồi nhé.'])
+def test_only_a_greeting_is_standalone_conversation(artifact, question):
+    result = IntentClassifier.load(artifact, Encoder('CONVERSATION')).classify(question)
+    assert result['resolution']['intent_label'] == 'CONVERSATION'
+    assert result['resolution']['status'] == 'PROPOSED'
+
+
+def test_quoted_advice_and_user_advice_keep_both_component_goals(artifact):
+    question = 'Tóm tắt bài báo khuyến nghị mua FPT rồi khuyên tôi có nên mua FPT không?'
+    result = IntentClassifier.load(artifact, Encoder('MIXED')).classify(question)
+    assert result['resolution']['intent_label'] == 'MIXED'
+    assert result['resolution']['component_labels'] == ['NEWS', 'OUT_OF_SCOPE']
+    assert result['resolution']['contains_restricted_component'] is True
+
+
+def test_a_separately_delimited_thanks_and_news_request_preserve_both_speech_acts(artifact):
+    result = IntentClassifier.load(artifact, Encoder('MIXED')).classify('Cảm ơn bạn; hãy tìm bài tin mới nhất về ACB.')
+    assert result['resolution']['intent_label'] == 'MIXED'
+    assert result['resolution']['component_labels'] == ['CONVERSATION', 'NEWS']
+    assert result['resolution']['status'] == 'PROPOSED'
