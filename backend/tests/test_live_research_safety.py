@@ -47,7 +47,8 @@ def test_explicit_news_publisher_is_retained_as_scope_not_just_query_words():
     assert decision['scope']['periods'] == ['2026-09-29']
 
 
-def test_live_budget_does_not_reset_on_new_question():
+def test_live_budget_is_per_question_and_still_enforced_inside_one():
+    # Decision 13/11: one budget per question (a shared one blocked every user after ~13 answers).
     async def run():
         provider = Provider()
         engine = LiveResearchService(Retriever(), provider=provider,
@@ -55,8 +56,13 @@ def test_live_budget_does_not_reset_on_new_question():
         await engine.answer('tiền và tương đương tiền FPT quý 2/2026', 's')
         await engine.answer('/moi', 's')
         result = await engine.answer('tiền và tương đương tiền FPT quý 2/2026', 's')
+        assert result['answering']['status'] == 'DRAFT_READY'
+        assert provider.calls == 2
+        small = replace(Limits.load(), max_total_tokens=Limits.load().max_output_tokens + 4)
+        result = await LiveResearchService(Retriever(), provider=provider, limits=small).answer(
+            'tiền và tương đương tiền FPT quý 2/2026', 's')
         assert result['answering']['status'] == 'BUDGET_EXCEEDED'
-        assert provider.calls == 1
+        assert provider.calls == 2
     asyncio.run(run())
 
 

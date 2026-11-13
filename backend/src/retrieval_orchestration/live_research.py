@@ -602,10 +602,10 @@ class LiveResearchService:
         self.market = market
         self.admin_news = admin_news
         self.limits = limits or Limits.load()
-        self.budget = Budget(self.limits)
+        self.budget = Budget(self.limits)  # the latest question's budget, for reporting only
         self.retrieval_timeout = retrieval_timeout
 
-    def _source_reference(self, result, previous_result):
+    def _source_reference(self, result, previous_result, budget):
         previous = previous_result or {}
         old_scope = previous.get('scope', {})
         same_scope = all(result['scope'].get(key) == old_scope.get(key)
@@ -651,15 +651,17 @@ class LiveResearchService:
                       answering={'status': 'DRAFT_READY', 'reason_code': 'SOURCE_REFERENCE',
                                  'message': 'Nguồn đã lưu của câu trả lời trước; không tìm kiếm hoặc sinh lại.',
                                  'draft': '\n\n'.join(parts), 'claims': [], 'citations': citations,
-                                 'manifest': manifest, 'cautions': [], 'budget': self.budget.snapshot(),
+                                 'manifest': manifest, 'cautions': [], 'budget': budget.snapshot(),
                                  'trace': [{'event': 'saved_source_reference'}]})
         return result
 
     async def answer(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
+        # One budget per question: a process-wide one ran out after ~13 answers until restart.
+        budget = self.budget = Budget(self.limits)
         if self.admin_news is not None:
             indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
-                                                   limits=self.limits, budget=self.budget)
+                                                   limits=self.limits, budget=budget)
             if indexed is not None: return indexed
         prior_scope = (previous_result or {}).get('scope') or {}
         # Recover only legacy, topic-less clarification state; never override an
@@ -678,9 +680,9 @@ class LiveResearchService:
                       clarification_options=decision.get('clarification_options', []),
                       evidence_pack=None, errors=[])
         if decision['decision'] == 'RESOLVE_REFERENCE':
-            return self._source_reference(result, previous_result)
+            return self._source_reference(result, previous_result, budget)
         if decision['decision'] == 'MARKET_LOOKUP':
-            return await self._answer_market(interpreted, result, previous_result)
+            return await self._answer_market(interpreted, result, previous_result, budget)
         if decision['decision'] != 'SEARCH': return result
         label = METRIC_ALIASES.get(scope.get('metric_code'), ('tin tức',))[0]
         query = f"{label} {' '.join(scope['companies'])} {' '.join(scope['periods'])}. {interpreted}"
@@ -704,9 +706,9 @@ class LiveResearchService:
         result.update(status='EVIDENCE_READY', reason_code='EVIDENCE_READY', query_id=pack['query_id'],
                       evidence_pack=pack, retrieval_backend=pack.get('retrieval_backend', 'dense'),
                       message='Đã tìm được nguồn ứng viên có nội dung khớp hash.')
-        return await complete_retrieval(query, result, provider=self.provider, limits=self.limits, budget=self.budget)
+        return await complete_retrieval(query, result, provider=self.provider, limits=self.limits, budget=budget)
 
-    async def _answer_market(self, question, result, previous_result=None):
+    async def _answer_market(self, question, result, previous_result, budget):
         if self.market is None:
             result.update(status='SYSTEM_UNAVAILABLE', reason_code='MARKET_NOT_CONFIGURED',
                           message='Dịch vụ giá và tin mới chưa được kết nối. Vui lòng thử lại sau.')
@@ -741,7 +743,7 @@ class LiveResearchService:
                              'config_version': self.limits.version, 'retrieval_backend': 'shared_market_feed',
                              'components': {'gemini': False, 'citation_binding': True,
                                             'b3_evidence_gate': False, 'b3_answer_verification': False}},
-                'budget': self.budget.snapshot(), 'trace': [{'event': 'shared_market_quote'}]})
+                'budget': budget.snapshot(), 'trace': [{'event': 'shared_market_quote'}]})
             return result
         if (result['scope'].get('_market_request') or {}).get('action', 'LIST') == 'LIST':
             citations = []
@@ -757,9 +759,9 @@ class LiveResearchService:
                 'draft': '\n\n'.join(lines), 'claims': [], 'citations': citations,
                 'manifest': {'mode': 'B1', 'response_mode': 'NEWS_LIST',
                              'components': {'gemini': False, 'b3_evidence_gate': False, 'b3_answer_verification': False}},
-                'budget': self.budget.snapshot(), 'trace': [{'event': 'shared_news_listing'}]}
+                'budget': budget.snapshot(), 'trace': [{'event': 'shared_news_listing'}]}
             return result
-        out = await complete_retrieval(question, result, provider=self.provider, limits=self.limits, budget=self.budget)
+        out = await complete_retrieval(question, result, provider=self.provider, limits=self.limits, budget=budget)
         if out.get('answering', {}).get('status') == 'DRAFT_READY':
             for item in evidence.values():
                 published = item.get('snapshot', {}).get('published_at')

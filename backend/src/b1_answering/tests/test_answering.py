@@ -29,6 +29,10 @@ def response(text=DEMO_PASSAGE, *, finish='STOP', usage=True):
     return data
 
 
+
+async def _no_sleep(_seconds):
+    return None
+
 class TestGeminiProvider(unittest.IsolatedAsyncioTestCase):
     def provider(self, handler):
         return GeminiProvider(Limits(), api_key='dummy-test-key', free_tier_confirmed=True, transport=httpx.MockTransport(handler))
@@ -57,7 +61,7 @@ class TestGeminiProvider(unittest.IsolatedAsyncioTestCase):
                 self.assertIn('responseJsonSchema', actual['generationConfig'])
                 return httpx.Response(200, json={'totalTokens': 100})
             self.assertNotIn('tools', body)
-            self.assertEqual(body['generationConfig']['maxOutputTokens'], 2048)
+            self.assertEqual(body['generationConfig']['maxOutputTokens'], Limits.load().max_output_tokens)
             return httpx.Response(200, json=response())
         out = await complete_retrieval('Chỉ tiêu minh họa?', envelope(), provider=self.provider(handler))
         self.assertEqual(out['answering']['status'], 'DRAFT_READY')
@@ -65,16 +69,30 @@ class TestGeminiProvider(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(out['answering']['citations'][0]['locator'], DEMO_PACK['items'][0]['locator'])
         self.assertFalse(out['answering']['manifest']['components']['b3_answer_verification'])
 
-    async def test_bad_status_and_no_retry(self):
-        for status, code in [(429, 'RATE_LIMITED'), (302, 'GEMINI_UNAVAILABLE'), (500, 'GEMINI_UNAVAILABLE')]:
+    async def test_bad_status_and_single_retry_only_for_overload(self):
+        # 5xx overload gets exactly one retry; quota (429) and other statuses never retry.
+        for status, code, tries in [(429, 'RATE_LIMITED', 1), (302, 'GEMINI_UNAVAILABLE', 1),
+                                    (400, 'GEMINI_UNAVAILABLE', 1), (500, 'GEMINI_UNAVAILABLE', 2),
+                                    (503, 'GEMINI_UNAVAILABLE', 2)]:
             calls = []
             def handler(req):
                 calls.append(req)
                 return httpx.Response(status, text='untrusted upstream error')
-            with self.subTest(status=status), self.assertRaises(GeminiError) as error:
+            with self.subTest(status=status), patch('asyncio.sleep', new=_no_sleep), \
+                    self.assertRaises(GeminiError) as error:
                 await self.provider(handler).generate({})
             self.assertEqual(error.exception.code, code)
-            self.assertEqual(len(calls), 1)
+            self.assertEqual(len(calls), tries)
+
+    async def test_overload_then_success_returns_the_second_answer(self):
+        calls = []
+        def handler(req):
+            calls.append(req)
+            return httpx.Response(503, text='busy') if len(calls) == 1 else httpx.Response(200, json=response())
+        with patch('asyncio.sleep', new=_no_sleep):
+            out = await self.provider(handler).generate({})
+        self.assertEqual(len(calls), 2)
+        self.assertIn('payload', out)
 
     async def test_timeout_safe_error_and_body_limit(self):
         def timeout(req):
@@ -101,7 +119,7 @@ class TestGeminiProvider(unittest.IsolatedAsyncioTestCase):
         budget = Budget(Limits())
         out = await complete_retrieval('hỏi', envelope(), provider=provider, budget=budget)
         self.assertNotEqual(out['answering']['status'], 'DRAFT_READY')
-        self.assertEqual(budget.snapshot()['tokens_reserved'], 2148)
+        self.assertEqual(budget.snapshot()['tokens_reserved'], 100 + Limits().max_output_tokens)
         self.assertEqual(budget.snapshot()['unknown_usage'], 1)
 
 

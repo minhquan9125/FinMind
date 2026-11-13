@@ -82,7 +82,7 @@ def test_article_detail_allows_four_supported_points_and_guides_a_fuller_answer(
         request = build_grounded_request('chi tiết', evidence, Limits.load(), result['scope'])
         schema = request['generationConfig']['responseJsonSchema']['properties']['claims']
         assert schema['maxItems'] == 4
-        assert request['generationConfig']['maxOutputTokens'] == 2048
+        assert request['generationConfig']['maxOutputTokens'] == Limits.load().max_output_tokens
         assert 'bối cảnh' in request['systemInstruction']['parts'][0]['text']
         eid = next(iter(evidence))
         text = 'FPT triển khai công viên công nghệ tại Hà Nội.'

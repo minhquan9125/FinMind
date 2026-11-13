@@ -97,7 +97,7 @@ def test_news_request_is_bounded_without_increasing_token_budget():
     assert all(len(item['passage']) <= 3500 for item in content['evidence'])
     schema = request['generationConfig']['responseJsonSchema']['properties']['claims']
     assert schema['maxItems'] == 2
-    assert request['generationConfig']['maxOutputTokens'] == 2048
+    assert request['generationConfig']['maxOutputTokens'] == Limits.load().max_output_tokens
     assert len(evidence['e0']['passage']) > 3500
 
 

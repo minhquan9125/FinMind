@@ -88,26 +88,36 @@ def build_grounded_request(question, evidence, limits, scope=None):
                             for item in body['evidence'][:2 if feed_body else 3]]
     elif body['scope'].get('source_type') == 'MARKET_ANALYSIS':
         request['systemInstruction']['parts'][0]['text'] += (
-            ' Với phân tích thị trường: trình bày theo các nhóm diễn biến đã xác minh, '
-            'yếu tố doanh nghiệp, yếu tố ngành/thị trường và ảnh hưởng có bằng chứng. '
+            ' Với phân tích thị trường: trả lời chi tiết, mỗi nhóm dưới đây là một ý riêng, theo đúng thứ tự, '
+            'bỏ nhóm không có bằng chứng: '
+            '(1) Giá gần nhất và ngày giao dịch. '
+            '(2) Xu hướng giá: với từng khung nêu đúng nhãn như bằng chứng ghi, giải thích vì sao có nhãn đó '
+            'bằng phần "Lý do:" và các số liệu đi kèm (lợi suất, giá so với SMA, so với chỉ số cùng kỳ); '
+            'có thể nêu thêm đỉnh/đáy 52 tuần, RSI14, khối lượng nếu bằng chứng có. '
+            '(3) Tình hình tài chính: nêu từng chỉ số có số liệu, giải thích ngắn bằng lời thường chỉ số đó đo gì, '
+            'và so với trung vị nhóm cùng ngành nếu bằng chứng có; nói rõ các chỉ số chưa đủ dữ liệu đã xác minh. '
+            '(4) Tin doanh nghiệp, ngành hoặc thị trường: sự kiện chính và vì sao liên quan tới công ty, '
+            'chỉ theo nội dung bài. '
+            '(5) Nhận định tổng hợp: gom các tín hiệu cùng chiều và trái chiều đã nêu, mỗi nhận định phải '
+            'nhắc lại dữ kiện làm căn cứ; nói rõ điều chưa thể kết luận và dữ kiện còn thiếu. '
+            'Mỗi ý viết 2–4 câu rõ ràng, dễ hiểu cho nhà đầu tư cá nhân. '
             'Phân biệt rõ nguyên nhân được nguồn nói trực tiếp với yếu tố chỉ liên quan '
             'hoặc cùng thời điểm. Dữ liệu giá chỉ chứng minh mức giá/ngày giao dịch, '
             'không tự chứng minh nguyên nhân. Không suy diễn rằng một tin đã làm giá '
-            'tăng hoặc giảm nếu nội dung nguồn không xác nhận quan hệ đó. Nếu chưa đủ '
-            'bằng chứng nhân quả, phải nói rõ chưa thể kết luận và nêu dữ kiện còn thiếu. '
+            'tăng hoặc giảm nếu nội dung nguồn không xác nhận quan hệ đó. '
             'Không đưa khuyến nghị mua, bán hoặc dự báo chắc chắn.'
-            ' Nếu có bằng chứng xu hướng giá từ FinMind, nêu đúng nhãn của từng khung như bằng chứng ghi; '
-            'không đổi, không nâng hay hạ nhãn; nhãn "Chưa rõ xu hướng" hoặc "Chưa đủ dữ liệu" phải nói đúng như vậy.'
-            ' Nếu có bằng chứng tình hình tài chính từ FinMind, chỉ nêu chỉ số và số liệu có trong bằng chứng đó; '
-            'chỉ số ghi "chưa đủ dữ liệu đã xác minh" phải nói đúng như vậy; không tự kết luận công ty mạnh hay yếu '
-            'vượt quá các chỉ số và so sánh nhóm cùng ngành đã có.'
+            ' Nhãn xu hướng phải giữ nguyên như bằng chứng ghi; không đổi, không nâng hay hạ nhãn; '
+            'nhãn "Chưa rõ xu hướng" hoặc "Chưa đủ dữ liệu" phải nói đúng như vậy.'
+            ' Với tình hình tài chính chỉ nêu chỉ số và số liệu có trong bằng chứng; không tự kết luận công ty '
+            'mạnh hay yếu vượt quá các chỉ số và so sánh nhóm cùng ngành đã có.'
             ' Mỗi quote chỉ chép các dòng chứa đúng số liệu hoặc nhãn mà ý đó nêu, không chép cả đoạn. '
-            'Mọi số, ngày, đơn vị và từ viết tắt trong một ý phải có trong quote của chính ý đó.'
+            'Mọi số, ngày, đơn vị và từ viết tắt trong một ý phải có trong quote của chính ý đó; '
+            'giữ nguyên cách viết số như bằng chứng.'
         )
-        # Caps keep the whole JSON answer inside max_output_tokens (2048); 6x3x700 overflowed it.
+        # 5 groups + 1 spare; caps keep the JSON answer inside max_output_tokens.
         schema = request['generationConfig']['responseJsonSchema']['properties']['claims']
-        schema['maxItems'] = 5
-        claim['properties']['text']['maxLength'] = 500
+        schema['maxItems'] = 6
+        claim['properties']['text']['maxLength'] = 700
         claim['properties']['evidence_ids']['maxItems'] = 3
         quotes = claim['properties']['support_quotes']
         quotes['maxItems'] = 4

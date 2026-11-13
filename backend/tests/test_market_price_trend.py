@@ -197,6 +197,26 @@ class TrendLabelTests(unittest.TestCase):
         self.assertIn("chưa điều chỉnh", text)
         self.assertIn("không phải khuyến nghị", text)
 
+    def test_passage_explains_each_label_from_its_rule(self):
+        # The chatbot may only explain a label with reasons that are written in the evidence.
+        out = trend(series(geometric(260, "0.003")))
+        text = trend_passage("FPT", out)
+        short = next(line for line in text.splitlines() if line.startswith("- Ngắn hạn"))
+        self.assertIn("Lý do: giá trên SMA20, SMA20 dốc lên hơn 1%, lợi suất dương.", short)
+        mixed = dict(out["horizons"]["20"], label="UNCLEAR",
+                     reasons=["close_above_sma", "sma_falling", "positive_return", "mixed_signals"])
+        out["horizons"]["20"] = mixed
+        short = next(line for line in trend_passage("FPT", out).splitlines() if line.startswith("- Ngắn hạn"))
+        self.assertIn("Lý do: tín hiệu trái chiều (giá trên SMA20, SMA20 dốc xuống hơn 1%, lợi suất dương).", short)
+
+    def test_passage_numbers_use_two_decimals_with_comma(self):
+        out = trend(series(geometric(260, "0.003")))
+        out["horizons"]["20"]["return_percent"] = "-14.5690"
+        text = trend_passage("FPT", out)
+        self.assertIn("Lợi suất -14,57%", text)
+        self.assertNotIn("-14.5690", text)
+
+
     def test_passage_orders_horizons_by_sessions(self):
         out = trend(series(geometric(260, "0.003")))
         out["horizons"] = {h: out["horizons"][h] for h in ("200", "20", "60")}

@@ -2,7 +2,7 @@
   "version": "b1-limits-v1",
   "model": "gemini-3.5-flash-lite",
   "max_input_tokens": 16384,
-  "max_output_tokens": 2048,
+  "max_output_tokens": 4096,
   "read_timeout_seconds": 600,
   "max_generation_calls": 20,
   "max_total_tokens": 65536,

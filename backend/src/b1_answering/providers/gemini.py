@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 import logging
@@ -6,12 +7,19 @@ import httpx
 from ..core.policy import Limits
 
 MAX_RESPONSE_BYTES = 1024 * 1024
+# Gemini overload (5xx) is usually gone within seconds: one retry, never for quota (429).
+RETRY_STATUSES = {500, 502, 503, 504}
+RETRY_DELAY_SECONDS = 2
 
 
 class GeminiError(Exception):
     def __init__(self, code: str):
         super().__init__(code)
         self.code = code
+
+
+class _Overloaded(Exception):
+    """Internal: a 5xx reply that _post may retry once."""
 
 
 class GeminiProvider:
@@ -51,6 +59,16 @@ class GeminiProvider:
         )
 
     async def _post(self, path: str, payload: Dict[str, Any]) -> bytes:
+        try:
+            return await self._post_once(path, payload)
+        except _Overloaded:
+            await asyncio.sleep(RETRY_DELAY_SECONDS)
+        try:
+            return await self._post_once(path, payload)
+        except _Overloaded:
+            raise GeminiError("GEMINI_UNAVAILABLE") from None
+
+    async def _post_once(self, path: str, payload: Dict[str, Any]) -> bytes:
         url = f"{self._base_url}:{path}"
         async with self._client() as client:
             try:
@@ -87,6 +105,8 @@ class GeminiProvider:
                 logging.getLogger(__name__).warning('Gemini error %s: %s', error.get('status','UNKNOWN'), detail)
             except (ValueError, TypeError, AttributeError):
                 pass
+            if resp.status_code in RETRY_STATUSES:
+                raise _Overloaded()
             raise GeminiError("GEMINI_UNAVAILABLE") from None
         return bytes(body)
 

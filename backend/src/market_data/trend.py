@@ -166,6 +166,29 @@ def analyze_trend(price_rows, index_rows, *, exchange, rsi14):
                 horizons=horizons, context=context_out, warnings=warnings)
 
 
+def _vi(value):
+    """Chat text: two decimals with a Vietnamese comma (the stored values keep four places)."""
+    return f"{Decimal(value):.2f}".replace(".", ",")
+
+
+def _reason_text(h, item):
+    """Why the label was given, from the same rule outcomes analyze_trend recorded."""
+    phrases = {"close_above_sma": f"giá trên SMA{h}", "close_below_sma": f"giá dưới SMA{h}",
+               "sma_rising": f"SMA{h} dốc lên hơn {SLOPE_LIMIT}%", "sma_falling": f"SMA{h} dốc xuống hơn {SLOPE_LIMIT}%",
+               "sma_flat": f"SMA{h} gần như phẳng (trong khoảng ±{SLOPE_LIMIT}%)",
+               "positive_return": "lợi suất dương", "negative_return": "lợi suất âm",
+               "narrow_range": f"biên độ cao-thấp không quá {HORIZONS[h][1]}%"}
+    used = {"UP": ("close_above_sma", "sma_rising", "positive_return"),
+            "DOWN": ("close_below_sma", "sma_falling", "negative_return"),
+            "SIDEWAYS": ("narrow_range", "sma_flat")}.get(item["label"], tuple(phrases))
+    parts = ", ".join(phrases[r] for r in item["reasons"] if r in used)
+    if item["label"] == "INSUFFICIENT_DATA":
+        return " Lý do: chưa đủ số phiên giao dịch đã lưu."
+    if "mixed_signals" in item["reasons"]:
+        return f" Lý do: tín hiệu trái chiều ({parts})."
+    return f" Lý do: {parts}." if parts and item["label"] != "UNCLEAR" else ""
+
+
 def _vnd(value, scale):
     return f"{Decimal(value) * scale:,.0f}".replace(",", ".")
 
@@ -178,11 +201,11 @@ def trend_passage(symbol, trend):
              f"(nguồn giá {source['name']}, {approved}; so với {trend['benchmark']}):"]
     for h in HORIZONS:
         item = trend["horizons"][str(h)]
-        line = f"- {HORIZON_NAMES[h]}: {LABELS_VI[item['label']]} ({h} phiên)."
+        line = f"- {HORIZON_NAMES[h]}: {LABELS_VI[item['label']]} ({h} phiên)." + _reason_text(h, item)
         if item["return_percent"] is not None:
-            line += (f" Lợi suất {item['return_percent']}%, giá so với SMA{h} {item['close_vs_sma_percent']}%,"
-                     f" độ dốc SMA{h} {item['slope_percent']}%, biên độ cao-thấp {item['range_percent']}%.")
-            line += (f" {trend['benchmark']} cùng kỳ {item['index_return_percent']}%."
+            line += (f" Lợi suất {_vi(item['return_percent'])}%, giá so với SMA{h} {_vi(item['close_vs_sma_percent'])}%,"
+                     f" độ dốc SMA{h} {_vi(item['slope_percent'])}%, biên độ cao-thấp {_vi(item['range_percent'])}%.")
+            line += (f" {trend['benchmark']} cùng kỳ {_vi(item['index_return_percent'])}%."
                      if item["index_return_percent"] is not None else " Chưa đủ dữ liệu chỉ số cùng kỳ.")
         days = [r.split(":", 1)[1] for r in item["reasons"] if r.startswith("possible_corporate_action:")]
         if days:
@@ -194,12 +217,12 @@ def trend_passage(symbol, trend):
     if context["high_52w"] is not None:
         scale = source["price_scale"]
         facts.append(f"đỉnh 52 tuần {_vnd(context['high_52w'], scale)} VND ngày {context['high_52w_date']}"
-                     f" (giá hiện tại {context['from_high_percent']}% so với đỉnh)")
+                     f" (giá hiện tại {_vi(context['from_high_percent'])}% so với đỉnh)")
         facts.append(f"đáy 52 tuần {_vnd(context['low_52w'], scale)} VND ngày {context['low_52w_date']}")
     if context["rsi14"] is not None:
-        facts.append(f"RSI14 {context['rsi14']}")
+        facts.append(f"RSI14 {_vi(context['rsi14'])}")
     if context["volume20_vs_volume60"] is not None:
-        facts.append(f"khối lượng trung bình 20 phiên bằng {context['volume20_vs_volume60']} lần trung bình 60 phiên")
+        facts.append(f"khối lượng trung bình 20 phiên bằng {_vi(context['volume20_vs_volume60'])} lần trung bình 60 phiên")
     if facts:
         lines.append("Dữ kiện: " + "; ".join(facts) + ".")
     if not source["is_adjusted"]:
