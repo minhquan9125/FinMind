@@ -55,9 +55,13 @@ async def resolve_result_rows(conn, rows, *, preview_source_changed=False, sourc
                 continue
             renderer = meta['chunker_version'] if locator['source_table'] == 'financial_reports' else 'db-v1'
             key = (locator['source_table'], locator['source_id'], meta['max_words'], renderer)
+            pinned = {}
+            if renderer == 'db-financial-v5':  # rebuild with the verification the chunk was built from
+                pinned = {'verification_id': locator.get('verification_id')}
+                key += (pinned['verification_id'],)
             if key not in sources:
                 sources[key] = await fetch_locator_document(
-                    conn, *key[:3], financial_renderer_version=renderer,
+                    conn, *key[:3], financial_renderer_version=renderer, **pinned,
                 )
             source = sources[key]
             if source is None:

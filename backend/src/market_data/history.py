@@ -5,13 +5,13 @@ from decimal import Decimal, InvalidOperation
 INDEX_NAMES = {"VNINDEX": "VN-INDEX", "VN30": "VN30", "HNXINDEX": "HNX-INDEX", "UPCOMINDEX": "UPCOM-INDEX"}
 
 
-def normalize_index_history(symbol, result):
+def normalize_index_history(symbol, result, *, max_age_days=366):
     if symbol not in INDEX_NAMES:
         raise ValueError("Chỉ số không được hỗ trợ.")
-    return normalize_history(symbol, result, is_index=True)
+    return normalize_history(symbol, result, is_index=True, max_age_days=max_age_days)
 
 
-def normalize_history(symbol, result, *, is_index=False):
+def normalize_history(symbol, result, *, is_index=False, max_age_days=366):
     if not is_index:
         from .live import stock_symbol
         stock_symbol(symbol)
@@ -24,7 +24,7 @@ def normalize_history(symbol, result, *, is_index=False):
     bars = {}
     for row in rows:
         day = datetime.fromisoformat(row["time"]).date()
-        if day in bars or not stamp.date() - timedelta(days=366) <= day <= stamp.date():
+        if day in bars or not stamp.date() - timedelta(days=max_age_days) <= day <= stamp.date():
             raise ValueError("Ngày chỉ số không hợp lệ.")
         prices = {}
         for field in ("open", "high", "low", "close"):

@@ -66,6 +66,47 @@ def feed_item(snapshot):
                    f"Lấy dữ liệu lúc {snapshot['observed_at']}.")
         locator.update(trading_day=snapshot['trading_day'],
                        section=f"vnstock/KBS · {symbol} · {snapshot['trading_day']}")
+    elif kind == 'PRICE_TREND' and provider == 'finmind_db':
+        # The passage is generated from the stored-price trend, so the model cites exactly the computed labels.
+        from ...market_data.trend import trend_passage
+        trend, as_of = snapshot.get('trend'), snapshot.get('as_of')
+        try:
+            if not isinstance(as_of, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', as_of):
+                raise ValueError()
+            datetime.strptime(as_of, '%Y-%m-%d')
+            if not isinstance(trend, dict) or trend.get('as_of') != as_of or set(trend['horizons']) != {'20', '60', '200'}:
+                raise ValueError()
+            passage = trend_passage(symbol, trend)
+        except (KeyError, TypeError, ValueError, AttributeError):
+            raise CitationError('INVALID_EVIDENCE') from None
+        title = f'Xu hướng giá {symbol} · dữ liệu FinMind'
+        locator.update(trading_day=as_of, section=f'FinMind DB · {symbol} · {as_of}')
+    elif kind == 'FINANCIAL_HEALTH' and provider == 'finmind_db':
+        # Verified BCTC signals; the passage is code-generated and links only to Vietstock BCTC PDFs.
+        from ...financial.health_passage import NAMES, PERIOD, financial_health_passage
+        health = snapshot.get('health')
+        try:
+            if (not isinstance(health, dict) or not isinstance(health.get('period'), str)
+                    or not PERIOD.match(health['period']) or not isinstance(health.get('signals'), dict)
+                    or not health['signals'] or set(health['signals']) - set(NAMES)):
+                raise ValueError()
+            citations = health.get('citations') or []
+            if not isinstance(citations, list) or len(citations) > 5:
+                raise ValueError()
+            for cite in citations:
+                url = urlsplit(cite['url'])
+                if (url.scheme != 'https' or not (url.hostname or '').endswith('vietstock.vn') or url.username
+                        or not isinstance(cite['title'], str) or not cite['title'].strip()
+                        or type(cite['page']) is not int or cite['page'] < 1):
+                    raise ValueError()
+            passage = financial_health_passage(symbol, health)
+        except (KeyError, TypeError, ValueError, AttributeError):
+            raise CitationError('INVALID_EVIDENCE') from None
+        first = citations[0] if citations else None
+        title = first['title'] if first else f'Tình hình tài chính {symbol} · dữ liệu FinMind'
+        locator.update(period=health['period'], section=f'BCTC FinMind · {symbol} · {health["period"]}')
+        if first:
+            locator.update(url=first['url'], page=first['page'])
     else:
         raise CitationError('INVALID_EVIDENCE')
     sha = digest(snapshot)

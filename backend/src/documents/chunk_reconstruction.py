@@ -130,6 +130,8 @@ async def reconstruct_chunk(conn, locator, expected_hash):
     try:
         kwargs = ({'financial_renderer_version': meta['chunker_version']}
                   if locator['source_table'] == 'financial_reports' else {})
+        if kwargs.get('financial_renderer_version') == 'db-financial-v5':  # rebuild from the pinned verification
+            kwargs['verification_id'] = locator.get('verification_id')
         doc = await fetch_locator_document(conn, locator['source_table'], locator['source_id'], meta['max_words'], **kwargs)
     except ValueError as exc:
         raise ReconstructionError('INVALID_LOCATOR', str(exc)) from exc

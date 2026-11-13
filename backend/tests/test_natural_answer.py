@@ -117,3 +117,45 @@ def test_prompt_does_not_mutate_shared_schema():
     request['generationConfig']['responseJsonSchema'].clear()
     other = grounded.build_grounded_request('Tiền FPT?', evidence(), Limits.load(), SCOPE)
     assert other['generationConfig']['responseJsonSchema']['required'] == ['claims']
+
+
+@pytest.mark.parametrize('word', ['tỷ lệ', 'tỉ lệ', 'tỷ suất', 'tỷ trọng', 'tỷ giá'])
+def test_ratio_words_are_not_the_billion_unit(word):
+    # "tỷ lệ nợ" is a ratio, not an amount in tỷ đồng; the bare unit still counts.
+    assert grounded._units(f'{word} nợ phải trả trên tổng tài sản là 41,54%') == {'%'}
+    assert 'ty' in grounded._units(f'{word} nợ là 5 tỷ')
+
+
+HEALTH = ('Tình hình tài chính FPT kỳ quý 3/2026 (tính từ BCTC đã đối chiếu với file BCTC gốc, dữ liệu FinMind):\n'
+          '- Nợ phải trả trên tổng tài sản: 41,54%.\n- ROE: chưa đủ dữ liệu đã xác minh.')
+
+
+@pytest.mark.parametrize('kind', ['FINANCIAL_HEALTH', 'PRICE_TREND'])
+def test_finmind_snapshot_header_supports_period_but_not_other_numbers(kind):
+    ev = {'h': dict(evidence_id='h', source_id='s', chunk_id='c', source_sha256='a'*64,
+                    source_type=kind, passage=HEALTH, locator={'period': '2026-Q3'})}
+    scope = {'source_type': 'MARKET_ANALYSIS'}
+    line = '- Nợ phải trả trên tổng tài sản: 41,54%.'
+    ok = {'claims': [dict(text='Quý 3/2026, nợ phải trả trên tổng tài sản của FPT là 41,54%.',
+                          evidence_ids=['h'], support_quotes=[dict(evidence_id='h', quote=line)])]}
+    assert grounded.validate_grounded(ok, ev, scope)['status'] == 'DRAFT_READY'
+    bad = copy.deepcopy(ok)
+    bad['claims'][0]['text'] = 'ROE của FPT là 41,54%.'  # ROE line is not quoted
+    with pytest.raises(CitationError):
+        grounded.validate_grounded(bad, ev, scope)
+
+
+def test_market_analysis_drops_only_unsupported_claims():
+    ev = {'h': dict(evidence_id='h', source_id='s', chunk_id='c', source_sha256='a'*64,
+                    source_type='FINANCIAL_HEALTH', passage=HEALTH, locator={'period': '2026-Q3'})}
+    line = '- Nợ phải trả trên tổng tài sản: 41,54%.'
+    good = dict(text='Quý 3/2026, nợ phải trả trên tổng tài sản của FPT là 41,54%.',
+                evidence_ids=['h'], support_quotes=[dict(evidence_id='h', quote=line)])
+    bad = dict(text='ROE của FPT là 99%.', evidence_ids=['h'], support_quotes=[dict(evidence_id='h', quote=line)])
+    wrong_id = dict(text='Giá FPT là 1 VND.', evidence_ids=['x'], support_quotes=[dict(evidence_id='x', quote=line)])
+    scope = {'source_type': 'MARKET_ANALYSIS'}
+    out = grounded.keep_supported_claims({'claims': [bad, good, wrong_id]}, ev, scope)
+    assert [c['text'] for c in out['claims']] == [good['text']]
+    assert '99%' not in out['draft'] and 'đã bị lược' in out['draft']
+    assert grounded.keep_supported_claims({'claims': [bad]}, ev, scope) is None  # nothing left: fail closed
+    assert grounded.keep_supported_claims({'claims': [bad, good]}, ev, {'source_type': 'BCTC'}) is None

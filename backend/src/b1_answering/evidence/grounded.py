@@ -96,14 +96,22 @@ def build_grounded_request(question, evidence, limits, scope=None):
             'tăng hoặc giảm nếu nội dung nguồn không xác nhận quan hệ đó. Nếu chưa đủ '
             'bằng chứng nhân quả, phải nói rõ chưa thể kết luận và nêu dữ kiện còn thiếu. '
             'Không đưa khuyến nghị mua, bán hoặc dự báo chắc chắn.'
+            ' Nếu có bằng chứng xu hướng giá từ FinMind, nêu đúng nhãn của từng khung như bằng chứng ghi; '
+            'không đổi, không nâng hay hạ nhãn; nhãn "Chưa rõ xu hướng" hoặc "Chưa đủ dữ liệu" phải nói đúng như vậy.'
+            ' Nếu có bằng chứng tình hình tài chính từ FinMind, chỉ nêu chỉ số và số liệu có trong bằng chứng đó; '
+            'chỉ số ghi "chưa đủ dữ liệu đã xác minh" phải nói đúng như vậy; không tự kết luận công ty mạnh hay yếu '
+            'vượt quá các chỉ số và so sánh nhóm cùng ngành đã có.'
+            ' Mỗi quote chỉ chép các dòng chứa đúng số liệu hoặc nhãn mà ý đó nêu, không chép cả đoạn. '
+            'Mọi số, ngày, đơn vị và từ viết tắt trong một ý phải có trong quote của chính ý đó.'
         )
+        # Caps keep the whole JSON answer inside max_output_tokens (2048); 6x3x700 overflowed it.
         schema = request['generationConfig']['responseJsonSchema']['properties']['claims']
-        schema['maxItems'] = 6
-        claim['properties']['text']['maxLength'] = 700
+        schema['maxItems'] = 5
+        claim['properties']['text']['maxLength'] = 500
         claim['properties']['evidence_ids']['maxItems'] = 3
         quotes = claim['properties']['support_quotes']
-        quotes['maxItems'] = 3
-        quotes['items']['properties']['quote']['maxLength'] = 700
+        quotes['maxItems'] = 4
+        quotes['items']['properties']['quote']['maxLength'] = 300
         body['evidence'] = [{**item, 'passage': item['passage'][:5000]}
                             for item in body['evidence'][:6]]
     content['text'] = json.dumps(body, ensure_ascii=False)
@@ -128,6 +136,8 @@ def _numbers(text):
 
 def _units(text):
     # Do not fold the whole passage: Vietnamese "công ty" is not the unit "tỷ".
+    # "tỷ lệ/suất/trọng/giá" are ratio words, not an amount in tỷ.
+    text = re.sub(r'\bt[ỷỉ]\s+(?:lệ|suất|trọng|giá)\b', ' ', text.lower())
     tokens = re.findall(r'\b(?:đồng|dong|vnd|usd|eur|nghìn|nghin|ngàn|ngan|triệu|trieu|tỷ|tỉ)\b|%', text.lower())
     units = {_fold(token) for token in tokens}
     if re.search(r'\d\s+ty\b', text.lower()):
@@ -155,6 +165,9 @@ def _facts(item, quotes, scope):
         if item.get('verification_basis') == 'FEED_SNAPSHOT_BINDING':
             published = '\nNgày đăng: '+item['snapshot']['published_at']
         return header+published+'\n'+'\n'.join(quotes)
+    if item.get('source_type') in ('FINANCIAL_HEALTH', 'PRICE_TREND'):
+        # FinMind snapshots: the first line only names symbol, period/day and source.
+        return header+'\n'+'\n'.join(quotes)
     return '\n'.join(quotes)
 
 
@@ -309,3 +322,26 @@ def validate_grounded(payload, evidence, scope=None):
             cautions.append('Nguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.')
     return {'status': 'DRAFT_READY', 'draft': '\n\n'.join(parts+cautions),
             'claims': output, 'citations': citations, 'cautions': cautions}
+
+
+def keep_supported_claims(payload, evidence, scope):
+    """MARKET_ANALYSIS mixes several sources: drop the claims that fail validation, never edit one.
+
+    None when nothing (or everything) fails, so the caller keeps its fail-closed path."""
+    claims = payload.get('claims') if isinstance(payload, dict) else None
+    if (scope or {}).get('source_type') != 'MARKET_ANALYSIS' or not isinstance(claims, list):
+        return None
+    kept = []
+    for claim in claims:
+        try:
+            validate_grounded({'claims': [claim]}, evidence, scope)
+        except CitationError:
+            continue
+        kept.append(claim)
+    if not kept or len(kept) == len(claims):
+        return None
+    draft = validate_grounded({'claims': kept}, evidence, scope)
+    note = 'Một số ý trong bản diễn đạt đã bị lược vì chưa khớp nguyên văn nguồn.'
+    draft['cautions'].append(note)
+    draft['draft'] += '\n\n'+note
+    return draft

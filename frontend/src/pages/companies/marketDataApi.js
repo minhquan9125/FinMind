@@ -15,9 +15,15 @@ async function readJson(path, signal) {
   if (!response.ok) {
     let body = null;
     try { body = await response.json(); } catch { /* API may return an empty error body. */ }
-    throw new Error(body?.detail || `API trả lỗi ${response.status}.`);
+    // Callers tell "no stored data" (404) from sign-in (401) and outage (503) by status.
+    throw Object.assign(new Error(body?.detail || `API trả lỗi ${response.status}.`), { status: response.status });
   }
   return response.json();
+}
+
+export function getPriceAnalysis(symbol, asOf, signal) {
+  const query = asOf ? `?as_of=${encodeURIComponent(asOf)}` : "";
+  return readJson(`/api/market-data/stocks/${encodeURIComponent(symbol)}/analysis${query}`, signal);
 }
 
 export async function getSavedOhlcv(symbol, signal, etag) {

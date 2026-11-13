@@ -27,6 +27,7 @@ The PDF path in ``chunking.py`` is left unchanged.
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 import uuid
 from dataclasses import dataclass, field
@@ -39,9 +40,10 @@ NAMESPACE = uuid.UUID("b77dbd7f-5d89-479d-90a3-421e5f0981ea")
 CHUNKER_VERSION = "db-v1"
 FINANCIAL_CHUNKER_VERSION = "db-financial-v3"
 FINANCIAL_CLEAN_RENDERER_VERSION = "db-financial-v4"
+FINANCIAL_VERIFIED_RENDERER_VERSION = "db-financial-v5"
 FINANCIAL_RENDERER_VERSIONS = (
     CHUNKER_VERSION, "db-financial-v2", FINANCIAL_CHUNKER_VERSION,
-    FINANCIAL_CLEAN_RENDERER_VERSION,
+    FINANCIAL_CLEAN_RENDERER_VERSION, FINANCIAL_VERIFIED_RENDERER_VERSION,
 )
 DEFAULT_MAX_WORDS = 130  # same order of magnitude as the PDF window (130 words)
 
@@ -196,7 +198,8 @@ def chunk_section(doc: SourceDocument, section_index: int, first_chunk_index: in
                     "content_hash": content_hash,
                 },
                 **{k: v for k, v in doc.meta.items()
-                   if k in ("url", "published_at", "period_code", "news_type", "news_priority", "classifier")},
+                   if k in ("url", "published_at", "period_code", "news_type", "news_priority", "classifier",
+                            "verification_id", "source_title", "source_page")},
             },
         ))
         row_cursor += len(group)
@@ -254,6 +257,29 @@ def format_value(value: Any, unit: str | None) -> str:
 
 # ------------------------------------------- rows -> SourceDocument builders
 
+_SCOPE_VI = {"CONSOLIDATED": "Hợp nhất", "SEPARATE": "Riêng"}
+_PAGE_METRICS = ("PROFIT_AFTER_TAX", "NET_REVENUE", "TOTAL_OPERATING_INCOME", "TOTAL_ASSETS")
+
+
+def _verified_report(row: dict[str, Any]) -> bool:
+    # shortcut: needs scope, unit and status all confirmed; anything weaker renders as v3 (unverified).
+    return (row.get("v_status") == "VERIFIED" and row.get("v_scope") in _SCOPE_VI
+            and row.get("v_unit_status") == "VERIFIED" and str(row.get("v_unit") or "").upper() == "VND")
+
+
+def _verification_meta(row: dict[str, Any], verified: bool) -> dict[str, Any]:
+    vid = row.get("verification_id")
+    meta: dict[str, Any] = {"verification_id": str(vid) if vid else None, "url": None,
+                            "source_title": None, "source_page": None}
+    if verified:
+        evidence = row.get("v_evidence") or []
+        evidence = json.loads(evidence) if isinstance(evidence, str) else evidence
+        pages = {e.get("metric"): e.get("page") for e in reversed(evidence) if isinstance(e, dict)}
+        meta.update(url=row.get("doc_url"), source_title=row.get("doc_title"),
+                    source_page=next((pages[m] for m in _PAGE_METRICS if pages.get(m) is not None), None))
+    return meta
+
+
 def financial_documents(rows: Iterable[dict[str, Any]], *, renderer_version: str = FINANCIAL_CHUNKER_VERSION) -> list[SourceDocument]:
     """Group observation rows into one document per financial report.
 
@@ -300,6 +326,8 @@ def financial_documents(rows: Iterable[dict[str, Any]], *, renderer_version: str
         scope = first.get("statement_scope") or "không rõ phạm vi"
         company = first.get("company_name") or symbol or ""
         period_code = first.get("period_code")
+        v5 = renderer_version == FINANCIAL_VERIFIED_RENDERER_VERSION
+        verified = v5 and _verified_report(first)
         by_section: dict[str, list[dict[str, Any]]] = {}
         for item in items:
             by_section.setdefault(str(item.get("section") or "OTHER"), []).append(item)
@@ -316,12 +344,23 @@ def financial_documents(rows: Iterable[dict[str, Any]], *, renderer_version: str
             elif renderer_version == FINANCIAL_CLEAN_RENDERER_VERSION:
                 header = (f"{company} ({symbol}) | {label_vi} | {period_text(period_code, section)} | "
                           f"Phạm vi: {scope} | Đơn vị: theo từng chỉ tiêu")
+            if v5:  # unverified v5 keeps the v3 wording
+                header = (f"{company} ({symbol}) | {label_vi} | {period_text(period_code, section)} | "
+                          f"Phạm vi: {scope} | Đơn vị: theo từng chỉ tiêu; đơn vị nguồn chưa xác minh nếu không ghi rõ")
+            if verified:
+                header = (f"{company} ({symbol}) | {label_vi} | {period_text(period_code, section)} | "
+                          f"Phạm vi: {_SCOPE_VI[first['v_scope']]} (đã xác minh) | Đơn vị: VND (đã xác minh) | "
+                          f"Nguồn: {first.get('doc_title') or 'không rõ'}")
             lines = []
             for item in sorted(by_section[section], key=lambda r: str(r.get("code") or "")):
                 name = item.get("canonical_name") or item.get("code") or ""
                 text = f"{name} ({item.get('code')}): {format_value(item.get('value'), item.get('unit'))}"
-                if (renderer_version == FINANCIAL_CHUNKER_VERSION
-                        and str(item.get('unit') or '').strip().upper() in ('', 'SOURCE_NATIVE')):
+                unit = str(item.get('unit') or '').strip().upper()
+                if (renderer_version in (FINANCIAL_CHUNKER_VERSION, FINANCIAL_VERIFIED_RENDERER_VERSION)
+                        and not verified and unit in ('', 'SOURCE_NATIVE')):
+                    text += ' (đơn vị chưa xác minh)'
+                elif verified and unit != 'VND':
+                    # The verification covers VND money rows only, not EPS (VND/share) or native-unit ratios.
                     text += ' (đơn vị chưa xác minh)'
                 lines.append(SourceRow(key=str(item.get("observation_id")), text=text))
             sections.append(SourceSection(label=f"{label_vi} · {period_text(period_code, section)}",
@@ -330,7 +369,8 @@ def financial_documents(rows: Iterable[dict[str, Any]], *, renderer_version: str
             source_table="financial_reports", source_id=report_id, doc_type="FINANCIAL_STATEMENT",
             title=f"Báo cáo tài chính {symbol} {period_text(period_code, 'RATIO')} ({scope})",
             symbol=symbol, language="vi", sections=sections,
-            meta={"period_code": period_code, "chunker_version": renderer_version},
+            meta={"period_code": period_code, "chunker_version": renderer_version,
+                  **(_verification_meta(first, verified) if v5 else {})},
         ))
     return docs
 

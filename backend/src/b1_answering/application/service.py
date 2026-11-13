@@ -160,6 +160,12 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
                         trace.append({'event': 'article_quotes_bound', 'bindings': rebound[1]})
                         return finish('DRAFT_READY', 'NEWS_QUOTE_BOUND',
                                       'Bản tóm tắt có đoạn trích từ đúng nội dung bài.', news_draft)
+            partial = grounded.keep_supported_claims(generated.get('payload'), evidence, result.get('scope'))
+            if partial:
+                trace.append({'event': 'unsupported_claims_dropped', 'reason_code': exc.code,
+                              'kept': len(partial['claims'])})
+                return finish('DRAFT_READY', 'PARTIAL_CLAIMS',
+                              'Chỉ giữ các ý khớp nguyên văn nguồn; các ý khác đã bị lược.', partial)
             draft = grounded.source_row_fallback(evidence, result.get('scope'), reason_code=exc.code)
             if draft:
                 trace.append({'event': 'draft_bound_to_source_row', 'reason_code': exc.code})

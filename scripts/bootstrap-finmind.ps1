@@ -146,11 +146,58 @@ function Install-FinMindRequirements {
     return $true
 }
 
+function Get-FinMindEnvValue {
+    param([string]$Root, [string]$Name)
+    foreach ($file in @('backend\.env', '.env')) {
+        $path = Join-Path $Root $file
+        if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { continue }
+        foreach ($line in Get-Content -LiteralPath $path) {
+            if ($line -match ('^\s*' + [regex]::Escape($Name) + '\s*=\s*(.*?)\s*$')) { return $Matches[1].Trim('"').Trim("'") }
+        }
+    }
+    return $null
+}
+
+function Test-FinMindTunnel { return [bool](Get-NetTCPConnection -State Listen -LocalPort 15433 -ErrorAction SilentlyContinue) }
+
+function Start-FinMindTunnel {
+    param([string]$Root)
+    # Only teams whose database sits behind the VPS set FINMIND_TUNNEL_TARGET (user@host) in backend\.env.
+    $target = Get-FinMindEnvValue $Root 'FINMIND_TUNNEL_TARGET'
+    if (-not $target) { return $true }
+    if (Test-FinMindTunnel) { Write-Host 'Tunnel DB (cong 15433) da mo san.'; return $true }
+    # One password prompt and no retry: the VPS blocks this IP after a few wrong passwords.
+    $options = @('-N','-o','ExitOnForwardFailure=yes','-o','ServerAliveInterval=30','-o','NumberOfPasswordPrompts=1')
+    $password = Get-FinMindEnvValue $Root 'FINMIND_TUNNEL_PASSWORD'
+    try {
+        if ($password) {
+            $env:SSH_ASKPASS = Join-Path $Root 'scripts\ssh-askpass.cmd'
+            $env:SSH_ASKPASS_REQUIRE = 'force'
+            $env:FINMIND_TUNNEL_PASSWORD = $password
+            $options += @('-o','PubkeyAuthentication=no','-o','PreferredAuthentications=password')
+        } else { $options += @('-o','BatchMode=yes') }
+        $process = Start-Process -FilePath 'ssh.exe' -ArgumentList ($options + @('-L','127.0.0.1:15433:127.0.0.1:5433',$target)) -WindowStyle Minimized -PassThru -ErrorAction Stop
+    } finally {
+        # The backend and frontend windows started next must not inherit the password.
+        foreach ($name in @('SSH_ASKPASS','SSH_ASKPASS_REQUIRE','FINMIND_TUNNEL_PASSWORD')) { Remove-Item -LiteralPath "Env:$name" -ErrorAction SilentlyContinue }
+    }
+    foreach ($attempt in 1..20) {
+        Start-Sleep -Seconds 1
+        if ($process.HasExited) { break }
+        if (Test-FinMindTunnel) { Write-Host 'Da mo tunnel DB (cong 15433). Dong cua so ssh thu nho de ngat.'; return $true }
+    }
+    if (-not $process.HasExited) { Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue }
+    Write-Host '[LOI] Khong mo duoc tunnel DB. Kiem tra mang va FINMIND_TUNNEL_PASSWORD trong backend\.env; khong tu thu lai vi VPS khoa IP khi sai mat khau nhieu lan.'
+    return $false
+}
+
 function Start-FinMind {
     param([string]$Root)
+    if (-not (Start-FinMindTunnel $Root)) { return $false }
     Start-Process -FilePath $env:ComSpec -WorkingDirectory (Join-Path $Root 'backend') -ArgumentList '/k npm.cmd run dev' -WindowStyle Normal -ErrorAction Stop
     Start-Process -FilePath $env:ComSpec -WorkingDirectory (Join-Path $Root 'frontend') -ArgumentList '/k npm.cmd run dev -- --host localhost --port 5173 --strictPort' -WindowStyle Normal -ErrorAction Stop
     Write-Host 'Da mo hai terminal. Doi backend san sang, roi mo http://localhost:5173/research. Ctrl+C trong tung terminal de dung.'
+    return $true
 }
 
 function Invoke-FinMind {
@@ -172,7 +219,7 @@ function Invoke-FinMind {
         }
         if (-not $state.Ready) { return 1 }
         if ($Check) { Write-Host '[OK] Moi truong cuc bo san sang; ket noi DB/OAuth se duoc ung dung xac nhan khi chay.'; return 0 }
-        $null = Start-FinMind $Root
+        if (-not (Start-FinMind $Root)) { return 1 }
         return 0
     } catch { Write-Host '[LOI] Khong hoan tat kiem tra/cai/khoi dong. Kiem tra duong dan, quyen truy cap va cai dat thu cong neu can.'; return 1 }
 }

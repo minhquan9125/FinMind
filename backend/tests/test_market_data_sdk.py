@@ -72,6 +72,16 @@ class SDKTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.client.history("../FPT")
 
+    def test_index_history_passes_days(self):
+        self.client.responses.put(json.dumps({"rows": []}))
+        self.client.history("HNXINDEX", days=400)
+        self.assertEqual(json.loads(self.process.stdin.write.call_args.args[0]),
+                         {"action": "index_history", "symbol": "HNXINDEX", "days": 400})
+        for days in (0, 401, True):
+            with self.assertRaises(ValueError):
+                self.client.history("HNXINDEX", days=days)
+        self.assertEqual(self.process.stdin.write.call_count, 1)
+
     def test_start_child_is_bounded_and_read_only_toward_old_crawler(self):
         self.client.process = None
         child = Mock()
@@ -119,6 +129,18 @@ class SDKChildTests(unittest.TestCase):
         result, market = self.run_child('{"action":"index_history","symbol":"../FPT"}')
         self.assertIn("error", result)
         market.index.assert_not_called()
+
+    def test_child_uses_requested_window(self):
+        from datetime import datetime, timedelta, timezone
+        today = datetime.now(timezone(timedelta(hours=7))).date()
+        result, market = self.run_child('{"action":"index_history","symbol":"VNINDEX","days":400}')
+        self.assertIn("rows", result)
+        kwargs = market.index.return_value.ohlcv.call_args.kwargs
+        self.assertEqual((kwargs["start"], kwargs["count"]), (str(today - timedelta(days=400)), 300))
+        for days in ("400", 0, 401):
+            result, market = self.run_child(json.dumps({"action": "index_history", "symbol": "VNINDEX", "days": days}))
+            self.assertIn("error", result)
+            market.index.assert_not_called()
 
     def test_closed_session_is_checked_in_child_after_sdk_startup(self):
         result, market = self.run_child('{"symbols":["FPT"],"automatic":true}', session_open=False)

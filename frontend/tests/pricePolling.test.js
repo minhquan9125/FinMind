@@ -52,6 +52,46 @@ test("history completes before watching and only runs once per chart", async () 
   s.stop();
 });
 
+test("stored ENTRADE history registers the live viewer without SDK preparation", async () => {
+  let prepared = 0;
+  const s = setup({
+    read: async () => ({ etag: '"db"', data: { symbol: "FPT", source: "ENTRADE", bars: [{ date: "2026-11-11", close: "50.9" }] } }),
+    prepare: async () => { prepared += 1; },
+  });
+  await flush();
+  assert.equal(prepared, 0);
+  assert.equal(s.calls.watch.length, 1);
+  assert.equal([...s.timers.values()][0], 5000);
+  s.stop();
+});
+
+test("an empty ENTRADE history still uses the history fallback", async () => {
+  let prepared = 0;
+  const s = setup({
+    read: async () => ({ etag: '"empty"', data: { symbol: "FPT", source: "ENTRADE", bars: [] } }),
+    prepare: async () => { prepared += 1; },
+  });
+  await flush();
+  assert.equal(prepared, 1);
+  assert.equal(s.calls.watch.length, 1);
+  s.stop();
+});
+
+test("a live KBS overlay still reuses the underlying ENTRADE history", async () => {
+  let prepared = 0;
+  const s = setup({
+    read: async () => ({ data: { source: "vnstock_kbs", bars: [
+      { date: "2026-11-11", source: "ENTRADE", close: "50.9" },
+      { date: "2026-11-12", source: "vnstock_kbs", close: "51" },
+    ] } }),
+    prepare: async () => { prepared += 1; },
+  });
+  await flush();
+  assert.equal(prepared, 0);
+  assert.equal(s.calls.watch.length, 1);
+  s.stop();
+});
+
 test("history failure keeps saved chart and reports missing history", async () => {
   const s = setup({ prepare: async () => { throw new Error("source unavailable"); } });
   await flush();

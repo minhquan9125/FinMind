@@ -24,13 +24,16 @@ export function startPricePolling({ symbol, onResult, onError, onChecked, onSett
     try {
       if (!prepared && canPrepare && api.prepare) {
         onHistoryLoading(true);
+        let storedHistory = false;
         // Show the saved chart immediately, then backfill before registering live quotes.
         try {
           const saved = await api.read(symbol, controller.signal, etag);
           if (stopped || document.hidden) return;
           if (!saved.unchanged) { etag = saved.etag; onResult(saved.data); }
+          storedHistory = Array.isArray(saved.data?.bars) && saved.data.bars.length > 0
+            && (saved.data.source === "ENTRADE" || saved.data.bars.some((bar) => bar.source === "ENTRADE"));
         } catch (error) { if (error.name === "AbortError") throw error; }
-        try { await api.prepare(symbol, controller.signal); }
+        try { if (!storedHistory) await api.prepare(symbol, controller.signal); }
         catch (error) {
           if (error.name === "AbortError") throw error;
           historyError = `Chưa tải đủ lịch sử: ${error.message}`;

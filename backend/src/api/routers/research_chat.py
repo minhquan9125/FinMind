@@ -40,6 +40,8 @@ def get_store() -> PostgresSessionStore:
         from ...b1_answering.providers.gemini import GeminiProvider
         from ...retrieval_orchestration.market_research import MarketResearch
         from ...market_data.repository import FileMarketDataRepository
+        from ...market_data.analysis_queries import get_price_trend
+        from ...financial.health_db import get_financial_health
         from ...documents.admin_news_chat import AdminNewsChat
         from ...documents.admin_ingestion import Queue
         limits = Limits.load()
@@ -56,7 +58,9 @@ def get_store() -> PostgresSessionStore:
             retriever,
             provider=provider, limits=limits,
             retrieval_timeout=settings.research_retrieval_timeout_seconds,
-            market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
+            market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services,
+                                  trend_reader=lambda symbol: get_price_trend(get_pool(), symbol),
+                                  health_reader=lambda symbol: get_financial_health(get_pool(), symbol)),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
         )
     return PostgresSessionStore(get_pool(), engine=engine)

@@ -104,6 +104,10 @@ def _market_intent(norm, context, today):
     ))
     trend = bool(re.search(
         r'\b(?:dao nay|gan day|tinh hinh|khoi sac|trien vong|bien dong|the nao)\b', norm
+    ) or (
+        # "phan tich fpt" asks for an analysis, not a metric; questions about a report's content stay with reports.
+        re.search(r'\b(?:phan tich|danh gia|manh hay yeu|manh yeu)\b', norm)
+        and not re.search(r'\b(?:bctc|bctn|bao cao|thuong nien|thuyet minh|chien luoc|tai lieu)\b', norm)
     ))
     dated = bool(re.search(r'\b(?:quy|thang|nam|ngay)\s+\d|\b(?:19|20|21)\d{2}\b', norm))
     current = bool(re.search(r'\b(?:hom nay|hien tai|moi nhat|moi|bay gio|hn|hnay|nay)\b', norm))
@@ -583,6 +587,13 @@ class DenseEvidenceRetriever:
                     retrieval_backend=self.backend)
 
 
+def citation_title(citation, scope):
+    """Feed citations (news, price, stored-price trend) keep their own title; others are reports."""
+    if citation.get('source_type') in ('NEWS', 'PRICE', 'PRICE_TREND', 'FINANCIAL_HEALTH'):
+        return citation.get('title') or 'Nguồn thị trường'
+    return 'Báo cáo tài chính '+', '.join(scope.get('companies', []))
+
+
 class LiveResearchService:
     execution_mode = 'LIVE'
 
@@ -626,8 +637,7 @@ class LiveResearchService:
         parts = ['Nguồn của câu trả lời trước:']
         for number, citation in enumerate(citations, 1):
             citation.setdefault('citation_number', number)
-            title = (citation.get('title') or 'Nguồn thị trường') if citation.get('source_type') in ('NEWS', 'PRICE') else (
-                'Báo cáo tài chính '+', '.join(old_scope.get('companies', [])))
+            title = citation_title(citation, old_scope)
             section = citation['locator'].get('section')
             parts.append(f"[{citation['citation_number']}] {title}"+(f' — {section}' if section else ''))
         manifest = copy.deepcopy(answer.get('manifest', {}))
