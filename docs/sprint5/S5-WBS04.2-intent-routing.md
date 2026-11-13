@@ -1,6 +1,6 @@
 # S5-WBS04.2 — Ngưỡng tin cậy và quy tắc chọn nhánh
 
-Khởi tạo: 11/11/2026; cập nhật review: **12/11/2026**, trên code Nhân `c37060d6`.
+Khởi tạo: 11/11/2026; cập nhật an toàn: **13/11/2026**, trên code Nhân `c37060d6`.
 Dùng `IntentMatcher` của 04.1 và thư viện `s5-intent-library-v1` của 03.3.
 Đã đối chiếu cả classifier/resolution mới. Không sửa matcher, mẫu, vector,
 classifier/head hoặc taxonomy của Nhân.
@@ -9,19 +9,27 @@ Sản phẩm: cấu hình/bảng mapping, hàm quyết định và kiểm thử 
 Hàm trả route/tín hiệu, không chạy retrieval hoặc AI fallback. Việc nối factory
 WebChat và thực thi fallback 07.2 không được thực hiện trong task này.
 
+**Mặc định hiện tại: FALLBACK-ONLY.** Bộ 176 câu đã xem cho thấy cosine + ngưỡng
+0,65/0,08 vẫn SEARCH sai 5/15 ca được chấp nhận. Vì chưa có chất lượng được nghiệm
+thu, câu đủ scope/contract chỉ trả NEED_FALLBACK; không tự SEARCH dù điểm rất cao.
+0,65/0,08 được giữ để chẩn đoán offline, không phải ngưỡng đã hiệu chỉnh production.
+Thiếu scope vẫn hỏi lại, payload hỏng vẫn là lỗi contract. Tín hiệu fallback không
+đồng nghĩa AI đã chạy; cần triển khai và kiểm chứng riêng S5-WBS07.2.
+
 ## 1. Cấu hình và ánh xạ
 
 | Cấu hình | Giá trị |
 |---|---|
 | CONFIDENCE_THRESHOLD | **0.65** |
 | GAP_THRESHOLD | **0.08** |
+| allow_direct_search | **False**, mặc định không tự SEARCH |
 | Nơi tiếp nhận tín hiệu fallback | **S5-WBS07.2** |
 
 Đây là hai ngưỡng người phụ trách task đã chỉ định, không phải ngưỡng tự chọn
 từ kết quả holdout, không khẳng định đã tối ưu production và không dùng điểm
 graph_score/content_score của route model cũ.
 
-| Tên trong đề bài | ID chuẩn của Nhân | Nhánh |
+| Tên trong đề bài | ID chuẩn của Nhân | Nhánh trong chế độ chẩn đoán |
 |---|---|---|
 | SO_LIEU | NUMERIC | VECTOR |
 | BCTC_BCTN | REPORT_CONTENT | VECTOR |
@@ -52,6 +60,9 @@ nhiều công ty chưa phân giải phải hỏi lại, không tự chọn công
 Quý ngoài 1–4, ngày không tồn tại, period sai định dạng, công ty sai định dạng
 hoặc câu hỏi không hợp lệ cũng hỏi lại. Khi chặn, route=null, need_fallback=false,
 có clarification_question và không gọi matcher/encoder/retrieval/AI ngoài.
+Đã chặn thêm Q 5/quý +5, quý 1.5 và danh sách chứa quý sai như 1,5 hoặc 1 và 5.
+Danh sách/range hợp lệ 1,2; 1 và 2; 1–4 vẫn được nhận, kể cả khi dùng Q có khoảng
+trắng. Quý sai nêu trong câu hiện tại ưu tiên hơn period hợp lệ từ context.
 
 `company_ticker` phải do bước phân giải scope upstream xác minh; có thể truyền
 `valid_tickers` để kiểm membership registry đã nạp, không cần truy vấn DB ở policy.
@@ -79,6 +90,7 @@ lấy top_1/top_2 từ **hai nhóm khác nhau** trong `groups`
 
 | Điều kiện | reason_code |
 |---|---|
+| Cosine hợp lệ nhưng chưa bật chẩn đoán SEARCH trực tiếp | DIRECT_SEARCH_DISABLED |
 | top_1 < 0.65 và gap ≥ 0.08 | LOW_CONFIDENCE |
 | top_1 ≥ 0.65 và gap < 0.08 | SMALL_GAP |
 | top_1 < 0.65 và gap < 0.08 | LOW_CONFIDENCE_AND_SMALL_GAP |
@@ -108,7 +120,12 @@ thành fallback, không tạo thêm thread hoặc bộ gọi AI trong task này.
 
 ### Chốt 3 — SEARCH với route chính thức
 
-Chỉ khi scope/ranking cosine hợp lệ và **top_1 ≥ 0.65, gap ≥ 0.08**, cùng đủ
+**Chỉ dùng trong chẩn đoán offline** khi khởi tạo policy với
+`allow_direct_search=True` hoặc truyền cờ đó vào hàm thuần. Không lấy cờ từ
+request hoặc LLM. `IntentRoutingPolicy.decide()` từ chối request cố ghi đè cờ;
+giá trị cấu hình phải là bool thật, không nhận chuỗi "true" hoặc số 1.
+
+Trong chế độ này, scope/ranking cosine hợp lệ và **top_1 ≥ 0.65, gap ≥ 0.08**, cùng đủ
 thành phần query nếu MIXED, mới trả SEARCH, route theo bảng trên,
 need_fallback=false và gate=3. Giá trị bằng đúng ngưỡng
 được chấp nhận. Chốt 1 ưu tiên hơn mọi lỗi/điểm phân loại; chốt 2 ưu tiên hơn mapping route.
@@ -117,7 +134,8 @@ need_fallback=false và gate=3. Giá trị bằng đúng ngưỡng
 
 Code: `backend/src/retrieval_orchestration/intent_routing.py`.
 
-Hàm thuần nhận kết quả có sẵn hoặc bộ input kiểm thử:
+Hàm thuần nhận kết quả có sẵn hoặc bộ input kiểm thử. Ví dụ sau bật chế độ
+chẩn đoán rõ ràng để kiểm nhánh, không phải cấu hình để chạy production:
 
 ```python
 from src.retrieval_orchestration.intent_routing import decide_intent_route
@@ -129,7 +147,7 @@ result = decide_intent_route(
         {"intent_label": "PERSON_ROLE", "score": 0.88},
         {"intent_label": "NEWS", "score": 0.48}
     ]},
-    company_ticker="VCB", period="2025",
+    company_ticker="VCB", period="2025", allow_direct_search=True,
 )
 # decision=SEARCH, route=GRAPH, need_fallback=False, gate=3
 ```
@@ -149,6 +167,7 @@ result = policy.decide(
     context_same_session=True,
     period="2025",
 )
+# Mặc định NEED_FALLBACK khi scope/contract hợp lệ, kể cả cosine đủ điểm.
 ```
 
 Wrapper gọi matcher tối đa một lần, top_groups=3 và top_examples=5, chỉ sau
@@ -164,6 +183,8 @@ chốt 2 chưa xác nhận nhãn nên intent_label=null. Chỉ SEARCH có route 
 ## 4. Bảng chạy thử 5 ca bắt buộc
 
 Các điểm dưới đây do đề bài cung cấp, không phải phép đo lại model thật.
+Các ca SEARCH được kiểm với `allow_direct_search=True` trong chẩn đoán offline;
+ở mặc định các ca scope/contract hợp lệ đều cần fallback trước truy xuất.
 
 | Ca | Nhãn/điểm đầu | Điểm thứ hai | Gap | Ticker | Đầu ra |
 |---|---|---|---|---|---|
@@ -242,7 +263,7 @@ Báo cáo model thật cũ giữ nguyên để bảo toàn bằng chứng tại 
 | Đầu vào | Xử lý |
 |---|---|
 | Metadata thiếu/null/rỗng, cặp policy/type không khớp, nhãn/score/rank hỏng | Ném IntentClassificationContractError; không tạo tín hiệu gọi AI |
-| Cosine max-per-label hợp lệ | Xét ngưỡng 0,65/0,08 như mục 2 |
+| Cosine max-per-label hợp lệ | DIRECT_SEARCH_DISABLED mặc định; chỉ diagnostic mới xét 0,65/0,08 |
 | intent-linear-v1 + CLASSIFIER_PROBABILITY_UNCALIBRATED | NEED_FALLBACK/UNCALIBRATED_CLASSIFICATION; không xét ngưỡng cosine |
 | intent-request-objectives-v1..v4 hoặc intent-request-consensus-v1 + DECISION_EVIDENCE_NO_CONFIDENCE | confidence phải khai báo null; cần fallback xác minh |
 | Envelope gồm base_ranking và resolution, nhãn khác nhau | NEED_FALLBACK/LABEL_DISAGREEMENT; giữ cả hai nhãn và lý do |
@@ -283,6 +304,7 @@ Ví dụ MIXED có score cosine hợp lệ và đủ ngưỡng:
 result = decide_intent_route(
     ranking, question=question, company_ticker="FPT",
     query_components=["NUMERIC", "NEWS"], query_components_confirmed=True,
+    allow_direct_search=True,  # Chỉ chẩn đoán offline.
 )
 # SEARCH/VECTOR: hai mục tiêu đều dùng tài liệu.
 # PERSON_ROLE + ENTITY_RELATION -> GRAPH.
@@ -295,8 +317,35 @@ phần khác nhau, không chứa MIXED; alias được chuẩn hóa. Dữ liệu
 xác nhận nhưng sai cấu trúc là lỗi contract. Chốt scope và ngưỡng cosine vẫn
 ưu tiên trước việc chọn tuyến theo thành phần.
 
-Kiểm chứng sau sửa review: **267 test ý định Sprint 5 qua**; bao gồm 105 test
+Kiểm chứng lịch sử sau sửa review 12/11: **267 test ý định Sprint 5 qua**; bao gồm 105 test
 policy và test dùng trực tiếp resolution của Nhân. Bằng chứng mới trong
 `outputs/s5_wbs042_retest_20261112/fix01/`. Suite toàn dự án chưa chạy được vì
 thu thập test lỗi import `hoi`/`retrieval_flow` ở ba test chat/contracts cũ;
-không lấy 266 test này làm bằng chứng toàn ứng dụng qua hoặc calibration đạt.
+không lấy các test này làm bằng chứng toàn ứng dụng qua hoặc calibration đạt.
+
+## 8. Tổng hợp lỗi và sửa ngày 13/11
+
+| Vấn đề đã xác nhận | Xử lý hiện tại |
+|---|---|
+| Thiếu metadata khiến probability bị hiểu thành cosine | Bắt buộc policy/type, lỗi contract riêng; giữ hồi quy |
+| Probability/evidence mới chưa hiệu chỉnh | Không dùng ngưỡng cosine, fallback xác minh; không tự tạo confidence |
+| Nhãn gốc và nhãn cuối lệch nhau | Giữ riêng cả hai với lý do; LABEL_DISAGREEMENT |
+| MIXED từng mặc định BOTH | Chỉ diagnostic theo query components đã xác minh; thiếu thì fallback |
+| Cosine đủ điểm vẫn sai tuyến 5/15 | Tắt SEARCH mặc định; không tự hạ/tăng ngưỡng từ dữ liệu đã xem |
+| Q 5, quý +5, quý 1.5, quý 1,5 bỏ lọt chốt 1 | Kiểm toàn bộ số/list/range quý; sai thì hỏi lại trước matcher |
+
+Ngưỡng/mapping được giữ để tái tạo và đánh giá, không phải bật lại SEARCH tự động.
+Chế độ chẩn đoán vẫn tái hiện 5/15 sai: không nói model đã được sửa vì kết quả
+chế độ mặc định an toàn. Bật lại SEARCH cần tiêu chí sai tuyến/độ phủ được chốt,
+tập calibration và tập nghiệm thu giữ kín riêng. Không dùng cùng một bộ để
+chỉnh ngưỡng rồi báo chất lượng độc lập.
+
+Bằng chứng mới trong `outputs/s5_wbs042_review_20261113/fix02/`: kiểm lại đủ
+176 vector BGE-M3 đã lưu; mặc định 176 NEED_FALLBACK, 0 SEARCH với scope fixture
+trung tính. Model vẫn chỉ đúng nhãn 78/167; độ phủ truy xuất trực tiếp bằng 0,
+tỷ lệ sai trên số SEARCH không xác định, không phải accuracy 100%.
+
+Sau sửa 13/11: **299 test ý định Sprint 5 qua** (137 policy, 162 dữ liệu/matcher/
+scorer/luật). 32 ca mới đã quan sát fail trước sửa và qua sau sửa. Suite toàn dự
+án tiếp tục bị chặn ở collect bởi ba test cũ thiếu hoi/retrieval_flow, lưu tại
+fix02/full-suite-collection.log. Không sửa các task đó để làm đẹp kết quả.

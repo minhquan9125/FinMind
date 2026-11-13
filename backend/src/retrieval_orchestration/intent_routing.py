@@ -52,9 +52,21 @@ def _fold(text):
 
 def _invalid_period(question, period):
     text = _fold(question)
-    quarters = re.findall(r'\b(?:quy\s*|q)(-?\d+)\b', text)
-    if any(int(q) not in (1, 2, 3, 4) for q in quarters):
-        return True
+    number = r'[+-]?\s*\d+(?:\.\d+)?'
+    quarter = re.compile(r'\b(?:quy|q)\s*(' + number + r')\b')
+    continuation = re.compile(r'\s*(?:,|va\b|den\b|toi\b|[-–])\s*(?:(?:quy|q)\s*)?(' + number + r')\b')
+    for match in quarter.finditer(text):
+        values = [match.group(1)]
+        end = match.end()
+        while following := continuation.match(text, end):
+            values.append(following.group(1))
+            end = following.end()
+        for value in values:
+            value = re.sub(r'\s+', '', value)
+            # A comma is a list separator: 1,2 is valid; 1,5 contains Q5.
+            # A decimal point never turns a fractional quarter into Q1.
+            if not re.fullmatch(r'[+-]?\d+', value) or int(value) not in (1, 2, 3, 4):
+                return True
     for day, month, year in re.findall(r'\b(\d{1,2})/(\d{1,2})/(\d{4})\b', question):
         try:
             date(int(year), int(month), int(day))
@@ -260,7 +272,8 @@ def _mixed_route(components, confirmed):
     return 'BOTH' if 'BOTH' in routes or len(routes) > 1 else routes.pop()
 
 
-def _confidence_and_route(ranking, scope, question, components=None, components_confirmed=False):
+def _confidence_and_route(ranking, scope, question, components=None, components_confirmed=False,
+                          allow_direct_search=False):
     if isinstance(ranking, dict) and ('base_ranking' in ranking or 'resolution' in ranking):
         if (not {'base_ranking', 'resolution'} <= ranking.keys()
                 or {'groups', 'intent_label', 'ranking_policy', 'score_type'} & ranking.keys()
@@ -277,6 +290,9 @@ def _confidence_and_route(ranking, scope, question, components=None, components_
     first, second = scores[:2]
     # Compare decimal representations without rounding scores, including equality at 0.08.
     gap = Decimal(str(first)) - Decimal(str(second))
+    if not allow_direct_search:
+        return _fallback_result('DIRECT_SEARCH_DISABLED', scope, question, labels=labels, scores=scores,
+                                first=first, second=second, gap=float(gap))
     low = Decimal(str(first)) < Decimal(str(CONFIDENCE_THRESHOLD))
     close = gap < Decimal(str(GAP_THRESHOLD))
     if low or close:
@@ -293,7 +309,8 @@ def _confidence_and_route(ranking, scope, question, components=None, components_
                    label=labels[0], first=first, second=second, gap=float(gap))
 
 
-def decide_intent_route(ranking, *, query_components=None, query_components_confirmed=False, **scope_input):
+def decide_intent_route(ranking, *, query_components=None, query_components_confirmed=False,
+                        allow_direct_search=False, **scope_input):
     """Pure gate function over an existing IntentMatcher result (or two-group fixture).
 
     company_ticker/context tickers must come from the upstream verified company
@@ -302,18 +319,25 @@ def decide_intent_route(ranking, *, query_components=None, query_components_conf
     scope, stopped = _scope_gate(**scope_input)
     if stopped is not None:
         return stopped
+    if type(allow_direct_search) is not bool:
+        raise IntentClassificationContractError('INVALID_ROUTING_CONFIGURATION')
     return _confidence_and_route(ranking, scope, scope_input.get('question', ''),
-                                 query_components, query_components_confirmed)
+                                 query_components, query_components_confirmed, allow_direct_search)
 
 
 class IntentRoutingPolicy:
-    """Lazy matcher call: gate 1 stops before query embedding or external services."""
-    def __init__(self, matcher):
+    """Fallback-only by default; direct cosine routing is an offline diagnostic opt-in."""
+    def __init__(self, matcher, *, allow_direct_search=False):
+        if type(allow_direct_search) is not bool:
+            raise IntentClassificationContractError('INVALID_ROUTING_CONFIGURATION')
         self.matcher = matcher
+        self._allow_direct_search = allow_direct_search
 
     def decide(self, question, *, query_components=None, query_components_confirmed=False, **scope_input):
         if not isinstance(question, str) or not question.strip() or len(question) > 4000:
             return _result('ASK_CLARIFICATION', 1, 'INVALID_QUESTION', {})
+        if 'allow_direct_search' in scope_input:
+            raise IntentClassificationContractError('INVALID_ROUTING_CONFIGURATION')
         scope, stopped = _scope_gate(question=question, **scope_input)
         if stopped is not None:
             return stopped
@@ -323,4 +347,5 @@ class IntentRoutingPolicy:
             raise
         except Exception:
             return _fallback_result('CLASSIFICATION_ERROR', scope, question)
-        return _confidence_and_route(ranking, scope, question, query_components, query_components_confirmed)
+        return _confidence_and_route(ranking, scope, question, query_components, query_components_confirmed,
+                                     self._allow_direct_search)
