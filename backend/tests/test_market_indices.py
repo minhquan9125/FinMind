@@ -22,6 +22,14 @@ class IndexTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 normalize_index_history("VNINDEX", data)
 
+    def test_normalize_accepts_longer_window(self):
+        data = snapshot()
+        data["rows"][0]["time"] = "2025-09-13T07:00:00"  # 390 days before fetched_at
+        with self.assertRaises(ValueError):
+            normalize_index_history("VNINDEX", data)
+        result = normalize_index_history("VNINDEX", data, max_age_days=400)
+        self.assertEqual(result["bars"][0]["date"], "2025-09-13")
+
     def test_explicit_history_uses_same_budget_and_cache_as_live(self):
         seconds = [0]
         fetch = Mock(return_value=snapshot())

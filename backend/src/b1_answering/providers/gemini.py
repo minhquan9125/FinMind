@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 import logging
@@ -7,12 +8,20 @@ from ..core.policy import Limits
 from .key_pool import KeyPool
 
 MAX_RESPONSE_BYTES = 1024 * 1024
+# Gemini overload (502/503/504, "high demand") clears within seconds: one retry on the same key.
+# Never for quota (429) and never for a plain 500, which the key-rotation rules treat as final.
+RETRY_STATUSES = {502, 503, 504}
+RETRY_DELAY_SECONDS = 2
 
 
 class GeminiError(Exception):
     def __init__(self, code: str):
         super().__init__(code)
         self.code = code
+
+
+class _Overloaded(Exception):
+    """Internal: a 5xx reply that _post may retry once."""
 
 
 class _KeyRejected(Exception):
@@ -81,7 +90,7 @@ class GeminiProvider:
                 raise last
             tried.append(key)
             try:
-                body = await self._post_with(key, path, payload)
+                body = await self._post_retrying(key, path, payload)
             except _KeyRejected as rejected:
                 (self.pool.quota_exhausted if rejected.quota else self.pool.invalid)(key)
                 last = GeminiError("RATE_LIMITED" if rejected.quota else "GEMINI_UNAVAILABLE")
@@ -102,6 +111,17 @@ class GeminiProvider:
             return                       # a broken key store never blocks the keys already in use
         if keys:
             self.pool.sync(keys, meta)
+
+    async def _post_retrying(self, key: str, path: str, payload: Dict[str, Any]) -> bytes:
+        """One retry on the same key when Gemini is overloaded (5xx); quota and key errors rotate instead."""
+        try:
+            return await self._post_with(key, path, payload)
+        except _Overloaded:
+            await asyncio.sleep(RETRY_DELAY_SECONDS)
+        try:
+            return await self._post_with(key, path, payload)
+        except _Overloaded:
+            raise GeminiError("GEMINI_UNAVAILABLE") from None
 
     async def _post_with(self, key: str, path: str, payload: Dict[str, Any]) -> bytes:
         url = f"{self._base_url}:{path}"
@@ -144,6 +164,8 @@ class GeminiProvider:
                 logging.getLogger(__name__).warning('Gemini error %s: %s', error.get('status','UNKNOWN'), detail)
             except (ValueError, TypeError, AttributeError):
                 pass
+            if resp.status_code in RETRY_STATUSES:
+                raise _Overloaded()
             raise GeminiError("GEMINI_UNAVAILABLE") from None
         return bytes(body)
 
@@ -302,6 +324,6 @@ async def probe_key(key: str, limits: Optional[Limits] = None, transport: Option
         await provider._post_with(key, "countTokens", body)
     except _KeyRejected as rejected:
         return "QUOTA" if rejected.quota else "INVALID"
-    except GeminiError:
+    except (GeminiError, _Overloaded):
         return "UNAVAILABLE"
     return "OK"

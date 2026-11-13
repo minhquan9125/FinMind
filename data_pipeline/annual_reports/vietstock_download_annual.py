@@ -22,6 +22,7 @@ import shutil
 import subprocess
 import tempfile
 import time
+import unicodedata
 import zipfile
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -166,32 +167,51 @@ class VietstockAnnualClient:
         response.raise_for_status()
         return response.json()
 
-    def annual_report_type(self) -> int:
-        if self.document_type_id is not None:
-            return self.document_type_id
+    def document_type(self, match_vi: str, match_en: str, *, exact: bool = False) -> int:
+        # exact: whole-name equality, accent/case-insensitive (substring would also hit "Explanation for Financial Statement").
+        def fold(text: object) -> str:
+            text = unicodedata.normalize("NFD", str(text).replace("đ", "d").replace("Đ", "D"))
+            return "".join(c for c in text if not unicodedata.combining(c)).strip().casefold()
+
         data = self.post("/data/getrptdoctype", {})
         rows = data if isinstance(data, list) else []
-        for row in rows:
-            name = str(row.get("DocumentName", "")).strip().casefold()
-            english = str(row.get("DocumentNameEN", "")).strip().casefold()
-            if "thường niên" in name or "annual report" in english:
-                self.document_type_id = int(row["DocumentTypeID"])
-                return self.document_type_id
-        raise RuntimeError("Vietstock did not return an annual-report document type")
+        for by_vi in (True, False):
+            for row in rows:
+                if exact:
+                    hit = (fold(row.get("DocumentName", "")) == fold(match_vi)) if by_vi                         else (fold(row.get("DocumentNameEN", "")) == fold(match_en))
+                else:
+                    name = str(row.get("DocumentName", "")).strip().casefold()
+                    english = str(row.get("DocumentNameEN", "")).strip().casefold()
+                    hit = match_vi in name or match_en in english
+                if hit:
+                    return int(row["DocumentTypeID"])
+            if not exact:
+                break
+        raise RuntimeError(f"Vietstock did not return a document type matching {match_en!r}")
 
-    def report_years(self) -> list[dict]:
-        document_type_id = self.annual_report_type()
+    def annual_report_type(self) -> int:
+        if self.document_type_id is None:
+            self.document_type_id = self.document_type("thường niên", "annual report")
+        return self.document_type_id
+
+    def report_years(self, document_type_id: int | None = None) -> list[dict]:
+        if document_type_id is None:
+            document_type_id = self.annual_report_type()
         data = self.post("/data/getrptterm", {"documentTypeID": document_type_id, "top": 100})
         if not isinstance(data, list):
             raise RuntimeError("Unexpected Vietstock reporting-period response")
         return data
 
-    def reports_for(self, symbol: str, year: int, *, page_size: int = 100) -> list[dict]:
-        document_type_id = self.annual_report_type()
+    def reports_for(
+        self, symbol: str, year: int, *, page_size: int = 100,
+        document_type_id: int | None = None, term_id: int = 1,
+    ) -> list[dict]:
+        if document_type_id is None:
+            document_type_id = self.annual_report_type()
         request = {
             "stockCode": symbol.upper(),
             "documentTypeID": document_type_id,
-            "reportTermID": 1,
+            "reportTermID": term_id,
             "yearPeriod": year,
             "exchangeID": 0,
             "orderBy": 2,
@@ -286,9 +306,10 @@ def extract_zip_pdfs(archive_path: Path, target_dir: Path) -> list[str]:
                 while block := source.read(1024 * 128):
                     output.write(block)
             with target.open("rb") as pdf:
-                if not pdf.read(5).startswith(b"%PDF-"):
-                    target.unlink(missing_ok=True)
-                    continue
+                is_pdf = pdf.read(5).startswith(b"%PDF-")
+            if not is_pdf:
+                target.unlink(missing_ok=True)
+                continue
             extracted.append(target.relative_to(ROOT).as_posix())
     return extracted
 

@@ -2,12 +2,14 @@
 from __future__ import annotations
 
 import asyncio
+import inspect
+import logging
 from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
 import re
 import time
 
-from ..b1_answering.evidence.market_contract import feed_pack
+from ..b1_answering.evidence.market_contract import feed_item, feed_pack
 from ..b1_answering.evidence.citations import prepare_evidence
 from ..market_data.live import BusyError
 from .market_dialogue import matching_articles
@@ -33,23 +35,58 @@ def unavailable(reason='MARKET_UNAVAILABLE'):
 
 
 class MarketResearch:
-    def __init__(self, repository, *, services, now=None):
+    def __init__(self, repository, *, services, now=None, trend_reader=None, health_reader=None):
         self.repository, self.services = repository, services
         self.now = now or (lambda: datetime.now(VN))
+        # async (symbol) -> compact verified-BCTC health dict or None (backend.src.financial.health_db).
+        self.health_reader = health_reader
+        # async (symbol) -> stored-price trend dict; the database read stays on the event loop.
+        self.trend_reader = trend_reader
 
     async def lookup(self, scope, *, previous_pack=None):
         """No background subscriptions, extra SDK processes or quota bypasses."""
         try:
-            return await asyncio.to_thread(self._lookup, scope, previous_pack)
+            trend = None
+            symbols = scope.get('companies', [])
+            if (self.trend_reader is not None and scope.get('source_type') == 'MARKET_ANALYSIS'
+                    and len(symbols) == 1 and re.fullmatch(r'[A-Z]{3}', symbols[0])):
+                try:
+                    requested = (scope.get('_market_request') or {}).get('day')
+                    if requested is None:
+                        trend = await self.trend_reader(symbols[0])
+                    else:
+                        as_of = date.fromisoformat(requested)
+                        reader_signature = inspect.signature(self.trend_reader)
+                        try:
+                            reader_signature.bind(symbols[0], as_of=as_of)
+                        except TypeError:
+                            if as_of != self.now().astimezone(VN).date():
+                                raise
+                            trend = await self.trend_reader(symbols[0])
+                        else:
+                            trend = await self.trend_reader(symbols[0], as_of=as_of)
+                except Exception as exc:  # the trend is additive; price and news still answer
+                    logging.getLogger(__name__).warning('Market trend lookup failed (%s)', type(exc).__name__)
+                    trend = None
+            health = None
+            if (self.health_reader is not None and scope.get('source_type') == 'MARKET_ANALYSIS'
+                    and len(symbols) == 1 and re.fullmatch(r'[A-Z]{3}', symbols[0])):
+                try:  # additive like the trend: a slow or failed read never blocks the answer
+                    health = await asyncio.wait_for(self.health_reader(symbols[0]), timeout=30)
+                except Exception as exc:
+                    logging.getLogger(__name__).warning('Financial health lookup failed (%s)', type(exc).__name__)
+                    health = None
+            return await asyncio.to_thread(self._lookup, scope, previous_pack, trend, health)
         except BusyError as exc:
             result = unavailable('MARKET_BUSY')
             result['message'] = 'Nguồn dữ liệu đang bận hoặc đến hạn mức. Vui lòng thử lại sau ít giây.'
             result['retry_after'] = exc.wait_seconds
             return result
-        except Exception:
+        except Exception as exc:
+            logging.getLogger(__name__).warning('Market lookup failed (%s)', type(exc).__name__)
             return unavailable()
 
-    def _lookup(self, scope, previous_pack):
+    def _lookup(self, scope, previous_pack, trend=None, health=None):
         symbols = scope.get('companies', [])
         request = scope.get('_market_request') or {}
         if request.get('market_wide') and scope.get('source_type') == 'NEWS':
@@ -61,7 +98,7 @@ class MarketResearch:
         if scope['source_type'] == 'PRICE':
             return self._quote(symbols[0], scope, live)
         if scope['source_type'] == 'MARKET_ANALYSIS':
-            return self._analysis(symbols[0], scope, live, news)
+            return self._analysis(symbols[0], scope, live, news, trend, health)
         return self._news(symbols[0], scope, news, previous_pack)
 
     def _market_digest(self, scope):
@@ -96,7 +133,7 @@ class MarketResearch:
             message='Da lay ban tin tong hop va uu tien cac tin noi bat trong ngay.',
         )
 
-    def _analysis(self, symbol, scope, live, news):
+    def _analysis(self, symbol, scope, live, news, trend=None, health=None):
         """Collect price and current company news before causal synthesis.
 
         Co-occurrence is evidence of relevance, not proof of causality; the
@@ -112,6 +149,24 @@ class MarketResearch:
         quote = self._quote(symbol, quote_scope, live)
         articles = self._news(symbol, news_scope, news, None)
         snapshots = []
+        if trend:
+            try:
+                snapshot = dict(kind='PRICE_TREND', provider='finmind_db', symbol=symbol,
+                                observed_at=self.now().astimezone(VN).isoformat(), as_of=trend['as_of'], trend=trend)
+                feed_item(snapshot)
+            except Exception as exc:
+                logging.getLogger(__name__).warning('Market trend evidence rejected (%s)', type(exc).__name__)
+            else:
+                snapshots.append(snapshot)
+        if health:
+            try:
+                snapshot = dict(kind='FINANCIAL_HEALTH', provider='finmind_db', symbol=symbol,
+                                observed_at=self.now().astimezone(VN).isoformat(), health=health)
+                feed_item(snapshot)
+            except Exception as exc:
+                logging.getLogger(__name__).warning('Financial health evidence rejected (%s)', type(exc).__name__)
+            else:
+                snapshots.append(snapshot)
         for result in (quote, articles):
             pack = result.get('evidence_pack') or {}
             snapshots.extend(item['snapshot'] for item in pack.get('items', []))
@@ -127,8 +182,8 @@ class MarketResearch:
                      'khi nội dung nguồn hỗ trợ; tương quan thời gian không tự chứng minh nhân quả.'),
             evidence_pack=feed_pack(snapshots[:10]),
             freshness={
-                'stale': bool((quote.get('freshness') or {}).get('stale')
-                              or (articles.get('freshness') or {}).get('stale')),
+                # Chat reads this as "news refresh failed"; the price line already states its own day.
+                'stale': bool((articles.get('freshness') or {}).get('stale')),
                 'provider': 'vnstock_kbs+fireant',
             },
         )

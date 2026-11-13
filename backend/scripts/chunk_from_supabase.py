@@ -32,7 +32,8 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT / "backend"))
 
-from src.documents.db_chunking import DEFAULT_MAX_WORDS, chunk_documents  # noqa: E402
+from src.documents.db_chunking import (  # noqa: E402
+    DEFAULT_MAX_WORDS, FINANCIAL_CHUNKER_VERSION, FINANCIAL_RENDERER_VERSIONS, chunk_documents)
 from src.documents.db_ingest import ingest_documents  # noqa: E402
 from src.documents import db_source  # noqa: E402
 
@@ -72,7 +73,7 @@ async def run(args: argparse.Namespace) -> int:
         symbols = args.symbol or None
         sources = {
             "companies": ("ho so doanh nghiep", lambda: db_source.fetch_company_documents(conn, symbols)),
-            "financial": ("bao cao tai chinh", lambda: db_source.fetch_financial_documents(conn, symbols)),
+            "financial": ("bao cao tai chinh", lambda: db_source.fetch_financial_documents(conn, symbols, renderer_version=args.financial_renderer)),
             "prices": ("gia co phieu", lambda: db_source.fetch_price_documents(conn, symbols)),
             "indices": ("chi so thi truong", lambda: db_source.fetch_index_documents(conn, symbols)),
             "news": ("tin tuc", lambda: db_source.fetch_news_documents(conn, symbols, args.limit or None, args.max_words)),
@@ -173,6 +174,8 @@ def main() -> int:
     parser.add_argument("--source", choices=["all", "companies", "financial", "prices", "indices", "news"],
                         default="all", help="mac dinh all: lay tat ca cac nguon")
     parser.add_argument("--symbol", nargs="*", default=[], help="gioi han theo ma, vd: --symbol FPT VCB")
+    parser.add_argument("--financial-renderer", choices=FINANCIAL_RENDERER_VERSIONS, default=FINANCIAL_CHUNKER_VERSION,
+                        help="phien ban render bao cao tai chinh (mac dinh db-financial-v3)")
     parser.add_argument("--limit", type=int, default=0, help="so bai tin toi da (0 = lay het)")
     parser.add_argument("--max-words", type=int, default=DEFAULT_MAX_WORDS, help="so tu toi da moi chunk")
     parser.add_argument("--out", help="luu danh sach chunk ra file JSON de xem")

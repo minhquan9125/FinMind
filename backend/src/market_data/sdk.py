@@ -104,12 +104,17 @@ class BatchSDKClient:
         symbols = [stock_symbol(symbol) for symbol in symbols]
         return self._send({"symbols": symbols, "automatic": automatic})
 
-    def history(self, symbol):
+    def history(self, symbol, days=None):
         from .history import INDEX_NAMES
         if symbol not in INDEX_NAMES:
             from .live import stock_symbol
             stock_symbol(symbol)
-        return self._send({"action": "index_history" if symbol in INDEX_NAMES else "stock_history", "symbol": symbol})
+        request = {"action": "index_history" if symbol in INDEX_NAMES else "stock_history", "symbol": symbol}
+        if days is not None:
+            if type(days) is not int or not 1 <= days <= 400:
+                raise ValueError("Invalid history window")
+            request["days"] = days
+        return self._send(request)
 
     def _send(self, payload):
         with self.lock:

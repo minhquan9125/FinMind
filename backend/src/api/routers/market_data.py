@@ -3,13 +3,17 @@
 import hashlib
 import json
 import re
+from datetime import date
 from typing import Any
 from uuid import UUID
 
+import asyncpg
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request, Response
 from pydantic import BaseModel, Field
 
 from ...auth.authorization import READ_ROLES, require_roles, WRITE_ROLES
+from ...core.db import get_pool
+from ...market_data.analysis_queries import get_price_analysis, get_price_trend, get_stored_bars
 from ...market_data.repository import FileMarketDataRepository
 from ...market_data.live import BusyError, stock_symbol
 
@@ -28,6 +32,23 @@ def normalize_symbol(symbol: str) -> str:
     return normalized
 
 
+async def get_stored_ohlcv(symbol: str) -> dict | None:
+    """Stored bars the analysis also reads. None (no bars, no database) keeps the crawler file."""
+    try:
+        return await get_stored_bars(get_pool(), symbol.upper())
+    except (RuntimeError, OSError, TimeoutError, asyncpg.PostgresError, asyncpg.InterfaceError):
+        return None
+
+
+class _StoredBars:
+    """Lets the live overlay read stored bars through the repository interface."""
+    def __init__(self, data):
+        self.data = data
+
+    def get_ohlcv(self, symbol, limit):
+        return {**self.data, "bars": self.data["bars"][-limit:]}
+
+
 @router.get("/stocks/{symbol}/ohlcv")
 def get_ohlcv(
     symbol: str,
@@ -36,9 +57,12 @@ def get_ohlcv(
     limit: int = Query(60, ge=1, le=250),
     if_none_match: str | None = Header(default=None),
     repository: FileMarketDataRepository = Depends(get_market_data_repository),
+    stored: dict | None = Depends(get_stored_ohlcv),
 ) -> Any:
     try:
         normalized = normalize_symbol(symbol)
+        if stored:
+            repository = _StoredBars(stored)
         service = getattr(request.app.state, "live", None)
         result = (service.read(normalized, limit, repository=repository) if service is not None
                   else repository.get_ohlcv(normalized, limit))
@@ -51,6 +75,33 @@ def get_ohlcv(
         return result
     except (OSError, ValueError, TypeError, json.JSONDecodeError) as exc:
         raise HTTPException(status_code=503, detail="Không đọc được dữ liệu OHLCV đã lưu.") from exc
+
+
+def get_price_analysis_pool():
+    try:
+        return get_pool()
+    except RuntimeError:
+        raise HTTPException(status_code=503, detail="Chưa kết nối được cơ sở dữ liệu giá.") from None
+
+
+@router.get("/stocks/{symbol}/analysis")
+async def price_analysis(symbol: str, as_of: date | None = Query(None),
+                         pool=Depends(get_price_analysis_pool)) -> dict:
+    """Stored-price analysis only; never fetches from a provider."""
+    try:
+        result = await get_price_analysis(pool, symbol.upper(), as_of)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from None
+    except LookupError:
+        raise HTTPException(status_code=404, detail="Chưa có dữ liệu giá đã lưu cho mã này.") from None
+    except (RuntimeError, OSError, TimeoutError, asyncpg.PostgresError, asyncpg.InterfaceError):
+        raise HTTPException(status_code=503, detail="Chưa đọc được dữ liệu phân tích giá; vui lòng thử lại sau.") from None
+    try:
+        result["trend"] = await get_price_trend(pool, symbol.upper(), as_of)
+    except Exception:  # the trend is additive; the analysis above stands without it
+        result["trend"] = None
+        result["warnings"].append("trend_unavailable")
+    return result
 
 
 class ViewerRequest(BaseModel):
@@ -101,8 +152,11 @@ def refresh_price(symbol: str, service=Depends(get_live_service)) -> dict:
 
 
 @router.get("/live/status")
-def live_status(service=Depends(get_live_service)) -> dict:
-    return service.status()
+def live_status(request: Request, service=Depends(get_live_service)) -> dict:
+    # Daily-activity persistence health sits beside collector health; messages carry no credentials.
+    return {**service.status(), "activity_persistence": getattr(request.app.state, "activity_persistence", None),
+            "daily_refresh": getattr(request.app.state, "daily_refresh", None),
+            "financial_refresh": getattr(request.app.state, "financial_refresh", None)}
 
 
 @router.get("/stocks/{symbol}/history")

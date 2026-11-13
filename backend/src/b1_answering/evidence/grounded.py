@@ -96,27 +96,100 @@ def build_grounded_request(question, evidence, limits, scope=None):
         body['evidence'] = [{**item, 'passage': item['passage'][:8500 if feed_body else 3500]}
                             for item in body['evidence'][:2 if feed_body else 3]]
     elif body['scope'].get('source_type') == 'MARKET_ANALYSIS':
+        focus = (body['scope'].get('_market_request') or {}).get('focus')
+        groups = ANALYSIS_FOCUS.get(focus, ANALYSIS_FOCUS['STOCK'])
         request['systemInstruction']['parts'][0]['text'] += (
-            ' Với phân tích thị trường: trình bày theo các nhóm diễn biến đã xác minh, '
-            'yếu tố doanh nghiệp, yếu tố ngành/thị trường và ảnh hưởng có bằng chứng. '
+            ' Với phân tích ' + ANALYSIS_FOCUS_NAME.get(focus, 'cổ phiếu') + ': trả lời chi tiết theo các nhóm dưới đây, '
+            'đúng thứ tự, bỏ nhóm không có bằng chứng, không trình bày nhóm ngoài danh sách: '
+            + ' '.join(f'({n}) "{ANALYSIS_GROUPS[g][0]}:" {ANALYSIS_GROUPS[g][1]}' for n, g in enumerate(groups, 1)) + ' '
+            'Định dạng: mỗi claim là đúng một ý (một chỉ số, một khung thời gian hoặc một sự kiện) và bắt đầu bằng '
+            'đúng tên nhóm kèm dấu hai chấm, ví dụ "Xu hướng giá: ...". '
+            'Viết cho người không chuyên về chứng khoán: mỗi ý gồm số liệu rồi một câu giải thích bằng lời thường '
+            'chỉ số đó thể hiện điều gì với công ty hoặc cổ phiếu, dựa vào phần giải thích có trong bằng chứng '
+            '(sau dấu "—", sau "Cách đọc:" hoặc trong ngoặc); không dùng thuật ngữ mà không giải thích. '
+            'Diễn đạt lại theo đúng số liệu của mã đang hỏi, không chép nguyên câu định nghĩa, không lặp lại '
+            'một định nghĩa đã giải thích ở ý trước. Ví dụ cách viết: "Xu hướng giá: Ngắn hạn (20 phiên) đang Giảm: '
+            'giá thấp hơn mức trung bình 20 phiên 7,89% và mức trung bình này cũng đang đi xuống, nghĩa là khoảng '
+            'một tháng gần đây bên bán chiếm ưu thế." (ví dụ chỉ minh họa cách viết, không dùng số của ví dụ). '
+            'Luôn kết thúc bằng ít nhất một ý "Nhận định tổng hợp:". '
             'Phân biệt rõ nguyên nhân được nguồn nói trực tiếp với yếu tố chỉ liên quan '
             'hoặc cùng thời điểm. Dữ liệu giá chỉ chứng minh mức giá/ngày giao dịch, '
             'không tự chứng minh nguyên nhân. Không suy diễn rằng một tin đã làm giá '
-            'tăng hoặc giảm nếu nội dung nguồn không xác nhận quan hệ đó. Nếu chưa đủ '
-            'bằng chứng nhân quả, phải nói rõ chưa thể kết luận và nêu dữ kiện còn thiếu. '
+            'tăng hoặc giảm nếu nội dung nguồn không xác nhận quan hệ đó. '
             'Không đưa khuyến nghị mua, bán hoặc dự báo chắc chắn.'
+            ' Nhãn xu hướng phải giữ nguyên như bằng chứng ghi; không đổi, không nâng hay hạ nhãn; '
+            'nhãn "Chưa rõ xu hướng" hoặc "Chưa đủ dữ liệu" phải nói đúng như vậy.'
+            ' Với tình hình tài chính chỉ nêu chỉ số và số liệu có trong bằng chứng; không tự kết luận công ty '
+            'mạnh hay yếu vượt quá các chỉ số và so sánh nhóm cùng ngành đã có.'
+            ' Mỗi quote chỉ chép các dòng chứa đúng số liệu hoặc nhãn mà ý đó nêu, không chép cả đoạn. '
+            'Mọi số, ngày, đơn vị và từ viết tắt trong một ý phải có trong quote của chính ý đó; '
+            'giữ nguyên cách viết số như bằng chứng.'
         )
+        # One idea per claim (technical: 3 horizons + facts + ~6 indicators + price + summary); fits max_output_tokens.
         schema = request['generationConfig']['responseJsonSchema']['properties']['claims']
-        schema['maxItems'] = 6
-        claim['properties']['text']['maxLength'] = 700
-        claim['properties']['evidence_ids']['maxItems'] = 3
+        schema['maxItems'] = 12
+        claim['properties']['text']['maxLength'] = 450
+        claim['properties']['evidence_ids']['maxItems'] = 2
         quotes = claim['properties']['support_quotes']
         quotes['maxItems'] = 3
-        quotes['items']['properties']['quote']['maxLength'] = 700
+        quotes['items']['properties']['quote']['maxLength'] = 300
         body['evidence'] = [{**item, 'passage': item['passage'][:5000]}
                             for item in body['evidence'][:6]]
     content['text'] = json.dumps(body, ensure_ascii=False)
     return request
+
+
+# "phân tích cổ phiếu / tài chính / kỹ thuật" are different questions: same evidence, different groups and order.
+# Each group: (heading the claim starts with, what to write). The heading becomes a plain-text section title.
+ANALYSIS_GROUPS = {
+    'PRICE': ('Giá', 'giá gần nhất và ngày giao dịch.'),
+    'PRICE_SHORT': ('Giá', 'giá gần nhất và ngày giao dịch, chỉ một ý.'),
+    'TREND': ('Xu hướng giá', 'mỗi khung (ngắn, trung, dài hạn) một ý: nhãn đúng như bằng chứng ghi, vì sao có nhãn '
+              'đó theo phần "Lý do:" kèm số liệu chính, và nghĩa của nhãn với người đầu tư; có thể thêm một ý cho '
+              'đỉnh/đáy 52 tuần và RSI14 nếu bằng chứng có.'),
+    'TREND_DETAIL': ('Xu hướng giá', 'mỗi khung (ngắn, trung, dài hạn) một ý: nhãn đúng như bằng chứng ghi, phần '
+                     '"Lý do:" và số liệu đi kèm, giải thích các số đó bằng lời thường; thêm một ý cho đỉnh/đáy '
+                     '52 tuần và một ý cho RSI14 và khối lượng nếu bằng chứng có.'),
+    'INDICATORS': ('Chỉ báo kỹ thuật', 'mỗi chỉ báo (MACD, Bollinger, ATR, Stochastic, MFI, OBV, ADX) một ý: giá trị, '
+                   'cách hiểu theo quy ước đúng như bằng chứng ghi, và chỉ báo đó thể hiện điều gì; không biến chỉ '
+                   'báo thành điểm mua, bán hay giá mục tiêu.'),
+    'HEALTH': ('Tình hình tài chính', 'mỗi chỉ số có số liệu một ý: giá trị, kỳ báo cáo, ý nghĩa bằng lời thường và '
+               'so với trung vị nhóm cùng ngành nếu bằng chứng có; một ý liệt kê các chỉ số chưa đủ dữ liệu đã xác minh.'),
+    'HEALTH_DETAIL': ('Tình hình tài chính', 'mỗi chỉ số có số liệu một ý: giá trị, kỳ báo cáo, ý nghĩa bằng lời thường '
+                      'và so với trung vị nhóm cùng ngành nếu bằng chứng có; một ý liệt kê các chỉ số chưa đủ dữ liệu '
+                      'đã xác minh và nguồn BCTC (tên, trang).'),
+    'NEWS': ('Tin tức', 'mỗi tin một ý: sự kiện chính của doanh nghiệp, ngành hoặc thị trường và vì sao liên quan tới '
+             'công ty, chỉ theo nội dung bài; chỉ nêu những con số và tên viết tắt có trong chính câu được trích, '
+             'tin có nhiều số thì tách thành nhiều ý.'),
+    'NEWS_BUSINESS': ('Tin tức', 'mỗi tin một ý về kết quả kinh doanh, vốn, phát hành hoặc đầu tư của công ty, chỉ '
+                      'theo nội dung bài; bỏ qua tin chỉ nói về giá cổ phiếu; chỉ nêu những con số và tên viết tắt có '
+                      'trong chính câu được trích, tin có nhiều số thì tách thành nhiều ý.'),
+    'SUMMARY': ('Nhận định tổng hợp', '1–2 ý gom các tín hiệu cùng chiều và trái chiều đã nêu ở trên bằng lời, '
+                'không nhắc lại con số, ngày tháng hay tên viết tắt của chỉ báo (ví dụ nói "các chỉ báo động lượng" '
+                'thay vì "RSI, MFI"); nói rõ điều chưa thể kết luận và dữ kiện còn thiếu.'),
+}
+_HEADINGS = sorted({heading for heading, _ in ANALYSIS_GROUPS.values()}, key=len, reverse=True)
+
+
+def _bulleted(parts):
+    """Plain text for the chat (no markdown): a heading line per group, then one bullet line per claim."""
+    lines, current = [], None
+    for part in parts:
+        heading = next((h for h in _HEADINGS if part.startswith(h + ':')), None)
+        body = part[len(heading) + 1:].strip() if heading else part
+        if heading and heading != current:
+            lines += ([''] if lines else []) + [heading + ':']
+            current = heading
+        lines.append('• ' + body[:1].upper() + body[1:])
+    return '\n'.join(lines)
+
+
+ANALYSIS_FOCUS = {
+    'STOCK': ('PRICE', 'TREND', 'HEALTH', 'NEWS', 'SUMMARY'),
+    'FINANCIAL': ('HEALTH_DETAIL', 'NEWS_BUSINESS', 'PRICE_SHORT', 'SUMMARY'),
+    'TECHNICAL': ('TREND_DETAIL', 'INDICATORS', 'PRICE', 'SUMMARY'),
+}
+ANALYSIS_FOCUS_NAME = {'STOCK': 'cổ phiếu', 'FINANCIAL': 'tài chính', 'TECHNICAL': 'kỹ thuật (xu hướng giá)'}
 
 
 def _fold(text):
@@ -124,19 +197,44 @@ def _fold(text):
                    if unicodedata.category(c) != 'Mn')
 
 
-def _numbers(text):
-    values = set()
-    for token in re.findall(r'[-+]?\d+(?:[.,/:\-]\d+)*', text):
+def _number_tokens(text):
+    """(normalized number, start offset) for every number in text."""
+    for match in re.finditer(r'[-+]?\d+(?:[.,/:\-]\d+)*', text):
+        token = match[0]
         # A single separator can be decimal: only unambiguous multi-group integers
         # are reformatted. Signed numbers remain signed; no magnitude conversion.
-        if re.fullmatch(r'[-+]?\d{1,3}([.,])\d{3}(?:\1\d{3})+', token):
+        # An amount directly followed by VND/đồng is whole dong, so "19.150 VND" equals "19,150 VND".
+        vnd = re.match(r'\s*(?:vnd|đồng|đ)\b', text[match.end():], re.I)
+        if (re.fullmatch(r'[-+]?\d{1,3}([.,])\d{3}(?:\1\d{3})+', token)
+                or (vnd and re.fullmatch(r'[-+]?\d{1,3}(?:[.,]\d{3})+', token))):
             token = token.replace(',', '').replace('.', '')
-        values.add(token)
-    return values
+        yield token, match.start()
+
+
+def _numbers(text):
+    return {token for token, _ in _number_tokens(text)}
+
+
+_DIRECTION = re.compile(r'\b(?:(thap hon|giam|am|duoi|sut|mat|lui)|(cao hon|tang|duong|tren|vuot|len))\b')
+
+
+def _unsupported_numbers(text, facts):
+    """Claim numbers missing from facts. "thấp hơn 7,89%" may restate a source "-7,89%" only when the
+    nearest direction word before it is downward, so a flipped direction ("tăng 7,89%") still fails."""
+    known, missing = _numbers(facts), set()
+    for token, start in _number_tokens(text):
+        if token in known:
+            continue
+        words = _DIRECTION.findall(_fold(text[max(0, start - 40):start]))
+        if not (token[0].isdigit() and '-' + token in known and words and words[-1][0]):
+            missing.add(token)
+    return missing
 
 
 def _units(text):
     # Do not fold the whole passage: Vietnamese "công ty" is not the unit "tỷ".
+    # "tỷ lệ/suất/trọng/giá" are ratio words, not an amount in tỷ.
+    text = re.sub(r'\bt[ỷỉ]\s+(?:lệ|suất|trọng|giá)\b', ' ', text.lower())
     tokens = re.findall(r'\b(?:đồng|dong|vnd|usd|eur|nghìn|nghin|ngàn|ngan|triệu|trieu|tỷ|tỉ)\b|%', text.lower())
     units = {_fold(token) for token in tokens}
     if re.search(r'\d\s+ty\b', text.lower()):
@@ -164,11 +262,14 @@ def _facts(item, quotes, scope):
         if item.get('verification_basis') == 'FEED_SNAPSHOT_BINDING':
             published = '\nNgày đăng: '+item['snapshot']['published_at']
         return header+published+'\n'+'\n'.join(quotes)
+    if item.get('source_type') in ('FINANCIAL_HEALTH', 'PRICE_TREND'):
+        # FinMind snapshots: the first line only names symbol, period/day and source.
+        return header+'\n'+'\n'.join(quotes)
     return '\n'.join(quotes)
 
 
 def _check_facts(text, facts):
-    if not _numbers(text).issubset(_numbers(facts)) or not _units(text).issubset(_units(facts)):
+    if _unsupported_numbers(text, facts) or not _units(text).issubset(_units(facts)):
         raise CitationError('UNSUPPORTED_CLAIM')
     # Keep explicit ticker/currency acronyms bound to the cited context as well.
     if not set(re.findall(r'\b[A-ZĐ]{2,}\b', text)).issubset(set(re.findall(r'\b[A-ZĐ]{2,}\b', facts))):
@@ -316,5 +417,29 @@ def validate_grounded(payload, evidence, scope=None):
             cautions.append('Nguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.')
         if any('pham vi: unknown' in _fold(context) or 'pham vi: chua xac minh' in _fold(context) for context in fact_contexts):
             cautions.append('Nguồn chưa xác định phạm vi báo cáo hợp nhất hay riêng lẻ.')
-    return {'status': 'DRAFT_READY', 'draft': '\n\n'.join(parts+cautions),
+    draft = _bulleted(parts) if scope.get('source_type') == 'MARKET_ANALYSIS' else '\n\n'.join(parts+cautions)
+    return {'status': 'DRAFT_READY', 'draft': draft,
             'claims': output, 'citations': citations, 'cautions': cautions}
+
+
+def keep_supported_claims(payload, evidence, scope):
+    """MARKET_ANALYSIS mixes several sources: drop the claims that fail validation, never edit one.
+
+    None when nothing (or everything) fails, so the caller keeps its fail-closed path."""
+    claims = payload.get('claims') if isinstance(payload, dict) else None
+    if (scope or {}).get('source_type') != 'MARKET_ANALYSIS' or not isinstance(claims, list):
+        return None
+    kept = []
+    for claim in claims:
+        try:
+            validate_grounded({'claims': [claim]}, evidence, scope)
+        except CitationError:
+            continue
+        kept.append(claim)
+    if not kept or len(kept) == len(claims):
+        return None
+    draft = validate_grounded({'claims': kept}, evidence, scope)
+    note = 'Một số ý trong bản diễn đạt đã bị lược vì chưa khớp nguyên văn nguồn.'
+    draft['cautions'].append(note)
+    draft['draft'] += '\n\n'+note
+    return draft
