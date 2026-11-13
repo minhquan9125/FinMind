@@ -108,8 +108,10 @@ def get_settings() -> Settings:
     return Settings()
 
 
-# The former hard-coded default; it is public in git history and must never sign tokens again.
-LEAKED_JWT_SECRETS = frozenset({"cadcf6b6010185805672e56de43183706ab20fe8d6d25f383d3111fceb4e36d1"})
+# Public secrets that must never sign tokens: the former hard-coded default (in git history)
+# and the backend/.env.example placeholder, which a copied-but-unedited .env would keep.
+LEAKED_JWT_SECRETS = frozenset({"cadcf6b6010185805672e56de43183706ab20fe8d6d25f383d3111fceb4e36d1",
+                                "replace-with-a-long-random-secret"})
 
 
 def check_jwt_secret(settings: Settings) -> None:

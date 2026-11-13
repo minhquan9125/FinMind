@@ -46,3 +46,27 @@ test("an unknown ticker surfaces the server message", async () => {
   const api = createWatchlistApi({ request: fakeServer().request, storage: memoryStorage(), base: "" });
   await assert.rejects(api.addToWatchlist("ZZZ"), /Không tìm thấy doanh nghiệp/);
 });
+
+test("a server error during the move keeps the local list for the next load", async () => {
+  const server = fakeServer(["VCB"]);
+  const failing = async (url, options = {}) => (options.method === "PUT"
+    ? new Response(JSON.stringify({ detail: "Lỗi máy chủ" }), { status: 500 }) : server.request(url, options));
+  const storage = memoryStorage({ finmind_watchlist: JSON.stringify(["FPT"]) });
+  const list = await createWatchlistApi({ request: failing, storage, base: "" }).loadWatchlist();
+  assert.deepEqual(list.map((i) => i.id), ["VCB"]);                       // the server list still shows
+  assert.equal(storage.data.finmind_watchlist, JSON.stringify(["FPT"]));  // nothing lost
+});
+
+test("an unknown ticker is dropped and the local key is cleared", async () => {
+  const storage = memoryStorage({ finmind_watchlist: JSON.stringify(["ZZZ"]) });
+  const list = await createWatchlistApi({ request: fakeServer().request, storage, base: "" }).loadWatchlist();
+  assert.deepEqual(list, []);
+  assert.equal(storage.data.finmind_watchlist, undefined);
+});
+
+test("local data that is not a list never breaks loading", async () => {
+  const storage = memoryStorage({ finmind_watchlist: JSON.stringify({ broken: true }) });
+  const list = await createWatchlistApi({ request: fakeServer(["FPT"]).request, storage, base: "" }).loadWatchlist();
+  assert.deepEqual(list.map((i) => i.id), ["FPT"]);
+  assert.equal(storage.data.finmind_watchlist, undefined);
+});

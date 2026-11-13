@@ -8,7 +8,7 @@ export function createWatchlistApi({ request = authorizedFetch, storage = global
   async function call(method, path = "") {
     const response = await request(`${base}/api/watchlist${path}`, method === "GET" ? {} : { method });
     const body = await response.json().catch(() => null);
-    if (!response.ok) throw new Error(body?.detail || `API trả lỗi ${response.status}.`);
+    if (!response.ok) throw Object.assign(new Error(body?.detail || `API trả lỗi ${response.status}.`), { status: response.status });
     return body;
   }
   const getWatchlist = () => call("GET");
@@ -18,10 +18,16 @@ export function createWatchlistApi({ request = authorizedFetch, storage = global
   async function loadWatchlist() {
     let local = [];
     try { local = JSON.parse(storage?.getItem(STORAGE_KEY) || "[]"); } catch { local = []; }
+    if (!Array.isArray(local)) local = [];
     let list = await getWatchlist();
     for (const ticker of local) {
-      if (!list.some((item) => item.id === ticker)) {
-        try { list = await addToWatchlist(ticker); } catch { /* a ticker the server no longer knows is dropped */ }
+      if (list.some((item) => item.id === ticker)) continue;
+      try {
+        list = await addToWatchlist(ticker);
+      } catch (caught) {
+        // Only a ticker the server does not know (404) is dropped; any other failure keeps the
+        // local list so the move is retried on the next load.
+        if (caught?.status !== 404) return list;
       }
     }
     try { storage?.removeItem(STORAGE_KEY); } catch { /* storage may be unavailable */ }

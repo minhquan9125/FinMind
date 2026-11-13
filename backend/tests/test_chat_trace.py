@@ -65,3 +65,26 @@ def test_trace_failure_never_breaks_chat(caplog):
         snapshot = asyncio.run(run())
     assert snapshot['messages'][-1]['content'] == 'Bạn muốn xem ngày nào?'
     assert 'chat_trace_failed' in caplog.text
+
+
+def test_a_hanging_trace_write_cannot_delay_the_reply(monkeypatch, caplog):
+    import src.retrieval_orchestration.postgres_sessions as sessions
+    monkeypatch.setattr(sessions, 'TRACE_TIMEOUT_SECONDS', 0.2)
+
+    class HangingPool:
+        def acquire(self):
+            class Hang:
+                async def __aenter__(self): await asyncio.sleep(30)
+                async def __aexit__(self, *a): return False
+            return Hang()
+
+    async def run():
+        store = PostgresSessionStore(HangingPool(), repository=Repository(), engine=Engine())
+        owner = str(uuid4())
+        sid = (await store.create(owner))['session_id']
+        return await asyncio.wait_for(store.send(owner, sid, 'giá fpt', 0), 5)
+
+    with caplog.at_level(logging.WARNING):
+        snapshot = asyncio.run(run())
+    assert snapshot['messages'][-1]['content'] == 'Bạn muốn xem ngày nào?'
+    assert 'chat_trace_timeout' in caplog.text

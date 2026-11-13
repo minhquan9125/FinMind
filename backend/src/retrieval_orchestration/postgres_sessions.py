@@ -11,6 +11,7 @@ from .chat_logic import append_turn, new_document, snapshot, validate_input
 from .chat_repository import ChatRepository
 
 logger = logging.getLogger(__name__)
+TRACE_TIMEOUT_SECONDS = 2
 
 
 class PostgresSessionStore:
@@ -51,9 +52,13 @@ class PostgresSessionStore:
             await self.repository.commit(owner, sid, lease, revision, updated)
             committed = True
             if self.trace_pool is not None:
-                await record_turn(self.trace_pool, user_id=owner, question=text,
-                                  result=updated['messages'][-1].get('result') or {},
-                                  latency_ms=round((time.perf_counter() - started) * 1000))
+                try:  # the turn is already committed: a slow trace write must not delay or fail the reply
+                    await asyncio.wait_for(record_turn(
+                        self.trace_pool, user_id=owner, question=text,
+                        result=updated['messages'][-1].get('result') or {},
+                        latency_ms=round((time.perf_counter() - started) * 1000)), TRACE_TIMEOUT_SECONDS)
+                except TimeoutError:
+                    logger.warning('chat_trace_timeout')
             return await snapshot(updated)
         finally:
             if not committed:
