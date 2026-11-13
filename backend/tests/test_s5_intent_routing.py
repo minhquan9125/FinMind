@@ -515,12 +515,44 @@ def test_review_quarter_year_and_date_endpoints_reach_classification(question):
     'Doanh thu FPT quý 1 đến quý 30/6/2025',
     'Doanh thu FPT quý 1 đến quý 2025',
     'Doanh thu FPT quý 1-5-2025',
-    'Doanh thu FPT quý 1 đến 5/2025',
+    'Doanh thu FPT quý 1 đến quý 5/2025',
     'Doanh thu FPT Q1-2025 và Q5-2025',
 ])
 def test_review_invalid_quarters_and_dates_still_stop_before_classification(question):
     matcher = SpyMatcher()
     out = IntentRoutingPolicy(matcher).decide(question, company_ticker='FPT', period='2025-Q2')
+    assert out['decision'] == 'ASK_CLARIFICATION' and out['reason_code'] == 'INVALID_PERIOD'
+    assert matcher.calls == []
+
+
+@pytest.mark.parametrize('question', [
+    'Doanh thu FPT quý 1 đến 6/2025',
+    'Doanh thu FPT quý 1 đến 5/2025',
+    'Doanh thu FPT từ Q1 tới 06/2025',
+    'Doanh thu FPT từ quý 1 đến 12/2025',
+    'Doanh thu FPT từ quý 1 đến 6 / 2025',
+])
+def test_review_month_year_range_endpoint_is_not_an_inherited_quarter(question):
+    matcher = SpyMatcher()
+    out = IntentRoutingPolicy(matcher).decide(question, company_ticker='FPT')
+    assert out['decision'] == 'NEED_FALLBACK' and out['reason_code'] == 'DIRECT_SEARCH_DISABLED'
+    assert matcher.calls == [(question, {'top_groups': 3, 'top_examples': 5})]
+
+
+@pytest.mark.parametrize('question', [
+    'Doanh thu FPT quý 1 đến quý 6/2025',
+    'Doanh thu FPT quý 1 tới Q6/2025',
+    'Doanh thu FPT quý 1 đến 13/2025',
+    'Doanh thu FPT quý 1 đến 0/2025',
+    'Doanh thu FPT quý 1 đến 6/0000',
+    'Doanh thu FPT quý 1 đến 6 năm 2025',
+    'Doanh thu FPT quý 1,6/2025',
+    'Doanh thu FPT quý 1-6/2025',
+    'Doanh thu FPT quý 1 đến 6/2025 và quý 5/2025',
+])
+def test_review_month_endpoint_does_not_hide_invalid_months_or_explicit_quarters(question):
+    matcher = SpyMatcher()
+    out = IntentRoutingPolicy(matcher).decide(question, company_ticker='FPT', period='2025-Q1')
     assert out['decision'] == 'ASK_CLARIFICATION' and out['reason_code'] == 'INVALID_PERIOD'
     assert matcher.calls == []
 
