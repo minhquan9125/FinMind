@@ -9,6 +9,7 @@ or stock dividend would otherwise read as a crash.
 from decimal import Decimal, localcontext
 
 from .analysis import _decimal, _formatted, _row_day, _source, _volume
+from .indicators import compute_indicators
 
 # horizon sessions: (slope lookback sessions, widest range in % still counted as sideways)
 HORIZONS = {20: (5, Decimal("8")), 60: (15, Decimal("15")), 200: (50, Decimal("30"))}
@@ -163,7 +164,9 @@ def analyze_trend(price_rows, index_rows, *, exchange, rsi14):
     return dict(as_of=last["trade_date"].isoformat(), benchmark=BENCHMARK[exchange],
                 source=dict(name=source_name, approval_status=last.get("approval_status"),
                             is_adjusted=last["is_adjusted"], price_scale=last["price_scale"]),
-                horizons=horizons, context=context_out, warnings=warnings)
+                horizons=horizons, context=context_out, warnings=warnings,
+                # Indicators skip sessions before the last suspected corporate action (unadjusted prices).
+                indicators=compute_indicators(rows, since=flagged[-1] if flagged else None))
 
 
 def _vi(value):
@@ -193,12 +196,53 @@ def _vnd(value, scale):
     return f"{Decimal(value) * scale:,.0f}".replace(",", ".")
 
 
+def _indicator_lines(ind, scale):
+    """One line per indicator, so a short quote can support one claim."""
+    lines = [f"Chỉ báo kỹ thuật (tính trên {ind['sessions']} phiên đến {ind['as_of']}; mô tả theo quy ước, không phải tín hiệu mua bán):"]
+    m, b, a, st, mfi, obv, adx = (ind.get(k) for k in ("macd", "bollinger", "atr", "stochastic", "mfi", "obv", "adx"))
+    def now(item):  # what the current level means, computed by indicators.py, before the generic definition
+        return f" Hiện tại: {item['meaning']}." if item.get("meaning") else ""
+    if m:
+        lines.append(f"- MACD(12,26,9): MACD {_vnd(m['macd'], scale)} VND, đường tín hiệu {_vnd(m['signal'], scale)} VND,"
+                     f" histogram {_vnd(m['histogram'], scale)} VND; {m['reading']}.{now(m)}"
+                     " (MACD cho biết đà tăng hoặc giảm đang mạnh lên hay yếu đi.)")
+    if b:
+        line = (f"- Bollinger(20,2): dải trên {_vnd(b['upper'], scale)} VND, giữa {_vnd(b['middle'], scale)} VND,"
+                f" dưới {_vnd(b['lower'], scale)} VND; độ rộng dải {_vi(b['bandwidth_percent'])}%")
+        if b["percent_b"] is not None:
+            line += f"; vị trí giá %B {_vi(b['percent_b'])}% ({b['reading']})"
+        lines.append(line + "." + now(b) + " (Dải Bollinger là vùng giá thường dao động quanh mức trung bình 20 phiên;"
+                     " %B gần 0% là giá sát cận dưới, gần 100% là sát cận trên.)")
+    if a:
+        lines.append(f"- ATR14: {_vnd(a['value'], scale)} VND, bằng {_vi(a['percent_of_close'])}% giá đóng cửa."
+                     f" Hiện tại: mỗi phiên giá thường dao động khoảng {_vi(a['percent_of_close'])}%."
+                     " (ATR là biên độ dao động trung bình mỗi phiên.)")
+    if st:
+        lines.append(f"- Stochastic(14,3): %K {_vi(st['k'])}, %D {_vi(st['d'])} ({st['reading']}: trên 80 quá mua,"
+                     f" dưới 20 quá bán).{now(st)} (Stochastic so giá đóng cửa với vùng cao-thấp 14 phiên.)")
+    if mfi:
+        lines.append(f"- MFI14: {_vi(mfi['value'])} ({mfi['reading']}: trên 80 quá mua, dưới 20 quá bán).{now(mfi)}"
+                     " (MFI giống RSI nhưng tính cả khối lượng, cho biết tiền đang vào hay ra khỏi cổ phiếu.)")
+    if obv:
+        lines.append(f"- OBV 20 phiên: {obv['direction']} {abs(obv['change_20']):,} cổ phiếu.".replace(",", ".")
+                     + now(obv) + " (OBV là khối lượng phiên tăng giá trừ khối lượng phiên giảm giá.)")
+    if adx:
+        lines.append(f"- ADX14: {_vi(adx['adx'])} ({adx['reading']}: trên 25 mạnh, dưới 20 yếu); +DI {_vi(adx['plus_di'])},"
+                     f" -DI {_vi(adx['minus_di'])} ({adx['side']}).{now(adx)} (ADX đo độ mạnh của xu hướng, không cho"
+                     " biết hướng; +DI và -DI cho biết bên mua hay bên bán đang mạnh hơn.)")
+    return lines
+
+
 def trend_passage(symbol, trend):
     """Fixed Vietnamese text for the chatbot's evidence; states the labels exactly as computed."""
     source = trend["source"]
     approved = "đã duyệt" if source["approval_status"] == "APPROVED" else "chưa duyệt"
     lines = [f"Xu hướng giá {symbol} tính đến phiên {trend['as_of']} "
-             f"(nguồn giá {source['name']}, {approved}; so với {trend['benchmark']}):"]
+             f"(nguồn giá {source['name']}, {approved}; so với {trend['benchmark']}):",
+             # Plain-language meanings are part of the evidence, so the chatbot explains from them, not from memory.
+             "Cách đọc: SMA là giá trung bình của số phiên ghi kèm; độ dốc SMA cho biết giá trung bình đang đi lên"
+             " hay đi xuống; lợi suất là mức tăng hoặc giảm giá trong khung; biên độ cao-thấp là khoảng cách giữa"
+             " giá cao nhất và thấp nhất trong khung."]
     for h in HORIZONS:
         item = trend["horizons"][str(h)]
         line = f"- {HORIZON_NAMES[h]}: {LABELS_VI[item['label']]} ({h} phiên)." + _reason_text(h, item)
@@ -220,11 +264,16 @@ def trend_passage(symbol, trend):
                      f" (giá hiện tại {_vi(context['from_high_percent'])}% so với đỉnh)")
         facts.append(f"đáy 52 tuần {_vnd(context['low_52w'], scale)} VND ngày {context['low_52w_date']}")
     if context["rsi14"] is not None:
-        facts.append(f"RSI14 {_vi(context['rsi14'])}")
+        rsi = Decimal(context["rsi14"])
+        zone = "vùng quá mua" if rsi > 70 else "vùng quá bán" if rsi < 30 else "vùng trung tính"
+        facts.append(f"RSI14 {_vi(context['rsi14'])} ({zone}: trên 70 quá mua, dưới 30 quá bán;"
+                     " đo sức mạnh các phiên tăng so với các phiên giảm)")
     if context["volume20_vs_volume60"] is not None:
         facts.append(f"khối lượng trung bình 20 phiên bằng {_vi(context['volume20_vs_volume60'])} lần trung bình 60 phiên")
     if facts:
         lines.append("Dữ kiện: " + "; ".join(facts) + ".")
+    if (trend.get("indicators") or {}).get("as_of"):
+        lines += _indicator_lines(trend["indicators"], source["price_scale"])
     if not source["is_adjusted"]:
         lines.append("Giá chưa điều chỉnh theo sự kiện doanh nghiệp.")
     lines.append(DISCLAIMER)

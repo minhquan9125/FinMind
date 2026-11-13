@@ -217,6 +217,24 @@ class TrendLabelTests(unittest.TestCase):
         self.assertNotIn("-14.5690", text)
 
 
+    def test_passage_lists_each_indicator_with_its_conventional_reading(self):
+        out = trend(series(geometric(260, "0.003")))
+        self.assertIsNotNone(out["indicators"]["macd"])
+        text = trend_passage("FPT", out)
+        self.assertIn("Chỉ báo kỹ thuật (", text)
+        for name in ("- MACD(12,26,9):", "- Bollinger(20,2):", "- ATR14:", "- Stochastic(14,3):", "- ADX14:"):
+            self.assertIn(name, text)
+        self.assertIn("đường tín hiệu", text)
+        self.assertIn("mô tả theo quy ước, không phải tín hiệu mua bán", text)
+        self.assertIn("Cách đọc: SMA là giá trung bình", text)
+        self.assertIn("cho biết đà tăng hoặc giảm đang mạnh lên hay yếu đi", text)
+
+    def test_old_snapshots_without_indicators_still_render(self):
+        out = trend(series(geometric(260, "0.003")))
+        out.pop("indicators")
+        self.assertNotIn("Chỉ báo kỹ thuật", trend_passage("FPT", out))
+
+
     def test_passage_orders_horizons_by_sessions(self):
         out = trend(series(geometric(260, "0.003")))
         out["horizons"] = {h: out["horizons"][h] for h in ("200", "20", "60")}

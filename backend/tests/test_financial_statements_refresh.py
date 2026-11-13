@@ -245,6 +245,50 @@ class RefreshLoopTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(list(self.root.rglob(name)), [])
 
 
+class PlanReportsComparisonTests(unittest.IsolatedAsyncioTestCase):
+    @staticmethod
+    def records(values, period='2025-YEAR'):
+        return [dict(code=code, section=section, value=Decimal(value), period_code=period, industry_type='TECH')
+                for code, section, value in values]
+
+    class Connection:
+        def __init__(self, old):
+            self.old = old
+
+        async def fetch(self, query, *args):
+            if query.startswith('SELECT m.code,o.value FROM observations'):
+                return [dict(code=r['code'], value=r['value']) for r in self.old if r['section'] == args[0]]
+            raise AssertionError(query)
+
+        async def fetchval(self, query, company_id, period, section):
+            if not query.startswith('SELECT r.report_id FROM financial_reports'):
+                raise AssertionError(query)
+            return section if any(r['period_code'] == period and r['section'] == section for r in self.old) else None
+
+    async def test_plan_reports_market_ratio_only_changes_are_unchanged(self):
+        old = self.records([('PE', 'RATIO', '10'), ('PB', 'RATIO', '2')])
+        for changed in ([('PE', 'RATIO', '11'), ('PB', 'RATIO', '2')],
+                        [('PE', 'RATIO', '10'), ('PB', 'RATIO', '3')]):
+            with self.subTest(changed=changed):
+                counts, fresh = await job.plan_reports(self.Connection(old), uuid4(), self.records(changed))
+                self.assertEqual(counts, dict(new_reports=0, new_versions=0))
+                self.assertEqual(fresh, set())
+
+    async def test_plan_reports_pe_and_revenue_change_still_versions_income(self):
+        old = self.records([('PE', 'RATIO', '10'), ('NET_REVENUE', 'INCOME_STATEMENT', '100')])
+        records = self.records([('PE', 'RATIO', '11'), ('NET_REVENUE', 'INCOME_STATEMENT', '101')])
+        counts, fresh = await job.plan_reports(self.Connection(old), uuid4(), records)
+        self.assertEqual(counts, dict(new_reports=0, new_versions=1))
+        self.assertEqual(fresh, {('2025-YEAR', 'INCOME_STATEMENT')})
+
+    async def test_plan_reports_eps_restatement_still_versions_income(self):
+        old = self.records([('BASIC_EARNINGS_PER_SHARE', 'INCOME_STATEMENT', '5571')], period='2024-YEAR')
+        records = self.records([('BASIC_EARNINGS_PER_SHARE', 'INCOME_STATEMENT', '3727')], period='2024-YEAR')
+        counts, fresh = await job.plan_reports(self.Connection(old), uuid4(), records)
+        self.assertEqual(counts, dict(new_reports=0, new_versions=1))
+        self.assertEqual(fresh, {('2024-YEAR', 'INCOME_STATEMENT')})
+
+
 class RefreshTests(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         self.admin, self.c, self.db = await create_financial_db()

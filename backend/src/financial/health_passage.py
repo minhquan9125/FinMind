@@ -14,6 +14,19 @@ NAMES = {
     'npl_percent': 'Tỷ lệ nợ xấu',
     'cost_to_income_percent': 'Chi phí trên thu nhập (CIR)',
 }
+# Plain-language meaning for readers who are not finance specialists; part of the evidence the chatbot quotes.
+MEANINGS = {
+    'revenue_yoy_percent': 'doanh thu kỳ này so với cùng kỳ năm trước',
+    'profit_yoy_percent': 'lợi nhuận sau thuế kỳ này so với cùng kỳ năm trước',
+    'operating_cash_flow_yoy_percent': 'tiền thu về từ hoạt động kinh doanh chính so với cùng kỳ năm trước',
+    'net_margin_percent': 'mỗi 100 đồng doanh thu còn lại bao nhiêu đồng lợi nhuận',
+    'liabilities_to_assets_percent': 'phần tài sản được tài trợ bằng nợ; càng cao càng phụ thuộc vào vay nợ',
+    'roe_percent': 'mỗi 100 đồng vốn chủ sở hữu tạo ra bao nhiêu đồng lợi nhuận',
+    'roa_percent': 'mỗi 100 đồng tài sản tạo ra bao nhiêu đồng lợi nhuận',
+    'nim_percent': 'chênh lệch giữa lãi cho vay và lãi huy động của ngân hàng',
+    'npl_percent': 'phần dư nợ cho vay khó thu hồi',
+    'cost_to_income_percent': 'chi phí hoạt động trên mỗi đồng thu nhập của ngân hàng',
+}
 POSITION = {'above': 'cao hơn', 'below': 'thấp hơn', 'equal': 'bằng'}
 PERIOD = re.compile(r'^(\d{4})-(YEAR|Q[1-4])$')
 MAX_CITATIONS = 5
@@ -69,7 +82,7 @@ def financial_health_passage(symbol: str, health: dict) -> str:
             line += f' ({POSITION[peer["position"]]} trung vị nhóm cùng ngành ({_percent(peer["median"])}))'
         if signal.get('status') == 'provisional':
             line += ' [tạm tính: nguồn chưa được duyệt]'
-        lines.append(line + '.')
+        lines.append(f'{line} — {MEANINGS[name]}.')
     if missing:  # one line next to the values, so one short quote covers both
         lines.append(f'- Chưa đủ dữ liệu đã xác minh: {", ".join(missing)}.')
     if not shown:

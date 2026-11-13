@@ -16,7 +16,7 @@ class Limits:
     version: str = 'b1-limits-v1'
     model: str = 'gemini-3.5-flash-lite'
     max_input_tokens: int = 16384
-    max_output_tokens: int = 4096
+    max_output_tokens: int = 8192
     read_timeout_seconds: int = 600
     max_generation_calls: int = 20
     max_total_tokens: int = 65536

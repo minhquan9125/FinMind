@@ -40,6 +40,7 @@ class PassageTests(unittest.TestCase):
         self.assertIn('năm 2025', text)
         self.assertIn('Tăng trưởng doanh thu so với cùng kỳ: 12,35%', text)
         self.assertIn('cao hơn trung vị nhóm cùng ngành (8,10%)', text)
+        self.assertIn('so với cùng kỳ năm trước', text.splitlines()[1])  # plain-language meaning
         # missing signals share one line right after the values, so one short quote covers both
         self.assertIn('12,35%', text.splitlines()[1])
         self.assertTrue(text.splitlines()[2].startswith('- Chưa đủ dữ liệu đã xác minh: '))

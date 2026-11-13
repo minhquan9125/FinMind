@@ -755,8 +755,8 @@ def test_metric_report_and_dated_questions_are_not_analysis(question):
     assert analyze_live(question)['scope'].get('source_type') != 'MARKET_ANALYSIS'
 
 
-@pytest.mark.parametrize('focus,first', [('STOCK', '(1) Giá gần nhất'), ('FINANCIAL', '(1) Tình hình tài chính'),
-                                         ('TECHNICAL', '(1) Xu hướng giá')])
+@pytest.mark.parametrize('focus,first', [('STOCK', '(1) "Giá:'), ('FINANCIAL', '(1) "Tình hình tài chính:'),
+                                         ('TECHNICAL', '(1) "Xu hướng giá:')])
 def test_prompt_orders_groups_by_focus(focus, first):
     from src.b1_answering.core.policy import Limits
     from src.b1_answering.evidence import grounded

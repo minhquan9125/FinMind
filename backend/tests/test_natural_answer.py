@@ -159,3 +159,72 @@ def test_market_analysis_drops_only_unsupported_claims():
     assert '99%' not in out['draft'] and 'đã bị lược' in out['draft']
     assert grounded.keep_supported_claims({'claims': [bad]}, ev, scope) is None  # nothing left: fail closed
     assert grounded.keep_supported_claims({'claims': [bad, good]}, ev, {'source_type': 'BCTC'}) is None
+
+
+def test_market_analysis_draft_is_bulleted_under_group_headings():
+    ev = {'h': dict(evidence_id='h', source_id='s', chunk_id='c', source_sha256='a'*64,
+                    source_type='FINANCIAL_HEALTH', passage=HEALTH, locator={'period': '2026-Q3'})}
+    line = '- Nợ phải trả trên tổng tài sản: 41,54%.'
+    def claim(text):
+        return dict(text=text, evidence_ids=['h'], support_quotes=[dict(evidence_id='h', quote=line)])
+    payload = {'claims': [claim('Tình hình tài chính: nợ phải trả trên tổng tài sản của FPT là 41,54%.'),
+                          claim('Tình hình tài chính: nghĩa là phần lớn tài sản được tài trợ bằng vốn chủ.'),
+                          claim('Nhận định tổng hợp: chưa đủ dữ liệu để kết luận.')]}
+    draft = grounded.validate_grounded(payload, ev, {'source_type': 'MARKET_ANALYSIS'})['draft']
+    assert draft.splitlines() == ['Tình hình tài chính:',
+                                  '• Nợ phải trả trên tổng tài sản của FPT là 41,54%. [1]',
+                                  '• Nghĩa là phần lớn tài sản được tài trợ bằng vốn chủ. [1]',
+                                  '', 'Nhận định tổng hợp:', '• Chưa đủ dữ liệu để kết luận. [1]']
+
+
+def test_unlabelled_claims_are_still_bulleted():
+    ev = {'h': dict(evidence_id='h', source_id='s', chunk_id='c', source_sha256='a'*64,
+                    source_type='FINANCIAL_HEALTH', passage=HEALTH, locator={'period': '2026-Q3'})}
+    payload = {'claims': [dict(text='Nợ phải trả trên tổng tài sản của FPT là 41,54%.', evidence_ids=['h'],
+                               support_quotes=[dict(evidence_id='h', quote='- Nợ phải trả trên tổng tài sản: 41,54%.')])]}
+    draft = grounded.validate_grounded(payload, ev, {'source_type': 'MARKET_ANALYSIS'})['draft']
+    assert draft == '• Nợ phải trả trên tổng tài sản của FPT là 41,54%. [1]'
+
+
+def test_analysis_prompt_asks_for_plain_language_and_group_labels():
+    from src.b1_answering.core.policy import Limits
+    ev = {'h': dict(evidence_id='h', source_id='s', chunk_id='c', source_sha256='a'*64,
+                    source_type='FINANCIAL_HEALTH', passage=HEALTH, locator={'period': '2026-Q3'})}
+    text = grounded.build_grounded_request('phân tích fpt', ev, Limits.load(),
+                                           {'source_type': 'MARKET_ANALYSIS'})['systemInstruction']['parts'][0]['text']
+    assert 'người không chuyên' in text and '"Xu hướng giá:' in text
+
+
+@pytest.mark.parametrize('claim,source', [('19.150 VND', '19,150 VND'), ('19,150 VND', '19.150 VND'),
+                                          ('15.090 đồng/cổ phiếu', '15,090 đồng/cổ phiếu')])
+def test_vnd_amounts_match_across_thousand_separators(claim, source):
+    assert grounded._numbers(claim) == grounded._numbers(source)
+
+
+@pytest.mark.parametrize('claim,source', [('8.843 tỷ đồng', '8,843 tỷ đồng'), ('1.5%', '1,5%'), ('19.150', '19,150')])
+def test_other_separators_stay_ambiguous(claim, source):
+    # Only an amount directly followed by VND/đồng is a whole number of dong; elsewhere '.' may be a decimal point.
+    assert grounded._numbers(claim) != grounded._numbers(source)
+
+
+TREND_LINE = '- Ngắn hạn: Giảm (20 phiên). Lợi suất -14,57%, giá so với SMA20 -7,89%.'
+
+
+@pytest.mark.parametrize('text,ok', [
+    ('Giá thấp hơn mức trung bình 20 phiên 7,89%.', True),
+    ('Trong 20 phiên giá giảm 14,57%.', True),
+    ('Lợi suất âm 14,57% trong 20 phiên.', True),
+    ('Giá cao hơn mức trung bình 20 phiên 7,89%.', False),   # direction flipped
+    ('Trong 20 phiên giá tăng 14,57%.', False),
+    ('Lợi suất 20 phiên là 14,57%.', False),                # sign silently dropped
+])
+def test_negative_source_numbers_need_a_downward_word(text, ok):
+    ev = {'t': dict(evidence_id='t', source_id='s', chunk_id='c', source_sha256='a'*64,
+                    source_type='PRICE_TREND', passage='Xu hướng giá FPT tính đến phiên 2026-11-12:\n' + TREND_LINE,
+                    locator={'trading_day': '2026-11-12'})}
+    payload = {'claims': [dict(text=text, evidence_ids=['t'], support_quotes=[dict(evidence_id='t', quote=TREND_LINE)])]}
+    if ok:
+        assert grounded.validate_grounded(payload, ev, {'source_type': 'MARKET_ANALYSIS'})['status'] == 'DRAFT_READY'
+    else:
+        with pytest.raises(CitationError):
+            grounded.validate_grounded(payload, ev, {'source_type': 'MARKET_ANALYSIS'})

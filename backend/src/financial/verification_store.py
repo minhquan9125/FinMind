@@ -14,6 +14,9 @@ _META_KEYS = ('unit_status', 'period_basis', 'statement_scope', 'comparison_basi
 _VERIFICATION_COLUMNS = ('document_id', 'statement_scope', 'audit_status', 'unit', 'unit_status', 'period_basis',
                          'comparison_basis', 'fiscal_label_convention', 'period_start', 'period_end',
                          'fiscal_year_end', 'status')
+# Market ratios are recomputed from the daily price by the source.
+_MARKET_PRICE_CODES = frozenset({'PE', 'PB', 'PS', 'MARKET_CAP', 'DIVIDEND_YIELD',
+                                'NUMBER_OF_SHARES_MKT_CAP', 'PRICE_TO_CASH_FLOW', 'EV_TO_EBITDA'})
 
 
 def same_value(old: Decimal, new: Decimal) -> bool:
@@ -33,7 +36,7 @@ def same_value(old: Decimal, new: Decimal) -> bool:
 def values_differ(old: dict, new: dict) -> bool:
     """A new version only when a metric holding a value on both sides changed; one-sided metrics alone do not."""
     return any(not same_value(old[k], new[k]) for k in old.keys() & new.keys()
-               if old[k] is not None and new[k] is not None)
+               if k not in _MARKET_PRICE_CODES and old[k] is not None and new[k] is not None)
 
 
 async def ensure_source(conn, name: str, *, source_type: str, base_url: str) -> UUID:

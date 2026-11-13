@@ -270,6 +270,52 @@ class StoreTests(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(ValueError):  # no BANK row for NET_REVENUE
             await self.append([{**record('NET_REVENUE', '10'), 'industry_type': 'BANK'}])
 
+    async def test_market_ratio_only_changes_do_not_create_versions(self):
+        for code in ('PE', 'PB'):
+            await self.c.execute("INSERT INTO metrics(metric_id,code,section,industry_scope) VALUES($1,$2,'RATIO','TECH')",
+                                 uuid4(), code)
+        old = [record('PE', '10', section='RATIO'), record('PB', '2', section='RATIO')]
+        self.assertEqual(await self.append(old), dict(new_reports=1, new_versions=0, unchanged=0))
+        for pe, pb in (('11', '2'), ('10', '3')):
+            with self.subTest(pe=pe, pb=pb):
+                result = await self.append([record('PE', pe, section='RATIO'), record('PB', pb, section='RATIO')])
+                self.assertEqual(result, dict(new_reports=0, new_versions=0, unchanged=1))
+        self.assertEqual(await self.c.fetchval('SELECT count(*) FROM financial_reports'), 1)
+        self.assertEqual({r['code']: r['value'] for r in await self.c.fetch(
+            'SELECT m.code,o.value FROM observations o JOIN metrics m USING(metric_id)')},
+                         {'PE': Decimal('10'), 'PB': Decimal('2')})
+
+    async def test_pe_and_revenue_change_still_versions_income(self):
+        await self.c.execute("INSERT INTO metrics(metric_id,code,section,industry_scope) VALUES($1,'PE','RATIO','TECH')",
+                             uuid4())
+        await self.append([record('PE', '10', section='RATIO'), record('NET_REVENUE', '100')])
+        result = await self.append([record('PE', '11', section='RATIO'), record('NET_REVENUE', '101')])
+        self.assertEqual(result, dict(new_reports=0, new_versions=1, unchanged=1))
+        row = await self.c.fetchrow('SELECT statement_scope FROM financial_reports WHERE report_version=2')
+        self.assertEqual(row['statement_scope'], 'INCOME_STATEMENT')
+
+    async def test_eps_5571_to_3727_is_an_accounting_restatement(self):
+        await self.c.execute('INSERT INTO metrics(metric_id,code,section,industry_scope) '
+                             "VALUES($1,'BASIC_EARNINGS_PER_SHARE','INCOME_STATEMENT','TECH')", uuid4())
+        await self.append([record('BASIC_EARNINGS_PER_SHARE', '5571', period='2024-YEAR')])
+        result = await self.append([record('BASIC_EARNINGS_PER_SHARE', '3727', period='2024-YEAR')])
+        self.assertEqual(result, dict(new_reports=0, new_versions=1, unchanged=0))
+        self.assertEqual(await self.c.fetchval(
+            'SELECT o.value FROM observations o JOIN financial_reports r USING(report_id) WHERE r.report_version=2'),
+                         Decimal('3727'))
+
+    async def test_accounting_ratio_restatement_keeps_current_market_values(self):
+        for code in ('PE', 'ROE'):
+            await self.c.execute("INSERT INTO metrics(metric_id,code,section,industry_scope) VALUES($1,$2,'RATIO','TECH')",
+                                 uuid4(), code)
+        await self.append([record('PE', '10', section='RATIO'), record('ROE', '0.2', section='RATIO')])
+        result = await self.append([record('PE', '11', section='RATIO'), record('ROE', '0.21', section='RATIO')])
+        self.assertEqual(result, dict(new_reports=0, new_versions=1, unchanged=0))
+        self.assertEqual({r['code']: r['value'] for r in await self.c.fetch(
+            'SELECT m.code,o.value FROM observations o JOIN metrics m USING(metric_id) '
+            'JOIN financial_reports r USING(report_id) WHERE r.report_version=2')},
+                         {'PE': Decimal('11'), 'ROE': Decimal('0.21')})
+
     async def test_new_period_row_created(self):
         res = await self.append([record('NET_REVENUE', '5', period='2025-YEAR'),
                                  record('NET_REVENUE', '6', period='2026-Q3')])
@@ -295,6 +341,29 @@ class StoreTests(unittest.IsolatedAsyncioTestCase):
         row = await self.c.fetchrow('SELECT * FROM quarantine_records')
         self.assertEqual((row['reason_code'], row['job_id'], row['payload_id']),
                          ('MISMATCH', self.job, self.payload))
+
+
+class MarketRatioComparisonTests(unittest.TestCase):
+    MARKET_CODES = {'NUMBER_OF_SHARES_MKT_CAP', 'MARKET_CAP', 'DIVIDEND_YIELD', 'PE', 'PB', 'PS',
+                    'PRICE_TO_CASH_FLOW', 'EV_TO_EBITDA'}
+
+    def test_only_the_eight_observed_market_codes_are_ignored(self):
+        for code in sorted(self.MARKET_CODES):
+            with self.subTest(code=code):
+                self.assertFalse(store.values_differ({code: Decimal('1')}, {code: Decimal('2')}))
+
+    def test_accounting_metrics_remain_version_triggers(self):
+        from backend.src.financial import mapping
+
+        catalogs = [mapping.SECTION_MAPS, *mapping.INDUSTRY_SECTION_MAPS.values()]
+        codes = {code for sections in catalogs for fields in sections.values() for code in fields.values()}
+        for code in sorted(codes - self.MARKET_CODES):
+            with self.subTest(code=code):
+                self.assertTrue(store.values_differ({code: Decimal('1')}, {code: Decimal('2')}))
+        self.assertTrue(store.values_differ({'BASIC_EARNINGS_PER_SHARE': Decimal('5571')},
+                                           {'BASIC_EARNINGS_PER_SHARE': Decimal('3727')}))
+        self.assertTrue(store.values_differ({'PE': Decimal('10'), 'NET_REVENUE': Decimal('100')},
+                                           {'PE': Decimal('11'), 'NET_REVENUE': Decimal('101')}))
 
 
 class PayloadResponsivenessTests(unittest.IsolatedAsyncioTestCase):
