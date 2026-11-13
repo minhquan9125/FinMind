@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 import pytest
 
+from uuid import uuid4
+from src.auth.authorization import Principal, current_principal
 from src.api.routers import search
 from src.documents import repository
 from src.documents.embeddings import get_embedding_service
@@ -15,6 +17,7 @@ class FakeEmbedder:
 app = FastAPI()
 app.include_router(search.router)
 app.dependency_overrides[get_embedding_service] = lambda: FakeEmbedder()
+app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({'RESEARCHER'}))  # signed-in reader
 client = TestClient(app)
 
 

@@ -16,7 +16,7 @@ from .documents.chunk_reconstruction import ReconstructionError
 
 from .api.routers import auth, documents, search, market_data, research_chat, hybrid_router, graph_viewer, admin_jobs
 from .market_data.app import lifespan as market_lifespan
-from .core.config import get_settings
+from .core.config import check_jwt_secret, get_settings
 from .core.db import connect, disconnect
 from .api.routers import admin_ingestion
 
@@ -64,6 +64,7 @@ async def warmup_research(app: FastAPI):
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    check_jwt_secret(get_settings())  # refuse to sign tokens with a missing or published secret
     await connect()
     app.state.admin_news_queue_root=get_settings().admin_ingestion_directory
     research_chat.get_store.cache_clear()

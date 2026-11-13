@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from ...auth.authorization import require_roles
+from ...auth.authorization import READ_ROLES, require_roles
 from ...core.config import Settings, get_settings
 from ...core.db import get_pool
 from ...documents import repository
@@ -37,7 +37,7 @@ router = APIRouter(prefix="/api/search", tags=["search"])
 V2_TRIAL_INDEX_ID = "434ef5e0-6516-578d-8d18-721d21347e01"
 
 
-@router.post("/price", response_model=PriceQueryResponse)
+@router.post("/price", response_model=PriceQueryResponse, dependencies=[Depends(require_roles(*READ_ROLES))])
 async def price_search(payload: PriceQueryRequest) -> PriceQueryResponse:
     """Read exact price rows or calculate over them using fixed, read-only SQL."""
     question = payload.question.strip()
@@ -52,7 +52,7 @@ async def price_search(payload: PriceQueryRequest) -> PriceQueryResponse:
     return PriceQueryResponse(**result)
 
 
-@router.post("/filtered", response_model=FilteredSearchResponse)
+@router.post("/filtered", response_model=FilteredSearchResponse, dependencies=[Depends(require_roles(*READ_ROLES))])
 async def filtered_search(
     payload: FilteredSearchRequest,
     settings: Settings = Depends(get_settings),

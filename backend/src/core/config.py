@@ -85,7 +85,7 @@ class Settings(BaseSettings):
 
 
     # Cấu hình Auth / JWT (Tự phát triển - Custom Auth)
-    jwt_secret_key: SecretStr = SecretStr("cadcf6b6010185805672e56de43183706ab20fe8d6d25f383d3111fceb4e36d1")
+    jwt_secret_key: SecretStr = SecretStr("")  # required; checked at startup by check_jwt_secret
     access_token_minutes: int = 15
     refresh_token_days: int = 7
 
@@ -106,3 +106,13 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
+
+
+# The former hard-coded default; it is public in git history and must never sign tokens again.
+LEAKED_JWT_SECRETS = frozenset({"cadcf6b6010185805672e56de43183706ab20fe8d6d25f383d3111fceb4e36d1"})
+
+
+def check_jwt_secret(settings: Settings) -> None:
+    secret = settings.jwt_secret_key.get_secret_value()
+    if len(secret) < 32 or secret in LEAKED_JWT_SECRETS:
+        raise RuntimeError("JWT_SECRET_KEY chưa được cấu hình an toàn (cần chuỗi bí mật riêng, dài tối thiểu 32 ký tự).")

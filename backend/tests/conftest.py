@@ -1,5 +1,10 @@
 """Test isolation for process-wide state."""
+import os
+
 import pytest
+
+# Tests sign their own tokens: never fall back to a real or published secret.
+os.environ.setdefault('JWT_SECRET_KEY', 'test-only-jwt-secret-' + 'x' * 32)
 
 from src.documents.shared_serving import shared_pointer
 

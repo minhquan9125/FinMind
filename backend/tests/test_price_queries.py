@@ -6,6 +6,8 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
+from uuid import uuid4
+from src.auth.authorization import Principal, current_principal
 from src.api.routers import search
 from src.documents.price_queries import PriceQueryError, classify, query_price
 
@@ -104,6 +106,7 @@ def test_price_api_returns_structured_result(monkeypatch):
     monkeypatch.setattr(search, "get_pool", lambda: object())
     app = FastAPI()
     app.include_router(search.router)
+    app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({'RESEARCHER'}))  # signed-in reader
     response = TestClient(app).post("/api/search/price", json={
         "question": "Giá MBB ngày 06/10/2026?", "company_symbol": "MBB",
     })
@@ -119,6 +122,7 @@ def test_price_api_rejects_unsupported_question(monkeypatch):
     monkeypatch.setattr(search, "get_pool", lambda: object())
     app = FastAPI()
     app.include_router(search.router)
+    app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({'RESEARCHER'}))  # signed-in reader
     response = TestClient(app).post("/api/search/price", json={"question": "Giá cổ phiếu?"})
     assert response.status_code == 400
     assert "Chưa hỗ trợ" in response.json()["detail"]
