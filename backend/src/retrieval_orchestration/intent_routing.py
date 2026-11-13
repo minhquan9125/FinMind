@@ -21,7 +21,7 @@ CLASSIFIER_SCORE_TYPE = 'CLASSIFIER_PROBABILITY_UNCALIBRATED'
 EVIDENCE_SCORE_TYPE = 'DECISION_EVIDENCE_NO_CONFIDENCE'
 RESOLUTION_POLICIES = frozenset({
     'intent-request-consensus-v1',
-    *(f'intent-request-objectives-v{version}' for version in range(1, 5)),
+    *(f'intent-request-objectives-v{version}' for version in range(1, 6)),
 })
 
 INTENT_ROUTES = {
@@ -54,12 +54,20 @@ def _invalid_period(question, period):
     text = _fold(question)
     number = r'[+-]?\s*\d+(?:\.\d+)?'
     quarter = re.compile(r'\b(?:quy|q)\s*(' + number + r')\b')
-    continuation = re.compile(r'\s*(?:,|va\b|den\b|toi\b|[-–])\s*(?:(?:quy|q)\s*)?(' + number + r')\b')
+    continuation = re.compile(
+        r'\s*(?:,|va\b|den\b|toi\b|[-–])\s*'
+        r'(?:(?P<quarter>quy|q)\s*)?(?P<number>' + number + r')\b')
     for match in quarter.finditer(text):
         values = [match.group(1)]
         end = match.end()
         while following := continuation.match(text, end):
-            values.append(following.group(1))
+            # A bare year or full date ends a quarter list/range. An explicit
+            # Q/quy prefix still means a quarter and must pass the 1..4 check.
+            if following.group('quarter') is None and (
+                    re.fullmatch(r'\d{4}', following.group('number'))
+                    or re.match(r'\d{1,2}/\d{1,2}/\d{4}\b', text[following.start('number'):])):
+                break
+            values.append(following.group('number'))
             end = following.end()
         for value in values:
             value = re.sub(r'\s+', '', value)
@@ -238,8 +246,31 @@ def _validated_resolution(resolution, question):
     components = [_canonical_label(value) for value in components]
     if 'MIXED' in components or len(set(components)) != len(components):
         raise IntentClassificationContractError('INVALID_QUERY_COMPONENTS')
-    return dict(ranking_policy=policy, score_type=score_type, intent_label=label,
-                confidence=None, reason=reason, component_labels=components)
+    snapshot = dict(ranking_policy=policy, score_type=score_type, intent_label=label,
+                    confidence=None, reason=reason, component_labels=components)
+    if policy == 'intent-request-objectives-v5':
+        if 'runtime_enabled' in resolution:
+            if resolution['runtime_enabled'] is not False:
+                raise IntentClassificationContractError('INVALID_RESOLUTION_RUNTIME')
+            snapshot['runtime_enabled'] = False
+        if 'unresolved_requests' in resolution:
+            unresolved = resolution['unresolved_requests']
+            if (not isinstance(unresolved, list)
+                    or any(not isinstance(text, str) or not text.strip() for text in unresolved)):
+                raise IntentClassificationContractError('INVALID_RESOLUTION_EVIDENCE')
+            snapshot['unresolved_requests'] = list(unresolved)
+        if 'explicit_evidence' in resolution:
+            explicit = resolution['explicit_evidence']
+            if not isinstance(explicit, list):
+                raise IntentClassificationContractError('INVALID_RESOLUTION_EVIDENCE')
+            snapshot['explicit_evidence'] = []
+            for item in explicit:
+                if (not isinstance(item, dict) or not isinstance(item.get('text'), str)
+                        or not item['text'].strip()):
+                    raise IntentClassificationContractError('INVALID_RESOLUTION_EVIDENCE')
+                snapshot['explicit_evidence'].append(
+                    dict(text=item['text'], intent_label=_canonical_label(item.get('intent_label'))))
+    return snapshot
 
 
 def _evidence_fallback(scope, question, base=None, resolution=None):

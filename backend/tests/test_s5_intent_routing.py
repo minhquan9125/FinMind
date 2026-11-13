@@ -488,3 +488,101 @@ def test_safety_invalid_quarter_variants_stop_before_matcher(question):
 def test_safety_valid_quarter_lists_are_not_blocked(question):
     out = IntentRoutingPolicy(SpyMatcher()).decide(question, company_ticker='FPT')
     assert out['decision'] == 'NEED_FALLBACK' and out['reason_code'] == 'DIRECT_SEARCH_DISABLED'
+
+
+@pytest.mark.parametrize('question', [
+    'Doanh thu FPT Q3-2025',
+    'Doanh thu FPT quý 2 - 2025',
+    'Doanh thu FPT từ quý 1 đến 30/6/2025',
+    'Doanh thu FPT từ Q1 tới 2025-06-30',
+    'Doanh thu FPT Q3–2025',
+    'Doanh thu FPT quý 1-4 - 2025',
+    'Doanh thu FPT quý 1, 2 - 2025',
+    'Doanh thu FPT quý 1 và quý 2 - 2025',
+])
+def test_review_quarter_year_and_date_endpoints_reach_classification(question):
+    matcher = SpyMatcher()
+    out = IntentRoutingPolicy(matcher).decide(question, company_ticker='FPT')
+    assert out['decision'] == 'NEED_FALLBACK' and out['reason_code'] == 'DIRECT_SEARCH_DISABLED'
+    assert matcher.calls == [(question, {'top_groups': 3, 'top_examples': 5})]
+
+
+@pytest.mark.parametrize('question', [
+    'Doanh thu FPT Q5-2025',
+    'Doanh thu FPT quý 0 - 2025',
+    'Doanh thu FPT từ quý 1 đến 31/6/2025',
+    'Doanh thu FPT từ Q1 tới 2025-02-30',
+    'Doanh thu FPT quý 1 đến quý 30/6/2025',
+    'Doanh thu FPT quý 1 đến quý 2025',
+    'Doanh thu FPT quý 1-5-2025',
+    'Doanh thu FPT quý 1 đến 5/2025',
+    'Doanh thu FPT Q1-2025 và Q5-2025',
+])
+def test_review_invalid_quarters_and_dates_still_stop_before_classification(question):
+    matcher = SpyMatcher()
+    out = IntentRoutingPolicy(matcher).decide(question, company_ticker='FPT', period='2025-Q2')
+    assert out['decision'] == 'ASK_CLARIFICATION' and out['reason_code'] == 'INVALID_PERIOD'
+    assert matcher.calls == []
+
+
+@pytest.mark.parametrize('allow_direct_search', [False, True])
+@pytest.mark.parametrize('mode', ['standalone', 'envelope_agreed', 'envelope_disagreed'])
+def test_review_v7_policy_v5_evidence_goes_to_fallback_without_cosine_thresholds(allow_direct_search, mode):
+    # V7 producer contract: Nhan e080a889, intent_semantic_requests.resolve_objectives.
+    question = 'Ai đang làm CEO của FPT?'
+    resolved = resolution('PERSON_ROLE', 'v5') | {
+        'runtime_enabled': False,
+        'explicit_evidence': [{'text': question, 'intent_label': 'PERSON_ROLE'}],
+        'unresolved_requests': [],
+    }
+    if mode == 'standalone':
+        raw = resolved
+    else:
+        first = 'PERSON_ROLE' if mode == 'envelope_agreed' else 'NUMERIC'
+        base = ranking(first, .99, 'NEWS', .01) | {
+            'question': question, 'ranking_policy': 'intent-linear-v1',
+            'score_type': 'CLASSIFIER_PROBABILITY_UNCALIBRATED',
+        }
+        raw = {'base_ranking': base, 'resolution': resolved}
+    before = copy.deepcopy(raw)
+    out = decide_intent_route(raw, question=question, company_ticker='FPT',
+                              allow_direct_search=allow_direct_search)
+    assert out['decision'] == 'NEED_FALLBACK' and out['need_fallback'] is True
+    assert out['reason_code'] == ('LABEL_DISAGREEMENT' if mode == 'envelope_disagreed'
+                                  else 'UNCALIBRATED_CLASSIFICATION')
+    assert out['route'] is None and out['intent_label'] is None
+    assert out['top_1_score'] is None and out['top_2_score'] is None and out['score_gap'] is None
+    assert out['classification_evidence']['resolution'] == resolved
+    assert out['fallback_payload']['classification_evidence']['resolution'] == resolved
+    assert raw == before
+
+
+def test_review_v5_unresolved_request_evidence_survives_fallback():
+    question = 'Lợi nhuận FPT có độc lập với mảng viễn thông không?'
+    resolved = resolution('NUMERIC', 'v5') | {
+        'reason': 'WHOLE_QUERY_UNCHANGED', 'runtime_enabled': False,
+        'explicit_evidence': [], 'unresolved_requests': [question],
+    }
+    out = IntentRoutingPolicy(SpyMatcher(result=resolved)).decide(question, company_ticker='FPT')
+    assert out['decision'] == 'NEED_FALLBACK' and out['route'] is None
+    assert out['fallback_payload']['classification_evidence']['resolution'] == resolved
+
+
+@pytest.mark.parametrize('invalid', [
+    {'confidence': .99},
+    {'score_type': 'COSINE_SIMILARITY_NOT_PROBABILITY'},
+    {'runtime_enabled': True},
+    {'runtime_enabled': 'false'},
+    {'unresolved_requests': 'unknown request'},
+    {'unresolved_requests': [1]},
+    {'explicit_evidence': 'PERSON_ROLE'},
+    {'explicit_evidence': [{'text': 'Who chairs FPT?', 'intent_label': 'UNKNOWN'}]},
+])
+def test_review_v5_support_does_not_accept_invalid_evidence(invalid):
+    with pytest.raises(IntentClassificationContractError):
+        decide_intent_route(resolution('PERSON_ROLE', 'v5') | invalid, company_ticker='FPT')
+
+
+def test_review_unknown_resolution_version_is_still_a_contract_error():
+    with pytest.raises(IntentClassificationContractError):
+        decide_intent_route(resolution('PERSON_ROLE', 'v6'), company_ticker='FPT')
