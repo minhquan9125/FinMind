@@ -4,8 +4,8 @@
 
 | Việc cần làm | File |
 |---|---|
-| Gửi Hưng/Huyền review, xem phần đã làm và còn chờ | [Bàn giao hiện tại](S5-WBS04.1-HANDOFF.md) |
-| Đọc kết quả sửa mới nhất và cách kiểm chứng | [Báo cáo NEWS/MIXED](S5-WBS04.1-news-mixed-results.md) |
+| Gửi Hưng review phần Nhân, xem phần đã làm và còn chờ | [Bàn giao hiện tại](S5-WBS04.1-HANDOFF.md) |
+| Đọc kết quả sửa mới nhất và cách kiểm chứng | [Báo cáo kiểm chứng vòng 2](S5-WBS04.1-news-mixed-results.md) |
 | Xem lịch sử công việc | [history.md](history.md) |
 
 ## Tài liệu từng task

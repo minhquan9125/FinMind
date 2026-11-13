@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="3.244" timestamp="2026-11-12T17:10:18.078233+07:00" hostname="DESKTOP-1PMP5V4"><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_read_report_content_is_report_instead_of_a_salary_metric" time="0.129"><failure message="AssertionError: assert 'NUMERIC' == 'REPORT_CONTENT'&#10;  &#10;  - REPORT_CONTENT&#10;  + NUMERIC">def test_read_report_content_is_report_instead_of_a_salary_metric():
+&gt;       assert explicit_intent('Đọc báo cáo chất lượng dịch vụ của FPT.') == 'REPORT_CONTENT'
+E       AssertionError: assert 'NUMERIC' == 'REPORT_CONTENT'
+E
+E         - REPORT_CONTENT
+E         + NUMERIC
+
+backend\tests\test_s5_intent_semantic_boundaries.py:85: AssertionError</failure></testcase></testsuite></testsuites>

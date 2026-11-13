@@ -1,0 +1,43 @@
+{
+  "scope": "Nhan S5-WBS03.1-03.3 and S5-WBS04.1 only",
+  "unit_tests": 192,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "audit": {
+    "status": "PASS",
+    "decisions_replayed": 345,
+    "max_probability_difference": 7.771561172376096e-16,
+    "fixed": [],
+    "regressed": [],
+    "non_forcing_failures": [],
+    "no_refit": true,
+    "raw_rankings_unchanged": true,
+    "source_hashes_unchanged": true,
+    "confidence": null,
+    "router_integrated": false,
+    "non_forcing_checks_do_not_assert_final_label_accuracy": true
+  },
+  "gold_probe_correct": 27,
+  "gold_probe_count": 27,
+  "remaining_original_test_errors": [
+    "S5-T-021",
+    "S5-T-027",
+    "S5-T-037",
+    "S5-T-039",
+    "S5-T-041",
+    "S5-T-042"
+  ],
+  "broken_handoff_links": [],
+  "review_ready": true,
+  "done_approved": false,
+  "v7_runtime_enabled": false,
+  "mutation_check": "Removed financial metric guard in isolated process; existing test caught incorrect NUMERIC; source unchanged",
+  "real_model_reencoding_this_session": {
+    "completed": false,
+    "initial_attempt": "Blocked by proxy while checking Hugging Face",
+    "offline_retry": "Stopped after prolonged model loading; no new embeddings or baseline measurements claimed",
+    "saved_vector_replay": "345 decisions PASS",
+    "prior_real_model_evidence": "outputs/s5_wbs041_review_20261111/real-model-audit.json"
+  }
+}

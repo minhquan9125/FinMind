@@ -1,0 +1,9 @@
+{
+  "run01_status": "SUPERSEDED_BEFORE_HANDOFF",
+  "reason": "Additional negative tests found salary/quantity homograph still entering causal TREND evidence; shared lexical guard needed.",
+  "run01_results_retained": true,
+  "run01_source_snapshots_retained": true,
+  "final_output": "run02",
+  "embedding_reuse_only": true,
+  "no_refit": true
+}

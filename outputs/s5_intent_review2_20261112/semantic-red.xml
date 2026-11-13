@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="13" skipped="0" tests="24" time="7.131" timestamp="2026-11-12T16:03:55.002286+07:00" hostname="DESKTOP-1PMP5V4"><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_homographs_do_not_create_numeric_evidence[L\u1ee3i nhu\u1eadn FPT c\xf3 \u0111\u1ed9c l\u1eadp v\u1edbi m\u1ea3ng vi\u1ec5n th\xf4ng kh\xf4ng?]" time="0.147"><failure message="AssertionError: assert 'NUMERIC' != 'NUMERIC'&#10; +  where 'NUMERIC' = explicit_intent('Lợi nhuận FPT có độc lập với mảng viễn thông không?')">question = 'Lợi nhuận FPT có độc lập với mảng viễn thông không?'
+
+    @pytest.mark.parametrize('question', [
+        'Lợi nhuận FPT có độc lập với mảng viễn thông không?',
+        'Loi nhuan FPT co doc lap voi mang vien thong khong?',
+        'Đọc báo cáo chất lượng dịch vụ của FPT.',
+        'Đọc nội dung về sản lượng điện của GEG.',
+    ])
+    def test_homographs_do_not_create_numeric_evidence(question):
+&gt;       assert explicit_intent(question) != 'NUMERIC'
+E       AssertionError: assert 'NUMERIC' != 'NUMERIC'
+E        +  where 'NUMERIC' = explicit_intent('Lợi nhuận FPT có độc lập với mảng viễn thông không?')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:18: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_homographs_do_not_create_numeric_evidence[Loi nhuan FPT co doc lap voi mang vien thong khong?]" time="0.005"><failure message="AssertionError: assert 'NUMERIC' != 'NUMERIC'&#10; +  where 'NUMERIC' = explicit_intent('Loi nhuan FPT co doc lap voi mang vien thong khong?')">question = 'Loi nhuan FPT co doc lap voi mang vien thong khong?'
+
+    @pytest.mark.parametrize('question', [
+        'Lợi nhuận FPT có độc lập với mảng viễn thông không?',
+        'Loi nhuan FPT co doc lap voi mang vien thong khong?',
+        'Đọc báo cáo chất lượng dịch vụ của FPT.',
+        'Đọc nội dung về sản lượng điện của GEG.',
+    ])
+    def test_homographs_do_not_create_numeric_evidence(question):
+&gt;       assert explicit_intent(question) != 'NUMERIC'
+E       AssertionError: assert 'NUMERIC' != 'NUMERIC'
+E        +  where 'NUMERIC' = explicit_intent('Loi nhuan FPT co doc lap voi mang vien thong khong?')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:18: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_homographs_do_not_create_numeric_evidence[\u0110\u1ecdc b\xe1o c\xe1o ch\u1ea5t l\u01b0\u1ee3ng d\u1ecbch v\u1ee5 c\u1ee7a FPT.]" time="0.020"><failure message="AssertionError: assert 'NUMERIC' != 'NUMERIC'&#10; +  where 'NUMERIC' = explicit_intent('Đọc báo cáo chất lượng dịch vụ của FPT.')">question = 'Đọc báo cáo chất lượng dịch vụ của FPT.'
+
+    @pytest.mark.parametrize('question', [
+        'Lợi nhuận FPT có độc lập với mảng viễn thông không?',
+        'Loi nhuan FPT co doc lap voi mang vien thong khong?',
+        'Đọc báo cáo chất lượng dịch vụ của FPT.',
+        'Đọc nội dung về sản lượng điện của GEG.',
+    ])
+    def test_homographs_do_not_create_numeric_evidence(question):
+&gt;       assert explicit_intent(question) != 'NUMERIC'
+E       AssertionError: assert 'NUMERIC' != 'NUMERIC'
+E        +  where 'NUMERIC' = explicit_intent('Đọc báo cáo chất lượng dịch vụ của FPT.')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:18: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_homographs_do_not_create_numeric_evidence[\u0110\u1ecdc n\u1ed9i dung v\u1ec1 s\u1ea3n l\u01b0\u1ee3ng \u0111i\u1ec7n c\u1ee7a GEG.]" time="0.003" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_legitimate_value_requests_remain_numeric[\u0110\u1ecdc doanh thu FPT n\u0103m 2024.]" time="0.002" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_legitimate_value_requests_remain_numeric[Doc doanh thu FPT nam 2024.]" time="0.003" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_legitimate_value_requests_remain_numeric[L\u01b0\u01a1ng CEO FPT n\u0103m 2024 l\xe0 bao nhi\xeau?]" time="0.006" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_legitimate_value_requests_remain_numeric[Luong CEO FPT nam 2024 la bao nhieu?]" time="0.087" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_legitimate_value_requests_remain_numeric[Gi\xe1 c\u1ed5 phi\u1ebfu FPT h\xf4m nay bao nhi\xeau?]" time="0.005" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_legitimate_value_requests_remain_numeric[Doanh thu AI v\xe0 cloud c\u1ee7a FPT l\xe0 bao nhi\xeau?]" time="0.003" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_homograph_protection_is_unicode_normalization_independent[NFC]" time="0.015"><failure message="AssertionError: assert 'NUMERIC' != 'NUMERIC'&#10; +  where 'NUMERIC' = explicit_intent('Lợi nhuận có độc lập không?')&#10; +    where 'Lợi nhuận có độc lập không?' = &lt;built-in function normalize&gt;('NFC', 'Lợi nhuận có độc lập không?')&#10; +      where &lt;built-in function normalize&gt; = unicodedata.normalize">form = 'NFC'
+
+    @pytest.mark.parametrize('form', ['NFC', 'NFD'])
+    def test_homograph_protection_is_unicode_normalization_independent(form):
+&gt;       assert explicit_intent(unicodedata.normalize(form, 'Lợi nhuận có độc lập không?')) != 'NUMERIC'
+E       AssertionError: assert 'NUMERIC' != 'NUMERIC'
+E        +  where 'NUMERIC' = explicit_intent('Lợi nhuận có độc lập không?')
+E        +    where 'Lợi nhuận có độc lập không?' = &lt;built-in function normalize&gt;('NFC', 'Lợi nhuận có độc lập không?')
+E        +      where &lt;built-in function normalize&gt; = unicodedata.normalize
+
+backend\tests\test_s5_intent_semantic_boundaries.py:35: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_homograph_protection_is_unicode_normalization_independent[NFD]" time="0.077"><failure message="AssertionError: assert 'NUMERIC' != 'NUMERIC'&#10; +  where 'NUMERIC' = explicit_intent('Lợi nhuận có độc lập không?')&#10; +    where 'Lợi nhuận có độc lập không?' = &lt;built-in function normalize&gt;('NFD', 'Lợi nhuận có độc lập không?')&#10; +      where &lt;built-in function normalize&gt; = unicodedata.normalize">form = 'NFD'
+
+    @pytest.mark.parametrize('form', ['NFC', 'NFD'])
+    def test_homograph_protection_is_unicode_normalization_independent(form):
+&gt;       assert explicit_intent(unicodedata.normalize(form, 'Lợi nhuận có độc lập không?')) != 'NUMERIC'
+E       AssertionError: assert 'NUMERIC' != 'NUMERIC'
+E        +  where 'NUMERIC' = explicit_intent('Lợi nhuận có độc lập không?')
+E        +    where 'Lợi nhuận có độc lập không?' = &lt;built-in function normalize&gt;('NFD', 'Lợi nhuận có độc lập không?')
+E        +      where &lt;built-in function normalize&gt; = unicodedata.normalize
+
+backend\tests\test_s5_intent_semantic_boundaries.py:35: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_role_paraphrases_have_explicit_role_evidence[Ai \u0111ang l\xe0m CEO c\u1ee7a FPT?]" time="0.004"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('Ai đang làm CEO của FPT?')">question = 'Ai đang làm CEO của FPT?'
+
+    @pytest.mark.parametrize('question', [
+        'Ai đang làm CEO của FPT?',
+        'Ai hiện đang đảm nhiệm chức Tổng giám đốc của VNM?',
+        'Người đứng đầu FPT là ai?',
+        'Nguoi dung dau DGC la ai?',
+    ])
+    def test_role_paraphrases_have_explicit_role_evidence(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('Ai đang làm CEO của FPT?')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:46: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_role_paraphrases_have_explicit_role_evidence[Ai hi\u1ec7n \u0111ang \u0111\u1ea3m nhi\u1ec7m ch\u1ee9c T\u1ed5ng gi\xe1m \u0111\u1ed1c c\u1ee7a VNM?]" time="0.007" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_role_paraphrases_have_explicit_role_evidence[Ng\u01b0\u1eddi \u0111\u1ee9ng \u0111\u1ea7u FPT l\xe0 ai?]" time="0.008"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('Người đứng đầu FPT là ai?')">question = 'Người đứng đầu FPT là ai?'
+
+    @pytest.mark.parametrize('question', [
+        'Ai đang làm CEO của FPT?',
+        'Ai hiện đang đảm nhiệm chức Tổng giám đốc của VNM?',
+        'Người đứng đầu FPT là ai?',
+        'Nguoi dung dau DGC la ai?',
+    ])
+    def test_role_paraphrases_have_explicit_role_evidence(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('Người đứng đầu FPT là ai?')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:46: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_role_paraphrases_have_explicit_role_evidence[Nguoi dung dau DGC la ai?]" time="0.074"><failure message="AssertionError: assert None == 'PERSON_ROLE'&#10; +  where None = explicit_intent('Nguoi dung dau DGC la ai?')">question = 'Nguoi dung dau DGC la ai?'
+
+    @pytest.mark.parametrize('question', [
+        'Ai đang làm CEO của FPT?',
+        'Ai hiện đang đảm nhiệm chức Tổng giám đốc của VNM?',
+        'Người đứng đầu FPT là ai?',
+        'Nguoi dung dau DGC la ai?',
+    ])
+    def test_role_paraphrases_have_explicit_role_evidence(question):
+&gt;       assert explicit_intent(question) == 'PERSON_ROLE'
+E       AssertionError: assert None == 'PERSON_ROLE'
+E        +  where None = explicit_intent('Nguoi dung dau DGC la ai?')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:46: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_indirect_news_questions_have_news_evidence[FPT c\xf3 tin g\xec m\u1edbi?]" time="0.005"><failure message="AssertionError: assert None == 'NEWS'&#10; +  where None = explicit_intent('FPT có tin gì mới?')">question = 'FPT có tin gì mới?'
+
+    @pytest.mark.parametrize('question', ['FPT có tin gì mới?', 'VNM co tin tuc gi moi?'])
+    def test_indirect_news_questions_have_news_evidence(question):
+&gt;       assert explicit_intent(question) == 'NEWS'
+E       AssertionError: assert None == 'NEWS'
+E        +  where None = explicit_intent('FPT có tin gì mới?')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:51: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_indirect_news_questions_have_news_evidence[VNM co tin tuc gi moi?]" time="0.025"><failure message="AssertionError: assert None == 'NEWS'&#10; +  where None = explicit_intent('VNM co tin tuc gi moi?')">question = 'VNM co tin tuc gi moi?'
+
+    @pytest.mark.parametrize('question', ['FPT có tin gì mới?', 'VNM co tin tuc gi moi?'])
+    def test_indirect_news_questions_have_news_evidence(question):
+&gt;       assert explicit_intent(question) == 'NEWS'
+E       AssertionError: assert None == 'NEWS'
+E        +  where None = explicit_intent('VNM co tin tuc gi moi?')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:51: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_role_paraphrases_do_not_override_other_goals[L\u01b0\u01a1ng CEO FPT bao nhi\xeau?]" time="0.080" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_role_paraphrases_do_not_override_other_goals[T\xecm b\xe0i tin v\u1ec1 ng\u01b0\u1eddi \u0111\u1ee9ng \u0111\u1ea7u FPT.]" time="0.004" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_role_paraphrases_do_not_override_other_goals[Doanh thu AI c\u1ee7a FPT bao nhi\xeau?]" time="0.004" /><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_financial_change_explanation_is_not_every_why_question" time="0.004"><failure message="AssertionError: assert None == 'TREND'&#10; +  where None = explicit_intent('Giải thích vì sao doanh thu FPT giảm qua ba năm.')">def test_financial_change_explanation_is_not_every_why_question():
+&gt;       assert explicit_intent('Giải thích vì sao doanh thu FPT giảm qua ba năm.') == 'TREND'
+E       AssertionError: assert None == 'TREND'
+E        +  where None = explicit_intent('Giải thích vì sao doanh thu FPT giảm qua ba năm.')
+
+backend\tests\test_s5_intent_semantic_boundaries.py:64: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_numeric_and_independent_causal_analysis_are_mixed" time="0.099"><failure message="AssertionError: assert 'NUMERIC' == 'MIXED'&#10;  &#10;  - MIXED&#10;  + NUMERIC">def test_numeric_and_independent_causal_analysis_are_mixed():
+        texts = requests('Cho biết doanh thu FPT năm 2024 rồi giải thích vì sao doanh thu giảm qua ba năm.')
+        decision = resolve_objectives([.1, .1, .1, .4, .1, .1, .1], [], LABELS, texts)
+&gt;       assert decision['intent_label'] == 'MIXED'
+E       AssertionError: assert 'NUMERIC' == 'MIXED'
+E
+E         - MIXED
+E         + NUMERIC
+
+backend\tests\test_s5_intent_semantic_boundaries.py:72: AssertionError</failure></testcase><testcase classname="backend.tests.test_s5_intent_semantic_boundaries" name="test_rejected_numeric_evidence_does_not_override_classifier_head" time="0.003"><failure message="AssertionError: assert 'NUMERIC' == 'TREND'&#10;  &#10;  - TREND&#10;  + NUMERIC">def test_rejected_numeric_evidence_does_not_override_classifier_head():
+        base = [.1, .1, .1, .1, .1, .1, .4]
+        result = resolve_objectives(base, [], LABELS, ['Lợi nhuận FPT có độc lập với mảng viễn thông không?'])
+&gt;       assert result['intent_label'] == 'TREND'
+E       AssertionError: assert 'NUMERIC' == 'TREND'
+E
+E         - TREND
+E         + NUMERIC
+
+backend\tests\test_s5_intent_semantic_boundaries.py:79: AssertionError</failure></testcase></testsuite></testsuites>

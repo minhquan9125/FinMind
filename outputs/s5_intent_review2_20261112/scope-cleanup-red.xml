@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="2.750" timestamp="2026-11-13T09:19:51.716605+07:00" hostname="DESKTOP-1PMP5V4"><testcase classname="backend.tests.test_s5_review2_source_archive" name="test_only_retired_consumer_sources_and_original_auditor_are_archived" time="0.007"><failure message="AttributeError: module 'audit_s5_intent_review2' has no attribute 'ARCHIVED_SOURCES'">def test_only_retired_consumer_sources_and_original_auditor_are_archived():
+        assert set(audit.ARCHIVED_SOURCES) == {
+            ROUTING, 'backend/src/retrieval_orchestration/intent_handoff.py',
+            'backend/scripts/audit_s5_intent_review2.py',
+&gt;       }
+E       AttributeError: module 'audit_s5_intent_review2' has no attribute 'ARCHIVED_SOURCES'
+
+backend\tests\test_s5_review2_source_archive.py:20: AttributeError</failure></testcase><testcase classname="backend.tests.test_s5_review2_source_archive" name="test_future_huyen_consumer_does_not_replace_frozen_experiment" time="0.013"><failure message="AttributeError: module 'audit_s5_intent_review2' has no attribute 'source_path'">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000018B5E47A060&gt;
+tmp_path = WindowsPath('C:/Users/GamingGear/Desktop/FinMind/FinMind/backend/.tmp/s5-archive-red/test_future_huyen_consumer_doe0')
+
+    def test_future_huyen_consumer_does_not_replace_frozen_experiment(monkeypatch, tmp_path):
+        monkeypatch.setattr(audit, 'ROOT', tmp_path)
+&gt;       archived = audit.source_path(ROUTING)
+E       AttributeError: module 'audit_s5_intent_review2' has no attribute 'source_path'
+
+backend\tests\test_s5_review2_source_archive.py:26: AttributeError</failure></testcase><testcase classname="backend.tests.test_s5_review2_source_archive" name="test_tampered_archive_is_rejected" time="0.010"><failure message="AttributeError: module 'audit_s5_intent_review2' has no attribute 'source_path'">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000018B5E5B0440&gt;
+tmp_path = WindowsPath('C:/Users/GamingGear/Desktop/FinMind/FinMind/backend/.tmp/s5-archive-red/test_tampered_archive_is_rejec0')
+
+    def test_tampered_archive_is_rejected(monkeypatch, tmp_path):
+        monkeypatch.setattr(audit, 'ROOT', tmp_path)
+&gt;       path = audit.source_path(ROUTING)
+E       AttributeError: module 'audit_s5_intent_review2' has no attribute 'source_path'
+
+backend\tests\test_s5_review2_source_archive.py:37: AttributeError</failure></testcase><testcase classname="backend.tests.test_s5_review2_source_archive" name="test_active_nhan_source_still_has_to_match_frozen_hash" time="0.016"><failure message="AttributeError: module 'audit_s5_intent_review2' has no attribute 'verify_sources'">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000018B55CDCBC0&gt;
+tmp_path = WindowsPath('C:/Users/GamingGear/Desktop/FinMind/FinMind/backend/.tmp/s5-archive-red/test_active_nhan_source_still_0')
+
+    def test_active_nhan_source_still_has_to_match_frozen_hash(monkeypatch, tmp_path):
+        monkeypatch.setattr(audit, 'ROOT', tmp_path)
+        path = tmp_path / SEMANTIC
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b'changed semantic logic')
+        with pytest.raises(AssertionError, match='intent_semantic_requests'):
+&gt;           audit.verify_sources({SEMANTIC: hashlib.sha256(b'original logic').hexdigest()})
+E           AttributeError: module 'audit_s5_intent_review2' has no attribute 'verify_sources'
+
+backend\tests\test_s5_review2_source_archive.py:50: AttributeError</failure></testcase></testsuite></testsuites>

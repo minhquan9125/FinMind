@@ -1,0 +1,25 @@
+--- a/backend/src/retrieval_orchestration/intent_routing.py
++++ b/backend/src/retrieval_orchestration/intent_routing.py
+@@ -4,0 +5,5 @@
++
++Local handoff fix over Huyen's 8e854d47: unsupported/missing score metadata
++returns REJECT_CLASSIFICATION, not an AI-fallback request. Callers must handle
++that result before adopting this module. MIXED without verified query components
++requests fallback rather than applying the legacy unconditional BOTH mapping.
+@@ -138,0 +144,4 @@
++    if (not isinstance(ranking, dict)
++            or ranking.get('ranking_policy') != 'cosine-max-per-label-v1'
++            or ranking.get('score_type') != 'COSINE_SIMILARITY_NOT_PROBABILITY'):
++        return _result('REJECT_CLASSIFICATION', 2, 'INVALID_SCORE_CONTRACT', scope)
+@@ -140,2 +148,0 @@
+-        if not isinstance(ranking, dict):
+-            raise ValueError('Missing classification')
+@@ -144,4 +150,0 @@
+-        if ranking.get('ranking_policy', 'cosine-max-per-label-v1') != 'cosine-max-per-label-v1':
+-            raise ValueError('Wrong score policy')
+-        if ranking.get('score_type', 'COSINE_SIMILARITY_NOT_PROBABILITY') != 'COSINE_SIMILARITY_NOT_PROBABILITY':
+-            raise ValueError('Wrong score type')
+@@ -177,0 +181,3 @@
++    if labels[0] == 'MIXED':
++        return _fallback_result('MIXED_COMPONENTS_UNVERIFIED', scope, question,
++                                labels=labels, scores=scores, first=first, second=second, gap=float(gap))
