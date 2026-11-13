@@ -2,6 +2,7 @@ from datetime import datetime,timedelta,timezone
 from pathlib import Path
 import subprocess
 import sys
+import time
 
 from src.documents.admin_ingestion import Queue
 from src.documents.job_recovery import worker_lock,recover_stopped_jobs,job_worker
@@ -40,7 +41,10 @@ with worker_lock(Queue(sys.argv[1]),sys.argv[2]) as locked:
         assert process.stdout.readline().strip()=='LOCKED'
         assert recover_stopped_jobs(q)==[]
     finally:process.terminate();process.wait(timeout=10)
-    assert recover_stopped_jobs(q)==[ident]
+    # Windows releases a dead process's file locks asynchronously (LockFileEx docs), so poll briefly.
+    deadline=time.monotonic()+5
+    while (recovered:=recover_stopped_jobs(q))==[] and time.monotonic()<deadline:time.sleep(0.05)
+    assert recovered==[ident]
 
 
 def test_duplicate_worker_does_not_execute_a_finished_job(tmp_path):
