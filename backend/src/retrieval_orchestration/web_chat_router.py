@@ -252,6 +252,72 @@ class WebChatRouter:
         self.content_retriever = content_retriever
         self.timeout = timeout
 
+    @staticmethod
+    def _asks_for_news(question):
+        padded = f' {_normalize(question)} '
+        return any(f' {phrase} ' in padded for phrase in ('tin tuc', 'bai bao', 'bao chi'))
+
+    async def _only_a_metric_question(self, question, context):
+        """True when the graph route was chosen only because of words inside a metric name.
+
+        "LNST thuộc cổ đông công ty mẹ" and "vốn chủ sở hữu" contain "cổ đông", "công ty mẹ", "sở hữu".
+        Take the metric names out and ask the planner again: if it no longer wants the graph, the question
+        is a plain financial one and belongs to the established pipeline.
+        """
+        from .metric_vocabulary import find_metrics, without_metrics
+        from .retrieval_flow.intent import _fold
+        folded = _fold(question)
+        if not find_metrics(folded):
+            return False
+        rest = without_metrics(folded)
+        try:
+            again = await asyncio.wait_for(asyncio.to_thread(lambda: self.planner_factory().decide(
+                rest, context=session_scope(context), request_id=str(uuid.uuid4()))), self.timeout)
+        except Exception:
+            return False
+        return again.route not in ('GRAPH', 'BOTH')
+
+    def _document_question(self, question, context):
+        """True when the established parser reads this as a question about statements or the annual report:
+        it would search them, or ask which statement metric is meant.
+
+        Never true for a news request, so a relationship question cannot turn into news retrieval.
+        """
+        if self._asks_for_news(question):
+            return False
+        from .live_research import analyze_live
+        try:
+            decision = analyze_live(question, context)
+        except Exception:
+            return False
+        source = decision['scope'].get('source_type')
+        if decision['decision'] == 'SEARCH':
+            return source in ('BCTC', 'BCTN')
+        return (decision['decision'] == 'ASK_CLARIFICATION' and source == 'BCTC'
+                and decision['reason_code'] in ('MISSING_METRIC', 'MULTIPLE_METRICS'))
+
+    async def _content_fallback(self, question, scope, trace):
+        """The graph holds nothing verified for a question about statements or the annual report.
+
+        The router can read e.g. "công ty mẹ" as a relationship, so search that same source directly.
+        This never reads NEWS: a relationship request must not turn into news retrieval, so an explicit
+        request for news, or any other source, keeps the graph's NO_DATA answer.
+        """
+        source = scope.get('source_type')
+        if source not in ('BCTC', 'BCTN') or not scope.get('companies'):
+            return False, None
+        if self._asks_for_news(question):
+            return False, None
+        content_scope = dict(companies=scope['companies'], periods=scope.get('periods') or [],
+                             metric_code=None if source == 'BCTN' else scope.get('metric_code'),
+                             reporting_entity=scope.get('reporting_entity') or 'UNKNOWN', source_type=source)
+        trace['vector_calls'] += 1
+        content = await asyncio.wait_for(self.content_retriever.retrieve(question, content_scope), self.timeout)
+        if not content['items']:
+            return True, None
+        prepare_evidence(content)
+        return True, content
+
     async def answer(self, question, context, *, provider, limits, budget):
         # Existing source-reference and new-session commands retain their contracts.
         if (_normalize(question) in ('moi', 'new') or re.fullmatch(
@@ -280,6 +346,8 @@ class WebChatRouter:
             if not (plan.route == 'CLARIFY' and (context or {}).get('_hybrid_context')
                     and plan.scope.topic != 'FINANCIAL_RESEARCH'):
                 return None
+        if plan.route in ('GRAPH', 'BOTH') and await self._only_a_metric_question(question, context):
+            return None
         scope = plan.scope.model_dump()
         scope['_hybrid_context'] = copy.deepcopy(plan.scope.model_dump())
         trace = dict(route=plan.route, route_reason=plan.route_reason, model_version=plan.model_version,
@@ -294,46 +362,58 @@ class WebChatRouter:
         try:
             trace['graph_calls'] += 1
             pack, facts = await asyncio.wait_for(self.graph_retriever.retrieve(plan.scope), self.timeout)
+            fallback = None
             if not pack['items']:
-                result.update(status='NO_DATA', reason_code='GRAPH_NO_VERIFIED_RELATIONS',
-                              message='Chưa tìm thấy quan hệ có nguồn đã kiểm tra trong phạm vi bạn hỏi.')
-                return result
-            prepare_evidence(pack)
-            scope['graph_relations'] = facts
-            scope['graph_time_scope'] = 'SOURCE_DOCUMENT_NOT_CURRENT_OFFICE'
-            if plan.route == 'BOTH':
-                for task in plan.tasks:
-                    if task.adapter == 'GRAPH':
-                        continue
-                    requested = task.params.get('companies') or sorted({c for f in facts for c in f['companies']})
-                    if task.params.get('company_scope_policy') == 'RELATED_COMPANIES':
-                        # Do not invent ticker mappings from names/path endpoints.
-                        raise GraphChatError('GRAPH_COMPANY_MAPPING_REQUIRED')
-                    content_scope = dict(companies=requested, periods=scope['periods'],
-                        metric_code=None if scope.get('source_type') == 'BCTN' else scope.get('metric_code'),
-                        reporting_entity=scope.get('reporting_entity') or 'UNKNOWN',
-                        source_type='COMPANY_PROFILE' if scope.get('topic') == 'COMPANY_PROFILE_WITH_RELATIONSHIPS' else 'BCTN' if scope.get('source_type') == 'BCTN' else 'BCTC' if scope.get('metric_code') else 'NEWS')
-                    trace['vector_calls'] += 1
-                    content = await asyncio.wait_for(self.content_retriever.retrieve(question, content_scope), self.timeout)
-                    prepare_evidence(content)
-                    if (content['corpus_version_id'] != pack['corpus_version_id']
-                            or content['data_version'] != pack['data_version']):
-                        raise GraphChatError('GRAPH_VECTOR_VERSION_MISMATCH')
-                    merged = {i['evidence_id']: i for i in pack['items']}
-                    for item in content['items']:
-                        existing = merged.get(item['evidence_id'])
-                        if existing:
-                            # The same verified chunk can rank differently in
-                            # graph and Vector; ranking is not source identity.
-                            if any(existing.get(k) != item.get(k) for k in (
-                                    'chunk_id','source_id','source_type','source_sha256',
-                                    'content_sha256','locator','passage','title')):
-                                raise GraphChatError('GRAPH_VECTOR_EVIDENCE_CONFLICT')
-                        else:
-                            merged[item['evidence_id']] = item
-                    pack['items'] = list(merged.values())
-                    pack['retrieval_backend'] = 'neo4j_and_vector'
-            prepare_evidence(pack)
+                if self._document_question(question, context):
+                    # Nothing verified in the graph and the established parser reads this as a statement or
+                    # annual-report question: let that pipeline answer it with its own scope and checks.
+                    return None
+                searched, fallback = await self._content_fallback(question, scope, trace)
+                if fallback is None:
+                    if searched:
+                        result.update(status='NO_DATA', reason_code='NO_DATA',
+                                      message='Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.')
+                    else:
+                        result.update(status='NO_DATA', reason_code='GRAPH_NO_VERIFIED_RELATIONS',
+                                      message='Chưa tìm thấy quan hệ có nguồn đã kiểm tra trong phạm vi bạn hỏi.')
+                    return result
+            if fallback is None:
+                prepare_evidence(pack)
+                scope['graph_relations'] = facts
+                scope['graph_time_scope'] = 'SOURCE_DOCUMENT_NOT_CURRENT_OFFICE'
+                if plan.route == 'BOTH':
+                    for task in plan.tasks:
+                        if task.adapter == 'GRAPH':
+                            continue
+                        requested = task.params.get('companies') or sorted({c for f in facts for c in f['companies']})
+                        if task.params.get('company_scope_policy') == 'RELATED_COMPANIES':
+                            # Do not invent ticker mappings from names/path endpoints.
+                            raise GraphChatError('GRAPH_COMPANY_MAPPING_REQUIRED')
+                        content_scope = dict(companies=requested, periods=scope['periods'],
+                            metric_code=None if scope.get('source_type') == 'BCTN' else scope.get('metric_code'),
+                            reporting_entity=scope.get('reporting_entity') or 'UNKNOWN',
+                            source_type='COMPANY_PROFILE' if scope.get('topic') == 'COMPANY_PROFILE_WITH_RELATIONSHIPS' else 'BCTN' if scope.get('source_type') == 'BCTN' else 'BCTC' if scope.get('metric_code') else 'NEWS')
+                        trace['vector_calls'] += 1
+                        content = await asyncio.wait_for(self.content_retriever.retrieve(question, content_scope), self.timeout)
+                        prepare_evidence(content)
+                        if (content['corpus_version_id'] != pack['corpus_version_id']
+                                or content['data_version'] != pack['data_version']):
+                            raise GraphChatError('GRAPH_VECTOR_VERSION_MISMATCH')
+                        merged = {i['evidence_id']: i for i in pack['items']}
+                        for item in content['items']:
+                            existing = merged.get(item['evidence_id'])
+                            if existing:
+                                # The same verified chunk can rank differently in
+                                # graph and Vector; ranking is not source identity.
+                                if any(existing.get(k) != item.get(k) for k in (
+                                        'chunk_id','source_id','source_type','source_sha256',
+                                        'content_sha256','locator','passage','title')):
+                                    raise GraphChatError('GRAPH_VECTOR_EVIDENCE_CONFLICT')
+                            else:
+                                merged[item['evidence_id']] = item
+                        pack['items'] = list(merged.values())
+                        pack['retrieval_backend'] = 'neo4j_and_vector'
+                prepare_evidence(pack)
         except TimeoutError:
             result.update(status='SYSTEM_UNAVAILABLE', reason_code='GRAPH_CHAT_TIMEOUT',
                           message='Tra cứu quan hệ quá thời gian chờ. Vui lòng thử lại.')
@@ -346,6 +426,10 @@ class WebChatRouter:
             result.update(status='SYSTEM_UNAVAILABLE', reason_code='GRAPH_CHAT_UNAVAILABLE',
                           message='Dịch vụ tra cứu quan hệ tạm thời chưa khả dụng. Vui lòng thử lại.')
             return result
+        if fallback is not None:
+            result.update(status='EVIDENCE_READY', reason_code='GRAPH_EMPTY_CONTENT_FALLBACK', query_id=fallback['query_id'],
+                          evidence_pack=fallback, retrieval_backend=fallback.get('retrieval_backend', 'vector'))
+            return await complete_retrieval(question, result, provider=provider, limits=limits, budget=budget)
         result.update(status='EVIDENCE_READY', reason_code='GRAPH_EVIDENCE_READY', query_id=pack['query_id'],
                       evidence_pack=pack, retrieval_backend=pack['retrieval_backend'])
         answer = await complete_retrieval(question, result, provider=provider, limits=limits, budget=budget)

@@ -34,6 +34,11 @@ def fingerprint(key: str) -> str:
     return hashlib.sha256(key.encode('utf-8')).hexdigest()
 
 
+def env_key_id(key: str) -> str:
+    """Short public handle of a .env key for the admin page (a fragment of the fingerprint, not the key)."""
+    return fingerprint(key)[:16]
+
+
 def _cipher(secret: str) -> Fernet:
     material = HKDF(algorithm=hashes.SHA256(), length=32, salt=b'finmind-gemini-keys-v1', info=b'fernet').derive(secret.encode('utf-8'))
     return Fernet(base64.urlsafe_b64encode(material))
@@ -54,6 +59,21 @@ class KeyStore:
                 id TEXT PRIMARY KEY,label TEXT NOT NULL,secret_enc TEXT NOT NULL,fingerprint TEXT NOT NULL UNIQUE,
                 last4 TEXT NOT NULL,enabled INTEGER NOT NULL DEFAULT 1,verified INTEGER NOT NULL DEFAULT 0,
                 created_at TEXT NOT NULL,actor TEXT NOT NULL)''')
+            # Keys set in .env cannot be edited from the page, but they can be switched off: only the state
+            # is kept here, identified by the key's fingerprint, never the key.
+            conn.execute('''CREATE TABLE IF NOT EXISTS gemini_env_keys(
+                fingerprint TEXT PRIMARY KEY,enabled INTEGER NOT NULL,updated_at TEXT NOT NULL,actor TEXT NOT NULL)''')
+
+    def disabled_env(self):
+        """Fingerprints of .env keys an administrator switched off."""
+        with self.metrics.connect() as conn:
+            return {r[0] for r in conn.execute('SELECT fingerprint FROM gemini_env_keys WHERE enabled=0')}
+
+    def set_env_enabled(self, digest, enabled, actor):
+        with self.metrics.connect() as conn:
+            conn.execute('INSERT INTO gemini_env_keys(fingerprint,enabled,updated_at,actor) VALUES(?,?,?,?) '
+                         'ON CONFLICT(fingerprint) DO UPDATE SET enabled=excluded.enabled,updated_at=excluded.updated_at,actor=excluded.actor',
+                         (digest, int(bool(enabled)), utc_now(), str(actor)))
 
     @property
     def usable(self) -> bool:
@@ -157,9 +177,13 @@ class CachedKeys:
         now = self.clock()
         if self._at is None or now - self._at >= self.ttl:
             store_keys, store_meta = self.store.active_keys() if self.store else ([], [])
-            keys = self.env_keys + [k for k in store_keys if k not in self.env_keys]
-            meta = [{'label': None, 'source': 'env', 'id': None}] * len(self.env_keys) + \
-                   [m for k, m in zip(store_keys, store_meta) if k not in self.env_keys]
+            switched_off = self.store.disabled_env() if hasattr(self.store, 'disabled_env') else set()
+            env = [k for k in self.env_keys if fingerprint(k) not in switched_off]
+            if not env and not store_keys:
+                env = list(self.env_keys)            # never leave the chat without a key, whatever was switched off
+            keys = env + [k for k in store_keys if k not in env]
+            meta = [{'label': None, 'source': 'env', 'id': env_key_id(k)} for k in env] + \
+                   [m for k, m in zip(store_keys, store_meta) if k not in env]
             self._value, self._at = (keys, meta), now
         return self._value
 

@@ -81,6 +81,7 @@ const KEY_ERRORS = {
   KEY_NOT_FOUND: "Không tìm thấy khóa này.",
   KEY_STORE_DISABLED: "Chưa bật kho khóa: cần đặt GEMINI_KEYS_SECRET (ít nhất 16 ký tự) trong backend/.env rồi khởi động lại backend.",
   KEY_BODY_INVALID: "Dữ liệu gửi lên không hợp lệ.",
+  KEY_LAST_ACTIVE: "Không thể tắt khóa cuối cùng đang dùng. Hãy thêm hoặc bật một khóa khác trước.",
 };
 export const keyErrorMessage = (code, status) =>
   KEY_ERRORS[code] || (status === 401 ? "Phiên đăng nhập hết hạn." : status === 403 ? "Tài khoản không có quyền quản trị." : "Không thực hiện được.");
@@ -101,4 +102,10 @@ export function managedKeyView(item) {
   return { id: item.id, name: item.label, tail: `…${item.last4}`, ...state };
 }
 
-export const testResultLabel = result => ({ OK: "Khóa dùng được.", QUOTA: "Khóa hợp lệ nhưng đang hết hạn mức.", INVALID: "Google từ chối khóa này.", UNAVAILABLE: "Chưa kiểm tra được với Google." })[result] || "Không rõ.";
+/** Khóa đặt trong backend/.env: chỉ số thứ tự, 4 ký tự cuối và trạng thái bật/tắt. */
+export function envKeyView(item) {
+  return { id: item.id, name: `Khóa .env #${item.position}`, tail: `…${item.last4}`,
+    label: item.enabled ? "Đang dùng" : "Đang tắt", tone: item.enabled ? "success" : "neutral" };
+}
+
+export const testResultLabel =result => ({ OK: "Khóa dùng được.", QUOTA: "Khóa hợp lệ nhưng đang hết hạn mức.", INVALID: "Google từ chối khóa này.", UNAVAILABLE: "Chưa kiểm tra được với Google." })[result] || "Không rõ.";

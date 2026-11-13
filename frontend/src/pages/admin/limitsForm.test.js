@@ -100,3 +100,11 @@ test('a managed key shows only its label, last four characters and an honest sta
   assert.equal(managedKeyView({ ...base, readable: false }).tone, 'error');
   assert.ok(!JSON.stringify(managedKeyView(base)).includes('AIza'));
 });
+
+test('an .env key shows only its number, last four characters and whether it is in use', async () => {
+  const { envKeyView, keyErrorMessage } = await import('./limitsForm.js');
+  const item = { id: 'abc123', position: 1, last4: 'ZZZZ', enabled: true };
+  assert.deepEqual(envKeyView(item), { id: 'abc123', name: 'Khóa .env #1', tail: '…ZZZZ', label: 'Đang dùng', tone: 'success' });
+  assert.deepEqual(envKeyView({ ...item, enabled: false }), { id: 'abc123', name: 'Khóa .env #1', tail: '…ZZZZ', label: 'Đang tắt', tone: 'neutral' });
+  assert.match(keyErrorMessage('KEY_LAST_ACTIVE', 409), /khóa cuối cùng/);
+});

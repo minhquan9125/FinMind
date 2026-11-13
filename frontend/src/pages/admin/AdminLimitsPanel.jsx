@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Card, ErrorState, Skeleton, StatusBadge } from "../../shared/ui";
 import { authorizedHeaders } from "../../shared/api/authorization.js";
 import { getOperations, localTime } from "./operationsApi.js";
-import { LIMIT_FIELDS, addResultNote, draftFrom, isUnchanged, keyErrorMessage, keyStatusView, limitsErrorMessage, managedKeyView, overridesFrom, testResultLabel, validateDraft, validateKeyForm } from "./limitsForm.js";
+import { LIMIT_FIELDS, addResultNote, draftFrom, envKeyView, isUnchanged, keyErrorMessage, keyStatusView, limitsErrorMessage, managedKeyView, overridesFrom, testResultLabel, validateDraft, validateKeyForm } from "./limitsForm.js";
 
 async function saveLimits(body) {
   const response = await fetch("/api/v1/admin/ingestion/limits", {
@@ -115,6 +115,26 @@ function ManagedKeys({ data, onChanged }) {
   </div>;
 }
 
+function EnvKeys({ items, onChanged }) {
+  const [busy, setBusy] = useState(false), [note, setNote] = useState(null);
+  async function toggle(item) {
+    setBusy(true); setNote(null);
+    try { await keyRequest("PATCH", `/env/${item.id}`, { enabled: !item.enabled }); onChanged(); }
+    catch (e) { setNote(e.message); }
+    finally { setBusy(false); }
+  }
+  if (!items?.length) return null;
+  return <div className="space-y-3">
+    <h3 className="text-sm font-semibold">Khóa trong backend/.env</h3>
+    <p className="text-xs text-slate-500">Tắt để chat thôi dùng khóa này ngay ở câu hỏi kế tiếp, không cần sửa file hay khởi động lại. Khóa vẫn nằm trong .env; bật lại bất cứ lúc nào.</p>
+    <ul className="space-y-2">{items.map(item => { const view = envKeyView(item); return <li key={view.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border p-3 text-sm">
+      <span><span className="font-medium">{view.name}</span> <span className="font-mono text-xs text-slate-500">{view.tail}</span></span>
+      <span className="flex flex-wrap items-center gap-2"><StatusBadge tone={view.tone}>{view.label}</StatusBadge>
+        <Button variant="ghost" disabled={busy} onClick={() => toggle(item)}>{item.enabled ? "Tắt" : "Bật"}</Button></span></li>; })}</ul>
+    {note && <p role="alert" className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">{note}</p>}
+  </div>;
+}
+
 function GeminiKeys() {
   const [data, setData] = useState(null), [error, setError] = useState(""), [reload, setReload] = useState(0);
   useEffect(() => {
@@ -133,6 +153,7 @@ function GeminiKeys() {
         <StatusBadge tone={view.tone}>{view.label}</StatusBadge></li>; })}</ul>
       <Button variant="ghost" onClick={() => setReload(v => v + 1)}>Làm mới trạng thái</Button>
     </div> : <p className="text-sm text-slate-600">Chat chưa dùng Gemini (chưa có khóa hoặc chưa xác nhận free tier). Thêm khóa đầu tiên bên dưới rồi khởi động lại backend một lần.</p>}
+    <EnvKeys items={data.env} onChanged={() => setReload(v => v + 1)} />
     <ManagedKeys data={data} onChanged={() => setReload(v => v + 1)} />
   </div>;
 }

@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 import logging
@@ -7,6 +8,9 @@ from ..core.policy import Limits
 from .key_pool import KeyPool
 
 MAX_RESPONSE_BYTES = 1024 * 1024
+# HTTP 503 means Google's model is busy: nothing was generated, so asking again is safe.
+# Two more tries after 1 s and 3 s; the key is healthy, so it is neither rotated nor put on cooldown.
+OVERLOAD_BACKOFF_SECONDS = (1.0, 3.0)
 
 
 class GeminiError(Exception):
@@ -21,6 +25,10 @@ class _KeyRejected(Exception):
     def __init__(self, quota: bool):
         super().__init__("key rejected")
         self.quota = quota
+
+
+class _Overloaded(Exception):
+    """Google answered 503: the model is busy and nothing was generated."""
 
 
 class GeminiProvider:
@@ -52,6 +60,7 @@ class GeminiProvider:
         self.pool = KeyPool(keys)
         # Optional callable returning (keys, meta): lets keys be added or removed while running.
         self._key_source = key_source
+        self._sleep = asyncio.sleep          # replaceable so tests do not wait
         self._transport = transport
         self._base_url = f"https://generativelanguage.googleapis.com/v1beta/models/{limits.model}"
 
@@ -75,6 +84,7 @@ class GeminiProvider:
         self._sync_keys()
         tried: list = []
         last = GeminiError("RATE_LIMITED")
+        overloaded = 0
         while True:
             key = self.pool.acquire(exclude=tried)
             if key is None:
@@ -82,6 +92,15 @@ class GeminiProvider:
             tried.append(key)
             try:
                 body = await self._post_with(key, path, payload)
+            except _Overloaded:
+                if overloaded >= len(OVERLOAD_BACKOFF_SECONDS):
+                    raise GeminiError("GEMINI_UNAVAILABLE") from None
+                logging.getLogger(__name__).warning('Gemini model busy (503); retry %d/%d',
+                                                    overloaded + 1, len(OVERLOAD_BACKOFF_SECONDS))
+                await self._sleep(OVERLOAD_BACKOFF_SECONDS[overloaded])
+                overloaded += 1
+                tried.pop()                  # no key is blamed; the pool picks any healthy one
+                continue
             except _KeyRejected as rejected:
                 (self.pool.quota_exhausted if rejected.quota else self.pool.invalid)(key)
                 last = GeminiError("RATE_LIMITED" if rejected.quota else "GEMINI_UNAVAILABLE")
@@ -144,6 +163,8 @@ class GeminiProvider:
                 logging.getLogger(__name__).warning('Gemini error %s: %s', error.get('status','UNKNOWN'), detail)
             except (ValueError, TypeError, AttributeError):
                 pass
+            if resp.status_code == 503:
+                raise _Overloaded()
             raise GeminiError("GEMINI_UNAVAILABLE") from None
         return bytes(body)
 

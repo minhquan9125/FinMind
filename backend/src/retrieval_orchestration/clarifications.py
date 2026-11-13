@@ -24,7 +24,7 @@ OPTIONS = {
     'PARENT_NET_PROFIT': ('LNST thuộc cổ đông công ty mẹ', 'Phần LNST thuộc cổ đông công ty mẹ.', ('co dong cong ty me', 'thuoc cong ty me')),
     'TOTAL_ASSETS': ('Tổng tài sản', 'Toàn bộ tài sản trên bảng cân đối.', ('tong', 'tat ca')),
     'CASH_AND_CASH_EQUIVALENTS': ('Tiền và tương đương tiền', 'Tiền và các khoản tương đương tiền.', ('tien',)),
-    'TOTAL_EQUITY': ('Vốn chủ sở hữu', 'Tổng vốn chủ sở hữu, không chỉ vốn điều lệ.', ('chu so huu', 'tong')),
+    'OWNERS_EQUITY': ('Vốn chủ sở hữu', 'Tổng vốn chủ sở hữu, không chỉ vốn điều lệ.', ('chu so huu', 'tong')),
     'CHARTER_CAPITAL': ('Vốn điều lệ', 'Vốn điều lệ của công ty.', ('dieu le',)),
     'CASH_FLOW_OPERATING': ('Dòng tiền hoạt động kinh doanh', 'Lưu chuyển tiền thuần từ hoạt động kinh doanh.', ('kinh doanh',)),
     'CASH_FLOW_INVESTING': ('Dòng tiền hoạt động đầu tư', 'Lưu chuyển tiền thuần từ hoạt động đầu tư.', ('dau tu',)),
@@ -36,7 +36,7 @@ GROUPS = {
     'PROFIT': ('lợi nhuận', ['PROFIT_BEFORE_TAX', 'PROFIT_AFTER_TAX', 'PARENT_NET_PROFIT']),
     'REVENUE': ('doanh thu', ['GROSS_REVENUE', 'NET_REVENUE']),
     'ASSETS': ('tài sản', ['TOTAL_ASSETS', 'CASH_AND_CASH_EQUIVALENTS']),
-    'EQUITY': ('vốn', ['TOTAL_EQUITY', 'CHARTER_CAPITAL']),
+    'EQUITY': ('vốn', ['OWNERS_EQUITY', 'CHARTER_CAPITAL']),
     'CASH_FLOW': ('dòng tiền', ['CASH_FLOW_OPERATING', 'CASH_FLOW_INVESTING', 'CASH_FLOW_FINANCING']),
     'GENERIC': ('chỉ tiêu', ['TOTAL_ASSETS', 'NET_REVENUE', 'PROFIT_AFTER_TAX', 'TOTAL_LIABILITIES']),
 }
@@ -76,7 +76,10 @@ def resolve_reply(norm, context):
             label, _, aliases = OPTIONS[key]
             if cleaned in {_fold(label), *aliases}:
                 matches.append(key)
-        elif key.startswith('TEXT:') and cleaned == _fold(key[5:]):
+        elif key.startswith('TEXT:'):
+            if cleaned == _fold(key[5:]):
+                matches.append(key)
+        elif cleaned == _fold(_catalog_label(key)):
             matches.append(key)
     return _replacement(matches[0]) if len(matches) == 1 else norm
 
@@ -89,6 +92,12 @@ def _replacement(key):
     return key.lower()
 
 
+def _catalog_label(code):
+    """Display name of a metric that has no hand-written option: the label printed on its statement row."""
+    from .metric_vocabulary import label
+    return label(code)
+
+
 def _public_options(keys):
     values = []
     for index, key in enumerate(keys, 1):
@@ -97,9 +106,12 @@ def _public_options(keys):
             item = {'id': str(index), 'label': label, 'reply': label, 'description': description}
             if not key.startswith('GROUP:'):
                 item['metric_code'] = key
-        else:
+        elif key.startswith('TEXT:'):
             label = key[5:]
             item = {'id': str(index), 'label': label, 'reply': label, 'description': ''}
+        else:
+            label = _catalog_label(key)
+            item = {'id': str(index), 'label': label, 'reply': label, 'description': '', 'metric_code': key}
         values.append(item)
     return values
 

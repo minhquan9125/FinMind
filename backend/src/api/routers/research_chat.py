@@ -65,6 +65,7 @@ def get_store() -> PostgresSessionStore:
         routed = WebChatRouter(get_router_engine, Neo4jChatRetriever(retriever, get_graph_reader, get_ticker_map),
                                retriever, timeout=min(settings.research_retrieval_timeout_seconds, 30))
         from ...documents.limit_overrides import CachedLimits
+        from ...retrieval_orchestration.price_analytics import PriceAnalytics, PriceStore
         engine = LiveResearchService(
             retriever,
             provider=provider, limits=limits, limits_source=CachedLimits(settings.admin_ingestion_directory),
@@ -72,6 +73,7 @@ def get_store() -> PostgresSessionStore:
             market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
             hybrid_router=routed,
+            prices=PriceAnalytics(PriceStore(get_pool())),
         )
         from ...documents.research_metrics import ObservedResearch, ResearchMetrics
         engine = ObservedResearch(engine, ResearchMetrics(settings.admin_ingestion_directory))

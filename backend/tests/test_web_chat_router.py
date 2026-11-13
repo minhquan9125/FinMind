@@ -310,3 +310,87 @@ def test_global_graph_uses_trusted_ticker_mapping_and_bounded_viewer_limit():
     assert len(facts) == 1
     assert facts[0]['companies'] == ['TCB']
     assert facts[0]['origin_corpus_id'] == CID
+
+
+class EmptyGraph(Graph):
+    async def retrieve(self, scope):
+        self.calls.append(copy.deepcopy(scope.model_dump()))
+        value = pack()
+        value['items'] = []
+        return value, []
+
+
+@pytest.mark.parametrize('question', [
+    'Tổng tài sản FPT năm 2025 của công ty mẹ là bao nhiêu?',
+])
+def test_empty_graph_on_a_statement_question_falls_through_to_the_content_pipeline(question):
+    engine, graph, content = service(EmptyGraph())
+    result = asyncio.run(engine.answer(question, 'test'))
+    assert len(graph.calls) == 1
+    assert len(content.calls) == 1
+    assert content.calls[0]['source_type'] == 'BCTC'
+    assert result.get('reason_code') != 'GRAPH_NO_VERIFIED_RELATIONS'
+
+
+def test_empty_graph_on_an_annual_report_relationship_question_searches_the_annual_report():
+    engine, graph, content = service(EmptyGraph())
+    result = asyncio.run(engine.answer('Theo BCTN FPT năm 2025, ai là Chủ tịch?', 'test'))
+    assert len(graph.calls) == 1
+    assert len(content.calls) == 1
+    assert content.calls[0]['source_type'] == 'BCTN'
+    assert result.get('reason_code') != 'GRAPH_NO_VERIFIED_RELATIONS'
+
+
+def test_empty_graph_on_a_news_relationship_question_stays_no_data_and_never_reads_news():
+    engine, graph, content = service(EmptyGraph())
+    result = asyncio.run(engine.answer('Theo tin tức, FPT hợp tác với những đối tác nào?', 'test'))
+    if graph.calls:
+        assert content.calls == []
+        assert result['reason_code'] == 'GRAPH_NO_VERIFIED_RELATIONS'
+
+
+class EmptyContent(Content):
+    async def retrieve(self, question, scope):
+        self.calls.append(copy.deepcopy(scope))
+        value = pack()
+        value['items'] = []
+        return value
+
+
+def test_statement_fallback_with_no_evidence_reports_missing_evidence_not_a_relationship_error():
+    content = EmptyContent()
+    graph = EmptyGraph()
+    engine = LiveResearchService(content, provider=Provider(), hybrid_router=WebChatRouter(lambda: DecisionEngine(Predictor()), graph, content))
+    result = asyncio.run(engine.answer('Tổng tài sản FPT năm 2025 của công ty mẹ là bao nhiêu?', 'test'))
+    assert len(content.calls) == 1
+    assert result['reason_code'] == 'NO_DATA'
+    assert 'quan hệ' not in result['message']
+
+
+@pytest.mark.parametrize('question,metric', [
+    ('Lợi nhuận sau thuế thuộc cổ đông công ty mẹ FPT năm 2025 là bao nhiêu?', 'PARENT_NET_PROFIT'),
+    ('Vốn chủ sở hữu của FPT năm 2025 là bao nhiêu?', 'OWNERS_EQUITY'),
+])
+def test_relationship_words_inside_a_metric_name_do_not_send_a_financial_question_to_the_graph(question, metric):
+    engine, graph, content = service()
+    asyncio.run(engine.answer(question, 'test'))
+    assert graph.calls == []
+    assert len(content.calls) == 1 and content.calls[0]['metric_code'] == metric
+
+
+def test_a_person_question_that_also_names_a_metric_still_uses_the_graph():
+    engine, graph, content = service()
+    asyncio.run(engine.answer('Chủ tịch FPT nói gì về lợi nhuận sau thuế năm 2025?', 'test'))
+    assert len(graph.calls) == 1
+
+
+def test_empty_graph_on_a_statement_question_that_needs_a_metric_choice_asks_that_choice():
+    engine, graph, content = service(EmptyGraph())
+    router = engine.hybrid_router
+    async def never(question, context): return False          # force the graph route for this question
+    router._only_a_metric_question = never
+    result = asyncio.run(engine.answer('Lợi nhuận sau thuế thuộc cổ đông công ty mẹ và lãi cơ bản trên cổ phiếu của FPT năm 2025?', 'test'))
+    if graph.calls:
+        assert content.calls == []
+        assert result['reason_code'] == 'MULTIPLE_METRICS'
+        assert [o['metric_code'] for o in result['clarification_options']] == ['PARENT_NET_PROFIT', 'BASIC_EARNINGS_PER_SHARE']

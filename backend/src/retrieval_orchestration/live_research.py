@@ -28,36 +28,18 @@ from .clarifications import apply_clarification, metric_group, resolve_reply
 from .market_dialogue import article_query, calendar_day, news_reference
 from .input_normalization import normalize_user_text, conversational_words, registered_symbols
 from .market_dates import price_date_request, relative_market_range, temporal_reply
+from .metric_vocabulary import (CURATED, find_metrics, label as metric_label, plain, point_in_time_codes,
+                                vocabulary_words, without_metrics)
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
 _embedding_lock = threading.Lock()
-# Explicit semantic aliases; unrelated financial rows must never stand in for a metric.
-METRIC_ALIASES = {
-    'TOTAL_ASSETS': ('tổng tài sản', 'total assets'),
-    'CASH_AND_CASH_EQUIVALENTS': ('tiền và các khoản tương đương tiền', 'tiền và tương đương tiền', 'cash and cash equivalents'),
-    'SHORT_TERM_LOANS_AND_FINANCE_LEASES': ('vay và nợ thuê tài chính ngắn hạn', 'nợ vay ngắn hạn'),
-    'LONG_TERM_LOANS_AND_FINANCE_LEASES': ('vay và nợ thuê tài chính dài hạn', 'nợ vay dài hạn'),
-    'CURRENT_LIABILITIES': ('nợ ngắn hạn', 'current liabilities'),
-    'NON_CURRENT_LIABILITIES': ('nợ dài hạn', 'non-current liabilities'),
-    'RETAINED_EARNINGS': ('lợi nhuận sau thuế chưa phân phối', 'lợi nhuận chưa phân phối', 'retained earnings'),
-    'NET_REVENUE': ('doanh thu thuần', 'net revenue'),
-    'GROSS_REVENUE': ('doanh thu bán hàng và cung cấp dịch vụ', 'doanh thu trước giảm trừ', 'gross revenue'),
-    'PROFIT_BEFORE_TAX': ('lợi nhuận trước thuế', 'profit before tax', 'LNTT'),
-    'PROFIT_AFTER_TAX': ('lợi nhuận sau thuế', 'profit after tax', 'LNST'),
-    'PARENT_NET_PROFIT': ('lợi nhuận sau thuế thuộc cổ đông công ty mẹ',
-                          'lợi nhuận sau thuế của cổ đông công ty mẹ',
-                          'LNST cổ đông công ty mẹ', 'LNST thuộc cổ đông công ty mẹ', 'LNST công ty mẹ', 'parent net profit'),
-    'CASH_FLOW_OPERATING': ('lưu chuyển tiền thuần từ hoạt động kinh doanh', 'dòng tiền hoạt động kinh doanh', 'cash flow from operating activities'),
-    'CASH_FLOW_INVESTING': ('lưu chuyển tiền thuần từ hoạt động đầu tư', 'dòng tiền hoạt động đầu tư', 'cash flow from investing activities'),
-    'CASH_FLOW_FINANCING': ('lưu chuyển tiền thuần từ hoạt động tài chính', 'dòng tiền hoạt động tài chính', 'cash flow from financing activities'),
-    'CHARTER_CAPITAL': ('vốn điều lệ', 'charter capital'),
-    'TOTAL_LIABILITIES': ('tổng nợ phải trả', 'nợ phải trả'),
-    'TOTAL_EQUITY': ('tổng vốn chủ sở hữu', 'vốn chủ sở hữu'),
-}
-POINT_METRICS = {'TOTAL_ASSETS', 'CASH_AND_CASH_EQUIVALENTS', 'SHORT_TERM_LOANS_AND_FINANCE_LEASES',
+# The vocabulary (curated aliases plus the ingestion catalog) lives in metric_vocabulary; the name
+# METRIC_ALIASES is kept for the modules that import the curated part from here.
+METRIC_ALIASES = CURATED
+POINT_METRICS = frozenset({'TOTAL_ASSETS', 'CASH_AND_CASH_EQUIVALENTS', 'SHORT_TERM_LOANS_AND_FINANCE_LEASES',
                  'LONG_TERM_LOANS_AND_FINANCE_LEASES', 'CURRENT_LIABILITIES', 'NON_CURRENT_LIABILITIES',
-                 'CHARTER_CAPITAL', 'RETAINED_EARNINGS', 'TOTAL_LIABILITIES', 'TOTAL_EQUITY'}
+                 'CHARTER_CAPITAL', 'RETAINED_EARNINGS', 'TOTAL_LIABILITIES', 'TOTAL_EQUITY'}) | point_in_time_codes()
 
 
 def _live_period(norm, metric, scope):
@@ -200,6 +182,20 @@ def annual_scope(text, norm, scope, previous):
     return 'SEARCH', 'ANNUAL_REPORT_SCOPE_READY', 'Đang tìm nội dung trong báo cáo thường niên đúng công ty và năm báo cáo.'
 
 
+_FUNCTION_WORDS = STOP_WORDS | set(
+    'la bao nhieu gi nao cua trong nam quy thang ngay tai thoi diem theo va cac nhung co duoc da dang se khong '
+    'hay cho biet toi minh ban xin hoi ve thi ma voi tu den o ra lam sao ai dau khi nay do kia a nhe giup xem '
+    'tra cuu thong tin cong ty tap doan ngan hang phan tram so lieu con mot hai ba'.split())
+
+
+def _is_open_question(norm, scope):
+    """True for a real question (three or more content words), not a bare company, period or reply."""
+    tickers = {symbol.lower() for symbol in scope.get('companies') or []}
+    words = {word for word in re.findall(r'[a-z]+', plain(norm))
+             if len(word) > 1 and word not in _FUNCTION_WORDS and word not in tickers}
+    return len(words) >= 3
+
+
 def analyze_live(text, context=None, *, today=None):
     """Resolve explicit slots and follow-ups without generating values or SQL."""
     today = today or datetime.now(timezone(timedelta(hours=7))).date()
@@ -234,7 +230,8 @@ def analyze_live(text, context=None, *, today=None):
     if re.search(r'\b(?:nen mua|nen ban|gia muc tieu|tu van dau tu|should i buy|should i sell)\b', norm):
         return finish('UNSUPPORTED', 'UNSUPPORTED_ADVICE', 'Chức năng này không cung cấp tư vấn mua bán.')
     if not annual and not market_request and re.search(r'\b(?:gia co phieu|gia dong cua|gia mo cua|khoi luong giao dich|gia muc tieu)\b', norm):
-        return finish('UNSUPPORTED', 'PRICE_QUERY_SEPARATE', 'Câu hỏi giá cần luồng tra cứu giá có cấu trúc; chat này hiện tìm báo cáo tài chính và tin tức.')
+        return finish('UNSUPPORTED', 'PRICE_QUERY_SEPARATE', ('Mình trả lời được giá lịch sử theo ngày của các mã có trong dữ liệu, ví dụ: "Giá đóng cửa VCB ngày 15/6/2026". '
+                      'Mã hoặc ngày bạn hỏi chưa có dữ liệu giá, hoặc câu hỏi chưa nêu rõ mã và ngày.'))
     quarters = re.findall(r'\b(?:quy|q)\s*(\d+)\s*[/ -]?\s*((?:19|20|21)\d{2})\b', norm)
     canonical_quarters = re.findall(r'\b((?:19|20|21)\d{2})-q(\d+)\b', norm)
     if not annual and (any(not 1 <= int(q) <= 4 for q, _ in quarters)
@@ -247,12 +244,35 @@ def analyze_live(text, context=None, *, today=None):
     companies = [s for s in (*TICKERS, 'SSI', 'CTR', 'VNM', 'MSN', 'NLG') if re.search(r'\b'+s.lower()+r'\b', norm)]
     reserved = {'BCTC', 'BCTN', 'YTD', 'VND', 'USD', 'EUR', 'UBND', 'CTCP', 'TNHH',
                 'NEWS', 'CASH', 'TOTAL', 'CAFEF', 'LNST', 'LNTT', 'HDQT', 'HDTV', 'BKS', 'BGD', 'BDH'}
-    companies += [s for s in re.findall(r'\b[A-Z]{3,5}\b', text) if s not in reserved and s not in companies]
     ticker_stop = STOP_WORDS | {'mot', 'cuoi', 'thuan', 'nhat', 'rieng', 'hop', 'ngan', 'dai',
                               'thu', 'phi', 'tuc', 'cafef', 'news', 'trong', 'tai', 'ky',
                               'von', 'loi', 'lai', 'tong', 'vay', 'thue', 'dong', 'tien',
-                              'hom', 'hien', 'nay', 'nhieu', 'bao', 'moi', 'nhat', 'khong'}
-    ticker_stop |= {word for aliases in METRIC_ALIASES.values() for alias in aliases for word in _fold(alias).split()}
+                              'hom', 'hien', 'nay', 'nhieu', 'bao', 'moi', 'nhat', 'khong',
+                              'tap', 'doan', 'nhom', 'cty'}
+    # A ticker is plain ASCII letters, so any word the user typed with Vietnamese diacritics ("Tập" in
+    # "Tập đoàn FPT") is ordinary language, never a symbol, once folded.
+    ticker_stop |= {_fold(word) for word in re.findall(r'\w+', text) if not word.isascii()}
+    ticker_stop |= vocabulary_words()
+    # Capital letters alone do not make a company. A registered symbol is one. Otherwise the token must not
+    # be a term the router already knows is no company (EPS, ROE, CFO, HOSE ...), a word of a metric name,
+    # or an abbreviation given in brackets after the phrase it abbreviates ("... trên cổ phiếu (EPS)").
+    from .hybrid_router.decision_engine import DEFAULT_COMPANIES, NON_COMPANY_CODES
+    glosses, initialisms = set(), set()
+    for before, token in re.findall(r'((?:\S+\s+){1,6})\(\s*([A-Z]{2,6})\s*\)', text):
+        glosses.add(token)
+        # "Tổng tài sản (TTS)": the letters are the initials of the words before the bracket, so this is an
+        # abbreviation of that phrase even when the same letters happen to be a listed symbol.
+        if ''.join(word[0] for word in _fold(before).split()[-len(token):]).upper() == token:
+            initialisms.add(token)
+    companies += [s for s in re.findall(r'\b[A-Z]{3,5}\b', text)
+                  if s not in reserved and s not in companies and s not in NON_COMPANY_CODES and s not in initialisms
+                  and (s in registered or not (s in glosses or s.lower() in ticker_stop))]
+    # Companies are also named by name ("Vinamilk", "Hòa Phát"); the router's name table is the shared source.
+    for alias, symbols in DEFAULT_COMPANIES.items():
+        if len(alias) > 3 and re.search(r'\b' + re.escape(alias) + r'\b', norm):
+            ticker_stop |= set(alias.split())        # the words of a name are not a second, made-up symbol
+            if symbols[0] not in companies:
+                companies.append(symbols[0])
     # Explicit lowercase symbols must replace old scope too, even if not in this corpus.
     company_patterns = (r'\b(?:cua|cong ty|co phieu|ma ck|ma)\s+([a-z]{3,5})\b',
                         r'\b([a-z]{3,5})\s+(?:nam|quy|thang)\s+(?:\d{4}|\d{1,2}[/ -]\d{4}|nay|truoc)\b')
@@ -311,15 +331,17 @@ def analyze_live(text, context=None, *, today=None):
             return finish('MARKET_LOOKUP', 'CURRENT_MARKET_DIGEST',
                           'Dang tra cuu ban tin tong hop va tin noi bat trong ngay.')
         if not scope.get('companies'):
-            return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn xem công ty nào?')
+            return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Mình tra cứu giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào?')
         if len(scope['companies']) != 1:
             return finish('ASK_CLARIFICATION', 'SCOPE_TOO_LARGE', 'Vui lòng chọn một mã cổ phiếu cho mỗi lần tra cứu giá hoặc tin mới.')
         return finish('MARKET_LOOKUP', 'CURRENT_MARKET_REQUEST', 'Đang tra cứu nguồn giá hoặc tin tức đang cập nhật.')
     if scope.pop('_market_request', None):
         for key in ('periods', 'metric_code', 'source_type', 'publisher', 'measure_basis', 'reporting_entity'):
             scope.pop(key, None)
-    found = [code for code, aliases in METRIC_ALIASES.items()
-             if any(re.search(r'\b'+re.escape(_fold(a))+r'\b', norm) for a in (*aliases, code))]
+    found = find_metrics(norm)
+    # What the question says besides the metric names: a word that is part of a metric name ("cổ đông" in
+    # "LNST thuộc cổ đông công ty mẹ", "sở hữu" in "vốn chủ sở hữu") says nothing about people or ownership.
+    residual = without_metrics(norm)
     # Users often say "lợi nhuận ... sau thuế" without the exact phrase
     # "lợi nhuận sau thuế". Resolve that explicit tax basis in the same turn.
     profit_requested = ('loi nhuan' in norm or bool(re.search(r'\b(?:lời|lãi)\b', text.lower()))
@@ -341,8 +363,19 @@ def analyze_live(text, context=None, *, today=None):
     overall_comparison = comparison and not found and not profit_requested
     relationship_lookup = bool(re.search(
         r'\b(?:chu tich|ceo|tong giam doc|giam doc|lanh dao|co dong|so huu|'
-        r'hoi dong|hdqt|hdtv|ban dieu hanh|ban kiem soat|nhan su quan ly)\b', norm
+        r'hoi dong|hdqt|hdtv|ban dieu hanh|ban kiem soat|nhan su quan ly)\b', residual if found else norm
     ))
+    # A statement row is the company-wide total. A metric restricted to a part of the business (a market,
+    # a segment, a subsidiary) or asked "theo thuyết minh" is in the notes of the annual report, never in
+    # that row, so it must not be answered with the total.
+    part_of_business = bool(found and (re.search(
+        r'\b(?:thi truong nuoc ngoai|nuoc ngoai|trong nuoc|noi dia|hai ngoai|xuat khau|phan khuc|'
+        r'linh vuc|bo phan|cong ty con|cong ty thanh vien|theo (?:tung )?(?:khu vuc|thi truong|san pham|dich vu)|'
+        r'thuyet minh)\b', residual)
+        # "mảng" and "khối" lose their meaning without diacritics ("mang lại", "khởi sắc"), so read them as typed.
+        or re.search(r'\b(?:mảng|khối)\s+\w+', text.lower())))
+    if part_of_business and scope.get('companies'):
+        return finish(*annual_scope(text, norm, scope, context))
     ambiguous_members = bool(re.search(r'\bthanh vien\b', norm)) or bool(scope.get('_pending_membership'))
     if ambiguous_members and not relationship_lookup and not found and not profit_requested:
         for key in ('_pending_metric', '_metric_candidates', '_pending_quarter', '_pending_ytd',
@@ -424,7 +457,9 @@ def analyze_live(text, context=None, *, today=None):
         scope.pop('publisher', None)
         scope.pop('_pending_publisher', None)
     consolidated = 'hop nhat' in norm
-    parent = ('bao cao rieng' in norm or ('cong ty me' in norm and scope.get('metric_code') != 'PARENT_NET_PROFIT')
+    # "công ty mẹ" inside the metric name "LNST thuộc cổ đông công ty mẹ" is not a request for the parent-only report.
+    parent = ('bao cao rieng' in norm or re.search(r'\brieng le\b', norm)
+              or bool(re.search(r'\bcong ty me\b', residual if found else norm))
               or (scope.get('_pending_reporting_entity') and norm in ('rieng', 'rieng le')))
     if consolidated and parent:
         scope.update(reporting_entity='UNKNOWN', _pending_reporting_entity=True)
@@ -467,12 +502,21 @@ def analyze_live(text, context=None, *, today=None):
     elif metric and scope.get('measure_basis') == 'POINT_IN_TIME' and scope.get('periods'):
         scope['measure_basis'] = 'STANDALONE_QUARTER' if '-Q' in scope['periods'][0] else 'FULL_YEAR'
     if not scope.get('companies') and scope.get('topic') != 'EVENT_IMPACT':
-        return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn xem công ty nào?')
+        if metric or scope.get('topic'):
+            return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn xem công ty nào?')
+        return finish('ASK_CLARIFICATION', 'MISSING_COMPANY',
+                      'Mình tra cứu báo cáo, chỉ tiêu tài chính, giá và tin tức của các công ty trong kho dữ liệu. '
+                      'Bạn muốn xem công ty nào? Ví dụ: "Doanh thu thuần quý 2/2026 của FPT".')
     if scope.get('_pending_publisher'):
         return finish('ASK_CLARIFICATION', 'AMBIGUOUS_PUBLISHER', 'Bạn muốn xem nguồn CafeF hay FireAnt trước?')
     if scope.get('_pending_reporting_entity'):
         return finish('ASK_CLARIFICATION', 'AMBIGUOUS_REPORTING_ENTITY', 'Bạn muốn xem báo cáo hợp nhất hay báo cáo riêng?')
     if not metric and scope.get('source_type') not in ('NEWS', 'COMPANY_PROFILE', 'COMPANY_OVERVIEW'):
+        if (not multiple and not scope.get('source_type') and not scope.get('_pending_metric')
+                and _is_open_question(norm, scope)):
+            # A full question about a company that names no statement metric ("tỷ lệ nhân sự nữ", "đơn vị
+            # kiểm toán là ai") is a question for its annual report; asking "which metric?" cannot help.
+            return finish(*annual_scope(text, norm, scope, context))
         return finish('ASK_CLARIFICATION', 'MULTIPLE_METRICS' if multiple else 'MISSING_METRIC', 'Bạn muốn xem chỉ tiêu nào?')
     if not scope.get('periods'):
         if scope.get('topic') in ('RELATIONSHIP_LOOKUP', 'EVENT_IMPACT'):
@@ -534,6 +578,20 @@ class DenseEvidenceRetriever:
                 or corpus['embedding_model'] != self.model_ref):
             raise ReconstructionError('CORPUS_NOT_READY', 'Pinned corpus or model is not ready')
         return corpus
+
+    async def corpus_companies(self):
+        """Symbols with a financial statement or annual report in the serving corpus (cached per corpus)."""
+        await self._corpus()
+        cached = getattr(self, '_corpus_companies', None)
+        if cached is None or cached[0] != self.corpus_version_id:
+            async with self.pool.acquire() as conn:
+                rows = await conn.fetch(
+                    '''SELECT DISTINCT c.symbol FROM public.corpus_documents cd
+                       JOIN public.documents d USING(document_id) JOIN public.companies c USING(company_id)
+                       WHERE cd.corpus_version_id=$1::uuid AND d.doc_type IN ('FINANCIAL_STATEMENT','ANNUAL_REPORT')''',
+                    uuid.UUID(self.corpus_version_id))
+            cached = self._corpus_companies = (self.corpus_version_id, sorted(row['symbol'] for row in rows))
+        return cached[1]
 
     async def _embed(self, question):
         def embed():
@@ -711,8 +769,9 @@ class LiveResearchService:
     execution_mode = 'LIVE'
 
     def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None, hybrid_router=None,
-                 limits_source=None):
+                 limits_source=None, prices=None):
         self.retriever, self.provider = retriever, provider
+        self.prices = prices
         self.market = market
         self.admin_news = admin_news
         self.hybrid_router = hybrid_router
@@ -776,6 +835,36 @@ class LiveResearchService:
                                  'trace': [{'event': 'saved_source_reference'}]})
         return result
 
+    async def _absent_from_corpus(self, scope):
+        """(asked companies without any report in the serving corpus, companies that have reports).
+
+        The corpus itself is the source of truth, so this follows whatever corpus is being served. It is
+        asked only after a search found nothing, and never fails the answer.
+        """
+        if scope.get('source_type') not in ('BCTC', 'BCTN', 'COMPANY_PROFILE', 'COMPANY_OVERVIEW'):
+            return [], []
+        lookup = getattr(self.retriever, 'corpus_companies', None)
+        if lookup is None:
+            return [], []
+        try:
+            available = list(await asyncio.wait_for(lookup(), 10))
+        except Exception:
+            return [], []
+        if not available:
+            return [], []
+        return [symbol for symbol in scope.get('companies') or [] if symbol not in available], available
+
+    async def _missing_companies(self, companies):
+        """(asked companies the serving corpus has no report of, the companies it has); ([], []) when unknown."""
+        lookup = getattr(self.retriever, 'corpus_companies', None)
+        if lookup is None:
+            return [], []
+        try:
+            available = list(await asyncio.wait_for(lookup(), 10))
+        except Exception:
+            return [], []
+        return ([symbol for symbol in companies if symbol not in available], available) if available else ([], [])
+
     def _current_limits(self):
         """Limits for this request: the admin overrides when configured, else the fixed ones."""
         if self.limits_source is None:
@@ -812,6 +901,13 @@ class LiveResearchService:
                 b1_decision='GREETING', status='GREETING', reason_code='GREETING',
                 message='Chào bạn! Bạn có thể hỏi thông tin công ty, nhân sự, báo cáo hoặc tin tức của doanh nghiệp.',
                 scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
+        if self.prices is not None:
+            # Historical price questions are arithmetic on stored bars, not reading: answer them exactly.
+            priced = await self.prices.answer(interpreted, today)
+            if priced is not None:
+                if priced.get('answering'):
+                    priced['answering']['budget'] = self.budget.snapshot()
+                return priced
         from .hybrid_router.intent_policy import PROFILE_TERMS, contains
         explicit_profile = contains(norm, PROFILE_TERMS) or bool(re.search(r'\bthong tin\s+(?:cong ty\s+)?(?:' + '|'.join(s.lower() for s in registered_symbols()) + r')\b', norm))
         bare_company = norm.upper() in (set(TICKERS) | set(registered_symbols()))
@@ -853,9 +949,19 @@ class LiveResearchService:
             return self._source_reference(result, previous_result)
         if decision['decision'] == 'MARKET_LOOKUP':
             return await self._answer_market(interpreted, result, previous_result)
+        if (decision['decision'] == 'ASK_CLARIFICATION' and scope.get('companies')
+                and decision['reason_code'] in ('MISSING_METRIC', 'MULTIPLE_METRICS', 'MISSING_PERIOD', 'MISSING_YEAR')):
+            # Asking "which metric?" about a company the corpus does not hold would only lead to a dead end.
+            absent, available = await self._missing_companies(scope['companies'])
+            if absent and len(absent) == len(scope['companies']):
+                result.update(status='NO_DATA', b1_decision='NO_DATA', reason_code='COMPANY_NOT_IN_CORPUS', clarification=None,
+                              clarification_options=[],
+                              message=f"Kho tài liệu chưa có báo cáo của {', '.join(absent)}. "
+                                      f"Hiện có báo cáo của {len(available)} mã: {', '.join(available)}.")
+                return result
         if decision['decision'] != 'SEARCH': return result
         label = ('Hồ sơ doanh nghiệp' if scope.get('source_type') == 'COMPANY_PROFILE'
-                 else METRIC_ALIASES.get(scope.get('metric_code'), ('tin tức',))[0])
+                 else metric_label(scope['metric_code']) if scope.get('metric_code') else 'tin tức')
         query = (f"Báo cáo thường niên {' '.join(scope['companies'])}. {scope.get('_annual_question', interpreted)}"
                  if scope.get('source_type') == 'BCTN' else
                  f"{label} {' '.join(scope['companies'])} {' '.join(scope['periods'])}. {interpreted}")
@@ -865,6 +971,12 @@ class LiveResearchService:
                 raise CitationError('INVALID_EVIDENCE')
             if not pack['items']:
                 result.update(status='NO_DATA', reason_code='NO_DATA', message='Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.')
+                absent, available = await self._absent_from_corpus(scope)
+                if absent:
+                    # Not a missing row: the corpus has no reports of this company at all. Say which it has.
+                    result.update(reason_code='COMPANY_NOT_IN_CORPUS',
+                                  message=f"Kho tài liệu chưa có báo cáo của {', '.join(absent)}. "
+                                          f"Hiện có báo cáo của {len(available)} mã: {', '.join(available)}.")
                 return result
             prepare_evidence(pack)
             if scope.get('source_type') == 'BCTN':
@@ -953,11 +1065,25 @@ class LiveResearchService:
         return out
 
 
+_EN_NUMBER = re.compile(r'(?<![\d.,])\d{1,3}(?:,\d{3}){2,}(?:\.\d+)?(?![\d,])|(?<![\d.,])\d{1,3},\d{3}\.\d+(?![\d])')
+
+
+def vietnamese_numbers(text):
+    """Show 13,788,503.46 as 13.788.503,46. Only unambiguous thousands groupings are touched."""
+    return _EN_NUMBER.sub(lambda m: m.group(0).translate({44: 46, 46: 44}), text)
+
+
 def render_live_response(result):
     answering = result.get('answering') or {}
     if answering.get('status') == 'DRAFT_READY':
-        return answering['draft']
-    if answering.get('reason_code') == 'REQUESTED_PERIOD_NOT_IN_SOURCE':
+        if (answering.get('manifest') or {}).get('response_mode') in ('PRICE_ANALYTICS', 'MARKET_QUOTE', 'NEWS_LIST'):
+            return answering['draft']
+        return vietnamese_numbers(answering['draft'])
+    if (answering.get('reason_code') == 'NOT_STATED_IN_SOURCE'
+            and (result.get('hybrid_router') or {}).get('route') in ('GRAPH', 'BOTH')):
+        return ('Dữ liệu quan hệ và tài liệu hiện có chưa ghi nhận thông tin này. '
+                'Có thể công ty không có thông tin đó hoặc dữ liệu chưa được cập nhật; mình không suy đoán.')
+    if answering.get('reason_code') in ('REQUESTED_PERIOD_NOT_IN_SOURCE', 'NOT_STATED_IN_SOURCE'):
         return answering['message']
     if result.get('status') != 'EVIDENCE_READY':
         return result['message']
