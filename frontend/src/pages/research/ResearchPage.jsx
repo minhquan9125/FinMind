@@ -17,7 +17,7 @@ import {
 import ResearchChat from "./ResearchChat.jsx";
 import { useAuth } from "../../shared/context/AuthContext.jsx";
 import { userMenu } from "../../mocks/componentMock.js";
-import { researcherMock } from "../dashboard/mock.js";
+
 import {
   companyDirectory,
   comparisonMetricsList,

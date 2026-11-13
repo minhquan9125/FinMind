@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from .documents.chunk_reconstruction import ReconstructionError
 
-from .api.routers import auth, documents, search, market_data, research_chat, hybrid_router, graph_viewer, admin_jobs
+from .api.routers import auth, documents, search, market_data, research_chat, hybrid_router, graph_viewer, admin_jobs, watchlist
 from .market_data.app import lifespan as market_lifespan
 from .core.config import check_jwt_secret, get_settings
 from .core.db import connect, disconnect
@@ -129,6 +129,7 @@ app.add_middleware(
 
 app.include_router(documents.router)
 app.include_router(search.router)
+app.include_router(watchlist.router)
 app.include_router(auth.router)
 app.include_router(market_data.router)
 app.include_router(research_chat.router)

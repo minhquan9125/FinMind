@@ -4,7 +4,7 @@ import { Card, EmptyState, ErrorState, Input, Sidebar, Skeleton, StatusBadge } f
 import { userMenu } from "../../mocks/componentMock.js";
 import { companyCatalog } from "../companies/mock.js";
 import { getDashboard } from "./api.js";
-import { popularTickers, researcherMock } from "./mock.js";
+import { popularTickers } from "./mock.js";
 import { searchCompanies } from "../companies/companySearch.js";
 import MarketOverview from "./MarketOverview.jsx";
 import MarketNews from "./MarketNews.jsx";
@@ -16,21 +16,9 @@ const menuPaths = {
 
 export default function DashboardPage() {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
-
-  const displayName = user?.name || researcherMock.name;
-  const initials = (() => {
-    if (!displayName) return "U";
-    const parts = displayName.trim().split(/\s+/);
-    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-  })();
-
-  const userProfile = {
-    initials,
-    name: displayName,
-    role: user?.role === "admin" ? "Quản trị viên" : "Nhà nghiên cứu",
-  };
+  // Name, initials and role come from the signed-in account (AuthContext), never from a fixture.
+  const { userProfile, logout } = useAuth();
+  const displayName = userProfile.name;
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);

@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "../../app/router.jsx";
+import { Link, useAuth, useNavigate } from "../../app/router.jsx";
 import { Sidebar } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
-import { researcherMock } from "../dashboard/mock.js";
 import { PATHS } from "../../shared/paths.js";
-import {
-  COMPANY_DIRECTORY,
-  STORAGE_KEY,
-  getStoredWatchlist,
-  saveStoredWatchlist,
-} from "./mock.js";
+// shortcut: the add picker still lists COMPANY_DIRECTORY; switch to GET /api/companies once that endpoint lands.
+import { COMPANY_DIRECTORY } from "./mock.js";
+import { addToWatchlist, loadWatchlist, removeFromWatchlist } from "./watchlistApi.js";
 
 const menuPaths = {
   dashboard: "/dashboard",
@@ -21,9 +17,11 @@ const menuPaths = {
 
 export default function WatchlistPage() {
   const navigate = useNavigate();
+  const { userProfile, logout } = useAuth();
 
-  // Danh sách các mã cổ phiếu đang theo dõi (lấy từ localStorage)
-  const [watchlistTickers, setWatchlistTickers] = useState(getStoredWatchlist);
+  // Danh sách theo dõi lưu trên server theo tài khoản (bảng watchlists)
+  const [serverItems, setServerItems] = useState([]);
+  const watchlistTickers = serverItems.map((item) => item.id);
 
   // State tìm kiếm & bộ lọc
   const [search, setSearch] = useState("");
@@ -39,34 +37,26 @@ export default function WatchlistPage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedTickerToAdd, setSelectedTickerToAdd] = useState("");
 
-  // Lưu vào localStorage khi watchlist thay đổi
-  const saveWatchlist = (newTickers) => {
-    setWatchlistTickers(newTickers);
-    saveStoredWatchlist(newTickers);
+  // Mỗi thay đổi gọi server; server trả lại cả danh sách mới
+  const showError = (caught) => {
+    setToastMessage(caught.message || "Chưa lưu được danh sách theo dõi.");
+    setShowToast(true);
   };
+  const applyServer = (request) => request.then(setServerItems).catch(showError);
 
-  // Lắng nghe sự kiện storage để đồng bộ realtime giữa các tab
-  useEffect(() => {
-    const handleStorage = (e) => {
-      if (e.key === STORAGE_KEY) {
-        setWatchlistTickers(getStoredWatchlist());
-      }
-    };
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []);
+  useEffect(() => { applyServer(loadWatchlist()); }, []);
 
   // Lấy dữ liệu công ty đầy đủ cho các mã trong watchlist
-  const watchlistItems = watchlistTickers.map((ticker) => {
-    const found = COMPANY_DIRECTORY[ticker];
+  const watchlistItems = serverItems.map((item) => {
+    const found = COMPANY_DIRECTORY[item.id];
     return (
       found || {
-        ticker,
-        name: `Doanh nghiệp ${ticker}`,
-        sector: "Khác",
-        exchange: "Chưa có dữ liệu",
-        latestPeriod: "FY2025",
-        sourceStatus: "Đã có nguồn công bố",
+        ticker: item.id,
+        name: item.name || `Doanh nghiệp ${item.id}`,
+        sector: item.sector || "Khác",
+        exchange: item.exchange || "Chưa có dữ liệu",
+        latestPeriod: "—",
+        sourceStatus: "Đang theo dõi",
       }
     );
   });
@@ -103,8 +93,7 @@ export default function WatchlistPage() {
 
   // Xóa doanh nghiệp khỏi watchlist
   const handleRemove = (ticker) => {
-    const updated = watchlistTickers.filter((t) => t !== ticker);
-    saveWatchlist(updated);
+    applyServer(removeFromWatchlist(ticker));
     setLastRemovedTicker(ticker);
     setToastMessage(`Đã bỏ ${ticker} khỏi danh sách theo dõi`);
     setShowToast(true);
@@ -114,8 +103,7 @@ export default function WatchlistPage() {
   const handleUndo = () => {
     if (!lastRemovedTicker) return;
     if (!watchlistTickers.includes(lastRemovedTicker)) {
-      const updated = [...watchlistTickers, lastRemovedTicker];
-      saveWatchlist(updated);
+      applyServer(addToWatchlist(lastRemovedTicker));
     }
     setShowToast(false);
     setLastRemovedTicker(null);
@@ -134,7 +122,7 @@ export default function WatchlistPage() {
   const handleAddTicker = (ticker) => {
     if (!ticker) return;
     if (!watchlistTickers.includes(ticker)) {
-      saveWatchlist([...watchlistTickers, ticker]);
+      applyServer(addToWatchlist(ticker));
     }
     setIsAddModalOpen(false);
     setSelectedTickerToAdd("");
@@ -153,9 +141,9 @@ export default function WatchlistPage() {
         groups={userMenu}
         activeId="watchlist"
         onSelect={(id) => navigate(menuPaths[id] || "/dashboard")}
-        profile={researcherMock}
+        profile={userProfile}
         onProfile={() => navigate("/profile")}
-        onLogout={() => navigate("/login")}
+        onLogout={logout}
       />
 
       {/* 2. Main Viewport */}

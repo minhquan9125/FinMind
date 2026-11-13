@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useSearchParams } from "../../app/router.jsx";
+import { Link, useAuth, useSearchParams } from "../../app/router.jsx";
 import { Button, Card, EmptyState, ErrorState, Input, Skeleton, StatusBadge } from "../../shared/ui/index.js";
 import { getProfile } from "./api.js";
 
@@ -7,6 +7,7 @@ const MAX_AVATAR_BYTES = 2 * 1024 * 1024;
 
 export default function ProfilePage() {
   const [params] = useSearchParams();
+  const { userProfile } = useAuth();
   const fixture = ["empty", "error", "loading"].includes(params.get("fixture")) ? params.get("fixture") : "success";
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,12 +31,12 @@ export default function ProfilePage() {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    getProfile(fixture === "error" && retryCount > 0 ? "success" : fixture)
+    getProfile(fixture === "error" && retryCount > 0 ? "success" : fixture, userProfile)
       .then((data) => { if (!cancelled) setProfile(data); })
       .catch((caught) => { if (!cancelled) setError(caught.message); })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
-  }, [fixture, retryCount]);
+  }, [fixture, retryCount, userProfile]);
 
   useEffect(() => () => { if (previewUrl.current) URL.revokeObjectURL(previewUrl.current); }, []);
 
