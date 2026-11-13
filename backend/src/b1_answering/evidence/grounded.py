@@ -51,6 +51,9 @@ def build_grounded_request(question, evidence, limits, scope=None):
     content = request['contents'][0]['parts'][0]
     body = json.loads(content['text'])
     body['scope'] = deepcopy(scope or {})
+    for relation in body['scope'].get('graph_relations') or []:
+        # Hash bindings are for audit, not for the model; they only fill the input limit.
+        relation.pop('source_bindings', None)
     if body['scope'].get('graph_relations'):
         request['systemInstruction']['parts'][0]['text'] += (
             ' Quan hệ đã truy xuất từ graph được giới hạn trong graph_relations của scope. '

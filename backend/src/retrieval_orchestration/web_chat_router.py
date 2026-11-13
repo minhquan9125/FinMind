@@ -57,11 +57,14 @@ class Neo4jChatRetriever:
         self.reader_factory = reader_factory
         self.ticker_map_factory = ticker_map_factory
 
-    def _query(self, scope, corpus_id, index_id):
+    def _query(self, scope, corpus_id, index_id, earlier_corpora=()):
         reader = self.reader_factory()
+        # A graph built for an earlier frozen corpus stays usable after the serving corpus moves on (an admin
+        # news run publishes a new corpus): its facts are only used when every source replays in the current one.
         versions = [v for v in reader.versions() if v['status'] == 'READY'
                     and (v.get('serving_scope') == SOURCE_SCOPE
-                         or (v.get('corpus_id') == corpus_id and v.get('index_version_id') == index_id))]
+                         or (v.get('corpus_id') == corpus_id and v.get('index_version_id') == index_id)
+                         or (v.get('corpus_id') in earlier_corpora and v.get('corpus_id') != corpus_id))]
         if len(versions) > 8:
             raise GraphChatError('GRAPH_VERSION_SCOPE_AMBIGUOUS')
         tickers = (self.ticker_map_factory() if self.ticker_map_factory
@@ -200,11 +203,21 @@ class Neo4jChatRetriever:
             raise GraphChatError('GRAPH_SOURCE_VERSION_MISMATCH')
         return current, reader.cache[('wbs06-row', chunk_id, cid)]
 
+    async def _earlier_corpora(self, cid):
+        """Other frozen corpora a graph may have been built for. Failing to list them only disables the carry-over."""
+        try:
+            rows = await self.retriever.pool.fetch(
+                "SELECT corpus_version_id::text AS id FROM corpus_versions WHERE status='FROZEN' AND corpus_version_id<>$1::uuid", cid)
+        except Exception:
+            return frozenset()
+        return frozenset(r['id'] for r in rows)
+
     async def retrieve(self, scope):
         corpus = await self.retriever._corpus()
         cid, iid = str(self.retriever.corpus_version_id), str(corpus['index_version_id'])
-        facts = await asyncio.to_thread(self._query, scope, cid, iid)
-        items, verified_facts = {}, []
+        earlier = await self._earlier_corpora(cid)
+        facts = await asyncio.to_thread(self._query, scope, cid, iid, earlier)
+        items, verified_facts, replayed_sources = {}, [], {}
         async with self.retriever.pool.acquire() as conn:
             async with conn.transaction(readonly=True, isolation='repeatable_read'):
                 reader = PostgresSourceReader(conn)
@@ -216,10 +229,22 @@ class Neo4jChatRetriever:
                         raise GraphChatError('GRAPH_EVIDENCE_MISSING')
                     evidence_ids = []
                     bindings = []
-                    for raw in fact['evidence']:
-                        source, row = await self._replay(reader, raw, fact, cid, iid)
-                        if source.index_version_id != iid or not source.active:
+                    carried = fact.get('origin_corpus_id') in earlier
+                    async def replay(raw):
+                        # Facts of one report share their evidence; replaying a source once is enough.
+                        key = (json.dumps(raw, sort_keys=True, default=str), fact['source_scoped'], fact.get('origin_corpus_id'))
+                        if key not in replayed_sources:
+                            replayed_sources[key] = await self._replay(reader, raw, fact, cid, iid)
+                        return replayed_sources[key]
+                    try:
+                        replayed = [(raw, *await replay(raw)) for raw in fact['evidence']]
+                        if any(source.index_version_id != iid or not source.active for _, source, _ in replayed):
                             raise GraphChatError('GRAPH_SOURCE_VERSION_MISMATCH')
+                    except (GraphChatError, SourceProblem):
+                        if carried:
+                            continue     # an earlier graph's fact whose source is no longer identical: not used
+                        raise
+                    for raw, source, row in replayed:
                         loc = row['locator_json']
                         loc = json.loads(loc) if isinstance(loc, str) else copy.deepcopy(loc)
                         item = dict(evidence_id=source.chunk_id, chunk_id=source.chunk_id,
@@ -230,6 +255,8 @@ class Neo4jChatRetriever:
                             content_sha256=source.content_hash, source_verified=True, locator=loc,
                             source_url=row['source_url'], score=dict(type='RRF', value=1.0))
                         items[source.chunk_id] = item
+                        if source.chunk_id in evidence_ids:
+                            continue         # the same source quoted again adds nothing
                         evidence_ids.append(source.chunk_id)
                         bindings.append(dict(origin_chunk_id=raw['chunk_id'], chunk_id=source.chunk_id,
                             content_hash=source.content_hash, source_sha256=source.source_sha256))

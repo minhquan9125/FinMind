@@ -312,6 +312,35 @@ def test_global_graph_uses_trusted_ticker_mapping_and_bounded_viewer_limit():
     assert facts[0]['origin_corpus_id'] == CID
 
 
+def _viewer_with_versions(versions):
+    company = dict(id='canonical-company-id', type='Company', label='A canonical company name', aliases=[], attributes={})
+    person = dict(id='person', type='Person', label='A reviewed person', aliases=[], attributes={})
+    class Viewer:
+        def versions(self):
+            return versions
+        def entities(self, version, query, kind, limit):
+            return [company], False
+        def nodes(self, *args): return {company['id']: company, 'person': person}
+        def neighborhood(self, *args, **kwargs):
+            return [dict(relation_id='r', subject_id='person', object_id=company['id'], relation_type='HOLDS_ROLE',
+                reviewer='trusted-reviewer', reviewed_at='2025-01-01', attributes=dict(position='Chủ tịch'),
+                evidence=[dict(chunk_id=str(uuid4()))])], False
+    return Viewer, {company['id']: 'TCB'}
+
+
+def test_graph_of_an_earlier_corpus_is_used_only_when_it_is_listed_and_keeps_its_origin():
+    EARLIER = 'earlier-corpus-id'
+    Viewer, tickers = _viewer_with_versions([
+        dict(graph_version_id='old', status='READY', corpus_id=EARLIER, index_version_id='old-index'),
+        dict(graph_version_id='fixture', status='READY', corpus_id='wbs08-fixture-corpus', index_version_id='x')])
+    graph = Neo4jChatRetriever(None, Viewer, lambda: tickers)
+    scope = DecisionEngine(Predictor()).decide('Ai là Chủ tịch TCB năm 2025?').scope
+    assert graph._query(scope, CID, IID) == []                                    # not listed: ignored, as before
+    facts = graph._query(scope, CID, IID, frozenset({EARLIER}))
+    assert [f['graph_version_id'] for f in facts] == ['old']                      # the fixture graph is never used
+    assert facts[0]['origin_corpus_id'] == EARLIER                                # sources replay against the origin
+
+
 class EmptyGraph(Graph):
     async def retrieve(self, scope):
         self.calls.append(copy.deepcopy(scope.model_dump()))
