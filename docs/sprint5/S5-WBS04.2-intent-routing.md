@@ -67,10 +67,12 @@ Năm hoặc ngày đầy đủ sau dấu nối/khoảng thời gian không phả
 `Q3-2025`, `quý 2 - 2025`, `từ quý 1 đến 30/6/2025` đều qua chốt kỳ.
 Ngày cuối khoảng vẫn phải tồn tại; nếu có tiền tố Q/quý rõ ràng thì số theo sau
 vẫn được kiểm là quý, không đổi thành năm để bỏ qua lỗi.
-Sau `đến/tới`, mốc không có tiền tố quý như `6/2025` là tháng/năm; tháng phải
-từ 1–12 và năm hợp lệ. `quý 1 đến 6/2025` qua chốt kỳ, còn `đến quý 6/2025`
-vẫn bị chặn. Dấu phẩy hoặc dấu gạch trong danh sách/dải quý không tự chuyển
-`quý 1,6/2025` hoặc `quý 1-6/2025` thành mốc tháng.
+Sau `đến/tới` hoặc dấu gạch `-`, `–`, `—`, mốc không có tiền tố quý như
+`6/2025` là tháng/năm; tháng phải từ 1–12 và năm hợp lệ. Không phân biệt `6`
+với `06` hoặc có/không có khoảng trắng quanh dấu gạch. `quý 1 - 06/2025`
+qua chốt kỳ, còn `quý 1 - quý 6/2025` vẫn bị chặn. Dấu phẩy trong danh sách
+quý không tự chuyển `quý 1,6/2025` thành mốc tháng; dải `quý 1-6 năm 2025`
+không có mốc tháng/năm cũng vẫn bị chặn.
 
 `company_ticker` phải do bước phân giải scope upstream xác minh; có thể truyền
 `valid_tickers` để kiểm membership registry đã nạp, không cần truy vấn DB ở policy.
@@ -397,8 +399,9 @@ thiếu `retrieval_flow`. Log ở fix03/full-suite.log; không kết luận toà
 ## 10. Sửa mốc tháng/năm sau đến/tới, 13/11
 
 Review tiếp theo xác nhận bộ kiểm mới nhận năm/ngày đầy đủ, còn bỏ sót mốc
-tháng/năm. Đã bổ sung phân biệt mốc này với quý, chỉ khi không có tiền tố Q/quý
-và theo sau từ đến/tới. Không tự phân giải tháng thành kỳ truy xuất.
+tháng/năm. Bản fix04 bổ sung phân biệt mốc này với quý, khi không có tiền tố
+Q/quý và theo sau từ đến/tới; phần dấu gạch được bổ sung tại mục 11.
+Không tự phân giải tháng thành kỳ truy xuất.
 
 Theo cách hiểu vừa thống nhất, `quý 1 đến 5/2025` cũng là mốc tháng 5; đã đổi
 ca kiểm cũ thành `quý 1 đến quý 5/2025` để tiếp tục kiểm quý sai rõ ràng.
@@ -408,3 +411,19 @@ Ca tháng 5 không có tiền tố quý được kiểm riêng với kỳ vọng
 sai. Đã thấy 5 ca hợp lệ fail trước sửa và qua sau sửa. Bằng chứng red/green ở
 `outputs/s5_wbs042_review_20261113/fix04/`. Suite toàn dự án vẫn bị chặn bởi
 ba lỗi import cũ đã ghi ở mục 9; log mới tại fix04/full-suite.log.
+
+## 11. Thống nhất dấu gạch với đến/tới cho mốc tháng/năm, 13/11
+
+Đã mở cùng quy tắc tháng/năm cho `-`, `–`, `—`, không phụ thuộc khoảng trắng
+hoặc số 0 đầu tháng. `quý 1 - 06/2025`, `quý 1-6/2025` và `quý 1 đến 6/2025`
+đều qua chốt kỳ. Vì quy tắc này, ca sai cũ `quý 1-6/2025` được đổi thành
+`quý 1-Q6/2025`; trường hợp không có tiền tố quý được kiểm riêng là mốc tháng.
+
+**362 test intent qua**, thêm 7 ca hợp lệ và 9 ca đối chiếu kỳ sai. Đã quan sát
+7 fail trước sửa: 6 mốc tháng bị chặn nhầm và 1 dải quý sai dùng dấu `—` bị bỏ
+lọt. Giờ vẫn chặn quý ghi rõ Q6/quý 6, quý 5 ở đầu/cuối câu, tháng 0/13 và
+năm 0000. Không sửa ngưỡng, producer hoặc fallback.
+
+Bằng chứng tại `outputs/s5_wbs042_review_20261113/fix05/`. Suite toàn dự án
+vẫn dừng khi collect ba test thiếu `hoi`/`retrieval_flow` đã ghi tại mục 9;
+log mới ở fix05/full-suite.log.
