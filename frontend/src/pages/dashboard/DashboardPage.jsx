@@ -57,7 +57,7 @@ export default function DashboardPage() {
         profile={userProfile} onProfile={() => navigate("/profile")} onLogout={logout} />
       <main className="min-w-0 flex-1">
         <header className="flex h-16 items-center justify-end border-b border-slate-200 bg-white px-4 sm:px-6 lg:px-8">
-          <StatusBadge tone="neutral">Giá và tin từ dữ liệu nguồn · Hồ sơ minh họa</StatusBadge>
+          <StatusBadge tone="neutral">Giá và tin từ dữ liệu nguồn</StatusBadge>
         </header>
         <div className="mx-auto w-full max-w-[1240px] space-y-7 px-4 py-6 sm:px-6 lg:px-8">
           <section aria-labelledby="hero-title" className="rounded-2xl border border-[#BCCEFB] bg-[#E8F0FF] p-5 shadow-sm md:p-6">
@@ -98,7 +98,7 @@ export default function DashboardPage() {
               <MarketNews />
 
               <section aria-labelledby="watchlist-title" className="space-y-3">
-                <div><h2 id="watchlist-title" className="text-sm font-bold">Doanh nghiệp bạn đang theo dõi</h2><p className="mt-0.5 text-xs text-slate-500">Danh sách mẫu, chưa lưu theo tài khoản.</p></div>
+                <div><h2 id="watchlist-title" className="text-sm font-bold">Doanh nghiệp bạn đang theo dõi</h2><p className="mt-0.5 text-xs text-slate-500">Lưu theo tài khoản của bạn.</p></div>
                 {dashboard.watchlist.length ? (
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                     {dashboard.watchlist.map((company) => <Card key={company.id}>
@@ -109,11 +109,11 @@ export default function DashboardPage() {
                 ) : <EmptyState title="Bạn chưa theo dõi doanh nghiệp nào" description="Khám phá doanh nghiệp để bắt đầu." action={<Link className="text-xs font-semibold text-blue-600" to="/companies">Khám phá doanh nghiệp →</Link>} />}
               </section>
 
-              <Card title="Nghiên cứu gần đây" description="Các phiên trò chuyện minh họa" action={<StatusBadge tone="neutral">Ví dụ minh họa</StatusBadge>}>
+              <Card title="Nghiên cứu gần đây" description="3 phiên trò chuyện gần nhất">
                 {dashboard.recentResearch.length ? <div className="space-y-2.5">
                   {dashboard.recentResearch.map((item) => <div key={item.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-slate-200 p-3">
-                    <div><strong className="text-xs text-blue-700">{item.ticker}</strong><span className="ml-3 text-xs font-semibold">{item.title}</span><p className="mt-1 text-[11px] text-slate-500">{item.time}</p></div>
-                    <Link className="text-xs font-medium text-blue-600 hover:underline" to={`/research?company=${item.ticker}&history=1`}>Xem lại →</Link>
+                    <div><strong className="text-xs text-blue-700">{item.ticker}</strong><span className="ml-3 text-xs font-semibold">{item.title}</span><p className="mt-1 text-[11px] text-slate-500">{item.time ? new Date(item.time).toLocaleString("vi-VN") : ""}</p></div>
+                    <Link className="text-xs font-medium text-blue-600 hover:underline" to="/research?history=1">Xem lại →</Link>
                   </div>)}
                 </div> : <EmptyState title="Chưa có nghiên cứu gần đây" />}
               </Card>
