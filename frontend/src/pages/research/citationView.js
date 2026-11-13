@@ -7,7 +7,7 @@ export function safeSourceUrl(raw) {
 }
 
 export function modeLabel(snapshot) {
-  if (!snapshot) return 'Đang kết nối hội thoại…';
+  if (!snapshot) return 'Chưa bắt đầu hội thoại · Nhập câu hỏi rồi nhấn Gửi';
   return snapshot.execution_mode === 'LIVE'
     ? 'Nguồn dữ liệu thật · Xem nguồn và kỳ báo cáo trước khi sử dụng số liệu'
     : 'Dữ liệu mẫu · Chưa phải số liệu tài chính thật';

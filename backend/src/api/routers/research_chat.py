@@ -42,6 +42,9 @@ def get_store() -> PostgresSessionStore:
         from ...market_data.repository import FileMarketDataRepository
         from ...documents.admin_news_chat import AdminNewsChat
         from ...documents.admin_ingestion import Queue
+        from .hybrid_router import run_routed_chat_answer
+        async def run_both_answer(question: str):
+            return await run_routed_chat_answer(question, routes=('BOTH',))
         limits = Limits.load()
         provider = None
         from ...b1_answering.providers.key_pool import parse_keys, set_active
@@ -72,6 +75,7 @@ def get_store() -> PostgresSessionStore:
             market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
             hybrid_router=routed,
+            route_runner=run_both_answer,
         )
         from ...documents.research_metrics import ObservedResearch, ResearchMetrics
         engine = ObservedResearch(engine, ResearchMetrics(settings.admin_ingestion_directory))

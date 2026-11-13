@@ -117,6 +117,7 @@ class Sprint4GraphAdapter:
                             replay["chunk_text"].encode("utf-8")).hexdigest()):
                     return self._result(task, "INSUFFICIENT_EVIDENCE", "GRAPH_SOURCE_MISMATCH")
                 citation = {
+                    "source_id": f"{row['relation_id']}:{document_id}:{chunk_id}",
                     "relation_id": row["relation_id"], "document_id": document_id,
                     "chunk_id": chunk_id, "quote": quote, "locator": replay["locator"],
                     "content_hash": replay.get("content_hash"),

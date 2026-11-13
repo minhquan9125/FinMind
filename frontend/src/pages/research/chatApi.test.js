@@ -220,3 +220,44 @@ test('rejects corrupt stored login before fetch', async () => {
   globalThis.fetch = async () => assert.fail('must not call unauthenticated');
   await assert.rejects(chatApi.createSession(), error => error.status===401);
 });
+
+test('BOTH question executes both router endpoints with the chat token', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({token:'both-token'}));
+  const calls = [];
+  globalThis.fetch = async (url, opts) => {
+    calls.push([url, opts]);
+    return {ok:true, json:async()=>url.endsWith('/test') ? {route:'BOTH'} :
+      {route:'BOTH', status:'OK', execution_mode:'LIVE', branch_states:{GRAPH:{status:'OK'},VECTOR:{status:'OK'}}}};
+  };
+  const result = await chatApi.inspectBoth('Doanh thu công ty con FPT năm 2025?');
+  assert.equal(result.status, 'OK');
+  assert.deepEqual(calls.map(([url]) => url), ['/api/hybrid-router/test', '/api/hybrid-router/run']);
+  assert.ok(calls.every(([, opts]) => opts.headers.Authorization === 'Bearer both-token'));
+  assert.ok(calls.every(([, opts]) => JSON.parse(opts.body).require_live === true));
+  assert.ok(calls.every(([, opts]) => JSON.parse(opts.body).question === 'Doanh thu công ty con FPT năm 2025?'));
+});
+
+test('BOTH inspection refuses fixture results', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({token:'fixture'}));
+  globalThis.fetch = async url => ({ok:true, json:async()=>url.endsWith('/test') ?
+    {route:'BOTH'} : {route:'BOTH', execution_mode:'MOCK'}});
+  await assert.rejects(chatApi.inspectBoth('Revenue for FPT subsidiaries in 2025?'),
+    error => error.status === 503);
+});
+
+test('non-BOTH question does not execute a retrieval branch', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({token:'fixture'}));
+  const calls = [];
+  globalThis.fetch = async url => {
+    calls.push(url);
+    return {ok:true, json:async()=>({route:'VECTOR'})};
+  };
+  assert.equal(await chatApi.inspectBoth('Giá FPT hôm nay?'), null);
+  assert.deepEqual(calls, ['/api/hybrid-router/test']);
+});

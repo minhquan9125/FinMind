@@ -102,6 +102,7 @@ class Settings(BaseSettings):
     # Hybrid Router live adapter control (Bước 12)
     hybrid_router_mode: Literal["mock", "shadow", "live"] = "mock"
     hybrid_router_index_id: str = ""  # UUID của index dùng cho LiveContentAdapter
+    sprint4_graph_versions: str = ""  # Comma-separated READY graph versions for live retrieval.
 
 @lru_cache
 def get_settings() -> Settings:

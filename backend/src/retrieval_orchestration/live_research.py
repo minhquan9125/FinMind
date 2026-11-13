@@ -229,7 +229,7 @@ def analyze_live(text, context=None, *, today=None):
     if norm in ('/moi', '/new'):
         decision['scope'] = {}
         return finish('ASK_CLARIFICATION', 'NEW_CONVERSATION', 'Đã bắt đầu câu hỏi mới. Bạn muốn xem mã, chỉ tiêu hoặc tin tức nào?')
-    if re.fullmatch(r'(?:nguon(?: dau| o dau| nao| cua cau (?:tra loi )?(?:truoc|vua roi))?|xem nguon|cho (?:toi |minh |t )?xem nguon|trich dan(?: dau| nao)?)', norm.rstrip(' .?!')):
+    if re.fullmatch(r'(?:nguon(?: dau| o dau| nao|(?: cua)? cau (?:tra loi )?(?:truoc|vua roi))?|xem nguon|cho (?:toi |minh |t )?xem nguon|trich dan(?: dau| nao)?)', norm.rstrip(' .?!')):
         return finish('RESOLVE_REFERENCE', 'SOURCE_REFERENCE', 'Xem nguồn của câu trả lời trước.')
     if re.search(r'\b(?:nen mua|nen ban|gia muc tieu|tu van dau tu|should i buy|should i sell)\b', norm):
         return finish('UNSUPPORTED', 'UNSUPPORTED_ADVICE', 'Chức năng này không cung cấp tư vấn mua bán.')
@@ -711,11 +711,12 @@ class LiveResearchService:
     execution_mode = 'LIVE'
 
     def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None, hybrid_router=None,
-                 limits_source=None):
+                 limits_source=None, route_runner=None):
         self.retriever, self.provider = retriever, provider
         self.market = market
         self.admin_news = admin_news
         self.hybrid_router = hybrid_router
+        self.route_runner = route_runner
         self.limits = limits or Limits.load()
         self.budget = Budget(self.limits)
         # Optional callable returning the limits to use for the next request (admin overrides).
@@ -822,6 +823,24 @@ class LiveResearchService:
             context = {'companies': list((context or {}).get('companies') or [])}
             if bare_company:
                 interpreted = 'Thông tin công ty ' + norm.upper()
+        early_decision = analyze_live(interpreted, context, today=today)
+        if (((previous_result or {}).get('evidence_pack') or {}).get('schema_version') == 'router-v1'
+                and early_decision['decision'] == 'RESOLVE_REFERENCE'):
+            from .routed_answer import reference_routed_answer
+            return reference_routed_answer(previous_result)
+        if (self.route_runner is not None and early_decision.get('reason_code') not in
+                ('UNSUPPORTED_ADVICE', 'NEW_CONVERSATION')):
+            try:
+                routed = await self.route_runner(interpreted)
+            except Exception:
+                return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                    b1_decision='SEARCH', status='SYSTEM_UNAVAILABLE',
+                    reason_code='ROUTED_ANSWER_UNAVAILABLE',
+                    message='Không thể kiểm tra tuyến dữ liệu đã chọn; vui lòng thử lại.',
+                    scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
+            if routed is not None:
+                routed.setdefault('request_id', str(uuid.uuid4()))
+                return routed
         if self.hybrid_router is not None:
             routed = await self.hybrid_router.answer(interpreted, context, provider=self.provider,
                 limits=self.limits, budget=self.budget)
@@ -850,6 +869,9 @@ class LiveResearchService:
                       clarification_options=decision.get('clarification_options', []),
                       evidence_pack=None, errors=[])
         if decision['decision'] == 'RESOLVE_REFERENCE':
+            if ((previous_result or {}).get('evidence_pack') or {}).get('schema_version') == 'router-v1':
+                from .routed_answer import reference_routed_answer
+                return reference_routed_answer(previous_result)
             return self._source_reference(result, previous_result)
         if decision['decision'] == 'MARKET_LOOKUP':
             return await self._answer_market(interpreted, result, previous_result)

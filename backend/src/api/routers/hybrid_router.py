@@ -88,6 +88,7 @@ class RouterTestRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
     question: str = Field(min_length=1)
     context: RouterContextPayload | None = None
+    require_live: bool = False
 
 
 @lru_cache(maxsize=1)
@@ -193,10 +194,11 @@ def _build_live_content_adapter(event_loop) -> LiveContentAdapter | None:
         cache_path = (
             Path(__file__).resolve().parents[3]
             / "src/vector_retrieval/.cache"
-            / f"{index_id}.json"
+            / (f"corpus-{corpus_version_id}.json" if corpus_version_id else f"{index_id}.json")
         )
         retriever = HybridRetriever(
-            pool, embedder, corpus_version_id=corpus_version_id
+            pool, embedder, corpus_version_id=corpus_version_id,
+            **({"max_cache_age": 7 * 24 * 3600} if corpus_version_id else {}),
         )
 
         async def search_fn(question: str, company, period, top_k: int):
@@ -264,7 +266,7 @@ def _build_live_graph_adapter() -> LiveGraphAdapter | None:
         from ...graph.graph_store import GraphStore
         store = GraphStore.from_environment()
         # WBS09: comma-separated READY graph versions to answer relationship questions.
-        versions = [v.strip() for v in os.environ.get("SPRINT4_GRAPH_VERSIONS", "").split(",") if v.strip()]
+        versions = [v.strip() for v in get_settings().sprint4_graph_versions.split(",") if v.strip()]
         if not versions:
             return LiveGraphAdapter(store)
         from ...graph.relation_retrieval import RelationRetrieval
@@ -300,6 +302,47 @@ def _get_live_engine(event_loop) -> DecisionEngine:
     return _with_coverage(engine, event_loop)
 
 
+async def run_routed_chat_answer(question: str, *, routes: tuple[str, ...] = ('GRAPH', 'BOTH')) -> dict | None:
+    """Use the same live router for a persisted GRAPH/BOTH chat answer.
+
+    VECTOR continues through the existing B1 chat path. This function never
+    sends fixture evidence to an authenticated web conversation.
+    """
+    settings = get_settings()
+    if settings.hybrid_router_mode != 'live':
+        return None
+    loop = asyncio.get_running_loop()
+    decision = await asyncio.to_thread(get_router_engine().decide, question)
+    if decision.decision != 'SEARCH' or decision.route not in routes:
+        return None
+    engine = await asyncio.to_thread(_get_live_engine, loop)
+    execution = await asyncio.to_thread(engine.run, question)
+    if execution.decision.route != decision.route or execution.decision.decision != 'SEARCH':
+        message = 'Tuyến tìm kiếm thay đổi trong lúc xử lý; chưa thể gắn nguồn cho câu trả lời.'
+        return {'status': 'INSUFFICIENT_EVIDENCE', 'reason_code': 'ROUTE_CHANGED',
+                'message': message, 'execution_mode': 'LIVE', 'route': decision.route,
+                'scope': execution.decision.scope.model_dump(),
+                'evidence_pack': {'schema_version': 'router-v1', 'items': []},
+                'answering': {'status': 'INSUFFICIENT_EVIDENCE', 'reason_code': 'ROUTE_CHANGED',
+                              'message': message, 'claims': [], 'citations': [], 'draft': None},
+                'routing': {'branch_states': execution.consolidation['branch_states'],
+                            'execution_trace': execution.consolidation['execution_trace']}}
+    from ...core.db import get_pool
+    from ...retrieval_orchestration.routed_answer import compose_routed_answer, replay_pinned_source
+
+    def replay(source):
+        future = asyncio.run_coroutine_threadsafe(
+            replay_pinned_source(get_pool(), source, settings.research_corpus_version_id), loop)
+        try:
+            return future.result(timeout=15)
+        except Exception:
+            future.cancel()
+            return None
+
+    return await asyncio.to_thread(compose_routed_answer, execution, replay,
+                                   corpus_version_id=settings.research_corpus_version_id)
+
+
 @router.post("/test", dependencies=[Depends(router_access)])
 async def test_router(payload: RouterTestRequest) -> dict:
     """Return routing decision without executing adapters (mode-independent)."""
@@ -329,6 +372,11 @@ async def run_router(payload: RouterTestRequest) -> dict:
     """Execute routing decision AND run adapters (respects hybrid_router_mode)."""
     settings = get_settings()
     mode = settings.hybrid_router_mode
+    if payload.require_live and mode != "live":
+        raise HTTPException(status_code=503, detail={
+            "code": "HYBRID_LIVE_NOT_ENABLED",
+            "message": "Tuyến BOTH cần backend live; không trả dữ liệu fixture.",
+        })
 
     context = None
     if payload.context is not None:
@@ -341,6 +389,7 @@ async def run_router(payload: RouterTestRequest) -> dict:
         engine = _with_coverage(get_router_engine(), asyncio.get_running_loop())
 
     result = await asyncio.to_thread(engine.run, payload.question, context=context)
+    merged = result.consolidation
 
     return {
         "decision": result.decision.decision,
@@ -349,6 +398,11 @@ async def run_router(payload: RouterTestRequest) -> dict:
         "status": result.status,
         "reason_code": result.reason_code,
         "execution_mode": result.execution_mode,
+        "evidence": merged["evidence"],
+        "branch_states": merged["branch_states"],
+        "execution_trace": merged["execution_trace"],
+        "rejected_evidence": merged["rejected_evidence"],
+        "alignment_warnings": merged["alignment_warnings"],
         "adapter_results": [
             {
                 "task_id": ar.task_id,

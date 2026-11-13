@@ -661,6 +661,15 @@ class ExecutionResult:
     adapter_results: tuple[AdapterResult, ...] = ()
     execution_mode: str = "MOCK"
 
+    @property
+    def consolidation(self) -> dict[str, Any]:
+        from .evidence import consolidate
+        return consolidate(self.decision, self.adapter_results)
+
+    @property
+    def evidence(self) -> list[dict[str, Any]]:
+        return self.consolidation["evidence"]
+
 
 @dataclass(frozen=True)
 class ShadowResult:
@@ -870,7 +879,7 @@ class DecisionEngine:
                     if partials[-1].status != "OK":
                         break
                 failure = next((p for p in partials if p.status != "OK"), None)
-                result = failure or replace(partials[0],
+                result = replace(failure or partials[0],
                     data=tuple(row for p in partials for row in p.data),
                     evidence=tuple(row for p in partials for row in p.evidence))
             else:
@@ -881,10 +890,20 @@ class DecisionEngine:
                 break
         status = next((item.status for item in results if item.status != "OK"), "OK")
         reason = next((item.reason_code for item in results if item.status != "OK"), "MOCK_EXECUTION_OK")
+        from .evidence import consolidate
+        consolidated = consolidate(decision, tuple(results))
+        if status == "OK" and consolidated["rejected_evidence"]:
+            status = "INSUFFICIENT_EVIDENCE"
+            reason = "EVIDENCE_FILTERED"
+        if status == "OK" and consolidated["alignment_warnings"]:
+            status = "INSUFFICIENT_EVIDENCE"
+            reason = "CROSS_BRANCH_VERSION_UNVERIFIED"
         # Determine execution mode from adapter types
         from .adapters import MockGraphAdapter as _MockG, MockContentAdapter as _MockC
         live_adapters = not (isinstance(self.graph_adapter, _MockG) and isinstance(self.content_adapter, _MockC))
         mode = "LIVE" if live_adapters else "MOCK"
+        if status == "OK" and live_adapters:
+            reason = "LIVE_EXECUTION_OK"
         return ExecutionResult(decision, status, reason, tuple(results), execution_mode=mode)
 
     def shadow(
