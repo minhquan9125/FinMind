@@ -1,5 +1,6 @@
 """Evaluate frozen development vectors, retaining every raw and resolved result."""
 import argparse
+from collections import Counter
 import json
 from pathlib import Path
 import sys
@@ -24,7 +25,51 @@ class FrozenEncoder:
         return [self.values[text] for text in texts]
 
 
-def evaluate(output, artifact=OUT, *, legacy=False):
+def summarize_resolution(cases, resolutions):
+    """Separate a correct label from complete evidence and readiness to execute."""
+    if len(cases) != len(resolutions):
+        raise ValueError('EVALUATION_ALIGNMENT')
+    wrong_components, lost, unexpected, unresolved, needs_context, not_proposed, wrong_status = [], [], [], [], [], [], []
+    label_correct = complete = mixed_exact = mixed_support = 0
+    for case, result in zip(cases, resolutions):
+        gold, ident = case['intent_label'], case['id']
+        expected = case['component_intents'] if gold == 'MIXED' else []
+        actual = result.get('component_labels', [])
+        components_ok = set(expected) == set(actual) and len(expected) == len(actual)
+        correct = result['intent_label'] == gold
+        label_correct += correct
+        if not components_ok:
+            wrong_components.append(ident)
+        if gold == 'MIXED':
+            mixed_support += 1
+            mixed_exact += correct and components_ok
+        restricted = gold == 'OUT_OF_SCOPE' or 'OUT_OF_SCOPE' in expected
+        flagged = result.get('contains_restricted_component') is True
+        if restricted and not flagged:
+            lost.append(ident)
+        if flagged and not restricted:
+            unexpected.append(ident)
+        status = result['status']
+        status_ok = case.get('expected_status') is None or case['expected_status'] == status
+        if not status_ok:
+            wrong_status.append(ident)
+        if status == 'UNRESOLVED':
+            unresolved.append(ident)
+        if status == 'NEEDS_CONTEXT':
+            needs_context.append(ident)
+        if status != 'PROPOSED':
+            not_proposed.append(ident)
+        complete += correct and components_ok and flagged == restricted and status_ok and status in {'PROPOSED', 'NEEDS_CONTEXT'}
+    return dict(label_correct_count=label_correct, complete_classification_correct_count=complete,
+        complete_classification_accuracy=complete / len(cases) if cases else None,
+        component_mismatch_ids=wrong_components, lost_restricted_component_ids=lost,
+        unexpected_restriction_ids=unexpected, unresolved_ids=unresolved, needs_context_ids=needs_context,
+        status_mismatch_ids=wrong_status,
+        not_proposed_ids=not_proposed, status_counts=dict(Counter(r['status'] for r in resolutions)),
+        mixed_exact_components=mixed_exact, mixed_support=mixed_support, routing_not_executed=True)
+
+
+def evaluate(output, artifact=OUT, *, legacy=False, library=False):
     output = Path(output)
     if output.exists():
         raise FileExistsError(output)
@@ -43,12 +88,13 @@ def evaluate(output, artifact=OUT, *, legacy=False):
         target = snapshots / path.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(path.read_bytes())
-    rows_path = CACHE.parent / 'legacy-regression/cases.json' if legacy else CACHE / 'development.jsonl'
-    vectors_path = CACHE.parent / 'legacy-regression/query-vectors.npy' if legacy else CACHE / 'development-vectors.npy'
+    split = 'library' if library else 'development'
+    rows_path = CACHE.parent / 'legacy-regression/cases.json' if legacy else CACHE / (split + '.jsonl')
+    vectors_path = CACHE.parent / 'legacy-regression/query-vectors.npy' if legacy else CACHE / (split + '-vectors.npy')
     write(output / 'method.json', dict(status='FROZEN_BEFORE_EVALUATION',
         source_hashes=hashes, artifact_manifest_sha256=sha(artifact / 'manifest.json'),
         development_used_for_fit=False, blind_acceptance=False, cached_vectors_not_latency=True,
-        evaluation_set='LEGACY_V2_MAPPED_REGRESSION' if legacy else 'DEVELOPMENT',
+        evaluation_set='LEGACY_V2_MAPPED_REGRESSION' if legacy else 'LIBRARY_CONSISTENCY' if library else 'DEVELOPMENT',
         data_files={str(p.relative_to(ROOT).as_posix()): sha(p) for p in [rows_path, vectors_path]},
         goals=dict(top1=0.9, macro_f1=0.85, each_recall=0.8, out_of_scope_false_accept=0)))
     rows = json.loads(rows_path.read_text(encoding='utf-8')) if legacy else read_rows(rows_path)
@@ -64,14 +110,8 @@ def evaluate(output, artifact=OUT, *, legacy=False):
         metrics[name] = summarize_evaluation(rows, predictions, classifier.manifest['labels'])
     restricted = [r['id'] for r in results if r['gold'] == 'OUT_OF_SCOPE'
                   and r['resolution']['intent_label'] not in ['OUT_OF_SCOPE', 'MIXED']]
-    mixed = [r for r in results if r['gold'] == 'MIXED']
-    metrics['resolution'].update(
-        restricted_misclassification_ids=restricted,
-        mixed_exact_components=sum(r['resolution']['intent_label'] == 'MIXED'
-            and set(r['gold_components']) == set(r['resolution']['component_labels']) for r in mixed),
-        mixed_support=len(mixed),
-        not_proposed_ids=[r['id'] for r in results if r['resolution']['status'] != 'PROPOSED'],
-        routing_not_executed=True)
+    metrics['resolution'].update(summarize_resolution(rows, [r['resolution'] for r in results]))
+    metrics['resolution']['restricted_misclassification_ids'] = restricted
     for name, digest in hashes.items():
         if sha(ROOT / name) != digest:
             raise ValueError('SOURCE_CHANGED_DURING_EVALUATION')
@@ -86,6 +126,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--artifact', type=Path, default=OUT)
-    parser.add_argument('--legacy', action='store_true')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('--legacy', action='store_true')
+    group.add_argument('--library', action='store_true')
     args = parser.parse_args()
-    evaluate(args.output, args.artifact, legacy=args.legacy)
+    evaluate(args.output, args.artifact, legacy=args.legacy, library=args.library)
