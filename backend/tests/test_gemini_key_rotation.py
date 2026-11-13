@@ -239,30 +239,30 @@ def no_wait(p):
     return waits
 
 
-def test_a_busy_model_is_asked_again_and_the_answer_is_returned():
-    handler, used = recorder(busy(), busy(), ok_response)
+def test_a_busy_model_is_asked_again_and_the_answer_is_returned(monkeypatch):
+    monkeypatch.setattr('src.b1_answering.providers.gemini.RETRY_DELAY_SECONDS', 0)
+    handler, used = recorder(busy(), ok_response)
     p = provider(handler, keys=(K1, K2))
-    waits = no_wait(p)
     assert generate(p)['payload'] == {'answer': 'x'}
-    assert len(used) == 3 and waits == [1.0, 3.0]
+    assert len(used) == 2
     assert [item['state'] for item in p.pool.status()] == ['ready', 'ready']   # no key was cooled or blamed
 
 
-def test_a_model_that_stays_busy_stops_after_three_attempts():
+def test_a_model_that_stays_busy_stops_after_one_retry(monkeypatch):
+    monkeypatch.setattr('src.b1_answering.providers.gemini.RETRY_DELAY_SECONDS', 0)
     handler, used = recorder(busy())
     p = provider(handler, keys=(K1, K2))
-    no_wait(p)
     with pytest.raises(GeminiError) as caught:
         generate(p)
     assert caught.value.code == 'GEMINI_UNAVAILABLE'
-    assert len(used) == 3
+    assert len(used) == 2
     assert [item['state'] for item in p.pool.status()] == ['ready', 'ready']
 
 
 def test_other_server_errors_are_still_not_retried():
     handler, used = recorder(httpx.Response(500, json={'error': {'message': 'boom'}}))
     p = provider(handler)
-    waits = no_wait(p)
+    waits = []
     with pytest.raises(GeminiError) as caught:
         generate(p)
     assert caught.value.code == 'GEMINI_UNAVAILABLE'

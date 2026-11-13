@@ -181,6 +181,20 @@ def test_live_pipeline_binds_draft_and_preserves_unknown_units():
     asyncio.run(run())
 
 
+def test_each_question_gets_its_own_generation_budget():
+    # A process-wide budget made every answer fail after max_generation_calls questions.
+    from src.b1_answering.core.policy import Limits
+    async def run():
+        provider = Provider()
+        engine = LiveResearchService(Retriever(), provider=provider, limits=Limits(max_generation_calls=1))
+        for _ in range(3):
+            result = await engine.answer('tiền và tương đương tiền FPT quý 2/2026', 'session')
+            assert result['answering']['status'] == 'DRAFT_READY'
+            assert result['answering']['budget']['calls_used'] == 1
+        assert provider.calls == 3
+    asyncio.run(run())
+
+
 def test_generation_receives_resolved_question_on_ticker_only_followup():
     async def run():
         provider = Provider()

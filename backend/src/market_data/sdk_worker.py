@@ -34,11 +34,16 @@ def main():
                     raise ValueError("Invalid index")
                 if not is_index:
                     stock_symbol(symbol)
+                # The default window serves the charts; a longer one is asked for explicitly (index backfill).
+                days = request.get("days", 180)
+                if type(days) is not int or not 1 <= days <= 400:
+                    raise ValueError("Invalid history window")
+                count = 300 if "days" in request else 250
                 today = datetime.now(timezone(timedelta(hours=7))).date()
                 with contextlib.redirect_stdout(sys.stderr):
                     instrument = market.index(symbol) if is_index else market.equity(symbol)
-                    frame = instrument.ohlcv(source='kbs', start=str(today - timedelta(days=180)),
-                                                      end=str(today), interval="1D", count=250).copy()
+                    frame = instrument.ohlcv(source='kbs', start=str(today - timedelta(days=days)),
+                                                      end=str(today), interval="1D", count=count).copy()
                     for field in ("open", "high", "low", "close"):
                         frame[field] = frame[field].map(str)
                     rows = json.loads(frame.to_json(orient="records", date_format="iso", double_precision=15))

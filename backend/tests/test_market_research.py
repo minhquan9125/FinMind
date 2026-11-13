@@ -603,3 +603,309 @@ def test_market_chat_saved_and_reopened_with_sources(tmp_path):
         assert last['result']['answering']['manifest']['response_mode'] == 'SAVED_SOURCE_REFERENCE'
         assert 'Giá cổ phiếu FPT' in last['content']
     asyncio.run(run())
+
+
+def price_trend():
+    from datetime import date
+    from decimal import Decimal
+    from src.market_data.trend import analyze_trend
+    rows, day, value = [], date(2025, 1, 2), Decimal(100)
+    while len(rows) < 260:
+        if day.weekday() < 5:
+            close = value.quantize(Decimal('.0001'))
+            rows.append({'trade_date': day, 'open': close, 'high': close * Decimal('1.01'), 'low': close * Decimal('0.99'),
+                         'close': close, 'volume': 1000, 'price_scale': 1000, 'is_adjusted': False,
+                         'source_name': 'ENTRADE', 'source_id': 's1', 'approval_status': 'PENDING'})
+            value *= Decimal('1.003')
+        day += timedelta(days=1)
+    return analyze_trend(rows, [], exchange='HOSE', rsi14=Decimal('61.5'))
+
+
+def trend_snapshot(**changes):
+    trend = price_trend()
+    return {'kind': 'PRICE_TREND', 'provider': 'finmind_db', 'symbol': 'FPT', 'observed_at': NOW.isoformat(),
+            'as_of': trend['as_of'], 'trend': trend, **changes}
+
+
+def test_feed_item_accepts_price_trend():
+    from src.b1_answering.evidence.market_contract import feed_item
+    item = feed_item(trend_snapshot())
+    assert item['source_type'] == 'PRICE_TREND'
+    assert 'Ngắn hạn: Tăng' in item['passage'] and 'không phải khuyến nghị' in item['passage']
+    assert item['locator']['trading_day'] == item['snapshot']['as_of']
+    for broken in (trend_snapshot(as_of='11/11/2026'), {k: v for k, v in trend_snapshot().items() if k != 'as_of'},
+                   trend_snapshot(trend={'horizons': {}})):
+        with pytest.raises(CitationError):
+            feed_item(broken)
+
+
+def analysis_scope():
+    decision = analyze_live('Xu hướng giá FPT dạo này thế nào?', today=NOW.date())
+    assert decision['scope']['source_type'] == 'MARKET_ANALYSIS'
+    return decision['scope']
+
+
+def test_analysis_includes_trend_evidence_first():
+    async def reader(symbol):
+        assert symbol == 'FPT'
+        return price_trend()
+    bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: NOW, trend_reader=reader)
+    result = asyncio.run(bridge.lookup(analysis_scope()))
+    assert result['status'] == 'EVIDENCE_READY'
+    items = result['evidence_pack']['items']
+    assert items[0]['source_type'] == 'PRICE_TREND'
+    assert {item['snapshot']['kind'] for item in items} == {'PRICE_TREND', 'PRICE', 'NEWS'}
+
+
+def test_analysis_staleness_is_about_news_not_price_age():
+    # The chat appends 'lần lấy tin mới vừa thất bại' on stale; an old price snapshot is not that.
+    later = NOW + timedelta(minutes=5)
+    bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: later)
+    assert asyncio.run(bridge.lookup(analysis_scope()))['freshness']['stale'] is False
+    bridge = MarketResearch(Repository(), services=lambda: (Live(), News([article()], stale=True)), now=lambda: later)
+    assert asyncio.run(bridge.lookup(analysis_scope()))['freshness']['stale'] is True
+
+
+def test_analysis_survives_trend_failure():
+    async def reader(symbol):
+        raise OSError('database down')
+    bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: NOW, trend_reader=reader)
+    result = asyncio.run(bridge.lookup(analysis_scope()))
+    assert result['status'] == 'EVIDENCE_READY'
+    assert {item['snapshot']['kind'] for item in result['evidence_pack']['items']} == {'PRICE', 'NEWS'}
+
+
+def test_prompt_mentions_trend_rule():
+    from src.b1_answering.core.policy import Limits
+    from src.b1_answering.evidence import grounded
+    from src.b1_answering.evidence.market_contract import feed_pack
+    evidence = prepare_evidence(feed_pack([trend_snapshot()]))
+    request = grounded.build_grounded_request('Xu hướng FPT?', evidence, Limits.load(), {'source_type': 'MARKET_ANALYSIS'})
+    assert 'không đổi, không nâng hay hạ nhãn' in request['systemInstruction']['parts'][0]['text']
+
+
+def test_previous_answer_source_names_a_price_trend_citation_by_its_title():
+    from src.retrieval_orchestration.live_research import citation_title
+    scope = {'companies': ['FPT']}
+    assert citation_title({'source_type': 'PRICE_TREND', 'title': 'Xu hướng giá FPT · dữ liệu FinMind'}, scope) \
+        == 'Xu hướng giá FPT · dữ liệu FinMind'
+    assert citation_title({'source_type': 'NEWS'}, scope) == 'Nguồn thị trường'
+    assert citation_title({'source_type': 'BCTC', 'title': 'x'}, scope) == 'Báo cáo tài chính FPT'
+
+
+@pytest.mark.parametrize('invalid_scope', [
+    None, 42, 'private-scope-token', [],
+    {'source_type': 'MARKET_ANALYSIS', 'companies': None},
+    {'source_type': 'MARKET_ANALYSIS', 'companies': 42},
+    {'source_type': 'MARKET_ANALYSIS', 'companies': [None]},
+    {'source_type': 'MARKET_ANALYSIS', 'companies': {'FPT': 'private-scope-token'}},
+])
+def test_malformed_market_scope_returns_unavailable(invalid_scope):
+    calls = []
+    async def reader(symbol):
+        calls.append(symbol)
+        return price_trend()
+    bridge = MarketResearch(Repository(), services=lambda: (Live(), News()),
+                            now=lambda: NOW, trend_reader=reader)
+    result = asyncio.run(bridge.lookup(invalid_scope))
+    assert result['status'] == 'SYSTEM_UNAVAILABLE'
+    assert result['reason_code'] == 'MARKET_UNAVAILABLE'
+    assert calls == []
+    assert 'private-scope-token' not in str(result)
+
+
+@pytest.fixture
+def historical_analysis_inputs():
+    request = analysis_scope()
+    request['_market_request']['day'] = '2026-10-22'
+    class HistoricalLive(Live):
+        def stock_history(self, symbol):
+            assert symbol == 'FPT'
+            payload = quote('2026-10-22')
+            payload['bars'][0]['price_unit'] = 'thousand_vnd'
+            return payload
+    return request, HistoricalLive(), News([article('2026-10-22T02:00:00+00:00')])
+
+
+@pytest.mark.parametrize('requested_day', ['2026-10-22', '2026-10-23'])
+def test_analysis_passes_explicit_day_as_date_to_supported_trend_reader(
+        historical_analysis_inputs, requested_day):
+    from datetime import date
+    request, live, news = historical_analysis_inputs
+    request['_market_request']['day'] = requested_day
+    calls = []
+    async def reader(symbol, *, as_of=None):
+        calls.append((symbol, as_of))
+        trend = price_trend()
+        trend['as_of'] = as_of.isoformat() if as_of is not None else NOW.date().isoformat()
+        return trend
+    bridge = MarketResearch(Repository(), services=lambda: (live, news), now=lambda: NOW,
+                            trend_reader=reader)
+    result = asyncio.run(bridge.lookup(request))
+    assert calls == [('FPT', date.fromisoformat(requested_day))]
+    assert type(calls[0][1]) is date
+    assert result['status'] == 'EVIDENCE_READY'
+    trend_item = result['evidence_pack']['items'][0]
+    assert trend_item['source_type'] == 'PRICE_TREND'
+    assert trend_item['snapshot']['as_of'] == requested_day
+    assert prepare_evidence(result['evidence_pack'])
+
+
+def assert_market_warning(caplog, message, *private_values):
+    records = [record for record in caplog.records
+               if record.name == 'src.retrieval_orchestration.market_research']
+    assert len(records) == 1
+    record = records[0]
+    assert record.levelname == 'WARNING'
+    assert record.getMessage() == message
+    assert record.exc_info is None
+    assert record.exc_text is None
+    assert record.stack_info is None
+    for value in private_values:
+        assert value not in caplog.text
+        assert value not in repr(record.__dict__)
+
+
+def test_historical_analysis_skips_legacy_reader_without_latest_fallback(
+        historical_analysis_inputs, caplog):
+    request, live, news = historical_analysis_inputs
+    request['_private_scope'] = 'private-scope-token'
+    calls = []
+    async def reader(symbol):
+        calls.append(symbol)
+        return price_trend()
+    bridge = MarketResearch(Repository(), services=lambda: (live, news), now=lambda: NOW,
+                            trend_reader=reader)
+    caplog.set_level('WARNING', logger='src.retrieval_orchestration.market_research')
+    result = asyncio.run(bridge.lookup(request))
+    assert calls == []
+    assert result['status'] == 'EVIDENCE_READY'
+    assert {item['source_type'] for item in result['evidence_pack']['items']} == {'PRICE', 'NEWS'}
+    assert prepare_evidence(result['evidence_pack'])
+    assert_market_warning(caplog, 'Market trend lookup failed (TypeError)', 'private-scope-token')
+
+
+def test_trend_reader_failure_logs_only_fixed_message_and_exception_class(caplog):
+    request = analysis_scope()
+    request['_private_scope'] = 'private-scope-token'
+    async def reader(symbol):
+        raise OSError('private-exception-token')
+    bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: NOW,
+                            trend_reader=reader)
+    caplog.set_level('WARNING', logger='src.retrieval_orchestration.market_research')
+    result = asyncio.run(bridge.lookup(request))
+    assert result['status'] == 'EVIDENCE_READY'
+    assert {item['source_type'] for item in result['evidence_pack']['items']} == {'PRICE', 'NEWS'}
+    assert prepare_evidence(result['evidence_pack'])
+    assert_market_warning(caplog, 'Market trend lookup failed (OSError)',
+                          'private-exception-token', 'private-scope-token')
+
+
+def test_rejected_trend_evidence_preserves_price_news_and_logs_safely(caplog):
+    from src.b1_answering.evidence.market_contract import feed_item
+    request = analysis_scope()
+    request['_private_scope'] = 'private-scope-token'
+    invalid_trend = {'as_of': 'private-evidence-token', 'horizons': {}}
+    with pytest.raises(CitationError):
+        feed_item(trend_snapshot(as_of=invalid_trend['as_of'], trend=invalid_trend))
+    async def reader(symbol):
+        return invalid_trend
+    bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: NOW,
+                            trend_reader=reader)
+    caplog.set_level('WARNING', logger='src.retrieval_orchestration.market_research')
+    result = asyncio.run(bridge.lookup(request))
+    assert result['status'] == 'EVIDENCE_READY'
+    assert {item['source_type'] for item in result['evidence_pack']['items']} == {'PRICE', 'NEWS'}
+    assert prepare_evidence(result['evidence_pack'])
+    assert_market_warning(caplog, 'Market trend evidence rejected (CitationError)',
+                          'private-evidence-token', 'private-scope-token')
+
+
+def test_outer_market_failure_logs_only_fixed_message_and_exception_class(caplog):
+    request = analysis_scope()
+    request['_private_scope'] = 'private-scope-token'
+    def failed_services():
+        raise RuntimeError('private-exception-token')
+    bridge = MarketResearch(Repository(), services=failed_services, now=lambda: NOW)
+    caplog.set_level('WARNING', logger='src.retrieval_orchestration.market_research')
+    result = asyncio.run(bridge.lookup(request))
+    assert result['status'] == 'SYSTEM_UNAVAILABLE'
+    assert result['reason_code'] == 'MARKET_UNAVAILABLE'
+    assert 'private-exception-token' not in str(result)
+    assert 'private-scope-token' not in str(result)
+    assert_market_warning(caplog, 'Market lookup failed (RuntimeError)',
+                          'private-exception-token', 'private-scope-token')
+
+
+@pytest.mark.parametrize('question', ['phân tích fpt', 'Phân tích MBB', 'đánh giá cổ phiếu FPT',
+                                      'FPT mạnh hay yếu?'])
+def test_plain_company_analysis_goes_to_market_analysis(question):
+    # Chat test 13/11: "phân tích fpt" was routed to a BCTC metric clarification instead of analysis.
+    decision = analyze_live(question, today=NOW.date())
+    assert decision['decision'] == 'MARKET_LOOKUP'
+    assert decision['scope']['source_type'] == 'MARKET_ANALYSIS'
+
+
+@pytest.mark.parametrize('question', ['phân tích doanh thu FPT năm 2025', 'Phân tích lợi nhuận MBB quý 3/2025',
+                                      'Phân tích chiến lược FPT trong báo cáo thường niên 2025'])
+def test_metric_analysis_keeps_the_report_route(question):
+    assert analyze_live(question, today=NOW.date())['scope'].get('source_type') != 'MARKET_ANALYSIS'
+
+
+# ---- analysis focus: 'phân tích cổ phiếu' and 'phân tích tài chính' are different questions ----
+@pytest.mark.parametrize('question,focus', [
+    ('phân tích fpt', 'STOCK'), ('phân tích cổ phiếu fpt', 'STOCK'), ('fpt mạnh hay yếu', 'STOCK'),
+    ('phân tích tài chính fpt', 'FINANCIAL'), ('tình hình tài chính fpt', 'FINANCIAL'),
+    ('sức khỏe tài chính fpt', 'FINANCIAL'), ('phân tích báo cáo tài chính fpt', 'FINANCIAL'),
+    ('phân tích bctc fpt', 'FINANCIAL'), ('đánh giá tài chính fpt', 'FINANCIAL'),
+    ('phân tích kỹ thuật fpt', 'TECHNICAL'), ('xu hướng giá fpt', 'TECHNICAL'),
+    ('xu hướng cổ phiếu fpt', 'TECHNICAL'),
+])
+def test_analysis_questions_carry_their_focus(question, focus):
+    decision = analyze_live(question)
+    assert decision['scope']['source_type'] == 'MARKET_ANALYSIS'
+    assert decision['scope']['companies'] == ['FPT']
+    assert decision['scope']['_market_request']['focus'] == focus
+
+
+@pytest.mark.parametrize('question', [
+    'doanh thu fpt 2025', 'xu hướng doanh thu fpt', 'thuyết minh bctc fpt',
+    'phân tích tài chính fpt năm 2025',  # a dated period stays with reports: health shows the latest period only
+])
+def test_metric_report_and_dated_questions_are_not_analysis(question):
+    assert analyze_live(question)['scope'].get('source_type') != 'MARKET_ANALYSIS'
+
+
+@pytest.mark.parametrize('focus,first', [('STOCK', '(1) "Giá:'), ('FINANCIAL', '(1) "Tình hình tài chính:'),
+                                         ('TECHNICAL', '(1) "Xu hướng giá:')])
+def test_prompt_orders_groups_by_focus(focus, first):
+    from src.b1_answering.core.policy import Limits
+    from src.b1_answering.evidence import grounded
+    scope = {'source_type': 'MARKET_ANALYSIS', 'companies': ['FPT'], '_market_request': {'focus': focus}}
+    text = grounded.build_grounded_request('phân tích', _one_evidence(), Limits.load(), scope)['systemInstruction']['parts'][0]['text']
+    assert first in text
+
+
+def _one_evidence():
+    return {'e1': dict(evidence_id='e1', source_id='s', chunk_id='c', source_sha256='a'*64, source_type='PRICE',
+                       title='Giá', passage='Giá gần nhất của FPT: 50,500 VND.', locator={'trading_day': '2026-11-13'})}
+
+
+def test_financial_focus_without_verified_bctc_says_so():
+    class Provider:
+        async def count_tokens(self, request): return 100
+        async def generate(self, request):
+            item = json.loads(request['contents'][0]['parts'][0]['text'])['evidence'][0]
+            text = item['passage'].splitlines()[0]
+            return {'model_version': 'fake', 'usage': {'input_tokens': 100, 'output_tokens': 40, 'total_tokens': 140},
+                    'payload': {'claims': [{'text': text, 'evidence_ids': [item['evidence_id']],
+                                           'support_quotes': [{'evidence_id': item['evidence_id'], 'quote': text}]}]}}
+    async def run():
+        bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: NOW)
+        engine = LiveResearchService(object(), provider=Provider(), market=bridge)
+        result = await engine.answer('phân tích tài chính fpt', 'session', today=NOW.date())
+        assert result['answering']['status'] == 'DRAFT_READY'
+        assert 'Chưa có số liệu tài chính đã đối chiếu với BCTC gốc' in result['answering']['draft']
+        stock = await engine.answer('phân tích cổ phiếu fpt', 'session', today=NOW.date())
+        assert 'Chưa có số liệu tài chính' not in stock['answering']['draft']
+    asyncio.run(run())

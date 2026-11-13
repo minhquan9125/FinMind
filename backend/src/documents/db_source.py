@@ -12,6 +12,7 @@ from typing import Any, Sequence
 from .db_chunking import (
     SourceDocument,
     company_documents,
+    FINANCIAL_VERIFIED_RENDERER_VERSION,
     financial_documents,
     index_documents,
     news_documents,
@@ -30,6 +31,26 @@ JOIN public.metrics m ON m.metric_id = o.metric_id
 WHERE ($1::text[] IS NULL OR c.symbol = ANY($1::text[]))
 ORDER BY c.symbol, rp.fiscal_year, rp.quarter NULLS FIRST, fr.report_id, m.section, m.code
 """
+
+# Same ordering as financial.health_db: newest verified_at, verification_id DESC breaks ties.
+_LATEST = "ORDER BY v.verified_at DESC, v.verification_id DESC"
+
+
+def _verified_sql(pick: str) -> str:
+    sql = FINANCIAL_SQL.replace(
+        "o.observation_id, o.value, o.unit\n",
+        "o.observation_id, o.value, o.unit,\n"
+        "       v.verification_id, v.status AS v_status, v.statement_scope AS v_scope, v.unit AS v_unit,\n"
+        "       v.unit_status AS v_unit_status, v.evidence AS v_evidence, d.title AS doc_title, d.source_url AS doc_url\n")
+    return sql.replace(
+        "WHERE (",
+        "LEFT JOIN LATERAL (SELECT * FROM public.financial_report_verifications v WHERE v.report_id = fr.report_id"
+        f"{pick} LIMIT 1) v ON true\nLEFT JOIN public.documents d ON d.document_id = v.document_id\nWHERE (")
+
+
+FINANCIAL_VERIFIED_SQL = _verified_sql(" " + _LATEST)
+# Pinned to one verification so an old chunk rebuilds to the same text after a newer verification appears.
+FINANCIAL_PINNED_SQL = _verified_sql(" AND v.verification_id = $2::uuid")
 
 # LIMIT NULL means "no limit" in PostgreSQL, so limit=None reads every article.
 NEWS_SQL = """
@@ -70,9 +91,12 @@ def _symbols(symbols: Sequence[str] | None) -> list[str] | None:
     return [s.strip().upper() for s in symbols] if symbols else None
 
 
-async def fetch_financial_documents(conn: Any, symbols: Sequence[str] | None = None) -> list[SourceDocument]:
-    rows = await conn.fetch(FINANCIAL_SQL, _symbols(symbols))
-    return financial_documents(dict(r) for r in rows)
+async def fetch_financial_documents(conn: Any, symbols: Sequence[str] | None = None, *,
+                                    renderer_version: str | None = None) -> list[SourceDocument]:
+    verified = renderer_version == FINANCIAL_VERIFIED_RENDERER_VERSION
+    rows = await conn.fetch(FINANCIAL_VERIFIED_SQL if verified else FINANCIAL_SQL, _symbols(symbols))
+    options = {} if renderer_version is None else {'renderer_version': renderer_version}
+    return financial_documents((dict(r) for r in rows), **options)
 
 
 async def fetch_news_documents(conn: Any, symbols: Sequence[str] | None = None, limit: int | None = None,
@@ -96,7 +120,8 @@ async def fetch_company_documents(conn: Any, symbols: Sequence[str] | None = Non
     return company_documents(dict(r) for r in rows)
 
 
-async def fetch_locator_document(conn: Any, table: str, source_id: str, max_words: int = 130, *, financial_renderer_version: str = 'db-v1') -> SourceDocument | None:
+async def fetch_locator_document(conn: Any, table: str, source_id: str, max_words: int = 130, *, financial_renderer_version: str = 'db-v1',
+                                 verification_id: str | None = None) -> SourceDocument | None:
     """SELECT one source document only; no text_chunks reads, writes or embedding."""
     if table == 'news_articles':
         rows = await conn.fetch(
@@ -104,8 +129,14 @@ async def fetch_locator_document(conn: Any, table: str, source_id: str, max_word
             'FROM public.news_articles WHERE article_id::text=$1', source_id)
         docs = news_documents((dict(r) for r in rows), max_words=max_words)
     elif table == 'financial_reports':
-        sql = FINANCIAL_SQL.replace('($1::text[] IS NULL OR c.symbol = ANY($1::text[]))', 'fr.report_id::text=$1')
-        docs = financial_documents((dict(r) for r in await conn.fetch(sql, source_id)), renderer_version=financial_renderer_version)
+        where = '($1::text[] IS NULL OR c.symbol = ANY($1::text[]))'
+        if financial_renderer_version == FINANCIAL_VERIFIED_RENDERER_VERSION:
+            # verification_id None (chunk built unverified, or unpinned caller) matches no row: renders unverified by design.
+            sql = FINANCIAL_PINNED_SQL.replace(where, 'fr.report_id::text=$1')
+            fetched = await conn.fetch(sql, source_id, verification_id)
+        else:
+            fetched = await conn.fetch(FINANCIAL_SQL.replace(where, 'fr.report_id::text=$1'), source_id)
+        docs = financial_documents((dict(r) for r in fetched), renderer_version=financial_renderer_version)
     elif table == 'companies':
         sql = COMPANIES_SQL.replace('($1::text[] IS NULL OR symbol = ANY($1::text[]))', 'company_id::text=$1')
         docs = company_documents(dict(r) for r in await conn.fetch(sql, source_id))

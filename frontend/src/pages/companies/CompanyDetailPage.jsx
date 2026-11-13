@@ -8,6 +8,7 @@ import { getSavedNews, refreshLivePrice, refreshCompanyNews } from "./marketData
 import { loadCompanyNews } from "./companyData.js";
 import { startPricePolling } from "./pricePolling.js";
 import PriceHistory from "./PriceHistory.jsx";
+import PriceAnalysis from "./PriceAnalysis.jsx";
 
 const menuPaths = {
   dashboard: "/dashboard", companies: "/companies", copilot: "/research",
@@ -194,7 +195,7 @@ export default function CompanyDetailPage() {
                       <Stat label="Sàn" value={company.exchange || "—"} />
                       <Stat label="Kỳ dữ liệu mẫu" value="FY2025" />
                     </div>
-                    <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Lịch sử đã lưu và giá KBS trong phiên · Chưa xác nhận cơ sở giá"
+                    <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Nến ngày đã lưu; trong giờ giao dịch có thể thêm nến tạm từ KBS · Giá chưa điều chỉnh theo sự kiện doanh nghiệp"
                       action={<Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs"
                         disabled={marketLoading || historyLoading || refreshingPrice}
                         onClick={() => setDataRetryCount((count) => count + 1)}>
@@ -205,6 +206,9 @@ export default function CompanyDetailPage() {
                       {marketData?.live && <p role="status" className={`mb-3 text-xs ${['CLOSED', 'BREAK'].includes(marketData.live.session_status) ? "text-slate-500" : marketData.live.stale ? "text-amber-700" : "text-slate-500"}`}>{marketData.live.reason}</p>}
                       {marketError && marketData && <p role="status" className="mb-3 text-xs text-amber-700">{marketError}. Đang giữ biểu đồ đã tải.</p>}
                       {(marketLoading && !marketData) || (historyLoading && !marketData?.bars?.length) ? <Skeleton rows={3} /> : marketError && !marketData?.bars?.length ? <ErrorState message={marketError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : <PriceHistory data={marketData} />}
+                    </Card>
+                    <Card title={`Phân tích giá & dòng tiền · ${ticker}`} description="Tính từ dữ liệu đã lưu trong cơ sở dữ liệu · Thiếu dữ liệu được ghi rõ, không ước tính">
+                      <PriceAnalysis key={ticker} symbol={ticker} />
                     </Card>
                     <Card title={`Tin FireAnt gần đây · ${ticker}`} description="Tự lấy tin khi mở mã · Cache 60 giây · Marker không xác minh sự thật">
                       {newsLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang kiểm tra tin mới…</p>}

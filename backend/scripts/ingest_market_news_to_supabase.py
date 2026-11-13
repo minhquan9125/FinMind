@@ -186,6 +186,11 @@ def collect_news(symbols: set[str] | None, source_filter: str | None = None,
 # -------------------------------------------------------------- database
 
 async def ensure_source(conn: Any, name: str, source_type: str, note: str) -> uuid.UUID:
+    existing = await conn.fetch('SELECT source_id FROM public.sources WHERE name=$1', name)
+    if len(existing) > 1:
+        raise ValueError('Ambiguous source name')
+    if existing:
+        return existing[0]['source_id']
     source_id = stable_id("source", name)
     await conn.execute(
         """INSERT INTO public.sources (source_id, name, source_type, approval_status, scope_note, is_enabled)
@@ -196,10 +201,10 @@ async def ensure_source(conn: Any, name: str, source_type: str, note: str) -> uu
 
 
 async def store_payload(conn: Any, path: Path, source: str, source_type: str, note: str,
-                        payload: Any, count: int) -> uuid.UUID:
+                        payload: Any, count: int, *, immutable: bool = False) -> uuid.UUID:
     raw = canonical_json(payload)
     digest = hashlib.sha256(raw.encode("utf-8")).hexdigest()
-    version = "latest" if STABLE_PAYLOAD_IDS else digest
+    version = "latest" if STABLE_PAYLOAD_IDS and not immutable else digest
     job_id = stable_id("job", rel(path), version)
     payload_id = stable_id("payload", rel(path), version)
     source_id = await ensure_source(conn, source, source_type, note)
@@ -213,13 +218,21 @@ async def store_payload(conn: Any, path: Path, source: str, source_type: str, no
              finished_at = EXCLUDED.finished_at, records_ok = EXCLUDED.records_ok""",
         job_id, source_id, now, count,
     )
+    conflict = ("DO NOTHING" if immutable else
+                "DO UPDATE SET source_uri=EXCLUDED.source_uri,sha256=EXCLUDED.sha256,"
+                "payload=EXCLUDED.payload,stored_at=EXCLUDED.stored_at")
     await conn.execute(
         """INSERT INTO public.raw_payloads (payload_id, job_id, source_uri, sha256, payload, stored_at)
            VALUES ($1, $2, $3, $4, $5::jsonb, $6)
-           ON CONFLICT (payload_id) DO UPDATE SET source_uri = EXCLUDED.source_uri,
-             payload = EXCLUDED.payload, stored_at = EXCLUDED.stored_at""",
+           ON CONFLICT (payload_id) """ + conflict,
         payload_id, job_id, rel(path), digest, raw, now,
     )
+    if immutable:
+        saved = await conn.fetchrow("""SELECT r.sha256,r.payload,j.source_id FROM public.raw_payloads r
+            JOIN public.ingestion_jobs j USING(job_id) WHERE r.payload_id=$1""",payload_id)
+        if (not saved or saved['sha256'].strip()!=digest or saved['source_id']!=source_id or
+                canonical_json(json.loads(saved['payload']))!=raw):
+            raise ValueError('Immutable payload conflicts with stored provenance')
     return payload_id
 
 
@@ -270,19 +283,44 @@ async def apply_prices(conn: Any, plans: list[dict[str, Any]], overwrite: bool) 
         print(f"  price_bars {symbol}: {len(plan['bars'])} (+chi bao, live: {'co' if plan['live'] else 'khong'})")
 
 
-async def apply_live(conn: Any, plan: dict[str, Any]) -> None:
+async def apply_live(conn: Any, plan: dict[str, Any]) -> dict[str, str]:
     if not plan["live"]:
-        return
-    payload_id = await store_payload(
-        conn, plan["live_path"], plan["source"], "MARKET_DATA", "Live quote snapshot (ScrapersOHLCV)",
-        plan["live"], len(plan["live"].get("rows") or []))
-    await conn.execute(
-        """INSERT INTO public.market_live_snapshots (symbol, instrument_type, fetched_at, data, payload_id)
+        return {'activity_status':'no_data'}
+    from backend.src.market_data.activity import normalize_activity, classify_activity_session
+    from backend.src.market_data.activity_store import upsert_activity
+    from backend.src.market_data.universe import BACKGROUND_SYMBOLS
+    async with conn.transaction():
+        tracked = not plan['is_index'] and plan['symbol'] in PROJECT_SYMBOLS.union(BACKGROUND_SYMBOLS) and plan['source']=='vnstock_kbs'
+        if tracked:
+            company = await conn.fetch('SELECT company_id FROM public.companies WHERE symbol=$1',plan['symbol'])
+            sources = await conn.fetch('SELECT source_id FROM public.sources WHERE name=$1',plan['source'])
+            if len(company)!=1 or len(sources)!=1:
+                return {'activity_status':'rejected','reason':'unknown_or_ambiguous_mapping'}
+            source_id = sources[0]['source_id']
+        payload_id = await store_payload(
+            conn, plan["live_path"], plan["source"], "MARKET_DATA", "Live quote snapshot (ScrapersOHLCV)",
+            plan["live"], len(plan["live"].get("rows") or []))
+        await conn.execute(
+            """INSERT INTO public.market_live_snapshots (symbol, instrument_type, fetched_at, data, payload_id)
            VALUES ($1, $2, $3, $4::jsonb, $5)
            ON CONFLICT (symbol) DO UPDATE SET instrument_type=EXCLUDED.instrument_type,
-             fetched_at=EXCLUDED.fetched_at, data=EXCLUDED.data, payload_id=EXCLUDED.payload_id, updated_at=now()""",
-        plan["symbol"], "index" if plan["is_index"] else "stock", parse_dt(plan["live"].get("fetched_at")),
-        canonical_json(plan["live"]), payload_id)
+             fetched_at=EXCLUDED.fetched_at, data=EXCLUDED.data, payload_id=EXCLUDED.payload_id, updated_at=now()
+           WHERE market_live_snapshots.fetched_at IS NULL OR EXCLUDED.fetched_at>=market_live_snapshots.fetched_at""",
+            plan["symbol"], "index" if plan["is_index"] else "stock", parse_dt(plan["live"].get("fetched_at")),
+            canonical_json(plan["live"]), payload_id)
+        if not tracked:
+            return {'activity_status':'not_tracked'}
+        try:
+            record = normalize_activity(plan['live'],symbol=plan['symbol'],source_name=plan['source'],
+                now=datetime.now(timezone.utc),session_status=plan.get('activity_session_status') or
+                classify_activity_session(plan['live'],PROJECT_ROOT))
+        except (ValueError,TypeError):
+            return {'activity_status':'rejected','reason':'invalid_activity'}
+        immutable_id = await store_payload(conn,plan['live_path'],plan['source'],'MARKET_DATA',
+                                           'Daily activity observation',plan['live'],1,immutable=True)
+        status = await upsert_activity(conn,record,company_id=company[0]['company_id'],
+                                      source_id=source_id,payload_id=immutable_id)
+        return {'activity_status':status}
 
 
 async def apply_index(conn: Any, plan: dict[str, Any]) -> None:
@@ -345,6 +383,18 @@ async def apply_news(conn: Any, files: list[dict[str, Any]], articles: list[dict
     print(f"  news_articles: {len(articles)}")
 
 
+async def connect_database() -> Any:
+    """Open the configured project database; shared by the replay/reconcile scripts."""
+    import asyncpg
+    from dotenv import load_dotenv
+    load_dotenv(PROJECT_ROOT / "backend" / ".env")
+    load_dotenv(PROJECT_ROOT / ".env")
+    url = os.environ.get("DATABASE_URL")
+    if not url:
+        raise RuntimeError("DATABASE_URL chua duoc dat trong .env")
+    return await asyncpg.connect(url, ssl="require" if "supabase" in url else None, statement_cache_size=0)
+
+
 async def run(args: argparse.Namespace) -> int:
     symbols = {s.upper() for s in args.symbol} or None
     do_prices, do_news = args.only in (None, "prices"), args.only in (None, "news")
@@ -372,14 +422,7 @@ async def run(args: argparse.Namespace) -> int:
         print("Dry run: khong ket noi database, khong ghi gi. Them --apply de nap that.")
         return 0
 
-    import asyncpg
-    from dotenv import load_dotenv
-    load_dotenv(PROJECT_ROOT / "backend" / ".env")
-    load_dotenv(PROJECT_ROOT / ".env")
-    url = os.environ.get("DATABASE_URL")
-    if not url:
-        raise RuntimeError("DATABASE_URL chua duoc dat trong .env")
-    conn = await asyncpg.connect(url, ssl="require" if "supabase" in url else None, statement_cache_size=0)
+    conn = await connect_database()
     try:
         needed = (["news_articles"] if do_news else []) + (
             ["price_indicators", "market_index_bars", "market_live_snapshots"] if do_prices else [])

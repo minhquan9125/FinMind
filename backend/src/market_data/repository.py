@@ -7,6 +7,8 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from uuid import uuid4
 import re
+import hashlib
+from datetime import date
 
 
 class FileMarketDataRepository:
@@ -49,6 +51,83 @@ class FileMarketDataRepository:
             temporary.replace(path)
         finally:
             temporary.unlink(missing_ok=True)
+
+    def _activity_path(self, symbol, day):
+        if not re.fullmatch(r'[A-Z]{3}',symbol) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day):
+            raise ValueError('Invalid activity archive identity')
+        date.fromisoformat(day)
+        base=self.root.resolve()
+        path=base/'.agent-state/market-data/daily-quotes'/('symbol-'+symbol)/(day+'.json')
+        self._check_activity_path(path)
+        return path
+
+    def _check_activity_path(self,path):
+        base=self.root.resolve()
+        if not path.resolve().is_relative_to(base):raise ValueError('Activity archive escaped root')
+        for item in (path,*path.parents):
+            if item==base:break
+            if item.is_symlink() or item.is_junction():raise ValueError('Activity archive links are forbidden')
+
+    @staticmethod
+    def _activity_identity(envelope):
+        rows=envelope.get('rows')
+        if not isinstance(rows,list) or len(rows)!=1 or not isinstance(rows[0],dict):
+            raise ValueError('Archive expects one quote')
+        row=rows[0]
+        if not isinstance(row.get('TD'),str) or not re.fullmatch(r'\d{2}/\d{2}/\d{4}',row['TD']):
+            raise ValueError('Invalid quote date')
+        stamp=datetime.fromisoformat(envelope['fetched_at'])
+        if stamp.utcoffset() is None:raise ValueError('Observation requires timezone')
+        return row.get('symbol',''),datetime.strptime(row['TD'],'%d/%m/%Y').date().isoformat(),stamp
+
+    @staticmethod
+    def _atomic_activity(path,data):
+        path.parent.mkdir(parents=True,exist_ok=True)
+        temporary=path.with_name(path.name+'.'+uuid4().hex+'.tmp')
+        try:
+            temporary.write_text(json.dumps(data,ensure_ascii=False,sort_keys=True,allow_nan=False),encoding='utf-8')
+            temporary.replace(path)
+        finally:temporary.unlink(missing_ok=True)
+
+    def save_daily_quote(self,envelope):
+        symbol,day,stamp=self._activity_identity(envelope)
+        path=self._activity_path(symbol,day)
+        raw=json.dumps(envelope,ensure_ascii=False,sort_keys=True,allow_nan=False).encode('utf-8')
+        if len(raw)>1024*1024:raise ValueError('Activity quote too large')
+        if path.exists():
+            old=json.loads(path.read_text(encoding='utf-8'))
+            if self._activity_identity(old)[2]>stamp:return False
+        self._atomic_activity(path,envelope)
+        return True
+
+    def pending_activity(self,limit=100):
+        base=self.root.resolve()/'.agent-state/market-data/daily-quotes'
+        result=[]
+        for path in sorted(base.glob('symbol-*/*.json')):
+            if path.name.endswith('.ack.json'):continue
+            symbol=path.parent.name.removeprefix('symbol-')
+            self._activity_path(symbol,path.stem)
+            raw=path.read_bytes()
+            if len(raw)>1024*1024:raise ValueError('Activity archive too large')
+            digest=hashlib.sha256(raw).hexdigest()
+            ack=path.with_suffix('.ack.json');self._check_activity_path(ack)
+            if ack.exists() and json.loads(ack.read_text(encoding='utf-8')).get('sha256')==digest:continue
+            envelope=json.loads(raw)
+            actual=self._activity_identity(envelope)
+            if actual[:2]!=(symbol,path.stem):raise ValueError('Activity archive identity mismatch')
+            result.append({'path':path,'symbol':symbol,'sha256':digest,'envelope':envelope})
+            if len(result)>=limit:break
+        return result
+
+    def ack_activity(self,item,status):
+        if status not in ('inserted','updated','unchanged','rejected','needs_reconciliation','not_tracked'):
+            raise ValueError('Unknown activity outcome')
+        symbol,day,_=self._activity_identity(item['envelope'])
+        path=self._activity_path(symbol,day)
+        if hashlib.sha256(path.read_bytes()).hexdigest()!=item['sha256']:return False
+        ack=path.with_suffix('.ack.json');self._check_activity_path(ack)
+        self._atomic_activity(ack,{'sha256':item['sha256'],'status':status})
+        return True
 
     def get_ohlcv(self, symbol: str, limit: int) -> dict:
         data = self._get_saved_ohlcv(symbol, 250)

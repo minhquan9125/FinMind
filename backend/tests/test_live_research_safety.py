@@ -68,6 +68,11 @@ def test_live_budget_is_issued_per_question_not_per_service_lifetime():
         assert result['answering']['status'] == 'DRAFT_READY'
         assert result['answering']['budget_scope'] == 'REQUEST'
         assert provider.calls == 2
+        small = replace(Limits.load(), max_total_tokens=Limits.load().max_output_tokens + 4)
+        result = await LiveResearchService(Retriever(), provider=provider, limits=small).answer(
+            'tiền và tương đương tiền FPT quý 2/2026', 's')
+        assert result['answering']['status'] == 'BUDGET_EXCEEDED'
+        assert provider.calls == 2
     asyncio.run(run())
 
 
