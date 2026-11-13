@@ -103,8 +103,8 @@ def _market_intent(norm, context, today):
         r'\b(?:vi sao|tai sao|nguyen nhan|do dau|ly do|tac dong|anh huong|he qua)\b', norm
     ))
     trend = bool(re.search(
-        r'\b(?:dao nay|gan day|tinh hinh|khoi sac|trien vong|bien dong|the nao)\b', norm
-    ) or (
+        r'\b(?:dao nay|gan day|tinh hinh|khoi sac|trien vong|bien dong|the nao|ky thuat)\b', norm
+    ) or re.search(r'\bxu huong (?:gia|co phieu|ma)\b', norm) or (
         # "phan tich fpt" asks for an analysis, not a metric; questions about a report's content stay with reports.
         re.search(r'\b(?:phan tich|danh gia|manh hay yeu|manh yeu)\b', norm)
         and not re.search(r'\b(?:bctc|bctn|bao cao|thuong nien|thuyet minh|chien luoc|tai lieu)\b', norm)
@@ -128,9 +128,16 @@ def _market_intent(norm, context, today):
             'kind': 'NEWS', 'day': day or today.isoformat(), 'action': 'SUMMARY',
             'market_wide': True,
         }
-    if (trend and not financial
+    # "phân tích / sức khỏe tài chính" asks for the verified BCTC health, not one metric.
+    financial_analysis = bool(re.search(r'\b(?:tai chinh|bctc)\b', norm)
+                              and re.search(r'\b(?:phan tich|danh gia|tinh hinh|suc khoe|manh hay yeu|manh yeu)\b', norm)
+                              and not re.search(r'\b(?:bctn|thuong nien|thuyet minh|chien luoc|tai lieu)\b', norm))
+    # shortcut: dated questions stay with reports, since health covers the latest period only; add a period to lift it.
+    if ((trend or financial_analysis) and not financial
             and not re.search(r'\b(?:nam|quy|thang)\s+\d|\b(?:19|20|21)\d{2}\b', norm)):
-        return {'kind': 'ANALYSIS', 'day': today.isoformat(), 'action': 'ANALYSIS'}
+        focus = ('FINANCIAL' if financial_analysis else
+                 'TECHNICAL' if re.search(r'\b(?:ky thuat|xu huong)\b', norm) else 'STOCK')
+        return {'kind': 'ANALYSIS', 'day': today.isoformat(), 'action': 'ANALYSIS', 'focus': focus}
     company_selection = (norm.isdigit() and
                          str(((context or {}).get('_clarification_state') or {}).get('id', '')).startswith('company:'))
     if not financial and not news and not company_selection:
@@ -768,6 +775,12 @@ class LiveResearchService:
                 if published:
                     formatted = datetime.fromisoformat(published).strftime('%d/%m/%Y')
                     out['answering']['draft'] = out['answering']['draft'].replace(published, formatted)
+        # A financial question with no verified BCTC evidence must say so, not answer from price and news silently.
+        if ((result['scope'].get('_market_request') or {}).get('focus') == 'FINANCIAL'
+                and out.get('answering', {}).get('status') == 'DRAFT_READY'
+                and not any(item.get('source_type') == 'FINANCIAL_HEALTH' for item in evidence.values())):
+            out['answering']['draft'] += ('\n\nChưa có số liệu tài chính đã đối chiếu với BCTC gốc cho mã này; '
+                                          'câu trả lời chỉ dựa trên giá và tin.')
         if market.get('freshness', {}).get('stale') and out.get('answering', {}).get('status') == 'DRAFT_READY':
             out['answering']['draft'] += '\n\nĐây là tin lưu gần nhất; lần lấy tin mới vừa thất bại.'
         return out

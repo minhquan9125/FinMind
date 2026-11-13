@@ -729,3 +729,62 @@ def test_plain_company_analysis_goes_to_market_analysis(question):
                                       'Phân tích chiến lược FPT trong báo cáo thường niên 2025'])
 def test_metric_analysis_keeps_the_report_route(question):
     assert analyze_live(question, today=NOW.date())['scope'].get('source_type') != 'MARKET_ANALYSIS'
+
+
+# ---- analysis focus: 'phân tích cổ phiếu' and 'phân tích tài chính' are different questions ----
+@pytest.mark.parametrize('question,focus', [
+    ('phân tích fpt', 'STOCK'), ('phân tích cổ phiếu fpt', 'STOCK'), ('fpt mạnh hay yếu', 'STOCK'),
+    ('phân tích tài chính fpt', 'FINANCIAL'), ('tình hình tài chính fpt', 'FINANCIAL'),
+    ('sức khỏe tài chính fpt', 'FINANCIAL'), ('phân tích báo cáo tài chính fpt', 'FINANCIAL'),
+    ('phân tích bctc fpt', 'FINANCIAL'), ('đánh giá tài chính fpt', 'FINANCIAL'),
+    ('phân tích kỹ thuật fpt', 'TECHNICAL'), ('xu hướng giá fpt', 'TECHNICAL'),
+    ('xu hướng cổ phiếu fpt', 'TECHNICAL'),
+])
+def test_analysis_questions_carry_their_focus(question, focus):
+    decision = analyze_live(question)
+    assert decision['scope']['source_type'] == 'MARKET_ANALYSIS'
+    assert decision['scope']['companies'] == ['FPT']
+    assert decision['scope']['_market_request']['focus'] == focus
+
+
+@pytest.mark.parametrize('question', [
+    'doanh thu fpt 2025', 'xu hướng doanh thu fpt', 'thuyết minh bctc fpt',
+    'phân tích tài chính fpt năm 2025',  # a dated period stays with reports: health shows the latest period only
+])
+def test_metric_report_and_dated_questions_are_not_analysis(question):
+    assert analyze_live(question)['scope'].get('source_type') != 'MARKET_ANALYSIS'
+
+
+@pytest.mark.parametrize('focus,first', [('STOCK', '(1) Giá gần nhất'), ('FINANCIAL', '(1) Tình hình tài chính'),
+                                         ('TECHNICAL', '(1) Xu hướng giá')])
+def test_prompt_orders_groups_by_focus(focus, first):
+    from src.b1_answering.core.policy import Limits
+    from src.b1_answering.evidence import grounded
+    scope = {'source_type': 'MARKET_ANALYSIS', 'companies': ['FPT'], '_market_request': {'focus': focus}}
+    text = grounded.build_grounded_request('phân tích', _one_evidence(), Limits.load(), scope)['systemInstruction']['parts'][0]['text']
+    assert first in text
+
+
+def _one_evidence():
+    return {'e1': dict(evidence_id='e1', source_id='s', chunk_id='c', source_sha256='a'*64, source_type='PRICE',
+                       title='Giá', passage='Giá gần nhất của FPT: 50,500 VND.', locator={'trading_day': '2026-11-13'})}
+
+
+def test_financial_focus_without_verified_bctc_says_so():
+    class Provider:
+        async def count_tokens(self, request): return 100
+        async def generate(self, request):
+            item = json.loads(request['contents'][0]['parts'][0]['text'])['evidence'][0]
+            text = item['passage'].splitlines()[0]
+            return {'model_version': 'fake', 'usage': {'input_tokens': 100, 'output_tokens': 40, 'total_tokens': 140},
+                    'payload': {'claims': [{'text': text, 'evidence_ids': [item['evidence_id']],
+                                           'support_quotes': [{'evidence_id': item['evidence_id'], 'quote': text}]}]}}
+    async def run():
+        bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: NOW)
+        engine = LiveResearchService(object(), provider=Provider(), market=bridge)
+        result = await engine.answer('phân tích tài chính fpt', 'session', today=NOW.date())
+        assert result['answering']['status'] == 'DRAFT_READY'
+        assert 'Chưa có số liệu tài chính đã đối chiếu với BCTC gốc' in result['answering']['draft']
+        stock = await engine.answer('phân tích cổ phiếu fpt', 'session', today=NOW.date())
+        assert 'Chưa có số liệu tài chính' not in stock['answering']['draft']
+    asyncio.run(run())

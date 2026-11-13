@@ -87,19 +87,12 @@ def build_grounded_request(question, evidence, limits, scope=None):
         body['evidence'] = [{**item, 'passage': item['passage'][:8500 if feed_body else 3500]}
                             for item in body['evidence'][:2 if feed_body else 3]]
     elif body['scope'].get('source_type') == 'MARKET_ANALYSIS':
+        focus = (body['scope'].get('_market_request') or {}).get('focus')
+        groups = ANALYSIS_FOCUS.get(focus, ANALYSIS_FOCUS['STOCK'])
         request['systemInstruction']['parts'][0]['text'] += (
-            ' Với phân tích thị trường: trả lời chi tiết, mỗi nhóm dưới đây là một ý riêng, theo đúng thứ tự, '
-            'bỏ nhóm không có bằng chứng: '
-            '(1) Giá gần nhất và ngày giao dịch. '
-            '(2) Xu hướng giá: với từng khung nêu đúng nhãn như bằng chứng ghi, giải thích vì sao có nhãn đó '
-            'bằng phần "Lý do:" và các số liệu đi kèm (lợi suất, giá so với SMA, so với chỉ số cùng kỳ); '
-            'có thể nêu thêm đỉnh/đáy 52 tuần, RSI14, khối lượng nếu bằng chứng có. '
-            '(3) Tình hình tài chính: nêu từng chỉ số có số liệu, giải thích ngắn bằng lời thường chỉ số đó đo gì, '
-            'và so với trung vị nhóm cùng ngành nếu bằng chứng có; nói rõ các chỉ số chưa đủ dữ liệu đã xác minh. '
-            '(4) Tin doanh nghiệp, ngành hoặc thị trường: sự kiện chính và vì sao liên quan tới công ty, '
-            'chỉ theo nội dung bài. '
-            '(5) Nhận định tổng hợp: gom các tín hiệu cùng chiều và trái chiều đã nêu, mỗi nhận định phải '
-            'nhắc lại dữ kiện làm căn cứ; nói rõ điều chưa thể kết luận và dữ kiện còn thiếu. '
+            ' Với phân tích ' + ANALYSIS_FOCUS_NAME.get(focus, 'cổ phiếu') + ': trả lời chi tiết, mỗi nhóm dưới đây '
+            'là một ý riêng, theo đúng thứ tự, bỏ nhóm không có bằng chứng; không trình bày nhóm ngoài danh sách: '
+            + ' '.join(f'({n}) {ANALYSIS_GROUPS[g]}' for n, g in enumerate(groups, 1)) + ' '
             'Mỗi ý viết 2–4 câu rõ ràng, dễ hiểu cho nhà đầu tư cá nhân. '
             'Phân biệt rõ nguyên nhân được nguồn nói trực tiếp với yếu tố chỉ liên quan '
             'hoặc cùng thời điểm. Dữ liệu giá chỉ chứng minh mức giá/ngày giao dịch, '
@@ -126,6 +119,35 @@ def build_grounded_request(question, evidence, limits, scope=None):
                             for item in body['evidence'][:6]]
     content['text'] = json.dumps(body, ensure_ascii=False)
     return request
+
+
+# "phân tích cổ phiếu / tài chính / kỹ thuật" are different questions: same evidence, different groups and order.
+ANALYSIS_GROUPS = {
+    'PRICE': 'Giá gần nhất và ngày giao dịch.',
+    'PRICE_SHORT': 'Giá gần nhất và ngày giao dịch, chỉ một câu.',
+    'TREND': ('Xu hướng giá: với từng khung nêu đúng nhãn như bằng chứng ghi, giải thích vì sao có nhãn đó '
+              'bằng phần "Lý do:" và các số liệu đi kèm (lợi suất, giá so với SMA, so với chỉ số cùng kỳ); '
+              'có thể nêu thêm đỉnh/đáy 52 tuần, RSI14, khối lượng nếu bằng chứng có.'),
+    'TREND_DETAIL': ('Xu hướng giá: mỗi khung (ngắn, trung, dài hạn) là một ý riêng, nêu đúng nhãn, phần "Lý do:" '
+                     'và toàn bộ số liệu đi kèm; thêm một ý cho đỉnh/đáy 52 tuần, RSI14 và khối lượng nếu bằng chứng có.'),
+    'HEALTH': ('Tình hình tài chính: nêu từng chỉ số có số liệu, giải thích ngắn bằng lời thường chỉ số đó đo gì, '
+               'và so với trung vị nhóm cùng ngành nếu bằng chứng có; nói rõ các chỉ số chưa đủ dữ liệu đã xác minh.'),
+    'HEALTH_DETAIL': ('Tình hình tài chính: mỗi chỉ số có số liệu là một ý riêng, giải thích bằng lời thường chỉ số đó '
+                      'đo gì, kỳ báo cáo và so với trung vị nhóm cùng ngành nếu bằng chứng có; một ý riêng liệt kê các '
+                      'chỉ số chưa đủ dữ liệu đã xác minh và nguồn BCTC (tên, trang).'),
+    'NEWS': ('Tin doanh nghiệp, ngành hoặc thị trường: sự kiện chính và vì sao liên quan tới công ty, '
+             'chỉ theo nội dung bài.'),
+    'NEWS_BUSINESS': ('Tin về kết quả kinh doanh, vốn, phát hành hoặc đầu tư của công ty, chỉ theo nội dung bài; '
+                      'bỏ qua tin chỉ nói về giá cổ phiếu.'),
+    'SUMMARY': ('Nhận định tổng hợp: gom các tín hiệu cùng chiều và trái chiều đã nêu, mỗi nhận định phải '
+                'nhắc lại dữ kiện làm căn cứ; nói rõ điều chưa thể kết luận và dữ kiện còn thiếu.'),
+}
+ANALYSIS_FOCUS = {
+    'STOCK': ('PRICE', 'TREND', 'HEALTH', 'NEWS', 'SUMMARY'),
+    'FINANCIAL': ('HEALTH_DETAIL', 'NEWS_BUSINESS', 'PRICE_SHORT', 'SUMMARY'),
+    'TECHNICAL': ('TREND_DETAIL', 'PRICE', 'SUMMARY'),
+}
+ANALYSIS_FOCUS_NAME = {'STOCK': 'cổ phiếu', 'FINANCIAL': 'tài chính', 'TECHNICAL': 'kỹ thuật (xu hướng giá)'}
 
 
 def _fold(text):
