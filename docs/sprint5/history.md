@@ -349,3 +349,20 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   chưa đạt; thiếu bộ kín độc lập. Chưa chốt Done hoặc kết luận Chat đã tích hợp.
 - Tài liệu hiện tại: [bàn giao v2](intent-v2/README.md). Không sửa consumer của
   Huyền, code Chat hoặc DB production; task 01.2 vẫn tạm dừng.
+
+## 13/11/2026 — Sửa lỗi ý định v2, bản luật r2
+
+- Tái hiện 16 biến thể/7 tình huống bị luật đổi nhãn đúng thành sai. Sửa mục
+  tiêu số kế hoạch/nguồn tin, chức vụ, nhận định chất lượng và nhiều ý; không vá
+  theo ticker/ID. Thêm kiểm lời chào/lịch sự, trích dẫn và câu hỏi ngắn của Hưng.
+- Giữ trạng thái cần ngữ cảnh cho câu nối tiếp; chào/cảm ơn xã giao không đòi
+  lịch sử cũ. Câu có mua/bán không bị lời chào che mất cờ OUT_OF_SCOPE.
+- 409/409 test Sprint 5 đạt, trong đó 183 v2. Kiểm lại 470 mẫu + 110 phát triển
+  + 47 hồi quy: đúng nhãn/thành phần, giữ điểm classifier, không đổi ca đúng thành sai.
+- 2.165 biến thể đạt khi tái dùng vector gốc để cô lập luật. 33/33 ca gọi API
+  bằng BGE-M3 thật đạt nhãn/thành phần/trạng thái kỳ vọng. Không gọi đây là bộ kín.
+- Model/vector/gold giữ nguyên; resolution policy đổi thành
+  `intent-request-objectives-v2-11-r2`, base policy vẫn `intent-linear-v2`.
+- Theo Nhân, ưu tiên đúng và hoãn tối ưu tốc độ. Không sửa consumer/Chat của
+  nhóm, không chốt Done toàn task khi còn review và nghiệm thu độc lập.
+- Bằng chứng hiện tại: `outputs/s5_intent_v2_20261113/fix1/verification.json`.

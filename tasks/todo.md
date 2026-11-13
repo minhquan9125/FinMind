@@ -17,10 +17,20 @@ giữ như lịch sử, không tự đóng các mục cũ còn mở.
 - [x] Kiểm thử chức năng và contract; sửa lỗi tính chênh lệch/thuật lại bài báo theo schema v2.
 - [x] Đo DEVELOPMENT/REGRESSION bằng model thật; xử lý hồi quy và công bố giới hạn còn lại.
 - [x] Đo latency thật và phân tích CPU; giữ kết quả không đạt mục tiêu.
+- [x] Tái hiện 16 biến thể/7 family sai và hai lỗi lời chào bằng test trước sửa.
+- [x] Sửa luật theo mục tiêu yêu cầu, giữ model/vector và điểm gốc; không vá theo ticker/ID.
+- [x] Kiểm nhãn/trạng thái/MIXED/cờ hạn chế trên 470 mẫu + 110 DEVELOPMENT + 47 hồi quy;
+  không còn lỗi đã biết hoặc ca trước đúng bị đổi sai.
+- [x] Kiểm 2.165 biến thể ticker/dấu/lời chào với vector kiểm soát; ghi đúng phạm vi kiểm luật.
+- [x] Gọi API với BGE-M3 thật: 33/33 ca hồi quy chức năng, gồm trạng thái kỳ vọng.
+- [x] 409/409 test Sprint 5 đạt (183 v2); cố ý đảo điều kiện trong RAM bị test bắt được.
 - [ ] Nhận bộ kín độc lập từ Huyền/Hưng, đóng băng ứng viên và đo nghiệm thu run04.
 - [ ] Đạt top-1 >= 90%, macro-F1 >= 0,85, recall mỗi nhãn >= 80%, không nhầm OUT_OF_SCOPE
-  sang yêu cầu trả lời thông thường trong tập nghiệm thu, p95 <= 500 ms sau warmup.
-- [ ] Bàn giao artifact, hàm, test và báo cáo; kiểm tương thích consumer/Chat ở phần nhóm.
+  sang yêu cầu trả lời thông thường trong tập nghiệm thu.
+- [ ] p95 <= 500 ms sau warmup: còn chưa đạt; Nhân yêu cầu hoãn tối ưu tốc độ,
+  ưu tiên hoàn thiện chức năng trước. Không tính mục này là đã hoàn thành.
+- [x] Chuẩn bị gói bàn giao artifact, hàm, test, báo cáo và policy r2 nhất quán.
+- [ ] Hưng/Huyền review nhãn, contract và kiểm tích hợp ở phần của nhóm.
 
 Checkpoint 1: schema + payload mẫu có nghĩa rõ trước khi encode. Checkpoint 2:
 artifact/test qua trước freeze. Checkpoint 3: đạt số đo kín và ghi rõ phạm vi

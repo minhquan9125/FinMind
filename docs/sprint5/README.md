@@ -2,12 +2,12 @@
 
 ## Mở file nào?
 
-Bản đang triển khai ngày 13/11 là [ý định v2 — 11 nhãn](intent-v2/README.md),
+Bản hiện tại ngày 13/11 là [ý định v2 — 11 nhãn, sửa luật r2](intent-v2/README.md),
 theo đề xuất mới của Hưng. Các báo cáo 7 nhãn bên dưới được giữ để truy vết v1.
 
 | Việc cần làm | File |
 |---|---|
-| Review bản 11 nhãn đang triển khai, API và điều kiện còn thiếu | [Bàn giao v2](intent-v2/README.md) |
+| Review bản sửa r2: 409 test, API và điều kiện còn thiếu | [Bàn giao v2](intent-v2/README.md) |
 | Tra cứu bản bàn giao 7 nhãn trước đây | [Bàn giao v1](S5-WBS04.1-HANDOFF.md) |
 | Tra cứu kết quả vòng 2 của v1 | [Báo cáo kiểm chứng v1](S5-WBS04.1-news-mixed-results.md) |
 | Xem lịch sử công việc | [history.md](history.md) |

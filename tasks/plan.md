@@ -5,8 +5,54 @@
 Nhân giao quyền chọn phương án cho trợ lý và đã cho phép bắt đầu triển khai.
 Phần này thay hướng triển khai v1 bên dưới cho công việc mới; các ghi chép cũ
 được giữ để truy vết. Tài liệu nguồn: [đề xuất Hưng](../docs/sprint5/S5-INTENT-v2-gui-Nhan.md).
-Trạng thái: ĐÃ TRIỂN KHAI BẢN V2 ĐỂ REVIEW; chưa nghiệm thu chất lượng kín hoặc
+Trạng thái: ĐÃ SỬA CÁC LỖI XÁC NHẬN Ở R2 ĐỂ REVIEW; chưa nghiệm thu chất lượng kín hoặc
 hiệu năng. Không ghi thành nhóm đã duyệt. Checklist hiện tại ở [todo](todo.md).
+
+### Điều chỉnh sau đánh giá — ưu tiên đúng, tốc độ xử lý sau
+
+Theo yêu cầu mới của Nhân, tập trung hoàn thiện chức năng và bằng chứng trước.
+Mục tiêu hiệu năng 500 ms được giữ để truy vết nhưng hoãn tối ưu trong vòng này;
+không ghi hiệu năng đã đạt hoặc suy 100% chính xác từ việc hoàn tất task.
+
+Kiểm tra bổ sung phát hiện 16 biến thể của 7 family trong LIBRARY bị luật đổi
+từ nhãn đúng của classifier sang nhãn sai, cùng lỗi lời chào che yêu cầu tư vấn
+và bỏ qua yêu cầu ngữ cảnh. Bằng chứng ở
+`outputs/s5_intent_v2_20261113/fix1/review-before.json`. Đây là kết quả trước sửa;
+bản r2 đã được kiểm chứng ở `fix1/verification.json`: 409 test đạt, 627 ca đã
+biết không hồi quy, 2.165 biến thể kiểm luật đạt và 33 ca gọi model thật đạt.
+Model/vector/gold/điểm gốc giữ nguyên; bộ kín và review nhóm vẫn còn mở.
+
+1. **Đóng băng và tái hiện lỗi** (nhỏ, rules/runtime tests): thêm test cho 7
+   family sai và hai ca lời chào, kèm đối chứng chỉ chào, hỏi giá thật, thuật lại
+   nguồn và yêu cầu trích bằng chứng. Các test phải thất bại đúng nguyên nhân
+   trước sửa. Không sửa gold hoặc thay vector để làm mất lỗi.
+2. **Sửa mục tiêu yêu cầu và lời chào** (vừa, rules/classifier + tests): lời chào
+   chỉ là toàn bộ ý định khi câu thực sự chỉ chào; câu có tham chiếu vẫn cần
+   context. Tách yêu cầu tìm/danh sách tin khỏi lấy số; nhận diện chức vụ dù nguồn
+   là thông báo/báo cáo; phân biệt số kế hoạch đã công bố, giá mục tiêu trong tin
+   với tự dự báo; phân biệt so sánh chất lượng với phép tính. Dùng quy tắc chung,
+   không điều kiện theo ticker/ID. Luật chỉ đổi nhãn khi có bằng chứng đủ rõ;
+   trường hợp chưa đủ phải giữ thông tin chưa rõ thay vì ép một nhãn mới.
+3. **Kiểm không hồi quy** (vừa, tests/evaluator): kiểm lại 470 mẫu, 110 câu phát
+   triển và 47 câu hồi quy theo nghĩa nhãn v2. Mọi lỗi đã biết phải được sửa,
+   các ca trước đúng không đổi sai. Báo riêng nhãn, thành phần MIXED, trạng thái
+   cần context/chưa rõ và cờ hạn chế; không coi nhãn đúng là đã sẵn sàng thực hiện.
+   Thêm kiểm đổi ticker, có/không dấu, tiền tố lịch sự và nguồn trích dẫn.
+   Các biến thể này là hồi quy, không phải câu kín độc lập.
+4. **Freeze rồi đo bộ độc lập** (phụ thuộc đầu vào): giữ BGE, vector và classifier
+   hiện tại khi sửa các lỗi luật đã xác nhận. Sau khi chốt ứng viên, đo ít nhất
+   110 câu kín/10 mỗi nhãn do người khác soạn. Bộ AI soạn thêm nếu có phải ghi
+   đúng nguồn và phạm vi, không tự thay cho xác nhận độc lập của nhóm. Giữ mục
+   tiêu chất lượng đã định; ca không rõ không được bỏ khỏi mẫu số để làm đẹp số.
+   Nếu dùng kết quả bộ kín để sửa, chuyển nó thành hồi quy và cần bộ kín mới.
+5. **Bàn giao phần Nhân** (nhỏ, README/history): artifact, API, payload mẫu,
+   lệnh chạy lại và báo cáo nhất quán; đề nghị Hưng review 11 nhãn/hàm, Huyền đối
+   chiếu contract ở phần của mình. Không tự sửa consumer, Chat hoặc DB production.
+
+Chỉ huấn luyện lại nếu còn bằng chứng lỗi từ classifier/dữ liệu sau sửa luật.
+Không thay model để xử lý những ca model hiện đã xếp đúng. Vòng này hoàn thành
+phần chức năng và bàn giao khi không còn lỗi đã biết, kiểm không hồi quy đạt và
+bằng chứng đầy đủ; chốt nghiệm thu toàn task còn cần review/bộ kín của nhóm.
 
 ### Kết quả cần bàn giao
 
