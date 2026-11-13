@@ -547,10 +547,44 @@ def test_review_month_year_range_endpoint_is_not_an_inherited_quarter(question):
     'Doanh thu FPT quý 1 đến 6/0000',
     'Doanh thu FPT quý 1 đến 6 năm 2025',
     'Doanh thu FPT quý 1,6/2025',
-    'Doanh thu FPT quý 1-6/2025',
+    'Doanh thu FPT quý 1-Q6/2025',
     'Doanh thu FPT quý 1 đến 6/2025 và quý 5/2025',
 ])
 def test_review_month_endpoint_does_not_hide_invalid_months_or_explicit_quarters(question):
+    matcher = SpyMatcher()
+    out = IntentRoutingPolicy(matcher).decide(question, company_ticker='FPT', period='2025-Q1')
+    assert out['decision'] == 'ASK_CLARIFICATION' and out['reason_code'] == 'INVALID_PERIOD'
+    assert matcher.calls == []
+
+
+@pytest.mark.parametrize('question', [
+    'quý 1 - 06/2025',
+    'Doanh thu FPT quý 1 - 6/2025',
+    'Doanh thu FPT quý 1-6/2025',
+    'Doanh thu FPT quý 1–06/2025',
+    'Doanh thu FPT quý 1—06/2025',
+    'Doanh thu FPT quý 1 - 06 / 2025',
+    'Doanh thu FPT quý 1-12/2025',
+])
+def test_review_dash_month_endpoint_is_equivalent_to_until(question):
+    matcher = SpyMatcher()
+    out = IntentRoutingPolicy(matcher).decide(question, company_ticker='FPT')
+    assert out['decision'] == 'NEED_FALLBACK' and out['reason_code'] == 'DIRECT_SEARCH_DISABLED'
+    assert matcher.calls == [(question, {'top_groups': 3, 'top_examples': 5})]
+
+
+@pytest.mark.parametrize('question', [
+    'Doanh thu FPT quý 1 - quý 6/2025',
+    'Doanh thu FPT Q1–Q6/2025',
+    'Doanh thu FPT quý 1—quý 6/2025',
+    'Doanh thu FPT quý 1 - 13/2025',
+    'Doanh thu FPT quý 1 - 00/2025',
+    'Doanh thu FPT quý 1 - 06/0000',
+    'Doanh thu FPT quý 1—6 năm 2025',
+    'Doanh thu FPT quý 5 - 06/2025',
+    'Doanh thu FPT quý 1 - 06/2025 và quý 5/2025',
+])
+def test_review_dash_month_endpoint_does_not_hide_invalid_periods(question):
     matcher = SpyMatcher()
     out = IntentRoutingPolicy(matcher).decide(question, company_ticker='FPT', period='2025-Q1')
     assert out['decision'] == 'ASK_CLARIFICATION' and out['reason_code'] == 'INVALID_PERIOD'
