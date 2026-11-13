@@ -76,6 +76,11 @@ from src.retrieval_orchestration.intent_v2_rules import explicit_intent, request
         ("Tính cho tôi một mức giá bán mục tiêu mới của PNJ cho năm sau.", "OUT_OF_SCOPE"),
         ("Lấy giá mục tiêu mà bài báo đã công bố, không tự dự báo.", "NEWS"),
         ("Đọc thuyết minh về lương CEO đã công bố.", "REPORT_CONTENT"),
+        ("Trong BCTC riêng của công ty mẹ ABC, số dư tiền cuối năm bao nhiêu?", "NUMERIC"),
+        ("Theo bài tin đã nêu, bà Hoa được bổ nhiệm giữ chức gì?", "PERSON_ROLE"),
+        ("Theo BCTN, ai là KTT? Trích câu làm bằng chứng cho câu trả lời.", "PERSON_ROLE"),
+        ("Sự kiện này có những doanh nghiệp nào tham gia?", "ENTITY_RELATION"),
+        ("LNST đang tăng tốc hay chậm lại? Giải thích XH đó.", "ANALYSIS"),
     ],
 )
 def test_explicit_intent_follows_the_requested_goal(question, expected):
@@ -105,6 +110,12 @@ def test_explicit_intent_follows_the_requested_goal(question, expected):
             "Cho biết doanh thu FPT rồi tìm bài báo về FPT; giới thiệu tổng quan FPT.",
             ["doanh thu FPT", "bài báo về FPT", "tổng quan FPT"],
         ),
+        (
+            "BCTN ghi bà Mai đảm nhiệm chức danh nào? Báo cáo mô tả chính sách kiểm soát nội bộ ra sao?",
+            ["chức danh", "chính sách"],
+        ),
+        ("Tóm tắt tin ACB; kèm bảng EPS theo BCTC.", ["tin ACB", "bảng EPS"]),
+        ("Công ty A kiểm soát công ty B không, và XH giá cổ phiếu ra sao?", ["kiểm soát", "XH giá"]),
     ],
 )
 def test_requests_separates_independent_actions(question, clause_phrases):
@@ -123,6 +134,9 @@ def test_requests_separates_independent_actions(question, clause_phrases):
         "Giá mở cửa và giá đóng cửa FPT hôm qua là bao nhiêu?",
         "Tóm tắt khuyến nghị mua và bán trong bài báo đã chỉ định.",
         "Cho biết các công ty con và công ty liên kết của FPT.",
+        "Theo BCTN FPT, ai là KTT? Trích câu làm bằng chứng cho câu trả lời.",
+        "Đọc và tóm lược phần cam kết trong BCTN FPT.",
+        "Bài tin FPT trình bày việc trả cổ tức thế nào? Hãy tóm lược bài.",
     ],
 )
 def test_requests_preserves_coordinated_subjects_with_one_goal(question):

@@ -1,0 +1,38 @@
+{
+  "status": "FROZEN_BEFORE_MEASUREMENT",
+  "sample_ids": [
+    "D2-PRICE-001-0",
+    "D2-PRICE-006-0",
+    "D2-NUMERIC-001-0",
+    "D2-NUMERIC-006-0",
+    "D2-ANALYSIS-001-0",
+    "D2-ANALYSIS-006-0",
+    "D2-NEWS-001-0",
+    "D2-NEWS-006-0",
+    "D2-REPORT_CONTENT-001-0",
+    "D2-REPORT_CONTENT-006-0",
+    "D2-PERSON_ROLE-001-0",
+    "D2-PERSON_ROLE-006-0",
+    "D2-ENTITY_RELATION-001-0",
+    "D2-ENTITY_RELATION-006-0",
+    "D2-COMPANY_OVERVIEW-001-0",
+    "D2-COMPANY_OVERVIEW-006-0",
+    "D2-CONVERSATION-001-0",
+    "D2-CONVERSATION-006-0",
+    "D2-OUT_OF_SCOPE-001-0",
+    "D2-OUT_OF_SCOPE-006-0",
+    "D2-MIXED-001-0",
+    "D2-MIXED-006-0"
+  ],
+  "threads": [
+    1,
+    2,
+    4
+  ],
+  "original_threads": 2,
+  "device": "cpu",
+  "cuda_available": false,
+  "runner_sha256": "5f5be0c7c37da8b20f6f8b163b18b5bc58235fab492872656d21f4d7f526a175",
+  "target_p95_ms": 500,
+  "exploratory_not_acceptance": true
+}
