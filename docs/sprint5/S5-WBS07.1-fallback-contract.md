@@ -72,6 +72,12 @@ khi caller chỉ định company_required=false. Không gửi lịch sử chat, 
 tối thiểu này. Handoff nội bộ 04.2 vẫn giữ nguyên top-3/evidence cho chẩn đoán;
 07.1 không chuyển thẳng toàn bộ handoff đó thành request mạng.
 
+prepare_fallback_request còn trả validation_context ở cấp nội bộ, tách khỏi
+request. 07.2 chỉ gửi prepared['request'] ra provider và truyền
+**prepared['validation_context'] vào validator khi nhận response. Context này
+có query_components/query_components_confirmed; không gửi chúng hoặc toàn bộ
+prepared ra ngoài.
+
 ## 3. JSON response
 
 ```json
@@ -111,19 +117,31 @@ hoặc thoát ra dưới dạng lỗi so sánh của thư viện.
 2. Parse JSON nghiêm ngặt, kiểm schema, nhãn/route và confidence.
 3. Kiểm nhãn khớp route. CLARIFY chỉ được ASK_CLARIFICATION; các nhãn khác cũng
    được ASK_CLARIFICATION khi provider cần hỏi lại.
-4. Với KET_HOP có route truy xuất: caller phải truyền query_components và
-   query_components_confirmed=True từ bước phân giải đáng tin cậy. VECTOR +
-   VECTOR vẫn VECTOR, GRAPH + GRAPH vẫn GRAPH, GRAPH + VECTOR mới BOTH; theo
-   chính hàm của 04.2. Thiếu thành phần đã xác minh thì hỏi lại, không lấy một
-   câu reason của AI làm chứng cứ xác nhận.
+4. Với KET_HOP có route truy xuất: prepare lấy thành phần từ resolution V7
+   policy intent-request-objectives-v5 khi intent=MIXED và
+   reason=TWO_EXPLICIT_REQUEST_TYPES. Hai bản classification_evidence phải
+   khớp, confidence=null, runtime_enabled=false, unresolved_requests rỗng,
+   explicit_evidence phủ đủ nhãn thành phần khác nhau. Dùng lại bộ tách request
+   thuần luật của V7 để kiểm các đoạn evidence thuộc đầy đủ câu hỏi hiện tại;
+   evidence của câu cũ hoặc câu chưa có phần mới trả lỗi contract trước mạng.
+   Kết quả đi vào validation_context để caller chuyển cho validator. Không lấy
+   components của câu mẫu, điểm phân loại hoặc reason từ AI làm bằng chứng.
+   VECTOR + VECTOR vẫn VECTOR, GRAPH + GRAPH vẫn GRAPH, GRAPH + VECTOR mới
+   BOTH; theo hàm 04.2. MIXED chỉ có chứng cứ classifier/consensus chưa được
+   xác minh vẫn hỏi lại. Caller khác vẫn có thể cấp thành phần đã xác minh
+   qua hai tham số query_components/query_components_confirmed.
 5. Công ty/kỳ AI trích phải đúng định dạng và khớp scope đã xác minh khi scope
    đó có giá trị. Không để provider tự đổi hoặc thêm công ty/kỳ. Scope null
    mà AI tự gán giá trị trả UNVERIFIED_COMPANY/UNVERIFIED_PERIOD; không biến
    điểm tự khai cao thành bằng chứng xác minh scope. Công ty cần tra cứu mà
    vẫn chưa có scope xác minh thì ASK_CLARIFICATION. valid_tickers có thể được
    caller cấp để kiểm registry; validator không truy vấn DB.
-6. Dùng lại chốt scope của 04.2 cho kỳ/ngày/quý, không tạo regex kiểm kỳ thứ hai.
-   Giữ các sửa Q3-2025, mốc tháng/ngày và dấu gạch đã có.
+6. Chuẩn hóa ký hiệu trước khi so kỳ: Q3/2025, q3-2025, quý 3/2025,
+   quý 3 năm 2025 và 2025-Q3 cùng thành 2025-Q3; 04/11/2025 thành 2025-11-04.
+   Không gộp năm với quý, ngày cuối quý với cả quý, hoặc kỳ tương đối với một
+   năm tự đoán. Không thêm kỳ khi scope=null. Chốt scope 04.2 vẫn kiểm tính
+   hợp lệ, ngày/quý sai và các dạng dấu gạch đã sửa; helper mới chỉ chuẩn hóa
+   ký hiệu của một kỳ đơn, không phân giải thời gian hay coverage.
 
 Vi phạm các bước kiểm response trả FALLBACK_FAILED, intent_label=CLARIFY,
 route=ASK_CLARIFICATION, confidence=null và reason_code cụ thể. JSON hợp lệ
@@ -136,7 +154,8 @@ CLARIFY có canonical_intent=null. Không nâng ASK thành SEARCH vì có score 
 File thực thi: backend/src/retrieval_orchestration/intent_fallback_contract.py.
 
 - prepare_fallback_request(policy_result, *, question, company_required=True,
-  valid_tickers=None): trả need_fallback/decision/route/reason_code/request.
+  valid_tickers=None): trả need_fallback/decision/route/reason_code/request
+  và validation_context nội bộ.
   Request chỉ có khi 04.2 cho fallback; handoff hỏng ném lỗi contract trước mạng.
 - validate_fallback_response(raw, *, request, timed_out=False, provider_error=None,
   company_required=True, valid_tickers=None, query_components=None,
@@ -158,8 +177,8 @@ Kế hoạch triển khai trên nhánh người dùng đang làm, không tạo n
 
 07.2 phải nối provider, áp deadline thật và chuyển trạng thái lỗi/timeout vào
 validator; giữ request đi cùng response của đúng lượt gọi, truyền cùng cấu
-hình company_required/valid_tickers đã dùng khi chuẩn bị. KET_HOP cần cung cấp
-thành phần đã xác minh, không suy từ reason của provider. Validator kiểm cấu
+hình company_required/valid_tickers đã dùng khi chuẩn bị và chuyển tiếp
+validation_context. KET_HOP không suy thành phần từ reason của provider. Validator kiểm cấu
 trúc và sự nhất quán, không chứng minh AI chọn đúng ý định chỉ vì JSON hợp lệ.
 Chưa lấy unit test này làm bằng chứng đã gọi AI thật, đã nối Web Chat hoặc đã
 đạt chất lượng production trên tập nghiệm thu độc lập.
@@ -172,7 +191,7 @@ Ba file mới: module contract, test_s5_intent_fallback_contract.py, tài liệu
 Không sửa file task Nhân hoặc ba file 04.2. Các kết quả kiểm chứng dưới đây
 được ghi nhận trước khi commit/push phần 07.1.
 
-- **160 test 07.1 qua**, trong tổng **586 test intent/archive qua** ở lượt
+- **191 test 07.1 qua**, trong tổng **617 test intent/archive qua** ở lượt
   kiểm tra bàn giao mới nhất.
 - Đã quan sát 25 ca hành vi fail khi API còn chưa triển khai, sau đó qua.
   Rà soát độc lập phát hiện hai lỗi: scope thiếu trường bị thay bằng null và
@@ -183,6 +202,15 @@ Không sửa file task Nhân hoặc ba file 04.2. Các kết quả kiểm chứn
   contract. Bổ sung 34 ca so với bản 126 test; đã quan sát 15 lỗi scope và 9
   lỗi handoff fail trước sửa. Sau sửa, các ca hỏi lại không giữ scope tự bịa;
   truy vấn có công ty hợp lệ nhưng không yêu cầu kỳ vẫn hoạt động với kỳ null.
+- Review nối 07.2 bổ sung 31 ca cho đường truyền thành phần V7, evidence cũ và
+  chuẩn hóa kỳ; quan sát 18 ca fail trước sửa và 2 ca stale-evidence fail trước
+  khi bổ sung ràng buộc câu hiện tại. Trên snapshot 345 resolution đã lưu:
+  345/345 tạo request hợp lệ; 42 câu MIXED gồm 24 có TWO_EXPLICIT_REQUEST_TYPES.
+  Với JSON provider viết tay, 24 câu này qua validator (16 BOTH, 8 VECTOR);
+  18 câu chưa có thành phần xác minh vẫn ASK_CLARIFICATION. Scope replay là
+  fixture theo ticker đầu tiên thấy trong câu và period=null; đây không phải
+  benchmark resolver, model, provider hay UI. Bằng chứng mới:
+  outputs/s5_wbs071_20261113/review03/v7-replay.json.
 - Schema request/response đã được kiểm bằng Draft202012Validator.check_schema.
   Các fixture thực thi có đủ VECTOR/GRAPH/BOTH/ASK_CLARIFICATION và thất bại an
   toàn; bằng chứng ở outputs/s5_wbs071_20261113/contract-examples.json. Đây là
@@ -191,8 +219,8 @@ Không sửa file task Nhân hoặc ba file 04.2. Các kết quả kiểm chứn
   test_chat_regression.py do thiếu `hoi`, test_contracts.py do thiếu
   `retrieval_flow`. Các lỗi này đã có trước task; không ghi toàn ứng dụng PASS.
   Log mới nhất: outputs/s5_wbs071_20261113/review02/full-suite-final.log.
-  Bộ hồi quy mới nhất: outputs/s5_wbs071_20261113/review02/intent-suite-final.xml.
-  Kết quả hàm và checksum ba file: outputs/s5_wbs071_20261113/review02/verification.json.
+  Bộ hồi quy mới nhất: outputs/s5_wbs071_20261113/review03/intent-suite-final.xml.
+  Kết quả hàm và checksum ba file: outputs/s5_wbs071_20261113/review03/verification.json.
   Các log ở thư mục cha là kết quả các bản trước, không thay cho lượt kiểm mới.
 
 Chạy riêng phần 07.1 từ thư mục gốc FinMind:
@@ -211,9 +239,26 @@ from src.retrieval_orchestration.intent_fallback_contract import (
 
 prepared = prepare_fallback_request(result_042, question=question)
 if prepared['need_fallback']:
+    # Chỉ gửi prepared['request'] ra provider, giữ validation_context ở server.
     # provider_text và provider_timed_out do runner 07.2 cung cấp.
     validated = validate_fallback_response(
         provider_text, request=prepared['request'], timed_out=provider_timed_out,
+        **prepared['validation_context'],
     )
 # Nếu need_fallback=False: giữ ASK_CLARIFICATION/SEARCH của 04.2, không gọi AI.
 ```
+
+Trước khi nối 07.2 vào backend, cài dependency bằng đúng interpreter đang chạy
+backend (từ thư mục gốc FinMind):
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
+.\.venv\Scripts\python.exe -c "from importlib.metadata import version; print(version('jsonschema'))"
+```
+
+requirements đã chốt jsonschema==4.26.0; không cần thêm dependency hay che lỗi
+cài thiếu bằng một kết quả phân loại. Venv kiểm thử hiện dùng đúng 4.26.0.
+07.2 cần cấu hình Gemini trả JSON theo schema tương thích của provider, sau đó
+vẫn kiểm bằng RESPONSE_JSON_SCHEMA và validator này. JSON bọc Markdown fence
+tiếp tục bị từ chối; không nới parser để nhận văn bản lẫn JSON. Chưa gọi Gemini
+hoặc kiểm chế độ schema của provider trong task 07.1.
