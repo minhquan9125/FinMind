@@ -55,7 +55,7 @@ def _invalid_period(question, period):
     number = r'[+-]?\s*\d+(?:\.\d+)?'
     quarter = re.compile(r'\b(?:quy|q)\s*(' + number + r')\b')
     continuation = re.compile(
-        r'\s*(?:,|va\b|den\b|toi\b|[-–])\s*'
+        r'\s*(?P<connector>,|va\b|den\b|toi\b|[-–])\s*'
         r'(?:(?P<quarter>quy|q)\s*)?(?P<number>' + number + r')\b')
     for match in quarter.finditer(text):
         values = [match.group(1)]
@@ -67,6 +67,15 @@ def _invalid_period(question, period):
                     re.fullmatch(r'\d{4}', following.group('number'))
                     or re.match(r'\d{1,2}/\d{1,2}/\d{4}\b', text[following.start('number'):])):
                 break
+            if following.group('quarter') is None and following.group('connector') in {'den', 'toi'}:
+                month_year = re.match(r'(\d{1,2})\s*/\s*(\d{4})\b(?!\s*/)',
+                                      text[following.start('number'):])
+                if month_year:
+                    try:
+                        date(int(month_year[2]), int(month_year[1]), 1)
+                    except ValueError:
+                        return True
+                    break
             values.append(following.group('number'))
             end = following.end()
         for value in values:

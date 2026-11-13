@@ -67,6 +67,10 @@ Năm hoặc ngày đầy đủ sau dấu nối/khoảng thời gian không phả
 `Q3-2025`, `quý 2 - 2025`, `từ quý 1 đến 30/6/2025` đều qua chốt kỳ.
 Ngày cuối khoảng vẫn phải tồn tại; nếu có tiền tố Q/quý rõ ràng thì số theo sau
 vẫn được kiểm là quý, không đổi thành năm để bỏ qua lỗi.
+Sau `đến/tới`, mốc không có tiền tố quý như `6/2025` là tháng/năm; tháng phải
+từ 1–12 và năm hợp lệ. `quý 1 đến 6/2025` qua chốt kỳ, còn `đến quý 6/2025`
+vẫn bị chặn. Dấu phẩy hoặc dấu gạch trong danh sách/dải quý không tự chuyển
+`quý 1,6/2025` hoặc `quý 1-6/2025` thành mốc tháng.
 
 `company_ticker` phải do bước phân giải scope upstream xác minh; có thể truyền
 `valid_tickers` để kiểm membership registry đã nạp, không cần truy vấn DB ở policy.
@@ -389,3 +393,18 @@ Suite toàn dự án chạy lại vẫn dừng khi collect ba test cũ:
 test_chat_history.py và test_chat_regression.py thiếu `hoi`, test_contracts.py
 thiếu `retrieval_flow`. Log ở fix03/full-suite.log; không kết luận toàn ứng dụng
 đã qua từ kết quả intent.
+
+## 10. Sửa mốc tháng/năm sau đến/tới, 13/11
+
+Review tiếp theo xác nhận bộ kiểm mới nhận năm/ngày đầy đủ, còn bỏ sót mốc
+tháng/năm. Đã bổ sung phân biệt mốc này với quý, chỉ khi không có tiền tố Q/quý
+và theo sau từ đến/tới. Không tự phân giải tháng thành kỳ truy xuất.
+
+Theo cách hiểu vừa thống nhất, `quý 1 đến 5/2025` cũng là mốc tháng 5; đã đổi
+ca kiểm cũ thành `quý 1 đến quý 5/2025` để tiếp tục kiểm quý sai rõ ràng.
+Ca tháng 5 không có tiền tố quý được kiểm riêng với kỳ vọng hợp lệ.
+
+**346 test intent qua**, thêm 5 ca tháng/năm hợp lệ và 9 ca đối chiếu quý/tháng
+sai. Đã thấy 5 ca hợp lệ fail trước sửa và qua sau sửa. Bằng chứng red/green ở
+`outputs/s5_wbs042_review_20261113/fix04/`. Suite toàn dự án vẫn bị chặn bởi
+ba lỗi import cũ đã ghi ở mục 9; log mới tại fix04/full-suite.log.
