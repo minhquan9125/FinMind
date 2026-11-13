@@ -17,6 +17,28 @@ def _read_imperative(text):
     return re.match(r'^(?:(?:hãy|hay|vui lòng|vui long|xin)\s+)?(?:đọc|doc)\b', _surface(text))
 
 
+# Review 13/11 (Hưng): patterns for rows the rules missed (all WHOLE_QUERY_UNCHANGED).
+# V7-only: shared V3-V6 regexes stay unchanged so earlier frozen audits replay identically.
+V7_CONNECTOR = re.compile(CONNECTOR.pattern + r'|\s+(?:kèm theo|kem theo|kèm|kem)\s+', re.IGNORECASE)
+_VALUE_ASK = re.compile(r'\b(?:xin|cho (?:toi )?biet)\s+(?:con\s+)?so\b')
+_VOLUME = re.compile(r'\b(?:sản|khối|số)\s+lượng\b')
+_VOLUME_PLAIN = re.compile(r'\b(?:san|khoi) luong\b')
+_TREND_WORD = re.compile(r'\b(?:nhan dinh|xu huong|dien bien|chieu huong|nghieng ve chieu nao|'
+                         r'da (?:tang|giam|mo rong|tang truong))\b')
+_TREND_SCOPE = re.compile(r'\btu (?:nam )?\d{4} den (?:nam )?\d{4}\b|\b(?:thi gia|gia)\b')
+_NEWS_ITEM = re.compile(r'\b(?:bai tin|bai bao|ban tin|tin tuc)\b')
+_NEWS_ASK = re.compile(r'\b(?:nao noi ve|co \w+(?: \w+)? nao|noi dung|tom tat|tim|liet ke|danh sach)\b')
+_REPORT_SOURCE = re.compile(r'\b(?:bctn|bao cao thuong nien|bctc|bao cao tai chinh|thuyet minh)\b')
+_REPORT_ASK = re.compile(r'\b(?:noi gi ve|mo ta|giai thich ra sao|duoc giai thich|neu trong|trinh bay|tom tat|'
+                         r'giai thich (?:chinh sach|nguyen tac))\b')
+_ROLE_TITLE = r'(?:ceo|cfo|chu tich(?: hdqt)?|tong giam doc|giam doc|tgd|ke toan truong|nguoi dung dau|nguoi dieu hanh)'
+_ROLE_ASK = re.compile(r'\bai\s+(?:la\s+)?(?:nguoi dung dau|phu trach|dam nhiem|dam trach)\b|^ai\s+la\s+' +
+                       _ROLE_TITLE + r'\b|^cho (?:biet )?ten\s+' + _ROLE_TITLE + r'\b')
+# "ban kiem soat" is a board (a role), and "BCTC rieng cua cong ty me" names a statement: neither is a relation.
+_RELATION = re.compile(r'\b(?:quan he (?:hop tac|so huu)|(?<!ban )kiem soat|cong ty (?:con|lien ket)|la co dong|'
+                       r'co dong (?:lon|chien luoc))\b')
+
+
 def _financial_metric(text):
     surface = _surface(text)
     plain = _plain(surface)
@@ -25,10 +47,13 @@ def _financial_metric(text):
     metrics = [match.group() for match in FINANCIAL_METRIC.finditer(plain)]
     salary = re.search(r'\blương\b', surface) or re.search(
         r'\b(?:tien luong|luong (?:ceo|cfo|tgd|thuong|nhan vien|can bo|ban lanh dao))\b', plain)
-    return bool(any(metric != 'luong' for metric in metrics) or salary)
+    volume = _VOLUME.search(surface) or _VOLUME_PLAIN.search(plain)
+    return bool(any(metric != 'luong' for metric in metrics) or salary or volume)
 
 
 def financial_value_request(text):
+    if _financial_metric(text) and _VALUE_ASK.search(_plain(_surface(text))):
+        return True
     if not previous_numeric(text) or not _financial_metric(text):
         return False
     surface = _surface(text)
@@ -48,20 +73,31 @@ def explicit_intent(text):
     previous = previous_explicit(text)
     if previous is not None and previous != 'NUMERIC':
         return previous
+    plain = _plain(_surface(text))
+    # A trend judgement over a year range or a price path outranks a value request in the same words.
+    if _TREND_WORD.search(plain) and _TREND_SCOPE.search(plain):
+        return 'TREND'
     if financial_value_request(text):
         return 'NUMERIC'
-    plain = _plain(_surface(text))
     if re.search(r'\b(?:bai tin|bai bao|ban tin|tin tuc|thong bao|trich nguyen van|chep nguyen van)\b', plain):
-        # Indirect questions explicitly requesting new news are still NEWS.
-        return 'NEWS' if re.search(r'\bco tin(?: tuc)? gi moi\b', plain) else None
+        # Indirect questions explicitly requesting new news are still NEWS; so are requests for
+        # a named article or a list/summary of articles. "thong bao" alone stays unforced.
+        if re.search(r'\bco tin(?: tuc)? gi moi\b', plain) or (_NEWS_ITEM.search(plain) and _NEWS_ASK.search(plain)):
+            return 'NEWS'
+        return None
     if re.search(r'\bco tin gi moi\b', plain):
         return 'NEWS'
     if _read_imperative(text) and re.match(r'^(?:doc|hay doc)\s+(?:noi dung\s+)?(?:bao cao|bctc|bctn)\b', plain):
         return 'REPORT_CONTENT'
     title = r'(?:ceo|cfo|chu tich(?: hdqt)?|tong giam doc|giam doc|tgd|ke toan truong)'
     if (re.search(r'^ai\s+(?:hien\s+)?(?:dang\s+)?(?:lam|giu|dam nhiem)\s+(?:(?:chuc|chuc vu)\s+)?' + title + r'\b', plain)
-            or re.search(r'\bnguoi dung dau\b.{0,100}\bla ai\b', plain)):
+            or re.search(r'\bnguoi dung dau\b.{0,100}\bla ai\b', plain)
+            or _ROLE_ASK.search(plain)):
         return 'PERSON_ROLE'
+    if _REPORT_SOURCE.search(plain) and _REPORT_ASK.search(plain):
+        return 'REPORT_CONTENT'
+    if _RELATION.search(plain):
+        return 'ENTITY_RELATION'
     # Financial-change analysis fits TREND; attribution to a particular article
     # or report, and other kinds of "why", remain unforced for review.
     if (re.match(r'^(?:hay\s+)?giai thich (?:vi sao|tai sao)\b', plain)
@@ -75,9 +111,9 @@ def explicit_intent(text):
 def requests(text):
     result = []
     for part in base_requests(text):
-        tokens = CONNECTOR.split(part)
+        tokens = V7_CONNECTOR.split(part)
         current, chunks = tokens[0], []
-        for separator, right in zip(CONNECTOR.finditer(part), tokens[1:]):
+        for separator, right in zip(V7_CONNECTOR.finditer(part), tokens[1:]):
             left_plain, right_plain = _plain(_surface(current)), _plain(_surface(right))
             left_request = _request(left_plain) or explicit_intent(current) is not None
             right_action = ACTION.match(right_plain) or explicit_intent(right) == 'NEWS'
