@@ -2,8 +2,10 @@
 import asyncio
 import logging
 import math
+import time
 import uuid
 
+from .chat_trace import record_turn
 from .chat_types import ChatError, validate_uuid
 from .chat_logic import append_turn, new_document, snapshot, validate_input
 from .chat_repository import ChatRepository
@@ -15,6 +17,7 @@ class PostgresSessionStore:
     def __init__(self, pool=None, *, engine=None, repository=None):
         self.engine = engine
         self.repository = repository if repository is not None else ChatRepository(pool)
+        self.trace_pool = pool  # turns are logged to queries/answers only when a real pool is given
 
     @staticmethod
     def _identity(owner, sid=None):
@@ -43,9 +46,14 @@ class PostgresSessionStore:
         doc, lease = await self.repository.claim(owner, sid, revision, seconds)
         committed = False
         try:
+            started = time.perf_counter()
             updated = await append_turn(doc, text, self.engine)
             await self.repository.commit(owner, sid, lease, revision, updated)
             committed = True
+            if self.trace_pool is not None:
+                await record_turn(self.trace_pool, user_id=owner, question=text,
+                                  result=updated['messages'][-1].get('result') or {},
+                                  latency_ms=round((time.perf_counter() - started) * 1000))
             return await snapshot(updated)
         finally:
             if not committed:

@@ -20,7 +20,7 @@ CREATE TABLE "public"."answers" (
     "attempt" integer,
     "decision_id" uuid,
     "answer_text" text,
-    "status" character varying(20),
+    "status" character varying(30),
     "reason_code" character varying(50),
     "model_name" character varying(50),
     "prompt_version" character varying(30),
