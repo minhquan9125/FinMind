@@ -4,15 +4,18 @@ No embedding, provider call, retry, timer or Web Chat registration happens here.
 Internal producer contract errors remain distinct from failed provider replies.
 """
 from copy import deepcopy
+from datetime import date
 import json
 import math
+import re
+import unicodedata
 
 from jsonschema import Draft202012Validator
 
 from .intent_routing import (
     CLASSIFIER_SCORE_TYPE, COSINE_SCORE_TYPE, EVIDENCE_SCORE_TYPE,
     FALLBACK_TASK, FALLBACK_TOP_GROUPS, INTENT_ROUTES, LABEL_ALIASES, IntentClassificationContractError,
-    _mixed_route, _scope_gate, _ticker,
+    _mixed_route, _scope_gate, _ticker, _validated_resolution,
 )
 
 ALLOWED_LABELS = ('SO_LIEU', 'BCTC_BCTN', 'NEWS', 'CHUC_VU', 'QUAN_HE',
@@ -65,6 +68,62 @@ def _valid_score(value, lower=0):
     return type(value) in (int, float) and lower <= value <= 1 and math.isfinite(value)
 
 
+def _validation_context(policy_result, payload, question):
+    """Keep verified V7 rule components local; never forward them to the provider."""
+    context = {'query_components': None, 'query_components_confirmed': False}
+    evidence = policy_result.get('classification_evidence')
+    if evidence is None and payload.get('classification_evidence') is None:
+        return context
+    if (not isinstance(evidence, dict) or payload.get('classification_evidence') != evidence
+            or policy_result['reason_code'] not in {'UNCALIBRATED_CLASSIFICATION', 'LABEL_DISAGREEMENT'}):
+        raise IntentClassificationContractError('INVALID_FALLBACK_HANDOFF')
+    resolution = evidence.get('resolution')
+    if resolution is None:
+        return context
+    resolved = _validated_resolution(resolution, question)
+    if (resolved['ranking_policy'] != 'intent-request-objectives-v5'
+            or resolved['intent_label'] != 'MIXED'
+            or resolved['reason'] != 'TWO_EXPLICIT_REQUEST_TYPES'
+            or resolved.get('runtime_enabled') is not False
+            or resolved.get('unresolved_requests') != []):
+        return context
+    components = resolved['component_labels']
+    _mixed_route(components, True)  # Check distinct, canonical component labels.
+    explicit = resolved.get('explicit_evidence', [])
+    if {item['intent_label'] for item in explicit} != set(components):
+        return context
+    # 04.2 snapshots have no mandatory question ID. Bind the producer's request
+    # texts to this turn, including any newly added clause, before trusting them.
+    from .intent_semantic_requests import requests
+    def normalized(text):
+        return ' '.join(unicodedata.normalize('NFC', text).casefold().split())
+    if ([normalized(item['text']) for item in explicit]
+            != [normalized(text) for text in requests(question)]):
+        raise IntentClassificationContractError('STALE_CLASSIFICATION_EVIDENCE')
+    return {'query_components': list(components), 'query_components_confirmed': True}
+
+
+def _canonical_period(value):
+    """Normalize notation only, without merging day/quarter/year or resolving time."""
+    if value is None:
+        return None
+    value = value.strip()
+    quarter = re.fullmatch(r'(?:q|qu[yý])\s*([1-4])\s*(?:[/\-]|n[aă]m)\s*([0-9]{4})',
+                           value, re.IGNORECASE)
+    if quarter:
+        return f'{quarter[2]}-Q{quarter[1]}'
+    quarter = re.fullmatch(r'([0-9]{4})\s*[-/]\s*q\s*([1-4])', value, re.IGNORECASE)
+    if quarter:
+        return f'{quarter[1]}-Q{quarter[2]}'
+    day = re.fullmatch(r'([0-9]{1,2})/([0-9]{1,2})/([0-9]{4})', value)
+    if day:
+        try:
+            return date(int(day[3]), int(day[2]), int(day[1])).isoformat()
+        except ValueError:
+            pass  # Existing scope gate still rejects invalid dates.
+    return value
+
+
 def prepare_fallback_request(policy_result, *, question, company_required=True, valid_tickers=None):
     """Allow only an existing 04.2 NEED_FALLBACK; emit exactly three wire fields.
 
@@ -85,6 +144,7 @@ def prepare_fallback_request(policy_result, *, question, company_required=True, 
         reject()
     prepared = dict(decision=decision, need_fallback=needed, route=policy_result.get('route'),
                     reason_code=reason, request=None,
+                    validation_context={'query_components': None, 'query_components_confirmed': False},
                     clarification_question=policy_result.get('clarification_question'))
     if decision == 'ASK_CLARIFICATION':
         message = prepared['clarification_question']
@@ -146,6 +206,7 @@ def prepare_fallback_request(policy_result, *, question, company_required=True, 
             reject()
         seen.add(label)
         previous = score
+    prepared['validation_context'] = _validation_context(policy_result, payload, question)
     prepared['request'] = wire
     return prepared
 
@@ -175,8 +236,9 @@ def validate_fallback_response(raw, *, request, timed_out=False, provider_error=
                                query_components=None, query_components_confirmed=False):
     """Validate a provider reply without promoting its self-reported score.
 
-    query_components must be independently confirmed by the caller. A provider
-    reason or a sample's components cannot establish them. Timeout is a signal
+    query_components can come from prepare_fallback_request's local validation
+    context or another verified resolver. A provider reason or a sample's
+    components cannot establish them. Timeout is a signal
     from the provider runner in 07.2; this function does not measure a deadline.
     """
     if timed_out is True or isinstance(provider_error, TimeoutError):
@@ -220,7 +282,7 @@ def validate_fallback_response(raw, *, request, timed_out=False, provider_error=
             return _failure('LABEL_ROUTE_MISMATCH')
     scope = request['conversation_scope']
     company = scope['company_ticker']
-    period = scope['period']
+    period = _canonical_period(scope['period'])
     extracted_company = data.get('extracted_company')
     extracted_period = data.get('extracted_period')
     if route != 'ASK_CLARIFICATION' and company_required and company is None:
@@ -237,9 +299,8 @@ def validate_fallback_response(raw, *, request, timed_out=False, provider_error=
     if extracted_period is not None:
         if period is None:
             return _failure('UNVERIFIED_PERIOD')
-        if extracted_period.strip() != period.strip():
+        if _canonical_period(extracted_period) != period:
             return _failure('PERIOD_SCOPE_CONFLICT')
-        period = extracted_period
     resolved, stopped = _scope_gate(question=request['question'], company_ticker=company, period=period,
                                      company_required=company_required and route != 'ASK_CLARIFICATION',
                                      valid_tickers=valid_tickers)

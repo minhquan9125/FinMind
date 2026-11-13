@@ -18,6 +18,8 @@ from src.retrieval_orchestration.intent_routing import (
 LABELS = ['SO_LIEU', 'BCTC_BCTN', 'NEWS', 'CHUC_VU', 'QUAN_HE',
           'XU_HUONG', 'KET_HOP', 'CLARIFY']
 QUESTION = 'Ai là Chủ tịch HĐQT FPT năm 2025?'
+MIXED_QUESTION = ('Theo báo cáo thường niên FPT năm 2025, ai đảm nhiệm chức Chủ tịch HĐQT? '
+                  'Báo cáo giải thích chính sách kiểm soát rủi ro ra sao?')
 
 
 def ranking(first=.99, second=.01, label='PERSON_ROLE'):
@@ -29,6 +31,18 @@ def ranking(first=.99, second=.01, label='PERSON_ROLE'):
 
 def policy_result(**kwargs):
     return decide_intent_route(ranking(), question=QUESTION, company_ticker='FPT', period='2025', **kwargs)
+
+
+def v7_policy_result(question=MIXED_QUESTION, envelope=False):
+    from src.retrieval_orchestration.intent_semantic_requests import requests, resolve_objectives
+    labels = ['ENTITY_RELATION', 'MIXED', 'NEWS', 'NUMERIC', 'PERSON_ROLE', 'REPORT_CONTENT', 'TREND']
+    resolved = resolve_objectives([.1, .1, .1, .4, .1, .1, .1], [], labels, requests(question))
+    assert resolved['reason'] == 'TWO_EXPLICIT_REQUEST_TYPES'
+    if envelope:
+        base = ranking(.71, .20, 'NUMERIC') | {
+            'ranking_policy': 'intent-linear-v1', 'score_type': 'CLASSIFIER_PROBABILITY_UNCALIBRATED'}
+        resolved = {'base_ranking': base, 'resolution': resolved}
+    return decide_intent_route(resolved, question=question, company_ticker='FPT', period='2025')
 
 
 def request():
@@ -153,6 +167,85 @@ def test_real_v7_producer_and_042_consumer_handoff_remains_supported():
     out = prepare_fallback_request(raw, question=QUESTION)
     assert out['need_fallback'] is True and out['reason_code'] == 'LABEL_DISAGREEMENT'
     assert set(out['request']) == {'question', 'conversation_scope', 'allowed_labels'}
+
+
+@pytest.mark.parametrize('envelope', [False, True])
+@pytest.mark.parametrize('question,route,components', [
+    (MIXED_QUESTION, 'BOTH', {'PERSON_ROLE', 'REPORT_CONTENT'}),
+    ('Cho biết doanh thu FPT năm 2025 rồi tìm bài tin về FPT.', 'VECTOR', {'NUMERIC', 'NEWS'}),
+    ('Ai là Chủ tịch FPT? FPT có những công ty con nào?', 'GRAPH', {'PERSON_ROLE', 'ENTITY_RELATION'}),
+])
+def test_explicit_v7_components_reach_validator_without_manual_confirmation(question, route, components, envelope):
+    raw = v7_policy_result(question, envelope)
+    before = copy.deepcopy(raw)
+    prepared = prepare_fallback_request(raw, question=question)
+    out = validate_fallback_response(response(intent_label='KET_HOP', route=route),
+                                     request=prepared['request'], **prepared.get('validation_context', {}))
+    assert out['status'] == 'FALLBACK_VALIDATED' and out['route'] == route
+    assert prepared['need_fallback'] is True  # Evidence does not enable direct SEARCH.
+    assert set(prepared['validation_context']['query_components']) == components
+    assert prepared['validation_context']['query_components_confirmed'] is True
+    assert set(prepared['request']) == {'question', 'conversation_scope', 'allowed_labels'}
+    assert raw == before
+    prepared['validation_context']['query_components'].clear()
+    assert raw == before
+
+
+@pytest.mark.parametrize('changes', [
+    {'reason': 'TWO_REQUESTS_SUPPORTED_BY_WHOLE_QUESTION'},
+    {'ranking_policy': 'intent-request-objectives-v4'},
+    {'explicit_evidence': []}, {'unresolved_requests': ['Unresolved third request']},
+])
+def test_incomplete_or_non_explicit_v7_evidence_does_not_confirm_mixed(changes):
+    raw = v7_policy_result()
+    raw['classification_evidence']['resolution'].update(changes)
+    raw['fallback_payload']['classification_evidence'] = copy.deepcopy(raw['classification_evidence'])
+    prepared = prepare_fallback_request(raw, question=MIXED_QUESTION)
+    out = validate_fallback_response(response(intent_label='KET_HOP', route='BOTH'),
+                                     request=prepared['request'], **prepared.get('validation_context', {}))
+    assert_failed(out)
+    assert out['reason_code'] == 'UNVERIFIED_MIXED_COMPONENTS'
+
+
+@pytest.mark.parametrize('changes', [
+    {'confidence': .9}, {'score_type': 'COSINE_SIMILARITY_NOT_PROBABILITY'},
+    {'component_labels': ['PERSON_ROLE', 'UNKNOWN']},
+    {'component_labels': ['PERSON_ROLE', 'PERSON_ROLE']},
+])
+def test_malformed_resolution_cannot_supply_verified_query_components(changes):
+    raw = v7_policy_result()
+    raw['classification_evidence']['resolution'].update(changes)
+    raw['fallback_payload']['classification_evidence'] = copy.deepcopy(raw['classification_evidence'])
+    with pytest.raises(IntentClassificationContractError):
+        prepare_fallback_request(raw, question=MIXED_QUESTION)
+
+
+def test_disagreeing_internal_evidence_copies_are_rejected_before_provider_call():
+    raw = v7_policy_result()
+    raw['fallback_payload']['classification_evidence']['resolution']['component_labels'] = ['NUMERIC', 'NEWS']
+    with pytest.raises(IntentClassificationContractError):
+        prepare_fallback_request(raw, question=MIXED_QUESTION)
+
+
+@pytest.mark.parametrize('old_question,new_question', [
+    ('Ai là Chủ tịch FPT? FPT có những công ty con nào?', MIXED_QUESTION),
+    (MIXED_QUESTION, MIXED_QUESTION + ' Cho biết doanh thu FPT năm 2025.'),
+])
+def test_old_v7_resolution_cannot_confirm_components_for_another_question(old_question, new_question):
+    old = v7_policy_result(old_question)['classification_evidence']['resolution']
+    raw = decide_intent_route(old, question=new_question, company_ticker='FPT', period='2025')
+    with pytest.raises(IntentClassificationContractError):
+        prepare_fallback_request(raw, question=new_question)
+
+
+def test_candidate_or_sample_components_do_not_become_verified_query_components():
+    raw = policy_result()
+    raw['fallback_payload']['component_labels'] = ['PERSON_ROLE', 'NEWS']
+    raw['fallback_payload']['candidates'][0]['component_labels'] = ['PERSON_ROLE', 'NEWS']
+    prepared = prepare_fallback_request(raw, question=QUESTION)
+    out = validate_fallback_response(response(intent_label='KET_HOP', route='BOTH'),
+                                     request=prepared['request'], **prepared.get('validation_context', {}))
+    assert_failed(out)
 
 
 @pytest.mark.parametrize('change', [
@@ -364,6 +457,34 @@ def test_four_required_fields_can_reuse_verified_scope_without_extracted_fields(
 ])
 def test_provider_cannot_silently_change_or_invent_invalid_scope(change):
     assert_failed(validate_fallback_response(response(**change), request=request()))
+
+
+@pytest.mark.parametrize('period', ['Q3/2025', 'q3-2025', 'quý 3/2025', 'quý 3 năm 2025', '2025-q3'])
+def test_equivalent_quarter_formats_match_verified_period(period):
+    req = request() | {'question': 'Doanh thu FPT Q3-2025?'}
+    req['conversation_scope']['period'] = '2025-Q3'
+    out = validate_fallback_response(response(intent_label='SO_LIEU', route='VECTOR', extracted_period=period),
+                                     request=req)
+    assert out['status'] == 'FALLBACK_VALIDATED'
+    assert out['extracted_period'] == '2025-Q3'
+    assert req['conversation_scope']['period'] == '2025-Q3'
+
+
+@pytest.mark.parametrize('period', ['04/11/2025', '4/11/2025'])
+def test_equivalent_day_formats_preserve_full_verified_date(period):
+    req = request() | {'question': 'Gia FPT ngay 04/11/2025?'}
+    req['conversation_scope']['period'] = '2025-11-04'
+    out = validate_fallback_response(response(intent_label='SO_LIEU', route='VECTOR', extracted_period=period),
+                                     request=req)
+    assert out['status'] == 'FALLBACK_VALIDATED'
+    assert out['extracted_period'] == '2025-11-04'
+
+
+@pytest.mark.parametrize('period', ['Q4/2025', 'Q3/2024', '2025', '2025-09-30', 'Q5/2025', 'Q3/0000'])
+def test_period_normalization_never_merges_different_periods_or_precision(period):
+    req = request() | {'question': 'Doanh thu FPT Q3-2025?'}
+    req['conversation_scope']['period'] = '2025-Q3'
+    assert_failed(validate_fallback_response(response(extracted_period=period), request=req))
 
 
 def test_missing_verified_company_asks_even_if_provider_invents_a_ticker():
