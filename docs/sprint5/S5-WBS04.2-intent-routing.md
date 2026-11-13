@@ -63,6 +63,10 @@ có clarification_question và không gọi matcher/encoder/retrieval/AI ngoài.
 Đã chặn thêm Q 5/quý +5, quý 1.5 và danh sách chứa quý sai như 1,5 hoặc 1 và 5.
 Danh sách/range hợp lệ 1,2; 1 và 2; 1–4 vẫn được nhận, kể cả khi dùng Q có khoảng
 trắng. Quý sai nêu trong câu hiện tại ưu tiên hơn period hợp lệ từ context.
+Năm hoặc ngày đầy đủ sau dấu nối/khoảng thời gian không phải quý tiếp theo:
+`Q3-2025`, `quý 2 - 2025`, `từ quý 1 đến 30/6/2025` đều qua chốt kỳ.
+Ngày cuối khoảng vẫn phải tồn tại; nếu có tiền tố Q/quý rõ ràng thì số theo sau
+vẫn được kiểm là quý, không đổi thành năm để bỏ qua lỗi.
 
 `company_ticker` phải do bước phân giải scope upstream xác minh; có thể truyền
 `valid_tickers` để kiểm membership registry đã nạp, không cần truy vấn DB ở policy.
@@ -265,7 +269,7 @@ Báo cáo model thật cũ giữ nguyên để bảo toàn bằng chứng tại 
 | Metadata thiếu/null/rỗng, cặp policy/type không khớp, nhãn/score/rank hỏng | Ném IntentClassificationContractError; không tạo tín hiệu gọi AI |
 | Cosine max-per-label hợp lệ | DIRECT_SEARCH_DISABLED mặc định; chỉ diagnostic mới xét 0,65/0,08 |
 | intent-linear-v1 + CLASSIFIER_PROBABILITY_UNCALIBRATED | NEED_FALLBACK/UNCALIBRATED_CLASSIFICATION; không xét ngưỡng cosine |
-| intent-request-objectives-v1..v4 hoặc intent-request-consensus-v1 + DECISION_EVIDENCE_NO_CONFIDENCE | confidence phải khai báo null; cần fallback xác minh |
+| intent-request-objectives-v1..v5 hoặc intent-request-consensus-v1 + DECISION_EVIDENCE_NO_CONFIDENCE | confidence phải khai báo null; cần fallback xác minh |
 | Envelope gồm base_ranking và resolution, nhãn khác nhau | NEED_FALLBACK/LABEL_DISAGREEMENT; giữ cả hai nhãn và lý do |
 
 Envelope hợp lệ có dạng `{"base_ranking": {...}, "resolution": {...}}`;
@@ -279,6 +283,15 @@ cả hai nguồn quyết định. Không gán điểm của nhãn gốc cho nhã
 chưa hiệu chỉnh, intent_label/top_1_score/top_2_score/score_gap ở đầu ra policy
 đều null; điểm gốc chỉ được giữ ở đúng phần evidence/candidates với score_type gốc.
 Ngay cả hai nhãn trùng nhau cũng chưa đủ để SEARCH khi confidence còn null.
+
+V7 của Nhân dùng `intent-request-objectives-v5`, đối chiếu source tại
+`e080a88901ebb00cb433cc68ef1ca15bc982eee1` và bàn giao `3c1f2461`.
+Consumer nhận policy này ở cả resolution riêng và envelope; vẫn fallback khi
+bật chế độ chẩn đoán, không dùng ngưỡng cosine cho V7. Nếu có, giữ thêm
+`explicit_evidence`, `unresolved_requests`, `runtime_enabled` trong snapshot
+để bước fallback đọc được mục tiêu đã xác định và phần còn chưa rõ. Các trường
+bằng chứng phải đúng kiểu; runtime_enabled chỉ nhận false. Phiên bản policy
+khác chưa được hỗ trợ vẫn báo lỗi contract, không tự nhận mọi phiên bản mới.
 
 Đây là contract phía 04.2 để xử lý an toàn đầu ra mới, không thay đổi trạng thái
 duyệt/calibration của classifier Nhân hoặc tự kết luận tích hợp WebChat đã xong.
@@ -349,3 +362,30 @@ Sau sửa 13/11: **299 test ý định Sprint 5 qua** (137 policy, 162 dữ li�
 scorer/luật). 32 ca mới đã quan sát fail trước sửa và qua sau sửa. Suite toàn dự
 án tiếp tục bị chặn ở collect bởi ba test cũ thiếu hoi/retrieval_flow, lưu tại
 fix02/full-suite-collection.log. Không sửa các task đó để làm đẹp kết quả.
+
+## 9. Sửa review kỳ hợp lệ và contract V7, 13/11
+
+- Regex cũ hiểu mọi số sau dấu nối/đến/tới là quý tiếp theo, nên chặn nhầm năm
+  và ngày. Đã phân biệt năm/ngày đầy đủ với các phần tử của danh sách quý;
+  vẫn chặn Q5-2025, quý 1-5-2025, quý 1 đến quý 2025 và ngày 31/6/2025.
+- Danh sách policy cũ chỉ đến v4, nên V7 bị lỗi UNSUPPORTED_SCORE_CONTRACT.
+  Đã bổ sung v5, giữ bằng chứng mới cho fallback và kiểm hợp lệ các trường đó.
+  Không sửa producer, thư viện, model, ngưỡng hoặc bật lại SEARCH mặc định.
+
+Kiểm chứng: **332 test intent qua**, gồm 33 ca thêm cho review này; 8 cách viết
+kỳ hợp lệ và 7 ca consumer V7 đã quan sát fail trước sửa. 9 ca kỳ sai đối chiếu
+vẫn bị chặn trước matcher. Kết quả red/green ở
+`outputs/s5_wbs042_review_20261113/fix03/`.
+
+Đã tải git objects để đọc hai commit Nhân, không merge vào nhánh đang làm.
+Resolver v5 lấy từ đúng source e080a889 tái tạo khớp **345/345** đầu ra đã lưu
+trong run03 của Nhân; các dependency hiện có khớp source commit đó. Cả mặc định
+và diagnostic đều nhận đủ 345 envelope, không SEARCH và không lỗi contract;
+299 ca UNCALIBRATED_CLASSIFICATION, 46 ca LABEL_DISAGREEMENT. Giữ nguyên dữ liệu
+đầu vào và chuyển đủ bằng chứng v5 sang fallback. Đây là replay dữ liệu đã lưu,
+không phải chạy suy luận BGE-M3 mới, calibration hay kiểm thử Web Chat.
+
+Suite toàn dự án chạy lại vẫn dừng khi collect ba test cũ:
+test_chat_history.py và test_chat_regression.py thiếu `hoi`, test_contracts.py
+thiếu `retrieval_flow`. Log ở fix03/full-suite.log; không kết luận toàn ứng dụng
+đã qua từ kết quả intent.
