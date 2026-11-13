@@ -179,3 +179,78 @@ async def get_financial_health(pool, symbol: str) -> dict | None:
     period = health['period']
     health['period'] = period if '-Q' in period else f'{period}-YEAR'
     return health
+
+# ---- company page facts: keep original health readers and their verification rules unchanged ----
+
+def _company_money(value, scale):
+    """Exact VND text, or no amount when either input cannot support exact arithmetic."""
+    from decimal import DecimalException, localcontext
+    if any(isinstance(number, bool) or not isinstance(number, (Decimal, int, str))
+           for number in (value, scale)):
+        return None
+    try:
+        value, scale = Decimal(value), Decimal(scale)
+        if not value.is_finite() or not scale.is_finite() or scale <= 0:
+            return None
+        with localcontext() as context:
+            context.prec = max(1, len(value.as_tuple().digits) + len(scale.as_tuple().digits))
+            return format(value * scale, 'f')
+    except (DecimalException, ValueError):
+        return None
+
+
+async def get_company_financials(pool, symbol: str) -> list[dict]:
+    """At most eight periods of exact, per-observation financial facts for the company page."""
+    import logging
+    import re
+    from ..b1_answering.evidence.grounded import _METRIC_LABELS
+
+    sections = {
+        'TOTAL_ASSETS': 'BALANCE_SHEET', 'TOTAL_LIABILITIES': 'BALANCE_SHEET',
+        'TOTAL_EQUITY': 'BALANCE_SHEET', 'NET_REVENUE': 'INCOME_STATEMENT',
+        'PROFIT_AFTER_TAX': 'INCOME_STATEMENT', 'CASH_FLOW_OPERATING': 'CASH_FLOW',
+        'TOTAL_OPERATING_INCOME': 'INCOME_STATEMENT',
+    }
+    grouped = {}
+    async with pool.acquire() as conn:
+        async with conn.transaction(readonly=True):
+            for row in await fetch_health_records(conn, [symbol]):
+                code = 'TOTAL_EQUITY' if row.get('code') == 'OWNERS_EQUITY' else row.get('code')
+                if code not in sections or row.get('section') != sections[code]:
+                    continue
+                if code == 'TOTAL_OPERATING_INCOME' and row.get('industry_type') != 'BANK':
+                    continue
+                source_period = row.get('period_code')
+                match = re.fullmatch(r'(\d{4})(?:-(YEAR|Q[1-4]))?', source_period or '')
+                if match is None:
+                    continue
+                period = source_period if '-' in source_period else f'{source_period}-YEAR'
+                locator = row.get('locator_json')
+                locator = locator if isinstance(locator, dict) else {}
+                status = 'VERIFIED' if locator.get('unit_status') == 'VERIFIED' else 'UNVERIFIED'
+                value = _company_money(row.get('value'), row.get('scale'))
+                signature = (Decimal(value) if value is not None else None, status,
+                             locator.get('period_basis') or 'UNKNOWN',
+                             locator.get('statement_scope') or 'UNKNOWN')
+                facts = grouped.setdefault(period, {})
+                if code in facts:
+                    previous = facts[code]
+                    if previous is not None and previous[1] != signature:
+                        facts[code] = None
+                        logging.getLogger(__name__).warning(
+                            'Ambiguous financial fact omitted: %s %s %s', symbol[:10], period, code)
+                    continue
+                label = (_METRIC_LABELS[code] if code != 'TOTAL_OPERATING_INCOME'
+                         else 'tổng thu nhập hoạt động')
+                facts[code] = (dict(code=code, label=label, value_vnd=value, status=status),
+                               signature, row.get('observation_id'))
+            periods = []
+            newest = sorted(grouped, key=lambda period: (
+                int(period[:4]), 5 if period.endswith('-YEAR') else int(period[-1])), reverse=True)
+            for period in newest[:8]:
+                selected = [entry for entry in grouped[period].values() if entry is not None]
+                first_verified = next((entry for entry in selected if entry[0]['status'] == 'VERIFIED'), None)
+                source = (await citation_for(conn, first_verified[2])
+                          if first_verified is not None and first_verified[2] else None)
+                periods.append(dict(period=period, facts=[entry[0] for entry in selected], source=source))
+    return periods
