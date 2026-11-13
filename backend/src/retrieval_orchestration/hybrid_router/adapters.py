@@ -300,6 +300,7 @@ class LiveContentAdapter:
             {
                 "chunk_id": hit.get("chunk_id"),
                 "document_id": hit.get("document_id"),
+                "document_version": hit.get("document_version"),
                 "title": hit.get("title"),
                 "text": hit.get("text", "")[:500],  # truncate for safety
                 "rrf_score": hit.get("rrf_score"),
@@ -312,6 +313,12 @@ class LiveContentAdapter:
             {
                 "source_id": hit.get("chunk_id"),
                 "content_hash": hit.get("content_hash"),
+                "chunk_id": hit.get("chunk_id"),
+                "document_id": hit.get("document_id"),
+                "source_sha256": hit.get("source_sha256"),
+                "corpus_version_id": result.get("corpus_version_id"),
+                "company": hit.get("company") or (hit.get("locator") or {}).get("symbol") or company,
+                "period": hit.get("period") or period,
                 "source_verified": True,
                 "label": "LIVE/VECTOR",
                 "index_version_id": result.get("index_version_id"),

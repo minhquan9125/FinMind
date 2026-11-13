@@ -257,7 +257,7 @@ def analyze_live(text, context=None, *, today=None):
     if norm in ('/moi', '/new'):
         decision['scope'] = {}
         return finish('ASK_CLARIFICATION', 'NEW_CONVERSATION', 'Đã bắt đầu câu hỏi mới. Bạn muốn xem mã, chỉ tiêu hoặc tin tức nào?')
-    if re.fullmatch(r'(?:nguon(?: dau| o dau| nao| cua cau (?:tra loi )?(?:truoc|vua roi))?|xem nguon|cho (?:toi |minh |t )?xem nguon|trich dan(?: dau| nao)?)', norm.rstrip(' .?!')):
+    if re.fullmatch(r'(?:nguon(?: dau| o dau| nao|(?: cua)? cau (?:tra loi )?(?:truoc|vua roi))?|xem nguon|cho (?:toi |minh |t )?xem nguon|trich dan(?: dau| nao)?)', norm.rstrip(' .?!')):
         return finish('RESOLVE_REFERENCE', 'SOURCE_REFERENCE', 'Xem nguồn của câu trả lời trước.')
     if re.search(r'\b(?:nen mua|nen ban|gia muc tieu|tu van dau tu|should i buy|should i sell)\b', norm):
         return finish('UNSUPPORTED', 'UNSUPPORTED_ADVICE', 'Chức năng này không cung cấp tư vấn mua bán.')
@@ -809,7 +809,7 @@ class LiveResearchService:
     execution_mode = 'LIVE'
 
     def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None, hybrid_router=None,
-                 limits_source=None, prices=None, intent_classifier=None):
+                 limits_source=None, prices=None, intent_classifier=None, route_runner=None):
         self.retriever, self.provider = retriever, provider
         self.prices = prices
         # Optional sync callable (question, context) -> v2 classification (Nhân's classify_intent).
@@ -817,6 +817,7 @@ class LiveResearchService:
         self.market = market
         self.admin_news = admin_news
         self.hybrid_router = hybrid_router
+        self.route_runner = route_runner
         self.limits = limits or Limits.load()
         self.budget = Budget(self.limits)
         # Optional callable returning the limits to use for the next request (admin overrides).
@@ -1052,6 +1053,9 @@ class LiveResearchService:
         if self.intent_classifier is not None:
             result['intent'] = intent_trace  # None when the classifier was unavailable for this turn
         if decision['decision'] == 'RESOLVE_REFERENCE':
+            if ((previous_result or {}).get('evidence_pack') or {}).get('schema_version') == 'router-v1':
+                from .routed_answer import reference_routed_answer
+                return reference_routed_answer(previous_result)
             return self._source_reference(result, previous_result)
         if decision['decision'] == 'MARKET_LOOKUP':
             return await self._answer_market(interpreted, result, previous_result)
@@ -1065,6 +1069,17 @@ class LiveResearchService:
                               message=f"Kho tài liệu chưa có báo cáo của {', '.join(absent)}. "
                                       f"Hiện có báo cáo của {len(available)} mã: {', '.join(available)}.")
                 return result
+        if (self.route_runner is not None and decision.get('reason_code') not in
+                ('UNSUPPORTED_ADVICE', 'NEW_CONVERSATION')):
+            try:
+                routed = await self.route_runner(interpreted)
+            except Exception:
+                result.update(status='SYSTEM_UNAVAILABLE', reason_code='ROUTED_ANSWER_UNAVAILABLE',
+                              message='Không thể kiểm tra tuyến dữ liệu đã chọn; vui lòng thử lại.')
+                return result
+            if routed is not None:
+                routed['request_id'] = result['request_id']
+                return routed
         if decision['decision'] != 'SEARCH': return result
         label = ('Hồ sơ doanh nghiệp' if scope.get('source_type') == 'COMPANY_PROFILE'
                  else metric_label(scope['metric_code']) if scope.get('metric_code') else 'tin tức')

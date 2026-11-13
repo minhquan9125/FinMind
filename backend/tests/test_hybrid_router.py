@@ -869,6 +869,19 @@ def test_live_router_requires_auth_before_loading_engine(monkeypatch, endpoint):
         assert client.post(f"/api/hybrid-router/{endpoint}", json={"question": "Giá FPT hôm nay"}).status_code == 401
 
 
+def test_web_run_requires_live_and_never_executes_fixture(monkeypatch):
+    monkeypatch.setattr(api, "get_settings", lambda: SimpleNamespace(
+        hybrid_router_mode="mock", research_corpus_version_id=None))
+    monkeypatch.setattr(api, "get_router_engine", lambda: pytest.fail("Mock adapter executed"))
+    app = FastAPI()
+    app.include_router(api.router)
+    with TestClient(app) as client:
+        response = client.post("/api/hybrid-router/run", json={
+            "question": "Doanh thu công ty con FPT năm 2025?", "require_live": True})
+    assert response.status_code == 503
+    assert response.json()["detail"]["code"] == "HYBRID_LIVE_NOT_ENABLED"
+
+
 def test_graph_adapter_applies_role_filter_and_maps_only_registry_companies():
     from src.retrieval_orchestration.hybrid_router.adapters import LiveGraphAdapter
     class Relations:

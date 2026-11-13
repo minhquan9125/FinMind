@@ -118,7 +118,8 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
     onBusyChange?.(false);
   }, [resetKey]);
   useEffect(() => { if (historyOpen && owner) void refreshHistory(generation.current); }, [historyOpen, owner]);
-  useEffect(() => { if (scroll.current) scroll.current.scrollTop = scroll.current.scrollHeight; }, [snapshot?.messages.length, view.loading, view.error]);
+  useEffect(() => { if (scroll.current) scroll.current.scrollTop = scroll.current.scrollHeight; },
+    [snapshot?.messages.length, view.loading, view.error]);
   useEffect(() => { if (prefill) setDraft({ owner, text: prefill }); }, [prefill]);
 
   function submit(event) {
@@ -177,6 +178,16 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
         <div className={`min-w-0 max-w-[92%] rounded-xl px-4 py-3 sm:max-w-[85%] ${message.role === "user" ? "bg-blue-600 text-white" : "border border-slate-200 bg-slate-50 text-slate-900"}`}>
           <p className={`mb-1 text-xs font-semibold ${message.role === "user" ? "text-blue-100" : "text-blue-700"}`}>{message.role === "user" ? "Bạn" : message.result?.scope?.source_type === 'PRICE' ? 'Giá cổ phiếu' : message.result?.answering?.manifest?.response_mode === 'NEWS_LIST' ? 'Tin tức' : message.result?.execution_mode === 'LIVE' && message.result?.status === 'EVIDENCE_READY' && message.result?.answering?.status !== 'DRAFT_READY' ? 'Nguồn ứng viên' : statusLabels[message.result?.answering?.status] || statusLabels[message.result?.status] || "FinMind"}</p>
           <p className="whitespace-pre-wrap break-words text-sm leading-relaxed">{message.content}</p>
+          {message.result?.routing && <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-xs text-slate-800" aria-label="Trạng thái tuyến trả lời">
+            <p className="font-semibold">Tuyến {message.result.route} · {message.result.status} · {message.result.execution_mode}</p>
+            {message.result.routing.saved_source_reference && <p className="mt-1">Nguồn đã lưu từ câu trả lời trước; không tìm kiếm lại.</p>}
+            <p className="mt-1">{Object.entries(message.result.routing.branch_states || {}).map(([branch, state]) =>
+              `${branch}: ${state.status} (${state.reason_code})`).join(' · ')}</p>
+            <p className="mt-1">Nguồn đã đọc lại: {message.result.evidence_pack?.items?.length || 0}</p>
+            <details className="mt-2"><summary className="cursor-pointer text-blue-800 underline">Xem trace và nguồn bị loại</summary>
+              <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap break-all">{JSON.stringify(message.result.routing, null, 2)}</pre>
+            </details>
+          </div>}
           {message.result?.timings && <p className="mt-2 text-xs text-slate-500">Tìm nguồn: {message.result.timings.retrieval_seconds}s · Trả lời: {message.result.timings.answer_seconds}s · Tổng: {message.result.timings.total_seconds}s</p>}
           {outcomeNotice(message.result) && <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">{outcomeNotice(message.result)}</p>}
           {index === snapshot.messages.length - 1 && followUps(message.result, clarificationChoices(message.result).length > 0).length > 0 && <div className="mt-3 flex flex-wrap gap-2" aria-label="Gợi ý tiếp theo">

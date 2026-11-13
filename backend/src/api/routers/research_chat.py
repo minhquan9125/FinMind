@@ -50,6 +50,7 @@ def get_store() -> PostgresSessionStore:
         from ...financial.health_db import get_financial_health
         from ...documents.admin_news_chat import AdminNewsChat
         from ...documents.admin_ingestion import Queue
+        from .hybrid_router import run_routed_chat_answer
         limits = Limits.load()
         provider = None
         from ...b1_answering.providers.key_pool import parse_keys, set_active
@@ -85,6 +86,7 @@ def get_store() -> PostgresSessionStore:
             hybrid_router=routed,
             prices=PriceAnalytics(PriceStore(get_pool())),
             intent_classifier=_intent_classifier(get_embedding_service()) if settings.intent_router_v2 else None,
+            route_runner=run_routed_chat_answer,
         )
         from ...documents.research_metrics import ObservedResearch, ResearchMetrics
         engine = ObservedResearch(engine, ResearchMetrics(settings.admin_ingestion_directory))
