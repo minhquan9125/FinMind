@@ -11,6 +11,7 @@ import threading
 import time
 
 from .validation import normalize_quote
+from .session import SessionGate
 
 VN = timezone(timedelta(hours=7))
 EXCHANGES = ("HOSE", "HNX", "UPCOM")
@@ -31,8 +32,8 @@ class BusyError(RuntimeError):
 class LiveCoordinator:
     def __init__(self, fetch, gate, repository, *, clock=time.monotonic,
                  now=None, poll_seconds=5, lease_seconds=20, cache_seconds=60, manual_fetch=None, history_fetch=None,
-                 tracked_symbols=(), snapshot_sink=None, background_seconds=60, budget_path=None):
-        for value, minimum in ((poll_seconds, 5), (lease_seconds, 15), (cache_seconds, 1)):
+                 tracked_symbols=(), snapshot_sink=None, background_seconds=60, budget_path=None, max_wait_seconds=0):
+        for value, minimum in ((poll_seconds, 5), (lease_seconds, 15), (cache_seconds, 1), (max_wait_seconds, 0)):
             if type(value) not in (int, float) or not math.isfinite(value) or value < minimum:
                 raise ValueError("Cấu hình thời gian không hợp lệ.")
         if type(background_seconds) not in (int,float) or not math.isfinite(background_seconds) or background_seconds<poll_seconds:
@@ -44,6 +45,9 @@ class LiveCoordinator:
         self.clock = clock
         self.now = now or (lambda: datetime.now(VN))
         self.poll_seconds, self.lease_seconds, self.cache_seconds = poll_seconds, lease_seconds, cache_seconds
+        # Seconds a user-initiated lookup may queue behind another fetch instead of failing at once.
+        # 0 keeps the old fail-fast behaviour; the per-source spacing and budget are never relaxed.
+        self.max_wait_seconds = max_wait_seconds
         self._lock, self._fetch_lock = threading.RLock(), threading.Lock()
         self._viewers = {}
         self._overlays = OrderedDict()
@@ -173,6 +177,25 @@ class LiveCoordinator:
     def has_live_viewers(self):
         with self._lock:return bool(self._watched_open())
 
+    def _acquire_fetch(self, end):
+        """Take the single fetch slot; queue for it until `end` when waiting is enabled."""
+        if self._fetch_lock.acquire(blocking=False):
+            return True
+        remaining = end - self.clock()
+        return remaining > 0 and self._fetch_lock.acquire(timeout=remaining)
+
+    def _wait_turn(self, end):
+        """Reserve a source call, sleeping until the existing spacing allows it, never past `end`."""
+        while True:
+            try:
+                with self._lock:
+                    self._reserve()
+                return
+            except BusyError as exc:
+                if self.clock() + exc.wait_seconds > end:
+                    raise
+                time.sleep(exc.wait_seconds)
+
     def _previous(self, symbol):
         data = self.repository.get_ohlcv(symbol, 250)
         bars = data.get("bars", [])
@@ -233,9 +256,13 @@ class LiveCoordinator:
         with self._lock:self._last_accepted=accepted_symbols
         return accepted
 
-    def _request(self, symbols, automatic):
+    def _request(self, symbols, automatic, wait_until=None):
+        if wait_until is None:
+            with self._lock:
+                self._reserve()
+        else:
+            self._wait_turn(wait_until)
         with self._lock:
-            self._reserve()
             self._last_accepted=set()
         try:
             result = (self.fetch if automatic else self.manual_fetch)(symbols)
@@ -292,18 +319,27 @@ class LiveCoordinator:
         finally:
             self._fetch_lock.release()
 
-    def refresh(self, symbol):
-        stock_symbol(symbol)
+    def _fresh_overlay(self, symbol):
         with self._lock:
             entry = self._overlays.get(symbol)
-            if entry and self.clock() - entry[3] < self.cache_seconds and datetime.fromisoformat(entry[2]).astimezone(VN).date() == self.now().astimezone(VN).date():
-                return self.read(symbol, 250)
-            if self._watched_open():
+            return bool(entry and self.clock() - entry[3] < self.cache_seconds
+                        and datetime.fromisoformat(entry[2]).astimezone(VN).date() == self.now().astimezone(VN).date())
+
+    def refresh(self, symbol):
+        stock_symbol(symbol)
+        if self._fresh_overlay(symbol):
+            return self.read(symbol, 250)
+        with self._lock:
+            if self._watched_open():  # live viewers keep priority over a manual refresh
                 raise BusyError(self.poll_seconds)
-        if not self._fetch_lock.acquire(blocking=False):
+        end = self.clock() + self.max_wait_seconds
+        if not self._acquire_fetch(end):
             raise BusyError(self.poll_seconds)
         try:
-            self._request([symbol], False)
+            # Another request may have just fetched this symbol while we queued.
+            if self._fresh_overlay(symbol):
+                return self.read(symbol, 250)
+            self._request([symbol], False, wait_until=end if self.max_wait_seconds else None)
             return self.read(symbol, 250)
         finally:
             self._fetch_lock.release()
@@ -330,19 +366,53 @@ class LiveCoordinator:
         from .history import INDEX_NAMES, normalize_index_history
         if symbol not in INDEX_NAMES:
             raise ValueError("Chỉ số không được hỗ trợ.")
-        with self._lock:
-            cached = self._histories.get(symbol)
-            if cached and self.clock() - cached[1] < self.cache_seconds:
-                return cached[0]
+        def fresh():
+            with self._lock:
+                cached = self._histories.get(symbol)
+                return cached[0] if cached and self.clock() - cached[1] < self.cache_seconds else None
+        if (hit := fresh()) is not None:
+            return hit
         if self.history_fetch is None:
             raise RuntimeError("Chưa bật nguồn lịch sử chỉ số.")
-        raw=self.history_for_refresh(symbol)
-        try:result=normalize_index_history(symbol,raw)
-        except Exception:
-            self._failed()
-            raise RuntimeError('Chưa lấy được lịch sử chỉ số; vui lòng thử lại sau.') from None
-        with self._lock:self._histories[symbol]=(result,self.clock())
-        return result
+        end = self.clock() + self.max_wait_seconds
+        if not self._acquire_fetch(end):
+            raise BusyError(self.poll_seconds)
+        try:
+            if (hit := fresh()) is not None:
+                return hit
+            if self.max_wait_seconds:
+                self._wait_turn(end)
+            else:
+                with self._lock:
+                    self._reserve()
+            try:
+                result = normalize_index_history(symbol, self.history_fetch(symbol))
+            except Exception:
+                with self._lock:
+                    self._next_attempt = max(self._next_attempt, self.clock() + 5)
+                raise RuntimeError("Chưa lấy được lịch sử chỉ số; vui lòng thử lại sau.") from None
+            with self._lock:
+                self._histories[symbol] = (result, self.clock())
+            try:self.repository.write_index_history(symbol,result)
+            except OSError:
+                import logging
+                logging.getLogger(__name__).warning('index_history_cache_write_failed')
+            return result
+        finally:
+            self._fetch_lock.release()
+
+    def saved_index_history(self,symbol):
+        from .history import INDEX_NAMES
+        if symbol not in INDEX_NAMES:raise ValueError('Chỉ số không được hỗ trợ.')
+        with self._lock:cached=self._histories.get(symbol)
+        if cached:
+            data=cached[0];fresh=0<=self.clock()-cached[1]<self.cache_seconds
+        else:
+            data=self.repository.read_index_history(symbol);fresh=False
+            if data.get('fetched_at'):
+                age=(self.now()-datetime.fromisoformat(data['fetched_at'])).total_seconds()
+                fresh=0<=age<self.cache_seconds
+        return {**data,'refresh':{'needed':not fresh,'stale':not fresh}}
 
     def stock_history(self, symbol):
         from .history import normalize_history
@@ -357,14 +427,31 @@ class LiveCoordinator:
                 pass
         if self.history_fetch is None:
             raise RuntimeError("Chưa bật nguồn lịch sử.")
-        raw=self.history_for_refresh(symbol)
+        end = self.clock() + self.max_wait_seconds
+        if not self._acquire_fetch(end):
+            raise BusyError(self.poll_seconds)
         try:
-            data=normalize_history(symbol,raw)
-            self.repository.runtime_write(symbol,'history',data)
-        except Exception:
-            self._failed()
-            raise RuntimeError('Chưa tải được lịch sử; giữ biểu đồ đã có và thử lại sau.') from None
-        return self.read(symbol,250)
+            if self.max_wait_seconds:
+                recheck = self.repository.runtime_read(symbol, "history")
+                try:
+                    if recheck and 0 <= (self.now() - datetime.fromisoformat(recheck["fetched_at"])).total_seconds() < self.cache_seconds:
+                        return self.read(symbol, 250)
+                except (KeyError, TypeError, ValueError):
+                    pass
+                self._wait_turn(end)
+            else:
+                with self._lock:
+                    self._reserve()
+            try:
+                data = normalize_history(symbol, self.history_fetch(symbol))
+                self.repository.runtime_write(symbol, "history", data)
+            except Exception:
+                with self._lock:
+                    self._next_attempt = max(self._next_attempt, self.clock() + 5)
+                raise RuntimeError("Chưa tải được lịch sử; giữ biểu đồ đã có và thử lại sau.") from None
+            return self.read(symbol, 250)
+        finally:
+            self._fetch_lock.release()
 
     def read(self, symbol, limit, *, repository=None):
         data = (repository or self.repository).get_ohlcv(symbol, 250)
@@ -386,13 +473,22 @@ class LiveCoordinator:
                     pass
             supported = bool(re.fullmatch(r"[A-Z]{3}", symbol))
             is_open = self._is_open(symbol) if supported else False
+            session_status = ("OPEN" if is_open else
+                              self.gate.status(entry[0]["exchange"] if entry else None)
+                              if isinstance(self.gate, SessionGate) else "UNKNOWN_CALENDAR")
+            session_reason = {
+                "CLOSED": "Ngoài giờ cập nhật giá tự động theo lịch đã cấu hình. Bạn vẫn có thể bấm Làm mới biểu đồ.",
+                "BREAK": "Đang nghỉ giữa phiên theo lịch đã cấu hình. Bạn vẫn có thể bấm Làm mới biểu đồ.",
+                "HALTED": "Lịch đã cấu hình ghi nhận tạm ngừng giao dịch; đang giữ dữ liệu đã lưu. Bạn vẫn có thể bấm Làm mới biểu đồ.",
+            }.get(session_status, "Chưa xác nhận được lịch giao dịch; tạm dừng tự cập nhật giá. Bạn vẫn có thể bấm Làm mới biểu đồ.")
             stale = not valid or self.clock() - entry[3] > 2 * self.poll_seconds or bool(self._failures)
             reason = ("Chỉ số hiện đọc dữ liệu đã lưu; chưa tham gia nhóm cập nhật cổ phiếu." if not supported
-                      else "Ngoài phiên hoặc lịch chưa xác nhận; dùng nút Làm mới giá/tin." if not is_open
+                      else session_reason if not is_open
                       else "Chưa đăng ký tự cập nhật; đang hiển thị dữ liệu gần nhất." if not active
                       else "Nguồn có thể trễ; giữ giá hợp lệ gần nhất." if stale
                       else "Đang tự cập nhật giá theo nhóm mã.")
             live = {"enabled": supported, "active": active and is_open, "stale": stale,
+                    "session_status": session_status,
                     "last_success_at": entry[2] if valid else None,
                     "poll_seconds": self.poll_seconds, "reason": reason}
         ordered = sorted(bars.values(), key=lambda bar: bar["date"])

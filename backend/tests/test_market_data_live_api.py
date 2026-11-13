@@ -118,6 +118,22 @@ class LiveApiTests(unittest.TestCase):
         self.assertEqual(self.client.get("/api/market-data/indices/FPT/ohlcv").status_code, 400)
         self.assertEqual(self.client.get("/api/market-data/indices/UPCOMINDEX/ohlcv").status_code, 429)
 
+    def test_researcher_can_load_stock_chart_with_shared_quota_but_cannot_force_write(self):
+        from backend.tests.test_market_indices import snapshot
+        self.app.dependency_overrides[current_principal] = lambda: Principal(uuid4(), frozenset({"RESEARCHER"}))
+        raw = snapshot(); raw['fetched_at'] = self.now.isoformat()
+        self.service.history_fetch = Mock(return_value=raw)
+        url = '/api/market-data/stocks/ICT/history'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.json()['bars']), 1)
+        self.assertEqual(self.client.get(url).status_code, 200)
+        self.service.history_fetch.assert_called_once_with('ICT')
+        blocked = self.client.get('/api/market-data/stocks/FPT/history')
+        self.assertEqual(blocked.status_code, 429)
+        self.assertGreater(int(blocked.headers['retry-after']), 0)
+        self.assertEqual(self.client.post(url).status_code, 403)
+
 
 class InfrastructureTests(unittest.TestCase):
     def test_calendar_lunch_weekend_and_unknown_year_fail_closed(self):

@@ -87,7 +87,7 @@ export default function CompanyDetailPage() {
       onChecked: (stamp) => { setMarketCheckedAt(stamp); setMarketError(null); },
       onSettled: () => setMarketLoading(false),
       onHistoryLoading: setHistoryLoading,
-      canPrepare: canManageData,
+      canPrepare: true,
     });
   }, [ticker, activeTab, dataRetryCount, loading, error, company, canManageData]);
 
@@ -195,12 +195,17 @@ export default function CompanyDetailPage() {
                       <Stat label="Sàn" value={company.exchange || "—"} />
                       <Stat label="Kỳ dữ liệu mẫu" value="FY2025" />
                     </div>
-                    <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Nến ngày đã lưu; trong giờ giao dịch có thể thêm nến tạm từ KBS · Giá chưa điều chỉnh theo sự kiện doanh nghiệp">
+                    <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Nến ngày đã lưu; trong giờ giao dịch có thể thêm nến tạm từ KBS · Giá chưa điều chỉnh theo sự kiện doanh nghiệp"
+                      action={<Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs"
+                        disabled={marketLoading || historyLoading || refreshingPrice}
+                        onClick={() => setDataRetryCount((count) => count + 1)}>
+                        {marketLoading || historyLoading ? "Đang tải…" : "Làm mới biểu đồ"}
+                      </Button>}>
                       <p className="mb-3 text-xs text-slate-500">Tự kiểm tra khi đang xem · Nguồn cập nhật: {localTime(marketData?.fetched_at)} · Kiểm tra lần cuối: {localTime(marketCheckedAt)}</p>
                       {historyLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang tải lịch sử khoảng 6 tháng…</p>}
-                      {marketData?.live && <p role="status" className={`mb-3 text-xs ${marketData.live.stale ? "text-amber-700" : "text-slate-500"}`}>{marketData.live.reason}</p>}
+                      {marketData?.live && <p role="status" className={`mb-3 text-xs ${['CLOSED', 'BREAK'].includes(marketData.live.session_status) ? "text-slate-500" : marketData.live.stale ? "text-amber-700" : "text-slate-500"}`}>{marketData.live.reason}</p>}
                       {marketError && marketData && <p role="status" className="mb-3 text-xs text-amber-700">{marketError}. Đang giữ biểu đồ đã tải.</p>}
-                      {marketLoading && !marketData ? <Skeleton rows={3} /> : marketError && !marketData ? <ErrorState message={marketError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : <PriceHistory data={marketData} />}
+                      {(marketLoading && !marketData) || (historyLoading && !marketData?.bars?.length) ? <Skeleton rows={3} /> : marketError && !marketData?.bars?.length ? <ErrorState message={marketError} onRetry={() => setDataRetryCount((count) => count + 1)} /> : <PriceHistory data={marketData} />}
                     </Card>
                     <Card title={`Phân tích giá & dòng tiền · ${ticker}`} description="Tính từ dữ liệu đã lưu trong cơ sở dữ liệu · Thiếu dữ liệu được ghi rõ, không ước tính">
                       <PriceAnalysis key={ticker} symbol={ticker} />

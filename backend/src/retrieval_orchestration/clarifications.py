@@ -124,8 +124,17 @@ def apply_clarification(decision, previous, today):
         keys = (scope.get('_metric_candidates') or keys)[:8]
         field = 'metric'
         message = f'Bạn muốn xem loại {label} nào?'
+    elif reason == 'AMBIGUOUS_COMPANY_MEMBERS':
+        field, label = 'membership', 'nhóm nhân sự'
+        keys = ['TEXT:Thành viên hội đồng quản trị', 'TEXT:Ban điều hành']
+        message = decision['message']
+    elif reason == 'SCOPE_TOO_LARGE' and len(scope.get('companies') or []) > 1:
+        field, label = 'company', 'mã cổ phiếu'
+        keys = ['TEXT:' + company for company in dict.fromkeys(scope['companies'])][:8]
+        message = 'Bạn muốn tra cứu mã nào trước? Chọn một mã dưới đây để tiếp tục.'
     elif reason == 'MISSING_COMPANY':
-        field, label, keys = 'company', 'công ty', ['TEXT:FPT', 'TEXT:SSI', 'TEXT:VCB']
+        from .retrieval_flow.intent import TICKERS
+        field, label, keys = 'company', 'công ty', ['TEXT:' + symbol for symbol in TICKERS]
         message = decision['message']
     elif reason in ('MISSING_PERIOD', 'MISSING_YEAR'):
         field, label = 'period', 'kỳ hoặc năm báo cáo'

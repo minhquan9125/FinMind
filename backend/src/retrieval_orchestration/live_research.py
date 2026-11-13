@@ -26,7 +26,7 @@ from .retrieval_flow.conversation import _resolve_relative_periods, STOP_WORDS
 from .retrieval_flow.intent import _fold, _period, TICKERS
 from .clarifications import apply_clarification, metric_group, resolve_reply
 from .market_dialogue import article_query, calendar_day, news_reference
-from .input_normalization import normalize_user_text
+from .input_normalization import normalize_user_text, conversational_words, registered_symbols
 from .market_dates import price_date_request, relative_market_range, temporal_reply
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
@@ -96,15 +96,18 @@ def _market_intent(norm, context, today):
     if query:
         return {'kind': 'NEWS', 'day': None, 'action': 'SUMMARY' if 'tom tat' in norm else 'DETAIL', 'query': query}
     news = bool(re.search(r'\b(?:tin tuc|tin|news)\b', norm))
-    short_price = re.search(r'\bgia\s+([a-z]{3})\b', norm)
-    price = bool(re.search(r'\b(?:gia co phieu|thi gia|gia hien tai|gia hom nay)\b', norm)
+    # "đánh giá" (evaluate) is not "giá" (price).
+    priced = re.sub(r'\bdanh gia\b', ' ', norm)
+    short_price = re.search(r'\bgia\s+([a-z]{3})\b', priced)
+    price = bool(re.search(r'\b(?:gia co phieu|thi gia|gia hien tai|gia hom nay|gia ra sao|gia bao nhieu|gia nhu (?:the )?nao)\b', priced)
                  or (short_price and short_price[1] not in {'von', 'tri', 'cua', 'ban', 'mua', 'dat', 'san', 'cao', 'day', 'goc'}))
     causal = bool(re.search(
         r'\b(?:vi sao|tai sao|nguyen nhan|do dau|ly do|tac dong|anh huong|he qua)\b', norm
     ))
+    explicit_trend = bool(re.search(r'\bky thuat\b|\bxu huong (?:gia|co phieu|ma)\b', norm))
     trend = bool(re.search(
-        r'\b(?:dao nay|gan day|tinh hinh|khoi sac|trien vong|bien dong|the nao|ky thuat)\b', norm
-    ) or re.search(r'\bxu huong (?:gia|co phieu|ma)\b', norm) or (
+        r'\b(?:dao nay|gan day|tinh hinh|khoi sac|trien vong|bien dong|the nao)\b', norm
+    ) or explicit_trend or (
         # "phan tich fpt" asks for an analysis, not a metric; questions about a report's content stay with reports.
         re.search(r'\b(?:phan tich|danh gia|manh hay yeu|manh yeu)\b', norm)
         and not re.search(r'\b(?:bctc|bctn|bao cao|thuong nien|thuyet minh|chien luoc|tai lieu)\b', norm)
@@ -133,10 +136,9 @@ def _market_intent(norm, context, today):
                               and re.search(r'\b(?:phan tich|danh gia|tinh hinh|suc khoe|manh hay yeu|manh yeu)\b', norm)
                               and not re.search(r'\b(?:bctn|thuong nien|thuyet minh|chien luoc|tai lieu)\b', norm))
     # shortcut: dated questions stay with reports, since health covers the latest period only; add a period to lift it.
-    if ((trend or financial_analysis) and not financial
+    if ((trend or financial_analysis) and not financial and (not price or causal or explicit_trend)
             and not re.search(r'\b(?:nam|quy|thang)\s+\d|\b(?:19|20|21)\d{2}\b', norm)):
-        focus = ('FINANCIAL' if financial_analysis else
-                 'TECHNICAL' if re.search(r'\b(?:ky thuat|xu huong)\b', norm) else 'STOCK')
+        focus = ('FINANCIAL' if financial_analysis else 'TECHNICAL' if explicit_trend else 'STOCK')
         return {'kind': 'ANALYSIS', 'day': today.isoformat(), 'action': 'ANALYSIS', 'focus': focus}
     company_selection = (norm.isdigit() and
                          str(((context or {}).get('_clarification_state') or {}).get('id', '')).startswith('company:'))
@@ -169,6 +171,48 @@ def _market_intent(norm, context, today):
     return None
 
 
+def annual_requested(norm, context=None):
+    if re.search(r'\b(?:bctn|bao cao thuong nien)\b', norm):
+        return True
+    return bool((context or {}).get('source_type') == 'BCTN'
+                and (context or {}).get('_annual_question')
+                and not re.search(r'\b(?:bctc|bao cao tai chinh|tin tuc|news|gia co phieu|thi gia)\b', norm))
+
+
+def annual_scope(text, norm, scope, previous):
+    """Report year is independent of publication dates and metric row codes."""
+    previous = previous or {}
+    anchors = re.findall(r'\b(?:bctn|bao cao thuong nien)(?:\s+(?:cua\s+)?[a-z]{3})?(?:\s+nam)?\s+((?:19|20|21)\d{2})\b', norm)
+    years = list(dict.fromkeys(anchors or re.findall(r'\b(?:19|20|21)\d{2}\b', norm)))
+    if re.search(r'\b(?:so sanh|doi chieu)\b', norm):
+        years = list(dict.fromkeys(re.findall(r'\b(?:19|20|21)\d{2}\b', norm)))
+    followup = bool(re.fullmatch(r'(?:con\s+)?(?:nam\s+)?(?:19|20|21)\d{2}[ ?!.]*', norm)
+                    or (not previous.get('companies') and previous.get('_annual_question')
+                        and re.fullmatch(r'[a-z]{3}[ ?!.]*', norm)))
+    query = previous.get('_annual_question') if followup else text
+    if followup and years:
+        for old in previous.get('periods') or []:
+            if re.fullmatch(r'\d{4}', old):
+                query = re.sub(r'\b'+old+r'\b', years[0], query or text)
+    for key in list(scope):
+        if key.startswith('_pending_') or key in ('_metric_candidates', 'publisher', '_market_request',
+                '_hybrid_context', 'graph_relations', 'graph_time_scope', 'measure_basis'):
+            scope.pop(key, None)
+    scope.update(source_type='BCTN', topic='ANNUAL_REPORT_TOPIC', metric_code=None,
+                 reporting_entity='UNKNOWN', _annual_question=query or text)
+    prior_years = [p for p in previous.get('periods') or [] if re.fullmatch(r'\d{4}', p)]
+    latest = bool(re.search(r'\b(?:moi nhat|gan nhat|ky moi nhat)\b', norm))
+    scope['periods'] = years or (prior_years if not latest and previous.get('source_type') == 'BCTN'
+        and (not previous.get('companies') or scope.get('companies') == previous.get('companies')) else []) or ['LATEST_AVAILABLE_PERIOD']
+    if not scope.get('companies'):
+        return 'ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn tra báo cáo thường niên của công ty nào?'
+    if len(scope['companies']) > 2 or len(scope['periods']) > 2:
+        return 'ASK_CLARIFICATION', 'SCOPE_TOO_LARGE', 'Vui lòng hỏi tối đa hai công ty và hai năm báo cáo mỗi lần.'
+    if len(years) > 1 and not re.search(r'\b(?:so sanh|doi chieu)\b', norm):
+        return 'ASK_CLARIFICATION', 'AMBIGUOUS_ANNUAL_YEAR', 'Bạn muốn tra báo cáo thường niên của năm nào?'
+    return 'SEARCH', 'ANNUAL_REPORT_SCOPE_READY', 'Đang tìm nội dung trong báo cáo thường niên đúng công ty và năm báo cáo.'
+
+
 def analyze_live(text, context=None, *, today=None):
     """Resolve explicit slots and follow-ups without generating values or SQL."""
     today = today or datetime.now(timezone(timedelta(hours=7))).date()
@@ -179,7 +223,18 @@ def analyze_live(text, context=None, *, today=None):
     market_request = _market_intent(_fold(text), context, today) or raw_market_request
     norm = _fold(_resolve_relative_periods(text, today))
     norm = resolve_reply(norm, context)
+    annual = annual_requested(norm, context)
+    from .hybrid_router.intent_policy import PROFILE_TERMS, contains
+    if annual or contains(norm, PROFILE_TERMS):
+        market_request = None
     scope = copy.deepcopy(context or {})
+    language = conversational_words()
+    registered = registered_symbols()
+    # Repair scopes persisted by the old heuristic (e.g. 'như' -> NHU).
+    # A real catalog ticker that overlaps a language word remains available.
+    if scope.get('companies'):
+        scope['companies'] = [symbol for symbol in scope['companies']
+                              if symbol in registered or symbol.lower() not in language]
     decision = {'decision': 'ASK_CLARIFICATION', 'scope': scope, 'message': '', 'reason_code': 'MISSING_SCOPE'}
     def finish(branch, reason, message):
         decision.update(decision=branch, reason_code=reason, message=message)
@@ -191,13 +246,11 @@ def analyze_live(text, context=None, *, today=None):
         return finish('RESOLVE_REFERENCE', 'SOURCE_REFERENCE', 'Xem nguồn của câu trả lời trước.')
     if re.search(r'\b(?:nen mua|nen ban|gia muc tieu|tu van dau tu|should i buy|should i sell)\b', norm):
         return finish('UNSUPPORTED', 'UNSUPPORTED_ADVICE', 'Chức năng này không cung cấp tư vấn mua bán.')
-    if not market_request and re.search(r'\b(?:gia co phieu|gia dong cua|gia mo cua|khoi luong giao dich|gia muc tieu)\b', norm):
+    if not annual and not market_request and re.search(r'\b(?:gia co phieu|gia dong cua|gia mo cua|khoi luong giao dich|gia muc tieu)\b', norm):
         return finish('UNSUPPORTED', 'PRICE_QUERY_SEPARATE', 'Câu hỏi giá cần luồng tra cứu giá có cấu trúc; chat này hiện tìm báo cáo tài chính và tin tức.')
-    if re.search(r'\b(?:bctn|bao cao thuong nien)\b', norm):
-        return finish('UNSUPPORTED', 'SOURCE_NOT_AVAILABLE', 'Luồng chat này chưa có nguồn PDF báo cáo thường niên để xác minh.')
     quarters = re.findall(r'\b(?:quy|q)\s*(\d+)\s*[/ -]?\s*((?:19|20|21)\d{2})\b', norm)
     canonical_quarters = re.findall(r'\b((?:19|20|21)\d{2})-q(\d+)\b', norm)
-    if (any(not 1 <= int(q) <= 4 for q, _ in quarters)
+    if not annual and (any(not 1 <= int(q) <= 4 for q, _ in quarters)
             or any(not 1 <= int(q) <= 4 for _, q in canonical_quarters)
             or len(set(quarters)) > 1 or len(set(canonical_quarters)) > 1):
         scope.pop('periods', None)
@@ -206,7 +259,7 @@ def analyze_live(text, context=None, *, today=None):
         return finish('ASK_CLARIFICATION', 'AMBIGUOUS_PERIOD', 'Bạn muốn xem quý nào? Vui lòng nêu một kỳ hợp lệ từ quý 1 đến quý 4.')
     companies = [s for s in (*TICKERS, 'SSI', 'CTR', 'VNM', 'MSN', 'NLG') if re.search(r'\b'+s.lower()+r'\b', norm)]
     reserved = {'BCTC', 'BCTN', 'YTD', 'VND', 'USD', 'EUR', 'UBND', 'CTCP', 'TNHH',
-                'NEWS', 'CASH', 'TOTAL', 'CAFEF', 'LNST', 'LNTT'}
+                'NEWS', 'CASH', 'TOTAL', 'CAFEF', 'LNST', 'LNTT', 'HDQT', 'HDTV', 'BKS', 'BGD', 'BDH'}
     companies += [s for s in re.findall(r'\b[A-Z]{3,5}\b', text) if s not in reserved and s not in companies]
     ticker_stop = STOP_WORDS | {'mot', 'cuoi', 'thuan', 'nhat', 'rieng', 'hop', 'ngan', 'dai',
                               'thu', 'phi', 'tuc', 'cafef', 'news', 'trong', 'tai', 'ky',
@@ -234,11 +287,14 @@ def analyze_live(text, context=None, *, today=None):
         token = norm.split()[-1]
         if token not in ticker_stop | {'sau', 'nam', 'nay', 'cho', 'xem', 'moi'}:
             companies = [token.upper()]
+    companies = [symbol for symbol in companies if symbol in registered or symbol.lower() not in language]
     if companies:
         scope['companies'] = list(dict.fromkeys(companies))
         if (context or {}).get('companies') and scope['companies'] != context['companies']:
             scope.pop('_pending_publisher', None)
             scope.pop('_pending_reporting_entity', None)
+    if annual:
+        return finish(*annual_scope(text, norm, scope, context))
     if market_request:
         scope = {key: value for key, value in scope.items() if key in ('companies', '_clarification_state')}
         decision['scope'] = scope
@@ -292,14 +348,27 @@ def analyze_live(text, context=None, *, today=None):
     if 'NON_CURRENT_LIABILITIES' in found and 'CURRENT_LIABILITIES' in found:
         found.remove('CURRENT_LIABILITIES')
     multiple = len(found) > 1
-    company_profile = bool(re.search(
-        r'\b(?:linh vuc|thuoc nganh|nganh gi|nganh nao|hoat dong trong|kinh doanh gi)\b', norm
-    ))
+    from .hybrid_router.intent_policy import PROFILE_TERMS, contains
+    company_profile = contains(norm, PROFILE_TERMS) or bool(re.search(r'\bthong tin\b', norm) and scope.get('companies'))
     comparison = bool(re.search(r'\b(?:so sanh|doi chieu|khac nhau|hon kem)\b', norm))
     overall_comparison = comparison and not found and not profit_requested
     relationship_lookup = bool(re.search(
-        r'\b(?:chu tich|ceo|tong giam doc|giam doc|lanh dao|co dong|so huu)\b', norm
+        r'\b(?:chu tich|ceo|tong giam doc|giam doc|lanh dao|co dong|so huu|'
+        r'hoi dong|hdqt|hdtv|ban dieu hanh|ban kiem soat|nhan su quan ly)\b', norm
     ))
+    ambiguous_members = bool(re.search(r'\bthanh vien\b', norm)) or bool(scope.get('_pending_membership'))
+    if ambiguous_members and not relationship_lookup and not found and not profit_requested:
+        for key in ('_pending_metric', '_metric_candidates', '_pending_quarter', '_pending_ytd',
+                    '_pending_reporting_entity', '_pending_publisher', 'measure_basis', 'publisher'):
+            scope.pop(key, None)
+        scope.update(source_type='NEWS', metric_code=None, periods=[], reporting_entity='UNKNOWN',
+                     topic='MEMBERSHIP_SELECTION', _pending_membership=True)
+        if not scope.get('companies'):
+            return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn xem thành viên của công ty nào?')
+        return finish('ASK_CLARIFICATION', 'AMBIGUOUS_COMPANY_MEMBERS',
+                      'Bạn muốn xem thành viên hội đồng quản trị hay ban điều hành?')
+    if relationship_lookup or found or profit_requested:
+        scope.pop('_pending_membership', None)
     event_impact = bool(
         re.search(r'\b(?:bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b', norm)
         and re.search(r'\b(?:co phieu|anh huong|tac dong|he qua)\b', norm)
@@ -315,14 +384,19 @@ def analyze_live(text, context=None, *, today=None):
     news = bool(
         re.search(r'\b(?:tin tuc|tin|news)\b', norm)
         or qualitative_document
+        or (relationship_lookup and not found and not profit_requested)
         or (scope.get('source_type') == 'NEWS' and publishers)
     )
     if event_impact:
         scope.update(companies=[], source_type='NEWS', metric_code=None,
                      topic='EVENT_IMPACT', reporting_entity='UNKNOWN')
         scope.pop('_pending_metric', None)
-    elif company_profile:
+    elif company_profile and not overall_comparison:
         scope.update(source_type='COMPANY_PROFILE', metric_code=None, topic='COMPANY_PROFILE')
+        scope['periods'] = []
+        for key in list(scope):
+            if key.startswith(('_pending_', '_person_', '_source_', '_hybrid_')):
+                scope.pop(key, None)
         scope.pop('_pending_metric', None)
     elif overall_comparison:
         scope.update(source_type='COMPANY_OVERVIEW', metric_code=None, topic='OVERALL_COMPARISON')
@@ -331,6 +405,11 @@ def analyze_live(text, context=None, *, today=None):
         scope.update(source_type='NEWS', metric_code=None, reporting_entity='UNKNOWN')
         if relationship_lookup:
             scope['topic'] = 'RELATIONSHIP_LOOKUP'
+            for key in ('_pending_quarter', '_pending_ytd', '_pending_reporting_entity',
+                        'measure_basis', '_metric_candidates'):
+                scope.pop(key, None)
+            # A new organizational question does not inherit an unrelated report period.
+            scope.pop('periods', None)
         scope.pop('_pending_metric', None)
         if len(publishers) > 1:
             scope.pop('publisher', None)
@@ -493,12 +572,13 @@ class DenseEvidenceRetriever:
         from ..vector_retrieval.backend import RetrievalError
         self._hybrid_instance()
         cache = self.cache_dir / ('corpus-' + self.corpus_version_id + '.json')
-        doc_type = doc_type or ('NEWS' if scope['source_type'] == 'NEWS' else 'FINANCIAL_STATEMENT')
+        doc_type = doc_type or ('ANNUAL_REPORT' if scope['source_type'] == 'BCTN' else
+                               'NEWS' if scope['source_type'] == 'NEWS' else 'FINANCIAL_STATEMENT')
         params = dict(company=company, period=period,
                       doc_type=doc_type,
                       publisher=scope.get('publisher'),
                       published_date=period if doc_type == 'NEWS' and period and len(period) == 10 else None,
-                      exact_period=doc_type == 'FINANCIAL_STATEMENT' and period is not None,
+                      exact_period=doc_type in ('FINANCIAL_STATEMENT', 'ANNUAL_REPORT') and period is not None,
                       top_k=20, candidates=100)
         rebuildable = ('CACHE_BUILD_REQUIRED', 'CACHE_EXPIRED', 'CACHE_STALE', 'CACHE_VERSION_MISMATCH')
         try:
@@ -518,6 +598,43 @@ class DenseEvidenceRetriever:
                      source_sha256=item['source_sha256'], title=item['title'],
                      locator_json=item['locator'], score=item['rrf_score']) for item in result['results']]
 
+    async def _annual_latest_year(self, company, corpus):
+        async with self.pool.acquire() as conn:
+            async with conn.transaction(readonly=True, isolation='repeatable_read'):
+                return await conn.fetchval('''SELECT max(t.locator_json->>'reporting_year')
+                    FROM text_chunks t JOIN documents d USING(document_id)
+                    JOIN corpus_documents cd ON cd.document_id=d.document_id AND cd.document_hash=d.sha256
+                    LEFT JOIN companies c USING(company_id)
+                    WHERE cd.corpus_version_id=$1::uuid AND t.index_version_id=$2::uuid
+                      AND t.superseded_at IS NULL AND d.doc_type='ANNUAL_REPORT'
+                      AND coalesce(c.symbol,t.locator_json->>'symbol')=$3
+                      AND t.locator_json->>'reporting_year' ~ '^(19|20|21)[0-9]{2}$' ''',
+                    uuid.UUID(str(self.corpus_version_id)), uuid.UUID(str(corpus['index_version_id'])), company)
+
+    async def _annual_rows(self, rows, corpus, company, year):
+        from ..documents.annual_source_reader import read_annual_chunk
+        from ..documents.shared_source import read_release_root
+        verified, cache = [], {}
+        async with self.pool.acquire() as conn:
+            async with conn.transaction(readonly=True, isolation='repeatable_read'):
+                for row in rows[:5]:
+                    source = await read_annual_chunk(conn, row['chunk_id'], self.corpus_version_id, cache)
+                    loc = source['locator']
+                    actual_year = str(loc.get('reporting_year', ''))
+                    if (source['index_version_id'] != str(corpus['index_version_id'])
+                            or loc.get('symbol') != company or actual_year != year):
+                        raise ReconstructionError('ANNUAL_SCOPE_MISMATCH', 'Annual source differs from requested company/report year')
+                    root = await read_release_root(conn, source['index_version_id'], cache)
+                    member = next((m for m in root['sources'] if m['source_table'] == loc['source_table']
+                                   and m['source_id'] == loc['source_id']), None)
+                    if member is None:
+                        raise ReconstructionError('SOURCE_MISSING', 'Annual source absent from release')
+                    verified.append({**row, 'text': source['chunk_text'], 'document_id': source['document_id'],
+                        'content_hash': source['content_hash'], 'source_sha256': member['sha256'],
+                        'locator_json': loc, 'title': source['title'], 'source_url': source['source_url'],
+                        'source_verified': True})
+        return verified
+
     async def retrieve(self, question, scope):
         corpus = await self._corpus()
         vector = await self._embed(question) if self.backend == 'dense' else None
@@ -526,6 +643,7 @@ class DenseEvidenceRetriever:
         doc_type = (
             'COMPANY_PROFILE'
             if source_type in ('COMPANY_PROFILE', 'COMPANY_OVERVIEW')
+            else 'ANNUAL_REPORT' if source_type == 'BCTN'
             else 'NEWS' if source_type == 'NEWS' else 'FINANCIAL_STATEMENT'
         )
         companies = scope['companies'] or ([None] if scope.get('topic') == 'EVENT_IMPACT' else [])
@@ -534,6 +652,11 @@ class DenseEvidenceRetriever:
             for period in periods:
                 latest_period = period == 'LATEST_AVAILABLE_PERIOD'
                 lookup_period = None if latest_period else period
+                if doc_type == 'ANNUAL_REPORT' and latest_period:
+                    lookup_period = await self._annual_latest_year(company, corpus)
+                    if not lookup_period:
+                        items = []
+                        break
                 if self.backend == 'hybrid':
                     rows = await self._hybrid_rows(question, scope, corpus, company, lookup_period, doc_type)
                 else:
@@ -542,8 +665,10 @@ class DenseEvidenceRetriever:
                         company_symbol=company, period=lookup_period,
                         doc_type=doc_type,
                         corpus_version_id=self.corpus_version_id,
-                        exact_period=doc_type == 'FINANCIAL_STATEMENT' and not latest_period,
+                        exact_period=doc_type in ('FINANCIAL_STATEMENT', 'ANNUAL_REPORT') and lookup_period is not None,
                     )
+                if doc_type == 'ANNUAL_REPORT':
+                    rows = await self._annual_rows(rows, corpus, company, lookup_period)
                 matching = []
                 for row in rows:
                     if scope.get('_admin_source_url'):
@@ -575,8 +700,9 @@ class DenseEvidenceRetriever:
                         raise ReconstructionError('HASH_MISMATCH', 'Indexed text differs')
                     matching.append(dict(
                         evidence_id=row['chunk_id'], chunk_id=row['chunk_id'], source_id=row['document_id'],
-                        source_type='BCTC' if doc_type == 'FINANCIAL_STATEMENT' else doc_type,
+                        source_type='BCTN' if doc_type == 'ANNUAL_REPORT' else 'BCTC' if doc_type == 'FINANCIAL_STATEMENT' else doc_type,
                         title=row['title'], passage=text,
+                        source_url=row.get('source_url'),
                         source_sha256=row['source_sha256'].strip(), content_sha256=content_hash,
                         source_verified=True, locator=row['locator_json'],
                         score={'type': 'RRF' if self.backend == 'hybrid' else 'COSINE_SIMILARITY', 'value': float(row['score'])},
@@ -595,24 +721,29 @@ class DenseEvidenceRetriever:
 
 
 def citation_title(citation, scope):
-    """Feed citations (news, price, stored-price trend) keep their own title; others are reports."""
-    if citation.get('source_type') in ('NEWS', 'PRICE', 'PRICE_TREND', 'FINANCIAL_HEALTH'):
-        return citation.get('title') or 'Nguồn thị trường'
-    return 'Báo cáo tài chính '+', '.join(scope.get('companies', []))
+    """Feed citations (news, price, FinMind trend/health) and annual reports keep their own title."""
+    kind = citation.get('source_type')
+    if kind in ('NEWS', 'PRICE', 'PRICE_TREND', 'FINANCIAL_HEALTH', 'BCTN'):
+        return citation.get('title') or ('Báo cáo thường niên' if kind == 'BCTN' else 'Nguồn thị trường')
+    return 'Báo cáo tài chính ' + ', '.join(scope.get('companies', []))
 
 
 class LiveResearchService:
     execution_mode = 'LIVE'
 
-    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None):
+    def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None, hybrid_router=None,
+                 limits_source=None):
         self.retriever, self.provider = retriever, provider
         self.market = market
         self.admin_news = admin_news
+        self.hybrid_router = hybrid_router
         self.limits = limits or Limits.load()
-        self.budget = Budget(self.limits)  # the latest question's budget, for reporting only
+        self.budget = Budget(self.limits)
+        # Optional callable returning the limits to use for the next request (admin overrides).
+        self.limits_source = limits_source
         self.retrieval_timeout = retrieval_timeout
 
-    def _source_reference(self, result, previous_result, budget):
+    def _source_reference(self, result, previous_result):
         previous = previous_result or {}
         old_scope = previous.get('scope', {})
         same_scope = all(result['scope'].get(key) == old_scope.get(key)
@@ -658,18 +789,67 @@ class LiveResearchService:
                       answering={'status': 'DRAFT_READY', 'reason_code': 'SOURCE_REFERENCE',
                                  'message': 'Nguồn đã lưu của câu trả lời trước; không tìm kiếm hoặc sinh lại.',
                                  'draft': '\n\n'.join(parts), 'claims': [], 'citations': citations,
-                                 'manifest': manifest, 'cautions': [], 'budget': budget.snapshot(),
+                                 'manifest': manifest, 'cautions': [], 'budget': self.budget.snapshot(),
                                  'trace': [{'event': 'saved_source_reference'}]})
         return result
 
+    def _current_limits(self):
+        """Limits for this request: the admin overrides when configured, else the fixed ones."""
+        if self.limits_source is None:
+            return self.limits
+        try:
+            limits = self.limits_source()
+        except Exception:
+            return self.limits
+        provider = self.provider
+        from ..b1_answering.providers.gemini import GeminiProvider
+        if isinstance(provider, GeminiProvider):
+            provider.limits = limits           # keeps the HTTP timeout in step with the limits
+        return limits
+
     async def answer(self, question, session_id, context=None, *, previous_result=None, today=None):
+        # The API caches this service. Never attach request usage to that shared
+        # instance or reset it in place: concurrent users would share/reset it.
+        # A shallow request worker keeps pooled retrievers/providers reusable,
+        # while every route and fallback in this turn receives the same budget.
+        worker = copy.copy(self)
+        worker.limits = self._current_limits()
+        worker.budget = Budget(worker.limits)
+        result = await worker._answer_turn(question, session_id, context,
+            previous_result=previous_result, today=today)
+        if isinstance(result.get('answering'), dict):
+            result['answering']['budget_scope'] = 'REQUEST'
+        return result
+
+    async def _answer_turn(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
-        # One budget per question: a process-wide one ran out after ~13 answers until restart.
-        budget = self.budget = Budget(self.limits)
-        if self.admin_news is not None:
+        norm = _fold(interpreted).strip(' .?!')
+        if norm in ('chao', 'chao ban', 'xin chao', 'hello', 'hi'):
+            return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                b1_decision='GREETING', status='GREETING', reason_code='GREETING',
+                message='Chào bạn! Bạn có thể hỏi thông tin công ty, nhân sự, báo cáo hoặc tin tức của doanh nghiệp.',
+                scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
+        from .hybrid_router.intent_policy import PROFILE_TERMS, contains
+        explicit_profile = contains(norm, PROFILE_TERMS) or bool(re.search(r'\bthong tin\s+(?:cong ty\s+)?(?:' + '|'.join(s.lower() for s in registered_symbols()) + r')\b', norm))
+        bare_company = norm.upper() in (set(TICKERS) | set(registered_symbols()))
+        prior = (context or {}).get('_hybrid_context') or context or {}
+        pending_company = not prior.get('companies') and bool(prior.get('position_code') or prior.get('person_name') or prior.get('metric_code') or prior.get('_pending_metric'))
+        if explicit_profile or (bare_company and not pending_company):
+            # A new company topic must not inherit an old person/role/financial filter.
+            context = {'companies': list((context or {}).get('companies') or [])}
+            if bare_company:
+                interpreted = 'Thông tin công ty ' + norm.upper()
+        if self.hybrid_router is not None:
+            routed = await self.hybrid_router.answer(interpreted, context, provider=self.provider,
+                limits=self.limits, budget=self.budget)
+            if routed is not None:
+                return routed
+        if self.admin_news is not None and not annual_requested(_fold(interpreted), context) and not (explicit_profile or bare_company):
             indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
-                                                   limits=self.limits, budget=budget)
-            if indexed is not None: return indexed
+                                                   limits=self.limits, budget=self.budget)
+            # A processed-article lookup that finds nothing must not shadow the general news path
+            # (e.g. "tin tức FPT mới nhất" matches an FPT article only by ticker, not by content).
+            if indexed is not None and indexed.get('status') != 'NO_DATA': return indexed
         prior_scope = (previous_result or {}).get('scope') or {}
         # Recover only legacy, topic-less clarification state; never override an
         # explicitly active financial/news question or a different company.
@@ -687,12 +867,15 @@ class LiveResearchService:
                       clarification_options=decision.get('clarification_options', []),
                       evidence_pack=None, errors=[])
         if decision['decision'] == 'RESOLVE_REFERENCE':
-            return self._source_reference(result, previous_result, budget)
+            return self._source_reference(result, previous_result)
         if decision['decision'] == 'MARKET_LOOKUP':
-            return await self._answer_market(interpreted, result, previous_result, budget)
+            return await self._answer_market(interpreted, result, previous_result)
         if decision['decision'] != 'SEARCH': return result
-        label = METRIC_ALIASES.get(scope.get('metric_code'), ('tin tức',))[0]
-        query = f"{label} {' '.join(scope['companies'])} {' '.join(scope['periods'])}. {interpreted}"
+        label = ('Hồ sơ doanh nghiệp' if scope.get('source_type') == 'COMPANY_PROFILE'
+                 else METRIC_ALIASES.get(scope.get('metric_code'), ('tin tức',))[0])
+        query = (f"Báo cáo thường niên {' '.join(scope['companies'])}. {scope.get('_annual_question', interpreted)}"
+                 if scope.get('source_type') == 'BCTN' else
+                 f"{label} {' '.join(scope['companies'])} {' '.join(scope['periods'])}. {interpreted}")
         try:
             pack = await asyncio.wait_for(self.retriever.retrieve(query, scope), self.retrieval_timeout)
             if not isinstance(pack, dict) or not isinstance(pack.get('items'), list):
@@ -701,6 +884,13 @@ class LiveResearchService:
                 result.update(status='NO_DATA', reason_code='NO_DATA', message='Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.')
                 return result
             prepare_evidence(pack)
+            if scope.get('source_type') == 'BCTN':
+                requested = [p for p in scope['periods'] if p != 'LATEST_AVAILABLE_PERIOD']
+                if any(i.get('source_type') != 'BCTN' or i['locator'].get('symbol') not in scope['companies']
+                       or not re.fullmatch(r'(?:19|20|21)\d{2}', str(i['locator'].get('reporting_year')))
+                       or (requested and str(i['locator']['reporting_year']) not in requested) for i in pack['items']):
+                    raise ReconstructionError('ANNUAL_SCOPE_MISMATCH', 'Annual evidence differs from requested scope')
+                scope['periods'] = sorted({str(i['locator']['reporting_year']) for i in pack['items']})
         except TimeoutError:
             result.update(status='SYSTEM_UNAVAILABLE', reason_code='RETRIEVAL_TIMEOUT', message='Tìm kiếm tạm thời quá thời gian chờ. Vui lòng thử lại.')
             return result
@@ -713,9 +903,9 @@ class LiveResearchService:
         result.update(status='EVIDENCE_READY', reason_code='EVIDENCE_READY', query_id=pack['query_id'],
                       evidence_pack=pack, retrieval_backend=pack.get('retrieval_backend', 'dense'),
                       message='Đã tìm được nguồn ứng viên có nội dung khớp hash.')
-        return await complete_retrieval(query, result, provider=self.provider, limits=self.limits, budget=budget)
+        return await complete_retrieval(query, result, provider=self.provider, limits=self.limits, budget=self.budget)
 
-    async def _answer_market(self, question, result, previous_result, budget):
+    async def _answer_market(self, question, result, previous_result=None):
         if self.market is None:
             result.update(status='SYSTEM_UNAVAILABLE', reason_code='MARKET_NOT_CONFIGURED',
                           message='Dịch vụ giá và tin mới chưa được kết nối. Vui lòng thử lại sau.')
@@ -750,7 +940,7 @@ class LiveResearchService:
                              'config_version': self.limits.version, 'retrieval_backend': 'shared_market_feed',
                              'components': {'gemini': False, 'citation_binding': True,
                                             'b3_evidence_gate': False, 'b3_answer_verification': False}},
-                'budget': budget.snapshot(), 'trace': [{'event': 'shared_market_quote'}]})
+                'budget': self.budget.snapshot(), 'trace': [{'event': 'shared_market_quote'}]})
             return result
         if (result['scope'].get('_market_request') or {}).get('action', 'LIST') == 'LIST':
             citations = []
@@ -766,9 +956,9 @@ class LiveResearchService:
                 'draft': '\n\n'.join(lines), 'claims': [], 'citations': citations,
                 'manifest': {'mode': 'B1', 'response_mode': 'NEWS_LIST',
                              'components': {'gemini': False, 'b3_evidence_gate': False, 'b3_answer_verification': False}},
-                'budget': budget.snapshot(), 'trace': [{'event': 'shared_news_listing'}]}
+                'budget': self.budget.snapshot(), 'trace': [{'event': 'shared_news_listing'}]}
             return result
-        out = await complete_retrieval(question, result, provider=self.provider, limits=self.limits, budget=budget)
+        out = await complete_retrieval(question, result, provider=self.provider, limits=self.limits, budget=self.budget)
         if out.get('answering', {}).get('status') == 'DRAFT_READY':
             for item in evidence.values():
                 published = item.get('snapshot', {}).get('published_at')

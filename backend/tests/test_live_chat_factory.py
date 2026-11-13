@@ -19,6 +19,9 @@ def test_router_defaults_to_corpus_hybrid_without_gemini(monkeypatch):
         assert store.engine.provider is None
         assert store.engine.retriever.backend == 'hybrid'
         assert store.engine.retriever.corpus_version_id == settings.research_corpus_version_id
+        assert store.engine.hybrid_router is not None
+        assert store.engine.hybrid_router.content_retriever is store.engine.retriever
+        assert store.engine.hybrid_router.graph_retriever.retriever is store.engine.retriever
     finally:
         api.get_store.cache_clear()
 

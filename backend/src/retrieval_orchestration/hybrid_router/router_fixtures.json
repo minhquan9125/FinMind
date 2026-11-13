@@ -2265,7 +2265,7 @@
     {
       "id": "RF07",
       "question": "Công ty FPT hoạt động trong lĩnh vực gì?",
-      "expected_route": "GRAPH",
+      "expected_route": "VECTOR",
       "expected_companies": ["FPT"],
       "tags": ["refactor", "static_info"]
     },

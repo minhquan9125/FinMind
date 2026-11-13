@@ -12,6 +12,7 @@ from urllib.parse import urljoin, urlparse
 import requests
 
 from .admin_ingestion import source_attachments, auto_review_reasons
+from .job_recovery import job_worker
 
 
 @lru_cache
@@ -119,6 +120,9 @@ def extract_file(path, work):
 
 def extract_revision(queue, ident, aid, actor):
     record = queue.article(aid)
+    if record['replacement_article_id']:
+        child=queue.article(record['replacement_article_id'])
+        return child['id'],len((child['payload'].get('extraction') or {}).get('files',[]))
     files = sources(record['payload'])
     if not files: raise ValueError('NO_PDF_OR_IMAGE_SOURCE')
     if len(files) > 10: raise ValueError('OCR_EXCEEDS_10_FILES')
@@ -142,6 +146,7 @@ def extract_revision(queue, ident, aid, actor):
     return queue.save_ocr_revision(ident, aid, payload, actor), len(files)
 
 
+@job_worker
 def ocr_job(queue, ident):
     try:
         job = queue.get_job(ident)
@@ -154,6 +159,7 @@ def ocr_job(queue, ident):
             queue.update_job(ident, 'FAILED', error=str(exc)[:500])
 
 
+@job_worker
 def recheck_job(queue, ident):
     """Recheck held sources, extracting missing image/PDF text before review."""
     job = queue.get_job(ident)

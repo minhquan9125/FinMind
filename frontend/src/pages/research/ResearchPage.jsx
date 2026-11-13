@@ -310,10 +310,10 @@ export default function ResearchPage() {
         ),
       note:
         metric.key === "evidenceStatus"
-          ? "Đối chiếu chéo BCTC"
+          ? "Mẫu minh họa"
           : val1 !== "—" && val2 !== "—"
-          ? "Đã chuẩn hóa đơn vị"
-          : "Cần bổ sung nguồn",
+          ? "Số liệu mẫu"
+          : "Chưa có dữ liệu mẫu",
     };
   });
 
@@ -407,7 +407,7 @@ export default function ResearchPage() {
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
-                  ⚖️ Bảng so sánh
+                  ⚖️ Bảng so sánh (mẫu)
                 </button>
               </div>
 
@@ -486,16 +486,16 @@ export default function ResearchPage() {
 
             {/* Evidence Drawer Quick Link */}
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                <span>✓</span>
-                <span>2 nguồn kiểm chứng sẵn sàng</span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">
+                <span>!</span>
+                <span>Dữ liệu mẫu · chưa phải số liệu thật</span>
               </span>
               <button
                 type="button"
                 onClick={() => handleOpenSource("1")}
                 className="text-xs text-blue-600 font-semibold hover:underline"
               >
-                Xem bằng chứng →
+                Xem nguồn mẫu →
               </button>
             </div>
           </div>
@@ -515,6 +515,10 @@ export default function ResearchPage() {
             {/* TAB 2: BẢNG SO SÁNH CHỈ TIÊU (COMPARE VIEW) */}
             {activeTab === "compare" && (
               <div className="space-y-6">
+                <p role="note" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-xs text-amber-900">
+                  Bảng này chỉ minh họa giao diện với <strong>dữ liệu mẫu</strong>, chưa lấy từ báo cáo thật.
+                  Để tra số liệu thật có nguồn, dùng tab <strong>Hỏi FinMind</strong>.
+                </p>
                 <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                     <div>

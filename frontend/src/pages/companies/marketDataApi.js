@@ -1,22 +1,23 @@
 // Read saved history with the shared live-price overlay. Change the URL when served
 // by the main FastAPI app or Supabase-backed repository; the UI does not change.
 import { retryRateLimited } from "./companyData.js";
-import { authorizedHeaders } from "../../shared/api/authorization.js";
+import { authorizedFetch } from "../../shared/api/authorization.js";
 const apiBase = (import.meta.env?.VITE_MARKET_DATA_API_URL || "").replace(/\/$/, "");
 
 async function readJson(path, signal) {
   let response;
   try {
-    response = await fetch(`${apiBase}${path}`, { signal, headers: authorizedHeaders() });
+    response = await authorizedFetch(`${apiBase}${path}`, { signal });
   } catch (error) {
-    if (error.name === "AbortError") throw error;
+    if (error.name === "AbortError" || error.status === 401) throw error;
     throw new Error("Không kết nối được API dữ liệu. Hãy kiểm tra backend đang chạy.");
   }
   if (!response.ok) {
     let body = null;
     try { body = await response.json(); } catch { /* API may return an empty error body. */ }
     // Callers tell "no stored data" (404) from sign-in (401) and outage (503) by status.
-    throw Object.assign(new Error(body?.detail || `API trả lỗi ${response.status}.`), { status: response.status });
+    throw Object.assign(new Error(response.status === 403 ? "Tài khoản không có quyền xem dữ liệu thị trường."
+      : body?.detail || `API trả lỗi ${response.status}.`), { status: response.status });
   }
   return response.json();
 }
@@ -29,13 +30,13 @@ export function getPriceAnalysis(symbol, asOf, signal) {
 export async function getSavedOhlcv(symbol, signal, etag) {
   let response;
   try {
-    response = await fetch(`${apiBase}/api/market-data/stocks/${encodeURIComponent(symbol)}/ohlcv?limit=250`, {
+    response = await authorizedFetch(`${apiBase}/api/market-data/stocks/${encodeURIComponent(symbol)}/ohlcv?limit=250`, {
       signal,
       cache: "no-store",
-      headers: authorizedHeaders(etag ? { "If-None-Match": etag } : {}),
+      headers: etag ? { "If-None-Match": etag } : {},
     });
   } catch (error) {
-    if (error.name === "AbortError") throw error;
+    if (error.name === "AbortError" || error.status === 401) throw error;
     throw new Error("Không kết nối được API dữ liệu. Hãy kiểm tra backend đang chạy.");
   }
   if (response.status === 304) return { unchanged: true, etag };
@@ -55,13 +56,13 @@ export function getMarketNews(signal) {
   return readJson("/api/market-data/news?limit=10", signal);
 }
 
-export function getIndexHistory(symbol, signal) {
-  return readJson(`/api/market-data/indices/${encodeURIComponent(symbol)}/ohlcv`, signal);
+export function getIndexHistory(symbol, signal, { cached = false } = {}) {
+  return liveRequest(`/indices/${encodeURIComponent(symbol)}/ohlcv${cached ? "?cached=true" : ""}`, { signal });
 }
 
 async function liveRequest(path, options) {
-  const response = await fetch(`${apiBase}/api/market-data${path}`, {
-    cache: "no-store", ...options, headers: authorizedHeaders(options?.headers),
+  const response = await authorizedFetch(`${apiBase}/api/market-data${path}`, {
+    cache: "no-store", ...options,
   });
   if (!response.ok) {
     const body = await response.json().catch(() => null);
@@ -89,7 +90,7 @@ export function refreshLivePrice(symbol) {
 }
 
 export function loadStockHistory(symbol, signal) {
-  return retryRateLimited(() => liveRequest(`/stocks/${encodeURIComponent(symbol)}/history`, { method: "POST", signal }), signal);
+  return retryRateLimited(() => liveRequest(`/stocks/${encodeURIComponent(symbol)}/history`, { signal }), signal);
 }
 
 export function refreshCompanyNews(symbol, signal) {

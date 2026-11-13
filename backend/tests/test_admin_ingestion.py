@@ -192,6 +192,34 @@ def test_recheck_only_updates_old_automatic_decisions(tmp_path):
     assert len(q.article(ids[1])['reviews'])==1
 
 
+def test_complete_text_with_illustrative_photo_can_be_indexed(tmp_path):
+    from src.documents.admin_ingestion import auto_review_reasons
+    q=Queue(tmp_path);j,_=q.create_job('CRAWL','operator')
+    row=qualified_article();row['raw']['content']='<p>Article text</p><img src="https://fireant.vn/photo.jpg">'
+    assert 'OCR_REQUIRED' not in auto_review_reasons(row)
+    crawl_job(q,j,lambda limit:([row],[]))
+    aid=q.articles()[0]['id'];q.review(aid,'APPROVED','Đã xem văn bản và ảnh minh họa.','admin')
+    ident,_=q.create_job('INDEX','admin',article_ids=[aid])
+    assert q.get_job(ident)['status']=='QUEUED'
+
+
+def test_infographic_and_image_only_still_need_ocr_and_legacy_approval_can_recover(tmp_path):
+    from src.documents.admin_ingestion import auto_review_reasons
+    q=Queue(tmp_path);j,_=q.create_job('CRAWL','operator')
+    row=qualified_article();row['raw'].update(content='<img src="https://fireant.vn/scan.jpg">',isInfographic=True)
+    assert 'OCR_REQUIRED' in auto_review_reasons(row)
+    q.update_job(j,'RUNNING');aid,_=q.save_article(j,row);q.update_job(j,'COMPLETED')
+    with q.connect() as conn: conn.execute("UPDATE articles SET status='APPROVED' WHERE id=?",(aid,))
+    with pytest.raises(ValueError,match='SOURCE_TEXT_EXTRACTION_REQUIRED'):
+        q.create_job('INDEX','admin',article_ids=[aid])
+    ocr,_=q.create_job('OCR','admin',article_ids=[aid]);q.update_job(ocr,'RUNNING')
+    extracted={**row,'extraction':{'parent_article_id':aid,'requires_review':True,'files':[]}}
+    revision=q.save_ocr_revision(ocr,aid,extracted,'admin')
+    assert q.article(aid)['status']=='SUPERSEDED'
+    assert q.article(revision)['status']=='PENDING'
+    assert 'OCR_REVIEW_REQUIRED' in q.article(revision)['quality_reasons']
+
+
 @pytest.fixture
 def client(tmp_path, monkeypatch):
     monkeypatch.setattr(api, 'get_settings', lambda: SimpleNamespace(admin_ingestion_directory=tmp_path, admin_ingest_database_url=None))

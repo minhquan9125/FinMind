@@ -313,11 +313,11 @@ def test_comparison_accepts_two_companies_and_defaults_to_overall_when_metric_mi
 def test_company_profile_does_not_require_a_reporting_period(question):
     decision = DecisionEngine(StubPredictor((0.9, 0.1))).decide(question)
     assert decision.decision == "SEARCH"
-    assert decision.route == "GRAPH"
+    assert decision.route == "VECTOR"
     assert decision.scope.companies == ["FPT"]
     assert decision.scope.periods == []
     assert decision.scope.topic == "COMPANY_PROFILE"
-    assert decision.tasks[0].operation == "find_relationships"
+    assert decision.tasks[0].operation == "find_company_profile"
 
 
 def test_missing_period_defaults_to_latest_available_period():
@@ -360,7 +360,7 @@ def test_ownership_and_recent_trends_use_their_respective_sources(question, rout
     ((0.9, 0.9), "BOTH", ["g1", "v1"]),
 ])
 def test_locked_threshold_selects_route_and_plan(scores, route, task_ids):
-    decision = DecisionEngine(StubPredictor(scores)).decide("Thông tin FPT năm 2025?")
+    decision = DecisionEngine(StubPredictor(scores)).decide("FPT năm 2025?")
     assert decision.route == route
     assert [task.id for task in decision.tasks] == task_ids
 
@@ -408,7 +408,7 @@ def test_both_workflow_order_coverage_and_failures(case_id, status, expected_cal
 def test_shadow_records_prediction_without_changing_live_or_calling_adapters():
     engine = DecisionEngine(StubPredictor((0.9, 0.9)))
     record = engine.shadow(
-        "Thông tin FPT năm 2025?",
+        "FPT năm 2025?",
         request_id="request-shadow-001",
         live_decision="SEARCH",
         live_route="VECTOR",

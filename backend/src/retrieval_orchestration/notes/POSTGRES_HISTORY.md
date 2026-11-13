@@ -33,14 +33,19 @@ Chạy từ gốc repository bằng môi trường backend đã cấu hình DATA
 Kiểm tra chỉ đọc:
 
 ```powershell
-backend\.venv\Scripts\python.exe -X utf8 backend/scripts/migrate_chat_history.py
+.\.venv\Scripts\python.exe -X utf8 backend/scripts/migrate_chat_history.py
 ```
 
 Cho DB mới, áp dụng trước khi khởi động bản backend mới:
 
 ```powershell
-backend\.venv\Scripts\python.exe -X utf8 backend/scripts/migrate_chat_history.py --apply-schema --import-json
+.\.venv\Scripts\python.exe -X utf8 backend/scripts/migrate_chat_history.py --apply-schema
 ```
+
+Dùng `.venv` tại gốc FinMind như README. Chỉ thêm `--import-json` khi thật sự
+cần nhập lịch sử cũ đã được kiểm tra; clone mới không cần nhập lịch sử của máy
+người khác. Đây chỉ là migration lịch sử Chat, không tạo toàn bộ schema nghiệp
+vụ, corpus hoặc embedding cho DB rỗng.
 
 Migration additive `supabase/migrations/20261024000100_research_chat_history.sql` chỉ tạo schema/role/bảng/policy mới và quyền cho tài khoản DB chạy migration. Journal/checksum và advisory transaction lock chống sửa/race migration. Không sửa file migration đã áp dụng; thay đổi schema tiếp theo phải dùng migration mới. Nếu runtime DATABASE_URL dùng login khác migration, admin cần cấp membership role này cho đúng login đó; không mở role thànhLOGIN/BYPASSRLS hoặc exposeDBcredential ra frontend.
 

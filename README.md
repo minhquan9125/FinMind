@@ -10,6 +10,11 @@ Lịch sử web chat hiện lưu trên Supabase, tách theo tài khoản bằng 
 
 ### 1. Chuẩn bị máy
 
+Muốn chạy đầy đủ Chat dữ liệu chung, Graph Viewer và admin OCR, làm thêm
+[checklist clone mới](docs/sprint4/LOCAL_DEMO.md#máy-mới-sau-khi-merge).
+Hướng dẫn bên dưới đủ cho khởi động cơ bản; DB/corpus, Neo4j, SDK giá và công cụ
+OCR là các phụ thuộc riêng, không tự được tạo khi clone Git.
+
 - Cài Python **3.12**, bật **Add python.exe to PATH** khi cài.
 - Cài Node.js LTS có npm và Git. Mở lại terminal sau khi cài.
 - Nhận cấu hình Supabase và Google OAuth của nhóm qua kênh riêng.

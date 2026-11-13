@@ -24,10 +24,19 @@ def test_explicit_ytd_is_not_silently_treated_as_standalone_quarter():
 
 @pytest.mark.parametrize('question', ['tổng tài sản FPT 2026-Q5',
     'tổng tài sản FPT quý 2/2026 hay quý 3/2026', 'nợ của FPT',
-    'giá đóng cửa FPT quý 2/2026', 'báo cáo thường niên FPT 2025'])
+    'giá đóng cửa FPT quý 2/2026'])
 def test_explicit_unsupported_or_ambiguous_request_does_not_reuse_old_metric(question):
     previous = analyze_live('tiền và tương đương tiền FPT quý 2/2026')['scope']
     assert analyze_live(question, previous)['decision'] != 'SEARCH'
+
+
+def test_supported_annual_source_drops_previous_financial_metric():
+    previous = analyze_live('tiền và tương đương tiền FPT quý 2/2026')['scope']
+    value = analyze_live('báo cáo thường niên FPT 2025', previous)
+    assert value['decision'] == 'SEARCH'
+    assert value['scope']['source_type'] == 'BCTN'
+    assert value['scope']['periods'] == ['2025']
+    assert value['scope']['metric_code'] is None
 
 
 @pytest.mark.parametrize('question', ['tổng tài sản vic năm 2025', 'tiền và tương đương tiền của vic quý 2/2026'])
@@ -47,8 +56,8 @@ def test_explicit_news_publisher_is_retained_as_scope_not_just_query_words():
     assert decision['scope']['periods'] == ['2026-09-29']
 
 
-def test_live_budget_is_per_question_and_still_enforced_inside_one():
-    # Decision 13/11: one budget per question (a shared one blocked every user after ~13 answers).
+def test_live_budget_is_issued_per_question_not_per_service_lifetime():
+    # See docs/graph/WEB_CHAT_REQUEST_BUDGET.md: each question gets its own budget.
     async def run():
         provider = Provider()
         engine = LiveResearchService(Retriever(), provider=provider,
@@ -57,6 +66,7 @@ def test_live_budget_is_per_question_and_still_enforced_inside_one():
         await engine.answer('/moi', 's')
         result = await engine.answer('tiền và tương đương tiền FPT quý 2/2026', 's')
         assert result['answering']['status'] == 'DRAFT_READY'
+        assert result['answering']['budget_scope'] == 'REQUEST'
         assert provider.calls == 2
         small = replace(Limits.load(), max_total_tokens=Limits.load().max_output_tokens + 4)
         result = await LiveResearchService(Retriever(), provider=provider, limits=small).answer(

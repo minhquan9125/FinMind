@@ -94,7 +94,8 @@ async def market_lifespan(app):
                                   poll_seconds=float(os.getenv("FINMIND_LIVE_POLL_SECONDS", "5")),
                                   background_seconds=60,
                                   budget_path=root/'.agent-state/market-live/request-budget.json',
-                                  snapshot_sink=repository.save_daily_quote)
+                                  snapshot_sink=repository.save_daily_quote,
+                                  max_wait_seconds=float(os.getenv("FINMIND_LIVE_MAX_WAIT_SECONDS", "8")))
         app.state.live = service
         app.state.activity_persistence={'saved':0,'rejected':0,'failed':0,'error':None,'tracked':[],
             'configured_symbols':list(BACKGROUND_SYMBOLS),'missing_symbols':list(BACKGROUND_SYMBOLS),

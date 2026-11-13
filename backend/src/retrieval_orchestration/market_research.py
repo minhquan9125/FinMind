@@ -235,7 +235,9 @@ class MarketResearch:
         known_scale = (not historical and live is not None and payload.get('source') == 'vnstock_kbs'
                        and bar.get('source') == 'vnstock_kbs' and overlay.get('last_success_at')
                        and overlay['last_success_at'] == payload.get('fetched_at'))
-        historical_unit = (bar.get('price_unit') if historical and bar.get('source') == 'vnstock_kbs'
+        # Saved bars declare their own unit; trust it for history and for the stale fallback after a
+        # failed live fetch (the answer then names the trading day and is flagged stale).
+        historical_unit = (bar.get('price_unit') if (historical or failed) and bar.get('source') == 'vnstock_kbs'
                            and payload.get('source') == 'vnstock_kbs' else None)
         if not known_scale and historical_unit not in ('thousand_vnd', 'VND'):
             return dict(status='NO_DATA', reason_code='PRICE_UNIT_UNVERIFIED',

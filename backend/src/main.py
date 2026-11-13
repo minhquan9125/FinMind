@@ -65,6 +65,7 @@ async def warmup_research(app: FastAPI):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await connect()
+    app.state.admin_news_queue_root=get_settings().admin_ingestion_directory
     research_chat.get_store.cache_clear()
     try:
         async with market_lifespan(app):
@@ -72,11 +73,27 @@ async def lifespan(app: FastAPI):
             # Serve auth and health without waiting for model/cache initialization.
             # The chat shares this task's model lock and hybrid cache lock.
             warmup_task = asyncio.create_task(warmup_research(app), name='research-warmup')
+            async def recover_queue():
+                from .documents.admin_ingestion import Queue
+                from .documents.job_recovery import recover_stopped_jobs
+                while True:
+                    try:
+                        await asyncio.to_thread(recover_stopped_jobs,Queue(get_settings().admin_ingestion_directory))
+                    except Exception:logger.warning('admin_job_recovery_unavailable')
+                    await asyncio.sleep(15)
+            recovery_task=asyncio.create_task(recover_queue(),name='admin-job-recovery')
+            from .core.db import get_pool
+            from .documents.shared_serving import refresh_loop
+            serving_task=asyncio.create_task(refresh_loop(get_pool),name='shared-serving-corpus')
             app.state.research_warmup_task = warmup_task
             await asyncio.sleep(0)
             try:
                 yield
             finally:
+                for background in (recovery_task, serving_task):
+                    background.cancel()
+                    try:await background
+                    except asyncio.CancelledError:pass
                 # Keep the event loop and DB pool alive until bounded warmup finishes.
                 await warmup_task
     finally:

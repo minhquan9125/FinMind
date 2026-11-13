@@ -92,6 +92,16 @@ test("a live KBS overlay still reuses the underlying ENTRADE history", async () 
   s.stop();
 });
 
+test('a company without saved bars automatically fills its chart on opening', async () => {
+  let prepared = false;
+  const s = setup({ prepare: async () => { prepared = true; },
+    read: async () => ({ etag: prepared ? 'loaded' : 'empty', data: { symbol: 'ICT', bars: prepared ? [{ date: '2026-11-06', close: '20' }] : [] } }) });
+  await flush();
+  assert.equal(s.calls.result[0].bars.length, 0);
+  assert.equal(s.calls.result.at(-1).bars.length, 1);
+  s.stop();
+});
+
 test("history failure keeps saved chart and reports missing history", async () => {
   const s = setup({ prepare: async () => { throw new Error("source unavailable"); } });
   await flush();

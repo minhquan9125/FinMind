@@ -6,6 +6,7 @@ This is not an unrestricted spellchecker or an LLM call.
 """
 from functools import lru_cache
 import json
+import os
 from pathlib import Path
 import re
 
@@ -25,6 +26,30 @@ def _rules():
     vocabulary.update(word for variants in data['contextual_aliases'].values() for phrase in variants for word in phrase.split())
     vocabulary.update(word for phrase in data.get('domain_phrases', []) for word in phrase.split())
     return data, vocabulary
+
+
+def conversational_words():
+    """Words cannot become tickers merely by being next to 'giá' after folding."""
+    data, vocabulary = _rules()
+    return vocabulary | set(data['aliases'])
+
+
+@lru_cache(maxsize=4)
+def _registry_symbols(path, modified, size):
+    try:
+        rows = json.loads(Path(path).read_text('utf-8'))
+        return frozenset(alias.upper() for row in rows for alias in (row.get('ticker_aliases') or []))
+    except (OSError, ValueError, TypeError, AttributeError):
+        return frozenset(KNOWN_TICKERS)
+
+
+def registered_symbols():
+    path = Path(os.getenv('SPRINT4_COMPANY_REGISTRY') or Path(__file__).resolve().parents[1] / 'sprint4_runtime/company.registry.json')
+    try:
+        stat = path.stat()
+        return _registry_symbols(str(path), stat.st_mtime_ns, stat.st_size)
+    except OSError:
+        return frozenset(KNOWN_TICKERS)
 
 
 def _shape(word):
@@ -80,6 +105,13 @@ def normalize_user_text(text, context=None):
         if any(c.isdigit() for c in token): return token
         key = _fold(token)
         decoded = _telex(key, vocabulary)
+        # Conversational shorthand after a pronoun is a verb, not a ticker
+        # just because the next word is "giá". Preserve explicit uppercase IDs.
+        if (token == token.lower() and key in ('bik', 'bit') and prefix
+                and prefix[-1] in ('toi', 'minh', 't', 'em', 'ban', 'anh', 'chi', 'cho')):
+            prefix.append('biet')
+            del prefix[:-5]
+            return 'biet'
         if key in ('k', 'tr', 'b', 'm') and re.search(r'\d[\d.,]*\s*$', text[:match.start()]):
             return token  # money/quantity suffix, not conversational shorthand
         explicit_ticker = len(token) == 3 and token.isascii() and token.isalpha() and (

@@ -70,9 +70,9 @@ class TestGeminiProvider(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(out['answering']['manifest']['components']['b3_answer_verification'])
 
     async def test_bad_status_and_single_retry_only_for_overload(self):
-        # 5xx overload gets exactly one retry; quota (429) and other statuses never retry.
+        # Overload (502/503/504) gets exactly one retry; quota (429), 500 and other statuses never retry.
         for status, code, tries in [(429, 'RATE_LIMITED', 1), (302, 'GEMINI_UNAVAILABLE', 1),
-                                    (400, 'GEMINI_UNAVAILABLE', 1), (500, 'GEMINI_UNAVAILABLE', 2),
+                                    (400, 'GEMINI_UNAVAILABLE', 1), (500, 'GEMINI_UNAVAILABLE', 1),
                                     (503, 'GEMINI_UNAVAILABLE', 2)]:
             calls = []
             def handler(req):

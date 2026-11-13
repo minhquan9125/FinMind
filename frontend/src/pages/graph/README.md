@@ -25,6 +25,14 @@ open.status=UNAVAILABLE hoặc URL không an toàn: không tạo link, vẫn gi�
 
 Rỗng, nhiều kết quả/truncated, 409, 503/504, không tìm thấy thực thể/quan hệ và lỗi nguồn có trạng thái riêng. 401/403 chuyển về đăng nhập. Không lấy fixture thay lỗi API.
 
+## Cập nhật dữ liệu và phiên nhân sự
+
+Viewer đọc dữ liệu trực tiếp qua API, không ghim ID phiên hoặc danh sách quan hệ. Khi trang đang hiển thị, tự tải lại mỗi 30 giây và khi quay lại tab; có nút **Cập nhật ngay**. Giữ nguyên phiên, root, bộ lọc và node đang mở. Phiên READY mới xuất hiện trong danh sách để người dùng chọn; không tự đổi phiên của deep link. Fixture không chạy polling.
+
+Ngoài GraphVersion/GraphEntity/GRAPH_RELATION, hỗ trợ contract `person-source-claims-v1` của SourcePersonGraphVersion/SourcePersonOccurrence/SourcePersonCompany/SOURCE_PERSON_CLAIM. Phiên này có nhãn **Nhân sự theo nguồn**, scope `SOURCE_DOCUMENT_ASSERTIONS`, review `SOURCE_REVIEWED`; giữ từng lần xuất hiện của tên người, chiều quan hệ và cả sáu loại chức vụ/sự kiện. Không gộp danh tính hoặc khẳng định đương nhiệm. Năm báo cáo không thay ngày hiệu lực; truy vấn có bộ lọc ngày không nhận các claim chưa xác nhận ngày.
+
+Người nạp dữ liệu cần ghi vào cùng Neo4j mà backend kết nối, đúng một trong các contract trên và công bố phiên `READY`. Push code lên Git không tự nạp dữ liệu vào DB. Schema/contract mới cần bổ sung adapter; thêm bản ghi hoặc phiên theo contract đã hỗ trợ không cần nối lại giao diện.
+
 ## Fixture và kiểm tra
 
 Chỉ bật fixture khi có query:

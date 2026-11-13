@@ -17,6 +17,7 @@ from .ranking import BM25Index, TOKENIZER_VERSION, rrf, tokenize
 
 MAX_CACHE_BYTES = 64 * 1024 * 1024
 CACHE_BATCH_SIZE = 500
+CACHE_VERSION = 4  # Annual years, including JSON-text DB locators; rejects v2/v3 caches.
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
 JOIN = '''FROM public.text_chunks t
 JOIN public.index_versions i USING(index_version_id)
@@ -30,10 +31,11 @@ FIELDS = '''t.chunk_id::text,t.document_id::text,t.chunk_index,t.page_number AS 
 t.index_version_id::text,i.chunker_version,d.sha256 AS source_sha256,
 t.content_hash,t.locator_json,d.title,d.doc_type,
 coalesce(c.symbol,t.locator_json->>'symbol') AS company,
-coalesce(p.period_code,t.locator_json->>'period_code',
-t.locator_json->>'published_at',t.locator_json->>'section') AS period,
+CASE WHEN d.doc_type='ANNUAL_REPORT' THEN t.locator_json->>'reporting_year'
+ELSE coalesce(p.period_code,t.locator_json->>'period_code',
+t.locator_json->>'published_at',t.locator_json->>'section') END AS period,
 coalesce(t.locator_json->>'published_at',t.locator_json->>'period_code',t.locator_json->>'section') AS published_date,
-coalesce(t.locator_json->>'url','') AS source_url,n.symbols'''
+coalesce(t.locator_json->>'url',d.source_url,'') AS source_url,n.symbols'''
 ROWS = 'SELECT ' + FIELDS + ' ' + JOIN
 FINGERPRINT = '''SELECT md5(coalesce(string_agg(md5(ROW(t.chunk_id,t.content_hash,
 t.locator_json,d.company_id,d.period_id,d.doc_type,c.symbol,p.period_code,n.symbols)::text),
@@ -54,7 +56,7 @@ async def cache_verified_manifest(conn, manifest, cache_path):
         raise RetrievalError('HASH_MISMATCH')
     index_id=_uuid(payload['index']['index_version_id'])
     reader=HybridRetriever(None,None,corpus_version_id=manifest['corpus_version_id'])
-    info=await reader._index(conn,index_id,False)
+    info=await reader._index(conn,index_id,False,payload['index']['embedding_model'])
     if info['embedding_model']!=payload['index']['embedding_model']:
         raise RetrievalError('CACHE_INDEX_MISMATCH')
     rows=await reader._fetch(conn,ROWS+' ORDER BY t.chunk_id',uuid.UUID(index_id))
@@ -73,7 +75,7 @@ async def cache_verified_manifest(conn, manifest, cache_path):
             raise RetrievalError('HASH_MISMATCH')
         prepared.append(dict(_metadata(row),tokens=tokenize(chunk['text'])))
     fingerprint=await reader._value(conn,FINGERPRINT,uuid.UUID(index_id))
-    result=dict(version=2,tokenizer=TOKENIZER_VERSION,index_id=index_id,
+    result=dict(version=CACHE_VERSION,tokenizer=TOKENIZER_VERSION,index_id=index_id,
                 model=payload['index']['embedding_model'],built_at=reader.clock(),fingerprint=fingerprint,rows=prepared)
     _validate_cache(result,index_id,result['model'],reader.clock(),reader.max_cache_age)
     _write_cache(cache_path,result)
@@ -200,9 +202,19 @@ def _matches(row, company, period, doc_type, publisher=None, published_date=None
 
 
 def _metadata(row):
+    period = row['period']
+    if row['doc_type'] == 'ANNUAL_REPORT':
+        loc = row.get('locator_json')
+        if isinstance(loc, str):
+            try:
+                loc = json.loads(loc)
+            except (ValueError, TypeError):
+                raise RetrievalError('INVALID_LOCATOR') from None
+        year = loc.get('reporting_year') if isinstance(loc, dict) else None
+        period = str(year) if re.fullmatch(r'(?:19|20|21)\d{2}', str(year)) else None
     return dict(chunk_id=row['chunk_id'], content_hash=row['content_hash'].strip(),
                 company=row['company'], symbols=list(row['symbols'] or []),
-                period=row['period'], doc_type=row['doc_type'],
+                period=period, doc_type=row['doc_type'],
                 published_date=_derive_published_date(row),
                 publisher=_derive_publisher(row),
                 source_url=row.get('source_url') or (row.get('locator_json', {}).get('url') if isinstance(row.get('locator_json'), dict) else None))
@@ -235,7 +247,7 @@ def _write_cache(path, payload):
 def _validate_cache(payload, index_id, model, now, max_age):
     if not isinstance(payload, dict) or set(payload) != {'version','tokenizer','index_id','model','built_at','fingerprint','rows'}:
         raise RetrievalError('INVALID_CACHE')
-    if payload['version'] != 2 or type(payload['version']) is not int or payload['tokenizer'] != TOKENIZER_VERSION:
+    if payload['version'] != CACHE_VERSION or type(payload['version']) is not int or payload['tokenizer'] != TOKENIZER_VERSION:
         raise RetrievalError('CACHE_VERSION_MISMATCH')
     if payload['index_id'] != index_id or payload['model'] != model:
         raise RetrievalError('CACHE_INDEX_MISMATCH')
@@ -305,7 +317,7 @@ class HybridRetriever:
         sql, args = self._statement(sql, args)
         return await conn.fetchval(sql, *args)
 
-    async def _index(self, conn, index_id, allow_building):
+    async def _index(self, conn, index_id, allow_building, model_ref=None):
         row = await conn.fetchrow('SELECT embedding_model,status FROM public.index_versions WHERE index_version_id=$1::uuid',index_id)
         if row is None:
             raise RetrievalError('INDEX_NOT_FOUND')
@@ -318,7 +330,9 @@ class HybridRetriever:
                 raise RetrievalError('CORPUS_NOT_READY')
             if corpus['index_version_id'] != index_id:
                 raise RetrievalError('CORPUS_INDEX_MISMATCH')
-        model = self.embedder.model_name + '@' + self.embedder.revision[:12]
+        # Cache preparation uses verified vectors already stored in DB and does
+        # not need to construct an embedding service. Still enforce MODEL below.
+        model = model_ref if model_ref is not None else self.embedder.model_name + '@' + self.embedder.revision[:12]
         if model != MODEL or row['embedding_model'] != model:
             raise RetrievalError('MODEL_MISMATCH')
         kind = await conn.fetchval("SELECT format_type(atttypid,atttypmod) FROM pg_attribute WHERE attrelid='public.text_chunks'::regclass AND attname='embedding'")
@@ -425,7 +439,7 @@ class HybridRetriever:
                                 raise RetrievalError('HASH_MISMATCH')
                             meta = _metadata(row)
                             prepared.append(dict(meta,tokens=tokenize(text)))
-            payload=dict(version=2,tokenizer=TOKENIZER_VERSION,index_id=index_id,
+            payload=dict(version=CACHE_VERSION,tokenizer=TOKENIZER_VERSION,index_id=index_id,
                          model=info['embedding_model'],built_at=self.clock(),fingerprint=fingerprint,rows=prepared)
             _validate_cache(payload,index_id,info['embedding_model'],self.clock(),self.max_cache_age)
             _write_cache(cache_path,payload)

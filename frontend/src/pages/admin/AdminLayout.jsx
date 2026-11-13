@@ -13,6 +13,7 @@ export const ADMIN_LINKS = {
   ingestion: "/admin/ingestion",
   corpus: "/admin/corpus",
   configuration: "/admin/configuration",
+  evaluation: "/admin/evaluation",
   audit: "/admin/audit",
 };
 
@@ -20,6 +21,7 @@ const groups = [
   { label: "Vận hành", items: [
     { id: "overview", label: "Tổng quan vận hành", icon: "▦" },
     { id: "traces", label: "Theo dõi truy vấn", icon: "∿" },
+    { id: "evaluation", label: "Đánh giá chất lượng", icon: "✔" },
   ] },
   { label: "Quản trị dữ liệu", items: [
     { id: "ingestion", label: "Thu thập & duyệt", icon: "↓" },
@@ -44,6 +46,8 @@ function activeIdFor(pathname) {
 export default function AdminLayout({ children }) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  // Mọi mục trong menu hiện đã dùng dữ liệu thật; thêm id vào mảng này khi có trang mới còn là minh họa.
+  const unfinished = [].includes(activeIdFor(pathname));
 
   return (
     <div className="flex h-screen w-full overflow-hidden bg-[#F8FAFC]">
@@ -54,7 +58,13 @@ export default function AdminLayout({ children }) {
         badge="ADMIN"
         profile={{ initials: "AD", name: "Quản trị viên", role: "System Admin" }}
       />
-      <main className="flex h-screen flex-1 flex-col gap-8 overflow-y-auto p-4 md:p-8">{children}</main>
+      <main className="flex h-screen flex-1 flex-col gap-8 overflow-y-auto p-4 md:p-8">
+        {unfinished && <aside className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+          <strong>Chưa triển khai kết nối dữ liệu thật cho mục này.</strong>
+          <p className="mt-1">Giao diện và các số liệu bên dưới là minh họa. Thao tác tại đây chưa thay đổi cấu hình hoặc dữ liệu đang phục vụ.</p>
+        </aside>}
+        {children}
+      </main>
     </div>
   );
 }
