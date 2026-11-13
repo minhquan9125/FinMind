@@ -2,10 +2,14 @@
 
 ## Mở file nào?
 
+Bản đang triển khai ngày 13/11 là [ý định v2 — 11 nhãn](intent-v2/README.md),
+theo đề xuất mới của Hưng. Các báo cáo 7 nhãn bên dưới được giữ để truy vết v1.
+
 | Việc cần làm | File |
 |---|---|
-| Gửi Hưng review phần Nhân, xem phần đã làm và còn chờ | [Bàn giao hiện tại](S5-WBS04.1-HANDOFF.md) |
-| Đọc kết quả sửa mới nhất và cách kiểm chứng | [Báo cáo kiểm chứng vòng 2](S5-WBS04.1-news-mixed-results.md) |
+| Review bản 11 nhãn đang triển khai, API và điều kiện còn thiếu | [Bàn giao v2](intent-v2/README.md) |
+| Tra cứu bản bàn giao 7 nhãn trước đây | [Bàn giao v1](S5-WBS04.1-HANDOFF.md) |
+| Tra cứu kết quả vòng 2 của v1 | [Báo cáo kiểm chứng v1](S5-WBS04.1-news-mixed-results.md) |
 | Xem lịch sử công việc | [history.md](history.md) |
 
 ## Tài liệu từng task
@@ -29,6 +33,7 @@ Các file `*-plan.md` được giữ nguyên tại đây vì script/audit còn k
 và checksum của chúng. Không cần đọc các file này khi gửi review thường ngày.
 JSON/JSONL, vector và kết quả từng câu trong `outputs/` giữ nguyên.
 
+V2 có hàm phân loại dùng chung; Hưng/Huyền kiểm tra contract trước khi nối Chat.
 Chưa tích hợp consumer 04.2/router/Web Chat hoặc calibration. Kết quả chạy lại
 trên bộ đã xem là hồi quy, không chứng minh mọi câu mới đều đúng. Task 01.2 vẫn
 tạm dừng theo yêu cầu Nhân.

@@ -1,5 +1,164 @@
 # Đề xuất tối ưu phân loại ý định FinMind — 12/11/2026
 
+## Kế hoạch đang áp dụng: hoàn thiện ý định v2 — 13/11/2026
+
+Nhân giao quyền chọn phương án cho trợ lý và đã cho phép bắt đầu triển khai.
+Phần này thay hướng triển khai v1 bên dưới cho công việc mới; các ghi chép cũ
+được giữ để truy vết. Tài liệu nguồn: [đề xuất Hưng](../docs/sprint5/S5-INTENT-v2-gui-Nhan.md).
+Trạng thái: ĐÃ TRIỂN KHAI BẢN V2 ĐỂ REVIEW; chưa nghiệm thu chất lượng kín hoặc
+hiệu năng. Không ghi thành nhóm đã duyệt. Checklist hiện tại ở [todo](todo.md).
+
+### Kết quả cần bàn giao
+
+Một bộ phân loại nhận câu hỏi, trả nhóm ý định được đề xuất, các nhóm gần nhất,
+loại điểm và những chỗ chưa rõ để Hưng gọi trong Chat và Huyền xử lý chính sách.
+Các sản phẩm bắt buộc: schema v2, mẫu/test tách biệt, artifact vector/model,
+module phân loại dùng chung, test và báo cáo chạy thật. Nhân thực hiện 03.1–03.3
+và 04.1 mở rộng. Tích hợp Chat là 05.1 của Hưng; consumer/ngưỡng là phần Huyền.
+
+### Phương án kỹ thuật đã chọn
+
+- Giữ BAAI/bge-m3 và revision hiện có. Dùng embedding đóng băng với Logistic
+  Regression huấn luyện lại cho đủ 11 nhãn. Không dùng nguyên trọng số 7 nhãn.
+- Giữ cosine theo thư viện làm đối chứng trên cùng dữ liệu v2 và tìm ví dụ tham
+  khảo. Điểm classifier, cosine và bằng chứng luật được lưu riêng.
+- Chỉ có một mô hình embedding trong tiến trình, lấy từ dịch vụ backend hiện có.
+  Nạp artifact/model phân loại một lần; mỗi câu chỉ tạo vector cần thiết, gom các
+  vế độc lập trong cùng batch khi có thể. Không fine-tune BGE-M3 trong vòng này.
+- Kế thừa các ranh giới đã kiểm tra của V7 trong module v2 riêng cho mục tiêu rõ
+  ràng và tách nhiều ý. Sửa hai lỗi đã
+  tái hiện: hỏi chênh lệch bằng tiền và thuật lại xu hướng trong bài báo.
+  Không thêm luật theo mã công ty hoặc ID câu test.
+- Chọn regularization bằng chia fold theo family trong LIBRARY; mọi biến thể của
+  một tình huống ở cùng fold/split. Không chọn cấu hình trên bộ nghiệm thu kín.
+- V1, classifier 7 nhãn, manifests, run01–run03 là lịch sử bất biến. V2 dùng tên,
+  thư mục và version riêng. Một phiên bản được chọn rõ khi nạp; không trộn hai bộ.
+
+### Quy ước 11 nhãn v2
+
+| Nhãn | Phạm vi đã chọn |
+|---|---|
+| PRICE | Giá/khối lượng giao dịch và biến động số học cụ thể của dữ liệu thị trường. |
+| NUMERIC | Giá trị, tỷ lệ, chỉ tiêu và chênh lệch số học tài chính, kể cả sản lượng được hỏi như chỉ tiêu hoạt động. |
+| ANALYSIS | Nhận định, giải thích tài chính, xu hướng; bao gồm giải thích khái niệm/chỉ tiêu tài chính để giữ khả năng hỏi kiến thức hiện có. |
+| NEWS | Tìm hoặc thuật lại nội dung bài tin, kể cả bài tin nói về giá hay xu hướng. |
+| REPORT_CONTENT | Tìm/giải thích/tóm tắt nội dung BCTC/BCTN; tên báo cáo chỉ làm nguồn không tự quyết định nhãn. |
+| PERSON_ROLE | Người, chức vụ và thời điểm giữ/bổ nhiệm/miễn nhiệm; gồm thành viên ban kiểm soát. |
+| ENTITY_RELATION | Sở hữu, cổ đông cá nhân/doanh nghiệp, công ty con/liên kết và quan hệ doanh nghiệp. |
+| COMPANY_OVERVIEW | Giới thiệu ngành, hoạt động và hồ sơ chung doanh nghiệp. |
+| CONVERSATION | Chào hỏi, nối tiếp, chọn mục, hỏi nguồn câu trước, tổng hợp, phiên mới; không tự suy nội dung từ phiên khác. |
+| OUT_OF_SCOPE | Yêu cầu đưa quyết định mua/bán, tự dự báo giá/giá mục tiêu, hoặc nội dung ngoài chức năng sản phẩm. |
+| MIXED | Ít nhất hai mục tiêu khác nhóm có thể chỉ ra; danh sách nhiều chỉ tiêu cùng nhóm không tự là MIXED. |
+
+Các quyết định ranh giới cần đưa vào tài liệu và cặp test ngay từ đầu:
+
+- Hỏi giá tăng bao nhiêu đồng/% là PRICE; hỏi doanh thu tăng bao nhiêu là NUMERIC;
+  yêu cầu nhận định tăng/giảm là ANALYSIS. Không chỉ nhìn chữ "tăng".
+- "Bài báo nhận định xu hướng thế nào?" là NEWS; thuật lại báo cáo là REPORT_CONTENT.
+- "P/E là gì?" thuộc ANALYSIS, với loại câu con kiến thức do Hưng xử lý tầng 2.
+  Đây là lựa chọn thiết kế bổ sung so với bảng Hưng gửi, cần nêu khi bàn giao.
+- Hỏi con số/nhận định đã được công bố trong nguồn không tự thành OUT_OF_SCOPE
+  chỉ vì có từ dự báo/giá mục tiêu; phân biệt thuật lại nguồn với tự khuyến nghị.
+- Hỏi doanh thu công ty con đã xác định là NUMERIC. Nếu phải tìm công ty con rồi
+  lấy số của các công ty vừa tìm: MIXED (ENTITY_RELATION + NUMERIC).
+- "Còn SSI?", "số 2" là CONVERSATION và cần ngữ cảnh hợp lệ. Chưa biết mã/kỳ
+  không đồng nghĩa chưa biết ý định. Câu không hiểu rõ dùng trạng thái chưa xác định.
+- MIXED chứa OUT_OF_SCOPE phải giữ thành phần bị hạn chế để tầng sau chặn phần
+  đó. Chưa có chính sách xử lý từng phần thì chưa cho tự thực hiện toàn câu.
+  MIXED không mặc định BOTH; ANALYSIS cũng không mặc định một nguồn duy nhất.
+
+### Giao tiếp giữa ba phần
+
+- Nhân cung cấp một điểm gọi phân loại, nhận câu hỏi và embedder đang dùng. Caller
+  có thể cung cấp ngữ cảnh đã xác minh; Nhân không làm cơ chế lưu/kế thừa phiên.
+- Kết quả giữ envelope base_ranking + resolution; thêm version schema/thư viện/
+  classifier rõ ràng. Base ranking có các nhóm, điểm, ranking_policy, score_type.
+  Resolution có nhãn đề xuất, reason, component_labels, explicit_evidence,
+  unresolved_requests, confidence=null và runtime_enabled=false.
+- Classifier v2 có policy mới, đề xuất intent-linear-v2; điểm vẫn được khai báo
+  CLASSIFIER_PROBABILITY_UNCALIBRATED. Bằng chứng luật có policy v2 riêng và
+  DECISION_EVIDENCE_NO_CONFIDENCE. Không gắn điểm nhãn gốc cho nhãn bị luật đổi.
+- Đầu ra có trạng thái rõ: đề xuất được nhãn / cần ngữ cảnh / chưa xác định.
+  Hai trạng thái sau không tạo nhãn nghiệp vụ thứ 12. V2 phải quy định rõ lúc nào
+  intent_label có thể null; consumer cần kiểm trạng thái trước khi chọn nhánh.
+- runtime_enabled=false nghĩa là đầu ra mới là đề xuất, chưa được phép tự cho
+  SEARCH; hàm vẫn có thể được gọi thật trong Chat. Ngưỡng của Huyền chưa được
+  áp dụng cho xác suất chưa hiệu chỉnh. Calibration chỉ làm sau nếu nhóm cần
+  bật tìm kiếm thẳng, không gộp vào phạm vi classifier đề xuất lần này.
+- Consumer hiện có hỗ trợ policy V7 nhưng còn 7 nhãn. Nhân gửi hợp đồng v2 và
+  payload mẫu để Huyền cập nhật; không tự sửa intent_routing.py. Hưng nối Chat,
+  slot và điều phối các luồng PRICE/CONVERSATION/OUT_OF_SCOPE theo tầng 2.
+- Cấu hình sai, model/revision/artifact không khớp: báo lỗi kỹ thuật rõ ràng,
+  không giả kết quả phân loại. Trong request không đọc lại file hoặc tải model
+  qua mạng; chuẩn bị model cache và artifact tại bước khởi tạo.
+
+### Dữ liệu và cách đo
+
+- LIBRARY: tối thiểu 20 câu gốc khác tình huống mỗi nhãn (ít nhất 220 câu gốc),
+  mỗi nhóm con có ít nhất 3 tình huống. Thêm biến thể có dấu/không dấu/viết tắt/
+  lỗi gõ khi vẫn giữ nghĩa. Không tính ba biến thể là ba tình huống độc lập.
+- DEVELOPMENT: tối thiểu 10 câu mỗi nhãn, không giao family với LIBRARY. Dùng
+  phân tích lỗi; không gọi đây là đánh giá kín. Mọi lần chỉnh phải ghi version.
+- REGRESSION: bộ cũ và hai lỗi TREND mới dùng để bảo vệ hành vi đã biết. Các câu
+  cần đổi nhãn theo v2 có bản gán nhãn v2 riêng và lý do; không sửa gold v1.
+- ACCEPTANCE: tối thiểu 10 câu mỗi nhãn do người khác soạn, giữ kín tới khi đóng
+  băng bản ứng viên. Nhờ Huyền/Hưng cung cấp; không phải điều kiện để bắt đầu các
+  bước của Nhân. Nếu chưa có thì bàn giao kỹ thuật được, chưa chốt chất lượng kín.
+- Chọn phương pháp trên dữ liệu phát triển/validation; bộ kín chỉ đo sau freeze.
+  Nếu dùng kết quả kín để sửa, tập đó chuyển thành hồi quy và cần bộ kín mới.
+- Đo top-1, macro-F1, recall từng nhãn, confusion matrix, lỗi OUT_OF_SCOPE, kết
+  quả chưa xác định và thành phần MIXED. Câu có gold mà chưa trả được nhãn tính
+  là không đúng; không bỏ khỏi mẫu số để tăng accuracy.
+- Lưu cosine và classifier trên cùng tập v2. Chỉ so với v1 ở các câu có ý nghĩa
+  nhãn tương đương, báo mọi thay đổi; không trộn accuracy hai taxonomy khác nhau.
+- Độ trễ p50/p95 tính toàn bộ hàm phân loại sau warmup, gồm tách/encode vế nếu có;
+  báo riêng cold start và nhóm câu đơn/MIXED. Nêu máy, độ dài đầu vào và số lần đo.
+
+### Các bước và checkpoint
+
+1. Bảng nhãn + đầu ra mẫu (03.1, 04.1): viết schema v2 và cặp ranh giới; ghi bảng
+   đổi nhãn/mã fallback. Đạt khi mọi ví dụ có một cách gán hoặc lý do chưa rõ,
+   các loại điểm và trạng thái có nghĩa rõ. Kiểm bằng đọc chéo đặc tả.
+2. Bộ câu (03.2): xây LIBRARY/DEVELOPMENT/REGRESSION và validator tách family,
+   nhãn thành phần, nguồn, biến thể. Đạt khi đủ phủ và không rò rỉ. Kiểm bằng
+   validator + review mẫu. Huyền/Hưng soạn bộ kín song song sau khi nhận bảng nhãn.
+3. Artifact (03.3): encode bằng BGE-M3 hiện có, fit classifier 11 nhãn từ LIBRARY,
+   lưu vector/NPZ/manifest. Đạt khi model/revision/shape/checksum khớp và tái tính
+   được điểm mà không fit lại. Không dùng pickle hoặc ghi DB production.
+4. Hàm dùng chung (04.1): nạp một lần, dùng embedder chia sẻ, trả envelope đúng
+   contract và ví dụ tham khảo. Đạt khi test 11 nhãn, metadata lỗi, input rỗng,
+   MIXED/CONVERSATION, startup lỗi và việc không nạp lặp đều qua bằng fake embedder.
+5. Checkpoint phát triển: đánh giá thật trên DEVELOPMENT/REGRESSION; xử lý lỗi
+   ranh giới bằng logic chung. Đạt khi không còn hồi quy chưa giải thích ở các
+   câu cùng nghĩa nhãn; báo đầy đủ lỗi còn lại trước khi đóng băng.
+6. Freeze + run04: ghi hash phương pháp/nguồn/dữ liệu trước đo, chạy bộ riêng và
+   bộ kín với BGE-M3 thật, đo latency máy demo. Mọi lần đo ở thư mục mới.
+7. Bàn giao: một gói phiên bản nhất quán gồm schema, library/vector/model,
+   hàm/test, báo cáo và ví dụ gọi. Chia commit theo thay đổi để review được;
+   không buộc tất cả vào một commit lớn. Hưng/Huyền đối chiếu phần tích hợp riêng.
+
+### Tiêu chí chọn để chốt phần Nhân
+
+- Artifact tái tạo được; unit/contract test đều đạt, không bỏ test hoặc bỏ ca sai.
+- Trên bộ nghiệm thu kín: top-1 >= 90%, macro-F1 >= 0,85, recall từng nhãn >= 80%.
+- Không có câu OUT_OF_SCOPE được phân loại thành yêu cầu trả lời thông thường
+  trên tập nghiệm thu đã ghi; báo rõ mẫu số. Việc chặn thực tế trong Chat do phần
+  policy/tích hợp kiểm tiếp, không dùng việc luôn chặn mọi câu để báo đúng nhãn.
+- p95 <= 500 ms trên máy demo sau warmup cho dữ liệu đã mô tả; đo thực tế trước
+  khi ghi đạt. Không loại câu MIXED chậm hoặc lần lỗi ra khỏi báo cáo.
+- Nếu bất kỳ tiêu chí chưa đạt: trạng thái cần cải thiện, giữ nguyên ngưỡng và
+  báo số thực. Không gọi bộ do cùng tác giả viết là nghiệm thu kín độc lập.
+- Giao tiếp v2 được Hưng/Huyền kiểm tra ở phần của họ trước khi bật luồng thật.
+  Chưa nối Chat không có nghĩa artifact chưa làm xong; cũng không suy Done toàn
+  hệ thống từ kết quả riêng của Nhân. 01.2 vẫn là task riêng đang tạm dừng.
+
+Mốc mục tiêu theo đề xuất Hưng: tài liệu nhãn/contract trước 15/11, bản triển khai
+và báo cáo trước 18/11 nếu có môi trường model và bộ kín. Đây là kế hoạch cho lúc
+bắt đầu triển khai. Bản triển khai và số đo hiện tại ở
+[bàn giao v2](../docs/sprint5/intent-v2/README.md); giữ nguyên các ngưỡng nghiệm thu.
+
+## Lịch sử phương án v1 (giữ nguyên để truy vết)
+
 ## Phạm vi hiện tại theo Nhân
 
 Chỉ tiếp tục S5-WBS03.1–03.3 và S5-WBS04.1 của Nhân. Các mục consumer/ngưỡng/

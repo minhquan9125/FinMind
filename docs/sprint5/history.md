@@ -331,3 +331,21 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   đạt; audit gốc vẫn tái tạo 345 quyết định qua ba ánh xạ nguồn lịch sử rõ ràng.
 - Không đổi V7, training, model, gold hoặc manifest đã đóng băng. 84,4% nhãn và
   khoảng 85% nhánh trên 167 câu là nhận xét của Hưng, chưa tái tạo bộ đó tại máy Nhân.
+
+## 13/11/2026 — Triển khai ý định v2 theo đề xuất của Hưng
+
+- Nhân đã cho phép triển khai. Tạo schema 11 nhãn, 220 tình huống gốc/470 câu mẫu
+  và 110 câu DEVELOPMENT tách biệt; chưa coi nhãn/dữ liệu là nhóm đã duyệt.
+- Dùng BGE-M3 cùng revision backend để tạo vector, fit Logistic Regression chỉ
+  trên LIBRARY; chọn C=10 bằng CV theo family. Có artifact, checksum và hàm
+  classify_intent dùng embedder chia sẻ/cache artifact, không chọn route.
+- Lưu riêng ranking classifier, cosine và bằng chứng luật; chưa hiệu chỉnh xác
+  suất, không áp ngưỡng cosine. Có trạng thái cần ngữ cảnh/chưa rõ và thành phần MIXED.
+- 343/343 test Sprint 5 đạt, trong đó 117 test v2. Tái fit cho trọng số giống hệt.
+  Model thuần đúng 100/110 câu DEVELOPMENT; sau sửa luật đúng 110/110 và 47/47
+  câu hồi quy có gold đã ánh xạ riêng sang v2. Đã dùng các tập đó để sửa lỗi;
+  chúng không phải nghiệm thu kín. Giữ nguyên nguồn v1.
+- API thật CPU 4 thread đúng 110/110, p50 568 ms, p95 1514 ms. Mục tiêu 500 ms
+  chưa đạt; thiếu bộ kín độc lập. Chưa chốt Done hoặc kết luận Chat đã tích hợp.
+- Tài liệu hiện tại: [bàn giao v2](intent-v2/README.md). Không sửa consumer của
+  Huyền, code Chat hoặc DB production; task 01.2 vẫn tạm dừng.

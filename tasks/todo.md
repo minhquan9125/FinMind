@@ -1,5 +1,33 @@
 # Tối ưu ý định — danh sách đề xuất 12/11/2026
 
+## Checklist đang áp dụng: v2 — 13/11/2026
+
+Nhân đã cho phép triển khai. Kế hoạch chi tiết ở [plan.md](plan.md), kết quả ở
+[bàn giao v2](../docs/sprint5/intent-v2/README.md). Checklist v1 ở phần sau được
+giữ như lịch sử, không tự đóng các mục cũ còn mở.
+
+- [x] Chọn BGE-M3 hiện có + classifier tuyến tính huấn luyện lại cho 11 nhãn;
+  cosine làm đối chứng và ví dụ tham khảo, luật chỉ bổ sung bằng chứng rõ ràng.
+- [x] Chọn cách giữ v1, quy tắc ranh giới, đầu ra v2 và tiêu chí nghiệm thu trong kế hoạch.
+- [x] Hoàn thiện schema v2, bảng đổi nhãn/mã fallback và ví dụ đầu ra để Hưng/Huyền đối chiếu.
+- [x] Viết LIBRARY 220 tình huống gốc (470 biến thể), DEVELOPMENT 110 câu và ánh xạ hồi quy v2 riêng.
+- [x] Kiểm tách family/biến thể, thành phần MIXED và trạng thái chưa rõ bằng validator.
+- [x] Vector hóa bằng model/revision backend, huấn luyện 11 nhãn và lưu NPZ/manifest/checksum.
+- [x] Làm hàm phân loại dùng chung: nạp một lần, dùng embedder hiện có, đầu ra có version/loại điểm.
+- [x] Kiểm thử chức năng và contract; sửa lỗi tính chênh lệch/thuật lại bài báo theo schema v2.
+- [x] Đo DEVELOPMENT/REGRESSION bằng model thật; xử lý hồi quy và công bố giới hạn còn lại.
+- [x] Đo latency thật và phân tích CPU; giữ kết quả không đạt mục tiêu.
+- [ ] Nhận bộ kín độc lập từ Huyền/Hưng, đóng băng ứng viên và đo nghiệm thu run04.
+- [ ] Đạt top-1 >= 90%, macro-F1 >= 0,85, recall mỗi nhãn >= 80%, không nhầm OUT_OF_SCOPE
+  sang yêu cầu trả lời thông thường trong tập nghiệm thu, p95 <= 500 ms sau warmup.
+- [ ] Bàn giao artifact, hàm, test và báo cáo; kiểm tương thích consumer/Chat ở phần nhóm.
+
+Checkpoint 1: schema + payload mẫu có nghĩa rõ trước khi encode. Checkpoint 2:
+artifact/test qua trước freeze. Checkpoint 3: đạt số đo kín và ghi rõ phạm vi
+nghiệm thu trước khi chốt phần Nhân. Chưa có bộ kín thì không tự ghi chất lượng đạt.
+
+## Lịch sử checklist v1
+
 ## Chốt lại phạm vi — chỉ task Nhân
 
 - [x] Chạy lại 192 test dữ liệu/vector/đối chiếu của Nhân: không lỗi hoặc skip.
