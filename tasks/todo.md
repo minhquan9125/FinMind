@@ -1,5 +1,16 @@
 # Tối ưu ý định — danh sách đề xuất 12/11/2026
 
+## Chốt lại phạm vi — chỉ task Nhân
+
+- [x] Chạy lại 192 test dữ liệu/vector/đối chiếu của Nhân: không lỗi hoặc skip.
+- [x] Audit 345 quyết định: không refit, không hồi quy hoặc thay điểm gốc.
+- [x] Kiểm tra dữ liệu 90 mẫu/56 test và artifact 90 × 1024, checksum đạt.
+- [x] Sửa báo cáo hiện tại và script sinh báo cáo để loại phần nghiệm thu consumer.
+- [ ] Hưng review phần Nhân; chưa chốt Done hoặc kết luận mọi câu đều đúng.
+
+Các mục consumer/ngưỡng/fallback/router bên dưới chỉ lưu lịch sử hoặc phụ thuộc,
+không phải danh sách việc Nhân sẽ tiếp tục thực hiện.
+
 Các bước 1–3 và checkpoint raw scorer được lưu dưới đây. Cập nhật cuối file:
 V3 đã qua kiểm soát hồi quy và chạy bộ mới; calibration/consumer vẫn còn mở.
 Xem [kế hoạch](plan.md).
@@ -73,7 +84,7 @@ calibration/consumer ở trên vẫn mở; không đổi trạng thái thành Do
 - [x] Ghi yêu cầu consumer bắt buộc ranking_policy/score_type và bốn điểm contract.
 - [x] Lưu bằng chứng, audit 293 quyết định, 119 test; cập nhật history/hướng dẫn review.
 - [ ] Nhóm xác nhận ranh giới kế hoạch lợi nhuận; chưa cập nhật schema chính thức.
-- [ ] Huyền sửa/kiểm consumer thiếu metadata trên source của mình; chưa tích hợp router.
+- [ ] Huyền nhận bản sửa/patch vòng 2 từ nhánh Nhân và kiểm trên nhánh của mình; chưa tích hợp router.
 
 ## Guard số liệu sau REVIEW-03
 
@@ -90,3 +101,17 @@ calibration/consumer ở trên vẫn mở; không đổi trạng thái thành Do
 - [x] Replay 313 câu: sửa NV-13/NV-19/NV-20 và FINAL-MIXED-2-DPM/VRE; không đúng→sai.
 - [x] Audit 313 quyết định, raw ranking/checksum bất biến; 162 unit test ý định qua.
 - [x] Cập nhật báo cáo/history; bộ 20 nay đã xem đạt 20/20 hồi quy, chưa nối runtime.
+
+## Review vòng 2 — chính tả, cách hỏi và consumer
+
+- [x] Tái hiện bằng test đọc/độc, lương/lượng và các cách hỏi được review.
+- [x] Đọc consumer Huyền tại 8e854d47, tái hiện thiếu metadata bị SEARCH.
+- [x] Hoàn thiện guard có dấu/ngữ cảnh, role/news/giải thích; 276 test qua.
+- [x] Replay 313 hàng không đúng→sai; 32 probe: 27/27 gold, 5/5 không ép nhãn.
+- [x] Audit độc lập 345 quyết định; test consumer, bàn giao và luồng giá hiện có.
+- [x] Cập nhật cùng trang bàn giao, lưu patch Huyền và lỗi/giới hạn còn lại.
+
+Câu độc lập vẫn có đề xuất thô sai/chưa rõ mục tiêu, không tính là phân loại
+thành công. Handoff dừng NEED_VALIDATION; các payload classifier chưa được nhận
+tự động. Huyền/nhóm cần review contract, nhận patch, chốt ranh giới và tích hợp
+07.2/router trước khi nghiệm thu; không đánh dấu Done toàn luồng.

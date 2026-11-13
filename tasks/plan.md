@@ -1,5 +1,12 @@
 # Đề xuất tối ưu phân loại ý định FinMind — 12/11/2026
 
+## Phạm vi hiện tại theo Nhân
+
+Chỉ tiếp tục S5-WBS03.1–03.3 và S5-WBS04.1 của Nhân. Các mục consumer/ngưỡng/
+fallback/router bên dưới là lịch sử hoặc phụ thuộc để biết, không phải việc Nhân
+nhận làm. Bản review hiện tại dùng 192 test riêng của Nhân và audit 345 quyết định.
+Chưa chốt Done: chờ Hưng review, vẫn ghi rõ lỗi phân loại và thử nghiệm V7 offline.
+
 Trạng thái: Nhân đã đồng ý thực hiện. Đã hoàn tất các bước 1–3 ngoài runtime;
 checkpoint không có ứng viên đạt điều kiện không hồi quy. Chưa làm bước 4.
 Kế hoạch trước fit được giữ nguyên trong `outputs/s5_intent_scorer_20261112/plan-snapshot.md`.
@@ -159,3 +166,23 @@ Nhân đồng ý sửa ba lỗi NV-13/NV-19/NV-20. Kế hoạch đóng băng ri�
 thêm mục tiêu bài tin và nhận diện vế Đọc độc lập ở module kế tiếp. Chỉ nâng
 thành MIXED từ các mục tiêu rõ ràng; không nới ngưỡng ghép xác suất. Kiểm tra
 hồi quy toàn bộ 313 câu đã xem và giữ model, training, nhãn, raw ranking.
+
+## Hoàn thiện theo review vòng 2
+
+Nhân đồng ý thực hiện tiếp. Kế hoạch máy đọc được và tiêu chí đóng băng ở
+`outputs/s5_intent_review2_20261112/plan.json`. Sửa va chạm đọc/độc, lương/lượng
+bằng bằng chứng có dấu và ngữ cảnh; đo các cách hỏi chức vụ/tin/giải thích mới.
+Giữ source V3–V6. Dùng 313 hàng làm hồi quy; 32 probe bổ sung do cùng tác giả
+soạn, 5 câu không chốt gold chỉ kiểm không ép nhãn từ quy tắc sai.
+
+Đã đọc consumer thật từ nhánh Huyền, commit 8e854d47. Chuẩn bị bản sửa tại
+nhánh Nhân: metadata thiếu/sai phải bị từ chối, không gửi AI fallback; MIXED
+chưa xác minh thành phần không tự BOTH. Không thay ngưỡng hoặc source remote.
+Kiểm tra luồng giá hiện có bằng analyze_live, giữ nhãn NUMERIC theo schema.
+Chưa nối Web Chat hoặc tự phê duyệt các ranh giới nhóm chưa chốt.
+
+Kết quả: 313 hàng không hồi quy, 27/27 probe có gold, 5/5 không ép nhãn; 276
+test qua. prepare_intent_review không chấp nhận đề xuất NUMERIC của câu độc lập
+chưa rõ mục tiêu; trả NEED_VALIDATION thay vì đổi nhãn tùy ý. Bản sửa consumer
+và patch mới ở nhánh Nhân; chưa triển khai. Không dùng tỷ lệ chặn làm accuracy
+router. Bản cuối run03 (metadata LF) và integration-final-checks.json; một trang bàn giao hiện tại.

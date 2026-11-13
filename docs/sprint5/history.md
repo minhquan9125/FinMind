@@ -1,6 +1,6 @@
 # Lịch sử Sprint 5 — Hồ Phạm Đăng Nhân
 
-Nhánh: `nhan-sprint-501`. Ngày cập nhật: **10/11/2026** (UTC+7).
+Nhánh: `nhan-sprint-501`. Ngày cập nhật: **12/11/2026** (UTC+7).
 Các giờ dưới đây là ước lượng backlog, không phải giờ công thực tế đã ghi nhận.
 
 ## Trạng thái công việc
@@ -10,7 +10,7 @@ Các giờ dưới đây là ước lượng backlog, không phải giờ công 
 | S5-WBS03.1 | Chốt nhãn ý định và ranh giới giữa các nhãn | 2 | Đã soạn; Nhân xác nhận nhóm đã duyệt bảng nhãn. Tên người xác nhận do Nhân bổ sung. |
 | S5-WBS03.2 | Soạn cụm từ mẫu và bộ câu kiểm thử riêng | 4 | Draft3 đã qua review nội dung của Hưng, đủ điều kiện làm 03.3. |
 | S5-WBS03.3 | Vector hóa và lưu phiên bản thư viện | 2 | Kiểm chứng kỹ thuật của Hưng chưa phát hiện lỗi chặn; cổng review độc lập ECC phía reviewer chưa hoàn tất. |
-| S5-WBS04.1 | Đối chiếu vector câu hỏi với thư viện | 3 | Đã triển khai trả nhóm/điểm và đo baseline; 46 test đạt. Top-1 46,81%, top-3 87,23%; chờ review kết quả, chưa dùng để chọn route. |
+| S5-WBS04.1 | Đối chiếu vector câu hỏi với thư viện | 3 | Đã có baseline và thử nghiệm evidence; riêng phần Nhân 192 test đạt, 313 hàng không hồi quy, 27/27 probe có gold. Chờ review; V7 vẫn offline, còn lỗi phân loại đã ghi rõ. |
 
 Tổng phạm vi Nhân đã nhận: **11 giờ dự kiến**.
 
@@ -264,7 +264,7 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   FINAL-MIXED-2-DPM/VRE, bộ 28 câu cũ đạt 28/28. Không phát sinh đúng→sai.
 - Model BGE-M3/revision, head C=1, training/gold và điểm gốc giữ nguyên;
   chỉ vector hóa hai đoạn mới tách. Không có ngoại lệ theo tên doanh nghiệp.
-- [Báo cáo và giới hạn](S5-WBS04.1-news-mixed-results.md). Không coi kết quả
+- [Báo cáo và giới hạn V6](archive/S5-WBS04.1-news-mixed-results.md). Không coi kết quả
   hồi quy là test mù. Chưa calibration, chưa tích hợp consumer/router/Web Chat.
 
 ## 12/11/2026 — Gọn lại tài liệu Sprint 5
@@ -276,3 +276,47 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
   đóng băng vẫn ở đường dẫn cũ để giữ checksum và khả năng chạy lại audit.
 - Điều chỉnh nơi xuất của tám script báo cáo cũ để không tạo lại file ở thư mục gốc.
   Không đổi logic phân loại, nhãn, dữ liệu hoặc kết quả kiểm thử.
+
+## 12/11/2026 — Hoàn thiện sau review vòng 2
+
+- Sửa đọc/độc, lương/lượng bằng ngữ cảnh và chính tả Unicode; kiểm cả NFC/NFD
+  và câu không dấu. Dùng chung guard chỉ tiêu ở NUMERIC và phân tích TREND.
+- Thêm cách hỏi CEO, người đứng đầu, tin gì mới, ghép số liệu với giải thích
+  diễn biến tài chính; không ép mọi câu vì sao thành TREND.
+- BGE-M3 cùng revision/head trên 32 probe: 27/27 có gold đúng, 5 kiểm không ép
+  nhãn đạt. 313 hàng cũ giữ nhãn; không đưa probe vào training hoặc đổi ngưỡng.
+- Classifier gốc vẫn đề xuất NUMERIC cho câu lợi nhuận có độc lập có dấu.
+  Không báo câu đó đã hiểu đúng: handoff trả NEED_VALIDATION, accepted_intent=null.
+- Đọc source consumer Huyền ở 8e854d47; bản sửa local từ chối metadata thiếu/sai
+  mà không AI fallback. MIXED chưa xác minh thành phần không tự BOTH. Kèm patch;
+  chưa thay nhánh Huyền, caller cần nhận kết quả REJECT_CLASSIFICATION mới.
+- 35 đối chiếu cosine: 33 giữ hành vi, hai MIXED cố ý chuyển sang chờ xác minh.
+  Hàm Web Chat hiện có vẫn phân giải giá hôm nay vào QUOTE/PRICE; chưa gọi giá thật.
+- 276 test đạt (255 Sprint 5, 21 giá/hội thoại), audit 345 quyết định và audit V6 đạt.
+  Giữ các lượt/source snapshot; bản cuối run03 chuẩn hóa metadata LF và dùng
+  cache vector đã đo. Không thay logic so với run02, không E2E runtime.
+- [Bàn giao hiện tại](S5-WBS04.1-HANDOFF.md); cập nhật cùng trang báo cáo, không
+  thêm báo cáo mới ở thư mục chính. Kế hoạch lợi nhuận vẫn cần nhóm chốt.
+
+## 12/11/2026 — Kiểm tra trước review, chỉ phần Nhân
+
+- Chốt phạm vi S5-WBS03.1–03.3 và S5-WBS04.1 theo yêu cầu Nhân; dừng phần Huyền.
+- Chạy lại 192/192 test riêng, không lỗi/skip; audit 345 quyết định đạt.
+- Kiểm checksum và tách dữ liệu 90 mẫu/56 test, artifact 90 × 1024 đều đạt.
+- Thử bỏ guard chỉ tiêu trong bộ nhớ tiến trình riêng: test hiện có bắt được lỗi;
+  không sửa source hoặc tính lượt cố ý gây lỗi này thành test sản phẩm thất bại.
+- Chỉnh báo cáo và script sinh báo cáo theo đúng phạm vi; phân biệt cosine baseline
+  với thử nghiệm classifier/evidence V7 offline. Còn 6/47 câu sai ở bộ test gốc
+  khi dùng V7; câu “lợi nhuận có độc lập” chưa có gold, không tính là đã đúng.
+- Các ghi chép consumer/patch trước đây chỉ là lịch sử thử nghiệm ngoài phạm vi
+  đã chốt, không phải yêu cầu Huyền áp dụng hoặc điều kiện nghiệm thu của Nhân.
+
+## 13/11/2026 — Bàn giao phần Nhân lên nhánh
+
+- Bàn giao logic V7 đã lưu cùng báo cáo, hướng dẫn và bằng chứng 192 test riêng
+  của Nhân; đối chiếu lại 47 checksum nguồn đóng băng trước khi đẩy.
+- Đề nghị Hưng review guard tiếng Việt, ranh giới chức vụ/tin/nhiều ý, audit và
+  các lỗi còn lại. Không tự ghi task đã được duyệt hoặc V7 đã chạy trong Web Chat.
+- Snapshot thử consumer cũ vẫn nằm trong lịch sử để audit tái tạo được; không
+  thuộc phạm vi nghiệm thu của Nhân. Không đưa các chỉnh sửa contract consumer
+  còn ở working tree vào lượt bàn giao này. Task 01.2 vẫn tạm dừng.

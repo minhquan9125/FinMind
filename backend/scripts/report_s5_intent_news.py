@@ -70,7 +70,7 @@ def main():
               'cosine và không gắn điểm nhãn cũ cho nhãn mới. MIXED không mặc định BOTH.',
               'Chưa calibration, chưa nối consumer/router/Web Chat; ranh giới kế hoạch',
               'lợi nhuận vẫn cần nhóm xác nhận. S5-WBS01.2 vẫn tạm dừng theo yêu cầu Nhân.', '']
-    (ROOT / 'docs/sprint5/S5-WBS04.1-news-mixed-results.md').write_text('\n'.join(lines), encoding='utf-8', newline='\n')
+    (ROOT / 'docs/sprint5/archive/S5-WBS04.1-news-mixed-results.md').write_text('\n'.join(lines), encoding='utf-8', newline='\n')
     write(OUT / 'payload-targets.json', [row for row in results['additional_checks'] if row['id'] in {'NV-13', 'NV-19', 'NV-20'}])
     print('Report generated from audited results and 162 passing tests.')
 
