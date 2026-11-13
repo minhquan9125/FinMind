@@ -85,3 +85,11 @@ backend/tests/test_s5_intent_consumer_contract.py text eol=lf
 backend/tests/test_s5_intent_handoff.py text eol=lf
 outputs/s5_intent_review2_20261112/*.bin binary
 outputs/s5_intent_review2_20261112/scope-archive/*.snapshot binary
+docs/sprint5/intent-labels.v2.json text eol=lf
+docs/sprint5/intent-v2/* text eol=lf
+backend/src/retrieval_orchestration/intent_v2*.py text eol=lf
+backend/scripts/*s5_intent_v2*.py text eol=lf
+outputs/s5_intent_v2_20261113/**/*.json text eol=lf
+outputs/s5_intent_v2_20261113/**/*.jsonl text eol=lf
+outputs/s5_intent_v2_20261113/**/*.npy binary
+outputs/s5_intent_v2_20261113/**/*.npz binary
