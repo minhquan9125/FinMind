@@ -1,0 +1,53 @@
+{
+  "scope": "Remove out-of-scope consumer add/add conflict only",
+  "prior_merge_conflict": "backend/src/retrieval_orchestration/intent_routing.py",
+  "huyen_reference": "ef639bb9",
+  "tests": 196,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "audit_decisions": 345,
+  "semantic_source_sha256": "6794b9091f74ee3e762a026f7e651762ad467102a2705cb4f4d0a6e725c21f6d",
+  "old_method_sha256": "dffbedfe66904c38bf65624d374538907bdf72f63107085314b9c0b124135f78",
+  "archive_records": [
+    {
+      "original_path": "backend/src/retrieval_orchestration/intent_routing.py",
+      "archive_path": "outputs/s5_intent_review2_20261112/scope-archive/intent_routing.py.snapshot",
+      "sha256": "5816e7aeced8be6b5ffb3dfa3950eedc96456dd7716a7b39bf88a4aebc77a59c",
+      "removed_from_active_source": true
+    },
+    {
+      "original_path": "backend/src/retrieval_orchestration/intent_handoff.py",
+      "archive_path": "outputs/s5_intent_review2_20261112/scope-archive/intent_handoff.py.snapshot",
+      "sha256": "fe3bef4fbdaf139ed28e7884bbfa887d21ad0509adb955037d68e79709c99926",
+      "removed_from_active_source": true
+    },
+    {
+      "original_path": "backend/tests/test_s5_intent_consumer_contract.py",
+      "archive_path": "outputs/s5_intent_review2_20261112/scope-archive/test_s5_intent_consumer_contract.py.snapshot",
+      "sha256": "c09ac4df78b375b56d97525bf43661df48eb47ac79c4bd3083d866dab7cee5f4",
+      "removed_from_active_source": true
+    },
+    {
+      "original_path": "backend/tests/test_s5_intent_handoff.py",
+      "archive_path": "outputs/s5_intent_review2_20261112/scope-archive/test_s5_intent_handoff.py.snapshot",
+      "sha256": "2285334bd1eb842f86491f2029f156206ee524aa565857ace78a3793bcdb9f48",
+      "removed_from_active_source": true
+    },
+    {
+      "original_path": "backend/scripts/check_s5_intent_handoff.py",
+      "archive_path": "outputs/s5_intent_review2_20261112/scope-archive/check_s5_intent_handoff.py.snapshot",
+      "sha256": "a0aab0bd4c7ee6048f79fc11891b40d1a47b42792a0a4d4d83cd04b54a333132",
+      "removed_from_active_source": true
+    },
+    {
+      "original_path": "backend/scripts/audit_s5_intent_review2.py",
+      "archive_path": "outputs/s5_intent_review2_20261112/scope-archive/audit_s5_intent_review2.py.snapshot",
+      "sha256": "1f1c676b305685f573a6900902c04ba006120a83bed044cc1a76dcdf1e49e825",
+      "removed_from_active_source": false
+    }
+  ],
+  "semantic_logic_changed": false,
+  "runtime_integrated": false,
+  "hung_167_case_metrics_reproduced": false
+}

@@ -3,6 +3,21 @@
 Phụ trách: Hồ Phạm Đăng Nhân. Nhánh: `nhan-sprint-501`.
 Đây là bản chờ review, chưa xác nhận hoàn thành tích hợp router/Web Chat.
 
+## Cập nhật sau review Hưng — 13/11/2026
+
+- Đã gỡ bản thử `intent_routing.py`, `intent_handoff.py`, script và hai file test
+  consumer khỏi `backend/`. Bản gốc được lưu từng byte dưới
+  `outputs/s5_intent_review2_20261112/scope-archive/` với đuôi `.snapshot`.
+- Sau dọn phạm vi: **196/196 test đạt** (192 test Nhân và 4 test bảo vệ archive).
+  Biên bản: `outputs/s5_intent_review2_20261112/scope-cleanup-tests.xml`.
+- Lệnh audit bên dưới vẫn tái tạo 345 quyết định. Ba đường dẫn lịch sử (hai module
+  đã gỡ và auditor gốc) được đọc từ snapshot có hash gốc; các nguồn phân loại Nhân
+  còn hoạt động vẫn phải khớp hash hiện tại. Không sửa manifest cũ, điểm hoặc gold.
+- Các số 84,4% nhãn / khoảng 85% nhánh trên 167 câu là kết quả Hưng báo lại;
+  chưa có bộ 167 câu để Nhân tái tạo. Không trộn với kết quả 47 câu bên dưới.
+- V7 vẫn offline. Gỡ xung đột merge không phải cải thiện độ chính xác hay nghiệm thu
+  tìm kiếm tự động; các lỗi MIXED/TREND và cách diễn đạt chưa phủ vẫn cần xử lý riêng.
+
 ## Phạm vi Nhân đã chốt lại
 
 Theo yêu cầu của Nhân: chỉ bàn giao phần thư viện mẫu, vector hóa và đối chiếu

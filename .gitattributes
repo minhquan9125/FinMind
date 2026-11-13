@@ -84,3 +84,4 @@ backend/scripts/check_s5_intent_handoff.py text eol=lf
 backend/tests/test_s5_intent_consumer_contract.py text eol=lf
 backend/tests/test_s5_intent_handoff.py text eol=lf
 outputs/s5_intent_review2_20261112/*.bin binary
+outputs/s5_intent_review2_20261112/scope-archive/*.snapshot binary

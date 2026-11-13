@@ -67,6 +67,10 @@ Các tập cũ còn sai:
 
 ## Phân biệt baseline và thử nghiệm mới
 
+- Sau review Hưng ngày 13/11: bản thử consumer/helper cùng test liên quan
+  đã gỡ khỏi backend; nguồn gốc lưu dưới scope-archive/*.snapshot.
+  Audit dùng ba ánh xạ nguồn lịch sử rõ ràng, vẫn kiểm hash gốc;
+  các nguồn phân loại Nhân đang dùng phải khớp hash hiện tại.
 - IntentMatcher/CLI hiện có vẫn trả cosine-max-per-label-v1, đúng hợp đồng 04.1.
 - Kết quả V7 ở đây dùng classifier và bằng chứng quy tắc offline.
   Điểm classifier chưa hiệu chỉnh không phải cosine hoặc độ tin cậy.
@@ -78,6 +82,8 @@ Các tập cũ còn sai:
 - **192/192 test riêng phần Nhân đạt**, không lỗi, skip hoặc test consumer/handoff.
   XML: outputs/s5_intent_review2_20261112/nhan-review-only.xml.
   Đây không phải kiểm thử toàn ứng dụng hoặc E2E Web Chat.
+- Sau dọn consumer: 196/196 test đạt, gồm 192 test cũ và 4 test archive.
+  Biên bản: outputs/s5_intent_review2_20261112/scope-cleanup-tests.xml.
 - Phiên kiểm tra trước review này chưa hoàn tất lượt nạp lại BGE-M3 để
   mã hóa lại 56 query baseline: lần đầu vướng proxy, lần offline nạp model
   quá lâu nên đã dừng. Không ghi lượt đó là PASS; audit dưới đây dùng vector đã lưu.

@@ -320,3 +320,14 @@ Nguồn: [báo cáo Hưng do Nhân chuyển lại](reviews/HUNG-S5-WBS03.3-20261
 - Snapshot thử consumer cũ vẫn nằm trong lịch sử để audit tái tạo được; không
   thuộc phạm vi nghiệm thu của Nhân. Không đưa các chỉnh sửa contract consumer
   còn ở working tree vào lượt bàn giao này. Task 01.2 vẫn tạm dừng.
+
+## 13/11/2026 — Gỡ file consumer trùng với nhánh Huyền
+
+- Hưng báo merge-tree CONFLICT add/add tại `intent_routing.py`; đã tái hiện với
+  origin/huyen-sprint-sprint501 ở ef639bb9 trước sửa, không merge vào working tree.
+- Gỡ bản thử consumer, helper, script kiểm consumer và hai test phụ thuộc khỏi
+  backend; giữ nguyên byte ở scope-archive, không lấy quyền sở hữu file của Huyền.
+- Bốn test mới bảo vệ archive đã thất bại trước sửa và đạt sau sửa. Tổng 196 test
+  đạt; audit gốc vẫn tái tạo 345 quyết định qua ba ánh xạ nguồn lịch sử rõ ràng.
+- Không đổi V7, training, model, gold hoặc manifest đã đóng băng. 84,4% nhãn và
+  khoảng 85% nhánh trên 167 câu là nhận xét của Hưng, chưa tái tạo bộ đó tại máy Nhân.
