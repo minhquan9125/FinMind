@@ -102,3 +102,14 @@ def test_classifier_errors_and_timeouts_leave_the_chat_unchanged(monkeypatch):
 def test_without_a_classifier_nothing_changes():
     result = ask('vì sao fpt giảm', None)
     assert result['status'] == 'ASK_CLARIFICATION' and 'intent' not in result
+
+
+def test_valuation_wording_is_analysis_not_a_price_quote():
+    result = ask('fpt định giá thế nào', None)
+    assert result['scope']['source_type'] == 'MARKET_ANALYSIS'
+
+
+def test_company_overview_label_opens_the_company_profile():
+    result = ask('fpt là công ty gì', classifier('COMPANY_OVERVIEW'))
+    assert result['scope']['source_type'] == 'COMPANY_PROFILE' and result['scope']['companies'] == ['FPT']
+    assert result['intent']['applied'] is True

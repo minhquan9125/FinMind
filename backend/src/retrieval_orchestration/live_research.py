@@ -39,7 +39,8 @@ OUT_OF_SCOPE_MESSAGE = ('FinMind chỉ cung cấp dữ liệu và phân tích c�
                         'dự báo giá, giá mục tiêu hay trả lời câu hỏi ngoài lĩnh vực tài chính doanh nghiệp.')
 # shortcut: a label that overrides a clarification is turned into the canonical question the rules already
 # route (one company only); questions needing more slots (period, focus, several companies) wait for the slot layer.
-_CANONICAL_QUESTION = {'ANALYSIS': 'phân tích {}', 'PRICE': 'giá {} hôm nay', 'NEWS': 'tin {} hôm nay'}
+_CANONICAL_QUESTION = {'ANALYSIS': 'phân tích {}', 'PRICE': 'giá {} hôm nay', 'NEWS': 'tin {} hôm nay',
+                       'COMPANY_OVERVIEW': 'thông tin công ty {}'}
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
@@ -89,7 +90,7 @@ def _market_intent(norm, context, today):
         return {'kind': 'NEWS', 'day': None, 'action': 'SUMMARY' if 'tom tat' in norm else 'DETAIL', 'query': query}
     news = bool(re.search(r'\b(?:tin tuc|tin|news)\b', norm))
     # "đánh giá" (evaluate) is not "giá" (price).
-    priced = re.sub(r'\bdanh gia\b', ' ', norm)
+    priced = re.sub(r'\b(?:danh|dinh) gia\b', ' ', norm)  # "định giá" (valuation) is not "giá" either
     short_price = re.search(r'\bgia\s+([a-z]{3})\b', priced)
     price = bool(re.search(r'\b(?:gia co phieu|thi gia|gia hien tai|gia hom nay|gia ra sao|gia bao nhieu|gia nhu (?:the )?nao)\b', priced)
                  or (short_price and short_price[1] not in {'von', 'tri', 'cua', 'ban', 'mua', 'dat', 'san', 'cao', 'day', 'goc'}))

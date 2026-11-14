@@ -92,8 +92,8 @@ class IntentClassifier:
         if (label == 'MIXED' and len(components) < 2) or (unresolved and len(parts) > 1):
             status = 'UNRESOLVED'
         conversation_parts = [e['request'] for e in evidence if e['explicit_label'] == 'CONVERSATION']
-        if label == 'CONVERSATION' and not conversation_parts:
-            conversation_parts = [question]
+        # Only rule-detected follow-up wording waits for session context; a classifier guess of
+        # CONVERSATION (e.g. an off-topic question) stays PROPOSED so the fallback decides (review 14/11).
         if status == 'PROPOSED' and any(not standalone_conversation(part) for part in conversation_parts):
             if not context or context.get('verified') is not True:
                 status = 'NEEDS_CONTEXT'

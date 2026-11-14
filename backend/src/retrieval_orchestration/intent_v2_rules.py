@@ -18,7 +18,8 @@ CONTENT = r'\b(?:tom tat|tom luoc|tom gon|trich|chep|thuat lai|mo ta|noi gi|noi 
 FIND = r'\b(?:tim|liet ke|danh sach|co .* nao|nhung .* nao|duong dan|dau la|cho (?:toi )?(?:xem|bao cao)|mo phan)\b'
 METRIC = r'\b(?:doanh thu|doanh thuu|dt|loi nhuan|lnst|lntt|eps|bvps|roe|roa|p/e|so du tien|tong tai san|tai san|von chu so huu|vcsh|no vay|tong no|no phai tra|du phong|no xau|dong tien|luu chuyen tien|co tuc|bien loi nhuan|gia von|thu nhap binh quan|san luong|khoi luong (?!giao dich)|so (?:cua hang|nhan vien)|cua hang.*van hanh)\b'
 VALUE = r'\b(?:bao nhieu|bang may|con so|xin so|gia tri|so lieu|chenh lech|tinh|cong|ty dong|diem phan tram|bao nhieu.*phan tram)\b'
-JUDGEMENT = r'\b(?:phan tich|danh gia|nhan dinh|xu huong|xh|tang toc|cham lai|dien bien|chieu huong|vi sao|tai sao|suc khoe|trien vong|kha thi|ben vung|lanh manh|on dinh|cai thien|suy yeu|phan anh dieu gi|nguyen nhan|yeu to|nghieng ve|chat luong (?:loi nhuan|tai san)|manh hay yeu|yeu hay manh)\b'
+# "định giá" / "đắt hay rẻ" ask for a valuation judgement, not the market price (review 14/11).
+JUDGEMENT = r'\b(?:phan tich|danh gia|dinh gia|dat hay re|re hay dat|nhan dinh|xu huong|xh|tang toc|cham lai|dien bien|chieu huong|vi sao|tai sao|suc khoe|trien vong|kha thi|ben vung|lanh manh|on dinh|cai thien|suy yeu|phan anh dieu gi|nguyen nhan|yeu to|nghieng ve|chat luong (?:loi nhuan|tai san)|manh hay yeu|yeu hay manh)\b'
 TITLE = r'\b(?:ceo|cfo|tgd|ktt|chu tich|tong giam doc|giam doc|ke toan truong|hoi dong quan tri|hdqt|ban kiem soat|ban dieu hanh|nguoi dung dau|nguoi dieu hanh|chuc vu|chuc danh|giu chuc|vai tro)\b'
 RELATION = r'\b(?:cong ty (?:con|lien ket|me)|co dong|co phan|so huu|gop von|kiem soat|lien doanh|doi tac|quan he (?:hop tac|so huu)|doanh nghiep.*tham gia|ben mua|ben ban)\b'
 JOIN = re.compile(r'\s+(?:và|va|rồi|roi|kèm theo|kem theo|kèm|kem|đồng thời|dong thoi|sau đó|sau do)\s+|[;\n]+|\?\s+(?=\w)', re.IGNORECASE)
@@ -93,6 +94,9 @@ def explicit_intent(text):
         return 'OUT_OF_SCOPE'
     if has(r'\btu dat (?:muc )?chot loi\b', p):
         return 'OUT_OF_SCOPE'
+    # Asking whether to invest, or when a price will turn, is advice or prediction (review 14/11).
+    if has(r'\b(?:dang dau tu|nen dau tu|bao gio (?:tang|len|giam|xuong|hoi phuc))\b', p):
+        return 'OUT_OF_SCOPE'
     price_object = has(r'\b(?:gia|co phieu|cp)\b', p) or (has(r'\b(?:len|xuong)\b', p) and not has(METRIC, p))
     future_price = has(r'\b(?:tuan sau|thang sau|nam sau|nam toi)\b.*\b(?:(?:se )?(?:len|xuong|tang|giam)|gia nao|bao nhieu)\b', p) and price_object
     if has(r'\bgia(?: ban)? muc tieu\b', p) or future_price:
@@ -104,7 +108,7 @@ def explicit_intent(text):
     if has(r'\b(?:la gi|y nghia|khai niem|khac .*diem nao|khac .*o dau|giai thich su khac biet|co the lam rui ro)\b', p) and (metric or has(r'\b(?:don bay|tai chinh|chi so)\b', p)):
         return 'ANALYSIS'
     judgement = has(JUDGEMENT, p)
-    price = (has(r'\b(?:gia|thi gia)\b', p) and not has(r'\b(?:tham gia|chuyen gia|quoc gia|gia tri|gia von|gia thanh|danh gia|gia dinh)\b', p)) or has(r'\b(?:khoi luong|luong|gia tri).*giao dich|\b(?:khop lenh|giao dich thoa thuan|so co phieu.*khop lenh)\b', p)
+    price = (has(r'\b(?:gia|thi gia)\b', p) and not has(r'\b(?:tham gia|chuyen gia|quoc gia|gia tri|gia von|gia thanh|danh gia|dinh gia|gia dinh)\b', p)) or has(r'\b(?:khoi luong|luong|gia tri).*giao dich|\b(?:khop lenh|giao dich thoa thuan|so co phieu.*khop lenh)\b', p)
     if judgement:
         return 'ANALYSIS'
     if price:
@@ -144,7 +148,12 @@ def requests(text):
         strong_separator = has(r'[;?\n]', match.group()) or current.rstrip().endswith((';', '?'))
         independent_goal = (predicate or strong_separator) and left_label is not None and right_label is not None and left_label != right_label
         noun_goal = has(r'^(?:danh sach|bang)\b', plain(right).strip()) and right_label is not None and right_label != left_label
-        independent = (action or independent_goal or noun_goal) and (left_label is not None or has(ACTION, plain(current).strip()))
+        # "doanh thu FPT và tin tức mới về FPT": a news request after another goal is a second request
+        # (review 14/11). Narrow on purpose: other "A và B" pairs are often one goal with two pieces of
+        # evidence ("đánh giá tín hiệu từ giá và khối lượng", "nhận định dựa trên nợ và dòng tiền").
+        typed_pair = (right_label == 'NEWS' and left_label not in (None, 'NEWS')
+                      and has(r'^(?:cac |nhung )?(?:tin|bai (?:bao|tin|viet)|ban tin)\b', plain(right).strip()))
+        independent = (action or independent_goal or noun_goal or typed_pair) and (left_label is not None or has(ACTION, plain(current).strip()))
         if left_label is None and len(plain(current).split()) == 1:
             independent = False
         if left_label in {'NEWS', 'REPORT_CONTENT'} and has(r'^(?:hay )?tom (?:tat|luoc) (?:bai|tai lieu)[.!?]*$', plain(right).strip()):

@@ -36,10 +36,27 @@ Bật/tắt bằng `INTENT_ROUTER_V2` (mặc định `true`; đặt `false` đ�
 | fpt đang đắt hay rẻ · rsi của fpt · chỉ báo bollinger của mbb ra sao | Gemini PHAN_TICH, 0,9–1,0 → phân tích, khoảng 2 s |
 | giá fpt hôm nay · macd fpt đang thế nào | Luật cũ đã xử lý; không gọi Gemini |
 
+## Sửa thêm luật v2 của Nhân (review 14/11, Hưng sửa theo yêu cầu)
+
+Sửa trong `intent_v2_rules.py` và `intent_v2_classifier.py` của Nhân; test ở `backend/tests/test_intent_v2_review_fixes.py`.
+
+| Câu | Trước | Sau |
+|---|---|---|
+| fpt định giá thế nào / fpt đang đắt hay rẻ | PRICE / mô hình đoán | ANALYSIS (luật) |
+| fpt có đáng đầu tư không / có nên đầu tư vào mbb / mbb bao giờ tăng lại | ANALYSIS hoặc đoán | OUT_OF_SCOPE (luật) |
+| hôm nay ăn gì | CONVERSATION, `NEEDS_CONTEXT` | mô hình đoán, `PROPOSED`, nên Gemini quyết (NGOAI_PHAM_VI) |
+| doanh thu fpt 2025 và tin tức mới về fpt | NUMERIC, mất vế tin | MIXED [NEWS, NUMERIC] |
+
+- Chỉ câu nối tiếp do luật nhận ra mới chờ ngữ cảnh. CONVERSATION do mô hình đoán thì giữ `PROPOSED`.
+- Tách theo "và" chỉ khi vế sau mở đầu bằng tin tức. Bản rộng hơn đã làm tách sai 8 câu mẫu ("đánh giá tín hiệu từ giá và khối lượng…"), nên đã bỏ.
+- Kiểm lại: 580 câu thư viện và phát triển không câu nào đổi nhãn; `check_s5_intent_v2_fixes.py` 0 lỗi; test v2 của Nhân 183/183. Không fit lại classifier, không đổi vector hay nhãn chuẩn.
+
+Phía chat: "định giá" không còn bị luật chat đọc là giá; nhãn COMPANY_OVERVIEW mở hồ sơ công ty ("fpt là công ty gì").
+
 ## Còn hạn chế
 
-- "fpt định giá thế nào" vẫn ra giá, vì luật cũ và luật v2 đều đọc "giá" trong "định giá" (Nhân).
-- "hôm nay ăn gì" bị coi là câu nối tiếp, nên vẫn hỏi lại (Nhân).
+- Câu kép (MIXED) đã nhận đúng thành phần, nhưng chat chưa trả lời cả hai vế; hiện theo luật cũ, thường chỉ một vế.
+- "vn-index hôm nay": Gemini xếp GIA, nhưng chat chỉ chuyển nhánh khi có mã công ty, nên vẫn hỏi lại.
 - "p/e là gì": chat chưa có nhánh giải thích thuật ngữ khi không có mã công ty.
-- Câu kép (MIXED), so sánh nhiều mã và giới thiệu công ty chưa được chuyển nhánh, vẫn theo luật cũ.
+- Chỉ báo kỹ thuật (RSI, MACD…) vẫn do mô hình đoán. Gemini xử lý đúng, nhưng mỗi câu tốn khoảng 2 giây. Muốn nhanh hơn thì cần thêm câu mẫu và fit lại (Nhân).
 - Chưa có bộ kín, nên chưa đo tỷ lệ chọn đúng nhánh.
