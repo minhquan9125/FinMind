@@ -114,8 +114,13 @@ def summarize(results):
 
 
 def _answer_text(result):
-    answer = result.get('answering') or {}
-    return answer.get('draft') or result.get('message') or ''
+    """What the user reads: the same rendering the chat uses, so a run shows the real reply."""
+    from ..retrieval_orchestration.live_research import render_live_response
+    try:
+        return render_live_response(result) or ''
+    except Exception:
+        answer = result.get('answering') or {}
+        return answer.get('draft') or result.get('message') or ''
 
 
 async def run_evaluation(store, engine, ident, items, *, timeout=QUESTION_TIMEOUT):

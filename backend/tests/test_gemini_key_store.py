@@ -300,3 +300,72 @@ def test_a_change_reaches_the_running_chat_without_a_restart(client, tmp_path):
     key_pool.set_active(KeyPool([ENV_KEY]))
     response = c.post(BASE, json={'label': 'Một', 'key': K1}).json()
     assert response['restart_needed'] is False and source()[0] == [ENV_KEY, K1]
+
+
+# ---- keys from .env can be switched off from the page ------------------------------------------------
+
+ENV_ID = key_store.env_key_id(ENV_KEY)
+
+
+def test_a_switched_off_env_key_leaves_the_rotation_and_comes_back(tmp_path):
+    store = KeyStore(tmp_path, SECRET)
+    store.add('Web', K1, 'a')
+    source = CachedKeys([ENV_KEY], store, ttl=0)
+    assert source()[0] == [ENV_KEY, K1]
+    store.set_env_enabled(fingerprint(ENV_KEY), False, 'admin')
+    keys, meta = source()
+    assert keys == [K1] and meta[0]['source'] == 'web'
+    store.set_env_enabled(fingerprint(ENV_KEY), True, 'admin')
+    assert source()[0] == [ENV_KEY, K1]
+
+
+def test_the_chat_is_never_left_without_a_key_even_if_the_store_says_everything_is_off(tmp_path):
+    store = KeyStore(tmp_path, SECRET)
+    store.set_env_enabled(fingerprint(ENV_KEY), False, 'admin')
+    assert CachedKeys([ENV_KEY], store, ttl=0)()[0] == [ENV_KEY]
+
+
+def test_env_keys_are_listed_with_their_state_and_never_in_clear(client):
+    c, _, _, _ = client
+    listing = c.get(BASE)
+    assert listing.json()['env'] == [{'id': ENV_ID, 'position': 1, 'last4': ENV_KEY[-4:], 'enabled': True}]
+    assert ENV_KEY not in listing.text and ENV_KEY[4:] not in listing.text
+
+
+def test_the_last_working_key_cannot_be_switched_off(client):
+    c, _, _, _ = client
+    response = c.patch(f'{BASE}/env/{ENV_ID}', json={'enabled': False})
+    assert response.status_code == 409 and response.json()['detail'] == 'KEY_LAST_ACTIVE'
+    assert c.get(BASE).json()['env'][0]['enabled'] is True
+
+
+def test_switching_off_the_env_key_moves_the_running_chat_to_the_new_key_at_once(client, tmp_path):
+    c, _, _, _ = client
+    source = CachedKeys([ENV_KEY], KeyStore(tmp_path, SECRET), ttl=3600)
+    key_store.set_key_source(source)
+    key_pool.set_active(KeyPool([ENV_KEY]))
+    assert c.post(BASE, json={'label': 'vu', 'key': K1}).status_code == 201
+    assert source()[0] == [ENV_KEY, K1]
+    response = c.patch(f'{BASE}/env/{ENV_ID}', json={'enabled': False})
+    assert response.status_code == 200 and response.json()['item'] == {'id': ENV_ID, 'enabled': False}
+    assert source()[0] == [K1]                                              # no restart, no waiting for the old key
+    assert c.get(BASE).json()['env'][0]['enabled'] is False
+    assert c.patch(f'{BASE}/env/{ENV_ID}', json={'enabled': True}).status_code == 200
+    assert source()[0] == [ENV_KEY, K1]
+    actions = [r['action'] for r in api.queue().audit_page(category='operation')['items']]
+    assert {'GEMINI_ENV_KEY_DISABLE', 'GEMINI_ENV_KEY_ENABLE'} <= set(actions)
+
+
+def test_the_web_key_must_still_be_enabled_to_allow_switching_the_env_key_off(client):
+    c, _, _, _ = client
+    item = c.post(BASE, json={'label': 'vu', 'key': K1}).json()['item']
+    c.patch(f"{BASE}/{item['id']}", json={'enabled': False})
+    assert c.patch(f'{BASE}/env/{ENV_ID}', json={'enabled': False}).json()['detail'] == 'KEY_LAST_ACTIVE'
+
+
+def test_env_key_endpoint_checks_input_and_permission(client):
+    c, app, _, _ = client
+    assert c.patch(f'{BASE}/env/{"0" * 16}', json={'enabled': False}).status_code == 404
+    assert c.patch(f'{BASE}/env/{ENV_ID}', json={'enabled': 'no'}).status_code == 422
+    app.dependency_overrides.clear()
+    assert c.patch(f'{BASE}/env/{ENV_ID}', json={'enabled': True}).status_code == 401

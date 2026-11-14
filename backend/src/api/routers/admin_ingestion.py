@@ -301,11 +301,15 @@ def _key_store():
     return KeyStore(settings.admin_ingestion_directory, settings.gemini_keys_secret.get_secret_value())
 
 
-def _env_key_fingerprints():
+def _env_keys():
     from ...b1_answering.providers.key_pool import parse_keys
-    from ...b1_answering.providers.key_store import fingerprint
     settings = get_settings()
-    return {fingerprint(k) for k in parse_keys(settings.gemini_api_key.get_secret_value(), settings.gemini_api_keys.get_secret_value())}
+    return parse_keys(settings.gemini_api_key.get_secret_value(), settings.gemini_api_keys.get_secret_value())
+
+
+def _env_key_fingerprints():
+    from ...b1_answering.providers.key_store import fingerprint
+    return {fingerprint(k) for k in _env_keys()}
 
 
 def _key_error(exc):
@@ -327,9 +331,13 @@ async def _json_body(request: Request):
 
 def _key_view():
     from ...b1_answering.providers.key_pool import active_status
-    from ...b1_answering.providers.key_store import MAX_KEYS
+    from ...b1_answering.providers.key_store import MAX_KEYS, env_key_id, fingerprint
     store = _key_store()
-    return {**active_status(), 'managed': store.list() if store.usable else [],
+    switched_off = store.disabled_env()
+    # Keys in .env, including the ones switched off (those are no longer in the rotation list).
+    env = [{'id': env_key_id(k), 'position': number, 'last4': k[-4:], 'enabled': fingerprint(k) not in switched_off}
+           for number, k in enumerate(_env_keys(), 1)]
+    return {**active_status(), 'env': env, 'managed': store.list() if store.usable else [],
             'store': {'usable': store.usable, 'limit': MAX_KEYS}}
 
 
@@ -378,6 +386,36 @@ async def test_gemini_key(key_id: uuid.UUID):
     outcome = await probe_key(secret)
     await run_in_threadpool(lambda: store.mark_verified(str(key_id), outcome in ('OK', 'QUOTA')))
     return {'result': outcome}
+
+
+@router.patch('/gemini-keys/env/{env_id}')
+async def toggle_env_gemini_key(env_id: str, request: Request, principal=Depends(access)):
+    """Switch a key from backend/.env off or on without editing the file. The last working key cannot be switched off."""
+    from ...b1_answering.providers.key_store import env_key_id, fingerprint, refresh_active_source
+    data = await _json_body(request)
+    if not isinstance(data.get('enabled'), bool):
+        raise HTTPException(422, detail='KEY_BODY_INVALID')
+    keys = _env_keys()
+    target = next((k for k in keys if env_key_id(k) == env_id), None)
+    if target is None:
+        raise HTTPException(404, detail='KEY_NOT_FOUND')
+    store = _key_store()
+
+    def change():
+        if not data['enabled']:
+            switched_off = store.disabled_env()
+            others = [k for k in keys if k != target and fingerprint(k) not in switched_off]
+            if not others and not (store.active_keys()[0] if store.usable else []):
+                raise ValueError('KEY_LAST_ACTIVE')
+        store.set_env_enabled(fingerprint(target), data['enabled'], str(principal.user_id))
+    try:
+        await run_in_threadpool(change)
+    except ValueError as exc:
+        _key_error(exc)
+    queue().audit(str(principal.user_id), 'GEMINI_ENV_KEY_ENABLE' if data['enabled'] else 'GEMINI_ENV_KEY_DISABLE',
+                  f'.env …{target[-4:]}')
+    refresh_active_source()
+    return {'item': {'id': env_id, 'enabled': data['enabled']}}
 
 
 @router.patch('/gemini-keys/{key_id}')

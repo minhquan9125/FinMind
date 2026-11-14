@@ -6,16 +6,35 @@ import uuid
 import unicodedata
 
 
-def reporting_entity_matches(header, expected):
-    """Read the explicit reporting-scope field; 'riêng quý' is a period basis."""
-    if expected == 'UNKNOWN':
-        return True
+_ENTITY_VALUES = {'PARENT': {'parent', 'parent_only', 'separate', 'rieng', 'bao cao rieng', 'cong ty me'},
+                  'CONSOLIDATED': {'consolidated', 'hop nhat'}}
+
+
+def declared_reporting_entity(header):
+    """'CONSOLIDATED' or 'PARENT' when the header states it; None when it does not.
+
+    The "Phạm vi:" field often holds only the statement type (INCOME_STATEMENT, BALANCE_SHEET), which
+    says nothing about the reporting entity; 'riêng quý' is a period basis, not an entity.
+    """
     norm = ''.join(c for c in unicodedata.normalize('NFD', header.lower().replace('đ', 'd'))
                    if unicodedata.category(c) != 'Mn')
     match = re.search(r'\b(?:pham vi|reporting_entity)\s*:\s*([^|\n]+)', norm)
-    values = {'PARENT': {'parent', 'parent_only', 'separate', 'rieng', 'bao cao rieng', 'cong ty me'},
-              'CONSOLIDATED': {'consolidated', 'hop nhat'}}
-    return bool(match and match[1].strip() in values.get(expected, set()))
+    value = match[1].strip() if match else None
+    return next((entity for entity, values in _ENTITY_VALUES.items() if value in values), None)
+
+
+def reporting_entity_matches(header, expected):
+    """A chunk that declares the other entity never matches.
+
+    A chunk that declares nothing is treated as consolidated, which is how the statements are ingested,
+    so "hợp nhất" questions are answerable. It is never accepted for "riêng" because that cannot be verified.
+    """
+    if expected == 'UNKNOWN':
+        return True
+    if expected not in _ENTITY_VALUES:
+        return False
+    declared = declared_reporting_entity(header)
+    return declared == expected if declared else expected == 'CONSOLIDATED'
 
 
 def validate_live_item(item):

@@ -222,3 +222,58 @@ def test_status_endpoint_requires_admin_and_hides_keys(client):
     body = c.get('/api/v1/admin/ingestion/gemini-keys')
     assert body.json()['configured'] is True and body.json()['keys'][0]['state'] == 'quota'
     assert K1 not in body.text and K2 not in body.text
+
+
+# ---- model busy (HTTP 503): ask again, never rotate or cool the key ------------------------------
+
+def busy():
+    return httpx.Response(503, json={'error': {'status': 'UNAVAILABLE', 'message': 'This model is currently experiencing high demand.'}})
+
+
+def no_wait(p):
+    waits = []
+
+    async def sleep(seconds):
+        waits.append(seconds)
+    p._sleep = sleep
+    return waits
+
+
+def test_a_busy_model_is_asked_again_and_the_answer_is_returned(monkeypatch):
+    monkeypatch.setattr('src.b1_answering.providers.gemini.RETRY_DELAY_SECONDS', 0)
+    handler, used = recorder(busy(), ok_response)
+    p = provider(handler, keys=(K1, K2))
+    assert generate(p)['payload'] == {'answer': 'x'}
+    assert len(used) == 2
+    assert [item['state'] for item in p.pool.status()] == ['ready', 'ready']   # no key was cooled or blamed
+
+
+def test_a_model_that_stays_busy_stops_after_one_retry(monkeypatch):
+    monkeypatch.setattr('src.b1_answering.providers.gemini.RETRY_DELAY_SECONDS', 0)
+    handler, used = recorder(busy())
+    p = provider(handler, keys=(K1, K2))
+    with pytest.raises(GeminiError) as caught:
+        generate(p)
+    assert caught.value.code == 'GEMINI_UNAVAILABLE'
+    assert len(used) == 2
+    assert [item['state'] for item in p.pool.status()] == ['ready', 'ready']
+
+
+def test_other_server_errors_are_still_not_retried():
+    handler, used = recorder(httpx.Response(500, json={'error': {'message': 'boom'}}))
+    p = provider(handler)
+    waits = []
+    with pytest.raises(GeminiError) as caught:
+        generate(p)
+    assert caught.value.code == 'GEMINI_UNAVAILABLE'
+    assert len(used) == 1 and waits == []
+
+
+def test_a_busy_model_never_leaks_the_key_in_logs(caplog):
+    leaky = httpx.Response(503, json={'error': {'status': 'UNAVAILABLE', 'message': f'busy for {K1}'}})
+    handler, _ = recorder(leaky)
+    p = provider(handler, keys=(K1,))
+    no_wait(p)
+    with caplog.at_level(logging.DEBUG), pytest.raises(GeminiError):
+        generate(p)
+    assert K1 not in caplog.text

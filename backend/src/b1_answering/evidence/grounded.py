@@ -51,6 +51,9 @@ def build_grounded_request(question, evidence, limits, scope=None):
     content = request['contents'][0]['parts'][0]
     body = json.loads(content['text'])
     body['scope'] = deepcopy(scope or {})
+    for relation in body['scope'].get('graph_relations') or []:
+        # Hash bindings are for audit, not for the model; they only fill the input limit.
+        relation.pop('source_bindings', None)
     if body['scope'].get('graph_relations'):
         request['systemInstruction']['parts'][0]['text'] += (
             ' Quan hệ đã truy xuất từ graph được giới hạn trong graph_relations của scope. '
@@ -231,15 +234,35 @@ def _unsupported_numbers(text, facts):
     return missing
 
 
+_MAGNITUDE = r'(?:nghìn|nghin|ngàn|ngan|triệu|trieu|tỷ|tỉ)'
+_CURRENCY_WORD = r'(?:đồng|dong)'
+
+
 def _units(text):
-    # Do not fold the whole passage: Vietnamese "công ty" is not the unit "tỷ".
-    # "tỷ lệ/suất/trọng/giá" are ratio words, not an amount in tỷ.
-    text = re.sub(r'\bt[ỷỉ]\s+(?:lệ|suất|trọng|giá)\b', ' ', text.lower())
-    tokens = re.findall(r'\b(?:đồng|dong|vnd|usd|eur|nghìn|nghin|ngàn|ngan|triệu|trieu|tỷ|tỉ)\b|%', text.lower())
-    units = {_fold(token) for token in tokens}
-    if re.search(r'\d\s+ty\b', text.lower()):
-        units.add('ty')
+    """Units that the text states: %, currency codes, and magnitude/currency words in a money context.
+
+    "tỷ", "triệu" and "đồng" are also ordinary syllables ("tỷ lệ", "đồng bộ", "hội đồng", "công ty").
+    They are units only next to a number, next to each other ("tỷ đồng") or in a "Đơn vị:" declaration.
+    """
+    low = text.lower()
+    units = {'%'} if '%' in low else set()
+    units |= set(re.findall(r'\b(vnd|usd|eur)\b', low))
+    units |= {_fold(m) for m in re.findall(r'\d\s*(' + _MAGNITUDE + r'|ty)\b', low)}
+    units |= {_fold(m) for m in re.findall(r'\b(' + _MAGNITUDE + r')\s+(?:' + _CURRENCY_WORD + r'|vnd|usd|eur)\b', low)}
+    units |= {_fold(m) for m in re.findall(r'(?:\d|\b' + _MAGNITUDE + r')\s*(' + _CURRENCY_WORD + r')\b', low)}
+    for declared in re.findall(r'(?:đơn vị|don vi)[^|\n;]{0,30}', low):
+        units |= {_fold(m) for m in re.findall(r'\b(' + _MAGNITUDE + r'|' + _CURRENCY_WORD + r')\b', declared)}
     return units
+
+
+def _document_header(item):
+    """The verified identity of a chunk (company, document, period), without its page locator."""
+    header = item['passage'].splitlines()[0]
+    if item.get('source_type') == 'BCTN':
+        header = ' | '.join(part for part in (p.strip() for p in header.split('|'))
+                            if not _fold(part).startswith('pdf trang'))
+    # The document kind is known for the item, so its usual abbreviation may be used in an answer.
+    return header + (' | ' + item['source_type'] if item.get('source_type') in ('BCTC', 'BCTN') else '')
 
 
 def _facts(item, quotes, scope):
@@ -254,7 +277,7 @@ def _facts(item, quotes, scope):
         lines = [line for quote in quotes for line in quote.splitlines() if f'({metric})' in line]
         if not lines:
             raise CitationError('UNSUPPORTED_CLAIM')
-        return header+'\n'+'\n'.join(lines)
+        return _document_header(item)+'\n'+'\n'.join(lines)
     if item.get('source_type') == 'NEWS':
         # Titles are part of the verified article, and often contain the company
         # name omitted from its short description. Never admit unrelated body rows.
@@ -262,10 +285,69 @@ def _facts(item, quotes, scope):
         if item.get('verification_basis') == 'FEED_SNAPSHOT_BINDING':
             published = '\nNgày đăng: '+item['snapshot']['published_at']
         return header+published+'\n'+'\n'.join(quotes)
+    if item.get('source_type') in ('BCTC', 'BCTN'):
+        # Which company and which report a chunk belongs to is verified metadata of that chunk, exactly as
+        # for news and statement rows; an answer may name them ("Theo BCTN 2024 của FPT ...").
+        return _document_header(item)+'\n'+'\n'.join(quotes)
     if item.get('source_type') in ('FINANCIAL_HEALTH', 'PRICE_TREND'):
         # FinMind snapshots: the first line only names symbol, period/day and source.
         return header+'\n'+'\n'.join(quotes)
     return '\n'.join(quotes)
+
+
+MIN_SKIPPED_LINE_WORDS = 3
+
+
+def locate_quote(passage, quote, *, column_ocr=False):
+    """Where a support quote is in the source: (exact source span, the quoted pieces), or None.
+
+    A verbatim substring always matches. A scanned two-column page is stored line by line across both
+    columns, so one sentence sits on every other line and can never be quoted contiguously. For such
+    sources (`column_ocr`) a quote may also follow the source lines: it may start inside its first line and
+    end inside its last line, every line in between is taken whole, and the pieces are either all on
+    consecutive lines or all on alternate lines. A skipped line must be a real line of the other column
+    (at least MIN_SKIPPED_LINE_WORDS words), so a quote cannot drop a single word such as "không".
+    Every quoted word is still source text, in source order, with the source's own spelling.
+    """
+    if quote in passage:
+        return quote, [quote]
+    words = quote.split()
+    if not column_ocr or len(words) < 4:
+        return None
+    lines, offset = [], 0
+    for raw in passage.split('\n'):
+        tokens = [(m.group(), offset + m.start(), offset + m.end()) for m in re.finditer(r'\S+', raw)]
+        if tokens:
+            lines.append(tokens)
+        offset += len(raw) + 1
+
+    def follow(line, at, done, stride):
+        tokens, taken = lines[line], 0
+        while at + taken < len(tokens) and done + taken < len(words) and tokens[at + taken][0] == words[done + taken]:
+            taken += 1
+        if not taken:
+            return None
+        piece = (tokens[at][1], tokens[at + taken - 1][2])
+        if done + taken == len(words):
+            return [piece]
+        if at + taken < len(tokens):
+            return None                              # a piece must run to the end of its line
+        for gap in ((0, 1) if stride is None else (stride,)):
+            nxt = line + 1 + gap
+            if nxt >= len(lines) or (gap and len(lines[line + 1]) < MIN_SKIPPED_LINE_WORDS):
+                continue
+            rest = follow(nxt, 0, done + taken, gap)
+            if rest:
+                return [piece] + rest
+        return None
+
+    for line, tokens in enumerate(lines):
+        for at, token in enumerate(tokens):
+            if token[0] == words[0]:
+                pieces = follow(line, at, 0, None)
+                if pieces:
+                    return passage[pieces[0][0]:pieces[-1][1]], [passage[a:b] for a, b in pieces]
+    return None
 
 
 def _check_facts(text, facts):
@@ -298,6 +380,7 @@ _METRIC_LABELS = {
     'CHARTER_CAPITAL': 'vốn điều lệ',
     'TOTAL_LIABILITIES': 'tổng nợ phải trả',
     'TOTAL_EQUITY': 'tổng vốn chủ sở hữu',
+    'OWNERS_EQUITY': 'vốn chủ sở hữu',
 }
 
 
@@ -307,7 +390,7 @@ def source_row_fallback(evidence, scope, *, reason_code):
     Restrict this fallback to a single company/period and a known financial metric;
     it never computes, rounds, or invents units. The original row remains clickable.
     """
-    if (scope.get('source_type') != 'BCTC' or scope.get('metric_code') not in _METRIC_LABELS
+    if (scope.get('source_type') != 'BCTC' or not isinstance(scope.get('metric_code'), str) or not scope['metric_code']
             or len(scope.get('companies', [])) != 1 or len(scope.get('periods', [])) != 1):
         return None
     company, period = scope['companies'][0], scope['periods'][0]
@@ -340,7 +423,13 @@ def source_row_fallback(evidence, scope, *, reason_code):
         match = re.search(pattern, line)
         if not _numbers(match.group(2)).issubset(_numbers(line)):
             continue
-        label = _METRIC_LABELS[scope['metric_code']]
+        # A metric without a hand-written label is named as its own source row names it.
+        printed = match.group(1).rsplit('(', 1)[0].strip()
+        label = _METRIC_LABELS.get(scope['metric_code'])
+        if not label and printed and printed != scope['metric_code']:
+            label = printed[0].lower() + printed[1:]
+        if not label:
+            continue
         answer_text = f'{company} ghi nhận {label} trong {period_text} là {match.group(2)}.'
         bound = validate_draft({'claims': [{'text': line, 'evidence_ids': [eid]}]}, evidence)
         citation = {**bound['citations'][0], 'citation_number': 1}
@@ -371,6 +460,7 @@ def validate_grounded(payload, evidence, scope=None):
     if news and len(claims) > max_claims:
         raise CitationError('INVALID_CITATION')
     output, citations, numbers, parts, fact_contexts = [], [], {}, [], []
+    partial, dropped = scope.get('source_type') not in ('BCTC', 'NEWS', None), 0
     for claim in claims:
         if not isinstance(claim, dict) or set(claim) != {'text', 'evidence_ids', 'support_quotes'}:
             raise CitationError('INVALID_CITATION')
@@ -384,21 +474,44 @@ def validate_grounded(payload, evidence, scope=None):
         if news and (len(text) > max_text or len(ids) > 1 or len(quotes) > max_quotes):
             raise CitationError('INVALID_CITATION')
         by_id = {eid: [] for eid in ids}
-        for support in quotes:
+        quoted = {eid: [] for eid in ids}
+        bound_claim = deepcopy(claim)
+        unsupported = False
+        for position, support in enumerate(quotes):
             if not isinstance(support, dict) or set(support) != {'evidence_id', 'quote'}:
                 raise CitationError('INVALID_CITATION')
             eid, quote = support['evidence_id'], support['quote']
             if not isinstance(eid, str) or eid not in by_id or not isinstance(quote, str) or not quote.strip():
                 raise CitationError('INVALID_CITATION')
-            if quote not in evidence[eid]['passage']:
-                raise CitationError('UNSUPPORTED_CLAIM')
+            located = locate_quote(evidence[eid]['passage'], quote,
+                                   column_ocr=evidence[eid].get('source_type') == 'BCTN')
+            if located is None:
+                if not partial:
+                    raise CitationError('UNSUPPORTED_CLAIM')
+                unsupported = True
+                continue
             if news and len(quote) > max_quote:
                 raise CitationError('INVALID_CITATION')
-            by_id[eid].append(quote)
-        if not all(by_id.values()):
-            raise CitationError('INVALID_CITATION')
-        contexts = [_facts(evidence[eid], by_id[eid], scope) for eid in ids]
-        _check_facts(text, '\n'.join(contexts))
+            # Store the exact source span as the quote; check facts against the quoted words only,
+            # never against lines of the other column that lie inside that span.
+            by_id[eid].append(located[0])
+            quoted[eid].extend(located[1])
+            bound_claim['support_quotes'][position]['quote'] = located[0]
+        try:
+            if unsupported:
+                raise CitationError('UNSUPPORTED_CLAIM')
+            if not all(by_id.values()):
+                raise CitationError('INVALID_CITATION')
+            contexts = [_facts(evidence[eid], quoted[eid], scope) for eid in ids]
+            _check_facts(text, '\n'.join(contexts))
+        except CitationError as exc:
+            # A long answer read from documents keeps the claims that are verified; one claim that cannot
+            # be verified is left out instead of discarding everything. Statement rows and news stay
+            # all-or-nothing: they have their own exact-row and article fallbacks.
+            if exc.code == 'UNSUPPORTED_CLAIM' and partial:
+                dropped += 1
+                continue
+            raise
         fact_contexts.extend(contexts)
         # Reuse the original exact-quote binder to preserve full locator/hash rules.
         bound = validate_draft({'claims': [
@@ -409,9 +522,13 @@ def validate_grounded(payload, evidence, scope=None):
             if eid not in numbers:
                 numbers[eid] = len(numbers)+1
                 citations.append({**citation, 'citation_number': numbers[eid]})
-        output.append(deepcopy(claim))
+        output.append(bound_claim)
         parts.append(text+' '+''.join(f'[{numbers[eid]}]' for eid in ids))
+    if not output:
+        raise CitationError('UNSUPPORTED_CLAIM')
     cautions = []
+    if dropped:
+        cautions.append('Một phần nội dung chưa đối chiếu được với nguồn nên không hiển thị.')
     if scope.get('source_type') == 'BCTC':
         if any(not _units(context) or 'don vi chua xac minh' in _fold(context) for context in fact_contexts):
             cautions.append('Nguồn chưa xác minh đơn vị của chỉ tiêu; giữ nguyên giá trị gốc.')

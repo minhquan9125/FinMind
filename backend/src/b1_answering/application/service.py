@@ -143,6 +143,14 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
         budget.settle(ticket, generated.get('usage'))
     except PolicyError as exc:
         return failure(exc.code)
+    payload = generated.get('payload')
+    if (natural and isinstance(payload, dict) and payload.get('claims') == []
+            and (result.get('scope') or {}).get('source_type') not in ('BCTC', 'NEWS')):
+        # The model read the passages and found no answer in them (the prompt asks for empty claims then).
+        # That is a finding about the documents, not a failed verification, so say it plainly.
+        trace.append({'event': 'model_found_no_answer_in_sources'})
+        return finish('INSUFFICIENT_EVIDENCE', 'NOT_STATED_IN_SOURCE',
+                      'Các đoạn tài liệu tìm được không nêu thông tin được hỏi.')
     try:
         draft = (grounded.validate_grounded(generated.get('payload'), evidence, result.get('scope'))
                  if natural else validate_draft(generated.get('payload'), evidence))
