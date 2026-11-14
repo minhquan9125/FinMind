@@ -24,6 +24,8 @@ wheels/
 .env.*
 !.env.example
 /tmp/backup-demo-slim.tar
+/tmp/
+/.tmp-*/
 /tmp/*.log
 /tmp/*.png
 /tmp/pdfs/*.png
