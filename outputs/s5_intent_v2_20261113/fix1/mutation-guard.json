@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "mutation": "FULL_GREETING_CHECK_CHANGED_TO_PREFIX_CHECK_IN_RAM",
+  "target_tests": 3,
+  "expected_test_process_exit": 1,
+  "actual_test_process_exit": 1,
+  "production_files_unchanged": true,
+  "source_sha256": "9ffbabc22b1ee201f047f065607ee824d156991471754a16cb9832a8c5e6d7b8"
+}

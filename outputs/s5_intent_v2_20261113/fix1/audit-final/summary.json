@@ -1,0 +1,2227 @@
+{
+  "status": "PASS",
+  "metrics": {
+    "library": {
+      "cases": 470,
+      "resolution": {
+        "labeled_cases": 470,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "macro_f1": 1.0,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 44,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "CONVERSATION": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "ENTITY_RELATION": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "MIXED": {
+            "support": 45,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "NEWS": {
+            "support": 41,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "NUMERIC": {
+            "support": 45,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "OUT_OF_SCOPE": {
+            "support": 42,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 45,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PRICE": {
+            "support": 42,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "REPORT_CONTENT": {
+            "support": 46,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 44,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 40,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 40,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 40,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 45,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NEWS": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 41,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 45,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 42,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 45,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 42,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 46
+          }
+        },
+        "wrong_case_ids": []
+      },
+      "detailed": {
+        "label_correct_count": 470,
+        "complete_classification_correct_count": 470,
+        "complete_classification_accuracy": 1.0,
+        "component_mismatch_ids": [],
+        "lost_restricted_component_ids": [],
+        "unexpected_restriction_ids": [],
+        "unresolved_ids": [],
+        "needs_context_ids": [
+          "L2-CONVERSATION-005-0",
+          "L2-CONVERSATION-005-1",
+          "L2-CONVERSATION-006-0",
+          "L2-CONVERSATION-006-1",
+          "L2-CONVERSATION-007-0",
+          "L2-CONVERSATION-007-1",
+          "L2-CONVERSATION-008-0",
+          "L2-CONVERSATION-008-1",
+          "L2-CONVERSATION-009-0",
+          "L2-CONVERSATION-009-1",
+          "L2-CONVERSATION-010-0",
+          "L2-CONVERSATION-010-1",
+          "L2-CONVERSATION-011-0",
+          "L2-CONVERSATION-011-1",
+          "L2-CONVERSATION-012-0",
+          "L2-CONVERSATION-012-1",
+          "L2-CONVERSATION-013-0",
+          "L2-CONVERSATION-013-1",
+          "L2-CONVERSATION-014-0",
+          "L2-CONVERSATION-014-1",
+          "L2-CONVERSATION-015-0",
+          "L2-CONVERSATION-015-1",
+          "L2-CONVERSATION-016-0",
+          "L2-CONVERSATION-016-1",
+          "L2-CONVERSATION-017-0",
+          "L2-CONVERSATION-017-1",
+          "L2-CONVERSATION-018-0",
+          "L2-CONVERSATION-018-1",
+          "L2-CONVERSATION-020-0",
+          "L2-CONVERSATION-020-1",
+          "L2-MIXED-016-0",
+          "L2-MIXED-016-1",
+          "L2-MIXED-016-2"
+        ],
+        "status_mismatch_ids": [],
+        "not_proposed_ids": [
+          "L2-CONVERSATION-005-0",
+          "L2-CONVERSATION-005-1",
+          "L2-CONVERSATION-006-0",
+          "L2-CONVERSATION-006-1",
+          "L2-CONVERSATION-007-0",
+          "L2-CONVERSATION-007-1",
+          "L2-CONVERSATION-008-0",
+          "L2-CONVERSATION-008-1",
+          "L2-CONVERSATION-009-0",
+          "L2-CONVERSATION-009-1",
+          "L2-CONVERSATION-010-0",
+          "L2-CONVERSATION-010-1",
+          "L2-CONVERSATION-011-0",
+          "L2-CONVERSATION-011-1",
+          "L2-CONVERSATION-012-0",
+          "L2-CONVERSATION-012-1",
+          "L2-CONVERSATION-013-0",
+          "L2-CONVERSATION-013-1",
+          "L2-CONVERSATION-014-0",
+          "L2-CONVERSATION-014-1",
+          "L2-CONVERSATION-015-0",
+          "L2-CONVERSATION-015-1",
+          "L2-CONVERSATION-016-0",
+          "L2-CONVERSATION-016-1",
+          "L2-CONVERSATION-017-0",
+          "L2-CONVERSATION-017-1",
+          "L2-CONVERSATION-018-0",
+          "L2-CONVERSATION-018-1",
+          "L2-CONVERSATION-020-0",
+          "L2-CONVERSATION-020-1",
+          "L2-MIXED-016-0",
+          "L2-MIXED-016-1",
+          "L2-MIXED-016-2"
+        ],
+        "status_counts": {
+          "PROPOSED": 437,
+          "NEEDS_CONTEXT": 33
+        },
+        "mixed_exact_components": 45,
+        "mixed_support": 45,
+        "routing_not_executed": true
+      },
+      "base_ranking": {
+        "labeled_cases": 470,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.9936170212765958,
+        "top3_recall": 1.0,
+        "macro_f1": 0.9938867726832483,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 44,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "CONVERSATION": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "ENTITY_RELATION": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "MIXED": {
+            "support": 45,
+            "precision": 1.0,
+            "recall": 0.9777777777777777,
+            "f1": 0.9887640449438202
+          },
+          "NEWS": {
+            "support": 41,
+            "precision": 0.9761904761904762,
+            "recall": 1.0,
+            "f1": 0.9879518072289156
+          },
+          "NUMERIC": {
+            "support": 45,
+            "precision": 0.9777777777777777,
+            "recall": 0.9777777777777777,
+            "f1": 0.9777777777777777
+          },
+          "OUT_OF_SCOPE": {
+            "support": 42,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 45,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PRICE": {
+            "support": 42,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "REPORT_CONTENT": {
+            "support": 46,
+            "precision": 0.9782608695652174,
+            "recall": 0.9782608695652174,
+            "f1": 0.9782608695652174
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 44,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 40,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 40,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 40,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 44,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 1
+          },
+          "NEWS": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 41,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 1,
+            "NUMERIC": 44,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 42,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 45,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 42,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 45
+          }
+        },
+        "wrong_case_ids": [
+          "L2-NUMERIC-013-1",
+          "L2-REPORT_CONTENT-010-1",
+          "L2-MIXED-015-0"
+        ]
+      },
+      "cosine": {
+        "labeled_cases": 470,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "macro_f1": 1.0,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 44,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "CONVERSATION": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "ENTITY_RELATION": {
+            "support": 40,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "MIXED": {
+            "support": 45,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "NEWS": {
+            "support": 41,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "NUMERIC": {
+            "support": 45,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "OUT_OF_SCOPE": {
+            "support": 42,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 45,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PRICE": {
+            "support": 42,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "REPORT_CONTENT": {
+            "support": 46,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 44,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 40,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 40,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 40,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 45,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NEWS": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 41,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 45,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 42,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 45,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 42,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 46
+          }
+        },
+        "wrong_case_ids": []
+      }
+    },
+    "development": {
+      "cases": 110,
+      "resolution": {
+        "labeled_cases": 110,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "macro_f1": 1.0,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "CONVERSATION": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "ENTITY_RELATION": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "MIXED": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "NEWS": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "NUMERIC": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "OUT_OF_SCOPE": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PERSON_ROLE": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PRICE": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "REPORT_CONTENT": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 10,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 10,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 10,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 10,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 10,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NEWS": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 10,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 10,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 10,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 10,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 10,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 10
+          }
+        },
+        "wrong_case_ids": []
+      },
+      "detailed": {
+        "label_correct_count": 110,
+        "complete_classification_correct_count": 110,
+        "complete_classification_accuracy": 1.0,
+        "component_mismatch_ids": [],
+        "lost_restricted_component_ids": [],
+        "unexpected_restriction_ids": [],
+        "unresolved_ids": [],
+        "needs_context_ids": [
+          "D2-CONVERSATION-003-0",
+          "D2-CONVERSATION-004-0",
+          "D2-CONVERSATION-005-0",
+          "D2-CONVERSATION-006-0",
+          "D2-CONVERSATION-007-0",
+          "D2-CONVERSATION-008-0",
+          "D2-CONVERSATION-009-0",
+          "D2-CONVERSATION-010-0"
+        ],
+        "status_mismatch_ids": [],
+        "not_proposed_ids": [
+          "D2-CONVERSATION-003-0",
+          "D2-CONVERSATION-004-0",
+          "D2-CONVERSATION-005-0",
+          "D2-CONVERSATION-006-0",
+          "D2-CONVERSATION-007-0",
+          "D2-CONVERSATION-008-0",
+          "D2-CONVERSATION-009-0",
+          "D2-CONVERSATION-010-0"
+        ],
+        "status_counts": {
+          "PROPOSED": 102,
+          "NEEDS_CONTEXT": 8
+        },
+        "mixed_exact_components": 10,
+        "mixed_support": 10,
+        "routing_not_executed": true
+      },
+      "base_ranking": {
+        "labeled_cases": 110,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.9090909090909091,
+        "top3_recall": 0.9636363636363636,
+        "macro_f1": 0.9050978199022105,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "CONVERSATION": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "ENTITY_RELATION": {
+            "support": 10,
+            "precision": 0.9,
+            "recall": 0.9,
+            "f1": 0.9
+          },
+          "MIXED": {
+            "support": 10,
+            "precision": 0.6666666666666666,
+            "recall": 0.6,
+            "f1": 0.631578947368421
+          },
+          "NEWS": {
+            "support": 10,
+            "precision": 0.8181818181818182,
+            "recall": 0.9,
+            "f1": 0.8571428571428572
+          },
+          "NUMERIC": {
+            "support": 10,
+            "precision": 0.8333333333333334,
+            "recall": 1.0,
+            "f1": 0.9090909090909091
+          },
+          "OUT_OF_SCOPE": {
+            "support": 10,
+            "precision": 0.9090909090909091,
+            "recall": 1.0,
+            "f1": 0.9523809523809523
+          },
+          "PERSON_ROLE": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PRICE": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "REPORT_CONTENT": {
+            "support": 10,
+            "precision": 0.8571428571428571,
+            "recall": 0.6,
+            "f1": 0.7058823529411764
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 10,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 10,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 10,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 9,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 1,
+            "MIXED": 6,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 1,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 1
+          },
+          "NEWS": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 1,
+            "NEWS": 9,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 10,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 10,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 10,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 10,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 2,
+            "NEWS": 1,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 6
+          }
+        },
+        "wrong_case_ids": [
+          "D2-NEWS-006-0",
+          "D2-REPORT_CONTENT-001-0",
+          "D2-REPORT_CONTENT-002-0",
+          "D2-REPORT_CONTENT-004-0",
+          "D2-REPORT_CONTENT-006-0",
+          "D2-ENTITY_RELATION-004-0",
+          "D2-MIXED-004-0",
+          "D2-MIXED-006-0",
+          "D2-MIXED-007-0",
+          "D2-MIXED-008-0"
+        ]
+      },
+      "cosine": {
+        "labeled_cases": 110,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.7,
+        "top3_recall": 0.8727272727272727,
+        "macro_f1": 0.7006230837109825,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 10,
+            "precision": 0.8,
+            "recall": 0.8,
+            "f1": 0.8000000000000002
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 10,
+            "precision": 0.4666666666666667,
+            "recall": 0.7,
+            "f1": 0.56
+          },
+          "CONVERSATION": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "ENTITY_RELATION": {
+            "support": 10,
+            "precision": 0.8571428571428571,
+            "recall": 0.6,
+            "f1": 0.7058823529411764
+          },
+          "MIXED": {
+            "support": 10,
+            "precision": 0.4444444444444444,
+            "recall": 0.4,
+            "f1": 0.4210526315789474
+          },
+          "NEWS": {
+            "support": 10,
+            "precision": 0.5555555555555556,
+            "recall": 0.5,
+            "f1": 0.5263157894736842
+          },
+          "NUMERIC": {
+            "support": 10,
+            "precision": 0.6153846153846154,
+            "recall": 0.8,
+            "f1": 0.6956521739130435
+          },
+          "OUT_OF_SCOPE": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526316
+          },
+          "PERSON_ROLE": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 0.7,
+            "f1": 0.8235294117647058
+          },
+          "PRICE": {
+            "support": 10,
+            "precision": 0.6923076923076923,
+            "recall": 0.9,
+            "f1": 0.7826086956521738
+          },
+          "REPORT_CONTENT": {
+            "support": 10,
+            "precision": 0.5,
+            "recall": 0.4,
+            "f1": 0.4444444444444445
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 8,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 1
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 7,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 1,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 1,
+            "REPORT_CONTENT": 1
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 10,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 4,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 6,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 1,
+            "COMPANY_OVERVIEW": 1,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 4,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 2,
+            "REPORT_CONTENT": 1
+          },
+          "NEWS": {
+            "ANALYSIS": 1,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 3,
+            "NEWS": 5,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 1
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 2,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 8,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 9,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 1,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 1,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 7,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 9,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 2,
+            "NEWS": 1,
+            "NUMERIC": 2,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 1,
+            "REPORT_CONTENT": 4
+          }
+        },
+        "wrong_case_ids": [
+          "D2-PRICE-002-0",
+          "D2-NUMERIC-007-0",
+          "D2-NUMERIC-010-0",
+          "D2-ANALYSIS-002-0",
+          "D2-ANALYSIS-006-0",
+          "D2-NEWS-002-0",
+          "D2-NEWS-003-0",
+          "D2-NEWS-006-0",
+          "D2-NEWS-009-0",
+          "D2-NEWS-010-0",
+          "D2-REPORT_CONTENT-001-0",
+          "D2-REPORT_CONTENT-002-0",
+          "D2-REPORT_CONTENT-003-0",
+          "D2-REPORT_CONTENT-004-0",
+          "D2-REPORT_CONTENT-006-0",
+          "D2-REPORT_CONTENT-009-0",
+          "D2-PERSON_ROLE-002-0",
+          "D2-PERSON_ROLE-005-0",
+          "D2-PERSON_ROLE-008-0",
+          "D2-ENTITY_RELATION-001-0",
+          "D2-ENTITY_RELATION-004-0",
+          "D2-ENTITY_RELATION-006-0",
+          "D2-ENTITY_RELATION-007-0",
+          "D2-COMPANY_OVERVIEW-003-0",
+          "D2-COMPANY_OVERVIEW-007-0",
+          "D2-COMPANY_OVERVIEW-010-0",
+          "D2-OUT_OF_SCOPE-004-0",
+          "D2-MIXED-001-0",
+          "D2-MIXED-003-0",
+          "D2-MIXED-004-0",
+          "D2-MIXED-005-0",
+          "D2-MIXED-007-0",
+          "D2-MIXED-008-0"
+        ]
+      }
+    },
+    "regression": {
+      "cases": 47,
+      "resolution": {
+        "labeled_cases": 47,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "macro_f1": 0.7272727272727273,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "CONVERSATION": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "ENTITY_RELATION": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "MIXED": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "NEWS": {
+            "support": 8,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "NUMERIC": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "OUT_OF_SCOPE": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "PERSON_ROLE": {
+            "support": 8,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "PRICE": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "REPORT_CONTENT": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 6,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 6,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 6,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NEWS": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 8,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 6,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 8,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 1,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 6
+          }
+        },
+        "wrong_case_ids": []
+      },
+      "detailed": {
+        "label_correct_count": 47,
+        "complete_classification_correct_count": 47,
+        "complete_classification_accuracy": 1.0,
+        "component_mismatch_ids": [],
+        "lost_restricted_component_ids": [],
+        "unexpected_restriction_ids": [],
+        "unresolved_ids": [],
+        "needs_context_ids": [],
+        "status_mismatch_ids": [],
+        "not_proposed_ids": [],
+        "status_counts": {
+          "PROPOSED": 47
+        },
+        "mixed_exact_components": 6,
+        "mixed_support": 6,
+        "routing_not_executed": true
+      },
+      "base_ranking": {
+        "labeled_cases": 47,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.8085106382978723,
+        "top3_recall": 0.9361702127659575,
+        "macro_f1": 0.5301970756516211,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "CONVERSATION": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "ENTITY_RELATION": {
+            "support": 6,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1": 0.923076923076923
+          },
+          "MIXED": {
+            "support": 6,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0
+          },
+          "NEWS": {
+            "support": 8,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          },
+          "NUMERIC": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091
+          },
+          "OUT_OF_SCOPE": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "PERSON_ROLE": {
+            "support": 8,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          },
+          "PRICE": {
+            "support": 1,
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5
+          },
+          "REPORT_CONTENT": {
+            "support": 6,
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.7499999999999999
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 6,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 6,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 1,
+            "MIXED": 0,
+            "NEWS": 1,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 1,
+            "PRICE": 0,
+            "REPORT_CONTENT": 3
+          },
+          "NEWS": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 7,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 1,
+            "REPORT_CONTENT": 0
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 5,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 1,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 7,
+            "PRICE": 0,
+            "REPORT_CONTENT": 1
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 1,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 6
+          }
+        },
+        "wrong_case_ids": [
+          "S5-T-002",
+          "S5-T-015",
+          "S5-T-021",
+          "S5-T-037",
+          "S5-T-038",
+          "S5-T-039",
+          "S5-T-040",
+          "S5-T-041",
+          "S5-T-042"
+        ]
+      },
+      "cosine": {
+        "labeled_cases": 47,
+        "unlabeled_cases": 0,
+        "top1_accuracy": 0.6808510638297872,
+        "top3_recall": 0.8936170212765957,
+        "macro_f1": 0.5246903423374012,
+        "per_label": {
+          "ANALYSIS": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8
+          },
+          "COMPANY_OVERVIEW": {
+            "support": 0,
+            "precision": 0.0,
+            "recall": 0,
+            "f1": 0
+          },
+          "CONVERSATION": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "ENTITY_RELATION": {
+            "support": 6,
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "f1": 0.6666666666666666
+          },
+          "MIXED": {
+            "support": 6,
+            "precision": 0.6666666666666666,
+            "recall": 0.3333333333333333,
+            "f1": 0.4444444444444444
+          },
+          "NEWS": {
+            "support": 8,
+            "precision": 0.8,
+            "recall": 0.5,
+            "f1": 0.6153846153846154
+          },
+          "NUMERIC": {
+            "support": 6,
+            "precision": 0.5454545454545454,
+            "recall": 1.0,
+            "f1": 0.7058823529411764
+          },
+          "OUT_OF_SCOPE": {
+            "support": 0,
+            "precision": 0,
+            "recall": 0,
+            "f1": 0
+          },
+          "PERSON_ROLE": {
+            "support": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.75,
+            "f1": 0.7058823529411765
+          },
+          "PRICE": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "REPORT_CONTENT": {
+            "support": 6,
+            "precision": 0.8333333333333334,
+            "recall": 0.8333333333333334,
+            "f1": 0.8333333333333334
+          }
+        },
+        "confusion_matrix": {
+          "ANALYSIS": {
+            "ANALYSIS": 4,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 1,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "COMPANY_OVERVIEW": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "CONVERSATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "ENTITY_RELATION": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 1,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 4,
+            "MIXED": 1,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "MIXED": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 1,
+            "MIXED": 2,
+            "NEWS": 1,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 1
+          },
+          "NEWS": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 1,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 4,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 2,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "NUMERIC": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 6,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "OUT_OF_SCOPE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PERSON_ROLE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 1,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 6,
+            "PRICE": 0,
+            "REPORT_CONTENT": 0
+          },
+          "PRICE": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 0,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 1,
+            "REPORT_CONTENT": 0
+          },
+          "REPORT_CONTENT": {
+            "ANALYSIS": 0,
+            "COMPANY_OVERVIEW": 0,
+            "CONVERSATION": 0,
+            "ENTITY_RELATION": 0,
+            "MIXED": 0,
+            "NEWS": 0,
+            "NUMERIC": 1,
+            "OUT_OF_SCOPE": 0,
+            "PERSON_ROLE": 0,
+            "PRICE": 0,
+            "REPORT_CONTENT": 5
+          }
+        },
+        "wrong_case_ids": [
+          "S5-T-010",
+          "S5-T-013",
+          "S5-T-014",
+          "S5-T-018",
+          "S5-T-022",
+          "S5-T-023",
+          "S5-T-026",
+          "S5-T-030",
+          "S5-T-033",
+          "S5-T-036",
+          "S5-T-037",
+          "S5-T-038",
+          "S5-T-039",
+          "S5-T-040",
+          "S5-T-056"
+        ]
+      }
+    }
+  },
+  "known_failure_ids": [],
+  "regressions": 0,
+  "raw_scores_preserved": true,
+  "controlled_metamorphic_cases": 2165,
+  "controlled_metamorphic_failures": 0,
+  "model_and_training_data_unchanged": true,
+  "blind_acceptance_available": false
+}
