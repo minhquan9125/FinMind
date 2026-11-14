@@ -3,14 +3,9 @@ import UploadPanel from "./components/UploadPanel.jsx";
 import SearchPanel from "./components/SearchPanel.jsx";
 import ChunkDetailPanel from "./components/ChunkDetailPanel.jsx";
 import VocabPanel from "./components/VocabPanel.jsx";
-import ComponentPreview from "./dev/ComponentPreview.jsx";
 
 export default function App() {
   const [document, setDocument] = useState(null);
-
-  if (import.meta.env.DEV && new URLSearchParams(window.location.search).get("ui") === "components") {
-    return <ComponentPreview />;
-  }
 
   return (
     <div className="max-w-[820px] mx-auto px-4.5 py-7 pb-16">

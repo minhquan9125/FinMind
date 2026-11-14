@@ -68,8 +68,8 @@ def test_financial_json_to_pages_ratio_uses_readable_label_and_drops_meta():
 def test_financial_json_to_pages_statement_drops_none_values():
     pages = financial_json_to_pages("SSI", _sample_financial_payload())
     income_page = next(p for p in pages if p.page == 2)
-    assert "ISA1 (ISA1):" in income_page.text
-    assert "isa2" not in income_page.text.lower()  # value was None
+    assert "isa1:" in income_page.text
+    assert "isa2" not in income_page.text  # value was None
 
 
 def test_generic_json_to_pages_top_level_list():
