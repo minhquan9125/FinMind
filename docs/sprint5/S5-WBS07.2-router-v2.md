@@ -15,6 +15,7 @@ Bật/tắt bằng `INTENT_ROUTER_V2` (mặc định `true`; đặt `false` đ�
    - FALLBACK: hỏi Gemini (07.2). Gemini lỗi, quá 8 giây, hết budget của câu hỏi, hỏi lại (`CLARIFY`), lệch mã công ty, hoặc tự đánh giá dưới 0,60 thì **giữ câu hỏi lại như cũ**, không đoán.
    - Nhãn dùng được: OUT_OF_SCOPE thì từ chối; ANALYSIS, PRICE, NEWS với đúng 1 mã thì chuyển sang câu chuẩn ("phân tích FPT", "giá FPT hôm nay", "tin FPT hôm nay") mà luật đã xử lý được. Nhãn khác giữ nguyên câu hỏi lại.
 3. Mỗi lượt có `result['intent'] = {label, decision, source: RULES|GEMINI, applied, reason?}` để đo router (13.2).
+   Trace admin (`research_metrics`) ghi khối này vào `details.intent`; lần gọi Gemini phân loại cũng nằm trong `calls` (model, token) cùng với lần sinh câu trả lời. `source=GEMINI` cho biết lượt đó có gọi phân loại.
 
 ## Contract fallback (chuyển từ 07.1 của Huyền sang 11 nhãn)
 
@@ -26,7 +27,7 @@ Bật/tắt bằng `INTENT_ROUTER_V2` (mặc định `true`; đặt `false` đ�
 
 ## Đã kiểm
 
-- Test: `test_intent_gate_v2.py` (22), `test_intent_router_chat.py` (7); toàn bộ backend 3613 pass, 5 lỗi WBS02 có từ trước.
+- Test: `test_intent_gate_v2.py` (22), `test_intent_router_chat.py` (9), `test_research_metrics_pipeline.py` (trace); toàn bộ backend 3629 pass, 5 lỗi WBS02 có từ trước.
 - Chạy thật với BGE-M3 và Gemini (phần sinh câu trả lời dùng dữ liệu giả):
 
 | Câu | Kết quả |
