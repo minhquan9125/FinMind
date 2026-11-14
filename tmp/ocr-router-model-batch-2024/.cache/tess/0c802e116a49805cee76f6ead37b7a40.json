@@ -1,0 +1,36 @@
+{
+  "text": "GÔN NoEEcseeo",
+  "chars": 12,
+  "words": 2,
+  "wordItems": [
+    {
+      "text": "GÔN",
+      "bbox": [
+        1927,
+        175,
+        1958,
+        188
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NoEEcseeo",
+      "bbox": [
+        1967,
+        168,
+        2051,
+        189
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 0,
+  "lowConfRatio": 1,
+  "seconds": 0.303
+}

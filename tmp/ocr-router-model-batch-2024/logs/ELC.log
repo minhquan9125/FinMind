@@ -1,0 +1,23 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\ELC\2024\ELC_2024_500811.pdf: 4 trang
+  lớp text: 0 trang dùng được, 4 trang cần OCR (1.111s)
+  [tess] trang 1: conf=84 low=0.13 rot=0 1.124s
+  [tess] trang 70: conf=85 low=0.12 rot=0 1.07s
+  [tess] trang 2: conf=85 low=0.176 rot=0 0.617s
+  [tess] trang 71: conf=0 low=1 rot=0 0.327s
+  [gemini-api] gemini-3.8-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.8-flash p-001.png: OK, 35.151s
+  [gemini-api] gemini-3.8-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.8-flash: lỗi: Khối chữ AI không có text: p-070.png
+  [gemini-api] gemini-3.8-flash p-071.png: OK, 11.244s
+  Gemini chưa xử lý được 2 trang; chuyển sang OmniRouter
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  tuyến: {'tesseract+gemini': 2, 'tesseract': 2}  trạng thái: {'OK': 1, 'REVIEW': 3}
+  cờ: {'GEMINI_FAILED': 2, 'NEAR_EMPTY': 1, 'ENGINES_DISAGREE': 1}
+  thời gian (s): {'textLayer': 1.111, 'renderAndTesseract': 12.832, 'gemini': 112.479, 'total': 126.502}
+  Gemini API: 5 lần gọi (3 lỗi), token vào 4263, ra 4486
+  OpenRouter: 3 lần gọi (3 lỗi), token vào 0, ra 0
+  → D:\finmind\tmp\ocr-router-model-batch-2024\ELC_2024_500811

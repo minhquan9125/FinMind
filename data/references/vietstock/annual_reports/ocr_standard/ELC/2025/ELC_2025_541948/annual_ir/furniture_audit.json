@@ -1,0 +1,207 @@
+{
+  "scope": "all_text_layer_pages_from_pages_jsonl",
+  "pages_checked": 120,
+  "minimum_repeated_pages": 60,
+  "position_grid": "2% of page width and height",
+  "repeated_groups": [
+    {
+      "text": "01 general information",
+      "x_bin": 2,
+      "y_bin": 11,
+      "pages": 60
+    },
+    {
+      "text": "annual report 2025",
+      "x_bin": 2,
+      "y_bin": 8,
+      "pages": 62
+    }
+  ],
+  "promoted_blocks": 8,
+  "sidebar_associated_blocks": 0,
+  "page_number_blocks": 59,
+  "demoted_unverified_blocks": 742,
+  "demoted_examples": [
+    {
+      "page": 68,
+      "block_id": "p68-b37",
+      "text": ",_.",
+      "matching_pages": 1
+    },
+    {
+      "page": 68,
+      "block_id": "p68-b38",
+      "text": "- 04 Bao",
+      "matching_pages": 2
+    },
+    {
+      "page": 68,
+      "block_id": "p68-b39",
+      "text": "860 coo kiem to6n d9c 1¢p",
+      "matching_pages": 1
+    },
+    {
+      "page": 89,
+      "block_id": "p89-b90",
+      "text": ",..",
+      "matching_pages": 23
+    },
+    {
+      "page": 89,
+      "block_id": "p89-b91",
+      "text": "Bao 04",
+      "matching_pages": 12
+    },
+    {
+      "page": 89,
+      "block_id": "p89-b92",
+      "text": "t minh boo coo tai hat 2025",
+      "matching_pages": 19
+    },
+    {
+      "page": 90,
+      "block_id": "p90-b124",
+      "text": ",..",
+      "matching_pages": 23
+    },
+    {
+      "page": 90,
+      "block_id": "p90-b125",
+      "text": "04 Bao",
+      "matching_pages": 10
+    },
+    {
+      "page": 90,
+      "block_id": "p90-b126",
+      "text": "t minh boo coo tai hat 2025",
+      "matching_pages": 19
+    },
+    {
+      "page": 90,
+      "block_id": "p90-b127",
+      "text": "41.638.480.000",
+      "matching_pages": 1
+    },
+    {
+      "page": 90,
+      "block_id": "p90-b128",
+      "text": "hfru",
+      "matching_pages": 1
+    },
+    {
+      "page": 90,
+      "block_id": "p90-b129",
+      "text": "52.414.670.000",
+      "matching_pages": 1
+    },
+    {
+      "page": 90,
+      "block_id": "p90-b130",
+      "text": "Pbat hanh c& phi~u d~ tra c6 tfrc",
+      "matching_pages": 1
+    },
+    {
+      "page": 92,
+      "block_id": "p92-b106",
+      "text": ",..",
+      "matching_pages": 2
+    },
+    {
+      "page": 92,
+      "block_id": "p92-b107",
+      "text": "Bao 04",
+      "matching_pages": 12
+    },
+    {
+      "page": 92,
+      "block_id": "p92-b108",
+      "text": "minh boo coo tai hat 2025",
+      "matching_pages": 3
+    },
+    {
+      "page": 95,
+      "block_id": "p95-b47",
+      "text": ",..",
+      "matching_pages": 23
+    },
+    {
+      "page": 95,
+      "block_id": "p95-b48",
+      "text": "04 Bao",
+      "matching_pages": 10
+    },
+    {
+      "page": 95,
+      "block_id": "p95-b49",
+      "text": "t minh boo coo tai hat 2025",
+      "matching_pages": 19
+    },
+    {
+      "page": 67,
+      "block_id": "p67-b62",
+      "text": ",..",
+      "matching_pages": 23
+    },
+    {
+      "page": 67,
+      "block_id": "p67-b63",
+      "text": "- 04 Bao",
+      "matching_pages": 2
+    },
+    {
+      "page": 67,
+      "block_id": "p67-b64",
+      "text": "860 coo",
+      "matching_pages": 1
+    },
+    {
+      "page": 67,
+      "block_id": "p67-b65",
+      "text": "Ban Tong Gi6m E)oc CLIO",
+      "matching_pages": 1
+    },
+    {
+      "page": 67,
+      "block_id": "p67-b66",
+      "text": "31/12/2025.",
+      "matching_pages": 1
+    },
+    {
+      "page": 71,
+      "block_id": "p71-b123",
+      "text": ",..",
+      "matching_pages": 23
+    },
+    {
+      "page": 71,
+      "block_id": "p71-b124",
+      "text": "Bao 04",
+      "matching_pages": 12
+    },
+    {
+      "page": 71,
+      "block_id": "p71-b125",
+      "text": "60 luu chuyen tien t~ at 202s",
+      "matching_pages": 1
+    },
+    {
+      "page": 72,
+      "block_id": "p72-b95",
+      "text": ",..",
+      "matching_pages": 23
+    },
+    {
+      "page": 72,
+      "block_id": "p72-b96",
+      "text": "Bao 04",
+      "matching_pages": 12
+    },
+    {
+      "page": 72,
+      "block_id": "p72-b97",
+      "text": "t minh boo coo tai hat 2025",
+      "matching_pages": 19
+    }
+  ],
+  "furniture_table_overlaps": []
+}

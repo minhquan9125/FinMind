@@ -1,0 +1,560 @@
+{
+  "ir_version": "1",
+  "page": 124,
+  "printed_page": "50",
+  "page_class": "notes",
+  "page_size": {"width": 2489, "height": 3508, "unit": "px"},
+  "source": {
+    "engine": "MERGED",
+    "tool": "gemini-3.1-flash-lite + tesseract vie",
+    "document_sha256": "4ed2a0ed75c3585adbf1925b0ce210d03d48142adc54f0a386553041c9c55f56",
+    "file_name": "CMG_2025_553286.pdf",
+    "image_sha256": "2942fd4ac465733ea661ce1fb3e9efe26875dc005521fab9bd64e4195cf02d64",
+    "render": {
+      "dpi": 302.42,
+      "rotation": 0
+    },
+    "prompt_version": "api-ir-v2"
+  },
+  "blocks": [
+    {"id": "p124-b1", "type": "heading", "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC", "bbox": [326.06, 133.3, 1488.42, 185.92]},
+    {
+      "id": "p124-b2",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [326.06, 242.05, 1834.39, 354.31]
+    },
+    {"id": "p124-b3", "type": "heading", "text": "30. THU NHẬP KHÁC VÀ CHI PHÍ KHÁC", "bbox": [326.06, 434.99, 1197.21, 477.09]},
+    {
+      "id": "p124-t1",
+      "type": "table",
+      "title": "Đơn vị tính: VND",
+      "bbox": [470.42, 508.66, 2195.3, 1157.64],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Năm nay"], "bbox": [1406.29, 585.84, 1799.55, 624.42]},
+        {"key": "c2", "header_lines": ["Năm trước"], "bbox": [1904.09, 585.84, 2195.3, 624.42]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Thu nhập khác",
+          "note": null,
+          "bbox": [470.42, 684.06, 774.08, 722.65],
+          "cells": {
+            "c1": {
+              "raw": "7.642.550.145",
+              "bbox": [1406.29, 684.06, 1799.55, 722.65],
+              "votes": {
+                "GEMINI": {
+                  "raw": "7.642.550.145",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "7.642.550.145",
+                  "conf": 96.44
+                }
+              }
+            },
+            "c2": {
+              "raw": "6.650.433.510",
+              "bbox": [1904.09, 684.06, 2195.3, 722.65],
+              "votes": {
+                "GEMINI": {
+                  "raw": "6.650.433.510",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "6.650.433.510",
+                  "conf": 96.13
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Thu từ thanh lý tài sản",
+          "note": null,
+          "bbox": [537.62, 726.16, 950.8, 764.74],
+          "cells": {
+            "c1": {
+              "raw": "2.600.000",
+              "bbox": [1580.52, 726.16, 1799.55, 764.74],
+              "votes": {
+                "GEMINI": {
+                  "raw": "2.600.000",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "2.600.000",
+                  "conf": 94.1
+                }
+              }
+            },
+            "c2": {
+              "raw": "1.024.691.536",
+              "bbox": [1904.09, 726.16, 2195.3, 764.74],
+              "votes": {
+                "GEMINI": {
+                  "raw": "1.024.691.536",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "1.024.691.536",
+                  "conf": 96.32
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Thu nhập khác",
+          "note": null,
+          "bbox": [537.62, 768.25, 816.39, 806.84],
+          "cells": {
+            "c1": {
+              "raw": "7.639.950.145",
+              "bbox": [1406.29, 768.25, 1799.55, 806.84],
+              "votes": {
+                "GEMINI": {
+                  "raw": "7.639.950.145",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "7.639.950.145",
+                  "conf": 89.3
+                }
+              }
+            },
+            "c2": {
+              "raw": "5.625.741.974",
+              "bbox": [1904.09, 768.25, 2195.3, 806.84],
+              "votes": {
+                "GEMINI": {
+                  "raw": "5.625.741.974",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "5.625.741.974",
+                  "conf": 93.91
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Chi phí khác",
+          "note": null,
+          "bbox": [470.42, 880.51, 724.3, 919.1],
+          "cells": {
+            "c1": {
+              "raw": "5.477.982.238",
+              "bbox": [1406.29, 880.51, 1799.55, 919.1],
+              "votes": {
+                "GEMINI": {
+                  "raw": "5.477.982.238",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "5.477.982.238",
+                  "conf": 94.71
+                }
+              }
+            },
+            "c2": {
+              "raw": "8.344.886.293",
+              "bbox": [1904.09, 880.51, 2195.3, 919.1],
+              "votes": {
+                "GEMINI": {
+                  "raw": "8.344.886.293",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "8.344.886.293",
+                  "conf": 96.51
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Chi phí thanh lý tài sản",
+          "note": null,
+          "bbox": [537.62, 922.6, 970.71, 961.19],
+          "cells": {
+            "c1": {
+              "raw": "1.308.213.907",
+              "bbox": [1406.29, 922.6, 1799.55, 961.19],
+              "votes": {
+                "GEMINI": {
+                  "raw": "1.308.213.907",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "1.308.213.907",
+                  "conf": 96.34
+                }
+              }
+            },
+            "c2": {
+              "raw": "795.641.223",
+              "bbox": [1958.84, 922.6, 2195.3, 961.19],
+              "votes": {
+                "GEMINI": {
+                  "raw": "795.641.223",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "795.641.223",
+                  "conf": 96.69
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "Xóa sổ các khoản công nợ",
+          "note": null,
+          "bbox": [537.62, 964.7, 1040.4, 1003.29],
+          "cells": {
+            "c2": {
+              "raw": "726.941.174",
+              "bbox": [1958.84, 964.7, 2195.3, 1003.29],
+              "votes": {
+                "GEMINI": {
+                  "raw": "726.941.174",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "726.941.174",
+                  "conf": 96.65
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Chi phí khác",
+          "note": null,
+          "bbox": [537.62, 1006.8, 816.39, 1045.38],
+          "cells": {
+            "c1": {
+              "raw": "4.169.768.331",
+              "bbox": [1406.29, 1006.8, 1799.55, 1045.38],
+              "votes": {
+                "GEMINI": {
+                  "raw": "4.169.768.331",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "4.169.768.331",
+                  "conf": 96.67
+                }
+              }
+            },
+            "c2": {
+              "raw": "6.822.303.896",
+              "bbox": [1904.09, 1006.8, 2195.3, 1045.38],
+              "votes": {
+                "GEMINI": {
+                  "raw": "6.822.303.896",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "6.822.303.896",
+                  "conf": 96.51
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r8",
+          "code": null,
+          "label_raw": "LỢI NHUẬN/(LỖ) KHÁC",
+          "note": null,
+          "bbox": [470.42, 1115.54, 953.29, 1154.13],
+          "cells": {
+            "c1": {
+              "raw": "2.164.567.907",
+              "bbox": [1406.29, 1115.54, 1799.55, 1154.13],
+              "votes": {
+                "GEMINI": {
+                  "raw": "2.164.567.907",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "2.164.567.907",
+                  "conf": 96.58
+                }
+              }
+            },
+            "c2": {
+              "raw": "(1.694.452.783)",
+              "bbox": [1879.19, 1115.54, 2195.3, 1154.13],
+              "votes": {
+                "GEMINI": {
+                  "raw": "(1.694.452.783)",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "(1.694.452.783)",
+                  "conf": 96.57
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {"id": "p124-b5", "type": "heading", "text": "31. CHI PHÍ SẢN XUẤT, KINH DOANH THEO YẾU TỐ", "bbox": [326.06, 1259.37, 1406.29, 1301.47]},
+    {
+      "id": "p124-t2",
+      "type": "table",
+      "title": "Đơn vị tính: VND",
+      "bbox": [470.42, 1333.04, 2195.3, 1824.16],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Năm nay"], "bbox": [1406.29, 1410.22, 1799.55, 1448.8]},
+        {"key": "c2", "header_lines": ["Năm trước"], "bbox": [1904.09, 1410.22, 2195.3, 1448.8]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Chi phí nguyên liệu, vật liệu",
+          "note": null,
+          "bbox": [470.42, 1490.9, 1027.96, 1529.49],
+          "cells": {
+            "c1": {
+              "raw": "451.692.914.716",
+              "bbox": [1406.29, 1490.9, 1799.55, 1529.49],
+              "votes": {
+                "GEMINI": {
+                  "raw": "451.692.914.716",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "451.692.914.716",
+                  "conf": 88.35
+                }
+              }
+            },
+            "c2": {
+              "raw": "507.498.926.430",
+              "bbox": [1904.09, 1490.9, 2195.3, 1529.49],
+              "votes": {
+                "GEMINI": {
+                  "raw": "507.498.926.430",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "507.498.926.430",
+                  "conf": 91.08
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Chi phí nhân công",
+          "note": null,
+          "bbox": [470.42, 1533.0, 833.82, 1571.58],
+          "cells": {
+            "c1": {
+              "raw": "2.117.843.823.652",
+              "bbox": [1351.53, 1533.0, 1799.55, 1571.58],
+              "votes": {
+                "GEMINI": {
+                  "raw": "2.117.843.823.652",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "2.117.843.823.652",
+                  "conf": 22.38
+                }
+              }
+            },
+            "c2": {
+              "raw": "1.638.167.637.698",
+              "bbox": [1849.33, 1533.0, 2195.3, 1571.58],
+              "votes": {
+                "GEMINI": {
+                  "raw": "1.638.167.637.698",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "1.638.167.637.698",
+                  "conf": 22.38
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Chi phí khấu hao và hao mòn",
+          "note": null,
+          "bbox": [470.42, 1575.09, 1030.45, 1613.68],
+          "cells": {
+            "c1": {
+              "raw": "426.814.125.152",
+              "bbox": [1406.29, 1575.09, 1799.55, 1613.68],
+              "votes": {
+                "GEMINI": {
+                  "raw": "426.814.125.152",
+                  "conf": null
+                }
+              }
+            },
+            "c2": {
+              "raw": "375.131.643.521",
+              "bbox": [1904.09, 1575.09, 2195.3, 1613.68],
+              "votes": {
+                "GEMINI": {
+                  "raw": "375.131.643.521",
+                  "conf": null
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Chi phí dịch vụ mua ngoài",
+          "note": null,
+          "bbox": [470.42, 1617.19, 978.18, 1655.78],
+          "cells": {
+            "c1": {
+              "raw": "2.488.642.335.638",
+              "bbox": [1351.53, 1617.19, 1799.55, 1655.78],
+              "votes": {
+                "GEMINI": {
+                  "raw": "2.488.642.335.638",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "426.814.125.152",
+                  "conf": 92.49
+                }
+              }
+            },
+            "c2": {
+              "raw": "1.869.368.687.005",
+              "bbox": [1849.33, 1617.19, 2195.3, 1655.78],
+              "votes": {
+                "GEMINI": {
+                  "raw": "1.869.368.687.005",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "375.131.643.521",
+                  "conf": 87.0
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Chi phí khác",
+          "note": null,
+          "bbox": [470.42, 1659.28, 724.3, 1697.87],
+          "cells": {
+            "c1": {
+              "raw": "158.600.716.852",
+              "bbox": [1406.29, 1659.28, 1799.55, 1697.87],
+              "votes": {
+                "GEMINI": {
+                  "raw": "158.600.716.852",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "2.488.642.335.638",
+                  "conf": 55.15
+                }
+              }
+            },
+            "c2": {
+              "raw": "188.850.705.728",
+              "bbox": [1904.09, 1659.28, 2195.3, 1697.87],
+              "votes": {
+                "GEMINI": {
+                  "raw": "188.850.705.728",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "1.869.368.687.005",
+                  "conf": 48.42
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "bbox": [470.42, 1782.06, 739.23, 1820.65],
+          "cells": {
+            "c1": {
+              "raw": "5.643.593.916.010",
+              "bbox": [1351.53, 1782.06, 1799.55, 1820.65],
+              "votes": {
+                "GEMINI": {
+                  "raw": "5.643.593.916.010",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "5.643.593.916.010",
+                  "conf": 36.77
+                }
+              }
+            },
+            "c2": {
+              "raw": "4.579.017.600.382",
+              "bbox": [1849.33, 1782.06, 2195.3, 1820.65],
+              "votes": {
+                "GEMINI": {
+                  "raw": "4.579.017.600.382",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "4.579.017.600.382",
+                  "conf": 36.77
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {"id": "p124-b7", "type": "heading", "text": "32. THUẾ THU NHẬP DOANH NGHIỆP", "bbox": [326.06, 1929.4, 1157.38, 1971.5]},
+    {
+      "id": "p124-b8",
+      "type": "paragraph",
+      "text": "Thuế suất thuế thu nhập doanh nghiệp (“TNDN”) của Công ty và các công ty con là 20% tổng thu nhập chịu thuế, ngoại trừ thu nhập từ hoạt động sản xuất kinh doanh của các đơn vị dưới đây:\nCông ty TNHH CMC Global: thuế suất thuế TNDN là 10% đối với thu nhập từ hoạt động sản xuất phần mềm trong vòng 15 năm kể từ năm thành lập (năm 2017). Công ty này cũng được miễn thuế TNDN trong 4 năm tính từ năm đầu tiên kinh doanh có lợi nhuận chịu thuế và được giảm 50% thuế TNDN phải nộp trong 9 năm tiếp theo. Theo đó, cho năm tài chính kết thúc ngày 31 tháng 3 năm 2026, Công ty TNHH CMC Global đang được ưu đãi thuế TNDN với thuế suất bằng 10% cho thu nhập từ hoạt động sản xuất phần mềm;\nTrường Đại học CMC: thuế suất thuế TNDN là 10% đối với thu nhập từ hoạt động cung cấp dịch vụ giáo dục trong suốt thời gian hoạt động.\nCác báo cáo thuế của Công ty và các công ty con sẽ chịu sự kiểm tra của cơ quan thuế. Do việc áp dụng luật và các quy định về thuế đối với các loại nghiệp vụ khác nhau có thể được giải thích theo nhiều cách khác nhau, số thuế được trình bày trên báo cáo tài chính hợp nhất có thể sẽ bị thay đổi theo quyết định cuối cùng của cơ quan thuế.",
+      "bbox": [326.06, 2027.62, 2195.3, 2894.1]
+    },
+    {"id": "p124-b9", "type": "paragraph", "text": "50", "bbox": [1229.57, 3325.58, 1279.35, 3374.7]}
+  ]
+}

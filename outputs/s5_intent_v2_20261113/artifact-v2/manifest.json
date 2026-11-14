@@ -1,0 +1,26 @@
+{
+  "format_version": "intent-classifier-v2",
+  "status": "READY_FOR_REVIEW",
+  "approval_status": "OWNER_AUTHORIZED_PENDING_TEAM_REVIEW",
+  "classifier_version": "intent-linear-v2-draft1",
+  "labels": [
+    "ANALYSIS",
+    "COMPANY_OVERVIEW",
+    "CONVERSATION",
+    "ENTITY_RELATION",
+    "MIXED",
+    "NEWS",
+    "NUMERIC",
+    "OUT_OF_SCOPE",
+    "PERSON_ROLE",
+    "PRICE",
+    "REPORT_CONTENT"
+  ],
+  "runtime_enabled": false,
+  "calibrated": false,
+  "files": {
+    "library/manifest.json": "b1b200031189da3bf534445d1fed3e4a90ca398a0251efc5e2804dde0a3ea852",
+    "classifier.npz": "15e2866d5d1cfab86110664b285bf4eb622ad58e224e0e57b2e98e67625cc617",
+    "fit.json": "0567bdd5145167fe4a63ab4eac2cfe558397001d78fe2397f8bba323d49e3e0c"
+  }
+}

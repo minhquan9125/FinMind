@@ -1,0 +1,38 @@
+{
+  "ir_version": "1",
+  "page": 34,
+  "printed_page": "34",
+  "page_class": "narrative",
+  "page_size": {"width": 2711, "height": 3508, "unit": "px"},
+  "source": {
+    "engine": "TESSERACT",
+    "tool": "tesseract vie",
+    "document_sha256": "e247879a9f33058799aae35d1d3f9d2aa634e36985cf7d8c3f09ac1592802fa0",
+    "file_name": "ITD_2025_551266.pdf",
+    "image_sha256": "29b98cfd5566314296694897fb88e788a398c2216d4b3c2e03c3aea8a3b84b43",
+    "render": {
+      "dpi": 318.93,
+      "rotation": 0
+    }
+  },
+  "blocks": [
+    {"id": "p34-b1", "type": "paragraph", "text": "Quản trị công ty năm 2025", "bbox": [288, 109, 1118, 172]},
+    {"id": "p34-b2", "type": "paragraph", "text": "Í Đại hội đồng cổ đông kỳ họp thường niên năm 2025", "bbox": [301, 235, 1819, 312]},
+    {"id": "p34-b3", "type": "paragraph", "text": "Số Nghị\nEm. MAT NA", "bbox": [309, 380, 2503, 537]},
+    {
+      "id": "p34-b4",
+      "type": "paragraph",
+      "text": "+“. Thông qua đơn từ nhiệm thành viên HĐQT của Ông\nNguyễn Vĩnh Thuận kể từ ngày 26/06/2025\n* Thông qua bổ sung Ông Võ Xuân Vinh vào Hội đồng quản trị\nnhiệm kỳ 2024-2028, theo đó thành viên Hội đồng quản trị\nnhiệm kỳ 2024-2028 bao gồm:\nÔng Mai Hoài An\nÔng Nguyễn Ngọc Trung\nÔng Nguyễn Hữu Dũng\nÔng Đinh Thế Hiển\nÔng Võ Xuân Vinh",
+      "bbox": [1235, 571, 2392, 1113]
+    },
+    {"id": "p34-b5", "type": "paragraph", "text": "Đại hội đồng cổ đông lấy ý kiến bằng văn bản năm 2026", "bbox": [369, 1472, 1908, 1537]},
+    {"id": "p34-b6", "type": "paragraph", "text": "Số Nghị\n=.E.MmAA TA", "bbox": [268, 1601, 2462, 1758]},
+    {
+      "id": "p34-b7",
+      "type": "paragraph",
+      "text": "Đại hội thống nhất không thông qua đề xuất bổ sung mức chỉ trả\n01/2026/NG- 16/03/2026 cổ tức năm 2025 là 20% bằng tiền mặt\nĐHĐCĐ",
+      "bbox": [494, 1821, 2382, 1959]
+    },
+    {"id": "p34-b8", "type": "paragraph", "text": "Công Ty Cổ Phần Công Nghệ ITD", "bbox": [1698, 3361, 2322, 3407]}
+  ]
+}

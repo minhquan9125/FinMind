@@ -1,0 +1,73 @@
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\TCB\2024\TCB_2024_499236.pdf: 146 trang
+  lớp text: 96 trang dùng được, 50 trang cần OCR (1.297s)
+  [tess] trang 2: conf=53 low=0.5 rot=0 (cache)
+  [tess] trang 1: conf=84 low=0.13 rot=0 (cache)
+  [tess] trang 3: conf=94 low=0.013 rot=0 (cache)
+  [tess] trang 4: conf=93 low=0.035 rot=0 (cache)
+  [tess] trang 11: conf=86 low=0.093 rot=0 (cache)
+  [tess] trang 17: conf=94 low=0.021 rot=0 (cache)
+  [tess] trang 20: conf=95 low=0.019 rot=0 (cache)
+  [tess] trang 23: conf=95 low=0.015 rot=0 (cache)
+  [tess] trang 24: conf=94 low=0.019 rot=0 (cache)
+  [tess] trang 25: conf=94 low=0.019 rot=0 (cache)
+  [tess] trang 29: conf=96 low=0.006 rot=0 (cache)
+  [tess] trang 30: conf=94 low=0.023 rot=0 (cache)
+  [tess] trang 32: conf=95 low=0.017 rot=0 (cache)
+  [tess] trang 34: conf=93 low=0.039 rot=0 (cache)
+  [tess] trang 39: conf=95 low=0.017 rot=0 (cache)
+  [tess] trang 40: conf=95 low=0.008 rot=0 (cache)
+  [tess] trang 41: conf=96 low=0.002 rot=0 (cache)
+  [tess] trang 43: conf=95 low=0.014 rot=0 (cache)
+  [tess] trang 45: conf=94 low=0.022 rot=0 (cache)
+  [tess] trang 46: conf=93 low=0.033 rot=0 (cache)
+  [tess] trang 48: conf=95 low=0.019 rot=0 (cache)
+  [tess] trang 51: conf=81 low=0.179 rot=0 (cache)
+  [tess] trang 52: conf=95 low=0.021 rot=0 (cache)
+  [tess] trang 53: conf=94 low=0.016 rot=0 (cache)
+  [tess] trang 54: conf=95 low=0.01 rot=0 (cache)
+  [tess] trang 55: conf=95 low=0.016 rot=0 (cache)
+  [tess] trang 57: conf=93 low=0.041 rot=0 (cache)
+  [tess] trang 61: conf=88 low=0.093 rot=0 (cache)
+  [tess] trang 65: conf=95 low=0.015 rot=0 (cache)
+  [tess] trang 67: conf=95 low=0.024 rot=0 (cache)
+  [tess] trang 69: conf=95 low=0.025 rot=0 (cache)
+  [tess] trang 70: conf=93 low=0.028 rot=0 (cache)
+  [tess] trang 71: conf=93 low=0.039 rot=0 (cache)
+  [tess] trang 72: conf=96 low=0.002 rot=0 (cache)
+  [tess] trang 73: conf=96 low=0.006 rot=0 (cache)
+  [tess] trang 74: conf=95 low=0.007 rot=0 (cache)
+  [tess] trang 75: conf=95 low=0.011 rot=0 (cache)
+  [tess] trang 77: conf=95 low=0.016 rot=0 (cache)
+  [tess] trang 78: conf=92 low=0.056 rot=0 (cache)
+  [tess] trang 82: conf=94 low=0.023 rot=0 (cache)
+  [tess] trang 83: conf=96 low=0.007 rot=0 (cache)
+  [tess] trang 84: conf=93 low=0.031 rot=0 (cache)
+  [tess] trang 87: conf=94 low=0.031 rot=0 (cache)
+  [tess] trang 89: conf=94 low=0.022 rot=0 (cache)
+  [tess] trang 91: conf=94 low=0.022 rot=0 (cache)
+  [tess] trang 93: conf=93 low=0.033 rot=0 (cache)
+  [tess] trang 95: conf=96 low=0.004 rot=0 (cache)
+  [tess] trang 96: conf=95 low=0.014 rot=0 (cache)
+  [tess] trang 144: conf=82 low=0.175 rot=0 (cache)
+  [tess] trang 146: conf=82 low=0.157 rot=0 (cache)
+  Gửi 14 trang sang OmniRoute combo gemini
+  [omniroute] gemini p-001.png: OK, 18.416s
+  [omniroute] gemini p-011.png: OK, 31.934s
+  [omniroute] gemini p-017.png: OK, 18.844s
+  [omniroute] gemini p-020.png: OK, 17.711s
+  [omniroute] gemini p-023.png: OK, 16.925s
+  [omniroute] gemini p-040.png: OK, 17.479s
+  [omniroute] gemini p-043.png: OK, 21.578s
+  [omniroute] gemini p-051.png: OK, 22.489s
+  [omniroute] gemini p-057.png: OK, 12.899s
+  [omniroute] gemini p-061.png: OK, 15.053s
+  [omniroute] gemini p-065.png: OK, 15.027s
+  [omniroute] gemini p-073.png: OK, 15.992s
+  [omniroute] gemini p-144.png: OK, 15.696s
+  [omniroute] gemini p-146.png: OK, 15.494s
+  tuyến: {'tesseract+omniroute': 14, 'tesseract': 36, 'text_layer': 96}  trạng thái: {'OK': 142, 'REVIEW': 4}
+  cờ: {'LOW_CONF': 1, 'TEXT_LAYER_BROKEN': 48, 'NUMBERS_UNVERIFIED': 2, 'GEMINI_UNREADABLE': 1}
+  thời gian (s): {'textLayer': 1.297, 'renderAndTesseract': 43.069, 'gemini': 255.611, 'total': 300.323}
+  OmniRoute: 14 lần gọi (0 lỗi), token vào 18662, ra 25209
+  → D:\finmind\data\references\vietstock\annual_reports\ocr_standard\TCB\2024\TCB_2024_499236

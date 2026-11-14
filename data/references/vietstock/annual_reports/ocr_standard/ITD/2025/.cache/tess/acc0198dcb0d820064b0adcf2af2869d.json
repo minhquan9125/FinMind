@@ -1,0 +1,49 @@
+{
+  "text": "[ITD\nNĂM 2025",
+  "chars": 11,
+  "words": 3,
+  "wordItems": [
+    {
+      "text": "[ITD",
+      "bbox": [
+        1170,
+        1508,
+        1543,
+        1687
+      ],
+      "conf": 42.150307,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NĂM",
+      "bbox": [
+        776,
+        1762,
+        1307,
+        1986
+      ],
+      "conf": 96.565117,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        1403,
+        1806,
+        1943,
+        1989
+      ],
+      "conf": 96.298264,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 78,
+  "lowConfRatio": 0.333,
+  "seconds": 0.623
+}

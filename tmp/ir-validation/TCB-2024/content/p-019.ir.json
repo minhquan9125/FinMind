@@ -1,0 +1,31 @@
+{
+  "ir_version": "1",
+  "page": 19,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+    "file_name": "TCB_2024_499236.pdf"
+  },
+  "blocks": [
+    {"id": "p19-b1", "type": "heading", "text": "03", "bbox": [802.14, 658.7, 1063.74, 841.89]},
+    {"id": "p19-b2", "type": "heading", "text": "THÀNH TỰU", "bbox": [110.55, 685.37, 357.84, 728.37]},
+    {"id": "p19-b3", "type": "paragraph", "text": "Báo cáo toàn cảnh Ngân hàng", "bbox": [640.63, 672.19, 812.81, 685.19]},
+    {"id": "p19-b4", "type": "paragraph", "text": "36", "bbox": [1046.2, 672.94, 1062.05, 685.94]},
+    {"id": "p19-b5", "type": "paragraph", "text": "Khối Ngân hàng Bán lẻ (RBG)", "bbox": [640.63, 692.19, 806.32, 705.19]},
+    {"id": "p19-b6", "type": "paragraph", "text": "44", "bbox": [1046.03, 692.94, 1062.05, 705.94]},
+    {"id": "p19-b7", "type": "paragraph", "text": "Khối Ngân hàng Doanh nghiệp và Định chế Tài chính (CIBG)", "bbox": [640.63, 712.19, 979.58, 725.19]},
+    {"id": "p19-b8", "type": "paragraph", "text": "50", "bbox": [1045.91, 712.94, 1062.04, 725.94]},
+    {"id": "p19-b9", "type": "paragraph", "text": "Khối Ngân hàng Giao dịch Toàn cầu (GTS)", "bbox": [640.63, 732.19, 877.76, 745.19]},
+    {"id": "p19-b10", "type": "paragraph", "text": "56", "bbox": [1046.01, 732.94, 1062.05, 745.94]},
+    {"id": "p19-b11", "type": "paragraph", "text": "Các công ty con", "bbox": [640.63, 752.19, 732.49, 765.19]},
+    {"id": "p19-b12", "type": "paragraph", "text": "60", "bbox": [1045.91, 752.94, 1062.04, 765.94]},
+    {"id": "p19-b13", "type": "paragraph", "text": "THÀNH TỰU CỦA TECH", "bbox": [45.24, 29.45, 127.57, 36.45]},
+    {"id": "p19-b14", "type": "paragraph", "text": "CỦA TECH", "bbox": [49.13, 727.81, 260.05, 770.81]},
+    {"id": "p19-b15", "type": "paragraph", "text": "34 | BÁO CÁO THƯỜNG NIÊN TECHCOMBANK 2024", "bbox": [45.35, 803.61, 229.5, 810.91]},
+    {"id": "p19-b16", "type": "paragraph", "text": "EXPONENTIAL THINKING – SUSTAINABLE BUILDING | 35", "bbox": [957.76, 803.61, 1145.7, 810.61]}
+  ]
+}

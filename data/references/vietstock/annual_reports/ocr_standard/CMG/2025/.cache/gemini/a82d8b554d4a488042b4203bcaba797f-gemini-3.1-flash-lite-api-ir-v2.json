@@ -1,0 +1,866 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        93,
+        121,
+        321,
+        928
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "3"
+          ],
+          "box_2d": [
+            93,
+            121,
+            131,
+            157
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Khối Công nghệ mới – Công nghệ chiến lược"
+          ],
+          "box_2d": [
+            93,
+            157,
+            131,
+            578
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "(9.195)"
+          ],
+          "box_2d": [
+            93,
+            578,
+            131,
+            698
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "(2.384)"
+          ],
+          "box_2d": [
+            93,
+            698,
+            131,
+            818
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "-286%"
+          ],
+          "box_2d": [
+            93,
+            818,
+            131,
+            928
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "4",
+          "label_raw": "Khối Kinh doanh toàn cầu",
+          "note": null,
+          "box_2d": [
+            131,
+            121,
+            169,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khối Kinh doanh toàn cầu",
+              "box_2d": [
+                131,
+                157,
+                169,
+                578
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "158.140",
+              "box_2d": [
+                131,
+                578,
+                169,
+                698
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "147.578",
+              "box_2d": [
+                131,
+                698,
+                169,
+                818
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "7%",
+              "box_2d": [
+                131,
+                818,
+                169,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "Khối Giáo dục & Phát triển nguồn lực",
+          "note": null,
+          "box_2d": [
+            169,
+            121,
+            207,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khối Giáo dục & Phát triển nguồn lực",
+              "box_2d": [
+                169,
+                157,
+                207,
+                578
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "(55.856)",
+              "box_2d": [
+                169,
+                578,
+                207,
+                698
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "(34.961)",
+              "box_2d": [
+                169,
+                698,
+                207,
+                818
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "-60%",
+              "box_2d": [
+                169,
+                818,
+                207,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "6",
+          "label_raw": "Kinh doanh khác",
+          "note": null,
+          "box_2d": [
+            207,
+            121,
+            245,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Kinh doanh khác",
+              "box_2d": [
+                207,
+                157,
+                245,
+                578
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "1.011",
+              "box_2d": [
+                207,
+                578,
+                245,
+                698
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "31.149",
+              "box_2d": [
+                207,
+                698,
+                245,
+                818
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "-97%",
+              "box_2d": [
+                207,
+                818,
+                245,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Tổng cộng",
+          "note": null,
+          "box_2d": [
+            245,
+            121,
+            277,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Tổng cộng",
+              "box_2d": [
+                245,
+                157,
+                277,
+                578
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "752.819",
+              "box_2d": [
+                245,
+                578,
+                277,
+                698
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "737.445",
+              "box_2d": [
+                245,
+                698,
+                277,
+                818
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "2%",
+              "box_2d": [
+                245,
+                818,
+                277,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+          "note": null,
+          "box_2d": [
+            277,
+            121,
+            321,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+              "box_2d": [
+                277,
+                157,
+                321,
+                578
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "633.988",
+              "box_2d": [
+                277,
+                578,
+                321,
+                698
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "611.899",
+              "box_2d": [
+                277,
+                698,
+                321,
+                818
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "4%",
+              "box_2d": [
+                277,
+                818,
+                321,
+                928
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Ghi chú: Số liệu thực hiện 2025 dùng để so sánh trong bảng này có sự phân loại lại đơn vị CMC Consulting sang Khối Công nghệ & Giải pháp do thực hiện sáp nhập trong năm 2026.",
+      "box_2d": [
+        322,
+        145,
+        353,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "2.4. Kế hoạch đầu tư năm 2026:",
+      "box_2d": [
+        376,
+        121,
+        391,
+        445
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Đvt: Triệu đồng",
+      "box_2d": [
+        398,
+        780,
+        412,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        423,
+        121,
+        671,
+        928
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT"
+          ],
+          "box_2d": [
+            423,
+            121,
+            461,
+            165
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Khối kinh doanh"
+          ],
+          "box_2d": [
+            423,
+            165,
+            461,
+            561
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Năm 2026"
+          ],
+          "box_2d": [
+            423,
+            561,
+            461,
+            681
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Năm 2025"
+          ],
+          "box_2d": [
+            423,
+            681,
+            461,
+            801
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Tăng",
+            "trưởng"
+          ],
+          "box_2d": [
+            423,
+            801,
+            461,
+            928
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Khối Hạ tầng số",
+          "note": null,
+          "box_2d": [
+            461,
+            121,
+            493,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khối Hạ tầng số",
+              "box_2d": [
+                461,
+                165,
+                493,
+                561
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "991.000",
+              "box_2d": [
+                461,
+                561,
+                493,
+                681
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "611.500",
+              "box_2d": [
+                461,
+                681,
+                493,
+                801
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "62%",
+              "box_2d": [
+                461,
+                801,
+                493,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Khối Công nghệ & Giải pháp",
+          "note": null,
+          "box_2d": [
+            493,
+            121,
+            525,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khối Công nghệ & Giải pháp",
+              "box_2d": [
+                493,
+                165,
+                525,
+                561
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "101.773",
+              "box_2d": [
+                493,
+                561,
+                525,
+                681
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "18.244",
+              "box_2d": [
+                493,
+                681,
+                525,
+                801
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "458%",
+              "box_2d": [
+                493,
+                801,
+                525,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Khối Công nghệ mới & Công nghệ chiến lược",
+          "note": null,
+          "box_2d": [
+            525,
+            121,
+            557,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khối Công nghệ mới & Công nghệ chiến lược",
+              "box_2d": [
+                525,
+                165,
+                557,
+                561
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "155.587",
+              "box_2d": [
+                525,
+                561,
+                557,
+                681
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "42.682",
+              "box_2d": [
+                525,
+                681,
+                557,
+                801
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "265%",
+              "box_2d": [
+                525,
+                801,
+                557,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Khối Kinh doanh toàn cầu",
+          "note": null,
+          "box_2d": [
+            557,
+            121,
+            589,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khối Kinh doanh toàn cầu",
+              "box_2d": [
+                557,
+                165,
+                589,
+                561
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "149.500",
+              "box_2d": [
+                557,
+                561,
+                589,
+                681
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "48.766",
+              "box_2d": [
+                557,
+                681,
+                589,
+                801
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "207%",
+              "box_2d": [
+                557,
+                801,
+                589,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "Khối Giáo dục & Phát triển nguồn lực",
+          "note": null,
+          "box_2d": [
+            589,
+            121,
+            621,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Khối Giáo dục & Phát triển nguồn lực",
+              "box_2d": [
+                589,
+                165,
+                621,
+                561
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "534.000",
+              "box_2d": [
+                589,
+                561,
+                621,
+                681
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "18.726",
+              "box_2d": [
+                589,
+                681,
+                621,
+                801
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "2752%",
+              "box_2d": [
+                589,
+                801,
+                621,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": "6",
+          "label_raw": "Kinh doanh khác",
+          "note": null,
+          "box_2d": [
+            621,
+            121,
+            653,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Kinh doanh khác",
+              "box_2d": [
+                621,
+                165,
+                653,
+                561
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "1.508.809",
+              "box_2d": [
+                621,
+                561,
+                653,
+                681
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "247.634",
+              "box_2d": [
+                621,
+                681,
+                653,
+                801
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "509%",
+              "box_2d": [
+                621,
+                801,
+                653,
+                928
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Tổng cộng",
+          "note": null,
+          "box_2d": [
+            653,
+            121,
+            671,
+            928
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Tổng cộng",
+              "box_2d": [
+                653,
+                165,
+                671,
+                561
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "3.440.669",
+              "box_2d": [
+                653,
+                561,
+                671,
+                681
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "987.552",
+              "box_2d": [
+                653,
+                681,
+                671,
+                801
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "248%",
+              "box_2d": [
+                653,
+                801,
+                671,
+                928
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "❖ Khối Hạ tầng số: Dự án đầu tư xây dựng AI Factory; Đầu tư DC Tân Thuận (mở rộng tầng 5, một phần tầng 6); Đầu tư nâng cấp, cải tạo cho các DC hiện hữu (Duy Tân, SHTP), Đầu tư nâng cấp hạ tầng Backbone và mạng lõi quốc tế.\n❖ Khối Công nghệ & Giải pháp: Đầu tư vào công nghệ và giải pháp (Smart Biz (C.Biz), C AI Office, C ID, Prisma AI, hoàn thiện hệ sinh thái Smart Factory, Endpoint security, CMC CA).\n❖ Khối Công nghệ mới - Công nghệ chiến lược: Đầu tư vào công nghệ (C-AI legal, C-AI Platform, AIoT Edge phục vụ smartcity...).\n❖ Khối Kinh doanh toàn cầu: Đầu tư thành lập pháp nhân tại Thái, Anh, Úc, Mexico; Tăng vốn cho các pháp nhân tại thị trường Mỹ, Đức, Malaysia, Hàn Quốc; Đầu tư",
+      "box_2d": [
+        688,
+        145,
+        883,
+        915
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "55",
+      "box_2d": [
+        923,
+        908,
+        937,
+        926
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "3\nKhối Công nghệ mới – Công nghệ chiến lược\n(9.195)\n(2.384)\n-286%\n4 Khối Kinh doanh toàn cầu Khối Kinh doanh toàn cầu 158.140 147.578 7%\n5 Khối Giáo dục & Phát triển nguồn lực Khối Giáo dục & Phát triển nguồn lực (55.856) (34.961) -60%\n6 Kinh doanh khác Kinh doanh khác 1.011 31.149 -97%\nTổng cộng Tổng cộng 752.819 737.445 2%\nLợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) 633.988 611.899 4%\nGhi chú: Số liệu thực hiện 2025 dùng để so sánh trong bảng này có sự phân loại lại đơn vị CMC Consulting sang Khối Công nghệ & Giải pháp do thực hiện sáp nhập trong năm 2026.\n2.4. Kế hoạch đầu tư năm 2026:\nĐvt: Triệu đồng\nTT\nKhối kinh doanh\nNăm 2026\nNăm 2025\nTăng\ntrưởng\n1 Khối Hạ tầng số Khối Hạ tầng số 991.000 611.500 62%\n2 Khối Công nghệ & Giải pháp Khối Công nghệ & Giải pháp 101.773 18.244 458%\n3 Khối Công nghệ mới & Công nghệ chiến lược Khối Công nghệ mới & Công nghệ chiến lược 155.587 42.682 265%\n4 Khối Kinh doanh toàn cầu Khối Kinh doanh toàn cầu 149.500 48.766 207%\n5 Khối Giáo dục & Phát triển nguồn lực Khối Giáo dục & Phát triển nguồn lực 534.000 18.726 2752%\n6 Kinh doanh khác Kinh doanh khác 1.508.809 247.634 509%\nTổng cộng Tổng cộng 3.440.669 987.552 248%\n❖ Khối Hạ tầng số: Dự án đầu tư xây dựng AI Factory; Đầu tư DC Tân Thuận (mở rộng tầng 5, một phần tầng 6); Đầu tư nâng cấp, cải tạo cho các DC hiện hữu (Duy Tân, SHTP), Đầu tư nâng cấp hạ tầng Backbone và mạng lõi quốc tế.\n❖ Khối Công nghệ & Giải pháp: Đầu tư vào công nghệ và giải pháp (Smart Biz (C.Biz), C AI Office, C ID, Prisma AI, hoàn thiện hệ sinh thái Smart Factory, Endpoint security, CMC CA).\n❖ Khối Công nghệ mới - Công nghệ chiến lược: Đầu tư vào công nghệ (C-AI legal, C-AI Platform, AIoT Edge phục vụ smartcity...).\n❖ Khối Kinh doanh toàn cầu: Đầu tư thành lập pháp nhân tại Thái, Anh, Úc, Mexico; Tăng vốn cho các pháp nhân tại thị trường Mỹ, Đức, Malaysia, Hàn Quốc; Đầu tư\n55",
+  "unreadable": []
+}

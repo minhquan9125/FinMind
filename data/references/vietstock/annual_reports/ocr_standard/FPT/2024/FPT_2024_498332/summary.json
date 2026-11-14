@@ -1,0 +1,68 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\FPT\\2024\\FPT_2024_498332.pdf",
+  "pages": 215,
+  "routes": {
+    "tesseract": 4,
+    "text_layer": 211
+  },
+  "status": {
+    "OK": 215
+  },
+  "flags": {
+    "MANUAL_REVIEWED": 2
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 2.042,
+    "renderAndTesseract": 3.801,
+    "gemini": 2.567,
+    "total": 8.945
+  },
+  "geminiApi": {
+    "calls": 2,
+    "failedCalls": 2,
+    "seconds": 2.559,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 4,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\FPT\\2024",
+    "mode": "auto",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "structured",
+    "openrouterModel": "recursive/flint-v1.0:free",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 180,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

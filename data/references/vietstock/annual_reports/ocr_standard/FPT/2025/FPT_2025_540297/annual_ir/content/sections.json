@@ -1,0 +1,386 @@
+{
+  "document_sha256": "5ea9b229656594f65e858ff7465ec600332fd623c501ce27d5b95de098275a35",
+  "sections": [
+    {
+      "id": "leadership",
+      "title": "Thông điệp ban lãnh đạo",
+      "first_page": 4,
+      "last_page": 9,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "highlights",
+      "title": "Dấu ấn trong năm",
+      "first_page": 10,
+      "last_page": 22,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "overview",
+      "title": "Dấu ấn và tổng quan doanh nghiệp",
+      "first_page": 23,
+      "last_page": 45,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "strategy",
+      "title": "Chiến lược phát triển",
+      "first_page": 46,
+      "last_page": 56,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "business",
+      "title": "Phân tích hoạt động kinh doanh",
+      "first_page": 57,
+      "last_page": 79,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "governance",
+      "title": "Quản trị công ty",
+      "first_page": 80,
+      "last_page": 109,
+      "evidence": "active sidebar label"
+    },
+    {
+      "id": "esg",
+      "title": "Báo cáo ESG",
+      "first_page": 110,
+      "last_page": 159,
+      "evidence": "active sidebar label"
+    }
+  ],
+  "unclassified_pages": [],
+  "topics": [
+    {
+      "id": "leadership",
+      "title": "Thông điệp ban lãnh đạo",
+      "pdf_pages": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "company",
+      "title": "Doanh nghiệp, ngành nghề và cơ cấu tổ chức",
+      "pdf_pages": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    {
+      "id": "strategy",
+      "title": "Chiến lược phát triển",
+      "pdf_pages": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Kết quả hoạt động và kế hoạch",
+      "pdf_pages": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    {
+      "id": "governance",
+      "title": "Quản trị công ty",
+      "pdf_pages": [
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ]
+    },
+    {
+      "id": "people_esg",
+      "title": "Nhân sự và ESG",
+      "pdf_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159
+      ]
+    }
+  ],
+  "table_targets": [
+    {
+      "topic": "company",
+      "pdf_page": 33,
+      "title": "Thông tin về cổ phiếu",
+      "ir_file": "p-033.ir.json",
+      "status": "structured",
+      "needs_review": false,
+      "table_block_id": "p33-t1"
+    },
+    {
+      "topic": "company",
+      "pdf_page": 33,
+      "title": "Cơ cấu cổ đông theo các mức cổ phiếu sở hữu",
+      "ir_file": "p-033.ir.json",
+      "status": "structured",
+      "needs_review": false,
+      "table_block_id": "p33-t2"
+    },
+    {
+      "topic": "company",
+      "pdf_page": 33,
+      "title": "Cơ cấu cổ đông theo đối tượng sở hữu",
+      "ir_file": "p-033.ir.json",
+      "status": "structured",
+      "needs_review": false,
+      "table_block_id": "p33-t3"
+    },
+    {
+      "topic": "company",
+      "pdf_page": 34,
+      "title": "Cơ cấu cổ đông theo quốc tịch",
+      "ir_file": "p-034.ir.json",
+      "status": "structured",
+      "needs_review": false,
+      "table_block_id": "p34-t1"
+    },
+    {
+      "topic": "company",
+      "pdf_page": 34,
+      "title": "Top 10 cổ đông lớn",
+      "ir_file": "p-034.ir.json",
+      "status": "structured",
+      "needs_review": false,
+      "table_block_id": "p34-t2"
+    },
+    {
+      "topic": "company",
+      "pdf_page": 34,
+      "title": "Tình hình thay đổi vốn điều lệ",
+      "ir_file": "p-034.ir.json",
+      "status": "text_only",
+      "needs_review": true,
+      "table_block_id": null
+    },
+    {
+      "topic": "company",
+      "pdf_page": 35,
+      "title": "Tình hình thay đổi vốn điều lệ (Tiếp theo)",
+      "ir_file": "p-035.ir.json",
+      "status": "text_only",
+      "needs_review": true,
+      "table_block_id": null
+    },
+    {
+      "topic": "company",
+      "pdf_page": 36,
+      "title": "Tình hình thay đổi vốn điều lệ (Tiếp theo)",
+      "ir_file": "p-036.ir.json",
+      "status": "text_only",
+      "needs_review": true,
+      "table_block_id": null
+    },
+    {
+      "topic": "company",
+      "pdf_page": 37,
+      "title": "Tình hình thay đổi vốn điều lệ (Tiếp theo)",
+      "ir_file": "p-037.ir.json",
+      "status": "text_only",
+      "needs_review": true,
+      "table_block_id": null
+    },
+    {
+      "topic": "performance",
+      "pdf_page": 66,
+      "title": "Nhân sự bình quân của lĩnh vực Dịch vụ CNTT cho thị trường nước ngoài và năng suất lao động",
+      "ir_file": "p-066.ir.json",
+      "status": "text_only",
+      "needs_review": true,
+      "table_block_id": null
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 87,
+      "title": "Danh sách Thành viên HĐQT nhiệm kỳ 2022-2027 và số cuộc họp tham dự trong năm 2025",
+      "ir_file": "p-087.ir.json",
+      "status": "structured",
+      "needs_review": false,
+      "table_block_id": "p87-t1"
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 91,
+      "title": "Chi tiết thù lao của từng thành viên HĐQT năm 2025",
+      "ir_file": "p-091.ir.json",
+      "status": "structured",
+      "needs_review": false,
+      "table_block_id": "p91-t1"
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 94,
+      "title": "Giao dịch cổ phiếu của cổ đông lớn và cổ đông nội bộ",
+      "ir_file": "p-094.ir.json",
+      "status": "text_only",
+      "needs_review": true,
+      "table_block_id": null
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 95,
+      "title": "Hợp đồng hoặc giao dịch với cổ đông nội bộ",
+      "ir_file": "p-095.ir.json",
+      "status": "text_only",
+      "needs_review": true,
+      "table_block_id": null
+    },
+    {
+      "topic": "governance",
+      "pdf_page": 109,
+      "title": "Chi tiết thù lao của BKS năm 2025",
+      "ir_file": "p-109.ir.json",
+      "status": "structured",
+      "needs_review": false,
+      "table_block_id": "p109-t1"
+    }
+  ]
+}

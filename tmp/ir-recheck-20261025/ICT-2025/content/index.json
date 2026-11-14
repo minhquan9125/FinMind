@@ -1,0 +1,31 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\ICT\\2025\\ICT_2025_540815.pdf",
+  "scope": "annual_report_content",
+  "pages": 4,
+  "routes": {
+    "TEXT_LAYER": 4
+  },
+  "blockTypes": {
+    "paragraph": 142,
+    "heading": 4
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 9,
+      "end": 10
+    },
+    {
+      "start": 23,
+      "end": 23
+    },
+    {
+      "start": 36,
+      "end": 36
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

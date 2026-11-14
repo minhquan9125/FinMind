@@ -1,0 +1,9 @@
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\VCB\2025\541578_pdfs\1604_ENG_VCB_Annual-Report-2025_v2.pdf: 112 trang
+  lớp text: 110 trang dùng được, 2 trang cần OCR (0.889s)
+  [tess] trang 1: conf=88 low=0.083 rot=0 0.667s
+  [tess] trang 31: conf=48 low=0.517 rot=0 0.844s
+  tuyến: {'tesseract': 2, 'text_layer': 110}  trạng thái: {'REVIEW': 2, 'OK': 110}
+  cờ: {'LOW_CONF': 2}
+  thời gian (s): {'textLayer': 0.889, 'renderAndTesseract': 12.857, 'gemini': 0.0, 'total': 13.869}
+  → D:\finmind\data\references\vietstock\annual_reports\ocr_standard\VCB\2025\1604_ENG_VCB_Annual-Report-2025_v2

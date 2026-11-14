@@ -1,0 +1,71 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\ELC\\2024\\ELC_2024_500811.pdf",
+  "pages": 139,
+  "routes": {
+    "tesseract": 41,
+    "text_layer": 98
+  },
+  "status": {
+    "OK": 139
+  },
+  "flags": {
+    "MANUAL_REVIEWED": 9,
+    "PDF_TEXT_VERIFIED": 25,
+    "TEXT_LAYER_BROKEN": 6,
+    "NEAR_EMPTY": 2
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 2.181,
+    "renderAndTesseract": 35.191,
+    "gemini": 36.254,
+    "total": 74.69
+  },
+  "geminiApi": {
+    "calls": 34,
+    "failedCalls": 34,
+    "seconds": 36.157,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 41,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\ELC\\2024",
+    "mode": "auto",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "structured",
+    "openrouterModel": "recursive/flint-v1.0:free",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 180,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

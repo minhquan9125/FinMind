@@ -1,0 +1,20 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\ITD\\2025\\ITD_2025_551266.pdf",
+  "document_sha256": "e247879a9f33058799aae35d1d3f9d2aa634e36985cf7d8c3f09ac1592802fa0",
+  "overrides_applied": [],
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 16
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "observations": "table/observations.json",
+    "pages": 8,
+    "structuredTablePages": 0,
+    "notesTextOnlyPages": 1,
+    "totalObservations": 0,
+    "verifiedObservations": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "ir_version": "1",
+  "page": 79,
+  "printed_page": null,
+  "page_class": "auditor_report",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "c95251ea276f8ea9138d58b4d95e45d90cfa8d341b0acabfaf9774f96d2ee586",
+    "file_name": "BID_2025_542007.pdf"
+  },
+  "blocks": [
+    {"id": "p79-b1", "type": "heading", "text": "BÁO CÁO TÀI CHÍNH", "bbox": [85.04, 119.24, 308.26, 142.7]},
+    {"id": "p79-b2", "type": "paragraph", "text": "158 Báo cáo kiểm toán độc lập", "bbox": [56.69, 163.34, 235.52, 175.61]},
+    {"id": "p79-b3", "type": "paragraph", "text": "160 Báo cáo tình hình tài chính hợp nhất", "bbox": [56.69, 185.95, 284.59, 198.22]},
+    {"id": "p79-b4", "type": "paragraph", "text": "163 Báo cáo kết quả hoạt động hợp nhất", "bbox": [56.69, 208.56, 288.42, 220.82]},
+    {"id": "p79-b5", "type": "paragraph", "text": "164 Báo cáo lưu chuyển tiền tệ hợp nhất", "bbox": [56.69, 231.16, 285.7, 243.43]},
+    {"id": "p79-b6", "type": "paragraph", "text": "166 Thuyết minh báo cáo tài chính", "bbox": [56.69, 253.77, 254.14, 266.03]}
+  ]
+}

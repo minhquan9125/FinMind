@@ -6,6 +6,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query, UploadFile
 
+from ...auth.authorization import READ_ROLES, WRITE_ROLES, require_roles
 from ...core.config import Settings, get_settings
 from ...core.db import get_pool
 from ...documents import repository
@@ -51,7 +52,7 @@ async def _ingest_pages(
         pool,
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model,
+        settings.embedding_model_ref,
     )
     document_id = await repository.create_document(
         pool,
@@ -62,6 +63,15 @@ async def _ingest_pages(
         hashlib.sha256(source_bytes).hexdigest(),
         doc_type,
     )
+    from ...documents.upload_source import store_upload_source
+    symbol = None
+    if file_type == 'JSON' and doc_type == 'FINANCIAL_JSON':
+        data = json.loads(source_bytes)
+        symbol = data.get('symbol') or Path(filename).stem.upper()
+    source_id = await store_upload_source(pool, source_bytes, file_type, doc_type, symbol)
+    locator = {'schema_version': 'upload-source-v1', 'source_table': 'raw_payloads',
+               'source_id': source_id, 'chunk_size': settings.chunk_words,
+               'chunk_overlap': settings.chunk_words - settings.chunk_stride}
     rows = []
     total_tokens = 0
     for index, (chunk, tf, vector) in enumerate(zip(raw_chunks, tf_list, embeddings)):
@@ -70,6 +80,7 @@ async def _ingest_pages(
         rows.append(
             {
                 "chunk_index": index,
+                "locator_json": locator,
                 "page": chunk.page,
                 "text": chunk.text,
                 "token_count": token_count,
@@ -91,7 +102,7 @@ async def _ingest_pages(
     )
 
 
-@router.post("", response_model=DocumentOut)
+@router.post("", response_model=DocumentOut, dependencies=[Depends(require_roles(*WRITE_ROLES))])
 async def upload_document(
     file: UploadFile,
     settings: Settings = Depends(get_settings),
@@ -114,7 +125,7 @@ async def upload_document(
     )
 
 
-@router.post("/json", response_model=DocumentOut)
+@router.post("/json", response_model=DocumentOut, dependencies=[Depends(require_roles(*WRITE_ROLES))])
 async def upload_json_document(
     file: UploadFile,
     settings: Settings = Depends(get_settings),
@@ -152,7 +163,7 @@ async def upload_json_document(
     )
 
 
-@router.post("/import-symbol/{symbol}", response_model=DocumentOut)
+@router.post("/import-symbol/{symbol}", response_model=DocumentOut, dependencies=[Depends(require_roles(*WRITE_ROLES))])
 async def import_symbol(
     symbol: str,
     settings: Settings = Depends(get_settings),
@@ -183,7 +194,7 @@ async def import_symbol(
     )
 
 
-@router.get("/{document_id}/chunks", response_model=list[ChunkDetailOut])
+@router.get("/{document_id}/chunks", response_model=list[ChunkDetailOut], dependencies=[Depends(require_roles(*READ_ROLES))])
 async def get_chunk_details(
     document_id: str,
     settings: Settings = Depends(get_settings),
@@ -193,10 +204,11 @@ async def get_chunk_details(
     if document is None:
         raise HTTPException(status_code=404, detail="Document not found.")
 
-    index_version_id = repository.index_version_id_for(
+    index_version_id = repository.index_for_document(
+        document,
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model,
+        settings.embedding_model_ref,
     )
     chunk_rows = await repository.get_chunks(pool, document_id, index_version_id)
     chunk_texts = [row["text"] for row in chunk_rows]
@@ -223,7 +235,7 @@ async def get_chunk_details(
     return out
 
 
-@router.get("/{document_id}/vocab", response_model=VocabResponse)
+@router.get("/{document_id}/vocab", response_model=VocabResponse, dependencies=[Depends(require_roles(*READ_ROLES))])
 async def get_vocab(
     document_id: str,
     q: str | None = Query(default=None, description="Filter tokens containing this substring"),
@@ -235,10 +247,11 @@ async def get_vocab(
     if document is None:
         raise HTTPException(status_code=404, detail="Document not found.")
 
-    index_version_id = repository.index_version_id_for(
+    index_version_id = repository.index_for_document(
+        document,
         settings.chunk_words,
         settings.chunk_words - settings.chunk_stride,
-        settings.embedding_model,
+        settings.embedding_model_ref,
     )
     chunk_rows = await repository.get_chunks(pool, document_id, index_version_id)
     chunk_texts = [row["text"] for row in chunk_rows]

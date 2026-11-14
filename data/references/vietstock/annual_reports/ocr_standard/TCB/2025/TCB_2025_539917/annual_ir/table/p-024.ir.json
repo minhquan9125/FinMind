@@ -1,0 +1,78 @@
+{
+  "ir_version": "1",
+  "page": 24,
+  "printed_page": null,
+  "page_class": "income_statement",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+    "file_name": "TCB_2025_539917.pdf"
+  },
+  "blocks": [
+    {"id": "p24-b1", "type": "paragraph", "text": "Báo cáo Kết quả kinh doanh", "bbox": [43.01, 107.52, 390.21, 135.53]},
+    {"id": "p24-b2", "type": "paragraph", "text": "Vươn tới những tầm cao mới\ntrong năm 2025", "bbox": [646.3, 106.49, 889.04, 150.49]},
+    {"id": "p24-b3", "type": "paragraph", "text": "Tăng trưởng xuất khẩu", "bbox": [646.3, 185.8, 728.54, 194.3]},
+    {
+      "id": "p24-b4",
+      "type": "paragraph",
+      "text": "Kinh tế thế giới đã trải qua một năm 2025 đầy biến động, với nhiều bất ổn\nvề kinh tế và chính trị, cùng với gián đoạn thương mại do Mỹ tăng thuế đối",
+      "bbox": [826.3, 186.28, 1148.11, 208.28]
+    },
+    {"id": "p24-b5", "type": "paragraph", "text": "Thành tựu của Tech 47", "bbox": [1067.02, 25.6, 1148.03, 32.7]},
+    {"id": "p24-b6", "type": "heading", "text": "17% N/N", "bbox": [653.81, 199.56, 736.42, 221.56]},
+    {"id": "p24-b7", "type": "paragraph", "text": "Giải ngân vốn đầu tư nước ngoài", "bbox": [646.3, 250.52, 765.49, 259.02]},
+    {"id": "p24-b8", "type": "paragraph", "text": "với nhiều quốc gia, bao gồm cả Việt Nam.", "bbox": [826.3, 210.28, 1007.65, 220.28]},
+    {
+      "id": "p24-b9",
+      "type": "paragraph",
+      "text": "Mặc dù đối mặt với những thách thức này, kinh tế Việt Nam vẫn đạt mức tăng trưởng ấn\ntượng, vượt trên 8%, mức tăng trưởng cao thứ hai trong 15 năm qua.",
+      "bbox": [826.3, 231.99, 1148.01, 250.99]
+    },
+    {
+      "id": "p24-b10",
+      "type": "paragraph",
+      "text": "Xuất khẩu tiếp tục là động lực của nền kinh tế tăng 17% so với cùng kỳ năm trước, trong",
+      "bbox": [826.3, 263.49, 1147.98, 271.99]
+    },
+    {"id": "p24-b11", "type": "heading", "text": "9% N/N", "bbox": [653.81, 263.91, 730.31, 285.91]},
+    {"id": "p24-b12", "type": "paragraph", "text": "Đầu tư công", "bbox": [646.3, 307.88, 691.43, 316.38]},
+    {
+      "id": "p24-b13",
+      "type": "paragraph",
+      "text": "khi giải ngân vốn đầu tư nước ngoài vào Việt Nam cũng ghi nhận mức tăng trưởng mạnh\nmẽ 9%. Những kết quả này phản ánh năng lực cạnh tranh ngày càng được cải thiện của\nnền kinh tế Việt Nam, được hỗ trợ bởi môi trường chính trị ổn định, chi phí sản xuất thấp\nvà các tiêu chuẩn ngày càng nghiêm ngặt về chất lượng, tính bền vững và truy xuất\nnguồn gốc.",
+      "bbox": [826.3, 273.99, 1148.07, 324.48]
+    },
+    {"id": "p24-b14", "type": "heading", "text": "38% N/N", "bbox": [653.81, 322.98, 742.32, 344.98]},
+    {"id": "p24-b15", "type": "paragraph", "text": "Tổng sản phẩm quốc nội (GDP)", "bbox": [646.3, 371.2, 760.73, 379.7]},
+    {
+      "id": "p24-b16",
+      "type": "paragraph",
+      "text": "Đầu tư công – một trong những động lực tăng trưởng quan trọng nhất – đã bứt phá trong\nnăm nay khi tăng hơn 38% so với năm trước. Mặc dù lãi suất có xu hướng tăng, mức lãi\nsuất hiện tại vẫn cho phép người dân và doanh nghiệp tiếp cận vốn phục vụ tiêu dùng\nvà đầu tư. Sản xuất giá trị cao, sự phối hợp giữa đầu tư công và tư nhân, cùng các dự án\ncơ sở hạ tầng trọng điểm được kỳ vọng sẽ là những động lực phát triển then chốt trong",
+      "bbox": [826.3, 336.98, 1148.07, 387.47]
+    },
+    {"id": "p24-b17", "type": "heading", "text": "8,02% N/N", "bbox": [653.81, 385.09, 759.55, 407.09]},
+    {
+      "id": "p24-b18",
+      "type": "paragraph",
+      "text": "Đợt IPO thành công của Công ty Cổ phần Chứng khoán Kỹ Thương (HOSE: TCX),\ncùng với sự ra mắt của Techcom Life và Techcom General Insurance đã mở\nra các động lực tăng trưởng mới và gia tăng sức mạnh cho hệ sinh thái của\nTechcombank. Dựa trên nền tảng vững chắc của chiến lược 2021 - 2025, Ngân\nhàng sẵn sàng bứt phá trong giai đoạn chiến lược 5 năm tiếp theo.",
+      "bbox": [214.02, 655.49, 507.79, 705.98]
+    },
+    {"id": "p24-b19", "type": "paragraph", "text": "thời gian tới.", "bbox": [826.3, 389.47, 871.28, 397.97]},
+    {
+      "id": "p24-b20",
+      "type": "paragraph",
+      "text": "Tầm nhìn mới cho Việt Nam mang đến nhiều kỳ vọng cho ngành tài chính nói chung và\nTechcombank nói riêng. Khi đất nước tiếp tục gia tăng mức độ thịnh vượng và chuyển\nmình sang nền kinh tế số, với sự cởi mở lớn hơn đối với đổi mới tài chính, chúng tôi sẽ\ntận dụng vị thế dẫn đầu trong ngân hàng số và dịch vụ quản lý gia sản để thúc đẩy tăng\ntrưởng, tạo ra nhiều giá trị hơn cho khách hàng và cổ đông.",
+      "bbox": [826.3, 410.47, 1148.1, 460.96]
+    },
+    {"id": "p24-b21", "type": "paragraph", "text": "46 Báo cáo thường niên 2025", "bbox": [42.52, 25.6, 147.46, 32.7]},
+    {
+      "id": "p24-b22",
+      "type": "paragraph",
+      "text": "Năm 2025,\nTechcombank ghi nhận\nmức tăng trưởng mạnh\nở cả quy mô và lợi\nnhuận, vượt mục tiêu\nkinh doanh đề ra\ncho cả năm.",
+      "bbox": [42.52, 391.93, 220.22, 541.91]
+    },
+    {"id": "p24-b23", "type": "paragraph", "text": "Ông Alexandre Macaire\nGiám đốc Tài chính Tập đoàn", "bbox": [42.52, 662.72, 150.61, 684.9]}
+  ]
+}

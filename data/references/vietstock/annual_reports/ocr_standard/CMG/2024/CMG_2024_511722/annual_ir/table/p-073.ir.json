@@ -1,0 +1,107 @@
+{
+  "ir_version": "1",
+  "page": 73,
+  "printed_page": "CMC",
+  "page_class": "balance_sheet",
+  "page_size": {"width": 595.276, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
+    "file_name": "CMG_2024_511722.pdf"
+  },
+  "blocks": [
+    {"id": "p73-b1", "type": "heading", "text": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT", "bbox": [175.66, 35.72, 419.62, 49.72]},
+    {"id": "p73-b2", "type": "paragraph", "text": "Ngày 31 tháng 3 năm 2025", "bbox": [232.23, 51.63, 363.04, 61.63]},
+    {"id": "p73-b3", "type": "paragraph", "text": "TM", "bbox": [297.23, 81.43, 312.33, 91.43]},
+    {"id": "p73-b4", "type": "paragraph", "text": "Số cuối năm", "bbox": [356.56, 81.43, 416.65, 91.43]},
+    {"id": "p73-b5", "type": "paragraph", "text": "Đơn vị tính: VND", "bbox": [470.17, 65.43, 533.79, 73.43]},
+    {"id": "p73-b6", "type": "paragraph", "text": "Số đầu năm", "bbox": [471.8, 81.43, 529.21, 91.43]},
+    {"id": "p73-b7", "type": "heading", "text": "NGUỒN VỐN", "bbox": [140.51, 81.98, 201.06, 91.98]},
+    {"id": "p73-b8", "type": "heading", "text": "NỢ PHẢI TRẢ", "bbox": [124.91, 110.11, 176.4, 118.11]},
+    {"id": "p73-b9", "type": "paragraph", "text": "Nợ ngắn hạn", "bbox": [123.22, 134.72, 172.1, 142.72]},
+    {
+      "id": "p73-b10",
+      "type": "paragraph",
+      "text": "Phải trả người bán ngắn hạn\nNgười mua trả tiền trước ngắn hạn\nThuế và các khoản phải nộp Nhà nước\nPhải trả người lao động\nChi phí phải trả ngắn hạn\nDoanh thu chưa thực hiện ngắn hạn\nPhải trả ngắn hạn khác\nVay ngắn hạn\nDự phòng phải trả ngắn hạn\n322 10. Quỹ khen thưởng, phúc lợi",
+      "bbox": [51.23, 147.94, 271.02, 272.94]
+    },
+    {
+      "id": "p73-b11",
+      "type": "paragraph",
+      "text": "Nợ dài hạn\nDoanh thu chưa thực hiện dài hạn\nPhải trả dài hạn khác\nVay dài hạn\nThuế thu nhập hoãn lại phải trả\nQuỹ phát triển khoa học và công nghệ",
+      "bbox": [123.07, 284.04, 270.35, 357.23]
+    },
+    {"id": "p73-b12", "type": "heading", "text": "VỐN CHỦ SỞ HỮU", "bbox": [124.79, 376.48, 194.48, 384.48]},
+    {
+      "id": "p73-b13",
+      "type": "paragraph",
+      "text": "Vốn chủ sở hữu\nVốn cổ phần đã phát hành\nCổ phiếu phổ thông có quyền biểu quyết\nThặng dư vốn cổ phần\nVốn khác của chủ sở hữu\nCổ phiếu quỹ\nChênh lệch tỷ giá hối đoái\nLợi nhuận sau thuế chưa phân phối\nLợi nhuận sau thuế chưa phân phối luỹ kế\nđến cuối năm trước\nLợi nhuận sau thuế chưa phân phối năm nay\nLợi ích cổ đông không kiểm soát",
+      "bbox": [121.2, 402.25, 295.35, 553.44]
+    },
+    {"id": "p73-b14", "type": "heading", "text": "TỔNG CỘNG NGUỒN VỐN", "bbox": [122.96, 568.36, 221.62, 576.36]},
+    {"id": "p73-b15", "type": "paragraph", "text": "Kế toán trưởng", "bbox": [91.51, 613.96, 149.29, 621.96]},
+    {"id": "p73-b16", "type": "paragraph", "text": "Nguyễn Hồng Phương", "bbox": [78.15, 735.84, 162.46, 743.84]},
+    {"id": "p73-b17", "type": "paragraph", "text": "Người lập kiêm Kế toán trưởng\nNgày 27 tháng 6 năm 2025", "bbox": [78.66, 749.21, 197.32, 770.21]},
+    {"id": "p73-b18", "type": "paragraph", "text": "21", "bbox": [268.56, 251.94, 278.09, 259.94]},
+    {"id": "p73-b19", "type": "paragraph", "text": "Giám đốc Tài chính", "bbox": [240.21, 613.88, 315.15, 621.88]},
+    {"id": "p73-b20", "type": "paragraph", "text": "Nguyễn Minh Tuệ", "bbox": [243.4, 735.84, 311.07, 743.84]},
+    {"id": "p73-b21", "type": "paragraph", "text": "3.999.539.286.547", "bbox": [351.17, 110.11, 425.69, 118.11]},
+    {
+      "id": "p73-b22",
+      "type": "paragraph",
+      "text": "3.056.272.394.922\n692.588.597.536\n15.1\n135.109.832.837\n15.2\n56.021.921.588\n16\n275.462.596.951\n627.587.519.069\n17\n241.948.362.350\n19\n83.336.683.717\n18\n898.099.854.141\n20\n6.515.814.267\n39.601.212.466\n22",
+      "bbox": [302.23, 134.86, 425.69, 272.94]
+    },
+    {
+      "id": "p73-b23",
+      "type": "paragraph",
+      "text": "943.266.891.625\n25.827.536.162\n19\n18.094.076.286\n18\n873.831.927.858\n20\n25.513.351.319\n32.3\n23",
+      "bbox": [304.4, 283.96, 425.68, 357.23]
+    },
+    {"id": "p73-b24", "type": "paragraph", "text": "3.677.515.665.164", "bbox": [351.18, 376.95, 425.69, 384.95]},
+    {
+      "id": "p73-b25",
+      "type": "paragraph",
+      "text": "24\n3.677.515.665.164\n2.113.396.070.000\n2.113.396.070.000\n27.062.540.400\n371.662.664.388\n(388.000.000)\n(2.329.285.651)\n413.313.754.015",
+      "bbox": [304.01, 402.25, 425.69, 501.25]
+    },
+    {"id": "p73-b26", "type": "paragraph", "text": "64.673.198.003\n348.640.556.012\n754.797.922.012", "bbox": [358.78, 519.25, 425.68, 553.25]},
+    {"id": "p73-b27", "type": "paragraph", "text": "7.677.054.951.711", "bbox": [351.17, 567.76, 425.69, 575.76]},
+    {"id": "p73-b28", "type": "paragraph", "text": "Chủ tịch Điều hành Tập đoàn", "bbox": [385.49, 613.52, 497.93, 621.52]},
+    {"id": "p73-b29", "type": "paragraph", "text": "3.509.624.914.652", "bbox": [465.18, 110.03, 539.69, 118.03]},
+    {
+      "id": "p73-b30",
+      "type": "paragraph",
+      "text": "2.774.430.728.562\n758.643.312.225\n70.638.714.688\n60.602.267.476\n204.275.598.691\n434.193.834.040\n191.694.524.921\n116.928.061.727\n899.409.668.650\n4.401.073.143\n33.643.673.001",
+      "bbox": [465.18, 134.64, 539.69, 272.64]
+    },
+    {
+      "id": "p73-b31",
+      "type": "paragraph",
+      "text": "735.194.186.090\n32.383.322.687\n4.655.319.289\n667.033.109.046\n26.845.945.601\n-\n4.276.489.467",
+      "bbox": [422.18, 284.12, 539.69, 357.12]
+    },
+    {"id": "p73-b32", "type": "paragraph", "text": "3.344.147.915.246", "bbox": [465.2, 376.95, 539.71, 384.95]},
+    {
+      "id": "p73-b33",
+      "type": "paragraph",
+      "text": "3.344.147.915.246\n1.900.269.960.000\n1.900.269.960.000\n27.062.540.400\n371.662.664.388\n-\n(2.802.521.280)\n342.109.659.777",
+      "bbox": [465.18, 402.33, 539.69, 501.33]
+    },
+    {"id": "p73-b34", "type": "paragraph", "text": "11.434.141.375\n330.675.518.402\n705.845.611.961", "bbox": [472.78, 519.33, 539.68, 553.33]},
+    {"id": "p73-b35", "type": "paragraph", "text": "6.853.772.829.898", "bbox": [465.2, 567.76, 539.71, 575.76]},
+    {"id": "p73-b36", "type": "paragraph", "text": "Nguyễn Trung Chính", "bbox": [404.33, 735.84, 483.38, 743.84]},
+    {"id": "p73-b37", "type": "paragraph", "text": "MS", "bbox": [51.88, 81.43, 67.11, 91.43]},
+    {"id": "p73-b38", "type": "paragraph", "text": "300 C.", "bbox": [52.93, 110.11, 96.12, 118.11]},
+    {"id": "p73-b39", "type": "paragraph", "text": "310 I.", "bbox": [51.22, 134.72, 92.59, 142.72]},
+    {"id": "p73-b40", "type": "paragraph", "text": "311 1.\n312 2.\n313 3.\n314 4.\n315 5.\n318 6.\n319 7.\n320 8.\n321 9.", "bbox": [51.23, 147.94, 94.84, 259.94]},
+    {"id": "p73-b41", "type": "paragraph", "text": "330 II.\n336 1.\n337 2.\n338 3.\n341 4.\n343 5.", "bbox": [51.06, 284.04, 95.12, 357.23]},
+    {"id": "p73-b42", "type": "paragraph", "text": "400 D.", "bbox": [52.79, 376.48, 97.04, 384.48]},
+    {"id": "p73-b43", "type": "paragraph", "text": "410 I.\n411 1.\n411a -\n412 2.\n414 3.\n415 4.\n417 5.\n421 6.\n421a -", "bbox": [50.65, 402.25, 94.26, 514.44]},
+    {"id": "p73-b44", "type": "paragraph", "text": "421b -\n429 7.", "bbox": [50.65, 532.44, 94.26, 553.44]},
+    {"id": "p73-b45", "type": "paragraph", "text": "440", "bbox": [50.95, 568.36, 65.42, 576.36]},
+    {"id": "p73-b46", "type": "furniture", "text": "CMC CORPORATION", "bbox": [42.05, 811.92, 115.21, 819.92]},
+    {"id": "p73-b47", "type": "furniture", "text": "75", "bbox": [550.97, 811.92, 560.03, 819.92]}
+  ]
+}

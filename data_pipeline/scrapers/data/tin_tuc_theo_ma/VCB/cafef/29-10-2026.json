@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "7d6a0829ac1c493194d8",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2998158/vcb-hdqt-thong-qua-giao-dich-voi-vcbf.chn",
+      "title": "VCB: HĐQT thông qua giao dịch với VCBF",
+      "description": "VCB: HĐQT thông qua giao dịch với VCBF",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam thông báo HĐQT thông qua giao dịch với VCBF như sau: Các tập tin đính kèm 20261014 - VCB - HDQT thong qua giao dich voi VCBF.pdf Theo HOSE",
+      "published_at": "2026-10-14T10:57:19+00:00",
+      "crawled_at": "2026-10-29T07:41:21.822009+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/141026/vcb-h-qt-thong-qua-giao-dich-voi-vcbf-0.pdf?v=1791975820171"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006463878326996198,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "53fd9636df38d70ac5e2",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2998160/vcb-mien-nhiem-ong-nguyen-van-tuan-pho-tong-giam-doc-tu-1112026.chn",
+      "title": "VCB: Miễn nhiệm ông Nguyễn Văn Tuân - Phó Tổng giám đốc từ 1.11.2026",
+      "description": "VCB: Miễn nhiệm ông Nguyễn Văn Tuân - Phó Tổng giám đốc từ 1.11.2026",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam thông báo thay đổi nhân sự như sau: Các tập tin đính kèm 20261014 - VCB - Thong bao thay doi nhan su - Mien nhiem PTGD.pdf Theo HOSE",
+      "published_at": "2026-10-13T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:41:22.728006+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/141026/vcb-thong-bao-thay-doi-nhan-su-0.pdf?v=1791975823587"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006470028544243577,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "3a7fc6466f09c7fcef22",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2993959/vcb-cbtt-thong-qua-ky-ket-thoa-thuan-lc-upas-va-lc-discounting-voi-vfc.chn",
+      "title": "VCB: CBTT thông qua ký kết thỏa thuận LC UPAS và LC Discounting với VFC",
+      "description": "VCB: CBTT thông qua ký kết thỏa thuận LC UPAS và LC Discounting với VFC",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố thông qua ký kết thỏa thuận LC UPAS và LC Discounting với VFC như sau: Các tập tin đính kèm 20261008 - VCB - HDQT thong qua ky ket thoa thuan LC voi VFC.pdf Theo HOSE",
+      "published_at": "2026-10-08T09:26:21+00:00",
+      "crawled_at": "2026-10-29T07:41:23.842860+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/081026/vcb-cbtt-thong-qua-ky-ket-thoa-thuan-lc-upas-va-lc-discounting-voi-vfc-0.pdf?v=1791451795633"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.0064090480678605085,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "13aecb1a2b840b4e12da",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2989426/vcb-don-xin-nghi-huu-truoc-tuoi-cua-ong-nguyen-van-tuan-pho-tong-giam-doc.chn",
+      "title": "VCB: Đơn xin nghỉ hưu trước tuổi của ông Nguyễn Văn Tuân - Phó Tổng giám đốc",
+      "description": "VCB: Đơn xin nghỉ hưu trước tuổi của ông Nguyễn Văn Tuân - Phó Tổng giám đốc",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam thông báo nhận được đơn xin nghỉ hưu trước tuổi của Phó TGĐ Nguyễn Văn Tuân như sau: Các tập tin đính kèm 20261001 - VCB - Nhan duoc don xin nghi huu truoc tuoi cua PTGD Nguyen Van Tuan.pdf Theo HOSE",
+      "published_at": "2026-10-01T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:41:24.719600+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/021026/vcb-thong-bao-nhan-duoc-don-xin-nghi-huu-truoc-tuoi-cua-pho-tg-nguyen-van-tuan-0.pdf?v=1790915606503"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006384976525821596,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "9fce536de586a4d116c0",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2988946/vcb-hdqt-thong-qua-hop-dong-va-giao-dich-giua-vcb-va-vcbm.chn",
+      "title": "VCB: HĐQT thông qua hợp đồng và giao dịch giữa VCB và VCBM",
+      "description": "VCB: HĐQT thông qua hợp đồng và giao dịch giữa VCB và VCBM",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố việc HĐQT thông qua hợp đồng và giao dịch giữa VCB và VCBM như sau: Các tập tin đính kèm 20261001 - VCB - HDQT thong qua hop dong va giao dich giua VCB va VCBM.pdf Theo HOSE",
+      "published_at": "2026-10-01T10:27:53+00:00",
+      "crawled_at": "2026-10-29T07:41:25.734917+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/011026/vcb-h-qt-thong-qua-hop-dong-va-giao-dich-giua-vcb-va-vcbm-0.pdf?v=1790850745179"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006396989651928504,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "bbc5914d109bef474d76",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2988941/vcb-hdqt-thong-qua-giao-dich-giua-vcb-va-vcbf.chn",
+      "title": "VCB: HĐQT thông qua giao dịch giữa VCB và VCBF",
+      "description": "VCB: HĐQT thông qua giao dịch giữa VCB và VCBF",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố việc HĐQT thông qua giao dịch giữa VCB và VCBF như sau: Các tập tin đính kèm 20261001 - VCB - HDQT thong qua giao dich giua VCB va VCBF.pdf Theo HOSE",
+      "published_at": "2026-10-01T10:26:00+00:00",
+      "crawled_at": "2026-10-29T07:41:26.942459+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/011026/vcb-h-qt-thong-qua-giao-dich-giua-vcb-va-vcbf-0.pdf?v=1790850735175"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006433301797540208,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "530e1759425922750f8d",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2982639/vcb-quyet-dinh-ve-viec-thay-doi-dia-chi-tru-so-cac-chi-nhanh-va-cac-pgd.chn",
+      "title": "VCB: Quyết định về việc thay đổi địa chỉ trụ sở các Chi nhánh và các PGD",
+      "description": "VCB: Quyết định về việc thay đổi địa chỉ trụ sở các Chi nhánh và các PGD",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố Quyết định về việc thay đổi địa chỉ trụ sở các Chi nhánh và các PGD như sau: Các tập tin đính kèm 20260923 - VCB - Thong bao thay doi dia chi tru so 5 CN va 20 PGD.pdf Theo HOSE",
+      "published_at": "2026-09-23T10:53:46+00:00",
+      "crawled_at": "2026-10-29T07:41:27.819864+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/230926/vcb-quyet-dinh-ve-viec-thay-doi-dia-chi-tru-so-cac-chi-nhanh-va-cac-pgd-0.pdf?v=1790160921027"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006373008434864105,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "b124d78a72432a4481fd",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2977700/vcb-quyet-dinh-ve-viec-thay-doi-dia-diem-tru-so-chi-nhanh-phu-my-va-chi-nhanh-gia-dinh.chn",
+      "title": "VCB: Quyết định về việc thay đổi địa điểm trụ sở Chi nhánh Phú Mỹ và Chi nhánh Gia Định",
+      "description": "VCB: Quyết định về việc thay đổi địa điểm trụ sở Chi nhánh Phú Mỹ và Chi nhánh Gia Định",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố Quyết định về việc thay đổi địa điểm trụ sở Chi nhánh Phú Mỹ và Chi nhánh Gia Định như sau: Các tập tin đính kèm 20260916 - VCB - CBTT QD thay doi dia diem Chi nhanh Phu My va Chi nhanh Gia Dinh.pdf Theo HOSE",
+      "published_at": "2026-09-16T10:28:16+00:00",
+      "crawled_at": "2026-10-29T07:41:28.600303+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/160926/vcb-quyet-dinh-ve-viec-thay-doi-dia-diem-tru-so-chi-nhanh-phu-my-va-chi-nhanh-gia-inh-0.pdf?v=1789554767471"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006343283582089552,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "fb48b8026a68ef4f022c",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2977694/vcb-hdqt-thong-qua-giao-dich-giua-vcb-va-vcbneo.chn",
+      "title": "VCB: HĐQT thông qua giao dịch giữa VCB và VCBNeo",
+      "description": "VCB: HĐQT thông qua giao dịch giữa VCB và VCBNeo",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam công bố về việc HĐQT thông qua giao dịch giữa VCB và VCBNeo như sau: Các tập tin đính kèm 20260916 - VCB - HDQT thong qua giao dich giua VCB va VCBNeo.pdf Theo HOSE",
+      "published_at": "2026-09-16T10:26:02+00:00",
+      "crawled_at": "2026-10-29T07:41:29.385600+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/160926/vcb-h-qt-thong-qua-giao-dich-giua-vcb-va-vcbneo-0.pdf?v=1789554467479"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006427221172022685,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    },
+    {
+      "id": "099e2848ad6354d9bf3f",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/vcb-2971152/vcb-thong-bao-thay-doi-dia-chi-tru-so-04-chi-nhanh-va-15-pgd-o-quang-ninh.chn",
+      "title": "VCB: Thông báo thay đổi địa chỉ trụ sở 04 Chi nhánh và 15 PGD ở Quảng Ninh",
+      "description": "VCB: Thông báo thay đổi địa chỉ trụ sở 04 Chi nhánh và 15 PGD ở Quảng Ninh",
+      "content": "Ngân hàng Thương mại Cổ phần Ngoại Thương Việt Nam thông báo thay đổi địa chỉ trụ sở 04 Chi nhánh và 15 PGD ở Quảng Ninh như sau: Các tập tin đính kèm 20260907 - VCB - Thong bao thay doi dia chi tru so 4 CN va 15 PGD tai Quang Ninh.pdf Theo HOSE",
+      "published_at": "2026-09-07T10:14:35+00:00",
+      "crawled_at": "2026-10-29T07:41:30.155596+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/070926/vcb-thong-bao-thay-doi-dia-chi-tru-so-04-chi-nhanh-va-15-pgd-o-quang-ninh-0.pdf?v=1788776278091"
+      ],
+      "symbols": [
+        "VCB"
+      ],
+      "matched_symbols": [
+        "VCB"
+      ],
+      "scopes": [
+        "VCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.006361085126286249,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/goi-tin-dung-uu-dai-hon-450-000-ty-cho-san-xuat-kinh-doanh-nhieu-hay-it/42507897",
+        "matched_file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:50.487128+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:41:30.156605+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "VCB",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

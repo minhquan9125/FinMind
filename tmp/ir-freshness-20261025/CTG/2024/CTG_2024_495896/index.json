@@ -1,0 +1,20 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\CTG\\2024\\CTG_2024_495896.pdf",
+  "document_sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+  "overrides_applied": [],
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 61
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "observations": "table/observations.json",
+    "pages": 39,
+    "structuredTablePages": 0,
+    "notesTextOnlyPages": 34,
+    "totalObservations": 0,
+    "verifiedObservations": 0
+  }
+}

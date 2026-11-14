@@ -1,0 +1,842 @@
+{
+  "summary": {
+    "ocr_pages": 46,
+    "model_pages": 35,
+    "without_model": 11,
+    "model_review": 6,
+    "manual_review": 11,
+    "numeric_disagreements": 9,
+    "model_flags": {
+      "ENGINES_DISAGREE": 6,
+      "NEAR_EMPTY": 7
+    }
+  },
+  "files": [
+    {
+      "symbol": "BID",
+      "ocr_pages": 2,
+      "model_pages": 2,
+      "model_review": 0,
+      "manual_review": 1,
+      "without_model": []
+    },
+    {
+      "symbol": "CMG",
+      "ocr_pages": 11,
+      "model_pages": 11,
+      "model_review": 4,
+      "manual_review": 4,
+      "without_model": []
+    },
+    {
+      "symbol": "CTG",
+      "ocr_pages": 3,
+      "model_pages": 3,
+      "model_review": 0,
+      "manual_review": 2,
+      "without_model": []
+    },
+    {
+      "symbol": "ELC",
+      "ocr_pages": 4,
+      "model_pages": 2,
+      "model_review": 1,
+      "manual_review": 1,
+      "without_model": [
+        2,
+        70
+      ]
+    },
+    {
+      "symbol": "FPT",
+      "ocr_pages": 3,
+      "model_pages": 2,
+      "model_review": 0,
+      "manual_review": 0,
+      "without_model": [
+        2
+      ]
+    },
+    {
+      "symbol": "ITD",
+      "ocr_pages": 7,
+      "model_pages": 7,
+      "model_review": 0,
+      "manual_review": 1,
+      "without_model": []
+    },
+    {
+      "symbol": "MBB",
+      "ocr_pages": 10,
+      "model_pages": 6,
+      "model_review": 1,
+      "manual_review": 1,
+      "without_model": [
+        55,
+        68,
+        75,
+        184
+      ]
+    },
+    {
+      "symbol": "TCB",
+      "ocr_pages": 5,
+      "model_pages": 1,
+      "model_review": 0,
+      "manual_review": 0,
+      "without_model": [
+        1,
+        9,
+        14,
+        26
+      ]
+    },
+    {
+      "symbol": "VCB",
+      "ocr_pages": 1,
+      "model_pages": 1,
+      "model_review": 0,
+      "manual_review": 1,
+      "without_model": []
+    }
+  ],
+  "pages": [
+    {
+      "symbol": "BID",
+      "page": 1,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [],
+      "number_agreement": 0,
+      "text_similarity": 0.918,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 65
+    },
+    {
+      "symbol": "BID",
+      "page": 91,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 1,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 341
+    },
+    {
+      "symbol": "CMG",
+      "page": 1,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "REVIEW",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [
+        "ENGINES_DISAGREE"
+      ],
+      "number_agreement": 0,
+      "text_similarity": 0.563,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 45
+    },
+    {
+      "symbol": "CMG",
+      "page": 2,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.986,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 824
+    },
+    {
+      "symbol": "CMG",
+      "page": 13,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "REVIEW",
+      "manual_review": true,
+      "numeric_disagreement": false,
+      "flags": [
+        "ENGINES_DISAGREE"
+      ],
+      "number_agreement": 1,
+      "text_similarity": 0.233,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 358
+    },
+    {
+      "symbol": "CMG",
+      "page": 24,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.923,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 47
+    },
+    {
+      "symbol": "CMG",
+      "page": 34,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.972,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 114
+    },
+    {
+      "symbol": "CMG",
+      "page": 46,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.909,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 47
+    },
+    {
+      "symbol": "CMG",
+      "page": 54,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.893,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 34
+    },
+    {
+      "symbol": "CMG",
+      "page": 62,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.736,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 59
+    },
+    {
+      "symbol": "CMG",
+      "page": 69,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.819,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 62
+    },
+    {
+      "symbol": "CMG",
+      "page": 76,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "REVIEW",
+      "manual_review": true,
+      "numeric_disagreement": false,
+      "flags": [
+        "NEAR_EMPTY",
+        "ENGINES_DISAGREE"
+      ],
+      "number_agreement": 1,
+      "text_similarity": 0,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 1
+    },
+    {
+      "symbol": "CMG",
+      "page": 77,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "REVIEW",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [
+        "ENGINES_DISAGREE"
+      ],
+      "number_agreement": 0.2,
+      "text_similarity": 0.271,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 386
+    },
+    {
+      "symbol": "CTG",
+      "page": 1,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [],
+      "number_agreement": 0.429,
+      "text_similarity": 0.844,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 1614
+    },
+    {
+      "symbol": "CTG",
+      "page": 2,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [],
+      "number_agreement": 0,
+      "text_similarity": 0.759,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 65
+    },
+    {
+      "symbol": "CTG",
+      "page": 186,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.792,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 33
+    },
+    {
+      "symbol": "ELC",
+      "page": 1,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.902,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 2107
+    },
+    {
+      "symbol": "ELC",
+      "page": 2,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "ELC",
+      "page": 70,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "ELC",
+      "page": 71,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "REVIEW",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [
+        "NEAR_EMPTY",
+        "ENGINES_DISAGREE"
+      ],
+      "number_agreement": 0,
+      "text_similarity": 0,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 68
+    },
+    {
+      "symbol": "FPT",
+      "page": 1,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.924,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 1394
+    },
+    {
+      "symbol": "FPT",
+      "page": 2,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "FPT",
+      "page": 3,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.927,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 28
+    },
+    {
+      "symbol": "ITD",
+      "page": 1,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [],
+      "number_agreement": 0.8,
+      "text_similarity": 0.916,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 2028
+    },
+    {
+      "symbol": "ITD",
+      "page": 5,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "NEAR_EMPTY"
+      ],
+      "number_agreement": 1,
+      "text_similarity": 0.727,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 15
+    },
+    {
+      "symbol": "ITD",
+      "page": 10,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "NEAR_EMPTY"
+      ],
+      "number_agreement": 1,
+      "text_similarity": 1,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 19
+    },
+    {
+      "symbol": "ITD",
+      "page": 17,
+      "model_ocr": true,
+      "model": "gemini-3.8-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.923,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 33
+    },
+    {
+      "symbol": "ITD",
+      "page": 27,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "NEAR_EMPTY"
+      ],
+      "number_agreement": 1,
+      "text_similarity": 1,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 19
+    },
+    {
+      "symbol": "ITD",
+      "page": 44,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 1,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 30
+    },
+    {
+      "symbol": "ITD",
+      "page": 46,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "NEAR_EMPTY"
+      ],
+      "number_agreement": 1,
+      "text_similarity": 1,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 20
+    },
+    {
+      "symbol": "MBB",
+      "page": 1,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 1,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 70
+    },
+    {
+      "symbol": "MBB",
+      "page": 2,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "REVIEW",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [
+        "NEAR_EMPTY",
+        "ENGINES_DISAGREE"
+      ],
+      "number_agreement": 0,
+      "text_similarity": 0.015,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 334
+    },
+    {
+      "symbol": "MBB",
+      "page": 9,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.938,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 178
+    },
+    {
+      "symbol": "MBB",
+      "page": 34,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.791,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 257
+    },
+    {
+      "symbol": "MBB",
+      "page": 55,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "NEAR_EMPTY",
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "MBB",
+      "page": 68,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "MBB",
+      "page": 75,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "MBB",
+      "page": 105,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.829,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 191
+    },
+    {
+      "symbol": "MBB",
+      "page": 126,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.795,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 309
+    },
+    {
+      "symbol": "MBB",
+      "page": 184,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "NEAR_EMPTY",
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_NO_TEXT",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "TCB",
+      "page": 1,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "TCB",
+      "page": 2,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [],
+      "number_agreement": 1,
+      "text_similarity": 0.883,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 151
+    },
+    {
+      "symbol": "TCB",
+      "page": 9,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "TCB",
+      "page": 14,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "TCB",
+      "page": 26,
+      "model_ocr": false,
+      "model": null,
+      "status": "REVIEW",
+      "manual_review": false,
+      "numeric_disagreement": false,
+      "flags": [
+        "GEMINI_FAILED"
+      ],
+      "number_agreement": null,
+      "text_similarity": null,
+      "unreadable": null,
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 0
+    },
+    {
+      "symbol": "VCB",
+      "page": 1,
+      "model_ocr": true,
+      "model": "gemini-3.6-flash",
+      "status": "OK",
+      "manual_review": true,
+      "numeric_disagreement": true,
+      "flags": [],
+      "number_agreement": 0.667,
+      "text_similarity": 0.933,
+      "unreadable": [],
+      "tesseract_status": "OCR_EXTRACTED",
+      "model_text_chars": 1405
+    }
+  ]
+}

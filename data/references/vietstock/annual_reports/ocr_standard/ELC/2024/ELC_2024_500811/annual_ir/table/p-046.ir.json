@@ -1,0 +1,200 @@
+{
+  "ir_version": "1",
+  "page": 46,
+  "printed_page": "C",
+  "page_class": "notes",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "937811ef432d7fb384a7d37bc6a8161e567e4d3519e8b10b5198e8126f6bb7fe",
+    "file_name": "ELC_2024_500811.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p46-b1",
+      "type": "paragraph",
+      "text": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM\nTòa nhà Elcom, phố Duy Tân, phường Dịch Vọng Hậu,",
+      "bbox": [66.95, 69.35, 339.24, 91.72]
+    },
+    {
+      "id": "p46-b2",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (TIẾP)\n(Các thuyết minh này là bộ phận hợp thành và cần được đọc đồng thời với Báo cáo tài chính hợp nhất)",
+      "bbox": [66.11, 107.91, 479.78, 130.14]
+    },
+    {"id": "p46-b3", "type": "heading", "text": "CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)", "bbox": [102.11, 139.91, 330.01, 150.47]},
+    {"id": "p46-b4", "type": "heading", "text": "3.5 CÁC KHOẢN ĐẦU TƯ TÀI CHÍNH (TIẾP)", "bbox": [66.11, 160.81, 294.3, 171.87]},
+    {
+      "id": "p46-b5",
+      "type": "paragraph",
+      "text": "Đầu tư vào công cụ vốn của đơn vị khác bao gồm các khoản đầu tư công cụ vốn nhưng Công ty\nkhông có quyền kiểm soát, đồng kiểm soát hoặc có ảnh hưởng đáng kể đối với bên được đầu tư.",
+      "bbox": [102.11, 202.0, 519.67, 225.64]
+    },
+    {
+      "id": "p46-b6",
+      "type": "paragraph",
+      "text": "Các khoản đầu tư vào công cụ vốn của đơn vị khác được ghi nhận ban đầu theo giá gốc, bao\ngồm giá mua hoặc khoản góp vốn cộng các chi phí trực tiếp liên quan đến hoạt động đầu tư. Cổ\ntức và lợi nhuận của các kỳ trước khi khoản đầu tư được mua được hạch toán giảm giá trị của\nchính khoản đầu tư đó. Cổ tức và lợi nhuận của các kỳ sau khi khoản đầu tư được mua được ghi\nnhận doanh thu. Cổ tức được nhận bằng cổ phiếu chỉ được theo dõi số lượng cổ phiếu tăng thêm,\nkhông ghi nhận giá trị cổ phiếu nhận được.",
+      "bbox": [102.11, 233.2, 519.71, 307.5]
+    },
+    {
+      "id": "p46-b7",
+      "type": "paragraph",
+      "text": "Dự phòng tổn thất cho các khoản đầu tư vào công cụ vốn của đơn vị khác được trích lập tại thời\nđiểm lập báo cáo tài chính khi các khoản đầu tư có sự suy giảm so với giá gốc thì Công ty thực",
+      "bbox": [102.11, 315.18, 519.59, 338.82]
+    },
+    {
+      "id": "p46-b8",
+      "type": "paragraph",
+      "text": "- Đối với khoản đầu tư vào cổ phiếu niêm yết hoặc giá trị hợp lý khoản đầu tư được xác định\ntin cậy, việc lập dự phòng dựa trên giá trị thị trường của cổ phiếu.",
+      "bbox": [102.11, 360.5, 519.6, 385.37]
+    },
+    {
+      "id": "p46-b9",
+      "type": "paragraph",
+      "text": "- Đối với khoản đầu tư không xác định được giá trị hợp lý tại thời điểm báo cáo, dự phòng\nđược trích lập với mức trích bằng chênh lệch giữa vốn góp thực tế của các bên tại đơn vị\nkhác và vốn chủ sở hữu thực có nhân với tỷ lệ góp vốn của Công ty so với tổng số vốn góp",
+      "bbox": [102.11, 394.22, 519.72, 431.59]
+    },
+    {
+      "id": "p46-b10",
+      "type": "paragraph",
+      "text": "Tăng, giảm số dự phòng tổn thất đầu tư vào công cụ vốn của đơn vị khác cần phải trích lập tại\nngày kh ó a s ổ l ậ p b á o c á o tài ch ính được ghi nhận vào chi phí tài chính.",
+      "bbox": [102.11, 454.26, 519.4, 478.02]
+    },
+    {
+      "id": "p46-b11",
+      "type": "paragraph",
+      "text": "Các khoản nợ phải thu được trình bày theo giá trị ghi sổ trừ đi các khoản dự phòng phải thu khó\nđòi. Việc phân loại các khoản phải thu được thực hiện theo nguyên tắc sau:",
+      "bbox": [102.11, 507.09, 519.57, 530.84]
+    },
+    {
+      "id": "p46-b12",
+      "type": "paragraph",
+      "text": "- Phải thu của khách hàng phản ánh các khoản phải thu mang tính chất thương mại phát sinh\ntừ giao dịch có tính chất mua - bán giữa Công ty và người mua là đơn vị độc lập với Công\nty, bao gồm cả các khoản phải thu về tiền bán hàng xuất khẩu ủy thác cho đơn vị khác.",
+      "bbox": [102.11, 539.69, 519.62, 577.16]
+    },
+    {
+      "id": "p46-b13",
+      "type": "paragraph",
+      "text": "- Phải thu khác phản ánh các khoản phải thu không có tính thương mại, không liên quan đến",
+      "bbox": [102.1, 586.15, 519.61, 598.19]
+    },
+    {
+      "id": "p46-b14",
+      "type": "paragraph",
+      "text": "Dự phòng phải thu khó đ được lập cho từng khoản nợ phải thu khó đòi căn cứ vào dự kiến\nmức tổn thất có thể xảy ra. Sự tăng hoặc giảm khoản dự phòng phải thu khó đòi tại ngày khó a\ns ổ l ậ p b á o c á o tài ch í nh được hạch toán vào chi phí quản lý doanh nghiệp.",
+      "bbox": [102.1, 620.74, 519.77, 657.1]
+    },
+    {
+      "id": "p46-b15",
+      "type": "paragraph",
+      "text": "Hàng tồn kho được xác định trên cơ sở giá thấp hơn giữa giá gốc và giá trị thuần có thể thực",
+      "bbox": [102.11, 686.28, 519.15, 697.32]
+    },
+    {"id": "p46-b16", "type": "paragraph", "text": "Giá gốc hàng tồn kho được xác định như sau:", "bbox": [102.11, 717.72, 302.27, 728.76]},
+    {
+      "id": "p46-b17",
+      "type": "paragraph",
+      "text": " Thành phẩm: bao gồm chi phí nguyên vật liệu, nhân công trực tiếp và chi phí sản xuất chung\ncó liên quan tiếp được phân bổ dựa trên mức độ hoạt động bình thường .",
+      "bbox": [102.11, 736.08, 519.66, 760.82]
+    },
+    {
+      "id": "p46-b18",
+      "type": "paragraph",
+      "text": "MẪU SỐ B09-DN/HN\nBan hành theo Thông tư số 202/2014/TT-\nBTC ngày 22/12/2014 của Bộ Tài chính",
+      "bbox": [352.0, 69.35, 519.17, 103.12]
+    },
+    {"id": "p46-b19", "type": "heading", "text": "BÁO CÁO TÀI CHÍNH", "bbox": [621.17, 29.94, 695.71, 37.94]},
+    {
+      "id": "p46-b20",
+      "type": "paragraph",
+      "text": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM\nTòa nhà Elcom, phố Duy Tân, phường Dịch Vọng Hậu,\nquận Cầu Giấy, Hà Nội\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (TIẾP)\n(Các thuyết minh này là bộ phận hợp thành và cần được đọc đồng thời với Báo cáo tài chính hợp nhất)",
+      "bbox": [651.43, 69.35, 1065.11, 130.14]
+    },
+    {"id": "p46-b21", "type": "paragraph", "text": "3.\nCÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)\n3.7 HÀNG TỒN KHO (TIẾP)", "bbox": [651.43, 138.74, 915.33, 167.91]},
+    {
+      "id": "p46-b22",
+      "type": "paragraph",
+      "text": "Giá trị thuần có thể thực hiện được là giá bán ước tính của hàng tồn kho trong kỳ sản xuất, kinh\ndoanh bình thường trừ chi phí ước tính để hoàn thành và chi phí ước tính cần thiết cho việc tiêu\nthụ chúng.",
+      "bbox": [687.43, 177.76, 1104.99, 214.11]
+    },
+    {
+      "id": "p46-b23",
+      "type": "paragraph",
+      "text": "Công ty áp dụng phương pháp kê khai thường xuyên để hạch toán hàng tồn kho. Giá xuất của\nhàng tồn kho được tính theo phương pháp bình quân gia quyền.",
+      "bbox": [687.43, 225.75, 1106.02, 249.38]
+    },
+    {
+      "id": "p46-b24",
+      "type": "paragraph",
+      "text": "Tại ngày 31/12/2024, Công ty không có hàng tồn kho cần trích lập dự phòng giảm giá.",
+      "bbox": [687.42, 256.07, 1068.66, 268.11]
+    },
+    {
+      "id": "p46-b25",
+      "type": "paragraph",
+      "text": "3.8 TÀI SẢN CỐ ĐỊNH HỮU HÌNH\nTài sản cố định hữu hình được thể hiện theo nguyên giá trừ hao mòn lũy kế. Nguyên giá tài sản\ncố định hữu hình bao gồm toàn bộ các chi phí mà Công ty phải bỏ ra để có được tài sản cố định\ntính đến thời điểm đưa tài sản đó vào trạng thái sẵn sàng sử dụng. Các chi phí phát sinh sau ghi\nnhận ban đầu chỉ được ghi tăng nguyên giá tài sản cố định nếu các chi phí này chắc chắn làm\ntăng lợi ích kinh tế trong tương lai do sử dụng tài sản đó. Các chi phí phát sinh không thỏa mãn\nđiều kiện trên được ghi nhận là chi phí sản xuất, kinh doanh trong kỳ.\nu h nh\nKhi tài sản cố định hữ ì được bán hay thanh lý, nguyên giá và giá trị hao mòn lũy kế được\nxóa sổ và lãi, lỗ phát sinh do thanh lý được ghi nhận vào thu nhập hay chi phí trong năm.\nTài sản cố định hữ u h ì nh được khấu hao theo phươ ng pháp đường thẳng dựa trên thời gian hữu\ndụng ước tính. Số năm khấu hao của các loại tài sản cố định hữ u h ì nh nh ư sau:",
+      "bbox": [651.43, 277.0, 1105.16, 432.56]
+    },
+    {"id": "p46-b26", "type": "paragraph", "text": "Loại tài sản", "bbox": [692.02, 450.08, 745.89, 461.12]},
+    {"id": "p46-b27", "type": "paragraph", "text": "- Nhà cửa, vật kiến trúc", "bbox": [692.01, 473.68, 795.74, 485.71]},
+    {"id": "p46-b28", "type": "paragraph", "text": "- Máy móc, thiết bị", "bbox": [692.01, 496.36, 776.7, 508.39]},
+    {"id": "p46-b29", "type": "paragraph", "text": "- Phương tiện vận tải, truyền dẫn", "bbox": [692.01, 519.03, 836.79, 531.07]},
+    {"id": "p46-b30", "type": "paragraph", "text": "-\nThiết bị, dụng cụ quản lý", "bbox": [692.01, 541.71, 809.1, 553.74]},
+    {"id": "p46-b31", "type": "paragraph", "text": "- TSCĐ hữu hình khác", "bbox": [691.99, 564.29, 792.13, 576.33]},
+    {
+      "id": "p46-b32",
+      "type": "paragraph",
+      "text": "3.9 TÀI SẢN CỐ ĐỊNH VÔ HÌNH\nTài sản cố định vô hì nh được ghi nhận theo nguyên giá, được phản ánh trên Bảng cân đối kế\ntoán hợp nhất theo các chỉ tiêu nguyên giá, hao mòn luỹ kế và giá trị còn lại .",
+      "bbox": [651.43, 586.89, 1104.84, 629.15]
+    },
+    {
+      "id": "p46-b33",
+      "type": "paragraph",
+      "text": "Nguyên giá tài sản cố định vô hình bao gồm toàn bộ các chi phí mà Công ty phải bỏ ra để có được\ntài sản cố định tính đến thời điểm đưa tài sản đó vào trạng thái sẵn sàng sử dụng. Chi phí liên quan\nđến tài sản cố định vô hình phát sinh sau khi ghi nhận ban đầu được ghi nhận là chi phí sản xuất,\nkinh doanh trong kỳ trừ khi các chi phí này gắn liền với một tài sản cố định vô hình cụ thể và làm\ntăng lợi ích kinh tế từ các tài sản này.",
+      "bbox": [687.41, 636.72, 1105.18, 698.38]
+    },
+    {
+      "id": "p46-b34",
+      "type": "paragraph",
+      "text": "Khi tài sản cố định vô hì nh được bán hay thanh lý, nguyên giá và giá trị hao mòn lũy kế được xóa\nsổ và lãi, lỗ phát sinh do thanh lý được ghi nhận vào thu nhập hay chi phí trong năm.",
+      "bbox": [687.41, 704.95, 1105.17, 729.71]
+    },
+    {
+      "id": "p46-b35",
+      "type": "paragraph",
+      "text": "Tài sản cố định vô hình của Công ty là phần mềm máy vi tính và các tài sản cố định vô hình khác.",
+      "bbox": [687.41, 737.4, 1099.82, 748.44]
+    },
+    {"id": "p46-b36", "type": "paragraph", "text": "8866", "bbox": [1150.11, 41.87, 1161.6, 52.43]},
+    {
+      "id": "p46-b37",
+      "type": "paragraph",
+      "text": "MẪU SỐ B09-DN/HN\nBan hành theo Thông tư số 202/2014/TT-\nBTC ngày 22/12/2014 của Bộ Tài chính",
+      "bbox": [937.32, 69.35, 1104.49, 103.12]
+    },
+    {"id": "p46-b38", "type": "paragraph", "text": "Thời gian sử dụng (năm)", "bbox": [985.38, 450.08, 1100.02, 461.12]},
+    {"id": "p46-b39", "type": "paragraph", "text": "25", "bbox": [1028.79, 473.69, 1039.83, 484.73]},
+    {"id": "p46-b40", "type": "paragraph", "text": "03 - 08", "bbox": [1018.71, 496.37, 1049.91, 507.41]},
+    {"id": "p46-b41", "type": "paragraph", "text": "05 - 10", "bbox": [1018.71, 519.04, 1049.91, 530.09]},
+    {"id": "p46-b42", "type": "paragraph", "text": "03 – 08", "bbox": [1017.87, 541.72, 1050.99, 552.76]},
+    {"id": "p46-b43", "type": "paragraph", "text": "03 - 08", "bbox": [1018.71, 564.29, 1049.91, 575.33]},
+    {"id": "p46-b44", "type": "paragraph", "text": "Báo cáo thường niên 2024\n8855", "bbox": [29.29, 29.54, 146.94, 52.43]},
+    {"id": "p46-b45", "type": "paragraph", "text": "quận Cầu Giấy, Hà Nội", "bbox": [66.95, 93.16, 161.1, 103.12]},
+    {"id": "p46-b46", "type": "paragraph", "text": "3.", "bbox": [66.11, 138.74, 74.03, 149.3]},
+    {"id": "p46-b47", "type": "paragraph", "text": "Đầu tư vào công cụ vốn của đơn vị khác", "bbox": [102.11, 183.4, 279.9, 194.44]},
+    {"id": "p46-b48", "type": "paragraph", "text": "hiện trích lập dự phòng như sau:", "bbox": [102.11, 340.62, 244.83, 351.66]},
+    {"id": "p46-b49", "type": "paragraph", "text": "thực tế của các bên tại đơn vị khác.", "bbox": [120.1, 433.26, 275.16, 444.3]},
+    {"id": "p46-b50", "type": "paragraph", "text": "3.6 CÁC KHOẢN PHẢI THU", "bbox": [66.11, 488.46, 215.53, 499.52]},
+    {"id": "p46-b51", "type": "paragraph", "text": "giao dịch mua - bán.", "bbox": [120.09, 598.87, 210.34, 610.91]},
+    {"id": "p46-b52", "type": "paragraph", "text": "òi", "bbox": [215.41, 619.75, 223.88, 630.79]},
+    {"id": "p46-b53", "type": "paragraph", "text": "3.7 HÀNG TỒN KHO", "bbox": [66.11, 667.77, 182.03, 678.83]},
+    {"id": "p46-b54", "type": "paragraph", "text": "hiện được.", "bbox": [102.11, 698.99, 148.76, 710.03]},
+    {
+      "id": "p46-b55",
+      "type": "paragraph",
+      "text": " C hi phí sản xuất kinh doanh dở dang: được tập hợp theo chi phí phát sinh thực tế cho từng\nloại sản phẩm chưa hoàn thành.",
+      "bbox": [102.11, 768.1, 519.44, 792.86]
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "text": "HÀ\nGVO\nCMC CORPORATION\n\nAswe to lnspwe the Digital World\n\nBẢO CÁO THƯỜNG NIÊN\n2025\n\nXx\n\n—==.\n⁄* M.<",
+  "chars": 77,
+  "words": 19,
+  "wordItems": [
+    {
+      "text": "HÀ",
+      "bbox": [
+        1257,
+        316,
+        1369,
+        389
+      ],
+      "conf": 6.063492,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "GVO",
+      "bbox": [
+        1182,
+        380,
+        1441,
+        494
+      ],
+      "conf": 24.903091,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        997,
+        535,
+        1132,
+        581
+      ],
+      "conf": 90.675499,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        1155,
+        534,
+        1626,
+        581
+      ],
+      "conf": 90.091118,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Aswe",
+      "bbox": [
+        1086,
+        600,
+        1167,
+        642
+      ],
+      "conf": 19.685295,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "to",
+      "bbox": [
+        1180,
+        600,
+        1205,
+        642
+      ],
+      "conf": 92.818466,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "lnspwe",
+      "bbox": [
+        1219,
+        600,
+        1300,
+        642
+      ],
+      "conf": 51.058014,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "the",
+      "bbox": [
+        1310,
+        600,
+        1352,
+        642
+      ],
+      "conf": 91.029045,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Digital",
+      "bbox": [
+        1366,
+        600,
+        1447,
+        642
+      ],
+      "conf": 3.495239,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "World",
+      "bbox": [
+        1460,
+        600,
+        1538,
+        642
+      ],
+      "conf": 66.264305,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BẢO",
+      "bbox": [
+        621,
+        1466,
+        869,
+        1576
+      ],
+      "conf": 54.224365,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        909,
+        1466,
+        1157,
+        1576
+      ],
+      "conf": 96.466141,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        1195,
+        1466,
+        1711,
+        1576
+      ],
+      "conf": 96.219902,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        1756,
+        1465,
+        2014,
+        1574
+      ],
+      "conf": 91.109894,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        1193,
+        1691,
+        1446,
+        1777
+      ],
+      "conf": 96.786461,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Xx",
+      "bbox": [
+        2429,
+        1391,
+        2461,
+        1461
+      ],
+      "conf": 24.083794,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "—==.",
+      "bbox": [
+        2404,
+        1448,
+        2429,
+        1639
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "⁄*",
+      "bbox": [
+        2428,
+        1580,
+        2461,
+        1689
+      ],
+      "conf": 58.583115,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "M.<",
+      "bbox": [
+        2431,
+        1472,
+        2461,
+        1533
+      ],
+      "conf": 54.243855,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 58,
+  "lowConfRatio": 0.526,
+  "seconds": 0.715
+}

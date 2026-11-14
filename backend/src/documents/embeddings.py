@@ -7,32 +7,61 @@ depends on embed_texts()/embed_query() and never touches the model directly -
 that keeps the retriever swappable per ADR03 (versioned adapters/contracts)
 without touching callers.
 
-The model is loaded lazily (on first use, not at import time) because it is
-~2.2GB and requires network access to Hugging Face on first run. Unit tests
-should inject a fake EmbeddingService instead of loading the real model.
+The model loads on first use, not at import time. The research app warms this
+shared service during startup by default. It is ~2.2GB and requires access to
+Hugging Face if no local weights exist. Tests should inject a fake service.
 """
 
 from functools import lru_cache
+import os
+from pathlib import Path
+import threading
 
 import numpy as np
 
 from ..core.config import get_settings
 
+PROJECT_MODEL_CACHE = Path(__file__).resolve().parents[1] / 'vector_retrieval' / '.cache' / 'huggingface'
+
 
 class EmbeddingService:
-    def __init__(self, model_name: str, device: str = "cpu"):
+    def __init__(
+        self,
+        model_name: str,
+        *,
+        revision: str,
+        device: str = "cpu",
+        batch_size: int = 8,
+    ):
         self.model_name = model_name
+        self.revision = revision
         self.device = device
+        self.batch_size = batch_size
         self._model = None
+        self._load_lock = threading.Lock()
 
     def _load(self):
+        with self._load_lock:
+            return self._load_once()
+
+    def _load_once(self):
         if self._model is None:
             # Imported lazily so the package can be imported (e.g. for tests
             # that stub out embeddings) without requiring sentence-transformers
             # or a downloaded model to be present.
             from sentence_transformers import SentenceTransformer
 
-            self._model = SentenceTransformer(self.model_name, device=self.device)
+            options = {}
+            snapshot = PROJECT_MODEL_CACHE / ('models--' + self.model_name.replace('/', '--')) / 'snapshots' / self.revision
+            if (not os.getenv('HF_HUB_CACHE') and (snapshot / 'config.json').is_file()
+                    and any((snapshot / name).is_file() for name in ('pytorch_model.bin', 'model.safetensors'))):
+                options = {'cache_folder': str(PROJECT_MODEL_CACHE), 'local_files_only': True}
+            self._model = SentenceTransformer(
+                self.model_name,
+                revision=self.revision,
+                device=self.device,
+                **options,
+            )
         return self._model
 
     def embed_texts(self, texts: list[str]) -> list[list[float]]:
@@ -44,6 +73,7 @@ class EmbeddingService:
             normalize_embeddings=True,  # L2-normalize so cosine == dot product
             convert_to_numpy=True,
             show_progress_bar=False,
+            batch_size=self.batch_size,
         )
         return np.asarray(vectors, dtype=np.float32).tolist()
 
@@ -54,4 +84,9 @@ class EmbeddingService:
 @lru_cache
 def get_embedding_service() -> EmbeddingService:
     settings = get_settings()
-    return EmbeddingService(model_name=settings.embedding_model, device=settings.embedding_device)
+    return EmbeddingService(
+        model_name=settings.embedding_model,
+        revision=settings.embedding_model_revision,
+        device=settings.embedding_device,
+        batch_size=settings.embedding_batch_size,
+    )

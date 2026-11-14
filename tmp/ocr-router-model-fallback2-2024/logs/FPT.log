@@ -1,0 +1,14 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\FPT\2024\FPT_2024_498332.pdf: 1 trang
+  lớp text: 0 trang dùng được, 1 trang cần OCR (0.174s)
+  [tess] trang 2: conf=85 low=0.12 rot=0 0.46s
+  [gemini-api] gemini-2.5-flash: lỗi: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemini-api/docs/get-started).', 'status': 'NOT_FOUND'}}
+  Gemini chưa xử lý được 1 trang; chuyển sang OmniRouter
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  tuyến: {'tesseract': 1}  trạng thái: {'REVIEW': 1}
+  cờ: {'GEMINI_FAILED': 1}
+  thời gian (s): {'textLayer': 0.174, 'renderAndTesseract': 2.11, 'gemini': 2.615, 'total': 5.073}
+  Gemini API: 1 lần gọi (1 lỗi), token vào 0, ra 0
+  OpenRouter: 1 lần gọi (1 lỗi), token vào 0, ra 0
+  → D:\finmind\tmp\ocr-router-model-fallback2-2024\FPT_2024_498332

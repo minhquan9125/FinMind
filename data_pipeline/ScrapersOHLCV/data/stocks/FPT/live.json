@@ -1,0 +1,61 @@
+{
+  "fetched_at": "2026-10-07T11:01:58.411321+07:00",
+  "vnstock_version": "4.0.9",
+  "symbol": "FPT",
+  "instrument_type": "stock",
+  "dataframe_sha256": "b285925c73a43dd14a458bc7e9c12d81e3ef7414e404968faf156442b77d45c1",
+  "rows": [
+    {
+      "volume_accumulated": 1736000,
+      "high_price": "61300",
+      "total_value": 105048970000,
+      "low_price": "60200",
+      "listed_shares": "1714326422",
+      "percent_change": "-0.33112582781457",
+      "bid_vol_1": 154200,
+      "bid_vol_2": 224200,
+      "bid_vol_3": 378400,
+      "bid_price_1": "60200.0",
+      "average_price": 60512,
+      "bid_price_2": 60100,
+      "bid_price_3": 60000,
+      "reference_price": 60400,
+      "exchange": "HOSE",
+      "foreign_buy_volume": 368405,
+      "foreign_buy_count": "10",
+      "ask_price_1": "60300.0",
+      "ask_price_2": 60400,
+      "ask_price_3": 60500,
+      "floor_price": 56200,
+      "foreign_ownership_ratio": 840019946,
+      "foreign_room": 352578787,
+      "put_through_qty": 1263925,
+      "foreign_sell_volume": 515600,
+      "symbol": "FPT",
+      "put_through_value": 78363350000,
+      "total_listed_qty": "1714326422",
+      "open_interest": "",
+      "ST": "2",
+      "open_price": "60400",
+      "price_change": -200,
+      "ceiling_price": 64600,
+      "close_price": "60200",
+      "TD": "07/10/2026",
+      "time": 1791345716925,
+      "ask_vol_1": 43100,
+      "ask_vol_2": 76700,
+      "ask_vol_3": 31800,
+      "IT": "11:01:58",
+      "CA": [
+        {
+          "SYMBOL": "FPT",
+          "NKHQ": null,
+          "REPORTDATE": null,
+          "T": null,
+          "DESCRIPTION": null
+        }
+      ]
+    }
+  ],
+  "decimal_tokens_stored_as_text": true
+}

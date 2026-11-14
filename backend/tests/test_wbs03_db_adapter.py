@@ -1,0 +1,332 @@
+"""The adapter preserves the verified CTG sample supplied with contract 2.1.0."""
+
+import hashlib
+import json
+import unittest
+from pathlib import Path
+
+from backend.src.sprint4_runtime.db_adapter import document_envelope
+from backend.src.sprint4_runtime.relation_extractor import extract_candidates
+from backend.tests.test_wbs03_relation_extractor import REGISTRY
+
+
+SAMPLE = Path(__file__).with_name('fixtures') / 'wbs03_db_ctg_chunk.json'
+
+
+class DbAdapterTests(unittest.TestCase):
+    def make_row(self):
+        payload = json.loads(SAMPLE.read_text(encoding='utf-8'))
+        document, chunk = payload['documents'][0], payload['chunks'][0]
+        row = {'document_id': document['document_id'], 'title': document['title'],
+               'doc_type': document['doc_type'], 'database_document_sha256': document['database_document_sha256'],
+               'index_version_id': document['index_version_id'], 'document_version': document['source_sha256'],
+               'chunk_id': chunk['chunk_id'],
+               'text': chunk['text'], 'content_hash': chunk['locator']['content_hash'],
+               'page_number': chunk['locator']['page'], 'char_start': chunk['locator']['char_start'],
+               'char_end': chunk['locator']['char_end'],
+               'source_binding': {'source_uri': document['source_uri'], 'source_sha256': document['source_sha256']},
+               'locator_json': {'pdf_page': chunk['locator']['page'],
+                                'reconstruction': {'source_view_sha256': document['document_version'],
+                                                   'section_index': chunk['locator']['section_index'],
+                                                   'char_start': chunk['locator']['char_start'],
+                                                   'char_end': chunk['locator']['char_end']}}}
+        return payload, row
+
+    def test_matches_official_sample(self):
+        expected, row = self.make_row()
+        actual = document_envelope([row], expected['corpus_id'])
+        self.assertEqual(actual['chunks'][0]['locator'], expected['chunks'][0]['locator'])
+        self.assertEqual(actual['chunks'][0]['text'], expected['chunks'][0]['text'])
+        self.assertEqual(actual['chunks'][0]['document_version'], expected['documents'][0]['source_sha256'])
+        for key, value in actual['documents'][0].items():
+            if key not in ('document_version', 'source_sections'):
+                self.assertEqual(value, expected['documents'][0][key])
+        self.assertEqual(actual['documents'][0]['source_sections'][0]['source_view_sha256'],
+                         expected['documents'][0]['document_version'])
+        self.assertEqual(actual['corpus_id'], expected['corpus_id'])
+
+    def test_accepts_two_sections_with_one_document_version(self):
+        expected, row = self.make_row()
+        other = dict(row, chunk_id='00000000-0000-4000-8000-000000000001',
+                     page_number=2, text='CTG | Báo cáo thường niên 2024 | PDF trang 2\nTrang hai.',
+                     char_end=len('Trang hai.'),
+                     locator_json={'pdf_page': 2,
+                                   'reconstruction': {'section_index': 1, 'char_start': 0,
+                                                      'char_end': len('Trang hai.'),
+                                                      'source_view_sha256': 'f' * 64}})
+        other['content_hash'] = hashlib.sha256(other['text'].encode()).hexdigest()
+        result = document_envelope([row, other], expected['corpus_id'])
+        self.assertEqual(len(result['chunks']), 2)
+        self.assertEqual({c['document_version'] for c in result['chunks']}, {row['document_version']})
+        self.assertEqual(len(result['documents'][0]['source_sections']), 2)
+
+    def test_rejects_mixed_source_snapshot(self):
+        expected, row = self.make_row()
+        other = dict(row, document_version='f' * 64)
+        with self.assertRaisesRegex(ValueError, 'Mixed document/source snapshot'):
+            document_envelope([row, other], expected['corpus_id'])
+
+    def test_rejects_offset_mismatch(self):
+        expected, row = self.make_row()
+        row['char_end'] += 1
+        with self.assertRaisesRegex(ValueError, 'offsets differ'):
+            document_envelope([row], expected['corpus_id'])
+
+    def test_db_contract_to_pending_candidate_with_synthetic_text(self):
+        expected, row = self.make_row()
+        header = row['text'].split('\n', 1)[0]
+        body = 'Alpha Việt sở hữu 65% cổ phần Beta Việt.'
+        row['text'] = header + '\n' + body
+        row['char_end'] = len(body)
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode('utf-8')).hexdigest()
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(len(result['relations']), 1)
+        self.assertEqual(result['relations'][0]['review']['status'], 'PENDING')
+        self.assertEqual(result['relations'][0]['evidence'][0]['chunk_id'], row['chunk_id'])
+
+    def test_issuer_context_for_explicit_subsidiary_heading(self):
+        expected, row = self.make_row()
+        body = 'công ty con kiểm soát trực tiếp Beta Việt'
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text=row['text'].split('\n', 1)[0] + '\n' + body, char_end=len(body))
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        relation = result['relations'][0]
+        self.assertEqual((relation['relation_type'], relation['subject_id'], relation['object_id']),
+                         ('HAS_SUBSIDIARY', 'company:alpha', 'company:beta'))
+        self.assertEqual(relation['attributes']['inference_basis'], 'document_issuer')
+
+    def test_list_continues_across_chunks_and_keeps_siblings_separate(self):
+        expected, row = self.make_row()
+        first = ('Các công ty con kiểm soát trực tiếp\n'
+                 'Công ty Cổ phần Datanova Việt Nam\nĐịa chỉ: Hà Nội')
+        second = ('Tỷ lệ sở hữu: 93%\nCông ty Cổ phần ElcomPrime\n'
+                  'Địa chỉ: TP Hồ Chí Minh\nTỷ lệ sở hữu: 70%')
+        rows = []
+        for index, body in enumerate((first, second)):
+            item = dict(row, chunk_id=f'00000000-0000-4000-8000-00000000000{index + 1}',
+                        company_id='00000000-0000-4000-8000-000000000002',
+                        issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                        text='CTG | Báo cáo thường niên 2024 | PDF trang 14\n' + body,
+                        page_number=14, char_start=0, char_end=len(body))
+            item['locator_json'] = {'pdf_page': 14, 'reconstruction': {
+                'section_index': index, 'char_start': 0, 'char_end': len(body),
+                'source_view_sha256': 'f' * 64}}
+            item['content_hash'] = hashlib.sha256(item['text'].encode()).hexdigest()
+            rows.append(item)
+        result = extract_candidates(document_envelope(rows, expected['corpus_id']), REGISTRY)
+        relations = result['relations']
+        self.assertEqual(len(relations), 2)
+        self.assertEqual({r['subject_id'] for r in relations}, {'company:alpha'})
+        self.assertEqual({r['relation_type'] for r in relations}, {'HAS_SUBSIDIARY'})
+        self.assertEqual({result['entities'][next(i for i, e in enumerate(result['entities'])
+                                                  if e['entity_id'] == r['object_id'])]['aliases'][0]
+                          for r in relations},
+                         {'Công ty Cổ phần Datanova Việt Nam', 'Công ty Cổ phần ElcomPrime'})
+        self.assertTrue(all(r['review']['status'] == 'PENDING' for r in relations))
+        self.assertTrue(all(any(e['quote'] == 'Các công ty con kiểm soát trực tiếp'
+                                for e in r['evidence']) for r in relations))
+        # Datanova's percentage is in the next chunk of the same page; each row keeps its own.
+        percents = {next(e for e in result['entities'] if e['entity_id'] == r['object_id'])['aliases'][0]:
+                    r['attributes'].get('ownership_percent') for r in relations}
+        self.assertEqual(percents, {'Công ty Cổ phần Datanova Việt Nam': '93',
+                                    'Công ty Cổ phần ElcomPrime': '70'})
+
+    def issuer_row(self, body, page=14):
+        expected, row = self.make_row()
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text=f'CTG | Báo cáo thường niên 2024 | PDF trang {page}\n' + body,
+                   page_number=page, char_end=len(body))
+        row['locator_json']['pdf_page'] = page
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        return expected, row
+
+    def test_indirect_row_percentage_is_not_given_to_issuer(self):
+        expected, row = self.issuer_row('Các công ty con kiểm soát gián tiếp\n'
+                                        'Công ty Cổ phần Datanova Việt Nam\nTỷ lệ sở hữu: 74,4%')
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(len(result['relations']), 1)
+        self.assertNotIn('ownership_percent', result['relations'][0]['attributes'])
+
+    def test_ownership_structure_gives_percent_and_as_of(self):
+        expected, row = self.issuer_row('CƠ CẤU VÀ TỶ LỆ SỞ HỮU CỦA ALPHA TẠI CÁC CÔNG TY CON (31/12/2024)\n'
+                                        'ALPHA\nBTV (94,1%) Gamma (100%)', page=12)
+        registry = REGISTRY + [{'entity_id': 'company:btv', 'entity_type': 'Company',
+                                'canonical_name': 'Công ty Cổ phần Chứng khoán Beta', 'aliases': ['BTV'],
+                                'ticker_aliases': [], 'identity_key': 'name:btv', 'verified': True}]
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), registry)
+        self.assertEqual(len(result['relations']), 1)
+        relation = result['relations'][0]
+        self.assertEqual((relation['subject_id'], relation['object_id']), ('company:alpha', 'company:btv'))
+        self.assertEqual(relation['attributes']['ownership_percent'], '94.1')
+        self.assertEqual(relation['temporal']['as_of'], '2024-12-31')
+
+    def test_bare_ticker_is_not_resolved_in_ownership_structure(self):
+        expected, row = self.issuer_row('TỶ LỆ SỞ HỮU TẠI CÁC CÔNG TY CON (31/12/2024)\nAMC (100%)', page=12)
+        registry = REGISTRY + [{'entity_id': 'company:amc', 'entity_type': 'Company',
+                                'canonical_name': 'Công ty Cổ phần Khoáng sản Á Châu', 'aliases': ['AMC'],
+                                'ticker_aliases': ['AMC'], 'identity_key': 'name:amc', 'verified': True}]
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), registry)
+        self.assertEqual(result['relations'], [])
+
+    def test_truncated_table_name_is_not_a_candidate(self):
+        expected, row = self.issuer_row('24 Công ty con Tổng Công ty Cổ phần Bảo hiểm Ngân hàng Đầu tư và\n'
+                                        'bảo hiểm (ngày 17/12/2025)', page=63)
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(result['relations'], [])
+
+    def test_same_pair_in_two_reports_has_two_relation_ids(self):
+        ids = []
+        for document_id in ('11111111-1111-4111-8111-111111111111', '22222222-2222-4222-8222-222222222222'):
+            expected, row = self.issuer_row('công ty con kiểm soát trực tiếp Beta Việt')
+            row['document_id'] = document_id
+            result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+            ids.append(result['relations'][0]['relation_id'])
+        self.assertNotEqual(ids[0], ids[1])
+
+    def test_multiline_associate_name(self):
+        expected, row = self.make_row()
+        body = ('Các công ty liên kết\nCông ty Cổ phần Công nghệ Vật liệu\n'
+                'mới Bắc Kạn\nĐịa chỉ: Hà Nội\nTỷ lệ sở hữu: 42,97%')
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text='CTG | Báo cáo thường niên 2024 | PDF trang 14\n' + body,
+                   page_number=14, char_end=len(body))
+        row['locator_json']['pdf_page'] = 14
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(len(result['relations']), 1)
+        relation = result['relations'][0]
+        self.assertEqual(relation['relation_type'], 'HAS_ASSOCIATE')
+        self.assertTrue(any('mới Bắc Kạn' in evidence['quote'] for evidence in relation['evidence']))
+        self.assertEqual(relation['attributes'], {'inference_basis': 'document_issuer',
+                                                  'ownership_percent': '42.97'})
+        self.assertIn('Tỷ lệ sở hữu: 42,97%', [evidence['quote'] for evidence in relation['evidence']])
+
+    def test_abbreviation_links_full_heading_to_explicit_owner(self):
+        expected, row = self.make_row()
+        body = ('Công ty TNHH MTV Kiều hối\nAlpha Việt\nVCBR\n'
+                'Lợi nhuận trước thuế năm 2024\n'
+                'VCBR là công ty con do Alpha Việt sở hữu 100% vốn.')
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text='CTG | Báo cáo thường niên 2024 | PDF trang 19\n' + body,
+                   page_number=19, char_end=len(body))
+        row['locator_json']['pdf_page'] = 19
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(len(result['relations']), 1)
+        relation = result['relations'][0]
+        self.assertEqual(relation['subject_id'], 'company:alpha')
+        self.assertEqual(relation['relation_type'], 'HAS_SUBSIDIARY')
+        child = next(e for e in result['entities'] if e['entity_id'] == relation['object_id'])
+        self.assertEqual(child['aliases'][0], 'Công ty TNHH MTV Kiều hối\nAlpha Việt')
+        self.assertEqual(relation['review']['status'], 'PENDING')
+
+    def test_same_page_without_subsidiary_heading_is_not_inferred(self):
+        expected, row = self.make_row()
+        body = ('Tiểu sử lãnh đạo\nCông ty Cổ phần Datanova Việt Nam\n'
+                'Công ty Cổ phần ElcomPrime\nHai công ty cùng xuất hiện.')
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text='CTG | Báo cáo thường niên 2024 | PDF trang 14\n' + body,
+                   page_number=14, char_end=len(body))
+        row['locator_json']['pdf_page'] = 14
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(result['relations'], [])
+
+    def test_nested_subsidiary_in_parentheses(self):
+        expected, row = self.make_row()
+        body = ('Các công ty con kiểm soát gián tiếp\n'
+                'Công ty Cổ phần đầu tư Smartek (Là\n'
+                'công ty con của Công ty Cổ phần\nDatanova Việt Nam)')
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text='CTG | Báo cáo thường niên 2024 | PDF trang 14\n' + body,
+                   page_number=14, char_end=len(body))
+        row['locator_json']['pdf_page'] = 14
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        registry = REGISTRY + [
+            {'entity_id': 'company:smartek', 'entity_type': 'Company',
+             'canonical_name': 'Công ty Cổ phần đầu tư Smartek',
+             'aliases': ['Công ty Cổ phần đầu tư Smartek'],
+             'ticker_aliases': [], 'identity_key': 'name:smartek', 'verified': True},
+            {'entity_id': 'company:datanova', 'entity_type': 'Company',
+             'canonical_name': 'Công ty Cổ phần Datanova Việt Nam',
+             'aliases': ['Công ty Cổ phần Datanova Việt Nam'],
+             'ticker_aliases': [], 'identity_key': 'name:datanova', 'verified': True},
+        ]
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), registry)
+        pairs = {(r['subject_id'], r['object_id']) for r in result['relations']}
+        self.assertEqual(pairs, {('company:alpha', 'company:smartek'),
+                                 ('company:datanova', 'company:smartek')})
+        self.assertTrue(all(r['review']['status'] == 'PENDING' for r in result['relations']))
+
+    def test_issuer_context_requires_verified_registry_identity(self):
+        expected, row = self.make_row()
+        body = 'công ty con kiểm soát trực tiếp Beta Việt'
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Tên chưa có trong registry',
+                   text=row['text'].split('\n', 1)[0] + '\n' + body, char_end=len(body))
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(result['relations'], [])
+
+    def test_generic_legal_form_is_not_a_company_endpoint(self):
+        expected, row = self.make_row()
+        body = 'công ty con kiểm soát gián tiếp Công ty Cổ phần'
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text=row['text'].split('\n', 1)[0] + '\n' + body, char_end=len(body))
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        generic = {'entity_id': 'company:generic', 'entity_type': 'Company',
+                   'canonical_name': 'CÔNG TY CỔ PHẦN', 'aliases': ['Công ty Cổ phần'],
+                   'ticker_aliases': [], 'identity_key': 'name:cong ty co phan', 'verified': True}
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY + [generic])
+        self.assertEqual(result['relations'], [])
+
+    def test_short_common_alias_is_not_subsidiary(self):
+        expected, row = self.make_row()
+        body = 'CÁC CÔNG TY CON Quỹ'
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text=row['text'].split('\n', 1)[0] + '\n' + body, char_end=len(body))
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        misleading = {'entity_id': 'company:fund', 'entity_type': 'Company',
+                      'canonical_name': 'Tập đoàn trích lập quỹ khen thưởng, phúc lợi',
+                      'aliases': ['Quỹ'], 'ticker_aliases': [],
+                      'identity_key': 'name:quy', 'verified': True}
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY + [misleading])
+        self.assertEqual(result['relations'], [])
+
+    def test_unresolved_full_legal_name_remains_pending_for_review(self):
+        expected, row = self.make_row()
+        body = 'Các công ty con kiểm soát gián tiếp Công ty Cổ phần Đầu tư Smortek'
+        row.update(company_id='00000000-0000-4000-8000-000000000002',
+                   issuer_symbol='CTG', issuer_company_name='Alpha Việt',
+                   text=row['text'].split('\n', 1)[0] + '\n' + body, char_end=len(body))
+        row['locator_json']['reconstruction']['char_end'] = len(body)
+        row['content_hash'] = hashlib.sha256(row['text'].encode()).hexdigest()
+        result = extract_candidates(document_envelope([row], expected['corpus_id']), REGISTRY)
+        self.assertEqual(len(result['relations']), 1)
+        relation = result['relations'][0]
+        self.assertEqual(relation['review']['status'], 'PENDING')
+        target = next(e for e in result['entities'] if e['entity_id'] == relation['object_id'])
+        self.assertEqual(target['resolution_status'], 'unresolved')
+
+
+if __name__ == '__main__':
+    unittest.main()

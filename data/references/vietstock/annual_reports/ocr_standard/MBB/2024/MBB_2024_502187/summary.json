@@ -1,0 +1,69 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\MBB\\2024\\MBB_2024_502187.pdf",
+  "pages": 184,
+  "routes": {
+    "tesseract": 9,
+    "text_layer": 175
+  },
+  "status": {
+    "OK": 184
+  },
+  "flags": {
+    "MANUAL_REVIEWED": 7,
+    "VISUAL_BLANK": 1
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 2.253,
+    "renderAndTesseract": 5.004,
+    "gemini": 5.31,
+    "total": 12.882
+  },
+  "geminiApi": {
+    "calls": 5,
+    "failedCalls": 5,
+    "seconds": 5.287000000000001,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 9,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\MBB\\2024",
+    "mode": "auto",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "structured",
+    "openrouterModel": "recursive/flint-v1.0:free",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 180,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

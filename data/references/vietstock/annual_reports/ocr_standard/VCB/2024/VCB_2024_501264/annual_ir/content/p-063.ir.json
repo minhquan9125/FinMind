@@ -1,0 +1,111 @@
+{
+  "ir_version": "1",
+  "page": 63,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "0a54c7e25712351cef1df5be0e8c3f121ca45577864acaf0113aab2580db1120",
+    "file_name": "VCB_2024_501264.pdf"
+  },
+  "blocks": [
+    {"id": "p63-b1", "type": "heading", "text": "BẢNG THÔNG TIN SỐ LIỆU VỀ ASXH NĂM 2024 VÀ GIAI ĐOẠN 5 NĂM 2020 - 2024", "bbox": [36.0, 99.49, 458.91, 109.49]},
+    {"id": "p63-b2", "type": "paragraph", "text": "Tổng số tiền tài trợ cho hoạt động an sinh xã hội của", "bbox": [94.01, 236.65, 286.49, 245.15]},
+    {"id": "p63-b3", "type": "paragraph", "text": "Tài trợ cho người nghèo/xây dựng nhà tình nghĩa, nhà đại đoàn kết…", "bbox": [94.0, 502.28, 343.21, 510.78]},
+    {
+      "id": "p63-b4",
+      "type": "paragraph",
+      "text": "Tặng quà cho các bà mẹ VNAH, thân nhân liệt sỹ, các công tác cho người có công…",
+      "bbox": [94.0, 520.19, 396.9, 528.69]
+    },
+    {
+      "id": "p63-b5",
+      "type": "paragraph",
+      "text": "Một số chương trình/công trình an sinh xã hội tiêu biểu Vietcombank đã triển khai trong năm 2024:",
+      "bbox": [40.0, 584.51, 430.18, 593.01]
+    },
+    {"id": "p63-b6", "type": "paragraph", "text": "Ủng hộ xóa nhà tạm, nhà dột nát cho hộ nghèo của Thủ tướng phát động", "bbox": [94.0, 638.53, 364.19, 647.03]},
+    {
+      "id": "p63-b7",
+      "type": "paragraph",
+      "text": "Ủng hộ Quỹ “Vì người nghèo” Trung ương để hỗ trợ xóa nhà tạm, nhà dột nát",
+      "bbox": [94.0, 655.54, 378.99, 664.04]
+    },
+    {
+      "id": "p63-b8",
+      "type": "paragraph",
+      "text": "Tài trợ xây Trường Tiểu học 2, thị trấn Rạch Gốc, huyện Ngọc Hiển, tỉnh Cà Mau",
+      "bbox": [94.0, 672.55, 391.1, 681.05]
+    },
+    {
+      "id": "p63-b9",
+      "type": "paragraph",
+      "text": "Tài trợ kinh phí xây dựng Trường Phổ thông Dân tộc bán trú Tiểu học xã Cao Sơn,",
+      "bbox": [94.0, 688.26, 394.9, 696.76]
+    },
+    {
+      "id": "p63-b10",
+      "type": "paragraph",
+      "text": "Hỗ trợ kinh phí để xây dựng nhà Đại đoàn kết cho hộ nghèo trên địa bàn tỉnh",
+      "bbox": [94.0, 714.15, 389.82, 722.65]
+    },
+    {
+      "id": "p63-b11",
+      "type": "paragraph",
+      "text": "Tài trợ kinh phí đầu tư xây dựng trường Tiểu học và Trung học cơ sở Mỹ lộc,",
+      "bbox": [94.0, 740.03, 372.84, 748.53]
+    },
+    {"id": "p63-b12", "type": "paragraph", "text": "Năm 2024\n(đv: triệu đồng)", "bbox": [426.04, 175.9, 483.33, 195.4]},
+    {"id": "p63-b13", "type": "paragraph", "text": "2024\nGiai đoạn 5 năm\n(2019 - 2023)", "bbox": [399.79, 201.77, 533.95, 221.27]},
+    {"id": "p63-b14", "type": "paragraph", "text": "570.954", "bbox": [394.41, 236.65, 427.9, 245.15]},
+    {"id": "p63-b15", "type": "paragraph", "text": "2.311.210", "bbox": [482.79, 236.65, 518.66, 245.15]},
+    {"id": "p63-b16", "type": "paragraph", "text": "Năm 2024\n(đv: triệu đồng)", "bbox": [482.96, 302.62, 540.25, 322.12]},
+    {"id": "p63-b17", "type": "paragraph", "text": "301.340", "bbox": [507.21, 333.26, 540.26, 341.76]},
+    {"id": "p63-b18", "type": "paragraph", "text": "31.109", "bbox": [515.63, 350.27, 540.26, 358.77]},
+    {"id": "p63-b19", "type": "paragraph", "text": "74.592", "bbox": [512.96, 367.28, 540.25, 375.78]},
+    {"id": "p63-b20", "type": "paragraph", "text": "163.913", "bbox": [510.42, 384.28, 540.25, 392.78]},
+    {"id": "p63-b21", "type": "paragraph", "text": "Giá trị thực hiện năm 2024\n(đv: triệu đồng)", "bbox": [429.58, 437.62, 540.26, 457.12]},
+    {"id": "p63-b22", "type": "paragraph", "text": "173.687", "bbox": [509.13, 468.26, 540.26, 476.76]},
+    {"id": "p63-b23", "type": "paragraph", "text": "90.465", "bbox": [511.0, 485.27, 540.26, 493.77]},
+    {"id": "p63-b24", "type": "paragraph", "text": "269.237", "bbox": [507.24, 502.28, 540.25, 510.78]},
+    {"id": "p63-b25", "type": "paragraph", "text": "1.848", "bbox": [517.35, 520.19, 540.25, 528.69]},
+    {"id": "p63-b26", "type": "paragraph", "text": "35.717", "bbox": [515.62, 537.97, 540.25, 546.47]},
+    {"id": "p63-b27", "type": "paragraph", "text": "Số tiền\n(đv: triệu đồng)", "bbox": [482.96, 607.9, 540.26, 627.39]},
+    {"id": "p63-b28", "type": "paragraph", "text": "100", "bbox": [525.51, 638.53, 540.25, 647.03]},
+    {"id": "p63-b29", "type": "paragraph", "text": "20", "bbox": [529.41, 655.54, 540.25, 664.04]},
+    {"id": "p63-b30", "type": "paragraph", "text": "35", "bbox": [529.97, 672.55, 540.25, 681.05]},
+    {"id": "p63-b31", "type": "paragraph", "text": "20", "bbox": [529.41, 688.26, 540.25, 696.76]},
+    {"id": "p63-b32", "type": "paragraph", "text": "7,5", "bbox": [529.24, 714.15, 540.25, 722.65]},
+    {"id": "p63-b33", "type": "paragraph", "text": "6", "bbox": [535.06, 740.03, 540.25, 748.53]},
+    {"id": "p63-b34", "type": "paragraph", "text": "Dấu ấn Tầm nhìn - Đổi mới Sáng tạo không ngừng", "bbox": [913.75, 20.76, 1082.83, 27.76]},
+    {"id": "p63-b35", "type": "heading", "text": "CHƯƠNG 5", "bbox": [1109.37, 20.76, 1154.55, 27.76]},
+    {"id": "p63-b36", "type": "paragraph", "text": "CHƯƠNG 5\nBáo cáo phát triển bền vững", "bbox": [36.0, 20.76, 199.71, 27.76]},
+    {"id": "p63-b37", "type": "paragraph", "text": "Tổng số liệu ASXH:", "bbox": [40.0, 152.51, 116.67, 161.01]},
+    {"id": "p63-b38", "type": "paragraph", "text": "TT\nNội dung", "bbox": [40.0, 175.9, 129.49, 184.4]},
+    {"id": "p63-b39", "type": "paragraph", "text": "1\nVietcombank", "bbox": [40.01, 236.65, 142.41, 256.15]},
+    {"id": "p63-b40", "type": "paragraph", "text": "Khu vực:", "bbox": [40.0, 279.24, 74.51, 287.74]},
+    {"id": "p63-b41", "type": "paragraph", "text": "TT\nKhu vực", "bbox": [40.0, 302.62, 126.5, 311.12]},
+    {"id": "p63-b42", "type": "paragraph", "text": "1\nKhu vực Tây Bắc", "bbox": [40.0, 333.26, 156.35, 341.76]},
+    {"id": "p63-b43", "type": "paragraph", "text": "2\nKhu vực Tây Nguyên", "bbox": [40.0, 350.27, 170.97, 358.77]},
+    {"id": "p63-b44", "type": "paragraph", "text": "3\nKhu vực Tây Nam Bộ", "bbox": [40.0, 367.28, 173.03, 375.78]},
+    {"id": "p63-b45", "type": "paragraph", "text": "4\nCác tỉnh/thành phố khác", "bbox": [40.0, 384.28, 185.03, 392.78]},
+    {"id": "p63-b46", "type": "paragraph", "text": "Các lĩnh vực:", "bbox": [40.0, 414.24, 89.98, 422.74]},
+    {"id": "p63-b47", "type": "paragraph", "text": "TT\nMục đích tài trợ", "bbox": [40.0, 437.62, 156.13, 446.12]},
+    {"id": "p63-b48", "type": "paragraph", "text": "1\nTài trợ cho lĩnh vực giáo dục", "bbox": [40.0, 468.26, 196.93, 476.76]},
+    {"id": "p63-b49", "type": "paragraph", "text": "2\nTài trợ cho lĩnh vực Y tế", "bbox": [40.0, 485.27, 180.79, 493.77]},
+    {"id": "p63-b50", "type": "paragraph", "text": "3", "bbox": [40.0, 502.28, 45.11, 510.78]},
+    {"id": "p63-b51", "type": "paragraph", "text": "4", "bbox": [40.0, 520.19, 45.42, 528.69]},
+    {"id": "p63-b52", "type": "paragraph", "text": "5\nTài trợ cho các lĩnh vực khác", "bbox": [40.0, 537.97, 197.81, 546.47]},
+    {"id": "p63-b53", "type": "paragraph", "text": "TT\nTên chương trình", "bbox": [40.0, 607.9, 161.88, 616.4]},
+    {"id": "p63-b54", "type": "paragraph", "text": "1", "bbox": [40.0, 638.53, 43.14, 647.03]},
+    {"id": "p63-b55", "type": "paragraph", "text": "2", "bbox": [40.0, 655.54, 45.15, 664.04]},
+    {"id": "p63-b56", "type": "paragraph", "text": "3", "bbox": [40.0, 672.55, 45.11, 681.05]},
+    {"id": "p63-b57", "type": "paragraph", "text": "4\nhuyện Mường Khương, tỉnh Lào Cai", "bbox": [40.0, 688.26, 227.31, 707.76]},
+    {"id": "p63-b58", "type": "paragraph", "text": "5\nBạc Liêu", "bbox": [40.0, 714.15, 127.4, 733.64]},
+    {"id": "p63-b59", "type": "paragraph", "text": "6\nhuyện Hậu Lộc, tỉnh Thanh Hóa", "bbox": [40.0, 740.03, 212.96, 759.53]},
+    {"id": "p63-b60", "type": "paragraph", "text": "122 BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [36.0, 814.22, 197.81, 821.22]},
+    {"id": "p63-b61", "type": "paragraph", "text": "DẤU XANH TỰ HÀO 123", "bbox": [1039.03, 814.22, 1154.3, 821.22]}
+  ]
+}

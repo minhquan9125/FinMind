@@ -1,0 +1,20 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\FPT\\2025\\FPT_2025_540297.pdf",
+  "document_sha256": "5ea9b229656594f65e858ff7465ec600332fd623c501ce27d5b95de098275a35",
+  "overrides_applied": [],
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 156
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "observations": "table/observations.json",
+    "pages": 67,
+    "structuredTablePages": 8,
+    "notesTextOnlyPages": 54,
+    "totalObservations": 230,
+    "verifiedObservations": 220
+  }
+}

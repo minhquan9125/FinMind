@@ -1,0 +1,127 @@
+{
+  "text": "BÁO CÁO TÀI CHÍNH RIÊNG\nĐÃ ĐƯỢC KIỂM TOÁN",
+  "chars": 33,
+  "words": 9,
+  "wordItems": [
+    {
+      "text": "BÁO",
+      "bbox": [
+        840,
+        2747,
+        970,
+        2801
+      ],
+      "conf": 91.995636,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        996,
+        2747,
+        1128,
+        2801
+      ],
+      "conf": 96.076195,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        1151,
+        2747,
+        1247,
+        2800
+      ],
+      "conf": 96.309128,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        1274,
+        2747,
+        1463,
+        2801
+      ],
+      "conf": 93.137573,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "RIÊNG",
+      "bbox": [
+        1491,
+        2748,
+        1675,
+        2801
+      ],
+      "conf": 90.052193,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐÃ",
+      "bbox": [
+        838,
+        2855,
+        927,
+        2908
+      ],
+      "conf": 93.119995,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐƯỢC",
+      "bbox": [
+        950,
+        2859,
+        1130,
+        2918
+      ],
+      "conf": 90.521324,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "KIỂM",
+      "bbox": [
+        1155,
+        2846,
+        1297,
+        2908
+      ],
+      "conf": 92.751198,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TOÁN",
+      "bbox": [
+        1322,
+        2855,
+        1496,
+        2909
+      ],
+      "conf": 94.994179,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 93,
+  "lowConfRatio": 0,
+  "seconds": 0.686
+}

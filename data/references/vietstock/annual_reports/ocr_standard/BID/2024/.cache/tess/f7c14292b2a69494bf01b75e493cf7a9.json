@@ -1,0 +1,699 @@
+{
+  "text": "BIDV\n\nNGÂN HÀNG TMCP ĐẦU TƯ VÀ PHÁT TRIỂN VIỆT NAM\n\nTRỤ SỞ CHÍNH: Tháp BIDV, 194 Trần Quang Khải, Hoàn Kiếm, Hà Nội\nĐIỆN THOẠI: 024 2220 5544\n\nHOTLINE: 19009247\n\nWEBSITE: https://www.bidv.com.vn\nFACEBOOK FANPAGE: BIDVBankVietnam\n\nBÁO CÁO THƯỜNG NIÊN BIDV 2024 ĐƯỢC ĐĂNG TẠI ĐỊA CHỈ:\nhttps://bidv.com.vn/vn/quan-he-nha-dau-tu hoặc quét mã QR code:",
+  "chars": 289,
+  "words": 53,
+  "wordItems": [
+    {
+      "text": "BIDV",
+      "bbox": [
+        202,
+        2656,
+        637,
+        2795
+      ],
+      "conf": 78.508308,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NGÂN",
+      "bbox": [
+        199,
+        2863,
+        360,
+        2919
+      ],
+      "conf": 92.411514,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HÀNG",
+      "bbox": [
+        385,
+        2863,
+        546,
+        2919
+      ],
+      "conf": 93.299583,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TMCP",
+      "bbox": [
+        568,
+        2875,
+        732,
+        2919
+      ],
+      "conf": 91.546112,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐẦU",
+      "bbox": [
+        752,
+        2860,
+        871,
+        2919
+      ],
+      "conf": 96.278732,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TƯ",
+      "bbox": [
+        892,
+        2871,
+        977,
+        2919
+      ],
+      "conf": 96.613197,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VÀ",
+      "bbox": [
+        989,
+        2863,
+        1063,
+        2919
+      ],
+      "conf": 93.305191,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHÁT",
+      "bbox": [
+        1085,
+        2863,
+        1236,
+        2919
+      ],
+      "conf": 91.538818,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRIỂN",
+      "bbox": [
+        1256,
+        2860,
+        1424,
+        2919
+      ],
+      "conf": 91.933197,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VIỆT",
+      "bbox": [
+        1447,
+        2863,
+        1573,
+        2929
+      ],
+      "conf": 96.167847,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NAM",
+      "bbox": [
+        1596,
+        2875,
+        1725,
+        2919
+      ],
+      "conf": 95.731323,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRỤ",
+      "bbox": [
+        197,
+        2972,
+        274,
+        3009
+      ],
+      "conf": 96.891647,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "SỞ",
+      "bbox": [
+        290,
+        2962,
+        345,
+        3002
+      ],
+      "conf": 96.264847,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH:",
+      "bbox": [
+        356,
+        2963,
+        492,
+        3002
+      ],
+      "conf": 96.487267,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Tháp",
+      "bbox": [
+        508,
+        2970,
+        601,
+        3010
+      ],
+      "conf": 96.149849,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BIDV,",
+      "bbox": [
+        619,
+        2972,
+        712,
+        3006
+      ],
+      "conf": 96.439156,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "194",
+      "bbox": [
+        729,
+        2971,
+        795,
+        3002
+      ],
+      "conf": 96.995979,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Trần",
+      "bbox": [
+        809,
+        2967,
+        892,
+        3002
+      ],
+      "conf": 96.266167,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Quang",
+      "bbox": [
+        908,
+        2971,
+        1029,
+        3011
+      ],
+      "conf": 96.533394,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Khải,",
+      "bbox": [
+        1046,
+        2967,
+        1135,
+        3006
+      ],
+      "conf": 96.624146,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Hoàn",
+      "bbox": [
+        1152,
+        2970,
+        1246,
+        3002
+      ],
+      "conf": 96.920341,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Kiếm,",
+      "bbox": [
+        1264,
+        2967,
+        1364,
+        3006
+      ],
+      "conf": 96.53315,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Hà",
+      "bbox": [
+        1381,
+        2970,
+        1429,
+        3002
+      ],
+      "conf": 96.107681,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Nội",
+      "bbox": [
+        1446,
+        2970,
+        1504,
+        3008
+      ],
+      "conf": 96.915154,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐIỆN",
+      "bbox": [
+        196,
+        3012,
+        287,
+        3057
+      ],
+      "conf": 95.176826,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "THOẠI:",
+      "bbox": [
+        302,
+        3020,
+        433,
+        3057
+      ],
+      "conf": 96.037827,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "024",
+      "bbox": [
+        450,
+        3020,
+        518,
+        3050
+      ],
+      "conf": 96.717171,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2220",
+      "bbox": [
+        534,
+        3020,
+        623,
+        3050
+      ],
+      "conf": 96.317642,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "5544",
+      "bbox": [
+        640,
+        3020,
+        731,
+        3050
+      ],
+      "conf": 96.375023,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "HOTLINE:",
+      "bbox": [
+        199,
+        3069,
+        377,
+        3099
+      ],
+      "conf": 91.303299,
+      "block": 3,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "19009247",
+      "bbox": [
+        397,
+        3069,
+        581,
+        3099
+      ],
+      "conf": 96.063095,
+      "block": 3,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "WEBSITE:",
+      "bbox": [
+        197,
+        3117,
+        379,
+        3148
+      ],
+      "conf": 93.250122,
+      "block": 3,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "https://www.bidv.com.vn",
+      "bbox": [
+        397,
+        3116,
+        874,
+        3156
+      ],
+      "conf": 89.329842,
+      "block": 3,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "FACEBOOK",
+      "bbox": [
+        199,
+        3166,
+        406,
+        3197
+      ],
+      "conf": 87.435928,
+      "block": 3,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "FANPAGE:",
+      "bbox": [
+        421,
+        3166,
+        608,
+        3197
+      ],
+      "conf": 91.383255,
+      "block": 3,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "BIDVBankVietnam",
+      "bbox": [
+        627,
+        3165,
+        969,
+        3197
+      ],
+      "conf": 90.381844,
+      "block": 3,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        198,
+        3237,
+        272,
+        3273
+      ],
+      "conf": 90.704277,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        287,
+        3237,
+        360,
+        3273
+      ],
+      "conf": 96.52169,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        375,
+        3237,
+        533,
+        3273
+      ],
+      "conf": 96.041977,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        550,
+        3237,
+        634,
+        3273
+      ],
+      "conf": 96.041977,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BIDV",
+      "bbox": [
+        651,
+        3245,
+        736,
+        3273
+      ],
+      "conf": 96.761887,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        750,
+        3245,
+        839,
+        3273
+      ],
+      "conf": 93.304909,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐƯỢC",
+      "bbox": [
+        852,
+        3241,
+        957,
+        3280
+      ],
+      "conf": 91.451164,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐĂNG",
+      "bbox": [
+        971,
+        3237,
+        1074,
+        3273
+      ],
+      "conf": 96.591156,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TẠI",
+      "bbox": [
+        1087,
+        3245,
+        1142,
+        3280
+      ],
+      "conf": 93.225494,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐỊA",
+      "bbox": [
+        1156,
+        3245,
+        1219,
+        3280
+      ],
+      "conf": 92.148613,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHỈ:",
+      "bbox": [
+        1233,
+        3236,
+        1306,
+        3273
+      ],
+      "conf": 95.093842,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "https://bidv.com.vn/vn/quan-he-nha-dau-tu",
+      "bbox": [
+        198,
+        3289,
+        1009,
+        3327
+      ],
+      "conf": 91.203712,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hoặc",
+      "bbox": [
+        1036,
+        3289,
+        1120,
+        3325
+      ],
+      "conf": 95.880524,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "quét",
+      "bbox": [
+        1135,
+        3289,
+        1212,
+        3327
+      ],
+      "conf": 96.711174,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "mã",
+      "bbox": [
+        1228,
+        3290,
+        1279,
+        3319
+      ],
+      "conf": 93.304176,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "QR",
+      "bbox": [
+        1294,
+        3290,
+        1342,
+        3321
+      ],
+      "conf": 93.085449,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "code:",
+      "bbox": [
+        1357,
+        3289,
+        1451,
+        3319
+      ],
+      "conf": 96.709641,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 94,
+  "lowConfRatio": 0,
+  "seconds": 0.893
+}

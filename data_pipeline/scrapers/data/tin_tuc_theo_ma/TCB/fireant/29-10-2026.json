@@ -1,0 +1,373 @@
+{
+  "schema_version": "1.2",
+  "source": "fireant",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "1a89669341cd11d174bf",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/tcb-techcombank-bo-nhiem-mot-pho-tong-giam-doc/42524201",
+      "title": "TCB: Techcombank bổ nhiệm một Phó Tổng Giám đốc",
+      "description": "Bà Phan Thị Hải Yến được bổ nhiệm chức danh Phó Tổng Giám đốc kiêm Giám đốc Khối Ngân hàng Doanh nghiệp và Định chế Tài chính của Techcombank.",
+      "published_at": "2026-10-29T11:20:00+07:00",
+      "symbols": [
+        "TCB"
+      ],
+      "provider_id": "42524201",
+      "category": "Doanh nghiệp",
+      "content": "Bà Phan Thị Hải Yến được bổ nhiệm chức danh Phó Tổng Giám đốc kiêm Giám đốc Khối Ngân hàng Doanh nghiệp và Định chế Tài chính của Techcombank. Bà Phan Thị Hải Yến. Ảnh: TCB Ngân hàng TMCP Kỹ thương Việt Nam (Techcombank, MCK: TCB ) mới đây đã công bố Quyết định của HĐQT liên quan đến vấn đề nhân sự. Cụ thể, TCB bổ nhiệm bà Phan Thị Hải Yến đảm nhận chức danh Phó Tổng Giám đốc kiêm Giám đốc Khối Ngân hàng Doanh nghiệp và Định chế Tài chính (CIBG) của Techcombank. Bà Phan Thị Hải Yến thực hiện nhiệm vụ, quyền hạn theo quy định của pháp luật, Điều lệ và các quy định nội bộ của ngân hàng. Theo giới thiệu của TCB , bà Yến gia nhập ngân hàng này từ năm 2009, có hơn 17 năm kinh nghiệm và đã đảm nhiệm các vai trò lãnh đạo cấp cao tại các khối kinh doanh trọng yếu. Trong một diễn biến khác, HĐQT TCB đã ban hành Nghị quyết thông qua việc tăng vốn góp của Techcombank tại Công ty CP Bảo hiểm Phi Nhân thọ Techcom (TCGIns) theo báo cáo, đề xuất của Tổng giám đốc và các Khối Tài chính & Kế hoạch, Quản trị rủi ro, Quản trị Ngân hàng tại Tờ trình số 105/2026/TTr-TCKH ngày 25/9/2026. Cụ thể, Techcombank dự kiến góp thêm tối đa 680 tỷ đồng vào TCGIns, tương ứng với 68 triệu cổ phần, mệnh giá 10.000 đồng/cổ phần. HĐQT cũng giao Tổng Giám đốc chịu trách nhiệm chỉ đạo Khối Tài chính và Kế hoạch và các Khối đơn vị liên quan triển khai thực hiện đảm bảo tuân thủ các quy định của pháp luật và quy định nội bộ của ngân hàng. Ngoài ra, HĐQT Techcombank còn phê duyệt ngày đăng ký cuối cùng chốt danh sách cổ đông để lấy ý kiến bằng văn bản về việc thành lập ngân hàng thương mại TNHH một thành viên do Techcombank sở hữu 100% vốn tại VIFC. Ngày đăng ký cuối cùng là 3/11/2026. Về kết quả kinh doanh, trong quý III/2026, Techcombank ghi nhận lợi nhuận trước thuế 10.375 tỷ đồng, tăng 25,8% so với cùng kỳ và là mức cao nhất theo quý của ngân hàng từ trước đến nay. Lũy kế 9 tháng, tổng thu nhập hoạt động đạt 45.204 tỷ đồng, tăng 17,1%; lợi nhuận trước thuế đạt 28.915 tỷ đồng, tăng 23,7%, lợi nhuận sau thuế đạt 23.014 tỷ đồng, tăng 21,3%. Tính đến ngày 30/9/2026, tổng tài sản ngân hàng đạt 1,3 triệu tỷ đồng, tăng 16,7% so với cùng kỳ. PV Link gốc",
+      "attachments": [],
+      "crawled_at": "2026-10-29T07:47:32.718493+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.04449178332318928,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/techcombank-nhan-giai-ngan-hang-tot-nhat-viet-nam-nam-thu-3-lien-tiep-tu-global-finance-tiep-tuc-chuoi-hat-trick-tu-3-to-chuc-danh-gia-the-gioi-188261021103654366.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "5f7950bb553c10e8cac8",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/lai-suat-ty-gia-hom-nay-fed-giu-nguyen-lai-suat-usd-dien-bien-trai-chieu/42519669",
+      "title": "Lãi suất – tỷ giá hôm nay: Fed giữ nguyên lãi suất, USD diễn biến trái chiều",
+      "description": "Mặt bằng lãi suất tiết kiệm tiếp tục phân hóa giữa các ngân hàng và kỳ hạn gửi tiền. Trên thị trường ngoại hối, tỷ giá USD trong nước đồng loạt tăng, trái chiều với diễn biến của đồng bạc xanh trên thị trường quốc tế sau quyết định giữ nguyên lãi suất của Fed.",
+      "published_at": "2026-10-29T10:16:00+07:00",
+      "symbols": [
+        "ABB",
+        "BAB",
+        "EIB",
+        "HDB",
+        "LPB",
+        "NAB",
+        "SSB",
+        "STB",
+        "TCB",
+        "VPB"
+      ],
+      "provider_id": "42519669",
+      "category": "Thị trường",
+      "content": "Mặt bằng lãi suất tiết kiệm tiếp tục phân hóa giữa các ngân hàng và kỳ hạn gửi tiền. Trên thị trường ngoại hối, tỷ giá USD trong nước đồng loạt tăng, trái chiều với diễn biến của đồng bạc xanh trên thị trường quốc tế sau quyết định giữ nguyên lãi suất của Fed. Lãi suất kỳ hạn dài vượt 7%/năm Khảo sát biểu lãi suất huy động ngày 29/10/2026 cho thấy, sau các đợt điều chỉnh gần đây, thị trường tiền gửi vẫn ghi nhận sự phân hóa đáng kể, với mức lãi suất cao tập trung tại một số ngân hàng và sản phẩm tiền gửi nhất định, trong khi nhóm kỳ hạn ngắn duy trì mặt bằng thấp hơn. Đáng chú ý, kỳ hạn 24 tháng đang ghi nhận mức lãi suất cao nhất trong nhóm sản phẩm thông thường được tổng hợp tại bảng khảo sát. Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm. Nhóm tiếp theo gồm Cake by VPBank ở mức 6,9%/năm; PGBank và BIDV cùng 6,8%/năm; LPBank và BVBank cùng 6,7%/năm; MSB 6,6%/năm và MB 6,5%/năm. Ở chiều ngược lại, một số ngân hàng có mức lãi suất thấp hơn đáng kể tại cùng kỳ hạn. Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm. Ở kỳ hạn 12 tháng, Cake by VPBank đứng đầu bảng tổng hợp với mức 9,1%/năm, bao gồm ưu đãi cộng thêm dành cho khách hàng đáp ứng điều kiện chương trình, không phải mức lãi suất áp dụng đại trà. Nếu không tính mức ưu đãi đặc biệt này, VPBank dẫn đầu nhóm khảo sát với 7,1%/năm. Sacombank, VCBNeo, MBV, PGBank và VIB cùng niêm yết 7%/năm; BVBank ở mức 6,9%/năm; MSB, BIDV và Techcombank cùng 6,8%/năm. Các ngân hàng còn lại phân bố ở nhiều mức khác nhau, như Saigonbank và LPBank cùng 6,7%/năm; BAC A BANK 6,6%/năm; OCB 6,3%/năm; Nam A Bank, Vikki Bank và VietABank cùng 6,1%/năm. Trong khi đó, mức lãi suất kỳ hạn 12 tháng tại Eximbank là 5%/năm, SeABank 4,3%/năm và SCB 3,7%/năm. Đối với kỳ hạn 6 tháng, Cake by VPBank tiếp tục có mức cao nhất là 9,1%/năm khi tính cả ưu đãi có điều kiện. VCBNeo và VPBank cùng đạt 7%/năm; PGBank 6,9%/năm; Sacombank và BVBank cùng 6,7%/năm; BIDV và Techcombank cùng 6,6%/năm. Tại kỳ hạn 3 tháng, có 18 ngân hàng cùng niêm yết mức 4,75%/năm, gồm BAC A BANK, MBV, PGBank, PVcomBank, OCB, BVBank, BAOVIET Bank, Saigonbank, Cake by VPBank, VietABank, Sacombank, NCB, MSB, TPBank, VCBNeo, VPBank, BIDV và Nam A Bank. Một số ngân hàng duy trì lãi suất thấp hơn, như Agribank 2,9%/năm, VietinBank và Vietcombank cùng 2,4%/năm, SCB 1,9%/năm. Diễn biến này cho thấy người gửi tiền không chỉ cần so sánh mức lãi suất giữa các ngân hàng mà còn phải cân nhắc thời hạn gửi phù hợp. Lãi suất kỳ hạn dài cao hơn có thể mang lại thu nhập tốt hơn nếu duy trì khoản tiền gửi đến ngày đáo hạn, nhưng cũng đồng nghĩa với việc dòng tiền được cam kết trong thời gian dài hơn. * Thông tin về lãi suất nêu trên là mức tham khảo tại thời điểm khảo sát trên website của các ngân hàng; mức áp dụng thực tế có thể thay đổi tùy sản phẩm, phương thức gửi tiền và điều kiện của từng ngân hàng. Fed giữ nguyên lãi suất, tỷ giá USD trong nước tăng trở lại Sáng 29/10, Ngân hàng Nhà nước công bố tỷ giá trung tâm giữa đồng Việt Nam và USD ở mức 25.644 VND/USD, tăng 13 đồng so với ngày 28/10. Với biên độ giao dịch ±5%, tỷ giá USD tại các ngân hàng thương mại được phép giao dịch trong khoảng 24.361,8 - 26.926,2 VND/USD. Diễn biến đồng USD sẽ tiếp tục phụ thuộc vào lộ trình chính sách tiền tệ của Fed. Ảnh: ST Tại Vietcombank, tỷ giá USD được niêm yết ở mức 25.630 - 26.040 VND/USD (mua tiền mặt - bán ra), tăng 20 đồng ở cả hai chiều so với ngày trước đó. Giá mua chuyển khoản đạt 25.660 VND/USD. Đối với các ngoại tệ khác, Vietcombank niêm yết tỷ giá EUR ở mức 28.054,53 - 29.534,36 VND/EUR (mua tiền mặt - bán ra); GBP ở mức 33.520,36 - 34.944,21 VND/GBP; JPY ở mức 157,60 - 168,46 VND/JPY. Tỷ giá CNY mua chuyển khoản đạt 3.817,62 VND/CNY, bán ra 3.939,99 VND/CNY. Trên thị trường quốc tế, diễn biến đồng USD chịu tác động trực tiếp từ quyết định chính sách mới nhất của Cục Dự trữ Liên bang Mỹ (Fed). Kết thúc cuộc họp ngày 28/10 theo giờ Mỹ, Fed quyết định giữ nguyên lãi suất điều hành trong khoảng 3,75 - 4%/năm, phù hợp với dự báo trước đó của thị trường. Quyết định được đưa ra sau khi Fed đã nâng lãi suất trong tháng 9, trong bối cảnh áp lực lạm phát tại Mỹ vẫn là mối quan tâm của cơ quan điều hành chính sách tiền tệ. Tuy nhiên, thay vì tập trung vào quyết định giữ nguyên lãi suất, thị trường ngoại hối chú ý nhiều hơn đến phát biểu của Chủ tịch Fed Kevin Warsh và những tín hiệu về định hướng chính sách trong thời gian tới, khi nhà đầu tư điều chỉnh kỳ vọng về khả năng tiếp tục tăng lãi suất trong năm 2027. Trong sáng nay theo giờ Việt Nam, chỉ số US Dollar Index (DXY) ở mức 102,08 điểm, giảm 0,12 điểm, tương đương 0,12% so với phiên trước. Biên độ dao động trong ngày nằm trong khoảng 102,06 - 102,30 điểm. Việc Fed giữ nguyên lãi suất trong cuộc họp tháng 10 cho thấy cơ quan này tiếp tục theo dõi tác động của các đợt điều chỉnh chính sách trước đó, đồng thời cân nhắc giữa yêu cầu kiểm soát lạm phát và duy trì tăng trưởng kinh tế. Trên thị trường tiền tệ, quyết định này cũng khiến nhà đầu tư chuyển sự chú ý sang các cuộc họp chính sách tiếp theo của những ngân hàng trung ương lớn, đặc biệt là Ngân hàng Trung ương châu Âu (ECB) và Ngân hàng Trung ương Nhật Bản (BOJ). Những phiên tới, diễn biến đồng USD sẽ tiếp tục phụ thuộc vào đánh giá của thị trường về lộ trình chính sách tiền tệ của Fed, cũng như các quyết định của ngân hàng trung ương lớn và những dữ liệu kinh tế Mỹ được công bố. Hương Dịu Link gốc",
+      "attachments": [],
+      "crawled_at": "2026-10-29T07:47:32.971122+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.013773987206823025,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/techcombank-nhan-giai-ngan-hang-tot-nhat-viet-nam-nam-thu-3-lien-tiep-tu-global-finance-tiep-tuc-chuoi-hat-trick-tu-3-to-chuc-danh-gia-the-gioi-188261021103654366.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "ec645aed995f2b5a6744",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/bao-hiem-tro-thanh-nguon-thu-tiem-nang-cua-cac-nha-bang/42515174",
+      "title": "Bảo hiểm trở thành nguồn thu tiềm năng của các nhà băng",
+      "description": "Bảo hiểm đang đóng góp ngày càng rõ nét vào nguồn thu dịch vụ của nhiều ngân hàng. Cùng với khai thác kênh phân phối, các nhà băng đẩy mạnh đầu tư, thành lập doanh nghiệp bảo hiểm, hướng tới mở rộng hệ sinh thái tài chính và giảm phụ thuộc vào nguồn thu từ tín dụng.",
+      "published_at": "2026-10-29T09:17:00+07:00",
+      "symbols": [
+        "LPB",
+        "TCB",
+        "VPB"
+      ],
+      "provider_id": "42515174",
+      "category": "Tài chính",
+      "content": "Bảo hiểm đang đóng góp ngày càng rõ nét vào nguồn thu dịch vụ của nhiều ngân hàng. Cùng với khai thác kênh phân phối, các nhà băng đẩy mạnh đầu tư, thành lập doanh nghiệp bảo hiểm, hướng tới mở rộng hệ sinh thái tài chính và giảm phụ thuộc vào nguồn thu từ tín dụng. Bảo hiểm đóng góp doanh thu hàng nghìn tỷ đồng Trong bối cảnh thị trường bảo hiểm nhân thọ còn đối mặt với áp lực tăng trưởng, hoạt động bảo hiểm tại nhiều ngân hàng ghi nhận kết quả tích cực. Nguồn thu từ phân phối sản phẩm và hoạt động của các doanh nghiệp bảo hiểm trong hệ sinh thái đang tạo thêm dư địa phát triển cho các nhà băng. Theo số liệu từ Hiệp hội Bảo hiểm Việt Nam, tính đến hết tháng 9/2026, thị trường bảo hiểm nhân thọ ghi nhận 1.141.841 hợp đồng khai thác mới, tăng 4,3% so với cùng kỳ năm 2025. Tuy nhiên, tổng doanh thu phí bảo hiểm nhân thọ trong 9 tháng ước đạt 101.621 tỷ đồng, giảm 4%; doanh thu phí khai thác mới đạt khoảng 15.894 tỷ đồng. Trong cơ cấu doanh thu phí khai thác mới, đại lý truyền thống đóng góp hơn 51%, kênh phân phối qua ngân hàng (bancassurance) chiếm gần 45%, còn các kênh khác đóng góp khoảng 4%. Tỷ trọng này cho thấy ngân hàng tiếp tục giữ vai trò quan trọng trong việc đưa sản phẩm bảo hiểm đến khách hàng. Bảo hiểm đang đóng góp ngày càng rõ nét vào nguồn thu dịch vụ của nhiều ngân hàng Tại Techcombank, báo cáo tài chính hợp nhất cho thấy thu từ dịch vụ kinh doanh bảo hiểm trong 9 tháng đầu năm 2026 đạt 2.150 tỷ đồng, gấp 2,4 lần cùng kỳ và vượt gần 60% kết quả cả năm trước. Sau khi trừ chi phí, lãi thuần từ mảng này đạt gần 1.700 tỷ đồng, tăng hơn gấp đôi. Đóng góp của bảo hiểm trong tổng thu dịch vụ theo đó tăng từ 10% lên 15%. LPBank cũng ghi nhận mức tăng đáng kể. Theo báo cáo tài chính quý III/2026, doanh thu từ hoạt động đại lý bảo hiểm trong 9 tháng đạt khoảng 5.689 tỷ đồng, tăng 163% so với mức 2.160 tỷ đồng cùng kỳ năm 2025. Tại VPBank, thu từ dịch vụ bảo hiểm tính đến ngày 30/9 đạt hơn 5.800 tỷ đồng. Trong hệ sinh thái của ngân hàng, bảo hiểm số OPES ghi nhận doanh thu hơn 3.600 tỷ đồng trong 8 tháng đầu năm, tăng 30% so với cùng kỳ. Các doanh nghiệp bảo hiểm trong hệ sinh thái MB cũng có kết quả đáng chú ý. MB Life ghi nhận doanh thu phí khai thác mới khoảng 900 tỷ đồng trong 8 tháng đầu năm 2026, tổng doanh thu phí bảo hiểm lũy kế đạt gần 3.100 tỷ đồng. Ở mảng phi nhân thọ, MIC đạt doanh thu phí bảo hiểm gốc 9 tháng là 5.064 tỷ đồng, tăng 32% so với cùng kỳ. Thực tế, hiện nay ngân hàng đang nỗ lực giảm lãi suất cho vay giảm để hỗ trợ doanh nghiệp đang đặt các ngân hàng trước một bài toán không dễ duy trì dòng vốn cho nền kinh tế mà không đánh đổi quá nhiều lợi nhuận. Khi dư địa mở rộng biên lãi thuần thu hẹp, tăng trưởng tín dụng không còn là lời giải duy nhất. Khả năng khai thác nguồn thu ngoài lãi, tối ưu chi phí vốn và kiểm soát nợ xấu đang trở thành những biến số quyết định chất lượng lợi nhuận ngân hàng trong giai đoạn tới. Từ phân phối đến sở hữu doanh nghiệp bảo hiểm Cùng với khai thác nguồn thu hiện hữu, các ngân hàng đang mở rộng mức độ tham gia thị trường thông qua thành lập, góp vốn hoặc mua lại doanh nghiệp bảo hiểm. Hướng đi này cho phép nhà băng tham gia sâu hơn vào chuỗi cung ứng dịch vụ, từ phát triển sản phẩm đến phân phối và chăm sóc khách hàng. MSB vừa thông qua chủ trương góp vốn, mua cổ phần để thành lập mới hoặc mua lại doanh nghiệp bảo hiểm nhân thọ. Với lĩnh vực phi nhân thọ, ngân hàng dự kiến góp vốn thành lập công ty con, phục vụ khách hàng cá nhân, doanh nghiệp và hệ sinh thái, tập trung vào các sản phẩm bảo hiểm tài sản và con người. Nếu được triển khai, kế hoạch này có thể giúp MSB chủ động hơn trong việc kết nối sản phẩm bảo hiểm với nhu cầu tài chính của khách hàng. Đây cũng là một hướng mở rộng hoạt động nhằm bổ sung động lực tăng trưởng trong giai đoạn 2027–2030. ACB cũng bổ sung doanh nghiệp bảo hiểm phi nhân thọ vào hệ sinh thái. Tháng 8/2026, Công ty TNHH Bảo hiểm Phi nhân thọ ACB (ACB Insurance) được cấp phép thành lập và hoạt động với vốn điều lệ 500 tỷ đồng. Theo phương án được thông qua, Công ty TNHH Quản lý nợ và Khai thác tài sản ACB sở hữu 91% vốn, Công ty Chứng khoán ACB nắm 9%. ACB Insurance được định hướng triển khai các nghiệp vụ bảo hiểm tài sản, hàng hóa vận chuyển, xe cơ giới, cháy nổ, tín dụng, rủi ro tài chính và sức khỏe. Doanh nghiệp đặt mục tiêu doanh thu phí bảo hiểm tăng trưởng kép trên 50% mỗi năm trong giai đoạn 2026–2030; sau 5 năm hướng tới quy mô tài sản khoảng 2.000 tỷ đồng, tỷ suất lợi nhuận trên vốn chủ sở hữu trên 20% và thị phần hơn 1,5%. Ở mảng nhân thọ, VPLife đã được cấp phép và dự kiến hoạt động trong quý I/2027. Sự xuất hiện của doanh nghiệp này, cùng các kế hoạch đầu tư mới của ngân hàng, có thể làm gia tăng cạnh tranh về sản phẩm, mạng lưới phân phối và chất lượng phục vụ. Thực tế, mô hình ngân hàng gắn với doanh nghiệp bảo hiểm đã hiện diện nhiều năm tại Việt Nam, với BIDV có BIC và liên doanh BIDV MetLife; VietinBank có VBI; Agribank có ABIC; MB có MIC và MB Life. Điểm đáng chú ý hiện nay là thêm nhiều ngân hàng lựa chọn trực tiếp đầu tư để mở rộng hoạt động bảo hiểm. Theo các chuyên gia Chứng khoán Vietcombank (VCBS), thành lập công ty bảo hiểm là xu hướng dài hạn của ngân hàng nhằm giảm phụ thuộc vào tín dụng trong bối cảnh biên lãi thuần chịu áp lực thu hẹp. Lợi thế của ngân hàng nằm ở mạng lưới giao dịch, nền tảng số và quan hệ sẵn có với khách hàng. Khi được khai thác đúng mục đích, có sự đồng ý phù hợp và tuân thủ quy định về bảo vệ dữ liệu, thông tin về nhu cầu tài chính có thể hỗ trợ phát triển sản phẩm và nâng cao chất lượng phục vụ. Tuy nhiên, sở hữu doanh nghiệp bảo hiểm cũng đặt ra yêu cầu về vốn, năng lực quản trị rủi ro và thực hiện cam kết dài hạn với người tham gia. Nguồn thu bền vững phải đi cùng chất lượng tư vấn, tính phù hợp của sản phẩm và khả năng duy trì hợp đồng. Trong 9 tháng đầu năm 2026, các doanh nghiệp bảo hiểm nhân thọ đã chi trả khoảng 55.733 tỷ đồng, tăng 21,5% so với cùng kỳ. Quy mô chi trả cho thấy, song hành với khai thác mới là nghĩa vụ thực hiện quyền lợi bảo hiểm theo hợp đồng. Với các ngân hàng đang mở rộng đầu tư, chất lượng phục vụ và niềm tin của khách hàng sẽ là nền tảng để bảo hiểm trở thành nguồn thu ổn định trong dài hạn. Quỳnh Trang Link gốc",
+      "attachments": [],
+      "crawled_at": "2026-10-29T07:47:33.338139+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03628458498023716,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/techcombank-nhan-giai-ngan-hang-tot-nhat-viet-nam-nam-thu-3-lien-tiep-tu-global-finance-tiep-tuc-chuoi-hat-trick-tu-3-to-chuc-danh-gia-the-gioi-188261021103654366.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "523d14cff8a8d7ae05e5",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/lai-suat-ngan-hang-ngay-29-10-nhieu-ngan-hang-dieu-chinh-muc-lai-suat/42514061",
+      "title": "Lãi suất ngân hàng ngày 29/10: Nhiều ngân hàng điều chỉnh mức lãi suất",
+      "description": "Hơn 20 ngân hàng thương mại cổ phần và 4 ngân hàng thương mại nhà nước đã điều chỉnh giảm lãi suất, với mức giảm phổ biến 0,5 điểm phần trăm, một số ngân hàng giảm tới 0,7 điểm phần trăm.",
+      "published_at": "2026-10-29T08:45:00+07:00",
+      "symbols": [
+        "ABB",
+        "BAB",
+        "LPB",
+        "SSB",
+        "STB",
+        "TCB",
+        "VPB"
+      ],
+      "provider_id": "42514061",
+      "category": "Tài chính",
+      "content": "Hơn 20 ngân hàng thương mại cổ phần và 4 ngân hàng thương mại nhà nước đã điều chỉnh giảm lãi suất, với mức giảm phổ biến 0,5 điểm phần trăm, một số ngân hàng giảm tới 0,7 điểm phần trăm. Theo thống kê đến ngày 28/10, hơn 20 ngân hàng thương mại cổ phần và 4 ngân hàng thương mại nhà nước đã điều chỉnh giảm lãi suất, với mức giảm phổ biến 0,5 điểm phần trăm, một số ngân hàng giảm tới 0,7 điểm phần trăm. VPBank tiếp tục giảm lãi suất tiền gửi trực tuyến đối với các kỳ hạn 6-13 tháng. Với khoản tiền gửi dưới 10 tỉ đồng, lãi suất kỳ hạn 6-11 tháng giảm còn 6,6%/năm, kỳ hạn 12-13 tháng còn 6,7%/năm. Ngân hàng giữ mức cao nhất 7,4%/năm tại kỳ hạn 15-18 tháng và 7,1%/năm tại kỳ hạn 24 tháng. LPBank giảm 0,1-0,6 điểm phần trăm, đưa lãi suất cao nhất về 6,7%/năm. VietBank giảm 0,5 điểm phần trăm tại các kỳ hạn 6-36 tháng, còn tối đa 5,9%/năm. NCB giảm tới 0,6 điểm phần trăm, đưa lãi suất cao nhất về 6,2%/năm. OCB và Bac A Bank cùng giảm 0,5 điểm phần trăm, với mức cao nhất lần lượt là 6,8% và 6,6%/năm. BVBank, KienlongBank, Sacombank, MBV và ABBank cũng giảm 0,5 điểm phần trăm tại nhiều kỳ hạn. Techcombank giảm 0,1-0,5 điểm phần trăm, đưa lãi suất Phát Lộc Online cao nhất về 6,65%/năm, riêng khách hàng PRIVATE có thể hưởng 6,8%/năm tại kỳ hạn 12 tháng. SeABank giảm tới 0,7 điểm phần trăm tại các kỳ hạn 18-36 tháng, đưa lãi suất về 4,75%/năm. Saigonbank giảm 0,5 điểm phần trăm tại các kỳ hạn 6-12 tháng và 18-36 tháng, nhưng vẫn giữ mức 7,9%/năm đối với kỳ hạn 13 tháng. Cake by VPBank giảm 0,3-0,5 điểm phần trăm tại các kỳ hạn 6-24 tháng. Với chương trình cộng thêm 2,2%/năm dành cho khách hàng đủ điều kiện, lãi suất cao nhất còn 9,1%/năm, thay vì 9,6%/năm như trước. Dưới đây là bảng thống kê lãi suất gửi tiền tiết kiệm có kỳ hạn theo phương thức online với lãi nhận cuối kỳ của hơn 30 ngân hàng tại Việt Nam, được cập nhật tại thời điểm tháng 10/2026: Ngân hàng 1 tháng 3 tháng 6 tháng 12 tháng 18 tháng 24 tháng 36 tháng Techcombank 4.15 Tham khảo: Biểu phí, lãi suất 4.45 Tham khảo: Biểu phí, lãi suất 5.15 Tham khảo: Biểu phí, lãi suất 5.35 Tham khảo: Biểu phí, lãi suất 5.85 Tham khảo: Biểu phí, lãi suất 5.85 Tham khảo: Biểu phí, lãi suất 5.85 Tham khảo: Biểu phí, lãi suất VPBank 4.75 4.75 6.75 6.75 7.1 7.1 6.0 TPBank 4.75 4.75 6.0 6.2 6.2 6.3 6.3 SeABank 3.95 4.45 4.8 5.25 5.25 5.25 5.25 VIB 4.4 4.5 5.7 7.0 5.9 6.0 6.0 Vietcombank 2.1 2.4 3.5 5.9 5.9 6.0 6.0 VietinBank 4.8 4.8 6.6 6.8 5.9 6.0 6.0 Agribank 4.75 4.75 6.6 6.8 6.8 6.8 6.8 BIDV 4.8 4.8 7.2 7.4 6.6 6.8 6.8 MBBank 4.5 4.65 5.7 6.3 6.3 7.0 7.0 ACB 4.6 4.75 5.0 5.8 5.8 5.8 5.8 ABBank 3.8 4.0 6.25 6.25 5.8 5.8 5.8 MSB 4.8 4.8 6.3 6.8 6.6 6.6 6.1 LPBank 4.4 4.65 7.0 7.2 7.15 7.2 6.1 GPBank 3.6 3.7 5.25 5.55 5.55 5.55 5.55 Eximbank 4.6 4.7 5.4 5.6 5.3 5.3 5.3 Kienlongbank 4.2 4.2 5.5 5.5 5.15 5.15 5.15 SCB 1.6 1.9 2.9 3.7 3.9 3.9 3.9 SHB 4.75 4.75 7.7 7.8 6.6 6.7 6.7 PVcomBank 4.75 4.75 5.3 5.6 6.3 6.3 6.3 Saigonbank 4.75 4.75 6.9 7.2 7.0 6.5 6.6 VietBank 4.6 4.6 5.9 6.1 6.4 6.4 6.4 HDBank 4.2 4.3 5.0 5.3 5.6 5.0 5.0 VietABank 4.7 4.8 6.0 6.1 6.2 6.3 6.3 NamABank 4.6 4.7 6.4 6.6 6.8 6.9 6.6 Vikki Bank 4.7 4.7 6.0 6.1 6.1 6.1 6.1 BAOVIET Bank 4.8 4.75 6.4 6.5 6.5 6.5 6.5 Viet Capital Bank (BVBANK) 4.75 4.75 6.7 6.9 6.7 6.7 6.7 PG Bank 4.75 4.75 6.9 7.0 6.8 6.8 6.8 BacABank 4.75 4.75 7.05 7.1 7.1 7.1 7.1 NCB 4.6 4.75 6.1 6.3 6.7 6.8 6.8 CBBank 4.75 4.75 7.0 7.0 7.0 7.0 7.0 OCB 4.75 4.75 6.7 7.0 6.6 6.8 7.0 OceanBank 4.6 4.75 7.0 7.0 7.0 7.0 7.0 Vietnam+ (TTXVN) Link gốc",
+      "attachments": [],
+      "crawled_at": "2026-10-29T07:47:33.601846+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008629441624365481,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/tcb-3007214/tcb-nghi-quyet-hdqt-so-0586-ngay-26102026.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "5530eb4d26a084a3d623",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/tcb-nghi-quyet-hdqt-so-0593-ngay-28-10-2026/42510185",
+      "title": "TCB: Nghị quyết HĐQT số 0593 ngày 28/10/2026",
+      "description": "TCB: Nghị quyết HĐQT số 0593 ngày 28/10/2026",
+      "published_at": "2026-10-28T18:07:00+07:00",
+      "symbols": [
+        "TCB"
+      ],
+      "provider_id": "42510185",
+      "category": "Doanh nghiệp",
+      "content": "Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam công bố Nghị quyết HĐQT số 0593 ngày 28/10/2026 như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1918967"
+      ],
+      "crawled_at": "2026-10-29T07:47:33.849758+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.48124999999999996,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/tcb-3007214/tcb-nghi-quyet-hdqt-so-0586-ngay-26102026.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "bf663fe07d96793dfd0b",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban/42510093",
+      "title": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+      "description": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+      "published_at": "2026-10-28T18:15:11+07:00",
+      "symbols": [
+        "TCB"
+      ],
+      "provider_id": "42510093",
+      "category": "Doanh nghiệp",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản của Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1918965"
+      ],
+      "crawled_at": "2026-10-29T07:47:34.887436+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7648936170212767,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/tcb-3009025/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "9b4ee7c2293d5e5f0ac7",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/tcb-quyet-dinh-hdqt-ve-bo-nhiem-ptgd-ba-phan-thi-hai-yen/42510090",
+      "title": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+      "description": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+      "published_at": "2026-10-28T18:08:35+07:00",
+      "symbols": [
+        "TCB"
+      ],
+      "provider_id": "42510090",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Chứng khoán Kỹ Thương công bố Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1918962"
+      ],
+      "crawled_at": "2026-10-29T07:47:35.134528+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.734375,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/tcb-3009016/tcb-quyet-dinh-hdqt-ve-bo-nhiem-ptgd-ba-phan-thi-hai-yen.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "16e64a86025827f1e63d",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptgd-kem-quyet-dinh/42510086",
+      "title": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+      "description": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+      "published_at": "2026-10-28T18:10:19+07:00",
+      "symbols": [
+        "TCB"
+      ],
+      "provider_id": "42510086",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Chứng khoán Kỹ Thương thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định) như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1918958"
+      ],
+      "crawled_at": "2026-10-29T07:47:35.445781+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7073770491803278,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/tcb-3009020/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptgd-kem-quyet-dinh.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "0e9ab9bdf265f2e108b7",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/lai-suat-ngan-hang-hom-nay-28-10-dong-loat-dieu-chinh/42491746",
+      "title": "Lãi suất ngân hàng hôm nay 28.10: Đồng loạt điều chỉnh",
+      "description": "Lãi suất ngân hàng hôm nay 28.10: Hơn 20 ngân hàng điều chỉnh lãi suất. Tổng hợp lãi suất tiết kiệm hơn 30 ngân hàng mới nhất.",
+      "published_at": "2026-10-28T09:26:00+07:00",
+      "symbols": [
+        "ABB",
+        "BAB",
+        "LPB",
+        "SSB",
+        "STB",
+        "TCB",
+        "VPB"
+      ],
+      "provider_id": "42491746",
+      "category": "Tài chính",
+      "content": "Lãi suất ngân hàng hôm nay 28.10: Hơn 20 ngân hàng điều chỉnh lãi suất. Tổng hợp lãi suất tiết kiệm hơn 30 ngân hàng mới nhất. Top ngân hàng có lãi suất cao nhất hiện nay. Lãi suất tại Cake by VPBank đã cộng cả 2,2%/năm mức lãi ngân hàng cộng thêm cho khách hàng khi gửi tiết kiệm lần đầu, thời gian áp dụng từ ngày 22.9 đến hết ngày 31.10.2026. Ảnh đồ họa có sử dụng AI Làn sóng giảm lãi suất huy động tiếp tục lan rộng tại các ngân hàng thương mại. Theo thống kê đến ngày 28.10, hơn 20 ngân hàng thương mại cổ phần và 4 ngân hàng thương mại nhà nước đã điều chỉnh giảm lãi suất, với mức giảm phổ biến 0,5 điểm phần trăm, một số ngân hàng giảm tới 0,7 điểm phần trăm. Mới nhất, VPBank tiếp tục giảm lãi suất tiền gửi trực tuyến đối với các kỳ hạn 6-13 tháng. Với khoản tiền gửi dưới 10 tỉ đồng, lãi suất kỳ hạn 6-11 tháng giảm còn 6,6%/năm, kỳ hạn 12-13 tháng còn 6,7%/năm. Ngân hàng giữ mức cao nhất 7,4%/năm tại kỳ hạn 15-18 tháng và 7,1%/năm tại kỳ hạn 24 tháng. Trước đó, LPBank giảm 0,1-0,6 điểm phần trăm, đưa lãi suất cao nhất về 6,7%/năm; VietBank giảm 0,5 điểm phần trăm tại các kỳ hạn 6-36 tháng, còn tối đa 5,9%/năm. NCB giảm tới 0,6 điểm phần trăm, đưa lãi suất cao nhất về 6,2%/năm. OCB và Bac A Bank cùng giảm 0,5 điểm phần trăm, với mức cao nhất lần lượt là 6,8% và 6,6%/năm. BVBank, KienlongBank, Sacombank, MBV và ABBank cũng giảm 0,5 điểm phần trăm tại nhiều kỳ hạn. Techcombank giảm 0,1-0,5 điểm phần trăm, đưa lãi suất Phát Lộc Online cao nhất về 6,65%/năm, riêng khách hàng PRIVATE có thể hưởng 6,8%/năm tại kỳ hạn 12 tháng. SeABank giảm tới 0,7 điểm phần trăm tại các kỳ hạn 18-36 tháng, đưa lãi suất về 4,75%/năm. Saigonbank giảm 0,5 điểm phần trăm tại các kỳ hạn 6-12 tháng và 18-36 tháng, nhưng vẫn giữ mức 7,9%/năm đối với kỳ hạn 13 tháng. Cake by VPBank giảm 0,3-0,5 điểm phần trăm tại các kỳ hạn 6-24 tháng. Với chương trình cộng thêm 2,2%/năm dành cho khách hàng đủ điều kiện, lãi suất cao nhất còn 9,1%/năm, thay vì 9,6%/năm như trước. Dù mặt bằng lãi suất huy động giảm trên diện rộng, một số ngân hàng vẫn niêm yết mức từ 7%/năm trở lên. Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng. Tương tự, VIB niêm yết lãi suất 7%/năm tại kỳ hạn 12 tháng, còn PGBank áp dụng mức này cho kỳ hạn 12-13 tháng. Ngoài lãi suất niêm yết, một số ngân hàng vẫn triển khai chương trình cộng thêm lãi suất, đưa mức thực nhận vượt 8%/năm đối với khách hàng đáp ứng điều kiện ưu đãi. So sánh lãi suất ngân hàng cao nhất kỳ hạn 3 tháng So sánh lãi suất ngân hàng cao nhất ở kỳ hạn 3 tháng. Đồ họa: Hà Vy Lãi suất tiết kiệm ngân hàng kỳ hạn 6 tháng cao nhất hiện nay So sánh lãi suất ngân hàng cao nhất ở kỳ hạn 6 tháng. Đồ họa: Hà Vy Gửi tiết kiệm 12 tháng, ngân hàng nào có lãi suất cao nhất? So sánh lãi suất ngân hàng cao nhất ở kỳ hạn 12 tháng. Đồ họa: Hà Vy Lãi suất ngân hàng cao nhất ở kỳ hạn 24 tháng So sánh lãi suất ngân hàng cao nhất ở kỳ hạn 24 tháng. Đồ họa: Hà Vy Thông tin về lãi suất chỉ mang tính chất tham khảo và có thể thay đổi trong từng thời kỳ. Vui lòng liên hệ điểm giao dịch ngân hàng gần nhất hoặc hotline để được tư vấn cụ thể. Hà Vy Link gốc",
+      "attachments": [],
+      "crawled_at": "2026-10-29T07:47:35.695666+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008762886597938144,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/tcb-3007214/tcb-nghi-quyet-hdqt-so-0586-ngay-26102026.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    },
+    {
+      "id": "93ab9ad1d11504623890",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/lo-dien-nhung-ngan-hang-tu-nhan-lai-lon-nhat-9-thang-dau-nam-2026/42489695",
+      "title": "Lộ diện những ngân hàng tư nhân lãi lớn nhất 9 tháng đầu năm 2026",
+      "description": "VPBank, Techcombank, ACB, SHB và LPBank tạm thời là những ngân hàng dẫn đầu về lợi nhuận trước thuế trong nhóm ngân hàng đã công bố kết quả kinh doanh 9 tháng đầu năm 2026.",
+      "published_at": "2026-10-28T08:50:00+07:00",
+      "symbols": [
+        "LPB",
+        "TCB",
+        "VPB"
+      ],
+      "provider_id": "42489695",
+      "category": "Tài chính",
+      "content": "VPBank, Techcombank, ACB, SHB và LPBank tạm thời là những ngân hàng dẫn đầu về lợi nhuận trước thuế trong nhóm ngân hàng đã công bố kết quả kinh doanh 9 tháng đầu năm 2026. Tính đến sáng 28/10, đã có 15 ngân hàng công bố kết quả kinh doanh 9 tháng đầu năm 2026. Bức tranh lợi nhuận cho thấy sự phân hóa đáng kể giữa các nhà băng, cả về quy mô thu nhập lẫn tốc độ tăng trưởng so với cùng kỳ. VPBank dẫn đầu, Techcombank bám sát Đứng đầu danh sách là Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank, mã chứng khoán: VPB ) , với lợi nhuận trước thuế hợp nhất 9 tháng đầu năm đạt gần 30.000 tỷ đồng, tăng gần 47% so với cùng kỳ năm trước. Động lực tăng trưởng đến từ sự mở rộng của hoạt động tín dụng cùng đóng góp tích cực của các nguồn thu ngoài lãi. Thu nhập lãi thuần hợp nhất đạt gần 53.100 tỷ đồng, tăng 26,7%; lãi thuần từ hoạt động dịch vụ tăng 76,3%, nhờ đóng góp từ các mảng thanh toán, bảo hiểm và ngân hàng đầu tư. Nhờ đó, tổng thu nhập hoạt động (TOI) hợp nhất đạt gần 65.500 tỷ đồng, tăng 25,3% so với cùng kỳ. Riêng quý III, lợi nhuận trước thuế của VPBank đạt hơn 11.000 tỷ đồng, mức lợi nhuận theo quý cao nhất trong lịch sử hoạt động của ngân hàng. Tại ngày 30/9/2026, tổng tài sản hợp nhất của VPBank vượt 1,6 triệu tỷ đồng, tăng 27,8% so với cuối năm 2025. Dư nợ cấp tín dụng riêng lẻ đạt 1,1 triệu tỷ đồng, tăng gần 30%. Xếp thứ hai là Ngân hàng TMCP Kỹ thương Việt Nam (Techcombank, mã chứng khoán: TCB ) , với lợi nhuận trước thuế 9 tháng đạt 28.900 tỷ đồng, tăng 23,7% so với cùng kỳ. Tổng thu nhập hoạt động của Techcombank đạt 45.200 tỷ đồng, tăng 17,1%. Riêng quý III, lợi nhuận trước thuế đạt 10.400 tỷ đồng, tăng 25,8%. Các chỉ số sinh lời tiếp tục duy trì ở mức tích cực. Tỷ suất lợi nhuận trên vốn chủ sở hữu (ROE) trong 12 tháng gần nhất đạt 16,3%, trong khi tỷ suất lợi nhuận trên tổng tài sản (ROA) đạt 2,5%. Tổng tài sản của Techcombank tại cuối tháng 9 đạt khoảng 1,3 triệu tỷ đồng. Dư nợ tín dụng doanh nghiệp đạt 542.400 tỷ đồng, tăng 20% so với đầu năm, chủ yếu nhờ hoạt động giải ngân cho các dự án hạ tầng quy mô lớn. Với kết quả trên, VPBank đang tạo khoảng cách hơn 1.000 tỷ đồng so với Techcombank về lợi nhuận trước thuế lũy kế 9 tháng đầu năm. Hai ngân hàng đồng thời là những cái tên nổi bật nhất về quy mô lợi nhuận trong nhóm tư nhân đã công bố số liệu. ACB, SHB và LPBank cùng lãi trên 10.000 tỷ đồng Đứng thứ ba trong danh sách là Ngân hàng TMCP Á Châu (ACB, mã chứng khoán: ACB) , với lợi nhuận trước thuế hơn 16.600 tỷ đồng sau 9 tháng, tăng hơn 3% so với cùng kỳ và hoàn thành 74% kế hoạch cả năm. Riêng quý III, lợi nhuận trước thuế của ACB đạt gần 5.900 tỷ đồng, tăng 9% so với cùng kỳ. Lũy kế 9 tháng, tổng thu nhập hoạt động đạt gần 28.000 tỷ đồng, tăng hơn 9%. Trong đó, thu nhập lãi thuần đạt hơn 23.000 tỷ đồng, tăng hơn 16%; thu nhập thuần từ hoạt động dịch vụ đạt hơn 2.600 tỷ đồng, tăng 16%. Dư nợ cho vay khách hàng tại cuối tháng 9 đạt khoảng 765.000 tỷ đồng, tăng 11,5% so với đầu năm. Xếp ngay sau ACB là Ngân hàng TMCP Sài Gòn – Hà Nội (SHB, mã chứng khoán: SHB) , với lợi nhuận trước thuế sơ bộ ước đạt 14.300 tỷ đồng, tăng 17% so với cùng kỳ và hoàn thành 81% kế hoạch năm. Tại ngày 30/9, tổng tài sản của SHB đạt khoảng 990.000 tỷ đồng, tăng 11,4% so với đầu năm. Huy động vốn trên thị trường 1 đạt 720.000 tỷ đồng, tăng 12,2%, trong khi dư nợ tín dụng đạt 680.000 tỷ đồng, tăng 9,52%. Đứng thứ năm là Ngân hàng TMCP Lộc Phát Việt Nam (LPBank, mã chứng khoán: LPB ) , với lợi nhuận trước thuế 9 tháng đạt 10.421 tỷ đồng, tăng gần 9% so với cùng kỳ và hoàn thành khoảng 70% kế hoạch năm. Riêng quý III, LPBank ghi nhận lợi nhuận trước thuế 4.448 tỷ đồng, tăng 29%. Tổng thu nhập hoạt động trong 9 tháng đạt 19.179 tỷ đồng, tăng 29%; thu thuần ngoài lãi đạt 7.489 tỷ đồng, chiếm 39% tổng thu nhập hoạt động. Tại cuối quý III, tổng tài sản của LPBank đạt 694.183 tỷ đồng, tăng 29% so với cùng kỳ năm trước. Dư nợ cho vay khách hàng đạt 481.570 tỷ đồng, tăng 23% so với cuối năm 2025. Như vậy, trong nhóm 15 ngân hàng đã công bố kết quả kinh doanh, có 5 nhà băng ghi nhận lợi nhuận trước thuế trên 10.000 tỷ đồng. Đây cũng là nhóm dẫn đầu về quy mô lợi nhuận, dù tốc độ tăng trưởng và mức độ hoàn thành kế hoạch năm có sự khác biệt. Sacombank, Nam A Bank, ABBank và OCB ghi nhận lợi nhuận hàng nghìn tỷ đồng Ở vị trí thứ sáu, Ngân hàng TMCP Sài Gòn Thương Tín (Sacombank, mã chứng khoán: STB) ghi nhận lợi nhuận trước thuế 5.893 tỷ đồng trong 9 tháng đầu năm, giảm 46,4% so với cùng kỳ năm trước và hoàn thành 73% kế hoạch năm. Riêng quý III, lợi nhuận trước thuế của Sacombank đạt 1.757 tỷ đồng, giảm 52% so với cùng kỳ. Đà suy giảm chủ yếu đến từ áp lực chi phí dự phòng rủi ro tín dụng tăng mạnh, trong khi thu nhập lãi thuần đi xuống. Tại ngày 30/9, tổng tài sản hợp nhất của ngân hàng đạt khoảng 1,057 triệu tỷ đồng, tăng 15,3% so với đầu năm. Dư nợ cho vay khách hàng đạt 682.457 tỷ đồng, trong khi tiền gửi khách hàng đạt 775.422 tỷ đồng. Đứng thứ bảy là Ngân hàng TMCP Nam Á (Nam A Bank) , với lợi nhuận trước thuế hơn 4.700 tỷ đồng, tăng 25% so với cùng kỳ và hoàn thành gần 80% kế hoạch năm. Tổng tài sản của Nam A Bank tại cuối tháng 9 tiệm cận 465.000 tỷ đồng. Tổng huy động từ tổ chức kinh tế, dân cư và phát hành giấy tờ có giá đạt gần 254.000 tỷ đồng, tăng gần 20% so với cuối năm 2025. Về chất lượng tài sản, tỷ lệ nợ xấu trước CIC ở mức khoảng 1,5%, giảm 1,1 điểm % so với cùng kỳ năm trước. Tỷ lệ an toàn vốn (CAR) đạt 11,3%, cao hơn mức tối thiểu 8% theo quy định. Xếp thứ tám là Ngân hàng TMCP An Bình (ABBank) , với lợi nhuận trước thuế 9 tháng đạt 4.301 tỷ đồng, hoàn thành gần 96% kế hoạch cả năm. Tổng thu nhập hoạt động của ABBank đạt khoảng 7.803 tỷ đồng, tăng 48% so với cùng kỳ. Chi phí hoạt động tăng 21%, thấp hơn tốc độ tăng thu nhập, giúp tỷ lệ chi phí trên thu nhập (CIR) giảm từ 33% xuống 27%. Tại ngày 30/9, tổng tài sản của ABBank đạt hơn 276.000 tỷ đồng. Dư nợ cho vay khách hàng đạt 134.592 tỷ đồng, trong khi tiền gửi khách hàng đạt 152.913 tỷ đồng. Đứng thứ chín là Ngân hàng TMCP Phương Đông (OCB) , với lợi nhuận trước thuế 4.123 tỷ đồng sau 9 tháng, tăng hơn 20% so với cùng kỳ và hoàn thành 59% kế hoạch năm. Tổng thu thuần của OCB đạt hơn 9.219 tỷ đồng, tăng 17,5%. Trong đó, thu thuần từ lãi đạt 7.676 tỷ đồng, tăng 13,4%; thu nhập ngoài lãi tăng 43%, nhờ sự cải thiện của hoạt động dịch vụ, kinh doanh ngoại hối và chứng khoán. Nhóm ngân hàng quy mô nhỏ: BVBank vượt kế hoạch năm Trong nhóm ngân hàng có lợi nhuận dưới 2.000 tỷ đồng, Ngân hàng TMCP Kiên Long (Kienlongbank, mã chứng khoán: KLB) đứng đầu với lợi nhuận trước thuế 1.713 tỷ đồng, tăng 11,5% so với cùng kỳ và hoàn thành 66% kế hoạch năm. Tại ngày 30/9, tổng tài sản của Kienlongbank đạt 115.968 tỷ đồng, tăng 12,3% so với đầu năm. Tiền gửi khách hàng đạt 81.827 tỷ đồng, tăng 13,6%, trong khi dư nợ cho vay khách hàng đạt 78.465 tỷ đồng, tăng 9,6%. Đứng tiếp theo là Ngân hàng TMCP Việt Nam Thương Tín (VietBank) , với lợi nhuận trước thuế riêng lẻ tạm tính đạt 1.297 tỷ đồng, tăng 50% so với cùng kỳ năm trước. Trong 9 tháng, thu nhập lãi thuần của VietBank đạt 2.470 tỷ đồng, tăng 12%. Lãi từ chứng khoán đầu tư đạt 79 tỷ đồng, cao gấp 3,7 lần cùng kỳ; lãi từ kinh doanh ngoại hối đạt 99 tỷ đồng, tăng 30%, còn thu nhập thuần từ dịch vụ đạt 129 tỷ đồng, tăng 7%. Ngân hàng TMCP Việt Á (VietABank, mã chứng khoán: VAB) ghi nhận lợi nhuận trước thuế 1.191 tỷ đồng, tăng 13,42% so với cùng kỳ và hoàn thành 61% kế hoạch năm. Tổng tài sản của VietABank tại ngày 30/9 đạt 156.490 tỷ đồng, tăng 16,25% so với cùng kỳ năm trước. Nguồn vốn huy động đạt 116.010 tỷ đồng, trong khi dư nợ cho vay đạt 96.680 tỷ đồng. Tỷ lệ nợ xấu được kiểm soát ở mức 1,38%. Đáng chú ý, Ngân hàng TMCP Bản Việt (BVBank, mã chứng khoán: BVB) ghi nhận lợi nhuận trước thuế hơn 825 tỷ đồng trong 9 tháng, tăng 90% so với cùng kỳ năm trước. Với kế hoạch lợi nhuận trước thuế cả năm 2026 là 700 tỷ đồng, BVBank đã hoàn thành khoảng 118% mục tiêu sau 3 quý, tương đương vượt kế hoạch khoảng 18%. Tổng thu nhập hoạt động của BVBank đạt hơn 2.800 tỷ đồng, tăng 36%. Trong đó, thu nhập lãi thuần đạt hơn 2.600 tỷ đồng, tăng 40%; thu nhập ngoài lãi đạt 228 tỷ đồng, tăng 28%. Tại ngày 30/9, tổng tài sản của ngân hàng đạt hơn 145.200 tỷ đồng, tăng 9,2% so với đầu năm. Dư nợ tín dụng đạt hơn 85.540 tỷ đồng, tăng 9,3%, trong khi tổng huy động vốn đạt hơn 134.000 tỷ đồng, tăng 8,7%. Xếp dưới BVBank là Ngân hàng TMCP Thịnh vượng và Phát triển (PGBank) , với lợi nhuận trước thuế 630 tỷ đồng, tăng 27% so với cùng kỳ năm trước. Tổng tài sản của PGBank tại cuối tháng 9 đạt 92.637 tỷ đồng, tăng 4,3% so với cuối năm 2025. Dư nợ cho vay khách hàng tăng 7,1%, tiền gửi khách hàng tăng 5,8%. Đáng chú ý, tiền gửi không kỳ hạn (CASA) tăng 32%. Đứng cuối danh sách là Ngân hàng TMCP Sài Gòn Công Thương (Saigonbank, mã chứng khoán: SGB) , với lợi nhuận trước thuế gần 66 tỷ đồng sau 9 tháng, giảm gần 75% so với cùng kỳ và mới hoàn thành 21% kế hoạch lợi nhuận năm. Riêng quý III, lợi nhuận trước thuế của Saigonbank đạt 17,8 tỷ đồng, giảm gần 80% so với cùng kỳ. Kết quả này chịu ảnh hưởng từ sự suy giảm của các mảng dịch vụ, ngoại hối và chi phí hoạt động tăng. Quang Hưng Link gốc",
+      "attachments": [],
+      "crawled_at": "2026-10-29T07:47:35.956743+00:00",
+      "matched_symbols": [
+        "TCB"
+      ],
+      "scopes": [
+        "TCB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.042391304347826085,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/techcombank-nhan-giai-ngan-hang-tot-nhat-viet-nam-nam-thu-3-lien-tiep-tu-global-finance-tiep-tuc-chuoi-hat-trick-tu-3-to-chuc-danh-gia-the-gioi-188261021103654366.chn",
+        "matched_file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:55:10.401010+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:47:35.956743+00:00",
+    "results": [
+      {
+        "source": "fireant",
+        "scope": "TCB",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

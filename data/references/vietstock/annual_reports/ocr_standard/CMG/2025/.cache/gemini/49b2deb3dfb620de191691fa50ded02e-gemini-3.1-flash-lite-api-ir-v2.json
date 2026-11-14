@@ -1,0 +1,919 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "3. Tình hình tài chính năm 2025",
+      "box_2d": [
+        100,
+        115,
+        112,
+        425
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "3.1. Tài sản và Nguồn vốn:",
+      "box_2d": [
+        124,
+        115,
+        136,
+        395
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        157,
+        129,
+        311,
+        913
+      ],
+      "title": "ĐVT: triệu đồng",
+      "unit_text": "triệu đồng",
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Chỉ tiêu"
+          ],
+          "box_2d": [
+            157,
+            129,
+            175,
+            403
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Năm 2025"
+          ],
+          "box_2d": [
+            157,
+            403,
+            175,
+            581
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Năm 2024"
+          ],
+          "box_2d": [
+            157,
+            581,
+            175,
+            759
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Tăng / Giảm"
+          ],
+          "box_2d": [
+            157,
+            759,
+            175,
+            913
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Tài sản",
+          "note": null,
+          "box_2d": [
+            175,
+            129,
+            193,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "10.451.931",
+              "box_2d": [
+                175,
+                403,
+                193,
+                581
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "7.677.055",
+              "box_2d": [
+                175,
+                581,
+                193,
+                759
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "36%",
+              "box_2d": [
+                175,
+                759,
+                193,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ngắn hạn",
+          "note": null,
+          "box_2d": [
+            193,
+            129,
+            211,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "5.839.626",
+              "box_2d": [
+                193,
+                403,
+                211,
+                581
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "3.791.499",
+              "box_2d": [
+                193,
+                581,
+                211,
+                759
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "54%",
+              "box_2d": [
+                193,
+                759,
+                211,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Dài hạn",
+          "note": null,
+          "box_2d": [
+            211,
+            129,
+            229,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "4.612.305",
+              "box_2d": [
+                211,
+                403,
+                229,
+                581
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "3.885.556",
+              "box_2d": [
+                211,
+                581,
+                229,
+                759
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "19%",
+              "box_2d": [
+                211,
+                759,
+                229,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Nguồn vốn",
+          "note": null,
+          "box_2d": [
+            229,
+            129,
+            247,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "10.451.931",
+              "box_2d": [
+                229,
+                403,
+                247,
+                581
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "7.677.055",
+              "box_2d": [
+                229,
+                581,
+                247,
+                759
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "36%",
+              "box_2d": [
+                229,
+                759,
+                247,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Nợ ngắn hạn",
+          "note": null,
+          "box_2d": [
+            247,
+            129,
+            265,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "3.975.887",
+              "box_2d": [
+                247,
+                403,
+                265,
+                581
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "3.056.272",
+              "box_2d": [
+                247,
+                581,
+                265,
+                759
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "30%",
+              "box_2d": [
+                247,
+                759,
+                265,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Nợ dài hạn",
+          "note": null,
+          "box_2d": [
+            265,
+            129,
+            283,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "2.388.668",
+              "box_2d": [
+                265,
+                403,
+                283,
+                581
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "943.267",
+              "box_2d": [
+                265,
+                581,
+                283,
+                759
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "153%",
+              "box_2d": [
+                265,
+                759,
+                283,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Vốn chủ sở hữu",
+          "note": null,
+          "box_2d": [
+            283,
+            129,
+            311,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "4.087.376",
+              "box_2d": [
+                283,
+                403,
+                311,
+                581
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "3.677.516",
+              "box_2d": [
+                283,
+                581,
+                311,
+                759
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "11%",
+              "box_2d": [
+                283,
+                759,
+                311,
+                913
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "3.2. Các chỉ tiêu tài chính chủ yếu:",
+      "box_2d": [
+        333,
+        115,
+        345,
+        472
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        348,
+        129,
+        718,
+        913
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Chỉ tiêu"
+          ],
+          "box_2d": [
+            348,
+            129,
+            376,
+            571
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Năm 2025"
+          ],
+          "box_2d": [
+            348,
+            571,
+            376,
+            742
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Năm 2024"
+          ],
+          "box_2d": [
+            348,
+            742,
+            376,
+            913
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Chỉ tiêu về khả năng thanh toán",
+          "note": null,
+          "box_2d": [
+            376,
+            129,
+            397,
+            913
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Hệ số thanh toán ngắn hạn",
+          "note": null,
+          "box_2d": [
+            397,
+            129,
+            418,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "1,47",
+              "box_2d": [
+                397,
+                571,
+                418,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "1,24",
+              "box_2d": [
+                397,
+                742,
+                418,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Hệ số thanh toán nhanh",
+          "note": null,
+          "box_2d": [
+            418,
+            129,
+            439,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "1,41",
+              "box_2d": [
+                418,
+                571,
+                439,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "1,15",
+              "box_2d": [
+                418,
+                742,
+                439,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Chỉ tiêu về cơ cấu vốn",
+          "note": null,
+          "box_2d": [
+            439,
+            129,
+            460,
+            913
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Hệ số Nợ/Tổng tài sản",
+          "note": null,
+          "box_2d": [
+            460,
+            129,
+            481,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "0,61",
+              "box_2d": [
+                460,
+                571,
+                481,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "0,52",
+              "box_2d": [
+                460,
+                742,
+                481,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Hệ số Nợ/Vốn chủ sở hữu",
+          "note": null,
+          "box_2d": [
+            481,
+            129,
+            502,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "1,56",
+              "box_2d": [
+                481,
+                571,
+                502,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "1,09",
+              "box_2d": [
+                481,
+                742,
+                502,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Chỉ tiêu về năng lực hoạt động",
+          "note": null,
+          "box_2d": [
+            502,
+            129,
+            523,
+            913
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Vòng quay hàng tồn kho",
+          "note": null,
+          "box_2d": [
+            523,
+            129,
+            544,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "42,85",
+              "box_2d": [
+                523,
+                571,
+                544,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "32,45",
+              "box_2d": [
+                523,
+                742,
+                544,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Vòng quay khoản phải thu",
+          "note": null,
+          "box_2d": [
+            544,
+            129,
+            565,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "6,43",
+              "box_2d": [
+                544,
+                571,
+                565,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "6,79",
+              "box_2d": [
+                544,
+                742,
+                565,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Doanh thu thuần/Tổng tài sản",
+          "note": null,
+          "box_2d": [
+            565,
+            129,
+            586,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "1,10",
+              "box_2d": [
+                565,
+                571,
+                586,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "1,13",
+              "box_2d": [
+                565,
+                742,
+                586,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Chỉ tiêu về khả năng sinh lời",
+          "note": null,
+          "box_2d": [
+            586,
+            129,
+            607,
+            913
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Tỷ lệ Lợi nhuận sau thuế/Doanh thu thuần %",
+          "note": null,
+          "box_2d": [
+            607,
+            129,
+            628,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "5,41%",
+              "box_2d": [
+                607,
+                571,
+                628,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "5,21%",
+              "box_2d": [
+                607,
+                742,
+                628,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Tỷ lệ Lợi nhuận sau thuế/Vốn điều lệ %",
+          "note": null,
+          "box_2d": [
+            628,
+            129,
+            649,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "22,19%",
+              "box_2d": [
+                628,
+                571,
+                649,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "20,21%",
+              "box_2d": [
+                628,
+                742,
+                649,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Tỷ lệ Lợi nhuận sau thuế/Vốn chủ sở hữu %",
+          "note": null,
+          "box_2d": [
+            649,
+            129,
+            670,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "12,64%",
+              "box_2d": [
+                649,
+                571,
+                670,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "11,61%",
+              "box_2d": [
+                649,
+                742,
+                670,
+                913
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Tỷ lệ Lợi nhuận sau thuế/Tổng tài sản %",
+          "note": null,
+          "box_2d": [
+            670,
+            129,
+            718,
+            913
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "4,94%",
+              "box_2d": [
+                670,
+                571,
+                718,
+                742
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "5,56%",
+              "box_2d": [
+                670,
+                742,
+                718,
+                913
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Cơ cấu cổ đông, thay đổi vốn đầu tư của chủ sở hữu:",
+      "box_2d": [
+        728,
+        115,
+        740,
+        675
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "4.1. Cổ phần:\n- Tổng số cổ phần đã phát hành: 232.954.608 cổ phiếu.\n- Số cổ phần chuyển nhượng tự do: 232.098.008 cổ phiếu.\n- Số cổ phần hạn chế chuyển nhượng: 856.600 cổ phiếu.\n- Số cổ phần đang lưu hành: 232.900.908 cổ phiếu.\n- Số cổ phiếu quỹ: 53,700 cổ phiếu.\n4.2. Cơ cấu cổ đông:\n* Số liệu căn cứ theo danh sách cổ đông lập ngày 15/01/2026:",
+      "box_2d": [
+        752,
+        115,
+        901,
+        705
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "33",
+      "box_2d": [
+        924,
+        907,
+        936,
+        925
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "3. Tình hình tài chính năm 2025\n3.1. Tài sản và Nguồn vốn:\nĐVT: triệu đồng\ntriệu đồng\nChỉ tiêu\nNăm 2025\nNăm 2024\nTăng / Giảm\n1 Tài sản 10.451.931 7.677.055 36%\nNgắn hạn 5.839.626 3.791.499 54%\nDài hạn 4.612.305 3.885.556 19%\n2 Nguồn vốn 10.451.931 7.677.055 36%\nNợ ngắn hạn 3.975.887 3.056.272 30%\nNợ dài hạn 2.388.668 943.267 153%\nVốn chủ sở hữu 4.087.376 3.677.516 11%\n3.2. Các chỉ tiêu tài chính chủ yếu:\nChỉ tiêu\nNăm 2025\nNăm 2024\n1 Chỉ tiêu về khả năng thanh toán\nHệ số thanh toán ngắn hạn 1,47 1,24\nHệ số thanh toán nhanh 1,41 1,15\n2 Chỉ tiêu về cơ cấu vốn\nHệ số Nợ/Tổng tài sản 0,61 0,52\nHệ số Nợ/Vốn chủ sở hữu 1,56 1,09\n3 Chỉ tiêu về năng lực hoạt động\nVòng quay hàng tồn kho 42,85 32,45\nVòng quay khoản phải thu 6,43 6,79\nDoanh thu thuần/Tổng tài sản 1,10 1,13\n4 Chỉ tiêu về khả năng sinh lời\nTỷ lệ Lợi nhuận sau thuế/Doanh thu thuần % 5,41% 5,21%\nTỷ lệ Lợi nhuận sau thuế/Vốn điều lệ % 22,19% 20,21%\nTỷ lệ Lợi nhuận sau thuế/Vốn chủ sở hữu % 12,64% 11,61%\nTỷ lệ Lợi nhuận sau thuế/Tổng tài sản % 4,94% 5,56%\n4. Cơ cấu cổ đông, thay đổi vốn đầu tư của chủ sở hữu:\n4.1. Cổ phần:\n- Tổng số cổ phần đã phát hành: 232.954.608 cổ phiếu.\n- Số cổ phần chuyển nhượng tự do: 232.098.008 cổ phiếu.\n- Số cổ phần hạn chế chuyển nhượng: 856.600 cổ phiếu.\n- Số cổ phần đang lưu hành: 232.900.908 cổ phiếu.\n- Số cổ phiếu quỹ: 53,700 cổ phiếu.\n4.2. Cơ cấu cổ đông:\n* Số liệu căn cứ theo danh sách cổ đông lập ngày 15/01/2026:\n33",
+  "unreadable": []
+}

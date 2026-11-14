@@ -1,0 +1,82 @@
+{
+  "ir_version": "1",
+  "page": 108,
+  "printed_page": "06",
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "d67772421ddeceac697de71c5a84945ae7c34779bae44d6456738844d4950521",
+    "file_name": "MBB_2025_537873.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p108-b1",
+      "type": "paragraph",
+      "text": "Hệ thống giám sát an ninh: phát hiện và xử lý hơn 657.000 cảnh báo nguy cơ mất an\nninh trên hệ thống của MB, 133.920 cảnh báo của AMC và 12.960 cảnh báo của MBLife (từ\ntháng 09/2025). Thông tin tình báo an ninh mạng (MBTI) phát hiện và cảnh báo 86 lỗ hổng\nan ninh mức nghiêm trọng và cao, 169 chiến dịch tấn công mã độc, …",
+      "bbox": [218.27, 96.63, 555.65, 135.12]
+    },
+    {
+      "id": "p108-b2",
+      "type": "paragraph",
+      "text": "Kiểm thử và đánh giá ATTT: 1.967 lượt kiểm thử an ninh yêu cầu phát triển trước golive và\nđánh giá an ninh định kỳ, 7.737 lượt rà soát an ninh, săn tìm nguy cơ, làm sạch mã độc trên\nhệ thống máy chủ.",
+      "bbox": [218.27, 146.62, 555.66, 175.11]
+    },
+    {"id": "p108-b3", "type": "paragraph", "text": "Hệ thống vận hành ATTT:", "bbox": [218.27, 186.61, 313.89, 195.11]},
+    {"id": "p108-b4", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN • 2025", "bbox": [448.19, 34.45, 555.59, 41.45]},
+    {"id": "p108-b5", "type": "paragraph", "text": "Chặn\ntrung bình", "bbox": [395.07, 394.74, 457.6, 424.38]},
+    {"id": "p108-b6", "type": "heading", "text": "BBÁÁOO CCÁÁOO TTHHƯƯỜỜNNGG NNIIÊÊNN •• 22002255", "bbox": [634.96, 34.45, 742.36, 41.45]},
+    {
+      "id": "p108-b7",
+      "type": "paragraph",
+      "text": "Triển khai các cấu phần bổ sung cho hệ thống an ninh như AI Application Security, AI",
+      "bbox": [813.54, 96.63, 1150.88, 105.13]
+    },
+    {"id": "p108-b8", "type": "paragraph", "text": "Kế hoạch, chiến lược 2026", "bbox": [634.96, 96.67, 756.52, 106.67]},
+    {"id": "p108-b9", "type": "paragraph", "text": "Access Security, Automation Pentest…", "bbox": [813.54, 106.63, 958.63, 115.13]},
+    {"id": "p108-b10", "type": "paragraph", "text": "Nâng cao năng lực ATTT và chủ động kiểm soát các rủi ro mới nổi", "bbox": [813.54, 126.63, 1063.48, 135.13]},
+    {
+      "id": "p108-b11",
+      "type": "paragraph",
+      "text": "Bảo vệ khách hàng trong bối cảnh đa dạng dịch vụ tài chính số (tài sản số, giao dịch xuyên\nbiên giới…)",
+      "bbox": [813.54, 146.63, 1150.83, 165.13]
+    },
+    {
+      "id": "p108-b12",
+      "type": "paragraph",
+      "text": "Đẩy mạnh việc ứng dụng AI và tự động hóa vào các hoạt động nội bộ ATTT.",
+      "bbox": [813.54, 176.63, 1101.48, 185.13]
+    },
+    {
+      "id": "p108-b13",
+      "type": "heading",
+      "text": "CCHHƯƯƠƠNNGG 55 •• BBÁÁOO CCÁÁOO PPHHÁÁTT TTRRIIỂỂNN BBỀỀNN VVỮỮNNGG •• 221111",
+      "bbox": [977.19, 34.45, 1150.87, 41.45]
+    },
+    {"id": "p108-b14", "type": "heading", "text": "Triệu", "bbox": [393.49, 595.93, 471.75, 631.16]},
+    {"id": "p108-b15", "type": "paragraph", "text": "email quảng cáo/", "bbox": [201.7, 638.9, 306.87, 652.19]},
+    {"id": "p108-b16", "type": "paragraph", "text": "nghi ngờ không an toàn", "bbox": [201.7, 670.81, 344.64, 684.1]},
+    {"id": "p108-b17", "type": "paragraph", "text": "• Triển khai đào tạo nhận thức ATTT cơ bản cho 13.348 lượt nhân sự", "bbox": [218.27, 748.71, 478.44, 757.21]},
+    {"id": "p108-b18", "type": "paragraph", "text": "host có hành vi\nbất thường, tấn công\nvào dịch vụ của MB", "bbox": [393.49, 638.89, 524.09, 684.7]},
+    {"id": "p108-b19", "type": "paragraph", "text": "210 • CHƯƠNG 5 • BÁO CÁO PHÁT TRIỂN BỀN VỮNG", "bbox": [39.69, 34.45, 215.46, 41.45]},
+    {"id": "p108-b20", "type": "paragraph", "text": "Kết quả hoạt động", "bbox": [39.69, 96.62, 111.31, 105.12]},
+    {"id": "p108-b21", "type": "paragraph", "text": "Chặn trung bình", "bbox": [60.29, 238.41, 157.35, 251.71]},
+    {"id": "p108-b22", "type": "paragraph", "text": "673.000\nkết nối độc hại ra internet/1h", "bbox": [60.29, 263.76, 283.98, 337.86]},
+    {"id": "p108-b23", "type": "paragraph", "text": "Ngăn chặn", "bbox": [60.29, 394.42, 126.09, 407.71]},
+    {"id": "p108-b24", "type": "paragraph", "text": "8", "bbox": [60.45, 419.75, 132.32, 532.75]},
+    {"id": "p108-b25", "type": "paragraph", "text": "Triệu\nemail độc hại,\nlừa đảo, spam,\nchứa virus", "bbox": [144.27, 422.8, 233.42, 511.02]},
+    {"id": "p108-b26", "type": "paragraph", "text": "Chặn", "bbox": [59.52, 567.49, 92.05, 580.79]},
+    {"id": "p108-b27", "type": "paragraph", "text": "1,6", "bbox": [59.67, 592.83, 189.85, 705.83]},
+    {"id": "p108-b28", "type": "paragraph", "text": "Triệu", "bbox": [200.15, 595.88, 277.37, 630.65]},
+    {"id": "p108-b29", "type": "paragraph", "text": "mạng xã hội/", "bbox": [201.7, 654.85, 280.92, 668.15]},
+    {"id": "p108-b30", "type": "paragraph", "text": "Đào tạo ATTT:", "bbox": [218.27, 728.71, 272.17, 737.21]},
+    {"id": "p108-b31", "type": "paragraph", "text": "• Đào tạo chuyên sâu cho gần 1.500 nhân sự CNTT và Dữ liệu", "bbox": [218.27, 768.71, 453.77, 777.21]},
+    {
+      "id": "p108-b32",
+      "type": "paragraph",
+      "text": "• 06 đợt đào tạo qua hình thức mail phishing với 4.156 nhân sự tham gia",
+      "bbox": [218.27, 788.71, 495.13, 797.21]
+    }
+  ]
+}

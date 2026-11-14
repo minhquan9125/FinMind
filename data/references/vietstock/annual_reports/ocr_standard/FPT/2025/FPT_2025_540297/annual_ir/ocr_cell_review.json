@@ -1,0 +1,26 @@
+{
+  "document_sha256": "5ea9b229656594f65e858ff7465ec600332fd623c501ce27d5b95de098275a35",
+  "items": [
+    {
+      "page": 170,
+      "table_id": "p170-t1",
+      "row_id": "r18",
+      "column": "c2",
+      "bbox": [
+        927.03,
+        486.07,
+        1004.36,
+        495.57
+      ],
+      "votes": null,
+      "reason": "BAD_NUMBER_FORMAT",
+      "visual_review": {
+        "status": "source_format_confirmed",
+        "source": "FPT_2025_540297.pdf, PDF page 170, printed page 168",
+        "printed_text": "(280.683.727.283",
+        "numeric_value": -280683727283,
+        "note": "The source PDF visibly omits the closing parenthesis. The digit sequence is clear; the IR raw cell remains verbatim."
+      }
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "scope": "all_text_layer_pages_from_pages_jsonl",
+  "pages_checked": 28,
+  "minimum_repeated_pages": 14,
+  "position_grid": "2% of page width and height",
+  "repeated_groups": [],
+  "promoted_blocks": 0,
+  "sidebar_associated_blocks": 0,
+  "page_number_blocks": 3,
+  "demoted_unverified_blocks": 145,
+  "demoted_examples": [
+    {
+      "page": 28,
+      "block_id": "p28-b50",
+      "text": "STT",
+      "matching_pages": 1
+    },
+    {
+      "page": 28,
+      "block_id": "p28-b51",
+      "text": "Công Ty Cổ Phần Công Nghệ ITD 28",
+      "matching_pages": 1
+    },
+    {
+      "page": 29,
+      "block_id": "p29-b9",
+      "text": "Tánh Linh .",
+      "matching_pages": 1
+    },
+    {
+      "page": 29,
+      "block_id": "p29-b10",
+      "text": "Thành viên HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 29,
+      "block_id": "p29-b11",
+      "text": "kinh tế khu vực châu Á.",
+      "matching_pages": 1
+    },
+    {
+      "page": 29,
+      "block_id": "p29-b12",
+      "text": "Công Ty Cổ Phần Công Nghệ ITD 29",
+      "matching_pages": 1
+    },
+    {
+      "page": 30,
+      "block_id": "p30-b19",
+      "text": "Nam.",
+      "matching_pages": 1
+    },
+    {
+      "page": 30,
+      "block_id": "p30-b20",
+      "text": "Ông tốt nghiệp đại học chuyên ngành kỹ sư Điện – Điện tử.",
+      "matching_pages": 1
+    },
+    {
+      "page": 30,
+      "block_id": "p30-b21",
+      "text": "Công Ty Cổ Phần Công Nghệ ITD 30",
+      "matching_pages": 1
+    },
+    {
+      "page": 30,
+      "block_id": "p30-b22",
+      "text": ".",
+      "matching_pages": 0
+    },
+    {
+      "page": 31,
+      "block_id": "p31-b10",
+      "text": "TPHCM.",
+      "matching_pages": 1
+    },
+    {
+      "page": 31,
+      "block_id": "p31-b11",
+      "text": "Công Ty Cổ Phần Công Nghệ ITD 31",
+      "matching_pages": 1
+    },
+    {
+      "page": 37,
+      "block_id": "p37-b6",
+      "text": "gian khác có liên quan để tiến hành triển khai phương án phát hành cổ phiếu. • Thực hiện xử lý cổ phiếu lẻ, cổ phiếu chư",
+      "matching_pages": 1
+    },
+    {
+      "page": 37,
+      "block_id": "p37-b7",
+      "text": "Công Ty Cổ Phần Công Nghệ ITD 37",
+      "matching_pages": 1
+    },
+    {
+      "page": 41,
+      "block_id": "p41-b23",
+      "text": "1",
+      "matching_pages": 0
+    },
+    {
+      "page": 41,
+      "block_id": "p41-b24",
+      "text": "2",
+      "matching_pages": 0
+    },
+    {
+      "page": 41,
+      "block_id": "p41-b25",
+      "text": "Công Ty Cổ Phần Công Nghệ ITD 41",
+      "matching_pages": 1
+    },
+    {
+      "page": 42,
+      "block_id": "p42-b22",
+      "text": "thức sau:",
+      "matching_pages": 1
+    },
+    {
+      "page": 42,
+      "block_id": "p42-b23",
+      "text": "Kiểm Soát",
+      "matching_pages": 1
+    },
+    {
+      "page": 42,
+      "block_id": "p42-b24",
+      "text": "Công Ty Cổ Phần Công Nghệ ITD 42",
+      "matching_pages": 1
+    },
+    {
+      "page": 48,
+      "block_id": "p48-b13",
+      "text": "Công Ty Cổ Phần Công Nghệ ITD 48",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b84",
+      "text": "Doanh thu",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b85",
+      "text": "Giá vốn",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b86",
+      "text": "Lợi nhuận gộp",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b87",
+      "text": "Tài sản dài hạn",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b88",
+      "text": "Tổng tài sản",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b89",
+      "text": "Nợ ngắn hạn",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b90",
+      "text": "Nợ dài hạn",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b91",
+      "text": "Tổng Nợ",
+      "matching_pages": 1
+    },
+    {
+      "page": 7,
+      "block_id": "p7-b92",
+      "text": "Vốn chủ sở hữu",
+      "matching_pages": 1
+    }
+  ],
+  "furniture_table_overlaps": []
+}

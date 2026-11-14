@@ -1,0 +1,971 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC",
+      "box_2d": [
+        38,
+        132,
+        53,
+        601
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "B09-DN/HN",
+      "box_2d": [
+        39,
+        805,
+        53,
+        883
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày",
+      "box_2d": [
+        69,
+        132,
+        98,
+        676
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "33. NGHIỆP VỤ VỚI CÁC BÊN LIÊN QUAN (tiếp theo)",
+      "box_2d": [
+        121,
+        132,
+        132,
+        465
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Tại ngày kết thúc năm tài chính, số dư các khoản phải thu và phải trả với các bên liên quan như sau:",
+      "box_2d": [
+        147,
+        132,
+        176,
+        883
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Đơn vị tính: VND",
+      "box_2d": [
+        176,
+        757,
+        187,
+        883
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        195,
+        132,
+        883,
+        883
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Bên liên quan"
+          ],
+          "box_2d": [
+            195,
+            132,
+            207,
+            350
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Nội dung nghiệp vụ"
+          ],
+          "box_2d": [
+            195,
+            413,
+            207,
+            560
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Số cuối năm"
+          ],
+          "box_2d": [
+            195,
+            625,
+            207,
+            730
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Số đầu năm"
+          ],
+          "box_2d": [
+            195,
+            775,
+            207,
+            883
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Phải thu ngắn hạn của khách hàng (Thuyết minh số 6.1)",
+          "note": null,
+          "box_2d": [
+            217,
+            132,
+            228,
+            535
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần Netnam",
+          "note": null,
+          "box_2d": [
+            232,
+            132,
+            255,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phải thu cung cấp dịch vụ",
+              "box_2d": [
+                232,
+                413,
+                255,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "1.296.672.706",
+              "box_2d": [
+                232,
+                625,
+                243,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "2.009.548.919",
+              "box_2d": [
+                232,
+                775,
+                243,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH Sản xuất và Dịch vụ CMC",
+          "note": null,
+          "box_2d": [
+            260,
+            132,
+            283,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phải thu cung cấp dịch vụ",
+              "box_2d": [
+                260,
+                413,
+                283,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "7.523.842",
+              "box_2d": [
+                260,
+                655,
+                271,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "114.246.824",
+              "box_2d": [
+                260,
+                795,
+                271,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            303,
+            132,
+            314,
+            883
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "1.304.196.548",
+              "box_2d": [
+                303,
+                625,
+                314,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "2.123.795.743",
+              "box_2d": [
+                303,
+                775,
+                314,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Trả trước cho người bán ngắn hạn (Thuyết minh số 6.2)",
+          "note": null,
+          "box_2d": [
+            333,
+            132,
+            344,
+            535
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần Netnam",
+          "note": null,
+          "box_2d": [
+            348,
+            132,
+            371,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Trả trước cho dịch vụ cung cấp",
+              "box_2d": [
+                348,
+                413,
+                371,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "80.800.000",
+              "box_2d": [
+                348,
+                645,
+                359,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "30.800.000",
+              "box_2d": [
+                348,
+                795,
+                359,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            391,
+            132,
+            402,
+            883
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "80.800.000",
+              "box_2d": [
+                391,
+                645,
+                402,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "30.800.000",
+              "box_2d": [
+                391,
+                795,
+                402,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Phải thu ngắn hạn khác (Thuyết minh số 7)",
+          "note": null,
+          "box_2d": [
+            421,
+            132,
+            432,
+            485
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần Netnam",
+          "note": null,
+          "box_2d": [
+            436,
+            132,
+            447,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phải thu chi hộ",
+              "box_2d": [
+                436,
+                413,
+                447,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": " -",
+              "box_2d": [
+                436,
+                715,
+                447,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "112.318.784",
+              "box_2d": [
+                436,
+                795,
+                447,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH Sản xuất và Dịch vụ CMC",
+          "note": null,
+          "box_2d": [
+            451,
+            132,
+            474,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phải thu khác",
+              "box_2d": [
+                451,
+                413,
+                474,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "2.214.157.827",
+              "box_2d": [
+                451,
+                625,
+                462,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "2.214.157.827",
+              "box_2d": [
+                451,
+                775,
+                462,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            494,
+            132,
+            505,
+            883
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "2.214.157.827",
+              "box_2d": [
+                494,
+                625,
+                505,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "2.326.476.611",
+              "box_2d": [
+                494,
+                775,
+                505,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Phải thu về cho vay dài hạn (Mã số 215)",
+          "note": null,
+          "box_2d": [
+            524,
+            132,
+            535,
+            435
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Ông Đặng Văn Tú (*)",
+          "note": null,
+          "box_2d": [
+            539,
+            132,
+            550,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phải thu về cho vay",
+              "box_2d": [
+                539,
+                413,
+                550,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "500.000.000",
+              "box_2d": [
+                539,
+                635,
+                550,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": " -",
+              "box_2d": [
+                539,
+                865,
+                550,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Ông Nguyễn Minh Tuệ (*)",
+          "note": null,
+          "box_2d": [
+            554,
+            132,
+            565,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Phải thu về cho vay",
+              "box_2d": [
+                554,
+                413,
+                565,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "500.000.000",
+              "box_2d": [
+                554,
+                635,
+                565,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": " -",
+              "box_2d": [
+                554,
+                865,
+                565,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            582,
+            132,
+            593,
+            883
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "1.000.000.000",
+              "box_2d": [
+                582,
+                625,
+                593,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": " -",
+              "box_2d": [
+                582,
+                865,
+                593,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Phải trả cho người bán ngắn hạn (Thuyết minh số 15.1)",
+          "note": null,
+          "box_2d": [
+            612,
+            132,
+            623,
+            535
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần Netnam",
+          "note": null,
+          "box_2d": [
+            627,
+            132,
+            650,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Mua hàng hóa và dịch vụ",
+              "box_2d": [
+                627,
+                413,
+                650,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "858.670.332",
+              "box_2d": [
+                627,
+                625,
+                638,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "424.869.200",
+              "box_2d": [
+                627,
+                775,
+                638,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH Sản xuất và Dịch vụ CMC",
+          "note": null,
+          "box_2d": [
+            655,
+            132,
+            678,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Mua hàng hóa và dịch vụ",
+              "box_2d": [
+                655,
+                413,
+                678,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": " -",
+              "box_2d": [
+                655,
+                715,
+                666,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "271.370.000",
+              "box_2d": [
+                655,
+                775,
+                666,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            698,
+            132,
+            709,
+            883
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "858.670.332",
+              "box_2d": [
+                698,
+                625,
+                709,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "696.239.200",
+              "box_2d": [
+                698,
+                775,
+                709,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Người mua trả tiền trước ngắn hạn (Thuyết minh số 15.2)",
+          "note": null,
+          "box_2d": [
+            721,
+            132,
+            732,
+            555
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần Netnam",
+          "note": null,
+          "box_2d": [
+            736,
+            132,
+            759,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Ứng trước tiền mua dịch vụ",
+              "box_2d": [
+                736,
+                413,
+                759,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": " -",
+              "box_2d": [
+                736,
+                715,
+                747,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "7.620.296",
+              "box_2d": [
+                736,
+                815,
+                747,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            779,
+            132,
+            790,
+            883
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": " -",
+              "box_2d": [
+                779,
+                715,
+                790,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "7.620.296",
+              "box_2d": [
+                779,
+                815,
+                790,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Phải trả dài hạn khác (Thuyết minh số 19)",
+          "note": null,
+          "box_2d": [
+            802,
+            132,
+            813,
+            455
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty TNHH Sản xuất và Dịch vụ CMC",
+          "note": null,
+          "box_2d": [
+            817,
+            132,
+            840,
+            380
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Mua hàng hóa và dịch vụ",
+              "box_2d": [
+                817,
+                413,
+                840,
+                535
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "357.654.960",
+              "box_2d": [
+                817,
+                625,
+                828,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "357.654.960",
+              "box_2d": [
+                817,
+                775,
+                828,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            860,
+            132,
+            871,
+            883
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "357.654.960",
+              "box_2d": [
+                860,
+                625,
+                871,
+                730
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "357.654.960",
+              "box_2d": [
+                860,
+                775,
+                871,
+                883
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "(*) Đây là các khoản cho vay tín chấp, có kỳ hạn trả gốc và lãi cuối cùng vào ngày 26 tháng 11 năm 2027 và chịu lãi suất từ 3%/năm đến 5%/năm.",
+      "box_2d": [
+        886,
+        132,
+        915,
+        883
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "54",
+      "box_2d": [
+        941,
+        493,
+        952,
+        512
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC\nB09-DN/HN\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày\n33. NGHIỆP VỤ VỚI CÁC BÊN LIÊN QUAN (tiếp theo)\nTại ngày kết thúc năm tài chính, số dư các khoản phải thu và phải trả với các bên liên quan như sau:\nĐơn vị tính: VND\nBên liên quan\nNội dung nghiệp vụ\nSố cuối năm\nSố đầu năm\nPhải thu ngắn hạn của khách hàng (Thuyết minh số 6.1)\nCông ty Cổ phần Netnam Phải thu cung cấp dịch vụ 1.296.672.706 2.009.548.919\nCông ty TNHH Sản xuất và Dịch vụ CMC Phải thu cung cấp dịch vụ 7.523.842 114.246.824\nTỔNG CỘNG 1.304.196.548 2.123.795.743\nTrả trước cho người bán ngắn hạn (Thuyết minh số 6.2)\nCông ty Cổ phần Netnam Trả trước cho dịch vụ cung cấp 80.800.000 30.800.000\nTỔNG CỘNG 80.800.000 30.800.000\nPhải thu ngắn hạn khác (Thuyết minh số 7)\nCông ty Cổ phần Netnam Phải thu chi hộ  - 112.318.784\nCông ty TNHH Sản xuất và Dịch vụ CMC Phải thu khác 2.214.157.827 2.214.157.827\nTỔNG CỘNG 2.214.157.827 2.326.476.611\nPhải thu về cho vay dài hạn (Mã số 215)\nÔng Đặng Văn Tú (*) Phải thu về cho vay 500.000.000  -\nÔng Nguyễn Minh Tuệ (*) Phải thu về cho vay 500.000.000  -\nTỔNG CỘNG 1.000.000.000  -\nPhải trả cho người bán ngắn hạn (Thuyết minh số 15.1)\nCông ty Cổ phần Netnam Mua hàng hóa và dịch vụ 858.670.332 424.869.200\nCông ty TNHH Sản xuất và Dịch vụ CMC Mua hàng hóa và dịch vụ  - 271.370.000\nTỔNG CỘNG 858.670.332 696.239.200\nNgười mua trả tiền trước ngắn hạn (Thuyết minh số 15.2)\nCông ty Cổ phần Netnam Ứng trước tiền mua dịch vụ  - 7.620.296\nTỔNG CỘNG  - 7.620.296\nPhải trả dài hạn khác (Thuyết minh số 19)\nCông ty TNHH Sản xuất và Dịch vụ CMC Mua hàng hóa và dịch vụ 357.654.960 357.654.960\nTỔNG CỘNG 357.654.960 357.654.960\n(*) Đây là các khoản cho vay tín chấp, có kỳ hạn trả gốc và lãi cuối cùng vào ngày 26 tháng 11 năm 2027 và chịu lãi suất từ 3%/năm đến 5%/năm.\n54",
+  "unreadable": []
+}

@@ -1,0 +1,140 @@
+{
+  "text": "MẠNG LƯỚI\n\nTHỊ TRƯỜNG __\nTRÊN TOÀN CÂU\n\nCMC CORPORATION",
+  "chars": 44,
+  "words": 10,
+  "wordItems": [
+    {
+      "text": "MẠNG",
+      "bbox": [
+        169,
+        1340,
+        274,
+        1368
+      ],
+      "conf": 93.180283,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "LƯỚI",
+      "bbox": [
+        291,
+        1333,
+        371,
+        1364
+      ],
+      "conf": 92.055222,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THỊ",
+      "bbox": [
+        359,
+        1410,
+        421,
+        1447
+      ],
+      "conf": 96.695671,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRƯỜNG",
+      "bbox": [
+        438,
+        1403,
+        572,
+        1447
+      ],
+      "conf": 91.560341,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "__",
+      "bbox": [
+        618,
+        1441,
+        628,
+        1448
+      ],
+      "conf": 53.420052,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRÊN",
+      "bbox": [
+        359,
+        1450,
+        452,
+        1474
+      ],
+      "conf": 92.829315,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TOÀN",
+      "bbox": [
+        467,
+        1450,
+        569,
+        1474
+      ],
+      "conf": 92.204948,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "CÂU",
+      "bbox": [
+        585,
+        1450,
+        658,
+        1474
+      ],
+      "conf": 84.018089,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        112,
+        2122,
+        155,
+        2137
+      ],
+      "conf": 90.545441,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        163,
+        2122,
+        300,
+        2137
+      ],
+      "conf": 92.122688,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 88,
+  "lowConfRatio": 0.1,
+  "seconds": 0.36
+}

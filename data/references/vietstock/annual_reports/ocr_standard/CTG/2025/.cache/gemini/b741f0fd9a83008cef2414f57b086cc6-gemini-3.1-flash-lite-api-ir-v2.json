@@ -1,0 +1,1027 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "PHẦN 5 QUẢN TRỊ CÔNG TY",
+      "box_2d": [
+        25,
+        59,
+        34,
+        163
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "3 - HOẠT ĐỘNG CỦA BAN KIỂM SOÁT NĂM 2025",
+      "box_2d": [
+        54,
+        59,
+        63,
+        255
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "THÀNH VIÊN VÀ CƠ CẤU CỦA BKS",
+      "box_2d": [
+        91,
+        59,
+        100,
+        213
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Ngày 25/12/2025, VietinBank đã CBTT Thông báo thay đổi số lượng cổ phần có quyền biểu quyết tại công văn số 1292/HĐQT-NHCT-VPHĐQT1. Theo đó, tổng số lượng cổ phiếu có quyền biểu quyết đang lưu hành là 7.766.944.637 cổ phiếu. Tuy nhiên, đến ngày 9/1/2026, VietinBank mới hoàn thành điều chỉnh thông tin số lượng chứng khoán đăng ký (lên 7.766.944.637 cổ phiếu), được Tổng Công ty Lưu ký và Bù trừ chứng khoán Việt Nam (VSDC) xác nhận tại Văn bản số 375/VSDC-ĐKCP. NV. Vì vậy, tại thời điểm danh sách chốt 31/12/2025 do VSDC cung cấp cho VietinBank, tổng số lượng cổ phiếu có quyền biểu quyết đang lưu hành là 5.369.991.748 cổ phiếu (chưa bao gồm số cổ phiếu phát hành để trả cổ tức từ nguồn lợi nhuận còn lại năm 2021, 2022 và giai đoạn 2009 - 2016). Số cổ phiếu sở hữu trong bảng dưới đây được cập nhật tại thời điểm 15/1/2026 (thời điểm chốt danh sách cổ đông gần nhất do VSDC cung cấp).",
+      "box_2d": [
+        117,
+        59,
+        223,
+        441
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        266,
+        59,
+        445,
+        441
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            266,
+            59,
+            293,
+            83
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "HỌ VÀ TÊN"
+          ],
+          "box_2d": [
+            266,
+            83,
+            293,
+            215
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "CHỨC VỤ"
+          ],
+          "box_2d": [
+            266,
+            215,
+            293,
+            335
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "SỐ LƯỢNG",
+            "CỔ PHIẾU"
+          ],
+          "box_2d": [
+            266,
+            335,
+            293,
+            391
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "TỶ LỆ SỞ HỮU (%)"
+          ],
+          "box_2d": [
+            266,
+            391,
+            293,
+            441
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Bà Lê Anh Hà",
+          "note": null,
+          "box_2d": [
+            293,
+            59,
+            321,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Lê Anh Hà",
+              "box_2d": [
+                293,
+                83,
+                321,
+                215
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Trưởng BKS",
+              "box_2d": [
+                293,
+                215,
+                321,
+                335
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "6.473",
+              "box_2d": [
+                293,
+                335,
+                321,
+                391
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,000083%",
+              "box_2d": [
+                293,
+                391,
+                321,
+                441
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Bà Nguyễn Thị Anh Thư",
+          "note": null,
+          "box_2d": [
+            321,
+            59,
+            349,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Nguyễn Thị Anh Thư",
+              "box_2d": [
+                321,
+                83,
+                349,
+                215
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "TV BKS",
+              "box_2d": [
+                321,
+                215,
+                349,
+                335
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "2.159",
+              "box_2d": [
+                321,
+                335,
+                349,
+                391
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,000028%",
+              "box_2d": [
+                321,
+                391,
+                349,
+                441
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Ông Nguyễn Hải Đăng",
+          "note": null,
+          "box_2d": [
+            349,
+            59,
+            377,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Ông Nguyễn Hải Đăng",
+              "box_2d": [
+                349,
+                83,
+                377,
+                215
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "TV BKS",
+              "box_2d": [
+                349,
+                215,
+                377,
+                335
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0",
+              "box_2d": [
+                349,
+                335,
+                377,
+                391
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0%",
+              "box_2d": [
+                349,
+                391,
+                377,
+                441
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Bà Phạm Thị Thu Huyền",
+          "note": null,
+          "box_2d": [
+            377,
+            59,
+            405,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Phạm Thị Thu Huyền",
+              "box_2d": [
+                377,
+                83,
+                405,
+                215
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "TV BKS",
+              "box_2d": [
+                377,
+                215,
+                405,
+                335
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0",
+              "box_2d": [
+                377,
+                335,
+                405,
+                391
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0%",
+              "box_2d": [
+                377,
+                391,
+                405,
+                441
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "Bà Mai Hương Thảo",
+          "note": null,
+          "box_2d": [
+            405,
+            59,
+            433,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Mai Hương Thảo",
+              "box_2d": [
+                405,
+                83,
+                433,
+                215
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "TV BKS",
+              "box_2d": [
+                405,
+                215,
+                433,
+                335
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "217",
+              "box_2d": [
+                405,
+                335,
+                433,
+                391
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,000003%",
+              "box_2d": [
+                405,
+                391,
+                433,
+                441
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            433,
+            59,
+            445,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c4",
+              "raw": "8.849",
+              "box_2d": [
+                433,
+                335,
+                445,
+                391
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,000114%",
+              "box_2d": [
+                433,
+                391,
+                445,
+                441
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Thay đổi TV BKS trong năm 2025: Xem tại phần Giới thiệu nhân sự - trang 40.",
+      "box_2d": [
+        457,
+        59,
+        467,
+        365
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "HOẠT ĐỘNG CỦA BKS NĂM 2025",
+      "box_2d": [
+        488,
+        59,
+        497,
+        213
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Trong năm 2025, BKS đã tổ chức họp 11 phiên họp để triển khai công việc, kiểm điểm tiến độ, triển khai các chỉ đạo của NHNN, thảo luận và cho ý kiến đối với các nội dung thuộc phạm vi công việc, trách nhiệm và quyền hạn của BKS, cụ thể như sau:",
+      "box_2d": [
+        514,
+        59,
+        553,
+        441
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        566,
+        59,
+        845,
+        441
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT"
+          ],
+          "box_2d": [
+            566,
+            59,
+            593,
+            75
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "TV BKS"
+          ],
+          "box_2d": [
+            566,
+            75,
+            593,
+            185
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "SỐ BUỔI HỌP",
+            "THAM DỰ"
+          ],
+          "box_2d": [
+            566,
+            185,
+            593,
+            235
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "TỶ LỆ THAM",
+            "DỰ HỌP"
+          ],
+          "box_2d": [
+            566,
+            235,
+            593,
+            285
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "TỶ LỆ",
+            "BIỂU QUYẾT"
+          ],
+          "box_2d": [
+            566,
+            285,
+            593,
+            335
+          ]
+        },
+        {
+          "key": "c6",
+          "header_lines": [
+            "LÝ DO KHÔNG THAM DỰ HỌP"
+          ],
+          "box_2d": [
+            566,
+            335,
+            593,
+            441
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Bà Lê Anh Hà Trưởng BKS",
+          "note": null,
+          "box_2d": [
+            593,
+            59,
+            635,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Lê Anh Hà\nTrưởng BKS",
+              "box_2d": [
+                593,
+                75,
+                635,
+                185
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "11",
+              "box_2d": [
+                593,
+                185,
+                635,
+                235
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "11/11",
+              "box_2d": [
+                593,
+                235,
+                635,
+                285
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "100%",
+              "box_2d": [
+                593,
+                285,
+                635,
+                335
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Bà Nguyễn Thị Anh Thư TV BKS (Chuyên trách)",
+          "note": null,
+          "box_2d": [
+            635,
+            59,
+            677,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Nguyễn Thị Anh Thư\nTV BKS (Chuyên trách)",
+              "box_2d": [
+                635,
+                75,
+                677,
+                185
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "11",
+              "box_2d": [
+                635,
+                185,
+                677,
+                235
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "11/11",
+              "box_2d": [
+                635,
+                235,
+                677,
+                285
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "100%",
+              "box_2d": [
+                635,
+                285,
+                677,
+                335
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Bà Phạm Thị Thơm (3) Nguyên TV BKS (Chuyên trách)",
+          "note": null,
+          "box_2d": [
+            677,
+            59,
+            727,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Phạm Thị Thơm (3)\nNguyên TV BKS (Chuyên trách)",
+              "box_2d": [
+                677,
+                75,
+                727,
+                185
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "10",
+              "box_2d": [
+                677,
+                185,
+                727,
+                235
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "10/11",
+              "box_2d": [
+                677,
+                235,
+                727,
+                285
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "90,9%",
+              "box_2d": [
+                677,
+                285,
+                727,
+                335
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "Không tham gia họp BKS do nghỉ\nhưu hưởng chế độ BHXH kể từ\nngày 1/11/2025",
+              "box_2d": [
+                677,
+                335,
+                727,
+                441
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Ông Nguyễn Hải Đăng (1) TV BKS (Chuyên trách)",
+          "note": null,
+          "box_2d": [
+            727,
+            59,
+            769,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Ông Nguyễn Hải Đăng (1)\nTV BKS (Chuyên trách)",
+              "box_2d": [
+                727,
+                75,
+                769,
+                185
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "8",
+              "box_2d": [
+                727,
+                185,
+                769,
+                235
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "8/11",
+              "box_2d": [
+                727,
+                235,
+                769,
+                285
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "72,7%",
+              "box_2d": [
+                727,
+                285,
+                769,
+                335
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "Không tham gia họp BKS trước\nngày 18/4/2025 (chưa là TV BKS)",
+              "box_2d": [
+                727,
+                335,
+                769,
+                441
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "Bà Phạm Thị Thu Huyền (1) TV BKS (Chuyên trách)",
+          "note": null,
+          "box_2d": [
+            769,
+            59,
+            811,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Phạm Thị Thu Huyền (1)\nTV BKS (Chuyên trách)",
+              "box_2d": [
+                769,
+                75,
+                811,
+                185
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "8",
+              "box_2d": [
+                769,
+                185,
+                811,
+                235
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "8/11",
+              "box_2d": [
+                769,
+                235,
+                811,
+                285
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "72,7%",
+              "box_2d": [
+                769,
+                285,
+                811,
+                335
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "Không tham gia họp BKS trước\nngày 18/4/2025 (chưa là TV BKS)",
+              "box_2d": [
+                769,
+                335,
+                811,
+                441
+              ]
+            }
+          ]
+        },
+        {
+          "code": "6",
+          "label_raw": "Bà Mai Hương Thảo (2) TV BKS (Chuyên trách)",
+          "note": null,
+          "box_2d": [
+            811,
+            59,
+            845,
+            441
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Bà Mai Hương Thảo (2)\nTV BKS (Chuyên trách)",
+              "box_2d": [
+                811,
+                75,
+                845,
+                185
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "6",
+              "box_2d": [
+                811,
+                185,
+                845,
+                235
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "6/11",
+              "box_2d": [
+                811,
+                235,
+                845,
+                285
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "54,5%",
+              "box_2d": [
+                811,
+                285,
+                845,
+                335
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "Không tham gia họp BKS trước\nngày 1/7/2025 (chưa là TV BKS)",
+              "box_2d": [
+                811,
+                335,
+                845,
+                441
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Ghi chú:\n(1) Ông Nguyễn Hải Đăng và Bà Phạm Thị Huyền tham gia họp BKS kể từ ngày 18/4/2025 (ngày bắt đầu là TV BKS).\n(2) Bà Mai Hương Thảo tham gia họp BKS kể từ ngày 1/7/2025 (ngày bắt đầu là TV BKS).\n(3) Ngày 8/10/2025, VietinBank nhận được Đơn xin từ nhiệm chức vụ TV BKS của Bà Phạm Thị Thơm kể từ ngày 1/11/2025 để nghỉ hưu hưởng chế độ BHXH. VietinBank đã thực hiện CBTT theo Công văn số 987/HĐQT-NHCT-VPHĐQT1 ngày 8/10/2025. HĐQT VietinBank sẽ thực hiện báo cáo ĐHĐCĐ tại phiên họp gần nhất.",
+      "box_2d": [
+        853,
+        59,
+        931,
+        441
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Đối với hoạt động giám sát của BKS đối với HĐQT, BĐH và cổ đông: Trong năm 2025, BKS đã triển khai thực hiện các nhiệm vụ, quyền hạn được quy định tại Điều lệ tổ chức và hoạt động của VietinBank (Điều lệ), Quy chế tổ chức và hoạt động của BKS và Luật các TCTD. BKS đã giám sát hoạt động quản trị, điều hành của HĐQT, BĐH trong việc tuân thủ quy định pháp luật, Điều lệ. Nhìn chung, hoạt động quản trị, điều hành của HĐQT và BĐH đã tuân thủ các quy định của Luật các TCTD, Điều lệ, triển khai theo đúng định hướng, chỉ đạo của NHNN và mục tiêu kinh doanh được ĐHĐCĐ thông qua.\nCông tác giám sát của BKS đối với HĐQT, BĐH được triển khai thông qua các nội dung chính sau: (i) Giám sát HĐQT, TGĐ trong việc quản trị và điều hành VietinBank trong việc tuân thủ quy định pháp luật, quy định nội bộ, Điều lệ và các Nghị quyết, Quyết định ĐHĐCĐ, HĐQT; (ii) Giám sát của quản lý cấp cao đối với KTNB; (iii) Giám sát thực trạng tài chính, thẩm định BCTC của VietinBank (bao gồm đánh giá tính hợp lý, hợp pháp, trung thực và mức độ cẩn trọng trong công tác kế toán, thống kê và lập BCTC); (iv) Giám sát việc thông qua và thực hiện dự án đầu tư, mua, bán tài sản cố định, hợp đồng, giao dịch khác của VietinBank thuộc thẩm quyền quyết định của ĐHĐCĐ, HĐQT; (v) Giám sát việc chấp hành các quy định của Luật các TCTD về các hạn chế để đảm bảo an toàn trong hoạt động; (vi) Cập nhật danh sách cổ đông lớn và NCLQ của TV HĐQT, TV BKS, TV BĐH của VietinBank; (vii) Rà soát hợp đồng, giao dịch với NCLQ thuộc thẩm quyền phê duyệt của HĐQT hoặc ĐHĐCĐ.",
+      "box_2d": [
+        91,
+        500,
+        365,
+        940
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "198",
+      "box_2d": [
+        956,
+        65,
+        966,
+        77
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "VietinBank",
+      "box_2d": [
+        956,
+        223,
+        966,
+        263
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "BÁO CÁO THƯỜNG NIÊN 2025",
+      "box_2d": [
+        952,
+        718,
+        966,
+        745
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "BẢN LĨNH ĐỔI MỚI KIẾN TẠO DẪN ĐẦU",
+      "box_2d": [
+        952,
+        751,
+        966,
+        827
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "199",
+      "box_2d": [
+        956,
+        922,
+        966,
+        934
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "PHẦN 5 QUẢN TRỊ CÔNG TY\n3 - HOẠT ĐỘNG CỦA BAN KIỂM SOÁT NĂM 2025\nTHÀNH VIÊN VÀ CƠ CẤU CỦA BKS\nNgày 25/12/2025, VietinBank đã CBTT Thông báo thay đổi số lượng cổ phần có quyền biểu quyết tại công văn số 1292/HĐQT-NHCT-VPHĐQT1. Theo đó, tổng số lượng cổ phiếu có quyền biểu quyết đang lưu hành là 7.766.944.637 cổ phiếu. Tuy nhiên, đến ngày 9/1/2026, VietinBank mới hoàn thành điều chỉnh thông tin số lượng chứng khoán đăng ký (lên 7.766.944.637 cổ phiếu), được Tổng Công ty Lưu ký và Bù trừ chứng khoán Việt Nam (VSDC) xác nhận tại Văn bản số 375/VSDC-ĐKCP. NV. Vì vậy, tại thời điểm danh sách chốt 31/12/2025 do VSDC cung cấp cho VietinBank, tổng số lượng cổ phiếu có quyền biểu quyết đang lưu hành là 5.369.991.748 cổ phiếu (chưa bao gồm số cổ phiếu phát hành để trả cổ tức từ nguồn lợi nhuận còn lại năm 2021, 2022 và giai đoạn 2009 - 2016). Số cổ phiếu sở hữu trong bảng dưới đây được cập nhật tại thời điểm 15/1/2026 (thời điểm chốt danh sách cổ đông gần nhất do VSDC cung cấp).\nSTT\nHỌ VÀ TÊN\nCHỨC VỤ\nSỐ LƯỢNG\nCỔ PHIẾU\nTỶ LỆ SỞ HỮU (%)\n1 Bà Lê Anh Hà Bà Lê Anh Hà Trưởng BKS 6.473 0,000083%\n2 Bà Nguyễn Thị Anh Thư Bà Nguyễn Thị Anh Thư TV BKS 2.159 0,000028%\n3 Ông Nguyễn Hải Đăng Ông Nguyễn Hải Đăng TV BKS 0 0%\n4 Bà Phạm Thị Thu Huyền Bà Phạm Thị Thu Huyền TV BKS 0 0%\n5 Bà Mai Hương Thảo Bà Mai Hương Thảo TV BKS 217 0,000003%\nTỔNG CỘNG 8.849 0,000114%\nThay đổi TV BKS trong năm 2025: Xem tại phần Giới thiệu nhân sự - trang 40.\nHOẠT ĐỘNG CỦA BKS NĂM 2025\nTrong năm 2025, BKS đã tổ chức họp 11 phiên họp để triển khai công việc, kiểm điểm tiến độ, triển khai các chỉ đạo của NHNN, thảo luận và cho ý kiến đối với các nội dung thuộc phạm vi công việc, trách nhiệm và quyền hạn của BKS, cụ thể như sau:\nTT\nTV BKS\nSỐ BUỔI HỌP\nTHAM DỰ\nTỶ LỆ THAM\nDỰ HỌP\nTỶ LỆ\nBIỂU QUYẾT\nLÝ DO KHÔNG THAM DỰ HỌP\n1 Bà Lê Anh Hà Trưởng BKS Bà Lê Anh Hà\nTrưởng BKS 11 11/11 100%\n2 Bà Nguyễn Thị Anh Thư TV BKS (Chuyên trách) Bà Nguyễn Thị Anh Thư\nTV BKS (Chuyên trách) 11 11/11 100%\n3 Bà Phạm Thị Thơm (3) Nguyên TV BKS (Chuyên trách) Bà Phạm Thị Thơm (3)\nNguyên TV BKS (Chuyên trách) 10 10/11 90,9% Không tham gia họp BKS do nghỉ\nhưu hưởng chế độ BHXH kể từ\nngày 1/11/2025\n4 Ông Nguyễn Hải Đăng (1) TV BKS (Chuyên trách) Ông Nguyễn Hải Đăng (1)\nTV BKS (Chuyên trách) 8 8/11 72,7% Không tham gia họp BKS trước\nngày 18/4/2025 (chưa là TV BKS)\n5 Bà Phạm Thị Thu Huyền (1) TV BKS (Chuyên trách) Bà Phạm Thị Thu Huyền (1)\nTV BKS (Chuyên trách) 8 8/11 72,7% Không tham gia họp BKS trước\nngày 18/4/2025 (chưa là TV BKS)\n6 Bà Mai Hương Thảo (2) TV BKS (Chuyên trách) Bà Mai Hương Thảo (2)\nTV BKS (Chuyên trách) 6 6/11 54,5% Không tham gia họp BKS trước\nngày 1/7/2025 (chưa là TV BKS)\nGhi chú:\n(1) Ông Nguyễn Hải Đăng và Bà Phạm Thị Huyền tham gia họp BKS kể từ ngày 18/4/2025 (ngày bắt đầu là TV BKS).\n(2) Bà Mai Hương Thảo tham gia họp BKS kể từ ngày 1/7/2025 (ngày bắt đầu là TV BKS).\n(3) Ngày 8/10/2025, VietinBank nhận được Đơn xin từ nhiệm chức vụ TV BKS của Bà Phạm Thị Thơm kể từ ngày 1/11/2025 để nghỉ hưu hưởng chế độ BHXH. VietinBank đã thực hiện CBTT theo Công văn số 987/HĐQT-NHCT-VPHĐQT1 ngày 8/10/2025. HĐQT VietinBank sẽ thực hiện báo cáo ĐHĐCĐ tại phiên họp gần nhất.\nĐối với hoạt động giám sát của BKS đối với HĐQT, BĐH và cổ đông: Trong năm 2025, BKS đã triển khai thực hiện các nhiệm vụ, quyền hạn được quy định tại Điều lệ tổ chức và hoạt động của VietinBank (Điều lệ), Quy chế tổ chức và hoạt động của BKS và Luật các TCTD. BKS đã giám sát hoạt động quản trị, điều hành của HĐQT, BĐH trong việc tuân thủ quy định pháp luật, Điều lệ. Nhìn chung, hoạt động quản trị, điều hành của HĐQT và BĐH đã tuân thủ các quy định của Luật các TCTD, Điều lệ, triển khai theo đúng định hướng, chỉ đạo của NHNN và mục tiêu kinh doanh được ĐHĐCĐ thông qua.\nCông tác giám sát của BKS đối với HĐQT, BĐH được triển khai thông qua các nội dung chính sau: (i) Giám sát HĐQT, TGĐ trong việc quản trị và điều hành VietinBank trong việc tuân thủ quy định pháp luật, quy định nội bộ, Điều lệ và các Nghị quyết, Quyết định ĐHĐCĐ, HĐQT; (ii) Giám sát của quản lý cấp cao đối với KTNB; (iii) Giám sát thực trạng tài chính, thẩm định BCTC của VietinBank (bao gồm đánh giá tính hợp lý, hợp pháp, trung thực và mức độ cẩn trọng trong công tác kế toán, thống kê và lập BCTC); (iv) Giám sát việc thông qua và thực hiện dự án đầu tư, mua, bán tài sản cố định, hợp đồng, giao dịch khác của VietinBank thuộc thẩm quyền quyết định của ĐHĐCĐ, HĐQT; (v) Giám sát việc chấp hành các quy định của Luật các TCTD về các hạn chế để đảm bảo an toàn trong hoạt động; (vi) Cập nhật danh sách cổ đông lớn và NCLQ của TV HĐQT, TV BKS, TV BĐH của VietinBank; (vii) Rà soát hợp đồng, giao dịch với NCLQ thuộc thẩm quyền phê duyệt của HĐQT hoặc ĐHĐCĐ.\n198\nVietinBank\nBÁO CÁO THƯỜNG NIÊN 2025\nBẢN LĨNH ĐỔI MỚI KIẾN TẠO DẪN ĐẦU\n199",
+  "unreadable": []
+}

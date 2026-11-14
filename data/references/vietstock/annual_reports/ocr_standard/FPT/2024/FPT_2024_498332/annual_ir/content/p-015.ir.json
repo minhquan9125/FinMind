@@ -1,0 +1,59 @@
+{
+  "ir_version": "1",
+  "page": 15,
+  "printed_page": "13",
+  "page_class": "narrative",
+  "page_size": {"width": 1920, "height": 1080, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+    "file_name": "FPT_2024_498332.pdf"
+  },
+  "blocks": [
+    {"id": "p15-b1", "type": "heading", "text": "HOẠT ĐỘNG NỔI BẬT", "bbox": [429.31, 71.51, 822.46, 111.51]},
+    {
+      "id": "p15-b2",
+      "type": "paragraph",
+      "text": "HỢP TÁC TOÀN DIỆN VỚI NVIDIA ĐỂ PHÁT TRIỂN HỆ SINH THÁI GIẢI PHÁP TRÍ TUỆ\nNHÂN TẠO CHO KHÁCH HÀNG TOÀN CẦU",
+      "bbox": [429.0, 623.22, 1120.72, 665.21]
+    },
+    {
+      "id": "p15-b3",
+      "type": "paragraph",
+      "text": "FPT và NVIDIA ký kết hợp tác chiến lược thúc đẩy nghiên cứu phát triển AI, đào tạo nguồn\nnhân lực chất lượng cao và trở thành đối tác phát triển dịch vụ của NVIDIA. FPT đã công\nbố ra mắt hai Nhà máy AI tại Việt Nam và Nhật Bản cung cấp dịch vụ AI và Điện toán\nđám mây đẳng cấp thế giới với ba nhóm sản phẩm chính dành cho doanh nghiệp gồm:\nFPT AI Infrastructure tăng tốc triển khai các mô hình AI lớn, FPT AI Studio cung cấp công\ncụ thông minh giúp đào tạo và tinh chỉnh chuyên sâu các mô hình AI, FPT AI Inference\nnâng cao năng lực phát triển AI dựa trên các mô hình AI sẵn có. FPT cũng bắt tay SCSK,\nASUS, Hewlett Packard Enterprise, VAST Data và DDN Storage hợp lực về chuyên môn,\nnguồn lực để khai thác tiềm năng của Nhà máy AI, thúc đẩy AI có chủ quyền tại Việt Nam\nvà Nhật Bản, đa dạng hóa danh mục sản phẩm và dịch vụ AI.",
+      "bbox": [429.0, 685.39, 1123.05, 919.34]
+    },
+    {
+      "id": "p15-b4",
+      "type": "paragraph",
+      "text": "FPT cũng tham gia Liên minh AI toàn cầu, trở thành thành viên sáng lập của Ủy ban đạo\nđức AI trực thuộc Hiệp hội Phần mềm và Dịch vụ CNTT Việt Nam, hợp tác với Đại học",
+      "bbox": [429.0, 939.52, 1123.05, 981.51]
+    },
+    {"id": "p15-b5", "type": "heading", "text": "KHÔNG NGỪNG NÂNG TẦM NĂNG LỰC CÔNG NGHỆ MỚI", "bbox": [1165.61, 623.27, 1639.09, 641.27]},
+    {
+      "id": "p15-b6",
+      "type": "paragraph",
+      "text": "FPT đạt nhiều thành tựu nổi bật trong các mảng công nghệ mới như: đẩy mạnh ứng dụng\nAI vào mọi lĩnh vực, tăng cường năng suất lao động với bộ giải pháp xVista, ra mắt nền tảng\nAI - FPT AI Agents. Trong lĩnh vực bán dẫn, FPT hợp tác cùng Aitomatic và Tokyo Electron\ncho ra mắt SemiKong - mô hình ngôn ngữ lớn (LLM) mã nguồn mở đầu tiên trên thế giới\ndành riêng cho ngành công nghiệp bán dẫn; phát triển năng lực thiết kế chip thông qua\nliên doanh với Đài Loan và đào tạo nguồn nhân lực bán dẫn. Trong lĩnh vực công nghệ\nô tô, FPT hoàn thiện các công nghệ AI First SDV, AUTOSAR, CDC. Hướng tới việc giúp\ncác tổ chức, doanh nghiệp khai thác và làm chủ dữ liệu chất lượng, từ đó kiến tạo phương\nthức sản xuất số, tăng tốc kinh doanh, cùng Việt Nam vươn mình trong kỷ nguyên mới,\nFPT ra mắt bộ giải pháp The Next for Enterprise. Trong chuyển đổi xanh, FPT cung cấp\ngiải pháp trọn gói cho quản lý carbon, từ tư vấn chiến lược, lập kế hoạch phát thải, kiểm\nsoát, báo cáo, kiểm toán, chứng nhận, triển khai dự án khử carbon và bù đắp phát thải.",
+      "bbox": [1165.61, 671.28, 1860.6, 953.21]
+    },
+    {"id": "p15-b7", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [42.0, 125.96, 333.44, 146.96]},
+    {"id": "p15-b8", "type": "furniture", "text": "01\nTHÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [43.0, 214.8, 271.08, 233.8]},
+    {"id": "p15-b9", "type": "furniture", "text": "02\nDẤU ẤN 2024 VÀ TỔNG QUAN VỀ FPT", "bbox": [46.0, 268.3, 327.54, 287.3]},
+    {"id": "p15-b10", "type": "furniture", "text": "Dấu ấn 2024", "bbox": [85.51, 313.67, 163.98, 327.67]},
+    {"id": "p15-b11", "type": "furniture", "text": "Tổng quan về FPT", "bbox": [85.52, 345.63, 195.37, 359.63]},
+    {"id": "p15-b12", "type": "furniture", "text": "03\nCHIẾN LƯỢC PHÁT TRIỂN", "bbox": [39.5, 385.57, 243.52, 404.57]},
+    {"id": "p15-b13", "type": "furniture", "text": "04\nPHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [39.5, 435.91, 326.26, 454.91]},
+    {"id": "p15-b14", "type": "furniture", "text": "05\nQUẢN TRỊ CÔNG TY", "bbox": [39.5, 486.25, 206.67, 505.25]},
+    {"id": "p15-b15", "type": "furniture", "text": "06\nBÁO CÁO ESG", "bbox": [39.5, 536.59, 171.05, 555.59]},
+    {"id": "p15-b16", "type": "furniture", "text": "07\nBÁO CÁO TÀI CHÍNH", "bbox": [39.5, 586.93, 212.6, 605.93]},
+    {"id": "p15-b17", "type": "furniture", "text": "02", "bbox": [30.0, 961.65, 191.83, 1080]},
+    {
+      "id": "p15-b18",
+      "type": "paragraph",
+      "text": "Singapore tiên phong nghiên cứu và phát triển tài năng trong lĩnh vực AI ….",
+      "bbox": [429.0, 987.5, 1019.99, 1005.5]
+    },
+    {"id": "p15-b19", "type": "furniture", "text": "13", "bbox": [293.0, 988.53, 318.8, 1011.4]}
+  ]
+}

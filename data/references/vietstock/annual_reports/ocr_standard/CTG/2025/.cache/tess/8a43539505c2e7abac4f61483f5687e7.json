@@ -1,0 +1,101 @@
+{
+  "text": "VietrnBo\n\nBÁO CÁO 20\nTHƯỜNG NIÊN á",
+  "chars": 27,
+  "words": 7,
+  "wordItems": [
+    {
+      "text": "VietrnBo",
+      "bbox": [
+        1785,
+        269,
+        2118,
+        338
+      ],
+      "conf": 34.461716,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        1770,
+        398,
+        1871,
+        469
+      ],
+      "conf": 87.680359,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1888,
+        399,
+        1998,
+        469
+      ],
+      "conf": 96.574219,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "20",
+      "bbox": [
+        2024,
+        408,
+        2176,
+        509
+      ],
+      "conf": 87.946228,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        1657,
+        468,
+        1873,
+        510
+      ],
+      "conf": 96.573051,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        1893,
+        473,
+        1997,
+        510
+      ],
+      "conf": 96.824631,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "á",
+      "bbox": [
+        2186,
+        488,
+        2217,
+        506
+      ],
+      "conf": 73.993393,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 82,
+  "lowConfRatio": 0.143,
+  "seconds": 1.193
+}

@@ -1,0 +1,71 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\CMG\\2024\\CMG_2024_511722.pdf",
+  "pages": 77,
+  "routes": {
+    "tesseract+gemini": 8,
+    "text_layer": 66,
+    "tesseract": 3
+  },
+  "status": {
+    "OK": 77
+  },
+  "flags": {
+    "MANUAL_REVIEWED": 3,
+    "TEXT_LAYER_BROKEN": 1,
+    "NEAR_EMPTY": 1
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 0.566,
+    "renderAndTesseract": 6.681,
+    "gemini": 69.994,
+    "total": 77.745
+  },
+  "geminiApi": {
+    "calls": 8,
+    "failedCalls": 0,
+    "seconds": 69.935,
+    "input_tokens": 11368,
+    "output_tokens": 3885,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 11,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\CMG\\2024",
+    "mode": "auto",
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "aiOutput": "structured",
+    "openrouterModel": "recursive/flint-v1.0:free",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 180,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

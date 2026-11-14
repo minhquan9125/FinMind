@@ -1,0 +1,77 @@
+{
+  "status": "COMMITTED",
+  "environment": "VPS PostgreSQL",
+  "checks": {
+    "migration_replay": true,
+    "repository_idempotent_replay": true,
+    "immutable_identity_conflict": true,
+    "reader_roundtrip_and_hash": true,
+    "reader_cannot_write": true,
+    "reader_cannot_delete": true,
+    "writer_cannot_review": true,
+    "writer_cannot_mutate": true,
+    "wrong_chunk_hash_rejected": true,
+    "wrong_corpus_index_rejected": true,
+    "application_runtime_read": true,
+    "application_runtime_cannot_write_metadata": true,
+    "rls_blocks_reader_review_even_with_insert_grant": true,
+    "unresolved_endpoints_cannot_be_approved": true,
+    "review_and_quarantine_roundtrip_rolled_back": true
+  },
+  "counts": {
+    "versions": 1,
+    "entities": 169,
+    "assertions": 184,
+    "source_chunks": 6278,
+    "reviews": 0
+  },
+  "roles": [
+    {
+      "rolname": "finmind_graph_reader",
+      "rolsuper": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "finmind_graph_writer",
+      "rolsuper": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "finmind_graph_reviewer",
+      "rolsuper": false,
+      "rolbypassrls": false
+    }
+  ],
+  "rls": [
+    {
+      "relname": "versions",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true
+    },
+    {
+      "relname": "entities",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true
+    },
+    {
+      "relname": "assertions",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true
+    },
+    {
+      "relname": "source_chunks",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true
+    },
+    {
+      "relname": "reviews",
+      "relrowsecurity": true,
+      "relforcerowsecurity": true
+    }
+  ],
+  "graph_version_id": "6f1504e8-3eef-59e7-9d20-8c5957cb4427",
+  "schema_version": "1.0.0",
+  "contract_envelope_conversion": false,
+  "human_approvals_created": 0,
+  "existing_graph_modified": false
+}

@@ -1,0 +1,108 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\TCB\\2024\\TCB_2024_499236.pdf",
+  "pages": 146,
+  "routes": {
+    "tesseract+omniroute": 14,
+    "tesseract+gemini": 1,
+    "tesseract": 35,
+    "text_layer": 96
+  },
+  "status": {
+    "OK": 146
+  },
+  "flags": {
+    "TEXT_LAYER_BROKEN": 45,
+    "MANUAL_REVIEWED": 3
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 1.297,
+    "renderAndTesseract": 43.069,
+    "gemini": 255.611,
+    "total": 300.323
+  },
+  "geminiApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "codecraftApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "omnirouteApi": {
+    "calls": 14,
+    "failedCalls": 0,
+    "seconds": 255.53699999999998,
+    "input_tokens": 18662,
+    "output_tokens": 25209,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 50,
+    "geminiHits": 0,
+    "openrouterHits": 0,
+    "codecraftHits": 0,
+    "omnirouteHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\TCB\\2024",
+    "mode": "always",
+    "provider": "omniroute",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "text",
+    "openrouterModel": "qwen/qwen3.8-27b",
+    "omnirouteModel": "gemini",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 180,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508,
+    "retryPendingPages": [
+      1,
+      11,
+      17,
+      20,
+      23,
+      40,
+      43,
+      51,
+      57,
+      61,
+      65,
+      73,
+      144,
+      146
+    ]
+  }
+}

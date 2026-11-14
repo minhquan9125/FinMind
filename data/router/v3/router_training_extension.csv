@@ -1,0 +1,41 @@
+id,question,needs_graph,needs_content,paraphrase_group,semantic_group,leakage_group
+X001,FPT có liên quan đến vụ cháy chung cư MSN không?,1,1,ext_event_relation,ext_event_relation,lg_ext_event_relation
+X002,Ông Nguyễn Thành Nam bị bắt có ảnh hưởng đến cổ phiếu FPT không?,1,1,ext_event_person,ext_event_person,lg_ext_event_person
+X003,Masan dính dáng gì đến tin đồn đang lan trên thị trường?,1,1,ext_event_rumor,ext_event_rumor,lg_ext_event_rumor
+X004,HPG bị thanh tra thì giá cổ phiếu và hoạt động kinh doanh chịu tác động ra sao?,1,1,ext_event_inspection,ext_event_inspection,lg_ext_event_inspection
+X005,Vụ khởi tố lãnh đạo có liên đới gì tới hệ sinh thái FPT?,1,1,ext_event_leader,ext_event_leader,lg_ext_event_leader
+X006,Tin đồn Vingroup bắt tay Masan ảnh hưởng mã VIC và MSN thế nào?,1,1,ext_event_partnership,ext_event_partnership,lg_ext_event_partnership
+X007,FPT và CMG có liên quan gì đến sự cố trung tâm dữ liệu vừa rồi?,1,1,ext_event_multi_entity,ext_event_multi_entity,lg_ext_event_multi_entity
+X008,Nếu lãnh đạo MWG bị phạt thì Bách Hóa Xanh có bị tác động không?,1,1,ext_event_brand,ext_event_brand,lg_ext_event_brand
+X009,Đối tác của Hòa Phát có dính vụ điều tra này không và HPG bị ảnh hưởng gì?,1,1,ext_event_supply_chain,ext_event_supply_chain,lg_ext_event_supply_chain
+X010,Nguyễn Thành Nam có liên quan tin đồn nào khiến FPT giảm không?,1,1,ext_event_named_person,ext_event_named_person,lg_ext_event_named_person
+X011,Nếu lãi suất tăng thì ngân hàng nào chịu ảnh hưởng nhiều nhất?,1,1,ext_industry_macro_bank,ext_industry_macro_bank,lg_ext_industry_macro_bank
+X012,Mấy mã thép nào hưởng lợi từ đầu tư công?,1,1,ext_industry_macro_steel,ext_industry_macro_steel,lg_ext_industry_macro_steel
+X013,Lạm phát cao thì con bán lẻ nào nặng nhất?,1,1,ext_industry_macro_retail,ext_industry_macro_retail,lg_ext_industry_macro_retail
+X014,Tỷ giá tăng thì nhóm thủy sản mã nào ngon hơn?,1,1,ext_industry_macro_seafood,ext_industry_macro_seafood,lg_ext_industry_macro_seafood
+X015,Giá dầu giảm thì doanh nghiệp dầu khí nào chịu tác động nhiều nhất?,1,1,ext_industry_macro_oil,ext_industry_macro_oil,lg_ext_industry_macro_oil
+X016,Chính sách mới làm nhóm bất động sản bên nào khỏe hơn?,1,1,ext_industry_macro_real_estate,ext_industry_macro_real_estate,lg_ext_industry_macro_real_estate
+X017,Ngành chứng khoán mã nào hưởng lợi nếu thanh khoản tăng?,1,1,ext_industry_macro_securities,ext_industry_macro_securities,lg_ext_industry_macro_securities
+X018,Nhóm công nghệ nào có lợi thế khi đầu tư AI tăng mạnh?,1,1,ext_industry_macro_technology,ext_industry_macro_technology,lg_ext_industry_macro_technology
+X019,Mấy công ty con của FPT năm 2025 làm ăn thế nào?,1,1,ext_multihop_subsidiary,ext_multihop_subsidiary,lg_ext_multihop_subsidiary
+X020,Công ty liên kết của Masan năm 2025 lãi lỗ ra sao?,1,1,ext_multihop_associate,ext_multihop_associate,lg_ext_multihop_associate
+X021,Đơn vị thành viên Hòa Phát có doanh thu bao nhiêu năm 2025?,1,1,ext_multihop_member,ext_multihop_member,lg_ext_multihop_member
+X022,Hệ sinh thái MWG dạo này làm ăn có khởi sắc không?,1,1,ext_multihop_ecosystem,ext_multihop_ecosystem,lg_ext_multihop_ecosystem
+X023,Các công ty FPT nắm quyền kiểm soát có nợ nhiều không?,1,1,ext_multihop_control,ext_multihop_control,lg_ext_multihop_control
+X024,Đối tác chuỗi cung ứng của HPG có kế hoạch mở rộng gì?,1,1,ext_multihop_supply,ext_multihop_supply,lg_ext_multihop_supply
+X025,Công ty con nào của Vingroup có kết quả kinh doanh tốt hơn?,1,1,ext_multihop_rank,ext_multihop_rank,lg_ext_multihop_rank
+X026,Ban lãnh đạo FPT chia sẻ gì về kế hoạch AI năm 2025?,1,1,ext_multihop_leadership_plan,ext_multihop_leadership_plan,lg_ext_multihop_leadership_plan
+X027,Cổ đông lớn của MSN có động thái gom ròng hay xả ròng?,1,1,ext_multihop_shareholder_flow,ext_multihop_shareholder_flow,lg_ext_multihop_shareholder_flow
+X028,Đối thủ cùng ngành của FPT có biên lợi nhuận cao hơn không?,1,1,ext_multihop_competitor_margin,ext_multihop_competitor_margin,lg_ext_multihop_competitor_margin
+X029,Đặt FPT và CMG lên bàn cân xem bên nào làm ăn tốt hơn năm 2025.,1,1,ext_comparison_implicit,ext_comparison_implicit,lg_ext_comparison_implicit
+X030,HPG so găng với NKG thì con nào khỏe hơn?,1,1,ext_comparison_slang,ext_comparison_slang,lg_ext_comparison_slang
+X031,Masan với Thế Giới Di Động bên nào doanh thu cao hơn?,1,1,ext_comparison_brand,ext_comparison_brand,lg_ext_comparison_brand
+X032,Vietcombank và Techcombank ai có nợ thấp hơn?,1,1,ext_comparison_bank,ext_comparison_bank,lg_ext_comparison_bank
+X033,Vinamilk so với Masan mã nào chia cổ tức ngon hơn?,1,1,ext_comparison_dividend,ext_comparison_dividend,lg_ext_comparison_dividend
+X034,FPT có vượt CMG về lợi nhuận không?,1,1,ext_comparison_profit,ext_comparison_profit,lg_ext_comparison_profit
+X035,Ai đang giữ ghế chủ tịch FPT?,1,0,ext_graph_chair,ext_graph_chair,lg_ext_graph_chair
+X036,Sếp lớn bên Masan là ai?,1,0,ext_graph_leader,ext_graph_leader,lg_ext_graph_leader
+X037,Bách Hóa Xanh thuộc hệ sinh thái và công ty mẹ nào?,1,0,ext_graph_brand_parent,ext_graph_brand_parent,lg_ext_graph_brand_parent
+X038,Công ty FPT hoạt động trong lĩnh vực gì?,0,1,ext_static_profile,ext_static_profile,lg_ext_static_profile
+X039,Hòa Phát đặt trụ sở ở đâu?,0,1,ext_static_headquarters,ext_static_headquarters,lg_ext_static_headquarters
+X040,Doanh thu fpt mới nhất là bao nhiêu?,0,1,ext_vector_latest,ext_vector_latest,lg_ext_vector_latest

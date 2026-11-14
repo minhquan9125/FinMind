@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "database_writes": 0,
+  "mapping_chunks_checked": 17664,
+  "document_pairs": 20,
+  "live_reader_replays": 20,
+  "full_text_replays": 17664,
+  "source_and_text_hash_validation": true
+}

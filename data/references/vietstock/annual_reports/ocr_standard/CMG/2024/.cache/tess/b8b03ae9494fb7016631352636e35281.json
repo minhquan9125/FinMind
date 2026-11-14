@@ -1,0 +1,114 @@
+{
+  "text": "VD\n\nCMC CORPORATION\n\nGUẢN TRỊ CÔNG TY\n\n(,",
+  "chars": 31,
+  "words": 8,
+  "wordItems": [
+    {
+      "text": "VD",
+      "bbox": [
+        1267,
+        272,
+        1465,
+        403
+      ],
+      "conf": 13.910385,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        1124,
+        435,
+        1227,
+        468
+      ],
+      "conf": 91.280823,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        1246,
+        435,
+        1606,
+        468
+      ],
+      "conf": 90.152061,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "GUẢN",
+      "bbox": [
+        1118,
+        2818,
+        1297,
+        2876
+      ],
+      "conf": 64.231644,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRỊ",
+      "bbox": [
+        1322,
+        2834,
+        1414,
+        2885
+      ],
+      "conf": 93.192207,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        1440,
+        2822,
+        1619,
+        2876
+      ],
+      "conf": 96.730591,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        1643,
+        2834,
+        1720,
+        2875
+      ],
+      "conf": 96.015747,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "(,",
+      "bbox": [
+        830,
+        2756,
+        907,
+        2959
+      ],
+      "conf": 12.067398,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 70,
+  "lowConfRatio": 0.25,
+  "seconds": 0.714
+}

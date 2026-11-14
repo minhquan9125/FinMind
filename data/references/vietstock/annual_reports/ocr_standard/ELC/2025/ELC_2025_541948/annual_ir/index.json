@@ -1,0 +1,20 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\ELC\\2025\\ELC_2025_541948.pdf",
+  "document_sha256": "be4b5f6af86c46135c47ce5bdaad099f0e11bc7603af54beaf124466c6bf952c",
+  "overrides_applied": [],
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 0
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "observations": "table/observations.json",
+    "pages": 9,
+    "structuredTablePages": 0,
+    "notesTextOnlyPages": 5,
+    "totalObservations": 0,
+    "verifiedObservations": 0
+  }
+}

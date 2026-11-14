@@ -1,0 +1,35 @@
+{
+  "observed_at": "2026-10-07T04:43:23.749990+00:00",
+  "symbols": [
+    "BID",
+    "CMG",
+    "CTG",
+    "ELC",
+    "FPT",
+    "ICT",
+    "ITD",
+    "MBB",
+    "TCB",
+    "VCB"
+  ],
+  "retained_observations": 72096,
+  "removed_price_rows": 21132,
+  "output_bytes": 21503726,
+  "worker_reported_tokens": {
+    "labels-001": 9413,
+    "core-002": 10516,
+    "tests-002": 4741,
+    "review-001": 6081,
+    "display-001": 7170
+  },
+  "this_task_reported_tokens": 37921,
+  "global_reported_tokens": 312113,
+  "global_conservative_reserve": 80701,
+  "global_remaining": 607186,
+  "codex_token_limit": null,
+  "source_originals_sha256_verified": 11,
+  "tests": "16 unittest cases PASS; every retained observation, whitelist completeness, reporting period and raw DB export checked across 10 real tickers; display grouping, configurable rounding and separator changes do not alter DB values; all 11 source hashes unchanged.",
+  "display_config": "config/display.json; gia_tri remains unchanged, gia_tri_hien_thi is presentation-only. PE/PB retained, OHLCV omitted.",
+  "web_reference": "Vietstock FTS direct page unavailable; no equivalence claim.",
+  "extra_guidance": "Discovery suggestions irrelevant to local stdlib financial transform; existing role guidance used."
+}

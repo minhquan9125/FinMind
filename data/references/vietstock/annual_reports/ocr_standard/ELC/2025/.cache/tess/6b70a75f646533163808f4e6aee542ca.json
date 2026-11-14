@@ -1,0 +1,2987 @@
+{
+  "text": "01 Thô\n\nTổng quan về ELCOM\n\n04 BóõØ\n\nTrung tâm chỉ đạo, điều hành và\ngiám sát nhiệm vụ eSightX\n\nLà nền tỏng chiến lược tích hợp kho\ndữ liệu dùng chung vò kho dữ liệu\nvăn bản, đồng bộ dữ liệu “sống”, từ\nđó hỗ trợ chỉ đạo, điều hành vò\ngiám sót nhiệm vụ toòn diện.\neSightX giúp cóc cơ quœn đơn vị sử\ndụng nguồn lực công một cách\nminh bạch, kịp thời, hiệu quỏ dựa\ntrên dữ liệu.\n\nNền tảng dữ liệu tập trung Data5ó0X\n\nLà nền tỏng toèn diện giúp quỏn lý,\nlưu trữ, phôn tích vò chia sẻ dữ liệu\nhiệu quở. Nền tỏng ứng dụng công\nnghệ AI, Mochine Leorning, Doơtd\nLake, Doata Worehouse theo tiêu\nchuẩn quốc tế. Giúp tối ưu quỏn lý\nnhà nước, cung cốp dữ liệu mở, thúc\nđổy đổi mới sóng tọo.\n\nGiải phóp giám sút thông minh và toàn\ndiện EPSS\n\nHệ thống giỏi pháp giám sớt tiên tiến, hỗ\ntrợ quỏn lý hàng nghìn camera từ nhiều\nhỡng khúc nhau. Được phót triển để giỏi\nquyết théch thức giớm sót tộp trung vò\nchia sẻ dữ liệu tợi các tổ chức có quy mô\nlớn, EPSS cung cốp khỏ năng tuồn tra tự\nđộng, ghi hình theo lịch trình, đồng thời\ntích hợp công nghệ AI tiên tiến để nâng\ncơo hiệu quỏ gióm sót.",
+  "chars": 838,
+  "words": 229,
+  "wordItems": [
+    {
+      "text": "01",
+      "bbox": [
+        127,
+        429,
+        154,
+        450
+      ],
+      "conf": 80.431458,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Thô",
+      "bbox": [
+        196,
+        427,
+        257,
+        454
+      ],
+      "conf": 80.431458,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Tổng",
+      "bbox": [
+        179,
+        520,
+        242,
+        550
+      ],
+      "conf": 96.646599,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "quan",
+      "bbox": [
+        253,
+        529,
+        320,
+        550
+      ],
+      "conf": 42.979389,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "về",
+      "bbox": [
+        329,
+        521,
+        360,
+        544
+      ],
+      "conf": 93.30455,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ELCOM",
+      "bbox": [
+        370,
+        523,
+        463,
+        545
+      ],
+      "conf": 74.394958,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "04",
+      "bbox": [
+        124,
+        1561,
+        158,
+        1582
+      ],
+      "conf": 63.745811,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BóõØ",
+      "bbox": [
+        198,
+        1559,
+        262,
+        1586
+      ],
+      "conf": 34.637802,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Trung",
+      "bbox": [
+        1472,
+        1083,
+        1550,
+        1111
+      ],
+      "conf": 96.380081,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tâm",
+      "bbox": [
+        1565,
+        1083,
+        1618,
+        1105
+      ],
+      "conf": 95.02993,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chỉ",
+      "bbox": [
+        1633,
+        1082,
+        1672,
+        1105
+      ],
+      "conf": 96.66317,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đạo,",
+      "bbox": [
+        1686,
+        1083,
+        1748,
+        1111
+      ],
+      "conf": 84.755867,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "điều",
+      "bbox": [
+        1763,
+        1081,
+        1821,
+        1105
+      ],
+      "conf": 96.882973,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hành",
+      "bbox": [
+        1837,
+        1083,
+        1904,
+        1105
+      ],
+      "conf": 96.618057,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        1918,
+        1083,
+        1951,
+        1105
+      ],
+      "conf": 96.547798,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "giám",
+      "bbox": [
+        1473,
+        1126,
+        1541,
+        1154
+      ],
+      "conf": 93.801254,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "sát",
+      "bbox": [
+        1550,
+        1126,
+        1592,
+        1148
+      ],
+      "conf": 92.31144,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "nhiệm",
+      "bbox": [
+        1603,
+        1126,
+        1684,
+        1154
+      ],
+      "conf": 96.307785,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "vụ",
+      "bbox": [
+        1693,
+        1132,
+        1725,
+        1154
+      ],
+      "conf": 93.305809,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "eSightX",
+      "bbox": [
+        1734,
+        1126,
+        1841,
+        1154
+      ],
+      "conf": 91.975555,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Là",
+      "bbox": [
+        1474,
+        1214,
+        1503,
+        1236
+      ],
+      "conf": 91.012375,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "nền",
+      "bbox": [
+        1513,
+        1212,
+        1561,
+        1236
+      ],
+      "conf": 93.305267,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tỏng",
+      "bbox": [
+        1569,
+        1213,
+        1633,
+        1242
+      ],
+      "conf": 74.156067,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chiến",
+      "bbox": [
+        1642,
+        1212,
+        1714,
+        1236
+      ],
+      "conf": 96.554451,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "lược",
+      "bbox": [
+        1723,
+        1213,
+        1778,
+        1241
+      ],
+      "conf": 96.797249,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tích",
+      "bbox": [
+        1786,
+        1214,
+        1835,
+        1236
+      ],
+      "conf": 96.431732,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hợp",
+      "bbox": [
+        1845,
+        1214,
+        1895,
+        1241
+      ],
+      "conf": 96.431732,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kho",
+      "bbox": [
+        1905,
+        1214,
+        1952,
+        1236
+      ],
+      "conf": 96.597435,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "dữ",
+      "bbox": [
+        1473,
+        1258,
+        1508,
+        1280
+      ],
+      "conf": 96.759102,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "liệu",
+      "bbox": [
+        1520,
+        1257,
+        1564,
+        1285
+      ],
+      "conf": 96.673019,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "dùng",
+      "bbox": [
+        1577,
+        1258,
+        1646,
+        1286
+      ],
+      "conf": 96.663811,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "chung",
+      "bbox": [
+        1659,
+        1258,
+        1741,
+        1286
+      ],
+      "conf": 96.768044,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "vò",
+      "bbox": [
+        1754,
+        1258,
+        1786,
+        1280
+      ],
+      "conf": 85.79332,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "kho",
+      "bbox": [
+        1800,
+        1258,
+        1847,
+        1280
+      ],
+      "conf": 96.529366,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "dữ",
+      "bbox": [
+        1860,
+        1258,
+        1895,
+        1280
+      ],
+      "conf": 95.068069,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "liệu",
+      "bbox": [
+        1907,
+        1257,
+        1951,
+        1285
+      ],
+      "conf": 96.521965,
+      "block": 6,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "văn",
+      "bbox": [
+        1472,
+        1302,
+        1521,
+        1324
+      ],
+      "conf": 93.582748,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "bản,",
+      "bbox": [
+        1532,
+        1301,
+        1590,
+        1327
+      ],
+      "conf": 57.900513,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "đồng",
+      "bbox": [
+        1600,
+        1300,
+        1669,
+        1330
+      ],
+      "conf": 96.814003,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "bộ",
+      "bbox": [
+        1680,
+        1302,
+        1714,
+        1329
+      ],
+      "conf": 96.500397,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "dữ",
+      "bbox": [
+        1723,
+        1302,
+        1758,
+        1324
+      ],
+      "conf": 96.428444,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "liệu",
+      "bbox": [
+        1766,
+        1301,
+        1810,
+        1329
+      ],
+      "conf": 96.428444,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "“sống”,",
+      "bbox": [
+        1820,
+        1300,
+        1916,
+        1330
+      ],
+      "conf": 95.877625,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        1925,
+        1302,
+        1953,
+        1324
+      ],
+      "conf": 96.952354,
+      "block": 6,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "đó",
+      "bbox": [
+        1473,
+        1346,
+        1508,
+        1368
+      ],
+      "conf": 96.968956,
+      "block": 6,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "hỗ",
+      "bbox": [
+        1525,
+        1342,
+        1557,
+        1368
+      ],
+      "conf": 96.396843,
+      "block": 6,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "trợ",
+      "bbox": [
+        1573,
+        1348,
+        1611,
+        1373
+      ],
+      "conf": 96.889481,
+      "block": 6,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "chỉ",
+      "bbox": [
+        1628,
+        1345,
+        1666,
+        1368
+      ],
+      "conf": 96.926208,
+      "block": 6,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "đạo,",
+      "bbox": [
+        1683,
+        1346,
+        1743,
+        1373
+      ],
+      "conf": 57.509102,
+      "block": 6,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "điều",
+      "bbox": [
+        1761,
+        1344,
+        1818,
+        1368
+      ],
+      "conf": 96.522209,
+      "block": 6,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "hành",
+      "bbox": [
+        1836,
+        1346,
+        1902,
+        1368
+      ],
+      "conf": 64.784721,
+      "block": 6,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "vò",
+      "bbox": [
+        1919,
+        1346,
+        1951,
+        1368
+      ],
+      "conf": 87.227814,
+      "block": 6,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "giám",
+      "bbox": [
+        1473,
+        1389,
+        1540,
+        1416
+      ],
+      "conf": 92.335617,
+      "block": 6,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "sót",
+      "bbox": [
+        1566,
+        1389,
+        1608,
+        1411
+      ],
+      "conf": 95.993187,
+      "block": 6,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "nhiệm",
+      "bbox": [
+        1635,
+        1389,
+        1715,
+        1416
+      ],
+      "conf": 96.648834,
+      "block": 6,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "vụ",
+      "bbox": [
+        1741,
+        1395,
+        1771,
+        1416
+      ],
+      "conf": 93.271278,
+      "block": 6,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "toòn",
+      "bbox": [
+        1797,
+        1389,
+        1860,
+        1411
+      ],
+      "conf": 39.59877,
+      "block": 6,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "diện.",
+      "bbox": [
+        1887,
+        1389,
+        1951,
+        1416
+      ],
+      "conf": 95.358017,
+      "block": 6,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "eSightX",
+      "bbox": [
+        1473,
+        1433,
+        1577,
+        1461
+      ],
+      "conf": 92.760933,
+      "block": 6,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "giúp",
+      "bbox": [
+        1586,
+        1433,
+        1645,
+        1460
+      ],
+      "conf": 96.531326,
+      "block": 6,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "cóc",
+      "bbox": [
+        1654,
+        1433,
+        1704,
+        1455
+      ],
+      "conf": 94.93586,
+      "block": 6,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "cơ",
+      "bbox": [
+        1713,
+        1437,
+        1745,
+        1455
+      ],
+      "conf": 93.304474,
+      "block": 6,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "quœn",
+      "bbox": [
+        1754,
+        1439,
+        1823,
+        1460
+      ],
+      "conf": 66.980469,
+      "block": 6,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "đơn",
+      "bbox": [
+        1833,
+        1433,
+        1884,
+        1455
+      ],
+      "conf": 96.756065,
+      "block": 6,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "vị",
+      "bbox": [
+        1893,
+        1434,
+        1913,
+        1460
+      ],
+      "conf": 96.894516,
+      "block": 6,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "sử",
+      "bbox": [
+        1923,
+        1432,
+        1953,
+        1455
+      ],
+      "conf": 96.843056,
+      "block": 6,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "dụng",
+      "bbox": [
+        1473,
+        1477,
+        1541,
+        1505
+      ],
+      "conf": 96.34314,
+      "block": 6,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "nguồn",
+      "bbox": [
+        1563,
+        1475,
+        1647,
+        1504
+      ],
+      "conf": 96.616966,
+      "block": 6,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "lực",
+      "bbox": [
+        1668,
+        1476,
+        1705,
+        1504
+      ],
+      "conf": 96.258453,
+      "block": 6,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "công",
+      "bbox": [
+        1725,
+        1477,
+        1792,
+        1505
+      ],
+      "conf": 96.066887,
+      "block": 6,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "một",
+      "bbox": [
+        1814,
+        1477,
+        1865,
+        1504
+      ],
+      "conf": 96.788605,
+      "block": 6,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "cách",
+      "bbox": [
+        1885,
+        1477,
+        1951,
+        1499
+      ],
+      "conf": 59.099117,
+      "block": 6,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "minh",
+      "bbox": [
+        1474,
+        1521,
+        1536,
+        1542
+      ],
+      "conf": 94.78878,
+      "block": 6,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "bạch,",
+      "bbox": [
+        1551,
+        1521,
+        1626,
+        1548
+      ],
+      "conf": 94.986465,
+      "block": 6,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "kịp",
+      "bbox": [
+        1641,
+        1521,
+        1678,
+        1548
+      ],
+      "conf": 96.803307,
+      "block": 6,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "thời,",
+      "bbox": [
+        1691,
+        1521,
+        1750,
+        1546
+      ],
+      "conf": 96.629013,
+      "block": 6,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "hiệu",
+      "bbox": [
+        1765,
+        1521,
+        1819,
+        1548
+      ],
+      "conf": 93.305649,
+      "block": 6,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "quỏ",
+      "bbox": [
+        1833,
+        1520,
+        1885,
+        1548
+      ],
+      "conf": 89.478065,
+      "block": 6,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "dựa",
+      "bbox": [
+        1899,
+        1521,
+        1951,
+        1548
+      ],
+      "conf": 95.876762,
+      "block": 6,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "trên",
+      "bbox": [
+        1472,
+        1565,
+        1526,
+        1587
+      ],
+      "conf": 96.910835,
+      "block": 6,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "dữ",
+      "bbox": [
+        1536,
+        1565,
+        1571,
+        1587
+      ],
+      "conf": 96.931381,
+      "block": 6,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "liệu.",
+      "bbox": [
+        1580,
+        1564,
+        1631,
+        1592
+      ],
+      "conf": 96.780083,
+      "block": 6,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "Nền",
+      "bbox": [
+        2063,
+        1081,
+        2115,
+        1105
+      ],
+      "conf": 96.31691,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tảng",
+      "bbox": [
+        2124,
+        1082,
+        2188,
+        1111
+      ],
+      "conf": 94.416649,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "dữ",
+      "bbox": [
+        2198,
+        1083,
+        2234,
+        1105
+      ],
+      "conf": 94.372368,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "liệu",
+      "bbox": [
+        2242,
+        1082,
+        2289,
+        1111
+      ],
+      "conf": 96.825821,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tập",
+      "bbox": [
+        2298,
+        1083,
+        2346,
+        1111
+      ],
+      "conf": 96.198044,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "trung",
+      "bbox": [
+        2354,
+        1085,
+        2428,
+        1111
+      ],
+      "conf": 92.739983,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Data5ó0X",
+      "bbox": [
+        2438,
+        1083,
+        2576,
+        1105
+      ],
+      "conf": 41.135292,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Là",
+      "bbox": [
+        2064,
+        1170,
+        2093,
+        1192
+      ],
+      "conf": 96.340355,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "nền",
+      "bbox": [
+        2108,
+        1168,
+        2156,
+        1192
+      ],
+      "conf": 93.30558,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tỏng",
+      "bbox": [
+        2169,
+        1169,
+        2233,
+        1198
+      ],
+      "conf": 83.465408,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "toèn",
+      "bbox": [
+        2247,
+        1170,
+        2310,
+        1192
+      ],
+      "conf": 51.120483,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "diện",
+      "bbox": [
+        2324,
+        1170,
+        2381,
+        1197
+      ],
+      "conf": 96.771767,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "giúp",
+      "bbox": [
+        2395,
+        1170,
+        2454,
+        1198
+      ],
+      "conf": 93.3022,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "quỏn",
+      "bbox": [
+        2468,
+        1169,
+        2536,
+        1197
+      ],
+      "conf": 89.82579,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "lý,",
+      "bbox": [
+        2551,
+        1169,
+        2577,
+        1197
+      ],
+      "conf": 97.003067,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "lưu",
+      "bbox": [
+        2063,
+        1213,
+        2100,
+        1236
+      ],
+      "conf": 96.37439,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "trữ,",
+      "bbox": [
+        2115,
+        1214,
+        2159,
+        1239
+      ],
+      "conf": 93.288284,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "phôn",
+      "bbox": [
+        2175,
+        1214,
+        2243,
+        1241
+      ],
+      "conf": 91.732246,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "tích",
+      "bbox": [
+        2257,
+        1214,
+        2307,
+        1236
+      ],
+      "conf": 96.757523,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "vò",
+      "bbox": [
+        2321,
+        1214,
+        2353,
+        1236
+      ],
+      "conf": 96.717407,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "chia",
+      "bbox": [
+        2369,
+        1214,
+        2425,
+        1236
+      ],
+      "conf": 94.388802,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "sẻ",
+      "bbox": [
+        2440,
+        1213,
+        2469,
+        1236
+      ],
+      "conf": 96.77533,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "dữ",
+      "bbox": [
+        2484,
+        1214,
+        2519,
+        1236
+      ],
+      "conf": 95.945061,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "liệu",
+      "bbox": [
+        2533,
+        1213,
+        2577,
+        1241
+      ],
+      "conf": 96.64476,
+      "block": 8,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hiệu",
+      "bbox": [
+        2063,
+        1258,
+        2118,
+        1285
+      ],
+      "conf": 93.305183,
+      "block": 8,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "quở.",
+      "bbox": [
+        2134,
+        1257,
+        2194,
+        1285
+      ],
+      "conf": 46.359772,
+      "block": 8,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Nền",
+      "bbox": [
+        2211,
+        1256,
+        2262,
+        1280
+      ],
+      "conf": 92.94281,
+      "block": 8,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "tỏng",
+      "bbox": [
+        2278,
+        1257,
+        2342,
+        1286
+      ],
+      "conf": 87.54866,
+      "block": 8,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "ứng",
+      "bbox": [
+        2359,
+        1258,
+        2408,
+        1286
+      ],
+      "conf": 96.598846,
+      "block": 8,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "dụng",
+      "bbox": [
+        2425,
+        1258,
+        2493,
+        1286
+      ],
+      "conf": 96.846626,
+      "block": 8,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "công",
+      "bbox": [
+        2510,
+        1258,
+        2577,
+        1286
+      ],
+      "conf": 96.057655,
+      "block": 8,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "nghệ",
+      "bbox": [
+        2063,
+        1302,
+        2131,
+        1330
+      ],
+      "conf": 91.112061,
+      "block": 8,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "AI,",
+      "bbox": [
+        2157,
+        1302,
+        2189,
+        1327
+      ],
+      "conf": 93.278015,
+      "block": 8,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "Mochine",
+      "bbox": [
+        2217,
+        1302,
+        2331,
+        1324
+      ],
+      "conf": 87.949203,
+      "block": 8,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "Leorning,",
+      "bbox": [
+        2359,
+        1302,
+        2482,
+        1330
+      ],
+      "conf": 89.465973,
+      "block": 8,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "Doơtd",
+      "bbox": [
+        2511,
+        1302,
+        2577,
+        1324
+      ],
+      "conf": 35.753967,
+      "block": 8,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "Lake,",
+      "bbox": [
+        2064,
+        1346,
+        2133,
+        1371
+      ],
+      "conf": 64.056427,
+      "block": 8,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "Doata",
+      "bbox": [
+        2162,
+        1346,
+        2229,
+        1368
+      ],
+      "conf": 51.626038,
+      "block": 8,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "Worehouse",
+      "bbox": [
+        2256,
+        1346,
+        2413,
+        1368
+      ],
+      "conf": 22.912743,
+      "block": 8,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "theo",
+      "bbox": [
+        2439,
+        1346,
+        2501,
+        1368
+      ],
+      "conf": 95.25798,
+      "block": 8,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "tiêu",
+      "bbox": [
+        2527,
+        1346,
+        2577,
+        1368
+      ],
+      "conf": 95.800598,
+      "block": 8,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "chuẩn",
+      "bbox": [
+        2063,
+        1386,
+        2146,
+        1411
+      ],
+      "conf": 72.582123,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "quốc",
+      "bbox": [
+        2162,
+        1387,
+        2230,
+        1416
+      ],
+      "conf": 96.7267,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "tế.",
+      "bbox": [
+        2245,
+        1387,
+        2279,
+        1411
+      ],
+      "conf": 96.754166,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "Giúp",
+      "bbox": [
+        2296,
+        1389,
+        2359,
+        1416
+      ],
+      "conf": 96.495132,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "tối",
+      "bbox": [
+        2375,
+        1387,
+        2409,
+        1411
+      ],
+      "conf": 96.819138,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "ưu",
+      "bbox": [
+        2426,
+        1393,
+        2456,
+        1411
+      ],
+      "conf": 93.304474,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "quỏn",
+      "bbox": [
+        2473,
+        1388,
+        2542,
+        1416
+      ],
+      "conf": 73.430862,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "lý",
+      "bbox": [
+        2559,
+        1388,
+        2579,
+        1416
+      ],
+      "conf": 96.905396,
+      "block": 8,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "nhà",
+      "bbox": [
+        2063,
+        1433,
+        2112,
+        1455
+      ],
+      "conf": 36.418434,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "nước,",
+      "bbox": [
+        2126,
+        1433,
+        2198,
+        1458
+      ],
+      "conf": 96.151955,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "cung",
+      "bbox": [
+        2211,
+        1439,
+        2277,
+        1461
+      ],
+      "conf": 93.304008,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "cốp",
+      "bbox": [
+        2290,
+        1431,
+        2342,
+        1460
+      ],
+      "conf": 91.366989,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "dữ",
+      "bbox": [
+        2354,
+        1433,
+        2389,
+        1455
+      ],
+      "conf": 96.37468,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "liệu",
+      "bbox": [
+        2401,
+        1432,
+        2445,
+        1460
+      ],
+      "conf": 96.77494,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "mở,",
+      "bbox": [
+        2458,
+        1432,
+        2506,
+        1458
+      ],
+      "conf": 96.935852,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "thúc",
+      "bbox": [
+        2518,
+        1433,
+        2578,
+        1455
+      ],
+      "conf": 96.345734,
+      "block": 8,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "đổy",
+      "bbox": [
+        2063,
+        1474,
+        2115,
+        1504
+      ],
+      "conf": 91.891151,
+      "block": 8,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "đổi",
+      "bbox": [
+        2124,
+        1473,
+        2165,
+        1499
+      ],
+      "conf": 96.489586,
+      "block": 8,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "mới",
+      "bbox": [
+        2176,
+        1477,
+        2222,
+        1499
+      ],
+      "conf": 97.017776,
+      "block": 8,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "sóng",
+      "bbox": [
+        2232,
+        1477,
+        2297,
+        1505
+      ],
+      "conf": 87.538223,
+      "block": 8,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "tọo.",
+      "bbox": [
+        2307,
+        1479,
+        2361,
+        1504
+      ],
+      "conf": 85.73259,
+      "block": 8,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "Giải",
+      "bbox": [
+        2657,
+        1082,
+        2712,
+        1105
+      ],
+      "conf": 91.052261,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "phóp",
+      "bbox": [
+        2726,
+        1083,
+        2797,
+        1110
+      ],
+      "conf": 42.5,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "giám",
+      "bbox": [
+        2810,
+        1083,
+        2878,
+        1111
+      ],
+      "conf": 79.476418,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "sút",
+      "bbox": [
+        2891,
+        1083,
+        2933,
+        1105
+      ],
+      "conf": 83.01976,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thông",
+      "bbox": [
+        2946,
+        1083,
+        3027,
+        1111
+      ],
+      "conf": 96.338081,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "minh",
+      "bbox": [
+        3041,
+        1083,
+        3106,
+        1104
+      ],
+      "conf": 92.694725,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        3118,
+        1083,
+        3151,
+        1105
+      ],
+      "conf": 96.96785,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "toàn",
+      "bbox": [
+        3165,
+        1083,
+        3228,
+        1105
+      ],
+      "conf": 95.724625,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "diện",
+      "bbox": [
+        2657,
+        1126,
+        2715,
+        1154
+      ],
+      "conf": 93.260704,
+      "block": 9,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "EPSS",
+      "bbox": [
+        2726,
+        1126,
+        2791,
+        1148
+      ],
+      "conf": 92.843399,
+      "block": 9,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Hệ",
+      "bbox": [
+        2658,
+        1214,
+        2692,
+        1241
+      ],
+      "conf": 97.016251,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thống",
+      "bbox": [
+        2702,
+        1212,
+        2782,
+        1242
+      ],
+      "conf": 96.356682,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "giỏi",
+      "bbox": [
+        2793,
+        1213,
+        2842,
+        1242
+      ],
+      "conf": 48.801529,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "pháp",
+      "bbox": [
+        2854,
+        1214,
+        2924,
+        1241
+      ],
+      "conf": 29.506897,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "giám",
+      "bbox": [
+        2935,
+        1214,
+        3002,
+        1242
+      ],
+      "conf": 93.303413,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "sớt",
+      "bbox": [
+        3013,
+        1214,
+        3055,
+        1236
+      ],
+      "conf": 89.127274,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tiên",
+      "bbox": [
+        3065,
+        1214,
+        3116,
+        1236
+      ],
+      "conf": 96.895645,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tiến,",
+      "bbox": [
+        3126,
+        1212,
+        3184,
+        1239
+      ],
+      "conf": 96.86805,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hỗ",
+      "bbox": [
+        3196,
+        1210,
+        3228,
+        1236
+      ],
+      "conf": 97.011055,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "trợ",
+      "bbox": [
+        2656,
+        1260,
+        2694,
+        1285
+      ],
+      "conf": 93.304192,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "quỏn",
+      "bbox": [
+        2708,
+        1257,
+        2777,
+        1285
+      ],
+      "conf": 87.729195,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "lý",
+      "bbox": [
+        2792,
+        1257,
+        2813,
+        1285
+      ],
+      "conf": 96.953941,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        2827,
+        1258,
+        2894,
+        1286
+      ],
+      "conf": 40.848583,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "nghìn",
+      "bbox": [
+        2910,
+        1258,
+        2983,
+        1286
+      ],
+      "conf": 96.872353,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "camera",
+      "bbox": [
+        2997,
+        1264,
+        3101,
+        1280
+      ],
+      "conf": 9.071999,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "từ",
+      "bbox": [
+        3115,
+        1258,
+        3144,
+        1280
+      ],
+      "conf": 96.400345,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "nhiều",
+      "bbox": [
+        3157,
+        1256,
+        3228,
+        1280
+      ],
+      "conf": 96.602257,
+      "block": 10,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hỡng",
+      "bbox": [
+        2658,
+        1302,
+        2725,
+        1330
+      ],
+      "conf": 14.233711,
+      "block": 10,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "khúc",
+      "bbox": [
+        2739,
+        1302,
+        2803,
+        1324
+      ],
+      "conf": 84.653801,
+      "block": 10,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "nhau.",
+      "bbox": [
+        2816,
+        1302,
+        2889,
+        1324
+      ],
+      "conf": 69.006577,
+      "block": 10,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Được",
+      "bbox": [
+        2902,
+        1302,
+        2973,
+        1329
+      ],
+      "conf": 93.158279,
+      "block": 10,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "phót",
+      "bbox": [
+        2986,
+        1302,
+        3049,
+        1329
+      ],
+      "conf": 90.750809,
+      "block": 10,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "triển",
+      "bbox": [
+        3060,
+        1299,
+        3120,
+        1324
+      ],
+      "conf": 96.948074,
+      "block": 10,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "để",
+      "bbox": [
+        3133,
+        1299,
+        3167,
+        1324
+      ],
+      "conf": 96.877724,
+      "block": 10,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "giỏi",
+      "bbox": [
+        3179,
+        1301,
+        3228,
+        1330
+      ],
+      "conf": 95.945625,
+      "block": 10,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "quyết",
+      "bbox": [
+        2657,
+        1344,
+        2734,
+        1373
+      ],
+      "conf": 93.242081,
+      "block": 10,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "théch",
+      "bbox": [
+        2748,
+        1346,
+        2826,
+        1368
+      ],
+      "conf": 79.91703,
+      "block": 10,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "thức",
+      "bbox": [
+        2839,
+        1346,
+        2900,
+        1368
+      ],
+      "conf": 93.277084,
+      "block": 10,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "giớm",
+      "bbox": [
+        2913,
+        1346,
+        2980,
+        1374
+      ],
+      "conf": 90.647957,
+      "block": 10,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "sót",
+      "bbox": [
+        2994,
+        1346,
+        3036,
+        1368
+      ],
+      "conf": 86.740219,
+      "block": 10,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "tộp",
+      "bbox": [
+        3049,
+        1346,
+        3097,
+        1373
+      ],
+      "conf": 87.022018,
+      "block": 10,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "trung",
+      "bbox": [
+        3110,
+        1348,
+        3181,
+        1374
+      ],
+      "conf": 96.754288,
+      "block": 10,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "vò",
+      "bbox": [
+        3195,
+        1346,
+        3227,
+        1368
+      ],
+      "conf": 84.350616,
+      "block": 10,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "chia",
+      "bbox": [
+        2657,
+        1389,
+        2713,
+        1411
+      ],
+      "conf": 92.197922,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "sẻ",
+      "bbox": [
+        2724,
+        1388,
+        2754,
+        1411
+      ],
+      "conf": 96.827042,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "dữ",
+      "bbox": [
+        2764,
+        1389,
+        2800,
+        1411
+      ],
+      "conf": 93.709541,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "liệu",
+      "bbox": [
+        2810,
+        1388,
+        2854,
+        1416
+      ],
+      "conf": 93.292175,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "tợi",
+      "bbox": [
+        2865,
+        1390,
+        2900,
+        1416
+      ],
+      "conf": 89.561661,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "các",
+      "bbox": [
+        2911,
+        1389,
+        2961,
+        1411
+      ],
+      "conf": 96.737335,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "tổ",
+      "bbox": [
+        2971,
+        1385,
+        2999,
+        1411
+      ],
+      "conf": 96.837402,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "chức",
+      "bbox": [
+        3009,
+        1389,
+        3074,
+        1411
+      ],
+      "conf": 96.940865,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "có",
+      "bbox": [
+        3085,
+        1389,
+        3117,
+        1411
+      ],
+      "conf": 96.525093,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "quy",
+      "bbox": [
+        3128,
+        1395,
+        3177,
+        1416
+      ],
+      "conf": 96.639145,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "mô",
+      "bbox": [
+        3188,
+        1389,
+        3229,
+        1411
+      ],
+      "conf": 96.743225,
+      "block": 10,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "lớn,",
+      "bbox": [
+        2658,
+        1432,
+        2703,
+        1458
+      ],
+      "conf": 93.250633,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "EPSS",
+      "bbox": [
+        2717,
+        1433,
+        2782,
+        1455
+      ],
+      "conf": 92.960739,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "cung",
+      "bbox": [
+        2794,
+        1439,
+        2860,
+        1461
+      ],
+      "conf": 93.251198,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "cốp",
+      "bbox": [
+        2873,
+        1431,
+        2924,
+        1460
+      ],
+      "conf": 91.699623,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "khỏ",
+      "bbox": [
+        2937,
+        1432,
+        2984,
+        1455
+      ],
+      "conf": 87.985771,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "năng",
+      "bbox": [
+        2998,
+        1433,
+        3066,
+        1461
+      ],
+      "conf": 42.346626,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "tuồn",
+      "bbox": [
+        3078,
+        1431,
+        3140,
+        1455
+      ],
+      "conf": 85.916588,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "tra",
+      "bbox": [
+        3151,
+        1435,
+        3189,
+        1455
+      ],
+      "conf": 59.178566,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "tự",
+      "bbox": [
+        3202,
+        1435,
+        3230,
+        1460
+      ],
+      "conf": 96.673927,
+      "block": 10,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "động,",
+      "bbox": [
+        2657,
+        1477,
+        2734,
+        1505
+      ],
+      "conf": 96.701775,
+      "block": 10,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "ghi",
+      "bbox": [
+        2750,
+        1477,
+        2790,
+        1505
+      ],
+      "conf": 91.412163,
+      "block": 10,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "hình",
+      "bbox": [
+        2806,
+        1477,
+        2860,
+        1498
+      ],
+      "conf": 96.738487,
+      "block": 10,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "theo",
+      "bbox": [
+        2874,
+        1477,
+        2936,
+        1499
+      ],
+      "conf": 96.718407,
+      "block": 10,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "lịch",
+      "bbox": [
+        2952,
+        1476,
+        2995,
+        1504
+      ],
+      "conf": 96.851524,
+      "block": 10,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "trình,",
+      "bbox": [
+        3010,
+        1477,
+        3077,
+        1502
+      ],
+      "conf": 96.493553,
+      "block": 10,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "đồng",
+      "bbox": [
+        3092,
+        1475,
+        3162,
+        1505
+      ],
+      "conf": 96.179413,
+      "block": 10,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "thời",
+      "bbox": [
+        3177,
+        1477,
+        3228,
+        1499
+      ],
+      "conf": 96.302521,
+      "block": 10,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "tích",
+      "bbox": [
+        2656,
+        1521,
+        2705,
+        1543
+      ],
+      "conf": 96.458031,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "hợp",
+      "bbox": [
+        2720,
+        1521,
+        2771,
+        1548
+      ],
+      "conf": 96.48204,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "công",
+      "bbox": [
+        2784,
+        1521,
+        2851,
+        1549
+      ],
+      "conf": 96.633095,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "nghệ",
+      "bbox": [
+        2866,
+        1521,
+        2933,
+        1549
+      ],
+      "conf": 96.639023,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "AI",
+      "bbox": [
+        2946,
+        1521,
+        2970,
+        1542
+      ],
+      "conf": 96.302353,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "tiên",
+      "bbox": [
+        2984,
+        1521,
+        3034,
+        1543
+      ],
+      "conf": 96.383522,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "tiến",
+      "bbox": [
+        3047,
+        1519,
+        3098,
+        1543
+      ],
+      "conf": 96.276329,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "để",
+      "bbox": [
+        3111,
+        1518,
+        3146,
+        1543
+      ],
+      "conf": 96.952599,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "nâng",
+      "bbox": [
+        3160,
+        1521,
+        3228,
+        1549
+      ],
+      "conf": 83.992477,
+      "block": 10,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "cơo",
+      "bbox": [
+        2657,
+        1571,
+        2708,
+        1587
+      ],
+      "conf": 53.057434,
+      "block": 10,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "hiệu",
+      "bbox": [
+        2718,
+        1565,
+        2772,
+        1592
+      ],
+      "conf": 93.305603,
+      "block": 10,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "quỏ",
+      "bbox": [
+        2783,
+        1564,
+        2834,
+        1592
+      ],
+      "conf": 91.420502,
+      "block": 10,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "gióm",
+      "bbox": [
+        2845,
+        1565,
+        2912,
+        1593
+      ],
+      "conf": 85.096367,
+      "block": 10,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "sót.",
+      "bbox": [
+        2922,
+        1565,
+        2970,
+        1587
+      ],
+      "conf": 96.771156,
+      "block": 10,
+      "paragraph": 1,
+      "line": 9
+    }
+  ],
+  "meanConf": 88,
+  "lowConfRatio": 0.096,
+  "seconds": 1.592
+}

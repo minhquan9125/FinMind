@@ -1,0 +1,211 @@
+{
+  "ir_version": "1",
+  "page": 190,
+  "printed_page": null,
+  "page_class": "notes",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+    "file_name": "TCB_2025_539917.pdf"
+  },
+  "blocks": [
+    {
+      "id": "p190-b1",
+      "type": "paragraph",
+      "text": "Rủi ro thanh khoản phát sinh trong quá trình Ngân hàng huy động vốn nói chung và trong quá trình quản lý các trạng thái tiền tệ của Ngân\nhàng. Rủi ro thanh khoản là rủi ro do Ngân hàng không có khả năng thực hiện các nghĩa vụ trả nợ khi đến hạn; hoặc Ngân hàng có khả\nnăng thực hiện nghĩa vụ trả nợ khi đến hạn nhưng phải trả chi phí cao hơn mức chi phí bình quân của thị trường theo quy định nội bộ của",
+      "bbox": [42.28, 123.79, 544.1, 153.28]
+    },
+    {
+      "id": "p190-b2",
+      "type": "paragraph",
+      "text": "Thời gian đáo hạn của các tài sản và công nợ thể hiện thời hạn còn lại của tài sản và công nợ tính từ ngày lập báo cáo tài chính hợp nhất\nđến lần thanh toán cuối cùng theo quy định trong hợp đồng hoặc trong điều khoản phát hành.",
+      "bbox": [42.28, 176.28, 544.02, 195.28]
+    },
+    {
+      "id": "p190-b3",
+      "type": "paragraph",
+      "text": "Các giả định và điều kiện sau được áp dụng trong phân tích thời gian đến hạn của các tài sản và công nợ của Ngân hàng:\n› Tiền gửi tại NHNN được xếp loại tiền gửi thanh toán, trong đó bao gồm tiền gửi dự trữ bắt buộc. Số dư của tiền gửi dự trữ bắt buộc phụ\nthuộc vào thành phần và kỳ hạn của các khoản tiền gửi khách hàng của Ngân hàng;",
+      "bbox": [42.28, 207.79, 544.12, 237.28]
+    },
+    {
+      "id": "p190-b4",
+      "type": "paragraph",
+      "text": "› Thời gian đáo hạn của chứng khoán kinh doanh và chứng khoán đầu tư được tính dựa trên ngày đáo hạn của từng loại chứng khoán.\nTrong đó, các khoản chứng khoán do Chính phủ phát hành/bảo lãnh, mặc dù được xếp vào các kỳ hạn dài theo kỳ hạn còn lại, nhưng\nlà tài sản thanh khoản trên thị trường, hoàn toàn có thể chuyển thành tiền trong một khoảng thời gian ngắn mà chịu ít rủi ro về thay\nđổi giá trị. Thời gian đáo hạn của chứng khoán vốn – chứng khoán đầu tư của công ty con được xác định theo kế hoạch kinh doanh;",
+      "bbox": [49.36, 244.77, 544.09, 284.94]
+    },
+    {
+      "id": "p190-b5",
+      "type": "paragraph",
+      "text": "› Thời gian đáo hạn của các khoản tiền gửi tại và cấp tín dụng cho các tổ chức tài chính, các TCTD khác và các khoản cho vay khách\nhàng được xác định dựa vào ngày tới hạn thanh toán theo kỳ hạn trả nợ của hợp đồng. Thời gian đến hạn thực tế có thể thay đổi do",
+      "bbox": [49.36, 292.43, 544.03, 311.61]
+    },
+    {
+      "id": "p190-b6",
+      "type": "paragraph",
+      "text": "› Thời gian đáo hạn của các khoản đầu tư góp vốn mua cổ phần được coi là hơn năm (5) năm do các khoản đầu tư này không có thời",
+      "bbox": [49.36, 329.59, 543.99, 338.27]
+    },
+    {
+      "id": "p190-b7",
+      "type": "paragraph",
+      "text": "› Thời gian đáo hạn của các khoản tiền gửi và vay của các tổ chức tài chính, các TCTD khác, các khoản tiền gửi của khách hàng, các\nkhoản nợ Chính phủ và NHNN và tài sản Có khác được xác định dựa vào tính chất của các khoản này hoặc thời gian đáo hạn trên hợp\nđồng. Thời gian đến hạn thanh toán của tiền gửi thanh toán được xác định dựa trên kết quả phân tích mô hình hành vi ứng xử của khách\nhàng. Thời gian đáo hạn đối với các khoản vay và tiền gửi kỳ hạn được xác định dựa trên ngày đến hạn theo hợp đồng. Trong thực tế,\ncác khoản này có thể được quay vòng và do đó duy trì trong thời gian dài hơn thời gian đáo hạn ban đầu;",
+      "bbox": [49.36, 356.25, 544.06, 406.92]
+    },
+    {
+      "id": "p190-b8",
+      "type": "paragraph",
+      "text": "› Thời gian đáo hạn của tài sản cố định được xác định dựa vào thời gian sử dụng hữu ích còn lại của tài sản;",
+      "bbox": [49.36, 414.41, 442.8, 423.09]
+    },
+    {
+      "id": "p190-b9",
+      "type": "paragraph",
+      "text": "› Thời gian đáo hạn của khoản mục phát hành giấy tờ có giá dựa trên thời gian đáo hạn thực tế của từng loại giấy tờ có giá;",
+      "bbox": [49.36, 430.58, 499.97, 439.26]
+    },
+    {
+      "id": "p190-b10",
+      "type": "paragraph",
+      "text": "› Thời gian đáo hạn của các khoản nợ khác được xếp loại theo thời gian đáo hạn thực tế của từng khoản nợ.",
+      "bbox": [49.36, 446.75, 445.66, 455.42]
+    },
+    {
+      "id": "p190-b11",
+      "type": "paragraph",
+      "text": "Bảng dưới đây trình bày phân tích tài sản và công nợ của Ngân hàng theo các nhóm kỳ đáo hạn tại thời điểm kết thúc năm tài chính",
+      "bbox": [42.28, 473.64, 544.09, 482.14]
+    },
+    {"id": "p190-b12", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [489.91, 62.52, 544.25, 71.02]},
+    {
+      "id": "p190-b13",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\ntại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [646.3, 62.52, 862.55, 80.12]
+    },
+    {"id": "p190-b14", "type": "paragraph", "text": "Tại 31/12/2025", "bbox": [651.97, 126.12, 701.36, 133.62]},
+    {"id": "p190-b15", "type": "paragraph", "text": "Trên 3 tháng Đến 3 tháng", "bbox": [734.78, 144.8, 827.72, 152.3]},
+    {"id": "p190-b16", "type": "paragraph", "text": "Tài sản", "bbox": [651.96, 169.65, 675.85, 177.15]},
+    {"id": "p190-b17", "type": "paragraph", "text": "Tiền mặt, vàng", "bbox": [651.96, 185.17, 700.64, 192.67]},
+    {"id": "p190-b18", "type": "paragraph", "text": "Tiền gửi tại NHNN", "bbox": [651.95, 201.02, 711.92, 208.52]},
+    {"id": "p190-b19", "type": "paragraph", "text": "Tiền gửi và cấp tín\ndụng cho các\nTCTD khác (*)", "bbox": [651.95, 216.87, 712.43, 244.36]},
+    {"id": "p190-b20", "type": "paragraph", "text": "Chứng khoán\nkinh doanh (*)", "bbox": [651.94, 252.7, 699.18, 270.2]},
+    {"id": "p190-b21", "type": "paragraph", "text": "Cho vay", "bbox": [651.93, 278.55, 678.89, 286.05]},
+    {
+      "id": "p190-b22",
+      "type": "paragraph",
+      "text": "1.867.932 252.199 34.671.713 105.002.235 187.171.406 183.872.821 254.778.823 767.617.129",
+      "bbox": [744.0, 278.55, 1145.15, 286.05]
+    },
+    {"id": "p190-b23", "type": "paragraph", "text": "khách hàng (*)", "bbox": [651.93, 288.54, 698.89, 296.04]},
+    {
+      "id": "p190-b24",
+      "type": "paragraph",
+      "text": "Trong đó:\nCác khoản cho vay\nhoạt động ký quỹ và\ncho vay hoạt động\nứng trước tiền bán\ncủa khách hàng",
+      "bbox": [651.92, 305.24, 719.95, 362.73]
+    },
+    {"id": "p190-b25", "type": "paragraph", "text": "Mua nợ (*)", "bbox": [651.92, 371.17, 684.97, 378.67]},
+    {"id": "p190-b26", "type": "paragraph", "text": "Chứng khoán\nđầu tư (*)", "bbox": [651.91, 387.02, 696.37, 404.52]},
+    {
+      "id": "p190-b27",
+      "type": "paragraph",
+      "text": "Trong đó:\nTrái phiếu Chính\nphủ và trái phiếu\nđược Chính phủ bảo\nlãnh thanh toán",
+      "bbox": [651.9, 413.71, 719.47, 461.2]
+    },
+    {"id": "p190-b28", "type": "paragraph", "text": "Góp vốn, đầu tư\ndài hạn (*)", "bbox": [651.89, 469.65, 704.74, 487.15]},
+    {"id": "p190-b29", "type": "paragraph", "text": "Tài sản cố định", "bbox": [651.89, 495.5, 701.28, 503.0]},
+    {"id": "p190-b30", "type": "paragraph", "text": "Tài sản Có khác (*)", "bbox": [651.88, 511.35, 712.36, 518.85]},
+    {"id": "p190-b31", "type": "paragraph", "text": "Tổng tài sản", "bbox": [651.87, 527.52, 694.02, 535.02]},
+    {
+      "id": "p190-b32",
+      "type": "paragraph",
+      "text": "1.978.657 276.891 224.331.619 133.208.581 263.892.909 268.626.023 311.137.287 1.203.451.967",
+      "bbox": [742.46, 527.52, 1145.09, 535.02]
+    },
+    {"id": "p190-b33", "type": "paragraph", "text": "Nợ phải trả", "bbox": [651.86, 543.36, 689.87, 550.86]},
+    {"id": "p190-b34", "type": "paragraph", "text": "Các khoản nợ\nChính phủ và NHNN", "bbox": [651.86, 558.89, 718.91, 576.39]},
+    {"id": "p190-b35", "type": "paragraph", "text": "Tiền gửi và vay các\ntổ chức tài chính,\ncác TCTD khác", "bbox": [651.86, 584.73, 715.02, 612.23]},
+    {"id": "p190-b36", "type": "paragraph", "text": "Tiền gửi của\nkhách hàng", "bbox": [651.85, 620.57, 692.42, 638.07]},
+    {"id": "p190-b37", "type": "paragraph", "text": "Các công cụ tài\nchính phái sinh và\ncác khoản nợ tài\nchính khác", "bbox": [651.84, 646.41, 711.26, 683.91]},
+    {"id": "p190-b38", "type": "paragraph", "text": "Phát hành giấy tờ\ncó giá", "bbox": [651.83, 692.25, 709.42, 709.75]},
+    {"id": "p190-b39", "type": "paragraph", "text": "Các khoản nợ khác", "bbox": [651.83, 718.1, 715.42, 725.6]},
+    {"id": "p190-b40", "type": "paragraph", "text": "Tổng nợ phải trả", "bbox": [651.82, 734.27, 708.2, 741.77]},
+    {"id": "p190-b41", "type": "paragraph", "text": "Mức chênh thanh", "bbox": [651.81, 750.12, 711.26, 757.62]},
+    {
+      "id": "p190-b42",
+      "type": "paragraph",
+      "text": "1.978.657 276.891 (33.439.423) (32.600.658) 22.636.985 (78.518.149) 310.274.969 190.609.272",
+      "bbox": [741.5, 750.12, 1145.03, 757.62]
+    },
+    {"id": "p190-b43", "type": "paragraph", "text": "khoản ròng", "bbox": [651.81, 760.11, 690.89, 767.61]},
+    {"id": "p190-b44", "type": "paragraph", "text": "Quá hạn", "bbox": [763.8, 126.12, 792.41, 133.62]},
+    {"id": "p190-b45", "type": "paragraph", "text": "Trong hạn", "bbox": [944.66, 126.12, 978.64, 133.62]},
+    {"id": "p190-b46", "type": "paragraph", "text": "Đến\nTừ trên\nTừ trên\n1 tháng 1–3 tháng 3–12 tháng", "bbox": [856.37, 144.8, 985.04, 161.3]},
+    {"id": "p190-b47", "type": "paragraph", "text": "-\n- 4.360.821", "bbox": [773.02, 185.17, 880.15, 192.67]},
+    {"id": "p190-b48", "type": "paragraph", "text": "-", "bbox": [930.34, 185.17, 932.59, 192.67]},
+    {"id": "p190-b49", "type": "paragraph", "text": "-\n- 82.162.772", "bbox": [773.01, 201.02, 880.14, 208.52]},
+    {"id": "p190-b50", "type": "paragraph", "text": "-", "bbox": [930.33, 201.02, 932.58, 208.52]},
+    {"id": "p190-b51", "type": "paragraph", "text": "87.783\n- 96.515.249 15.134.360 2.898.703", "bbox": [753.95, 216.86, 985.01, 224.36]},
+    {"id": "p190-b52", "type": "paragraph", "text": "-\n-\n352.682\n626.346 3.837.803", "bbox": [773.0, 252.7, 985.0, 260.2]},
+    {"id": "p190-b53", "type": "paragraph", "text": "15.304\n2 8.393.421 32.555.864 2.895.141", "bbox": [753.4, 305.22, 984.99, 312.72]},
+    {"id": "p190-b54", "type": "paragraph", "text": "1.682\n-\n-\n-\n20.895", "bbox": [757.61, 371.17, 984.98, 378.67]},
+    {
+      "id": "p190-b55",
+      "type": "paragraph",
+      "text": "-\n- 3.540.488 1.815.819 55.742.898 42.386.977 42.456.106 145.942.288",
+      "bbox": [772.97, 387.02, 1145.13, 394.52]
+    },
+    {"id": "p190-b56", "type": "paragraph", "text": "-\n-\n-\n15.109\n51.657", "bbox": [772.96, 413.7, 984.97, 421.2]},
+    {"id": "p190-b57", "type": "paragraph", "text": "-\n-\n-\n-", "bbox": [772.95, 469.65, 932.52, 477.15]},
+    {"id": "p190-b58", "type": "paragraph", "text": "-\n-\n132.955\n10.434\n78.851 4.279.078 7.621.616 12.122.934", "bbox": [772.94, 495.5, 1145.11, 503.0]},
+    {
+      "id": "p190-b59",
+      "type": "paragraph",
+      "text": "21.260\n24.692 2.594.939 10.619.387 14.142.353 37.573.796 3.032.971 68.009.398",
+      "bbox": [752.89, 511.35, 1145.1, 518.85]
+    },
+    {"id": "p190-b60", "type": "paragraph", "text": "-\n- 4.323.867", "bbox": [772.92, 558.89, 880.05, 566.39]},
+    {"id": "p190-b61", "type": "paragraph", "text": "-", "bbox": [930.24, 558.89, 932.49, 566.39]},
+    {"id": "p190-b62", "type": "paragraph", "text": "-\n- 73.327.189 43.115.870 18.413.424 10.126.493", "bbox": [772.91, 584.73, 1037.36, 592.23]},
+    {"id": "p190-b63", "type": "paragraph", "text": "-\n- 164.387.483 101.976.038 181.702.027 170.793.684", "bbox": [772.91, 620.57, 1037.35, 628.07]},
+    {"id": "p190-b64", "type": "paragraph", "text": "-\n-\n199.041\n132.921\n5.202 2.079.783", "bbox": [772.9, 646.41, 1037.35, 653.91]},
+    {"id": "p190-b65", "type": "paragraph", "text": "-\n-\n508.305 16.000.166 35.545.562 163.276.095", "bbox": [772.89, 692.25, 1037.34, 699.75]},
+    {"id": "p190-b66", "type": "paragraph", "text": "-\n- 15.025.157 4.584.244 5.589.709", "bbox": [772.88, 718.1, 984.89, 725.6]},
+    {"id": "p190-b67", "type": "paragraph", "text": "-\n- 257.771.042 165.809.239 241.255.924 347.144.172", "bbox": [772.88, 734.27, 1037.32, 741.77]},
+    {"id": "p190-b68", "type": "paragraph", "text": "Báo cáo tài chính 379", "bbox": [1069.29, 25.6, 1148.03, 32.7]},
+    {"id": "p190-b69", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [1093.69, 62.52, 1148.03, 71.02]},
+    {"id": "p190-b70", "type": "paragraph", "text": "Đơn vị: Triệu đồng", "bbox": [1080.06, 104.89, 1148.04, 113.39]},
+    {"id": "p190-b71", "type": "paragraph", "text": "Từ trên\nTrên Tổng cộng\n1-5 năm\n5 năm", "bbox": [1011.76, 144.8, 1145.19, 161.3]},
+    {"id": "p190-b72", "type": "paragraph", "text": "-\n-\n- 4.360.821", "bbox": [982.78, 185.17, 1145.18, 192.67]},
+    {"id": "p190-b73", "type": "paragraph", "text": "-\n-\n- 82.162.772", "bbox": [982.77, 201.02, 1145.17, 208.52]},
+    {"id": "p190-b74", "type": "paragraph", "text": "503.367", "bbox": [1009.84, 216.86, 1037.45, 224.36]},
+    {"id": "p190-b75", "type": "paragraph", "text": "- 115.139.462", "bbox": [1087.64, 216.86, 1145.17, 224.36]},
+    {"id": "p190-b76", "type": "paragraph", "text": "-\n-\n4.816.831", "bbox": [1035.2, 252.7, 1145.16, 260.2]},
+    {"id": "p190-b77", "type": "paragraph", "text": "-\n- 43.859.732", "bbox": [1035.18, 305.22, 1145.14, 312.72]},
+    {"id": "p190-b78", "type": "paragraph", "text": "9.984\n-\n32.561", "bbox": [1018.37, 371.17, 1145.14, 378.67]},
+    {"id": "p190-b79", "type": "paragraph", "text": "7.271.183 34.285.640 41.623.589", "bbox": [1009.21, 413.7, 1145.12, 421.2]},
+    {"id": "p190-b80", "type": "paragraph", "text": "-\n- 3.247.771", "bbox": [982.71, 469.65, 1089.84, 477.15]},
+    {"id": "p190-b81", "type": "paragraph", "text": "3.247.771", "bbox": [1115.69, 469.65, 1145.12, 477.15]},
+    {"id": "p190-b82", "type": "paragraph", "text": "-\n-\n- 4.323.867", "bbox": [982.68, 558.89, 1145.09, 566.39]},
+    {"id": "p190-b83", "type": "paragraph", "text": "- 144.982.976", "bbox": [1087.55, 584.73, 1145.08, 592.23]},
+    {"id": "p190-b84", "type": "paragraph", "text": "52.303 618.911.535", "bbox": [1066.1, 620.57, 1145.07, 628.07]},
+    {"id": "p190-b85", "type": "paragraph", "text": "- 2.416.947", "bbox": [1087.54, 646.41, 1145.06, 653.91]},
+    {"id": "p190-b86", "type": "paragraph", "text": "- 215.330.128", "bbox": [1087.53, 692.25, 1145.06, 699.75]},
+    {"id": "p190-b87", "type": "paragraph", "text": "868.117\n810.015 26.877.242", "bbox": [1013.87, 718.1, 1145.05, 725.6]},
+    {"id": "p190-b88", "type": "paragraph", "text": "862.318 1.012.842.695", "bbox": [1061.98, 734.27, 1145.04, 741.77]},
+    {"id": "p190-b89", "type": "paragraph", "text": "378 Báo cáo thường niên 2025", "bbox": [42.52, 25.6, 152.46, 32.7]},
+    {
+      "id": "p190-b90",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\ntại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [42.52, 62.52, 258.77, 80.12]
+    },
+    {"id": "p190-b91", "type": "paragraph", "text": "45.3. Rủi ro thanh khoản", "bbox": [42.61, 105.41, 151.02, 115.41]},
+    {"id": "p190-b92", "type": "paragraph", "text": "Ngân hàng.", "bbox": [42.28, 155.28, 84.84, 163.78]},
+    {"id": "p190-b93", "type": "paragraph", "text": "các khế ước cho vay được gia hạn/trả trước;", "bbox": [56.45, 313.6, 216.37, 322.1]},
+    {"id": "p190-b94", "type": "paragraph", "text": "gian đáo hạn xác định;", "bbox": [56.45, 340.27, 139.35, 348.77]},
+    {"id": "p190-b95", "type": "paragraph", "text": "như sau:", "bbox": [42.28, 484.14, 74.2, 492.64]},
+    {"id": "p190-b96", "type": "paragraph", "text": "(*) Không bao gồm các khoản dự phòng", "bbox": [646.31, 793.46, 790.85, 801.96]}
+  ]
+}

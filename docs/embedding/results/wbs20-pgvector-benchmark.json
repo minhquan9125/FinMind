@@ -1,0 +1,54 @@
+{
+  "schema_version": "finmind-wbs20-summary-v1",
+  "index_version_id": "1e029e66-0adf-53ac-8f28-431ed7312745",
+  "embedding_model": "BAAI/bge-m3@5617a9f61b02",
+  "embedding_dimension": 1024,
+  "pgvector_version": "0.8.2",
+  "top_k": 5,
+  "runs_per_question": 2,
+  "question_count": 10,
+  "measurements": [
+    {
+      "label": "before_hnsw",
+      "measured_at": "2026-10-20T10:17:29.775003+00:00",
+      "hnsw_present": false,
+      "mean_retrieval_ms": 771.259,
+      "median_retrieval_ms": 715.423,
+      "expected_source_found": 10,
+      "scope_correct": 10,
+      "per_question_ms": {
+        "Q03-vi": 1264.321,
+        "Q03-en": 1229.882,
+        "Q09-vi": 709.944,
+        "Q09-en": 698.385,
+        "Q15-vi": 733.802,
+        "Q15-en": 724.51,
+        "Q17-vi": 720.903,
+        "Q17-en": 689.524,
+        "scope-empty-company": 475.511,
+        "scope-empty-period": 465.811
+      }
+    },
+    {
+      "label": "after_hnsw",
+      "measured_at": "2026-10-20T10:19:39.641758+00:00",
+      "hnsw_present": true,
+      "mean_retrieval_ms": 563.085,
+      "median_retrieval_ms": 539.49,
+      "expected_source_found": 10,
+      "scope_correct": 10,
+      "per_question_ms": {
+        "Q03-vi": 913.22,
+        "Q03-en": 890.062,
+        "Q09-vi": 499.031,
+        "Q09-en": 485.107,
+        "Q15-vi": 554.534,
+        "Q15-en": 540.447,
+        "Q17-vi": 545.363,
+        "Q17-en": 538.533,
+        "scope-empty-company": 327.658,
+        "scope-empty-period": 336.896
+      }
+    }
+  ]
+}

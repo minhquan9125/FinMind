@@ -1,0 +1,19 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\FPT\2024\FPT_2024_498332.pdf: 3 trang
+  lớp text: 0 trang dùng được, 3 trang cần OCR (0.18s)
+  [tess] trang 2: conf=85 low=0.12 rot=0 0.528s
+  [tess] trang 1: conf=87 low=0.091 rot=0 0.983s
+  [tess] trang 3: conf=94 low=0 rot=0 0.365s
+  [gemini-api] gemini-3.8-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.8-flash p-001.png: OK, 34.456s
+  [gemini-api] gemini-3.8-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.8-flash p-003.png: OK, 20.565s
+  Gemini chưa xử lý được 1 trang; chuyển sang OmniRouter
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  tuyến: {'tesseract+gemini': 2, 'tesseract': 1}  trạng thái: {'OK': 2, 'REVIEW': 1}
+  cờ: {'GEMINI_FAILED': 1}
+  thời gian (s): {'textLayer': 0.18, 'renderAndTesseract': 5.304, 'gemini': 65.906, 'total': 71.563}
+  Gemini API: 4 lần gọi (2 lỗi), token vào 2850, ra 1582
+  OpenRouter: 1 lần gọi (1 lỗi), token vào 0, ra 0
+  → D:\finmind\tmp\ocr-router-model-batch-2024\FPT_2024_498332

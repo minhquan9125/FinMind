@@ -1,0 +1,127 @@
+{
+  "text": "dvÐ\n\nCMC CORPORATION\n\nˆ QUẢN TRỊ CÔNG TY\n1",
+  "chars": 32,
+  "words": 9,
+  "wordItems": [
+    {
+      "text": "dvÐ",
+      "bbox": [
+        794,
+        171,
+        919,
+        253
+      ],
+      "conf": 0.0,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        705,
+        273,
+        769,
+        294
+      ],
+      "conf": 91.643486,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        782,
+        273,
+        1007,
+        294
+      ],
+      "conf": 90.258926,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ˆ",
+      "bbox": [
+        529,
+        1728,
+        569,
+        1798
+      ],
+      "conf": 20.137802,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUẢN",
+      "bbox": [
+        701,
+        1767,
+        813,
+        1804
+      ],
+      "conf": 82.328262,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRỊ",
+      "bbox": [
+        829,
+        1777,
+        886,
+        1809
+      ],
+      "conf": 92.687332,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        903,
+        1769,
+        1016,
+        1804
+      ],
+      "conf": 96.228363,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        1030,
+        1777,
+        1079,
+        1803
+      ],
+      "conf": 96.922791,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "1",
+      "bbox": [
+        521,
+        1821,
+        569,
+        1856
+      ],
+      "conf": 17.18985,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 65,
+  "lowConfRatio": 0.333,
+  "seconds": 0.375
+}

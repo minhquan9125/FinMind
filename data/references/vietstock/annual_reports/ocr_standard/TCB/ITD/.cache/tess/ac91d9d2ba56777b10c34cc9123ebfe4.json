@@ -1,0 +1,75 @@
+{
+  "text": "05\n\nBẢO CÁO\nTÀI CHÍNH",
+  "chars": 16,
+  "words": 5,
+  "wordItems": [
+    {
+      "text": "05",
+      "bbox": [
+        180,
+        163,
+        467,
+        364
+      ],
+      "conf": 95.405182,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BẢO",
+      "bbox": [
+        667,
+        1322,
+        1194,
+        1551
+      ],
+      "conf": 95.120705,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1286,
+        1322,
+        1819,
+        1551
+      ],
+      "conf": 89.846718,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        612,
+        1622,
+        994,
+        1848
+      ],
+      "conf": 96.66407,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        1092,
+        1622,
+        1852,
+        1851
+      ],
+      "conf": 94.308762,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 94,
+  "lowConfRatio": 0,
+  "seconds": 0.702
+}

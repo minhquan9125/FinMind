@@ -1,0 +1,194 @@
+{
+  "scope": "all_text_layer_pages_from_pages_jsonl",
+  "pages_checked": 83,
+  "minimum_repeated_pages": 42,
+  "position_grid": "2% of page width and height",
+  "repeated_groups": [],
+  "promoted_blocks": 0,
+  "sidebar_associated_blocks": 0,
+  "page_number_blocks": 72,
+  "demoted_unverified_blocks": 1035,
+  "demoted_examples": [
+    {
+      "page": 54,
+      "block_id": "p54-b23",
+      "text": "QUẢN TRỊ CÔNG TY",
+      "matching_pages": 19
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b24",
+      "text": "Các cuộc họp của HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b25",
+      "text": "Thông tin các cuộc họp HĐQT năm 2024:",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b26",
+      "text": "STT Thành viên HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b27",
+      "text": "1 Ông Phan Đức Tú",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b28",
+      "text": "2 Ông Lê Ngọc Lâm",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b29",
+      "text": "3 Ông Trần Xuân Hoàng",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b30",
+      "text": "4 Ông Đặng Văn Tuyên",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b31",
+      "text": "5 Bà Phan Thị Chinh",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b32",
+      "text": "6 Ông Lê Kim Hòa",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b33",
+      "text": "7 Ông Phạm Quang Tùng",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b34",
+      "text": "8 Ông Ngô Văn Dũng",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b35",
+      "text": "9 Ông Yoo Je Bong",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b36",
+      "text": "10 Ông Quách Hùng Hiệp",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b37",
+      "text": "11 Ông Nguyễn Văn Thạnh",
+      "matching_pages": 1
+    },
+    {
+      "page": 54,
+      "block_id": "p54-b39",
+      "text": "106 BÁO CÁO THƯỜNG NIÊN BIDV 2024",
+      "matching_pages": 1
+    },
+    {
+      "page": 55,
+      "block_id": "p55-b27",
+      "text": "QUẢN TRỊ CÔNG TY",
+      "matching_pages": 19
+    },
+    {
+      "page": 55,
+      "block_id": "p55-b28",
+      "text": "trọng yếu trong hoạt động của hệ thống.",
+      "matching_pages": 1
+    },
+    {
+      "page": 55,
+      "block_id": "p55-b29",
+      "text": "về công ty đại chúng.",
+      "matching_pages": 1
+    },
+    {
+      "page": 55,
+      "block_id": "p55-b30",
+      "text": "số 105/BC-BIDV ngày 22/01/2025).",
+      "matching_pages": 1
+    },
+    {
+      "page": 55,
+      "block_id": "p55-b31",
+      "text": "tài chính của BIDV đã được kiểm toán theo đúng quy định.",
+      "matching_pages": 1
+    },
+    {
+      "page": 55,
+      "block_id": "p55-b33",
+      "text": "108 BÁO CÁO THƯỜNG NIÊN BIDV 2024",
+      "matching_pages": 1
+    },
+    {
+      "page": 56,
+      "block_id": "p56-b36",
+      "text": "QUẢN TRỊ CÔNG TY",
+      "matching_pages": 19
+    },
+    {
+      "page": 56,
+      "block_id": "p56-b37",
+      "text": "Các Ủy ban",
+      "matching_pages": 1
+    },
+    {
+      "page": 56,
+      "block_id": "p56-b38",
+      "text": "riêng cho từng Ủy ban.",
+      "matching_pages": 1
+    },
+    {
+      "page": 56,
+      "block_id": "p56-b39",
+      "text": "như sau:",
+      "matching_pages": 1
+    },
+    {
+      "page": 56,
+      "block_id": "p56-b40",
+      "text": "Ủy ban Quản lý rủi ro (UBQLRR)",
+      "matching_pages": 1
+    },
+    {
+      "page": 56,
+      "block_id": "p56-b41",
+      "text": "vụ theo Đề án CTOM” thuộc chuyên đề Cải cách thủ tục",
+      "matching_pages": 1
+    },
+    {
+      "page": 56,
+      "block_id": "p56-b42",
+      "text": "hành… và các vấn đề khác liên quan đến công tác nhân sự.",
+      "matching_pages": 1
+    },
+    {
+      "page": 56,
+      "block_id": "p56-b44",
+      "text": "110 BÁO CÁO THƯỜNG NIÊN BIDV 2024",
+      "matching_pages": 1
+    }
+  ],
+  "furniture_table_overlaps": []
+}

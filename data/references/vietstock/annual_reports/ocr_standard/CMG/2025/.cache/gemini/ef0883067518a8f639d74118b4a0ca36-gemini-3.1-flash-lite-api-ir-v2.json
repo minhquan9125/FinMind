@@ -1,0 +1,918 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        97,
+        118,
+        275,
+        922
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [],
+          "box_2d": [
+            97,
+            118,
+            275,
+            158
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [],
+          "box_2d": [
+            97,
+            158,
+            275,
+            603
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [],
+          "box_2d": [
+            97,
+            603,
+            275,
+            724
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [],
+          "box_2d": [
+            97,
+            724,
+            275,
+            833
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [],
+          "box_2d": [
+            97,
+            833,
+            275,
+            922
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "2",
+          "label_raw": "Lợi nhuận trước Lãi vay, Thuế và Khấu hao phân bổ (EBITDA)",
+          "note": null,
+          "box_2d": [
+            97,
+            118,
+            140,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "1.384.173",
+              "box_2d": [
+                97,
+                603,
+                140,
+                724
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1.178.977",
+              "box_2d": [
+                97,
+                724,
+                140,
+                833
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "17%",
+              "box_2d": [
+                97,
+                833,
+                140,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Lợi nhuận trước thuế",
+          "note": null,
+          "box_2d": [
+            140,
+            118,
+            166,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "752.819",
+              "box_2d": [
+                140,
+                603,
+                166,
+                724
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "737.445",
+              "box_2d": [
+                140,
+                724,
+                166,
+                833
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "2%",
+              "box_2d": [
+                140,
+                833,
+                166,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Trong đó: Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+          "note": null,
+          "box_2d": [
+            166,
+            118,
+            223,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "633.988",
+              "box_2d": [
+                166,
+                603,
+                223,
+                724
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "611.899",
+              "box_2d": [
+                166,
+                724,
+                223,
+                833
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "4%",
+              "box_2d": [
+                166,
+                833,
+                223,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Lợi nhuận sau thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+          "note": null,
+          "box_2d": [
+            223,
+            118,
+            275,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "529.950",
+              "box_2d": [
+                223,
+                603,
+                275,
+                724
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "516.833",
+              "box_2d": [
+                223,
+                724,
+                275,
+                833
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "3%",
+              "box_2d": [
+                223,
+                833,
+                275,
+                922
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Ghi chú: Số liệu cộng ngang kết quả kinh doanh các đơn vị thành viên, trước loại trừ hợp nhất đơn vị liên kết và nội bộ.",
+      "box_2d": [
+        287,
+        118,
+        323,
+        903
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "Kế hoạch doanh thu các khối năm 2026:",
+      "box_2d": [
+        330,
+        148,
+        347,
+        564
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "ĐVT: triệu đồng",
+      "box_2d": [
+        347,
+        767,
+        363,
+        903
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        372,
+        118,
+        709,
+        922
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT",
+            "No"
+          ],
+          "box_2d": [
+            372,
+            118,
+            436,
+            158
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Chỉ tiêu"
+          ],
+          "box_2d": [
+            372,
+            158,
+            436,
+            575
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Kế hoạch",
+            "2026"
+          ],
+          "box_2d": [
+            372,
+            575,
+            436,
+            696
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Thực hiện",
+            "2025"
+          ],
+          "box_2d": [
+            372,
+            696,
+            436,
+            817
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "% Tăng",
+            "trưởng"
+          ],
+          "box_2d": [
+            372,
+            817,
+            436,
+            922
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Khối Hạ tầng số",
+          "note": null,
+          "box_2d": [
+            436,
+            118,
+            466,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "4.676.761",
+              "box_2d": [
+                436,
+                575,
+                466,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "3.969.525",
+              "box_2d": [
+                436,
+                696,
+                466,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "18%",
+              "box_2d": [
+                436,
+                817,
+                466,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Khối Công nghệ và Giải pháp",
+          "note": null,
+          "box_2d": [
+            466,
+            118,
+            496,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "5.374.279",
+              "box_2d": [
+                466,
+                575,
+                496,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "4.558.387",
+              "box_2d": [
+                466,
+                696,
+                496,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "18%",
+              "box_2d": [
+                466,
+                817,
+                496,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Khối Công nghệ mới – Công nghệ chiến lược",
+          "note": null,
+          "box_2d": [
+            496,
+            118,
+            526,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "36.475",
+              "box_2d": [
+                496,
+                575,
+                526,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": null,
+              "box_2d": [
+                496,
+                696,
+                526,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": null,
+              "box_2d": [
+                496,
+                817,
+                526,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Khối Kinh doanh toàn cầu",
+          "note": null,
+          "box_2d": [
+            526,
+            118,
+            556,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "2.044.138",
+              "box_2d": [
+                526,
+                575,
+                556,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1.640.679",
+              "box_2d": [
+                526,
+                696,
+                556,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "25%",
+              "box_2d": [
+                526,
+                817,
+                556,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "Khối Giáo dục & Phát triển nguồn lực",
+          "note": null,
+          "box_2d": [
+            556,
+            118,
+            586,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "162.337",
+              "box_2d": [
+                556,
+                575,
+                586,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "113.283",
+              "box_2d": [
+                556,
+                696,
+                586,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "43%",
+              "box_2d": [
+                556,
+                817,
+                586,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "6",
+          "label_raw": "Kinh doanh khác",
+          "note": null,
+          "box_2d": [
+            586,
+            118,
+            616,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "310.768",
+              "box_2d": [
+                586,
+                575,
+                616,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "272.655",
+              "box_2d": [
+                586,
+                696,
+                616,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "14%",
+              "box_2d": [
+                586,
+                817,
+                616,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Tổng cộng",
+          "note": null,
+          "box_2d": [
+            616,
+            118,
+            646,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "12.604.758",
+              "box_2d": [
+                616,
+                575,
+                646,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "10.554.530",
+              "box_2d": [
+                616,
+                696,
+                646,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "19%",
+              "box_2d": [
+                616,
+                817,
+                646,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Doanh thu thuần trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+          "note": null,
+          "box_2d": [
+            646,
+            118,
+            709,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "11.403.488",
+              "box_2d": [
+                646,
+                575,
+                709,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "9.560.786",
+              "box_2d": [
+                646,
+                696,
+                709,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "19%",
+              "box_2d": [
+                646,
+                817,
+                709,
+                922
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Kế hoạch lợi nhuận các khối năm 2026:",
+      "box_2d": [
+        736,
+        148,
+        753,
+        557
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Đvt: triệu đồng",
+      "box_2d": [
+        753,
+        767,
+        769,
+        903
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        778,
+        118,
+        885,
+        922
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT"
+          ],
+          "box_2d": [
+            778,
+            118,
+            825,
+            158
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Khối kinh doanh"
+          ],
+          "box_2d": [
+            778,
+            158,
+            825,
+            575
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Kế hoạch",
+            "2026"
+          ],
+          "box_2d": [
+            778,
+            575,
+            825,
+            696
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Thực hiện",
+            "2025"
+          ],
+          "box_2d": [
+            778,
+            696,
+            825,
+            817
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "% Tăng",
+            "trưởng"
+          ],
+          "box_2d": [
+            778,
+            817,
+            825,
+            922
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Khối Hạ tầng số",
+          "note": null,
+          "box_2d": [
+            825,
+            118,
+            855,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "524.956",
+              "box_2d": [
+                825,
+                575,
+                855,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "464.031",
+              "box_2d": [
+                825,
+                696,
+                855,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "13%",
+              "box_2d": [
+                825,
+                817,
+                855,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Khối Công nghệ & Giải pháp",
+          "note": null,
+          "box_2d": [
+            855,
+            118,
+            885,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "133.763",
+              "box_2d": [
+                855,
+                575,
+                885,
+                696
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "132.032",
+              "box_2d": [
+                855,
+                696,
+                885,
+                817
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "1%",
+              "box_2d": [
+                855,
+                817,
+                885,
+                922
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "54",
+      "box_2d": [
+        925,
+        905,
+        938,
+        924
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "2 Lợi nhuận trước Lãi vay, Thuế và Khấu hao phân bổ (EBITDA) 1.384.173 1.178.977 17%\n3 Lợi nhuận trước thuế 752.819 737.445 2%\nTrong đó: Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) 633.988 611.899 4%\n4 Lợi nhuận sau thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) 529.950 516.833 3%\nGhi chú: Số liệu cộng ngang kết quả kinh doanh các đơn vị thành viên, trước loại trừ hợp nhất đơn vị liên kết và nội bộ.\nKế hoạch doanh thu các khối năm 2026:\nĐVT: triệu đồng\nTT\nNo\nChỉ tiêu\nKế hoạch\n2026\nThực hiện\n2025\n% Tăng\ntrưởng\n1 Khối Hạ tầng số 4.676.761 3.969.525 18%\n2 Khối Công nghệ và Giải pháp 5.374.279 4.558.387 18%\n3 Khối Công nghệ mới – Công nghệ chiến lược 36.475\n4 Khối Kinh doanh toàn cầu 2.044.138 1.640.679 25%\n5 Khối Giáo dục & Phát triển nguồn lực 162.337 113.283 43%\n6 Kinh doanh khác 310.768 272.655 14%\nTổng cộng 12.604.758 10.554.530 19%\nDoanh thu thuần trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) 11.403.488 9.560.786 19%\nKế hoạch lợi nhuận các khối năm 2026:\nĐvt: triệu đồng\nTT\nKhối kinh doanh\nKế hoạch\n2026\nThực hiện\n2025\n% Tăng\ntrưởng\n1 Khối Hạ tầng số 524.956 464.031 13%\n2 Khối Công nghệ & Giải pháp 133.763 132.032 1%\n54",
+  "unreadable": []
+}

@@ -1,0 +1,632 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "- Ban Kiểm soát tham dự và tham gia thảo luận tại các cuộc họp của Hội đồng quản trị.\n- Ban Kiểm soát và Hội đồng quản trị, Ban Điều hành thường xuyên trao đổi thông tin cần thiết để Ban Kiểm soát thực hiện nhiệm vụ giám sát của mình.\n❖ Hoạt động khác của BKS (nếu có): Không.",
+      "box_2d": [
+        95,
+        117,
+        181,
+        922
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "3. Các giao dịch, thù lao và các khoản lợi ích của Hội đồng quản trị, Ban Điều hành và Ban kiểm soát\n3.1. Lương thưởng, thù lao và các khoản lợi ích:",
+      "box_2d": [
+        201,
+        117,
+        258,
+        922
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        268,
+        117,
+        795,
+        922
+      ],
+      "title": "ĐVT: VND",
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT"
+          ],
+          "box_2d": [
+            284,
+            117,
+            338,
+            175
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Họ tên"
+          ],
+          "box_2d": [
+            284,
+            175,
+            338,
+            416
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Chức danh"
+          ],
+          "box_2d": [
+            284,
+            416,
+            338,
+            725
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Thu nhập (*)",
+            "Năm 2025 (**)"
+          ],
+          "box_2d": [
+            284,
+            725,
+            338,
+            922
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Ông Nguyễn Trung Chính",
+          "note": null,
+          "box_2d": [
+            338,
+            117,
+            378,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Chủ tịch HĐQT/ Chủ tịch Điều hành Tập đoàn",
+              "box_2d": [
+                338,
+                416,
+                378,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1.194.517.686",
+              "box_2d": [
+                338,
+                725,
+                378,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Ông Gum Ki Ho",
+          "note": null,
+          "box_2d": [
+            378,
+            117,
+            405,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên HĐQT",
+              "box_2d": [
+                378,
+                416,
+                405,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "305.154.270",
+              "box_2d": [
+                378,
+                725,
+                405,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Ông Kwon Oh Soo",
+          "note": null,
+          "box_2d": [
+            405,
+            117,
+            432,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên HĐQT",
+              "box_2d": [
+                405,
+                416,
+                432,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "229.836.180",
+              "box_2d": [
+                405,
+                725,
+                432,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Ông Nguyễn Minh Đức",
+          "note": null,
+          "box_2d": [
+            432,
+            117,
+            459,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên HĐQT",
+              "box_2d": [
+                432,
+                416,
+                459,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "305.154.270",
+              "box_2d": [
+                432,
+                725,
+                459,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "5",
+          "label_raw": "Ông Trương Tuấn Lâm",
+          "note": null,
+          "box_2d": [
+            459,
+            117,
+            486,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên HĐQT",
+              "box_2d": [
+                459,
+                416,
+                486,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "305.154.270",
+              "box_2d": [
+                459,
+                725,
+                486,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "6",
+          "label_raw": "Ông Nguyễn Danh Lam",
+          "note": null,
+          "box_2d": [
+            486,
+            117,
+            513,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên HĐQT",
+              "box_2d": [
+                486,
+                416,
+                513,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "305.154.270",
+              "box_2d": [
+                486,
+                725,
+                513,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "7",
+          "label_raw": "Ông Nguyễn Phước Hải",
+          "note": null,
+          "box_2d": [
+            513,
+            117,
+            540,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên HĐQT",
+              "box_2d": [
+                513,
+                416,
+                540,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "305.154.270",
+              "box_2d": [
+                513,
+                725,
+                540,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "8",
+          "label_raw": "Ông Lê Việt Hà",
+          "note": null,
+          "box_2d": [
+            540,
+            117,
+            567,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên HĐQT",
+              "box_2d": [
+                540,
+                416,
+                567,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "305.154.270",
+              "box_2d": [
+                540,
+                725,
+                567,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "9",
+          "label_raw": "Ông Hà Thế Vinh",
+          "note": null,
+          "box_2d": [
+            567,
+            117,
+            594,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên HĐQT",
+              "box_2d": [
+                567,
+                416,
+                594,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "305.154.270",
+              "box_2d": [
+                567,
+                725,
+                594,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "10",
+          "label_raw": "Ông Hồ Thanh Tùng",
+          "note": null,
+          "box_2d": [
+            594,
+            117,
+            621,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Tổng Giám Đốc Tập đoàn",
+              "box_2d": [
+                594,
+                416,
+                621,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "669.571.429",
+              "box_2d": [
+                594,
+                725,
+                621,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "11",
+          "label_raw": "Ông Lê Thanh Sơn",
+          "note": null,
+          "box_2d": [
+            621,
+            117,
+            661,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch EVP Tập đoàn / Giám đốc Quản trị Tập đoàn",
+              "box_2d": [
+                621,
+                416,
+                661,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "618.000.000",
+              "box_2d": [
+                621,
+                725,
+                661,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "12",
+          "label_raw": "Ông Nguyễn Minh Tuệ",
+          "note": null,
+          "box_2d": [
+            661,
+            117,
+            701,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch SVP Tập đoàn / Giám đốc Tài chính Tập đoàn",
+              "box_2d": [
+                661,
+                416,
+                701,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1.344.780.696",
+              "box_2d": [
+                661,
+                725,
+                701,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "13",
+          "label_raw": "Bà Mai Thu Hà",
+          "note": null,
+          "box_2d": [
+            701,
+            117,
+            728,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Trưởng Ban Kiểm soát",
+              "box_2d": [
+                701,
+                416,
+                728,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "827.875.678",
+              "box_2d": [
+                701,
+                725,
+                728,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "14",
+          "label_raw": "Ông Tạ Hoàng Linh",
+          "note": null,
+          "box_2d": [
+            728,
+            117,
+            755,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên Ban Kiểm soát",
+              "box_2d": [
+                728,
+                416,
+                755,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "1.108.994.597",
+              "box_2d": [
+                728,
+                725,
+                755,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": "15",
+          "label_raw": "Ông Nguyễn Thành Nam",
+          "note": null,
+          "box_2d": [
+            755,
+            117,
+            782,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c3",
+              "raw": "Thành viên Ban Kiểm soát",
+              "box_2d": [
+                755,
+                416,
+                782,
+                725
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "141.594.597",
+              "box_2d": [
+                755,
+                725,
+                782,
+                922
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            782,
+            117,
+            795,
+            922
+          ],
+          "cells": [
+            {
+              "column_key": "c4",
+              "raw": "8.271.250.753",
+              "box_2d": [
+                782,
+                725,
+                795,
+                922
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "(*) Bao gồm lương, thù lao, tiền thưởng (trong đó thù lao, tiền thưởng theo Nghị quyết ĐHĐCĐ thường niên 2025).\n(**) Số liệu được trình bày tại Báo cáo tài chính hợp nhất kiểm toán năm 2025.",
+      "box_2d": [
+        805,
+        117,
+        858,
+        922
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "- Ban Kiểm soát tham dự và tham gia thảo luận tại các cuộc họp của Hội đồng quản trị.\n- Ban Kiểm soát và Hội đồng quản trị, Ban Điều hành thường xuyên trao đổi thông tin cần thiết để Ban Kiểm soát thực hiện nhiệm vụ giám sát của mình.\n❖ Hoạt động khác của BKS (nếu có): Không.\n3. Các giao dịch, thù lao và các khoản lợi ích của Hội đồng quản trị, Ban Điều hành và Ban kiểm soát\n3.1. Lương thưởng, thù lao và các khoản lợi ích:\nĐVT: VND\nTT\nHọ tên\nChức danh\nThu nhập (*)\nNăm 2025 (**)\n1 Ông Nguyễn Trung Chính Chủ tịch HĐQT/ Chủ tịch Điều hành Tập đoàn 1.194.517.686\n2 Ông Gum Ki Ho Thành viên HĐQT 305.154.270\n3 Ông Kwon Oh Soo Thành viên HĐQT 229.836.180\n4 Ông Nguyễn Minh Đức Thành viên HĐQT 305.154.270\n5 Ông Trương Tuấn Lâm Thành viên HĐQT 305.154.270\n6 Ông Nguyễn Danh Lam Thành viên HĐQT 305.154.270\n7 Ông Nguyễn Phước Hải Thành viên HĐQT 305.154.270\n8 Ông Lê Việt Hà Thành viên HĐQT 305.154.270\n9 Ông Hà Thế Vinh Thành viên HĐQT 305.154.270\n10 Ông Hồ Thanh Tùng Tổng Giám Đốc Tập đoàn 669.571.429\n11 Ông Lê Thanh Sơn Phó Chủ tịch EVP Tập đoàn / Giám đốc Quản trị Tập đoàn 618.000.000\n12 Ông Nguyễn Minh Tuệ Phó Chủ tịch SVP Tập đoàn / Giám đốc Tài chính Tập đoàn 1.344.780.696\n13 Bà Mai Thu Hà Trưởng Ban Kiểm soát 827.875.678\n14 Ông Tạ Hoàng Linh Thành viên Ban Kiểm soát 1.108.994.597\n15 Ông Nguyễn Thành Nam Thành viên Ban Kiểm soát 141.594.597\nTỔNG CỘNG 8.271.250.753\n(*) Bao gồm lương, thù lao, tiền thưởng (trong đó thù lao, tiền thưởng theo Nghị quyết ĐHĐCĐ thường niên 2025).\n(**) Số liệu được trình bày tại Báo cáo tài chính hợp nhất kiểm toán năm 2025.",
+  "unreadable": []
+}

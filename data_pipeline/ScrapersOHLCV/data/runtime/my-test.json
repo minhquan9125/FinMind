@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "count": 1,
+  "bars": [
+    {
+      "symbol": "FPT",
+      "exchange": "HOSE",
+      "trade_date": "2026-10-06",
+      "open": "100",
+      "high": "105",
+      "low": "99",
+      "close": "104",
+      "volume": 1300,
+      "source": "dnse",
+      "price_basis": "raw",
+      "volume_basis": "matched",
+      "status": "open",
+      "quality": "complete",
+      "source_updated_at": "2026-10-06T03:00:02+00:00",
+      "received_at": "2026-10-06T03:00:10+00:00",
+      "reconciled_at": null,
+      "revision": 2
+    }
+  ]
+}

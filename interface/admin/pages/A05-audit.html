@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinMind Admin – A05 Nhật ký kiểm toán</title>
+  <script src="../assets/tailwind.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              blue: '#2563EB',
+              'blue-hover': '#1D4ED8',
+              'blue-light': '#EFF6FF',
+              'blue-border': '#BFDBFE',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Custom scrollbar for table container */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+  </style>
+<script src="../js/mockData.js"></script>
+<script src="../js/routes.js"></script>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/icons.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-row bg-[#F8FAFC]" data-fm-screen="a05">
+
+  <!-- SIDEBAR (100vh, fixed width 260px, same as A00-A04) -->
+  <aside class="fm-sidebar">
+<div class="fm-brand"><div class="fm-logo">FM</div><span class="fm-brand-name">FinMind</span><span class="fm-brand-tag">ADMIN</span></div>
+<nav class="fm-nav">
+<div class="fm-nav-group"><div class="fm-nav-label">VẬN HÀNH</div>
+<a href="#a00" class="fm-nav-item"><span class="material-symbols-outlined">dashboard</span><span>Tổng quan vận hành</span></a>
+<a href="#a01" class="fm-nav-item"><span class="material-symbols-outlined">monitoring</span><span>Theo dõi truy vấn</span></a>
+</div>
+<div class="fm-nav-group"><div class="fm-nav-label">QUẢN TRỊ DỮ LIỆU</div>
+<a href="#a02" class="fm-nav-item"><span class="material-symbols-outlined">database</span><span>Cấu hình nguồn</span></a>
+<a href="#a03" class="fm-nav-item"><span class="material-symbols-outlined">layers</span><span>Phiên bản kho dữ liệu</span></a>
+</div>
+<div class="fm-nav-group"><div class="fm-nav-label">CẤU HÌNH HỆ THỐNG</div>
+<a href="#a04" class="fm-nav-item"><span class="material-symbols-outlined">tune</span><span>Ngưỡng &amp; ngân sách API</span></a>
+</div>
+<div class="fm-nav-group"><div class="fm-nav-label">KIỂM TOÁN</div>
+<a href="#a05" class="fm-nav-item fm-nav-active"><span class="material-symbols-outlined">verified_user</span><span>Nhật ký kiểm toán</span></a>
+</div>
+</nav>
+<div class="fm-user"><div class="fm-avatar">AD</div><div class="fm-user-text"><span class="fm-user-name">Quản trị viên</span><span class="fm-user-role">System Admin</span></div><span class="material-symbols-outlined fm-user-more">unfold_more</span></div>
+</aside>
+
+  <!-- MAIN VIEWPORT (Flex Column, scrollable table area, sticky footer) -->
+  <main class="flex-1 h-screen flex flex-col min-w-0 bg-[#F8FAFC] overflow-hidden">
+    
+    <!-- TOP HEADER -->
+    <header class="bg-white border-b border-[#E2E8F0] px-8 py-5 shrink-0">
+      <div class="flex flex-col gap-2">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-[12px] text-[#64748B]">
+          <a href="#a00" class="hover:text-[#2563EB] transition-colors">Tổng quan vận hành</a>
+          <span>/</span>
+          <span class="text-[#0F172A] font-medium">Nhật ký kiểm toán</span>
+        </nav>
+
+        <!-- Title Row -->
+        <div class="flex items-center justify-between gap-4 mt-1">
+          <div class="flex items-center gap-3">
+            <h1 class="text-[22px] font-bold text-[#0F172A] tracking-tight">Nhật ký kiểm toán</h1>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0]">
+              Dữ liệu minh họa
+            </span>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex items-center gap-3">
+            <button id="btnOpenExportModal" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#1E293B] bg-white border border-[#CBD5E1] hover:bg-[#F8FAFC] transition shadow-sm">
+              <span class="material-symbols-outlined text-[18px] text-[#64748B]">file_download</span>
+              <span>Xuất nhật ký (đã làm sạch)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Subtitle -->
+        <p class="text-[13px] text-[#64748B]">
+          Theo dõi các sự kiện quản trị và vận hành đã được ghi nhận trong FinMind.
+        </p>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY (Scrollable internal view) -->
+    <div class="flex-1 overflow-y-auto custom-scrollbar p-8 flex flex-col gap-5">
+      
+      <!-- INBOUND LINK FILTER CHIP (conditionally shown via JS) -->
+      <div id="inboundFilterBar" class="hidden items-center justify-between px-4 py-2.5 bg-[#EFF6FF] border border-[#BFDBFE] rounded-xl text-[13px] text-[#1E40AF]">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px] text-[#2563EB]">filter_alt</span>
+          <span>Đang lọc theo: <strong id="inboundFilterLabel" class="font-semibold text-[#1D4ED8]"></strong></span>
+        </div>
+        <button id="btnClearInboundFilter" class="inline-flex items-center gap-1 text-[12px] font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline">
+          <span class="material-symbols-outlined text-[16px]">close</span>
+          <span>Xóa lọc</span>
+        </button>
+      </div>
+
+      <!-- AUDIT LOG CARD -->
+      <div class="bg-white rounded-xl border border-[#E2E8F0] shadow-sm flex flex-col flex-1 min-h-[500px]">
+        
+        <!-- CARD HEADER & TOOLBAR -->
+        <div class="p-5 border-b border-[#E2E8F0] flex flex-col gap-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="text-[15px] font-bold text-[#0F172A]">Danh sách sự kiện kiểm toán</span>
+              <span id="eventCountBadge" class="text-[12px] font-medium text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded-full border border-[#E2E8F0]">
+                (14/14)
+              </span>
+            </div>
+            </div>
+
+          <!-- TOOLBAR FILTERS -->
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <!-- Search Input -->
+            <div class="relative flex-1 min-w-[240px]">
+              <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#94A3B8] text-[18px]">search</span>
+              <input 
+                type="text" 
+                id="searchInput"
+                placeholder="Tìm theo Event ID hoặc Trace ID..." 
+                class="w-full pl-9 pr-3 py-1.5 text-[13px] bg-white border border-[#CBD5E1] rounded-lg focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] text-[#0F172A] placeholder-[#94A3B8]"
+              >
+            </div>
+
+            <!-- Filter: Thời gian -->
+            <div class="w-[170px]">
+              <select id="filterTime" class="w-full px-2.5 py-1.5 text-[13px] bg-white border border-[#CBD5E1] rounded-lg text-[#334155] focus:outline-none focus:border-[#2563EB]">
+                <option value="all">Thời gian: Tất cả</option>
+                <option value="in_retention">Trong thời hạn lưu giữ</option>
+                <option value="expired">Ngoài thời hạn lưu giữ</option>
+              </select>
+            </div>
+
+            <!-- Filter: Loại sự kiện -->
+            <div class="w-[180px]">
+              <select id="filterActionType" class="w-full px-2.5 py-1.5 text-[13px] bg-white border border-[#CBD5E1] rounded-lg text-[#334155] focus:outline-none focus:border-[#2563EB]">
+                <option value="all">Loại sự kiện: Tất cả</option>
+                <option value="Đăng nhập">Đăng nhập</option>
+                <option value="Kiểm tra nguồn">Kiểm tra nguồn</option>
+                <option value="Bật nguồn">Bật nguồn</option>
+                <option value="Tạm dừng nguồn">Tạm dừng nguồn</option>
+                <option value="Tạo corpus freeze">Tạo corpus freeze</option>
+                <option value="Kích hoạt corpus">Kích hoạt corpus</option>
+                <option value="Thay đổi configuration">Thay đổi configuration</option>
+                <option value="Khôi phục configuration">Khôi phục configuration</option>
+                <option value="Xem operational trace">Xem operational trace</option>
+              </select>
+            </div>
+
+            <!-- Filter: Actor / Role -->
+            <div class="w-[210px]">
+              <select id="filterActor" class="w-full px-2.5 py-1.5 text-[13px] bg-white border border-[#CBD5E1] rounded-lg text-[#334155] focus:outline-none focus:border-[#2563EB]">
+                <option value="all">Actor / Role: Tất cả</option>
+                <option value="System Admin">System Admin</option>
+                <option value="Chưa xác định">Chưa xác định</option>
+              </select>
+            </div>
+
+            <!-- Filter: Kết quả -->
+            <div class="w-[140px]">
+              <select id="filterResult" class="w-full px-2.5 py-1.5 text-[13px] bg-white border border-[#CBD5E1] rounded-lg text-[#334155] focus:outline-none focus:border-[#2563EB]">
+                <option value="all">Kết quả: Tất cả</option>
+                <option value="Thành công">Thành công</option>
+                <option value="Thất bại">Thất bại</option>
+              </select>
+            </div>
+
+            <!-- Filter: Resource type -->
+            <div class="w-[160px]">
+              <select id="filterResourceType" class="w-full px-2.5 py-1.5 text-[13px] bg-white border border-[#CBD5E1] rounded-lg text-[#334155] focus:outline-none focus:border-[#2563EB]">
+                <option value="all">Resource: Tất cả</option>
+                <option value="Phiên đăng nhập">Phiên đăng nhập</option>
+                <option value="Source adapter">Source adapter</option>
+                <option value="Corpus">Corpus</option>
+                <option value="Configuration">Configuration</option>
+                <option value="Trace">Trace</option>
+              </select>
+            </div>
+
+            <!-- Reset Filter Button -->
+            <button id="btnResetFilters" class="px-3 py-1.5 text-[13px] font-medium text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] rounded-lg border border-transparent hover:border-[#E2E8F0] transition">
+              Đặt lại
+            </button>
+          </div>
+        </div>
+
+        <!-- TABLE CONTAINER (Fits 1440px desktop viewport without horizontal cutting) -->
+        <div class="overflow-x-auto flex-1 custom-scrollbar">
+          <table class="w-full text-left border-collapse text-[13px]">
+            <thead>
+              <tr class="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[#64748B] font-semibold select-none">
+                <th class="py-3 px-4 w-[160px] whitespace-nowrap">Thời gian</th>
+                <th class="py-3 px-4 w-[130px] whitespace-nowrap">Event ID</th>
+                <th class="py-3 px-4 w-[130px] whitespace-nowrap">Actor</th>
+                <th class="py-3 px-4 w-[180px] whitespace-nowrap">Hành động</th>
+                <th class="py-3 px-4 w-[170px] whitespace-nowrap">Resource</th>
+                <th class="py-3 px-4 w-[120px] whitespace-nowrap">Kết quả</th>
+                <th class="py-3 px-4 w-[150px] whitespace-nowrap">Trace ID</th>
+                <th class="py-3 px-4 w-[100px] text-right whitespace-nowrap">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="auditTableBody" class="divide-y divide-[#F1F5F9] text-[#1E293B]">
+              <!-- Populated by JavaScript -->
+            </tbody>
+          </table>
+
+          <!-- Empty State (hidden by default) -->
+          <div id="emptyState" class="hidden flex-col items-center justify-center py-16 px-4 text-center">
+            <div class="w-12 h-12 rounded-full bg-[#F1F5F9] flex items-center justify-center text-[#94A3B8] mb-3">
+              <span class="material-symbols-outlined text-[24px]">search_off</span>
+            </div>
+            <p class="text-[14px] font-medium text-[#475569]">Không tìm thấy sự kiện kiểm toán phù hợp.</p>
+            <p class="text-[12px] text-[#94A3B8] mt-1">Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm của bạn.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER (Exact requirement: only "Chỉ dùng cho quản trị vận hành FinMind.") -->
+    <footer class="bg-white border-t border-[#E2E8F0] px-8 py-3 text-center text-[12px] text-[#64748B] shrink-0">
+      Chỉ dùng cho quản trị vận hành FinMind.
+    </footer>
+
+  </main>
+
+  <!-- DETAIL DRAWER (Right Overlay, 460px width, animated slide-over) -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-50 hidden transition-opacity">
+    <div id="drawerPanel" class="absolute top-0 right-0 w-[480px] h-full bg-white shadow-2xl border-l border-[#E2E8F0] flex flex-col justify-between transform translate-x-full transition-transform duration-200 ease-in-out">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-[#E2E8F0] flex items-center justify-between bg-[#F8FAFC]">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">assignment</span>
+          </div>
+          <div>
+            <h3 class="text-[16px] font-bold text-[#0F172A] tracking-tight">Chi tiết sự kiện kiểm toán</h3>
+            <p id="drawerEventIdSubtitle" class="text-[12px] font-mono text-[#64748B] mt-0.5"></p>
+          </div>
+        </div>
+        <button id="btnCloseDrawer" class="w-8 h-8 rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-white border border-transparent hover:border-[#CBD5E1] flex items-center justify-center transition">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Drawer Scrollable Content -->
+      <div id="drawerBody" class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6 text-[13px]">
+        <div class="h-full flex flex-col items-center justify-center text-center gap-2 py-16 text-[#64748B]"><span class="material-symbols-outlined text-[36px] text-[#CBD5E1]">assignment</span><div class="font-medium text-[13px] text-[#0F172A]">Chọn một sự kiện để xem chi tiết.</div></div>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="p-4 border-t border-[#E2E8F0] bg-[#F8FAFC] flex justify-end">
+        <button id="btnCloseDrawerBtn" class="px-4 py-2 bg-white border border-[#CBD5E1] text-[#334155] hover:bg-[#F8FAFC] rounded-lg font-medium text-[13px] shadow-sm transition">
+          Đóng
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXPORT MODAL -->
+  <div id="exportModal" class="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl border border-[#E2E8F0] max-w-lg w-full overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-[#E2E8F0] flex items-center justify-between bg-[#F8FAFC]">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center">
+            <span class="material-symbols-outlined text-[18px]">download</span>
+          </div>
+          <h3 class="text-[15px] font-bold text-[#0F172A]">Xuất nhật ký kiểm toán</h3>
+        </div>
+        <button id="btnCloseExportModal" class="text-[#64748B] hover:text-[#0F172A]">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-4 text-[13px] text-[#334155]">
+        <div class="p-3.5 bg-[#EFF6FF] border border-[#BFDBFE] rounded-lg text-[#1E40AF] flex items-start gap-2.5">
+          <span class="material-symbols-outlined text-[18px] text-[#2563EB] shrink-0 mt-0.5">verified_user</span>
+          <p class="leading-relaxed">
+            Chỉ xuất các trường đã được làm sạch và được phép hiển thị. Không xuất secret hoặc raw payload.
+          </p>
+        </div>
+
+        <div>
+          <label class="block text-[12px] font-semibold uppercase tracking-wider text-[#64748B] mb-2">Các trường thông tin sẽ xuất:</label>
+          <div class="grid grid-cols-2 gap-2 p-3 bg-[#F8FAFC] rounded-lg border border-[#E2E8F0] text-[12px] text-[#475569]">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[15px] text-[#10B981]">check_circle</span>
+              <span>Thời gian</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[15px] text-[#10B981]">check_circle</span>
+              <span>Event ID</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[15px] text-[#10B981]">check_circle</span>
+              <span>Actor</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[15px] text-[#10B981]">check_circle</span>
+              <span>Hành động</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[15px] text-[#10B981]">check_circle</span>
+              <span>Resource</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[15px] text-[#10B981]">check_circle</span>
+              <span>Kết quả</span>
+            </div>
+            <div class="flex items-center gap-2 col-span-2">
+              <span class="material-symbols-outlined text-[15px] text-[#10B981]">check_circle</span>
+              <span>Trace ID</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-[12px] text-[#64748B]">
+          Định dạng tệp: <strong>CSV (UTF-8, Sanitized)</strong>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-3.5 border-t border-[#E2E8F0] bg-[#F8FAFC] flex items-center justify-end gap-2.5">
+        <button id="btnCancelExport" class="px-4 py-2 bg-white border border-[#CBD5E1] text-[#334155] hover:bg-[#F8FAFC] rounded-lg font-medium text-[13px] transition">
+          Hủy
+        </button>
+        <button id="btnConfirmExport" class="px-4 py-2 bg-[#2563EB] text-white hover:bg-[#1D4ED8] rounded-lg font-medium text-[13px] shadow-sm transition">
+          Xuất
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-[#0F172A] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 text-[13px] transform translate-y-20 opacity-0 transition-all duration-200 pointer-events-none">
+    <span class="material-symbols-outlined text-[#34D399] text-[20px]">check_circle</span>
+    <span id="toastMessage">Đã chuẩn bị tệp xuất (minh họa)</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // EXACT DATA SPECIFICATION
+    const rawEvents = [
+      {
+        id: "AUD-DEMO-031",
+        time: "04/10/2026 20:45",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Cập nhật cấu hình CFG v2.5",
+        type: "Thay đổi configuration",
+        rtype: "Configuration",
+        resource: "CFG v2.5",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: "v2.5",
+        corpus: "v1.4",
+        source: null,
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-030",
+        time: "04/10/2026 20:41",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Tạo cấu hình CFG v2.5",
+        type: "Thay đổi configuration",
+        rtype: "Configuration",
+        resource: "CFG v2.5",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: "v2.5",
+        corpus: null,
+        source: null,
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-029",
+        time: "04/10/2026 20:30",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Kích hoạt corpus",
+        type: "Kích hoạt corpus",
+        rtype: "Corpus",
+        resource: "Corpus v1.4",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: null,
+        corpus: "v1.4",
+        source: null,
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-028",
+        time: "04/10/2026 20:12",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Tạo corpus freeze",
+        type: "Tạo corpus freeze",
+        rtype: "Corpus",
+        resource: "Corpus v1.5",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: null,
+        corpus: "v1.5",
+        source: null,
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-027",
+        time: "04/10/2026 19:58",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Tạo corpus freeze",
+        type: "Tạo corpus freeze",
+        rtype: "Corpus",
+        resource: "Corpus v1.6",
+        result: "Thất bại",
+        reason: "Không thể tạo phiên bản corpus: 1 tài liệu thiếu publication date, 1 tài liệu hash verification không đạt.",
+        trace: null,
+        config: null,
+        corpus: "v1.6",
+        source: null,
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-026",
+        time: "04/10/2026 19:40",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Bật nguồn",
+        type: "Bật nguồn",
+        rtype: "Source adapter",
+        resource: "HNX",
+        result: "Thất bại",
+        reason: "Kiểm tra kết nối chưa đạt.",
+        trace: null,
+        config: null,
+        corpus: null,
+        source: "src-3",
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-025",
+        time: "04/10/2026 19:35",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Kiểm tra nguồn",
+        type: "Kiểm tra nguồn",
+        rtype: "Source adapter",
+        resource: "SSC",
+        result: "Thất bại",
+        reason: "Không thể truy cập endpoint.",
+        trace: null,
+        config: null,
+        corpus: null,
+        source: "src-4",
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-024",
+        time: "04/10/2026 19:20",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Tạm dừng nguồn",
+        type: "Tạm dừng nguồn",
+        rtype: "Source adapter",
+        resource: "Tệp CSV có kiểm soát",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: null,
+        corpus: null,
+        source: "src-5",
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-023",
+        time: "04/10/2026 19:05",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Khôi phục configuration",
+        type: "Khôi phục configuration",
+        rtype: "Configuration",
+        resource: "CFG v2.3",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: "v2.3",
+        corpus: null,
+        source: null,
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-022",
+        time: "04/10/2026 18:50",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Xem operational trace",
+        type: "Xem operational trace",
+        rtype: "Trace",
+        resource: "TRC-DEMO-004",
+        result: "Thành công",
+        reason: null,
+        trace: "TRC-DEMO-004",
+        config: "v2.4",
+        corpus: "v1.4",
+        source: null,
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-021",
+        time: "04/10/2026 18:44",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Xem operational trace",
+        type: "Xem operational trace",
+        rtype: "Trace",
+        resource: "TRC-DEMO-002",
+        result: "Thành công",
+        reason: null,
+        trace: "TRC-DEMO-002",
+        config: "v2.4",
+        corpus: "v1.4",
+        source: null,
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-020",
+        time: "04/10/2026 18:30",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Đăng nhập",
+        type: "Đăng nhập",
+        rtype: "Phiên đăng nhập",
+        resource: "Phiên quản trị",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: null,
+        corpus: null,
+        source: null,
+        sanitized: { "Authorization": "[ĐÃ ẨN]" },
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-019",
+        time: "04/10/2026 18:29",
+        actor: "Chưa xác định",
+        role: "—",
+        action: "Đăng nhập",
+        type: "Đăng nhập",
+        rtype: "Phiên đăng nhập",
+        resource: "Phiên quản trị",
+        result: "Thất bại",
+        reason: "Thông tin đăng nhập không hợp lệ.",
+        trace: null,
+        config: null,
+        corpus: null,
+        source: null,
+        sanitized: { "Authorization": "[ĐÃ ẨN]", "Thông tin xác thực": "[ĐÃ ẨN]" },
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-018",
+        time: "04/10/2026 17:55",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Bật nguồn",
+        type: "Bật nguồn",
+        rtype: "Source adapter",
+        resource: "FPT Investor Relations",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: null,
+        corpus: null,
+        source: "src-1",
+        sanitized: null,
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-017",
+        time: "04/10/2026 17:50",
+        actor: "System Admin",
+        role: "System Admin",
+        action: "Kiểm tra nguồn",
+        type: "Kiểm tra nguồn",
+        rtype: "Source adapter",
+        resource: "FPT Investor Relations",
+        result: "Thành công",
+        reason: null,
+        trace: null,
+        config: null,
+        corpus: null,
+        source: "src-1",
+        sanitized: { "Authorization": "[ĐÃ ẨN]" },
+        retentionExpired: false
+      },
+      {
+        id: "AUD-DEMO-003",
+        time: "—",
+        actor: "—",
+        role: "—",
+        action: "—",
+        type: "—",
+        rtype: "—",
+        resource: "—",
+        result: "—",
+        reason: null,
+        trace: null,
+        config: null,
+        corpus: null,
+        source: null,
+        sanitized: null,
+        retentionExpired: true
+      }
+    ];
+
+    // State
+    let currentInboundFilter = null; // { type: 'trace'|'config'|'corpus'|'source', value: '...' }
+    let selectedEvent = null;
+
+    // DOM Elements
+    const searchInput = document.getElementById('searchInput');
+    const filterTime = document.getElementById('filterTime');
+    const filterActionType = document.getElementById('filterActionType');
+    const filterActor = document.getElementById('filterActor');
+    const filterResult = document.getElementById('filterResult');
+    const filterResourceType = document.getElementById('filterResourceType');
+    const btnResetFilters = document.getElementById('btnResetFilters');
+    
+    const auditTableBody = document.getElementById('auditTableBody');
+    const eventCountBadge = document.getElementById('eventCountBadge');
+    const emptyState = document.getElementById('emptyState');
+
+    const inboundFilterBar = document.getElementById('inboundFilterBar');
+    const inboundFilterLabel = document.getElementById('inboundFilterLabel');
+    const btnClearInboundFilter = document.getElementById('btnClearInboundFilter');
+
+    // Drawer Elements
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerPanel = document.getElementById('drawerPanel');
+    const drawerBody = document.getElementById('drawerBody');
+    const drawerEventIdSubtitle = document.getElementById('drawerEventIdSubtitle');
+    const btnCloseDrawer = document.getElementById('btnCloseDrawer');
+    const btnCloseDrawerBtn = document.getElementById('btnCloseDrawerBtn');
+
+    // Export Modal Elements
+    const exportModal = document.getElementById('exportModal');
+    const btnOpenExportModal = document.getElementById('btnOpenExportModal');
+    const btnCloseExportModal = document.getElementById('btnCloseExportModal');
+    const btnCancelExport = document.getElementById('btnCancelExport');
+    const btnConfirmExport = document.getElementById('btnConfirmExport');
+    const toast = document.getElementById('toast');
+
+    const EMPTY_DRAWER_HTML = "<div class=\"h-full flex flex-col items-center justify-center text-center gap-2 py-16 text-[#64748B]\"><span class=\"material-symbols-outlined text-[36px] text-[#CBD5E1]\">assignment</span><div class=\"font-medium text-[13px] text-[#0F172A]\">Chọn một sự kiện để xem chi tiết.</div></div>";
+
+    // Parse URL Hash Params
+    function parseHashParams() {
+      const hash = window.location.hash;
+      const qIndex = hash.indexOf('?');
+      if (qIndex === -1) return {};
+      const queryStr = hash.substring(qIndex + 1);
+      const params = new URLSearchParams(queryStr);
+      const res = {};
+      for (const [k, v] of params.entries()) {
+        res[k] = v;
+      }
+      return res;
+    }
+
+    // Apply URL parameters on initial load / hashchange
+    function handleHashRouting() {
+      const params = parseHashParams();
+      
+      // Inbound filters
+      if (params.trace) {
+        currentInboundFilter = { type: 'trace', value: params.trace, label: `Trace ID = ${params.trace}` };
+      } else if (params.config) {
+        currentInboundFilter = { type: 'config', value: params.config, label: `Configuration = ${params.config}` };
+      } else if (params.corpus) {
+        currentInboundFilter = { type: 'corpus', value: params.corpus, label: `Corpus = ${params.corpus}` };
+      } else if (params.source) {
+        currentInboundFilter = { type: 'source', value: params.source, label: `Source Adapter = ${params.source}` };
+      } else {
+        currentInboundFilter = null;
+      }
+
+      if (currentInboundFilter) {
+        inboundFilterBar.classList.remove('hidden');
+        inboundFilterBar.classList.add('flex');
+        inboundFilterLabel.textContent = currentInboundFilter.label;
+      } else {
+        inboundFilterBar.classList.add('hidden');
+        inboundFilterBar.classList.remove('flex');
+      }
+
+      renderTable();
+
+      // Inbound drawer open (#a05?event=AUD-DEMO-026)
+      if (params.event) {
+        const target = rawEvents.find(e => e.id === params.event);
+        if (target) {
+          openDrawer(target);
+        }
+      }
+    }
+
+    // Filter computation
+    function getFilteredEvents() {
+      const q = searchInput.value.trim().toLowerCase();
+      const fTime = filterTime.value;
+      const fType = filterActionType.value;
+      const fActor = filterActor.value;
+      const fRes = filterResult.value;
+      const fRType = filterResourceType.value;
+
+      return rawEvents.filter(item => {
+        // Inbound Filter check
+        if (currentInboundFilter) {
+          if (currentInboundFilter.type === 'trace' && item.trace !== currentInboundFilter.value) return false;
+          if (currentInboundFilter.type === 'config' && item.config !== currentInboundFilter.value) return false;
+          if (currentInboundFilter.type === 'corpus' && item.corpus !== currentInboundFilter.value) return false;
+          if (currentInboundFilter.type === 'source' && item.source !== currentInboundFilter.value) return false;
+        }
+
+        // Retention / Time
+        if (fTime === 'in_retention' && item.retentionExpired) return false;
+        if (fTime === 'expired' && !item.retentionExpired) return false;
+
+        // If retention expired, standard attribute filters don't match active events except 'all'
+        if (item.retentionExpired) {
+          if (fType !== 'all' || fActor !== 'all' || fRes !== 'all' || fRType !== 'all') return false;
+          if (q && !item.id.toLowerCase().includes(q)) return false;
+          return true;
+        }
+
+        // Action Type
+        if (fType !== 'all' && item.type !== fType) return false;
+
+        // Actor
+        if (fActor !== 'all' && item.actor !== fActor) return false;
+
+        // Result
+        if (fRes !== 'all' && item.result !== fRes) return false;
+
+        // Resource Type
+        if (fRType !== 'all' && item.rtype !== fRType) return false;
+
+        // Search Query (Event ID or Trace ID)
+        if (q) {
+          const matchId = item.id.toLowerCase().includes(q);
+          const matchTrace = item.trace ? item.trace.toLowerCase().includes(q) : false;
+          if (!matchId && !matchTrace) return false;
+        }
+
+        return true;
+      });
+    }
+
+    // Render Table Rows
+    function renderTable() {
+      const filtered = getFilteredEvents();
+      eventCountBadge.textContent = `(${filtered.length}/${rawEvents.length})`;
+
+      if (filtered.length === 0) {
+        auditTableBody.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+
+      auditTableBody.innerHTML = filtered.map(ev => {
+        if (ev.retentionExpired) {
+          return `
+            <tr class="hover:bg-[#F8FAFC] transition-colors cursor-pointer" onclick="handleRowClick('${ev.id}')">
+              <td class="py-3.5 px-4 whitespace-nowrap text-[#94A3B8]">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]">
+                  Ngoài thời hạn lưu giữ
+                </span>
+              </td>
+              <td class="py-3.5 px-4 font-mono font-medium text-[#0F172A] whitespace-nowrap">${ev.id}</td>
+              <td class="py-3.5 px-4 text-[#94A3B8] whitespace-nowrap">—</td>
+              <td class="py-3.5 px-4 text-[#94A3B8] whitespace-nowrap">—</td>
+              <td class="py-3.5 px-4 text-[#94A3B8] whitespace-nowrap">—</td>
+              <td class="py-3.5 px-4 whitespace-nowrap text-[#94A3B8]">—</td>
+              <td class="py-3.5 px-4 text-[#94A3B8] whitespace-nowrap">—</td>
+              <td class="py-3.5 px-4 text-right whitespace-nowrap">
+                <button onclick="event.stopPropagation(); handleRowClick('${ev.id}')" class="text-[12px] font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline">
+                  Xem chi tiết
+                </button>
+              </td>
+            </tr>
+          `;
+        }
+
+        // Result pill
+        const isSuccess = ev.result === 'Thành công';
+        const resultPill = isSuccess
+          ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]">Thành công</span>`
+          : `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-[#FEF2F2] text-[#DC2626] border border-[#FECACA]">Thất bại</span>`;
+
+        // Trace ID Cell
+        const traceCell = ev.trace
+          ? `<a href="#a01?trace=${ev.trace}" onclick="event.stopPropagation()" class="font-mono text-[#2563EB] hover:underline font-medium">${ev.trace}</a>`
+          : `<span class="text-[#94A3B8]">—</span>`;
+
+        return `
+          <tr class="hover:bg-[#F8FAFC] transition-colors cursor-pointer" onclick="handleRowClick('${ev.id}')">
+            <td class="py-3.5 px-4 whitespace-nowrap font-mono text-[12px] text-[#475569]">${ev.time}</td>
+            <td class="py-3.5 px-4 font-mono font-semibold text-[#0F172A] whitespace-nowrap">${ev.id}</td>
+            <td class="py-3.5 px-4 whitespace-nowrap font-medium text-[#1E293B]">${ev.actor}</td>
+            <td class="py-3.5 px-4 whitespace-nowrap text-[#334155] font-medium">${ev.action}</td>
+            <td class="py-3.5 px-4 whitespace-nowrap">
+              <span class="inline-flex items-center gap-1.5">
+                <span class="text-[11px] px-1.5 py-0.5 rounded bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]">${ev.rtype}</span>
+                <span class="font-medium text-[#0F172A]">${ev.resource}</span>
+              </span>
+            </td>
+            <td class="py-3.5 px-4 whitespace-nowrap">${resultPill}</td>
+            <td class="py-3.5 px-4 whitespace-nowrap">${traceCell}</td>
+            <td class="py-3.5 px-4 text-right whitespace-nowrap">
+              <button onclick="event.stopPropagation(); handleRowClick('${ev.id}')" class="text-[12px] font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline">
+                Xem chi tiết
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Row Click handler
+    window.handleRowClick = function(id) {
+      const ev = rawEvents.find(e => e.id === id);
+      if (ev) {
+        openDrawer(ev);
+      }
+    };
+
+    // Open Detail Drawer
+    function openDrawer(ev) {
+      selectedEvent = ev;
+      drawerEventIdSubtitle.textContent = ev.id;
+
+      if (ev.retentionExpired) {
+        drawerBody.innerHTML = `
+          <div class="space-y-4">
+            <div class="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl flex items-center justify-between">
+              <div>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-[#64748B]">Event ID</span>
+                <div class="font-mono text-[16px] font-bold text-[#0F172A] mt-0.5">${ev.id}</div>
+              </div>
+              <span class="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]">
+                Ngoài thời hạn lưu giữ
+              </span>
+            </div>
+
+            <div class="p-4 bg-[#FFFBEB] border border-[#FDE68A] rounded-xl text-[#92400E] flex items-start gap-3">
+              <span class="material-symbols-outlined text-[20px] text-[#D97706] shrink-0 mt-0.5">info</span>
+              <div>
+                <div class="font-semibold text-[13px]">Bản ghi không còn được lưu theo chính sách lưu giữ.</div>
+                <div class="text-[12px] text-[#B45309] mt-1 leading-relaxed">
+                  Dữ liệu chi tiết đã được làm sạch và xoá vĩnh viễn khỏi bộ nhớ theo quy chuẩn tuân thủ bảo mật nội bộ.
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        const isSuccess = ev.result === 'Thành công';
+        const resultPill = isSuccess
+          ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]">Thành công</span>`
+          : `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-[#FEF2F2] text-[#DC2626] border border-[#FECACA]">Thất bại</span>`;
+
+        // Related Links
+        const traceLink = ev.trace 
+          ? `<a href="#a01?trace=${ev.trace}" class="font-mono text-[#2563EB] hover:underline font-semibold flex items-center gap-1">${ev.trace} <span class="material-symbols-outlined text-[14px]">arrow_outward</span></a>`
+          : `<span class="text-[#94A3B8]">—</span>`;
+
+        const configLink = ev.config 
+          ? `<a href="#a04?cfg=${ev.config}" class="font-mono text-[#2563EB] hover:underline font-semibold flex items-center gap-1">CFG ${ev.config} <span class="material-symbols-outlined text-[14px]">arrow_outward</span></a>`
+          : `<span class="text-[#94A3B8]">—</span>`;
+
+        const corpusLink = ev.corpus 
+          ? `<a href="#a03?corpus=${ev.corpus}" class="font-mono text-[#2563EB] hover:underline font-semibold flex items-center gap-1">Corpus ${ev.corpus} <span class="material-symbols-outlined text-[14px]">arrow_outward</span></a>`
+          : `<span class="text-[#94A3B8]">—</span>`;
+
+        const sourceLink = ev.source 
+          ? `<a href="#a02?source=${ev.source}" class="font-mono text-[#2563EB] hover:underline font-semibold flex items-center gap-1">${ev.source} <span class="material-symbols-outlined text-[14px]">arrow_outward</span></a>`
+          : `<span class="text-[#94A3B8]">—</span>`;
+
+        // Reason box if failure
+        let reasonBox = '';
+        if (ev.reason) {
+          reasonBox = `
+            <div class="p-4 bg-[#FEF2F2] border border-[#FECACA] rounded-xl text-[#991B1B] space-y-1.5">
+              <div class="flex items-center gap-2 font-semibold text-[13px]">
+                <span class="material-symbols-outlined text-[18px] text-[#DC2626]">error</span>
+                <span>Lý do (đã làm sạch)</span>
+              </div>
+              <p class="text-[12px] leading-relaxed text-[#B91C1C]">${ev.reason}</p>
+            </div>
+          `;
+        }
+
+        // Sanitized data box
+        let sanitizedBox = '';
+        if (ev.sanitized) {
+          const rows = Object.entries(ev.sanitized).map(([k, v]) => `
+            <div class="flex items-center justify-between py-1.5 border-b border-[#F1F5F9] last:border-none">
+              <span class="text-[#64748B] text-[12px]">${k}</span>
+              <span class="font-mono font-medium text-[11px] px-2 py-0.5 bg-[#F1F5F9] text-[#475569] rounded border border-[#E2E8F0]">${v}</span>
+            </div>
+          `).join('');
+
+          sanitizedBox = `
+            <div class="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl space-y-2">
+              <div class="flex items-center gap-2 font-semibold text-[13px] text-[#0F172A]">
+                <span class="material-symbols-outlined text-[18px] text-[#64748B]">shield</span>
+                <span>Dữ liệu đã làm sạch</span>
+              </div>
+              <div class="pt-1">
+                ${rows}
+              </div>
+            </div>
+          `;
+        }
+
+        drawerBody.innerHTML = `
+          <!-- Meta Grid -->
+          <div class="grid grid-cols-2 gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-[#64748B]">Thời gian</div>
+              <div class="font-mono text-[13px] text-[#0F172A] font-medium mt-0.5">${ev.time}</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-[#64748B]">Kết quả</div>
+              <div class="mt-0.5">${resultPill}</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-[#64748B]">Actor</div>
+              <div class="text-[13px] text-[#0F172A] font-semibold mt-0.5">${ev.actor}</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-[#64748B]">Role</div>
+              <div class="text-[13px] text-[#475569] font-medium mt-0.5">${ev.role}</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-[#64748B]">Action</div>
+              <div class="text-[13px] text-[#0F172A] font-medium mt-0.5">${ev.action}</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-[#64748B]">Resource Type</div>
+              <div class="text-[13px] text-[#475569] font-medium mt-0.5">${ev.rtype}</div>
+            </div>
+            <div class="col-span-2">
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-[#64748B]">Resource ID</div>
+              <div class="text-[13px] text-[#0F172A] font-semibold mt-0.5 font-mono">${ev.resource}</div>
+            </div>
+          </div>
+
+          <!-- Related Links Section -->
+          <div class="p-4 bg-white rounded-xl border border-[#E2E8F0] space-y-3">
+            <div class="text-[12px] font-bold uppercase tracking-wider text-[#0F172A]">Thành phần liên quan</div>
+            <div class="divide-y divide-[#F1F5F9] text-[12px]">
+              <div class="py-2 flex items-center justify-between">
+                <span class="text-[#64748B]">Related Trace ID</span>
+                <div>${traceLink}</div>
+              </div>
+              <div class="py-2 flex items-center justify-between">
+                <span class="text-[#64748B]">Related Configuration</span>
+                <div>${configLink}</div>
+              </div>
+              <div class="py-2 flex items-center justify-between">
+                <span class="text-[#64748B]">Related Corpus</span>
+                <div>${corpusLink}</div>
+              </div>
+              <div class="py-2 flex items-center justify-between">
+                <span class="text-[#64748B]">Source Adapter</span>
+                <div>${sourceLink}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason Box if failure -->
+          ${reasonBox}
+
+          <!-- Sanitized Box if present -->
+          ${sanitizedBox}
+        `;
+      }
+
+      drawerOverlay.classList.remove('hidden');
+      setTimeout(() => {
+        drawerPanel.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    function closeDrawer() {
+      drawerPanel.classList.add('translate-x-full');
+      setTimeout(() => {
+        drawerOverlay.classList.add('hidden');
+        drawerBody.innerHTML = EMPTY_DRAWER_HTML;
+        drawerEventIdSubtitle.textContent = '';
+      }, 200);
+    }
+
+    // Modal Export
+    function openExportModal() {
+      exportModal.classList.remove('hidden');
+      exportModal.classList.add('flex');
+    }
+
+    function closeExportModal() {
+      exportModal.classList.add('hidden');
+      exportModal.classList.remove('flex');
+    }
+
+    function showToast(msg) {
+      toast.querySelector('#toastMessage').textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Event Listeners
+    searchInput.addEventListener('input', renderTable);
+    filterTime.addEventListener('change', renderTable);
+    filterActionType.addEventListener('change', renderTable);
+    filterActor.addEventListener('change', renderTable);
+    filterResult.addEventListener('change', renderTable);
+    filterResourceType.addEventListener('change', renderTable);
+
+    btnResetFilters.addEventListener('click', () => {
+      searchInput.value = '';
+      filterTime.value = 'all';
+      filterActionType.value = 'all';
+      filterActor.value = 'all';
+      filterResult.value = 'all';
+      filterResourceType.value = 'all';
+      currentInboundFilter = null;
+      inboundFilterBar.classList.add('hidden');
+      inboundFilterBar.classList.remove('flex');
+      window.location.hash = '#a05';
+      renderTable();
+    });
+
+    btnClearInboundFilter.addEventListener('click', () => {
+      currentInboundFilter = null;
+      inboundFilterBar.classList.add('hidden');
+      inboundFilterBar.classList.remove('flex');
+      window.location.hash = '#a05';
+      renderTable();
+    });
+
+    // Drawer Listeners
+    btnCloseDrawer.addEventListener('click', closeDrawer);
+    btnCloseDrawerBtn.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', (e) => {
+      if (e.target === drawerOverlay) closeDrawer();
+    });
+
+    // Export Listeners
+    btnOpenExportModal.addEventListener('click', openExportModal);
+    btnCloseExportModal.addEventListener('click', closeExportModal);
+    btnCancelExport.addEventListener('click', closeExportModal);
+    btnConfirmExport.addEventListener('click', () => {
+      closeExportModal();
+      showToast('Đã chuẩn bị tệp xuất (minh họa)');
+    });
+
+    // Hashchange listener
+    window.addEventListener('hashchange', handleHashRouting);
+
+    // Initial render
+    handleHashRouting();
+  </script>
+<script src="../js/bridge.js"></script>
+</body>
+</html>

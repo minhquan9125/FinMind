@@ -1,0 +1,1031 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC",
+      "box_2d": [
+        38,
+        131,
+        55,
+        597
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "form_code",
+      "text": "B09-DN/HN",
+      "box_2d": [
+        41,
+        792,
+        53,
+        882
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày",
+      "box_2d": [
+        69,
+        130,
+        98,
+        672
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "24. VỐN CHỦ SỞ HỮU (tiếp theo)",
+      "box_2d": [
+        124,
+        131,
+        139,
+        426
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "24.4 Cổ phiếu",
+      "box_2d": [
+        152,
+        131,
+        166,
+        267
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        178,
+        189,
+        374,
+        887
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Số cuối năm",
+            "Số cổ phần"
+          ],
+          "box_2d": [
+            180,
+            634,
+            217,
+            734
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Số đầu năm",
+            "Số cổ phần"
+          ],
+          "box_2d": [
+            180,
+            788,
+            217,
+            887
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Cổ phiếu đã được duyệt",
+          "note": null,
+          "box_2d": [
+            223,
+            191,
+            238,
+            390
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "232.954.608",
+              "box_2d": [
+                226,
+                634,
+                236,
+                730
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "211.339.607",
+              "box_2d": [
+                226,
+                786,
+                236,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Cổ phiếu đã phát hành",
+          "note": null,
+          "box_2d": [
+            259,
+            191,
+            273,
+            374
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "232.954.608",
+              "box_2d": [
+                262,
+                634,
+                271,
+                731
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "211.339.607",
+              "box_2d": [
+                262,
+                786,
+                271,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Cổ phiếu phổ thông",
+          "note": null,
+          "box_2d": [
+            274,
+            206,
+            288,
+            358
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "232.954.608",
+              "box_2d": [
+                276,
+                634,
+                286,
+                730
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "211.339.607",
+              "box_2d": [
+                276,
+                786,
+                286,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Cổ phiếu được mua lại (cổ phiếu quỹ)",
+          "note": null,
+          "box_2d": [
+            301,
+            191,
+            316,
+            496
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "(53.700)",
+              "box_2d": [
+                303,
+                666,
+                316,
+                731
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "(38.800)",
+              "box_2d": [
+                303,
+                817,
+                316,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Cổ phiếu phổ thông",
+          "note": null,
+          "box_2d": [
+            315,
+            206,
+            330,
+            356
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "(53.700)",
+              "box_2d": [
+                317,
+                665,
+                330,
+                730
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "(38.800)",
+              "box_2d": [
+                317,
+                818,
+                330,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Cổ phiếu đang lưu hành",
+          "note": null,
+          "box_2d": [
+            344,
+            191,
+            357,
+            386
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "232.900.908",
+              "box_2d": [
+                346,
+                634,
+                355,
+                731
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "211.300.807",
+              "box_2d": [
+                346,
+                786,
+                355,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Cổ phiếu phổ thông",
+          "note": null,
+          "box_2d": [
+            358,
+            206,
+            372,
+            356
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "232.900.908",
+              "box_2d": [
+                360,
+                634,
+                369,
+                730
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "211.300.807",
+              "box_2d": [
+                360,
+                786,
+                370,
+                882
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Mệnh giá cổ phiếu đang lưu hành là 10.000 VND/cổ phiếu (Năm tài chính kết thúc ngày 31 tháng 3 năm 2025: 10.000 VND/cổ phiếu).",
+      "box_2d": [
+        385,
+        191,
+        413,
+        882
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "25. CÁC KHOẢN MỤC NGOÀI BẢNG CÂN ĐỐI KẾ TOÁN",
+      "box_2d": [
+        439,
+        130,
+        453,
+        610
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        466,
+        190,
+        587,
+        887
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Số cuối năm"
+          ],
+          "box_2d": [
+            468,
+            633,
+            481,
+            728
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Số đầu năm"
+          ],
+          "box_2d": [
+            468,
+            791,
+            481,
+            885
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Ngoại tệ các loại",
+          "note": null,
+          "box_2d": [
+            489,
+            191,
+            503,
+            316
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": null,
+              "box_2d": null
+            },
+            {
+              "column_key": "c2",
+              "raw": null,
+              "box_2d": null
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Đô la Mỹ (USD)",
+          "note": null,
+          "box_2d": [
+            503,
+            214,
+            516,
+            334
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "9.721.602",
+              "box_2d": [
+                505,
+                650,
+                514,
+                727
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "6.968.826",
+              "box_2d": [
+                505,
+                806,
+                514,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Đô la Sing (SDG)",
+          "note": null,
+          "box_2d": [
+            517,
+            213,
+            530,
+            346
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "5.418",
+              "box_2d": [
+                518,
+                683,
+                528,
+                728
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "649.440",
+              "box_2d": [
+                518,
+                820,
+                528,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Đồng Won Hàn Quốc (KRW)",
+          "note": null,
+          "box_2d": [
+            530,
+            214,
+            543,
+            431
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "59.561.719",
+              "box_2d": [
+                532,
+                641,
+                542,
+                728
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "235.709.890",
+              "box_2d": [
+                532,
+                787,
+                542,
+                883
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Đồng Euro (EUR)",
+          "note": null,
+          "box_2d": [
+            544,
+            213,
+            557,
+            349
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "109.534",
+              "box_2d": [
+                546,
+                664,
+                556,
+                728
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "25.296",
+              "box_2d": [
+                546,
+                830,
+                556,
+                884
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Đô la Úc (AUD)",
+          "note": null,
+          "box_2d": [
+            557,
+            213,
+            570,
+            331
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "596.404",
+              "box_2d": [
+                559,
+                664,
+                570,
+                728
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "-",
+              "box_2d": [
+                562,
+                876,
+                567,
+                884
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Đồng Yên Nhật (JYP)",
+          "note": null,
+          "box_2d": [
+            571,
+            214,
+            585,
+            377
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "490.347",
+              "box_2d": [
+                573,
+                664,
+                583,
+                728
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "195.516.762",
+              "box_2d": [
+                573,
+                787,
+                583,
+                883
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "26. DOANH THU",
+      "box_2d": [
+        612,
+        130,
+        624,
+        292
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "26.1 Doanh thu bán hàng và cung cấp dịch vụ",
+      "box_2d": [
+        640,
+        130,
+        654,
+        521
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        661,
+        189,
+        880,
+        885
+      ],
+      "title": null,
+      "unit_text": "Đơn vị tính: VND",
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Năm nay"
+          ],
+          "box_2d": [
+            683,
+            653,
+            695,
+            723
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Năm trước"
+          ],
+          "box_2d": [
+            683,
+            799,
+            694,
+            881
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Tổng doanh thu",
+          "note": null,
+          "box_2d": [
+            709,
+            189,
+            722,
+            317
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "9.560.786.161.248",
+              "box_2d": [
+                711,
+                578,
+                721,
+                720
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "8.205.229.536.320",
+              "box_2d": [
+                711,
+                735,
+                721,
+                879
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Trong đó:",
+          "note": null,
+          "box_2d": [
+            723,
+            190,
+            736,
+            263
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": null,
+              "box_2d": null
+            },
+            {
+              "column_key": "c2",
+              "raw": null,
+              "box_2d": null
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Doanh thu cung cấp dịch vụ",
+          "note": null,
+          "box_2d": [
+            735,
+            217,
+            750,
+            429
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "5.932.119.597.611",
+              "box_2d": [
+                738,
+                578,
+                748,
+                720
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "4.874.774.223.172",
+              "box_2d": [
+                738,
+                735,
+                748,
+                879
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Doanh thu bán hàng hóa",
+          "note": null,
+          "box_2d": [
+            749,
+            217,
+            764,
+            406
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "3.628.666.563.637",
+              "box_2d": [
+                752,
+                577,
+                762,
+                720
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "3.330.455.313.148",
+              "box_2d": [
+                752,
+                735,
+                762,
+                880
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Các khoản giảm trừ doanh thu",
+          "note": null,
+          "box_2d": [
+            778,
+            188,
+            792,
+            434
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "-",
+              "box_2d": [
+                783,
+                713,
+                788,
+                722
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "(2.587.230.000)",
+              "box_2d": [
+                780,
+                757,
+                792,
+                879
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Hàng bán bị trả lại",
+          "note": null,
+          "box_2d": [
+            792,
+            218,
+            807,
+            358
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "-",
+              "box_2d": [
+                798,
+                714,
+                802,
+                722
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "(2.587.230.000)",
+              "box_2d": [
+                793,
+                757,
+                806,
+                879
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Doanh thu thuần",
+          "note": null,
+          "box_2d": [
+            816,
+            188,
+            829,
+            323
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "9.560.786.161.248",
+              "box_2d": [
+                817,
+                578,
+                826,
+                720
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "8.202.642.306.320",
+              "box_2d": [
+                817,
+                735,
+                826,
+                878
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Trong đó:",
+          "note": null,
+          "box_2d": [
+            838,
+            189,
+            852,
+            263
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": null,
+              "box_2d": null
+            },
+            {
+              "column_key": "c2",
+              "raw": null,
+              "box_2d": null
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Doanh thu đối với bên khác",
+          "note": null,
+          "box_2d": [
+            851,
+            217,
+            864,
+            425
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "9.545.774.980.111",
+              "box_2d": [
+                853,
+                577,
+                864,
+                720
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "8.190.542.174.011",
+              "box_2d": [
+                853,
+                736,
+                864,
+                877
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Doanh thu đối với bên liên quan",
+          "note": null,
+          "box_2d": [
+            864,
+            217,
+            878,
+            458
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "15.011.181.137",
+              "box_2d": [
+                867,
+                600,
+                876,
+                720
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "12.100.132.309",
+              "box_2d": [
+                867,
+                759,
+                876,
+                879
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "furniture",
+      "text": "48",
+      "box_2d": [
+        950,
+        493,
+        963,
+        514
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC\nB09-DN/HN\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày\n24. VỐN CHỦ SỞ HỮU (tiếp theo)\n24.4 Cổ phiếu\nSố cuối năm\nSố cổ phần\nSố đầu năm\nSố cổ phần\nCổ phiếu đã được duyệt 232.954.608 211.339.607\nCổ phiếu đã phát hành 232.954.608 211.339.607\nCổ phiếu phổ thông 232.954.608 211.339.607\nCổ phiếu được mua lại (cổ phiếu quỹ) (53.700) (38.800)\nCổ phiếu phổ thông (53.700) (38.800)\nCổ phiếu đang lưu hành 232.900.908 211.300.807\nCổ phiếu phổ thông 232.900.908 211.300.807\nMệnh giá cổ phiếu đang lưu hành là 10.000 VND/cổ phiếu (Năm tài chính kết thúc ngày 31 tháng 3 năm 2025: 10.000 VND/cổ phiếu).\n25. CÁC KHOẢN MỤC NGOÀI BẢNG CÂN ĐỐI KẾ TOÁN\nSố cuối năm\nSố đầu năm\nNgoại tệ các loại\nĐô la Mỹ (USD) 9.721.602 6.968.826\nĐô la Sing (SDG) 5.418 649.440\nĐồng Won Hàn Quốc (KRW) 59.561.719 235.709.890\nĐồng Euro (EUR) 109.534 25.296\nĐô la Úc (AUD) 596.404 -\nĐồng Yên Nhật (JYP) 490.347 195.516.762\n26. DOANH THU\n26.1 Doanh thu bán hàng và cung cấp dịch vụ\nĐơn vị tính: VND\nNăm nay\nNăm trước\nTổng doanh thu 9.560.786.161.248 8.205.229.536.320\nTrong đó:\nDoanh thu cung cấp dịch vụ 5.932.119.597.611 4.874.774.223.172\nDoanh thu bán hàng hóa 3.628.666.563.637 3.330.455.313.148\nCác khoản giảm trừ doanh thu - (2.587.230.000)\nHàng bán bị trả lại - (2.587.230.000)\nDoanh thu thuần 9.560.786.161.248 8.202.642.306.320\nTrong đó:\nDoanh thu đối với bên khác 9.545.774.980.111 8.190.542.174.011\nDoanh thu đối với bên liên quan 15.011.181.137 12.100.132.309\n48",
+  "unreadable": []
+}

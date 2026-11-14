@@ -1,0 +1,27 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\VCB\\2024\\VCB_2024_501264.pdf",
+  "scope": "annual_report_content",
+  "pages": 28,
+  "routes": {
+    "TEXT_LAYER": 28
+  },
+  "blockTypes": {
+    "paragraph": 1142,
+    "heading": 119
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 35,
+      "end": 47
+    },
+    {
+      "start": 49,
+      "end": 63
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

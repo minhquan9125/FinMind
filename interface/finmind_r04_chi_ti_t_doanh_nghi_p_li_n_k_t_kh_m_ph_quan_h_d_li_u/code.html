@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FinMind - R04 Chi tiết doanh nghiệp</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#2563EB',
+              hover: '#1D4ED8',
+              light: '#EEF4FF',
+              subtle: '#DBEAFE',
+            },
+            surface: {
+              page: '#F8FAFC',
+              card: '#FFFFFF',
+              subtle: '#F1F5F9',
+              border: '#E2E8F0',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+<link rel="stylesheet" href="../shared/research-sidebar.css">
+</head>
+<body class="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
+<!-- Shell Wrapper -->
+<div class="flex flex-1 w-full min-h-screen">
+<!-- Shared researcher sidebar -->
+<aside data-finmind-sidebar="r04"></aside>
+<script src="../shared/research-sidebar.js"></script>
+<!-- MAIN CONTENT AREA -->
+<main class="flex-1 min-w-0 flex flex-col min-h-screen">
+<!-- Top Bar / Breadcrumb Header -->
+<div class="bg-white border-b border-slate-200 px-8 py-3.5 flex items-center justify-between sticky top-0 z-10">
+<nav class="flex items-center gap-2 text-xs font-medium text-slate-500">
+<a class="hover:text-blue-600 transition-colors" href="../finmind_dashboard_nghi_n_c_u_ng_b_watchlist_linh_ho_t/code.html">Tổng quan</a>
+<span class="text-slate-300">/</span>
+<a class="hover:text-blue-600 transition-colors" href="../finmind_doanh_nghiep_duoc_ho_tro/code.html">Doanh nghiệp</a>
+<span class="text-slate-300">/</span>
+<span class="text-slate-900 font-semibold" id="breadcrumb-ticker">FPT</span>
+</nav>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            EOD · Dữ liệu cuối ngày
+          </span>
+</div>
+</div>
+<!-- Scrollable Inner Content Area -->
+<div class="flex-1 max-w-[1240px] w-full mx-auto px-8 py-7 space-y-6">
+<!-- HEADER BLOCK: Company Title, Badges & Interactive Watchlist Toggle -->
+<div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1.5">
+<div class="flex items-center gap-3 flex-wrap">
+<h1 class="text-3xl font-bold text-slate-900 tracking-tight" id="header-ticker">FPT</h1>
+<span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200/80" id="header-ticker-badge">
+                Mã: FPT
+              </span>
+<span class="px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200" id="header-industry-badge">
+                Ngành: Công nghệ
+              </span>
+<span class="px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200" id="header-exchange-badge">
+                Sàn: HOSE
+              </span>
+</div>
+<p class="text-sm font-medium text-slate-600" id="header-company-name">Công ty Cổ phần FPT</p>
+</div>
+<!-- Watchlist Toggle Action & Knowledge Graph Link -->
+<div class="flex flex-col items-start md:items-end gap-1.5 shrink-0">
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-blue-100" id="watchlist-btn">
+<span class="text-base leading-none text-slate-400" id="watchlist-icon">☆</span>
+<span class="" id="watchlist-text">Theo dõi</span>
+</button>
+<a class="hidden text-xs font-medium text-blue-600 hover:text-blue-700 hover:underline transition-colors flex items-center gap-1" href="../finmind_r05_danh_s_ch_theo_d_i_b_n_chu_n_h_a_kh_ng_seed_m_u/code.html" id="watchlist-link">
+<span class="">Xem danh sách theo dõi &gt;</span>
+</a>
+<a class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:underline transition-colors pt-0.5" href="../finmind_r06_th_tri_th_c_chu_n_h_a_hub_and_spoke_b_c_c_100vh/code.html#r06?company=FPT" id="graph-link">
+<span>Khám phá quan hệ dữ liệu →</span>
+</a>
+</div>
+</div>
+<!-- TABS NAVIGATION WITH BRIEF 400ms LOADING SKELETON -->
+<div class="border-b border-slate-200 flex items-center justify-between">
+<div class="flex items-center gap-1" role="tablist">
+<button class="tab-btn px-4 py-3 text-sm font-semibold text-blue-600 border-b-2 border-blue-600 transition-colors focus:outline-none flex items-center gap-2" id="tab-btn-overview" onclick="switchTab('overview')">
+<span class="">Tổng quan</span>
+</button>
+<button class="tab-btn px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition-colors focus:outline-none flex items-center gap-2" id="tab-btn-finance" onclick="switchTab('finance')">
+<span class="">Tài chính</span>
+</button>
+<button class="tab-btn px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition-colors focus:outline-none flex items-center gap-2" id="tab-btn-reports" onclick="switchTab('reports')">
+<span class="">Báo cáo &amp; nguồn</span>
+</button>
+</div>
+</div>
+<!-- 2-COLUMN LAYOUT: MAIN PANEL (~70%) + STICKY SIDE CARD (~30%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT 70% COLUMN: TAB PANELS -->
+<div class="lg:col-span-8 space-y-6">
+<!-- TAB LOADING SKELETON (Hidden by default, shown for 400ms on tab click) -->
+<div class="hidden bg-white rounded-xl border border-slate-200 p-8 shadow-xs animate-pulse space-y-5" id="tab-skeleton">
+<div class="flex items-center justify-between">
+<div class="h-5 bg-slate-200 rounded w-1/4"></div>
+<div class="h-4 bg-slate-100 rounded w-20"></div>
+</div>
+<div class="space-y-3 pt-2">
+<div class="h-4 bg-slate-100 rounded w-3/4"></div>
+<div class="h-4 bg-slate-100 rounded w-5/6"></div>
+<div class="h-4 bg-slate-100 rounded w-1/2"></div>
+</div>
+<div class="pt-4 flex items-center justify-center text-xs font-medium text-slate-400 gap-2">
+<svg class="animate-spin w-4 h-4 text-blue-600" fill="none" viewbox="0 0 24 24">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8v8H4z" fill="currentColor"></path>
+</svg>
+<span class="">Đang tải dữ liệu...</span>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- TAB 1: TỔNG QUAN (Default Active) -->
+<!-- ============================================== -->
+<div class="space-y-6" id="tab-content-overview">
+
+<!-- Section: Tổng quan doanh nghiệp (Definition grid) -->
+<div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs space-y-5">
+<div class="flex items-center justify-between border-b border-slate-100 pb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<h2 class="text-base font-bold text-slate-900">Tổng quan doanh nghiệp</h2>
+</div>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-500">
+                    Hồ sơ niêm yết
+                  </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm">
+<div class="space-y-1 pb-3 border-b border-slate-100/70">
+<div class="text-xs font-medium text-slate-400">Tên doanh nghiệp</div>
+<div class="font-medium text-slate-800" id="card-company-name">Công ty Cổ phần FPT</div>
+</div>
+<div class="space-y-1 pb-3 border-b border-slate-100/70">
+<div class="text-xs font-medium text-slate-400">Mã chứng khoán</div>
+<div class="font-semibold text-blue-600" id="card-ticker">FPT</div>
+</div>
+<div class="space-y-1 pb-3 border-b border-slate-100/70">
+<div class="text-xs font-medium text-slate-400">Ngành</div>
+<div class="font-medium text-slate-800" id="card-industry">Công nghệ</div>
+</div>
+<div class="space-y-1 pb-3 border-b border-slate-100/70">
+<div class="text-xs font-medium text-slate-400">Sàn giao dịch</div>
+<div class="font-medium text-slate-800" id="card-exchange">HOSE</div>
+</div>
+<div class="space-y-1 pb-3 border-b border-slate-100/70">
+<div class="text-xs font-medium text-slate-400">Website</div>
+<div class="text-slate-400 italic font-normal">Chưa có dữ liệu</div>
+</div>
+<div class="space-y-1 pb-3 border-b border-slate-100/70">
+<div class="text-xs font-medium text-slate-400">Người đứng đầu / lãnh đạo</div>
+<div class="text-slate-400 italic font-normal">Chưa có dữ liệu</div>
+</div>
+<div class="space-y-1 md:col-span-2 pt-1">
+<div class="text-xs font-medium text-slate-400">Mô tả doanh nghiệp</div>
+<div class="text-slate-500 text-xs leading-relaxed bg-slate-50 p-3 rounded-lg border border-slate-100">
+                      Mô tả sẽ hiển thị khi có nguồn công bố được phê duyệt.
+                    </div>
+</div>
+</div>
+</div>
+<!-- 4 Compact Info Cards -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+<div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
+<div class="text-xs font-medium text-slate-400">Ngành</div>
+<div class="text-sm font-semibold text-slate-800 mt-1" id="mini-industry">Công nghệ</div>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
+<div class="text-xs font-medium text-slate-400">Sàn</div>
+<div class="text-sm font-semibold text-slate-800 mt-1" id="mini-exchange">HOSE</div>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
+<div class="text-xs font-medium text-slate-400">Kỳ dữ liệu gần nhất</div>
+<div class="text-sm font-semibold text-slate-800 mt-1">FY2025</div>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs flex flex-col justify-between">
+<div class="text-xs font-medium text-slate-400">Trạng thái nguồn</div>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+<svg class="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                      Đã có nguồn công bố
+                    </span>
+</div>
+</div>
+</div>
+<!-- R04 EOD chart sample: illustrative values only; no source/API is connected. -->
+<section aria-labelledby="market-chart-title" class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs space-y-5" id="market-chart-sample">
+<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 border-b border-slate-100 pb-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-600" aria-hidden="true"></span>
+<h2 class="text-base font-bold text-slate-900" id="market-chart-title">Giá &amp; khối lượng cuối ngày · <span id="market-chart-ticker">FPT</span></h2>
+</div>
+<p class="mt-1 text-xs leading-5 text-slate-500">Theo dõi dữ liệu EOD của doanh nghiệp trong phạm vi nghiên cứu.</p>
+</div>
+<span class="self-start shrink-0 rounded-md border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-semibold text-amber-800">Bản mẫu · không phải giá thực</span>
+</div>
+<div class="space-y-5" id="market-chart-demo">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="rounded-lg border border-slate-200 bg-slate-50/70 px-4 py-3">
+<div class="text-xs text-slate-500">Giá đóng cửa · phiên mẫu 8</div>
+<div class="mt-1 text-xl font-bold tabular-nums text-slate-900">123,4 <span class="text-xs font-medium text-slate-500">nghìn đồng/cp</span></div>
+</div>
+<div class="rounded-lg border border-slate-200 bg-slate-50/70 px-4 py-3">
+<div class="text-xs text-slate-500">Khối lượng · phiên mẫu 8</div>
+<div class="mt-1 text-xl font-bold tabular-nums text-slate-900">2,1 <span class="text-xs font-medium text-slate-500">triệu cp</span></div>
+</div>
+<div class="rounded-lg border border-slate-200 bg-slate-50/70 px-4 py-3">
+<div class="text-xs text-slate-500">Nguồn &amp; ngày cập nhật</div>
+<div class="mt-1 text-sm font-semibold text-slate-700">Chưa kết nối</div>
+<div class="mt-0.5 text-[11px] text-slate-500">Sẽ hiển thị khi có dữ liệu đã kiểm định</div>
+</div>
+</div>
+<figure class="rounded-xl border border-slate-200 bg-slate-50/60 p-4 sm:p-5">
+<div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
+<span class="inline-flex items-center gap-2"><span class="h-0.5 w-5 bg-blue-600" aria-hidden="true"></span>Giá đóng cửa · nghìn đồng/cp</span>
+<span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-sm bg-blue-200" aria-hidden="true"></span>Khối lượng · triệu cp</span>
+</div>
+<svg aria-labelledby="market-svg-title market-svg-desc" class="mt-3 block h-[280px] w-full" preserveAspectRatio="xMidYMid meet" role="img" viewBox="0 0 720 280">
+<title id="market-svg-title">Biểu đồ giá đóng cửa và khối lượng minh họa cho FPT</title>
+<desc id="market-svg-desc">Tám phiên dữ liệu mô phỏng, giá đóng cửa tăng từ 115,2 lên 123,4 nghìn đồng mỗi cổ phiếu. Đây không phải dữ liệu thị trường thực.</desc>
+<defs><linearGradient id="market-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#DBEAFE" stop-opacity="0.8"/><stop offset="100%" stop-color="#EFF6FF" stop-opacity="0.1"/></linearGradient></defs>
+<g fill="#64748B" font-family="Inter, sans-serif" font-size="11">
+<text x="0" y="25">125</text><text x="0" y="65">120</text><text x="0" y="105">115</text><text x="0" y="145">110</text>
+<text x="52" y="273">P1</text><text x="136" y="273">P2</text><text x="220" y="273">P3</text><text x="304" y="273">P4</text><text x="388" y="273">P5</text><text x="472" y="273">P6</text><text x="556" y="273">P7</text><text x="640" y="273">P8</text>
+</g>
+<g stroke="#E2E8F0" stroke-dasharray="3 4" stroke-width="1"><path d="M42 20H680M42 60H680M42 100H680M42 140H680"/></g>
+<path d="M58 105 L142 92 L226 108 L310 78 L394 71 L478 86 L562 49 L646 34 L646 155 L58 155 Z" fill="url(#market-fill)"/>
+<path d="M58 105 L142 92 L226 108 L310 78 L394 71 L478 86 L562 49 L646 34" fill="none" stroke="#2563EB" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+<g fill="#fff" stroke="#2563EB" stroke-width="2"><circle cx="58" cy="105" r="4"/><circle cx="142" cy="92" r="4"/><circle cx="226" cy="108" r="4"/><circle cx="310" cy="78" r="4"/><circle cx="394" cy="71" r="4"/><circle cx="478" cy="86" r="4"/><circle cx="562" cy="49" r="4"/><circle cx="646" cy="34" r="5"/></g>
+<path d="M42 174H680" stroke="#CBD5E1" stroke-width="1"/>
+<g fill="#BFDBFE"><rect x="47" y="209" width="22" height="36" rx="3"/><rect x="131" y="203" width="22" height="42" rx="3"/><rect x="215" y="215" width="22" height="30" rx="3"/><rect x="299" y="197" width="22" height="48" rx="3"/><rect x="383" y="205" width="22" height="40" rx="3"/><rect x="467" y="211" width="22" height="34" rx="3"/><rect x="551" y="189" width="22" height="56" rx="3"/><rect x="635" y="203" width="22" height="42" rx="3"/></g>
+<path d="M42 245H680" stroke="#CBD5E1" stroke-width="1"/>
+</svg>
+<figcaption class="mt-1 text-[11px] leading-5 text-slate-500">P1–P8 là các phiên mô phỏng để duyệt giao diện. Khi nối dữ liệu thật, trục ngang sẽ là ngày giao dịch; giá trị, đơn vị, nguồn và thời điểm cập nhật sẽ lấy từ bản ghi EOD đã kiểm định.</figcaption>
+</figure>
+</div>
+<div class="hidden rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600" id="market-chart-empty">
+Chưa có dữ liệu giá và khối lượng cuối ngày được kiểm định cho <strong id="market-chart-empty-ticker" class="text-slate-800"></strong>. Biểu đồ sẽ xuất hiện khi nguồn dữ liệu thuộc phạm vi MVP được nạp.
+</div>
+</section>
+<!-- R04 recent news layout sample. No article source or API is connected. -->
+<section aria-labelledby="recent-news-title" class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs space-y-5" id="recent-news-sample">
+<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 border-b border-slate-100 pb-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-600" aria-hidden="true"></span>
+<h2 class="text-base font-bold text-slate-900" id="recent-news-title">Tin tức gần đây · <span id="recent-news-ticker">FPT</span></h2>
+</div>
+<p class="mt-1 text-xs leading-5 text-slate-500">Tin về doanh nghiệp trong phạm vi nguồn đã được FinMind phê duyệt.</p>
+</div>
+<span class="self-start shrink-0 rounded-md border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-semibold text-amber-800">Bản mẫu · chưa có tin được kiểm định</span>
+</div>
+<article class="rounded-xl border border-dashed border-slate-200 bg-slate-50/60 p-4 space-y-3" aria-label="Bố cục thẻ tin minh họa">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<span class="rounded-md border border-slate-200 bg-white px-2 py-0.5 text-[11px] font-medium text-slate-600">Bố cục thẻ tin</span>
+<span class="text-[11px] text-slate-500">Ngày công bố: Chưa có dữ liệu</span>
+</div>
+<h3 class="text-sm font-semibold text-slate-700">Tiêu đề tin từ nguồn được duyệt sẽ hiển thị tại đây</h3>
+<p class="text-xs leading-5 text-slate-500">Phần tóm tắt và liên kết bài gốc chỉ xuất hiện khi có tin thuộc corpus đã kiểm định.</p>
+<div class="border-t border-slate-200 pt-3 text-[11px] text-slate-500">Nguồn: Chưa kết nối · Liên kết bài gốc: Chưa có</div>
+</article>
+<p class="text-xs text-slate-500" role="status">Hiện chưa có tin tức được kiểm định cho <strong id="recent-news-empty-ticker" class="font-semibold text-slate-700">FPT</strong>.</p>
+</section>
+</div>
+<!-- ============================================== -->
+<!-- TAB 2: TÀI CHÍNH (Interactive Chart & Period Toggle) -->
+<!-- ============================================== -->
+<div class="hidden space-y-6" id="tab-content-finance">
+<!-- Section: Tổng quan tài chính with Selectors & Toggle -->
+<div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs space-y-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<h2 class="text-base font-bold text-slate-900">Tổng quan tài chính</h2>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">Biểu đồ xu hướng nghiên cứu đối chiếu nguồn công bố</p>
+</div>
+<!-- Selectors: Chỉ tiêu + Chu kỳ Toggle -->
+<div class="flex items-center gap-2.5 flex-wrap">
+<div class="flex items-center gap-1.5 text-xs text-slate-500">
+<span class="">Chỉ tiêu:</span>
+<div class="relative">
+<select class="appearance-none bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 pr-6 text-xs font-medium text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+<option>Doanh thu</option>
+<option>Lợi nhuận sau thuế</option>
+<option>Tổng tài sản</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1.5 text-slate-400 text-[10px]">
+                          ▼
+                        </div>
+</div>
+</div>
+<!-- Chu kỳ toggle buttons: Hằng năm vs Quý -->
+<div class="flex items-center p-0.5 rounded-lg bg-slate-100 border border-slate-200 text-xs">
+<button class="px-2.5 py-1 rounded-md font-semibold text-blue-700 bg-white shadow-xs transition-all" id="period-btn-annual" onclick="setPeriodMode('annual')">
+                        Hằng năm
+                      </button>
+<button class="px-2.5 py-1 rounded-md font-medium text-slate-600 hover:text-slate-900 transition-all" id="period-btn-quarter" onclick="setPeriodMode('quarter')">
+                        Quý
+                      </button>
+</div>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-500">
+                      Dữ liệu minh họa
+                    </span>
+</div>
+</div>
+<!-- Clean Light Blue Line Chart Container (Shape Only, NO Y numbers, NO data labels) -->
+<div class="bg-slate-50/60 rounded-xl p-5 border border-slate-100">
+<div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+<span class="font-medium text-slate-500">Đường xu hướng (tham khảo tương đối)</span>
+<span class="text-[11px] text-slate-400">Không có trục số lượng</span>
+</div>
+<!-- SVG Chart Area (Responsive, subtle horizontal gridlines) -->
+<div class="w-full h-44 relative flex items-center justify-center">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 700 160">
+<!-- Grid lines -->
+<line stroke="#E2E8F0" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="20" y2="20"></line>
+<line stroke="#E2E8F0" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="65" y2="65"></line>
+<line stroke="#E2E8F0" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="110" y2="110"></line>
+<line stroke="#E2E8F0" stroke-width="1" x1="0" x2="700" y1="150" y2="150"></line>
+<!-- ANNUAL PATH (Default visible) -->
+<path d="M 80 120 C 220 105, 380 95, 620 38" fill="none" id="chart-path-annual" stroke="#2563EB" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- ANNUAL MARKERS -->
+<g id="chart-markers-annual">
+<circle cx="80" cy="120" fill="#FFFFFF" r="4.5" stroke="#2563EB" stroke-width="2.5"></circle>
+<circle cx="350" cy="95" fill="#FFFFFF" r="4.5" stroke="#2563EB" stroke-width="2.5"></circle>
+<circle cx="620" cy="38" fill="#2563EB" r="5" stroke="#FFFFFF" stroke-width="2"></circle>
+</g>
+<!-- QUARTER PATH (Hidden by default) -->
+<path class="hidden" d="M 70 125 L 240 100 L 440 75 L 630 45" fill="none" id="chart-path-quarter" stroke="#2563EB" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- QUARTER MARKERS -->
+<g class="hidden" id="chart-markers-quarter">
+<circle cx="70" cy="125" fill="#FFFFFF" r="4" stroke="#2563EB" stroke-width="2"></circle>
+<circle cx="240" cy="100" fill="#FFFFFF" r="4" stroke="#2563EB" stroke-width="2"></circle>
+<circle cx="440" cy="75" fill="#FFFFFF" r="4" stroke="#2563EB" stroke-width="2"></circle>
+<circle cx="630" cy="45" fill="#2563EB" r="4.5" stroke="#FFFFFF" stroke-width="2"></circle>
+</g>
+</svg>
+</div>
+<!-- X-Axis Labels: Toggled via JavaScript -->
+<div class="flex justify-between px-10 pt-2 text-xs font-medium text-slate-500 border-t border-slate-200/80" id="xaxis-annual">
+<span class="">FY2023</span>
+<span class="">FY2024</span>
+<span class="text-blue-600 font-semibold">FY2025</span>
+</div>
+<div class="hidden flex justify-between px-8 pt-2 text-xs font-medium text-slate-500 border-t border-slate-200/80" id="xaxis-quarter">
+<span class="">Q1</span>
+<span class="">Q2</span>
+<span class="">Q3</span>
+<span class="text-blue-600 font-semibold">Q4</span>
+</div>
+</div>
+<!-- 4 KPI Cards (Doanh thu, Lợi nhuận, Tài sản, Vốn CSH: value "—") -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-2">
+<div class="p-3.5 rounded-lg border border-slate-200 bg-white">
+<div class="text-xs font-medium text-slate-500">Doanh thu</div>
+<div class="text-xl font-bold text-slate-400 my-1">—</div>
+<div class="text-[11px] text-slate-400">Kỳ: FY2025</div>
+<div class="text-[10px] text-slate-400 truncate" id="kpi-source-1">Nguồn: FPT Investor Relations</div>
+</div>
+<div class="p-3.5 rounded-lg border border-slate-200 bg-white">
+<div class="text-xs font-medium text-slate-500">Lợi nhuận sau thuế</div>
+<div class="text-xl font-bold text-slate-400 my-1">—</div>
+<div class="text-[11px] text-slate-400">Kỳ: FY2025</div>
+<div class="text-[10px] text-slate-400 truncate" id="kpi-source-2">Nguồn: FPT Investor Relations</div>
+</div>
+<div class="p-3.5 rounded-lg border border-slate-200 bg-white">
+<div class="text-xs font-medium text-slate-500">Tổng tài sản</div>
+<div class="text-xl font-bold text-slate-400 my-1">—</div>
+<div class="text-[11px] text-slate-400">Kỳ: FY2025</div>
+<div class="text-[10px] text-slate-400 truncate" id="kpi-source-3">Nguồn: FPT Investor Relations</div>
+</div>
+<div class="p-3.5 rounded-lg border border-slate-200 bg-white">
+<div class="text-xs font-medium text-slate-500">Vốn chủ sở hữu</div>
+<div class="text-xl font-bold text-slate-400 my-1">—</div>
+<div class="text-[11px] text-slate-400">Kỳ: FY2025</div>
+<div class="text-[10px] text-slate-400 truncate" id="kpi-source-4">Nguồn: FPT Investor Relations</div>
+</div>
+</div>
+<!-- Inline Subtle Empty-State / Fallback Notices (for institutional transparency) -->
+<div class="pt-2 space-y-2">
+<div class="flex items-center gap-2 p-3 rounded-lg bg-slate-50 border border-slate-200/70 text-xs text-slate-500">
+<svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Lưu ý minh bạch: Chưa có dữ liệu số định lượng trực tiếp cho kỳ này. Biểu đồ chỉ đóng vai trò minh họa định hướng.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- TAB 3: BÁO CÁO & NGUỒN (Controlled Source List) -->
+<!-- ============================================== -->
+<div class="hidden space-y-6" id="tab-content-reports">
+<div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs space-y-5">
+<div class="flex items-center justify-between border-b border-slate-100 pb-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<h2 class="text-base font-bold text-slate-900">Báo cáo &amp; nguồn công bố</h2>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">Các nguồn tài liệu được xác thực trong phạm vi nghiên cứu của FinMind</p>
+</div>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-500">
+                    Ví dụ minh họa
+                  </span>
+</div>
+<!-- Sources List -->
+<div class="space-y-3">
+<!-- Row 1: Báo cáo thường niên FY2025 -->
+<div class="p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="space-y-1.5">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-sm font-semibold text-slate-800">Báo cáo thường niên FY2025</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                          Báo cáo thường niên
+                        </span>
+</div>
+<div class="flex items-center gap-x-4 gap-y-1 text-xs text-slate-500 flex-wrap">
+<span class="">Kỳ: <strong class="text-slate-700 font-medium">FY2025</strong></span>
+<span class="">•</span>
+<span class="">Đơn vị công bố: <strong class="text-slate-700 font-medium" id="report-unit-1">FPT Corporation</strong></span>
+<span class="">•</span>
+<span class="italic text-slate-400">Ngày công bố: Chưa có dữ liệu</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-blue-600 bg-blue-50/60 hover:bg-blue-100/70 border border-blue-200 transition-colors shrink-0" href="#" rel="noopener" target="_blank">
+<span class="">Mở nguồn chính thức</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+<!-- Row 2: Báo cáo tài chính FY2025 -->
+<div class="p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="space-y-1.5">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-sm font-semibold text-slate-800">Báo cáo tài chính FY2025</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                          Báo cáo tài chính
+                        </span>
+</div>
+<div class="flex items-center gap-x-4 gap-y-1 text-xs text-slate-500 flex-wrap">
+<span class="">Kỳ: <strong class="text-slate-700 font-medium">FY2025</strong></span>
+<span class="">•</span>
+<span class="">Đơn vị công bố: <strong class="text-slate-700 font-medium" id="report-unit-2">FPT Corporation</strong></span>
+<span class="">•</span>
+<span class="italic text-slate-400">Ngày công bố: Chưa có dữ liệu</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-blue-600 bg-blue-50/60 hover:bg-blue-100/70 border border-blue-200 transition-colors shrink-0" href="#" rel="noopener" target="_blank">
+<span class="">Mở nguồn chính thức</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+</div>
+<!-- Empty state design fallback notice -->
+<div class="pt-2">
+<div class="p-4 rounded-xl border border-dashed border-slate-200 text-center space-y-1 bg-slate-50/50">
+<div class="text-xs font-medium text-slate-500">Chưa có báo cáo phù hợp cho các bộ lọc bổ sung</div>
+<div class="text-[11px] text-slate-400">FinMind chỉ hiển thị các nguồn công bố đã được thẩm định và đối chiếu chứng chỉ gốc.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT 30% COLUMN: STICKY SIDE CARD ("HỎI FINMIND VỀ FPT") -->
+<div class="lg:col-span-4 sticky top-20 space-y-4">
+<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+<!-- Soft blue header band -->
+<div class="bg-blue-50/90 border-b border-blue-100 px-5 py-3.5">
+<div class="text-[11px] font-bold tracking-wider text-blue-700 uppercase" id="side-card-title">
+                  Hỏi FinMind về FPT
+                </div>
+</div>
+<!-- Card Body -->
+<div class="p-5 space-y-4">
+<div>
+<h3 class="text-base font-bold text-slate-900 leading-snug">Bạn muốn tìm hiểu thêm?</h3>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed" id="side-card-subtitle">
+                    Chọn một câu hỏi gợi ý để nghiên cứu sâu hơn về FPT.
+                  </p>
+</div>
+<!-- 4 Suggested Question Buttons (Links with params) -->
+<div class="space-y-2">
+<!-- Question 1 -->
+<a class="group flex items-start gap-2.5 p-3 rounded-lg border border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/40 transition-all text-left" href="../finmind_r01_tr_l_nghi_n_c_u_b_n_chu_n_h_a_chu_i_d_li_u/code.html#r01?company=FPT&amp;period=FY2025&amp;question=Doanh+thu+FPT+FY2025+thay+%C4%91%E1%BB%95i+nh%C6%B0+th%E1%BA%BF+n%C3%A0o%3F&amp;autosubmit=1" id="suggested-q1">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0 group-hover:scale-125 transition-transform"></span>
+<span class="text-xs font-medium text-slate-700 group-hover:text-blue-700 transition-colors leading-relaxed" id="suggested-text-1">
+                      Doanh thu FPT FY2025 thay đổi như thế nào?
+                    </span>
+</a>
+<!-- Question 2 -->
+<a class="group flex items-start gap-2.5 p-3 rounded-lg border border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/40 transition-all text-left" href="../finmind_r01_tr_l_nghi_n_c_u_b_n_chu_n_h_a_chu_i_d_li_u/code.html#r01?company=FPT&amp;period=FY2025&amp;question=L%E1%BB%A3i+nhu%E1%BA%ADn+FPT+thay+%C4%91%E1%BB%95i+ra+sao+trong+3+n%C4%83m+g%E1%BA%A7n+%C4%91%C3%A2y%3F&amp;autosubmit=1" id="suggested-q2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0 group-hover:scale-125 transition-transform"></span>
+<span class="text-xs font-medium text-slate-700 group-hover:text-blue-700 transition-colors leading-relaxed" id="suggested-text-2">
+                      Lợi nhuận FPT thay đổi ra sao trong 3 năm gần đây?
+                    </span>
+</a>
+<!-- Question 3 -->
+<a class="group flex items-start gap-2.5 p-3 rounded-lg border border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/40 transition-all text-left" href="../finmind_r01_tr_l_nghi_n_c_u_b_n_chu_n_h_a_chu_i_d_li_u/code.html#r01?company=FPT&amp;period=FY2025&amp;question=M%E1%BA%A3ng+kinh+doanh+n%C3%A0o+%C4%91%C3%B3ng+g%C3%B3p+nhi%E1%BB%81u+nh%E1%BA%A5t%3F&amp;autosubmit=1" id="suggested-q3">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0 group-hover:scale-125 transition-transform"></span>
+<span class="text-xs font-medium text-slate-700 group-hover:text-blue-700 transition-colors leading-relaxed" id="suggested-text-3">
+                      Mảng kinh doanh nào đóng góp nhiều nhất?
+                    </span>
+</a>
+<!-- Question 4 -->
+<a class="group flex items-start gap-2.5 p-3 rounded-lg border border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/40 transition-all text-left" href="../finmind_r01_tr_l_nghi_n_c_u_b_n_chu_n_h_a_chu_i_d_li_u/code.html#r01?company=FPT&amp;period=FY2025&amp;question=So+s%C3%A1nh+FPT+v%C3%A0+CMG&amp;autosubmit=1" id="suggested-q4">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0 group-hover:scale-125 transition-transform"></span>
+<span class="text-xs font-medium text-slate-700 group-hover:text-blue-700 transition-colors leading-relaxed" id="suggested-text-4">
+                      So sánh FPT và CMG
+                    </span>
+</a>
+</div>
+<!-- Secondary Button: Hỏi câu hỏi khác -->
+<div class="pt-1">
+<a class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition-colors" href="../finmind_r01_tr_l_nghi_n_c_u_b_n_chu_n_h_a_chu_i_d_li_u/code.html#r01?company=FPT" id="ask-other-btn">
+<svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Hỏi câu hỏi khác</span>
+</a>
+</div>
+<!-- Card Footer note -->
+<div class="pt-2 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-slate-400">
+<svg class="w-3.5 h-3.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Câu trả lời của Trợ lý nghiên cứu có trích dẫn nguồn.</span>
+</div>
+</div>
+</div>
+<!-- Contextual disclaimer chip -->
+<div class="p-3 rounded-xl bg-slate-100/70 border border-slate-200/80 text-[11px] text-slate-500 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></span>
+<span class="">Chỉ hiển thị các hồ sơ và báo cáo thuộc phạm vi kiểm toán thể chế.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Institutional Page Footer -->
+<footer class="mt-auto border-t border-slate-200 bg-white py-4 px-8 text-center text-xs text-slate-400">
+        Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư
+      </footer>
+</main>
+</div>
+<!-- INLINE JAVASCRIPT: Interactivity for Dropdown, Watchlist, Tabs, Chart Toggle -->
+<script>
+    // 0. Known Tickers Database
+    const GRAPH_PAGE = '../finmind_r06_th_tri_th_c_chu_n_h_a_hub_and_spoke_b_c_c_100vh/code.html';
+    const RESEARCH_PAGE = '../finmind_r01_tr_l_nghi_n_c_u_b_n_chu_n_h_a_chu_i_d_li_u/code.html';
+    const KNOWN_TICKERS = {
+      'FPT': { name: 'Công ty Cổ phần FPT', industry: 'Công nghệ', exchange: 'HOSE' },
+      'CMG': { name: 'Công ty Cổ phần Tập đoàn Công nghệ CMC', industry: 'Công nghệ', exchange: 'HOSE' },
+      'ELC': { name: 'Công ty Cổ phần Đầu tư Phát triển Công nghệ Điện tử - Viễn thông', industry: 'Công nghệ', exchange: 'HOSE' },
+      'ITD': { name: 'Công ty Cổ phần Công nghệ Tiên Phong', industry: 'Công nghệ', exchange: 'HOSE' },
+      'ICT': { name: 'Công ty Cổ phần Viễn thông Tin học Bưu điện', industry: 'Công nghệ', exchange: 'HOSE' },
+      'VCB': { name: 'Ngân hàng TMCP Ngoại thương Việt Nam', industry: 'Ngân hàng', exchange: 'HOSE' },
+      'BID': { name: 'Ngân hàng TMCP Đầu tư và Phát triển Việt Nam', industry: 'Ngân hàng', exchange: 'HOSE' },
+      'CTG': { name: 'Ngân hàng TMCP Công thương Việt Nam', industry: 'Ngân hàng', exchange: 'HOSE' },
+      'MBB': { name: 'Ngân hàng TMCP Quân đội', industry: 'Ngân hàng', exchange: 'HOSE' },
+      'TCB': { name: 'Ngân hàng TMCP Kỹ thương Việt Nam', industry: 'Ngân hàng', exchange: 'HOSE' }
+    };
+
+    // Helper: Parse current ticker from location.hash or search
+    function getCurrentTicker() {
+      let ticker = 'FPT';
+      try {
+        const hash = window.location.hash || '';
+        // match ?company=XXX or &company=XXX anywhere in hash or search
+        const searchStr = window.location.search ? window.location.search.substring(1) : '';
+        const hashQueryIndex = hash.indexOf('?');
+        const hashQuery = hashQueryIndex !== -1 ? hash.substring(hashQueryIndex + 1) : '';
+        const params = new URLSearchParams(searchStr || hashQuery);
+        const comp = params.get('company');
+        if (comp && comp.trim()) {
+          ticker = comp.trim().toUpperCase();
+        }
+      } catch (err) {
+        console.error('Error parsing company param:', err);
+      }
+      return ticker;
+    }
+
+    let currentTicker = getCurrentTicker();
+
+    // Update Company Detail UI based on currentTicker
+    function renderCompanyDetails(ticker) {
+      const info = KNOWN_TICKERS[ticker] || {
+        name: `Công ty Cổ phần ${ticker}`,
+        industry: 'Công nghệ',
+        exchange: 'HOSE'
+      };
+
+      document.title = `FinMind - R04 Chi tiết doanh nghiệp (${ticker})`;
+      
+      const breadcrumb = document.getElementById('breadcrumb-ticker');
+      if (breadcrumb) breadcrumb.textContent = ticker;
+
+      const headerTicker = document.getElementById('header-ticker');
+      if (headerTicker) headerTicker.textContent = ticker;
+
+      const headerBadge = document.getElementById('header-ticker-badge');
+      if (headerBadge) headerBadge.textContent = `Mã: ${ticker}`;
+
+      const headerIndustry = document.getElementById('header-industry-badge');
+      if (headerIndustry) headerIndustry.textContent = `Ngành: ${info.industry}`;
+
+      const headerExchange = document.getElementById('header-exchange-badge');
+      if (headerExchange) headerExchange.textContent = `Sàn: ${info.exchange}`;
+
+      const headerName = document.getElementById('header-company-name');
+      if (headerName) headerName.textContent = info.name;
+
+      const cardName = document.getElementById('card-company-name');
+      if (cardName) cardName.textContent = info.name;
+
+      const cardTicker = document.getElementById('card-ticker');
+      if (cardTicker) cardTicker.textContent = ticker;
+
+      const cardIndustry = document.getElementById('card-industry');
+      if (cardIndustry) cardIndustry.textContent = info.industry;
+
+      const cardExchange = document.getElementById('card-exchange');
+      if (cardExchange) cardExchange.textContent = info.exchange;
+
+      const recentNewsTicker = document.getElementById('recent-news-ticker');
+      if (recentNewsTicker) recentNewsTicker.textContent = ticker;
+      const recentNewsEmptyTicker = document.getElementById('recent-news-empty-ticker');
+      if (recentNewsEmptyTicker) recentNewsEmptyTicker.textContent = ticker;
+
+      const miniIndustry = document.getElementById('mini-industry');
+      if (miniIndustry) miniIndustry.textContent = info.industry;
+
+      const miniExchange = document.getElementById('mini-exchange');
+      if (miniExchange) miniExchange.textContent = info.exchange;
+
+      // Update Knowledge Graph link
+      const graphLink = document.getElementById('graph-link');
+      if (graphLink) {
+        graphLink.href = `${GRAPH_PAGE}#r06?company=${encodeURIComponent(ticker)}`;
+      }
+
+      window.FinMindSidebar?.setCompany(ticker);
+
+      // Update side card text and links
+      const sideCardTitle = document.getElementById('side-card-title');
+      if (sideCardTitle) sideCardTitle.textContent = `Hỏi FinMind về ${ticker}`;
+
+      const sideCardSubtitle = document.getElementById('side-card-subtitle');
+      if (sideCardSubtitle) sideCardSubtitle.textContent = `Chọn một câu hỏi gợi ý để nghiên cứu sâu hơn về ${ticker}.`;
+
+      const q1 = document.getElementById('suggested-q1');
+      const qt1 = document.getElementById('suggested-text-1');
+      if (q1 && qt1) {
+        q1.href = `${RESEARCH_PAGE}#r01?company=${encodeURIComponent(ticker)}&period=FY2025&question=${encodeURIComponent(`Doanh thu ${ticker} FY2025 thay đổi như thế nào?`)}&autosubmit=1`;
+        qt1.textContent = `Doanh thu ${ticker} FY2025 thay đổi như thế nào?`;
+      }
+
+      const q2 = document.getElementById('suggested-q2');
+      const qt2 = document.getElementById('suggested-text-2');
+      if (q2 && qt2) {
+        q2.href = `${RESEARCH_PAGE}#r01?company=${encodeURIComponent(ticker)}&period=FY2025&question=${encodeURIComponent(`Lợi nhuận ${ticker} thay đổi ra sao trong 3 năm gần đây?`)}&autosubmit=1`;
+        qt2.textContent = `Lợi nhuận ${ticker} thay đổi ra sao trong 3 năm gần đây?`;
+      }
+
+      const q3 = document.getElementById('suggested-q3');
+      if (q3) {
+        q3.href = `${RESEARCH_PAGE}#r01?company=${encodeURIComponent(ticker)}&period=FY2025&question=${encodeURIComponent('Mảng kinh doanh nào đóng góp nhiều nhất?')}&autosubmit=1`;
+      }
+
+      const q4 = document.getElementById('suggested-q4');
+      const qt4 = document.getElementById('suggested-text-4');
+      const compareTicker = ticker === 'CMG' ? 'FPT' : 'CMG';
+      if (q4 && qt4) {
+        q4.href = `${RESEARCH_PAGE}#r01?company=${encodeURIComponent(ticker)}&period=FY2025&question=${encodeURIComponent(`So sánh ${ticker} và ${compareTicker}`)}&autosubmit=1`;
+        qt4.textContent = `So sánh ${ticker} và ${compareTicker}`;
+      }
+
+      const askOther = document.getElementById('ask-other-btn');
+      if (askOther) {
+        askOther.href = `${RESEARCH_PAGE}#r01?company=${encodeURIComponent(ticker)}&period=FY2025`;
+      }
+
+      // Update KPI source citations
+      for (let i = 1; i <= 4; i++) {
+        const kpiSource = document.getElementById(`kpi-source-${i}`);
+        if (kpiSource) kpiSource.textContent = `Nguồn: ${ticker} Investor Relations`;
+      }
+
+      const reportUnit1 = document.getElementById('report-unit-1');
+      if (reportUnit1) reportUnit1.textContent = info.name;
+      const reportUnit2 = document.getElementById('report-unit-2');
+      if (reportUnit2) reportUnit2.textContent = info.name;
+    }
+
+    // 2. Safe Watchlist Management in LocalStorage
+    const WATCHLIST_STORAGE_KEY = 'finmind_watchlist';
+
+    function getWatchlist() {
+      try {
+        const raw = localStorage.getItem(WATCHLIST_STORAGE_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (err) {
+        console.error('Error reading finmind_watchlist from localStorage:', err);
+        return [];
+      }
+    }
+
+    function saveWatchlist(list) {
+      try {
+        localStorage.setItem(WATCHLIST_STORAGE_KEY, JSON.stringify(list));
+      } catch (err) {
+        console.error('Error saving finmind_watchlist to localStorage:', err);
+      }
+    }
+
+    function isTickerFollowed(ticker) {
+      const list = getWatchlist();
+      return list.includes(ticker);
+    }
+
+    const watchlistBtn = document.getElementById('watchlist-btn');
+    const watchlistIcon = document.getElementById('watchlist-icon');
+    const watchlistText = document.getElementById('watchlist-text');
+    const watchlistLink = document.getElementById('watchlist-link');
+
+    function syncWatchlistUI() {
+      const followed = isTickerFollowed(currentTicker);
+      if (followed) {
+        watchlistBtn.className = 'inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100/80 transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-blue-100';
+        watchlistIcon.textContent = '★';
+        watchlistIcon.className = 'text-base leading-none text-blue-600';
+        watchlistText.textContent = 'Đang theo dõi';
+        watchlistLink.classList.remove('hidden');
+      } else {
+        watchlistBtn.className = 'inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-blue-100';
+        watchlistIcon.textContent = '☆';
+        watchlistIcon.className = 'text-base leading-none text-slate-400';
+        watchlistText.textContent = 'Theo dõi';
+        watchlistLink.classList.add('hidden');
+      }
+    }
+
+    watchlistBtn.addEventListener('click', () => {
+      let list = getWatchlist();
+      const index = list.indexOf(currentTicker);
+      if (index === -1) {
+        list.push(currentTicker);
+      } else {
+        list.splice(index, 1);
+      }
+      saveWatchlist(list);
+      syncWatchlistUI();
+    });
+
+    // Window event listeners to automatically re-sync across tabs / focus
+    window.addEventListener('storage', (e) => {
+      if (!e.key || e.key === WATCHLIST_STORAGE_KEY) {
+        syncWatchlistUI();
+      }
+    });
+
+    window.addEventListener('focus', () => {
+      syncWatchlistUI();
+    });
+
+    // Listen to hashchange if user navigates tickers without page reload
+    window.addEventListener('hashchange', () => {
+      const newTicker = getCurrentTicker();
+      if (newTicker !== currentTicker) {
+        currentTicker = newTicker;
+        renderCompanyDetails(currentTicker);
+        syncWatchlistUI();
+      }
+    });
+
+    // Initial setup
+    renderCompanyDetails(currentTicker);
+    syncWatchlistUI();
+
+    // 3. Tab Switching with 400ms Skeleton
+    const tabs = ['overview', 'finance', 'reports'];
+    let currentTab = 'overview';
+    let isSwitching = false;
+
+    function switchTab(targetTab) {
+      if (currentTab === targetTab || isSwitching) return;
+      isSwitching = true;
+
+      // Update Tab Buttons UI immediately
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === targetTab) {
+          btn.className = 'tab-btn px-4 py-3 text-sm font-semibold text-blue-600 border-b-2 border-blue-600 transition-colors focus:outline-none flex items-center gap-2';
+        } else {
+          btn.className = 'tab-btn px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition-colors focus:outline-none flex items-center gap-2';
+        }
+      });
+
+      // Hide all panels, show skeleton
+      tabs.forEach(t => {
+        const content = document.getElementById(`tab-content-${t}`);
+        if (content) content.classList.add('hidden');
+      });
+      const skeleton = document.getElementById('tab-skeleton');
+      skeleton.classList.remove('hidden');
+
+      // 400ms brief loading transition
+      setTimeout(() => {
+        skeleton.classList.add('hidden');
+        const newContent = document.getElementById(`tab-content-${targetTab}`);
+        if (newContent) newContent.classList.remove('hidden');
+        currentTab = targetTab;
+        isSwitching = false;
+      }, 400);
+    }
+
+    // 4. Financial Period Mode: "Hằng năm" vs "Quý"
+    function setPeriodMode(mode) {
+      const btnAnnual = document.getElementById('period-btn-annual');
+      const btnQuarter = document.getElementById('period-btn-quarter');
+      const pathAnnual = document.getElementById('chart-path-annual');
+      const markersAnnual = document.getElementById('chart-markers-annual');
+      const pathQuarter = document.getElementById('chart-path-quarter');
+      const markersQuarter = document.getElementById('chart-markers-quarter');
+      const xaxisAnnual = document.getElementById('xaxis-annual');
+      const xaxisQuarter = document.getElementById('xaxis-quarter');
+
+      if (mode === 'annual') {
+        btnAnnual.className = 'px-2.5 py-1 rounded-md font-semibold text-blue-700 bg-white shadow-xs transition-all';
+        btnQuarter.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 hover:text-slate-900 transition-all';
+
+        pathAnnual.classList.remove('hidden');
+        markersAnnual.classList.remove('hidden');
+        pathQuarter.classList.add('hidden');
+        markersQuarter.classList.add('hidden');
+
+        xaxisAnnual.classList.remove('hidden');
+        xaxisQuarter.classList.add('hidden');
+      } else {
+        btnQuarter.className = 'px-2.5 py-1 rounded-md font-semibold text-blue-700 bg-white shadow-xs transition-all';
+        btnAnnual.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 hover:text-slate-900 transition-all';
+
+        pathAnnual.classList.add('hidden');
+        markersAnnual.classList.add('hidden');
+        pathQuarter.classList.remove('hidden');
+        markersQuarter.classList.remove('hidden');
+
+        xaxisAnnual.classList.add('hidden');
+        xaxisQuarter.classList.remove('hidden');
+      }
+    }
+  </script>
+  <script>
+    // R04 chart sample: only FPT has illustrative values in this isolated mockup.
+    document.addEventListener('DOMContentLoaded', () => {
+      const ticker = (new URLSearchParams(window.location.search).get('company') || 'FPT').toUpperCase();
+      document.getElementById('market-chart-ticker').textContent = ticker;
+      if (ticker !== 'FPT') {
+        document.getElementById('market-chart-demo').classList.add('hidden');
+        document.getElementById('market-chart-empty').classList.remove('hidden');
+        document.getElementById('market-chart-empty-ticker').textContent = ticker;
+      }
+    });
+  </script>
+</body></html>

@@ -1,0 +1,192 @@
+{
+  "text": "BIDV\n\nVỮNG VÀNG VỊ THỂ\nKIÊN TẠO TƯƠNG LAI\n\nBẢO CÁO THƯỜNG NIÊN 2024",
+  "chars": 52,
+  "words": 14,
+  "wordItems": [
+    {
+      "text": "BIDV",
+      "bbox": [
+        2995,
+        192,
+        3341,
+        303
+      ],
+      "conf": 4.310234,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VỮNG",
+      "bbox": [
+        2631,
+        1059,
+        2815,
+        1166
+      ],
+      "conf": 96.544586,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VÀNG",
+      "bbox": [
+        2858,
+        1059,
+        3038,
+        1166
+      ],
+      "conf": 96.064835,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VỊ",
+      "bbox": [
+        3081,
+        1086,
+        3162,
+        1148
+      ],
+      "conf": 96.883682,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THỂ",
+      "bbox": [
+        3206,
+        1063,
+        3344,
+        1135
+      ],
+      "conf": 91.412552,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "KIÊN",
+      "bbox": [
+        2560,
+        1155,
+        2722,
+        1240
+      ],
+      "conf": 14.243179,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TẠO",
+      "bbox": [
+        2768,
+        1173,
+        2901,
+        1235
+      ],
+      "conf": 96.114594,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TƯƠNG",
+      "bbox": [
+        2933,
+        1168,
+        3335,
+        1223
+      ],
+      "conf": 96.202896,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "LAI",
+      "bbox": [
+        3207,
+        1155,
+        3336,
+        1240
+      ],
+      "conf": 95.496109,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "BẢO",
+      "bbox": [
+        2733,
+        1303,
+        2811,
+        1341
+      ],
+      "conf": 56.584301,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        2831,
+        1303,
+        2914,
+        1341
+      ],
+      "conf": 95.928825,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        2932,
+        1303,
+        3110,
+        1341
+      ],
+      "conf": 95.678421,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        3130,
+        1304,
+        3220,
+        1340
+      ],
+      "conf": 96.714844,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        3241,
+        1312,
+        3338,
+        1341
+      ],
+      "conf": 83.233131,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 80,
+  "lowConfRatio": 0.214,
+  "seconds": 0.636
+}

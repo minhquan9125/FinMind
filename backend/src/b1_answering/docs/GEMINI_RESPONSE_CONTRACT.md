@@ -1,0 +1,13 @@
+# Đọc phản hồi Gemini có metadata
+
+User live result: countTokens succeeded (158), generation failed INVALID_GEMINI_RESPONSE; actual raw generation response unavailable. Do not claim confirmed live root cause. Existing adapter rejects every Part with fields other than text, causing a deterministic compatibility defect.
+
+Official reference verified 21Oct2026: https://ai.google.dev/gemini-api/docs/generate-content/thought-signatures — text Parts may carry thoughtSignature metadata. Support metadata without accepting thought content as an answer.
+
+Implement only gemini.py and tests/test_gemini_response.py. Preserve public generate/count_tokens contracts, budget, no retries/network/keys/model changes. MockTransport only. Existing errors on malformed JSON/duplicatekeys/NaN/nonSTOP/oversizedbody remain INVALID_GEMINI_RESPONSE; MAX_TOKENS stays OUTPUT_LIMIT_EXCEEDED.
+
+Accept answer text with nonempty string thoughtSignature metadata; do not concatenate signatures. Allow boolean thought:false on text; thought:true parts are reasoning and must be skipped, never exposed or merged into JSON answer. Ignore signature-only non-answer parts only when signature is valid string and fields are recognized. Reject functionCall/inlineData or arbitrary unknown fields, non-string text/signatures or non-bool thought flags. A valid multi-text answer can be split across parts. At least one nonblank nonthought text part required; no candidates/empty content/only thoughts return GEMINI_EMPTY_RESPONSE safely. Keep missing candidates on empty envelope {} as existing INVALID_GEMINI_RESPONSE for compatibility.
+
+Give safe enum reason codes for promptFeedback.blockReason and candidate safety finish reasons (GEMINI_BLOCKED), empty response (GEMINI_EMPTY_RESPONSE), invalid JSON in assembled answer (INVALID_GEMINI_JSON). Never echo response bodies, thought content, signatures, headers or credentials in exceptions; no raw debug logging/persistence. Duplicate JSON fields and NaN remain rejected. Metadata usage/modelVersion extraction and return contract remain unchanged. Existing service handles GeminiError.code, retains unknown budget on parsing failure. HTTP, timeout, body limits, credential handling unchanged.
+
+Tests must call actual provider with mocked HTTP using fake key, not mock generate; cover signature+JSON success, thought exclusion, split text, empty/blocked responses, invalid field types, unknown content, inner malformed/duplicate JSON, MAX_TOKENS and no retries/no secret leakage. Do not import old product tests or rely on private state. Full B1 regression is coordinator post-integration gate.

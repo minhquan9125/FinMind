@@ -1,0 +1,140 @@
+{
+  "text": "yÍ- MB Tỏng tốc.\nSâu Vững chóc\nriệu quỏ --",
+  "chars": 33,
+  "words": 10,
+  "wordItems": [
+    {
+      "text": "yÍ-",
+      "bbox": [
+        251,
+        255,
+        445,
+        328
+      ],
+      "conf": 0.0,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "MB",
+      "bbox": [
+        631,
+        254,
+        733,
+        381
+      ],
+      "conf": 96.473427,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Tỏng",
+      "bbox": [
+        1375,
+        221,
+        1759,
+        387
+      ],
+      "conf": 63.923702,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tốc.",
+      "bbox": [
+        1794,
+        217,
+        2129,
+        392
+      ],
+      "conf": 92.12352,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Sâu",
+      "bbox": [
+        273,
+        255,
+        613,
+        380
+      ],
+      "conf": 40.316277,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Vững",
+      "bbox": [
+        1412,
+        388,
+        1823,
+        554
+      ],
+      "conf": 65.098038,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "chóc",
+      "bbox": [
+        1868,
+        388,
+        2259,
+        582
+      ],
+      "conf": 74.381523,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "riệu",
+      "bbox": [
+        1353,
+        550,
+        1693,
+        715
+      ],
+      "conf": 58.120956,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "quỏ",
+      "bbox": [
+        1744,
+        587,
+        2052,
+        744
+      ],
+      "conf": 85.696136,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "--",
+      "bbox": [
+        2099,
+        581,
+        2259,
+        692
+      ],
+      "conf": 75.909897,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 65,
+  "lowConfRatio": 0.3,
+  "seconds": 0.687
+}

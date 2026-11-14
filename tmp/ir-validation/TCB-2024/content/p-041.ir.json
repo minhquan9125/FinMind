@@ -1,0 +1,110 @@
+{
+  "ir_version": "1",
+  "page": 41,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 3508, "height": 2481, "unit": "px"},
+  "source": {
+    "engine": "TESSERACT",
+    "tool": "tesseract vie",
+    "document_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+    "file_name": "TCB_2024_499236.pdf",
+    "image_sha256": "5d50b0b16414f4af0847bba1efdb264cefc33b55e598dbb2bbaab484e520efff",
+    "render": {
+      "dpi": 212.17,
+      "rotation": 0
+    }
+  },
+  "blocks": [
+    {"id": "p41-b1", "type": "paragraph", "text": "CHUYỀN ĐỒI SỐ TẠI TECH Dữ liệu (DnA)", "bbox": [134, 80, 619, 103]},
+    {"id": "p41-b2", "type": "paragraph", "text": "Bảo mật dữ liệu", "bbox": [135, 182, 320, 206]},
+    {
+      "id": "p41-b3",
+      "type": "paragraph",
+      "text": "Quyền riêng tư và bảo mật dữ liệu có vai trò trung tâm đối với\ncác sáng kiến về AI của chúng tôi, đảm bảo tuân thủ đạo đức\ntrong vận hành và xây dựng niềm tin. Đáp ứng các yêu cầu của\nPDPD đưa Techcombank chiếm vị trí số một ngành ngân hàng\nViệt Nam trong việc bảo vệ dữ liệu khách hàng, phù hợp với\nquyết tâm dẫn đầu của chúng tôi.",
+      "bbox": [134, 244, 858, 429]
+    },
+    {
+      "id": "p41-b4",
+      "type": "paragraph",
+      "text": "Trung tâm khám phá dữ liệu Techcombank (TDDC) thực hiện\nquản trị tập trung bằng những công cụ về truy dấu nguồn gốc\ndữ liệu, quản lý siêu dữ liệu và kiểm soát truy cập, tất cả năm\ntrong nền tảng ZooLeo. Các chính sách vững mạnh về quyền\ntruy cập người dùng của chúng tôi giúp đảm bảo rằng nhân\nviên sẽ chỉ tương tác với dữ liệu được cấp quyền, qua đó giảm\nthiểu rủi ro rò rỉ dữ liệu. Công tác bảo mật được củng cố hơn\nnữa nhờ vào quan hệ hợp tác với AWS và Databricks, và được\nhỗ trợ bằng các chứng chỉ ngành.",
+      "bbox": [134, 468, 848, 747]
+    },
+    {"id": "p41-b5", "type": "paragraph", "text": "Cho vay thông minh hơn, ra quyết định nhanh chóng hơn", "bbox": [134, 816, 815, 842]},
+    {
+      "id": "p41-b6",
+      "type": "paragraph",
+      "text": "Chúng tôi tiếp cận những người dân Việt Nam chưa sử dụng\nngân hàng một cách tối ưu do chưa được phục vụ toàn diện,\nbằng cách tận dụng bộ não dữ liệu cao cấp, các nguồn dữ liệu\nthay thế và các mối quan hệ chiến lược với chính phủ.",
+      "bbox": [134, 880, 852, 1002]
+    },
+    {
+      "id": "p41-b7",
+      "type": "paragraph",
+      "text": "Trên thị trường, chúng tôi sử dụng lịch sử giao dịch và dữ liệu\nkhông gian địa lý “chấm điếm tín dụng thay thế” nhằm nâng\ncao khả năng tiếp cận các sản phẩm dịch vụ của mình, và nỗ\nlực hỗ trợ chính phủ đạt được mục tiêu phát triển hệ sinh thái\ntài chính thực tiễn.",
+      "bbox": [927, 182, 1628, 332]
+    },
+    {"id": "p41-b8", "type": "paragraph", "text": "Tạo ra những tác động đo lường được", "bbox": [928, 405, 1374, 429]},
+    {
+      "id": "p41-b9",
+      "type": "paragraph",
+      "text": "Chúng tôi đo lường tác động từ những sáng kiến về dữ liệu và\nAI của Ngân hàng chủ yếu thông qua tập trung vào theo dõi và\nđạt tới những mục tiêu lợi nhuận đầu tư (ROI) đầy tham vọng.",
+      "bbox": [927, 466, 1639, 556]
+    },
+    {
+      "id": "p41-b10",
+      "type": "paragraph",
+      "text": "Trong năm qua, Ngân hàng đã ghi nhận ROI xấp xỉ\n920 tỷ đồng, cao hơn so với con số 750 tỷ của 2023\n(tương đương với mức tăng 22% so với cùng kỳ năm trước).",
+      "bbox": [928, 594, 1603, 683]
+    },
+    {
+      "id": "p41-b11",
+      "type": "paragraph",
+      "text": "Chúng tôi cũng giám sát chặt chẽ tỷ lệ ứng dụng và tiến trình\nđào tạo nhân viên trên các nền tảng AI nhằm đảm bảo\ntác động lan tỏa.",
+      "bbox": [927, 721, 1628, 811]
+    },
+    {
+      "id": "p41-b12",
+      "type": "paragraph",
+      "text": "Cải tiến ZooLeo: Bồ sung một kho kiến thức tập\ntrung và các công cụ quản trị mô hình vững mạnh.",
+      "bbox": [243, 1293, 819, 1352]
+    },
+    {"id": "p41-b13", "type": "paragraph", "text": "Gia tăng tích hợp các mô hình về dữ liệu lớn", "bbox": [244, 1389, 766, 1415]},
+    {"id": "p41-b14", "type": "paragraph", "text": "(LLM) và AI tạo sinh (Generative AI): Tích hợp", "bbox": [244, 1423, 778, 1447]},
+    {"id": "p41-b15", "type": "paragraph", "text": "các mô hình AI tạo sinh và LLM tiên tiến nhất", "bbox": [244, 1453, 759, 1478]},
+    {"id": "p41-b16", "type": "paragraph", "text": "nhằm nâng cao tương tác khách hàng, đưa ra các", "bbox": [245, 1484, 813, 1511]},
+    {
+      "id": "p41-b17",
+      "type": "paragraph",
+      "text": "đề xuất được thiết kế riêng biệt và tự động hóa quy\ntrình. Cho ra mắt khung Kiến trúc mang tính tác động\n(Agentic Architecture)",
+      "bbox": [243, 1517, 853, 1606]
+    },
+    {
+      "id": "p41-b18",
+      "type": "paragraph",
+      "text": "Thúc đẩy tài chính toàn diện: Tăng cường sử dụng\nAI và phân tích dữ liệu đề mở rộng các sáng kiến như",
+      "bbox": [243, 1643, 858, 1702]
+    },
+    {"id": "p41-b19", "type": "heading", "text": "CHÚNG TÔI LÊN KẾ HOẠCH:", "bbox": [688, 1227, 1090, 1256]},
+    {
+      "id": "p41-b20",
+      "type": "paragraph",
+      "text": "ShopCash nhằm hỗ trợ bộ phận dân cư chưa được\ncác ngân hàng phục vụ đầy đủ và nâng cao tài chính\ntoàn diện.",
+      "bbox": [962, 1292, 1569, 1382]
+    },
+    {
+      "id": "p41-b21",
+      "type": "paragraph",
+      "text": "Cung cấp thông tin chỉ tiết về dữ liệu cho nhân viên\n'Techcombank nhờ vào các Trợ lý AI và công cụ trực\nquan hóa thông qua trò chuyện (Conversational BI)",
+      "bbox": [963, 1421, 1555, 1511]
+    },
+    {"id": "p41-b22", "type": "paragraph", "text": "nhằm thúc đầy nâng cao năng suất và ra quyết định\ndựa trên dữ liệu.", "bbox": [963, 1516, 1560, 1573]},
+    {
+      "id": "p41-b23",
+      "type": "paragraph",
+      "text": "Củng cố quản trị dữ liệu và bảo vệ dữ liệu cá nhân:\nNâng cao năng lực quản trị nhằm đảm bảo tuân thủ\nvà sử dụng dữ liệu có đạo đức.",
+      "bbox": [962, 1612, 1566, 1702]
+    },
+    {"id": "p41-b24", "type": "heading", "text": "78 BÁO CÁO THƯỜNG NIÊN 2024", "bbox": [134, 2363, 675, 2381]},
+    {"id": "p41-b25", "type": "heading", "text": "EXPONENTIAL THINKING — SUSTAINABLE BUILDING 79", "bbox": [2824, 2367, 3375, 2381]}
+  ]
+}

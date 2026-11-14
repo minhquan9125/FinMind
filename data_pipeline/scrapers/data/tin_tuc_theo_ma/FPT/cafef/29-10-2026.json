@@ -1,0 +1,328 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "87a6f218240c24bf5424",
+      "source": "cafef",
+      "url": "https://cafef.vn/co-phieu-thung-day-3-nam-fpt-phat-thong-bao-quan-trong-188261028224606129.chn",
+      "title": "Cổ phiếu \"thủng\" đáy 3 năm, FPT phát thông báo quan trọng",
+      "description": "Ngày đăng ký cuối cùng để thực hiện quyền là 30/11/2026, thời gian thanh toán dự kiến vào ngày 10/12/2026.",
+      "content": "FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Hội đồng quản trị CTCP FPT (HoSE: FPT) vừa thông qua phương án tạm ứng cổ tức đợt 1 năm 2026 bằng tiền mặt với tỷ lệ 10%, tương ứng 1.000 đồng/cổ phiếu. Ngày đăng ký cuối cùng để thực hiện quyền là 30/11/2026, thời gian thanh toán dự kiến vào ngày 10/12/2026. Với hơn 1,8 tỷ cổ phiếu đang lưu hành, FPT dự kiến chi khoảng 1.885 tỷ đồng cho đợt tạm ứng này. Trước đó, vào tháng 9/2026, FPT đã thực hiện phát hành cổ phiếu thưởng cho cổ đông hiện hữu với tỷ lệ 10:1, tức mỗi 10 cổ phiếu được nhận thêm 1 cổ phiếu mới. Ngày đăng ký cuối cùng là 22/9/2026. Doanh nghiệp phát hành hơn 171,4 triệu cổ phiếu, với tổng giá trị tính theo mệnh giá hơn 1.714 tỷ đồng. Sau đợt phát hành, vốn điều lệ của FPT tăng từ hơn 17.143 tỷ đồng lên gần 18.858 tỷ đồng. Trên thị trường, cổ phiếu FPT liên tục dò đáy. Cổ phiếu này đóng cửa phiên 28/10 ở mức 54.000 đồng/cp, chia đôi so với đỉnh hồi đầu năm 2025. Vốn hóa thị trường tương ứng còn khoảng 100.000 tỷ đồng, mức thấp nhất kể từ tháng 8/2023. Con số này không đủ để FPT lọt top 10 công ty giá trị nhất thị trường chứng khoán Việt Nam. Về tình hình doanh 9 tháng năm 2026, FPT ghi nhận doanh thu 40.023 tỷ đồng và lợi nhuận trước thuế 8.770 tỷ đồng, lần lượt tăng 12,4% và 17% so với cùng kỳ năm ngoái, tiếp tục duy trì mức tăng trưởng lợi nhuận hai chữ số. Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ đạt 7.778 tỷ đồng, tăng 13,3% so với cùng kỳ. Trong cơ cấu hoạt động, Khối Công nghệ, bao gồm Dịch vụ CNTT trong nước và Dịch vụ CNTT nước ngoài, tiếp tục giữ vai trò chủ lực khi đóng góp 89% doanh thu và 58% lợi nhuận trước thuế toàn Tập đoàn. Doanh thu khối này đạt 35.515 tỷ đồng, tăng 14,8%, trong khi lợi nhuận trước thuế đạt 5.052 tỷ đồng, tăng 16,6% so với cùng kỳ. Đối với thị trường nước ngoài, bất chấp những thách thức của kinh tế toàn cầu, doanh thu Dịch vụ CNTT nước ngoài vẫn tăng 11,6%, đạt 28.538 tỷ đồng. Nhật Bản tiếp tục là động lực tăng trưởng chính với mức tăng doanh thu 17,2% so với cùng kỳ, tương đương 25,2% nếu tính theo đồng Yên Nhật. Đáng chú ý, doanh thu ký mới của mảng Dịch vụ CNTT nước ngoài đạt 36.137 tỷ đồng sau 9 tháng, tăng 23,1% so với cùng kỳ. Trong giai đoạn này, FPT đã thắng thầu 16 dự án có quy mô trên 10 triệu USD mỗi dự án.",
+      "published_at": "2026-10-28T22:49:00",
+      "crawled_at": "2026-10-29T07:43:43.326043+00:00",
+      "attachments": [],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.5375629405840886,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-ban-rong-trien-mien-khoi-ngoai-van-con-nam-hon-455-trieu-co-phieu-fpt/42512303",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "a0105ed96d813da0096b",
+      "source": "cafef",
+      "url": "https://cafef.vn/ban-rong-trien-mien-khoi-ngoai-van-con-nam-hon-455-trieu-co-phieu-fpt-188261028190244374.chn",
+      "title": "Bán ròng triền miên, khối ngoại vẫn còn nắm hơn 455 triệu cổ phiếu FPT",
+      "description": "Từ đầu năm đến nay, khối ngoại đã bán ròng tổng cộng gần 211 triệu cổ phiếu FPT, tương ứng giá trị 16.500 tỷ.",
+      "content": "FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Khối ngoại bán ròng FPT đang dần trở thành một điều quen thuộc trên thị trường chứng khoán Việt Nam. Tính đến ngày 28/10, nhà đầu tư nước ngoài đã bán ròng 8 phiên liên tiếp trên cổ phiếu công nghệ này. Từ đầu năm đến nay, khối ngoại đã bán ròng tổng cộng gần 211 triệu cổ phiếu FPT , tương ứng giá trị 16.500 tỷ. Con số này khiến FPT trở thành cái tên bị xả mạnh thứ 2 toàn sàn. Tính đến ngày 28/10, khối ngoại còn nắm hơn 455 triệu cổ phiếu FPT, tương ứng tỷ lệ sở hữu nước ngoài dưới 27%, thấp nhất trong nhiều năm. Điều này đồng nghĩa với việc FPT “hở” room ngoại kỷ lục hơn 22%. Tình trạng chưa từng xảy ra trước đây khi FPT từng rất được săn đón với room ngoại thường xuyên phủ kín 49%. Áp lực bán mạnh từ khối ngoại khiến cổ phiếu FPT liên tục dò đáy. Cổ phiếu này đóng cửa phiên 28/10 ở mức 54.000 đồng/cp, chia đôi so với đỉnh hồi đầu năm 2025. Vốn hóa thị trường tương ứng còn khoảng 100.000 tỷ đồng, mức thấp nhất kể từ tháng 8/2023. Con số này không đủ để FPT lọt top 10 công ty giá trị nhất thị trường chứng khoán Việt Nam. Về tình hình doanh 9 tháng năm 2026, FPT ghi nhận doanh thu 40.023 tỷ đồng và lợi nhuận trước thuế 8.770 tỷ đồng, lần lượt tăng 12,4% và 17% so với cùng kỳ năm ngoái, tiếp tục duy trì mức tăng trưởng lợi nhuận hai chữ số. Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ đạt 7.778 tỷ đồng, tăng 13,3% so với cùng kỳ. Trong cơ cấu hoạt động, Khối Công nghệ, bao gồm Dịch vụ CNTT trong nước và Dịch vụ CNTT nước ngoài, tiếp tục giữ vai trò chủ lực khi đóng góp 89% doanh thu và 58% lợi nhuận trước thuế toàn Tập đoàn. Doanh thu khối này đạt 35.515 tỷ đồng, tăng 14,8%, trong khi lợi nhuận trước thuế đạt 5.052 tỷ đồng, tăng 16,6% so với cùng kỳ. Đối với thị trường nước ngoài, bất chấp những thách thức của kinh tế toàn cầu, doanh thu Dịch vụ CNTT nước ngoài vẫn tăng 11,6%, đạt 28.538 tỷ đồng. Nhật Bản tiếp tục là động lực tăng trưởng chính với mức tăng doanh thu 17,2% so với cùng kỳ, tương đương 25,2% nếu tính theo đồng Yên Nhật. Đáng chú ý, doanh thu ký mới của mảng Dịch vụ CNTT nước ngoài đạt 36.137 tỷ đồng sau 9 tháng, tăng 23,1% so với cùng kỳ. Trong giai đoạn này, FPT đã thắng thầu 16 dự án có quy mô trên 10 triệu USD mỗi dự án.",
+      "published_at": "2026-10-28T19:01:00",
+      "crawled_at": "2026-10-29T07:43:44.198041+00:00",
+      "attachments": [],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "check",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.9589194699286443,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-ban-rong-trien-mien-khoi-ngoai-van-con-nam-hon-455-trieu-co-phieu-fpt/42512303",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "8474f4558419158d03f7",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/fpt-3009026/fpt-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet.chn",
+      "title": "FPT: Quyết định về việc thay đổi đăng ký niêm yết",
+      "description": "FPT: Quyết định về việc thay đổi đăng ký niêm yết",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM công bố Quyết định về việc chấp thuận cho Công ty Cổ phần FPT được thay đổi đăng ký niêm yết với nội dung như sau: Các tập tin đính kèm 20261027 - FPT - QD thay doi dang ky NY CP.pdf Theo HOSE",
+      "published_at": "2026-10-28T11:16:07+00:00",
+      "crawled_at": "2026-10-29T07:43:44.959855+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/281026/fpt-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet-0.pdf?v=1793186271029"
+      ],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "check",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.8170886075949367,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet/42510092",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "242d8cb30108cdb18e72",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/fpt-3009003/fpt-nghi-quyet-hdqt-so-02102026-ngay-27102026.chn",
+      "title": "FPT: Nghị quyết HĐQT số 02.10-2026 ngày 27/10/2026",
+      "description": "FPT: Nghị quyết HĐQT số 02.10-2026 ngày 27/10/2026",
+      "content": "Công ty Cổ phần FPT công bố Nghị quyết HĐQT số 02.10-2026 ngày 27/10/2026 như sau: Các tập tin đính kèm 20261028 - FPT - Nghi quyet HDQT so 02.10.2026 vv tam ung co tuc tien dot 1 nam 2026.pdf Theo HOSE",
+      "published_at": "2026-10-28T11:03:26+00:00",
+      "crawled_at": "2026-10-29T07:43:45.832586+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/281026/fpt-nghi-quyet-h-qt-so-02-10-2026-ngay-27-10-2026-0.pdf?v=1793185860557"
+      ],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6398305084745762,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-nghi-quyet-hdqt-so-02-10-2026-ngay-27-10-2026/42509944",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "f0b5c2046b52c7555896",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/fpt-3005137/fpt-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-62.chn",
+      "title": "FPT: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 62",
+      "description": "FPT: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 62",
+      "content": "Công ty Cổ phần FPT thông báo Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 62 như sau: Các tập tin đính kèm 20261022 - FPT - TB thay doi GCN dang ky DN lan thu 62 (ban CBTT).pdf Theo HOSE",
+      "published_at": "2026-10-23T09:35:12+00:00",
+      "crawled_at": "2026-10-29T07:43:46.543955+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/231026/fpt-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-62-0.pdf?v=1792748370963"
+      ],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.08793103448275862,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-nghi-quyet-hdqt-so-02-10-2026-ngay-27-10-2026/42509944",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "39a59a73e5ab3a363672",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/fpt-3003369/fpt-ket-qua-kinh-doanh-9-thang-nam-2026.chn",
+      "title": "FPT: Kết quả kinh doanh 9 tháng năm 2026",
+      "description": "FPT: Kết quả kinh doanh 9 tháng năm 2026",
+      "content": "Công ty Cổ phần FPT công bố kết quả kinh doanh 9 tháng năm 2026 như sau: Các tập tin đính kèm 20261021 - FPT - Thong cao bao chi Ket qua kinh doanh 9 thang 2026.pdf Theo HOSE",
+      "published_at": "2026-10-21T10:13:45+00:00",
+      "crawled_at": "2026-10-29T07:43:47.566633+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/211026/fpt-ket-qua-kinh-doanh-9-thang-nam-2026-0.pdf?v=1792577821144"
+      ],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.19245283018867926,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-nghi-quyet-hdqt-so-02-10-2026-ngay-27-10-2026/42509944",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "7ad6ebfd8d94d9500431",
+      "source": "cafef",
+      "url": "https://cafef.vn/fpt-bat-tay-chu-nhan-sieu-may-tinh-luong-tu-quang-tu-manh-nhat-the-gioi-188261021164747188.chn",
+      "title": "FPT bắt tay chủ nhân siêu máy tính lượng tử quang tử mạnh nhất thế giới",
+      "description": "Thỏa thuận với Quandela là một trong những bước đi của FPT nhằm tăng cường năng lực nghiên cứu, phát triển nguồn nhân lực và tiếp cận công nghệ lượng tử, góp phần hiện thực hóa các định hướng này tại Việt Nam.",
+      "content": "FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Tập đoàn FPT và Quandela, công ty sở hữu siêu máy tính lượng tử quang tử mạnh nhất thế giới, vừa, ký kết Biên bản ghi nhớ hợp tác nhằm phát triển năng lực nghiên cứu, tích hợp, đào tạo nguồn nhân lực và thúc đẩy ứng dụng công nghệ lượng tử tại Việt Nam. Lễ ký diễn ra trong khuôn khổ chuyến công tác của đoàn doanh nghiệp Pháp đầu tiên chuyên về công nghệ lượng tử tới Việt Nam do Business France tổ chức. Hợp tác diễn ra trong bối cảnh Việt Nam đang thúc đẩy việc phát triển và từng bước làm chủ các công nghệ chiến lược theo Nghị quyết 57-NQ/TW của Bộ Chính trị, trong đó có công nghệ lượng tử. Khi nhiều quốc gia đang đầu tư mạnh vào điện toán lượng tử nhằm tạo lợi thế cạnh tranh về khoa học, an ninh và công nghiệp, việc từng bước xây dựng năng lực nghiên cứu và ứng dụng công nghệ lượng tử được xem là nền tảng để Việt Nam tham gia sâu hơn vào chuỗi giá trị công nghệ toàn cầu. Thỏa thuận với Quandela là một trong những bước đi của FPT nhằm tăng cường năng lực nghiên cứu, phát triển nguồn nhân lực và tiếp cận công nghệ lượng tử, góp phần hiện thực hóa các định hướng này tại Việt Nam. Theo thỏa thuận, FPT và Quandela sẽ kết hợp thế mạnh của hai bên trong nghiên cứu và phát triển công nghệ lượng tử. Quandela đóng góp năng lực công nghệ, kinh nghiệm phát triển hệ thống điện toán lượng tử & tư vấn kỹ thuật; FPT phát huy năng lực nghiên cứu, phát triển phần mềm, tích hợp công nghệ, hạ tầng và kinh nghiệm triển khai trong nhiều lĩnh vực. Hai bên dự kiến hợp tác trong tư vấn và nghiên cứu kỹ thuật, tích hợp công nghệ, đào tạo nhân lực, xây dựng lộ trình phát triển, nghiên cứu các ứng dụng của điện toán lượng tử và truyền thông lượng tử. FPT và Quandela cũng có thể thực hiện các thử nghiệm ban đầu để đánh giá tính khả thi của công nghệ, đồng thời thúc đẩy trao đổi chuyên gia, chia sẻ tri thức và có cơ hội tiếp cận các phòng nghiên cứu, thiết bị, phần mềm phục vụ hoạt động chung. Đây là lần đầu FPT hợp tác với một doanh nghiệp chuyên phát triển phần cứng lượng tử, qua đó mở rộng các hoạt động của Tập đoàn từ nghiên cứu, phần mềm và phát triển nguồn nhân lực sang khả năng nghiên cứu, tích hợp và đánh giá các máy tính lượng tử. Trong quá trình hợp tác, FPT và Quandela sẽ cùng xác định những bài toán có khả năng tạo ra giá trị thực tiễn cho doanh nghiệp và xã hội. Mật mã hậu lượng tử là một hướng đáng chú ý trong bối cảnh điện toán lượng tử có thể làm suy giảm độ an toàn của một số phương pháp mã hóa đang được sử dụng hiện nay; tại Việt Nam, việc chuẩn bị lộ trình chuyển đổi sang mật mã hậu lượng tử cũng đang được các chuyên gia và cơ quan chuyên môn đặt ra. Trên cơ sở kết quả hợp tác tại Việt Nam, hai bên có thể tiếp tục nghiên cứu cơ hội mở rộng hoạt động và cung cấp dịch vụ tại các thị trường khác. Được thành lập tại Pháp năm 2017, Quandela chuyên thiết kế và chế tạo máy tính lượng tử quang tử, tức máy tính lượng tử sử dụng photon (các hạt ánh sáng) để xử lý thông tin. Bên cạnh phần cứng, công ty cũng phát triển phần mềm và nền tảng điện toán đám mây, cho phép các tổ chức nghiên cứu và thử nghiệm công nghệ lượng tử từ xa. Một dấu mốc đáng chú ý của Quandela là Lucy – máy tính lượng tử quang tử được Cơ quan Nghiên cứu Công nghệ Công lập (CEA) của Pháp công bố là mạnh nhất thế giới vào tháng 4/2026. Lucy được vận hành tại một trung tâm siêu máy tính của Pháp và mở cho giới nghiên cứu, doanh nghiệp châu Âu thử nghiệm các ứng dụng như tìm kiếm phân tử cho thuốc mới, nghiên cứu vật liệu và các phương pháp học máy. FPT lãi hơn 2.700 tỷ trong quý 3, tiếp tục lập kỷ lục mới",
+      "published_at": "2026-10-21T16:47:00",
+      "crawled_at": "2026-10-29T07:43:48.831534+00:00",
+      "attachments": [],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03907333090113097,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-dinh-hinh-vi-the-moi-trong-chuoi-gia-tri-cong-nghe/42462828",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "670ad5741959cc40b9b5",
+      "source": "cafef",
+      "url": "https://cafef.vn/fpt-cong-bo-ket-qua-kinh-doanh-9-thang-mot-mang-tang-truong-toi-55-188261021083848638.chn",
+      "title": "FPT công bố kết quả kinh doanh 9 tháng, một mảng tăng trưởng tới 55%",
+      "description": "Trong cơ cấu hoạt động, Khối Công nghệ, bao gồm Dịch vụ CNTT trong nước và Dịch vụ CNTT nước ngoài, tiếp tục giữ vai trò chủ lực khi đóng góp 89% doanh thu và 58% lợi nhuận trước thuế toàn Tập đoàn.",
+      "content": "FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Kết thúc 9 tháng năm 2026, CTCP FPT ghi nhận doanh thu 40.023 tỷ đồng và lợi nhuận trước thuế 8.770 tỷ đồng, lần lượt tăng 12,4% và 17% so với cùng kỳ năm ngoái, tiếp tục duy trì mức tăng trưởng lợi nhuận hai chữ số. Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ đạt 7.778 tỷ đồng, tăng 13,3%, trong khi EPS đạt 4.142 đồng/cổ phiếu, tăng 12,8% so với cùng kỳ. Đáng lưu ý, từ năm 2026, FPT thay đổi phương pháp hợp nhất số liệu tài chính của CTCP Viễn thông FPT (FPT Telecom) sang phương pháp vốn chủ sở hữu, áp dụng đối với công ty liên doanh, liên kết. Theo đó, Tập đoàn chỉ ghi nhận phần lợi nhuận tại FPT Telecom tương ứng với tỷ lệ sở hữu thực tế, thay vì hợp nhất toàn bộ doanh thu và lợi nhuận như trước đây. Để đảm bảo tính so sánh, số liệu năm 2025 trong báo cáo cũng đã được điều chỉnh theo cùng phương pháp. Khối Công nghệ đóng góp 89% doanh thu, mảng AI/Data Analytics tăng trưởng 55% Trong cơ cấu hoạt động, Khối Công nghệ, bao gồm Dịch vụ CNTT trong nước và Dịch vụ CNTT nước ngoài, tiếp tục giữ vai trò chủ lực khi đóng góp 89% doanh thu và 58% lợi nhuận trước thuế toàn Tập đoàn. Doanh thu khối này đạt 35.515 tỷ đồng, tăng 14,8%, trong khi lợi nhuận trước thuế đạt 5.052 tỷ đồng, tăng 16,6% so với cùng kỳ. Đối với thị trường nước ngoài, bất chấp những thách thức của kinh tế toàn cầu, doanh thu Dịch vụ CNTT nước ngoài vẫn tăng 11,6%, đạt 28.538 tỷ đồng. Nhật Bản tiếp tục là động lực tăng trưởng chính với mức tăng doanh thu 17,2% so với cùng kỳ, tương đương 25,2% nếu tính theo đồng Yên Nhật. Đáng chú ý, doanh thu ký mới của mảng Dịch vụ CNTT nước ngoài đạt 36.137 tỷ đồng sau 9 tháng, tăng 23,1% so với cùng kỳ. Trong giai đoạn này, FPT đã thắng thầu 16 dự án có quy mô trên 10 triệu USD mỗi dự án. Song song với việc mở rộng quy mô hợp đồng, các dịch vụ công nghệ mới tiếp tục đóng góp tích cực vào tăng trưởng. Doanh thu chuyển đổi số từ thị trường nước ngoài đạt 14.411 tỷ đồng, tăng 16,3%, tập trung vào các lĩnh vực như AI/Data Analytics và Cybersecurity. Riêng dịch vụ AI/Data Analytics ghi nhận doanh thu 2.915 tỷ đồng, tăng 55% so với cùng kỳ. Ở thị trường trong nước, mảng Dịch vụ CNTT ghi nhận doanh thu 6.977 tỷ đồng, tăng 29,8%, trong khi lợi nhuận trước thuế đạt 542 tỷ đồng, tăng 108,5%. Kết quả này đến từ việc đẩy mạnh triển khai các dự án chuyển đổi số quy mô lớn cho khối Chính phủ và doanh nghiệp, đồng thời tối ưu hiệu quả vận hành và cơ cấu dự án. Trong kỳ, FPT cũng được cấp Giấy chứng nhận đủ điều kiện kinh doanh sản phẩm, dịch vụ trung gian dữ liệu, tạo nền tảng cung cấp các dịch vụ chia sẻ, kết nối và khai thác dữ liệu an toàn, đồng thời hoàn thiện năng lực triển khai giải pháp AI và dữ liệu cho khách hàng doanh nghiệp cũng như khu vực công. Hệ sinh thái sản phẩm Made-by-FPT tiếp tục duy trì đà tăng trưởng với doanh thu 2.284 tỷ đồng, tăng 19,9% so với cùng kỳ. Đối với Khối Giáo dục, Đầu tư và Khác, doanh thu đạt 4.508 tỷ đồng, giảm nhẹ 3,1% so với cùng kỳ. Tuy nhiên, lợi nhuận trước thuế vẫn tăng 17,6%, đạt 3.719 tỷ đồng, chủ yếu nhờ tăng trưởng lợi nhuận hai chữ số từ các công ty liên doanh, liên kết. Đẩy mạnh chiến lược AI-First, mở rộng hợp tác công nghệ toàn cầu Bên cạnh kết quả kinh doanh, trong quý 3/2026, FPT tiếp tục đẩy mạnh chiến lược AI-First, từng bước chuyển dịch từ cung cấp dịch vụ CNTT truyền thống sang tư vấn, phát triển và triển khai các giải pháp chuyển đổi AI toàn diện cho khách hàng. Một trong những diễn biến đáng chú ý là việc FPT trở thành Đối tác Toàn cầu (Select Partner) của OpenAI, qua đó mở rộng khả năng ứng dụng các công nghệ AI tiên tiến trong vận hành doanh nghiệp, phát triển phần mềm và an ninh mạng. Cùng với đó, FPT ra mắt MediSight, khung chuyển đổi AI chuyên biệt cho lĩnh vực y tế, kết hợp các tác tử AI (AI Agents), nền tảng dữ liệu và ứng dụng nghiệp vụ. Tại Việt Nam, Tập đoàn ký kết hợp tác với Trung tâm Dữ liệu quốc gia trong các lĩnh vực dữ liệu, AI và điện toán hiệu năng cao. Hợp tác với các đối tác công nghệ quốc tế cũng tiếp tục được mở rộng. Trong quý 3, FPT và NVIDIA nâng quy mô bộ dữ liệu Nemotron-Personas-Vietnam từ 100.000 lên 1 triệu hồ sơ người dùng giả lập, gấp 10 lần phiên bản đầu tiên ra mắt vào tháng 6/2026. Bộ dữ liệu này hỗ trợ các nhà phát triển huấn luyện, thử nghiệm và đánh giá ứng dụng AI, đặc biệt là AI Agent, qua đó góp phần phát triển AI chủ quyền và các giải pháp chuyên biệt cho ngân hàng, y tế, bảo hiểm và dịch vụ công. Không chỉ mở rộng hợp tác, FPT còn đẩy mạnh ứng dụng AI vào các dự án thực tế. Điển hình là việc triển khai Flezi Metis, nền tảng AI do FPT phát triển, cho một tập đoàn dịch vụ và công nghệ ô tô hàng đầu thế giới có trụ sở tại Mỹ. Giải pháp này kết nối mã nguồn, tài liệu kỹ thuật và dữ liệu vận hành thành một hệ thống tri thức thống nhất, giúp kỹ sư tìm kiếm thông tin, phân tích tác động và đánh giá rủi ro khi thay đổi phần mềm. Kết quả thử nghiệm ban đầu trên dự án có khoảng 1 triệu dòng mã cho thấy Flezi Metis giúp giảm 50% thời gian tìm kiếm mã nguồn và 30% thời gian hoàn thành công việc kỹ thuật. Sau những kết quả tích cực tại Mỹ, FPT đang mở rộng ứng dụng Flezi Metis sang các lĩnh vực có yêu cầu vận hành phức tạp như ngân hàng, bảo hiểm và khu vực công, hướng tới nhân rộng các giải pháp AI trong hiện đại hóa hệ thống CNTT của doanh nghiệp toàn cầu. Những hoạt động này diễn ra trong bối cảnh dịch vụ AI/Data Analytics tiếp tục là một trong những mảng tăng trưởng nổi bật của FPT, với doanh thu tăng 55% sau 9 tháng, cho thấy xu hướng chuyển dịch từ các dự án AI thử nghiệm sang triển khai trên quy mô doanh nghiệp.",
+      "published_at": "2026-10-21T08:40:00",
+      "crawled_at": "2026-10-29T07:43:49.374741+00:00",
+      "attachments": [],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.23783943329397877,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-ban-rong-trien-mien-khoi-ngoai-van-con-nam-hon-455-trieu-co-phieu-fpt/42512303",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "d849c6e06087f4c765bd",
+      "source": "cafef",
+      "url": "https://cafef.vn/vietcap-dieu-chinh-loat-du-bao-ve-fpt-188261020145848592.chn",
+      "title": "Vietcap điều chỉnh loạt dự báo về FPT",
+      "description": "Vietcap dự báo lợi nhuận sau thuế thuộc cổ đông công ty mẹ của FPT tăng trưởng bình quân 14% mỗi năm trong giai đoạn 2026–2029, thấp hơn đáng kể so với mức 22% ghi nhận trong giai đoạn 2021–2024.",
+      "content": "FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Trong báo cáo cập nhật ngày 16/10, Chứng khoán Vietcap chỉ ra sự thay đổi đáng chú ý trong triển vọng kinh doanh của FPT khi tốc độ tăng trưởng lợi nhuận được dự báo giảm đáng kể so với giai đoạn trước. Đáng chú ý, trong khi mảng công nghệ thông tin (CNTT) trong nước được kỳ vọng tăng trưởng mạnh nhờ chuyển đổi số và trí tuệ nhân tạo (AI), hoạt động CNTT nước ngoài có dấu hiệu giảm tốc, còn mảng giáo dục tiếp tục đối mặt nhiều khó khăn. Cụ thể, Vietcap dự báo lợi nhuận sau thuế thuộc cổ đông công ty mẹ của FPT tăng trưởng bình quân 14% mỗi năm trong giai đoạn 2026–2029, thấp hơn đáng kể so với mức 22% ghi nhận trong giai đoạn 2021–2024 . Tuy nhiên, công ty chứng khoán cho rằng phần lớn sự giảm tốc này đã được phản ánh vào giá cổ phiếu. Riêng năm 2026, lợi nhuận FPT được dự báo đạt 10.755 tỷ đồng, tăng 15% so với cùng kỳ. Sang năm 2027, con số này có thể tăng thêm 14%, lên 12.299 tỷ đồng. Doanh thu tương ứng dự kiến đạt 56.754 tỷ đồng và 63.599 tỷ đồng, cùng tăng khoảng 12% mỗi năm theo số liệu đã điều chỉnh để bảo đảm tính so sánh. Động lực tăng trưởng chính tiếp tục đến từ mảng CNTT nước ngoài, với lợi nhuận trước thuế dự kiến tăng trưởng bình quân 15% mỗi năm trong giai đoạn 2026–2029. Tuy nhiên, tốc độ tăng doanh thu mảng này được dự báo chậm lại, chỉ đạt khoảng 14% trong năm 2026, so với mức tăng trên 20% từng ghi nhận trong giai đoạn 2021–2024. Trong đó, Nhật Bản tiếp tục là thị trường đóng góp doanh thu lớn nhất, với mức tăng trưởng dự kiến 22% trong năm 2026, nhờ nhu cầu hiện đại hóa hệ thống CNTT cũ và chuyển đổi sang điện toán đám mây. Khu vực châu Âu, Trung Đông và châu Phi (EMEA) được kỳ vọng tăng trưởng 38%, trong khi thị trường Mỹ tăng 7% và châu Á - Thái Bình Dương (APAC) giảm khoảng 2%. Đáng chú ý, sự phát triển của AI đang tạo ra những tác động trái chiều đối với hoạt động kinh doanh của FPT . Vietcap dự báo doanh thu dịch vụ CNTT truyền thống chỉ tăng trưởng bình quân 7% mỗi năm trong giai đoạn 2026–2029, một phần do năng suất được cải thiện nhờ AI. Ngược lại, doanh thu dịch vụ chuyển đổi số được kỳ vọng tăng trưởng 19% mỗi năm, nhờ nhu cầu liên quan đến AI và điện toán đám mây gia tăng. Theo Vietcap, mức độ quan tâm đến AI đang tăng lên tại các thị trường EMEA và Mỹ, trong khi nhu cầu tại Nhật Bản, thị trường chủ chốt của FPT, vẫn còn hạn chế. Vì vậy, EMEA và Mỹ được kỳ vọng dẫn dắt nhu cầu AI trong ngắn hạn, còn Nhật Bản có thể trở thành động lực trong dài hạn. Ở thị trường trong nước, triển vọng tích cực hơn khi Vietcap dự báo lợi nhuận trước thuế mảng CNTT nội địa tăng tới 78% trong năm 2026, đạt 783 tỷ đồng. Động lực đến từ nhu cầu chuyển đổi số của khu vực công và tư nhân, cùng đóng góp từ dự án Nhà máy AI tại Việt Nam. Sang năm 2027, lợi nhuận mảng này dự kiến tiếp tục tăng 12%, lên 874 tỷ đồng. Mảng giáo dục đối mặt nhiều sức ép Trái ngược với hoạt động công nghệ, mảng giáo dục của FPT được Vietcap dự báo tiếp tục gặp khó khăn do nhu cầu tuyển sinh yếu và áp lực cạnh tranh gia tăng. Theo ước tính của công ty chứng khoán, tổng số sinh viên FPT cuối năm 2025 giảm khoảng 8% so với cuối năm 2024, trong bối cảnh lượng tuyển sinh mới đi ngang và số sinh viên tốt nghiệp lớn. Vietcap cho rằng hoạt động đại học và đào tạo nghề tiếp tục đối mặt với rủi ro khi mức độ quan tâm của sinh viên đối với các ngành CNTT truyền thống có nguy cơ suy yếu, đồng thời cạnh tranh từ các trường đại học công lập ngày càng lớn. Vietcap dự báo doanh thu mảng giáo dục giảm 4% trong năm 2026, xuống 6.736 tỷ đồng, trong khi lợi nhuận trước thuế giảm tương ứng còn 2.021 tỷ đồng. Sang năm 2027, cả doanh thu và lợi nhuận được kỳ vọng gần như đi ngang, lần lượt đạt 6.760 tỷ đồng và 2.028 tỷ đồng. Trong trung hạn, triển vọng mảng giáo dục vẫn tương đối trầm lắng. Dù hệ thống trường phổ thông từ lớp 1 đến lớp 12 (K-12) có thể tiếp tục mở rộng, đóng góp của mảng này vẫn còn nhỏ, chưa đủ tạo ra động lực tăng trưởng đáng kể. Dù triển vọng tăng trưởng chậm lại, Vietcap đánh giá mặt bằng định giá FPT đã phản ánh phần lớn những khó khăn này. Theo dự báo, P/E năm 2026 và 2027 lần lượt ở mức 10,8 lần và 9,4 lần, với hệ số PEG ba năm khoảng 0,7 lần. Nhìn chung, Vietcap vẫn kỳ vọng FPT duy trì tăng trưởng lợi nhuận trong những năm tới, song động lực tăng trưởng đang có sự dịch chuyển giữa các mảng kinh doanh. Trong đó, khả năng tận dụng nhu cầu AI và chuyển đổi số, cùng triển vọng phục hồi của thị trường CNTT toàn cầu sẽ là những yếu tố quan trọng đối với kết quả kinh doanh của doanh nghiệp.",
+      "published_at": "2026-10-21T00:05:00.000000",
+      "crawled_at": "2026-10-29T07:43:50.193415+00:00",
+      "attachments": [],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.04741496598639455,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/fpt-ban-rong-trien-mien-khoi-ngoai-van-con-nam-hon-455-trieu-co-phieu-fpt/42512303",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    },
+    {
+      "id": "cb4eaa3107d9a14de918",
+      "source": "cafef",
+      "url": "https://cafef.vn/mot-quy-dau-tu-kip-thoat-hang-khi-pnj-lao-doc-58-van-tin-yeu-fpt-du-co-phieu-lien-tuc-do-day-188261016154933471.chn",
+      "title": "Một quỹ đầu tư kịp thoát hàng khi PNJ lao dốc 58%, vẫn tin yêu FPT dù cổ phiếu liên tục dò đáy",
+      "description": "Ngày 16/10, Công ty TNHH Quản lý Quỹ Vietcombank (VCBF) phối hợp với CTCP Chứng khoán VNDirect (Mã: VND) tổ chức livestream công bố kết quả hoạt động quỹ mở quý III/2026 và triển vọng thị trường cuối năm.",
+      "content": "PNJ&FPT: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI PNJ: Ảnh hưởng không nhiều do đã chốt lời một phần trước khi sự cố xảy ra Tại buổi cập nhật kết quả đầu tư Quý 3/2026, nhóm cổ phiếu hàng tiêu dùng không thiết yếu được ghi nhận là ngành giảm điểm sâu nhất trên thị trường với mức giảm 12,8%, chịu ảnh hưởng chủ yếu từ đà lao dốc mạnh của cổ phiếu PNJ khi giảm tới 58% trong quý do những sự cố phát sinh liên quan đến mảng kinh doanh kim cương. Trước mối quan ngại của nhà đầu tư về mức độ ảnh hưởng của PNJ tới hiệu suất các quỹ mở, ông Nguyễn Triệu Vinh - Phó Giám đốc Đầu tư kiêm Giám đốc Đầu tư Cổ phiếu VCBF - cho biết quỹ luôn duy trì tính kỷ luật cao thông qua việc đa dạng hóa danh mục từ 30 - 35 doanh nghiệp nhằm cô lập rủi ro, tránh để biến động tiêu cực của một mã riêng lẻ làm suy chuyển thành quả chung. Đáng chú ý, VCBF đã chủ động hạ tỷ trọng cổ phiếu PNJ từ trước khi sự cố xảy ra. Vào thời điểm đầu năm, khi thị giá PNJ tăng trưởng mạnh và đẩy tỷ trọng trong danh mục lên mức cao, đội ngũ quản lý quỹ đã thực hiện chốt lời một phần để đưa tỷ trọng về mức an toàn hơn. Nhờ động thái phòng vệ sớm này, cùng với sự bù đắp từ nhiều cổ phiếu khác tăng giá tốt trong danh mục, cú sụt giảm 58% của PNJ có gây tác động nhưng không ảnh hưởng quá nhiều tới kết quả chung của các quỹ mở VCBF. Tính đến cuối Quý 3/2026, tỷ trọng nắm giữ PNJ đã giảm xuống mức rất thấp: Quỹ Cổ phiếu Cổ tức (AIF) chỉ còn chiếm 1%, Quỹ Cổ phiếu Hàng đầu (BCF) còn hơn 1% và Quỹ Cổ phiếu Tăng trưởng (MGF) chỉ nhỉnh hơn 2% một chút. Về định hướng tiếp theo, đại diện VCBF cho biết quỹ vẫn đang theo dõi sát sao tiến trình tái cơ cấu của doanh nghiệp, đồng thời duy trì trao đổi thường xuyên với ban lãnh đạo PNJ để cập nhật các giải pháp vượt qua giai đoạn khó khăn hiện tại. FPT: Bức tranh tài chính cốt lõi vẫn tăng trưởng Trái ngược với câu chuyện sự cố tại PNJ, trường hợp của Tập đoàn FPT lại phản ánh rõ nét nghịch lý giá cổ phiếu đi ngang hoặc giảm dù bức tranh tài chính cốt lõi vẫn tăng trưởng. FPT hiện nằm trong Top 10 khoản đầu tư lớn nhất của cả hai quỹ BCF và MGF, với tỷ trọng phân bổ chiếm khoảng 4% đến 5% giá trị tài sản ròng – mức tỷ trọng được ban điều hành đánh giá là cân bằng và chịu ảnh hưởng chủ yếu. Đánh giá chi tiết về hoạt động kinh doanh của FPT, ông Phạm Lê Duy Nhân – Giám đốc Quản lý Danh mục Đầu tư VCBF – đã chỉ ra diễn biến tại từng mảng hoạt động: Mảng dịch vụ CNTT nước ngoài: Tốc độ tăng trưởng có phần chậm lại nhẹ trong tháng 8 và tháng 9/2026, đặc biệt tại thị trường Nhật Bản do các doanh nghiệp sở tại bước vào chu kỳ rà soát và cân đối lại ngân sách công nghệ cho năm tới sau giai đoạn tăng trưởng nóng. Ngược lại, các thị trường trọng điểm khác như Mỹ, EU và APAC vẫn duy trì đà tăng trưởng bám sát kế hoạch đề ra từ đầu năm. Dù những bất ổn địa chính trị toàn cầu khiến các tập đoàn quốc tế có phần dè chừng hơn khi giải ngân ngân sách CNTT, VCBF đánh giá nhu cầu chuyển đổi số dài hạn không hề mất đi mà chỉ tạm thời bị dồn nén. Động lực tăng trưởng từ Trí tuệ nhân tạo (AI): Doanh thu liên quan đến AI trở thành điểm tựa quan trọng giúp FPT duy trì mức tăng trưởng chung. Trong 8 tháng đầu năm 2026, doanh thu mảng AI đã tăng trưởng hơn 60% so với cùng kỳ năm 2025 và đóng góp khoảng 10% vào tổng doanh thu dịch vụ CNTT nước ngoài của tập đoàn. Mảng Viễn thông: Duy trì đà tăng trưởng hai con số rất ổn định trong 9 tháng đầu năm, ghi nhận doanh thu tăng khoảng 15% và lợi nhuận tăng khoảng 13%. Mảng Giáo dục: Tạm thời đối mặt với sự cạnh tranh gia tăng từ khối các trường đại học công lập trong ngắn hạn. Tựu trung lại, VCBF dự báo tăng trưởng lợi nhuận cả năm 2026 của FPT sẽ đạt khoảng 13%. Xét về góc độ định giá, sau các nhịp điều chỉnh của thị trường, chỉ số P/E dự phóng cho năm 2026 của FPT đã rơi về dưới 11 lần. Mức định giá này thấp hơn đáng kể so với mức bình quân trong lịch sử của chính FPT, đồng thời hấp dẫn hơn nhiều khi so sánh với các tập đoàn công nghệ lớn của Ấn Độ (như TCS) – những doanh nghiệp hiện chỉ tăng trưởng ở mức một con số nhưng lại giao dịch ở mặt bằng P/E cao hơn. Theo VCBF, việc một doanh nghiệp đầu ngành duy trì mức tăng trưởng lợi nhuận 13% trong bối cảnh vĩ mô thách thức và sở hữu định giá chiết khấu đã mang lại biên an toàn rất tốt cho các vị thế đầu tư trung và dài hạn",
+      "published_at": "2026-10-16T16:05:00",
+      "crawled_at": "2026-10-29T07:43:50.629570+00:00",
+      "attachments": [],
+      "symbols": [
+        "FPT"
+      ],
+      "matched_symbols": [
+        "FPT"
+      ],
+      "scopes": [
+        "FPT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.046458449525934184,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/trien-vong-nganh-cong-nghe-co-hoi-nao-sau-nhip-giam-sau-cua-co-phieu-dau-nganh/42481820",
+        "matched_file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:52:30.148704+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:43:50.632846+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "FPT",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

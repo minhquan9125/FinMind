@@ -1,0 +1,23 @@
+{
+  "text": "1%G",
+  "chars": 3,
+  "words": 1,
+  "wordItems": [
+    {
+      "text": "1%G",
+      "bbox": [
+        3431,
+        1913,
+        3471,
+        1921
+      ],
+      "conf": 45.530251,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 46,
+  "lowConfRatio": 1,
+  "seconds": 0.823
+}

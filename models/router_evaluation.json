@@ -1,0 +1,454 @@
+{
+  "evaluation_policy": {
+    "threshold_selected_on": "validation",
+    "test_used_for_threshold_selection": false,
+    "threshold": 0.65,
+    "threshold_candidates": [
+      {
+        "threshold": 0.3,
+        "rows": 30,
+        "exact_match_count": 10,
+        "exact_match_ratio": 0.3333333333333333,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.75
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.7333333333333333,
+            "recall": 1.0,
+            "f1": 0.8461538461538461
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 8,
+          "VECTOR->BOTH": 12
+        }
+      },
+      {
+        "threshold": 0.35,
+        "rows": 30,
+        "exact_match_count": 10,
+        "exact_match_ratio": 0.3333333333333333,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.75
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.7333333333333333,
+            "recall": 1.0,
+            "f1": 0.8461538461538461
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 8,
+          "VECTOR->BOTH": 12
+        }
+      },
+      {
+        "threshold": 0.4,
+        "rows": 30,
+        "exact_match_count": 11,
+        "exact_match_ratio": 0.36666666666666664,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.6206896551724138,
+            "recall": 1.0,
+            "f1": 0.7659574468085106
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.7333333333333333,
+            "recall": 1.0,
+            "f1": 0.8461538461538461
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 8,
+          "VECTOR->BOTH": 11,
+          "VECTOR->VECTOR": 1
+        }
+      },
+      {
+        "threshold": 0.45,
+        "rows": 30,
+        "exact_match_count": 15,
+        "exact_match_ratio": 0.5,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.7857142857142857,
+            "recall": 1.0,
+            "f1": 0.88
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 6,
+          "GRAPH->GRAPH": 2,
+          "VECTOR->BOTH": 9,
+          "VECTOR->VECTOR": 3
+        }
+      },
+      {
+        "threshold": 0.5,
+        "rows": 30,
+        "exact_match_count": 17,
+        "exact_match_ratio": 0.5666666666666667,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.72,
+            "recall": 1.0,
+            "f1": 0.8372093023255814
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.7857142857142857,
+            "recall": 1.0,
+            "f1": 0.88
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 6,
+          "GRAPH->GRAPH": 2,
+          "VECTOR->BOTH": 7,
+          "VECTOR->VECTOR": 5
+        }
+      },
+      {
+        "threshold": 0.55,
+        "rows": 30,
+        "exact_match_count": 20,
+        "exact_match_ratio": 0.6666666666666666,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.782608695652174,
+            "recall": 1.0,
+            "f1": 0.8780487804878049
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.8148148148148148,
+            "recall": 1.0,
+            "f1": 0.8979591836734694
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 5,
+          "GRAPH->GRAPH": 3,
+          "VECTOR->BOTH": 5,
+          "VECTOR->VECTOR": 7
+        }
+      },
+      {
+        "threshold": 0.6,
+        "rows": 30,
+        "exact_match_count": 20,
+        "exact_match_ratio": 0.6666666666666666,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.782608695652174,
+            "recall": 1.0,
+            "f1": 0.8780487804878049
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.8148148148148148,
+            "recall": 1.0,
+            "f1": 0.8979591836734694
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 5,
+          "GRAPH->GRAPH": 3,
+          "VECTOR->BOTH": 5,
+          "VECTOR->VECTOR": 7
+        }
+      },
+      {
+        "threshold": 0.65,
+        "rows": 30,
+        "exact_match_count": 23,
+        "exact_match_ratio": 0.7666666666666667,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.8095238095238095,
+            "recall": 0.9444444444444444,
+            "f1": 0.8717948717948718
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.8636363636363636,
+            "recall": 0.8636363636363636,
+            "f1": 0.8636363636363636
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 2,
+          "GRAPH->GRAPH": 5,
+          "GRAPH->VECTOR": 1,
+          "VECTOR->BOTH": 1,
+          "VECTOR->GRAPH": 3,
+          "VECTOR->VECTOR": 8
+        }
+      },
+      {
+        "threshold": 0.7,
+        "rows": 30,
+        "exact_match_count": 23,
+        "exact_match_ratio": 0.7666666666666667,
+        "predicted_none_count": 2,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.8095238095238095,
+            "recall": 0.9444444444444444,
+            "f1": 0.8717948717948718
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.9444444444444444,
+            "recall": 0.7727272727272727,
+            "f1": 0.85
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 1,
+          "GRAPH->GRAPH": 6,
+          "GRAPH->NONE": 1,
+          "VECTOR->GRAPH": 4,
+          "VECTOR->NONE": 1,
+          "VECTOR->VECTOR": 7
+        }
+      }
+    ]
+  },
+  "splits": {
+    "train": {
+      "classifier": {
+        "rows": 180,
+        "exact_match_count": 160,
+        "exact_match_ratio": 0.8888888888888888,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 121,
+            "precision": 0.9745762711864406,
+            "recall": 0.9504132231404959,
+            "f1": 0.9623430962343096
+          },
+          "needs_content": {
+            "support": 133,
+            "precision": 0.9481481481481482,
+            "recall": 0.9624060150375939,
+            "f1": 0.9552238805970149
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 64,
+          "BOTH->GRAPH": 5,
+          "BOTH->VECTOR": 5,
+          "GRAPH->BOTH": 6,
+          "GRAPH->GRAPH": 40,
+          "GRAPH->VECTOR": 1,
+          "VECTOR->BOTH": 3,
+          "VECTOR->VECTOR": 56
+        }
+      },
+      "keyword_baseline": {
+        "rows": 180,
+        "exact_match_count": 57,
+        "exact_match_ratio": 0.31666666666666665,
+        "predicted_none_count": 86,
+        "per_label": {
+          "needs_graph": {
+            "support": 121,
+            "precision": 0.8863636363636364,
+            "recall": 0.32231404958677684,
+            "f1": 0.4727272727272727
+          },
+          "needs_content": {
+            "support": 133,
+            "precision": 0.9538461538461539,
+            "recall": 0.46616541353383456,
+            "f1": 0.6262626262626263
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 8,
+          "BOTH->GRAPH": 9,
+          "BOTH->NONE": 37,
+          "BOTH->VECTOR": 20,
+          "GRAPH->BOTH": 3,
+          "GRAPH->GRAPH": 19,
+          "GRAPH->NONE": 25,
+          "VECTOR->BOTH": 4,
+          "VECTOR->GRAPH": 1,
+          "VECTOR->NONE": 24,
+          "VECTOR->VECTOR": 30
+        }
+      }
+    },
+    "validation": {
+      "classifier": {
+        "rows": 30,
+        "exact_match_count": 23,
+        "exact_match_ratio": 0.7666666666666667,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.8095238095238095,
+            "recall": 0.9444444444444444,
+            "f1": 0.8717948717948718
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.8636363636363636,
+            "recall": 0.8636363636363636,
+            "f1": 0.8636363636363636
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 2,
+          "GRAPH->GRAPH": 5,
+          "GRAPH->VECTOR": 1,
+          "VECTOR->BOTH": 1,
+          "VECTOR->GRAPH": 3,
+          "VECTOR->VECTOR": 8
+        }
+      },
+      "keyword_baseline": {
+        "rows": 30,
+        "exact_match_count": 10,
+        "exact_match_ratio": 0.3333333333333333,
+        "predicted_none_count": 10,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.7,
+            "recall": 0.3888888888888889,
+            "f1": 0.5
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 1.0,
+            "recall": 0.6818181818181818,
+            "f1": 0.8108108108108109
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 3,
+          "BOTH->VECTOR": 7,
+          "GRAPH->GRAPH": 4,
+          "GRAPH->NONE": 4,
+          "VECTOR->BOTH": 2,
+          "VECTOR->GRAPH": 1,
+          "VECTOR->NONE": 6,
+          "VECTOR->VECTOR": 3
+        }
+      }
+    },
+    "test": {
+      "classifier": {
+        "rows": 30,
+        "exact_match_count": 25,
+        "exact_match_ratio": 0.8333333333333334,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.9444444444444444,
+            "recall": 0.9444444444444444,
+            "f1": 0.9444444444444444
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.88,
+            "recall": 1.0,
+            "f1": 0.9361702127659575
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 9,
+          "BOTH->VECTOR": 1,
+          "GRAPH->BOTH": 3,
+          "GRAPH->GRAPH": 5,
+          "VECTOR->BOTH": 1,
+          "VECTOR->VECTOR": 11
+        }
+      },
+      "keyword_baseline": {
+        "rows": 30,
+        "exact_match_count": 9,
+        "exact_match_ratio": 0.3,
+        "predicted_none_count": 12,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.7272727272727273,
+            "recall": 0.4444444444444444,
+            "f1": 0.5517241379310345
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 1,
+          "BOTH->GRAPH": 3,
+          "BOTH->NONE": 3,
+          "BOTH->VECTOR": 3,
+          "GRAPH->GRAPH": 4,
+          "GRAPH->NONE": 4,
+          "VECTOR->BOTH": 3,
+          "VECTOR->NONE": 5,
+          "VECTOR->VECTOR": 4
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The dataset has only 30 validation and 30 test rows.",
+    "All 240 classifier questions are synthetic.",
+    "Route accuracy does not prove that GRAPH/BOTH adapters are live or answerable."
+  ]
+}

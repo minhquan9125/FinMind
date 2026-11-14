@@ -1,0 +1,231 @@
+{
+  "text": "Dấu ấn Quản trị\nChuẩn mực và bên vững\n\nca <<\n=.—\n<\n===\n\n“”\n\n- ===",
+  "chars": 46,
+  "words": 17,
+  "wordItems": [
+    {
+      "text": "Dấu",
+      "bbox": [
+        1914,
+        261,
+        2070,
+        339
+      ],
+      "conf": 96.683456,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ấn",
+      "bbox": [
+        2107,
+        261,
+        2201,
+        339
+      ],
+      "conf": 96.397423,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Quản",
+      "bbox": [
+        2243,
+        271,
+        2461,
+        351
+      ],
+      "conf": 96.137291,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "trị",
+      "bbox": [
+        2495,
+        273,
+        2578,
+        354
+      ],
+      "conf": 96.796005,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Chuẩn",
+      "bbox": [
+        1912,
+        380,
+        2171,
+        462
+      ],
+      "conf": 96.205444,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "mực",
+      "bbox": [
+        2210,
+        410,
+        2387,
+        477
+      ],
+      "conf": 96.105827,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "và",
+      "bbox": [
+        2418,
+        393,
+        2510,
+        462
+      ],
+      "conf": 96.43232,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "bên",
+      "bbox": [
+        2548,
+        383,
+        2695,
+        462
+      ],
+      "conf": 82.18692,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "vững",
+      "bbox": [
+        2729,
+        394,
+        2932,
+        477
+      ],
+      "conf": 96.349449,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ca",
+      "bbox": [
+        2572,
+        521,
+        2592,
+        552
+      ],
+      "conf": 54.293846,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "<<",
+      "bbox": [
+        2635,
+        536,
+        2689,
+        556
+      ],
+      "conf": 8.220833,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "=.—",
+      "bbox": [
+        2632,
+        553,
+        2715,
+        563
+      ],
+      "conf": 6.304764,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "<",
+      "bbox": [
+        2660,
+        566,
+        2747,
+        586
+      ],
+      "conf": 32.934486,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "===",
+      "bbox": [
+        2659,
+        590,
+        2750,
+        605
+      ],
+      "conf": 15.741768,
+      "block": 2,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "“”",
+      "bbox": [
+        2670,
+        609,
+        2738,
+        620
+      ],
+      "conf": 5.135719,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "-",
+      "bbox": [
+        2576,
+        596,
+        2588,
+        604
+      ],
+      "conf": 83.146255,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "===",
+      "bbox": [
+        2604,
+        616,
+        2745,
+        644
+      ],
+      "conf": 74.16153,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 67,
+  "lowConfRatio": 0.353,
+  "seconds": 0.775
+}

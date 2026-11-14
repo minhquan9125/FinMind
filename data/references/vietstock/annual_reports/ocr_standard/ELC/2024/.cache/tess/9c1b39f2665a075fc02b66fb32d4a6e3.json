@@ -1,0 +1,283 @@
+{
+  "text": "-1[e(elaef—5\n\nCÔNG TY CỔ PHẦN\n\nCÔNG NGHỆ - VIỄN THÔNG ELCOM\n\nBẢO CÁO\n\n#: xã\n\n2024\n\nG NIÊN\n\nỄ..ứ =~= T",
+  "chars": 74,
+  "words": 21,
+  "wordItems": [
+    {
+      "text": "-1[e(elaef—5",
+      "bbox": [
+        258,
+        475,
+        810,
+        582
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        257,
+        740,
+        506,
+        820
+      ],
+      "conf": 96.782654,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        530,
+        758,
+        629,
+        822
+      ],
+      "conf": 96.885818,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỔ",
+      "bbox": [
+        656,
+        729,
+        783,
+        832
+      ],
+      "conf": 93.304504,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHẦN",
+      "bbox": [
+        810,
+        735,
+        1021,
+        843
+      ],
+      "conf": 92.690437,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        257,
+        843,
+        506,
+        934
+      ],
+      "conf": 94.003975,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NGHỆ",
+      "bbox": [
+        535,
+        845,
+        757,
+        941
+      ],
+      "conf": 90.101379,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "-",
+      "bbox": [
+        784,
+        889,
+        821,
+        916
+      ],
+      "conf": 92.660301,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VIỄN",
+      "bbox": [
+        846,
+        845,
+        1026,
+        935
+      ],
+      "conf": 83.911972,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THÔNG",
+      "bbox": [
+        1050,
+        843,
+        1341,
+        934
+      ],
+      "conf": 92.271561,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ELCOM",
+      "bbox": [
+        1372,
+        859,
+        1644,
+        923
+      ],
+      "conf": 92.365562,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BẢO",
+      "bbox": [
+        268,
+        1036,
+        687,
+        1249
+      ],
+      "conf": 96.516113,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        754,
+        1036,
+        1202,
+        1249
+      ],
+      "conf": 96.033501,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "#:",
+      "bbox": [
+        845,
+        1494,
+        869,
+        1505
+      ],
+      "conf": 34.688118,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "xã",
+      "bbox": [
+        932,
+        1494,
+        957,
+        1505
+      ],
+      "conf": 40.133904,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        259,
+        1594,
+        738,
+        1752
+      ],
+      "conf": 85.493896,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "G",
+      "bbox": [
+        973,
+        1335,
+        1129,
+        1506
+      ],
+      "conf": 93.20356,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        1208,
+        1309,
+        1649,
+        1490
+      ],
+      "conf": 95.098869,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Ễ..ứ",
+      "bbox": [
+        2975,
+        2264,
+        3039,
+        2311
+      ],
+      "conf": 0.0,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "=~=",
+      "bbox": [
+        3045,
+        2297,
+        3068,
+        2303
+      ],
+      "conf": 0.0,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "T",
+      "bbox": [
+        3099,
+        2288,
+        3109,
+        2297
+      ],
+      "conf": 84.449646,
+      "block": 16,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 74,
+  "lowConfRatio": 0.238,
+  "seconds": 1.03
+}

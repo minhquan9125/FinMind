@@ -1,0 +1,49 @@
+{
+  "page_type": "cover",
+  "blocks": [
+    {
+      "type": "furniture",
+      "text": "CMC CORPORATION",
+      "box_2d": [
+        78,
+        452,
+        135,
+        652
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "6",
+      "box_2d": [
+        753,
+        186,
+        862,
+        306
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "BÁO CÁO TÀI CHÍNH RIÊNG\nĐÃ ĐƯỢC KIỂM TOÁN",
+      "box_2d": [
+        783,
+        336,
+        831,
+        676
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "CMC CORPORATION\n6\nBÁO CÁO TÀI CHÍNH RIÊNG\nĐÃ ĐƯỢC KIỂM TOÁN",
+  "unreadable": []
+}

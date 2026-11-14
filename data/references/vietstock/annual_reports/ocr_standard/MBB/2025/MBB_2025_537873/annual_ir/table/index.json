@@ -1,0 +1,181 @@
+{
+  "document_sha256": "d67772421ddeceac697de71c5a84945ae7c34779bae44d6456738844d4950521",
+  "scope": "audited_financial_statements",
+  "pages": 7,
+  "page_ranges": [
+    {
+      "start": 142,
+      "end": 147
+    },
+    {
+      "start": 155,
+      "end": 155
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "company_information",
+      "start": 142,
+      "end": 142
+    },
+    {
+      "page_class": "auditor_report",
+      "start": 143,
+      "end": 143
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 144,
+      "end": 145
+    },
+    {
+      "page_class": "income_statement",
+      "start": 146,
+      "end": 146
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 147,
+      "end": 147
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 155,
+      "end": 155
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 142,
+      "printed_page": null,
+      "file": "p-142.ir.json",
+      "page_class": "company_information",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN • 279",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 143,
+      "printed_page": "07",
+      "file": "p-143.ir.json",
+      "page_class": "auditor_report",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN • 281",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 144,
+      "printed_page": null,
+      "file": "p-144.ir.json",
+      "page_class": "balance_sheet",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN • 283",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 145,
+      "printed_page": "07",
+      "file": "p-145.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BBÁÁOO CCÁÁOO TTHHƯƯỜỜNNGG NNIIÊÊNN •• 22002255",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 146,
+      "printed_page": null,
+      "file": "p-146.ir.json",
+      "page_class": "income_statement",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN • 287",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 147,
+      "printed_page": null,
+      "file": "p-147.ir.json",
+      "page_class": "cash_flow",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN • 289",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 155,
+      "printed_page": null,
+      "file": "p-155.ir.json",
+      "page_class": "balance_sheet",
+      "title": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN • 305",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    }
+  ],
+  "structured_table_ranges": [
+    {
+      "start": 144,
+      "end": 146
+    }
+  ],
+  "needs_review": [
+    {
+      "pdf_page": 147,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 155,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 144,
+      "reason": "arithmetic_template_unknown"
+    },
+    {
+      "pdf_page": 145,
+      "reason": "arithmetic_template_unknown"
+    },
+    {
+      "pdf_page": 146,
+      "reason": "arithmetic_template_unknown"
+    }
+  ],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [
+    {
+      "name": "template_unknown",
+      "reason": "template_not_implemented",
+      "detected_profile": "TT49_BANK",
+      "pdf_pages": [
+        144,
+        145,
+        146,
+        147,
+        155
+      ]
+    }
+  ],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": "TT49_BANK",
+  "arithmetic_template_id": "TEMPLATE_UNKNOWN",
+  "arithmetic_template_sha256": null,
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

@@ -1,0 +1,231 @@
+{
+  "text": "“\nVD\nCMC CORPORATION\n\nZ\n\njÑy\n\n‹ \\\n\n= `\no9 ty.\n<\nm\n\n©\n\n77\n\nZ2",
+  "chars": 37,
+  "words": 17,
+  "wordItems": [
+    {
+      "text": "“",
+      "bbox": [
+        1872,
+        282,
+        1964,
+        334
+      ],
+      "conf": 38.968639,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VD",
+      "bbox": [
+        1810,
+        332,
+        2026,
+        424
+      ],
+      "conf": 27.591713,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        1654,
+        459,
+        1767,
+        495
+      ],
+      "conf": 92.408134,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        1788,
+        459,
+        2180,
+        495
+      ],
+      "conf": 90.961693,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Z",
+      "bbox": [
+        797,
+        440,
+        872,
+        529
+      ],
+      "conf": 62.124695,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "jÑy",
+      "bbox": [
+        776,
+        614,
+        868,
+        820
+      ],
+      "conf": 31.090485,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "‹",
+      "bbox": [
+        838,
+        281,
+        928,
+        393
+      ],
+      "conf": 72.03418,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "\\",
+      "bbox": [
+        728,
+        819,
+        868,
+        988
+      ],
+      "conf": 67.643501,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "=",
+      "bbox": [
+        748,
+        306,
+        827,
+        393
+      ],
+      "conf": 78.085892,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "`",
+      "bbox": [
+        802,
+        766,
+        868,
+        872
+      ],
+      "conf": 95.116432,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "o9",
+      "bbox": [
+        602,
+        306,
+        775,
+        526
+      ],
+      "conf": 39.055447,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ty.",
+      "bbox": [
+        652,
+        599,
+        859,
+        975
+      ],
+      "conf": 39.546272,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "<",
+      "bbox": [
+        498,
+        307,
+        588,
+        396
+      ],
+      "conf": 92.687439,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "m",
+      "bbox": [
+        414,
+        307,
+        485,
+        396
+      ],
+      "conf": 91.196548,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "©",
+      "bbox": [
+        942,
+        306,
+        1032,
+        398
+      ],
+      "conf": 74.393539,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "77",
+      "bbox": [
+        668,
+        606,
+        815,
+        661
+      ],
+      "conf": 67.464539,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Z2",
+      "bbox": [
+        498,
+        606,
+        579,
+        668
+      ],
+      "conf": 68.177979,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 66,
+  "lowConfRatio": 0.294,
+  "seconds": 0.953
+}

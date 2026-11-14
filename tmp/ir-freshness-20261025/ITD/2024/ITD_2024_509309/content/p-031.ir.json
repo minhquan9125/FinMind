@@ -1,0 +1,34 @@
+{
+  "ir_version": "1",
+  "page": 31,
+  "printed_page": "30",
+  "page_class": "narrative",
+  "page_size": {"width": 594.96, "height": 842.04, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "643dc242f7f3bcc8274debb4e55034d2fcc280399850dc16e2a9c0cd5e65e8a2",
+    "file_name": "ITD_2024_509309.pdf"
+  },
+  "blocks": [
+    {"id": "p31-b1", "type": "paragraph", "text": "Quản trị công ty năm 2024", "bbox": [41.3, 20.65, 241.62, 36.61]},
+    {"id": "p31-b2", "type": "paragraph", "text": "Thành viên Ban Giám đốc", "bbox": [64.03, 49.99, 235.43, 64.03]},
+    {
+      "id": "p31-b3",
+      "type": "paragraph",
+      "text": "Bà gắn bó với ITD gần 20 năm và có nhiều kinh\nnghiệm làm việc trong lĩnh vực kế toán, kiểm toán,\ntài chính. Bà là một trong những người người có\nnhiều nhiệt huyết với ITD Group. Hiện Bà đang là\nGiám Đốc Tài Chính tại Công ty Tiên Phong.",
+      "bbox": [58.7, 160.34, 326.81, 229.97]
+    },
+    {"id": "p31-b4", "type": "paragraph", "text": "Bà tốt nghiệp ngành kế toán tại Đại Học Kinh Tế", "bbox": [58.7, 238.37, 326.81, 250.37]},
+    {"id": "p31-b5", "type": "paragraph", "text": "TV Ban kiểm soát kiêm Giám\nđốc KSNB", "bbox": [59.57, 491.83, 214.89, 518.23]},
+    {
+      "id": "p31-b6",
+      "type": "paragraph",
+      "text": "Bà Đỗ Thị Thu Hà tốt nghiệp cử nhân kinh tế khoa\nKế toán – Kiểm toán với hơn 20 năm kinh nghiệm\nlàm kế toán, kiểm toán, kiểm soát tại các Công ty\ntrong Tập đoàn Tiên Phong; hiện là Giám đốc\nKiểm soát nội bộ tại Công ty CP Công nghệ Tiên\nPhong kiêm Trưởng BKS Công ty CP Kỹ thuật\nđiện Toàn Cầu.",
+      "bbox": [266.33, 411.65, 534.46, 510.06]
+    },
+    {"id": "p31-b7", "type": "paragraph", "text": "Giám đốc tài chính", "bbox": [393.46, 266.86, 510.09, 280.92]},
+    {"id": "p31-b8", "type": "paragraph", "text": "TPHCM.", "bbox": [58.7, 252.77, 104.79, 264.77]},
+    {"id": "p31-b9", "type": "paragraph", "text": "Công Ty Cổ Phần Công Nghệ Tiên Phong 30", "bbox": [344.74, 807.0, 558.61, 819.0]}
+  ]
+}

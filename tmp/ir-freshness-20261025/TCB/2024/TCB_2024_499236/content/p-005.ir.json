@@ -1,0 +1,25 @@
+{
+  "ir_version": "1",
+  "page": 5,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+    "file_name": "TCB_2024_499236.pdf"
+  },
+  "blocks": [
+    {"id": "p5-b1", "type": "heading", "text": "01", "bbox": [802.14, 658.7, 1035.58, 841.89]},
+    {"id": "p5-b2", "type": "heading", "text": "TẦM NHÌN", "bbox": [110.55, 685.37, 315.92, 728.37]},
+    {"id": "p5-b3", "type": "paragraph", "text": "Thông điệp của Chủ tịch HĐQT", "bbox": [640.63, 702.58, 818.91, 715.58]},
+    {"id": "p5-b4", "type": "paragraph", "text": "08", "bbox": [1045.9, 703.34, 1062.05, 716.34]},
+    {"id": "p5-b5", "type": "paragraph", "text": "Thông điệp của Tổng giám đốc", "bbox": [640.63, 722.58, 818.29, 735.58]},
+    {"id": "p5-b6", "type": "paragraph", "text": "10", "bbox": [1048.12, 723.34, 1062.04, 736.34]},
+    {"id": "p5-b7", "type": "paragraph", "text": "TẦM NHÌN CỦA TECH", "bbox": [45.24, 29.45, 120.4, 36.45]},
+    {"id": "p5-b8", "type": "paragraph", "text": "CỦA TECH", "bbox": [49.13, 727.81, 260.05, 770.81]},
+    {"id": "p5-b9", "type": "paragraph", "text": "6 | BÁO CÁO THƯỜNG NIÊN TECHCOMBANK 2024", "bbox": [45.35, 803.61, 225.83, 810.91]},
+    {"id": "p5-b10", "type": "paragraph", "text": "EXPONENTIAL THINKING – SUSTAINABLE BUILDING | 7", "bbox": [962.18, 803.61, 1145.71, 810.61]}
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "fetched_at": "2026-10-07T09:36:06.998487+07:00",
+  "vnstock_version": "4.0.9",
+  "dataframe_sha256": "769954d2ca03461fc26514c3003a1c50e259193118fad9af702076744809003a",
+  "rows": [
+    {
+      "volume_accumulated": 9300,
+      "high_price": "70200",
+      "total_value": 651200000,
+      "low_price": "69800",
+      "listed_shares": "128109533",
+      "percent_change": "-0.284495021337127",
+      "bid_vol_1": 1000,
+      "bid_vol_2": 400,
+      "bid_vol_3": 1200,
+      "bid_price_1": "70100.0",
+      "average_price": 70022,
+      "bid_price_2": 70000,
+      "bid_price_3": 69800,
+      "reference_price": 70300,
+      "exchange": "HOSE",
+      "foreign_buy_volume": 0,
+      "foreign_buy_count": "10",
+      "ask_price_1": "70200.0",
+      "ask_price_2": 70300,
+      "ask_price_3": 70800,
+      "floor_price": 65400,
+      "foreign_ownership_ratio": 62773671,
+      "foreign_room": 55514636,
+      "put_through_qty": 0,
+      "foreign_sell_volume": 4300,
+      "symbol": "CTR",
+      "put_through_value": 0,
+      "total_listed_qty": "128109533",
+      "open_interest": "",
+      "ST": "2",
+      "open_price": "70000",
+      "price_change": -200,
+      "ceiling_price": 75200,
+      "close_price": "70100",
+      "TD": "07/10/2026",
+      "time": 1791340531111,
+      "ask_vol_1": 10500,
+      "ask_vol_2": 1900,
+      "ask_vol_3": 2100,
+      "IT": "09:36:06",
+      "CA": [
+        {
+          "SYMBOL": "CTR",
+          "NKHQ": null,
+          "REPORTDATE": null,
+          "T": null,
+          "DESCRIPTION": null
+        }
+      ]
+    }
+  ],
+  "decimal_tokens_stored_as_text": true
+}

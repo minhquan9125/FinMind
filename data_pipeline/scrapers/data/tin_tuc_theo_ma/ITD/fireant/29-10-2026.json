@@ -1,0 +1,360 @@
+{
+  "schema_version": "1.2",
+  "source": "fireant",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "4d1e1f326e106efa291b",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-thong-bao-ve-viec-niem-yet-va-giao-dich-chung-khoan-thay-doi-niem-yet/41794276",
+      "title": "ITD: Thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết",
+      "description": "Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết của Công ty Cổ phần Công nghệ ITD như sau:",
+      "published_at": "2026-09-15T14:17:34+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41794276",
+      "category": "Doanh nghiệp",
+      "content": "Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh thông báo về việc niêm yết và giao dịch chứng khoán thay đổi niêm yết của Công ty Cổ phần Công nghệ ITD như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1905609"
+      ],
+      "crawled_at": "2026-10-29T07:49:04.401129+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.66,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2976530/itd-2292026-giao-dich-4710245-cp-niem-yet-bo-sung.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "abbd91f36fb0fd1467ae",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-quyet-dinh-ve-viec-thay-doi-dang-ky-niem-yet/41733326",
+      "title": "ITD: Quyết định về việc thay đổi đăng ký niêm yết",
+      "description": "Sở Giao dịch Chứng khoán TP.HCM chấp thuận cho Công ty Cổ phần Công nghệ ITD được thay đổi đăng ký niêm yết với nội dung như sau:",
+      "published_at": "2026-09-10T13:25:21+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41733326",
+      "category": "Doanh nghiệp",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM chấp thuận cho Công ty Cổ phần Công nghệ ITD được thay đổi đăng ký niêm yết với nội dung như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1904987"
+      ],
+      "crawled_at": "2026-10-29T07:49:04.751955+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6464788732394365,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2973273/itd-1192026-niem-yet-bo-sung-4710245-cp.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "10f92975795e6a0b7ec2",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-thong-bao-ky-hop-dong-kiem-toan-bctc-2026/41705584",
+      "title": "ITD: Thông báo ký hợp đồng kiểm toán BCTC 2026",
+      "description": "Công ty Cổ phần Công nghệ ITD thông báo ký hợp đồng kiểm toán BCTC 2026 như sau:",
+      "published_at": "2026-09-08T17:35:35+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41705584",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Công nghệ ITD thông báo ký hợp đồng kiểm toán BCTC 2026 như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1904685"
+      ],
+      "crawled_at": "2026-10-29T07:49:05.109435+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6940000000000001,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2972021/itd-thong-bao-ky-hop-dong-kiem-toan-bctc-2026.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "74722deec62f833c595c",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-37/41628188",
+      "title": "ITD: Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 37",
+      "description": "Công ty Cổ phần Công nghệ ITD thông báo Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 37 như sau:",
+      "published_at": "2026-08-28T13:54:13+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41628188",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Công nghệ ITD thông báo Giấy chứng nhận đăng ký doanh nghiệp thay đổi lần thứ 37 như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1903189"
+      ],
+      "crawled_at": "2026-10-29T07:49:05.363413+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7258064516129032,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2965393/itd-giay-chung-nhan-dang-ky-doanh-nghiep-thay-doi-lan-thu-37.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "26466caeec15836bef96",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-thong-bao-thay-doi-nhan-su/41560758",
+      "title": "ITD: Thông báo thay đổi nhân sự",
+      "description": "Công ty Cổ phần Công nghệ ITD thông báo thay đổi nhân sự như sau:",
+      "published_at": "2026-08-24T17:48:47+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41560758",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Công nghệ ITD thông báo thay đổi nhân sự như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1902485"
+      ],
+      "crawled_at": "2026-10-29T07:49:05.611800+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.5261904761904762,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2962650/itd-bo-nhiem-ba-nguyen-thi-thu-suong-giu-chuc-giam-doc-tai-chinh-tu-192026.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "dfd1a5e352d3ab604baf",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-nghi-quyet-hdqt-ve-viec-bo-nhiem-giam-doc-tai-chinh/41560692",
+      "title": "ITD: Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính",
+      "description": "Công ty Cổ phần Công nghệ ITD thông báo Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính như sau:",
+      "published_at": "2026-08-24T17:47:58+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41560692",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Công nghệ ITD thông báo Nghị quyết HĐQT về việc bổ nhiệm Giám đốc Tài chính như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1902476"
+      ],
+      "crawled_at": "2026-10-29T07:49:05.859764+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6444912280701754,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2962503/itd-nghi-quyet-hdqt-bo-nhiem-ba-nguyen-thi-thu-suong-giu-chuc-giam-doc-tai-chinh.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "f62e3a357e6e62ba572a",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-nhan-duoc-cong-van-cua-ubcknn-ve-tai-lieu-bao-cao-ket-qua-dot-phat-hanh-cp-de-tra-co-tuc/41496893",
+      "title": "ITD: Nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức",
+      "description": "Công ty Cổ phần Công nghệ ITD thông báo nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức như sau:",
+      "published_at": "2026-08-19T17:34:43+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41496893",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Công nghệ ITD thông báo nhận được công văn của UBCKNN về tài liệu báo cáo kết quả đợt phát hành CP để trả cổ tức như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1901696"
+      ],
+      "crawled_at": "2026-10-29T07:49:06.115741+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7782363977485929,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2959044/itd-nhan-duoc-cong-van-cua-ubcknn-ve-tai-lieu-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tra-co-tuc.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "85ef8fbb4b8dbb36940b",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-nghi-quyet-hdqt-ve-viec-thay-doi-von-dieu-le/41445326",
+      "title": "ITD: Nghị quyết HĐQT về việc thay đổi vốn điều lệ",
+      "description": "Công ty Cổ phần Công nghệ ITD thông báo Nghị quyết HĐQT về việc thay đổi vốn điều lệ như sau:",
+      "published_at": "2026-08-14T17:35:15+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41445326",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Công nghệ ITD thông báo Nghị quyết HĐQT về việc thay đổi vốn điều lệ như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1900816"
+      ],
+      "crawled_at": "2026-10-29T07:49:06.452870+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6883333333333334,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2953251/itd-nghi-quyet-hdqt-ve-viec-thay-doi-von-dieu-le.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "8edf4dab1d7709c72623",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tra-co-tuc/41424627",
+      "title": "ITD: Báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức",
+      "description": "Công ty Cổ phần Công nghệ ITD công bố báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức như sau:",
+      "published_at": "2026-08-13T16:40:24+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41424627",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Công nghệ ITD công bố báo cáo kết quả đợt phát hành cổ phiếu để trả cổ tức như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1900505"
+      ],
+      "crawled_at": "2026-10-29T07:49:06.819743+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.44,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2959044/itd-nhan-duoc-cong-van-cua-ubcknn-ve-tai-lieu-bao-cao-ket-qua-dot-phat-hanh-co-phieu-de-tra-co-tuc.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    },
+    {
+      "id": "524ea7bd14c56514de9f",
+      "source": "fireant",
+      "url": "https://fireant.vn/bai-viet/itd-thong-bao-thay-doi-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh/41424553",
+      "title": "ITD: Thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành",
+      "description": "Công ty Cổ phần Công nghệ ITD thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành như sau:",
+      "published_at": "2026-08-13T16:41:10+07:00",
+      "symbols": [
+        "ITD"
+      ],
+      "provider_id": "41424553",
+      "category": "Doanh nghiệp",
+      "content": "Công ty Cổ phần Công nghệ ITD thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành như sau:",
+      "attachments": [
+        "https://mobiv2.fireant.vn/News/NewsAttachedFile/1900500"
+      ],
+      "crawled_at": "2026-10-29T07:49:07.076841+00:00",
+      "matched_symbols": [
+        "ITD"
+      ],
+      "scopes": [
+        "ITD"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6582089552238806,
+        "matched_source": "cafef",
+        "matched_url": "https://cafef.vn/du-lieu/itd-2952386/itd-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh-la-30883052-cp.chn",
+        "matched_file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:50.252338+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:49:07.076841+00:00",
+    "results": [
+      {
+        "source": "fireant",
+        "scope": "ITD",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

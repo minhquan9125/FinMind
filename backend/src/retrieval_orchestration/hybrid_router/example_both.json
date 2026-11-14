@@ -1,0 +1,32 @@
+﻿{
+  "request_id": "demo-001",
+  "decision": "SEARCH",
+  "route": "BOTH",
+  "scope": {
+    "companies": ["FPT"],
+    "periods": ["2025"],
+    "metric_code": "REVENUE_NET",
+    "measure_basis": "FULL_YEAR"
+  },
+  "missing_fields": [],
+  "tasks": [
+    {
+      "id": "g1",
+      "adapter": "GRAPH",
+      "operation": "find_subsidiaries",
+      "params": {"company": "FPT", "as_of": "2025-12-31"}
+    },
+    {
+      "id": "v1",
+      "adapter": "CONTENT",
+      "operation": "find_metric",
+      "depends_on": "g1",
+      "params": {
+        "companies_from": "g1",
+        "period": "2025",
+        "metric_code": "REVENUE_NET"
+      }
+    }
+  ],
+  "execution_mode": "MOCK"
+}

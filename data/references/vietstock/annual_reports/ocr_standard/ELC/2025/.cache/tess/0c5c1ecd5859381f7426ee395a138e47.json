@@ -1,0 +1,374 @@
+{
+  "text": "Báo cáo thường niệ\n\n01 ThôngtifG\nTổng quơn về ELCOM\nCông ty con - C\n\nGiới thiệu Bo\n\nĐónh\n\n2 doœnf\nkinh d\n\nƑ <4\n\nThông tin chung",
+  "chars": 94,
+  "words": 28,
+  "wordItems": [
+    {
+      "text": "Báo",
+      "bbox": [
+        113,
+        313,
+        178,
+        340
+      ],
+      "conf": 35.220589,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cáo",
+      "bbox": [
+        189,
+        313,
+        253,
+        340
+      ],
+      "conf": 89.77887,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thường",
+      "bbox": [
+        264,
+        312,
+        387,
+        347
+      ],
+      "conf": 93.305634,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "niệ",
+      "bbox": [
+        400,
+        313,
+        450,
+        339
+      ],
+      "conf": 46.682915,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "01",
+      "bbox": [
+        127,
+        429,
+        154,
+        450
+      ],
+      "conf": 86.555092,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ThôngtifG",
+      "bbox": [
+        196,
+        427,
+        384,
+        461
+      ],
+      "conf": 0.0,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Tổng",
+      "bbox": [
+        179,
+        520,
+        243,
+        550
+      ],
+      "conf": 93.30442,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "quơn",
+      "bbox": [
+        252,
+        529,
+        320,
+        550
+      ],
+      "conf": 71.157257,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "về",
+      "bbox": [
+        329,
+        521,
+        360,
+        545
+      ],
+      "conf": 93.253616,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ELCOM",
+      "bbox": [
+        370,
+        523,
+        463,
+        545
+      ],
+      "conf": 91.870865,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Công",
+      "bbox": [
+        179,
+        617,
+        251,
+        644
+      ],
+      "conf": 96.247261,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "ty",
+      "bbox": [
+        260,
+        619,
+        286,
+        644
+      ],
+      "conf": 96.702995,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "con",
+      "bbox": [
+        294,
+        623,
+        343,
+        639
+      ],
+      "conf": 93.302711,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "-",
+      "bbox": [
+        353,
+        627,
+        364,
+        631
+      ],
+      "conf": 92.542839,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "C",
+      "bbox": [
+        378,
+        620,
+        389,
+        633
+      ],
+      "conf": 90.048615,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Giới",
+      "bbox": [
+        179,
+        711,
+        231,
+        733
+      ],
+      "conf": 96.939178,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thiệu",
+      "bbox": [
+        239,
+        711,
+        305,
+        738
+      ],
+      "conf": 96.995163,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Bo",
+      "bbox": [
+        319,
+        715,
+        343,
+        729
+      ],
+      "conf": 83.946472,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Đónh",
+      "bbox": [
+        197,
+        1287,
+        286,
+        1314
+      ],
+      "conf": 85.836548,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2",
+      "bbox": [
+        143,
+        1332,
+        157,
+        1353
+      ],
+      "conf": 73.784973,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "doœnf",
+      "bbox": [
+        197,
+        1331,
+        294,
+        1358
+      ],
+      "conf": 8.980255,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kinh",
+      "bbox": [
+        198,
+        1375,
+        263,
+        1401
+      ],
+      "conf": 93.302345,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "d",
+      "bbox": [
+        280,
+        1387,
+        290,
+        1397
+      ],
+      "conf": 92.437584,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Ƒ",
+      "bbox": [
+        2834,
+        1472,
+        2844,
+        1500
+      ],
+      "conf": 50.301712,
+      "block": 12,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "<4",
+      "bbox": [
+        2838,
+        1481,
+        2874,
+        1492
+      ],
+      "conf": 57.686195,
+      "block": 12,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Thông",
+      "bbox": [
+        2711,
+        1582,
+        2881,
+        1637
+      ],
+      "conf": 94.484741,
+      "block": 13,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tin",
+      "bbox": [
+        2901,
+        1582,
+        2968,
+        1624
+      ],
+      "conf": 65.978783,
+      "block": 13,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chung",
+      "bbox": [
+        2988,
+        1582,
+        3156,
+        1637
+      ],
+      "conf": 93.0364,
+      "block": 13,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 77,
+  "lowConfRatio": 0.214,
+  "seconds": 0.921
+}

@@ -1,0 +1,205 @@
+{
+  "text": "¬\nVietinBank\n\nv.eS” 5 e«°® BÁO CÁO THƯỜNG NIÊN\n\nIIIYVỂN ĐỔI SỐ\n\nCHUYỂN BỔI XANH",
+  "chars": 62,
+  "words": 15,
+  "wordItems": [
+    {
+      "text": "¬",
+      "bbox": [
+        796,
+        156,
+        854,
+        180
+      ],
+      "conf": 80.775566,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VietinBank",
+      "bbox": [
+        956,
+        186,
+        1410,
+        247
+      ],
+      "conf": 11.635605,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "v.eS”",
+      "bbox": [
+        460,
+        281,
+        572,
+        335
+      ],
+      "conf": 0.0,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "5",
+      "bbox": [
+        585,
+        270,
+        599,
+        285
+      ],
+      "conf": 70.135025,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "e«°®",
+      "bbox": [
+        725,
+        277,
+        785,
+        334
+      ],
+      "conf": 34.016777,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        962,
+        282,
+        1042,
+        322
+      ],
+      "conf": 92.102066,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1054,
+        282,
+        1140,
+        321
+      ],
+      "conf": 96.869095,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        1152,
+        282,
+        1320,
+        321
+      ],
+      "conf": 96.267647,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        1333,
+        282,
+        1417,
+        321
+      ],
+      "conf": 96.811768,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "IIIYVỂN",
+      "bbox": [
+        327,
+        420,
+        771,
+        534
+      ],
+      "conf": 47.581867,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐỔI",
+      "bbox": [
+        851,
+        447,
+        1116,
+        630
+      ],
+      "conf": 93.099419,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "SỐ",
+      "bbox": [
+        1179,
+        456,
+        1409,
+        630
+      ],
+      "conf": 96.575867,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHUYỂN",
+      "bbox": [
+        284,
+        672,
+        724,
+        795
+      ],
+      "conf": 92.540787,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BỔI",
+      "bbox": [
+        762,
+        672,
+        937,
+        795
+      ],
+      "conf": 46.087399,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "XANH",
+      "bbox": [
+        976,
+        715,
+        1269,
+        795
+      ],
+      "conf": 90.242737,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 70,
+  "lowConfRatio": 0.333,
+  "seconds": 0.607
+}

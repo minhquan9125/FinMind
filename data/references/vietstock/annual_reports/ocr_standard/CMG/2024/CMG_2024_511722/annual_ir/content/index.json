@@ -1,0 +1,32 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\CMG\\2024\\CMG_2024_511722.pdf",
+  "scope": "annual_report_content",
+  "pages": 3,
+  "routes": {
+    "TEXT_LAYER": 3
+  },
+  "blockTypes": {
+    "paragraph": 130,
+    "furniture": 5,
+    "heading": 1
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 18,
+      "end": 18
+    },
+    {
+      "start": 31,
+      "end": 31
+    },
+    {
+      "start": 57,
+      "end": 57
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

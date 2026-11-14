@@ -1,0 +1,544 @@
+{
+  "document_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+  "scope": "audited_financial_statements",
+  "pages": 37,
+  "page_ranges": [
+    {
+      "start": 99,
+      "end": 101
+    },
+    {
+      "start": 103,
+      "end": 124
+    },
+    {
+      "start": 126,
+      "end": 131
+    },
+    {
+      "start": 133,
+      "end": 136
+    },
+    {
+      "start": 138,
+      "end": 138
+    },
+    {
+      "start": 141,
+      "end": 141
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "auditor_report",
+      "start": 99,
+      "end": 99
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 100,
+      "end": 101
+    },
+    {
+      "page_class": "notes",
+      "start": 103,
+      "end": 124
+    },
+    {
+      "page_class": "notes",
+      "start": 126,
+      "end": 131
+    },
+    {
+      "page_class": "notes",
+      "start": 133,
+      "end": 136
+    },
+    {
+      "page_class": "notes",
+      "start": 138,
+      "end": 138
+    },
+    {
+      "page_class": "notes",
+      "start": 141,
+      "end": 141
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 99,
+      "printed_page": null,
+      "file": "p-099.ir.json",
+      "page_class": "auditor_report",
+      "title": "BÁO CÁO KIỂM TOÁN ĐỘC LẬP",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 100,
+      "printed_page": null,
+      "file": "p-100.ir.json",
+      "page_class": "balance_sheet",
+      "title": "balance_sheet",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 101,
+      "printed_page": "15",
+      "file": "p-101.ir.json",
+      "page_class": "balance_sheet",
+      "title": "CÁC CHỈ TIÊU NGOÀI BÁO CÁO TÌNH HÌNH TÀI CHÍNH HỢP NHẤT",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 103,
+      "printed_page": null,
+      "file": "p-103.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [
+        "1. THÔNG TIN CHUNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 104,
+      "printed_page": null,
+      "file": "p-104.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 105,
+      "printed_page": null,
+      "file": "p-105.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 106,
+      "printed_page": null,
+      "file": "p-106.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 107,
+      "printed_page": null,
+      "file": "p-107.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 108,
+      "printed_page": null,
+      "file": "p-108.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 109,
+      "printed_page": null,
+      "file": "p-109.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 110,
+      "printed_page": null,
+      "file": "p-110.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 111,
+      "printed_page": null,
+      "file": "p-111.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 112,
+      "printed_page": null,
+      "file": "p-112.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 113,
+      "printed_page": null,
+      "file": "p-113.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 114,
+      "printed_page": null,
+      "file": "p-114.ir.json",
+      "page_class": "notes",
+      "title": "1. THÔNG TIN CHUNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 115,
+      "printed_page": "251",
+      "file": "p-115.ir.json",
+      "page_class": "notes",
+      "title": "7. TIỀN GỬI VÀ CẤP TÍN DỤNG CHO CÁC TCTD KHÁC",
+      "topics": [
+        "7. TIỀN GỬI VÀ CẤP TÍN DỤNG CHO CÁC TCTD KHÁC"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 116,
+      "printed_page": "251",
+      "file": "p-116.ir.json",
+      "page_class": "notes",
+      "title": "9. CHO VAY KHÁCH HÀNG",
+      "topics": [
+        "9. CHO VAY KHÁCH HÀNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 117,
+      "printed_page": null,
+      "file": "p-117.ir.json",
+      "page_class": "notes",
+      "title": "9. CHO VAY KHÁCH HÀNG",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 118,
+      "printed_page": "8",
+      "file": "p-118.ir.json",
+      "page_class": "notes",
+      "title": "10. DỰ PHÒNG RỦI RO CHO VAY KHÁCH HÀNG (tiếp theo)",
+      "topics": [
+        "10. DỰ PHÒNG RỦI RO CHO VAY KHÁCH HÀNG (tiếp theo)",
+        "11. HOẠT ĐỘNG MUA NỢ"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 119,
+      "printed_page": null,
+      "file": "p-119.ir.json",
+      "page_class": "notes",
+      "title": "12. CHỨNG KHOÁN ĐẦU TƯ (tiếp theo)",
+      "topics": [
+        "12. CHỨNG KHOÁN ĐẦU TƯ (tiếp theo)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 120,
+      "printed_page": null,
+      "file": "p-120.ir.json",
+      "page_class": "notes",
+      "title": "13. GÓP VỐN, ĐẦU TƯ DÀI HẠN (tiếp theo)",
+      "topics": [
+        "13. GÓP VỐN, ĐẦU TƯ DÀI HẠN (tiếp theo)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 121,
+      "printed_page": null,
+      "file": "p-121.ir.json",
+      "page_class": "notes",
+      "title": "14. TÀI SẢN CỐ ĐỊNH (tiếp theo)",
+      "topics": [
+        "14. TÀI SẢN CỐ ĐỊNH (tiếp theo)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 122,
+      "printed_page": "4",
+      "file": "p-122.ir.json",
+      "page_class": "notes",
+      "title": "15. TÀI SẢN CÓ KHÁC (tiếp theo)",
+      "topics": [
+        "15. TÀI SẢN CÓ KHÁC (tiếp theo)",
+        "16. CÁC KHOẢN NỢ CHÍNH PHỦ VÀ NHNN"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 123,
+      "printed_page": null,
+      "file": "p-123.ir.json",
+      "page_class": "notes",
+      "title": "18. TIỀN GỬI CỦA KHÁCH HÀNG",
+      "topics": [
+        "18. TIỀN GỬI CỦA KHÁCH HÀNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 124,
+      "printed_page": "12",
+      "file": "p-124.ir.json",
+      "page_class": "notes",
+      "title": "21. CÁC KHOẢN NỢ KHÁC",
+      "topics": [
+        "21. CÁC KHOẢN NỢ KHÁC"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 126,
+      "printed_page": null,
+      "file": "p-126.ir.json",
+      "page_class": "notes",
+      "title": "3. V B C T",
+      "topics": [
+        "3. V B C T"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 127,
+      "printed_page": null,
+      "file": "p-127.ir.json",
+      "page_class": "notes",
+      "title": "25. CHI PHÍ LÃI VÀ CÁC CHI PHÍ TƯƠNG TỰ",
+      "topics": [
+        "25. CHI PHÍ LÃI VÀ CÁC CHI PHÍ TƯƠNG TỰ",
+        "26. LÃI THUẦN TỪ HOẠT ĐỘNG DỊCH VỤ",
+        "27. LÃI THUẦN TỪ HOẠT ĐỘNG KINH DOANH NGOẠI HỐI"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 128,
+      "printed_page": null,
+      "file": "p-128.ir.json",
+      "page_class": "notes",
+      "title": "31. THU NHẬP TỪ GÓP VỐN, MUA CỔ PHẦN",
+      "topics": [
+        "31. THU NHẬP TỪ GÓP VỐN, MUA CỔ PHẦN",
+        "32. CHI PHÍ HOẠT ĐỘNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 129,
+      "printed_page": null,
+      "file": "p-129.ir.json",
+      "page_class": "notes",
+      "title": "34. LÃI TRÊN CỔ PHIẾU",
+      "topics": [
+        "34. LÃI TRÊN CỔ PHIẾU",
+        "35. TIỀN VÀ CÁC KHOẢN TƯƠNG ĐƯƠNG TIỀN"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 130,
+      "printed_page": null,
+      "file": "p-130.ir.json",
+      "page_class": "notes",
+      "title": "38. LÃI CHO VAY VÀ PHÍ PHẢI THU CHƯA THU ĐƯỢC",
+      "topics": [
+        "38. LÃI CHO VAY VÀ PHÍ PHẢI THU CHƯA THU ĐƯỢC"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 131,
+      "printed_page": null,
+      "file": "p-131.ir.json",
+      "page_class": "notes",
+      "title": "V P",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 133,
+      "printed_page": null,
+      "file": "p-133.ir.json",
+      "page_class": "notes",
+      "title": "38. LÃI CHO VAY VÀ PHÍ PHẢI THU CHƯA THU ĐƯỢC",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 134,
+      "printed_page": null,
+      "file": "p-134.ir.json",
+      "page_class": "notes",
+      "title": "38. LÃI CHO VAY VÀ PHÍ PHẢI THU CHƯA THU ĐƯỢC",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 135,
+      "printed_page": null,
+      "file": "p-135.ir.json",
+      "page_class": "notes",
+      "title": "N T",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 136,
+      "printed_page": null,
+      "file": "p-136.ir.json",
+      "page_class": "notes",
+      "title": "38. LÃI CHO VAY VÀ PHÍ PHẢI THU CHƯA THU ĐƯỢC",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 138,
+      "printed_page": null,
+      "file": "p-138.ir.json",
+      "page_class": "notes",
+      "title": "T T T (",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 141,
+      "printed_page": null,
+      "file": "p-141.ir.json",
+      "page_class": "notes",
+      "title": "50. TỶ GIÁ MỘT SỐ LOẠI NGOẠI TỆ SO VỚI VND VÀO THỜI ĐIỂM KẾT THÚC NĂM TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    }
+  ],
+  "structured_table_ranges": [
+    {
+      "start": 100,
+      "end": 101
+    }
+  ],
+  "needs_review": [
+    {
+      "pdf_page": 100,
+      "reason": "arithmetic_template_unknown"
+    },
+    {
+      "pdf_page": 101,
+      "reason": "arithmetic_template_unknown"
+    }
+  ],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [
+    {
+      "name": "template_unknown",
+      "reason": "template_not_implemented",
+      "detected_profile": "TT49_BANK",
+      "pdf_pages": [
+        100,
+        101
+      ]
+    }
+  ],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": "TT49_BANK",
+  "arithmetic_template_id": "TEMPLATE_UNKNOWN",
+  "arithmetic_template_sha256": null,
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [
+    {
+      "start": 103,
+      "end": 124
+    },
+    {
+      "start": 126,
+      "end": 131
+    },
+    {
+      "start": 133,
+      "end": 136
+    },
+    {
+      "start": 138,
+      "end": 138
+    },
+    {
+      "start": 141,
+      "end": 141
+    }
+  ],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

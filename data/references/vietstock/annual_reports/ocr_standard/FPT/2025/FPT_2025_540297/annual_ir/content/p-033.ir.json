@@ -1,0 +1,331 @@
+{
+  "ir_version": "1",
+  "page": 33,
+  "printed_page": "31",
+  "page_class": "narrative",
+  "page_size": {"width": 1058.27, "height": 595.276, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "5ea9b229656594f65e858ff7465ec600332fd623c501ce27d5b95de098275a35",
+    "file_name": "FPT_2025_540297.pdf"
+  },
+  "blocks": [
+    {"id": "p33-b1", "type": "paragraph", "text": "Cơ cấu cổ đông", "bbox": [258.9, 42.96, 374.35, 58.96]},
+    {
+      "id": "p33-t1",
+      "type": "table",
+      "title": "Thông tin về cổ phiếu",
+      "continued": false,
+      "bbox": [258.76, 75.0, 621.84, 330.14],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": [], "bbox": null}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Tên cổ phiếu",
+          "note": null,
+          "bbox": [258.9, 122.42, 621.84, 132.12],
+          "cells": {
+            "c1": {"raw": "Cổ phiếu Công ty Cổ phần FPT", "bbox": [488.0, 122.42, 621.84, 131.92]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Loại cổ phiếu",
+          "note": null,
+          "bbox": [258.9, 144.42, 573.39, 154.13],
+          "cells": {
+            "c1": {"raw": "Cổ phiếu phổ thông", "bbox": [488.0, 144.42, 573.39, 153.92]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Mã chứng khoán",
+          "note": null,
+          "bbox": [258.9, 166.42, 504.84, 176.13],
+          "cells": {
+            "c1": {"raw": "FPT", "bbox": [488.0, 166.42, 504.84, 175.92]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Mệnh giá cổ phiếu",
+          "note": null,
+          "bbox": [258.9, 188.42, 540.95, 198.13],
+          "cells": {
+            "c1": {"raw": "10.000 VNĐ", "bbox": [488.0, 188.42, 540.95, 197.92]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Ngày bắt đầu niêm yết/đăng ký giao dịch",
+          "note": null,
+          "bbox": [258.9, 210.42, 539.48, 220.13],
+          "cells": {
+            "c1": {"raw": "13/12/2006", "bbox": [488.0, 210.42, 539.48, 219.92]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "Tổng số cổ phiếu đang lưu hành",
+          "note": null,
+          "bbox": [258.9, 232.43, 585.03, 242.13],
+          "cells": {
+            "c1": {"raw": "1.703.507.121 cổ phiếu", "bbox": [488.0, 232.43, 585.03, 241.93]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Tổng số cổ phiếu quỹ",
+          "note": null,
+          "bbox": [258.9, 254.43, 533.41, 264.14],
+          "cells": {
+            "c1": {"raw": "0 cổ phiếu", "bbox": [488.0, 254.43, 533.41, 263.93]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": null,
+          "label_raw": "Số lượng cổ phiếu tự do chuyển nhượng",
+          "note": null,
+          "bbox": [258.9, 276.43, 583.71, 286.14],
+          "cells": {
+            "c1": {"raw": "1.671.922.715 cổ phiếu", "bbox": [488.0, 276.43, 583.71, 285.93]}
+          }
+        },
+        {
+          "id": "r9",
+          "code": null,
+          "label_raw": "Số lượng cổ phiếu hạn chế chuyển nhượng",
+          "note": null,
+          "bbox": [258.9, 298.43, 575.8, 308.14],
+          "cells": {
+            "c1": {"raw": "31.584.406 cổ phiếu", "bbox": [488.0, 298.43, 575.8, 307.93]}
+          }
+        },
+        {
+          "id": "r10",
+          "code": null,
+          "label_raw": "Tỷ lệ sở hữu tối đa của cổ đông nước ngoài",
+          "note": null,
+          "bbox": [258.9, 320.43, 507.44, 330.14],
+          "cells": {
+            "c1": {"raw": "49%", "bbox": [488.0, 320.43, 507.44, 329.93]}
+          }
+        }
+      ]
+    },
+    {
+      "id": "p33-t2",
+      "type": "table",
+      "title": "Cơ cấu cổ đông theo các mức cổ phiếu sở hữu",
+      "continued": false,
+      "bbox": [651.53, 75.0, 1007.0, 253.65],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Số lượng", "cổ đông"], "bbox": [756.71, 103.5, 797.12, 124.0]},
+        {"key": "c2", "header_lines": ["Tỷ lệ/", "Tổng số", "cổ đông"], "bbox": [821.71, 103.5, 856.92, 135.01]},
+        {"key": "c3", "header_lines": ["Số lượng", "cổ phiếu", "sở hữu"], "bbox": [892.37, 104.16, 930.63, 135.66]},
+        {"key": "c4", "header_lines": ["Tỷ lệ/Tổng số", "cổ phiếu", "đã phát hành"], "bbox": [947.43, 103.64, 1007.0, 135.14]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "01 – 999",
+          "note": null,
+          "bbox": [660.44, 155.88, 1007.0, 165.42],
+          "cells": {
+            "c1": {"raw": "89.786", "bbox": [767.2, 155.89, 797.12, 165.39]},
+            "c2": {"raw": "70,43%", "bbox": [823.81, 155.9, 856.92, 165.4]},
+            "c3": {"raw": "19.527.027", "bbox": [883.23, 155.91, 930.03, 165.41]},
+            "c4": {"raw": "1,15%", "bbox": [982.77, 155.92, 1007.0, 165.42]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "1.000 – 10.000",
+          "note": null,
+          "bbox": [660.44, 177.88, 1007.0, 187.42],
+          "cells": {
+            "c1": {"raw": "32.023", "bbox": [766.44, 177.89, 797.12, 187.39]},
+            "c2": {"raw": "25,12%", "bbox": [825.72, 177.9, 856.92, 187.4]},
+            "c3": {"raw": "94.203.628", "bbox": [880.15, 177.91, 930.03, 187.41]},
+            "c4": {"raw": "5,53%", "bbox": [979.34, 177.92, 1007.0, 187.42]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "10.001 – 1.000.000",
+          "note": null,
+          "bbox": [660.44, 199.88, 1007.0, 209.42],
+          "cells": {
+            "c1": {"raw": "5.425", "bbox": [772.49, 199.89, 797.12, 209.39]},
+            "c2": {"raw": "4,26%", "bbox": [829.53, 199.9, 856.92, 209.4]},
+            "c3": {"raw": "348.178.407", "bbox": [877.06, 199.91, 930.03, 209.41]},
+            "c4": {"raw": "20,44%", "bbox": [973.46, 199.92, 1007.0, 209.42]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "1.000.001 trở lên",
+          "note": null,
+          "bbox": [660.44, 221.88, 1007.0, 231.42],
+          "cells": {
+            "c1": {"raw": "254", "bbox": [780.48, 221.89, 797.12, 231.39]},
+            "c2": {"raw": "0,20%", "bbox": [828.42, 221.9, 856.92, 231.4]},
+            "c3": {"raw": "1.241.598.059", "bbox": [869.81, 221.91, 930.03, 231.41]},
+            "c4": {"raw": "72,88%", "bbox": [974.37, 221.92, 1007.0, 231.42]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Tổng số",
+          "note": null,
+          "bbox": [660.44, 244.12, 1007.0, 253.65],
+          "cells": {
+            "c1": {"raw": "127.488", "bbox": [762.74, 244.12, 797.12, 253.62]},
+            "c2": {"raw": "100,00%", "bbox": [817.31, 244.13, 856.92, 253.63]},
+            "c3": {"raw": "1.703.507.121", "bbox": [871.01, 244.14, 930.03, 253.64]},
+            "c4": {"raw": "100,00%", "bbox": [967.39, 244.15, 1007.0, 253.65]}
+          }
+        }
+      ]
+    },
+    {
+      "id": "p33-t3",
+      "type": "table",
+      "title": "Cơ cấu cổ đông theo đối tượng sở hữu",
+      "continued": false,
+      "bbox": [651.53, 320.62, 1007.0, 526.04],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Số lượng", "cổ đông Tổng"], "bbox": [758.87, 350.65, 842.64, 371.3]},
+        {"key": "c2", "header_lines": ["Tỷ lệ/", "số cổ phiếu", "cổ đông"], "bbox": [821.71, 350.65, 907.09, 382.38]},
+        {"key": "c3", "header_lines": ["Số lượng", "đang", "nắm giữ"], "bbox": [893.47, 351.31, 931.73, 383.04]},
+        {"key": "c4", "header_lines": ["Tỷ lệ/Tổng số", "cổ phiếu", "đã phát hành"], "bbox": [947.43, 350.78, 1007.0, 382.51]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Nhà nước",
+          "note": null,
+          "bbox": [660.44, 403.4, 1007.0, 413.0],
+          "cells": {
+            "c1": {"raw": "1", "bbox": [793.21, 403.4, 797.12, 412.97]},
+            "c2": {"raw": "0,00%", "bbox": [827.72, 403.41, 856.92, 412.98]},
+            "c3": {"raw": "96.585.637", "bbox": [882.84, 403.42, 931.87, 412.99]},
+            "c4": {"raw": "5,67%", "bbox": [980.06, 403.43, 1007.0, 413.0]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Cổ đông nội bộ",
+          "note": null,
+          "bbox": [660.44, 425.56, 1007.0, 435.16],
+          "cells": {
+            "c1": {"raw": "10", "bbox": [787.07, 425.56, 797.12, 435.13]},
+            "c2": {"raw": "0,01%", "bbox": [829.94, 425.57, 856.92, 435.14]},
+            "c3": {"raw": "273.445.441", "bbox": [879.2, 425.58, 931.87, 435.15]},
+            "c4": {"raw": "16,05%", "bbox": [974.97, 425.59, 1007.0, 435.16]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Cổ đông ngoài (Cá nhân)",
+          "note": null,
+          "bbox": [660.44, 447.72, 1007.0, 469.37],
+          "cells": {
+            "c1": {"raw": "126.709", "bbox": [763.14, 447.72, 797.12, 457.29]},
+            "c2": {"raw": "99,39%", "bbox": [823.76, 447.73, 856.92, 457.3]},
+            "c3": {"raw": "583.704.491", "bbox": [878.39, 447.74, 931.87, 457.31]},
+            "c4": {"raw": "34,26%", "bbox": [973.96, 447.75, 1007.0, 457.32]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Cổ đông ngoài (Tổ chức)",
+          "note": null,
+          "bbox": [660.44, 481.97, 1007.0, 503.62],
+          "cells": {
+            "c1": {"raw": "768", "bbox": [780.87, 481.97, 797.12, 491.53]},
+            "c2": {"raw": "0,60%", "bbox": [828.28, 481.97, 856.92, 491.54]},
+            "c3": {"raw": "749.771.552", "bbox": [880.49, 481.98, 931.87, 491.55]},
+            "c4": {"raw": "44,01%", "bbox": [974.99, 481.99, 1007.0, 491.56]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Tổng số",
+          "note": null,
+          "bbox": [660.44, 516.44, 1007.0, 526.04],
+          "cells": {
+            "c1": {"raw": "127.488", "bbox": [762.74, 516.44, 797.12, 526.01]},
+            "c2": {"raw": "100,00%", "bbox": [817.31, 516.45, 856.92, 526.02]},
+            "c3": {"raw": "1.703.507.121", "bbox": [872.86, 516.46, 931.87, 526.03]},
+            "c4": {"raw": "100,00%", "bbox": [967.39, 516.47, 1007.0, 526.04]}
+          }
+        }
+      ]
+    },
+    {"id": "p33-b5", "type": "furniture", "text": "LÀM CHỦ\nCÔNG NGHỆ CHIẾN LƯỢC\nBÁO CÁO THƯỜNG NIÊN 2025", "bbox": [73.25, 40.48, 190.71, 69.69]},
+    {"id": "p33-b6", "type": "furniture", "text": "01 THÔNG ĐIỆP BAN LÃNH ĐẠO", "bbox": [25.47, 109.12, 155.29, 117.31]},
+    {"id": "p33-b7", "type": "furniture", "text": "02 DẤU ẤN 2025", "bbox": [25.47, 135.12, 96.98, 143.31]},
+    {"id": "p33-b8", "type": "furniture", "text": "03 TỔNG QUAN VỀ FPT", "bbox": [25.47, 161.31, 121.94, 169.31]},
+    {"id": "p33-b9", "type": "furniture", "text": "Thông tin chung", "bbox": [66.87, 183.92, 125.67, 191.92]},
+    {"id": "p33-b10", "type": "furniture", "text": "Sứ mệnh, giá trị cốt lõi", "bbox": [66.87, 198.92, 147.95, 206.92]},
+    {"id": "p33-b11", "type": "furniture", "text": "Ngành nghề kinh doanh", "bbox": [66.87, 213.92, 153.72, 221.92]},
+    {"id": "p33-b12", "type": "furniture", "text": "Vị thế và quy mô\n06\nHành trình khẳng định năng lực\nvà vị thế", "bbox": [25.74, 228.92, 180.51, 260.92]},
+    {"id": "p33-b13", "type": "furniture", "text": "Cơ cấu quản trị và bộ máy quản lý", "bbox": [66.87, 267.92, 191.17, 275.92]},
+    {"id": "p33-b14", "type": "furniture", "text": "Ban Lãnh đạo", "bbox": [66.87, 282.92, 117.49, 290.92]},
+    {"id": "p33-b15", "type": "furniture", "text": "04 CHIẾN LƯỢC PHÁT TRIỂN", "bbox": [25.47, 306.12, 142.43, 314.31]},
+    {"id": "p33-b16", "type": "furniture", "text": "05 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH", "bbox": [25.47, 332.12, 190.19, 340.31]},
+    {"id": "p33-b17", "type": "furniture", "text": "06 QUẢN TRỊ CÔNG TY", "bbox": [25.47, 358.12, 121.59, 366.31]},
+    {"id": "p33-b18", "type": "furniture", "text": "07 BÁO CÁO ESG", "bbox": [25.47, 384.12, 100.41, 392.31]},
+    {"id": "p33-b19", "type": "furniture", "text": "08 BÁO CÀO TÀI CHÍNH HỢP NHẤT", "bbox": [25.47, 410.12, 166.5, 418.31]},
+    {"id": "p33-b20", "type": "furniture", "text": "31", "bbox": [62.22, 546.47, 74.34, 558.52]},
+    {"id": "p33-b2", "type": "paragraph", "text": "Cơ", "bbox": [258.9, 42.96, 280.19, 58.96]},
+    {"id": "p33-b3", "type": "paragraph", "text": "cổ", "bbox": [315.06, 42.96, 333.14, 58.96]},
+    {"id": "p33-b4", "type": "paragraph", "text": "Trong", "bbox": [258.9, 95.14, 285.24, 105.14]},
+    {"id": "p33-b21", "type": "paragraph", "text": "năm", "bbox": [287.44, 95.14, 307.43, 105.14]},
+    {"id": "p33-b22", "type": "paragraph", "text": "2025,", "bbox": [309.63, 95.14, 335.7, 105.14]},
+    {"id": "p33-b23", "type": "paragraph", "text": "Tập", "bbox": [337.9, 95.14, 355.31, 105.14]},
+    {"id": "p33-b24", "type": "paragraph", "text": "đoàn", "bbox": [357.51, 95.14, 380.61, 105.14]},
+    {"id": "p33-b25", "type": "paragraph", "text": "không", "bbox": [382.81, 95.14, 410.53, 105.14]},
+    {"id": "p33-b26", "type": "paragraph", "text": "thực", "bbox": [412.73, 95.14, 432.74, 105.14]},
+    {"id": "p33-b27", "type": "paragraph", "text": "hiện", "bbox": [434.94, 95.14, 453.95, 105.14]},
+    {"id": "p33-b28", "type": "paragraph", "text": "giao", "bbox": [456.15, 95.14, 476.07, 105.14]},
+    {"id": "p33-b29", "type": "paragraph", "text": "dịch", "bbox": [478.27, 95.14, 497.53, 105.14]},
+    {"id": "p33-b30", "type": "paragraph", "text": "phiếu", "bbox": [513.13, 95.14, 537.97, 105.14]},
+    {"id": "p33-b31", "type": "paragraph", "text": "quỹ", "bbox": [540.17, 95.14, 556.52, 105.14]},
+    {"id": "p33-b32", "type": "paragraph", "text": "•", "bbox": [651.53, 75.0, 657.68, 87.0]},
+    {"id": "p33-b33", "type": "paragraph", "text": "các", "bbox": [780.11, 75.0, 800.47, 87.0]},
+    {"id": "p33-b34", "type": "paragraph", "text": "mức", "bbox": [803.2, 75.0, 827.41, 87.0]},
+    {"id": "p33-b35", "type": "paragraph", "text": "phiếu", "bbox": [846.42, 75.0, 877.2, 87.0]},
+    {"id": "p33-b36", "type": "paragraph", "text": "sở", "bbox": [879.93, 75.0, 892.51, 87.0]},
+    {"id": "p33-b37", "type": "paragraph", "text": "hữu", "bbox": [895.24, 75.0, 916.26, 87.0]},
+    {"id": "p33-b38", "type": "paragraph", "text": "•", "bbox": [651.53, 320.62, 657.68, 332.62]},
+    {"id": "p33-b39", "type": "paragraph", "text": "đối", "bbox": [780.11, 320.62, 797.44, 332.62]},
+    {"id": "p33-b40", "type": "paragraph", "text": "tượng", "bbox": [800.16, 320.62, 833.15, 332.62]},
+    {"id": "p33-b41", "type": "paragraph", "text": "•", "bbox": [258.76, 75.0, 264.92, 87.0]}
+  ]
+}

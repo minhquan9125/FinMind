@@ -1,0 +1,50 @@
+{
+  "selection": {
+    "C": 10,
+    "macro_f1": 0.5515937130141544,
+    "accuracy": 0.5560606060606061
+  },
+  "candidates": [
+    {
+      "C": 0.1,
+      "macro_f1": 0.4527999623472217,
+      "accuracy": 0.47575757575757577
+    },
+    {
+      "C": 1,
+      "macro_f1": 0.5203278399029746,
+      "accuracy": 0.5310606060606061
+    },
+    {
+      "C": 10,
+      "macro_f1": 0.5515937130141544,
+      "accuracy": 0.5560606060606061
+    }
+  ],
+  "configuration": {
+    "solver": "lbfgs",
+    "l1_ratio": 0.0,
+    "max_iter": 2000,
+    "tol": 1e-08
+  },
+  "labels": [
+    "ANALYSIS",
+    "COMPANY_OVERVIEW",
+    "CONVERSATION",
+    "ENTITY_RELATION",
+    "MIXED",
+    "NEWS",
+    "NUMERIC",
+    "OUT_OF_SCOPE",
+    "PERSON_ROLE",
+    "PRICE",
+    "REPORT_CONTENT"
+  ],
+  "library_rows": 470,
+  "seed_families": 220,
+  "development_used_for_fit_or_selection": false,
+  "calibrated": false,
+  "iterations": [
+    147
+  ]
+}

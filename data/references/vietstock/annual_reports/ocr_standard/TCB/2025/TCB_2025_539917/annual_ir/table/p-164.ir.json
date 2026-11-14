@@ -1,0 +1,230 @@
+{
+  "ir_version": "1",
+  "page": 164,
+  "printed_page": null,
+  "page_class": "notes",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+    "file_name": "TCB_2025_539917.pdf"
+  },
+  "blocks": [
+    {"id": "p164-b1", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [489.91, 62.52, 544.25, 71.02]},
+    {
+      "id": "p164-b2",
+      "type": "paragraph",
+      "text": "Nhằm mục đích duy nhất là cung cấp các thông tin thuyết minh về tầm quan trọng của các\ncông cụ tài chính đối với tình hình tài chính và kết quả hoạt động hợp nhất và tính chất và\nmức độ rủi ro phát sinh từ các công cụ tài chính theo Thông tư số 210/2009/TT-BTC ngày\n6 tháng 11 năm 2009 của Bộ Tài chính, Ngân hàng phân loại các công cụ tài chính như sau:",
+      "bbox": [214.02, 167.32, 544.32, 207.31]
+    },
+    {
+      "id": "p164-b3",
+      "type": "paragraph",
+      "text": "Tài sản tài chính được xác định theo giá trị hợp lý thông qua báo cáo kết quả hoạt động",
+      "bbox": [214.02, 226.04, 532.95, 234.54]
+    },
+    {
+      "id": "p164-b4",
+      "type": "paragraph",
+      "text": "Tài sản tài chính được xác định theo giá trị hợp lý thông qua báo cáo kết quả hoạt động là\nmột tài sản tài chính thỏa mãn một trong các điều kiện sau:",
+      "bbox": [214.02, 247.04, 544.3, 266.04]
+    },
+    {
+      "id": "p164-b5",
+      "type": "paragraph",
+      "text": "› Tài sản tài chính được phân loại vào nhóm nắm giữ để kinh doanh. Tài sản tài chính được\nphân loại vào nhóm nắm giữ để kinh doanh, nếu:\n- Tài sản được mua chủ yếu cho mục đích bán lại trong thời gian ngắn; hoặc",
+      "bbox": [221.1, 272.86, 544.31, 303.96]
+    },
+    {
+      "id": "p164-b6",
+      "type": "paragraph",
+      "text": "- Có bằng chứng về việc kinh doanh công cụ đó nhằm mục đích thu lợi ngắn hạn; hoặc",
+      "bbox": [231.02, 310.04, 542.17, 318.72]
+    },
+    {
+      "id": "p164-b7",
+      "type": "paragraph",
+      "text": "- Công cụ tài chính phái sinh (ngoại trừ các công cụ tài chính phái sinh được xác định\nlà một hợp đồng bảo lãnh tài chính hoặc một công cụ phòng ngừa rủi ro hiệu quả).",
+      "bbox": [231.02, 324.8, 544.19, 343.97]
+    },
+    {
+      "id": "p164-b8",
+      "type": "paragraph",
+      "text": "› Tại thời điểm ghi nhận ban đầu, Ngân hàng xếp tài sản tài chính vào nhóm xác định theo\ngiá trị hợp lý thông qua báo cáo kết quả hoạt động.",
+      "bbox": [221.1, 354.79, 544.3, 373.97]
+    },
+    {"id": "p164-b9", "type": "paragraph", "text": "Các khoản đầu tư nắm giữ đến ngày đáo hạn", "bbox": [214.02, 397.64, 379.01, 406.14]},
+    {
+      "id": "p164-b10",
+      "type": "paragraph",
+      "text": "Các khoản đầu tư nắm giữ đến ngày đáo hạn là các tài sản tài chính phi phái sinh với các\nkhoản thanh toán cố định hoặc có thể xác định và có kỳ đáo hạn cố định mà Ngân hàng có\ný định và có khả năng giữ đến ngày đáo hạn, ngoại trừ:",
+      "bbox": [214.02, 418.65, 544.32, 448.14]
+    },
+    {
+      "id": "p164-b11",
+      "type": "paragraph",
+      "text": "› Các tài sản tài chính mà tại thời điểm ghi nhận ban đầu đã được Ngân hàng xếp vào\nnhóm xác định theo giá trị hợp lý thông qua báo cáo kết quả hoạt động; hoặc",
+      "bbox": [221.1, 454.97, 544.27, 474.14]
+    },
+    {"id": "p164-b12", "type": "paragraph", "text": "› Các tài sản tài chính đã được xếp vào nhóm sẵn sàng để bán; hoặc", "bbox": [221.1, 481.63, 472.97, 490.31]},
+    {
+      "id": "p164-b13",
+      "type": "paragraph",
+      "text": "› Các tài sản tài chính thỏa mãn định nghĩa về các khoản cho vay và phải thu.",
+      "bbox": [221.1, 497.8, 505.0, 506.48]
+    },
+    {"id": "p164-b14", "type": "paragraph", "text": "Các khoản cho vay và phải thu", "bbox": [214.02, 526.14, 326.56, 534.64]},
+    {
+      "id": "p164-b15",
+      "type": "paragraph",
+      "text": "Các khoản cho vay và phải thu là các tài sản tài chính phi phái sinh với các khoản thanh toán\ncố định hoặc có thể xác định và không được niêm yết trên thị trường, ngoại trừ:",
+      "bbox": [214.02, 547.15, 544.28, 566.15]
+    },
+    {
+      "id": "p164-b16",
+      "type": "paragraph",
+      "text": "› Các khoản mà có ý định bán ngay hoặc sẽ bán trong tương lai gần được phân loại là tài\nsản nắm giữ vì mục đích kinh doanh, và các loại mà tại thời điểm ghi nhận ban đầu được\nxếp vào nhóm xác định theo giá trị hợp lý thông qua báo cáo kết quả hoạt động; hoặc",
+      "bbox": [221.11, 572.97, 544.33, 602.64]
+    },
+    {
+      "id": "p164-b17",
+      "type": "paragraph",
+      "text": "› Các khoản được xếp vào nhóm sẵn sàng để bán tại thời điểm ghi nhận ban đầu; hoặc",
+      "bbox": [221.11, 610.13, 540.96, 618.81]
+    },
+    {
+      "id": "p164-b18",
+      "type": "paragraph",
+      "text": "› Các khoản mà có thể không thu hồi được phần lớn giá trị đầu tư ban đầu, không phải do\nsuy giảm chất lượng tín dụng, và được phân loại vào nhóm sẵn sàng để bán.",
+      "bbox": [221.11, 626.3, 544.27, 645.48]
+    },
+    {"id": "p164-b19", "type": "paragraph", "text": "Tài sản tài chính sẵn sàng để bán", "bbox": [214.03, 665.14, 335.5, 673.64]},
+    {
+      "id": "p164-b20",
+      "type": "paragraph",
+      "text": "Tài sản tài chính sẵn sàng để bán là các tài sản tài chính phi phái sinh được xác định là sẵn\nsàng để bán hoặc không được phân loại là:",
+      "bbox": [214.03, 686.15, 544.24, 705.15]
+    },
+    {
+      "id": "p164-b21",
+      "type": "paragraph",
+      "text": "› Các tài sản tài chính xác định theo giá trị hợp lý thông qua báo cáo k ết quả hoạt động; hoặc",
+      "bbox": [221.12, 711.97, 544.31, 720.65]
+    },
+    {"id": "p164-b22", "type": "paragraph", "text": "› Các khoản đầu tư giữ đến ngày đáo hạn; hoặc", "bbox": [221.12, 728.14, 397.28, 736.82]},
+    {"id": "p164-b23", "type": "paragraph", "text": "› Các khoản cho vay và các khoản phải thu.", "bbox": [221.12, 744.31, 382.6, 752.98]},
+    {
+      "id": "p164-b24",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\ntại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [646.3, 62.52, 862.55, 80.12]
+    },
+    {
+      "id": "p164-b25",
+      "type": "paragraph",
+      "text": "Nợ phải trả tài chính được xác định theo giá trị hợp lý thông qua báo cáo kết quả hoạt động",
+      "bbox": [817.79, 167.32, 1148.01, 175.82]
+    },
+    {"id": "p164-b26", "type": "paragraph", "text": "4.28.2. Nợ phải trả tài chính", "bbox": [646.32, 167.57, 750.03, 176.07]},
+    {
+      "id": "p164-b27",
+      "type": "paragraph",
+      "text": "Nợ phải trả tài chính được xác định theo giá trị hợp lý thông qua báo cáo kết quả hoạt động\nlà một khoản nợ phải trả tài chính thỏa mãn một trong các điều kiện sau:",
+      "bbox": [817.79, 188.32, 1148.1, 207.32]
+    },
+    {
+      "id": "p164-b28",
+      "type": "paragraph",
+      "text": "› Nợ phải trả tài chính được phân loại vào nhóm nắm giữ để kinh doanh. Một khoản nợ\nphải trả tài chính được phân loại vào nhóm nắm giữ để kinh doanh nếu:",
+      "bbox": [824.88, 219.65, 1148.08, 238.82]
+    },
+    {
+      "id": "p164-b29",
+      "type": "paragraph",
+      "text": "- Khoản nợ đó được tạo ra chủ yếu cho mục đích mua lại trong thời gian ngắn; hoặc",
+      "bbox": [834.8, 250.57, 1143.55, 259.25]
+    },
+    {
+      "id": "p164-b30",
+      "type": "paragraph",
+      "text": "- Có bằng chứng về việc kinh doanh công cụ đó nhằm mục đích thu lợi ngắn hạn; hoặc",
+      "bbox": [834.8, 265.33, 1145.95, 274.0]
+    },
+    {
+      "id": "p164-b31",
+      "type": "paragraph",
+      "text": "- Là công cụ tài chính phái sinh (trừ các công cụ tài chính phái sinh được xác định là\nmột hợp đồng bảo lãnh tài chính hoặc một công cụ phòng ngừa rủi ro hiệu quả).",
+      "bbox": [834.8, 280.08, 1148.03, 299.26]
+    },
+    {
+      "id": "p164-b32",
+      "type": "paragraph",
+      "text": "› Tại thời điểm ghi nhận ban đầu, xếp nợ phải trả tài chính vào nhóm xác định theo giá trị\nhợp lý thông qua báo cáo kết quả hoạt động.",
+      "bbox": [824.88, 311.58, 1147.97, 330.76]
+    },
+    {"id": "p164-b33", "type": "paragraph", "text": "Nợ phải trả tài chính được xác định theo giá trị phân bổ", "bbox": [817.8, 348.93, 1018.96, 357.43]},
+    {
+      "id": "p164-b34",
+      "type": "paragraph",
+      "text": "Các khoản nợ phải trả tài chính không được phân loại là nợ phải trả tài chính được xác định\ntheo giá trị hợp lý thông qua báo cáo kết quả hoạt động sẽ được phân loại là nợ phải trả tài\nchính được xác định theo giá trị phân bổ.",
+      "bbox": [817.8, 369.94, 1148.06, 399.43]
+    },
+    {
+      "id": "p164-b35",
+      "type": "paragraph",
+      "text": "Việc phân loại các công cụ tài chính kể trên chỉ nhằm mục đích trình bày và thuyết minh và\nkhông nhằm mục đích mô tả phương pháp xác định giá trị của các công cụ tài chính. Các\nchính sách kế toán về xác định giá trị của các công cụ tài chính được trình bày trong các\nthuyết minh liên quan khác.",
+      "bbox": [817.8, 411.93, 1148.08, 451.93]
+    },
+    {
+      "id": "p164-b36",
+      "type": "paragraph",
+      "text": "Các khoản mục không được trình bày trên báo cáo tài chính hợp nhất này theo Quyết",
+      "bbox": [817.79, 488.79, 1148.06, 497.29]
+    },
+    {"id": "p164-b37", "type": "paragraph", "text": "4.29. Các khoản mục không có", "bbox": [646.3, 489.26, 782.87, 499.26]},
+    {
+      "id": "p164-b38",
+      "type": "paragraph",
+      "text": "định số 16/2007/QĐ-NHNN ngày 18 tháng 4 năm 2007 và Thông tư số 49/2014/TT-NHNN",
+      "bbox": [817.79, 499.29, 1148.03, 507.79]
+    },
+    {"id": "p164-b39", "type": "paragraph", "text": "số dư", "bbox": [646.3, 502.26, 670.6, 512.26]},
+    {
+      "id": "p164-b40",
+      "type": "paragraph",
+      "text": "(“Thông tư 49”) về chế độ báo cáo tài chính đối với các tổ chức tín dụng do NHNN ban\nhành ngày 31 tháng 12 năm 2014 và các văn bản sửa đổi bổ sung là các khoản mục không\ncó số dư.",
+      "bbox": [817.79, 509.79, 1148.03, 539.28]
+    },
+    {
+      "id": "p164-b41",
+      "type": "paragraph",
+      "text": "Một bộ phận là một hợp phần có thể xác định riêng biệt của Ngân hàng tham gia vào việc",
+      "bbox": [817.79, 577.0, 1148.05, 585.5]
+    },
+    {"id": "p164-b42", "type": "paragraph", "text": "4.30. Báo cáo bộ phận", "bbox": [646.3, 577.47, 745.61, 587.47]},
+    {
+      "id": "p164-b43",
+      "type": "paragraph",
+      "text": "cung cấp các sản phẩm hoặc dịch vụ liên quan (bộ phận được lập theo lĩnh vực kinh doanh),\nhoặc cung cấp sản phẩm hoặc dịch vụ trong một môi trường kinh tế cụ thể (bộ phận được\nlập theo khu vực địa lý). Mỗi bộ phận này chịu rủi ro và thu được lợi ích khác biệt với các\nbộ phận khác.",
+      "bbox": [817.79, 587.49, 1148.06, 627.49]
+    },
+    {
+      "id": "p164-b44",
+      "type": "paragraph",
+      "text": "Theo Thông tư 49, các TCTD có chứng khoán trao đổi công khai và đang phát hành chứng\nkhoán trên thị trường chứng khoán phải lập và trình bày Báo cáo bộ phận trên báo cáo tài\nchính hợp nhất. Báo cáo bộ phận chính yếu của Ngân hàng được lập dựa trên bộ phận chia\ntheo lĩnh vực kinh doanh.",
+      "bbox": [817.79, 639.99, 1148.1, 679.98]
+    },
+    {"id": "p164-b45", "type": "paragraph", "text": "Báo cáo tài chính 327", "bbox": [1069.29, 25.6, 1148.03, 32.7]},
+    {"id": "p164-b46", "type": "paragraph", "text": "B05/TCTD-HN", "bbox": [1093.69, 62.52, 1148.03, 71.02]},
+    {"id": "p164-b47", "type": "paragraph", "text": "326 Báo cáo thường niên 2025", "bbox": [42.52, 25.6, 152.46, 32.7]},
+    {
+      "id": "p164-b48",
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\ntại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày",
+      "bbox": [42.52, 62.52, 258.77, 80.12]
+    },
+    {"id": "p164-b49", "type": "paragraph", "text": "4.28. Các công cụ tài chính", "bbox": [42.52, 167.79, 162.0, 177.79]},
+    {"id": "p164-b50", "type": "paragraph", "text": "4.28.1. Tài sản tài chính", "bbox": [42.52, 226.28, 128.23, 234.78]}
+  ]
+}

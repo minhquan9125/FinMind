@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "d7f9b90a7d85b2315443",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-3004005/cmg-nghi-quyet-hdqt-ve-khoan-vay-cua-truong-dai-hoc-cmc-tai-ngan-hang-sinopac.chn",
+      "title": "CMG: Nghị quyết HĐQT về khoản vay của Trường Đại học CMC tại Ngân hàng SinoPac",
+      "description": "CMG: Nghị quyết HĐQT về khoản vay của Trường Đại học CMC tại Ngân hàng SinoPac",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC công bố Nghị quyết HĐQT số 31 ngày 20/10/2026 như sau: Các tập tin đính kèm 20261021 - CMG - NQ HDQT phe duyet the chap von gop tai CMC Edu bao dam khoan vay cua CMC Uni - signed.pdf Theo HOSE",
+      "published_at": "2026-10-21T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:11.920271+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/221026/cmg-nghi-quyet-h-qt-so-31-ngay-20-10-2026-0.pdf?v=1792652280968"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.5200263504611331,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-31-ngay-20-10-2026/42410599",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "3bdf7577f674027db0f9",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-3002480/cmg-nghi-quyet-hdqt-dieu-chinh-han-muc-tin-dung-trung-dai-han-cap-cho-truong-dai-hoc-cmc.chn",
+      "title": "CMG: Nghị quyết HĐQT điều chỉnh hạn mức tín dụng trung -  dài hạn cấp cho Trường Đại học CMC",
+      "description": "CMG: Nghị quyết HĐQT điều chỉnh hạn mức tín dụng trung -  dài hạn cấp cho Trường Đại học CMC",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC công bố Nghị quyết HĐQT số 30/2026 ngày 19/10/2026 như sau: Các tập tin đính kèm 20261020 - CMG - NQ HDQT dieu chinh han muc tin dung cho CMC Uni va cam ket bao lanh cho CMC Open AI - signed.pdf Theo HOSE",
+      "published_at": "2026-10-19T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:12.582862+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/201026/cmg-nghi-quyet-h-qt-so-30-2026-ngay-19-10-2026-0.pdf?v=1792492527630"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.512118018967334,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-30-2026-ngay-19-10-2026/42366661",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "f23ffe0b3334e32c77f7",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-2999803/cmg-nghi-quyet-hdqt-ve-viec-lua-chon-don-vi-kiem-toan-doc-lap-cho-nam-tai-chinh-20262028.chn",
+      "title": "CMG: Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028",
+      "description": "CMG: Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC công bố Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028 như sau: Các tập tin đính kèm 20261016 - CMG - NQ HDQT phe duyet lua chon don vi kiem toan doc lap 2026-2028 - signed.pdf Theo HOSE",
+      "published_at": "2026-10-15T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:13.244077+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/161026/cmg-nghi-quyet-h-qt-ve-viec-lua-chon-don-vi-kiem-toan-doc-lap-cho-nam-tai-chinh-2026-2028-0.pdf?v=1792147077984"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.75,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-ve-viec-lua-chon-don-vi-kiem-toan-doc-lap-cho-nam-tai-chinh-2026-2028/42321609",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "8965828ddd11a393cfca",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-2997984/cmg-ong-nguyen-trung-chinh-chu-tich-hdqt-dang-ky-mua-1000000-cp.chn",
+      "title": "CMG: Ông Nguyễn Trung Chính - Chủ tịch HĐQT đăng ký mua 1.000.000 cp",
+      "description": "CMG: Ông Nguyễn Trung Chính - Chủ tịch HĐQT đăng ký mua 1.000.000 cp",
+      "content": "Nguyễn Trung Chính thông báo giao dịch cổ phiếu của người nội bộ Công ty Cổ phần Tập đoàn Công nghệ CMC như sau: Các tập tin đính kèm 20261014 - CMG - TB giao dich co phieu cua NNB - Nguyen Trung Chinh (ban CBTT) - signed.pdf Theo HOSE",
+      "published_at": "2026-10-13T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:14.010810+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/141026/cmg-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-nguyen-trung-chinh-0.pdf?v=1791968999303"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.5712524334847502,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-nguyen-trung-chinh/42276357",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "e8e38fa4e2b2c6ade963",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-2964721/cmg-bao-cao-tien-do-su-dung-von-tien-thu-duoc-tu-dot-chao-ban.chn",
+      "title": "CMG: Báo cáo tiến độ sử dụng vốn, tiền thu được từ đợt chào bán",
+      "description": "CMG: Báo cáo tiến độ sử dụng vốn, tiền thu được từ đợt chào bán",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC công bố Báo cáo tiến độ sử dụng vốn, tiền thu được từ đợt chào bán như sau: Các tập tin đính kèm 20260826 - CMG - Bao cao tien do su dung von, tien thu duoc tu dot chao ban - signed.pdf Theo HOSE",
+      "published_at": "2026-08-27T07:53:06+00:00",
+      "crawled_at": "2026-10-29T07:44:14.752497+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/270826/cmg-bao-cao-tien-do-su-dung-von-tien-thu-duoc-tu-dot-chao-ban-0.pdf?v=1787817306275"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.21857142857142856,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-31-ngay-20-10-2026/42410599",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "07c87c43b6e145f140ef",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-2964720/cmg-thong-bao-giay-xac-nhan-thay-doi-nganh-nghe-va-dieu-le-thay-doi.chn",
+      "title": "CMG: Thông báo giấy xác nhận thay đổi ngành nghề và Điều lệ thay đổi",
+      "description": "CMG: Thông báo giấy xác nhận thay đổi ngành nghề và Điều lệ thay đổi",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC thông báo giấy xác nhận thay đổi ngành nghề và Điều lệ thay đổi như sau: Các tập tin đính kèm 20260826 - CMG - Giay xac nhan thay doi nganh nghe va Dieu le thay doi lan thu 28 (CBTT) - signed.pdf Theo HOSE",
+      "published_at": "2026-08-27T07:51:17+00:00",
+      "crawled_at": "2026-10-29T07:44:15.438664+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/270826/cmg-thong-bao-giay-xac-nhan-thay-doi-nganh-nghe-va-ieu-le-thay-doi-0.pdf?v=1787817304315"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.17727777777777778,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-thong-bao-giao-dich-co-phieu-cua-nguoi-noi-bo-nguyen-trung-chinh/42276357",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "00476300c0e6f7574174",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-2959389/cmg-bo-nhiem-ong-dang-tung-son-ong-nguyen-hai-son-giu-chuc-pho-chu-tich-evp-tap-doan-tu-1982026.chn",
+      "title": "CMG: Bổ nhiệm ông Đặng Tùng Sơn, ông Nguyễn Hải Sơn giữ chức Phó Chủ tịch EVP Tập đoàn từ 19.8.2026",
+      "description": "CMG: Bổ nhiệm ông Đặng Tùng Sơn, ông Nguyễn Hải Sơn giữ chức Phó Chủ tịch EVP Tập đoàn từ 19.8.2026",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC thông báo thay đổi nhân sự (thay đổi chức danh) như sau : Các tập tin đính kèm 20260819 - CMG - Thay doi nhan su (thay doi chuc danh) - signed.pdf Theo HOSE",
+      "published_at": "2026-08-19T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:16.143161+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/200826/cmg-thong-bao-thay-doi-nhan-su-thay-doi-chuc-danh-0.pdf?v=1787195222704"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.20517241379310344,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-31-ngay-20-10-2026/42410599",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "5011e80403a7ec1fe2bb",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-2957876/cmg-nghi-quyet-hdqt-phe-duyet-giao-dich-voi-ben-co-lien-quan.chn",
+      "title": "CMG: Nghị quyết HĐQT phê duyệt giao dịch với bên có liên quan",
+      "description": "CMG: Nghị quyết HĐQT phê duyệt giao dịch với bên có liên quan",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC công bố Nghị quyết HĐQT về việc phê duyệt giao dịch với bên có liên quan như sau: Các tập tin đính kèm 20260818 - CMG - NQ HDQT phe duyet giao dich voi ben co lien quan - signed.pdf Theo HOSE",
+      "published_at": "2026-08-17T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:16.812657+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/180826/cmg-nghi-quyet-h-qt-ve-viec-phe-duyet-giao-dich-voi-ben-co-lien-quan-0.pdf?v=1787046532036"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.3360565593087195,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-31-ngay-20-10-2026/42410599",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "030f972712a3e1447e64",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-2952005/cmg-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh-la-232891908-cp.chn",
+      "title": "CMG: Số lượng cổ phiếu có quyền biểu quyết đang lưu hành là 232.891.908 cp",
+      "description": "CMG: Số lượng cổ phiếu có quyền biểu quyết đang lưu hành là 232.891.908 cp",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC thông báo thay đổi số lượng cổ phiếu có quyền biểu quyết đang lưu hành như sau: Các tập tin đính kèm 20260812 - CMG - Thong bao thay doi so luong CP co quyen bieu quyet - signed.pdf Theo HOSE",
+      "published_at": "2026-08-12T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:17.637044+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/130826/cmg-thong-bao-thay-doi-so-luong-co-phieu-co-quyen-bieu-quyet-dang-luu-hanh-0.pdf"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.1803030303030303,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-31-ngay-20-10-2026/42410599",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    },
+    {
+      "id": "b0ff494abda92d809fd7",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/cmg-2952006/cmg-da-mua-lai-9000-cp-lam-cp-quy.chn",
+      "title": "CMG: Đã mua lại 9.000 cp làm cp quỹ",
+      "description": "CMG: Đã mua lại 9.000 cp làm cp quỹ",
+      "content": "Công ty Cổ phần Tập đoàn Công nghệ CMC công bố báo cáo kết quả giao dịch mua lại cổ phiếu như sau: Các tập tin đính kèm 20260812 - CMG - Bao cao ket qua giao dich mua lai co phieu - signed.pdf Theo HOSE",
+      "published_at": "2026-08-12T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:44:18.303734+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/130826/cmg-bao-cao-ket-qua-giao-dich-mua-lai-co-phieu-0.pdf"
+      ],
+      "symbols": [
+        "CMG"
+      ],
+      "matched_symbols": [
+        "CMG"
+      ],
+      "scopes": [
+        "CMG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.24677419354838712,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-31-ngay-20-10-2026/42410599",
+        "matched_file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:50:29.972543+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:44:18.306734+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "CMG",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

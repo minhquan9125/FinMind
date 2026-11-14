@@ -1,0 +1,231 @@
+{
+  "text": "elcomZ\n\nCÔNG TY CỔ PHẦN\nCÔNG NGHỆ - VIỄN THÔNG ELCOM\n\nBẢO CÁO\nTHƯỜNG NIÊN\n2024 |",
+  "chars": 62,
+  "words": 17,
+  "wordItems": [
+    {
+      "text": "elcomZ",
+      "bbox": [
+        162,
+        298,
+        508,
+        365
+      ],
+      "conf": 18.335838,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        161,
+        464,
+        318,
+        514
+      ],
+      "conf": 96.544159,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TY",
+      "bbox": [
+        332,
+        475,
+        395,
+        516
+      ],
+      "conf": 96.544159,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỔ",
+      "bbox": [
+        412,
+        457,
+        488,
+        522
+      ],
+      "conf": 93.298439,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHẦN",
+      "bbox": [
+        508,
+        461,
+        641,
+        529
+      ],
+      "conf": 92.531647,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÔNG",
+      "bbox": [
+        161,
+        529,
+        317,
+        585
+      ],
+      "conf": 96.278519,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NGHỆ",
+      "bbox": [
+        335,
+        530,
+        475,
+        590
+      ],
+      "conf": 93.29509,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "-",
+      "bbox": [
+        477,
+        524,
+        503,
+        598
+      ],
+      "conf": 93.29509,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "VIỄN",
+      "bbox": [
+        531,
+        530,
+        643,
+        586
+      ],
+      "conf": 93.300827,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "THÔNG",
+      "bbox": [
+        659,
+        529,
+        841,
+        579
+      ],
+      "conf": 91.720932,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ELCOM",
+      "bbox": [
+        860,
+        539,
+        1031,
+        579
+      ],
+      "conf": 91.827232,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "BẢO",
+      "bbox": [
+        168,
+        650,
+        431,
+        783
+      ],
+      "conf": 94.901924,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        473,
+        650,
+        754,
+        783
+      ],
+      "conf": 95.756935,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        161,
+        811,
+        706,
+        944
+      ],
+      "conf": 96.02198,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        758,
+        773,
+        1030,
+        1001
+      ],
+      "conf": 97.001587,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        163,
+        1000,
+        463,
+        1099
+      ],
+      "conf": 49.254116,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "|",
+      "bbox": [
+        1033,
+        992,
+        1046,
+        1009
+      ],
+      "conf": 51.800079,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 85,
+  "lowConfRatio": 0.176,
+  "seconds": 0.544
+}

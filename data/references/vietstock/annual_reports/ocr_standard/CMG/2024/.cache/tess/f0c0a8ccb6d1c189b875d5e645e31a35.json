@@ -1,0 +1,153 @@
+{
+  "text": "VD\n\nCMC CORPORATION\n\né BÁO CÁO CỦA HỘI ĐỒNG QUẢN TRỊ",
+  "chars": 40,
+  "words": 11,
+  "wordItems": [
+    {
+      "text": "VD",
+      "bbox": [
+        1273,
+        272,
+        1471,
+        403
+      ],
+      "conf": 8.617546,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        1130,
+        435,
+        1233,
+        468
+      ],
+      "conf": 91.840714,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        1252,
+        435,
+        1612,
+        468
+      ],
+      "conf": 91.647835,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "é",
+      "bbox": [
+        536,
+        2827,
+        586,
+        2911
+      ],
+      "conf": 71.716888,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        829,
+        2822,
+        958,
+        2876
+      ],
+      "conf": 90.791519,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        984,
+        2822,
+        1116,
+        2876
+      ],
+      "conf": 92.77169,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỦA",
+      "bbox": [
+        1142,
+        2820,
+        1268,
+        2876
+      ],
+      "conf": 85.021004,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HỘI",
+      "bbox": [
+        1294,
+        2822,
+        1394,
+        2883
+      ],
+      "conf": 96.889,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐỒNG",
+      "bbox": [
+        1420,
+        2818,
+        1604,
+        2876
+      ],
+      "conf": 93.298454,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUẢN",
+      "bbox": [
+        1630,
+        2820,
+        1808,
+        2876
+      ],
+      "conf": 47.470467,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRỊ",
+      "bbox": [
+        1834,
+        2834,
+        1923,
+        2883
+      ],
+      "conf": 92.443954,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 78,
+  "lowConfRatio": 0.182,
+  "seconds": 0.762
+}
