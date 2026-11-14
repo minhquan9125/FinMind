@@ -109,19 +109,15 @@ class GraphStore:
 
     @classmethod
     def from_environment(cls):
-        """Read root then backend .env; process settings take precedence."""
+        """Read repository .env as fallback; process settings take precedence."""
         values = {}
-        for env_path in (ENV_FILE, ENV_FILE.parent / 'backend' / '.env'):
-            if not env_path.is_file():
-                continue
+        if ENV_FILE.is_file():
             try:
                 from dotenv import dotenv_values
             except ImportError:
                 raise RuntimeError("Install backend/requirements.txt to read .env") from None
             # Keep passwords literal and load only connection settings.
-            values.update({name: value for name, value in
-                           dotenv_values(env_path, interpolate=False, encoding='utf-8-sig').items()
-                           if value is not None})
+            values = dotenv_values(ENV_FILE, interpolate=False, encoding='utf-8-sig')
         username = os.environ.get('NEO4J_USERNAME',
                                   values.get('NEO4J_USER', values.get('NEO4J_USERNAME')))
         if username is not None:

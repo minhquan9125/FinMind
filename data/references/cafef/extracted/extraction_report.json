@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "completed_at": "2026-09-28T09:13:30.818229Z",
+  "source": "CAFEF",
+  "processed_pdf_count": 183,
+  "out_of_scope_pdf_count": 11,
+  "counts": {
+    "EXTRACTED": 0,
+    "SKIPPED_EXISTING": 183,
+    "FAILED": 0
+  },
+  "pages_needing_ocr": 10355,
+  "failures": []
+}

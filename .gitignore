@@ -32,15 +32,6 @@ wheels/
 .venv-paddleocr/
 venv/
 ENV/
-backend/.tmp/
-data_pipeline/scrapers/data_fireant_10_*/
-
-# Test caches and generated coverage reports
-.pytest_cache/
-pytest-cache-files-*/
-.coverage
-.coverage.*
-htmlcov/
 
 # Node
 node_modules/
@@ -53,7 +44,6 @@ dist-ssr/
 *.local
 
 # IDE
-.agent-state/
 .vscode/
 .idea/
 *.swp
@@ -64,16 +54,6 @@ dist-ssr/
 Thumbs.db
 
 # Downloaded/generated company-report artifacts (keep scripts and manifests tracked)
-outputs/docker-backup-*/
-outputs/vps-backup-*/
-outputs/admin-ingestion/
-outputs/wbs16-jobs/
-outputs/ocr-ai-demo/
-outputs/tools/
-*.dump
-.runtime-gpu/
-.runtime-contract/
-.runtime-pdf-audit/
 data/references/vietstock/annual_reports/files/
 data/references/vietstock/annual_reports/searchable/
 data/references/vietstock/annual_reports/extracted/
