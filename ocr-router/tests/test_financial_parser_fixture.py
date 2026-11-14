@@ -20,6 +20,8 @@ from financialContent import _coded_statement_table  # noqa: E402
 class FinancialParserFixtureTest(unittest.TestCase):
     def test_278_cells_match_reviewed_fixture(self) -> None:
         pdf_path = ROOT.parent / "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf"
+        if not pdf_path.is_file():
+            self.skipTest("FPT 2024 PDF is stored on Drive")
         fixture_path = ROOT / "tests" / "fixtures" / "fpt-2024-reviewed-financial-tables.json"
         fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
         kinds = {**{page: "balance_sheet" for page in range(148, 153)},

@@ -15,6 +15,11 @@ import main
 
 
 class RouterTest(unittest.TestCase):
+    def test_preflight_allows_native_text_without_tesseract(self) -> None:
+        cfg = argparse.Namespace(gemini="never", provider="local", tessdata=None)
+        with patch.object(main, "find_command", side_effect=lambda name: name in ("pdfinfo", "pdftotext")):
+            self.assertIsInstance(main.preflight(cfg), dict)
+
     def test_cross_check_matches_existing_poc_output(self) -> None:
         parents = Path(__file__).resolve().parents
         root = (parents[5] if len(parents) > 5 else parents[-1]) / "bctc_fpt_2026"
@@ -50,6 +55,7 @@ class RouterTest(unittest.TestCase):
                  patch.object(main, "upright_page", return_value=(image, 0)), \
                  patch.object(main, "hash_file", return_value="a" * 64), \
                  patch.object(main, "load_json", return_value=tess), \
+                 patch.object(main, "tess_env", return_value={}), \
                  patch.object(main, "gemini_transcribe", return_value=outcome), \
                  patch.dict(main.os.environ, {"GEMINI_API_KEY": "test", "OPENROUTER_API_KEY": ""}):
                 main.process_pdf(pdf, cfg, {})

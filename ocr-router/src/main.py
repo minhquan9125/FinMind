@@ -42,7 +42,7 @@ def is_critical(text: str) -> bool:
 
 
 def preflight(cfg: argparse.Namespace) -> dict[str, str]:
-    commands = ["pdfinfo", "pdftotext", "pdftoppm", "tesseract"]
+    commands = ["pdfinfo", "pdftotext"]
     provider = getattr(cfg, "provider", "auto")
     if cfg.gemini != "never" and provider != "local":
         available = {"gemini": bool(os.environ.get("GEMINI_API_KEY")),
@@ -55,7 +55,7 @@ def preflight(cfg: argparse.Namespace) -> dict[str, str]:
     missing = [command for command in commands if not find_command(command)]
     if missing:
         raise RuntimeError(f"Thiếu lệnh: {', '.join(missing)}")
-    return tess_env(cfg.tessdata)
+    return os.environ.copy()
 
 
 def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None:
@@ -96,6 +96,9 @@ def process_pdf(pdf: Path, cfg: argparse.Namespace, env: dict[str, str]) -> None
         else:
             ocr_pages.append(page)
     print(f"  lớp text: {len(pages) - len(ocr_pages)} trang dùng được, {len(ocr_pages)} trang cần OCR ({times['textLayer']}s)")
+
+    if ocr_pages:
+        env = tess_env(cfg.tessdata)
 
     tick = time.perf_counter()
     def do_ocr(page: int) -> dict[str, Any]:

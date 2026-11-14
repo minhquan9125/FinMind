@@ -35,6 +35,8 @@ class R2LayoutProfileTest(unittest.TestCase):
 
     def test_reviewed_override_is_opt_in(self) -> None:
         pdf_path = ROOT.parent / "data/references/vietstock/annual_reports/files_pdf/FPT/2024/FPT_2024_498332.pdf"
+        if not pdf_path.is_file():
+            self.skipTest("FPT 2024 PDF is stored on Drive")
         digest = hash_file(pdf_path)
         self.assertIsNone(load_annual_override(None, digest))
         override = load_annual_override(ROOT / "overrides" / "fpt_2024.json", digest)

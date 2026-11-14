@@ -1,0 +1,89 @@
+{
+    "pdf":  "D:\\finmind\\finmind-ocr-drive-kxwyaqux\\BID\\2024\\501640_pdfs\\BID_Baocaothuongnien_2024.pdf",
+    "pages":  2,
+    "routes":  {
+                   "text_layer":  2
+               },
+    "status":  {
+                   "REVIEW":  2
+               },
+    "flags":  {
+                  "TEXT_LAYER_BROKEN":  2
+              },
+    "reviewPages":  [
+                        1,
+                        2
+                    ],
+    "seconds":  {
+                    "textLayer":  0.097,
+                    "renderAndTesseract":  0.012,
+                    "gemini":  0.0,
+                    "total":  0.626
+                },
+    "geminiApi":  {
+                      "calls":  0,
+                      "failedCalls":  0,
+                      "seconds":  0,
+                      "input_tokens":  0,
+                      "output_tokens":  0,
+                      "thinking_tokens":  0,
+                      "cache_read_tokens":  0
+                  },
+    "openrouterApi":  {
+                          "calls":  0,
+                          "failedCalls":  0,
+                          "seconds":  0,
+                          "input_tokens":  0,
+                          "output_tokens":  0,
+                          "thinking_tokens":  0,
+                          "cache_read_tokens":  0
+                      },
+    "codecraftApi":  {
+                         "calls":  0,
+                         "failedCalls":  0,
+                         "seconds":  0,
+                         "input_tokens":  0,
+                         "output_tokens":  0,
+                         "thinking_tokens":  0,
+                         "cache_read_tokens":  0
+                     },
+    "omnirouteApi":  {
+                         "calls":  0,
+                         "failedCalls":  0,
+                         "seconds":  0,
+                         "input_tokens":  0,
+                         "output_tokens":  0,
+                         "thinking_tokens":  0,
+                         "cache_read_tokens":  0
+                     },
+    "ollamaApi":  {
+                      "calls":  0,
+                      "failedCalls":  0,
+                      "seconds":  0,
+                      "input_tokens":  0,
+                      "output_tokens":  0,
+                      "thinking_tokens":  0,
+                      "cache_read_tokens":  0
+                  },
+    "cache":  {
+                  "tesseractHits":  0,
+                  "geminiHits":  0,
+                  "openrouterHits":  0,
+                  "codecraftHits":  0,
+                  "omnirouteHits":  0
+              },
+    "config":  {
+                   "out":  "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\BID\\2024",
+                   "mode":  "auto",
+                   "provider":  "gemini",
+                   "model":  "gemini-3.8-flash",
+                   "aiOutput":  "structured",
+                   "batch":  1,
+                   "geminiConcurrency":  1,
+                   "geminiTimeout":  180,
+                   "tessWorkers":  2,
+                   "minChars":  150,
+                   "minConf":  90,
+                   "longSide":  3508
+               }
+}

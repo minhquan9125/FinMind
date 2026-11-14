@@ -319,7 +319,8 @@ def _main(argv: list[str] | None = None) -> int:
     report_path = output_root / f"batch_report_{args.provider}{'_' + scope if scope else ''}.json"
     report: dict = {"schema_name": "finmind.annual_ocr_batch", "schema_version": "1.0",
                     "updated_at": "", "provider": args.provider, "model": selected_model,
-                    "pdf_root": str(PDF_ROOT), "documents": []}
+                    "pdf_root": (str(PDF_ROOT) if PDF_ROOT == ROOT / "data/references/vietstock/annual_reports/files_pdf"
+                                 else "google_drive"), "documents": []}
     failures = 0
     for index, pdf in enumerate(pdfs, start=1):
         relative = pdf.relative_to(PDF_ROOT)
