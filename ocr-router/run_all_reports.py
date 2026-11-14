@@ -9,13 +9,17 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from contextlib import contextmanager
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Iterator
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +27,8 @@ PDF_ROOT = ROOT / "data/references/vietstock/annual_reports/files_pdf"
 DEFAULT_OUT = ROOT / "data/references/vietstock/annual_reports/ocr_standard"
 ROUTER = Path(__file__).resolve().parent / "src/main.py"
 IR_BUILDER = Path(__file__).resolve().parent / "src/buildDocumentIr.py"
+sys.path.insert(0, str(ROOT / "data_pipeline" / "annual_reports"))
+from drive_store import DriveStore
 
 
 def sha256_file(path: Path) -> str:
@@ -124,6 +130,41 @@ def discover_pdfs(symbols: set[str] | None, years: set[str] | None) -> list[Path
     return sorted(paths, key=lambda path: str(path.relative_to(PDF_ROOT)).casefold())
 
 
+@contextmanager
+def staged_drive_pdf_root(symbols: set[str] | None, years: set[str] | None) -> Iterator[Path]:
+    """Build a temporary PDF tree from verified Drive entries for the batch router."""
+    manifest_path = ROOT / "data/references/vietstock/annual_reports/manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    selected = [row for row in manifest.get("documents", [])
+                if row.get("status") == "DOWNLOADED"
+                and (not symbols or str(row.get("symbol", "")).upper() in symbols)
+                and (not years or str(row.get("year")) in years)]
+    if not selected or not any(row.get("pdf_paths") for row in selected):
+        raise FileNotFoundError("No Drive PDFs match the filters")
+    store = DriveStore.from_oauth()
+    with tempfile.TemporaryDirectory(prefix="finmind-ocr-drive-", dir=ROOT) as directory:
+        staged = Path(directory).resolve()
+        for row in selected:
+            for relative in row.get("pdf_paths") or []:
+                parts = Path(relative).parts
+                if "files" not in parts:
+                    raise ValueError(f"Invalid manifest PDF path: {relative}")
+                tail = parts[parts.index("files") + 1:]
+                if (len(tail) < 3 or tail[0].upper() != str(row["symbol"]).upper()
+                        or tail[1] != str(row["year"])):
+                    raise ValueError(f"Invalid manifest PDF path: {relative}")
+                destination = staged.joinpath(*tail).resolve()
+                if staged not in destination.parents or destination.suffix.casefold() != ".pdf":
+                    raise ValueError(f"Unsafe manifest PDF path: {relative}")
+                entry = (row.get("drive_files") or {}).get(relative)
+                if not entry:
+                    raise ValueError(f"Drive metadata missing for {relative}")
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                with store.temporary_pdf(entry, destination.name, temp_root=staged) as downloaded:
+                    shutil.copyfile(downloaded, destination)
+        yield staged
+
+
 def summarize_results(pdfs_discovered: int, documents: list[dict]) -> dict:
     pending = sum(len(item["model_failed_pages"]) for item in documents)
     review = sum(len(item["review_pages"]) for item in documents)
@@ -138,7 +179,7 @@ def summarize_results(pdfs_discovered: int, documents: list[dict]) -> dict:
             "review_without_model_failure_pages": review_only}
 
 
-def main(argv: list[str] | None = None) -> int:
+def _main(argv: list[str] | None = None) -> int:
     if (sys.stdout.encoding or "").lower() != "utf-8":
         sys.stdout.reconfigure(encoding="utf-8")
     from dotenv import dotenv_values
@@ -392,6 +433,35 @@ def main(argv: list[str] | None = None) -> int:
             ir_args.extend(("--years", args.years))
         ir_result = main(ir_args)
     return 1 if failures or ir_result else 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Use local PDFs when available, or stage Drive PDFs for this invocation."""
+    global PDF_ROOT
+    arguments = list(sys.argv[1:] if argv is None else argv)
+    if "-h" in arguments or "--help" in arguments:
+        return _main(argv)
+    filters = argparse.ArgumentParser(add_help=False)
+    filters.add_argument("--symbols")
+    filters.add_argument("--years")
+    selected, _ = filters.parse_known_args(arguments)
+    symbols = {part.strip().upper() for part in selected.symbols.split(",")} if selected.symbols else None
+    years = {part.strip() for part in selected.years.split(",")} if selected.years else None
+    try:
+        local = discover_pdfs(symbols, years)
+    except FileNotFoundError:
+        local = []
+    except ValueError:
+        return _main(argv)
+    if local:
+        return _main(argv)
+    original_root = PDF_ROOT
+    with staged_drive_pdf_root(symbols, years) as staged:
+        PDF_ROOT = staged
+        try:
+            return _main(argv)
+        finally:
+            PDF_ROOT = original_root
 
 
 if __name__ == "__main__":

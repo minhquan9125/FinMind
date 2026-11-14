@@ -1,6 +1,8 @@
 import importlib.util
 import json
+from contextlib import contextmanager
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 
@@ -43,6 +45,32 @@ def test_discover_pdfs_rejects_misplaced_symbol_directory(tmp_path: Path, monkey
 
     with pytest.raises(ValueError, match=r"TCB/ITD/2024/ITD_2024.pdf.*SYMBOL/YYYY"):
         batch.discover_pdfs(None, None)
+
+
+def test_drive_pdfs_are_staged_only_for_the_batch(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setattr(batch, "ROOT", tmp_path)
+    manifest = tmp_path / "data/references/vietstock/annual_reports/manifest.json"
+    manifest.parent.mkdir(parents=True)
+    relative = "data/references/vietstock/annual_reports/files/FPT/2024/report.pdf"
+    manifest.write_text(json.dumps({"documents": [{"symbol": "FPT", "year": 2024,
+        "status": "DOWNLOADED", "pdf_paths": [relative],
+        "drive_files": {relative: {"id": "remote", "sha256": "verified"}}}]}), encoding="utf-8")
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"%PDF- verified")
+
+    class FakeStore:
+        @contextmanager
+        def temporary_pdf(self, entry, filename, *, temp_root=None):
+            assert entry["id"] == "remote"
+            assert filename == "report.pdf"
+            yield source
+
+    with patch.object(batch.DriveStore, "from_oauth", return_value=FakeStore()):
+        with batch.staged_drive_pdf_root({"FPT"}, {"2024"}) as staged:
+            pdf = staged / "FPT/2024/report.pdf"
+            assert pdf.read_bytes() == source.read_bytes()
+            assert batch.PDF_ROOT != staged
+    assert not staged.exists()
 
 
 def test_batch_summary_separates_model_pending_from_other_review_pages() -> None:

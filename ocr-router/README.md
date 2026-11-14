@@ -1,9 +1,9 @@
 # POC: OCR router cho BCTC và báo cáo thường niên
 
-## Chạy OCR tất cả báo cáo thường niên đang có trên máy
+## Chạy OCR báo cáo thường niên từ PDF trên máy hoặc Drive
 
 Từ thư mục gốc dự án, một lệnh xử lý toàn bộ PDF trong
-`data/references/vietstock/annual_reports/files_pdf/` (hiện có 22 PDF):
+`data/references/vietstock/annual_reports/files_pdf/` hoặc Drive (theo `manifest.json`):
 
 ```powershell
 python ocr-router/run_all_reports.py --provider local
@@ -339,3 +339,6 @@ Mỗi trang một object, engine nào cũng xuất cùng dạng này. Ví dụ r
 - Ô chỉ lưu chuỗi in gốc (`raw`). Parse số, đơn vị và kỳ làm ở bước B.
 - Trang OCR có thêm phiếu của từng engine cho mỗi ô, ví dụ `"votes": {"gemini": "2.773.160.700", "tesseract": "2.773,180.700"}`.
 - Từ ô này, bước B3 tra (TT202, B01-DN/HN, 131) trong `template_lines` để ra `metric_id`. Hiện chưa map được, vì template chưa chốt `common.trade_receivables` là dòng 131, dòng 211 hay tổng hai dòng (B4).
+## Google Drive PDF source
+
+When `data/references/vietstock/annual_reports/files_pdf/` has no matching local PDFs, `run_all_reports.py` stages the selected manifest PDFs from Google Drive for the duration of the batch. It verifies each downloaded file against the manifest and removes the temporary PDFs when the command finishes. Configure the ignored repository-root `.drive-token.json` and `.drive-client-secret.json` first, or set `FINMIND_DRIVE_TOKEN_FILE` and `FINMIND_DRIVE_CLIENT_SECRET`.
