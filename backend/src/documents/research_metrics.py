@@ -59,6 +59,10 @@ def observed_details(result):
                       'checks': {k: components[k] for k in GROUNDING_CHECKS if type(components.get(k)) is bool},
                       'draft_rejected_reason': rejection, 'events': events} if answer else None,
         'b3': {k: components[k] for k in B3_COMPONENTS if type(components.get(k)) is bool},
+        # 07.2: which intent was used and whether Gemini was asked (source=GEMINI is the fallback call).
+        'intent': {k: v for k, v in result['intent'].items()
+                   if k in ('label', 'decision', 'source', 'applied', 'reason') and type(v) in (str, bool)}
+                  if isinstance(result.get('intent'), dict) else None,
     }
 
 

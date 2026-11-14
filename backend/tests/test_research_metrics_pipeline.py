@@ -43,6 +43,14 @@ def test_missing_sections_stay_missing_instead_of_being_invented():
     assert observed_details({'answering': {'status': 'X', 'manifest': {'components': {'b3_evidence_gate': 'yes'}}}})['b3'] == {}
 
 
+def test_the_intent_fallback_call_is_visible_in_the_trace():
+    result = {**graph_result(), 'intent': {'label': 'ANALYSIS', 'decision': 'FALLBACK', 'source': 'GEMINI',
+                                           'applied': False, 'reason': 'LOW_PROVIDER_CONFIDENCE', 'raw': {'x': 1}}}
+    assert observed_details(result)['intent'] == {'label': 'ANALYSIS', 'decision': 'FALLBACK', 'source': 'GEMINI',
+                                                  'applied': False, 'reason': 'LOW_PROVIDER_CONFIDENCE'}
+    assert observed_details(graph_result())['intent'] is None
+
+
 def test_details_are_stored_per_request_and_rolled_up(tmp_path):
     metrics = ResearchMetrics(tmp_path)
     now = datetime.now(timezone.utc).isoformat()

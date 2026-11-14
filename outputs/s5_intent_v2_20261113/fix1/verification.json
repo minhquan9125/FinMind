@@ -1,0 +1,61 @@
+{
+  "status": "KNOWN_FIXES_VERIFIED_REVIEW_PENDING",
+  "unit_tests": {
+    "tests": 409,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "v2_unit_tests": 183,
+  "checksum_checks": 34,
+  "closed_original_wrong_variants": 16,
+  "closed_original_wrong_families": 7,
+  "known_cases": {
+    "library": {
+      "cases": 470,
+      "label_correct": 470,
+      "complete_correct": 470,
+      "mixed_correct": 45,
+      "mixed_support": 45,
+      "needs_context": 33
+    },
+    "development": {
+      "cases": 110,
+      "label_correct": 110,
+      "complete_correct": 110,
+      "mixed_correct": 10,
+      "mixed_support": 10,
+      "needs_context": 8
+    },
+    "regression": {
+      "cases": 47,
+      "label_correct": 47,
+      "complete_correct": 47,
+      "mixed_correct": 6,
+      "mixed_support": 6,
+      "needs_context": 0
+    }
+  },
+  "controlled_metamorphic_cases": 2165,
+  "controlled_metamorphic_failures": 0,
+  "controlled_metamorphic_are_real_query_inferences": false,
+  "real_bge_functional_probes": 33,
+  "raw_scores_preserved": true,
+  "model_vectors_and_gold_unchanged": true,
+  "regressions": 0,
+  "mutation_guard_detected": true,
+  "resolution_policy": "intent-request-objectives-v2-11-r2",
+  "independent_blind_acceptance_available": false,
+  "team_review_pending": true,
+  "performance_deferred_by_user": true,
+  "router_or_chat_modified": false,
+  "sources": {
+    "backend/scripts/check_s5_intent_v2_fixes.py": "f4a5aea9f5372b6cd16cdcb9626b573d274c758b6d07569c88d5bc0b03828c23",
+    "backend/scripts/evaluate_s5_intent_v2.py": "72227d35c1024a3c5ee90d7966464473288d90e906171a805baf2c13747b775b",
+    "backend/src/retrieval_orchestration/intent_v2_rules.py": "9ffbabc22b1ee201f047f065607ee824d156991471754a16cb9832a8c5e6d7b8",
+    "backend/src/retrieval_orchestration/intent_v2_classifier.py": "e569316e57fef6d112627fcbedbfd768b2c19c84111b78466ecabe46f9f12f6b",
+    "backend/src/retrieval_orchestration/intent_library.py": "74b7f085cd576c3e15aa9995fcdd56ea439e02dbf3543141e124858e9a780165",
+    "backend/src/retrieval_orchestration/intent_matching.py": "f351d081045ad717a80fe63b01ace29e7bc437151338a3698b091f05879da2d9",
+    "backend/src/retrieval_orchestration/intent_scoring.py": "678a23e5c2f2ba987070b93b5dee61b4e9e2e692bbb06ad881b978c25582e919"
+  }
+}
