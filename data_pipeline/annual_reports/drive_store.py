@@ -50,9 +50,10 @@ class DriveStore:
         except ImportError as exc:
             raise RuntimeError("Install google-api-python-client and google-auth-oauthlib first") from exc
 
-        secret = os.environ.get("FINMIND_DRIVE_CLIENT_SECRET")
+        secret = os.environ.get("FINMIND_DRIVE_CLIENT_SECRET") or str(
+            Path(__file__).resolve().parents[2] / ".drive-client-secret.json")
         if not secret or not Path(secret).is_file():
-            raise RuntimeError("Set FINMIND_DRIVE_CLIENT_SECRET to your Google OAuth desktop client JSON path")
+            raise RuntimeError("Set FINMIND_DRIVE_CLIENT_SECRET or save the OAuth client as .drive-client-secret.json")
         token_path = Path(os.environ.get("FINMIND_DRIVE_TOKEN_FILE", Path(__file__).resolve().parents[2] / ".drive-token.json"))
         creds = Credentials.from_authorized_user_file(str(token_path), SCOPES) if token_path.is_file() else None
         if not creds or not creds.valid:

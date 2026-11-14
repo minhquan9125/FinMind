@@ -12,7 +12,7 @@ import OCR_annuals as ocr
 
 class AnnualOcrInputTests(unittest.TestCase):
     def test_manifest_file_resolves_to_local_pdf_mirror(self):
-        with tempfile.TemporaryDirectory(dir=ocr.ROOT / "tmp") as directory:
+        with tempfile.TemporaryDirectory(prefix="finmind-annual-ocr-test-", dir=ocr.ROOT) as directory:
             root = Path(directory)
             source = root / "data/references/vietstock/annual_reports"
             mirror = source / "files_pdf/CMG/2024/report.pdf"
