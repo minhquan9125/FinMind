@@ -1,5 +1,10 @@
 # Ý định v2 — bản triển khai của Nhân, 13/11/2026
 
+Trên nhánh `nhan-intent-v2-integration`, xem [bàn giao tích hợp](INTEGRATION.md)
+và kết quả kiểm tra ngày 14/11/2026. Các số 409 test và số đo hiệu năng bên dưới
+là lịch sử trên nhánh nguồn; bản tích hợp chạy riêng 183 test v2, audit và BGE-M3
+thật. Classifier, luật, vector và gold giữ nguyên bản đã được Hưng review.
+
 Phần này giúp FinMind nhận biết người dùng đang muốn làm gì trước khi tìm dữ
 liệu. Ví dụ hỏi giá thuộc PRICE, hỏi doanh thu thuộc NUMERIC, hỏi chủ tịch là ai
 thuộc PERSON_ROLE. Hưng dùng kết quả này để điều phối Chat; Huyền xử lý chính
