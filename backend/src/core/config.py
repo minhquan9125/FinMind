@@ -63,6 +63,8 @@ class Settings(BaseSettings):
         pattern=r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')
     research_retrieval_timeout_seconds: float = Field(default=120.0, gt=0, le=600, allow_inf_nan=False)
     research_warmup_enabled: bool = True
+    # S5 05.1/07.2: Nhân's v2 intent classifier plus the Gemini fallback; false keeps the rules-only chat.
+    intent_router_v2: bool = True
     research_warmup_timeout_seconds: float = Field(default=180.0, gt=0, le=600, allow_inf_nan=False)
     gemini_api_key: SecretStr = SecretStr('')
     # Extra keys of this team, comma or newline separated (GEMINI_API_KEYS). Used for failover

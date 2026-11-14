@@ -30,6 +30,16 @@ from .input_normalization import normalize_user_text, conversational_words, regi
 from .market_dates import price_date_request, relative_market_range, temporal_reply
 from .metric_vocabulary import (CURATED, find_metrics, label as metric_label, plain, point_in_time_codes,
                                 vocabulary_words, without_metrics)
+from . import intent_gate_v2 as intent_gate
+import logging
+
+logger = logging.getLogger(__name__)
+INTENT_TIMEOUT_SECONDS = 3  # classify_intent is ~0.1 s once the model is loaded; a cold model must not stall the chat
+OUT_OF_SCOPE_MESSAGE = ('FinMind chỉ cung cấp dữ liệu và phân tích có nguồn; không đưa khuyến nghị mua bán, '
+                        'dự báo giá, giá mục tiêu hay trả lời câu hỏi ngoài lĩnh vực tài chính doanh nghiệp.')
+# shortcut: a label that overrides a clarification is turned into the canonical question the rules already
+# route (one company only); questions needing more slots (period, focus, several companies) wait for the slot layer.
+_CANONICAL_QUESTION = {'ANALYSIS': 'phân tích {}', 'PRICE': 'giá {} hôm nay', 'NEWS': 'tin {} hôm nay'}
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
@@ -790,9 +800,11 @@ class LiveResearchService:
     execution_mode = 'LIVE'
 
     def __init__(self, retriever, *, provider=None, limits=None, retrieval_timeout=120, market=None, admin_news=None, hybrid_router=None,
-                 limits_source=None, prices=None):
+                 limits_source=None, prices=None, intent_classifier=None):
         self.retriever, self.provider = retriever, provider
         self.prices = prices
+        # Optional sync callable (question, context) -> v2 classification (Nhân's classify_intent).
+        self.intent_classifier = intent_classifier
         self.market = market
         self.admin_news = admin_news
         self.hybrid_router = hybrid_router
@@ -910,6 +922,49 @@ class LiveResearchService:
             result['answering']['budget_scope'] = 'REQUEST'
         return result
 
+    async def _classify_intent(self, question, context):
+        """v2 decision (intent_gate_v2.decide) or None when the classifier is off, fails or is too slow."""
+        if self.intent_classifier is None:
+            return None
+        try:
+            classified = await asyncio.wait_for(
+                asyncio.to_thread(self.intent_classifier, question, context), INTENT_TIMEOUT_SECONDS)
+        except Exception:
+            logger.warning('intent_classifier_unavailable')
+            return None
+        decided = intent_gate.decide(classified)
+        return None if decided['decision'] == 'IGNORE' else decided
+
+    async def _apply_intent(self, intent, question, decision, context, today):
+        """Use the v2 label only where the rules would ask again. Rule evidence is used as is; a classifier
+        guess is confirmed by the Gemini fallback (07.2). Any failure keeps the rules' clarification."""
+        trace = dict(label=intent['label'], decision=intent['decision'],
+                     source='RULES' if intent['decision'] == 'DIRECT' else None, applied=False)
+        if decision['decision'] != 'ASK_CLARIFICATION' or intent['decision'] not in ('DIRECT', 'FALLBACK'):
+            return decision, trace
+        companies = decision['scope'].get('companies') or []
+        label = intent['label']
+        if intent['decision'] == 'FALLBACK':
+            trace['source'] = 'GEMINI'
+            if self.provider is None:
+                return decision, {**trace, 'reason': 'PROVIDER_NOT_CONFIGURED'}
+            checked = await intent_gate.ask_fallback(self.provider, self.budget, intent_gate.fallback_request(
+                question, company=companies[0] if len(companies) == 1 else None))
+            if checked['label'] is None:
+                return decision, {**trace, 'reason': checked['reason']}
+            label = trace['label'] = checked['label']
+        if label == 'OUT_OF_SCOPE':
+            trace['applied'] = True
+            return dict(decision, decision='UNSUPPORTED', reason_code='INTENT_OUT_OF_SCOPE',
+                        message=OUT_OF_SCOPE_MESSAGE), trace
+        template = _CANONICAL_QUESTION.get(label)
+        if template and len(companies) == 1:
+            rerouted = analyze_live(template.format(companies[0]), context, today=today)
+            if rerouted['decision'] != 'ASK_CLARIFICATION':
+                trace['applied'] = True
+                return rerouted, trace
+        return decision, trace
+
     async def _answer_turn(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
         norm = _fold(interpreted).strip(' .?!')
@@ -918,6 +973,13 @@ class LiveResearchService:
                 b1_decision='GREETING', status='GREETING', reason_code='GREETING',
                 message='Chào bạn! Bạn có thể hỏi thông tin công ty, nhân sự, báo cáo hoặc tin tức của doanh nghiệp.',
                 scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
+        intent = await self._classify_intent(interpreted, context)
+        if intent is not None and intent['decision'] == 'REFUSE':
+            # Rules found advice, prediction or a non-financial request: refuse before any price, graph or news search.
+            return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                        b1_decision='UNSUPPORTED', status='UNSUPPORTED', reason_code='INTENT_OUT_OF_SCOPE',
+                        message=OUT_OF_SCOPE_MESSAGE, scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[],
+                        intent=dict(label=intent['label'], decision='REFUSE', source='RULES', applied=True))
         if self.prices is not None:
             # Historical price questions are arithmetic on stored bars, not reading: answer them exactly.
             priced = await self.prices.answer(interpreted, today)
@@ -955,6 +1017,9 @@ class LiveResearchService:
                 and temporal_reply(_fold(interpreted))):
             context = copy.deepcopy(prior_scope)
         decision = news_reference(interpreted, context, previous_result) or analyze_live(interpreted, context, today=today)
+        intent_trace = None
+        if intent is not None:
+            decision, intent_trace = await self._apply_intent(intent, interpreted, decision, context, today)
         scope = decision['scope']
         result = dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
                       b1_decision=decision['decision'], status=decision['decision'],
@@ -962,6 +1027,8 @@ class LiveResearchService:
                       clarification=decision['message'] if decision['decision'] in ('ASK_CLARIFICATION', 'CLARIFICATION_STALLED') else None,
                       clarification_options=decision.get('clarification_options', []),
                       evidence_pack=None, errors=[])
+        if self.intent_classifier is not None:
+            result['intent'] = intent_trace  # None when the classifier was unavailable for this turn
         if decision['decision'] == 'RESOLVE_REFERENCE':
             return self._source_reference(result, previous_result)
         if decision['decision'] == 'MARKET_LOOKUP':

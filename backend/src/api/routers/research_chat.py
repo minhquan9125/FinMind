@@ -27,6 +27,12 @@ def configure_market_services(live=None, news=None):
     get_store.cache_clear()
 
 
+def _intent_classifier(embedder):
+    """Nhân's classify_intent bound to the app's shared BGE-M3 service (loaded once, reused)."""
+    from ...retrieval_orchestration.intent_v2_classifier import classify_intent
+    return lambda question, context: classify_intent(question, embedder=embedder)
+
+
 @lru_cache(maxsize=1)
 def get_store() -> PostgresSessionStore:
     """Web history always uses Postgres, including fixture-mode web sessions."""
@@ -78,6 +84,7 @@ def get_store() -> PostgresSessionStore:
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
             hybrid_router=routed,
             prices=PriceAnalytics(PriceStore(get_pool())),
+            intent_classifier=_intent_classifier(get_embedding_service()) if settings.intent_router_v2 else None,
         )
         from ...documents.research_metrics import ObservedResearch, ResearchMetrics
         engine = ObservedResearch(engine, ResearchMetrics(settings.admin_ingestion_directory))
