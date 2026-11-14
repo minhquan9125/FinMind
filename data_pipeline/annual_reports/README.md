@@ -24,6 +24,30 @@ backend/.venv/Scripts/python.exe data_pipeline/annual_reports/vietstock_download
 
 The manifest is `data/references/vietstock/annual_reports/manifest.json`. Downloaded files are stored under `files/{SYMBOL}/{YEAR}/`; ZIPs are retained and PDF members are extracted with path traversal checks. The manifest records the title, year, direct source URL, provider document ID, source update time, file hash, local paths, and collection status. Generated binary files are ignored by Git; the manifest and scripts remain reviewable.
 
+## Google Drive storage for PDFs
+
+The configured destination is folder `1B-sy-qNIAJOJaQLYv84ezf5Zgp8EjTRA` from the supplied Drive link. PDFs are organized as `cào_PDF/{SYMBOL}/{YEAR}/{PDF}` for the 10 default symbols. Existing flat Drive PDFs are moved into these folders during sync. A folder link only identifies the destination; the scripts need OAuth authorization from the Google account that can edit it. Create a Google Cloud **Desktop app** OAuth client, enable the Drive API, download its client JSON, and keep it outside Git. Install the dependencies from `requirements-ocr.txt` and set `FINMIND_DRIVE_CLIENT_SECRET` to the JSON file path. On the first Drive command, sign in through the browser; the refresh token is stored in the ignored repository-root `.drive-token.json` (override with `FINMIND_DRIVE_TOKEN_FILE`). Never paste either JSON file into chat or commit it.
+
+```powershell
+# Example: point to the Desktop app OAuth client JSON saved on your machine.
+$env:FINMIND_DRIVE_CLIENT_SECRET = "D:\private\finmind-drive-oauth.json"
+python -m pip install -r data_pipeline/annual_reports/requirements-ocr.txt
+
+# First upload the PDFs already in the manifest. This does not contact Vietstock or delete local PDFs.
+python data_pipeline/annual_reports/vietstock_download_annual.py --drive-sync-existing
+
+# After checking the manifest's drive_files entries, a later run can remove verified local copies.
+python data_pipeline/annual_reports/vietstock_download_annual.py --drive-sync-existing --drive-prune-local
+
+# Future crawls: upload each PDF and remove its local copy only after the Drive copy and manifest are verified.
+python data_pipeline/annual_reports/vietstock_download_annual.py --download --drive-upload --drive-prune-local
+
+# OCR works with local PDFs or downloads a verified temporary copy from Drive when local files are absent.
+python data_pipeline/annual_reports/OCR_annuals.py --symbols FPT --years 2024
+```
+
+Each PDF's Drive ID, name, size and hashes are stored under `drive_files` in the manifest. ZIP/RAR archives are only removed by `--drive-prune-local` after every PDF member has been uploaded and the manifest has been saved. OCR deletes the downloaded temporary PDF on completion or error. The Git tracked PDF history is separate: moving files to Drive does not shrink old Git commits, and tracked PDFs are not removed from Git by these commands.
+
 ## Text extraction and OCR
 
 If the manifest still points at `files/` but local PDFs have been moved to

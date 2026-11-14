@@ -111,8 +111,8 @@
       "provider_file_id": "501640",
       "title": "Báo cáo thường niên năm 2024",
       "file_url": "https://static2.vietstock.vn/data/HOSE/2024/BCTN/VN/BID_Baocaothuongnien_2024.zip",
-      "provider_updated_at": "2025-06-24T01:36:31.99Z",
-      "downloaded_at": "2026-09-30T03:37:59Z",
+      "provider_updated_at": "/Date(1750728991990)/",
+      "downloaded_at": "2026-11-13T15:43:23Z",
       "archive_path": "data/references/vietstock/annual_reports/files/BID/2024/BID_2024_501640.zip",
       "pdf_paths": [
         "data/references/vietstock/annual_reports/files/BID/2024/501640_pdfs/BID_Baocaothuongnien_2024.pdf",
@@ -125,7 +125,25 @@
       "company_name": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam",
       "file_extension": ".zip",
       "sha256": "afc328061fdc763fbc2c9ff560a64f6c590e802242b09c917673bfa9ffbd78ee",
-      "size_bytes": 12082193
+      "size_bytes": 12082193,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/BID/2024/501640_pdfs/BID_Baocaothuongnien_2024.pdf": {
+          "id": "1x-iE2mlBJ-KmHHsXH0tlyR4FRyHq7WRH",
+          "name": "BID_2024_BID_Baocaothuongnien_2024.pdf",
+          "size_bytes": 873123,
+          "md5": "57ec80981a01f312b138531a8aca225f",
+          "sha256": "956f9c258e293da40f833eba63b9037821fcd4b646b91f1290c02dc1e326e2f1",
+          "parent_id": "1pEW3jsg43ppIgqJGh8d4KMSH14zGIjL4"
+        },
+        "data/references/vietstock/annual_reports/files/BID/2024/501640_pdfs/Bao_cao_thuong_nien_BIDV_2024.FNL.pdf": {
+          "id": "18ICcZJmeMFLTX5cbifaM8RQBKnwOsLa6",
+          "name": "BID_2024_Bao_cao_thuong_nien_BIDV_2024.FNL.pdf",
+          "size_bytes": 14949547,
+          "md5": "844acc3e5cb6011841b587b9f7e04499",
+          "sha256": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+          "parent_id": "1pEW3jsg43ppIgqJGh8d4KMSH14zGIjL4"
+        }
+      }
     },
     {
       "symbol": "BID",
@@ -136,7 +154,7 @@
       "provider_file_id": "542007",
       "title": "Báo cáo thường niên năm 2025",
       "file_url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/BID_Baocaothuongnien_2025.pdf",
-      "provider_updated_at": "2026-04-20T04:56:48.07Z",
+      "provider_updated_at": "/Date(1776661008070)/",
       "downloaded_at": "2026-09-30T03:37:47Z",
       "archive_path": "data/references/vietstock/annual_reports/files/BID/2025/BID_2025_542007.pdf",
       "pdf_paths": [
@@ -148,8 +166,18 @@
       "exchange": "HoSE",
       "company_name": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam",
       "file_extension": ".pdf",
+      "size_bytes": 11723245,
       "sha256": "c95251ea276f8ea9138d58b4d95e45d90cfa8d341b0acabfaf9774f96d2ee586",
-      "size_bytes": 11723245
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/BID/2025/BID_2025_542007.pdf": {
+          "id": "17giv-dqBoFDbR2nW2uJco3scWalabaUk",
+          "name": "BID_2025_BID_2025_542007.pdf",
+          "size_bytes": 11723245,
+          "md5": "c9867623852844d2ef9f0fcba868471e",
+          "sha256": "c95251ea276f8ea9138d58b4d95e45d90cfa8d341b0acabfaf9774f96d2ee586",
+          "parent_id": "1Sgln_tRyXROTC0qjvAa_3zF_JkwFslUA"
+        }
+      }
     },
     {
       "symbol": "CMG",
@@ -260,7 +288,7 @@
       "provider_file_id": "511722",
       "title": "Báo cáo thường niên năm 2024",
       "file_url": "https://static2.vietstock.vn/data/HOSE/2024/BCTN/VN/CMG_Baocaothuongnien_2024.pdf",
-      "provider_updated_at": "2025-07-21T04:09:18.74Z",
+      "provider_updated_at": "/Date(1753070958740)/",
       "downloaded_at": "2026-09-30T03:38:27Z",
       "archive_path": "data/references/vietstock/annual_reports/files/CMG/2024/CMG_2024_511722.pdf",
       "pdf_paths": [
@@ -272,8 +300,18 @@
       "exchange": "HoSE",
       "company_name": "CTCP Tập đoàn Công nghệ CMC",
       "file_extension": ".pdf",
+      "size_bytes": 5491852,
       "sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
-      "size_bytes": 5491852
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/CMG/2024/CMG_2024_511722.pdf": {
+          "id": "1lS4Oa94TUH8cNGThS6AjtK4f_J2cNe6u",
+          "name": "CMG_2024_CMG_2024_511722.pdf",
+          "size_bytes": 5491852,
+          "md5": "205c6893e3ff15383aee03c6f4232094",
+          "sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
+          "parent_id": "1cwRDP0sf1RZ8VoKvAaEbqOVKoBDhKwWN"
+        }
+      }
     },
     {
       "symbol": "CMG",
@@ -284,7 +322,7 @@
       "provider_file_id": "553286",
       "title": "Báo cáo thường niên năm 2025",
       "file_url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/CMG_Baocaothuongnien_2025.pdf",
-      "provider_updated_at": "2026-07-20T09:19:26.62Z",
+      "provider_updated_at": "/Date(1784539166620)/",
       "downloaded_at": "2026-09-30T03:38:24Z",
       "archive_path": "data/references/vietstock/annual_reports/files/CMG/2025/CMG_2025_553286.pdf",
       "pdf_paths": [
@@ -296,8 +334,18 @@
       "exchange": "HoSE",
       "company_name": "CTCP Tập đoàn Công nghệ CMC",
       "file_extension": ".pdf",
+      "size_bytes": 14120121,
       "sha256": "4ed2a0ed75c3585adbf1925b0ce210d03d48142adc54f0a386553041c9c55f56",
-      "size_bytes": 14120121
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/CMG/2025/CMG_2025_553286.pdf": {
+          "id": "1TacisgfEUB-2F_At5Oa2c207iJzrIzHq",
+          "name": "CMG_2025_CMG_2025_553286.pdf",
+          "size_bytes": 14120121,
+          "md5": "56be2637a2142d5e1bd7ee489d7f1620",
+          "sha256": "4ed2a0ed75c3585adbf1925b0ce210d03d48142adc54f0a386553041c9c55f56",
+          "parent_id": "1gxeEi9F2PS_rv1UIId1y74-GXh3NcwAO"
+        }
+      }
     },
     {
       "symbol": "CMG",
@@ -308,8 +356,8 @@
       "provider_file_id": "554681",
       "title": "Báo cáo thường niên năm 2025 (điều chỉnh)",
       "file_url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/CMG_Baocaothuongnien_2025_DieuChinh.pdf",
-      "provider_updated_at": "2026-07-29T01:37:31.7Z",
-      "downloaded_at": "2026-09-30T03:38:22Z",
+      "provider_updated_at": "/Date(1785289051700)/",
+      "downloaded_at": "2026-11-13T15:44:00Z",
       "archive_path": "data/references/vietstock/annual_reports/files/CMG/2025/CMG_2025_554681.pdf",
       "pdf_paths": [
         "data/references/vietstock/annual_reports/files/CMG/2025/CMG_2025_554681.pdf"
@@ -321,7 +369,17 @@
       "company_name": "CTCP Tập đoàn Công nghệ CMC",
       "file_extension": ".pdf",
       "sha256": "ebbfa4b2cb9be09cf423fa4a1b76a3bb1495248589e9826cb41561e355cf8ccf",
-      "size_bytes": 5866910
+      "size_bytes": 5866910,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/CMG/2025/CMG_2025_554681.pdf": {
+          "id": "1i4lyKQ7PeGG_-j9eh5ipHZBV0y49k5AW",
+          "name": "CMG_2025_CMG_2025_554681.pdf",
+          "size_bytes": 5866910,
+          "md5": "cc251896e3dee11059fa977a51e448d1",
+          "sha256": "ebbfa4b2cb9be09cf423fa4a1b76a3bb1495248589e9826cb41561e355cf8ccf",
+          "parent_id": "1gxeEi9F2PS_rv1UIId1y74-GXh3NcwAO"
+        }
+      }
     },
     {
       "symbol": "CTG",
@@ -445,7 +503,17 @@
       "company_name": "Ngân hàng TMCP Công Thương Việt Nam",
       "file_extension": ".pdf",
       "sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
-      "size_bytes": 15761739
+      "size_bytes": 15761739,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/CTG/2024/CTG_2024_495896.pdf": {
+          "id": "1dGXdCzRMD67cN4dDgyhwhlnzBRPinZY-",
+          "name": "CTG_2024_CTG_2024_495896.pdf",
+          "size_bytes": 15761739,
+          "md5": "3aaca09cc0ca3edf0562955fc7eeb0f9",
+          "sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+          "parent_id": "1EdnlHG4Wr0TA-0RJziS7ynbxOyjO_lJH"
+        }
+      }
     },
     {
       "symbol": "CTG",
@@ -469,7 +537,17 @@
       "company_name": "Ngân hàng TMCP Công Thương Việt Nam",
       "file_extension": ".pdf",
       "sha256": "bb4d98a8b3e7122f5cc8c73d9e9fdf7d34652d68e0094307bcad99e5792f5650",
-      "size_bytes": 19822347
+      "size_bytes": 19822347,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/CTG/2025/CTG_2025_542401.pdf": {
+          "id": "1aU17AjUORMFfb65N4GCtf7WGuWqlKhz7",
+          "name": "CTG_2025_CTG_2025_542401.pdf",
+          "size_bytes": 19822347,
+          "md5": "0adcc2a1c7b1a4fd56f5be4026f1df53",
+          "sha256": "bb4d98a8b3e7122f5cc8c73d9e9fdf7d34652d68e0094307bcad99e5792f5650",
+          "parent_id": "1l19fjVOTHONXa-3BtZ8U5o7l7s7w6M80"
+        }
+      }
     },
     {
       "symbol": "ELC",
@@ -593,7 +671,17 @@
       "company_name": "CTCP Công Nghệ - Viễn Thông Elcom",
       "file_extension": ".pdf",
       "sha256": "937811ef432d7fb384a7d37bc6a8161e567e4d3519e8b10b5198e8126f6bb7fe",
-      "size_bytes": 9597029
+      "size_bytes": 9597029,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/ELC/2024/ELC_2024_500811.pdf": {
+          "id": "1Lsl6gAL1j_UcsgUFsfuCzye2Ffsr6tr7",
+          "name": "ELC_2024_ELC_2024_500811.pdf",
+          "size_bytes": 9597029,
+          "md5": "9a0fe622ec131bb19698769ff6c6adb1",
+          "sha256": "937811ef432d7fb384a7d37bc6a8161e567e4d3519e8b10b5198e8126f6bb7fe",
+          "parent_id": "1kZWLcsuk_x5BJz2Ks5B4SxDPpSe9QSLZ"
+        }
+      }
     },
     {
       "symbol": "ELC",
@@ -617,7 +705,17 @@
       "company_name": "CTCP Công Nghệ - Viễn Thông Elcom",
       "file_extension": ".pdf",
       "sha256": "be4b5f6af86c46135c47ce5bdaad099f0e11bc7603af54beaf124466c6bf952c",
-      "size_bytes": 16428400
+      "size_bytes": 16428400,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/ELC/2025/ELC_2025_541948.pdf": {
+          "id": "1Dv_PieWX3Q0rP5V_8aQeApy3pIVNb3Y3",
+          "name": "ELC_2025_ELC_2025_541948.pdf",
+          "size_bytes": 16428400,
+          "md5": "7481aa059198f627751ff9ed744e454c",
+          "sha256": "be4b5f6af86c46135c47ce5bdaad099f0e11bc7603af54beaf124466c6bf952c",
+          "parent_id": "1laKTytwUTCif3LPCAw0At92mMdbldT5B"
+        }
+      }
     },
     {
       "symbol": "FPT",
@@ -741,7 +839,17 @@
       "company_name": "CTCP FPT",
       "file_extension": ".pdf",
       "sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
-      "size_bytes": 10935353
+      "size_bytes": 10935353,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/FPT/2024/FPT_2024_498332.pdf": {
+          "id": "1GfZt-ZKwNt6iKUO_ZqyqK6YQqH7t6idR",
+          "name": "FPT_2024_FPT_2024_498332.pdf",
+          "size_bytes": 10935353,
+          "md5": "09c51fa7783b116734011d76842b1fb7",
+          "sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+          "parent_id": "1qa8tSg9v7T_XH40fQD2H9dDEqULT3N9S"
+        }
+      }
     },
     {
       "symbol": "FPT",
@@ -765,7 +873,17 @@
       "company_name": "CTCP FPT",
       "file_extension": ".pdf",
       "sha256": "5ea9b229656594f65e858ff7465ec600332fd623c501ce27d5b95de098275a35",
-      "size_bytes": 12755153
+      "size_bytes": 12755153,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/FPT/2025/FPT_2025_540297.pdf": {
+          "id": "1fd_-wK8FDfBMB2WQzDbwKNmZtVwY8f_P",
+          "name": "FPT_2025_FPT_2025_540297.pdf",
+          "size_bytes": 12755153,
+          "md5": "ea25e9924777decb0922eadcd89d9677",
+          "sha256": "5ea9b229656594f65e858ff7465ec600332fd623c501ce27d5b95de098275a35",
+          "parent_id": "1BezPhtMfNGoM6kKtZPSiU0lEbj1j_Tqt"
+        }
+      }
     },
     {
       "symbol": "ICT",
@@ -889,7 +1007,17 @@
       "company_name": "CTCP Viễn thông - Tin học Bưu điện",
       "file_extension": ".pdf",
       "sha256": "078b2f86dbe088ecd5185f54baa9e3832197bcf5416e552814febd2f2226bd12",
-      "size_bytes": 6539580
+      "size_bytes": 6539580,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/ICT/2024/ICT_2024_501210.pdf": {
+          "id": "1D_5o7mFAsS6CNl2VbGomVGBIq5a_eEoC",
+          "name": "ICT_2024_ICT_2024_501210.pdf",
+          "size_bytes": 6539580,
+          "md5": "5f52a8073cec6cc40a784a489d9feca8",
+          "sha256": "078b2f86dbe088ecd5185f54baa9e3832197bcf5416e552814febd2f2226bd12",
+          "parent_id": "17Zonw29nNmbDF0onV3kWrI7CE4HKv6Tz"
+        }
+      }
     },
     {
       "symbol": "ICT",
@@ -913,7 +1041,17 @@
       "company_name": "CTCP Viễn thông - Tin học Bưu điện",
       "file_extension": ".pdf",
       "sha256": "3e16232e390af4911ead01468310f1c9f0a3b4581a1c2ee46b72be147b84183a",
-      "size_bytes": 11824104
+      "size_bytes": 11824104,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/ICT/2025/ICT_2025_540815.pdf": {
+          "id": "18Cr1X7JnPVZvf7np9g_6g6tg_8wFvsm3",
+          "name": "ICT_2025_ICT_2025_540815.pdf",
+          "size_bytes": 11824104,
+          "md5": "bd8c4ac6d594b8987d20a762faa4094d",
+          "sha256": "3e16232e390af4911ead01468310f1c9f0a3b4581a1c2ee46b72be147b84183a",
+          "parent_id": "1i5r8mWK-IRDNeHnklSS4pP7wm9ydzCO0"
+        }
+      }
     },
     {
       "symbol": "ITD",
@@ -1037,7 +1175,17 @@
       "company_name": "CTCP Công nghệ ITD",
       "file_extension": ".pdf",
       "sha256": "643dc242f7f3bcc8274debb4e55034d2fcc280399850dc16e2a9c0cd5e65e8a2",
-      "size_bytes": 1931265
+      "size_bytes": 1931265,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/ITD/2024/ITD_2024_509309.pdf": {
+          "id": "15n3oHBWH_XDj51yq4AU99F6tJk5DtTNQ",
+          "name": "ITD_2024_ITD_2024_509309.pdf",
+          "size_bytes": 1931265,
+          "md5": "39b92d92568ee38f949043e8a7432593",
+          "sha256": "643dc242f7f3bcc8274debb4e55034d2fcc280399850dc16e2a9c0cd5e65e8a2",
+          "parent_id": "1ArszBEhdNtnyalsvO-H3kwNMsUF-5zXZ"
+        }
+      }
     },
     {
       "symbol": "ITD",
@@ -1061,7 +1209,17 @@
       "company_name": "CTCP Công nghệ ITD",
       "file_extension": ".pdf",
       "sha256": "e247879a9f33058799aae35d1d3f9d2aa634e36985cf7d8c3f09ac1592802fa0",
-      "size_bytes": 8016891
+      "size_bytes": 8016891,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/ITD/2025/ITD_2025_551266.pdf": {
+          "id": "1CkVbISefijnEKaEq4025GnCHPuHAMaT2",
+          "name": "ITD_2025_ITD_2025_551266.pdf",
+          "size_bytes": 8016891,
+          "md5": "c22aecffee7776df345fb15c3f76742b",
+          "sha256": "e247879a9f33058799aae35d1d3f9d2aa634e36985cf7d8c3f09ac1592802fa0",
+          "parent_id": "1huuVMd_UFT3Rz9Tu6YDFpfAU1rgNAzS2"
+        }
+      }
     },
     {
       "symbol": "MBB",
@@ -1185,7 +1343,17 @@
       "company_name": "Ngân hàng TMCP Quân đội",
       "file_extension": ".pdf",
       "sha256": "25325fe208bd565c45e0ac92587df429199b050a5eac7d0309eb05968511f2ae",
-      "size_bytes": 10348482
+      "size_bytes": 10348482,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/MBB/2024/MBB_2024_502187.pdf": {
+          "id": "15-GQMMKMz21VAppYzCarjo_lTE-RwLyZ",
+          "name": "MBB_2024_MBB_2024_502187.pdf",
+          "size_bytes": 10348482,
+          "md5": "0c4e2ac92924a008c406b54ed33712f2",
+          "sha256": "25325fe208bd565c45e0ac92587df429199b050a5eac7d0309eb05968511f2ae",
+          "parent_id": "15brNYcwEbpXVp-TpE8zD6OnOIHtbZzGW"
+        }
+      }
     },
     {
       "symbol": "MBB",
@@ -1209,7 +1377,17 @@
       "company_name": "Ngân hàng TMCP Quân đội",
       "file_extension": ".pdf",
       "sha256": "d67772421ddeceac697de71c5a84945ae7c34779bae44d6456738844d4950521",
-      "size_bytes": 12099938
+      "size_bytes": 12099938,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/MBB/2025/MBB_2025_537873.pdf": {
+          "id": "16bo-R0KxK6_NTCAk4VzwWWa7HuolnKF5",
+          "name": "MBB_2025_MBB_2025_537873.pdf",
+          "size_bytes": 12099938,
+          "md5": "f73851d7470df4b00788b75bf78f4597",
+          "sha256": "d67772421ddeceac697de71c5a84945ae7c34779bae44d6456738844d4950521",
+          "parent_id": "1fMbgzkRp3GEESr42Yrw5naK04s2m15so"
+        }
+      }
     },
     {
       "symbol": "TCB",
@@ -1333,7 +1511,17 @@
       "company_name": "Ngân hàng TMCP Kỹ thương Việt Nam",
       "file_extension": ".pdf",
       "sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
-      "size_bytes": 15887611
+      "size_bytes": 15887611,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/TCB/2024/TCB_2024_499236.pdf": {
+          "id": "1wS2pWBN0vpUigx1RYinaisM893urJzyA",
+          "name": "TCB_2024_TCB_2024_499236.pdf",
+          "size_bytes": 15887611,
+          "md5": "e931971de9fd8fe467a135e6a060de45",
+          "sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+          "parent_id": "1QeDivPXPEeDr1aUysHBrmJdy9cbKBfuL"
+        }
+      }
     },
     {
       "symbol": "TCB",
@@ -1357,7 +1545,17 @@
       "company_name": "Ngân hàng TMCP Kỹ thương Việt Nam",
       "file_extension": ".pdf",
       "sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
-      "size_bytes": 4768956
+      "size_bytes": 4768956,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/TCB/2025/TCB_2025_539917.pdf": {
+          "id": "1vxJSxVOL5qq7CFqoRrnzSb57nzZlWtE-",
+          "name": "TCB_2025_TCB_2025_539917.pdf",
+          "size_bytes": 4768956,
+          "md5": "698bfdbcd3434e5480a09026cf479122",
+          "sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+          "parent_id": "1dm65mQuNhBdalpSXtgq5ZnqHOEIYjY3L"
+        }
+      }
     },
     {
       "symbol": "VCB",
@@ -1468,7 +1666,7 @@
       "provider_file_id": "501264",
       "title": "Báo cáo thường niên năm 2024",
       "file_url": "https://static2.vietstock.vn/data/HOSE/2024/BCTN/VN/VCB_Baocaothuongnien_2024.pdf",
-      "provider_updated_at": "2025-04-18T08:56:09.96Z",
+      "provider_updated_at": "/Date(1744966569960)/",
       "downloaded_at": "2026-09-30T03:37:44Z",
       "archive_path": "data/references/vietstock/annual_reports/files/VCB/2024/VCB_2024_501264.pdf",
       "pdf_paths": [
@@ -1480,8 +1678,18 @@
       "exchange": "HoSE",
       "company_name": "Ngân hàng TMCP Ngoại thương Việt Nam",
       "file_extension": ".pdf",
+      "size_bytes": 7090215,
       "sha256": "0a54c7e25712351cef1df5be0e8c3f121ca45577864acaf0113aab2580db1120",
-      "size_bytes": 7090215
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/VCB/2024/VCB_2024_501264.pdf": {
+          "id": "1Cx80snYWph6JSCEtTNtUvVMV8v_dJM_8",
+          "name": "VCB_2024_VCB_2024_501264.pdf",
+          "size_bytes": 7090215,
+          "md5": "7e769f3ddaffabbc60588543f0f2f172",
+          "sha256": "0a54c7e25712351cef1df5be0e8c3f121ca45577864acaf0113aab2580db1120",
+          "parent_id": "15QeyI9FrmgSwdARqtinCAwS_CHkAjEjE"
+        }
+      }
     },
     {
       "symbol": "VCB",
@@ -1492,8 +1700,8 @@
       "provider_file_id": "541578",
       "title": "Báo cáo thường niên năm 2025",
       "file_url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/VCB_Baocaothuongnien_2025.zip",
-      "provider_updated_at": "2026-07-09T09:53:41.7Z",
-      "downloaded_at": "2026-09-30T03:37:42Z",
+      "provider_updated_at": "/Date(1783590821700)/",
+      "downloaded_at": "2026-11-13T15:44:18Z",
       "archive_path": "data/references/vietstock/annual_reports/files/VCB/2025/VCB_2025_541578.zip",
       "pdf_paths": [
         "data/references/vietstock/annual_reports/files/VCB/2025/541578_pdfs/VCB_Baocaothuongnien_2025.pdf",
@@ -1506,10 +1714,28 @@
       "company_name": "Ngân hàng TMCP Ngoại thương Việt Nam",
       "file_extension": ".zip",
       "sha256": "c1c6146116eb02830a96e7ee650319110163f52d7c9fd9b593905f927d15024a",
-      "size_bytes": 14624182
+      "size_bytes": 14624182,
+      "drive_files": {
+        "data/references/vietstock/annual_reports/files/VCB/2025/541578_pdfs/VCB_Baocaothuongnien_2025.pdf": {
+          "id": "19VGeCSwygoSOmUzpEmtbEMM_ygxO43xd",
+          "name": "VCB_2025_VCB_Baocaothuongnien_2025.pdf",
+          "size_bytes": 9410735,
+          "md5": "05c25275a4ac8b41202d0f6f60d6ac81",
+          "sha256": "1c93629bcd35e99ad19221e8af38400b53e84c154b4a9f93dcbaee83a9ebaba3",
+          "parent_id": "1MSbGVIChT2Vx7EGTWnd8VWllViaJMMUA"
+        },
+        "data/references/vietstock/annual_reports/files/VCB/2025/541578_pdfs/1604_ENG_VCB_Annual-Report-2025_v2.pdf": {
+          "id": "1ic0rV1RzzWGZK2o6UtlBrxq6Gaw5J-Xe",
+          "name": "VCB_2025_1604_ENG_VCB_Annual-Report-2025_v2.pdf",
+          "size_bytes": 8851890,
+          "md5": "a4106b0e582ff94551914a259d51f714",
+          "sha256": "63988b347b3743391dfec3647fdcdd1f2b06af09ead9a9f52c8bf8fd86352a27",
+          "parent_id": "1MSbGVIChT2Vx7EGTWnd8VWllViaJMMUA"
+        }
+      }
     }
   ],
-  "updated_at": "2026-09-30T03:38:42Z",
+  "updated_at": "2026-11-13T15:44:49Z",
   "catalog_scope": {
     "symbols": [
       "BID",
@@ -1534,27 +1760,20 @@
     ],
     "periods": 70,
     "documents": 71,
-    "page_url": "https://finance.vietstock.vn/tai-lieu/bao-cao-thuong-nien.htm",
-    "checked_at": "2026-09-30T03:38:42Z"
+    "checked_at": "2026-11-13T15:44:49Z",
+    "page_url": "https://finance.vietstock.vn/tai-lieu/bao-cao-thuong-nien.htm"
   },
   "last_run": {
     "symbols": [
-      "VCB",
       "BID",
-      "CTG",
-      "MBB",
-      "TCB",
-      "FPT",
       "CMG",
-      "ELC",
-      "ITD",
-      "ICT"
+      "VCB"
     ],
     "years": [
       2024,
       2025
     ],
-    "completed_at": "2026-09-30T03:38:42Z",
+    "completed_at": "2026-11-13T15:44:49Z",
     "downloaded": true,
     "page_url": "https://finance.vietstock.vn/tai-lieu/bao-cao-thuong-nien.htm"
   }

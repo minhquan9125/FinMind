@@ -75,8 +75,11 @@ outputs/tools/
 .runtime-contract/
 .runtime-pdf-audit/
 data/references/vietstock/annual_reports/files/
+data/references/vietstock/annual_reports/files_pdf/
 data/references/vietstock/annual_reports/searchable/
 data/references/vietstock/annual_reports/extracted/
+/.drive-token.json
+/.drive-client-secret.json
 /tmp/codex-backup-demo-safe-20260930.tar
 /tmp/codex-backup-demo-safe-20260930/
 /tmp/codex-backup-demo-safe2/

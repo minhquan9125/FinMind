@@ -32,6 +32,7 @@ from urllib.parse import urlparse
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from drive_store import DriveStore, DEFAULT_FOLDER_ID
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -352,16 +353,131 @@ def read_manifest() -> dict:
     return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
+def local_pdf(relative: str) -> Path:
+    path = (ROOT / relative).resolve()
+    if ROOT not in path.parents:
+        raise ValueError(f"PDF path escapes repository: {relative!r}")
+    if path.is_file():
+        return path
+    prefix = ROOT / "data" / "references" / "vietstock" / "annual_reports" / "files"
+    if prefix in path.parents:
+        mirror = (prefix.parent / "files_pdf" / path.relative_to(prefix)).resolve()
+        if ROOT in mirror.parents and mirror.is_file():
+            return mirror
+    raise FileNotFoundError(path)
+
+
+def upload_document_pdfs(document: dict, store: DriveStore) -> None:
+    """Update manifest metadata only after each remote PDF is verified."""
+    entries = dict(document.get("drive_files") or {})
+    for relative in document.get("pdf_paths") or []:
+        old = entries.get(relative)
+        try:
+            pdf = local_pdf(relative)
+        except FileNotFoundError:
+            if old:
+                entries[relative] = store.place_entry(old, str(document["symbol"]), int(document["year"]))
+                document["drive_files"] = dict(entries)
+                continue
+            raise
+        digest = sha256_file(pdf)
+        if (old and old.get("sha256") == digest and old.get("size_bytes") == pdf.stat().st_size
+                ):
+            try:
+                entries[relative] = store.place_entry(old, str(document["symbol"]), int(document["year"]))
+            except ValueError:
+                pass
+            else:
+                document["drive_files"] = dict(entries)
+                continue
+        entries[relative] = store.upload_pdf(pdf, str(document["symbol"]), int(document["year"]))
+        document["drive_files"] = dict(entries)
+    document["drive_files"] = entries
+
+
+def prune_verified_local(document: dict) -> None:
+    """Call only after the updated document has been persisted to the manifest."""
+    paths = document.get("pdf_paths") or []
+    entries = document.get("drive_files") or {}
+    if not paths or any(relative not in entries for relative in paths):
+        raise ValueError("Cannot prune before every PDF is verified on Drive")
+    report_root = ROOT / "data" / "references" / "vietstock" / "annual_reports"
+    pdf_roots = (report_root / "files", report_root / "files_pdf")
+    for relative in paths:
+        candidate = (ROOT / relative).resolve()
+        if not any(base in candidate.parents for base in pdf_roots) or candidate.suffix.casefold() != ".pdf":
+            raise ValueError(f"Refusing to prune PDF outside report storage: {relative}")
+    archive = document.get("archive_path")
+    archive_path = (ROOT / archive).resolve() if archive and archive not in paths else None
+    if archive_path and ((report_root / "files") not in archive_path.parents
+                         or archive_path.suffix.casefold() not in (".pdf", ".zip", ".rar")):
+        raise ValueError(f"Refusing to prune archive outside report storage: {archive}")
+    local_paths = set()
+    for relative in paths:
+        candidate = (ROOT / relative).resolve()
+        if pdf_roots[0] in candidate.parents:
+            other = pdf_roots[1] / candidate.relative_to(pdf_roots[0])
+        else:
+            other = pdf_roots[0] / candidate.relative_to(pdf_roots[1])
+        for pdf in (candidate, other.resolve()):
+            if not any(base in pdf.parents for base in pdf_roots):
+                raise ValueError(f"Refusing to prune PDF outside report storage: {pdf}")
+            if not pdf.is_file():
+                continue
+            if sha256_file(pdf) != entries[relative]["sha256"]:
+                raise ValueError(f"Local PDF changed after upload: {pdf}")
+            local_paths.add(pdf)
+    for pdf in sorted(local_paths):
+        pdf.unlink()
+    if archive_path and archive_path.is_file():
+        archive_path.unlink()
+
+
+def sync_existing_to_drive(args: argparse.Namespace) -> int:
+    """Upload already downloaded PDFs without contacting Vietstock."""
+    manifest = read_manifest()
+    store = DriveStore.from_oauth(args.drive_folder_id)
+    symbols = {part.strip().upper() for part in args.symbols.split(",") if part.strip()} if args.symbols else None
+    years = {int(part.strip()) for part in args.years.split(",") if part.strip()} if args.years else None
+    store.ensure_ticker_folders(sorted(symbols or {str(row.get("symbol", "")).upper() for row in manifest.get("documents", []) if row.get("symbol")}))
+    failed = 0
+    for document in manifest.get("documents", []):
+        if document.get("status") != "DOWNLOADED" or not document.get("pdf_paths"):
+            continue
+        if symbols and str(document.get("symbol", "")).upper() not in symbols:
+            continue
+        if years and int(document.get("year", 0)) not in years:
+            continue
+        try:
+            upload_document_pdfs(document, store)
+            save_document(manifest, document)
+            if args.drive_prune_local:
+                prune_verified_local(document)
+            safe_log(f"[ON_DRIVE] {document['symbol']} {document['year']}")
+        except Exception as exc:
+            failed += 1
+            save_document(manifest, document)
+            safe_log(f"[DRIVE_FAILED] {document.get('symbol')} {document.get('year')}: {exc}", error=True)
+    return 1 if failed else 0
+
+
 def save_document(manifest: dict, document: dict) -> None:
     key = (document.get("symbol"), document.get("year"), document.get("provider_file_id"))
     existing = manifest["documents"]
     for index, row in enumerate(existing):
         if (row.get("symbol"), row.get("year"), row.get("provider_file_id")) == key:
             updated = dict(document)
-            if row.get("status") in ("DOWNLOADED", "DOWNLOADED_NON_PDF", "ARCHIVE_UNPACK_REQUIRED") and row.get("file_url") == document.get("file_url"):
-                for field in ("status", "downloaded_at", "archive_path", "pdf_paths", "size_bytes", "sha256", "error"):
+            if (updated.get("status") == "CATALOGED"
+                    and row.get("status") in ("DOWNLOADED", "DOWNLOADED_NON_PDF", "ARCHIVE_UNPACK_REQUIRED")
+                    and row.get("file_url") == document.get("file_url")):
+                for field in ("status", "downloaded_at", "archive_path", "pdf_paths", "size_bytes", "sha256", "error", "drive_files"):
                     if row.get(field) is not None:
                         updated[field] = row[field]
+            elif (row.get("file_url") == updated.get("file_url")
+                  and row.get("sha256") and row.get("sha256") == updated.get("sha256")
+                  and row.get("pdf_paths") == updated.get("pdf_paths")
+                  and row.get("drive_files") and not updated.get("drive_files")):
+                updated["drive_files"] = row["drive_files"]
             existing[index] = updated
             break
     else:
@@ -382,6 +498,9 @@ def catalog_and_download(args: argparse.Namespace) -> int:
     if not years or any(year < 1990 or year > datetime.now().year for year in years):
         raise ValueError("--years must contain valid report years")
 
+    drive = DriveStore.from_oauth(args.drive_folder_id) if args.drive_upload else None
+    if drive:
+        drive.ensure_ticker_folders(symbols)
     client = VietstockAnnualClient(delay=args.delay)
     client.bootstrap()
     available = {int(row["YearPeriod"]): row for row in client.report_years() if row.get("YearPeriod") is not None}
@@ -449,6 +568,18 @@ def catalog_and_download(args: argparse.Namespace) -> int:
                         old_doc = next((item for item in manifest["documents"] if
                                         item.get("symbol") == symbol and item.get("year") == year and
                                         str(item.get("provider_file_id")) == file_id), None)
+                        if (drive and not args.force and old_doc and old_doc.get("file_url") == url
+                                and old_doc.get("status") == "DOWNLOADED" and old_doc.get("pdf_paths")
+                                and all(path in (old_doc.get("drive_files") or {})
+                                        and drive.verify_entry(old_doc["drive_files"][path]) for path in old_doc["pdf_paths"])):
+                            for field in ("status", "downloaded_at", "archive_path", "pdf_paths", "size_bytes", "sha256", "drive_files"):
+                                document[field] = old_doc.get(field)
+                            upload_document_pdfs(document, drive)
+                            save_document(manifest, document)
+                            if args.drive_prune_local:
+                                prune_verified_local(document)
+                            safe_log(f"[ON_DRIVE] {symbol} {year}")
+                            continue
                         can_reuse = (
                             archive_path.exists() and not args.force and old_doc and
                             old_doc.get("file_url") == url and old_doc.get("status") in (
@@ -500,7 +631,18 @@ def catalog_and_download(args: argparse.Namespace) -> int:
                         document["downloaded_at"] = utc_now()
                         document["status"] = "DOWNLOADED"
                         downloaded += 1
+                        if drive:
+                            try:
+                                upload_document_pdfs(document, drive)
+                            except Exception as exc:
+                                document["drive_error"] = f"{type(exc).__name__}: {exc}"
+                                save_document(manifest, document)
+                                failed += 1
+                                safe_log(f"[DRIVE_FAILED] {symbol} {year}: {exc}", error=True)
+                                continue
                     save_document(manifest, document)
+                    if drive and args.drive_prune_local and document["status"] == "DOWNLOADED":
+                        prune_verified_local(document)
                     safe_log(f"[{document['status']}] {symbol} {year}")
             except Exception as exc:
                 base["status"] = "FAILED"
@@ -549,7 +691,23 @@ def main() -> int:
     parser.add_argument("--download", action="store_true", help="Download reported files (PDF or ZIP) and safely unpack PDFs")
     parser.add_argument("--force", action="store_true", help="Replace existing downloaded source files")
     parser.add_argument("--delay", type=float, default=0.6, help="Delay in seconds between provider requests")
+    parser.add_argument("--drive-upload", action="store_true", help="Upload downloaded PDFs to your Google Drive folder")
+    parser.add_argument("--drive-sync-existing", action="store_true", help="Upload PDFs already listed in the manifest without recrawling")
+    parser.add_argument("--drive-prune-local", action="store_true", help="Remove local PDFs after verified upload and manifest save")
+    parser.add_argument("--drive-folder-id", default=DEFAULT_FOLDER_ID, help="Google Drive destination folder ID")
     args = parser.parse_args()
+    if args.drive_prune_local and not (args.drive_upload or args.drive_sync_existing):
+        parser.error("--drive-prune-local requires --drive-upload or --drive-sync-existing")
+    if args.drive_upload and not args.download:
+        parser.error("--drive-upload requires --download")
+    if args.drive_sync_existing:
+        if args.download or args.catalog_only or args.drive_upload:
+            parser.error("--drive-sync-existing cannot be combined with --download, --catalog-only or --drive-upload")
+        try:
+            return sync_existing_to_drive(args)
+        except (RuntimeError, ValueError, OSError) as exc:
+            print(f"Google Drive sync failed: {exc}", file=sys.stderr)
+            return 2
     if args.catalog_only and args.download:
         parser.error("choose either --catalog-only or --download")
     if not args.catalog_only and not args.download:

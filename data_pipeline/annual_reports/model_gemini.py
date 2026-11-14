@@ -17,8 +17,7 @@ from OCR_annuals import (
     OUTPUT_ROOT,
     ROOT,
     atomic_json,
-    safe_repo_file,
-    sha256_file,
+    pdf_identity,
 )
 
 
@@ -396,20 +395,20 @@ def main() -> int:
         year = int(record.get("year", 0))
         for relative_pdf in record.get("pdf_paths") or []:
             try:
-                pdf = safe_repo_file(relative_pdf)
+                filename, digest = pdf_identity(record, relative_pdf)
             except FileNotFoundError:
                 unavailable_pdfs.append({"symbol": symbol, "year": year, "manifest_pdf": relative_pdf})
                 continue
-            json_path = output_root / symbol / str(year) / f"{pdf.stem}.json"
+            json_path = output_root / symbol / str(year) / f"{Path(filename).stem}.json"
             if not json_path.is_file():
                 continue
             try:
                 payload = json.loads(json_path.read_text(encoding="utf-8"))
             except (OSError, json.JSONDecodeError) as exc:
-                failures.append({"symbol": symbol, "year": year, "pdf": pdf.name, "error": f"Invalid extraction JSON: {type(exc).__name__}"})
+                failures.append({"symbol": symbol, "year": year, "pdf": filename, "error": f"Invalid extraction JSON: {type(exc).__name__}"})
                 continue
-            if payload.get("document", {}).get("sha256") != sha256_file(pdf):
-                failures.append({"symbol": symbol, "year": year, "pdf": pdf.name, "error": "PDF hash differs from extraction JSON"})
+            if payload.get("document", {}).get("sha256") != digest:
+                failures.append({"symbol": symbol, "year": year, "pdf": filename, "error": "PDF hash differs from extraction JSON"})
                 continue
 
             changed = False

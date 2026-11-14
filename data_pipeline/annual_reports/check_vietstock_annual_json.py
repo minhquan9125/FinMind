@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-import hashlib
 import argparse
 import json
 from pathlib import Path
 
-from OCR_annuals import safe_repo_file
+from OCR_annuals import pdf_identity
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -16,24 +15,16 @@ MANIFEST = BASE / "manifest.json"
 EXTRACTED = BASE / "extracted"
 
 
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 def audit_file(record: dict, relative_pdf: str, extracted_root: Path = EXTRACTED) -> dict:
     try:
-        source = safe_repo_file(relative_pdf)
+        filename, source_hash = pdf_identity(record, relative_pdf)
     except ValueError:
         return {"status": "FAIL", "symbol": record.get("symbol"), "year": record.get("year"),
                 "source_pdf": relative_pdf, "issues": ["PDF_PATH_ESCAPES_REPOSITORY"]}
     except FileNotFoundError:
         return {"status": "PARTIAL", "symbol": record.get("symbol"), "year": record.get("year"),
                 "source_pdf": relative_pdf, "issues": [], "warnings": ["MANIFEST_PDF_NOT_LOCAL"]}
-    output = extracted_root / str(record.get("symbol", "UNKNOWN")).upper() / str(record.get("year", "UNKNOWN")) / f"{source.stem}.json"
+    output = extracted_root / str(record.get("symbol", "UNKNOWN")).upper() / str(record.get("year", "UNKNOWN")) / f"{Path(filename).stem}.json"
     issues: list[str] = []
     output_label = output.relative_to(ROOT).as_posix() if output.is_relative_to(ROOT) else str(output)
     if not output.is_file():
@@ -48,7 +39,6 @@ def audit_file(record: dict, relative_pdf: str, extracted_root: Path = EXTRACTED
     extraction = data.get("extraction") or {}
     pages = data.get("pages")
     summary = data.get("summary") or {}
-    source_hash = sha256_file(source)
     schema_version = str(data.get("schema_version", ""))
     combined_schema = data.get("schema_name") == "finmind.annual_report_extraction" and schema_version == "2.0"
     legacy_schema = data.get("schema_name") == "finmind.annual_report_text_extraction" and schema_version == "1.1"

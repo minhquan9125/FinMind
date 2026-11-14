@@ -22,11 +22,13 @@ import shutil
 import subprocess
 import tempfile
 import unicodedata
+from contextlib import ExitStack
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from pypdf import PdfReader
+from drive_store import resolve_pdf
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -148,6 +150,18 @@ def safe_repo_file(relative: str) -> Path:
         if ROOT in mirror.parents and mirror.is_file():
             return mirror
     raise FileNotFoundError(path)
+
+
+def pdf_identity(record: dict[str, Any], relative_pdf: str) -> tuple[str, str]:
+    """Get PDF filename and hash without downloading it just to clean OCR text."""
+    try:
+        local = safe_repo_file(relative_pdf)
+    except FileNotFoundError:
+        entry = (record.get("drive_files") or {}).get(relative_pdf)
+        if not entry:
+            raise
+        return Path(relative_pdf).name, entry["sha256"]
+    return local.name, sha256_file(local)
 
 
 def native_text_usable(text: str) -> bool:
@@ -358,16 +372,16 @@ def make_document(record: dict[str, Any], pdf: Path, relative_pdf: str, digest: 
     }
 
 
-def process_document(record: dict[str, Any], tesseract: str, *, dpi: int, pdftoppm: str, force: bool,
+def _process_document(record: dict[str, Any], tesseract: str, *, dpi: int, pdftoppm: str, force: bool,
                      ocr_all: bool, output_root: Path = OUTPUT_ROOT, save_review_images: bool = True, preview_root: Path | None = None,
-                     no_preprocess: bool = False) -> dict[str, Any]:
+                     no_preprocess: bool = False, pdf_resolver: Callable[[str], Path] = safe_repo_file) -> dict[str, Any]:
     symbol = str(record.get("symbol", "")).upper()
     year = int(record.get("year", 0))
     outputs = []
     missing_files = []
     for relative_pdf in record.get("pdf_paths") or []:
         try:
-            pdf = safe_repo_file(relative_pdf)
+            pdf = pdf_resolver(relative_pdf)
         except FileNotFoundError:
             missing_files.append(relative_pdf)
             print(f"[NOT_LOCAL] Manifest PDF path: {relative_pdf}")
@@ -534,6 +548,16 @@ def process_document(record: dict[str, Any], tesseract: str, *, dpi: int, pdftop
     return {"symbol": symbol, "year": year, "files": outputs, "missing_files": missing_files}
 
 
+def process_document(record: dict[str, Any], tesseract: str, *, dpi: int, pdftoppm: str, force: bool,
+                     ocr_all: bool, output_root: Path = OUTPUT_ROOT, save_review_images: bool = True,
+                     preview_root: Path | None = None, no_preprocess: bool = False) -> dict[str, Any]:
+    with ExitStack() as stack:
+        resolver = lambda relative: stack.enter_context(resolve_pdf(record, relative, safe_repo_file))
+        return _process_document(record, tesseract, dpi=dpi, pdftoppm=pdftoppm, force=force,
+                                 ocr_all=ocr_all, output_root=output_root, save_review_images=save_review_images,
+                                 preview_root=preview_root, no_preprocess=no_preprocess, pdf_resolver=resolver)
+
+
 def reclean_existing_json(records: list[dict[str, Any]], output_root: Path = OUTPUT_ROOT) -> tuple[int, int]:
     """Refresh text_clean from preserved OCR text without invoking Tesseract."""
     updated_pages = 0
@@ -543,11 +567,11 @@ def reclean_existing_json(records: list[dict[str, Any]], output_root: Path = OUT
         year = str(record.get("year", ""))
         for relative_pdf in record.get("pdf_paths") or []:
             try:
-                pdf = safe_repo_file(relative_pdf)
+                filename, digest = pdf_identity(record, relative_pdf)
             except FileNotFoundError:
                 print(f"[NOT_LOCAL] Manifest PDF path: {relative_pdf}")
                 continue
-            target = output_root / symbol / year / f"{pdf.stem}.json"
+            target = output_root / symbol / year / f"{Path(filename).stem}.json"
             if not target.is_file():
                 continue
             try:
@@ -555,7 +579,7 @@ def reclean_existing_json(records: list[dict[str, Any]], output_root: Path = OUT
             except (OSError, json.JSONDecodeError) as exc:
                 print(f"[SKIP] {target.relative_to(ROOT)}: invalid JSON ({exc})")
                 continue
-            if payload.get("document", {}).get("sha256") != sha256_file(pdf):
+            if payload.get("document", {}).get("sha256") != digest:
                 print(f"[SKIP] {target.relative_to(ROOT)}: PDF hash differs")
                 continue
 
