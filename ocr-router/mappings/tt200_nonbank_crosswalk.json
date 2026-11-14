@@ -1,0 +1,1339 @@
+{
+  "schema_version": "1.0.0",
+  "accounting_standard": "TT200_NONBANK",
+  "description": "Mapping from TT200/TT202 statutory line codes to FinMind common metric IDs.",
+  "entries": [
+    {
+      "statement": "balance_sheet",
+      "code": "270",
+      "metric_id": "common.total_assets",
+      "standard_label": "TỔNG CỘNG TÀI SẢN",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tổng cộng tài sản theo B01-DN/HN"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "100",
+      "metric_id": "common.current_assets",
+      "standard_label": "TÀI SẢN NGẮN HẠN",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "110",
+      "metric_id": "common.cash_equivalents",
+      "standard_label": "Tiền và các khoản tương đương tiền",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tiền và tương đương tiền tổng nhóm"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "111",
+      "metric_id": "common.cash",
+      "standard_label": "Tiền",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tiền mặt, tiền gửi ngân hàng"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "112",
+      "metric_id": "common.cash_equivalents_only",
+      "standard_label": "Các khoản tương đương tiền",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Các khoản tương đương tiền kỳ hạn <= 3 tháng"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "120",
+      "metric_id": "common.short_term_financial_investments",
+      "standard_label": "Đầu tư tài chính ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Đầu tư tài chính ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "121",
+      "metric_id": "common.trading_securities_corporate",
+      "standard_label": "Chứng khoán kinh doanh",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Chứng khoán kinh doanh"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "122",
+      "metric_id": "common.trading_securities_allowance",
+      "standard_label": "Dự phòng giảm giá chứng khoán kinh doanh",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Dự phòng giảm giá chứng khoán kinh doanh"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "123",
+      "metric_id": "common.held_to_maturity_current",
+      "standard_label": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Đầu tư nắm giữ đến ngày đáo hạn ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "130",
+      "metric_id": "common.receivables_current_net",
+      "standard_label": "Các khoản phải thu ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu ngắn hạn thuần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "131",
+      "metric_id": "common.trade_receivables_current",
+      "standard_label": "Phải thu ngắn hạn của khách hàng",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu khách hàng ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "132",
+      "metric_id": "common.supplier_prepayments_current",
+      "standard_label": "Trả trước cho người bán ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Trả trước cho người bán ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "133",
+      "metric_id": "common.internal_receivables_current",
+      "standard_label": "Phải thu nội bộ ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu nội bộ ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "134",
+      "metric_id": "common.construction_contract_receivables",
+      "standard_label": "Phải thu theo tiến độ kế hoạch hợp đồng xây dựng",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu hợp đồng xây dựng"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "135",
+      "metric_id": "common.loan_receivables_current",
+      "standard_label": "Phải thu về cho vay ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu về cho vay ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "136",
+      "metric_id": "common.other_receivables_current",
+      "standard_label": "Phải thu ngắn hạn khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu khác ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "137",
+      "metric_id": "common.receivables_allowance_current",
+      "standard_label": "Dự phòng phải thu ngắn hạn khó đòi",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Dự phòng phải thu ngắn hạn khó đòi"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "139",
+      "metric_id": "common.assets_shortage_pending",
+      "standard_label": "Tài sản thiếu chờ xử lý",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản thiếu chờ xử lý"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "140",
+      "metric_id": "common.inventories",
+      "standard_label": "Hàng tồn kho",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Hàng tồn kho thuần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "141",
+      "metric_id": "common.inventories_gross",
+      "standard_label": "Hàng tồn kho (giá gốc)",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguyên giá hàng tồn kho"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "149",
+      "metric_id": "common.inventory_write_down_allowance",
+      "standard_label": "Dự phòng giảm giá hàng tồn kho",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Dự phòng giảm giá hàng tồn kho"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "150",
+      "metric_id": "common.other_current_assets_total",
+      "standard_label": "Tài sản ngắn hạn khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản ngắn hạn khác tổng nhóm"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "151",
+      "metric_id": "common.prepaid_expenses_current",
+      "standard_label": "Chi phí trả trước ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Chi phí trả trước ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "152",
+      "metric_id": "common.vat_recoverable",
+      "standard_label": "Thuế GTGT được khấu trừ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Thuế GTGT được khấu trừ"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "153",
+      "metric_id": "common.state_receivables",
+      "standard_label": "Thuế và các khoản khác phải thu Nhà nước",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Thuế và các khoản khác phải thu Nhà nước"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "154",
+      "metric_id": "common.government_bond_repo_assets",
+      "standard_label": "Giao dịch mua bán lại trái phiếu Chính phủ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản repo trái phiếu"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "155",
+      "metric_id": "common.other_current_assets_residual",
+      "standard_label": "Tài sản ngắn hạn khác (còn lại)",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản ngắn hạn khác mục con"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "200",
+      "metric_id": "common.noncurrent_assets",
+      "standard_label": "TÀI SẢN DÀI HẠN",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "210",
+      "metric_id": "common.receivables_noncurrent_net",
+      "standard_label": "Các khoản phải thu dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu dài hạn thuần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "211",
+      "metric_id": "common.trade_receivables_noncurrent",
+      "standard_label": "Phải thu dài hạn của khách hàng",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu khách hàng dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "212",
+      "metric_id": "common.supplier_prepayments_noncurrent",
+      "standard_label": "Trả trước cho người bán dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Trả trước cho người bán dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "213",
+      "metric_id": "common.operating_capital_in_dependent_units",
+      "standard_label": "Vốn kinh doanh ở đơn vị trực thuộc",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Vốn kinh doanh đơn vị trực thuộc"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "214",
+      "metric_id": "common.internal_receivables_noncurrent",
+      "standard_label": "Phải thu nội bộ dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu nội bộ dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "215",
+      "metric_id": "common.loan_receivables_noncurrent",
+      "standard_label": "Phải thu về cho vay dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu về cho vay dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "216",
+      "metric_id": "common.other_receivables_noncurrent",
+      "standard_label": "Phải thu dài hạn khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải thu dài hạn khác"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "219",
+      "metric_id": "common.receivables_allowance_noncurrent",
+      "standard_label": "Dự phòng phải thu dài hạn khó đòi",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Dự phòng phải thu dài hạn khó đòi"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "220",
+      "metric_id": "common.fixed_assets",
+      "standard_label": "Tài sản cố định",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản cố định thuần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "221",
+      "metric_id": "common.tangible_fixed_assets",
+      "standard_label": "Tài sản cố định hữu hình",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "TSCĐ hữu hình thuần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "222",
+      "metric_id": "common.tangible_fixed_assets_gross",
+      "standard_label": "Nguyên giá TSCĐ hữu hình",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguyên giá TSCĐ hữu hình"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "223",
+      "metric_id": "common.tangible_fixed_assets_accumulated_depreciation",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ hữu hình",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Hao mòn lũy kế TSCĐ hữu hình"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "224",
+      "metric_id": "common.finance_lease_fixed_assets",
+      "standard_label": "Tài sản cố định thuê tài chính",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "TSCĐ thuê tài chính thuần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "225",
+      "metric_id": "common.finance_lease_fixed_assets_gross",
+      "standard_label": "Nguyên giá TSCĐ thuê tài chính",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguyên giá TSCĐ thuê tài chính"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "226",
+      "metric_id": "common.finance_lease_fixed_assets_accumulated_depreciation",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ thuê tài chính",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Hao mòn lũy kế TSCĐ thuê tài chính"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "227",
+      "metric_id": "common.intangible_assets",
+      "standard_label": "Tài sản cố định vô hình",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "TSCĐ vô hình thuần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "228",
+      "metric_id": "common.intangible_fixed_assets_gross",
+      "standard_label": "Nguyên giá TSCĐ vô hình",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguyên giá TSCĐ vô hình"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "229",
+      "metric_id": "common.intangible_fixed_assets_accumulated_depreciation",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ vô hình",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Hao mòn lũy kế TSCĐ vô hình"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "230",
+      "metric_id": "common.investment_property",
+      "standard_label": "Bất động sản đầu tư",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "BĐS đầu tư thuần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "231",
+      "metric_id": "common.investment_property_gross",
+      "standard_label": "Nguyên giá BĐS đầu tư",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguyên giá BĐS đầu tư"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "232",
+      "metric_id": "common.investment_property_accumulated_depreciation",
+      "standard_label": "Giá trị hao mòn lũy kế BĐS đầu tư",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Hao mòn lũy kế BĐS đầu tư"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "240",
+      "metric_id": "common.long_term_assets_in_progress",
+      "standard_label": "Tài sản dở dang dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản dở dang dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "241",
+      "metric_id": "common.long_term_operating_work_in_progress",
+      "standard_label": "Chi phí sản xuất, kinh doanh dở dang dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Chi phí SXKD dở dang dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "242",
+      "metric_id": "common.construction_in_progress",
+      "standard_label": "Chi phí xây dựng cơ bản dở dang",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Chi phí XDCB dở dang"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "250",
+      "metric_id": "common.long_term_financial_investments",
+      "standard_label": "Đầu tư tài chính dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Đầu tư tài chính dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "251",
+      "metric_id": "common.investments_in_subsidiaries",
+      "standard_label": "Đầu tư vào công ty con",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Đầu tư vào công ty con"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "252",
+      "metric_id": "common.investments_in_associates_joint_ventures",
+      "standard_label": "Đầu tư vào công ty liên doanh, liên kết",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Đầu tư công ty liên kết liên doanh"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "253",
+      "metric_id": "common.other_equity_investments",
+      "standard_label": "Đầu tư góp vốn vào đơn vị khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Đầu tư vốn vào đơn vị khác"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "254",
+      "metric_id": "common.long_term_equity_investments_allowance",
+      "standard_label": "Dự phòng tổn thất đầu tư vào đơn vị khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Dự phòng đầu tư tài chính dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "255",
+      "metric_id": "common.held_to_maturity_noncurrent",
+      "standard_label": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Đầu tư nắm giữ đến ngày đáo hạn dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "260",
+      "metric_id": "common.other_noncurrent_assets_total",
+      "standard_label": "Tài sản dài hạn khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản dài hạn khác tổng nhóm"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "261",
+      "metric_id": "common.prepaid_expenses_noncurrent",
+      "standard_label": "Chi phí trả trước dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Chi phí trả trước dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "262",
+      "metric_id": "common.deferred_tax_assets",
+      "standard_label": "Tài sản thuế thu nhập hoãn lại",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản thuế TNDN hoãn lại"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "263",
+      "metric_id": "common.long_term_spares",
+      "standard_label": "Thiết bị, vật tư, phụ tùng thay thế dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Thiết bị vật tư dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "268",
+      "metric_id": "common.other_noncurrent_assets_residual",
+      "standard_label": "Tài sản dài hạn khác (còn lại)",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản dài hạn khác mục con"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "269",
+      "metric_id": "common.goodwill",
+      "standard_label": "Lợi thế thương mại",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Lợi thế thương mại"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "300",
+      "metric_id": "common.total_liabilities",
+      "standard_label": "NỢ PHẢI TRẢ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tổng nợ phải trả"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "310",
+      "metric_id": "common.current_liabilities",
+      "standard_label": "Nợ ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nợ ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "311",
+      "metric_id": "common.trade_payables_current",
+      "standard_label": "Phải trả người bán ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả người bán ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "312",
+      "metric_id": "common.customer_advances_current",
+      "standard_label": "Người mua trả tiền trước ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Người mua trả tiền trước ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "313",
+      "metric_id": "common.taxes_payable_current",
+      "standard_label": "Thuế và các khoản phải nộp Nhà nước",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Thuế phải nộp ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "314",
+      "metric_id": "common.employees_payable",
+      "standard_label": "Phải trả người lao động",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả người lao động"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "315",
+      "metric_id": "common.accrued_expenses_current",
+      "standard_label": "Chi phí phải trả ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Chi phí phải trả ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "316",
+      "metric_id": "common.internal_payables_current",
+      "standard_label": "Phải trả nội bộ ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả nội bộ ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "317",
+      "metric_id": "common.construction_contract_payables_current",
+      "standard_label": "Phải trả theo tiến độ kế hoạch hợp đồng xây dựng",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả tiến độ HĐ xây dựng"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "318",
+      "metric_id": "common.deferred_revenue_current",
+      "standard_label": "Doanh thu chưa thực hiện ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Doanh thu chưa thực hiện ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "319",
+      "metric_id": "common.other_payables_current",
+      "standard_label": "Phải trả ngắn hạn khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả ngắn hạn khác"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "320",
+      "metric_id": "common.short_term_borrowings",
+      "standard_label": "Vay và nợ thuê tài chính ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Vay ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "321",
+      "metric_id": "common.current_provisions",
+      "standard_label": "Dự phòng phải trả ngắn hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Dự phòng phải trả ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "322",
+      "metric_id": "common.reward_welfare_fund",
+      "standard_label": "Quỹ khen thưởng, phúc lợi",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Quỹ khen thưởng phúc lợi"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "323",
+      "metric_id": "common.price_stabilization_fund",
+      "standard_label": "Quỹ bình ổn giá",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Quỹ bình ổn giá"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "324",
+      "metric_id": "common.government_bond_repo_liabilities",
+      "standard_label": "Giao dịch mua bán lại trái phiếu Chính phủ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nợ repo trái phiếu"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "330",
+      "metric_id": "common.noncurrent_liabilities",
+      "standard_label": "Nợ dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nợ dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "331",
+      "metric_id": "common.trade_payables_noncurrent",
+      "standard_label": "Phải trả người bán dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả người bán dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "332",
+      "metric_id": "common.customer_advances_noncurrent",
+      "standard_label": "Người mua trả tiền trước dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Người mua trả tiền trước dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "333",
+      "metric_id": "common.accrued_expenses_noncurrent",
+      "standard_label": "Chi phí phải trả dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Chi phí phải trả dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "334",
+      "metric_id": "common.internal_operating_capital_payable",
+      "standard_label": "Phải trả nội bộ về vốn kinh doanh",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả nội bộ về vốn kinh doanh"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "335",
+      "metric_id": "common.internal_payables_noncurrent",
+      "standard_label": "Phải trả nội bộ dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả nội bộ dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "336",
+      "metric_id": "common.deferred_revenue_noncurrent",
+      "standard_label": "Doanh thu chưa thực hiện dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Doanh thu chưa thực hiện dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "337",
+      "metric_id": "common.other_payables_noncurrent",
+      "standard_label": "Phải trả dài hạn khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Phải trả dài hạn khác"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "338",
+      "metric_id": "common.long_term_borrowings",
+      "standard_label": "Vay và nợ thuê tài chính dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Vay dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "339",
+      "metric_id": "common.convertible_bonds_liability",
+      "standard_label": "Trái phiếu chuyển đổi",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Trái phiếu chuyển đổi"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "340",
+      "metric_id": "common.preferred_shares_liability",
+      "standard_label": "Cổ phiếu ưu đãi (Nợ)",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Cổ phiếu ưu đãi nợ phải trả"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "341",
+      "metric_id": "common.deferred_tax_liabilities",
+      "standard_label": "Thuế thu nhập hoãn lại phải trả",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Thuế TNDN hoãn lại phải trả"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "342",
+      "metric_id": "common.noncurrent_provisions",
+      "standard_label": "Dự phòng phải trả dài hạn",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Dự phòng phải trả dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "343",
+      "metric_id": "common.science_technology_fund",
+      "standard_label": "Quỹ phát triển khoa học và công nghệ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Quỹ phát triển KH&CN"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "400",
+      "metric_id": "common.equity",
+      "standard_label": "VỐN CHỦ SỞ HỮU",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Tổng vốn chủ sở hữu"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "410",
+      "metric_id": "common.equity_core",
+      "standard_label": "Vốn chủ sở hữu (nhóm vốn)",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Vốn chủ sở hữu nhóm cốt lõi"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "411",
+      "metric_id": "common.paid_in_capital",
+      "standard_label": "Vốn góp của chủ sở hữu",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Vốn góp chủ sở hữu / Vốn điều lệ"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "411a",
+      "metric_id": "common.ordinary_share_capital",
+      "standard_label": "Cổ phiếu phổ thông có quyền biểu quyết",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Cổ phiếu phổ thông"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "412",
+      "metric_id": "common.share_premium",
+      "standard_label": "Thặng dư vốn cổ phần",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Thặng dư vốn cổ phần"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "413",
+      "metric_id": "common.convertible_bond_option_equity",
+      "standard_label": "Quyền chọn chuyển đổi trái phiếu",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Quyền chọn chuyển đổi trái phiếu"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "414",
+      "metric_id": "common.other_owners_capital",
+      "standard_label": "Vốn khác của chủ sở hữu",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Vốn khác của chủ sở hữu"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "415",
+      "metric_id": "common.treasury_shares_cost",
+      "standard_label": "Cổ phiếu quỹ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Cổ phiếu quỹ"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "416",
+      "metric_id": "common.asset_revaluation_reserve",
+      "standard_label": "Chênh lệch đánh giá lại tài sản",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Chênh lệch đánh giá lại tài sản"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "417",
+      "metric_id": "common.foreign_exchange_translation_reserve",
+      "standard_label": "Chênh lệch tỷ giá hối đoái",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Chênh lệch tỷ giá hối đoái"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "418",
+      "metric_id": "common.development_investment_fund",
+      "standard_label": "Quỹ đầu tư phát triển",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Quỹ đầu tư phát triển"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "419",
+      "metric_id": "common.enterprise_reorganization_fund",
+      "standard_label": "Quỹ hỗ trợ sắp xếp doanh nghiệp",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Quỹ hỗ trợ sắp xếp doanh nghiệp"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "420",
+      "metric_id": "common.other_equity_funds",
+      "standard_label": "Quỹ khác thuộc vốn chủ sở hữu",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Quỹ khác thuộc vốn chủ sở hữu"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "421",
+      "metric_id": "common.retained_earnings",
+      "standard_label": "Lợi nhuận sau thuế chưa phân phối",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Lợi nhuận sau thuế chưa phân phối"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "421a",
+      "metric_id": "common.retained_earnings_prior",
+      "standard_label": "LNST chưa phân phối lũy kế đến cuối kỳ trước",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "LNST chưa phân phối lũy kế đến cuối kỳ trước"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "421b",
+      "metric_id": "common.retained_earnings_current",
+      "standard_label": "LNST chưa phân phối kỳ này",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "LNST chưa phân phối kỳ này"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "422",
+      "metric_id": "common.construction_investment_funding",
+      "standard_label": "Nguồn vốn đầu tư XDCB",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguồn vốn đầu tư XDCB"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "429",
+      "metric_id": "common.noncontrolling_interests",
+      "standard_label": "Lợi ích cổ đông không kiểm soát",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Lợi ích cổ đông không kiểm soát"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "430",
+      "metric_id": "common.other_funding_total",
+      "standard_label": "Nguồn kinh phí và quỹ khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguồn kinh phí và quỹ khác"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "431",
+      "metric_id": "common.allocated_funding",
+      "standard_label": "Nguồn kinh phí",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguồn kinh phí"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "432",
+      "metric_id": "common.funding_in_fixed_assets",
+      "standard_label": "Nguồn kinh phí đã hình thành TSCĐ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Nguồn kinh phí đã hình thành TSCĐ"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "440",
+      "metric_id": "common.total_funding",
+      "standard_label": "TỔNG CỘNG NGUỒN VỐN",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Tổng cộng nguồn vốn"
+    },
+    {
+      "statement": "income_statement",
+      "code": "01",
+      "metric_id": "common.gross_sales_revenue",
+      "standard_label": "Doanh thu bán hàng và cung cấp dịch vụ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Doanh thu bán hàng và cung cấp dịch vụ"
+    },
+    {
+      "statement": "income_statement",
+      "code": "02",
+      "metric_id": "common.sales_deductions",
+      "standard_label": "Các khoản giảm trừ doanh thu",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Các khoản giảm trừ doanh thu"
+    },
+    {
+      "statement": "income_statement",
+      "code": "10",
+      "metric_id": "common.net_revenue",
+      "standard_label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Doanh thu thuần"
+    },
+    {
+      "statement": "income_statement",
+      "code": "11",
+      "metric_id": "common.cost_of_sales",
+      "standard_label": "Giá vốn hàng bán",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Giá vốn hàng bán"
+    },
+    {
+      "statement": "income_statement",
+      "code": "20",
+      "metric_id": "common.gross_profit",
+      "standard_label": "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lợi nhuận gộp"
+    },
+    {
+      "statement": "income_statement",
+      "code": "21",
+      "metric_id": "common.financial_income",
+      "standard_label": "Doanh thu hoạt động tài chính",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Doanh thu hoạt động tài chính"
+    },
+    {
+      "statement": "income_statement",
+      "code": "22",
+      "metric_id": "common.financial_expense",
+      "standard_label": "Chi phí tài chính",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Chi phí tài chính"
+    },
+    {
+      "statement": "income_statement",
+      "code": "23",
+      "metric_id": "common.interest_expense",
+      "standard_label": "Trong đó: Chi phí lãi vay",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Chi phí lãi vay"
+    },
+    {
+      "statement": "income_statement",
+      "code": "24",
+      "metric_id": "common.associate_profit_share",
+      "standard_label": "Phần lãi hoặc lỗ trong công ty liên doanh, liên kết",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lãi/lỗ trong công ty liên kết"
+    },
+    {
+      "statement": "income_statement",
+      "code": "25",
+      "metric_id": "common.selling_expenses",
+      "standard_label": "Chi phí bán hàng",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Chi phí bán hàng"
+    },
+    {
+      "statement": "income_statement",
+      "code": "26",
+      "metric_id": "common.administrative_expenses",
+      "standard_label": "Chi phí quản lý doanh nghiệp",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Chi phí quản lý doanh nghiệp"
+    },
+    {
+      "statement": "income_statement",
+      "code": "30",
+      "metric_id": "common.operating_profit",
+      "standard_label": "Lợi nhuận thuần từ hoạt động kinh doanh",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lợi nhuận thuần HĐKD"
+    },
+    {
+      "statement": "income_statement",
+      "code": "31",
+      "metric_id": "common.other_income",
+      "standard_label": "Thu nhập khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Thu nhập khác"
+    },
+    {
+      "statement": "income_statement",
+      "code": "32",
+      "metric_id": "common.other_expense",
+      "standard_label": "Chi phí khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Chi phí khác"
+    },
+    {
+      "statement": "income_statement",
+      "code": "40",
+      "metric_id": "common.other_profit",
+      "standard_label": "Lợi nhuận khác",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lợi nhuận khác"
+    },
+    {
+      "statement": "income_statement",
+      "code": "50",
+      "metric_id": "common.profit_before_tax",
+      "standard_label": "Tổng lợi nhuận kế toán trước thuế",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Tổng lợi nhuận trước thuế"
+    },
+    {
+      "statement": "income_statement",
+      "code": "51",
+      "metric_id": "common.current_income_tax_expense",
+      "standard_label": "Chi phí thuế TNDN hiện hành",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Chi phí thuế TNDN hiện hành"
+    },
+    {
+      "statement": "income_statement",
+      "code": "52",
+      "metric_id": "common.deferred_income_tax_expense",
+      "standard_label": "Chi phí thuế TNDN hoãn lại",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Chi phí thuế TNDN hoãn lại"
+    },
+    {
+      "statement": "income_statement",
+      "code": "60",
+      "metric_id": "common.profit_after_tax",
+      "standard_label": "Lợi nhuận sau thuế thu nhập doanh nghiệp",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lợi nhuận sau thuế"
+    },
+    {
+      "statement": "income_statement",
+      "code": "61",
+      "metric_id": "common.profit_parent",
+      "standard_label": "Lợi nhuận sau thuế của công ty mẹ",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "LNST cổ đông công ty mẹ"
+    },
+    {
+      "statement": "income_statement",
+      "code": "62",
+      "metric_id": "common.profit_noncontrolling",
+      "standard_label": "Lợi nhuận sau thuế của cổ đông không kiểm soát",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "LNST cổ đông không kiểm soát"
+    },
+    {
+      "statement": "income_statement",
+      "code": "70",
+      "metric_id": "common.basic_eps",
+      "standard_label": "Lãi cơ bản trên cổ phiếu",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lãi cơ bản trên cổ phiếu (EPS)"
+    },
+    {
+      "statement": "income_statement",
+      "code": "71",
+      "metric_id": "common.diluted_eps",
+      "standard_label": "Lãi suy giảm trên cổ phiếu",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lãi suy giảm trên cổ phiếu"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "20",
+      "metric_id": "common.operating_cash_flow",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lưu chuyển tiền thuần từ HĐKD"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "21",
+      "metric_id": "common.capital_expenditure_cash_paid",
+      "standard_label": "Tiền chi mua sắm, xây dựng TSCĐ và các TSDH khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Tiền chi mua sắm XD TSCĐ"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "30",
+      "metric_id": "common.investing_cash_flow",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lưu chuyển tiền thuần từ HĐĐT"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "36",
+      "metric_id": "common.cash_dividends_paid",
+      "standard_label": "Cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Cổ tức tiền mặt đã trả"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "40",
+      "metric_id": "common.financing_cash_flow",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lưu chuyển tiền thuần từ HĐTC"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "50",
+      "metric_id": "common.net_cash_change",
+      "standard_label": "Lưu chuyển tiền thuần trong kỳ",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lưu chuyển tiền thuần trong kỳ"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "60",
+      "metric_id": "common.cash_beginning",
+      "standard_label": "Tiền và tương đương tiền đầu kỳ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tiền và tương đương tiền đầu kỳ"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "61",
+      "metric_id": "common.exchange_effect_on_cash",
+      "standard_label": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Ảnh hưởng tỷ giá đến tiền"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "70",
+      "metric_id": "common.cash_ending",
+      "standard_label": "Tiền và tương đương tiền cuối kỳ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tiền và tương đương tiền cuối kỳ"
+    }
+  ]
+}

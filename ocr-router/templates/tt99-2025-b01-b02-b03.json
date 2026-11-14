@@ -1,0 +1,39 @@
+{
+  "template_id": "tt99_2025_b01_b02_b03_dn_v1",
+  "accounting_standard": "TT99_2025",
+  "form": "B01-DN",
+  "description": "Only equations printed in Appendix IV, Section 1, annual non-consolidated B01-DN/B02-DN/B03-DN forms. Not for DN/HN, banks, or interim forms.",
+  "source_url": "https://congbao.cdnchinhphu.vn/CongBaoCP/VanBan/2025/10/46529/59652-1-20251577-157899-2025-tt-btc.pdf",
+  "template_lines": [
+    {"statement": "balance_sheet", "parent": "280", "code": "100", "sign": 1, "is_memo": false},
+    {"statement": "balance_sheet", "parent": "280", "code": "200", "sign": 1, "is_memo": false},
+    {"statement": "balance_sheet", "parent": "440", "code": "300", "sign": 1, "is_memo": false},
+    {"statement": "balance_sheet", "parent": "440", "code": "400", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "10", "code": "01", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "10", "code": "02", "sign": -1, "is_memo": false},
+    {"statement": "income_statement", "parent": "20", "code": "10", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "20", "code": "11", "sign": -1, "is_memo": false},
+    {"statement": "income_statement", "parent": "30", "code": "20", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "30", "code": "21", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "30", "code": "22", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "30", "code": "23", "sign": -1, "is_memo": false},
+    {"statement": "income_statement", "parent": "30", "code": "25", "sign": -1, "is_memo": false},
+    {"statement": "income_statement", "parent": "30", "code": "26", "sign": -1, "is_memo": false},
+    {"statement": "income_statement", "parent": "40", "code": "31", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "40", "code": "32", "sign": -1, "is_memo": false},
+    {"statement": "income_statement", "parent": "50", "code": "30", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "50", "code": "40", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "60", "code": "50", "sign": 1, "is_memo": false},
+    {"statement": "income_statement", "parent": "60", "code": "51", "sign": -1, "is_memo": false},
+    {"statement": "income_statement", "parent": "60", "code": "52", "sign": -1, "is_memo": false},
+    {"statement": "cash_flow", "parent": "50", "code": "20", "sign": 1, "is_memo": false},
+    {"statement": "cash_flow", "parent": "50", "code": "30", "sign": 1, "is_memo": false},
+    {"statement": "cash_flow", "parent": "50", "code": "40", "sign": 1, "is_memo": false},
+    {"statement": "cash_flow", "parent": "70", "code": "50", "sign": 1, "is_memo": false},
+    {"statement": "cash_flow", "parent": "70", "code": "60", "sign": 1, "is_memo": false},
+    {"statement": "cash_flow", "parent": "70", "code": "61", "sign": 1, "is_memo": false}
+  ],
+  "cross_statement_rules": [
+    {"name": "assets_equal_funding", "left": {"statement": "balance_sheet", "code": "280"}, "right": {"statement": "balance_sheet", "code": "440"}}
+  ]
+}

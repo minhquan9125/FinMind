@@ -1,0 +1,20 @@
+{
+  "evaluations": [
+    {
+      "pdf": "FPT_2024_498332 (1).pdf",
+      "report_year": 2024,
+      "ir_dir": "ocr_router_out/FPT_2024_498332 (1)/annual_ir",
+      "gold_xlsx": "Gold_Set/gold_fpt_2024.xlsx",
+      "gold_sheet": "BCTN_2024",
+      "result_json": "Gold_Set/r3_2024_result.json"
+    },
+    {
+      "pdf": "BCTN_2025.pdf",
+      "report_year": 2025,
+      "ir_dir": "ocr_router_out/BCTN_2025/annual_ir",
+      "gold_xlsx": "Gold_Set/gold_fpt_2025.xlsx",
+      "gold_sheet": "gold_fpt_2025",
+      "result_json": "Gold_Set/r3_2025_result.json"
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "schema_version": "1.0.0",
+  "accounting_standard": "TT99_2025",
+  "description": "Mapping from TT99/2025 statutory line codes to FinMind common metric IDs.",
+  "entries": [
+    {
+      "statement": "balance_sheet",
+      "code": "280",
+      "metric_id": "common.total_assets",
+      "standard_label": "TỔNG CỘNG TÀI SẢN",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tổng cộng tài sản theo TT99 B01-DN (mã 280)"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "100",
+      "metric_id": "common.current_assets",
+      "standard_label": "TÀI SẢN NGẮN HẠN",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản ngắn hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "200",
+      "metric_id": "common.noncurrent_assets",
+      "standard_label": "TÀI SẢN DÀI HẠN",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản dài hạn"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "270",
+      "metric_id": "common.other_noncurrent_assets_total",
+      "standard_label": "Tài sản dài hạn khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tài sản dài hạn khác theo TT99 B01-DN (mã 270)"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "300",
+      "metric_id": "common.total_liabilities",
+      "standard_label": "NỢ PHẢI TRẢ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tổng nợ phải trả"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "400",
+      "metric_id": "common.equity",
+      "standard_label": "VỐN CHỦ SỞ HỮU",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Tổng vốn chủ sở hữu"
+    },
+    {
+      "statement": "balance_sheet",
+      "code": "440",
+      "metric_id": "common.total_funding",
+      "standard_label": "TỔNG CỘNG NGUỒN VỐN",
+      "sign_convention": "signed",
+      "period_type": "instant",
+      "notes": "Tổng cộng nguồn vốn theo TT99"
+    },
+    {
+      "statement": "income_statement",
+      "code": "01",
+      "metric_id": "common.gross_sales_revenue",
+      "standard_label": "Doanh thu bán hàng và cung cấp dịch vụ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Doanh thu bán hàng và cung cấp dịch vụ"
+    },
+    {
+      "statement": "income_statement",
+      "code": "02",
+      "metric_id": "common.sales_deductions",
+      "standard_label": "Các khoản giảm trừ doanh thu",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Các khoản giảm trừ doanh thu"
+    },
+    {
+      "statement": "income_statement",
+      "code": "10",
+      "metric_id": "common.net_revenue",
+      "standard_label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Doanh thu thuần"
+    },
+    {
+      "statement": "income_statement",
+      "code": "11",
+      "metric_id": "common.cost_of_sales",
+      "standard_label": "Giá vốn hàng bán",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Giá vốn hàng bán"
+    },
+    {
+      "statement": "income_statement",
+      "code": "20",
+      "metric_id": "common.gross_profit",
+      "standard_label": "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lợi nhuận gộp"
+    },
+    {
+      "statement": "income_statement",
+      "code": "21",
+      "metric_id": "common.financial_income",
+      "standard_label": "Doanh thu hoạt động tài chính",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Doanh thu hoạt động tài chính"
+    },
+    {
+      "statement": "income_statement",
+      "code": "23",
+      "metric_id": "common.financial_expense",
+      "standard_label": "Chi phí tài chính",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Chi phí tài chính theo TT99 (mã 23)"
+    },
+    {
+      "statement": "income_statement",
+      "code": "25",
+      "metric_id": "common.selling_expenses",
+      "standard_label": "Chi phí bán hàng",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Chi phí bán hàng"
+    },
+    {
+      "statement": "income_statement",
+      "code": "26",
+      "metric_id": "common.administrative_expenses",
+      "standard_label": "Chi phí quản lý doanh nghiệp",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Chi phí quản lý doanh nghiệp"
+    },
+    {
+      "statement": "income_statement",
+      "code": "30",
+      "metric_id": "common.operating_profit",
+      "standard_label": "Lợi nhuận thuần từ hoạt động kinh doanh",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lợi nhuận thuần HĐKD"
+    },
+    {
+      "statement": "income_statement",
+      "code": "31",
+      "metric_id": "common.other_income",
+      "standard_label": "Thu nhập khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Thu nhập khác"
+    },
+    {
+      "statement": "income_statement",
+      "code": "32",
+      "metric_id": "common.other_expense",
+      "standard_label": "Chi phí khác",
+      "sign_convention": "positive_magnitude",
+      "period_type": "duration",
+      "notes": "Chi phí khác"
+    },
+    {
+      "statement": "income_statement",
+      "code": "40",
+      "metric_id": "common.other_profit",
+      "standard_label": "Lợi nhuận khác",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lợi nhuận khác"
+    },
+    {
+      "statement": "income_statement",
+      "code": "50",
+      "metric_id": "common.profit_before_tax",
+      "standard_label": "Tổng lợi nhuận kế toán trước thuế",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Tổng lợi nhuận trước thuế"
+    },
+    {
+      "statement": "income_statement",
+      "code": "51",
+      "metric_id": "common.current_income_tax_expense",
+      "standard_label": "Chi phí thuế TNDN hiện hành",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Chi phí thuế TNDN hiện hành"
+    },
+    {
+      "statement": "income_statement",
+      "code": "52",
+      "metric_id": "common.deferred_income_tax_expense",
+      "standard_label": "Chi phí thuế TNDN hoãn lại",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Chi phí thuế TNDN hoãn lại"
+    },
+    {
+      "statement": "income_statement",
+      "code": "60",
+      "metric_id": "common.profit_after_tax",
+      "standard_label": "Lợi nhuận sau thuế thu nhập doanh nghiệp",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lợi nhuận sau thuế"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "20",
+      "metric_id": "common.operating_cash_flow",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lưu chuyển tiền thuần từ HĐKD"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "30",
+      "metric_id": "common.investing_cash_flow",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lưu chuyển tiền thuần từ HĐĐT"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "40",
+      "metric_id": "common.financing_cash_flow",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lưu chuyển tiền thuần từ HĐTC"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "50",
+      "metric_id": "common.net_cash_change",
+      "standard_label": "Lưu chuyển tiền thuần trong kỳ",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Lưu chuyển tiền thuần trong kỳ"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "60",
+      "metric_id": "common.cash_beginning",
+      "standard_label": "Tiền và tương đương tiền đầu kỳ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tiền và tương đương tiền đầu kỳ"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "61",
+      "metric_id": "common.exchange_effect_on_cash",
+      "standard_label": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+      "sign_convention": "signed",
+      "period_type": "duration",
+      "notes": "Ảnh hưởng tỷ giá đến tiền"
+    },
+    {
+      "statement": "cash_flow",
+      "code": "70",
+      "metric_id": "common.cash_ending",
+      "standard_label": "Tiền và tương đương tiền cuối kỳ",
+      "sign_convention": "positive_magnitude",
+      "period_type": "instant",
+      "notes": "Tiền và tương đương tiền cuối kỳ"
+    }
+  ]
+}
