@@ -9,12 +9,20 @@ Từ thư mục gốc dự án, một lệnh xử lý toàn bộ PDF trong
 python ocr-router/run_all_reports.py --provider local
 ```
 
+Để dùng model thị giác ổn định cho các trang cần nhận dạng, chạy
+`python ocr-router/run_all_reports.py --provider gemini --model gemini-3.8-flash`
+sau khi cấu hình `GEMINI_API_KEY`. Lệnh này có thể phát sinh phí API; `--provider local`
+chỉ dùng OCR cục bộ. Gemini 3.8 Flash là model mặc định khi chọn provider Gemini.
+
 Kết quả thống nhất nằm trong
 `data/references/vietstock/annual_reports/ocr_standard/{MÃ}/{NĂM}/{TÊN_PDF}/`:
 `pages.jsonl` (mỗi trang một dòng), `text/p-NNN.txt`, `summary.json`,
 `source.json` (đường dẫn và SHA-256 của PDF) và `run.log`.
 `batch_report_local.json` hoặc `batch_report_openrouter.json` ở thư mục gốc
 của output tổng hợp trạng thái từng PDF theo lượt chạy.
+`work/` (ảnh trang) và `.cache/` là dữ liệu sinh ra, được giữ cục bộ nhưng không
+đưa lên Git. Trên bản clone mới, chạy OCR trước khi dùng `--ir-only` nếu cần
+dựng lại IR từ ảnh trang.
 Chạy lại cùng lệnh sẽ bỏ qua PDF đã hoàn tất và không đổi; PDF còn thiếu
 kết quả model sẽ được thử lại. `REVIEW` là trang cần xem lại, không đồng nghĩa
 với việc mất trang.
@@ -25,6 +33,9 @@ với việc mất trang.
 ```powershell
 python ocr-router/run_all_reports.py --provider openrouter --openrouter-model dots-studio/dots-3-note-preview:free --batch 1
 ```
+
+OpenRouter thông báo model miễn phí Dots3-Note Preview sẽ ngừng ngày 31/12/2026;
+dùng Gemini 3.8 Flash ổn định cho các đợt OCR lâu dài.
 
 Model này đã qua lượt thử chữ và số trên FPT 2024. Tài khoản miễn phí hiện
 có giới hạn lượt gọi mỗi ngày; nếu chạm quota hoặc model lỗi, lệnh dừng và

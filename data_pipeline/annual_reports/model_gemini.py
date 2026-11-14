@@ -22,7 +22,7 @@ from OCR_annuals import (
 
 
 DEFAULT_MODEL = "gemini-3.8-flash"
-FALLBACK_MODELS = ("gemini-3.6-flash", "gemini-3.5-flash")
+FALLBACK_MODELS = ("gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash")
 PROMPT_VERSION = "ocr-text-clean-v1"
 RETRY_DELAYS_SECONDS = (2, 4, 8, 16, 30)
 MAX_GEMINI_ATTEMPTS = 6

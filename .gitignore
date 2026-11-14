@@ -80,9 +80,12 @@ data/references/vietstock/annual_reports/files/
 data/references/vietstock/annual_reports/files_pdf/
 data/references/vietstock/annual_reports/searchable/
 data/references/vietstock/annual_reports/extracted/
+data/references/vietstock/annual_reports/ocr_standard/**/.cache/
+data/references/vietstock/annual_reports/ocr_standard/**/work/
 /.drive-token.json
 /.drive-client-secret.json
 /finmind-ocr-drive-*/
+/.ocr-backups/
 /tmp/codex-backup-demo-safe-20260930.tar
 /tmp/codex-backup-demo-safe-20260930/
 /tmp/codex-backup-demo-safe2/
