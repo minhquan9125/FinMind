@@ -1,0 +1,19 @@
+{
+  "status": "FROZEN_BEFORE_FIX",
+  "source_commit": "bf0336c9",
+  "source_hashes": {
+    "backend/src/retrieval_orchestration/intent_v2_rules.py": "6109eb84f77e9aab904c766c13bd3554f3d240b6802e9f89650b0bbd9a41f49d",
+    "backend/src/retrieval_orchestration/intent_v2_classifier.py": "5f662d81d975cb2a662421a65111281c3092784b14cc6087c801a71b3b73f994",
+    "backend/scripts/evaluate_s5_intent_v2.py": "938cd299a4d0db51261ab04a7daff4e8252a9ffb4dcbf3af673e4229abd67b02"
+  },
+  "immutable_inputs": {
+    "outputs/s5_intent_v2_20261113/artifact-v2/classifier.npz": "15e2866d5d1cfab86110664b285bf4eb622ad58e224e0e57b2e98e67625cc617",
+    "outputs/s5_intent_v2_20261113/artifact-v2/manifest.json": "ac34a91452dff0af2cb16e07f0a9210891af75ca5979a47a4c0bcb2a32ed4db5",
+    "outputs/s5_intent_v2_20261113/artifact-v2/library/vectors.npy": "eb00c8c606abe225dcd8527568924e57f0044a568a2cdaaaeb825630713a2b96",
+    "docs/sprint5/intent-v2/library.jsonl": "4957b574e9a5b870297d847f78f9509478bd244dcb3d5989affcae995149c4f9",
+    "docs/sprint5/intent-v2/development.jsonl": "b802418cfc57f2aadeebe5dd89165db674790af8e0556a34c512ddc784dd70e2"
+  },
+  "scope": "NHAN_CLASSIFIER_ONLY",
+  "performance_work_deferred_by_user": true,
+  "blind_acceptance": false
+}
