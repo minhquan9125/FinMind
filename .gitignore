@@ -32,6 +32,7 @@ wheels/
 /tmp/pdfs/ocr-review/
 .venv
 .venv-paddleocr/
+tessdata_best/
 venv/
 ENV/
 backend/.tmp/

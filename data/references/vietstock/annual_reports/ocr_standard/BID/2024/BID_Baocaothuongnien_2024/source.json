@@ -3,8 +3,8 @@
   "year": 2024,
   "pdf": "BID/2024/501640_pdfs/BID_Baocaothuongnien_2024.pdf",
   "sha256": "956f9c258e293da40f833eba63b9037821fcd4b646b91f1290c02dc1e326e2f1",
-  "provider": "gemini",
-  "model": "gemini-3.8-flash",
+  "provider": "local",
+  "model": null,
   "model_target_pages": null,
-  "previous_model": null
+  "previous_model": "gemini-3.8-flash"
 }

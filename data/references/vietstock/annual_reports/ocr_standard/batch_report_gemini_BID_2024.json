@@ -1,62 +1,59 @@
 {
-    "schema_name":  "finmind.annual_ocr_batch",
-    "schema_version":  "1.0",
-    "updated_at":  "2026-11-14T06:15:17+00:00",
-    "provider":  "gemini",
-    "model":  "gemini-3.8-flash",
-    "pdf_root":  "google_drive",
-    "documents":  [
-                      {
-                          "symbol":  "BID",
-                          "year":  "2024",
-                          "pdf":  "BID/2024/501640_pdfs/Bao_cao_thuong_nien_BIDV_2024.FNL.pdf",
-                          "output":  "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\BID\\2024\\Bao_cao_thuong_nien_BIDV_2024.FNL",
-                          "sha256":  "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
-                          "status":  "COMPLETE",
-                          "pages":  91,
-                          "model_failed_pages":  [
-
-                                                 ],
-                          "review_pages":  [
-
-                                           ],
-                          "routes":  {
-                                         "tesseract+gemini":  4,
-                                         "text_layer":  83,
-                                         "tesseract":  4
-                                     },
-                          "skipped":  true
-                      },
-                      {
-                          "symbol":  "BID",
-                          "year":  "2024",
-                          "pdf":  "BID/2024/501640_pdfs/BID_Baocaothuongnien_2024.pdf",
-                          "output":  "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\BID\\2024\\BID_Baocaothuongnien_2024",
-                          "sha256":  "956f9c258e293da40f833eba63b9037821fcd4b646b91f1290c02dc1e326e2f1",
-                          "status":  "COMPLETE",
-                          "pages":  2,
-                          "model_failed_pages":  [
-
-                                                 ],
-                          "review_pages":  [
-                                               1,
-                                               2
-                                           ],
-                          "routes":  {
-                                         "text_layer":  2
-                                     },
-                          "exit_code":  0,
-                          "skipped":  false
-                      }
-                  ],
-    "summary":  {
-                    "pdfs_discovered":  2,
-                    "pdfs_attempted":  2,
-                    "complete":  2,
-                    "pending_or_failed":  0,
-                    "pages":  93,
-                    "model_pending_pages":  0,
-                    "review_pages":  2,
-                    "review_without_model_failure_pages":  2
-                }
+  "schema_name": "finmind.annual_ocr_batch",
+  "schema_version": "1.0",
+  "updated_at": "2026-11-14T06:15:17+00:00",
+  "provider": "gemini",
+  "model": "gemini-3.8-flash",
+  "pdf_root": "google_drive",
+  "documents": [
+    {
+      "symbol": "BID",
+      "year": "2024",
+      "pdf": "BID/2024/501640_pdfs/Bao_cao_thuong_nien_BIDV_2024.FNL.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\BID\\2024\\Bao_cao_thuong_nien_BIDV_2024.FNL",
+      "sha256": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+      "status": "COMPLETE",
+      "pages": 91,
+      "model_failed_pages": [],
+      "review_pages": [],
+      "routes": {
+        "tesseract+gemini": 4,
+        "text_layer": 83,
+        "tesseract": 4
+      },
+      "skipped": true
+    },
+    {
+      "symbol": "BID",
+      "year": "2024",
+      "pdf": "BID/2024/501640_pdfs/BID_Baocaothuongnien_2024.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\BID\\2024\\BID_Baocaothuongnien_2024",
+      "sha256": "956f9c258e293da40f833eba63b9037821fcd4b646b91f1290c02dc1e326e2f1",
+      "status": "COMPLETE",
+      "pages": 2,
+      "model_failed_pages": [],
+      "review_pages": [
+        1,
+        2
+      ],
+      "routes": {
+        "tesseract": 2
+      },
+      "exit_code": 0,
+      "skipped": false,
+      "provider": "local",
+      "model": null,
+      "rerun_at": "2026-11-14T08:45:42.182624+00:00"
+    }
+  ],
+  "summary": {
+    "pdfs_discovered": 2,
+    "pdfs_attempted": 2,
+    "complete": 2,
+    "pending_or_failed": 0,
+    "pages": 93,
+    "model_pending_pages": 0,
+    "review_pages": 2,
+    "review_without_model_failure_pages": 2
+  }
 }
