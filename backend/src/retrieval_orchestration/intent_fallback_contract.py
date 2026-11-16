@@ -94,7 +94,7 @@ def _validation_context(policy_result, payload, question):
         return context
     # 04.2 snapshots have no mandatory question ID. Bind the producer's request
     # texts to this turn, including any newly added clause, before trusting them.
-    from .intent_semantic_requests import requests
+    from .intent_v2_rules import requests
     def normalized(text):
         return ' '.join(unicodedata.normalize('NFC', text).casefold().split())
     if ([normalized(item['text']) for item in explicit]
@@ -312,3 +312,127 @@ def validate_fallback_response(raw, *, request, timed_out=False, provider_error=
                 extracted_company=resolved['company_ticker'], extracted_period=resolved['period'],
                 reason=data['reason'].strip(),
                 clarification_question=CLARIFICATION if route == 'ASK_CLARIFICATION' else None)
+
+
+# Explicit v2 API: wire-compatible with the gate already deployed on backup-demo.
+from .intent_routing import V2_LABEL_ALIASES, _v2_route
+
+V2_ALLOWED_LABELS = (*V2_LABEL_ALIASES, 'CLARIFY')
+V2_REQUEST_JSON_SCHEMA = deepcopy(REQUEST_JSON_SCHEMA)
+V2_REQUEST_JSON_SCHEMA['properties']['allowed_labels'] = {'const': list(V2_ALLOWED_LABELS)}
+V2_RESPONSE_JSON_SCHEMA = {
+    'type': 'object',
+    'properties': {
+        'intent_label': {'type': 'string', 'enum': list(V2_ALLOWED_LABELS)},
+        'confidence': {'type': 'number', 'minimum': 0, 'maximum': 1},
+        'reason': {'type': 'string'},
+        'extracted_company': {'type': ['string', 'null']},
+    },
+    'required': ['intent_label', 'confidence', 'reason'],
+    'additionalProperties': False,
+}
+_V2_REQUEST_VALIDATOR = Draft202012Validator(V2_REQUEST_JSON_SCHEMA)
+_V2_RESPONSE_VALIDATOR = Draft202012Validator(V2_RESPONSE_JSON_SCHEMA)
+
+
+def prepare_fallback_request_v2(policy_result, *, question, company_required=True, valid_tickers=None):
+    """Keep verified scope/components on the server; emit the demo's three wire keys."""
+    from .intent_routing import decide_intent_route_v2
+    if (not isinstance(policy_result, dict) or policy_result.get('question') != question
+            or policy_result.get('contract_version') != 'v2'
+            or type(company_required) is not bool):
+        raise IntentClassificationContractError('INVALID_FALLBACK_HANDOFF')
+    if policy_result.get('decision') == 'ASK_CLARIFICATION':
+        if (policy_result.get('route') is not None or policy_result.get('need_fallback') is not False
+                or policy_result.get('gate') != 1
+                or not isinstance(policy_result.get('clarification_question'), str)
+                or not policy_result['clarification_question'].strip()):
+            raise IntentClassificationContractError('INVALID_FALLBACK_HANDOFF')
+        return dict(decision='ASK_CLARIFICATION', route=None, need_fallback=False,
+                    reason_code=policy_result.get('reason_code'), request=None,
+                    validation_context=dict(query_components=None, query_components_confirmed=False))
+    scope = policy_result.get('scope')
+    if (not isinstance(scope, dict) or set(scope) != {'company_ticker', 'company_source', 'period'}
+            or (scope['company_ticker'] is None and scope['company_source'] is not None)
+            or (scope['company_ticker'] is not None and (not isinstance(scope['company_source'], str)
+                or scope['company_source'] not in {'CURRENT', 'CONTEXT'}))):
+        raise IntentClassificationContractError('INVALID_FALLBACK_HANDOFF')
+    # Recompute from current evidence; do not trust a mutated internal decision.
+    evidence = policy_result.get('classification_evidence')
+    recomputed = decide_intent_route_v2(dict(question=question, resolution=evidence), question=question,
+        company_ticker=scope['company_ticker'], period=scope['period'],
+        allow_direct_rules=policy_result.get('reason_code') != 'DIRECT_RULES_DISABLED',
+        company_required=company_required, valid_tickers=valid_tickers)
+    for key in ('decision', 'route', 'need_fallback', 'reason_code', 'query_components', 'query_components_confirmed'):
+        if policy_result.get(key) != recomputed.get(key):
+            raise IntentClassificationContractError('INVALID_FALLBACK_HANDOFF')
+    needed = recomputed['need_fallback']
+    request = dict(question=question,
+        conversation_scope={key: scope[key] for key in ('company_ticker', 'period')},
+        allowed_labels=list(V2_ALLOWED_LABELS)) if needed else None
+    if request is not None and not _V2_REQUEST_VALIDATOR.is_valid(request):
+        raise IntentClassificationContractError('INVALID_FALLBACK_HANDOFF')
+    return dict(decision=recomputed['decision'], route=recomputed['route'], need_fallback=needed,
+        reason_code=recomputed['reason_code'], request=request,
+        validation_context=dict(query_components=deepcopy(recomputed.get('query_components')),
+                                query_components_confirmed=recomputed.get('query_components_confirmed', False)))
+
+
+def validate_fallback_response_v2(raw, *, request, timed_out=False, provider_error=None,
+        company_required=True, valid_tickers=None, query_components=None, query_components_confirmed=False):
+    """07.1 v2: provider supplies a label; server derives route and preserves scope.
+
+    No route/extracted_period is accepted on the wire. Request period is immutable.
+    Components must be verified by a server-side resolver, never by provider prose.
+    """
+    if timed_out is True or isinstance(provider_error, TimeoutError):
+        return _failure('PROVIDER_TIMEOUT')
+    if provider_error is not None:
+        return _failure('PROVIDER_ERROR')
+    if (type(timed_out) is not bool or type(company_required) is not bool
+            or not isinstance(request, dict) or not _V2_REQUEST_VALIDATOR.is_valid(request)):
+        return _failure('INVALID_REQUEST')
+    try:
+        data = json.loads(raw, object_pairs_hook=_unique_object, parse_constant=_invalid_constant) if isinstance(raw, str) else deepcopy(raw)
+    except (ValueError, TypeError, RecursionError):
+        return _failure('INVALID_JSON')
+    if isinstance(data, dict) and 'confidence' in data and not _valid_score(data['confidence']):
+        return _failure('INVALID_CONFIDENCE')
+    if not _V2_RESPONSE_VALIDATOR.is_valid(data) or not data['reason'].strip():
+        return _failure('INVALID_RESPONSE')
+    if data['confidence'] < PROVIDER_CONFIDENCE_THRESHOLD:
+        return _failure('LOW_PROVIDER_CONFIDENCE')
+    code = data['intent_label']
+    if code == 'CLARIFY':
+        return _failure('PROVIDER_ASKED_CLARIFICATION')
+    label = V2_LABEL_ALIASES[code]
+    scope = request['conversation_scope']
+    company, period = scope['company_ticker'], scope['period']
+    extracted = data.get('extracted_company')
+    if extracted is not None:
+        if company is None:
+            return _failure('UNVERIFIED_COMPANY')
+        if _ticker(extracted) is None:
+            return _failure('INVALID_SCOPE')
+        if _ticker(extracted) != _ticker(company):
+            return _failure('COMPANY_SCOPE_CONFLICT')
+    route = _v2_route(label, query_components if query_components_confirmed is True else [], period=period)
+    # Disabling direct rules must not let the provider remove a verified
+    # restricted clause. Re-evaluate the installed rules on this request only.
+    from .intent_v2_rules import requests, explicit_intent, explicit_components
+    restricted = any(explicit_intent(part) == 'OUT_OF_SCOPE'
+        or 'OUT_OF_SCOPE' in explicit_components(part) for part in requests(request['question']))
+    if restricted and route != 'REFUSE':
+        return _failure('RESTRICTED_LABEL_CONFLICT')
+    if route is None:
+        return _failure('UNVERIFIED_MIXED_COMPONENTS')
+    resolved, stopped = _scope_gate(question=request['question'], company_ticker=company,
+        period=_canonical_period(period), valid_tickers=valid_tickers,
+        company_required=company_required and route not in {'REFUSE', 'SESSION'})
+    if stopped is not None:
+        return _failure(stopped['reason_code'])
+    return dict(status='FALLBACK_VALIDATED', reason_code='VALID_RESPONSE', intent_label=code,
+        canonical_intent=label, route=route, confidence=float(data['confidence']),
+        confidence_type='PROVIDER_SELF_REPORTED_UNCALIBRATED', source='AI',
+        extracted_company=resolved['company_ticker'], extracted_period=resolved['period'],
+        reason=data['reason'].strip(), clarification_question=None)

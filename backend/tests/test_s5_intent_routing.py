@@ -65,9 +65,9 @@ def test_all_seven_canonical_labels_map_as_requested(label, route):
         assert result['intent_label'] == label
 
 
-def test_label_mapping_matches_nhan_taxonomy():
-    schema = json.loads((Path(__file__).resolve().parents[2]/'docs/sprint5/intent-labels.v1.json').read_text(encoding='utf-8'))
-    assert set(INTENT_ROUTES) == {label['id'] for label in schema['labels']}
+def test_legacy_label_mapping_stays_frozen():
+    assert set(INTENT_ROUTES) == {'NUMERIC', 'REPORT_CONTENT', 'NEWS', 'PERSON_ROLE',
+                                 'ENTITY_RELATION', 'TREND', 'MIXED'}
     assert CONFIDENCE_THRESHOLD == .65 and GAP_THRESHOLD == .08
 
 
@@ -386,11 +386,10 @@ def test_review_producer_contract_error_must_not_be_reclassified_as_matcher_fail
         IntentRoutingPolicy(matcher).decide('Who chairs FPT?', company_ticker='FPT')
 
 
-def test_review_nhan_real_resolution_interface_keeps_raw_and_final_intents_separate():
-    from src.retrieval_orchestration.intent_news_requests import requests, resolve_objectives
+def test_legacy_resolution_fixture_keeps_raw_and_final_intents_separate():
     question = 'Chủ tịch HĐQT VCB là ai?'
     labels = ['NUMERIC', 'PERSON_ROLE', 'NEWS', 'REPORT_CONTENT', 'ENTITY_RELATION', 'TREND', 'MIXED']
-    resolved = resolve_objectives([.71, .20, .03, .02, .02, .01, .01], [], labels, requests(question))
+    resolved = resolution() | {'intent_label': 'PERSON_ROLE'}
     raw = ranking('NUMERIC', .71, 'PERSON_ROLE', .20) | {
         'ranking_policy': 'intent-linear-v1', 'score_type': 'CLASSIFIER_PROBABILITY_UNCALIBRATED'}
     out = diagnostic_route({'base_ranking': raw, 'resolution': resolved}, question=question, company_ticker='VCB')

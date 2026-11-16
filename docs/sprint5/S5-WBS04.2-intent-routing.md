@@ -1,3 +1,5 @@
+> Cập nhật 16/11/2026: bản v2 tương thích backup-demo và kết quả mới xem [S5-HUYEN-v2-integration.md](S5-HUYEN-v2-integration.md). Nội dung dưới đây lưu contract/kết quả v1 ngày 11–13/11, không phải đặc tả API v2.
+
 # S5-WBS04.2 — Ngưỡng tin cậy và quy tắc chọn nhánh
 
 Khởi tạo: 11/11/2026; cập nhật an toàn: **13/11/2026**, trên code Nhân `c37060d6`.

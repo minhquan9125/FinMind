@@ -1,3 +1,5 @@
+> Cập nhật 16/11/2026: bản v2 tương thích backup-demo và kết quả mới xem [S5-HUYEN-v2-integration.md](S5-HUYEN-v2-integration.md). Nội dung dưới đây lưu contract/kết quả v1 ngày 11–13/11, không phải đặc tả API v2.
+
 # S5-WBS07.1 — Điều kiện fallback và JSON phân loại
 
 Ngày: 13/11/2026. Cơ sở: code 04.2 của Huyền, giữ nguyên sau merge 19256961.

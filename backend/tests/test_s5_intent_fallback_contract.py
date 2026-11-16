@@ -34,10 +34,14 @@ def policy_result(**kwargs):
 
 
 def v7_policy_result(question=MIXED_QUESTION, envelope=False):
-    from src.retrieval_orchestration.intent_semantic_requests import requests, resolve_objectives
-    labels = ['ENTITY_RELATION', 'MIXED', 'NEWS', 'NUMERIC', 'PERSON_ROLE', 'REPORT_CONTENT', 'TREND']
-    resolved = resolve_objectives([.1, .1, .1, .4, .1, .1, .1], [], labels, requests(question))
-    assert resolved['reason'] == 'TWO_EXPLICIT_REQUEST_TYPES'
+    # Historical V7 wire fixture, built from the installed splitter. This is not
+    # a claim that the retired V7 producer has run on the demo branch.
+    from src.retrieval_orchestration.intent_v2_rules import requests, explicit_intent
+    evidence = [dict(text=part, intent_label=explicit_intent(part)) for part in requests(question)]
+    resolved = dict(ranking_policy='intent-request-objectives-v5',
+        score_type='DECISION_EVIDENCE_NO_CONFIDENCE', confidence=None, runtime_enabled=False,
+        intent_label='MIXED', reason='TWO_EXPLICIT_REQUEST_TYPES', unresolved_requests=[],
+        component_labels=sorted({item['intent_label'] for item in evidence}), explicit_evidence=evidence)
     if envelope:
         base = ranking(.71, .20, 'NUMERIC') | {
             'ranking_policy': 'intent-linear-v1', 'score_type': 'CLASSIFIER_PROBABILITY_UNCALIBRATED'}
@@ -156,10 +160,11 @@ def test_empty_matcher_contract_error_is_not_reinterpreted_as_external_fallback(
         prepare_fallback_request(raw, question=QUESTION)
 
 
-def test_real_v7_producer_and_042_consumer_handoff_remains_supported():
-    from src.retrieval_orchestration.intent_semantic_requests import requests, resolve_objectives
-    labels = ['NUMERIC', 'PERSON_ROLE', 'NEWS', 'REPORT_CONTENT', 'ENTITY_RELATION', 'TREND', 'MIXED']
-    resolved = resolve_objectives([.71, .20, .03, .02, .02, .01, .01], [], labels, requests(QUESTION))
+def test_legacy_resolution_fixture_and_042_consumer_handoff_remains_supported():
+    resolved = dict(ranking_policy='intent-request-objectives-v5',
+        score_type='DECISION_EVIDENCE_NO_CONFIDENCE', confidence=None, runtime_enabled=False,
+        intent_label='PERSON_ROLE', reason='EXPLICIT_REQUEST_TYPE', component_labels=[],
+        unresolved_requests=[], explicit_evidence=[dict(text=QUESTION, intent_label='PERSON_ROLE')])
     base = ranking(.71, .20, 'NUMERIC') | {
         'ranking_policy': 'intent-linear-v1', 'score_type': 'CLASSIFIER_PROBABILITY_UNCALIBRATED'}
     raw = decide_intent_route({'base_ranking': base, 'resolution': resolved},

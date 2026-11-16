@@ -1,0 +1,15 @@
+{
+  "status": "NOT_INDEPENDENT_ACCEPTANCE",
+  "success": 1.0,
+  "count": 110,
+  "threshold": 0.9,
+  "metric": "label_and_components_only",
+  "errors": 0,
+  "elapsed_seconds": 90.03417170001194,
+  "full_043_acceptance": "NOT_ESTABLISHED",
+  "route_accuracy": null,
+  "line_coverage": null,
+  "branch_coverage": null,
+  "note": "Label/component regression only. Policy routes require separate gold; no blind/production claim.",
+  "inputs_unchanged": true
+}

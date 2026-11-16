@@ -389,3 +389,151 @@ class IntentRoutingPolicy:
             return _fallback_result('CLASSIFICATION_ERROR', scope, question)
         return _confidence_and_route(ranking, scope, question, query_components, query_components_confirmed,
                                      self._allow_direct_search)
+
+
+# V2 is explicit: historical v1 callers keep their original seven-label contract.
+V2_POLICY = 'intent-request-objectives-v2-11-r2'
+V2_INTENT_ROUTES = {
+    'PRICE': 'MARKET', 'NUMERIC': 'VECTOR', 'ANALYSIS': 'MARKET',
+    'NEWS': 'MARKET', 'REPORT_CONTENT': 'VECTOR', 'PERSON_ROLE': 'GRAPH',
+    'ENTITY_RELATION': 'GRAPH', 'COMPANY_OVERVIEW': 'BOTH',
+    'CONVERSATION': 'SESSION', 'OUT_OF_SCOPE': 'REFUSE', 'MIXED': None,
+}
+V2_LABEL_ALIASES = {
+    'GIA': 'PRICE', 'SO_LIEU': 'NUMERIC', 'PHAN_TICH': 'ANALYSIS',
+    'NEWS': 'NEWS', 'BCTC_BCTN': 'REPORT_CONTENT', 'CHUC_VU': 'PERSON_ROLE',
+    'QUAN_HE': 'ENTITY_RELATION', 'TONG_QUAN': 'COMPANY_OVERVIEW',
+    'HOI_THOAI': 'CONVERSATION', 'NGOAI_PHAM_VI': 'OUT_OF_SCOPE', 'KET_HOP': 'MIXED',
+}
+
+
+def _v2_route(label, components=(), *, period=None):
+    """Route only verified objectives. Restricted components take precedence."""
+    if label not in V2_INTENT_ROUTES:
+        raise IntentClassificationContractError('INVALID_INTENT_LABEL')
+    if label == 'NEWS':
+        # A verified archive filter must not be silently discarded by live news.
+        return 'VECTOR' if period and period not in {'TODAY', 'LATEST', 'CURRENT'} else 'MARKET'
+    if label != 'MIXED':
+        return V2_INTENT_ROUTES[label]
+    if (not isinstance(components, (list, tuple)) or len(components) < 2
+            or any(not isinstance(c, str) or c not in V2_INTENT_ROUTES or c == 'MIXED' for c in components)
+            or len(set(components)) != len(components)):
+        return None
+    routes = {_v2_route(c, period=period) for c in components}
+    if 'REFUSE' in routes:
+        return 'REFUSE'
+    if 'SESSION' in routes:
+        return None  # Resolve the conversational instruction before searching.
+    return 'BOTH' if len(routes) > 1 or 'BOTH' in routes else routes.pop()
+
+
+def _v2_resolution(classification, question):
+    """Validate the installed producer's contract and bind rule evidence to this turn."""
+    from .intent_v2_rules import requests, explicit_intent, explicit_components, standalone_conversation
+    if not isinstance(classification, dict) or classification.get('question') != question:
+        raise IntentClassificationContractError('STALE_CLASSIFICATION')
+    value = classification.get('resolution')
+    if (not isinstance(value, dict) or value.get('question') != question
+            or value.get('ranking_policy') != V2_POLICY
+            or value.get('score_type') != EVIDENCE_SCORE_TYPE
+            or 'confidence' not in value or value['confidence'] is not None
+            or value.get('runtime_enabled') is not False
+            or value.get('status') not in {'PROPOSED', 'UNRESOLVED', 'NEEDS_CONTEXT'}
+            or not isinstance(value.get('intent_label'), str)
+            or value['intent_label'] not in V2_INTENT_ROUTES):
+        raise IntentClassificationContractError('INVALID_V2_RESOLUTION')
+    spans = requests(question)
+    evidence, components, unresolved = [], set(), []
+    needs_context = False
+    for span in spans:
+        kind = explicit_intent(span)
+        if kind is None:
+            unresolved.append(span)
+        else:
+            evidence.append(dict(text=span, intent_label=kind))
+            components.update(explicit_components(span) if kind == 'MIXED' else [kind])
+            needs_context |= kind == 'CONVERSATION' and not standalone_conversation(span)
+    expected_components = sorted(components) if value['intent_label'] == 'MIXED' else []
+    restricted = value['intent_label'] == 'OUT_OF_SCOPE' or 'OUT_OF_SCOPE' in components
+    if (value.get('explicit_evidence') != evidence or value.get('unresolved_requests') != unresolved
+            or value.get('component_labels') != expected_components
+            or type(value.get('contains_restricted_component')) is not bool
+            or value['contains_restricted_component'] != restricted):
+        raise IntentClassificationContractError('STALE_CLASSIFICATION_EVIDENCE')
+    if len(components) > 1:
+        expected_label, reason = 'MIXED', 'MULTIPLE_REQUEST_TYPES'
+    elif components and not unresolved:
+        expected_label, reason = next(iter(components)), 'EXPLICIT_REQUEST_TYPE'
+    else:
+        expected_label, reason = None, 'CLASSIFIER_PROPOSAL'
+    if value.get('reason') != reason or (expected_label and value['intent_label'] != expected_label):
+        raise IntentClassificationContractError('INVALID_V2_RULE_EVIDENCE')
+    direct = value['status'] == 'PROPOSED' and reason != 'CLASSIFIER_PROPOSAL' and not unresolved
+    return deepcopy(value), direct, needs_context
+
+
+def decide_intent_route_v2(classification, *, question, allow_direct_rules=True, **scope_input):
+    """04.2 v2: installed eleven-label rules; model proposals remain uncalibrated.
+
+    Server supplies verified scope and the direct-rule switch. No provider/DB calls.
+    The legacy cosine 0.65/0.08 thresholds are never applied to v2 probabilities.
+    """
+    def stopped_result(value):
+        value.update(question=question, contract_version='v2', source='SCOPE')
+        return value
+    if type(allow_direct_rules) is not bool:
+        raise IntentClassificationContractError('INVALID_ROUTING_CONFIGURATION')
+    if not isinstance(question, str) or not question.strip() or len(question) > 4000:
+        return stopped_result(_result('ASK_CLARIFICATION', 1, 'INVALID_QUESTION', {}))
+    # Invalid scope is still blocked, even for non-retrieval labels.
+    checked = dict(scope_input)
+    required = checked.pop('company_required', True)
+    if type(required) is not bool:
+        raise IntentClassificationContractError('INVALID_ROUTING_CONFIGURATION')
+    scope, stopped = _scope_gate(question=question, company_required=False, **checked)
+    if stopped is not None:
+        return stopped_result(stopped)
+    resolved, direct, needs_context = _v2_resolution(classification, question)
+    label = resolved['intent_label']
+    if needs_context:
+        result = _result('ASK_CLARIFICATION', 1, 'CONTEXT_REQUIRED', scope)
+        result.update(source='RULES', question=question, contract_version='v2')
+        return result
+    route = _v2_route(label, resolved['component_labels'], period=scope['period']) if direct else None
+    if required and scope['company_ticker'] is None and route not in {'REFUSE', 'SESSION'}:
+        return stopped_result(_result('ASK_CLARIFICATION', 1, 'MISSING_COMPANY', scope))
+    if not direct or not allow_direct_rules or route is None:
+        result = _fallback_result('DIRECT_RULES_DISABLED' if direct and not allow_direct_rules else
+                                  'UNVERIFIED_V2_CLASSIFICATION', scope, question, score_type=EVIDENCE_SCORE_TYPE)
+        result['fallback_payload']['allowed_labels'] = list(V2_INTENT_ROUTES)
+        result.update(classification_evidence=deepcopy(resolved), source='CLASSIFIER' if not direct else 'RULES')
+    else:
+        decision = 'REFUSE' if route == 'REFUSE' else 'SESSION' if route == 'SESSION' else 'SEARCH'
+        result = _result(decision, 3, 'VERIFIED_V2_RULE', scope, route=route, label=label)
+        result.update(classification_evidence=deepcopy(resolved), source='RULES')
+    result.update(question=question, contract_version='v2', query_components=resolved['component_labels'],
+                  query_components_confirmed=direct)
+    # Keep score types separate. These values are trace data, never acceptance gates.
+    base = classification.get('base_ranking')
+    if base is not None:
+        if not isinstance(base, dict) or base.get('ranking_policy') != 'intent-linear-v2':
+            raise IntentClassificationContractError('UNSUPPORTED_SCORE_CONTRACT')
+        if (base.get('question') != question or base.get('score_type') != CLASSIFIER_SCORE_TYPE
+                or not isinstance(base.get('groups'), list) or not 2 <= len(base['groups']) <= 11):
+            raise IntentClassificationContractError('INVALID_CLASSIFICATION')
+        seen, previous, groups = set(), 1.0, []
+        for index, group in enumerate(base['groups']):
+            if not isinstance(group, dict):
+                raise IntentClassificationContractError('INVALID_CLASSIFICATION')
+            kind, score = group.get('intent_label'), group.get('score')
+            if (not isinstance(kind, str) or kind not in V2_INTENT_ROUTES or kind in seen
+                    or type(score) not in (int, float) or not math.isfinite(score) or not 0 <= score <= previous
+                    or ('rank' in group and (type(group['rank']) is not int or group['rank'] != index + 1))):
+                raise IntentClassificationContractError('INVALID_CLASSIFICATION')
+            seen.add(kind)
+            previous = score
+            groups.append(dict(rank=index + 1, intent_label=kind, score=score))
+        result['model_ranking'] = dict(ranking_policy='intent-linear-v2', score_type=CLASSIFIER_SCORE_TYPE, groups=groups)
+        result.update(model_top_1_score=groups[0]['score'], model_score_gap=groups[0]['score']-groups[1]['score'])
+    return result
