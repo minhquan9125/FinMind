@@ -50,6 +50,11 @@ def anchor_graph_time(answer):
         answer.setdefault('trace', []).append(dict(event='graph_source_relative_time_anchored'))
 
 
+# The graph's recorded source can no longer be matched in the serving corpus: the relation is stale, not wrong.
+# A quote that no longer matches its source (GRAPH_SOURCE_MISMATCH) stays a hard failure: that is not staleness.
+STALE_SOURCE_CODES = frozenset({'GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS', 'GRAPH_SOURCE_VERSION_MISMATCH'})
+
+
 class Neo4jChatRetriever:
     """Reuse the viewer's READY/read-only contract and WBS06 source replay."""
     def __init__(self, retriever, reader_factory, ticker_map_factory=None):
@@ -388,7 +393,17 @@ class WebChatRouter:
             return result
         try:
             trace['graph_calls'] += 1
-            pack, facts = await asyncio.wait_for(self.graph_retriever.retrieve(plan.scope), self.timeout)
+            stale = None
+            try:
+                pack, facts = await asyncio.wait_for(self.graph_retriever.retrieve(plan.scope), self.timeout)
+            except GraphChatError as exc:
+                if exc.code not in STALE_SOURCE_CODES:
+                    raise
+                # The graph's source no longer replays identically in the serving corpus (a report was
+                # re-ingested). The relation cannot be trusted, but the report text can still answer.
+                stale = exc
+                pack, facts = dict(items=[]), []
+                trace['graph_source_stale'] = exc.code
             fallback = None
             if not pack['items']:
                 if self._document_question(question, context):
@@ -397,6 +412,8 @@ class WebChatRouter:
                     return None
                 searched, fallback = await self._content_fallback(question, scope, trace)
                 if fallback is None:
+                    if stale is not None:
+                        raise stale          # nothing verifiable in the report text either
                     if searched:
                         result.update(status='NO_DATA', reason_code='NO_DATA',
                                       message='Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.')

@@ -139,6 +139,29 @@ def test_graph_failure_never_falls_back_to_news_or_leaks_exception(error, code):
     assert not result.get('answering')
 
 
+@pytest.mark.parametrize('code', ['GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS', 'GRAPH_SOURCE_VERSION_MISMATCH'])
+def test_stale_graph_source_falls_back_to_the_report_text(code):
+    engine, graph, content = service(Graph(GraphChatError(code)))
+    result = asyncio.run(engine.answer('Ai là Chủ tịch FPT?', 'test'))
+    assert len(graph.calls) == 1 and len(content.calls) == 1          # report text searched, never news
+    assert result['reason_code'] == 'GRAPH_EMPTY_CONTENT_FALLBACK'
+    assert result['hybrid_router']['graph_source_stale'] == code
+
+
+def test_stale_graph_source_with_nothing_in_the_report_text_still_fails_closed():
+    class Nothing(Content):
+        async def retrieve(self, question, scope):
+            value = pack(); value['items'] = []
+            self.calls.append(copy.deepcopy(scope))
+            return value
+    content = Nothing()
+    route = WebChatRouter(lambda: DecisionEngine(Predictor()), Graph(GraphChatError('GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS')), content)
+    engine = LiveResearchService(content, provider=Provider(), hybrid_router=route)
+    result = asyncio.run(engine.answer('Ai là Chủ tịch FPT?', 'test'))
+    assert result['reason_code'] == 'GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS'
+    assert not result.get('answering')
+
+
 def test_both_executes_graph_then_vector_and_pins_the_same_version():
     engine, graph, content = service()
     result = asyncio.run(engine.answer('Chủ tịch FPT nói gì về chiến lược năm 2025?', 'test'))
