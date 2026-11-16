@@ -14,6 +14,7 @@ Bật/tắt bằng `INTENT_ROUTER_V2` (mặc định `true`; đặt `false` đ�
    - SEARCH: dùng thẳng.
    - NEED_FALLBACK: hỏi Gemini (07.2), dùng `prepare_fallback_request_v2` và `validate_fallback_response_v2` của Huyền. Gemini lỗi, quá 8 giây, hết budget của câu hỏi, hỏi lại (`CLARIFY`), lệch mã công ty, KET_HOP chưa xác minh thành phần, hoặc tự đánh giá dưới 0,60 thì **giữ câu hỏi lại như cũ**, không đoán.
    - Tuyến `REFUSE` thì từ chối; ANALYSIS, PRICE, NEWS, COMPANY_OVERVIEW với đúng 1 mã thì chuyển sang câu chuẩn ("phân tích FPT", "giá FPT hôm nay"…) mà luật đã xử lý được. Nhãn khác giữ nguyên câu hỏi lại.
+   - Nhãn chỉ do AI xác nhận (không có luật nào thấy) chỉ được dùng để từ chối hoặc mở phân tích (nhánh phân tích bao cả giá, chỉ báo, tin). AI trả GIA/NEWS/TONG_QUAN thì giữ câu hỏi lại (`AI_LABEL_NOT_CONFIRMED`): câu chuẩn "giá FPT hôm nay" sẽ thay mất điều người dùng hỏi (lỗi Huyền tìm ra 16/11: hỏi RSI, AI trả GIA/NEWS, chat chuyển sang giá/tin).
 3. Mỗi lượt có `result['intent'] = {label, decision, source: RULES|CLASSIFIER|AI, applied, reason?}` để đo router (13.2). `decision` là quyết định của Huyền; `source=AI` là lượt đã gọi Gemini phân loại.
    Trace admin (`research_metrics`) ghi khối này vào `details.intent`; lần gọi Gemini phân loại cũng nằm trong `calls` (model, token) cùng với lần sinh câu trả lời.
 
