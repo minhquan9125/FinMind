@@ -1,0 +1,48 @@
+{
+  "task": "S5-WBS13.2",
+  "status": "IMPLEMENTATION_COMPLETE_READY_FOR_PEER_REVIEW",
+  "date": "2026-11-16",
+  "baseline_commit": "cd2726409aeb2b74b27ee1b777edb1fde3a78d33",
+  "branch": "nhan-next-task-20261116",
+  "dataset_sha256": "886f0651fc20c4cf0179da39e1fc333970e921ca5cc27b6bbda92f6fea89a8fa",
+  "gold_peer_review": "PENDING",
+  "blind_acceptance": false,
+  "tests": {
+    "tests": 95,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "replay_report_csv_summary_byte_identical": true,
+  "production_sources_and_models_unchanged": true,
+  "secret_scan_passed": true,
+  "external_ai_scope": "Public synthetic intent questions only; 3 Gemini countTokens attempts and 3 logical generate calls",
+  "not_e2e": true,
+  "python": "3.12.10",
+  "packages": {
+    "numpy": "1.26.4",
+    "torch": "2.6.0",
+    "sentence-transformers": "3.1.1",
+    "scikit-learn": "1.9.1",
+    "httpx": "0.27.2"
+  },
+  "files": {
+    "backend\\scripts\\evaluate_s5_wbs132.py": "d31fa61a0b78a245560df7c3cf476574899910a764044de8c526102adda79737",
+    "backend\\tests\\test_s5_wbs132_evaluation.py": "9dcdb5d54493540f14b7f0fcb10b0dfac2a8c2b867d44fdfab97c3a8da5aed81",
+    "backend\\tests\\fixtures\\s5_wbs132_cases.json": "886f0651fc20c4cf0179da39e1fc333970e921ca5cc27b6bbda92f6fea89a8fa",
+    "tasks\\plan.md": "470884c9e060cc5e4c3fcbddad19427d32af8e153f99fd6b5f8cf7a331e32d10",
+    "tasks\\todo.md": "9c497666dc0ba4de7c198c15a00360ff9e6c1c21a9ea3d73dc947476d7ea9eb1",
+    "outputs\\s5_wbs132_20261116\\dataset-lock.json": "44b70589662dd03e5ff2378c5eeebabb5413be25c3f22086f13448849200964e",
+    "outputs\\s5_wbs132_20261116\\dataset-audit.json": "e40a3d8c6bdd3c5426135d7d111c4500dfa69cd471dddcb2103f7b99a53192ce",
+    "outputs\\s5_wbs132_20261116\\review-tests.xml": "e11b98fd2663970c49f4fe0402a49edab0d1abf68d70f73b11331557fe324631",
+    "outputs\\s5_wbs132_20261116\\run01\\results.json": "42bd9c81d955cbf02deefbb8b35c30080de0576b532a01041359553291b36af6",
+    "outputs\\s5_wbs132_20261116\\review01\\results.json": "a2341f81c8a6c30ba65bbbfdb3bd6ab58b50c32c6979dac192eefb87d2124887",
+    "outputs\\s5_wbs132_20261116\\review01\\summary.json": "5a3e1872531823592fbacd93f394637dfa42c4c3853ebdca7e6e3d3c54277ee3",
+    "outputs\\s5_wbs132_20261116\\review01\\cases.csv": "6e60130f1db887d6d6e6d651b29cfb255a6b92474b83c316e1fc30b5a989680c",
+    "outputs\\s5_wbs132_20261116\\review01\\REPORT.md": "9aa12e46c95891f4a6b37f1b88c4f0f197cbfd007fce9d31ea2c86e92bbf8c9e",
+    ".gitattributes": "ff3e46ebf880280a78ff75ca346da40587d773885e83c74f5ff6124e8d610301"
+  },
+  "line_endings": "Task-specific source/dataset/evidence pinned LF; CSV is UTF-8 BOM with LF. Content unchanged during line-ending normalization.",
+  "runner_sha256": "d31fa61a0b78a245560df7c3cf476574899910a764044de8c526102adda79737",
+  "raw_results_sha256_before_line_ending_normalization": "1544059189a37ff983d9ded68461482ad7b5d318c434aea26df80724eed2f30b"
+}

@@ -1,0 +1,25 @@
+{
+  "dataset_sha256": "886f0651fc20c4cf0179da39e1fc333970e921ca5cc27b6bbda92f6fea89a8fa",
+  "dataset_version": "s5-wbs132-evaluation-v1",
+  "cases": 60,
+  "frozen_at_utc": "2026-11-16T14:37:28.334213+00:00",
+  "code_commit": "cd2726409aeb2b74b27ee1b777edb1fde3a78d33",
+  "labels": [
+    "ANALYSIS",
+    "COMPANY_OVERVIEW",
+    "CONVERSATION",
+    "ENTITY_RELATION",
+    "MIXED",
+    "NEWS",
+    "NUMERIC",
+    "OUT_OF_SCOPE",
+    "PERSON_ROLE",
+    "PRICE",
+    "REPORT_CONTENT"
+  ],
+  "gold_status": "OWNER_AUTHORED_PENDING_PEER_REVIEW",
+  "blind_acceptance": false,
+  "audit_sha256": "e40a3d8c6bdd3c5426135d7d111c4500dfa69cd471dddcb2103f7b99a53192ce",
+  "audit_sha256_before_line_ending_normalization": "470fc945ce3c46434ca2d6236638e10ed78a17d8a26803ee63db7c4c129a1698",
+  "transport_note": "Evidence text normalized from Windows CRLF to LF after run; dataset question/gold bytes and frozen timestamp unchanged."
+}

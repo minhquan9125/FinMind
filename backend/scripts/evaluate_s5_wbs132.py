@@ -314,7 +314,7 @@ async def evaluate(cases, mode, progress, max_calls):
     predictor.warmup()
     cold_ms = (time.perf_counter() - started) * 1000
     rows = []
-    with progress.open('x', encoding='utf-8') as stream:
+    with progress.open('x', encoding='utf-8', newline='\n') as stream:
         for case in cases:
             boundary, planner = Boundaries(), Planner(engine)
             service = LiveResearchService(boundary, provider=provider, limits=limits,
@@ -429,10 +429,10 @@ def render(run, output):
         'backend\\.venv\\Scripts\\python.exe -X utf8 backend/scripts/evaluate_s5_wbs132.py --replay outputs/s5_wbs132_20261116/run01/results.json --out outputs/s5_wbs132_20261116/replay01',
         '```', '', 'Kỳ vọng được khóa trong `dataset-lock.json` ở thư mục cha. Không ghi đè lượt chạy cũ. '
         'Dùng `--fallback none` để đo khi không cấu hình provider; phải giữ kết quả chế độ đó riêng.', '']
-    (output / 'REPORT.md').write_text('\n'.join(lines), encoding='utf-8')
-    (output / 'summary.json').write_text(json.dumps(stats, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (output / 'REPORT.md').write_text('\n'.join(lines), encoding='utf-8', newline='\n')
+    (output / 'summary.json').write_text(json.dumps(stats, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
     with (output / 'cases.csv').open('w', encoding='utf-8-sig', newline='') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, lineterminator='\n')
         writer.writerow(['id','question','expected_label','actual_label','expected_components','actual_components',
                          'expected_branch','actual_branch','label_ok','branch_ok','joint_ok','fallback_attempts',
                          'fallback_generations','classifier_ms','routing_ms','status','reason','error'])
@@ -494,7 +494,7 @@ def main():
             timestamp_utc=datetime.now(timezone.utc).isoformat(),
             audit_max_similarity=max(r['character_similarity'] for r in audited['nearest_questions']),
             gold_status=dataset['annotation_status'], blind_acceptance=False)
-    (args.out / 'results.json').write_text(json.dumps(run, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (args.out / 'results.json').write_text(json.dumps(run, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
     stats = render(run, args.out)
     print(json.dumps({key: stats[key] for key in ('total','label_correct','branch_correct','joint_correct','fallback_cases','error_ids')}, ensure_ascii=False))
 
