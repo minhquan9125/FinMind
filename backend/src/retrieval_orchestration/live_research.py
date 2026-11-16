@@ -31,6 +31,7 @@ from .market_dates import price_date_request, relative_market_range, temporal_re
 from .metric_vocabulary import (CURATED, find_metrics, label as metric_label, plain, point_in_time_codes,
                                 vocabulary_words, without_metrics)
 from . import intent_gate_v2 as intent_gate
+from .conversation_actions import is_list_followup, is_contextual_overview
 import logging
 
 logger = logging.getLogger(__name__)
@@ -138,6 +139,8 @@ def _market_intent(norm, context, today):
     day = calendar_day(norm, today)
     action = 'SUMMARY' if re.search(r'\b(?:tom tat|tong hop|diem tin)\b', norm) else 'LIST'
     prior = (context or {}).get('_market_request')
+    if prior and prior.get('kind') == 'NEWS' and is_list_followup(norm):
+        return {**copy.deepcopy(prior), 'action': 'LIST'}
     financial = metric_group(norm) or any(_fold(a) in norm for aliases in METRIC_ALIASES.values() for a in aliases)
     market_context = bool(re.search(
         r'\b(?:thi truong|thi truong chung khoan|chung khoan|ttck|tt|ck|vni|vn ?index|vnindex)\b', norm
@@ -1042,6 +1045,25 @@ class LiveResearchService:
 
     async def _answer_turn(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
+        if is_contextual_overview(interpreted):
+            companies = (context or {}).get('companies') or []
+            if len(companies) != 1:
+                return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                    b1_decision='ASK_CLARIFICATION', status='ASK_CLARIFICATION',
+                    reason_code='AMBIGUOUS_CONTEXT' if companies else 'MISSING_COMPANY',
+                    message='Bạn muốn xem tổng quan công ty nào? Vui lòng chọn một mã.',
+                    scope={'companies': list(companies), 'source_type': 'COMPANY_PROFILE', 'topic': 'COMPANY_PROFILE'},
+                    evidence_pack=None, errors=[])
+            interpreted = 'Thông tin công ty ' + companies[0]
+        if is_list_followup(interpreted):
+            prior = (context or {}).get('_hybrid_context') or context or {}
+            graph_topic = prior.get('topic') and prior.get('route_hint') in ('GRAPH', 'BOTH')
+            news_topic = ((context or {}).get('_market_request') or {}).get('kind') == 'NEWS'
+            if not graph_topic and not news_topic:
+                return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                    b1_decision='ASK_CLARIFICATION', status='ASK_CLARIFICATION', reason_code='MISSING_LIST_SUBJECT',
+                    message='Bạn muốn liệt kê nội dung nào? Ví dụ: công ty con, thành viên HĐQT hoặc các tin vừa hỏi.',
+                    scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
         norm = _fold(interpreted).strip(' .?!')
         if norm in ('chao', 'chao ban', 'xin chao', 'hello', 'hi'):
             return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',

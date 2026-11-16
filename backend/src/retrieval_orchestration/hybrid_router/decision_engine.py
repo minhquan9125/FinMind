@@ -13,6 +13,7 @@ import unicodedata
 from .adapters import AdapterResult, MockContentAdapter, MockGraphAdapter
 from .schemas import RouterOutput, RouterScope, RouterTask
 from ..input_normalization import normalize_user_text
+from ..conversation_actions import is_list_followup
 from .intent_policy import (
     contains, resolve_intent, EVENT_TERMS, MARKET_TERMS, KNOWLEDGE_TERMS,
     GRAPH_TERMS, PROFILE_TERMS, CONTENT_TERMS, MARKET_ANALYSIS_TERMS,
@@ -351,8 +352,7 @@ class ScopeResolver:
             raise ValueError("question must be a nonempty string")
         normalized = _normalize(question)
         today = self.reference_date or datetime.now(timezone(timedelta(hours=7))).date()
-        list_followup = bool(re.fullmatch(
-            r"(?:co the )?(?:liet ke|ke|cho xem danh sach)(?: ra)?(?: khong| xem)?", normalized))
+        list_followup = is_list_followup(question)
         if list_followup and context and context.confirmed and context.topic and context.operation and context.route_hint:
             if context.ambiguous_companies:
                 return self._clarify(question, RouterScope(), ("companies",), "AMBIGUOUS_CONTEXT",

@@ -30,3 +30,6 @@ backend/tests/test_s5_wbs091_context.py text eol=lf
 tasks/s5-wbs091/** text eol=lf
 docs/sprint5/S5-WBS09.1-context.md text eol=lf
 outputs/s5_wbs091_20261116/** text eol=lf
+backend/src/retrieval_orchestration/conversation_actions.py text eol=lf
+backend/tests/test_s5_wbs092_followups.py text eol=lf
+tasks/s5-wbs09-followups/** text eol=lf
