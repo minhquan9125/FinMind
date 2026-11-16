@@ -41,6 +41,9 @@ OUT_OF_SCOPE_MESSAGE = ('FinMind chỉ cung cấp dữ liệu và phân tích c�
 # route (one company only); questions needing more slots (period, focus, several companies) wait for the slot layer.
 _CANONICAL_QUESTION = {'ANALYSIS': 'phân tích {}', 'PRICE': 'giá {} hôm nay', 'NEWS': 'tin {} hôm nay',
                        'COMPANY_OVERVIEW': 'thông tin công ty {}'}
+# A label only Gemini vouches for may refuse or open the analysis (which covers price, indicators and news);
+# it may not swap the question for a narrower canonical one (Huyền's 07.2 test: RSI answered with price/news).
+AI_REROUTE_LABELS = frozenset({'ANALYSIS'})
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
@@ -960,6 +963,10 @@ class LiveResearchService:
                 return decision, {**trace, 'reason': checked['reason']}
             label, route = checked['label'], checked['route']
             trace['label'] = label
+            if route != 'REFUSE' and label not in AI_REROUTE_LABELS:
+                # No rule saw price/news/profile words here, and "giá X hôm nay" would replace what the user
+                # asked (e.g. RSI) with a different question: the AI alone cannot confirm that rewrite.
+                return decision, {**trace, 'reason': 'AI_LABEL_NOT_CONFIRMED'}
         if route == 'REFUSE':
             trace['applied'] = True
             return dict(decision, decision='UNSUPPORTED', reason_code='INTENT_OUT_OF_SCOPE',

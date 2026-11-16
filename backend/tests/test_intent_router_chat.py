@@ -7,6 +7,8 @@ import asyncio
 import json
 import time
 
+import pytest
+
 from src.retrieval_orchestration.intent_v2_classifier import IntentClassifier
 from src.retrieval_orchestration.live_research import LiveResearchService
 from src.retrieval_orchestration.market_research import MarketResearch
@@ -91,6 +93,22 @@ def test_an_unconfident_fallback_keeps_the_clarification(artifact):
     result = ask('rsi của fpt', classifier(artifact, 'ANALYSIS'), provider)
     assert result['status'] == 'ASK_CLARIFICATION'
     assert result['intent']['applied'] is False and result['intent']['reason'] == 'LOW_PROVIDER_CONFIDENCE'
+
+
+@pytest.mark.parametrize('code', ['GIA', 'NEWS', 'TONG_QUAN'])
+def test_a_wrong_ai_label_never_swaps_rsi_for_price_or_news(artifact, code):
+    # Huyền's 07.2 acceptance (16/11): RSI asked, the AI answers GIA/NEWS with high confidence.
+    provider = Provider({'intent_label': code, 'confidence': .95, 'reason': 'x'})
+    result = ask('rsi của fpt', classifier(artifact, 'ANALYSIS'), provider)
+    assert provider.fallback_calls == 1 and result['status'] == 'ASK_CLARIFICATION'
+    assert result['intent']['applied'] is False and result['intent']['reason'] == 'AI_LABEL_NOT_CONFIRMED'
+
+
+def test_an_ai_refusal_is_applied(artifact):
+    provider = Provider({'intent_label': 'NGOAI_PHAM_VI', 'confidence': .9, 'reason': 'không liên quan tài chính'})
+    result = ask('hôm nay ăn gì', classifier(artifact, 'CONVERSATION'), provider)
+    assert result['status'] == 'UNSUPPORTED' and result['reason_code'] == 'INTENT_OUT_OF_SCOPE'
+    assert result['intent'] == {'label': 'OUT_OF_SCOPE', 'decision': 'NEED_FALLBACK', 'source': 'AI', 'applied': True}
 
 
 def test_gemini_cannot_name_another_company(artifact):
