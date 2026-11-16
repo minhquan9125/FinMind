@@ -431,8 +431,11 @@ class WebChatRouter:
                             continue
                         requested = task.params.get('companies') or sorted({c for f in facts for c in f['companies']})
                         if task.params.get('company_scope_policy') == 'RELATED_COMPANIES':
-                            # Do not invent ticker mappings from names/path endpoints.
-                            raise GraphChatError('GRAPH_COMPANY_MAPPING_REQUIRED')
+                            # Never invent ticker mappings from names/path endpoints. The related companies
+                            # (e.g. unlisted subsidiaries) have no ticker, so their own profiles are not
+                            # searched; the verified graph relations still answer the question.
+                            trace['related_companies_unmapped'] = True
+                            continue
                         content_scope = dict(companies=requested, periods=scope['periods'],
                             metric_code=None if scope.get('source_type') == 'BCTN' else scope.get('metric_code'),
                             reporting_entity=scope.get('reporting_entity') or 'UNKNOWN',
@@ -480,6 +483,8 @@ class WebChatRouter:
         if (answer.get('answering') or {}).get('status') == 'DRAFT_READY':
             anchor_graph_time(answer['answering'])
             caution = 'Thông tin theo tài liệu được dẫn; chưa xác nhận chức vụ hiện tại hoặc toàn bộ nhân sự.'
+            if trace.get('related_companies_unmapped'):
+                caution += ' Chưa có hồ sơ riêng của từng công ty liên quan vì chúng chưa có mã chứng khoán trong dữ liệu.'
             answer['answering']['draft'] += '\n\n' + caution
             answer['answering']['cautions'].append(caution)
         return answer

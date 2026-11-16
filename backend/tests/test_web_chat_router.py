@@ -162,6 +162,16 @@ def test_stale_graph_source_with_nothing_in_the_report_text_still_fails_closed()
     assert not result.get('answering')
 
 
+def test_related_companies_without_tickers_are_answered_from_the_graph_alone():
+    engine, graph, content = service()
+    result = asyncio.run(engine.answer('Cho tôi biết thông tin về các công ty con của FPT', 'test'))
+    assert result['hybrid_router']['route'] == 'BOTH'
+    assert result['reason_code'] == 'GRAPH_EVIDENCE_READY'              # not GRAPH_COMPANY_MAPPING_REQUIRED
+    assert result['hybrid_router']['related_companies_unmapped'] is True
+    assert not content.calls                                            # no ticker is invented to search them
+    assert 'chưa có mã chứng khoán' in result['answering']['draft']
+
+
 def test_both_executes_graph_then_vector_and_pins_the_same_version():
     engine, graph, content = service()
     result = asyncio.run(engine.answer('Chủ tịch FPT nói gì về chiến lược năm 2025?', 'test'))
