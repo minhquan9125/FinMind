@@ -2,6 +2,30 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { citationView, modeLabel, safeSourceUrl } from './citationView.js';
 
+test('session summary keeps numbered sources from independent evidence packs', () => {
+  const make = (id, type) => ({ evidence_id: id, source_type: type, source_verified: true,
+    passage: 'Đoạn nguồn '+id, title: 'Nguồn '+id, locator: { section: 'Kỳ '+id } });
+  const first = make('fpt-2025', 'BCTC');
+  const second = make('vcb-2024', 'NEWS');
+  const result = { execution_mode: 'LIVE', scope: { source_type: 'PRICE' },
+    presentation: { sources: 'USED_LINKS' }, evidence_packs: [{ items: [first] }, { items: [second, make('unused','NEWS')] }],
+    answering: { status: 'DRAFT_READY', citations: [{ evidence_id: first.evidence_id, citation_number: 1 },
+      { evidence_id: second.evidence_id, citation_number: 2 }] } };
+  const sources = citationView(result);
+  assert.equal(sources.length, 2);
+  assert.deepEqual(sources.map(s => s.citationNumber), [1,2]);
+  assert.equal(sources[0].passage, first.passage);
+});
+
+test('a saved price observation cited by a session summary has a source card', () => {
+  const item = { evidence_id: 'saved-price', source_type: 'PRICE', source_verified: true,
+    title: 'Giá đã quan sát', passage: 'Giá tại ngày đã hỏi', locator: { section: 'vnstock/KBS' } };
+  const result = { execution_mode: 'LIVE', evidence_packs: [{ items: [item] }],
+    presentation: { sources: 'USED_LINKS' }, answering: { status: 'DRAFT_READY',
+      citations: [{ evidence_id: item.evidence_id, citation_number: 1 }] } };
+  assert.equal(citationView(result)[0]?.citationNumber, 1);
+});
+
 test('graph evidence opens a verified document URL without rewriting its locator', () => {
   const locator = { source_table: 'annual_reports', section: 'Hội đồng quản trị' };
   const item = { evidence_id: 'graph-chunk', source_type: 'BCTN', source_verified: true,

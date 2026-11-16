@@ -13,7 +13,7 @@ def is_list_followup(text):
         r'(?:(?:ban )?co the |ban |cho (?:toi|minh|em) )?'
         r'(?:liet ke|ke|(?:xem |cho xem )?danh sach)'
         r'(?: ra| lai)?(?: (?:nhung )?noi dung (?:vua|dang) noi)?'
-        r'(?: giup (?:toi|minh|em))?(?: duoc)?(?: khong| nhe| di)?', _words(text)))
+        r'(?: giup (?:toi|minh|em))?(?: duoc)?(?: khong| nhe| di| xem)?', _words(text)))
 
 
 def is_contextual_overview(text):
@@ -22,3 +22,12 @@ def is_contextual_overview(text):
         r'(?:gioi thieu(?: tong quan)?|tong quan)'
         r'(?: ve)?(?: (?:cong ty|doanh nghiep|ma))?'
         r'(?: nay| do| dang noi| vua noi)?(?: giup (?:toi|minh|em))?(?: nhe)?', _words(text)))
+
+
+def is_session_summary(text):
+    return bool(re.fullmatch(
+        r'(?:(?:ban )?co the )?(?:(?:giup|cho) (?:toi|minh|em) )?'
+        r'(?:tong hop|tom tat|tong ket)'
+        r'(?: lai)? (?:nay gio|(?:toan bo )?noi dung (?:phien hien tai|cuoc hoi thoai|da trao doi)|'
+        r'nhung gi (?:vua|da) (?:noi|trao doi)|cuoc hoi thoai(?: nay)?)'
+        r'(?: giup (?:toi|minh|em))?(?: nhe| duoc khong| khong)?', _words(text)))

@@ -120,3 +120,15 @@ def test_message_api_lists_then_overviews_current_company(tmp_path):
         assert content.calls[-1][1]['source_type'] == 'COMPANY_PROFILE'
         assert content.calls[-1][1]['companies'] == ['FPT']
         assert client.get(path).json() == snap
+
+
+def test_list_annual_content_keeps_the_prior_subject_in_retrieval():
+    async def run():
+        engine, content, _ = live_engine()
+        first = await engine.answer('BCTN FPT năm 2025 nói gì về chiến lược?', 'annual-list')
+        result = await engine.answer('Liệt kê những nội dung vừa nói', 'annual-list', first['scope'])
+        assert result['scope']['source_type'] == 'BCTN'
+        assert result['scope']['companies'] == ['FPT']
+        assert result['scope']['periods'] == ['2025']
+        assert 'chiến lược' in content.calls[-1][0]
+    asyncio.run(run())

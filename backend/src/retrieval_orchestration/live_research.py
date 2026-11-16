@@ -238,7 +238,7 @@ def annual_scope(text, norm, scope, previous):
         scope.pop('_annual_question', None)
         return ('ASK_CLARIFICATION', 'AMBIGUOUS_CONTEXT',
                 'Câu trước có nhiều công ty. Bạn muốn thay công ty nào hay hỏi riêng mã mới? Vui lòng nêu lại chủ đề cần xem.')
-    followup = bool(company_followup or re.fullmatch(r'(?:(?:the )?con\s+)?(?:nam\s+)?(?:19|20|21)\d{2}(?: thi sao)?[ ?!.]*', norm)
+    followup = bool(company_followup or is_list_followup(norm) or re.fullmatch(r'(?:(?:the )?con\s+)?(?:nam\s+)?(?:19|20|21)\d{2}(?: thi sao)?[ ?!.]*', norm)
                     or (not previous.get('companies') and previous.get('_annual_question')
                         and re.fullmatch(r'[a-z]{3}[ ?!.]*', norm)))
     query = previous.get('_annual_question') if followup else text
@@ -910,7 +910,8 @@ class LiveResearchService:
             result['clarification'] = result['message']
             return result
         try:
-            evidence = prepare_evidence(previous.get('evidence_pack'))
+            from .conversation_summary import saved_evidence
+            evidence = saved_evidence(previous)
             for citation in answer['citations']:
                 item = evidence.get(citation.get('evidence_id'))
                 if item is None or any(citation.get(key) != item.get(key)
@@ -924,7 +925,11 @@ class LiveResearchService:
         parts = ['Nguồn của câu trả lời trước:']
         for number, citation in enumerate(citations, 1):
             citation.setdefault('citation_number', number)
-            title = citation_title(citation, old_scope)
+            if previous.get('evidence_packs'):
+                symbol = citation.get('locator', {}).get('symbol')
+                title = citation.get('title') or citation_title(citation, {'companies': [symbol] if symbol else []})
+            else:
+                title = citation_title(citation, old_scope)
             section = citation['locator'].get('section')
             parts.append(f"[{citation['citation_number']}] {title}"+(f' — {section}' if section else ''))
         manifest = copy.deepcopy(answer.get('manifest', {}))
@@ -940,6 +945,8 @@ class LiveResearchService:
                                  'draft': '\n\n'.join(parts), 'claims': [], 'citations': citations,
                                  'manifest': manifest, 'cautions': [], 'budget': self.budget.snapshot(),
                                  'trace': [{'event': 'saved_source_reference'}]})
+        if previous.get('evidence_packs'):
+            result['evidence_packs'] = copy.deepcopy(previous['evidence_packs'])
         return result
 
     async def _absent_from_corpus(self, scope):
@@ -1059,7 +1066,8 @@ class LiveResearchService:
             prior = (context or {}).get('_hybrid_context') or context or {}
             graph_topic = prior.get('topic') and prior.get('route_hint') in ('GRAPH', 'BOTH')
             news_topic = ((context or {}).get('_market_request') or {}).get('kind') == 'NEWS'
-            if not graph_topic and not news_topic:
+            annual_topic = (context or {}).get('source_type') == 'BCTN' and (context or {}).get('_annual_question')
+            if not graph_topic and not news_topic and not annual_topic:
                 return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
                     b1_decision='ASK_CLARIFICATION', status='ASK_CLARIFICATION', reason_code='MISSING_LIST_SUBJECT',
                     message='Bạn muốn liệt kê nội dung nào? Ví dụ: công ty con, thành viên HĐQT hoặc các tin vừa hỏi.',
