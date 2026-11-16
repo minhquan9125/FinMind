@@ -44,6 +44,11 @@ _CANONICAL_QUESTION = {'ANALYSIS': 'phân tích {}', 'PRICE': 'giá {} hôm nay'
 # A label only Gemini vouches for may refuse or open the analysis (which covers price, indicators and news);
 # it may not swap the question for a narrower canonical one (Huyền's 07.2 test: RSI answered with price/news).
 AI_REROUTE_LABELS = frozenset({'ANALYSIS'})
+# Canonical questions are about today: never use one when the user named or pointed at another time
+# (full-stack 07.2 run: "chỉ báo RSI ngày đó" became today's analysis).
+_TIME_REFERENCE = re.compile(r'\b(?:19|20)\d{2}\b|\b\d{1,2}[/-]\d{1,2}\b|\bquy\s*[1-4]\b|\bhom qua\b'
+                             r'|\b(?:ngay|hom|tuan|thang|quy|nam|phien|ky)\s+(?:do|ay|kia|truoc)\b')
+_GREETING = re.compile(r'(?:xin )?chao(?: ban)?(?: finmind)?|(?:hello|hi)(?: finmind)?')
 
 V4_CORPUS = '33d33730-0f0a-5274-a7f8-8d32a6be07e8'
 MODEL = 'BAAI/bge-m3@5617a9f61b02'
@@ -972,6 +977,8 @@ class LiveResearchService:
             return dict(decision, decision='UNSUPPORTED', reason_code='INTENT_OUT_OF_SCOPE',
                         message=OUT_OF_SCOPE_MESSAGE), trace
         template = _CANONICAL_QUESTION.get(label)
+        if template and _TIME_REFERENCE.search(_fold(question)):
+            return decision, {**trace, 'reason': 'PERIOD_NOT_KEPT'}
         if template and len(companies) == 1:
             rerouted = analyze_live(template.format(companies[0]), context, today=today)
             if rerouted['decision'] != 'ASK_CLARIFICATION':
@@ -982,7 +989,7 @@ class LiveResearchService:
     async def _answer_turn(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
         norm = _fold(interpreted).strip(' .?!')
-        if norm in ('chao', 'chao ban', 'xin chao', 'hello', 'hi'):
+        if _GREETING.fullmatch(norm):
             return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
                 b1_decision='GREETING', status='GREETING', reason_code='GREETING',
                 message='Chào bạn! Bạn có thể hỏi thông tin công ty, nhân sự, báo cáo hoặc tin tức của doanh nghiệp.',

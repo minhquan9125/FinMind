@@ -56,6 +56,15 @@ Sửa trong `intent_v2_rules.py` và `intent_v2_classifier.py` của Nhân; test
 
 Phía chat: "định giá" không còn bị luật chat đọc là giá; nhãn COMPANY_OVERVIEW mở hồ sơ công ty ("fpt là công ty gì").
 
+## Chạy lại đủ adapter (16/11, 32 câu của Huyền)
+
+`backend/scripts/run_s5_072_fullstack.py`: chạy qua đúng engine API dựng (giá lịch sử, hybrid router/Neo4j, admin-news, market, router v2, Gemini thật). DB VPS qua tunnel, pool chỉ đọc (`default_transaction_read_only=on`); không lưu session, không ghi metrics; không bật bộ thu thị trường trực tiếp. `--rejudge` chấm lại từ `results.json`, không gọi lại gì. Chỉ chấm ở biên định tuyến; NO_DATA với câu cần trả lời vẫn tính PASS định tuyến.
+
+Lượt 1 (`outputs/s5_072_fullstack/run01`): 16 PASS, 9 BLOCKED, 7 FAIL.
+- BLOCKED: Neo4j từ chối đăng nhập (`NEO4J_PASSWORD` trong `backend/.env` không khớp VPS), câu chức vụ/quan hệ không tới đồ thị.
+- Đã sửa sau lượt 1 (chưa chạy lại trên VPS): USER-022 "chỉ báo RSI ngày đó" bị đổi thành phân tích hôm nay, nay câu có mốc thời gian không được đổi sang câu chuẩn (`PERIOD_NOT_KEPT`); USER-009 "Xin chào FinMind!" nay là lời chào.
+- Ngoài 07.2: USER-001/016 giá đóng cửa một ngày (giá lịch sử chỉ trả phép tính theo kỳ); USER-015/026/027 câu mơ hồ nhưng luật cũ tự chọn tuyến nên không tới bước hỏi AI; USER-029 luật v2 đọc "bài viết" là NEWS.
+
 ## Còn hạn chế
 
 - Câu kép (MIXED) đã nhận đúng thành phần, nhưng chat chưa trả lời cả hai vế; hiện theo luật cũ, thường chỉ một vế.

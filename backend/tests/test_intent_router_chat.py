@@ -104,6 +104,20 @@ def test_a_wrong_ai_label_never_swaps_rsi_for_price_or_news(artifact, code):
     assert result['intent']['applied'] is False and result['intent']['reason'] == 'AI_LABEL_NOT_CONFIRMED'
 
 
+@pytest.mark.parametrize('question', ['rsi của fpt ngày đó', 'rsi của fpt 30/6'])
+def test_a_named_time_is_never_replaced_by_today(artifact, question):
+    # Full-stack 07.2 run: "chỉ báo RSI ngày đó" was answered with today's analysis.
+    provider = Provider({'intent_label': 'PHAN_TICH', 'confidence': .9, 'reason': 'chỉ báo kỹ thuật'})
+    result = ask(question, classifier(artifact, 'ANALYSIS'), provider)
+    assert result['status'] == 'ASK_CLARIFICATION'
+    assert result['intent']['applied'] is False and result['intent']['reason'] == 'PERIOD_NOT_KEPT'
+
+
+@pytest.mark.parametrize('question', ['Xin chào FinMind!', 'chào bạn', 'hi'])
+def test_greetings_are_answered_as_greetings(question):
+    assert ask(question, None)['status'] == 'GREETING'
+
+
 def test_an_ai_refusal_is_applied(artifact):
     provider = Provider({'intent_label': 'NGOAI_PHAM_VI', 'confidence': .9, 'reason': 'không liên quan tài chính'})
     result = ask('hôm nay ăn gì', classifier(artifact, 'CONVERSATION'), provider)
