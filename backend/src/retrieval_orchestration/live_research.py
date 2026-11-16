@@ -924,7 +924,8 @@ class LiveResearchService:
         return result
 
     async def _classify_intent(self, question, context):
-        """v2 decision (intent_gate_v2.decide) or None when the classifier is off, fails or is too slow."""
+        """Nhân's v2 classification, or None when the classifier is off, fails, is too slow, or the result
+        breaks Huyền's 04.2 v2 contract (stale or forged rule evidence)."""
         if self.intent_classifier is None:
             return None
         try:
@@ -933,28 +934,33 @@ class LiveResearchService:
         except Exception:
             logger.warning('intent_classifier_unavailable')
             return None
-        decided = intent_gate.decide(classified)
-        return None if decided['decision'] == 'IGNORE' else decided
+        return classified if intent_gate.decide(classified, question) is not None else None
 
-    async def _apply_intent(self, intent, question, decision, context, today):
-        """Use the v2 label only where the rules would ask again. Rule evidence is used as is; a classifier
-        guess is confirmed by the Gemini fallback (07.2). Any failure keeps the rules' clarification."""
-        trace = dict(label=intent['label'], decision=intent['decision'],
-                     source='RULES' if intent['decision'] == 'DIRECT' else None, applied=False)
-        if decision['decision'] != 'ASK_CLARIFICATION' or intent['decision'] not in ('DIRECT', 'FALLBACK'):
-            return decision, trace
+    async def _apply_intent(self, classified, question, decision, context, today):
+        """Use the v2 label only where the rules would ask again. Huyền's 04.2 v2 decides with the company the
+        chat verified; a classifier guess is confirmed by the Gemini fallback (07.2). Any failure keeps the
+        rules' clarification."""
         companies = decision['scope'].get('companies') or []
-        label = intent['label']
-        if intent['decision'] == 'FALLBACK':
-            trace['source'] = 'GEMINI'
+        decided = intent_gate.decide(classified, question, companies[0] if len(companies) == 1 else None)
+        if decided is None:
+            return decision, None
+        label = decided['intent_label'] or (decided.get('classification_evidence') or {}).get('intent_label')
+        trace = dict(label=label, decision=decided['decision'], source=decided.get('source'), applied=False)
+        if decision['decision'] != 'ASK_CLARIFICATION':
+            return decision, trace
+        if decided['decision'] not in ('SEARCH', 'REFUSE', 'NEED_FALLBACK'):
+            return decision, {**trace, 'reason': decided['reason_code']}
+        route = decided['route']
+        if decided['decision'] == 'NEED_FALLBACK':
+            trace['source'] = 'AI'
             if self.provider is None:
                 return decision, {**trace, 'reason': 'PROVIDER_NOT_CONFIGURED'}
-            checked = await intent_gate.ask_fallback(self.provider, self.budget, intent_gate.fallback_request(
-                question, company=companies[0] if len(companies) == 1 else None))
+            checked = await intent_gate.ask_fallback(self.provider, self.budget, decided, question)
             if checked['label'] is None:
                 return decision, {**trace, 'reason': checked['reason']}
-            label = trace['label'] = checked['label']
-        if label == 'OUT_OF_SCOPE':
+            label, route = checked['label'], checked['route']
+            trace['label'] = label
+        if route == 'REFUSE':
             trace['applied'] = True
             return dict(decision, decision='UNSUPPORTED', reason_code='INTENT_OUT_OF_SCOPE',
                         message=OUT_OF_SCOPE_MESSAGE), trace
@@ -975,12 +981,13 @@ class LiveResearchService:
                 message='Chào bạn! Bạn có thể hỏi thông tin công ty, nhân sự, báo cáo hoặc tin tức của doanh nghiệp.',
                 scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
         intent = await self._classify_intent(interpreted, context)
-        if intent is not None and intent['decision'] == 'REFUSE':
+        early = intent_gate.decide(intent, interpreted) if intent is not None else None
+        if early is not None and early['decision'] == 'REFUSE':
             # Rules found advice, prediction or a non-financial request: refuse before any price, graph or news search.
             return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
                         b1_decision='UNSUPPORTED', status='UNSUPPORTED', reason_code='INTENT_OUT_OF_SCOPE',
                         message=OUT_OF_SCOPE_MESSAGE, scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[],
-                        intent=dict(label=intent['label'], decision='REFUSE', source='RULES', applied=True))
+                        intent=dict(label=early['intent_label'], decision='REFUSE', source='RULES', applied=True))
         if self.prices is not None:
             # Historical price questions are arithmetic on stored bars, not reading: answer them exactly.
             priced = await self.prices.answer(interpreted, today)
