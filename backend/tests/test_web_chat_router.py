@@ -13,6 +13,7 @@ import pytest
 from src.api.routers import research_chat as api
 from src.b1_answering.core.policy import Limits, Budget
 from src.b1_answering.evidence.citations import prepare_evidence
+from src.b1_answering.providers.gemini import GeminiError
 from src.documents.db_chunking import news_documents, chunk_document
 from src.graph_review.models import VerifiedSource, SourceProblem
 from src.retrieval_orchestration.hybrid_router.decision_engine import DecisionEngine, SessionScope
@@ -35,9 +36,9 @@ def test_graph_relative_now_is_anchored_to_source_without_changing_support_quote
     assert answer['claims'][0]['support_quotes'][0]['quote'] == original
 
 
-def pack():
+def pack(content=QUOTE):
     doc = news_documents([dict(article_id=str(uuid4()), source='official', title='Nhân sự FPT',
-        content=QUOTE, symbols=['FPT'], url='https://example.org/leadership')])[0]
+        content=content, symbols=['FPT'], url='https://example.org/leadership')])[0]
     chunk = chunk_document(doc)[0]
     return dict(schema_version='1.1', query_id=str(uuid4()), corpus_version_id=CID, retrieval_backend='neo4j_source_replay',
         data_version=dict(kind='INDEX', id=IID), items=[dict(evidence_id=str(uuid4()),
@@ -170,6 +171,57 @@ def test_related_companies_without_tickers_are_answered_from_the_graph_alone():
     assert result['hybrid_router']['related_companies_unmapped'] is True
     assert not content.calls                                            # no ticker is invented to search them
     assert 'chưa có mã chứng khoán' in result['answering']['draft']
+
+
+def _subsidiary_case(names, passage):
+    value = pack(passage)
+    eid = value['items'][0]['evidence_id']
+    facts = [dict(relation_id=f'r{i}', relation_type='HAS_SUBSIDIARY', subject='Công ty Cổ phần FPT', object=name,
+                  companies=['FPT'], evidence_ids=[eid]) for i, name in enumerate(names)]
+    return value, facts
+
+
+def test_relation_extract_lists_only_names_found_in_the_cited_source():
+    from src.retrieval_orchestration.web_chat_router import graph_relations_extract
+    value, facts = _subsidiary_case(['Công ty TNHH FPT Smart Cloud', 'Công ty TNHH FPT IS', 'Công ty Không Có Trong Nguồn'],
+                                    'Danh sách: Công ty TNHH FPT Smart Cloud\nvà Công ty TNHH  FPT IS.')
+    out = graph_relations_extract(facts + [dict(facts[0])], value, ['HAS_SUBSIDIARY'])       # a duplicate pair
+    assert out['status'] == 'DRAFT_READY' and out['reason_code'] == 'GRAPH_RELATIONS_EXTRACT'
+    assert 'Công ty TNHH FPT Smart Cloud [1]' in out['draft'] and 'Công ty TNHH FPT IS [1]' in out['draft']
+    assert 'Không Có Trong Nguồn' not in out['draft']
+    assert out['draft'].count('Smart Cloud') == 1
+    assert [c['citation_number'] for c in out['citations']] == [1]
+
+
+def test_relation_extract_refuses_other_relation_types_and_unverifiable_lists():
+    from src.retrieval_orchestration.web_chat_router import graph_relations_extract
+    value, facts = _subsidiary_case(['Công ty ma'], 'Nguồn không nhắc tới công ty đó.')
+    assert graph_relations_extract(facts, value, ['HAS_SUBSIDIARY']) is None          # nothing verbatim in the source
+    value, facts = _subsidiary_case(['Công ty TNHH FPT IS'], 'Công ty TNHH FPT IS')
+    assert graph_relations_extract(facts, value, ['HOLDS_ROLE']) is None               # not what was asked
+    assert graph_relations_extract(facts, value, None) is None
+    assert graph_relations_extract([], value, ['HAS_SUBSIDIARY']) is None
+
+
+def test_unverified_model_answer_for_a_relation_list_falls_back_to_the_graph_list():
+    class Rejecting(Provider):
+        async def generate(self, request):
+            raise GeminiError('GEMINI_UNAVAILABLE')
+    value, facts = _subsidiary_case(['Công ty TNHH FPT IS'], 'FPT có Công ty TNHH FPT IS là công ty con.')
+
+    class Relations(Graph):
+        async def retrieve(self, scope):
+            self.calls.append(copy.deepcopy(scope.model_dump()))
+            return value, facts
+    content, graph = Content(), Relations()
+    route = WebChatRouter(lambda: DecisionEngine(Predictor()), graph, content)
+    engine = LiveResearchService(content, provider=Rejecting(), hybrid_router=route)
+    result = asyncio.run(engine.answer('Công ty con của FPT gồm những công ty nào', 'test'))
+    answering = result['answering']
+    assert answering['status'] == 'DRAFT_READY' and answering['reason_code'] == 'GRAPH_RELATIONS_EXTRACT'
+    assert 'Công ty TNHH FPT IS [1]' in answering['draft']
+    assert answering['manifest']['response_mode'] == 'GRAPH_RELATIONS'
+    assert answering['trace'][-1]['event'] == 'graph_relations_extract'
 
 
 def test_both_executes_graph_then_vector_and_pins_the_same_version():

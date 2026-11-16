@@ -55,6 +55,59 @@ def anchor_graph_time(answer):
 STALE_SOURCE_CODES = frozenset({'GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS', 'GRAPH_SOURCE_VERSION_MISMATCH'})
 
 
+RELATION_LABELS = {'HAS_SUBSIDIARY': 'có công ty con', 'HAS_ASSOCIATE': 'có công ty liên kết'}
+MAX_EXTRACT_LINES = 30
+
+
+def graph_relations_extract(facts, pack, relation_types):
+    """Answer from the verified graph relations themselves when the model's wording could not be verified.
+
+    Each listed name must appear verbatim in the cited source; one that does not is left out, and nothing
+    is listed when no relation survives. Only the relation types the question asked for are used.
+    Returns the fields to merge into `answering`, or None.
+    """
+    wanted = [t for t in (relation_types or []) if t in RELATION_LABELS]
+    if not wanted or not facts:
+        return None
+    evidence = {i['evidence_id']: i for i in pack.get('items') or []}
+    squash = lambda text: ' '.join(str(text).split())
+    groups, seen, numbers, citations = {}, set(), {}, []
+    for fact in facts:
+        if fact.get('relation_type') not in wanted:
+            continue
+        key = (fact['relation_type'], fact['subject'], fact['object'])
+        if key in seen:
+            continue             # the same pair reported in several annual reports
+        source = next((evidence[e] for e in fact.get('evidence_ids') or []
+                       if e in evidence and squash(fact['object']) in squash(evidence[e]['passage'])), None)
+        if source is None:
+            continue
+        seen.add(key)
+        if source['evidence_id'] not in numbers:
+            numbers[source['evidence_id']] = len(numbers) + 1
+            citations.append({**{k: copy.deepcopy(source[k]) for k in (
+                'evidence_id', 'source_id', 'chunk_id', 'source_sha256', 'locator', 'content_sha256',
+                'source_verified', 'title', 'source_type') if k in source}, 'citation_number': numbers[source['evidence_id']]})
+        groups.setdefault((fact['relation_type'], fact['subject']), []).append((fact['object'], source['evidence_id']))
+    if not groups:
+        return None
+    lines, claims, count = [], [], 0
+    for (relation, subject), pairs in groups.items():
+        pairs = pairs[:max(0, MAX_EXTRACT_LINES - count)]
+        if not pairs:
+            break
+        count += len(pairs)
+        items = [f'{name} [{numbers[eid]}]' for name, eid in pairs]
+        lines.append(f'{subject} {RELATION_LABELS[relation]}: ' + '; '.join(items) + '.')
+        claims += [dict(text=f'{subject} {RELATION_LABELS[relation]} {name}', evidence_ids=[eid]) for name, eid in pairs]
+    caution = ('Danh sách lấy trực tiếp từ dữ liệu quan hệ đã duyệt và nguồn được dẫn, không phải bản diễn đạt của mô hình; '
+               'chưa xác nhận đây là toàn bộ.')
+    return dict(status='DRAFT_READY', reason_code='GRAPH_RELATIONS_EXTRACT',
+                message='Trả danh sách quan hệ đã duyệt khi bước diễn đạt không được xác minh.',
+                draft='\n\n'.join(lines + [caution]), claims=claims, citations=citations, cautions=[caution], presentation=None)
+
+
+
 class Neo4jChatRetriever:
     """Reuse the viewer's READY/read-only contract and WBS06 source replay."""
     def __init__(self, retriever, reader_factory, ticker_map_factory=None):
@@ -480,6 +533,14 @@ class WebChatRouter:
         result.update(status='EVIDENCE_READY', reason_code='GRAPH_EVIDENCE_READY', query_id=pack['query_id'],
                       evidence_pack=pack, retrieval_backend=pack['retrieval_backend'])
         answer = await complete_retrieval(question, result, provider=provider, limits=limits, budget=budget)
+        if (answer.get('answering') or {}).get('status') != 'DRAFT_READY' and answer.get('answering') is not None:
+            extract = graph_relations_extract(facts, pack, scope.get('relation_types'))
+            if extract:
+                answer['answering'].update(extract)
+                answer['answering'].setdefault('manifest', {})['response_mode'] = 'GRAPH_RELATIONS'
+                answer['answering'].setdefault('trace', []).append(dict(event='graph_relations_extract',
+                    generation_failure=answer['answering'].get('reason_code')))
+                return answer
         if (answer.get('answering') or {}).get('status') == 'DRAFT_READY':
             anchor_graph_time(answer['answering'])
             caution = 'Thông tin theo tài liệu được dẫn; chưa xác nhận chức vụ hiện tại hoặc toàn bộ nhân sự.'
