@@ -24,3 +24,9 @@ backend/tests/fixtures/s5_wbs132_cases.json text eol=lf
 tasks/plan.md text eol=lf
 tasks/todo.md text eol=lf
 outputs/s5_wbs132_20261116/** text eol=lf
+
+# Portable WBS09.1 scope test and review evidence.
+backend/tests/test_s5_wbs091_context.py text eol=lf
+tasks/s5-wbs091/** text eol=lf
+docs/sprint5/S5-WBS09.1-context.md text eol=lf
+outputs/s5_wbs091_20261116/** text eol=lf
