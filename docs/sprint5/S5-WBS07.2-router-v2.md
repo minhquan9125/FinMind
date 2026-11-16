@@ -14,6 +14,7 @@ Bật/tắt bằng `INTENT_ROUTER_V2` (mặc định `true`; đặt `false` đ�
    - SEARCH: dùng thẳng.
    - NEED_FALLBACK: hỏi Gemini (07.2), dùng `prepare_fallback_request_v2` và `validate_fallback_response_v2` của Huyền. Gemini lỗi, quá 8 giây, hết budget của câu hỏi, hỏi lại (`CLARIFY`), lệch mã công ty, KET_HOP chưa xác minh thành phần, hoặc tự đánh giá dưới 0,60 thì **giữ câu hỏi lại như cũ**, không đoán.
    - Tuyến `REFUSE` thì từ chối; ANALYSIS, PRICE, NEWS, COMPANY_OVERVIEW với đúng 1 mã thì chuyển sang câu chuẩn ("phân tích FPT", "giá FPT hôm nay"…) mà luật đã xử lý được. Nhãn khác giữ nguyên câu hỏi lại.
+   - Nhãn chỉ do AI xác nhận (không có luật nào thấy) chỉ được dùng để từ chối hoặc mở phân tích (nhánh phân tích bao cả giá, chỉ báo, tin). AI trả GIA/NEWS/TONG_QUAN thì giữ câu hỏi lại (`AI_LABEL_NOT_CONFIRMED`): câu chuẩn "giá FPT hôm nay" sẽ thay mất điều người dùng hỏi (lỗi Huyền tìm ra 16/11: hỏi RSI, AI trả GIA/NEWS, chat chuyển sang giá/tin).
 3. Mỗi lượt có `result['intent'] = {label, decision, source: RULES|CLASSIFIER|AI, applied, reason?}` để đo router (13.2). `decision` là quyết định của Huyền; `source=AI` là lượt đã gọi Gemini phân loại.
    Trace admin (`research_metrics`) ghi khối này vào `details.intent`; lần gọi Gemini phân loại cũng nằm trong `calls` (model, token) cùng với lần sinh câu trả lời.
 
@@ -54,6 +55,15 @@ Sửa trong `intent_v2_rules.py` và `intent_v2_classifier.py` của Nhân; test
 - Kiểm lại: 580 câu thư viện và phát triển không câu nào đổi nhãn; `check_s5_intent_v2_fixes.py` 0 lỗi; test v2 của Nhân 183/183. Không fit lại classifier, không đổi vector hay nhãn chuẩn.
 
 Phía chat: "định giá" không còn bị luật chat đọc là giá; nhãn COMPANY_OVERVIEW mở hồ sơ công ty ("fpt là công ty gì").
+
+## Chạy lại đủ adapter (16/11, 32 câu của Huyền)
+
+`backend/scripts/run_s5_072_fullstack.py`: chạy qua đúng engine API dựng (giá lịch sử, hybrid router/Neo4j, admin-news, market, router v2, Gemini thật). DB VPS qua tunnel, pool chỉ đọc (`default_transaction_read_only=on`); không lưu session, không ghi metrics; không bật bộ thu thị trường trực tiếp. `--rejudge` chấm lại từ `results.json`, không gọi lại gì. Chỉ chấm ở biên định tuyến; NO_DATA với câu cần trả lời vẫn tính PASS định tuyến.
+
+Lượt 1 (`outputs/s5_072_fullstack/run01`): 16 PASS, 9 BLOCKED, 7 FAIL.
+- BLOCKED: Neo4j từ chối đăng nhập (`NEO4J_PASSWORD` trong `backend/.env` không khớp VPS), câu chức vụ/quan hệ không tới đồ thị.
+- Đã sửa sau lượt 1 (chưa chạy lại trên VPS): USER-022 "chỉ báo RSI ngày đó" bị đổi thành phân tích hôm nay, nay câu có mốc thời gian không được đổi sang câu chuẩn (`PERIOD_NOT_KEPT`); USER-009 "Xin chào FinMind!" nay là lời chào.
+- Ngoài 07.2: USER-001/016 giá đóng cửa một ngày (giá lịch sử chỉ trả phép tính theo kỳ); USER-015/026/027 câu mơ hồ nhưng luật cũ tự chọn tuyến nên không tới bước hỏi AI; USER-029 luật v2 đọc "bài viết" là NEWS.
 
 ## Còn hạn chế
 
