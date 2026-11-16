@@ -5,29 +5,30 @@ Bật/tắt bằng `INTENT_ROUTER_V2` (mặc định `true`; đặt `false` đ�
 
 ## Luồng
 
-1. Sau lời chào, Chat gọi `classify_intent` của Nhân trong luồng riêng. Giới hạn 3 giây; quá hạn hay lỗi thì bỏ qua lượt này. Kết quả đi qua `intent_gate_v2.decide`:
+1. Sau lời chào, Chat gọi `classify_intent` của Nhân trong luồng riêng. Giới hạn 3 giây; quá hạn hay lỗi thì bỏ qua lượt này. Kết quả đi qua `decide_intent_route_v2` của Huyền (04.2 v2). Hàm này kiểm lại bằng chứng luật trên đúng câu hỏi; kết quả cũ hay sai contract thì bỏ qua lượt này.
    - `REFUSE`: luật của Nhân nhận ra yêu cầu hạn chế (tư vấn mua bán, dự báo, giá mục tiêu, ngoài lĩnh vực). Chat **từ chối ngay**, trước khi tìm giá, đồ thị hay tin.
-   - `DIRECT`: nhãn do luật nhận ra (`EXPLICIT_REQUEST_TYPE`, `MULTIPLE_REQUEST_TYPES`).
-   - `FALLBACK`: nhãn mô hình đoán (`CLASSIFIER_PROPOSAL`) hoặc câu còn vế chưa rõ (`UNRESOLVED`). Một OUT_OF_SCOPE đoán ra chưa đủ để từ chối.
-   - `NEEDS_CONTEXT`: câu nối tiếp; để phiên hội thoại xử lý như cũ.
-2. Luật hiện có (`analyze_live`) chạy như cũ. **Chỉ khi luật phải hỏi lại** thì mới dùng nhãn v2:
-   - DIRECT: dùng thẳng.
-   - FALLBACK: hỏi Gemini (07.2). Gemini lỗi, quá 8 giây, hết budget của câu hỏi, hỏi lại (`CLARIFY`), lệch mã công ty, hoặc tự đánh giá dưới 0,60 thì **giữ câu hỏi lại như cũ**, không đoán.
-   - Nhãn dùng được: OUT_OF_SCOPE thì từ chối; ANALYSIS, PRICE, NEWS với đúng 1 mã thì chuyển sang câu chuẩn ("phân tích FPT", "giá FPT hôm nay", "tin FPT hôm nay") mà luật đã xử lý được. Nhãn khác giữ nguyên câu hỏi lại.
-3. Mỗi lượt có `result['intent'] = {label, decision, source: RULES|GEMINI, applied, reason?}` để đo router (13.2).
-   Trace admin (`research_metrics`) ghi khối này vào `details.intent`; lần gọi Gemini phân loại cũng nằm trong `calls` (model, token) cùng với lần sinh câu trả lời. `source=GEMINI` cho biết lượt đó có gọi phân loại.
+   - `SEARCH`: nhãn do luật nhận ra (`VERIFIED_V2_RULE`).
+   - `NEED_FALLBACK`: nhãn mô hình đoán hoặc câu còn vế chưa rõ. Một OUT_OF_SCOPE đoán ra chưa đủ để từ chối.
+   - `ASK_CLARIFICATION` (`CONTEXT_REQUIRED`, kỳ sai…) và `SESSION`: Chat xử lý như cũ.
+2. Luật hiện có (`analyze_live`) chạy như cũ. **Chỉ khi luật phải hỏi lại** thì mới dùng nhãn v2. Lúc này gọi lại `decide_intent_route_v2` với mã công ty Chat đã xác minh (đúng 1 mã), `company_required=False`:
+   - SEARCH: dùng thẳng.
+   - NEED_FALLBACK: hỏi Gemini (07.2), dùng `prepare_fallback_request_v2` và `validate_fallback_response_v2` của Huyền. Gemini lỗi, quá 8 giây, hết budget của câu hỏi, hỏi lại (`CLARIFY`), lệch mã công ty, KET_HOP chưa xác minh thành phần, hoặc tự đánh giá dưới 0,60 thì **giữ câu hỏi lại như cũ**, không đoán.
+   - Tuyến `REFUSE` thì từ chối; ANALYSIS, PRICE, NEWS, COMPANY_OVERVIEW với đúng 1 mã thì chuyển sang câu chuẩn ("phân tích FPT", "giá FPT hôm nay"…) mà luật đã xử lý được. Nhãn khác giữ nguyên câu hỏi lại.
+3. Mỗi lượt có `result['intent'] = {label, decision, source: RULES|CLASSIFIER|AI, applied, reason?}` để đo router (13.2). `decision` là quyết định của Huyền; `source=AI` là lượt đã gọi Gemini phân loại.
+   Trace admin (`research_metrics`) ghi khối này vào `details.intent`; lần gọi Gemini phân loại cũng nằm trong `calls` (model, token) cùng với lần sinh câu trả lời.
 
-## Contract fallback (chuyển từ 07.1 của Huyền sang 11 nhãn)
+## Contract fallback (07.1 v2 của Huyền, từ 16/11)
 
-- Gửi đi đúng 3 khóa: `question`, `conversation_scope{company_ticker, period}`, `allowed_labels` (11 mã fallback trong `intent-labels.v2.json` + `CLARIFY`).
-- Gemini trả JSON theo schema: `intent_label`, `confidence`, `reason`, `extracted_company`. Không được thêm khóa nào khác. Provider đã từ chối khóa trùng và NaN.
-- Ngưỡng tự đánh giá của AI là 0,60, giống 07.1. Đây là điểm tự báo, chưa hiệu chỉnh, chỉ dùng làm cổng, không coi là xác suất.
-- Nhánh không do AI chọn: FinMind tự suy từ nhãn, nên không có lỗi nhãn/nhánh không khớp.
-- Code: `backend/src/retrieval_orchestration/intent_gate_v2.py`. File 07.1 gốc của Huyền không sửa; nhờ Huyền đối chiếu và review.
+- Quyết định và kiểm tra là code của Huyền: `intent_routing.decide_intent_route_v2`, `intent_fallback_contract.prepare_fallback_request_v2`, `validate_fallback_response_v2`. `intent_gate_v2.py` chỉ còn phần gọi Gemini (prompt, 8 giây, budget) và rút gọn kết quả cho Chat.
+- Gửi đi đúng 3 khóa: `question`, `conversation_scope{company_ticker, period}`, `allowed_labels` (11 mã + `CLARIFY`).
+- Gemini trả JSON theo `V2_RESPONSE_JSON_SCHEMA`: `intent_label`, `confidence`, `reason`, `extracted_company`. Không được thêm khóa nào khác. Tuyến do server tính, kỳ giữ nguyên từ request.
+- Ngưỡng tự đánh giá của AI là 0,60. Đây là điểm tự báo, chưa hiệu chỉnh, chỉ dùng làm cổng, không coi là xác suất.
+- AI không gỡ được yêu cầu hạn chế mà luật đã thấy (`RESTRICTED_LABEL_CONFLICT`).
 
 ## Đã kiểm
 
-- Test: `test_intent_gate_v2.py` (22), `test_intent_router_chat.py` (9), `test_research_metrics_pipeline.py` (trace); toàn bộ backend 3629 pass, 5 lỗi WBS02 có từ trước.
+- Test: `test_intent_gate_v2.py`, `test_intent_router_chat.py` (dùng classifier thật của Nhân với encoder giả, để contract của Huyền kiểm cùng bằng chứng luật như khi chạy thật), `test_s5_huyen_v2.py`, `test_research_metrics_pipeline.py` (trace).
+- 16/11: `classify_intent` thật (BGE-M3) qua `decide_intent_route_v2`: 9 câu mẫu ra đúng loại quyết định (từ chối, luật, fallback, cần ngữ cảnh). Chưa gọi lại Gemini thật sau khi đổi sang contract của Huyền; schema gửi Gemini giống hệt bản đã chạy thật 14/11.
 - Chạy thật với BGE-M3 và Gemini (phần sinh câu trả lời dùng dữ liệu giả):
 
 | Câu | Kết quả |
