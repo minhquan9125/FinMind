@@ -8,6 +8,12 @@ import { createServer } from "vite";
 import * as api from "../src/pages/companies/marketDataApi.js";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
+// Under Vite SSR "react-router-dom" resolves to its CommonJS entry, which has no named exports; use the ES build.
+const serverOptions = {
+  root, configFile: false, server: { middlewareMode: true }, esbuild: { jsx: "automatic" },
+  resolve: { alias: { "react-router-dom": fileURLToPath(new URL("../node_modules/react-router-dom/dist/index.mjs", import.meta.url)) } },
+  ssr: { noExternal: ["react-router-dom", "react-router"] },
+};
 
 test("analysis client sends authorized dated read and cancellation signal", async () => {
   assert.equal(typeof api.getPriceAnalysis, "function");
@@ -24,7 +30,7 @@ test("analysis client sends authorized dated read and cancellation signal", asyn
     assert.deepEqual(await api.getPriceAnalysis("F/PT", "2026-10-29", signal), { symbol: "FPT", status: "partial" });
     assert.equal(calls[0].url, "/api/market-data/stocks/F%2FPT/analysis?as_of=2026-10-29");
     assert.equal(calls[0].options.signal, signal);
-    assert.equal(calls[0].options.headers.Authorization, "Bearer test-session");
+    assert.equal(calls[0].options.headers.get("Authorization"), "Bearer test-session");
     await api.getPriceAnalysis("MBB", undefined, signal);
     assert.equal(calls[1].url, "/api/market-data/stocks/MBB/analysis");
   } finally {
@@ -36,19 +42,25 @@ test("analysis client sends authorized dated read and cancellation signal", asyn
 test("analysis client preserves no-data, auth, unavailable, and abort distinctions", async () => {
   assert.equal(typeof api.getPriceAnalysis, "function");
   const originalFetch = globalThis.fetch;
+  const originalStorage = globalThis.localStorage;
+  const session = () => ({ getItem: () => JSON.stringify({ token: "test-session" }), removeItem() {} });
   try {
-    for (const status of [404, 401, 503]) {
+    globalThis.localStorage = session();
+    for (const status of [404, 503]) {
       globalThis.fetch = async () => ({ ok: false, status, json: async () => ({ detail: "Không thể đọc dữ liệu" }) });
       await assert.rejects(api.getPriceAnalysis("FPT"), (error) => error.status === status && error.message === "Không thể đọc dữ liệu");
     }
+    // A rejected token ends the session (authorizedFetch): the caller sees the sign-in error, status 401.
+    globalThis.fetch = async () => ({ ok: false, status: 401, json: async () => ({ detail: "Không thể đọc dữ liệu" }) });
+    await assert.rejects(api.getPriceAnalysis("FPT"), (error) => error.status === 401);
     globalThis.fetch = async () => { throw Object.assign(new Error("cancelled"), { name: "AbortError" }); };
     await assert.rejects(api.getPriceAnalysis("FPT"), { name: "AbortError" });
-  } finally { globalThis.fetch = originalFetch; }
+  } finally { globalThis.fetch = originalFetch; globalThis.localStorage = originalStorage; }
 });
 
 test("analysis renders supplied metrics, incomplete windows and pending snapshot separately", async () => {
   assert.ok(existsSync(`${root}/src/pages/companies/PriceAnalysis.jsx`), "analysis component must exist");
-  const server = await createServer({ root, configFile: false, server: { middlewareMode: true }, esbuild: { jsx: "automatic" } });
+  const server = await createServer(serverOptions);
   try {
     const { PriceAnalysisResult, default: PriceAnalysis } = await server.ssrLoadModule("/src/pages/companies/PriceAnalysis.jsx");
     const data = {
@@ -92,7 +104,7 @@ const trendHorizon = (label, extra = {}) => ({ label, sessions: 20, lookback: 5,
   reasons: ["close_below_sma", "sma_falling", "negative_return"], ...extra });
 
 test("trend renders three horizons, labels, reasons and disclaimer", async () => {
-  const server = await createServer({ root, configFile: false, server: { middlewareMode: true }, esbuild: { jsx: "automatic" } });
+  const server = await createServer(serverOptions);
   try {
     const { TrendSection } = await server.ssrLoadModule("/src/pages/companies/PriceAnalysis.jsx");
     const trend = { as_of: "2026-11-11", benchmark: "VNINDEX",
@@ -112,7 +124,7 @@ test("trend renders three horizons, labels, reasons and disclaimer", async () =>
 });
 
 test("missing trend shows unavailable note without breaking metrics", async () => {
-  const server = await createServer({ root, configFile: false, server: { middlewareMode: true }, esbuild: { jsx: "automatic" } });
+  const server = await createServer(serverOptions);
   try {
     const { PriceAnalysisResult } = await server.ssrLoadModule("/src/pages/companies/PriceAnalysis.jsx");
     const html = renderToStaticMarkup(React.createElement(PriceAnalysisResult, { data: {

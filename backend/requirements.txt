@@ -26,3 +26,4 @@ scikit-learn==1.9.1
 joblib==1.6.0
 
 jsonschema==4.26.0
+openpyxl>=3.1

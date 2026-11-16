@@ -178,7 +178,11 @@ class JourneyTests(unittest.IsolatedAsyncioTestCase):
         class Late:
             async def retrieve(self, scope, query, index):
                 try: await asyncio.sleep(1)
-                except asyncio.CancelledError: return await FixtureRetriever().retrieve(scope,query,index)
+                except asyncio.CancelledError:
+                    # The late answer must be clearly past the 1 ms deadline: Windows clocks tick every ~15 ms,
+                    # so an instant answer can look "on time" and make this test flaky.
+                    await asyncio.sleep(.05)
+                    return await FixtureRetriever().retrieve(scope,query,index)
         result = await orchestrate('Tổng tài sản BID tại 30/06/2026?', 'A', retriever=Late(), timeout_seconds=.001)
         self.assertEqual(result['reason_code'],'RETRIEVAL_TIMEOUT')
         self.assertIsNone(result['evidence_pack'])
