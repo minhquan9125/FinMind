@@ -1,0 +1,173 @@
+{
+  "task": "S5-WBS01.2",
+  "date": "2026-11-17",
+  "branch": "nhan-s5-token-conversation-retest",
+  "tested_commit": "c485794144a6cb9f7c775e97b889eb755d7c6690",
+  "quans_revision_confirmed": true,
+  "fix_commit": "c4857941",
+  "previous_failing_commit": "62cc3720",
+  "status": "RETEST_PASS_HTTP_AUTH_AND_CHAT_POSTGRES_READY_FOR_REVIEW_NOT_BROWSER_ACCEPTED",
+  "frontend_tests_passed": 21,
+  "previous_backend_tests_passed": 25,
+  "backend_sources_unchanged_by_fix": true,
+  "real_cases": [
+    {
+      "mode": "raw-chat",
+      "status": 200,
+      "trace": [
+        {
+          "endpoint": "send-message",
+          "status": 401
+        },
+        {
+          "endpoint": "refresh",
+          "status": 200
+        },
+        {
+          "endpoint": "send-message",
+          "status": 200
+        }
+      ],
+      "refresh_calls": 1,
+      "message_attempts": 2,
+      "revision_delta": 1,
+      "user_messages": 2,
+      "same_session_id": true,
+      "prior_history_unchanged": true,
+      "user_message_delta": 1,
+      "refresh_token_changed_in_memory": true,
+      "old_refresh_replay_status": 401,
+      "refreshed_access_accepted": true,
+      "followup_scope": {
+        "companies": [
+          "VCB"
+        ],
+        "periods": [
+          "2025"
+        ],
+        "metric_code": "PROFIT_AFTER_TAX"
+      }
+    },
+    {
+      "mode": "reactive",
+      "status": 200,
+      "trace": [
+        {
+          "endpoint": "send-message",
+          "status": 401
+        },
+        {
+          "endpoint": "refresh",
+          "status": 200
+        },
+        {
+          "endpoint": "send-message",
+          "status": 200
+        }
+      ],
+      "refresh_calls": 1,
+      "message_attempts": 2,
+      "revision_delta": 1,
+      "user_messages": 2,
+      "same_session_id": true,
+      "prior_history_unchanged": true,
+      "user_message_delta": 1,
+      "refresh_token_changed_in_memory": true,
+      "old_refresh_replay_status": 401,
+      "refreshed_access_accepted": true,
+      "followup_scope": {
+        "companies": [
+          "VCB"
+        ],
+        "periods": [
+          "2025"
+        ],
+        "metric_code": "PROFIT_AFTER_TAX"
+      }
+    },
+    {
+      "mode": "proactive",
+      "status": 200,
+      "trace": [
+        {
+          "endpoint": "refresh",
+          "status": 200
+        },
+        {
+          "endpoint": "send-message",
+          "status": 200
+        }
+      ],
+      "refresh_calls": 1,
+      "message_attempts": 1,
+      "revision_delta": 1,
+      "user_messages": 2,
+      "same_session_id": true,
+      "prior_history_unchanged": true,
+      "user_message_delta": 1,
+      "refresh_token_changed_in_memory": true,
+      "old_refresh_replay_status": 401,
+      "refreshed_access_accepted": true,
+      "followup_scope": {
+        "companies": [
+          "VCB"
+        ],
+        "periods": [
+          "2025"
+        ],
+        "metric_code": "PROFIT_AFTER_TAX"
+      }
+    }
+  ],
+  "sql_counters": {
+    "conversations": 3,
+    "message_rows": 12,
+    "user_message_rows": 6,
+    "no_duplicate_writes": true
+  },
+  "auth_sql": {
+    "raw_chat_refresh_still_valid": false,
+    "raw_chat_refresh_rotated": true,
+    "reactive_refresh_rotated": true,
+    "proactive_refresh_rotated": true,
+    "synthetic_sessions_in_transaction": 3
+  },
+  "rollback_clean": true,
+  "browser_or_react_tested": false,
+  "concurrency_in_real_db_tested": false,
+  "expired_refresh_in_real_db_tested": false,
+  "rotated_refresh_replay_rejected_in_real_db": true,
+  "financial_answer_quality_tested": false,
+  "production_sources_changed_by_tester": false,
+  "production_settings_changed": false,
+  "external_ai_called": false,
+  "evidence": "outputs\\s5_wbs012_20261117\\auth-and-chat-postgres-recovery-run01.json",
+  "pending": [
+    "Browser/React timer and draft interaction acceptance if required"
+  ],
+  "hash_format": "SHA256 after CRLF to LF",
+  "source_sha256": {
+    "backend/scripts/reproduce_s5_wbs012_auth_db.py": "b8407950ddc9811d59906037eb696493635658782bd550128d56824b750bc2c4",
+    "frontend/scripts/reproduce-s5-wbs012-http.mjs": "ea494013fbb31cb5767525d3f783b68248821e74200893af27924489043c7e16",
+    "frontend/src/pages/research/chatApi.js": "8a78641c9d43e0313912f9f8f3c0399493692f3826cbe3a0bb5e4f21f70ccf1e",
+    "frontend/src/shared/api/authorization.js": "00c87e42c830e316968c39dbe0d2de259e67ca76b1d49d3f539697a39c25bec0",
+    "frontend/src/shared/api/authSession.js": "18563517e64c9d399103945b681ffd8f75aca191fd09bfbb507e38d28bfc353e",
+    "frontend/src/pages/research/chatApi.test.js": "cdcabab0de29f0bed31267fe4fc2e61027bcaf0a1f8081d5f06a70a290dc839c",
+    "frontend/src/shared/api/authSession.test.js": "415b6757da137a4b9df6412e0d91abb0a5e47c26297e4a0affc3557b102a2f9b",
+    "backend/src/api/routers/auth.py": "5be99968213d1f0b33373f6ee681dde22f975506d5d9c7b64f15862fff881657",
+    "backend/src/auth/repository.py": "75ff73513a2e10e3f2e3fe633a319866db295852e8bf271f9ede4e3092eedfdb",
+    "backend/src/auth/service.py": "66a50b63c72ad7f44603b1e70e4bcba44d474901d1ac8d5c8984c74f0f87ba7b",
+    "backend/src/retrieval_orchestration/postgres_sessions.py": "f1923555e2f3f53b530bc675ed66a6f09dde8b76bf43ea24b02c24c44ebd42bd",
+    "backend/src/retrieval_orchestration/chat_repository.py": "299de0a6849a62270b49df891c53b90a527052e07b98b8445776377fc84df224",
+    "docs/sprint5/S5-WBS01.2-reproduction.md": "87c1a948e104e457c3d8d69be9317bc527646ce46633e59646bbe83df80ddbd4",
+    "tasks/s5-wbs012/todo.md": "f7ba94a0efee65811c056d914e1ceb88b438b13a10367a5012c2b86a44a839b0"
+  },
+  "frontend_build": {
+    "command": "npm.cmd run build",
+    "exit_code": 0,
+    "existing_warnings": [
+      "Large graph chunk",
+      "Mixed static/dynamic graph mock imports"
+    ]
+  }
+}

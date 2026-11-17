@@ -1,0 +1,52 @@
+{
+  "case_id": "S5-WBS01.2-TOKEN-CLIENT",
+  "mode": "CONTROLLED_TRANSPORT_NOT_BROWSER_E2E",
+  "expected": "Refresh once on 401 with valid refresh, retry once, accept one message",
+  "chat": {
+    "outcome": {
+      "status": 401,
+      "message": "Token không hợp lệ hoặc đã hết hạn."
+    },
+    "trace": [
+      {
+        "endpoint": "send-message",
+        "status": 401
+      }
+    ],
+    "refreshCalls": 0,
+    "sendAttempts": 1,
+    "acceptedWritesInMock": 0
+  },
+  "sharedControl": {
+    "outcome": {
+      "status": 200
+    },
+    "trace": [
+      {
+        "endpoint": "send-message",
+        "status": 401
+      },
+      {
+        "endpoint": "refresh",
+        "status": 200
+      },
+      {
+        "endpoint": "send-message",
+        "status": 200
+      }
+    ],
+    "refreshCalls": 1,
+    "sendAttempts": 2,
+    "acceptedWritesInMock": 1
+  },
+  "symptomReproduced": true,
+  "productSourceChanged": false,
+  "tested_branch": "backup-demo",
+  "tested_commit": "62cc3720130718a10927466699216d56f29364cf",
+  "feature_acceptance": "FAIL_CHAT_DOES_NOT_REFRESH_ON_401",
+  "source_sha256": {
+    "frontend/src/pages/research/chatApi.js": "4ec8877b002c0bb1957b77d336eb5835a2822e3b46c30b7181157ca2eada17e9",
+    "frontend/src/shared/api/authorization.js": "00c87e42c830e316968c39dbe0d2de259e67ca76b1d49d3f539697a39c25bec0",
+    "frontend/src/shared/api/authSession.js": "2bb7c59564d28d93cffcec51a76997097ffbeebbcef98dd645fe2b94c1e4886d"
+  }
+}
