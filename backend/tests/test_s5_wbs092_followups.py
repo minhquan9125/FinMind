@@ -132,3 +132,30 @@ def test_list_annual_content_keeps_the_prior_subject_in_retrieval():
         assert result['scope']['periods'] == ['2025']
         assert 'chiến lược' in content.calls[-1][0]
     asyncio.run(run())
+
+
+def test_news_listing_leaves_the_previous_article_query_but_keeps_date_and_publisher():
+    prior = dict(companies=['FPT'], source_type='NEWS', publisher='fireant',
+                 _market_request={'kind': 'NEWS', 'action': 'DETAIL', 'day': TODAY.isoformat(),
+                                  'query': 'bài FPT ký hợp đồng về AI'},
+                 _article_urls=['https://fireant.vn/bai-viet/old'])
+    before = copy.deepcopy(prior)
+    result = analyze_live('Cho tôi xem danh sách', prior, today=TODAY)
+    request = result['scope']['_market_request']
+    assert request == {'kind': 'NEWS', 'action': 'LIST', 'day': TODAY.isoformat()}
+    assert result['scope']['publisher'] == 'fireant'
+    assert result['scope']['companies'] == ['FPT']
+    assert '_article_urls' not in result['scope']
+    assert prior == before
+    # Exercise the actual feed adapter: clearing only action/URLs would still
+    # let the old title query narrow the list to one article.
+    from src.retrieval_orchestration.market_research import MarketResearch
+    from tests.test_market_research import News, Repository, article
+    articles = [dict(article(ident='123'), title='FPT ký hợp đồng về AI',
+                     published_at=TODAY.isoformat()),
+                dict(article(ident='456'), title='FPT công bố cổ tức',
+                     published_at=TODAY.isoformat())]
+    market = MarketResearch(Repository(), services=lambda: (None, News(articles)))
+    listed = asyncio.run(market.lookup(result['scope']))
+    assert listed['status'] == 'EVIDENCE_READY'
+    assert len(listed['evidence_pack']['items']) == 2

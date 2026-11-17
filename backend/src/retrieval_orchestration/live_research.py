@@ -140,7 +140,9 @@ def _market_intent(norm, context, today):
     action = 'SUMMARY' if re.search(r'\b(?:tom tat|tong hop|diem tin)\b', norm) else 'LIST'
     prior = (context or {}).get('_market_request')
     if prior and prior.get('kind') == 'NEWS' and is_list_followup(norm):
-        return {**copy.deepcopy(prior), 'action': 'LIST'}
+        request = {**copy.deepcopy(prior), 'action': 'LIST'}
+        request.pop('query', None)  # A selected article is no longer the list subject.
+        return request
     financial = metric_group(norm) or any(_fold(a) in norm for aliases in METRIC_ALIASES.values() for a in aliases)
     market_context = bool(re.search(
         r'\b(?:thi truong|thi truong chung khoan|chung khoan|ttck|tt|ck|vni|vn ?index|vnindex)\b', norm
