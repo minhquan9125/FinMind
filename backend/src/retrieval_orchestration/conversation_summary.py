@@ -72,6 +72,11 @@ def _bound_answer(result):
         raise CitationError('INVALID_CITATION')
     if any(eid not in allowed for claim in bound['claims'] for eid in claim['evidence_ids']):
         raise CitationError('INVALID_CITATION')
+    bound['cautions'] = list(dict.fromkeys(c for c in (
+        list(bound.get('cautions') or []) + list(answer.get('cautions') or []))
+        if isinstance(c, str) and c.strip()))
+    if (result.get('freshness') or {}).get('stale'):
+        bound['cautions'].append('Nguồn ở lượt này đang dùng bản lưu; lần cập nhật mới chưa thành công.')
     return bound, evidence
 
 
@@ -86,7 +91,9 @@ def summarize_session(doc):
             continue
         result = message.get('result') or {}
         answer = result.get('answering') or {}
-        if (answer.get('manifest') or {}).get('response_mode') in DERIVED_MODES or result.get('status') == 'GREETING':
+        if (result.get('b1_decision') == 'SESSION_SUMMARY'
+                or (answer.get('manifest') or {}).get('response_mode') in DERIVED_MODES
+                or result.get('status') == 'GREETING'):
             continue
         if answer.get('status') != 'DRAFT_READY':
             missing += 1
@@ -104,6 +111,7 @@ def summarize_session(doc):
                   scope=copy.deepcopy(doc.get('metadata', {}).get('live_context', {})), evidence_pack=None,
                   errors=[], conversation_summary={'included_turns': [], 'omitted_turns': missing})
     parts, claims, citations, packs, seen_claims = [], [], {}, [], set()
+    cautions = []
     omitted = missing + max(0, len(candidates)-MAX_TURNS)
     for position, previous, bound, evidence in candidates[-MAX_TURNS:]:
         scope = previous.get('scope') or {}
@@ -145,7 +153,15 @@ def summarize_session(doc):
             parts.append('- '+claim['text']+' '+''.join(f"[{citations[eid]['citation_number']}]" for eid in claim['evidence_ids']))
             claims.append(copy.deepcopy(claim))
         # Preserve cautions such as unknown units or reporting scope.
-        parts.extend('Lưu ý: '+c for c in bound.get('cautions', []) if isinstance(c, str))
+        source_cautions = bound.get('cautions', [])
+        omitted += max(0, len(source_cautions)-4)
+        for caution in source_cautions[:4]:
+            if len(caution) > 1500:
+                omitted += 1
+                caution = caution[:1500]+'…'
+            parts.append('Lưu ý: '+caution)
+            if caution not in cautions:
+                cautions.append(caution)
         result['conversation_summary']['included_turns'].append(position)
     result['conversation_summary']['omitted_turns'] = omitted
     if not claims:
@@ -158,7 +174,7 @@ def summarize_session(doc):
     result.update(status='EVIDENCE_READY', reason_code='SESSION_SUMMARY', message='Tổng hợp từ các câu trả lời đã lưu; không tra cứu hoặc sinh thêm.',
                   evidence_packs=packs, presentation={'sources': 'USED_LINKS'},
                   answering=dict(status='DRAFT_READY', reason_code='SESSION_SUMMARY', draft=draft,
-                    claims=claims, citations=list(citations.values()), cautions=[notice] if notice else [],
+                    claims=claims, citations=list(citations.values()), cautions=cautions+([notice] if notice else []),
                     manifest={'response_mode': 'SESSION_SUMMARY', 'components': {'gemini': False, 'citation_binding': True,
                               'b3_evidence_gate': False, 'b3_answer_verification': False}},
                     trace=[{'event': 'saved_session_summary', 'source_turns': result['conversation_summary']['included_turns']}]))

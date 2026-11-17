@@ -301,3 +301,65 @@ def test_corpus_and_feed_packs_keep_independent_versions_in_one_summary(kind):
         assert result['evidence_packs'][1] == pack
         assert len(result['answering']['citations']) == 2
     asyncio.run(run())
+
+
+def test_summary_keeps_original_source_cautions():
+    async def run():
+        result = sourced_result()
+        caution = 'Nguồn tin đang dùng bản lưu cũ do nhà cung cấp chưa cập nhật.'
+        result['answering']['cautions'] = [caution]
+        engine = SequenceEngine([result])
+        doc = await append_turn(new_document(str(uuid4()), str(uuid4())), 'Tin FPT', engine)
+        doc = await append_turn(doc, 'Tổng hợp nãy giờ', engine)
+        summary = doc['messages'][-1]['result']
+        assert caution in summary['answering']['draft']
+        assert caution in summary['answering']['cautions']
+    asyncio.run(run())
+
+
+def test_an_earlier_empty_summary_is_not_counted_as_missing_research():
+    async def run():
+        engine = SequenceEngine([sourced_result()])
+        doc = new_document(str(uuid4()), str(uuid4()))
+        doc = await append_turn(doc, 'Tổng hợp nãy giờ', engine)
+        doc = await append_turn(doc, 'Tin FPT', engine)
+        doc = await append_turn(doc, 'Tổng hợp nãy giờ', engine)
+        summary = doc['messages'][-1]['result']
+        assert summary['conversation_summary']['omitted_turns'] == 0
+        assert len(summary['answering']['claims']) == 1
+    asyncio.run(run())
+
+
+def test_summary_cautions_are_bounded_and_disclose_truncation():
+    async def run():
+        original = sourced_result()
+        original['answering']['cautions'] = ['Lưu ý dài '+('a'*1600)] + [f'Lưu ý {i}' for i in range(5)]
+        engine = SequenceEngine([original])
+        doc = await append_turn(new_document(str(uuid4()), str(uuid4())), 'Tin FPT', engine)
+        doc = await append_turn(doc, 'Tổng hợp nãy giờ', engine)
+        summary = doc['messages'][-1]['result']
+        assert len(summary['answering']['cautions']) == 5  # Four cautions + omission notice.
+        assert len(summary['answering']['cautions'][0]) == 1501
+        assert summary['conversation_summary']['omitted_turns'] == 3
+        assert 'giới hạn' in summary['answering']['draft']
+    asyncio.run(run())
+
+
+def test_summary_preserves_staleness_from_the_real_market_service():
+    from src.retrieval_orchestration.live_research import LiveResearchService
+    from src.retrieval_orchestration.market_research import MarketResearch
+    from tests.test_market_research import News, Repository, NOW
+    from tests.test_s5_wbs091_context import EmptyContent
+
+    async def run():
+        market = MarketResearch(Repository(), services=lambda: (None, News(stale=True)), now=lambda: NOW)
+        engine = LiveResearchService(EmptyContent(), market=market)
+        doc = await append_turn(new_document(str(uuid4()), str(uuid4())), 'Tin FPT mới nhất', engine)
+        original = doc['messages'][-1]['result']
+        assert original['freshness']['stale'] is True
+        assert original['answering']['status'] == 'DRAFT_READY'
+        doc = await append_turn(doc, 'Tổng hợp nãy giờ', engine)
+        summary = doc['messages'][-1]['result']
+        assert any('bản lưu' in warning for warning in summary['answering']['cautions'])
+        assert 'bản lưu' in summary['answering']['draft']
+    asyncio.run(run())
