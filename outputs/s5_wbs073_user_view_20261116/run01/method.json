@@ -1,0 +1,28 @@
+{
+  "gold_sha256": "b9fc8f2eaf509bfb8309b9f64d37f6712532e32c42eb3e11fb23d9b373fbc3e6",
+  "source_sha256": {
+    "backend\\src\\retrieval_orchestration\\intent_v2_classifier.py": "3819e8bf44b7c2a392c8d142228acb23ef16d9f60999aa17d4f00f6e6e36ae73",
+    "backend\\src\\retrieval_orchestration\\intent_v2_rules.py": "857d19b4400e54b3da97de1c29984837fde65041d604b3f6959f07774cb20ff7",
+    "backend\\src\\retrieval_orchestration\\intent_gate_v2.py": "28ff85815c4643fc52a375490591500ce1e1eaf598a01497be9a95ef15cb5388",
+    "backend\\src\\retrieval_orchestration\\intent_routing.py": "f792c1a6e82446f861340f6bb3677e986d8498e8b8dc733f80a5057a5a0899dc",
+    "backend\\src\\retrieval_orchestration\\intent_fallback_contract.py": "1abdc4dd8c93bcf2dfea5257fe596877ef95585323fd37d44a598a20eac84540",
+    "backend\\src\\retrieval_orchestration\\live_research.py": "627e7917aec63ce9da39bcfa43cd13023003e373afabbf20a0dd26686c3683fb"
+  },
+  "base_commit": "1087dc299ef3609a452596bdf214ee49a5d9d783",
+  "oracle_author": "Isolated AI user-QA author, no implementation/test/dataset/report access",
+  "independence_limit": "Coordinator has seen code; this is not a human-held blind acceptance set",
+  "created_at": "2026-11-16T10:27:13.102843+07:00",
+  "model": {
+    "name": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "dtype": "float32",
+    "normalization": "L2"
+  },
+  "classifier": "Real pinned BGE-M3 inference and installed artifact, no refit/no gold input",
+  "provider": "Controlled responses only, NORMAL uses explicit gold-derived good-response fixture; not Gemini accuracy",
+  "data": "Own recording adapters; optional hybrid router and admin-news adapters absent; no DB/market facts",
+  "scope": "Routing/clarification at adapter boundary. Factual answer correctness and all must_preserve text unverified",
+  "time": "2026-11-16 Asia/Saigon",
+  "production_changed": false
+}

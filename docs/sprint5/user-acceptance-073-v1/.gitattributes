@@ -1,0 +1,4 @@
+# Preserve exact bytes of the frozen oracle and reviewed annotations on Windows.
+*.jsonl text eol=lf
+*.json text eol=lf
+*.md text eol=lf

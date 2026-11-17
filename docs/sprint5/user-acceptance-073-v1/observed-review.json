@@ -1,0 +1,186 @@
+{
+  "review_type": "POST_RUN_OBSERVABLE_RESPONSE_REVIEW",
+  "gold_changed": false,
+  "source": "outputs/s5_wbs073_user_view_20261116/run01/results.json",
+  "constraints": "Independent AI reviewer; not true human-blind evaluation. Uses frozen business scenarios and observed response messages/company/date only. Runner verdicts and classifier labels are not evidence. All SERVE semantic answers remain UNVERIFIED because recording adapters supply no factual answer. PASS means response relevance only, not full acceptance or factual accuracy.",
+  "annotations": [
+    {
+      "id": "USER-001",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "No factual answer is available. The VCB/date text is explicitly an example, not evidence that the requested FPT/date was replaced; empty scope does not prove a concrete alternative.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-002",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "The follow-up asks which revenue definition is wanted, which is relevant to revenue. This post-run observation does not change the frozen SERVE expectation; factual answer remains unverified.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-003",
+      "response_relevance": "FAIL",
+      "rationale": "Recorded period is 2025 rather than the explicitly requested 2025-06-30. The generic no-data response cannot establish RSI answer content.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-004",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-005",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-006",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-007",
+      "response_relevance": "FAIL",
+      "rationale": "The response asks the user to choose financial metrics although the user asked for subsidiaries. This is an irrelevant clarification; FPT and 2024 remain recorded.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-008",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-009",
+      "response_relevance": "PASS",
+      "rationale": "The onboarding response offers research assistance and invites the user to continue. It is relevant to a greeting and makes no unsupported factual claim."
+    },
+    {
+      "id": "USER-010",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-011",
+      "response_relevance": "PASS",
+      "rationale": "Asks which company is wanted, the missing information in the price request. The supplied date 2025-06-30 remains recorded."
+    },
+    {
+      "id": "USER-012",
+      "response_relevance": "PASS",
+      "rationale": "Asks which company is wanted, which is missing from the revenue request. The example is explicitly an example; recorded year remains 2024."
+    },
+    {
+      "id": "USER-013",
+      "response_relevance": "PASS",
+      "rationale": "Asks which company is wanted, a relevant first clarification of the unspecified bank. It has not yet resolved the type of information, so this is relevance of the immediate question only."
+    },
+    {
+      "id": "USER-014",
+      "response_relevance": "FAIL",
+      "rationale": "Asking for a company is relevant, but the response narrows the offered task to prices/news rather than clarifying the requested analysis. Recorded scope also assumes 2026-11-16 without a user-supplied time."
+    },
+    {
+      "id": "USER-015",
+      "response_relevance": "FAIL",
+      "rationale": "No clarification asks what kind of FPT result or period is intended. The recording-adapter placeholder is not a user clarification; recorded date 2026-11-16 was not supplied."
+    },
+    {
+      "id": "USER-016",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "No factual answer is available. The response gives a generic price-availability explanation; the VCB/date phrase is explicitly an example. Neither completeness of both objectives nor a concrete replacement can be established from this message.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-017",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording-adapter placeholder provides no factual answer. No conclusion about news/RSI answer completeness can be drawn from dispatch or the empty aggregate period list.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-018",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-019",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-020",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-021",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-022",
+      "response_relevance": "FAIL",
+      "rationale": "The response asks which company is wanted even though prior user context supplies HPG and the date. This is an unnecessary loss of supplied context, not an answer about RSI.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-023",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-024",
+      "response_relevance": "FAIL",
+      "rationale": "The response asks the user to select a generic financial metric despite prior context already naming revenue. MWG and the updated year 2023 are retained, but the clarification fails to preserve the known indicator.",
+      "semantic_answer": "UNVERIFIED"
+    },
+    {
+      "id": "USER-025",
+      "response_relevance": "FAIL",
+      "rationale": "The no-data message does not ask whether the user wants leadership/personnel or ownership information. FPT and 2024 are retained but ambiguity is not resolved."
+    },
+    {
+      "id": "USER-026",
+      "response_relevance": "FAIL",
+      "rationale": "The no-data message does not ask which strength/oscillation indicator the user means. Recorded year 2025 also loses the supplied day 2025-06-30."
+    },
+    {
+      "id": "USER-027",
+      "response_relevance": "FAIL",
+      "rationale": "The no-data message does not ask which document section or financial measure the user means. VNM and 2024 are retained but the needed clarification is absent."
+    },
+    {
+      "id": "USER-028",
+      "response_relevance": "FAIL",
+      "rationale": "The actual question asks which debt type is wanted: total liabilities, short-term debt, long-term debt, or borrowing. The user mentioned people and associated entities, not debt. It should clarify personnel versus entity relationships; retaining FPT and 2024 does not make the debt question relevant."
+    },
+    {
+      "id": "USER-029",
+      "response_relevance": "FAIL",
+      "rationale": "The no-data message does not clarify whether the user wants an article/news, report content, or numeric figures. MWG and 2024 are retained but the ambiguity remains unanswered."
+    },
+    {
+      "id": "USER-030",
+      "response_relevance": "FAIL",
+      "rationale": "The response asks equity versus charter capital. The ambiguity is between a person role and an ownership stake, not the accounting type of capital. VCB and 2024 are retained but the clarification is misdirected."
+    },
+    {
+      "id": "USER-031",
+      "response_relevance": "PASS",
+      "rationale": "Explicitly declines buy/sell recommendations and offers sourced data/analysis. This is relevant to the personal purchase-decision request. A generic refusal need not repeat the ticker; no contrary ticker is introduced."
+    },
+    {
+      "id": "USER-032",
+      "response_relevance": "PASS",
+      "rationale": "Explicitly declines price forecasts and targets, directly addressing both restricted objectives. No forecast, target, or replacement company/date is provided; the generic refusal does not independently demonstrate date extraction."
+    }
+  ]
+}

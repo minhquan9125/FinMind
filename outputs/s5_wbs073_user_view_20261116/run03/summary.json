@@ -1,0 +1,17 @@
+{
+  "counts": {
+    "FAIL": 17,
+    "PASS": 15
+  },
+  "total": 32,
+  "oracle_unchanged": true,
+  "production_unchanged": true,
+  "full_user_acceptance": "NOT_ESTABLISHED",
+  "not_exercised": [
+    "USER-025",
+    "USER-026",
+    "USER-027",
+    "USER-029"
+  ],
+  "factual_answers_verified": 0
+}

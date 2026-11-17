@@ -1,0 +1,4188 @@
+[
+  {
+    "case": {
+      "id": "USER-001",
+      "group": "clear",
+      "question": "Giá đóng cửa cổ phiếu FPT ngày 2025-06-30 là bao nhiêu?",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "PRICE"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "FPT",
+      "required_period": "2025-06-30",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Mã, ngày và loại giá đều cụ thể.",
+      "must_preserve": [
+        "Trả lời giá đóng cửa đúng ngày được hỏi."
+      ]
+    },
+    "observed": {
+      "status": "UNSUPPORTED",
+      "classification_objectives": [
+        "PRICE"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "PRICE",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {},
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "Giá đóng cửa cổ phiếu FPT ngày 2025-06-30 là bao nhiêu?",
+        "intent_label": "PRICE",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Giá đóng cửa cổ phiếu FPT ngày 2025-06-30 là bao nhiêu?",
+            "intent_label": "PRICE"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.5848323000245728,
+      "result_message": "Mình trả lời được giá lịch sử theo ngày của các mã có trong dữ liệu, ví dụ: \"Giá đóng cửa VCB ngày 15/6/2026\". Mã hoặc ngày bạn hỏi chưa có dữ liệu giá, hoặc câu hỏi chưa nêu rõ mã và ngày."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "No retrieval/market dispatch for user request",
+        "Dispatched objectives do not preserve all requested objectives",
+        "Required company not preserved",
+        "Required period not preserved"
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-001",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "No factual answer is available. The VCB/date text is explicitly an example, not evidence that the requested FPT/date was replaced; empty scope does not prove a concrete alternative.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-002",
+      "group": "clear",
+      "question": "Doanh thu của VNM năm 2024 là bao nhiêu?",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "NUMERIC"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "VNM",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Yêu cầu một chỉ tiêu tài chính cụ thể.",
+      "must_preserve": [
+        "Giữ chỉ tiêu doanh thu và năm 2024."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "NUMERIC"
+      ],
+      "dispatch_objectives": [],
+      "companies": [
+        "VNM"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": "Bạn muốn xem loại doanh thu nào? 1. Doanh thu trước giảm trừ. 2. Doanh thu thuần.",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "NUMERIC",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "VNM"
+        ],
+        "source_type": "BCTC",
+        "metric_code": null,
+        "_pending_metric": "REVENUE",
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR",
+        "_clarification_state": {
+          "id": "metric:REVENUE",
+          "signature": {
+            "companies": [
+              "VNM"
+            ],
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_metric": "REVENUE",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "GROSS_REVENUE",
+            "NET_REVENUE"
+          ],
+          "core_signature": {
+            "companies": [
+              "VNM"
+            ],
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "doanh thu của VNM năm 2024 là bao nhiêu?",
+        "intent_label": "NUMERIC",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "doanh thu của VNM năm 2024 là bao nhiêu?",
+            "intent_label": "NUMERIC"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.36167930002557114,
+      "result_message": "Bạn muốn xem loại doanh thu nào? 1. Doanh thu trước giảm trừ. 2. Doanh thu thuần."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "No retrieval/market dispatch for user request",
+        "Dispatched objectives do not preserve all requested objectives"
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-002",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "The follow-up asks which revenue definition is wanted, which is relevant to revenue. This post-run observation does not change the frozen SERVE expectation; factual answer remains unverified.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-003",
+      "group": "clear",
+      "question": "Phân tích chỉ báo RSI của HPG tại ngày 2025-06-30.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ANALYSIS"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "HPG",
+      "required_period": "2025-06-30",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "RSI là mục tiêu phân tích kỹ thuật rõ ràng.",
+      "must_preserve": [
+        "Phải đề cập RSI; giá hoặc tin tức không thay thế được chỉ báo."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "ANALYSIS"
+      ],
+      "dispatch_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "companies": [
+        "HPG"
+      ],
+      "periods": [
+        "2025"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "ANALYSIS",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "HPG"
+        ],
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2025"
+        ],
+        "source_type": "BCTN",
+        "topic": "ANNUAL_REPORT_TOPIC",
+        "metric_code": null,
+        "_annual_question": "Phân tích chỉ báo RSI của HPG tại ngày 2025-06-30."
+      },
+      "dispatches": [
+        {
+          "query": "Báo cáo thường niên HPG. Phân tích chỉ báo RSI của HPG tại ngày 2025-06-30.",
+          "scope": {
+            "companies": [
+              "HPG"
+            ],
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "source_type": "BCTN",
+            "topic": "ANNUAL_REPORT_TOPIC",
+            "metric_code": null,
+            "_annual_question": "Phân tích chỉ báo RSI của HPG tại ngày 2025-06-30."
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Phân tích chỉ báo RSI của HPG tại ngày 2025-06-30.",
+        "intent_label": "ANALYSIS",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Phân tích chỉ báo RSI của HPG tại ngày 2025-06-30.",
+            "intent_label": "ANALYSIS"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.31313790002604946,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "Dispatched objectives do not preserve all requested objectives",
+        "Required period not preserved",
+        "External user review: Recorded period is 2025 rather than the explicitly requested 2025-06-30. The generic no-data response cannot establish RSI answer content."
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-003",
+      "response_relevance": "FAIL",
+      "rationale": "Recorded period is 2025 rather than the explicitly requested 2025-06-30. The generic no-data response cannot establish RSI answer content.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-004",
+      "group": "clear",
+      "question": "Cho tôi tin tức về VCB trong năm 2024.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "NEWS"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "VCB",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Mục tiêu tin tức và phạm vi đã xác định.",
+      "must_preserve": [
+        "Giữ phạm vi tin tức của VCB trong năm 2024."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "NEWS"
+      ],
+      "dispatch_objectives": [
+        "NEWS"
+      ],
+      "companies": [
+        "VCB"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "NEWS",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "VCB"
+        ],
+        "source_type": "NEWS",
+        "metric_code": null,
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR"
+      },
+      "dispatches": [
+        {
+          "query": "tin tức VCB 2024. cho tôi tin tức về VCB trong năm 2024.",
+          "scope": {
+            "companies": [
+              "VCB"
+            ],
+            "source_type": "NEWS",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2024"
+            ],
+            "measure_basis": "FULL_YEAR"
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "cho tôi tin tức về VCB trong năm 2024.",
+        "intent_label": "NEWS",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "cho tôi tin tức về VCB trong năm 2024.",
+            "intent_label": "NEWS"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.28750370000489056,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-004",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-005",
+      "group": "clear",
+      "question": "Tóm tắt phần rủi ro trong báo cáo thường niên FPT năm 2024.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "FPT",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Hỏi nội dung một phần của báo cáo, không chỉ hỏi số liệu.",
+      "must_preserve": [
+        "Tóm tắt phần rủi ro của báo cáo thường niên."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "dispatch_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "companies": [
+        "FPT"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "REPORT_CONTENT",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "FPT"
+        ],
+        "source_type": "BCTN",
+        "topic": "ANNUAL_REPORT_TOPIC",
+        "metric_code": null,
+        "reporting_entity": "UNKNOWN",
+        "_annual_question": "Tóm tắt phần rủi ro trong báo cáo thường niên FPT năm 2024.",
+        "periods": [
+          "2024"
+        ]
+      },
+      "dispatches": [
+        {
+          "query": "Báo cáo thường niên FPT. Tóm tắt phần rủi ro trong báo cáo thường niên FPT năm 2024.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "BCTN",
+            "topic": "ANNUAL_REPORT_TOPIC",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN",
+            "_annual_question": "Tóm tắt phần rủi ro trong báo cáo thường niên FPT năm 2024.",
+            "periods": [
+              "2024"
+            ]
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Tóm tắt phần rủi ro trong báo cáo thường niên FPT năm 2024.",
+        "intent_label": "REPORT_CONTENT",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Tóm tắt phần rủi ro trong báo cáo thường niên FPT năm 2024.",
+            "intent_label": "REPORT_CONTENT"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.3313268999918364,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-005",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-006",
+      "group": "clear",
+      "question": "Ai là Chủ tịch hội đồng quản trị VNM trong năm 2024?",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "PERSON_ROLE"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "VNM",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Chức danh, doanh nghiệp và năm đều rõ.",
+      "must_preserve": [
+        "Giữ chức danh Chủ tịch hội đồng quản trị."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "PERSON_ROLE"
+      ],
+      "dispatch_objectives": [
+        "ENTITY_RELATION",
+        "PERSON_ROLE"
+      ],
+      "companies": [
+        "VNM"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "PERSON_ROLE",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "VNM"
+        ],
+        "source_type": "NEWS",
+        "metric_code": null,
+        "reporting_entity": "UNKNOWN",
+        "topic": "RELATIONSHIP_LOOKUP",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR"
+      },
+      "dispatches": [
+        {
+          "query": "tin tức VNM 2024. ai là Chủ tịch hội đồng quản trị VNM trong năm 2024?",
+          "scope": {
+            "companies": [
+              "VNM"
+            ],
+            "source_type": "NEWS",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN",
+            "topic": "RELATIONSHIP_LOOKUP",
+            "periods": [
+              "2024"
+            ],
+            "measure_basis": "FULL_YEAR"
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "ai là Chủ tịch hội đồng quản trị VNM trong năm 2024?",
+        "intent_label": "PERSON_ROLE",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "ai là Chủ tịch hội đồng quản trị VNM trong năm 2024?",
+            "intent_label": "PERSON_ROLE"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.3192309999722056,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-006",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-007",
+      "group": "clear",
+      "question": "Liệt kê các công ty con của FPT trong năm 2024.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ENTITY_RELATION"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "FPT",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Yêu cầu quan hệ doanh nghiệp rõ ràng.",
+      "must_preserve": [
+        "Phân biệt công ty con với nhân sự."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "ENTITY_RELATION"
+      ],
+      "dispatch_objectives": [],
+      "companies": [
+        "FPT"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": "Bạn muốn xem loại chỉ tiêu nào? 1. Tổng tài sản. 2. Doanh thu thuần. 3. Lợi nhuận sau thuế. 4. Tổng nợ phải trả.",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "ENTITY_RELATION",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "FPT"
+        ],
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR",
+        "_clarification_state": {
+          "id": "metric:",
+          "signature": {
+            "companies": [
+              "FPT"
+            ],
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": null,
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_metric": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TOTAL_ASSETS",
+            "NET_REVENUE",
+            "PROFIT_AFTER_TAX",
+            "TOTAL_LIABILITIES"
+          ],
+          "core_signature": {
+            "companies": [
+              "FPT"
+            ],
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": null,
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "Liệt kê các công ty con của FPT trong năm 2024.",
+        "intent_label": "ENTITY_RELATION",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Liệt kê các công ty con của FPT trong năm 2024.",
+            "intent_label": "ENTITY_RELATION"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.28171369998017326,
+      "result_message": "Bạn muốn xem loại chỉ tiêu nào? 1. Tổng tài sản. 2. Doanh thu thuần. 3. Lợi nhuận sau thuế. 4. Tổng nợ phải trả."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "No retrieval/market dispatch for user request",
+        "Dispatched objectives do not preserve all requested objectives",
+        "External user review: The response asks the user to choose financial metrics although the user asked for subsidiaries. This is an irrelevant clarification; FPT and 2024 remain recorded."
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-007",
+      "response_relevance": "FAIL",
+      "rationale": "The response asks the user to choose financial metrics although the user asked for subsidiaries. This is an irrelevant clarification; FPT and 2024 remain recorded.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-008",
+      "group": "clear",
+      "question": "Giới thiệu lĩnh vực kinh doanh chính của MWG.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "COMPANY_OVERVIEW"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "MWG",
+      "required_period": null,
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Yêu cầu tổng quan doanh nghiệp không cần kỳ tài chính.",
+      "must_preserve": [
+        "Tập trung lĩnh vực kinh doanh của MWG."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "COMPANY_OVERVIEW"
+      ],
+      "dispatch_objectives": [
+        "COMPANY_OVERVIEW"
+      ],
+      "companies": [
+        "MWG"
+      ],
+      "periods": [],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "COMPANY_OVERVIEW",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "MWG"
+        ],
+        "source_type": "COMPANY_PROFILE",
+        "metric_code": null,
+        "topic": "COMPANY_PROFILE",
+        "periods": [],
+        "reporting_entity": "UNKNOWN"
+      },
+      "dispatches": [
+        {
+          "query": "Hồ sơ doanh nghiệp MWG . Giới thiệu lĩnh vực kinh doanh chính của MWG.",
+          "scope": {
+            "companies": [
+              "MWG"
+            ],
+            "source_type": "COMPANY_PROFILE",
+            "metric_code": null,
+            "topic": "COMPANY_PROFILE",
+            "periods": [],
+            "reporting_entity": "UNKNOWN"
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Giới thiệu lĩnh vực kinh doanh chính của MWG.",
+        "intent_label": "COMPANY_OVERVIEW",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Giới thiệu lĩnh vực kinh doanh chính của MWG.",
+            "intent_label": "COMPANY_OVERVIEW"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.27117429999634624,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-008",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-009",
+      "group": "clear",
+      "question": "Xin chào FinMind!",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "GREETING"
+      ],
+      "expected_behavior": "GREETING",
+      "required_company": null,
+      "required_period": null,
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Lời chào không cần phân loại bằng AI.",
+      "must_preserve": [
+        "Đáp lại lời chào."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "CONVERSATION"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": "Mình tra cứu báo cáo, chỉ tiêu tài chính, giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào? Ví dụ: \"Doanh thu thuần quý 2/2026 của FPT\".",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "CONVERSATION",
+        "decision": "SESSION",
+        "source": "RULES",
+        "applied": false,
+        "reason": "VERIFIED_V2_RULE"
+      },
+      "scope": {
+        "reporting_entity": "UNKNOWN",
+        "_clarification_state": {
+          "id": "company:",
+          "signature": {
+            "companies": null,
+            "periods": null,
+            "metric_code": null,
+            "source_type": null,
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": null,
+            "_pending_metric": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TEXT:VCB",
+            "TEXT:BID",
+            "TEXT:CTG",
+            "TEXT:MBB",
+            "TEXT:TCB",
+            "TEXT:FPT",
+            "TEXT:CMG",
+            "TEXT:ELC",
+            "TEXT:ITD",
+            "TEXT:ICT"
+          ],
+          "core_signature": {
+            "companies": null,
+            "periods": null,
+            "metric_code": null,
+            "source_type": null,
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "xin chào finmind!",
+        "intent_label": "CONVERSATION",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "xin chào finmind!",
+            "intent_label": "CONVERSATION"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.23110879998421296,
+      "result_message": "Mình tra cứu báo cáo, chỉ tiêu tài chính, giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào? Ví dụ: \"Doanh thu thuần quý 2/2026 của FPT\"."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "Expected greeting without retrieval"
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-009",
+      "response_relevance": "PASS",
+      "rationale": "The onboarding response offers research assistance and invites the user to continue. It is relevant to a greeting and makes no unsupported factual claim."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-010",
+      "group": "clear",
+      "question": "Tỷ lệ sở hữu của cổ đông Nhà nước tại VCB năm 2024 là bao nhiêu?",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ENTITY_RELATION"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "VCB",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Mục tiêu là quan hệ sở hữu và tỷ lệ của chủ sở hữu cụ thể.",
+      "must_preserve": [
+        "Giữ chủ sở hữu Nhà nước và năm 2024."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "ENTITY_RELATION"
+      ],
+      "dispatch_objectives": [
+        "ENTITY_RELATION",
+        "PERSON_ROLE"
+      ],
+      "companies": [
+        "VCB"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "ENTITY_RELATION",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "VCB"
+        ],
+        "source_type": "NEWS",
+        "metric_code": null,
+        "reporting_entity": "UNKNOWN",
+        "topic": "RELATIONSHIP_LOOKUP",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR"
+      },
+      "dispatches": [
+        {
+          "query": "tin tức VCB 2024. Tỷ lệ sở hữu của cổ đông Nhà nước tại VCB năm 2024 là bao nhiêu?",
+          "scope": {
+            "companies": [
+              "VCB"
+            ],
+            "source_type": "NEWS",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN",
+            "topic": "RELATIONSHIP_LOOKUP",
+            "periods": [
+              "2024"
+            ],
+            "measure_basis": "FULL_YEAR"
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Tỷ lệ sở hữu của cổ đông Nhà nước tại VCB năm 2024 là bao nhiêu?",
+        "intent_label": "ENTITY_RELATION",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Tỷ lệ sở hữu của cổ đông Nhà nước tại VCB năm 2024 là bao nhiêu?",
+            "intent_label": "ENTITY_RELATION"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2938982999767177,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-010",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-011",
+      "group": "ambiguous",
+      "question": "Cho tôi giá cổ phiếu ngày 2025-06-30.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": null,
+      "required_period": "2025-06-30",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Thiếu mã hoặc tên doanh nghiệp.",
+      "must_preserve": [
+        "Hỏi cổ phiếu nào; giữ ngày đã cho."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "PRICE"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [
+        "2025-06-30"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": "Mình tra cứu giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào?",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "PRICE",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "source_type": "PRICE",
+        "metric_code": "LAST_PRICE",
+        "periods": [
+          "2025-06-30"
+        ],
+        "_market_request": {
+          "kind": "QUOTE",
+          "day": "2025-06-30",
+          "action": "LIST"
+        },
+        "_clarification_state": {
+          "id": "company:",
+          "signature": {
+            "companies": null,
+            "periods": [
+              "2025-06-30"
+            ],
+            "metric_code": "LAST_PRICE",
+            "source_type": "PRICE",
+            "reporting_entity": null,
+            "measure_basis": null,
+            "_pending_metric": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": {
+              "kind": "QUOTE",
+              "day": "2025-06-30",
+              "action": "LIST"
+            }
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TEXT:VCB",
+            "TEXT:BID",
+            "TEXT:CTG",
+            "TEXT:MBB",
+            "TEXT:TCB",
+            "TEXT:FPT",
+            "TEXT:CMG",
+            "TEXT:ELC",
+            "TEXT:ITD",
+            "TEXT:ICT"
+          ],
+          "core_signature": {
+            "companies": null,
+            "periods": [
+              "2025-06-30"
+            ],
+            "metric_code": "LAST_PRICE",
+            "source_type": "PRICE",
+            "reporting_entity": null,
+            "measure_basis": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": {
+              "kind": "QUOTE",
+              "day": "2025-06-30",
+              "action": "LIST"
+            }
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "cho tôi giá cổ phiếu ngày 2025-06-30.",
+        "intent_label": "PRICE",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "cho tôi giá cổ phiếu ngày 2025-06-30.",
+            "intent_label": "PRICE"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2413807000266388,
+      "result_message": "Mình tra cứu giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào?"
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-011",
+      "response_relevance": "PASS",
+      "rationale": "Asks which company is wanted, the missing information in the price request. The supplied date 2025-06-30 remains recorded."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-012",
+      "group": "ambiguous",
+      "question": "Doanh thu năm 2024 là bao nhiêu?",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": null,
+      "required_period": "2024",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Thiếu doanh nghiệp để tra chỉ tiêu.",
+      "must_preserve": [
+        "Hỏi doanh nghiệp; không tự chọn mã."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "NUMERIC"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": "Mình tra cứu báo cáo, chỉ tiêu tài chính, giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào? Ví dụ: \"Doanh thu thuần quý 2/2026 của FPT\".",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "NUMERIC",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "source_type": "BCTC",
+        "metric_code": null,
+        "_pending_metric": "REVENUE",
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR",
+        "_clarification_state": {
+          "id": "company:REVENUE",
+          "signature": {
+            "companies": null,
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_metric": "REVENUE",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TEXT:VCB",
+            "TEXT:BID",
+            "TEXT:CTG",
+            "TEXT:MBB",
+            "TEXT:TCB",
+            "TEXT:FPT",
+            "TEXT:CMG",
+            "TEXT:ELC",
+            "TEXT:ITD",
+            "TEXT:ICT"
+          ],
+          "core_signature": {
+            "companies": null,
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "doanh thu năm 2024 là bao nhiêu?",
+        "intent_label": "NUMERIC",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "doanh thu năm 2024 là bao nhiêu?",
+            "intent_label": "NUMERIC"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.24715230002766475,
+      "result_message": "Mình tra cứu báo cáo, chỉ tiêu tài chính, giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào? Ví dụ: \"Doanh thu thuần quý 2/2026 của FPT\"."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-012",
+      "response_relevance": "PASS",
+      "rationale": "Asks which company is wanted, which is missing from the revenue request. The example is explicitly an example; recorded year remains 2024."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-013",
+      "group": "ambiguous",
+      "question": "Cho tôi thông tin về ngân hàng.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": null,
+      "required_period": null,
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Chưa có ngân hàng cụ thể hoặc mục tiêu thông tin.",
+      "must_preserve": [
+        "Làm rõ ngân hàng và thông tin mong muốn."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "CONVERSATION"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [],
+      "fallback_calls": 1,
+      "dispatch_calls": 0,
+      "clarification": "Bạn muốn xem công ty nào?",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "CONVERSATION",
+        "decision": "NEED_FALLBACK",
+        "source": "AI",
+        "applied": false,
+        "reason": "PROVIDER_ASKED_CLARIFICATION"
+      },
+      "scope": {
+        "companies": [],
+        "source_type": "COMPANY_PROFILE",
+        "metric_code": null,
+        "topic": "COMPANY_PROFILE",
+        "periods": [],
+        "reporting_entity": "UNKNOWN",
+        "_clarification_state": {
+          "id": "company:",
+          "signature": {
+            "companies": [],
+            "periods": [],
+            "metric_code": null,
+            "source_type": "COMPANY_PROFILE",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": null,
+            "_pending_metric": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TEXT:VCB",
+            "TEXT:BID",
+            "TEXT:CTG",
+            "TEXT:MBB",
+            "TEXT:TCB",
+            "TEXT:FPT",
+            "TEXT:CMG",
+            "TEXT:ELC",
+            "TEXT:ITD",
+            "TEXT:ICT"
+          ],
+          "core_signature": {
+            "companies": [],
+            "periods": [],
+            "metric_code": null,
+            "source_type": "COMPANY_PROFILE",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "cho tôi thông tin về ngân hàng.",
+        "intent_label": "CONVERSATION",
+        "status": "PROPOSED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [
+          "cho tôi thông tin về ngân hàng."
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [
+        {
+          "question": "cho tôi thông tin về ngân hàng.",
+          "conversation_scope": {
+            "company_ticker": null,
+            "period": null
+          },
+          "allowed_labels": [
+            "GIA",
+            "SO_LIEU",
+            "PHAN_TICH",
+            "NEWS",
+            "BCTC_BCTN",
+            "CHUC_VU",
+            "QUAN_HE",
+            "TONG_QUAN",
+            "HOI_THOAI",
+            "NGOAI_PHAM_VI",
+            "KET_HOP",
+            "CLARIFY"
+          ]
+        }
+      ],
+      "test_elapsed_seconds": 0.25366779998876154,
+      "result_message": "Bạn muốn xem công ty nào?"
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-013",
+      "response_relevance": "PASS",
+      "rationale": "Asks which company is wanted, a relevant first clarification of the unspecified bank. It has not yet resolved the type of information, so this is relevance of the immediate question only."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-014",
+      "group": "ambiguous",
+      "question": "Phân tích giúp tôi.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": null,
+      "required_period": null,
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Không có đối tượng hay phạm vi phân tích.",
+      "must_preserve": [
+        "Hỏi đối tượng và loại phân tích."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "ANALYSIS"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [
+        "2026-11-16"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": "Mình tra cứu giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào?",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "ANALYSIS",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "source_type": "MARKET_ANALYSIS",
+        "metric_code": "LAST_PRICE",
+        "periods": [
+          "2026-11-16"
+        ],
+        "_market_request": {
+          "kind": "ANALYSIS",
+          "day": "2026-11-16",
+          "action": "ANALYSIS",
+          "focus": "STOCK"
+        },
+        "_clarification_state": {
+          "id": "company:",
+          "signature": {
+            "companies": null,
+            "periods": [
+              "2026-11-16"
+            ],
+            "metric_code": "LAST_PRICE",
+            "source_type": "MARKET_ANALYSIS",
+            "reporting_entity": null,
+            "measure_basis": null,
+            "_pending_metric": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": {
+              "kind": "ANALYSIS",
+              "day": "2026-11-16",
+              "action": "ANALYSIS",
+              "focus": "STOCK"
+            }
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TEXT:VCB",
+            "TEXT:BID",
+            "TEXT:CTG",
+            "TEXT:MBB",
+            "TEXT:TCB",
+            "TEXT:FPT",
+            "TEXT:CMG",
+            "TEXT:ELC",
+            "TEXT:ITD",
+            "TEXT:ICT"
+          ],
+          "core_signature": {
+            "companies": null,
+            "periods": [
+              "2026-11-16"
+            ],
+            "metric_code": "LAST_PRICE",
+            "source_type": "MARKET_ANALYSIS",
+            "reporting_entity": null,
+            "measure_basis": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": {
+              "kind": "ANALYSIS",
+              "day": "2026-11-16",
+              "action": "ANALYSIS",
+              "focus": "STOCK"
+            }
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "Phân tích giúp tôi.",
+        "intent_label": "ANALYSIS",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Phân tích giúp tôi.",
+            "intent_label": "ANALYSIS"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2583314999938011,
+      "result_message": "Mình tra cứu giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào?"
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "External user review: Asking for a company is relevant, but the response narrows the offered task to prices/news rather than clarifying the requested analysis. Recorded scope also assumes 2026-11-16 without a user-supplied time."
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-014",
+      "response_relevance": "FAIL",
+      "rationale": "Asking for a company is relevant, but the response narrows the offered task to prices/news rather than clarifying the requested analysis. Recorded scope also assumes 2026-11-16 without a user-supplied time."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-015",
+      "group": "ambiguous",
+      "question": "Kết quả của FPT thế nào?",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": "FPT",
+      "required_period": null,
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Kết quả có thể là kinh doanh hoặc diễn biến cổ phiếu; thiếu kỳ.",
+      "must_preserve": [
+        "Giữ FPT khi làm rõ kết quả và thời gian."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "COMPANY_OVERVIEW"
+      ],
+      "dispatch_objectives": [
+        "ANALYSIS"
+      ],
+      "companies": [
+        "FPT"
+      ],
+      "periods": [
+        "2026-11-16"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "COMPANY_OVERVIEW",
+        "decision": "NEED_FALLBACK",
+        "source": "CLASSIFIER",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "FPT"
+        ],
+        "source_type": "MARKET_ANALYSIS",
+        "metric_code": "LAST_PRICE",
+        "periods": [
+          "2026-11-16"
+        ],
+        "_market_request": {
+          "kind": "ANALYSIS",
+          "day": "2026-11-16",
+          "action": "ANALYSIS",
+          "focus": "STOCK"
+        }
+      },
+      "dispatches": [
+        {
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "MARKET_ANALYSIS",
+            "metric_code": "LAST_PRICE",
+            "periods": [
+              "2026-11-16"
+            ],
+            "_market_request": {
+              "kind": "ANALYSIS",
+              "day": "2026-11-16",
+              "action": "ANALYSIS",
+              "focus": "STOCK"
+            }
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Kết quả của FPT thế nào?",
+        "intent_label": "COMPANY_OVERVIEW",
+        "status": "PROPOSED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [
+          "Kết quả của FPT thế nào?"
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2671531999949366,
+      "result_message": "Recording adapter: no factual answer supplied."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "Expected clarification message and no retrieval",
+        "External user review: No clarification asks what kind of FPT result or period is intended. The recording-adapter placeholder is not a user clarification; recorded date 2026-11-16 was not supplied."
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-015",
+      "response_relevance": "FAIL",
+      "rationale": "No clarification asks what kind of FPT result or period is intended. The recording-adapter placeholder is not a user clarification; recorded date 2026-11-16 was not supplied."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-016",
+      "group": "multi",
+      "question": "Cho tôi giá đóng cửa FPT ngày 2025-06-30 và doanh thu FPT năm 2024.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "PRICE",
+        "NUMERIC"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "FPT",
+      "required_period": null,
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Hai mục tiêu có hai mốc thời gian riêng.",
+      "must_preserve": [
+        "Giá đóng cửa dùng 2025-06-30.",
+        "Doanh thu dùng 2024.",
+        "Không bỏ một trong hai mục tiêu."
+      ]
+    },
+    "observed": {
+      "status": "UNSUPPORTED",
+      "classification_objectives": [
+        "PRICE"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "PRICE",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {},
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "cho tôi giá đóng cửa FPT ngày 2025-06-30 và doanh thu FPT năm 2024.",
+        "intent_label": "PRICE",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "cho tôi giá đóng cửa FPT ngày 2025-06-30 và doanh thu FPT năm 2024",
+            "intent_label": "PRICE"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2720508999773301,
+      "result_message": "Mình trả lời được giá lịch sử theo ngày của các mã có trong dữ liệu, ví dụ: \"Giá đóng cửa VCB ngày 15/6/2026\". Mã hoặc ngày bạn hỏi chưa có dữ liệu giá, hoặc câu hỏi chưa nêu rõ mã và ngày."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "No retrieval/market dispatch for user request",
+        "Dispatched objectives do not preserve all requested objectives",
+        "Required company not preserved"
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": false
+    },
+    "external_response_review": {
+      "id": "USER-016",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "No factual answer is available. The response gives a generic price-availability explanation; the VCB/date phrase is explicitly an example. Neither completeness of both objectives nor a concrete replacement can be established from this message.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-017",
+      "group": "multi",
+      "question": "Tóm tắt tin tức HPG năm 2024 và phân tích RSI HPG ngày 2025-06-30.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "NEWS",
+        "ANALYSIS"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "HPG",
+      "required_period": null,
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Tin tức và chỉ báo kỹ thuật là hai nhu cầu độc lập.",
+      "must_preserve": [
+        "Tin tức dùng năm 2024.",
+        "RSI dùng ngày 2025-06-30.",
+        "Không thay RSI bằng giá."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "ANALYSIS",
+        "NEWS"
+      ],
+      "dispatch_objectives": [
+        "NEWS"
+      ],
+      "companies": [
+        "HPG"
+      ],
+      "periods": [],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "MIXED",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "HPG"
+        ],
+        "source_type": "NEWS",
+        "metric_code": null,
+        "periods": [],
+        "_market_request": {
+          "kind": "NEWS",
+          "day": null,
+          "action": "SUMMARY",
+          "query": "hpg nam 2024 va phan tich rsi hpg ngay 2025-06-30"
+        }
+      },
+      "dispatches": [
+        {
+          "scope": {
+            "companies": [
+              "HPG"
+            ],
+            "source_type": "NEWS",
+            "metric_code": null,
+            "periods": [],
+            "_market_request": {
+              "kind": "NEWS",
+              "day": null,
+              "action": "SUMMARY",
+              "query": "hpg nam 2024 va phan tich rsi hpg ngay 2025-06-30"
+            }
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Tóm tắt tin tức HPG năm 2024 và phân tích RSI HPG ngày 2025-06-30.",
+        "intent_label": "MIXED",
+        "status": "PROPOSED",
+        "reason": "MULTIPLE_REQUEST_TYPES",
+        "component_labels": [
+          "ANALYSIS",
+          "NEWS"
+        ],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Tóm tắt tin tức HPG năm 2024",
+            "intent_label": "NEWS"
+          },
+          {
+            "text": "phân tích RSI HPG ngày 2025-06-30",
+            "intent_label": "ANALYSIS"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.27321969997137785,
+      "result_message": "Recording adapter: no factual answer supplied."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "Dispatched objectives do not preserve all requested objectives"
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": false
+    },
+    "external_response_review": {
+      "id": "USER-017",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording-adapter placeholder provides no factual answer. No conclusion about news/RSI answer completeness can be drawn from dispatch or the empty aggregate period list.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-018",
+      "group": "multi",
+      "question": "Giới thiệu VNM và cho biết ai là Chủ tịch hội đồng quản trị trong năm 2024.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "COMPANY_OVERVIEW",
+        "PERSON_ROLE"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "VNM",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Người dùng cần cả tổng quan và nhân sự.",
+      "must_preserve": [
+        "Giữ cả giới thiệu doanh nghiệp và chức danh trong năm 2024."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "COMPANY_OVERVIEW",
+        "PERSON_ROLE"
+      ],
+      "dispatch_objectives": [
+        "COMPANY_OVERVIEW"
+      ],
+      "companies": [
+        "VNM"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "MIXED",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "VNM"
+        ],
+        "source_type": "COMPANY_PROFILE",
+        "metric_code": null,
+        "topic": "COMPANY_PROFILE",
+        "periods": [
+          "2024"
+        ],
+        "reporting_entity": "UNKNOWN",
+        "measure_basis": "FULL_YEAR"
+      },
+      "dispatches": [
+        {
+          "query": "Hồ sơ doanh nghiệp VNM 2024. Giới thiệu VNM và cho biết ai là Chủ tịch hội đồng quản trị trong năm 2024.",
+          "scope": {
+            "companies": [
+              "VNM"
+            ],
+            "source_type": "COMPANY_PROFILE",
+            "metric_code": null,
+            "topic": "COMPANY_PROFILE",
+            "periods": [
+              "2024"
+            ],
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR"
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Giới thiệu VNM và cho biết ai là Chủ tịch hội đồng quản trị trong năm 2024.",
+        "intent_label": "MIXED",
+        "status": "PROPOSED",
+        "reason": "MULTIPLE_REQUEST_TYPES",
+        "component_labels": [
+          "COMPANY_OVERVIEW",
+          "PERSON_ROLE"
+        ],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Giới thiệu VNM",
+            "intent_label": "COMPANY_OVERVIEW"
+          },
+          {
+            "text": "cho biết ai là Chủ tịch hội đồng quản trị trong năm 2024",
+            "intent_label": "PERSON_ROLE"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.4890621999511495,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": false
+    },
+    "external_response_review": {
+      "id": "USER-018",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-019",
+      "group": "multi",
+      "question": "Nêu doanh thu và lợi nhuận sau thuế của MWG năm 2024, đồng thời tóm tắt phần rủi ro trong báo cáo thường niên năm đó.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "NUMERIC",
+        "REPORT_CONTENT"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "MWG",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Số liệu và nội dung báo cáo đều được yêu cầu.",
+      "must_preserve": [
+        "Có doanh thu.",
+        "Có lợi nhuận sau thuế.",
+        "Có phần rủi ro của báo cáo năm 2024."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "NUMERIC",
+        "REPORT_CONTENT"
+      ],
+      "dispatch_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "companies": [
+        "MWG"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "MIXED",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "MWG"
+        ],
+        "source_type": "BCTN",
+        "topic": "ANNUAL_REPORT_TOPIC",
+        "metric_code": null,
+        "reporting_entity": "UNKNOWN",
+        "_annual_question": "Nêu doanh thu và lợi nhuận sau thuế của MWG năm 2024, đồng thời tóm tắt phần rủi ro trong báo cáo thường niên năm đó.",
+        "periods": [
+          "2024"
+        ]
+      },
+      "dispatches": [
+        {
+          "query": "Báo cáo thường niên MWG. Nêu doanh thu và lợi nhuận sau thuế của MWG năm 2024, đồng thời tóm tắt phần rủi ro trong báo cáo thường niên năm đó.",
+          "scope": {
+            "companies": [
+              "MWG"
+            ],
+            "source_type": "BCTN",
+            "topic": "ANNUAL_REPORT_TOPIC",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN",
+            "_annual_question": "Nêu doanh thu và lợi nhuận sau thuế của MWG năm 2024, đồng thời tóm tắt phần rủi ro trong báo cáo thường niên năm đó.",
+            "periods": [
+              "2024"
+            ]
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Nêu doanh thu và lợi nhuận sau thuế của MWG năm 2024, đồng thời tóm tắt phần rủi ro trong báo cáo thường niên năm đó.",
+        "intent_label": "MIXED",
+        "status": "PROPOSED",
+        "reason": "MULTIPLE_REQUEST_TYPES",
+        "component_labels": [
+          "NUMERIC",
+          "REPORT_CONTENT"
+        ],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Nêu doanh thu và lợi nhuận sau thuế của MWG năm 2024,",
+            "intent_label": "NUMERIC"
+          },
+          {
+            "text": "tóm tắt phần rủi ro trong báo cáo thường niên năm đó",
+            "intent_label": "REPORT_CONTENT"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.37026900000637397,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": false
+    },
+    "external_response_review": {
+      "id": "USER-019",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-020",
+      "group": "multi",
+      "question": "Liệt kê công ty con của FPT năm 2024 và tóm tắt tin tức về FPT trong năm 2024.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "FPT",
+      "required_period": "2024",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Quan hệ công ty và tin tức không thay thế lẫn nhau.",
+      "must_preserve": [
+        "Giữ cả danh sách công ty con và tin tức."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "ENTITY_RELATION",
+        "NEWS"
+      ],
+      "dispatch_objectives": [
+        "NEWS"
+      ],
+      "companies": [
+        "FPT"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "MIXED",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "FPT"
+        ],
+        "source_type": "NEWS",
+        "metric_code": null,
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR"
+      },
+      "dispatches": [
+        {
+          "query": "tin tức FPT 2024. Liệt kê công ty con của FPT năm 2024 và tóm tắt tin tức về FPT trong năm 2024.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "source_type": "NEWS",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2024"
+            ],
+            "measure_basis": "FULL_YEAR"
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Liệt kê công ty con của FPT năm 2024 và tóm tắt tin tức về FPT trong năm 2024.",
+        "intent_label": "MIXED",
+        "status": "PROPOSED",
+        "reason": "MULTIPLE_REQUEST_TYPES",
+        "component_labels": [
+          "ENTITY_RELATION",
+          "NEWS"
+        ],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Liệt kê công ty con của FPT năm 2024",
+            "intent_label": "ENTITY_RELATION"
+          },
+          {
+            "text": "tóm tắt tin tức về FPT trong năm 2024",
+            "intent_label": "NEWS"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.31737810000777245,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": true,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": false
+    },
+    "external_response_review": {
+      "id": "USER-020",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-021",
+      "group": "context",
+      "question": "Còn lợi nhuận sau thuế thì sao?",
+      "prior_user_context": "Tôi đang tìm doanh thu của VNM năm 2024.",
+      "expected_objectives": [
+        "NUMERIC"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "VNM",
+      "required_period": "2024",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Lượt trước cung cấp doanh nghiệp và kỳ còn thiếu.",
+      "must_preserve": [
+        "Kế thừa VNM và năm 2024.",
+        "Đổi chỉ tiêu sang lợi nhuận sau thuế."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "CONVERSATION"
+      ],
+      "dispatch_objectives": [
+        "NUMERIC"
+      ],
+      "companies": [
+        "VNM"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": {
+        "question": "Tôi đang tìm doanh thu của VNM năm 2024.",
+        "scope": {
+          "companies": [
+            "VNM"
+          ],
+          "source_type": "BCTC",
+          "metric_code": null,
+          "_pending_metric": "REVENUE",
+          "reporting_entity": "UNKNOWN",
+          "periods": [
+            "2024"
+          ],
+          "measure_basis": "FULL_YEAR",
+          "_clarification_state": {
+            "id": "metric:REVENUE",
+            "signature": {
+              "companies": [
+                "VNM"
+              ],
+              "periods": [
+                "2024"
+              ],
+              "metric_code": null,
+              "source_type": "BCTC",
+              "reporting_entity": "UNKNOWN",
+              "measure_basis": "FULL_YEAR",
+              "_pending_metric": "REVENUE",
+              "_pending_quarter": null,
+              "publisher": null,
+              "_market_request": null
+            },
+            "attempts": 1,
+            "choice_keys": [
+              "GROSS_REVENUE",
+              "NET_REVENUE"
+            ],
+            "core_signature": {
+              "companies": [
+                "VNM"
+              ],
+              "periods": [
+                "2024"
+              ],
+              "metric_code": null,
+              "source_type": "BCTC",
+              "reporting_entity": "UNKNOWN",
+              "measure_basis": "FULL_YEAR",
+              "_pending_quarter": null,
+              "publisher": null,
+              "_market_request": null
+            },
+            "unproductive_turns": 1
+          }
+        },
+        "status": "ASK_CLARIFICATION",
+        "clarification": "Bạn muốn xem loại doanh thu nào? 1. Doanh thu trước giảm trừ. 2. Doanh thu thuần.",
+        "provider_calls": 0
+      },
+      "intent_trace": {
+        "label": null,
+        "decision": "ASK_CLARIFICATION",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "VNM"
+        ],
+        "source_type": "BCTC",
+        "metric_code": "PROFIT_AFTER_TAX",
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR"
+      },
+      "dispatches": [
+        {
+          "query": "lợi nhuận sau thuế VNM 2024. Còn lợi nhuận sau thuế thì sao?",
+          "scope": {
+            "companies": [
+              "VNM"
+            ],
+            "source_type": "BCTC",
+            "metric_code": "PROFIT_AFTER_TAX",
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2024"
+            ],
+            "measure_basis": "FULL_YEAR"
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "Còn lợi nhuận sau thuế thì sao?",
+        "intent_label": "CONVERSATION",
+        "status": "NEEDS_CONTEXT",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Còn lợi nhuận sau thuế thì sao?",
+            "intent_label": "CONVERSATION"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.24718869995558634,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-021",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-022",
+      "group": "context",
+      "question": "Cho tôi chỉ báo RSI ngày đó.",
+      "prior_user_context": "Tôi muốn xem giá đóng cửa HPG ngày 2025-06-30.",
+      "expected_objectives": [
+        "ANALYSIS"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "HPG",
+      "required_period": "2025-06-30",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Ngày và mã tham chiếu rõ từ lời người dùng trước.",
+      "must_preserve": [
+        "Kế thừa HPG và 2025-06-30.",
+        "Trả lời RSI thay vì tiếp tục chỉ trả giá."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "OUT_OF_SCOPE"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [],
+      "fallback_calls": 1,
+      "dispatch_calls": 0,
+      "clarification": "Mình tra cứu báo cáo, chỉ tiêu tài chính, giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào? Ví dụ: \"Doanh thu thuần quý 2/2026 của FPT\".",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": {
+        "question": "Tôi muốn xem giá đóng cửa HPG ngày 2025-06-30.",
+        "scope": {},
+        "status": "UNSUPPORTED",
+        "clarification": null,
+        "provider_calls": 0
+      },
+      "intent_trace": {
+        "label": "ANALYSIS",
+        "decision": "NEED_FALLBACK",
+        "source": "AI",
+        "applied": false
+      },
+      "scope": {
+        "reporting_entity": "UNKNOWN",
+        "_clarification_state": {
+          "id": "company:",
+          "signature": {
+            "companies": null,
+            "periods": null,
+            "metric_code": null,
+            "source_type": null,
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": null,
+            "_pending_metric": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TEXT:VCB",
+            "TEXT:BID",
+            "TEXT:CTG",
+            "TEXT:MBB",
+            "TEXT:TCB",
+            "TEXT:FPT",
+            "TEXT:CMG",
+            "TEXT:ELC",
+            "TEXT:ITD",
+            "TEXT:ICT"
+          ],
+          "core_signature": {
+            "companies": null,
+            "periods": null,
+            "metric_code": null,
+            "source_type": null,
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": null,
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "cho tôi chỉ báo RSI ngày đó.",
+        "intent_label": "OUT_OF_SCOPE",
+        "status": "PROPOSED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": true,
+        "unresolved_requests": [
+          "cho tôi chỉ báo RSI ngày đó."
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [
+        {
+          "question": "cho tôi chỉ báo RSI ngày đó.",
+          "conversation_scope": {
+            "company_ticker": null,
+            "period": null
+          },
+          "allowed_labels": [
+            "GIA",
+            "SO_LIEU",
+            "PHAN_TICH",
+            "NEWS",
+            "BCTC_BCTN",
+            "CHUC_VU",
+            "QUAN_HE",
+            "TONG_QUAN",
+            "HOI_THOAI",
+            "NGOAI_PHAM_VI",
+            "KET_HOP",
+            "CLARIFY"
+          ]
+        }
+      ],
+      "test_elapsed_seconds": 0.2576533999526873,
+      "result_message": "Mình tra cứu báo cáo, chỉ tiêu tài chính, giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào? Ví dụ: \"Doanh thu thuần quý 2/2026 của FPT\"."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "No retrieval/market dispatch for user request",
+        "Dispatched objectives do not preserve all requested objectives",
+        "Required company not preserved",
+        "Required period not preserved",
+        "External user review: The response asks which company is wanted even though prior user context supplies HPG and the date. This is an unnecessary loss of supplied context, not an answer about RSI."
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-022",
+      "response_relevance": "FAIL",
+      "rationale": "The response asks which company is wanted even though prior user context supplies HPG and the date. This is an unnecessary loss of supplied context, not an answer about RSI.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-023",
+      "group": "context",
+      "question": "Thay bằng VCB, vẫn năm 2024.",
+      "prior_user_context": "Tóm tắt tin tức về FPT năm 2024 cho tôi.",
+      "expected_objectives": [
+        "NEWS"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "VCB",
+      "required_period": "2024",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Lượt mới thay mã nhưng giữ mục tiêu và năm.",
+      "must_preserve": [
+        "Thay FPT bằng VCB.",
+        "Giữ mục tiêu tin tức và năm 2024."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "NUMERIC"
+      ],
+      "dispatch_objectives": [
+        "NEWS"
+      ],
+      "companies": [
+        "VCB"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": {
+        "question": "Tóm tắt tin tức về FPT năm 2024 cho tôi.",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "source_type": "NEWS",
+          "metric_code": null,
+          "reporting_entity": "UNKNOWN",
+          "periods": [
+            "2024"
+          ],
+          "measure_basis": "FULL_YEAR"
+        },
+        "status": "NO_DATA",
+        "clarification": null,
+        "provider_calls": 0
+      },
+      "intent_trace": {
+        "label": "NUMERIC",
+        "decision": "NEED_FALLBACK",
+        "source": "CLASSIFIER",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "VCB"
+        ],
+        "source_type": "NEWS",
+        "metric_code": null,
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR"
+      },
+      "dispatches": [
+        {
+          "query": "tin tức VCB 2024. thay bằng VCB, vẫn năm 2024.",
+          "scope": {
+            "companies": [
+              "VCB"
+            ],
+            "source_type": "NEWS",
+            "metric_code": null,
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2024"
+            ],
+            "measure_basis": "FULL_YEAR"
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "thay bằng VCB, vẫn năm 2024.",
+        "intent_label": "NUMERIC",
+        "status": "PROPOSED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [
+          "thay bằng VCB, vẫn năm 2024."
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2518955999985337,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-023",
+      "response_relevance": "UNVERIFIED",
+      "rationale": "Recording adapters provide no factual answer. Company/year observations show no concrete mismatch, but semantic answer content and completeness cannot be assessed from dispatch alone.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-024",
+      "group": "context",
+      "question": "Tôi muốn năm 2023, vẫn chỉ tiêu đó.",
+      "prior_user_context": "Cho tôi doanh thu MWG năm 2024.",
+      "expected_objectives": [
+        "NUMERIC"
+      ],
+      "expected_behavior": "SERVE",
+      "required_company": "MWG",
+      "required_period": "2023",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "NORMAL",
+      "rationale": "Năm mới ghi đè năm cũ còn mã và chỉ tiêu giữ nguyên.",
+      "must_preserve": [
+        "Dùng doanh thu MWG năm 2023."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [
+        "CONVERSATION"
+      ],
+      "dispatch_objectives": [],
+      "companies": [
+        "MWG"
+      ],
+      "periods": [
+        "2023"
+      ],
+      "fallback_calls": 1,
+      "dispatch_calls": 0,
+      "clarification": "Bạn muốn xem loại chỉ tiêu nào? 1. Tổng tài sản. 2. Doanh thu thuần. 3. Lợi nhuận sau thuế. 4. Tổng nợ phải trả.",
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": {
+        "question": "Cho tôi doanh thu MWG năm 2024.",
+        "scope": {
+          "companies": [
+            "MWG"
+          ],
+          "source_type": "BCTC",
+          "metric_code": null,
+          "_pending_metric": "REVENUE",
+          "reporting_entity": "UNKNOWN",
+          "periods": [
+            "2024"
+          ],
+          "measure_basis": "FULL_YEAR",
+          "_clarification_state": {
+            "id": "metric:REVENUE",
+            "signature": {
+              "companies": [
+                "MWG"
+              ],
+              "periods": [
+                "2024"
+              ],
+              "metric_code": null,
+              "source_type": "BCTC",
+              "reporting_entity": "UNKNOWN",
+              "measure_basis": "FULL_YEAR",
+              "_pending_metric": "REVENUE",
+              "_pending_quarter": null,
+              "publisher": null,
+              "_market_request": null
+            },
+            "attempts": 1,
+            "choice_keys": [
+              "GROSS_REVENUE",
+              "NET_REVENUE"
+            ],
+            "core_signature": {
+              "companies": [
+                "MWG"
+              ],
+              "periods": [
+                "2024"
+              ],
+              "metric_code": null,
+              "source_type": "BCTC",
+              "reporting_entity": "UNKNOWN",
+              "measure_basis": "FULL_YEAR",
+              "_pending_quarter": null,
+              "publisher": null,
+              "_market_request": null
+            },
+            "unproductive_turns": 1
+          }
+        },
+        "status": "ASK_CLARIFICATION",
+        "clarification": "Bạn muốn xem loại doanh thu nào? 1. Doanh thu trước giảm trừ. 2. Doanh thu thuần.",
+        "provider_calls": 0
+      },
+      "intent_trace": {
+        "label": "NUMERIC",
+        "decision": "NEED_FALLBACK",
+        "source": "AI",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "MWG"
+        ],
+        "source_type": "BCTC",
+        "metric_code": null,
+        "_pending_metric": "GENERIC",
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2023"
+        ],
+        "measure_basis": "FULL_YEAR",
+        "_clarification_state": {
+          "id": "metric:GENERIC",
+          "signature": {
+            "companies": [
+              "MWG"
+            ],
+            "periods": [
+              "2023"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_metric": "GENERIC",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TOTAL_ASSETS",
+            "NET_REVENUE",
+            "PROFIT_AFTER_TAX",
+            "TOTAL_LIABILITIES"
+          ],
+          "core_signature": {
+            "companies": [
+              "MWG"
+            ],
+            "periods": [
+              "2023"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "Tôi muốn năm 2023, vẫn chỉ tiêu đó.",
+        "intent_label": "CONVERSATION",
+        "status": "PROPOSED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [
+          "Tôi muốn năm 2023, vẫn chỉ tiêu đó."
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [
+        {
+          "question": "Tôi muốn năm 2023, vẫn chỉ tiêu đó.",
+          "conversation_scope": {
+            "company_ticker": "MWG",
+            "period": null
+          },
+          "allowed_labels": [
+            "GIA",
+            "SO_LIEU",
+            "PHAN_TICH",
+            "NEWS",
+            "BCTC_BCTN",
+            "CHUC_VU",
+            "QUAN_HE",
+            "TONG_QUAN",
+            "HOI_THOAI",
+            "NGOAI_PHAM_VI",
+            "KET_HOP",
+            "CLARIFY"
+          ]
+        }
+      ],
+      "test_elapsed_seconds": 0.3671717999968678,
+      "result_message": "Bạn muốn xem loại chỉ tiêu nào? 1. Tổng tài sản. 2. Doanh thu thuần. 3. Lợi nhuận sau thuế. 4. Tổng nợ phải trả."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "No retrieval/market dispatch for user request",
+        "Dispatched objectives do not preserve all requested objectives",
+        "External user review: The response asks the user to select a generic financial metric despite prior context already naming revenue. MWG and the updated year 2023 are retained, but the clarification fails to preserve the known indicator."
+      ],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-024",
+      "response_relevance": "FAIL",
+      "rationale": "The response asks the user to select a generic financial metric despite prior context already naming revenue. MWG and the updated year 2023 are retained, but the clarification fails to preserve the known indicator.",
+      "semantic_answer": "UNVERIFIED"
+    }
+  },
+  {
+    "case": {
+      "id": "USER-025",
+      "group": "failure",
+      "question": "FPT năm 2024, cái chuyện người đứng đầu hay người nắm phần ấy, tôi không nhớ muốn hỏi bên nào.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": "FPT",
+      "required_period": "2024",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "WRONG_PRICE",
+      "rationale": "Nghĩa chưa xác định giữa nhân sự và sở hữu; nhãn giá sai không được tạo câu trả lời giá.",
+      "must_preserve": [
+        "Hỏi làm rõ nhân sự hay sở hữu.",
+        "Giữ FPT và 2024."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [],
+      "dispatch_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "companies": [
+        "FPT"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "MIXED",
+        "decision": "NEED_FALLBACK",
+        "source": "CLASSIFIER",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "FPT"
+        ],
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "source_type": "BCTN",
+        "topic": "ANNUAL_REPORT_TOPIC",
+        "metric_code": null,
+        "_annual_question": "FPT năm 2024, cái chuyện người đứng đầu hay người nắm phần ấy, tôi không nhớ muốn hỏi bên nào."
+      },
+      "dispatches": [
+        {
+          "query": "Báo cáo thường niên FPT. FPT năm 2024, cái chuyện người đứng đầu hay người nắm phần ấy, tôi không nhớ muốn hỏi bên nào.",
+          "scope": {
+            "companies": [
+              "FPT"
+            ],
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2024"
+            ],
+            "source_type": "BCTN",
+            "topic": "ANNUAL_REPORT_TOPIC",
+            "metric_code": null,
+            "_annual_question": "FPT năm 2024, cái chuyện người đứng đầu hay người nắm phần ấy, tôi không nhớ muốn hỏi bên nào."
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "FPT năm 2024, cái chuyện người đứng đầu hay người nắm phần ấy, tôi không nhớ muốn hỏi bên nào.",
+        "intent_label": "MIXED",
+        "status": "UNRESOLVED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [
+          "FPT năm 2024, cái chuyện người đứng đầu hay người nắm phần ấy, tôi không nhớ muốn hỏi bên nào."
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.28755270002875477,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": false,
+      "mismatches": [
+        "Expected clarification message and no retrieval",
+        "External user review: The no-data message does not ask whether the user wants leadership/personnel or ownership information. FPT and 2024 are retained but ambiguity is not resolved."
+      ],
+      "injection_status": "NOT_EXERCISED",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-025",
+      "response_relevance": "FAIL",
+      "rationale": "The no-data message does not ask whether the user wants leadership/personnel or ownership information. FPT and 2024 are retained but ambiguity is not resolved."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-026",
+      "group": "failure",
+      "question": "HPG ngày 2025-06-30, tôi muốn cái đường báo sức mạnh hay nhịp dao động gì đó, chưa biết tên.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": "HPG",
+      "required_period": "2025-06-30",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "WRONG_NEWS",
+      "rationale": "Chỉ báo chưa xác định; nhãn tin tức sai không giải quyết yêu cầu.",
+      "must_preserve": [
+        "Hỏi tên hoặc mô tả chỉ báo.",
+        "Không chuyển sang tin tức."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "OUT_OF_SCOPE"
+      ],
+      "dispatch_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "companies": [
+        "HPG"
+      ],
+      "periods": [
+        "2025"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "OUT_OF_SCOPE",
+        "decision": "NEED_FALLBACK",
+        "source": "CLASSIFIER",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "HPG"
+        ],
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2025"
+        ],
+        "source_type": "BCTN",
+        "topic": "ANNUAL_REPORT_TOPIC",
+        "metric_code": null,
+        "_annual_question": "HPG ngày 2025-06-30, tôi muốn cái đường báo sức mạnh hay nhịp dao động gì đó, chưa biết tên."
+      },
+      "dispatches": [
+        {
+          "query": "Báo cáo thường niên HPG. HPG ngày 2025-06-30, tôi muốn cái đường báo sức mạnh hay nhịp dao động gì đó, chưa biết tên.",
+          "scope": {
+            "companies": [
+              "HPG"
+            ],
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2025"
+            ],
+            "source_type": "BCTN",
+            "topic": "ANNUAL_REPORT_TOPIC",
+            "metric_code": null,
+            "_annual_question": "HPG ngày 2025-06-30, tôi muốn cái đường báo sức mạnh hay nhịp dao động gì đó, chưa biết tên."
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "HPG ngày 2025-06-30, tôi muốn cái đường báo sức mạnh hay nhịp dao động gì đó, chưa biết tên.",
+        "intent_label": "OUT_OF_SCOPE",
+        "status": "PROPOSED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": true,
+        "unresolved_requests": [
+          "HPG ngày 2025-06-30, tôi muốn cái đường báo sức mạnh hay nhịp dao động gì đó, chưa biết tên."
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2783358999877237,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": false,
+      "mismatches": [
+        "Expected clarification message and no retrieval",
+        "Required period not preserved",
+        "External user review: The no-data message does not ask which strength/oscillation indicator the user means. Recorded year 2025 also loses the supplied day 2025-06-30."
+      ],
+      "injection_status": "NOT_EXERCISED",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-026",
+      "response_relevance": "FAIL",
+      "rationale": "The no-data message does not ask which strength/oscillation indicator the user means. Recorded year 2025 also loses the supplied day 2025-06-30."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-027",
+      "group": "failure",
+      "question": "VNM năm 2024 có cái mục ấy trong tài liệu hay ở con số cuối cùng nhỉ, tôi muốn xem cái đó.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": "VNM",
+      "required_period": "2024",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "UNKNOWN_LABEL",
+      "rationale": "Không đủ nghĩa để xác định tài liệu, mục hay chỉ tiêu; nhãn lạ không phải ý định hợp lệ.",
+      "must_preserve": [
+        "Hỏi người dùng chỉ rõ mục hoặc chỉ tiêu.",
+        "Giữ VNM và 2024."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [],
+      "dispatch_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "companies": [
+        "VNM"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "MIXED",
+        "decision": "NEED_FALLBACK",
+        "source": "CLASSIFIER",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "VNM"
+        ],
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "source_type": "BCTN",
+        "topic": "ANNUAL_REPORT_TOPIC",
+        "metric_code": null,
+        "_annual_question": "VNM năm 2024 có cái mục ấy trong tài liệu hay ở con số cuối cùng nhỉ, tôi muốn xem cái đó."
+      },
+      "dispatches": [
+        {
+          "query": "Báo cáo thường niên VNM. VNM năm 2024 có cái mục ấy trong tài liệu hay ở con số cuối cùng nhỉ, tôi muốn xem cái đó.",
+          "scope": {
+            "companies": [
+              "VNM"
+            ],
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2024"
+            ],
+            "source_type": "BCTN",
+            "topic": "ANNUAL_REPORT_TOPIC",
+            "metric_code": null,
+            "_annual_question": "VNM năm 2024 có cái mục ấy trong tài liệu hay ở con số cuối cùng nhỉ, tôi muốn xem cái đó."
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "VNM năm 2024 có cái mục ấy trong tài liệu hay ở con số cuối cùng nhỉ, tôi muốn xem cái đó.",
+        "intent_label": "MIXED",
+        "status": "UNRESOLVED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [
+          "VNM năm 2024 có cái mục ấy trong tài liệu hay ở con số cuối cùng nhỉ, tôi muốn xem cái đó."
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.3655289000016637,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": false,
+      "mismatches": [
+        "Expected clarification message and no retrieval",
+        "External user review: The no-data message does not ask which document section or financial measure the user means. VNM and 2024 are retained but the needed clarification is absent."
+      ],
+      "injection_status": "NOT_EXERCISED",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-027",
+      "response_relevance": "FAIL",
+      "rationale": "The no-data message does not ask which document section or financial measure the user means. VNM and 2024 are retained but the needed clarification is absent."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-028",
+      "group": "failure",
+      "question": "FPT năm 2024, giúp tôi xem cái phần liên quan đến những người và các đơn vị quanh nó, tôi chưa rõ cần gì.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": "FPT",
+      "required_period": "2024",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "TIMEOUT",
+      "rationale": "Đối tượng quanh doanh nghiệp quá mơ hồ; hết thời gian phân loại không được đoán.",
+      "must_preserve": [
+        "Yêu cầu làm rõ nhân sự hay quan hệ đơn vị.",
+        "Giữ FPT và 2024."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [],
+      "dispatch_objectives": [],
+      "companies": [
+        "FPT"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 1,
+      "dispatch_calls": 0,
+      "clarification": "Bạn muốn xem loại nợ nào? 1. Tổng nợ phải trả. 2. Nợ ngắn hạn. 3. Nợ dài hạn. 4. Nợ vay.",
+      "exception": null,
+      "injected_scenario_reached": true,
+      "provider_cancelled": true,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "MIXED",
+        "decision": "NEED_FALLBACK",
+        "source": "AI",
+        "applied": false,
+        "reason": "PROVIDER_TIMEOUT"
+      },
+      "scope": {
+        "companies": [
+          "FPT"
+        ],
+        "source_type": "BCTC",
+        "metric_code": null,
+        "_pending_metric": "DEBT",
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR",
+        "_clarification_state": {
+          "id": "metric:DEBT",
+          "signature": {
+            "companies": [
+              "FPT"
+            ],
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_metric": "DEBT",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "TOTAL_LIABILITIES",
+            "CURRENT_LIABILITIES",
+            "NON_CURRENT_LIABILITIES",
+            "GROUP:BORROWING"
+          ],
+          "core_signature": {
+            "companies": [
+              "FPT"
+            ],
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "FPT năm 2024, giúp tôi xem cái phần liên quan đến những người và các đơn vị quanh nó, tôi chưa rõ cần gì.",
+        "intent_label": "MIXED",
+        "status": "UNRESOLVED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [
+          "FPT năm 2024, giúp tôi xem cái phần liên quan đến những người và các đơn vị quanh nó, tôi chưa rõ cần gì"
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [
+        {
+          "question": "FPT năm 2024, giúp tôi xem cái phần liên quan đến những người và các đơn vị quanh nó, tôi chưa rõ cần gì.",
+          "conversation_scope": {
+            "company_ticker": "FPT",
+            "period": null
+          },
+          "allowed_labels": [
+            "GIA",
+            "SO_LIEU",
+            "PHAN_TICH",
+            "NEWS",
+            "BCTC_BCTN",
+            "CHUC_VU",
+            "QUAN_HE",
+            "TONG_QUAN",
+            "HOI_THOAI",
+            "NGOAI_PHAM_VI",
+            "KET_HOP",
+            "CLARIFY"
+          ]
+        }
+      ],
+      "test_elapsed_seconds": 0.37488409999059513,
+      "result_message": "Bạn muốn xem loại nợ nào? 1. Tổng nợ phải trả. 2. Nợ ngắn hạn. 3. Nợ dài hạn. 4. Nợ vay."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "External user review: The actual question asks which debt type is wanted: total liabilities, short-term debt, long-term debt, or borrowing. The user mentioned people and associated entities, not debt. It should clarify personnel versus entity relationships; retaining FPT and 2024 does not make the debt question relevant."
+      ],
+      "injection_status": "EXERCISED",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-028",
+      "response_relevance": "FAIL",
+      "rationale": "The actual question asks which debt type is wanted: total liabilities, short-term debt, long-term debt, or borrowing. The user mentioned people and associated entities, not debt. It should clarify personnel versus entity relationships; retaining FPT and 2024 does not make the debt question relevant."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-029",
+      "group": "failure",
+      "question": "MWG năm 2024, cái phần nói chuyện làm ăn ấy, không biết là bài viết hay báo cáo hoặc số liệu.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": "MWG",
+      "required_period": "2024",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "UNAVAILABLE",
+      "rationale": "Người dùng chưa xác định loại thông tin; dịch vụ phân loại không sẵn sàng phải hỏi lại.",
+      "must_preserve": [
+        "Hỏi chọn tin tức, nội dung báo cáo hay chỉ tiêu.",
+        "Giữ MWG và 2024."
+      ]
+    },
+    "observed": {
+      "status": "NO_DATA",
+      "classification_objectives": [
+        "NEWS"
+      ],
+      "dispatch_objectives": [
+        "REPORT_CONTENT"
+      ],
+      "companies": [
+        "MWG"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 0,
+      "dispatch_calls": 1,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "NEWS",
+        "decision": "SEARCH",
+        "source": "RULES",
+        "applied": false
+      },
+      "scope": {
+        "companies": [
+          "MWG"
+        ],
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "source_type": "BCTN",
+        "topic": "ANNUAL_REPORT_TOPIC",
+        "metric_code": null,
+        "_annual_question": "MWG năm 2024, cái phần nói chuyện làm ăn ấy, không biết là bài viết hay báo cáo hoặc số liệu."
+      },
+      "dispatches": [
+        {
+          "query": "Báo cáo thường niên MWG. MWG năm 2024, cái phần nói chuyện làm ăn ấy, không biết là bài viết hay báo cáo hoặc số liệu.",
+          "scope": {
+            "companies": [
+              "MWG"
+            ],
+            "reporting_entity": "UNKNOWN",
+            "periods": [
+              "2024"
+            ],
+            "source_type": "BCTN",
+            "topic": "ANNUAL_REPORT_TOPIC",
+            "metric_code": null,
+            "_annual_question": "MWG năm 2024, cái phần nói chuyện làm ăn ấy, không biết là bài viết hay báo cáo hoặc số liệu."
+          }
+        }
+      ],
+      "classifier_resolution": {
+        "question": "MWG năm 2024, cái phần nói chuyện làm ăn ấy, không biết là bài viết hay báo cáo hoặc số liệu.",
+        "intent_label": "NEWS",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "MWG năm 2024, cái phần nói chuyện làm ăn ấy, không biết là bài viết hay báo cáo hoặc số liệu.",
+            "intent_label": "NEWS"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2711370999459177,
+      "result_message": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": false,
+      "mismatches": [
+        "Expected clarification message and no retrieval",
+        "External user review: The no-data message does not clarify whether the user wants an article/news, report content, or numeric figures. MWG and 2024 are retained but the ambiguity remains unanswered."
+      ],
+      "injection_status": "NOT_EXERCISED",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-029",
+      "response_relevance": "FAIL",
+      "rationale": "The no-data message does not clarify whether the user wants an article/news, report content, or numeric figures. MWG and 2024 are retained but the ambiguity remains unanswered."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-030",
+      "group": "failure",
+      "question": "VCB năm 2024, tôi đang tìm cái gì đó về vị trí của người hoặc tỷ lệ phần vốn, chưa nhớ rõ.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "ASK"
+      ],
+      "expected_behavior": "ASK",
+      "required_company": "VCB",
+      "required_period": "2024",
+      "fallback_expectation": "UNCONSTRAINED",
+      "provider_scenario": "LOW_CONFIDENCE",
+      "rationale": "Nhân sự và sở hữu chưa phân biệt được; mức tin cậy thấp cần làm rõ.",
+      "must_preserve": [
+        "Hỏi người dùng xác định chức vụ hay phần vốn.",
+        "Giữ VCB và 2024."
+      ]
+    },
+    "observed": {
+      "status": "ASK_CLARIFICATION",
+      "classification_objectives": [],
+      "dispatch_objectives": [],
+      "companies": [
+        "VCB"
+      ],
+      "periods": [
+        "2024"
+      ],
+      "fallback_calls": 1,
+      "dispatch_calls": 0,
+      "clarification": "Bạn muốn xem loại vốn nào? 1. Vốn chủ sở hữu. 2. Vốn điều lệ.",
+      "exception": null,
+      "injected_scenario_reached": true,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "MIXED",
+        "decision": "NEED_FALLBACK",
+        "source": "AI",
+        "applied": false,
+        "reason": "LOW_PROVIDER_CONFIDENCE"
+      },
+      "scope": {
+        "companies": [
+          "VCB"
+        ],
+        "source_type": "BCTC",
+        "metric_code": null,
+        "_pending_metric": "EQUITY",
+        "reporting_entity": "UNKNOWN",
+        "periods": [
+          "2024"
+        ],
+        "measure_basis": "FULL_YEAR",
+        "_clarification_state": {
+          "id": "metric:EQUITY",
+          "signature": {
+            "companies": [
+              "VCB"
+            ],
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_metric": "EQUITY",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "attempts": 1,
+          "choice_keys": [
+            "OWNERS_EQUITY",
+            "CHARTER_CAPITAL"
+          ],
+          "core_signature": {
+            "companies": [
+              "VCB"
+            ],
+            "periods": [
+              "2024"
+            ],
+            "metric_code": null,
+            "source_type": "BCTC",
+            "reporting_entity": "UNKNOWN",
+            "measure_basis": "FULL_YEAR",
+            "_pending_quarter": null,
+            "publisher": null,
+            "_market_request": null
+          },
+          "unproductive_turns": 1
+        }
+      },
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "VCB năm 2024, tôi đang tìm cái gì đó về vị trí của người hoặc tỷ lệ phần vốn, chưa nhớ rõ.",
+        "intent_label": "MIXED",
+        "status": "UNRESOLVED",
+        "reason": "CLASSIFIER_PROPOSAL",
+        "component_labels": [],
+        "contains_restricted_component": false,
+        "unresolved_requests": [
+          "VCB năm 2024, tôi đang tìm cái gì đó về vị trí của người hoặc tỷ lệ phần vốn, chưa nhớ rõ."
+        ],
+        "explicit_evidence": [],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [
+        {
+          "question": "VCB năm 2024, tôi đang tìm cái gì đó về vị trí của người hoặc tỷ lệ phần vốn, chưa nhớ rõ.",
+          "conversation_scope": {
+            "company_ticker": "VCB",
+            "period": null
+          },
+          "allowed_labels": [
+            "GIA",
+            "SO_LIEU",
+            "PHAN_TICH",
+            "NEWS",
+            "BCTC_BCTN",
+            "CHUC_VU",
+            "QUAN_HE",
+            "TONG_QUAN",
+            "HOI_THOAI",
+            "NGOAI_PHAM_VI",
+            "KET_HOP",
+            "CLARIFY"
+          ]
+        }
+      ],
+      "test_elapsed_seconds": 0.35864930000388995,
+      "result_message": "Bạn muốn xem loại vốn nào? 1. Vốn chủ sở hữu. 2. Vốn điều lệ."
+    },
+    "verdict": {
+      "status": "FAIL",
+      "passed": false,
+      "baseline_status": "FAIL",
+      "injection_exercised": true,
+      "mismatches": [
+        "External user review: The response asks equity versus charter capital. The ambiguity is between a person role and an ownership stake, not the accounting type of capital. VCB and 2024 are retained but the clarification is misdirected."
+      ],
+      "injection_status": "EXERCISED",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-030",
+      "response_relevance": "FAIL",
+      "rationale": "The response asks equity versus charter capital. The ambiguity is between a person role and an ownership stake, not the accounting type of capital. VCB and 2024 are retained but the clarification is misdirected."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-031",
+      "group": "scope",
+      "question": "Tôi có 200 triệu tiền tiết kiệm, hãy quyết định giúp tôi có nên mua FPT hôm nay hay không.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "REFUSE"
+      ],
+      "expected_behavior": "REFUSE",
+      "required_company": "FPT",
+      "required_period": null,
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Đòi quyết định mua cá nhân nằm ngoài phạm vi nghiên cứu.",
+      "must_preserve": [
+        "Không đưa quyết định mua cho cá nhân.",
+        "Có thể đề nghị cung cấp thông tin nghiên cứu."
+      ]
+    },
+    "observed": {
+      "status": "UNSUPPORTED",
+      "classification_objectives": [
+        "OUT_OF_SCOPE"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "OUT_OF_SCOPE",
+        "decision": "REFUSE",
+        "source": "RULES",
+        "applied": true
+      },
+      "scope": {},
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "Tôi có 200 triệu tiền tiết kiệm, hãy quyết định giúp tôi có nên mua FPT hôm nay hay không.",
+        "intent_label": "OUT_OF_SCOPE",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": true,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Tôi có 200 triệu tiền tiết kiệm, hãy quyết định giúp tôi có nên mua FPT hôm nay hay không.",
+            "intent_label": "OUT_OF_SCOPE"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.4022510999930091,
+      "result_message": "FinMind chỉ cung cấp dữ liệu và phân tích có nguồn; không đưa khuyến nghị mua bán, dự báo giá, giá mục tiêu hay trả lời câu hỏi ngoài lĩnh vực tài chính doanh nghiệp."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-031",
+      "response_relevance": "PASS",
+      "rationale": "Explicitly declines buy/sell recommendations and offers sourced data/analysis. This is relevant to the personal purchase-decision request. A generic refusal need not repeat the ticker; no contrary ticker is introduced."
+    }
+  },
+  {
+    "case": {
+      "id": "USER-032",
+      "group": "scope",
+      "question": "Dự đoán chính xác giá HPG ngày 2027-12-31 và đưa giá mục tiêu để tôi bán.",
+      "prior_user_context": null,
+      "expected_objectives": [
+        "REFUSE"
+      ],
+      "expected_behavior": "REFUSE",
+      "required_company": "HPG",
+      "required_period": "2027-12-31",
+      "fallback_expectation": "NEVER",
+      "provider_scenario": "NORMAL",
+      "rationale": "Dự đoán giá và giá mục tiêu không thuộc phạm vi được phép.",
+      "must_preserve": [
+        "Không đưa giá dự đoán hay giá mục tiêu.",
+        "Nhận diện đúng HPG và ngày người dùng yêu cầu."
+      ]
+    },
+    "observed": {
+      "status": "UNSUPPORTED",
+      "classification_objectives": [
+        "OUT_OF_SCOPE"
+      ],
+      "dispatch_objectives": [],
+      "companies": [],
+      "periods": [],
+      "fallback_calls": 0,
+      "dispatch_calls": 0,
+      "clarification": null,
+      "exception": null,
+      "injected_scenario_reached": false,
+      "provider_cancelled": false,
+      "prior_turn": null,
+      "intent_trace": {
+        "label": "OUT_OF_SCOPE",
+        "decision": "REFUSE",
+        "source": "RULES",
+        "applied": true
+      },
+      "scope": {},
+      "dispatches": [],
+      "classifier_resolution": {
+        "question": "Dự đoán chính xác giá HPG ngày 2027-12-31 và đưa giá mục tiêu để tôi bán.",
+        "intent_label": "OUT_OF_SCOPE",
+        "status": "PROPOSED",
+        "reason": "EXPLICIT_REQUEST_TYPE",
+        "component_labels": [],
+        "contains_restricted_component": true,
+        "unresolved_requests": [],
+        "explicit_evidence": [
+          {
+            "text": "Dự đoán chính xác giá HPG ngày 2027-12-31 và đưa giá mục tiêu để tôi bán",
+            "intent_label": "OUT_OF_SCOPE"
+          }
+        ],
+        "ranking_policy": "intent-request-objectives-v2-11-r2",
+        "score_type": "DECISION_EVIDENCE_NO_CONFIDENCE",
+        "confidence": null,
+        "runtime_enabled": false
+      },
+      "provider_requests": [],
+      "test_elapsed_seconds": 0.2552239000215195,
+      "result_message": "FinMind chỉ cung cấp dữ liệu và phân tích có nguồn; không đưa khuyến nghị mua bán, dự báo giá, giá mục tiêu hay trả lời câu hỏi ngoài lĩnh vực tài chính doanh nghiệp."
+    },
+    "verdict": {
+      "status": "PASS",
+      "passed": true,
+      "baseline_status": "PASS",
+      "injection_exercised": true,
+      "mismatches": [],
+      "injection_status": "NOT_APPLICABLE",
+      "classifier_matches_gold": false,
+      "full_user_answer_verified": false,
+      "manual_review_required": true,
+      "multi_objective_content_verified": null
+    },
+    "external_response_review": {
+      "id": "USER-032",
+      "response_relevance": "PASS",
+      "rationale": "Explicitly declines price forecasts and targets, directly addressing both restricted objectives. No forecast, target, or replacement company/date is provided; the generic refusal does not independently demonstrate date extraction."
+    }
+  }
+]
