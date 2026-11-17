@@ -1,0 +1,184 @@
+{
+  "commit": "cd2726409aeb2b74b27ee1b777edb1fde3a78d33",
+  "branch": "nhan-next-task-20261116",
+  "date": "2026-11-16",
+  "scope": "NHAN_S5_WBS01_2_REPRODUCTION_ONLY",
+  "fixture": {
+    "followup_matches": true,
+    "new_session_isolated": true,
+    "expired_access_status": 401,
+    "expired_write_not_saved": true,
+    "real_refresh_tested": false
+  },
+  "client_transport": {
+    "mode": "CONTROLLED_TRANSPORT_NOT_BROWSER_E2E",
+    "chat": {
+      "outcome": {
+        "status": 401,
+        "message": "Token không hợp lệ hoặc đã hết hạn."
+      },
+      "trace": [
+        {
+          "endpoint": "send-message",
+          "status": 401
+        }
+      ],
+      "refreshCalls": 0,
+      "sendAttempts": 1,
+      "acceptedWritesInMock": 0
+    },
+    "control": {
+      "outcome": {
+        "status": 200
+      },
+      "trace": [
+        {
+          "endpoint": "send-message",
+          "status": 401
+        },
+        {
+          "endpoint": "refresh",
+          "status": 200
+        },
+        {
+          "endpoint": "send-message",
+          "status": 200
+        }
+      ],
+      "refreshCalls": 1,
+      "sendAttempts": 2,
+      "acceptedWritesInMock": 1
+    },
+    "symptom_reproduced": true
+  },
+  "backend_tests": {
+    "tests": 22,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "frontend_tests": {
+    "tests": 16,
+    "failures": 0
+  },
+  "browser_live_verification": "FOLLOWUP_SCOPE_NEW_SESSION_PASS_FROM_SCREENSHOTS_TOKEN_HTTP_AUTH_DB_VERIFIED_BROWSER_TIMER_UNTESTED",
+  "production_source_changed": false,
+  "source_sha256": {
+    "backend/src/api/routers/research_chat.py": "b3cfb9fea5294e83974a75a70b4caf762abfe6a66d2c37d0dc715705db981891",
+    "backend/src/auth/service.py": "7d0b50b4d0f602bd81f6efab51236c7306606bc5216b6b52a39b5e61235c958e",
+    "backend/src/retrieval_orchestration/chat_logic.py": "749e895e54878cea00436c83763d2b53464069ce881f08f1d4b9244fd61d8059",
+    "backend/src/retrieval_orchestration/retrieval_flow/conversation.py": "7322a0f153df2dfb5913478cc17b2a3bec5fc861cad6924f624e0297068ffe8c",
+    "frontend/src/pages/research/chatApi.js": "8b136e7777b4281412e5f914f4bf3023ee2894dfc517180d03a59d9a2988f166",
+    "frontend/src/shared/api/authorization.js": "a489b7736e4c891fb42c957850b75480dd056ca3c6f09cbf029b561e9a6a6cf8",
+    "frontend/src/shared/api/authSession.js": "1f4dd19ab5d52b307e37f35752fa11e8fae6a9bd05611869015d0a3ff8c43e4c",
+    "frontend/src/shared/context/AuthContext.jsx": "3075e1f455f18c78a5d1b7f5b1752adb4b6a1aad7850f37905c858ecb1af952d"
+  },
+  "gemini": {
+    "models_http_status": 200,
+    "key_accepted": true,
+    "generation_smoke_status": "PASS",
+    "model_version": "gemini-3.5-flash-lite",
+    "usage": {
+      "input_tokens": 17,
+      "output_tokens": 5,
+      "total_tokens": 22
+    },
+    "not_web_chat_acceptance": true
+  },
+  "service_health": {
+    "status": "ok",
+    "research_warmup": {
+      "status": "ready",
+      "backend": "hybrid",
+      "index_version_id": "ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d",
+      "elapsed_seconds": 102.52
+    },
+    "router_warmup": {
+      "status": "ready"
+    }
+  },
+  "test_server_access_token_minutes_override": 15,
+  "token_ttl_restore_pending": false,
+  "manual_webchat": {
+    "evidence": "manual-webchat-run01.json",
+    "source": "USER_PASTED_WEB_CHAT_TRANSCRIPT",
+    "direct_browser_observation": false,
+    "observations": {
+      "both_turns_have_visible_response": true,
+      "followup_company_vcb_indicated": true,
+      "metric_and_period_preserved": "NOT_YET_CONFIRMED",
+      "retrieval_reports_insufficient_evidence": true,
+      "corpus_actually_missing_evidence": "NOT_ESTABLISHED_BY_TRANSCRIPT",
+      "gemini_used_by_chat": "NOT_OBSERVED",
+      "token_expiry_or_refresh": "NOT_OBSERVED",
+      "new_session_isolation": "NOT_TESTED_IN_THIS_TRANSCRIPT"
+    }
+  },
+  "manual_webchat_latest": {
+    "evidence": "manual-webchat-run02.json",
+    "source": "TWO_USER_ATTACHED_SCREENSHOTS_IN_CHAT",
+    "scope_case": "PASS",
+    "observations": {
+      "company_changed_to_vcb": true,
+      "metric_and_period_preserved": true,
+      "answer_and_citation_entry_visible": true,
+      "citation_expanded_and_checked": false,
+      "financial_figures_validated": false,
+      "http_requests_observed": false,
+      "token_expiry_or_refresh": "NOT_OBSERVED",
+      "new_session_isolation": "NOT_OBSERVED"
+    }
+  },
+  "manual_webchat_continued_send": {
+    "evidence": "manual-webchat-run03.json",
+    "observations": {
+      "continued_send_answer_visible": true,
+      "login_prompt_visible": false,
+      "scope_preserved": true,
+      "expired_access_verified": false,
+      "refresh_or_401_observed": false,
+      "draft_preservation": "NOT_ESTABLISHED",
+      "full_history_or_duplicate_db_writes": "NOT_ESTABLISHED",
+      "financial_figures_validated": false
+    },
+    "conclusion": "CONTINUED_SEND_SUCCESS_ON_UI_TOKEN_RECOVERY_NOT_PROVEN"
+  },
+  "manual_webchat_new_session": {
+    "evidence": "manual-webchat-run04.json",
+    "observations": {
+      "asks_for_metric": true,
+      "prior_profit_after_tax_not_selected": true,
+      "prior_year_2025_not_present": true,
+      "company_vcb_preserved": true
+    },
+    "conclusion": "PASS_UI_NO_PRIOR_METRIC_OR_PERIOD_INHERITED_IN_THIS_SCENARIO"
+  },
+  "token_ttl_restoration": {
+    "previous_minutes": 1,
+    "restored_minutes": 15,
+    "backend_launcher_pid": 7012,
+    "settings_checked_before_launch": true,
+    "env_file_changed": false,
+    "health_after_restart": {
+      "status": "ok",
+      "research_warmup": {
+        "status": "warming"
+      },
+      "router_warmup": {
+        "status": "warming"
+      }
+    }
+  },
+  "automated_auth_db_http": {
+    "evidence": "auth-db-http-run01.json",
+    "status": "PASS_REPRODUCTION_AND_RECOVERY_CONTROLS",
+    "mode": "REAL_LOCAL_HTTP_AUTH_ROUTER_POSTGRES_SQL_ROLLBACK_FIXTURE_CHAT_NOT_BROWSER",
+    "raw_chat_bug_reproduced": true,
+    "real_auth_db_rotation_controls_passed": true,
+    "chat_store": "TEMPORARY_FILE_FIXTURE",
+    "browser_ui_or_timer_tested": false,
+    "transaction_rolled_back": true,
+    "synthetic_user_absent_after_rollback": true
+  },
+  "task_review_readiness": "REPRODUCTION_REPORT_READY_FULL_BROWSER_ACCEPTANCE_NOT_CLAIMED"
+}

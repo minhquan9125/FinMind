@@ -1,0 +1,97 @@
+{
+  "timestamp_utc": "2026-11-16T03:24:11.310264+00:00",
+  "mode": "REAL_LOCAL_HTTP_AUTH_ROUTER_POSTGRES_SQL_ROLLBACK_FIXTURE_CHAT_NOT_BROWSER",
+  "expiry_method": "Synthetic access issued already expired using random test-app signing secret",
+  "production_settings_changed": false,
+  "browser_ui_or_timer_tested": false,
+  "live_chat_postgres_store_tested": false,
+  "external_ai_called": false,
+  "credentials_exported": false,
+  "client": {
+    "scope": "ACTUAL_CLIENT_MODULES_REAL_LOCAL_HTTP_REAL_AUTH_DB_FIXTURE_CHAT_STORE_NOT_BROWSER",
+    "cases": [
+      {
+        "mode": "raw-chat",
+        "status": 401,
+        "trace": [
+          {
+            "endpoint": "send-message",
+            "status": 401
+          }
+        ],
+        "refresh_calls": 0,
+        "message_attempts": 1,
+        "revision_delta": 0,
+        "user_messages": 0,
+        "refresh_token_changed_in_memory": false
+      },
+      {
+        "mode": "reactive",
+        "status": 200,
+        "trace": [
+          {
+            "endpoint": "send-message",
+            "status": 401
+          },
+          {
+            "endpoint": "refresh",
+            "status": 200
+          },
+          {
+            "endpoint": "send-message",
+            "status": 200
+          }
+        ],
+        "refresh_calls": 1,
+        "message_attempts": 2,
+        "revision_delta": 1,
+        "user_messages": 1,
+        "refresh_token_changed_in_memory": true,
+        "old_refresh_replay_status": 401,
+        "refreshed_access_accepted": true
+      },
+      {
+        "mode": "proactive",
+        "status": 200,
+        "trace": [
+          {
+            "endpoint": "refresh",
+            "status": 200
+          },
+          {
+            "endpoint": "send-message",
+            "status": 200
+          }
+        ],
+        "refresh_calls": 1,
+        "message_attempts": 1,
+        "revision_delta": 1,
+        "user_messages": 1,
+        "refresh_token_changed_in_memory": true,
+        "old_refresh_replay_status": 401,
+        "refreshed_access_accepted": true
+      }
+    ],
+    "raw_chat_bug_reproduced": true,
+    "recovery_control_passed": true,
+    "browser_timer_or_ui_tested": false,
+    "credentials_exported": false
+  },
+  "auth_db": {
+    "raw_chat_refresh_still_valid": true,
+    "reactive_refresh_rotated": true,
+    "proactive_refresh_rotated": true,
+    "synthetic_sessions_in_transaction": 3
+  },
+  "status": "PASS_REPRODUCTION_AND_RECOVERY_CONTROLS",
+  "transaction_rolled_back": true,
+  "synthetic_user_absent_after_rollback": true,
+  "source_sha256": {
+    "backend/src/api/routers/auth.py": "c9d77129785c5bfdff86924961a011a83488f17145936cc58ac9d97a61c45cbf",
+    "backend/src/auth/repository.py": "da9da0a303f86690d09b26674154d3da9c7a1ff86b6da3bb6b2fcc381d2f0025",
+    "backend/src/auth/service.py": "7d0b50b4d0f602bd81f6efab51236c7306606bc5216b6b52a39b5e61235c958e",
+    "frontend/src/pages/research/chatApi.js": "8b136e7777b4281412e5f914f4bf3023ee2894dfc517180d03a59d9a2988f166",
+    "frontend/src/shared/api/authorization.js": "a489b7736e4c891fb42c957850b75480dd056ca3c6f09cbf029b561e9a6a6cf8",
+    "frontend/src/shared/api/authSession.js": "1f4dd19ab5d52b307e37f35752fa11e8fae6a9bd05611869015d0a3ff8c43e4c"
+  }
+}

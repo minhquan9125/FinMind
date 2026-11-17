@@ -1,0 +1,16 @@
+{
+  "timestamp_utc": "2026-11-16T02:51:57.755345+00:00",
+  "scope": "CONNECTIVITY_SMOKE_NOT_WEB_CHAT_ACCEPTANCE",
+  "model": "gemini-3.5-flash-lite",
+  "generation_calls": 1,
+  "request_format": "application/json",
+  "previous_attempt": "Plain-text smoke prompt did not satisfy provider JSON contract; not a product defect.",
+  "status": "PASS",
+  "expected_payload_received": true,
+  "usage": {
+    "input_tokens": 17,
+    "output_tokens": 5,
+    "total_tokens": 22
+  },
+  "model_version": "gemini-3.5-flash-lite"
+}
