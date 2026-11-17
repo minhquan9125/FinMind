@@ -1,0 +1,464 @@
+{
+  "tasks": [
+    "S5-WBS09.1",
+    "S5-WBS09.2",
+    "S5-WBS09.3",
+    "S5-WBS13.2"
+  ],
+  "date": "2026-11-17",
+  "branch": "nhan-next-task-20261116",
+  "reviewed_baseline": "409d0c8f",
+  "fix_commits": [
+    "01ae82b8",
+    "72f9e66f",
+    "1e61e9e6"
+  ],
+  "status": "IMPLEMENTATION_RECHECKED_READY_FOR_PEER_REVIEW_NOT_BROWSER_ACCEPTED",
+  "fixes": [
+    "Clear selected-article query for contextual news lists",
+    "Preserve source cautions with explicit summary limits",
+    "Exclude empty prior summary requests from missing-research count",
+    "Reject altered replay gold cases even if external dataset hash is unchanged"
+  ],
+  "new_test_cases": 7,
+  "suites": {
+    "broad": {
+      "passed": 379,
+      "total": 379
+    },
+    "router": {
+      "passed": 1099,
+      "total": 1099
+    },
+    "full": {
+      "passed": 3533,
+      "skipped": 27,
+      "failed": 69,
+      "xfailed": 2,
+      "total": 3631
+    }
+  },
+  "overlapping_suites": true,
+  "related_test_files": [
+    "backend/tests/test_company_profile_routing.py",
+    "backend/tests/test_live_research.py",
+    "backend/tests/test_live_research_safety.py",
+    "backend/tests/test_market_dialogue.py",
+    "backend/tests/test_market_research.py",
+    "backend/tests/test_postgres_chat_store.py",
+    "backend/tests/test_research_chat_api.py",
+    "backend/tests/test_s5_wbs091_context.py",
+    "backend/tests/test_s5_wbs092_followups.py",
+    "backend/tests/test_s5_wbs093_summary.py",
+    "backend/tests/test_s5_wbs09_postgres.py",
+    "backend/tests/test_s5_wbs132_evaluation.py",
+    "backend/tests/test_web_chat_annual.py",
+    "backend/tests/test_web_chat_router.py"
+  ],
+  "related_test_command": "backend/.venv/Scripts/python.exe -X utf8 -m pytest <related_test_files> -q -p no:cacheprovider",
+  "related_test_environment": {
+    "PYTHONPATH": "backend",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "RUN_S5_WBS09_DB_SMOKE": "1",
+    "RUN_S5_WBS091_DB_SMOKE": "1"
+  },
+  "full_test_command": "backend/.venv/Scripts/python.exe -X utf8 -m pytest backend/tests -q -p no:cacheprovider",
+  "full_test_db_opt_ins": false,
+  "real_postgres": {
+    "passed": 2,
+    "rollback_verified": true,
+    "sources": "Synthetic engine; actual store/SQL/RLS",
+    "measures_isolation_or_concurrency": false
+  },
+  "frontend": {
+    "chat_tests_passed": 30,
+    "build_exit_code": 0,
+    "existing_warnings": [
+      "Graph chunk exceeds 500 kB",
+      "Graph mock mixed static/dynamic imports"
+    ]
+  },
+  "mutation_check": {
+    "guard": "LIVE source eligibility inverted in memory",
+    "detected": true,
+    "source_file_unchanged": true
+  },
+  "replay": {
+    "byte_identical_sha256": {
+      "REPORT.md": "9aa12e46c95891f4a6b37f1b88c4f0f197cbfd007fce9d31ea2c86e92bbf8c9e",
+      "summary.json": "5a3e1872531823592fbacd93f394637dfa42c4c3853ebdca7e6e3d3c54277ee3",
+      "cases.csv": "6e60130f1db887d6d6e6d651b29cfb255a6b92474b83c316e1fc30b5a989680c"
+    },
+    "new_model_or_gemini_calls": false,
+    "note": "Historical Nov16 benchmark only; not new performance/quality measurements"
+  },
+  "full_suite_failures_unchanged": true,
+  "full_suite_failure_categories": {
+    "TEST_DATABASE_15434_NOT_RUNNING": 64,
+    "MISSING_WBS02_FIXTURE": 5
+  },
+  "full_suite_failures": [
+    {
+      "case": "backend.tests.test_db_chunking_verified.PinTests::test_locator_document_pins_verification",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_balance_sheet_instant_without_period_end",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_balance_sheet_is_instant",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_balance_sheet_window_is_a_single_day",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_citation_for",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_citation_needs_a_page",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_eps_keeps_its_per_share_unit",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_get_financial_health_for_chat",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_latest_version_only",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_mismatch_merges_nothing",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_payload_fallback_to_observation_value",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_ratio_unit_not_verified",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_records_carry_text_ids_for_the_calculator",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_records_merge_current_verification",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_report_from_db_cli_readonly",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_restated_comparison_basis_is_not_merged",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_unverified_report_keeps_unknown",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_value_from_payload_not_float",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_health_db.HealthDbTests::test_verified_money_row_gets_vnd_currency",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_apply_then_rerun_adds_nothing",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_cache_sha_mismatch_redownloads",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_closes_own_vietstock_session",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_dry_run_session_is_read_only",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_dry_run_writes_nothing",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_mismatch_tries_separate_then_quarantines",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_network_error_isolated_per_symbol",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_non_pdf_download_falls_back",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_raw_payload_stored_only_when_numbers_change",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_reconnects_when_connection_closed",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_replaced_file_same_id_redownloads",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_too_many_restatements_rolls_back",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_unknown_metric_is_skipped_and_reported",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_statements_refresh.RefreshTests::test_unscanned_pdf_partial",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_chat_runtime_has_no_financial_verification_privileges",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_finance_roles_get_select_insert_only",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_migration_creates_append_only_table",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_migration_rerun_twice_preserves_history_and_truncate_protection",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_truncate_is_rejected_without_losing_history",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_chat_runtime_has_no_financial_verification_privileges",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_finance_roles_get_select_insert_only",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_migration_creates_append_only_table",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_migration_rerun_twice_preserves_history_and_truncate_protection",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_truncate_is_rejected_without_losing_history",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_accounting_ratio_restatement_keeps_current_market_values",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_append_reports_new_period_and_restatement",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_append_verification_idempotent",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_append_verification_supersedes",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_concurrent_append_creates_single_version",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_concurrent_new_period_reuses_one_row_and_keeps_transactions_healthy",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_document_published_at_must_be_aware",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_duplicate_metric_in_group_raises",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_ensure_document_same_sha_reuses_row",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_ensure_source_does_not_change_approval",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_eps_5571_to_3727_is_an_accounting_restatement",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_extra_metric_alone_is_unchanged",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_job_and_payload",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_market_ratio_only_changes_do_not_create_versions",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_metric_resolved_by_section_and_industry",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_new_period_row_created",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_old_importer_float_noise_is_unchanged",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_pe_and_revenue_change_still_versions_income",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_published_at_iso_string_coerced",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_quarantine",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_financial_verification_store.StoreTests::test_unknown_metric_or_symbol_raises",
+      "category": "TEST_DATABASE_15434_NOT_RUNNING",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_wbs02_person_identity_integration::test_real_handoff_resolves_exact_decisions_without_changing_store_or_source",
+      "category": "MISSING_WBS02_FIXTURE",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_wbs02_person_identity_integration::test_changed_pinned_locator_cannot_reuse_identity_decision",
+      "category": "MISSING_WBS02_FIXTURE",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_wbs02_person_identity_integration::test_new_document_with_same_name_does_not_resolve_by_name",
+      "category": "MISSING_WBS02_FIXTURE",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_wbs02_person_identity_integration::test_pipeline_preserves_resolved_ids_but_never_approves_relations",
+      "category": "MISSING_WBS02_FIXTURE",
+      "also_failed_in_previous_run": true
+    },
+    {
+      "case": "backend.tests.test_wbs02_person_identity_integration::test_missing_or_foreign_sqlite_is_rejected",
+      "category": "MISSING_WBS02_FIXTURE",
+      "also_failed_in_previous_run": true
+    }
+  ],
+  "pending": [
+    "Peer review of frozen 60-case expected labels/routes",
+    "Integrated browser E2E acceptance"
+  ],
+  "source_hash_format": "SHA-256 after canonicalizing CRLF to LF",
+  "source_sha256": {
+    "backend/scripts/evaluate_s5_wbs132.py": "ef425ca97769492e580a26e902d6b2a73158236e389789150bb7c0201a6ed10d",
+    "backend/src/retrieval_orchestration/conversation_summary.py": "60c80f25daec7162ecc4bc3e2ec092159563a8d4d2e8232dfefbd5d1f0bfa744",
+    "backend/src/retrieval_orchestration/live_research.py": "dbde82708600722c196c92378ee726bc40d7cdecfdbdb76162552b6600861041",
+    "backend/tests/test_s5_wbs091_context.py": "cdb450cd41128fb5c682f6f327cf979b02aa2d520ae6ef76005807b0240a5e39",
+    "backend/tests/test_s5_wbs092_followups.py": "4035a304cc20acc6e7cd61ea72bf89bbc9c544d8e89c788a42940f0910712f6b",
+    "backend/tests/test_s5_wbs093_summary.py": "78a6a27b4c944a2e82acd4ac1dbb11096b341aa8d594a19b6719cf0b2bda7811",
+    "backend/tests/test_s5_wbs132_evaluation.py": "d0a73030be12826d5a48d80997b1e71d3c0f84e645c7b8dbefbef3acac0ece98",
+    "backend/tests/test_s5_wbs09_postgres.py": "c20a453896414532bcc07492b6bc26b27370261a581a13b85e704edcb8f4d21d",
+    "docs/sprint5/S5-WBS09.2-09.3-handoff.md": "fa8117e7ab73735f8cfc96458ff11d35144bb65a20d21d138eec9ea6af50eb48",
+    "tasks/s5-wbs09-followups/todo.md": "e35003272388baff3c5f8da556ce74f6d49675e41453b59004cd84bcf6428e90"
+  }
+}

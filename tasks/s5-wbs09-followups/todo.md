@@ -20,3 +20,10 @@ Quyết định: tổng hợp theo cách trích chọn các ý đã trả lời 
 không suy diễn số mới hoặc đọc lịch sử người dùng khác. Các lần hỏi lại/lỗi/không có
 bằng chứng được ghi là phần thiếu. Có giới hạn dung lượng và thông báo khi lược bớt.
 Không sửa refresh token, ngưỡng intent hay cách tính nhận định xu hướng.
+
+Rà lại 17/11: đã sửa bộ lọc bài tin còn sót khi quay về danh sách, giữ cảnh báo
+nguồn trong tổng hợp và không đếm lần tổng hợp rỗng thành nghiên cứu thiếu nguồn.
+Bảy ca biên bổ sung cho nhóm task (gồm hai ca replay 13.2). Bộ liên quan 379 pass,
+router 1099 pass; hai ca PostgreSQL rollback thật và build frontend đạt. Xem phần
+“Rà lại cả bốn task” trong bàn giao; vẫn chờ review/kiểm trình duyệt.
+Full cuối: 3533 pass / 69 lỗi cũ / 27 skip / 2 xfail; ID từng lỗi khớp lượt trước.

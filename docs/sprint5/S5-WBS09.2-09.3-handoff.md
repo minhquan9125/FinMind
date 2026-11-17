@@ -120,3 +120,44 @@ và `npm.cmd run build`. Danh sách suite hồi quy có trong verification để
 
 Chưa điều khiển trình duyệt để nghiệm thu E2E. API được kiểm bằng ASGI TestClient;
 không cần dùng tài khoản hoặc token người dùng để chạy các test tự động này.
+
+## Rà lại cả bốn task — 17/11/2026
+
+Đã đối chiếu trực tiếp backlog cho 09.1, 09.2, 09.3 và 13.2. Các số ở phần trên
+là ảnh chụp lượt bàn giao trước; bằng chứng vòng rà mới được lưu riêng tại
+[`four-task-review.json`](../../outputs/s5_wbs09_20261117/four-task-review.json).
+
+Đã tái hiện bằng test trước khi sửa:
+
+- **09.2:** lệnh quay lại danh sách tin vẫn giữ `query` chọn một bài cụ thể.
+  Nay bỏ bộ lọc bài, giữ mã/ngày/nhà cung cấp. Ca mới đi qua adapter thị trường
+  thật với hai bài giả lập và xác nhận trả đủ danh sách, không gọi nguồn ngoài.
+- **09.3:** mất cảnh báo của câu trả lời gốc khi tổng hợp. Nay giữ cả cảnh báo gốc
+  và cảnh báo từ bộ kiểm chứng trong nội dung lẫn `answering.cautions`, kể cả
+  trạng thái `freshness.stale` của adapter thị trường. Tối đa
+  4 lưu ý/lượt, 1.500 ký tự/lưu ý; có thông báo nếu phải lược/cắt.
+- **09.3:** lần tổng hợp khi chưa có dữ liệu bị đếm là một lượt nghiên cứu thiếu
+  nguồn ở lần tổng hợp sau. Nay bỏ qua mọi kết quả lệnh tổng hợp, kể cả lần rỗng.
+- **13.2:** replay chỉ kiểm checksum dataset bên ngoài, chưa so nội dung `cases`
+  bên trong file chạy đã lưu. Nay từ chối nếu kỳ vọng bên trong khác bộ đã khóa.
+  Không thay bộ câu, nhãn chuẩn, model, ngưỡng hoặc số đo benchmark cũ.
+
+09.1 không phát hiện lỗi mới trong phạm vi đã kiểm. Hai ca PostgreSQL thật của
+09.1 và 09.3 đều chạy lại đạt, giao dịch rollback và kiểm không còn dữ liệu thử.
+Bộ liên quan **379/379 đạt**, router **1.099/1.099 đạt**; các bộ có ca trùng nhau,
+không cộng thành số ca độc lập. Frontend Chat **30/30 đạt**, production build đạt.
+Bảy ca biên mới đã bổ sung; test cũng bắt được khi cố ý đảo điều kiện chặn nguồn
+fixture trong bộ nhớ, file sản phẩm không bị thay đổi bởi phép thử này.
+
+Full backend cuối trên code đã bổ sung: **3.533 pass / 69 fail / 27 skip / 2 xfail**.
+Đã đối chiếu ID từng ca: cả 69 lỗi trùng lượt full trước, gồm 64 ca chưa có DB thử
+15434 và 5 ca thiếu fixture WBS02; không có lỗi hồi quy mới trong lượt kiểm này.
+Ca DB opt-in tắt trong full, nhưng hai ca đều đạt trong bộ liên quan 379 ca nêu trên.
+
+Chạy lại báo cáo 13.2 từ raw output: `REPORT.md`, `summary.json`, `cases.csv` đều
+giống từng byte. Đây là số đo của phiên bản được ghi trong run gốc ngày 16/11,
+không phải lượt benchmark mới trên code đã sửa hôm nay. Không gọi BGE/Gemini lại.
+
+Điểm cần chốt với reviewer vẫn còn: duyệt kỳ vọng bộ 60 câu của 13.2 và kiểm
+kịch bản Web Chat ở trên bằng bản tích hợp. Chưa coi build/API/DB smoke là E2E
+trình duyệt, hoặc các lỗi router được phát hiện là đã sửa xong trong task đánh giá.
