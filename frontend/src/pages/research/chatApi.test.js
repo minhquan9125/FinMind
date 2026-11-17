@@ -54,10 +54,8 @@ test('creates session with correct POST request and headers', async (t) => {
     called = true;
     assert.equal(url, '/api/research/chat/sessions');
     assert.equal(opts.method, 'POST');
-    assert.deepEqual(opts.headers, {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
+    assert.equal(opts.headers.get('Content-Type'), 'application/json');
+    assert.equal(opts.headers.get('Authorization'), `Bearer ${token}`);
     assert.ok(!opts.body, 'POST body should be empty for session creation');
     return { ok: true, json: async () => mockResponse };
   };
@@ -78,7 +76,7 @@ test('lists sessions with GET and proper auth header', async (t) => {
   globalThis.fetch = async (url, opts) => {
     assert.equal(url, '/api/research/chat/sessions');
     assert.equal(opts.method, 'GET');
-    assert.equal(opts.headers.Authorization, `Bearer ${token}`);
+    assert.equal(opts.headers.get('Authorization'), `Bearer ${token}`);
     return { ok: true, json: async () => mockData };
   };
 
@@ -121,7 +119,7 @@ test('sends message with correct payload and revision', async (t) => {
   globalThis.fetch = async (url, opts) => {
     assert.equal(url, `/api/research/chat/sessions/${encodeURIComponent(sessionId)}/messages`);
     assert.equal(opts.method, 'POST');
-    assert.equal(opts.headers.Authorization, `Bearer ${token}`);
+    assert.equal(opts.headers.get('Authorization'), `Bearer ${token}`);
     const body = JSON.parse(opts.body);
     assert.deepEqual(body, { text, revision });
     return { ok: true, json: async () => mockResult };
@@ -129,6 +127,73 @@ test('sends message with correct payload and revision', async (t) => {
 
   const result = await chatApi.sendMessage(sessionId, text, revision);
   assert.deepEqual(result, mockResult);
+});
+
+test('concurrent 401 requests rotate once and save a retried message once', async () => {
+  resetEnv();
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({
+    user: { id: 'user-1', roles: ['RESEARCHER'] }, token: 'old-access',
+    refreshToken: 'old-refresh', expiresAtTimestamp: Date.now() + 60_000,
+  }));
+  globalThis.localStorage = storage;
+  let rotations = 0, saved = 0, messageRequests = 0;
+  globalThis.fetch = async (url, opts) => {
+    if (url === '/api/v1/auth/refresh') {
+      rotations++;
+      return { ok: true, status: 200, json: async () => ({ data: {
+        access_token: 'new-access', refresh_token: 'new-refresh', expires_in: 900,
+      } }) };
+    }
+    if (url.endsWith('/messages')) {
+      messageRequests++;
+      if (opts.headers.get('Authorization') === 'Bearer new-access') {
+        saved++;
+        return { ok: true, status: 200, json: async () => ({ revision: 1, messages: [{ role: 'user', content: 'Hello' }] }) };
+      }
+    }
+    return opts.headers.get('Authorization') === 'Bearer new-access'
+      ? { ok: true, status: 200, json: async () => ({ items: [] }) }
+      : { ok: false, status: 401, json: async () => ({ detail: 'Unauthorized' }) };
+  };
+  const [sent] = await Promise.all([
+    chatApi.sendMessage('s1', 'Hello', 0), chatApi.listSessions(), chatApi.getSession('s1'),
+  ]);
+  assert.equal(sent.revision, 1);
+  assert.equal(rotations, 1);
+  assert.equal(messageRequests, 2);
+  assert.equal(saved, 1);
+});
+
+test('expired refresh requires login and resending saves the message once', async () => {
+  resetEnv();
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({
+    user: { id: 'user-1', roles: ['RESEARCHER'] }, token: 'old-access',
+    refreshToken: 'expired-refresh', expiresAtTimestamp: Date.now() + 60_000,
+  }));
+  globalThis.localStorage = storage;
+  let messageRequests = 0, saved = 0;
+  globalThis.fetch = async (url, opts) => {
+    if (url === '/api/v1/auth/refresh') return {
+      ok: false, status: 401, json: async () => ({ detail: 'Refresh token expired' }),
+    };
+    messageRequests++;
+    if (opts.headers.get('Authorization') === 'Bearer new-login') {
+      saved++;
+      return { ok: true, status: 200, json: async () => ({ revision: 1 }) };
+    }
+    return { ok: false, status: 401, json: async () => ({ detail: 'Unauthorized' }) };
+  };
+  await assert.rejects(chatApi.sendMessage('s1', 'Hello', 0), error =>
+    error.status === 401 && /đăng nhập lại/.test(error.message));
+  assert.equal(storage.getItem('finmind_auth_session'), null);
+  assert.equal(messageRequests, 1);
+  assert.equal(saved, 0);
+  storage.setItem('finmind_auth_session', JSON.stringify({ token: 'new-login' }));
+  assert.equal((await chatApi.sendMessage('s1', 'Hello', 0)).revision, 1);
+  assert.equal(messageRequests, 2);
+  assert.equal(saved, 1);
 });
 
 test('opening history reads the original session without creating a fork', async (t) => {
@@ -143,7 +208,7 @@ test('opening history reads the original session without creating a fork', async
   globalThis.fetch = async (url, opts) => {
     assert.equal(url, `/api/research/chat/sessions/${encodeURIComponent(sessionId)}`);
     assert.equal(opts.method, 'GET');
-    assert.equal(opts.headers.Authorization, `Bearer ${token}`);
+    assert.equal(opts.headers.get('Authorization'), `Bearer ${token}`);
     return { ok: true, json: async () => mockResume };
   };
 
@@ -234,7 +299,7 @@ test('BOTH question executes both router endpoints with the chat token', async (
   const result = await chatApi.inspectBoth('Doanh thu công ty con FPT năm 2025?');
   assert.equal(result.status, 'OK');
   assert.deepEqual(calls.map(([url]) => url), ['/api/hybrid-router/test', '/api/hybrid-router/run']);
-  assert.ok(calls.every(([, opts]) => opts.headers.Authorization === 'Bearer both-token'));
+  assert.ok(calls.every(([, opts]) => opts.headers.get('Authorization') === 'Bearer both-token'));
   assert.ok(calls.every(([, opts]) => JSON.parse(opts.body).require_live === true));
   assert.ok(calls.every(([, opts]) => JSON.parse(opts.body).question === 'Doanh thu công ty con FPT năm 2025?'));
 });

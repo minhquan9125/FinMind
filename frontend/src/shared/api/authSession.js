@@ -36,8 +36,11 @@ export function refreshStoredSession(snapshot, { storage = globalThis.localStora
     let response;
     try { response = await refresh(current.refreshToken); }
     catch (error) {
-      if ([401, 403, 422].includes(error.status) && readAuthSession(storage)?.refreshToken === current.refreshToken) {
-        storage.removeItem(AUTH_STORAGE_KEY); notify();
+      if ([401, 403, 422].includes(error.status)) {
+        if (readAuthSession(storage)?.refreshToken === current.refreshToken) {
+          storage.removeItem(AUTH_STORAGE_KEY); notify();
+        }
+        throw sessionError();
       }
       throw error;
     }
