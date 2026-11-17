@@ -347,6 +347,41 @@ def locate_quote(passage, quote, *, column_ocr=False):
                 pieces = follow(line, at, 0, None)
                 if pieces:
                     return passage[pieces[0][0]:pieces[-1][1]], [passage[a:b] for a, b in pieces]
+    return _locate_scattered(passage, words)
+
+
+# Scanned report tables put a name, its title and its description in separate cells, so a model quote
+# that joins them is never contiguous. It is accepted only in this narrow shape: every quoted word is in
+# the source, in order, with its own spelling (case aside); at most a few words lie between two quoted
+# words; the whole span stays short; and no skipped word could change the meaning (a negation, or a
+# "deputy/former/acting" marker in front of a title).
+MAX_SCATTER_GAP = 6
+MEANING_WORDS = {'không', 'chưa', 'chẳng', 'phó', 'nguyên', 'cựu', 'quyền', 'tạm', 'thôi', 'miễn', 'trừ'}
+
+
+def _locate_scattered(passage, words):
+    tokens = [(m.group(), m.start(), m.end()) for m in re.finditer(r'\S+', passage)]
+    wanted = [w.casefold() for w in words]
+    for first, token in enumerate(tokens):
+        if token[0].casefold() != wanted[0]:
+            continue
+        hits, at = [first], first
+        for word in wanted[1:]:
+            nxt = next((i for i in range(at + 1, min(at + 2 + MAX_SCATTER_GAP, len(tokens)))
+                        if tokens[i][0].casefold() == word), None)
+            if nxt is None:
+                break
+            if any(tokens[i][0].casefold().strip('.,;:()') in MEANING_WORDS for i in range(at + 1, nxt)):
+                break
+            hits.append(nxt)
+            at = nxt
+        if len(hits) == len(wanted) and hits[-1] - hits[0] + 1 <= 2 * len(wanted) + 4:
+            pieces, start = [], hits[0]
+            for prev, cur in zip(hits, hits[1:] + [None]):
+                if cur != prev + 1:
+                    pieces.append(passage[tokens[start][1]:tokens[prev][2]])
+                    start = cur
+            return passage[tokens[hits[0]][1]:tokens[hits[-1]][2]], pieces
     return None
 
 

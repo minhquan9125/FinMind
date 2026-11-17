@@ -55,7 +55,8 @@ def anchor_graph_time(answer):
 STALE_SOURCE_CODES = frozenset({'GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS', 'GRAPH_SOURCE_VERSION_MISMATCH'})
 
 
-RELATION_LABELS = {'HAS_SUBSIDIARY': 'có công ty con', 'HAS_ASSOCIATE': 'có công ty liên kết'}
+RELATION_LABELS = {'HAS_SUBSIDIARY': 'có công ty con', 'HAS_ASSOCIATE': 'có công ty liên kết',
+                   'HOLDS_ROLE': '- chức vụ theo tài liệu'}
 MAX_EXTRACT_LINES = 30
 
 
@@ -75,11 +76,16 @@ def graph_relations_extract(facts, pack, relation_types):
     for fact in facts:
         if fact.get('relation_type') not in wanted:
             continue
-        key = (fact['relation_type'], fact['subject'], fact['object'])
+        role = fact['relation_type'] == 'HOLDS_ROLE'
+        if role and not fact.get('position'):
+            continue
+        key = (fact['relation_type'], fact['subject'], fact['object'], fact.get('position') if role else None)
         if key in seen:
             continue             # the same pair reported in several annual reports
+        # For a role the person is the listed name, for a company relation the related company.
+        name = fact['subject'] if role else fact['object']
         source = next((evidence[e] for e in fact.get('evidence_ids') or []
-                       if e in evidence and squash(fact['object']) in squash(evidence[e]['passage'])), None)
+                       if e in evidence and squash(name) in squash(evidence[e]['passage'])), None)
         if source is None:
             continue
         seen.add(key)
@@ -88,7 +94,11 @@ def graph_relations_extract(facts, pack, relation_types):
             citations.append({**{k: copy.deepcopy(source[k]) for k in (
                 'evidence_id', 'source_id', 'chunk_id', 'source_sha256', 'locator', 'content_sha256',
                 'source_verified', 'title', 'source_type') if k in source}, 'citation_number': numbers[source['evidence_id']]})
-        groups.setdefault((fact['relation_type'], fact['subject']), []).append((fact['object'], source['evidence_id']))
+        if role:
+            groups.setdefault((fact['relation_type'], fact['object']), []).append(
+                (f"{fact['subject']} ({fact['position']})", source['evidence_id']))
+        else:
+            groups.setdefault((fact['relation_type'], fact['subject']), []).append((fact['object'], source['evidence_id']))
     if not groups:
         return None
     lines, claims, count = [], [], 0
