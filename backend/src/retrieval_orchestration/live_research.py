@@ -31,6 +31,7 @@ from .market_dates import price_date_request, relative_market_range, temporal_re
 from .metric_vocabulary import (CURATED, find_metrics, label as metric_label, plain, point_in_time_codes,
                                 vocabulary_words, without_metrics)
 from . import intent_gate_v2 as intent_gate
+from .conversation_actions import is_list_followup, is_contextual_overview
 import logging
 
 logger = logging.getLogger(__name__)
@@ -61,6 +62,24 @@ POINT_METRICS = frozenset({'TOTAL_ASSETS', 'CASH_AND_CASH_EQUIVALENTS', 'SHORT_T
                  'CHARTER_CAPITAL', 'RETAINED_EARNINGS', 'TOTAL_LIABILITIES', 'TOTAL_EQUITY'}) | point_in_time_codes()
 
 
+def _company_reply(norm, companies):
+    """A company-only correction, not a new question naming that company."""
+    if not companies:
+        return False
+    from .hybrid_router.decision_engine import DEFAULT_COMPANIES
+    aliases = list(companies) + [alias for alias, ids in DEFAULT_COMPANIES.items()
+                                if any(symbol in companies for symbol in ids)]
+    company = '(?:' + '|'.join(re.escape(_fold(a)) for a in sorted(aliases, key=len, reverse=True)) + ')'
+    return bool(re.fullmatch(
+        r'(?:(?:the )?con |doi sang |chuyen sang |quay lai )?(?:ma |cong ty )?'
+        + company + r'(?: (?:nam )?(?:19|20|21)\d{2})?(?: thi sao)?[ .?!]*', norm))
+
+
+def _keep_metric(norm):
+    return bool(re.search(r'\bgiu (?:nguyen )?chi tieu\b', norm)
+                and not re.search(r'\b(?:khong|dung) giu\b', norm))
+
+
 def _live_period(norm, metric, scope):
     """Resolve explicit quarter/year slots even across words or follow-up turns."""
     quarters = set(re.findall(r'\b(?:quy|q)\s*(\d+)\b', norm))
@@ -69,6 +88,16 @@ def _live_period(norm, metric, scope):
         scope.pop('_pending_quarter', None)
         scope.pop('_pending_ytd', None)
         return None, 'AMBIGUOUS_PERIOD'
+    if quarters and not years and scope.get('source_type') == 'BCTC':
+        # Only a follow-up/slot reply inherits a year. A new complete question
+        # naming a quarter still asks for its year, rather than assuming today.
+        continuation = (re.match(r'^(?:the )?con\b', norm)
+                        or re.fullmatch(r'(?:quy|q)\s*\d+[ .?!]*', norm)
+                        or re.search(r'\bcung nam\b', norm))
+        prior_years = {p[:4] for p in scope.get('periods', [])
+                       if re.fullmatch(r'\d{4}(?:-Q[1-4]|-\d{2}-\d{2})?', p)}
+        if continuation and len(prior_years) == 1:
+            years = prior_years
     whole_year = bool(re.search(r'\b(?:ca nam|toan nam)\b', norm))
     pending = scope.get('_pending_quarter')
     quarter = next(iter(quarters)) if quarters else str(pending) if pending and not whole_year else None
@@ -118,6 +147,10 @@ def _market_intent(norm, context, today):
     day = calendar_day(norm, today)
     action = 'SUMMARY' if re.search(r'\b(?:tom tat|tong hop|diem tin)\b', norm) else 'LIST'
     prior = (context or {}).get('_market_request')
+    if prior and prior.get('kind') == 'NEWS' and is_list_followup(norm):
+        request = {**copy.deepcopy(prior), 'action': 'LIST'}
+        request.pop('query', None)  # A selected article is no longer the list subject.
+        return request
     financial = metric_group(norm) or any(_fold(a) in norm for aliases in METRIC_ALIASES.values() for a in aliases)
     market_context = bool(re.search(
         r'\b(?:thi truong|thi truong chung khoan|chung khoan|ttck|tt|ck|vni|vn ?index|vnindex)\b', norm
@@ -175,9 +208,32 @@ def _market_intent(norm, context, today):
 def annual_requested(norm, context=None):
     if re.search(r'\b(?:bctn|bao cao thuong nien)\b', norm):
         return True
+    report_content = bool(re.search(r'\b(?:ke hoach|chien luoc|dinh huong|thuyet minh|chinh sach|giai trinh)\b', norm))
+    financial = bool(find_metrics(norm) or metric_group(norm)
+                     or re.search(r'\bloi nhuan\b', norm)) and not report_content
+    # "đánh giá chiến lược" still refers to the report, not the stock-price path.
+    price_text = re.sub(r'\b(?:danh|dinh) gia\b', '', norm)
+    new_source = re.search(r'\b(?:bctc|bao cao tai chinh|tin|news|gia co phieu|thi gia)\b', norm)
+    new_price = re.search(r'\bgia\s+(?:[a-z]{3}\b|hom nay|hien tai|bao nhieu)', price_text)
     return bool((context or {}).get('source_type') == 'BCTN'
                 and (context or {}).get('_annual_question')
-                and not re.search(r'\b(?:bctc|bao cao tai chinh|tin tuc|news|gia co phieu|thi gia)\b', norm))
+                and not new_source and not new_price and not financial)
+
+
+def _annual_company_question(question, previous, companies):
+    """Keep the prior subject, replacing its company mentions for retrieval."""
+    old = previous.get('companies') or []
+    if len(old) != 1 or len(companies) != 1 or old == companies:
+        return question
+    from .hybrid_router.decision_engine import DEFAULT_COMPANIES
+    aliases = [old[0]] + [alias for alias, ids in DEFAULT_COMPANIES.items() if ids == (old[0],)]
+    # Match folded aliases but replace slices of the original, accented query.
+    # Folding individual characters preserves offsets (Vietnamese uses NFC here).
+    folded = ''.join(_fold(char) if char.strip() else char for char in question)
+    pattern = r'\b(?:' + '|'.join(re.escape(_fold(a)) for a in sorted(aliases, key=len, reverse=True)) + r')\b'
+    for match in reversed(list(re.finditer(pattern, folded))):
+        question = question[:match.start()] + companies[0] + question[match.end():]
+    return question
 
 
 def annual_scope(text, norm, scope, previous):
@@ -187,10 +243,17 @@ def annual_scope(text, norm, scope, previous):
     years = list(dict.fromkeys(anchors or re.findall(r'\b(?:19|20|21)\d{2}\b', norm)))
     if re.search(r'\b(?:so sanh|doi chieu)\b', norm):
         years = list(dict.fromkeys(re.findall(r'\b(?:19|20|21)\d{2}\b', norm)))
-    followup = bool(re.fullmatch(r'(?:con\s+)?(?:nam\s+)?(?:19|20|21)\d{2}[ ?!.]*', norm)
+    company_followup = _company_reply(norm, scope.get('companies'))
+    if company_followup and len(previous.get('companies') or []) > 1:
+        scope.pop('_annual_question', None)
+        return ('ASK_CLARIFICATION', 'AMBIGUOUS_CONTEXT',
+                'Câu trước có nhiều công ty. Bạn muốn thay công ty nào hay hỏi riêng mã mới? Vui lòng nêu lại chủ đề cần xem.')
+    followup = bool(company_followup or is_list_followup(norm) or re.fullmatch(r'(?:(?:the )?con\s+)?(?:nam\s+)?(?:19|20|21)\d{2}(?: thi sao)?[ ?!.]*', norm)
                     or (not previous.get('companies') and previous.get('_annual_question')
                         and re.fullmatch(r'[a-z]{3}[ ?!.]*', norm)))
     query = previous.get('_annual_question') if followup else text
+    if company_followup and query:
+        query = _annual_company_question(query, previous, scope['companies'])
     if followup and years:
         for old in previous.get('periods') or []:
             if re.fullmatch(r'\d{4}', old):
@@ -204,7 +267,7 @@ def annual_scope(text, norm, scope, previous):
     prior_years = [p for p in previous.get('periods') or [] if re.fullmatch(r'\d{4}', p)]
     latest = bool(re.search(r'\b(?:moi nhat|gan nhat|ky moi nhat)\b', norm))
     scope['periods'] = years or (prior_years if not latest and previous.get('source_type') == 'BCTN'
-        and (not previous.get('companies') or scope.get('companies') == previous.get('companies')) else []) or ['LATEST_AVAILABLE_PERIOD']
+        and (company_followup or not previous.get('companies') or scope.get('companies') == previous.get('companies')) else []) or ['LATEST_AVAILABLE_PERIOD']
     if not scope.get('companies'):
         return 'ASK_CLARIFICATION', 'MISSING_COMPANY', 'Bạn muốn tra báo cáo thường niên của công ty nào?'
     if len(scope['companies']) > 2 or len(scope['periods']) > 2:
@@ -238,6 +301,9 @@ def analyze_live(text, context=None, *, today=None):
     market_request = _market_intent(_fold(text), context, today) or raw_market_request
     norm = _fold(_resolve_relative_periods(text, today))
     norm = resolve_reply(norm, context)
+    quarter_words = {'mot': '1', 'hai': '2', 'ba': '3', 'bon': '4', 'tu': '4'}
+    norm = re.sub(r'\bquy\s+(mot|hai|ba|bon|tu)\b',
+                  lambda match: 'quy ' + quarter_words[match[1]], norm)
     annual = annual_requested(norm, context)
     from .hybrid_router.intent_policy import PROFILE_TERMS, contains
     if annual or contains(norm, PROFILE_TERMS):
@@ -252,6 +318,15 @@ def analyze_live(text, context=None, *, today=None):
                               if symbol in registered or symbol.lower() not in language]
     decision = {'decision': 'ASK_CLARIFICATION', 'scope': scope, 'message': '', 'reason_code': 'MISSING_SCOPE'}
     def finish(branch, reason, message):
+        if scope.get('source_type') != 'BCTN':
+            scope.pop('_annual_question', None)
+            if scope.get('topic') == 'ANNUAL_REPORT_TOPIC':
+                scope.pop('topic', None)
+        if scope.get('source_type') == 'BCTC':
+            for key in ('topic', '_hybrid_context', 'graph_relations', 'graph_time_scope',
+                        'person_name', 'position_code', 'event_type', 'relation_types',
+                        'entity_mentions', 'operation', 'targets', 'route_hint'):
+                scope.pop(key, None)
         decision.update(decision=branch, reason_code=reason, message=message)
         return apply_clarification(decision, context, today or date.today())
     if norm in ('/moi', '/new'):
@@ -421,6 +496,10 @@ def analyze_live(text, context=None, *, today=None):
                       'Bạn muốn xem thành viên hội đồng quản trị hay ban điều hành?')
     if relationship_lookup or found or profit_requested:
         scope.pop('_pending_membership', None)
+    if (found or profit_requested) and scope.get('source_type') in ('NEWS', 'PRICE', 'MARKET_ANALYSIS'):
+        # Publication/trading dates are not statement reporting periods.
+        for key in ('periods', 'measure_basis', 'reporting_entity'):
+            scope.pop(key, None)
     event_impact = bool(
         re.search(r'\b(?:bi bat|bat giu|khoi to|dieu tra|truy to|tam giam)\b', norm)
         and re.search(r'\b(?:co phieu|anh huong|tac dong|he qua)\b', norm)
@@ -483,7 +562,7 @@ def analyze_live(text, context=None, *, today=None):
     elif metric_group(norm):
         scope.update(source_type='BCTC', metric_code=None, _pending_metric=metric_group(norm))
         scope.pop('_metric_candidates', None)
-    elif re.search(r'\b(?:chi tieu|roe|roa|pe|pb)\b', norm):
+    elif re.search(r'\b(?:chi tieu|roe|roa|pe|pb)\b', norm) and not (scope.get('metric_code') and _keep_metric(norm)):
         scope.update(source_type='BCTC', metric_code=None, _pending_metric='GENERIC')
     if scope.get('source_type') != 'NEWS':
         scope.pop('publisher', None)
@@ -842,7 +921,8 @@ class LiveResearchService:
             result['clarification'] = result['message']
             return result
         try:
-            evidence = prepare_evidence(previous.get('evidence_pack'))
+            from .conversation_summary import saved_evidence
+            evidence = saved_evidence(previous)
             for citation in answer['citations']:
                 item = evidence.get(citation.get('evidence_id'))
                 if item is None or any(citation.get(key) != item.get(key)
@@ -856,7 +936,11 @@ class LiveResearchService:
         parts = ['Nguồn của câu trả lời trước:']
         for number, citation in enumerate(citations, 1):
             citation.setdefault('citation_number', number)
-            title = citation_title(citation, old_scope)
+            if previous.get('evidence_packs'):
+                symbol = citation.get('locator', {}).get('symbol')
+                title = citation.get('title') or citation_title(citation, {'companies': [symbol] if symbol else []})
+            else:
+                title = citation_title(citation, old_scope)
             section = citation['locator'].get('section')
             parts.append(f"[{citation['citation_number']}] {title}"+(f' — {section}' if section else ''))
         manifest = copy.deepcopy(answer.get('manifest', {}))
@@ -872,6 +956,8 @@ class LiveResearchService:
                                  'draft': '\n\n'.join(parts), 'claims': [], 'citations': citations,
                                  'manifest': manifest, 'cautions': [], 'budget': self.budget.snapshot(),
                                  'trace': [{'event': 'saved_source_reference'}]})
+        if previous.get('evidence_packs'):
+            result['evidence_packs'] = copy.deepcopy(previous['evidence_packs'])
         return result
 
     async def _absent_from_corpus(self, scope):
@@ -989,6 +1075,26 @@ class LiveResearchService:
 
     async def _answer_turn(self, question, session_id, context=None, *, previous_result=None, today=None):
         interpreted = normalize_user_text(question, context)
+        if is_contextual_overview(interpreted):
+            companies = (context or {}).get('companies') or []
+            if len(companies) != 1:
+                return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                    b1_decision='ASK_CLARIFICATION', status='ASK_CLARIFICATION',
+                    reason_code='AMBIGUOUS_CONTEXT' if companies else 'MISSING_COMPANY',
+                    message='Bạn muốn xem tổng quan công ty nào? Vui lòng chọn một mã.',
+                    scope={'companies': list(companies), 'source_type': 'COMPANY_PROFILE', 'topic': 'COMPANY_PROFILE'},
+                    evidence_pack=None, errors=[])
+            interpreted = 'Thông tin công ty ' + companies[0]
+        if is_list_followup(interpreted):
+            prior = (context or {}).get('_hybrid_context') or context or {}
+            graph_topic = prior.get('topic') and prior.get('route_hint') in ('GRAPH', 'BOTH')
+            news_topic = ((context or {}).get('_market_request') or {}).get('kind') == 'NEWS'
+            annual_topic = (context or {}).get('source_type') == 'BCTN' and (context or {}).get('_annual_question')
+            if not graph_topic and not news_topic and not annual_topic:
+                return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                    b1_decision='ASK_CLARIFICATION', status='ASK_CLARIFICATION', reason_code='MISSING_LIST_SUBJECT',
+                    message='Bạn muốn liệt kê nội dung nào? Ví dụ: công ty con, thành viên HĐQT hoặc các tin vừa hỏi.',
+                    scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
         norm = _fold(interpreted).strip(' .?!')
         if _GREETING.fullmatch(norm):
             return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',

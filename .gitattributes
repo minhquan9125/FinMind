@@ -1,4 +1,5 @@
 # Preserve reviewed intent artifacts and fingerprinted source bytes.
+.gitattributes text eol=lf
 docs/sprint5/intent-labels.v2.json text eol=lf
 docs/sprint5/intent-v2/* text eol=lf
 docs/sprint5/intent-dataset-v1/test.jsonl text eol=lf
@@ -15,3 +16,25 @@ outputs/s5_intent_v2_20261113/**/*.jsonl text eol=lf
 outputs/s5_intent_v2_20261113/**/*.py text eol=lf
 outputs/s5_intent_v2_20261113/**/*.npy binary
 outputs/s5_intent_v2_20261113/**/*.npz binary
+
+# Keep the WBS13.2 dataset lock and reproducible evidence stable across platforms.
+backend/scripts/evaluate_s5_wbs132.py text eol=lf
+backend/tests/test_s5_wbs132_evaluation.py text eol=lf
+backend/tests/fixtures/s5_wbs132_cases.json text eol=lf
+tasks/plan.md text eol=lf
+tasks/todo.md text eol=lf
+outputs/s5_wbs132_20261116/** text eol=lf
+
+# Portable WBS09.1 scope test and review evidence.
+backend/tests/test_s5_wbs091_context.py text eol=lf
+tasks/s5-wbs091/** text eol=lf
+docs/sprint5/S5-WBS09.1-context.md text eol=lf
+outputs/s5_wbs091_20261116/** text eol=lf
+backend/src/retrieval_orchestration/conversation_actions.py text eol=lf
+backend/tests/test_s5_wbs092_followups.py text eol=lf
+tasks/s5-wbs09-followups/** text eol=lf
+backend/src/retrieval_orchestration/conversation_summary.py text eol=lf
+backend/tests/test_s5_wbs093_summary.py text eol=lf
+backend/tests/test_s5_wbs09_postgres.py text eol=lf
+docs/sprint5/S5-WBS09.2-09.3-handoff.md text eol=lf
+outputs/s5_wbs09_20261117/** text eol=lf

@@ -6,6 +6,7 @@ import json
 
 from .chat_types import ChatError, MAX_BYTES, MAX_MESSAGES, MAX_TEXT_LEN, now_iso
 from .retrieval_flow.history import VIETNAM, restore_session
+from .conversation_actions import is_session_summary
 
 
 def validate_input(text, revision):
@@ -58,7 +59,12 @@ async def snapshot(doc):
 async def append_turn(doc, text, engine):
     if len(doc['messages'])+2 > MAX_MESSAGES: raise ChatError(422, 'Số lượng tin nhắn vượt quá giới hạn 2000.')
     try:
-        if engine is not None:
+        if engine is not None and is_session_summary(text):
+            from .conversation_summary import summarize_session
+            from .live_research import render_live_response
+            result = summarize_session(doc)
+            content = render_live_response(result)
+        elif engine is not None:
             from .live_research import render_live_response
             previous = None
             for message in reversed(doc['messages']):

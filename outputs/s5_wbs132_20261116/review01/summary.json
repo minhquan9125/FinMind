@@ -1,0 +1,260 @@
+{
+  "total": 60,
+  "label_correct": 56,
+  "label_accuracy": 0.9333333333333333,
+  "raw_model_label_correct": 51,
+  "raw_model_label_accuracy": 0.85,
+  "branch_correct": 38,
+  "branch_accuracy": 0.6333333333333333,
+  "joint_correct": 35,
+  "joint_accuracy": 0.5833333333333334,
+  "fallback_cases": 3,
+  "fallback_calls": 3,
+  "fallback_rate": 0.05,
+  "missing_ids": [],
+  "error_ids": [],
+  "failed_ids": [
+    "W132-003",
+    "W132-006",
+    "W132-011",
+    "W132-012",
+    "W132-014",
+    "W132-015",
+    "W132-016",
+    "W132-017",
+    "W132-019",
+    "W132-020",
+    "W132-021",
+    "W132-022",
+    "W132-026",
+    "W132-028",
+    "W132-036",
+    "W132-037",
+    "W132-040",
+    "W132-041",
+    "W132-044",
+    "W132-047",
+    "W132-048",
+    "W132-057",
+    "W132-058",
+    "W132-059",
+    "W132-060"
+  ],
+  "latency": {
+    "sample_count": 60,
+    "p50_ms": 994.86,
+    "p95_ms": 3050.445
+  },
+  "by_label": {
+    "PRICE": {
+      "total": 6,
+      "label_correct": 6,
+      "branch_correct": 4,
+      "joint_correct": 4
+    },
+    "NUMERIC": {
+      "total": 6,
+      "label_correct": 5,
+      "branch_correct": 5,
+      "joint_correct": 4
+    },
+    "ANALYSIS": {
+      "total": 6,
+      "label_correct": 5,
+      "branch_correct": 2,
+      "joint_correct": 2
+    },
+    "NEWS": {
+      "total": 6,
+      "label_correct": 6,
+      "branch_correct": 2,
+      "joint_correct": 2
+    },
+    "REPORT_CONTENT": {
+      "total": 6,
+      "label_correct": 5,
+      "branch_correct": 5,
+      "joint_correct": 4
+    },
+    "PERSON_ROLE": {
+      "total": 6,
+      "label_correct": 6,
+      "branch_correct": 5,
+      "joint_correct": 5
+    },
+    "ENTITY_RELATION": {
+      "total": 6,
+      "label_correct": 6,
+      "branch_correct": 3,
+      "joint_correct": 3
+    },
+    "COMPANY_OVERVIEW": {
+      "total": 4,
+      "label_correct": 4,
+      "branch_correct": 3,
+      "joint_correct": 3
+    },
+    "CONVERSATION": {
+      "total": 6,
+      "label_correct": 6,
+      "branch_correct": 4,
+      "joint_correct": 4
+    },
+    "OUT_OF_SCOPE": {
+      "total": 4,
+      "label_correct": 4,
+      "branch_correct": 4,
+      "joint_correct": 4
+    },
+    "MIXED": {
+      "total": 4,
+      "label_correct": 3,
+      "branch_correct": 1,
+      "joint_correct": 0
+    }
+  },
+  "confusion": [
+    {
+      "expected": "ANALYSIS",
+      "actual": "ANALYSIS",
+      "count": 5
+    },
+    {
+      "expected": "ANALYSIS",
+      "actual": "NUMERIC",
+      "count": 1
+    },
+    {
+      "expected": "COMPANY_OVERVIEW",
+      "actual": "COMPANY_OVERVIEW",
+      "count": 4
+    },
+    {
+      "expected": "CONVERSATION",
+      "actual": "CONVERSATION",
+      "count": 6
+    },
+    {
+      "expected": "ENTITY_RELATION",
+      "actual": "ENTITY_RELATION",
+      "count": 6
+    },
+    {
+      "expected": "MIXED",
+      "actual": "MIXED",
+      "count": 3
+    },
+    {
+      "expected": "MIXED",
+      "actual": "NUMERIC",
+      "count": 1
+    },
+    {
+      "expected": "NEWS",
+      "actual": "NEWS",
+      "count": 6
+    },
+    {
+      "expected": "NUMERIC",
+      "actual": "NEWS",
+      "count": 1
+    },
+    {
+      "expected": "NUMERIC",
+      "actual": "NUMERIC",
+      "count": 5
+    },
+    {
+      "expected": "OUT_OF_SCOPE",
+      "actual": "OUT_OF_SCOPE",
+      "count": 4
+    },
+    {
+      "expected": "PERSON_ROLE",
+      "actual": "PERSON_ROLE",
+      "count": 6
+    },
+    {
+      "expected": "PRICE",
+      "actual": "PRICE",
+      "count": 6
+    },
+    {
+      "expected": "REPORT_CONTENT",
+      "actual": "NUMERIC",
+      "count": 1
+    },
+    {
+      "expected": "REPORT_CONTENT",
+      "actual": "REPORT_CONTENT",
+      "count": 5
+    }
+  ],
+  "planner": {
+    "correct": 41,
+    "observed_eligible": 52,
+    "accuracy": 0.7884615384615384,
+    "not_observed_ids": [
+      "W132-002",
+      "W132-004"
+    ],
+    "mismatches": [
+      {
+        "id": "W132-003",
+        "expected": "VECTOR",
+        "actual": "BOTH"
+      },
+      {
+        "id": "W132-012",
+        "expected": "CLARIFY",
+        "actual": "VECTOR"
+      },
+      {
+        "id": "W132-020",
+        "expected": "VECTOR",
+        "actual": "GRAPH"
+      },
+      {
+        "id": "W132-021",
+        "expected": "VECTOR",
+        "actual": "BOTH"
+      },
+      {
+        "id": "W132-025",
+        "expected": "VECTOR",
+        "actual": "GRAPH"
+      },
+      {
+        "id": "W132-040",
+        "expected": "GRAPH",
+        "actual": "BOTH"
+      },
+      {
+        "id": "W132-041",
+        "expected": "GRAPH",
+        "actual": "BOTH"
+      },
+      {
+        "id": "W132-044",
+        "expected": "VECTOR",
+        "actual": "BOTH"
+      },
+      {
+        "id": "W132-051",
+        "expected": "CLARIFY",
+        "actual": "VECTOR"
+      },
+      {
+        "id": "W132-058",
+        "expected": "BOTH",
+        "actual": "GRAPH"
+      },
+      {
+        "id": "W132-060",
+        "expected": "BOTH",
+        "actual": "GRAPH"
+      }
+    ],
+    "limitation": "Conditional on planner observed, not whole-set accuracy; specialized/early exits may skip it."
+  }
+}

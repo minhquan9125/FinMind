@@ -1,0 +1,445 @@
+{
+  "sources": [
+    {
+      "path": "backend\\tests\\fixtures\\market_activity.json",
+      "sha256": "87f15027ac0959955a4e44d8e2110a2f8d8d469f9f30a476a0b315807bb63c33",
+      "questions": 0
+    },
+    {
+      "path": "backend\\tests\\fixtures\\router_acceptance_v2.json",
+      "sha256": "f69a2f8823aad52ddd1699e7b243491f424c52e8b27ecb941d265ee9765c52b9",
+      "questions": 104
+    },
+    {
+      "path": "backend\\tests\\fixtures\\router_language_holdout.json",
+      "sha256": "adb0c636b1be25381ef3181030656260f0f2bb49dfbcfde1ee891614e4a69034",
+      "questions": 24
+    },
+    {
+      "path": "backend\\tests\\fixtures\\vietstock_fpt_2025_statements.json",
+      "sha256": "2abc9e67839ef0dcbd45896849140be2a34de577711197482c66c29fef20a81b",
+      "questions": 0
+    },
+    {
+      "path": "backend\\tests\\fixtures\\wbs03_db_ctg_chunk.json",
+      "sha256": "cc5f91d62e1ae46c37be395298c3f87583e6069e07d75dfe5f8fb18d90d42c4b",
+      "questions": 1
+    },
+    {
+      "path": "backend\\tests\\fixtures\\wbs08_graph_contract.json",
+      "sha256": "32b976f80ff85709e6774876ebd515e98fe658529106f8fbb08e66b2244e5772",
+      "questions": 1
+    },
+    {
+      "path": "data\\router\\v3\\router_annotations.json",
+      "sha256": "2f4d137ac0dd0ea01c182b83dee8c80f3d61872ed0aeedaa1300b8c35f23b8af",
+      "questions": 62
+    },
+    {
+      "path": "data\\router\\v3\\router_challenge_set.json",
+      "sha256": "48af335d7ab5b9928a00e4347ff0ef7d1e32bc4897c22c093340b0ffe7498aba",
+      "questions": 12
+    },
+    {
+      "path": "data\\router\\v3\\router_dataset.csv",
+      "sha256": "c6690b5cdae075f9c7a61f0e4b81ca0685e5ea9ccb3a8e857a95c4be9df5749f",
+      "questions": 200
+    },
+    {
+      "path": "data\\router\\v3\\router_splits.json",
+      "sha256": "51089ed0621d1be373b40bd6f0fa46284b361bc7dd65735cd09a0a103f7b6131",
+      "questions": 0
+    },
+    {
+      "path": "data\\router\\v3\\router_training_extension.csv",
+      "sha256": "ef48ef05797e6139dfa486a1dc6ddd9ae0dc4497724cb27515f637cf00a7a586",
+      "questions": 40
+    },
+    {
+      "path": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "sha256": "bcc551f5189bf7f51aea9039336f6c820c10f418bb7ad3d7dc3daa8fddae8d82",
+      "questions": 56
+    },
+    {
+      "path": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "sha256": "b802418cfc57f2aadeebe5dd89165db674790af8e0556a34c512ddc784dd70e2",
+      "questions": 110
+    },
+    {
+      "path": "docs\\sprint5\\intent-v2\\integration-probes.jsonl",
+      "sha256": "0b76d0f9350e7a5442337f0f17a32ef11a91c5abd3fd9e93169f3dc8f38bc6f3",
+      "questions": 5
+    },
+    {
+      "path": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "sha256": "4957b574e9a5b870297d847f78f9509478bd244dcb3d5989affcae995149c4f9",
+      "questions": 470
+    }
+  ],
+  "known_questions": 1085,
+  "exact_duplicates": [],
+  "similarity_method": "Normalized character SequenceMatcher; descriptive only, not semantic independence proof",
+  "nearest_questions": [
+    {
+      "id": "W132-001",
+      "character_similarity": 0.5143,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "ngay bo nhiem tong giam doc ree hien tai la ngay nao"
+    },
+    {
+      "id": "W132-002",
+      "character_similarity": 0.5909,
+      "nearest_source": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "nearest_normalized_question": "gia dc ssi ngay 15 09 2025 la bn dong cp"
+    },
+    {
+      "id": "W132-003",
+      "character_similarity": 0.5714,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "thong bao bo nhiem tgd fpt co hieu luc tu ngay nao"
+    },
+    {
+      "id": "W132-004",
+      "character_similarity": 0.6119,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "so sanh gia dong cua vcb giua ngay 01 07 va 02 07 2025 bang so lieu"
+    },
+    {
+      "id": "W132-005",
+      "character_similarity": 0.5405,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "gia dong cua vnm ngay 15 05 2025 la bao nhieu"
+    },
+    {
+      "id": "W132-006",
+      "character_similarity": 0.5714,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "tra gia dong cua hpg hom qua va cho biet doanh thu hpg nam 2025"
+    },
+    {
+      "id": "W132-007",
+      "character_similarity": 0.6422,
+      "nearest_source": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "nearest_normalized_question": "tong no phai tra cuoi nam 2023 la bao nhieu"
+    },
+    {
+      "id": "W132-008",
+      "character_similarity": 0.7445,
+      "nearest_source": "data\\router\\v3\\router_dataset.csv",
+      "nearest_normalized_question": "doanh thu thuan hop nhat fpt cho ca nam 2024 don vi ty dong la bao nhieu"
+    },
+    {
+      "id": "W132-009",
+      "character_similarity": 0.6173,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "gia dong cua hpg ngay 15 03 2024 la bao nhieu"
+    },
+    {
+      "id": "W132-010",
+      "character_similarity": 0.6292,
+      "nearest_source": "docs\\sprint5\\intent-v2\\integration-probes.jsonl",
+      "nearest_normalized_question": "so sanh doanh thu fpt va cmg"
+    },
+    {
+      "id": "W132-011",
+      "character_similarity": 0.5067,
+      "nearest_source": "data\\router\\v3\\router_training_extension.csv",
+      "nearest_normalized_question": "doi thu cung nganh cua fpt co bien loi nhuan cao hon khong"
+    },
+    {
+      "id": "W132-012",
+      "character_similarity": 0.5567,
+      "nearest_source": "data\\router\\v3\\router_training_extension.csv",
+      "nearest_normalized_question": "doanh thu fpt moi nhat la bao nhieu"
+    },
+    {
+      "id": "W132-013",
+      "character_similarity": 0.5874,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "nhan dinh suc khoe tai chinh fpt dua tren no va dong tien ba nam gan day"
+    },
+    {
+      "id": "W132-014",
+      "character_similarity": 0.56,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "theo ban tuan sau co phieu hpg se len muc gia nao"
+    },
+    {
+      "id": "W132-015",
+      "character_similarity": 0.5253,
+      "nearest_source": "backend\\tests\\fixtures\\router_language_holdout.json",
+      "nearest_normalized_question": "cong ty con hoa phat co doanh thu the nao"
+    },
+    {
+      "id": "W132-016",
+      "character_similarity": 0.6392,
+      "nearest_source": "backend\\tests\\fixtures\\router_acceptance_v2.json",
+      "nearest_normalized_question": "giai thich gia co phieu ssi tang manh"
+    },
+    {
+      "id": "W132-017",
+      "character_similarity": 0.5333,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "giai thich su khac biet giua loi nhuan ke toan va dong tien kinh doanh"
+    },
+    {
+      "id": "W132-018",
+      "character_similarity": 0.5622,
+      "nearest_source": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "nearest_normalized_question": "nhan dinh chieu huong gia va dong tien kinh doanh cua ree qua 2021 2023 hai tin hieu co trai chieu khong"
+    },
+    {
+      "id": "W132-019",
+      "character_similarity": 0.6452,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "liet ke cac bai bao ve hoat dong kinh doanh vnm trong tuan qua"
+    },
+    {
+      "id": "W132-020",
+      "character_similarity": 0.6772,
+      "nearest_source": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "nearest_normalized_question": "tim bai tin ve viec bo nhiem tgd dgc trong thang 09 2025"
+    },
+    {
+      "id": "W132-021",
+      "character_similarity": 0.6869,
+      "nearest_source": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "nearest_normalized_question": "tim bai tin mien nhiem trong thang 06 2025"
+    },
+    {
+      "id": "W132-022",
+      "character_similarity": 0.5476,
+      "nearest_source": "data\\router\\v3\\router_annotations.json",
+      "nearest_normalized_question": "co nen mua bid hom nay khong"
+    },
+    {
+      "id": "W132-023",
+      "character_similarity": 0.5185,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "doc noi dung chinh sach chat luong dich vu trong bctn fpt"
+    },
+    {
+      "id": "W132-024",
+      "character_similarity": 0.5385,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "tong hop tin thi truong chung khoan trong ngay hom nay"
+    },
+    {
+      "id": "W132-025",
+      "character_similarity": 0.6306,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "tim bao cao thuong nien nam 2025 cua vnm"
+    },
+    {
+      "id": "W132-026",
+      "character_similarity": 0.6622,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "giai thich chinh sach ghi nhan doanh thu cua mwg theo bctc 2023"
+    },
+    {
+      "id": "W132-027",
+      "character_similarity": 0.5674,
+      "nearest_source": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "nearest_normalized_question": "thuyet minh bctc vnm 2023 mo ta phuong phap khau hao tai san nhu the nao"
+    },
+    {
+      "id": "W132-028",
+      "character_similarity": 0.5385,
+      "nearest_source": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "nearest_normalized_question": "doc va tom luoc phan cam ket phat trien ben vung trong bctn hpg 2023"
+    },
+    {
+      "id": "W132-029",
+      "character_similarity": 0.506,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "bien loi nhuan pnj co ben vung qua cac ky khong giai thich co so"
+    },
+    {
+      "id": "W132-030",
+      "character_similarity": 0.4921,
+      "nearest_source": "data\\router\\v3\\router_training_extension.csv",
+      "nearest_normalized_question": "co dong lon cua msn co dong thai gom rong hay xa rong"
+    },
+    {
+      "id": "W132-031",
+      "character_similarity": 0.56,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "ai dang giu chuc tong giam doc tai vnm"
+    },
+    {
+      "id": "W132-032",
+      "character_similarity": 0.5424,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "nguoi dung dau ree la ai tai ngay 31 12 2023"
+    },
+    {
+      "id": "W132-033",
+      "character_similarity": 0.6984,
+      "nearest_source": "backend\\tests\\fixtures\\router_acceptance_v2.json",
+      "nearest_normalized_question": "ai dang giu ghe ceo cua fpt"
+    },
+    {
+      "id": "W132-034",
+      "character_similarity": 0.5972,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "liet ke thanh vien hoi dong quan tri vnm nhiem ky 2022 2027"
+    },
+    {
+      "id": "W132-035",
+      "character_similarity": 0.8545,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "ai duoc bo nhiem lam tong giam doc dgc trong thang 9 2025"
+    },
+    {
+      "id": "W132-036",
+      "character_similarity": 0.5505,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "ong an giu chuc vu gi tai bid trong nam 2024"
+    },
+    {
+      "id": "W132-037",
+      "character_similarity": 0.5841,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "fpt co nhung cong ty con truc tiep nao cuoi nam 2024"
+    },
+    {
+      "id": "W132-038",
+      "character_similarity": 0.5793,
+      "nearest_source": "data\\router\\v3\\router_dataset.csv",
+      "nearest_normalized_question": "mbb nam bao nhieu phan tram tai cac cong ty con truc tiep vao 31 12 2025"
+    },
+    {
+      "id": "W132-039",
+      "character_similarity": 0.819,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "nhung ca nhan nao la co dong cua tcb cuoi nam 2022"
+    },
+    {
+      "id": "W132-040",
+      "character_similarity": 0.5421,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "cong ty me cua doanh nghiep binh minh la don vi nao"
+    },
+    {
+      "id": "W132-041",
+      "character_similarity": 0.7176,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "pnj co quan he hop tac voi nhung doi tac nao duoc cong bo"
+    },
+    {
+      "id": "W132-042",
+      "character_similarity": 0.5224,
+      "nearest_source": "data\\router\\v3\\router_dataset.csv",
+      "nearest_normalized_question": "cho ten nguoi giu chuc chu tich hdqt mbb ngay 30 06 2024 chua can doanh thu"
+    },
+    {
+      "id": "W132-043",
+      "character_similarity": 0.729,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "gioi thieu ngan gon ve hoat dong kinh doanh cua ree"
+    },
+    {
+      "id": "W132-044",
+      "character_similarity": 0.7573,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "pnj cung cap nhung nhom san pham va dich vu nao"
+    },
+    {
+      "id": "W132-045",
+      "character_similarity": 0.5882,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "cho toi phan tong quan ve cong ty ree"
+    },
+    {
+      "id": "W132-046",
+      "character_similarity": 0.5827,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "gioi thieu lich su doi ten cua doanh nghiep ssi"
+    },
+    {
+      "id": "W132-047",
+      "character_similarity": 0.6374,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "bat dau mot phien nghien cuu moi"
+    },
+    {
+      "id": "W132-048",
+      "character_similarity": 0.5567,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "quay lai doanh nghiep chung ta vua noi toi"
+    },
+    {
+      "id": "W132-049",
+      "character_similarity": 0.6102,
+      "nearest_source": "data\\router\\v3\\router_annotations.json",
+      "nearest_normalized_question": "cong ty luc nay thi sao"
+    },
+    {
+      "id": "W132-050",
+      "character_similarity": 0.8,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "nguon cua cau tra loi truoc nam o dau"
+    },
+    {
+      "id": "W132-051",
+      "character_similarity": 0.6,
+      "nearest_source": "docs\\sprint5\\intent-dataset-v1\\test.jsonl",
+      "nearest_normalized_question": "con ben ay thi sao nhi"
+    },
+    {
+      "id": "W132-052",
+      "character_similarity": 0.5769,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "tom tat nhung gi chung ta da trao doi nay gio"
+    },
+    {
+      "id": "W132-053",
+      "character_similarity": 0.5426,
+      "nearest_source": "data\\router\\v3\\router_training_extension.csv",
+      "nearest_normalized_question": "nguyen thanh nam co lien quan tin don nao khien fpt giam khong"
+    },
+    {
+      "id": "W132-054",
+      "character_similarity": 0.7917,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "du bao chinh xac gia mwg vao cuoi thang toi"
+    },
+    {
+      "id": "W132-055",
+      "character_similarity": 0.5783,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "viet giup toi cong thuc nau pho bo"
+    },
+    {
+      "id": "W132-056",
+      "character_similarity": 0.5077,
+      "nearest_source": "docs\\sprint5\\intent-v2\\development.jsonl",
+      "nearest_normalized_question": "dua ra mot giao dich co phieu bao dam sinh loi cho toi tuan nay"
+    },
+    {
+      "id": "W132-057",
+      "character_similarity": 0.5674,
+      "nearest_source": "data\\router\\v3\\router_dataset.csv",
+      "nearest_normalized_question": "chu tich hdqt mbb tai 30 06 2024 la ai khong hoi loi nhuan"
+    },
+    {
+      "id": "W132-058",
+      "character_similarity": 0.5385,
+      "nearest_source": "data\\router\\v3\\router_annotations.json",
+      "nearest_normalized_question": "tong tai san rieng ctg nam 2024"
+    },
+    {
+      "id": "W132-059",
+      "character_similarity": 0.5315,
+      "nearest_source": "docs\\sprint5\\intent-v2\\library.jsonl",
+      "nearest_normalized_question": "cho biet doanh thu fpt nam 2024 va khuyen toi co nen mua fpt hom nay"
+    },
+    {
+      "id": "W132-060",
+      "character_similarity": 0.5303,
+      "nearest_source": "data\\router\\v3\\router_dataset.csv",
+      "nearest_normalized_question": "tong tai san bid theo bao cao rieng nam 2024 la bao nhieu"
+    }
+  ],
+  "blind_acceptance": false
+}

@@ -15,13 +15,15 @@ export function modeLabel(snapshot) {
 
 export function citationView(result) {
   if (result?.execution_mode !== 'LIVE') return [];
-  if (result.scope?.source_type === 'PRICE' || result.presentation?.sources === 'HIDDEN') return [];
+  if ((!result.evidence_packs && result.scope?.source_type === 'PRICE') || result.presentation?.sources === 'HIDDEN') return [];
   const bound = new Set(result.answering?.status === 'DRAFT_READY'
     ? (result.answering.citations || []).map(c => c.evidence_id) : []);
   const numbers = new Map(result.answering?.status === 'DRAFT_READY'
     ? (result.answering.citations || []).filter(c => Number.isInteger(c.citation_number) && c.citation_number > 0)
       .map(c => [c.evidence_id, c.citation_number]) : []);
-  return (result.evidence_pack?.items || []).filter(item => item.source_verified === true && item.source_type !== 'PRICE'
+  const items = result.evidence_packs ? result.evidence_packs.flatMap(pack => pack.items || []) : result.evidence_pack?.items || [];
+  const unique = [...new Map(items.map(item => [item.evidence_id, item])).values()];
+  return unique.filter(item => item.source_verified === true && (item.source_type !== 'PRICE' || result.evidence_packs)
     && (result.presentation?.sources !== 'USED_LINKS' || bound.has(item.evidence_id))).map(item => ({
     id: item.evidence_id,
     used: bound.has(item.evidence_id),
