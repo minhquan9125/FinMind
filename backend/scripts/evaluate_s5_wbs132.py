@@ -449,6 +449,16 @@ def render(run, output):
     return stats
 
 
+def load_replay(path):
+    run = json.loads(path.read_text(encoding='utf-8'))
+    if run['dataset_sha256'] != sha(DATASET):
+        raise ValueError('DATASET_CHANGED_SINCE_RUN')
+    validate_cases(run['cases'])
+    if run['cases'] != json.loads(DATASET.read_text(encoding='utf-8'))['cases']:
+        raise ValueError('REPLAY_CASES_CHANGED')
+    return run
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, required=True)
@@ -461,10 +471,7 @@ def main():
     if not 1 <= args.max_generation_calls <= 60:
         raise ValueError('Evaluation call limit must be 1..60')
     if args.replay:
-        run = json.loads(args.replay.read_text(encoding='utf-8'))
-        if run['dataset_sha256'] != sha(DATASET):
-            raise ValueError('DATASET_CHANGED_SINCE_RUN')
-        validate_cases(run['cases'])
+        run = load_replay(args.replay)
         run['analysis_replayed_from_sha256'] = sha(args.replay)
         run['analysis_runner_sha256'] = sha(Path(__file__))
         args.out.mkdir(parents=True)

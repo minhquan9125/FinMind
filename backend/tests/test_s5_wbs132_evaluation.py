@@ -109,3 +109,29 @@ def test_rule_resolved_label_does_not_inflate_raw_model_accuracy(evaluation):
     row = observed(classification={'base_ranking':{'groups':[{'intent_label':'NEWS'}]}})
     metrics = evaluation.summarize([case()], [row])
     assert metrics['label_correct'] == 1 and metrics['raw_model_label_correct'] == 0
+
+
+def test_replay_rejects_modified_gold_inside_a_saved_run(evaluation, tmp_path, monkeypatch):
+    import json
+    cases = [case()]
+    dataset = tmp_path / 'dataset.json'
+    dataset.write_text(json.dumps({'cases': cases}), encoding='utf-8')
+    monkeypatch.setattr(evaluation, 'DATASET', dataset)
+    changed = copy.deepcopy(cases)
+    changed[0]['label'] = 'NEWS'
+    replay = tmp_path / 'run.json'
+    replay.write_text(json.dumps({'dataset_sha256': evaluation.sha(dataset), 'cases': changed}), encoding='utf-8')
+    with pytest.raises(ValueError, match='REPLAY_CASES_CHANGED'):
+        evaluation.load_replay(replay)
+
+
+def test_replay_keeps_the_frozen_gold_and_recorded_measurements(evaluation, tmp_path, monkeypatch):
+    import json
+    dataset = tmp_path / 'dataset.json'
+    cases = [case()]
+    dataset.write_text(json.dumps({'cases': cases}), encoding='utf-8')
+    monkeypatch.setattr(evaluation, 'DATASET', dataset)
+    saved = {'dataset_sha256': evaluation.sha(dataset), 'cases': cases, 'results': [observed()]}
+    replay = tmp_path / 'run.json'
+    replay.write_text(json.dumps(saved), encoding='utf-8')
+    assert evaluation.load_replay(replay) == saved
