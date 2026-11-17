@@ -38,3 +38,11 @@ backend/tests/test_s5_wbs093_summary.py text eol=lf
 backend/tests/test_s5_wbs09_postgres.py text eol=lf
 docs/sprint5/S5-WBS09.2-09.3-handoff.md text eol=lf
 outputs/s5_wbs09_20261117/** text eol=lf
+
+# Portable token/conversation reproduction scripts and review evidence.
+backend/scripts/reproduce_s5_wbs012*.py text eol=lf
+frontend/scripts/reproduce-s5-wbs012*.mjs text eol=lf
+docs/sprint5/S5-WBS01.2-reproduction.md text eol=lf
+tasks/s5-wbs012/** text eol=lf
+outputs/s5_wbs012_20261116/** text eol=lf
+outputs/s5_wbs012_20261117/** text eol=lf

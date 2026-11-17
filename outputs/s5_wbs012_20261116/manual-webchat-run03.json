@@ -1,0 +1,28 @@
+{
+  "case_id": "S5-WBS01.2-CONTINUED-SEND-LIVE-SCREENSHOT",
+  "evidence_source": "USER_ATTACHED_SCREENSHOT_IN_CHAT",
+  "original_image_location": "USER_CONVERSATION_ATTACHMENT_NOT_COPIED_TO_REPOSITORY",
+  "preceding_instruction": "Keep the same page for 2 minutes, then ask Con BID thi sao without reloading.",
+  "actual_wait_duration_measured": false,
+  "runtime_token_ttl_verified_at_this_attempt": false,
+  "question_visible": "C?n BID th? sao",
+  "answer_visible": "L?i nhu?n sau thu? n?m 2025 c?a Ng?n h?ng TMCP ??u t? v? Ph?t tri?n Vi?t Nam (BID) l? 30.430.130,00 tri?u VND. [1]",
+  "current_scope_visible": {
+    "company": "BID",
+    "year": "2025",
+    "metric": "l?i nhu?n sau thu?",
+    "source": "BCTC"
+  },
+  "citation_label_visible": "[1] ?? tr?ch d?n ? B?o c?o t?i ch?nh BID n?m 2025 (INCOME_STATEMENT)",
+  "observations": {
+    "continued_send_answer_visible": true,
+    "login_prompt_visible": false,
+    "scope_preserved": true,
+    "expired_access_verified": false,
+    "refresh_or_401_observed": false,
+    "draft_preservation": "NOT_ESTABLISHED",
+    "full_history_or_duplicate_db_writes": "NOT_ESTABLISHED",
+    "financial_figures_validated": false
+  },
+  "conclusion": "CONTINUED_SEND_SUCCESS_ON_UI_TOKEN_RECOVERY_NOT_PROVEN"
+}

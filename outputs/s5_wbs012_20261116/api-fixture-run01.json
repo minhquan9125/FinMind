@@ -1,0 +1,124 @@
+{
+  "mode": "ASGI_FIXTURE_REAL_ENDPOINTS_REAL_EXPIRED_JWT_NOT_LIVE_DB",
+  "conversation": {
+    "case_id": "S5-WBS01.2-CONTEXT",
+    "turns": [
+      {
+        "question": "Lợi nhuận sau thuế của BID năm 2025 là bao nhiêu?",
+        "http_status": 200,
+        "revision": 1,
+        "context": "Đang hỏi: Công ty: BID, Chỉ tiêu: Lợi nhuận sau thuế, Kỳ: 2025.",
+        "answer": "Chưa tìm thấy bằng chứng phù hợp trong phạm vi này.\nĐã ghi nhận: Công ty: BID | Chỉ tiêu: Lợi nhuận sau thuế | Kỳ kết thúc: 2025-12-31",
+        "result": {
+          "request_id": "12c8884b-7c8f-417e-b3da-d420076831d5",
+          "query_id": "fixture-query:12c8884b-7c8f-417e-b3da-d420076831d5",
+          "execution_mode": "FIXTURE",
+          "b1_decision": "SEARCH",
+          "status": "NO_DATA",
+          "reason_code": "NO_DATA",
+          "message": "Chưa tìm thấy bằng chứng phù hợp trong phạm vi này.",
+          "scope": {
+            "companies": [
+              "BID"
+            ],
+            "periods": [
+              "2025-12-31"
+            ],
+            "metric_code": "PROFIT_AFTER_TAX",
+            "topic": null,
+            "measure_basis": "FULL_YEAR",
+            "reporting_entity": "UNKNOWN",
+            "source_type": "BCTC"
+          },
+          "clarification": null,
+          "evidence_pack": null,
+          "errors": []
+        }
+      },
+      {
+        "question": "Còn VCB thì sao?",
+        "http_status": 200,
+        "revision": 2,
+        "context": "Đang hỏi: Công ty: VCB, Chỉ tiêu: Lợi nhuận sau thuế, Kỳ: 2025.",
+        "answer": "Chưa tìm thấy bằng chứng phù hợp trong phạm vi này.\nĐã ghi nhận: Công ty: VCB | Chỉ tiêu: Lợi nhuận sau thuế | Kỳ kết thúc: 2025-12-31",
+        "result": {
+          "request_id": "a99761a5-271b-45b4-8e4c-2017a8c9e732",
+          "query_id": "fixture-query:a99761a5-271b-45b4-8e4c-2017a8c9e732",
+          "execution_mode": "FIXTURE",
+          "b1_decision": "SEARCH",
+          "status": "NO_DATA",
+          "reason_code": "NO_DATA",
+          "message": "Chưa tìm thấy bằng chứng phù hợp trong phạm vi này.",
+          "scope": {
+            "companies": [
+              "VCB"
+            ],
+            "periods": [
+              "2025-12-31"
+            ],
+            "metric_code": "PROFIT_AFTER_TAX",
+            "topic": null,
+            "measure_basis": "FULL_YEAR",
+            "reporting_entity": "UNKNOWN",
+            "source_type": "BCTC"
+          },
+          "clarification": null,
+          "evidence_pack": null,
+          "errors": []
+        }
+      },
+      {
+        "question": "Tổng hợp những gì nãy giờ",
+        "http_status": 200,
+        "revision": 3,
+        "context": "Đang hỏi: Công ty: VCB, Chỉ tiêu: Lợi nhuận sau thuế, Kỳ: 2025.",
+        "answer": "Mình chưa hiểu yêu cầu này. Bạn có thể bổ sung mã, kỳ, chỉ tiêu cho câu đang hỏi, hoặc gõ /moi để bắt đầu lại.",
+        "result": {
+          "request_id": "65b7518e-3a1a-4c27-8adf-93e379ea5624",
+          "query_id": null,
+          "execution_mode": "FIXTURE",
+          "b1_decision": "ASK_CLARIFICATION",
+          "status": "ASK_CLARIFICATION",
+          "reason_code": "UNRECOGNIZED_INTENT",
+          "message": "Mình chưa hiểu yêu cầu này. Bạn có thể bổ sung mã, kỳ, chỉ tiêu cho câu đang hỏi, hoặc gõ /moi để bắt đầu lại.",
+          "scope": {},
+          "clarification": "Mình chưa hiểu yêu cầu này. Bạn có thể bổ sung mã, kỳ, chỉ tiêu cho câu đang hỏi, hoặc gõ /moi để bắt đầu lại.",
+          "evidence_pack": null,
+          "errors": []
+        }
+      }
+    ],
+    "expected_followup": {
+      "companies": [
+        "VCB"
+      ],
+      "periods": [
+        "2025-12-31"
+      ],
+      "metric_code": "PROFIT_AFTER_TAX"
+    },
+    "followup_scope_matches": true,
+    "new_session_empty_without_prior_scope": true,
+    "summary_requires_human_review": true
+  },
+  "token": {
+    "case_id": "S5-WBS01.2-TOKEN-API",
+    "expired_access_status": 401,
+    "response": {
+      "detail": "Token không hợp lệ hoặc đã hết hạn."
+    },
+    "stored_snapshot_unchanged": true,
+    "refresh_behavior_tested": false,
+    "conclusion": "API correctly rejects expired access; client recovery measured separately"
+  },
+  "product_source_changed": false,
+  "credentials_or_personal_histories_exported": false,
+  "source_hashes": {
+    "backend/src/api/routers/research_chat.py": "b3cfb9fea5294e83974a75a70b4caf762abfe6a66d2c37d0dc715705db981891",
+    "backend/src/retrieval_orchestration/chat_logic.py": "749e895e54878cea00436c83763d2b53464069ce881f08f1d4b9244fd61d8059",
+    "backend/src/retrieval_orchestration/retrieval_flow/conversation.py": "7322a0f153df2dfb5913478cc17b2a3bec5fc861cad6924f624e0297068ffe8c",
+    "frontend/src/pages/research/chatApi.js": "8b136e7777b4281412e5f914f4bf3023ee2894dfc517180d03a59d9a2988f166",
+    "frontend/src/shared/api/authorization.js": "a489b7736e4c891fb42c957850b75480dd056ca3c6f09cbf029b561e9a6a6cf8",
+    "frontend/src/shared/context/AuthContext.jsx": "3075e1f455f18c78a5d1b7f5b1752adb4b6a1aad7850f37905c858ecb1af952d"
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "timestamp_utc": "2026-11-17T09:33:11.008932+00:00",
+  "mode": "REAL_LOCAL_HTTP_AUTH_AND_CHAT_POSTGRES_ROLLBACK_NOT_BROWSER",
+  "expiry_method": "Synthetic access issued already expired using random test-app signing secret",
+  "production_settings_changed": false,
+  "browser_ui_or_timer_tested": false,
+  "live_chat_postgres_store_tested": true,
+  "external_ai_called": false,
+  "credentials_exported": false,
+  "expectation": "recovery",
+  "chat_engine": "Real LiveResearchService scope parser; empty corpus; no model or source-quality claims",
+  "transaction_boundary": "Sequential HTTP requests in one outer rollback with savepoints; not isolation/concurrency acceptance",
+  "client": {
+    "scope": "ACTUAL_CLIENT_MODULES_REAL_LOCAL_HTTP_REAL_AUTH_AND_CHAT_DB_EMPTY_CORPUS_NOT_BROWSER",
+    "cases": [
+      {
+        "mode": "raw-chat",
+        "status": 200,
+        "trace": [
+          {
+            "endpoint": "send-message",
+            "status": 401
+          },
+          {
+            "endpoint": "refresh",
+            "status": 200
+          },
+          {
+            "endpoint": "send-message",
+            "status": 200
+          }
+        ],
+        "refresh_calls": 1,
+        "message_attempts": 2,
+        "revision_delta": 1,
+        "user_messages": 2,
+        "same_session_id": true,
+        "prior_history_unchanged": true,
+        "user_message_delta": 1,
+        "refresh_token_changed_in_memory": true,
+        "old_refresh_replay_status": 401,
+        "refreshed_access_accepted": true,
+        "followup_scope": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "PROFIT_AFTER_TAX"
+        }
+      },
+      {
+        "mode": "reactive",
+        "status": 200,
+        "trace": [
+          {
+            "endpoint": "send-message",
+            "status": 401
+          },
+          {
+            "endpoint": "refresh",
+            "status": 200
+          },
+          {
+            "endpoint": "send-message",
+            "status": 200
+          }
+        ],
+        "refresh_calls": 1,
+        "message_attempts": 2,
+        "revision_delta": 1,
+        "user_messages": 2,
+        "same_session_id": true,
+        "prior_history_unchanged": true,
+        "user_message_delta": 1,
+        "refresh_token_changed_in_memory": true,
+        "old_refresh_replay_status": 401,
+        "refreshed_access_accepted": true,
+        "followup_scope": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "PROFIT_AFTER_TAX"
+        }
+      },
+      {
+        "mode": "proactive",
+        "status": 200,
+        "trace": [
+          {
+            "endpoint": "refresh",
+            "status": 200
+          },
+          {
+            "endpoint": "send-message",
+            "status": 200
+          }
+        ],
+        "refresh_calls": 1,
+        "message_attempts": 1,
+        "revision_delta": 1,
+        "user_messages": 2,
+        "same_session_id": true,
+        "prior_history_unchanged": true,
+        "user_message_delta": 1,
+        "refresh_token_changed_in_memory": true,
+        "old_refresh_replay_status": 401,
+        "refreshed_access_accepted": true,
+        "followup_scope": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "2025"
+          ],
+          "metric_code": "PROFIT_AFTER_TAX"
+        }
+      }
+    ],
+    "raw_chat_bug_reproduced": false,
+    "chat_recovery_accepted": true,
+    "recovery_control_passed": true,
+    "browser_timer_or_ui_tested": false,
+    "credentials_exported": false
+  },
+  "auth_db": {
+    "raw_chat_refresh_still_valid": false,
+    "raw_chat_refresh_rotated": true,
+    "reactive_refresh_rotated": true,
+    "proactive_refresh_rotated": true,
+    "synthetic_sessions_in_transaction": 3
+  },
+  "chat_db": {
+    "conversations": 3,
+    "message_rows": 12,
+    "user_message_rows": 6,
+    "no_duplicate_writes": true
+  },
+  "status": "PASS_CHAT_RECOVERY_AND_CONTROLS",
+  "transaction_rolled_back": true,
+  "synthetic_user_absent_after_rollback": true,
+  "synthetic_chat_absent_after_rollback": true,
+  "source_sha256": {
+    "backend/src/api/routers/auth.py": "c9d77129785c5bfdff86924961a011a83488f17145936cc58ac9d97a61c45cbf",
+    "backend/src/auth/repository.py": "da9da0a303f86690d09b26674154d3da9c7a1ff86b6da3bb6b2fcc381d2f0025",
+    "backend/src/auth/service.py": "7d0b50b4d0f602bd81f6efab51236c7306606bc5216b6b52a39b5e61235c958e",
+    "frontend/src/pages/research/chatApi.js": "a038dd38a45c6ee77e1ab9861e4db447d7251eada791d5fb80e6fb19f2aefcde",
+    "frontend/src/shared/api/authorization.js": "a489b7736e4c891fb42c957850b75480dd056ca3c6f09cbf029b561e9a6a6cf8",
+    "frontend/src/shared/api/authSession.js": "1e5c27e6c0c3b597e5f23804261ba8f8b8046bf1c4f7b2396936f416f6f5f9d1"
+  }
+}
