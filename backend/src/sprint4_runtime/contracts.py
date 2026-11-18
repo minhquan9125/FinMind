@@ -10,11 +10,14 @@ from decimal import Decimal
 from pathlib import Path
 from jsonschema import Draft202012Validator, FormatChecker
 from ..graph_temporal import extended_validator,validate_temporal
+from .news_contract import VERSION as NEWS_VERSION, news_schema, is_news_locator, validate_news_chunk
 
 SCHEMA_VERSION = '2.1.0'
 SCHEMA = json.loads(Path(__file__).with_name('contract.schema.json').read_text('utf-8'))
 _validator = Draft202012Validator(SCHEMA, format_checker=FormatChecker())
 _month_validator = extended_validator(SCHEMA)
+_news_schema = news_schema(SCHEMA)
+_news_validator = Draft202012Validator(_news_schema, format_checker=FormatChecker())
 _chunk_validator = Draft202012Validator({'$ref': '#/$defs/chunk', '$defs': SCHEMA['$defs']}, format_checker=FormatChecker())
 _legacy_schema = json.loads(Path(__file__).with_name('contract.v1.schema.json').read_text('utf-8'))
 _legacy_validator = Draft202012Validator(_legacy_schema, format_checker=FormatChecker())
@@ -60,6 +63,8 @@ def validate_chunk(chunk):
         json.dumps(chunk, ensure_ascii=False, allow_nan=False).encode('utf-8')
     except (TypeError, ValueError) as error:
         raise ValueError('Non-JSON or nonfinite chunk') from error
+    if is_news_locator(chunk.get('locator')):
+        return validate_news_chunk(chunk, _news_schema)
     error = next(_chunk_validator.iter_errors(chunk), None)
     if error:
         raise ValueError('Chunk schema: ' + error.message[:180])
@@ -86,7 +91,8 @@ def validate_envelope(payload):
         json.dumps(payload, ensure_ascii=False, allow_nan=False).encode('utf-8')
     except (TypeError, ValueError) as error:
         raise ValueError('Non-JSON or nonfinite input') from error
-    validator = _month_validator if payload.get('schema_version') == '2.2.0' else _validator
+    validator = (_news_validator if payload.get('schema_version') == NEWS_VERSION else
+                 _month_validator if payload.get('schema_version') == '2.2.0' else _validator)
     error = next(validator.iter_errors(payload), None)
     if error:
         raise ValueError('Schema: ' + error.message[:180])
@@ -108,7 +114,8 @@ def validate_envelope(payload):
         validate_chunk(c)
         d = documents.get(c['document_id'])
         _require(d is not None and c['document_version'] == d['document_version'], 'Chunk document/version')
-        _require((c['locator'].get('kind') == 'db_text_span') == (d.get('source_kind') == 'db'), 'Chunk/document source profile')
+        db_source = c['locator'].get('kind') == 'db_text_span' or is_news_locator(c['locator'])
+        _require(db_source == (d.get('source_kind') == 'db'), 'Chunk/document source profile')
     for e in entities.values():
         _require(e['resolution_status'] != 'resolved' or _nonblank(e['identity_key']), 'Resolved identity key required')
         if e['entity_type'] == 'Event':
@@ -135,7 +142,7 @@ def validate_envelope(payload):
         if stamp is not None:
             _require(re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})', stamp), 'Review timestamp with timezone required')
             datetime.fromisoformat(stamp)
-        validate_temporal(t, allow_month=payload['schema_version']=='2.2.0')
+        validate_temporal(t, allow_month=payload['schema_version'] in ('2.2.0', NEWS_VERSION))
         if r['relation_type'] == 'COOPERATES_WITH':
             _require(r['subject_id'] < r['object_id'], 'Cooperation uses sorted Company IDs; do not store reverse edge')
             scope = a.get('cooperation_scope')

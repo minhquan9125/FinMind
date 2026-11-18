@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import AdminLayout from "./AdminLayout.jsx";
+import NewsGraphPanel from "./NewsGraphPanel.jsx";
 import { Button, EmptyState, StatusBadge, Modal } from "../../shared/ui";
 import { authorizedHeaders } from "../../shared/api/authorization.js";
 import { retainApprovedSelection, toggleArticleSelection } from "./ingestionSelection.js";
@@ -239,5 +240,6 @@ export default function AdminIngestionPage() {
       {searchResult.items.length ? searchResult.items.map(hit => <article key={hit.chunk_id} className="space-y-2 border-t pt-3"><h3 className="font-medium">{hit.title}</h3><pre className="whitespace-pre-wrap font-sans text-sm">{hit.text}</pre>
         {sourceLink(hit.source_url) && <a href={sourceLink(hit.source_url)} target="_blank" rel="noreferrer" className="text-sm text-blue-700 underline">Bài gốc</a>}<p className="break-all font-mono text-xs">{hit.content_hash}</p></article>) : <p>Không có kết quả phù hợp.</p>}
     </section>}
+    <NewsGraphPanel />
   </AdminLayout>;
 }

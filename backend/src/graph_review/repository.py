@@ -125,7 +125,7 @@ class PostgresReviewStore:
                                    (" FOR UPDATE" if lock else ""), uuid.UUID(str(ident)))
         return self.decode(row)
 
-    async def _quarantine(self, row, actor, extraction_id=None, *, update=False):
+    async def _quarantine(self, row, actor, extraction_id=None, *, update=False, allow_missing=False):
         result = row["result"]
         if update:
             # Reviewer has UPDATE permission only. An INSERT ... ON CONFLICT
@@ -135,6 +135,8 @@ class PostgresReviewStore:
                 reasons=$5::jsonb,evaluation_payload=$6::jsonb WHERE review_id=$1''',
                 uuid.UUID(row['review_id']),next(iter(result['reasons']),None),result['status'],actor.user_id,
                 json.dumps(result['reasons']),json.dumps(result,ensure_ascii=False))
+            if changed=='UPDATE 0' and allow_missing and result['status']=='APPROVED':
+                return  # Directly approved intake never created a quarantine row.
             if changed!='UPDATE 1':raise ReviewConflict('Expected one existing quarantine review record')
             return
         sql = """INSERT INTO public.quarantine_records
@@ -190,7 +192,8 @@ class PostgresReviewStore:
                 VALUES($1,$2,$3,$4,$5,$6::jsonb)""", uuid.UUID(str(ident)), actor.user_id,
                 decision, note, evidence_confirmed, fresh.model_dump_json())
             updated = await self.get(ident)
-            await self._quarantine(updated, actor, update=True)
+            await self._quarantine(updated, actor, update=True,
+                allow_missing=row['result']['status']=='APPROVED' and result.status=='APPROVED')
             return updated
 
     async def approved(self, graph_id):
