@@ -196,6 +196,45 @@ test('expired refresh requires login and resending saves the message once', asyn
   assert.equal(saved, 1);
 });
 
+test('concurrent 401 requests with expired refresh do not duplicate a resent message', async () => {
+  resetEnv();
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({
+    user: { id: 'user-1', roles: ['RESEARCHER'] }, token: 'old-access',
+    refreshToken: 'expired-refresh', expiresAtTimestamp: Date.now() + 60_000,
+  }));
+  globalThis.localStorage = storage;
+  let refreshCalls = 0, messageAttempts = 0, saved = 0;
+  globalThis.fetch = async (url, opts) => {
+    if (url === '/api/v1/auth/refresh') {
+      refreshCalls++;
+      return { ok: false, status: 401, json: async () => ({ detail: 'Refresh token expired' }) };
+    }
+    if (url.endsWith('/messages')) {
+      messageAttempts++;
+      if (opts.headers.get('Authorization') === 'Bearer new-login') {
+        saved++;
+        return { ok: true, status: 200, json: async () => ({ revision: 1 }) };
+      }
+    }
+    return { ok: false, status: 401, json: async () => ({ detail: 'Unauthorized' }) };
+  };
+  const outcomes = await Promise.allSettled([
+    chatApi.sendMessage('s1', 'Hello', 0), chatApi.listSessions(), chatApi.getSession('s1'),
+  ]);
+  assert.ok(outcomes.every(result => result.status === 'rejected' &&
+    result.reason.status === 401 && /đăng nhập lại/.test(result.reason.message)));
+  assert.equal(refreshCalls, 1);
+  assert.equal(messageAttempts, 1);
+  assert.equal(saved, 0);
+  assert.equal(storage.getItem('finmind_auth_session'), null);
+
+  storage.setItem('finmind_auth_session', JSON.stringify({ token: 'new-login' }));
+  assert.equal((await chatApi.sendMessage('s1', 'Hello', 0)).revision, 1);
+  assert.equal(messageAttempts, 2);
+  assert.equal(saved, 1);
+});
+
 test('opening history reads the original session without creating a fork', async (t) => {
   resetEnv();
   const token = 'resume-token';
