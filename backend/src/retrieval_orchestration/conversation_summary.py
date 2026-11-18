@@ -16,6 +16,89 @@ MAX_EVIDENCE_BYTES = 240_000
 DERIVED_MODES = {'SESSION_SUMMARY', 'SAVED_SOURCE_REFERENCE'}
 
 
+def _scope_key(scope):
+    fields = ('companies','periods','topic','metric_code','source_type','measure_basis',
+              'reporting_entity','person_name','position_code','relation_types',
+              '_source_person_name','_source_role','_source_relation','_person_graph_name','_person_graph_role',
+              '_article_urls')
+    identity={k:scope.get(k) for k in fields}
+    request=scope.get('_market_request') or {}
+    identity['market_request']={k:request.get(k) for k in ('focus','day','query','action')}
+    return json.dumps(identity,sort_keys=True,ensure_ascii=False)
+
+
+def _summary_topic(claim, evidence):
+    text=claim['text'].strip()
+    for prefix,label in [('Nhận định tổng hợp:','Kết luận'),('Tình hình tài chính:','Tình hình kinh doanh'),
+                         ('Xu hướng giá:','Giá và xu hướng'),('Giá:','Giá và xu hướng')]:
+        if text.startswith(prefix): return label
+    labels={'COMPANY_PROFILE':'Doanh nghiệp','PRICE':'Giá và xu hướng','PRICE_HISTORY':'Giá và xu hướng',
+            'PRICE_TREND':'Giá và xu hướng','FINANCIAL_HEALTH':'Tình hình kinh doanh','BCTC':'Tình hình kinh doanh',
+            'NEWS':'Tin tức','BCTN':'Thông tin trong báo cáo'}
+    return next(iter({labels.get(evidence[eid].get('source_type'),'Nội dung khác')
+                      for eid in claim['evidence_ids']})) if len({evidence[eid].get('source_type')
+                      for eid in claim['evidence_ids']})==1 else 'Nội dung tổng hợp'
+
+
+def group_summary(result):
+    """Group validated statements by subject, without replaying the turn order.
+
+    This is extractive: no new conclusions, external model or factual rewriting.
+    Keep claims/citations aligned with what is actually shown.
+    """
+    if (result.get('answering') or {}).get('status') != 'DRAFT_READY':
+        return result
+    evidence = saved_evidence(result)
+    groups, seen = {}, set()
+    omitted = 0
+    contexts=result['conversation_summary'].get('claim_contexts') or [{} for _ in result['answering']['claims']]
+    for claim,context in reversed(list(zip(result['answering']['claims'],contexts))):
+        text = claim['text']
+        identity=(text,_scope_key(context))
+        if identity in seen: continue
+        seen.add(identity)
+        label=_summary_topic(claim,evidence)
+        company=', '.join(context.get('companies') or [])
+        period=', '.join(context.get('periods') or [])
+        group=(company,period,label)
+        bucket = groups.setdefault(group,[])
+        if len(bucket)>=2 or len(text)>600:
+            omitted += 1
+            continue
+        bucket.insert(0,(copy.deepcopy(claim),copy.deepcopy(context)))
+    priority={'Kết luận':0,'Tình hình kinh doanh':1,'Giá và xu hướng':2,'Doanh nghiệp':3,
+              'Tin tức':4,'Thông tin trong báo cáo':5,'Nội dung tổng hợp':6,'Nội dung khác':7}
+    ordered=sorted((key for key in groups if groups[key]),key=lambda k:(k[0],k[1],priority[k[2]]))
+    chosen=[]
+    for key in ordered:
+        for claim,context in groups[key]:
+            if len(chosen)>=12:
+                omitted+=1
+            else: chosen.append((key,claim,context))
+    claims = [claim for _,claim,_ in chosen]
+    if not claims:
+        return result
+    out = copy.deepcopy(result)
+    used = list(dict.fromkeys(eid for claim in claims for eid in claim['evidence_ids']))
+    citations = [{**copy.deepcopy(evidence[eid]),'citation_number':i} for i,eid in enumerate(used,1)]
+    numbers = {c['evidence_id']:c['citation_number'] for c in citations}
+    parts = ['Tổng hợp chung các nội dung đã trao đổi:']
+    for company,period,label in ordered:
+        group_claims=[claim for key,claim,_ in chosen if key==(company,period,label)]
+        if not group_claims: continue
+        paragraph = ' '.join(c['text']+' '+''.join(f'[{numbers[eid]}]' for eid in c['evidence_ids']) for c in group_claims)
+        heading=' · '.join(filter(None,(company,period,label)))
+        parts.append(heading+':\n'+paragraph)
+    cautions = out['answering'].get('cautions') or []
+    if cautions: parts.append('Lưu ý: '+' '.join(dict.fromkeys(cautions)))
+    if omitted: parts.append('Bản ngắn chỉ giữ các ý chính có nguồn; các chi tiết còn ở câu trả lời trước.')
+    out['answering'].update(draft='\n\n'.join(parts),claims=claims,citations=citations)
+    out['conversation_summary']['style']='GROUPED_BRIEF'
+    out['conversation_summary']['claim_contexts']=[context for _,_,context in chosen]
+    out['conversation_summary']['omitted_turns'] += omitted
+    return out
+
+
 def saved_evidence(result):
     """Validate independent packs and reject ambiguous reuse of an evidence ID."""
     packs = result.get('evidence_packs')
@@ -37,7 +120,7 @@ def saved_evidence(result):
 
 def _bound_answer(result):
     if (result.get('execution_mode') != 'LIVE'
-            or (result.get('evidence_pack') or {}).get('schema_version') not in ('1.1', '1.2')):
+            or (result.get('evidence_pack') or {}).get('schema_version') not in ('1.1', '1.2', '1.3')):
         raise CitationError('INVALID_EVIDENCE')
     answer = result.get('answering') or {}
     evidence = saved_evidence(result)
@@ -105,11 +188,18 @@ def summarize_session(doc):
             continue
         candidates.append((position, result, bound, evidence))
 
+    # For the same company/topic/period retain the last verified answer, while
+    # keeping different companies, periods and metrics separate.
+    latest={}
+    for candidate in candidates:
+        latest[_scope_key(candidate[1].get('scope') or {})]=candidate
+    candidates=sorted(latest.values(),key=lambda candidate:candidate[0])
+
     result = dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
                   b1_decision='SESSION_SUMMARY', status='ASK_CLARIFICATION', reason_code='NO_SOURCED_SESSION_ANSWERS',
                   message='Phiên này chưa có câu trả lời có nguồn hợp lệ để tổng hợp.',
                   scope=copy.deepcopy(doc.get('metadata', {}).get('live_context', {})), evidence_pack=None,
-                  errors=[], conversation_summary={'included_turns': [], 'omitted_turns': missing})
+                  errors=[], conversation_summary={'included_turns': [], 'omitted_turns': missing,'claim_contexts':[]})
     parts, claims, citations, packs, seen_claims = [], [], {}, [], set()
     cautions = []
     omitted = missing + max(0, len(candidates)-MAX_TURNS)
@@ -120,7 +210,7 @@ def summarize_session(doc):
             key = (claim['text'], json.dumps(scope, sort_keys=True, ensure_ascii=False))
             if key in seen_claims or key in new_keys:
                 continue
-            if len(claim['text']) > 1500 or len(kept) >= 2:
+            if len(claim['text']) > 1500:
                 omitted += 1
                 continue
             new_keys.add(key)
@@ -152,6 +242,9 @@ def summarize_session(doc):
                     citations[eid]['citation_number'] = len(citations)
             parts.append('- '+claim['text']+' '+''.join(f"[{citations[eid]['citation_number']}]" for eid in claim['evidence_ids']))
             claims.append(copy.deepcopy(claim))
+            result['conversation_summary']['claim_contexts'].append({k:copy.deepcopy(scope[k]) for k in (
+                'companies','periods','topic','metric_code','source_type','measure_basis','reporting_entity',
+                'person_name','position_code','relation_types') if k in scope})
         # Preserve cautions such as unknown units or reporting scope.
         source_cautions = bound.get('cautions', [])
         omitted += max(0, len(source_cautions)-4)

@@ -219,10 +219,50 @@ def test_api_summary_survives_reopen_and_resume_without_cross_session_leak(tmp_p
     ('Tổng hợp tin tức FPT hôm nay', False),
     ('Tóm tắt BCTN FPT 2025', False),
     ('Tóm tắt bài này', False),
+    ('tổng hợp chi tiết tổng quan về nội dung chat đi', True),
+    ('Tổng hợp những nội dung tôi nhắn nãy giờ đi', True),
+    ('Tóm tắt cuộc hội thoại này đi', True),
+    ('Giúp tôi tóm tắt chi tiết lịch sử chat nhé', True),
+    ('Tổng hợp chi tiết tổng quan về công ty FPT đi', False),
+    ('Tóm tắt BCTN FPT rồi tổng hợp cuộc hội thoại', False),
+    ('Đừng tổng hợp nội dung chat', False),
+    ('Tổng hợp nội dung chat rồi xóa lịch sử', False),
+    ('vậy giờ tôi cần bạn tổng hợp lại thôi không cần phải đưa ra chi tiết từng đoạn chat', True),
+    ('Tôi muốn bạn tổng hợp nội dung chat ngắn gọn thôi', True),
+    ('Tôi cần bạn tổng hợp tin tức FPT hôm nay', False),
 ])
 def test_session_command_does_not_intercept_new_research_or_article_summary(text, expected):
     from src.retrieval_orchestration.conversation_actions import is_session_summary
     assert is_session_summary(text) is expected
+
+
+def test_brief_summary_is_grouped_not_a_new_news_search():
+    async def run():
+        doc,engine,_=await two_turns()
+        calls=engine.calls
+        result=await append_turn(doc,'vậy giờ tôi cần bạn tổng hợp lại thôi không cần phải đưa ra chi tiết từng đoạn chat',engine)
+        answer=result['messages'][-1]['result']
+        assert answer['reason_code']=='SESSION_SUMMARY'
+        assert answer['conversation_summary']['style']=='GROUPED_BRIEF'
+        assert answer['answering']['draft'].startswith('Tổng hợp chung')
+        assert 'FPT · 2025 · Tin tức:' in answer['answering']['draft']
+        assert 'VCB · 2024 · Tin tức:' in answer['answering']['draft']
+        assert engine.calls==calls
+        assert len(answer['answering']['citations'])==2
+    asyncio.run(run())
+
+
+def test_natural_chat_summary_wins_over_company_profile_and_never_calls_engine():
+    async def run():
+        doc,engine,_=await two_turns()
+        calls=engine.calls
+        result=await append_turn(doc,'tổng hợp chi tiết tổng quan về nội dung chat đi',engine)
+        summary=result['messages'][-1]['result']
+        assert summary['reason_code']=='SESSION_SUMMARY'
+        assert summary['answering']['manifest']['response_mode']=='SESSION_SUMMARY'
+        assert engine.calls==calls
+        assert summary['scope']==doc['metadata']['live_context']
+    asyncio.run(run())
 
 
 def test_evidence_size_limit_is_visible_instead_of_a_false_no_data_claim(monkeypatch):
@@ -345,21 +385,29 @@ def test_summary_cautions_are_bounded_and_disclose_truncation():
     asyncio.run(run())
 
 
-def test_summary_preserves_staleness_from_the_real_market_service():
+def test_summary_preserves_stored_news_publication_cutoff_without_live_fetch(monkeypatch):
     from src.retrieval_orchestration.live_research import LiveResearchService
     from src.retrieval_orchestration.market_research import MarketResearch
     from tests.test_market_research import News, Repository, NOW
     from tests.test_s5_wbs091_context import EmptyContent
+    from tests.stored_news_fixture import stored_pack
+    from tests.test_market_research import article
+    async def read(retriever,scope):
+        return stored_pack([article()],scope,'FPT công bố kết quả kinh doanh mới.')
+    monkeypatch.setattr('src.retrieval_orchestration.stored_news.latest_news',read)
 
     async def run():
-        market = MarketResearch(Repository(), services=lambda: (None, News(stale=True)), now=lambda: NOW)
+        news = News(stale=True)
+        market = MarketResearch(Repository(), services=lambda: (None, news), now=lambda: NOW)
         engine = LiveResearchService(EmptyContent(), market=market)
         doc = await append_turn(new_document(str(uuid4()), str(uuid4())), 'Tin FPT mới nhất', engine)
         original = doc['messages'][-1]['result']
-        assert original['freshness']['stale'] is True
+        assert original['retrieval_backend'] == 'stored_news_corpus'
+        assert news.calls == []
         assert original['answering']['status'] == 'DRAFT_READY'
         doc = await append_turn(doc, 'Tổng hợp nãy giờ', engine)
         summary = doc['messages'][-1]['result']
-        assert any('bản lưu' in warning for warning in summary['answering']['cautions'])
-        assert 'bản lưu' in summary['answering']['draft']
+        assert any('đã nạp' in warning and '23/10/2026' in warning for warning in summary['answering']['cautions'])
+        assert '23/10/2026' in summary['answering']['draft']
+        assert 'không phải tin được cập nhật trực tiếp lúc hỏi' in summary['answering']['draft']
     asyncio.run(run())

@@ -11,6 +11,27 @@ from src.retrieval_orchestration.live_research import analyze_live
 TODAY = date(2026, 11, 17)
 
 
+@pytest.mark.parametrize('symbol',['BID','CMG','CTG','ELC','FPT','ICT','ITD','MBB','TCB','VCB'])
+def test_analysis_then_chair_of_that_company_keeps_company_not_trading_date(symbol):
+    from src.retrieval_orchestration.hybrid_router.decision_engine import ScopeResolver
+    from src.retrieval_orchestration.web_chat_router import session_scope
+    first=analyze_live(f'phân tích {symbol}',today=TODAY)
+    resolved=ScopeResolver().resolve('chủ tịch công ty đó là gì',session_scope(first['scope']))
+    assert resolved.route_hint=='GRAPH'
+    assert resolved.scope.companies==[symbol]
+    assert resolved.scope.position_code=='BOARD_CHAIR'
+    assert resolved.scope.metric_code is None
+    assert resolved.scope.periods==['LATEST_AVAILABLE_PERIOD']
+
+
+def test_chair_followup_preserves_an_explicit_report_year():
+    from src.retrieval_orchestration.hybrid_router.decision_engine import ScopeResolver
+    from src.retrieval_orchestration.web_chat_router import session_scope
+    first=analyze_live('phân tích VCB',today=TODAY)
+    resolved=ScopeResolver().resolve('chủ tịch công ty đó năm 2025 là ai',session_scope(first['scope']))
+    assert resolved.scope.periods==['2025']
+
+
 @pytest.mark.parametrize('question', [
     'Liệt kê ra giúp tôi', 'Cho tôi xem danh sách', 'liet ke lai giup minh',
     'Liệt kê những nội dung vừa nói', 'Có thể liệt kê ra không?',

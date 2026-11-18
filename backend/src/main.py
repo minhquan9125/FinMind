@@ -30,11 +30,13 @@ async def warmup_research(app: FastAPI):
     """Finish shared retrieval initialization before accepting the first request."""
     app.state.research_warmup = {'status': 'disabled'}
     app.state.router_warmup = {'status': 'disabled'}
+    app.state.intent_warmup = {'status': 'disabled'}
     if not settings.research_chat_live or not settings.research_warmup_enabled:
         return
     started = time.monotonic()
     app.state.research_warmup = {'status': 'warming'}
     app.state.router_warmup = {'status': 'warming'}
+    app.state.intent_warmup = {'status': 'waiting_for_embedding' if getattr(settings, 'intent_router_v2', False) else 'disabled'}
     logger.info('Research warmup started: loading embedding model and retrieval cache')
     try:
         await asyncio.wait_for(
@@ -61,6 +63,20 @@ async def warmup_research(app: FastAPI):
         app.state.research_warmup = {'status': 'ready', **details,
                                     'elapsed_seconds': round(time.monotonic()-started, 2)}
         logger.info('Research warmup ready (%.2fs)', time.monotonic()-started)
+        classifier = getattr(store.engine, 'intent_classifier', None)
+        if classifier is not None:
+            app.state.intent_warmup = {'status': 'warming'}
+            try:
+                from .retrieval_orchestration.intent_gate_v2 import decide
+                question = 'Ai là Chủ tịch FPT?'
+                classified = await asyncio.wait_for(asyncio.to_thread(classifier, question, None), 15)
+                if decide(classified, question) is None:
+                    raise ValueError('INVALID_INTENT_CONTRACT')
+            except Exception:
+                app.state.intent_warmup = {'status': 'failed', 'reason_code': 'INTENT_WARMUP_FAILED'}
+                logger.warning('Intent classifier warmup failed; deterministic routing remains available')
+            else:
+                app.state.intent_warmup = {'status': 'ready'}
 
 
 @asynccontextmanager
@@ -149,6 +165,7 @@ async def health() -> dict:
         "status": "ok",
         "research_warmup": getattr(app.state, 'research_warmup', {'status': 'not_started'}),
         "router_warmup": getattr(app.state, 'router_warmup', {'status': 'not_started'}),
+        "intent_warmup": getattr(app.state, 'intent_warmup', {'status': 'not_started'}),
     }
 
 

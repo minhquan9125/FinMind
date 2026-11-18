@@ -25,13 +25,14 @@ from ..documents.chunk_reconstruction import ReconstructionError
 from .retrieval_flow.conversation import _resolve_relative_periods, STOP_WORDS
 from .retrieval_flow.intent import _fold, _period, TICKERS
 from .clarifications import apply_clarification, metric_group, resolve_reply
-from .market_dialogue import article_query, calendar_day, news_reference
+from .market_dialogue import article_query, calendar_day, news_reference, article_content_request
+from .context_policy import question_context
 from .input_normalization import normalize_user_text, conversational_words, registered_symbols
 from .market_dates import price_date_request, relative_market_range, temporal_reply
 from .metric_vocabulary import (CURATED, find_metrics, label as metric_label, plain, point_in_time_codes,
                                 vocabulary_words, without_metrics)
 from . import intent_gate_v2 as intent_gate
-from .conversation_actions import is_list_followup, is_contextual_overview
+from .conversation_actions import is_list_followup, is_contextual_overview, profile_detail_question
 import logging
 
 logger = logging.getLogger(__name__)
@@ -122,6 +123,9 @@ def _live_period(norm, metric, scope):
 
 
 def _market_intent(norm, context, today):
+    article_request = article_content_request(norm, today)
+    if article_request:
+        return article_request
     query = article_query(norm)
     if query:
         return {'kind': 'NEWS', 'day': None, 'action': 'SUMMARY' if 'tom tat' in norm else 'DETAIL', 'query': query}
@@ -291,9 +295,35 @@ def _is_open_question(norm, scope):
     return len(words) >= 3
 
 
+def content_fallback_scope(question, decision):
+    """A complete non-metric question can search text without guessing a metric.
+
+    Explicit source requests, financial slot ambiguity and graph questions keep
+    their existing contracts. Candidate documents still require grounded claims.
+    """
+    norm = _fold(question)
+    if is_list_followup(question) or is_contextual_overview(question):
+        return None
+    scope = decision['scope']
+    inferred_report = (decision['reason_code']=='ANNUAL_REPORT_SCOPE_READY'
+                       and not re.search(r'\b(?:bctn|bao cao thuong nien)\b', norm))
+    if decision['reason_code']!='MISSING_METRIC' and not inferred_report:
+        return None
+    if (not scope.get('companies') or len(scope['companies'])!=1
+            or not _is_open_question(norm, scope) or find_metrics(norm) or metric_group(norm)
+            or re.search(r'\b(?:bctn|bctc|bao cao tai chinh|bao cao thuong nien|'
+                         r'chu tich|giam doc|hdqt|hoi dong quan tri|co dong|cong ty con|'
+                         r'cong ty lien ket|so huu|hop tac)\b', norm)):
+        return None
+    return dict(companies=list(scope['companies']),periods=['LATEST_AVAILABLE_PERIOD'],
+                source_type='CONTENT',metric_code=None,reporting_entity='UNKNOWN',
+                topic='CONTENT_QUESTION',_content_question=question)
+
+
 def analyze_live(text, context=None, *, today=None):
     """Resolve explicit slots and follow-ups without generating values or SQL."""
     today = today or datetime.now(timezone(timedelta(hours=7))).date()
+    context = question_context(text, context, today)
     raw_market_request = _market_intent(_fold(text), context, today)
     text = normalize_user_text(text, context)
     # Normalized Telex/abbreviations contain the reliable date and action.
@@ -324,7 +354,7 @@ def analyze_live(text, context=None, *, today=None):
                 scope.pop('topic', None)
         if scope.get('source_type') == 'BCTC':
             for key in ('topic', '_hybrid_context', 'graph_relations', 'graph_time_scope',
-                        'person_name', 'position_code', 'event_type', 'relation_types',
+                        'person_name', 'position_code', 'event_type', 'relation_types', 'relation_direction',
                         'entity_mentions', 'operation', 'targets', 'route_hint'):
                 scope.pop(key, None)
         decision.update(decision=branch, reason_code=reason, message=message)
@@ -380,6 +410,11 @@ def analyze_live(text, context=None, *, today=None):
             ticker_stop |= set(alias.split())        # the words of a name are not a second, made-up symbol
             if symbols[0] not in companies:
                 companies.append(symbols[0])
+    # A known brand alias such as BIDV is not a second stock ticker beside BID.
+    # Keep genuinely unknown symbols, but let the shared registry canonicalize
+    # aliases before company-count checks and retrieval filters.
+    companies = [symbol for symbol in companies if not (
+        symbol.lower() in DEFAULT_COMPANIES and symbol not in DEFAULT_COMPANIES[symbol.lower()])]
     # Explicit lowercase symbols must replace old scope too, even if not in this corpus.
     company_patterns = (r'\b(?:cua|cong ty|co phieu|ma ck|ma)\s+([a-z]{3,5})\b',
                         r'\b([a-z]{3,5})\s+(?:nam|quy|thang)\s+(?:\d{4}|\d{1,2}[/ -]\d{4}|nay|truoc)\b')
@@ -660,6 +695,7 @@ class DenseEvidenceRetriever:
         self.cache_dir = Path(cache_dir) if cache_dir is not None else Path(__file__).resolve().parents[1] / 'vector_retrieval' / '.cache'
         self._hybrid = None
         self._cache_lock = asyncio.Lock()
+        self._embedding_init_task = None
         self.corpus_resolver = corpus_resolver
 
     def _hybrid_instance(self):
@@ -704,7 +740,31 @@ class DenseEvidenceRetriever:
             cached = self._corpus_companies = (self.corpus_version_id, sorted(row['symbol'] for row in rows))
         return cached[1]
 
+    async def _ensure_embedding_ready(self, *, wait=False):
+        # Lightweight test/custom embedders need no separate initialization.
+        embedder = getattr(self, 'embedder', None)
+        prepare = getattr(embedder, 'prepare', None)
+        if prepare is None or getattr(embedder, 'is_ready', True):
+            return
+        task = self._embedding_init_task
+        if task is None:
+            task = self._embedding_init_task = asyncio.create_task(asyncio.to_thread(prepare))
+            # Keep initialization alive if a user request ends; observe failures
+            # without logging paths, credentials, or model source configuration.
+            task.add_done_callback(lambda done: None if done.cancelled() else done.exception())
+        try:
+            if wait:
+                await asyncio.shield(task)
+            else:
+                await asyncio.wait_for(asyncio.shield(task), .1)
+        except TimeoutError as exc:
+            raise ReconstructionError('EMBEDDING_WARMING', 'Embedding initialization in progress') from exc
+        except Exception as exc:
+            self._embedding_init_task = None
+            raise ReconstructionError('EMBEDDING_INIT_FAILED', 'Embedding initialization failed') from exc
+
     async def _embed(self, question):
+        await self._ensure_embedding_ready()
         def embed():
             with _embedding_lock:
                 return self.embedder.embed_query(question)
@@ -717,6 +777,7 @@ class DenseEvidenceRetriever:
     async def warmup(self):
         """Warm the same model/BM25 objects used by chat, without Gemini or history."""
         corpus = await self._corpus()
+        await self._ensure_embedding_ready(wait=True)
         await self._embed('Khởi tạo bộ tìm kiếm tài chính')
         if self.backend == 'hybrid':
             async with self._cache_lock:
@@ -726,6 +787,7 @@ class DenseEvidenceRetriever:
 
     async def _hybrid_rows(self, question, scope, corpus, company, period, doc_type=None):
         from ..vector_retrieval.backend import RetrievalError
+        await self._ensure_embedding_ready()
         self._hybrid_instance()
         cache = self.cache_dir / ('corpus-' + self.corpus_version_id + '.json')
         doc_type = doc_type or ('ANNUAL_REPORT' if scope['source_type'] == 'BCTN' else
@@ -741,14 +803,16 @@ class DenseEvidenceRetriever:
             result = await self._hybrid.search(question, corpus['index_version_id'], cache, **params)
         except RetrievalError as exc:
             if exc.code not in rebuildable: raise
-            # Only cache construction is serialized; warm queries may run concurrently.
-            async with self._cache_lock:
-                try:
-                    result = await self._hybrid.search(question, corpus['index_version_id'], cache, **params)
-                except RetrievalError as retry_error:
-                    if retry_error.code not in rebuildable: raise
-                    await self._hybrid.build_cache(corpus['index_version_id'], cache)
-                    result = await self._hybrid.search(question, corpus['index_version_id'], cache, **params)
+            # A request must not rebuild the entire corpus BM25 cache. Use the
+            # existing scoped dense reader; source reconstruction and hashes are
+            # still checked below. Startup warmup prepares hybrid separately.
+            vector = await self._embed(question)
+            rows = await repository.vector_search_filtered(
+                self.pool, corpus['index_version_id'], vector, 20,
+                company_symbol=company, period=period, doc_type=doc_type,
+                corpus_version_id=self.corpus_version_id,
+                exact_period=params['exact_period'])
+            return [dict(row, score_type='COSINE_SIMILARITY') for row in rows]
         return [dict(chunk_id=item['chunk_id'], document_id=item['document_id'],
                      text=item['text'], content_hash=item['content_hash'],
                      source_sha256=item['source_sha256'], title=item['title'],
@@ -792,6 +856,23 @@ class DenseEvidenceRetriever:
         return verified
 
     async def retrieve(self, question, scope):
+        if scope.get('source_type') == 'CONTENT':
+            # Search the same frozen corpus through the existing verified
+            # readers. Do not turn an event year into a report-year filter.
+            packs=[]
+            for kind in ('NEWS', 'BCTN'):
+                child={**scope,'source_type':kind,'periods':['LATEST_AVAILABLE_PERIOD']}
+                packs.append(await self.retrieve(question,child))
+            if any((p['corpus_version_id'],p['data_version']) !=
+                   (packs[0]['corpus_version_id'],packs[0]['data_version']) for p in packs):
+                raise ReconstructionError('CONTENT_CORPUS_CHANGED','Serving corpus changed during retrieval')
+            items={}
+            for pack in packs:
+                for item in pack['items']:
+                    if items.setdefault(item['evidence_id'],item)!=item:
+                        raise CitationError('INVALID_EVIDENCE')
+            return {**packs[0],'query_id':str(uuid.uuid4()),'items':list(items.values())[:10],
+                    'retrieval_backend':self.backend+'_content'}
         corpus = await self._corpus()
         vector = await self._embed(question) if self.backend == 'dense' else None
         items, seen = [], set()
@@ -861,7 +942,7 @@ class DenseEvidenceRetriever:
                         source_url=row.get('source_url'),
                         source_sha256=row['source_sha256'].strip(), content_sha256=content_hash,
                         source_verified=True, locator=row['locator_json'],
-                        score={'type': 'RRF' if self.backend == 'hybrid' else 'COSINE_SIMILARITY', 'value': float(row['score'])},
+                        score={'type': row.get('score_type') or ('RRF' if self.backend == 'hybrid' else 'COSINE_SIMILARITY'), 'value': float(row['score'])},
                     ))
                     if len(matching) == 5: break
                 # Every explicitly requested company/period must have evidence.
@@ -1026,6 +1107,15 @@ class LiveResearchService:
         try:
             classified = await asyncio.wait_for(
                 asyncio.to_thread(self.intent_classifier, question, context), INTENT_TIMEOUT_SECONDS)
+        except TimeoutError:
+            logger.warning('intent_classifier_timeout')
+            return None
+        except RuntimeError as exc:
+            if str(exc) == 'INTENT_MODEL_WARMING':
+                logger.info('intent_classifier_warming')
+            else:
+                logger.warning('intent_classifier_unavailable')
+            return None
         except Exception:
             logger.warning('intent_classifier_unavailable')
             return None
@@ -1074,7 +1164,13 @@ class LiveResearchService:
         return decision, trace
 
     async def _answer_turn(self, question, session_id, context=None, *, previous_result=None, today=None):
+        context = question_context(question, context, today or date.today())
         interpreted = normalize_user_text(question, context)
+        detailed_profile = profile_detail_question(interpreted, context)
+        if detailed_profile:
+            interpreted = detailed_profile
+            # Drop the profile-only source filter and any stale person/period.
+            context = {'companies': list(context['companies'])}
         if is_contextual_overview(interpreted):
             companies = (context or {}).get('companies') or []
             if len(companies) != 1:
@@ -1101,6 +1197,14 @@ class LiveResearchService:
                 b1_decision='GREETING', status='GREETING', reason_code='GREETING',
                 message='Chào bạn! Bạn có thể hỏi thông tin công ty, nhân sự, báo cáo hoặc tin tức của doanh nghiệp.',
                 scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
+        news_decision = news_reference(interpreted, context, previous_result) or analyze_live(interpreted, context, today=today)
+        from .hybrid_router.intent_policy import contains, GRAPH_TERMS
+        from .hybrid_router.decision_engine import _normalize as router_normalize
+        relationship_news = contains(router_normalize(interpreted), GRAPH_TERMS)
+        article_action = (news_decision['scope'].get('_market_request') or {}).get('action', 'LIST')
+        if (news_decision['decision'] == 'MARKET_LOOKUP' and news_decision['scope'].get('source_type') == 'NEWS'
+                and (not relationship_news or article_action != 'LIST')):
+            return await self._answer_stored_news(interpreted, news_decision['scope'])
         intent = await self._classify_intent(interpreted, context)
         early = intent_gate.decide(intent, interpreted) if intent is not None else None
         if early is not None and early['decision'] == 'REFUSE':
@@ -1126,12 +1230,33 @@ class LiveResearchService:
             context = {'companies': list((context or {}).get('companies') or [])}
             if bare_company:
                 interpreted = 'Thông tin công ty ' + norm.upper()
+        text_decision=analyze_live(interpreted,context,today=today)
+        content_scope=content_fallback_scope(interpreted,text_decision)
+        if content_scope is not None:
+            return await self._answer_content_question(interpreted,content_scope)
+        content_companies=text_decision['scope'].get('companies') or []
+        if len(content_companies)>1:
+            single=copy.deepcopy(text_decision)
+            single['scope']['companies']=content_companies[:1]
+            if content_fallback_scope(interpreted,single) is not None:
+                return dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+                    b1_decision='ASK_CLARIFICATION',status='ASK_CLARIFICATION',
+                    reason_code='AMBIGUOUS_CONTENT_COMPANY',scope=text_decision['scope'],
+                    message='Bạn muốn tìm nội dung này cho công ty nào: '+', '.join(content_companies)+'?',
+                    clarification_options=[],evidence_pack=None,errors=[])
         if self.hybrid_router is not None:
             routed = await self.hybrid_router.answer(interpreted, context, provider=self.provider,
                 limits=self.limits, budget=self.budget)
             if routed is not None:
                 return routed
-        if self.admin_news is not None and not annual_requested(_fold(interpreted), context) and not (explicit_profile or bare_company):
+        if (self.route_runner is None and relationship_news
+                and news_decision['scope'].get('source_type') == 'NEWS' and article_action == 'LIST'):
+            return dict(status='SYSTEM_UNAVAILABLE', reason_code='CHAT_ROUTER_UNAVAILABLE',
+                        message='Dịch vụ tra cứu quan hệ tạm thời chưa khả dụng. Vui lòng thử lại.',
+                        scope=news_decision['scope'], evidence_pack=None, errors=[])
+        indexed_news_allowed = (self.admin_news is not None
+            and not annual_requested(_fold(interpreted), context) and not (explicit_profile or bare_company))
+        if indexed_news_allowed and self.route_runner is None:
             indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
                                                    limits=self.limits, budget=self.budget)
             # A processed-article lookup that finds nothing must not shadow the general news path
@@ -1186,6 +1311,12 @@ class LiveResearchService:
             if routed is not None:
                 routed['request_id'] = result['request_id']
                 return routed
+        # The legacy route runner, like WebChatRouter above, owns GRAPH/BOTH
+        # questions. Only try an article lookup after it declines the question.
+        if indexed_news_allowed and self.route_runner is not None:
+            indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
+                                                   limits=self.limits, budget=self.budget)
+            if indexed is not None and indexed.get('status') != 'NO_DATA': return indexed
         if decision['decision'] != 'SEARCH': return result
         label = ('Hồ sơ doanh nghiệp' if scope.get('source_type') == 'COMPANY_PROFILE'
                  else metric_label(scope['metric_code']) if scope.get('metric_code') else 'tin tức')
@@ -1217,6 +1348,11 @@ class LiveResearchService:
             result.update(status='SYSTEM_UNAVAILABLE', reason_code='RETRIEVAL_TIMEOUT', message='Tìm kiếm tạm thời quá thời gian chờ. Vui lòng thử lại.')
             return result
         except (CitationError, ReconstructionError) as exc:
+            if exc.code in ('EMBEDDING_WARMING', 'EMBEDDING_INIT_FAILED'):
+                result.update(status='SYSTEM_UNAVAILABLE', reason_code=exc.code,
+                              message='Bộ tìm kiếm đang khởi tạo mô hình. Vui lòng thử lại sau ít phút.'
+                              if exc.code == 'EMBEDDING_WARMING' else 'Chưa khởi tạo được mô hình tìm kiếm. Vui lòng kiểm tra trạng thái hệ thống.')
+                return result
             result.update(status='INSUFFICIENT_EVIDENCE', reason_code=exc.code, message='Chưa xác minh được bằng chứng phù hợp; chưa thể trả lời.')
             return result
         except Exception:
@@ -1227,7 +1363,38 @@ class LiveResearchService:
                       message='Đã tìm được nguồn ứng viên có nội dung khớp hash.')
         return await complete_retrieval(query, result, provider=self.provider, limits=self.limits, budget=self.budget)
 
+    async def _answer_content_question(self, question, scope):
+        result=dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+                    b1_decision='SEARCH',status='NO_DATA',reason_code='NO_CONTENT_EVIDENCE',
+                    message='Chưa tìm thấy nội dung phù hợp với câu hỏi trong kho tài liệu đã nạp.',
+                    scope=scope,evidence_pack=None,errors=[],clarification_options=[])
+        try:
+            pack=await asyncio.wait_for(self.retriever.retrieve(question,scope),self.retrieval_timeout)
+            if not isinstance(pack,dict) or not isinstance(pack.get('items'),list):
+                raise CitationError('INVALID_EVIDENCE')
+            if not pack['items']:
+                return result
+            prepare_evidence(pack)
+        except TimeoutError:
+            result.update(status='SYSTEM_UNAVAILABLE',reason_code='RETRIEVAL_TIMEOUT',
+                          message='Tìm kiếm nội dung quá thời gian chờ. Vui lòng thử lại.')
+            return result
+        except (CitationError,ReconstructionError) as exc:
+            result.update(status='INSUFFICIENT_EVIDENCE',reason_code=exc.code,
+                          message='Chưa xác minh được nguồn để trả lời câu hỏi này.')
+            return result
+        except Exception:
+            result.update(status='SYSTEM_UNAVAILABLE',reason_code='CONTENT_RETRIEVAL_UNAVAILABLE',
+                          message='Dịch vụ tìm kiếm nội dung tạm thời chưa khả dụng. Vui lòng thử lại.')
+            return result
+        result.update(status='EVIDENCE_READY',reason_code='CONTENT_EVIDENCE_READY',
+                      query_id=pack['query_id'],evidence_pack=pack,
+                      retrieval_backend=pack.get('retrieval_backend'),message='Đã tìm thấy nguồn ứng viên.')
+        return await complete_retrieval(question,result,provider=self.provider,limits=self.limits,budget=self.budget)
+
     async def _answer_market(self, question, result, previous_result=None):
+        if result['scope'].get('source_type') == 'NEWS':
+            return await self._answer_stored_news(question, result['scope'])
         if self.market is None:
             result.update(status='SYSTEM_UNAVAILABLE', reason_code='MARKET_NOT_CONFIGURED',
                           message='Dịch vụ giá và tin mới chưa được kết nối. Vui lòng thử lại sau.')
@@ -1237,13 +1404,35 @@ class LiveResearchService:
                       if result['scope'].get('_article_urls') else self.market.lookup(result['scope']))
             market = await asyncio.wait_for(lookup, self.retrieval_timeout)
             pack = market.get('evidence_pack')
+            if result['scope'].get('source_type')=='MARKET_ANALYSIS':
+                from .stored_news import latest_news
+                from ..b1_answering.evidence.bundle import bundle_packs
+                requested=(result['scope'].get('_market_request') or {}).get('day')
+                anchor=requested or datetime.now(timezone(timedelta(hours=7))).date().isoformat()
+                news_scope=dict(companies=result['scope'].get('companies') or [],source_type='NEWS',
+                    _market_request=dict(action='ANALYSIS',as_of=anchor))
+                try:
+                    news_pack=await asyncio.wait_for(latest_news(self.retriever,news_scope),min(self.retrieval_timeout,20))
+                    if news_pack['items']:
+                        prepare_evidence(news_pack)
+                        pack=bundle_packs([pack,news_pack]) if pack and pack.get('items') else news_pack
+                        market.update(status='EVIDENCE_READY',reason_code='STORED_MARKET_ANALYSIS_READY',evidence_pack=pack)
+                        result['scope']['_analysis_news']=dict(as_of=anchor,
+                            count=len({item['source_id'] for item in news_pack['items']}),window_days=30)
+                    else:
+                        result['scope']['_analysis_news']=dict(as_of=anchor,count=0,window_days=30)
+                except Exception as exc:
+                    market.setdefault('analysis_issues',{})['stored_news']=getattr(exc,'code','STORED_NEWS_UNAVAILABLE')
+                    result['scope']['_analysis_news']=dict(as_of=anchor,count=0,window_days=30,error=True)
             evidence = prepare_evidence(pack) if pack else None
         except (TimeoutError, CitationError):
             result.update(status='SYSTEM_UNAVAILABLE', reason_code='MARKET_LOOKUP_FAILED',
                           message='Chưa lấy được dữ liệu giá hoặc tin mới hợp lệ. Vui lòng thử lại sau.')
             return result
         result.update(market)
-        result['retrieval_backend'] = 'shared_market_feed'
+        if market.get('analysis_issues'):
+            result['scope']['_analysis_issues'] = copy.deepcopy(market['analysis_issues'])
+        result['retrieval_backend'] = pack.get('retrieval_backend','shared_market_feed') if pack else 'shared_market_feed'
         source_type = result['scope']['source_type']
         result['presentation'] = {'sources': 'HIDDEN' if source_type == 'PRICE' else 'USED_LINKS'}
         if not evidence: return result
@@ -1265,22 +1454,26 @@ class LiveResearchService:
                 'budget': self.budget.snapshot(), 'trace': [{'event': 'shared_market_quote'}]})
             return result
         if (result['scope'].get('_market_request') or {}).get('action', 'LIST') == 'LIST':
+            from .news_presentation import render_news_list
             citations = []
-            lines = []
             for number, item in enumerate(evidence.values(), 1):
-                stamp = datetime.fromisoformat(item['snapshot']['published_at'])
-                lines.append(f"{number}. {item['title']} ({stamp:%d/%m/%Y})")
                 citations.append({**{key: copy.deepcopy(item[key]) for key in (
                     'evidence_id', 'source_id', 'chunk_id', 'source_sha256', 'content_sha256',
                     'source_verified', 'source_type', 'title', 'locator')}, 'citation_number': number})
             result['presentation']['sources'] = 'LINKS'
             result['answering'] = {'status': 'DRAFT_READY', 'reason_code': 'NEWS_LIST',
-                'draft': '\n\n'.join(lines), 'claims': [], 'citations': citations,
+                'draft': render_news_list(list(evidence.values()), stale=bool(market.get('freshness', {}).get('stale'))), 'claims': [], 'citations': citations,
                 'manifest': {'mode': 'B1', 'response_mode': 'NEWS_LIST',
                              'components': {'gemini': False, 'b3_evidence_gate': False, 'b3_answer_verification': False}},
                 'budget': self.budget.snapshot(), 'trace': [{'event': 'shared_news_listing'}]}
             return result
         out = await complete_retrieval(question, result, provider=self.provider, limits=self.limits, budget=self.budget)
+        issues = market.get('analysis_issues') or {}
+        if issues and out.get('answering', {}).get('status') == 'DRAFT_READY':
+            names = {'price_trend':'chỉ báo giá/xu hướng','financial_health':'sức khỏe tài chính','stored_news':'tin tức đã nạp'}
+            affected = ', '.join(names[k] for k in issues if k in names)
+            cause = 'thiếu quyền đọc database' if 'DB_READ_PERMISSION_DENIED' in issues.values() else 'lỗi truy vấn dữ liệu'
+            out['answering']['draft'] += f'\n\nChưa đọc được {affected} do {cause}. Đây là lỗi truy xuất, không phải kết luận kho không có dữ liệu.'
         if out.get('answering', {}).get('status') == 'DRAFT_READY':
             for item in evidence.values():
                 published = item.get('snapshot', {}).get('published_at')
@@ -1296,6 +1489,35 @@ class LiveResearchService:
         if market.get('freshness', {}).get('stale') and out.get('answering', {}).get('status') == 'DRAFT_READY':
             out['answering']['draft'] += '\n\nĐây là tin lưu gần nhất; lần lấy tin mới vừa thất bại.'
         return out
+
+    async def _answer_stored_news(self, question, scope):
+        from .stored_news import latest_news, render_stored_news
+        result=dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+            b1_decision='SEARCH',status='NO_DATA',reason_code='NO_STORED_NEWS',scope=copy.deepcopy(scope),
+            message='Chưa có tin phù hợp đã được thu thập và nạp vào kho dữ liệu. Cần cập nhật qua pipeline của dự án.',
+            evidence_pack=None,errors=[],presentation=dict(sources='USED_LINKS'))
+        try:
+            pack=await asyncio.wait_for(latest_news(self.retriever,scope),self.retrieval_timeout)
+        except Exception as exc:
+            result.update(status='SYSTEM_UNAVAILABLE',reason_code=getattr(exc,'code','STORED_NEWS_UNAVAILABLE'),
+                message='Chưa đọc hoặc xác minh được tin trong kho dữ liệu. Không tự lấy tin ngoài để thay thế.')
+            return result
+        if not pack['items']: return result
+        result.update(status='EVIDENCE_READY',reason_code='STORED_NEWS_READY',query_id=pack['query_id'],
+            evidence_pack=pack,retrieval_backend='stored_news_corpus')
+        if scope.get('_market_request',{}).get('action','LIST') != 'LIST':
+            return await complete_retrieval(question,result,provider=self.provider,limits=self.limits,budget=self.budget)
+        citations=[{**{key:copy.deepcopy(item[key]) for key in ('evidence_id','source_id','chunk_id',
+            'source_sha256','content_sha256','source_verified','source_type','title','locator')},'citation_number':number}
+            for number,item in enumerate(pack['items'],1)]
+        result['answering']=dict(status='DRAFT_READY',reason_code='STORED_NEWS_LIST',
+            draft=render_stored_news(pack['items']),claims=[],citations=citations,
+            cautions=['Tin lấy từ dữ liệu đã nạp; bài mới nhất trong kết quả đăng ngày '
+                + max(datetime.fromisoformat(item['stored_news']['published_at']) for item in pack['items']).strftime('%d/%m/%Y')
+                + ', không phải tin được cập nhật trực tiếp lúc hỏi.'],
+            manifest=dict(mode='B1',response_mode='NEWS_LIST',components=dict(gemini=False,citation_binding=True)),
+            budget=self.budget.snapshot(),trace=[dict(event='stored_news_listing')])
+        return result
 
 
 _EN_NUMBER = re.compile(r'(?<![\d.,])\d{1,3}(?:,\d{3}){2,}(?:\.\d+)?(?![\d,])|(?<![\d.,])\d{1,3},\d{3}\.\d+(?![\d])')

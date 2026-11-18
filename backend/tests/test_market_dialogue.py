@@ -9,6 +9,14 @@ from src.retrieval_orchestration.market_research import MarketResearch
 from tests.test_market_research import NOW, Repository, Live, News, article, scope
 
 
+@pytest.fixture(autouse=True)
+def stored_pipeline_news(monkeypatch):
+    from tests.stored_news_fixture import stored_pack
+    async def read(retriever, scope):
+        return stored_pack([article()],scope,'FPT triển khai công viên công nghệ tại Hà Nội. Dự án có trung tâm nghiên cứu mới.')
+    monkeypatch.setattr('src.retrieval_orchestration.stored_news.latest_news',read)
+
+
 class DetailedNews(News):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -100,7 +108,7 @@ def test_news_question_lists_headlines_without_gemini():
         assert result['answering']['status'] == 'DRAFT_READY'
         assert result['answering']['manifest']['response_mode'] == 'NEWS_LIST'
         assert article()['title'] in result['answering']['draft']
-        assert result['presentation']['sources'] == 'LINKS'
+        assert result['presentation']['sources'] == 'USED_LINKS'
         assert provider.calls == 0
         assert news.details == []
     asyncio.run(run())
@@ -112,7 +120,7 @@ def test_explicit_summary_fetches_article_content_and_keeps_only_used_links():
         result = await engine(news, provider).answer('tóm tắt tin tức FPT hôm nay', 'test', today=NOW.date())
         assert result['answering']['status'] == 'DRAFT_READY'
         assert 'trung tâm nghiên cứu mới' in provider.requests[0]['evidence'][0]['passage']
-        assert len(news.details) == 2
+        assert news.details == []
         assert len(result['answering']['citations']) == 1
         assert result['presentation']['sources'] == 'USED_LINKS'
     asyncio.run(run())
@@ -127,8 +135,8 @@ def test_article_title_followup_resolves_list_and_fetches_only_that_article():
                                       previous_result=first, today=NOW.date())
         assert result['answering']['status'] == 'DRAFT_READY'
         assert result['scope']['_market_request']['action'] == 'DETAIL'
-        assert news.calls == ['FPT']  # no second feed scan
-        assert news.details == [article()['url']]
+        assert news.calls == []  # Both turns read only stored pipeline articles.
+        assert news.details == []
         assert provider.calls == 1
     asyncio.run(run())
 

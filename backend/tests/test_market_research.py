@@ -62,6 +62,37 @@ def scope(question):
     return analyze_live(question, today=NOW.date())['scope']
 
 
+def test_analysis_permission_errors_are_not_reported_as_absent_data():
+    class InsufficientPrivilegeError(Exception): pass
+    async def denied(symbol): raise InsufficientPrivilegeError('private detail')
+    market=MarketResearch(Repository(),services=lambda:(Live(),None),now=lambda:NOW,
+        trend_reader=denied,health_reader=denied)
+    result=asyncio.run(market.lookup(scope('phân tích FPT')))
+    assert result['analysis_issues']==dict(price_trend='DB_READ_PERMISSION_DENIED',financial_health='DB_READ_PERMISSION_DENIED')
+    assert 'private detail' not in str(result)
+    assert result['evidence_pack']['items']
+
+
+@pytest.mark.parametrize('symbol', ['BID','CMG','CTG','ELC','FPT','ICT','ITD','MBB','TCB','VCB'])
+def test_latest_news_excludes_recommendations_before_result_limit(symbol):
+    entries = [dict(article(ident=str(90000+i)), title=f'Khuyến nghị mua {symbol}') for i in range(4)]
+    entries += [dict(article(day=f'2026-10-{22-i}T02:00:00+00:00', ident=str(80000+i)),
+                     title=f'{symbol} công bố kết quả kinh doanh {i}') for i in range(3)]
+    market = MarketResearch(Repository(), services=lambda: (None, News(entries)), now=lambda: NOW)
+    result = market._news(symbol, dict(_market_request=dict(action='LIST')), News(entries), None)
+    items = result['evidence_pack']['items']
+    assert len(items) == 3
+    assert [item['title'] for item in items] == [entry['title'] for entry in entries[4:]]
+
+
+def test_latest_news_does_not_replace_recommendation_only_feed_with_advice():
+    news = News([dict(article(), title='Khuyến nghị mua FPT')])
+    result = MarketResearch(Repository(), services=lambda: (None, news), now=lambda: NOW)._news(
+        'FPT', dict(_market_request=dict(action='LIST')), news, None)
+    assert result['status'] == 'NO_DATA'
+    assert 'evidence_pack' not in result
+
+
 def test_company_profile_is_searchable_without_financial_metric_or_period():
     decision = analyze_live('Cong ty FPT hoat dong trong linh vuc gi?', today=NOW.date())
     assert decision['decision'] == 'SEARCH'
@@ -528,7 +559,7 @@ def test_router_factory_uses_configured_market_service_objects(monkeypatch):
     live, news = Live(), News()
     api.configure_market_services(live, news)
     try:
-        assert api.get_store().engine.market.services() == (live, news)
+        assert api.get_store().engine.market.services() == (live, None)
     finally:
         api.configure_market_services()
 
@@ -553,7 +584,11 @@ def test_news_company_can_be_supported_by_source_title_without_inventing_other_f
     with pytest.raises(CitationError): validate_grounded(payload, evidence, {'source_type': 'NEWS'})
 
 
-def test_current_news_pipeline_calls_gemini_without_corpus_search():
+def test_stored_news_summary_calls_gemini_without_live_fetch(monkeypatch):
+    from tests.stored_news_fixture import stored_pack
+    async def read(retriever, scope):
+        return stored_pack([article()],scope,'FPT công bố kết quả kinh doanh mới.')
+    monkeypatch.setattr('src.retrieval_orchestration.stored_news.latest_news',read)
     class ForbiddenRetriever:
         async def retrieve(self, *args): raise AssertionError('must not query frozen corpus')
     class Provider:
@@ -573,7 +608,7 @@ def test_current_news_pipeline_calls_gemini_without_corpus_search():
         # Use an explicit clock argument on the service, not the machine's timezone.
         result = await engine.answer('tóm tắt tin tức mới hôm nay của FPT', 'session', today=NOW.date())
         assert result['answering']['status'] == 'DRAFT_READY'
-        assert result['evidence_pack']['schema_version'] == '1.2'
+        assert result['evidence_pack']['schema_version'] == '1.1'
         assert provider.calls == 1
         price = await engine.answer('giá cổ phiếu FPT hôm nay', 'session', today=NOW.date())
         assert price['answering']['status'] == 'DRAFT_READY'

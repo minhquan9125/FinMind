@@ -9,6 +9,8 @@ from src.core.config import Settings
 
 
 def setup(monkeypatch, warmup, **options):
+    # Unit tests must not start real model-loading threads during startup.
+    monkeypatch.setattr(main.hybrid_router, 'warmup_router', lambda: None)
     settings = SimpleNamespace(research_chat_live=True, research_warmup_enabled=True,
                                research_warmup_timeout_seconds=1, **options)
     monkeypatch.setattr(main, 'settings', settings)
@@ -67,3 +69,31 @@ def test_warmup_is_enabled_by_default_with_bounded_timeout():
     assert 0 < settings.research_warmup_timeout_seconds <= 600
     for timeout in (0, -1, float('inf'), float('nan'), 601):
         with pytest.raises(ValueError): Settings(_env_file=None, research_warmup_timeout_seconds=timeout)
+
+
+def test_intent_warmup_is_checked_without_generation_or_user_history(monkeypatch):
+    from src.retrieval_orchestration import intent_gate_v2
+    async def warmup():return {'backend':'hybrid'}
+    app,_=setup(monkeypatch,warmup,intent_router_v2=True)
+    calls=[]
+    def classify(question,context):
+        calls.append((question,context))
+        return {'isolated':'proposal'}
+    store=SimpleNamespace(engine=SimpleNamespace(retriever=SimpleNamespace(warmup=warmup),intent_classifier=classify))
+    monkeypatch.setattr(main.research_chat,'get_store',lambda:store)
+    monkeypatch.setattr(intent_gate_v2,'decide',lambda classified,question:{'decision':'ACCEPT'})
+    asyncio.run(main.warmup_research(app))
+    assert calls==[('Ai là Chủ tịch FPT?',None)]
+    assert app.state.intent_warmup['status']=='ready'
+
+
+def test_intent_failure_is_visible_but_does_not_disable_ready_retrieval(monkeypatch,caplog):
+    async def warmup():return {'backend':'hybrid'}
+    app,_=setup(monkeypatch,warmup,intent_router_v2=True)
+    def classify(*args):raise RuntimeError('private configuration')
+    store=SimpleNamespace(engine=SimpleNamespace(retriever=SimpleNamespace(warmup=warmup),intent_classifier=classify))
+    monkeypatch.setattr(main.research_chat,'get_store',lambda:store)
+    asyncio.run(main.warmup_research(app))
+    assert app.state.research_warmup['status']=='ready'
+    assert app.state.intent_warmup=={'status':'failed','reason_code':'INTENT_WARMUP_FAILED'}
+    assert 'private configuration' not in caplog.text

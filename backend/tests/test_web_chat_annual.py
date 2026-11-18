@@ -233,16 +233,18 @@ def test_shared_release_alias_requires_exact_frozen_parent_and_same_origin(monke
         asyncio.run(_annual_binding(Conn(), row, locator, str(uuid4()), {}))
 
 
-def test_processed_article_miss_falls_through_to_the_general_news_path():
+def test_latest_news_never_falls_through_to_live_feed():
     class Retriever:
         async def retrieve(self, question, scope):
             return {'items': []}
     news = AsyncMock()
     news.answer.return_value = {'status': 'NO_DATA', 'reason_code': 'NO_DATA', 'scope': {}}
     service = LiveResearchService(Retriever(), admin_news=news)
-    result = asyncio.run(service.answer('Tin tức FPT mới nhất', 'test'))
-    news.answer.assert_awaited()
-    # The admin-article NO_DATA must not be what the user sees as the final answer.
+    from unittest.mock import patch
+    with patch('src.retrieval_orchestration.stored_news.latest_news',AsyncMock(return_value={'items':[]})):
+        result = asyncio.run(service.answer('Tin tức FPT mới nhất', 'test'))
+    news.answer.assert_not_awaited()
+    assert result['reason_code'] == 'NO_STORED_NEWS'
     assert result['scope'].get('source_type') == 'NEWS'
     assert result['scope'].get('companies') == ['FPT']
 
@@ -254,5 +256,11 @@ def test_processed_article_answer_is_still_returned_when_it_has_content():
     news = AsyncMock()
     news.answer.return_value = {'status': 'EVIDENCE_READY', 'reason_code': 'X', 'scope': {'source_type': 'NEWS'}}
     service = LiveResearchService(Retriever(), admin_news=news)
+    from unittest.mock import patch
+    # Explicit article requests now share the corpus-bound NEWS reader rather
+    # than the old local admin selector. The returned article is still used.
+    service._answer_stored_news = AsyncMock(return_value=news.answer.return_value)
     result = asyncio.run(service.answer('Theo bài FPT, lợi nhuận quý 2 là bao nhiêu?', 'test'))
     assert result['status'] == 'EVIDENCE_READY'
+    assert service._answer_stored_news.call_args.args[1]['source_type'] == 'NEWS'
+    news.answer.assert_not_awaited()

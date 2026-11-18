@@ -1,0 +1,53 @@
+.research-page,
+.research-page-main {
+  height: 100dvh;
+}
+
+.research-chat summary,
+.research-chat-log {
+  overflow-wrap: anywhere;
+}
+
+/* Browser zoom reduces the CSS viewport height. Allow the page to scroll
+   instead of squeezing the conversation to zero between fixed headers. */
+@media (max-height: 650px), (max-width: 480px) {
+  .research-page-main {
+    overflow-y: auto;
+  }
+
+  .research-page-header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .research-canvas-chat {
+    flex: none;
+    min-height: 26rem;
+  }
+
+  .research-canvas-chat > div {
+    flex: none;
+  }
+
+  .research-chat {
+    flex: none;
+    height: max(25rem, calc(100dvh - 9rem));
+  }
+
+  .research-chat-log {
+    min-height: 10rem;
+  }
+
+  .research-chat-composer {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .research-chat-composer > .flex {
+    flex-wrap: wrap;
+  }
+  .research-chat-composer input {
+    flex-basis: 100%;
+  }
+}

@@ -45,7 +45,7 @@ def test_corpus_cannot_silently_search_another_index():
     asyncio.run(run())
 
 
-def test_web_hybrid_builds_missing_cache_once_and_keeps_rrf_type(tmp_path, monkeypatch):
+def test_web_hybrid_uses_dense_until_cache_is_warmed_then_keeps_rrf_type(tmp_path, monkeypatch):
     from src.documents import repository
     from src.retrieval_orchestration.live_research import DenseEvidenceRetriever, analyze_live
     from src.vector_retrieval import backend
@@ -72,12 +72,23 @@ def test_web_hybrid_builds_missing_cache_once_and_keeps_rrf_type(tmp_path, monke
                     embedding_model='BAAI/bge-m3@5617a9f61b02')
     monkeypatch.setattr(repository, 'get_corpus_index', corpus)
     monkeypatch.setattr(backend, 'HybridRetriever', construct)
+    async def embed(self, question): return [1.0] * 1024
+    async def dense(*args, **kwargs):
+        events.append(('dense', kwargs))
+        return [dict(chunk_id=item['chunk_id'], document_id=item['source_id'], text=item['passage'],
+                     content_hash=item['content_sha256'], source_sha256=item['source_sha256'],
+                     title='FPT', locator_json=item['locator'], score=.9)]
+    monkeypatch.setattr(DenseEvidenceRetriever, '_embed', embed)
+    monkeypatch.setattr(repository, 'vector_search_filtered', dense)
     async def run():
         engine = DenseEvidenceRetriever(object(), Embedder(), backend='hybrid', cache_dir=tmp_path)
         scope = analyze_live('tiền và tương đương tiền FPT quý 2/2026')['scope']
-        for _ in range(2):
-            evidence = await engine.retrieve('tiền FPT', scope)
-            assert evidence['items'][0]['score'] == {'type': 'RRF', 'value': 0.03}
-        assert sum(kind == 'build' for kind, _ in events) == 1
+        evidence = await engine.retrieve('tiền FPT', scope)
+        assert evidence['items'][0]['score'] == {'type': 'COSINE_SIMILARITY', 'value': .9}
+        fake.ready = True  # Startup warmup has finished, outside the user request.
+        evidence = await engine.retrieve('tiền FPT', scope)
+        assert evidence['items'][0]['score'] == {'type': 'RRF', 'value': 0.03}
+        assert sum(kind == 'build' for kind, _ in events) == 0
+        assert sum(kind == 'dense' for kind, _ in events) == 1
         assert all(options['exact_period'] for kind, options in events if kind == 'search')
     asyncio.run(run())

@@ -2,6 +2,22 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { citationView, modeLabel, safeSourceUrl } from './citationView.js';
 
+test('analysis bundle displays the cited database article without losing its URL or locator', () => {
+  const news = { evidence_id: 'db-news', source_id: 'document-1', source_type: 'NEWS',
+    source_verified: true, title: 'Tin đã nạp', passage: 'Nội dung có nguồn',
+    source_url: 'https://example.org/article', locator: { row_keys: ['line-3'] } };
+  const price = { evidence_id: 'feed-price', source_type: 'PRICE', source_verified: true };
+  const result = { execution_mode: 'LIVE', scope: { source_type: 'MARKET_ANALYSIS' },
+    presentation: { sources: 'USED_LINKS' }, evidence_pack: { schema_version: '1.3', items: [price, news],
+      evidence_packs: [{ items: [price] }, { items: [news] }] },
+    answering: { status: 'DRAFT_READY', citations: [{ evidence_id: news.evidence_id, citation_number: 1 }] } };
+  const sources = citationView(result);
+  assert.equal(sources.length, 1);
+  assert.equal(sources[0].url, news.source_url);
+  assert.equal(sources[0].passage, news.passage);
+  assert.equal(sources[0].citationNumber, 1);
+});
+
 test('session summary keeps numbered sources from independent evidence packs', () => {
   const make = (id, type) => ({ evidence_id: id, source_type: type, source_verified: true,
     passage: 'Đoạn nguồn '+id, title: 'Nguồn '+id, locator: { section: 'Kỳ '+id } });

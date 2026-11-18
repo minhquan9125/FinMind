@@ -47,6 +47,7 @@ class MarketResearch:
         """No background subscriptions, extra SDK processes or quota bypasses."""
         try:
             trend = None
+            analysis_issues = {}
             symbols = scope.get('companies', [])
             if (self.trend_reader is not None and scope.get('source_type') == 'MARKET_ANALYSIS'
                     and len(symbols) == 1 and re.fullmatch(r'[A-Z]{3}', symbols[0])):
@@ -67,6 +68,8 @@ class MarketResearch:
                             trend = await self.trend_reader(symbols[0], as_of=as_of)
                 except Exception as exc:  # the trend is additive; price and news still answer
                     logging.getLogger(__name__).warning('Market trend lookup failed (%s)', type(exc).__name__)
+                    analysis_issues['price_trend'] = ('DB_READ_PERMISSION_DENIED'
+                        if type(exc).__name__ == 'InsufficientPrivilegeError' else 'ANALYSIS_LOOKUP_FAILED')
                     trend = None
             health = None
             if (self.health_reader is not None and scope.get('source_type') == 'MARKET_ANALYSIS'
@@ -75,8 +78,13 @@ class MarketResearch:
                     health = await asyncio.wait_for(self.health_reader(symbols[0]), timeout=30)
                 except Exception as exc:
                     logging.getLogger(__name__).warning('Financial health lookup failed (%s)', type(exc).__name__)
+                    analysis_issues['financial_health'] = ('DB_READ_PERMISSION_DENIED'
+                        if type(exc).__name__ == 'InsufficientPrivilegeError' else 'ANALYSIS_LOOKUP_FAILED')
                     health = None
-            return await asyncio.to_thread(self._lookup, scope, previous_pack, trend, health)
+            result = await asyncio.to_thread(self._lookup, scope, previous_pack, trend, health)
+            if analysis_issues:
+                result['analysis_issues'] = analysis_issues
+            return result
         except BusyError as exc:
             result = unavailable('MARKET_BUSY')
             result['message'] = 'Nguồn dữ liệu đang bận hoặc đến hạn mức. Vui lòng thử lại sau ít giây.'
@@ -344,6 +352,12 @@ class MarketResearch:
                                   published_at=published.isoformat()))
         snapshots.sort(key=lambda item: item['published_at'], reverse=True)
         query = (scope.get('_market_request') or {}).get('query')
+        action = (scope.get('_market_request') or {}).get('action', 'LIST')
+        if action == 'LIST' and not query and not selected_urls:
+            from .news_presentation import has_recommendation_headline
+            # Generic latest news is an informational feed, not a broker
+            # recommendation list. Filter before the three-item limit.
+            snapshots = [item for item in snapshots if not has_recommendation_headline(item['title'])]
         if query:
             matches = matching_articles(query, snapshots)
             if len(matches) != 1:
@@ -355,7 +369,7 @@ class MarketResearch:
             if stale: return unavailable('NEWS_REFRESH_FAILED')
             return dict(status='NO_DATA', reason_code='NO_CURRENT_NEWS',
                         message=f'Chưa thấy tin của {symbol}'+(f' đăng ngày {requested}' if requested else '')+
-                        ' trong các bài mới nhất nguồn FireAnt trả về. Nguồn này không bao phủ toàn bộ tin tức.')
+                        ' trong các bài mới nhất nguồn FireAnt trả về sau khi loại bài khuyến nghị mua bán. Nguồn này không bao phủ toàn bộ tin tức.')
         action = (scope.get('_market_request') or {}).get('action', 'LIST')
         if action in ('SUMMARY', 'DETAIL'):
             hydrated = []

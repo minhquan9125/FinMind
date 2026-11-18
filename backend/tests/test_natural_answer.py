@@ -195,6 +195,25 @@ def test_analysis_prompt_asks_for_plain_language_and_group_labels():
     assert 'người không chuyên' in text and '"Xu hướng giá:' in text
 
 
+@pytest.mark.parametrize('company',['BID','CMG','CTG','ELC','FPT','ICT','ITD','MBB','TCB','VCB'])
+def test_default_analysis_is_short_but_explicit_details_remain_available(company):
+    scope={'source_type':'MARKET_ANALYSIS'}
+    short=grounded.build_grounded_request(f'phân tích {company}',evidence(),Limits.load(),scope)
+    full=grounded.build_grounded_request(f'phân tích chi tiết {company}',evidence(),Limits.load(),scope)
+    claims=lambda request:request['generationConfig']['responseJsonSchema']['properties']['claims']
+    assert claims(short)['maxItems']==4
+    assert claims(short)['items']['properties']['text']['maxLength']==600
+    assert claims(full)['maxItems']==12
+    prompt=short['systemInstruction']['parts'][0]['text']
+    assert 'chỉ 2–3 số liệu chính' in prompt
+    assert 'doanh thu và lợi nhuận so với cùng kỳ năm trước' in prompt
+    assert 'Bắt buộc kết thúc' in prompt and 'Nhận định tổng hợp:' in prompt
+    assert 'lý do phân loại xu hướng' in prompt
+    assert 'không phải nguyên nhân kinh tế' in prompt
+    assert 'Các ý số liệu dài tối đa 240 ký tự' in prompt
+    assert 'trả lời chi tiết theo các nhóm' not in prompt
+
+
 @pytest.mark.parametrize('claim,source', [('19.150 VND', '19,150 VND'), ('19,150 VND', '19.150 VND'),
                                           ('15.090 đồng/cổ phiếu', '15,090 đồng/cổ phiếu')])
 def test_vnd_amounts_match_across_thousand_separators(claim, source):

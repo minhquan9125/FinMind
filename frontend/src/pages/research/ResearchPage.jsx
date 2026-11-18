@@ -15,6 +15,7 @@ import {
   StatusBadge,
 } from "../../shared/ui/index.js";
 import ResearchChat from "./ResearchChat.jsx";
+import './researchLayout.css';
 import { useAuth } from "../../shared/context/AuthContext.jsx";
 import { userMenu } from "../../mocks/componentMock.js";
 import { researcherMock } from "../dashboard/mock.js";
@@ -361,7 +362,7 @@ export default function ResearchPage() {
     .sort((a, b) => (b.isPinned ? 1 : 0) - (a.isPinned ? 1 : 0));
 
   return (
-    <div className="flex h-screen bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
+    <div className="research-page flex h-screen bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
       {/* 1. Shared Researcher Sidebar */}
       <Sidebar
         groups={userMenu}
@@ -373,11 +374,11 @@ export default function ResearchPage() {
       />
 
       {/* 2. Main Research Viewport */}
-      <main className="flex-1 min-w-0 flex flex-col h-screen overflow-hidden bg-[#F8FAFC]">
+      <main className="research-page-main flex-1 min-w-0 flex flex-col h-screen overflow-hidden bg-[#F8FAFC]">
         {/* Top Header */}
-        <header className="shrink-0 bg-white/95 backdrop-blur-md border-b border-slate-200 px-6 py-3 z-10">
+        <header className="research-page-header shrink-0 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-3 z-10">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
               <h1 className="text-lg font-bold tracking-tight text-slate-900">
                 Trợ lý nghiên cứu & So sánh
               </h1>
@@ -386,7 +387,7 @@ export default function ResearchPage() {
 
             {/* Quick Actions & Tab Switcher */}
             <div className="flex flex-wrap items-center gap-2">
-              <div className="flex bg-slate-100 p-0.5 rounded-lg border border-slate-200">
+              <div className="flex min-w-0 max-w-full flex-wrap bg-slate-100 p-0.5 rounded-lg border border-slate-200">
                 <button
                   type="button"
                   onClick={() => setActiveTab("copilot")}
@@ -504,7 +505,7 @@ export default function ResearchPage() {
         </>)}
 
         {/* ─── SCROLLABLE MIDDLE CONVERSATION & ANALYSIS CANVAS ─── */}
-        <div className={`flex-1 min-h-0 px-4 sm:px-6 py-4 ${activeTab === "copilot" ? "flex flex-col" : "overflow-y-auto"}`}>
+        <div className={`research-canvas flex-1 min-w-0 min-h-0 px-3 sm:px-6 py-3 ${activeTab === "copilot" ? "research-canvas-chat flex flex-col" : "overflow-y-auto"}`}>
           <div className={`max-w-4xl mx-auto w-full ${activeTab === "copilot" ? "flex flex-1 min-h-0 flex-col" : "space-y-6"}`}>
             {activeTab === "copilot" && (
               <ResearchChat historyOpen={historyDrawerOpen}

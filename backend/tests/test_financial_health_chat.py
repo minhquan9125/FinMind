@@ -24,6 +24,18 @@ PEERS = dict(metrics={'revenue_yoy_percent': dict(peer_median='8.1', position='a
 
 
 class PassageTests(unittest.TestCase):
+    def test_comparison_names_same_quarter_and_preserves_ytd_basis(self):
+        data=analysis(revenue_yoy_percent=dict(value='12.3',status='complete',
+            comparison=dict(basis='YTD')))
+        data['period']='2026-Q3'
+        text=financial_health_passage('FPT',compact_health(data,{},[]))
+        self.assertIn('lũy kế đến quý 3/2026 so với lũy kế đến quý 3/2025',text)
+        self.assertNotIn('năm 2026 so với năm 2025',text)
+
+    def test_missing_growth_does_not_invent_year_comparison(self):
+        text=financial_health_passage('FPT',compact_health(analysis(),{},[]))
+        self.assertIn('Chưa đủ dữ liệu doanh thu/lợi nhuận cùng kỳ năm trước',text)
+
     def test_compact_keeps_values_and_drops_not_applicable(self):
         health = compact_health(analysis(revenue_yoy_percent=dict(value='12.3456', status='complete', reasons=[])),
                                 PEERS, [CITE])

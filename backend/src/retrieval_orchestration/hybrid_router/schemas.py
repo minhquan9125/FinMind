@@ -25,6 +25,7 @@ class RouterScope(BaseModel):
     position_code: str | None = None
     event_type: str | None = None
     relation_types: list[str] = Field(default_factory=list)
+    relation_direction: Literal['OUTGOING', 'INCOMING'] | None = None
     operation: str | None = None
     route_hint: Literal["VECTOR", "GRAPH", "BOTH"] | None = None
 

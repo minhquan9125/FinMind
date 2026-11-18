@@ -29,6 +29,30 @@ class SimpleStorage {
 
 // ---------- Tests ----------
 
+test('Stop aborts the message request without turning it into a connection error', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
+  const controller = new AbortController();
+  globalThis.fetch = async (url, options) => {
+    assert.equal(options.signal, controller.signal);
+    return new Promise((resolve, reject) => {
+      options.signal.addEventListener('abort', () => reject(new DOMException('Stopped', 'AbortError')), { once: true });
+    });
+  };
+  const pending = chatApi.sendMessage('session', 'Question', 0, controller.signal);
+  controller.abort();
+  await assert.rejects(pending, { name: 'AbortError' });
+});
+
+test('Stop during response decoding preserves the abort error', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
+  globalThis.fetch = async () => ({ ok: true, json: async () => { throw new DOMException('Stopped', 'AbortError'); } });
+  await assert.rejects(chatApi.sendMessage('session', 'Question', 0), { name: 'AbortError' });
+});
+
 test('throws error when token is missing on any call', async (t) => {
   resetEnv();
   globalThis.localStorage = new SimpleStorage(); // no token stored

@@ -6,7 +6,7 @@ import json
 
 from .chat_types import ChatError, MAX_BYTES, MAX_MESSAGES, MAX_TEXT_LEN, now_iso
 from .retrieval_flow.history import VIETNAM, restore_session
-from .conversation_actions import is_session_summary
+from .conversation_actions import conversation_action, wants_brief_summary
 
 
 def validate_input(text, revision):
@@ -59,10 +59,30 @@ async def snapshot(doc):
 async def append_turn(doc, text, engine):
     if len(doc['messages'])+2 > MAX_MESSAGES: raise ChatError(422, 'Số lượng tin nhắn vượt quá giới hạn 2000.')
     try:
-        if engine is not None and is_session_summary(text):
-            from .conversation_summary import summarize_session
+        live_context = copy.deepcopy(doc.get('metadata', {}).get('live_context', {}))
+        action = conversation_action(text, live_context) if engine is not None else None
+        if action in ('CONFIRM', 'CANCEL'):
+            import uuid
+            live_context.pop('_pending_conversation_action', None)
+            if action == 'CONFIRM':
+                live_context['_pending_conversation_action'] = 'SUMMARY'
+            result = dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+                b1_decision='ASK_CLARIFICATION',status='ASK_CLARIFICATION',
+                reason_code='CONFIRM_SESSION_SUMMARY' if action=='CONFIRM' else 'CONVERSATION_ACTION_CANCELLED',
+                scope=live_context,evidence_pack=None,errors=[],
+                message=('Bạn muốn tổng hợp các nội dung có nguồn trong cuộc chat hiện tại đúng không? '
+                         'Bản tổng hợp dùng nội dung đã lưu, chưa áp dụng bộ lọc nội dung riêng.' if action=='CONFIRM'
+                         else 'Đã bỏ yêu cầu tổng hợp. Bạn muốn tra cứu nội dung nào?'),
+                clarification_options=([dict(id='summary',label='Đúng, tổng hợp cuộc chat',reply='Đúng',description=''),
+                    dict(id='cancel',label='Không, tôi hỏi nội dung khác',reply='Không',description='')] if action=='CONFIRM' else []))
+            content=result['message']
+        elif engine is not None and action == 'SUMMARY':
+            from .conversation_summary import summarize_session, group_summary
             from .live_research import render_live_response
             result = summarize_session(doc)
+            result['scope'].pop('_pending_conversation_action', None)
+            if wants_brief_summary(text) or not ('chi tiết' in text.lower() or 'chi tiet' in text.lower()):
+                result = group_summary(result)
             content = render_live_response(result)
         elif engine is not None:
             from .live_research import render_live_response
@@ -75,7 +95,8 @@ async def append_turn(doc, text, engine):
                             and (candidate.get('evidence_pack') or {}).get('schema_version') == '1.2')):
                     previous = candidate
                     break
-            result = await asyncio.wait_for(engine.answer(text, doc['session_id'], doc.get('metadata', {}).get('live_context', {}),
+            live_context.pop('_pending_conversation_action',None)
+            result = await asyncio.wait_for(engine.answer(text, doc['session_id'], live_context,
                 previous_result=previous), engine.retrieval_timeout+engine.limits.read_timeout_seconds+5)
             content = render_live_response(result)
         else:

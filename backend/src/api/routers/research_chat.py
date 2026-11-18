@@ -5,7 +5,7 @@ import jwt
 from typing import Optional
 from functools import lru_cache
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, field_validator
 
@@ -30,7 +30,11 @@ def configure_market_services(live=None, news=None):
 def _intent_classifier(embedder):
     """Nhân's classify_intent bound to the app's shared BGE-M3 service (loaded once, reused)."""
     from ...retrieval_orchestration.intent_v2_classifier import classify_intent
-    return lambda question, context: classify_intent(question, embedder=embedder)
+    def classify(question, context):
+        if not getattr(embedder, 'is_ready', True):
+            raise RuntimeError('INTENT_MODEL_WARMING')
+        return classify_intent(question, embedder=embedder, context=context)
+    return classify
 
 
 @lru_cache(maxsize=1)
@@ -79,7 +83,7 @@ def get_store() -> PostgresSessionStore:
             retriever,
             provider=provider, limits=limits, limits_source=CachedLimits(settings.admin_ingestion_directory),
             retrieval_timeout=settings.research_retrieval_timeout_seconds,
-            market=MarketResearch(FileMarketDataRepository(), services=lambda: _market_services,
+            market=MarketResearch(FileMarketDataRepository(), services=lambda: (_market_services[0], None),
                                   trend_reader=lambda symbol: get_price_trend(get_pool(), symbol),
                                   health_reader=lambda symbol: get_financial_health(get_pool(), symbol)),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
@@ -195,12 +199,14 @@ async def get_session(
 async def send_message(
     session_id: str,
     body: SendMessageRequest,
+    request: Request,
     owner: str = Depends(get_owner),
     store: PostgresSessionStore = Depends(get_store),
 ) -> dict:
     """Send a message to a chat session."""
     try:
-        return await store.send(owner, session_id, body.text, body.revision)
+        from ..chat_cancellation import while_connected
+        return await while_connected(request, store.send(owner, session_id, body.text, body.revision))
     except ChatError as e:
         raise HTTPException(status_code=e.status, detail=e.message)
     except Exception:

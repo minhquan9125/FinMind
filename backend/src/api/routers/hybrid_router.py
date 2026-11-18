@@ -75,6 +75,7 @@ class RouterContextPayload(BaseModel):
     position_code: str | None = None
     event_type: str | None = None
     relation_types: list[str] = Field(default_factory=list)
+    relation_direction: Literal['OUTGOING', 'INCOMING'] | None = None
 
     def to_session_scope(self) -> SessionScope:
         values = self.model_dump()

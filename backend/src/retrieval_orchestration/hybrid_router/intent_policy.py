@@ -45,7 +45,7 @@ GRAPH_TERMS = (
     "he sinh thai", "so huu", "co dong", "ban lanh dao", "chu tich", "ceo",
     "tong giam doc", "giam doc", "sep lon", "nam quyen", "giu ghe",
     "cam nhieu co phieu", "doi thu", "cung nganh", "chung mam", "doi tac",
-    "chuoi cung ung", "kiem soat", "dieu hanh", "lanh dao",
+    "chuoi cung ung", "kiem soat", "dieu hanh", "lanh dao", "hop tac", "bat tay",
 )
 PROFILE_TERMS = (
     "thong tin",
@@ -102,7 +102,7 @@ def resolve_intent(text, companies, industry, metric=None, entity_mentions=()):
         content_text = re.sub(rf"\b{re.escape(phrase)}\b", " ", content_text)
     if graph or profile:
         # Naming the report for a graph citation is not a second content task.
-        content_text = re.sub(r"\b(?:bao cao thuong nien|bao cao tai chinh|bctn|bctc|bao cao)\b", " ", content_text)
+        content_text = re.sub(r"\b(?:bao cao thuong nien|bao cao tai chinh|bctn|bctc|bao cao|tin tuc|bai bao|theo tin)\b", " ", content_text)
     content = (metric is not None or contains(content_text, CONTENT_TERMS)
                or bool(re.search(r"\b(?:ke hoach|du an|chien luoc)\b.*\bai\b", text)))
     event = contains(text, EVENT_TERMS)
@@ -114,6 +114,8 @@ def resolve_intent(text, companies, industry, metric=None, entity_mentions=()):
         return RetrievalIntent("VECTOR", "FINANCIAL_COMPARISON")
     if len(companies) >= 2:
         return RetrievalIntent("BOTH", "OVERALL_COMPARISON")
+    if graph and not content and not impact and contains(text, ('doi tac', 'hop tac', 'bat tay')):
+        return RetrievalIntent("GRAPH", "RELATIONSHIP_LOOKUP")
     if event and (companies or entity_mentions):
         return RetrievalIntent("BOTH", "EVENT_IMPACT", bool(entity_mentions))
     if industry and not companies and (macro or impact or contains(text, COMPARISON_TERMS)):

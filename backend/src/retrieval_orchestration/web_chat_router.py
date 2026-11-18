@@ -8,6 +8,7 @@ import copy
 import json
 import re
 import uuid
+import unicodedata
 
 from .hybrid_router.decision_engine import SessionScope, ScopeResolver, position_matches, _normalize
 from .hybrid_router.adapters import _period_window
@@ -71,7 +72,7 @@ def graph_relations_extract(facts, pack, relation_types):
     if not wanted or not facts:
         return None
     evidence = {i['evidence_id']: i for i in pack.get('items') or []}
-    squash = lambda text: ' '.join(str(text).split())
+    squash = lambda text: ' '.join(unicodedata.normalize('NFC', str(text)).casefold().split())
     groups, seen, numbers, citations = {}, set(), {}, []
     for fact in facts:
         if fact.get('relation_type') not in wanted:
@@ -93,7 +94,7 @@ def graph_relations_extract(facts, pack, relation_types):
             numbers[source['evidence_id']] = len(numbers) + 1
             citations.append({**{k: copy.deepcopy(source[k]) for k in (
                 'evidence_id', 'source_id', 'chunk_id', 'source_sha256', 'locator', 'content_sha256',
-                'source_verified', 'title', 'source_type') if k in source}, 'citation_number': numbers[source['evidence_id']]})
+                'source_verified', 'title', 'source_type', 'source_url') if k in source}, 'citation_number': numbers[source['evidence_id']]})
         if role:
             groups.setdefault((fact['relation_type'], fact['object']), []).append(
                 (f"{fact['subject']} ({fact['position']})", source['evidence_id']))
@@ -177,6 +178,12 @@ class Neo4jChatRetriever:
                 for edge in edges:
                     if types and edge.get('relation_type') not in types:
                         continue
+                    # Neighborhood discovery is undirected; ownership is not.
+                    # Person -> company and symmetric cooperation stay untouched.
+                    if edge.get('relation_type') in ('HAS_SUBSIDIARY', 'HAS_ASSOCIATE'):
+                        endpoint = 'object_id' if getattr(scope, 'relation_direction', None) == 'INCOMING' else 'subject_id'
+                        if edge[endpoint] != root['id']:
+                            continue
                     attrs = edge.get('attributes') or {}
                     if source_scoped and concrete and str(attrs.get('source_report_year')) not in concrete:
                         continue
@@ -312,6 +319,8 @@ class Neo4jChatRetriever:
                         if carried:
                             continue     # an earlier graph's fact whose source is no longer identical: not used
                         raise
+                    if scope.source_type == 'NEWS' and any(row['doc_type'] != 'NEWS' for _, _, row in replayed):
+                        continue  # A request for news cannot be supported by an annual report.
                     for raw, source, row in replayed:
                         loc = row['locator_json']
                         loc = json.loads(loc) if isinstance(loc, str) else copy.deepcopy(loc)
@@ -407,7 +416,10 @@ class WebChatRouter:
                              metric_code=None if source == 'BCTN' else scope.get('metric_code'),
                              reporting_entity=scope.get('reporting_entity') or 'UNKNOWN', source_type=source)
         trace['vector_calls'] += 1
-        content = await asyncio.wait_for(self.content_retriever.retrieve(question, content_scope), self.timeout)
+        try:
+            content = await asyncio.wait_for(self.content_retriever.retrieve(question, content_scope), self.timeout)
+        except TimeoutError as exc:
+            raise GraphChatError('CONTENT_FALLBACK_TIMEOUT') from exc
         if not content['items']:
             return True, None
         prepare_evidence(content)
@@ -529,6 +541,15 @@ class WebChatRouter:
                           message='Tra cứu quan hệ quá thời gian chờ. Vui lòng thử lại.')
             return result
         except (GraphChatError, SourceProblem, CitationError, ReconstructionError) as exc:
+            if exc.code in ('EMBEDDING_WARMING', 'EMBEDDING_INIT_FAILED'):
+                result.update(status='SYSTEM_UNAVAILABLE', reason_code=exc.code,
+                              message='Bộ tìm kiếm đang khởi tạo mô hình. Vui lòng thử lại sau ít phút.'
+                              if exc.code == 'EMBEDDING_WARMING' else 'Chưa khởi tạo được mô hình tìm kiếm. Vui lòng kiểm tra trạng thái hệ thống.')
+                return result
+            if exc.code == 'CONTENT_FALLBACK_TIMEOUT':
+                result.update(status='SYSTEM_UNAVAILABLE', reason_code=exc.code,
+                              message='Tìm văn bản nguồn quá thời gian chờ. Vui lòng thử lại.')
+                return result
             result.update(status='INSUFFICIENT_EVIDENCE', reason_code=exc.code,
                           message='Chưa xác minh được quan hệ với nguồn của kho dữ liệu đang dùng.')
             return result

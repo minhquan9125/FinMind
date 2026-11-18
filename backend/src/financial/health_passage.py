@@ -50,6 +50,7 @@ def compact_health(analysis: dict, peers: dict, citations: list) -> dict:
         median = _two(peer.get('peer_median')) if peer.get('peer_median') is not None else None
         signals[name] = dict(value=_two(signal['value']) if signal.get('value') is not None else None,
                              status=signal.get('status'),
+                             basis=(signal.get('comparison') or {}).get('basis'),
                              peer=dict(median=median, position=peer.get('position')) if median else None)
     return dict(period=analysis.get('period'), status=analysis.get('status'), signals=signals,
                 citations=list(citations)[:MAX_CITATIONS])
@@ -82,11 +83,20 @@ def financial_health_passage(symbol: str, health: dict) -> str:
             line += f' ({POSITION[peer["position"]]} trung vị nhóm cùng ngành ({_percent(peer["median"])}))'
         if signal.get('status') == 'provisional':
             line += ' [tạm tính: nguồn chưa được duyệt]'
-        lines.append(f'{line} — {MEANINGS[name]}.')
+        meaning = MEANINGS[name]
+        if name.endswith('_yoy_percent'):
+            year, part = PERIOD.match(health['period']).groups()
+            prior = f'{int(year)-1}-{part}'
+            prefix = 'lũy kế đến ' if signal.get('basis') == 'YTD' else ''
+            meaning += f' ({prefix}{_period_text(health["period"])} so với {prefix}{_period_text(prior)})'
+        lines.append(f'{line} — {meaning}.')
     if missing:  # one line next to the values, so one short quote covers both
         lines.append(f'- Chưa đủ dữ liệu đã xác minh: {", ".join(missing)}.')
     if not shown:
         lines.append('Chưa có chỉ số tài chính nào đủ dữ liệu đã xác minh cho kỳ này.')
+    if not any(health['signals'].get(name,{}).get('value') is not None
+               for name in ('revenue_yoy_percent','profit_yoy_percent')):
+        lines.append('Chưa đủ dữ liệu doanh thu/lợi nhuận cùng kỳ năm trước đã xác minh để so sánh năm này với năm trước; không so khác quý hoặc khác cơ sở báo cáo.')
     if health.get('citations'):
         sources = '; '.join(f'{c["title"]} (trang {c["page"]})' for c in health['citations'])
         lines.append(f'Nguồn: {sources}.')

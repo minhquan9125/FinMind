@@ -40,6 +40,14 @@ class EmbeddingService:
         self._model = None
         self._load_lock = threading.Lock()
 
+    @property
+    def is_ready(self):
+        return self._model is not None
+
+    def prepare(self):
+        """Load local weights once; safe to run in a shared background task."""
+        self._load()
+
     def _load(self):
         with self._load_lock:
             return self._load_once()

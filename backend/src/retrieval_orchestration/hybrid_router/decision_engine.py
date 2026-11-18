@@ -70,10 +70,15 @@ def personnel_filters(text: str) -> dict:
     if not result.get('relation_types'):
         for pattern, relation in ((r'co dong|so huu|cam nhieu co phieu', 'OWNS_SHARES'),
                                   (r'cong ty con', 'HAS_SUBSIDIARY'),
-                                  (r'cong ty lien ket', 'HAS_ASSOCIATE')):
+                                  (r'cong ty lien ket', 'HAS_ASSOCIATE'),
+                                  (r'cong ty me', 'HAS_SUBSIDIARY'),
+                                  (r'doi tac|hop tac|bat tay', 'COOPERATES_WITH')):
             if re.search(rf'\b(?:{pattern})\b', text):
                 result['relation_types'] = [relation]
                 break
+    if result.get('relation_types') == ['HAS_SUBSIDIARY'] and re.search(
+            r'\bcong ty me\b|\bla cong ty con cua\b', text):
+        result['relation_direction'] = 'INCOMING'
     return result
 
 
@@ -258,6 +263,7 @@ class SessionScope:
     position_code: str | None = None
     event_type: str | None = None
     relation_types: tuple[str, ...] = ()
+    relation_direction: str | None = None
 
 
 @dataclass(frozen=True)
@@ -461,7 +467,9 @@ class ScopeResolver:
             if not companies and len(context.companies) == 1:
                 companies = list(context.companies)
             if explicit_reference:
-                if not periods:
+                graph_from_market = (contains(normalized, GRAPH_TERMS)
+                    and context.source_type in ('PRICE', 'MARKET_ANALYSIS'))
+                if not periods and not graph_from_market:
                     periods = list(context.periods)
                 new_operation = contains(normalized, GRAPH_TERMS + PROFILE_TERMS + CONTENT_TERMS
                                          + MARKET_ANALYSIS_TERMS + KNOWLEDGE_TERMS)
@@ -521,7 +529,7 @@ class ScopeResolver:
             if context and not context.companies and context.topic and context.route_hint:
                 intent = RetrievalIntent(context.route_hint, context.topic)
                 metric = context.metric_code
-                personnel = {k: getattr(context, k) for k in ("person_name", "position_code", "event_type", "relation_types")}
+                personnel = {k: getattr(context, k) for k in ("person_name", "position_code", "event_type", "relation_types", "relation_direction")}
             else:
                 intent = RetrievalIntent("VECTOR", "COMPANY_PROFILE")
         inherit_operation = (context and context.confirmed and explicit_reference and not independent_scope
@@ -532,7 +540,7 @@ class ScopeResolver:
         if inherit_operation:
             from .intent_policy import RetrievalIntent
             intent = RetrievalIntent(context.route_hint, context.topic, not context.companies)
-            personnel = {k: getattr(context, k) for k in ("person_name", "position_code", "event_type", "relation_types")}
+            personnel = {k: getattr(context, k) for k in ("person_name", "position_code", "event_type", "relation_types", "relation_direction")}
         if personnel.get("person_name"):
             from .intent_policy import RetrievalIntent
             intent = RetrievalIntent("GRAPH", "PERSON_LOOKUP", True)
@@ -542,10 +550,11 @@ class ScopeResolver:
                             topic=intent.topic, detected_industry=detected_industry,
                             entity_mentions=entity_mentions, **personnel,
                             **reporting_filters(normalized, periods, metric))
-        scope.source_type = ("COMPANY_PROFILE" if intent.topic == "COMPANY_PROFILE" else "BCTN" if contains(normalized, ("bctn", "bao cao thuong nien"))
+        scope.source_type = ("COMPANY_PROFILE" if intent.topic == "COMPANY_PROFILE" else "NEWS" if contains(normalized, ("tin tuc", "bai bao", "theo tin")) else "BCTN" if contains(normalized, ("bctn", "bao cao thuong nien"))
                              else "PRICE" if metric == "STOCK_PRICE" else
                              "BCTN" if intent.route == "GRAPH" else "BCTC")
-        if inherit_operation and context.source_type and metric != "STOCK_PRICE":
+        if (inherit_operation and context.source_type and metric != "STOCK_PRICE"
+                and not contains(normalized, ("tin tuc", "bai bao", "theo tin", "bctn", "bao cao thuong nien", "bctc", "bao cao tai chinh"))):
             scope.source_type = context.source_type
         if context and context.confirmed and explicit_reference and not independent_scope and metric != "STOCK_PRICE" and not contains(
                 normalized, ("hop nhat", "rieng le", "cong ty me")):

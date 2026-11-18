@@ -51,6 +51,12 @@ def build_grounded_request(question, evidence, limits, scope=None):
     content = request['contents'][0]['parts'][0]
     body = json.loads(content['text'])
     body['scope'] = deepcopy(scope or {})
+    if body['scope'].get('_analysis_issues'):
+        request['systemInstruction']['parts'][0]['text'] += (
+            ' Một số thành phần phân tích bị lỗi truy xuất được ghi trong _analysis_issues. '
+            'Không nói rằng database không có dữ liệu hoặc chỉ báo đó; chỉ nói chưa truy xuất được. '
+            'Không tự suy hoặc tính thêm chỉ báo khi không có bằng chứng tương ứng.'
+        )
     for relation in body['scope'].get('graph_relations') or []:
         # Hash bindings are for audit, not for the model; they only fill the input limit.
         relation.pop('source_bindings', None)
@@ -101,6 +107,9 @@ def build_grounded_request(question, evidence, limits, scope=None):
     elif body['scope'].get('source_type') == 'MARKET_ANALYSIS':
         focus = (body['scope'].get('_market_request') or {}).get('focus')
         groups = ANALYSIS_FOCUS.get(focus, ANALYSIS_FOCUS['STOCK'])
+        detailed = bool(re.search(r'\b(?:chi tiet|chuyen sau|day du|tung chi bao|tat ca chi bao|rsi|macd|bollinger|sma\d*)\b', _fold(question)))
+        has_news=bool((body['scope'].get('_analysis_news') or {}).get('count'))
+        base_instruction = request['systemInstruction']['parts'][0]['text']
         request['systemInstruction']['parts'][0]['text'] += (
             ' Với phân tích ' + ANALYSIS_FOCUS_NAME.get(focus, 'cổ phiếu') + ': trả lời chi tiết theo các nhóm dưới đây, '
             'đúng thứ tự, bỏ nhóm không có bằng chứng, không trình bày nhóm ngoài danh sách: '
@@ -128,16 +137,65 @@ def build_grounded_request(question, evidence, limits, scope=None):
             'Mọi số, ngày, đơn vị và từ viết tắt trong một ý phải có trong quote của chính ý đó; '
             'giữ nguyên cách viết số như bằng chứng.'
         )
+        if not detailed:
+            compact_order = {'FINANCIAL':('Tình hình tài chính','Giá','Nhận định tổng hợp'),
+                'TECHNICAL':('Xu hướng giá','Giá','Nhận định tổng hợp')}.get(focus,
+                ('Giá','Xu hướng giá','Tình hình tài chính','Nhận định tổng hợp'))
+            if has_news and focus!='TECHNICAL':
+                compact_order=compact_order[:-1]+('Tin tức',compact_order[-1])
+            request['systemInstruction']['parts'][0]['text'] = base_instruction + (
+                f' Trả lời phân tích dễ đọc cho người không chuyên: tối đa {len(compact_order)} ý chính. '
+                'Các ý số liệu dài tối đa 240 ký tự, 1–2 câu ngắn; riêng nhận định tổng hợp được dài 3–4 câu, tối đa 600 ký tự. '
+                'Thứ tự các nhóm: ' + ' '.join(f'({i}) "{heading}:"' for i,heading in enumerate(compact_order,1)) + '. '
+                'Mỗi nhóm tối đa một ý; chỉ nêu nhóm có bằng chứng và phù hợp câu hỏi. '
+                'Giá chỉ nêu mức gần nhất và ngày giao dịch. Xu hướng ưu tiên ngắn hạn: nhãn và một mức tăng/giảm '
+                'quan trọng nhất; có thể nói gọn các khung còn lại cùng giảm/tăng nếu nguồn xác nhận. '
+                'Tài chính ưu tiên doanh thu và lợi nhuận so với cùng kỳ năm trước nếu có số liệu đã xác minh; '
+                'nêu rõ hai kỳ đối chiếu (ví dụ cùng quý hoặc cùng lũy kế), không gọi số liệu một quý là cả năm. '
+                'Nếu không có so sánh cùng kỳ, nói ngắn chưa đủ dữ liệu đối chiếu; có thể nêu một chỉ số tài chính sẵn có. '
+                'Bắt buộc kết thúc bằng một ý "Nhận định tổng hợp:" có lập luận theo thứ tự: '
+                'kết luận, lý do từ bằng chứng, bức tranh kinh doanh và giới hạn của kết luận. '
+                'Không chỉ lặp nhãn Tăng/Giảm. Giải thích vì sao có nhãn từ mục "Lý do:" của bằng chứng xu hướng, '
+                'chẳng hạn giá nằm dưới đường trung bình, đường trung bình đi xuống và lợi suất âm khi nguồn ghi đúng như vậy. '
+                'Đó là lý do phân loại xu hướng theo dữ liệu, không phải nguyên nhân kinh tế làm giá giảm. '
+                'Nêu tín hiệu giá và kinh doanh cùng chiều hay trái chiều chỉ khi cả hai có bằng chứng; '
+                'phân biệt kỳ BCTC với ngày giao dịch, không suy rằng lợi nhuận làm giá thay đổi. '
+                'Kết thúc bằng giới hạn cụ thể khi có: thiếu so sánh cùng kỳ, khác thời điểm hoặc thiếu phiên. '
+                'Không lặp bảng số, không chấm điểm mạnh/yếu hoặc khuyến nghị mua bán. '
+                'Tổng cộng chỉ 2–3 số liệu chính ngoài ngày/kỳ; ưu tiên so sánh cùng kỳ hơn các chỉ báo phụ; không liệt kê độ dốc, biên độ, đỉnh đáy, '
+                'SMA, RSI, MACD hay định nghĩa/công thức khi người dùng chưa hỏi. '
+                'Không tự suy nguyên nhân biến động, không khuyến nghị mua bán hay dự báo. '
+                'Giữ nguyên nhãn xu hướng của bằng chứng: không đổi, không nâng hay hạ nhãn. '
+                'Mỗi số và nhận định phải có quote nguyên văn hỗ trợ; không dùng số minh họa hoặc tự làm tròn. '
+                'Thiếu hoặc lỗi truy xuất thì nói gọn đúng giới hạn đó, không kết luận dữ liệu không tồn tại.'
+            )
+        request['systemInstruction']['parts'][0]['text'] += (
+            ' Tin tức nếu có chỉ đến từ corpus đã nạp, trong 30 ngày trước hoặc đúng ngày phân tích. '
+            'Chọn một sự kiện liên quan công ty, ghi ngày đăng; không coi thời điểm đăng là ngày xảy ra sự kiện. '
+            'Một bài cùng mã hoặc cùng thời gian không chứng minh nguyên nhân tăng giảm giá: '
+            'nếu nguồn không nêu liên hệ nhân quả thì chỉ nói diễn biến liên quan, chưa xác định nguyên nhân. '
+            'Khi scope ghi _analysis_news.count bằng 0, nói chưa tìm thấy tin trong phạm vi đã kiểm tra, '
+            'không kết luận công ty không có tin. Khi content_truncated là true thì nội dung bài mới có một phần.'
+        )
         # One idea per claim (technical: 3 horizons + facts + ~6 indicators + price + summary); fits max_output_tokens.
         schema = request['generationConfig']['responseJsonSchema']['properties']['claims']
-        schema['maxItems'] = 12
-        claim['properties']['text']['maxLength'] = 450
+        schema['maxItems'] = 12 if detailed else len(compact_order)
+        claim['properties']['text']['maxLength'] = 600
         claim['properties']['evidence_ids']['maxItems'] = 2
         quotes = claim['properties']['support_quotes']
         quotes['maxItems'] = 3
         quotes['items']['properties']['quote']['maxLength'] = 300
-        body['evidence'] = [{**item, 'passage': item['passage'][:5000]}
-                            for item in body['evidence'][:6]]
+        selected=[]
+        news_counts={}
+        for item in body['evidence']:
+            item={**item,'source_type':evidence[item['evidence_id']].get('source_type')}
+            if item.get('source_type')=='NEWS':
+                source=item.get('source_id')
+                if news_counts.get(source,0)>=2: continue
+                news_counts[source]=news_counts.get(source,0)+1
+            selected.append(item)
+            if len(selected)==10: break
+        body['evidence'] = [{**item, 'passage': item['passage'][:5000]} for item in selected]
     content['text'] = json.dumps(body, ensure_ascii=False)
     return request
 
@@ -167,7 +225,9 @@ ANALYSIS_GROUPS = {
     'NEWS_BUSINESS': ('Tin tức', 'mỗi tin một ý về kết quả kinh doanh, vốn, phát hành hoặc đầu tư của công ty, chỉ '
                       'theo nội dung bài; bỏ qua tin chỉ nói về giá cổ phiếu; chỉ nêu những con số và tên viết tắt có '
                       'trong chính câu được trích, tin có nhiều số thì tách thành nhiều ý.'),
-    'SUMMARY': ('Nhận định tổng hợp', '1–2 ý gom các tín hiệu cùng chiều và trái chiều đã nêu ở trên bằng lời, '
+    'SUMMARY': ('Nhận định tổng hợp', '3–4 câu: kết luận có lý do từ phần "Lý do:" của bằng chứng; '
+                'giải thích căn cứ phân loại xu hướng, không suy nguyên nhân kinh tế của biến động. '
+                'Gom các tín hiệu cùng chiều và trái chiều đã nêu ở trên bằng lời, '
                 'không nhắc lại con số, ngày tháng hay tên viết tắt của chỉ báo (ví dụ nói "các chỉ báo động lượng" '
                 'thay vì "RSI, MFI"); nói rõ điều chưa thể kết luận và dữ kiện còn thiếu.'),
 }

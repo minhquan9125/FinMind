@@ -25,6 +25,24 @@ def article_query(question):
     return target
 
 
+def article_content_request(question, today):
+    """An explicit article/announcement question is content, not graph lookup."""
+    norm = _fold(question).strip(' .?!')
+    if re.search(r'\b(?:bctn|bctc|bao cao thuong nien|bao cao tai chinh)\b', norm):
+        return None
+    reference = re.search(r'\b(?:trong|theo|ve)\s+bai(?: viet| bao)?\b|\bbai dang\b|\btin (?:nay|do|dang)\b|'
+                          r'\b(?:theo|trong)\s+(?:thong bao|nghi quyet|quyet dinh)\b', norm)
+    announcement = re.search(r'\b(?:thong bao|nghi quyet|quyet dinh)\b', norm)
+    relocation = re.search(r'\bchi nhanh\b.*\b(?:thay doi|chuyen|doi)\s+(?:dia diem|dia chi|tru so)\b', norm)
+    question_cue = re.search(r'\b(?:ai|gi|nao|bao nhieu|vi sao|tai sao|tom tat|noi dung|cho biet)\b', norm)
+    if not reference and not ((announcement or relocation) and question_cue):
+        return None
+    query = re.sub(r'\b(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{2}-\d{2})\b', '', norm)
+    query = re.sub(r'\b(?:trong|theo)\s+(?:bai(?: viet| bao)?|tin)(?: dang)?(?: ngay)?\b', '', query)
+    query = re.sub(r'\btheo\s+(?:thong bao|nghi quyet|quyet dinh)(?: ngay)?\b', '', query)
+    return dict(kind='NEWS', action='DETAIL', day=calendar_day(norm, today), query=query.strip())
+
+
 def _search_text(text):
     return ' '.join(re.findall(r'[a-z0-9]+', _fold(text)))
 
@@ -41,7 +59,8 @@ def matching_articles(query, items, claims=()):
             matches = [item for item in items if item.get('evidence_id') in ids]
             if matches: return matches
     stop = {'cho', 'toi', 'minh', 'biet', 'chi', 'tiet', 'tom', 'tat', 'noi', 'dung', 've', 'bai', 'tin', 'tuc',
-            'cua', 'va', 'la', 'co', 'cac', 'nhung', 'duoc', 'trong', 'voi', 'tu', 'tai', 'the', 'nay', 'do'}
+            'cua', 'va', 'la', 'co', 'cac', 'nhung', 'duoc', 'trong', 'voi', 'tu', 'tai', 'the', 'nay', 'do',
+            'ai', 'lam', 'gi', 'nao', 'nhu', 'sao', 'dang', 'ngay', 'theo', 'thang', 'nam'}
     words = set(norm.split())-stop
     if len(words) < 4: return []
     scored = []
@@ -73,7 +92,7 @@ def news_reference(question, context, previous):
     if (context or {}).get('source_type') != 'NEWS': return None
     if previous.get('scope', {}).get('source_type') != 'NEWS': return None
     pack = previous.get('evidence_pack') or {}
-    if pack.get('schema_version') != '1.2': return None
+    if pack.get('schema_version') not in ('1.1', '1.2'): return None
     if (context or {}).get('companies') != previous['scope'].get('companies'): return None
     try: items = list(prepare_evidence(pack).values())
     except CitationError: return None
