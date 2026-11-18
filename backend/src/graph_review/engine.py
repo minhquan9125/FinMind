@@ -38,7 +38,7 @@ PLANNED = re.compile(r"\b(?:dự kiến|kế hoạch|sẽ|đề nghị|đăng k�
 NEGATED = re.compile(r"\bkhông\s+(?:phải|còn|hề|có|sở hữu|nắm giữ|hợp tác|là)\b")
 RELATION_CUES = {
     "HAS_SUBSIDIARY": r"công ty con", "HAS_ASSOCIATE": r"công ty liên kết",
-    "OWNS_SHARES": r"sở hữu|nắm giữ|cổ đông", "COOPERATES_WITH": r"hợp tác|ký kết",
+    "OWNS_SHARES": r"sở hữu|nắm giữ|cổ đông", "COOPERATES_WITH": r"hợp tác|ký kết|đồng tài trợ",
     "HOLDS_ROLE": r"chủ tịch|giám đốc|ceo|hđqt|giữ chức",
     "APPOINTS": r"bổ nhiệm", "DISMISSES": r"miễn nhiệm",
     "INVOLVES": r"tham dự|tham gia|tổ chức|phát biểu|tài trợ|ký kết",
@@ -103,7 +103,11 @@ def proof_patterns(kind, subject, target, attributes):
                 rf"{target}\s+(?:là\s+công ty\s+)?do\s+{subject}\s+sở hữu"]
     if kind == "COOPERATES_WITH":
         return [rf"{subject}\s+(?:đã\s+|đang\s+)?(?:hợp tác|ký kết thỏa thuận hợp tác)\s+(?:với\s+)?{target}",
-                rf"{target}\s+(?:đã\s+|đang\s+)?hợp tác\s+(?:với\s+)?{subject}"]
+                rf"{target}\s+(?:đã\s+|đang\s+)?hợp tác\s+(?:với\s+)?{subject}",
+                # Explicit joint action by two named parties, not membership
+                # in a list of conference attendees or other co-occurrence.
+                rf"{subject}\s+và\s+{target}\s+(?:đã\s+)?(?:bắt tay\s+)?đồng tài trợ\b",
+                rf"{target}\s+và\s+{subject}\s+(?:đã\s+)?(?:bắt tay\s+)?đồng tài trợ\b"]
     position = re.escape(text_key(attributes.get("position", ""))) or r"(?!)"
     if kind == "HOLDS_ROLE":
         return [rf"{subject}\s*(?:[-–,]\s*)?(?:(?:là|giữ chức|giữ chức vụ|đảm nhiệm chức vụ)\s+)?{position}\s+(?:của\s+|tại\s+)?{target}"]
@@ -196,7 +200,7 @@ class ReviewEngine:
             warnings.add("WARN_HISTORICAL_ROLE")
         periods = candidate.temporal
         try:
-            validate_temporal(periods,allow_month=candidate.extractor_metadata.get('envelope_schema_version')=='2.2.0')
+            validate_temporal(periods,allow_month=candidate.extractor_metadata.get('envelope_schema_version') in ('2.2.0','2.3.0'))
         except ValueError:errors.add('ERR_TEMPORAL_INVALID')
         if not periods.get("as_of") and not periods.get("valid_from"):
             warnings.add("WARN_TEMPORAL_BASIS_MISSING")
