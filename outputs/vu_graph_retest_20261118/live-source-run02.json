@@ -1,0 +1,36 @@
+{
+  "created_at": "2026-11-18T08:56:05.801841+07:00",
+  "readonly": true,
+  "provider_called": false,
+  "postgres_connected": true,
+  "neo4j_connected": true,
+  "status": "PARTIAL_OR_BLOCKED",
+  "cases": [
+    {
+      "question": "Ai là Chủ tịch FPT?",
+      "route": "GRAPH",
+      "status": "BLOCKED",
+      "reason_code": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+    },
+    {
+      "question": "Ai là Chủ tịch TCB?",
+      "route": "GRAPH",
+      "status": "BLOCKED",
+      "reason_code": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+    },
+    {
+      "question": "Ai là Chủ tịch VCB?",
+      "route": "GRAPH",
+      "status": "NO_DATA",
+      "evidence_count": 0,
+      "relation_count": 0,
+      "source_years": []
+    },
+    {
+      "question": "Liệt kê hội đồng quản trị FPT.",
+      "route": "GRAPH",
+      "status": "BLOCKED",
+      "reason_code": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+    }
+  ]
+}
