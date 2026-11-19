@@ -81,7 +81,7 @@ function JobsList() {
   }, [running]);
   return <>
     <div className="flex items-center justify-between gap-4"><div>
-      <h1 className="text-2xl font-semibold text-slate-900">Job dữ liệu News</h1>
+      <h1 className="text-2xl font-semibold text-slate-900">Công việc xử lý tin tức</h1>
       <p className="mt-1 text-sm text-slate-500">Báo cáo WBS16 đã được lưu · {data?.total ?? "—"} job</p>
     </div><Button onClick={reload} disabled={loading}>Làm mới</Button></div>
     <LaunchPanel onLaunched={reload} />

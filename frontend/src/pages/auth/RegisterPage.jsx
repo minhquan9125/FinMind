@@ -1,3 +1,4 @@
+import AuthFrame from "../../shared/ui/AuthFrame.jsx";
 import React, { useState } from "react";
 import { Link, useNavigate, useAuth } from "../../app/router.jsx";
 import { PATHS } from "../../shared/paths.js";
@@ -68,16 +69,16 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col justify-center items-center px-4 py-10 antialiased font-sans text-slate-900">
+    <AuthFrame><div className="fm-auth min-h-screen bg-[#F8FAFC] flex flex-col justify-center items-center px-4 py-10 antialiased font-sans text-slate-900">
       <div className="w-full max-w-[460px]">
         {/* Header trên cùng: Brand Logo và nút Về trang chủ */}
         <div className="flex items-center justify-between mb-6">
           <Link to={PATHS.home} className="flex items-center gap-2.5 no-underline group">
-            <div className="w-8 h-8 rounded-lg bg-[#2563EB] text-white flex items-center justify-center font-bold text-xs tracking-tight shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-[#2563EB] text-white flex items-center justify-center font-semibold text-xs tracking-tight shadow-xs">
               FM
             </div>
             <div className="flex flex-col">
-              <span className="text-base font-bold text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
+              <span className="text-base font-semibold text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
                 FinMind
               </span>
               <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">
@@ -107,7 +108,7 @@ export default function RegisterPage() {
         <div className="bg-white rounded-2xl border border-slate-200/80 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] p-7 sm:p-9">
           {/* Header Card */}
           <div className="mb-6">
-            <h1 className="text-2xl sm:text-[26px] font-bold tracking-tight text-slate-900 leading-snug">
+            <h1 className="text-2xl sm:text-[26px] font-semibold tracking-tight text-slate-900 leading-snug">
               Tạo tài khoản FinMind
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
@@ -308,6 +309,6 @@ export default function RegisterPage() {
           Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư
         </p>
       </div>
-    </div>
+    </div></AuthFrame>
   );
 }

@@ -1,3 +1,5 @@
+import { useSearchParams } from "../../app/router.jsx";
+import AppIcon from "../../shared/ui/AppIcon.jsx";
 import { useCallback, useEffect, useRef, useState } from "react";
 import AdminLayout from "./AdminLayout.jsx";
 import NewsGraphPanel from "./NewsGraphPanel.jsx";
@@ -46,10 +48,17 @@ function sourceLink(value) {
 }
 
 export default function AdminIngestionPage() {
+  const [workspaceParams, setWorkspaceParams] = useSearchParams();
+  const [workspaceTab, setWorkspaceTab] = useState(() => ['queue','settings','runs','relations'].includes(workspaceParams.get('workspace')) ? workspaceParams.get('workspace') : 'queue');
+  function switchWorkspace(tab) {
+    setWorkspaceTab(tab);
+    setWorkspaceParams(previous => { const next = new URLSearchParams(previous); next.set('workspace', tab); return next; }, { replace: true });
+  }
   const [source, setSource] = useState(null), [articles, setArticles] = useState([]), [jobs, setJobs] = useState([]);
   const [detail, setDetail] = useState(null), [note, setNote] = useState("");
   const [sourceOpen, setSourceOpen] = useState(false), [sourceLoading, setSourceLoading] = useState(false), [sourceError, setSourceError] = useState("");
   const [chunks, setChunks] = useState(null), [chunkOffset, setChunkOffset] = useState(0), [chunksLoading, setChunksLoading] = useState(false), [chunksError, setChunksError] = useState("");
+  const [selectionLoaded, setSelectionLoaded] = useState(false);
   const [selectionInfo, setSelectionInfo] = useState({ counts:{}, approved_ids:[], selection_limit:500 });
   const sourceRequest = useRef(0);
   const closeSource = useCallback(() => { sourceRequest.current += 1; setSourceOpen(false); }, []);
@@ -69,7 +78,14 @@ export default function AdminIngestionPage() {
     } catch (e) { if (request === sourceRequest.current) setChunksError(e.message); }
     finally { if (request === sourceRequest.current) setChunksLoading(false); }
   }
-  const [articleOffset, setArticleOffset] = useState(0), [articleTotal, setArticleTotal] = useState(0), [articleStatus, setArticleStatus] = useState("PENDING");
+  const [articleOffset, setArticleOffset] = useState(0), [articleTotal, setArticleTotal] = useState(0), [articleStatus, setArticleStatus] = useState(() => ["PENDING","APPROVED","INDEXED","QUARANTINED","REJECTED"].includes(workspaceParams.get("status")) ? workspaceParams.get("status") : "PENDING");
+  const requestedWorkspace = ['queue','settings','runs','relations'].includes(workspaceParams.get('workspace')) ? workspaceParams.get('workspace') : 'queue';
+  const requestedStatus = ['PENDING','APPROVED','INDEXED','QUARANTINED','REJECTED'].includes(workspaceParams.get('status')) ? workspaceParams.get('status') : 'PENDING';
+  useEffect(() => { setWorkspaceTab(requestedWorkspace); setArticleStatus(requestedStatus); setArticleOffset(0); }, [requestedWorkspace, requestedStatus]);
+  function selectQueueStatus(status) {
+    setWorkspaceTab('queue'); setArticleStatus(status); setArticleOffset(0);
+    setWorkspaceParams(previous => { const next = new URLSearchParams(previous); next.set('workspace', 'queue'); next.set('status', status); return next; }, { replace: true });
+  }
   const articlePath = `/articles?offset=${articleOffset}&limit=50${articleStatus ? `&status=${articleStatus}` : ""}`;
   const [selected, setSelected] = useState([]), [error, setError] = useState(""), [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false), [loading, setLoading] = useState(true);
@@ -77,7 +93,7 @@ export default function AdminIngestionPage() {
   async function reload() {
     const [s, a, j, selections] = await Promise.all([api("/source"), api(articlePath), api("/jobs"), api("/articles/selection")]);
     setSource(s); setArticles(a.items); setArticleTotal(a.total); setJobs(j.items);
-    setSelectionInfo(selections); setSelected(ids => retainApprovedSelection(ids, selections.approved_ids));
+    setSelectionInfo(selections); setSelectionLoaded(true); setSelected(ids => retainApprovedSelection(ids, selections.approved_ids));
   }
   useEffect(() => {
     let active = true;
@@ -92,7 +108,7 @@ export default function AdminIngestionPage() {
         const [a, j, selections] = await Promise.all([api(articlePath), api("/jobs"), api("/articles/selection")]);
         if (active) {
           setArticles(a.items); setArticleTotal(a.total); setJobs(j.items);
-          setSelectionInfo(selections); setSelected(ids => retainApprovedSelection(ids, selections.approved_ids));
+          setSelectionInfo(selections); setSelectionLoaded(true); setSelected(ids => retainApprovedSelection(ids, selections.approved_ids));
         }
       } catch { /* Manual refresh reports errors; polling preserves the current view. */ }
     }, 10000);
@@ -118,22 +134,27 @@ export default function AdminIngestionPage() {
   const running = jobs.some(j => ["RUNNING", "QUEUED"].includes(j.status));
   const latestIndexJob = jobs.find(j => j.kind === "INDEX");
   return <AdminLayout>
-    <div className="flex flex-wrap justify-between gap-3"><div><h1 className="text-2xl font-semibold">Thu thập và duyệt News</h1><p className="mt-1 text-sm text-slate-500">Cào nguồn → tự đọc PDF/OCR → duyệt bài → chunk, vector & lưu dữ liệu</p></div>
-      <Button disabled={busy} onClick={() => action(reload, "Đã làm mới.")}>Làm mới</Button></div>
+    <div className="fm-admin-page-heading flex flex-wrap justify-between gap-3"><div><h1 className="text-2xl font-semibold">Thu thập và duyệt tin tức</h1><p className="mt-1 text-sm text-slate-500">Cào nguồn → tự đọc PDF/OCR → duyệt bài → chunk, vector & lưu dữ liệu</p></div>
+      <Button variant="secondary" disabled={busy} onClick={() => action(reload, "Đã làm mới.")}>Làm mới</Button></div>
     {error && <p role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-red-800">{error}</p>}
     {message && <p role="status" className="rounded-xl border bg-blue-50 p-4 text-blue-900">{message}</p>}
     {loading && <p role="status">Đang tải…</p>}
-    {source && <section className="space-y-4 rounded-xl border bg-white p-5"><h2 className="text-lg font-semibold">Nguồn FireAnt</h2>
-      <div className="flex flex-wrap items-end gap-5">
+    <nav className="desk-task-tabs" aria-label="Công việc thu thập dữ liệu">{[['queue','Hàng đợi nội dung','document'],['settings','Nguồn & lịch chạy','settings'],['runs','Tiến trình xử lý','history'],['relations','Quan hệ tin tức','graph']].map(([id,label,icon]) => <button type="button" key={id} aria-current={workspaceTab === id ? 'page' : undefined} onClick={() => switchWorkspace(id)}><AppIcon name={icon} />{label}</button>)}</nav>
+    <div className="desk-ingestion-counters">{[['PENDING','Chờ duyệt'],['APPROVED','Đã duyệt, chờ lưu'],['QUARANTINED','Cần kiểm tra'],['INDEXED','Đã xử lý']].map(([status,label]) => <button type="button" key={status} onClick={() => selectQueueStatus(status)}><span>{label}</span><strong>{selectionLoaded ? (selectionInfo.counts[status] || 0) : '—'}</strong><AppIcon name="arrow" /></button>)}</div>
+    <div hidden={workspaceTab !== 'settings'} className="desk-source-settings-pane">
+    {source && <section className="fm-ingestion-source space-y-4 rounded-xl border bg-white p-5"><h2 className="text-lg font-semibold">Nguồn FireAnt</h2>
+      <div className="fm-ingestion-settings">
         <label className="text-sm">Giờ chạy mỗi ngày (Việt Nam)<input className="mt-1 block rounded border p-2" type="number" min="0" max="23" value={source.hour} onChange={e => setSource({ ...source, hour: Number(e.target.value) })} /></label>
         <label className="text-sm">Số bài tối đa/lượt<input className="mt-1 block rounded border p-2" type="number" min="1" max="500" value={source.limit} onChange={e => setSource({ ...source, limit: Number(e.target.value) })} /></label>
         <label className="text-sm">Số trang tối đa/mã<input className="mt-1 block rounded border p-2" type="number" min="1" max="20" value={source.max_pages} onChange={e => setSource({ ...source, max_pages: Number(e.target.value) })} /></label>
         <label className="flex gap-2 text-sm"><input type="checkbox" checked={source.enabled} onChange={e => setSource({ ...source, enabled: e.target.checked })} />Bật lịch hằng ngày</label>
+      </div>
+      <div className="fm-ingestion-actions">
         <Button disabled={busy} onClick={() => action(() => api("/source", "PUT", source), "Đã lưu lịch. Scheduler phải đang chạy để thực thi.")}>Lưu cấu hình</Button>
         <Button disabled={busy || running} onClick={() => action(() => api("/crawl", "POST"), "Đã bắt đầu cào và tự đọc PDF/OCR. Bài đọc xong mới vào hàng đợi duyệt; bài đọc lỗi vào Cần kiểm tra.")}>Cào ngay</Button>
         <Button disabled={busy || running} variant="secondary" onClick={() => action(() => api("/pipeline", "POST"), "Đã bắt đầu chạy: " + pipelineSummary(source) + ". Theo dõi ở Các lần chạy gần nhất.")}>Chạy toàn bộ ngay</Button>
       </div>
-      <div className="flex flex-wrap gap-5 text-sm">
+      <div className="fm-ingestion-options">
         <label className="flex gap-2"><input type="checkbox" checked={source.include_market} onChange={e => setSource({ ...source, include_market: e.target.checked })} />Gồm tin thị trường chung</label>
         <label className="flex gap-2"><input type="checkbox" checked={source.auto_approve} onChange={e => setSource({ ...source, auto_approve: e.target.checked })} />Tự động duyệt bài mới đạt kiểm tra nguồn</label>
         <label className="flex gap-2"><input type="checkbox" checked={!!source.auto_index} onChange={e => setSource(withPipelineFlag(source, "auto_index", e.target.checked))} />Tự động tạo chunk, vector và lưu vào database sau khi duyệt</label>
@@ -144,8 +165,9 @@ export default function AdminIngestionPage() {
       <p className="text-sm text-slate-500">Nguồn: FireAnt → tin theo các mã trên{source.include_market ? " và thị trường chung" : ""}. Đọc luân phiên từng mã, chống trùng URL. Giới hạn số bài là toàn lượt, không phải mỗi mã; không bảo đảm đủ toàn bộ lịch sử.</p>
       <p className="text-sm text-slate-500">Khi cào, hệ thống tự đọc PDF hoặc OCR ảnh nếu nội dung chính nằm trong tệp/hình. Chỉ bài có văn bản mới tới bước duyệt; đọc lỗi sẽ vào Cần kiểm tra. Bản OCR cần kiểm tra chữ và số liệu trước khi duyệt. Duyệt không tự tạo vector; bài Đã duyệt chỉ còn bước Tạo chunk & lưu dữ liệu.</p>
     </section>}
-    <section className="space-y-3">
-      <nav aria-label="Các bước xử lý bài" className="flex flex-wrap gap-2">{["PENDING","APPROVED","INDEXED","QUARANTINED","REJECTED"].map(status => <Button key={status} variant={articleStatus === status ? "primary" : "secondary"} onClick={() => { setArticleStatus(status); setArticleOffset(0); }}>{STATUS[status]} ({selectionInfo.counts[status] || 0})</Button>)}</nav>
+    </div>
+    <section hidden={workspaceTab !== 'queue'} className="desk-queue-workbench">
+      <nav aria-label="Các bước xử lý bài" className="flex flex-wrap gap-2">{["PENDING","APPROVED","INDEXED","QUARANTINED","REJECTED"].map(status => <Button key={status} variant={articleStatus === status ? "primary" : "secondary"} onClick={() => selectQueueStatus(status)}>{STATUS[status]} ({selectionInfo.counts[status] || 0})</Button>)}</nav><div className="desk-queue-content">
       <div className="flex flex-wrap justify-between gap-3"><h2 className="text-lg font-semibold">{STATUS[articleStatus] || "Tất cả bài"} ({articleTotal})</h2>
       {articleStatus === "PENDING" && <Button disabled={busy || running} variant="secondary" onClick={() => action(async () => {
         const result = await api("/auto-review", "POST");
@@ -178,7 +200,7 @@ export default function AdminIngestionPage() {
           <td className="p-3"><div className="flex flex-wrap gap-2"><Button disabled={busy} variant="secondary" onClick={() => openSource(a.id)}>{a.status === "INDEXED" ? "Xem bài & chunk" : "Xem nguồn"}</Button>{a.status === "APPROVED" && <Button disabled={busy || running} variant="ghost" onClick={() => deleteArticles([a.id])}>Xóa</Button>}</div></td></tr>)}</tbody></table></div>
         : <EmptyState title={`Chưa có bài trong mục ${STATUS[articleStatus] || "này"}`} description="Chọn mục khác để xem bài ở bước tương ứng." />}
       <div className="flex flex-wrap items-center justify-between gap-3 text-sm"><span>{articleTotal ? `${articleOffset+1}–${Math.min(articleOffset+50,articleTotal)} / ${articleTotal}` : "0 bài"}</span><div className="flex gap-2"><Button disabled={!articleOffset} onClick={() => setArticleOffset(n => Math.max(0,n-50))}>Trước</Button><Button disabled={articleOffset+50>=articleTotal} onClick={() => setArticleOffset(n => n+50)}>Sau</Button></div></div>
-    </section>
+    </div></section>
     <Modal open={sourceOpen} title={detail?.payload.title || "Xem nguồn bài viết"} onClose={closeSource} wide>
       {sourceLoading && <p role="status">Đang tải bản nguồn…</p>}
       {(sourceError || error) && <p role="alert" className="rounded bg-red-50 p-3 text-red-800">{sourceError || error}</p>}
@@ -209,8 +231,8 @@ export default function AdminIngestionPage() {
       </section>}
     </section>}
     </Modal>
-    <section className="space-y-3"><h2 className="text-lg font-semibold">Các lần chạy gần nhất</h2>
-      {jobs.map(j => <div key={j.id} className="space-y-2 rounded-xl border bg-white p-4"><div className="flex flex-wrap items-center justify-between gap-3"><div><StatusBadge tone={j.status === "FAILED" ? "error" : "neutral"}>{STATUS[j.status] || j.status}</StatusBadge><span className="ml-3 text-sm">{j.kind === "CRAWL" ? "Thu thập nguồn" : j.kind === "RECHECK" ? "Kiểm tra lại & OCR" : j.kind === "OCR" ? "Đọc PDF / OCR ảnh" : "Chunk và vector"} · {PHASE[j.details.phase] || "Đang đợi"}</span></div>
+    <section hidden={workspaceTab !== "runs"} className="desk-runs-pane space-y-3"><h2 className="text-lg font-semibold">Tiến trình và các lần chạy</h2>
+      {jobs.map(j => <details key={j.id} className="desk-run-record"><summary><span className="desk-run-kind">{j.kind === 'CRAWL' ? 'Thu thập nguồn' : j.kind === 'OCR' ? 'Đọc PDF / OCR' : j.kind === 'RECHECK' ? 'Kiểm tra lại nguồn' : 'Tạo chỉ mục'}</span><span>{j.created_at ? new Date(j.created_at).toLocaleString('vi-VN') : 'Chưa rõ thời gian'}</span><StatusBadge tone={j.status === 'FAILED' ? 'error' : j.status === 'ACTIVE' ? 'success' : 'neutral'}>{STATUS[j.status] || j.status}</StatusBadge></summary><div className="space-y-3"><div className="flex flex-wrap items-center justify-between gap-3"><div><StatusBadge tone={j.status === "FAILED" ? "error" : "neutral"}>{STATUS[j.status] || j.status}</StatusBadge><span className="ml-3 text-sm">{j.kind === "CRAWL" ? "Thu thập nguồn" : j.kind === "RECHECK" ? "Kiểm tra lại & OCR" : j.kind === "OCR" ? "Đọc PDF / OCR ảnh" : "Chunk và vector"} · {PHASE[j.details.phase] || "Đang đợi"}</span></div>
         {["INDEX","CRAWL","OCR","RECHECK"].includes(j.kind) && ["FAILED","INDEXED","INTERRUPTED"].includes(j.status) && !j.details.recovery_job_id && <Button disabled={busy || running} onClick={() => action(() => api(`/jobs/${j.id}/resume`, "POST"), "Đã nhận yêu cầu tiếp tục. Nếu đã lưu manifest, hệ thống tiếp tục bước hoàn tất; lần ghi dở dùng mã mới để tránh xung đột.")}>Tiếp tục / chạy lại</Button>}
         {canActivate(j) && <Button disabled={busy || running} onClick={() => action(() => api(`/jobs/${j.id}/activate`, "POST"), "Đã chuyển corpus. Chat dùng dữ liệu mới.")}>Chuyển corpus</Button>}</div>
         {j.details.recovery_job_id && <p className="break-all text-xs text-slate-500">Đã chuyển sang lần chạy: {j.details.recovery_job_id}</p>}
@@ -233,13 +255,13 @@ export default function AdminIngestionPage() {
         {j.details.corpus_version_id && <p className="break-all text-xs">Corpus mới: {j.details.corpus_version_id}</p>}
         {j.status === "ACTIVE" && <div className="flex flex-wrap gap-3"><input aria-label="Câu hỏi tìm thử phiên mới" className="min-w-64 flex-1 rounded border p-2 text-sm" placeholder="Nhập câu hỏi để tìm thử trên phiên mới…" value={question} onChange={e => setQuestion(e.target.value)} />
           <Button disabled={busy || question.trim().length < 3} onClick={() => action(async () => setSearchResult(await api(`/jobs/${j.id}/search`, "POST", { question })), "Đã tìm trên corpus mới.")}>Tìm thử phiên mới</Button></div>}
-      </div>)}
+      </div></details>)}
       {!jobs.length && <EmptyState title="Chưa có lần chạy" />}
     </section>
-    {searchResult && <section className="space-y-3 rounded-xl border bg-white p-5"><h2 className="font-semibold">Bằng chứng từ phiên mới</h2><p className="break-all text-xs text-slate-500">Corpus: {searchResult.corpus_version_id}</p>
+    {searchResult && <section hidden={workspaceTab !== "runs"} className="space-y-3 rounded-xl border bg-white p-5"><h2 className="font-semibold">Bằng chứng từ phiên mới</h2><p className="break-all text-xs text-slate-500">Corpus: {searchResult.corpus_version_id}</p>
       {searchResult.items.length ? searchResult.items.map(hit => <article key={hit.chunk_id} className="space-y-2 border-t pt-3"><h3 className="font-medium">{hit.title}</h3><pre className="whitespace-pre-wrap font-sans text-sm">{hit.text}</pre>
         {sourceLink(hit.source_url) && <a href={sourceLink(hit.source_url)} target="_blank" rel="noreferrer" className="text-sm text-blue-700 underline">Bài gốc</a>}<p className="break-all font-mono text-xs">{hit.content_hash}</p></article>) : <p>Không có kết quả phù hợp.</p>}
     </section>}
-    <NewsGraphPanel />
+    <div hidden={workspaceTab !== "relations"} className="desk-relations-pane"><NewsGraphPanel /></div>
   </AdminLayout>;
 }

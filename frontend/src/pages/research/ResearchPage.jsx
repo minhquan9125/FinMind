@@ -14,6 +14,7 @@ import {
   Spinner,
   StatusBadge,
 } from "../../shared/ui/index.js";
+import ResearchIcon from "./ResearchIcon.jsx";
 import ResearchChat from "./ResearchChat.jsx";
 import './researchLayout.css';
 import { useAuth } from "../../shared/context/AuthContext.jsx";
@@ -362,10 +363,11 @@ export default function ResearchPage() {
     .sort((a, b) => (b.isPinned ? 1 : 0) - (a.isPinned ? 1 : 0));
 
   return (
-    <div className="research-page flex h-screen bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
+    <div className="fm-workspace fm-research research-page flex h-screen bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
       {/* 1. Shared Researcher Sidebar */}
       <Sidebar
         groups={userMenu}
+        renderIcon={item => <ResearchIcon name={item.id} />}
         activeId="copilot"
         onSelect={(id) => navigate(menuPaths[id] || "/dashboard")}
         profile={userProfile}
@@ -377,12 +379,12 @@ export default function ResearchPage() {
       <main className="research-page-main flex-1 min-w-0 flex flex-col h-screen overflow-hidden bg-[#F8FAFC]">
         {/* Top Header */}
         <header className="research-page-header shrink-0 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-3 z-10">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div className="research-header-inner mx-auto flex flex-wrap items-center justify-between gap-3">
             <div className="flex min-w-0 flex-wrap items-center gap-2">
               <h1 className="text-lg font-bold tracking-tight text-slate-900">
-                Trợ lý nghiên cứu & So sánh
+                Nghiên cứu
               </h1>
-              <StatusBadge tone="neutral">{activeTab === 'compare' ? 'Dữ liệu mẫu' : 'Hội thoại nghiên cứu'}</StatusBadge>
+              <span className="research-header-caption">{activeTab === 'compare' ? 'Dữ liệu minh họa' : 'Tra cứu doanh nghiệp có nguồn'}</span>
             </div>
 
             {/* Quick Actions & Tab Switcher */}
@@ -397,7 +399,7 @@ export default function ResearchPage() {
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
-                  💬 Hỏi FinMind
+                  <ResearchIcon name="copilot" /> Hỏi FinMind
                 </button>
                 <button
                   type="button"
@@ -408,7 +410,7 @@ export default function ResearchPage() {
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
-                  ⚖️ Bảng so sánh (mẫu)
+                  <ResearchIcon name="compare" /> So sánh (mẫu)
                 </button>
               </div>
 
@@ -419,7 +421,7 @@ export default function ResearchPage() {
                 onClick={() => setHistoryDrawerOpen(true)}
                 className="gap-1.5 text-xs"
               >
-                <span>🕒</span>
+                <ResearchIcon name="history" />
                 <span>Lịch sử ({activeTab === "copilot" ? webHistoryCount : historyList.length})</span>
               </Button>
 
@@ -431,7 +433,7 @@ export default function ResearchPage() {
                 onClick={handleNewResearch}
                 className="gap-1 text-xs"
               >
-                <span>➕</span>
+                <ResearchIcon name="plus" />
                 <span className="hidden sm:inline">Nghiên cứu mới</span>
               </Button>
             </div>
@@ -506,7 +508,7 @@ export default function ResearchPage() {
 
         {/* ─── SCROLLABLE MIDDLE CONVERSATION & ANALYSIS CANVAS ─── */}
         <div className={`research-canvas flex-1 min-w-0 min-h-0 px-3 sm:px-6 py-3 ${activeTab === "copilot" ? "research-canvas-chat flex flex-col" : "overflow-y-auto"}`}>
-          <div className={`max-w-4xl mx-auto w-full ${activeTab === "copilot" ? "flex flex-1 min-h-0 flex-col" : "space-y-6"}`}>
+          <div className={`research-content mx-auto w-full ${activeTab === "copilot" ? "flex flex-1 min-h-0 flex-col" : "space-y-6"}`}>
             {activeTab === "copilot" && (
               <ResearchChat historyOpen={historyDrawerOpen}
                 onHistoryClose={closeChatHistory} resetKey={chatResetKey}

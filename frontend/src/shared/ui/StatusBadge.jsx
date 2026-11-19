@@ -7,5 +7,5 @@ const colors = {
 };
 
 export default function StatusBadge({ children, tone = "neutral" }) {
-  return <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${colors[tone] || colors.neutral}`}>{children}</span>;
+  return <span className={`fm-badge inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${colors[tone] || colors.neutral}`}>{children}</span>;
 }

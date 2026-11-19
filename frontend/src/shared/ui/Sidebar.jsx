@@ -1,3 +1,4 @@
+import AppIcon from "./AppIcon.jsx";
 import { useEffect, useId, useRef, useState } from "react";
 import SidebarItem from "./SidebarItem.jsx";
 import { Link } from "react-router-dom";
@@ -6,7 +7,7 @@ import { PATHS } from "../paths.js";
 
 // groups: [{ label: "Nghiên cứu chính", items: [{ id, label, icon }] }]
 // The parent page owns activeId and decides what onSelect does.
-export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinMind", badge, profile, onProfile, onLogout }) {
+export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinMind", badge, profile, onProfile, onLogout, renderIcon }) {
   const { role } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuId = useId();
@@ -35,7 +36,7 @@ export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinM
   }
 
   return (
-    <aside className="sticky top-0 flex h-screen w-16 shrink-0 self-start flex-col border-r border-[#E2E8F0] bg-white md:w-64">
+    <aside className="fm-sidebar sticky top-0 flex h-screen w-16 shrink-0 self-start flex-col border-r border-[#E2E8F0] bg-white md:w-64">
       <div className="flex h-16 shrink-0 items-center justify-center gap-2 border-b border-[#F1F5F9] md:justify-start md:px-5">
         <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#2563EB] text-xs font-bold text-white">FM</span>
         <strong className="hidden text-base text-[#0F172A] md:block">{brand}</strong>
@@ -43,13 +44,13 @@ export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinM
       </div>
       <nav aria-label={`${brand} menu`} className="flex-1 space-y-5 overflow-y-auto px-2 py-3 md:px-3">
         {role === 'admin' && badge !== 'ADMIN' && <Link to={PATHS.admin} title="Về quản trị" className="flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100">
-          <span aria-hidden="true">⚙</span><span className="hidden md:inline">Về quản trị</span>
+          <AppIcon name="settings" /><span className="hidden md:inline">Về quản trị</span>
         </Link>}
         {groups.map((group, index) => (
           <div key={group.label || index}>
             {group.label && <p className="mb-1 hidden px-3 text-[10px] font-bold uppercase tracking-wide text-[#94A3B8] md:block">{group.label}</p>}
             <div className="space-y-0.5">
-              {group.items.map((item) => <SidebarItem key={item.id} item={item} active={activeId === item.id} onSelect={onSelect} />)}
+              {group.items.map((item) => <SidebarItem key={item.id} item={item} renderIcon={renderIcon || (item => <AppIcon name={item.id} />)} active={activeId === item.id} onSelect={onSelect} />)}
             </div>
           </div>
         ))}
@@ -58,11 +59,11 @@ export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinM
         <div ref={accountRef} className="relative border-t border-[#F1F5F9] p-2 md:p-3">
           {hasActions && <div id={menuId} hidden={!menuOpen} className="absolute bottom-full left-14 z-50 mb-2 w-48 rounded-xl border border-[#E2E8F0] bg-white p-1.5 shadow-xl md:left-3 md:right-3 md:w-auto">
             {onProfile && <button type="button" onClick={() => selectAction(onProfile)} className="flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-medium text-[#334155] hover:bg-[#F8FAFC]">
-              <span aria-hidden="true">◯</span>Hồ sơ cá nhân
+              <AppIcon name="profile" />Hồ sơ cá nhân
             </button>}
             {onProfile && onLogout && <div className="my-1 border-t border-[#F1F5F9]" />}
-            {onLogout && <button type="button" title="Chế độ mock: chuyển tới trang đăng nhập" onClick={() => selectAction(onLogout)} className="flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-medium text-[#DC2626] hover:bg-[#FEF2F2]">
-              <span aria-hidden="true">↪</span>Đăng xuất
+            {onLogout && <button type="button" onClick={() => selectAction(onLogout)} className="flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-medium text-[#DC2626] hover:bg-[#FEF2F2]">
+              <AppIcon name="logout" />Đăng xuất
             </button>}
           </div>}
           {hasActions ? <button type="button" aria-label="Mở menu tài khoản" aria-expanded={menuOpen} aria-controls={menuId}
@@ -73,7 +74,7 @@ export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinM
               <span className="block truncate text-xs font-semibold text-[#0F172A]">{profile.name}</span>
               <span className="block truncate text-[11px] text-[#64748B]">{profile.role}</span>
             </span>
-            <span aria-hidden="true" className={`hidden text-xs text-[#94A3B8] md:block ${menuOpen ? "rotate-180" : ""}`}>⌃</span>
+            <AppIcon name="down" className={`hidden md:block ${menuOpen ? "rotate-180" : ""}`} />
           </button> : <div className="flex items-center justify-center gap-2 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-2 md:justify-start">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#DBEAFE] text-xs font-semibold text-[#1D4ED8]">{profile.initials}</span>
             <div className="hidden min-w-0 md:block">

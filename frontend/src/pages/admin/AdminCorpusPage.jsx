@@ -111,12 +111,12 @@ export default function AdminCorpusPage() {
   return <AdminLayout>
     <header className="space-y-1">
       <Link className="text-xs text-blue-600" to={ADMIN_LINKS.overview}>Tổng quan vận hành</Link>
-      <h1 className="text-xl font-bold">Phiên bản kho dữ liệu</h1>
+      <h1 className="text-xl font-semibold">Phiên bản kho dữ liệu</h1>
       <p className="text-sm text-slate-500">Dữ liệu thật từ PostgreSQL. Chuyển Chat về một phiên cũ hoặc lưu trữ phiên ở đây; tạo phiên mới ở <Link className="text-blue-600 underline" to={ADMIN_LINKS.ingestion}>Thu thập & duyệt</Link>.</p>
     </header>
     {error && <ErrorState message={error} onRetry={() => setRetry(v => v + 1)} />}
     {!data && !error && <Skeleton rows={6} />}
-    {data && (items.length ? <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)]">
+    {data && (items.length ? <div className="grid items-start gap-6 desk-master-detail lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)]">
       <section className="rounded-xl border bg-white p-4"><h2 className="mb-4 font-semibold">Các phiên ({items.length})</h2>
         <ul className="space-y-3">{items.map(item => <li key={item.corpus_version_id}>
           <button type="button" aria-current={selected?.corpus_version_id === item.corpus_version_id ? "true" : undefined}

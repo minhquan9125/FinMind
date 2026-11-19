@@ -1,42 +1,24 @@
+import UserShell from "../../shared/ui/UserShell.jsx";
+import DeskHeader from "../../shared/ui/DeskHeader.jsx";
+import AppIcon from "../../shared/ui/AppIcon.jsx";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams, useAuth } from "../../app/router.jsx";
-import { Card, EmptyState, ErrorState, Input, Sidebar, Skeleton, StatusBadge } from "../../shared/ui/index.js";
-import { userMenu } from "../../mocks/componentMock.js";
+import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
+import { EmptyState, ErrorState, Skeleton, StatusBadge } from "../../shared/ui/index.js";
 import { companyCatalog } from "../companies/mock.js";
 import { getDashboard } from "./api.js";
-import { popularTickers, researcherMock } from "./mock.js";
+import { popularTickers } from "./mock.js";
 import { searchCompanies } from "../companies/companySearch.js";
 import MarketOverview from "./MarketOverview.jsx";
 import MarketNews from "./MarketNews.jsx";
 
-const menuPaths = {
-  dashboard: "/dashboard", companies: "/companies", copilot: "/research",
-  watchlist: "/watchlist", graph: "/graph",
-};
-
 export default function DashboardPage() {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
-
-  const displayName = user?.name || researcherMock.name;
-  const initials = (() => {
-    if (!displayName) return "U";
-    const parts = displayName.trim().split(/\s+/);
-    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-  })();
-
-  const userProfile = {
-    initials,
-    name: displayName,
-    role: user?.role === "admin" ? "Quản trị viên" : "Nhà nghiên cứu",
-  };
-
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const [params] = useSearchParams();
   const [search, setSearch] = useState("");
+  const [question, setQuestion] = useState("");
   const [dashboard, setDashboard] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -63,77 +45,44 @@ export default function DashboardPage() {
     ? searchCompanies(companyCatalog, search)
     : [];
 
-  return (
-    <div className="flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
-      <Sidebar groups={userMenu} activeId="dashboard" onSelect={(id) => navigate(menuPaths[id])}
-        profile={userProfile} onProfile={() => navigate("/profile")} onLogout={logout} />
-      <main className="min-w-0 flex-1">
-        <header className="flex h-16 items-center justify-end border-b border-slate-200 bg-white px-4 sm:px-6 lg:px-8">
-          <StatusBadge tone="neutral">Giá và tin từ dữ liệu nguồn · Hồ sơ minh họa</StatusBadge>
-        </header>
-        <div className="mx-auto w-full max-w-[1240px] space-y-7 px-4 py-6 sm:px-6 lg:px-8">
-          <section aria-labelledby="hero-title" className="rounded-2xl border border-[#BCCEFB] bg-[#E8F0FF] p-5 shadow-sm md:p-6">
-            <StatusBadge tone="info">Khám phá doanh nghiệp</StatusBadge>
-            <h1 id="hero-title" className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">Chào buổi sáng, {displayName}!</h1>
-            <p className="mt-1.5 text-sm text-slate-600">Bạn muốn tìm hiểu doanh nghiệp nào hôm nay?</p>
-            <div className="relative mt-5">
-              <Input label="TÌM DOANH NGHIỆP" type="search" autoComplete="off"
-                placeholder="Tìm theo tên hoặc mã doanh nghiệp..." value={search}
-                onChange={(event) => setSearch(event.target.value)} />
-              {search.trim() && (
-                <div className="absolute z-10 mt-1.5 max-h-72 w-full overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-xl">
-                  {matches.length ? matches.map((company) => (
-                    <Link key={company.id} to={`/companies/${company.id}`}
-                      className="flex w-full items-center justify-between gap-2 border-b border-slate-100 p-3 text-left text-xs hover:bg-blue-50">
-                      <span><strong className="text-sm">{company.id}</strong> · {company.name}</span>
-                      <span className="text-slate-500">{company.sector}</span>
-                    </Link>
-                  )) : <p className="p-3 text-center text-xs text-slate-500">Không tìm thấy doanh nghiệp trong phạm vi hỗ trợ</p>}
-                </div>
-              )}
-            </div>
-            <p className="mt-2 text-xs text-slate-500">Ví dụ: FPT, Vietcombank, MBB...</p>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold text-slate-700">Doanh nghiệp phổ biến:</span>
-              {popularTickers.map((id) => (
-                <Link key={id} to={`/companies/${id}`} className="inline-flex min-h-8 items-center rounded-lg border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:border-blue-600 hover:text-blue-700">{id}</Link>
-              ))}
-              <Link className="ml-auto text-xs font-medium text-blue-700 hover:underline" to="/companies">Tìm mã cổ phiếu →</Link>
-            </div>
-          </section>
-
-          {loading ? <Skeleton rows={7} /> : error ? (
-            <ErrorState message={error} onRetry={() => setRetryCount((count) => count + 1)} />
-          ) : (
-            <>
-              <MarketOverview />
-              <MarketNews />
-
-              <section aria-labelledby="watchlist-title" className="space-y-3">
-                <div><h2 id="watchlist-title" className="text-sm font-bold">Doanh nghiệp bạn đang theo dõi</h2><p className="mt-0.5 text-xs text-slate-500">Danh sách mẫu, chưa lưu theo tài khoản.</p></div>
-                {dashboard.watchlist.length ? (
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    {dashboard.watchlist.map((company) => <Card key={company.id}>
-                      <strong className="text-sm">{company.id}</strong><p className="mt-1 text-xs text-slate-600">{company.name}</p>
-                      <Link className="mt-3 inline-block text-xs font-medium text-blue-600 hover:underline" to={`/companies/${company.id}`}>Xem doanh nghiệp →</Link>
-                    </Card>)}
-                  </div>
-                ) : <EmptyState title="Bạn chưa theo dõi doanh nghiệp nào" description="Khám phá doanh nghiệp để bắt đầu." action={<Link className="text-xs font-semibold text-blue-600" to="/companies">Khám phá doanh nghiệp →</Link>} />}
-              </section>
-
-              <Card title="Nghiên cứu gần đây" description="Các phiên trò chuyện minh họa" action={<StatusBadge tone="neutral">Ví dụ minh họa</StatusBadge>}>
-                {dashboard.recentResearch.length ? <div className="space-y-2.5">
-                  {dashboard.recentResearch.map((item) => <div key={item.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-slate-200 p-3">
-                    <div><strong className="text-xs text-blue-700">{item.ticker}</strong><span className="ml-3 text-xs font-semibold">{item.title}</span><p className="mt-1 text-[11px] text-slate-500">{item.time}</p></div>
-                    <Link className="text-xs font-medium text-blue-600 hover:underline" to={`/research?company=${item.ticker}&history=1`}>Xem lại →</Link>
-                  </div>)}
-                </div> : <EmptyState title="Chưa có nghiên cứu gần đây" />}
-              </Card>
-            </>
-          )}
-          <footer className="border-t border-slate-200 pb-8 pt-3 text-center text-xs text-slate-500">Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư</footer>
-        </div>
-      </main>
-    </div>
-  );
+  return <UserShell activeId="dashboard" className="fm-dashboard desk-dashboard">
+    <DeskHeader title="Bàn nghiên cứu" section="Tổng quan" description="Doanh nghiệp, thị trường và những nguồn bạn cần theo dõi.">
+      <Link to="/research" className="desk-primary"><AppIcon name="copilot" />Mở Hỏi FinMind</Link>
+    </DeskHeader>
+    <main className="desk-dashboard-content">
+      <div className="desk-dashboard-intro">
+        <section className="desk-start-research">
+          <div className="desk-section-number">01 / Nghiên cứu</div>
+          <h2>Bạn đang tìm hiểu<br />doanh nghiệp nào?</h2>
+          <p>Đặt câu hỏi về báo cáo, nhân sự hoặc tin tức. Kiểm chứng thông tin bằng nguồn đi kèm câu trả lời.</p>
+          <form className="desk-ask-form" onSubmit={event => { event.preventDefault(); if (question.trim()) navigate(`/research?question=${encodeURIComponent(question.trim())}`); }}>
+            <label htmlFor="desk-start-question">Câu hỏi nghiên cứu</label>
+            <div><input id="desk-start-question" value={question} onChange={event => setQuestion(event.target.value)} placeholder="Ví dụ: Giới thiệu tổng quan về VCB" maxLength={4000} /><button type="submit" disabled={!question.trim()} aria-label="Mở câu hỏi trong Hỏi FinMind"><AppIcon name="arrow" /></button></div>
+          </form>
+          <div className="desk-quick-links"><span>Bắt đầu từ</span>{popularTickers.map(id => <Link key={id} to={`/companies/${id}`}>{id}</Link>)}</div>
+        </section>
+        <aside className="desk-company-directory">
+          <div className="desk-panel-heading"><h2>Danh mục doanh nghiệp</h2><span>{companyCatalog.length} mã</span></div>
+          <label className="desk-directory-search"><AppIcon name="search" /><input aria-label="Tìm doanh nghiệp" value={search} onChange={event => setSearch(event.target.value)} placeholder="Tên hoặc mã chứng khoán" type="search" /></label>
+          <div className="desk-directory-list">{(search.trim() ? matches : companyCatalog).map(company => <Link to={`/companies/${company.id}`} key={company.id}><strong>{company.id}</strong><span>{company.name}</span><AppIcon name="chevron" /></Link>)}{search.trim() && !matches.length && <p className="desk-muted">Không có mã phù hợp trong danh mục.</p>}</div>
+          <Link className="desk-text-link" to="/companies">Khám phá danh mục <AppIcon name="arrow" /></Link>
+        </aside>
+      </div>
+      <div className="desk-dashboard-body">
+        <div className="desk-market-column"><div className="desk-section-heading"><span className="desk-section-number">02 / Thị trường</span><p>Giá và tin từ nguồn dữ liệu · Không phải khuyến nghị đầu tư</p></div><MarketOverview /><MarketNews /></div>
+        <aside className="desk-personal-column">
+          {loading ? <Skeleton rows={5} /> : error ? <ErrorState message={error} onRetry={() => setRetryCount(count => count + 1)} /> : <>
+            <section className="desk-side-section"><div className="desk-panel-heading"><h2>Theo dõi doanh nghiệp</h2><AppIcon name="watchlist" /></div><p className="desk-sample-label">Danh sách minh họa, chưa lưu theo tài khoản</p>
+              {dashboard.watchlist.length ? dashboard.watchlist.map(company => <Link className="desk-compact-company" key={company.id} to={`/companies/${company.id}`}><strong>{company.id}</strong><span>{company.name}</span><AppIcon name="chevron" /></Link>) : <EmptyState title="Chưa có doanh nghiệp" />}
+              <Link to="/watchlist" className="desk-text-link">Mở danh sách theo dõi <AppIcon name="arrow" /></Link>
+            </section>
+            <section className="desk-side-section"><div className="desk-panel-heading"><h2>Nghiên cứu gần đây</h2><AppIcon name="history" /></div><p className="desk-sample-label">Các phiên minh họa</p>
+              {dashboard.recentResearch.length ? dashboard.recentResearch.map(item => <Link className="desk-recent-item" key={item.id} to={`/research?company=${item.ticker}&history=1`}><span>{item.ticker} · {item.time}</span><p>{item.title}</p><AppIcon name="arrow" /></Link>) : <EmptyState title="Chưa có nghiên cứu" />}
+            </section>
+          </>}
+          <section className="desk-research-note"><AppIcon name="shield" /><h3>Luôn đối chiếu nguồn</h3><p>Thông tin trong báo cáo phản ánh thời điểm của nguồn. Kiểm tra kỳ báo cáo và ngày công bố trước khi sử dụng.</p><Link to="/graph">Khám phá quan hệ có nguồn →</Link></section>
+        </aside>
+      </div>
+    </main>
+  </UserShell>;
 }

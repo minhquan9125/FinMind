@@ -1,3 +1,4 @@
+import AppIcon from "../../shared/ui/AppIcon.jsx";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams, useAuth } from "../../app/router.jsx";
 import { Button, Card, EmptyState, ErrorState, Select, Sidebar, Skeleton, Stat, StatusBadge } from "../../shared/ui/index.js";
@@ -122,7 +123,7 @@ export default function CompanyDetailPage() {
   const graphAvailable = ticker === "FPT" || ticker === "VCB";
 
   return (
-    <div className="flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+    <div className="fm-workspace fm-company-detail flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
       <Sidebar groups={userMenu} activeId="companies" onSelect={(id) => navigate(menuPaths[id])}
         profile={userProfile} onProfile={() => navigate("/profile")} onLogout={logout} />
       <main className="min-w-0 flex-1">
@@ -146,7 +147,7 @@ export default function CompanyDetailPage() {
               action={<Link className="text-sm font-semibold text-blue-600" to="/companies">Xem danh mục doanh nghiệp →</Link>} />
           ) : (
             <>
-              <Card>
+              <Card className="desk-company-banner">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
@@ -159,7 +160,7 @@ export default function CompanyDetailPage() {
                   </div>
                   <div className="flex flex-col items-start gap-2 sm:items-end">
                     <Button variant="secondary" onClick={() => setFollowed((value) => !value)}>
-                      <span aria-hidden="true">{followed ? "★" : "☆"}</span>{followed ? "Đang theo dõi" : "Theo dõi"}
+                      <AppIcon name="watchlist" fill={followed ? "currentColor" : "none"} />{followed ? "Đang theo dõi" : "Theo dõi"}
                     </Button>
                     <span className="text-[11px] text-slate-500">Trạng thái theo dõi chỉ lưu trên màn hình mock này</span>
                     {graphAvailable && <Link className="text-sm font-medium text-blue-600 hover:underline" to={`/graph?company=${ticker}`}>Khám phá quan hệ dữ liệu →</Link>}
@@ -167,7 +168,7 @@ export default function CompanyDetailPage() {
                 </div>
               </Card>
 
-              <div role="tablist" aria-label="Thông tin doanh nghiệp" className="flex gap-1 overflow-x-auto border-b border-slate-200">
+              <div className="desk-company-workspace"><div role="tablist" aria-label="Thông tin doanh nghiệp" className="flex gap-1 overflow-x-auto border-b border-slate-200">
                 {tabs.map((tab) => <button key={tab.id} type="button" role="tab" aria-selected={activeTab === tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`whitespace-nowrap border-b-2 px-4 py-3 text-sm font-semibold ${activeTab === tab.id ? "border-blue-600 text-blue-600" : "border-transparent text-slate-500 hover:text-slate-800"}`}>
@@ -175,7 +176,7 @@ export default function CompanyDetailPage() {
                 </button>)}
               </div>
 
-              <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
+              <div className="desk-company-sections grid gap-6 lg:grid-cols-12 lg:items-start">
                 <div className="space-y-5 lg:col-span-8">
                   {activeTab === "overview" && <>
                     <Card title="Tổng quan doanh nghiệp" action={<StatusBadge tone="neutral">Hồ sơ minh họa</StatusBadge>}>
@@ -210,7 +211,7 @@ export default function CompanyDetailPage() {
                     <Card title={`Phân tích giá & dòng tiền · ${ticker}`} description="Tính từ dữ liệu đã lưu trong cơ sở dữ liệu · Thiếu dữ liệu được ghi rõ, không ước tính">
                       <PriceAnalysis key={ticker} symbol={ticker} />
                     </Card>
-                    <Card title={`Tin FireAnt gần đây · ${ticker}`} description="Tự lấy tin khi mở mã · Cache 60 giây · Marker không xác minh sự thật">
+                    <Card title={`Tin tức gần đây · ${ticker}`} description="Tin từ nguồn FireAnt · Ngày đăng và liên kết nguồn hiển thị trên từng bài">
                       {newsLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang kiểm tra tin mới…</p>}
                       {newsError && newsData?.articles?.length > 0 && <p role="status" className="mb-3 text-xs text-amber-700">{newsError}</p>}
                       {newsLoading && !newsData ? <Skeleton rows={3} /> : newsError && !newsData?.articles?.length ? <ErrorState message={newsError} onRetry={() => setNewsRetryCount((count) => count + 1)} /> : newsData?.articles.length ? (
@@ -262,7 +263,7 @@ export default function CompanyDetailPage() {
                     </div>
                   </Card>
                 </aside>
-              </div>
+              </div></div>
             </>
           )}
           <footer className="border-t border-slate-200 pb-8 pt-3 text-center text-xs text-slate-500">Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư</footer>

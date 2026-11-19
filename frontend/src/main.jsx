@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import AppRouter from "./app/router.jsx";
 import "./index.css";
+import "./shared/ui/workspace.css";
+import "./shared/ui/deskLayout.css";
 
 const GOOGLE_CLIENT_ID =
   import.meta.env.VITE_GOOGLE_CLIENT_ID ||

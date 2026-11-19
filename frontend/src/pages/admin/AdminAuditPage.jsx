@@ -18,7 +18,7 @@ export default function AdminAuditPage() {
     return () => controller.abort();
   }, [category, offset, refresh]);
   return <AdminLayout>
-    <header className="flex flex-wrap items-center justify-between gap-4"><div><h1 className="text-2xl font-bold">Nhật ký kiểm toán</h1>
+    <header className="flex flex-wrap items-center justify-between gap-4"><div><h1 className="text-2xl font-semibold">Nhật ký kiểm toán</h1>
       <p className="mt-2 text-sm text-slate-500">Lịch sử duyệt bài và thao tác nguồn dữ liệu trên máy này, gồm quyết định tự động và thủ công.</p></div>
       <Button variant="secondary" disabled={loading} onClick={() => setRefresh(v => v + 1)}>Làm mới</Button></header>
     <nav className="flex gap-3" aria-label="Loại nhật ký">{[["", "Tất cả"], ["review", "Quyết định duyệt"], ["operation", "Thao tác quản trị"]].map(([key, text]) =>
