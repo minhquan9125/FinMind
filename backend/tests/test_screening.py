@@ -114,3 +114,13 @@ def test_screening_only_lists_codes_with_full_data():
                                   'cổ phiếu j đang tăng trưởng', 'công ty mô đang phát triển'])
 def test_question_words_gi_nao_mo_j_are_equivalent(text):
     assert is_screening_question(text, SYMBOLS)
+
+
+@pytest.mark.parametrize('text', ['mã chi đang ngon', 'dạo ni cổ phiếu chi tăng trưởng tốt', 'công ty chi đang phát triển'])
+def test_question_word_chi_is_like_gi(text):
+    assert is_screening_question(text, SYMBOLS)
+
+
+@pytest.mark.parametrize('text', ['công ty chi trả cổ tức tốt không', 'doanh nghiệp chi phí tăng mạnh'])
+def test_chi_as_spend_is_not_a_question_word(text):
+    assert not is_screening_question(text, SYMBOLS)

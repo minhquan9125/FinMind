@@ -1054,3 +1054,9 @@ def test_detail_followup_goes_to_the_analysis_not_the_graph_router():
         assert again['scope']['source_type'] == 'MARKET_ANALYSIS'
         assert again['answering']['status'] == 'DRAFT_READY'
     asyncio.run(run())
+
+
+@pytest.mark.parametrize('question', ['VCB dạo này', 'VCB bữa giờ', 'VCB bữa h', 'VCB hỗm rồi', 'VCB hỗm roài',
+                                      'VCB hỗm h', 'VCB hỗm giờ', 'VCB hỗm giừo'])
+def test_regional_words_for_lately_ask_for_the_analysis(question):
+    assert analyze_live(question)['scope']['source_type'] == 'MARKET_ANALYSIS'
