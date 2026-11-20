@@ -286,10 +286,13 @@ class PriceAnalytics:
     def __init__(self, store, *, today=None):
         self.store, self._today = store, today
 
+    async def symbols(self):
+        return await self.store.symbols()
+
     async def answer(self, question, today=None):
         """A chat result for a price question, or None when the question is not one of these."""
         today = today or self._today or date.today()
-        symbols = await self.store.symbols()
+        symbols = await self.symbols()
         try:
             spec = parse(question, symbols, today)
         except PriceQuestionError as exc:

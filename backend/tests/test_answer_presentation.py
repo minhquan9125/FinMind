@@ -70,7 +70,8 @@ def test_user_debt_example_keeps_number_and_citation():
     scope = {'source_type': 'BCTC', 'metric_code': 'TOTAL_LIABILITIES'}
     draft = validate_grounded(payload(text, quote), ev, scope)
     result = presentation.present_answer(draft, ev, scope)
-    assert result['draft'] == text[:-1]+' VND. [1]'
+    # same value, written with Vietnamese separators
+    assert result['draft'] == 'Tổng nợ phải trả của FPT tại cuối quý 1/2026 là 28.464.058.214.856 VND. [1]'
 
 
 def test_news_and_unknown_metrics_do_not_get_assumed_currency():
@@ -121,3 +122,13 @@ def test_caution_only_model_output_cannot_become_a_blank_successful_answer():
     output = asyncio.run(complete_retrieval('Tiền FPT?', result, provider=Provider()))
     assert output['answering']['status'] != 'DRAFT_READY'
     assert output['answering']['message']
+
+
+def test_source_numbers_are_written_the_vietnamese_way_without_changing_value():
+    from src.b1_answering.application.presentation import vietnamese_number
+    assert vietnamese_number('35,197,940.00') == '35.197.940'
+    assert vietnamese_number('3.071.970.196,00') == '3.071.970.196'
+    assert vietnamese_number('1,234,567.5') == '1.234.567,5'
+    assert vietnamese_number('0.1673') == '0,1673'
+    assert vietnamese_number('1.474') == '1.474'      # ambiguous: left as written
+    assert vietnamese_number('2025') == '2025'

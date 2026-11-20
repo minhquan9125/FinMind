@@ -44,6 +44,21 @@ AMOUNT = re.compile(r'(?<![\w/])(?P<number>'+NUMBER+r')(?:\s+(?P<unit>'+UNIT+r')
 CAUTION = re.compile(r'^(?:lưu ý:\s*)?nguồn chưa (?:xác minh đơn vị|xác định phạm vi)', re.I)
 
 
+def vietnamese_number(token):
+    """Write a source number the Vietnamese way ("35,197,940.00" -> "35.197.940", "0.1673" -> "0,1673").
+    Only the separators change, never the value; an ambiguous token ("1.474") is left as written."""
+    english = re.fullmatch(r'([-+]?\d{1,3}(?:,\d{3})+)(?:\.(\d+))?', token)
+    if english:
+        decimals = (english[2] or '').rstrip('0')
+        return english[1].replace(',', '.') + (',' + decimals if decimals else '')
+    trailing_zeros = re.fullmatch(r'([-+]?\d{1,3}(?:\.\d{3})+),(\d+)', token)
+    if trailing_zeros:
+        decimals = trailing_zeros[2].rstrip('0')
+        return trailing_zeros[1] + (',' + decimals if decimals else '')
+    fraction = re.fullmatch(r'([-+]?0)\.(\d+)', token)
+    return fraction[1] + ',' + fraction[2] if fraction else token
+
+
 def _source_amounts(item, metric, style):
     header = item['passage'].splitlines()[0]
     for line in item['passage'].splitlines():
@@ -83,13 +98,14 @@ def present_answer(draft, evidence, scope, *, style=None):
         def render(match):
             if re.search(r'(?:quý|năm|tháng|ngày|q)\s*$', text[max(0, match.start()-20):match.start()], re.I):
                 return match[0]
+            shown = vietnamese_number(match['number'])
             matches = [(unit, origin) for number, unit, origin in amounts if number == _numbers(match['number'])]
             if not matches or len({unit for unit, _ in matches}) != 1:
-                return match[0]
+                return shown + match[0][len(match['number']):]
             unit, origin = matches[0]
             annotations.append({'claim_index': index, 'unit': unit, 'origin': origin,
                                 'source_unit_verified': origin == 'SOURCE'})
-            return match['number']+' '+unit
+            return shown+' '+unit
 
         text = AMOUNT.sub(render, text)
         tags = ''.join(f'[{citations[eid]}]' for eid in claim['evidence_ids'])

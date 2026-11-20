@@ -40,7 +40,10 @@ def test_uncertain_summary_is_confirmed_without_retrieval_and_can_be_cancelled()
     asyncio.run(run())
 
 
-@pytest.mark.parametrize('text',['Tổng hợp tin tức FPT hôm nay','Tóm tắt BCTN VCB 2025','Đừng tóm tắt nội dung chat'])
+@pytest.mark.parametrize('text',['Tổng hợp tin tức FPT hôm nay','Tóm tắt BCTN VCB 2025','Đừng tóm tắt nội dung chat',
+    'BIDV dự kiến mua lại trước hạn bao nhiêu tỷ đồng trái phiếu, gồm những mã nào?',
+    'Giá trị cốt lõi của BIDV gồm những gì?',
+    'Mạng lưới của BIDV đến 31/12/2025 gồm bao nhiêu chi nhánh và phòng giao dịch?'])
 def test_new_research_and_negated_actions_not_intercepted(text):
     assert conversation_action(text) is None
 
@@ -122,3 +125,16 @@ def test_analysis_gets_database_news_for_right_company_and_date(symbol):
     assert out['answering']['citations'][0]['source_id']==news['items'][0]['source_id']
     assert reader.call_args.args[1]['companies']==[symbol]
     assert reader.call_args.args[1]['_market_request']['as_of']=='2026-10-23'
+
+
+@pytest.mark.parametrize('text,previous,old,expected', [
+    ('Còn BID thì sao?', 'Giá đóng cửa cổ phiếu VCB phiên 13/11/2026 là bao nhiêu?', 'VCB',
+     'Giá đóng cửa cổ phiếu BID phiên 13/11/2026 là bao nhiêu?'),
+    ('BIDV thì sao?', 'Vietcombank đang giảm lãi suất cho vay bao nhiêu?', 'VCB', 'BID đang giảm lãi suất cho vay bao nhiêu?'),
+    ('Còn BIDV cùng kỳ hạn?', 'Lãi suất kỳ 36 tháng của Vietcombank là bao nhiêu?', 'VCB', 'Lãi suất kỳ 36 tháng của BID là bao nhiêu?'),
+    ('Nếu gửi 24 tháng thì sao?', 'Gửi 300 triệu ở Vietcombank kỳ 12 tháng?', 'VCB', None),
+    ('Còn VCB thì sao?', 'Giá VCB?', 'VCB', None),
+])
+def test_bare_company_switch_reasks_previous_question(text, previous, old, expected):
+    from src.retrieval_orchestration.conversation_actions import company_switch_question
+    assert company_switch_question(text, {'_last_question': previous, 'companies': [old]}) == expected

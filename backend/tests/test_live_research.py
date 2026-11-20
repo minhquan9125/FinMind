@@ -269,3 +269,12 @@ def test_dense_adapter_validates_corpus_and_offloads_embedding(monkeypatch):
         assert calls[0]['corpus_version_id'] == CORPUS
         assert not calls[0].get('preview_source_changed', False)
     asyncio.run(run())
+
+
+@pytest.mark.parametrize('question', [
+    'Vietcombank chi nhánh TP.HCM nhận phần thưởng gì tại lễ kỷ niệm 50 năm thành lập?',
+    'Theo báo cáo thường niên 2025, Vietcombank có bao nhiêu chi nhánh, phòng giao dịch và máy ATM?',
+    'Vietcombank có chương trình tín dụng 50.000 tỷ đồng cho SME không?',
+])
+def test_capitalized_place_and_banking_terms_are_not_second_companies(question):
+    assert analyze_live(question)['scope']['companies'] == ['VCB']

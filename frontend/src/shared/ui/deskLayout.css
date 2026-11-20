@@ -129,6 +129,12 @@
 .desk-table-scroll { overflow-x: auto; }
 .desk-table-scroll table { width: 100%; min-width: 620px; }
 .desk-table-scroll th { white-space: nowrap; }
+/* Headers and cells share one alignment; the action column sits on the right. */
+.desk-table-scroll table { table-layout: fixed; }
+.desk-table-scroll th, .desk-table-scroll td { text-align: left; vertical-align: middle; }
+.desk-table-scroll th:first-child { width: 45%; }
+.desk-table-scroll th:last-child, .desk-table-scroll td:last-child { text-align: right; width: 25%; }
+.desk-table-scroll td:last-child .desk-row-actions { justify-content: flex-end; }
 .desk-table-scroll td > p { font-size: 13px; color: #5c6e85; margin-top: 6px; max-width: 300px; }
 .desk-table-scroll small { display: block; color: #8490a2; font-size: 11px; margin-top: 6px; }
 .desk-row-ticker { font-size: 16px; font-weight: 500; color: #294976; }

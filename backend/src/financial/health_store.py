@@ -5,6 +5,7 @@ MAP = {'INCOME_STATEMENT':{'PROFIT_AFTER_TAX':'profit'},
        'BALANCE_SHEET':{'TOTAL_ASSETS':'assets','OWNERS_EQUITY':'equity','TOTAL_LIABILITIES':'liabilities'},
        'CASH_FLOW':{'CASH_FLOW_OPERATING':'operating_cash_flow'},
        'RATIO':{'ROE':'roe','ROA':'roa','NIM':'nim','NPL_RATIO':'npl','COST_TO_INCOME':'cost_to_income'}}
+REVENUE_CODES = {'BANK': 'TOTAL_OPERATING_INCOME', 'TECH': 'NET_REVENUE'}
 
 
 def canonical_rows(records):
@@ -12,7 +13,7 @@ def canonical_rows(records):
     for row in records:
         industry, section = row.get('industry_type'), row.get('section')
         metric = MAP.get(section,{}).get(row.get('code'))
-        revenue_code = 'TOTAL_OPERATING_INCOME' if industry=='BANK' else 'NET_REVENUE' if industry=='TECH' else None
+        revenue_code = REVENUE_CODES.get(industry)
         if section=='INCOME_STATEMENT' and row.get('code')==revenue_code:
             metric = 'revenue'
         if metric is None:

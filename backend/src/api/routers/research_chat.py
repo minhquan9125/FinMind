@@ -2,7 +2,8 @@
 from __future__ import annotations
 
 import jwt
-from typing import Optional
+from datetime import datetime
+from typing import Literal, Optional
 from functools import lru_cache
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
@@ -51,7 +52,7 @@ def get_store() -> PostgresSessionStore:
         from ...retrieval_orchestration.market_research import MarketResearch
         from ...market_data.repository import FileMarketDataRepository
         from ...market_data.analysis_queries import get_price_trend
-        from ...financial.health_db import get_financial_health
+        from ...financial.health_db import get_financial_health, get_screening_health
         from ...documents.admin_news_chat import AdminNewsChat
         from ...documents.admin_ingestion import Queue
         from .hybrid_router import run_routed_chat_answer
@@ -85,7 +86,8 @@ def get_store() -> PostgresSessionStore:
             retrieval_timeout=settings.research_retrieval_timeout_seconds,
             market=MarketResearch(FileMarketDataRepository(), services=lambda: (_market_services[0], None),
                                   trend_reader=lambda symbol: get_price_trend(get_pool(), symbol),
-                                  health_reader=lambda symbol: get_financial_health(get_pool(), symbol)),
+                                  health_reader=lambda symbol: get_financial_health(get_pool(), symbol),
+                                  screening_health_reader=lambda symbols: get_screening_health(get_pool(), symbols)),
             admin_news=AdminNewsChat(get_pool(), get_embedding_service(), settings, retriever=retriever),
             hybrid_router=routed,
             prices=PriceAnalytics(PriceStore(get_pool())),
@@ -226,6 +228,25 @@ async def resume_session(
         raise HTTPException(status_code=e.status, detail=e.message)
     except Exception:
         raise HTTPException(status_code=503, detail="Lỗi hệ thống. Vui lòng thử lại.")
+
+
+@router.get('/sessions/{session_id}/export')
+async def export_session(session_id: str, format: Literal['txt', 'json'] = 'txt',
+                         owner: str = Depends(get_owner), store: PostgresSessionStore = Depends(get_store)):
+    """Download the chat as a file: sourced summary, every question and answer, and the investment disclaimer."""
+    import json
+    from fastapi.responses import Response
+    from ...retrieval_orchestration.chat_export import VIETNAM, build_export, render_txt
+    try:
+        doc = await store.export_doc(owner, session_id)
+    except ChatError as exc:
+        raise HTTPException(status_code=exc.status, detail=exc.message)
+    data = build_export(doc)
+    name = f"finmind-chat-{datetime.now(VIETNAM):%Y%m%d-%H%M}.{format}"
+    body, media = ((json.dumps(data, ensure_ascii=False, indent=2), 'application/json; charset=utf-8')
+                   if format == 'json' else (render_txt(data), 'text/plain; charset=utf-8'))
+    return Response(body.encode('utf-8'), media_type=media,
+                    headers={'Content-Disposition': f'attachment; filename="{name}"'})
 
 
 @router.delete('/sessions/{session_id}', status_code=status.HTTP_204_NO_CONTENT)

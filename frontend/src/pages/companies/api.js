@@ -1,8 +1,8 @@
-import { catalogFixtures } from "./mock.js";
+import { getCompanyCatalog } from "./financials.js";
 
-// Sau này chỉ thay phần thân hàm này bằng fetch tới FastAPI; UI giữ nguyên.
+// `fixture` giữ lại để thử trạng thái rỗng/lỗi qua ?fixture=...; mặc định gọi backend.
 export async function getCompanies(fixture = "success") {
-  await new Promise((resolve) => setTimeout(resolve, 350));
-  if (fixture === "error") throw new Error(catalogFixtures.error);
-  return catalogFixtures[fixture] ?? catalogFixtures.success;
+  if (fixture === "error") throw new Error("Không thể tải danh sách doanh nghiệp.");
+  if (fixture === "empty") return [];
+  return getCompanyCatalog();
 }

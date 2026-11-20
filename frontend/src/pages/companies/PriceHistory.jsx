@@ -184,7 +184,6 @@ export default function PriceHistory({ data }) {
         </div>
         <p className="mt-1 text-[11px] text-slate-500">Cuộn chuột để zoom, kéo ngang để xem lịch sử · TradingView Lightweight Charts™ · © 2025 <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" className="underline">TradingView, Inc.</a></p>
       </div>
-      <p className="text-xs text-amber-700">Dữ liệu đã lưu; trạng thái phiên gần nhất: {statusLabels[latest.status] || "Chưa rõ"}. Đơn vị và cơ sở điều chỉnh giá/khối lượng chưa được xác nhận. Không phải giá realtime từng giao dịch.</p>
     </div>
   );
 }

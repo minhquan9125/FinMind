@@ -234,22 +234,6 @@ CREATE TABLE "public"."evidence" (
 
 ALTER TABLE "public"."evidence" ADD CONSTRAINT "evidence_pkey" PRIMARY KEY (evidence_id);
 
-CREATE TABLE "public"."feedback" (
-    "feedback_id" uuid NOT NULL,
-    "user_id" uuid,
-    "query_id" uuid,
-    "citation_id" uuid,
-    "evidence_id" uuid,
-    "issue_type" character varying(30),
-    "comment" text,
-    "status" character varying(20),
-    "created_at" timestamp with time zone,
-    "resolved_at" timestamp with time zone,
-    "resolved_by" uuid
-);
-
-ALTER TABLE "public"."feedback" ADD CONSTRAINT "feedback_pkey" PRIMARY KEY (feedback_id);
-
 CREATE TABLE "public"."financial_reports" (
     "report_id" uuid NOT NULL,
     "company_id" uuid,
@@ -824,16 +808,6 @@ ALTER TABLE "public"."evidence" ADD CONSTRAINT "evidence_period_id_fkey" FOREIGN
 
 ALTER TABLE "public"."evidence" ADD CONSTRAINT "evidence_price_id_fkey" FOREIGN KEY (price_id) REFERENCES public.price_bars(price_id);
 
-ALTER TABLE "public"."feedback" ADD CONSTRAINT "feedback_citation_id_fkey" FOREIGN KEY (citation_id) REFERENCES public.citations(citation_id);
-
-ALTER TABLE "public"."feedback" ADD CONSTRAINT "feedback_evidence_id_fkey" FOREIGN KEY (evidence_id) REFERENCES public.evidence(evidence_id);
-
-ALTER TABLE "public"."feedback" ADD CONSTRAINT "feedback_query_id_fkey" FOREIGN KEY (query_id) REFERENCES public.queries(query_id);
-
-ALTER TABLE "public"."feedback" ADD CONSTRAINT "feedback_resolved_by_fkey" FOREIGN KEY (resolved_by) REFERENCES public.users(user_id);
-
-ALTER TABLE "public"."feedback" ADD CONSTRAINT "feedback_user_id_fkey" FOREIGN KEY (user_id) REFERENCES public.users(user_id);
-
 ALTER TABLE "public"."financial_reports" ADD CONSTRAINT "financial_reports_company_id_fkey" FOREIGN KEY (company_id) REFERENCES public.companies(company_id);
 
 ALTER TABLE "public"."financial_reports" ADD CONSTRAINT "financial_reports_document_id_fkey" FOREIGN KEY (document_id) REFERENCES public.documents(document_id);
@@ -997,8 +971,6 @@ ALTER TABLE "public"."evaluation_results" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "public"."evaluation_runs" ENABLE ROW LEVEL SECURITY;
 
 ALTER TABLE "public"."evidence" ENABLE ROW LEVEL SECURITY;
-
-ALTER TABLE "public"."feedback" ENABLE ROW LEVEL SECURITY;
 
 ALTER TABLE "public"."financial_reports" ENABLE ROW LEVEL SECURITY;
 

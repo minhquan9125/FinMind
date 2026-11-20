@@ -33,6 +33,28 @@ export const sendMessage = (id, text, revision, signal) => request(`/${encodeURI
 // Opening history continues the same session; POST /resume creates a separate fork.
 export const resumeSession = getSession;
 
+// Download the chat as a summary file; the server builds it, the browser saves it under the server's name.
+export async function exportSession(id, format) {
+  let response;
+  try { response = await authorizedFetch(`${base}/${encodeURIComponent(id)}/export?format=${format}`, { cache: "no-store" }); }
+  catch (error) {
+    if (error?.status) throw error;
+    throw failure("Không kết nối được máy chủ. Hãy kiểm tra backend đang chạy.", 0);
+  }
+  if (!response.ok) throw failure(`Không xuất được đoạn chat (lỗi ${response.status}).`, response.status);
+  const name = /filename="([^"]+)"/.exec(response.headers.get("Content-Disposition") || "")?.[1] || `finmind-chat.${format}`;
+  return { blob: await response.blob(), name };
+}
+
+export function saveFile({ blob, name }) {
+  const url = URL.createObjectURL(blob);
+  const link = Object.assign(document.createElement("a"), { href: url, download: name });
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 // Explicit diagnostic inspection. The chat answer now stores its own routed
 // evidence, so ResearchChat does not call this on every submitted question.
 export async function inspectBoth(question) {
