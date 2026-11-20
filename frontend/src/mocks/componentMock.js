@@ -1,5 +1,3 @@
-import { createElement } from "react";
-import GraphIcon from "../shared/ui/GraphIcon.jsx";
 import { userFixtures } from "./userMock.js";
 import { adminFixtures } from "./adminMock.js";
 
@@ -11,9 +9,7 @@ export const userMenu = [
     { id: "copilot", label: "Trợ lý nghiên cứu", icon: "◫" },
     { id: "watchlist", label: "Danh sách theo dõi", icon: "☆" },
   ] },
-  { label: "Tính năng mở rộng", items: [
-    { id: "graph", label: "Đồ thị tri thức", icon: createElement(GraphIcon) },
-  ] },
+  // "Đồ thị tri thức" is hidden from the menu; the /graph page itself still works by URL.
 ];
 
 export const adminMenu = [
