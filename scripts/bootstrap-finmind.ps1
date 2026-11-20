@@ -158,14 +158,24 @@ function Get-FinMindEnvValue {
     return $null
 }
 
-function Test-FinMindTunnel { return [bool](Get-NetTCPConnection -State Listen -LocalPort 15433 -ErrorAction SilentlyContinue) }
+# Local port -> port on the VPS: Postgres, then Neo4j bolt and browser. All go through one ssh login.
+$FinMindForwards = @(
+    [pscustomobject]@{ Local = 15433; Remote = 5433 },
+    [pscustomobject]@{ Local = 17687; Remote = 7687 },
+    [pscustomobject]@{ Local = 17474; Remote = 7474 })
+
+function Test-FinMindPort { param([int]$Port) return [bool](Get-NetTCPConnection -State Listen -LocalPort $Port -ErrorAction SilentlyContinue) }
 
 function Start-FinMindTunnel {
     param([string]$Root)
     # Only teams whose database sits behind the VPS set FINMIND_TUNNEL_TARGET (user@host) in backend\.env.
     $target = Get-FinMindEnvValue $Root 'FINMIND_TUNNEL_TARGET'
     if (-not $target) { return $true }
-    if (Test-FinMindTunnel) { Write-Host 'Tunnel DB (cong 15433) da mo san.'; return $true }
+    # A port already forwarded (e.g. a Neo4j tunnel opened by hand) is left alone; ExitOnForwardFailure would fail on it.
+    $pending = @($FinMindForwards | Where-Object { -not (Test-FinMindPort $_.Local) })
+    if ($pending.Count -eq 0) { Write-Host 'Tunnel DB (15433) va Neo4j (17687, 17474) da mo san.'; return $true }
+    $closed = @($pending | ForEach-Object { $_.Local })
+    $forwards = @($pending | ForEach-Object { '-L'; "127.0.0.1:$($_.Local):127.0.0.1:$($_.Remote)" })
     # One password prompt and no retry: the VPS blocks this IP after a few wrong passwords.
     $options = @('-N','-o','ExitOnForwardFailure=yes','-o','ServerAliveInterval=30','-o','NumberOfPasswordPrompts=1')
     $password = Get-FinMindEnvValue $Root 'FINMIND_TUNNEL_PASSWORD'
@@ -176,7 +186,7 @@ function Start-FinMindTunnel {
             $env:FINMIND_TUNNEL_PASSWORD = $password
             $options += @('-o','PubkeyAuthentication=no','-o','PreferredAuthentications=password')
         } else { $options += @('-o','BatchMode=yes') }
-        $process = Start-Process -FilePath 'ssh.exe' -ArgumentList ($options + @('-L','127.0.0.1:15433:127.0.0.1:5433',$target)) -WindowStyle Minimized -PassThru -ErrorAction Stop
+        $process = Start-Process -FilePath 'ssh.exe' -ArgumentList ($options + $forwards + @($target)) -WindowStyle Minimized -PassThru -ErrorAction Stop
     } finally {
         # The backend and frontend windows started next must not inherit the password.
         foreach ($name in @('SSH_ASKPASS','SSH_ASKPASS_REQUIRE','FINMIND_TUNNEL_PASSWORD')) { Remove-Item -LiteralPath "Env:$name" -ErrorAction SilentlyContinue }
@@ -184,10 +194,13 @@ function Start-FinMindTunnel {
     foreach ($attempt in 1..20) {
         Start-Sleep -Seconds 1
         if ($process.HasExited) { break }
-        if (Test-FinMindTunnel) { Write-Host 'Da mo tunnel DB (cong 15433). Dong cua so ssh thu nho de ngat.'; return $true }
+        if (@($closed | Where-Object { -not (Test-FinMindPort $_) }).Count -eq 0) {
+            Write-Host "Da mo tunnel cong $($closed -join ', ') (15433 = DB, 17687/17474 = Neo4j). Dong cua so ssh thu nho de ngat."
+            return $true
+        }
     }
     if (-not $process.HasExited) { Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue }
-    Write-Host '[LOI] Khong mo duoc tunnel DB. Kiem tra mang va FINMIND_TUNNEL_PASSWORD trong backend\.env; khong tu thu lai vi VPS khoa IP khi sai mat khau nhieu lan.'
+    Write-Host '[LOI] Khong mo duoc tunnel DB/Neo4j. Kiem tra mang va FINMIND_TUNNEL_PASSWORD trong backend\.env; khong tu thu lai vi VPS khoa IP khi sai mat khau nhieu lan.'
     return $false
 }
 
@@ -196,8 +209,28 @@ function Start-FinMind {
     if (-not (Start-FinMindTunnel $Root)) { return $false }
     Start-Process -FilePath $env:ComSpec -WorkingDirectory (Join-Path $Root 'backend') -ArgumentList '/k npm.cmd run dev' -WindowStyle Normal -ErrorAction Stop
     Start-Process -FilePath $env:ComSpec -WorkingDirectory (Join-Path $Root 'frontend') -ArgumentList '/k npm.cmd run dev -- --host localhost --port 5173 --strictPort' -WindowStyle Normal -ErrorAction Stop
-    Write-Host 'Da mo hai terminal. Doi backend san sang, roi mo http://localhost:5173/research. Ctrl+C trong tung terminal de dung.'
+    Write-Host 'Da mo terminal backend va frontend. Dang doi backend san sang (lan dau co the vai phut vi nap mo hinh)...'
+    if ((Wait-FinMindUrl 'http://127.0.0.1:8000/api/health' 600) -and (Wait-FinMindUrl 'http://localhost:5173/' 120)) {
+        Start-Process 'http://localhost:5173/'
+        Write-Host 'Da mo trinh duyet http://localhost:5173/. Ctrl+C trong tung terminal de dung.'
+    } else {
+        Write-Host '[CANH BAO] Backend/frontend chua san sang sau thoi gian cho. Xem loi trong hai cua so terminal, roi tu mo http://localhost:5173/.'
+    }
     return $true
+}
+
+function Wait-FinMindUrl {
+    param([string]$Url, [int]$Seconds)
+    $deadline = (Get-Date).AddSeconds($Seconds)
+    while ((Get-Date) -lt $deadline) {
+        try { Invoke-WebRequest -Uri $Url -UseBasicParsing -TimeoutSec 5 | Out-Null; return $true }
+        catch {
+            # Any HTTP answer (even 503 while the DB warms up) means the server is listening.
+            if ($_.Exception.Response) { return $true }
+            Start-Sleep -Seconds 2
+        }
+    }
+    return $false
 }
 
 function Invoke-FinMind {

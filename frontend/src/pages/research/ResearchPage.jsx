@@ -20,19 +20,17 @@ import './researchLayout.css';
 import { useAuth } from "../../shared/context/AuthContext.jsx";
 import { userMenu } from "../../mocks/componentMock.js";
 import { researcherMock } from "../dashboard/mock.js";
+import { getStoredResearchHistory, saveStoredResearchHistory } from "./mock.js";
 import {
-  companyDirectory,
-  comparisonMetricsList,
-  companyFinancialFacts,
-  evaluateResearchQuery,
-  getCompanyMeta,
-  getStoredFeedback,
-  getStoredResearchHistory,
-  researchCompanyCatalog,
-  researchPeriods,
-  saveFeedbackItem,
-  saveStoredResearchHistory,
-} from "./mock.js";
+  FACTS,
+  formatFact,
+  getCompanyCatalog,
+  getCompanyFinancials,
+  toPeriodCode,
+  verification,
+} from "../companies/financials.js";
+
+const TICKER = /^[A-Z0-9]{1,10}$/;
 
 const menuPaths = {
   dashboard: "/dashboard",
@@ -52,21 +50,23 @@ export default function ResearchPage() {
   const messagesEndRef = useRef(null);
 
   // Mode: "copilot" (Trợ lý hỏi đáp) hoặc "compare" (So sánh chỉ tiêu)
-  const initialMode = params.get("mode") === "compare" ? "compare" : "copilot";
+  // The compare tab is hidden from the UI; old ?mode=compare links open the chat.
+  const initialMode = "copilot";
   const [activeTab, setActiveTab] = useState(initialMode);
 
   // Filter context
   const rawCompany = (params.get("company") || "FPT").toUpperCase();
-  const validTicker = researchCompanyCatalog.some((c) => c.id === rawCompany)
-    ? rawCompany
-    : "FPT";
+  const validTicker = TICKER.test(rawCompany) ? rawCompany : "FPT";
   const [company, setCompany] = useState(validTicker);
 
-  const rawPeriod = params.get("period") || "FY2025";
-  const validPeriod = researchPeriods.some((p) => p.value === rawPeriod)
-    ? rawPeriod
-    : "FY2025";
-  const [period, setPeriod] = useState(validPeriod);
+  // "" = chưa chọn; bảng so sánh tự chọn kỳ mới nhất có dữ liệu.
+  const [period, setPeriod] = useState(toPeriodCode(params.get("period")));
+
+  // Dữ liệu so sánh lấy từ backend
+  const [catalog, setCatalog] = useState([]);
+  const [compareData, setCompareData] = useState({});
+  const [compareLoading, setCompareLoading] = useState(false);
+  const [compareError, setCompareError] = useState(null);
 
   // Compare mode second company
   const [compareCompany, setCompareCompany] = useState(
@@ -82,11 +82,6 @@ export default function ResearchPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
-  // Evidence Drawer
-  const [evidenceDrawerOpen, setEvidenceDrawerOpen] = useState(false);
-  const [selectedSource, setSelectedSource] = useState(null);
-  const [copyFeedback, setCopyFeedback] = useState(false);
-
   // History State (Mô phỏng theo user qua localStorage)
   const [historyDrawerOpen, setHistoryDrawerOpen] = useState(
     params.get("history") === "1"
@@ -100,21 +95,15 @@ export default function ResearchPage() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
-  // Feedback State (Đánh giá hữu ích / cần cải thiện bằng mock)
-  const [feedbackRating, setFeedbackRating] = useState(null);
-  const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
-  const [feedbackReason, setFeedbackReason] = useState("Số liệu chưa chính xác");
-  const [feedbackNote, setFeedbackNote] = useState("");
-  const [feedbackToast, setFeedbackToast] = useState(null);
 
   // Synchronize context when URL query params change
   useEffect(() => {
     const pCompany = (params.get("company") || "").toUpperCase();
-    if (pCompany && researchCompanyCatalog.some((c) => c.id === pCompany)) {
+    if (TICKER.test(pCompany)) {
       setCompany(pCompany);
     }
-    const pPeriod = params.get("period");
-    if (pPeriod && researchPeriods.some((p) => p.value === pPeriod)) {
+    const pPeriod = toPeriodCode(params.get("period"));
+    if (pPeriod) {
       setPeriod(pPeriod);
     }
     const pQuestion = params.get("question");
@@ -123,9 +112,6 @@ export default function ResearchPage() {
     }
     if (params.get("history") === "1") {
       setHistoryDrawerOpen(true);
-    }
-    if (params.get("mode") === "compare") {
-      setActiveTab("compare");
     }
   }, [params]);
 
@@ -155,31 +141,28 @@ export default function ResearchPage() {
     setEvaluation(null);
   };
 
-  // Open Evidence Drawer for a given source
-  const handleOpenSource = (sourceId) => {
-    const meta = getCompanyMeta(company);
-    const src =
-      meta.sources?.find((s) => s.id === String(sourceId)) ||
-      meta.sources?.[0] || {
-        id: sourceId,
-        title: `Báo cáo kiểm toán ${company} ${period}`,
-        publisher: `${company} Corporation`,
-        type: "Báo cáo tài chính",
-        status: "Đã đối soát",
-        locator: `Trang 48 – Thuyết minh báo cáo tài chính ${company}`,
-        fact: `Số liệu đối chiếu tài chính hợp nhất ${company} theo chuẩn mực kiểm toán.`,
-        provenance: `Hồ sơ CBTT HOSE · Ý kiến kiểm toán chấp nhận toàn phần · Hash SHA-256 #std_${company.toLowerCase()}`,
-        location: "Thuyết minh báo cáo kết quả hoạt động kinh doanh",
-        url: "#",
-      };
-    setSelectedSource({ ...src, displayId: sourceId });
-    setEvidenceDrawerOpen(true);
-  };
+  // Danh mục doanh nghiệp cho bảng so sánh (chỉ mã đã có BCTC)
+  useEffect(() => {
+    if (activeTab !== "compare" || catalog.length) return;
+    getCompanyCatalog()
+      .then((items) => setCatalog(items.filter((item) => item.latestPeriod)))
+      .catch((caught) => setCompareError(caught.message));
+  }, [activeTab, catalog.length]);
 
-  const handleCopyLink = () => {
-    setCopyFeedback(true);
-    setTimeout(() => setCopyFeedback(false), 2000);
-  };
+  // Số liệu BCTC của hai doanh nghiệp đang so sánh
+  useEffect(() => {
+    if (activeTab !== "compare") return;
+    let cancelled = false;
+    setCompareLoading(true);
+    setCompareError(null);
+    Promise.all([company, compareCompany].map(getCompanyFinancials))
+      .then(([first, second]) => {
+        if (!cancelled) setCompareData({ [company]: first, [compareCompany]: second });
+      })
+      .catch((caught) => { if (!cancelled) setCompareError(caught.message); })
+      .finally(() => { if (!cancelled) setCompareLoading(false); });
+    return () => { cancelled = true; };
+  }, [activeTab, company, compareCompany]);
 
   // History Pin / Unpin
   const handleTogglePin = (e, id) => {
@@ -220,104 +203,66 @@ export default function ResearchPage() {
     setItemToDelete(null);
   };
 
-  // Feedback Actions
-  const handleRateHelpful = () => {
-    setFeedbackRating("helpful");
-    saveFeedbackItem({
-      question: currentQuestion,
-      company,
-      period,
-      rating: "helpful",
-      timestamp: new Date().toISOString(),
-    });
-    setFeedbackToast("Cảm ơn bạn! Đã ghi nhận đánh giá hữu ích.");
-    setTimeout(() => setFeedbackToast(null), 3500);
-  };
-
-  const handleOpenFeedbackModal = () => {
-    setFeedbackRating("unhelpful");
-    setFeedbackModalOpen(true);
-  };
-
-  const handleSubmitFeedbackModal = () => {
-    saveFeedbackItem({
-      question: currentQuestion,
-      company,
-      period,
-      rating: "unhelpful",
-      reason: feedbackReason,
-      note: feedbackNote,
-      timestamp: new Date().toISOString(),
-    });
-    setFeedbackModalOpen(false);
-    setFeedbackNote("");
-    setFeedbackToast("Cảm ơn bạn! FinMind đã tiếp nhận góp ý để hoàn thiện.");
-    setTimeout(() => setFeedbackToast(null), 3500);
-  };
-
-  const compMeta = getCompanyMeta(company);
-  const compareMeta = getCompanyMeta(compareCompany);
-
   // Prepare options for Selects
-  const companyOptions = researchCompanyCatalog.map((c) => ({
-    value: c.id,
-    label: `${c.id} · ${c.name}`,
-  }));
+  const companyOptions = [
+    ...catalog,
+    ...[company, compareCompany].filter((t) => !catalog.some((c) => c.id === t)).map((t) => ({ id: t, name: t })),
+  ].map((c) => ({ value: c.id, label: `${c.id} · ${c.name}` }));
 
-  const periodOptions = researchPeriods.map((p) => ({
-    value: p.value,
+  const firstData = compareData[company];
+  const secondData = compareData[compareCompany];
+  const periodOptions = (firstData?.periods || secondData?.periods || []).map((p) => ({
+    value: p.period,
     label: p.label,
   }));
 
-  // Prepare rows for comparison DataTable
-  const comp1Facts =
-    companyFinancialFacts[company]?.[period] ||
-    companyFinancialFacts[company]?.["FY2025"] ||
-    {};
-  const comp2Facts =
-    companyFinancialFacts[compareCompany]?.[period] ||
-    companyFinancialFacts[compareCompany]?.["FY2025"] ||
-    {};
-
-  const compareRows = comparisonMetricsList.map((metric) => {
-    const val1 = comp1Facts[metric.key] ?? "—";
-    const val2 = comp2Facts[metric.key] ?? "—";
-
-    let tone1 = "neutral";
-    let tone2 = "neutral";
-
-    if (metric.key === "evidenceStatus") {
-      tone1 = comp1Facts.evidenceStatus === "verified" ? "success" : "warning";
-      tone2 = comp2Facts.evidenceStatus === "verified" ? "success" : "warning";
+  // Kỳ chưa chọn hoặc không có dữ liệu thì dùng kỳ mới nhất của doanh nghiệp thứ nhất.
+  useEffect(() => {
+    if (periodOptions.length && !periodOptions.some((p) => p.value === period)) {
+      setPeriod(periodOptions[0].value);
     }
+  }, [periodOptions, period]);
 
-    return {
-      id: metric.key,
-      metricName: metric.label,
-      val1:
-        metric.key === "evidenceStatus" ? (
-          <StatusBadge tone={tone1}>
-            {comp1Facts.evidenceLabel || "Chưa có dữ liệu"}
-          </StatusBadge>
-        ) : (
-          val1
-        ),
-      val2:
-        metric.key === "evidenceStatus" ? (
-          <StatusBadge tone={tone2}>
-            {comp2Facts.evidenceLabel || "Chưa có dữ liệu"}
-          </StatusBadge>
-        ) : (
-          val2
-        ),
-      note:
-        metric.key === "evidenceStatus"
-          ? "Mẫu minh họa"
-          : val1 !== "—" && val2 !== "—"
-          ? "Số liệu mẫu"
-          : "Chưa có dữ liệu mẫu",
-    };
-  });
+  const periodLabel = periodOptions.find((p) => p.value === period)?.label || period || "—";
+  const firstPeriod = firstData?.periods.find((p) => p.period === period);
+  const secondPeriod = secondData?.periods.find((p) => p.period === period);
+
+  const statusBadge = (data) => {
+    if (!data) return <StatusBadge tone="neutral">Không có số liệu kỳ này</StatusBadge>;
+    const state = verification(data.status);
+    return <StatusBadge tone={state.tone}>{state.label}</StatusBadge>;
+  };
+
+  const compareRows = [
+    ...FACTS.map((fact) => {
+      const val1 = formatFact(firstPeriod?.facts[fact.key], fact.kind);
+      const val2 = formatFact(secondPeriod?.facts[fact.key], fact.kind);
+      return {
+        id: fact.key,
+        metricName: fact.label,
+        val1,
+        val2,
+        note: fact.key === "roe" || fact.key === "roa"
+          ? "Chỉ số từ nguồn dữ liệu, chưa đối chiếu PDF"
+          : fact.kind === "growth"
+          ? "So với cùng kỳ năm trước"
+          : val1 === "—" || val2 === "—"
+          ? "Thiếu số liệu ở một bên"
+          : "Theo trạng thái đối chiếu từng kỳ",
+      };
+    }),
+    {
+      id: "evidenceStatus",
+      metricName: "Đối chiếu với BCTC gốc",
+      val1: statusBadge(firstPeriod),
+      val2: statusBadge(secondPeriod),
+      note: "So số liệu với file PDF đã công bố",
+    },
+  ];
+
+  // BCTC gốc của kỳ đang so sánh, để người đọc tự kiểm tra
+  const compareReports = [[company, firstData], [compareCompany, secondData]].flatMap(([ticker, data]) =>
+    (data?.reports || []).filter((r) => r.period === period && r.url).map((r) => ({ ...r, ticker })));
 
   const compareColumns = [
     {
@@ -329,21 +274,21 @@ export default function ResearchPage() {
     },
     {
       key: "val1",
-      title: `${company} (${period})`,
+      title: `${company} (${periodLabel})`,
       render: (r) => (
         <span className="font-mono font-medium text-slate-800">{r.val1}</span>
       ),
     },
     {
       key: "val2",
-      title: `${compareCompany} (${period})`,
+      title: `${compareCompany} (${periodLabel})`,
       render: (r) => (
         <span className="font-mono font-medium text-slate-800">{r.val2}</span>
       ),
     },
     {
       key: "note",
-      title: "Ghi chú kiểm chứng",
+      title: "Ghi chú",
       render: (r) => <span className="text-xs text-slate-500">{r.note}</span>,
     },
   ];
@@ -384,7 +329,7 @@ export default function ResearchPage() {
               <h1 className="text-lg font-bold tracking-tight text-slate-900">
                 Nghiên cứu
               </h1>
-              <span className="research-header-caption">{activeTab === 'compare' ? 'Dữ liệu minh họa' : 'Tra cứu doanh nghiệp có nguồn'}</span>
+              <span className="research-header-caption">{activeTab === 'compare' ? 'So sánh BCTC' : 'Tra cứu doanh nghiệp có nguồn'}</span>
             </div>
 
             {/* Quick Actions & Tab Switcher */}
@@ -400,17 +345,6 @@ export default function ResearchPage() {
                   }`}
                 >
                   <ResearchIcon name="copilot" /> Hỏi FinMind
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("compare")}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
-                    activeTab === "compare"
-                      ? "bg-white text-blue-600 shadow-xs"
-                      : "text-slate-600 hover:text-slate-900"
-                  }`}
-                >
-                  <ResearchIcon name="compare" /> So sánh (mẫu)
                 </button>
               </div>
 
@@ -487,20 +421,22 @@ export default function ResearchPage() {
               )}
             </div>
 
-            {/* Evidence Drawer Quick Link */}
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">
-                <span>!</span>
-                <span>Dữ liệu mẫu · chưa phải số liệu thật</span>
-              </span>
-              <button
-                type="button"
-                onClick={() => handleOpenSource("1")}
-                className="text-xs text-blue-600 font-semibold hover:underline"
-              >
-                Xem nguồn mẫu →
-              </button>
-            </div>
+            {/* BCTC gốc của kỳ đang so sánh */}
+            {compareReports.length > 0 && (
+              <div className="flex flex-wrap items-center gap-3">
+                {compareReports.map((report) => (
+                  <a
+                    key={report.id}
+                    href={report.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-600 font-semibold hover:underline"
+                  >
+                    BCTC gốc {report.ticker} →
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -518,10 +454,16 @@ export default function ResearchPage() {
             {/* TAB 2: BẢNG SO SÁNH CHỈ TIÊU (COMPARE VIEW) */}
             {activeTab === "compare" && (
               <div className="space-y-6">
-                <p role="note" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-xs text-amber-900">
-                  Bảng này chỉ minh họa giao diện với <strong>dữ liệu mẫu</strong>, chưa lấy từ báo cáo thật.
-                  Để tra số liệu thật có nguồn, dùng tab <strong>Hỏi FinMind</strong>.
-                </p>
+                {compareError && (
+                  <p role="alert" className="rounded-lg border border-rose-200 bg-rose-50 px-4 py-2 text-xs text-rose-800">
+                    {compareError}
+                  </p>
+                )}
+                {[firstPeriod, secondPeriod].some((p) => p?.status === "MISMATCH") && (
+                  <p role="note" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-xs text-amber-900">
+                    Có số liệu lệch so với BCTC gốc ở kỳ này. Hãy mở tài liệu gốc để kiểm tra trước khi dùng.
+                  </p>
+                )}
                 <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                     <div>
@@ -529,18 +471,18 @@ export default function ResearchPage() {
                         Đối chiếu chỉ tiêu: {company} vs {compareCompany}
                       </h2>
                       <p className="text-xs text-slate-500 mt-0.5">
-                        Kỳ báo cáo: {period} · Báo cáo tài chính hợp nhất kiểm toán
+                        Kỳ báo cáo: {periodLabel} · Số liệu BCTC đã lưu trong hệ thống
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-xs text-slate-500 font-medium">
-                        Chuẩn mực đơn vị: VNĐ / Tỷ lệ %
+                        Đơn vị: tỷ đồng / %
                       </span>
                     </div>
                   </div>
 
                   <div className="mt-4">
-                    <DataTable columns={compareColumns} rows={compareRows} />
+                    {compareLoading ? <Skeleton rows={6} /> : <DataTable columns={compareColumns} rows={compareRows} />}
                   </div>
                 </div>
               </div>
@@ -550,102 +492,9 @@ export default function ResearchPage() {
 
         {activeTab === "compare" && (
           <div className="shrink-0 border-t border-slate-200 bg-white p-4 text-center text-xs text-slate-500">
-            Bảng so sánh dùng dữ liệu minh họa · Không phải khuyến nghị đầu tư
+            Số liệu từ BCTC đã thu thập · Không phải khuyến nghị đầu tư
           </div>
         )}
-
-        {/* ───────────────────────────────────────────────────────────── */}
-        {/* 4. EVIDENCE DRAWER (HIỂN THỊ LOCATOR / FACT / PROVENANCE)    */}
-        {/* ───────────────────────────────────────────────────────────── */}
-        <Drawer
-          open={evidenceDrawerOpen}
-          title={`BẰNG CHỨNG NGUỒN [${selectedSource?.displayId || selectedSource?.id || "1"}]`}
-          onClose={() => setEvidenceDrawerOpen(false)}
-        >
-          {selectedSource && (
-            <div className="space-y-4 text-xs">
-              {/* Header Status */}
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                <div>
-                  <span className="text-[11px] font-bold text-slate-400 uppercase block">
-                    TÀI LIỆU CÔNG BỐ
-                  </span>
-                  <h3 className="font-bold text-sm text-slate-900 mt-0.5">
-                    {selectedSource.title}
-                  </h3>
-                </div>
-                <StatusBadge tone="success">
-                  ✓ {selectedSource.status || "Đã đối soát"}
-                </StatusBadge>
-              </div>
-
-              {/* General Metadata */}
-              <div className="grid grid-cols-2 gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
-                <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase block">
-                    Đơn vị phát hành
-                  </span>
-                  <span className="font-semibold text-slate-800 text-xs mt-0.5 block">
-                    {selectedSource.publisher}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase block">
-                    Loại văn bản
-                  </span>
-                  <span className="font-semibold text-slate-800 text-xs mt-0.5 block">
-                    {selectedSource.type}
-                  </span>
-                </div>
-              </div>
-
-              {/* SECTION 1: LOCATOR */}
-              <div className="p-3.5 rounded-xl bg-blue-50/60 border border-blue-200 space-y-1.5">
-                <div className="flex items-center gap-1.5 text-blue-800 font-bold text-xs">
-                  <span>📍</span>
-                  <span>LOCATOR (Vị trí bằng chứng)</span>
-                </div>
-                <p className="text-xs font-semibold text-slate-900 bg-white/90 p-2.5 rounded-lg border border-blue-100 leading-relaxed">
-                  {selectedSource.locator || selectedSource.location}
-                </p>
-              </div>
-
-              {/* SECTION 2: FACT */}
-              <div className="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-200 space-y-1.5">
-                <div className="flex items-center gap-1.5 text-emerald-800 font-bold text-xs">
-                  <span>📑</span>
-                  <span>FACT (Dữ kiện / Số liệu trích xuất nguyên văn)</span>
-                </div>
-                <blockquote className="text-xs text-slate-800 italic bg-white/90 p-2.5 rounded-lg border border-emerald-100 leading-relaxed">
-                  "{selectedSource.fact || "Số liệu tài chính được ghi nhận nguyên văn từ văn bản công bố chính thức."}"
-                </blockquote>
-              </div>
-
-              {/* SECTION 3: PROVENANCE */}
-              <div className="p-3.5 rounded-xl bg-slate-100/70 border border-slate-200 space-y-1.5">
-                <div className="flex items-center gap-1.5 text-slate-700 font-bold text-xs">
-                  <span>🔒</span>
-                  <span>PROVENANCE (Chuỗi truy xuất nguồn gốc kiểm chứng)</span>
-                </div>
-                <p className="text-[11px] font-mono text-slate-600 bg-white/90 p-2.5 rounded-lg border border-slate-200 leading-relaxed">
-                  {selectedSource.provenance || "Hồ sơ công bố thông tin đã qua đối soát kiểm toán độc lập · Xác thực Corpus FinMind"}
-                </p>
-              </div>
-
-              {/* Institutional Safety Notice */}
-              <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-                <span>Văn bản đối soát FinMind Corpus</span>
-                <button
-                  type="button"
-                  onClick={handleCopyLink}
-                  className="text-blue-600 hover:underline font-medium cursor-pointer"
-                >
-                  {copyFeedback ? "✓ Đã sao chép liên kết" : "Sao chép mã trích dẫn"}
-                </button>
-              </div>
-            </div>
-          )}
-        </Drawer>
 
         {/* ───────────────────────────────────────────────────────────── */}
         {/* 5. HISTORY DRAWER (XEM / XÓA / PIN / UNPIN)                  */}
@@ -803,71 +652,6 @@ export default function ResearchPage() {
               ? "Bạn có chắc chắn muốn xóa toàn bộ lịch sử nghiên cứu? Hành động này sẽ dọn sạch danh sách và không thể hoàn tác."
               : `Bạn có chắc muốn xóa phiên nghiên cứu: "${itemToDelete?.question}" khỏi danh sách lịch sử?`}
           </p>
-        </Modal>
-
-        {/* ───────────────────────────────────────────────────────────── */}
-        {/* 7. MODAL GÓP Ý PHẢN HỒI (FEEDBACK FORM)                      */}
-        {/* ───────────────────────────────────────────────────────────── */}
-        <Modal
-          open={feedbackModalOpen}
-          title="Góp ý chất lượng câu trả lời Copilot"
-          onClose={() => setFeedbackModalOpen(false)}
-          footer={
-            <div className="flex gap-2">
-              <Button variant="secondary" onClick={() => setFeedbackModalOpen(false)}>
-                Đóng
-              </Button>
-              <button
-                type="button"
-                onClick={handleSubmitFeedbackModal}
-                className="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition-colors cursor-pointer"
-              >
-                Gửi góp ý
-              </button>
-            </div>
-          }
-        >
-          <div className="space-y-3.5">
-            <p className="text-xs text-slate-600">
-              Phản hồi của bạn giúp hệ thống kiểm định tính chuẩn xác của mô hình và trích xuất tài liệu đối soát:
-            </p>
-
-            <div className="space-y-2 text-xs text-slate-700">
-              {[
-                "Số liệu chưa chính xác",
-                "Thiếu trích dẫn bằng chứng kiểm toán",
-                "Chưa so sánh đúng kỳ đối ứng",
-                "Văn bản trích xuất chưa đầy đủ",
-              ].map((reason) => (
-                <label
-                  key={reason}
-                  className="flex items-center gap-2 cursor-pointer p-1.5 rounded hover:bg-slate-50 border border-slate-100"
-                >
-                  <input
-                    type="radio"
-                    name="feedbackReason"
-                    checked={feedbackReason === reason}
-                    onChange={() => setFeedbackReason(reason)}
-                    className="text-blue-600 focus:ring-blue-500"
-                  />
-                  <span>{reason}</span>
-                </label>
-              ))}
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Ghi chú chi tiết (tùy chọn):
-              </label>
-              <textarea
-                rows={3}
-                value={feedbackNote}
-                onChange={(e) => setFeedbackNote(e.target.value)}
-                placeholder="Ví dụ: Cần đối soát lại dòng doanh thu hợp nhất sau khi trừ thuế..."
-                className="w-full p-2.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 resize-none"
-              />
-            </div>
-          </div>
         </Modal>
       </main>
     </div>

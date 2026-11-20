@@ -2,16 +2,18 @@ import UserShell from "../../shared/ui/UserShell.jsx";
 import DeskHeader from "../../shared/ui/DeskHeader.jsx";
 import AppIcon from "../../shared/ui/AppIcon.jsx";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
+import { Link, useAuth, useNavigate, useSearchParams } from "../../app/router.jsx";
 import { EmptyState, ErrorState, Skeleton, StatusBadge } from "../../shared/ui/index.js";
-import { companyCatalog } from "../companies/mock.js";
 import { getDashboard } from "./api.js";
 import { popularTickers } from "./mock.js";
 import { searchCompanies } from "../companies/companySearch.js";
+import { getRevealed, visibleCompanies } from "../companies/visibleCompanies.js";
 import MarketOverview from "./MarketOverview.jsx";
 import MarketNews from "./MarketNews.jsx";
 
 export default function DashboardPage() {
+  const { user } = useAuth();
+  const userId = user?.id;
   const navigate = useNavigate();
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -39,10 +41,13 @@ export default function DashboardPage() {
       .catch((caught) => { if (!cancelled) setError(caught.message); })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
-  }, [fixture, retryCount]);
+  }, [fixture, retryCount, userId]);
 
+  const allCompanies = dashboard?.companies || [];
+  const catalog = visibleCompanies(allCompanies, getRevealed(userId), (dashboard?.watchlist || []).map(({ ticker }) => ticker));
+  const shown = new Set(catalog.map(company => company.id));
   const matches = search.trim()
-    ? searchCompanies(companyCatalog, search)
+    ? searchCompanies(catalog, search).filter(company => shown.has(company.id))
     : [];
 
   return <UserShell activeId="dashboard" className="fm-dashboard desk-dashboard">
@@ -62,9 +67,9 @@ export default function DashboardPage() {
           <div className="desk-quick-links"><span>Bắt đầu từ</span>{popularTickers.map(id => <Link key={id} to={`/companies/${id}`}>{id}</Link>)}</div>
         </section>
         <aside className="desk-company-directory">
-          <div className="desk-panel-heading"><h2>Danh mục doanh nghiệp</h2><span>{companyCatalog.length} mã</span></div>
+          <div className="desk-panel-heading"><h2>Danh mục doanh nghiệp</h2><span>{catalog.length} mã</span></div>
           <label className="desk-directory-search"><AppIcon name="search" /><input aria-label="Tìm doanh nghiệp" value={search} onChange={event => setSearch(event.target.value)} placeholder="Tên hoặc mã chứng khoán" type="search" /></label>
-          <div className="desk-directory-list">{(search.trim() ? matches : companyCatalog).map(company => <Link to={`/companies/${company.id}`} key={company.id}><strong>{company.id}</strong><span>{company.name}</span><AppIcon name="chevron" /></Link>)}{search.trim() && !matches.length && <p className="desk-muted">Không có mã phù hợp trong danh mục.</p>}</div>
+          <div className="desk-directory-list">{(search.trim() ? matches : catalog).map(company => <Link to={`/companies/${company.id}`} key={company.id}><strong>{company.id}</strong><span>{company.name}</span><AppIcon name="chevron" /></Link>)}{search.trim() && !matches.length && <p className="desk-muted">Không có mã phù hợp trong danh mục.</p>}</div>
           <Link className="desk-text-link" to="/companies">Khám phá danh mục <AppIcon name="arrow" /></Link>
         </aside>
       </div>
@@ -72,8 +77,8 @@ export default function DashboardPage() {
         <div className="desk-market-column"><div className="desk-section-heading"><span className="desk-section-number">02 / Thị trường</span><p>Giá và tin từ nguồn dữ liệu · Không phải khuyến nghị đầu tư</p></div><MarketOverview /><MarketNews /></div>
         <aside className="desk-personal-column">
           {loading ? <Skeleton rows={5} /> : error ? <ErrorState message={error} onRetry={() => setRetryCount(count => count + 1)} /> : <>
-            <section className="desk-side-section"><div className="desk-panel-heading"><h2>Theo dõi doanh nghiệp</h2><AppIcon name="watchlist" /></div><p className="desk-sample-label">Danh sách minh họa, chưa lưu theo tài khoản</p>
-              {dashboard.watchlist.length ? dashboard.watchlist.map(company => <Link className="desk-compact-company" key={company.id} to={`/companies/${company.id}`}><strong>{company.id}</strong><span>{company.name}</span><AppIcon name="chevron" /></Link>) : <EmptyState title="Chưa có doanh nghiệp" />}
+            <section className="desk-side-section"><div className="desk-panel-heading"><h2>Theo dõi doanh nghiệp</h2><AppIcon name="watchlist" /></div><p className="desk-sample-label">Lưu theo tài khoản của bạn</p>
+              {dashboard.watchlistError ? <p role="alert" className="desk-muted">{dashboard.watchlistError}</p> : dashboard.watchlist.length ? dashboard.watchlist.map(company => <Link className="desk-compact-company" key={company.ticker} to={`/companies/${company.ticker}`}><strong>{company.ticker}</strong><span>{company.name}</span><AppIcon name="chevron" /></Link>) : <EmptyState title="Chưa có doanh nghiệp" />}
               <Link to="/watchlist" className="desk-text-link">Mở danh sách theo dõi <AppIcon name="arrow" /></Link>
             </section>
             <section className="desk-side-section"><div className="desk-panel-heading"><h2>Nghiên cứu gần đây</h2><AppIcon name="history" /></div><p className="desk-sample-label">Các phiên minh họa</p>

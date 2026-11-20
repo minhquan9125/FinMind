@@ -35,11 +35,13 @@ def unavailable(reason='MARKET_UNAVAILABLE'):
 
 
 class MarketResearch:
-    def __init__(self, repository, *, services, now=None, trend_reader=None, health_reader=None):
+    def __init__(self, repository, *, services, now=None, trend_reader=None, health_reader=None,
+                 screening_health_reader=None):
         self.repository, self.services = repository, services
         self.now = now or (lambda: datetime.now(VN))
         # async (symbol) -> compact verified-BCTC health dict or None (backend.src.financial.health_db).
         self.health_reader = health_reader
+        self.screening_health_reader = screening_health_reader
         # async (symbol) -> stored-price trend dict; the database read stays on the event loop.
         self.trend_reader = trend_reader
 

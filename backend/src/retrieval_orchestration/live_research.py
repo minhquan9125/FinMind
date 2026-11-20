@@ -151,6 +151,10 @@ def _market_intent(norm, context, today):
     day = calendar_day(norm, today)
     action = 'SUMMARY' if re.search(r'\b(?:tom tat|tong hop|diem tin)\b', norm) else 'LIST'
     prior = (context or {}).get('_market_request')
+    # "chi tiết hơn", "nói rõ hơn" right after an analysis asks for that analysis again, in full detail.
+    from .context_policy import DETAIL_FOLLOWUP
+    if prior and prior.get('kind') == 'ANALYSIS' and re.search(DETAIL_FOLLOWUP, norm):
+        return {**copy.deepcopy(prior), 'day': today.isoformat(), '_detail_followup': True}
     if prior and prior.get('kind') == 'NEWS' and is_list_followup(norm):
         request = {**copy.deepcopy(prior), 'action': 'LIST'}
         request.pop('query', None)  # A selected article is no longer the list subject.
@@ -176,8 +180,13 @@ def _market_intent(norm, context, today):
     # shortcut: dated questions stay with reports, since health covers the latest period only; add a period to lift it.
     if ((trend or financial_analysis) and not financial and (not price or causal or explicit_trend)
             and not re.search(r'\b(?:nam|quy|thang)\s+\d|\b(?:19|20|21)\d{2}\b', norm)):
-        focus = ('FINANCIAL' if financial_analysis else 'TECHNICAL' if explicit_trend else 'STOCK')
-        return {'kind': 'ANALYSIS', 'day': today.isoformat(), 'action': 'ANALYSIS', 'focus': focus}
+        from .investor_focus import focus_from_words
+        # The question's own words win; otherwise the style the user stated earlier in this chat.
+        worded = 'FINANCIAL' if financial_analysis else 'TECHNICAL' if explicit_trend else focus_from_words(norm)
+        remembered = ((context or {}).get('_investor_focus') or {}).get('focus')
+        focus, source = ((worded, 'QUESTION') if worded else (remembered, 'STATED') if remembered else ('STOCK', 'DEFAULT'))
+        return {'kind': 'ANALYSIS', 'day': today.isoformat(), 'action': 'ANALYSIS', 'focus': focus,
+                'focus_source': source}
     company_selection = (norm.isdigit() and
                          str(((context or {}).get('_clarification_state') or {}).get('id', '')).startswith('company:'))
     if not financial and not news and not company_selection:
@@ -336,7 +345,9 @@ def analyze_live(text, context=None, *, today=None):
                   lambda match: 'quy ' + quarter_words[match[1]], norm)
     annual = annual_requested(norm, context)
     from .hybrid_router.intent_policy import PROFILE_TERMS, contains
-    if annual or contains(norm, PROFILE_TERMS):
+    # "chi tiết hơn về FPT" after an analysis is that analysis again, not a company-profile question.
+    detail_followup = (market_request or {}).pop('_detail_followup', False)
+    if (annual or contains(norm, PROFILE_TERMS)) and not detail_followup:
         market_request = None
     scope = copy.deepcopy(context or {})
     language = conversational_words()
@@ -1093,11 +1104,75 @@ class LiveResearchService:
         worker = copy.copy(self)
         worker.limits = self._current_limits()
         worker.budget = Budget(worker.limits)
+        from .conversation_actions import company_switch_question
+        from .investor_focus import FOCUS_LABEL, parse_statement
+        stated, rest = parse_statement(question)
+        if stated:
+            # The investing style the user states about themself lasts for the rest of this chat.
+            had_style = bool((context or {}).get('_investor_focus'))
+            context = {k: v for k, v in (context or {}).items() if k != '_investor_focus'}
+            if stated != 'RESET':
+                context['_investor_focus'] = {'focus': stated, 'source': 'STATED'}
+            if not rest and (stated != 'RESET' or had_style):
+                message = ('Đã bỏ hướng đầu tư đã ghi nhận; các phân tích sau sẽ trình bày chung.' if stated == 'RESET' else
+                           f'Đã ghi nhận: các phân tích sau sẽ theo hướng {FOCUS_LABEL[stated]}. '
+                           'Muốn đổi, hãy nói “phân tích theo hướng ngắn hạn” hoặc “phân tích chung”.')
+                return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                            b1_decision='ACKNOWLEDGE', status='GREETING',
+                            reason_code='INVESTOR_FOCUS_CLEARED' if stated == 'RESET' else 'INVESTOR_FOCUS_SET',
+                            message=message, scope=context, evidence_pack=None, errors=[])
+            # The question goes on without the style clause, so it is neither refused for "đang đầu tư" nor
+            # replayed later (còn BID thì sao?) with a style the user has since changed.
+            question = rest or question
+        question = company_switch_question(question, context) or question
         result = await worker._answer_turn(question, session_id, context,
             previous_result=previous_result, today=today)
+        # An empty scope is a reset ("/new"): nothing from the old conversation is carried into it.
+        if result.get('scope') and (context or {}).get('_investor_focus'):
+            result['scope'].setdefault('_investor_focus', copy.deepcopy(context['_investor_focus']))
+        if result.get('scope'):
+            # Kept for the next turn's "còn <công ty> thì sao?"; a clarification keeps the question it clarifies.
+            last = (context or {}).get('_last_question') if result.get('status') == 'ASK_CLARIFICATION' else question
+            if last:
+                result['scope']['_last_question'] = last
         if isinstance(result.get('answering'), dict):
             result['answering']['budget_scope'] = 'REQUEST'
         return result
+
+    async def _answer_screening(self, question, context):
+        """"Mã/doanh nghiệp nào đang tăng/phát triển": a fact-based list from the DB, or None for other questions.
+        Runs before the intent gate, so "mã nào đáng đầu tư" gets the list instead of a refusal."""
+        trend_reader = getattr(self.market, 'trend_reader', None)
+        health_reader = getattr(self.market, 'screening_health_reader', None)
+        if self.prices is None or trend_reader is None:
+            return None
+        from .screening import is_screening_question, render_screen
+        if not is_screening_question(question):
+            return None
+        symbols = sorted(await self.prices.symbols())
+        if not is_screening_question(question, symbols):
+            return None
+        try:
+            healths = await health_reader(symbols) if health_reader is not None else {}
+        except Exception:
+            logger.warning('screening_health_unavailable')
+            healths = {}
+        # Only codes with full data (BCTC in the DB) are screened; a new code joins once its BCTC is loaded.
+        symbols = [s for s in symbols if s in healths]
+        trends = await asyncio.gather(*(trend_reader(s) for s in symbols), return_exceptions=True)
+        ok_trends = {s: t for s, t in zip(symbols, trends) if isinstance(t, dict)}
+        skipped = sum(1 for t in trends if isinstance(t, BaseException))
+        as_of = max((t.get('as_of') or '' for t in ok_trends.values()), default='')
+        focus = ((context or {}).get('_investor_focus') or {}).get('focus')
+        draft = render_screen(ok_trends, healths, str(as_of), focus, skipped=skipped)
+        return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                    b1_decision='SCREENING', status='EVIDENCE_READY', reason_code='SCREENING_READY',
+                    message=draft, scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[],
+                    answering={'status': 'DRAFT_READY', 'reason_code': 'SCREENING_READY', 'draft': draft,
+                               'claims': [], 'citations': [], 'budget': self.budget.snapshot(),
+                               'manifest': {'mode': 'B1', 'response_mode': 'SCREENING',
+                                            'components': {'gemini': False}},
+                               'trace': [{'event': 'screening', 'symbols': len(symbols), 'skipped': skipped}]})
 
     async def _classify_intent(self, question, context):
         """Nhân's v2 classification, or None when the classifier is off, fails, is too slow, or the result
@@ -1197,6 +1272,9 @@ class LiveResearchService:
                 b1_decision='GREETING', status='GREETING', reason_code='GREETING',
                 message='Chào bạn! Bạn có thể hỏi thông tin công ty, nhân sự, báo cáo hoặc tin tức của doanh nghiệp.',
                 scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
+        screened = await self._answer_screening(interpreted, context)
+        if screened is not None:
+            return screened
         news_decision = news_reference(interpreted, context, previous_result) or analyze_live(interpreted, context, today=today)
         from .hybrid_router.intent_policy import contains, GRAPH_TERMS
         from .hybrid_router.decision_engine import _normalize as router_normalize
@@ -1231,11 +1309,16 @@ class LiveResearchService:
             if bare_company:
                 interpreted = 'Thông tin công ty ' + norm.upper()
         text_decision=analyze_live(interpreted,context,today=today)
-        content_scope=content_fallback_scope(interpreted,text_decision)
+        from .context_policy import DETAIL_FOLLOWUP
+        # "chi tiết hơn về FPT" right after an analysis: go straight to that analysis, not content/graph/news search.
+        analysis_followup = (text_decision['scope'].get('source_type') == 'MARKET_ANALYSIS'
+                             and ((context or {}).get('_market_request') or {}).get('kind') == 'ANALYSIS'
+                             and bool(re.search(DETAIL_FOLLOWUP, norm)))
+        content_scope=None if analysis_followup else content_fallback_scope(interpreted,text_decision)
         if content_scope is not None:
             return await self._answer_content_question(interpreted,content_scope)
         content_companies=text_decision['scope'].get('companies') or []
-        if len(content_companies)>1:
+        if len(content_companies)>1 and not analysis_followup:
             single=copy.deepcopy(text_decision)
             single['scope']['companies']=content_companies[:1]
             if content_fallback_scope(interpreted,single) is not None:
@@ -1244,7 +1327,7 @@ class LiveResearchService:
                     reason_code='AMBIGUOUS_CONTENT_COMPANY',scope=text_decision['scope'],
                     message='Bạn muốn tìm nội dung này cho công ty nào: '+', '.join(content_companies)+'?',
                     clarification_options=[],evidence_pack=None,errors=[])
-        if self.hybrid_router is not None:
+        if self.hybrid_router is not None and not analysis_followup:
             routed = await self.hybrid_router.answer(interpreted, context, provider=self.provider,
                 limits=self.limits, budget=self.budget)
             if routed is not None:
@@ -1254,7 +1337,7 @@ class LiveResearchService:
             return dict(status='SYSTEM_UNAVAILABLE', reason_code='CHAT_ROUTER_UNAVAILABLE',
                         message='Dịch vụ tra cứu quan hệ tạm thời chưa khả dụng. Vui lòng thử lại.',
                         scope=news_decision['scope'], evidence_pack=None, errors=[])
-        indexed_news_allowed = (self.admin_news is not None
+        indexed_news_allowed = (self.admin_news is not None and not analysis_followup
             and not annual_requested(_fold(interpreted), context) and not (explicit_profile or bare_company))
         if indexed_news_allowed and self.route_runner is None:
             indexed = await self.admin_news.answer(interpreted, session_id, provider=self.provider,
@@ -1488,6 +1571,16 @@ class LiveResearchService:
                                           'câu trả lời chỉ dựa trên giá và tin.')
         if market.get('freshness', {}).get('stale') and out.get('answering', {}).get('status') == 'DRAFT_READY':
             out['answering']['draft'] += '\n\nĐây là tin lưu gần nhất; lần lấy tin mới vừa thất bại.'
+        request = result['scope'].get('_market_request') or {}
+        from .investor_focus import FOCUS_LABEL
+        if (result['scope'].get('source_type') == 'MARKET_ANALYSIS' and request.get('focus') in FOCUS_LABEL
+                and out.get('answering', {}).get('status') == 'DRAFT_READY'):
+            # Say which investing style shaped this analysis, so the user can see it and change it.
+            label = FOCUS_LABEL[request['focus']]
+            lead = (f'Phân tích theo hướng {label}, theo bạn đã nêu. '
+                    'Muốn đổi, hãy nói “phân tích theo hướng ngắn hạn” hoặc “phân tích chung”.'
+                    if request.get('focus_source') == 'STATED' else f'Phân tích theo hướng {label}, theo câu hỏi của bạn.')
+            out['answering']['draft'] = lead + '\n\n' + out['answering']['draft']
         return out
 
     async def _answer_stored_news(self, question, scope):

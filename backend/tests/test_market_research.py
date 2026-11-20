@@ -903,6 +903,20 @@ def test_analysis_questions_carry_their_focus(question, focus):
     assert decision['scope']['_market_request']['focus'] == focus
 
 
+STATED_LONG = {'_investor_focus': {'focus': 'FINANCIAL', 'source': 'STATED'}}
+
+
+@pytest.mark.parametrize('question,context,focus,source', [
+    ('Phân tích VCB cho người lướt sóng', None, 'TECHNICAL', 'QUESTION'),
+    ('Phân tích VCB', STATED_LONG, 'FINANCIAL', 'STATED'),
+    ('Xu hướng giá VCB', STATED_LONG, 'TECHNICAL', 'QUESTION'),
+    ('Phân tích VCB', None, 'STOCK', 'DEFAULT'),
+])
+def test_analysis_focus_uses_words_then_session_focus(question, context, focus, source):
+    request = analyze_live(question, context)['scope']['_market_request']
+    assert (request['focus'], request['focus_source']) == (focus, source)
+
+
 @pytest.mark.parametrize('question', [
     'doanh thu fpt 2025', 'xu hướng doanh thu fpt', 'thuyết minh bctc fpt',
     'phân tích tài chính fpt năm 2025',  # a dated period stays with reports: health shows the latest period only
@@ -943,4 +957,70 @@ def test_financial_focus_without_verified_bctc_says_so():
         assert 'Chưa có số liệu tài chính đã đối chiếu với BCTC gốc' in result['answering']['draft']
         stock = await engine.answer('phân tích cổ phiếu fpt', 'session', today=NOW.date())
         assert 'Chưa có số liệu tài chính' not in stock['answering']['draft']
+    asyncio.run(run())
+
+
+def test_analysis_answer_states_its_focus():
+    class Provider:
+        async def count_tokens(self, request): return 100
+        async def generate(self, request):
+            item = json.loads(request['contents'][0]['parts'][0]['text'])['evidence'][0]
+            text = item['passage'].splitlines()[0]
+            return {'model_version': 'fake', 'usage': {'input_tokens': 100, 'output_tokens': 40, 'total_tokens': 140},
+                    'payload': {'claims': [{'text': text, 'evidence_ids': [item['evidence_id']],
+                                           'support_quotes': [{'evidence_id': item['evidence_id'], 'quote': text}]}]}}
+    async def run():
+        bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: NOW)
+        engine = LiveResearchService(object(), provider=Provider(), market=bridge)
+        stated = await engine.answer('phân tích fpt', 'session', {'_investor_focus': {'focus': 'FINANCIAL', 'source': 'STATED'}},
+                                     today=NOW.date())
+        assert stated['answering']['draft'].startswith(
+            'Phân tích theo hướng dài hạn (cơ bản), theo bạn đã nêu. '
+            'Muốn đổi, hãy nói “phân tích theo hướng ngắn hạn” hoặc “phân tích chung”.\n\n')
+        asked = await engine.answer('phân tích kỹ thuật fpt', 'session', today=NOW.date())
+        assert asked['answering']['draft'].startswith('Phân tích theo hướng ngắn hạn (kỹ thuật), theo câu hỏi của bạn.\n\n')
+        plain = await engine.answer('phân tích cổ phiếu fpt', 'session', today=NOW.date())
+        assert not plain['answering']['draft'].startswith('Phân tích theo hướng')
+    asyncio.run(run())
+
+
+@pytest.mark.parametrize('followup', ['chi tiết hơn về fpt', 'chi tiết hơn', 'nói rõ hơn đi', 'phân tích kỹ hơn',
+                                      'cụ thể hơn được không'])
+def test_more_detail_after_an_analysis_repeats_that_analysis(followup):
+    first = analyze_live('phân tích fpt')
+    again = analyze_live(followup, first['scope'])
+    assert again['scope']['source_type'] == 'MARKET_ANALYSIS'
+    assert again['scope']['companies'] == ['FPT']
+    assert again['scope']['_market_request']['focus'] == first['scope']['_market_request']['focus']
+
+
+def test_more_detail_without_a_previous_analysis_is_not_forced_into_analysis():
+    assert analyze_live('chi tiết hơn về fpt')['scope'].get('source_type') != 'MARKET_ANALYSIS'
+
+
+def test_detail_followup_asks_for_the_detailed_analysis_prompt():
+    from src.b1_answering.evidence.grounded import wants_detailed_analysis
+    assert wants_detailed_analysis('nói rõ hơn đi') and wants_detailed_analysis('chi tiết hơn về fpt')
+    assert not wants_detailed_analysis('phân tích fpt')
+
+
+def test_detail_followup_goes_to_the_analysis_not_the_graph_router():
+    class Provider:
+        async def count_tokens(self, request): return 100
+        async def generate(self, request):
+            item = json.loads(request['contents'][0]['parts'][0]['text'])['evidence'][0]
+            text = item['passage'].splitlines()[0]
+            return {'model_version': 'fake', 'usage': {'input_tokens': 100, 'output_tokens': 40, 'total_tokens': 140},
+                    'payload': {'claims': [{'text': text, 'evidence_ids': [item['evidence_id']],
+                                           'support_quotes': [{'evidence_id': item['evidence_id'], 'quote': text}]}]}}
+    class Router:
+        async def answer(self, *args, **kwargs): raise AssertionError('graph router must not take the follow-up')
+    async def run():
+        bridge = MarketResearch(Repository(), services=lambda: (Live(), News()), now=lambda: NOW)
+        first = await LiveResearchService(object(), provider=Provider(), market=bridge).answer(
+            'phân tích fpt', 'session', today=NOW.date())
+        engine = LiveResearchService(object(), provider=Provider(), market=bridge, hybrid_router=Router())
+        again = await engine.answer('chi tiết hơn về fpt', 'session', first['scope'], today=NOW.date())
+        assert again['scope']['source_type'] == 'MARKET_ANALYSIS'
+        assert again['answering']['status'] == 'DRAFT_READY'
     asyncio.run(run())

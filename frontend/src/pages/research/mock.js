@@ -383,7 +383,6 @@ export const companyFinancialFacts = {
 
 // ─── STORAGE KEYS VÀ HÀM LƯU THEO USER BẰNG MOCK ────────────────────────────
 export const STORAGE_KEY_HISTORY = "finmind_research_history";
-export const STORAGE_KEY_FEEDBACK = "finmind_copilot_feedback";
 
 export const defaultHistoryList = [
   {
@@ -446,26 +445,6 @@ export function saveStoredResearchHistory(items) {
     localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(items));
   } catch {
     // Ignore storage quota errors
-  }
-}
-
-export function getStoredFeedback() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY_FEEDBACK);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
-
-export function saveFeedbackItem(item) {
-  try {
-    const existing = getStoredFeedback();
-    const updated = [item, ...existing];
-    localStorage.setItem(STORAGE_KEY_FEEDBACK, JSON.stringify(updated));
-    return updated;
-  } catch {
-    return [];
   }
 }
 

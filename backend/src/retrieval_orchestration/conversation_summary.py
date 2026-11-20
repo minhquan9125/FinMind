@@ -163,6 +163,11 @@ def _bound_answer(result):
     return bound, evidence
 
 
+def period_text(periods):
+    """Periods for a reader: the internal LATEST_AVAILABLE_PERIOD marker becomes "kỳ gần nhất"."""
+    return ', '.join('kỳ gần nhất' if p == 'LATEST_AVAILABLE_PERIOD' else p for p in periods or [])
+
+
 def summarize_session(doc):
     messages = doc.get('messages') or []
     start = max((i+1 for i, m in enumerate(messages) if m.get('role') == 'user'
@@ -230,7 +235,7 @@ def summarize_session(doc):
             continue
         packs = trial_packs
         seen_claims.update(new_keys)
-        heading = ' · '.join(filter(None, (', '.join(scope.get('companies') or []), ', '.join(scope.get('periods') or []))))
+        heading = ' · '.join(filter(None, (', '.join(scope.get('companies') or []), period_text(scope.get('periods')))))
         parts.append(heading or 'Nội dung đã trao đổi')
         for claim in kept:
             for eid in claim['evidence_ids']:

@@ -6,10 +6,17 @@ from .input_normalization import registered_symbols
 from .market_dialogue import article_content_request
 
 
+DETAIL_FOLLOWUP = (r'\b(?:chi tiet hon|chi tiet them|them chi tiet|ky hon|ro hon|cu the hon|sau hon|'
+                   r'noi them|giai thich them)\b')
+
+
 def question_context(question, context, today):
     if not context:
         return context
     norm = _fold(question).strip(' .?!')
+    # "chi tiết hơn về FPT" right after an analysis continues it, even though it names the company again.
+    if (context.get('_market_request') or {}).get('kind') == 'ANALYSIS' and re.search(DETAIL_FOLLOWUP, norm):
+        return copy.deepcopy(context)
     # Slot replies intentionally continue the previous request.
     if re.fullmatch(r'(?:(?:the )?con |nam |quy )?(?:[a-z]{3}|\d{1,4})(?: thi sao)?', norm):
         return copy.deepcopy(context)

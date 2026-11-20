@@ -1,4 +1,5 @@
 """Read BCTC observations from the DB for the health calculator, merged with the current verification."""
+import asyncio
 from decimal import Decimal
 import json
 from uuid import UUID
@@ -26,7 +27,7 @@ LEFT JOIN ingestion_jobs j ON j.job_id = l.job_id
 LEFT JOIN sources s ON s.source_id = j.source_id
 LEFT JOIN LATERAL (SELECT * FROM financial_report_verifications v WHERE v.report_id = l.report_id
                    ORDER BY v.verified_at DESC, v.verification_id DESC LIMIT 1) v ON true
-WHERE l.report_version = l.top_version
+WHERE l.report_version = l.top_version AND ($2::text[] IS NULL OR m.code = ANY($2::text[]))
 ORDER BY c.symbol, p.period_code, m.code
 """
 
@@ -73,16 +74,20 @@ def _merge(row, locator):
         locator['period_start'] = locator['period_end']  # a balance sheet is a single day (INSTANT)
 
 
-async def fetch_health_records(conn, symbols: list[str]) -> list[dict]:
-    payloads: dict = {}
+async def fetch_health_records(conn, symbols: list[str], *, metric_codes: list[str] | None = None) -> list[dict]:
+    rows = await conn.fetch(_SQL, list(symbols), metric_codes)
+    payload_ids = list({row['payload_id'] for row in rows if row['payload_id']})
+    payloads = {}
+    if payload_ids:
+        payload_rows = await conn.fetch(
+            'SELECT payload_id, payload::text AS payload FROM raw_payloads WHERE payload_id=ANY($1::uuid[])',
+            payload_ids)
+        payloads = {row['payload_id']: _loads(row['payload']) for row in payload_rows if row['payload']}
     records = []
-    for row in await conn.fetch(_SQL, list(symbols)):
+    for row in rows:
         locator = _loads(row['locator_text']) if row['locator_text'] else {}
         pid = row['payload_id']
-        if pid not in payloads:  # each payload is parsed once per call
-            text = await conn.fetchval('SELECT payload::text FROM raw_payloads WHERE payload_id=$1', pid) if pid else None
-            payloads[pid] = _loads(text) if text else None
-        value = _payload_value(payloads[pid], locator, row['period_code'])
+        value = _payload_value(payloads.get(pid), locator, row['period_code'])
         _merge(row, locator)
         unit, currency = row['unit'], row['currency']
         if locator.get('unit_status') == 'VERIFIED' and row['section'] != 'RATIO' and row['unit'] != 'VND_PER_SHARE':
@@ -129,35 +134,58 @@ _CACHE: dict = {'at': None, 'rows': None}
 
 async def _health_rows(conn) -> list[dict]:
     import time
-    from .health_store import canonical_rows
+    from .health_store import MAP, REVENUE_CODES, canonical_rows
     now = time.monotonic()
     if _CACHE['rows'] is None or now - _CACHE['at'] > CACHE_SECONDS:
         symbols = [r['symbol'] for r in await conn.fetch(
             'SELECT DISTINCT c.symbol FROM companies c JOIN financial_reports r USING (company_id) ORDER BY 1')]
-        _CACHE.update(rows=canonical_rows(await fetch_health_records(conn, symbols)), at=now)
+        metrics = sorted(set(REVENUE_CODES.values()).union(*MAP.values()))
+        _CACHE.update(rows=canonical_rows(await fetch_health_records(conn, symbols, metric_codes=metrics)), at=now)
     return _CACHE['rows']
+
+
+def _latest_health(rows, symbol):
+    from .health import _period, analyze_company
+    periods = sorted({row['period'] for row in rows if row['symbol'] == symbol},
+                     key=lambda p: (_period(p)[0], _period(p)[1] or 5), reverse=True)
+    latest = None
+    for period in periods:
+        candidate = analyze_company(rows, symbol=symbol, period=period)
+        latest = latest or candidate
+        if candidate['status'] != 'insufficient_data':
+            return candidate
+    return latest
+
+
+async def get_screening_health(pool, symbols) -> dict:
+    """Read verified health inputs once for the market-wide comparison."""
+    from .health_passage import compact_health
+    async with asyncio.timeout(12):
+        async with pool.acquire() as conn, conn.transaction(readonly=True):
+            rows = await _health_rows(conn)
+    results = {}
+    for symbol in symbols:
+        try:
+            target = _latest_health(rows, symbol)
+        except ValueError:
+            continue
+        if target is not None:
+            results[symbol] = compact_health(target, {}, [])
+    return results
 
 
 async def get_financial_health(pool, symbol: str) -> dict | None:
     """Compact health for chat (see health_passage.compact_health) or None when the symbol has no BCTC.
     Read-only; picks the latest period with at least one verified signal, else the latest period."""
-    from .health import _period, analyze_company
+    from .health import analyze_company
     from .health_passage import compact_health
     from .peers import compare_peers
     async with pool.acquire() as conn:
         async with conn.transaction(readonly=True):
             rows = await _health_rows(conn)
-            periods = sorted({r['period'] for r in rows if r['symbol'] == symbol},
-                             key=lambda p: (_period(p)[0], _period(p)[1] or 5), reverse=True)
-            if not periods:
+            target = _latest_health(rows, symbol)
+            if target is None:
                 return None
-            target = None
-            for period in periods:
-                candidate = analyze_company(rows, symbol=symbol, period=period)
-                target = target or candidate
-                if candidate['status'] != 'insufficient_data':
-                    target = candidate
-                    break
             analyses = []
             for other in sorted({r['symbol'] for r in rows if r['period'] == target['period']}):
                 try:

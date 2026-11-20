@@ -1,5 +1,3 @@
-import { watchlist } from "../../mocks/userMock.js";
-
 export const researcherMock = { initials: "NA", name: "Nguyễn Văn A", role: "Nhà nghiên cứu" };
 export const popularTickers = ["FPT", "VCB", "MBB", "TCB", "CMG"];
 
@@ -16,7 +14,7 @@ export const recentResearchMock = [
 export function makeDashboardFixture() {
   return {
     market: marketMock,
-    watchlist,
+    watchlist: [],
     announcements: ["FPT", "VCB", "MBB"].map((ticker) => ({
       id: `${ticker}-sample-report`, ticker, title: `Ví dụ công bố báo cáo FY2025 của ${ticker}`,
       type: "Báo cáo minh họa", date: "31/12/2025", source: "Fixture FinMind",

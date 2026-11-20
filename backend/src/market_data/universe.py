@@ -1,5 +1,7 @@
 """Fixed background basket; keep the original financial/news project scope separate."""
-BACKGROUND_SYMBOLS=tuple('ACB BID BSR CTG FPT GAS GVR HDB HPG LPB MBB MCH MSN MWG SAB SHB SSB SSI STB TCB TCX VCB VHM VIB VIC VJC VNM VPB VPL VRE'.split())
+# The published VN30 basket, plus the four project tech stocks that have BCTC in the DB but are not in VN30.
+BACKGROUND_SYMBOLS=tuple('ACB BID BSR CTG FPT GAS GVR HDB HPG LPB MBB MCH MSN MWG SAB SHB SSB SSI STB TCB TCX VCB VHM VIB VIC VJC VNM VPB VPL VRE'.split()
+                         + 'CMG ELC ICT ITD'.split())
 UNIVERSE_SOURCE='https://ssiam.com.vn/quy-etf-ssiam-vn30?nav_page=2'
 UNIVERSE_OBSERVED_AT='2026-11-05'
 

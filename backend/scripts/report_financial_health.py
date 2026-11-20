@@ -1,6 +1,7 @@
 """Financial snapshot analysis/report, no database or market/provider calls."""
 import argparse
 import asyncio
+from collections import Counter
 from datetime import date
 from pathlib import Path
 import sys
@@ -10,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0,str(ROOT))
 from backend.src.financial.exact_json import dumps, loads
-from backend.src.financial.health import _period, analyze_company
+from backend.src.financial.health import _issues, _period, analyze_company
 from backend.src.financial.health_store import canonical_rows
 from backend.src.financial.peers import compare_peers
 
@@ -25,7 +26,9 @@ def build_report(records, period=None):
         selected = period or max(dates,key=lambda p:(_period(p)[0],_period(p)[1] or 4,'-Q' not in p))
         analyses[symbol] = analyze_company(rows,symbol=symbol,period=selected)
     peers = {symbol:compare_peers(list(analyses.values()),symbol=symbol) for symbol in analyses}
-    return dict(analyses=analyses,peers=peers,
+    # Hand-off for the trend model: every normalized fact with the exact reasons it cannot be used yet.
+    facts = [dict(row,missing=_issues(row)) for row in rows]
+    return dict(analyses=analyses,peers=peers,facts=facts,
         limitations=['Peer subgroup is the available comparable database sample, not the entire industry.',
             'Unknown units, periods, scope or restatement basis prevent unsupported conclusions.',
             'No overall strength score, price prediction, investment recommendation or source approval is generated.'])
@@ -80,6 +83,11 @@ def main(argv=None):
             value = signal['value'] if signal['value'] is not None else '—'
             lines.append(f"| {name} | {value} | {signal['status']} | {', '.join(signal['reasons'])} |")
         lines.append('')
+    facts = report['facts']
+    missing = Counter(reason for fact in facts for reason in fact['missing'])
+    lines.extend(['## Dữ liệu chuẩn hóa (facts trong report.json)','',
+        f"{len(facts)} fact; {sum(not fact['missing'] for fact in facts)} fact đủ trường.",'',
+        '| Trường thiếu | Số fact |','|---|---:|',*[f'| {k} | {v} |' for k,v in missing.most_common()],''])
     lines.extend(['## Giới hạn','',*['- '+note for note in report['limitations']],
         '', 'Nguồn và observation/payload/hash/locator được giữ trong report.json.'])
     args.output.mkdir(parents=True,exist_ok=True)

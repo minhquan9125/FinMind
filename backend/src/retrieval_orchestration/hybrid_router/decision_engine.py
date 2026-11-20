@@ -305,6 +305,8 @@ NON_COMPANY_CODES = {
     "BCTC", "BCTN", "CEO", "CFO", "CTCP", "HNX", "HOSE", "UPCOM", "TTCK", "VNI",
     "DCA", "ETF", "EPS", "ROE", "ROA", "RSI", "MACD", "GDP", "LNST", "LNTT",
     "VCSH", "VNINDEX", "VN", "INDEX", "FOMO", "FUD", "ATO", "ATC",
+    # Place names and banking terms written in capitals in news ("chi nhánh TP.HCM", "máy ATM", "cho vay SME").
+    "HCM", "TPHCM", "ATM", "SME", "NHNN", "CPI", "FDI", "IPO", "ESG", "NIM", "NPL", "CASA",
 }
 
 METRICS = {

@@ -1,11 +1,41 @@
 """Recognize contextual commands without consuming new, explicit subjects."""
 import re
+import unicodedata
 
 from .retrieval_flow.intent import _fold
 
 
 def _words(text):
     return ' '.join(re.sub(r'[^a-z0-9]+', ' ', _fold(text)).split())
+
+
+_SWITCH_FILLER = {'con', 'thi', 'sao', 'the', 'nao', 'vay', 'nhi', 'nha', 'a', 'oi', 'cung', 'ky', 'han', 'luon',
+                  'doi', 'voi', 'ben', 'ngan', 'hang', 'cong', 'ty', 'ma'}
+
+
+def company_switch_question(text, context):
+    """"Còn BID thì sao?" after a question about one company: the previous question, asked for the new company.
+
+    Only a bare switch qualifies (filler words plus one company name); anything else is a new question.
+    shortcut: one-word company names only ("vietcombank", "bid"); multi-word names fall back to normal routing.
+    """
+    previous, old = (context or {}).get('_last_question'), (context or {}).get('companies') or []
+    if not isinstance(previous, str) or len(old) != 1:
+        return None
+    rest = [word for word in _words(text).split() if word not in _SWITCH_FILLER]
+    if len(rest) != 1:
+        return None
+    from .hybrid_router.decision_engine import DEFAULT_COMPANIES
+    from .input_normalization import registered_symbols
+    new = (DEFAULT_COMPANIES.get(rest[0]) or (None,))[0]
+    if new is None and rest[0].upper() in registered_symbols():
+        new = rest[0].upper()
+    if new is None or new == old[0]:
+        return None
+    names = {alias for alias, symbols in DEFAULT_COMPANIES.items() if symbols[0] == old[0]} | {old[0].lower()}
+    pattern = r'\b(?:' + '|'.join(sorted(map(re.escape, names), key=len, reverse=True)) + r')\b'
+    rewritten, count = re.subn(pattern, new, previous, flags=re.I)
+    return rewritten if count else None
 
 
 def is_list_followup(text):
@@ -100,7 +130,11 @@ def conversation_action(text, context=None):
             return 'SUMMARY'
         if words in ('khong','thoi','huy','khong phai','no'):
             return 'CANCEL'
-    verb = re.search(r'\b(?:tong hop|tom tat|tong ket|tom gon|rut gon|gom|he thong lai|chot lai)\b', words)
+    verbs = 'tong hop|tom tat|tong ket|tom gon|rut gon|he thong lai|chot lai'
+    # "gồm" (includes) folds to "gom" (gather): only the word typed as "gom" asks for a summary.
+    if re.search(r'\bgom\b', unicodedata.normalize('NFC', text).lower()):
+        verbs += '|gom'
+    verb = re.search(rf'\b(?:{verbs})\b', words)
     if not verb:
         return None
     if re.search(r'\b(?:dung|khong)\b', words[:verb.start()]):

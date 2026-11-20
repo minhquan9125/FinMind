@@ -103,6 +103,14 @@ class FinancialStoreTests(unittest.TestCase):
         self.assertIsNone(analysis['signals']['revenue_yoy_percent']['value'])
         self.assertEqual(out['peers']['FPT']['status'],'insufficient_data')
         self.assertIn('FPT.json#financial_data',json.dumps(out,default=str))
+        # every handed-off fact keeps its provenance and names exactly what is still missing
+        fact = out['facts'][0]
+        self.assertIn('unverified_scope',fact['missing'])
+        self.assertEqual(fact['source_uri'],'FPT.json#financial_data')
+
+    def test_verified_fact_is_handed_off_with_no_missing_field(self):
+        out = build_report([record(value='120'), record(period='2025-Q2',value='100')])
+        self.assertEqual([f['missing'] for f in out['facts']],[[],[]])
 
     def test_requested_period_does_not_fall_back_to_last_available(self):
         out = build_report([record(),record(period='2025-Q2')],period='2026-Q3')

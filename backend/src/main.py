@@ -20,6 +20,7 @@ from .core.config import get_settings
 from .core.db import connect, disconnect
 from .api.routers import admin_ingestion
 from .api.routers import news_graph_review
+from .api.routers import watchlist, companies
 
 
 settings = get_settings()
@@ -153,6 +154,8 @@ app.include_router(graph_viewer.router)
 app.include_router(admin_jobs.router)
 app.include_router(admin_ingestion.router)
 app.include_router(news_graph_review.router)
+app.include_router(watchlist.router)
+app.include_router(companies.router)
 
 @app.get("/")
 async def root() -> dict:

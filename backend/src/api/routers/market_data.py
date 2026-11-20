@@ -203,18 +203,31 @@ def get_index_history(symbol: str, request: Request, cached: bool=False,
         raise HTTPException(status_code=503, detail="Chưa lấy được dữ liệu chỉ số; vui lòng thử lại sau.") from None
 
 
+def get_db_news():
+    from ...market_data.db_news import recent_db_news
+    return lambda limit: recent_db_news(get_pool(), limit)
+
+
 @router.get("/news")
-def get_market_news(request: Request, limit: int = Query(10, ge=1, le=50),
-                    repository: FileMarketDataRepository = Depends(get_market_data_repository)) -> dict:
+async def get_market_news(request: Request, limit: int = Query(10, ge=1, le=50),
+                          repository: FileMarketDataRepository = Depends(get_market_data_repository),
+                          db_news=Depends(get_db_news)) -> dict:
+    from starlette.concurrency import run_in_threadpool
     try:
-        result=repository.get_news(None, limit)
+        result=await run_in_threadpool(repository.get_news, None, limit)
         root=getattr(request.app.state,'admin_news_queue_root',None)
         if not result.get('articles') and root:
             from ...market_data.admin_news import published_admin_news
-            result={**result,'articles':published_admin_news(root,limit)}
-        return result
+            result={**result,'articles':await run_in_threadpool(published_admin_news, root, limit)}
     except (OSError, ValueError, TypeError) as exc:
         raise HTTPException(status_code=503, detail="Không đọc được tin thị trường đã lưu.") from exc
+    if not result.get('articles'):
+        # A machine without a local news feed still shows the news already ingested into the database.
+        try:
+            result={**result,'articles':await db_news(limit)}
+        except (RuntimeError, OSError, asyncpg.PostgresError):
+            pass  # no database: keep the honest empty list rather than failing the whole panel
+    return result
 
 
 @router.get("/companies/{symbol}/news")

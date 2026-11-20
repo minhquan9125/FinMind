@@ -35,6 +35,11 @@ class PostgresSessionStore:
         owner, sid = self._identity(owner, session_id)
         return await snapshot(await self.repository.get(owner, sid))
 
+    async def export_doc(self, owner, session_id):
+        """The owner's full session document, for chat_export (same ownership check as get)."""
+        owner, sid = self._identity(owner, session_id)
+        return await self.repository.get(owner, sid)
+
     async def send(self, owner, session_id, text, revision):
         owner, sid = self._identity(owner, session_id)
         text = validate_input(text, revision)

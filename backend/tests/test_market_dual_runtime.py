@@ -10,12 +10,14 @@ from backend.src.market_data.universe import BACKGROUND_SYMBOLS,resolve_backgrou
 
 class UniverseTests(unittest.TestCase):
  def test_exact_published_thirty_and_missing_mapping(self):
-  self.assertEqual(len(BACKGROUND_SYMBOLS),30)
-  self.assertEqual(len(set(BACKGROUND_SYMBOLS)),30)
+  # VN30 (30) plus the four project tech stocks with BCTC
+  self.assertEqual(len(BACKGROUND_SYMBOLS),34)
+  self.assertEqual(len(set(BACKGROUND_SYMBOLS)),34)
   self.assertIn('BSR',BACKGROUND_SYMBOLS)
   self.assertIn('TCX',BACKGROUND_SYMBOLS)
+  self.assertTrue({'CMG','ELC','ICT','ITD'} <= set(BACKGROUND_SYMBOLS))
   mapping,missing=resolve_background([{'symbol':'FPT','exchange':'HOSE'}])
-  self.assertEqual(mapping,{'FPT':'HOSE'});self.assertEqual(len(missing),29)
+  self.assertEqual(mapping,{'FPT':'HOSE'});self.assertEqual(len(missing),33)
  def test_duplicate_or_wrong_exchange_is_not_silently_accepted(self):
   with self.assertRaises(ValueError):resolve_background([{'symbol':'FPT','exchange':'HOSE'}]*2)
   with self.assertRaises(ValueError):resolve_background([{'symbol':'FPT','exchange':'HNX'}])
@@ -31,7 +33,7 @@ class RuntimeTests(unittest.IsolatedAsyncioTestCase):
   from backend.src.market_data import app as runtime
   sdk=Mock();service=Mock();service.tick.return_value={'status':'idle'}
   service.has_live_viewers.return_value=blocked_flush
-  service.capture_tracked.return_value=30
+  service.capture_tracked.return_value=len(BACKGROUND_SYMBOLS)
   service.status.return_value={'missing_tracked_symbols':[],'persistence_error':persistence_error}
   gate=Mock(return_value=False);gate.calendar.sessions.return_value=[{'end':'14:45'}]
   class FixedDateTime(datetime):

@@ -213,6 +213,11 @@ class HealthDbTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(health['signals'])
         self.assertEqual(health['citations'], [dict(title='BCTC Q1', url='https://static2.vietstock.vn/q1.pdf', page=7)])
         self.assertIsNone(await health_db.get_financial_health(Pool(), 'XYZ'))
+        screened = await health_db.get_screening_health(Pool(), ['FPT', 'XYZ'])
+        self.assertEqual(set(screened), {'FPT'})
+        self.assertEqual(screened['FPT']['period'], health['period'])
+        self.assertEqual(screened['FPT']['signals']['profit_yoy_percent']['value'],
+                         health['signals']['profit_yoy_percent']['value'])
 
 
     async def test_records_carry_text_ids_for_the_calculator(self):
