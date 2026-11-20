@@ -18,6 +18,12 @@ ENGLISH_TERMS = {'bar', 'cash', 'assets', 'profit', 'after', 'before', 'tax', 'r
                  'ratio', 'news', 'source', 'market', 'price', 'close', 'open', 'volume', 'index', 'year', 'quarter'}
 
 
+def company_token_text(text):
+    """Mask explicit geographic abbreviations only for company-token scanning."""
+    return re.sub(r'\b(?:TP[.\s]*|thành phố\s+)HCM\b',
+                  lambda match:' '*len(match[0]),text,flags=re.IGNORECASE)
+
+
 @lru_cache(maxsize=1)
 def _rules():
     data = json.loads((Path(__file__).parent/'config/input_aliases.json').read_text('utf-8'))

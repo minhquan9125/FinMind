@@ -13,7 +13,10 @@ def missing_quarters(question, evidence):
 
 
 def missing_years(question, evidence):
-    requested=set(re.findall(r'\b20\d{2}\b',question))
+    # Calendar dates identify publication/events, not annual reporting periods.
+    query=_fold(question)
+    query=re.sub(r'\b\d{1,2}[/.-]\d{1,2}[/.-]20\d{2}\b|\b20\d{2}-\d{2}-\d{2}\b',' ',query)
+    requested=set(re.findall(r'\b20\d{2}\b',query))
     text=_fold('\n'.join(e['passage'] for e in evidence.values()))
     # Law numbers such as 96/2020/TT-BTC are not a reporting-period assertion.
     present=set(re.findall(r'(?:\bnam\s*|\b(?:q[1-4]|quy\s*[1-4])\s*[/\-]?\s*(?:nam\s*)?)(20\d{2})',text))

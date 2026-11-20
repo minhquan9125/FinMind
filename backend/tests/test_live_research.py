@@ -263,11 +263,14 @@ def test_dense_adapter_validates_corpus_and_offloads_embedding(monkeypatch):
     monkeypatch.setattr(repository, 'vector_search_filtered', search)
     async def run():
         adapter = DenseEvidenceRetriever(object(), Embedder(), corpus_version_id=CORPUS)
+        from unittest.mock import AsyncMock
+        adapter._scoped_lexical_rows=AsyncMock(return_value=[])
         result = await adapter.retrieve('tổng tài sản', dict(companies=['FPT'], periods=['2026-Q2'],
                                       source_type='BCTC', metric_code='TOTAL_ASSETS'))
         assert result['data_version']['id'] == INDEX
         assert calls[0]['corpus_version_id'] == CORPUS
         assert not calls[0].get('preview_source_changed', False)
+        adapter._scoped_lexical_rows.assert_awaited_once()
     asyncio.run(run())
 
 

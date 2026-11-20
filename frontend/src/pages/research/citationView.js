@@ -32,7 +32,16 @@ export function citationView(result) {
     location: item.locator?.section || 'Đoạn nguồn',
     passage: item.passage,
     rows: Array.isArray(item.locator?.row_keys) ? item.locator.row_keys : [],
-    url: safeSourceUrl(item.source_url) || safeSourceUrl(item.locator?.url),
+    url: safeSourceUrl(item.source_url) || safeSourceUrl(item.locator?.url)
+      || safeSourceUrl(item.locator?.source_url) || safeSourceUrl(item.snapshot?.url),
+    sourceNote: item.source_type === 'PRICE_TREND' || item.snapshot?.kind === 'PRICE_TREND'
+      ? 'Chỉ báo được tính từ lịch sử giá lưu trong FinMind; không phải bài báo.'
+      : item.snapshot?.kind === 'FINANCIAL_HEALTH'
+        ? 'Chỉ số được tính từ BCTC lưu trong FinMind. Liên kết tài liệu gốc chỉ hiển thị khi có trong bằng chứng.'
+        : null,
+    documentLinks: (item.snapshot?.health?.citations || []).filter(c => safeSourceUrl(c.url))
+      .filter((c, index, all) => all.findIndex(other => other.url === c.url && other.page === c.page) === index)
+      .map(c => ({ url: safeSourceUrl(c.url), title: c.title || 'BCTC gốc', page: c.page })),
     compact: item.source_type === 'NEWS',
   }));
 }

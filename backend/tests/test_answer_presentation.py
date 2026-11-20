@@ -26,6 +26,18 @@ def test_default_style_adds_vnd_and_hides_source_cautions():
     assert result['presentation']['unit_annotations'][0]['source_unit_verified'] is False
 
 
+def test_ratio_without_source_percent_unit_is_not_silently_multiplied_or_labelled():
+    ev={'e1':{'passage':'VCB | năm 2025\nTỷ suất lợi nhuận trên tài sản (ROA): 0.009991'}}
+    draft={'claims':[{'text':'ROA được ghi nhận là 0.009991.','evidence_ids':['e1']}],
+           'citations':[{'evidence_id':'e1','citation_number':1}],'cautions':[]}
+    result=presentation.present_answer(draft,ev,{'source_type':'BCTC','metric_code':'ROA'})
+    assert '0,009991' in result['draft']
+    assert result['claims']==draft['claims']
+    assert ev['e1']['passage'].endswith('0.009991')
+    assert 'chưa tự quy đổi' in result['draft']
+    assert '1.00%' not in result['draft']
+
+
 @pytest.mark.parametrize('unit', ['triệu VND', 'tỷ VND', 'VND', 'USD', 'triệu USD'])
 def test_explicit_source_unit_preserved_without_conversion(unit):
     ev = evidence()

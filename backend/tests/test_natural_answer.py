@@ -103,7 +103,7 @@ def test_live_service_sends_natural_prompt_and_accepts_rewording():
     out = asyncio.run(complete_retrieval('Tiền FPT quý 2/2026?', copy.deepcopy(result), provider=Provider()))
     assert out['answering']['status'] == 'DRAFT_READY'
     manifest = out['answering']['manifest']
-    assert manifest['prompt_version'] == 'b1-grounded-v8'
+    assert manifest['prompt_version'] == 'b1-grounded-v11'
     assert not manifest['components']['extractive_claim_check']
     assert not manifest['components']['b3_answer_verification']
     assert out['answering']['budget']['calls_used'] == 1
@@ -184,6 +184,22 @@ def test_unlabelled_claims_are_still_bulleted():
                                support_quotes=[dict(evidence_id='h', quote='- Nợ phải trả trên tổng tài sản: 41,54%.')])]}
     draft = grounded.validate_grounded(payload, ev, {'source_type': 'MARKET_ANALYSIS'})['draft']
     assert draft == '• Nợ phải trả trên tổng tài sản của FPT là 41,54%. [1]'
+
+
+@pytest.mark.parametrize('text', ['Giá:', 'Xu hướng giá: ', 'Tin tức: [1]', '• [1]', 'Nhận định tổng hợp: ...'])
+def test_heading_only_claim_cannot_become_a_citation_only_answer(text):
+    with pytest.raises(CitationError, match='UNSUPPORTED_CLAIM'):
+        grounded.validate_grounded(payload(text=text), evidence(), {'source_type': 'MARKET_ANALYSIS'})
+
+
+def test_empty_analysis_sections_are_dropped_but_supported_content_is_preserved():
+    bad = payload(text='Giá:')['claims'][0]
+    good = payload()['claims'][0]
+    result = grounded.validate_grounded({'claims': [bad, good]}, evidence(), {'source_type': 'MARKET_ANALYSIS'})
+    assert result['claims'] == [good]
+    assert TEXT in result['draft']
+    assert 'Giá:' not in result['draft']
+    assert len(result['citations']) == 1
 
 
 def test_analysis_prompt_asks_for_plain_language_and_group_labels():

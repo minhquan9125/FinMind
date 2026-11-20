@@ -59,6 +59,10 @@ def personnel_filters(text: str) -> dict:
             break
     if not result and re.search(r"\b(?:hdqt|hoi dong quan tri)\b", text):
         result.update(position_code="BOARD", relation_types=["HOLDS_ROLE"])
+    if not result and re.search(r'\bban dieu hanh\b',text):
+        result.update(position_code='EXECUTIVE_BOARD',relation_types=['HOLDS_ROLE'])
+    if not result and re.search(r'\b(?:ban lanh dao|nhan su|nhung nguoi giu chuc vu)\b',text):
+        result.update(relation_types=['HOLDS_ROLE'])
     for stage, relation, pattern in events:
         if re.search(rf"\b(?:{pattern})\b", text):
             result.update(event_type=stage, relation_types=[relation])
@@ -87,6 +91,9 @@ def position_matches(position, requested, code=None):
     code = code or personnel_filters(norm).get('position_code')
     if requested == 'BOARD':
         return code in {'BOARD', 'BOARD_CHAIR', 'DEPUTY_BOARD_CHAIR', 'BOARD_MEMBER'}
+    if requested == 'EXECUTIVE_BOARD':
+        return bool(code in {'CEO','DEPUTY_CEO','CFO','CHIEF_ACCOUNTANT','EXECUTIVE_BOARD'}
+                    or re.search(r'\b(?:tong giam doc|giam doc|ke toan truong|ban dieu hanh)\b',norm))
     return not requested or code == requested
 
 
@@ -283,7 +290,8 @@ DEFAULT_COMPANIES = {
     "bid": ("BID",), "bidv": ("BID",),
     "ctg": ("CTG",), "vietinbank": ("CTG",),
     "tcb": ("TCB",), "techcombank": ("TCB",),
-    "cmg": ("CMG",), "cmc": ("CMG",), "elc": ("ELC",), "ssi": ("SSI",),
+    "cmg": ("CMG",), "cmc": ("CMG",), "elc": ("ELC",), "elcom": ("ELC",),
+    "ctin": ("ICT",), "mb": ("MBB",), "ssi": ("SSI",),
     "hpg": ("HPG",), "hoa phat": ("HPG",),
     "mwg": ("MWG",), "the gioi di dong": ("MWG",), "bach hoa xanh": ("MWG",),
     "vnm": ("VNM",), "vinamilk": ("VNM",),
@@ -306,7 +314,9 @@ NON_COMPANY_CODES = {
     "DCA", "ETF", "EPS", "ROE", "ROA", "RSI", "MACD", "GDP", "LNST", "LNTT",
     "VCSH", "VNINDEX", "VN", "INDEX", "FOMO", "FUD", "ATO", "ATC",
     # Place names and banking terms written in capitals in news ("chi nhánh TP.HCM", "máy ATM", "cho vay SME").
-    "HCM", "TPHCM", "ATM", "SME", "NHNN", "CPI", "FDI", "IPO", "ESG", "NIM", "NPL", "CASA",
+    "TPHCM", "ATM", "SME", "NHNN", "CPI", "FDI", "IPO", "ESG", "NIM", "NPL", "CASA",
+    "PGD", "SWIFT", "VSDC", "AI", "CNTT",
+    "CRM", "UBCK", "UBCKNN", "BLQ", "CBTT", "HDQT", "NQ", "III",
 }
 
 METRICS = {
@@ -383,15 +393,17 @@ class ScopeResolver:
                     return self._clarify(question, RouterScope(), ("companies",),
                                          "AMBIGUOUS_COMPANY", "Tên này chỉ nhiều công ty. Bạn muốn hỏi công ty nào?")
                 candidate_hits.extend((match.start(), company_id) for company_id in company_ids)
-        for ticker_match in re.finditer(r"(?<![A-Za-z0-9])[A-Z][A-Z0-9]{2,4}(?![A-Za-z0-9])", question):
+        from ..input_normalization import company_token_text
+        for ticker_match in re.finditer(r"(?<![A-Za-z0-9])[A-Z][A-Z0-9]{2,4}(?![A-Za-z0-9])", company_token_text(question)):
             ticker = ticker_match.group(0)
             if (ticker not in NON_COMPANY_CODES and len(ticker) == 3
                     and ticker.lower() not in TICKER_STOP_WORDS
                     and _normalize(ticker) == ticker.lower()):
                 candidate_hits.append((ticker_match.start(), ticker))
         # Unknown lower-case symbols are accepted only in explicit ticker syntax.
-        for match in re.finditer(r"\b(?:ma|co phieu)\s+([a-z]{3})\b", normalized):
-            token = match.group(1)
+        # Preserve the marker's accent: "mà nếu" is not "mã NEU".
+        for match in re.finditer(r"\b(?:mã|ma|cổ phiếu|co phieu)\s+([a-z]{3})\b", question, re.I):
+            token = match.group(1).lower()
             if token not in TICKER_STOP_WORDS and token.upper() not in NON_COMPANY_CODES:
                 candidate_hits.append((match.start(1), token.upper()))
         companies = list(dict.fromkeys(company for _, company in sorted(candidate_hits)))
@@ -450,7 +462,8 @@ class ScopeResolver:
         explicit_reference = bool(re.search(
             r"\b(?:con|vay|cung ky|cong ty do|luc nay|no|con nay|ma nay|ben do|ong ay|ma do)\b", normalized,
         ))
-        bare_followup = bool(re.fullmatch(r"con\s+\w+(?:\s+\w+)?", normalized)) and bool(companies)
+        from ..followup_scope import company_continuation
+        bare_followup = company_continuation(question,companies,self.company_registry)
         if bare_followup and context and context.confirmed and context.topic and context.route_hint:
             scope = RouterScope(**{
                 key: list(getattr(context, key)) if isinstance(getattr(context, key), tuple) else getattr(context, key)
@@ -552,10 +565,12 @@ class ScopeResolver:
                             topic=intent.topic, detected_industry=detected_industry,
                             entity_mentions=entity_mentions, **personnel,
                             **reporting_filters(normalized, periods, metric))
-        scope.source_type = ("COMPANY_PROFILE" if intent.topic == "COMPANY_PROFILE" else "NEWS" if contains(normalized, ("tin tuc", "bai bao", "theo tin")) else "BCTN" if contains(normalized, ("bctn", "bao cao thuong nien"))
+        from ..source_intent import generic_annual_report
+        annual_source=generic_annual_report(normalized)
+        scope.source_type = ("COMPANY_PROFILE" if intent.topic == "COMPANY_PROFILE" else "NEWS" if contains(normalized, ("tin tuc", "bai bao", "theo tin")) else "BCTN" if annual_source or contains(normalized, ("bctn", "bao cao thuong nien"))
                              else "PRICE" if metric == "STOCK_PRICE" else
                              "BCTN" if intent.route == "GRAPH" else "BCTC")
-        if (inherit_operation and context.source_type and metric != "STOCK_PRICE"
+        if (inherit_operation and context.source_type and not annual_source and metric != "STOCK_PRICE"
                 and not contains(normalized, ("tin tuc", "bai bao", "theo tin", "bctn", "bao cao thuong nien", "bctc", "bao cao tai chinh"))):
             scope.source_type = context.source_type
         if context and context.confirmed and explicit_reference and not independent_scope and metric != "STOCK_PRICE" and not contains(

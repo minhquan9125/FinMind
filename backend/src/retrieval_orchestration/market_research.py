@@ -48,11 +48,13 @@ class MarketResearch:
     async def lookup(self, scope, *, previous_pack=None):
         """No background subscriptions, extra SDK processes or quota bypasses."""
         try:
-            trend = None
             analysis_issues = {}
             symbols = scope.get('companies', [])
-            if (self.trend_reader is not None and scope.get('source_type') == 'MARKET_ANALYSIS'
+            async def load_trend():
+                trend = None
+                if not (self.trend_reader is not None and scope.get('source_type') == 'MARKET_ANALYSIS'
                     and len(symbols) == 1 and re.fullmatch(r'[A-Z]{3}', symbols[0])):
+                    return None
                 try:
                     requested = (scope.get('_market_request') or {}).get('day')
                     if requested is None:
@@ -73,9 +75,13 @@ class MarketResearch:
                     analysis_issues['price_trend'] = ('DB_READ_PERMISSION_DENIED'
                         if type(exc).__name__ == 'InsufficientPrivilegeError' else 'ANALYSIS_LOOKUP_FAILED')
                     trend = None
-            health = None
-            if (self.health_reader is not None and scope.get('source_type') == 'MARKET_ANALYSIS'
+                return trend
+            async def load_health():
+                health = None
+                if not (self.health_reader is not None and scope.get('source_type') == 'MARKET_ANALYSIS'
+                    and (scope.get('_market_request')or{}).get('focus')!='TECHNICAL'
                     and len(symbols) == 1 and re.fullmatch(r'[A-Z]{3}', symbols[0])):
+                    return None
                 try:  # additive like the trend: a slow or failed read never blocks the answer
                     health = await asyncio.wait_for(self.health_reader(symbols[0]), timeout=30)
                 except Exception as exc:
@@ -83,6 +89,10 @@ class MarketResearch:
                     analysis_issues['financial_health'] = ('DB_READ_PERMISSION_DENIED'
                         if type(exc).__name__ == 'InsufficientPrivilegeError' else 'ANALYSIS_LOOKUP_FAILED')
                     health = None
+                return health
+            # Independent verified database reads share the same request; do
+            # not add their waiting times or fetch BCTC health for a technical-only view.
+            trend,health=await asyncio.gather(load_trend(),load_health())
             result = await asyncio.to_thread(self._lookup, scope, previous_pack, trend, health)
             if analysis_issues:
                 result['analysis_issues'] = analysis_issues

@@ -10,6 +10,7 @@ import calendar
 import copy
 from datetime import date, datetime, timedelta, timezone
 import hashlib
+import json
 import math
 from pathlib import Path
 import re
@@ -32,6 +33,7 @@ from .market_dates import price_date_request, relative_market_range, temporal_re
 from .metric_vocabulary import (CURATED, find_metrics, label as metric_label, plain, point_in_time_codes,
                                 vocabulary_words, without_metrics)
 from . import intent_gate_v2 as intent_gate
+from .source_intent import company_overview_question
 from .conversation_actions import is_list_followup, is_contextual_overview, profile_detail_question
 import logging
 
@@ -71,9 +73,10 @@ def _company_reply(norm, companies):
     aliases = list(companies) + [alias for alias, ids in DEFAULT_COMPANIES.items()
                                 if any(symbol in companies for symbol in ids)]
     company = '(?:' + '|'.join(re.escape(_fold(a)) for a in sorted(aliases, key=len, reverse=True)) + ')'
-    return bool(re.fullmatch(
+    from .followup_scope import company_continuation
+    return company_continuation(norm,companies,DEFAULT_COMPANIES) or bool(re.fullmatch(
         r'(?:(?:the )?con |doi sang |chuyen sang |quay lai )?(?:ma |cong ty )?'
-        + company + r'(?: (?:nam )?(?:19|20|21)\d{2})?(?: thi sao)?[ .?!]*', norm))
+        + company + r'(?: (?:nam )?(?:19|20|21)\d{2})?(?: (?:thi )?sao)?[ .?!]*', norm))
 
 
 def _keep_metric(norm):
@@ -180,7 +183,7 @@ def _market_intent(norm, context, today):
                               and re.search(r'\b(?:phan tich|danh gia|tinh hinh|suc khoe|manh hay yeu|manh yeu)\b', norm)
                               and not re.search(r'\b(?:bctn|thuong nien|thuyet minh|chien luoc|tai lieu)\b', norm))
     # shortcut: dated questions stay with reports, since health covers the latest period only; add a period to lift it.
-    if ((trend or financial_analysis) and not financial and (not price or causal or explicit_trend)
+    if ((trend or financial_analysis) and not financial and not news and (not price or causal or explicit_trend)
             and not re.search(r'\b(?:nam|quy|thang)\s+\d|\b(?:19|20|21)\d{2}\b', norm)):
         from .investor_focus import focus_from_words
         # The question's own words win; otherwise the style the user stated earlier in this chat.
@@ -209,7 +212,9 @@ def _market_intent(norm, context, today):
                 return {'kind': 'ANALYSIS', 'day': day, 'action': 'ANALYSIS'}
             return {'kind': 'QUOTE' if price else 'NEWS', 'day': day, 'action': action}
     financial = metric_group(norm) or any(_fold(a) in norm for aliases in METRIC_ALIASES.values() for a in aliases)
-    followup = re.fullmatch(r'(?:(?:con|ma|co phieu|cua|la)\s+)?[a-z]{3,5}|[1-9]|fireant|cafef', norm)
+    followup = (_company_reply(norm,list(set(TICKERS)|set(registered_symbols())))
+                or (prior and prior.get('kind')=='NEWS' and norm in ('fireant','cafef'))
+                or (bool((context or {}).get('_clarification_state')) and bool(re.fullmatch(r'[1-9]',norm))))
     if prior and not news and not price and not dated and not financial:
         if norm in ('hom nay', 'hien tai', 'moi nhat'):
             return {**copy.deepcopy(prior), 'day': today.isoformat() if norm == 'hom nay' else None}
@@ -221,8 +226,12 @@ def _market_intent(norm, context, today):
 
 
 def annual_requested(norm, context=None):
+    if re.search(r'\b(?:theo|trong|ve|doc|tim|xem)\s+(?:bai(?: viet| bao)?|tin(?: tuc)?)\b|\bbai\s+[“"‘]',norm):
+        return False  # a report mentioned by an article is not the requested source
     if re.search(r'\b(?:bctn|bao cao thuong nien)\b', norm):
         return True
+    from .source_intent import generic_annual_report
+    if generic_annual_report(norm):return True
     report_content = bool(re.search(r'\b(?:ke hoach|chien luoc|dinh huong|thuyet minh|chinh sach|giai trinh)\b', norm))
     financial = bool(find_metrics(norm) or metric_group(norm)
                      or re.search(r'\bloi nhuan\b', norm)) and not report_content
@@ -313,11 +322,16 @@ def content_fallback_scope(question, decision):
     their existing contracts. Candidate documents still require grounded claims.
     """
     norm = _fold(question)
+    from .hybrid_router.intent_policy import GRAPH_TERMS, contains
+    # Relationship routing owns these questions; its own verified-text fallback
+    # runs only after graph lookup, with the relationship/time filters intact.
+    if contains(norm, GRAPH_TERMS):
+        return None
     if is_list_followup(question) or is_contextual_overview(question):
         return None
     scope = decision['scope']
     inferred_report = (decision['reason_code']=='ANNUAL_REPORT_SCOPE_READY'
-                       and not re.search(r'\b(?:bctn|bao cao thuong nien)\b', norm))
+                       and not re.search(r'\b(?:bctn|bao cao)\b', norm))
     if decision['reason_code']!='MISSING_METRIC' and not inferred_report:
         return None
     if (not scope.get('companies') or len(scope['companies'])!=1
@@ -349,7 +363,7 @@ def analyze_live(text, context=None, *, today=None):
     from .hybrid_router.intent_policy import PROFILE_TERMS, contains
     # "chi tiết hơn về FPT" after an analysis is that analysis again, not a company-profile question.
     detail_followup = (market_request or {}).pop('_detail_followup', False)
-    if (annual or contains(norm, PROFILE_TERMS)) and not detail_followup:
+    if (annual or (contains(norm, PROFILE_TERMS) and (market_request or {}).get('action') != 'DETAIL')) and not detail_followup:
         market_request = None
     scope = copy.deepcopy(context or {})
     language = conversational_words()
@@ -407,6 +421,9 @@ def analyze_live(text, context=None, *, today=None):
     # be a term the router already knows is no company (EPS, ROE, CFO, HOSE ...), a word of a metric name,
     # or an abbreviation given in brackets after the phrase it abbreviates ("... trên cổ phiếu (EPS)").
     from .hybrid_router.decision_engine import DEFAULT_COMPANIES, NON_COMPANY_CODES
+    explicit_tickers={token.upper()for token in re.findall(
+        r'\b(?:gia|co phieu|ma ck|ma|cong ty)\s+([a-z]{3,5})\b',norm)
+        if token.upper()in registered}
     glosses, initialisms = set(), set()
     for before, token in re.findall(r'((?:\S+\s+){1,6})\(\s*([A-Z]{2,6})\s*\)', text):
         glosses.add(token)
@@ -414,12 +431,13 @@ def analyze_live(text, context=None, *, today=None):
         # abbreviation of that phrase even when the same letters happen to be a listed symbol.
         if ''.join(word[0] for word in _fold(before).split()[-len(token):]).upper() == token:
             initialisms.add(token)
-    companies += [s for s in re.findall(r'\b[A-Z]{3,5}\b', text)
-                  if s not in reserved and s not in companies and s not in NON_COMPANY_CODES and s not in initialisms
+    from .input_normalization import company_token_text
+    companies += [s for s in re.findall(r'\b[A-Z]{3,5}\b', company_token_text(text))
+                  if s not in reserved and s not in companies and (s not in NON_COMPANY_CODES or s in explicit_tickers) and s not in initialisms
                   and (s in registered or not (s in glosses or s.lower() in ticker_stop))]
     # Companies are also named by name ("Vinamilk", "Hòa Phát"); the router's name table is the shared source.
     for alias, symbols in DEFAULT_COMPANIES.items():
-        if len(alias) > 3 and re.search(r'\b' + re.escape(alias) + r'\b', norm):
+        if (len(alias) > 3 or alias in ('cmc', 'mb')) and re.search(r'\b' + re.escape(alias) + r'\b', norm):
             ticker_stop |= set(alias.split())        # the words of a name are not a second, made-up symbol
             if symbols[0] not in companies:
                 companies.append(symbols[0])
@@ -449,7 +467,23 @@ def analyze_live(text, context=None, *, today=None):
         token = norm.split()[-1]
         if token not in ticker_stop | {'sau', 'nam', 'nay', 'cho', 'xem', 'moi'}:
             companies = [token.upper()]
-    companies = [symbol for symbol in companies if symbol in registered or symbol.lower() not in language]
+    # Canonicalize after every extraction pass, including lowercase slot replies.
+    companies = list(dict.fromkeys(DEFAULT_COMPANIES.get(symbol.lower(), (symbol,))[0]
+        for symbol in companies if (symbol not in NON_COMPANY_CODES or symbol in explicit_tickers)
+        and (symbol in registered or symbol.lower() not in language)))
+    # Bond identifiers resolve only through a registered issuer prefix.
+    companies.extend(s for s in re.findall(r'\b([A-Z]{3})\d{6,}\b', text)
+                     if s in registered and s not in companies)
+    # A headline's ticker prefix names the document owner. Other named
+    # companies in that headline can be counterparties (e.g. CTG and VBI).
+    owner = re.match(r'^([a-z]{3})\s*:', (market_request or {}).get('query') or '')
+    if owner and owner[1].upper() in registered:
+        companies = [owner[1].upper()]
+    known = [symbol for symbol in companies if symbol in TICKERS]
+    if (annual and len(known) == 1
+            and re.search(r'\b(?:phu thuoc|doi tac|khach hang|hop tac)\b', norm)
+            and not re.search(r'\b(?:so sanh|doi chieu|cua ca hai)\b', norm)):
+        companies = known  # named counterparties are mentions, not extra report owners
     if companies:
         scope['companies'] = list(dict.fromkeys(companies))
         if (context or {}).get('companies') and scope['companies'] != context['companies']:
@@ -458,6 +492,9 @@ def analyze_live(text, context=None, *, today=None):
     if annual:
         return finish(*annual_scope(text, norm, scope, context))
     if market_request:
+        if ((context or {}).get('companies') and scope.get('companies')
+                and market_request.get('query') and _company_reply(norm, scope['companies'])):
+            market_request['query'] = _annual_company_question(market_request['query'], context, scope['companies'])
         scope = {key: value for key, value in scope.items() if key in ('companies', '_clarification_state')}
         decision['scope'] = scope
         source_type = {'QUOTE': 'PRICE', 'NEWS': 'NEWS', 'ANALYSIS': 'MARKET_ANALYSIS'}[
@@ -465,7 +502,7 @@ def analyze_live(text, context=None, *, today=None):
         ]
         scope.update(source_type=source_type,
                      metric_code='LAST_PRICE' if market_request['kind'] in ('QUOTE', 'ANALYSIS') else None,
-                     periods=[market_request['day']] if market_request['day'] else [],
+                     periods=[market_request['day'] or market_request.get('month')] if market_request['day'] or market_request.get('month') else [],
                      _market_request=market_request)
         if market_request.get('market_wide'):
             scope['companies'] = []
@@ -487,7 +524,7 @@ def analyze_live(text, context=None, *, today=None):
                           'Dang tra cuu ban tin tong hop va tin noi bat trong ngay.')
         if not scope.get('companies'):
             return finish('ASK_CLARIFICATION', 'MISSING_COMPANY', 'Mình tra cứu giá và tin tức của các công ty trong kho dữ liệu. Bạn muốn xem công ty nào?')
-        if len(scope['companies']) != 1:
+        if len(scope['companies']) > (10 if market_request.get('action') in ('DETAIL', 'SUMMARY') and market_request.get('query') else 1):
             return finish('ASK_CLARIFICATION', 'SCOPE_TOO_LARGE', 'Vui lòng chọn một mã cổ phiếu cho mỗi lần tra cứu giá hoặc tin mới.')
         return finish('MARKET_LOOKUP', 'CURRENT_MARKET_REQUEST', 'Đang tra cứu nguồn giá hoặc tin tức đang cập nhật.')
     if scope.pop('_market_request', None):
@@ -499,7 +536,8 @@ def analyze_live(text, context=None, *, today=None):
     residual = without_metrics(norm)
     # Users often say "lợi nhuận ... sau thuế" without the exact phrase
     # "lợi nhuận sau thuế". Resolve that explicit tax basis in the same turn.
-    profit_requested = ('loi nhuan' in norm or bool(re.search(r'\b(?:lời|lãi)\b', text.lower()))
+    profit_requested = ('loi nhuan' in norm or (bool(re.search(r'\b(?:lời|lãi)\b', text.lower()))
+                        and not re.search(r'\b(?:lai suat|lai vay|lai tien gui|lai tiet kiem)\b', norm))
                         or bool(re.search(r'\b(?:loi|lai)\s+bao nhieu\b', norm)))
     if not found and profit_requested:
         if re.search(r'\bsau thue\b', norm): found = ['PROFIT_AFTER_TAX']
@@ -513,7 +551,7 @@ def analyze_live(text, context=None, *, today=None):
         found.remove('CURRENT_LIABILITIES')
     multiple = len(found) > 1
     from .hybrid_router.intent_policy import PROFILE_TERMS, contains
-    company_profile = contains(norm, PROFILE_TERMS) or bool(re.search(r'\bthong tin\b', norm) and scope.get('companies'))
+    company_profile = company_overview_question(norm) or contains(norm, PROFILE_TERMS) or bool(re.search(r'\bthong tin\b', norm) and scope.get('companies'))
     comparison = bool(re.search(r'\b(?:so sanh|doi chieu|khac nhau|hon kem)\b', norm))
     overall_comparison = comparison and not found and not profit_requested
     relationship_lookup = bool(re.search(
@@ -831,6 +869,24 @@ class DenseEvidenceRetriever:
                      source_sha256=item['source_sha256'], title=item['title'],
                      locator_json=item['locator'], score=item['rrf_score']) for item in result['results']]
 
+    async def _financial_latest_period(self, company, corpus):
+        # Resolve the default period before top-k retrieval; otherwise older
+        # periods can crowd the requested metric out of the candidate window.
+        async with self.pool.acquire() as conn:
+            return await conn.fetchval('''SELECT coalesce(p.period_code,t.locator_json->>'period_code') AS period
+                FROM text_chunks t JOIN documents d USING(document_id)
+                JOIN corpus_documents cd ON cd.document_id=d.document_id AND cd.document_hash=d.sha256
+                LEFT JOIN companies c USING(company_id)
+                LEFT JOIN reporting_periods p USING(period_id)
+                WHERE cd.corpus_version_id=$1::uuid AND t.index_version_id=$2::uuid
+                  AND t.superseded_at IS NULL AND d.doc_type='FINANCIAL_STATEMENT'
+                  AND coalesce(c.symbol,t.locator_json->>'symbol')=$3
+                  AND coalesce(p.period_code,t.locator_json->>'period_code') ~ '^[0-9]{4}-(Q[1-4]|YEAR)$'
+                ORDER BY left(coalesce(p.period_code,t.locator_json->>'period_code'),4) DESC,
+                  CASE WHEN coalesce(p.period_code,t.locator_json->>'period_code') LIKE '%-YEAR' THEN 5
+                       ELSE right(coalesce(p.period_code,t.locator_json->>'period_code'),1)::int END DESC
+                LIMIT 1''',uuid.UUID(self.corpus_version_id),uuid.UUID(str(corpus['index_version_id'])),company)
+
     async def _annual_latest_year(self, company, corpus):
         async with self.pool.acquire() as conn:
             async with conn.transaction(readonly=True, isolation='repeatable_read'):
@@ -868,27 +924,125 @@ class DenseEvidenceRetriever:
                         'source_verified': True})
         return verified
 
+    async def _annual_lexical_rows(self, question, corpus, company, year):
+        key=(str(self.corpus_version_id),str(corpus['index_version_id']),company,year)
+        locks=getattr(self,'_annual_lexical_locks',None)
+        if locks is None: locks=self._annual_lexical_locks={}
+        lock=locks.setdefault(key,asyncio.Lock())
+        async with lock:
+            return await self._annual_lexical_rows_locked(question,corpus,company,year)
+
+    async def _news_lexical_rows(self, question, corpus, company, period):
+        key=('NEWS',str(self.corpus_version_id),str(corpus['index_version_id']),company,period)
+        locks=getattr(self,'_annual_lexical_locks',None)
+        if locks is None:locks=self._annual_lexical_locks={}
+        async with locks.setdefault(key,asyncio.Lock()):
+            return await self._annual_lexical_rows_locked(question,corpus,company,period,doc_type='NEWS')
+
+    async def _scoped_lexical_rows(self, question, corpus, company, period, doc_type):
+        key=(doc_type,str(self.corpus_version_id),str(corpus['index_version_id']),company,period)
+        locks=getattr(self,'_annual_lexical_locks',None)
+        if locks is None:locks=self._annual_lexical_locks={}
+        async with locks.setdefault(key,asyncio.Lock()):
+            return await self._annual_lexical_rows_locked(question,corpus,company,period,doc_type=doc_type)
+
+    async def _annual_lexical_rows_locked(self, question, corpus, company, year, *, doc_type='ANNUAL_REPORT'):
+        """Bounded report-local BM25 when dense recall misses an explicit term.
+
+        Uses the same frozen membership and annual replay contract; no new
+        chunking, embeddings, database writes or global cache rebuild.
+        """
+        from ..documents.shared_source import resolve_shared_source
+        from ..vector_retrieval.ranking import BM25Index, tokenize
+        key=(doc_type,str(self.corpus_version_id),str(corpus['index_version_id']),company,year)
+        indexes=getattr(self,'_annual_lexical_indexes',None)
+        if indexes is None: indexes=self._annual_lexical_indexes={}
+        if key not in indexes:
+            async with self.pool.acquire() as conn:
+                async with conn.transaction(readonly=True,isolation='repeatable_read'):
+                    rows=await conn.fetch('''SELECT t.chunk_id::text,t.document_id::text,t.index_version_id::text,
+                        t.content_hash,t.page_number,t.locator_json,d.source_url,d.title
+                        FROM text_chunks t JOIN documents d USING(document_id)
+                        JOIN index_versions i USING(index_version_id)
+                        JOIN corpus_versions cv USING(index_version_id)
+                        JOIN corpus_documents cd ON cd.corpus_version_id=cv.corpus_version_id
+                          AND cd.document_id=d.document_id AND cd.document_hash=d.sha256
+                        LEFT JOIN companies c USING(company_id)
+                        WHERE cv.corpus_version_id=$1::uuid AND t.index_version_id=$2::uuid
+                          AND cv.status='FROZEN' AND i.status='ACTIVE' AND t.superseded_at IS NULL
+                          AND d.doc_type=$5 AND (coalesce(c.symbol,t.locator_json->>'symbol')=$3
+                            OR ($5='NEWS' AND EXISTS(SELECT 1 FROM news_articles n
+                              WHERE n.article_id::text=t.locator_json->>'source_id' AND $3=ANY(n.symbols))))
+                          AND (($5='ANNUAL_REPORT' AND t.locator_json->>'reporting_year'=$4)
+                            OR ($5='NEWS' AND ($4::text IS NULL OR coalesce(t.locator_json->>'published_at',
+                              t.locator_json->'admin_news_snapshot'->>'published_at') LIKE $4||'%'))
+                            OR ($5='COMPANY_PROFILE' AND $4::text IS NULL)
+                            OR ($5='FINANCIAL_STATEMENT' AND (t.locator_json->>'period_code'=$4
+                              OR ($4 ~ '^[0-9]{4}$' AND t.locator_json->>'period_code'=$4||'-YEAR'))))
+                        ORDER BY t.chunk_index LIMIT 2001''',
+                        uuid.UUID(str(self.corpus_version_id)),uuid.UUID(str(corpus['index_version_id'])),company,year,doc_type)
+                    if len(rows)>2000: return []  # retain the existing scoped retrieval for oversized reports
+                    tokens, members, bodies, cache={}, {}, {}, {}
+                    if doc_type!='ANNUAL_REPORT':
+                        from ..graph_review.sources import PostgresSourceReader
+                        news_reader=PostgresSourceReader(conn)
+                    for raw in rows:
+                        row=dict(raw)
+                        loc=row['locator_json']
+                        if isinstance(loc,str):loc=json.loads(loc)
+                        # Tokenization is ranking only. Replay the pinned text
+                        # and hash here; selected hits still pass the complete
+                        # annual document/parent-lineage checks in _annual_rows.
+                        if doc_type!='ANNUAL_REPORT':
+                            source=await news_reader.read_current(row['chunk_id'],str(self.corpus_version_id))
+                            if (not source.active or source.index_version_id!=row['index_version_id']
+                                    or source.document_id!=row['document_id']
+                                    or source.content_hash.strip()!=row['content_hash'].strip()):
+                                raise ReconstructionError('NEWS_LEXICAL_BINDING_CHANGED' if doc_type=='NEWS' else 'SCOPED_LEXICAL_BINDING_CHANGED',
+                                    'News ranking source binding changed' if doc_type=='NEWS' else 'Ranking source binding changed')
+                            text=source.text
+                            row.update(text=text,source_sha256=source.source_sha256,
+                                locator_json=source.locator,source_verified=True)
+                        else:
+                            text=await resolve_shared_source(conn,row['index_version_id'],loc,row['content_hash'],cache)
+                        body=tokenize(text.partition('\n')[2])
+                        tokens[row['chunk_id']]=body
+                        bodies[row['chunk_id']]=' '+' '.join(body)+' '
+                        members[row['chunk_id']]=row
+            if len(indexes)>=8: indexes.pop(next(iter(indexes)))
+            indexes[key]=(BM25Index(tokens),members,bodies)
+        index,members,bodies=indexes[key]
+        stop=set('ai la co khong theo trong nam bao nhieu nao gi cua cho toi minh hay'.split())
+        focus=[word for word in tokenize(question) if word not in stop]
+        phrases=[' '+' '.join(focus[i:i+3])+' ' for i in range(len(focus)-2)]
+        ranked=index.search(question,limit=2000)
+        hits={cid for cid,_ in ranked if any(phrase in bodies[cid] for phrase in phrases)}
+        ranked.sort(key=lambda pair:pair[0] not in hits)
+        return [dict(members[cid],score=score,score_type='BM25',_phrase_match=cid in hits)
+                for cid,score in ranked[:20]]
+
     async def retrieve(self, question, scope):
         if scope.get('source_type') == 'CONTENT':
-            # Search the same frozen corpus through the existing verified
-            # readers. Do not turn an event year into a report-year filter.
-            packs=[]
-            for kind in ('NEWS', 'BCTN'):
-                child={**scope,'source_type':kind,'periods':['LATEST_AVAILABLE_PERIOD']}
-                packs.append(await self.retrieve(question,child))
-            if any((p['corpus_version_id'],p['data_version']) !=
-                   (packs[0]['corpus_version_id'],packs[0]['data_version']) for p in packs):
-                raise ReconstructionError('CONTENT_CORPUS_CHANGED','Serving corpus changed during retrieval')
-            items={}
-            for pack in packs:
-                for item in pack['items']:
-                    if items.setdefault(item['evidence_id'],item)!=item:
-                        raise CitationError('INVALID_EVIDENCE')
-            return {**packs[0],'query_id':str(uuid.uuid4()),'items':list(items.values())[:10],
-                    'retrieval_backend':self.backend+'_content'}
+            from .retrieval_recovery import recover_content
+            return await recover_content(self.retrieve, question, scope)
         corpus = await self._corpus()
-        vector = await self._embed(question) if self.backend == 'dense' else None
+        search_question=question
+        if scope.get('source_type') == 'BCTN':
+            # Company/year are enforced by metadata. Repeating a brand alias
+            # (CTIN appears on every resolution) must not swamp the actual
+            # subject such as subsidiaries in semantic/BM25 ranking.
+            from .hybrid_router.decision_engine import DEFAULT_COMPANIES
+            aliases=[alias for alias,targets in DEFAULT_COMPANIES.items()
+                     if ' ' not in alias and any(s in scope.get('companies',[]) for s in targets)]
+            content=_fold(question)
+            for alias in sorted(aliases,key=len,reverse=True):
+                content=re.sub(r'\b'+re.escape(alias)+r'\b',' ',content)
+            content=re.sub(r'\b(?:bao cao thuong nien|bctn|theo bao cao|theo|nam|(?:19|20|21)\d{2})\b',' ',content)
+            search_question=' '.join(content.split()) or question
+        vector = await self._embed(search_question) if self.backend == 'dense' else None
         items, seen = [], set()
+        recovery_trace=[]
+        recovery_deadline=None
         source_type = scope['source_type']
         doc_type = (
             'COMPANY_PROFILE'
@@ -902,13 +1056,18 @@ class DenseEvidenceRetriever:
             for period in periods:
                 latest_period = period == 'LATEST_AVAILABLE_PERIOD'
                 lookup_period = None if latest_period else period
+                if doc_type == 'FINANCIAL_STATEMENT' and latest_period:
+                    lookup_period = await self._financial_latest_period(company,corpus)
+                    if not lookup_period:
+                        items=[]
+                        break
                 if doc_type == 'ANNUAL_REPORT' and latest_period:
                     lookup_period = await self._annual_latest_year(company, corpus)
                     if not lookup_period:
                         items = []
                         break
                 if self.backend == 'hybrid':
-                    rows = await self._hybrid_rows(question, scope, corpus, company, lookup_period, doc_type)
+                    rows = await self._hybrid_rows(search_question, scope, corpus, company, lookup_period, doc_type)
                 else:
                     rows = await repository.vector_search_filtered(
                         self.pool, corpus['index_version_id'], vector, 20,
@@ -918,7 +1077,54 @@ class DenseEvidenceRetriever:
                         exact_period=doc_type in ('FINANCIAL_STATEMENT', 'ANNUAL_REPORT') and lookup_period is not None,
                     )
                 if doc_type == 'ANNUAL_REPORT':
+                    from ..vector_retrieval.ranking import rrf
+                    lexical=await self._annual_lexical_rows(search_question,corpus,company,lookup_period)
+                    recovery_trace.append(dict(source='BCTN',method='SCOPED_BM25',company=company,period=lookup_period,items=len(lexical)))
+                    if lexical:
+                        members={row['chunk_id']:dict(row) for row in [*rows,*lexical]}
+                        ranked=rrf([(row['chunk_id'],float(row['score'])) for row in rows],
+                                   [(row['chunk_id'],float(row['score'])) for row in lexical],limit=20)
+                        rows=[dict(members[r['chunk_id']],score=r['rrf_score'],score_type='RRF') for r in ranked]
+                        rows.sort(key=lambda row:not row.get('_phrase_match',False))
                     rows = await self._annual_rows(rows, corpus, company, lookup_period)
+                elif doc_type == 'NEWS':
+                    from ..vector_retrieval.ranking import rrf
+                    lexical=await self._news_lexical_rows(search_question,corpus,company,lookup_period)
+                    recovery_trace.append(dict(source='NEWS',method='SCOPED_BM25',company=company,period=lookup_period,items=len(lexical)))
+                    if lexical:
+                        members={row['chunk_id']:dict(row)for row in [*rows,*lexical]}
+                        ranked=rrf([(row['chunk_id'],float(row['score']))for row in rows],
+                            [(row['chunk_id'],float(row['score']))for row in lexical],limit=20)
+                        rows=[dict(members[r['chunk_id']],score=r['rrf_score'],score_type='RRF')for r in ranked]
+                elif doc_type in ('FINANCIAL_STATEMENT','COMPANY_PROFILE'):
+                    # A failed top-k window is not evidence of missing data.
+                    # Try one independent, bounded lexical search of the same
+                    # frozen company/period/source before composing an answer.
+                    metric=scope.get('metric_code')
+                    usable=[r for r in rows if (not metric or '('+metric+')' in r.get('text',''))
+                        and (doc_type!='FINANCIAL_STATEMENT' or reporting_entity_matches(
+                            r.get('text','').split('\n',1)[0],scope.get('reporting_entity','UNKNOWN')))]
+                    if doc_type=='FINANCIAL_STATEMENT' and scope.get('measure_basis') in ('YTD','STANDALONE_QUARTER'):
+                        ytd=scope['measure_basis']=='YTD'
+                        usable=[row for row in usable if bool(re.search(r'\b(?:luy ke|ytd)\b',
+                            _fold(row.get('text','').split('\n',1)[0])))==ytd]
+                    if not usable:
+                        if recovery_deadline is None:
+                            recovery_deadline=asyncio.get_running_loop().time()+20
+                        remaining=recovery_deadline-asyncio.get_running_loop().time()
+                        attempt=dict(source=source_type,method='SCOPED_BM25',company=company,period=lookup_period)
+                        try:
+                            if remaining<=0:raise TimeoutError
+                            recovered=await asyncio.wait_for(self._scoped_lexical_rows(
+                                search_question,corpus,company,lookup_period,doc_type),remaining)
+                            attempt.update(status='COMPLETE',items=len(recovered))
+                        except TimeoutError:
+                            recovered=[]
+                            attempt.update(status='TIMEOUT',items=0)
+                        recovered=[dict(row,score=1/(61+rank),score_type='RRF')
+                            for rank,row in enumerate(recovered)]
+                        recovery_trace.append(attempt)
+                        rows=list({r['chunk_id']:r for r in [*rows,*recovered]}.values())
                 matching = []
                 for row in rows:
                     if scope.get('_admin_source_url'):
@@ -967,7 +1173,7 @@ class DenseEvidenceRetriever:
         return dict(schema_version='1.1', query_id=str(uuid.uuid4()),
                     data_version={'kind': 'INDEX', 'id': corpus['index_version_id']},
                     corpus_version_id=self.corpus_version_id, items=items,
-                    retrieval_backend=self.backend)
+                    retrieval_backend=self.backend,retrieval_trace=recovery_trace)
 
 
 def citation_title(citation, scope):
@@ -1028,6 +1234,7 @@ class LiveResearchService:
             return result
         citations = copy.deepcopy(answer['citations'])
         parts = ['Nguồn của câu trả lời trước:']
+        from .saved_source_reference import source_reference_metadata
         for number, citation in enumerate(citations, 1):
             citation.setdefault('citation_number', number)
             if previous.get('evidence_packs'):
@@ -1036,14 +1243,16 @@ class LiveResearchService:
             else:
                 title = citation_title(citation, old_scope)
             section = citation['locator'].get('section')
-            parts.append(f"[{citation['citation_number']}] {title}"+(f' — {section}' if section else ''))
+            metadata=source_reference_metadata(citation,evidence[citation['evidence_id']])
+            parts.append(f"[{citation['citation_number']}] {title}"+(f' — {section}' if section and section!='Nội dung' else '')
+                +'\n'+'\n'.join(metadata))
         manifest = copy.deepcopy(answer.get('manifest', {}))
         manifest['referenced_model'] = manifest.get('model_returned')
         manifest['model_returned'] = None
         manifest['response_mode'] = 'SAVED_SOURCE_REFERENCE'
         manifest.setdefault('components', {})['gemini'] = False
         result.update(status='EVIDENCE_READY', reason_code='SOURCE_REFERENCE',
-                      presentation=copy.deepcopy(previous.get('presentation') or {}),
+                      presentation={**copy.deepcopy(previous.get('presentation') or {}),'sources':'USED_LINKS'},
                       evidence_pack=copy.deepcopy(previous['evidence_pack']), query_id=previous.get('query_id'),
                       answering={'status': 'DRAFT_READY', 'reason_code': 'SOURCE_REFERENCE',
                                  'message': 'Nguồn đã lưu của câu trả lời trước; không tìm kiếm hoặc sinh lại.',
@@ -1126,6 +1335,16 @@ class LiveResearchService:
             # The question goes on without the style clause, so it is neither refused for "đang đầu tư" nor
             # replayed later (còn BID thì sao?) with a style the user has since changed.
             question = rest or question
+        from .followup_scope import company_continuation
+        from .hybrid_router.decision_engine import DEFAULT_COMPANIES
+        old_companies=(context or {}).get('companies') or []
+        if len(old_companies)>1:
+            choices=set(TICKERS)|set(registered_symbols())
+            if company_continuation(question,choices,DEFAULT_COMPANIES):
+                return dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+                    b1_decision='ASK_CLARIFICATION',status='ASK_CLARIFICATION',reason_code='AMBIGUOUS_CONTEXT',
+                    message='Câu trước đang nói đến nhiều công ty. Bạn muốn xem riêng mã mới hay so sánh với công ty nào?',
+                    scope=copy.deepcopy(context),evidence_pack=None,errors=[])
         question = company_switch_question(question, context) or question
         result = await worker._answer_turn(question, session_id, context,
             previous_result=previous_result, today=today)
@@ -1191,10 +1410,10 @@ class LiveResearchService:
             if str(exc) == 'INTENT_MODEL_WARMING':
                 logger.info('intent_classifier_warming')
             else:
-                logger.warning('intent_classifier_unavailable')
+                logger.warning('intent_classifier_unavailable (%s)',type(exc).__name__)
             return None
-        except Exception:
-            logger.warning('intent_classifier_unavailable')
+        except Exception as exc:
+            logger.warning('intent_classifier_unavailable (%s)',type(exc).__name__)
             return None
         return classified if intent_gate.decide(classified, question) is not None else None
 
@@ -1243,6 +1462,15 @@ class LiveResearchService:
     async def _answer_turn(self, question, session_id, context=None, *, previous_result=None, today=None):
         context = question_context(question, context, today or date.today())
         interpreted = normalize_user_text(question, context)
+        # CONTENT has a source-bound user question, not a metric/role slot.
+        # Rebind that question for an explicit company-only continuation.
+        if (context or {}).get('_content_question'):
+            from .followup_scope import company_continuation
+            from .hybrid_router.decision_engine import DEFAULT_COMPANIES
+            choices=[s for s in set(TICKERS)|set(registered_symbols()) if re.search(r'\b'+s.lower()+r'\b',_fold(interpreted))]
+            if len(choices)==1 and company_continuation(interpreted,choices,DEFAULT_COMPANIES):
+                interpreted=_annual_company_question(context['_content_question'],context,choices)
+                context={**context,'companies':choices}
         detailed_profile = profile_detail_question(interpreted, context)
         if detailed_profile:
             interpreted = detailed_profile
@@ -1274,9 +1502,20 @@ class LiveResearchService:
                 b1_decision='GREETING', status='GREETING', reason_code='GREETING',
                 message='Chào bạn! Bạn có thể hỏi thông tin công ty, nhân sự, báo cáo hoặc tin tức của doanh nghiệp.',
                 scope=copy.deepcopy(context or {}), evidence_pack=None, errors=[])
+        from .context_policy import unrecognized_input
+        if unrecognized_input(interpreted,context):
+            return dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+                b1_decision='ASK_CLARIFICATION',status='ASK_CLARIFICATION',reason_code='UNRECOGNIZED_QUESTION',
+                message='Chưa hiểu nội dung bạn vừa gửi. Bạn viết lại câu hỏi giúp tôi nhé.',
+                scope=copy.deepcopy(context or {}),evidence_pack=None,errors=[],clarification_options=[],
+                presentation={'sources':'HIDDEN'})
         screened = await self._answer_screening(interpreted, context)
         if screened is not None:
             return screened
+        from .conditional_assessment import assessment_request
+        assessment=assessment_request(interpreted,context)
+        if assessment is not None:
+            return await self._answer_conditional_assessment(assessment,today)
         news_decision = news_reference(interpreted, context, previous_result) or analyze_live(interpreted, context, today=today)
         from .hybrid_router.intent_policy import contains, GRAPH_TERMS
         from .hybrid_router.decision_engine import _normalize as router_normalize
@@ -1301,7 +1540,7 @@ class LiveResearchService:
                     priced['answering']['budget'] = self.budget.snapshot()
                 return priced
         from .hybrid_router.intent_policy import PROFILE_TERMS, contains
-        explicit_profile = contains(norm, PROFILE_TERMS) or bool(re.search(r'\bthong tin\s+(?:cong ty\s+)?(?:' + '|'.join(s.lower() for s in registered_symbols()) + r')\b', norm))
+        explicit_profile = company_overview_question(norm) or contains(norm, PROFILE_TERMS) or bool(re.search(r'\bthong tin\s+(?:cong ty\s+)?(?:' + '|'.join(s.lower() for s in registered_symbols()) + r')\b', norm))
         bare_company = norm.upper() in (set(TICKERS) | set(registered_symbols()))
         prior = (context or {}).get('_hybrid_context') or context or {}
         pending_company = not prior.get('companies') and bool(prior.get('position_code') or prior.get('person_name') or prior.get('metric_code') or prior.get('_pending_metric'))
@@ -1316,6 +1555,17 @@ class LiveResearchService:
         analysis_followup = (text_decision['scope'].get('source_type') == 'MARKET_ANALYSIS'
                              and ((context or {}).get('_market_request') or {}).get('kind') == 'ANALYSIS'
                              and bool(re.search(DETAIL_FOLLOWUP, norm)))
+        from .financial_operations import plan_operation,answer_operation
+        operation=plan_operation(interpreted,text_decision)
+        if operation is not None:
+            try:
+                return await asyncio.wait_for(answer_operation(interpreted,operation,self.retriever,self.budget),self.retrieval_timeout)
+            except Exception as exc:
+                return dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+                    b1_decision='SEARCH',status='SYSTEM_UNAVAILABLE',
+                    reason_code=getattr(exc,'code','FINANCIAL_OPERATION_TIMEOUT' if isinstance(exc,TimeoutError) else 'FINANCIAL_OPERATION_UNAVAILABLE'),
+                    message='Chưa đọc hoặc xác minh đủ các dòng nguồn để đối chiếu; vui lòng thử lại.',
+                    scope=operation['scope'],evidence_pack=None,errors=[{'type':type(exc).__name__}])
         content_scope=None if analysis_followup else content_fallback_scope(interpreted,text_decision)
         if content_scope is not None:
             return await self._answer_content_question(interpreted,content_scope)
@@ -1385,7 +1635,10 @@ class LiveResearchService:
                               message=f"Kho tài liệu chưa có báo cáo của {', '.join(absent)}. "
                                       f"Hiện có báo cáo của {len(available)} mã: {', '.join(available)}.")
                 return result
-        if (self.route_runner is not None and decision.get('reason_code') not in
+        # The contextual web bridge is authoritative when configured. Its None
+        # means VECTOR continues here; the legacy runner would plan the turn a
+        # second time without context and can override the already chosen source.
+        if (self.route_runner is not None and self.hybrid_router is None and decision.get('reason_code') not in
                 ('UNSUPPORTED_ADVICE', 'NEW_CONVERSATION')):
             try:
                 routed = await self.route_runner(interpreted)
@@ -1407,12 +1660,18 @@ class LiveResearchService:
                  else metric_label(scope['metric_code']) if scope.get('metric_code') else 'tin tức')
         query = (f"Báo cáo thường niên {' '.join(scope['companies'])}. {scope.get('_annual_question', interpreted)}"
                  if scope.get('source_type') == 'BCTN' else
-                 f"{label} {' '.join(scope['companies'])} {' '.join(scope['periods'])}. {interpreted}")
+                 f"{label} {' '.join(scope.get('companies') or [])} {' '.join(scope.get('periods') or [])}. {interpreted}")
         try:
             pack = await asyncio.wait_for(self.retriever.retrieve(query, scope), self.retrieval_timeout)
             if not isinstance(pack, dict) or not isinstance(pack.get('items'), list):
                 raise CitationError('INVALID_EVIDENCE')
             if not pack['items']:
+                from .retrieval_recovery import recovery_timed_out
+                if recovery_timed_out(pack):
+                    result.update(status='SYSTEM_UNAVAILABLE',reason_code='RECOVERY_TIMEOUT',
+                        retrieval_trace=pack.get('retrieval_trace',[]),
+                        message='Lượt tìm bổ sung đã hết thời gian chờ; chưa thể kết luận kho dữ liệu thiếu thông tin.')
+                    return result
                 result.update(status='NO_DATA', reason_code='NO_DATA', message='Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.')
                 absent, available = await self._absent_from_corpus(scope)
                 if absent:
@@ -1445,8 +1704,34 @@ class LiveResearchService:
             return result
         result.update(status='EVIDENCE_READY', reason_code='EVIDENCE_READY', query_id=pack['query_id'],
                       evidence_pack=pack, retrieval_backend=pack.get('retrieval_backend', 'dense'),
+                      retrieval_trace=pack.get('retrieval_trace',[]),
                       message='Đã tìm được nguồn ứng viên có nội dung khớp hash.')
         return await complete_retrieval(query, result, provider=self.provider, limits=self.limits, budget=self.budget)
+
+    async def _answer_conditional_assessment(self, assessment, today):
+        from .conditional_assessment import attach_assessment,recover_source_facts
+        if assessment['blocked']:
+            return dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+                b1_decision='UNSUPPORTED',status='UNSUPPORTED',reason_code='ASSESSMENT_LIMIT',
+                message='Tôi có thể đánh giá dữ kiện và rủi ro có điều kiện, chưa đưa mức phân bổ tiền, giá mục tiêu hoặc cam kết lợi nhuận.',
+                scope={'companies':assessment['companies']},evidence_pack=None,errors=[])
+        if len(assessment['companies'])!=1:
+            return dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+                b1_decision='ASK_CLARIFICATION',status='ASK_CLARIFICATION',reason_code='ASSESSMENT_COMPANY_REQUIRED',
+                message='Bạn muốn đánh giá mã cổ phiếu nào? Vui lòng chọn một mã trước.',
+                scope={'companies':assessment['companies'],'_pending_assessment':assessment},evidence_pack=None,errors=[])
+        symbol=assessment['companies'][0]
+        # Reuse the established factual readers and citation gate. The user's
+        # trade wording is not sent as a request to invent a recommendation.
+        decision=analyze_live('Phân tích '+symbol,today=today)
+        decision['scope']['_conditional_assessment']=True
+        decision['scope']['_assessment_request']=copy.deepcopy(assessment)
+        result=dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
+            b1_decision=decision['decision'],status=decision['decision'],reason_code=decision['reason_code'],
+            message=decision['message'],scope=decision['scope'],evidence_pack=None,errors=[])
+        result=await self._answer_market('Phân tích '+symbol,result)
+        result=recover_source_facts(result,assessment)
+        return attach_assessment(result,assessment)
 
     async def _answer_content_question(self, question, scope):
         result=dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
@@ -1458,6 +1743,11 @@ class LiveResearchService:
             if not isinstance(pack,dict) or not isinstance(pack.get('items'),list):
                 raise CitationError('INVALID_EVIDENCE')
             if not pack['items']:
+                from .retrieval_recovery import recovery_timed_out
+                if recovery_timed_out(pack):
+                    result.update(status='SYSTEM_UNAVAILABLE',reason_code='RECOVERY_TIMEOUT',
+                        retrieval_trace=pack.get('retrieval_trace',[]),
+                        message='Lượt tìm bổ sung đã hết thời gian chờ; chưa thể kết luận kho dữ liệu thiếu thông tin.')
                 return result
             prepare_evidence(pack)
         except TimeoutError:
@@ -1474,6 +1764,7 @@ class LiveResearchService:
             return result
         result.update(status='EVIDENCE_READY',reason_code='CONTENT_EVIDENCE_READY',
                       query_id=pack['query_id'],evidence_pack=pack,
+                      retrieval_trace=pack.get('retrieval_trace',[]),
                       retrieval_backend=pack.get('retrieval_backend'),message='Đã tìm thấy nguồn ứng viên.')
         return await complete_retrieval(question,result,provider=self.provider,limits=self.limits,budget=self.budget)
 
@@ -1586,6 +1877,9 @@ class LiveResearchService:
         return out
 
     async def _answer_stored_news(self, question, scope):
+        scope=copy.deepcopy(scope)
+        if scope.get('_article_urls'):
+            scope.setdefault('_market_request',{}).setdefault('query',question)
         from .stored_news import latest_news, render_stored_news
         result=dict(request_id=str(uuid.uuid4()),query_id=None,execution_mode='LIVE',
             b1_decision='SEARCH',status='NO_DATA',reason_code='NO_STORED_NEWS',scope=copy.deepcopy(scope),

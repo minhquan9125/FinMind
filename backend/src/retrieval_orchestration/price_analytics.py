@@ -37,7 +37,7 @@ _DATE = re.compile(
     r'|\bngay\s+(\d{1,2})\s+thang\s+(\d{1,2})\s+nam\s+(\d{4})\b'
     r'|\bngay\s+(\d{1,2})\s*(?:/|\s+thang\s+)(\d{1,2})\b(?!\s*(?:/|nam)\s*\d{4})')
 _QUARTER = re.compile(r'\bquy\s*([1-4])(?:\s*(?:/|-|nam)?\s*((?:19|20)\d{2}))?')
-_MONTH = re.compile(r'\bthang\s+(\d{1,2})(?:\s*(?:/|-|nam)?\s*((?:19|20)\d{2}))?')
+_MONTH = re.compile(r'\bthang\s+(\d{1,2})(?!\d)(?:\s*(?:/|-|nam)?\s*((?:19|20)\d{2}))?')
 _YEAR = re.compile(r'\bnam\s+((?:19|20)\d{2})\b|(?<![\d/])\b((?:19|20)\d{2})\b(?![\d/])')
 _LAST_DAYS = re.compile(r'\b(\d{1,3})\s*ngay\s*(?:qua|gan day|gan nhat|vua qua|truoc do)\b')
 _LAST_BARS = re.compile(r'\b(\d{1,3})\s*phien\s*(?:gan nhat|gan day|qua|cuoi|vua qua)\b')
@@ -47,7 +47,8 @@ _PRICE_WORD = re.compile(
     r'|\bbien do\b|\bthanh khoan\b|\bphien giao dich\b|\bclose\b|\bhighest\b|\blowest\b|\bgia co phieu\b')
 _NOT_PRICE = re.compile(
     r'\b(?:nen mua|nen ban|gia muc tieu|tu van|tin tuc|ly do|vi sao|tai sao|nguyen nhan|du bao|du doan|'
-    r'hom nay|hien tai|bay gio|luc nay|phien hop)\b')
+    r'hom nay|hien tai|bay gio|luc nay|phien hop|lai suat|lai vay|tien gui|gia ban co phieu|giao dich noi bo|'
+    r'bctn|bctc|bao cao|nen tang|co dong|hop dong|trai phieu|menh gia)\b')
 _MAX = re.compile(r'\b(?:cao nhat|lon nhat|nhieu nhat|ky luc|dinh|max|highest|peak)\b')
 _MIN = re.compile(r'\b(?:thap nhat|nho nhat|it nhat|min|lowest)\b')
 _AVG = re.compile(r'\b(?:trung binh|average|avg)\b')

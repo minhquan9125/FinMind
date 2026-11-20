@@ -302,9 +302,11 @@ def test_release_alias_replay_requires_hash_document_version_and_logical_source(
                           ('wbs06-row', new_chunk, CID): dict(locator_json=locator)}
             self.connection = self
             self.current = current
+            self.alias_reads = 0
         async def read_current(self, chunk, corpus): return original if chunk == old_chunk else self.current
         async def prefetch(self, *args): pass
         async def fetch(self, sql, *args):
+            self.alias_reads += 1
             assert "cv.status='FROZEN'" in sql and 'cd.document_hash=d.sha256' in sql
             assert args[-1] == doc
             return [dict(chunk_id=new_chunk)]
@@ -313,6 +315,8 @@ def test_release_alias_replay_requires_hash_document_version_and_logical_source(
     graph = Neo4jChatRetriever(None, None)
     replay, _ = asyncio.run(graph._replay(reader, ref, dict(source_scoped=True), CID, IID))
     assert replay.chunk_id == new_chunk
+    asyncio.run(graph._replay(reader, ref, dict(source_scoped=True), CID, IID))
+    assert reader.alias_reads == 1  # Only the ID lookup is reused; integrity checks still run below.
     reader.current = replace(current, source_sha256='b'*64)
     with pytest.raises(GraphChatError, match='GRAPH_SOURCE_VERSION_MISMATCH'):
         asyncio.run(graph._replay(reader, ref, dict(source_scoped=True), CID, IID))
@@ -455,12 +459,14 @@ def test_empty_graph_on_an_annual_report_relationship_question_searches_the_annu
     assert result.get('reason_code') != 'GRAPH_NO_VERIFIED_RELATIONS'
 
 
-def test_empty_graph_on_a_news_relationship_question_stays_no_data_and_never_reads_news():
+def test_empty_graph_on_a_news_relationship_question_tries_source_text_once():
     engine, graph, content = service(EmptyGraph())
     result = asyncio.run(engine.answer('Theo tin tức, FPT hợp tác với những đối tác nào?', 'test'))
     if graph.calls:
-        assert content.calls == []
-        assert result['reason_code'] == 'GRAPH_NO_VERIFIED_RELATIONS'
+        assert len(content.calls)==1
+        assert content.calls[0]['source_type']=='NEWS'
+        assert content.calls[0]['companies']==['FPT']
+        assert result['reason_code']!='GRAPH_NO_VERIFIED_RELATIONS'
 
 
 class EmptyContent(Content):

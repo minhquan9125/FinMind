@@ -83,6 +83,9 @@ def test_financial_year_scope_can_use_exact_period_without_matching_quarters():
     assert "coalesce(p.period_code, t.locator_json->>'period_code') = $3" in connection.sql
     assert "ILIKE" not in connection.sql
     assert connection.args[2] == '2025'
+    assert "$3 ~ '^[0-9]{4}$'" in connection.sql
+    assert "= $3 || '-YEAR'" in connection.sql
+    assert "'-Q'" not in connection.sql
 
 
 def test_filtered_search_parameterizes_user_filter_values():

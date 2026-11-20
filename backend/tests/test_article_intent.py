@@ -1,9 +1,10 @@
 import asyncio
 import copy
 import json
+import pytest
 
 from src.retrieval_orchestration.live_research import analyze_live
-from tests.test_market_dialogue import DetailedNews, Provider, engine
+from tests.test_market_dialogue import DetailedNews, Provider, engine as make_engine
 from tests.test_market_research import NOW, article
 from src.b1_answering.evidence.grounded import build_grounded_request, validate_grounded
 from src.b1_answering.core.policy import Limits
@@ -11,6 +12,24 @@ from src.b1_answering.evidence.citations import prepare_evidence
 
 TITLE = 'Diễn biến mới nhất của siêu dự án công viên công nghệ 2 tỷ USD do Tập đoàn FPT đầu tư ở thành phố giàu nhất miền Bắc'
 CONTENT = 'UBND phường Phú Diễn đề nghị các chủ sử dụng đất liên hệ trước ngày 30/10/2026 về dự án công nghệ của FPT.'
+
+
+@pytest.fixture(autouse=True)
+def frozen_article_reader(monkeypatch):
+    """The production policy now reads frozen DB articles, never the live feed."""
+    from tests.stored_news_fixture import stored_pack
+    from src.retrieval_orchestration.market_dialogue import matching_articles
+    def engine(news=None, provider=None):
+        news = news or DetailedNews()
+        async def read(retriever, scope):
+            entries = news.articles
+            query = (scope.get('_market_request') or {}).get('query')
+            if query:
+                entries = matching_articles(query, entries)
+            return stored_pack(entries, scope, 'FPT triển khai công viên công nghệ tại Hà Nội. '+CONTENT)
+        monkeypatch.setattr('src.retrieval_orchestration.stored_news.latest_news', read)
+        return make_engine(news, provider)
+    monkeypatch.setitem(globals(), 'engine', engine)
 
 
 def items():
@@ -44,7 +63,7 @@ def test_direct_headline_fetches_matching_article_not_first_article():
         news = DetailedNews(items())
         result = await engine(news, Provider()).answer('cho tôi biết chi tiết về: '+TITLE, 't', today=NOW.date())
         assert result['answering']['status'] == 'DRAFT_READY'
-        assert news.details == [items()[1]['url']]
+        assert news.details == []
         assert result['evidence_pack']['items'][0]['title'] == TITLE
     asyncio.run(run())
 
@@ -58,8 +77,8 @@ def test_pasted_summary_sentence_resolves_its_evidence_without_asking_again():
         first['answering']['claims'] = [{'text': CONTENT, 'evidence_ids': [target['evidence_id']]}]
         result = await service.answer('tóm tắt '+CONTENT+' cho t', 't', first['scope'], previous_result=first, today=NOW.date())
         assert result['answering']['status'] == 'DRAFT_READY'
-        assert news.calls == ['FPT']
-        assert news.details == [items()[1]['url']]
+        assert news.calls == []
+        assert news.details == []
     asyncio.run(run())
 
 
@@ -70,7 +89,7 @@ def test_unmatched_title_is_not_silently_replaced_by_last_single_article():
         first = await service.answer('tin tức FPT hôm nay', 't', today=NOW.date())
         result = await service.answer('chi tiết bài: '+TITLE, 't', first['scope'], previous_result=first, today=NOW.date())
         assert result['status'] == 'NO_DATA'
-        assert result['reason_code'] == 'ARTICLE_NOT_FOUND'
+        assert result['reason_code'] == 'NO_STORED_NEWS'
         assert not news.details
     asyncio.run(run())
 

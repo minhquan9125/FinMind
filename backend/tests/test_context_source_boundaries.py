@@ -67,7 +67,9 @@ def test_explicit_announcement_source_does_not_depend_on_question_word_list(ques
 
 @pytest.mark.parametrize('text', ['còn VCB','năm 2024','chi tiết hơn đi','ai là phó chủ tịch'])
 def test_short_followups_keep_context(text):
-    assert question_context(text,OLD,TODAY)==OLD
+    expected=dict(OLD)
+    if text=='còn VCB':expected.pop('_article_urls',None)
+    assert question_context(text,OLD,TODAY)==expected
 
 
 @pytest.mark.parametrize(('question','source'),[

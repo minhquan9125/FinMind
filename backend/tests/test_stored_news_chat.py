@@ -5,6 +5,14 @@ from src.retrieval_orchestration.live_research import LiveResearchService
 from src.retrieval_orchestration.stored_news import render_stored_news
 
 
+def test_body_excerpt_and_missing_body_are_distinguished():
+    item=dict(title='Tin VCB',passage='VCB công bố kết quả hoạt động và thông tin tài chính trong kỳ báo cáo. Nội dung được lưu trong kho.',
+              stored_news=dict(published_at='2026-11-19T08:00:00+07:00'))
+    assert item['passage'] in render_stored_news([item])
+    item['passage']='Tin VCB\nNgày đăng: 2026-11-19'
+    assert 'chưa có đoạn nội dung đủ' in render_stored_news([item])
+
+
 @pytest.mark.parametrize('symbol',['BID','CMG','CTG','ELC','FPT','ICT','ITD','MBB','TCB','VCB'])
 def test_latest_news_reads_pipeline_database_without_live_feed_or_ai(symbol):
     market=type('Market',(),{'lookup':AsyncMock(side_effect=AssertionError('No live fetch'))})()

@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 import uvicorn
-from dotenv import dotenv_values
+from demo_environment import load_demo_environment
 
 BACKEND=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(BACKEND))
@@ -12,9 +12,7 @@ sys.path.insert(0,str(BACKEND))
 
 def main():
     os.chdir(BACKEND)
-    value=dotenv_values(BACKEND/'.env.operator',interpolate=False).get('DATABASE_URL')
-    if value:
-        os.environ.setdefault('ADMIN_INGEST_DATABASE_URL',value)
+    load_demo_environment(BACKEND)
     uvicorn.run('src.main:app',host='127.0.0.1',port=8000)
 
 

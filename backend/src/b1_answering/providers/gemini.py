@@ -9,7 +9,7 @@ from .key_pool import KeyPool
 
 MAX_RESPONSE_BYTES = 1024 * 1024
 # Gemini overload (502/503/504, "high demand") clears within seconds: one retry on the same key.
-# Never for quota (429) and never for a plain 500, which the key-rotation rules treat as final.
+# Persistent overload can try one alternate enabled key; quota rotates separately.
 RETRY_STATUSES = {502, 503, 504}
 RETRY_DELAY_SECONDS = 2
 
@@ -79,11 +79,11 @@ class GeminiProvider:
         )
 
     async def _post(self, path: str, payload: Dict[str, Any]) -> bytes:
-        """Try keys in rotation. Only a rejection before any generation (quota or credentials)
-        moves on to the next key; timeouts, 5xx and bad bodies are reported as they are."""
+        """Rotate on key rejection or bounded explicit overload, never on timeout/partial output."""
         self._sync_keys()
         tried: list = []
         last = GeminiError("RATE_LIMITED")
+        overloaded_keys = 0
         while True:
             key = self.pool.acquire(exclude=tried)
             if key is None:
@@ -91,6 +91,14 @@ class GeminiProvider:
             tried.append(key)
             try:
                 body = await self._post_retrying(key, path, payload)
+            except _Overloaded:
+                overloaded_keys += 1
+                last = GeminiError("GEMINI_UNAVAILABLE")
+                if overloaded_keys >= 2:
+                    raise last from None
+                logging.getLogger(__name__).warning(
+                    'Gemini remains overloaded; trying one alternate enabled key')
+                continue  # Do not label this key invalid or out of quota.
             except _KeyRejected as rejected:
                 (self.pool.quota_exhausted if rejected.quota else self.pool.invalid)(key)
                 last = GeminiError("RATE_LIMITED" if rejected.quota else "GEMINI_UNAVAILABLE")
@@ -113,15 +121,12 @@ class GeminiProvider:
             self.pool.sync(keys, meta)
 
     async def _post_retrying(self, key: str, path: str, payload: Dict[str, Any]) -> bytes:
-        """One retry on the same key when Gemini is overloaded (5xx); quota and key errors rotate instead."""
+        """Retry explicit overload once, then let _post choose a bounded alternate."""
         try:
             return await self._post_with(key, path, payload)
         except _Overloaded:
             await asyncio.sleep(RETRY_DELAY_SECONDS)
-        try:
-            return await self._post_with(key, path, payload)
-        except _Overloaded:
-            raise GeminiError("GEMINI_UNAVAILABLE") from None
+        return await self._post_with(key, path, payload)
 
     async def _post_with(self, key: str, path: str, payload: Dict[str, Any]) -> bytes:
         url = f"{self._base_url}:{path}"

@@ -6,7 +6,7 @@ import uuid
 import unicodedata
 
 
-_ENTITY_VALUES = {'PARENT': {'parent', 'parent_only', 'separate', 'rieng', 'bao cao rieng', 'cong ty me'},
+_ENTITY_VALUES = {'PARENT': {'parent', 'parent_only', 'separate', 'rieng', 'rieng le', 'bao cao rieng', 'bao cao rieng le', 'cong ty me'},
                   'CONSOLIDATED': {'consolidated', 'hop nhat'}}
 
 
