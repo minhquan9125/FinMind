@@ -24,7 +24,11 @@ const tabs = [
   { id: "reports", label: "Báo cáo & nguồn" },
 ];
 
-const localTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }) : "Chưa rõ";
+const FACT_GROUPS = [
+  { title: "Kết quả kinh doanh", keys: ["revenue", "revenueYoy", "netProfit", "roe", "roa"] },
+  { title: "Bảng cân đối kế toán", keys: ["totalAssets", "liabilities", "equity"] },
+];
+const localTime =(value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }) : "Chưa rõ";
 
 export default function CompanyDetailPage() {
   const navigate = useNavigate();
@@ -167,7 +171,6 @@ export default function CompanyDetailPage() {
             <span className="font-semibold text-slate-900">{ticker}</span>
           </nav>
           <div className="flex flex-wrap items-center gap-2">
-            <StatusBadge tone="neutral">Hồ sơ mock · Giá/tin từ nguồn dữ liệu</StatusBadge>
             {canManageData && <Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs" disabled={refreshingPrice} onClick={refreshPrices}>{refreshingPrice ? "Đang lấy giá…" : "Làm mới giá/tin"}</Button>}
           </div>
         </header>
@@ -272,11 +275,21 @@ export default function CompanyDetailPage() {
                           {selectedFinancial.publishedAt ? ` · Công bố ${new Date(selectedFinancial.publishedAt).toLocaleDateString("vi-VN")}` : ""}
                           {company.sources.length ? ` · Nguồn số liệu: ${company.sources.join(", ")}` : ""}</span>
                       </div>
-                      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                        {FACTS.map((fact) => <Stat key={fact.key} label={fact.label}
-                          value={formatFact(selectedFinancial.facts[fact.key], fact.kind)}
-                          note={fact.key === "roe" || fact.key === "roa" ? "Chỉ số từ nguồn dữ liệu, chưa đối chiếu PDF"
-                            : fact.kind === "growth" ? "So với cùng kỳ năm trước" : verification(selectedFinancial.facts[fact.key]?.status).label} />)}
+                      <div className="grid gap-4 lg:grid-cols-2">
+                        {FACT_GROUPS.map((group) => <section key={group.title} className="overflow-hidden rounded-lg border border-slate-200">
+                          <h3 className="border-b border-slate-100 bg-slate-50 px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-slate-500">{group.title}</h3>
+                          <dl className="divide-y divide-slate-100">
+                            {group.keys.map((key) => {
+                              const fact = FACTS.find((item) => item.key === key);
+                              const note = key === "roe" || key === "roa" ? "Chỉ số từ nguồn dữ liệu"
+                                : fact.kind === "growth" ? "So với cùng kỳ năm trước" : verification(selectedFinancial.facts[key]?.status).label;
+                              return <div key={key} className="flex items-center justify-between gap-4 px-4 py-3">
+                                <dt className="min-w-0 text-sm text-slate-700">{fact.label}<span className="mt-0.5 block text-[11px] text-slate-400">{note}</span></dt>
+                                <dd className="shrink-0 text-right text-base font-semibold tabular-nums text-slate-900">{formatFact(selectedFinancial.facts[key], fact.kind)}</dd>
+                              </div>;
+                            })}
+                          </dl>
+                        </section>)}
                       </div>
                       {selectedFinancial.status === "MISMATCH" && <p role="note" className="mt-4 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-800">
                         Số liệu kỳ này lệch so với BCTC gốc khi đối chiếu. Hãy kiểm tra lại tài liệu ở tab “Báo cáo &amp; nguồn” trước khi dùng.</p>}

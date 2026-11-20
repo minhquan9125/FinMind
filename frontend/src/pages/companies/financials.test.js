@@ -5,7 +5,8 @@ import { formatFact, getCompanyFinancials, toPeriodCode, verification } from "./
 test("money is shown in tỷ đồng only for confirmed VND; ratios as percent", () => {
   const n = (text) => text.replace(/\s/g, " ");
   assert.equal(n(formatFact({ value: 70112825100710, unit: "VND" }, "money")), "70.113 tỷ đồng");
-  assert.match(formatFact({ value: 13754159003395, unit: "SOURCE_NATIVE" }, "money"), /đơn vị theo nguồn/);
+  // Vietcap money tagged SOURCE_NATIVE is dong, continuous with the VND periods: show it the same way.
+  assert.equal(n(formatFact({ value: 13754159003395, unit: "SOURCE_NATIVE" }, "money")), "13.754 tỷ đồng");
   assert.equal(formatFact({ value: 0.2829, unit: "SOURCE_NATIVE" }, "percent"), "28,3%");
   assert.equal(formatFact({ value: 0.1156, unit: "RATIO" }, "growth"), "+11,6%");
   assert.equal(formatFact(undefined, "money"), "—");

@@ -52,8 +52,9 @@ export function formatFact(fact, kind) {
   const value = Number(fact.value);
   if (kind === "percent") return `${vi(value * 100, 1)}%`;
   if (kind === "growth") return `${value > 0 ? "+" : ""}${vi(value * 100, 1)}%`;
-  if (fact.unit === "VND") return `${vi(value / 1e9, 0)} tỷ đồng`;
-  return `${vi(value, 0)} (đơn vị theo nguồn)`;
+  // Vietcap money tagged SOURCE_NATIVE is dong (continuous with the VND-verified periods), so both read in tỷ.
+  if (fact.unit === "VND" || fact.unit === "SOURCE_NATIVE") return `${vi(value / 1e9, 0)} tỷ đồng`;
+  return vi(value, 0);
 }
 
 export const VERIFICATION = {
