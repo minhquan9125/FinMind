@@ -61,3 +61,11 @@ Mở `http://localhost:5173`; kiểm tra `http://localhost:8000/api/health`. Ch�
 6. Gửi chuỗi vô nghĩa → yêu cầu viết lại, không phát lại phân tích cũ.
 
 Các test tự động không thay thế nghiệm thu dữ liệu thật. Bộ 560 ca Excel chưa được chấm toàn bộ đúng/sai, không được báo là 560 ca đạt. Gemini có thể diễn đạt khác dù cùng code và dữ liệu; hết quota hoặc tunnel đóng sẽ làm kết quả khác máy đang hoạt động.
+
+## Kiểm tra trước push
+
+- Bộ hồi quy bị ảnh hưởng: 2.341 test backend, 58 test frontend đạt; không phải toàn bộ test tích hợp DB của repository.
+- Clone sạch từ commit bàn giao: `npm ci` và `npm run build` đạt; 205 test cấu hình/định tuyến/model cache đạt. Test Python dùng môi trường dependency hiện có đã qua `pip check`, chưa phải cài toàn bộ Python/Torch trên một máy Windows trắng.
+- Preflight đọc PostgreSQL/corpus và kết nối Neo4j đạt với cấu hình nhóm được đưa vào process riêng, không commit secret.
+- Smoke trực tiếp graph và replay nguồn: 3/4 ca có nguồn hợp lệ (Chủ tịch FPT, Chủ tịch TCB, HĐQT FPT); Chủ tịch VCB trả graph rỗng. Ca này cần kiểm tra luồng văn bản dự phòng riêng, chưa được tính đạt câu trả lời trong lượt bàn giao này.
+- Chỉ báo tính toán có đoạn bằng chứng nhưng không nhất thiết có URL bài báo riêng. BCTC/tin tức thiếu URL trong dữ liệu gốc phải được bổ sung provenance qua pipeline, không tự tạo link.

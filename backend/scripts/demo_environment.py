@@ -13,4 +13,3 @@ def load_demo_environment(backend=None):
     for key,value in values.items():os.environ.setdefault(key,value)
     operator=dotenv_values(backend/'.env.operator',interpolate=False,encoding='utf-8-sig').get('DATABASE_URL')
     if operator:os.environ.setdefault('ADMIN_INGEST_DATABASE_URL',operator)
-

@@ -22,9 +22,9 @@ async def check(connect=False):
     secret=settings.jwt_secret_key.get_secret_value()
     record('jwt_config',bool(os.getenv('JWT_SECRET_KEY')) and len(secret)>=32 and 'replace-' not in secret,
            'Set a private JWT secret of at least 32 characters.')
-    record('gemini_config',bool(settings.gemini_api_key.get_secret_value() or settings.gemini_api_keys.get_secret_value()
-           or settings.gemini_keys_secret.get_secret_value()) and settings.b1_gemini_free_tier_confirmed,
-           'A usable key/key store and Free Tier confirmation are needed for generated answers; quota is not tested.')
+    record('gemini_env_config',bool(settings.gemini_api_key.get_secret_value() or settings.gemini_api_keys.get_secret_value())
+           and settings.b1_gemini_free_tier_confirmed,
+           'Fresh clones need their own env key and Free Tier confirmation; local web key stores and quota are not tested.')
     from src.retrieval_orchestration.intent_v2_classifier import DEFAULT_ARTIFACT
     record('classifier_artifacts',all((DEFAULT_ARTIFACT/name).is_file() for name in
            ('manifest.json','classifier.npz','fit.json','library/manifest.json','library/vectors.npy')),
