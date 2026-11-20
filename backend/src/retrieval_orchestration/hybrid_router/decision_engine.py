@@ -315,7 +315,7 @@ NON_COMPANY_CODES = {
     "VCSH", "VNINDEX", "VN", "INDEX", "FOMO", "FUD", "ATO", "ATC",
     # Place names and banking terms written in capitals in news ("chi nhánh TP.HCM", "máy ATM", "cho vay SME").
     "TPHCM", "ATM", "SME", "NHNN", "CPI", "FDI", "IPO", "ESG", "NIM", "NPL", "CASA",
-    "PGD", "SWIFT", "VSDC", "AI", "CNTT",
+    "ATM", "PGD", "SWIFT", "VSDC", "ESG", "SME", "AI", "CNTT",
     "CRM", "UBCK", "UBCKNN", "BLQ", "CBTT", "HDQT", "NQ", "III",
 }
 

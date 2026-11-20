@@ -8,9 +8,10 @@ import re
 from .retrieval_flow.intent import _fold, _has
 
 HORIZONS = (('20', 'ngắn hạn'), ('60', 'trung hạn'), ('200', 'dài hạn'))
-# "nào", "gì", "mô"/"chi" (miền Trung) and "j" (viết tắt) ask the same thing; "chi trả", "chi phí" are spending.
-_SUBJECT = re.compile(r'\b(?:(?:ma|co phieu|doanh nghiep|cong ty)\s+(?:nao|gi|mo|j|chi(?!\s+(?:tra|phi|tieu)\b))'
-                      r'|nhung ma|cac ma)\b')
+# "nào", "gì", "mô" (miền Trung) and "j" (viết tắt) ask the same thing.
+_SUBJECT = re.compile(r'\b(?:(?:ma|co phieu|doanh nghiep|cong ty)\s+(?:nao|gi|mo|j)|nhung ma|cac ma)\b')
+# "chi" (miền Trung) asks like "gì"; "chi trả", "chi phí", "chi tiêu" are spending.
+_SUBJECT = re.compile(_SUBJECT.pattern + r'|\b(?:ma|co phieu|doanh nghiep|cong ty)\s+chi(?!\s+(?:tra|phi|tieu)\b)\b')
 _STATE = re.compile(r'\b(?:dang tang|xu huong|phat trien|tang truong|ngon|tot|manh|khoe|dang dau tu|'
                     r'nen dau tu|trien vong)\b')
 

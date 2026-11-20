@@ -143,14 +143,14 @@ def _market_intent(norm, context, today):
     ))
     explicit_trend = bool(re.search(r'\bky thuat\b|\bxu huong (?:gia|co phieu|ma)\b', norm))
     trend = bool(re.search(
-        # "bữa giờ/bữa h", "hỗm rồi/hỗm roài", "hỗm giờ/hỗm h" are regional ways of saying "dạo này".
-        r'\b(?:dao nay|gan day|bua gio|bua h|hom roi|hom roai|hom gio|hom giuo|hom h|'
-        r'tinh hinh|khoi sac|trien vong|bien dong|the nao)\b', norm
+        r'\b(?:dao nay|gan day|tinh hinh|khoi sac|trien vong|bien dong|the nao)\b', norm
     ) or explicit_trend or (
         # "phan tich fpt" asks for an analysis, not a metric; questions about a report's content stay with reports.
         re.search(r'\b(?:phan tich|danh gia|manh hay yeu|manh yeu)\b', norm)
         and not re.search(r'\b(?:bctc|bctn|bao cao|thuong nien|thuyet minh|chien luoc|tai lieu)\b', norm)
     ))
+    # "bữa giờ/bữa h", "hỗm rồi/hỗm roài", "hỗm giờ/hỗm h" are regional ways of saying "dạo này".
+    trend = trend or bool(re.search(r'\b(?:bua gio|bua h|hom roi|hom roai|hom gio|hom giuo|hom h)\b', norm))
     dated = bool(re.search(r'\b(?:quy|thang|nam|ngay)\s+\d|\b(?:19|20|21)\d{2}\b', norm))
     current = bool(re.search(r'\b(?:hom nay|hien tai|moi nhat|moi|bay gio|hn|hnay|nay)\b', norm))
     day = calendar_day(norm, today)
@@ -363,7 +363,7 @@ def analyze_live(text, context=None, *, today=None):
     from .hybrid_router.intent_policy import PROFILE_TERMS, contains
     # "chi tiết hơn về FPT" after an analysis is that analysis again, not a company-profile question.
     detail_followup = (market_request or {}).pop('_detail_followup', False)
-    if (annual or (contains(norm, PROFILE_TERMS) and (market_request or {}).get('action') != 'DETAIL')) and not detail_followup:
+    if annual or (contains(norm, PROFILE_TERMS) and not detail_followup and (market_request or {}).get('action') != 'DETAIL'):
         market_request = None
     scope = copy.deepcopy(context or {})
     language = conversational_words()
@@ -1395,6 +1395,36 @@ class LiveResearchService:
                                             'components': {'gemini': False}},
                                'trace': [{'event': 'screening', 'symbols': len(symbols), 'skipped': skipped}]})
 
+    async def _answer_trend(self, question, context):
+        """"Xu hướng ngắn hạn của X", "X tăng hay giảm": labels and numbers straight from the stored price trend."""
+        trend_reader = getattr(self.market, 'trend_reader', None)
+        if self.prices is None or trend_reader is None:
+            return None
+        from .trend_question import trend_request, render_trend
+        request = trend_request(question, context, await self.prices.symbols())
+        if request is None:
+            return None
+        trends = await asyncio.gather(*(trend_reader(s) for s in request['symbols']), return_exceptions=True)
+        ok = {s: t for s, t in zip(request['symbols'], trends) if isinstance(t, dict)}
+        scope = {'companies': request['symbols'], 'source_type': 'PRICE',
+                 '_trend_request': {'horizons': request['horizons']}}
+        if len(ok) != len(trends):
+            logger.warning('trend_unavailable %s', [s for s in request['symbols'] if s not in ok])
+            return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE', b1_decision='SEARCH',
+                        status='SYSTEM_UNAVAILABLE', reason_code='PRICE_TREND_UNAVAILABLE',
+                        message='Chưa đọc được dữ liệu giá để tính xu hướng; vui lòng thử lại.',
+                        scope=scope, evidence_pack=None, errors=[])
+        draft = render_trend(ok, request['horizons'], request['claim'])
+        return dict(request_id=str(uuid.uuid4()), query_id=None, execution_mode='LIVE',
+                    b1_decision='PRICE_TREND', status='EVIDENCE_READY', reason_code='PRICE_TREND_READY',
+                    message=draft, scope=scope, evidence_pack=None, errors=[],
+                    answering={'status': 'DRAFT_READY', 'reason_code': 'PRICE_TREND_READY', 'draft': draft,
+                               'claims': [], 'citations': [], 'budget': self.budget.snapshot(),
+                               'manifest': {'mode': 'B1', 'response_mode': 'PRICE_TREND',
+                                            'components': {'gemini': False}},
+                               'trace': [{'event': 'price_trend', 'symbols': request['symbols'],
+                                          'horizons': request['horizons']}]})
+
     async def _classify_intent(self, question, context):
         """Nhân's v2 classification, or None when the classifier is off, fails, is too slow, or the result
         breaks Huyền's 04.2 v2 contract (stale or forged rule evidence)."""
@@ -1512,6 +1542,9 @@ class LiveResearchService:
         screened = await self._answer_screening(interpreted, context)
         if screened is not None:
             return screened
+        trended = await self._answer_trend(interpreted, context)
+        if trended is not None:
+            return trended
         from .conditional_assessment import assessment_request
         assessment=assessment_request(interpreted,context)
         if assessment is not None:
