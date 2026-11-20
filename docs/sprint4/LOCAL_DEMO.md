@@ -2,9 +2,9 @@
 
 ## Khởi động
 
-Bản sửa Chat ngày 20/11/2026 trên nhánh `fix/chat-member-reviews-20261119` có
+Bản sửa Chat ngày 20/11/2026 đã tích hợp vào nhánh `backup-demo`, có
 [hướng dẫn clone và cấu hình cùng corpus](../graph/MEMBER_CHAT_RELEASE_20261120.md).
-Chọn đúng nhánh bàn giao; các lệnh `backup-demo` dưới đây áp dụng cho nhánh demo đã merge.
+Chọn đúng nhánh bàn giao; các lệnh `backup-demo` dưới đây áp dụng cho bản demo đã tích hợp.
 
 ### Máy mới sau khi merge
 

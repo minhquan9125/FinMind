@@ -2,10 +2,10 @@
 
 ## Clone đúng bản code
 
-Nhánh bàn giao: `fix/chat-member-reviews-20261119`. Chưa merge vào `backup-demo`.
+Nhánh bàn giao: `backup-demo`. Bản sửa được tích hợp từ `fix/chat-member-reviews-20261119` ngày 20/11/2026.
 
 ```powershell
-git clone --branch fix/chat-member-reviews-20261119 https://github.com/minhquan9125/FinMind.git
+git clone --branch backup-demo https://github.com/minhquan9125/FinMind.git
 cd FinMind
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
