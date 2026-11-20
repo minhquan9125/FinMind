@@ -140,7 +140,9 @@ def _market_intent(norm, context, today):
     ))
     explicit_trend = bool(re.search(r'\bky thuat\b|\bxu huong (?:gia|co phieu|ma)\b', norm))
     trend = bool(re.search(
-        r'\b(?:dao nay|gan day|tinh hinh|khoi sac|trien vong|bien dong|the nao)\b', norm
+        # "bữa giờ/bữa h", "hỗm rồi/hỗm roài", "hỗm giờ/hỗm h" are regional ways of saying "dạo này".
+        r'\b(?:dao nay|gan day|bua gio|bua h|hom roi|hom roai|hom gio|hom giuo|hom h|'
+        r'tinh hinh|khoi sac|trien vong|bien dong|the nao)\b', norm
     ) or explicit_trend or (
         # "phan tich fpt" asks for an analysis, not a metric; questions about a report's content stay with reports.
         re.search(r'\b(?:phan tich|danh gia|manh hay yeu|manh yeu)\b', norm)

@@ -37,6 +37,7 @@ MARKET_ANALYSIS_TERMS = (
     "ly do", "sao", "chuyen gi", "dang xay ra", "tang", "giam", "do", "xanh",
     "do lua", "rung lac", "sap", "lao doc", "khoi sac", "bien dong", "the nao",
     "nhu nao", "dao nay", "gan day", "may phien", "bat day", "vao hang",
+    "bua gio", "bua h", "hom roi", "hom roai", "hom gio", "hom giuo", "hom h",
 )
 GRAPH_TERMS = (
     "hdqt", "hoi dong quan tri", "ban kiem soat", "thanh vien cong ty",
