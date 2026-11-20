@@ -1,0 +1,31 @@
+{
+  "ir_version": "1",
+  "page": 38,
+  "printed_page": "37",
+  "page_class": "narrative",
+  "page_size": {"width": 594.96, "height": 842.04, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "643dc242f7f3bcc8274debb4e55034d2fcc280399850dc16e2a9c0cd5e65e8a2",
+    "file_name": "ITD_2024_509309.pdf"
+  },
+  "blocks": [
+    {"id": "p38-b1", "type": "paragraph", "text": "Quản trị công ty năm 2024", "bbox": [40.7, 25.6, 241.02, 41.56]},
+    {"id": "p38-b2", "type": "paragraph", "text": "Thành viên Ban Kiểm Soát", "bbox": [64.03, 59.57, 240.18, 73.61]},
+    {"id": "p38-b3", "type": "paragraph", "text": "Thành viên\nBan kiểm soát", "bbox": [98.81, 311.0, 187.55, 341.28]},
+    {
+      "id": "p38-b4",
+      "type": "paragraph",
+      "text": "Là thành viên BKS của ITD từ năm 2023 đến nay.\nBà Trần Thị Thu Tâm là một nhà quản trị có bề dày\nkinh nghiệm trong lĩnh vực quản lý doanh nghiệp,\nhiện Bà đã và đang giữ vai trò Giám đốc, thành\nviên HĐQT, thành viên BKS tại nhiều doanh nghiệp\nvà công ty chứng khoán.",
+      "bbox": [266.42, 160.05, 518.45, 237.11]
+    },
+    {
+      "id": "p38-b5",
+      "type": "paragraph",
+      "text": "Bà tốt nghiệp Thạc sĩ Tài chính Doanh Nghiệp - Đại\nhọc kinh tế TP.HCM",
+      "bbox": [266.42, 251.27, 518.35, 275.51]
+    },
+    {"id": "p38-b6", "type": "paragraph", "text": "Công Ty Cổ Phần Công Nghệ Tiên Phong 37", "bbox": [344.74, 807.0, 558.61, 819.0]}
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "text": "BÁOCÁO _\nTHƯỜNG NIÊN 2025 Vietcombank\n\nVỮNG BƯỚC\nKỶ NGUYÊN\n\nXANH",
+  "chars": 52,
+  "words": 11,
+  "wordItems": [
+    {
+      "text": "BÁOCÁO",
+      "bbox": [
+        207,
+        213,
+        495,
+        296
+      ],
+      "conf": 84.855186,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "_",
+      "bbox": [
+        566,
+        287,
+        585,
+        296
+      ],
+      "conf": 81.959152,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        203,
+        295,
+        477,
+        349
+      ],
+      "conf": 96.796867,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        500,
+        300,
+        635,
+        348
+      ],
+      "conf": 96.07856,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        657,
+        301,
+        806,
+        349
+      ],
+      "conf": 96.234833,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Vietcombank",
+      "bbox": [
+        1745,
+        284,
+        2264,
+        350
+      ],
+      "conf": 94.6213,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "VỮNG",
+      "bbox": [
+        1599,
+        683,
+        1903,
+        825
+      ],
+      "conf": 93.302887,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BƯỚC",
+      "bbox": [
+        1967,
+        680,
+        2272,
+        823
+      ],
+      "conf": 89.625565,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "KỶ",
+      "bbox": [
+        1623,
+        830,
+        1766,
+        914
+      ],
+      "conf": 84.680374,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NGUYÊN",
+      "bbox": [
+        1798,
+        828,
+        2264,
+        915
+      ],
+      "conf": 96.28968,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "XANH",
+      "bbox": [
+        1752,
+        961,
+        2263,
+        1099
+      ],
+      "conf": 66.720505,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 89,
+  "lowConfRatio": 0,
+  "seconds": 0.672
+}

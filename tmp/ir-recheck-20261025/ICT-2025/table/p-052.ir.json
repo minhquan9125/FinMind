@@ -1,0 +1,281 @@
+{
+  "ir_version": "1",
+  "page": 52,
+  "printed_page": "102",
+  "page_class": "notes",
+  "page_size": {"width": 3508, "height": 2481, "unit": "px"},
+  "source": {
+    "engine": "MERGED",
+    "tool": "gemini-3.8-flash + tesseract vie",
+    "document_sha256": "3e16232e390af4911ead01468310f1c9f0a3b4581a1c2ee46b72be147b84183a",
+    "file_name": "ICT_2025_540815.pdf",
+    "image_sha256": "d0240fb66e6c77ad62e647e2e61a2eacfa3eaee0006cc004736d9ea097af6435",
+    "render": {
+      "dpi": 212.17,
+      "rotation": 0
+    },
+    "prompt_version": "api-ir-v2"
+  },
+  "blocks": [
+    {
+      "id": "p52-b1",
+      "type": "furniture",
+      "text": "CÔNG TY CỔ PHẦN VIỄN THÔNG - TIN HỌC BƯU ĐIỆN\nĐịa chỉ: 158/2 phố Hồng Mai, phường Bạch Mai, thành phố Hà Nội, Việt Nam\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH TỔNG HỢP\nCho năm tài chính kết thúc vào ngày 31 tháng 12 năm 2025",
+      "bbox": [217.5, 126.53, 1638.24, 280.35]
+    },
+    {"id": "p52-b2", "type": "heading", "text": "Thuế thu nhập doanh nghiệp hoãn lại", "bbox": [315.72, 347.34, 912.08, 382.07]},
+    {
+      "id": "p52-b3",
+      "type": "paragraph",
+      "text": "Thuế thu nhập hoãn lại được tính trên các khoản chênh lệch giữa giá trị ghi sổ và cơ sở tính thuế thu nhập của các khoản mục tài sản hoặc công nợ trên Bảng cân đối kế toán. Thuế thu nhập hoãn lại phải trả được được ghi nhận cho tất cả các khoản chênh lệch tạm thời còn tài sản thuế thu nhập hoãn lại chỉ được ghi nhận khi chắc chắn có đủ lợi nhuận tính thuế trong tương lai để sử dụng các khoản chênh lệch tạm thời được khấu trừ.",
+      "bbox": [315.72, 411.85, 1652.27, 580.55]
+    },
+    {
+      "id": "p52-b4",
+      "type": "paragraph",
+      "text": "Thuế thu nhập hoãn lại được xác định theo thuế suất dự tính sẽ được áp dụng cho năm tài sản được thu hồi hay nợ phải trả được thanh toán. Thuế thu nhập hoãn lại được ghi nhận lãi, lỗ trừ trường hợp các khoản thuế đó có liên quan đến các khoản mục được ghi thẳng vào vốn chủ sở hữu. Trong trường hợp đó thuế thu nhập hoãn lại cũng được ghi thẳng vào vốn chủ sở hữu.",
+      "bbox": [315.72, 612.81, 1652.27, 751.74]
+    },
+    {"id": "p52-b5", "type": "heading", "text": "Các loại thuế khác", "bbox": [315.72, 781.51, 582.33, 816.25]},
+    {"id": "p52-b6", "type": "paragraph", "text": "Được áp dụng theo các luật thuế hiện hành tại Việt Nam.", "bbox": [315.72, 848.5, 1069.94, 883.24]},
+    {"id": "p52-b7", "type": "heading", "text": "4.20 Báo cáo bộ phận", "bbox": [213.99, 920.45, 561.28, 952.7]},
+    {
+      "id": "p52-b8",
+      "type": "paragraph",
+      "text": "Bộ phận theo lĩnh vực kinh doanh là một phần có thể xác định riêng biệt tham gia vào quá trình sản xuất hoặc cung cấp sản phẩm, dịch vụ và có rủi ro và lợi ích kinh tế khác với các bộ phận kinh doanh khác.\nCông ty chỉ hoạt động trong một lĩnh vực viễn thông tin học. Do đó, Công ty không lập báo cáo bộ phận theo lĩnh vực kinh doanh.",
+      "bbox": [312.21, 987.44, 1648.76, 1158.63]
+    },
+    {
+      "id": "p52-b9",
+      "type": "paragraph",
+      "text": "Bộ phận theo khu vực địa lý là một phần có thể xác định riêng biệt tham gia vào quá trình sản xuất hoặc cung cấp sản phẩm, dịch vụ trong phạm vi một môi trường kinh tế cụ thể và có rủi ro và lợi ích kinh tế khác với các bộ phận kinh doanh trong các môi trường kinh tế khác.\nTrong năm, hoạt động của Công ty chỉ tập trung chủ yếu trong địa bàn thành phố Hà Nội, trong lãnh thổ Việt Nam. Do đó, Công ty không lập báo cáo bộ phận theo khu vực địa lý.",
+      "bbox": [312.21, 1188.4, 1648.76, 1359.59]
+    },
+    {"id": "p52-b10", "type": "heading", "text": "4.21 Công cụ tài chính", "bbox": [210.48, 1394.32, 568.3, 1424.09]},
+    {"id": "p52-b11", "type": "heading", "text": "Tài sản tài chính", "bbox": [312.21, 1456.35, 547.25, 1493.56]},
+    {
+      "id": "p52-b12",
+      "type": "paragraph",
+      "text": "Việc phân loại các tài sản tài chính này phụ thuộc vào bản chất và mục đích của tài sản tài chính và được quyết định tại thời điểm ghi nhận ban đầu. Các tài sản tài chính của Công ty gồm có tiền và các khoản tương đương tiền, các khoản phải thu khách hàng, phải thu khác, các khoản cho vay, các công cụ tài chính được niêm yết và không được niêm yết.",
+      "bbox": [308.7, 1523.33, 1645.25, 1662.27]
+    },
+    {
+      "id": "p52-b13",
+      "type": "paragraph",
+      "text": "Tại thời điểm ghi nhận ban đầu, các tài sản tài chính được ghi nhận theo giá gốc cộng các chi phí giao dịch có liên quan trực tiếp đến tài sản tài chính đó.",
+      "bbox": [312.21, 1694.52, 1645.25, 1763.99]
+    },
+    {"id": "p52-b14", "type": "heading", "text": "Nợ phải trả tài chính", "bbox": [308.7, 1796.24, 603.38, 1830.98]},
+    {
+      "id": "p52-b15",
+      "type": "paragraph",
+      "text": "Việc phân loại các khoản nợ tài chính phụ thuộc vào bản chất và mục đích của khoản nợ tài chính và được quyết định tại thời điểm ghi nhận ban đầu. Nợ phải trả tài chính của Công ty gồm có các khoản phải trả người bán, vay và nợ, các khoản phải trả khác và các công cụ tài chính phái sinh.",
+      "bbox": [308.7, 1863.23, 1641.74, 1967.43]
+    },
+    {
+      "id": "p52-b16",
+      "type": "paragraph",
+      "text": "Tại thời điểm ghi nhận lần đầu, trừ nợ phải trả liên quan đến thuê mua tài chính và trái phiếu chuyển đổi được ghi nhận theo giá phân bổ, các khoản nợ phải trả tài chính khác được ghi nhận ban đầu theo giá gốc trừ các chi phí giao dịch có liên quan trực tiếp đến nợ phải trả tài chính đó.",
+      "bbox": [308.7, 1994.72, 1641.74, 2098.93]
+    },
+    {"id": "p52-b17", "type": "furniture", "text": "19", "bbox": [1564.57, 2314.77, 1606.66, 2351.99]},
+    {
+      "id": "p52-b18",
+      "type": "furniture",
+      "text": "CÔNG TY CỔ PHẦN VIỄN THÔNG - TIN HỌC BƯU ĐIỆN\nĐịa chỉ: 158/2 phố Hồng Mai, phường Bạch Mai, thành phố Hà Nội, Việt Nam\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH TỔNG HỢP\nCho năm tài chính kết thúc vào ngày 31 tháng 12 năm 2025",
+      "bbox": [1967.99, 126.53, 2981.8, 282.83]
+    },
+    {"id": "p52-b19", "type": "heading", "text": "4.22 Bên liên quan", "bbox": [1964.48, 347.34, 2266.17, 382.07]},
+    {
+      "id": "p52-b20",
+      "type": "paragraph",
+      "text": "Các bên được coi là liên quan nếu một bên có khả năng kiểm soát hoặc có ảnh hưởng đáng kể đối với bên kia trong việc ra quyết định các chính sách tài chính và hoạt động. Các bên cũng được xem là bên liên quan nếu cùng chịu sự kiểm soát chung hay chịu ảnh hưởng đáng kể chung.",
+      "bbox": [2066.21, 411.85, 3402.76, 518.53]
+    },
+    {
+      "id": "p52-b21",
+      "type": "paragraph",
+      "text": "Trong việc xem xét mối quan hệ của các bên liên quan, bản chất của mối quan hệ được chú trọng nhiều hơn hình thức pháp lý.",
+      "bbox": [2069.72, 548.3, 3402.76, 617.77]
+    },
+    {
+      "id": "p52-b22",
+      "type": "paragraph",
+      "text": "Các đối tượng sau đây được xem là các bên có liên quan: các thành viên quản lý chủ chốt, các cá nhân có liên quan với các thành viên quản lý chủ chốt và các bên liên quan khác.",
+      "bbox": [2069.72, 645.06, 3402.76, 717.01]
+    },
+    {
+      "id": "p52-t1",
+      "type": "table",
+      "title": null,
+      "bbox": [2048.67, 751.74, 3406.27, 1109.01],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["Bên liên quan"], "bbox": [2059.2, 751.74, 2266.17, 788.96]},
+        {"key": "c2", "header_lines": ["Mối quan hệ"], "bbox": [3213.33, 751.74, 3399.25, 788.96]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Tập đoàn Bưu chính - Viễn thông Việt Nam",
+          "note": null,
+          "bbox": [2055.69, 796.4, 2631.0, 833.62],
+          "cells": {
+            "c2": {
+              "raw": "Cổ đông lớn",
+              "bbox": [3223.85, 796.4, 3388.73, 833.62],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Cổ đông lớn",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "Cỗ lớn đông",
+                  "conf": 88.32
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "(bao gồm cả các công ty con, đơn vị hạch toán phụ thuộc)",
+          "note": null,
+          "bbox": [2059.2, 843.54, 2827.45, 878.27],
+          "cells": {}
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Công ty Cổ phần Đầu tư Kỹ thuật số Việt",
+          "note": null,
+          "bbox": [2059.2, 885.72, 2599.43, 922.93],
+          "cells": {
+            "c2": {
+              "raw": "Có cùng lãnh đạo chủ chốt",
+              "bbox": [3034.42, 885.72, 3388.73, 922.93],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Có cùng lãnh đạo chủ chốt",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "chốt chủ Có củng lãnh đạo",
+                  "conf": 91.65
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Công ty Cổ phần ITTA",
+          "note": null,
+          "bbox": [2059.2, 930.38, 2360.88, 967.59],
+          "cells": {
+            "c2": {
+              "raw": "Có cùng lãnh đạo chủ chốt",
+              "bbox": [3034.42, 930.38, 3388.73, 967.59],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Có cùng lãnh đạo chủ chốt",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "chốt chủ Có lãnh cùng đạo",
+                  "conf": 94.93
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Công ty Cổ phần Dịch vụ Kỹ thuật Viễn thông Hà Nội",
+          "note": null,
+          "bbox": [2059.2, 977.51, 2757.29, 1012.25],
+          "cells": {
+            "c2": {
+              "raw": "Có cùng lãnh đạo chủ chốt",
+              "bbox": [3034.42, 977.51, 3392.24, 1012.25],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Có cùng lãnh đạo chủ chốt",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "chốt chủ Có cùng lãnh đạo",
+                  "conf": 95.98
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "Công ty Cổ phần KASATI",
+          "note": null,
+          "bbox": [2059.2, 1022.17, 2399.47, 1056.91],
+          "cells": {
+            "c2": {
+              "raw": "Có cùng lãnh đạo chủ chốt",
+              "bbox": [3034.42, 1022.17, 3392.24, 1056.91],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Có cùng lãnh đạo chủ chốt",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "chốt chủ Có lãnh cùng đạo",
+                  "conf": 93.62
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Các thành viên Hội đồng Quản trị, Ban Tổng Giám đốc, Ban Kiểm soát",
+          "note": null,
+          "bbox": [2059.2, 1066.83, 2985.31, 1104.05],
+          "cells": {
+            "c2": {
+              "raw": "Lãnh đạo chủ chốt",
+              "bbox": [3143.17, 1066.83, 3392.24, 1104.05],
+              "votes": {
+                "GEMINI": {
+                  "raw": "Lãnh đạo chủ chốt",
+                  "conf": null
+                },
+                "TESSERACT": {
+                  "raw": "chốt chủ Lãnh đạo",
+                  "conf": 96.86
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {"id": "p52-b24", "type": "heading", "text": "Chính sách giá cả giao dịch với bên liên quan", "bbox": [2066.21, 1141.26, 2711.68, 1175.99]},
+    {
+      "id": "p52-b25",
+      "type": "paragraph",
+      "text": "Trong năm tài chính 2025, Công ty phát sinh các giao dịch với các bên liên quan là các doanh nghiệp trong cùng tập đoàn hoạt động trong lĩnh vực công nghệ thông tin. Các giao dịch chủ yếu bao gồm cung cấp phần cứng, phần mềm cũng như các dịch vụ kèm theo.",
+      "bbox": [2062.7, 1208.25, 3399.25, 1312.45]
+    },
+    {
+      "id": "p52-b26",
+      "type": "paragraph",
+      "text": "Giá giao dịch được xác định trên cơ sở thỏa thuận giữa các bên và tham chiếu mức giá áp dụng cho các khách hàng độc lập có điều kiện giao dịch tương tự. Các hợp đồng lớn ký kết với bên liên quan đều được công bố thông tin trước khi thực hiện.",
+      "bbox": [2062.7, 1344.7, 3399.25, 1448.9]
+    },
+    {"id": "p52-b27", "type": "furniture", "text": "20", "bbox": [3318.57, 2319.74, 3360.66, 2351.99]}
+  ]
+}

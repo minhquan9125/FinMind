@@ -1,0 +1,6 @@
+# Optional LAN overlay. Base compose remains localhost-only.
+services:
+  postgres:
+    ports: !override
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+      - "${POSTGRES_LAN_IP:?Set POSTGRES_LAN_IP in docker/postgres/.env}:${POSTGRES_PORT:-5433}:5432"

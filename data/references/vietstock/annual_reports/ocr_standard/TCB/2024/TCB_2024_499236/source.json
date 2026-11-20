@@ -1,0 +1,25 @@
+{
+  "symbol": "TCB",
+  "year": 2024,
+  "pdf": "TCB/2024/TCB_2024_499236.pdf",
+  "sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+  "provider": "omniroute",
+  "model": "gemini",
+  "model_target_pages": [
+    1,
+    11,
+    17,
+    20,
+    23,
+    40,
+    43,
+    51,
+    57,
+    61,
+    65,
+    73,
+    144,
+    146
+  ],
+  "previous_model": "gemini-3.8-flash"
+}

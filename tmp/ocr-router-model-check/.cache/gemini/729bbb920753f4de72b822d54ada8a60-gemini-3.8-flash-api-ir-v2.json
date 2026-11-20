@@ -1,0 +1,49 @@
+{
+  "page_type": "cover",
+  "blocks": [
+    {
+      "type": "furniture",
+      "text": "FPT",
+      "box_2d": [
+        188,
+        629,
+        303,
+        731
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "BÁO CÁO THƯỜNG NIÊN",
+      "box_2d": [
+        372,
+        459,
+        442,
+        902
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "2024",
+      "box_2d": [
+        463,
+        631,
+        519,
+        729
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "FPT\nBÁO CÁO THƯỜNG NIÊN\n2024",
+  "unreadable": []
+}

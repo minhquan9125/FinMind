@@ -1,0 +1,6683 @@
+{
+  "schema_version": "1.0.0",
+  "document_sha256": "fc9f2c52317e6690ac723266d7d892328cf2c362b3f23e7f88c4fca403c94b52",
+  "accounting_standard": "TT200_NONBANK",
+  "total_observations": 230,
+  "verified_observations": 222,
+  "unverified_observations": 8,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 115,
+  "items": [
+    {
+      "metric_id": "common.current_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "100",
+      "label_raw": "TÀI SẢN NGẮN HẠN",
+      "standard_label": "TÀI SẢN NGẮN HẠN",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "36.705.751.751.876",
+      "numeric_value": 36705751751876,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r1",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.3,
+        214.66,
+        1859.4,
+        232.66
+      ]
+    },
+    {
+      "metric_id": "common.current_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "100",
+      "label_raw": "TÀI SẢN NGẮN HẠN",
+      "standard_label": "TÀI SẢN NGẮN HẠN",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "45.535.942.846.453",
+      "numeric_value": 45535942846453,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r1",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.84,
+        214.66,
+        1575.94,
+        232.66
+      ]
+    },
+    {
+      "metric_id": "common.cash_equivalents",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "110",
+      "label_raw": "Tiền và các khoản tương đương tiền",
+      "standard_label": "Tiền và các khoản tương đương tiền",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "8.279.156.683.221",
+      "numeric_value": 8279156683221,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r2",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.47,
+        248.37,
+        1859.42,
+        266.37
+      ]
+    },
+    {
+      "metric_id": "common.cash_equivalents",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "110",
+      "label_raw": "Tiền và các khoản tương đương tiền",
+      "standard_label": "Tiền và các khoản tương đương tiền",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "9.315.440.438.884",
+      "numeric_value": 9315440438884,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r2",
+      "column_key": "c1",
+      "cell_bbox": [
+        1421.01,
+        248.37,
+        1575.95,
+        266.37
+      ]
+    },
+    {
+      "metric_id": "common.cash",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "111",
+      "label_raw": "Tiền",
+      "standard_label": "Tiền",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "5.975.127.685.903",
+      "numeric_value": 5975127685903,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r3",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.07,
+        282.08,
+        1859.42,
+        300.08
+      ]
+    },
+    {
+      "metric_id": "common.cash",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "111",
+      "label_raw": "Tiền",
+      "standard_label": "Tiền",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "6.725.619.929.289",
+      "numeric_value": 6725619929289,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r3",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.6,
+        282.08,
+        1575.95,
+        300.08
+      ]
+    },
+    {
+      "metric_id": "common.cash_equivalents_only",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "112",
+      "label_raw": "Các khoản tương đương tiền",
+      "standard_label": "Các khoản tương đương tiền",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.304.028.997.318",
+      "numeric_value": 2304028997318,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r4",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.07,
+        315.8,
+        1859.42,
+        333.8
+      ]
+    },
+    {
+      "metric_id": "common.cash_equivalents_only",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "112",
+      "label_raw": "Các khoản tương đương tiền",
+      "standard_label": "Các khoản tương đương tiền",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.589.820.509.595",
+      "numeric_value": 2589820509595,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r4",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.6,
+        315.8,
+        1575.95,
+        333.8
+      ]
+    },
+    {
+      "metric_id": "common.short_term_financial_investments",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "120",
+      "label_raw": "Đầu tư tài chính ngắn hạn",
+      "standard_label": "Đầu tư tài chính ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "16.104.205.358.010",
+      "numeric_value": 16104205358010,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r5",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.32,
+        349.51,
+        1859.42,
+        367.51
+      ]
+    },
+    {
+      "metric_id": "common.short_term_financial_investments",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "120",
+      "label_raw": "Đầu tư tài chính ngắn hạn",
+      "standard_label": "Đầu tư tài chính ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "21.785.213.686.808",
+      "numeric_value": 21785213686808,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r5",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.86,
+        349.51,
+        1575.95,
+        367.51
+      ]
+    },
+    {
+      "metric_id": "common.held_to_maturity_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "123",
+      "label_raw": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "standard_label": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "16.104.205.358.010",
+      "numeric_value": 16104205358010,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r6",
+      "column_key": "c2",
+      "cell_bbox": [
+        1696.93,
+        383.22,
+        1859.44,
+        401.22
+      ]
+    },
+    {
+      "metric_id": "common.held_to_maturity_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "123",
+      "label_raw": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "standard_label": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "21.785.213.686.808",
+      "numeric_value": 21785213686808,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r6",
+      "column_key": "c1",
+      "cell_bbox": [
+        1413.47,
+        383.22,
+        1575.97,
+        401.22
+      ]
+    },
+    {
+      "metric_id": "common.receivables_current_net",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "130",
+      "label_raw": "Các khoản phải thu ngắn hạn",
+      "standard_label": "Các khoản phải thu ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "9.674.343.237.344",
+      "numeric_value": 9674343237344,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r7",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.49,
+        416.94,
+        1859.44,
+        434.94
+      ]
+    },
+    {
+      "metric_id": "common.receivables_current_net",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "130",
+      "label_raw": "Các khoản phải thu ngắn hạn",
+      "standard_label": "Các khoản phải thu ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "11.381.523.992.803",
+      "numeric_value": 11381523992803,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r7",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.88,
+        416.94,
+        1575.97,
+        434.94
+      ]
+    },
+    {
+      "metric_id": "common.trade_receivables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "131",
+      "label_raw": "Phải thu ngắn hạn của khách hàng",
+      "standard_label": "Phải thu ngắn hạn của khách hàng",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "9.057.647.206.985",
+      "numeric_value": 9057647206985,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r8",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        450.65,
+        1859.44,
+        468.65
+      ]
+    },
+    {
+      "metric_id": "common.trade_receivables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "131",
+      "label_raw": "Phải thu ngắn hạn của khách hàng",
+      "standard_label": "Phải thu ngắn hạn của khách hàng",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "10.537.019.113.380",
+      "numeric_value": 10537019113380,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r8",
+      "column_key": "c1",
+      "cell_bbox": [
+        1413.47,
+        450.65,
+        1575.97,
+        468.65
+      ]
+    },
+    {
+      "metric_id": "common.supplier_prepayments_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "132",
+      "label_raw": "Trả trước cho người bán ngắn hạn",
+      "standard_label": "Trả trước cho người bán ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "482.074.732.731",
+      "numeric_value": 482074732731,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r9",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        484.37,
+        1859.45,
+        502.37
+      ]
+    },
+    {
+      "metric_id": "common.supplier_prepayments_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "132",
+      "label_raw": "Trả trước cho người bán ngắn hạn",
+      "standard_label": "Trả trước cho người bán ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "610.379.845.664",
+      "numeric_value": 610379845664,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r9",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        484.37,
+        1575.99,
+        502.37
+      ]
+    },
+    {
+      "metric_id": "common.construction_contract_receivables",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "134",
+      "label_raw": "Phải thu theo tiến độ kế hoạch hợp đồng",
+      "standard_label": "Phải thu theo tiến độ kế hoạch hợp đồng xây dựng",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "176.770.894.412",
+      "numeric_value": 176770894412,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r10",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        518.08,
+        1859.45,
+        536.08
+      ]
+    },
+    {
+      "metric_id": "common.construction_contract_receivables",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "134",
+      "label_raw": "Phải thu theo tiến độ kế hoạch hợp đồng",
+      "standard_label": "Phải thu theo tiến độ kế hoạch hợp đồng xây dựng",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "136.097.256.629",
+      "numeric_value": 136097256629,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r10",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        518.08,
+        1575.99,
+        536.08
+      ]
+    },
+    {
+      "metric_id": "common.loan_receivables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "135",
+      "label_raw": "Phải thu về cho vay ngắn hạn",
+      "standard_label": "Phải thu về cho vay ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "515.430.000",
+      "numeric_value": 515430000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r11",
+      "column_key": "c2",
+      "cell_bbox": [
+        1757.93,
+        551.79,
+        1859.49,
+        569.79
+      ]
+    },
+    {
+      "metric_id": "common.loan_receivables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "135",
+      "label_raw": "Phải thu về cho vay ngắn hạn",
+      "standard_label": "Phải thu về cho vay ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "9.808.117.590",
+      "numeric_value": 9808117590,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r11",
+      "column_key": "c1",
+      "cell_bbox": [
+        1459.21,
+        551.79,
+        1576.01,
+        569.79
+      ]
+    },
+    {
+      "metric_id": "common.other_receivables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "136",
+      "label_raw": "Phải thu ngắn hạn khác",
+      "standard_label": "Phải thu ngắn hạn khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "869.491.618.296",
+      "numeric_value": 869491618296,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r12",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        585.51,
+        1859.45,
+        603.51
+      ]
+    },
+    {
+      "metric_id": "common.other_receivables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "136",
+      "label_raw": "Phải thu ngắn hạn khác",
+      "standard_label": "Phải thu ngắn hạn khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "707.751.585.399",
+      "numeric_value": 707751585399,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r12",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        585.51,
+        1575.99,
+        603.51
+      ]
+    },
+    {
+      "metric_id": "common.receivables_allowance_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "137",
+      "label_raw": "Dự phòng phải thu ngắn hạn khó đòi",
+      "standard_label": "Dự phòng phải thu ngắn hạn khó đòi",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(912.156.645.080)",
+      "numeric_value": 912156645080,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r13",
+      "column_key": "c2",
+      "cell_bbox": [
+        1710.04,
+        619.22,
+        1859.45,
+        637.22
+      ]
+    },
+    {
+      "metric_id": "common.receivables_allowance_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "137",
+      "label_raw": "Dự phòng phải thu ngắn hạn khó đòi",
+      "standard_label": "Dự phòng phải thu ngắn hạn khó đòi",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(619.531.925.859)",
+      "numeric_value": 619531925859,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r13",
+      "column_key": "c1",
+      "cell_bbox": [
+        1426.57,
+        619.22,
+        1575.99,
+        637.22
+      ]
+    },
+    {
+      "metric_id": "common.inventories",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "140",
+      "label_raw": "Hàng tồn kho",
+      "standard_label": "Hàng tồn kho",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.593.411.075.233",
+      "numeric_value": 1593411075233,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r14",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.49,
+        652.94,
+        1859.44,
+        670.94
+      ]
+    },
+    {
+      "metric_id": "common.inventories",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "140",
+      "label_raw": "Hàng tồn kho",
+      "standard_label": "Hàng tồn kho",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.856.756.949.030",
+      "numeric_value": 1856756949030,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r14",
+      "column_key": "c1",
+      "cell_bbox": [
+        1421.03,
+        652.94,
+        1575.97,
+        670.94
+      ]
+    },
+    {
+      "metric_id": "common.inventories_gross",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "141",
+      "label_raw": "Hàng tồn kho",
+      "standard_label": "Hàng tồn kho (giá gốc)",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.724.956.924.671",
+      "numeric_value": 1724956924671,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r15",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        686.65,
+        1859.44,
+        704.65
+      ]
+    },
+    {
+      "metric_id": "common.inventories_gross",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "141",
+      "label_raw": "Hàng tồn kho",
+      "standard_label": "Hàng tồn kho (giá gốc)",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.990.224.486.513",
+      "numeric_value": 1990224486513,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r15",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        686.65,
+        1575.97,
+        704.65
+      ]
+    },
+    {
+      "metric_id": "common.inventory_write_down_allowance",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "149",
+      "label_raw": "Dự phòng giảm giá hàng tồn kho",
+      "standard_label": "Dự phòng giảm giá hàng tồn kho",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(131.545.849.438)",
+      "numeric_value": 131545849438,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r16",
+      "column_key": "c2",
+      "cell_bbox": [
+        1710.04,
+        720.36,
+        1859.45,
+        738.36
+      ]
+    },
+    {
+      "metric_id": "common.inventory_write_down_allowance",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "149",
+      "label_raw": "Dự phòng giảm giá hàng tồn kho",
+      "standard_label": "Dự phòng giảm giá hàng tồn kho",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(133.467.537.483)",
+      "numeric_value": 133467537483,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r16",
+      "column_key": "c1",
+      "cell_bbox": [
+        1426.57,
+        720.36,
+        1575.99,
+        738.36
+      ]
+    },
+    {
+      "metric_id": "common.other_current_assets_total",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "150",
+      "label_raw": "Tài sản ngắn hạn khác",
+      "standard_label": "Tài sản ngắn hạn khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.054.635.398.068",
+      "numeric_value": 1054635398068,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r17",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.49,
+        754.08,
+        1859.44,
+        772.08
+      ]
+    },
+    {
+      "metric_id": "common.other_current_assets_total",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "150",
+      "label_raw": "Tài sản ngắn hạn khác",
+      "standard_label": "Tài sản ngắn hạn khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.197.007.778.928",
+      "numeric_value": 1197007778928,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r17",
+      "column_key": "c1",
+      "cell_bbox": [
+        1421.03,
+        754.08,
+        1575.97,
+        772.08
+      ]
+    },
+    {
+      "metric_id": "common.prepaid_expenses_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "151",
+      "label_raw": "Chi phí trả trước ngắn hạn",
+      "standard_label": "Chi phí trả trước ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "449.245.737.865",
+      "numeric_value": 449245737865,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r18",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        787.79,
+        1859.45,
+        805.79
+      ]
+    },
+    {
+      "metric_id": "common.prepaid_expenses_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "151",
+      "label_raw": "Chi phí trả trước ngắn hạn",
+      "standard_label": "Chi phí trả trước ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "479.707.218.558",
+      "numeric_value": 479707218558,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r18",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        787.79,
+        1575.99,
+        805.79
+      ]
+    },
+    {
+      "metric_id": "common.vat_recoverable",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "152",
+      "label_raw": "Thuế giá trị gia tăng (“GTGT”) được khấu trừ",
+      "standard_label": "Thuế GTGT được khấu trừ",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "528.984.574.991",
+      "numeric_value": 528984574991,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r19",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        821.51,
+        1859.45,
+        839.51
+      ]
+    },
+    {
+      "metric_id": "common.vat_recoverable",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "152",
+      "label_raw": "Thuế giá trị gia tăng (“GTGT”) được khấu trừ",
+      "standard_label": "Thuế GTGT được khấu trừ",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "648.697.117.785",
+      "numeric_value": 648697117785,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r19",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        821.51,
+        1575.99,
+        839.51
+      ]
+    },
+    {
+      "metric_id": "common.state_receivables",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "153",
+      "label_raw": "Thuế và các khoản khác phải thu Nhà nước",
+      "standard_label": "Thuế và các khoản khác phải thu Nhà nước",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "76.405.085.212",
+      "numeric_value": 76405085212,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r20",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.5,
+        855.22,
+        1859.45,
+        873.22
+      ]
+    },
+    {
+      "metric_id": "common.state_receivables",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "153",
+      "label_raw": "Thuế và các khoản khác phải thu Nhà nước",
+      "standard_label": "Thuế và các khoản khác phải thu Nhà nước",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "68.603.442.585",
+      "numeric_value": 68603442585,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        148
+      ],
+      "table_id": "p148-t1",
+      "row_id": "r20",
+      "column_key": "c1",
+      "cell_bbox": [
+        1449.04,
+        855.22,
+        1575.99,
+        873.22
+      ]
+    },
+    {
+      "metric_id": "common.noncurrent_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "200",
+      "label_raw": "TÀI SẢN DÀI HẠN",
+      "standard_label": "TÀI SẢN DÀI HẠN",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "23.577.075.781.023",
+      "numeric_value": 23577075781023,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r1",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.3,
+        214.72,
+        1859.4,
+        232.72
+      ]
+    },
+    {
+      "metric_id": "common.noncurrent_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "200",
+      "label_raw": "TÀI SẢN DÀI HẠN",
+      "standard_label": "TÀI SẢN DÀI HẠN",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "26.464.052.832.167",
+      "numeric_value": 26464052832167,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r1",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.84,
+        214.72,
+        1575.94,
+        232.72
+      ]
+    },
+    {
+      "metric_id": "common.receivables_noncurrent_net",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "210",
+      "label_raw": "Các khoản phải thu dài hạn",
+      "standard_label": "Các khoản phải thu dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "247.392.102.550",
+      "numeric_value": 247392102550,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r2",
+      "column_key": "c2",
+      "cell_bbox": [
+        1720.39,
+        248.44,
+        1859.44,
+        266.44
+      ]
+    },
+    {
+      "metric_id": "common.receivables_noncurrent_net",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "210",
+      "label_raw": "Các khoản phải thu dài hạn",
+      "standard_label": "Các khoản phải thu dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "331.646.166.008",
+      "numeric_value": 331646166008,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r2",
+      "column_key": "c1",
+      "cell_bbox": [
+        1436.92,
+        248.44,
+        1575.97,
+        266.44
+      ]
+    },
+    {
+      "metric_id": "common.loan_receivables_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "215",
+      "label_raw": "Phải thu về cho vay dài hạn",
+      "standard_label": "Phải thu về cho vay dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "-",
+      "numeric_value": 0,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r3",
+      "column_key": "c2",
+      "cell_bbox": [
+        1853.28,
+        282.15,
+        1859.56,
+        300.15
+      ]
+    },
+    {
+      "metric_id": "common.loan_receivables_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "215",
+      "label_raw": "Phải thu về cho vay dài hạn",
+      "standard_label": "Phải thu về cho vay dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.509.722.351",
+      "numeric_value": 2509722351,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r3",
+      "column_key": "c1",
+      "cell_bbox": [
+        1459.19,
+        282.15,
+        1575.99,
+        300.15
+      ]
+    },
+    {
+      "metric_id": "common.other_receivables_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "216",
+      "label_raw": "Phải thu dài hạn khác",
+      "standard_label": "Phải thu dài hạn khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "299.764.585.187",
+      "numeric_value": 299764585187,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r4",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        315.87,
+        1859.45,
+        333.87
+      ]
+    },
+    {
+      "metric_id": "common.other_receivables_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "216",
+      "label_raw": "Phải thu dài hạn khác",
+      "standard_label": "Phải thu dài hạn khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "381.508.926.294",
+      "numeric_value": 381508926294,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r4",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        315.87,
+        1575.99,
+        333.87
+      ]
+    },
+    {
+      "metric_id": "common.receivables_allowance_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "219",
+      "label_raw": "Dự phòng phải thu dài hạn khó đòi",
+      "standard_label": "Dự phòng phải thu dài hạn khó đòi",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(52.372.482.637)",
+      "numeric_value": 52372482637,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r5",
+      "column_key": "c2",
+      "cell_bbox": [
+        1720.21,
+        349.58,
+        1859.47,
+        367.58
+      ]
+    },
+    {
+      "metric_id": "common.receivables_allowance_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "219",
+      "label_raw": "Dự phòng phải thu dài hạn khó đòi",
+      "standard_label": "Dự phòng phải thu dài hạn khó đòi",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(52.372.482.637)",
+      "numeric_value": 52372482637,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r5",
+      "column_key": "c1",
+      "cell_bbox": [
+        1436.74,
+        349.58,
+        1576.01,
+        367.58
+      ]
+    },
+    {
+      "metric_id": "common.fixed_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "220",
+      "label_raw": "Tài sản cố định",
+      "standard_label": "Tài sản cố định",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "13.643.232.649.833",
+      "numeric_value": 13643232649833,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r6",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.34,
+        383.29,
+        1859.44,
+        401.29
+      ]
+    },
+    {
+      "metric_id": "common.fixed_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "220",
+      "label_raw": "Tài sản cố định",
+      "standard_label": "Tài sản cố định",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "14.816.131.186.204",
+      "numeric_value": 14816131186204,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r6",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.88,
+        383.29,
+        1575.97,
+        401.29
+      ]
+    },
+    {
+      "metric_id": "common.tangible_fixed_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "221",
+      "label_raw": "Tài sản cố định hữu hình",
+      "standard_label": "Tài sản cố định hữu hình",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "12.382.116.875.249",
+      "numeric_value": 12382116875249,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r7",
+      "column_key": "c2",
+      "cell_bbox": [
+        1696.95,
+        417.01,
+        1859.45,
+        435.01
+      ]
+    },
+    {
+      "metric_id": "common.tangible_fixed_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "221",
+      "label_raw": "Tài sản cố định hữu hình",
+      "standard_label": "Tài sản cố định hữu hình",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "12.774.567.961.718",
+      "numeric_value": 12774567961718,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r7",
+      "column_key": "c1",
+      "cell_bbox": [
+        1413.49,
+        417.01,
+        1575.99,
+        435.01
+      ]
+    },
+    {
+      "metric_id": "common.tangible_fixed_assets_gross",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "222",
+      "label_raw": "Nguyên giá",
+      "standard_label": "Nguyên giá TSCĐ hữu hình",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "22.288.962.278.190",
+      "numeric_value": 22288962278190,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r8",
+      "column_key": "c2",
+      "cell_bbox": [
+        1696.93,
+        450.72,
+        1859.44,
+        468.72
+      ]
+    },
+    {
+      "metric_id": "common.tangible_fixed_assets_gross",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "222",
+      "label_raw": "Nguyên giá",
+      "standard_label": "Nguyên giá TSCĐ hữu hình",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "24.457.733.666.511",
+      "numeric_value": 24457733666511,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r8",
+      "column_key": "c1",
+      "cell_bbox": [
+        1413.47,
+        450.72,
+        1575.97,
+        468.72
+      ]
+    },
+    {
+      "metric_id": "common.tangible_fixed_assets_accumulated_depreciation",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "223",
+      "label_raw": "Giá trị khấu hao lũy kế",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ hữu hình",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(9.906.845.402.941)",
+      "numeric_value": 9906845402941,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r9",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.77,
+        484.44,
+        1859.44,
+        502.44
+      ]
+    },
+    {
+      "metric_id": "common.tangible_fixed_assets_accumulated_depreciation",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "223",
+      "label_raw": "Giá trị khấu hao lũy kế",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ hữu hình",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(11.683.165.704.793)",
+      "numeric_value": 11683165704793,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r9",
+      "column_key": "c1",
+      "cell_bbox": [
+        1401.16,
+        484.44,
+        1575.97,
+        502.44
+      ]
+    },
+    {
+      "metric_id": "common.finance_lease_fixed_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "224",
+      "label_raw": "Tài sản cố định thuê tài chính",
+      "standard_label": "Tài sản cố định thuê tài chính",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "4.018.633.151",
+      "numeric_value": 4018633151,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r10",
+      "column_key": "c2",
+      "cell_bbox": [
+        1742.65,
+        518.15,
+        1859.45,
+        536.15
+      ]
+    },
+    {
+      "metric_id": "common.finance_lease_fixed_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "224",
+      "label_raw": "Tài sản cố định thuê tài chính",
+      "standard_label": "Tài sản cố định thuê tài chính",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.042.708.364",
+      "numeric_value": 2042708364,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r10",
+      "column_key": "c1",
+      "cell_bbox": [
+        1459.19,
+        518.15,
+        1575.99,
+        536.15
+      ]
+    },
+    {
+      "metric_id": "common.finance_lease_fixed_assets_gross",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "225",
+      "label_raw": "Nguyên giá",
+      "standard_label": "Nguyên giá TSCĐ thuê tài chính",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "8.032.465.332",
+      "numeric_value": 8032465332,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r11",
+      "column_key": "c2",
+      "cell_bbox": [
+        1742.65,
+        551.86,
+        1859.45,
+        569.86
+      ]
+    },
+    {
+      "metric_id": "common.finance_lease_fixed_assets_gross",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "225",
+      "label_raw": "Nguyên giá",
+      "standard_label": "Nguyên giá TSCĐ thuê tài chính",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "5.716.034.788",
+      "numeric_value": 5716034788,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r11",
+      "column_key": "c1",
+      "cell_bbox": [
+        1459.19,
+        551.86,
+        1575.99,
+        569.86
+      ]
+    },
+    {
+      "metric_id": "common.finance_lease_fixed_assets_accumulated_depreciation",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "226",
+      "label_raw": "Giá trị khấu hao lũy kế",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ thuê tài chính",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(4.013.832.181)",
+      "numeric_value": 4013832181,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r12",
+      "column_key": "c2",
+      "cell_bbox": [
+        1730.34,
+        585.58,
+        1859.45,
+        603.58
+      ]
+    },
+    {
+      "metric_id": "common.finance_lease_fixed_assets_accumulated_depreciation",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "226",
+      "label_raw": "Giá trị khấu hao lũy kế",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ thuê tài chính",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(3.673.326.424)",
+      "numeric_value": 3673326424,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r12",
+      "column_key": "c1",
+      "cell_bbox": [
+        1446.88,
+        585.58,
+        1575.99,
+        603.58
+      ]
+    },
+    {
+      "metric_id": "common.intangible_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "227",
+      "label_raw": "Tài sản cố định vô hình",
+      "standard_label": "Tài sản cố định vô hình",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.257.097.141.433",
+      "numeric_value": 1257097141433,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r13",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        619.29,
+        1859.44,
+        637.29
+      ]
+    },
+    {
+      "metric_id": "common.intangible_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "227",
+      "label_raw": "Tài sản cố định vô hình",
+      "standard_label": "Tài sản cố định vô hình",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.039.520.516.122",
+      "numeric_value": 2039520516122,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r13",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        619.29,
+        1575.97,
+        637.29
+      ]
+    },
+    {
+      "metric_id": "common.intangible_fixed_assets_gross",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "228",
+      "label_raw": "Nguyên giá",
+      "standard_label": "Nguyên giá TSCĐ vô hình",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.595.586.732.247",
+      "numeric_value": 2595586732247,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r14",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        653.01,
+        1859.44,
+        671.01
+      ]
+    },
+    {
+      "metric_id": "common.intangible_fixed_assets_gross",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "228",
+      "label_raw": "Nguyên giá",
+      "standard_label": "Nguyên giá TSCĐ vô hình",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "3.656.302.027.788",
+      "numeric_value": 3656302027788,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r14",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        653.01,
+        1575.97,
+        671.01
+      ]
+    },
+    {
+      "metric_id": "common.intangible_fixed_assets_accumulated_depreciation",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "229",
+      "label_raw": "Giá trị khấu hao lũy kế",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ vô hình",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(1.338.489.590.814)",
+      "numeric_value": 1338489590814,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r15",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.79,
+        686.72,
+        1859.45,
+        704.72
+      ]
+    },
+    {
+      "metric_id": "common.intangible_fixed_assets_accumulated_depreciation",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "229",
+      "label_raw": "Giá trị khấu hao lũy kế",
+      "standard_label": "Giá trị hao mòn lũy kế TSCĐ vô hình",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(1.616.781.511.666)",
+      "numeric_value": 1616781511666,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r15",
+      "column_key": "c1",
+      "cell_bbox": [
+        1411.33,
+        686.72,
+        1575.99,
+        704.72
+      ]
+    },
+    {
+      "metric_id": "common.long_term_assets_in_progress",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "240",
+      "label_raw": "Tài sản dở dang dài hạn",
+      "standard_label": "Tài sản dở dang dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.315.270.136.003",
+      "numeric_value": 1315270136003,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r16",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.49,
+        720.43,
+        1859.44,
+        738.43
+      ]
+    },
+    {
+      "metric_id": "common.long_term_assets_in_progress",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "240",
+      "label_raw": "Tài sản dở dang dài hạn",
+      "standard_label": "Tài sản dở dang dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.559.766.724.411",
+      "numeric_value": 2559766724411,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r16",
+      "column_key": "c1",
+      "cell_bbox": [
+        1421.03,
+        720.43,
+        1575.97,
+        738.43
+      ]
+    },
+    {
+      "metric_id": "common.construction_in_progress",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "242",
+      "label_raw": "Chi phí xây dựng cơ bản dở dang",
+      "standard_label": "Chi phí xây dựng cơ bản dở dang",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.315.270.136.003",
+      "numeric_value": 1315270136003,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r17",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        754.15,
+        1859.44,
+        772.15
+      ]
+    },
+    {
+      "metric_id": "common.construction_in_progress",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "242",
+      "label_raw": "Chi phí xây dựng cơ bản dở dang",
+      "standard_label": "Chi phí xây dựng cơ bản dở dang",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.559.766.724.411",
+      "numeric_value": 2559766724411,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r17",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        754.15,
+        1575.97,
+        772.15
+      ]
+    },
+    {
+      "metric_id": "common.long_term_financial_investments",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "250",
+      "label_raw": "Đầu tài tài chính dài hạn",
+      "standard_label": "Đầu tư tài chính dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "3.335.009.108.332",
+      "numeric_value": 3335009108332,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r18",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.49,
+        787.86,
+        1859.44,
+        805.86
+      ]
+    },
+    {
+      "metric_id": "common.long_term_financial_investments",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "250",
+      "label_raw": "Đầu tài tài chính dài hạn",
+      "standard_label": "Đầu tư tài chính dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "3.318.095.237.260",
+      "numeric_value": 3318095237260,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r18",
+      "column_key": "c1",
+      "cell_bbox": [
+        1421.03,
+        787.86,
+        1575.97,
+        805.86
+      ]
+    },
+    {
+      "metric_id": "common.investments_in_associates_joint_ventures",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "252",
+      "label_raw": "Đầu tư vào công ty liên doanh, liên kết",
+      "standard_label": "Đầu tư vào công ty liên doanh, liên kết",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.107.616.686.383",
+      "numeric_value": 2107616686383,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r19",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.1,
+        821.58,
+        1859.45,
+        839.58
+      ]
+    },
+    {
+      "metric_id": "common.investments_in_associates_joint_ventures",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "252",
+      "label_raw": "Đầu tư vào công ty liên doanh, liên kết",
+      "standard_label": "Đầu tư vào công ty liên doanh, liên kết",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.281.222.436.752",
+      "numeric_value": 2281222436752,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r19",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.64,
+        821.58,
+        1575.99,
+        839.58
+      ]
+    },
+    {
+      "metric_id": "common.other_equity_investments",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "253",
+      "label_raw": "Đầu tư góp vốn vào đơn vị khác",
+      "standard_label": "Đầu tư góp vốn vào đơn vị khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.830.348.813.038",
+      "numeric_value": 2830348813038,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r20",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.12,
+        855.29,
+        1859.47,
+        873.29
+      ]
+    },
+    {
+      "metric_id": "common.other_equity_investments",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "253",
+      "label_raw": "Đầu tư góp vốn vào đơn vị khác",
+      "standard_label": "Đầu tư góp vốn vào đơn vị khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "3.393.737.969.842",
+      "numeric_value": 3393737969842,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r20",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.66,
+        855.29,
+        1576.01,
+        873.29
+      ]
+    },
+    {
+      "metric_id": "common.long_term_equity_investments_allowance",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "254",
+      "label_raw": "Dự phòng đầu tư tài chính dài hạn",
+      "standard_label": "Dự phòng tổn thất đầu tư vào đơn vị khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(1.623.156.391.089)",
+      "numeric_value": 1623156391089,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r21",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.83,
+        889.0,
+        1859.49,
+        907.0
+      ]
+    },
+    {
+      "metric_id": "common.long_term_equity_investments_allowance",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "254",
+      "label_raw": "Dự phòng đầu tư tài chính dài hạn",
+      "standard_label": "Dự phòng tổn thất đầu tư vào đơn vị khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(2.357.065.169.334)",
+      "numeric_value": 2357065169334,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r21",
+      "column_key": "c1",
+      "cell_bbox": [
+        1411.36,
+        889.0,
+        1576.03,
+        907.0
+      ]
+    },
+    {
+      "metric_id": "common.held_to_maturity_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "255",
+      "label_raw": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "standard_label": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "20.200.000.000",
+      "numeric_value": 20200000000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r22",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.54,
+        922.72,
+        1859.49,
+        940.72
+      ]
+    },
+    {
+      "metric_id": "common.held_to_maturity_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "255",
+      "label_raw": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "standard_label": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "200.000.000",
+      "numeric_value": 200000000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        149
+      ],
+      "table_id": "p149-t1",
+      "row_id": "r22",
+      "column_key": "c1",
+      "cell_bbox": [
+        1474.49,
+        922.72,
+        1576.04,
+        940.72
+      ]
+    },
+    {
+      "metric_id": "common.other_noncurrent_assets_total",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "260",
+      "label_raw": "Tài sản dài hạn khác",
+      "standard_label": "Tài sản dài hạn khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "5.036.171.784.305",
+      "numeric_value": 5036171784305,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r1",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.46,
+        214.96,
+        1859.4,
+        232.96
+      ]
+    },
+    {
+      "metric_id": "common.other_noncurrent_assets_total",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "260",
+      "label_raw": "Tài sản dài hạn khác",
+      "standard_label": "Tài sản dài hạn khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "5.438.413.518.284",
+      "numeric_value": 5438413518284,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r1",
+      "column_key": "c1",
+      "cell_bbox": [
+        1420.99,
+        214.96,
+        1575.94,
+        232.96
+      ]
+    },
+    {
+      "metric_id": "common.prepaid_expenses_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "261",
+      "label_raw": "Chi phí trả trước dài hạn",
+      "standard_label": "Chi phí trả trước dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "3.391.434.748.762",
+      "numeric_value": 3391434748762,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r2",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.05,
+        248.67,
+        1859.4,
+        266.67
+      ]
+    },
+    {
+      "metric_id": "common.prepaid_expenses_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "261",
+      "label_raw": "Chi phí trả trước dài hạn",
+      "standard_label": "Chi phí trả trước dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "3.765.187.625.417",
+      "numeric_value": 3765187625417,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r2",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.58,
+        248.67,
+        1575.94,
+        266.67
+      ]
+    },
+    {
+      "metric_id": "common.deferred_tax_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "262",
+      "label_raw": "Tài sản thuế thu nhập hoãn lại",
+      "standard_label": "Tài sản thuế thu nhập hoãn lại",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "360.946.956.414",
+      "numeric_value": 360946956414,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r3",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.31,
+        282.38,
+        1859.42,
+        300.38
+      ]
+    },
+    {
+      "metric_id": "common.deferred_tax_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "262",
+      "label_raw": "Tài sản thuế thu nhập hoãn lại",
+      "standard_label": "Tài sản thuế thu nhập hoãn lại",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "575.767.686.189",
+      "numeric_value": 575767686189,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r3",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.85,
+        282.38,
+        1575.95,
+        300.38
+      ]
+    },
+    {
+      "metric_id": "common.goodwill",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "269",
+      "label_raw": "Lợi thế thương mại",
+      "standard_label": "Lợi thế thương mại",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.283.790.079.129",
+      "numeric_value": 1283790079129,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r4",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.05,
+        316.1,
+        1859.4,
+        334.1
+      ]
+    },
+    {
+      "metric_id": "common.goodwill",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "269",
+      "label_raw": "Lợi thế thương mại",
+      "standard_label": "Lợi thế thương mại",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.097.458.206.678",
+      "numeric_value": 1097458206678,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r4",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.58,
+        316.1,
+        1575.94,
+        334.1
+      ]
+    },
+    {
+      "metric_id": "common.total_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "270",
+      "label_raw": "TỔNG TÀI SẢN",
+      "standard_label": "TỔNG CỘNG TÀI SẢN",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "60.282.827.532.899",
+      "numeric_value": 60282827532899,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r5",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.3,
+        349.81,
+        1859.4,
+        367.81
+      ]
+    },
+    {
+      "metric_id": "common.total_assets",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "270",
+      "label_raw": "TỔNG TÀI SẢN",
+      "standard_label": "TỔNG CỘNG TÀI SẢN",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "71.999.995.678.620",
+      "numeric_value": 71999995678620,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        150
+      ],
+      "table_id": "p150-t1",
+      "row_id": "r5",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.84,
+        349.81,
+        1575.94,
+        367.81
+      ]
+    },
+    {
+      "metric_id": "common.total_liabilities",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "300",
+      "label_raw": "NỢ PHẢI TRẢ",
+      "standard_label": "NỢ PHẢI TRẢ",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "30.349.816.316.666",
+      "numeric_value": 30349816316666,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r1",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.3,
+        215.49,
+        1859.4,
+        233.49
+      ]
+    },
+    {
+      "metric_id": "common.total_liabilities",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "300",
+      "label_raw": "NỢ PHẢI TRẢ",
+      "standard_label": "NỢ PHẢI TRẢ",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "36.272.455.573.820",
+      "numeric_value": 36272455573820,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r1",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.84,
+        215.49,
+        1575.94,
+        233.49
+      ]
+    },
+    {
+      "metric_id": "common.current_liabilities",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "310",
+      "label_raw": "Nợ ngắn hạn",
+      "standard_label": "Nợ ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "29.651.673.556.227",
+      "numeric_value": 29651673556227,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r2",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.32,
+        249.2,
+        1859.42,
+        267.2
+      ]
+    },
+    {
+      "metric_id": "common.current_liabilities",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "310",
+      "label_raw": "Nợ ngắn hạn",
+      "standard_label": "Nợ ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "34.836.184.067.740",
+      "numeric_value": 34836184067740,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r2",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.86,
+        249.2,
+        1575.95,
+        267.2
+      ]
+    },
+    {
+      "metric_id": "common.trade_payables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "311",
+      "label_raw": "Phải trả người bán ngắn hạn",
+      "standard_label": "Phải trả người bán ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.602.977.290.710",
+      "numeric_value": 2602977290710,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r3",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        282.92,
+        1859.44,
+        300.92
+      ]
+    },
+    {
+      "metric_id": "common.trade_payables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "311",
+      "label_raw": "Phải trả người bán ngắn hạn",
+      "standard_label": "Phải trả người bán ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "4.423.912.840.298",
+      "numeric_value": 4423912840298,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r3",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        282.92,
+        1575.97,
+        300.92
+      ]
+    },
+    {
+      "metric_id": "common.customer_advances_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "312",
+      "label_raw": "Người mua trả tiền trước ngắn hạn",
+      "standard_label": "Người mua trả tiền trước ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "602.010.036.721",
+      "numeric_value": 602010036721,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r4",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        316.63,
+        1859.45,
+        334.63
+      ]
+    },
+    {
+      "metric_id": "common.customer_advances_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "312",
+      "label_raw": "Người mua trả tiền trước ngắn hạn",
+      "standard_label": "Người mua trả tiền trước ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "562.066.755.666",
+      "numeric_value": 562066755666,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r4",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        316.63,
+        1575.99,
+        334.63
+      ]
+    },
+    {
+      "metric_id": "common.taxes_payable_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "313",
+      "label_raw": "Thuế và các khoản phải nộp Nhà nước",
+      "standard_label": "Thuế và các khoản phải nộp Nhà nước",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.432.356.605.157",
+      "numeric_value": 1432356605157,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r5",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        350.35,
+        1859.44,
+        368.35
+      ]
+    },
+    {
+      "metric_id": "common.taxes_payable_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "313",
+      "label_raw": "Thuế và các khoản phải nộp Nhà nước",
+      "standard_label": "Thuế và các khoản phải nộp Nhà nước",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.298.821.801.748",
+      "numeric_value": 2298821801748,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r5",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        350.35,
+        1575.97,
+        368.35
+      ]
+    },
+    {
+      "metric_id": "common.employees_payable",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "314",
+      "label_raw": "Phải trả người lao động",
+      "standard_label": "Phải trả người lao động",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "3.734.341.060.086",
+      "numeric_value": 3734341060086,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r6",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        384.06,
+        1859.44,
+        402.06
+      ]
+    },
+    {
+      "metric_id": "common.employees_payable",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "314",
+      "label_raw": "Phải trả người lao động",
+      "standard_label": "Phải trả người lao động",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "4.341.013.546.853",
+      "numeric_value": 4341013546853,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r6",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        384.06,
+        1575.97,
+        402.06
+      ]
+    },
+    {
+      "metric_id": "common.accrued_expenses_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "315",
+      "label_raw": "Chi phí phải trả ngắn hạn",
+      "standard_label": "Chi phí phải trả ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "848.293.082.410",
+      "numeric_value": 848293082410,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r7",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        417.77,
+        1859.45,
+        435.77
+      ]
+    },
+    {
+      "metric_id": "common.accrued_expenses_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "315",
+      "label_raw": "Chi phí phải trả ngắn hạn",
+      "standard_label": "Chi phí phải trả ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.241.089.122.260",
+      "numeric_value": 1241089122260,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r7",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        417.77,
+        1575.97,
+        435.77
+      ]
+    },
+    {
+      "metric_id": "common.construction_contract_payables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "317",
+      "label_raw": "Phải trả theo tiến độ kế hoạch hợp đồng",
+      "standard_label": "Phải trả theo tiến độ kế hoạch hợp đồng xây dựng",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "78.456.375.540",
+      "numeric_value": 78456375540,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r8",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.5,
+        451.49,
+        1859.45,
+        469.49
+      ]
+    },
+    {
+      "metric_id": "common.construction_contract_payables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "317",
+      "label_raw": "Phải trả theo tiến độ kế hoạch hợp đồng",
+      "standard_label": "Phải trả theo tiến độ kế hoạch hợp đồng xây dựng",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "92.738.882.375",
+      "numeric_value": 92738882375,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r8",
+      "column_key": "c1",
+      "cell_bbox": [
+        1449.04,
+        451.49,
+        1575.99,
+        469.49
+      ]
+    },
+    {
+      "metric_id": "common.deferred_revenue_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "318",
+      "label_raw": "Doanh thu chưa thực hiện ngắn hạn",
+      "standard_label": "Doanh thu chưa thực hiện ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "3.620.205.460.042",
+      "numeric_value": 3620205460042,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r9",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        485.2,
+        1859.44,
+        503.2
+      ]
+    },
+    {
+      "metric_id": "common.deferred_revenue_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "318",
+      "label_raw": "Doanh thu chưa thực hiện ngắn hạn",
+      "standard_label": "Doanh thu chưa thực hiện ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "4.224.649.366.399",
+      "numeric_value": 4224649366399,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r9",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        485.2,
+        1575.97,
+        503.2
+      ]
+    },
+    {
+      "metric_id": "common.other_payables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "319",
+      "label_raw": "Phải trả ngắn hạn khác",
+      "standard_label": "Phải trả ngắn hạn khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.015.101.605.957",
+      "numeric_value": 1015101605957,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r10",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        518.92,
+        1859.44,
+        536.92
+      ]
+    },
+    {
+      "metric_id": "common.other_payables_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "319",
+      "label_raw": "Phải trả ngắn hạn khác",
+      "standard_label": "Phải trả ngắn hạn khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "874.015.837.328",
+      "numeric_value": 874015837328,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r10",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        518.92,
+        1575.99,
+        536.92
+      ]
+    },
+    {
+      "metric_id": "common.short_term_borrowings",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "320",
+      "label_raw": "Vay và nợ thuê tài chính ngắn hạn",
+      "standard_label": "Vay và nợ thuê tài chính ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "13.837.894.474.107",
+      "numeric_value": 13837894474107,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r11",
+      "column_key": "c2",
+      "cell_bbox": [
+        1696.93,
+        552.63,
+        1859.44,
+        570.63
+      ]
+    },
+    {
+      "metric_id": "common.short_term_borrowings",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "320",
+      "label_raw": "Vay và nợ thuê tài chính ngắn hạn",
+      "standard_label": "Vay và nợ thuê tài chính ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "14.446.238.451.323",
+      "numeric_value": 14446238451323,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r11",
+      "column_key": "c1",
+      "cell_bbox": [
+        1413.47,
+        552.63,
+        1575.97,
+        570.63
+      ]
+    },
+    {
+      "metric_id": "common.current_provisions",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "321",
+      "label_raw": "Dự phòng phải trả ngắn hạn",
+      "standard_label": "Dự phòng phải trả ngắn hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "417.401.434.437",
+      "numeric_value": 417401434437,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r12",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        586.34,
+        1859.45,
+        604.34
+      ]
+    },
+    {
+      "metric_id": "common.current_provisions",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "321",
+      "label_raw": "Dự phòng phải trả ngắn hạn",
+      "standard_label": "Dự phòng phải trả ngắn hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "496.600.145.127",
+      "numeric_value": 496600145127,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r12",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        586.34,
+        1575.99,
+        604.34
+      ]
+    },
+    {
+      "metric_id": "common.reward_welfare_fund",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "322",
+      "label_raw": "Quỹ khen thưởng, phúc lợi",
+      "standard_label": "Quỹ khen thưởng, phúc lợi",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.462.636.131.060",
+      "numeric_value": 1462636131060,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r13",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        620.06,
+        1859.44,
+        638.06
+      ]
+    },
+    {
+      "metric_id": "common.reward_welfare_fund",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "322",
+      "label_raw": "Quỹ khen thưởng, phúc lợi",
+      "standard_label": "Quỹ khen thưởng, phúc lợi",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.835.037.318.363",
+      "numeric_value": 1835037318363,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r13",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        620.06,
+        1575.97,
+        638.06
+      ]
+    },
+    {
+      "metric_id": "common.noncurrent_liabilities",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "330",
+      "label_raw": "Nợ dài hạn",
+      "standard_label": "Nợ dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "698.142.760.439",
+      "numeric_value": 698142760439,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r14",
+      "column_key": "c2",
+      "cell_bbox": [
+        1720.4,
+        653.77,
+        1859.45,
+        671.77
+      ]
+    },
+    {
+      "metric_id": "common.noncurrent_liabilities",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "330",
+      "label_raw": "Nợ dài hạn",
+      "standard_label": "Nợ dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.436.271.506.080",
+      "numeric_value": 1436271506080,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r14",
+      "column_key": "c1",
+      "cell_bbox": [
+        1421.03,
+        653.77,
+        1575.97,
+        671.77
+      ]
+    },
+    {
+      "metric_id": "common.deferred_revenue_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "336",
+      "label_raw": "Doanh thu chưa thực hiện dài hạn",
+      "standard_label": "Doanh thu chưa thực hiện dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "132.927.038.647",
+      "numeric_value": 132927038647,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r15",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.33,
+        687.49,
+        1859.44,
+        705.49
+      ]
+    },
+    {
+      "metric_id": "common.deferred_revenue_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "336",
+      "label_raw": "Doanh thu chưa thực hiện dài hạn",
+      "standard_label": "Doanh thu chưa thực hiện dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "131.344.534.204",
+      "numeric_value": 131344534204,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r15",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.87,
+        687.49,
+        1575.97,
+        705.49
+      ]
+    },
+    {
+      "metric_id": "common.other_payables_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "337",
+      "label_raw": "Phải trả dài hạn khác",
+      "standard_label": "Phải trả dài hạn khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "41.914.135.058",
+      "numeric_value": 41914135058,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r16",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.46,
+        721.2,
+        1859.42,
+        739.2
+      ]
+    },
+    {
+      "metric_id": "common.other_payables_noncurrent",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "337",
+      "label_raw": "Phải trả dài hạn khác",
+      "standard_label": "Phải trả dài hạn khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "183.788.442.785",
+      "numeric_value": 183788442785,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r16",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.85,
+        721.2,
+        1575.95,
+        739.2
+      ]
+    },
+    {
+      "metric_id": "common.long_term_borrowings",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "338",
+      "label_raw": "Vay và nợ thuê tài chính dài hạn",
+      "standard_label": "Vay và nợ thuê tài chính dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "208.074.996.962",
+      "numeric_value": 208074996962,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r17",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.29,
+        754.91,
+        1859.4,
+        772.91
+      ]
+    },
+    {
+      "metric_id": "common.long_term_borrowings",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "338",
+      "label_raw": "Vay và nợ thuê tài chính dài hạn",
+      "standard_label": "Vay và nợ thuê tài chính dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "501.115.537.075",
+      "numeric_value": 501115537075,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r17",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.83,
+        754.91,
+        1575.94,
+        772.91
+      ]
+    },
+    {
+      "metric_id": "common.deferred_tax_liabilities",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "341",
+      "label_raw": "Thuế thu nhập hoãn lại phải trả",
+      "standard_label": "Thuế thu nhập hoãn lại phải trả",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "245.716.712.513",
+      "numeric_value": 245716712513,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r18",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.29,
+        788.63,
+        1859.4,
+        806.63
+      ]
+    },
+    {
+      "metric_id": "common.deferred_tax_liabilities",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "341",
+      "label_raw": "Thuế thu nhập hoãn lại phải trả",
+      "standard_label": "Thuế thu nhập hoãn lại phải trả",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "356.966.680.614",
+      "numeric_value": 356966680614,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r18",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.83,
+        788.63,
+        1575.94,
+        806.63
+      ]
+    },
+    {
+      "metric_id": "common.noncurrent_provisions",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "342",
+      "label_raw": "Dự phòng phải trả dài hạn",
+      "standard_label": "Dự phòng phải trả dài hạn",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "69.317.780.976",
+      "numeric_value": 69317780976,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r19",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.45,
+        822.34,
+        1859.4,
+        840.34
+      ]
+    },
+    {
+      "metric_id": "common.noncurrent_provisions",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "342",
+      "label_raw": "Dự phòng phải trả dài hạn",
+      "standard_label": "Dự phòng phải trả dài hạn",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "262.864.215.119",
+      "numeric_value": 262864215119,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r19",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.83,
+        822.34,
+        1575.94,
+        840.34
+      ]
+    },
+    {
+      "metric_id": "common.science_technology_fund",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "343",
+      "label_raw": "Quỹ phát triển khoa học và công nghệ",
+      "standard_label": "Quỹ phát triển khoa học và công nghệ",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "192.096.283",
+      "numeric_value": 192096283,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r20",
+      "column_key": "c2",
+      "cell_bbox": [
+        1757.86,
+        856.06,
+        1859.42,
+        874.06
+      ]
+    },
+    {
+      "metric_id": "common.science_technology_fund",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "343",
+      "label_raw": "Quỹ phát triển khoa học và công nghệ",
+      "standard_label": "Quỹ phát triển khoa học và công nghệ",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "192.096.283",
+      "numeric_value": 192096283,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        151
+      ],
+      "table_id": "p151-t1",
+      "row_id": "r20",
+      "column_key": "c1",
+      "cell_bbox": [
+        1474.4,
+        856.06,
+        1575.95,
+        874.06
+      ]
+    },
+    {
+      "metric_id": "common.equity",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "400",
+      "label_raw": "VỐN CHỦ SỞ HỮU",
+      "standard_label": "VỐN CHỦ SỞ HỮU",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "29.933.011.216.233",
+      "numeric_value": 29933011216233,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r1",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.3,
+        214.96,
+        1859.4,
+        232.96
+      ]
+    },
+    {
+      "metric_id": "common.equity",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "400",
+      "label_raw": "VỐN CHỦ SỞ HỮU",
+      "standard_label": "VỐN CHỦ SỞ HỮU",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "35.727.540.104.800",
+      "numeric_value": 35727540104800,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r1",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.84,
+        214.96,
+        1575.94,
+        232.96
+      ]
+    },
+    {
+      "metric_id": "common.equity_core",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "410",
+      "label_raw": "Vốn chủ sở hữu",
+      "standard_label": "Vốn chủ sở hữu (nhóm vốn)",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "29.930.261.216.233",
+      "numeric_value": 29930261216233,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r2",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.32,
+        248.67,
+        1859.42,
+        266.67
+      ]
+    },
+    {
+      "metric_id": "common.equity_core",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "410",
+      "label_raw": "Vốn chủ sở hữu",
+      "standard_label": "Vốn chủ sở hữu (nhóm vốn)",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "35.724.790.104.800",
+      "numeric_value": 35724790104800,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r2",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.86,
+        248.67,
+        1575.95,
+        266.67
+      ]
+    },
+    {
+      "metric_id": "common.paid_in_capital",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "411",
+      "label_raw": "Vốn góp của chủ sở hữu",
+      "standard_label": "Vốn góp của chủ sở hữu",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "12.699.688.750.000",
+      "numeric_value": 12699688750000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r3",
+      "column_key": "c2",
+      "cell_bbox": [
+        1696.93,
+        282.38,
+        1859.44,
+        300.38
+      ]
+    },
+    {
+      "metric_id": "common.paid_in_capital",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "411",
+      "label_raw": "Vốn góp của chủ sở hữu",
+      "standard_label": "Vốn góp của chủ sở hữu",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "14.710.691.830.000",
+      "numeric_value": 14710691830000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r3",
+      "column_key": "c1",
+      "cell_bbox": [
+        1413.47,
+        282.38,
+        1575.97,
+        300.38
+      ]
+    },
+    {
+      "metric_id": "common.ordinary_share_capital",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "411a",
+      "label_raw": "- Cổ phiếu phổ thông có quyền biểu quyết",
+      "standard_label": "Cổ phiếu phổ thông có quyền biểu quyết",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "12.699.688.750.000",
+      "numeric_value": 12699688750000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "unverified_optional",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r4",
+      "column_key": "c2",
+      "cell_bbox": [
+        1696.93,
+        316.1,
+        1859.44,
+        334.1
+      ]
+    },
+    {
+      "metric_id": "common.ordinary_share_capital",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "411a",
+      "label_raw": "- Cổ phiếu phổ thông có quyền biểu quyết",
+      "standard_label": "Cổ phiếu phổ thông có quyền biểu quyết",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "14.710.691.830.000",
+      "numeric_value": 14710691830000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "unverified_optional",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r4",
+      "column_key": "c1",
+      "cell_bbox": [
+        1413.47,
+        316.1,
+        1575.97,
+        334.1
+      ]
+    },
+    {
+      "metric_id": "common.share_premium",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "412",
+      "label_raw": "Thặng dư vốn cổ phần",
+      "standard_label": "Thặng dư vốn cổ phần",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "49.713.213.411",
+      "numeric_value": 49713213411,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r5",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.5,
+        349.81,
+        1859.45,
+        367.81
+      ]
+    },
+    {
+      "metric_id": "common.share_premium",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "412",
+      "label_raw": "Thặng dư vốn cổ phần",
+      "standard_label": "Thặng dư vốn cổ phần",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "49.713.213.411",
+      "numeric_value": 49713213411,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r5",
+      "column_key": "c1",
+      "cell_bbox": [
+        1449.04,
+        349.81,
+        1575.99,
+        367.81
+      ]
+    },
+    {
+      "metric_id": "common.other_owners_capital",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "414",
+      "label_raw": "Vốn khác của chủ sở hữu",
+      "standard_label": "Vốn khác của chủ sở hữu",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.928.602.158.147",
+      "numeric_value": 1928602158147,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r6",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        383.52,
+        1859.44,
+        401.52
+      ]
+    },
+    {
+      "metric_id": "common.other_owners_capital",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "414",
+      "label_raw": "Vốn khác của chủ sở hữu",
+      "standard_label": "Vốn khác của chủ sở hữu",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.929.012.703.454",
+      "numeric_value": 1929012703454,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r6",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        383.52,
+        1575.97,
+        401.52
+      ]
+    },
+    {
+      "metric_id": "common.foreign_exchange_translation_reserve",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "417",
+      "label_raw": "Chênh lệch tỷ giá hối đoái",
+      "standard_label": "Chênh lệch tỷ giá hối đoái",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(17.778.502.626)",
+      "numeric_value": -17778502626,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r7",
+      "column_key": "c2",
+      "cell_bbox": [
+        1720.21,
+        417.24,
+        1859.47,
+        435.24
+      ]
+    },
+    {
+      "metric_id": "common.foreign_exchange_translation_reserve",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "417",
+      "label_raw": "Chênh lệch tỷ giá hối đoái",
+      "standard_label": "Chênh lệch tỷ giá hối đoái",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "(49.485.560.860)",
+      "numeric_value": -49485560860,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r7",
+      "column_key": "c1",
+      "cell_bbox": [
+        1436.74,
+        417.24,
+        1576.01,
+        435.24
+      ]
+    },
+    {
+      "metric_id": "common.development_investment_fund",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "418",
+      "label_raw": "Quỹ đầu tư phát triển",
+      "standard_label": "Quỹ đầu tư phát triển",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "1.549.850.939.920",
+      "numeric_value": 1549850939920,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r8",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        450.95,
+        1859.44,
+        468.95
+      ]
+    },
+    {
+      "metric_id": "common.development_investment_fund",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "418",
+      "label_raw": "Quỹ đầu tư phát triển",
+      "standard_label": "Quỹ đầu tư phát triển",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.033.289.141.535",
+      "numeric_value": 2033289141535,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r8",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        450.95,
+        1575.97,
+        468.95
+      ]
+    },
+    {
+      "metric_id": "common.other_equity_funds",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "420",
+      "label_raw": "Quỹ khác thuộc vốn chủ sở hữu",
+      "standard_label": "Quỹ khác thuộc vốn chủ sở hữu",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "87.203.093.024",
+      "numeric_value": 87203093024,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r9",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.5,
+        484.67,
+        1859.45,
+        502.67
+      ]
+    },
+    {
+      "metric_id": "common.other_equity_funds",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "420",
+      "label_raw": "Quỹ khác thuộc vốn chủ sở hữu",
+      "standard_label": "Quỹ khác thuộc vốn chủ sở hữu",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "87.730.484.825",
+      "numeric_value": 87730484825,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r9",
+      "column_key": "c1",
+      "cell_bbox": [
+        1449.04,
+        484.67,
+        1575.99,
+        502.67
+      ]
+    },
+    {
+      "metric_id": "common.retained_earnings",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "421",
+      "label_raw": "Lợi nhuận sau thuế (“LNST”) chưa phân phối",
+      "standard_label": "Lợi nhuận sau thuế chưa phân phối",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "8.674.126.708.670",
+      "numeric_value": 8674126708670,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r10",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        518.38,
+        1859.44,
+        536.38
+      ]
+    },
+    {
+      "metric_id": "common.retained_earnings",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "421",
+      "label_raw": "Lợi nhuận sau thuế (“LNST”) chưa phân phối",
+      "standard_label": "Lợi nhuận sau thuế chưa phân phối",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "11.030.528.671.431",
+      "numeric_value": 11030528671431,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r10",
+      "column_key": "c1",
+      "cell_bbox": [
+        1413.47,
+        518.38,
+        1575.97,
+        536.38
+      ]
+    },
+    {
+      "metric_id": "common.retained_earnings_prior",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "421a",
+      "label_raw": "- LNST chưa phân phối lũy kế của các năm trước",
+      "standard_label": "LNST chưa phân phối lũy kế đến cuối kỳ trước",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "4.471.895.918.464",
+      "numeric_value": 4471895918464,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r11",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        552.09,
+        1859.44,
+        570.09
+      ]
+    },
+    {
+      "metric_id": "common.retained_earnings_prior",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "421a",
+      "label_raw": "- LNST chưa phân phối lũy kế của các năm trước",
+      "standard_label": "LNST chưa phân phối lũy kế đến cuối kỳ trước",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "5.458.228.109.134",
+      "numeric_value": 5458228109134,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r11",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        552.09,
+        1575.97,
+        570.09
+      ]
+    },
+    {
+      "metric_id": "common.retained_earnings_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "421b",
+      "label_raw": "- LNST chưa phân phối của năm nay",
+      "standard_label": "LNST chưa phân phối kỳ này",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "4.202.230.790.206",
+      "numeric_value": 4202230790206,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r12",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        585.81,
+        1859.44,
+        603.81
+      ]
+    },
+    {
+      "metric_id": "common.retained_earnings_current",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "421b",
+      "label_raw": "- LNST chưa phân phối của năm nay",
+      "standard_label": "LNST chưa phân phối kỳ này",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "5.572.300.562.297",
+      "numeric_value": 5572300562297,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r12",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        585.81,
+        1575.97,
+        603.81
+      ]
+    },
+    {
+      "metric_id": "common.noncontrolling_interests",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "429",
+      "label_raw": "Lợi ích cổ đông không kiểm soát",
+      "standard_label": "Lợi ích cổ đông không kiểm soát",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "4.958.854.855.687",
+      "numeric_value": 4958854855687,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r13",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        619.52,
+        1859.44,
+        637.52
+      ]
+    },
+    {
+      "metric_id": "common.noncontrolling_interests",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "429",
+      "label_raw": "Lợi ích cổ đông không kiểm soát",
+      "standard_label": "Lợi ích cổ đông không kiểm soát",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "5.933.309.621.004",
+      "numeric_value": 5933309621004,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r13",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        619.52,
+        1575.97,
+        637.52
+      ]
+    },
+    {
+      "metric_id": "common.other_funding_total",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "430",
+      "label_raw": "Nguồn kinh phí và quỹ khác",
+      "standard_label": "Nguồn kinh phí và quỹ khác",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.750.000.000",
+      "numeric_value": 2750000000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r14",
+      "column_key": "c2",
+      "cell_bbox": [
+        1740.73,
+        653.24,
+        1859.47,
+        671.24
+      ]
+    },
+    {
+      "metric_id": "common.other_funding_total",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "430",
+      "label_raw": "Nguồn kinh phí và quỹ khác",
+      "standard_label": "Nguồn kinh phí và quỹ khác",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.750.000.000",
+      "numeric_value": 2750000000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r14",
+      "column_key": "c1",
+      "cell_bbox": [
+        1457.26,
+        653.24,
+        1576.01,
+        671.24
+      ]
+    },
+    {
+      "metric_id": "common.allocated_funding",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "431",
+      "label_raw": "Nguồn kinh phí",
+      "standard_label": "Nguồn kinh phí",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.750.000.000",
+      "numeric_value": 2750000000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r15",
+      "column_key": "c2",
+      "cell_bbox": [
+        1742.69,
+        686.95,
+        1859.49,
+        704.95
+      ]
+    },
+    {
+      "metric_id": "common.allocated_funding",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "431",
+      "label_raw": "Nguồn kinh phí",
+      "standard_label": "Nguồn kinh phí",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "2.750.000.000",
+      "numeric_value": 2750000000,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r15",
+      "column_key": "c1",
+      "cell_bbox": [
+        1459.22,
+        686.95,
+        1576.03,
+        704.95
+      ]
+    },
+    {
+      "metric_id": "common.total_funding",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "440",
+      "label_raw": "TỔNG NGUỒN VỐN",
+      "standard_label": "TỔNG CỘNG NGUỒN VỐN",
+      "period_end": "2023-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "60.282.827.532.899",
+      "numeric_value": 60282827532899,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r16",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.36,
+        720.66,
+        1859.45,
+        738.66
+      ]
+    },
+    {
+      "metric_id": "common.total_funding",
+      "statement": "balance_sheet",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "440",
+      "label_raw": "TỔNG NGUỒN VỐN",
+      "standard_label": "TỔNG CỘNG NGUỒN VỐN",
+      "period_end": "2024-12-31",
+      "period_type": "instant",
+      "period_role": "explicit",
+      "raw": "71.999.995.678.620",
+      "numeric_value": 71999995678620,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        152
+      ],
+      "table_id": "p152-t1",
+      "row_id": "r16",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.89,
+        720.66,
+        1575.99,
+        738.66
+      ]
+    },
+    {
+      "metric_id": "common.operating_cash_flow",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "20",
+      "label_raw": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "9.517.095.698.405",
+      "numeric_value": 9517095698405,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        155
+      ],
+      "table_id": "p155-t1",
+      "row_id": "r16",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.42,
+        800.16,
+        1859.36,
+        818.16
+      ]
+    },
+    {
+      "metric_id": "common.operating_cash_flow",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "20",
+      "label_raw": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "11.703.777.188.868",
+      "numeric_value": 11703777188868,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        155
+      ],
+      "table_id": "p155-t1",
+      "row_id": "r16",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.8,
+        800.16,
+        1575.9,
+        818.16
+      ]
+    },
+    {
+      "metric_id": "common.capital_expenditure_cash_paid",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "21",
+      "label_raw": "Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",
+      "standard_label": "Tiền chi mua sắm, xây dựng TSCĐ và các TSDH khác",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(3.978.252.082.224)",
+      "numeric_value": 3978252082224,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        155
+      ],
+      "table_id": "p155-t1",
+      "row_id": "r18",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.7,
+        867.59,
+        1859.36,
+        885.59
+      ]
+    },
+    {
+      "metric_id": "common.capital_expenditure_cash_paid",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "21",
+      "label_raw": "Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",
+      "standard_label": "Tiền chi mua sắm, xây dựng TSCĐ và các TSDH khác",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(3.275.312.325.702)",
+      "numeric_value": 3275312325702,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        155
+      ],
+      "table_id": "p155-t1",
+      "row_id": "r18",
+      "column_key": "c1",
+      "cell_bbox": [
+        1411.24,
+        867.59,
+        1575.9,
+        885.59
+      ]
+    },
+    {
+      "metric_id": "common.investing_cash_flow",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "30",
+      "label_raw": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(6.548.374.165.711)",
+      "numeric_value": -6548374165711,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r4",
+      "column_key": "c2",
+      "cell_bbox": [
+        1691.14,
+        339.8,
+        1859.4,
+        357.8
+      ]
+    },
+    {
+      "metric_id": "common.investing_cash_flow",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "30",
+      "label_raw": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(8.461.812.173.101)",
+      "numeric_value": -8461812173101,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r4",
+      "column_key": "c1",
+      "cell_bbox": [
+        1407.67,
+        339.8,
+        1575.94,
+        357.8
+      ]
+    },
+    {
+      "metric_id": "common.cash_dividends_paid",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "36",
+      "label_raw": "Tiền cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+      "standard_label": "Cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(2.930.628.448.135)",
+      "numeric_value": 2930628448135,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r10",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.74,
+        542.08,
+        1859.4,
+        560.08
+      ]
+    },
+    {
+      "metric_id": "common.cash_dividends_paid",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "36",
+      "label_raw": "Tiền cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+      "standard_label": "Cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(3.291.859.792.121)",
+      "numeric_value": 3291859792121,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r10",
+      "column_key": "c1",
+      "cell_bbox": [
+        1411.27,
+        542.08,
+        1575.94,
+        560.08
+      ]
+    },
+    {
+      "metric_id": "common.financing_cash_flow",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "40",
+      "label_raw": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(1.168.383.938.695)",
+      "numeric_value": -1168383938695,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r11",
+      "column_key": "c2",
+      "cell_bbox": [
+        1691.12,
+        575.8,
+        1859.38,
+        593.8
+      ]
+    },
+    {
+      "metric_id": "common.financing_cash_flow",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "40",
+      "label_raw": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+      "standard_label": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(2.197.766.125.834)",
+      "numeric_value": -2197766125834,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r11",
+      "column_key": "c1",
+      "cell_bbox": [
+        1407.65,
+        575.8,
+        1575.92,
+        593.8
+      ]
+    },
+    {
+      "metric_id": "common.net_cash_change",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "50",
+      "label_raw": "Lưu chuyển tiền thuần trong năm",
+      "standard_label": "Lưu chuyển tiền thuần trong kỳ",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.800.337.593.999",
+      "numeric_value": 1800337593999,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r12",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.44,
+        609.51,
+        1859.38,
+        627.51
+      ]
+    },
+    {
+      "metric_id": "common.net_cash_change",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "50",
+      "label_raw": "Lưu chuyển tiền thuần trong năm",
+      "standard_label": "Lưu chuyển tiền thuần trong kỳ",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.044.198.889.933",
+      "numeric_value": 1044198889933,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r12",
+      "column_key": "c1",
+      "cell_bbox": [
+        1420.97,
+        609.51,
+        1575.92,
+        627.51
+      ]
+    },
+    {
+      "metric_id": "common.cash_beginning",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "60",
+      "label_raw": "Tiền và tương đương tiền đầu năm",
+      "standard_label": "Tiền và tương đương tiền đầu kỳ",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "6.440.177.174.322",
+      "numeric_value": 6440177174322,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r13",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.44,
+        643.22,
+        1859.38,
+        661.22
+      ]
+    },
+    {
+      "metric_id": "common.cash_beginning",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "60",
+      "label_raw": "Tiền và tương đương tiền đầu năm",
+      "standard_label": "Tiền và tương đương tiền đầu kỳ",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "8.279.156.683.221",
+      "numeric_value": 8279156683221,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r13",
+      "column_key": "c1",
+      "cell_bbox": [
+        1420.97,
+        643.22,
+        1575.92,
+        661.22
+      ]
+    },
+    {
+      "metric_id": "common.exchange_effect_on_cash",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "61",
+      "label_raw": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+      "standard_label": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "38.641.914.900",
+      "numeric_value": 38641914900,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r14",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.45,
+        676.94,
+        1859.4,
+        694.94
+      ]
+    },
+    {
+      "metric_id": "common.exchange_effect_on_cash",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "61",
+      "label_raw": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+      "standard_label": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(7.915.134.270)",
+      "numeric_value": -7915134270,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r14",
+      "column_key": "c1",
+      "cell_bbox": [
+        1446.84,
+        676.94,
+        1575.95,
+        694.94
+      ]
+    },
+    {
+      "metric_id": "common.cash_ending",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "70",
+      "label_raw": "Tiền và tương đương tiền cuối năm",
+      "standard_label": "Tiền và tương đương tiền cuối kỳ",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "8.279.156.683.221",
+      "numeric_value": 8279156683221,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r15",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.44,
+        710.65,
+        1859.38,
+        728.65
+      ]
+    },
+    {
+      "metric_id": "common.cash_ending",
+      "statement": "cash_flow",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "70",
+      "label_raw": "Tiền và tương đương tiền cuối năm",
+      "standard_label": "Tiền và tương đương tiền cuối kỳ",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "9.315.440.438.884",
+      "numeric_value": 9315440438884,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        156
+      ],
+      "table_id": "p156-t1",
+      "row_id": "r15",
+      "column_key": "c1",
+      "cell_bbox": [
+        1420.97,
+        710.65,
+        1575.92,
+        728.65
+      ]
+    },
+    {
+      "metric_id": "common.gross_sales_revenue",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "01",
+      "label_raw": "Doanh thu bán hàng và cung cấp dịch vụ",
+      "standard_label": "Doanh thu bán hàng và cung cấp dịch vụ",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "52.625.174.861.333",
+      "numeric_value": 52625174861333,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r1",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.3,
+        214.96,
+        1859.4,
+        232.96
+      ]
+    },
+    {
+      "metric_id": "common.gross_sales_revenue",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "01",
+      "label_raw": "Doanh thu bán hàng và cung cấp dịch vụ",
+      "standard_label": "Doanh thu bán hàng và cung cấp dịch vụ",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "62.962.652.134.635",
+      "numeric_value": 62962652134635,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r1",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.84,
+        214.96,
+        1575.94,
+        232.96
+      ]
+    },
+    {
+      "metric_id": "common.sales_deductions",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "02",
+      "label_raw": "Các khoản giảm trừ doanh thu",
+      "standard_label": "Các khoản giảm trừ doanh thu",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "7.274.033.948",
+      "numeric_value": 7274033948,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r2",
+      "column_key": "c2",
+      "cell_bbox": [
+        1742.65,
+        248.67,
+        1859.45,
+        266.67
+      ]
+    },
+    {
+      "metric_id": "common.sales_deductions",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "02",
+      "label_raw": "Các khoản giảm trừ doanh thu",
+      "standard_label": "Các khoản giảm trừ doanh thu",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "113.857.783.268",
+      "numeric_value": 113857783268,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r2",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.87,
+        248.67,
+        1575.97,
+        266.67
+      ]
+    },
+    {
+      "metric_id": "common.net_revenue",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "10",
+      "label_raw": "Doanh thu thuần về bán hàng và cung cấp dịch vụ (10 = 01 – 02)",
+      "standard_label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "52.617.900.827.385",
+      "numeric_value": 52617900827385,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r3",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.3,
+        282.38,
+        1859.4,
+        300.38
+      ]
+    },
+    {
+      "metric_id": "common.net_revenue",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "10",
+      "label_raw": "Doanh thu thuần về bán hàng và cung cấp dịch vụ (10 = 01 – 02)",
+      "standard_label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "62.848.794.351.367",
+      "numeric_value": 62848794351367,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r3",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.84,
+        282.38,
+        1575.94,
+        300.38
+      ]
+    },
+    {
+      "metric_id": "common.cost_of_sales",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "11",
+      "label_raw": "Giá vốn hàng bán và dịch vụ cung cấp",
+      "standard_label": "Giá vốn hàng bán",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "32.298.347.382.703",
+      "numeric_value": 32298347382703,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r4",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.3,
+        316.1,
+        1859.4,
+        334.1
+      ]
+    },
+    {
+      "metric_id": "common.cost_of_sales",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "11",
+      "label_raw": "Giá vốn hàng bán và dịch vụ cung cấp",
+      "standard_label": "Giá vốn hàng bán",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "39.150.445.981.451",
+      "numeric_value": 39150445981451,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r4",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.84,
+        316.1,
+        1575.94,
+        334.1
+      ]
+    },
+    {
+      "metric_id": "common.gross_profit",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "20",
+      "label_raw": "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ (20 = 10 – 11)",
+      "standard_label": "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "20.319.553.444.682",
+      "numeric_value": 20319553444682,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r5",
+      "column_key": "c2",
+      "cell_bbox": [
+        1694.32,
+        349.81,
+        1859.42,
+        367.81
+      ]
+    },
+    {
+      "metric_id": "common.gross_profit",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "20",
+      "label_raw": "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ (20 = 10 – 11)",
+      "standard_label": "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "23.698.348.369.916",
+      "numeric_value": 23698348369916,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r5",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.86,
+        349.81,
+        1575.95,
+        367.81
+      ]
+    },
+    {
+      "metric_id": "common.financial_income",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "21",
+      "label_raw": "Doanh thu hoạt động tài chính",
+      "standard_label": "Doanh thu hoạt động tài chính",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "2.336.069.089.819",
+      "numeric_value": 2336069089819,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r6",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        383.52,
+        1859.44,
+        401.52
+      ]
+    },
+    {
+      "metric_id": "common.financial_income",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "21",
+      "label_raw": "Doanh thu hoạt động tài chính",
+      "standard_label": "Doanh thu hoạt động tài chính",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.935.749.115.305",
+      "numeric_value": 1935749115305,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r6",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        383.52,
+        1575.97,
+        401.52
+      ]
+    },
+    {
+      "metric_id": "common.financial_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "22",
+      "label_raw": "Chi phí tài chính",
+      "standard_label": "Chi phí tài chính",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.718.298.463.710",
+      "numeric_value": 1718298463710,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r7",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        417.24,
+        1859.44,
+        435.24
+      ]
+    },
+    {
+      "metric_id": "common.financial_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "22",
+      "label_raw": "Chi phí tài chính",
+      "standard_label": "Chi phí tài chính",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.811.547.381.981",
+      "numeric_value": 1811547381981,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r7",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        417.24,
+        1575.97,
+        435.24
+      ]
+    },
+    {
+      "metric_id": "common.interest_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "23",
+      "label_raw": "- Trong đó: Chi phí lãi vay",
+      "standard_label": "Trong đó: Chi phí lãi vay",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "832.648.611.261",
+      "numeric_value": 832648611261,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "unverified_optional",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r8",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        450.95,
+        1859.45,
+        468.95
+      ]
+    },
+    {
+      "metric_id": "common.interest_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "23",
+      "label_raw": "- Trong đó: Chi phí lãi vay",
+      "standard_label": "Trong đó: Chi phí lãi vay",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "551.639.361.786",
+      "numeric_value": 551639361786,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "unverified_optional",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r8",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        450.95,
+        1575.99,
+        468.95
+      ]
+    },
+    {
+      "metric_id": "common.associate_profit_share",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "24",
+      "label_raw": "Phần lãi trong công ty liên doanh, liên kết",
+      "standard_label": "Phần lãi hoặc lỗ trong công ty liên doanh, liên kết",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "42.347.008.961",
+      "numeric_value": 42347008961,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r9",
+      "column_key": "c2",
+      "cell_bbox": [
+        1732.5,
+        484.67,
+        1859.45,
+        502.67
+      ]
+    },
+    {
+      "metric_id": "common.associate_profit_share",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "24",
+      "label_raw": "Phần lãi trong công ty liên doanh, liên kết",
+      "standard_label": "Phần lãi hoặc lỗ trong công ty liên doanh, liên kết",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "392.531.256.272",
+      "numeric_value": 392531256272,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r9",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        484.67,
+        1575.99,
+        502.67
+      ]
+    },
+    {
+      "metric_id": "common.selling_expenses",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "25",
+      "label_raw": "Chi phí bán hàng",
+      "standard_label": "Chi phí bán hàng",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "5.242.551.906.960",
+      "numeric_value": 5242551906960,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r10",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        518.38,
+        1859.44,
+        536.38
+      ]
+    },
+    {
+      "metric_id": "common.selling_expenses",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "25",
+      "label_raw": "Chi phí bán hàng",
+      "standard_label": "Chi phí bán hàng",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "6.115.961.971.783",
+      "numeric_value": 6115961971783,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r10",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        518.38,
+        1575.97,
+        536.38
+      ]
+    },
+    {
+      "metric_id": "common.administrative_expenses",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "26",
+      "label_raw": "Chi phí quản lý doanh nghiệp",
+      "standard_label": "Chi phí quản lý doanh nghiệp",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "6.625.373.638.359",
+      "numeric_value": 6625373638359,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r11",
+      "column_key": "c2",
+      "cell_bbox": [
+        1707.08,
+        552.09,
+        1859.44,
+        570.09
+      ]
+    },
+    {
+      "metric_id": "common.administrative_expenses",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "26",
+      "label_raw": "Chi phí quản lý doanh nghiệp",
+      "standard_label": "Chi phí quản lý doanh nghiệp",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "7.074.038.614.774",
+      "numeric_value": 7074038614774,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r11",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        552.09,
+        1575.97,
+        570.09
+      ]
+    },
+    {
+      "metric_id": "common.operating_profit",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "30",
+      "label_raw": "Lợi nhuận thuần từ hoạt động kinh doanh (30 = 20 + 21 – 22 + 24 – 25 – 26)",
+      "standard_label": "Lợi nhuận thuần từ hoạt động kinh doanh",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "9.111.745.534.433",
+      "numeric_value": 9111745534433,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r12",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.49,
+        585.81,
+        1859.44,
+        603.81
+      ]
+    },
+    {
+      "metric_id": "common.operating_profit",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "30",
+      "label_raw": "Lợi nhuận thuần từ hoạt động kinh doanh (30 = 20 + 21 – 22 + 24 – 25 – 26)",
+      "standard_label": "Lợi nhuận thuần từ hoạt động kinh doanh",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "11.025.080.772.955",
+      "numeric_value": 11025080772955,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r12",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.88,
+        585.81,
+        1575.97,
+        603.81
+      ]
+    },
+    {
+      "metric_id": "common.other_income",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "31",
+      "label_raw": "Thu nhập khác",
+      "standard_label": "Thu nhập khác",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "200.956.010.920",
+      "numeric_value": 200956010920,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r13",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        641.52,
+        1859.45,
+        659.52
+      ]
+    },
+    {
+      "metric_id": "common.other_income",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "31",
+      "label_raw": "Thu nhập khác",
+      "standard_label": "Thu nhập khác",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "175.450.599.740",
+      "numeric_value": 175450599740,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r13",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        641.52,
+        1575.99,
+        659.52
+      ]
+    },
+    {
+      "metric_id": "common.other_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "32",
+      "label_raw": "Chi phí khác",
+      "standard_label": "Chi phí khác",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "109.695.446.783",
+      "numeric_value": 109695446783,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r14",
+      "column_key": "c2",
+      "cell_bbox": [
+        1722.35,
+        675.23,
+        1859.45,
+        693.23
+      ]
+    },
+    {
+      "metric_id": "common.other_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "32",
+      "label_raw": "Chi phí khác",
+      "standard_label": "Chi phí khác",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "130.864.954.876",
+      "numeric_value": 130864954876,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "positive_magnitude",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r14",
+      "column_key": "c1",
+      "cell_bbox": [
+        1438.88,
+        675.23,
+        1575.99,
+        693.23
+      ]
+    },
+    {
+      "metric_id": "common.other_profit",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "40",
+      "label_raw": "Lợi nhuận khác (40 = 31 – 32)",
+      "standard_label": "Lợi nhuận khác",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "91.260.564.137",
+      "numeric_value": 91260564137,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r15",
+      "column_key": "c2",
+      "cell_bbox": [
+        1730.56,
+        708.95,
+        1859.45,
+        726.95
+      ]
+    },
+    {
+      "metric_id": "common.other_profit",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "40",
+      "label_raw": "Lợi nhuận khác (40 = 31 – 32)",
+      "standard_label": "Lợi nhuận khác",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "44.585.644.864",
+      "numeric_value": 44585644864,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r15",
+      "column_key": "c1",
+      "cell_bbox": [
+        1447.09,
+        708.95,
+        1575.99,
+        726.95
+      ]
+    },
+    {
+      "metric_id": "common.profit_before_tax",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "50",
+      "label_raw": "Tổng lợi nhuận kế toán trước thuế (50 = 30 + 40)",
+      "standard_label": "Tổng lợi nhuận kế toán trước thuế",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "9.203.006.098.570",
+      "numeric_value": 9203006098570,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r16",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.49,
+        742.66,
+        1859.44,
+        760.66
+      ]
+    },
+    {
+      "metric_id": "common.profit_before_tax",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "50",
+      "label_raw": "Tổng lợi nhuận kế toán trước thuế (50 = 30 + 40)",
+      "standard_label": "Tổng lợi nhuận kế toán trước thuế",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "11.069.666.417.819",
+      "numeric_value": 11069666417819,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r16",
+      "column_key": "c1",
+      "cell_bbox": [
+        1410.88,
+        742.66,
+        1575.97,
+        760.66
+      ]
+    },
+    {
+      "metric_id": "common.current_income_tax_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "51",
+      "label_raw": "Chi phí thuế thu nhập doanh nghiệp (“TNDN”) hiện hành",
+      "standard_label": "Chi phí thuế TNDN hiện hành",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.424.017.001.796",
+      "numeric_value": 1424017001796,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r17",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.49,
+        776.37,
+        1859.44,
+        794.37
+      ]
+    },
+    {
+      "metric_id": "common.current_income_tax_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "51",
+      "label_raw": "Chi phí thuế thu nhập doanh nghiệp (“TNDN”) hiện hành",
+      "standard_label": "Chi phí thuế TNDN hiện hành",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.922.927.614.658",
+      "numeric_value": 1922927614658,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r17",
+      "column_key": "c1",
+      "cell_bbox": [
+        1421.03,
+        776.37,
+        1575.97,
+        794.37
+      ]
+    },
+    {
+      "metric_id": "common.deferred_income_tax_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "52",
+      "label_raw": "Thu nhập thuế TNDN hoãn lại",
+      "standard_label": "Chi phí thuế TNDN hoãn lại",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(9.060.642.842)",
+      "numeric_value": -9060642842,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r18",
+      "column_key": "c2",
+      "cell_bbox": [
+        1727.41,
+        810.09,
+        1859.47,
+        828.09
+      ]
+    },
+    {
+      "metric_id": "common.deferred_income_tax_expense",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "52",
+      "label_raw": "Thu nhập thuế TNDN hoãn lại",
+      "standard_label": "Chi phí thuế TNDN hoãn lại",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "(280.683.727.283)",
+      "numeric_value": -280683727283,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        153
+      ],
+      "table_id": "p153-t1",
+      "row_id": "r18",
+      "column_key": "c1",
+      "cell_bbox": [
+        1423.62,
+        810.09,
+        1575.99,
+        828.09
+      ]
+    },
+    {
+      "metric_id": "common.profit_after_tax",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "60",
+      "label_raw": "Lợi nhuận sau thuế TNDN (60 = 50 – 51 – 52)",
+      "standard_label": "Lợi nhuận sau thuế thu nhập doanh nghiệp",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "7.788.049.739.616",
+      "numeric_value": 7788049739616,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r1",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.46,
+        214.47,
+        1859.4,
+        232.47
+      ]
+    },
+    {
+      "metric_id": "common.profit_after_tax",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "60",
+      "label_raw": "Lợi nhuận sau thuế TNDN (60 = 50 – 51 – 52)",
+      "standard_label": "Lợi nhuận sau thuế thu nhập doanh nghiệp",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "9.427.422.530.444",
+      "numeric_value": 9427422530444,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r1",
+      "column_key": "c1",
+      "cell_bbox": [
+        1420.99,
+        214.47,
+        1575.94,
+        232.47
+      ]
+    },
+    {
+      "metric_id": "common.profit_parent",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "61",
+      "label_raw": "Cổ đông của công ty mẹ",
+      "standard_label": "Lợi nhuận sau thuế của công ty mẹ",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "6.465.190.432.622",
+      "numeric_value": 6465190432622,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r3",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.46,
+        270.18,
+        1859.4,
+        288.18
+      ]
+    },
+    {
+      "metric_id": "common.profit_parent",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "61",
+      "label_raw": "Cổ đông của công ty mẹ",
+      "standard_label": "Lợi nhuận sau thuế của công ty mẹ",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "7.856.767.812.178",
+      "numeric_value": 7856767812178,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r3",
+      "column_key": "c1",
+      "cell_bbox": [
+        1420.99,
+        270.18,
+        1575.94,
+        288.18
+      ]
+    },
+    {
+      "metric_id": "common.profit_noncontrolling",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "62",
+      "label_raw": "Cổ đông không kiểm soát",
+      "standard_label": "Lợi nhuận sau thuế của cổ đông không kiểm soát",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.322.859.306.994",
+      "numeric_value": 1322859306994,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r4",
+      "column_key": "c2",
+      "cell_bbox": [
+        1704.46,
+        303.89,
+        1859.4,
+        321.89
+      ]
+    },
+    {
+      "metric_id": "common.profit_noncontrolling",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "62",
+      "label_raw": "Cổ đông không kiểm soát",
+      "standard_label": "Lợi nhuận sau thuế của cổ đông không kiểm soát",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "1.570.654.718.266",
+      "numeric_value": 1570654718266,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "arithmetic_verified",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r4",
+      "column_key": "c1",
+      "cell_bbox": [
+        1420.99,
+        303.89,
+        1575.94,
+        321.89
+      ]
+    },
+    {
+      "metric_id": "common.basic_eps",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "70",
+      "label_raw": "Lãi cơ bản trên cổ phiếu",
+      "standard_label": "Lãi cơ bản trên cổ phiếu",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "4.052",
+      "numeric_value": 4052,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "unverified_optional",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r5",
+      "column_key": "c2",
+      "cell_bbox": [
+        1813.14,
+        337.61,
+        1859.49,
+        355.61
+      ]
+    },
+    {
+      "metric_id": "common.basic_eps",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "70",
+      "label_raw": "Lãi cơ bản trên cổ phiếu",
+      "standard_label": "Lãi cơ bản trên cổ phiếu",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "4.944",
+      "numeric_value": 4944,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "unverified_optional",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r5",
+      "column_key": "c1",
+      "cell_bbox": [
+        1529.68,
+        337.61,
+        1576.03,
+        355.61
+      ]
+    },
+    {
+      "metric_id": "common.diluted_eps",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "71",
+      "label_raw": "Lãi suy giảm trên cổ phiếu",
+      "standard_label": "Lãi suy giảm trên cổ phiếu",
+      "period_end": "2023-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "4.052",
+      "numeric_value": 4052,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "unverified_optional",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r6",
+      "column_key": "c2",
+      "cell_bbox": [
+        1813.14,
+        371.32,
+        1859.49,
+        389.32
+      ]
+    },
+    {
+      "metric_id": "common.diluted_eps",
+      "statement": "income_statement",
+      "accounting_standard": "TT200_NONBANK",
+      "code": "71",
+      "label_raw": "Lãi suy giảm trên cổ phiếu",
+      "standard_label": "Lãi suy giảm trên cổ phiếu",
+      "period_end": "2024-12-31",
+      "period_type": "duration",
+      "period_role": "explicit",
+      "raw": "4.944",
+      "numeric_value": 4944,
+      "currency": "VND",
+      "unit_multiplier": 1,
+      "sign_convention": "signed",
+      "verification_status": "unverified_optional",
+      "pdf_pages": [
+        154
+      ],
+      "table_id": "p154-t1",
+      "row_id": "r6",
+      "column_key": "c1",
+      "cell_bbox": [
+        1529.68,
+        371.32,
+        1576.03,
+        389.32
+      ]
+    }
+  ]
+}

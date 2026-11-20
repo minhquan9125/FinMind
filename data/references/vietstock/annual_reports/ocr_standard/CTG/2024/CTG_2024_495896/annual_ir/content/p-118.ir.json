@@ -1,0 +1,63 @@
+{
+  "ir_version": "1",
+  "page": 118,
+  "printed_page": "230",
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+    "file_name": "CTG_2024_495896.pdf"
+  },
+  "blocks": [
+    {"id": "p118-b1", "type": "heading", "text": "PHẦN 5 QUẢN TRỊ CÔNG TY", "bbox": [75.89, 23.46, 180.08, 31.46]},
+    {"id": "p118-b2", "type": "heading", "text": "8 - CAM KẾT THỰC HIỆN QUẢN TRỊ CÔNG TY", "bbox": [70.87, 46.14, 233.08, 54.14]},
+    {
+      "id": "p118-b3",
+      "type": "paragraph",
+      "text": "Doanh VietinBank cam kết luôn tuân thủ các quy định pháp luật về quản trị công ty bao gồm Luật\nDoanh nghiệp, Luật Các TCTD, Luật Chứng khoán, Thông tư 116/2020/TT-BTC của Bộ Tài chính\nhướng dẫn một số điều về quản trị công ty áp dụng đối với công ty đại chúng, Thông tư 96/2020/TT-\nBCTC của Bộ Tài chính hướng dẫn về việc CBTT trên thị trường chứng khoán và các văn bản pháp\nluật quy định khác. Đồng thời, VietinBank cũng luôn tuân thủ các quy định nội bộ về quản trị công ty\ncủa VietinBank như: Điều lệ tổ chức và hoạt động của VietinBank, Quy chế Quản trị nội bộ, Quy chế\ntổ chức và hoạt động của HĐQT VietinBank, Quy chế tổ chức và hoạt động của BKS VietinBank…\nTrong năm 2024, VietinBank đã thực hiện đầy đủ và kịp thời việc CBTT đúng hạn, báo cáo tình hình\nquản trị công ty 6 tháng và cả năm, BCTN và các tài liệu khác theo quy định của pháp luật.",
+      "bbox": [87.02, 100.46, 540.06, 206.46]
+    },
+    {
+      "id": "p118-b4",
+      "type": "paragraph",
+      "text": "Một số điểm cải thiện để nâng cao hoạt động quản trị của VietinBank trong thời gian tới",
+      "bbox": [87.02, 220.63, 496.45, 230.63]
+    },
+    {
+      "id": "p118-b5",
+      "type": "paragraph",
+      "text": "» Tiếp tục nghiên cứu và áp dụng các chuẩn mực quốc tế về quản trị công ty.",
+      "bbox": [104.03, 244.46, 467.64, 254.5]
+    },
+    {
+      "id": "p118-b6",
+      "type": "paragraph",
+      "text": "» Mở rộng các chương trình đào tạo quản trị công ty cho các TV HĐQT, TV BKS, TV BĐH nhằm\nđảm bảo Ban Lãnh đạo liên tục được nâng cao năng lực và kinh nghiệm trong quản trị\ndoanh nghiệp.",
+      "bbox": [104.04, 268.46, 540.08, 302.46]
+    },
+    {
+      "id": "p118-b7",
+      "type": "paragraph",
+      "text": "» Tiếp tục kiện toàn và tăng cường vai trò giám sát của BKS trong quản trị nội bộ của VietinBank.",
+      "bbox": [104.04, 316.46, 540.07, 326.5]
+    },
+    {
+      "id": "p118-b8",
+      "type": "paragraph",
+      "text": "» Nghiên cứu và ứng dụng công nghệ hiện đại vào công tác quản trị công ty và giám sát hoạt\nđộng của các đơn vị.",
+      "bbox": [104.04, 340.46, 540.07, 362.46]
+    },
+    {
+      "id": "p118-b9",
+      "type": "paragraph",
+      "text": "» Tăng cường hoạt động của các Ủy ban và Văn phòng HĐQT để thực hiện công tác tham\nmưu, giúp việc cho HĐQT.",
+      "bbox": [104.04, 376.46, 540.08, 398.46]
+    },
+    {"id": "p118-b10", "type": "furniture", "text": "BÁO CÁO “CHUYỂN ĐỔI SỐ\nTHƯỜNG NIÊN", "bbox": [853.22, 799.91, 951.1, 811.96]},
+    {"id": "p118-b11", "type": "furniture", "text": "230", "bbox": [78.8, 807.9, 92.26, 815.9]},
+    {"id": "p118-b12", "type": "furniture", "text": "231", "bbox": [1099.24, 807.9, 1110.4, 815.9]},
+    {"id": "p118-b13", "type": "furniture", "text": "2024 CHUYỂN ĐỔI XANH ”", "bbox": [876.62, 810.49, 971.18, 818.54]}
+  ]
+}

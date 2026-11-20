@@ -1,0 +1,166 @@
+{
+  "text": "là\n\nf1U\nII\n\nLá cá\n\n1ì\n\n,\n\nCHÍNH\n\n,\n\nBAO CAO\n\nTÀI",
+  "chars": 29,
+  "words": 12,
+  "wordItems": [
+    {
+      "text": "là",
+      "bbox": [
+        3041,
+        1297,
+        3086,
+        1367
+      ],
+      "conf": 58.032356,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "f1U",
+      "bbox": [
+        2873,
+        1176,
+        2998,
+        1285
+      ],
+      "conf": 48.10688,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "II",
+      "bbox": [
+        2943,
+        1298,
+        3036,
+        1369
+      ],
+      "conf": 41.621479,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Lá",
+      "bbox": [
+        2892,
+        1346,
+        2909,
+        1359
+      ],
+      "conf": 40.970951,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cá",
+      "bbox": [
+        2920,
+        1348,
+        2936,
+        1360
+      ],
+      "conf": 52.554699,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "1ì",
+      "bbox": [
+        2891,
+        1298,
+        2935,
+        1340
+      ],
+      "conf": 49.203865,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": ",",
+      "bbox": [
+        1014,
+        1097,
+        1034,
+        1117
+      ],
+      "conf": 89.988937,
+      "block": 10,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        841,
+        1262,
+        1241,
+        1376
+      ],
+      "conf": 95.707542,
+      "block": 11,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": ",",
+      "bbox": [
+        717,
+        1097,
+        737,
+        1117
+      ],
+      "conf": 91.103287,
+      "block": 13,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BAO",
+      "bbox": [
+        608,
+        1123,
+        850,
+        1210
+      ],
+      "conf": 84.513809,
+      "block": 14,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CAO",
+      "bbox": [
+        895,
+        1123,
+        1147,
+        1210
+      ],
+      "conf": 96.455788,
+      "block": 14,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        602,
+        1263,
+        794,
+        1373
+      ],
+      "conf": 96.409096,
+      "block": 15,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 70,
+  "lowConfRatio": 0.5,
+  "seconds": 0.817
+}

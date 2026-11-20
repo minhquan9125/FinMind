@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "3ad38ad2e76deb5e3c51",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-3001873/ctg-nhan-duoc-cac-van-ban-cua-hnx-ve-viec-huy-niem-yet-trai-phieu-ctg123033.chn",
+      "title": "CTG: Nhận được các văn bản của HNX về việc hủy niêm yết trái phiếu CTG123033",
+      "description": "CTG: Nhận được các văn bản của HNX về việc hủy niêm yết trái phiếu CTG123033",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam thông báo nhận được các văn bản của HNX về việc hủy niêm yết trái phiếu CTG123033 như sau: Các tập tin đính kèm 20261019 - CTG - Cac van ban cua HNX ve viec huy niem yet trai phieu CTG123033_Signed.pdf Theo HOSE",
+      "published_at": "2026-10-20T01:22:23+00:00",
+      "crawled_at": "2026-10-29T07:42:19.624967+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/201026/ctg-nhan-duoc-cac-van-ban-cua-hnx-ve-viec-huy-niem-yet-trai-phieu-ctg123033-0.pdf?v=1792459617998"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008947368421052631,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "cc565f73c7f0895ec5b1",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2996472/ctg-ban-cao-bach-va-thong-bao-chao-ban-trai-phieu-ra-cong-chung.chn",
+      "title": "CTG: Bản cáo bạch và thông báo chào bán trái phiếu ra công chúng",
+      "description": "CTG: Bản cáo bạch và thông báo chào bán trái phiếu ra công chúng",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam công bố Bản cáo bạch và thông báo chào bán trái phiếu ra công chúng như sau: Các tập tin đính kèm 20261009 - CTG - Ban cao bach va Thong bao chao ban trai phieu ra cong chung Dot 1 - Phan 1_Signed.pdf 20261009 - CTG - Ban cao bach va Thong bao chao ban trai phieu ra cong chung Dot 1 - Phan 3_Signed.pdf 20261009 - CTG - Ban cao bach va Thong bao chao ban trai phieu ra cong chung Dot 1 - Phan 2_Signed.pdf Theo HOSE",
+      "published_at": "2026-10-12T10:51:03+00:00",
+      "crawled_at": "2026-10-29T07:42:20.528682+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/121026/ctg-ban-cao-bach-va-thong-bao-chao-ban-trai-phieu-ra-cong-chung-0.pdf?v=1791802471456",
+        "https://cafefnew.mediacdn.vn/download/121026/ctg-ban-cao-bach-va-thong-bao-chao-ban-trai-phieu-ra-cong-chung-1.pdf?v=1791802472492",
+        "https://cafefnew.mediacdn.vn/download/121026/ctg-ban-cao-bach-va-thong-bao-chao-ban-trai-phieu-ra-cong-chung-2.pdf?v=1791802473447"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008056872037914692,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "1e6d54bb4b100dc70562",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2993982/ctg-giay-chung-nhan-dang-ky-chao-ban-trai-phieu-ra-cong-chung.chn",
+      "title": "CTG: Giấy chứng nhận đăng ký chào bán trái phiếu ra công chúng",
+      "description": "CTG: Giấy chứng nhận đăng ký chào bán trái phiếu ra công chúng",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam thông báo Giấy chứng nhận đăng ký chào bán trái phiếu ra công chúng như sau: Các tập tin đính kèm 20261008 - CTG - Giay chung nhan dang ky chao ban trai phieu ra cong chung_Signed.pdf Theo HOSE",
+      "published_at": "2026-10-08T09:31:36+00:00",
+      "crawled_at": "2026-10-29T07:42:21.245045+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/081026/ctg-giay-chung-nhan-dang-ky-chao-ban-trai-phieu-ra-cong-chung-0.pdf?v=1791452165624"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.00909090909090909,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "6000f00f69f921baa713",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2989827/ctg-hdqt-thong-qua-noi-dung-van-ban-sua-doi-bo-sung-hop-dong-ket-noi-giua-vietinbank-va-vietinbank-fmc.chn",
+      "title": "CTG: HĐQT thông qua nội dung Văn bản sửa đổi bổ sung Hợp đồng kết nối giữa VietinBank và VietinBank FMC",
+      "description": "CTG: HĐQT thông qua nội dung Văn bản sửa đổi bổ sung Hợp đồng kết nối giữa VietinBank và VietinBank FMC",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam công bố HĐQT thông qua nội dung Văn bản sửa đổi bổ sung Hợp đồng kết nối giữa VietinBank và VietinBank FMC như sau: Các tập tin đính kèm 20261002 - CTG - HDQT thong qua VB sua doi bo sung HD ket noi voi VietinBank FMC_signed.pdf Theo HOSE",
+      "published_at": "2026-10-02T10:29:41+00:00",
+      "crawled_at": "2026-10-29T07:42:22.128711+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/021026/ctg-h-qt-thong-qua-noi-dung-van-ban-sua-doi-bo-sung-hop-dong-ket-noi-giua-vietinbank-va-vietinbank-fmc-0.pdf?v=1790937442538"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008854166666666666,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "33ac6cd5f87be9a42dba",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2988967/ctg-bao-cao-ket-qua-dot-chao-ban-co-phieu-php-do-vietinbank-so-huu-ra-cong-chung.chn",
+      "title": "CTG: Báo cáo kết quả đợt chào bán cổ phiếu PHP do Vietinbank sở hữu ra công chúng",
+      "description": "CTG: Báo cáo kết quả đợt chào bán cổ phiếu PHP do Vietinbank sở hữu ra công chúng",
+      "content": "Công ty Cổ phần Đầu tư Phát triển máy Việt Nam công bố Báo cáo kết quả đợt chào bán cổ phiếu PHP do Vietinbank sở hữu ra công chúng như sau: Các tập tin đính kèm 20261001 - CTG - Bao cao ket qua chao ban co phieu PHP do VietinBank so huu ra cong chung_Signed.pdf Theo HOSE",
+      "published_at": "2026-09-30T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:42:22.934899+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/011026/ctg-bao-cao-ket-qua-dot-chao-ban-co-phieu-php-do-vietinbank-so-huu-ra-cong-chung-0.pdf?v=1790851424702"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.004885057471264368,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "5b642ca9f1dd5235a86e",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2987864/ctg-hdqt-thong-qua-noi-dung-hop-dong-bao-hiem-moi-rui-ro-tai-san-voi-vbi.chn",
+      "title": "CTG: HĐQT thông qua nội dung Hợp đồng bảo hiểm mọi rủi ro tài sản với VBI",
+      "description": "CTG: HĐQT thông qua nội dung Hợp đồng bảo hiểm mọi rủi ro tài sản với VBI",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam công bố việc HĐQT thông qua nội dung Hợp đồng bảo hiểm mọi rủi ro tài sản với VBI như sau: Các tập tin đính kèm 20260930 - CTG - HDQT thong qua noi dung HD bao hiem moi rui ro tai san voi VBI_signed.pdf Theo HOSE",
+      "published_at": "2026-09-30T09:46:32+00:00",
+      "crawled_at": "2026-10-29T07:42:23.771007+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/300926/ctg-h-qt-thong-qua-noi-dung-hop-dong-bao-hiem-moi-rui-ro-tai-san-voi-vbi-0.pdf?v=1790761679291"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008900523560209424,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "278afc8bb82f6f5a4b3c",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2986219/ctg-cbtt-hdqt-thong-qua-noi-dung-hop-dong-cam-co-the-chap-giua-vietinbank-voi-vbi.chn",
+      "title": "CTG: CBTT HĐQT thông qua nội dung hợp đồng cầm cố, thế chấp giữa Vietinbank với VBI",
+      "description": "CTG: CBTT HĐQT thông qua nội dung hợp đồng cầm cố, thế chấp giữa Vietinbank với VBI",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam thông báo HĐQT thông qua nội dung hợp đồng cầm cố, thế chấp giữa Vietinbank với VBI như sau: Các tập tin đính kèm 20260928 - CTG - HDQT thong qua noi dung Hop dong cam co, the chap voi VBI_signed.pdf Theo HOSE",
+      "published_at": "2026-09-28T11:03:10+00:00",
+      "crawled_at": "2026-10-29T07:42:24.612075+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/280926/ctg-cbtt-h-qt-thong-qua-noi-dung-hop-dong-cam-co-the-chap-giua-vietinbank-voi-vbi-0.pdf?v=1790593684802"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008994708994708995,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "be44cb1d95e0b7265086",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2979438/ctg-cbtt-thong-qua-noi-dung-hop-dong-khung-tien-gui-co-ky-han-va-hop-dong-tien-gui-ky-han-cu-the-voi-vietinbank-global-money-transfer-vietinbank-fmc-vietinbank-amc.chn",
+      "title": "CTG: CBTT thông qua nội dung Hợp đồng khung tiền gửi có kỳ hạn và Hợp đồng tiền gửi kỳ hạn cụ thể với VietinBank Global Money Transfer, VietinBank FMC, VietinBank AMC",
+      "description": "CTG: CBTT thông qua nội dung Hợp đồng khung tiền gửi có kỳ hạn và Hợp đồng tiền gửi kỳ hạn cụ thể với VietinBank Global Money Transfer, VietinBank FMC, VietinBank AMC",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam thông báo nội dung Hợp đồng khung tiền gửi có kỳ hạn và Hợp đồng tiền gửi kỳ hạn cụ thể với VietinBank Global Money Transfer, VietinBank FMC, VietinBank AMC như sau: Các tập tin đính kèm 20260918 - CTG - HDQT thong qua HD tien gui co ky han voi VTB Global Money Transfer, FMC, AMC_signed.pdf Theo HOSE",
+      "published_at": "2026-09-18T10:43:58+00:00",
+      "crawled_at": "2026-10-29T07:42:25.362551+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/180926/ctg-cbtt-thong-qua-noi-dung-hop-dong-khung-tien-gui-co-ky-han-va-hop-dong-tien-gui-ky-han-cu-the-voi-vietinbank-global-money-transfer-vietinbank-fmc-v-0.pdf?v=1789728517105"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.017258883248730962,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "84910e1ce61feddc1326",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2978360/ctg-hdqt-thong-qua-noi-dung-ban-sua-doi-bo-sung-hop-dong-tu-van-va-hop-dong-dai-ly-giua-vietinbank-va-vbse.chn",
+      "title": "CTG: HĐQT thông qua nội dung Bản sửa đổi, bổ sung hợp đồng tư vấn và hợp đồng đại lý giữa Vietinbank và VBSE",
+      "description": "CTG: HĐQT thông qua nội dung Bản sửa đổi, bổ sung hợp đồng tư vấn và hợp đồng đại lý giữa Vietinbank và VBSE",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam thông báo HĐQT thông qua nội dung Bản sửa đổi, bổ sung hợp đồng tư vấn và hợp đồng đại lý giữa Vietinbank và VBSE như sau: Các tập tin đính kèm 20260917 - CTG - HDQT thong qua noi dung ban sua doi bo sung HD tu van va HD dai ly voi VBSE_Signed.pdf Theo HOSE",
+      "published_at": "2026-09-16T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:42:26.157453+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/170926/ctg-h-qt-thong-qua-noi-dung-ban-sua-doi-bo-sung-hop-dong-tu-van-va-hop-dong-dai-ly-giua-vietinbank-va-vbse-0.pdf?v=1789631346067"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008673469387755102,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    },
+    {
+      "id": "f16c0f3d668a277b93a9",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ctg-2978361/ctg-nghi-quyet-hdqt-thong-qua-cac-noi-dung-lien-quan-den-phuong-an-phat-hanh-trai-phieu-ra-cong-chung.chn",
+      "title": "CTG: Nghị quyết HĐQT thông qua các nội dung liên quan đến phương án phát hành trái phiếu ra công chúng",
+      "description": "CTG: Nghị quyết HĐQT thông qua các nội dung liên quan đến phương án phát hành trái phiếu ra công chúng",
+      "content": "Ngân hàng Thương mại Cổ phần Công Thương Việt Nam thông báo Nghị quyết HĐQT về việc thông qua các nội dung liên quan đến phương án phát hành trái phiếu ra công chúng như sau: Các tập tin đính kèm 20260917 - CTG - NQ HDQT thong qua cac noi dung lien quan den PA phat hanh trai phieu ra cong chung cua VietinBank_Signed.pdf Theo HOSE",
+      "published_at": "2026-09-16T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:42:26.943249+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/170926/ctg-nghi-quyet-h-qt-ve-viec-thong-qua-cac-noi-dung-lien-quan-den-phuong-an-phat-hanh-trai-phieu-ra-cong-chung-0.pdf?v=1789631348240"
+      ],
+      "symbols": [
+        "CTG"
+      ],
+      "matched_symbols": [
+        "CTG"
+      ],
+      "scopes": [
+        "CTG"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.008673469387755102,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/lai-suat-vietinbank-hom-nay-gui-tiet-kiem-tai-quay-100-trieu-dong-thu-ve-11-trieu-dong/42521633",
+        "matched_file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:51:10.035473+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:42:26.945774+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "CTG",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

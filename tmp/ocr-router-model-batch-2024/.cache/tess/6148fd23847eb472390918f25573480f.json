@@ -1,0 +1,153 @@
+{
+  "text": "28,161,92\nï\n\nBÁO CÁO TÀI CHÍNH RIÊNG\nĐÃ ĐƯỢC KIỂM TOÁN",
+  "chars": 43,
+  "words": 11,
+  "wordItems": [
+    {
+      "text": "28,161,92",
+      "bbox": [
+        1031,
+        795,
+        1138,
+        816
+      ],
+      "conf": 76.152374,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ï",
+      "bbox": [
+        1028,
+        837,
+        1038,
+        847
+      ],
+      "conf": 0.0,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        526,
+        1723,
+        608,
+        1756
+      ],
+      "conf": 90.448708,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        624,
+        1723,
+        707,
+        1756
+      ],
+      "conf": 96.745651,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        723,
+        1723,
+        782,
+        1756
+      ],
+      "conf": 95.513351,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        799,
+        1723,
+        918,
+        1756
+      ],
+      "conf": 92.959976,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "RIÊNG",
+      "bbox": [
+        935,
+        1723,
+        1050,
+        1756
+      ],
+      "conf": 90.811478,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐÃ",
+      "bbox": [
+        525,
+        1791,
+        581,
+        1824
+      ],
+      "conf": 93.302956,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐƯỢC",
+      "bbox": [
+        596,
+        1793,
+        708,
+        1830
+      ],
+      "conf": 91.932632,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "KIỂM",
+      "bbox": [
+        724,
+        1785,
+        814,
+        1824
+      ],
+      "conf": 91.942505,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TOÁN",
+      "bbox": [
+        830,
+        1791,
+        938,
+        1824
+      ],
+      "conf": 96.43866,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 83,
+  "lowConfRatio": 0.091,
+  "seconds": 0.352
+}

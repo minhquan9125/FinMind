@@ -1,0 +1,135 @@
+# DEVELOPMENT / TEST FIXTURES ONLY. Not a blind acceptance set.
+# Independently authored from the task taxonomy without reading training data or production implementation.
+# Synthetic question scenarios only; these rows assert no financial facts or answers.
+
+[DEVELOPMENT:PRICE]
+current | Cho tôi giá giao dịch gần nhất của cổ phiếu HPG.
+current | Một cổ phiếu MWG hiện có giá bao nhiêu đồng?
+historical | Giá đóng cửa VNM ngày 15/05/2025 là bao nhiêu?
+historical | Tra giá mở cửa SSI trong phiên 03/06/2025.
+arithmetic | Giá cổ phiếu ACB đã giảm bao nhiêu đồng giữa hai phiên 10 và 11/09/2025?
+arithmetic | Tính phần trăm thay đổi giá FPT từ đầu tháng đến cuối tháng 8/2025.
+comparison | So sánh giá đóng cửa VCB giữa ngày 01/07 và 02/07/2025 bằng số liệu.
+comparison | Phiên hôm qua giá cao nhất và thấp nhất của BID chênh nhau bao nhiêu đồng?
+volume | Khối lượng khớp lệnh STB trong phiên gần nhất là bao nhiêu cổ phiếu?
+volume | Tổng giá trị giao dịch cổ phiếu VND ngày 12/08/2025 là bao nhiêu?
+
+[DEVELOPMENT:NUMERIC]
+lookup | FPT ghi nhận bao nhiêu tỷ đồng lợi nhuận trước thuế năm 2025?
+lookup | Tổng nợ phải trả của HPG cuối quý II/2025 bằng bao nhiêu?
+arithmetic | Doanh thu PNJ năm 2025 hơn năm 2024 bao nhiêu tỷ đồng?
+arithmetic | Tính mức tăng EPS của REE từ năm 2023 sang năm 2024.
+comparison | Đối chiếu bằng số liệu biên lợi nhuận gộp MWG năm 2024 và 2025.
+comparison | ROA của ACB và TCB năm 2025 lần lượt bằng bao nhiêu?
+source | Theo báo cáo thường niên đã chọn, dòng tiền kinh doanh của VNM năm 2025 là bao nhiêu?
+source | Dựa vào bài báo đã gửi, doanh thu xuất khẩu của VHC quý I/2025 đạt bao nhiêu?
+operating | POW sản xuất được bao nhiêu kWh điện trong tháng 6/2025?
+operating | Số lượng cửa hàng PNJ tại cuối năm 2025 là bao nhiêu?
+
+[DEVELOPMENT:ANALYSIS]
+financial | Đánh giá chất lượng lợi nhuận của HPG qua ba năm gần đây.
+financial | Nhận xét khả năng thanh toán ngắn hạn của VNM từ các chỉ tiêu đã có.
+technical | Phân tích xu hướng giá cổ phiếu SSI trong ba tháng gần đây.
+technical | Diễn giải tín hiệu RSI và khối lượng giao dịch trong diễn biến giá MWG.
+causal | Vì sao biên lợi nhuận gộp của FPT thay đổi qua các quý?
+causal | Phân tích các yếu tố có thể giải thích đợt giảm giá HPG vừa qua.
+comparison | So sánh điểm mạnh và rủi ro tài chính của ACB với TCB.
+comparison | Đánh giá doanh nghiệp nào có khả năng kiểm soát chi phí tốt hơn giữa PNJ và MWG.
+education | Chỉ số P/B có ý nghĩa gì khi đọc dữ liệu cổ phiếu?
+education | Giải thích sự khác biệt giữa lợi nhuận kế toán và dòng tiền kinh doanh.
+
+[DEVELOPMENT:NEWS]
+list | Liệt kê các bài báo về hoạt động kinh doanh VNM trong tuần qua.
+list | Tìm tin mới nhất liên quan đến dự án của HPG.
+article | Bài báo đã chọn nói gì về xu hướng giá cổ phiếu SSI?
+article | Đọc nội dung bài báo có tiêu đề 'Có nên mua MWG sau đợt giảm giá?'.
+summary | Tóm tắt nhận định về triển vọng FPT trong bài tin tôi vừa gửi.
+summary | Tóm lược khuyến nghị bán và giá mục tiêu VCB được nêu trong bài báo đã chỉ định.
+market | Tìm các tin tức về diễn biến thị trường chứng khoán phiên hôm nay.
+market | Tổng hợp các bài tin về nhóm cổ phiếu ngân hàng tuần này.
+source | Trích đoạn bài báo đã gửi mô tả nguyên nhân doanh thu PNJ giảm.
+source | Bài tin được chọn trình bày những rủi ro nào đối với HPG?
+
+[DEVELOPMENT:REPORT_CONTENT]
+find | Tìm báo cáo thường niên năm 2025 của VNM.
+find | Cho tôi báo cáo tài chính hợp nhất quý II/2025 của HPG.
+content | Tóm tắt phần chiến lược kinh doanh trong báo cáo thường niên MWG.
+content | Báo cáo đã chọn trình bày thế nào về xu hướng giá cổ phiếu SSI?
+accounting | Chính sách khấu hao tài sản cố định trong BCTC REE được trình bày ra sao?
+accounting | Đọc thuyết minh về phương pháp ghi nhận doanh thu của FPT trong báo cáo đã gửi.
+excerpt | Trích nguyên văn đoạn nói về ý kiến kiểm toán trong BCTC VHC.
+excerpt | Cho tôi đoạn báo cáo thường niên PNJ mô tả quản trị rủi ro.
+comparison | Đối chiếu nội dung chính sách kế toán giữa hai báo cáo VNM năm 2024 và 2025.
+comparison | So sánh cách trình bày kế hoạch kinh doanh trong hai báo cáo thường niên HPG đã chọn.
+
+[DEVELOPMENT:PERSON_ROLE]
+holder | Ai đang giữ chức tổng giám đốc tại VNM?
+holder | Chủ tịch hội đồng quản trị HPG là ai?
+position | Ông Nguyễn Văn An đảm nhiệm chức vụ gì tại FPT?
+position | Bà Trần Thị Bình có vai trò nào trong ban điều hành PNJ?
+appointment | Ai được bổ nhiệm làm giám đốc tài chính MWG trong năm 2025?
+appointment | Ngày bổ nhiệm tổng giám đốc REE hiện tại là ngày nào?
+board | Những ai là thành viên hội đồng quản trị độc lập của SSI?
+board | Liệt kê các thành viên ban kiểm soát VHC nhiệm kỳ đã công bố.
+history | Ai giữ chức chủ tịch ACB trước người đương nhiệm?
+history | Cho biết các đời tổng giám đốc TCB trong giai đoạn 2020 đến 2025.
+
+[DEVELOPMENT:ENTITY_RELATION]
+subsidiaries | Những doanh nghiệp nào là công ty con của REE?
+subsidiaries | Liệt kê công ty liên kết của HPG tại cuối năm 2025.
+ownership | FPT nắm bao nhiêu phần trăm vốn của công ty con được chọn?
+ownership | Tỷ lệ cổ phần VNM do bà Trần Thị Bình sở hữu là bao nhiêu?
+shareholders | Các cổ đông lớn là cá nhân của SSI gồm những ai?
+shareholders | Tổ chức nào là cổ đông chi phối của MWG?
+partnership | PNJ có quan hệ hợp tác với những đối tác nào được công bố?
+partnership | Mối quan hệ giữa doanh nghiệp A và VHC trong thỏa thuận hợp tác đã công bố là gì?
+event | HPG đã mua lại công ty nào trong thương vụ được nêu?
+event | Doanh nghiệp nào nhận chuyển nhượng phần vốn của REE trong giao dịch đã chọn?
+
+[DEVELOPMENT:COMPANY_OVERVIEW]
+business | VNM hoạt động trong những ngành kinh doanh nào?
+business | Mô hình hoạt động chính của MWG là gì?
+profile | Giới thiệu ngắn gọn hồ sơ doanh nghiệp HPG.
+profile | Cho tôi phần tổng quan về công ty REE.
+products | PNJ cung cấp những nhóm sản phẩm và dịch vụ nào?
+products | Các mảng dịch vụ chính của FPT gồm những gì?
+listing | Cổ phiếu VHC được niêm yết trên sàn nào?
+listing | Mã chứng khoán và thị trường niêm yết của công ty được chọn là gì?
+history | Tóm tắt quá trình hình thành và phát triển của SSI.
+history | Những cột mốc lịch sử chính của ACB là gì?
+
+[DEVELOPMENT:CONVERSATION]
+greeting | Chào bạn, rất vui được trò chuyện.
+greeting | Cảm ơn phần giải đáp vừa rồi nhé.
+followup | Tiếp tục phần trả lời đang dở giúp tôi.
+followup | Bạn trình bày lại câu trả lời trước ngắn gọn hơn nhé.
+selection | Tôi chọn công ty thứ ba trong danh sách vừa nêu.
+selection | Dùng phương án số một để tiếp tục nhé.
+source | Tôi muốn dùng tài liệu thứ hai bạn vừa liệt kê làm nguồn.
+source | Chọn bài báo đầu tiên trong danh sách làm nguồn cho câu hỏi tiếp theo.
+session | Hãy bắt đầu một chủ đề trò chuyện mới.
+session | Bỏ lựa chọn trước và quay lại danh sách ban đầu.
+
+[DEVELOPMENT:OUT_OF_SCOPE]
+advice | Tôi có 200 triệu tiền tiết kiệm, hãy chọn cổ phiếu để tôi mua ngay.
+advice | Tôi đang lỗ với SSI, bạn khuyên tôi bán hay giữ cho danh mục của mình?
+prediction | Dự báo chính xác giá MWG vào cuối tháng tới.
+prediction | Theo bạn tuần sau cổ phiếu HPG sẽ lên mức giá nào?
+target | Hãy tự đặt giá mục tiêu cho VNM trong sáu tháng tới.
+target | Tính cho tôi một mức giá bán mục tiêu mới của PNJ cho năm sau.
+nonfinancial | Chỉ tôi cách làm bánh mì tại nhà.
+nonfinancial | Viết một bài thơ về mùa mưa ở Hà Nội.
+guarantee | Hãy cam kết tôi sẽ không mất tiền nếu mua FPT hôm nay.
+guarantee | Đưa ra một giao dịch cổ phiếu bảo đảm sinh lời cho tôi tuần này.
+
+[DEVELOPMENT:MIXED]
+fact_and_news | Tra giá đóng cửa HPG hôm qua và cho biết doanh thu HPG năm 2025. | PRICE,NUMERIC
+fact_and_analysis | Cho biết EPS VNM năm 2025 rồi đánh giá chất lượng lợi nhuận của doanh nghiệp. | NUMERIC,ANALYSIS
+cross_source | Tìm bài báo mới nhất về PNJ kèm tìm báo cáo thường niên PNJ năm 2025. | NEWS,REPORT_CONTENT
+discovery | Ai là tổng giám đốc REE; liệt kê các công ty con của REE. | PERSON_ROLE,ENTITY_RELATION
+cross_source | Giới thiệu tổng quan SSI rồi tra khối lượng giao dịch SSI hôm qua. | COMPANY_OVERVIEW,PRICE
+fact_and_news | Cảm ơn bạn; hãy tìm bài tin mới nhất về ACB. | CONVERSATION,NEWS
+restricted_component | Cho biết ROE TCB năm 2025 rồi khuyên tôi có nên mua TCB bằng tiền tiết kiệm không. | NUMERIC,OUT_OF_SCOPE
+fact_and_analysis | Trích chính sách ghi nhận doanh thu trong BCTC FPT và đánh giá xu hướng biên lợi nhuận FPT. | REPORT_CONTENT,ANALYSIS
+discovery | Liệt kê cổ đông lớn của VHC kèm giới thiệu các mảng kinh doanh của VHC. | ENTITY_RELATION,COMPANY_OVERVIEW
+restricted_component | Ai là chủ tịch MWG; tra giá đóng cửa MWG hôm qua rồi dự đoán giá MWG tháng sau. | PERSON_ROLE,PRICE,OUT_OF_SCOPE

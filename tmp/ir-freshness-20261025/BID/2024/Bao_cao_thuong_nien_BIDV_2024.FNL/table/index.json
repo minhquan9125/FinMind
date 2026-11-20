@@ -1,0 +1,203 @@
+{
+  "document_sha256": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+  "scope": "audited_financial_statements",
+  "pages": 11,
+  "page_ranges": [
+    {
+      "start": 74,
+      "end": 84
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "auditor_report",
+      "start": 74,
+      "end": 74
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 75,
+      "end": 76
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 77,
+      "end": 77
+    },
+    {
+      "page_class": "notes",
+      "start": 78,
+      "end": 84
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 74,
+      "printed_page": "2024",
+      "file": "p-074.ir.json",
+      "page_class": "auditor_report",
+      "title": "Ý kiến của kiểm toán viên",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 75,
+      "printed_page": "2024",
+      "file": "p-075.ir.json",
+      "page_class": "balance_sheet",
+      "title": "TỔNG TÀI SẢN",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 76,
+      "printed_page": "2024",
+      "file": "p-076.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BÁO CÁO",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 77,
+      "printed_page": "2024",
+      "file": "p-077.ir.json",
+      "page_class": "cash_flow",
+      "title": "LƯU CHUYỂN TIỀN THUẦN TỪ HOẠT ĐỘNG ĐẦU TƯ",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": true
+    },
+    {
+      "pdf_page": 78,
+      "printed_page": "2024",
+      "file": "p-078.ir.json",
+      "page_class": "notes",
+      "title": "Thuyết minh báo cáo tài chính hợp nhất",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 79,
+      "printed_page": "2024",
+      "file": "p-079.ir.json",
+      "page_class": "notes",
+      "title": "4. Xử lý rủi ro tín dụng",
+      "topics": [
+        "4. Xử lý rủi ro tín dụng",
+        "5. Phân loại nợ cho các cam kết ngoại bảng BIDV thực hiện phân loại đối với các khoản bảo lãnh, nghiệp vụ hiểm phải đóng theo thỏa thuận tại hợp đồng bảo hiểm khi bắt thư tín dụng (trừ nghiệp vụ phát hành thư tín dụng trả chậm có đầu thời hạn bảo hiểm; (4) khi hợp đồng bảo hiểm đã giao kết điều khoản thỏa thuận bên thụ hưởng được thanh toán trả ngay và có thỏa thuận cho bên mua bảo hiểm về việc đóng phí bảo hoặc trả trước ngày đến hạn thanh toán thư tín dụng và nghiệp hiểm theo kỳ tại hợp đồng bảo hiểm, các công ty con hoạt động vụ hoàn trả thư tín dụng theo hình thức thỏa thuận với khách trong lĩnh vực bảo hiểm của Ngân hàng hạch toán doanh thu số hàng thanh toán bằng nguồn tiền của ngân hàng hoàn trả kể phí bảo hiểm tương ứng với kỳ hoặc các kỳ phí bảo hiểm đã phát từ ngày ngân hàng hoàn trả thanh toán cho bên thụ hưởng; sinh, không hạch toán doanh thu số phí bảo hiểm chưa đến kỳ nghiệp vụ thương lượng thanh toán thư tín dụng), chấp nhận bên mua bảo hiểm phải đóng theo thỏa thuận tại hợp đồng bảo thanh toán, cam kết cho vay không hủy ngang và các cam kết hiểm. Thời hạn thanh toán phí bảo hiểm phải được quy định khác phát sinh rủi ro tín dụng (gọi chung là các khoản cam kết trong hợp đồng bảo hiểm. Những khoản hoàn hoặc giảm phí ngoại bảng) vào các nhóm quy định tại Điều 9, Điều 10 hoặc bảo hiểm gốc là các khoản giảm trừ doanh thu và được theo dõi Điều 11 của Thông tư 31. Theo đó, các khoản cam kết ngoại riêng, cuối kỳ kết chuyển vào tài khoản doanh thu phí bảo hiềm bảng được phân loại theo các mức độ rủi ro như sau: Nợ đủ tiêu gốc để tính doanh thu thuần. chuẩn, Nợ cần chú ý, Nợ dưới tiêu chuẩn, Nợ nghi ngờ và Nợ có khả năng mất vốn.",
+        "6. Doanh thu và chi phí"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 80,
+      "printed_page": "2024",
+      "file": "p-080.ir.json",
+      "page_class": "notes",
+      "title": "7. Lợi ích của nhân viên",
+      "topics": [
+        "7. Lợi ích của nhân viên"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 81,
+      "printed_page": "2024",
+      "file": "p-081.ir.json",
+      "page_class": "notes",
+      "title": "CHỨNG KHOÁN ĐẦU TƯ",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 82,
+      "printed_page": "2024",
+      "file": "p-082.ir.json",
+      "page_class": "notes",
+      "title": "PHÁT HÀNH GIẤY TỜ CÓ GIÁ",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 83,
+      "printed_page": "2024",
+      "file": "p-083.ir.json",
+      "page_class": "notes",
+      "title": "LÃI THUẦN TỪ HOẠT ĐỘNG KINH DOANH NGOẠI HỐI",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 84,
+      "printed_page": "2024",
+      "file": "p-084.ir.json",
+      "page_class": "notes",
+      "title": "7. Lợi ích của nhân viên",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    }
+  ],
+  "structured_table_ranges": [],
+  "needs_review": [
+    {
+      "pdf_page": 75,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "reason": "statement_columns_or_rows_unverified"
+    },
+    {
+      "pdf_page": 77,
+      "reason": "statement_columns_or_rows_unverified"
+    }
+  ],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [
+    {
+      "name": "template_unknown",
+      "reason": "accounting_form_not_identified",
+      "detected_profile": null,
+      "pdf_pages": [
+        75,
+        76,
+        77
+      ]
+    }
+  ],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": null,
+  "arithmetic_template_id": "TEMPLATE_UNKNOWN",
+  "arithmetic_template_sha256": null,
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [
+    {
+      "start": 78,
+      "end": 84
+    }
+  ],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

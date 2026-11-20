@@ -1,0 +1,60 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\ITD\\2024\\ITD_2024_509309.pdf",
+  "pages": 46,
+  "routes": {
+    "tesseract": 10,
+    "text_layer": 36
+  },
+  "status": {
+    "OK": 46
+  },
+  "flags": {
+    "MANUAL_REVIEWED": 4,
+    "NEAR_EMPTY": 4
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 0.38,
+    "renderAndTesseract": 29.274,
+    "gemini": 0.0,
+    "total": 29.817
+  },
+  "geminiApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 0,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\ITD\\2024",
+    "mode": "auto",
+    "provider": "local",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "structured",
+    "openrouterModel": "minimax/minimax-m3.1-flash:free",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 300,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

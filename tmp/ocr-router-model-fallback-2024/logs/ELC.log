@@ -1,0 +1,19 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\ELC\2024\ELC_2024_500811.pdf: 2 trang
+  lớp text: 0 trang dùng được, 2 trang cần OCR (1.006s)
+  [tess] trang 70: conf=85 low=0.12 rot=0 1.1s
+  [tess] trang 2: conf=85 low=0.176 rot=0 0.525s
+  [gemini-api] gemini-3.6-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.6-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  [gemini-api] gemini-3.6-flash: lỗi: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+  Gemini chưa xử lý được 2 trang; chuyển sang OmniRouter
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  [omnirouter] openai/gpt-4o: lỗi: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>
+  tuyến: {'tesseract': 2}  trạng thái: {'REVIEW': 2}
+  cờ: {'GEMINI_FAILED': 2}
+  thời gian (s): {'textLayer': 1.006, 'renderAndTesseract': 7.938, 'gemini': 30.835, 'total': 39.859}
+  Gemini API: 3 lần gọi (3 lỗi), token vào 0, ra 0
+  OpenRouter: 3 lần gọi (3 lỗi), token vào 0, ra 0
+  → D:\finmind\tmp\ocr-router-model-fallback-2024\ELC_2024_500811

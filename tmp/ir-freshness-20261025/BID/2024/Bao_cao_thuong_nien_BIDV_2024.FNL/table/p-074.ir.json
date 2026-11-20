@@ -1,0 +1,110 @@
+{
+  "ir_version": "1",
+  "page": 74,
+  "printed_page": "2024",
+  "page_class": "auditor_report",
+  "page_size": {"width": 3508, "height": 2481, "unit": "px"},
+  "source": {
+    "engine": "GEMINI",
+    "tool": "gemini-3.8-flash",
+    "document_sha256": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+    "file_name": "Bao_cao_thuong_nien_BIDV_2024.FNL.pdf",
+    "image_sha256": "2fd329aef9481d1245b7579dd6fe494e873d0fc385348524583b5d6266171971",
+    "render": {
+      "dpi": 212.17,
+      "rotation": 0
+    },
+    "prompt_version": "api-ir-v2"
+  },
+  "blocks": [
+    {"id": "p74-b1", "type": "furniture", "text": "BÁO CÁO TÀI CHÍNH", "bbox": [164.88, 143.9, 354.31, 161.26]},
+    {"id": "p74-b2", "type": "furniture", "text": "BIDV", "bbox": [3132.64, 129.01, 3343.12, 193.52]},
+    {"id": "p74-b3", "type": "heading", "text": "BÁO CÁO KIỂM TOÁN ĐỘC LẬP", "bbox": [171.89, 255.54, 1147.12, 339.9]},
+    {"id": "p74-b4", "type": "furniture", "text": "KPMG", "bbox": [245.56, 451.54, 417.45, 493.72]},
+    {
+      "id": "p74-b5",
+      "type": "paragraph",
+      "text": "KPMG Limited\n46th Floor, Keangnam Landmark 72\nE6 Pham Hung Street, Me Tri Ward\nSouth Tu Liem District, Hanoi, Vietnam\n+84 (24) 3946 1600 | kpmg.com.vn",
+      "bbox": [252.58, 607.85, 719.14, 756.71]
+    },
+    {"id": "p74-b6", "type": "heading", "text": "BÁO CÁO KIỂM TOÁN ĐỘC LẬP", "bbox": [252.58, 779.03, 712.12, 816.25]},
+    {
+      "id": "p74-b7",
+      "type": "heading",
+      "text": "Kính gửi các Cổ đông\nNgân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam",
+      "bbox": [252.58, 850.98, 1143.61, 917.97]
+    },
+    {
+      "id": "p74-b8",
+      "type": "paragraph",
+      "text": "Chúng tôi đã kiểm toán báo cáo tài chính hợp nhất đính kèm của Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam (“Ngân hàng”) và các công ty con (gọi chung là “BIDV”), bao gồm báo cáo tình hình tài chính hợp nhất tại ngày 31 tháng 12 năm 2024, báo cáo kết quả hoạt động hợp nhất và báo cáo lưu chuyển tiền tệ hợp nhất cho năm kết thúc cùng ngày và các thuyết minh kèm theo được Ban Điều hành Ngân hàng phê duyệt phát hành ngày 24 tháng 3 năm 2025, được trình bày từ trang 5 đến trang 84.",
+      "bbox": [252.58, 977.51, 1445.3, 1168.55]
+    },
+    {"id": "p74-b9", "type": "heading", "text": "Trách nhiệm của Ban Điều hành", "bbox": [252.58, 1200.8, 705.11, 1235.54]},
+    {
+      "id": "p74-b10",
+      "type": "paragraph",
+      "text": "Ban Điều hành Ngân hàng chịu trách nhiệm lập và trình bày trung thực và hợp lý báo cáo tài chính hợp nhất này theo các Chuẩn mực Kế toán Việt Nam, Chế độ Kế toán Việt Nam áp dụng cho các Tổ chức tín dụng do Ngân hàng Nhà nước Việt Nam ban hành và các quy định pháp lý có liên quan đến việc lập và trình bày báo cáo tài chính, và chịu trách nhiệm về kiểm soát nội bộ mà Ban Điều hành xác định là cần thiết để đảm bảo việc lập báo cáo tài chính hợp nhất không có sai sót trọng yếu do gian lận hay nhầm lẫn.",
+      "bbox": [252.58, 1265.31, 1448.8, 1453.87]
+    },
+    {"id": "p74-b11", "type": "heading", "text": "Trách nhiệm của kiểm toán viên", "bbox": [252.58, 1486.12, 705.11, 1518.37]},
+    {
+      "id": "p74-b12",
+      "type": "paragraph",
+      "text": "Trách nhiệm của chúng tôi là đưa ra ý kiến về báo cáo tài chính hợp nhất này dựa trên kết quả kiểm toán của chúng tôi. Chúng tôi đã thực hiện công việc kiểm toán theo các Chuẩn mực Kiểm toán Việt Nam. Các chuẩn mực này yêu cầu chúng tôi tuân thủ chuẩn mực và các quy định về đạo đức nghề nghiệp và lập kế hoạch và thực hiện cuộc kiểm toán để đạt được sự đảm bảo hợp lý về việc liệu báo cáo tài chính hợp nhất có còn sai sót trọng yếu hay không.\n\nCông việc kiểm toán bao gồm việc thực hiện các thủ tục nhằm thu thập các bằng chứng kiểm toán về các số liệu và các thuyết minh trong báo cáo tài chính. Các thủ tục được lựa chọn dựa trên xét đoán của kiểm toán viên, bao gồm đánh giá rủi ro có sai sót trọng yếu trong báo cáo tài chính do gian lận hoặc nhầm lẫn. Khi thực hiện các đánh giá rủi ro này, kiểm toán viên xem xét kiểm soát nội bộ của Ngân hàng liên quan tới việc lập và trình bày báo cáo tài chính trung thực và hợp lý nhằm thiết kế các thủ tục kiểm toán phù hợp với tình hình thực tế, tuy nhiên không nhằm mục đích đưa ra ý kiến về hiệu quả của kiểm soát nội bộ của Ngân hàng. Công việc kiểm toán cũng bao gồm việc đánh giá tính thích hợp của các chính sách kế toán được áp dụng và tính hợp lý của các ước tính kế toán của Ban Điều hành Ngân hàng, cũng như đánh giá việc trình bày tổng thể báo cáo tài chính.\n\nChúng tôi tin rằng các bằng chứng kiểm toán mà chúng tôi thu được là đầy đủ và thích hợp làm cơ sở cho ý kiến kiểm toán của chúng tôi.",
+      "bbox": [252.58, 1548.14, 1452.31, 2116.29]
+    },
+    {
+      "id": "p74-b13",
+      "type": "furniture",
+      "text": "KPMG Limited, a Vietnamese one member limited liability company and a member firm of the\nKPMG global organization of independent member firms affiliated with KPMG International Limited,\na private English company limited by guarantee. All rights reserved.",
+      "bbox": [252.58, 2222.98, 852.44, 2270.11]
+    },
+    {"id": "p74-b14", "type": "furniture", "text": "3", "bbox": [1434.77, 2205.61, 1452.31, 2225.46]},
+    {"id": "p74-b15", "type": "furniture", "text": "146 | BÁO CÁO THƯỜNG NIÊN BIDV 2024", "bbox": [164.88, 2327.18, 670.03, 2351.99]},
+    {"id": "p74-b16", "type": "furniture", "text": "KPMG", "bbox": [2062.7, 454.02, 2234.6, 501.16]},
+    {"id": "p74-b17", "type": "heading", "text": "Ý kiến của kiểm toán viên", "bbox": [2062.7, 570.63, 2427.54, 602.88]},
+    {
+      "id": "p74-b18",
+      "type": "paragraph",
+      "text": "Theo ý kiến của chúng tôi, báo cáo tài chính hợp nhất đã phản ánh trung thực và hợp lý, trên các khía cạnh trọng yếu, tình hình tài chính hợp nhất của Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam và các công ty con tại ngày 31 tháng 12 năm 2024, kết quả hoạt động hợp nhất và lưu chuyển tiền tệ hợp nhất của Ngân hàng và các công ty con cho năm kết thúc cùng ngày, phù hợp với các Chuẩn mực Kế toán Việt Nam, Chế độ Kế toán Việt Nam áp dụng cho các Tổ chức tín dụng do Ngân hàng Nhà nước Việt Nam ban hành và các quy định pháp lý có liên quan đến việc lập và trình bày báo cáo tài chính.",
+      "bbox": [2062.7, 637.62, 3258.93, 855.95]
+    },
+    {"id": "p74-b19", "type": "heading", "text": "Vấn đề khác", "bbox": [2062.7, 885.72, 2238.1, 917.97]},
+    {
+      "id": "p74-b20",
+      "type": "paragraph",
+      "text": "Báo cáo tài chính hợp nhất của Ngân hàng và các công ty con cho năm kết thúc ngày 31 tháng 12 năm 2023 được kiểm toán bởi một công ty kiểm toán khác và công ty kiểm toán này đã đưa ra ý kiến chấp nhận toàn phần đối với báo cáo tài chính đó trong báo cáo kiểm toán ngày 22 tháng 3 năm 2024.",
+      "bbox": [2062.7, 950.22, 3258.93, 1076.75]
+    },
+    {
+      "id": "p74-b21",
+      "type": "paragraph",
+      "text": "Công ty TNHH KPMG\nViệt Nam\nBáo cáo kiểm toán số: 24-02-00150-25-6",
+      "bbox": [2062.7, 1143.74, 2560.84, 1233.06]
+    },
+    {
+      "id": "p74-b22",
+      "type": "stamp",
+      "text": "M.S.D.N:0100112042-C.T.T.N.H.H\nCÔNG TY\nTRÁCH NHIỆM HỮU HẠN\nKPMG\nQ. NAM TỪ LIÊM - T.P HÀ NỘI",
+      "bbox": [1957.46, 1205.77, 2224.07, 1481.16]
+    },
+    {"id": "p74-b23", "type": "signature", "text": "", "bbox": [2153.91, 1255.39, 2315.28, 1456.35]},
+    {"id": "p74-b24", "type": "signature", "text": "", "bbox": [2725.72, 1250.42, 3094.06, 1456.35]},
+    {
+      "id": "p74-b25",
+      "type": "paragraph",
+      "text": "Đàm Xuân Lâm\nGiấy Chứng nhận Đăng ký Hành nghề\nKiểm toán số 0861-2023-007-1\nPhó Tổng Giám đốc",
+      "bbox": [2062.7, 1458.83, 2525.76, 1582.88]
+    },
+    {
+      "id": "p74-b26",
+      "type": "paragraph",
+      "text": "Phạm Thị Thùy Linh\nGiấy Chứng nhận Đăng ký Hành nghề\nKiểm toán số 3065-2024-007-1",
+      "bbox": [2687.13, 1458.83, 3153.69, 1553.11]
+    },
+    {"id": "p74-b27", "type": "paragraph", "text": "Hà Nội, ngày 24 tháng 3 năm 2025", "bbox": [2062.7, 1617.61, 2487.17, 1644.9]},
+    {"id": "p74-b28", "type": "furniture", "text": "4", "bbox": [3241.39, 2208.09, 3262.44, 2232.9]},
+    {"id": "p74-b29", "type": "furniture", "text": "147", "bbox": [3301.03, 2297.41, 3339.62, 2319.74]}
+  ]
+}

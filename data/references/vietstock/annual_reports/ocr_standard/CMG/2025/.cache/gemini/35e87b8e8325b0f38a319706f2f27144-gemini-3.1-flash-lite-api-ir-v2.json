@@ -1,0 +1,634 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "III. BÁO CÁO VÀ ĐÁNH GIÁ CỦA BAN ĐIỀU HÀNH",
+      "box_2d": [
+        98,
+        258,
+        111,
+        742
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Phần I - Báo cáo về kết quả sản xuất kinh doanh 2025",
+      "box_2d": [
+        141,
+        120,
+        154,
+        628
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Thực hiện chỉ tiêu kinh doanh 2025",
+      "box_2d": [
+        166,
+        120,
+        179,
+        449
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "1.1. Kết quả kinh doanh hợp nhất Tập đoàn năm 2025",
+      "box_2d": [
+        189,
+        120,
+        203,
+        650
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        228,
+        120,
+        639,
+        923
+      ],
+      "title": "ĐVT: triệu đồng",
+      "unit_text": "triệu đồng",
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT"
+          ],
+          "box_2d": [
+            228,
+            120,
+            275,
+            156
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Chỉ tiêu"
+          ],
+          "box_2d": [
+            228,
+            156,
+            275,
+            415
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Thực hiện",
+            "2025"
+          ],
+          "box_2d": [
+            228,
+            415,
+            275,
+            521
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Thực hiện",
+            "năm 2024"
+          ],
+          "box_2d": [
+            228,
+            521,
+            275,
+            627
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Kế hoạch",
+            "2025"
+          ],
+          "box_2d": [
+            228,
+            627,
+            275,
+            733
+          ]
+        },
+        {
+          "key": "c6",
+          "header_lines": [
+            "% Tăng",
+            "trưởng"
+          ],
+          "box_2d": [
+            228,
+            733,
+            275,
+            830
+          ]
+        },
+        {
+          "key": "c7",
+          "header_lines": [
+            "% Hoàn",
+            "thành"
+          ],
+          "box_2d": [
+            228,
+            830,
+            275,
+            923
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "Doanh thu thuần",
+          "note": null,
+          "box_2d": [
+            275,
+            120,
+            310,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Doanh thu thuần",
+              "box_2d": [
+                275,
+                156,
+                310,
+                415
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "10.554.530",
+              "box_2d": [
+                275,
+                415,
+                310,
+                521
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "9.018.060",
+              "box_2d": [
+                275,
+                521,
+                310,
+                627
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "10.810.874",
+              "box_2d": [
+                275,
+                627,
+                310,
+                733
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "17,0%",
+              "box_2d": [
+                275,
+                733,
+                310,
+                830
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "98%",
+              "box_2d": [
+                275,
+                830,
+                310,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Trong đó: Doanh thu thuần trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+          "note": null,
+          "box_2d": [
+            310,
+            120,
+            381,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Trong đó: Doanh thu thuần trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+              "box_2d": [
+                310,
+                156,
+                381,
+                415
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "9.560.786",
+              "box_2d": [
+                310,
+                415,
+                381,
+                521
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "8.202.642",
+              "box_2d": [
+                310,
+                521,
+                381,
+                627
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9.827.922",
+              "box_2d": [
+                310,
+                627,
+                381,
+                733
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "16,6%",
+              "box_2d": [
+                310,
+                733,
+                381,
+                830
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "97%",
+              "box_2d": [
+                310,
+                830,
+                381,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "Lợi nhuận trước Lãi vay, Thuế và Khấu hao phân bổ (EBITDA)",
+          "note": null,
+          "box_2d": [
+            381,
+            120,
+            440,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Lợi nhuận trước Lãi vay, Thuế và Khấu hao phân bổ (EBITDA)",
+              "box_2d": [
+                381,
+                156,
+                440,
+                415
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "1.178.977",
+              "box_2d": [
+                381,
+                415,
+                440,
+                521
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "986.941",
+              "box_2d": [
+                381,
+                521,
+                440,
+                627
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "1.200.368",
+              "box_2d": [
+                381,
+                627,
+                440,
+                733
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "19,5%",
+              "box_2d": [
+                381,
+                733,
+                440,
+                830
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "98%",
+              "box_2d": [
+                381,
+                830,
+                440,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "Lợi nhuận trước thuế",
+          "note": null,
+          "box_2d": [
+            440,
+            120,
+            475,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Lợi nhuận trước thuế",
+              "box_2d": [
+                440,
+                156,
+                475,
+                415
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "737.445",
+              "box_2d": [
+                440,
+                415,
+                475,
+                521
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "582.429",
+              "box_2d": [
+                440,
+                521,
+                475,
+                627
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "641.762",
+              "box_2d": [
+                440,
+                627,
+                475,
+                733
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "26,6%",
+              "box_2d": [
+                440,
+                733,
+                475,
+                830
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "115%",
+              "box_2d": [
+                440,
+                830,
+                475,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Trong đó: Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+          "note": null,
+          "box_2d": [
+            475,
+            120,
+            558,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Trong đó: Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+              "box_2d": [
+                475,
+                156,
+                558,
+                415
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "611.899",
+              "box_2d": [
+                475,
+                415,
+                558,
+                521
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "501.545",
+              "box_2d": [
+                475,
+                521,
+                558,
+                627
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "550.039",
+              "box_2d": [
+                475,
+                627,
+                558,
+                733
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "22,0%",
+              "box_2d": [
+                475,
+                733,
+                558,
+                830
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "111%",
+              "box_2d": [
+                475,
+                830,
+                558,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": "4",
+          "label_raw": "Lợi nhuận sau thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+          "note": null,
+          "box_2d": [
+            558,
+            120,
+            639,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Lợi nhuận sau thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ)",
+              "box_2d": [
+                558,
+                156,
+                639,
+                415
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "516.833",
+              "box_2d": [
+                558,
+                415,
+                639,
+                521
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "427.085",
+              "box_2d": [
+                558,
+                521,
+                639,
+                627
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "463.697",
+              "box_2d": [
+                558,
+                627,
+                639,
+                733
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "21,0%",
+              "box_2d": [
+                558,
+                733,
+                639,
+                830
+              ]
+            },
+            {
+              "column_key": "c7",
+              "raw": "111%",
+              "box_2d": [
+                558,
+                830,
+                639,
+                923
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "* Đánh giá tổng quan:\nNăm tài chính 2025 đánh dấu một năm tăng trưởng bền vững của Tập đoàn CMC với các chỉ tiêu kinh doanh chủ yếu đều đạt và vượt kế hoạch. Doanh thu thuần hợp nhất đạt 10.555 tỷ đồng, tăng 17% so với năm trước; lợi nhuận trước thuế đạt 737 tỷ đồng, tăng 26,6% và vượt kế hoạch năm. Đồng thời, EBITDA tăng 19,5%, phản ánh sự cải thiện về hiệu quả hoạt động và chất lượng tăng trưởng.\nNhững kết quả này khẳng định năng lực quản trị, khả năng thích ứng trước biến động của thị trường và hiệu quả triển khai chiến lược phát triển của Tập đoàn, tạo nền tảng vững chắc cho các mục tiêu tăng trưởng trong các năm tiếp theo.\nNăm 2025 đánh dấu bước chuyển mình quan trọng của Tập đoàn CMC trong hành trình hiện thực hóa tầm nhìn trở thành Tập đoàn công nghệ và đổi mới sáng tạo hàng",
+      "box_2d": [
+        661,
+        120,
+        875,
+        906
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "38",
+      "box_2d": [
+        925,
+        907,
+        938,
+        926
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "III. BÁO CÁO VÀ ĐÁNH GIÁ CỦA BAN ĐIỀU HÀNH\nPhần I - Báo cáo về kết quả sản xuất kinh doanh 2025\n1. Thực hiện chỉ tiêu kinh doanh 2025\n1.1. Kết quả kinh doanh hợp nhất Tập đoàn năm 2025\nĐVT: triệu đồng\ntriệu đồng\nTT\nChỉ tiêu\nThực hiện\n2025\nThực hiện\nnăm 2024\nKế hoạch\n2025\n% Tăng\ntrưởng\n% Hoàn\nthành\n1 Doanh thu thuần Doanh thu thuần 10.554.530 9.018.060 10.810.874 17,0% 98%\nTrong đó: Doanh thu thuần trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) Trong đó: Doanh thu thuần trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) 9.560.786 8.202.642 9.827.922 16,6% 97%\n2 Lợi nhuận trước Lãi vay, Thuế và Khấu hao phân bổ (EBITDA) Lợi nhuận trước Lãi vay, Thuế và Khấu hao phân bổ (EBITDA) 1.178.977 986.941 1.200.368 19,5% 98%\n3 Lợi nhuận trước thuế Lợi nhuận trước thuế 737.445 582.429 641.762 26,6% 115%\nTrong đó: Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) Trong đó: Lợi nhuận kế toán trước thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) 611.899 501.545 550.039 22,0% 111%\n4 Lợi nhuận sau thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) Lợi nhuận sau thuế trên báo cáo tài chính hợp nhất (sau loại trừ hợp nhất các đơn vị liên kết & nội bộ) 516.833 427.085 463.697 21,0% 111%\n* Đánh giá tổng quan:\nNăm tài chính 2025 đánh dấu một năm tăng trưởng bền vững của Tập đoàn CMC với các chỉ tiêu kinh doanh chủ yếu đều đạt và vượt kế hoạch. Doanh thu thuần hợp nhất đạt 10.555 tỷ đồng, tăng 17% so với năm trước; lợi nhuận trước thuế đạt 737 tỷ đồng, tăng 26,6% và vượt kế hoạch năm. Đồng thời, EBITDA tăng 19,5%, phản ánh sự cải thiện về hiệu quả hoạt động và chất lượng tăng trưởng.\nNhững kết quả này khẳng định năng lực quản trị, khả năng thích ứng trước biến động của thị trường và hiệu quả triển khai chiến lược phát triển của Tập đoàn, tạo nền tảng vững chắc cho các mục tiêu tăng trưởng trong các năm tiếp theo.\nNăm 2025 đánh dấu bước chuyển mình quan trọng của Tập đoàn CMC trong hành trình hiện thực hóa tầm nhìn trở thành Tập đoàn công nghệ và đổi mới sáng tạo hàng\n38",
+  "unreadable": []
+}

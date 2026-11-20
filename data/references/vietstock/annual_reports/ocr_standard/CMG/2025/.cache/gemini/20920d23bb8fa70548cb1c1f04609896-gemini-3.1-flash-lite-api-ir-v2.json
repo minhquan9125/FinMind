@@ -1,0 +1,588 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        97,
+        119,
+        367,
+        921
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            97,
+            119,
+            133,
+            180
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Số Nghị quyết"
+          ],
+          "box_2d": [
+            97,
+            180,
+            133,
+            324
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Ngày"
+          ],
+          "box_2d": [
+            97,
+            324,
+            133,
+            443
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Nội dung"
+          ],
+          "box_2d": [
+            97,
+            443,
+            133,
+            806
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Tỷ lệ thông",
+            "qua"
+          ],
+          "box_2d": [
+            97,
+            806,
+            133,
+            921
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "27",
+          "label_raw": "27",
+          "note": null,
+          "box_2d": [
+            133,
+            119,
+            190,
+            921
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "04/2026/NQ HĐQT",
+              "box_2d": [
+                133,
+                180,
+                190,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "02/03/2026",
+              "box_2d": [
+                133,
+                324,
+                190,
+                443
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Cập nhật ngành nghề, địa chỉ trụ sở và sửa đổi Điều lệ Công ty TNHH CMC Global",
+              "box_2d": [
+                133,
+                443,
+                190,
+                806
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                133,
+                806,
+                190,
+                921
+              ]
+            }
+          ]
+        },
+        {
+          "code": "28",
+          "label_raw": "28",
+          "note": null,
+          "box_2d": [
+            190,
+            119,
+            241,
+            921
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "05/2026/NQ HĐQT",
+              "box_2d": [
+                190,
+                180,
+                241,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "18/03/2026",
+              "box_2d": [
+                190,
+                324,
+                241,
+                443
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Thông qua Chủ trương thực hiện giao dịch với bên liên quan trong năm 2026",
+              "box_2d": [
+                190,
+                443,
+                241,
+                806
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "7/9",
+              "box_2d": [
+                190,
+                806,
+                241,
+                921
+              ]
+            }
+          ]
+        },
+        {
+          "code": "29",
+          "label_raw": "29",
+          "note": null,
+          "box_2d": [
+            241,
+            119,
+            313,
+            921
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "06/2026/NQ HĐQT",
+              "box_2d": [
+                241,
+                180,
+                313,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "23/03/2026",
+              "box_2d": [
+                241,
+                324,
+                313,
+                443
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Cập nhật ngành nghề, địa chỉ trụ sở và sửa đổi Điều lệ Công ty TNHH An ninh An toàn Thông tin CMC và Công ty TNHH CMC Consulting",
+              "box_2d": [
+                241,
+                443,
+                313,
+                806
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                241,
+                806,
+                313,
+                921
+              ]
+            }
+          ]
+        },
+        {
+          "code": "30",
+          "label_raw": "30",
+          "note": null,
+          "box_2d": [
+            313,
+            119,
+            367,
+            921
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "07/2026/NQ HĐQT",
+              "box_2d": [
+                313,
+                180,
+                367,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "25/03/2026",
+              "box_2d": [
+                313,
+                324,
+                367,
+                443
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Tăng vốn điều lệ và sửa đổi điều lệ Công ty TNHH An ninh An toàn Thông tin CMC",
+              "box_2d": [
+                313,
+                443,
+                367,
+                806
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                313,
+                806,
+                367,
+                921
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "1.4. Hoạt động của các thành viên HĐQT độc lập:\nTrong năm tài chính 2025, các thành viên Hội đồng quản trị độc lập của Công ty đã tham dự đầy đủ các cuộc họp thường kỳ hàng Quý và cho ý kiến đối với các Nghị quyết được thông qua dưới hình thức xin ý kiến bằng văn bản.",
+      "box_2d": [
+        399,
+        121,
+        475,
+        905
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Danh sách các thành viên Hội đồng quản trị có chứng chỉ đào tạo về quản trị công ty\nDanh sách các thành viên HĐQT tham gia các chương trình về quản trị công ty trong năm: Không có.",
+      "box_2d": [
+        508,
+        121,
+        578,
+        905
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "2. Ban Kiểm soát\n2.1. Thành viên và cơ cấu của Ban kiểm soát (BKS):",
+      "box_2d": [
+        596,
+        121,
+        633,
+        637
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        658,
+        121,
+        853,
+        925
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            658,
+            121,
+            708,
+            178
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Thành viên BKS"
+          ],
+          "box_2d": [
+            658,
+            178,
+            708,
+            383
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Chức vụ"
+          ],
+          "box_2d": [
+            658,
+            383,
+            708,
+            632
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Số lượng cổ",
+            "phần sở hữu"
+          ],
+          "box_2d": [
+            658,
+            632,
+            708,
+            772
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Tỷ lệ sở hữu"
+          ],
+          "box_2d": [
+            658,
+            772,
+            708,
+            925
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "1",
+          "label_raw": "1",
+          "note": null,
+          "box_2d": [
+            708,
+            121,
+            756,
+            925
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Mai Thu Hà",
+              "box_2d": [
+                708,
+                178,
+                756,
+                383
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Trưởng Ban Kiểm soát",
+              "box_2d": [
+                708,
+                383,
+                756,
+                632
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "9.020",
+              "box_2d": [
+                708,
+                632,
+                756,
+                772
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,00%",
+              "box_2d": [
+                708,
+                772,
+                756,
+                925
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2",
+          "label_raw": "2",
+          "note": null,
+          "box_2d": [
+            756,
+            121,
+            804,
+            925
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Tạ Hoàng Linh",
+              "box_2d": [
+                756,
+                178,
+                804,
+                383
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Thành viên Ban Kiểm soát",
+              "box_2d": [
+                756,
+                383,
+                804,
+                632
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "604.359",
+              "box_2d": [
+                756,
+                632,
+                804,
+                772
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,29%",
+              "box_2d": [
+                756,
+                772,
+                804,
+                925
+              ]
+            }
+          ]
+        },
+        {
+          "code": "3",
+          "label_raw": "3",
+          "note": null,
+          "box_2d": [
+            804,
+            121,
+            853,
+            925
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Nguyễn Thành Nam",
+              "box_2d": [
+                804,
+                178,
+                853,
+                383
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Thành viên Ban Kiểm soát",
+              "box_2d": [
+                804,
+                383,
+                853,
+                632
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0",
+              "box_2d": [
+                804,
+                632,
+                853,
+                772
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "0,00%",
+              "box_2d": [
+                804,
+                772,
+                853,
+                925
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "furniture",
+      "text": "66",
+      "box_2d": [
+        921,
+        906,
+        935,
+        925
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "STT\nSố Nghị quyết\nNgày\nNội dung\nTỷ lệ thông\nqua\n27 27 04/2026/NQ HĐQT 02/03/2026 Cập nhật ngành nghề, địa chỉ trụ sở và sửa đổi Điều lệ Công ty TNHH CMC Global 9/9\n28 28 05/2026/NQ HĐQT 18/03/2026 Thông qua Chủ trương thực hiện giao dịch với bên liên quan trong năm 2026 7/9\n29 29 06/2026/NQ HĐQT 23/03/2026 Cập nhật ngành nghề, địa chỉ trụ sở và sửa đổi Điều lệ Công ty TNHH An ninh An toàn Thông tin CMC và Công ty TNHH CMC Consulting 9/9\n30 30 07/2026/NQ HĐQT 25/03/2026 Tăng vốn điều lệ và sửa đổi điều lệ Công ty TNHH An ninh An toàn Thông tin CMC 9/9\n1.4. Hoạt động của các thành viên HĐQT độc lập:\nTrong năm tài chính 2025, các thành viên Hội đồng quản trị độc lập của Công ty đã tham dự đầy đủ các cuộc họp thường kỳ hàng Quý và cho ý kiến đối với các Nghị quyết được thông qua dưới hình thức xin ý kiến bằng văn bản.\n2. Danh sách các thành viên Hội đồng quản trị có chứng chỉ đào tạo về quản trị công ty\nDanh sách các thành viên HĐQT tham gia các chương trình về quản trị công ty trong năm: Không có.\n2. Ban Kiểm soát\n2.1. Thành viên và cơ cấu của Ban kiểm soát (BKS):\nSTT\nThành viên BKS\nChức vụ\nSố lượng cổ\nphần sở hữu\nTỷ lệ sở hữu\n1 1 Mai Thu Hà Trưởng Ban Kiểm soát 9.020 0,00%\n2 2 Tạ Hoàng Linh Thành viên Ban Kiểm soát 604.359 0,29%\n3 3 Nguyễn Thành Nam Thành viên Ban Kiểm soát 0 0,00%\n66",
+  "unreadable": []
+}

@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "ad561bc3be9ccc5dced4",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-3008910/ict-giai-trinh-bien-dong-lnst-bctc-tong-hop-quy-32026-so-voi-cung-ky-nam-truoc.chn",
+      "title": "ICT: Giải trình biến động LNST BCTC Tổng hợp quý 3/2026 so với cùng kỳ năm trước",
+      "description": "ICT: Giải trình biến động LNST BCTC Tổng hợp quý 3/2026 so với cùng kỳ năm trước",
+      "content": "Công ty Cổ phần Viễn thông - Tin học Bưu điện giải trình biến động LNST BCTC Tổng hợp quý 3/2026 so với cùng kỳ năm trước như sau: Các tập tin đính kèm 20261028 - ICT - Bao cao giai trinh Q3 2026.PDF Theo HOSE",
+      "published_at": "2026-10-28T10:07:00+00:00",
+      "crawled_at": "2026-10-29T07:45:35.104392+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/281026/ict-giai-trinh-bien-dong-lnst-bctc-tong-hop-quy-3-2026-so-voi-cung-ky-nam-truoc-0.pdf?v=1793182189321"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7964788732394366,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-giai-trinh-bien-dong-lnst-bctc-tong-hop-quy-3-2026-so-voi-cung-ky-nam-truoc/42509335",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "adbc57fa179160139317",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2998124/ict-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat-da-mua-10300-cp-tro-thanh-cdl-tu-8102026.chn",
+      "title": "ICT: Công ty Cổ phần Viễn thông - Tín hiệu đường sắt đã mua 10.300 cp, trở thành CĐL từ 8.10.2026",
+      "description": "ICT: Công ty Cổ phần Viễn thông - Tín hiệu đường sắt đã mua 10.300 cp, trở thành CĐL từ 8.10.2026",
+      "content": "Công ty Cổ phần Viễn thông - Tín hiệu đường sắt báo cáo về ngày trở thành cổ đông lớn Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau: Các tập tin đính kèm 20261014 - ICT - BC tro thanh CDL CTCP Vien Thong Tin Hieu Duong Sat (8.10.2026).pdf Theo HOSE",
+      "published_at": "2026-10-13T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:45:35.766158+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/141026/ict-bao-cao-ve-ngay-tro-thanh-co-dong-lon-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat-0.pdf?v=1791973720751"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6829166666666666,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-bao-cao-ve-ngay-tro-thanh-co-dong-lon-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat/42277196",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "994bd2982328cb567c69",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2984525/ict-nhac-nho-cham-cbtt-nghi-quyet-hoi-dong-quan-tri.chn",
+      "title": "ICT: Nhắc nhở chậm CBTT Nghị quyết Hội đồng quản trị",
+      "description": "ICT: Nhắc nhở chậm CBTT Nghị quyết Hội đồng quản trị",
+      "content": "Sở Giao dịch Chứng khoán TP.HCM thông báo nhắc nhở chậm CBTT Nghị quyết Hội đồng quản trị đối với Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau: Các tập tin đính kèm 20260925 - ICT - Nhac nho cham CBTT NQ HDQT thong qua giao dich BLQ.pdf Theo HOSE",
+      "published_at": "2026-09-25T11:32:28+00:00",
+      "crawled_at": "2026-10-29T07:45:36.392768+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/250926/ict-nhac-nho-cham-cbtt-nghi-quyet-hoi-dong-quan-tri-0.pdf?v=1790336341845"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7849397590361445,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-nhac-nho-cham-cbtt-nghi-quyet-hoi-dong-quan-tri/41960318",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "ddf793b8615fa08f1a0e",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2983567/ict-nghi-quyet-hdqt-thong-qua-chu-truong-chap-thuan-cac-hop-dong-giao-dich-giua-ctin-va-cac-ben-co-lien-quan-nam-2026.chn",
+      "title": "ICT: Nghị quyết HĐQT thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+      "description": "ICT: Nghị quyết HĐQT thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026",
+      "content": "Công ty Cổ phần Viễn thông - Tin học Bưu điện công bố Nghị quyết HĐQT về việc thông qua chủ trương chấp thuận các hợp đồng, giao dịch giữa CTIN và các bên có liên quan năm 2026 như sau: Các tập tin đính kèm 20260924 - ICT - CBTT Chu truong chap thuan cac hop dong, giao dich giua CTIN va ben co lien quan 2026.pdf Theo HOSE",
+      "published_at": "2026-09-23T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:45:37.023527+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/240926/ict-nghi-quyet-h-qt-ve-viec-thong-qua-chu-truong-chap-thuan-cac-hop-dong-giao-dich-giua-ctin-va-cac-ben-co-lien-quan-nam-2026-0.pdf?v=1790249762909"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.752403846153846,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-nghi-quyet-hdqt-ve-viec-thong-qua-chu-truong-chap-thuan-cac-hop-dong-giao-dich-giua-ctin-va-cac-ben-co-lien-quan-nam-2026/41939366",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "7efc4870c3f52b0e2769",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2981863/ict-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat-da-mua-2000-cp.chn",
+      "title": "ICT: Công ty Cổ phần Viễn thông - Tín hiệu đường sắt đã mua 2.000 cp",
+      "description": "ICT: Công ty Cổ phần Viễn thông - Tín hiệu đường sắt đã mua 2.000 cp",
+      "content": "Công ty Cổ phần Viễn thông - Tín hiệu đường sắt báo cáo về ngày trở thành cổ đông lớn Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau: Các tập tin đính kèm 20260922 - ICT - BC tro thanh CDL, NDT nam giu tu 5 phan tram tro len (CTCP Vien thong - Tin hieu duong sat).pdf Theo HOSE",
+      "published_at": "2026-09-21T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:45:37.700656+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/220926/ict-bao-cao-ve-ngay-tro-thanh-co-dong-lon-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat-0.pdf?v=1790073643208"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.6376466275659823,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-bao-cao-ve-ngay-tro-thanh-co-dong-lon-cong-ty-co-phan-vien-thong-tin-hieu-duong-sat/42277196",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "9244b484683bdcd9e367",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2976057/ict-dieu-chinh-bao-cao-tinh-hinh-quan-tri-6-thang-dau-nam-2026.chn",
+      "title": "ICT: Điều chỉnh Báo cáo tình hình quản trị 6 tháng đầu năm 2026",
+      "description": "ICT: Điều chỉnh Báo cáo tình hình quản trị 6 tháng đầu năm 2026",
+      "content": "Công ty Cổ phần Viễn thông - Tin học Bưu điện thông báo điều chỉnh Báo cáo tình hình quản trị 6 tháng đầu năm 2026 như sau: Các tập tin đính kèm 20260914 - ICT - CBTT ban dieu chinh bao cao quan tri 6 thang dau nam 2026 - Bo TNCN.pdf Theo HOSE",
+      "published_at": "2026-09-14T10:41:24+00:00",
+      "crawled_at": "2026-10-29T07:45:38.294362+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/140926/ict-ieu-chinh-bao-cao-tinh-hinh-quan-tri-6-thang-dau-nam-2026-0.pdf?v=1789385173852"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7166666666666667,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-dieu-chinh-bao-cao-tinh-hinh-quan-tri-6-thang-dau-nam-2026/41779829",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "2f26429cc93c3a5220e3",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2965765/ict-giai-trinh-bien-dong-lnst-tren-bctc-ban-nien-2026-soat-xet-so-voi-cung-ky-nam-truoc.chn",
+      "title": "ICT: Giải trình biến động LNST trên BCTC bán niên 2026 soát xét so với cùng kỳ năm trước",
+      "description": "ICT: Giải trình biến động LNST trên BCTC bán niên 2026 soát xét so với cùng kỳ năm trước",
+      "content": "Công ty Cổ phần Viễn thông - Tin học Bưu điện thông báo giải trình biến động LNST trên BCTC bán niên 2026 soát xét so với cùng kỳ năm trước như sau: Các tập tin đính kèm 20260828 - ICT - Bao cao giai trinh ban nien 2026.pdf Theo HOSE",
+      "published_at": "2026-08-28T10:54:59+00:00",
+      "crawled_at": "2026-10-29T07:45:38.943657+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/280826/ict-giai-trinh-bien-dong-lnst-tren-bctc-ban-nien-2026-soat-xet-so-voi-cung-ky-nam-truoc-0.pdf?v=1787915301530"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "check",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.8123376623376624,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-giai-trinh-bien-dong-lnst-tren-bctc-ban-nien-2026-soat-xet-so-voi-cung-ky-nam-truoc/41632719",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "74f316473ac437f3e662",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2953250/ict-nhac-nho-cham-cbtt-tai-lieu-hop-dhdcd-thuong-nien.chn",
+      "title": "ICT: Nhắc nhở chậm CBTT tài liệu họp ĐHĐCĐ thường niên",
+      "description": "ICT: Nhắc nhở chậm CBTT tài liệu họp ĐHĐCĐ thường niên",
+      "content": "Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh thông báo nhắc nhở chậm CBTT tài liệu họp ĐHĐCĐ thường niên đối với Công ty Cổ phần Viễn thông - Tin học Bưu điện như sau: Các tập tin đính kèm 20260813 - ICT - Nhac nho cham CBTT tai lieu DHDCD TN 2026.pdf Theo HOSE",
+      "published_at": "2026-08-14T10:33:20+00:00",
+      "crawled_at": "2026-10-29T07:45:39.544456+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/140826/ict-nhac-nho-cham-cbtt-tai-lieu-hop-h-c-thuong-nien-0.pdf"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "check",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.8143678160919541,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-nhac-nho-cham-cbtt-tai-lieu-hop-dhdcd-thuong-nien/41445244",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "9c6287ada62d01a25967",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2941848/ict-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026.chn",
+      "title": "ICT: Báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026",
+      "description": "ICT: Báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026",
+      "content": "Công ty Cổ phần Viễn thông - Tin học Bưu điện báo cáo tình hình Quản trị công ty 6 tháng đầu năm 2026 như sau: Các tập tin đính kèm 20260730 - ICT - BC QT 6 thang dau nam 2026 - Bo TTCN.pdf Theo HOSE",
+      "published_at": "2026-07-30T08:56:46+00:00",
+      "crawled_at": "2026-10-29T07:45:40.199252+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/300726/ict-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026-0.pdf"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7515384615384616,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026/41216572",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    },
+    {
+      "id": "79a81d389cb19cb59e25",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/ict-2941422/ict-giai-trinh-chenh-lech-lnst-quy-22026-so-voi-cung-ky-nam-truoc.chn",
+      "title": "ICT: Giải trình chênh lệch LNST quý 2/2026 so với cùng kỳ năm trước",
+      "description": "ICT: Giải trình chênh lệch LNST quý 2/2026 so với cùng kỳ năm trước",
+      "content": "Công ty Cổ phần Viễn thông - Tin học Bưu điện giải trình chênh lệch LNST quý 2/2026 so với cùng kỳ năm trước như sau: Các tập tin đính kèm 20260728 - ICT - Bao cao giai trinh Q2 2026.pdf Theo HOSE",
+      "published_at": "2026-07-30T03:33:12+00:00",
+      "crawled_at": "2026-10-29T07:45:40.871398+00:00",
+      "attachments": [
+        "https://cafef1.mediacdn.vn/download/300726/ict-giai-trinh-chenh-lech-lnst-quy-2-2026-so-voi-cung-ky-nam-truoc-0.pdf"
+      ],
+      "symbols": [
+        "ICT"
+      ],
+      "matched_symbols": [
+        "ICT"
+      ],
+      "scopes": [
+        "ICT"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7776923076923077,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/ict-giai-trinh-chenh-lech-lnst-quy-2-2026-so-voi-cung-ky-nam-truoc/41203366",
+        "matched_file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:53:10.213471+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:45:40.872903+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "ICT",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

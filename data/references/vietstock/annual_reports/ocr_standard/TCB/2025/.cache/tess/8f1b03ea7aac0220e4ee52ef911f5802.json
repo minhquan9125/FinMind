@@ -1,0 +1,140 @@
+{
+  "text": "BÁO CÁO TÀI CHÍNH\nHỢP NHẤT KIẾM TOÁN\nNĂM 2025",
+  "chars": 36,
+  "words": 10,
+  "wordItems": [
+    {
+      "text": "BÁO",
+      "bbox": [
+        99,
+        2074,
+        256,
+        2147
+      ],
+      "conf": 87.905922,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        280,
+        2074,
+        442,
+        2147
+      ],
+      "conf": 96.818848,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÀI",
+      "bbox": [
+        466,
+        2074,
+        574,
+        2146
+      ],
+      "conf": 96.121162,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHÍNH",
+      "bbox": [
+        600,
+        2074,
+        842,
+        2147
+      ],
+      "conf": 95.817352,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HỢP",
+      "bbox": [
+        99,
+        2188,
+        261,
+        2264
+      ],
+      "conf": 95.212303,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NHẤT",
+      "bbox": [
+        287,
+        2180,
+        490,
+        2249
+      ],
+      "conf": 93.304314,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "KIẾM",
+      "bbox": [
+        517,
+        2180,
+        689,
+        2249
+      ],
+      "conf": 47.365074,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TOÁN",
+      "bbox": [
+        715,
+        2177,
+        924,
+        2250
+      ],
+      "conf": 95.99054,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "NĂM",
+      "bbox": [
+        99,
+        2283,
+        268,
+        2353
+      ],
+      "conf": 96.151871,
+      "block": 3,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        296,
+        2297,
+        482,
+        2354
+      ],
+      "conf": 96.151871,
+      "block": 3,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 90,
+  "lowConfRatio": 0.1,
+  "seconds": 0.663
+}

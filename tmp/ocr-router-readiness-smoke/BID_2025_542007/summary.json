@@ -1,0 +1,88 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\BID\\2025\\BID_2025_542007.pdf",
+  "pages": 1,
+  "routes": {
+    "tesseract": 1
+  },
+  "status": {
+    "OK": 1
+  },
+  "flags": {
+    "NEAR_EMPTY": 1
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 0.067,
+    "renderAndTesseract": 5.627,
+    "gemini": 0.0,
+    "total": 5.728
+  },
+  "geminiApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "codecraftApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "omnirouteApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 0,
+    "geminiHits": 0,
+    "openrouterHits": 0,
+    "codecraftHits": 0,
+    "omnirouteHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\tmp\\ocr-router-readiness-smoke",
+    "pages": "6",
+    "mode": "never",
+    "provider": "local",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "structured",
+    "openrouterModel": "qwen3.8-27b",
+    "batch": 4,
+    "geminiConcurrency": 2,
+    "geminiTimeout": 300,
+    "tessWorkers": 1,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

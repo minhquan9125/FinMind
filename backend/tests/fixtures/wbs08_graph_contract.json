@@ -1,0 +1,55 @@
+{
+  "schema_version": "2.1.0",
+  "corpus_id": "wbs08-fixture-corpus",
+  "dataset_version": "wbs08-fixture-index",
+  "documents": [
+    {
+      "document_id": "doc:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "document_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "extraction_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "source_path": "fixture-report.pdf",
+      "extraction_path": "fixture-report.json"
+    }
+  ],
+  "chunks": [
+    {
+      "document_id": "doc:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "document_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "chunk_id": "p1:b1",
+      "text": "Công ty Alpha hợp tác với Công ty Beta từ ngày 2025-01-01.",
+      "locator": {"page": 1, "block_id": "p1:b1", "bbox": [0, 0, 10, 10]}
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "company:alpha", "entity_type": "Company", "canonical_name": "Công ty Alpha",
+      "aliases": ["Alpha"], "resolution_status": "resolved", "identity_key": "name:alpha", "attributes": {}
+    },
+    {
+      "entity_id": "company:beta", "entity_type": "Company", "canonical_name": "Công ty Beta",
+      "aliases": ["Beta"], "resolution_status": "resolved", "identity_key": "name:beta", "attributes": {}
+    }
+  ],
+  "mentions": [],
+  "relations": [
+    {
+      "relation_id": "relation:approved-1", "relation_type": "COOPERATES_WITH",
+      "subject_id": "company:alpha", "object_id": "company:beta",
+      "attributes": {"cooperation_scope": "Phân phối sản phẩm"},
+      "temporal": {"as_of": "2025-01-01", "valid_from": null, "valid_to": null},
+      "evidence": [{"document_id": "doc:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "chunk_id": "p1:b1", "quote": "Công ty Alpha hợp tác với Công ty Beta"}],
+      "review": {"status": "APPROVED", "reviewer": "fixture-reviewer", "reviewed_at": "2025-01-02T10:00:00Z"},
+      "negated": false, "conditional": false
+    },
+    {
+      "relation_id": "relation:pending-1", "relation_type": "COOPERATES_WITH",
+      "subject_id": "company:alpha", "object_id": "company:beta",
+      "attributes": {"cooperation_scope": "Chưa xác minh"},
+      "temporal": {"as_of": null, "valid_from": null, "valid_to": null},
+      "evidence": [{"document_id": "doc:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "chunk_id": "p1:b1", "quote": "Công ty Alpha hợp tác với Công ty Beta"}],
+      "review": {"status": "PENDING", "reviewer": null, "reviewed_at": null},
+      "negated": false, "conditional": false
+    }
+  ]
+}

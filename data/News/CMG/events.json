@@ -1,0 +1,707 @@
+[
+  {
+    "event_id": "evt-0771eb7c4037ec82",
+    "event_key": "UNMERGED|cac5c8c1-57f9-59e8-ba49-c65fc845ed62|e2",
+    "event_type": "exhibition_fair",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "cac5c8c1-57f9-59e8-ba49-c65fc845ed62",
+        "url": "https://fireant.vn/bai-viet/tap-doan-cmc-gioi-thieu-he-sinh-thai-ai-c-product-tai-dien-dan-kinh-te-mua-thu-2026/42512313",
+        "source_name": "fireant",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "cac5c8c1-57f9-59e8-ba49-c65fc845ed62",
+        "local_event_id": "e2",
+        "status": "unconfirmed",
+        "status_evidence": "Bên cạnh hoạt động triển lãm, ông Lê Minh, Giám đốc Công nghệ CMC TS, tham gia với vai trò diễn giả thảo luận tại phiên chuyên đề về “Năng lực tự chủ AI (AI Sovereign)”, chia sẻ góc nhìn về hạ tầng, dữ liệu, công nghệ và quản trị AI trong bối cảnh Việt Nam thúc đẩy chuyển đổi AI.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": null,
+            "name_source": "metadata"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "cac5c8c1-57f9-59e8-ba49-c65fc845ed62"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-476c8fa6729ab93b",
+    "event_key": "UNMERGED|8de11620-b1ea-5b5c-bf5b-0612def9d10a|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "8de11620-b1ea-5b5c-bf5b-0612def9d10a",
+        "url": "https://fireant.vn/bai-viet/cmg-tu-lam-cong-nghe-sang-lam-chu-cong-nghe/42455158",
+        "source_name": "fireant",
+        "publish_date": "2026-10-26",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "8de11620-b1ea-5b5c-bf5b-0612def9d10a",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Trong chiến lược 2026 – 2030 được Tập đoàn đề ra trong Đại hội đồng cổ đông thường niên năm 2026 diễn ra cuối tháng 7, CMC xác định C-OpenAI, C-Product và AI-X là 3 trụ cột có mối liên hệ từ công nghệ đến sản phẩm và giá trị tạo ra.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": null,
+            "name_source": "metadata"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-26",
+        "article_id": "8de11620-b1ea-5b5c-bf5b-0612def9d10a"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-59ba6d3821272ac6",
+    "event_key": "UNMERGED|9cb068a6-e38c-53de-a0c2-564178959346|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "9cb068a6-e38c-53de-a0c2-564178959346",
+        "url": "https://cafef.vn/du-lieu/cmg-2957876/cmg-nghi-quyet-hdqt-phe-duyet-giao-dich-voi-ben-co-lien-quan.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-08-18",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "9cb068a6-e38c-53de-a0c2-564178959346",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "CMG: Nghị quyết HĐQT phê duyệt giao dịch với bên có liên quan",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "CMG: Nghị quyết HĐQT phê duyệt giao dịch với bên có liên quan",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-08-18",
+        "article_id": "9cb068a6-e38c-53de-a0c2-564178959346"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-7d40ad9036b88dd1",
+    "event_key": "UNMERGED|cac5c8c1-57f9-59e8-ba49-c65fc845ed62|e1",
+    "event_type": "conference_forum",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "cac5c8c1-57f9-59e8-ba49-c65fc845ed62",
+        "url": "https://fireant.vn/bai-viet/tap-doan-cmc-gioi-thieu-he-sinh-thai-ai-c-product-tai-dien-dan-kinh-te-mua-thu-2026/42512313",
+        "source_name": "fireant",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "cac5c8c1-57f9-59e8-ba49-c65fc845ed62",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Tập đoàn CMC giới thiệu hệ sinh thái AI C-PRODUCT tại Diễn đàn Kinh tế Mùa thu 2026",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": "Diễn",
+        "location_evidence": "Tập đoàn CMC giới thiệu hệ sinh thái AI C-PRODUCT tại Diễn đàn Kinh tế Mùa thu 2026",
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": null,
+            "name_source": "metadata"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "cac5c8c1-57f9-59e8-ba49-c65fc845ed62"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-7e88567e04bc6e7c",
+    "event_key": "UNMERGED|841ac317-aef6-57c0-98f7-cdc9083389e2|e1",
+    "event_type": "appointment",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "841ac317-aef6-57c0-98f7-cdc9083389e2",
+        "url": "https://cafef.vn/du-lieu/cmg-2959389/cmg-bo-nhiem-ong-dang-tung-son-ong-nguyen-hai-son-giu-chuc-pho-chu-tich-evp-tap-doan-tu-1982026.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-08-20",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "841ac317-aef6-57c0-98f7-cdc9083389e2",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "CMG: Bổ nhiệm ông Đặng Tùng Sơn, ông Nguyễn Hải Sơn giữ chức Phó Chủ tịch EVP Tập đoàn từ 19.8.2026",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "CMG: Bổ nhiệm ông Đặng Tùng Sơn, ông Nguyễn Hải Sơn giữ chức Phó Chủ tịch EVP Tập đoàn từ 19.8.2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-08-20",
+        "article_id": "841ac317-aef6-57c0-98f7-cdc9083389e2"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-8e65ba121541a14e",
+    "event_key": "shareholder_meeting|cmg|2026-10-19",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-19",
+      "event_date_end": "2026-10-19",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "04de7479-7368-59e0-9aee-42d014d669ce",
+        "url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-30-2026-ngay-19-10-2026/42366661",
+        "source_name": "fireant",
+        "publish_date": "2026-10-20",
+        "source_role": "original"
+      },
+      {
+        "article_id": "699af6a6-92be-5139-8151-53644be324da",
+        "url": "https://cafef.vn/du-lieu/cmg-3002480/cmg-nghi-quyet-hdqt-dieu-chinh-han-muc-tin-dung-trung-dai-han-cap-cho-truong-dai-hoc-cmc.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-20",
+        "source_role": "repost"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "04de7479-7368-59e0-9aee-42d014d669ce",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "CMG: Nghị quyết HĐQT số 30/2026 ngày 19/10/2026",
+        "dates": {
+          "event_date_start": "2026-10-19",
+          "event_date_end": "2026-10-19",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "19/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-19",
+              "derived": false,
+              "evidence": "19/10/2026"
+            },
+            {
+              "date": "2026-10-19",
+              "derived": false,
+              "evidence": "19/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "CMG: Nghị quyết HĐQT số 30/2026 ngày 19/10/2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      },
+      {
+        "article_id": "699af6a6-92be-5139-8151-53644be324da",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "CMG: Nghị quyết HĐQT điều chỉnh hạn mức tín dụng trung -  dài hạn cấp cho Trường Đại học CMC",
+        "dates": {
+          "event_date_start": "2026-10-19",
+          "event_date_end": "2026-10-19",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "19/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-19",
+              "derived": false,
+              "evidence": "19/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "CMG: Nghị quyết HĐQT điều chỉnh hạn mức tín dụng trung -  dài hạn cấp cho Trường Đại học CMC",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-20",
+        "article_id": "04de7479-7368-59e0-9aee-42d014d669ce"
+      },
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-20",
+        "article_id": "699af6a6-92be-5139-8151-53644be324da"
+      }
+    ],
+    "related_event_ids": [
+      "evt-e9e893bea2c9e15f"
+    ],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-da3cc35dd7f7b2b7",
+    "event_key": "UNMERGED|0ba11895-2c8a-59b6-bb28-b2fd49f27dfb|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "0ba11895-2c8a-59b6-bb28-b2fd49f27dfb",
+        "url": "https://cafef.vn/du-lieu/cmg-2999803/cmg-nghi-quyet-hdqt-ve-viec-lua-chon-don-vi-kiem-toan-doc-lap-cho-nam-tai-chinh-20262028.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-16",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "0ba11895-2c8a-59b6-bb28-b2fd49f27dfb",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "CMG: Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "CMG: Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-16",
+        "article_id": "0ba11895-2c8a-59b6-bb28-b2fd49f27dfb"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-deabb3f6fb598612",
+    "event_key": "UNMERGED|37d2f293-7f42-579b-8156-42ab0bdacac6|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "37d2f293-7f42-579b-8156-42ab0bdacac6",
+        "url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-ve-viec-lua-chon-don-vi-kiem-toan-doc-lap-cho-nam-tai-chinh-2026-2028/42321609",
+        "source_name": "fireant",
+        "publish_date": "2026-10-16",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "37d2f293-7f42-579b-8156-42ab0bdacac6",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "CMG: Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "CMG: Nghị quyết HĐQT về việc lựa chọn đơn vị kiểm toán độc lập cho năm tài chính 2026-2028",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-16",
+        "article_id": "37d2f293-7f42-579b-8156-42ab0bdacac6"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-e9e893bea2c9e15f",
+    "event_key": "shareholder_meeting|cmg|2026-10-20",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "CMG"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-20",
+      "event_date_end": "2026-10-20",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "0d144bab-7334-5af7-b2e3-2e241bda6ff9",
+        "url": "https://cafef.vn/du-lieu/cmg-3004005/cmg-nghi-quyet-hdqt-ve-khoan-vay-cua-truong-dai-hoc-cmc-tai-ngan-hang-sinopac.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-22",
+        "source_role": "original"
+      },
+      {
+        "article_id": "6cff2d8a-fd61-512b-a0ec-129e242b829d",
+        "url": "https://fireant.vn/bai-viet/cmg-nghi-quyet-hdqt-so-31-ngay-20-10-2026/42410599",
+        "source_name": "fireant",
+        "publish_date": "2026-10-22",
+        "source_role": "repost"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "0d144bab-7334-5af7-b2e3-2e241bda6ff9",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "CMG: Nghị quyết HĐQT về khoản vay của Trường Đại học CMC tại Ngân hàng SinoPac",
+        "dates": {
+          "event_date_start": "2026-10-20",
+          "event_date_end": "2026-10-20",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "20/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-20",
+              "derived": false,
+              "evidence": "20/10/2026"
+            }
+          ]
+        },
+        "location": "Ngân",
+        "location_evidence": "CMG: Nghị quyết HĐQT về khoản vay của Trường Đại học CMC tại Ngân hàng SinoPac",
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "CMG: Nghị quyết HĐQT về khoản vay của Trường Đại học CMC tại Ngân hàng SinoPac",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      },
+      {
+        "article_id": "6cff2d8a-fd61-512b-a0ec-129e242b829d",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "CMG: Nghị quyết HĐQT số 31 ngày 20/10/2026",
+        "dates": {
+          "event_date_start": "2026-10-20",
+          "event_date_end": "2026-10-20",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "20/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-20",
+              "derived": false,
+              "evidence": "20/10/2026"
+            },
+            {
+              "date": "2026-10-20",
+              "derived": false,
+              "evidence": "20/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "CMG",
+            "name_normalized": "CMG",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "CMG: Nghị quyết HĐQT số 31 ngày 20/10/2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-22",
+        "article_id": "0d144bab-7334-5af7-b2e3-2e241bda6ff9"
+      },
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-22",
+        "article_id": "6cff2d8a-fd61-512b-a0ec-129e242b829d"
+      }
+    ],
+    "related_event_ids": [
+      "evt-8e65ba121541a14e"
+    ],
+    "review_flag": "needs_followup"
+  }
+]

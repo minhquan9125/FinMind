@@ -1,0 +1,109 @@
+{
+  "ir_version": "1",
+  "page": 66,
+  "printed_page": "68",
+  "page_class": "balance_sheet",
+  "page_size": {"width": 595.276, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
+    "file_name": "CMG_2024_511722.pdf"
+  },
+  "blocks": [
+    {"id": "p66-b1", "type": "heading", "text": "BẢNG CÂN ĐỐI KẾ TOÁN RIÊNG", "bbox": [192.68, 41.68, 406.04, 55.68]},
+    {"id": "p66-b2", "type": "paragraph", "text": "Ngày 31 tháng 3 năm 2025", "bbox": [232.69, 57.59, 363.51, 67.59]},
+    {"id": "p66-b3", "type": "paragraph", "text": "TM", "bbox": [297.25, 87.39, 312.35, 97.39]},
+    {"id": "p66-b4", "type": "paragraph", "text": "Số cuối năm", "bbox": [356.58, 87.39, 416.67, 97.39]},
+    {"id": "p66-b5", "type": "paragraph", "text": "Đơn vị tính: VND", "bbox": [470.19, 71.39, 533.81, 79.39]},
+    {"id": "p66-b6", "type": "paragraph", "text": "Số đầu năm", "bbox": [469.82, 87.39, 527.23, 97.39]},
+    {"id": "p66-b7", "type": "heading", "text": "NGUỒN VỐN", "bbox": [140.53, 87.94, 201.08, 97.94]},
+    {"id": "p66-b8", "type": "heading", "text": "NỢ PHẢI TRẢ", "bbox": [124.93, 116.07, 176.43, 124.07]},
+    {"id": "p66-b9", "type": "paragraph", "text": "Nợ ngắn hạn", "bbox": [122.67, 140.7, 171.54, 148.7]},
+    {
+      "id": "p66-b10",
+      "type": "paragraph",
+      "text": "Phải trả người bán ngắn hạn\nNgười mua trả tiền trước ngắn hạn\nThuế và các khoản phải nộp Nhà nước\nPhải trả người lao động\nChi phí phải trả ngắn hạn\nDoanh thu chưa thực hiện ngắn hạn\nPhải trả ngắn hạn khác\nVay ngắn hạn\nQuỹ khen thưởng, phúc lợi",
+      "bbox": [122.36, 153.9, 271.42, 265.9]
+    },
+    {"id": "p66-b11", "type": "paragraph", "text": "Nợ dài hạn", "bbox": [122.68, 280.99, 164.32, 288.99]},
+    {
+      "id": "p66-b12",
+      "type": "paragraph",
+      "text": "Phải trả dài hạn khác\nVay dài hạn\nThuế thu nhập hoãn lại phải trả\nQuỹ phát triển khoa học và công nghệ",
+      "bbox": [122.35, 297.43, 269.8, 344.43]
+    },
+    {"id": "p66-b13", "type": "heading", "text": "VỐN CHỦ SỞ HỮU", "bbox": [122.67, 364.44, 192.36, 372.44]},
+    {"id": "p66-b14", "type": "paragraph", "text": "Vốn chủ sở hữu", "bbox": [122.67, 390.21, 182.74, 398.21]},
+    {
+      "id": "p66-b15",
+      "type": "paragraph",
+      "text": "Vốn cổ phần đã phát hành\nCổ phiếu phổ thông có quyền biểu quyết\nThặng dư vốn cổ phần\nCổ phiếu quỹ\nLợi nhuận sau thuế chưa phân phối\nLợi nhuận sau thuế chưa phân phối lũy kế\nđến cuối năm trước\nLợi nhuận sau thuế chưa phân phối năm nay",
+      "bbox": [122.67, 403.42, 295.44, 502.42]
+    },
+    {"id": "p66-b16", "type": "heading", "text": "TỔNG CỘNG NGUỒN VỐN", "bbox": [122.98, 556.32, 221.64, 564.32]},
+    {"id": "p66-b17", "type": "paragraph", "text": "Nguyễn Hồng Phương", "bbox": [70.17, 723.8, 154.49, 731.8]},
+    {"id": "p66-b18", "type": "paragraph", "text": "Ngày 27 tháng 6 năm 2025", "bbox": [70.68, 750.17, 175.33, 758.17]},
+    {"id": "p66-b19", "type": "paragraph", "text": "14", "bbox": [297.7, 154.38, 307.05, 162.38]},
+    {"id": "p66-b20", "type": "paragraph", "text": "15", "bbox": [297.7, 180.38, 307.05, 188.38]},
+    {"id": "p66-b21", "type": "paragraph", "text": "16\n17\n18\n19\n20", "bbox": [297.7, 206.38, 307.05, 266.38]},
+    {"id": "p66-b22", "type": "paragraph", "text": "1 8\n1 9\n29.3\n21", "bbox": [297.7, 297.38, 314.39, 344.38]},
+    {"id": "p66-b23", "type": "paragraph", "text": "Giám đốc Tài chính", "bbox": [232.23, 601.84, 307.17, 609.84]},
+    {"id": "p66-b24", "type": "paragraph", "text": "Nguyễn Minh Tuệ", "bbox": [235.42, 723.8, 303.09, 731.8]},
+    {"id": "p66-b25", "type": "paragraph", "text": "1.186.355.151.859", "bbox": [350.55, 116.07, 425.07, 124.07]},
+    {"id": "p66-b26", "type": "paragraph", "text": "569.444.372.12", "bbox": [363.01, 141.44, 424.98, 149.44]},
+    {
+      "id": "p66-b27",
+      "type": "paragraph",
+      "text": "75.817.708.902\n15.933.494\n2.194.856.288\n2.714.421.119\n23.112.855.121\n3.422.196.028\n15.778.859.985\n433.547.698.514\n12.839.842.669",
+      "bbox": [359.41, 154.89, 424.7, 266.89]
+    },
+    {"id": "p66-b28", "type": "paragraph", "text": "616.910.779.739", "bbox": [357.56, 281.0, 424.46, 289.0]},
+    {"id": "p66-b29", "type": "paragraph", "text": "42.629.749.099\n572.604.784.505\n1.676.246.135", "bbox": [359.41, 296.69, 424.7, 330.69]},
+    {"id": "p66-b30", "type": "paragraph", "text": "2.404.959.372.269", "bbox": [349.62, 364.44, 424.13, 372.44]},
+    {"id": "p66-b31", "type": "paragraph", "text": "22\n2.404.959.372.269", "bbox": [302.65, 390.21, 424.13, 398.21]},
+    {
+      "id": "p66-b32",
+      "type": "paragraph",
+      "text": "2.113.396.070.000\n2.113.396.070.000\n27.062.540.400\n(388.000.000)\n264.888.761.869\n3.786.049.956",
+      "bbox": [352.07, 403.41, 424.7, 476.41]
+    },
+    {"id": "p66-b33", "type": "paragraph", "text": "261.102.711.913", "bbox": [359.41, 494.41, 424.7, 502.41]},
+    {"id": "p66-b34", "type": "paragraph", "text": "3.591.314.524.128", "bbox": [349.03, 555.73, 423.54, 563.73]},
+    {"id": "p66-b35", "type": "paragraph", "text": "Chủ tịch Điều hành Tập đoàn", "bbox": [377.51, 601.48, 489.95, 609.48]},
+    {"id": "p66-b36", "type": "paragraph", "text": "Nguyễn Trung Chính", "bbox": [396.36, 723.8, 475.4, 731.8]},
+    {"id": "p66-b37", "type": "paragraph", "text": "1.011.360.262.436", "bbox": [458.11, 116.07, 532.63, 124.07]},
+    {
+      "id": "p66-b38",
+      "type": "paragraph",
+      "text": "480.247.598.072\n103.819.127.214\n-\n294.968.602\n2.788.401.591\n17.634.978.219\n3.731.737.784\n21.089.972.677\n324.971.809.020\n5.916.602.965",
+      "bbox": [465.75, 141.44, 532.65, 266.56]
+    },
+    {"id": "p66-b39", "type": "paragraph", "text": "531.112.664.364", "bbox": [465.93, 281.0, 532.83, 289.0]},
+    {"id": "p66-b40", "type": "paragraph", "text": "28.735.831.746\n498.958.710.662\n1.618.249.795\n-\n1.799.872.161", "bbox": [421.09, 297.45, 532.58, 344.45]},
+    {"id": "p66-b41", "type": "paragraph", "text": "2.187.143.567.243", "bbox": [457.98, 364.44, 532.5, 372.44]},
+    {
+      "id": "p66-b42",
+      "type": "paragraph",
+      "text": "2.187.143.567.243\n1.900.269.960.000\n1.900.269.960.000\n27.062.540.400\n-\n259.811.066.843\n3.900.473.026",
+      "bbox": [457.98, 390.21, 532.5, 476.33]
+    },
+    {"id": "p66-b43", "type": "paragraph", "text": "255.910.593.817", "bbox": [467.14, 494.33, 532.43, 502.33]},
+    {"id": "p66-b44", "type": "paragraph", "text": "3.198.503.829.679", "bbox": [457.39, 555.73, 531.91, 563.73]},
+    {"id": "p66-b45", "type": "paragraph", "text": "MS", "bbox": [48.9, 87.39, 64.13, 97.39]},
+    {"id": "p66-b46", "type": "paragraph", "text": "300 C.", "bbox": [50.67, 116.07, 96.14, 124.07]},
+    {"id": "p66-b47", "type": "paragraph", "text": "310 I.", "bbox": [50.67, 140.7, 92.03, 148.7]},
+    {"id": "p66-b48", "type": "paragraph", "text": "311 1.\n312 2.\n313 3.\n314 4.\n315 5.\n318 6.\n319 7.\n320 8.\n322 9.", "bbox": [50.67, 153.9, 94.01, 265.9]},
+    {"id": "p66-b49", "type": "paragraph", "text": "330 II.", "bbox": [50.68, 280.99, 94.74, 288.99]},
+    {"id": "p66-b50", "type": "paragraph", "text": "337 1.\n338 2.\n341 3.\n343 4.", "bbox": [50.67, 297.43, 94.0, 344.43]},
+    {"id": "p66-b51", "type": "paragraph", "text": "400 D.", "bbox": [50.67, 364.44, 94.92, 372.44]},
+    {"id": "p66-b52", "type": "paragraph", "text": "410 I.", "bbox": [50.67, 390.21, 92.04, 398.21]},
+    {"id": "p66-b53", "type": "paragraph", "text": "411 1.\n411a -\n412 2.\n415 3.\n421 4.\n421a -", "bbox": [50.67, 403.42, 94.0, 476.42]},
+    {"id": "p66-b54", "type": "paragraph", "text": "421b -", "bbox": [50.67, 494.42, 90.62, 502.42]},
+    {"id": "p66-b55", "type": "paragraph", "text": "440", "bbox": [50.97, 556.32, 65.44, 564.32]},
+    {"id": "p66-b56", "type": "paragraph", "text": "Kế toán trưởng", "bbox": [83.53, 601.92, 141.31, 609.92]},
+    {"id": "p66-b57", "type": "paragraph", "text": "Hà Nội, Việt Nam", "bbox": [70.68, 737.17, 136.58, 745.17]},
+    {"id": "p66-b58", "type": "furniture", "text": "68", "bbox": [36.86, 811.89, 45.87, 819.89]},
+    {"id": "p66-b59", "type": "paragraph", "text": "BÁO CÁO THƯỜNG NIÊN | 2024", "bbox": [442.82, 811.89, 555.08, 819.89]}
+  ]
+}

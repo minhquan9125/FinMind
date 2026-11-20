@@ -1,0 +1,47 @@
+export function safeSourceUrl(raw) {
+  if (typeof raw !== 'string' || raw.length > 2048) return null;
+  try {
+    const url = new URL(raw);
+    return ['https:', 'http:'].includes(url.protocol) && !url.username && !url.password ? url.href : null;
+  } catch { return null; }
+}
+
+export function modeLabel(snapshot) {
+  if (!snapshot) return 'Chưa bắt đầu hội thoại · Nhập câu hỏi rồi nhấn Gửi';
+  return snapshot.execution_mode === 'LIVE'
+    ? 'Nguồn dữ liệu thật · Xem nguồn và kỳ báo cáo trước khi sử dụng số liệu'
+    : 'Dữ liệu mẫu · Chưa phải số liệu tài chính thật';
+}
+
+export function citationView(result) {
+  if (result?.execution_mode !== 'LIVE') return [];
+  if ((!result.evidence_packs && result.scope?.source_type === 'PRICE') || result.presentation?.sources === 'HIDDEN') return [];
+  const bound = new Set(result.answering?.status === 'DRAFT_READY'
+    ? (result.answering.citations || []).map(c => c.evidence_id) : []);
+  const numbers = new Map(result.answering?.status === 'DRAFT_READY'
+    ? (result.answering.citations || []).filter(c => Number.isInteger(c.citation_number) && c.citation_number > 0)
+      .map(c => [c.evidence_id, c.citation_number]) : []);
+  const items = result.evidence_packs ? result.evidence_packs.flatMap(pack => pack.items || []) : result.evidence_pack?.items || [];
+  const unique = [...new Map(items.map(item => [item.evidence_id, item])).values()];
+  return unique.filter(item => item.source_verified === true && (item.source_type !== 'PRICE' || result.evidence_packs)
+    && (result.presentation?.sources !== 'USED_LINKS' || bound.has(item.evidence_id))).map(item => ({
+    id: item.evidence_id,
+    used: bound.has(item.evidence_id),
+    citationNumber: numbers.get(item.evidence_id) ?? null,
+    title: item.title || (item.source_type === 'NEWS' ? 'Bài tin' : 'Báo cáo tài chính'),
+    location: item.locator?.section || 'Đoạn nguồn',
+    passage: item.passage,
+    rows: Array.isArray(item.locator?.row_keys) ? item.locator.row_keys : [],
+    url: safeSourceUrl(item.source_url) || safeSourceUrl(item.locator?.url)
+      || safeSourceUrl(item.locator?.source_url) || safeSourceUrl(item.snapshot?.url),
+    sourceNote: item.source_type === 'PRICE_TREND' || item.snapshot?.kind === 'PRICE_TREND'
+      ? 'Chỉ báo được tính từ lịch sử giá lưu trong FinMind; không phải bài báo.'
+      : item.snapshot?.kind === 'FINANCIAL_HEALTH'
+        ? 'Chỉ số được tính từ BCTC lưu trong FinMind. Liên kết tài liệu gốc chỉ hiển thị khi có trong bằng chứng.'
+        : null,
+    documentLinks: (item.snapshot?.health?.citations || []).filter(c => safeSourceUrl(c.url))
+      .filter((c, index, all) => all.findIndex(other => other.url === c.url && other.page === c.page) === index)
+      .map(c => ({ url: safeSourceUrl(c.url), title: c.title || 'BCTC gốc', page: c.page })),
+    compact: item.source_type === 'NEWS',
+  }));
+}

@@ -1,0 +1,153 @@
+{
+  "text": "dvÐ\n\nCMC CORPORATION\n\néá BÁO CÁO CỦA HỘI ĐỒNG QUẢN TRỊ",
+  "chars": 42,
+  "words": 11,
+  "wordItems": [
+    {
+      "text": "dvÐ",
+      "bbox": [
+        798,
+        171,
+        922,
+        253
+      ],
+      "conf": 37.966885,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CMC",
+      "bbox": [
+        708,
+        273,
+        773,
+        294
+      ],
+      "conf": 92.261421,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CORPORATION",
+      "bbox": [
+        785,
+        273,
+        1011,
+        294
+      ],
+      "conf": 91.195511,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "éá",
+      "bbox": [
+        336,
+        1766,
+        369,
+        1829
+      ],
+      "conf": 30.895172,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        520,
+        1770,
+        601,
+        1804
+      ],
+      "conf": 91.562202,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        617,
+        1770,
+        700,
+        1804
+      ],
+      "conf": 93.305298,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỦA",
+      "bbox": [
+        716,
+        1769,
+        795,
+        1804
+      ],
+      "conf": 92.535995,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HỘI",
+      "bbox": [
+        811,
+        1770,
+        874,
+        1808
+      ],
+      "conf": 96.409142,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐỒNG",
+      "bbox": [
+        891,
+        1767,
+        1006,
+        1804
+      ],
+      "conf": 93.245651,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUẢN",
+      "bbox": [
+        1022,
+        1768,
+        1134,
+        1804
+      ],
+      "conf": 88.676819,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TRỊ",
+      "bbox": [
+        1150,
+        1777,
+        1206,
+        1808
+      ],
+      "conf": 90.663292,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 82,
+  "lowConfRatio": 0.182,
+  "seconds": 0.365
+}

@@ -1,0 +1,192 @@
+{
+  "text": "“\\)°)\n\nĐÁNH GIÁ\n\nHOẠT ĐỘNG\n\nKINH DOANH 2024\nVÀ KẾ HOẠCH\nKINH DOANH 2025",
+  "chars": 55,
+  "words": 14,
+  "wordItems": [
+    {
+      "text": "“\\)°)",
+      "bbox": [
+        375,
+        317,
+        1386,
+        734
+      ],
+      "conf": 29.797066,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐÁNH",
+      "bbox": [
+        432,
+        1098,
+        785,
+        1211
+      ],
+      "conf": 91.28112,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "GIÁ",
+      "bbox": [
+        832,
+        1098,
+        1047,
+        1210
+      ],
+      "conf": 96.084435,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HOẠT",
+      "bbox": [
+        437,
+        1288,
+        773,
+        1402
+      ],
+      "conf": 89.981453,
+      "block": 3,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "ĐỘNG",
+      "bbox": [
+        812,
+        1264,
+        1169,
+        1402
+      ],
+      "conf": 95.64151,
+      "block": 3,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "KINH",
+      "bbox": [
+        437,
+        1455,
+        741,
+        1541
+      ],
+      "conf": 91.5401,
+      "block": 3,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        791,
+        1453,
+        1235,
+        1541
+      ],
+      "conf": 92.534996,
+      "block": 3,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        1280,
+        1455,
+        1552,
+        1539
+      ],
+      "conf": 96.471985,
+      "block": 3,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "VÀ",
+      "bbox": [
+        429,
+        1593,
+        585,
+        1705
+      ],
+      "conf": 96.894234,
+      "block": 3,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "KẾ",
+      "bbox": [
+        628,
+        1580,
+        779,
+        1705
+      ],
+      "conf": 95.975853,
+      "block": 3,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "HOẠCH",
+      "bbox": [
+        822,
+        1618,
+        1259,
+        1732
+      ],
+      "conf": 96.3881,
+      "block": 3,
+      "paragraph": 3,
+      "line": 2
+    },
+    {
+      "text": "KINH",
+      "bbox": [
+        437,
+        1785,
+        741,
+        1871
+      ],
+      "conf": 91.223595,
+      "block": 3,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        791,
+        1783,
+        1235,
+        1871
+      ],
+      "conf": 92.651375,
+      "block": 3,
+      "paragraph": 3,
+      "line": 3
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        1280,
+        1785,
+        1545,
+        1869
+      ],
+      "conf": 96.412598,
+      "block": 3,
+      "paragraph": 3,
+      "line": 3
+    }
+  ],
+  "meanConf": 89,
+  "lowConfRatio": 0.071,
+  "seconds": 0.8
+}

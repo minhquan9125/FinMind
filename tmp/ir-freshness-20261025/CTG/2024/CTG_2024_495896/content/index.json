@@ -1,0 +1,28 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\CTG\\2024\\CTG_2024_495896.pdf",
+  "scope": "annual_report_content",
+  "pages": 61,
+  "routes": {
+    "TEXT_LAYER": 61
+  },
+  "blockTypes": {
+    "paragraph": 2232,
+    "furniture": 244,
+    "heading": 207
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 83,
+      "end": 118
+    },
+    {
+      "start": 120,
+      "end": 144
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

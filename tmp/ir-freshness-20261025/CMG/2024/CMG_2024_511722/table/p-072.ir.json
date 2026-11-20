@@ -1,0 +1,107 @@
+{
+  "ir_version": "1",
+  "page": 72,
+  "printed_page": "74",
+  "page_class": "balance_sheet",
+  "page_size": {"width": 595.276, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8946a531f3ddc9ad7ffae44495663536461d75a1cbfa215909e459b78fbc8df0",
+    "file_name": "CMG_2024_511722.pdf"
+  },
+  "blocks": [
+    {"id": "p72-b1", "type": "heading", "text": "BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT", "bbox": [175.66, 35.72, 419.62, 49.72]},
+    {"id": "p72-b2", "type": "paragraph", "text": "Ngày 31 tháng 3 năm 2025", "bbox": [232.23, 51.63, 363.04, 61.63]},
+    {"id": "p72-b3", "type": "paragraph", "text": "TM", "bbox": [296.62, 81.43, 311.72, 91.43]},
+    {"id": "p72-b4", "type": "paragraph", "text": "Số cuối năm", "bbox": [355.95, 81.43, 416.04, 91.43]},
+    {"id": "p72-b5", "type": "paragraph", "text": "Đơn vị tính: VND", "bbox": [474.86, 65.43, 538.49, 73.43]},
+    {"id": "p72-b6", "type": "paragraph", "text": "Số đầu năm", "bbox": [481.0, 81.43, 538.41, 91.43]},
+    {"id": "p72-b7", "type": "heading", "text": "TÀI SẢN", "bbox": [150.33, 81.98, 189.99, 91.98]},
+    {"id": "p72-b8", "type": "heading", "text": "TÀI SẢN NGẮN HẠN", "bbox": [121.68, 110.11, 198.55, 118.11]},
+    {"id": "p72-b9", "type": "paragraph", "text": "Tiền và các khoản tương đương tiền", "bbox": [122.34, 134.73, 261.5, 142.73]},
+    {"id": "p72-b10", "type": "paragraph", "text": "Các khoản tương đương tiền", "bbox": [122.35, 159.95, 232.13, 167.95]},
+    {"id": "p72-b11", "type": "paragraph", "text": "Đầu tư tài chính ngắn hạn", "bbox": [122.34, 179.11, 222.22, 187.11]},
+    {"id": "p72-b12", "type": "paragraph", "text": "Đầu tư nắm giữ đến ngày đáo hạn", "bbox": [122.34, 192.57, 253.3, 200.57]},
+    {"id": "p72-b13", "type": "paragraph", "text": "Các khoản phải thu ngắn hạn", "bbox": [122.21, 208.79, 235.16, 216.79]},
+    {
+      "id": "p72-b14",
+      "type": "paragraph",
+      "text": "Phải thu ngắn hạn của khách hàng\nTrả trước cho người bán ngắn hạn\nPhải thu ngắn hạn khác\nDự phòng phải thu ngắn hạn khó đòi",
+      "bbox": [122.34, 223.51, 263.56, 270.51]
+    },
+    {"id": "p72-b15", "type": "paragraph", "text": "Hàng tồn kho\nHàng tồn kho", "bbox": [122.34, 282.74, 174.2, 303.74]},
+    {
+      "id": "p72-b16",
+      "type": "paragraph",
+      "text": "Tài sản ngắn hạn khác\nChi phí trả trước ngắn hạn\nThuế GTGT được khấu trừ\nThuế và các khoản khác phải thu Nhà nước",
+      "bbox": [123.72, 312.35, 291.56, 359.35]
+    },
+    {"id": "p72-b17", "type": "heading", "text": "TÀI SẢN DÀI HẠN", "bbox": [122.61, 376.91, 190.13, 384.91]},
+    {
+      "id": "p72-b18",
+      "type": "paragraph",
+      "text": "Các khoản phải thu dài hạn\nPhải thu dài hạn khác\nTài sản cố định\nTài sản cố định hữu hình\nNguyên giá\nGiá trị khấu hao lũy kế\nTài sản cố định vô hình\nNguyên giá\nGiá trị hao mòn lũy kế\nTài sản dở dang dài hạn\nChi phí sản xuất, kinh doanh dở dang\nChi phí xây dựng cơ bản dở dang\nĐầu tư tài chính dài hạn\nĐầu tư vào công ty liên kết\nĐầu tư nắm giữ đến ngày đáo hạn\nTài sản dài hạn khác\nChi phí trả trước dài hạn\nTài sản thuế thu nhập hoãn lại\nLợi thế thương mại",
+      "bbox": [122.02, 402.07, 266.03, 644.08]
+    },
+    {"id": "p72-b19", "type": "heading", "text": "270 TỔNG CỘNG TÀI SẢN", "bbox": [50.33, 677.36, 168.5, 685.36]},
+    {"id": "p72-b20", "type": "paragraph", "text": "3.791.498.827.125", "bbox": [347.6, 110.11, 422.11, 118.11]},
+    {"id": "p72-b21", "type": "paragraph", "text": "4\n781.437.920.271\n686.950.920.271\n94.487.000.000", "bbox": [302.31, 134.73, 422.11, 168.73]},
+    {"id": "p72-b22", "type": "paragraph", "text": "1.271.526.984.742\n1.271.526.984.742\n5", "bbox": [302.56, 178.61, 422.11, 200.64]},
+    {
+      "id": "p72-b23",
+      "type": "paragraph",
+      "text": "1.325.869.748.381\n1.185.106.267.547\n6.1\n83.840.928.244\n6.2\n106.368.931.411\n7\n(49.446.378.821)\n6.3",
+      "bbox": [301.31, 210.47, 422.11, 270.51]
+    },
+    {"id": "p72-b24", "type": "paragraph", "text": "280.043.610.880\n9\n280.043.610.880", "bbox": [301.68, 282.74, 422.11, 303.74]},
+    {"id": "p72-b25", "type": "paragraph", "text": "132.620.562.851\n79.654.623.336\n14\n51.693.002.265\n1.272.937.250", "bbox": [300.4, 312.34, 422.08, 359.34]},
+    {"id": "p72-b26", "type": "paragraph", "text": "3.885.556.124.586", "bbox": [347.6, 376.91, 422.11, 384.91]},
+    {
+      "id": "p72-b27",
+      "type": "paragraph",
+      "text": "25.969.380.561\n25.969.380.561\n7\n2.224.006.500.737\n1.795.364.746.583\n10\n3.839.857.192.420\n(2.044.492.445.837)\n428.641.754.154\n11\n703.256.992.083\n(274.615.237.929)\n1.120.806.486.475\n190.000.000\n1.120.616.486.475\n12\n94.006.298.260\n92.006.298.260\n13\n2.000.000.000\n420.767.458.553\n420.493.252.663\n14",
+      "bbox": [300.93, 401.53, 422.1, 617.74]
+    },
+    {"id": "p72-b28", "type": "paragraph", "text": "86.852.731", "bbox": [378.66, 622.53, 422.08, 630.53]},
+    {"id": "p72-b29", "type": "paragraph", "text": "32.3\n187.353.159", "bbox": [301.94, 622.74, 422.07, 643.53]},
+    {"id": "p72-b30", "type": "paragraph", "text": "7.677.054.951.711", "bbox": [346.72, 677.36, 421.24, 685.36]},
+    {"id": "p72-b31", "type": "paragraph", "text": "3.172.994.142.785", "bbox": [465.02, 110.11, 539.53, 118.11]},
+    {"id": "p72-b32", "type": "paragraph", "text": "510.579.888.457\n476.759.888.457\n33.820.000.000", "bbox": [472.63, 134.73, 539.53, 168.73]},
+    {"id": "p72-b33", "type": "paragraph", "text": "1.112.061.029.695\n1.112.061.029.695", "bbox": [465.0, 178.6, 539.51, 199.6]},
+    {
+      "id": "p72-b34",
+      "type": "paragraph",
+      "text": "1.325.931.498.903\n1.230.754.428.253\n62.640.733.999\n78.178.479.881\n(45.642.143.230)",
+      "bbox": [465.0, 210.46, 539.51, 270.46]
+    },
+    {"id": "p72-b35", "type": "paragraph", "text": "133.218.522.714\n133.218.522.714", "bbox": [472.6, 282.73, 539.51, 303.73]},
+    {"id": "p72-b36", "type": "paragraph", "text": "91.203.203.016\n60.697.320.316\n29.513.172.509\n992.710.191", "bbox": [477.54, 312.42, 539.51, 359.42]},
+    {"id": "p72-b37", "type": "paragraph", "text": "3.680.778.687.113", "bbox": [465.02, 376.91, 539.54, 384.91]},
+    {
+      "id": "p72-b38",
+      "type": "paragraph",
+      "text": "34.471.981.257\n34.471.981.257\n2.371.217.407.648\n1.924.656.894.032\n3.656.771.335.756\n(1.732.114.441.724)\n446.560.513.616\n679.454.890.222\n(232.894.376.606)\n792.225.303.715\n380.000.000\n791.845.303.715\n95.291.473.330\n93.291.473.330\n2.000.000.000\n387.572.521.163\n387.118.684.015\n168.734.514\n285.102.634",
+      "bbox": [460.84, 401.53, 539.51, 643.53]
+    },
+    {"id": "p72-b39", "type": "paragraph", "text": "6.853.772.829.898", "bbox": [462.72, 677.36, 537.23, 685.36]},
+    {"id": "p72-b40", "type": "paragraph", "text": "MS", "bbox": [50.27, 81.43, 65.5, 91.43]},
+    {"id": "p72-b41", "type": "paragraph", "text": "100 A.", "bbox": [50.32, 110.11, 92.88, 118.11]},
+    {"id": "p72-b42", "type": "paragraph", "text": "110 I.\n111 1.\nTiền\n112 2.", "bbox": [50.34, 134.73, 138.9, 167.95]},
+    {"id": "p72-b43", "type": "paragraph", "text": "120 II.", "bbox": [50.34, 179.11, 94.39, 187.11]},
+    {"id": "p72-b44", "type": "paragraph", "text": "123 1.", "bbox": [50.34, 192.57, 93.67, 200.57]},
+    {"id": "p72-b45", "type": "paragraph", "text": "130 III.", "bbox": [50.22, 208.79, 96.96, 216.79]},
+    {"id": "p72-b46", "type": "paragraph", "text": "131 1.\n132 2.\n136 3.\n137 4.", "bbox": [50.34, 223.51, 93.67, 270.51]},
+    {"id": "p72-b47", "type": "paragraph", "text": "140 IV.\n141 1.", "bbox": [50.33, 282.74, 97.13, 303.74]},
+    {"id": "p72-b48", "type": "paragraph", "text": "150 V.\n151 1.\n152 2.\n153 3.", "bbox": [51.72, 312.35, 95.83, 359.35]},
+    {"id": "p72-b49", "type": "paragraph", "text": "200 B.", "bbox": [50.61, 376.91, 94.53, 384.91]},
+    {
+      "id": "p72-b50",
+      "type": "paragraph",
+      "text": "210 I.\n216 1.\n220 II.\n221 1.\n222\n223\n227 2.\n228\n229\n240 III.\n241 1.\n242 2.\n250 IV.\n252 1.\n255 2.\n260 V.\n261 1.\n262 2.\n269 3.",
+      "bbox": [50.33, 402.07, 97.13, 644.08]
+    },
+    {"id": "p72-b51", "type": "furniture", "text": "74", "bbox": [35.86, 812.37, 44.87, 820.37]},
+    {"id": "p72-b52", "type": "paragraph", "text": "BÁO CÁO THƯỜNG NIÊN | 2024", "bbox": [441.82, 812.37, 554.08, 820.37]}
+  ]
+}

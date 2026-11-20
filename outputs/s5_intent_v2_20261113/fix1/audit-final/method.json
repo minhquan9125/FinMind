@@ -1,0 +1,27 @@
+{
+  "status": "FROZEN_BEFORE_AUDIT",
+  "source_hashes": {
+    "backend/scripts/check_s5_intent_v2_fixes.py": "f4a5aea9f5372b6cd16cdcb9626b573d274c758b6d07569c88d5bc0b03828c23",
+    "backend/scripts/evaluate_s5_intent_v2.py": "72227d35c1024a3c5ee90d7966464473288d90e906171a805baf2c13747b775b",
+    "backend/src/retrieval_orchestration/intent_v2_rules.py": "9ffbabc22b1ee201f047f065607ee824d156991471754a16cb9832a8c5e6d7b8",
+    "backend/src/retrieval_orchestration/intent_v2_classifier.py": "e569316e57fef6d112627fcbedbfd768b2c19c84111b78466ecabe46f9f12f6b",
+    "backend/src/retrieval_orchestration/intent_library.py": "74b7f085cd576c3e15aa9995fcdd56ea439e02dbf3543141e124858e9a780165",
+    "backend/src/retrieval_orchestration/intent_matching.py": "f351d081045ad717a80fe63b01ace29e7bc437151338a3698b091f05879da2d9",
+    "backend/src/retrieval_orchestration/intent_scoring.py": "678a23e5c2f2ba987070b93b5dee61b4e9e2e692bbb06ad881b978c25582e919"
+  },
+  "data_hashes": {
+    "outputs/s5_intent_v2_20261113/vector-cache/library.jsonl": "4957b574e9a5b870297d847f78f9509478bd244dcb3d5989affcae995149c4f9",
+    "outputs/s5_intent_v2_20261113/vector-cache/library-vectors.npy": "eb00c8c606abe225dcd8527568924e57f0044a568a2cdaaaeb825630713a2b96",
+    "outputs/s5_intent_v2_20261113/vector-cache/development.jsonl": "b802418cfc57f2aadeebe5dd89165db674790af8e0556a34c512ddc784dd70e2",
+    "outputs/s5_intent_v2_20261113/vector-cache/development-vectors.npy": "39ad880a705c54b9903d082af262da80d8d81f78c95c88342e4ad0168e74286f",
+    "outputs/s5_intent_v2_20261113/legacy-regression/cases.json": "1505e9491c4f1d35069f6e74adc1af759a1e93f01941abbbcc725c32c9d69090",
+    "outputs/s5_intent_v2_20261113/legacy-regression/query-vectors.npy": "d2470ed06ce8ad160a7d75c01fe3eddaa50b1fe4259b45b8a0dd747f83e291e7"
+  },
+  "baseline_sha256": "949146b28f23d93622b1fbe0fcce8dbb9792e0150259aafa0d1b644918fd2cdb",
+  "artifact_manifest_sha256": "ac34a91452dff0af2cb16e07f0a9210891af75ca5979a47a4c0bcb2a32ed4db5",
+  "no_fit": true,
+  "blind_acceptance": false,
+  "no_runtime_latency_measurement": true,
+  "status_annotation": "CONVERSATION/greeting subtype is standalone PROPOSED; other rows unchanged.",
+  "metamorphic_method": "CONTROLLED_ENCODER_REUSES_ORIGINAL_VECTOR; RULE_CHECK_ONLY"
+}

@@ -1,0 +1,413 @@
+{
+  "text": "CÂU CHUYỆN\nCỦA TECH\n\nVề chúng tôi\n\nTầm nhìn và sứ mệnh\nCâu chuyện thương hiệu\nChặng đường lịch sử\n\nCơ cấu cổ đông\n\nHoạt động Quan hệ Nhà đầu tư",
+  "chars": 109,
+  "words": 31,
+  "wordItems": [
+    {
+      "text": "CÂU",
+      "bbox": [
+        126,
+        1363,
+        330,
+        1456
+      ],
+      "conf": 77.700508,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHUYỆN",
+      "bbox": [
+        368,
+        1363,
+        785,
+        1474
+      ],
+      "conf": 89.109108,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỦA",
+      "bbox": [
+        126,
+        1485,
+        338,
+        1580
+      ],
+      "conf": 81.342773,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TECH",
+      "bbox": [
+        367,
+        1507,
+        627,
+        1580
+      ],
+      "conf": 92.459007,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Về",
+      "bbox": [
+        123,
+        1795,
+        168,
+        1829
+      ],
+      "conf": 96.968636,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chúng",
+      "bbox": [
+        182,
+        1799,
+        289,
+        1836
+      ],
+      "conf": 96.295326,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tôi",
+      "bbox": [
+        302,
+        1799,
+        344,
+        1829
+      ],
+      "conf": 96.226395,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Tầm",
+      "bbox": [
+        123,
+        1901,
+        197,
+        1935
+      ],
+      "conf": 96.666695,
+      "block": 2,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "nhìn",
+      "bbox": [
+        214,
+        1905,
+        285,
+        1934
+      ],
+      "conf": 96.417473,
+      "block": 2,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        298,
+        1905,
+        337,
+        1935
+      ],
+      "conf": 96.862717,
+      "block": 2,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "sứ",
+      "bbox": [
+        352,
+        1905,
+        393,
+        1935
+      ],
+      "conf": 96.455688,
+      "block": 2,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "mệnh",
+      "bbox": [
+        405,
+        1905,
+        501,
+        1941
+      ],
+      "conf": 96.455688,
+      "block": 2,
+      "paragraph": 2,
+      "line": 1
+    },
+    {
+      "text": "Câu",
+      "bbox": [
+        124,
+        2011,
+        191,
+        2041
+      ],
+      "conf": 96.819153,
+      "block": 2,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "chuyện",
+      "bbox": [
+        206,
+        2011,
+        333,
+        2048
+      ],
+      "conf": 94.758522,
+      "block": 2,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "thương",
+      "bbox": [
+        346,
+        2012,
+        470,
+        2048
+      ],
+      "conf": 96.455833,
+      "block": 2,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "hiệu",
+      "bbox": [
+        486,
+        2011,
+        558,
+        2047
+      ],
+      "conf": 96.154465,
+      "block": 2,
+      "paragraph": 2,
+      "line": 2
+    },
+    {
+      "text": "Chặng",
+      "bbox": [
+        124,
+        2119,
+        238,
+        2155
+      ],
+      "conf": 83.396889,
+      "block": 2,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "đường",
+      "bbox": [
+        252,
+        2118,
+        364,
+        2155
+      ],
+      "conf": 96.046883,
+      "block": 2,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "lịch",
+      "bbox": [
+        380,
+        2119,
+        435,
+        2154
+      ],
+      "conf": 96.458443,
+      "block": 2,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "sử",
+      "bbox": [
+        450,
+        2117,
+        491,
+        2148
+      ],
+      "conf": 96.799133,
+      "block": 2,
+      "paragraph": 2,
+      "line": 3
+    },
+    {
+      "text": "Cơ",
+      "bbox": [
+        124,
+        2225,
+        172,
+        2254
+      ],
+      "conf": 96.674721,
+      "block": 2,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "cấu",
+      "bbox": [
+        186,
+        2220,
+        245,
+        2254
+      ],
+      "conf": 96.680771,
+      "block": 2,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "cổ",
+      "bbox": [
+        261,
+        2219,
+        301,
+        2254
+      ],
+      "conf": 96.126633,
+      "block": 2,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "đông",
+      "bbox": [
+        315,
+        2224,
+        403,
+        2261
+      ],
+      "conf": 96.531372,
+      "block": 2,
+      "paragraph": 3,
+      "line": 1
+    },
+    {
+      "text": "Hoạt",
+      "bbox": [
+        125,
+        2331,
+        208,
+        2366
+      ],
+      "conf": 96.96302,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "động",
+      "bbox": [
+        221,
+        2330,
+        309,
+        2367
+      ],
+      "conf": 96.800415,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Quan",
+      "bbox": [
+        324,
+        2331,
+        418,
+        2360
+      ],
+      "conf": 96.07914,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hệ",
+      "bbox": [
+        434,
+        2330,
+        474,
+        2366
+      ],
+      "conf": 96.80439,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Nhà",
+      "bbox": [
+        490,
+        2330,
+        558,
+        2360
+      ],
+      "conf": 95.627907,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đầu",
+      "bbox": [
+        573,
+        2326,
+        636,
+        2360
+      ],
+      "conf": 96.864296,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tư",
+      "bbox": [
+        649,
+        2333,
+        685,
+        2360
+      ],
+      "conf": 92.742836,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 94,
+  "lowConfRatio": 0,
+  "seconds": 0.862
+}

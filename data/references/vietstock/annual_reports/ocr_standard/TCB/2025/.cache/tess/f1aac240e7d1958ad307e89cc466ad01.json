@@ -1,0 +1,439 @@
+{
+  "text": "ỰU\nCUA TECH\n\n^\nKhối Ngân hàng Doanh nghiệp và\n\nTHÀNH T\nBáo cáo Kết quả kinh doanh\nKhối Ngân hàng Bán lẻ (RBG)\nĐịnh chế tài chính (CIBG)\n\nCác công ty con",
+  "chars": 117,
+  "words": 33,
+  "wordItems": [
+    {
+      "text": "ỰU",
+      "bbox": [
+        580,
+        1527,
+        717,
+        1631
+      ],
+      "conf": 87.929024,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CUA",
+      "bbox": [
+        129,
+        1664,
+        340,
+        1738
+      ],
+      "conf": 84.406548,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TECH",
+      "bbox": [
+        370,
+        1664,
+        631,
+        1737
+      ],
+      "conf": 91.583023,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "^",
+      "bbox": [
+        224,
+        1642,
+        245,
+        1659
+      ],
+      "conf": 88.604424,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Khối",
+      "bbox": [
+        128,
+        2165,
+        203,
+        2199
+      ],
+      "conf": 96.813812,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Ngân",
+      "bbox": [
+        218,
+        2169,
+        309,
+        2206
+      ],
+      "conf": 96.470772,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        325,
+        2169,
+        410,
+        2206
+      ],
+      "conf": 96.281242,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Doanh",
+      "bbox": [
+        426,
+        2170,
+        539,
+        2199
+      ],
+      "conf": 96.82753,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "nghiệp",
+      "bbox": [
+        555,
+        2169,
+        675,
+        2206
+      ],
+      "conf": 96.859787,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "và",
+      "bbox": [
+        687,
+        2169,
+        726,
+        2199
+      ],
+      "conf": 96.720039,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "THÀNH",
+      "bbox": [
+        128,
+        1520,
+        571,
+        1612
+      ],
+      "conf": 90.029053,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "T",
+      "bbox": [
+        495,
+        1516,
+        572,
+        1647
+      ],
+      "conf": 90.029053,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Báo",
+      "bbox": [
+        128,
+        1956,
+        194,
+        1986
+      ],
+      "conf": 96.625519,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "cáo",
+      "bbox": [
+        208,
+        1956,
+        270,
+        1986
+      ],
+      "conf": 96.922729,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Kết",
+      "bbox": [
+        285,
+        1952,
+        340,
+        1986
+      ],
+      "conf": 96.845673,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "quả",
+      "bbox": [
+        352,
+        1955,
+        415,
+        1993
+      ],
+      "conf": 96.568893,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "kinh",
+      "bbox": [
+        432,
+        1957,
+        501,
+        1985
+      ],
+      "conf": 96.706451,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "doanh",
+      "bbox": [
+        516,
+        1957,
+        625,
+        1986
+      ],
+      "conf": 96.099014,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Khối",
+      "bbox": [
+        128,
+        2059,
+        203,
+        2093
+      ],
+      "conf": 96.551094,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Ngân",
+      "bbox": [
+        218,
+        2063,
+        309,
+        2100
+      ],
+      "conf": 96.674797,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        325,
+        2063,
+        410,
+        2100
+      ],
+      "conf": 96.318016,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Bán",
+      "bbox": [
+        426,
+        2063,
+        490,
+        2093
+      ],
+      "conf": 95.904343,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "lẻ",
+      "bbox": [
+        506,
+        2062,
+        534,
+        2093
+      ],
+      "conf": 83.438988,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "(RBG)",
+      "bbox": [
+        548,
+        2064,
+        645,
+        2100
+      ],
+      "conf": 92.882553,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "Định",
+      "bbox": [
+        125,
+        2223,
+        206,
+        2258
+      ],
+      "conf": 96.663437,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "chế",
+      "bbox": [
+        221,
+        2218,
+        287,
+        2252
+      ],
+      "conf": 96.734413,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        296,
+        2222,
+        336,
+        2252
+      ],
+      "conf": 96.734413,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        351,
+        2222,
+        443,
+        2252
+      ],
+      "conf": 93.301216,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "(CIBG)",
+      "bbox": [
+        458,
+        2223,
+        568,
+        2259
+      ],
+      "conf": 92.912231,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "Các",
+      "bbox": [
+        127,
+        2328,
+        193,
+        2358
+      ],
+      "conf": 96.736916,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "công",
+      "bbox": [
+        207,
+        2328,
+        292,
+        2365
+      ],
+      "conf": 96.774445,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ty",
+      "bbox": [
+        305,
+        2331,
+        337,
+        2365
+      ],
+      "conf": 96.299416,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "con",
+      "bbox": [
+        349,
+        2336,
+        411,
+        2358
+      ],
+      "conf": 95.860077,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 94,
+  "lowConfRatio": 0,
+  "seconds": 2.001
+}

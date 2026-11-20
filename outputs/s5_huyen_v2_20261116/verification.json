@@ -1,0 +1,54 @@
+{
+  "base": "cd2726409aeb2b74b27ee1b777edb1fde3a78d33",
+  "intent_tests": {
+    "tests": 700,
+    "failures": 0,
+    "errors": 0
+  },
+  "policy_coverage": {
+    "line_percent": 96.14325068870524,
+    "branch_percent": 92.10526315789474
+  },
+  "protected_files_unchanged": [
+    "backend/src/retrieval_orchestration/intent_v2_classifier.py",
+    "backend/src/retrieval_orchestration/intent_v2_rules.py",
+    "backend/src/retrieval_orchestration/intent_gate_v2.py",
+    "backend/src/retrieval_orchestration/live_research.py",
+    "backend/requirements.txt"
+  ],
+  "real_model_regression": {
+    "status": "NOT_INDEPENDENT_ACCEPTANCE",
+    "success": 1.0,
+    "count": 110,
+    "threshold": 0.9,
+    "metric": "label_and_components_only",
+    "errors": 0,
+    "elapsed_seconds": 90.03417170001194,
+    "full_043_acceptance": "NOT_ESTABLISHED",
+    "route_accuracy": null,
+    "line_coverage": null,
+    "branch_coverage": null,
+    "note": "Label/component regression only. Policy routes require separate gold; no blind/production claim.",
+    "inputs_unchanged": true
+  },
+  "independent_acceptance": false,
+  "chat_wiring_changed": false,
+  "provider_called": false,
+  "review": "Restricted-intent override regression fixed; no remaining important confirmed review findings.",
+  "full_backend_intermediate_snapshot": {
+    "passed": 3876,
+    "failed": 70,
+    "skipped": 30,
+    "xfailed": 2,
+    "limitations": [
+      "PIL missing",
+      "PostgreSQL test 127.0.0.1:15434 unavailable",
+      "WBS02 identity integration failures"
+    ]
+  },
+  "source_sha256": {
+    "backend\\src\\retrieval_orchestration\\intent_routing.py": "f792c1a6e82446f861340f6bb3677e986d8498e8b8dc733f80a5057a5a0899dc",
+    "backend\\src\\retrieval_orchestration\\intent_fallback_contract.py": "1abdc4dd8c93bcf2dfea5257fe596877ef95585323fd37d44a598a20eac84540",
+    "backend\\scripts\\evaluate_s5_router.py": "ad50976624d16dbe7752cac70285bb23562219a4d88a308624260aa9c2ee5631"
+  }
+}

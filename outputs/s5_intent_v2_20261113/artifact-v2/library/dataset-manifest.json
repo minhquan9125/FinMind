@@ -1,0 +1,19 @@
+{
+  "dataset_version": "s5-intent-dataset-v2-owner-draft1",
+  "label_schema_version": "s5-intent-labels-v2",
+  "label_schema_sha256": "586b0c8dedb761e78b724c3794f1e935590df5c07e2e437751c40bcb6e9c1af4",
+  "approval_status": "OWNER_AUTHORIZED_PENDING_TEAM_REVIEW",
+  "blind_acceptance": false,
+  "development_provenance": "Separately authored by a test agent without reading library; not independent human blind acceptance.",
+  "variant_policy": "All variants of one curated seed stay in the same family and split.",
+  "files": {
+    "library.jsonl": {
+      "rows": 470,
+      "sha256": "4957b574e9a5b870297d847f78f9509478bd244dcb3d5989affcae995149c4f9"
+    },
+    "development.jsonl": {
+      "rows": 110,
+      "sha256": "b802418cfc57f2aadeebe5dd89165db674790af8e0556a34c512ddc784dd70e2"
+    }
+  }
+}

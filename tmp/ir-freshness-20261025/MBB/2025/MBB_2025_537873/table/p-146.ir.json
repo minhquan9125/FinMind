@@ -1,0 +1,376 @@
+{
+  "ir_version": "1",
+  "page": 146,
+  "printed_page": null,
+  "page_class": "income_statement",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "d67772421ddeceac697de71c5a84945ae7c34779bae44d6456738844d4950521",
+    "file_name": "MBB_2025_537873.pdf"
+  },
+  "blocks": [
+    {"id": "p146-b1", "type": "paragraph", "text": "hoạt động hợp nhất", "bbox": [39.69, 132.54, 332.22, 166.54]},
+    {"id": "p146-b2", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN • 2025", "bbox": [448.19, 34.45, 555.59, 41.45]},
+    {"id": "p146-b3", "type": "paragraph", "text": "B03/TCTD-HN", "bbox": [396.85, 173.15, 449.83, 181.15]},
+    {"id": "p146-b4", "type": "paragraph", "text": "Thuyết minh", "bbox": [323.14, 214.43, 371.84, 222.93]},
+    {"id": "p146-b5", "type": "paragraph", "text": "Năm 2025", "bbox": [419.81, 214.43, 459.71, 222.93]},
+    {"id": "p146-b6", "type": "paragraph", "text": "Năm 2024", "bbox": [510.44, 214.43, 550.42, 222.93]},
+    {"id": "p146-b7", "type": "paragraph", "text": "triệu đồng", "bbox": [419.45, 224.63, 459.71, 233.13]},
+    {"id": "p146-b8", "type": "paragraph", "text": "triệu đồng", "bbox": [510.16, 224.63, 550.42, 233.13]},
+    {"id": "p146-b9", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN • 2025", "bbox": [634.96, 34.45, 742.36, 41.45]},
+    {"id": "p146-b10", "type": "paragraph", "text": "Người lập:", "bbox": [634.96, 545.46, 674.3, 553.46]},
+    {"id": "p146-b11", "type": "paragraph", "text": "Người kiểm soát:", "bbox": [832.82, 545.46, 896.23, 553.46]},
+    {"id": "p146-b12", "type": "paragraph", "text": "Bà Lê Thị Huyền Trang", "bbox": [634.96, 649.84, 717.75, 657.84]},
+    {"id": "p146-b13", "type": "paragraph", "text": "Bà Đặng Thúy Dung", "bbox": [773.29, 649.84, 847.07, 657.84]},
+    {"id": "p146-b14", "type": "paragraph", "text": "Giám đốc Trung tâm", "bbox": [634.96, 659.68, 714.28, 668.18]},
+    {"id": "p146-b15", "type": "paragraph", "text": "Kế toán Trưởng", "bbox": [773.29, 659.68, 833.35, 668.18]},
+    {"id": "p146-b16", "type": "paragraph", "text": "Kế toán", "bbox": [634.96, 669.88, 664.91, 678.38]},
+    {"id": "p146-b17", "type": "paragraph", "text": "Hà Nội, Việt Nam\nNgày 07 tháng 03 năm 2026", "bbox": [634.96, 703.86, 745.11, 722.56]},
+    {"id": "p146-b18", "type": "heading", "text": "CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN • 287", "bbox": [928.85, 34.45, 1150.87, 41.45]},
+    {"id": "p146-b19", "type": "paragraph", "text": "Thuyết minh", "bbox": [917.92, 214.43, 966.62, 222.93]},
+    {"id": "p146-b20", "type": "paragraph", "text": "Năm 2025", "bbox": [1014.59, 214.43, 1054.49, 222.93]},
+    {"id": "p146-b21", "type": "paragraph", "text": "Năm 2024", "bbox": [1105.22, 214.43, 1145.2, 222.93]},
+    {"id": "p146-b22", "type": "paragraph", "text": "triệu đồng", "bbox": [1014.22, 224.63, 1054.49, 233.13]},
+    {"id": "p146-b23", "type": "paragraph", "text": "triệu đồng", "bbox": [1104.94, 224.63, 1145.2, 233.13]},
+    {"id": "p146-b24", "type": "paragraph", "text": "Người phê duyệt:", "bbox": [1041.45, 545.46, 1105.85, 553.46]},
+    {"id": "p146-b25", "type": "paragraph", "text": "Bà Nguyễn Thị Thanh Nga", "bbox": [880.3, 649.84, 977.08, 657.84]},
+    {"id": "p146-b26", "type": "paragraph", "text": "Ông Phạm Như Ánh", "bbox": [1041.45, 649.84, 1115.99, 657.84]},
+    {"id": "p146-b27", "type": "paragraph", "text": "Giám đốc Tài chính", "bbox": [880.3, 659.68, 954.8, 668.18]},
+    {"id": "p146-b28", "type": "paragraph", "text": "Tổng Giám đốc", "bbox": [1041.45, 659.68, 1100.4, 668.18]},
+    {
+      "id": "p146-t1",
+      "type": "table",
+      "title": null,
+      "continued": false,
+      "logical_table_id": "income_statement",
+      "bbox": [48.69, 214.43, 550.44, 707.3],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["2025", "đồng"], "bbox": [439.53, 214.43, 459.71, 233.13]},
+        {"key": "c2", "header_lines": ["2024", "đồng"], "bbox": [530.25, 214.43, 550.42, 233.13]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Thu nhập lãi và các khoản thu nhập tương tự",
+          "note": null,
+          "indent": 48.69,
+          "bbox": [48.69, 251.14, 550.43, 259.64],
+          "cells": {
+            "c1": {"raw": "89.088.116", "bbox": [420.96, 251.14, 459.72, 259.64]},
+            "c2": {"raw": "69.061.893", "bbox": [510.32, 251.14, 550.43, 259.64]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "Chi phí lãi và các chi phí tương tự",
+          "note": null,
+          "indent": 48.7,
+          "bbox": [48.7, 280.38, 550.44, 288.88],
+          "cells": {
+            "c1": {"raw": "(37.477.999)", "bbox": [416.4, 280.38, 459.73, 288.88]},
+            "c2": {"raw": "(27.909.674)", "bbox": [506.36, 280.38, 550.44, 288.88]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Thu nhập lãi thuần",
+          "note": "27",
+          "indent": 48.69,
+          "bbox": [48.69, 309.59, 550.42, 318.11],
+          "cells": {
+            "c1": {"raw": "51.610.117", "bbox": [423.77, 309.61, 459.71, 318.11]},
+            "c2": {"raw": "41.152.219", "bbox": [513.16, 309.61, 550.42, 318.11]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "Thu nhập từ hoạt động dịch vụ",
+          "note": null,
+          "indent": 48.69,
+          "bbox": [48.69, 338.86, 550.43, 347.36],
+          "cells": {
+            "c1": {"raw": "18.062.236", "bbox": [419.94, 338.86, 459.72, 347.36]},
+            "c2": {"raw": "14.602.602", "bbox": [510.17, 338.86, 550.43, 347.36]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Chi phí hoạt động dịch vụ",
+          "note": null,
+          "indent": 48.7,
+          "bbox": [48.7, 368.1, 550.44, 376.6],
+          "cells": {
+            "c1": {"raw": "(11.483.555)", "bbox": [417.14, 368.1, 459.73, 376.6]},
+            "c2": {"raw": "(10.234.353)", "bbox": [506.57, 368.1, 550.44, 376.6]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "Lãi thuần từ hoạt động dịch vụ",
+          "note": "28",
+          "indent": 48.69,
+          "bbox": [48.69, 397.31, 550.42, 405.83],
+          "cells": {
+            "c1": {"raw": "6.578.681", "bbox": [424.16, 397.33, 459.71, 405.83]},
+            "c2": {"raw": "4.368.249", "bbox": [513.18, 397.33, 550.42, 405.83]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Lãi thuần từ hoạt động kinh doanh ngoại hối",
+          "note": "29",
+          "indent": 48.69,
+          "bbox": [48.69, 426.55, 550.42, 435.06],
+          "cells": {
+            "c1": {"raw": "1.756.922", "bbox": [425.0, 426.56, 459.71, 435.06]},
+            "c2": {"raw": "2.000.164", "bbox": [513.1, 426.56, 550.42, 435.06]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": null,
+          "label_raw": "Lãi thuần từ mua bán chứng khoán kinh doanh",
+          "note": "30",
+          "indent": 48.69,
+          "bbox": [48.69, 455.79, 550.42, 464.3],
+          "cells": {
+            "c1": {"raw": "668.384", "bbox": [428.77, 455.8, 459.71, 464.3]},
+            "c2": {"raw": "1.756.022", "bbox": [515.06, 455.8, 550.42, 464.3]}
+          }
+        },
+        {
+          "id": "r9",
+          "code": null,
+          "label_raw": "Lãi thuần từ mua bán chứng khoán đầu tư và đầu tư dài hạn",
+          "note": "31",
+          "indent": 48.69,
+          "bbox": [48.69, 485.03, 550.42, 493.54],
+          "cells": {
+            "c1": {"raw": "1.590.093", "bbox": [422.8, 485.04, 459.71, 493.54]},
+            "c2": {"raw": "2.803.105", "bbox": [514.15, 485.04, 550.42, 493.54]}
+          }
+        },
+        {
+          "id": "r10",
+          "code": null,
+          "label_raw": "Thu nhập từ hoạt động khác",
+          "note": null,
+          "indent": 48.69,
+          "bbox": [48.69, 514.29, 550.43, 522.79],
+          "cells": {
+            "c1": {"raw": "6.479.624", "bbox": [424.01, 514.29, 459.72, 522.79]},
+            "c2": {"raw": "4.658.444", "bbox": [513.57, 514.29, 550.43, 522.79]}
+          }
+        },
+        {
+          "id": "r11",
+          "code": null,
+          "label_raw": "Chi phí cho hoạt động khác",
+          "note": null,
+          "indent": 48.7,
+          "bbox": [48.7, 543.53, 550.44, 552.03],
+          "cells": {
+            "c1": {"raw": "(1.165.150)", "bbox": [423.08, 543.53, 459.73, 552.03]},
+            "c2": {"raw": "(1.377.624)", "bbox": [512.85, 543.53, 550.44, 552.03]}
+          }
+        },
+        {
+          "id": "r12",
+          "code": null,
+          "label_raw": "Lãi thuần từ hoạt động khác",
+          "note": "32",
+          "indent": 48.69,
+          "bbox": [48.69, 572.75, 550.42, 581.26],
+          "cells": {
+            "c1": {"raw": "5.314.474", "bbox": [425.01, 572.76, 459.71, 581.26]},
+            "c2": {"raw": "3.280.820", "bbox": [512.57, 572.76, 550.42, 581.26]}
+          }
+        },
+        {
+          "id": "r13",
+          "code": null,
+          "label_raw": "Thu nhập từ góp vốn, mua cổ phần",
+          "note": "33",
+          "indent": 48.69,
+          "bbox": [48.69, 601.98, 550.42, 610.5],
+          "cells": {
+            "c1": {"raw": "174.344", "bbox": [431.65, 602.0, 459.71, 610.5]},
+            "c2": {"raw": "52.643", "bbox": [525.04, 602.0, 550.42, 610.5]}
+          }
+        },
+        {
+          "id": "r14",
+          "code": null,
+          "label_raw": "TỔNG THU NHẬP HOẠT ĐỘNG",
+          "note": null,
+          "indent": 48.69,
+          "bbox": [48.69, 631.22, 550.42, 639.74],
+          "cells": {
+            "c1": {"raw": "67.693.015", "bbox": [419.86, 631.24, 459.71, 639.74]},
+            "c2": {"raw": "55.413.222", "bbox": [511.14, 631.24, 550.42, 639.74]}
+          }
+        },
+        {
+          "id": "r15",
+          "code": null,
+          "label_raw": "CHI PHÍ HOẠT ĐỘNG",
+          "note": "34",
+          "indent": 48.69,
+          "bbox": [48.69, 660.46, 550.42, 668.98],
+          "cells": {
+            "c1": {"raw": "(19.681.153)", "bbox": [416.93, 660.48, 459.71, 668.98]},
+            "c2": {"raw": "(17.007.250)", "bbox": [505.48, 660.48, 550.42, 668.98]}
+          }
+        },
+        {
+          "id": "r16",
+          "code": null,
+          "label_raw": "Lợi nhuận thuần từ hoạt động kinh doanh trước chi phí dự phòng rủi ro tín dụng",
+          "note": null,
+          "indent": 48.69,
+          "bbox": [48.69, 689.7, 550.43, 707.3],
+          "cells": {
+            "c1": {"raw": "48.011.862", "bbox": [419.7, 689.72, 459.71, 698.22]},
+            "c2": {"raw": "38.405.972", "bbox": [509.13, 689.72, 550.43, 698.22]}
+          }
+        }
+      ]
+    },
+    {
+      "id": "p146-t2",
+      "type": "table",
+      "title": null,
+      "continued": false,
+      "logical_table_id": "income_statement",
+      "bbox": [643.46, 214.43, 1145.22, 493.54],
+      "unit_text": null,
+      "columns": [
+        {"key": "c1", "header_lines": ["2025", "đồng"], "bbox": [1034.31, 214.43, 1054.49, 233.13]},
+        {"key": "c2", "header_lines": ["2024", "đồng"], "bbox": [1125.02, 214.43, 1145.2, 233.13]}
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "code": null,
+          "label_raw": "Chi phí dự phòng rủi ro tín dụng",
+          "note": "35",
+          "indent": 643.47,
+          "bbox": [643.47, 251.14, 1145.21, 259.64],
+          "cells": {
+            "c1": {"raw": "(13.743.504)", "bbox": [1011.23, 251.14, 1054.5, 259.64]},
+            "c2": {"raw": "(9.576.644)", "bbox": [1104.32, 251.14, 1145.21, 259.64]}
+          }
+        },
+        {
+          "id": "r2",
+          "code": null,
+          "label_raw": "TỔNG LỢI NHUẬN TRƯỚC THUẾ",
+          "note": null,
+          "indent": 643.46,
+          "bbox": [643.46, 280.36, 1145.2, 288.87],
+          "cells": {
+            "c1": {"raw": "34.268.358", "bbox": [1012.82, 280.37, 1054.49, 288.87]},
+            "c2": {"raw": "28.829.328", "bbox": [1103.85, 280.37, 1145.2, 288.87]}
+          }
+        },
+        {
+          "id": "r3",
+          "code": null,
+          "label_raw": "Chi phí thuế thu nhập doanh nghiệp hiện hành",
+          "note": "36",
+          "indent": 643.47,
+          "bbox": [643.47, 309.62, 1145.21, 318.12],
+          "cells": {
+            "c1": {"raw": "(6.876.871)", "bbox": [1015.6, 309.62, 1054.5, 318.12]},
+            "c2": {"raw": "(5.888.266)", "bbox": [1103.57, 309.62, 1145.21, 318.12]}
+          }
+        },
+        {
+          "id": "r4",
+          "code": null,
+          "label_raw": "(Chi phí)/lợi ích thuế thu nhập hoãn lại",
+          "note": null,
+          "indent": 643.48,
+          "bbox": [643.48, 338.86, 1145.22, 347.36],
+          "cells": {
+            "c1": {"raw": "(8.509)", "bbox": [1028.37, 338.86, 1054.51, 347.36]},
+            "c2": {"raw": "10.202", "bbox": [1121.06, 338.86, 1145.22, 347.36]}
+          }
+        },
+        {
+          "id": "r5",
+          "code": null,
+          "label_raw": "Chi phí thuế thu nhập doanh nghiệp",
+          "note": null,
+          "indent": 643.46,
+          "bbox": [643.46, 368.07, 1145.2, 376.59],
+          "cells": {
+            "c1": {"raw": "(6.885.380)", "bbox": [1011.33, 368.09, 1054.49, 376.59]},
+            "c2": {"raw": "(5.878.064)", "bbox": [1102.67, 368.09, 1145.2, 376.59]}
+          }
+        },
+        {
+          "id": "r6",
+          "code": null,
+          "label_raw": "LỢI NHUẬN SAU THUẾ",
+          "note": null,
+          "indent": 643.46,
+          "bbox": [643.46, 397.31, 1145.2, 405.83],
+          "cells": {
+            "c1": {"raw": "27.382.978", "bbox": [1014.81, 397.33, 1054.49, 405.83]},
+            "c2": {"raw": "22.951.264", "bbox": [1105.32, 397.33, 1145.2, 405.83]}
+          }
+        },
+        {
+          "id": "r7",
+          "code": null,
+          "label_raw": "Lợi ích của cổ đông không kiểm soát",
+          "note": null,
+          "indent": 643.46,
+          "bbox": [643.46, 426.55, 1145.2, 435.06],
+          "cells": {
+            "c1": {"raw": "604.039", "bbox": [1023.03, 426.56, 1054.49, 435.06]},
+            "c2": {"raw": "317.507", "bbox": [1117.47, 426.56, 1145.2, 435.06]}
+          }
+        },
+        {
+          "id": "r8",
+          "code": null,
+          "label_raw": "Lợi nhuận sau thuế thuộc về Ngân hàng mẹ",
+          "note": null,
+          "indent": 643.46,
+          "bbox": [643.46, 455.79, 1145.2, 464.3],
+          "cells": {
+            "c1": {"raw": "26.778.939", "bbox": [1014.19, 455.8, 1054.49, 464.3]},
+            "c2": {"raw": "22.633.757", "bbox": [1105.48, 455.8, 1145.2, 464.3]}
+          }
+        },
+        {
+          "id": "r9",
+          "code": null,
+          "label_raw": "Lãi cơ bản trên cổ phiếu (VND/cổ phiếu)",
+          "note": "37",
+          "indent": 643.46,
+          "bbox": [643.46, 485.03, 1145.2, 493.54],
+          "cells": {
+            "c1": {"raw": "3.325", "bbox": [1034.12, 485.04, 1054.49, 493.54]},
+            "c2": {"raw": "2.589", "bbox": [1124.26, 485.04, 1145.2, 493.54]}
+          }
+        }
+      ]
+    },
+    {"id": "p146-b31", "type": "paragraph", "text": "286 • CHƯƠNG 7 • BÁO CÁO TÀI CHÍNH HỢP NHẤT ĐÃ KIỂM TOÁN", "bbox": [39.69, 34.45, 262.32, 41.45]},
+    {"id": "p146-b32", "type": "paragraph", "text": "Báo cáo kết quả", "bbox": [39.69, 94.53, 275.85, 128.53]},
+    {"id": "p146-b33", "type": "paragraph", "text": "Cho năm kết thúc ngày 31 tháng 12 năm 2025", "bbox": [39.69, 172.65, 216.85, 181.15]}
+  ]
+}

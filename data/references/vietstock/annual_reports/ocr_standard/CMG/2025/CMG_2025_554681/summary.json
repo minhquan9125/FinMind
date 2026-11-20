@@ -1,0 +1,94 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\CMG\\2025\\CMG_2025_554681.pdf",
+  "pages": 76,
+  "routes": {
+    "text_layer": 4,
+    "tesseract+gemini": 25,
+    "tesseract": 46,
+    "tesseract+omniroute": 1
+  },
+  "status": {
+    "OK": 76
+  },
+  "flags": {
+    "MANUAL_REVIEWED": 5
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 0.059,
+    "renderAndTesseract": 61.517,
+    "gemini": 10.963,
+    "total": 72.704
+  },
+  "geminiApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "codecraftApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "omnirouteApi": {
+    "calls": 1,
+    "failedCalls": 0,
+    "seconds": 10.959,
+    "input_tokens": 1333,
+    "output_tokens": 849,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 72,
+    "geminiHits": 0,
+    "openrouterHits": 0,
+    "codecraftHits": 0,
+    "omnirouteHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\CMG\\2025",
+    "mode": "always",
+    "provider": "omniroute",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "text",
+    "openrouterModel": "qwen/qwen3.8-27b",
+    "omnirouteModel": "gemini",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 180,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508,
+    "retryPendingPages": [
+      52
+    ]
+  }
+}

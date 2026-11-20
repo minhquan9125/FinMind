@@ -1,0 +1,153 @@
+{
+  "text": "BIDV\n\nDẪN DẮT .\nCHUYỂN ĐỔI\n\nBÁO CÁO THƯỜNG NIÊN 2025",
+  "chars": 40,
+  "words": 11,
+  "wordItems": [
+    {
+      "text": "BIDV",
+      "bbox": [
+        902,
+        243,
+        1413,
+        416
+      ],
+      "conf": 96.079971,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "DẪN",
+      "bbox": [
+        215,
+        2772,
+        494,
+        2902
+      ],
+      "conf": 93.300735,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "DẮT",
+      "bbox": [
+        554,
+        2773,
+        813,
+        2946
+      ],
+      "conf": 84.817421,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": ".",
+      "bbox": [
+        973,
+        2926,
+        994,
+        2946
+      ],
+      "conf": 27.566208,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CHUYỂN",
+      "bbox": [
+        209,
+        2942,
+        757,
+        3053
+      ],
+      "conf": 95.999817,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐỔI",
+      "bbox": [
+        805,
+        2942,
+        1048,
+        3053
+      ],
+      "conf": 36.524868,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        209,
+        3115,
+        329,
+        3165
+      ],
+      "conf": 91.143158,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        350,
+        3115,
+        470,
+        3165
+      ],
+      "conf": 96.020752,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        487,
+        3115,
+        739,
+        3165
+      ],
+      "conf": 96.055916,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        764,
+        3115,
+        897,
+        3164
+      ],
+      "conf": 96.782982,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        919,
+        3125,
+        1048,
+        3165
+      ],
+      "conf": 95.979942,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 83,
+  "lowConfRatio": 0.182,
+  "seconds": 0.792
+}

@@ -1,0 +1,5 @@
+{"id": "I001", "text": "tình hình tài chính MBB", "intent_label": "ANALYSIS", "component_intents": [], "expected_status": "PROPOSED", "split": "REVIEW_REGRESSION", "annotation_status": "LABELED"}
+{"id": "I002", "text": "tình hình tài chính FPT", "intent_label": "ANALYSIS", "component_intents": [], "expected_status": "PROPOSED", "split": "REVIEW_REGRESSION", "annotation_status": "LABELED"}
+{"id": "I003", "text": "tình hình tài chính VCB", "intent_label": "ANALYSIS", "component_intents": [], "expected_status": "PROPOSED", "split": "REVIEW_REGRESSION", "annotation_status": "LABELED"}
+{"id": "I004", "text": "phân tích FPT MBB VCB", "intent_label": "ANALYSIS", "component_intents": [], "expected_status": "PROPOSED", "split": "REVIEW_REGRESSION", "annotation_status": "LABELED"}
+{"id": "I005", "text": "so sánh doanh thu FPT và CMG", "intent_label": "NUMERIC", "component_intents": [], "expected_status": "PROPOSED", "split": "REVIEW_REGRESSION", "annotation_status": "LABELED"}

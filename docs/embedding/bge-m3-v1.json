@@ -1,0 +1,22 @@
+{
+  "artifact_version": "s3-g02-config-v1",
+  "model": {
+    "id": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "reference": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181"
+  },
+  "embedding": {
+    "kind": "dense",
+    "dimension": 1024,
+    "normalize_embeddings": true,
+    "batch_size": 8,
+    "device": "cpu"
+  },
+  "runtime": {
+    "python": "3.12.10",
+    "sentence_transformers": "3.1.1",
+    "transformers": "4.57.6",
+    "torch": "2.6.0+cpu"
+  },
+  "fixture": "chunks_thu.json"
+}

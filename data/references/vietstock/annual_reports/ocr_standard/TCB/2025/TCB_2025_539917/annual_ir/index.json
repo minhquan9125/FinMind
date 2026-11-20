@@ -1,0 +1,20 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\TCB\\2025\\TCB_2025_539917.pdf",
+  "document_sha256": "ca43995e793f717d647b8ccb1244ea9d801ac4c094101758d4f4becc3f1f1e89",
+  "overrides_applied": [],
+  "content": {
+    "directory": "content",
+    "index": "content/index.json",
+    "pages": 136
+  },
+  "table": {
+    "directory": "table",
+    "index": "table/index.json",
+    "observations": "table/observations.json",
+    "pages": 49,
+    "structuredTablePages": 4,
+    "notesTextOnlyPages": 41,
+    "totalObservations": 0,
+    "verifiedObservations": 0
+  }
+}

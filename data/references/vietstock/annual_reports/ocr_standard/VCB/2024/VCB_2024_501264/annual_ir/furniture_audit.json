@@ -1,0 +1,194 @@
+{
+  "scope": "all_text_layer_pages_from_pages_jsonl",
+  "pages_checked": 102,
+  "minimum_repeated_pages": 51,
+  "position_grid": "2% of page width and height",
+  "repeated_groups": [],
+  "promoted_blocks": 0,
+  "sidebar_associated_blocks": 0,
+  "page_number_blocks": 38,
+  "demoted_unverified_blocks": 1381,
+  "demoted_examples": [
+    {
+      "page": 35,
+      "block_id": "p35-b43",
+      "text": "CHƯƠNG 4 Quản trị doanh nghiệp",
+      "matching_pages": 13
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b44",
+      "text": "QUẢN TRỊ CÔNG TY",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b45",
+      "text": "Hội đồng Quản trị",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b46",
+      "text": "Cơ cấu Hội đồng quản trị",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b47",
+      "text": "STT Họ và tên",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b48",
+      "text": "Chức vụ",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b49",
+      "text": "1 Ông Nguyễn Thanh Tùng",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b50",
+      "text": "Chủ tịch HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b51",
+      "text": "2 Ông Đỗ Việt Hùng",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b52",
+      "text": "Thành viên HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b53",
+      "text": "3 Ông Nguyễn Mạnh Hùng",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b54",
+      "text": "Thành viên HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b55",
+      "text": "4 Ông Shojiro Mizoguchi",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b56",
+      "text": "5 Ông Nguyễn Mỹ Hào",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b57",
+      "text": "Thành viên HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b58",
+      "text": "6 Ông Hồng Quang",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b59",
+      "text": "Thành viên HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b60",
+      "text": "7 Ông Vũ Viết Ngoạn",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b61",
+      "text": "8 Bà Nguyễn Thị Kim Oanh",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b62",
+      "text": "Thành viên HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b63",
+      "text": "9 Ông Nguyễn Tuấn Anh",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b64",
+      "text": "Thành viên HĐQT",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b65",
+      "text": "• Thành viên không điều hành.",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b66",
+      "text": "66 BÁO CÁO THƯỜNG NIÊN 2024",
+      "matching_pages": 1
+    },
+    {
+      "page": 35,
+      "block_id": "p35-b67",
+      "text": "DẤU XANH TỰ HÀO 67",
+      "matching_pages": 1
+    },
+    {
+      "page": 36,
+      "block_id": "p36-b68",
+      "text": "CHƯƠNG 4 Quản trị doanh nghiệp",
+      "matching_pages": 13
+    },
+    {
+      "page": 36,
+      "block_id": "p36-b69",
+      "text": "Các Ủy ban thuộc Hội đồng quản trị",
+      "matching_pages": 1
+    },
+    {
+      "page": 36,
+      "block_id": "p36-b70",
+      "text": "từng Ủy ban do HĐQT ban hành.",
+      "matching_pages": 1
+    },
+    {
+      "page": 36,
+      "block_id": "p36-b71",
+      "text": "ro phù hợp.",
+      "matching_pages": 1
+    },
+    {
+      "page": 36,
+      "block_id": "p36-b72",
+      "text": "ỦY BAN",
+      "matching_pages": 1
+    }
+  ],
+  "furniture_table_overlaps": []
+}

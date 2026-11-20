@@ -1,0 +1,43 @@
+{
+  "ir_version": "1",
+  "page": 76,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "d67772421ddeceac697de71c5a84945ae7c34779bae44d6456738844d4950521",
+    "file_name": "MBB_2025_537873.pdf"
+  },
+  "blocks": [
+    {"id": "p76-b1", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN • 2025", "bbox": [448.19, 34.45, 555.59, 41.45]},
+    {"id": "p76-b2", "type": "furniture", "text": "BÁO CÁO THƯỜNG NIÊN • 2025", "bbox": [634.96, 34.45, 742.36, 41.45]},
+    {"id": "p76-b3", "type": "heading", "text": "CHƯƠNG 5 • BÁO CÁO PHÁT TRIỂN BỀN VỮNG • 147", "bbox": [975.69, 34.45, 1150.87, 41.45]},
+    {"id": "p76-b4", "type": "paragraph", "text": "Tỷ lệ nữ giới\n% trong lực lượng CBNV", "bbox": [992.12, 157.64, 1144.06, 201.49]},
+    {"id": "p76-b5", "type": "heading", "text": "61", "bbox": [992.12, 179.01, 1031.64, 219.01]},
+    {"id": "p76-b6", "type": "paragraph", "text": "(tính riêng MB)", "bbox": [1056.91, 184.45, 1114.47, 192.95]},
+    {"id": "p76-b7", "type": "paragraph", "text": "17,2 % so với năm 2024", "bbox": [1006.58, 219.07, 1093.72, 227.57]},
+    {"id": "p76-b8", "type": "paragraph", "text": "Mạng lưới\n1.134 điểm giao dịch\nATM/CRM", "bbox": [992.12, 373.74, 1143.93, 433.24]},
+    {"id": "p76-b9", "type": "paragraph", "text": "7,5% so với năm 2024\n327 điểm giao dịch trên cả nước", "bbox": [992.12, 432.75, 1169.34, 461.55]},
+    {"id": "p76-b10", "type": "paragraph", "text": "2,5% so với năm 2024", "bbox": [1006.58, 471.03, 1089.47, 479.53]},
+    {"id": "p76-b11", "type": "paragraph", "text": "Dự án HiGreen – Trường Sa", "bbox": [992.88, 592.35, 1145.65, 604.35]},
+    {"id": "p76-b12", "type": "heading", "text": "160 TỶ VNĐ", "bbox": [992.89, 610.95, 1105.73, 651.88]},
+    {"id": "p76-b13", "type": "paragraph", "text": "146 • CHƯƠNG 5 • BÁO CÁO PHÁT TRIỂN BỀN VỮNG", "bbox": [39.69, 34.45, 215.48, 41.45]},
+    {"id": "p76-b14", "type": "paragraph", "text": "Xã hội", "bbox": [39.69, 117.82, 87.94, 133.82]},
+    {
+      "id": "p76-b15",
+      "type": "paragraph",
+      "text": "Đóng góp An sinh xã hội,\nphát triển cộng đồng:\nThực hiện 137 chương trình\nvới tổng kinh phí hơn",
+      "bbox": [39.69, 157.15, 190.29, 208.14]
+    },
+    {"id": "p76-b16", "type": "paragraph", "text": "620 TỶ VNĐ", "bbox": [39.69, 227.7, 162.27, 268.61]},
+    {"id": "p76-b17", "type": "paragraph", "text": "55% so với năm 2024", "bbox": [58.77, 268.76, 140.35, 277.26]},
+    {"id": "p76-b18", "type": "paragraph", "text": "Phát triển nguồn lực\n82,91 giờ đào tạo\nbình quân", "bbox": [41.0, 373.74, 190.03, 433.24]},
+    {"id": "p76-b19", "type": "paragraph", "text": "17,2 % so với năm 2024\n657 khoá học", "bbox": [41.0, 433.39, 156.54, 488.72]},
+    {"id": "p76-b20", "type": "paragraph", "text": "9,32% so với năm 2024", "bbox": [58.25, 488.85, 145.61, 497.35]},
+    {"id": "p76-b21", "type": "paragraph", "text": "App Thiện nguyện\n1.696 TỶ VNĐ", "bbox": [40.25, 592.35, 187.23, 651.85]},
+    {"id": "p76-b22", "type": "paragraph", "text": "gần 2 lần so với năm 2024", "bbox": [58.77, 651.37, 157.97, 659.87]},
+    {"id": "p76-b23", "type": "paragraph", "text": "3,7 triệu lượt ủng hộ\n3.675 chiến dịch\n872.000 thành viên", "bbox": [40.26, 668.89, 151.38, 714.91]}
+  ]
+}

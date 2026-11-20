@@ -1,0 +1,165 @@
+{
+  "ir_version": "1",
+  "page": 44,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+    "file_name": "TCB_2024_499236.pdf"
+  },
+  "blocks": [
+    {"id": "p44-b1", "type": "heading", "text": "KHỐI CÔNG NGHỆ", "bbox": [96.3, 66.34, 379.08, 100.34]},
+    {"id": "p44-b2", "type": "paragraph", "text": "Nhờ ứng dụng các giải pháp được thiết", "bbox": [71.57, 162.97, 292.35, 175.97]},
+    {
+      "id": "p44-b3",
+      "type": "paragraph",
+      "text": "lực dữ liệu tiên tiến và bảo mật dựa trên\ntrí tuệ nhân tạo (AI), chúng tôi đặt mục",
+      "bbox": [71.57, 194.16, 295.95, 222.76]
+    },
+    {
+      "id": "p44-b4",
+      "type": "paragraph",
+      "text": "ngừng của khách hàng để có thể nhanh\nchóng đáp ứng những nhu cầu này trên\nquy mô lớn. Trong hành trình thách thức",
+      "bbox": [71.57, 240.97, 297.42, 285.16]
+    },
+    {
+      "id": "p44-b5",
+      "type": "paragraph",
+      "text": "dưỡng văn hóa cải tiến liên tục, chúng\ntôi vẫn không quên cam kết dẫn đầu –\nthúc đẩy tăng trưởng và tái định nghĩa",
+      "bbox": [71.57, 303.37, 290.02, 347.56]
+    },
+    {"id": "p44-b6", "type": "paragraph", "text": "Sau nhiều năm lên kế hoạch chi tiết và đầu tư mạnh mẽ,", "bbox": [70.49, 515.92, 289.88, 524.92]},
+    {
+      "id": "p44-b7",
+      "type": "paragraph",
+      "text": "tạo dành cho mảng công nghệ thông tin (CNTT) đã giúp\nTechcombank duy trì một “cỗ máy công nghệ vận hành",
+      "bbox": [70.49, 537.52, 289.64, 557.33]
+    },
+    {"id": "p44-b8", "type": "paragraph", "text": "hàng đã thiết lập hạ tầng CNTT nội bộ cần thiết để tiếp", "bbox": [70.49, 602.33, 286.48, 611.33]},
+    {"id": "p44-b9", "type": "paragraph", "text": "đây, những gì chúng tôi cần để giữ vững vị thế dẫn đầu", "bbox": [70.49, 623.92, 285.74, 632.92]},
+    {"id": "p44-b10", "type": "paragraph", "text": "những thay đổi trong khung pháp lý nhằm đáp ứng mục", "bbox": [70.49, 667.12, 288.72, 676.12]},
+    {"id": "p44-b11", "type": "paragraph", "text": "gồm quy định về xác thực sinh trắc học và bảo mật giao", "bbox": [70.49, 688.73, 289.19, 697.73]},
+    {"id": "p44-b12", "type": "paragraph", "text": "khách hàng của Techcombank đã đáp ứng các yêu cầu", "bbox": [70.49, 710.33, 286.48, 719.33]},
+    {"id": "p44-b13", "type": "heading", "text": "TỔNG QUAN", "bbox": [266.32, 494.71, 326.63, 503.71]},
+    {
+      "id": "p44-b14",
+      "type": "paragraph",
+      "text": "về sinh trắc học. Quá trình triển khai diễn ra suôn sẻ với\nsố lượng sự cố phát sinh ở mức tối thiểu, và thành tựu\nđáng tự hào này của chúng tôi đã được Ngân hàng Nhà\nnước Việt Nam (NHNN) ghi nhận.",
+      "bbox": [314.65, 515.92, 532.79, 557.33]
+    },
+    {
+      "id": "p44-b15",
+      "type": "paragraph",
+      "text": "Chúng tôi cũng đã bắt tay vào chuẩn bị kế hoạch để\nmở rộng sang mô hình hệ sinh thái nhờ tận dụng giá trị\ncộng hưởng (synergies) trong lĩnh vực bảo hiểm, chăm\nsóc sức khỏe và các ngành nghề khác.",
+      "bbox": [314.65, 569.92, 529.38, 611.33]
+    },
+    {"id": "p44-b16", "type": "paragraph", "text": "Điểm nhấn năm 2024", "bbox": [629.29, 61.45, 737.53, 72.45]},
+    {
+      "id": "p44-b17",
+      "type": "paragraph",
+      "text": "1. Chuyển dịch ứng dụng ngân hàng di động số hóa lên nền\ntảng điện toán đám mây qua Amazon Web Services (AWS),\ncho phép dễ dàng nhân rộng quy mô cũng như nâng\ncao năng lực xử lý linh hoạt đối với nhu cầu gia tăng của\nkhách hàng.",
+      "bbox": [629.29, 94.72, 871.11, 146.92]
+    },
+    {
+      "id": "p44-b18",
+      "type": "paragraph",
+      "text": "2. Hướng tới hệ thống ngân hàng lõi “tinh gọn” – tập trung\nvào các tác vụ ngân hàng truyền thống mà không cần đến\nnhững tính năng bổ sung không thiết yếu. Techcombank sẽ: phối hợp, qua đó đảm bảo công việc phù hợp với mục tiêu và",
+      "bbox": [629.29, 159.52, 1139.03, 190.12]
+    },
+    {
+      "id": "p44-b19",
+      "type": "paragraph",
+      "text": "• Sở hữu kiến trúc có thể cấu hình (composable\narchitecture), trong đó các tính năng của ngân hàng\nlõi có thể được tách rời khỏi các chức năng khác như\nđịnh giá, quản lý hạn mức và trung tâm thanh toán,\ncho phép phản ứng linh hoạt với các nhu cầu.",
+      "bbox": [640.63, 202.72, 858.46, 254.92]
+    },
+    {
+      "id": "p44-b20",
+      "type": "paragraph",
+      "text": "• Sử dụng phần mềm dành riêng cho nền tảng đám\nmây, cho phép nhân rộng, bảo mật và tận dụng hệ\nsinh thái công cụ và dịch vụ có sẵn trên nền tảng này\nhiệu quả hơn.",
+      "bbox": [640.63, 267.52, 860.38, 308.92]
+    },
+    {
+      "id": "p44-b21",
+      "type": "paragraph",
+      "text": "• Triển khai hệ thống dựa trên đánh giá và chọn lọc.\nChúng tôi hiện đang khảo sát và thảo luận với các đối\ntác tiềm năng nhằm đảm bảo tính bền vững của hệ\nthống ngân hàng lõi trong 20 năm tới.",
+      "bbox": [640.63, 321.52, 862.55, 362.93]
+    },
+    {
+      "id": "p44-b22",
+      "type": "paragraph",
+      "text": "3. Các sáng kiến khác do Khối Công nghệ dẫn dắt trong\nhành trình chuyển đổi số của Ngân hàng, bao gồm tiếp tục\ncải tiến ứng dụng Techcombank Mobile cho khách hàng\ncá nhân, nâng cấp ứng dụng Techcombank Business cho\nkhách hàng doanh nghiệp, phát triển năng lực nền tảng tiếp tăng cường hiệu suất CNTT.\nthị công nghệ số hóa (MarTech), giới thiệu hệ thống sổ cái\ncho doanh nghiệp, và đẩy nhanh quy trình cho vay tín chấp.",
+      "bbox": [629.29, 375.52, 1007.57, 449.32]
+    },
+    {
+      "id": "p44-b23",
+      "type": "paragraph",
+      "text": "Tính đến cuối năm qua, Khối Công nghệ đã phục vụ\nkhoảng 15,4 triệu khách hàng – bao gồm 2,2 triệu người\ndùng Sinh lời tự động – và chào đón hơn 1 triệu khách hàng\nnhà bán lẻ mới. Chúng tôi cũng đã tuân thủ các thay đổi về\nquy định pháp luật đối với định danh qua sinh trắc học, chữ\nký số, tiêu chuẩn SWIFT ISO 20022 và bảo mật thanh toán\ntrực tuyến. Khối cũng đã tiết kiệm khoảng 100 tỷ đồng nhờ\ntối ưu hóa chi phí điện toán đám mây, tinh chỉnh trung tâm\nthông báo, tự động hóa quy trình nghiệp vụ và cải tiến hệ\nthống quản lý nợ. Chúng tôi sẽ tiếp tục cung cấp những trải\nnghiệm khách hàng an toàn, thân thiện, dựa trên nguyên\ntắc thượng tôn pháp luật, đổi mới sáng tạo và cam kết đối\nvới đội ngũ nhân sự.",
+      "bbox": [640.9, 461.93, 874.33, 600.52]
+    },
+    {"id": "p44-b24", "type": "paragraph", "text": "Năng lực kỹ thuật xuất sắc", "bbox": [898.58, 95.11, 1006.19, 104.11]},
+    {"id": "p44-b25", "type": "paragraph", "text": "1. Hiệu suất lập trình viên", "bbox": [898.58, 116.32, 1002.41, 125.6]},
+    {
+      "id": "p44-b26",
+      "type": "paragraph",
+      "text": "Năm 2024, Khối Công nghệ đạt tỷ lệ hợp nhất đoạn mã trên\nmỗi lập trình viên là 95,2% cho mỗi bản phát hành, tăng 30,8%\nso với 2023. Số liệu này phản ánh sự tích cực của lập trình\nviên, quá trình triển khai tính năng nhanh chóng cùng hiệu quả",
+      "bbox": [898.58, 137.92, 1144.26, 179.32]
+    },
+    {"id": "p44-b27", "type": "paragraph", "text": "lịch trình dự án.", "bbox": [898.58, 191.92, 958.5, 200.92]},
+    {
+      "id": "p44-b28",
+      "type": "paragraph",
+      "text": "Thêm vào đó, 96,6% các dự án đang hoạt động có ít nhất một\nlượt phát hành mỗi tháng, tăng 29,5% so với 2023. Kết quả này\nlà minh chứng cho thấy nhịp độ lập trình ổn định và khả năng\ncung cấp liên tục các bản cập nhật và tính năng, cũng như đáp\nứng nhanh nhạy yêu cầu của khách hàng và thị trường.",
+      "bbox": [898.58, 213.52, 1145.07, 265.72]
+    },
+    {"id": "p44-b29", "type": "paragraph", "text": "2. Tăng tốc tự động hóa", "bbox": [898.58, 289.12, 995.06, 298.39]},
+    {
+      "id": "p44-b30",
+      "type": "paragraph",
+      "text": "Tiến trình chuyển mình của Khối Công nghệ được đẩy nhanh\ntrong năm 2024 dựa trên sáng kiến “Tăng tốc”, chuyển từ cách\ntiếp cận dựa trên dự án sang cách tiếp cận tập trung vào sản\nphẩm và lĩnh vực. Nhờ đó, hiệu suất của Khối đã tăng 9,5% cho\nhoạt động lập trình và thực thi, giúp 80% số chuyên viên kiểm\nthử thủ công nâng cao kỹ năng để trở thành chuyên viên kiểm\nthử tự động hóa dựa trên khung Karate, trong khi vẫn đạt được\ncác cam kết nghiệp vụ hàng quý. Với việc đặt trọng tâm rõ rệt\nvào quyền làm chủ, quản trị và năng lực kỹ thuật xuất sắc, Khối\nđã đẩy mạnh phối hợp giữa các nhóm đa chức năng cũng như",
+      "bbox": [898.58, 310.72, 1145.12, 416.93]
+    },
+    {"id": "p44-b31", "type": "paragraph", "text": "Các thành tựu chính của năm 2024 bao gồm:", "bbox": [898.58, 440.32, 1075.63, 449.32]},
+    {
+      "id": "p44-b32",
+      "type": "paragraph",
+      "text": "♦ Tỷ lệ bao phủ kiểm thử chức năng được tự động hóa đạt\n84,81% năm 2024, qua đó cải thiện đáng kể hiệu năng\nkiểm thử. Kiểm thử tự động hóa cung cấp phản hồi nhanh\nchóng hơn đối với thay đổi đoạn mã, cho phép giảm thiểu\nthời gian sửa lỗi và đảm bảo tốc độ xử lý vấn đề cao hơn.",
+      "bbox": [898.58, 461.93, 1136.95, 514.12]
+    },
+    {
+      "id": "p44-b33",
+      "type": "paragraph",
+      "text": "♦ 90,8% các hệ thống được triển khai tự động, phản ánh\nmức độ ứng dụng cao đối với Phát triển – Bảo mật – Vận\nhành (DSO). Công tác thủ công cũng như số lượng lỗi sai\nđược giảm thiểu, trong khi khả năng nhân rộng được cải\nthiện mà không tạo thêm gánh nặng vận hành.",
+      "bbox": [898.58, 526.73, 1132.68, 578.92]
+    },
+    {
+      "id": "p44-b34",
+      "type": "paragraph",
+      "text": "♦ 87,7% số quét mã bảo mật được tự động hóa trên mỗi bản\ndựng (tính đến tháng 10/2024), hơn gấp đôi con số 40,7%\ncủa năm 2023. Tích hợp tính năng quét mã bảo mật vào\nquy trình xây dựng công nghệ cho phép phát hiện và xử lý\nsớm các lỗ hổng, giảm thiếu chi phí sửa lỗi tốn kém cũng\nnhư tăng cường hợp tác về bảo mật giữa các nhóm phát\ntriển và bảo mật.",
+      "bbox": [898.58, 591.52, 1144.15, 665.33]
+    },
+    {"id": "p44-b35", "type": "paragraph", "text": "CHUYỂN ĐỔI SỐ TẠI TECH", "bbox": [45.24, 29.45, 138.91, 36.45]},
+    {"id": "p44-b36", "type": "paragraph", "text": "Số hoá (DO + IT)", "bbox": [171.78, 29.83, 218.94, 35.83]},
+    {"id": "p44-b37", "type": "paragraph", "text": "kế riêng cho nền tảng đám mây, năng", "bbox": [71.57, 178.57, 285.37, 191.57]},
+    {"id": "p44-b38", "type": "paragraph", "text": "tiêu dự báo nhu cầu biến đổi không", "bbox": [71.57, 225.37, 273.3, 238.37]},
+    {"id": "p44-b39", "type": "paragraph", "text": "các ranh giới của công nghệ và bồi", "bbox": [71.57, 287.76, 270.12, 300.76]},
+    {"id": "p44-b40", "type": "paragraph", "text": "ngành ngân hàng tại Việt Nam.”", "bbox": [71.57, 350.17, 251.3, 363.17]},
+    {"id": "p44-b41", "type": "paragraph", "text": "Ông Nguyễn Anh Tuấn\nGiám đốc Khối Công nghệ", "bbox": [71.57, 386.16, 225.97, 416.41]},
+    {"id": "p44-b42", "type": "paragraph", "text": "sự hội tụ giữa các hệ thống, nền tảng, hiệu suất và đào", "bbox": [70.49, 526.73, 285.14, 535.73]},
+    {
+      "id": "p44-b43",
+      "type": "paragraph",
+      "text": "trơn tru”. Trên nền tảng đó, chúng tôi chuyển sang giai\nđoạn “tăng tốc” trong năm 2024, chứng minh cam kết\ncủa mình trong việc không ngừng nâng cao hiệu suất.\nGiai đoạn “xây dựng” đã được hoàn thành, và Ngân",
+      "bbox": [70.49, 559.12, 283.33, 600.52]
+    },
+    {"id": "p44-b44", "type": "paragraph", "text": "tục kiến tạo các sản phẩm dịch vụ tiên tiến nhất. Giờ", "bbox": [70.49, 613.12, 275.36, 622.12]},
+    {"id": "p44-b45", "type": "paragraph", "text": "chỉ là hoạt động tinh chỉnh và đổi mới.", "bbox": [70.49, 634.73, 219.26, 643.73]},
+    {"id": "p44-b46", "type": "paragraph", "text": "Trong năm 2024, Techcombank thích ứng linh hoạt với", "bbox": [70.49, 656.33, 284.01, 665.33]},
+    {"id": "p44-b47", "type": "paragraph", "text": "tiêu phát triển nền kinh tế không dùng tiền mặt, bao", "bbox": [70.49, 677.92, 274.5, 686.92]},
+    {"id": "p44-b48", "type": "paragraph", "text": "dịch trực tuyến. Tính đến cuối năm, khoảng 5,5 triệu", "bbox": [70.49, 699.52, 275.06, 708.52]},
+    {"id": "p44-b49", "type": "paragraph", "text": "84 | BÁO CÁO THƯỜNG NIÊN TECHCOMBANK 2024", "bbox": [45.35, 803.61, 229.67, 810.91]},
+    {"id": "p44-b50", "type": "paragraph", "text": "EXPONENTIAL THINKING – SUSTAINABLE BUILDING | 85", "bbox": [957.59, 803.61, 1145.71, 810.61]}
+  ]
+}

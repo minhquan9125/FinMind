@@ -1,0 +1,1834 @@
+[
+  {
+    "event_id": "evt-04791b1491994fae",
+    "event_key": "UNMERGED|68e336f7-93b7-5c61-9643-90dcc0e80372|e1",
+    "event_type": "appointment",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "68e336f7-93b7-5c61-9643-90dcc0e80372",
+        "url": "https://fireant.vn/bai-viet/tcb-quyet-dinh-hdqt-ve-bo-nhiem-ptgd-ba-phan-thi-hai-yen/42510090",
+        "source_name": "fireant",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "68e336f7-93b7-5c61-9643-90dcc0e80372",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "68e336f7-93b7-5c61-9643-90dcc0e80372"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-0e35cb0673468e84",
+    "event_key": "UNMERGED|d4c3bbaf-cd79-5812-90d0-b1ec3f289572|e1",
+    "event_type": "corporate_action",
+    "subjects": [],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-26",
+      "event_date_end": "2026-10-26",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "d4c3bbaf-cd79-5812-90d0-b1ec3f289572",
+        "url": "https://fireant.vn/bai-viet/diem-danh-12-ngan-hang-viet-nam-co-ti-le-so-huu-nuoc-ngoai-tren-10/42463971",
+        "source_name": "fireant",
+        "publish_date": "2026-10-26",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "d4c3bbaf-cd79-5812-90d0-b1ec3f289572",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Ngày 26/10, Sở Giao dịch Chứng khoán Hà Nội (HNX) công bố Số liệu Quản lý Sở hữu của Nhà đầu tư nước ngoài của các doanh nghiệp niêm yết trên sàn chứng khoán.",
+        "dates": {
+          "event_date_start": "2026-10-26",
+          "event_date_end": "2026-10-26",
+          "date_precision": "day",
+          "date_derived": true,
+          "date_evidence": "Ngày 26/10",
+          "date_candidates": [
+            {
+              "date": "2026-10-26",
+              "derived": true,
+              "evidence": "Ngày 26/10"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-26",
+        "article_id": "d4c3bbaf-cd79-5812-90d0-b1ec3f289572"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-16bee7aaf0f5ab49",
+    "event_key": "UNMERGED|af20ecff-0beb-5e3d-bd0f-f69c05d37901|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "af20ecff-0beb-5e3d-bd0f-f69c05d37901",
+        "url": "https://cafef.vn/du-lieu/tcb-3005334/tcb-29102026-ngay-gdkhq-thuong-cp-ty-le-50.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-23",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "af20ecff-0beb-5e3d-bd0f-f69c05d37901",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Sở Giao dịch Chứng khoán TP.HCM thông báo về ngày đăng ký cuối cùng phát hành cổ phiếu để trả cổ tức cho cổ đông hiện hữu của Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam như sau: Các tập tin đính kèm 20261023 - TCB - TB NDKCC phat hanh CP de tra co tuc.pdf Theo HOSE",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "Sở Giao dịch Chứng khoán TP.HCM thông báo về ngày đăng ký cuối cùng phát hành cổ phiếu để trả cổ tức cho cổ đông hiện hữu của Ngân hàng Thương mại Cổ phần Kỹ Thương Việt Nam như sau: Các tập tin đính kèm 20261023 - TCB - TB NDKCC phat hanh CP de tra co tuc.pdf Theo HOSE",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-23",
+        "article_id": "af20ecff-0beb-5e3d-bd0f-f69c05d37901"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-1e1320f5787800ed",
+    "event_key": "UNMERGED|be1904cb-6368-50d7-9990-36ae5d76d02f|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "VPB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f",
+        "url": "https://fireant.vn/bai-viet/lai-suat-ty-gia-hom-nay-fed-giu-nguyen-lai-suat-usd-dien-bien-trai-chieu/42519669",
+        "source_name": "fireant",
+        "publish_date": "2026-10-29",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "VPB",
+            "name_normalized": "VPB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "7,3%",
+            "context": "Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm.",
+            "evidence": "Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm."
+          },
+          {
+            "value_raw": "7,1%",
+            "context": "Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm.",
+            "evidence": "Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm."
+          },
+          {
+            "value_raw": "7%",
+            "context": "Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm.",
+            "evidence": "Sacombank dẫn đầu với 7,3%/năm, tiếp đến là VPBank với 7,1%/năm; VCBNeo và MBV cùng niêm yết 7%/năm."
+          },
+          {
+            "value_raw": "4,75%",
+            "context": "Tại kỳ hạn 3 tháng, có 18 ngân hàng cùng niêm yết mức 4,75%/năm, gồm BAC A BANK, MBV, PGBank, PVcomBank, OCB, BVBank, BAOVIET Bank,",
+            "evidence": "Tại kỳ hạn 3 tháng, có 18 ngân hàng cùng niêm yết mức 4,75%/năm, gồm BAC A BANK, MBV, PGBank, PVcomBank, OCB, BVBank, BAOVIET Bank, Saigonbank, Cake by VPBank, VietABank, Sacombank, NCB, MSB, TPBank, VCBNeo, VPBank, BIDV và Nam A Bank."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-29",
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-1f6e6488e5daf467",
+    "event_key": "UNMERGED|d94db945-eae0-5575-8661-d477d1814dd5|e1",
+    "event_type": "corporate_action",
+    "subjects": [],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "d94db945-eae0-5575-8661-d477d1814dd5",
+        "url": "https://fireant.vn/bai-viet/lai-suat-ngan-hang-hom-nay-28-10-dong-loat-dieu-chinh/42491746",
+        "source_name": "fireant",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "d94db945-eae0-5575-8661-d477d1814dd5",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Dù mặt bằng lãi suất huy động giảm trên diện rộng, một số ngân hàng vẫn niêm yết mức từ 7%/năm trở lên.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [],
+        "financial_figures_stated": [
+          {
+            "value_raw": "7%",
+            "context": "Dù mặt bằng lãi suất huy động giảm trên diện rộng, một số ngân hàng vẫn niêm yết mức từ 7%/năm trở lên.",
+            "evidence": "Dù mặt bằng lãi suất huy động giảm trên diện rộng, một số ngân hàng vẫn niêm yết mức từ 7%/năm trở lên."
+          },
+          {
+            "value_raw": "7%",
+            "context": "Tương tự, VIB niêm yết lãi suất 7%/năm tại kỳ hạn 12 tháng, còn PGBank áp dụng mức này cho kỳ hạn 12-13 tháng.",
+            "evidence": "Tương tự, VIB niêm yết lãi suất 7%/năm tại kỳ hạn 12 tháng, còn PGBank áp dụng mức này cho kỳ hạn 12-13 tháng."
+          },
+          {
+            "value_raw": "8%",
+            "context": "Ngoài lãi suất niêm yết, một số ngân hàng vẫn triển khai chương trình cộng thêm lãi suất, đưa mức thực nhận vượt 8%/năm đối với khách hàng đáp ứng điều kiện ưu đãi.",
+            "evidence": "Ngoài lãi suất niêm yết, một số ngân hàng vẫn triển khai chương trình cộng thêm lãi suất, đưa mức thực nhận vượt 8%/năm đối với khách hàng đáp ứng điều kiện ưu đãi."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "d94db945-eae0-5575-8661-d477d1814dd5"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-28a7ae845506613e",
+    "event_key": "UNMERGED|be1904cb-6368-50d7-9990-36ae5d76d02f|e3",
+    "event_type": "corporate_action",
+    "subjects": [],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f",
+        "url": "https://fireant.vn/bai-viet/lai-suat-ty-gia-hom-nay-fed-giu-nguyen-lai-suat-usd-dien-bien-trai-chieu/42519669",
+        "source_name": "fireant",
+        "publish_date": "2026-10-29",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f",
+        "local_event_id": "e3",
+        "status": "unconfirmed",
+        "status_evidence": "Sacombank, VCBNeo, MBV, PGBank và VIB cùng niêm yết 7%/năm; BVBank ở mức 6,9%/năm; MSB, BIDV và Techcombank cùng 6,8%/năm.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [],
+        "financial_figures_stated": [
+          {
+            "value_raw": "7%",
+            "context": "Sacombank, VCBNeo, MBV, PGBank và VIB cùng niêm yết 7%/năm; BVBank ở mức 6,9%/năm; MSB, BIDV và Techcombank cùng 6,8%/năm.",
+            "evidence": "Sacombank, VCBNeo, MBV, PGBank và VIB cùng niêm yết 7%/năm; BVBank ở mức 6,9%/năm; MSB, BIDV và Techcombank cùng 6,8%/năm."
+          },
+          {
+            "value_raw": "6,9%",
+            "context": "Sacombank, VCBNeo, MBV, PGBank và VIB cùng niêm yết 7%/năm; BVBank ở mức 6,9%/năm; MSB, BIDV và Techcombank cùng 6,8%/năm.",
+            "evidence": "Sacombank, VCBNeo, MBV, PGBank và VIB cùng niêm yết 7%/năm; BVBank ở mức 6,9%/năm; MSB, BIDV và Techcombank cùng 6,8%/năm."
+          },
+          {
+            "value_raw": "6,8%",
+            "context": "Sacombank, VCBNeo, MBV, PGBank và VIB cùng niêm yết 7%/năm; BVBank ở mức 6,9%/năm; MSB, BIDV và Techcombank cùng 6,8%/năm.",
+            "evidence": "Sacombank, VCBNeo, MBV, PGBank và VIB cùng niêm yết 7%/năm; BVBank ở mức 6,9%/năm; MSB, BIDV và Techcombank cùng 6,8%/năm."
+          },
+          {
+            "value_raw": "20 đồng",
+            "context": "Ảnh: ST Tại Vietcombank, tỷ giá USD được niêm yết ở mức 25.630 - 26.040 VND/USD (mua tiền mặt - bán ra), tăng 20 đồng ở cả hai chiều so với ngày trước đó.",
+            "evidence": "Ảnh: ST Tại Vietcombank, tỷ giá USD được niêm yết ở mức 25.630 - 26.040 VND/USD (mua tiền mặt - bán ra), tăng 20 đồng ở cả hai chiều so với ngày trước đó."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-29",
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-30ffc2b9f0545181",
+    "event_key": "UNMERGED|ff9f24a4-ecfe-5534-9756-922725d5e481|e1",
+    "event_type": "appointment",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "ff9f24a4-ecfe-5534-9756-922725d5e481",
+        "url": "https://fireant.vn/bai-viet/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptgd-kem-quyet-dinh/42510086",
+        "source_name": "fireant",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "ff9f24a4-ecfe-5534-9756-922725d5e481",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "ff9f24a4-ecfe-5534-9756-922725d5e481"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-3d4f208bbf76abaf",
+    "event_key": "corporate_action|tcb|2026-11-03",
+    "event_type": "corporate_action",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-11-03",
+      "event_date_end": "2026-11-03",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331",
+        "url": "https://fireant.vn/bai-viet/tcb-techcombank-bo-nhiem-mot-pho-tong-giam-doc/42524201",
+        "source_name": "fireant",
+        "publish_date": "2026-10-29",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331",
+        "local_event_id": "e3",
+        "status": "unconfirmed",
+        "status_evidence": "Ngoài ra, HĐQT Techcombank còn phê duyệt ngày đăng ký cuối cùng chốt danh sách cổ đông để lấy ý kiến bằng văn bản về việc thành lập ngân hàng thương mại TNHH một thành viên do Techcombank sở hữu 100% vốn tại VIFC.",
+        "dates": {
+          "event_date_start": "2026-11-03",
+          "event_date_end": "2026-11-03",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "3/11/2026",
+          "date_candidates": [
+            {
+              "date": "2026-11-03",
+              "derived": false,
+              "evidence": "3/11/2026"
+            }
+          ]
+        },
+        "location": "VIFC",
+        "location_evidence": "Ngoài ra, HĐQT Techcombank còn phê duyệt ngày đăng ký cuối cùng chốt danh sách cổ đông để lấy ý kiến bằng văn bản về việc thành lập ngân hàng thương mại TNHH một thành viên do Techcombank sở hữu 100% vốn tại VIFC.",
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": null,
+            "name_source": "metadata"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "100%",
+            "context": "việc thành lập ngân hàng thương mại TNHH một thành viên do Techcombank sở hữu 100% vốn tại VIFC.",
+            "evidence": "Ngoài ra, HĐQT Techcombank còn phê duyệt ngày đăng ký cuối cùng chốt danh sách cổ đông để lấy ý kiến bằng văn bản về việc thành lập ngân hàng thương mại TNHH một thành viên do Techcombank sở hữu 100% vốn tại VIFC."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-29",
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-58affbf0ac54a0d7",
+    "event_key": "UNMERGED|5b08bd61-d63f-5bdd-a184-ed0ecb0c9be6|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "5b08bd61-d63f-5bdd-a184-ed0ecb0c9be6",
+        "url": "https://cafef.vn/du-lieu/tcb-3005140/tcb-nghi-quyet-hdqt-ve-viec-chot-danh-sach-co-dong-lay-y-kien-co-dong-bang-van-ban.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-23",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "5b08bd61-d63f-5bdd-a184-ed0ecb0c9be6",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Nghị quyết HĐQT về việc chốt danh sách cổ đông lấy ý kiến cổ đông bằng văn bản",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Nghị quyết HĐQT về việc chốt danh sách cổ đông lấy ý kiến cổ đông bằng văn bản",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-23",
+        "article_id": "5b08bd61-d63f-5bdd-a184-ed0ecb0c9be6"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-6d5c955b33c0b97d",
+    "event_key": "shareholder_meeting|tcb|2026-10-27",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-27",
+      "event_date_end": "2026-10-27",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "89580733-9833-5973-98c7-a31dd2ccdbcf",
+        "url": "https://cafef.vn/du-lieu/tcb-3008103/tcb-nghi-quyet-hdqt-so-0589-0591-ngay-27102026.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "89580733-9833-5973-98c7-a31dd2ccdbcf",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Nghị quyết HĐQT số 0589, 0591 ngày 27/10/2026",
+        "dates": {
+          "event_date_start": "2026-10-27",
+          "event_date_end": "2026-10-27",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "27/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-27",
+              "derived": false,
+              "evidence": "27/10/2026"
+            },
+            {
+              "date": "2026-10-27",
+              "derived": false,
+              "evidence": "27/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Nghị quyết HĐQT số 0589, 0591 ngày 27/10/2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "89580733-9833-5973-98c7-a31dd2ccdbcf"
+      }
+    ],
+    "related_event_ids": [
+      "evt-9a11b066884c6d39",
+      "evt-9c680c3a10f94032",
+      "evt-fec4f4b9db1d6c41"
+    ],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-6e57bbc839cd1158",
+    "event_key": "UNMERGED|865825b2-0c8d-5e96-b37b-c536235c9be5|e1",
+    "event_type": "ceremony_other",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "865825b2-0c8d-5e96-b37b-c536235c9be5",
+        "url": "https://cafef.vn/techcombank-nhan-giai-ngan-hang-tot-nhat-viet-nam-nam-thu-3-lien-tiep-tu-global-finance-tiep-tuc-chuoi-hat-trick-tu-3-to-chuc-danh-gia-the-gioi-188261021103654366.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-21",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "865825b2-0c8d-5e96-b37b-c536235c9be5",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Tiến sĩ Jens Lottner, Tổng Giám đốc Techcombank nhận giải thưởng \"Ngân hàng Tốt nhất Việt Nam 2026\" tại lễ trao giải (Bangkok, Thái Lan).",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": null,
+            "name_source": "metadata"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-21",
+        "article_id": "865825b2-0c8d-5e96-b37b-c536235c9be5"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-89537019589f90eb",
+    "event_key": "UNMERGED|76074e55-9a1a-5b51-ac77-15dea8b3bd4a|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "76074e55-9a1a-5b51-ac77-15dea8b3bd4a",
+        "url": "https://fireant.vn/bai-viet/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban/42510093",
+        "source_name": "fireant",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "76074e55-9a1a-5b51-ac77-15dea8b3bd4a",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "76074e55-9a1a-5b51-ac77-15dea8b3bd4a"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-8ccf4f405874b2d1",
+    "event_key": "UNMERGED|8fd8ad93-9090-5ae6-90e3-1e20adaf23dd|e1",
+    "event_type": "appointment",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "8fd8ad93-9090-5ae6-90e3-1e20adaf23dd",
+        "url": "https://cafef.vn/du-lieu/tcb-3009020/tcb-thong-bao-thay-doi-nhan-su-bo-nhiem-ptgd-kem-quyet-dinh.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "8fd8ad93-9090-5ae6-90e3-1e20adaf23dd",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Thông báo thay đổi nhân sự - Bổ nhiệm PTGĐ (kèm Quyết định)",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "8fd8ad93-9090-5ae6-90e3-1e20adaf23dd"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-9a11b066884c6d39",
+    "event_key": "shareholder_meeting|tcb|2026-09-25",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "planned",
+      "event_date_start": "2026-09-25",
+      "event_date_end": "2026-09-25",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331",
+        "url": "https://fireant.vn/bai-viet/tcb-techcombank-bo-nhiem-mot-pho-tong-giam-doc/42524201",
+        "source_name": "fireant",
+        "publish_date": "2026-10-29",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331",
+        "local_event_id": "e2",
+        "status": "planned",
+        "status_evidence": "Trong một diễn biến khác, HĐQT TCB đã ban hành Nghị quyết thông qua việc tăng vốn góp của Techcombank tại Công ty CP Bảo hiểm Phi Nhân thọ Techcom (TCGIns) theo báo cáo, đề xuất của Tổng giám đốc và các Khối Tài chính & Kế hoạch, Quản trị rủi ro, Quản trị Ngân hàng tại Tờ trình số 105/2026/TTr-TCKH ngày 25/9/2026.",
+        "dates": {
+          "event_date_start": "2026-09-25",
+          "event_date_end": "2026-09-25",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "25/9/2026",
+          "date_candidates": [
+            {
+              "date": "2026-09-25",
+              "derived": false,
+              "evidence": "25/9/2026"
+            }
+          ]
+        },
+        "location": "Công",
+        "location_evidence": "Trong một diễn biến khác, HĐQT TCB đã ban hành Nghị quyết thông qua việc tăng vốn góp của Techcombank tại Công ty CP Bảo hiểm Phi Nhân thọ Techcom (TCGIns) theo báo cáo, đề xuất của Tổng giám đốc và các Khối Tài chính & Kế hoạch, Quản trị rủi ro, Quản trị Ngân hàng tại Tờ trình số 105/2026/TTr-TCKH ngày 25/9/2026.",
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "Trong một diễn biến khác, HĐQT TCB đã ban hành Nghị quyết thông qua việc tăng vốn góp của Techcombank tại Công ty CP Bảo hiểm Phi Nhân thọ Techcom (TCGIns) theo báo cáo, đề xuất của Tổng giám đốc và các Khối Tài chính & Kế hoạch, Quản trị rủi ro, Quản trị Ngân hàng tại Tờ trình số 105/2026/TTr-TCKH ngày 25/9/2026.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "weak_signal,planned_date_already_passed"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "planned",
+        "as_of_publish_date": "2026-10-29",
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331"
+      }
+    ],
+    "related_event_ids": [
+      "evt-9c680c3a10f94032",
+      "evt-6d5c955b33c0b97d",
+      "evt-fec4f4b9db1d6c41"
+    ],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-9c680c3a10f94032",
+    "event_key": "shareholder_meeting|tcb|2026-10-28",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-28",
+      "event_date_end": "2026-10-28",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "9a268f3d-0039-53b4-ab4e-d163b31782a4",
+        "url": "https://fireant.vn/bai-viet/tcb-nghi-quyet-hdqt-so-0593-ngay-28-10-2026/42510185",
+        "source_name": "fireant",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "9a268f3d-0039-53b4-ab4e-d163b31782a4",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Nghị quyết HĐQT số 0593 ngày 28/10/2026",
+        "dates": {
+          "event_date_start": "2026-10-28",
+          "event_date_end": "2026-10-28",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "28/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-28",
+              "derived": false,
+              "evidence": "28/10/2026"
+            },
+            {
+              "date": "2026-10-28",
+              "derived": false,
+              "evidence": "28/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Nghị quyết HĐQT số 0593 ngày 28/10/2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "9a268f3d-0039-53b4-ab4e-d163b31782a4"
+      }
+    ],
+    "related_event_ids": [
+      "evt-9a11b066884c6d39",
+      "evt-6d5c955b33c0b97d",
+      "evt-fec4f4b9db1d6c41"
+    ],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-9fe2606116be2fb5",
+    "event_key": "corporate_action|vpb|2026-10-24",
+    "event_type": "corporate_action",
+    "subjects": [
+      "VPB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-24",
+      "event_date_end": "2026-10-24",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "url": "https://fireant.vn/bai-viet/ngay-27-10-gui-duoi-1-ty-dong-12-thang-tai-mb-vpbank-techcombank-sacombank-shb-hdbank-va-acb-duoc-huong-lai-suat-bao-nhieu/42475632",
+        "source_name": "fireant",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng.",
+        "dates": {
+          "event_date_start": "2026-10-24",
+          "event_date_end": "2026-10-24",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "24/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-24",
+              "derived": false,
+              "evidence": "24/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "VPB",
+            "name_normalized": "VPB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "6,4%",
+            "context": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất",
+            "evidence": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng."
+          },
+          {
+            "value_raw": "1 tỷ đồng",
+            "context": "suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng.",
+            "evidence": "Gửi tại quầy: VPBank niêm yết lãi suất 6,4%/năm Theo biểu lãi suất áp dụng từ ngày 24/10/2026, VPBank niêm yết lãi suất tiền gửi tại quầy kỳ hạn 12 tháng ở mức 6,4%/năm đối với khoản tiền dưới 1 tỷ đồng."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "needs_followup"
+  },
+  {
+    "event_id": "evt-bfe3175758f0df2b",
+    "event_key": "UNMERGED|88c6bd2b-8992-52b1-b8e8-5270b3a1f331|e1",
+    "event_type": "appointment",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331",
+        "url": "https://fireant.vn/bai-viet/tcb-techcombank-bo-nhiem-mot-pho-tong-giam-doc/42524201",
+        "source_name": "fireant",
+        "publish_date": "2026-10-29",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Techcombank bổ nhiệm một Phó Tổng Giám đốc",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Techcombank bổ nhiệm một Phó Tổng Giám đốc",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-29",
+        "article_id": "88c6bd2b-8992-52b1-b8e8-5270b3a1f331"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-cf106fa0c1ec80d4",
+    "event_key": "UNMERGED|5d5aa869-b0a3-56a2-a5c5-a609415ed41f|e3",
+    "event_type": "corporate_action",
+    "subjects": [
+      "HDB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "url": "https://fireant.vn/bai-viet/ngay-27-10-gui-duoi-1-ty-dong-12-thang-tai-mb-vpbank-techcombank-sacombank-shb-hdbank-va-acb-duoc-huong-lai-suat-bao-nhieu/42475632",
+        "source_name": "fireant",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "local_event_id": "e3",
+        "status": "unconfirmed",
+        "status_evidence": "HDBank niêm yết lãi suất tiết kiệm thông thường kỳ hạn 12 tháng ở mức 5,2%/năm.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "HDB",
+            "name_normalized": "HDB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "HDBank niêm yết lãi suất tiết kiệm thông thường kỳ hạn 12 tháng ở mức 5,2%/năm.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "5,2%",
+            "context": "HDBank niêm yết lãi suất tiết kiệm thông thường kỳ hạn 12 tháng ở mức 5,2%/năm.",
+            "evidence": "HDBank niêm yết lãi suất tiết kiệm thông thường kỳ hạn 12 tháng ở mức 5,2%/năm."
+          },
+          {
+            "value_raw": "5,3%",
+            "context": "HDBank niêm yết lãi suất online 5,3%/năm.",
+            "evidence": "HDBank niêm yết lãi suất online 5,3%/năm."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-d0775e30b83009c6",
+    "event_key": "UNMERGED|c126acfc-dd70-53e9-b51a-15d21c4bc50b|e1",
+    "event_type": "appointment",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "c126acfc-dd70-53e9-b51a-15d21c4bc50b",
+        "url": "https://cafef.vn/du-lieu/tcb-3009016/tcb-quyet-dinh-hdqt-ve-bo-nhiem-ptgd-ba-phan-thi-hai-yen.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "c126acfc-dd70-53e9-b51a-15d21c4bc50b",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Quyết định HĐQT về bổ nhiệm PTGĐ - Bà Phan Thị Hải Yến",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "c126acfc-dd70-53e9-b51a-15d21c4bc50b"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-d0c550947eef3f26",
+    "event_key": "UNMERGED|d94db945-eae0-5575-8661-d477d1814dd5|e2",
+    "event_type": "corporate_action",
+    "subjects": [
+      "VPB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "d94db945-eae0-5575-8661-d477d1814dd5",
+        "url": "https://fireant.vn/bai-viet/lai-suat-ngan-hang-hom-nay-28-10-dong-loat-dieu-chinh/42491746",
+        "source_name": "fireant",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "d94db945-eae0-5575-8661-d477d1814dd5",
+        "local_event_id": "e2",
+        "status": "unconfirmed",
+        "status_evidence": "Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "VPB",
+            "name_normalized": "VPB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "7,9%",
+            "context": "Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho",
+            "evidence": "Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng."
+          },
+          {
+            "value_raw": "7,4%",
+            "context": "đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu",
+            "evidence": "Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng."
+          },
+          {
+            "value_raw": "7,3%",
+            "context": "lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết",
+            "evidence": "Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng."
+          },
+          {
+            "value_raw": "500 triệu đồng",
+            "context": "nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp",
+            "evidence": "Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng."
+          },
+          {
+            "value_raw": "7%",
+            "context": "cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng.",
+            "evidence": "Saigonbank đang niêm yết lãi suất kỳ hạn 13 tháng lên đến 7,9%; và VPBank cao nhất 7,4%; Sacombank áp dụng lãi suất cao nhất 7,3%/năm cho khoản tiền gửi từ 500 triệu đồng, kỳ hạn 24-36 tháng; VCBNeo niêm yết 7%/năm tại các kỳ hạn 6-36 tháng; MBV áp dụng 7%/năm tại kỳ hạn 7-36 tháng."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "d94db945-eae0-5575-8661-d477d1814dd5"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-d13e36a55166f498",
+    "event_key": "UNMERGED|5d5aa869-b0a3-56a2-a5c5-a609415ed41f|e2",
+    "event_type": "corporate_action",
+    "subjects": [],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "url": "https://fireant.vn/bai-viet/ngay-27-10-gui-duoi-1-ty-dong-12-thang-tai-mb-vpbank-techcombank-sacombank-shb-hdbank-va-acb-duoc-huong-lai-suat-bao-nhieu/42475632",
+        "source_name": "fireant",
+        "publish_date": "2026-10-27",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f",
+        "local_event_id": "e2",
+        "status": "unconfirmed",
+        "status_evidence": "SHB và MB cùng niêm yết lãi suất tại quầy ở mức 5,7%/năm.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [],
+        "financial_figures_stated": [
+          {
+            "value_raw": "5,7%",
+            "context": "SHB và MB cùng niêm yết lãi suất tại quầy ở mức 5,7%/năm.",
+            "evidence": "SHB và MB cùng niêm yết lãi suất tại quầy ở mức 5,7%/năm."
+          },
+          {
+            "value_raw": "6,8%",
+            "context": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng.",
+            "evidence": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng."
+          },
+          {
+            "value_raw": "50 triệu đồng",
+            "context": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng.",
+            "evidence": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng."
+          },
+          {
+            "value_raw": "500 triệu đồng",
+            "context": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng.",
+            "evidence": "Gửi online: Sacombank có lãi suất cao nhất 6,8%/năm Ở hình thức gửi trực tuyến, Sacombank niêm yết lãi suất 6,8%/năm cho khoản tiền từ 50 triệu đồng đến dưới 500 triệu đồng ở kỳ hạn 12 tháng."
+          },
+          {
+            "value_raw": "6,0%",
+            "context": "SHB niêm yết lãi suất online kỳ hạn 12 tháng ở mức 6,0%/năm.",
+            "evidence": "SHB niêm yết lãi suất online kỳ hạn 12 tháng ở mức 6,0%/năm."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-27",
+        "article_id": "5d5aa869-b0a3-56a2-a5c5-a609415ed41f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-d3c055d9a0cc4132",
+    "event_key": "UNMERGED|be1904cb-6368-50d7-9990-36ae5d76d02f|e2",
+    "event_type": "corporate_action",
+    "subjects": [
+      "ABB",
+      "HDB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f",
+        "url": "https://fireant.vn/bai-viet/lai-suat-ty-gia-hom-nay-fed-giu-nguyen-lai-suat-usd-dien-bien-trai-chieu/42519669",
+        "source_name": "fireant",
+        "publish_date": "2026-10-29",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f",
+        "local_event_id": "e2",
+        "status": "unconfirmed",
+        "status_evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "ABB",
+            "name_normalized": "ABB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+            "name_source": "sentence"
+          },
+          {
+            "name_raw": "HDB",
+            "name_normalized": "HDB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [
+          {
+            "value_raw": "5,5%",
+            "context": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+            "evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm."
+          },
+          {
+            "value_raw": "5,3%",
+            "context": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+            "evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm."
+          },
+          {
+            "value_raw": "5%",
+            "context": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+            "evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm."
+          },
+          {
+            "value_raw": "4,75%",
+            "context": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+            "evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm."
+          },
+          {
+            "value_raw": "4,65%",
+            "context": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+            "evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm."
+          },
+          {
+            "value_raw": "3,9%",
+            "context": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm.",
+            "evidence": "Techcombank và GPBank cùng niêm yết 5,5%/năm; ABBank 5,3%/năm; Eximbank và HDBank cùng 5%/năm; SeABank 4,75%/năm; KienlongBank 4,65%/năm và SCB 3,9%/năm."
+          }
+        ],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-29",
+        "article_id": "be1904cb-6368-50d7-9990-36ae5d76d02f"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-dae4cebf9f0c36b9",
+    "event_key": "UNMERGED|ced0b096-12c3-5c89-a202-67038b5527c1|e1",
+    "event_type": "corporate_action",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "ced0b096-12c3-5c89-a202-67038b5527c1",
+        "url": "https://cafef.vn/du-lieu/tcb-3009025/tcb-thong-bao-ve-ngay-dang-ky-cuoi-cung-lay-y-kien-co-dong-bang-van-ban.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-28",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "ced0b096-12c3-5c89-a202-67038b5527c1",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-28",
+        "article_id": "ced0b096-12c3-5c89-a202-67038b5527c1"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-f9aebdec287b324b",
+    "event_key": "UNMERGED|4b938390-f187-50d3-9eea-77bc6ef1ef03|e1",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": null,
+      "event_date_end": null,
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "4b938390-f187-50d3-9eea-77bc6ef1ef03",
+        "url": "https://cafef.vn/du-lieu/tcb-3004359/tcb-nghi-quyet-hdqt-phe-duyet-tang-von-gop-tai-cong-ty-co-phan-bao-hiem-phi-nhan-tho-techcom-tgins.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-22",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "4b938390-f187-50d3-9eea-77bc6ef1ef03",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Nghị quyết HĐQT phê duyệt tăng vốn góp tại Công ty Cổ phần Bảo hiểm Phi nhân thọ Techcom (TGIns)",
+        "dates": {
+          "event_date_start": null,
+          "event_date_end": null,
+          "date_precision": "unknown",
+          "date_derived": false,
+          "date_evidence": null,
+          "date_candidates": []
+        },
+        "location": "Công",
+        "location_evidence": "TCB: Nghị quyết HĐQT phê duyệt tăng vốn góp tại Công ty Cổ phần Bảo hiểm Phi nhân thọ Techcom (TGIns)",
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Nghị quyết HĐQT phê duyệt tăng vốn góp tại Công ty Cổ phần Bảo hiểm Phi nhân thọ Techcom (TGIns)",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-22",
+        "article_id": "4b938390-f187-50d3-9eea-77bc6ef1ef03"
+      }
+    ],
+    "related_event_ids": [],
+    "review_flag": "merge_uncertain"
+  },
+  {
+    "event_id": "evt-fec4f4b9db1d6c41",
+    "event_key": "shareholder_meeting|tcb|2026-10-26",
+    "event_type": "shareholder_meeting",
+    "subjects": [
+      "TCB"
+    ],
+    "current_best": {
+      "status": "unconfirmed",
+      "event_date_start": "2026-10-26",
+      "event_date_end": "2026-10-26",
+      "basis": "bài có ngày đăng mới nhất (chỉ là gợi ý, xem conflicts)"
+    },
+    "supporting_sources": [
+      {
+        "article_id": "40a6e92f-bd62-5b0f-bdbd-f01b71bfd07f",
+        "url": "https://cafef.vn/du-lieu/tcb-3007214/tcb-nghi-quyet-hdqt-so-0586-ngay-26102026.chn",
+        "source_name": "cafef",
+        "publish_date": "2026-10-26",
+        "source_role": "original"
+      }
+    ],
+    "duplicate_article_ids": [],
+    "per_source_extractions": [
+      {
+        "article_id": "40a6e92f-bd62-5b0f-bdbd-f01b71bfd07f",
+        "local_event_id": "e1",
+        "status": "unconfirmed",
+        "status_evidence": "TCB: Nghị quyết HĐQT số 0586 ngày 26/10/2026",
+        "dates": {
+          "event_date_start": "2026-10-26",
+          "event_date_end": "2026-10-26",
+          "date_precision": "day",
+          "date_derived": false,
+          "date_evidence": "26/10/2026",
+          "date_candidates": [
+            {
+              "date": "2026-10-26",
+              "derived": false,
+              "evidence": "26/10/2026"
+            },
+            {
+              "date": "2026-10-26",
+              "derived": false,
+              "evidence": "26/10/2026"
+            }
+          ]
+        },
+        "location": null,
+        "location_evidence": null,
+        "parties": [
+          {
+            "name_raw": "TCB",
+            "name_normalized": "TCB",
+            "party_type": "organization",
+            "role": "unspecified",
+            "role_evidence": "TCB: Nghị quyết HĐQT số 0586 ngày 26/10/2026",
+            "name_source": "sentence"
+          }
+        ],
+        "financial_figures_stated": [],
+        "claims_by_source": [],
+        "notes": "no_status_signal"
+      }
+    ],
+    "conflicts": [],
+    "status_history": [
+      {
+        "status": "unconfirmed",
+        "as_of_publish_date": "2026-10-26",
+        "article_id": "40a6e92f-bd62-5b0f-bdbd-f01b71bfd07f"
+      }
+    ],
+    "related_event_ids": [
+      "evt-9a11b066884c6d39",
+      "evt-9c680c3a10f94032",
+      "evt-6d5c955b33c0b97d"
+    ],
+    "review_flag": "needs_followup"
+  }
+]

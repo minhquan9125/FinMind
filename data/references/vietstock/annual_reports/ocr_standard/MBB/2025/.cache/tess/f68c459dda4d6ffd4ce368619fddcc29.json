@@ -1,0 +1,75 @@
+{
+  "text": "Œ\n\nBÁO CÁO\nNGNIÊN “—",
+  "chars": 15,
+  "words": 5,
+  "wordItems": [
+    {
+      "text": "Œ",
+      "bbox": [
+        3286,
+        412,
+        3343,
+        460
+      ],
+      "conf": 60.992188,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        3059,
+        521,
+        3122,
+        551
+      ],
+      "conf": 90.12207,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        3133,
+        528,
+        3199,
+        564
+      ],
+      "conf": 96.439079,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NGNIÊN",
+      "bbox": [
+        3068,
+        565,
+        3199,
+        589
+      ],
+      "conf": 82.402809,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "“—",
+      "bbox": [
+        3232,
+        578,
+        3282,
+        588
+      ],
+      "conf": 21.411598,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 70,
+  "lowConfRatio": 0.2,
+  "seconds": 0.615
+}

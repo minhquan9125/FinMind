@@ -1,0 +1,70 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\CTG\\2025\\CTG_2025_542401.pdf",
+  "pages": 180,
+  "routes": {
+    "text_layer": 123,
+    "tesseract": 57
+  },
+  "status": {
+    "OK": 180
+  },
+  "flags": {
+    "MANUAL_REVIEWED": 3,
+    "PDF_TEXT_VERIFIED": 53,
+    "TEXT_LAYER_BROKEN": 1
+  },
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 2.412,
+    "renderAndTesseract": 54.166,
+    "gemini": 63.294,
+    "total": 120.492
+  },
+  "geminiApi": {
+    "calls": 56,
+    "failedCalls": 56,
+    "seconds": 63.16799999999999,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "ollamaApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 57,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\CTG\\2025",
+    "mode": "auto",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "aiOutput": "structured",
+    "openrouterModel": "recursive/flint-v1.0:free",
+    "batch": 1,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 180,
+    "tessWorkers": 2,
+    "minChars": 150,
+    "minConf": 90,
+    "longSide": 3508
+  }
+}

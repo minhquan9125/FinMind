@@ -1,0 +1,49 @@
+{
+  "page_type": "cover",
+  "blocks": [
+    {
+      "type": "furniture",
+      "text": "CMC CORPORATION",
+      "box_2d": [
+        78,
+        452,
+        135,
+        652
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "5",
+      "box_2d": [
+        753,
+        305,
+        862,
+        424
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "QUẢN TRỊ CÔNG TY",
+      "box_2d": [
+        806,
+        450,
+        822,
+        694
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "CMC CORPORATION\n5\nQUẢN TRỊ CÔNG TY",
+  "unreadable": []
+}

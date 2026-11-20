@@ -1,0 +1,28 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\ITD\\2025\\ITD_2025_551266.pdf",
+  "scope": "annual_report_content",
+  "pages": 16,
+  "routes": {
+    "TEXT_LAYER": 8,
+    "TESSERACT": 8
+  },
+  "blockTypes": {
+    "paragraph": 307,
+    "heading": 12
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 28,
+      "end": 42
+    },
+    {
+      "start": 48,
+      "end": 48
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

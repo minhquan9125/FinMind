@@ -1,0 +1,688 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        116,
+        82,
+        863,
+        918
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            116,
+            82,
+            151,
+            145
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Tên Công ty"
+          ],
+          "box_2d": [
+            116,
+            145,
+            151,
+            288
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Tên viết tắt"
+          ],
+          "box_2d": [
+            116,
+            288,
+            151,
+            418
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Địa chỉ"
+          ],
+          "box_2d": [
+            116,
+            418,
+            151,
+            679
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Lĩnh vực hoạt động"
+          ],
+          "box_2d": [
+            116,
+            679,
+            151,
+            811
+          ]
+        },
+        {
+          "key": "c6",
+          "header_lines": [
+            "Tỷ lệ sở hữu"
+          ],
+          "box_2d": [
+            116,
+            811,
+            151,
+            918
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "6",
+          "label_raw": "6",
+          "note": null,
+          "box_2d": [
+            151,
+            82,
+            218,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty Cổ phần NetNam",
+              "box_2d": [
+                151,
+                145,
+                218,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "NETNAM",
+              "box_2d": [
+                151,
+                288,
+                218,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Tầng 2, tòa HITC số 239 Xuân Thủy, phường Cầu Giấy, Hà Nội",
+              "box_2d": [
+                151,
+                418,
+                218,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Viễn thông – Internet",
+              "box_2d": [
+                151,
+                679,
+                218,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "41,14%",
+              "box_2d": [
+                151,
+                811,
+                218,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": "7",
+          "label_raw": "7",
+          "note": null,
+          "box_2d": [
+            218,
+            82,
+            297,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Viện Nghiên cứu và Ứng dụng Công nghệ CMC",
+              "box_2d": [
+                218,
+                145,
+                297,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC ATI",
+              "box_2d": [
+                218,
+                288,
+                297,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                218,
+                418,
+                297,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Công nghệ thông tin và viễn thông (ICT)",
+              "box_2d": [
+                218,
+                679,
+                297,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                218,
+                811,
+                297,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": "8",
+          "label_raw": "8",
+          "note": null,
+          "box_2d": [
+            297,
+            82,
+            371,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH CMC Invesment",
+              "box_2d": [
+                297,
+                145,
+                371,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC Invest",
+              "box_2d": [
+                297,
+                288,
+                371,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                297,
+                418,
+                371,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Đầu tư",
+              "box_2d": [
+                297,
+                679,
+                371,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                297,
+                811,
+                371,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": "9",
+          "label_raw": "9",
+          "note": null,
+          "box_2d": [
+            371,
+            82,
+            436,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH CMC Đà Nẵng",
+              "box_2d": [
+                371,
+                145,
+                436,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC Da Nang",
+              "box_2d": [
+                371,
+                288,
+                436,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Enouvo Space 2, số 16, 18 An Nhơn 3, phường An Hải, Đà Nẵng",
+              "box_2d": [
+                371,
+                418,
+                436,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Xuất bản phần mềm",
+              "box_2d": [
+                371,
+                679,
+                436,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                371,
+                811,
+                436,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": "10",
+          "label_raw": "10",
+          "note": null,
+          "box_2d": [
+            436,
+            82,
+            502,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH CMC Hòa Lạc",
+              "box_2d": [
+                436,
+                145,
+                502,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC Hoa Lac",
+              "box_2d": [
+                436,
+                288,
+                502,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                436,
+                418,
+                502,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Khoa học kỹ thuật và công nghệ",
+              "box_2d": [
+                436,
+                679,
+                502,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                436,
+                811,
+                502,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": "11",
+          "label_raw": "11",
+          "note": null,
+          "box_2d": [
+            502,
+            82,
+            563,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH CMC Education",
+              "box_2d": [
+                502,
+                145,
+                563,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC Education",
+              "box_2d": [
+                502,
+                288,
+                563,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                502,
+                418,
+                563,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Giáo dục",
+              "box_2d": [
+                502,
+                679,
+                563,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                502,
+                811,
+                563,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty con của Công ty TNHH CMC Education gồm:",
+          "note": null,
+          "box_2d": [
+            563,
+            82,
+            594,
+            918
+          ],
+          "cells": []
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần Đầu tư Đại học CMC",
+          "note": null,
+          "box_2d": [
+            594,
+            82,
+            692,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty Cổ phần Đầu tư Đại học CMC",
+              "box_2d": [
+                594,
+                145,
+                692,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC Uni",
+              "box_2d": [
+                594,
+                288,
+                692,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                594,
+                418,
+                692,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Đào tạo Đại học",
+              "box_2d": [
+                594,
+                679,
+                692,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "CMC Education sở hữu 80,8% vốn góp",
+              "box_2d": [
+                594,
+                811,
+                692,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Trường Đại học CMC",
+          "note": null,
+          "box_2d": [
+            692,
+            82,
+            786,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Trường Đại học CMC",
+              "box_2d": [
+                692,
+                145,
+                786,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC University",
+              "box_2d": [
+                692,
+                288,
+                786,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội",
+              "box_2d": [
+                692,
+                418,
+                786,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Đào tạo Đại học",
+              "box_2d": [
+                692,
+                679,
+                786,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "CTCP Đầu tư Đại học CMC sở hữu 92,1% vốn góp",
+              "box_2d": [
+                692,
+                811,
+                786,
+                918
+              ]
+            }
+          ]
+        },
+        {
+          "code": "12",
+          "label_raw": "12",
+          "note": null,
+          "box_2d": [
+            786,
+            82,
+            863,
+            918
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Công ty TNHH Hạ tầng số CMC AI",
+              "box_2d": [
+                786,
+                145,
+                863,
+                288
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "CMC ADI",
+              "box_2d": [
+                786,
+                288,
+                863,
+                418
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Lô Vb 27-28-29, khu công nghiệp trong Khu chế xuất Tân Thuận, phường Tân Thuận, TP.HCM",
+              "box_2d": [
+                786,
+                418,
+                863,
+                679
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Hạ tầng số",
+              "box_2d": [
+                786,
+                679,
+                863,
+                811
+              ]
+            },
+            {
+              "column_key": "c6",
+              "raw": "100%",
+              "box_2d": [
+                786,
+                811,
+                863,
+                918
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "8",
+      "box_2d": [
+        908,
+        868,
+        923,
+        878
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "STT\nTên Công ty\nTên viết tắt\nĐịa chỉ\nLĩnh vực hoạt động\nTỷ lệ sở hữu\n6 6 Công ty Cổ phần NetNam NETNAM Tầng 2, tòa HITC số 239 Xuân Thủy, phường Cầu Giấy, Hà Nội Viễn thông – Internet 41,14%\n7 7 Viện Nghiên cứu và Ứng dụng Công nghệ CMC CMC ATI CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Công nghệ thông tin và viễn thông (ICT) 100%\n8 8 Công ty TNHH CMC Invesment CMC Invest CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Đầu tư 100%\n9 9 Công ty TNHH CMC Đà Nẵng CMC Da Nang Enouvo Space 2, số 16, 18 An Nhơn 3, phường An Hải, Đà Nẵng Xuất bản phần mềm 100%\n10 10 Công ty TNHH CMC Hòa Lạc CMC Hoa Lac CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Khoa học kỹ thuật và công nghệ 100%\n11 11 Công ty TNHH CMC Education CMC Education CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Giáo dục 100%\nCông ty con của Công ty TNHH CMC Education gồm:\nCông ty Cổ phần Đầu tư Đại học CMC Công ty Cổ phần Đầu tư Đại học CMC CMC Uni CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Đào tạo Đại học CMC Education sở hữu 80,8% vốn góp\nTrường Đại học CMC Trường Đại học CMC CMC University CMC Tower, số 11 phố Duy Tân, Phường Cầu Giấy, TP Hà Nội Đào tạo Đại học CTCP Đầu tư Đại học CMC sở hữu 92,1% vốn góp\n12 12 Công ty TNHH Hạ tầng số CMC AI CMC ADI Lô Vb 27-28-29, khu công nghiệp trong Khu chế xuất Tân Thuận, phường Tân Thuận, TP.HCM Hạ tầng số 100%\n8",
+  "unreadable": []
+}

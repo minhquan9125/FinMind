@@ -1,0 +1,82 @@
+{
+  "schema_name": "finmind.annual_ocr_batch",
+  "schema_version": "1.0",
+  "updated_at": "2026-10-23T04:09:06+00:00",
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "pdf_root": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf",
+  "documents": [
+    {
+      "symbol": "CMG",
+      "year": "2025",
+      "pdf": "CMG/2025/CMG_2025_553286.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\CMG\\2025\\CMG_2025_553286",
+      "sha256": "4ed2a0ed75c3585adbf1925b0ce210d03d48142adc54f0a386553041c9c55f56",
+      "status": "MODEL_PENDING",
+      "pages": 135,
+      "model_failed_pages": [
+        48
+      ],
+      "review_pages": [
+        21,
+        35,
+        39,
+        40,
+        41,
+        47,
+        48,
+        55,
+        58,
+        61,
+        106,
+        113,
+        122,
+        128
+      ],
+      "routes": {
+        "text_layer": 57,
+        "tesseract": 50,
+        "tesseract+gemini": 28
+      },
+      "exit_code": 0,
+      "skipped": false
+    },
+    {
+      "symbol": "CMG",
+      "year": "2025",
+      "pdf": "CMG/2025/CMG_2025_554681.pdf",
+      "output": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\ocr_standard\\CMG\\2025\\CMG_2025_554681",
+      "sha256": "ebbfa4b2cb9be09cf423fa4a1b76a3bb1495248589e9826cb41561e355cf8ccf",
+      "status": "MODEL_PENDING",
+      "pages": 76,
+      "model_failed_pages": [
+        52
+      ],
+      "review_pages": [
+        43,
+        45,
+        51,
+        52,
+        62,
+        72
+      ],
+      "routes": {
+        "text_layer": 4,
+        "tesseract+gemini": 25,
+        "tesseract": 47
+      },
+      "exit_code": 0,
+      "skipped": false
+    }
+  ],
+  "summary": {
+    "pdfs_discovered": 3,
+    "pdfs_attempted": 2,
+    "complete": 0,
+    "pending_or_failed": 2,
+    "pages": 211,
+    "model_pending_pages": 2,
+    "review_pages": 20,
+    "review_without_model_failure_pages": 18
+  }
+}

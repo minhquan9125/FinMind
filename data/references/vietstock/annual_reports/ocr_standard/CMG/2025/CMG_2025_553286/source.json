@@ -1,0 +1,12 @@
+{
+  "symbol": "CMG",
+  "year": 2025,
+  "pdf": "CMG/2025/CMG_2025_553286.pdf",
+  "sha256": "4ed2a0ed75c3585adbf1925b0ce210d03d48142adc54f0a386553041c9c55f56",
+  "provider": "omniroute",
+  "model": "gemini",
+  "model_target_pages": [
+    48
+  ],
+  "previous_model": "gemini"
+}

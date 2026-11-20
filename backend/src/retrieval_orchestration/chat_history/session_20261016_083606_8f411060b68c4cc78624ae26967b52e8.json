@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "session_id": "3acfc759-39d2-41fc-8f46-d0075ceaa629",
+  "started_at": "2026-10-16T08:34:29.565027+00:00",
+  "saved_at": "2026-10-16T08:36:06.832892+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "lợi nhuận bao nhiêu",
+      "timestamp": "2026-10-16T08:34:49.394441+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn muốn xem công ty nào?",
+      "timestamp": "2026-10-16T08:34:49.398777+00:00",
+      "result": {
+        "request_id": "e1094a5c-b4e2-4576-8194-5aca39af1ca6",
+        "query_id": null,
+        "execution_mode": "FIXTURE",
+        "b1_decision": "ASK_CLARIFICATION",
+        "status": "ASK_CLARIFICATION",
+        "reason_code": "MISSING_COMPANY",
+        "message": "Bạn muốn xem công ty nào?",
+        "scope": {
+          "companies": [],
+          "periods": [],
+          "metric_code": null,
+          "topic": null,
+          "measure_basis": null,
+          "reporting_entity": "UNKNOWN",
+          "source_type": "BCTC"
+        },
+        "clarification": "Bạn muốn xem công ty nào?",
+        "evidence_pack": null,
+        "errors": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "fpt",
+      "timestamp": "2026-10-16T08:34:56.818904+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn muốn lợi nhuận trước thuế hay sau thuế?\nĐã ghi nhận: Công ty: FPT",
+      "timestamp": "2026-10-16T08:34:56.819875+00:00",
+      "result": {
+        "request_id": "77eff9fb-79ca-4b74-b13e-cd4f226f6372",
+        "query_id": null,
+        "execution_mode": "FIXTURE",
+        "b1_decision": "ASK_CLARIFICATION",
+        "status": "ASK_CLARIFICATION",
+        "reason_code": "AMBIGUOUS_METRIC",
+        "message": "Bạn muốn lợi nhuận trước thuế hay sau thuế?",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [],
+          "metric_code": null,
+          "topic": null,
+          "measure_basis": null,
+          "reporting_entity": "UNKNOWN",
+          "source_type": "BCTC"
+        },
+        "clarification": "Bạn muốn lợi nhuận trước thuế hay sau thuế?",
+        "evidence_pack": null,
+        "errors": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "sau thuế",
+      "timestamp": "2026-10-16T08:35:12.355243+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn muốn xem kỳ nào? Ví dụ: năm 2025 hoặc quý 2/2026.\nĐã ghi nhận: Công ty: FPT | Chỉ tiêu: Lợi nhuận sau thuế",
+      "timestamp": "2026-10-16T08:35:12.355954+00:00",
+      "result": {
+        "request_id": "61d281ad-6454-429f-b064-d49e672d3cee",
+        "query_id": null,
+        "execution_mode": "FIXTURE",
+        "b1_decision": "ASK_CLARIFICATION",
+        "status": "ASK_CLARIFICATION",
+        "reason_code": "MISSING_PERIOD",
+        "message": "Bạn muốn xem kỳ nào? Ví dụ: năm 2025 hoặc quý 2/2026.",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [],
+          "metric_code": "PROFIT_AFTER_TAX",
+          "topic": null,
+          "measure_basis": null,
+          "reporting_entity": "UNKNOWN",
+          "source_type": "BCTC"
+        },
+        "clarification": "Bạn muốn xem kỳ nào? Ví dụ: năm 2025 hoặc quý 2/2026.",
+        "evidence_pack": null,
+        "errors": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "2024",
+      "timestamp": "2026-10-16T08:35:16.270794+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Chưa tìm thấy bằng chứng phù hợp trong phạm vi này.\nĐã ghi nhận: Công ty: FPT | Chỉ tiêu: Lợi nhuận sau thuế | Kỳ kết thúc: 2024-12-31",
+      "timestamp": "2026-10-16T08:35:16.286258+00:00",
+      "result": {
+        "request_id": "f38e90d4-d212-4a77-b85a-08e13bb2dd97",
+        "query_id": "fixture-query:f38e90d4-d212-4a77-b85a-08e13bb2dd97",
+        "execution_mode": "FIXTURE",
+        "b1_decision": "SEARCH",
+        "status": "NO_DATA",
+        "reason_code": "NO_DATA",
+        "message": "Chưa tìm thấy bằng chứng phù hợp trong phạm vi này.",
+        "scope": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "2024-12-31"
+          ],
+          "metric_code": "PROFIT_AFTER_TAX",
+          "topic": null,
+          "measure_basis": "FULL_YEAR",
+          "reporting_entity": "UNKNOWN",
+          "source_type": "BCTC"
+        },
+        "clarification": null,
+        "evidence_pack": null,
+        "errors": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "text": "CHƯƠNG\n\n6Ƒ°\n\nMẠNG LƯỚI\n\nCác chi nhánh và các đơn vị trực thuộc\n\nCông ty con, công ty liên doanh, liên kết",
+  "chars": 80,
+  "words": 22,
+  "wordItems": [
+    {
+      "text": "CHƯƠNG",
+      "bbox": [
+        3049,
+        809,
+        3340,
+        865
+      ],
+      "conf": 60.445202,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "6Ƒ°",
+      "bbox": [
+        3023,
+        891,
+        3335,
+        1081
+      ],
+      "conf": 10.569153,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "MẠNG",
+      "bbox": [
+        3002,
+        1133,
+        3177,
+        1190
+      ],
+      "conf": 89.341942,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "LƯỚI",
+      "bbox": [
+        3200,
+        1120,
+        3335,
+        1180
+      ],
+      "conf": 92.325119,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Các",
+      "bbox": [
+        2819,
+        1284,
+        2867,
+        1309
+      ],
+      "conf": 96.467331,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chi",
+      "bbox": [
+        2876,
+        1283,
+        2914,
+        1309
+      ],
+      "conf": 73.938751,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "nhánh",
+      "bbox": [
+        2924,
+        1283,
+        3008,
+        1309
+      ],
+      "conf": 96.991325,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        3017,
+        1284,
+        3049,
+        1309
+      ],
+      "conf": 96.998184,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "các",
+      "bbox": [
+        3057,
+        1284,
+        3101,
+        1309
+      ],
+      "conf": 96.998352,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "đơn",
+      "bbox": [
+        3109,
+        1283,
+        3161,
+        1309
+      ],
+      "conf": 96.998352,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "vị",
+      "bbox": [
+        3170,
+        1285,
+        3192,
+        1314
+      ],
+      "conf": 96.994553,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "trực",
+      "bbox": [
+        3201,
+        1288,
+        3254,
+        1314
+      ],
+      "conf": 97.013832,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "thuộc",
+      "bbox": [
+        3262,
+        1283,
+        3340,
+        1314
+      ],
+      "conf": 96.995712,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Công",
+      "bbox": [
+        2793,
+        1361,
+        2864,
+        1393
+      ],
+      "conf": 96.766792,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ty",
+      "bbox": [
+        2872,
+        1365,
+        2899,
+        1393
+      ],
+      "conf": 96.997879,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "con,",
+      "bbox": [
+        2907,
+        1368,
+        2963,
+        1389
+      ],
+      "conf": 96.990845,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "công",
+      "bbox": [
+        2973,
+        1361,
+        3039,
+        1393
+      ],
+      "conf": 97.012047,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ty",
+      "bbox": [
+        3046,
+        1365,
+        3074,
+        1393
+      ],
+      "conf": 96.987778,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "liên",
+      "bbox": [
+        3083,
+        1360,
+        3129,
+        1386
+      ],
+      "conf": 96.843277,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "doanh,",
+      "bbox": [
+        3139,
+        1360,
+        3232,
+        1389
+      ],
+      "conf": 96.650116,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "liên",
+      "bbox": [
+        3242,
+        1360,
+        3289,
+        1386
+      ],
+      "conf": 96.990242,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kết",
+      "bbox": [
+        3299,
+        1358,
+        3340,
+        1386
+      ],
+      "conf": 97.021652,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 90,
+  "lowConfRatio": 0.045,
+  "seconds": 0.85
+}

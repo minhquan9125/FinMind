@@ -1,0 +1,434 @@
+{
+  "document_sha256": "937811ef432d7fb384a7d37bc6a8161e567e4d3519e8b10b5198e8126f6bb7fe",
+  "scope": "audited_financial_statements",
+  "pages": 33,
+  "page_ranges": [
+    {
+      "start": 37,
+      "end": 69
+    }
+  ],
+  "sections": [
+    {
+      "page_class": "toc",
+      "start": 37,
+      "end": 37
+    },
+    {
+      "page_class": "auditor_report",
+      "start": 38,
+      "end": 39
+    },
+    {
+      "page_class": "balance_sheet",
+      "start": 40,
+      "end": 40
+    },
+    {
+      "page_class": "income_statement",
+      "start": 41,
+      "end": 41
+    },
+    {
+      "page_class": "cash_flow",
+      "start": 42,
+      "end": 42
+    },
+    {
+      "page_class": "notes",
+      "start": 43,
+      "end": 69
+    }
+  ],
+  "page_index": [
+    {
+      "pdf_page": 37,
+      "printed_page": null,
+      "file": "p-037.ir.json",
+      "page_class": "toc",
+      "title": "MỤC LỤC",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 38,
+      "printed_page": null,
+      "file": "p-038.ir.json",
+      "page_class": "auditor_report",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 39,
+      "printed_page": "242",
+      "file": "p-039.ir.json",
+      "page_class": "auditor_report",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 40,
+      "printed_page": null,
+      "file": "p-040.ir.json",
+      "page_class": "balance_sheet",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 41,
+      "printed_page": null,
+      "file": "p-041.ir.json",
+      "page_class": "income_statement",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 42,
+      "printed_page": null,
+      "file": "p-042.ir.json",
+      "page_class": "cash_flow",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": true,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 43,
+      "printed_page": null,
+      "file": "p-043.ir.json",
+      "page_class": "notes",
+      "title": "1. ĐẶC ĐIỂM HOẠT ĐỘNG CỦA DOANH NGHIỆP (TIẾP)",
+      "topics": [
+        "1. ĐẶC ĐIỂM HOẠT ĐỘNG CỦA DOANH NGHIỆP (TIẾP)",
+        "2. CHUẨN MỰC VÀ CHẾ ĐỘ KẾ TOÁN ÁP DỤNG",
+        "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 44,
+      "printed_page": "v",
+      "file": "p-044.ir.json",
+      "page_class": "notes",
+      "title": "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)",
+      "topics": [
+        "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 45,
+      "printed_page": null,
+      "file": "p-045.ir.json",
+      "page_class": "notes",
+      "title": "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)",
+      "topics": [
+        "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 46,
+      "printed_page": "C",
+      "file": "p-046.ir.json",
+      "page_class": "notes",
+      "title": "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP) 3.7 HÀNG TỒN KHO (TIẾP)",
+      "topics": [
+        "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP) 3.7 HÀNG TỒN KHO (TIẾP)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 47,
+      "printed_page": null,
+      "file": "p-047.ir.json",
+      "page_class": "notes",
+      "title": "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)",
+      "topics": [
+        "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 48,
+      "printed_page": null,
+      "file": "p-048.ir.json",
+      "page_class": "notes",
+      "title": "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)",
+      "topics": [
+        "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 49,
+      "printed_page": "4",
+      "file": "p-049.ir.json",
+      "page_class": "notes",
+      "title": "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)",
+      "topics": [
+        "3. CÁC CHÍNH SÁCH KẾ TOÁN ÁP DỤNG (TIẾP)",
+        "4. TIỀN VÀ CÁC KHOẢN TƯƠNG ĐƯƠNG TIỀN"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 50,
+      "printed_page": null,
+      "file": "p-050.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 51,
+      "printed_page": null,
+      "file": "p-051.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 52,
+      "printed_page": null,
+      "file": "p-052.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 53,
+      "printed_page": null,
+      "file": "p-053.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 54,
+      "printed_page": null,
+      "file": "p-054.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 55,
+      "printed_page": null,
+      "file": "p-055.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 56,
+      "printed_page": "31",
+      "file": "p-056.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 57,
+      "printed_page": null,
+      "file": "p-057.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 58,
+      "printed_page": null,
+      "file": "p-058.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 59,
+      "printed_page": null,
+      "file": "p-059.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 60,
+      "printed_page": null,
+      "file": "p-060.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 61,
+      "printed_page": null,
+      "file": "p-061.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 62,
+      "printed_page": null,
+      "file": "p-062.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 63,
+      "printed_page": null,
+      "file": "p-063.ir.json",
+      "page_class": "notes",
+      "title": "27. CÁC KHOẢN MỤC NGOÀI BẢNG CÂN ĐỐI KẾ TOÁN",
+      "topics": [
+        "27. CÁC KHOẢN MỤC NGOÀI BẢNG CÂN ĐỐI KẾ TOÁN",
+        "28. DOANH THU BÁN HÀNG VÀ CUNG CẤP DỊCH VỤ",
+        "29. GIÁ VỐN HÀNG BÁN",
+        "30. DOANH THU HOẠT ĐỘNG TÀI CHÍNH"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 64,
+      "printed_page": null,
+      "file": "p-064.ir.json",
+      "page_class": "notes",
+      "title": "35. CHI PHÍ SẢN XUẤT KINH DOANH THEO YẾU TỐ",
+      "topics": [
+        "35. CHI PHÍ SẢN XUẤT KINH DOANH THEO YẾU TỐ",
+        "36. CHI PHÍ THUẾ THU NHẬP DOANH NGHIỆP HIỆN HÀNH",
+        "37. LÃI/ LỖ TRÊN CỔ PHIẾU"
+      ],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 65,
+      "printed_page": null,
+      "file": "p-065.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 66,
+      "printed_page": null,
+      "file": "p-066.ir.json",
+      "page_class": "notes",
+      "title": "37. LÃI/ LỖ TRÊN CỔ PHIẾU",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 67,
+      "printed_page": null,
+      "file": "p-067.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 68,
+      "printed_page": null,
+      "file": "p-068.ir.json",
+      "page_class": "notes",
+      "title": "BÁO CÁO TÀI CHÍNH",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    },
+    {
+      "pdf_page": 69,
+      "printed_page": null,
+      "file": "p-069.ir.json",
+      "page_class": "notes",
+      "title": "CÔNG TY CỔ PHẦN CÔNG NGHỆ - VIỄN THÔNG ELCOM",
+      "topics": [],
+      "has_structured_table": false,
+      "needs_review": false
+    }
+  ],
+  "structured_table_ranges": [
+    {
+      "start": 40,
+      "end": 42
+    }
+  ],
+  "needs_review": [],
+  "arithmetic_checks": [],
+  "arithmetic_checks_skipped": [],
+  "cells_protected": 0,
+  "cells_total": 0,
+  "cell_coverage_ratio": 0.0,
+  "cell_coverage_passed": false,
+  "cell_coverage_by_statement": {},
+  "accounting_soft_checks": [],
+  "accounting_template_profile": "TT200_NONBANK",
+  "arithmetic_template_id": "vn_nonbank_b01_b02_b03_v1",
+  "arithmetic_template_sha256": "b827359542c40d4ce71a754b248232aae0b8bc2f30f0ce7ddf99e82381a4748a",
+  "total_observations": 0,
+  "verified_observations": 0,
+  "unverified_observations": 0,
+  "failed_observations": 0,
+  "needs_review_observations": 0,
+  "mapped_metrics_count": 0,
+  "notes_text_only_ranges": [
+    {
+      "start": 43,
+      "end": 69
+    }
+  ],
+  "file_pattern": "p-{page:03d}.ir.json",
+  "coverage_note": "Notes without table blocks preserve text; their tables are not yet verified as rows and cells.",
+  "observations_path": "observations.json"
+}

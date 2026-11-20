@@ -1,0 +1,101 @@
+{
+  "text": "05\n\nPHẦN TÍCH\nHOẠT ĐỘNG\nKINH DOANH",
+  "chars": 27,
+  "words": 7,
+  "wordItems": [
+    {
+      "text": "05",
+      "bbox": [
+        113,
+        102,
+        290,
+        228
+      ],
+      "conf": 92.546791,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHẦN",
+      "bbox": [
+        361,
+        829,
+        782,
+        970
+      ],
+      "conf": 71.539131,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÍCH",
+      "bbox": [
+        841,
+        828,
+        1191,
+        972
+      ],
+      "conf": 92.897278,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "HOẠT",
+      "bbox": [
+        309,
+        1044,
+        730,
+        1189
+      ],
+      "conf": 91.862724,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐỘNG",
+      "bbox": [
+        820,
+        1032,
+        1246,
+        1189
+      ],
+      "conf": 86.120552,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "KINH",
+      "bbox": [
+        288,
+        1235,
+        647,
+        1347
+      ],
+      "conf": 89.201279,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "DOANH",
+      "bbox": [
+        714,
+        1233,
+        1265,
+        1349
+      ],
+      "conf": 90.078629,
+      "block": 2,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 88,
+  "lowConfRatio": 0,
+  "seconds": 0.323
+}

@@ -1,0 +1,567 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "furniture",
+      "text": "CÔNG TY CỔ PHẦN VIỄN THÔNG - TIN HỌC BƯU ĐIỆN\nĐịa chỉ: 158/2 phố Hồng Mai, phường Bạch Mai, thành phố Hà Nội, Việt Nam\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH TỔNG HỢP\nCho năm tài chính kết thúc vào ngày 31 tháng 12 năm 2025",
+      "box_2d": [
+        51,
+        62,
+        113,
+        467
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "Thuế thu nhập doanh nghiệp hoãn lại",
+      "box_2d": [
+        140,
+        90,
+        154,
+        260
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Thuế thu nhập hoãn lại được tính trên các khoản chênh lệch giữa giá trị ghi sổ và cơ sở tính thuế thu nhập của các khoản mục tài sản hoặc công nợ trên Bảng cân đối kế toán. Thuế thu nhập hoãn lại phải trả được được ghi nhận cho tất cả các khoản chênh lệch tạm thời còn tài sản thuế thu nhập hoãn lại chỉ được ghi nhận khi chắc chắn có đủ lợi nhuận tính thuế trong tương lai để sử dụng các khoản chênh lệch tạm thời được khấu trừ.",
+      "box_2d": [
+        166,
+        90,
+        234,
+        471
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Thuế thu nhập hoãn lại được xác định theo thuế suất dự tính sẽ được áp dụng cho năm tài sản được thu hồi hay nợ phải trả được thanh toán. Thuế thu nhập hoãn lại được ghi nhận lãi, lỗ trừ trường hợp các khoản thuế đó có liên quan đến các khoản mục được ghi thẳng vào vốn chủ sở hữu. Trong trường hợp đó thuế thu nhập hoãn lại cũng được ghi thẳng vào vốn chủ sở hữu.",
+      "box_2d": [
+        247,
+        90,
+        303,
+        471
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "Các loại thuế khác",
+      "box_2d": [
+        315,
+        90,
+        329,
+        166
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Được áp dụng theo các luật thuế hiện hành tại Việt Nam.",
+      "box_2d": [
+        342,
+        90,
+        356,
+        305
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "4.20 Báo cáo bộ phận",
+      "box_2d": [
+        371,
+        61,
+        384,
+        160
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Bộ phận theo lĩnh vực kinh doanh là một phần có thể xác định riêng biệt tham gia vào quá trình sản xuất hoặc cung cấp sản phẩm, dịch vụ và có rủi ro và lợi ích kinh tế khác với các bộ phận kinh doanh khác.\nCông ty chỉ hoạt động trong một lĩnh vực viễn thông tin học. Do đó, Công ty không lập báo cáo bộ phận theo lĩnh vực kinh doanh.",
+      "box_2d": [
+        398,
+        89,
+        467,
+        470
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Bộ phận theo khu vực địa lý là một phần có thể xác định riêng biệt tham gia vào quá trình sản xuất hoặc cung cấp sản phẩm, dịch vụ trong phạm vi một môi trường kinh tế cụ thể và có rủi ro và lợi ích kinh tế khác với các bộ phận kinh doanh trong các môi trường kinh tế khác.\nTrong năm, hoạt động của Công ty chỉ tập trung chủ yếu trong địa bàn thành phố Hà Nội, trong lãnh thổ Việt Nam. Do đó, Công ty không lập báo cáo bộ phận theo khu vực địa lý.",
+      "box_2d": [
+        479,
+        89,
+        548,
+        470
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "4.21 Công cụ tài chính",
+      "box_2d": [
+        562,
+        60,
+        574,
+        162
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "Tài sản tài chính",
+      "box_2d": [
+        587,
+        89,
+        602,
+        156
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Việc phân loại các tài sản tài chính này phụ thuộc vào bản chất và mục đích của tài sản tài chính và được quyết định tại thời điểm ghi nhận ban đầu. Các tài sản tài chính của Công ty gồm có tiền và các khoản tương đương tiền, các khoản phải thu khách hàng, phải thu khác, các khoản cho vay, các công cụ tài chính được niêm yết và không được niêm yết.",
+      "box_2d": [
+        614,
+        88,
+        670,
+        469
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Tại thời điểm ghi nhận ban đầu, các tài sản tài chính được ghi nhận theo giá gốc cộng các chi phí giao dịch có liên quan trực tiếp đến tài sản tài chính đó.",
+      "box_2d": [
+        683,
+        89,
+        711,
+        469
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "Nợ phải trả tài chính",
+      "box_2d": [
+        724,
+        88,
+        738,
+        172
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Việc phân loại các khoản nợ tài chính phụ thuộc vào bản chất và mục đích của khoản nợ tài chính và được quyết định tại thời điểm ghi nhận ban đầu. Nợ phải trả tài chính của Công ty gồm có các khoản phải trả người bán, vay và nợ, các khoản phải trả khác và các công cụ tài chính phái sinh.",
+      "box_2d": [
+        751,
+        88,
+        793,
+        468
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Tại thời điểm ghi nhận lần đầu, trừ nợ phải trả liên quan đến thuê mua tài chính và trái phiếu chuyển đổi được ghi nhận theo giá phân bổ, các khoản nợ phải trả tài chính khác được ghi nhận ban đầu theo giá gốc trừ các chi phí giao dịch có liên quan trực tiếp đến nợ phải trả tài chính đó.",
+      "box_2d": [
+        804,
+        88,
+        846,
+        468
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "19",
+      "box_2d": [
+        933,
+        446,
+        948,
+        458
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "CÔNG TY CỔ PHẦN VIỄN THÔNG - TIN HỌC BƯU ĐIỆN\nĐịa chỉ: 158/2 phố Hồng Mai, phường Bạch Mai, thành phố Hà Nội, Việt Nam\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH TỔNG HỢP\nCho năm tài chính kết thúc vào ngày 31 tháng 12 năm 2025",
+      "box_2d": [
+        51,
+        561,
+        114,
+        850
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "4.22 Bên liên quan",
+      "box_2d": [
+        140,
+        560,
+        154,
+        646
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Các bên được coi là liên quan nếu một bên có khả năng kiểm soát hoặc có ảnh hưởng đáng kể đối với bên kia trong việc ra quyết định các chính sách tài chính và hoạt động. Các bên cũng được xem là bên liên quan nếu cùng chịu sự kiểm soát chung hay chịu ảnh hưởng đáng kể chung.",
+      "box_2d": [
+        166,
+        589,
+        209,
+        970
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Trong việc xem xét mối quan hệ của các bên liên quan, bản chất của mối quan hệ được chú trọng nhiều hơn hình thức pháp lý.",
+      "box_2d": [
+        221,
+        590,
+        249,
+        970
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Các đối tượng sau đây được xem là các bên có liên quan: các thành viên quản lý chủ chốt, các cá nhân có liên quan với các thành viên quản lý chủ chốt và các bên liên quan khác.",
+      "box_2d": [
+        260,
+        590,
+        289,
+        970
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        303,
+        584,
+        447,
+        971
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Bên liên quan"
+          ],
+          "box_2d": [
+            303,
+            587,
+            318,
+            646
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Mối quan hệ"
+          ],
+          "box_2d": [
+            303,
+            916,
+            318,
+            969
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Tập đoàn Bưu chính - Viễn thông Việt Nam",
+          "note": null,
+          "box_2d": [
+            321,
+            586,
+            336,
+            750
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Cổ đông lớn",
+              "box_2d": [
+                321,
+                919,
+                336,
+                966
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "(bao gồm cả các công ty con, đơn vị hạch toán phụ thuộc)",
+          "note": null,
+          "box_2d": [
+            340,
+            587,
+            354,
+            806
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": null,
+              "box_2d": null
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần Đầu tư Kỹ thuật số Việt",
+          "note": null,
+          "box_2d": [
+            357,
+            587,
+            372,
+            741
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Có cùng lãnh đạo chủ chốt",
+              "box_2d": [
+                357,
+                865,
+                372,
+                966
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần ITTA",
+          "note": null,
+          "box_2d": [
+            375,
+            587,
+            390,
+            673
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Có cùng lãnh đạo chủ chốt",
+              "box_2d": [
+                375,
+                865,
+                390,
+                966
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần Dịch vụ Kỹ thuật Viễn thông Hà Nội",
+          "note": null,
+          "box_2d": [
+            394,
+            587,
+            408,
+            786
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Có cùng lãnh đạo chủ chốt",
+              "box_2d": [
+                394,
+                865,
+                408,
+                967
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Công ty Cổ phần KASATI",
+          "note": null,
+          "box_2d": [
+            412,
+            587,
+            426,
+            684
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Có cùng lãnh đạo chủ chốt",
+              "box_2d": [
+                412,
+                865,
+                426,
+                967
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Các thành viên Hội đồng Quản trị, Ban Tổng Giám đốc, Ban Kiểm soát",
+          "note": null,
+          "box_2d": [
+            430,
+            587,
+            445,
+            851
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Lãnh đạo chủ chốt",
+              "box_2d": [
+                430,
+                896,
+                445,
+                967
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Chính sách giá cả giao dịch với bên liên quan",
+      "box_2d": [
+        460,
+        589,
+        474,
+        773
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Trong năm tài chính 2025, Công ty phát sinh các giao dịch với các bên liên quan là các doanh nghiệp trong cùng tập đoàn hoạt động trong lĩnh vực công nghệ thông tin. Các giao dịch chủ yếu bao gồm cung cấp phần cứng, phần mềm cũng như các dịch vụ kèm theo.",
+      "box_2d": [
+        487,
+        588,
+        529,
+        969
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Giá giao dịch được xác định trên cơ sở thỏa thuận giữa các bên và tham chiếu mức giá áp dụng cho các khách hàng độc lập có điều kiện giao dịch tương tự. Các hợp đồng lớn ký kết với bên liên quan đều được công bố thông tin trước khi thực hiện.",
+      "box_2d": [
+        542,
+        588,
+        584,
+        969
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "furniture",
+      "text": "20",
+      "box_2d": [
+        935,
+        946,
+        948,
+        958
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "CÔNG TY CỔ PHẦN VIỄN THÔNG - TIN HỌC BƯU ĐIỆN\nĐịa chỉ: 158/2 phố Hồng Mai, phường Bạch Mai, thành phố Hà Nội, Việt Nam\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH TỔNG HỢP\nCho năm tài chính kết thúc vào ngày 31 tháng 12 năm 2025\nThuế thu nhập doanh nghiệp hoãn lại\nThuế thu nhập hoãn lại được tính trên các khoản chênh lệch giữa giá trị ghi sổ và cơ sở tính thuế thu nhập của các khoản mục tài sản hoặc công nợ trên Bảng cân đối kế toán. Thuế thu nhập hoãn lại phải trả được được ghi nhận cho tất cả các khoản chênh lệch tạm thời còn tài sản thuế thu nhập hoãn lại chỉ được ghi nhận khi chắc chắn có đủ lợi nhuận tính thuế trong tương lai để sử dụng các khoản chênh lệch tạm thời được khấu trừ.\nThuế thu nhập hoãn lại được xác định theo thuế suất dự tính sẽ được áp dụng cho năm tài sản được thu hồi hay nợ phải trả được thanh toán. Thuế thu nhập hoãn lại được ghi nhận lãi, lỗ trừ trường hợp các khoản thuế đó có liên quan đến các khoản mục được ghi thẳng vào vốn chủ sở hữu. Trong trường hợp đó thuế thu nhập hoãn lại cũng được ghi thẳng vào vốn chủ sở hữu.\nCác loại thuế khác\nĐược áp dụng theo các luật thuế hiện hành tại Việt Nam.\n4.20 Báo cáo bộ phận\nBộ phận theo lĩnh vực kinh doanh là một phần có thể xác định riêng biệt tham gia vào quá trình sản xuất hoặc cung cấp sản phẩm, dịch vụ và có rủi ro và lợi ích kinh tế khác với các bộ phận kinh doanh khác.\nCông ty chỉ hoạt động trong một lĩnh vực viễn thông tin học. Do đó, Công ty không lập báo cáo bộ phận theo lĩnh vực kinh doanh.\nBộ phận theo khu vực địa lý là một phần có thể xác định riêng biệt tham gia vào quá trình sản xuất hoặc cung cấp sản phẩm, dịch vụ trong phạm vi một môi trường kinh tế cụ thể và có rủi ro và lợi ích kinh tế khác với các bộ phận kinh doanh trong các môi trường kinh tế khác.\nTrong năm, hoạt động của Công ty chỉ tập trung chủ yếu trong địa bàn thành phố Hà Nội, trong lãnh thổ Việt Nam. Do đó, Công ty không lập báo cáo bộ phận theo khu vực địa lý.\n4.21 Công cụ tài chính\nTài sản tài chính\nViệc phân loại các tài sản tài chính này phụ thuộc vào bản chất và mục đích của tài sản tài chính và được quyết định tại thời điểm ghi nhận ban đầu. Các tài sản tài chính của Công ty gồm có tiền và các khoản tương đương tiền, các khoản phải thu khách hàng, phải thu khác, các khoản cho vay, các công cụ tài chính được niêm yết và không được niêm yết.\nTại thời điểm ghi nhận ban đầu, các tài sản tài chính được ghi nhận theo giá gốc cộng các chi phí giao dịch có liên quan trực tiếp đến tài sản tài chính đó.\nNợ phải trả tài chính\nViệc phân loại các khoản nợ tài chính phụ thuộc vào bản chất và mục đích của khoản nợ tài chính và được quyết định tại thời điểm ghi nhận ban đầu. Nợ phải trả tài chính của Công ty gồm có các khoản phải trả người bán, vay và nợ, các khoản phải trả khác và các công cụ tài chính phái sinh.\nTại thời điểm ghi nhận lần đầu, trừ nợ phải trả liên quan đến thuê mua tài chính và trái phiếu chuyển đổi được ghi nhận theo giá phân bổ, các khoản nợ phải trả tài chính khác được ghi nhận ban đầu theo giá gốc trừ các chi phí giao dịch có liên quan trực tiếp đến nợ phải trả tài chính đó.\n19\nCÔNG TY CỔ PHẦN VIỄN THÔNG - TIN HỌC BƯU ĐIỆN\nĐịa chỉ: 158/2 phố Hồng Mai, phường Bạch Mai, thành phố Hà Nội, Việt Nam\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH TỔNG HỢP\nCho năm tài chính kết thúc vào ngày 31 tháng 12 năm 2025\n4.22 Bên liên quan\nCác bên được coi là liên quan nếu một bên có khả năng kiểm soát hoặc có ảnh hưởng đáng kể đối với bên kia trong việc ra quyết định các chính sách tài chính và hoạt động. Các bên cũng được xem là bên liên quan nếu cùng chịu sự kiểm soát chung hay chịu ảnh hưởng đáng kể chung.\nTrong việc xem xét mối quan hệ của các bên liên quan, bản chất của mối quan hệ được chú trọng nhiều hơn hình thức pháp lý.\nCác đối tượng sau đây được xem là các bên có liên quan: các thành viên quản lý chủ chốt, các cá nhân có liên quan với các thành viên quản lý chủ chốt và các bên liên quan khác.\nBên liên quan\nMối quan hệ\nTập đoàn Bưu chính - Viễn thông Việt Nam Cổ đông lớn\n(bao gồm cả các công ty con, đơn vị hạch toán phụ thuộc)\nCông ty Cổ phần Đầu tư Kỹ thuật số Việt Có cùng lãnh đạo chủ chốt\nCông ty Cổ phần ITTA Có cùng lãnh đạo chủ chốt\nCông ty Cổ phần Dịch vụ Kỹ thuật Viễn thông Hà Nội Có cùng lãnh đạo chủ chốt\nCông ty Cổ phần KASATI Có cùng lãnh đạo chủ chốt\nCác thành viên Hội đồng Quản trị, Ban Tổng Giám đốc, Ban Kiểm soát Lãnh đạo chủ chốt\nChính sách giá cả giao dịch với bên liên quan\nTrong năm tài chính 2025, Công ty phát sinh các giao dịch với các bên liên quan là các doanh nghiệp trong cùng tập đoàn hoạt động trong lĩnh vực công nghệ thông tin. Các giao dịch chủ yếu bao gồm cung cấp phần cứng, phần mềm cũng như các dịch vụ kèm theo.\nGiá giao dịch được xác định trên cơ sở thỏa thuận giữa các bên và tham chiếu mức giá áp dụng cho các khách hàng độc lập có điều kiện giao dịch tương tự. Các hợp đồng lớn ký kết với bên liên quan đều được công bố thông tin trước khi thực hiện.\n20",
+  "unreadable": []
+}

@@ -1,0 +1,247 @@
+{
+  "execution_mode": "FIXTURE",
+  "alias_version": "fixture-alias-v1",
+  "corpus_version": "fixture-corpus-v1",
+  "index_version": "fixture-index-v1",
+  "corpus_to_index": {
+    "fixture-corpus-v1": "fixture-index-v1"
+  },
+  "registry": {
+    "fixture-chunk-bid-ta-2026q2": {
+      "index_version": "fixture-index-v1",
+      "company": "BID",
+      "period_end": "2026-06-30",
+      "metric_code": "TOTAL_ASSETS",
+      "topic": null,
+      "measure_basis": "POINT_IN_TIME",
+      "reporting_entity": "CONSOLIDATED",
+      "unit": "FIXTURE_UNIT",
+      "source_type": "BCTC",
+      "source_id": "doc:fixture-src-bid-2026q2",
+      "source_sha256": "f2e65f0e857ef57d5b1d83d669bf24d9e60199f8bff258c1a37db79fbaca93e3",
+      "locator": {
+        "page_number": 15,
+        "table_id": "table-balance-sheet"
+      },
+      "passage": "[FIXTURE] Tổng tài sản BID 30/06/2026",
+      "value_token": "FIXTURE_VALUE_BID_TA_2026Q2"
+    },
+    "fixture-chunk-bid-ta-2025": {
+      "index_version": "fixture-index-v1",
+      "company": "BID",
+      "period_end": "2025-12-31",
+      "metric_code": "TOTAL_ASSETS",
+      "topic": null,
+      "measure_basis": "POINT_IN_TIME",
+      "reporting_entity": "CONSOLIDATED",
+      "unit": "FIXTURE_UNIT",
+      "source_type": "BCTC",
+      "source_id": "doc:fixture-src-bid-2025",
+      "source_sha256": "010733bc9768c1d7367aced7a725dd94452f76402ebf086aabdd0902529f7d26",
+      "locator": {
+        "page_number": 12,
+        "table_id": "table-balance-sheet"
+      },
+      "passage": "[FIXTURE] Tổng tài sản BID 31/12/2025",
+      "value_token": "FIXTURE_VALUE_BID_TA_2025"
+    },
+    "fixture-chunk-vcb-ta-2025": {
+      "index_version": "fixture-index-v1",
+      "company": "VCB",
+      "period_end": "2025-12-31",
+      "metric_code": "TOTAL_ASSETS",
+      "topic": null,
+      "measure_basis": "POINT_IN_TIME",
+      "reporting_entity": "CONSOLIDATED",
+      "unit": "FIXTURE_UNIT",
+      "source_type": "BCTC",
+      "source_id": "doc:fixture-src-vcb-2025",
+      "source_sha256": "0b7e65d2e3f0d4dfeca7e52afeea190aff6be2cd8377fb2e7d1a3027a9f6acba",
+      "locator": {
+        "page_number": 10,
+        "table_id": "table-balance-sheet"
+      },
+      "passage": "[FIXTURE] Tổng tài sản VCB 31/12/2025",
+      "value_token": "FIXTURE_VALUE_VCB_TA_2025"
+    },
+    "fixture-chunk-vcb-ta-2026q2": {
+      "index_version": "fixture-index-v1",
+      "company": "VCB",
+      "period_end": "2026-06-30",
+      "metric_code": "TOTAL_ASSETS",
+      "topic": null,
+      "measure_basis": "POINT_IN_TIME",
+      "reporting_entity": "CONSOLIDATED",
+      "unit": "FIXTURE_UNIT",
+      "source_type": "BCTC",
+      "source_id": "doc:fixture-src-vcb-2026q2",
+      "source_sha256": "c17d42426969b55f1518efc851292d1ad24326650367fbb07b45b1e1d5f43898",
+      "locator": {
+        "page_number": 11,
+        "table_id": "table-balance-sheet"
+      },
+      "passage": "[FIXTURE] Tổng tài sản VCB 30/06/2026",
+      "value_token": "FIXTURE_VALUE_VCB_TA_2026Q2"
+    },
+    "fixture-chunk-bid-profit-2026q2": {
+      "index_version": "fixture-index-v1",
+      "company": "BID",
+      "period_end": "2026-06-30",
+      "metric_code": "PROFIT_AFTER_TAX",
+      "topic": null,
+      "measure_basis": "STANDALONE_QUARTER",
+      "reporting_entity": "CONSOLIDATED",
+      "unit": "FIXTURE_UNIT",
+      "source_type": "BCTC",
+      "source_id": "doc:fixture-src-bid-2026q2-profit",
+      "source_sha256": "c39e655981de2393366a79d52a7faadddfce5f61357f29b8d4f8d161d5691235",
+      "locator": {
+        "page_number": 20,
+        "table_id": "table-income-statement"
+      },
+      "passage": "[FIXTURE] Lợi nhuận sau thuế BID Q2/2026",
+      "value_token": "FIXTURE_VALUE_BID_PROFIT_2026Q2"
+    },
+    "fixture-chunk-fpt-bctn-2025": {
+      "index_version": "fixture-index-v1",
+      "company": "FPT",
+      "period_end": "2025-12-31",
+      "metric_code": null,
+      "topic": "quan_tri_rui_ro",
+      "measure_basis": "NOT_APPLICABLE",
+      "reporting_entity": "CONSOLIDATED",
+      "unit": "FIXTURE_UNIT",
+      "source_type": "BCTN",
+      "source_id": "doc:fixture-src-fpt-bctn-2025",
+      "source_sha256": "80dbc5cd84aa0b99e07a5d516506cd8976669169ea85bc483f5bc69d8590445e",
+      "locator": {
+        "page_number": 45
+      },
+      "passage": "[FIXTURE] BCTN FPT 2025 - Quản trị rủi ro",
+      "value_token": "FIXTURE_VALUE_FPT_RISK_2025"
+    },
+    "fixture-chunk-bid-ta-2025-conflict": {
+      "index_version": "fixture-index-v1",
+      "company": "BID",
+      "period_end": "2025-12-31",
+      "metric_code": "TOTAL_ASSETS",
+      "topic": null,
+      "measure_basis": "POINT_IN_TIME",
+      "reporting_entity": "CONSOLIDATED",
+      "unit": "FIXTURE_UNIT",
+      "source_type": "BCTC",
+      "source_id": "doc:fixture-src-bid-2025-alt",
+      "source_sha256": "8ffd8e693c57b94d9452e44bba81735eb3882e1aacc1ee90ace9dfd52de0501c",
+      "locator": {
+        "page_number": 13,
+        "table_id": "table-balance-sheet-alt"
+      },
+      "passage": "[FIXTURE] Tổng tài sản BID 31/12/2025 (bản thay thế)",
+      "value_token": "FIXTURE_VALUE_BID_TA_2025_CONFLICT"
+    }
+  },
+  "packs": {
+    "valid_metric": {
+      "query_id": "fixture-query-valid_metric",
+      "data_version": {
+        "kind": "INDEX",
+        "id": "fixture-index-v1"
+      },
+      "items": [
+        {
+          "evidence_id": "fixture-ev-bid-ta-2026q2",
+          "chunk_id": "fixture-chunk-bid-ta-2026q2",
+          "source_id": "doc:fixture-src-bid-2026q2",
+          "source_type": "BCTC",
+          "locator": {
+            "page_number": 15,
+            "table_id": "table-balance-sheet"
+          },
+          "passage": "[FIXTURE] Tổng tài sản BID 30/06/2026",
+          "score": {
+            "type": "COSINE_SIMILARITY",
+            "value": 0.95
+          },
+          "source_sha256": "f2e65f0e857ef57d5b1d83d669bf24d9e60199f8bff258c1a37db79fbaca93e3"
+        }
+      ],
+      "schema_version": "1.0"
+    },
+    "valid_compare": {
+      "query_id": "fixture-query-valid_compare",
+      "data_version": {
+        "kind": "INDEX",
+        "id": "fixture-index-v1"
+      },
+      "items": [
+        {
+          "evidence_id": "fixture-ev-bid-ta-2025",
+          "chunk_id": "fixture-chunk-bid-ta-2025",
+          "source_id": "doc:fixture-src-bid-2025",
+          "source_type": "BCTC",
+          "locator": {
+            "page_number": 12,
+            "table_id": "table-balance-sheet"
+          },
+          "passage": "[FIXTURE] Tổng tài sản BID 31/12/2025",
+          "score": {
+            "type": "COSINE_SIMILARITY",
+            "value": 0.92
+          },
+          "source_sha256": "010733bc9768c1d7367aced7a725dd94452f76402ebf086aabdd0902529f7d26"
+        },
+        {
+          "evidence_id": "fixture-ev-vcb-ta-2025",
+          "chunk_id": "fixture-chunk-vcb-ta-2025",
+          "source_id": "doc:fixture-src-vcb-2025",
+          "source_type": "BCTC",
+          "locator": {
+            "page_number": 10,
+            "table_id": "table-balance-sheet"
+          },
+          "passage": "[FIXTURE] Tổng tài sản VCB 31/12/2025",
+          "score": {
+            "type": "COSINE_SIMILARITY",
+            "value": 0.88
+          },
+          "source_sha256": "0b7e65d2e3f0d4dfeca7e52afeea190aff6be2cd8377fb2e7d1a3027a9f6acba"
+        }
+      ],
+      "schema_version": "1.0"
+    },
+    "valid_annual": {
+      "query_id": "fixture-query-valid_annual",
+      "data_version": {
+        "kind": "INDEX",
+        "id": "fixture-index-v1"
+      },
+      "items": [
+        {
+          "evidence_id": "fixture-ev-fpt-bctn-2025",
+          "chunk_id": "fixture-chunk-fpt-bctn-2025",
+          "source_id": "doc:fixture-src-fpt-bctn-2025",
+          "source_type": "BCTN",
+          "locator": {
+            "page_number": 45
+          },
+          "passage": "[FIXTURE] BCTN FPT 2025 - Quản trị rủi ro",
+          "score": {
+            "type": "COSINE_SIMILARITY",
+            "value": 0.9
+          },
+          "source_sha256": "80dbc5cd84aa0b99e07a5d516506cd8976669169ea85bc483f5bc69d8590445e"
+        }
+      ],
+      "schema_version": "1.0"
+    },
+    "empty": {
+      "query_id": "fixture-query-empty",
+      "data_version": {
+        "kind": "INDEX",
+        "id": "fixture-index-v1"
+      },
+      "items": [],
+      "schema_version": "1.0"
+    }
+  }
+}

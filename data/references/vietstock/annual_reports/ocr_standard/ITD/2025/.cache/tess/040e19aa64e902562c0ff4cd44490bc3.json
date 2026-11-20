@@ -1,0 +1,88 @@
+{
+  "text": "BẢO CÁO\nPHÁT TRIÊN\nBỀN VỮNG",
+  "chars": 22,
+  "words": 6,
+  "wordItems": [
+    {
+      "text": "BẢO",
+      "bbox": [
+        782,
+        1321,
+        1308,
+        1550
+      ],
+      "conf": 61.151222,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1401,
+        1321,
+        1933,
+        1642
+      ],
+      "conf": 95.478317,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "PHÁT",
+      "bbox": [
+        623,
+        1621,
+        1279,
+        1942
+      ],
+      "conf": 91.527748,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TRIÊN",
+      "bbox": [
+        1359,
+        1646,
+        2084,
+        1847
+      ],
+      "conf": 84.831451,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "BỀN",
+      "bbox": [
+        699,
+        1946,
+        1189,
+        2147
+      ],
+      "conf": 63.973831,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "VỮNG",
+      "bbox": [
+        1279,
+        1927,
+        2012,
+        2150
+      ],
+      "conf": 96.590851,
+      "block": 1,
+      "paragraph": 1,
+      "line": 3
+    }
+  ],
+  "meanConf": 82,
+  "lowConfRatio": 0,
+  "seconds": 0.791
+}

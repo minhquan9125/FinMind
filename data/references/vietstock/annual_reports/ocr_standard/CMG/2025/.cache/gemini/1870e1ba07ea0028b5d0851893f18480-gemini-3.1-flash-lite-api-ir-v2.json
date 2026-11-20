@@ -1,0 +1,243 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        96,
+        120,
+        891,
+        925
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "TT"
+          ],
+          "box_2d": [
+            96,
+            120,
+            147,
+            167
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Họ tên"
+          ],
+          "box_2d": [
+            96,
+            167,
+            147,
+            273
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Chức danh"
+          ],
+          "box_2d": [
+            96,
+            273,
+            147,
+            394
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Tỷ lệ sở",
+            "hữu (%)"
+          ],
+          "box_2d": [
+            96,
+            394,
+            147,
+            501
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Tóm tắt lý lịch"
+          ],
+          "box_2d": [
+            96,
+            501,
+            147,
+            925
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": "17",
+          "label_raw": "Lê Anh Tuấn",
+          "note": null,
+          "box_2d": [
+            147,
+            120,
+            457,
+            925
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Lê Anh Tuấn",
+              "box_2d": [
+                295,
+                183,
+                312,
+                257
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch VP Tập đoàn",
+              "box_2d": [
+                295,
+                285,
+                323,
+                382
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0,00%",
+              "box_2d": [
+                295,
+                419,
+                312,
+                475
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Năm sinh: 1981. Gia nhập CMC: 2022. Trình độ: Thạc sĩ Quản trị kinh doanh - Benedictine University (USA) - 2011. Quá trình công tác: - 07/2025 đến nay: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC - 11/2025 đến nay: Phó Hiệu trưởng - Trường Đại học CMC - 06/2024 - 11/2025: Phó Giám đốc - Trường Đại học CMC - 2022 - 06/2024: Trưởng ban Tuyển sinh, Marketing và Truyền thông - Trường Đại học CMC - 07/2017 - 07/2020: Giám đốc - Trường Đại học liên kết FPT - Greenwich - 08/2015 - 06/2017: Giám đốc TTĐT Đại học liên kết - Viện Đào tạo quốc tế - Trường Đại học FPT - 01/2010 - 07/2015: Giám đốc TTĐT Cao đẳng và Đại học liên kết - Viện QTKD - Trường Đại học FPT",
+              "box_2d": [
+                147,
+                501,
+                457,
+                925
+              ]
+            }
+          ]
+        },
+        {
+          "code": "18",
+          "label_raw": "Nguyễn Hữu Quỳnh",
+          "note": null,
+          "box_2d": [
+            457,
+            120,
+            659,
+            925
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Nguyễn Hữu Quỳnh",
+              "box_2d": [
+                535,
+                183,
+                580,
+                257
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch VP Tập đoàn",
+              "box_2d": [
+                535,
+                285,
+                580,
+                382
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0,00%",
+              "box_2d": [
+                549,
+                419,
+                566,
+                475
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Năm sinh: 1976. Gia nhập CMC: 2024. Trình độ: Tiến sĩ - Công nghệ thông tin - Đại học Công nghệ (2010). Quá trình công tác: - T5/2026 - nay: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC - T8/2024 - nay: Phó Hiệu trưởng - CMC Uni - 2022 - T7/2024: Trưởng khoa CNTT - Trường Đại học Thủy Lợi - T12/2019 - 2022: Giảng viên, Phó Trưởng khoa CNTT - Trường Đại học Thủy Lợi - 2002 - T11/2019: Giảng viên, Trưởng khoa CNTT - Trường đại học Điện lực",
+              "box_2d": [
+                457,
+                501,
+                659,
+                925
+              ]
+            }
+          ]
+        },
+        {
+          "code": "19",
+          "label_raw": "Nguyễn Cao Cường",
+          "note": null,
+          "box_2d": [
+            659,
+            120,
+            891,
+            925
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "Nguyễn Cao Cường",
+              "box_2d": [
+                753,
+                183,
+                798,
+                257
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Phó Chủ tịch VP Tập đoàn",
+              "box_2d": [
+                753,
+                285,
+                798,
+                382
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "0,00%",
+              "box_2d": [
+                767,
+                419,
+                784,
+                475
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "Năm sinh: 1990. Gia nhập CMC: 2020. Trình độ: Thạc sĩ - Quản trị kinh doanh - Đại học Ngoại thương (2017) Quá trình công tác: - T5/2026 - nay: Phó Chủ tịch VP Tập đoàn - Công ty Cổ phần Tập đoàn Công nghệ CMC - T5/2026 - nay: Giám đốc Kinh doanh - CMC Global - 8/2024 - T4/2026: Phó Giám đốc Kinh doanh và Marketing - CMC Global - T4/2021 - T7/2024: Phụ trách Khối/Quyền Giám đốc/Giám đốc Khối Sản xuất Kinh doanh GEU, GUS - CMC Global - T3/2020 - T3/2021: Trưởng nhóm Kinh doanh - CMC Global",
+              "box_2d": [
+                659,
+                501,
+                891,
+                925
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "text": "TT\nHọ tên\nChức danh\nTỷ lệ sở\nhữu (%)\nTóm tắt lý lịch\n17 Lê Anh Tuấn Lê Anh Tuấn Phó Chủ tịch VP Tập đoàn 0,00% Năm sinh: 1981. Gia nhập CMC: 2022. Trình độ: Thạc sĩ Quản trị kinh doanh - Benedictine University (USA) - 2011. Quá trình công tác: - 07/2025 đến nay: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC - 11/2025 đến nay: Phó Hiệu trưởng - Trường Đại học CMC - 06/2024 - 11/2025: Phó Giám đốc - Trường Đại học CMC - 2022 - 06/2024: Trưởng ban Tuyển sinh, Marketing và Truyền thông - Trường Đại học CMC - 07/2017 - 07/2020: Giám đốc - Trường Đại học liên kết FPT - Greenwich - 08/2015 - 06/2017: Giám đốc TTĐT Đại học liên kết - Viện Đào tạo quốc tế - Trường Đại học FPT - 01/2010 - 07/2015: Giám đốc TTĐT Cao đẳng và Đại học liên kết - Viện QTKD - Trường Đại học FPT\n18 Nguyễn Hữu Quỳnh Nguyễn Hữu Quỳnh Phó Chủ tịch VP Tập đoàn 0,00% Năm sinh: 1976. Gia nhập CMC: 2024. Trình độ: Tiến sĩ - Công nghệ thông tin - Đại học Công nghệ (2010). Quá trình công tác: - T5/2026 - nay: Phó Chủ tịch VP Tập đoàn - Công ty CP Tập đoàn Công nghệ CMC - T8/2024 - nay: Phó Hiệu trưởng - CMC Uni - 2022 - T7/2024: Trưởng khoa CNTT - Trường Đại học Thủy Lợi - T12/2019 - 2022: Giảng viên, Phó Trưởng khoa CNTT - Trường Đại học Thủy Lợi - 2002 - T11/2019: Giảng viên, Trưởng khoa CNTT - Trường đại học Điện lực\n19 Nguyễn Cao Cường Nguyễn Cao Cường Phó Chủ tịch VP Tập đoàn 0,00% Năm sinh: 1990. Gia nhập CMC: 2020. Trình độ: Thạc sĩ - Quản trị kinh doanh - Đại học Ngoại thương (2017) Quá trình công tác: - T5/2026 - nay: Phó Chủ tịch VP Tập đoàn - Công ty Cổ phần Tập đoàn Công nghệ CMC - T5/2026 - nay: Giám đốc Kinh doanh - CMC Global - 8/2024 - T4/2026: Phó Giám đốc Kinh doanh và Marketing - CMC Global - T4/2021 - T7/2024: Phụ trách Khối/Quyền Giám đốc/Giám đốc Khối Sản xuất Kinh doanh GEU, GUS - CMC Global - T3/2020 - T3/2021: Trưởng nhóm Kinh doanh - CMC Global",
+  "unreadable": []
+}

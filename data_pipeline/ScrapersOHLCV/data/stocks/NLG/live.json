@@ -1,0 +1,59 @@
+{
+  "fetched_at": "2026-10-07T09:40:32.454011+07:00",
+  "vnstock_version": "4.0.9",
+  "dataframe_sha256": "070d1e2d898ad02f8cca1aeb2c6ac639f3afc3194d97fed275225f6840da3ddc",
+  "rows": [
+    {
+      "volume_accumulated": 56100,
+      "high_price": "21750",
+      "total_value": 1215425000,
+      "low_price": "21600",
+      "listed_shares": "485097383",
+      "percent_change": "1.165501165501166",
+      "bid_vol_1": 400,
+      "bid_vol_2": 2600,
+      "bid_vol_3": 26500,
+      "bid_price_1": "21700.0",
+      "average_price": 21665,
+      "bid_price_2": 21650,
+      "bid_price_3": 21600,
+      "reference_price": 21450,
+      "exchange": "HOSE",
+      "foreign_buy_volume": 5500,
+      "foreign_buy_count": "10",
+      "ask_price_1": "21750.0",
+      "ask_price_2": 21800,
+      "ask_price_3": 21850,
+      "floor_price": 19950,
+      "foreign_ownership_ratio": 242548691,
+      "foreign_room": 68535215,
+      "put_through_qty": 0,
+      "foreign_sell_volume": 18900,
+      "symbol": "NLG",
+      "put_through_value": 0,
+      "total_listed_qty": "485097383",
+      "open_interest": "",
+      "ST": "2",
+      "open_price": "21600",
+      "price_change": 250,
+      "ceiling_price": 22950,
+      "close_price": "21700",
+      "TD": "07/10/2026",
+      "time": 1791340828455,
+      "ask_vol_1": 22500,
+      "ask_vol_2": 41400,
+      "ask_vol_3": 2100,
+      "IT": "09:40:31",
+      "CA": [
+        {
+          "SYMBOL": "NLG",
+          "NKHQ": null,
+          "REPORTDATE": null,
+          "T": null,
+          "DESCRIPTION": null
+        }
+      ]
+    }
+  ],
+  "decimal_tokens_stored_as_text": true
+}

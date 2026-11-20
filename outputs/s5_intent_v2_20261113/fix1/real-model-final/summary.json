@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "metrics": {
+    "label_correct_count": 33,
+    "complete_classification_correct_count": 33,
+    "complete_classification_accuracy": 1.0,
+    "component_mismatch_ids": [],
+    "lost_restricted_component_ids": [],
+    "unexpected_restriction_ids": [],
+    "unresolved_ids": [],
+    "needs_context_ids": [
+      "R2-P028"
+    ],
+    "status_mismatch_ids": [],
+    "not_proposed_ids": [
+      "R2-P028"
+    ],
+    "status_counts": {
+      "PROPOSED": 32,
+      "NEEDS_CONTEXT": 1
+    },
+    "mixed_exact_components": 4,
+    "mixed_support": 4,
+    "routing_not_executed": true
+  },
+  "wrong_status_ids": [],
+  "real_model": true,
+  "query_vectors_recomputed": true,
+  "blind_acceptance": false,
+  "timing_not_measured": true
+}

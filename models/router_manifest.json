@@ -1,0 +1,180 @@
+{
+  "artifact_version": "finmind-hybrid-router-v2",
+  "created_at": "2026-10-30T02:28:20.449809+00:00",
+  "dataset_version": "router-v3-reviewed-2026-10-28",
+  "dataset": {
+    "path": "data/router/v3/router_dataset.csv",
+    "sha256": "c6690b5cdae075f9c7a61f0e4b81ca0685e5ea9ccb3a8e857a95c4be9df5749f",
+    "annotations_sha256": "2f4d137ac0dd0ea01c182b83dee8c80f3d61872ed0aeedaa1300b8c35f23b8af",
+    "splits_sha256": "51089ed0621d1be373b40bd6f0fa46284b361bc7dd65735cd09a0a103f7b6131",
+    "rows_embedded": 240,
+    "reviewed_rows": 200,
+    "training_extension_rows": 40,
+    "training_extension_path": "data/router/v3/router_training_extension.csv",
+    "training_extension_sha256": "8ad23994278c4e792fba3830ac363b3b1e80ac2f0bc3a739ab31a11ed9c2fd76",
+    "split_sizes": {
+      "train": 180,
+      "validation": 30,
+      "test": 30
+    },
+    "training_authorized": true
+  },
+  "embedding": {
+    "service": "src.documents.embeddings.get_embedding_service",
+    "method": "embed_texts",
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "model_ref": "BAAI/bge-m3@5617a9f61b02",
+    "dimension": 1024,
+    "normalized": true,
+    "batch_size": 8,
+    "elapsed_seconds": 255.04793919995427,
+    "artifact": "models/router_embeddings.npz",
+    "artifact_sha256": "096d761f2deefebbfe9f284761636eb684a9269a192df69198bc7ce67c622401"
+  },
+  "classifier": {
+    "type": "OneVsRestClassifier(LogisticRegression(max_iter=2000))",
+    "labels": [
+      "needs_graph",
+      "needs_content"
+    ],
+    "feature_dimension": 1024,
+    "threshold": 0.65,
+    "artifact": "models/router_classifier.joblib",
+    "artifact_sha256": "e4642b1764cbb1df65fcb5896544ca3f053cccd00e7ca40ec76568e00b2ca414",
+    "trusted_local_artifact_only": true
+  },
+  "evaluation": {
+    "artifact": "models/router_evaluation.json",
+    "artifact_sha256": "b70a54c070e1e4cfe75fa6f2ff76a0498e0fad70ae374b0694b8c09a7cea1ad3",
+    "validation": {
+      "classifier": {
+        "rows": 30,
+        "exact_match_count": 23,
+        "exact_match_ratio": 0.7666666666666667,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.8095238095238095,
+            "recall": 0.9444444444444444,
+            "f1": 0.8717948717948718
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.8636363636363636,
+            "recall": 0.8636363636363636,
+            "f1": 0.8636363636363636
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 10,
+          "GRAPH->BOTH": 2,
+          "GRAPH->GRAPH": 5,
+          "GRAPH->VECTOR": 1,
+          "VECTOR->BOTH": 1,
+          "VECTOR->GRAPH": 3,
+          "VECTOR->VECTOR": 8
+        }
+      },
+      "keyword_baseline": {
+        "rows": 30,
+        "exact_match_count": 10,
+        "exact_match_ratio": 0.3333333333333333,
+        "predicted_none_count": 10,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.7,
+            "recall": 0.3888888888888889,
+            "f1": 0.5
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 1.0,
+            "recall": 0.6818181818181818,
+            "f1": 0.8108108108108109
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 3,
+          "BOTH->VECTOR": 7,
+          "GRAPH->GRAPH": 4,
+          "GRAPH->NONE": 4,
+          "VECTOR->BOTH": 2,
+          "VECTOR->GRAPH": 1,
+          "VECTOR->NONE": 6,
+          "VECTOR->VECTOR": 3
+        }
+      }
+    },
+    "test": {
+      "classifier": {
+        "rows": 30,
+        "exact_match_count": 25,
+        "exact_match_ratio": 0.8333333333333334,
+        "predicted_none_count": 0,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.9444444444444444,
+            "recall": 0.9444444444444444,
+            "f1": 0.9444444444444444
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 0.88,
+            "recall": 1.0,
+            "f1": 0.9361702127659575
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 9,
+          "BOTH->VECTOR": 1,
+          "GRAPH->BOTH": 3,
+          "GRAPH->GRAPH": 5,
+          "VECTOR->BOTH": 1,
+          "VECTOR->VECTOR": 11
+        }
+      },
+      "keyword_baseline": {
+        "rows": 30,
+        "exact_match_count": 9,
+        "exact_match_ratio": 0.3,
+        "predicted_none_count": 12,
+        "per_label": {
+          "needs_graph": {
+            "support": 18,
+            "precision": 0.7272727272727273,
+            "recall": 0.4444444444444444,
+            "f1": 0.5517241379310345
+          },
+          "needs_content": {
+            "support": 22,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          }
+        },
+        "combination_confusion": {
+          "BOTH->BOTH": 1,
+          "BOTH->GRAPH": 3,
+          "BOTH->NONE": 3,
+          "BOTH->VECTOR": 3,
+          "GRAPH->GRAPH": 4,
+          "GRAPH->NONE": 4,
+          "VECTOR->BOTH": 3,
+          "VECTOR->NONE": 5,
+          "VECTOR->VECTOR": 4
+        }
+      }
+    }
+  },
+  "challenge_set_in_training": false,
+  "runtime": {
+    "python": "3.12.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "joblib": "1.6.0"
+  }
+}

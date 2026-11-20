@@ -1,0 +1,59 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\BID\\2024\\501640_pdfs\\Bao_cao_thuong_nien_BIDV_2024.FNL.pdf",
+  "pages": 2,
+  "routes": {
+    "tesseract": 2
+  },
+  "status": {
+    "REVIEW": 2
+  },
+  "flags": {
+    "GEMINI_FAILED": 2
+  },
+  "reviewPages": [
+    1,
+    91
+  ],
+  "seconds": {
+    "textLayer": 1.203,
+    "renderAndTesseract": 4.297,
+    "gemini": 21.574,
+    "total": 27.16
+  },
+  "geminiApi": {
+    "calls": 3,
+    "failedCalls": 3,
+    "seconds": 18.985,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 3,
+    "failedCalls": 3,
+    "seconds": 2.579,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 0,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\tmp\\ocr-router-model-batch-2024",
+    "pages": "1,91",
+    "mode": "always",
+    "model": "gemini-3.8-flash",
+    "batch": 4,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 300,
+    "tessWorkers": 2,
+    "minChars": 999999,
+    "minConf": 90,
+    "longSide": 2200
+  }
+}

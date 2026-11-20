@@ -1,0 +1,166 @@
+{
+  "text": "Reason: | am the aul\nthis document\n\nDate: 2025-07-18 23\nEoxit PhantomPDE,",
+  "chars": 61,
+  "words": 12,
+  "wordItems": [
+    {
+      "text": "Reason:",
+      "bbox": [
+        1284,
+        2026,
+        1341,
+        2037
+      ],
+      "conf": 86.584709,
+      "block": 22,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "|",
+      "bbox": [
+        1348,
+        2026,
+        1350,
+        2037
+      ],
+      "conf": 90.165321,
+      "block": 22,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "am",
+      "bbox": [
+        1356,
+        2029,
+        1377,
+        2037
+      ],
+      "conf": 96.669212,
+      "block": 22,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "the",
+      "bbox": [
+        1383,
+        2026,
+        1404,
+        2037
+      ],
+      "conf": 93.288322,
+      "block": 22,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "aul",
+      "bbox": [
+        1410,
+        2029,
+        1425,
+        2037
+      ],
+      "conf": 72.854431,
+      "block": 22,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "this",
+      "bbox": [
+        1283,
+        2044,
+        1307,
+        2055
+      ],
+      "conf": 91.590683,
+      "block": 22,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "document",
+      "bbox": [
+        1313,
+        2044,
+        1382,
+        2055
+      ],
+      "conf": 81.712563,
+      "block": 22,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Date:",
+      "bbox": [
+        1284,
+        2098,
+        1316,
+        2109
+      ],
+      "conf": 91.357704,
+      "block": 23,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2025-07-18",
+      "bbox": [
+        1326,
+        2098,
+        1406,
+        2109
+      ],
+      "conf": 95.583748,
+      "block": 23,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "23",
+      "bbox": [
+        1412,
+        2098,
+        1429,
+        2109
+      ],
+      "conf": 96.569031,
+      "block": 23,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Eoxit",
+      "bbox": [
+        1284,
+        2115,
+        1317,
+        2126
+      ],
+      "conf": 64.502121,
+      "block": 23,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "PhantomPDE,",
+      "bbox": [
+        1323,
+        2115,
+        1417,
+        2126
+      ],
+      "conf": 0.0,
+      "block": 23,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 80,
+  "lowConfRatio": 0.083,
+  "seconds": 0.609
+}

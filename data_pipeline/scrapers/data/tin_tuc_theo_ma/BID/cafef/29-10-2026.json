@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "eb13efca2d843c0fba69",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-3001270/bid-cbtt-thay-doi-dia-diem-dat-tru-so-chi-nhanh-so-giao-dich-3.chn",
+      "title": "BID: CBTT thay đổi địa điểm đặt trụ sở chi nhánh Sở Giao dịch 3",
+      "description": "BID: CBTT thay đổi địa điểm đặt trụ sở chi nhánh Sở Giao dịch 3",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam CBTT thay đổi địa điểm đặt trụ sở chi nhánh Sở Giao dịch 3 như sau: Các tập tin đính kèm 20261016 - BID - Thay doi dia diem dat tru so Chi nhanh So giao dich 3.pdf Theo HOSE",
+      "published_at": "2026-10-19T06:52:59+00:00",
+      "crawled_at": "2026-10-29T07:41:51.437838+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/191026/bid-cbtt-thay-doi-dia-diem-dat-tru-so-chi-nhanh-so-giao-dich-3-0.pdf?v=1792392984946"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012336719883889695,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "35658099ead659e81f67",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2999491/bid-nghi-quyet-hdqt-phe-duyet-phuong-an-phat-hanh-trai-phieu-tang-von-bidv-theo-hinh-thuc-rieng-le-quy-iv2026.chn",
+      "title": "BID: Nghị quyết HĐQT phê duyệt Phương án phát hành Trái phiếu tăng vốn BIDV theo hình thức riêng lẻ Quý IV/2026",
+      "description": "BID: Nghị quyết HĐQT phê duyệt Phương án phát hành Trái phiếu tăng vốn BIDV theo hình thức riêng lẻ Quý IV/2026",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam thông báo Nghị quyết HĐQT số 1276 ngày 14/10/2026 như sau: Các tập tin đính kèm 20261015 - BID - NQ phe duyet Phuong an phat hanh Trai phieu tang von BIDV theo hinh thuc rieng le Quy IV.2026.pdf Theo HOSE",
+      "published_at": "2026-10-15T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:41:52.214578+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/161026/bid-nghi-quyet-h-qt-so-1276-ngay-14-10-2026-0.pdf?v=1792136445628"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012265512265512266,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "36498f439170603ca086",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2997778/bid-cbtt-ve-ngay-dkcc-de-thuc-hien-quyen-thanh-toan-lai-trai-phieu.chn",
+      "title": "BID: CBTT về ngày ĐKCC để thực hiện quyền thanh toán lãi trái phiếu",
+      "description": "BID: CBTT về ngày ĐKCC để thực hiện quyền thanh toán lãi trái phiếu",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam thông báo về ngày ĐKCC để thực hiện quyền thanh toán lãi trái phiếu như sau: Các tập tin đính kèm 20261013 - BID - Ngay dang ky cuoi cung de thuc hien quyen thanh toan lai trai phieu.pdf Theo HOSE",
+      "published_at": "2026-10-14T04:24:14+00:00",
+      "crawled_at": "2026-10-29T07:41:52.943563+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/141026/bid-cbtt-ve-ngay-kcc-de-thuc-hien-quyen-thanh-toan-lai-trai-phieu-0.pdf?v=1791952197342"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012318840579710146,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "315ed8615f48791a5fb2",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2997779/bid-nghi-quyet-hdqt-phe-duyet-phuong-an-phat-hanh-phuong-an-su-dung-va-tra-no-von-thu-duoc-tu-cac-dot-phat-hanh-trai-phieu-tang-von-bidv-ra-cong-chung.chn",
+      "title": "BID: Nghị quyết HĐQT phê duyệt Phương án phát hành, phương án sử dụng và trả nợ vốn thu được từ các đợt phát hành trái phiếu tăng vốn BIDV ra công chúng",
+      "description": "BID: Nghị quyết HĐQT phê duyệt Phương án phát hành, phương án sử dụng và trả nợ vốn thu được từ các đợt phát hành trái phiếu tăng vốn BIDV ra công chúng",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam thông báo Nghị quyết HĐQT số 1256 ngày 12/10/2026 như sau: Các tập tin đính kèm 20261013 - BID - NQ phe duyet PAPH, phuong an su dung va tra no von thu duoc tu cac dot PHTP tang von BIDV ra cong chung.pdf Theo HOSE",
+      "published_at": "2026-10-13T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:41:53.801398+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/141026/bid-nghi-quyet-h-qt-so-1256-ngay-12-10-2026-0.pdf?v=1791952218523"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012195121951219513,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "1f85122aab1edeb47fe9",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2994754/bid-cbtt-ve-giao-dich-voi-ben-co-lien-quan-keb-hana-bank.chn",
+      "title": "BID: CBTT về giao dịch với bên có liên quan - KEB Hana Bank",
+      "description": "BID: CBTT về giao dịch với bên có liên quan - KEB Hana Bank",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam thông báo về giao dịch với bên có liên quan - KEB Hana Bank như sau: Các tập tin đính kèm 20261009 - BID - Giao dich voi ben co lien quan KEB Hana Bank.pdf Theo HOSE",
+      "published_at": "2026-10-09T09:18:07+00:00",
+      "crawled_at": "2026-10-29T07:41:54.543139+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/091026/bid-cbtt-ve-giao-dich-voi-ben-co-lien-quan-keb-hana-bank-0.pdf?v=1791537785713"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012408759124087591,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "c89ac900b27c33e9a7aa",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2994736/bid-cbtt-ve-giao-dich-voi-ben-co-lien-quan.chn",
+      "title": "BID: CBTT về giao dịch với bên có liên quan",
+      "description": "BID: CBTT về giao dịch với bên có liên quan",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam thông báo về giao dịch với bên có liên quan như sau: Các tập tin đính kèm 20261008 - BID - Giao dich voi ben co lien quan BIC.pdf Theo HOSE",
+      "published_at": "2026-10-09T09:08:10+00:00",
+      "crawled_at": "2026-10-29T07:41:55.345206+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/091026/bid-cbtt-ve-giao-dich-voi-ben-co-lien-quan-0.pdf?v=1791537069104"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012499999999999999,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "c86ac8929d9474551877",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2993636/bid-thong-bao-quyet-dinh-cua-nhnn-ve-viec-sua-doi-noi-dung-von-dieu-le-tai-giay-phep-thanh-lap-va-hoat-dong-cua-bid.chn",
+      "title": "BID: Thông báo quyết định của NHNN về việc sửa đổi nội dung vốn điều lệ tại Giấy phép thành lập và hoạt động của BID",
+      "description": "BID: Thông báo quyết định của NHNN về việc sửa đổi nội dung vốn điều lệ tại Giấy phép thành lập và hoạt động của BID",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam thông báo quyết định của NHNN về việc sửa đổi nội dung vốn điều lệ tại Giấy phép thành lập và hoạt động của BID như sau: Các tập tin đính kèm 20261007 - BID - Quyet dinh cua NHNN ve sua doi noi dung von dieu le cua BIDV.pdf Theo HOSE",
+      "published_at": "2026-10-08T03:40:22+00:00",
+      "crawled_at": "2026-10-29T07:41:56.059948+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/081026/bid-thong-bao-quyet-dinh-cua-nhnn-ve-viec-sua-doi-noi-dung-von-dieu-le-tai-giay-phep-thanh-lap-va-hoat-dong-cua-bid-0.pdf?v=1791431236548"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012125534950071327,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "232c066a86010cde18c3",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2992399/bid-hdqt-thong-qua-noi-dung-hop-dong-cho-bic-thai-nguyen-thue-tru-so-chi-nhanh-cao-bang-trong-thoi-gian-chua-su-dung-het.chn",
+      "title": "BID: HĐQT thông qua nội dung hợp đồng cho BIC Thái Nguyên thuê trụ sở chi nhánh Cao Bằng trong thời gian chưa sử dụng hết",
+      "description": "BID: HĐQT thông qua nội dung hợp đồng cho BIC Thái Nguyên thuê trụ sở chi nhánh Cao Bằng trong thời gian chưa sử dụng hết",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam thông báo HĐQT thông qua nội dung hợp đồng cho BIC Thái Nguyên thuê trụ sở chi nhánh Cao Bằng trong thời gian chưa sử dụng hết như sau: Các tập tin đính kèm 20261006 - BID - Giao dich voi ben co lien quan BIC.pdf Theo HOSE",
+      "published_at": "2026-10-06T10:20:46+00:00",
+      "crawled_at": "2026-10-29T07:41:56.821154+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/061026/bid-h-qt-thong-qua-noi-dung-hop-dong-cho-bic-thai-nguyen-thue-tru-so-chi-nhanh-cao-bang-trong-thoi-gian-chua-su-dung-het-0.pdf?v=1791282240917"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.014634146341463414,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "978244d8552cdd7621bc",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2989876/bid-hdqt-thong-qua-viec-cap-han-muc-doi-voi-keb-hana-bank-coltd.chn",
+      "title": "BID: HĐQT thông qua việc cấp hạn mức đối với  Keb Hana Bank Co.,LTD",
+      "description": "BID: HĐQT thông qua việc cấp hạn mức đối với  Keb Hana Bank Co.,LTD",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam thông báo HĐQT thông qua việc cấp hạn mức đối với Keb Hana Bank Co.,LTD như sau: Các tập tin đính kèm 20261002 - BVB - NQ HDQT ve viec sua doi bo sung mot so noi dung cua PAPH ESOP 2026.pdf Theo HOSE",
+      "published_at": "2026-10-01T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:41:57.677192+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/021026/bid-h-qt-thong-qua-viec-cap-han-muc-doi-voi-keb-hana-bank-co-ltd-0.pdf?v=1790940528990"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012247838616714697,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    },
+    {
+      "id": "3845f56eb5bcfe412861",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/bid-2987888/bid-nhan-duoc-thong-bao-ve-viec-giao-dich-chung-khoan-thay-doi-dang-ky-niem-yet-cua-hose.chn",
+      "title": "BID: Nhận được thông báo về việc giao dịch chứng khoán thay đổi đăng ký niêm yết của HOSE",
+      "description": "BID: Nhận được thông báo về việc giao dịch chứng khoán thay đổi đăng ký niêm yết của HOSE",
+      "content": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam nhận được thông báo về việc giao dịch chứng khoán thay đổi đăng ký niêm yết của HOSE như sau: Các tập tin đính kèm 20260929 - BID - CBTT TB1942 Giao dich chung khoan thay doi dang ky NY.pdf Theo HOSE",
+      "published_at": "2026-09-29T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:41:58.519925+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/300926/bid-nhan-duoc-thong-bao-ve-viec-giao-dich-chung-khoan-thay-doi-dang-ky-niem-yet-cua-hose-0.pdf?v=1790762994473"
+      ],
+      "symbols": [
+        "BID"
+      ],
+      "matched_symbols": [
+        "BID"
+      ],
+      "scopes": [
+        "BID"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.012283236994219652,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/chot-ke-hoach-co-cau-lai-von-nha-nuoc-tai-21-doanh-nghiep-ngan-hang/42509898",
+        "matched_file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:49:49.893153+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:41:58.521986+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "BID",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

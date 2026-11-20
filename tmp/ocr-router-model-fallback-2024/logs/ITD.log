@@ -1,0 +1,13 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+
+▶ D:\finmind\data\references\vietstock\annual_reports\files_pdf\ITD\2024\ITD_2024_509309.pdf: 3 trang
+  lớp text: 0 trang dùng được, 3 trang cần OCR (0.181s)
+  [tess] trang 27: conf=90 low=0 rot=0 0.333s
+  [tess] trang 44: conf=79 low=0.143 rot=0 0.384s
+  [tess] trang 46: conf=95 low=0 rot=0 0.33s
+  [gemini-api] gemini-3.6-flash p-027.png,p-044.png,p-046.png: OK, 23.274s
+  tuyến: {'tesseract+gemini': 3}  trạng thái: {'OK': 3}
+  cờ: {'NEAR_EMPTY': 2}
+  thời gian (s): {'textLayer': 0.181, 'renderAndTesseract': 3.357, 'gemini': 23.284, 'total': 26.893}
+  Gemini API: 1 lần gọi (0 lỗi), token vào 3639, ra 660
+  → D:\finmind\tmp\ocr-router-model-fallback-2024\ITD_2024_509309

@@ -1,0 +1,36 @@
+{
+  "text": "MẠNG LƯỚI",
+  "chars": 8,
+  "words": 2,
+  "wordItems": [
+    {
+      "text": "MẠNG",
+      "bbox": [
+        2371,
+        1720,
+        2579,
+        1782
+      ],
+      "conf": 91.260147,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "LƯỚI",
+      "bbox": [
+        2604,
+        1704,
+        2748,
+        1768
+      ],
+      "conf": 91.260147,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 91,
+  "lowConfRatio": 0,
+  "seconds": 0.861
+}

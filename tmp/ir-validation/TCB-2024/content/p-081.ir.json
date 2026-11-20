@@ -1,0 +1,225 @@
+{
+  "ir_version": "1",
+  "page": 81,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+    "file_name": "TCB_2024_499236.pdf"
+  },
+  "blocks": [
+    {"id": "p81-b1", "type": "paragraph", "text": "Khi việc ứng dụng mô hình trong việc hỗ trợ ra quyết định kinh", "bbox": [45.35, 83.92, 289.99, 92.92]},
+    {
+      "id": "p81-b2",
+      "type": "paragraph",
+      "text": "thông lệ quốc tế. Năm nay, chúng tôi đã chạm tay đến cột mốc vào từ đơn vị kinh doanh, nhóm thẩm định độc lập và lãnh đạo",
+      "bbox": [45.35, 127.12, 558.9, 136.12]
+    },
+    {"id": "p81-b3", "type": "paragraph", "text": "báo, chúng tôi có những cơ chế kiểm soát chặt chẽ nhằm loại", "bbox": [45.35, 181.12, 286.22, 190.12]},
+    {"id": "p81-b4", "type": "paragraph", "text": "liệu không chính xác, giả định sai lệch hoặc phương pháp luận", "bbox": [45.35, 202.72, 289.81, 211.72]},
+    {"id": "p81-b5", "type": "paragraph", "text": "Rủi ro thị trường và rủi ro lãi suất trên sổ ngân hàng (IRRBB)", "bbox": [45.35, 570.31, 288.58, 579.31]},
+    {
+      "id": "p81-b6",
+      "type": "paragraph",
+      "text": "Trong năm 2024, chúng tôi đã triển khai xây dựng đường cong cao hơn.\nlợi suất chiết khấu tự động cho danh mục cho vay khách hàng",
+      "bbox": [45.35, 634.73, 348.46, 654.52]
+    },
+    {"id": "p81-b7", "type": "paragraph", "text": "kiểm thử các phương pháp tính toán để đo lường tốt hơn hồ sơ", "bbox": [45.35, 731.92, 291.08, 740.92]},
+    {"id": "p81-b8", "type": "paragraph", "text": "và xác định nhu cầu vốn cần thiết cho các khoản tổn thất tiềm", "bbox": [45.35, 753.53, 287.91, 762.53]},
+    {"id": "p81-b9", "type": "paragraph", "text": "Quản trị Rủi ro", "bbox": [206.93, 29.15, 255.95, 36.15]},
+    {"id": "p81-b10", "type": "paragraph", "text": "Vị thế thanh khoản vững mạnh", "bbox": [314.65, 62.71, 440.01, 71.71]},
+    {
+      "id": "p81-b11",
+      "type": "paragraph",
+      "text": "Kiểm tra sức chịu đựng về thanh khoản (liquidity stress tests)\nđóng vai trò quan trọng trong quản lý bảng cân đối kế toán và\nxây dựng kế hoạch kinh doanh. Ngân hàng đã cải tiến phương\npháp luận trong năm 2024, kết hợp thông tin và dữ liệu đầu",
+      "bbox": [314.65, 83.92, 558.68, 125.32]
+    },
+    {"id": "p81-b12", "type": "paragraph", "text": "cấp cao.", "bbox": [314.65, 137.92, 347.69, 146.92]},
+    {
+      "id": "p81-b13",
+      "type": "paragraph",
+      "text": "Bằng cách áp dụng các khung quản lý tiên tiến như tỷ lệ\nnguồn vốn ổn định ròng (NSFR) và tỷ lệ đảm bảo thanh khoản\n(LCR) theo Basel III, dưới sự kết hợp với các mô hình hành vi\nkhách hàng, Techcombank đã củng cố và nâng cao năng lực\nquản trị rủi ro thanh khoản. Các cuộc diễn tập kế hoạch dự\nphòng thanh khoản định kỳ giúp chúng tôi đảm bảo khả năng\nứng phó linh hoạt và chuẩn bị sẵn sàng trước tình huống căng\nthẳng có thể xảy ra.",
+      "bbox": [314.65, 159.52, 557.03, 244.12]
+    },
+    {
+      "id": "p81-b14",
+      "type": "paragraph",
+      "text": "Ngân hàng cũng đã đa dạng hóa nguồn vốn huy động, với\nnhững khoản huy động nhỏ hơn từ cả nhóm khách hàng\ndoanh nghiệp và cá nhân – quy mô, chất lượng và sức chịu\nđựng đều được tăng cường. Song song với các khoản tiền gửi\ntrung và dài hạn vững chắc, nguồn vốn ổn định này giúp hỗ trợ\ntăng trưởng tài sản cho Ngân hàng và đồng thời đảm bảo tuân\nthủ chặt chẽ các yêu cầu về cơ cấu nguồn vốn của NHNN.",
+      "bbox": [314.65, 256.72, 560.75, 330.53]
+    },
+    {
+      "id": "p81-b15",
+      "type": "paragraph",
+      "text": "Để tinh chỉnh mức độ chính xác trong đánh giá rủi ro, chúng\ntôi đã triển khai phương pháp mô hình ngẫu nhiên tiên tiến, sử\ndụng Mô phỏng Monte Carlo để ước tính giá trị tương lai trạng\nthái rủi ro của giao dịch (PFE). Phương pháp này được sử dụng\ncho tất cả sản phẩm phái sinh và các khoản mục ngoại bảng,\ngiúp nâng cấp quy trình quản lý hạn mức PFE với độ chính xác",
+      "bbox": [314.65, 569.92, 558.51, 632.92]
+    },
+    {"id": "p81-b16", "type": "paragraph", "text": "Giảm thiểu rủi ro công nghệ và an ninh mạng", "bbox": [314.65, 667.51, 497.91, 676.51]},
+    {
+      "id": "p81-b17",
+      "type": "paragraph",
+      "text": "Công tác quản trị rủi ro công nghệ và an ninh mạng của Ngân\nhàng được thực hiện theo định hướng khung mô hình “ba\ntuyến phòng thủ”, áp dụng trên toàn bộ hệ thống quản trị và\nquy trình.",
+      "bbox": [314.65, 688.73, 556.76, 730.12]
+    },
+    {
+      "id": "p81-b18",
+      "type": "paragraph",
+      "text": "♦ Định hướng theo mối đe dọa: Sử dụng trung tâm vận hành\nan ninh với công cụ thông minh chịu trách nhiệm giám sát,\nphân tích và truy vết mối đe dọa.",
+      "bbox": [314.65, 742.73, 555.16, 773.33]
+    },
+    {
+      "id": "p81-b19",
+      "type": "paragraph",
+      "text": "♦ Định hướng theo tài sản/tác động: Thực hiện đánh giá rủi ro Hiệu quả và tuân thủ rủi ro hoạt động\nđối với hoạt động quản lý vận hành và thay đổi.",
+      "bbox": [629.29, 62.32, 1051.15, 82.12]
+    },
+    {
+      "id": "p81-b20",
+      "type": "paragraph",
+      "text": "♦ Định hướng theo lỗ hổng: Tăng cường khả năng nhận diện\nvà giảm thiểu rủi ro.",
+      "bbox": [629.29, 94.72, 870.38, 114.52]
+    },
+    {
+      "id": "p81-b21",
+      "type": "paragraph",
+      "text": "Áp dụng mô hình DevSecOps, đội ngũ bảo mật thông tin của\nchúng tôi tham gia toàn diện vào mọi giai đoạn của sáng kiến\nkinh doanh và công nghệ. Đội ngũ này phối hợp chặt chẽ với\ncác bên liên quan để quản trị rủi ro xuyên suốt vòng đời phát\ntriển phần mềm, bao gồm cả công tác đánh giá đối với đối tác\nvà bên thứ ba.",
+      "bbox": [629.29, 127.12, 872.04, 190.12]
+    },
+    {
+      "id": "p81-b22",
+      "type": "paragraph",
+      "text": "Toàn bộ CBNV đều hoàn thành chương trình đào tạo định kỳ\nhằng năm về quyền riêng tư và bảo mật, giúp trang bị những\nkiến thức và kỹ năng cần thiết trong chủ động phòng ngừa và\nứng phó rủi ro hiệu quả.",
+      "bbox": [629.29, 202.72, 870.51, 244.12]
+    },
+    {"id": "p81-b23", "type": "paragraph", "text": "Phòng chống gian lận thông qua đổi mới", "bbox": [629.29, 267.91, 794.4, 276.91]},
+    {
+      "id": "p81-b24",
+      "type": "paragraph",
+      "text": "Chúng tôi đã cải thiện năng lực quản trị rủi ro gian lận với sự\ntrợ giúp của trí tuệ nhân tạo và máy học với tốc độ vượt trội,\ngiúp giám sát chặt chẽ hơn đối với các giao dịch, khách hàng\nvà quốc gia. Điều này không chỉ giảm thiểu tổn thất do gian\nlận mà còn giúp phát hiện các hình thức gian lận mới, đáp ứng\ntiêu chuẩn quốc tế hàng đầu trong lĩnh vực ngân hàng.",
+      "bbox": [629.29, 289.12, 872.56, 352.12]
+    },
+    {
+      "id": "p81-b25",
+      "type": "paragraph",
+      "text": "Techcombank áp dụng đánh giá linh hoạt dựa trên dữ liệu\ntrong quy trình thẩm định khách hàng nhằm phản ứng nhanh\nnhạy với các thay đổi trong hành vi khách hàng. Hệ thống đa\ntầng kết hợp dữ liệu giao dịch, danh tính, thiết bị, vị trí địa lý và\nhành vi, giúp đảm bảo rủi ro được giám sát chặt chẽ theo thời\ngian thực. Ngoài ra, chúng tôi cũng đặt mục tiêu mở rộng tập\nkhách hàng số thông qua việc tận dụng hồ sơ chi tiết từ các\nkênh đối tác. Không dừng lại ở đó, Ngân hàng tối ưu hóa quy\ntrình điều tra hồ sơ tín dụng, nâng cấp eKYC, và đang chuẩn bị\ntự động hóa phê duyệt tín dụng để đảm bảo tuân thủ các yêu\ncầu của cơ quan quản lý.",
+      "bbox": [629.29, 364.73, 874.46, 481.73]
+    },
+    {
+      "id": "p81-b26",
+      "type": "paragraph",
+      "text": "Với mục tiêu tiếp tục tăng trưởng mạnh mẽ tài sản chất lượng bằng cách đảm bảo mức tỷ suất sinh lời điều chỉnh theo rủi\nro dẫn đầu thị trường, Techcombank sẽ tiếp tục tăng cường năng lực quản trị rủi ro xung quanh ba trụ cột chiến lược: Dữ\nliệu, Số hóa và Nhân tài.",
+      "bbox": [650.55, 613.12, 1123.0, 643.73]
+    },
+    {
+      "id": "p81-b27",
+      "type": "paragraph",
+      "text": "♦ Triển khai Basel III và IRB – nâng cấp hệ thống tuân\nthủ Basel III, cải thiện phương pháp tính toán tài sản rủi\nro tín dụng, rủi ro thị trường dựa trên cách tiếp cận xếp\nhạng nội bộ (IRB) và mô hình nội bộ (IMA) nhằm phản\nánh chính xác hơn hồ sơ rủi ro.",
+      "bbox": [651.26, 656.33, 878.22, 708.52]
+    },
+    {
+      "id": "p81-b28",
+      "type": "paragraph",
+      "text": "♦ Phát triển dữ liệu và công nghệ – tập trung hóa dữ\nliệu rủi ro thị trường/IRRBB… để phân tích tự động. Cơ\nsở dữ liệu trên nền tảng đám mây sẽ hỗ trợ thực thi các\nbáo cáo tự động, kiểm soát giới hạn và cảnh báo sớm.",
+      "bbox": [651.26, 721.12, 879.09, 762.53]
+    },
+    {
+      "id": "p81-b29",
+      "type": "paragraph",
+      "text": "Trong năm 2024, Ngân hàng tiếp tục ngăn chặn được đáng kế\nnhững tổn thất tiềm ẩn do gian lận.",
+      "bbox": [898.58, 83.92, 1143.18, 103.72]
+    },
+    {"id": "p81-b30", "type": "paragraph", "text": "♦ Hiệu quả hoạt động", "bbox": [898.58, 116.32, 988.85, 125.32]},
+    {
+      "id": "p81-b31",
+      "type": "paragraph",
+      "text": "Chúng tôi tiếp tục cải tiến công tác nhận diện rủi ro và\nphòng ngừa tổn thất cho khách hàng cũng như Ngân hàng.\nTổn thất do rủi ro hoạt động của chúng tôi duy trì ở mức\nthấp, thấp hơn đáng kể so với hạn mức rủi ro hoạt động nội\nbộ, ngay cả trong bối cảnh các mối đe dọa bên ngoài và\ncông nghệ mới liên tục xuất hiện.",
+      "bbox": [907.87, 137.92, 1140.18, 200.92]
+    },
+    {"id": "p81-b32", "type": "paragraph", "text": "♦ Đổi mới công nghệ", "bbox": [898.58, 213.52, 985.61, 222.52]},
+    {
+      "id": "p81-b33",
+      "type": "paragraph",
+      "text": "Các công cụ quản lý dữ liệu tập trung đang tối ưu hóa cách\nTechcombank nhận diện rủi ro và quản lý các sự kiện rủi ro.\nViệc đồng bộ hóa và làm sạch dữ liệu rủi ro hoạt động giúp\nchúng tôi nhạy bén hơn trong công tác quản trị rủi ro. Các\ncông cụ tiên tiến được chúng tôi áp dụng để dự báo và định\nlượng rủi ro, kết nối dữ liệu trong toàn bộ hệ sinh thái cũng\nnhư thống nhất cơ chế giám sát rủi ro trên các đơn vị của\nNgân hàng.",
+      "bbox": [907.87, 235.12, 1142.6, 319.72]
+    },
+    {"id": "p81-b34", "type": "paragraph", "text": "Kiểm tra sức chịu đựng (Stress testing)", "bbox": [898.58, 343.51, 1055.01, 352.51]},
+    {
+      "id": "p81-b35",
+      "type": "paragraph",
+      "text": "Kiểm tra sức chịu đựng định kỳ là một phần không thể thiếu\ntrong khung quản trị rủi ro của Ngân hàng, được thực hiện\nthông qua phân tích độ nhạy và phân tích kịch bản. Hoạt động\nđánh giá mức độ đầy đủ vốn nội bộ (ICAAP) hằng năm bao\nquát nhiều loại rủi ro trọng yếu, nhằm xác định khả năng đáp\nứng nhu cầu vốn so với nguồn cung dự kiến trong các điều\nkiện khác nhau, kể cả trong những kịch bản chịu tác động từ\ncác cú sốc vĩ mô nghiêm trọng.",
+      "bbox": [898.58, 364.73, 1143.07, 449.32]
+    },
+    {
+      "id": "p81-b36",
+      "type": "paragraph",
+      "text": "Bên cạnh đó, kiểm tra sức chịu đựng cũng được kích hoạt khi\ncó những thay đổi đáng kể về kinh tế vĩ mô, vi mô hoặc khi\ndanh mục đầu tư có sự biến động lớn. Kết quả các cuộc kiểm\ntra này được báo cáo và xem xét bởi Ban lãnh đạo cấp cao,\nHội đồng quản trị, đồng thời là cơ sở để nhận diện các điểm\nyếu, các tổn thất tiềm ẩn, danh mục đầu tư có mức độ rủi ro\ncao cũng như các rủi ro mang tính hệ thống.",
+      "bbox": [898.58, 461.93, 1137.79, 535.73]
+    },
+    {"id": "p81-b37", "type": "heading", "text": "TRỌNG TÂM NĂM 2025", "bbox": [835.94, 591.91, 949.88, 600.91]},
+    {
+      "id": "p81-b38",
+      "type": "paragraph",
+      "text": "♦ Số hóa mô hình và tối ưu hóa quy trình – tiếp tục số\nhóa các mô hình và quy trình thẩm định để nâng cao\nhiệu quả của quá trình ra quyết định. Các công cụ dựa\ntrên đám mây và chính sách được tinh chỉnh hợp lý sẽ\ngiúp cải thiện hiệu suất.",
+      "bbox": [900.0, 656.33, 1124.5, 708.52]
+    },
+    {
+      "id": "p81-b39",
+      "type": "paragraph",
+      "text": "♦ ILAAP và quản lý thanh khoản – hoàn thiện khung\nQuy trình đánh giá an toàn thanh khoản nội bộ\n(ILAAP), tập trung vào thanh khoản trong ngày, kiểm\ntra sức chịu đựng và chiến lược huy động vốn.",
+      "bbox": [900.0, 721.12, 1115.97, 762.53]
+    },
+    {"id": "p81-b40", "type": "paragraph", "text": "PHÁT TRIỂN BỀN VỮNG CÙNG TECH", "bbox": [45.24, 29.45, 173.49, 36.45]},
+    {"id": "p81-b41", "type": "paragraph", "text": "Hệ thống quản trị rủi ro mô hình đầu tiên ở Việt Nam", "bbox": [45.35, 62.71, 259.14, 71.71]},
+    {
+      "id": "p81-b42",
+      "type": "paragraph",
+      "text": "doanh ngày càng trở nên phổ biến theo chiến lược Dữ liệu –\nSố hóa – Nhân tài, Ngân hàng đã có những bước tiến quan\ntrọng nhằm đáp ứng các tiêu chuẩn cao của NHNN cũng như",
+      "bbox": [45.35, 94.72, 284.8, 125.32]
+    },
+    {
+      "id": "p81-b43",
+      "type": "paragraph",
+      "text": "đầy ý nghĩa khi trở thành ngân hàng Việt Nam đầu tiên triển\nkhai thành công hệ thống quản trị rủi ro mô hình toàn diện.",
+      "bbox": [45.35, 137.92, 279.47, 157.72]
+    },
+    {"id": "p81-b44", "type": "paragraph", "text": "Điều này có nghĩa là trong quá trình sử dụng các mô hình dự", "bbox": [45.35, 170.32, 282.34, 179.32]},
+    {"id": "p81-b45", "type": "paragraph", "text": "bỏ các yếu tố đầu vào kém chất lượng – chẳng hạn như dữ", "bbox": [45.35, 191.92, 276.09, 200.92]},
+    {
+      "id": "p81-b46",
+      "type": "paragraph",
+      "text": "chưa phù hợp – tránh dẫn đến các quyết định sai lầm trong\nđịnh giá, thẩm định, phát hiện gian lận, phòng chống rửa tiền\nhay các lĩnh vực khác. Hệ thống quản trị rủi ro mô hình giúp\nđảm bảo các chính sách, quy định và quy trình được áp dụng\nhiệu quả trong suốt vòng đời mô hình.",
+      "bbox": [45.35, 213.52, 283.8, 265.72]
+    },
+    {"id": "p81-b47", "type": "paragraph", "text": "Các tính năng chính bao gồm:", "bbox": [45.35, 278.32, 162.77, 287.32]},
+    {
+      "id": "p81-b48",
+      "type": "paragraph",
+      "text": "♦ Kho dữ liệu tập trung đáng tin cậy cho toàn bộ danh mục\nmô hình\n♦ Chấm điểm và phân tầng rủi ro mô hình\n♦ Quy trình quản lý rủi ro mô hình\n♦ Công cụ trực quan hóa và báo cáo.",
+      "bbox": [45.35, 299.92, 280.43, 352.12]
+    },
+    {
+      "id": "p81-b49",
+      "type": "paragraph",
+      "text": "Techcombank đã nâng cấp khung quản trị rủi ro thị trường và\nrủi ro lãi suất trên sổ ngân hàng (IRRBB) để phù hợp với định\nhướng chiến lược 3–5 năm.",
+      "bbox": [45.35, 591.52, 284.84, 622.12]
+    },
+    {
+      "id": "p81-b50",
+      "type": "paragraph",
+      "text": "trong hệ thống quản lý Tài sản Nợ/Có KRM. Chỉ số đo lường\nmới Delta NII (thay đổi thu nhập lãi thuần) là công cụ bổ trợ\ncho Delta EVE (thay đổi giá trị kinh tế của vốn chủ sở hữu),\ngiúp mang lại hiệu quả cao hơn trong việc quản lý rủi ro lãi\nsuất ngắn hạn.",
+      "bbox": [45.35, 656.33, 278.88, 708.52]
+    },
+    {"id": "p81-b51", "type": "paragraph", "text": "Ngân hàng cũng đã thí điểm tiêu chuẩn rủi ro thị trường mới,", "bbox": [45.35, 721.12, 281.82, 730.12]},
+    {"id": "p81-b52", "type": "paragraph", "text": "rủi ro của danh mục kinh doanh chứng khoán (trading book)", "bbox": [45.35, 742.73, 280.1, 751.73]},
+    {
+      "id": "p81-b53",
+      "type": "paragraph",
+      "text": "ẩn dưới nhiều kịch bản khác nhau. Đây là một bước tiến quan\ntrọng trong việc tiệm cận các thông lệ quản trị rủi ro tiên tiến.",
+      "bbox": [45.35, 764.33, 285.45, 784.13]
+    },
+    {"id": "p81-b54", "type": "paragraph", "text": "158 | BÁO CÁO THƯỜNG NIÊN TECHCOMBANK 2024", "bbox": [45.35, 803.61, 234.23, 810.91]},
+    {"id": "p81-b55", "type": "paragraph", "text": "EXPONENTIAL THINKING – SUSTAINABLE BUILDING | 159", "bbox": [955.15, 803.61, 1145.71, 810.61]}
+  ]
+}

@@ -1,0 +1,637 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC",
+      "box_2d": [
+        38,
+        131,
+        53,
+        598
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày",
+      "box_2d": [
+        69,
+        131,
+        101,
+        737
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "heading",
+      "text": "30. THU NHẬP KHÁC VÀ CHI PHÍ KHÁC",
+      "box_2d": [
+        124,
+        131,
+        136,
+        481
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        145,
+        189,
+        330,
+        882
+      ],
+      "title": "Đơn vị tính: VND",
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Năm nay"
+          ],
+          "box_2d": [
+            167,
+            565,
+            178,
+            723
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Năm trước"
+          ],
+          "box_2d": [
+            167,
+            765,
+            178,
+            882
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Thu nhập khác",
+          "note": null,
+          "box_2d": [
+            195,
+            189,
+            206,
+            311
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "7.642.550.145",
+              "box_2d": [
+                195,
+                565,
+                206,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "6.650.433.510",
+              "box_2d": [
+                195,
+                765,
+                206,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Thu từ thanh lý tài sản",
+          "note": null,
+          "box_2d": [
+            207,
+            216,
+            218,
+            382
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "2.600.000",
+              "box_2d": [
+                207,
+                635,
+                218,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "1.024.691.536",
+              "box_2d": [
+                207,
+                765,
+                218,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Thu nhập khác",
+          "note": null,
+          "box_2d": [
+            219,
+            216,
+            230,
+            328
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "7.639.950.145",
+              "box_2d": [
+                219,
+                565,
+                230,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "5.625.741.974",
+              "box_2d": [
+                219,
+                765,
+                230,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Chi phí khác",
+          "note": null,
+          "box_2d": [
+            251,
+            189,
+            262,
+            291
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "5.477.982.238",
+              "box_2d": [
+                251,
+                565,
+                262,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "8.344.886.293",
+              "box_2d": [
+                251,
+                765,
+                262,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Chi phí thanh lý tài sản",
+          "note": null,
+          "box_2d": [
+            263,
+            216,
+            274,
+            390
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "1.308.213.907",
+              "box_2d": [
+                263,
+                565,
+                274,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "795.641.223",
+              "box_2d": [
+                263,
+                787,
+                274,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Xóa sổ các khoản công nợ",
+          "note": null,
+          "box_2d": [
+            275,
+            216,
+            286,
+            418
+          ],
+          "cells": [
+            {
+              "column_key": "c2",
+              "raw": "726.941.174",
+              "box_2d": [
+                275,
+                787,
+                286,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Chi phí khác",
+          "note": null,
+          "box_2d": [
+            287,
+            216,
+            298,
+            328
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "4.169.768.331",
+              "box_2d": [
+                287,
+                565,
+                298,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "6.822.303.896",
+              "box_2d": [
+                287,
+                765,
+                298,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "LỢI NHUẬN/(LỖ) KHÁC",
+          "note": null,
+          "box_2d": [
+            318,
+            189,
+            329,
+            383
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "2.164.567.907",
+              "box_2d": [
+                318,
+                565,
+                329,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "(1.694.452.783)",
+              "box_2d": [
+                318,
+                755,
+                329,
+                882
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "31. CHI PHÍ SẢN XUẤT, KINH DOANH THEO YẾU TỐ",
+      "box_2d": [
+        359,
+        131,
+        371,
+        565
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        380,
+        189,
+        520,
+        882
+      ],
+      "title": "Đơn vị tính: VND",
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Năm nay"
+          ],
+          "box_2d": [
+            402,
+            565,
+            413,
+            723
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Năm trước"
+          ],
+          "box_2d": [
+            402,
+            765,
+            413,
+            882
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Chi phí nguyên liệu, vật liệu",
+          "note": null,
+          "box_2d": [
+            425,
+            189,
+            436,
+            413
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "451.692.914.716",
+              "box_2d": [
+                425,
+                565,
+                436,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "507.498.926.430",
+              "box_2d": [
+                425,
+                765,
+                436,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Chi phí nhân công",
+          "note": null,
+          "box_2d": [
+            437,
+            189,
+            448,
+            335
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "2.117.843.823.652",
+              "box_2d": [
+                437,
+                543,
+                448,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "1.638.167.637.698",
+              "box_2d": [
+                437,
+                743,
+                448,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Chi phí khấu hao và hao mòn",
+          "note": null,
+          "box_2d": [
+            449,
+            189,
+            460,
+            414
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "426.814.125.152",
+              "box_2d": [
+                449,
+                565,
+                460,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "375.131.643.521",
+              "box_2d": [
+                449,
+                765,
+                460,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Chi phí dịch vụ mua ngoài",
+          "note": null,
+          "box_2d": [
+            461,
+            189,
+            472,
+            393
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "2.488.642.335.638",
+              "box_2d": [
+                461,
+                543,
+                472,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "1.869.368.687.005",
+              "box_2d": [
+                461,
+                743,
+                472,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Chi phí khác",
+          "note": null,
+          "box_2d": [
+            473,
+            189,
+            484,
+            291
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "158.600.716.852",
+              "box_2d": [
+                473,
+                565,
+                484,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "188.850.705.728",
+              "box_2d": [
+                473,
+                765,
+                484,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "TỔNG CỘNG",
+          "note": null,
+          "box_2d": [
+            508,
+            189,
+            519,
+            297
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "5.643.593.916.010",
+              "box_2d": [
+                508,
+                543,
+                519,
+                723
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "4.579.017.600.382",
+              "box_2d": [
+                508,
+                743,
+                519,
+                882
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "32. THUẾ THU NHẬP DOANH NGHIỆP",
+      "box_2d": [
+        550,
+        131,
+        562,
+        465
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Thuế suất thuế thu nhập doanh nghiệp (“TNDN”) của Công ty và các công ty con là 20% tổng thu nhập chịu thuế, ngoại trừ thu nhập từ hoạt động sản xuất kinh doanh của các đơn vị dưới đây:\nCông ty TNHH CMC Global: thuế suất thuế TNDN là 10% đối với thu nhập từ hoạt động sản xuất phần mềm trong vòng 15 năm kể từ năm thành lập (năm 2017). Công ty này cũng được miễn thuế TNDN trong 4 năm tính từ năm đầu tiên kinh doanh có lợi nhuận chịu thuế và được giảm 50% thuế TNDN phải nộp trong 9 năm tiếp theo. Theo đó, cho năm tài chính kết thúc ngày 31 tháng 3 năm 2026, Công ty TNHH CMC Global đang được ưu đãi thuế TNDN với thuế suất bằng 10% cho thu nhập từ hoạt động sản xuất phần mềm;\nTrường Đại học CMC: thuế suất thuế TNDN là 10% đối với thu nhập từ hoạt động cung cấp dịch vụ giáo dục trong suốt thời gian hoạt động.\nCác báo cáo thuế của Công ty và các công ty con sẽ chịu sự kiểm tra của cơ quan thuế. Do việc áp dụng luật và các quy định về thuế đối với các loại nghiệp vụ khác nhau có thể được giải thích theo nhiều cách khác nhau, số thuế được trình bày trên báo cáo tài chính hợp nhất có thể sẽ bị thay đổi theo quyết định cuối cùng của cơ quan thuế.",
+      "box_2d": [
+        578,
+        131,
+        825,
+        882
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "50",
+      "box_2d": [
+        948,
+        494,
+        962,
+        514
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "Công ty Cổ phần Tập đoàn Công nghệ CMC\nTHUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)\nvào ngày 31 tháng 3 năm 2026 và cho năm tài chính kết thúc cùng ngày\n30. THU NHẬP KHÁC VÀ CHI PHÍ KHÁC\nĐơn vị tính: VND\nNăm nay\nNăm trước\nThu nhập khác 7.642.550.145 6.650.433.510\nThu từ thanh lý tài sản 2.600.000 1.024.691.536\nThu nhập khác 7.639.950.145 5.625.741.974\nChi phí khác 5.477.982.238 8.344.886.293\nChi phí thanh lý tài sản 1.308.213.907 795.641.223\nXóa sổ các khoản công nợ 726.941.174\nChi phí khác 4.169.768.331 6.822.303.896\nLỢI NHUẬN/(LỖ) KHÁC 2.164.567.907 (1.694.452.783)\n31. CHI PHÍ SẢN XUẤT, KINH DOANH THEO YẾU TỐ\nĐơn vị tính: VND\nNăm nay\nNăm trước\nChi phí nguyên liệu, vật liệu 451.692.914.716 507.498.926.430\nChi phí nhân công 2.117.843.823.652 1.638.167.637.698\nChi phí khấu hao và hao mòn 426.814.125.152 375.131.643.521\nChi phí dịch vụ mua ngoài 2.488.642.335.638 1.869.368.687.005\nChi phí khác 158.600.716.852 188.850.705.728\nTỔNG CỘNG 5.643.593.916.010 4.579.017.600.382\n32. THUẾ THU NHẬP DOANH NGHIỆP\nThuế suất thuế thu nhập doanh nghiệp (“TNDN”) của Công ty và các công ty con là 20% tổng thu nhập chịu thuế, ngoại trừ thu nhập từ hoạt động sản xuất kinh doanh của các đơn vị dưới đây:\nCông ty TNHH CMC Global: thuế suất thuế TNDN là 10% đối với thu nhập từ hoạt động sản xuất phần mềm trong vòng 15 năm kể từ năm thành lập (năm 2017). Công ty này cũng được miễn thuế TNDN trong 4 năm tính từ năm đầu tiên kinh doanh có lợi nhuận chịu thuế và được giảm 50% thuế TNDN phải nộp trong 9 năm tiếp theo. Theo đó, cho năm tài chính kết thúc ngày 31 tháng 3 năm 2026, Công ty TNHH CMC Global đang được ưu đãi thuế TNDN với thuế suất bằng 10% cho thu nhập từ hoạt động sản xuất phần mềm;\nTrường Đại học CMC: thuế suất thuế TNDN là 10% đối với thu nhập từ hoạt động cung cấp dịch vụ giáo dục trong suốt thời gian hoạt động.\nCác báo cáo thuế của Công ty và các công ty con sẽ chịu sự kiểm tra của cơ quan thuế. Do việc áp dụng luật và các quy định về thuế đối với các loại nghiệp vụ khác nhau có thể được giải thích theo nhiều cách khác nhau, số thuế được trình bày trên báo cáo tài chính hợp nhất có thể sẽ bị thay đổi theo quyết định cuối cùng của cơ quan thuế.\n50",
+  "unreadable": []
+}

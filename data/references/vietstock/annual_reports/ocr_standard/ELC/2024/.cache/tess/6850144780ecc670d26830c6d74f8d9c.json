@@ -1,0 +1,75 @@
+{
+  "text": "ễ_#.\n\nFINANGIAL\nSTATEMENTS\n\nII\" «",
+  "chars": 27,
+  "words": 5,
+  "wordItems": [
+    {
+      "text": "ễ_#.",
+      "bbox": [
+        2781,
+        12,
+        2864,
+        32
+      ],
+      "conf": 51.917728,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "FINANGIAL",
+      "bbox": [
+        565,
+        1123,
+        1222,
+        1211
+      ],
+      "conf": 42.826912,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "STATEMENTS",
+      "bbox": [
+        562,
+        1288,
+        1337,
+        1376
+      ],
+      "conf": 49.070671,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "II\"",
+      "bbox": [
+        2891,
+        1297,
+        3086,
+        1369
+      ],
+      "conf": 65.83313,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "«",
+      "bbox": [
+        3109,
+        1331,
+        3159,
+        1379
+      ],
+      "conf": 67.177414,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 55,
+  "lowConfRatio": 0.6,
+  "seconds": 0.811
+}

@@ -1,0 +1,38 @@
+{
+  "ir_version": "1",
+  "page": 13,
+  "printed_page": null,
+  "page_class": "narrative",
+  "page_size": {"width": 1190.55, "height": 841.89, "unit": "pt"},
+  "source": {
+    "engine": "TEXT_LAYER",
+    "tool": "pdfplumber 0.11.9",
+    "document_sha256": "8f5b35f437b36402c1e3f3b7ac2a95220d999c9b3374a2d9d2637532e0cda4ce",
+    "file_name": "TCB_2024_499236.pdf"
+  },
+  "blocks": [
+    {"id": "p13-b1", "type": "heading", "text": "TẦM NHÌN VÀ SỨ MỆNH", "bbox": [96.3, 410.71, 454.25, 444.71]},
+    {"id": "p13-b2", "type": "heading", "text": "TẦM NHÌN", "bbox": [905.17, 227.52, 972.04, 241.52]},
+    {
+      "id": "p13-b3",
+      "type": "paragraph",
+      "text": "“Chuyển đổi ngành tài chính,\nNâng tầm giá trị sống”.\nThúc đẩy mỗi người\nkhai phá tiềm năng và\nbản lĩnh hành động cho\nnhững điều vượt trội.",
+      "bbox": [905.17, 262.5, 1141.55, 402.5]
+    },
+    {
+      "id": "p13-b4",
+      "type": "paragraph",
+      "text": "SỨ MỆNH\nDẫn dắt hành trình số hóa\ncủa ngành tài chính,\ntạo động lực cho mỗi\ncá nhân, doanh nghiệp và\ntổ chức phát triển bền vững\nvà bứt phá thành công.",
+      "bbox": [905.17, 438.63, 1141.42, 609.25]
+    },
+    {"id": "p13-b5", "type": "paragraph", "text": "Tầm nhìn và Sứ mệnh", "bbox": [166.17, 29.15, 238.58, 36.15]},
+    {"id": "p13-b6", "type": "paragraph", "text": "CÂU CHUYỆN CỦA TECH", "bbox": [45.24, 29.45, 132.59, 36.45]},
+    {
+      "id": "p13-b7",
+      "type": "paragraph",
+      "text": "2222 || BBÁÁOO CCÁÁOO TTHHƯƯỜỜNNGG NNIIÊÊNN TTEECCHHCCOOMMBBAANNKK 22002244",
+      "bbox": [45.35, 803.61, 229.93, 810.91]
+    },
+    {"id": "p13-b8", "type": "paragraph", "text": "EXPONENTIAL THINKING – SUSTAINABLE BUILDING | 23", "bbox": [957.77, 803.61, 1145.71, 810.61]}
+  ]
+}

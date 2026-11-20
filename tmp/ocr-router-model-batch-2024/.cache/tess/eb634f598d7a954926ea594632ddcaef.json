@@ -1,0 +1,1323 @@
+{
+  "text": "Báo cớo tài chính\nhợp nhất đã kiểm toán\n\nG 3C\nH so Si 252 Thông tin chung\n: °\n° L) Q ° xẻ\n° s.° >>...\n° ¿z. bề ... S2? °v 255 Bóo cóo củo Bơn Điều hành\n. >x . pc ) . °\n¬ ° và: ° 256 Bóo cóo Kiểm toón độc lộp.\n258 Bóo cóo tình hình tài chính hợp nhốt\n262 Bóo cóo kết quả hoọt động hợp nhốt\n\n264 Báo cóo lưu chuyển tiền tệ hợp nhốt\n\n267 _ Thuyết minh báo cáo tài chính hợp nhất\n\nBÁO CÁO THƯỜNG NIÊN 2024",
+  "chars": 297,
+  "words": 101,
+  "wordItems": [
+    {
+      "text": "Báo",
+      "bbox": [
+        1184,
+        398,
+        1261,
+        432
+      ],
+      "conf": 93.20089,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cớo",
+      "bbox": [
+        1273,
+        399,
+        1346,
+        431
+      ],
+      "conf": 59.668045,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        1358,
+        398,
+        1409,
+        431
+      ],
+      "conf": 71.795792,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        1421,
+        397,
+        1529,
+        431
+      ],
+      "conf": 96.43618,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hợp",
+      "bbox": [
+        1183,
+        452,
+        1263,
+        498
+      ],
+      "conf": 96.919495,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "nhất",
+      "bbox": [
+        1276,
+        449,
+        1366,
+        487
+      ],
+      "conf": 96.662315,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "đã",
+      "bbox": [
+        1378,
+        452,
+        1429,
+        487
+      ],
+      "conf": 96.801613,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "kiểm",
+      "bbox": [
+        1443,
+        449,
+        1537,
+        487
+      ],
+      "conf": 96.459778,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "toán",
+      "bbox": [
+        1548,
+        454,
+        1639,
+        487
+      ],
+      "conf": 92.877296,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "G",
+      "bbox": [
+        557,
+        640,
+        565,
+        649
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "3C",
+      "bbox": [
+        641,
+        640,
+        649,
+        649
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "H",
+      "bbox": [
+        661,
+        700,
+        675,
+        734
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "so",
+      "bbox": [
+        703,
+        713,
+        745,
+        733
+      ],
+      "conf": 28.427925,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Si",
+      "bbox": [
+        841,
+        697,
+        865,
+        732
+      ],
+      "conf": 23.976662,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "252",
+      "bbox": [
+        1181,
+        708,
+        1216,
+        726
+      ],
+      "conf": 75.07634,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Thông",
+      "bbox": [
+        1241,
+        708,
+        1401,
+        731
+      ],
+      "conf": 95.878288,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "tin",
+      "bbox": [
+        1307,
+        701,
+        1336,
+        735
+      ],
+      "conf": 96.611618,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "chung",
+      "bbox": [
+        1347,
+        708,
+        1401,
+        731
+      ],
+      "conf": 96.26902,
+      "block": 5,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": ":",
+      "bbox": [
+        698,
+        737,
+        706,
+        746
+      ],
+      "conf": 76.048882,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "°",
+      "bbox": [
+        857,
+        734,
+        863,
+        741
+      ],
+      "conf": 43.566185,
+      "block": 5,
+      "paragraph": 1,
+      "line": 3
+    },
+    {
+      "text": "°",
+      "bbox": [
+        477,
+        755,
+        486,
+        765
+      ],
+      "conf": 72.85334,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "L)",
+      "bbox": [
+        650,
+        744,
+        663,
+        765
+      ],
+      "conf": 27.369911,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "Q",
+      "bbox": [
+        732,
+        749,
+        740,
+        758
+      ],
+      "conf": 37.05225,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "°",
+      "bbox": [
+        793,
+        747,
+        802,
+        755
+      ],
+      "conf": 71.348068,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "xẻ",
+      "bbox": [
+        839,
+        745,
+        862,
+        760
+      ],
+      "conf": 46.506195,
+      "block": 5,
+      "paragraph": 1,
+      "line": 4
+    },
+    {
+      "text": "°",
+      "bbox": [
+        517,
+        768,
+        525,
+        776
+      ],
+      "conf": 13.120804,
+      "block": 5,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "s.°",
+      "bbox": [
+        691,
+        763,
+        734,
+        782
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": ">>...",
+      "bbox": [
+        789,
+        766,
+        860,
+        786
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 5
+    },
+    {
+      "text": "°",
+      "bbox": [
+        469,
+        781,
+        479,
+        791
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "¿z.",
+      "bbox": [
+        509,
+        780,
+        567,
+        802
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "bề",
+      "bbox": [
+        640,
+        778,
+        656,
+        812
+      ],
+      "conf": 33.965691,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "...",
+      "bbox": [
+        685,
+        788,
+        728,
+        807
+      ],
+      "conf": 14.310013,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "S2?",
+      "bbox": [
+        784,
+        793,
+        815,
+        808
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "°v",
+      "bbox": [
+        833,
+        786,
+        857,
+        800
+      ],
+      "conf": 0.0,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "255",
+      "bbox": [
+        1182,
+        783,
+        1216,
+        801
+      ],
+      "conf": 57.673992,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "Bóo",
+      "bbox": [
+        1242,
+        778,
+        1277,
+        810
+      ],
+      "conf": 92.175247,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "cóo",
+      "bbox": [
+        1287,
+        778,
+        1320,
+        810
+      ],
+      "conf": 92.107101,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "củo",
+      "bbox": [
+        1330,
+        778,
+        1362,
+        810
+      ],
+      "conf": 89.351807,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "Bơn",
+      "bbox": [
+        1372,
+        778,
+        1405,
+        810
+      ],
+      "conf": 84.231232,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "Điều",
+      "bbox": [
+        1416,
+        778,
+        1458,
+        810
+      ],
+      "conf": 96.240654,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": "hành",
+      "bbox": [
+        1468,
+        778,
+        1516,
+        810
+      ],
+      "conf": 24.138901,
+      "block": 5,
+      "paragraph": 1,
+      "line": 6
+    },
+    {
+      "text": ".",
+      "bbox": [
+        496,
+        845,
+        504,
+        853
+      ],
+      "conf": 37.056404,
+      "block": 5,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": ">x",
+      "bbox": [
+        670,
+        835,
+        682,
+        862
+      ],
+      "conf": 50.759995,
+      "block": 5,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": ".",
+      "bbox": [
+        705,
+        848,
+        713,
+        856
+      ],
+      "conf": 8.555977,
+      "block": 5,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "pc",
+      "bbox": [
+        772,
+        839,
+        780,
+        847
+      ],
+      "conf": 10.307808,
+      "block": 5,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": ")",
+      "bbox": [
+        801,
+        845,
+        804,
+        852
+      ],
+      "conf": 81.325089,
+      "block": 5,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": ".",
+      "bbox": [
+        818,
+        850,
+        825,
+        857
+      ],
+      "conf": 67.548752,
+      "block": 5,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "°",
+      "bbox": [
+        841,
+        834,
+        848,
+        841
+      ],
+      "conf": 46.08717,
+      "block": 5,
+      "paragraph": 1,
+      "line": 7
+    },
+    {
+      "text": "¬",
+      "bbox": [
+        446,
+        856,
+        459,
+        887
+      ],
+      "conf": 91.443848,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "°",
+      "bbox": [
+        535,
+        857,
+        544,
+        866
+      ],
+      "conf": 88.55938,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "và:",
+      "bbox": [
+        624,
+        854,
+        670,
+        872
+      ],
+      "conf": 58.801838,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "°",
+      "bbox": [
+        765,
+        861,
+        773,
+        869
+      ],
+      "conf": 51.900715,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "256",
+      "bbox": [
+        1182,
+        857,
+        1217,
+        874
+      ],
+      "conf": 59.426289,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "Bóo",
+      "bbox": [
+        1242,
+        851,
+        1277,
+        883
+      ],
+      "conf": 92.736389,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "cóo",
+      "bbox": [
+        1287,
+        851,
+        1320,
+        883
+      ],
+      "conf": 91.801811,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "Kiểm",
+      "bbox": [
+        1330,
+        851,
+        1373,
+        883
+      ],
+      "conf": 93.306236,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "toón",
+      "bbox": [
+        1385,
+        851,
+        1424,
+        883
+      ],
+      "conf": 92.486282,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "độc",
+      "bbox": [
+        1434,
+        851,
+        1466,
+        883
+      ],
+      "conf": 93.225136,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "lộp.",
+      "bbox": [
+        1479,
+        851,
+        1514,
+        883
+      ],
+      "conf": 50.551037,
+      "block": 5,
+      "paragraph": 1,
+      "line": 8
+    },
+    {
+      "text": "258",
+      "bbox": [
+        1184,
+        931,
+        1219,
+        949
+      ],
+      "conf": 66.440178,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "Bóo",
+      "bbox": [
+        1241,
+        925,
+        1276,
+        957
+      ],
+      "conf": 91.50885,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "cóo",
+      "bbox": [
+        1286,
+        925,
+        1316,
+        957
+      ],
+      "conf": 92.661026,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "tình",
+      "bbox": [
+        1324,
+        925,
+        1362,
+        957
+      ],
+      "conf": 94.650131,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "hình",
+      "bbox": [
+        1373,
+        925,
+        1410,
+        957
+      ],
+      "conf": 95.936554,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        1420,
+        925,
+        1446,
+        957
+      ],
+      "conf": 95.639809,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        1457,
+        925,
+        1505,
+        957
+      ],
+      "conf": 96.601234,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "hợp",
+      "bbox": [
+        1516,
+        925,
+        1548,
+        957
+      ],
+      "conf": 93.30471,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "nhốt",
+      "bbox": [
+        1558,
+        925,
+        1604,
+        957
+      ],
+      "conf": 92.986176,
+      "block": 5,
+      "paragraph": 1,
+      "line": 9
+    },
+    {
+      "text": "262",
+      "bbox": [
+        1184,
+        1006,
+        1218,
+        1024
+      ],
+      "conf": 55.290207,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "Bóo",
+      "bbox": [
+        1243,
+        999,
+        1277,
+        1032
+      ],
+      "conf": 87.948952,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "cóo",
+      "bbox": [
+        1286,
+        999,
+        1318,
+        1032
+      ],
+      "conf": 91.763657,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "kết",
+      "bbox": [
+        1330,
+        1004,
+        1359,
+        1022
+      ],
+      "conf": 96.999954,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "quả",
+      "bbox": [
+        1365,
+        1005,
+        1403,
+        1026
+      ],
+      "conf": 50.95491,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "hoọt",
+      "bbox": [
+        1411,
+        999,
+        1455,
+        1032
+      ],
+      "conf": 79.917503,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "động",
+      "bbox": [
+        1463,
+        999,
+        1508,
+        1032
+      ],
+      "conf": 97.019539,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "hợp",
+      "bbox": [
+        1518,
+        999,
+        1554,
+        1032
+      ],
+      "conf": 93.306252,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "nhốt",
+      "bbox": [
+        1563,
+        999,
+        1608,
+        1032
+      ],
+      "conf": 92.965546,
+      "block": 5,
+      "paragraph": 1,
+      "line": 10
+    },
+    {
+      "text": "264",
+      "bbox": [
+        1184,
+        1080,
+        1220,
+        1097
+      ],
+      "conf": 53.059349,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Báo",
+      "bbox": [
+        1243,
+        1073,
+        1277,
+        1106
+      ],
+      "conf": 52.835167,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cóo",
+      "bbox": [
+        1286,
+        1073,
+        1318,
+        1106
+      ],
+      "conf": 92.036209,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "lưu",
+      "bbox": [
+        1330,
+        1078,
+        1360,
+        1096
+      ],
+      "conf": 96.597771,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chuyển",
+      "bbox": [
+        1366,
+        1077,
+        1436,
+        1100
+      ],
+      "conf": 96.272453,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tiền",
+      "bbox": [
+        1443,
+        1077,
+        1479,
+        1097
+      ],
+      "conf": 95.772469,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tệ",
+      "bbox": [
+        1485,
+        1079,
+        1504,
+        1101
+      ],
+      "conf": 96.990807,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hợp",
+      "bbox": [
+        1511,
+        1078,
+        1550,
+        1101
+      ],
+      "conf": 93.306252,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "nhốt",
+      "bbox": [
+        1556,
+        1077,
+        1601,
+        1097
+      ],
+      "conf": 93.241745,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "267",
+      "bbox": [
+        1184,
+        1154,
+        1217,
+        1172
+      ],
+      "conf": 59.982548,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "_",
+      "bbox": [
+        1223,
+        1140,
+        1234,
+        1180
+      ],
+      "conf": 45.048386,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Thuyết",
+      "bbox": [
+        1241,
+        1151,
+        1308,
+        1174
+      ],
+      "conf": 96.510956,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "minh",
+      "bbox": [
+        1315,
+        1153,
+        1364,
+        1170
+      ],
+      "conf": 95.788948,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "báo",
+      "bbox": [
+        1370,
+        1153,
+        1409,
+        1170
+      ],
+      "conf": 96.937859,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "cáo",
+      "bbox": [
+        1414,
+        1153,
+        1451,
+        1170
+      ],
+      "conf": 96.277695,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tài",
+      "bbox": [
+        1456,
+        1153,
+        1481,
+        1170
+      ],
+      "conf": 94.688103,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "chính",
+      "bbox": [
+        1488,
+        1153,
+        1541,
+        1170
+      ],
+      "conf": 94.688103,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hợp",
+      "bbox": [
+        1548,
+        1153,
+        1587,
+        1175
+      ],
+      "conf": 96.781792,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "nhất",
+      "bbox": [
+        1594,
+        1152,
+        1639,
+        1170
+      ],
+      "conf": 81.013611,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        1177,
+        1456,
+        1214,
+        1473
+      ],
+      "conf": 47.592827,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        1219,
+        1456,
+        1257,
+        1473
+      ],
+      "conf": 97.016495,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "THƯỜNG",
+      "bbox": [
+        1262,
+        1456,
+        1340,
+        1473
+      ],
+      "conf": 96.578888,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "NIÊN",
+      "bbox": [
+        1345,
+        1456,
+        1387,
+        1473
+      ],
+      "conf": 96.217697,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        1392,
+        1460,
+        1431,
+        1474
+      ],
+      "conf": 96.84343,
+      "block": 9,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 69,
+  "lowConfRatio": 0.366,
+  "seconds": 0.49
+}

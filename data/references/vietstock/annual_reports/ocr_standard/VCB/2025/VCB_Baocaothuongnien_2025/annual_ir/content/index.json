@@ -1,0 +1,25 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\VCB\\2025\\VCB_Baocaothuongnien_2025.pdf",
+  "scope": "annual_report_content",
+  "pages": 16,
+  "routes": {
+    "TESSERACT": 1,
+    "TEXT_LAYER": 15
+  },
+  "blockTypes": {
+    "paragraph": 980,
+    "heading": 18,
+    "furniture": 2
+  },
+  "sectionIndex": "sections.json",
+  "kpiReview": "kpi_review.json",
+  "kpiVerified": 0,
+  "kpiCandidates": 0,
+  "pageRanges": [
+    {
+      "start": 32,
+      "end": 47
+    }
+  ],
+  "filePattern": "p-{page:03d}.ir.json"
+}

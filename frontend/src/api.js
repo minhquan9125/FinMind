@@ -1,10 +1,14 @@
 // Thin fetch wrapper around the FastAPI backend (backend/src routers).
 // Base URL is injected at build/dev time via VITE_API_BASE_URL (see .env.local).
+import { authorizedHeaders } from "./shared/api/authorization.js";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
 async function request(path, options) {
-  const response = await fetch(`${API_BASE_URL}${path}`, options);
+  const response = await fetch(`${API_BASE_URL}${path}`, {
+    ...options,
+    headers: authorizedHeaders(options?.headers),
+  });
   if (!response.ok) {
     let detail = response.statusText;
     try {

@@ -1,0 +1,504 @@
+{
+  "text": "CHƯƠNG\n\nO5\n\nBÁO CÁO ĐÁNH GIÁ CỦA\nBAN ĐIỀU HÀNH\n\nTình hình kinh tế vĩ mô và\nngành ngân hàng năm 2024\n\nKết quả công tác điều hành năm 2024\n\nĐịnh hướng hoạt động kinh doanh năm 2025",
+  "chars": 136,
+  "words": 38,
+  "wordItems": [
+    {
+      "text": "CHƯƠNG",
+      "bbox": [
+        3049,
+        807,
+        3341,
+        863
+      ],
+      "conf": 84.830399,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "O5",
+      "bbox": [
+        3041,
+        889,
+        3337,
+        1079
+      ],
+      "conf": 83.179535,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BÁO",
+      "bbox": [
+        2625,
+        1119,
+        2747,
+        1179
+      ],
+      "conf": 89.198021,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CÁO",
+      "bbox": [
+        2766,
+        1119,
+        2890,
+        1179
+      ],
+      "conf": 93.305443,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ĐÁNH",
+      "bbox": [
+        2908,
+        1119,
+        3035,
+        1178
+      ],
+      "conf": 91.321877,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "GIÁ",
+      "bbox": [
+        3045,
+        1119,
+        3201,
+        1197
+      ],
+      "conf": 92.87162,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "CỦA",
+      "bbox": [
+        3217,
+        1118,
+        3341,
+        1206
+      ],
+      "conf": 92.87162,
+      "block": 3,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "BAN",
+      "bbox": [
+        2868,
+        1210,
+        2983,
+        1255
+      ],
+      "conf": 93.296951,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ĐIỀU",
+      "bbox": [
+        3003,
+        1197,
+        3144,
+        1256
+      ],
+      "conf": 89.16626,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "HÀNH",
+      "bbox": [
+        3168,
+        1210,
+        3336,
+        1255
+      ],
+      "conf": 92.45546,
+      "block": 3,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Tình",
+      "bbox": [
+        2962,
+        1328,
+        3023,
+        1352
+      ],
+      "conf": 96.735748,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hình",
+      "bbox": [
+        3035,
+        1327,
+        3095,
+        1352
+      ],
+      "conf": 96.98838,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kinh",
+      "bbox": [
+        3107,
+        1327,
+        3164,
+        1352
+      ],
+      "conf": 96.482643,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tế",
+      "bbox": [
+        3175,
+        1325,
+        3203,
+        1353
+      ],
+      "conf": 97.00631,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "vĩ",
+      "bbox": [
+        3212,
+        1329,
+        3238,
+        1352
+      ],
+      "conf": 96.901276,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "mô",
+      "bbox": [
+        3246,
+        1328,
+        3291,
+        1353
+      ],
+      "conf": 96.951462,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "và",
+      "bbox": [
+        3301,
+        1328,
+        3333,
+        1352
+      ],
+      "conf": 97.002998,
+      "block": 4,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "ngành",
+      "bbox": [
+        2936,
+        1367,
+        3021,
+        1399
+      ],
+      "conf": 96.793259,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ngân",
+      "bbox": [
+        3034,
+        1367,
+        3101,
+        1399
+      ],
+      "conf": 95.883896,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "hàng",
+      "bbox": [
+        3113,
+        1366,
+        3182,
+        1399
+      ],
+      "conf": 96.404236,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        3192,
+        1368,
+        3252,
+        1392
+      ],
+      "conf": 96.643585,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        3265,
+        1368,
+        3341,
+        1392
+      ],
+      "conf": 96.60743,
+      "block": 4,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "Kết",
+      "bbox": [
+        2791,
+        1443,
+        2837,
+        1470
+      ],
+      "conf": 96.994041,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "quả",
+      "bbox": [
+        2847,
+        1447,
+        2899,
+        1478
+      ],
+      "conf": 97.001816,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "công",
+      "bbox": [
+        2909,
+        1446,
+        2978,
+        1478
+      ],
+      "conf": 96.683296,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "tác",
+      "bbox": [
+        2987,
+        1446,
+        3029,
+        1471
+      ],
+      "conf": 96.951096,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "điều",
+      "bbox": [
+        3040,
+        1443,
+        3099,
+        1470
+      ],
+      "conf": 96.645683,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hành",
+      "bbox": [
+        3111,
+        1445,
+        3180,
+        1470
+      ],
+      "conf": 96.366714,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        3192,
+        1447,
+        3252,
+        1471
+      ],
+      "conf": 96.896797,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2024",
+      "bbox": [
+        3264,
+        1447,
+        3340,
+        1471
+      ],
+      "conf": 95.904137,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "Định",
+      "bbox": [
+        2721,
+        1526,
+        2786,
+        1556
+      ],
+      "conf": 95.92057,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hướng",
+      "bbox": [
+        2797,
+        1526,
+        2883,
+        1558
+      ],
+      "conf": 96.014641,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "hoạt",
+      "bbox": [
+        2891,
+        1526,
+        2952,
+        1556
+      ],
+      "conf": 96.326996,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "động",
+      "bbox": [
+        2960,
+        1526,
+        3030,
+        1558
+      ],
+      "conf": 96.323982,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "kinh",
+      "bbox": [
+        3039,
+        1526,
+        3094,
+        1550
+      ],
+      "conf": 96.323982,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "doanh",
+      "bbox": [
+        3104,
+        1526,
+        3189,
+        1550
+      ],
+      "conf": 96.671303,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "năm",
+      "bbox": [
+        3200,
+        1527,
+        3258,
+        1550
+      ],
+      "conf": 96.807533,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "2025",
+      "bbox": [
+        3269,
+        1527,
+        3340,
+        1551
+      ],
+      "conf": 96.015076,
+      "block": 7,
+      "paragraph": 1,
+      "line": 1
+    }
+  ],
+  "meanConf": 95,
+  "lowConfRatio": 0,
+  "seconds": 0.808
+}

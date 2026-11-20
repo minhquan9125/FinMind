@@ -1,0 +1,427 @@
+// Node built‑in test runner for chatApi client
+// This file validates the contract of the frontend API client (chatApi.js)
+// No external dependencies are required; fetch and localStorage are stubbed.
+
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// Resolve module path relative to this test file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const chatApi = await import('./chatApi.js');
+
+// Helper to reset the environment between tests
+function resetEnv() {
+  // Clear mocked storage & fetch
+  delete globalThis.fetch;
+  delete globalThis.localStorage;
+}
+
+// Simple in‑memory localStorage mock
+class SimpleStorage {
+  constructor() { this.store = {}; }
+  getItem(key) { return this.store[key] ?? null; }
+  setItem(key, value) { this.store[key] = String(value); }
+  removeItem(key) { delete this.store[key]; }
+}
+
+// ---------- Tests ----------
+
+test('Stop aborts the message request without turning it into a connection error', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
+  const controller = new AbortController();
+  globalThis.fetch = async (url, options) => {
+    assert.equal(options.signal, controller.signal);
+    return new Promise((resolve, reject) => {
+      options.signal.addEventListener('abort', () => reject(new DOMException('Stopped', 'AbortError')), { once: true });
+    });
+  };
+  const pending = chatApi.sendMessage('session', 'Question', 0, controller.signal);
+  controller.abort();
+  await assert.rejects(pending, { name: 'AbortError' });
+});
+
+test('Stop during response decoding preserves the abort error', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
+  globalThis.fetch = async () => ({ ok: true, json: async () => { throw new DOMException('Stopped', 'AbortError'); } });
+  await assert.rejects(chatApi.sendMessage('session', 'Question', 0), { name: 'AbortError' });
+});
+
+test('throws error when token is missing on any call', async (t) => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage(); // no token stored
+  globalThis.fetch = async () => { assert.fail('fetch should not be called'); };
+
+  await assert.rejects(chatApi.createSession(), /đăng nhập/);
+  await assert.rejects(chatApi.listSessions(), /đăng nhập/);
+  await assert.rejects(chatApi.getSession('any-id'), /đăng nhập/);
+  await assert.rejects(chatApi.sendMessage('any-id', 'text', 0), /đăng nhập/);
+  await assert.rejects(chatApi.resumeSession('any-id'), /đăng nhập/);
+});
+
+test('creates session with correct POST request and headers', async (t) => {
+  resetEnv();
+  const token = 'test-token-123';
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({ token }));
+  globalThis.localStorage = storage;
+
+  const mockResponse = { session_id: 'sess-1', revision: 0, messages: [], context: '' };
+  let called = false;
+  globalThis.fetch = async (url, opts) => {
+    called = true;
+    assert.equal(url, '/api/research/chat/sessions');
+    assert.equal(opts.method, 'POST');
+    assert.equal(opts.headers.get('Content-Type'), 'application/json');
+    assert.equal(opts.headers.get('Authorization'), `Bearer ${token}`);
+    assert.ok(!opts.body, 'POST body should be empty for session creation');
+    return { ok: true, json: async () => mockResponse };
+  };
+
+  const data = await chatApi.createSession();
+  assert.ok(called, 'fetch was not called');
+  assert.deepEqual(data, mockResponse);
+});
+
+test('lists sessions with GET and proper auth header', async (t) => {
+  resetEnv();
+  const token = 'list-token';
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({ token }));
+  globalThis.localStorage = storage;
+
+  const mockData = { items: [{ session_id: 's1', preview: 'hello', turns: 2, saved_at: '2024-01-01' }] };
+  globalThis.fetch = async (url, opts) => {
+    assert.equal(url, '/api/research/chat/sessions');
+    assert.equal(opts.method, 'GET');
+    assert.equal(opts.headers.get('Authorization'), `Bearer ${token}`);
+    return { ok: true, json: async () => mockData };
+  };
+
+  const result = await chatApi.listSessions();
+  assert.deepEqual(result, mockData);
+});
+
+test('gets a session with encoded ID', async (t) => {
+  resetEnv();
+  const token = 'get-token';
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({ token }));
+  globalThis.localStorage = storage;
+
+  const sessionId = 'sess/with space';
+  const encoded = encodeURIComponent(sessionId);
+  const mockSession = { session_id: sessionId, messages: [], revision: 1, context: 'ctx' };
+  globalThis.fetch = async (url, opts) => {
+    assert.equal(url, `/api/research/chat/sessions/${encoded}`);
+    assert.equal(opts.method, 'GET');
+    return { ok: true, json: async () => mockSession };
+  };
+
+  const data = await chatApi.getSession(sessionId);
+  assert.deepEqual(data, mockSession);
+});
+
+test('sends message with correct payload and revision', async (t) => {
+  resetEnv();
+  const token = 'msg-token';
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({ token }));
+  globalThis.localStorage = storage;
+
+  const sessionId = 'abc-123';
+  const text = 'What is profit?';
+  const revision = 2;
+  const mockResult = { messages: [{ role: 'assistant', content: 'Answer' }], revision: 3, context: '' };
+
+  globalThis.fetch = async (url, opts) => {
+    assert.equal(url, `/api/research/chat/sessions/${encodeURIComponent(sessionId)}/messages`);
+    assert.equal(opts.method, 'POST');
+    assert.equal(opts.headers.get('Authorization'), `Bearer ${token}`);
+    const body = JSON.parse(opts.body);
+    assert.deepEqual(body, { text, revision });
+    return { ok: true, json: async () => mockResult };
+  };
+
+  const result = await chatApi.sendMessage(sessionId, text, revision);
+  assert.deepEqual(result, mockResult);
+});
+
+test('concurrent 401 requests rotate once and save a retried message once', async () => {
+  resetEnv();
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({
+    user: { id: 'user-1', roles: ['RESEARCHER'] }, token: 'old-access',
+    refreshToken: 'old-refresh', expiresAtTimestamp: Date.now() + 60_000,
+  }));
+  globalThis.localStorage = storage;
+  let rotations = 0, saved = 0, messageRequests = 0;
+  globalThis.fetch = async (url, opts) => {
+    if (url === '/api/v1/auth/refresh') {
+      rotations++;
+      return { ok: true, status: 200, json: async () => ({ data: {
+        access_token: 'new-access', refresh_token: 'new-refresh', expires_in: 900,
+      } }) };
+    }
+    if (url.endsWith('/messages')) {
+      messageRequests++;
+      if (opts.headers.get('Authorization') === 'Bearer new-access') {
+        saved++;
+        return { ok: true, status: 200, json: async () => ({ revision: 1, messages: [{ role: 'user', content: 'Hello' }] }) };
+      }
+    }
+    return opts.headers.get('Authorization') === 'Bearer new-access'
+      ? { ok: true, status: 200, json: async () => ({ items: [] }) }
+      : { ok: false, status: 401, json: async () => ({ detail: 'Unauthorized' }) };
+  };
+  const [sent] = await Promise.all([
+    chatApi.sendMessage('s1', 'Hello', 0), chatApi.listSessions(), chatApi.getSession('s1'),
+  ]);
+  assert.equal(sent.revision, 1);
+  assert.equal(rotations, 1);
+  assert.equal(messageRequests, 2);
+  assert.equal(saved, 1);
+});
+
+test('expired refresh requires login and resending saves the message once', async () => {
+  resetEnv();
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({
+    user: { id: 'user-1', roles: ['RESEARCHER'] }, token: 'old-access',
+    refreshToken: 'expired-refresh', expiresAtTimestamp: Date.now() + 60_000,
+  }));
+  globalThis.localStorage = storage;
+  let messageRequests = 0, saved = 0;
+  globalThis.fetch = async (url, opts) => {
+    if (url === '/api/v1/auth/refresh') return {
+      ok: false, status: 401, json: async () => ({ detail: 'Refresh token expired' }),
+    };
+    messageRequests++;
+    if (opts.headers.get('Authorization') === 'Bearer new-login') {
+      saved++;
+      return { ok: true, status: 200, json: async () => ({ revision: 1 }) };
+    }
+    return { ok: false, status: 401, json: async () => ({ detail: 'Unauthorized' }) };
+  };
+  await assert.rejects(chatApi.sendMessage('s1', 'Hello', 0), error =>
+    error.status === 401 && /đăng nhập lại/.test(error.message));
+  assert.equal(storage.getItem('finmind_auth_session'), null);
+  assert.equal(messageRequests, 1);
+  assert.equal(saved, 0);
+  storage.setItem('finmind_auth_session', JSON.stringify({ token: 'new-login' }));
+  assert.equal((await chatApi.sendMessage('s1', 'Hello', 0)).revision, 1);
+  assert.equal(messageRequests, 2);
+  assert.equal(saved, 1);
+});
+
+test('concurrent 401 requests with expired refresh do not duplicate a resent message', async () => {
+  resetEnv();
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({
+    user: { id: 'user-1', roles: ['RESEARCHER'] }, token: 'old-access',
+    refreshToken: 'expired-refresh', expiresAtTimestamp: Date.now() + 60_000,
+  }));
+  globalThis.localStorage = storage;
+  let refreshCalls = 0, messageAttempts = 0, saved = 0;
+  globalThis.fetch = async (url, opts) => {
+    if (url === '/api/v1/auth/refresh') {
+      refreshCalls++;
+      return { ok: false, status: 401, json: async () => ({ detail: 'Refresh token expired' }) };
+    }
+    if (url.endsWith('/messages')) {
+      messageAttempts++;
+      if (opts.headers.get('Authorization') === 'Bearer new-login') {
+        saved++;
+        return { ok: true, status: 200, json: async () => ({ revision: 1 }) };
+      }
+    }
+    return { ok: false, status: 401, json: async () => ({ detail: 'Unauthorized' }) };
+  };
+  const outcomes = await Promise.allSettled([
+    chatApi.sendMessage('s1', 'Hello', 0), chatApi.listSessions(), chatApi.getSession('s1'),
+  ]);
+  assert.ok(outcomes.every(result => result.status === 'rejected' &&
+    result.reason.status === 401 && /đăng nhập lại/.test(result.reason.message)));
+  assert.equal(refreshCalls, 1);
+  assert.equal(messageAttempts, 1);
+  assert.equal(saved, 0);
+  assert.equal(storage.getItem('finmind_auth_session'), null);
+
+  storage.setItem('finmind_auth_session', JSON.stringify({ token: 'new-login' }));
+  assert.equal((await chatApi.sendMessage('s1', 'Hello', 0)).revision, 1);
+  assert.equal(messageAttempts, 2);
+  assert.equal(saved, 1);
+});
+
+test('opening history reads the original session without creating a fork', async (t) => {
+  resetEnv();
+  const token = 'resume-token';
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({ token }));
+  globalThis.localStorage = storage;
+
+  const sessionId = 'parent-xyz';
+  const mockResume = { session_id: sessionId, messages: [{ role: 'user', content: 'Old question' }], revision: 7, context: 'Existing context' };
+  globalThis.fetch = async (url, opts) => {
+    assert.equal(url, `/api/research/chat/sessions/${encodeURIComponent(sessionId)}`);
+    assert.equal(opts.method, 'GET');
+    assert.equal(opts.headers.get('Authorization'), `Bearer ${token}`);
+    return { ok: true, json: async () => mockResume };
+  };
+
+  const data = await chatApi.resumeSession(sessionId);
+  assert.deepEqual(data, mockResume);
+});
+
+test('reopening repeatedly then sending continues the original ID and revision', async () => {
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'fixture' }));
+  const calls = [];
+  globalThis.fetch = async (url, opts) => {
+    calls.push([url, opts.method]);
+    if (opts.method === 'GET') return { ok: true, json: async () => ({ session_id: 'original', revision: 9, messages: [{ content: 'Saved answer' }] }) };
+    assert.equal(url, '/api/research/chat/sessions/original/messages');
+    assert.deepEqual(JSON.parse(opts.body), { text: 'Continue', revision: 9 });
+    return { ok: true, json: async () => ({ session_id: 'original', revision: 10 }) };
+  };
+  await chatApi.resumeSession('original');
+  const reopened = await chatApi.resumeSession('original');
+  const sent = await chatApi.sendMessage(reopened.session_id, 'Continue', reopened.revision);
+  assert.equal(sent.session_id, 'original');
+  assert.deepEqual(calls.map(([, method]) => method), ['GET', 'GET', 'POST']);
+  assert.ok(calls.every(([url]) => !url.endsWith('/resume')));
+});
+
+test('converts non‑ok HTTP response into an Error with status and message', async (t) => {
+  resetEnv();
+  const token = 'error-token';
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({ token }));
+  globalThis.localStorage = storage;
+
+  const errorJson = { detail: 'Invalid revision' };
+  globalThis.fetch = async () => ({
+    ok: false,
+    status: 422,
+    json: async () => errorJson,
+  });
+
+  await assert.rejects(chatApi.sendMessage('id', 'text', 0), (err) => {
+    assert.equal(err.status, 422);
+    assert.equal(err.message, 'Invalid revision');
+    return true;
+  });
+});
+
+test('propagates network errors from fetch', async (t) => {
+  resetEnv();
+  const token = 'net-token';
+  const storage = new SimpleStorage();
+  storage.setItem('finmind_auth_session', JSON.stringify({ token }));
+  globalThis.localStorage = storage;
+
+  const networkErr = new Error('Network down');
+  globalThis.fetch = async () => { throw networkErr; };
+
+  await assert.rejects(chatApi.listSessions(), (err) => {
+    assert.equal(err.status, 0);
+    assert.match(err.message, /Không kết nối/);
+    return true;
+  });
+});
+
+test('reports malformed successful JSON without fake data', async () => {
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({token:'test'}));
+  globalThis.fetch = async () => ({ok:true,json:async()=>{throw new SyntaxError('broken')}});
+  await assert.rejects(chatApi.listSessions(), error => error.status===502 && /không hợp lệ/.test(error.message));
+});
+test('rejects corrupt stored login before fetch', async () => {
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session','not json');
+  globalThis.fetch = async () => assert.fail('must not call unauthenticated');
+  await assert.rejects(chatApi.createSession(), error => error.status===401);
+});
+
+test('BOTH question executes both router endpoints with the chat token', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({token:'both-token'}));
+  const calls = [];
+  globalThis.fetch = async (url, opts) => {
+    calls.push([url, opts]);
+    return {ok:true, json:async()=>url.endsWith('/test') ? {route:'BOTH'} :
+      {route:'BOTH', status:'OK', execution_mode:'LIVE', branch_states:{GRAPH:{status:'OK'},VECTOR:{status:'OK'}}}};
+  };
+  const result = await chatApi.inspectBoth('Doanh thu công ty con FPT năm 2025?');
+  assert.equal(result.status, 'OK');
+  assert.deepEqual(calls.map(([url]) => url), ['/api/hybrid-router/test', '/api/hybrid-router/run']);
+  assert.ok(calls.every(([, opts]) => opts.headers.get('Authorization') === 'Bearer both-token'));
+  assert.ok(calls.every(([, opts]) => JSON.parse(opts.body).require_live === true));
+  assert.ok(calls.every(([, opts]) => JSON.parse(opts.body).question === 'Doanh thu công ty con FPT năm 2025?'));
+});
+
+test('BOTH inspection refuses fixture results', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({token:'fixture'}));
+  globalThis.fetch = async url => ({ok:true, json:async()=>url.endsWith('/test') ?
+    {route:'BOTH'} : {route:'BOTH', execution_mode:'MOCK'}});
+  await assert.rejects(chatApi.inspectBoth('Revenue for FPT subsidiaries in 2025?'),
+    error => error.status === 503);
+});
+
+test('non-BOTH question does not execute a retrieval branch', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({token:'fixture'}));
+  const calls = [];
+  globalThis.fetch = async url => {
+    calls.push(url);
+    return {ok:true, json:async()=>({route:'VECTOR'})};
+  };
+  assert.equal(await chatApi.inspectBoth('Giá FPT hôm nay?'), null);
+  assert.deepEqual(calls, ['/api/hybrid-router/test']);
+});
+
+test('export downloads the server file with its name, and reports a failed export', async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
+  globalThis.fetch = async (url) => {
+    assert.equal(url, '/api/research/chat/sessions/s%201/export?format=json');
+    return new Response('{"turn_count":2}', { status: 200,
+      headers: { 'Content-Disposition': 'attachment; filename="finmind-chat-20261120-1030.json"' } });
+  };
+  const file = await chatApi.exportSession('s 1', 'json');
+  assert.equal(file.name, 'finmind-chat-20261120-1030.json');
+  assert.equal(await file.blob.text(), '{"turn_count":2}');
+  globalThis.fetch = async () => new Response('', { status: 404 });
+  await assert.rejects(chatApi.exportSession('s1', 'txt'), (e) => e.status === 404);
+});
+
+for (const revision of [0, 1]) test(`conflict synchronizes revision ${revision} without sending the question twice`, async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
+  const calls = [];
+  const latest = {session_id:'session',revision,messages:[]};
+  globalThis.fetch = async (url, options) => {
+    calls.push(options.method);
+    return options.method === 'POST'
+      ? {ok:false,status:409,json:async()=>({detail:'Conflict'})}
+      : {ok:true,json:async()=>latest};
+  };
+  let synchronized;
+  await assert.rejects(chatApi.sendSynchronizedMessage({session_id:'session',revision:0}, 'Question', undefined,
+    value => { synchronized = value; }), error => error.status === 409 &&
+      error.message.includes(revision ? 'Đã đồng bộ' : 'vẫn đang xử lý'));
+  assert.deepEqual(calls,['POST','GET']);
+  assert.deepEqual(synchronized, latest);
+});

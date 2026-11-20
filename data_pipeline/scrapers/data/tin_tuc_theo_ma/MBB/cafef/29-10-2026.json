@@ -1,0 +1,334 @@
+{
+  "schema_version": "1.2",
+  "source": "cafef",
+  "crawl_date": "29-10-2026",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "articles": [
+    {
+      "id": "8621aa31b60aabdbe0bf",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/mbb-3007936/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana.chn",
+      "title": "MBB: HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana",
+      "description": "MBB: HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana",
+      "content": "Ngân hàng Thương mại Cổ phần Quân Đội thông báo HĐQT thông qua hợp đồng, giao dịch giữa MB và Viettel Dominicana như sau: Các tập tin đính kèm 20261027 - MBB - Thong qua hop dong giao dich giua MB va Viettel Dominicana.pdf Theo HOSE",
+      "published_at": "2026-10-27T08:50:46+00:00",
+      "crawled_at": "2026-10-29T07:42:48.147574+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/271026/mbb-h-qt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana-0.pdf?v=1793091296340"
+      ],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7253846153846154,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana/42484957",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "0b97fd54d918eb5623b6",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/mbb-3005138/mbb-thong-bao-cong-van-cua-vsdc-ve-viec-dieu-chinh-thong-tin-so-luong-chung-khoan-dang-ky-cua-mbb.chn",
+      "title": "MBB: Thông báo công văn của VSDC về việc điều chỉnh thông tin số lượng chứng khoán đăng ký của MBB",
+      "description": "MBB: Thông báo công văn của VSDC về việc điều chỉnh thông tin số lượng chứng khoán đăng ký của MBB",
+      "content": "Ngân hàng Thương mại Cổ phần Quân Đội thông báo công văn của VSDC về việc điều chỉnh thông tin số lượng chứng khoán đăng ký của MBB như sau: Các tập tin đính kèm 20261022 - MBB - VB cua VSDC ve dieu chinh thong tin so luong co phieu.pdf Theo HOSE",
+      "published_at": "2026-10-23T09:36:08+00:00",
+      "crawled_at": "2026-10-29T07:42:49.016380+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/231026/mbb-thong-bao-cong-van-cua-vsdc-ve-viec-dieu-chinh-thong-tin-so-luong-chung-khoan-dang-ky-cua-mbb-0.pdf?v=1792748372477"
+      ],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7602564102564102,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/mbb-thong-bao-cong-van-cua-vsdc-ve-viec-dieu-chinh-thong-tin-so-luong-chung-khoan-dang-ky-cua-mbb/42439783",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "70dec031c767ef51154b",
+      "source": "cafef",
+      "url": "https://cafef.vn/mb-giam-lai-suat-cho-vay-toi-2-nam-188261019183319477.chn",
+      "title": "MB giảm lãi suất cho vay tới 2%/năm",
+      "description": "Việc giảm lãi suất cũng được thực hiện luôn từ hôm nay 19/10.",
+      "content": "MBB: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Thực hiện chủ trương của Chính phủ và định hướng điều hành của Ngân hàng Nhà nước Việt Nam (NHNN), ngày 19/10, Ngân hàng TMCP Quân đội (MB) đã triển khai đồng bộ các giải pháp giảm lãi suất cho vay, tập trung hỗ trợ các lĩnh vực ưu tiên, góp phần giảm chi phí vốn, thúc đẩy sản xuất kinh doanh và tăng trưởng kinh tế trong những tháng cuối năm 2026. Theo đó, MB thực hiện giảm lãi suất cho vay 1,5%/năm đối với 5 lĩnh vực ưu tiên (Nông nghiệp, nông thôn; sản xuất kinh doanh hàng xuất khẩu; doanh nghiệp nhỏ và vừa; công nghiệp hỗ trợ; và doanh nghiệp ứng dụng công nghệ cao) với mức lãi suất cho vay từ 7,9%/năm. Đặc biệt, đối với một số trường hợp được ưu tiên hỗ trợ, MB xem xét áp dụng mức giảm lãi suất lên tới 2%/năm, tạo điều kiện thuận lợi hơn cho doanh nghiệp và người dân tiếp cận nguồn vốn tín dụng với chi phí hợp lý. Theo chia sẻ của lãnh đạo MB, với tinh thần luôn chủ động, tích cực và kịp thời thực hiện các chủ trương, chính sách của Chính phủ và định hướng điều hành của NHNN, MB đã và đang triển khai nhiều giải pháp thiết thực nhằm hỗ trợ khách hàng, đồng hành cùng doanh nghiệp và người dân trong hoạt động sản xuất kinh doanh. MB tiếp tục cân đối nguồn lực, nâng cao hiệu quả quản trị và vận hành để tối ưu hóa chi phí hoạt động tới 2-2,5% CIR so với năm 2025, tạo dư địa giảm lãi suất cho vay, chia sẻ chi phí tài chính với khách hàng. Việc giảm lãi suất cho vay tiếp tục khẳng định trách nhiệm và cam kết đồng hành của MB đối với nền kinh tế, góp phần nâng cao khả năng tiếp cận vốn, thúc đẩy tăng trưởng tín dụng an toàn, hiệu quả, hỗ trợ doanh nghiệp mở rộng sản xuất kinh doanh và nâng cao năng lực cạnh tranh. \"MB luôn cam kết triển khai các giải pháp tín dụng phù hợp theo chủ trương của Chính phủ và chỉ đạo của NHNN, góp phần thực hiện mục tiêu tăng trưởng kinh tế bền vững. Khách hàng có nhu cầu tư vấn về chính sách lãi suất và các giải pháp tín dụng có thể liên hệ các điểm giao dịch và tổng đài 24/7 của MB trên toàn quốc để được hỗ trợ\" - lãnh đạo MB chia sẻ thêm.",
+      "published_at": "2026-10-19T18:33:00",
+      "crawled_at": "2026-10-29T07:42:49.706715+00:00",
+      "attachments": [],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.7966998052680127,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/mbb-giam-lai-suat-cho-vay-toi-2-nam-dong-hanh-cung-doanh-nghiep-va-nguoi-dan/42439309",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "1f018dcf650bf8d4852c",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/mbb-2998152/mbb-thong-bao-thay-doi-giay-phep-thanh-lap-va-hoat-dong-cua-mbb.chn",
+      "title": "MBB: Thông báo thay đổi Giấy phép thành lập và hoạt động của MBB",
+      "description": "MBB: Thông báo thay đổi Giấy phép thành lập và hoạt động của MBB",
+      "content": "Ngân hàng Thương mại Cổ phần Quân Đội thông báo thay đổi Giấy phép thành lập và hoạt động của MBB như sau: Các tập tin đính kèm 20261014 - MBB - Thay doi Giay phep thanh lap va hoat dong.pdf Theo HOSE",
+      "published_at": "2026-10-14T10:54:43+00:00",
+      "crawled_at": "2026-10-29T07:42:50.435865+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/141026/mbb-thong-bao-thay-doi-giay-phep-thanh-lap-va-hoat-dong-cua-mbb-0.pdf?v=1791975477330"
+      ],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.25967741935483873,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/mbb-thong-bao-cong-van-cua-vsdc-ve-viec-dieu-chinh-thong-tin-so-luong-chung-khoan-dang-ky-cua-mbb/42439783",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "4b90ed5cdbb3fc508448",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/mbb-2993948/mbb-cbtt-thong-qua-hop-dong-giao-dich-uy-thac-cho-vay-giua-mb-va-mbv.chn",
+      "title": "MBB: CBTT thông qua hợp đồng, giao dịch ủy thác cho vay giữa MB và MBV",
+      "description": "MBB: CBTT thông qua hợp đồng, giao dịch ủy thác cho vay giữa MB và MBV",
+      "content": "Ngân hàng Thương mại Cổ phần Quân Đội công bố thông qua hợp đồng, giao dịch ủy thác cho vay giữa MB và MBV như sau: Các tập tin đính kèm 20261007 - MBB - Thong qua hop dong giao dich uy thac cho vay giua MB va MBV.pdf Theo HOSE",
+      "published_at": "2026-10-08T09:22:08+00:00",
+      "crawled_at": "2026-10-29T07:42:51.170101+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/081026/mbb-cbtt-thong-qua-hop-dong-giao-dich-uy-thac-cho-vay-giua-mb-va-mbv-0.pdf?v=1791451453691"
+      ],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.3271428571428571,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana/42484957",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "255a9b0bd40e3605b419",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/mbb-2993188/mbb-quyet-dinh-cua-hdqt-ve-viec-thay-doi-dia-diem-phong-giao-dich-ba-vi-chi-nhanh-son-tay.chn",
+      "title": "MBB: Quyết định của HĐQT về việc thay đổi địa điểm Phòng giao dịch Ba Vì - Chi nhánh Sơn Tây",
+      "description": "MBB: Quyết định của HĐQT về việc thay đổi địa điểm Phòng giao dịch Ba Vì - Chi nhánh Sơn Tây",
+      "content": "Ngân hàng Thương mại Cổ phần Quân Đội công bố Quyết định của HĐQT về việc thay đổi địa điểm Phòng giao dịch Ba Vì - Chi nhánh Sơn Tây như sau: Các tập tin đính kèm 20261007 - MBB - Thay doi dia diem PGD Ba Vi.PDF Theo HOSE",
+      "published_at": "2026-10-07T09:56:35+00:00",
+      "crawled_at": "2026-10-29T07:42:51.872215+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/071026/mbb-quyet-dinh-cua-h-qt-ve-viec-thay-doi-dia-diem-phong-giao-dich-ba-vi-chi-nhanh-son-tay-0.pdf?v=1791367655232"
+      ],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.15,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana/42484957",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "4916d490fb395620e229",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/mbb-2993178/mbb-ba-nguyen-thi-thuy-thanh-vien-ban-dieu-hanh-da-ban-113000-cp.chn",
+      "title": "MBB: Bà Nguyễn Thị Thủy - Thành viên Ban điều hành đã bán 113.000 cp",
+      "description": "MBB: Bà Nguyễn Thị Thủy - Thành viên Ban điều hành đã bán 113.000 cp",
+      "content": "Nguyễn Thị Thủy báo cáo kết quả giao dịch cổ phiếu của Người nội bộ Ngân hàng Thương mại Cổ phần Quân Đội như sau: Các tập tin đính kèm 20261007 - MBB - BCKQGD co phieu cua NNB Nguyen Thi Thuy.PDF Theo HOSE",
+      "published_at": "2026-10-06T17:00:00+00:00",
+      "crawled_at": "2026-10-29T07:42:52.607062+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/071026/mbb-bao-cao-ket-qua-giao-dich-co-phieu-cua-nguoi-noi-bo-nguyen-thi-thuy-0.pdf?v=1791367305394"
+      ],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.16190476190476188,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana/42484957",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "e7873a08c282e72e2bff",
+      "source": "cafef",
+      "url": "https://cafef.vn/gia-von-chua-den-3000-dong-cp-doanh-nghiep-thuoc-bo-quoc-phong-muon-chot-lai-25-trieu-co-phieu-mbb-voi-gia-toi-thieu-hon-20000-dong-cp-188261006095702931.chn",
+      "title": "Giá vốn chưa đến 3.000 đồng/cp, doanh nghiệp thuộc Bộ Quốc phòng muốn chốt lãi 2,5 triệu cổ phiếu MBB với giá tối thiểu hơn 20.000 đồng/cp",
+      "description": "Agtex 28 là một trong những cổ đông sáng lập MB.",
+      "content": "MBB: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Agtex 28 dự kiến bán 2,5 triệu cổ phiếu MBB Ngày 01/10/2026, Công ty TNHH MTV Tổng Công ty 28 (Agtex 28) ban hành quyết định phê duyệt phương án chuyển nhượng 2,5 triệu cổ phiếu của Ngân hàng Thương mại cổ phần Quân Đội (MB, mã chứng khoán MBB). Agtex 28 đang sở hữu khoảng 44,63 triệu cổ phiếu MBB, tương đương 0,443% tổng số cổ phần đã phát hành của ngân hàng. Nếu hoàn tất bán toàn bộ, Agtex 28 sẽ còn sở hữu khoảng 42,13 triệu cổ phiếu. Số cổ phiếu chuyển nhượng tương ứng với 5,6% tổng số lượng cổ phần Agtex 28 đang sở hữu tại MB và chiếm 0,025% tổng số lượng cổ phần đang lưu hành của MB. Đây là số cổ phiếu tăng thêm từ cổ tức được chia hằng năm. Giá chuyển nhượng tối thiểu được phê duyệt là 20.290 đồng/cổ phiếu, trên cơ sở chứng thư thẩm định giá do VAE phát hành ngày 25/09/2026.﻿ Giao dịch dự kiến thực hiện từ quý 4/2026 theo hình thức bán công khai, khớp lệnh trên Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh (HOSE). Nếu bán hết số cổ phiếu trên ở mức giá tối thiểu, Agtex 28 sẽ thu về khoảng 50,73 tỷ đồng, trước thuế và chi phí giao dịch. Doanh nghiệp cho biết nguồn vốn từ chuyển nhượng sẽ được sử dụng để thực hiện các dự án đầu tư và bổ sung vốn lưu động phục vụ hoạt động sản xuất kinh doanh. Chốt lãi với giá gấp 7 lần giá gốc Agtex 28 là một trong những cổ đông sáng lập MB. Cuối năm 2025, doanh nghiệp nắm hơn 35,7 triệu cổ phiếu MBB, với giá gốc 90,7 tỷ đồng, tương đương khoảng 2.541 đồng/cổ phiếu. Giá trị hợp lý tại ngày 31/12/2025 đạt 903,4 tỷ đồng, gấp gần 10 lần giá gốc. Trong năm 2026, MB đã thực hiện trả cổ tức bằng cổ phiếu với tỷ lệ 15% và bán ưu đãi cổ phiếu cho cổ đông hiện hữu với tỷ lệ thực hiện quyền 10:1 và giá phát hành 10.000 đồng/cổ phiếu. ﻿Với hơn 35,7 triệu cổ phiếu MBB nắm giữ tại thời điểm cuối năm, và 44,63 triệu cổ phiếu MBB tại thời điểm hiện tại, ước tính, trong năm 2026, Agtex 28 đã chi khoảng 35,7 tỷ để mua cổ phiếu ưu đãi của MB. Giá gốc cổ phiếu khoảng 126,4 tỷ đồng, tương đương giá gốc cổ phiếu khoảng 2.830 đồng/cp. Giá chuyển nhượng tối thiểu được phê duyệt là 20.290 đồng/cổ phiếu, gấp khoảng 7 lần giá gốc. Kết quả kinh doanh ﻿Agtex 28 Agtex 28 là doanh nghiệp Quốc phòng - An ninh, trực thuộc Tổng cục Hậu cần - Bộ Quốc phòng, thành lập năm 1975, tiền thân là Tiểu đoàn 1 thuộc Cục Hậu cần Miền, sau chuyển thành Xí nghiệp 28. Năm 1992 phát triển thành Công ty 28. Năm 2006 chuyển sang hoạt động theo hình thức Công ty mẹ - công ty con. Năm 2008 được Chính phủ và Bộ Quốc phòng quyết định là Tổng Công ty 28. Tổng Công ty hoạt động trong lĩnh vực kinh doanh chính là: Sản xuất kinh doanh hàng may mặc, trang thiết bị ngành may, sản xuất kinh doanh hàng dệt; Kinh doanh vật tư thiết bị, phụ tùng, nguyên liệu, hóa chất phục vụ ngành dệt, nhuộm và ngành may; Kinh doanh xăng dầu; Đầu tư phát triển các cơ sở hạ tầng công nghiệp, dân dụng và Cho thuê kho, xưởng, bãi đậu xe, văn phòng. Về kết quả kinh doanh, ﻿doanh thu thuần hoạt động kinh doanh của Agtex 28 năm 2025 tăng 3% lên 5.279 tỷ đồng, nhưng lợi nhuận gộp giảm 6,9% xuống 472 tỷ đồng do giá vốn hàng bán tăng nhanh hơn doanh thu. Tuy nhiên, lợi nhuận kế toán trước thuế và sau thuế lần lượt tăng gần 12% và 15%, nhờ đóng góp tích cực từ hoạt động tài chính. Cụ thể, doanh thu hoạt động tài chính tăng 20% lên gần 79 tỷ đồng, trong đó thu nhập từ bán cổ phiếu MBB tăng 53,7% đạt 56,5 tỷ đồng, giúp bù đắp phần lợi nhuận gộp giảm. Chi phí tài chính giảm 22,7%, chủ yếu do chi phí lãi vay giảm 35%. Tổng tài sản của Tổng Công ty tại cuối năm 2025 tăng 14% lên 1.865 tỷ đồng, trong đó phần lớn tài sản nằm tại hàng tồn kho (676 tỷ đồng) và các khoản phải thu ngắn hạn (483 tỷ đồng). Tổng nợ phải trả tăng 19% lên hơn 1.045 tỷ đồng, chủ yếu do các khoản phải trả người lao động và phải trả ngắn hạn khác tăng đột biến lần lượt 83,5% và 248%.",
+      "published_at": "2026-10-06T09:56:00",
+      "crawled_at": "2026-10-29T07:42:53.265520+00:00",
+      "attachments": [],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.03280853224987303,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/doanh-nghiep-om-co-phieu-ben-chat-vat-nguoi-thu-hep/42513812",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "3ec56464ea5138115d83",
+      "source": "cafef",
+      "url": "https://cafef.vn/du-lieu/mbb-2991565/mbb-dieu-le-cong-ty-sua-doi.chn",
+      "title": "MBB: Điều lệ công ty sửa đổi",
+      "description": "MBB: Điều lệ công ty sửa đổi",
+      "content": "Ngân hàng Thương mại Cổ phần Quân Đội thông báo Điều lệ công ty sửa đổi như sau: Các tập tin đính kèm 20261002 - MBB - Sua doi Dieu le MB.pdf Theo HOSE",
+      "published_at": "2026-10-05T10:45:14+00:00",
+      "crawled_at": "2026-10-29T07:42:53.991674+00:00",
+      "attachments": [
+        "https://cafefnew.mediacdn.vn/download/051026/mbb-ieu-le-cong-ty-sua-doi-0.pdf?v=1791197215536"
+      ],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.25660377358490566,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/mbb-hdqt-thong-qua-hop-dong-giao-dich-giua-mb-va-viettel-dominicana/42484957",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    },
+    {
+      "id": "057920a32d3d68452b4a",
+      "source": "cafef",
+      "url": "https://cafef.vn/ngan-hang-dau-tien-cua-viet-nam-dat-muc-von-dieu-le-100-ngan-ty-dong-188261003083347864.chn",
+      "title": "Ngân hàng đầu tiên của Việt Nam đạt mức vốn điều lệ 100 ngàn tỷ đồng",
+      "description": "Vượt qua hàng loạt “ông lớn” khác, MB trở thành ngân hàng Việt Nam đầu tiên cán mốc vốn điều lệ 100.000 tỷ đồng.",
+      "content": "MBB: Giá hiện tại Thay đổi Xem hồ sơ doanh nghiệp TIN MỚI Ngày 25/9/2026, Ngân hàng TMCP Quân đội (MB) đã chính thức hoàn tất tăng vốn điều lệ lên 100.687,5 tỷ đồng, trở thành ngân hàng đầu tiên tại Việt Nam vượt mốc \"trăm ngàn tỷ\". Từ 20 tỷ đồng vốn điều lệ và 25 nhân sự khi thành lập năm 1994, sau 32 năm, MB đã nâng năng lực tài chính lên hơn 5.000 lần, tạo nền tảng cho một giai đoạn phát triển mới về quy mô, công nghệ và hiệu quả hoạt động. Đến 30/6/2026, tổng tài sản MB vượt 1,73 triệu tỷ đồng. Giai đoạn 2015-2025, tổng tài sản tăng bình quân khoảng 19,6%/năm, riêng năm 2025 tăng 43%. Quy mô vốn lớn hơn giúp MB củng cố bộ đệm an toàn tài chính, đồng thời mở rộng khả năng cung ứng vốn cho nền kinh tế, các dự án hạ tầng, ngành công nghiệp trọng điểm và khu vực doanh nghiệp. MB đặt mục tiêu đưa tổng dư nợ lên khoảng 1,5 triệu tỷ đồng vào cuối năm 2026, kiểm soát nợ xấu dưới 1,5%. Nguồn lực mới cũng tạo thêm dư địa để MB đồng hành cùng doanh nghiệp. Tháng 9/2026, ngân hàng triển khai gói tín dụng ưu đãi 10.000 tỷ đồng cho doanh nghiệp SME, đồng thời là ngân hàng tiên phong tại Việt Nam triển khai mô hình tài trợ chuỗi cung ứng (SCF) đa tầng. Song hành với năng lực tài chính là nền tảng số với gần 40 triệu khách hàng, hơn 99% giao dịch thực hiện trên các kênh số và quy mô xử lý khoảng 15 tỷ giao dịch mỗi năm. Doanh thu từ các kênh số hiện đóng góp khoảng 60% tổng doanh thu toàn ngân hàng. Công nghệ, dữ liệu và AI đang giúp MB mở rộng năng lực phục vụ, đồng thời tối ưu chi phí vận hành và hiệu quả sử dụng vốn. Đặc biệt, cùng với sự mở rộng quy mô, đóng góp của MB cho ngân sách Nhà nước liên tục gia tăng. Giai đoạn 2021-2025, MB đóng góp 35.458 tỷ đồng, riêng năm 2025 đạt 10.004 tỷ đồng. Trong 6 tháng đầu năm 2026, MB Group tiếp tục đóng góp gần 7.700 tỷ đồng, đưa tổng mức đóng góp lũy kế của toàn Tập đoàn vào ngân sách nhà nước tính đến ngày 30/6/2026 lên khoảng 60.952 tỷ đồng. Đây là một chỉ dấu cụ thể cho khả năng chuyển hóa tăng trưởng và hiệu quả kinh doanh thành nguồn lực đóng góp trở lại cho nền kinh tế. Theo các chuyên gia, cột mốc 100.000 tỷ đồng vốn điều lệ vừa đạt được không chỉ đánh dấu bước tiến về quy mô, mà còn tạo nền tảng để MB mở rộng năng lực cung ứng vốn, đầu tư công nghệ, phát triển hệ sinh thái và gia tăng đóng góp cho ngân sách Nhà nước, nền kinh tế trong giai đoạn phát triển tiếp theo. Sức mạnh tài chính vững mạnh cũng được phản ánh qua giá trị thương hiệu. Năm 2026, Brand Finance định giá thương hiệu MB ở mức 2,023 tỷ USD, xếp hạng AAA+, tăng 6,7 lần so với năm 2021.",
+      "published_at": "2026-10-03T08:33:00",
+      "crawled_at": "2026-10-29T07:42:54.283580+00:00",
+      "attachments": [],
+      "symbols": [
+        "MBB"
+      ],
+      "matched_symbols": [
+        "MBB"
+      ],
+      "scopes": [
+        "MBB"
+      ],
+      "marker": "uncheck",
+      "cross_check": {
+        "method": "word_trigram_dice_content85_title15_v1",
+        "threshold": 0.8,
+        "score": 0.025098425196850394,
+        "matched_source": "fireant",
+        "matched_url": "https://fireant.vn/bai-viet/kbsv-va-ngan-hang-mb-ky-ket-hop-tac-phat-trien-dich-vu-tai-chinh-so/42432878",
+        "matched_file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "checked_at": "2026-10-29T07:54:30.320572+00:00"
+      }
+    }
+  ],
+  "last_run": {
+    "at": "2026-10-29T07:42:54.287095+00:00",
+    "results": [
+      {
+        "source": "cafef",
+        "scope": "MBB",
+        "accepted": 10,
+        "limit": 10,
+        "errors": 0
+      }
+    ]
+  }
+}

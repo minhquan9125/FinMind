@@ -1,0 +1,831 @@
+{
+  "schema_version": "1.0",
+  "started_at": "2026-10-29T07:41:20.276027+00:00",
+  "finished_at": "2026-10-29T07:56:31.893378+00:00",
+  "symbols": [
+    "VCB",
+    "BID",
+    "CTG",
+    "MBB",
+    "TCB",
+    "FPT",
+    "CMG",
+    "ELC",
+    "ITD",
+    "ICT"
+  ],
+  "limit": 10,
+  "scopes": [
+    "VCB",
+    "BID",
+    "CTG",
+    "MBB",
+    "TCB",
+    "FPT",
+    "CMG",
+    "ELC",
+    "ITD",
+    "ICT"
+  ],
+  "source": "all",
+  "new_only": false,
+  "status": "ok",
+  "summary": {
+    "requested_collection_groups": 20,
+    "successful_collection_groups": 20,
+    "accepted_articles": 200,
+    "new_article_records": 200,
+    "saved_files": 20,
+    "created_files": 20,
+    "crosschecked_records": 200,
+    "check_records": 8,
+    "uncheck_records": 192,
+    "analyzed_uncheck_articles": 179,
+    "rewritten_candidate_pairs": 11,
+    "rewritten_candidate_articles": 21,
+    "same_title_candidate_pairs": 19
+  },
+  "collector": {
+    "crawl_date": "29-10-2026",
+    "collection": [
+      {
+        "file": "tin_tuc_theo_ma/VCB/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "VCB",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "VCB",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/BID/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "BID",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "BID",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/CTG/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "CTG",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "CTG",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/MBB/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "MBB",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "MBB",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "TCB",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "TCB",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/FPT/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "FPT",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "FPT",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/CMG/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "CMG",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "CMG",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "ELC",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "ELC",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "ITD",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "ITD",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json",
+        "source": "cafef",
+        "scope": "ICT",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "cafef",
+            "scope": "ICT",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "VCB",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "VCB",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/BID/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "BID",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "BID",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "CTG",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "CTG",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "MBB",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "MBB",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "TCB",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "TCB",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "FPT",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "FPT",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "CMG",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "CMG",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "ELC",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "ELC",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "ITD",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "ITD",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      },
+      {
+        "file": "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json",
+        "source": "fireant",
+        "scope": "ICT",
+        "saved": true,
+        "new_articles": 10,
+        "results": [
+          {
+            "source": "fireant",
+            "scope": "ICT",
+            "accepted": 10,
+            "limit": 10,
+            "errors": 0
+          }
+        ],
+        "status": "ok",
+        "total_articles": 10
+      }
+    ],
+    "crosscheck": {
+      "status": "ok",
+      "scopes": [
+        {
+          "scope": "BID",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        },
+        {
+          "scope": "CMG",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        },
+        {
+          "scope": "CTG",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        },
+        {
+          "scope": "ELC",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        },
+        {
+          "scope": "FPT",
+          "total": 20,
+          "check": 4,
+          "uncheck": 16
+        },
+        {
+          "scope": "ICT",
+          "total": 20,
+          "check": 4,
+          "uncheck": 16
+        },
+        {
+          "scope": "ITD",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        },
+        {
+          "scope": "MBB",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        },
+        {
+          "scope": "TCB",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        },
+        {
+          "scope": "VCB",
+          "total": 20,
+          "check": 0,
+          "uncheck": 20
+        }
+      ]
+    }
+  },
+  "event_analysis": {
+    "status": "ok",
+    "summary": {
+      "uncheck_records": 192,
+      "unique_uncheck_articles": 179,
+      "unique_candidate_pairs": 30,
+      "unique_rewritten_candidate_pairs": 11,
+      "unique_same_title_candidate_pairs": 19,
+      "unique_uncheck_articles_with_candidates": 58,
+      "unique_uncheck_articles_with_rewritten_candidates": 21,
+      "unique_uncheck_articles_without_candidates": 121
+    }
+  },
+  "inventory": {
+    "folders": [
+      {
+        "folder": "tin_tuc_theo_ma/BID/cafef",
+        "scope": "BID",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/BID/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/BID/fireant",
+        "scope": "BID",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/BID/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/CMG/cafef",
+        "scope": "CMG",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/CMG/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/CMG/fireant",
+        "scope": "CMG",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/CMG/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/CTG/cafef",
+        "scope": "CTG",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/CTG/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/CTG/fireant",
+        "scope": "CTG",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/CTG/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/ELC/cafef",
+        "scope": "ELC",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/ELC/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/ELC/fireant",
+        "scope": "ELC",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/ELC/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/FPT/cafef",
+        "scope": "FPT",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/FPT/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 2,
+        "uncheck": 8,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/FPT/fireant",
+        "scope": "FPT",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/FPT/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 2,
+        "uncheck": 8,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/ICT/cafef",
+        "scope": "ICT",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/ICT/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 2,
+        "uncheck": 8,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/ICT/fireant",
+        "scope": "ICT",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/ICT/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 2,
+        "uncheck": 8,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/ITD/cafef",
+        "scope": "ITD",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/ITD/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/ITD/fireant",
+        "scope": "ITD",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/ITD/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/MBB/cafef",
+        "scope": "MBB",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/MBB/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/MBB/fireant",
+        "scope": "MBB",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/MBB/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/TCB/cafef",
+        "scope": "TCB",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/TCB/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/TCB/fireant",
+        "scope": "TCB",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/TCB/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/VCB/cafef",
+        "scope": "VCB",
+        "source": "cafef",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/VCB/cafef/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_theo_ma/VCB/fireant",
+        "scope": "VCB",
+        "source": "fireant",
+        "json_files": 1,
+        "readable_files": 1,
+        "files": [
+          "tin_tuc_theo_ma/VCB/fireant/29-10-2026.json"
+        ],
+        "articles": 10,
+        "check": 0,
+        "uncheck": 10,
+        "unmarked": 0,
+        "created_files": 1
+      },
+      {
+        "folder": "tin_tuc_chung/cafef",
+        "scope": "market",
+        "source": "cafef",
+        "json_files": 3,
+        "readable_files": 3,
+        "files": [
+          "tin_tuc_chung/cafef/01-10-2026.json",
+          "tin_tuc_chung/cafef/06-10-2026.json",
+          "tin_tuc_chung/cafef/30-09-2026.json"
+        ],
+        "articles": 35,
+        "check": 3,
+        "uncheck": 32,
+        "unmarked": 0,
+        "created_files": 0
+      },
+      {
+        "folder": "tin_tuc_chung/fireant",
+        "scope": "market",
+        "source": "fireant",
+        "json_files": 3,
+        "readable_files": 3,
+        "files": [
+          "tin_tuc_chung/fireant/01-10-2026.json",
+          "tin_tuc_chung/fireant/06-10-2026.json",
+          "tin_tuc_chung/fireant/30-09-2026.json"
+        ],
+        "articles": 45,
+        "check": 3,
+        "uncheck": 42,
+        "unmarked": 0,
+        "created_files": 0
+      }
+    ],
+    "errors": []
+  },
+  "errors": []
+}

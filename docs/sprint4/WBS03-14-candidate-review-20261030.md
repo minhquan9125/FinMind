@@ -1,0 +1,35 @@
+# WBS03 — rà 14 ứng viên BCTN để bàn giao
+
+**Bản lịch sử trước registry r1.** Sau khi tích hợp gói WBS02 ngày 30/10, xem kết quả mới 17 ứng viên tại [WBS03-registry-r1-review-20261030.md](WBS03-registry-r1-review-20261030.md). Không dùng số 14 hoặc các nhãn `unresolved` trong bảng dưới làm trạng thái mới nhất.
+
+Ngày 30/10/2026. Corpus `b2550a0b-c423-5c50-9b15-6fb6af12e2c6`, index `ecfbf20f-b3e0-5077-bd3e-03f0efb95e6d`. Rà **offline** 20 JSON BCTN đã xác minh trước đó, không đọc DB mới, không ghi PostgreSQL/Neo4j. Đầu ra đầy đủ ở `backend/.tmp/wbs03-hung-review-20261030/` trên máy Nhân (thư mục này bị Git ignore). Mỗi file chứa `documents`, `chunks` (có locator), `entities`, `mentions`, `relations`. Mọi quan hệ dưới đây là **`PENDING`**, không phải kết quả WBS06 đã duyệt.
+
+`Hưng: có` nghĩa là cặp/loại quan hệ được gói `WBS03_DOI_CHIEU_TAY_BCTN_20261030.zip` đối chiếu với nguồn. Nó **không** có nghĩa là tên đã resolve trong runtime, đủ thuộc tính để `APPROVED`, hoặc Huyền đã duyệt. `Hưng: chưa` nghĩa là gói đó chưa gán nhãn cho cặp này; không tự coi là sai.
+
+| # | BCTN, trang | Quan hệ ứng viên | Chunk chứa tên/quan hệ | Đối chiếu Hưng | Việc còn lại |
+|---:|---|---|---|---|---|
+| 1 | TCB 2025, 39 | TCB → TCBS · `HAS_SUBSIDIARY` | `b102a5c0-6c8e-54fd-bf09-f9e5234948be` | Có, ca 1 | Hai đầu đã resolve. Tỷ lệ 79,8% và `as_of=2025-12-31` nằm ở sơ đồ trang 14, **chưa được gắn** vào JSON ứng viên. |
+| 2 | TCB 2024, 32 | TCB → TCBS · `HAS_SUBSIDIARY` | `b32c6e1a-7d50-5e9a-8036-9b0fe7a59590` | Có, ca 2 | Hai đầu đã resolve. Tỷ lệ 94,1% và `as_of=2024-12-31` ở sơ đồ trang 12. Hai năm hiện có cùng `relation_id` nếu gộp hai JSON; cần giữ hai phát biểu theo thời điểm khi WBS06/WBS08 xử lý. |
+| 3 | TCB 2024, 35 | TCB → TCC · `HAS_SUBSIDIARY` | `4ce022d2-27b0-5053-a55b-a9fafd332cb9` | Có, ca 3 | Hai đầu đã resolve. Tỷ lệ 88,99% và mốc 31/12/2024 ở sơ đồ trang 12, chưa gắn vào ứng viên. |
+| 4 | TCB 2024, 36 | TCB → TechAMC · `HAS_SUBSIDIARY` | `4690db74-eb51-595e-b467-2c8deaf4a0fa` | Có, ca 4 | **Lỗi extractor:** tên bị cắt ở “... QUẢN LÝ NỢ VÀ”, dù cùng chunk có tên đầy đủ. Registry chưa có canonical ID TechAMC. |
+| 5 | BID 2025, 63 | BID → BIC · `HAS_SUBSIDIARY` | `4298445a-935f-5a25-b965-b21075f2b9f9` | Có, ca 5 | **Lỗi extractor/bố cục bảng:** tên dừng ở “... ĐẦU TƯ VÀ”. Hưng đã đối chiếu BIC với ID registry `CMP-5b089951c0151837994a`, nhưng JSON còn `unresolved`. Không dùng ngày nghị quyết làm ngày quan hệ. |
+| 6 | VCB 2024, 19 | VCB → VCBR · `HAS_SUBSIDIARY` | `4da429da-4ebd-5fef-9fad-4054093f8eb5` | Có, đối chứng P04 | Tên đã đọc đủ hai dòng; registry chưa có canonical ID VCBR. Câu nguồn ghi sở hữu 100%, JSON chưa gắn tỷ lệ. |
+| 7 | VCB 2024, 19 | VCB → VCBL · `HAS_SUBSIDIARY` | `f45912ed-4282-5edb-88ce-a43c11c3776b` | Có, ca 6 | Tên đã đọc đủ hai dòng; registry chưa có canonical ID VCBL. Câu nguồn ghi 100%; ngày giấy phép không phải ngày bắt đầu quan hệ. |
+| 8 | ELC 2024, 14 | ELC → Công ty CP Công nghệ VFT · `HAS_ASSOCIATE` | `81715bf0-2032-5764-834b-cfefb59d3bc7` | **Chưa** | Cần Hưng xác nhận VFT thật sự thuộc mục công ty liên kết, tên pháp lý/ID và ranh giới dòng. |
+| 9 | ELC 2024, 14 | ELC → Datanova · `HAS_SUBSIDIARY` | `107c2ccc-3f33-5117-a521-7fed698f78a9` | Có, đối chứng P01 | Nguồn tách tên và tỷ lệ 93% qua hai chunk; JSON mới giữ heading + tên, **chưa gắn 93%**. Registry chưa có canonical ID Datanova. |
+| 10 | ELC 2024, 14 | ELC → ELCOM Software · `HAS_SUBSIDIARY` | `107c2ccc-3f33-5117-a521-7fed698f78a9` | Có, ca 7 | Tên đã đọc đủ hai dòng; registry chưa có canonical ID. Cùng chunk nêu sở hữu 100%, JSON chưa gắn tỷ lệ. |
+| 11 | ELC 2024, 14 | ELC → Công ty CP Tập đoàn Thương mại Hà Nội · `HAS_SUBSIDIARY` | `e3343e86-4b79-54ac-bff5-cc137867284d` | **Chưa** | Heading “công ty con kiểm soát trực tiếp” ở chunk trước cùng trang; chunk này có tên và tỷ lệ 68,68%. Cần Hưng xác nhận đúng hàng/mục, tên pháp lý/ID. |
+| 12 | ELC 2024, 14 | ELC → ElcomPrime · `HAS_SUBSIDIARY` | `8aa9e55d-fe91-5107-9147-817842ffa98a` | Có, đối chứng P02 | Heading ở chunk trước cùng trang, chunk này nêu 70%; JSON chưa gắn tỷ lệ. Đối tượng còn `unresolved`. |
+| 13 | ELC 2024, 14 | ELC → Smartek · `HAS_SUBSIDIARY` | `e67bc152-bd52-539e-9cde-32ef4bfca7a6` | Có, ca 8 | **Lỗi extractor:** tên bị kéo thêm “(Là”. Hưng xác nhận ELC kiểm soát gián tiếp và Datanova → Smartek là công ty con; JSON hiện chỉ có ELC → Smartek. Không tự gán 74,4% cho cạnh Datanova → Smartek. Registry thiếu ID Smartek/Datanova. |
+| 14 | ELC 2024, 14 | ELC → Công nghệ Vật liệu mới Bắc Kạn · `HAS_ASSOCIATE` | `81715bf0-2032-5764-834b-cfefb59d3bc7` | Có, đối chứng P03 | Tên đã đọc đủ hai dòng; nguồn nêu 42,97% nhưng không nêu trực tiếp/gián tiếp. JSON chưa gắn tỷ lệ; đối tượng còn `unresolved`. |
+
+**Tổng hợp:** 12/14 cặp được gói Hưng đối chiếu nội dung nguồn; 2/14 cặp (#8, #11) cần Hưng xác nhận. Runtime có 3/14 ứng viên với hai đầu `resolved`, 11/14 còn đầu đối tượng `unresolved`. Trong số 11, ba tên (#4, #5, #13) bị extractor cắt hoặc kéo thừa nên cần sửa **trong WBS03** trước khi bàn giao như tên đầy đủ. Hưng đã xác nhận tên/ID BIC; không cấp ID mới bằng phỏng đoán. Các quan hệ đang thiếu thời điểm và thuộc tính bắt buộc để đạt điều kiện `APPROVED` của contract 2.1.0 (`consolidation_basis` cho công ty con, `accounting_basis` cho công ty liên kết). Đó là phần xác minh nguồn/kiểm duyệt tiếp theo, không phải lý do để tự đổi trạng thái trong WBS03.
+
+## Chỉ những câu cần hỏi nhóm
+
+1. **Hưng — ELC → VFT (#8):** Trong BCTN ELC 2024 trang PDF 14, chunk `81715bf0-2032-5764-834b-cfefb59d3bc7`, dòng “Công ty Cổ Phần Công nghệ VFT” có nằm trong **mục các công ty liên kết** của ELC không? Tên pháp lý và canonical ID nào đúng?
+2. **Hưng — ELC → Tập đoàn Thương mại Hà Nội (#11):** Chunk `e3343e86-4b79-54ac-bff5-cc137867284d` có tiếp tục đúng danh sách **công ty con kiểm soát trực tiếp** ở trang PDF 14 không? Tỷ lệ 68,68% thuộc đúng công ty này chứ? Tên pháp lý/canonical ID nào đúng?
+3. **Hưng/WBS02 — registry:** Khi có thời gian, bổ sung/đối chiếu alias và ID cho các tên đã được xác minh nhưng runtime còn `unresolved`, ưu tiên TechAMC, VCBR, VCBL, ELCOM Software, Datanova, Smartek; xác nhận alias BIC để nối ID có sẵn. Các tên ElcomPrime, Bắc Kạn, VFT và Tập đoàn Thương mại Hà Nội cũng cần rà registry sau khi chốt nguồn. Đây là phụ thuộc để **duyệt/publish**, không chặn WBS03 xuất `PENDING`.
+4. **Huyền/WBS06 — kiểm duyệt:** Sau khi sửa ba tên lỗi và chốt #8/#11, xem 14 ứng viên, đối chiếu locator/quote và quyết định `APPROVED`, `PENDING` hoặc `REJECTED`. Nếu muốn `APPROVED`, phải có hai ID resolved, mốc thời gian và thuộc tính bắt buộc với nguồn chứng minh; không chỉ đổi trường `review.status`.
+
+**Đối chứng âm:** N01 Techcombank–Standard Chartered (tiểu sử), N02 Standard Chartered–Mizuho (cùng danh sách bên cho vay), N03 ELCOM Software–Datanova (hai công ty cùng nhóm ELC), N04 Techcom Capital–VSDC (giải thưởng) không xuất cạnh giữa đúng cặp bị cấm. Một chunk có thể đồng thời chứa cạnh hợp lệ từ doanh nghiệp phát hành; vì vậy phải kiểm theo **cặp**, không theo số quan hệ trên chunk. Bốn ca này chỉ là đối chứng trong gói Hưng, chưa phải phép đo precision toàn corpus.

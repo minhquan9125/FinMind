@@ -1,0 +1,38 @@
+{
+  "case_id": "S5-WBS01.2-CONTEXT-LIVE-SCREENSHOTS",
+  "evidence_source": "TWO_USER_ATTACHED_SCREENSHOTS_IN_CHAT",
+  "original_images_location": "USER_CONVERSATION_ATTACHMENTS_NOT_COPIED_TO_REPOSITORY",
+  "direct_browser_observation": false,
+  "runtime_commit_verified_from_images": false,
+  "turns": [
+    {
+      "question": "L?i nhu?n sau thu? c?a BID n?m 2025 l? bao nhi?u?",
+      "visible_answer": "L?i nhu?n sau thu? c?a BID n?m 2025 l? 30.430.130,00 tri?u VND. [1]",
+      "visible_citation_label": "[1] ?? tr?ch d?n ? B?o c?o t?i ch?nh BID n?m 2025 (INCOME_STATEMENT)"
+    },
+    {
+      "question": "C?n VCB th? sao?",
+      "visible_answer": "L?i nhu?n sau thu? c?a VCB n?m 2025 l? 35.197.940,00 tri?u VND. [1]",
+      "visible_citation_label": "[1] ?? tr?ch d?n ? B?o c?o t?i ch?nh VCB n?m 2025 (INCOME_STATEMENT)"
+    }
+  ],
+  "visible_current_scope": {
+    "company": "VCB",
+    "year": "2025",
+    "metric": "l?i nhu?n sau thu?",
+    "source": "BCTC"
+  },
+  "observations": {
+    "company_changed_to_vcb": true,
+    "metric_and_period_preserved": true,
+    "answer_and_citation_entry_visible": true,
+    "citation_expanded_and_checked": false,
+    "financial_figures_validated": false,
+    "http_requests_observed": false,
+    "token_expiry_or_refresh": "NOT_OBSERVED",
+    "new_session_isolation": "NOT_OBSERVED"
+  },
+  "conclusion": "PASS_UI_FOLLOWUP_SCOPE_ONLY",
+  "prior_evidence_preserved": "manual-webchat-run01.json",
+  "reason_for_difference_from_prior_no_data_run": "NOT_ESTABLISHED"
+}

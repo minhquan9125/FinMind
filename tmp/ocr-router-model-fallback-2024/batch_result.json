@@ -1,0 +1,75 @@
+[
+  {
+    "symbol": "BID",
+    "pages": [
+      1,
+      91
+    ],
+    "exit_code": 0,
+    "log": "D:\\finmind\\tmp\\ocr-router-model-fallback-2024\\logs\\BID.log"
+  },
+  {
+    "symbol": "ELC",
+    "pages": [
+      2,
+      70
+    ],
+    "exit_code": 0,
+    "log": "D:\\finmind\\tmp\\ocr-router-model-fallback-2024\\logs\\ELC.log"
+  },
+  {
+    "symbol": "FPT",
+    "pages": [
+      2
+    ],
+    "exit_code": 0,
+    "log": "D:\\finmind\\tmp\\ocr-router-model-fallback-2024\\logs\\FPT.log"
+  },
+  {
+    "symbol": "ITD",
+    "pages": [
+      27,
+      44,
+      46
+    ],
+    "exit_code": 0,
+    "log": "D:\\finmind\\tmp\\ocr-router-model-fallback-2024\\logs\\ITD.log"
+  },
+  {
+    "symbol": "MBB",
+    "pages": [
+      1,
+      2,
+      9,
+      34,
+      55,
+      68,
+      75,
+      105,
+      126,
+      184
+    ],
+    "exit_code": 0,
+    "log": "D:\\finmind\\tmp\\ocr-router-model-fallback-2024\\logs\\MBB.log"
+  },
+  {
+    "symbol": "TCB",
+    "pages": [
+      1,
+      2,
+      9,
+      14,
+      26
+    ],
+    "exit_code": 0,
+    "log": "D:\\finmind\\tmp\\ocr-router-model-fallback-2024\\logs\\TCB.log"
+  },
+  {
+    "symbol": "VCB",
+    "pages": [
+      1
+    ],
+    "exit_code": 0,
+    "log": "D:\\finmind\\tmp\\ocr-router-model-fallback-2024\\logs\\VCB.log"
+  }
+]

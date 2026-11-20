@@ -1,0 +1,407 @@
+<!DOCTYPE html><html lang="vi" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FinMind - P03 Đăng ký (Register Screen)</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            slate: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    input.input-error {
+      border-color: #ef4444 !important;
+      background-color: #fef2f2 !important;
+    }
+    input.input-error:focus {
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-blue-100 selection:text-blue-900"><div class="absolute top-6 left-6 sm:top-8 sm:left-10 z-20 flex items-center gap-2.5 select-none"><div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-base shadow-sm tracking-tight">FM</div><div class="flex flex-col"><span class="font-bold text-slate-900 text-lg leading-tight tracking-tight">FinMind</span><span class="text-[10px] text-slate-500 font-medium tracking-wide uppercase">Nền tảng phân tích</span></div></div>
+<!-- Main Container: 1440px target layout -->
+<main class="w-full flex-1 flex flex-col min-h-[94vh]">
+<!-- LEFT PANEL: Branding & Trust (~45%) -->
+
+<!-- RIGHT PANEL: Register Form Card (~55%) -->
+<section class="w-full bg-[#F8FAFC] flex flex-col justify-between p-6 sm:p-10 lg:p-14 relative">
+<!-- Top-right shortcut link -->
+<div class="w-full max-w-[480px] mx-auto flex justify-between items-center mb-4 mt-8 sm:mt-2"><a class="inline-flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors group" href="../finmind_trang_ch_tr_l_nghi_n_c_u_c_tr_c_quan_h_a_d_li_u/code.html"><svg class="w-4 h-4 mr-1.5 transition-transform group-hover:-translate-x-0.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Về trang chủ</a></div>
+<!-- Center Container for Registration Card -->
+<div class="w-full mx-auto my-auto py-4 max-w-[480px]">
+<!-- Registration Card -->
+<div class="bg-white border border-[#E2E8F0] rounded-xl sm:rounded-2xl shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] sm:p-10 transition-all duration-200 p-8" id="cardRegister">
+<div class="mb-7">
+<h2 class="text-2xl sm:text-[26px] font-bold text-slate-900 tracking-tight leading-tight">
+              Tạo tài khoản FinMind
+            </h2>
+<p class="text-sm text-slate-500 mt-2 leading-relaxed">
+              Tạo tài khoản để bắt đầu nghiên cứu doanh nghiệp với nguồn dữ liệu có thể kiểm chứng.
+            </p>
+</div>
+<!-- Register Form -->
+<form class="space-y-5" id="registerForm" novalidate="">
+<!-- Field: Full Name -->
+<div>
+<label class="block text-xs font-semibold text-slate-800 uppercase tracking-wide mb-1.5" for="fullname">
+                Họ và tên <span class="text-rose-500">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg border border-[#CBD5E1] bg-white text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:bg-white" id="fullname" name="fullname" placeholder="Nguyễn Văn A" type="text">
+</div>
+<p class="hidden text-xs text-rose-600 font-medium mt-1.5 flex items-center gap-1.5" id="error-fullname">
+<svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Vui lòng nhập đầy đủ thông tin bắt buộc.</span>
+</p>
+</div>
+<!-- Field: Email -->
+<div>
+<label class="block text-xs font-semibold text-slate-800 uppercase tracking-wide mb-1.5" for="email">
+                Email <span class="text-rose-500">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg border border-[#CBD5E1] bg-white text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:bg-white" id="email" name="email" placeholder="ten@congty.vn" type="email">
+</div>
+<p class="hidden text-xs text-rose-600 font-medium mt-1.5 flex items-center gap-1.5" id="error-email">
+<svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="error-email-text" class="">Vui lòng nhập đầy đủ thông tin bắt buộc.</span>
+</p>
+</div>
+<!-- Field: Password -->
+<div>
+<label class="block text-xs font-semibold text-slate-800 uppercase tracking-wide mb-1.5" for="password">
+                Mật khẩu <span class="text-rose-500">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 pl-3.5 pr-11 rounded-lg border border-[#CBD5E1] bg-white text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:bg-white" id="password" name="password" placeholder="••••••••••••" type="password">
+<button aria-label="Hiện hoặc ẩn mật khẩu" class="absolute inset-y-0 right-0 px-3.5 flex items-center text-slate-400 hover:text-slate-700 transition-colors focus:outline-none" id="btnTogglePwd" type="button">
+<!-- Eye Icon (Hide / Show) -->
+<svg class="w-4 h-4" fill="none" id="eyeIconPwd" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                Mật khẩu phải đáp ứng yêu cầu bảo mật của hệ thống.
+              </p>
+<p class="hidden text-xs text-rose-600 font-medium mt-1.5 flex items-center gap-1.5" id="error-password">
+<svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Vui lòng nhập đầy đủ thông tin bắt buộc.</span>
+</p>
+</div>
+<!-- Field: Confirm Password -->
+<div>
+<label class="block text-xs font-semibold text-slate-800 uppercase tracking-wide mb-1.5" for="confirmPassword">
+                Xác nhận mật khẩu <span class="text-rose-500">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 pl-3.5 pr-11 rounded-lg border border-[#CBD5E1] bg-white text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:bg-white" id="confirmPassword" name="confirmPassword" placeholder="••••••••••••" type="password">
+<button aria-label="Hiện hoặc ẩn xác nhận mật khẩu" class="absolute inset-y-0 right-0 px-3.5 flex items-center text-slate-400 hover:text-slate-700 transition-colors focus:outline-none" id="btnToggleConfirmPwd" type="button">
+<svg class="w-4 h-4" fill="none" id="eyeIconConfirmPwd" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<p class="hidden text-xs text-rose-600 font-medium mt-1.5 flex items-center gap-1.5" id="error-confirmPassword">
+<svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="error-confirmPassword-text" class="">Vui lòng nhập đầy đủ thông tin bắt buộc.</span>
+</p>
+</div>
+<!-- Agreement Checkbox -->
+<div class="pt-1">
+<div class="flex items-start gap-2.5">
+<input class="mt-1 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer" id="agreeTerms" name="agreeTerms" type="checkbox">
+<label class="text-xs text-slate-600 leading-relaxed cursor-pointer select-none" for="agreeTerms">
+                  Tôi đồng ý với <a class="text-blue-600 hover:text-blue-700 hover:underline font-medium" href="#terms">Điều khoản sử dụng</a> và <a class="text-blue-600 hover:text-blue-700 hover:underline font-medium" href="#privacy">Chính sách quyền riêng tư</a>.
+                </label>
+</div>
+<p class="hidden text-xs text-rose-600 font-medium mt-1.5 flex items-center gap-1.5" id="error-agreeTerms">
+<svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Vui lòng đồng ý với điều khoản sử dụng và chính sách quyền riêng tư.</span>
+</p>
+</div>
+<!-- Submit Button (min 44px height) -->
+<div class="pt-2">
+<button class="w-full h-11 min-h-[44px] px-5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer" id="btnSubmit" type="submit">
+<span id="btnSubmitText" class="">Tạo tài khoản</span>
+<span class="hidden" id="btnSubmitSpinner">
+<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+</span>
+</button>
+</div>
+</form>
+<!-- Card Bottom Link -->
+<div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-center text-sm text-slate-500">
+<span class="">Đã có tài khoản?</span>
+<a class="ml-1.5 font-semibold text-blue-600 hover:text-blue-700 hover:underline" href="../finmind_p02_ng_nh_p_b_n_tinh_ch_nh_chu_n_h_a/code.html">
+              Đăng nhập
+            </a>
+</div>
+</div>
+<!-- SUCCESS STATE CARD (hidden by default) -->
+<div class="hidden bg-white border border-[#E2E8F0] rounded-xl sm:rounded-2xl shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] p-8 sm:p-11 text-center transition-all duration-300" id="cardSuccess">
+<div class="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 mx-auto flex items-center justify-center mb-5 shadow-sm">
+<svg class="w-7 h-7 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h2 class="text-2xl font-bold text-slate-900 tracking-tight mb-2">
+            Tạo tài khoản thành công
+          </h2>
+<p class="text-sm text-slate-500 leading-relaxed max-w-sm mx-auto mb-7">
+            Bạn có thể đăng nhập để bắt đầu nghiên cứu doanh nghiệp với nguồn dữ liệu có thể kiểm chứng.
+          </p>
+<a class="inline-flex w-full h-11 min-h-[44px] items-center justify-center px-5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm transition-all shadow-sm" href="../finmind_p02_ng_nh_p_b_n_tinh_ch_nh_chu_n_h_a/code.html">
+            Đăng nhập
+          </a>
+<div class="mt-4">
+<button class="text-xs text-slate-400 hover:text-slate-600 transition-colors" onclick="resetToForm()" type="button">
+              Thử nghiệm lại với thông tin khác
+            </button>
+</div>
+</div>
+<!-- Prototype Testing Guide helper box (matching P02 style) -->
+</div>
+<!-- Institutional Footer (Single-line disclaimer) -->
+<footer class="w-full text-center py-4 mt-6">
+<p class="text-xs text-slate-400">
+          Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư
+        </p>
+</footer>
+</section>
+</main>
+<!-- Interactive Client-side Script -->
+<script>
+    // Password visibility toggles
+    const pwdInput = document.getElementById('password');
+    const btnTogglePwd = document.getElementById('btnTogglePwd');
+    const eyeIconPwd = document.getElementById('eyeIconPwd');
+
+    btnTogglePwd.addEventListener('click', () => {
+      const isPwd = pwdInput.type === 'password';
+      pwdInput.type = isPwd ? 'text' : 'password';
+      eyeIconPwd.innerHTML = isPwd 
+        ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />'
+        : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />';
+    });
+
+    const confirmPwdInput = document.getElementById('confirmPassword');
+    const btnToggleConfirmPwd = document.getElementById('btnToggleConfirmPwd');
+    const eyeIconConfirmPwd = document.getElementById('eyeIconConfirmPwd');
+
+    btnToggleConfirmPwd.addEventListener('click', () => {
+      const isPwd = confirmPwdInput.type === 'password';
+      confirmPwdInput.type = isPwd ? 'text' : 'password';
+      eyeIconConfirmPwd.innerHTML = isPwd 
+        ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />'
+        : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />';
+    });
+
+    // Elements
+    const form = document.getElementById('registerForm');
+    const fullnameInput = document.getElementById('fullname');
+    const emailInput = document.getElementById('email');
+    const agreeTerms = document.getElementById('agreeTerms');
+
+    const errFullname = document.getElementById('error-fullname');
+    const errEmail = document.getElementById('error-email');
+    const errEmailText = document.getElementById('error-email-text');
+    const errPassword = document.getElementById('error-password');
+    const errConfirmPassword = document.getElementById('error-confirmPassword');
+    const errConfirmPasswordText = document.getElementById('error-confirmPassword-text');
+    const errAgreeTerms = document.getElementById('error-agreeTerms');
+
+    const btnSubmit = document.getElementById('btnSubmit');
+    const btnSubmitText = document.getElementById('btnSubmitText');
+    const btnSubmitSpinner = document.getElementById('btnSubmitSpinner');
+
+    const cardRegister = document.getElementById('cardRegister');
+    const cardSuccess = document.getElementById('cardSuccess');
+
+    // Helper functions to clear individual errors
+    function clearErrors() {
+      [fullnameInput, emailInput, pwdInput, confirmPwdInput].forEach(inp => {
+        inp.classList.remove('input-error');
+      });
+      [errFullname, errEmail, errPassword, errConfirmPassword, errAgreeTerms].forEach(err => {
+        err.classList.add('hidden');
+      });
+    }
+
+    // Input listeners to clear error on typing
+    fullnameInput.addEventListener('input', () => {
+      fullnameInput.classList.remove('input-error');
+      errFullname.classList.add('hidden');
+    });
+    emailInput.addEventListener('input', () => {
+      emailInput.classList.remove('input-error');
+      errEmail.classList.add('hidden');
+    });
+    pwdInput.addEventListener('input', () => {
+      pwdInput.classList.remove('input-error');
+      errPassword.classList.add('hidden');
+    });
+    confirmPwdInput.addEventListener('input', () => {
+      confirmPwdInput.classList.remove('input-error');
+      errConfirmPassword.classList.add('hidden');
+    });
+    agreeTerms.addEventListener('change', () => {
+      if (agreeTerms.checked) {
+        errAgreeTerms.classList.add('hidden');
+      }
+    });
+
+    // Form submission validation
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      clearErrors();
+
+      let hasError = false;
+      const fullnameVal = fullnameInput.value.trim();
+      const emailVal = emailInput.value.trim();
+      const pwdVal = pwdInput.value;
+      const confirmPwdVal = confirmPwdInput.value;
+
+      // Check required fields
+      if (!fullnameVal) {
+        fullnameInput.classList.add('input-error');
+        errFullname.classList.remove('hidden');
+        hasError = true;
+      }
+
+      if (!emailVal) {
+        emailInput.classList.add('input-error');
+        errEmailText.textContent = 'Vui lòng nhập đầy đủ thông tin bắt buộc.';
+        errEmail.classList.remove('hidden');
+        hasError = true;
+      } else if (emailVal.toLowerCase() === 'da.dung@finmind.vn') {
+        emailInput.classList.add('input-error');
+        errEmailText.textContent = 'Email này đã được sử dụng.';
+        errEmail.classList.remove('hidden');
+        hasError = true;
+      }
+
+      if (!pwdVal) {
+        pwdInput.classList.add('input-error');
+        errPassword.classList.remove('hidden');
+        hasError = true;
+      }
+
+      if (!confirmPwdVal) {
+        confirmPwdInput.classList.add('input-error');
+        errConfirmPasswordText.textContent = 'Vui lòng nhập đầy đủ thông tin bắt buộc.';
+        errConfirmPassword.classList.remove('hidden');
+        hasError = true;
+      } else if (pwdVal && confirmPwdVal !== pwdVal) {
+        confirmPwdInput.classList.add('input-error');
+        errConfirmPasswordText.textContent = 'Mật khẩu xác nhận không khớp.';
+        errConfirmPassword.classList.remove('hidden');
+        hasError = true;
+      }
+
+      if (!agreeTerms.checked) {
+        errAgreeTerms.classList.remove('hidden');
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      // Valid: Simulate API call
+      btnSubmit.disabled = true;
+      btnSubmitText.textContent = 'Đang tạo tài khoản...';
+      btnSubmitSpinner.classList.remove('hidden');
+
+      setTimeout(() => {
+        btnSubmit.disabled = false;
+        btnSubmitText.textContent = 'Tạo tài khoản';
+        btnSubmitSpinner.classList.add('hidden');
+
+        // Transition to success state
+        cardRegister.classList.add('hidden');
+        cardSuccess.classList.remove('hidden');
+      }, 1200);
+    });
+
+    function resetToForm() {
+      cardSuccess.classList.add('hidden');
+      cardRegister.classList.remove('hidden');
+      form.reset();
+      clearErrors();
+    }
+  </script>
+
+
+
+
+
+
+</body></html>

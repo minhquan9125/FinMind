@@ -1,0 +1,49 @@
+{
+  "text": "Z7.(0NG7.\\6,\nQUẢN TRỊ",
+  "chars": 19,
+  "words": 3,
+  "wordItems": [
+    {
+      "text": "Z7.(0NG7.\\6,",
+      "bbox": [
+        782,
+        1321,
+        1933,
+        1550
+      ],
+      "conf": 29.427155,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUẢN",
+      "bbox": [
+        762,
+        1621,
+        1465,
+        1865
+      ],
+      "conf": 77.503311,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "TRỊ",
+      "bbox": [
+        1560,
+        1668,
+        1943,
+        1896
+      ],
+      "conf": 85.114204,
+      "block": 1,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 64,
+  "lowConfRatio": 0.333,
+  "seconds": 0.881
+}

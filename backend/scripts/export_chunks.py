@@ -34,7 +34,7 @@ from src.documents.embeddings import get_embedding_service  # noqa: E402
 from src.documents.json_ingest import financial_json_to_pages  # noqa: E402
 from src.documents.text_analysis import term_frequencies  # noqa: E402
 
-# Same list as TARGET_SYMBOLS in data_pipeline/collector.py
+# Same list as TARGET_SYMBOLS in data_pipeline/financial_data/collect_financial_data.py
 TARGET_SYMBOLS = ["VCB", "BID", "CTG", "MBB", "TCB", "FPT", "CMG", "ELC", "ITD", "ICT"]
 
 REPO_ROOT = BACKEND_SRC.parent

@@ -1,0 +1,12 @@
+{
+  "symbol": "CTG",
+  "year": 2024,
+  "pdf": "CTG/2024/CTG_2024_495896.pdf",
+  "sha256": "d78dc6c79ca238ff96d32b33a6809ce121cbd04190f24902a4cef143488bf4c0",
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "model_target_pages": [
+    186
+  ],
+  "previous_model": "gemini-3.8-flash"
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="vi" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>P02 – Đăng nhập | FinMind Research Copilot</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            page: '#F8FAFC',
+            surface: '#FFFFFF',
+            primary: {
+              DEFAULT: '#2563EB',
+              hover: '#1D4ED8',
+              light: '#EFF6FF',
+            },
+            brand: {
+              panel: '#F1F5F9',
+              tint: '#F4F7FB',
+            },
+            slate: {
+              900: '#0F172A',
+              600: '#475569',
+              500: '#64748B',
+              400: '#94A3B8',
+              300: '#CBD5E1',
+              200: '#E2E8F0',
+              100: '#F1F5F9',
+              50: '#F8FAFC',
+            },
+            verified: {
+              DEFAULT: '#16A34A',
+              bg: '#DCFCE7',
+              border: '#BBF7D0',
+            },
+            danger: {
+              DEFAULT: '#EF4444',
+              bg: '#FEF2F2',
+              border: '#FECACA',
+              dark: '#991B1B',
+            }
+          },
+          borderRadius: {
+            card: '12px',
+            input: '10px',
+          },
+          boxShadow: {
+            subtle: '0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px -1px rgba(15, 23, 42, 0.05)',
+            card: '0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 2px 4px -2px rgba(15, 23, 42, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#F8FAFC] flex flex-col justify-between selection:bg-blue-100 selection:text-blue-900"><header class="w-full px-6 py-4 sm:px-8 border-b border-[#E2E8F0] bg-white flex items-center justify-between sticky top-0 z-10"><div class="flex items-center gap-2.5"><div class="w-9 h-9 rounded-lg bg-[#2563EB] flex items-center justify-center text-white font-bold text-base shadow-sm tracking-tight">FM</div><div class="flex flex-col"><span class="font-bold text-lg text-[#0F172A] leading-tight">FinMind</span><span class="text-[11px] text-[#64748B] -mt-0.5 font-medium">Research Copilot</span></div></div></header>
+<!-- Main Container -->
+<main class="flex-1 flex flex-col lg:flex-row w-full min-h-screen">
+<!-- LEFT PANEL (~45% Desktop): Branding & Institutional Trust -->
+
+<!-- RIGHT PANEL (~55% Desktop): Centered Clean Login Form -->
+<section class="w-full flex-1 bg-[#F8FAFC] flex flex-col items-center justify-center p-6 sm:p-10 lg:p-14 relative"><div class="w-full max-w-md mx-auto"><div class="mb-4"><a class="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#0F172A] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded px-1.5 py-1 -ml-1.5" href="../finmind_trang_ch_tr_l_nghi_n_c_u_c_tr_c_quan_h_a_d_li_u/code.html"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewBox="0 0 16 16"><path d="M10 12L6 8L10 4"></path></svg><span>Về trang chủ</span></a></div><div class="bg-white rounded-2xl border border-[#E2E8F0] shadow-sm p-8"><div class="mb-8"><h2 class="text-2xl font-bold text-[#0F172A] tracking-tight">Đăng nhập vào FinMind</h2><p class="text-sm text-[#64748B] mt-2">Tiếp tục vào không gian nghiên cứu của bạn.</p></div><div aria-live="assertive" class="hidden mb-6 p-3.5 rounded-[8px] bg-[#FEF2F2] border border-[#FECACA] flex items-start gap-3 transition-all" id="error-banner" role="alert"><svg class="w-5 h-5 text-[#EF4444] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"></circle><line x1="8" x2="8" y1="5" y2="8.5"></line><line x1="8" x2="8.01" y1="11" y2="11"></line></svg><div><p class="text-sm font-semibold text-[#991B1B]">Đăng nhập không thành công</p><p class="text-xs text-[#B91C1C] mt-0.5 font-normal">Email hoặc mật khẩu không chính xác.</p></div></div><form class="space-y-5" id="login-form" novalidate=""><div><label class="block text-sm font-medium text-[#0F172A] mb-1.5" for="email">Email <span class="text-[#EF4444]">*</span></label><div class="relative"><input aria-describedby="email-error" autocomplete="email" class="w-full h-11 px-3.5 text-sm text-[#0F172A] bg-white border border-[#CBD5E1] rounded-[10px] placeholder-[#94A3B8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-[#2563EB]" id="email" name="email" placeholder="ten@congty.vn" type="email"></div><p class="hidden mt-1.5 text-xs text-[#EF4444] font-medium flex items-center gap-1" id="email-error"><svg class="w-3.5 h-3.5 inline-block" fill="currentColor" viewBox="0 0 16 16"><path clip-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm.75-10.25a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0v-4.5zm0 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0z" fill-rule="evenodd"></path></svg><span id="email-error-text" class="">Trường này không được để trống.</span></p></div><div><div class="flex items-center justify-between mb-1.5"><label class="block text-sm font-medium text-[#0F172A]" for="password">Mật khẩu <span class="text-[#EF4444]">*</span></label><a class="text-xs font-medium text-[#2563EB] hover:text-[#1D4ED8] hover:underline focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded px-1" href="../finmind_p02_quen_mat_khau_mau/code.html" id="forgot-password-link">Quên mật khẩu?</a></div><div class="relative"><input aria-describedby="password-error" autocomplete="current-password" class="w-full h-11 pl-3.5 pr-11 text-sm text-[#0F172A] bg-white border border-[#CBD5E1] rounded-[10px] placeholder-[#94A3B8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-[#2563EB]" id="password" name="password" placeholder="••••••••••••" type="password"><button aria-label="Hiện mật khẩu" class="absolute right-0 top-0 h-11 w-11 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded-[10px]" id="toggle-password" title="Hiện / ẩn mật khẩu" type="button"><svg class="w-4 h-4" fill="none" id="eye-icon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg><svg class="w-4 h-4 hidden" fill="none" id="eye-off-icon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" x2="23" y1="1" y2="23"></line></svg></button></div><p class="hidden mt-1.5 text-xs text-[#EF4444] font-medium flex items-center gap-1" id="password-error"><svg class="w-3.5 h-3.5 inline-block" fill="currentColor" viewBox="0 0 16 16"><path clip-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm.75-10.25a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0v-4.5zm0 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0z" fill-rule="evenodd"></path></svg><span id="password-error-text" class="">Trường này không được để trống.</span></p></div><div class="flex items-center pt-1"><input class="w-4 h-4 rounded text-[#2563EB] border-[#CBD5E1] focus:ring-[#2563EB] focus:ring-2 focus:ring-offset-0 cursor-pointer" id="remember" name="remember" type="checkbox"><label class="ml-2.5 text-sm text-[#475569] select-none cursor-pointer" for="remember">Ghi nhớ đăng nhập</label></div><div class="pt-2"><button class="w-full h-11 min-h-[44px] px-5 bg-[#2563EB] hover:bg-[#1D4ED8] active:bg-[#1E40AF] text-white font-medium text-sm rounded-[10px] transition-all flex items-center justify-center gap-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2563EB] disabled:opacity-75 disabled:cursor-not-allowed" id="submit-btn" type="submit"><span id="btn-text" class="">Đăng nhập</span><span class="hidden items-center gap-2" id="btn-loading"><svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path></svg><span class="">Đang đăng nhập...</span></span></button></div></form><div class="mt-8 pt-6 border-t border-[#E2E8F0] text-center"><p class="text-sm text-[#64748B]">Chưa có tài khoản?<a class="font-medium text-[#2563EB] hover:text-[#1D4ED8] hover:underline ml-1 focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded px-1" href="../finmind_p03_ng_k_b_n_tinh_ch_nh_chu_n_h_a/code.html">Đăng ký tài khoản</a></p></div></div><p class="text-center text-xs text-[#94A3B8] mt-6">Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư</p></div></section>
+</main>
+<!-- Interactive Validation Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('login-form');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const emailError = document.getElementById('email-error');
+      const emailErrorText = document.getElementById('email-error-text');
+      const passwordError = document.getElementById('password-error');
+      const passwordErrorText = document.getElementById('password-error-text');
+      const errorBanner = document.getElementById('error-banner');
+      const submitBtn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('btn-text');
+      const btnLoading = document.getElementById('btn-loading');
+      const togglePasswordBtn = document.getElementById('toggle-password');
+      const eyeIcon = document.getElementById('eye-icon');
+      const eyeOffIcon = document.getElementById('eye-off-icon');
+
+      // Email validation regex (standard simple email pattern)
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Toggle Password Visibility
+      togglePasswordBtn.addEventListener('click', () => {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        if (isPassword) {
+          passwordInput.setAttribute('type', 'text');
+          eyeIcon.classList.add('hidden');
+          eyeOffIcon.classList.remove('hidden');
+          togglePasswordBtn.setAttribute('aria-label', 'Ẩn mật khẩu');
+        } else {
+          passwordInput.setAttribute('type', 'password');
+          eyeIcon.classList.remove('hidden');
+          eyeOffIcon.classList.add('hidden');
+          togglePasswordBtn.setAttribute('aria-label', 'Hiện mật khẩu');
+        }
+      });
+
+      // Clear field errors on user input
+      emailInput.addEventListener('input', () => {
+        if (!emailError.classList.contains('hidden')) {
+          hideEmailError();
+        }
+        if (!errorBanner.classList.contains('hidden')) {
+          errorBanner.classList.add('hidden');
+        }
+      });
+
+      passwordInput.addEventListener('input', () => {
+        if (!passwordError.classList.contains('hidden')) {
+          hidePasswordError();
+        }
+        if (!errorBanner.classList.contains('hidden')) {
+          errorBanner.classList.add('hidden');
+        }
+      });
+
+      function showEmailError(msg) {
+        emailErrorText.textContent = msg;
+        emailError.classList.remove('hidden');
+        emailInput.classList.remove('border-[#CBD5E1]', 'focus:ring-[#2563EB]', 'focus:border-[#2563EB]');
+        emailInput.classList.add('border-[#EF4444]', 'focus:ring-[#EF4444]', 'focus:border-[#EF4444]');
+      }
+
+      function hideEmailError() {
+        emailError.classList.add('hidden');
+        emailInput.classList.remove('border-[#EF4444]', 'focus:ring-[#EF4444]', 'focus:border-[#EF4444]');
+        emailInput.classList.add('border-[#CBD5E1]', 'focus:ring-[#2563EB]', 'focus:border-[#2563EB]');
+      }
+
+      function showPasswordError(msg) {
+        passwordErrorText.textContent = msg;
+        passwordError.classList.remove('hidden');
+        passwordInput.classList.remove('border-[#CBD5E1]', 'focus:ring-[#2563EB]', 'focus:border-[#2563EB]');
+        passwordInput.classList.add('border-[#EF4444]', 'focus:ring-[#EF4444]', 'focus:border-[#EF4444]');
+      }
+
+      function hidePasswordError() {
+        passwordError.classList.add('hidden');
+        passwordInput.classList.remove('border-[#EF4444]', 'focus:ring-[#EF4444]', 'focus:border-[#EF4444]');
+        passwordInput.classList.add('border-[#CBD5E1]', 'focus:ring-[#2563EB]', 'focus:border-[#2563EB]');
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Reset global error banner
+        errorBanner.classList.add('hidden');
+
+        const emailVal = emailInput.value.trim();
+        const passwordVal = passwordInput.value;
+
+        let hasError = false;
+
+        // Validate Email
+        if (!emailVal) {
+          showEmailError('Trường này không được để trống.');
+          hasError = true;
+        } else if (!emailRegex.test(emailVal)) {
+          showEmailError('Vui lòng nhập địa chỉ email hợp lệ.');
+          hasError = true;
+        } else {
+          hideEmailError();
+        }
+
+        // Validate Password
+        if (!passwordVal) {
+          showPasswordError('Trường này không được để trống.');
+          hasError = true;
+        } else {
+          hidePasswordError();
+        }
+
+        if (hasError) {
+          return;
+        }
+
+        // Demo login: format validation above is the only entry condition.
+        window.location.assign('../finmind_dashboard_nghi_n_c_u_ng_b_watchlist_linh_ho_t/code.html');
+      });
+    });
+  </script>
+
+
+
+</body></html>

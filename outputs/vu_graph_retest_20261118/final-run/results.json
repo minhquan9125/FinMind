@@ -1,0 +1,1284 @@
+[
+  {
+    "id": "G01",
+    "question": "Ai là Chủ tịch FPT?",
+    "expected": "VERIFIED_ANSWER",
+    "http_status": 200,
+    "status": "SYSTEM_UNAVAILABLE",
+    "reason_code": "GRAPH_CHAT_TIMEOUT",
+    "verdict": "FAIL",
+    "reply": "Tra cứu quan hệ quá thời gian chờ. Vui lòng thử lại.",
+    "trace": {
+      "route": "GRAPH",
+      "route_reason": "rule_override topic=RELATIONSHIP_LOOKUP",
+      "model_version": "finmind-hybrid-router-v2",
+      "tasks": [
+        {
+          "id": "g1",
+          "adapter": "GRAPH",
+          "operation": "find_relationships",
+          "params": {
+            "companies": [
+              "FPT"
+            ],
+            "periods": [
+              "LATEST_AVAILABLE_PERIOD"
+            ],
+            "topic": "RELATIONSHIP_LOOKUP",
+            "source_type": "BCTN",
+            "entity_mentions": [],
+            "reporting_entities": [],
+            "targets": [],
+            "position_code": "BOARD_CHAIR",
+            "relation_types": [
+              "HOLDS_ROLE"
+            ],
+            "question": "ai là Chủ tịch FPT?",
+            "retrieval_question": "ai là Chủ tịch FPT?",
+            "doc_type": "ANNUAL_REPORT",
+            "period_resolution_required": true
+          },
+          "depends_on": null
+        }
+      ],
+      "graph_calls": 1,
+      "vector_calls": 1,
+      "graph_source_stale": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+    },
+    "neo4j_reader_calls": [
+      {
+        "method": "versions",
+        "completed": true,
+        "returned_count": 7
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 7
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 8
+      }
+    ],
+    "evidence_count": 0,
+    "answering_status": null,
+    "result": {
+      "request_id": "7eb73138-4203-419e-9384-c29d088f8942",
+      "query_id": null,
+      "execution_mode": "LIVE",
+      "b1_decision": "SEARCH",
+      "status": "SYSTEM_UNAVAILABLE",
+      "reason_code": "GRAPH_CHAT_TIMEOUT",
+      "message": "Tra cứu quan hệ quá thời gian chờ. Vui lòng thử lại.",
+      "scope": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "LATEST_AVAILABLE_PERIOD"
+        ],
+        "metric_code": null,
+        "topic": "RELATIONSHIP_LOOKUP",
+        "source_type": "BCTN",
+        "detected_industry": null,
+        "entity_mentions": [],
+        "measure_basis": null,
+        "reporting_entity": null,
+        "reporting_entities": [],
+        "targets": [],
+        "person_name": null,
+        "position_code": "BOARD_CHAIR",
+        "event_type": null,
+        "relation_types": [
+          "HOLDS_ROLE"
+        ],
+        "operation": "find_relationships",
+        "route_hint": "GRAPH",
+        "_hybrid_context": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "LATEST_AVAILABLE_PERIOD"
+          ],
+          "metric_code": null,
+          "topic": "RELATIONSHIP_LOOKUP",
+          "source_type": "BCTN",
+          "detected_industry": null,
+          "entity_mentions": [],
+          "measure_basis": null,
+          "reporting_entity": null,
+          "reporting_entities": [],
+          "targets": [],
+          "person_name": null,
+          "position_code": "BOARD_CHAIR",
+          "event_type": null,
+          "relation_types": [
+            "HOLDS_ROLE"
+          ],
+          "operation": "find_relationships",
+          "route_hint": "GRAPH"
+        }
+      },
+      "evidence_pack": null,
+      "errors": [],
+      "hybrid_router": {
+        "route": "GRAPH",
+        "route_reason": "rule_override topic=RELATIONSHIP_LOOKUP",
+        "model_version": "finmind-hybrid-router-v2",
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_relationships",
+            "params": {
+              "companies": [
+                "FPT"
+              ],
+              "periods": [
+                "LATEST_AVAILABLE_PERIOD"
+              ],
+              "topic": "RELATIONSHIP_LOOKUP",
+              "source_type": "BCTN",
+              "entity_mentions": [],
+              "reporting_entities": [],
+              "targets": [],
+              "position_code": "BOARD_CHAIR",
+              "relation_types": [
+                "HOLDS_ROLE"
+              ],
+              "question": "ai là Chủ tịch FPT?",
+              "retrieval_question": "ai là Chủ tịch FPT?",
+              "doc_type": "ANNUAL_REPORT",
+              "period_resolution_required": true
+            },
+            "depends_on": null
+          }
+        ],
+        "graph_calls": 1,
+        "vector_calls": 1,
+        "graph_source_stale": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+      }
+    },
+    "graph_retrieval_events": [
+      {
+        "stage": "graph_retrieve",
+        "completed": false,
+        "reason_code": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+      }
+    ]
+  },
+  {
+    "id": "G02",
+    "question": "Ai là Chủ tịch VCB?",
+    "expected": "NO_DATA",
+    "http_status": 200,
+    "status": "SYSTEM_UNAVAILABLE",
+    "reason_code": "GRAPH_CHAT_TIMEOUT",
+    "verdict": "FAIL",
+    "reply": "Tra cứu quan hệ quá thời gian chờ. Vui lòng thử lại.",
+    "trace": {
+      "route": "GRAPH",
+      "route_reason": "rule_override topic=RELATIONSHIP_LOOKUP",
+      "model_version": "finmind-hybrid-router-v2",
+      "tasks": [
+        {
+          "id": "g1",
+          "adapter": "GRAPH",
+          "operation": "find_relationships",
+          "params": {
+            "companies": [
+              "VCB"
+            ],
+            "periods": [
+              "LATEST_AVAILABLE_PERIOD"
+            ],
+            "topic": "RELATIONSHIP_LOOKUP",
+            "source_type": "BCTN",
+            "entity_mentions": [],
+            "reporting_entities": [],
+            "targets": [],
+            "position_code": "BOARD_CHAIR",
+            "relation_types": [
+              "HOLDS_ROLE"
+            ],
+            "question": "ai là Chủ tịch VCB?",
+            "retrieval_question": "ai là Chủ tịch VCB?",
+            "doc_type": "ANNUAL_REPORT",
+            "period_resolution_required": true
+          },
+          "depends_on": null
+        }
+      ],
+      "graph_calls": 1,
+      "vector_calls": 1
+    },
+    "neo4j_reader_calls": [
+      {
+        "method": "versions",
+        "completed": true,
+        "returned_count": 7
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 5
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 6
+      }
+    ],
+    "evidence_count": 0,
+    "answering_status": null,
+    "result": {
+      "request_id": "ddc3ab40-4681-4b6e-b3bb-96c35f500813",
+      "query_id": null,
+      "execution_mode": "LIVE",
+      "b1_decision": "SEARCH",
+      "status": "SYSTEM_UNAVAILABLE",
+      "reason_code": "GRAPH_CHAT_TIMEOUT",
+      "message": "Tra cứu quan hệ quá thời gian chờ. Vui lòng thử lại.",
+      "scope": {
+        "companies": [
+          "VCB"
+        ],
+        "periods": [
+          "LATEST_AVAILABLE_PERIOD"
+        ],
+        "metric_code": null,
+        "topic": "RELATIONSHIP_LOOKUP",
+        "source_type": "BCTN",
+        "detected_industry": null,
+        "entity_mentions": [],
+        "measure_basis": null,
+        "reporting_entity": null,
+        "reporting_entities": [],
+        "targets": [],
+        "person_name": null,
+        "position_code": "BOARD_CHAIR",
+        "event_type": null,
+        "relation_types": [
+          "HOLDS_ROLE"
+        ],
+        "operation": "find_relationships",
+        "route_hint": "GRAPH",
+        "_hybrid_context": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "LATEST_AVAILABLE_PERIOD"
+          ],
+          "metric_code": null,
+          "topic": "RELATIONSHIP_LOOKUP",
+          "source_type": "BCTN",
+          "detected_industry": null,
+          "entity_mentions": [],
+          "measure_basis": null,
+          "reporting_entity": null,
+          "reporting_entities": [],
+          "targets": [],
+          "person_name": null,
+          "position_code": "BOARD_CHAIR",
+          "event_type": null,
+          "relation_types": [
+            "HOLDS_ROLE"
+          ],
+          "operation": "find_relationships",
+          "route_hint": "GRAPH"
+        }
+      },
+      "evidence_pack": null,
+      "errors": [],
+      "hybrid_router": {
+        "route": "GRAPH",
+        "route_reason": "rule_override topic=RELATIONSHIP_LOOKUP",
+        "model_version": "finmind-hybrid-router-v2",
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_relationships",
+            "params": {
+              "companies": [
+                "VCB"
+              ],
+              "periods": [
+                "LATEST_AVAILABLE_PERIOD"
+              ],
+              "topic": "RELATIONSHIP_LOOKUP",
+              "source_type": "BCTN",
+              "entity_mentions": [],
+              "reporting_entities": [],
+              "targets": [],
+              "position_code": "BOARD_CHAIR",
+              "relation_types": [
+                "HOLDS_ROLE"
+              ],
+              "question": "ai là Chủ tịch VCB?",
+              "retrieval_question": "ai là Chủ tịch VCB?",
+              "doc_type": "ANNUAL_REPORT",
+              "period_resolution_required": true
+            },
+            "depends_on": null
+          }
+        ],
+        "graph_calls": 1,
+        "vector_calls": 1
+      }
+    },
+    "graph_retrieval_events": [
+      {
+        "stage": "graph_retrieve",
+        "completed": true,
+        "evidence_count": 0,
+        "relation_count": 0
+      }
+    ]
+  },
+  {
+    "id": "G03",
+    "question": "Ai là Chủ tịch FPT?",
+    "expected": "SYSTEM_UNAVAILABLE",
+    "http_status": 200,
+    "status": "SYSTEM_UNAVAILABLE",
+    "reason_code": "GRAPH_CHAT_UNAVAILABLE",
+    "verdict": "PASS",
+    "reply": "Dịch vụ tra cứu quan hệ tạm thời chưa khả dụng. Vui lòng thử lại.",
+    "trace": {
+      "route": "GRAPH",
+      "route_reason": "rule_override topic=RELATIONSHIP_LOOKUP",
+      "model_version": "finmind-hybrid-router-v2",
+      "tasks": [
+        {
+          "id": "g1",
+          "adapter": "GRAPH",
+          "operation": "find_relationships",
+          "params": {
+            "companies": [
+              "FPT"
+            ],
+            "periods": [
+              "LATEST_AVAILABLE_PERIOD"
+            ],
+            "topic": "RELATIONSHIP_LOOKUP",
+            "source_type": "BCTN",
+            "entity_mentions": [],
+            "reporting_entities": [],
+            "targets": [],
+            "position_code": "BOARD_CHAIR",
+            "relation_types": [
+              "HOLDS_ROLE"
+            ],
+            "question": "ai là Chủ tịch FPT?",
+            "retrieval_question": "ai là Chủ tịch FPT?",
+            "doc_type": "ANNUAL_REPORT",
+            "period_resolution_required": true
+          },
+          "depends_on": null
+        }
+      ],
+      "graph_calls": 1,
+      "vector_calls": 0
+    },
+    "neo4j_reader_calls": [
+      {
+        "method": "versions",
+        "completed": false,
+        "error_type": "ServiceUnavailable"
+      }
+    ],
+    "evidence_count": 0,
+    "answering_status": null,
+    "result": {
+      "request_id": "ba324e28-4061-4d80-855f-1e973387ded8",
+      "query_id": null,
+      "execution_mode": "LIVE",
+      "b1_decision": "SEARCH",
+      "status": "SYSTEM_UNAVAILABLE",
+      "reason_code": "GRAPH_CHAT_UNAVAILABLE",
+      "message": "Dịch vụ tra cứu quan hệ tạm thời chưa khả dụng. Vui lòng thử lại.",
+      "scope": {
+        "companies": [
+          "FPT"
+        ],
+        "periods": [
+          "LATEST_AVAILABLE_PERIOD"
+        ],
+        "metric_code": null,
+        "topic": "RELATIONSHIP_LOOKUP",
+        "source_type": "BCTN",
+        "detected_industry": null,
+        "entity_mentions": [],
+        "measure_basis": null,
+        "reporting_entity": null,
+        "reporting_entities": [],
+        "targets": [],
+        "person_name": null,
+        "position_code": "BOARD_CHAIR",
+        "event_type": null,
+        "relation_types": [
+          "HOLDS_ROLE"
+        ],
+        "operation": "find_relationships",
+        "route_hint": "GRAPH",
+        "_hybrid_context": {
+          "companies": [
+            "FPT"
+          ],
+          "periods": [
+            "LATEST_AVAILABLE_PERIOD"
+          ],
+          "metric_code": null,
+          "topic": "RELATIONSHIP_LOOKUP",
+          "source_type": "BCTN",
+          "detected_industry": null,
+          "entity_mentions": [],
+          "measure_basis": null,
+          "reporting_entity": null,
+          "reporting_entities": [],
+          "targets": [],
+          "person_name": null,
+          "position_code": "BOARD_CHAIR",
+          "event_type": null,
+          "relation_types": [
+            "HOLDS_ROLE"
+          ],
+          "operation": "find_relationships",
+          "route_hint": "GRAPH"
+        }
+      },
+      "evidence_pack": null,
+      "errors": [],
+      "hybrid_router": {
+        "route": "GRAPH",
+        "route_reason": "rule_override topic=RELATIONSHIP_LOOKUP",
+        "model_version": "finmind-hybrid-router-v2",
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_relationships",
+            "params": {
+              "companies": [
+                "FPT"
+              ],
+              "periods": [
+                "LATEST_AVAILABLE_PERIOD"
+              ],
+              "topic": "RELATIONSHIP_LOOKUP",
+              "source_type": "BCTN",
+              "entity_mentions": [],
+              "reporting_entities": [],
+              "targets": [],
+              "position_code": "BOARD_CHAIR",
+              "relation_types": [
+                "HOLDS_ROLE"
+              ],
+              "question": "ai là Chủ tịch FPT?",
+              "retrieval_question": "ai là Chủ tịch FPT?",
+              "doc_type": "ANNUAL_REPORT",
+              "period_resolution_required": true
+            },
+            "depends_on": null
+          }
+        ],
+        "graph_calls": 1,
+        "vector_calls": 0
+      }
+    },
+    "graph_retrieval_events": [
+      {
+        "stage": "graph_retrieve",
+        "completed": false,
+        "reason_code": "ServiceUnavailable"
+      }
+    ]
+  },
+  {
+    "id": "G04",
+    "question": "Ai là Chủ tịch TCB?",
+    "expected": "VERIFIED_ANSWER",
+    "http_status": 200,
+    "status": "SYSTEM_UNAVAILABLE",
+    "reason_code": "GRAPH_CHAT_TIMEOUT",
+    "verdict": "FAIL",
+    "reply": "Tra cứu quan hệ quá thời gian chờ. Vui lòng thử lại.",
+    "trace": {
+      "route": "GRAPH",
+      "route_reason": "rule_override topic=RELATIONSHIP_LOOKUP",
+      "model_version": "finmind-hybrid-router-v2",
+      "tasks": [
+        {
+          "id": "g1",
+          "adapter": "GRAPH",
+          "operation": "find_relationships",
+          "params": {
+            "companies": [
+              "TCB"
+            ],
+            "periods": [
+              "LATEST_AVAILABLE_PERIOD"
+            ],
+            "topic": "RELATIONSHIP_LOOKUP",
+            "source_type": "BCTN",
+            "entity_mentions": [],
+            "reporting_entities": [],
+            "targets": [],
+            "position_code": "BOARD_CHAIR",
+            "relation_types": [
+              "HOLDS_ROLE"
+            ],
+            "question": "ai là Chủ tịch TCB?",
+            "retrieval_question": "ai là Chủ tịch TCB?",
+            "doc_type": "ANNUAL_REPORT",
+            "period_resolution_required": true
+          },
+          "depends_on": null
+        }
+      ],
+      "graph_calls": 1,
+      "vector_calls": 1,
+      "graph_source_stale": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+    },
+    "neo4j_reader_calls": [
+      {
+        "method": "versions",
+        "completed": true,
+        "returned_count": 7
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 2
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 3
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 28
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 29
+      }
+    ],
+    "evidence_count": 0,
+    "answering_status": null,
+    "result": {
+      "request_id": "bfd83fcc-21a2-4616-a60b-65963a549be0",
+      "query_id": null,
+      "execution_mode": "LIVE",
+      "b1_decision": "SEARCH",
+      "status": "SYSTEM_UNAVAILABLE",
+      "reason_code": "GRAPH_CHAT_TIMEOUT",
+      "message": "Tra cứu quan hệ quá thời gian chờ. Vui lòng thử lại.",
+      "scope": {
+        "companies": [
+          "TCB"
+        ],
+        "periods": [
+          "LATEST_AVAILABLE_PERIOD"
+        ],
+        "metric_code": null,
+        "topic": "RELATIONSHIP_LOOKUP",
+        "source_type": "BCTN",
+        "detected_industry": null,
+        "entity_mentions": [],
+        "measure_basis": null,
+        "reporting_entity": null,
+        "reporting_entities": [],
+        "targets": [],
+        "person_name": null,
+        "position_code": "BOARD_CHAIR",
+        "event_type": null,
+        "relation_types": [
+          "HOLDS_ROLE"
+        ],
+        "operation": "find_relationships",
+        "route_hint": "GRAPH",
+        "_hybrid_context": {
+          "companies": [
+            "TCB"
+          ],
+          "periods": [
+            "LATEST_AVAILABLE_PERIOD"
+          ],
+          "metric_code": null,
+          "topic": "RELATIONSHIP_LOOKUP",
+          "source_type": "BCTN",
+          "detected_industry": null,
+          "entity_mentions": [],
+          "measure_basis": null,
+          "reporting_entity": null,
+          "reporting_entities": [],
+          "targets": [],
+          "person_name": null,
+          "position_code": "BOARD_CHAIR",
+          "event_type": null,
+          "relation_types": [
+            "HOLDS_ROLE"
+          ],
+          "operation": "find_relationships",
+          "route_hint": "GRAPH"
+        }
+      },
+      "evidence_pack": null,
+      "errors": [],
+      "hybrid_router": {
+        "route": "GRAPH",
+        "route_reason": "rule_override topic=RELATIONSHIP_LOOKUP",
+        "model_version": "finmind-hybrid-router-v2",
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_relationships",
+            "params": {
+              "companies": [
+                "TCB"
+              ],
+              "periods": [
+                "LATEST_AVAILABLE_PERIOD"
+              ],
+              "topic": "RELATIONSHIP_LOOKUP",
+              "source_type": "BCTN",
+              "entity_mentions": [],
+              "reporting_entities": [],
+              "targets": [],
+              "position_code": "BOARD_CHAIR",
+              "relation_types": [
+                "HOLDS_ROLE"
+              ],
+              "question": "ai là Chủ tịch TCB?",
+              "retrieval_question": "ai là Chủ tịch TCB?",
+              "doc_type": "ANNUAL_REPORT",
+              "period_resolution_required": true
+            },
+            "depends_on": null
+          }
+        ],
+        "graph_calls": 1,
+        "vector_calls": 1,
+        "graph_source_stale": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+      }
+    },
+    "graph_retrieval_events": [
+      {
+        "stage": "graph_retrieve",
+        "completed": false,
+        "reason_code": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+      }
+    ]
+  },
+  {
+    "id": "G05",
+    "question": "Theo tin tức, VCB hợp tác với những đối tác nào?",
+    "expected": "EXPLORATORY_RELATIONSHIP_SCOPE",
+    "http_status": 200,
+    "status": "INSUFFICIENT_EVIDENCE",
+    "reason_code": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS",
+    "verdict": "REVIEW",
+    "reply": "Chưa xác minh được quan hệ với nguồn của kho dữ liệu đang dùng.",
+    "trace": {
+      "route": "BOTH",
+      "route_reason": "rule_override topic=EVENT_IMPACT",
+      "model_version": "finmind-hybrid-router-v2",
+      "tasks": [
+        {
+          "id": "g1",
+          "adapter": "GRAPH",
+          "operation": "resolve_event_entities",
+          "params": {
+            "companies": [
+              "VCB"
+            ],
+            "periods": [
+              "LATEST_AVAILABLE_PERIOD"
+            ],
+            "topic": "EVENT_IMPACT",
+            "source_type": "BCTC",
+            "entity_mentions": [],
+            "reporting_entities": [],
+            "targets": [],
+            "relation_types": [],
+            "question": "theo tin tức, VCB hợp tác với những đối tác nào?",
+            "retrieval_question": "theo tin tức, VCB hợp tác với những đối tác nào?",
+            "doc_type": "FINANCIAL_STATEMENT",
+            "period_resolution_required": true,
+            "company_scope_policy": "EXPLICIT_OR_RESOLVED"
+          },
+          "depends_on": null
+        },
+        {
+          "id": "v1",
+          "adapter": "CONTENT",
+          "operation": "analyze_event_impact",
+          "params": {
+            "companies": [
+              "VCB"
+            ],
+            "periods": [
+              "LATEST_AVAILABLE_PERIOD"
+            ],
+            "topic": "EVENT_IMPACT",
+            "source_type": "BCTC",
+            "entity_mentions": [],
+            "reporting_entities": [],
+            "targets": [],
+            "relation_types": [],
+            "question": "theo tin tức, VCB hợp tác với những đối tác nào?",
+            "retrieval_question": "theo tin tức, VCB hợp tác với những đối tác nào?",
+            "doc_type": "FINANCIAL_STATEMENT",
+            "period_resolution_required": true,
+            "company_scope_policy": "EXPLICIT_OR_RESOLVED",
+            "resolved_companies": []
+          },
+          "depends_on": "g1"
+        }
+      ],
+      "graph_calls": 1,
+      "vector_calls": 0,
+      "graph_source_stale": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+    },
+    "neo4j_reader_calls": [
+      {
+        "method": "versions",
+        "completed": true,
+        "returned_count": 7
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 15
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 16
+      }
+    ],
+    "evidence_count": 0,
+    "answering_status": null,
+    "result": {
+      "request_id": "59f6ef74-4303-4d56-955e-b6cffb43cdd3",
+      "query_id": null,
+      "execution_mode": "LIVE",
+      "b1_decision": "SEARCH",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason_code": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS",
+      "message": "Chưa xác minh được quan hệ với nguồn của kho dữ liệu đang dùng.",
+      "scope": {
+        "companies": [
+          "VCB"
+        ],
+        "periods": [
+          "LATEST_AVAILABLE_PERIOD"
+        ],
+        "metric_code": null,
+        "topic": "EVENT_IMPACT",
+        "source_type": "BCTC",
+        "detected_industry": null,
+        "entity_mentions": [],
+        "measure_basis": null,
+        "reporting_entity": null,
+        "reporting_entities": [],
+        "targets": [],
+        "person_name": null,
+        "position_code": null,
+        "event_type": null,
+        "relation_types": [],
+        "operation": "resolve_event_entities",
+        "route_hint": "BOTH",
+        "_hybrid_context": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "LATEST_AVAILABLE_PERIOD"
+          ],
+          "metric_code": null,
+          "topic": "EVENT_IMPACT",
+          "source_type": "BCTC",
+          "detected_industry": null,
+          "entity_mentions": [],
+          "measure_basis": null,
+          "reporting_entity": null,
+          "reporting_entities": [],
+          "targets": [],
+          "person_name": null,
+          "position_code": null,
+          "event_type": null,
+          "relation_types": [],
+          "operation": "resolve_event_entities",
+          "route_hint": "BOTH"
+        }
+      },
+      "evidence_pack": null,
+      "errors": [],
+      "hybrid_router": {
+        "route": "BOTH",
+        "route_reason": "rule_override topic=EVENT_IMPACT",
+        "model_version": "finmind-hybrid-router-v2",
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "resolve_event_entities",
+            "params": {
+              "companies": [
+                "VCB"
+              ],
+              "periods": [
+                "LATEST_AVAILABLE_PERIOD"
+              ],
+              "topic": "EVENT_IMPACT",
+              "source_type": "BCTC",
+              "entity_mentions": [],
+              "reporting_entities": [],
+              "targets": [],
+              "relation_types": [],
+              "question": "theo tin tức, VCB hợp tác với những đối tác nào?",
+              "retrieval_question": "theo tin tức, VCB hợp tác với những đối tác nào?",
+              "doc_type": "FINANCIAL_STATEMENT",
+              "period_resolution_required": true,
+              "company_scope_policy": "EXPLICIT_OR_RESOLVED"
+            },
+            "depends_on": null
+          },
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "analyze_event_impact",
+            "params": {
+              "companies": [
+                "VCB"
+              ],
+              "periods": [
+                "LATEST_AVAILABLE_PERIOD"
+              ],
+              "topic": "EVENT_IMPACT",
+              "source_type": "BCTC",
+              "entity_mentions": [],
+              "reporting_entities": [],
+              "targets": [],
+              "relation_types": [],
+              "question": "theo tin tức, VCB hợp tác với những đối tác nào?",
+              "retrieval_question": "theo tin tức, VCB hợp tác với những đối tác nào?",
+              "doc_type": "FINANCIAL_STATEMENT",
+              "period_resolution_required": true,
+              "company_scope_policy": "EXPLICIT_OR_RESOLVED",
+              "resolved_companies": []
+            },
+            "depends_on": "g1"
+          }
+        ],
+        "graph_calls": 1,
+        "vector_calls": 0,
+        "graph_source_stale": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+      }
+    },
+    "graph_retrieval_events": [
+      {
+        "stage": "graph_retrieve",
+        "completed": false,
+        "reason_code": "GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS"
+      }
+    ],
+    "review_note": "Không có oracle chứng minh graph rỗng; quan sát planner EVENT_IMPACT/BCTC cho câu hỏi đối tác theo tin tức."
+  },
+  {
+    "id": "G06",
+    "question": "Theo tin tức, ai là Chủ tịch VCB?",
+    "expected": "NO_DATA",
+    "http_status": 200,
+    "status": "NO_DATA",
+    "reason_code": "GRAPH_NO_VERIFIED_RELATIONS",
+    "verdict": "PASS",
+    "reply": "Chưa tìm thấy quan hệ có nguồn đã kiểm tra trong phạm vi bạn hỏi.",
+    "trace": {
+      "route": "BOTH",
+      "route_reason": "rule_override topic=MULTI_HOP",
+      "model_version": "finmind-hybrid-router-v2",
+      "tasks": [
+        {
+          "id": "g1",
+          "adapter": "GRAPH",
+          "operation": "find_relationships",
+          "params": {
+            "companies": [
+              "VCB"
+            ],
+            "periods": [
+              "LATEST_AVAILABLE_PERIOD"
+            ],
+            "topic": "MULTI_HOP",
+            "source_type": "BCTC",
+            "entity_mentions": [],
+            "reporting_entities": [],
+            "targets": [],
+            "position_code": "BOARD_CHAIR",
+            "relation_types": [
+              "HOLDS_ROLE"
+            ],
+            "question": "theo tin tức, ai là Chủ tịch VCB?",
+            "retrieval_question": "theo tin tức, ai là Chủ tịch VCB?",
+            "doc_type": "FINANCIAL_STATEMENT",
+            "period_resolution_required": true,
+            "company_scope_policy": "EXPLICIT_OR_RESOLVED"
+          },
+          "depends_on": null
+        },
+        {
+          "id": "v1",
+          "adapter": "CONTENT",
+          "operation": "find_metric",
+          "params": {
+            "companies": [
+              "VCB"
+            ],
+            "periods": [
+              "LATEST_AVAILABLE_PERIOD"
+            ],
+            "topic": "MULTI_HOP",
+            "source_type": "BCTC",
+            "entity_mentions": [],
+            "reporting_entities": [],
+            "targets": [],
+            "position_code": "BOARD_CHAIR",
+            "relation_types": [
+              "HOLDS_ROLE"
+            ],
+            "question": "theo tin tức, ai là Chủ tịch VCB?",
+            "retrieval_question": "theo tin tức, ai là Chủ tịch VCB?",
+            "doc_type": "FINANCIAL_STATEMENT",
+            "period_resolution_required": true,
+            "company_scope_policy": "EXPLICIT_OR_RESOLVED",
+            "resolved_companies": []
+          },
+          "depends_on": "g1"
+        }
+      ],
+      "graph_calls": 1,
+      "vector_calls": 0
+    },
+    "neo4j_reader_calls": [
+      {
+        "method": "versions",
+        "completed": true,
+        "returned_count": 7
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 0
+      },
+      {
+        "method": "entities",
+        "completed": true,
+        "returned_count": 1
+      },
+      {
+        "method": "neighborhood",
+        "completed": true,
+        "returned_count": 5
+      },
+      {
+        "method": "nodes",
+        "completed": true,
+        "returned_count": 6
+      }
+    ],
+    "evidence_count": 0,
+    "answering_status": null,
+    "result": {
+      "request_id": "d2bcd340-40e9-49d4-a34c-0fae5403eaca",
+      "query_id": null,
+      "execution_mode": "LIVE",
+      "b1_decision": "SEARCH",
+      "status": "NO_DATA",
+      "reason_code": "GRAPH_NO_VERIFIED_RELATIONS",
+      "message": "Chưa tìm thấy quan hệ có nguồn đã kiểm tra trong phạm vi bạn hỏi.",
+      "scope": {
+        "companies": [
+          "VCB"
+        ],
+        "periods": [
+          "LATEST_AVAILABLE_PERIOD"
+        ],
+        "metric_code": null,
+        "topic": "MULTI_HOP",
+        "source_type": "BCTC",
+        "detected_industry": null,
+        "entity_mentions": [],
+        "measure_basis": null,
+        "reporting_entity": null,
+        "reporting_entities": [],
+        "targets": [],
+        "person_name": null,
+        "position_code": "BOARD_CHAIR",
+        "event_type": null,
+        "relation_types": [
+          "HOLDS_ROLE"
+        ],
+        "operation": "find_relationships",
+        "route_hint": "BOTH",
+        "_hybrid_context": {
+          "companies": [
+            "VCB"
+          ],
+          "periods": [
+            "LATEST_AVAILABLE_PERIOD"
+          ],
+          "metric_code": null,
+          "topic": "MULTI_HOP",
+          "source_type": "BCTC",
+          "detected_industry": null,
+          "entity_mentions": [],
+          "measure_basis": null,
+          "reporting_entity": null,
+          "reporting_entities": [],
+          "targets": [],
+          "person_name": null,
+          "position_code": "BOARD_CHAIR",
+          "event_type": null,
+          "relation_types": [
+            "HOLDS_ROLE"
+          ],
+          "operation": "find_relationships",
+          "route_hint": "BOTH"
+        }
+      },
+      "evidence_pack": null,
+      "errors": [],
+      "hybrid_router": {
+        "route": "BOTH",
+        "route_reason": "rule_override topic=MULTI_HOP",
+        "model_version": "finmind-hybrid-router-v2",
+        "tasks": [
+          {
+            "id": "g1",
+            "adapter": "GRAPH",
+            "operation": "find_relationships",
+            "params": {
+              "companies": [
+                "VCB"
+              ],
+              "periods": [
+                "LATEST_AVAILABLE_PERIOD"
+              ],
+              "topic": "MULTI_HOP",
+              "source_type": "BCTC",
+              "entity_mentions": [],
+              "reporting_entities": [],
+              "targets": [],
+              "position_code": "BOARD_CHAIR",
+              "relation_types": [
+                "HOLDS_ROLE"
+              ],
+              "question": "theo tin tức, ai là Chủ tịch VCB?",
+              "retrieval_question": "theo tin tức, ai là Chủ tịch VCB?",
+              "doc_type": "FINANCIAL_STATEMENT",
+              "period_resolution_required": true,
+              "company_scope_policy": "EXPLICIT_OR_RESOLVED"
+            },
+            "depends_on": null
+          },
+          {
+            "id": "v1",
+            "adapter": "CONTENT",
+            "operation": "find_metric",
+            "params": {
+              "companies": [
+                "VCB"
+              ],
+              "periods": [
+                "LATEST_AVAILABLE_PERIOD"
+              ],
+              "topic": "MULTI_HOP",
+              "source_type": "BCTC",
+              "entity_mentions": [],
+              "reporting_entities": [],
+              "targets": [],
+              "position_code": "BOARD_CHAIR",
+              "relation_types": [
+                "HOLDS_ROLE"
+              ],
+              "question": "theo tin tức, ai là Chủ tịch VCB?",
+              "retrieval_question": "theo tin tức, ai là Chủ tịch VCB?",
+              "doc_type": "FINANCIAL_STATEMENT",
+              "period_resolution_required": true,
+              "company_scope_policy": "EXPLICIT_OR_RESOLVED",
+              "resolved_companies": []
+            },
+            "depends_on": "g1"
+          }
+        ],
+        "graph_calls": 1,
+        "vector_calls": 0
+      }
+    },
+    "graph_retrieval_events": [
+      {
+        "stage": "graph_retrieve",
+        "completed": true,
+        "evidence_count": 0,
+        "relation_count": 0
+      }
+    ]
+  }
+]

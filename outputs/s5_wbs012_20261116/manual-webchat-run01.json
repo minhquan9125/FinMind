@@ -1,0 +1,31 @@
+{
+  "case_id": "S5-WBS01.2-CONTEXT-LIVE-USER-REPORTED",
+  "recorded_date": "2026-11-16",
+  "evidence_source": "USER_PASTED_WEB_CHAT_TRANSCRIPT",
+  "direct_browser_observation": false,
+  "http_status_observed": false,
+  "turns": [
+    {
+      "question": "Lợi nhuận sau thuế của BID năm 2025 là bao nhiêu?",
+      "response_heading": "Chưa đủ bằng chứng",
+      "response_text": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.\nKho dữ liệu chưa có đoạn nguồn khớp đúng mã, kỳ và chỉ tiêu bạn hỏi. Thử đổi kỳ, đổi chỉ tiêu hoặc hỏi cụ thể hơn. Hiện tại FinMind tra cứu được giá cổ phiếu, tin tức theo mã và thời gian, và chỉ tiêu báo cáo tài chính theo mã, kỳ và chỉ tiêu cụ thể."
+    },
+    {
+      "question": "Còn VCB thì sao?",
+      "response_heading": "Chưa đủ bằng chứng",
+      "response_text": "Chưa tìm thấy bằng chứng phù hợp trong corpus cho đúng mã, kỳ và chỉ tiêu này.\nKho dữ liệu chưa có đoạn nguồn khớp đúng mã, kỳ và chỉ tiêu bạn hỏi. Thử đổi kỳ, đổi chỉ tiêu hoặc hỏi cụ thể hơn. Hiện tại FinMind tra cứu được giá cổ phiếu, tin tức theo mã và thời gian, và chỉ tiêu báo cáo tài chính theo mã, kỳ và chỉ tiêu cụ thể.",
+      "visible_followups_reported": ["Tin tức mới về VCB", "Giá VCB hiện tại"]
+    }
+  ],
+  "observations": {
+    "both_turns_have_visible_response": true,
+    "followup_company_vcb_indicated": true,
+    "metric_and_period_preserved": "NOT_YET_CONFIRMED",
+    "retrieval_reports_insufficient_evidence": true,
+    "corpus_actually_missing_evidence": "NOT_ESTABLISHED_BY_TRANSCRIPT",
+    "gemini_used_by_chat": "NOT_OBSERVED",
+    "token_expiry_or_refresh": "NOT_OBSERVED",
+    "new_session_isolation": "NOT_TESTED_IN_THIS_TRANSCRIPT"
+  },
+  "conclusion": "Partial live UI evidence: two visible responses and VCB follow-ups; full context and token acceptance remain pending."
+}

@@ -1,0 +1,486 @@
+{
+  "page_type": "mixed",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "2.2. Hoạt động của Ban kiểm soát:",
+      "box_2d": [
+        95,
+        123,
+        108,
+        476
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "❖ Các phiên họp của Ban Kiểm soát:",
+      "box_2d": [
+        117,
+        123,
+        133,
+        503
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        142,
+        181,
+        303,
+        882
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Phiên họp"
+          ],
+          "box_2d": [
+            142,
+            181,
+            188,
+            325
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Số lượng thành",
+            "viên tham dự"
+          ],
+          "box_2d": [
+            142,
+            325,
+            188,
+            487
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Nội dung / Kết luận"
+          ],
+          "box_2d": [
+            142,
+            487,
+            188,
+            882
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Phiên 01 28/11/2025",
+          "note": null,
+          "box_2d": [
+            188,
+            181,
+            245,
+            882
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "Phiên 01 28/11/2025",
+              "box_2d": [
+                188,
+                181,
+                245,
+                325
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "03/03",
+              "box_2d": [
+                188,
+                325,
+                245,
+                487
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Thẩm định Báo cáo tài chính Bán niên 2025 của CTCP Tập đoàn Công nghệ CMC",
+              "box_2d": [
+                188,
+                487,
+                245,
+                882
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Phiên 2 19/06/2026",
+          "note": null,
+          "box_2d": [
+            245,
+            181,
+            303,
+            882
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "Phiên 2 19/06/2026",
+              "box_2d": [
+                245,
+                181,
+                303,
+                325
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "03/03",
+              "box_2d": [
+                245,
+                325,
+                303,
+                487
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "Thẩm định Báo cáo tài chính năm 2025 của CTCP Tập đoàn Công nghệ CMC",
+              "box_2d": [
+                245,
+                487,
+                303,
+                882
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Ngoài ra, Ban Kiểm soát tham dự và tham gia thảo luận trực tiếp tại 04 cuộc họp của Hội đồng quản trị trong năm 2025 về đánh giá kết quả hoạt động sản xuất kinh doanh, hoạt động đầu tư hàng quý và kế hoạch cho các quý tiếp theo bao gồm:",
+      "box_2d": [
+        322,
+        142,
+        373,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        382,
+        215,
+        487,
+        834
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "Phiên họp"
+          ],
+          "box_2d": [
+            382,
+            215,
+            413,
+            514
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Số lượng thành viên tham dự"
+          ],
+          "box_2d": [
+            382,
+            514,
+            413,
+            834
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "Phiên 1: 05/05/2025",
+          "note": null,
+          "box_2d": [
+            413,
+            215,
+            431,
+            834
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "Phiên 1: 05/05/2025",
+              "box_2d": [
+                413,
+                215,
+                431,
+                514
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "03/03",
+              "box_2d": [
+                413,
+                514,
+                431,
+                834
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Phiên 2: 15/08/2025",
+          "note": null,
+          "box_2d": [
+            431,
+            215,
+            450,
+            834
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "Phiên 2: 15/08/2025",
+              "box_2d": [
+                431,
+                215,
+                450,
+                514
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "03/03",
+              "box_2d": [
+                431,
+                514,
+                450,
+                834
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Phiên 3: 05/11/2025",
+          "note": null,
+          "box_2d": [
+            450,
+            215,
+            468,
+            834
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "Phiên 3: 05/11/2025",
+              "box_2d": [
+                450,
+                215,
+                468,
+                514
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "03/03",
+              "box_2d": [
+                450,
+                514,
+                468,
+                834
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "Phiên 4: 10/02/2026",
+          "note": null,
+          "box_2d": [
+            468,
+            215,
+            487,
+            834
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "Phiên 4: 10/02/2026",
+              "box_2d": [
+                468,
+                215,
+                487,
+                514
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "03/03",
+              "box_2d": [
+                468,
+                514,
+                487,
+                834
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "❖ Các hoạt động chính của Ban kiểm soát năm 2025:",
+      "box_2d": [
+        496,
+        123,
+        512,
+        633
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "- Giám sát các hoạt động của Hội đồng Quản trị (HĐQT), Tổng Giám đốc (TGĐ) và Ban Điều hành (BĐH) theo Luật doanh nghiệp, Luật Chứng khoán, Điều lệ Công ty và các nghị quyết của Đại hội đồng cổ đông đã thông qua.",
+      "box_2d": [
+        519,
+        113,
+        571,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "- Tham dự các cuộc họp của Hội đồng quản trị về kế hoạch, kết quả kinh doanh của Công ty mẹ và các công ty con trong tập đoàn CMC và triển khai các công tác theo Nghị quyết Đại hội đồng cổ đông.",
+      "box_2d": [
+        581,
+        113,
+        633,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "- Xem xét, đánh giá định kỳ báo cáo tình hình kinh doanh, báo cáo quản trị, báo cáo tài chính 06 tháng và báo cáo năm 2025 của Công ty.",
+      "box_2d": [
+        643,
+        113,
+        679,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "- Xem xét, đánh giá các hợp đồng, giao dịch với các bên liên quan thuộc thẩm quyền phê duyệt của Hội đồng quản trị/Đại hội đồng cổ đông theo quy định.",
+      "box_2d": [
+        689,
+        113,
+        725,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "- Phối hợp làm việc với bộ phận Kiểm toán nội bộ, Quản trị rủi ro và Kiểm soát tuân thủ để rà soát và đánh giá hiệu quả, hiệu lực của hệ thống kiểm soát nội bộ, kiểm toán nội bộ, quản lý rủi ro và cảnh báo sớm của Công ty và đưa ra các kiến nghị nhằm sửa đổi, bổ sung và nâng cao các hệ thống này.",
+      "box_2d": [
+        735,
+        113,
+        804,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "❖ Sự phối hợp hoạt động giữa BKS đối với hoạt động của HĐQT, Ban Điều hành và các cán bộ quản lý khác:",
+      "box_2d": [
+        814,
+        123,
+        850,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "- Ban Kiểm soát được nhận đầy đủ thông tin, báo cáo theo quy định từ Ban Điều hành, Hội đồng quản trị.",
+      "box_2d": [
+        860,
+        113,
+        887,
+        908
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    },
+    {
+      "type": "paragraph",
+      "text": "67",
+      "box_2d": [
+        924,
+        906,
+        937,
+        925
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "2.2. Hoạt động của Ban kiểm soát:\n❖ Các phiên họp của Ban Kiểm soát:\nPhiên họp\nSố lượng thành\nviên tham dự\nNội dung / Kết luận\nPhiên 01 28/11/2025 Phiên 01 28/11/2025 03/03 Thẩm định Báo cáo tài chính Bán niên 2025 của CTCP Tập đoàn Công nghệ CMC\nPhiên 2 19/06/2026 Phiên 2 19/06/2026 03/03 Thẩm định Báo cáo tài chính năm 2025 của CTCP Tập đoàn Công nghệ CMC\nNgoài ra, Ban Kiểm soát tham dự và tham gia thảo luận trực tiếp tại 04 cuộc họp của Hội đồng quản trị trong năm 2025 về đánh giá kết quả hoạt động sản xuất kinh doanh, hoạt động đầu tư hàng quý và kế hoạch cho các quý tiếp theo bao gồm:\nPhiên họp\nSố lượng thành viên tham dự\nPhiên 1: 05/05/2025 Phiên 1: 05/05/2025 03/03\nPhiên 2: 15/08/2025 Phiên 2: 15/08/2025 03/03\nPhiên 3: 05/11/2025 Phiên 3: 05/11/2025 03/03\nPhiên 4: 10/02/2026 Phiên 4: 10/02/2026 03/03\n❖ Các hoạt động chính của Ban kiểm soát năm 2025:\n- Giám sát các hoạt động của Hội đồng Quản trị (HĐQT), Tổng Giám đốc (TGĐ) và Ban Điều hành (BĐH) theo Luật doanh nghiệp, Luật Chứng khoán, Điều lệ Công ty và các nghị quyết của Đại hội đồng cổ đông đã thông qua.\n- Tham dự các cuộc họp của Hội đồng quản trị về kế hoạch, kết quả kinh doanh của Công ty mẹ và các công ty con trong tập đoàn CMC và triển khai các công tác theo Nghị quyết Đại hội đồng cổ đông.\n- Xem xét, đánh giá định kỳ báo cáo tình hình kinh doanh, báo cáo quản trị, báo cáo tài chính 06 tháng và báo cáo năm 2025 của Công ty.\n- Xem xét, đánh giá các hợp đồng, giao dịch với các bên liên quan thuộc thẩm quyền phê duyệt của Hội đồng quản trị/Đại hội đồng cổ đông theo quy định.\n- Phối hợp làm việc với bộ phận Kiểm toán nội bộ, Quản trị rủi ro và Kiểm soát tuân thủ để rà soát và đánh giá hiệu quả, hiệu lực của hệ thống kiểm soát nội bộ, kiểm toán nội bộ, quản lý rủi ro và cảnh báo sớm của Công ty và đưa ra các kiến nghị nhằm sửa đổi, bổ sung và nâng cao các hệ thống này.\n❖ Sự phối hợp hoạt động giữa BKS đối với hoạt động của HĐQT, Ban Điều hành và các cán bộ quản lý khác:\n- Ban Kiểm soát được nhận đầy đủ thông tin, báo cáo theo quy định từ Ban Điều hành, Hội đồng quản trị.\n67",
+  "unreadable": []
+}

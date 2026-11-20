@@ -1,0 +1,54 @@
+{
+  "pdf": "D:\\finmind\\data\\references\\vietstock\\annual_reports\\files_pdf\\VCB\\2024\\VCB_2024_501264.pdf",
+  "pages": 1,
+  "routes": {
+    "tesseract+gemini": 1
+  },
+  "status": {
+    "OK": 1
+  },
+  "flags": {},
+  "reviewPages": [],
+  "seconds": {
+    "textLayer": 0.101,
+    "renderAndTesseract": 2.976,
+    "gemini": 18.089,
+    "total": 21.234
+  },
+  "geminiApi": {
+    "calls": 1,
+    "failedCalls": 0,
+    "seconds": 18.082,
+    "input_tokens": 1421,
+    "output_tokens": 1597,
+    "thinking_tokens": 1945,
+    "cache_read_tokens": 0
+  },
+  "openrouterApi": {
+    "calls": 0,
+    "failedCalls": 0,
+    "seconds": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0
+  },
+  "cache": {
+    "tesseractHits": 0,
+    "geminiHits": 0,
+    "openrouterHits": 0
+  },
+  "config": {
+    "out": "D:\\finmind\\tmp\\ocr-router-model-fallback-2024",
+    "pages": "1",
+    "mode": "always",
+    "model": "gemini-3.6-flash",
+    "batch": 4,
+    "geminiConcurrency": 1,
+    "geminiTimeout": 300,
+    "tessWorkers": 2,
+    "minChars": 999999,
+    "minConf": 90,
+    "longSide": 2200
+  }
+}

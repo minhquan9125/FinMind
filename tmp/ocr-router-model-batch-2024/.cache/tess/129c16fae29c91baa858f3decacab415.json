@@ -1,0 +1,75 @@
+{
+  "text": "02\n\nTÔNG QUAN\nVỀ ITD",
+  "chars": 15,
+  "words": 5,
+  "wordItems": [
+    {
+      "text": "02",
+      "bbox": [
+        113,
+        102,
+        289,
+        228
+      ],
+      "conf": 96.645927,
+      "block": 1,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "TÔNG",
+      "bbox": [
+        301,
+        909,
+        742,
+        1110
+      ],
+      "conf": 57.74086,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "QUAN",
+      "bbox": [
+        801,
+        937,
+        1244,
+        1062
+      ],
+      "conf": 91.332588,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1
+    },
+    {
+      "text": "VỀ",
+      "bbox": [
+        524,
+        1113,
+        726,
+        1239
+      ],
+      "conf": 93.299156,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    },
+    {
+      "text": "ITD",
+      "bbox": [
+        788,
+        1127,
+        1021,
+        1239
+      ],
+      "conf": 92.792236,
+      "block": 2,
+      "paragraph": 1,
+      "line": 2
+    }
+  ],
+  "meanConf": 86,
+  "lowConfRatio": 0.2,
+  "seconds": 0.293
+}

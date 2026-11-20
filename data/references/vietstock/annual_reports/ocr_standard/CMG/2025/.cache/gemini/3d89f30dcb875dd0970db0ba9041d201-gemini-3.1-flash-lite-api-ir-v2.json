@@ -1,0 +1,1106 @@
+{
+  "page_type": "table",
+  "blocks": [
+    {
+      "type": "table",
+      "text": null,
+      "box_2d": [
+        100,
+        121,
+        852,
+        923
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [
+        {
+          "key": "c1",
+          "header_lines": [
+            "STT"
+          ],
+          "box_2d": [
+            100,
+            121,
+            135,
+            182
+          ]
+        },
+        {
+          "key": "c2",
+          "header_lines": [
+            "Số Nghị quyết"
+          ],
+          "box_2d": [
+            100,
+            182,
+            135,
+            324
+          ]
+        },
+        {
+          "key": "c3",
+          "header_lines": [
+            "Ngày"
+          ],
+          "box_2d": [
+            100,
+            324,
+            135,
+            444
+          ]
+        },
+        {
+          "key": "c4",
+          "header_lines": [
+            "Nội dung"
+          ],
+          "box_2d": [
+            100,
+            444,
+            135,
+            812
+          ]
+        },
+        {
+          "key": "c5",
+          "header_lines": [
+            "Tỷ lệ thông",
+            "qua"
+          ],
+          "box_2d": [
+            100,
+            812,
+            135,
+            923
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "code": null,
+          "label_raw": "11",
+          "note": null,
+          "box_2d": [
+            135,
+            121,
+            196,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "11",
+              "box_2d": [
+                135,
+                121,
+                196,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "13/2025/NQ-HĐQT",
+              "box_2d": [
+                135,
+                182,
+                196,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "15/07/2025",
+              "box_2d": [
+                135,
+                324,
+                196,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phê duyệt đăng ký thay đổi ngành nghề kinh doanh và sửa đổi bổ sung điều lệ CMC TS",
+              "box_2d": [
+                135,
+                444,
+                196,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                135,
+                812,
+                196,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "12",
+          "note": null,
+          "box_2d": [
+            196,
+            121,
+            247,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "12",
+              "box_2d": [
+                196,
+                121,
+                247,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "14/2025/NQ-HĐQT",
+              "box_2d": [
+                196,
+                182,
+                247,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "17/07/2025",
+              "box_2d": [
+                196,
+                324,
+                247,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Bổ nhiệm nhân sự chủ chốt và điều chỉnh nhiệm kỳ các thành viên Ban Điều hành Công ty",
+              "box_2d": [
+                196,
+                444,
+                247,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                196,
+                812,
+                247,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "13",
+          "note": null,
+          "box_2d": [
+            247,
+            121,
+            288,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "13",
+              "box_2d": [
+                247,
+                121,
+                288,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "15/2025/NQ-HĐQT",
+              "box_2d": [
+                247,
+                182,
+                288,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "08/07/2025",
+              "box_2d": [
+                247,
+                324,
+                288,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Thông qua Tài liệu họp Đại hội đồng cổ đông thường niên năm 2025",
+              "box_2d": [
+                247,
+                444,
+                288,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                247,
+                812,
+                288,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "14",
+          "note": null,
+          "box_2d": [
+            288,
+            121,
+            329,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "14",
+              "box_2d": [
+                288,
+                121,
+                329,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "16/2025/NQ-HĐQT",
+              "box_2d": [
+                288,
+                182,
+                329,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "14/08/2025",
+              "box_2d": [
+                288,
+                324,
+                329,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Thông qua kết quả phát hành cổ phần đợt 3 theo Chương trình ESOP",
+              "box_2d": [
+                288,
+                444,
+                329,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "8/9",
+              "box_2d": [
+                288,
+                812,
+                329,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "15",
+          "note": null,
+          "box_2d": [
+            329,
+            121,
+            370,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "15",
+              "box_2d": [
+                329,
+                121,
+                370,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "17/2025/NQ-HĐQT",
+              "box_2d": [
+                329,
+                182,
+                370,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "15/08/2025",
+              "box_2d": [
+                329,
+                324,
+                370,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Họp Hội đồng quản trị thường kỳ Quý 2 năm 2025",
+              "box_2d": [
+                329,
+                444,
+                370,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                329,
+                812,
+                370,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "16",
+          "note": null,
+          "box_2d": [
+            370,
+            121,
+            411,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "16",
+              "box_2d": [
+                370,
+                121,
+                411,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "18/2025/NQ-HĐQT",
+              "box_2d": [
+                370,
+                182,
+                411,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "22/09/2025",
+              "box_2d": [
+                370,
+                324,
+                411,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phương án chia Quỹ thưởng năm 2024 cho HĐQT và BKS",
+              "box_2d": [
+                370,
+                444,
+                411,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                370,
+                812,
+                411,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "17",
+          "note": null,
+          "box_2d": [
+            411,
+            121,
+            452,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "17",
+              "box_2d": [
+                411,
+                121,
+                452,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "19/2025/NQ-HĐQT",
+              "box_2d": [
+                411,
+                182,
+                452,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "08/10/2025",
+              "box_2d": [
+                411,
+                324,
+                452,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Mua lại cổ phần CMC Telecom mà CMC TS sở hữu",
+              "box_2d": [
+                411,
+                444,
+                452,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "8/9",
+              "box_2d": [
+                411,
+                812,
+                452,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "18",
+          "note": null,
+          "box_2d": [
+            452,
+            121,
+            493,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "18",
+              "box_2d": [
+                452,
+                121,
+                493,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "20/2025/NQ-HĐQT",
+              "box_2d": [
+                452,
+                182,
+                493,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "23/10/2025",
+              "box_2d": [
+                452,
+                324,
+                493,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phê duyệt phương án phát hành trái phiếu triển khai dự án CMC Starlake",
+              "box_2d": [
+                452,
+                444,
+                493,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "7/9",
+              "box_2d": [
+                452,
+                812,
+                493,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "19",
+          "note": null,
+          "box_2d": [
+            493,
+            121,
+            544,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "19",
+              "box_2d": [
+                493,
+                121,
+                544,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "21/2025/NQ-HĐQT",
+              "box_2d": [
+                493,
+                182,
+                544,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "31/10/2025",
+              "box_2d": [
+                493,
+                324,
+                544,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phê duyệt đề xuất sửa đổi (lần 1) Quy chế Thi đua khen thưởng tại Công ty Cổ phần Tập đoàn Công nghệ CMC",
+              "box_2d": [
+                493,
+                444,
+                544,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                493,
+                812,
+                544,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "20",
+          "note": null,
+          "box_2d": [
+            544,
+            121,
+            595,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "20",
+              "box_2d": [
+                544,
+                121,
+                595,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "22/2025/NQ-HĐQT",
+              "box_2d": [
+                544,
+                182,
+                595,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "05/11/2025",
+              "box_2d": [
+                544,
+                324,
+                595,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phê duyệt điều chỉnh thu nhập đối với các thành viên Ban điều hành CMC Corp năm 2025",
+              "box_2d": [
+                544,
+                444,
+                595,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "8/9",
+              "box_2d": [
+                544,
+                812,
+                595,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "21",
+          "note": null,
+          "box_2d": [
+            595,
+            121,
+            636,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "21",
+              "box_2d": [
+                595,
+                121,
+                636,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "23/2025/NQ-HĐQT",
+              "box_2d": [
+                595,
+                182,
+                636,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "05/11/2025",
+              "box_2d": [
+                595,
+                324,
+                636,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Họp Hội đồng quản trị thường kỳ Quý 3 năm 2025",
+              "box_2d": [
+                595,
+                444,
+                636,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                595,
+                812,
+                636,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "22",
+          "note": null,
+          "box_2d": [
+            636,
+            121,
+            687,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "22",
+              "box_2d": [
+                636,
+                121,
+                687,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "24/2025/NQ-HĐQT",
+              "box_2d": [
+                636,
+                182,
+                687,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "18/12/2025",
+              "box_2d": [
+                636,
+                324,
+                687,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phê duyệt việc tái bổ nhiệm Tổng Giám Đốc Công ty Cổ phần Hạ tầng Viễn thông CMC",
+              "box_2d": [
+                636,
+                444,
+                687,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                636,
+                812,
+                687,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "23",
+          "note": null,
+          "box_2d": [
+            687,
+            121,
+            728,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "23",
+              "box_2d": [
+                687,
+                121,
+                728,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "25/2025/NQ-HĐQT",
+              "box_2d": [
+                687,
+                182,
+                728,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "23/12/2025",
+              "box_2d": [
+                687,
+                324,
+                728,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Phương án phát hành cổ phần trả cổ tức cho năm tài chính 2024",
+              "box_2d": [
+                687,
+                444,
+                728,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                687,
+                812,
+                728,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "24",
+          "note": null,
+          "box_2d": [
+            728,
+            121,
+            769,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "24",
+              "box_2d": [
+                728,
+                121,
+                769,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "01/2026/NQ HĐQT",
+              "box_2d": [
+                728,
+                182,
+                769,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "29/01/2026",
+              "box_2d": [
+                728,
+                324,
+                769,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Thông qua kết quả phát hành cổ phiếu trả cổ tức năm 2024",
+              "box_2d": [
+                728,
+                444,
+                769,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                728,
+                812,
+                769,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "25",
+          "note": null,
+          "box_2d": [
+            769,
+            121,
+            810,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "25",
+              "box_2d": [
+                769,
+                121,
+                810,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "02/2026/NQ HĐQT",
+              "box_2d": [
+                769,
+                182,
+                810,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "09/02/2026",
+              "box_2d": [
+                769,
+                324,
+                810,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Điều chỉnh phương án thành lập Công ty TNHH CMC Investment",
+              "box_2d": [
+                769,
+                444,
+                810,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "7/9",
+              "box_2d": [
+                769,
+                812,
+                810,
+                923
+              ]
+            }
+          ]
+        },
+        {
+          "code": null,
+          "label_raw": "26",
+          "note": null,
+          "box_2d": [
+            810,
+            121,
+            852,
+            923
+          ],
+          "cells": [
+            {
+              "column_key": "c1",
+              "raw": "26",
+              "box_2d": [
+                810,
+                121,
+                852,
+                182
+              ]
+            },
+            {
+              "column_key": "c2",
+              "raw": "03/2026/NQ HĐQT",
+              "box_2d": [
+                810,
+                182,
+                852,
+                324
+              ]
+            },
+            {
+              "column_key": "c3",
+              "raw": "10/02/2026",
+              "box_2d": [
+                810,
+                324,
+                852,
+                444
+              ]
+            },
+            {
+              "column_key": "c4",
+              "raw": "Họp Hội đồng quản trị thường kỳ Quý 4 năm 2025",
+              "box_2d": [
+                810,
+                444,
+                852,
+                812
+              ]
+            },
+            {
+              "column_key": "c5",
+              "raw": "9/9",
+              "box_2d": [
+                810,
+                812,
+                852,
+                923
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "65",
+      "box_2d": [
+        923,
+        908,
+        937,
+        927
+      ],
+      "title": null,
+      "unit_text": null,
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "text": "STT\nSố Nghị quyết\nNgày\nNội dung\nTỷ lệ thông\nqua\n11 11 13/2025/NQ-HĐQT 15/07/2025 Phê duyệt đăng ký thay đổi ngành nghề kinh doanh và sửa đổi bổ sung điều lệ CMC TS 9/9\n12 12 14/2025/NQ-HĐQT 17/07/2025 Bổ nhiệm nhân sự chủ chốt và điều chỉnh nhiệm kỳ các thành viên Ban Điều hành Công ty 9/9\n13 13 15/2025/NQ-HĐQT 08/07/2025 Thông qua Tài liệu họp Đại hội đồng cổ đông thường niên năm 2025 9/9\n14 14 16/2025/NQ-HĐQT 14/08/2025 Thông qua kết quả phát hành cổ phần đợt 3 theo Chương trình ESOP 8/9\n15 15 17/2025/NQ-HĐQT 15/08/2025 Họp Hội đồng quản trị thường kỳ Quý 2 năm 2025 9/9\n16 16 18/2025/NQ-HĐQT 22/09/2025 Phương án chia Quỹ thưởng năm 2024 cho HĐQT và BKS 9/9\n17 17 19/2025/NQ-HĐQT 08/10/2025 Mua lại cổ phần CMC Telecom mà CMC TS sở hữu 8/9\n18 18 20/2025/NQ-HĐQT 23/10/2025 Phê duyệt phương án phát hành trái phiếu triển khai dự án CMC Starlake 7/9\n19 19 21/2025/NQ-HĐQT 31/10/2025 Phê duyệt đề xuất sửa đổi (lần 1) Quy chế Thi đua khen thưởng tại Công ty Cổ phần Tập đoàn Công nghệ CMC 9/9\n20 20 22/2025/NQ-HĐQT 05/11/2025 Phê duyệt điều chỉnh thu nhập đối với các thành viên Ban điều hành CMC Corp năm 2025 8/9\n21 21 23/2025/NQ-HĐQT 05/11/2025 Họp Hội đồng quản trị thường kỳ Quý 3 năm 2025 9/9\n22 22 24/2025/NQ-HĐQT 18/12/2025 Phê duyệt việc tái bổ nhiệm Tổng Giám Đốc Công ty Cổ phần Hạ tầng Viễn thông CMC 9/9\n23 23 25/2025/NQ-HĐQT 23/12/2025 Phương án phát hành cổ phần trả cổ tức cho năm tài chính 2024 9/9\n24 24 01/2026/NQ HĐQT 29/01/2026 Thông qua kết quả phát hành cổ phiếu trả cổ tức năm 2024 9/9\n25 25 02/2026/NQ HĐQT 09/02/2026 Điều chỉnh phương án thành lập Công ty TNHH CMC Investment 7/9\n26 26 03/2026/NQ HĐQT 10/02/2026 Họp Hội đồng quản trị thường kỳ Quý 4 năm 2025 9/9\n65",
+  "unreadable": []
+}

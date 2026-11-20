@@ -1,0 +1,449 @@
+{
+  "task": "S5-WBS09.1",
+  "date": "2026-11-16",
+  "owner": "Nhan",
+  "baseline_commit": "14beea8d",
+  "branch": "nhan-next-task-20261116",
+  "status": "IMPLEMENTATION_COMPLETE_READY_FOR_PEER_REVIEW",
+  "new_acceptance_tests": [
+    {
+      "test": "test_keep_metric_reference_is_not_a_request_to_choose_another_metric[Cho m\\xecnh quay l\\u1ea1i m\\xe3 ACB, gi\\u1eef ch\\u1ec9 ti\\xeau v\\xe0 k\\u1ef3 v\\u1eeba h\\u1ecfi nh\\xe9.]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_keep_metric_reference_is_not_a_request_to_choose_another_metric[\\u0110\\u1ed5i sang ACB, gi\\u1eef nguy\\xean ch\\u1ec9 ti\\xeau v\\xe0 k\\u1ef3 tr\\u01b0\\u1edbc.]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_quarter_followup_uses_unique_conversation_year[C\\xf2n qu\\xfd 2 th\\xec sao?]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_quarter_followup_uses_unique_conversation_year[Th\\u1ebf c\\xf2n qu\\xfd hai c\\xf9ng n\\u0103m th\\xec sao nh\\u1ec9?]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_annual_company_followup_keeps_question_and_year_with_new_company",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_explicit_new_topic_leaves_annual_report[L\\u1ee3i nhu\\u1eadn sau thu\\u1ebf FPT n\\u0103m 2025-BCTC-PROFIT_AFTER_TAX]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_explicit_new_topic_leaves_annual_report[Tin FPT m\\u1edbi nh\\u1ea5t-NEWS-None]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_switch_from_news_to_financial_does_not_keep_news_topic_or_publisher",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_input_context_remains_unchanged",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_explicit_company_period_metric_override_old_slots",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_new_conversation_requires_its_own_metric",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_quarter_without_prior_year_asks_instead_of_guessing",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_multiple_prior_years_do_not_choose_arbitrarily",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_annual_content_followup_keeps_report_even_when_it_mentions_a_metric[T\\xf3m t\\u1eaft k\\u1ebf ho\\u1ea1ch doanh thu]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_annual_content_followup_keeps_report_even_when_it_mentions_a_metric[\\u0110\\xe1nh gi\\xe1 chi\\u1ebfn l\\u01b0\\u1ee3c m\\u1edf r\\u1ed9ng]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_news_month_is_not_a_financial_reporting_period",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_annual_company_name_alias_is_replaced_in_retrieval_question",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_annual_followup_replaces_only_explicit_slots[C\\xf2n VCB n\\u0103m 2023 th\\xec sao?-VCB-2023]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_annual_followup_replaces_only_explicit_slots[C\\xf2n Vinamilk th\\xec sao?-VNM-2024]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_annual_followup_replaces_only_explicit_slots[C\\xf2n n\\u0103m 2023 th\\xec sao?-FPT-2023]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_annual_correction_after_comparison_asks_which_company_to_replace",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_explicit_new_metric_is_not_hidden_by_keep_wording",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_ambiguous_new_profit_topic_does_not_stay_in_annual_report",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_negative_keep_request_does_not_silently_reuse_old_metric",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_live_service_graph_then_financial_then_followup_clears_graph_filters",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_live_service_annual_followup_retrieval_contains_new_company_and_old_subject",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_message_api_restart_resume_reset_and_owner_isolation[file]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_message_api_restart_resume_reset_and_owner_isolation[postgres_contract]",
+      "status": "PASSED"
+    },
+    {
+      "test": "test_real_postgres_scope_persistence_and_cleanup",
+      "status": "PASSED"
+    }
+  ],
+  "final_regression": {
+    "counts": {
+      "PASSED": 255,
+      "SKIPPED": 1
+    },
+    "suites": [
+      "test_clarification_live.py",
+      "test_live_research.py",
+      "test_live_research_safety.py",
+      "test_market_dialogue.py",
+      "test_market_research.py",
+      "test_postgres_chat_store.py",
+      "test_research_chat_api.py",
+      "test_s5_wbs091_context.py",
+      "test_web_chat_annual.py",
+      "test_web_chat_router.py"
+    ],
+    "postgres_smoke": "PASS_WITH_ROLLBACK_AND_CLEANUP_ASSERTIONS",
+    "substitution": "Real parser/planner/service/API/SQL; stub predictor and retrieval. No browser/Gemini/real graph.",
+    "postgres_transaction_note": "Savepoints inside one outer rollback transaction; isolation/concurrency not measured."
+  },
+  "full_backend": {
+    "total": 3578,
+    "passed": 3482,
+    "failed": 69,
+    "skipped": 25,
+    "xfailed": 2,
+    "snapshot_note": "Before final negation and ambiguous-profit fixes; all related suites rerun afterwards.",
+    "failed_tests": [
+      {
+        "test": "backend.tests.test_db_chunking_verified.PinTests::test_locator_document_pins_verification",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_balance_sheet_instant_without_period_end",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_balance_sheet_is_instant",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_balance_sheet_window_is_a_single_day",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_citation_for",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_citation_needs_a_page",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_eps_keeps_its_per_share_unit",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_get_financial_health_for_chat",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_latest_version_only",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_mismatch_merges_nothing",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_payload_fallback_to_observation_value",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_ratio_unit_not_verified",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_records_carry_text_ids_for_the_calculator",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_records_merge_current_verification",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_report_from_db_cli_readonly",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_restated_comparison_basis_is_not_merged",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_unverified_report_keeps_unknown",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_value_from_payload_not_float",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_health_db.HealthDbTests::test_verified_money_row_gets_vnd_currency",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_apply_then_rerun_adds_nothing",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_cache_sha_mismatch_redownloads",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_closes_own_vietstock_session",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_dry_run_session_is_read_only",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_dry_run_writes_nothing",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_mismatch_tries_separate_then_quarantines",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_network_error_isolated_per_symbol",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_non_pdf_download_falls_back",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_raw_payload_stored_only_when_numbers_change",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_reconnects_when_connection_closed",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_replaced_file_same_id_redownloads",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_too_many_restatements_rolls_back",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_unknown_metric_is_skipped_and_reported",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_statements_refresh.RefreshTests::test_unscanned_pdf_partial",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_chat_runtime_has_no_financial_verification_privileges",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_finance_roles_get_select_insert_only",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_migration_creates_append_only_table",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_migration_rerun_twice_preserves_history_and_truncate_protection",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.VerificationSchemaTests::test_truncate_is_rejected_without_losing_history",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_chat_runtime_has_no_financial_verification_privileges",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_finance_roles_get_select_insert_only",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_migration_creates_append_only_table",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_migration_rerun_twice_preserves_history_and_truncate_protection",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_schema.BootstrapVerificationSchemaTests::test_truncate_is_rejected_without_losing_history",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_accounting_ratio_restatement_keeps_current_market_values",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_append_reports_new_period_and_restatement",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_append_verification_idempotent",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_append_verification_supersedes",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_concurrent_append_creates_single_version",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_concurrent_new_period_reuses_one_row_and_keeps_transactions_healthy",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_document_published_at_must_be_aware",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_duplicate_metric_in_group_raises",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_ensure_document_same_sha_reuses_row",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_ensure_source_does_not_change_approval",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_eps_5571_to_3727_is_an_accounting_restatement",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_extra_metric_alone_is_unchanged",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_job_and_payload",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_market_ratio_only_changes_do_not_create_versions",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_metric_resolved_by_section_and_industry",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_new_period_row_created",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_old_importer_float_noise_is_unchanged",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_pe_and_revenue_change_still_versions_income",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_published_at_iso_string_coerced",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_quarantine",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_financial_verification_store.StoreTests::test_unknown_metric_or_symbol_raises",
+        "reason": "TEST_DB_15434_UNAVAILABLE"
+      },
+      {
+        "test": "backend.tests.test_wbs02_person_identity_integration::test_real_handoff_resolves_exact_decisions_without_changing_store_or_source",
+        "reason": "WBS02_FIXTURE_MISSING"
+      },
+      {
+        "test": "backend.tests.test_wbs02_person_identity_integration::test_changed_pinned_locator_cannot_reuse_identity_decision",
+        "reason": "WBS02_FIXTURE_MISSING"
+      },
+      {
+        "test": "backend.tests.test_wbs02_person_identity_integration::test_new_document_with_same_name_does_not_resolve_by_name",
+        "reason": "WBS02_FIXTURE_MISSING"
+      },
+      {
+        "test": "backend.tests.test_wbs02_person_identity_integration::test_pipeline_preserves_resolved_ids_but_never_approves_relations",
+        "reason": "WBS02_FIXTURE_MISSING"
+      },
+      {
+        "test": "backend.tests.test_wbs02_person_identity_integration::test_missing_or_foreign_sqlite_is_rejected",
+        "reason": "WBS02_FIXTURE_MISSING"
+      }
+    ]
+  },
+  "hashes": {
+    "normalization": "UTF-8 bytes with CRLF replaced by LF",
+    "sha256": {
+      "backend/src/retrieval_orchestration/live_research.py": "024e85d795af9dd09ad0d3dfa2570e6d3047bdd407c8b90119f5265db7c2a386",
+      "backend/tests/test_s5_wbs091_context.py": "cdb450cd41128fb5c682f6f327cf979b02aa2d520ae6ef76005807b0240a5e39",
+      "docs/sprint5/S5-WBS09.1-context.md": "590d72832db9841b8425e52478458c36a9dc9f6f13a6bbd803197c1d0aae467e",
+      "tasks/s5-wbs091/todo.md": "e892bc6ac54775680483192f493ca3477499cc73c60a466ef1495e4aba63816c"
+    }
+  },
+  "scope_exclusions": [
+    "refresh tokens",
+    "intent thresholds/classifier",
+    "S5-WBS09.2/09.3",
+    "browser E2E",
+    "financial answer quality"
+  ]
+}
