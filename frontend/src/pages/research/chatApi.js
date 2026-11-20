@@ -30,6 +30,19 @@ export const createSession = signal => request("", "POST", undefined, signal);
 export const listSessions = () => request();
 export const getSession = (id, signal) => request(`/${encodeURIComponent(id)}`, "GET", undefined, signal);
 export const sendMessage = (id, text, revision, signal) => request(`/${encodeURIComponent(id)}/messages`, "POST", { text, revision }, signal);
+// A conflict is never retried silently: another turn may have changed context.
+export async function sendSynchronizedMessage(current, text, signal, onSynchronize) {
+  try { return await sendMessage(current.session_id, text, current.revision, signal); }
+  catch (error) {
+    if (error.status !== 409 || signal?.aborted) throw error;
+    const latest = await getSession(current.session_id, signal);
+    if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+    onSynchronize(latest);
+    throw failure(latest.revision !== current.revision
+      ? 'Đã đồng bộ tin nhắn mới của phiên. Câu hỏi của bạn được giữ lại; hãy kiểm tra hội thoại rồi bấm Gửi lại.'
+      : 'Câu hỏi trước vẫn đang xử lý hoặc khóa xử lý chưa hết hạn sau khi máy chủ khởi động lại. Câu hỏi của bạn được giữ lại; vui lòng thử lại sau hoặc mở Nghiên cứu mới.', 409);
+  }
+}
 // Opening history continues the same session; POST /resume creates a separate fork.
 export const resumeSession = getSession;
 

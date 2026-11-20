@@ -256,7 +256,13 @@ class Neo4jChatRetriever:
         source_doc = (loc.get('reconstruction') or {}).get('document_id')
         if not source_doc:
             raise GraphChatError('GRAPH_SOURCE_VERSION_MISMATCH')
-        matches = await reader.connection.fetch('''SELECT t.chunk_id::text AS chunk_id
+        # Several facts can cite different spans of the same original chunk.
+        # Cache only its release-alias lookup in this transaction's reader;
+        # every evidence reference above and every source check below still run.
+        alias_key=('graph-release-alias',str(origin),str(raw['chunk_id']),cid,iid)
+        chunk_id=reader.cache.get(alias_key)
+        if chunk_id is None:
+            matches = await reader.connection.fetch('''SELECT t.chunk_id::text AS chunk_id
             FROM text_chunks t JOIN documents d USING(document_id)
             JOIN corpus_documents cd ON cd.document_id=d.document_id AND cd.document_hash=d.sha256
             JOIN corpus_versions cv ON cv.corpus_version_id=cd.corpus_version_id AND cv.index_version_id=t.index_version_id
@@ -266,16 +272,18 @@ class Neo4jChatRetriever:
               AND t.content_hash=$3 AND t.locator_json->>'source_table'=$4
               AND t.locator_json->>'source_id'=$5
               AND t.locator_json->'reconstruction'->>'document_id'=$6
-            LIMIT 2''', uuid.UUID(cid), uuid.UUID(iid), original.content_hash,
-            loc['source_table'], loc['source_id'], source_doc)
-        if len(matches) != 1:
-            raise GraphChatError('GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS')
-        chunk_id = matches[0]['chunk_id']
-        await reader.prefetch([chunk_id], cid)
+                LIMIT 2''', uuid.UUID(cid), uuid.UUID(iid), original.content_hash,
+                loc['source_table'], loc['source_id'], source_doc)
+            if len(matches) != 1:
+                raise GraphChatError('GRAPH_SOURCE_NOT_IN_ACTIVE_CORPUS')
+            chunk_id = matches[0]['chunk_id']
+        if ('wbs06-row',chunk_id,cid)not in reader.cache:
+            await reader.prefetch([chunk_id], cid)
         current = await reader.read_current(chunk_id, cid)
         if (current.index_version_id != iid or current.source_sha256 != original.source_sha256
                 or current.content_hash != original.content_hash or current.text != original.text):
             raise GraphChatError('GRAPH_SOURCE_VERSION_MISMATCH')
+        reader.cache[alias_key]=chunk_id
         return current, reader.cache[('wbs06-row', chunk_id, cid)]
 
     async def _earlier_corpora(self, cid):
@@ -401,23 +409,35 @@ class WebChatRouter:
                 and decision['reason_code'] in ('MISSING_METRIC', 'MULTIPLE_METRICS'))
 
     async def _content_fallback(self, question, scope, trace):
-        """The graph holds nothing verified for a question about statements or the annual report.
+        """An empty graph may still have matching, verified source text.
 
-        The router can read e.g. "công ty mẹ" as a relationship, so search that same source directly.
-        This never reads NEWS: a relationship request must not turn into news retrieval, so an explicit
-        request for news, or any other source, keeps the graph's NO_DATA answer.
+        Keep explicit source/date/accounting filters. This does not publish a
+        new graph relation or bypass source replay on a failed graph request.
         """
         source = scope.get('source_type')
-        if source not in ('BCTC', 'BCTN') or not scope.get('companies'):
+        if not scope.get('companies'):
             return False, None
+        from .live_research import analyze_live
+        resolved=analyze_live(question)
+        explicit=resolved['scope']
+        if self._asks_for_news(question):source='NEWS'
+        elif source not in ('BCTC','BCTN','NEWS','COMPANY_PROFILE'):source='CONTENT'
+        content_scope=copy.deepcopy(scope)
+        content_scope.update(source_type=source,periods=scope.get('periods') or ['LATEST_AVAILABLE_PERIOD'],
+            metric_code=scope.get('metric_code') if source=='BCTC' else None,
+            reporting_entity=scope.get('reporting_entity') or 'UNKNOWN')
         if self._asks_for_news(question):
-            return False, None
-        content_scope = dict(companies=scope['companies'], periods=scope.get('periods') or [],
-                             metric_code=None if source == 'BCTN' else scope.get('metric_code'),
-                             reporting_entity=scope.get('reporting_entity') or 'UNKNOWN', source_type=source)
+            # Publication dates are not report years. Preserve the calendar
+            # request resolved from the original wording for the NEWS reader.
+            if explicit.get('_market_request'):
+                content_scope['_market_request']=copy.deepcopy(explicit['_market_request'])
+                day=explicit['_market_request'].get('day')
+                content_scope['periods']=[day] if day else explicit.get('periods') or ['LATEST_AVAILABLE_PERIOD']
         trace['vector_calls'] += 1
+        trace['recovery']={'from':'GRAPH','to':source,'reason':'NO_VERIFIED_RELATIONS'}
         try:
-            content = await asyncio.wait_for(self.content_retriever.retrieve(question, content_scope), self.timeout)
+            lookup=self.content_retriever.retrieve(question,content_scope)
+            content = await asyncio.wait_for(lookup, min(self.timeout,20))
         except TimeoutError as exc:
             raise GraphChatError('CONTENT_FALLBACK_TIMEOUT') from exc
         if not content['items']:

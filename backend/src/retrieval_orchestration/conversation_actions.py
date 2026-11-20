@@ -16,20 +16,23 @@ _SWITCH_FILLER = {'con', 'thi', 'sao', 'the', 'nao', 'vay', 'nhi', 'nha', 'a', '
 def company_switch_question(text, context):
     """"Còn BID thì sao?" after a question about one company: the previous question, asked for the new company.
 
-    Only a bare switch qualifies (filler words plus one company name); anything else is a new question.
-    shortcut: one-word company names only ("vietcombank", "bid"); multi-word names fall back to normal routing.
+    Only a company-only switch qualifies; a newly named subject is resolved
+    independently. Registered aliases can contain multiple words.
     """
     previous, old = (context or {}).get('_last_question'), (context or {}).get('companies') or []
     if not isinstance(previous, str) or len(old) != 1:
         return None
-    rest = [word for word in _words(text).split() if word not in _SWITCH_FILLER]
-    if len(rest) != 1:
-        return None
     from .hybrid_router.decision_engine import DEFAULT_COMPANIES
     from .input_normalization import registered_symbols
-    new = (DEFAULT_COMPANIES.get(rest[0]) or (None,))[0]
-    if new is None and rest[0].upper() in registered_symbols():
-        new = rest[0].upper()
+    from .followup_scope import company_continuation
+    candidates=set(registered_symbols())|{s for targets in DEFAULT_COMPANIES.values() for s in targets}
+    selected=[s for s in candidates if company_continuation(text,[s],DEFAULT_COMPANIES)]
+    new=selected[0] if len(selected)==1 else None
+    if new is None:
+        rest = [word for word in _words(text).split() if word not in _SWITCH_FILLER]
+        if len(rest) != 1:return None
+        new = (DEFAULT_COMPANIES.get(rest[0]) or (None,))[0]
+        if new is None and rest[0].upper() in registered_symbols():new = rest[0].upper()
     if new is None or new == old[0]:
         return None
     names = {alias for alias, symbols in DEFAULT_COMPANIES.items() if symbols[0] == old[0]} | {old[0].lower()}
@@ -43,6 +46,8 @@ def is_list_followup(text):
         r'(?:(?:ban )?co the |ban |cho (?:toi|minh|em) )?'
         r'(?:liet ke|ke|(?:xem |cho xem )?danh sach)'
         r'(?: ra| lai)?(?: (?:nhung )?noi dung (?:vua|dang) noi)?'
+        r'(?: (?:ho va ten|ten)(?: (?:va|voi|kem) (?:chuc vu|chuc danh))?)?'
+        r'(?: cu the)?(?: luon)?'
         r'(?: giup (?:toi|minh|em))?(?: duoc)?(?: khong| nhe| di| xem)?', _words(text)))
 
 
@@ -153,4 +158,10 @@ def conversation_action(text, context=None):
         return 'SUMMARY'
     if is_session_summary(text):
         return 'SUMMARY'
+    # "gồm" in a factual question is not the command "gom/tổng hợp".
+    # Without an explicit chat object, only a command at the beginning can
+    # request confirmation; do not consume subjects such as a bank's network.
+    prefix=words[:verb.start()].strip()
+    if prefix and not re.fullmatch(r'(?:(?:ban|toi|hay|vui long|cho|giup|minh|em|can|muon)\s*)+',prefix):
+        return None
     return None if research else 'CONFIRM'

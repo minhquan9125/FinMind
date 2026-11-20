@@ -112,6 +112,12 @@ def present_answer(draft, evidence, scope, *, style=None):
         parts.append(text+' '+tags)
     if style.show_source_cautions:
         parts.extend(draft.get('cautions', []))
+    if scope.get('metric_code') in {'ROE','ROA','NPL_RATIO','NIM'}:
+        code=scope['metric_code']
+        target_rows=[line for item in evidence.values()for line in item['passage'].splitlines()
+                     if '('+code+')'in line]
+        if target_rows and not any('%'in line for line in target_rows):
+            parts.append('Nguồn đang lưu giá trị gốc nhưng chưa xác nhận dạng tỷ lệ hay phần trăm; chưa tự quy đổi sang %.')
     out['draft'] = '\n\n'.join(parts)
     out['presentation'] = {'version': style.version, 'default_financial_currency': style.default_financial_currency,
                            'source_cautions_visible': style.show_source_cautions, 'unit_annotations': annotations}

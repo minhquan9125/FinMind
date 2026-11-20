@@ -405,3 +405,23 @@ test('export downloads the server file with its name, and reports a failed expor
   globalThis.fetch = async () => new Response('', { status: 404 });
   await assert.rejects(chatApi.exportSession('s1', 'txt'), (e) => e.status === 404);
 });
+
+for (const revision of [0, 1]) test(`conflict synchronizes revision ${revision} without sending the question twice`, async () => {
+  resetEnv();
+  globalThis.localStorage = new SimpleStorage();
+  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
+  const calls = [];
+  const latest = {session_id:'session',revision,messages:[]};
+  globalThis.fetch = async (url, options) => {
+    calls.push(options.method);
+    return options.method === 'POST'
+      ? {ok:false,status:409,json:async()=>({detail:'Conflict'})}
+      : {ok:true,json:async()=>latest};
+  };
+  let synchronized;
+  await assert.rejects(chatApi.sendSynchronizedMessage({session_id:'session',revision:0}, 'Question', undefined,
+    value => { synchronized = value; }), error => error.status === 409 &&
+      error.message.includes(revision ? 'Đã đồng bộ' : 'vẫn đang xử lý'));
+  assert.deepEqual(calls,['POST','GET']);
+  assert.deepEqual(synchronized, latest);
+});

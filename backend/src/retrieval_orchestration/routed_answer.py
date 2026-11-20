@@ -212,8 +212,11 @@ def reference_routed_answer(saved: dict) -> dict:
                 'message': 'Không xác minh được nguồn đã lưu của câu trả lời trước.',
                 'scope': deepcopy(previous.get('scope') or {}), 'execution_mode': 'LIVE',
                 'answering': {'status': 'INSUFFICIENT_EVIDENCE', 'claims': [], 'citations': []}}
-    lines = [f"[{citation['citation_number']}] {citation['title']} — {citation['branch']}"
+    from .saved_source_reference import source_reference_metadata
+    lines = [f"[{citation['citation_number']}] {citation['title']} — {citation['branch']}\n"
+             +'\n'.join(source_reference_metadata(citation,by_id[citation['evidence_id']]))
              for citation in citations]
+    previous['presentation']={**previous.get('presentation',{}),'sources':'USED_LINKS'}
     previous['answering'] = {**answer, 'draft': 'Nguồn của câu trả lời trước:\n' + '\n'.join(lines),
                              'reason_code': 'SOURCE_REFERENCE', 'claims': [],
                              'manifest': {**answer.get('manifest', {}),

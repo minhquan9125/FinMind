@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../shared/context/AuthContext.jsx";
 import { useSearchParams } from "../../app/router.jsx";
 import { Drawer } from "../../shared/ui/index.js";
-import { createSession, listSessions, getSession, sendMessage, resumeSession, exportSession, saveFile } from "./chatApi.js";
+import { createSession, listSessions, getSession, sendSynchronizedMessage, resumeSession, exportSession, saveFile } from "./chatApi.js";
 import { citationView, modeLabel } from './citationView.js';
 import { clarificationChoices } from './clarificationView.js';
 import ResearchIcon from "./ResearchIcon.jsx";
@@ -218,7 +218,11 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
         if (!valid(epoch)) return;
         adopt(current); // Preserve the new ID even if the following send fails.
       }
-      const next = await sendMessage(current.session_id, text, current.revision, signal);
+      const next = await sendSynchronizedMessage(current, text, signal, latest => {
+        if (!valid(epoch)) return;
+        adopt(latest);
+        needsSync.current = false;
+      });
       if (!valid(epoch)) return;
       adopt(next);
       setDraft({ owner, text: "" });

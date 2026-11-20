@@ -145,7 +145,7 @@ async def complete_retrieval(question, result, *, provider, limits=None, budget=
         return failure(exc.code)
     payload = generated.get('payload')
     if (natural and isinstance(payload, dict) and payload.get('claims') == []
-            and (result.get('scope') or {}).get('source_type') not in ('BCTC', 'NEWS')):
+            and (result.get('scope') or {}).get('source_type') != 'BCTC'):
         # The model read the passages and found no answer in them (the prompt asks for empty claims then).
         # That is a finding about the documents, not a failed verification, so say it plainly.
         trace.append({'event': 'model_found_no_answer_in_sources'})

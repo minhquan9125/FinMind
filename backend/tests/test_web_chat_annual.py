@@ -158,6 +158,8 @@ def test_annual_retriever_selects_annual_document_and_replays_pages():
         async def _hybrid_rows(self, question, scope, corpus, company, period, doc_type=None):
             assert (company, period, doc_type) == ('FPT', '2025', 'ANNUAL_REPORT')
             return [dict(chunk_id=sample['chunk_id'], score=0.1)]
+        async def _annual_lexical_rows(self, question, corpus, company, year):
+            return []
         async def _annual_rows(self, rows, corpus, company, year):
             self.replayed = True
             return [dict(chunk_id=sample['chunk_id'], document_id=sample['source_id'],

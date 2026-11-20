@@ -67,8 +67,8 @@ def bind_article_quotes(payload, evidence, scope):
         ids, quotes = claim.get('evidence_ids'), claim.get('support_quotes')
         if not isinstance(ids, list) or len(ids) != 1 or not isinstance(ids[0], str): return None
         item = evidence.get(ids[0])
-        if (not item or item.get('verification_basis') != 'FEED_SNAPSHOT_BINDING'
-                or not item.get('snapshot', {}).get('content')
+        from .news_policy import full_article
+        if (not item or not full_article(item)
                 or not isinstance(claim.get('text'), str) or len(claim['text']) > max_text
                 or not isinstance(quotes, list) or not 1 <= len(quotes) <= max_quotes): return None
         originals = []

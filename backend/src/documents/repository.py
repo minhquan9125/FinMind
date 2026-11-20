@@ -199,7 +199,8 @@ async def vector_search_filtered(
         async with conn.transaction(readonly=True, isolation='repeatable_read'):
             # Only fixed SQL fragments are selected; the period remains a bound value.
             period_predicate = (
-                "coalesce(p.period_code, t.locator_json->>'period_code') = $3"
+                "(coalesce(p.period_code, t.locator_json->>'period_code') = $3 OR "
+                "($3 ~ '^[0-9]{4}$' AND coalesce(p.period_code, t.locator_json->>'period_code') = $3 || '-YEAR'))"
                 if exact_period else
                 "coalesce(p.period_code, t.locator_json->>'period_code', "
                 "t.locator_json->>'published_at', t.locator_json->>'section', "

@@ -224,7 +224,7 @@ def test_status_endpoint_requires_admin_and_hides_keys(client):
     assert K1 not in body.text and K2 not in body.text
 
 
-# ---- model busy (HTTP 503): ask again, never rotate or cool the key ------------------------------
+# ---- model busy (HTTP 503): bounded retry and one alternate, without quota penalties -----------
 
 def busy():
     return httpx.Response(503, json={'error': {'status': 'UNAVAILABLE', 'message': 'This model is currently experiencing high demand.'}})
@@ -248,15 +248,24 @@ def test_a_busy_model_is_asked_again_and_the_answer_is_returned(monkeypatch):
     assert [item['state'] for item in p.pool.status()] == ['ready', 'ready']   # no key was cooled or blamed
 
 
-def test_a_model_that_stays_busy_stops_after_one_retry(monkeypatch):
+def test_a_model_that_stays_busy_stops_after_two_keys(monkeypatch):
     monkeypatch.setattr('src.b1_answering.providers.gemini.RETRY_DELAY_SECONDS', 0)
     handler, used = recorder(busy())
-    p = provider(handler, keys=(K1, K2))
+    p = provider(handler, keys=(K1, K2, K3))
     with pytest.raises(GeminiError) as caught:
         generate(p)
     assert caught.value.code == 'GEMINI_UNAVAILABLE'
-    assert len(used) == 2
-    assert [item['state'] for item in p.pool.status()] == ['ready', 'ready']
+    assert used == [K1,K1,K2,K2]
+    assert [item['state'] for item in p.pool.status()] == ['ready', 'ready', 'ready']
+
+
+def test_persistent_overload_can_recover_with_one_alternate_key(monkeypatch):
+    monkeypatch.setattr('src.b1_answering.providers.gemini.RETRY_DELAY_SECONDS', 0)
+    handler,used=recorder(busy(),busy(),ok_response)
+    p=provider(handler)
+    assert generate(p)['payload']=={'answer':'x'}
+    assert used==[K1,K1,K2]
+    assert all(item['state']=='ready'for item in p.pool.status())
 
 
 def test_other_server_errors_are_still_not_retried():

@@ -129,6 +129,9 @@ def test_unknown_reporting_scope_is_not_parent_only_just_because_quarter_is_stan
     async def search(*args, **kwargs): return [row]
     monkeypatch.setattr(repository, 'get_corpus_index', corpus)
     monkeypatch.setattr(repository, 'vector_search_filtered', search)
+    # Both retrieval paths must reject a row without the requested entity scope.
+    async def lexical(self, *args, **kwargs): return [row]
+    monkeypatch.setattr(DenseEvidenceRetriever, '_scoped_lexical_rows', lexical)
     scope = analyze_live('tiền và tương đương tiền FPT báo cáo riêng quý 2/2026')['scope']
     result = asyncio.run(DenseEvidenceRetriever(object(), Embedder()).retrieve('tiền', scope))
     assert not result['items']

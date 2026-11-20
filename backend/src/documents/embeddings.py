@@ -13,6 +13,7 @@ Hugging Face if no local weights exist. Tests should inject a fake service.
 """
 
 from functools import lru_cache
+from collections import OrderedDict
 import os
 from pathlib import Path
 import threading
@@ -39,6 +40,8 @@ class EmbeddingService:
         self.batch_size = batch_size
         self._model = None
         self._load_lock = threading.Lock()
+        self._encode_lock = threading.Lock()
+        self._query_vectors = OrderedDict()
 
     @property
     def is_ready(self):
@@ -75,15 +78,28 @@ class EmbeddingService:
     def embed_texts(self, texts: list[str]) -> list[list[float]]:
         if not texts:
             return []
-        model = self._load()
-        vectors = model.encode(
-            texts,
-            normalize_embeddings=True,  # L2-normalize so cosine == dot product
-            convert_to_numpy=True,
-            show_progress_bar=False,
-            batch_size=self.batch_size,
-        )
-        return np.asarray(vectors, dtype=np.float32).tolist()
+        # Classification, routing and retrieval share this service. Protect
+        # tokenizer/model state for every caller, not just the dense retriever.
+        with self._encode_lock:
+            key=texts[0] if len(texts)==1 and isinstance(texts[0],str) else None
+            if key is not None and key in self._query_vectors:
+                self._query_vectors.move_to_end(key)
+                return [list(self._query_vectors[key])]
+            model = self._load()
+            vectors = model.encode(
+                texts,
+                normalize_embeddings=True,  # L2-normalize so cosine == dot product
+                convert_to_numpy=True,
+                show_progress_bar=False,
+                batch_size=self.batch_size,
+            )
+            result=np.asarray(vectors,dtype=np.float32).tolist()
+            # Reuse only vectors for this exact text and fixed model revision;
+            # never cache answers, retrieved documents or conversation state.
+            if key is not None and len(result)==1:
+                self._query_vectors[key]=tuple(result[0])
+                if len(self._query_vectors)>256:self._query_vectors.popitem(last=False)
+            return result
 
     def embed_query(self, text: str) -> list[float]:
         return self.embed_texts([text])[0]

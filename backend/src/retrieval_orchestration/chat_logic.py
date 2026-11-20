@@ -92,7 +92,7 @@ async def append_turn(doc, text, engine):
                 candidate = message.get('result') or {}
                 if ((candidate.get('answering') or {}).get('status') == 'DRAFT_READY'
                         or (candidate.get('scope', {}).get('source_type') == 'NEWS'
-                            and (candidate.get('evidence_pack') or {}).get('schema_version') == '1.2')):
+                            and (candidate.get('evidence_pack') or {}).get('schema_version') in ('1.1','1.2'))):
                     previous = candidate
                     break
             live_context.pop('_pending_conversation_action',None)

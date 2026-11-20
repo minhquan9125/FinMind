@@ -38,6 +38,36 @@ class Repository:
         return {'symbol': symbol, 'articles': []}
 
 
+def test_independent_analysis_reads_start_together_and_keep_both_results():
+    async def check():
+        entered=set();both=asyncio.Event()
+        async def read(kind):
+            entered.add(kind)
+            if len(entered)==2:both.set()
+            await asyncio.wait_for(both.wait(),2)
+            return {'kind':kind}
+        market=MarketResearch(Repository(),services=lambda:(None,None),
+            trend_reader=lambda symbol:read('trend'),health_reader=lambda symbol:read('health'))
+        market._lookup=lambda scope,previous,trend,health:dict(trend=trend,health=health)
+        result=await market.lookup({'source_type':'MARKET_ANALYSIS','companies':['FPT']})
+        assert result=={'trend':{'kind':'trend'},'health':{'kind':'health'}}
+        assert 'analysis_issues'not in result
+    asyncio.run(check())
+
+
+def test_technical_only_analysis_does_not_read_unrequested_financial_health():
+    from unittest.mock import AsyncMock
+    trend=AsyncMock(return_value={'kind':'trend'})
+    health=AsyncMock(side_effect=AssertionError('BCTC health was not requested'))
+    market=MarketResearch(Repository(),services=lambda:(None,None),trend_reader=trend,health_reader=health)
+    market._lookup=lambda scope,previous,trend,health:dict(trend=trend,health=health)
+    result=asyncio.run(market.lookup({'source_type':'MARKET_ANALYSIS','companies':['FPT'],
+        '_market_request':{'focus':'TECHNICAL'}}))
+    assert result=={'trend':{'kind':'trend'},'health':None}
+    trend.assert_awaited_once_with('FPT')
+    health.assert_not_awaited()
+
+
 class Live:
     def __init__(self, payload=None): self.calls = []; self.payload = payload or quote()
     def refresh(self, symbol): self.calls.append(symbol); return copy.deepcopy(self.payload)
