@@ -103,7 +103,7 @@ export default function AdminEvaluationPage() {
   return <AdminLayout>
     <header className="space-y-1">
       <Link className="text-xs text-blue-600" to={ADMIN_LINKS.overview}>Tổng quan vận hành</Link>
-      <h1 className="text-xl font-semibold">Đánh giá chất lượng Chat</h1>
+      <h1 className="text-xl font-bold">Đánh giá chất lượng Chat</h1>
       <p className="text-sm text-slate-500">Chạy bộ câu hỏi chuẩn qua Chat thật và chấm tự động theo số liệu, ngày và mã trong đáp án chuẩn. Điểm chỉ để xem nhanh, không thay cho việc đọc câu trả lời; câu không có số liệu để so được đánh dấu "Cần người xem".</p>
     </header>
     {error && <ErrorState message={error} onRetry={() => setRetry(v => v + 1)} />}
@@ -127,7 +127,7 @@ export default function AdminEvaluationPage() {
           {item.verified ? <StatusBadge tone="success">Đã đối chiếu</StatusBadge> : <StatusBadge>Chưa duyệt</StatusBadge>}</label></li>)}
         {!visible.length && <li className="p-3 text-sm text-slate-500">Không có câu hỏi phù hợp bộ lọc.</li>}</ul>
     </Card>}
-    {questions?.available && <div className="grid items-start gap-6 desk-master-detail lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
+    {questions?.available && <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
       <section className="rounded-xl border bg-white p-4"><h2 className="mb-3 font-semibold">Các lần chạy ({runs.length})</h2>
         {!runs.length ? <p className="text-sm text-slate-500">Chưa có lần chạy nào.</p> : <ul className="space-y-2">{runs.map(run => <li key={run.id}>
           <button type="button" onClick={() => setRunId(run.id)} aria-current={runId === run.id ? "true" : undefined} className={`w-full rounded-lg border p-3 text-left text-sm hover:bg-slate-50 ${runId === run.id ? "border-blue-500 bg-blue-50" : ""}`}>

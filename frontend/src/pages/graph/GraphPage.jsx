@@ -145,7 +145,7 @@ export default function GraphPage() {
   }))];
   if (rootId && !entityOptions.some(o => o.value === rootId)) entityOptions.push({ value: rootId, label: graph?.nodes.find(n => n.id === rootId)?.label || rootId });
   const displayName = user?.name?.trim() || "Người dùng";
-  return <div className="fm-workspace fm-graph flex min-h-screen bg-[#FAF8FF] text-[#131B2E]">
+  return <div className="flex min-h-screen bg-[#FAF8FF] text-[#131B2E]">
     <Sidebar groups={userMenu} activeId="graph" onSelect={id => navigate(menuPaths[id])}
       profile={{ name: displayName, initials: displayName.slice(0, 2).toUpperCase(), role: user?.role === "admin" ? "Quản trị viên" : "Nhà nghiên cứu" }}
       onProfile={() => navigate("/profile")} onLogout={() => { void logout().then(() => navigate("/login")); }} />
@@ -154,7 +154,7 @@ export default function GraphPage() {
         <div><h1 className="text-xl font-bold">Đồ thị tri thức</h1><p className="text-xs text-slate-600">Doanh nghiệp, nhân sự, sự kiện và bằng chứng của quan hệ.</p></div>
         <div className="flex flex-wrap items-center gap-3"><StatusBadge tone={fixture ? "warning" : "info"}>{fixture ? "Fixture · Không phải dữ liệu thật" : "API graph · Tối đa 2 hop"}</StatusBadge><Link to="/research" className="text-sm text-blue-700 underline">Chat</Link></div>
       </header>
-      <div className="desk-graph-workspace"><aside className="desk-graph-controls space-y-4 border-b bg-white p-4 sm:px-6">
+      <div className="space-y-4 border-b bg-white p-4 sm:px-6">
         {!fixture && <div className="flex items-center gap-3 text-xs text-slate-600"><p>Tự cập nhật mỗi 30 giây và khi quay lại trang; giữ nguyên phiên đang xem. Phiên mới xuất hiện trong danh sách.</p><Button variant="secondary" onClick={() => setRetry(n => n + 1)}>Cập nhật ngay</Button></div>}
         {sourceVersion && <p role="status" className="text-sm text-amber-800">Nhân sự theo nguồn tài liệu: danh tính theo từng lần xuất hiện, không khẳng định chức vụ đương nhiệm. Chưa xác nhận ngày hiệu lực; lọc theo ngày sẽ không trả các quan hệ này.</p>}
         {versions.loading ? <p role="status" className="text-sm">Đang tải phiên graph…</p> : versions.error ? <ErrorState message={versions.error.message} onRetry={() => setRetry(n => n + 1)} /> : !versions.data?.versions.length && !version ?
@@ -182,7 +182,7 @@ export default function GraphPage() {
           <Button type="submit" disabled={!rootId}>Áp dụng bộ lọc</Button>
           {filterError && <p role="alert" className="text-sm text-red-700">{filterError}</p>}
         </form>
-      </aside><div className="desk-graph-stage">
+      </div>
       {notice && <p role="alert" className="p-4 text-sm text-amber-800">{notice}</p>}
       <div className="grid gap-4 p-4 sm:p-6 xl:grid-cols-[minmax(0,1fr)_280px]">
         <section className="min-w-0" aria-label="Graph Viewer">
@@ -216,7 +216,7 @@ export default function GraphPage() {
           </button>)}</div>
         </aside>
       </div>
-    </div></div></main>
+    </main>
     <Drawer open={Boolean(selectedEdge)} title="Bằng chứng của quan hệ" onClose={() => change({ relation_id: null }, false)}>
       {detail.loading ? <Skeleton rows={5} /> : detail.error ? <ErrorState message={detail.error.message} onRetry={() => setRetry(n => n + 1)} /> : relation ? <div className="min-w-0 space-y-4 text-xs">
         <p className="break-words text-sm font-semibold">{relation.source.label} → {relation.target.label}</p>

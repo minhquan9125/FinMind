@@ -1,12 +1,9 @@
-import AppIcon from "../../shared/ui/AppIcon.jsx";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams, useAuth } from "../../app/router.jsx";
 import { Button, Card, EmptyState, ErrorState, Select, Sidebar, Skeleton, Stat, StatusBadge } from "../../shared/ui/index.js";
 import { userMenu } from "../../mocks/componentMock.js";
 import { getCompanyDetail } from "./detailApi.js";
-import { addRevealed } from "./visibleCompanies.js";
-import { FACTS, formatFact, toPeriodCode, verification } from "./financials.js";
-import { followCompany, getWatchlist, unfollowCompany } from "../watchlist/api.js";
+import { detailPeriods } from "./detailMock.js";
 import { getSavedNews, refreshLivePrice, refreshCompanyNews } from "./marketDataApi.js";
 import { loadCompanyNews } from "./companyData.js";
 import { startPricePolling } from "./pricePolling.js";
@@ -24,16 +21,12 @@ const tabs = [
   { id: "reports", label: "Báo cáo & nguồn" },
 ];
 
-const FACT_GROUPS = [
-  { title: "Kết quả kinh doanh", keys: ["revenue", "revenueYoy", "netProfit", "roe", "roa"] },
-  { title: "Bảng cân đối kế toán", keys: ["totalAssets", "liabilities", "equity"] },
-];
-const localTime =(value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }) : "Chưa rõ";
+const formatNumber = (value) => new Intl.NumberFormat("vi-VN").format(value);
+const localTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }) : "Chưa rõ";
 
 export default function CompanyDetailPage() {
   const navigate = useNavigate();
   const { user, userProfile, logout } = useAuth();
-  const userId = user?.id;
   const canManageData = user?.roles?.some((role) => ["DATA_ENGINEER", "ADMINISTRATOR"].includes(role)) ?? false;
   const { ticker: routeTicker } = useParams();
   const [params] = useSearchParams();
@@ -46,9 +39,8 @@ export default function CompanyDetailPage() {
   const [error, setError] = useState(null);
   const [retryCount, setRetryCount] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");
-  const [period, setPeriod] = useState(toPeriodCode(params.get("period")));
+  const [period, setPeriod] = useState(detailPeriods.some((item) => item.value === params.get("period")) ? params.get("period") : "FY2025");
   const [followed, setFollowed] = useState(false);
-  const [followError, setFollowError] = useState(null);
   const [marketData, setMarketData] = useState(null);
   const [marketLoading, setMarketLoading] = useState(true);
   const [historyLoading, setHistoryLoading] = useState(false);
@@ -72,15 +64,11 @@ export default function CompanyDetailPage() {
     setError(null);
     setCompany(null);
     getCompanyDetail(ticker, fixture === "error" && retryCount > 0 ? "success" : fixture)
-      .then((data) => {
-        if (cancelled) return;
-        if (data && !data.isPlaceholder) addRevealed(userId, data.id);
-        setCompany(data);
-      })
+      .then((data) => { if (!cancelled) setCompany(data); })
       .catch((caught) => { if (!cancelled) setError(caught.message); })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
-  }, [ticker, fixture, retryCount, userId]);
+  }, [ticker, fixture, retryCount]);
 
   useEffect(() => {
     setMarketLoading(true);
@@ -130,37 +118,11 @@ export default function CompanyDetailPage() {
     return () => controller.abort();
   }, [ticker, newsRetryCount, canManageData]);
 
-  // Kỳ trên URL không có dữ liệu thì chọn kỳ mới nhất.
-  useEffect(() => {
-    if (company?.periods?.length && !company.periods.some((item) => item.period === period)) setPeriod(company.periods[0].period);
-  }, [company, period]);
-
-  useEffect(() => {
-    let cancelled = false;
-    setFollowError(null);
-    getWatchlist()
-      .then((data) => { if (!cancelled) setFollowed(data.items.some((item) => item.ticker === ticker)); })
-      .catch(() => { if (!cancelled) setFollowed(false); });
-    return () => { cancelled = true; };
-  }, [ticker]);
-
-  function toggleFollow() {
-    const next = !followed;
-    setFollowed(next);
-    setFollowError(null);
-    (next ? followCompany : unfollowCompany)(ticker).catch((caught) => {
-      setFollowed(!next);
-      setFollowError(caught.message);
-    });
-  }
-
-  const selectedFinancial = company?.periods?.find((item) => item.period === period);
-  const periodOptions = (company?.periods || []).map((item) => ({ value: item.period, label: item.label }));
-  const periodStatus = verification(selectedFinancial?.status);
+  const selectedFinancial = company?.financials.find((item) => item.period === period);
   const graphAvailable = ticker === "FPT" || ticker === "VCB";
 
   return (
-    <div className="fm-workspace fm-company-detail flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+    <div className="flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
       <Sidebar groups={userMenu} activeId="companies" onSelect={(id) => navigate(menuPaths[id])}
         profile={userProfile} onProfile={() => navigate("/profile")} onLogout={logout} />
       <main className="min-w-0 flex-1">
@@ -171,6 +133,7 @@ export default function CompanyDetailPage() {
             <span className="font-semibold text-slate-900">{ticker}</span>
           </nav>
           <div className="flex flex-wrap items-center gap-2">
+            <StatusBadge tone="neutral">Hồ sơ mock · Giá/tin từ nguồn dữ liệu</StatusBadge>
             {canManageData && <Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs" disabled={refreshingPrice} onClick={refreshPrices}>{refreshingPrice ? "Đang lấy giá…" : "Làm mới giá/tin"}</Button>}
           </div>
         </header>
@@ -183,7 +146,7 @@ export default function CompanyDetailPage() {
               action={<Link className="text-sm font-semibold text-blue-600" to="/companies">Xem danh mục doanh nghiệp →</Link>} />
           ) : (
             <>
-              <Card className="desk-company-banner">
+              <Card>
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
@@ -195,16 +158,16 @@ export default function CompanyDetailPage() {
                     <p className="mt-2 text-sm text-slate-600">{company.name}</p>
                   </div>
                   <div className="flex flex-col items-start gap-2 sm:items-end">
-                    <Button variant="secondary" onClick={toggleFollow}>
-                      <AppIcon name="watchlist" fill={followed ? "currentColor" : "none"} />{followed ? "Đang theo dõi" : "Theo dõi"}
+                    <Button variant="secondary" onClick={() => setFollowed((value) => !value)}>
+                      <span aria-hidden="true">{followed ? "★" : "☆"}</span>{followed ? "Đang theo dõi" : "Theo dõi"}
                     </Button>
-                    {followError && <span role="alert" className="text-[11px] text-rose-700">{followError}</span>}
+                    <span className="text-[11px] text-slate-500">Trạng thái theo dõi chỉ lưu trên màn hình mock này</span>
                     {graphAvailable && <Link className="text-sm font-medium text-blue-600 hover:underline" to={`/graph?company=${ticker}`}>Khám phá quan hệ dữ liệu →</Link>}
                   </div>
                 </div>
               </Card>
 
-              <div className="desk-company-workspace"><div role="tablist" aria-label="Thông tin doanh nghiệp" className="flex gap-1 overflow-x-auto border-b border-slate-200">
+              <div role="tablist" aria-label="Thông tin doanh nghiệp" className="flex gap-1 overflow-x-auto border-b border-slate-200">
                 {tabs.map((tab) => <button key={tab.id} type="button" role="tab" aria-selected={activeTab === tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`whitespace-nowrap border-b-2 px-4 py-3 text-sm font-semibold ${activeTab === tab.id ? "border-blue-600 text-blue-600" : "border-transparent text-slate-500 hover:text-slate-800"}`}>
@@ -212,10 +175,10 @@ export default function CompanyDetailPage() {
                 </button>)}
               </div>
 
-              <div className="desk-company-sections grid gap-6 lg:grid-cols-12 lg:items-start">
+              <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
                 <div className="space-y-5 lg:col-span-8">
                   {activeTab === "overview" && <>
-                    <Card title="Tổng quan doanh nghiệp">
+                    <Card title="Tổng quan doanh nghiệp" action={<StatusBadge tone="neutral">Hồ sơ minh họa</StatusBadge>}>
                       <dl className="grid gap-x-8 gap-y-4 text-sm sm:grid-cols-2">
                         {[
                           ["Tên doanh nghiệp", company.name], ["Mã chứng khoán", company.id],
@@ -230,7 +193,7 @@ export default function CompanyDetailPage() {
                     <div className="grid gap-3 sm:grid-cols-3">
                       <Stat label="Ngành" value={company.sector} />
                       <Stat label="Sàn" value={company.exchange || "—"} />
-                      <Stat label="Kỳ BCTC mới nhất" value={company.periods[0]?.label || "Chưa có"} />
+                      <Stat label="Kỳ dữ liệu mẫu" value="FY2025" />
                     </div>
                     <Card title={`Giá & khối lượng theo ngày · ${ticker}`} description="Nến ngày đã lưu; trong giờ giao dịch có thể thêm nến tạm từ KBS · Giá chưa điều chỉnh theo sự kiện doanh nghiệp"
                       action={<Button variant="secondary" className="!min-h-8 !px-3 !py-1 !text-xs"
@@ -247,7 +210,7 @@ export default function CompanyDetailPage() {
                     <Card title={`Phân tích giá & dòng tiền · ${ticker}`} description="Tính từ dữ liệu đã lưu trong cơ sở dữ liệu · Thiếu dữ liệu được ghi rõ, không ước tính">
                       <PriceAnalysis key={ticker} symbol={ticker} />
                     </Card>
-                    <Card title={`Tin tức gần đây · ${ticker}`} description="Tin từ nguồn FireAnt · Ngày đăng và liên kết nguồn hiển thị trên từng bài">
+                    <Card title={`Tin FireAnt gần đây · ${ticker}`} description="Tự lấy tin khi mở mã · Cache 60 giây · Marker không xác minh sự thật">
                       {newsLoading && <p role="status" className="mb-3 text-xs text-slate-500">Đang kiểm tra tin mới…</p>}
                       {newsError && newsData?.articles?.length > 0 && <p role="status" className="mb-3 text-xs text-amber-700">{newsError}</p>}
                       {newsLoading && !newsData ? <Skeleton rows={3} /> : newsError && !newsData?.articles?.length ? <ErrorState message={newsError} onRetry={() => setNewsRetryCount((count) => count + 1)} /> : newsData?.articles.length ? (
@@ -266,51 +229,25 @@ export default function CompanyDetailPage() {
                     </Card>
                   </>}
 
-                  {activeTab === "finance" && <Card title="Tổng quan tài chính" description="Số liệu BCTC đã lưu trong cơ sở dữ liệu · Thiếu dữ liệu được ghi rõ, không ước tính"
-                    action={periodOptions.length > 0 && <Select label="Kỳ dữ liệu" options={periodOptions} value={period} onChange={(event) => setPeriod(event.target.value)} />}>
+                  {activeTab === "finance" && <Card title="Tổng quan tài chính" description="Số liệu giả lập để thử giao diện, không phải số liệu báo cáo tài chính"
+                    action={<Select label="Kỳ dữ liệu" options={detailPeriods} value={period} onChange={(event) => setPeriod(event.target.value)} />}>
                     {selectedFinancial ? <>
-                      <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                        <StatusBadge tone={periodStatus.tone}>{periodStatus.label}</StatusBadge>
-                        <span>Kỳ: {selectedFinancial.label}{selectedFinancial.endDate ? ` · Kết thúc ${new Date(selectedFinancial.endDate).toLocaleDateString("vi-VN")}` : ""}
-                          {selectedFinancial.publishedAt ? ` · Công bố ${new Date(selectedFinancial.publishedAt).toLocaleDateString("vi-VN")}` : ""}
-                          {company.sources.length ? ` · Nguồn số liệu: ${company.sources.join(", ")}` : ""}</span>
+                      <p className="mb-4 text-xs text-slate-500">Kỳ: {selectedFinancial.period} · Ngày dữ liệu: {selectedFinancial.dataDate} · Đơn vị: {company.unit} · Nguồn: {company.source}</p>
+                      <div className="grid gap-3 sm:grid-cols-3">
+                        {selectedFinancial.facts.map((fact) => <Stat key={fact.id} label={fact.label} value={formatNumber(fact.value)} note={`${company.unit} · Mock`} />)}
                       </div>
-                      <div className="grid gap-4 lg:grid-cols-2">
-                        {FACT_GROUPS.map((group) => <section key={group.title} className="overflow-hidden rounded-lg border border-slate-200">
-                          <h3 className="border-b border-slate-100 bg-slate-50 px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-slate-500">{group.title}</h3>
-                          <dl className="divide-y divide-slate-100">
-                            {group.keys.map((key) => {
-                              const fact = FACTS.find((item) => item.key === key);
-                              const note = key === "roe" || key === "roa" ? "Chỉ số từ nguồn dữ liệu"
-                                : fact.kind === "growth" ? "So với cùng kỳ năm trước" : verification(selectedFinancial.facts[key]?.status).label;
-                              return <div key={key} className="flex items-center justify-between gap-4 px-4 py-3">
-                                <dt className="min-w-0 text-sm text-slate-700">{fact.label}<span className="mt-0.5 block text-[11px] text-slate-400">{note}</span></dt>
-                                <dd className="shrink-0 text-right text-base font-semibold tabular-nums text-slate-900">{formatFact(selectedFinancial.facts[key], fact.kind)}</dd>
-                              </div>;
-                            })}
-                          </dl>
-                        </section>)}
-                      </div>
-                      {selectedFinancial.status === "MISMATCH" && <p role="note" className="mt-4 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-800">
-                        Số liệu kỳ này lệch so với BCTC gốc khi đối chiếu. Hãy kiểm tra lại tài liệu ở tab “Báo cáo &amp; nguồn” trước khi dùng.</p>}
-                    </> : <EmptyState title={`Chưa có số liệu BCTC cho ${company.id}`} description="Mã này chưa được thu thập báo cáo tài chính vào hệ thống." />}
+                      <p className="mt-4 text-xs text-slate-500">Chưa có chuỗi dữ liệu được kiểm định để vẽ biểu đồ xu hướng.</p>
+                    </> : <EmptyState title="Chưa có dữ liệu cho kỳ này" />}
                   </Card>}
 
-                  {activeTab === "reports" && <Card title="Báo cáo & nguồn công bố" description="BCTC gốc (PDF) đã dùng để đối chiếu số liệu">
-                    {company.reports.length === 0 && <EmptyState title="Chưa có BCTC gốc đã lưu cho mã này" />}
+                  {activeTab === "reports" && <Card title="Báo cáo & nguồn công bố" description="Bản ghi minh họa; chưa có tài liệu gốc được kiểm định">
+                    {company.reports.length === 0 && <EmptyState title="Chưa có báo cáo đã lưu cho mã này" />}
                     <div className="space-y-3">
-                      {company.reports.map((report) => {
-                        const state = verification(report.status);
-                        return <article key={report.id} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-                          <div className="flex flex-wrap items-center justify-between gap-2">
-                            <h3 className="text-sm font-semibold">{report.title || "Báo cáo tài chính"}</h3>
-                            <StatusBadge tone={state.tone}>{state.label}</StatusBadge>
-                          </div>
-                          <p className="mt-2 text-xs text-slate-500">Kỳ: {company.periods.find((item) => item.period === report.period)?.label || report.period}</p>
-                          {report.url ? <a className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline" href={report.url} target="_blank" rel="noopener noreferrer">Mở tài liệu gốc →</a>
-                            : <p className="mt-1 text-xs text-slate-500">Chưa có liên kết tài liệu gốc</p>}
-                        </article>;
-                      })}
+                      {company.reports.map((report) => <article key={report.id} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <h3 className="text-sm font-semibold">{report.title}</h3>
+                        <p className="mt-2 text-xs text-slate-500">Kỳ: {report.period} · Ngày/kỳ dữ liệu: {report.date} · Đơn vị: {company.name}</p>
+                        <p className="mt-1 text-xs text-slate-500">Nguồn: {report.source} · Liên kết tài liệu gốc: chưa có</p>
+                      </article>)}
                     </div>
                   </Card>}
                 </div>
@@ -325,7 +262,7 @@ export default function CompanyDetailPage() {
                     </div>
                   </Card>
                 </aside>
-              </div></div>
+              </div>
             </>
           )}
           <footer className="border-t border-slate-200 pb-8 pt-3 text-center text-xs text-slate-500">Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư</footer>

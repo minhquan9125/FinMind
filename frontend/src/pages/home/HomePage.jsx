@@ -1,4 +1,3 @@
-import AppIcon from "../../shared/ui/AppIcon.jsx";
 import React, { useState } from "react";
 import { Link, useNavigate } from "../../app/router.jsx";
 import { PATHS } from "../../shared/paths.js";
@@ -38,17 +37,17 @@ export default function HomePage() {
   };
 
   return (
-    <div className="fm-public bg-[#F8FAFC] text-[#0F172A] min-h-screen font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
+    <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
       {/* ──────────────── 1. HEADER ──────────────── */}
       <header className="bg-white border-b border-slate-200 shadow-xs sticky top-0 z-50">
         <div className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-8 h-16 w-full">
           {/* Brand Logo */}
           <div className="flex items-center gap-3">
             <Link to={PATHS.home} className="flex items-center gap-2 group no-underline">
-              <div className="w-8 h-8 rounded-lg bg-[#2563EB] text-white flex items-center justify-center font-semibold text-sm tracking-tight shadow-xs">
+              <div className="w-8 h-8 rounded-lg bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm tracking-tight shadow-xs">
                 FM
               </div>
-              <span className="text-xl font-semibold text-slate-900 tracking-tight">FinMind</span>
+              <span className="text-xl font-bold text-slate-900 tracking-tight">FinMind</span>
             </Link>
           </div>
 
@@ -95,19 +94,130 @@ export default function HomePage() {
       {/* ──────────────── MAIN CANVAS ──────────────── */}
       <main className="w-full">
         {/* ──────────────── 2. HERO SECTION ──────────────── */}
-        <section id="research" className="desk-public-hero">
-          <div className="desk-public-hero-copy"><p className="desk-section-number">Nghiên cứu doanh nghiệp Việt Nam</p><h1>Từ câu hỏi<br />đến nguồn<br /><span>để kiểm chứng.</span></h1><p>Báo cáo tài chính, báo cáo thường niên, tin tức và quan hệ doanh nghiệp trong một không gian nghiên cứu.</p>
-            <form onSubmit={handleSearchSubmit} className="desk-public-query" id="query"><label htmlFor="public-question">Bạn muốn tìm hiểu điều gì?</label><div className="desk-public-query-line"><input id="public-question" value={queryInput} onChange={event => setQueryInput(event.target.value)} placeholder="Hỏi về một doanh nghiệp hoặc chủ đề" maxLength={4000} /><button type="submit" aria-label="Bắt đầu nghiên cứu"><AppIcon name="arrow" /></button></div><div className="desk-public-query-scope"><label>Doanh nghiệp<select value={selectedTicker} onChange={event => setSelectedTicker(event.target.value)}><option value="">Chưa chọn</option>{['VCB','BID','CTG','MBB','TCB','FPT','CMG','ELC','ITD','ICT'].map(ticker => <option key={ticker}>{ticker}</option>)}</select></label><label>Kỳ báo cáo<select value={selectedPeriod} onChange={event => setSelectedPeriod(event.target.value)}><option value="">Chưa chọn</option>{['FY2024','FY2025','FY2026'].map(period => <option key={period}>{period}</option>)}</select></label></div></form>
-            <div className="desk-public-hero-links"><Link to="/register">Tạo tài khoản <AppIcon name="arrow" /></Link><a href="#methodology">Xem cách FinMind hoạt động</a></div>
+        <section
+          className="relative pt-16 pb-20 overflow-hidden bg-gradient-to-b from-[#EFF6FF]/70 via-white to-[#F8FAFC] border-b border-slate-200"
+          id="research"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 text-center">
+            {/* Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#2563EB] text-xs font-semibold tracking-wider uppercase mb-6 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span>
+              TRỢ LÝ NGHIÊN CỨU FINMIND
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[52px] leading-tight font-bold text-slate-900 tracking-tight max-w-5xl mx-auto mb-6">
+              Nghiên cứu doanh nghiệp Việt Nam<br />
+              <span className="text-[#2563EB]">với bằng chứng có thể kiểm chứng.</span>
+            </h1>
+
+            {/* Subheading */}
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+              Đặt câu hỏi về tình hình tài chính, công bố thông tin và mối quan hệ doanh nghiệp dựa trên các nguồn dữ liệu có thể truy xuất và kiểm chứng.
+            </p>
+
+            {/* AI Research Query Box */}
+            <form
+              onSubmit={handleSearchSubmit}
+              className="max-w-2xl mx-auto bg-white rounded-2xl border border-slate-300 shadow-md p-3.5 focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-100/60 transition-all text-left mb-6"
+              id="query"
+            >
+              <div className="flex items-center gap-2 mb-2 pb-2 border-b border-slate-100">
+                {selectedTicker && (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-[#2563EB] text-xs font-medium border border-blue-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"></span>
+                    {selectedTicker}
+                    <button
+                      type="button"
+                      onClick={() => setSelectedTicker("")}
+                      className="hover:opacity-75 focus:outline-none"
+                    >
+                      <span className="material-symbols-outlined text-[14px]">close</span>
+                    </button>
+                  </span>
+                )}
+                {selectedPeriod && (
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200">
+                    {selectedPeriod}
+                    <button
+                      type="button"
+                      onClick={() => setSelectedPeriod("")}
+                      className="hover:opacity-75 focus:outline-none"
+                    >
+                      <span className="material-symbols-outlined text-[14px]">close</span>
+                    </button>
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 flex-1 pl-1">
+                  <span className="material-symbols-outlined text-slate-400 text-[20px]">search</span>
+                  <input
+                    type="text"
+                    value={queryInput}
+                    onChange={(e) => setQueryInput(e.target.value)}
+                    placeholder="Hỏi về FPT, VCB, MBB..."
+                    className="w-full text-sm sm:text-base text-slate-800 border-0 p-0 focus:ring-0 focus:outline-none placeholder:text-slate-400 bg-transparent font-medium"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  aria-label="Bắt đầu nghiên cứu"
+                  className="w-9 h-9 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white flex items-center justify-center transition-all shadow-xs flex-shrink-0 group cursor-pointer"
+                >
+                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">
+                    arrow_forward
+                  </span>
+                </button>
+              </div>
+            </form>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs text-slate-600 mb-8">
+              <div className="inline-flex items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-600 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[12px] font-bold">check</span>
+                </span>
+                <span>Dựa trên bằng chứng</span>
+              </div>
+              <div className="inline-flex items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-600 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[12px] font-bold">check</span>
+                </span>
+                <span>Câu trả lời đã kiểm chứng</span>
+              </div>
+              <div className="inline-flex items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-600 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[12px] font-bold">check</span>
+                </span>
+                <span>Nguồn trích dẫn có thể truy xuất</span>
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex items-center justify-center gap-3">
+              <Link
+                to={PATHS.research}
+                className="px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-[#2563EB] hover:bg-blue-700 shadow-xs transition-all no-underline"
+              >
+                Bắt đầu nghiên cứu
+              </Link>
+              <a
+                href="#methodology"
+                className="px-5 py-2.5 rounded-lg text-sm font-medium text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 transition-all shadow-xs no-underline"
+              >
+                Xem phương pháp
+              </a>
+            </div>
           </div>
-          <aside className="desk-public-document" aria-label="Minh họa quy trình nghiên cứu"><div className="desk-document-toolbar"><span>FinMind / Bàn nghiên cứu</span><AppIcon name="document" /></div><div className="desk-public-document-body"><span className="desk-preview-kicker">Minh họa cách tra cứu</span><div className="desk-document-question"><AppIcon name="copilot" /><p>Hội đồng quản trị của doanh nghiệp gồm những ai?</p></div><div className="desk-document-path"><div><span>01</span><section><h3>Đọc đúng phạm vi</h3><p>Doanh nghiệp, loại tài liệu và thời gian trong câu hỏi.</p></section></div><div><span>02</span><section><h3>Tìm bằng chứng</h3><p>Truy xuất nội dung trong kho dữ liệu của dự án.</p></section></div><div><span>[1]</span><section><h3>Đối chiếu nguồn gốc</h3><p>Mở đoạn trích, trang tài liệu và liên kết đi kèm.</p></section></div></div><div className="desk-document-footer"><span>BCTC</span><span>BCTN</span><span>Tin tức</span><span>Quan hệ</span></div></div><footer>Kiểm tra thời điểm và ngữ cảnh của nguồn trước khi sử dụng thông tin.</footer></aside>
         </section>
 
         {/* ──────────────── 3. PRODUCT PREVIEW ──────────────── */}
         <section className="py-20 bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight mb-3">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-3">
                 Câu trả lời nghiên cứu được hỗ trợ bởi bằng chứng
               </h2>
               <p className="text-slate-600 text-base mb-2">
@@ -143,7 +253,9 @@ export default function HomePage() {
                   <div className="space-y-6">
                     {/* Query Bubble */}
                     <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-start gap-3">
-                      <AppIcon name="help" className="text-[#2563EB]  mt-0.5" />
+                      <span className="material-symbols-outlined text-[#2563EB] text-[20px] mt-0.5">
+                        help
+                      </span>
                       <div>
                         <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-0.5">
                           CÂU HỎI NGHIÊN CỨU
@@ -176,13 +288,13 @@ export default function HomePage() {
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                           <div>
                             <span className="block text-xs text-slate-500 mb-1">Doanh thu</span>
-                            <span className="block text-sm sm:text-base font-semibold text-slate-900 font-mono">
+                            <span className="block text-sm sm:text-base font-bold text-slate-900 font-mono">
                               62.849 tỷ VND
                             </span>
                           </div>
                           <div>
                             <span className="block text-xs text-slate-500 mb-1">Tăng trưởng cùng kỳ</span>
-                            <span className="block text-sm sm:text-base font-semibold text-slate-900 font-mono">
+                            <span className="block text-sm sm:text-base font-bold text-slate-900 font-mono">
                               +19,4%
                             </span>
                           </div>
@@ -206,7 +318,7 @@ export default function HomePage() {
                   {/* Bottom Status Badge */}
                   <div className="pt-4 mt-6 flex items-center justify-between border-t border-slate-100">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
-                      <AppIcon name="verified" className="" />
+                      <span className="material-symbols-outlined text-[15px]">verified</span>
                       Câu trả lời đã kiểm chứng
                     </span>
                   </div>
@@ -217,7 +329,7 @@ export default function HomePage() {
                   <div className="space-y-4">
                     {/* Panel Header */}
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                         XÁC MINH NGUỒN
                       </span>
                       <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-medium bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
@@ -303,7 +415,7 @@ export default function HomePage() {
                         className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-white bg-[#2563EB] hover:bg-blue-700 transition-colors shadow-xs no-underline"
                       >
                         <span>Mở nguồn chính thức</span>
-                        <AppIcon name="open_in_new" className="" />
+                        <span className="material-symbols-outlined text-[16px]">open_in_new</span>
                       </a>
                       <button
                         type="button"
@@ -315,7 +427,9 @@ export default function HomePage() {
                     </div>
 
                     <div className="p-3 bg-blue-50/50 rounded-lg border border-blue-100 flex items-start gap-2 text-left">
-                      <AppIcon name="open_in_new" className="text-[#2563EB]  mt-0.5 flex-shrink-0" />
+                      <span className="material-symbols-outlined text-[#2563EB] text-[18px] mt-0.5 flex-shrink-0">
+                        open_in_new
+                      </span>
                       <div>
                         <div className="text-xs font-semibold text-slate-800">Kiểm chứng tại nguồn gốc</div>
                         <p className="text-[11px] text-slate-600 leading-snug">
@@ -337,7 +451,7 @@ export default function HomePage() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#2563EB] text-xs font-semibold tracking-wider uppercase mb-3 shadow-xs">
                 TRỰC QUAN HÓA DỮ LIỆU
               </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight mb-3">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-3">
                 Theo dõi xu hướng tài chính với nguồn dữ liệu có thể kiểm chứng
               </h2>
               <p className="text-slate-600 text-base">
@@ -348,7 +462,7 @@ export default function HomePage() {
             <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
               <div className="flex flex-wrap justify-between items-center gap-3 mb-6">
                 <div>
-                  <h3 className="text-slate-900 font-semibold text-lg tracking-tight">FPT Corporation</h3>
+                  <h3 className="text-slate-900 font-bold text-lg tracking-tight">FPT Corporation</h3>
                   <p className="text-xs text-slate-500 font-medium">Doanh thu</p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -402,7 +516,7 @@ export default function HomePage() {
 
                 {/* Floating Tooltip */}
                 <div className="absolute -top-3 right-[12%] sm:right-[14%] bg-white border border-slate-200 rounded-lg px-3 py-1.5 shadow-sm text-center pointer-events-none">
-                  <span className="block text-xs font-semibold text-blue-600 font-mono">62.849 tỷ VND</span>
+                  <span className="block text-xs font-bold text-blue-600 font-mono">62.849 tỷ VND</span>
                 </div>
               </div>
 
@@ -423,9 +537,9 @@ export default function HomePage() {
               <div className="bg-[#F8FAFC] rounded-xl p-4 mt-4 border border-slate-200/60 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-left">
                 <div className="space-y-2 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-semibold text-slate-400 tracking-wider uppercase">NGUỒN DỮ LIỆU</span>
+                    <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase">NGUỒN DỮ LIỆU</span>
                     <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 rounded px-2 py-0.5 text-[11px] font-medium inline-flex items-center gap-1">
-                      <AppIcon name="check" className="font-semibold" />
+                      <span className="material-symbols-outlined text-[12px] font-bold">check</span>
                       Đã xác minh
                     </span>
                   </div>
@@ -456,7 +570,7 @@ export default function HomePage() {
                   className="bg-[#2563EB] hover:bg-blue-700 text-white font-medium text-xs px-4 py-2.5 rounded-lg inline-flex items-center gap-1.5 transition-colors shadow-xs flex-shrink-0 no-underline"
                 >
                   <span>Mở nguồn chính thức</span>
-                  <AppIcon name="open_in_new" className="" />
+                  <span className="material-symbols-outlined text-[14px]">open_in_new</span>
                 </a>
               </div>
             </div>
@@ -470,7 +584,7 @@ export default function HomePage() {
               <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider mb-2">
                 NGUYÊN TẮC NGHIÊN CỨU
               </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                 Tính minh bạch và khả năng kiểm chứng trong từng câu trả lời
               </h2>
             </div>
@@ -479,8 +593,8 @@ export default function HomePage() {
               {/* Card 01 */}
               <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs hover:border-blue-400 hover:shadow-sm transition-all flex flex-col justify-between h-full">
                 <div className="flex-1 flex flex-col">
-                  <div className="font-mono text-[#2563EB] font-semibold text-lg mb-3">01</div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2 min-h-[48px] flex items-start">
+                  <div className="font-mono text-[#2563EB] font-bold text-lg mb-3">01</div>
+                  <h3 className="text-base font-bold text-slate-900 mb-2 min-h-[48px] flex items-start">
                     Nghiên cứu dựa trên bằng chứng
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed min-h-[72px]">
@@ -488,7 +602,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="pt-4 border-t border-slate-100 mt-6 flex items-start text-xs text-slate-500 gap-2 min-h-[52px]">
-                  <AppIcon name="database" className="text-slate-400  shrink-0 mt-0.5" />
+                  <span className="material-symbols-outlined text-slate-400 text-[16px] shrink-0 mt-0.5">database</span>
                   <span className="leading-snug">Chỉ sử dụng tập dữ liệu đã được xác thực</span>
                 </div>
               </div>
@@ -496,8 +610,8 @@ export default function HomePage() {
               {/* Card 02 */}
               <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs hover:border-blue-400 hover:shadow-sm transition-all flex flex-col justify-between h-full">
                 <div className="flex-1 flex flex-col">
-                  <div className="font-mono text-[#2563EB] font-semibold text-lg mb-3">02</div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2 min-h-[48px] flex items-start">
+                  <div className="font-mono text-[#2563EB] font-bold text-lg mb-3">02</div>
+                  <h3 className="text-base font-bold text-slate-900 mb-2 min-h-[48px] flex items-start">
                     Trích dẫn theo từng luận điểm
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed min-h-[72px]">
@@ -505,7 +619,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="pt-4 border-t border-slate-100 mt-6 flex items-start text-xs text-slate-500 gap-2 min-h-[52px]">
-                  <AppIcon name="link" className="text-slate-400  shrink-0 mt-0.5" />
+                  <span className="material-symbols-outlined text-slate-400 text-[16px] shrink-0 mt-0.5">link</span>
                   <span className="leading-snug">Tham chiếu nguồn và vị trí</span>
                 </div>
               </div>
@@ -513,8 +627,8 @@ export default function HomePage() {
               {/* Card 03 */}
               <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs hover:border-blue-400 hover:shadow-sm transition-all flex flex-col justify-between h-full">
                 <div className="flex-1 flex flex-col">
-                  <div className="font-mono text-[#2563EB] font-semibold text-lg mb-3">03</div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2 min-h-[48px] flex items-start">
+                  <div className="font-mono text-[#2563EB] font-bold text-lg mb-3">03</div>
+                  <h3 className="text-base font-bold text-slate-900 mb-2 min-h-[48px] flex items-start">
                     Kiểm chứng câu trả lời
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed min-h-[72px]">
@@ -522,7 +636,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="pt-4 border-t border-slate-100 mt-6 flex items-start text-xs text-slate-500 gap-2 min-h-[52px]">
-                  <AppIcon name="verified_user" className="text-slate-400  shrink-0 mt-0.5" />
+                  <span className="material-symbols-outlined text-slate-400 text-[16px] shrink-0 mt-0.5">verified_user</span>
                   <span className="leading-snug">Kiểm chứng trước khi công bố</span>
                 </div>
               </div>
@@ -530,8 +644,8 @@ export default function HomePage() {
               {/* Card 04 */}
               <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs hover:border-blue-400 hover:shadow-sm transition-all flex flex-col justify-between h-full">
                 <div className="flex-1 flex flex-col">
-                  <div className="font-mono text-[#2563EB] font-semibold text-lg mb-3">04</div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2 min-h-[48px] flex items-start">
+                  <div className="font-mono text-[#2563EB] font-bold text-lg mb-3">04</div>
+                  <h3 className="text-base font-bold text-slate-900 mb-2 min-h-[48px] flex items-start">
                     Phản hồi an toàn khi thiếu dữ liệu
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed min-h-[72px]">
@@ -539,7 +653,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="pt-4 border-t border-slate-100 mt-6 flex items-start text-xs text-slate-500 gap-2 min-h-[52px]">
-                  <AppIcon name="shield" className="text-slate-400  shrink-0 mt-0.5" />
+                  <span className="material-symbols-outlined text-slate-400 text-[16px] shrink-0 mt-0.5">shield</span>
                   <span className="leading-snug">Không đưa ra câu trả lời thiếu bằng chứng</span>
                 </div>
               </div>
@@ -554,7 +668,7 @@ export default function HomePage() {
               <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider mb-2">
                 QUY TRÌNH
               </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight mb-3">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-3">
                 Từ câu hỏi đến câu trả lời đã kiểm chứng
               </h2>
               <p className="text-slate-600 text-base">
@@ -568,14 +682,14 @@ export default function HomePage() {
               <div className="relative bg-white border border-slate-200 rounded-xl p-6 flex flex-col justify-between h-full shadow-xs">
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="w-8 h-8 rounded-lg bg-blue-100 text-[#2563EB] flex items-center justify-center font-mono font-semibold text-xs">
+                    <span className="w-8 h-8 rounded-lg bg-blue-100 text-[#2563EB] flex items-center justify-center font-mono font-bold text-xs">
                       01
                     </span>
                   </div>
-                  <div className="text-xs font-semibold text-[#2563EB] tracking-wider uppercase mb-2 min-h-[16px]">
+                  <div className="text-xs font-bold text-[#2563EB] tracking-wider uppercase mb-2 min-h-[16px]">
                     ĐẶT CÂU HỎI
                   </div>
-                  <h4 className="text-base font-semibold text-slate-900 mb-2 min-h-[48px] flex items-start">
+                  <h4 className="text-base font-bold text-slate-900 mb-2 min-h-[48px] flex items-start">
                     Đặt câu hỏi nghiên cứu
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed min-h-[110px]">
@@ -587,7 +701,7 @@ export default function HomePage() {
                 </div>
                 {/* Chevron */}
                 <div className="hidden md:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-white border border-slate-200 items-center justify-center text-slate-400 shadow-xs">
-                  <AppIcon name="chevron_right" className="" />
+                  <span className="material-symbols-outlined text-[16px]">chevron_right</span>
                 </div>
               </div>
 
@@ -595,14 +709,14 @@ export default function HomePage() {
               <div className="relative bg-white border border-slate-200 rounded-xl p-6 flex flex-col justify-between h-full shadow-xs">
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="w-8 h-8 rounded-lg bg-blue-100 text-[#2563EB] flex items-center justify-center font-mono font-semibold text-xs">
+                    <span className="w-8 h-8 rounded-lg bg-blue-100 text-[#2563EB] flex items-center justify-center font-mono font-bold text-xs">
                       02
                     </span>
                   </div>
-                  <div className="text-xs font-semibold text-[#2563EB] tracking-wider uppercase mb-2 min-h-[16px]">
+                  <div className="text-xs font-bold text-[#2563EB] tracking-wider uppercase mb-2 min-h-[16px]">
                     TRUY XUẤT & KIỂM TRA
                   </div>
-                  <h4 className="text-base font-semibold text-slate-900 mb-2 min-h-[48px] flex items-start">
+                  <h4 className="text-base font-bold text-slate-900 mb-2 min-h-[48px] flex items-start">
                     Truy xuất bằng chứng đã được phê duyệt
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed min-h-[110px]">
@@ -613,7 +727,7 @@ export default function HomePage() {
                   Dữ liệu cấu trúc + Vector + Đồ thị · Cổng kiểm tra
                 </div>
                 <div className="hidden md:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-white border border-slate-200 items-center justify-center text-slate-400 shadow-xs">
-                  <AppIcon name="chevron_right" className="" />
+                  <span className="material-symbols-outlined text-[16px]">chevron_right</span>
                 </div>
               </div>
 
@@ -621,14 +735,14 @@ export default function HomePage() {
               <div className="relative bg-white border border-slate-200 rounded-xl p-6 flex flex-col justify-between h-full shadow-xs">
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="w-8 h-8 rounded-lg bg-blue-100 text-[#2563EB] flex items-center justify-center font-mono font-semibold text-xs">
+                    <span className="w-8 h-8 rounded-lg bg-blue-100 text-[#2563EB] flex items-center justify-center font-mono font-bold text-xs">
                       03
                     </span>
                   </div>
-                  <div className="text-xs font-semibold text-[#2563EB] tracking-wider uppercase mb-2 min-h-[16px]">
+                  <div className="text-xs font-bold text-[#2563EB] tracking-wider uppercase mb-2 min-h-[16px]">
                     TẠO CÂU TRẢ LỜI & GẮN NGUỒN
                   </div>
-                  <h4 className="text-base font-semibold text-slate-900 mb-2 min-h-[48px] flex items-start">
+                  <h4 className="text-base font-bold text-slate-900 mb-2 min-h-[48px] flex items-start">
                     Tạo bản trả lời dựa trên bằng chứng
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed min-h-[110px]">
@@ -639,7 +753,7 @@ export default function HomePage() {
                   Tổng hợp dựa trên bằng chứng · Liên kết trích dẫn
                 </div>
                 <div className="hidden md:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-white border border-slate-200 items-center justify-center text-slate-400 shadow-xs">
-                  <AppIcon name="chevron_right" className="" />
+                  <span className="material-symbols-outlined text-[16px]">chevron_right</span>
                 </div>
               </div>
 
@@ -647,14 +761,14 @@ export default function HomePage() {
               <div className="relative bg-white border border-slate-200 rounded-xl p-6 flex flex-col justify-between h-full shadow-xs">
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="w-8 h-8 rounded-lg bg-blue-100 text-[#2563EB] flex items-center justify-center font-mono font-semibold text-xs">
+                    <span className="w-8 h-8 rounded-lg bg-blue-100 text-[#2563EB] flex items-center justify-center font-mono font-bold text-xs">
                       04
                     </span>
                   </div>
-                  <div className="text-xs font-semibold text-[#2563EB] tracking-wider uppercase mb-2 min-h-[16px]">
+                  <div className="text-xs font-bold text-[#2563EB] tracking-wider uppercase mb-2 min-h-[16px]">
                     KIỂM CHỨNG & HIỂN THỊ
                   </div>
-                  <h4 className="text-base font-semibold text-slate-900 mb-2 min-h-[48px] flex items-start">
+                  <h4 className="text-base font-bold text-slate-900 mb-2 min-h-[48px] flex items-start">
                     Kiểm chứng trước khi hiển thị
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed min-h-[110px]">
@@ -676,7 +790,7 @@ export default function HomePage() {
               <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider mb-2">
                 PHẠM VI DỮ LIỆU
               </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight mb-3">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-3">
                 Phạm vi nghiên cứu được kiểm soát
               </h2>
               <p className="text-slate-600 text-base">
@@ -740,7 +854,7 @@ export default function HomePage() {
             {/* Metric Bottom Bar */}
             <div className="bg-[#F8FAFC] rounded-xl border border-slate-200 p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
               <div className="flex items-center gap-2">
-                <AppIcon name="database" className="text-slate-400" />
+                <span className="material-symbols-outlined text-slate-400 text-[18px]">inventory_2</span>
                 <span className="text-xs sm:text-sm text-slate-700 font-medium">
                   Phạm vi tập dữ liệu được kiểm soát:
                 </span>
@@ -769,7 +883,7 @@ export default function HomePage() {
               <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider mb-2">
                 PHẠM VI SẢN PHẨM
               </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight mb-3">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-3">
                 Được thiết kế cho nghiên cứu, không phải tín hiệu giao dịch.
               </h2>
               <p className="text-slate-600 text-base leading-relaxed">
@@ -781,25 +895,25 @@ export default function HomePage() {
               <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="w-10 h-10 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center mb-4">
-                    <AppIcon name="description" className="" />
+                    <span className="material-symbols-outlined text-[20px]">description</span>
                   </div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2">NGUỒN CÓ THỂ TRUY XUẤT</h3>
+                  <h3 className="text-base font-bold text-slate-900 mb-2">NGUỒN CÓ THỂ TRUY XUẤT</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                     Các thông tin tài chính được liên kết với nguồn công khai để người dùng có thể tự kiểm chứng.
                   </p>
                 </div>
                 <div className="pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs text-[#2563EB] font-medium">
                   <span>Liên kết đến nguồn chính thức</span>
-                  <AppIcon name="open_in_new" className="" />
+                  <span className="material-symbols-outlined text-[15px]">open_in_new</span>
                 </div>
               </div>
 
               <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="w-10 h-10 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center mb-4">
-                    <AppIcon name="lock" className="" />
+                    <span className="material-symbols-outlined text-[20px]">lock</span>
                   </div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2">TẬP DỮ LIỆU ĐƯỢC KIỂM SOÁT</h3>
+                  <h3 className="text-base font-bold text-slate-900 mb-2">TẬP DỮ LIỆU ĐƯỢC KIỂM SOÁT</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                     Hoạt động nghiên cứu chỉ sử dụng dữ liệu đã được phê duyệt và xác thực trong phạm vi FinMind hỗ trợ.
                   </p>
@@ -812,9 +926,9 @@ export default function HomePage() {
               <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="w-10 h-10 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center mb-4">
-                    <AppIcon name="visibility" className="" />
+                    <span className="material-symbols-outlined text-[20px]">visibility</span>
                   </div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2">MINH BẠCH VỀ GIỚI HẠN</h3>
+                  <h3 className="text-base font-bold text-slate-900 mb-2">MINH BẠCH VỀ GIỚI HẠN</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                     Khi bằng chứng không đủ hoặc câu hỏi nằm ngoài phạm vi hỗ trợ, FinMind nêu rõ giới hạn cho người dùng.
                   </p>
@@ -830,9 +944,9 @@ export default function HomePage() {
         {/* ──────────────── 9. FINAL CTA ──────────────── */}
         <section className="py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-8">
-            <div className="    border border-blue-100 rounded-2xl p-10 md:p-14 text-center shadow-xs">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-900 tracking-tight mb-4">
-                Bắt đầu nghiên cứu với nguồn để kiểm chứng
+            <div className="bg-gradient-to-b from-blue-50/60 via-white to-white border border-blue-100 rounded-2xl p-10 md:p-14 text-center shadow-xs">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight mb-4">
+                Bắt đầu nghiên cứu với bằng chứng có thể kiểm chứng.
               </h2>
               <p className="text-slate-600 text-base max-w-xl mx-auto mb-8 leading-relaxed">
                 Đặt câu hỏi, kiểm tra nguồn và tự xác minh thông tin.
@@ -862,7 +976,7 @@ export default function HomePage() {
           {/* Brand & Disclaimer */}
           <div className="space-y-1 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2">
-              <span className="text-lg font-semibold text-slate-900">FinMind</span>
+              <span className="text-lg font-bold text-slate-900">FinMind</span>
             </div>
             <p className="text-xs text-slate-500">
               Chỉ hỗ trợ mục đích nghiên cứu · Không phải khuyến nghị đầu tư · Đồ án tốt nghiệp đại học

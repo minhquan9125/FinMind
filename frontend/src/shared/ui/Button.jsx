@@ -10,7 +10,7 @@ const styles = {
 export default function Button({ children, variant = "primary", loading = false, disabled = false, className = "", type = "button", ...props }) {
   return (
     <button type={type} disabled={disabled || loading}
-      className={`fm-button inline-flex min-h-9 items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB] disabled:cursor-not-allowed disabled:opacity-50 ${styles[variant] || styles.primary} ${className}`}
+      className={`inline-flex min-h-9 items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB] disabled:cursor-not-allowed disabled:opacity-50 ${styles[variant] || styles.primary} ${className}`}
       {...props}>
       {loading && <Spinner size="small" label="" />}
       {children}

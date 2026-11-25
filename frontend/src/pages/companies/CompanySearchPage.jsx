@@ -1,33 +1,24 @@
-import UserShell from "../../shared/ui/UserShell.jsx";
-import DeskHeader from "../../shared/ui/DeskHeader.jsx";
-import AppIcon from "../../shared/ui/AppIcon.jsx";
 import { useEffect, useState } from "react";
-import { Link, useAuth, useSearchParams } from "../../app/router.jsx";
-import { Drawer, EmptyState, ErrorState, Skeleton } from "../../shared/ui/index.js";
+import { Link, useNavigate, useSearchParams } from "../../app/router.jsx";
+import { Card, EmptyState, ErrorState, Input, Sidebar, Skeleton, StatusBadge } from "../../shared/ui/index.js";
+import { userMenu } from "../../mocks/componentMock.js";
 import { getCompanies } from "./api.js";
 import { searchCompanies } from "./companySearch.js";
-import { getWatchlist } from "../watchlist/api.js";
-import { getRevealed, visibleCompanies } from "./visibleCompanies.js";
 
-function CompanyPreview({ company }) {
-  return <>
-        <div className="desk-preview-kicker">Hồ sơ doanh nghiệp</div><span className="desk-large-ticker">{company.id}</span><h2>{company.name}</h2><dl><div><dt>Ngành</dt><dd>{company.sector}</dd></div><div><dt>Sàn giao dịch</dt><dd>{company.exchange || 'Chưa có dữ liệu'}</dd></div></dl>
-        <Link className="desk-primary" to={`/companies/${company.id}`}>Mở hồ sơ <AppIcon name="arrow" /></Link><Link className="desk-secondary" to={`/research?company=${company.id}&question=${encodeURIComponent('Giới thiệu tổng quan về '+company.id)}`}><AppIcon name="copilot" />Hỏi về {company.id}</Link>
-        <p className="desk-preview-note">Xem báo cáo, tin tức và các quan hệ có nguồn tại trang doanh nghiệp.</p>
-  </>;
-}
+const menuPaths = {
+  dashboard: "/dashboard",
+  companies: "/companies",
+  copilot: "/research",
+  watchlist: "/watchlist",
+  graph: "/graph",
+};
 
 export default function CompanySearchPage() {
-  const { user } = useAuth();
-  const userId = user?.id;
+  const navigate = useNavigate();
   const [params] = useSearchParams();
   const fixture = ["empty", "error", "loading"].includes(params.get("fixture")) ? params.get("fixture") : "success";
   const [companies, setCompanies] = useState([]);
-  const [followed, setFollowed] = useState([]);
   const [search, setSearch] = useState("");
-  const [sector, setSector] = useState("");
-  const [selectedId, setSelectedId] = useState(null);
-  const [previewOpen, setPreviewOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [retryCount, setRetryCount] = useState(0);
@@ -41,43 +32,79 @@ export default function CompanySearchPage() {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    const scenario = fixture === "error" && retryCount > 0 ? "success" : fixture;
-    const watchlist = scenario === "success" && userId
-      ? getWatchlist().then(({ items }) => items.map(({ ticker }) => ticker)).catch(() => [])
-      : [];
-    Promise.all([getCompanies(scenario), watchlist])
-      .then(([catalog, tickers]) => {
-        if (cancelled) return;
-        setCompanies(catalog);
-        setFollowed(tickers);
-      })
+    getCompanies(fixture === "error" && retryCount > 0 ? "success" : fixture)
+      .then((data) => { if (!cancelled) setCompanies(data); })
       .catch((caught) => { if (!cancelled) setError(caught.message); })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
-  }, [fixture, retryCount, userId]);
+  }, [fixture, retryCount]);
 
-  // Search stays inside the codes with full data (plus opened/followed ones); no placeholder for other codes.
-  const catalog = visibleCompanies(companies, getRevealed(userId), followed);
-  const shown = new Set(catalog.map(company => company.id));
-  const sectors = [...new Set(catalog.map(company => company.sector))];
-  const visible = searchCompanies(catalog, search).filter(company => shown.has(company.id) && (!sector || company.sector === sector));
-  const selected = visible.find(company => company.id === selectedId) || visible[0];
-  return <UserShell activeId="companies" className="fm-company-catalog desk-catalog">
-    <DeskHeader title="Khám phá doanh nghiệp" section="Danh mục" description="Chọn doanh nghiệp để xem hồ sơ và bắt đầu nghiên cứu."></DeskHeader>
-    <main className="desk-explorer">
-      <aside className="desk-explorer-filters"><h2>Phạm vi nghiên cứu</h2><p>Ngành doanh nghiệp</p>
-        <button type="button" aria-pressed={!sector} onClick={() => setSector('')}>Tất cả ngành<span>{catalog.length}</span></button>
-        {sectors.map(item => <button type="button" key={item} aria-pressed={sector === item} onClick={() => setSector(item)}>{item}<span>{catalog.filter(c => c.sector === item).length}</span></button>)}
-        <div className="desk-filter-note"><AppIcon name="document" /><p>Danh mục lấy từ cơ sở dữ liệu. Giá, BCTC và tài liệu nguồn được ghi rõ ở trang chi tiết.</p></div>
-      </aside>
-      <section className="desk-explorer-results" aria-label="Doanh nghiệp trong danh mục">
-        <div className="desk-explorer-toolbar"><label><AppIcon name="search" /><input type="search" placeholder="Tìm theo tên hoặc mã" aria-label="Tìm doanh nghiệp" value={search} onChange={event => setSearch(event.target.value)} /></label><span aria-live="polite">{loading ? 'Đang tải' : `${visible.length} doanh nghiệp`}</span></div>
-        {loading ? <Skeleton rows={6} /> : error ? <ErrorState message={error} onRetry={() => setRetryCount(count => count + 1)} /> : !visible.length ? <EmptyState title="Không tìm thấy doanh nghiệp" description="Thử đổi từ khóa hoặc chọn lại ngành." /> : <div className="desk-company-rows">{visible.map(company => <button type="button" className="desk-company-row" key={company.id} aria-pressed={selected?.id === company.id} onClick={() => { setSelectedId(company.id); setPreviewOpen(window.matchMedia("(max-width: 1200px)").matches); }}><span className="desk-ticker-mark">{company.id}</span><span className="desk-company-row-name"><strong>{company.name}</strong><small>{company.sector}</small></span><AppIcon name="chevron" /></button>)}</div>}
-      </section>
-      <aside className="desk-company-preview" aria-label="Xem trước doanh nghiệp">{selected && !loading && !error ? <>
-        <CompanyPreview company={selected} />
-      </> : <div className="desk-preview-empty"><AppIcon name="companies" /><p>Chọn một doanh nghiệp để xem trước hồ sơ.</p></div>}</aside>
-    </main>
-    <Drawer open={previewOpen} title="Hồ sơ doanh nghiệp" onClose={() => setPreviewOpen(false)}>{selected && <div className="desk-company-preview desk-company-preview-drawer"><CompanyPreview company={selected} /></div>}</Drawer>
-  </UserShell>;
+  const visible = searchCompanies(companies, search);
+  function renderGroup(sector) {
+    const group = visible.filter((company) => company.sector === sector);
+    if (group.length === 0) return null;
+    return (
+      <Card key={sector} className="mb-4">
+        <div className="mb-3 flex items-center justify-between border-b border-slate-100 pb-2">
+          <h3 className="flex items-center gap-2 text-xs font-bold tracking-wider text-slate-800">
+            <span className="h-2 w-2 rounded-full bg-blue-600" />{sector.toUpperCase()}
+          </h3>
+          <span className="text-[11px] font-medium text-slate-500">{search ? `${group.length} kết quả` : `${group.length} doanh nghiệp niêm yết`}</span>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+          {group.map((company) => (
+            <article key={company.id} className="flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-3.5 transition-colors hover:border-blue-300">
+              <div>
+                <div className="mb-1.5 flex items-center justify-between gap-2">
+                  <strong className="text-sm text-slate-900">{company.id}</strong>
+                  <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600">{company.sector}</span>
+                </div>
+                <p className="mb-3 truncate text-xs text-slate-600" title={company.name}>{company.name}</p>
+              </div>
+              <Link to={`/companies/${company.id}`} className="inline-flex min-h-8 w-full items-center justify-center rounded-lg bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700 hover:bg-blue-100">
+                Xem doanh nghiệp
+              </Link>
+            </article>
+          ))}
+        </div>
+      </Card>
+    );
+  }
+
+  return (
+    <div className="flex min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+      <Sidebar groups={userMenu} activeId="companies" onSelect={(id) => navigate(menuPaths[id])}
+        profile={{ initials: "NA", name: "Nguyễn Văn A", role: "Nhà nghiên cứu" }}
+        onProfile={() => navigate("/profile")} onLogout={() => navigate("/login")} />
+      <main className="min-w-0 flex-1">
+        <header className="flex h-16 items-center justify-end border-b border-slate-200 bg-white px-4 sm:px-6 lg:px-8">
+          <StatusBadge tone="neutral">Dữ liệu minh họa · Mock</StatusBadge>
+        </header>
+        <div className="mx-auto w-full max-w-[1240px] space-y-6 px-4 py-6 sm:px-6 lg:px-8">
+          <h1 className="text-2xl font-bold tracking-tight">Doanh nghiệp</h1>
+          <Card>
+            <Input type="search" label="Tìm doanh nghiệp" placeholder="Nhập tên hoặc mã doanh nghiệp..." autoComplete="off"
+              value={search} onChange={(event) => setSearch(event.target.value)} />
+            <p aria-live="polite" className="mt-2 text-xs text-slate-500">
+              {loading ? "Đang tải danh sách..." : search ? `${visible.length} kết quả phù hợp` : `${companies.length} doanh nghiệp trong phạm vi nghiên cứu`}
+            </p>
+          </Card>
+
+          {loading ? <Skeleton rows={5} /> : error ? (
+            <ErrorState message={error} onRetry={() => setRetryCount((count) => count + 1)} />
+          ) : companies.length === 0 ? (
+            <EmptyState title="Chưa có doanh nghiệp" description="Danh sách doanh nghiệp minh họa hiện đang rỗng." />
+          ) : (
+            <>
+              <section aria-labelledby="supported-title">
+                <h2 id="supported-title" className="text-sm font-bold">Doanh nghiệp được hỗ trợ</h2>
+                <p className="mb-4 mt-0.5 text-xs text-slate-500">Khám phá các doanh nghiệp hiện nằm trong phạm vi nghiên cứu của FinMind.</p>
+                {visible.length === 0 ? <EmptyState title="Không tìm thấy doanh nghiệp phù hợp" description="Nhập mã cổ phiếu gồm 3 chữ cái, ví dụ CTR." /> : [...new Set(visible.map((company) => company.sector))].map(renderGroup)}
+              </section>
+            </>
+          )}
+        </div>
+      </main>
+    </div>
+  );
 }

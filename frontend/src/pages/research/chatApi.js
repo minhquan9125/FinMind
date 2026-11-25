@@ -30,43 +30,8 @@ export const createSession = signal => request("", "POST", undefined, signal);
 export const listSessions = () => request();
 export const getSession = (id, signal) => request(`/${encodeURIComponent(id)}`, "GET", undefined, signal);
 export const sendMessage = (id, text, revision, signal) => request(`/${encodeURIComponent(id)}/messages`, "POST", { text, revision }, signal);
-// A conflict is never retried silently: another turn may have changed context.
-export async function sendSynchronizedMessage(current, text, signal, onSynchronize) {
-  try { return await sendMessage(current.session_id, text, current.revision, signal); }
-  catch (error) {
-    if (error.status !== 409 || signal?.aborted) throw error;
-    const latest = await getSession(current.session_id, signal);
-    if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
-    onSynchronize(latest);
-    throw failure(latest.revision !== current.revision
-      ? 'Đã đồng bộ tin nhắn mới của phiên. Câu hỏi của bạn được giữ lại; hãy kiểm tra hội thoại rồi bấm Gửi lại.'
-      : 'Câu hỏi trước vẫn đang xử lý hoặc khóa xử lý chưa hết hạn sau khi máy chủ khởi động lại. Câu hỏi của bạn được giữ lại; vui lòng thử lại sau hoặc mở Nghiên cứu mới.', 409);
-  }
-}
 // Opening history continues the same session; POST /resume creates a separate fork.
 export const resumeSession = getSession;
-
-// Download the chat as a summary file; the server builds it, the browser saves it under the server's name.
-export async function exportSession(id, format) {
-  let response;
-  try { response = await authorizedFetch(`${base}/${encodeURIComponent(id)}/export?format=${format}`, { cache: "no-store" }); }
-  catch (error) {
-    if (error?.status) throw error;
-    throw failure("Không kết nối được máy chủ. Hãy kiểm tra backend đang chạy.", 0);
-  }
-  if (!response.ok) throw failure(`Không xuất được đoạn chat (lỗi ${response.status}).`, response.status);
-  const name = /filename="([^"]+)"/.exec(response.headers.get("Content-Disposition") || "")?.[1] || `finmind-chat.${format}`;
-  return { blob: await response.blob(), name };
-}
-
-export function saveFile({ blob, name }) {
-  const url = URL.createObjectURL(blob);
-  const link = Object.assign(document.createElement("a"), { href: url, download: name });
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
 
 // Explicit diagnostic inspection. The chat answer now stores its own routed
 // evidence, so ResearchChat does not call this on every submitted question.

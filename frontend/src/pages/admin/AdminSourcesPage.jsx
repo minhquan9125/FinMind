@@ -25,13 +25,13 @@ export default function AdminSourcesPage() {
   return <AdminLayout>
     <header className="space-y-1">
       <Link className="text-xs text-blue-600" to={ADMIN_LINKS.overview}>Tổng quan vận hành</Link>
-      <h1 className="text-xl font-semibold">Cấu hình nguồn dữ liệu</h1>
+      <h1 className="text-xl font-bold">Cấu hình nguồn dữ liệu</h1>
       <p className="text-sm text-slate-500">Dữ liệu thật, chỉ đọc. Hiện hệ thống thu thập tin từ một nguồn là FireAnt; các nguồn khác chưa được quản lý ở trang này.</p>
     </header>
     {error && <ErrorState message={error} onRetry={() => setRetry(v => v + 1)} />}
     {!config && !error && <Skeleton rows={6} />}
     {config && <Card title="FireAnt · tin tức theo mã" description={automationNote(config)}
-      action={<Link className="desk-secondary" to={`${ADMIN_LINKS.ingestion}?workspace=settings`}>Chỉnh sửa nguồn & lịch chạy →</Link>}>
+      action={<Link to={ADMIN_LINKS.ingestion}><Button variant="secondary">Chỉnh sửa ở Thu thập & duyệt</Button></Link>}>
       <dl>{sourceRows(config).map(row => <div key={row.label} className="flex flex-wrap justify-between gap-3 border-b py-2 text-sm">
         <dt className="text-slate-500">{row.label}</dt><dd className="break-all text-right">{String(row.value)}</dd></div>)}</dl>
     </Card>}

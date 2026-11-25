@@ -1,7 +1,7 @@
 // Khung chung cho các trang Admin: sidebar bên trái + vùng nội dung cuộn.
 // Dùng Sidebar từ shared/ui; mục đang chọn lấy từ URL hiện tại.
 
-import { Link, useLocation, useNavigate, useAuth } from "../../app/router.jsx";
+import { useLocation, useNavigate } from "../../app/router.jsx";
 import { Sidebar } from "../../shared/ui";
 
 // Địa chỉ lấy theo src/app/routes.js (paths.js chưa có đủ các địa chỉ admin này).
@@ -30,7 +30,7 @@ const groups = [
     { id: "corpus", label: "Phiên bản kho dữ liệu", icon: "☰" },
   ] },
   { label: "Cấu hình hệ thống", items: [
-    { id: "configuration", label: "Ngưỡng & ngân sách", icon: "⚙" },
+    { id: "configuration", label: "Ngưỡng & ngân sách API", icon: "⚙" },
   ] },
   { label: "Kiểm toán", items: [
     { id: "audit", label: "Nhật ký kiểm toán", icon: "✓" },
@@ -46,34 +46,24 @@ function activeIdFor(pathname) {
 export default function AdminLayout({ children }) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
-  const name = user?.name || "Quản trị viên";
   // Mọi mục trong menu hiện đã dùng dữ liệu thật; thêm id vào mảng này khi có trang mới còn là minh họa.
   const unfinished = [].includes(activeIdFor(pathname));
 
   return (
-    <div className="fm-workspace fm-admin flex h-screen w-full overflow-hidden bg-[#F8FAFC]" data-page={activeIdFor(pathname)}>
+    <div className="flex h-screen w-full overflow-hidden bg-[#F8FAFC]">
       <Sidebar
         groups={groups}
         activeId={activeIdFor(pathname)}
         onSelect={(id) => navigate(ADMIN_LINKS[id])}
         badge="ADMIN"
-        profile={{ initials: name.slice(0, 2).toUpperCase(), name, role: "Quản trị viên" }}
-        onProfile={() => navigate("/profile")}
-        onLogout={async () => { await logout(); navigate("/login"); }}
+        profile={{ initials: "AD", name: "Quản trị viên", role: "System Admin" }}
       />
-      <main className="fm-admin-main min-w-0 flex h-screen flex-1 flex-col overflow-y-auto">
-        <header className="fm-admin-bar">
-          <div><span className="fm-eyebrow">FinMind / Quản trị</span><p>Vận hành dữ liệu và chất lượng trả lời</p></div>
-          <Link to="/dashboard">Về không gian nghiên cứu →</Link>
-        </header>
-        <div className="fm-admin-content">
+      <main className="flex h-screen flex-1 flex-col gap-8 overflow-y-auto p-4 md:p-8">
         {unfinished && <aside className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
           <strong>Chưa triển khai kết nối dữ liệu thật cho mục này.</strong>
           <p className="mt-1">Giao diện và các số liệu bên dưới là minh họa. Thao tác tại đây chưa thay đổi cấu hình hoặc dữ liệu đang phục vụ.</p>
         </aside>}
         {children}
-        </div>
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
-export default function Card({ title, description, action, children, className = "", id }) {
+export default function Card({ title, description, action, children, className = "" }) {
   return (
-    <section id={id} className={`fm-card rounded-xl border border-[#E2E8F0] bg-white shadow-sm ${className}`}>
+    <section className={`rounded-xl border border-[#E2E8F0] bg-white shadow-sm ${className}`}>
       {(title || description || action) && (
         <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#F1F5F9] px-5 py-4">
           <div>

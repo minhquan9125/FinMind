@@ -9,7 +9,7 @@ export default function DataTable({ columns = [], rows = [], loading = false, er
   if (rows.length === 0) return <EmptyState title={emptyMessage} />;
 
   return (
-    <div className="fm-table overflow-x-auto rounded-xl border border-[#E2E8F0] bg-white">
+    <div className="overflow-x-auto rounded-xl border border-[#E2E8F0] bg-white">
       <table className="min-w-full text-left text-xs">
         <thead className="bg-[#F8FAFC] text-[#64748B]">
           <tr>{columns.map((column) => <th key={column.key} scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">{column.label}</th>)}</tr>

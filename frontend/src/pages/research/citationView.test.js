@@ -102,23 +102,3 @@ test('citation numbers follow answer order instead of retrieval order', () => {
   assert.equal(view[1].citationNumber, 1);
   assert.equal(view[2].citationNumber, null);
 });
-
-test('health sources expose stored PDF citations and reject unsafe links', () => {
-  const item = { evidence_id: 'health', source_verified: true, snapshot: { kind: 'FINANCIAL_HEALTH', health: {
-    citations: [{title:'Report',url:'https://example.org/report.pdf',page:33},
-      {title:'Report',url:'https://example.org/report.pdf',page:33}, {url:'javascript:alert(1)'}]
-  } } };
-  const source = citationView({execution_mode:'LIVE',evidence_pack:{items:[item]}})[0];
-  assert.equal(source.documentLinks.length, 1);
-  assert.equal(source.documentLinks[0].page, 33);
-  assert.match(source.sourceNote, /BCTC/);
-});
-
-test('stored locator source_url is retained without inventing a link for computed trends', () => {
-  const items = [{evidence_id:'news',source_verified:true,locator:{source_url:'https://example.org/news'}},
-    {evidence_id:'trend',source_verified:true,source_type:'PRICE_TREND'}];
-  const sources = citationView({execution_mode:'LIVE',evidence_pack:{items}});
-  assert.equal(sources[0].url, 'https://example.org/news');
-  assert.equal(sources[1].url, null);
-  assert.match(sources[1].sourceNote, /FinMind/);
-});

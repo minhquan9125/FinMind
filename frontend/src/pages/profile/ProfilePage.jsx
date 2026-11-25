@@ -1,4 +1,3 @@
-import UserShell from "../../shared/ui/UserShell.jsx";
 import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "../../app/router.jsx";
 import { Button, Card, EmptyState, ErrorState, Input, Skeleton, StatusBadge } from "../../shared/ui/index.js";
@@ -79,9 +78,15 @@ export default function ProfilePage() {
   }
 
   return (
-    <UserShell className="fm-profile">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+      <header className="border-b border-[#E2E8F0] bg-white">
+        <div className="mx-auto flex h-16 max-w-[1100px] items-center gap-2.5 px-5 sm:px-8">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#2563EB] text-xs font-bold text-white">FM</span>
+          <strong className="text-lg">FinMind</strong>
+        </div>
+      </header>
       <main className="mx-auto max-w-[860px] px-5 pb-16 pt-9 sm:px-8 sm:pt-12">
-        <Link className="text-sm font-semibold text-[#64748B] hover:text-[#0F172A]" to="/dashboard">← Về tổng quan</Link>
+        <Link className="text-sm font-semibold text-[#64748B] hover:text-[#0F172A]" to="/dashboard">← Về trang chủ</Link>
         <div className="mb-8 mt-6">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B]">Tài khoản</p>
           <h1 className="mt-2 text-[28px] font-bold tracking-tight sm:text-[32px]">Hồ sơ cá nhân</h1>
@@ -92,8 +97,8 @@ export default function ProfilePage() {
         {loading ? <Skeleton rows={6} /> : error ? (
           <ErrorState message={error} onRetry={() => setRetryCount((count) => count + 1)} />
         ) : !profile ? <EmptyState title="Chưa có hồ sơ" description="Fixture hồ sơ hiện đang rỗng." /> : (
-          <div className="desk-profile-workspace"><nav aria-label="Các mục hồ sơ"><a href="#profile-avatar">Ảnh đại diện</a><a href="#profile-password">Mật khẩu</a><p>Biểu mẫu này là bản xem trước, chưa cập nhật tài khoản thật.</p></nav><div className="space-y-5">
-            <Card id="profile-avatar" title="Ảnh đại diện" description="Chọn ảnh để xem trước diện mạo mới." className="rounded-2xl">
+          <div className="space-y-5">
+            <Card title="Ảnh đại diện" description="Chọn ảnh để xem trước diện mạo mới." className="rounded-2xl">
               <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                 <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-full border-4 border-white bg-[#DBEAFE] text-2xl font-semibold text-[#1D4ED8] shadow-[0_0_0_1px_#BFDBFE]" aria-label="Ảnh đại diện xem trước">
                   {avatarPreview ? <img src={avatarPreview} alt="Ảnh đại diện mới" className="h-full w-full object-cover" /> : profile.initials}
@@ -110,7 +115,7 @@ export default function ProfilePage() {
               </div>
             </Card>
 
-            <Card id="profile-password" title="Đổi mật khẩu" description="Nhập mật khẩu hiện tại và mật khẩu mới." className="rounded-2xl">
+            <Card title="Đổi mật khẩu" description="Nhập mật khẩu hiện tại và mật khẩu mới." className="rounded-2xl">
               <form onSubmit={submitPassword} noValidate className="max-w-[520px]">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Input label="Mật khẩu hiện tại" type="password" autoComplete="current-password" className="sm:col-span-2"
@@ -124,10 +129,10 @@ export default function ProfilePage() {
                 <div className="mt-7 flex justify-end border-t border-[#F1F5F9] pt-5"><Button type="submit">Đổi mật khẩu</Button></div>
               </form>
             </Card>
-          </div></div>
+          </div>
         )}
         <p className="mt-6 text-center text-xs text-[#94A3B8]">Bản mẫu giao diện · Thay đổi chưa được lưu vào tài khoản.</p>
       </main>
-    </UserShell>
+    </div>
   );
 }

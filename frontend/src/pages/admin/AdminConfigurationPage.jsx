@@ -32,7 +32,7 @@ export default function AdminConfigurationPage() {
     finally { setBusy(false); }
   }
   return <AdminLayout>
-    <header className="flex flex-wrap items-center justify-between gap-3"><div><h1 className="text-xl font-semibold">Ngưỡng & ngân sách API</h1><p className="mt-2 text-sm text-slate-500">Cấu hình ngân sách thật, đơn giá do admin cung cấp và lịch sử phiên bản trên máy này.</p></div>
+    <header className="flex flex-wrap items-center justify-between gap-3"><div><h1 className="text-xl font-bold">Ngưỡng & ngân sách API</h1><p className="mt-2 text-sm text-slate-500">Cấu hình ngân sách thật, đơn giá do admin cung cấp và lịch sử phiên bản trên máy này.</p></div>
       <Button variant="secondary" disabled={busy} onClick={() => { if (!form || confirm("Tải lại sẽ bỏ các chỉnh sửa chưa lưu. Tiếp tục?")) setRevision(v => v + 1); }}>Tải lại</Button></header>
     {error && <ErrorState message={error} />}{message && <p role="status" className="rounded-lg bg-green-50 p-4 text-green-800">{message}</p>}
     {!data && !error && <Skeleton rows={6} />}

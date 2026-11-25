@@ -389,39 +389,3 @@ test('non-BOTH question does not execute a retrieval branch', async () => {
   assert.equal(await chatApi.inspectBoth('Giá FPT hôm nay?'), null);
   assert.deepEqual(calls, ['/api/hybrid-router/test']);
 });
-
-test('export downloads the server file with its name, and reports a failed export', async () => {
-  resetEnv();
-  globalThis.localStorage = new SimpleStorage();
-  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
-  globalThis.fetch = async (url) => {
-    assert.equal(url, '/api/research/chat/sessions/s%201/export?format=json');
-    return new Response('{"turn_count":2}', { status: 200,
-      headers: { 'Content-Disposition': 'attachment; filename="finmind-chat-20261120-1030.json"' } });
-  };
-  const file = await chatApi.exportSession('s 1', 'json');
-  assert.equal(file.name, 'finmind-chat-20261120-1030.json');
-  assert.equal(await file.blob.text(), '{"turn_count":2}');
-  globalThis.fetch = async () => new Response('', { status: 404 });
-  await assert.rejects(chatApi.exportSession('s1', 'txt'), (e) => e.status === 404);
-});
-
-for (const revision of [0, 1]) test(`conflict synchronizes revision ${revision} without sending the question twice`, async () => {
-  resetEnv();
-  globalThis.localStorage = new SimpleStorage();
-  localStorage.setItem('finmind_auth_session', JSON.stringify({ token: 'test-token' }));
-  const calls = [];
-  const latest = {session_id:'session',revision,messages:[]};
-  globalThis.fetch = async (url, options) => {
-    calls.push(options.method);
-    return options.method === 'POST'
-      ? {ok:false,status:409,json:async()=>({detail:'Conflict'})}
-      : {ok:true,json:async()=>latest};
-  };
-  let synchronized;
-  await assert.rejects(chatApi.sendSynchronizedMessage({session_id:'session',revision:0}, 'Question', undefined,
-    value => { synchronized = value; }), error => error.status === 409 &&
-      error.message.includes(revision ? 'Đã đồng bộ' : 'vẫn đang xử lý'));
-  assert.deepEqual(calls,['POST','GET']);
-  assert.deepEqual(synchronized, latest);
-});

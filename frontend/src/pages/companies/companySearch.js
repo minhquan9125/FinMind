@@ -6,7 +6,7 @@ export function companyPlaceholder(value) {
   const id = value.trim().toUpperCase();
   return /^[A-Z]{3}$/.test(id) ? {
     id, name: `Cổ phiếu ${id}`, sector: "Chưa có hồ sơ", exchange: null,
-    periods: [], reports: [], sources: [],
+    financials: [], reports: [], source: "Chưa có dữ liệu hồ sơ", unit: "—",
   } : null;
 }
 

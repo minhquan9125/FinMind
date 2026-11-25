@@ -1,4 +1,3 @@
-import AuthFrame from "../../shared/ui/AuthFrame.jsx";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "../../app/router.jsx";
 import { PATHS } from "../../shared/paths.js";
@@ -73,15 +72,15 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <AuthFrame><div className="fm-auth min-h-screen bg-[#F8FAFC] flex flex-col antialiased font-sans text-slate-900">
+    <div className="min-h-screen bg-[#F8FAFC] flex flex-col antialiased font-sans text-slate-900">
       {/* Thanh Header trên cùng */}
       <header className="w-full bg-white border-b border-slate-100 px-6 sm:px-8 py-3.5 flex items-center">
         <Link to={PATHS.home} className="flex items-center gap-2.5 no-underline">
-          <div className="w-8 h-8 rounded-lg bg-[#2563EB] text-white flex items-center justify-center font-semibold text-xs tracking-tight">
+          <div className="w-8 h-8 rounded-lg bg-[#2563EB] text-white flex items-center justify-center font-bold text-xs tracking-tight">
             FM
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-slate-900 leading-tight">
+            <span className="text-sm font-bold text-slate-900 leading-tight">
               FinMind
             </span>
             <span className="text-[11px] text-slate-500 font-normal">
@@ -97,7 +96,7 @@ export default function ResetPasswordPage() {
           {/* Card Đặt lại mật khẩu */}
           <div className="bg-white rounded-2xl border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] p-8 sm:p-9">
             {/* Tiêu đề & phụ đề */}
-            <h1 className="text-[24px] font-semibold tracking-tight text-slate-900 leading-snug">
+            <h1 className="text-[24px] font-bold tracking-tight text-slate-900 leading-snug">
               Đặt lại mật khẩu
             </h1>
             <p className="text-sm text-slate-500 mt-2 mb-6 leading-relaxed">
@@ -192,6 +191,6 @@ export default function ResetPasswordPage() {
           </p>
         </div>
       </main>
-    </div></AuthFrame>
+    </div>
   );
 }

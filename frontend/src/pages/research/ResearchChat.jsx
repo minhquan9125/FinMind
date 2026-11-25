@@ -1,15 +1,10 @@
-import EvidencePanel from "./EvidencePanel.jsx";
-import { sourceInspection } from './sourceInspection.js';
-import { historyPinsKey, loadHistoryPins, toggleHistoryPin, sortPinnedHistory } from './historyPins.js';
-import { stopRequest } from './stopRequest.js';
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../shared/context/AuthContext.jsx";
 import { useSearchParams } from "../../app/router.jsx";
 import { Drawer } from "../../shared/ui/index.js";
-import { createSession, listSessions, getSession, sendSynchronizedMessage, resumeSession, exportSession, saveFile } from "./chatApi.js";
+import { createSession, listSessions, getSession, sendMessage, resumeSession } from "./chatApi.js";
 import { citationView, modeLabel } from './citationView.js';
 import { clarificationChoices } from './clarificationView.js';
-import ResearchIcon from "./ResearchIcon.jsx";
 import ChatActivity from './ChatActivity.jsx';
 import { navigateQuestionHistory } from './questionHistory.js';
 import { scopeChips, outcomeNotice, followUps } from './scopeView.js';
@@ -39,34 +34,6 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
   const [params] = useSearchParams();
   const prefill = params.get("question") || "";
   const [model, setModel] = useState(() => empty(owner));
-  const [pending, setPending] = useState(null); // the question just sent, shown until the saved turn arrives
-  const [exporting, setExporting] = useState(false);
-  const [exportError, setExportError] = useState("");
-  async function downloadChat(format) {
-    const id = model.snapshot?.session_id;
-    if (!id) return;
-    setExporting(true);
-    setExportError("");
-    try { saveFile(await exportSession(id, format)); }
-    catch (error) { setExportError(error.message); }
-    finally { setExporting(false); }
-  }
-  const [sourceSelection, setSourceSelection] = useState(null);
-  const [sourcesOpen, setSourcesOpen] = useState(false);
-  const [pins, setPins] = useState({ owner: null, ids: [], error: null });
-  const pinView = pins.owner === owner ? pins : { ids: [], error: null };
-  useEffect(() => {
-    const reload = () => setPins({ owner, ...loadHistoryPins(owner) });
-    reload();
-    const changed = event => {
-      if (event.key === null || event.key === historyPinsKey(owner)) reload();
-    };
-    window.addEventListener('storage', changed);
-    return () => window.removeEventListener('storage', changed);
-  }, [owner]);
-  function togglePin(id) {
-    setPins({ owner, ...toggleHistoryPin(owner, id) });
-  }
   const [draft, setDraft] = useState({ owner, text: prefill });
   const generation = useRef(0);
   const busy = useRef(false);
@@ -74,27 +41,12 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
   const needsSync = useRef(false);
   const previousReset = useRef(resetKey);
   const scroll = useRef(null);
-  const composer = useRef(null);
   const questionHistory = useRef(null);
   const view = model.owner === owner ? model : empty(owner);
   const input = draft.owner === owner ? draft.text : "";
   const snapshot = view.snapshot;
   const lastResult = [...(snapshot?.messages || [])].reverse().find(m => m.role !== "user" && m.result)?.result;
   const chips = scopeChips(lastResult);
-  const { result: inspectedResult, question: inspectedQuestion } = sourceInspection(snapshot, sourceSelection, owner);
-  useEffect(() => {
-    setSourcesOpen(false);
-    setSourceSelection(null);
-  }, [owner, snapshot?.session_id]);
-  function inspectSources(index) {
-    setSourceSelection({ owner, session: snapshot.session_id, index });
-    setSourcesOpen(window.matchMedia('(max-width: 1100px)').matches);
-  }
-  useEffect(() => {
-    if (!composer.current) return;
-    composer.current.style.height = 'auto';
-    composer.current.style.height = `${Math.min(composer.current.scrollHeight, 144)}px`;
-  }, [input]);
   const valid = epoch => generation.current === epoch;
   function adopt(data) {
     setModel(previous => ({ ...previous, snapshot: data }));
@@ -133,11 +85,10 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
       }
     }
   }
-  function stopQuestion(event) {
-    event.preventDefault();
+  function stopQuestion() {
     if (!activeRequest.current || view.loadingKind !== 'chat') return;
     generation.current++;
-    stopRequest(event, activeRequest.current);
+    activeRequest.current.abort();
     activeRequest.current = null;
     needsSync.current = true;
     busy.current = false;
@@ -190,20 +141,16 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
   }, [resetKey]);
   useEffect(() => { if (historyOpen && owner) void refreshHistory(generation.current); }, [historyOpen, owner]);
   useEffect(() => { if (scroll.current) scroll.current.scrollTop = scroll.current.scrollHeight; },
-    [snapshot?.messages.length, view.loading, view.error, pending]);
+    [snapshot?.messages.length, view.loading, view.error]);
   useEffect(() => { if (prefill) setDraft({ owner, text: prefill }); }, [prefill]);
 
   function submit(event) {
     event.preventDefault();
     submitText(input.trim());
   }
-  function submitText(raw) {
-    const text = (raw || "").trim();
+  function submitText(text) {
     if (!text) return;
     void run(async (epoch, signal) => {
-      // Show the question in the conversation at once instead of leaving it in the input box.
-      setPending(text);
-      setDraft({ owner, text: "" });
       let current = snapshot;
       // The previous response may have committed just before Stop was clicked.
       // Read the authoritative revision before sending another turn.
@@ -218,11 +165,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
         if (!valid(epoch)) return;
         adopt(current); // Preserve the new ID even if the following send fails.
       }
-      const next = await sendSynchronizedMessage(current, text, signal, latest => {
-        if (!valid(epoch)) return;
-        adopt(latest);
-        needsSync.current = false;
-      });
+      const next = await sendMessage(current.session_id, text, current.revision, signal);
       if (!valid(epoch)) return;
       adopt(next);
       setDraft({ owner, text: "" });
@@ -230,12 +173,6 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
       void refreshHistory(epoch); // A list failure must never turn a saved message into a send failure.
     });
   }
-  useEffect(() => {
-    if (view.loading || pending === null) return;
-    // Failed or stopped: give the question back so the user can fix it or send it again.
-    if (view.error || view.stopped) setDraft({ owner, text: pending });
-    setPending(null);
-  }, [view.loading]);
   function resume(id) {
     questionHistory.current = null;
     void run(async epoch => {
@@ -266,18 +203,9 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
   }
   if (authLoading) return <p role="status">Đang kiểm tra phiên đăng nhập...</p>;
   if (!owner) return <p>Vui lòng <a href="/login" className="text-blue-600 underline">đăng nhập</a> để bắt đầu hội thoại.</p>;
-  return <div className="desk-research-workbench"><section aria-label="Hội thoại nghiên cứu" className="research-chat flex min-w-0 min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-    <div className="research-context shrink-0 border-b border-slate-100 px-4 py-3">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-xs text-amber-800">{modeLabel(snapshot)}</p>
-        {snapshot?.messages?.length > 0 && <div className="flex items-center gap-2" aria-label="Xuất đoạn chat">
-          {['txt', 'json'].map(format => <button key={format} type="button" disabled={exporting}
-            onClick={() => downloadChat(format)}
-            className="rounded-md border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50">
-            Xuất {format.toUpperCase()}</button>)}
-        </div>}
-      </div>
-      {exportError && <p role="alert" className="mt-1 text-xs text-red-700">{exportError}</p>}
+  return <section aria-label="Hội thoại nghiên cứu" className="research-chat flex min-w-0 min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+    <div className="shrink-0 border-b border-slate-100 px-4 py-3">
+      <p className="text-xs text-amber-800">{modeLabel(snapshot)}</p>
       {chips.length === 0 && <p className="mt-1 whitespace-pre-wrap break-words text-sm text-slate-600">{snapshot?.context || "Nhập câu hỏi để bắt đầu. Bạn có thể bổ sung mã, kỳ hoặc chỉ tiêu ở lượt sau."}</p>}
       {chips.length > 0 && <details className="mt-1 text-xs text-slate-600">
       <summary className="cursor-pointer break-words py-1">Phạm vi: {chips.map(chip => chip.value).join(' · ')}</summary>
@@ -289,17 +217,12 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
       </ul></details>}
     </div>
     <div ref={scroll} className="research-chat-log min-h-0 flex-1 space-y-4 overflow-y-auto p-3 sm:p-4" role="log" aria-label="Các lượt hỏi đáp" aria-live="polite">
-      {!snapshot?.messages.length && !view.loading && <div className="research-empty">
-        <ResearchIcon name="document" /><p className="research-empty-kicker">Không gian nghiên cứu</p>
-        <h2>Bắt đầu từ một câu hỏi</h2><p>Tra cứu doanh nghiệp, báo cáo và tin tức trong kho dữ liệu của FinMind. Mở nguồn tham khảo để kiểm chứng thông tin tìm được.</p>
-        <div className="research-examples"><span>Ví dụ câu hỏi</span>{['Giới thiệu tổng quan về FPT', 'Hội đồng quản trị VCB gồm những ai?', 'Tin tức MBB mới nhất'].map(question => <button type="button" key={question} onClick={() => { setDraft({ owner, text: question }); composer.current?.focus(); }}>{question}<ResearchIcon name="send" /></button>)}</div>
-      </div>}
+      {!snapshot?.messages.length && !view.loading && <p className="py-8 text-center text-sm text-slate-500">Bạn muốn tra cứu điều gì?</p>}
       {(snapshot?.messages || []).map((message, index) => <div key={`${index}-${message.timestamp}`} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-        <div data-status={message.result?.answering?.status || message.result?.status} className={`research-message ${message.role === "user" ? "research-message-user" : "research-message-answer"} min-w-0 max-w-[92%] rounded-xl px-4 py-3 sm:max-w-[85%] ${message.role === "user" ? "bg-blue-600 text-white" : "border border-slate-200 bg-slate-50 text-slate-900"}`}>
-          <p className={`research-message-label mb-1 text-xs font-semibold ${message.role === "user" ? "text-blue-100" : "text-blue-700"}`}>{message.role === "user" ? "Bạn" : message.result?.answering?.manifest?.response_mode === "SESSION_SUMMARY" ? "Tổng hợp hội thoại" : message.result?.scope?.source_type === 'PRICE' ? 'Giá cổ phiếu' : message.result?.answering?.manifest?.response_mode === 'NEWS_LIST' ? 'Tin tức' : message.result?.execution_mode === 'LIVE' && message.result?.status === 'EVIDENCE_READY' && message.result?.answering?.status !== 'DRAFT_READY' ? 'Nguồn ứng viên' : statusLabels[message.result?.answering?.status] || statusLabels[message.result?.status] || "FinMind"}</p>
+        <div className={`min-w-0 max-w-[92%] rounded-xl px-4 py-3 sm:max-w-[85%] ${message.role === "user" ? "bg-blue-600 text-white" : "border border-slate-200 bg-slate-50 text-slate-900"}`}>
+          <p className={`mb-1 text-xs font-semibold ${message.role === "user" ? "text-blue-100" : "text-blue-700"}`}>{message.role === "user" ? "Bạn" : message.result?.answering?.manifest?.response_mode === "SESSION_SUMMARY" ? "Tổng hợp hội thoại" : message.result?.scope?.source_type === 'PRICE' ? 'Giá cổ phiếu' : message.result?.answering?.manifest?.response_mode === 'NEWS_LIST' ? 'Tin tức' : message.result?.execution_mode === 'LIVE' && message.result?.status === 'EVIDENCE_READY' && message.result?.answering?.status !== 'DRAFT_READY' ? 'Nguồn ứng viên' : statusLabels[message.result?.answering?.status] || statusLabels[message.result?.status] || "FinMind"}</p>
           <p className="whitespace-pre-wrap break-words text-sm leading-relaxed">{message.content}</p>
-          {message.result?.routing && <details className="research-routing mt-3 text-xs text-slate-600" aria-label="Trạng thái tuyến trả lời">
-            <summary className="cursor-pointer">Chi tiết truy xuất</summary>
+          {message.result?.routing && <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-xs text-slate-800" aria-label="Trạng thái tuyến trả lời">
             <p className="font-semibold">Tuyến {message.result.route} · {message.result.status} · {message.result.execution_mode}</p>
             {message.result.routing.saved_source_reference && <p className="mt-1">Nguồn đã lưu từ câu trả lời trước; không tìm kiếm lại.</p>}
             <p className="mt-1">{Object.entries(message.result.routing.branch_states || {}).map(([branch, state]) =>
@@ -308,8 +231,8 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
             <details className="mt-2"><summary className="cursor-pointer text-blue-800 underline">Xem trace và nguồn bị loại</summary>
               <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap break-all">{JSON.stringify(message.result.routing, null, 2)}</pre>
             </details>
-          </details>}
-          {message.result?.timings && <details className="research-routing mt-2 text-xs text-slate-500"><summary className="cursor-pointer">Thời gian xử lý</summary><p>Tìm nguồn: {message.result.timings.retrieval_seconds}s · Trả lời: {message.result.timings.answer_seconds}s · Tổng: {message.result.timings.total_seconds}s</p></details>}
+          </div>}
+          {message.result?.timings && <p className="mt-2 text-xs text-slate-500">Tìm nguồn: {message.result.timings.retrieval_seconds}s · Trả lời: {message.result.timings.answer_seconds}s · Tổng: {message.result.timings.total_seconds}s</p>}
           {outcomeNotice(message.result) && <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">{outcomeNotice(message.result)}</p>}
           {index === snapshot.messages.length - 1 && followUps(message.result, clarificationChoices(message.result).length > 0).length > 0 && <div className="mt-3 flex flex-wrap gap-2" aria-label="Gợi ý tiếp theo">
             {followUps(message.result, clarificationChoices(message.result).length > 0).map(item => <button key={item.id} type="button"
@@ -325,15 +248,23 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
               {option.description && <span className="mt-1 block text-xs text-slate-600">{option.description}</span>}
             </button>)}
           </div>}
-          {citationView(message.result).length > 0 && <button type="button" className="desk-source-trigger" onClick={() => inspectSources(index)} aria-label={`Xem ${citationView(message.result).length} nguồn của câu trả lời`}><ResearchIcon name="document" /><span>{citationView(message.result).length} nguồn tham khảo</span><span>Xem nguồn</span><ResearchIcon name="chevron" /></button>}
+          {citationView(message.result).length > 0 && <div className="mt-3 space-y-2 border-t border-slate-200 pt-3" aria-label="Nguồn của phản hồi">
+            <p className="text-xs font-semibold text-slate-600">{citationView(message.result).every(source => source.compact) ? 'Bài báo nguồn · Nội dung từ bên ngoài' : 'Mở nguồn để xem đoạn trích và vị trí dữ liệu'}</p>
+            {citationView(message.result).map(source => source.compact ? source.url && <a key={source.id} href={source.url}
+              target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center break-words text-sm text-blue-700 underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">
+              {source.citationNumber ? `[${source.citationNumber}] ` : ''}{source.title}
+            </a> : <details key={source.id} className="rounded-lg border border-slate-200 bg-white p-3">
+              <summary className="min-h-11 cursor-pointer break-words text-sm font-medium text-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">
+                {source.citationNumber ? `[${source.citationNumber}] ` : ''}{source.used ? 'Đã trích dẫn' : 'Nguồn ứng viên'} · {source.title}
+              </summary>
+              <p className="mt-2 text-xs text-slate-600">{source.location}</p>
+              <blockquote className="mt-2 whitespace-pre-wrap break-words border-l-2 border-blue-200 pl-3 text-sm leading-relaxed">{source.passage}</blockquote>
+              {source.rows.length > 0 && <p className="mt-2 break-all text-xs text-slate-500">Vị trí dòng dữ liệu: {source.rows.join(', ')}</p>}
+              {source.url && <a href={source.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm text-blue-700 underline">Mở bài gốc</a>}
+            </details>)}
+          </div>}
         </div>
       </div>)}
-      {pending !== null && <div className="flex justify-end">
-        <div className="research-message research-message-user min-w-0 max-w-[92%] rounded-xl bg-blue-600 px-4 py-3 text-white sm:max-w-[85%]">
-          <p className="research-message-label mb-1 text-xs font-semibold text-blue-100">Bạn</p>
-          <p className="whitespace-pre-wrap break-words text-sm leading-relaxed">{pending}</p>
-        </div>
-      </div>}
       {view.loading && <ChatActivity kind={view.loadingKind} />}
       {view.stopped && <p role="status" className="p-3 text-sm text-slate-600">Đã dừng yêu cầu. Bạn có thể sửa câu hỏi hoặc gửi câu khác.</p>}
       {view.error && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
@@ -345,45 +276,30 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
     <form onSubmit={submit} className="research-chat-composer min-w-0 shrink-0 border-t border-slate-200 p-3 sm:p-4">
       <label htmlFor="research-chat-input" className="mb-1 block text-xs font-semibold text-slate-600">Câu hỏi</label>
       <div className="flex gap-2">
-        <textarea ref={composer} rows={1} id="research-chat-input" maxLength={4000} value={input} onKeyDown={event => {
-            if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); if (input.trim() && !view.loading) void submitText(input); return; }
-            if (!input.includes('\n')) recallQuestion(event);
-          }}
+        <input id="research-chat-input" maxLength={4000} value={input} onKeyDown={recallQuestion}
           onChange={event => { questionHistory.current = null; setDraft({ owner, text: event.target.value }); }}
           aria-describedby="question-history-hint"
           disabled={view.loading} placeholder="Nhập câu hỏi hoặc bổ sung thông tin..." autoComplete="off"
           className="h-11 min-w-0 flex-1 rounded-lg border border-slate-200 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-100" />
         {view.loading && view.loadingKind === 'chat'
-          ? <button key="stop" type="button" onClick={stopQuestion} aria-label="Dừng trả lời" className="h-11 rounded-lg bg-slate-800 px-4 text-sm font-semibold text-white hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500"><ResearchIcon name="stop" /> Dừng</button>
-          : <button key="send" type="submit" disabled={view.loading || !input.trim()} className="h-11 rounded-lg bg-blue-600 px-4 text-sm font-semibold text-white hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 disabled:opacity-40">Gửi <ResearchIcon name="send" /></button>}
+          ? <button type="button" onClick={stopQuestion} aria-label="Dừng trả lời" className="h-11 rounded-lg bg-slate-800 px-4 text-sm font-semibold text-white hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">■ Dừng</button>
+          : <button type="submit" disabled={view.loading || !input.trim()} className="h-11 rounded-lg bg-blue-600 px-4 text-sm font-semibold text-white hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 disabled:opacity-40">Gửi</button>}
       </div>
-      <p id="question-history-hint" className="mt-1 text-xs text-slate-500">Enter để gửi · Shift + Enter xuống dòng · ↑ Gọi lại câu hỏi trước</p>
-      <p role="note" className="mt-2 text-center text-xs font-medium text-red-600">
-        Chỉ hỗ trợ nghiên cứu · Không phải khuyến nghị đầu tư. Thông tin chỉ để tham khảo, nghiên cứu. Chúng tôi không chịu trách nhiệm về quyết định đầu tư của bạn.
-      </p>
+      <p id="question-history-hint" className="mt-1 text-xs text-slate-500">↑ Gọi lại câu hỏi trước · ↓ Quay về bản nháp</p>
+      <p className="mt-2 text-center text-xs text-slate-400">Chỉ hỗ trợ nghiên cứu · Không phải khuyến nghị đầu tư</p>
     </form>
     <Drawer open={historyOpen} title="Lịch sử hội thoại" onClose={onHistoryClose}>
       <div className="space-y-3">
         {view.historyLoading && <p role="status">Đang tải lịch sử...</p>}
         {view.historyError && <p role="alert" className="text-red-700">{view.historyError.message}</p>}
         <button type="button" disabled={view.loading || view.historyLoading} onClick={() => void refreshHistory(generation.current)} className="min-h-11 text-blue-600 underline disabled:opacity-50">Tải lại lịch sử</button>
-        <p className="text-xs text-slate-500">Ghim được lưu riêng theo tài khoản trên trình duyệt này.</p>
-        {pinView.error && <p role="alert">{pinView.error}</p>}
         {!view.history.length && !view.historyLoading && <p>Chưa có hội thoại nào.</p>}
-        {sortPinnedHistory(view.history, pinView.ids).map(item => <article key={item.session_id} className="rounded-lg border border-slate-200 p-3 desk-history-card">
-          <div className="desk-history-heading">
-            <p className="break-words font-medium">{item.preview || "Phiên chưa có câu hỏi"}</p>
-            <button type="button" className="desk-history-pin" aria-pressed={pinView.ids.includes(item.session_id)} aria-label={`${pinView.ids.includes(item.session_id) ? 'Bỏ ghim' : 'Ghim'} hội thoại ${item.preview || ''}`} onClick={() => togglePin(item.session_id)}>
-              <ResearchIcon name="pin" />{pinView.ids.includes(item.session_id) ? 'Đã ghim' : 'Ghim'}
-            </button>
-          </div>
+        {view.history.map(item => <article key={item.session_id} className="rounded-lg border border-slate-200 p-3">
+          <p className="break-words font-medium">{item.preview || "Phiên chưa có câu hỏi"}</p>
           <p className="mt-1 text-xs text-slate-500">{item.turns} lượt · {new Date(item.saved_at).toLocaleString("vi-VN")}</p>
           <button type="button" disabled={view.loading} onClick={() => resume(item.session_id)} className="mt-2 min-h-11 text-blue-600 underline disabled:opacity-50">Mở và tiếp tục</button>
         </article>)}
       </div>
     </Drawer>
-  </section>
-    <aside className="desk-evidence-panel" aria-label="Nguồn của câu trả lời đang xem"><EvidencePanel result={inspectedResult} question={inspectedQuestion} /></aside>
-    <div className="desk-mobile-evidence"><Drawer open={sourcesOpen} title="Nguồn tham khảo" onClose={() => setSourcesOpen(false)}><EvidencePanel result={inspectedResult} question={inspectedQuestion} /></Drawer></div>
-  </div>;
+  </section>;
 }

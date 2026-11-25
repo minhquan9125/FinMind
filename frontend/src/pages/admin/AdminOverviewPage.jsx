@@ -1,4 +1,3 @@
-import AppIcon from "../../shared/ui/AppIcon.jsx";
 // Trang A00: Tổng quan vận hành (route /admin và /admin/overview).
 // Giữ đầy đủ bố cục ban đầu. Mục chưa có API được ghi rõ chưa triển khai.
 
@@ -53,7 +52,7 @@ function AlertsCard({ alerts }) {
           {alerts.map((a) => (
             <li key={a.id} className="flex items-start justify-between gap-3 py-2.5">
               <div className="flex items-start gap-2 text-sm text-slate-700">
-                <AppIcon name="alert" className={`mt-0.5 ${a.tone === "error" ? "text-rose-600" : "text-amber-600"}`} />
+                <span aria-hidden="true" className={`mt-0.5 ${a.tone === "error" ? "text-rose-600" : "text-amber-600"}`}>{a.tone === "error" ? "●" : "▲"}</span>
                 <span>{a.text}</span>
               </div>
               <Link to={a.to} className="mt-0.5 whitespace-nowrap text-xs font-medium text-blue-600 hover:underline">{a.linkLabel}</Link>
@@ -104,25 +103,15 @@ function ServicesCard({ services }) {
 }
 
 function OverviewContent({ data }) {
-  return <div className="desk-operations-center">
-    <section className="desk-attention"><div><span className="desk-section-number">Ưu tiên xử lý</span><h2>Điều hành từ hàng đợi công việc</h2><p>Chọn nhóm nội dung cần xem. Mở danh sách trước khi quyết định thao tác.</p></div>
-      <div className="desk-attention-links">{[
-        ['Nội dung chờ duyệt', data.operations?.counts ? (data.operations.counts.PENDING || 0) : null, '/admin/ingestion?workspace=queue&status=PENDING'],
-        ['Nguồn cần kiểm tra', data.operations?.counts ? (data.operations.counts.QUARANTINED || 0) : null, '/admin/ingestion?workspace=queue&status=QUARANTINED'],
-        ['Đã duyệt, chờ lưu', data.operations?.counts ? (data.operations.counts.APPROVED || 0) : null, '/admin/ingestion?workspace=queue&status=APPROVED']
-      ].map(([label,count,to]) => <Link key={label} to={to}><span>{label}</span><strong>{count ?? '—'}</strong><AppIcon name="arrow" /></Link>)}</div>
-    </section>
-    <section className="desk-operations-kpis" aria-label="Thống kê hoạt động">{data.kpis.map(k => <div key={k.id}><span>{k.label}</span><strong>{k.value}</strong><small>{k.note}</small></div>)}</section>
-    <div className="desk-operations-columns"><div className="desk-operations-primary">
-      <section>
-        <div className="mb-3 flex items-center gap-3"><SectionTitle>Truy vấn gần đây</SectionTitle><StatusBadge tone={data.telemetry ? "success" : "warning"}>{data.telemetry ? "Dữ liệu thật" : "Chưa đọc được thống kê"}</StatusBadge></div>
-        <p className="-mt-2 mb-3 text-[13px] text-slate-500">Năm truy vấn Chat thật gần nhất. Mở một truy vấn để xem tuyến xử lý, kiểm tra nguồn và trạng thái Gate/Verifier của từng lượt; “có câu trả lời” chưa đồng nghĩa với đã kiểm chứng toàn bộ nội dung.</p>
-        <DataTable columns={traceColumns} rows={data.recentTraces} emptyMessage={data.telemetry ? "Chưa có truy vấn Chat thật kể từ khi bật thống kê" : "Chưa đọc được thống kê truy vấn"} />
+  return (
+    <>
+      <section aria-labelledby="kpi-title">
+        <h2 id="kpi-title" className="mb-3 text-base font-semibold text-slate-900">Tổng quan hoạt động</h2>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          {data.kpis.map((k) => <Stat key={k.id} label={k.label} note={k.note} value={<span className="tabular-nums">{k.value}</span>} />)}
+        </div>
       </section>
 
-      <ActivityCard items={data.activities} date={data.activityDate} available={data.journalAvailable} />
-    </div><aside className="desk-operations-aside"><AlertsCard alerts={data.alerts} /><ServicesCard services={data.services} /></aside></div>
-    <details className="desk-operation-resources"><summary><AppIcon name="compare" /><span>Ngân sách API và mức sử dụng token</span><small>Mở để xem chi tiết</small></summary><div className="desk-resource-content">
       {data.telemetry && <Card title="Token sử dụng hôm nay" action={<StatusBadge tone={data.telemetry.unknown_calls ? "warning" : "success"}>{data.telemetry.unknown_calls ? "Có lần gọi chưa xác định" : "Đã kết nối"}</StatusBadge>}>
         <div className="grid gap-4 sm:grid-cols-3">{[["Đầu vào", data.telemetry.input_tokens], ["Đầu ra", data.telemetry.output_tokens], ["Tổng do model báo", data.telemetry.total_tokens]].map(([label, value]) => <div key={label}><p className="text-xs text-slate-500">{label}</p><p className="mt-1 text-xl font-semibold">{value.toLocaleString("vi-VN")}</p></div>)}</div>
         <p className="mt-4 text-xs text-slate-500">Chỉ tính các lần sinh câu trả lời Gemini trong Chat thật trên máy này. Bắt đầu ghi nhận: {localTime(data.telemetry.tracking_started_at)}; lịch sử trước đó chưa được cộng.</p>
@@ -132,10 +121,25 @@ function OverviewContent({ data }) {
       </Card>}
 
       <section><BudgetCard budget={data.budget} /></section>
-    </div></details>
-    <details className="desk-operation-resources"><summary><AppIcon name="database" /><span>Kho dữ liệu và các lần xử lý gần đây</span><small>Mở để xem chi tiết</small></summary><div className="desk-resource-content"><DataOperations data={data.operations} /></div></details>
-    <PageFooter />
-  </div>;
+
+      <section>
+        <div className="mb-3 flex items-center gap-3"><SectionTitle>Truy vấn gần đây</SectionTitle><StatusBadge tone={data.telemetry ? "success" : "warning"}>{data.telemetry ? "Dữ liệu thật" : "Chưa đọc được thống kê"}</StatusBadge></div>
+        <p className="-mt-2 mb-3 text-[13px] text-slate-500">Năm truy vấn Chat thật gần nhất. Mở một truy vấn để xem tuyến xử lý, kiểm tra nguồn và trạng thái Gate/Verifier của từng lượt; “có câu trả lời” chưa đồng nghĩa với đã kiểm chứng toàn bộ nội dung.</p>
+        <DataTable columns={traceColumns} rows={data.recentTraces} emptyMessage={data.telemetry ? "Chưa có truy vấn Chat thật kể từ khi bật thống kê" : "Chưa đọc được thống kê truy vấn"} />
+      </section>
+
+      <section className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+        <div className="flex flex-col gap-6">
+          <AlertsCard alerts={data.alerts} />
+          <ActivityCard items={data.activities} date={data.activityDate} available={data.journalAvailable} />
+        </div>
+        <ServicesCard services={data.services} />
+      </section>
+
+      <DataOperations data={data.operations} />
+      <PageFooter />
+    </>
+  );
 }
 
 function PageFooter() {
