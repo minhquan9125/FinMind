@@ -10,6 +10,7 @@ import { searchCompanies } from "../companies/companySearch.js";
 import { getRevealed, visibleCompanies } from "../companies/visibleCompanies.js";
 import MarketOverview from "./MarketOverview.jsx";
 import MarketNews from "./MarketNews.jsx";
+import { SectorHeatmap, SessionRing, TickerTape } from "./MarketPulse.jsx";
 
 export default function DashboardPage() {
   const { user } = useAuth();
@@ -55,6 +56,7 @@ export default function DashboardPage() {
       <Link to="/research" className="desk-primary"><AppIcon name="copilot" />Mở Hỏi FinMind</Link>
     </DeskHeader>
     <main className="desk-dashboard-content">
+      <TickerTape />
       <div className="desk-dashboard-intro">
         <section className="desk-start-research">
           <div className="desk-section-number">01 / Nghiên cứu</div>
@@ -73,6 +75,7 @@ export default function DashboardPage() {
           <Link className="desk-text-link" to="/companies">Khám phá danh mục <AppIcon name="arrow" /></Link>
         </aside>
       </div>
+      <div className="ocean-pulse"><SectorHeatmap /><SessionRing /></div>
       <div className="desk-dashboard-body">
         <div className="desk-market-column"><div className="desk-section-heading"><span className="desk-section-number">02 / Thị trường</span><p>Giá và tin từ nguồn dữ liệu · Không phải khuyến nghị đầu tư</p></div><MarketOverview /><MarketNews /></div>
         <aside className="desk-personal-column">
