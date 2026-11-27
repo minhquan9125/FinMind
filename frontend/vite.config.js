@@ -1,8 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { realDataGuard } from "./build/realDataGuard.js";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), realDataGuard()],
   server: {
     host: true,
     port: 5173,

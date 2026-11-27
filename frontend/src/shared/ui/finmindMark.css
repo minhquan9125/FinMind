@@ -1,0 +1,25 @@
+body.fm-approved .finmind-logo-mark {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 27px;
+  overflow: hidden;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+body.fm-approved .finmind-logo-mark > img {
+  position: absolute;
+  width: 158.74%;
+  height: auto;
+  max-width: none;
+  left: -30%;
+  top: -56.6%;
+}
+body.fm-approved a.approved-brand-mark:has(.finmind-logo-mark),
+body.fm-approved .approved-auth-brand > .finmind-logo-mark {
+  width: 40px;
+  height: 25px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}

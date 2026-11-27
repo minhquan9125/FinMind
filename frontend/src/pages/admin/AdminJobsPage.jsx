@@ -3,7 +3,7 @@ import { Link, useParams } from "../../app/router.jsx";
 import { Button, EmptyState, StatusBadge } from "../../shared/ui";
 import AdminLayout, { ADMIN_LINKS } from "./AdminLayout.jsx";
 import { jobsApi } from "./jobsApi.js";
-import { MAX_BYTES, hasRunning, jobStatusView, launchErrorMessage, parseUpload } from "./jobLaunch.js";
+import { hasRunning, jobStatusView } from "./jobLaunch.js";
 
 const LABELS = { PENDING_REVIEW: "Chờ duyệt", QUARANTINED: "Cần kiểm tra", NO_CANDIDATE: "Chưa tìm thấy ứng viên",
   ERROR: "Lỗi xử lý", MISSING_SOURCE: "Thiếu nguồn", UNPROCESSED: "Chưa xử lý" };
@@ -40,36 +40,6 @@ function Result({ loading, error, children }) {
   return children;
 }
 
-function LaunchPanel({ onLaunched }) {
-  const [files, setFiles] = useState({ manifest: null, articles: null }), [errors, setErrors] = useState({}), [busy, setBusy] = useState(false);
-  const [message, setMessage] = useState(""), [failure, setFailure] = useState("");
-  async function choose(kind, file) {
-    setMessage(""); setFailure("");
-    if (!file) { setFiles(f => ({ ...f, [kind]: null })); return; }
-    const parsed = file.size > MAX_BYTES ? { ok: false, error: "Tệp lớn hơn 8 MB." } : parseUpload(kind, await file.text(), file.size);
-    setErrors(e => ({ ...e, [kind]: parsed.ok ? "" : parsed.error }));
-    setFiles(f => ({ ...f, [kind]: parsed.ok ? { name: file.name, value: parsed.value } : null }));
-  }
-  async function launch() {
-    setBusy(true); setFailure(""); setMessage("");
-    try {
-      const result = await jobsApi.launch({ manifest: files.manifest.value, articles: files.articles.value });
-      setMessage(`Đã khởi chạy ${result.job_id}. Báo cáo hiện trong danh sách khi xong.`); onLaunched();
-    } catch (e) { setFailure(launchErrorMessage(e.code, e.status)); }
-    finally { setBusy(false); }
-  }
-  return <details className="rounded-xl border border-slate-200 bg-white p-5">
-    <summary className="cursor-pointer font-medium text-slate-900">Khởi chạy lần chạy fixture</summary>
-    <p className="mt-3 text-sm text-slate-600">Tải lên manifest đã ghim (JSON) và danh sách bài viết (JSON). Chỉ chạy chế độ fixture: không ghi DB, không duyệt ứng viên, không nạp graph. Chạy toàn manifest vẫn làm bằng dòng lệnh vì cần biên nhận gate.</p>
-    <div className="mt-4 grid gap-4 md:grid-cols-2">{[["manifest", "Manifest (JSON)"], ["articles", "Bài viết (mảng JSON)"]].map(([kind, label]) => <label key={kind} className="text-sm">{label}
-      <input type="file" accept="application/json,.json" className="mt-1 block w-full text-sm" disabled={busy} onChange={e => choose(kind, e.target.files?.[0])} />
-      {errors[kind] ? <span className="mt-1 block text-xs text-red-700">{errors[kind]}</span> : files[kind] && <span className="mt-1 block text-xs text-emerald-700">{files[kind].name} hợp lệ</span>}</label>)}</div>
-    {failure && <p role="alert" className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">{failure}</p>}
-    {message && <p role="status" className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-900">{message}</p>}
-    <div className="mt-4"><Button disabled={busy || !files.manifest || !files.articles} onClick={launch}>Khởi chạy fixture</Button></div>
-  </details>;
-}
-
 function JobsList() {
   const [offset, setOffset] = useState(0);
   const { data, loading, error, reload } = useReport(null, offset);
@@ -84,7 +54,6 @@ function JobsList() {
       <h1 className="text-2xl font-semibold text-slate-900">Công việc xử lý tin tức</h1>
       <p className="mt-1 text-sm text-slate-500">Báo cáo WBS16 đã được lưu · {data?.total ?? "—"} job</p>
     </div><Button onClick={reload} disabled={loading}>Làm mới</Button></div>
-    <LaunchPanel onLaunched={reload} />
     <p className="rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
       Trạng thái phản ánh lần xuất báo cáo gần nhất. Ứng viên còn chờ duyệt; xử lý xong đầu vào chưa có nghĩa đã nạp graph hoặc nghiệm thu.
     </p>

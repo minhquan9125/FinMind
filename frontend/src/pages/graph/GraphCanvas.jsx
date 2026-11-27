@@ -33,7 +33,7 @@ function edgeLabel(edge) {
   const period = time.as_of || (time.valid_from || time.valid_to ? `${time.valid_from || "…"} → ${time.valid_to || "…"}` : "");
   return `${relationLabels[edge.type] || edge.type}${period ? " · " + period : ""}`;
 }
-export default function GraphCanvas({ nodes, edges, rootId, fixture = false, onNodeSelect, onEdgeSelect }) {
+export default function GraphCanvas({ nodes, edges, rootId, onNodeSelect, onEdgeSelect }) {
   const id = "neo4j-graph-" + useId().replace(/:/g, "");
   const containerRef = useRef(null), graphRef = useRef(null);
   const callbacks = useRef({ onNodeSelect, onEdgeSelect });
@@ -154,6 +154,6 @@ export default function GraphCanvas({ nodes, edges, rootId, fixture = false, onN
       <button type="button" aria-label="Thu nhỏ" className="min-h-10 min-w-10 rounded hover:bg-slate-100" onClick={() => zoom(1 / 1.2)}>−</button>
       <button type="button" className="min-h-10 rounded px-2 text-xs hover:bg-slate-100" onClick={() => graphRef.current?.network?.fit({ animation: false })}>Căn giữa</button>
     </div>
-    <span className="absolute right-3 top-3 rounded border bg-white/95 px-2 py-1 text-[11px] text-slate-600">Neovis.js · {fixture ? "Fixture kiểm thử" : "Kết quả API"}</span>
+    <span className="absolute right-3 top-3 rounded border bg-white/95 px-2 py-1 text-[11px] text-slate-600">Neovis.js · Kết quả API</span>
   </div>;
 }

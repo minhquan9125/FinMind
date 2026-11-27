@@ -1,0 +1,121 @@
+/* Landing-only palette: white surfaces, blue accents, navy type. */
+body.fm-approved .fm-approved-landing .landing-v4 {
+  --landing-ink: #102a4c;
+  --landing-muted: #5d728e;
+  --landing-blue: #0967e8;
+  --landing-line: #dce9f8;
+  position: relative;
+  isolation: isolate;
+  background: #fff;
+  color: var(--landing-ink);
+}
+.finmind-pointer-glow {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+.finmind-pointer-glow::before {
+  content: '';
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  left: -310px;
+  top: -310px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3b91ff1c 0%, #84bdff12 28%, transparent 68%);
+}
+.finmind-pointer-glow[data-visible='true'] { opacity: 1; }
+/* Keep the light underneath text and controls, without intercepting input. */
+body.fm-approved .fm-approved-landing .landing-v4 > section,
+body.fm-approved .fm-approved-landing .landing-v4 > footer { position: relative; z-index: 1; }
+body.fm-approved .fm-approved-landing .v4-hero { background: transparent; }
+body.fm-approved .fm-approved-landing .v4-hero-glow {
+  background: radial-gradient(ellipse at 22% 65%, #dceeff9c, transparent 55%), radial-gradient(ellipse at 83% 76%, #eaf3ff80, transparent 52%);
+}
+body.fm-approved .fm-approved-landing .v4-hero h1 > span,
+body.fm-approved .fm-approved-landing .v4-final-cta h2 > span {
+  color: #126be6;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+body.fm-approved .fm-approved-landing .v4-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Manrope', 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .005em;
+  line-height: 1.6;
+  text-transform: none;
+  color: #185fae;
+}
+body.fm-approved .fm-approved-landing .v4-kicker > svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  stroke-width: 1.7;
+}
+body.fm-approved .fm-approved-landing .v4-final-cta > .v4-kicker { justify-content: center; }
+body.fm-approved .fm-approved-landing .orbit-core .finmind-logo-mark { width: 48px; height: 29px; }
+body.fm-approved .fm-approved-landing .orbit-node > .icon,
+body.fm-approved .fm-approved-landing .evidence-demo-icon { color: #1769cc; background: #edf5ff; }
+body.fm-approved .fm-approved-landing .v4-evidence-section {
+  background: #f5f9ffb3;
+  border-color: #e6effa;
+}
+body.fm-approved .fm-approved-landing .v4-evidence-demo {
+  border-color: var(--landing-line);
+  box-shadow: 0 18px 50px #164a8b08;
+  transform: none;
+}
+body.fm-approved .fm-approved-landing .evidence-demo-header { border-color: var(--landing-line); }
+body.fm-approved .fm-approved-landing .evidence-demo-header > .status { background: #edf5ff; border-color: #dae9fc; color: #2669b9; }
+body.fm-approved .fm-approved-landing .evidence-demo-period { border-color: var(--landing-line); }
+body.fm-approved .fm-approved-landing .v4-evidence-demo blockquote {
+  color: #3e628b;
+  background: #f0f6ff;
+  border-color: #75a8ee;
+}
+body.fm-approved .fm-approved-landing .v4-evidence-demo blockquote > span,
+body.fm-approved .fm-approved-landing .evidence-demo-footer .icon { color: #2868b6; }
+body.fm-approved .fm-approved-landing .v4-context-tags span { background: #edf5ff; border-color: #dce9fa; color: #3c6898; }
+body.fm-approved .fm-approved-landing .v4-dark-feature {
+  color: var(--landing-ink);
+  background: #f2f7ffcc;
+  border-color: var(--landing-line);
+  box-shadow: none;
+}
+body.fm-approved .fm-approved-landing .v4-dark-glow { display: none; }
+body.fm-approved .fm-approved-landing .v4-dark-head h2 { color: var(--landing-ink); }
+body.fm-approved .fm-approved-landing .v4-dark-head h2 > span { background: none; color: var(--landing-blue); -webkit-text-fill-color: currentColor; }
+body.fm-approved .fm-approved-landing .v4-dark-head > p:last-child,
+body.fm-approved .fm-approved-landing .v4-capability p { color: var(--landing-muted); }
+body.fm-approved .fm-approved-landing .v4-capability { border-color: var(--landing-line); }
+body.fm-approved .fm-approved-landing .v4-capability > span { color: #2469bd; background: #e7f1ff; border-color: #d4e4f9; }
+body.fm-approved .fm-approved-landing .v4-capability h3 { color: var(--landing-ink); }
+body.fm-approved .fm-approved-landing .v4-chat-demo { background: #fff; box-shadow: 0 12px 36px #153d7309; }
+body.fm-approved .fm-approved-landing .v4-chat-header .icon,
+body.fm-approved .fm-approved-landing .v4-chat-answer > span,
+body.fm-approved .fm-approved-landing .v4-hero-actions .btn-plain .icon { color: #196fe0; }
+body.fm-approved .fm-approved-landing .v4-chat-header > span { color: #637a99; }
+body.fm-approved .fm-approved-landing .v4-chat-answer p { color: #516b8c; }
+body.fm-approved .fm-approved-landing .v4-chat-user { color: #275c9e; background: #edf5ff; }
+body.fm-approved .fm-approved-landing .v4-final-cta { padding-top: 85px; }
+body.fm-approved .fm-approved-landing .v4-footer { background: #f5f9ffb3; border-color: var(--landing-line); }
+body.fm-approved .fm-approved-landing .v4-footer-top > div > a:not(.landing-brand) { color: #637c9c; }
+@media (max-width: 600px) {
+  body.fm-approved .fm-approved-landing .v4-kicker { font-size: 11px; gap: 7px; }
+  body.fm-approved .fm-approved-landing .v4-kicker > svg { width: 17px; height: 17px; }
+  body.fm-approved .fm-approved-landing .landing-brand .finmind-logo-mark { width: 36px; height: 22px; }
+  body.fm-approved .fm-approved-landing .orbit-core .finmind-logo-mark { width: 38px; height: 23px; }
+  body.fm-approved .fm-approved-landing .v4-final-cta { padding-top: 55px; }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .finmind-pointer-glow { display: none; }
+}

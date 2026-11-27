@@ -185,7 +185,7 @@ export default function ResearchChat({ historyOpen, onHistoryClose, resetKey = 0
     busy.current = false;
     if (owner) stored(owner, null);
     setModel(previous => ({ ...empty(owner), history: previous.owner === owner ? previous.history : [] }));
-    setDraft({ owner, text: prefill });
+    setDraft({ owner, text: "" });
     onBusyChange?.(false);
   }, [resetKey]);
   useEffect(() => { if (historyOpen && owner) void refreshHistory(generation.current); }, [historyOpen, owner]);

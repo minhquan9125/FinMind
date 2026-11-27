@@ -1,6 +1,6 @@
 import { useNavigate } from "../../app/router.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
-import { userMenu } from "../../mocks/componentMock.js";
+import { userMenu } from "../navigation.js";
 import Sidebar from "./Sidebar.jsx";
 const paths = { dashboard: '/dashboard', companies: '/companies', copilot: '/research', watchlist: '/watchlist', graph: '/graph' };
 export default function UserShell({ children, activeId = '', className = '' }) {

@@ -4,6 +4,8 @@ import SidebarItem from "./SidebarItem.jsx";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { PATHS } from "../paths.js";
+import WorkspaceBar from "./WorkspaceBar.jsx";
+import FinMindMark from "./FinMindMark.jsx";
 
 // groups: [{ label: "Nghiên cứu chính", items: [{ id, label, icon }] }]
 // The parent page owns activeId and decides what onSelect does.
@@ -36,10 +38,10 @@ export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinM
   }
 
   return (
-    <aside className="fm-sidebar sticky top-0 flex h-screen w-16 shrink-0 self-start flex-col border-r border-[#E2E8F0] bg-white md:w-64">
+    <><aside className="fm-sidebar sticky top-0 flex h-screen w-16 shrink-0 self-start flex-col border-r border-[#E2E8F0] bg-white md:w-64">
       <div className="flex h-16 shrink-0 items-center justify-center gap-2 border-b border-[#F1F5F9] md:justify-start md:px-5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#2563EB] text-xs font-bold text-white">FM</span>
-        <strong className="hidden text-base text-[#0F172A] md:block">{brand}</strong>
+        <Link to="/" aria-label="FinMind trang chủ" className="approved-brand-mark"><FinMindMark /></Link>
+        <strong className="approved-sidebar-brand hidden text-base text-[#0F172A] md:block">{brand}<small>RESEARCH WORKSPACE</small></strong>
         {badge && <span className="hidden rounded bg-[#EFF6FF] px-1.5 py-0.5 text-[10px] font-semibold text-[#1D4ED8] md:block">{badge}</span>}
       </div>
       <nav aria-label={`${brand} menu`} className="flex-1 space-y-5 overflow-y-auto px-2 py-3 md:px-3">
@@ -84,6 +86,6 @@ export default function Sidebar({ groups = [], activeId, onSelect, brand = "FinM
           </div>}
         </div>
       )}
-    </aside>
+    </aside><WorkspaceBar admin={badge === "ADMIN"} /></>
   );
 }
