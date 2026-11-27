@@ -17,12 +17,11 @@ if str(ROOT) not in sys.path:
 from backend.src.financial.exact_json import dumps, loads
 from backend.src.financial import mapping
 from backend.src.financial.health_store import MAP as HEALTH_MAP
+from backend.src.financial.provider_identity import VIETCAP_ORGAN_IDS as PROVIDER_ORGAN_IDS
 
 SECTIONS={'INCOME_STATEMENT':'income_statement','BALANCE_SHEET':'balance_sheet',
           'CASH_FLOW':'cash_flow_statement','RATIO':'ratios'}
 BASE_URL='https://iq.vietcap.com.vn/api/iq-insight-service/v1/company'
-# Vietcap's internal company ID for ticker ICT is CTIN, including ratio rows without ticker.
-PROVIDER_ORGAN_IDS={'ICT':'CTIN'}
 UNKNOWN_FIELDS=['unit','currency','period_basis','period_start','period_end','statement_scope',
                 'fiscal_year_end','fiscal_label_convention','comparison_basis','ratio_definition','audit_status']
 ANALYSIS_CODES={code for codes in HEALTH_MAP.values() for code in codes}|{'NET_REVENUE','TOTAL_OPERATING_INCOME'}

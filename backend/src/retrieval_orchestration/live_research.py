@@ -340,7 +340,8 @@ def content_fallback_scope(question, decision):
                          r'chu tich|giam doc|hdqt|hoi dong quan tri|co dong|cong ty con|'
                          r'cong ty lien ket|so huu|hop tac)\b', norm)):
         return None
-    return dict(companies=list(scope['companies']),periods=['LATEST_AVAILABLE_PERIOD'],
+    periods = list(scope.get('periods') or ['LATEST_AVAILABLE_PERIOD'])
+    return dict(companies=list(scope['companies']),periods=periods,
                 source_type='CONTENT',metric_code=None,reporting_entity='UNKNOWN',
                 topic='CONTENT_QUESTION',_content_question=question)
 

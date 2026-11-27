@@ -35,7 +35,6 @@ def relation(subject,object_,kind='HAS_SUBSIDIARY'):
         reviewer='approved-reviewer',reviewed_at='2025-01-01',attributes={},evidence=[dict(chunk_id=str(uuid4()))])
 
 
-@pytest.mark.xfail(strict=True, reason='Known GRAPH bug: incoming parent edge accepted as subsidiary; see WEB_CHAT_RETEST.md')
 def test_requested_subsidiaries_do_not_include_incoming_parent_edges():
     # Business requirement independent of implementation: children OF FPT, not FPT's parent.
     graph=adapter([relation('other','fpt')])
@@ -43,7 +42,6 @@ def test_requested_subsidiaries_do_not_include_incoming_parent_edges():
     assert not facts, 'Incoming OTHER -> FPT was accepted for subsidiaries OF FPT'
 
 
-@pytest.mark.xfail(strict=True, reason='Known GRAPH bug: incoming owner edge accepted as associate; see WEB_CHAT_RETEST.md')
 def test_requested_associates_do_not_include_incoming_owner_edges():
     graph=adapter([relation('other','fpt','HAS_ASSOCIATE')])
     assert not graph._query(scope(['HAS_ASSOCIATE']),CID,IID), 'Incoming relation accepted for associates OF FPT'

@@ -9,6 +9,8 @@ import math
 from pathlib import Path
 import re
 
+from ..financial.provider_identity import VIETCAP_ORGAN_IDS
+
 
 GRAPH_VERSION = "1.0"
 SECTIONS = {
@@ -148,6 +150,9 @@ def validate_dataset(payload):
         source = sources.get(key)
         require(isinstance(source, str) and re.fullmatch(r"[A-Z][A-Z0-9_]{0,63}", source),
                 f"sources.{key} must be a provider code")
+    organ_codes = (symbol,)
+    if sources["fundamentals"] == "VIETCAP_VCI" and symbol in VIETCAP_ORGAN_IDS:
+        organ_codes += (VIETCAP_ORGAN_IDS[symbol],)
 
     prices = payload.get("price_history")
     require(isinstance(prices, list) and prices, "price_history must be nonempty")
@@ -196,8 +201,9 @@ def validate_dataset(payload):
             period = period_from_row(row, section)
             require(period["id"] not in seen, f"{section}: duplicate period")
             seen.add(period["id"])
-            for key in ("organCode", "ticker"):
-                require(key not in row or row[key] == symbol, f"{section}: {key} mismatch")
+            require("organCode" not in row or row["organCode"] in organ_codes,
+                    f"{section}: organCode mismatch")
+            require("ticker" not in row or row["ticker"] == symbol, f"{section}: ticker mismatch")
             require("ratioType" not in row or
                     (isinstance(row["ratioType"], str) and row["ratioType"]),
                     f"{section}: invalid ratioType")
