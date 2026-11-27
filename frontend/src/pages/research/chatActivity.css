@@ -1,13 +1,41 @@
-.fm-chat-lens { animation: fm-chat-search 2.8s ease-in-out infinite; }
-.fm-chat-paper { animation: fm-chat-float 2.8s ease-in-out infinite; }
-.fm-chat-spark { transform-origin: 63px 22px; animation: fm-chat-twinkle 2s ease-in-out infinite; }
-.fm-chat-dots i { width: 5px; height: 5px; border-radius: 50%; background: #3b82f6; animation: fm-chat-dot 1.2s ease-in-out infinite; }
-.fm-chat-dots i:nth-child(2) { animation-delay: .15s; }
-.fm-chat-dots i:nth-child(3) { animation-delay: .3s; }
-@keyframes fm-chat-search { 0%, 100% { transform: translate(0, 0); } 35% { transform: translate(-9px, -13px); } 70% { transform: translate(4px, -6px); } }
-@keyframes fm-chat-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
-@keyframes fm-chat-twinkle { 0%, 100% { opacity: .35; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.1); } }
-@keyframes fm-chat-dot { 0%, 70%, 100% { transform: translateY(0); opacity: .45; } 35% { transform: translateY(-3px); opacity: 1; } }
+.research-activity.finmind-chat-activity {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 0;
+  color: #173154;
+}
+.finmind-activity-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #edf5ff;
+  color: #1267df;
+}
+.finmind-activity-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #d9e9ff;
+  border-top-color: #1671eb;
+  border-radius: inherit;
+  animation: finmind-thinking-turn 1.6s linear infinite;
+}
+.finmind-activity-content { min-width: 0; padding-top: 1px; }
+.finmind-activity-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+.finmind-activity-heading > p { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 13px; font-weight: 600; line-height: 1.7; }
+.finmind-chat-activity .research-elapsed { margin: 0; padding: 2px 7px; border-radius: 5px; background: #f1f5fb; color: #5c718c; font-size: 11px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.finmind-chat-activity .research-activity-note { margin: 5px 0 0; color: #687c95; font-size: 12px; line-height: 1.7; }
+.finmind-thinking-dots { display: inline-flex; gap: 3px; }
+.finmind-thinking-dots i { width: 3px; height: 3px; border-radius: 50%; background: #2776e2; animation: finmind-thinking-pulse 1.4s ease-in-out infinite; }
+.finmind-thinking-dots i:nth-child(2) { animation-delay: .18s; }
+.finmind-thinking-dots i:nth-child(3) { animation-delay: .36s; }
+@keyframes finmind-thinking-turn { to { transform: rotate(360deg); } }
+@keyframes finmind-thinking-pulse { 0%, 70%, 100% { opacity: .35; transform: translateY(0); } 35% { opacity: 1; transform: translateY(-3px); } }
 @media (prefers-reduced-motion: reduce) {
-  .fm-chat-activity *, .fm-chat-dots i { animation: none !important; }
+  .finmind-activity-icon::before, .finmind-thinking-dots i { animation: none; }
 }

@@ -7,6 +7,10 @@ import "./index.css";
 import "./shared/ui/workspace.css";
 import "./shared/ui/deskLayout.css";
 import "./shared/ui/oceanTheme.css";
+import "./shared/ui/approvedReference.css";
+import "./shared/ui/approvedApp.css";
+
+document.body.classList.add("fm-approved");
 
 const GOOGLE_CLIENT_ID =
   import.meta.env.VITE_GOOGLE_CLIENT_ID ||

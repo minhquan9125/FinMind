@@ -23,6 +23,12 @@ async function requestUrl(url, method = "GET", body, signal) {
       : typeof data?.message === "string" ? data.message : `Yêu cầu thất bại (${response.status}).`;
     throw failure(detail, response.status);
   }
+  if (data?.session_id && (
+    (data.execution_mode && data.execution_mode !== "LIVE") ||
+    data.messages?.some(message => message.result?.execution_mode && message.result.execution_mode !== "LIVE")
+  )) {
+    throw failure("Phiên hội thoại sử dụng dữ liệu thử nghiệm nên không được hiển thị. Hãy mở Nghiên cứu mới; nếu lỗi còn xảy ra, quản trị viên cần bật chế độ dữ liệu thật.", 503);
+  }
   return data;
 }
 const request = (path = "", method = "GET", body, signal) => requestUrl(base + path, method, body, signal);

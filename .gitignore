@@ -64,6 +64,7 @@ dist-ssr/
 Thumbs.db
 
 # Downloaded/generated company-report artifacts (keep scripts and manifests tracked)
+outputs/market-refresh/
 outputs/docker-backup-*/
 outputs/vps-backup-*/
 outputs/admin-ingestion/
@@ -81,6 +82,10 @@ data/references/vietstock/annual_reports/extracted/
 /tmp/codex-backup-demo-safe-20260930/
 /tmp/codex-backup-demo-safe2/
 /tmp/codex-backup-sanitized/
+
+# Frontend build plugins are source code, not generated build output.
+!frontend/build/
+!frontend/build/**
 /tmp/codex-backup-demo-safe-20260930.tar
 /tmp/codex-backup-demo-safe-20260930/
 /tmp/codex-backup-demo-safe2/

@@ -1,29 +1,5 @@
-// Câu thoại theo thời gian thực: chào theo buổi, nhắc giờ giao dịch HOSE, nhắc nghỉ ngơi.
-//
-// Demo: thêm ?fin-time=22:00 (hoặc ?fin-time=2026-11-23T08:54) vào URL để giả lập giờ.
-// Đồng hồ vẫn chạy tiếp từ mốc đó trong suốt phiên làm việc.
-//
-// Lưu ý: lịch giao dịch chỉ tính thứ 2–6, CHƯA trừ ngày nghỉ lễ.
-
-const offsetMs = (() => {
-  try {
-    const raw = new URLSearchParams(window.location.search).get("fin-time");
-    if (!raw) return 0;
-    let target;
-    if (/^\d{1,2}:\d{2}$/.test(raw)) {
-      const [h, m] = raw.split(":").map(Number);
-      target = new Date();
-      target.setHours(h, m, 0, 0);
-    } else {
-      target = new Date(raw);
-    }
-    return Number.isNaN(target.getTime()) ? 0 : target.getTime() - Date.now();
-  } catch {
-    return 0;
-  }
-})();
-
-export const finNow = () => new Date(Date.now() + offsetMs);
+// Greetings and reminders use the actual device clock.
+export const finNow = () => new Date();
 
 const pick = (list) => list[Math.floor(Math.random() * list.length)];
 const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();

@@ -1,0 +1,28 @@
+MODEL ATTRIBUTION - CREATIVE COMMONS ATTRIBUTION 4.0 INTERNATIONAL
+
+Title: macbook pro M3 16 inch 2024
+Creator: jackbaeten
+Creator profile: https://sketchfab.com/jackbaeten
+Original model:
+https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b303144f78490007d91ff57c4
+
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License terms: https://creativecommons.org/licenses/by/4.0/
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Optimized GLB obtained from:
+https://github.com/adrianhajdin/gsap_macbook_landing/blob/main/public/models/macbook-16-transformed.glb
+The author, license, title and original source are also retained in the GLB's
+asset.extras metadata. That distribution uses glTF-Transform, Draco geometry
+compression and WebP textures.
+
+FinMind modifications:
+- Dashboard screenshot replaces the screen artwork at runtime.
+- Runtime triangle partition reconstructs the lid hinge from the flattened mesh.
+- Equivalent palette materials are shared and geometry is batched by material.
+- Studio environment, camera, screen sampling and animation are adapted to FinMind.
+All source triangles and the original PBR texture maps are retained.
+
+Credit does not imply endorsement by the model creator, Apple, or the reference
+repository. This notice describes the model license, not a license to copy the
+reference repository's application source code.

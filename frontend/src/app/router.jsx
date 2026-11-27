@@ -77,14 +77,16 @@ function ProtectedRoute({ routeConfig, children }) {
     return <Navigate to={fallback} replace />;
   }
 
-  // 4. Cho phép xem và kiểm thử trang Auth (login / register) mọi lúc mà không bị ép chuyển hướng
-  // (Đã bỏ tự động redirect để phục vụ việc kiểm thử giao diện)
+  // Existing sessions continue directly into the appropriate workspace.
+  if (isAuthPage && isAuthenticated && !isSessionExpired) {
+    return <Navigate to={role === "admin" ? "/admin" : "/dashboard"} replace />;
+  }
 
   // 5. OK — render trang
   return children;
 }
 
-const pageModules = import.meta.glob("../pages/*/*.jsx");
+const pageModules = import.meta.glob("../pages/*/*Page.jsx");
 const pageCache = new Map();
 
 function lazyPage(componentPath) {

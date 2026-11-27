@@ -2,12 +2,12 @@ import AuthFrame from "../../shared/ui/AuthFrame.jsx";
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation, useAuth } from "../../app/router.jsx";
 import { PATHS } from "../../shared/paths.js";
-import { GoogleLogin } from "@react-oauth/google";
+import GoogleLogin from "../../shared/ui/ResponsiveGoogleLogin.jsx";
 import { loginDestination } from "../../shared/context/loginDestination.js";
 export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, isAuthenticated, login, loginWithGoogle, logout, isSessionExpired, expireSessionNow } = useAuth();
+  const { user, isAuthenticated, login, loginWithGoogle, logout, isSessionExpired } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,17 +44,6 @@ export default function LoginPage() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleGoogleLogin = () => {
-    setErrorMessage("Vui lòng dùng nút đăng nhập Google bên trên để xác thực.");
-  };
-
-  // Nút điền nhanh tài khoản thử nghiệm
-  const fillSample = (sampleEmail, samplePass) => {
-    setEmail(sampleEmail);
-    setPassword(samplePass);
-    setErrorMessage("");
   };
 
   return (
@@ -277,78 +266,6 @@ export default function LoginPage() {
               Đăng ký tài khoản
             </Link>
           </div>
-
-          {/* Hộp vai trò mẫu để kiểm tra luồng & nút Đăng xuất */}
-          <details className="fm-auth-test-tools mt-6 pt-4 border-t border-slate-200">
-            <summary>Công cụ kiểm thử đăng nhập</summary>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-400">
-                Tài khoản thử nghiệm nhanh (Mock)
-              </span>
-              {isAuthenticated && (
-                <button
-                  type="button"
-                  onClick={async () => {
-                    await logout();
-                    setErrorMessage("");
-                  }}
-                  className="text-xs px-2 py-0.5 rounded bg-red-50 hover:bg-red-100 text-red-600 font-medium transition-colors border border-red-200 cursor-pointer"
-                >
-                   Đăng xuất ngay
-                </button>
-              )}
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => fillSample("user@finmind.vn", "user123")}
-                className="text-xs px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors cursor-pointer border border-slate-200/60"
-              >
-                 Điền User (user@finmind.vn)
-              </button>
-              <button
-                type="button"
-                onClick={() => fillSample("admin@finmind.vn", "admin123")}
-                className="text-xs px-2.5 py-1.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium transition-colors cursor-pointer border border-blue-200/60"
-              >
-                 Điền Admin (admin@finmind.vn)
-              </button>
-              <button
-                type="button"
-                onClick={handleGoogleLogin}
-                disabled={loading || googleLoading}
-                className="text-xs px-2.5 py-1.5 rounded-md bg-rose-50 hover:bg-rose-100 text-rose-700 font-medium transition-colors cursor-pointer border border-rose-200/70 flex items-center gap-1.5 disabled:opacity-60"
-              >
-                <span> Đăng nhập Google (Mock)</span>
-              </button>
-              {isAuthenticated ? (
-                <button
-                  type="button"
-                  onClick={async () => {
-                    await logout();
-                    setErrorMessage("");
-                    navigate(PATHS.register);
-                  }}
-                  className="text-xs px-2.5 py-1.5 rounded-md bg-red-100 hover:bg-red-200 text-red-700 font-medium transition-colors cursor-pointer border border-red-200"
-                >
-                   Đăng xuất & Sang Đăng ký
-                </button>
-              ) : (
-                <Link
-                  to={PATHS.register}
-                  className="text-xs px-2.5 py-1.5 rounded-md bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium transition-colors border border-emerald-200/60 no-underline"
-                >
-                   Sang trang Đăng ký
-                </Link>
-              )}
-              <Link
-                to={PATHS.forgotPassword}
-                className="text-xs px-2.5 py-1.5 rounded-md bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium transition-colors border border-amber-200/60 no-underline"
-              >
-                Sang trang Quên mật khẩu
-              </Link>
-            </div>
-          </details>
         </div>
 
         {/* Dòng chữ chân trang */}

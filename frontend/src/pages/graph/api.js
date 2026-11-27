@@ -1,15 +1,15 @@
 import { authorizedHeaders } from "../../shared/api/authorization.js";
 import { validateGraph, validateRelation } from "./graphModel.js";
+import { isSeedGraphVersion } from "./graphDataPolicy.js";
 
 export class GraphApiError extends Error {
   constructor(message, status = 0, code = "") { super(message); this.status = status; this.code = code; }
 }
-export function createGraphApi({ baseUrl = import.meta.env?.VITE_API_BASE_URL || "", fixture = "",
+export function createGraphApi({ baseUrl = import.meta.env?.VITE_API_BASE_URL || "",
   fetchImpl = (...args) => fetch(...args), timeoutMs = 15000 } = {}) {
   async function request(path, params, { signal } = {}) {
-    if (fixture) {
-      const { fixtureResponse } = await import("./mock.js");
-      return fixtureResponse(path, params, fixture, signal);
+    if (isSeedGraphVersion(params?.graph_version_id)) {
+      throw new GraphApiError("Phiên đồ thị này chứa dữ liệu kiểm thử và không được dùng trong workspace. Hãy chọn một phiên dữ liệu thật.", 422, "TEST_GRAPH_BLOCKED");
     }
     const controller = new AbortController();
     const abort = () => controller.abort();
@@ -51,7 +51,7 @@ export function createGraphApi({ baseUrl = import.meta.env?.VITE_API_BASE_URL ||
       if (!Array.isArray(data?.versions) || data.versions.some(v => !v.graph_version_id || v.status !== "READY")) {
         throw new GraphApiError("Danh sách phiên graph không đúng contract.", 502, "INVALID_RESPONSE");
       }
-      return data;
+      return { ...data, versions: data.versions.filter(version => !isSeedGraphVersion(version.graph_version_id)) };
     },
     async entities(params, options) {
       const data = await request("/entities", params, options);
