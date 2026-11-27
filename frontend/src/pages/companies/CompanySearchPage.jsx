@@ -3,29 +3,62 @@ import DeskHeader from "../../shared/ui/DeskHeader.jsx";
 import AppIcon from "../../shared/ui/AppIcon.jsx";
 import { useEffect, useState } from "react";
 import { Link, useAuth, useSearchParams } from "../../app/router.jsx";
-import { Drawer, EmptyState, ErrorState, Skeleton } from "../../shared/ui/index.js";
+import {
+  Drawer,
+  EmptyState,
+  ErrorState,
+  Skeleton,
+} from "../../shared/ui/index.js";
 import { getCompanies } from "./api.js";
 import { searchCompanies } from "./companySearch.js";
 import { getWatchlist } from "../watchlist/api.js";
 import { getRevealed, visibleCompanies } from "./visibleCompanies.js";
 
 function CompanyPreview({ company }) {
-  return <>
-        <div className="desk-preview-kicker">Hồ sơ doanh nghiệp</div><span className="desk-large-ticker">{company.id}</span><h2>{company.name}</h2><dl><div><dt>Ngành</dt><dd>{company.sector}</dd></div><div><dt>Sàn giao dịch</dt><dd>{company.exchange || 'Chưa có dữ liệu'}</dd></div></dl>
-        <Link className="desk-primary" to={`/companies/${company.id}`}>Mở hồ sơ <AppIcon name="arrow" /></Link><Link className="desk-secondary" to={`/research?company=${company.id}&question=${encodeURIComponent('Giới thiệu tổng quan về '+company.id)}`}><AppIcon name="copilot" />Hỏi về {company.id}</Link>
-        <p className="desk-preview-note">Xem báo cáo, tin tức và các quan hệ có nguồn tại trang doanh nghiệp.</p>
-  </>;
+  return (
+    <>
+      <div className="desk-preview-kicker">Hồ sơ doanh nghiệp</div>
+      <span className="desk-large-ticker">{company.id}</span>
+      <h2>{company.name}</h2>
+      <dl>
+        <div>
+          <dt>Ngành</dt>
+          <dd>{company.sector}</dd>
+        </div>
+        <div>
+          <dt>Sàn giao dịch</dt>
+          <dd>{company.exchange || "Chưa có dữ liệu"}</dd>
+        </div>
+      </dl>
+      <Link className="desk-primary" to={`/companies/${company.id}`}>
+        Mở hồ sơ <AppIcon name="arrow" />
+      </Link>
+      <Link
+        className="desk-secondary"
+        to={`/research?company=${company.id}&question=${encodeURIComponent("Giới thiệu tổng quan về " + company.id)}`}
+      >
+        <AppIcon name="copilot" />
+        Hỏi về {company.id}
+      </Link>
+      <p className="desk-preview-note">
+        Xem báo cáo, tin tức và các quan hệ có nguồn tại trang doanh nghiệp.
+      </p>
+    </>
+  );
 }
 
 export default function CompanySearchPage() {
   const { user } = useAuth();
   const userId = user?.id;
   const [params] = useSearchParams();
-  const fixture = ["empty", "error", "loading"].includes(params.get("fixture")) ? params.get("fixture") : "success";
   const [companies, setCompanies] = useState([]);
   const [followed, setFollowed] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(() => params.get("search") || "");
+  useEffect(() => {
+    setSearch(params.get("search") || "");
+  }, [params]);
   const [sector, setSector] = useState("");
+  const [view, setView] = useState("table");
   const [selectedId, setSelectedId] = useState(null);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -33,51 +66,202 @@ export default function CompanySearchPage() {
   const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
-    if (fixture === "loading") {
-      setLoading(true);
-      setError(null);
-      return;
-    }
     let cancelled = false;
     setLoading(true);
     setError(null);
-    const scenario = fixture === "error" && retryCount > 0 ? "success" : fixture;
-    const watchlist = scenario === "success" && userId
-      ? getWatchlist().then(({ items }) => items.map(({ ticker }) => ticker)).catch(() => [])
-      : [];
-    Promise.all([getCompanies(scenario), watchlist])
+    const watchlist =
+      userId
+        ? getWatchlist()
+            .then(({ items }) => items.map(({ ticker }) => ticker))
+            .catch(() => [])
+        : [];
+    Promise.all([getCompanies(), watchlist])
       .then(([catalog, tickers]) => {
         if (cancelled) return;
         setCompanies(catalog);
         setFollowed(tickers);
       })
-      .catch((caught) => { if (!cancelled) setError(caught.message); })
-      .finally(() => { if (!cancelled) setLoading(false); });
-    return () => { cancelled = true; };
-  }, [fixture, retryCount, userId]);
+      .catch((caught) => {
+        if (!cancelled) setError(caught.message);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [retryCount, userId]);
 
   // Search stays inside the codes with full data (plus opened/followed ones); no placeholder for other codes.
   const catalog = visibleCompanies(companies, getRevealed(userId), followed);
-  const shown = new Set(catalog.map(company => company.id));
-  const sectors = [...new Set(catalog.map(company => company.sector))];
-  const visible = searchCompanies(catalog, search).filter(company => shown.has(company.id) && (!sector || company.sector === sector));
-  const selected = visible.find(company => company.id === selectedId) || visible[0];
-  return <UserShell activeId="companies" className="fm-company-catalog desk-catalog">
-    <DeskHeader title="Khám phá doanh nghiệp" section="Danh mục" description="Chọn doanh nghiệp để xem hồ sơ và bắt đầu nghiên cứu."></DeskHeader>
-    <main className="desk-explorer">
-      <aside className="desk-explorer-filters"><h2>Phạm vi nghiên cứu</h2><p>Ngành doanh nghiệp</p>
-        <button type="button" aria-pressed={!sector} onClick={() => setSector('')}>Tất cả ngành<span>{catalog.length}</span></button>
-        {sectors.map(item => <button type="button" key={item} aria-pressed={sector === item} onClick={() => setSector(item)}>{item}<span>{catalog.filter(c => c.sector === item).length}</span></button>)}
-        <div className="desk-filter-note"><AppIcon name="document" /><p>Danh mục lấy từ cơ sở dữ liệu. Giá, BCTC và tài liệu nguồn được ghi rõ ở trang chi tiết.</p></div>
-      </aside>
-      <section className="desk-explorer-results" aria-label="Doanh nghiệp trong danh mục">
-        <div className="desk-explorer-toolbar"><label><AppIcon name="search" /><input type="search" placeholder="Tìm theo tên hoặc mã" aria-label="Tìm doanh nghiệp" value={search} onChange={event => setSearch(event.target.value)} /></label><span aria-live="polite">{loading ? 'Đang tải' : `${visible.length} doanh nghiệp`}</span></div>
-        {loading ? <Skeleton rows={6} /> : error ? <ErrorState message={error} onRetry={() => setRetryCount(count => count + 1)} /> : !visible.length ? <EmptyState title="Không tìm thấy doanh nghiệp" description="Thử đổi từ khóa hoặc chọn lại ngành." /> : <div className="desk-company-rows">{visible.map(company => <button type="button" className="desk-company-row" key={company.id} aria-pressed={selected?.id === company.id} onClick={() => { setSelectedId(company.id); setPreviewOpen(window.matchMedia("(max-width: 1200px)").matches); }}><span className="desk-ticker-mark">{company.id}</span><span className="desk-company-row-name"><strong>{company.name}</strong><small>{company.sector}</small></span><AppIcon name="chevron" /></button>)}</div>}
-      </section>
-      <aside className="desk-company-preview" aria-label="Xem trước doanh nghiệp">{selected && !loading && !error ? <>
-        <CompanyPreview company={selected} />
-      </> : <div className="desk-preview-empty"><AppIcon name="companies" /><p>Chọn một doanh nghiệp để xem trước hồ sơ.</p></div>}</aside>
-    </main>
-    <Drawer open={previewOpen} title="Hồ sơ doanh nghiệp" onClose={() => setPreviewOpen(false)}>{selected && <div className="desk-company-preview desk-company-preview-drawer"><CompanyPreview company={selected} /></div>}</Drawer>
-  </UserShell>;
+  const shown = new Set(catalog.map((company) => company.id));
+  const sectors = [...new Set(catalog.map((company) => company.sector))];
+  const visible = searchCompanies(catalog, search).filter(
+    (company) =>
+      shown.has(company.id) && (!sector || company.sector === sector),
+  );
+  const selected =
+    visible.find((company) => company.id === selectedId) || visible[0];
+  return (
+    <UserShell activeId="companies" className="fm-company-catalog desk-catalog">
+      <DeskHeader
+        title="Bắt đầu từ một doanh nghiệp."
+        section="Danh mục"
+        description="Tìm mã, khám phá dữ liệu và giữ lại những câu hỏi bạn muốn tìm hiểu."
+      ></DeskHeader>
+      <main className="approved-catalog">
+        <section className="fm-card approved-catalog-surface">
+          <div className="approved-catalog-toolbar">
+            <label className="approved-catalog-search">
+              <AppIcon name="search" />
+              <input
+                type="search"
+                placeholder="Mã cổ phiếu hoặc tên doanh nghiệp…"
+                aria-label="Tìm doanh nghiệp"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+              />
+            </label>
+            <select
+              aria-label="Lọc theo ngành"
+              value={sector}
+              onChange={(event) => setSector(event.target.value)}
+            >
+              <option value="">Tất cả ngành</option>
+              {sectors.map((item) => (
+                <option key={item}>{item}</option>
+              ))}
+            </select>
+            <div className="approved-view-toggle">
+              <button
+                type="button"
+                aria-pressed={view === "table"}
+                aria-label="Hiển thị bảng"
+                onClick={() => setView("table")}
+              >
+                <AppIcon name="compare" />
+              </button>
+              <button
+                type="button"
+                aria-pressed={view === "cards"}
+                aria-label="Hiển thị thẻ"
+                onClick={() => setView("cards")}
+              >
+                <AppIcon name="dashboard" />
+              </button>
+            </div>
+          </div>
+          <p className="approved-catalog-count" aria-live="polite">
+            {loading ? "Đang tải danh mục…" : `${visible.length} doanh nghiệp`}{" "}
+            · Giá, báo cáo tài chính và nguồn hiển thị ở hồ sơ từng mã.
+          </p>
+          {loading ? (
+            <Skeleton rows={6} />
+          ) : error ? (
+            <ErrorState
+              message={error}
+              onRetry={() => setRetryCount((count) => count + 1)}
+            />
+          ) : !visible.length ? (
+            <EmptyState
+              title="Không tìm thấy doanh nghiệp"
+              description="Thử đổi từ khóa hoặc chọn lại ngành."
+            />
+          ) : view === "table" ? (
+            <div className="approved-catalog-table-scroll">
+              <table className="approved-catalog-table">
+                <thead>
+                  <tr>
+                    <th>Doanh nghiệp</th>
+                    <th>Ngành</th>
+                    <th>Sàn</th>
+                    <th>Kỳ báo cáo gần nhất</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visible.map((company) => (
+                    <tr key={company.id}>
+                      <td>
+                        <Link
+                          className="approved-catalog-company"
+                          to={`/companies/${company.id}`}
+                        >
+                          <span>{company.id}</span>
+                          <div>
+                            <strong>{company.id}</strong>
+                            <small>{company.name}</small>
+                          </div>
+                        </Link>
+                      </td>
+                      <td>{company.sector}</td>
+                      <td>{company.exchange || "—"}</td>
+                      <td>{company.latestPeriod || "Chưa có dữ liệu"}</td>
+                      <td>
+                        <button
+                          type="button"
+                          className="approved-catalog-preview"
+                          onClick={() => {
+                            setSelectedId(company.id);
+                            setPreviewOpen(true);
+                          }}
+                        >
+                          Xem nhanh <AppIcon name="arrow" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="approved-catalog-cards">
+              {visible.map((company) => (
+                <article key={company.id}>
+                  <Link to={`/companies/${company.id}`}>
+                    <span className="approved-company-monogram">
+                      {company.id}
+                    </span>
+                    <h2>{company.name}</h2>
+                  </Link>
+                  <p>
+                    {company.sector} · {company.exchange || "Chưa có sàn"}
+                  </p>
+                  <div>
+                    <Link to={`/companies/${company.id}`}>
+                      Mở hồ sơ <AppIcon name="arrow" />
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedId(company.id);
+                        setPreviewOpen(true);
+                      }}
+                    >
+                      Xem nhanh
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+        <footer className="approved-footer">
+          <span>FinMind · Nghiên cứu doanh nghiệp có nguồn</span>
+          <span>Chỉ hỗ trợ nghiên cứu · Không phải khuyến nghị đầu tư</span>
+        </footer>
+      </main>
+      <Drawer
+        open={previewOpen}
+        title="Hồ sơ doanh nghiệp"
+        onClose={() => setPreviewOpen(false)}
+      >
+        {selected && (
+          <div className="desk-company-preview desk-company-preview-drawer">
+            <CompanyPreview company={selected} />
+          </div>
+        )}
+      </Drawer>
+    </UserShell>
+  );
 }

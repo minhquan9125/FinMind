@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams, useAuth } from "../../app/router.jsx";
 import { Button, Drawer, EmptyState, ErrorState, Select, Sidebar, Skeleton, StatusBadge } from "../../shared/ui/index.js";
-import { userMenu } from "../../mocks/componentMock.js";
+import { userMenu } from "../../shared/navigation.js";
 import { createGraphApi } from "./api.js";
 import GraphCanvas from "./GraphCanvas.jsx";
 import { canExpand, evidenceLink, getVisibleGraph, MAX_HOPS, RELATION_TYPES, SOURCE_RELATION_TYPES, watchGraphUpdates } from "./graphModel.js";
-import { nodeTypes } from "./mock.js";
+import { nodeTypes } from "./graphTypes.js";
 
 const menuPaths = { dashboard: "/dashboard", companies: "/companies", copilot: "/research", watchlist: "/watchlist", graph: "/graph" };
 const fieldClass = "min-h-11 w-full min-w-0 rounded border border-slate-300 bg-white px-3 text-sm";
@@ -50,10 +50,10 @@ function Evidence({ item }) {
 export default function GraphPage() {
   const navigate = useNavigate(), { user, logout } = useAuth();
   const [params, setParams] = useSearchParams();
-  const search = params.toString(), fixture = params.get("fixture") || "";
+  const search = params.toString();
   const version = params.get("graph_version_id") || "", rootId = params.get("entity_id") || "";
   const relationId = params.get("relation_id") || "";
-  const api = useMemo(() => createGraphApi({ fixture }), [fixture]);
+  const api = useMemo(() => createGraphApi(), []);
   const [retry, setRetry] = useState(0), [searchTask, setSearchTask] = useState(null);
   const [searchText, setSearchText] = useState(params.get("company") || "");
   const [entityType, setEntityType] = useState("");
@@ -69,12 +69,12 @@ export default function GraphPage() {
     query.relation_type.every(t => RELATION_TYPES.includes(t)) &&
     [query.from, query.to].every(d => !d || (/^\d{4}-\d{2}-\d{2}$/.test(d) && Number.isFinite(Date.parse(d)) && new Date(d).toISOString().slice(0, 10) === d)) &&
     !(query.from && query.to && query.from > query.to);
-  const graphKey = JSON.stringify([fixture, query]);
-  const versions = useRequest(signal => api.versions({ signal }), JSON.stringify([fixture]), true, retry);
-  useEffect(() => fixture ? undefined : watchGraphUpdates(() => setRetry(n => n + 1)), [fixture]);
-  const activeSearch = searchTask?.version === version ? searchTask.q : "";
+  const graphKey = JSON.stringify([query]);
+  const versions = useRequest(signal => api.versions({ signal }), "versions", true, retry);
+  useEffect(() => watchGraphUpdates(() => setRetry(n => n + 1)), []);
+  const activeSearch = searchTask?.version === version ? searchTask.q : params.get("company") || "";
   const results = useRequest(signal => api.entities({ graph_version_id: version, q: activeSearch, type: entityType || null, limit: 50 }, { signal }),
-    JSON.stringify([fixture, version, activeSearch, entityType, searchTask?.nonce]), Boolean(version), retry);
+    JSON.stringify([version, activeSearch, entityType, searchTask?.nonce]), Boolean(version), retry);
   const graphRequest = useRequest(signal => api.graph(query, { signal }), graphKey, Boolean(version && rootId && validQuery), retry);
   const graph = graphRequest.data;
   const selectedEdge = graph?.edges.find(e => e.id === relationId);
@@ -101,18 +101,18 @@ export default function GraphPage() {
         if (previous.get("graph_version_id")) return previous;
         const next = new URLSearchParams(previous);
         next.set("graph_version_id", versions.data.versions[0].graph_version_id);
-        if (fixture && !next.get("entity_id")) next.set("entity_id", "fixture:company");
         return next;
       }, { replace: true });
     }
-  }, [versions.data, version, relationId, fixture, setParams]);
+  }, [versions.data, version, relationId, setParams]);
   useEffect(() => {
     const p = new URLSearchParams(search);
     setDraft({ type: p.get("relation_type") || "", from: p.get("from") || "", to: p.get("to") || "", hops: p.get("hops") || "2", limit: p.get("limit") || "50" });
     setFilterError("");
   }, [search]);
   useEffect(() => { setExpandedIds([rootId]); setSelectedNodeId(rootId); setNotice(""); }, [graphKey, rootId]);
-  useEffect(() => { setSearchText(""); setSearchTask(null); }, [version]);
+  const companyContext = params.get("company") || "";
+  useEffect(() => { setSearchText(companyContext); setSearchTask(null); }, [version, companyContext]);
   useEffect(() => {
     if (graph && relationId && graph.edges.some(e => e.id === relationId)) setExpandedIds(graph.nodes.map(n => n.id));
   }, [graph, relationId]);
@@ -152,10 +152,10 @@ export default function GraphPage() {
     <main className="min-w-0 flex-1">
       <header className="flex flex-wrap items-center justify-between gap-3 border-b bg-white p-4 sm:px-6">
         <div><h1 className="text-xl font-bold">Đồ thị tri thức</h1><p className="text-xs text-slate-600">Doanh nghiệp, nhân sự, sự kiện và bằng chứng của quan hệ.</p></div>
-        <div className="flex flex-wrap items-center gap-3"><StatusBadge tone={fixture ? "warning" : "info"}>{fixture ? "Fixture · Không phải dữ liệu thật" : "API graph · Tối đa 2 hop"}</StatusBadge><Link to="/research" className="text-sm text-blue-700 underline">Chat</Link></div>
+        <div className="flex flex-wrap items-center gap-3"><StatusBadge tone="info">API graph · Tối đa 2 hop</StatusBadge><Link to="/research" className="text-sm text-blue-700 underline">Chat</Link></div>
       </header>
       <div className="desk-graph-workspace"><aside className="desk-graph-controls space-y-4 border-b bg-white p-4 sm:px-6">
-        {!fixture && <div className="flex items-center gap-3 text-xs text-slate-600"><p>Tự cập nhật mỗi 30 giây và khi quay lại trang; giữ nguyên phiên đang xem. Phiên mới xuất hiện trong danh sách.</p><Button variant="secondary" onClick={() => setRetry(n => n + 1)}>Cập nhật ngay</Button></div>}
+        {<div className="flex items-center gap-3 text-xs text-slate-600"><p>Tự cập nhật mỗi 30 giây và khi quay lại trang; giữ nguyên phiên đang xem. Phiên mới xuất hiện trong danh sách.</p><Button variant="secondary" onClick={() => setRetry(n => n + 1)}>Cập nhật ngay</Button></div>}
         {sourceVersion && <p role="status" className="text-sm text-amber-800">Nhân sự theo nguồn tài liệu: danh tính theo từng lần xuất hiện, không khẳng định chức vụ đương nhiệm. Chưa xác nhận ngày hiệu lực; lọc theo ngày sẽ không trả các quan hệ này.</p>}
         {versions.loading ? <p role="status" className="text-sm">Đang tải phiên graph…</p> : versions.error ? <ErrorState message={versions.error.message} onRetry={() => setRetry(n => n + 1)} /> : !versions.data?.versions.length && !version ?
           <EmptyState title="Chưa có phiên graph được công bố" description="Backend chưa có phiên READY để xem." /> : null}
@@ -200,7 +200,7 @@ export default function GraphPage() {
                 <Button variant="secondary" onClick={() => { setExpandedIds([rootId]); setSelectedNodeId(rootId); change({ relation_id: null }, false); }}>Đặt lại góc nhìn</Button>
                 {nodeTypes.map(t => <span key={t.type} className="flex items-center gap-1 text-xs"><span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: t.color }} />{t.label}</span>)}
               </div>
-              <GraphCanvas nodes={visible.nodes} edges={visible.edges} rootId={rootId} fixture={Boolean(fixture)}
+              <GraphCanvas nodes={visible.nodes} edges={visible.edges} rootId={rootId}
                 onNodeSelect={setSelectedNodeId} onEdgeSelect={id => change({ relation_id: id }, false)} />
             </div>}
         </section>

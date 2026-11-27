@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CandlestickSeries, createChart, HistogramSeries } from "lightweight-charts";
+import { AreaSeries, CandlestickSeries, createChart, HistogramSeries } from "lightweight-charts";
 import { EmptyState } from "../../shared/ui/index.js";
 
 const number = new Intl.NumberFormat("vi-VN", { maximumFractionDigits: 2 });
@@ -22,7 +22,7 @@ function sameBar(first, second) {
     && first.low === second.low && first.close === second.close && first.volume === second.volume;
 }
 
-export default function PriceHistory({ data }) {
+export default function PriceHistory({ data, variant = "candles", compact = false, embedded = false }) {
   const containerRef = useRef(null);
   const chartRef = useRef(null);
   const candlesRef = useRef(null);
@@ -49,9 +49,12 @@ export default function PriceHistory({ data }) {
       rightPriceScale: { borderColor: "#cbd5e1" },
       crosshair: { mode: 0 },
       handleScroll: { mouseWheel: false, pressedMouseMove: true, horzTouchDrag: true, vertTouchDrag: false },
-      handleScale: { mouseWheel: true, pinch: true, axisPressedMouseMove: true },
+      handleScale: { mouseWheel: !embedded, pinch: true, axisPressedMouseMove: true },
     });
-    const candles = chart.addSeries(CandlestickSeries, {
+    const candles = variant === "area" ? chart.addSeries(AreaSeries, {
+      lineColor: "#2868f6", topColor: "rgba(40,104,246,.14)", bottomColor: "rgba(40,104,246,0)", lineWidth: 2,
+      priceLineVisible: false,
+    }) : chart.addSeries(CandlestickSeries, {
       upColor: "#0d9488", downColor: "#f43f5e", borderVisible: false,
       wickUpColor: "#0d9488", wickDownColor: "#f43f5e",
     });
@@ -83,7 +86,7 @@ export default function PriceHistory({ data }) {
       volumesRef.current = null;
       shownRef.current = [];
     };
-  }, [hasBars]);
+  }, [hasBars, variant, embedded]);
 
   useEffect(() => {
     if (!chartRef.current || !hasBars) return;
@@ -104,10 +107,10 @@ export default function PriceHistory({ data }) {
 
     if (append || updateLast) {
       const last = next.at(-1);
-      candlesRef.current.update(last);
+      candlesRef.current.update(variant === "area" ? { time: last.time, value: last.close } : last);
       volumesRef.current.update({ time: last.time, value: last.volume, color: last.close >= last.open ? "rgba(13,148,136,.55)" : "rgba(244,63,94,.55)" });
     } else {
-      candlesRef.current.setData(next);
+      candlesRef.current.setData(variant === "area" ? next.map(bar => ({ time: bar.time, value: bar.close })) : next);
       volumesRef.current.setData(next.map((bar) => ({ time: bar.time, value: bar.volume, color: bar.close >= bar.open ? "rgba(13,148,136,.55)" : "rgba(244,63,94,.55)" })));
     }
     shownRef.current = next;
@@ -120,7 +123,7 @@ export default function PriceHistory({ data }) {
       if (visible) scale.setVisibleLogicalRange(visible);
       if (!sameBar(old.at(-1), next.at(-1))) setNewerAvailable(true);
     }
-  }, [bars, hasBars]);
+  }, [bars, hasBars, variant]);
 
   useEffect(() => {
     if (!expanded) return;
@@ -156,12 +159,13 @@ export default function PriceHistory({ data }) {
   if (!hasBars) return <EmptyState title="Chưa có nến OHLC hợp lệ để vẽ biểu đồ" />;
 
   return (
-    <div className="space-y-4">
-      <p className="text-xs text-slate-600">Nguồn: {latest.source || data.source || "Chưa rõ"} · Nến ngày 1D · {bars.length} phiên · Gần nhất: {latest.date}{data.price_unit === "points" ? " · Đơn vị: điểm chỉ số" : ""}</p>
-      <div className="grid gap-3 sm:grid-cols-2">
+    <div className={`space-y-4 ${compact ? "approved-compact-price-chart" : ""}`}>
+      {!embedded && <p className="text-xs text-slate-600">Nguồn: {latest.source || data.source || "Chưa rõ"} · Nến ngày 1D · {bars.length} phiên · Gần nhất: {latest.date}{data.price_unit === "points" ? " · Đơn vị: điểm chỉ số" : ""}</p>}
+      {!compact && <div className="grid gap-3 sm:grid-cols-2">
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Giá đóng cửa gần nhất</p><strong className="text-lg">{number.format(Number(latest.close))}</strong></div>
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Khối lượng ghi nhận</p><strong className="text-lg">{latest.volume == null ? "—" : number.format(Number(latest.volume))}</strong></div>
       </div>
+      }
       {expanded && <div className="fixed inset-0 z-40 bg-slate-900/60" onClick={() => setExpanded(false)} aria-hidden="true" />}
       <div className={expanded ? "fixed inset-3 z-50 flex flex-col rounded-xl border border-slate-200 bg-white p-4 shadow-xl sm:inset-8" : "rounded-lg border border-slate-200 bg-white p-3"}>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -177,12 +181,12 @@ export default function PriceHistory({ data }) {
             <button type="button" onClick={() => setExpanded((value) => !value)} className="rounded border border-slate-200 px-2 py-1 text-xs hover:bg-slate-50">{expanded ? "Thu gọn" : "Mở rộng"}</button>
           </div>
         </div>
-        <div ref={containerRef} className={expanded ? "min-h-0 w-full flex-1" : "h-[420px] w-full"} aria-label={`Biểu đồ nến và khối lượng ${data.symbol}`} />
+        <div ref={containerRef} className={expanded ? "min-h-0 w-full flex-1" : "h-[420px] w-full"} aria-label={`Biểu đồ ${variant === "area" ? "chỉ số" : "nến"} và khối lượng ${data.symbol}`} />
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-700">
           <strong>{selected.date}</strong><span>{statusLabels[selected.status] || "Trạng thái chưa rõ"}</span>
           <span>Mở: {number.format(Number(selected.open))}</span><span>Cao: {number.format(Number(selected.high))}</span><span>Thấp: {number.format(Number(selected.low))}</span><span>Đóng: {number.format(Number(selected.close))}</span><span>KL: {selected.volume == null ? "—" : number.format(Number(selected.volume))}</span>
         </div>
-        <p className="mt-1 text-[11px] text-slate-500">Cuộn chuột để zoom, kéo ngang để xem lịch sử · TradingView Lightweight Charts™ · © 2025 <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" className="underline">TradingView, Inc.</a></p>
+        <p className="mt-1 text-[11px] text-slate-500">{!embedded && 'Cuộn chuột để zoom, kéo ngang để xem lịch sử · '}TradingView Lightweight Charts™ · © 2025 <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" className="underline">TradingView, Inc.</a></p>
       </div>
     </div>
   );

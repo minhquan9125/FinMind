@@ -16,7 +16,7 @@ export default function AdminConfigurationPage() {
   const [data, setData] = useState(null), [form, setForm] = useState(null), [reason, setReason] = useState("");
   const [error, setError] = useState(""), [message, setMessage] = useState(""), [busy, setBusy] = useState(false), [revision, setRevision] = useState(0);
   useEffect(() => {
-    const abort = new AbortController(); setError("");
+    const abort = new AbortController(); setError(""); setMessage(""); setReason("");
     getOperations("/budget", abort.signal).then(result => {
       if (!abort.signal.aborted) { setData(result); setForm(structuredClone(result.config)); }
     }).catch(e => { if (!abort.signal.aborted) setError(e.message); });

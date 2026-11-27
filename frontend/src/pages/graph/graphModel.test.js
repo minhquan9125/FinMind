@@ -3,9 +3,23 @@ import { defaultGraphPositions, watchGraphUpdates, SOURCE_RELATION_TYPES } from 
 import assert from "node:assert/strict";
 import { createGraphApi } from "./api.js";
 import { canExpand, getVisibleGraph, validateGraph, validateRelation, evidenceLink } from "./graphModel.js";
-import { fixtureVersion, fixtureEvidence, fixtureRelation } from "./mock.js";
+import { fixtureVersion, fixtureEvidence, fixtureRelation, fixtureResponse } from "./mock.js";
 const query = { graph_version_id: fixtureVersion, entity_id: "fixture:company", hops: 2, limit: 50, relation_type: [], from: null, to: null };
-const fake = mode => createGraphApi({ fixture: mode || "success" });
+// Fixtures live exclusively in the test transport, never in the production client.
+const fake = mode => createGraphApi({ fetchImpl: async (url, { signal }) => {
+  const parsed = new URL(url, "http://test.local");
+  const params = Object.fromEntries(parsed.searchParams);
+  params.q ??= "";
+  params.relation_type = parsed.searchParams.getAll("relation_type");
+  for (const key of ["hops", "limit"]) if (params[key]) params[key] = Number(params[key]);
+  try {
+    const data = await fixtureResponse(parsed.pathname.slice("/api/graph".length), params, mode || "success", signal);
+    return { ok: true, status: 200, json: async () => data };
+  } catch (error) {
+    if (error.name === "AbortError") throw error;
+    return { ok: false, status: error.status || 503, json: async () => ({ detail: { code: error.code, message: error.message } }) };
+  }
+} });
 
 test("refresh on timer/focus/visibility, skip hidden tabs, release listeners", () => {
   let callback, count = 0, cleared = false;

@@ -1,8 +1,8 @@
 // Company catalog and BCTC facts from the backend (/api/companies), shared by the company and compare pages.
 import { authorizedFetch } from "../../shared/api/authorization.js";
 
-async function readJson(path) {
-  const response = await authorizedFetch(`/api/companies${path}`, { cache: "no-store" });
+async function readJson(path, signal) {
+  const response = await authorizedFetch(`/api/companies${path}`, { cache: "no-store", signal });
   if (response.status === 404) return null;
   if (!response.ok) {
     let body = null;
@@ -25,8 +25,8 @@ export async function getCompanyCatalog() {
 }
 
 // null when the backend does not know the ticker.
-export async function getCompanyFinancials(ticker) {
-  const data = await readJson(`/${encodeURIComponent(ticker)}`);
+export async function getCompanyFinancials(ticker, signal) {
+  const data = await readJson(`/${encodeURIComponent(ticker)}`, signal);
   return data && {
     id: data.ticker, name: data.name || data.ticker, sector: data.sector || NO_SECTOR, exchange: data.exchange,
     periods: data.periods || [], reports: data.reports || [], sources: data.sources || [],

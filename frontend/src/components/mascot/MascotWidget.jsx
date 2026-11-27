@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 import { Bot, EyeOff, MessageCircle, MousePointer2, Send, X } from "lucide-react";
-import { MASCOT_GREETING, MASCOT_LINES, MASCOT_TIPS, askMascot } from "./mascotMock";
+import { MASCOT_GREETING, MASCOT_LINES, MASCOT_TIPS } from "./mascotContent";
 import { PET_H, PET_W, useMascotBehavior } from "./useMascotBehavior";
 import { dueReminder, getGreeting, getTimelyTip, hhmm, isNight } from "./timeTalk";
 
@@ -348,103 +348,25 @@ function Pet({ chatOpen, onOpenChat, callRef }) {
 /* Chat mini                                                           */
 /* ------------------------------------------------------------------ */
 
-let msgId = 0;
-const createMsg = (from, text) => ({ id: ++msgId, from, text });
-
-function TypingDots() {
-  return (
-    <span className="inline-flex gap-1">
-      {[0, 1, 2].map((i) => (
-        <span
-          key={i}
-          className="h-1.5 w-1.5 rounded-full bg-blue-600"
-          style={{ animation: `mascot-dot 1.2s ${i * 0.15}s infinite` }}
-        />
-      ))}
-    </span>
-  );
-}
-
 function MiniChat({ onClose }) {
-  const [messages, setMessages] = useState(() => [createMsg("bot", MASCOT_GREETING)]);
   const [input, setInput] = useState("");
-  const [typing, setTyping] = useState(false);
-  const listRef = useRef(null);
   const inputRef = useRef(null);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-  useEffect(() => {
-    listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages, typing]);
-
-  const send = async (e) => {
-    e.preventDefault();
-    const q = input.trim();
-    if (!q || typing) return;
-    setInput("");
-    setMessages((m) => [...m, createMsg("user", q)]);
-    setTyping(true);
-    const reply = await askMascot(q);
-    setTyping(false);
-    setMessages((m) => [...m, createMsg("bot", reply)]);
-  };
-
+  useEffect(() => { inputRef.current?.focus(); }, []);
+  function send(event) {
+    event.preventDefault();
+    if (input.trim()) window.location.assign(`/research?${new URLSearchParams({ question: input.trim() })}`);
+  }
   return (
-    <div className="flex h-[380px] w-[300px] max-w-[calc(100vw-32px)] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl [animation:mascot-pop_.25s_ease-out]">
-      <header className="flex items-center justify-between bg-blue-600 px-4 py-2.5 text-white">
-        <div className="flex items-center gap-2">
-          <Bot size={18} />
-          <div className="leading-tight">
-            <p className="text-sm font-semibold">Fin</p>
-            <p className="text-[11px] opacity-80">Trợ lý FinMind · 🕒 {hhmm()}</p>
-          </div>
-        </div>
-        <button type="button" onClick={onClose} aria-label="Đóng chat" className="rounded-full p-1 hover:bg-white/15">
-          <X size={16} />
-        </button>
+    <div className="flex w-[300px] max-w-[calc(100vw-32px)] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+      <header className="flex items-center justify-between bg-blue-600 px-4 py-3 text-white">
+        <div className="flex items-center gap-2"><Bot size={18} /><strong className="text-sm">FinMind Research</strong></div>
+        <button type="button" onClick={onClose} aria-label="Đóng chat" className="rounded-full p-1 hover:bg-white/15"><X size={16} /></button>
       </header>
-
-      <div ref={listRef} className="flex-1 space-y-2 overflow-y-auto bg-slate-50 px-3 py-3">
-        {messages.map((m) => (
-          <div key={m.id} className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}>
-            <p
-              className={`max-w-[85%] rounded-2xl px-3 py-2 text-[13px] leading-snug ${
-                m.from === "user"
-                  ? "rounded-br-sm bg-blue-600 text-white"
-                  : "rounded-bl-sm bg-white text-slate-800 shadow-sm"
-              }`}
-            >
-              {m.text}
-            </p>
-          </div>
-        ))}
-        {typing && (
-          <div className="flex justify-start">
-            <p className="rounded-2xl rounded-bl-sm bg-white px-3 py-2.5 shadow-sm">
-              <TypingDots />
-            </p>
-          </div>
-        )}
-      </div>
-
-      <form onSubmit={send} className="flex items-center gap-2 border-t border-slate-100 p-2">
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Hỏi Fin điều gì đó..."
-          className="flex-1 rounded-full border border-slate-200 px-3 py-2 text-sm outline-none focus:border-blue-500"
-        />
-        <button
-          type="submit"
-          disabled={!input.trim() || typing}
-          aria-label="Gửi"
-          className="rounded-full bg-blue-600 p-2 text-white transition-opacity disabled:opacity-40"
-        >
-          <Send size={16} />
-        </button>
+      <p className="p-4 text-sm leading-relaxed text-slate-600">{MASCOT_GREETING}</p>
+      <form onSubmit={send} className="space-y-3 p-4 pt-0">
+        <label className="block text-xs font-semibold text-slate-600" htmlFor="fin-research-question">Câu hỏi nghiên cứu</label>
+        <input id="fin-research-question" ref={inputRef} value={input} onChange={e => setInput(e.target.value)} placeholder="Bạn muốn tìm hiểu điều gì?" maxLength={4000} className="min-h-11 w-full rounded-lg border border-slate-200 px-3 text-sm outline-none focus:border-blue-500" />
+        <button type="submit" disabled={!input.trim()} className="flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-3 text-sm font-semibold text-white disabled:opacity-40">Mở Trợ lý nghiên cứu <Send size={16} /></button>
       </form>
     </div>
   );
@@ -456,7 +378,7 @@ function MiniChat({ onClose }) {
 
 export default function MascotWidget() {
   const [chatOpen, setChatOpen] = useState(false);
-  const [petVisible, setPetVisible] = useState(true);
+  const [petVisible, setPetVisible] = useState(false);
   const callRef = useRef(null);
   const openChat = useCallback(() => setChatOpen(true), []);
 

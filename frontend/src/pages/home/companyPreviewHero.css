@@ -1,0 +1,116 @@
+body.fm-approved .fm-approved-landing .v4-research-product { margin: 48px auto 12px; max-width: 1100px; }
+.company-preview { margin: 0; padding: 0 24px 12px 0; text-align: left; }
+.company-preview-frame { border: 1px solid #dce7f6; border-radius: 16px; background: #fff; box-shadow: 0 26px 80px -30px #234c7e2b, 0 1px 4px #143f7010; }
+.preview-app-bar { display: flex; justify-content: space-between; align-items: center; gap: 15px; min-height: 53px; padding: 12px 26px; border-bottom: 1px solid #e9eff7; border-radius: 16px 16px 0 0; background: #fbfdff; }
+.preview-app-brand { display: inline-flex; align-items: center; gap: 9px; color: #16324f; font: 750 12px 'Manrope', sans-serif; }
+.preview-app-brand > span:last-child { margin-left: 1px; font: 400 11px 'Inter', sans-serif; color: #8c9db2; }
+body.fm-approved .preview-app-brand .finmind-logo-mark { width: 29px; height: 18px; }
+.preview-company-heading { padding: 25px 30px 23px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.preview-company-identity { display: flex; align-items: center; gap: 13px; min-width: 0; }
+.preview-ticker { width: 49px; height: 49px; flex-shrink: 0; border-radius: 11px; background: #edf5ff; color: #1264d5; display: grid; place-items: center; font: 800 15px 'Manrope', sans-serif; letter-spacing: -.5px; }
+body.fm-approved .company-preview .preview-company-identity h2 { margin: 0 0 6px; font: 750 21px/1.4 'Manrope', sans-serif; color: #183453; letter-spacing: -.5px; }
+.preview-company-identity p { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; color: #7890ae; font-size: 10px; }
+.preview-company-identity p > span { color: #c2cfdf; }
+.preview-open-company { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: #276bc2; white-space: nowrap; }
+.preview-company-tabs { display: flex; gap: 28px; margin: 0 30px; border-bottom: 1px solid #e9eff7; overflow-x: auto; scrollbar-width: thin; }
+.preview-company-tabs a { position: relative; display: block; padding: 0 0 15px; color: #7c8da4; font-size: 11px; font-weight: 500; white-space: nowrap; }
+.preview-company-tabs a.is-highlighted { color: #126be0; font-weight: 650; }
+.preview-company-tabs a.is-highlighted::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #1a70e5; border-radius: 4px 4px 0 0; }
+.preview-chart-panel { padding: 24px 30px 17px; }
+.preview-chart-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; }
+.preview-chart-label { color: #375476; font-size: 11px; font-weight: 600; margin: 0 0 10px; }
+.preview-chart-label > span { color: #899cb5; font-weight: 400; }
+.preview-price-line { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.preview-price-line > strong { color: #163250; font: 750 33px/1.15 'Manrope', sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -1.2px; }
+.preview-price-line > span { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; }
+.preview-price-down { color: #cc4662; }.preview-price-up { color: #148974; }
+.preview-price-date { margin: 9px 0 0; font-size: 10px; color: #8a9bb0; }
+.preview-chart-period { padding: 6px 10px; color: #3b6fae; border: 1px solid #e1eaf7; border-radius: 6px; font-size: 10px; text-align: center; }
+.preview-chart-period > span { display: block; margin-top: 4px; font-size: 8px; color: #93a5bc; }
+.preview-interactive-chart { margin-top: 18px; min-height: 300px; }
+.preview-interactive-chart [aria-label="Biểu đồ nến và khối lượng FPT"]:not(.flex-1) { height: 300px; }
+.preview-interactive-chart > .space-y-4 > .rounded-lg { border: 0; padding: 0; }
+.preview-interactive-chart > .space-y-4 > .rounded-lg > .mt-2 { font-size: 10px; color: #69809f; }
+.preview-interactive-chart > .space-y-4 > .rounded-lg > p:last-child { color: #8a9db7; font-size: 8px; text-align: right; }
+.preview-signin { min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; color: #7994b8; background: radial-gradient(ellipse, #edf5ff, transparent 70%); }
+.preview-signin p { font: 600 14px/1.7 'Manrope', sans-serif; color: #516e93; margin: 0; max-width: 380px; }
+.preview-signin a { display: inline-flex; align-items: center; gap: 7px; padding: 10px 15px; border-radius: 7px; background: #126be4; color: #fff; font-size: 11px; font-weight: 600; }
+.preview-retry { color: #2568be; font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+.preview-feed-notice { display: inline-flex; align-items: center; gap: 4px; margin-left: 9px; color: #8f7c54; }
+.preview-report-status { display: inline-block; margin-left: 8px; font-size: 8px; color: #7389a7; }
+.preview-proof-row { position: relative; display: grid; grid-template-columns: 1fr 310px; align-items: center; gap: 24px; padding: 20px 30px 20px; border-top: 1px solid #e9eff8; border-radius: 0 0 16px 16px; background: #f6faff; }
+.preview-proof-copy > span { display: flex; align-items: center; gap: 7px; font: 650 13px 'Manrope', sans-serif; color: #375a85; }
+.preview-proof-copy > span svg { color: #3279d5; flex-shrink: 0; }
+.preview-proof-copy p { font-size: 10px; line-height: 1.8; color: #7e93ad; margin: 8px 0 0; }
+.preview-proof-copy > a { display: inline-flex; align-items: center; gap: 5px; color: #3474c4; font-size: 10px; margin-top: 15px; }
+.preview-citation { position: relative; margin: -8px -50px -40px 0; padding: 16px 19px; border: 1px solid #d8e7fb; border-radius: 12px; background: #fff; box-shadow: 0 12px 35px #28548916, 0 2px 4px #3068ac06; transform: translateY(-3px); transition: transform .25s ease, box-shadow .25s ease; }
+.preview-citation:hover { transform: translateY(-6px); box-shadow: 0 18px 38px #28548920; }
+.preview-citation-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; color: #3c6dae; font-size: 10px; font-weight: 600; }
+.preview-citation-top > span:first-child { display: inline-flex; align-items: center; gap: 7px; }
+.preview-citation-top > span:last-child { color: #1c72e3; background: #eef5ff; padding: 4px 6px; border-radius: 4px; font-size: 9px; }
+.preview-citation > p { color: #8aa0bc; font-size: 9px; margin: 10px 0 9px; }
+.preview-cited-metric { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid #eaf0f8; font-size: 10px; color: #7a8fa9; }
+.preview-cited-metric strong { color: #173c6d; font: 750 15px 'Manrope', sans-serif; letter-spacing: -.3px; }
+.preview-citation > a { display: flex; align-items: center; justify-content: space-between; gap: 9px; margin-top: 11px; color: #4279be; font-size: 9px; line-height: 1.7; }
+.preview-citation > a svg { flex-shrink: 0; }
+.company-preview a:focus-visible { outline: 2px solid #2879e4; outline-offset: 5px; border-radius: 3px; }
+.landing-market-strip { position: relative; margin-top: 62px; background: #ffffffed; border: 1px solid #dce7f5; border-radius: 13px; box-shadow: 0 18px 38px -17px #214e8c38; overflow: hidden; }
+.landing-index-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.landing-index-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 20px 17px; position: relative; min-width: 0; }
+.landing-index-item + .landing-index-item::before { content: ''; position: absolute; top: 21px; bottom: 21px; left: 0; width: 1px; background: #e6edf6; }
+.landing-index-item > div { min-width: 0; flex-shrink: 0; }
+.landing-index-name { display: block; color: #7c8da5; font-size: 11px; margin-bottom: 6px; }
+.landing-index-item strong { display: block; color: #213a5b; font: 750 17px/1.3 'Manrope', sans-serif; font-variant-numeric: tabular-nums; }
+.landing-index-change { display: block; margin-top: 4px; font-size: 10px; font-weight: 600; white-space: nowrap; }
+.landing-index-item small { display: flex; align-items: center; gap: 3px; margin-top: 6px; font-size: 8px; color: #8b9eb8; }
+.landing-index-spark { width: 75px; min-width: 30px; height: 39px; flex-shrink: 1; }
+.landing-index-item.is-up { color: #009e73; }.landing-index-item.is-down { color: #d3556d; }.landing-index-item.is-flat { color: #7993b4; }
+.landing-market-signin { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; border-top: 1px solid #e7eef8; font-size: 10px; color: #3e77c2; }
+.landing-market-retry { display: block; width: 100%; padding: 10px; border-top: 1px solid #e7eef8; color: #3e77c2; font-size: 11px; }
+@media (max-width: 900px) {
+  .landing-index-item { padding: 17px 12px; gap: 7px; }
+  .landing-index-spark { width: 50px; }.landing-index-item strong { font-size: 15px; }
+  .landing-index-change { font-size: 9px; }
+  .preview-citation { margin-right: -35px; }
+  .preview-proof-row { grid-template-columns: 1fr 280px; gap: 15px; }
+  .preview-company-heading, .preview-chart-panel { padding-left: 24px; padding-right: 24px; }
+  .preview-company-tabs { margin-left: 24px; margin-right: 24px; }
+  body.fm-approved .company-preview .preview-company-identity h2 { font-size: 18px; }
+}
+@media (max-width: 600px) {
+  .company-preview { padding-right: 0; }
+  body.fm-approved .fm-approved-landing .v4-research-product { margin-top: 32px; }
+  .company-preview-frame { border-radius: 12px; }
+  .preview-app-bar { padding: 11px 15px; min-height: 43px; border-radius: 12px 12px 0 0; }
+  .preview-app-brand { font-size: 10px; gap: 6px; }.preview-app-brand > span:last-child { display: none; }
+  .preview-company-heading { padding: 19px 16px 17px; flex-wrap: wrap; gap: 10px; }
+  .preview-company-identity { gap: 10px; }.preview-ticker { width: 39px; height: 39px; font-size: 12px; border-radius: 9px; }
+  body.fm-approved .company-preview .preview-company-identity h2 { font-size: 15px; margin-bottom: 4px; }
+  .preview-company-identity p { font-size: 9px; gap: 6px; }
+  .preview-open-company { font-size: 9px; }.preview-open-company svg { width: 12px; height: 12px; }
+  .preview-company-tabs { margin: 0 16px; gap: 21px; }.preview-company-tabs a { font-size: 10px; padding-bottom: 12px; }
+  .preview-chart-panel { padding: 20px 10px 12px; }.preview-chart-heading { padding: 0 6px; gap: 8px; }
+  .preview-price-line { gap: 8px; }.preview-price-line > strong { font-size: 28px; }.preview-price-line > span { font-size: 9px; gap: 1px; }
+  .preview-price-line > span svg { width: 13px; height: 13px; }.preview-price-date { font-size: 8px; }
+  .preview-chart-label { font-size: 10px; }.preview-chart-period { font-size: 8px; padding: 6px; }.preview-chart-period > span { font-size: 7px; }
+  .preview-interactive-chart [aria-label="Biểu đồ nến và khối lượng FPT"]:not(.flex-1) { height: 265px; }
+  .preview-interactive-chart button { font-size: 9px; min-height: 29px; }
+  .preview-interactive-chart > .space-y-4 > .rounded-lg > .mt-2 { font-size: 9px; }
+  .preview-feed-notice { display: flex; margin: 5px 0 0; }
+  .preview-proof-row { grid-template-columns: 1fr; padding: 17px 16px 22px; gap: 18px; border-radius: 0 0 12px 12px; }
+  .preview-proof-copy > span { font-size: 11px; }.preview-proof-copy p { font-size: 9px; }.preview-proof-copy > a { font-size: 9px; margin-top: 9px; }
+  .preview-citation { margin: 0 0 -38px 15px; padding: 14px 16px; transform: none; }
+  .landing-market-strip { margin-top: 48px; border-radius: 11px; }
+  .landing-index-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .landing-index-item { padding: 16px 13px; gap: 8px; }
+  .landing-index-item:nth-child(3), .landing-index-item:nth-child(4) { border-top: 1px solid #e6edf6; }
+  .landing-index-item:nth-child(3)::before { display: none; }
+  .landing-index-spark { width: 59px; }.landing-index-name { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preview-citation, .preview-citation:hover { transform: none; transition: none; }
+}
+@media (max-width: 360px) {
+  .landing-index-spark { width: 32px; min-width: 20px; }
+}
+body.fm-approved .motion-off .preview-citation, body.fm-approved .motion-off .preview-citation:hover { transform: none; transition: none; }
