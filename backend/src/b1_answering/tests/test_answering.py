@@ -47,12 +47,13 @@ class TestGeminiProvider(unittest.IsolatedAsyncioTestCase):
 
     async def test_actual_pipeline_request_headers_count_schema_and_locator(self):
         calls = []
+        limits = Limits.load()
         def handler(req):
             calls.append(req)
             self.assertEqual(req.headers['x-goog-api-key'], 'dummy-test-key')
             self.assertNotIn('dummy-test-key', str(req.url))
             self.assertEqual(req.url.host, 'generativelanguage.googleapis.com')
-            self.assertEqual(req.extensions['timeout']['read'], 600)
+            self.assertEqual(req.extensions['timeout']['read'], limits.read_timeout_seconds)
             body = json.loads(req.content)
             if req.url.path.endswith(':countTokens'):
                 actual = body['generateContentRequest']
@@ -61,9 +62,11 @@ class TestGeminiProvider(unittest.IsolatedAsyncioTestCase):
                 self.assertIn('responseJsonSchema', actual['generationConfig'])
                 return httpx.Response(200, json={'totalTokens': 100})
             self.assertNotIn('tools', body)
-            self.assertEqual(body['generationConfig']['maxOutputTokens'], Limits.load().max_output_tokens)
+            self.assertEqual(body['generationConfig']['maxOutputTokens'], limits.max_output_tokens)
             return httpx.Response(200, json=response())
-        out = await complete_retrieval('Chỉ tiêu minh họa?', envelope(), provider=self.provider(handler))
+        provider = GeminiProvider(limits, api_key='dummy-test-key', free_tier_confirmed=True,
+                                  transport=httpx.MockTransport(handler))
+        out = await complete_retrieval('Chỉ tiêu minh họa?', envelope(), provider=provider, limits=limits)
         self.assertEqual(out['answering']['status'], 'DRAFT_READY')
         self.assertEqual(len(calls), 2)
         self.assertEqual(out['answering']['citations'][0]['locator'], DEMO_PACK['items'][0]['locator'])

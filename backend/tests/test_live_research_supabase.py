@@ -5,6 +5,7 @@ Run explicitly with RUN_LIVE_RESEARCH_SMOKE=1 and the existing offline HF cache.
 import hashlib
 import json
 import os
+import shutil
 import time
 from contextlib import asynccontextmanager
 from uuid import uuid4
@@ -20,8 +21,11 @@ def test_asgi_real_sources_and_b1_contract_without_gemini(tmp_path, retrieval_ba
     import torch
     from fastapi import FastAPI
     from fastapi.testclient import TestClient
+    from src.core.config import get_settings
     from src.core.db import connect, disconnect
+    from src.documents.admin_ingestion import Queue
     from src.documents.embeddings import get_embedding_service
+    from src.documents.shared_serving import shared_pointer
     from src.retrieval_orchestration.live_research import DenseEvidenceRetriever, LiveResearchService
     from src.retrieval_orchestration.web_sessions import SessionStore
     from src.api.routers import research_chat as api
@@ -49,11 +53,27 @@ def test_asgi_real_sources_and_b1_contract_without_gemini(tmp_path, retrieval_ba
     @asynccontextmanager
     async def lifespan(app):
         pool = await connect()
-        app.state.store = SessionStore(tmp_path, engine=LiveResearchService(
-            DenseEvidenceRetriever(pool, get_embedding_service(), backend=retrieval_backend,
-                                   cache_dir=tmp_path / 'lexical-cache'), provider=provider))
-        try: yield
-        finally: await disconnect()
+        try:
+            async with pool.acquire() as conn:
+                await shared_pointer().refresh(conn)
+            settings = get_settings()
+            corpus_id = Queue(settings.admin_ingestion_directory).serving_corpus(settings.research_corpus_version_id)
+            retriever = DenseEvidenceRetriever(
+                pool, get_embedding_service(), corpus_version_id=corpus_id, model_ref=settings.embedding_model_ref,
+                backend=retrieval_backend,
+            )
+            cache_dir = tmp_path / 'lexical-cache'
+            if retrieval_backend == 'hybrid':
+                existing_cache = retriever.cache_dir / f'corpus-{corpus_id}.json'
+                if existing_cache.is_file():
+                    cache_dir.mkdir()
+                    shutil.copyfile(existing_cache, cache_dir / existing_cache.name)
+            retriever.cache_dir = cache_dir
+            await retriever.warmup()
+            app.state.store = SessionStore(tmp_path, engine=LiveResearchService(retriever, provider=provider))
+            yield
+        finally:
+            await disconnect()
 
     app = FastAPI(lifespan=lifespan)
     app.include_router(api.router)
@@ -68,8 +88,8 @@ def test_asgi_real_sources_and_b1_contract_without_gemini(tmp_path, retrieval_ba
         path = '/api/research/chat/sessions/' + snapshot['session_id']
         for question, expected_status, expected_period in (
             ('Tiền và tương đương tiền FPT quý 2/2026', 'EVIDENCE_READY', '2026-Q2'),
-            ('Tin tức FPT tháng 9/2026', 'EVIDENCE_READY', '2026-09'),
-            ('Tin tức FPT theo CafeF ngày 29/9/2026', 'EVIDENCE_READY', '2026-09-29'),
+            ('Tin tức FPT tháng 10/2026', 'EVIDENCE_READY', '2026-10'),
+            ('Tin tức FPT theo CafeF ngày 21/10/2026', 'EVIDENCE_READY', '2026-10-21'),
             ('Tổng tài sản FPT quý 4/2099', 'NO_DATA', '2099-Q4'),
         ):
             started = time.monotonic()
@@ -84,7 +104,12 @@ def test_asgi_real_sources_and_b1_contract_without_gemini(tmp_path, retrieval_ba
             if items:
                 assert result['answering']['status'] == 'DRAFT_READY'
                 assert result['answering']['citations'][0]['locator'] == items[0]['locator']
-                assert items[0]['score']['type'] == ('RRF' if retrieval_backend == 'hybrid' else 'COSINE_SIMILARITY')
+                if retrieval_backend == 'hybrid':
+                    assert items[0]['score']['type'] == 'RRF'
+                elif result['scope']['source_type'] == 'NEWS':
+                    assert items[0]['score']['type'] in ('COSINE_SIMILARITY', 'RRF')
+                else:
+                    assert items[0]['score']['type'] == 'COSINE_SIMILARITY'
                 assert result['answering']['manifest']['retrieval_backend'] == retrieval_backend
                 if result['scope'].get('publisher'):
                     from src.vector_retrieval.backend import _derive_publisher

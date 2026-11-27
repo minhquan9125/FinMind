@@ -26,6 +26,9 @@ def test_unrelated_primary_gets_one_supplement_before_answering():
     original=copy.deepcopy(SCOPE)
     out=asyncio.run(recover_content(reader,'Chi nhánh Phú Quốc thay đổi địa điểm thế nào?',SCOPE))
     assert reader.await_count==2
+    primary_scope, next_scope = [call.args[1] for call in reader.await_args_list]
+    assert [primary_scope['source_type'], next_scope['source_type']] == ['NEWS', 'BCTN']
+    assert primary_scope['companies'] is not next_scope['companies']
     assert out['items'][0]['passage'].endswith('Chi nhánh Phú Quốc thay đổi địa điểm')
     assert SCOPE==original
 

@@ -43,14 +43,13 @@ async def recover_content(retrieve, question, scope, *, fallback_timeout=20):
     norm = _fold(question)
     first = 'BCTN' if re.search(r'\b(?:chien luoc|rui ro|co cau|hoat dong kinh doanh|ben vung)\b', norm) else 'NEWS'
     order = [first, 'NEWS' if first == 'BCTN' else 'BCTN']
-    child = {**copy.deepcopy(scope), 'source_type': first}
-    primary = await retrieve(question, child)
+    primary = await retrieve(question, {**copy.deepcopy(scope), 'source_type': first})
     trace = [{'source': first, 'reason': 'PRIMARY', 'items': len(primary['items'])}]
     if topical_match(question, primary['items'], scope.get('companies', [])):
         return {**primary, 'retrieval_trace': trace}
-    child['source_type'] = order[1]
     try:
-        secondary = await asyncio.wait_for(retrieve(question, child), fallback_timeout)
+        secondary = await asyncio.wait_for(
+            retrieve(question, {**copy.deepcopy(scope), 'source_type': order[1]}), fallback_timeout)
     except TimeoutError:
         return {**primary, 'retrieval_trace': trace + [{'source': order[1], 'reason': 'FALLBACK_TIMEOUT'}]}
     if (primary['corpus_version_id'], primary['data_version']) != (secondary['corpus_version_id'], secondary['data_version']):
